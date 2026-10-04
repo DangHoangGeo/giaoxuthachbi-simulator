@@ -35,6 +35,7 @@
     LD: { label: 'LD · Chandeliers & sconces', cat: 'light' },
     L5: { label: 'L5 · Steps & paths', cat: 'light' },
     L6: { label: 'L6 · Façade & towers', cat: 'light' },
+    L7: { label: 'L7 · Festival exterior (strings & tower floods)', cat: 'light' },
     E1: { label: 'E1 · Exit signs', cat: 'light' },
     X1: { label: 'X1 · Festival lighting', cat: 'decor' },
     F1: { label: 'F1 · Ceiling fans', cat: 'fan' },
@@ -1104,6 +1105,7 @@
       const avg = Math.min(peak, spec.ratedW) / 8 / 0.7 + (spec.active ? 25 : 6);
       return rated ? (spec.active ? spec.ratedW / 2 : spec.ratedW / 3) : (it.on ? avg : (spec.active ? 4 : 0));
     }
+    if (it.on && t.light?.wattsPerMetre) return t.light.wattsPerMetre * (it.params?.length || 12);
     return it.on && t.light ? t.light.watts : 0;
   }
   function powerSummary() {
@@ -1122,13 +1124,13 @@
 
   /* ---------------------------------------------------------------- scenes */
   const SCENES = {
-    'Full service · evening': { L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 2, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, DECOR: 1 },
-    'Weekday Mass': { L1: 0.75, L2: 0, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, DECOR: 1 },
-    'Prayer & adoration': { L1: 0, L2: 0, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, DECOR: 1 },
-    'Christmas & festivals': { L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 3, F2: 3, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, DECOR: 1 },
-    'Cleaning': { L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, DECOR: 1 },
-    'Night security': { L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, DECOR: 1 },
-    'All off': { L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, DECOR: 1 }
+    'Full service · evening': { L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 2, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, DECOR: 1 },
+    'Weekday Mass': { L7: 0, L1: 0.75, L2: 0, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, DECOR: 1 },
+    'Prayer & adoration': { L7: 0, L1: 0, L2: 0, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, DECOR: 1 },
+    'Christmas & festivals': { L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 3, F2: 3, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, DECOR: 1 },
+    'Cleaning': { L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, DECOR: 1 },
+    'Night security': { L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, DECOR: 1 },
+    'All off': { L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, DECOR: 1 }
   };
   SIM.SCENES = SCENES;
   function applyScene(name, { record = true } = {}) {

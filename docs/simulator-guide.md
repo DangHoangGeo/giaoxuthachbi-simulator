@@ -47,14 +47,15 @@ Every fixture hangs from, stands on or is fixed to something the model actually 
 
 | System | What is installed | Why |
 |---|---|---|
-| Reading light, central blocks (L1) | 14 LED projectors, 36°, 4 500 lm, 3000 K, CRI 90, under the main tie beams (axes 3–9, z ±2.6 m) | Even 250–300 lux on books; hidden in the timber frame |
-| Reading light, outer blocks (L2) | 14 projectors, 60°, 4 300 lm, under the side beams (z ±5.6 m) | Covers the outer benches between bays |
+| Reading light, central blocks (L1) | 14 twin-head LED projectors (2 × 2 300 lm, 28°, 3000 K, CRI 90) under the main tie beams (axes 3–9, z ±2.6 m), heads tilted ±8° along the nave | Even light on books under the beams and mid-bay; narrow beams stay off the fan blades |
+| Reading light, outer blocks (L2) | 14 twin-head projectors (2 × 2 300 lm, 36°) under the side beams (z ±5.6 m) | Covers the outer benches between bays |
 | Rear rows and entrance | 2 twin-head brackets inside the entrance façade: one head for the last rows (5 500 lm), one for the centre seats and the entrance aisle (3 300 lm) | Bay 2′–3 has no tie beam, and the nave is open back to the façade; this was the darkest corner |
 | Sanctuary (L3) | Altar key lights at ~45° from the axis-9 beam (with shadows); ambo key light; step fill; crucifix, tabernacle and statue accents | Faces and liturgy lit from the front, not from above |
 | Roof uplight (LA) | 8 wide uplights hidden on top of the tie beams | Warm timber roof in the evening; the nave feels taller |
 | Decorative (LD) | 3 brass chandeliers on chains from the ridge over the crossings; a 12-lamp chandelier at the 9–10 crossing; 14 brass sconces | The character of the reference images |
 | Verandas, steps, façade (L4–L6) | 18 lanterns (2 000 lm), one at every veranda pier; brass sconces beside the main door; step bollards, side-door lanterns, 6 façade floodlights | The rhythm of lights along the arcades in the reference night view; safe routes and a lit landmark |
-| Air (F1) | 3 large slow fans (3.0 m, 5-speed) on steel spreaders mid-bay | Quiet, ~0.5 m/s over the seats; no light above them |
+| Air (F1) | 12 ceiling fans (1.42 m) mid-bay over the two side aisles, between the centre and outer blocks | Where parishes really hang fans: nothing over the processional aisle, quiet at speed 2, ~0.33 m/s at the seats |
+| Festival exterior (L7, off except at feasts) | Warm bulb strings along the roof ridge, the main and veranda eaves, the rear gable, the front terrace and the tower corners; floods on both tower tops, the central shrine and the rear gable | The church outlined in light for Christmas and feasts; switched on by the *Christmas & festivals* scene |
 | Sound (A1–A3) | 2 steerable DSP columns on the axis-9 shafts, 2 delayed columns on axis 6, 4 veranda pendants, 2 courtyard horns on the tower fronts (off) | Narrow vertical beams aimed at people; time-aligned to the priest's voice |
 | Microphones | Ambo and altar gooseneck mics | The system runs at about 66 dBA, which keeps both microphones more than 3 dB inside the stability allowance |
 | Décor | Statues of Our Lady and Saint Joseph framed by the side arches, flowers, votive candle stands, Paschal candle, palms, banners. Christmas tree, nativity grotto, star, red lanterns, pennants and an aisle carpet are ready but hidden | Matches the reference interior; seasonal items are one switch away |

@@ -2,13 +2,13 @@
  *
  * Built on the as-drawn timber frame (section sheet 4): every fixture has a
  * structural anchor, and lights never sit above spinning fan blades.
- *  - Reading light: 36° projectors under the main tie beams (central blocks),
- *    wide 60° projectors under the side beams (outer blocks) and twin-head
+ *  - Reading light: twin-head projectors (28° centre, 36° outer) tilted ±8°
+ *    along the nave under the main tie beams and side beams; twin-head
  *    projectors on the entrance wall for the rear rows and the entrance aisle.
- *  - Air: three quiet 3 m slow fans mid-bay in bays 3–4, 5–6 and 7–8, on
- *    steel spreaders between the tie beams. Chandeliers hang from the ridge
- *    in the other bays (4–5, 6–7, 8–9), so no lamp shines through blades.
- *    1.42 m ceiling fans over the outer blocks are kept as a hidden option.
+ *  - Air: 1.42 m ceiling fans mid-bay over the two side aisles; the reading
+ *    beams are narrow enough to miss their blades.
+ *  - Festival exterior (L7, off by default): bulb strings on the ridge, eaves,
+ *    rear gable, front terrace and tower corners, plus tower-top floods.
  *  - Atmosphere: hidden uplights on top of the tie beams wash the timber roof;
  *    brass chandeliers and pier sconces give the evening character.
  *  - Sanctuary: key lights at ~45° for faces, accents for crucifix,
@@ -34,25 +34,25 @@
     const above = (x, z, y) => SIM.structureAbove(x, z, y)?.y ?? y;
     const nave = ['3', '4', '5', '6', '7', '8', '9'];
 
-    // L1 · central reading light under the main tie beams.
-    for (const k of nave) for (const z of [-2.6, 2.6]) {
-      const x = A[k], tilt = -90;
-      add({ type: 'projector36', name: `Reading light · axis ${k} · ${side(z)} central`, circuit: 'L1', mount: 'pendant', pos: [x, beamY - 0.005, z], anchorY: beamY,
-        yaw: 180, mountYaw: 180, tilt, lumens: 4500 });
-    }
-    // L2 · outer reading light under the side beams (wide optic: no fans above the outer blocks).
-    for (const k of nave) for (const z of [-5.6, 5.6]) {
-      const x = A[k], tilt = -90;
-      add({ type: 'projector36', name: `Reading light · axis ${k} · ${side(z)} outer`, circuit: 'L2', mount: 'pendant', pos: [x, sideBeamY - 0.005, z], anchorY: sideBeamY,
-        yaw: 180, mountYaw: 180, tilt, lumens: 4300, beam: 60 });
-    }
+    // L1/L2 · reading light: twin-head projectors under the main tie beams
+    // (central blocks, 28°) and the side beams (outer blocks, 36°), the heads
+    // tilted ±8° along the nave so the mid-bay rows are lit as well as the rows
+    // under the beams. Narrow optics keep the beams off the side-aisle fan blades.
+    const reading = (k, z, y, circuit, block, beam) => {
+      for (const [dir, tag] of [[1, ''], [-1, ' · twin']]) {
+        const p = [A[k], y - 0.005, z], a = aim(p, [A[k] + dir * Math.tan(8 * Math.PI / 180) * (y - 0.8), 0.8, z]);
+        add({ type: 'projector36', name: `Reading light · axis ${k} · ${side(z)} ${block}${tag}`, circuit, mount: 'pendant', pos: p, anchorY: y, ...a, mountYaw: a.yaw, lumens: 2300, beam });
+      }
+    };
+    for (const k of nave) for (const z of [-2.6, 2.6]) reading(k, z, beamY, 'L1', 'central', 28);
+    for (const k of nave) for (const z of [-5.6, 5.6]) reading(k, z, sideBeamY, 'L2', 'outer', 36);
     // Rear rows · bay 2′–3 has no tie beam, so twin-head brackets on the inner
     // face of the entrance façade light the last rows, the centre seats and the
     // entrance aisle (solid wall between the main door and the side doors).
     for (const z of [-4.2, 4.2]) {
       const s = Math.sign(z);
       const p = [facadeX, 6.4, z], a = aim(p, [7.8, 0.8, s * 5.0]);
-      add({ type: 'projector36', name: `Rear rows light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: p, mountYaw: 0, yaw: a.yaw, tilt: a.tilt, lumens: 5500, beam: 55 });
+      add({ type: 'projector36', name: `Rear rows light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: p, mountYaw: 0, yaw: a.yaw, tilt: a.tilt, lumens: 6000, beam: 55 });
       const q = [facadeX, 5.95, z], b = aim(q, [6.2, 0.8, s * 1.2]);
       add({ type: 'projector36', name: `Rear centre light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: q, mountYaw: 0, yaw: b.yaw, tilt: b.tilt, lumens: 3300, beam: 50 });
     }
@@ -120,16 +120,37 @@
       add({ type: 'flood', name: `Side elevation wash · ${side(s)}`, circuit: 'L6', mount: 'floor', pos: r, yaw: c.yaw, mountYaw: c.yaw, tilt: c.tilt, beam: 50, lumens: 7000 });
     }
 
-    // Fans · slow 3 m fans mid-bay on steel spreaders between tie beams;
-    // 1.42 m ceiling fans mid-bay over the outer blocks.
-    for (const k of ['3', '5', '7']) add({ type: 'fanHVLS', name: `Slow fan 3.0 m · bay ${k}–${Number(k) + 1}`, circuit: 'F1', mount: 'pendant', pos: [A[k] + 2.25, 5.45, 0], anchorY: beamY, yaw: 0, mountYaw: 0, speed: 4, params: { spreader: true },
-      note: 'Hung from a steel spreader between two tie beams; structural engineer to verify.' });
-    // Alternative to compare (hidden): 1.42 m fans mid-bay over the outer blocks.
-    // They add air at the outer seats but sit under the outer reading lights' beams.
+    // L7 · festival exterior: bulb strings along the ridge, the main and veranda
+    // eaves and the rear gable, across the front terrace and up the tower corners,
+    // plus floods on the tower tops and the central shrine. Off except at feasts.
+    const strand = (name, pos, yaw, length, slope = 0, mount = 'floor', mountYaw = yaw) =>
+      add({ type: 'bulbString', name: `Festival lights · ${name}`, circuit: 'L7', mount, pos, yaw, mountYaw, on: false, params: { length, slope, spacing: 0.6 } });
+    strand('roof ridge', [29.16, 12.69, 0], 90, 47.3);
+    for (const s of [-1, 1]) {
+      strand(`main eave ${side(s)} · nave`, [21.35, 7.32, s * 7.3], 90, 31.7);
+      strand(`main eave ${side(s)} · sanctuary`, [48.4, 7.32, s * 7.3], 90, 8.9);
+      strand(`veranda eave ${side(s)} · nave`, [21.35, 6.47, s * 10.6], 90, 31.7);
+      strand(`veranda eave ${side(s)} · sanctuary`, [48.4, 6.47, s * 10.6], 90, 8.9);
+      strand(`rear gable ${side(s)}`, [53.45, 10.0, s * 3.65], 0, 9.07, -s * 36.4);
+      for (const zc of [7.9, 12.2]) strand(`tower ${side(s)} · corner ${zc < 10 ? 'inner' : 'outer'}`, [-0.36, 11.6, s * zc], 0, 21.6, 90, 'wall', 180);
+      const t = [-16, SIM.floorY(-16, s * 15), s * 15], a = aim([t[0], t[1] + 0.32, t[2]], [1.0, 27.5, s * 10.3]);
+      add({ type: 'flood', name: `Festival flood · tower top ${side(s)}`, circuit: 'L7', mount: 'floor', pos: t, yaw: a.yaw, mountYaw: a.yaw, tilt: a.tilt, beam: 15, lumens: 18000, on: false });
+    }
+    strand('front terrace between the towers', [2.15, 8.5, 0], 0, 14.8);
+    for (const s of [-1, 1]) {
+      const p = [64, SIM.floorY(64, s * 7), s * 7], a = aim([p[0], p[1] + 0.32, p[2]], [53.3, 11, s * 1.5]);
+      add({ type: 'flood', name: `Festival flood · rear gable ${side(s)}`, circuit: 'L7', mount: 'floor', pos: p, yaw: a.yaw, mountYaw: a.yaw, tilt: a.tilt, beam: 50, lumens: 12000, on: false });
+    }
+    { const p = [-6, SIM.floorY(-6, 0), 0], a = aim([p[0], p[1] + 0.32, p[2]], [2.4, 15.5, 0]);
+      add({ type: 'flood', name: 'Festival flood · central shrine', circuit: 'L7', mount: 'floor', pos: p, yaw: a.yaw, mountYaw: a.yaw, tilt: a.tilt, beam: 15, lumens: 8000, on: false }); }
+
+    // Fans · 1.42 m ceiling fans mid-bay over the two side aisles (between the
+    // centre and outer blocks): the 30°/40° reading beams miss the blades, and
+    // nothing hangs over the processional aisle.
     for (const k of ['3', '4', '5', '6', '7', '8']) for (const s of [-1, 1]) {
-      const x = A[k] + 2.25, z = s * 5.6;
-      add({ type: 'fanCeiling', name: `Alt. ceiling fan · bay ${k}–${Number(k) + 1} · ${side(s)}`, circuit: 'F1', mount: 'pendant', pos: [x, 3.75, z], anchorY: lining(z) - 0.06, yaw: 0, mountYaw: 0, speed: 2, hidden: true,
-        note: 'Alternative layout. Mid-bay: needs an engineer-approved bracket between purlins and an anti-sway restraint.' });
+      const x = A[k] + 2.25, z = s * 4.4;
+      add({ type: 'fanCeiling', name: `Ceiling fan · bay ${k}–${Number(k) + 1} · ${side(s)} aisle`, circuit: 'F1', mount: 'pendant', pos: [x, 3.9, z], anchorY: lining(z) - 0.06, yaw: 0, mountYaw: 0, speed: 2,
+        note: 'Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.' });
     }
 
     // Loudspeakers · steerable columns on the D/E shafts facing the people.
