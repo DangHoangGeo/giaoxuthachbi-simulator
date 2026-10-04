@@ -44712,17 +44712,39 @@ void main() {
         "Continuous cap cross support",
       ),
       x1(0, 36.92, 0, 1.891, n, 0.93));
-    for (let l of [-2.1, 2.1])
-      for (let c of [-2.42, 2.42]) ss(l, 29.03, c, 1.68, n, 0.66);
-    for (let l of [-2.34, 2.34]) {
-      We(4.29, 0.11, 0.17, 0, 29.8, l, ce.trim, n);
-      for (let c = -2.1; c <= 2.1; c += 0.25)
-        We(0.055, 0.7, 0.065, c, 29.43, l, ce.trim, n);
-    }
-    for (let l of [-2.07, 2.07]) {
-      We(0.17, 0.11, 4.69, l, 29.8, 0, ce.trim, n);
-      for (let c = -2.3; c <= 2.3; c += 0.25)
-        We(0.065, 0.7, 0.055, l, 29.43, c, ce.trim, n);
+    // Belfry balcony after the reference image: corbelled cornice, plinth,
+    // vase balusters between moulded rails, corner pedestals with urn finials.
+    {
+      const H = 2.2, P = 2.02, y0 = 29.09;
+      for (let c = -H + 0.12; c <= H - 0.1; c += 0.3)
+        for (const [x, z] of [[c, -H + 0.06], [c, H - 0.06], [-H + 0.06, c], [H - 0.06, c]])
+          We(0.13, 0.16, 0.13, x, y0 - 0.24, z, ce.trim, n, "Balcony corbel");
+      We(2 * H + 0.12, 0.09, 2 * H + 0.12, 0, y0 - 0.11, 0, ce.trim, n, "Balcony cornice moulding");
+      We(2 * H, 0.16, 2 * H, 0, y0 + 0.08, 0, ce.trim, n, "Balcony plinth");
+      for (const side of [-1, 1]) {
+        for (const axis of [0, 1]) {
+          const len = 2 * P - 0.5, at = side * P;
+          const rail = (y, h, w) => axis ? We(w, h, len, at, y, 0, ce.trim, n, "Balustrade rail") : We(len, h, w, 0, y, at, ce.trim, n, "Balustrade rail");
+          rail(y0 + 0.21, 0.1, 0.24);
+          rail(y0 + 0.86, 0.1, 0.28);
+          for (let c = -P + 0.37; c <= P - 0.36; c += 0.2) {
+            const [x, z] = axis ? [at, c] : [c, at];
+            is(0.045, 0.06, 0.12, x, y0 + 0.32, z, ce.trim, n, "Baluster base", 10);
+            is(0.085, 0.045, 0.22, x, y0 + 0.49, z, ce.trim, n, "Baluster belly", 10);
+            is(0.045, 0.085, 0.16, x, y0 + 0.68, z, ce.trim, n, "Baluster neck", 10);
+          }
+        }
+      }
+      for (const x of [-P, P]) for (const z of [-P, P]) {
+        We(0.4, 0.92, 0.4, x, y0 + 0.62, z, ce.wall, n, "Balustrade corner pedestal");
+        We(0.48, 0.08, 0.48, x, y0 + 1.12, z, ce.trim, n, "Pedestal cap");
+        is(0.1, 0.16, 0.1, x, y0 + 1.21, z, ce.trim, n, "Urn foot", 14);
+        is(0.2, 0.11, 0.26, x, y0 + 1.39, z, ce.trim, n, "Urn body", 14);
+        is(0.08, 0.2, 0.16, x, y0 + 1.6, z, ce.trim, n, "Urn shoulder", 14);
+        is(0.02, 0.08, 0.34, x, y0 + 1.85, z, ce.trim, n, "Urn finial", 10);
+      }
+      is(1.98, 2.04, 0.5, 0, y0 + 0.4, 0, ce.wall, n, "Dome drum", 40);
+      is(2.06, 2.06, 0.08, 0, y0 + 0.69, 0, ce.trim, n, "Dome drum moulding", 40);
     }
   }
   Os.add(V0(Ec, ce, ti));
