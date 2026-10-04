@@ -66,16 +66,16 @@ The **Full service · evening** scene gives these results at the 300 sampled sea
 
 | Measure | Result | Brief target |
 |---|---|---|
-| Maintained light on books | 262 lux average · 99 % of seats ≥ 200 lux (lowest 190) · uniformity 0.73 | 200–300 lux |
+| Maintained light on books | 330 lux average · 99 % of seats ≥ 200 lux (lowest 171) · uniformity 0.52 | 200–300 lux |
 | Light on the aisle floors | ≈ 85 lux at the main-door threshold, 133–290 lux along the centre, side and cross aisles; entrance hall 59–215 lux | ≈ 100 lux on circulation |
 | Light on the veranda floors | ≈ 36–45 lux average, at least 24 lux | ≈ 100 lux trial (see below) |
-| Speech intelligibility | STI 0.62 average · 0.56 minimum · 81 % of seats ≥ 0.60 · all seats ≥ 0.50 | ≥ 0.60 at every seat |
+| Speech intelligibility | STI 0.62 average · 0.56 minimum · 77 % of seats ≥ 0.60 · all seats ≥ 0.50 | ≥ 0.60 at every seat |
 | Speech level | 66 dBA, 90 % of seats within ± 2.5 dB | ±3 dB |
 | Microphone feedback | 3.4 dB (ambo) and 3.6 dB (altar) beyond a 6 dB stability allowance | stable with gooseneck microphones |
-| Background noise | 41 dBA (fans + outdoor + people) | ≈ 35 dBA where practicable |
-| Seated air speed | 0.46 m/s average (central 0.60, outer 0.32) · feels ≈ 1.5 °C cooler | 0.3–0.8 m/s trial |
+| Background noise | 42 dBA (fans + outdoor + people) | ≈ 35 dBA where practicable |
+| Seated air speed | 0.33 m/s average (central 0.30, outer 0.35), up to ≈ 0.45 m/s at fan speed 3 | 0.3–0.8 m/s trial |
 | Reverberation time (500–1000 Hz) | 1.22 s | choose with the acoustician |
-| Electrical load | ≈ 4.2 kW · 6.2 kWh per 1.5 h service | measure after installation |
+| Electrical load | ≈ 3.4 kW · 5 kWh per 1.5 h service (festival exterior off) | measure after installation |
 
 The verandas are the one place the lanterns do not reach the brief's 100 lux trial. About 40 lux is enough to walk safely and suits the arcade at night. If the verandas will seat overflow worshippers at festivals, add downlights to the veranda roof for those days. You can test this with *Add → LED projector*.
 
