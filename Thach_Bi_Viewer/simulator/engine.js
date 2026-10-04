@@ -1054,7 +1054,7 @@
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(exportLayout())); return true; } catch { return false; }
   }
   function exportLayout() {
-    return { app: 'Thạch Bi church simulator', schema: SCHEMA, savedAt: new Date().toISOString(), scene: state.scene, settings: state.settings, customScenes: state.customScenes, items: state.items };
+    return { app: 'Thạch Bi church simulator', schema: SCHEMA, designVersion: window.CHURCH_SIM_DESIGN?.version, savedAt: new Date().toISOString(), scene: state.scene, settings: state.settings, customScenes: state.customScenes, items: state.items };
   }
   function importLayout(json, { record = true } = {}) {
     const obj = typeof json === 'string' ? JSON.parse(json) : json;
@@ -1561,7 +1561,11 @@
     let loaded = false;
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
-      if (saved?.items?.length) { importLayout(saved, { record: false }); state.scene = saved.scene || null; loaded = true; }
+      if (saved?.items?.length && saved.designVersion !== window.CHURCH_SIM_DESIGN.version) {
+        // Saved from an older recommended design: keep it aside and start from the new one.
+        localStorage.setItem(STORAGE_KEY + '.previous', JSON.stringify(saved));
+        setTimeout(() => emit('toast', 'Loaded the updated recommended design. Your earlier layout is kept as a backup in this browser.'), 1500);
+      } else if (saved?.items?.length) { importLayout(saved, { record: false }); state.scene = saved.scene || null; loaded = true; }
     } catch (e) { console.warn('Saved simulator layout ignored:', e.message); }
     if (!loaded) {
       for (const raw of window.CHURCH_SIM_DESIGN.recommended(GEO, SIM)) { const it = normalizeItem(raw); if (it) { state.items.push(it); instantiate(it); } }

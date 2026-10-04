@@ -195,5 +195,7 @@
     return items;
   }
 
-  window.CHURCH_SIM_DESIGN = { recommended, aim };
+  // Bump when the recommended design changes: browsers holding a layout saved
+  // from an older version then load the new design (the old one is kept aside).
+  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-07-wall-speakers' };
 })();
