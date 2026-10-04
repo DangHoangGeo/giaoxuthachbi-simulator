@@ -1,0 +1,33 @@
+Current reference basis
+
+Primary visual geometry: docs/layout_design/Thach_Bi_All_Views.png, supplied by user.
+Primary dimension register: docs/layout_design/Thach_Bi_Church_Dimensions.xlsx.
+Original drawings remain supporting detail references. Rejected AI perspective images are not geometry references.
+
+Verified source measurements (metres unless noted):
+- Axes 9–10: 7.200 longitudinal spacing (Dimensions row17).
+- A–B and H–I: 2.835 transverse grid offsets on each side (rows20,26).
+- Main body outer plan envelope: 22.489 (row33).
+- Wing outer plan envelope: 28.158 (row34).
+- Main body B–H grid span: 20.828 (row301), not exterior width.
+- Wing A–I grid span: 26.498 (row159), not exterior width.
+- Tower facade overall dimension: 27.254 (row246).
+- Tower cross top: +36.920 from floor datum; 39.000 above courtyard (rows227,236).
+- Front stage: -0.480; side landings: -0.320 (rows54,55).
+- Courtyard: -2.080 (Model grid row42), so front stage rise is1.600 and side landing rise1.760.
+- Main roof reference: +12.472 (Model grid row51).
+- Source register has unresolved dimension differences and schematic ornamental depths. Preserve them as unresolved; image generation is not dimensional verification.
+
+User's latest visual requirements:
+- Flat simple environment; no mountains, hills, invented villages or scenery.
+- Only two tree rows, one along each longitudinal side of church.
+- Tower ground arches remain OPEN. Through them, show the existing exterior wall farther behind, with passage floor, side returns and depth. Do not add a flush infill wall across the arch; do not show scenery through the building.
+- All tower wooden window louvers/shutters use the same warm dark brown finish as the main doors.
+- Front platform stays within tower width, with flat usable stage before stairs.
+- Full projecting side wings at9–10, with ordinary rear bays retained.
+- Keep previous side stair close-up, side-door-detail.png, unchanged.
+- Doors at outer wall plane; side stair flights parallel to wall; no rear end-wall stairs.
+
+Current front reference: Thach_Bi_Viewer/references/00-front-reference.png.
+Retained side detail: Thach_Bi_Viewer/references/08-retained-side-stair-detail.png.
+Simulator updated 2026-10-05 at the user request. Native prompt files remain historical records; superseded PNGs have been removed.

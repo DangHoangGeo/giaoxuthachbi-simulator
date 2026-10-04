@@ -24,7 +24,7 @@
  <rect x="56" y="16" width="68" height="158" fill="url(#floorPattern)" stroke="#bdc8b5"/>
  <rect x="56" y="16" width="68" height="44" fill="#e2e8d6"/>
  <path d="M75 22h30v11H75z" fill="#b4c19e"/>
- <g fill="#bfac88" opacity=".7"><path id="mapShortPews" d="M58 77h12v61H58zm18 0h8v61h-8zm20 0h8v61h-8zm14 0h12v61h-12z"/><path id="mapLongPews" display="none" d="M63 77h21v61H63zm33 0h21v61H96z"/></g>
+ <g fill="#bfac88" opacity=".7"><path d="M58 77h12v61H58zm18 0h8v61h-8zm20 0h8v61h-8zm14 0h12v61h-12z"/></g>
  <rect x="31" y="166" width="22" height="21" rx="1" fill="#c7cfb9" stroke="#a6b39c"/><rect x="127" y="166" width="22" height="21" rx="1" fill="#c7cfb9" stroke="#a6b39c"/>
  <path d="M42 201h96m-96 3h96m-96 3h96" stroke="#c4cdbb"/>
  <path d="M90 232V65" stroke="#7e9772" stroke-width="1.2" stroke-dasharray="3 4" opacity=".5"/>
@@ -35,14 +35,8 @@
 <aside id="inspector" class="inspector" hidden><div class="panel-title"><span>Design detail</span><button id="closeInspector" class="close-button" aria-label="Close detail">×</button></div><h2 id="detailTitle"></h2><p id="detailFact" class="detail-fact"></p><p id="detailSource" class="detail-source"></p><p id="detailNote" class="detail-note"></p></aside>
 <aside id="settingsPanel" class="settings-panel" hidden><div class="panel-title"><strong>View settings</strong><button id="closeSettings" class="close-button" aria-label="Close settings">×</button></div>
  <h3>Atmosphere</h3><div class="lighting-switch"><button id="dayLighting" class="active">☀ Day</button><button id="eveningLighting">☾ Evening</button></div>
- <label class="switch-row"><span>Show roof</span><input id="roofToggle" type="checkbox" checked></label><label class="switch-row"><span>Reference materials</span><input id="colorToggle" type="checkbox" checked></label><label class="switch-row"><span>Drawing grid</span><input id="gridToggle" type="checkbox"></label>
- <label class="switch-row"><span>Show trees</span><input id="treesToggle" type="checkbox" checked></label>
- <h3>Seating layout</h3><div class="lighting-switch"><button id="seating2" aria-pressed="false">2 blocks</button><button id="seating4" class="active" aria-pressed="true">4 blocks</button></div>
- <p id="seatingSummary" class="planning-caption" aria-live="polite">Concept pew layout</p>
- <div class="detail-buttons"><button id="centralSeatView">Seated: near centre aisle</button><button id="outerSeatView">Seated: near side aisle</button></div>
- <a class="planning-link" href="planning/index.html" target="_blank" rel="noopener">Seating &amp; building systems plan ↗</a>
+ <label class="switch-row"><span>Show roof</span><input id="roofToggle" type="checkbox" checked></label><label class="switch-row"><span>Warm exterior finish</span><input id="colorToggle" type="checkbox"></label><label class="switch-row"><span>Drawing grid</span><input id="gridToggle" type="checkbox"></label>
  <h3>Look closer</h3><div class="detail-buttons"><button data-detail="front">Front facade</button><button data-detail="tower">Tower</button><button data-detail="window">Windows</button><button data-detail="columns">Columns &amp; roof</button><button data-detail="sanctuary">Sanctuary</button><button data-detail="roof">Roof junctions</button></div>
- <h3>Reference checkpoints</h3><div class="detail-buttons"><button id="stairCheckpoint">Side stair &amp; door</button><button id="wingCheckpoint">Wider section 9–10</button></div>
  <h3>Drawing views</h3><div class="drawing-buttons"><button data-view="front">Tower end</button><button data-view="rear">Altar end</button><button data-view="right">Side B</button><button data-view="left">Side H</button><button data-view="overhead">Roof plan</button><button data-view="cutaway">Roof hidden</button></div>
  <div class="settings-footer"><button id="captureButton">Save this view</button><button id="notesButton">Sources &amp; model notes</button><button id="dataButton">Download model data</button></div>
 </aside>
@@ -64,12 +58,9 @@
 <details hidden><summary>Startup details</summary><pre id="startupError"></pre></details>
 <div id="startupPreviews" class="startup-previews" hidden>
 <h3>View the church images</h3>
-<div class="startup-images"><a href="references/02-front-corner-day.png" target="_blank" rel="noopener"><img src="references/02-front-corner-day.png" alt="Exterior of the shared church model" loading="lazy"><span>Exterior reference</span></a><a href="references/05-interior-day.png" target="_blank" rel="noopener"><img src="references/05-interior-day.png" alt="Furnished nave in the shared church model" loading="lazy"><span>Interior reference</span></a></div>
-<div class="startup-reference-links"><a href="references/00-front-reference.png" target="_blank" rel="noopener">Front concept</a><a href="references/04-rear-elevation.png" target="_blank" rel="noopener">Rear concept</a><a href="references/05-interior-day.png" target="_blank" rel="noopener">Interior daylight</a><a href="references/07-interior-night.png" target="_blank" rel="noopener">Interior evening</a><a href="references/08-retained-side-stair-detail.png" target="_blank" rel="noopener">Side stair detail</a></div>
+<div class="startup-images"><a href="church-exterior.png" target="_blank" rel="noopener"><img src="church-exterior.png" alt="Exterior of the shared church model" loading="lazy"><span>Exterior model view</span></a><a href="church-interior.png" target="_blank" rel="noopener"><img src="church-interior.png" alt="Furnished nave in the shared church model" loading="lazy"><span>Interior model view</span></a></div>
+<div class="startup-reference-links"><a href="references/exterior-front.png" target="_blank" rel="noopener">Front concept</a><a href="references/exterior-rear.png" target="_blank" rel="noopener">Rear concept</a><a href="references/interior-day.png" target="_blank" rel="noopener">Interior daylight</a><a href="references/interior-evening.png" target="_blank" rel="noopener">Interior evening</a><a href="references/interior-reverse.png" target="_blank" rel="noopener">Interior toward entrance</a></div>
 </div></div></section>
-<noscript><div class="startup-noscript"><h2>Open the interactive viewer in your browser</h2><p>This 3D model needs JavaScript and WebGL 2. A file preview may not run it.</p><p><a href="references/02-front-corner-day.png">View the exterior image</a> · <a href="references/05-interior-day.png">View the interior image</a></p></div></noscript>
-<script src="references.js?v=20261005-9"></script>
-<script src="realism.js?v=20261005-9"></script>
-<script src="planning.js?v=20261005-9"></script>
-<script src="startup.js?v=20261005-9"></script>
+<noscript><div class="startup-noscript"><h2>Open the interactive viewer in your browser</h2><p>This 3D model needs JavaScript and WebGL 2. A file preview may not run it.</p><p><a href="church-exterior.png">View the exterior image</a> · <a href="church-interior.png">View the interior image</a></p></div></noscript>
+<script src="startup.js"></script>
 </body></html>

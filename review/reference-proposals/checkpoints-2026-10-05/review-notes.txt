@@ -1,0 +1,13 @@
+UPDATE 2026-10-05: simulator refined at user request. Images consolidated in Thach_Bi_Viewer/references. The gallery links to those nine retained files. Notes below record the image-generation review and its limitations.
+
+Reference checkpoint — 2026-10-05
+
+Seven new native-tool images plus the retained front and side-stair references. All new images await review.
+
+Geometry source: Thach_Bi_All_Views.png and Thach_Bi_Church_Dimensions.xlsx. Exterior wing width28.158m versus mainbody22.489m; longitudinal9–10spacing7.2m. Grid offsets and exterior envelopes must remain distinct.
+
+Review order: door close-up, front corner and stage, roof footprint, rear elevation, retained stair detail, daytime interior, exterior night, interior night.
+
+Roof check is for the wings and roof; it does not reliably represent every side stair. Retained stair detail and floor plan remain authoritative for stairs. Interior furniture and lights are proposals. Rear oblique drafts changed openings and were excluded from the selected set.
+
+Simulator unchanged pending reference approval. Prompts are saved in prompts.txt.

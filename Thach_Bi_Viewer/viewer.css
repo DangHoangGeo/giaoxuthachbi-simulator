@@ -8,3 +8,5 @@
 [data-mode=walk].presentation .scene-heading{border-left:3px solid #7b926b;border-radius:2px;padding:13px 18px}
 @media(max-width:760px){[data-mode=walk] .scene-heading{max-width:calc(100% - 183px);padding:11px 12px}[data-mode=walk] .entry-action{top:252px}[data-mode=walk] .scene-heading p{font-size:9px}}
 @media(max-width:420px){[data-mode=walk] .scene-heading{max-width:calc(100% - 162px)}[data-mode=walk] .scene-heading h1{font-size:18px}}
+
+.planning-caption{font-size:11px;line-height:1.5;color:var(--subtle)}.planning-link{display:block;margin:12px 0 18px;color:var(--green);font-size:12px;line-height:1.5}

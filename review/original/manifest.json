@@ -1,0 +1,37 @@
+[
+  {
+    "id": "exterior-front",
+    "title": "Exterior · tower end",
+    "description": "Drawing-led facade with proposed ivory, ochre and terracotta finishes.",
+    "url": "references/exterior-front.png",
+    "status": "AI visual reference; proposed finishes and furnishings; drawings govern dimensions"
+  },
+  {
+    "id": "exterior-rear",
+    "title": "Exterior · altar end",
+    "description": "Proposed materials and appearance at the rear gable and side; architectural drawings remain the geometric reference.",
+    "url": "references/exterior-rear.png",
+    "status": "AI visual reference; proposed finishes and furnishings; drawings govern dimensions"
+  },
+  {
+    "id": "interior-day",
+    "title": "Interior · toward sanctuary",
+    "description": "Proposed daylight, timber, pews, chandeliers and sanctuary decoration within the drawn architectural envelope.",
+    "url": "references/interior-day.png",
+    "status": "AI visual reference; proposed finishes and furnishings; drawings govern dimensions"
+  },
+  {
+    "id": "interior-evening",
+    "title": "Interior · evening lighting",
+    "description": "The same interior and camera as the daylight concept, with warm chandeliers, sconces and sanctuary accents.",
+    "url": "references/interior-evening.png",
+    "status": "AI visual reference; proposed finishes and furnishings; drawings govern dimensions"
+  },
+  {
+    "id": "interior-reverse",
+    "title": "Interior · toward entrance",
+    "description": "Reverse view from the sanctuary toward the three entrance doors, with the same proposed timber, stone and brass palette.",
+    "url": "references/interior-reverse.png",
+    "status": "AI visual reference; proposed finishes and furnishings; drawings govern dimensions"
+  }
+]

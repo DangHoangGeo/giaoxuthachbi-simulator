@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-05",
+  "status": "Retained reference set for the simulator refinement requested 2026-10-05",
+  "generation": "Native image tool",
+  "source_priority": [
+    "docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
+    "docs/layout_design original drawings and Thach_Bi_All_Views.png",
+    "Latest user corrections",
+    "Retained images for finishes, ornament and lighting only"
+  ],
+  "views": [
+    {
+      "file": "../../../Thach_Bi_Viewer/references/01-main-doors-detail.png",
+      "title": "Main doors and carvings",
+      "type": "New close-up",
+      "review_focus": "Three timber doors, arch mouldings, capitals and relief."
+    },
+    {
+      "file": "../../../Thach_Bi_Viewer/references/00-front-reference.png",
+      "title": "Current front reference",
+      "type": "Retained reference",
+      "review_focus": "Flat stage, open tower arches and brown shutters."
+    },
+    {
+      "file": "../../../Thach_Bi_Viewer/references/02-front-corner-day.png",
+      "title": "Front corner in daylight",
+      "type": "New checkpoint",
+      "review_focus": "Front stage, side-door order and projecting wing."
+    },
+    {
+      "file": "../../../Thach_Bi_Viewer/references/03-roof-footprint.png",
+      "title": "Roof footprint",
+      "type": "New checkpoint",
+      "review_focus": "Both 9–10 wings and the main roof. Check side-stair footprint against the plan."
+    },
+    {
+      "file": "../../../Thach_Bi_Viewer/references/04-rear-elevation.png",
+      "title": "Rear elevation",
+      "type": "New checkpoint",
+      "review_focus": "Five windows, continuous stone base and no rear stairs."
+    },
+    {
+      "file": "../../../Thach_Bi_Viewer/references/08-retained-side-stair-detail.png",
+      "title": "Side stair beside the door",
+      "type": "Retained unchanged",
+      "review_focus": "The earlier close-up requested for preservation."
+    },
+    {
+      "file": "../../../Thach_Bi_Viewer/references/05-interior-day.png",
+      "title": "Interior in daylight",
+      "type": "New proposal",
+      "review_focus": "Column rows, exposed timber roof and sanctuary arch."
+    },
+    {
+      "file": "../../../Thach_Bi_Viewer/references/06-exterior-night.png",
+      "title": "Exterior lighting",
+      "type": "New proposal",
+      "review_focus": "Warm light on the towers, facade, entries and steps."
+    },
+    {
+      "file": "../../../Thach_Bi_Viewer/references/07-interior-night.png",
+      "title": "Interior lighting",
+      "type": "New proposal",
+      "review_focus": "The same nave under chandeliers, sconces and warm accent lights."
+    }
+  ],
+  "limitations": [
+    "Generated reference images are visual proposals; they do not verify dimensions.",
+    "Roof view does not reliably show all side stairs; use floor plan and retained stair detail for those.",
+    "Interior furniture, ornamental relief depth and lighting are proposals rather than fully dimensioned design details.",
+    "Rear oblique attempts were excluded because their bay layout changed. Use the new straight rear elevation checkpoint."
+  ],
+  "simulator_changed": true
+}

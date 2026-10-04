@@ -1,4 +1,6 @@
 ## Church Simulator Technical Architecture Blueprint
+> **Status, 5 October 2026:** This earlier simulator sketch contains illustrative circuit limits and audio assumptions. Use the [interior and building systems plan](docs/interior-systems-plan.md) for the current design brief and research. The wattage caps below are not engineered circuit ratings; generic WebAudio reverb is not a geometric acoustic prediction.
+
 This document provides a localized technical roadmap, an electrical layout strategy, and an interactive testing framework to build your web-based Three.js simulator. It focuses on optimization, visual placement, and acoustic simulation while incorporating functional electrical design logic.
 ------------------------------
 ## 1. Core Technical Architecture & Dependencies

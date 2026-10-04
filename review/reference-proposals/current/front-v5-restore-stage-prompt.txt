@@ -1,0 +1,16 @@
+Use case: precise-object-edit.
+IMAGE1 is the current front image to edit. IMAGE2 is the user's measured all-views geometry reference; the TOP-RIGHT three-quarter panel clearly shows the FLAT front stage between the church facade and the front staircase. IMAGE3 is the original FLOOR PLAN showing that open forecourt/stage in front of the tower line.
+The only requested correction is to RESTORE THE MISSING FLAT OPEN FRONT STAGE. At present the staircase runs almost directly into the front door line. That is incorrect.
+
+Keep the complete church architecture above floor level EXACTLY the same as image1: same measured silhouette, tall towers, brown wooden belfry louvers matching dark brown main doors, open tower entry arches with the existing wall visible in depth beyond, cream stone, ornament, empty niches, crosses and exact five ground arch positions.
+EDIT THE APPROACH GEOMETRY ONLY:
+- Immediately in front of ALL FIVE ground arch bays, create a continuous broad LEVEL HORIZONTAL RECTANGULAR PAVED STAGE, spanning the church front, with substantial visible usable empty floor depth.
+- The sequence from building toward viewer must clearly be: CHURCH FACADE / DOOR THRESHOLDS, then several metres of FLAT EMPTY PAVED STAGE, then a DISTINCT STRAIGHT OUTER STAGE EDGE, then the BROAD DOWNWARD FRONT STAIRCASE, then FLAT GROUND COURTYARD.
+- Move the entire staircase forward TOWARD the viewer so the stage is between the stairs and the towers. Do NOT fill that stage with extra stair treads. It is a clearly visible spacious flat horizontal surface showing several full rows of paving squares.
+- Match the modest shortened stage depth established in the references: about one horizontal balustrade panel along EACH side before the sloping stair handrail begins. Keep it usable and legible, not a tiny doorstep and not an enormous deep plaza.
+- Add matching LEVEL side balustrades bordering ONLY the two side edges of the flat stage. Their rails are horizontal along the flat section, followed by descending rails beside the separate staircase. No railing across the front doors or across the middle of the stage.
+- The platform and its side rails stay within the OUTSIDE WIDTH OF THE TWO TOWERS in plan. Do not add lateral wings or widen the building.
+- Keep the low stage rise about1.60m above ground and existing modest total stair rise, approximately10 low risers. Do not create a tall podium.
+- Keep the stage EMPTY: no objects, no chairs, no people, no planters, no extra smaller stairs dividing it.
+
+Retain exact front-facing symmetric composition and the original facade. Adjust the lower framing / ground perspective only enough to display the flat stage surface clearly; extend composition downward slightly if necessary rather than changing the facade proportions. Keep straight verticals. Preserve flat landscape, calm sky and exactly one row of trees along each side of church. No mountains, hills, village, added scenery, text or watermark. Single full church image, not a diagram or collage.

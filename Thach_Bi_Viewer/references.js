@@ -1,4 +1,4 @@
-[
+window.CHURCH_REFERENCES = [
   {
     "id": "01-main-doors-detail",
     "title": "Main doors and carvings",
@@ -71,4 +71,4 @@
     "type": "New proposal",
     "status": "Visual reference; measured drawings govern geometry"
   }
-]
+];

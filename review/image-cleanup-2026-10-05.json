@@ -1,0 +1,227 @@
+{
+  "date": "2026-10-05",
+  "kept": [
+    "Thach_Bi_Viewer/references/01-main-doors-detail.png",
+    "Thach_Bi_Viewer/references/00-front-reference.png",
+    "Thach_Bi_Viewer/references/02-front-corner-day.png",
+    "Thach_Bi_Viewer/references/03-roof-footprint.png",
+    "Thach_Bi_Viewer/references/04-rear-elevation.png",
+    "Thach_Bi_Viewer/references/08-retained-side-stair-detail.png",
+    "Thach_Bi_Viewer/references/05-interior-day.png",
+    "Thach_Bi_Viewer/references/06-exterior-night.png",
+    "Thach_Bi_Viewer/references/07-interior-night.png"
+  ],
+  "removed": [
+    {
+      "file": "Thach_Bi_Viewer/church-exterior.png",
+      "bytes": 2187961,
+      "sha256": "f795959af776343c1aee12afb87119e5966eb2ab28734b7e753d3cc9a07843a5"
+    },
+    {
+      "file": "Thach_Bi_Viewer/church-interior.png",
+      "bytes": 1036010,
+      "sha256": "0c8c9d595756c6e98029f654edfa1bb254243be22b1aaa2602280f0b1c6dbc59"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/exterior-day-45.png",
+      "bytes": 2306916,
+      "sha256": "ec471e5fe9c77eac2958010663d93da012da17c892ab39521bac9b66cc67e5bf"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/exterior-front-new.png",
+      "bytes": 2237079,
+      "sha256": "1a549e60dc61ca7a41df5131dab9ccc6eaf283da6e86580589b83565bb0a3270"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/exterior-front.png",
+      "bytes": 2483880,
+      "sha256": "b0427f9c6dade4c5032cd8c03eb639334d593a49b9ea8cdbd89e5c3b24f76799"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/exterior-night-45.png",
+      "bytes": 2290443,
+      "sha256": "3d8fbf0e1c22bd3a5b7b01eefcc936558e54d1cbda29c7e46eb350bb09415cd2"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/exterior-side-correct-stairs.png",
+      "bytes": 2172300,
+      "sha256": "053187a1bb857e43e58c437a33d1b2775aa264348c8a99bef4df90bb69a3bc9d"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/exterior-side-incorrect-stairs.png",
+      "bytes": 2275350,
+      "sha256": "f2f83f753e7360360979d46c14e1501665352fce4e4d8bf9556c83cdfad52d15"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/interior-day.png",
+      "bytes": 2447304,
+      "sha256": "fa3426e440964ee0b43cdadff0a189ebd097e536ef34f78f6bfa8c1efc88521c"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/interior-evening.png",
+      "bytes": 2222747,
+      "sha256": "75cbab1e3865b89f51f967ecca81a3da1ff640ae6ad3ac057fc9fa23ad710956"
+    },
+    {
+      "file": "review/reference-proposals/01-front-v1.png",
+      "bytes": 2211124,
+      "sha256": "b1f3acdc372896c1d5d79940dfdfd8298fbed778475e4bd30213ee70370ec7aa"
+    },
+    {
+      "file": "review/reference-proposals/01-front-v2-stage.png",
+      "bytes": 2483256,
+      "sha256": "785f2da54ae4b1778461515c9e28793960175ed29de9cb376562e73af6b61092"
+    },
+    {
+      "file": "review/reference-proposals/02-front-three-quarter-v1.png",
+      "bytes": 2680344,
+      "sha256": "76e62834029545ae40c5b72875c9b534d7bd49bd88c4c0e36e520dcbd3dd6615"
+    },
+    {
+      "file": "review/reference-proposals/02-front-three-quarter-v2-stage.png",
+      "bytes": 2919239,
+      "sha256": "351f0233e16f2fa0a297b749b2628764e792b1331c40a40940561459849e9fc2"
+    },
+    {
+      "file": "review/reference-proposals/02-front-three-quarter-v3-stairs.png",
+      "bytes": 2810678,
+      "sha256": "daadbc8864440181b655d95d48460de485e6c7f0d02d08291c2b33deb3ca8b17"
+    },
+    {
+      "file": "review/reference-proposals/02-front-three-quarter-v4-outer-doors.png",
+      "bytes": 2668530,
+      "sha256": "c64eb9c14c8101b305e9364c165dea142ab757074fd03efe59fd649cbe2c2a1a"
+    },
+    {
+      "file": "review/reference-proposals/03-side-v1.png",
+      "bytes": 2210812,
+      "sha256": "46d354caa8832032f8a4e43f62d2acde5cba4068fd8d2de31ed2e37cba8d0f39"
+    },
+    {
+      "file": "review/reference-proposals/03-side-v2-stairs.png",
+      "bytes": 2127606,
+      "sha256": "65ee2651a26cfc7909e28320d25e58b371a1ac016bc0d95267179f67a551b3bb"
+    },
+    {
+      "file": "review/reference-proposals/03-side-v3-bays.png",
+      "bytes": 2045091,
+      "sha256": "5d17190f959c6621f8f80b5f26f6300d8112a1062d2e70575380429df9193ff6"
+    },
+    {
+      "file": "review/reference-proposals/03-side-v4-outer-doors.png",
+      "bytes": 2073781,
+      "sha256": "7a9fcffb0c1baf9ae183fb03b4d306d0244700a2a265a8f661c4405c47ef8071"
+    },
+    {
+      "file": "review/reference-proposals/04-rear-three-quarter-v1.png",
+      "bytes": 2950942,
+      "sha256": "0f9755db2509eeff6cd7c531d278638a81b4930f7e84853e87eb4b3f0d4e1a8b"
+    },
+    {
+      "file": "review/reference-proposals/04-rear-three-quarter-v2-stairs.png",
+      "bytes": 2810893,
+      "sha256": "f225fcfde379f49377e9dec0bee84f6adf3f3ca478a806d82473e82c0b7f3e64"
+    },
+    {
+      "file": "review/reference-proposals/04-rear-three-quarter-v3-outer-doors.png",
+      "bytes": 2707057,
+      "sha256": "3f9b94e5d22cdf17a4662590bf73eb6a7cd601da2c8ac06d1a0ef04ccbb59863"
+    },
+    {
+      "file": "review/reference-proposals/05-side-stair-detail-v2-outer-door.png",
+      "bytes": 2987480,
+      "sha256": "6256d04b347869c4b64fafb4d79b401b44a7dedf5b08de22c9b75a42dbabf897"
+    },
+    {
+      "file": "review/reference-proposals/checkpoints-2026-10-05/00-front-reference.png",
+      "bytes": 1996724,
+      "sha256": "75482f56e6f610a2b7e2e68b7570641d01d75641b844eadc12b343a2bd22760a"
+    },
+    {
+      "file": "review/reference-proposals/checkpoints-2026-10-05/01-main-doors-detail.png",
+      "bytes": 2326081,
+      "sha256": "e447f043eb2e2e371599ebe1823f7e5969f884899e5eba55d6361db3e1a6956d"
+    },
+    {
+      "file": "review/reference-proposals/checkpoints-2026-10-05/02-front-corner-day.png",
+      "bytes": 2431102,
+      "sha256": "c7227e7dd5cb02cfad0858c7e1bfb3029d13574248116350dc4bee4c47d9598e"
+    },
+    {
+      "file": "review/reference-proposals/checkpoints-2026-10-05/03-roof-footprint.png",
+      "bytes": 2868267,
+      "sha256": "dead8126492dce85b0288fdacca33c2b4a98522543183f765f4404b973a6d724"
+    },
+    {
+      "file": "review/reference-proposals/checkpoints-2026-10-05/04-rear-elevation.png",
+      "bytes": 2354220,
+      "sha256": "cee0929b3ac24595d466c132900f7d064e7584fe696fa07e1205db86baa730fc"
+    },
+    {
+      "file": "review/reference-proposals/checkpoints-2026-10-05/05-interior-day.png",
+      "bytes": 2341127,
+      "sha256": "c8bcfb48c59419cf6940d84acc2021d8ea1d0d4c8c75dd33374e1454e8579575"
+    },
+    {
+      "file": "review/reference-proposals/checkpoints-2026-10-05/06-exterior-night.png",
+      "bytes": 2299757,
+      "sha256": "35ca8f56fc1ccb1233ce05746aff0dfa29e671ce5b18b0718aa8d71d62bdaaf7"
+    },
+    {
+      "file": "review/reference-proposals/checkpoints-2026-10-05/07-interior-night.png",
+      "bytes": 2132580,
+      "sha256": "7ff2a716c7379f5f68be23c143d4dffa2041b806179cbe4d5beb10508e5ab94c"
+    },
+    {
+      "file": "review/reference-proposals/checkpoints-2026-10-05/08-retained-side-stair-detail.png",
+      "bytes": 2987480,
+      "sha256": "6256d04b347869c4b64fafb4d79b401b44a7dedf5b08de22c9b75a42dbabf897"
+    },
+    {
+      "file": "review/reference-proposals/checkpoints-2026-10-05/unselected/04-rear-corner-draft-v1.png",
+      "bytes": 2541197,
+      "sha256": "1effcc665a01ccef927d2f78702a703334904fc2975281a73a0a1fb8b97b4af2"
+    },
+    {
+      "file": "review/reference-proposals/current/front-approved.png",
+      "bytes": 2364738,
+      "sha256": "cd9170aa0b8e888094ab484a7c87ca9357508fa1157b3c03d3694acf87ec03a0"
+    },
+    {
+      "file": "review/reference-proposals/current/front-v2-narrow-lower.png",
+      "bytes": 2188180,
+      "sha256": "897e6ffd19ece4700605019d09178218721da930c3a2ee1b303be8da1d510441"
+    },
+    {
+      "file": "review/reference-proposals/current/front-v3-measured-flat-background.png",
+      "bytes": 2124581,
+      "sha256": "df62a7529c6f4c348989f0a83939b51c411e902520e77776b144589aebfb183b"
+    },
+    {
+      "file": "review/reference-proposals/current/front-v4-open-arches-brown-shutters.png",
+      "bytes": 2008584,
+      "sha256": "6fd60f410f09a0439465574014c27539a6755b1170e90a160ca2489ce72ab9d2"
+    },
+    {
+      "file": "review/reference-proposals/current/front-v5-restored-stage.png",
+      "bytes": 1996724,
+      "sha256": "75482f56e6f610a2b7e2e68b7570641d01d75641b844eadc12b343a2bd22760a"
+    },
+    {
+      "file": "review/reference-proposals/current/side-door-detail.png",
+      "bytes": 2987480,
+      "sha256": "6256d04b347869c4b64fafb4d79b401b44a7dedf5b08de22c9b75a42dbabf897"
+    },
+    {
+      "file": "review/reference-proposals/current/side-master.png",
+      "bytes": 2041915,
+      "sha256": "8cf1c957ff9816e279d8a9be45e297e28b86ee7232914ac22acd6c439a1aebf9"
+    },
+    {
+      "file": "review/reference-proposals/rejected-angle-batch-2026-10-04/angle-front-right-v2.png",
+      "bytes": 2519425,
+      "sha256": "d570eefd87014f97c9b5f4a14dbf3d17a8426b77606dee0534015f92920cba1b"
+    }
+  ],
+  "bytes_removed": 99856985
+}

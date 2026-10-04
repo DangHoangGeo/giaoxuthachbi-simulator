@@ -1,0 +1,8 @@
+Current status — 2026-10-05
+The user requested unused-image cleanup and simulator improvement.
+The nine retained images now live in Thach_Bi_Viewer/references and are shared
+by the simulator and checkpoints-2026-10-05/index.html gallery.
+Superseded generated PNGs were removed; see review/image-cleanup-2026-10-05.json.
+Original drawings, measured views, workbook, dimension extract and prompts remain.
+The simulator now includes the selected finishes and latest geometry corrections.
+Use Thach_Bi_Viewer/READ_ME.txt for implementation and source limitations.

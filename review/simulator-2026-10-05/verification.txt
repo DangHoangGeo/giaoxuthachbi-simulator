@@ -1,0 +1,37 @@
+Simulator refinement — 5 October 2026
+
+Cleanup
+Nine selected PNG references now live in Thach_Bi_Viewer/references. Both the
+simulator and the checkpoint gallery use those same files. Removed 42 obsolete
+or duplicate project PNGs; the exact list and hashes are in
+review/image-cleanup-2026-10-05.json. All ten source PNG drawings/measured views,
+the original PDFs, dimension workbook and dimension extract were preserved.
+
+Verification
+- Actual Three.js geometry built headlessly by scripts/verify_model.cjs.
+  Checks cover outer plinth widths, front stage width/rise, 7.2 m wing grid,
+  six landings, eight side flights, doorway openings and wall planes,
+  W,W,D,W,W,W,D,P,D,W bay order, matching timber material, stair navigation
+  heights, joinery visibility by mode, and repeatable day/evening intensities.
+- 39 local HTML links and all nine retained PNGs checked; no missing files.
+- Browser: normal and lighter graphics startup, main-door close-up, side-door
+  checkpoint, two tree rows, day/night exterior and interior, reference dialog,
+  roof cutaway/restoration and side elevation checked visually.
+- Guided walk completed from courtyard through front stairs and main doorway
+  to Sanctuary approach, returning to the +0.00 m nave datum.
+- No browser errors/warnings on the final normal/light runs.
+- JavaScript syntax checks and git diff whitespace check passed.
+
+The geometry-checks.json file records geometry counts and dimensions. Material
+batches keep the additional ornament and trees out of per-object draw calls.
+This does not constitute a device performance benchmark or construction review.
+
+Scope limits
+The measured axes and level datums remain the basis. Ornament relief, stone
+pattern, finishes, stair tread count, lighting and furnishings are proposals.
+The sanctuary arch silhouette follows section sheet 5; its depth and placement
+at axis 10 are provisional. Roof junction details and conflicting overall
+dimension witnesses remain unresolved in the original workbook.
+
+Open Thach_Bi_Viewer/OPEN_CHURCH.html; choose View settings for the stair and
+wing checkpoints. simulator-preview.png is the saved screenshot of the result.

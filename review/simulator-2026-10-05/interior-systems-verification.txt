@@ -1,0 +1,42 @@
+Interior and systems planning — 5 October 2026
+
+PASS — actual bundled geometry builders, with planning.js: source dimensions,
+stairs/doors, lighting-repeat stability, and 2/4-block furniture batches.
+PASS — active pew colliders change 100 → 38 → 100 with seating layout.
+PASS — two blocks now use 4.65 m benches, 19 rows / 38 benches. Four blocks
+use 1.73–1.86 m benches, 25 rows / 100 benches. Repeated toggles verified.
+PASS — each layout adds exactly two complete rows inside each of the requested
+bays 2–3, 4–5 and 8–9. All original rows are retained. No bench/bench or
+bench/main-column/base intersections occur within either layout.
+PASS — actual long-bench bounds clear column/base geometry and the doorway
+cross aisles; centre aisle ≥2.40 m and both outer aisles ≥1.20 m in the model.
+Door-bay crossings are now 1.20 m at X 16.225–17.425 and 34.225–35.425 m;
+both rendered furniture and walking collision bounds leave these routes clear.
+The previous 2.40 m cross-aisle allowance is reduced; access design is pending.
+PASS — actual structural mesh intersections at 1.15 m eye height.
+Two wide blocks: 304 samples, altar 106 blocked, ambo 107, crucifix 120.
+Four blocks: 300 samples, altar 86 blocked, ambo 86, crucifix 94.
+This supersedes all earlier seating counts and the incorrect two-block
+interpretation of simply removing the outer short benches.
+These are model samples, not occupancy certification or full visibility analysis.
+
+Browser recheck: 2/4-block controls, bench-length/row captions, cutaway rendering,
+map counts, added-bench outlines (4 or 8 per requested bay), and two-block ambo
+target (107 blocked). No warning/error logs. Earlier seated viewpoints and
+minimap toggles remain unchanged.
+Earlier unchanged systems checks: lighting/sound/airflow/metering layers,
+seat selection and full brief navigation. Energy worksheet: default example
+368.8 kWh/month; changing inside lighting
+from 900 to 1000 W at 120 h/month produced 380.8 kWh/month; restored default.
+Local HTML references and anchors: 33 verified. JavaScript syntax and diff
+whitespace checks passed. No real device controls or engineering simulation.
+
+Research links and method qualifications are in docs/interior-systems-plan.md.
+The HTML brief is generated from that Markdown using scripts/build_planning.cjs.
+Geometry-derived plan data is generated with scripts/verify_model.cjs --plan.
+
+interior-plan-preview.png contains the latest full planning page.
+added-rows-cutaway.png shows the six additional rows in the long-bench model.
+seated-central.png and seated-outer.png are the previous long-bench view checks.
+No final browser errors. Kneeler and occupied row clearances remain unresolved
+furniture-design items as recorded in the brief.
