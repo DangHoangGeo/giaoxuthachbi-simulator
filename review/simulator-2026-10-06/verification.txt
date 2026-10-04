@@ -1,0 +1,63 @@
+Design simulator — 6 October 2026
+
+Verification
+- scripts/verify_simulator.cjs (headless, actual bundled geometry): passed.
+  Checks: the as-drawn frame (8 tie beams at +8.59…+9.18 m, 14 side beams,
+  drawn purlins), proposed bracing moved to a hidden layer, every catalogue
+  type builds, every wall fixture sits on a surface and every pendant hangs
+  from structure (raycast against the model), no design-check errors or
+  warnings, at least 95 % of seats at 200 lux, every seat at STI ≥ 0.50,
+  the All-off scene and undo, layout JSON round trip and schedule CSV.
+  Full output: simulator-report.json.
+- scripts/verify_model.cjs: passed.
+- Browser (Chromium with SwiftShader WebGL): simulator panel, scenes,
+  selection, drag and placement, circuit switches with undo, fan speeds,
+  analysis overlays, settings, export, and audio playback of every test
+  signal. No page errors in the final screenshot run.
+- node --check on every simulator script; git diff --check clean.
+
+Corrections found by the checks in this round
+- Four entrance projectors, the main-door exit sign and the two courtyard
+  horns were mounted on surfaces the model does not have (a wall on axis 2′
+  and the recessed central façade). They now sit on the façade's inner face
+  (x 2.65 m) and on the tower fronts.
+- The veranda ceiling was assumed flat at 6.0 m. The model's veranda roof
+  slopes from about 7.15 m to 6.45 m, and the 9–10 wings have a gabled roof.
+  Pendant anchors and the placement tool now follow the real roof.
+- The entrance hall had no roof, so the sky and the backs of the shrines
+  showed above the main door from inside. Added the +8.39 m terrace slab from
+  the front elevation and the nave gable wall on axis 2′ above it (inferred
+  from the elevations; confirm with CAD). The acoustic volume now includes
+  the hall (7 456 m³).
+- A veranda loudspeaker and a lantern hung at the same point. The lanterns now
+  hang at the piers, the loudspeakers mid-bay in front of the wall openings.
+
+Recommended design · Full service, evening (300 sampled seats, 60 % full)
+- Light on books: 262 lux average, 99 % of seats ≥ 200 lux, lowest 190,
+  uniformity 0.73. Aisle floors 133–290 lux; main-door threshold ≈ 85 lux;
+  verandas ≈ 36–45 lux average (below the brief's 100 lux trial).
+- Speech: STI 0.62 average, 0.56 minimum, 81 % of seats ≥ 0.60, all ≥ 0.50;
+  66 dBA; microphone feedback margins 3.4 dB (ambo) and 3.6 dB (altar).
+- Reverberation 1.22 s (500–1000 Hz); background noise 41 dBA.
+- Seated air 0.46 m/s average (central 0.60, outer 0.32).
+- Electrical load ≈ 4.2 kW; 6.2 kWh per 1.5 h service.
+
+Screenshots
+- f1-nave-evening.jpg — walking view with the natural 75° lens and live values.
+- f2-before-wide-lens-truss.jpg — the earlier wide lens with the bracing that
+  is not on the drawings, for comparison.
+- f3-panel-selected-light.jpg — a reading light selected, with its settings.
+- f4-plan-sti.jpg — speech clarity map from above (roof off).
+- f5-sound-tab-seated.jpg — listening panel at a seat near the side aisle.
+- f6-cutaway-fixtures.jpg — cutaway with all fixtures.
+- f7-entrance-bay-closed.jpg — looking back at the entrance: terrace slab,
+  gable wall, acoustic slats, façade projectors and exit sign.
+- before-entrance-open-roof.jpg — the same view before the correction.
+
+Scope limits
+All values are planning estimates for comparing options (simplified
+point-source photometry, statistical room acoustics, empirical fan jets).
+They are not certified lighting, acoustic, airflow or electrical design and
+do not replace IES/LDT photometry, EASE/ODEON/CATT modelling, STIPA
+measurement, the CBE fan tool or a full-scale trial. The entrance-bay
+closure, the slatted panels and every product are proposals.

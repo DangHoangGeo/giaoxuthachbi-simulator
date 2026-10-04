@@ -1,0 +1,188 @@
+# Thạch Bi Church — design simulator guide
+
+**6 October 2026 · lights, fans, sound and decoration in the shared 3D model**
+
+[Open the simulator](../Thach_Bi_Viewer/OPEN_CHURCH.html) → choose **Simulator** in the header.
+
+The simulator turns the existing 3D model into a working test bench. You can place every light, fan, loudspeaker, microphone and decoration, and switch each one on or off. You can see the results as numbers and colour maps, and you can **hear** the loudspeakers from any seat. It starts with a recommended design that already meets most of the targets in the [interior and systems plan](interior-systems-plan.md), so the parish can judge changes against a good baseline.
+
+All values are transparent engineering estimates for comparing options. They are not certified lighting, acoustic, airflow or electrical calculations. Confirm the final choices with the professional tools and site measurements listed at the end.
+
+---
+
+## 1. Is the model to scale? Why did the interior feel cramped?
+
+The primary dimensions match the drawings. The crowded feeling came from three presentation problems in the earlier model, not from scale. All three are now fixed.
+
+Measured on the vector PDFs (section sheet 4 = `giao-xu-thach-bi-06…pdf`, plan = `…04…pdf`) and compared with the model:
+
+| Item | Drawing | Model | Status |
+|---|---|---|---|
+| Clear width between inner walls C–G | 14.50 m | 14.50 m | ✔ |
+| Column rows D/E | ±3.60 m (7.20 m apart) | ±3.60 m | ✔ |
+| Bay spacing along the nave | 4.50 m (9–10: 7.20 m) | same | ✔ |
+| Column shaft width | ≈ 0.59–0.60 m (measured) | 0.58–0.64 m taper | ✔ |
+| Column base | ≈ 0.84 m wide, 0.60 m high | 0.82 m, 0.60 m | ✔ |
+| Column top | +9.40 m (8.802 m shaft on 0.600 m base) | +9.40 m | ✔ |
+| Main eave / ridge | +7.13 m / +12.47 m | same | ✔ |
+| **Main tie beam between D and E** | **+8.59 … +9.18 m (0.59 m deep)** | was 0.24 m deep at +9.1 m | **corrected** |
+| **Side beams C→D and E→G** | **+6.66 … +7.00 m** | were missing | **added** |
+| **Purlins** | **≈ 0.50 m apart (≈14 per slope)** | 5 per slope | **corrected** |
+| King posts, diagonal braces, knee braces | **not on the drawing** | present | **moved to an optional "proposed bracing" layer, hidden** |
+| **Entrance bay between the façade and axis 2′** | **terrace at +8.39 m carrying the three shrines (front elevation); main roof starts at axis 2 (side elevation)** | no roof: sky and the backs of the shrines showed above the main door | **terrace slab and nave gable wall added** (inferred from the elevations; confirm with CAD) |
+
+Why it felt cramped:
+
+1. **A very wide camera.** The walk camera used a 68° *vertical* field of view, about 100° horizontal on a laptop. Nearby columns were stretched at the screen edges and dominated the view. The default is now a natural **75° horizontal** lens, adjustable from 45° to 110° in *Simulator → Settings*. The before/after pair in `review/simulator-2026-10-06` shows the difference.
+2. **Invented roof members.** Diagonal braces, king posts and two sets of knee braces filled the space above the nave, but they are not on section sheet 4. The roof now shows the frame as drawn. The earlier bracing can be switched back on for comparison.
+3. **Walking speed and eye height.** Walking at 2.05 m/s (jogging pace) makes rooms feel smaller. It is now 1.4 m/s. The standing eye height is 1.60 m, which suits an average adult in Việt Nam; both are adjustable.
+
+Real constraints remain. The columns really are about 0.6 m timber shafts on 0.84 m bases, 4.5 m apart. From the outer seats they block part of the view, as the earlier sightline study showed. A lighter timber tone (*Settings → Structural timber tone*) makes them visually lighter without changing the structure.
+
+---
+
+## 2. The recommended starting design
+
+Every fixture hangs from, stands on or is fixed to something the model actually has; the checks cast a ray from every wall fixture and pendant anchor to prove it. No light shines through a spinning fan.
+
+| System | What is installed | Why |
+|---|---|---|
+| Reading light, central blocks (L1) | 14 LED projectors, 36°, 4 500 lm, 3000 K, CRI 90, under the main tie beams (axes 3–9, z ±2.6 m) | Even 250–300 lux on books; hidden in the timber frame |
+| Reading light, outer blocks (L2) | 14 projectors, 60°, 4 300 lm, under the side beams (z ±5.6 m) | Covers the outer benches between bays |
+| Rear rows and entrance | 2 twin-head brackets inside the entrance façade: one head for the last rows (5 500 lm), one for the centre seats and the entrance aisle (3 300 lm) | Bay 2′–3 has no tie beam, and the nave is open back to the façade; this was the darkest corner |
+| Sanctuary (L3) | Altar key lights at ~45° from the axis-9 beam (with shadows); ambo key light; step fill; crucifix, tabernacle and statue accents | Faces and liturgy lit from the front, not from above |
+| Roof uplight (LA) | 8 wide uplights hidden on top of the tie beams | Warm timber roof in the evening; the nave feels taller |
+| Decorative (LD) | 3 brass chandeliers on chains from the ridge over the crossings; a 12-lamp chandelier at the 9–10 crossing; 14 brass sconces | The character of the reference images |
+| Verandas, steps, façade (L4–L6) | 18 lanterns (2 000 lm), one at every veranda pier; brass sconces beside the main door; step bollards, side-door lanterns, 6 façade floodlights | The rhythm of lights along the arcades in the reference night view; safe routes and a lit landmark |
+| Air (F1) | 3 large slow fans (3.0 m, 5-speed) on steel spreaders mid-bay | Quiet, ~0.5 m/s over the seats; no light above them |
+| Sound (A1–A3) | 2 steerable DSP columns on the axis-9 shafts, 2 delayed columns on axis 6, 4 veranda pendants, 2 courtyard horns on the tower fronts (off) | Narrow vertical beams aimed at people; time-aligned to the priest's voice |
+| Microphones | Ambo and altar gooseneck mics | The system runs at about 66 dBA, which keeps both microphones more than 3 dB inside the stability allowance |
+| Décor | Statues of Our Lady and Saint Joseph framed by the side arches, flowers, votive candle stands, Paschal candle, palms, banners. Christmas tree, nativity grotto, star, red lanterns, pennants and an aisle carpet are ready but hidden | Matches the reference interior; seasonal items are one switch away |
+| Roof underside | Timber lining with about 50 % slotted acoustic boards | Speech clarity *and* support for singing |
+| Entrance hall | Timber slat acoustic panels (≈ 75 m²) under the terrace and along the top of the entrance wall | The wall facing the loudspeakers: no late reflection back to the sanctuary, and a shorter reverberation for the whole room |
+
+The **Full service · evening** scene gives these results at the 300 sampled seats (60 % occupancy, doors open, 28 °C):
+
+| Measure | Result | Brief target |
+|---|---|---|
+| Maintained light on books | 262 lux average · 99 % of seats ≥ 200 lux (lowest 190) · uniformity 0.73 | 200–300 lux |
+| Light on the aisle floors | ≈ 85 lux at the main-door threshold, 133–290 lux along the centre, side and cross aisles; entrance hall 59–215 lux | ≈ 100 lux on circulation |
+| Light on the veranda floors | ≈ 36–45 lux average, at least 24 lux | ≈ 100 lux trial (see below) |
+| Speech intelligibility | STI 0.62 average · 0.56 minimum · 81 % of seats ≥ 0.60 · all seats ≥ 0.50 | ≥ 0.60 at every seat |
+| Speech level | 66 dBA, 90 % of seats within ± 2.5 dB | ±3 dB |
+| Microphone feedback | 3.4 dB (ambo) and 3.6 dB (altar) beyond a 6 dB stability allowance | stable with gooseneck microphones |
+| Background noise | 41 dBA (fans + outdoor + people) | ≈ 35 dBA where practicable |
+| Seated air speed | 0.46 m/s average (central 0.60, outer 0.32) · feels ≈ 1.5 °C cooler | 0.3–0.8 m/s trial |
+| Reverberation time (500–1000 Hz) | 1.22 s | choose with the acoustician |
+| Electrical load | ≈ 4.2 kW · 6.2 kWh per 1.5 h service | measure after installation |
+
+The verandas are the one place the lanterns do not reach the brief's 100 lux trial. About 40 lux is enough to walk safely and suits the arcade at night. If the verandas will seat overflow worshippers at festivals, add downlights to the veranda roof for those days. You can test this with *Add → LED projector*.
+
+What each decision is worth, from the same simulator:
+
+| Variant | RT mid | STI avg | Seats ≥ 0.60 | STI min | Noise |
+|---|---|---|---|---|---|
+| **Recommended** (½ acoustic roof lining, slatted entrance hall, 60 % full, doors open) | 1.22 s | **0.62** | **81 %** | 0.56 | 41 dBA |
+| Entrance hall left as plaster | 1.33 s | 0.61 | 63 % | 0.54 | 41 dBA |
+| Plain timber roof lining (earlier proposal) | 2.18 s | 0.52 | 0 % | 0.46 | 42 dBA |
+| Tile underside as drawn (no lining) | 2.16 s | 0.52 | 0 % | 0.47 | 42 dBA |
+| Acoustic roof lining throughout | 0.81 s | 0.71 | 100 % | 0.63 | 41 dBA |
+| Recommended, weekday (25 % full) | 1.32 s | 0.60 | 51 % | 0.54 | 41 dBA |
+| Recommended, festival (100 % full) | 1.12 s | 0.65 | 96 % | 0.58 | 41 dBA |
+| Recommended, doors and openings closed | 1.44 s | 0.59 | 29 % | 0.52 | 41 dBA |
+| + 12 wall fans on the piers (common column fans) | 1.22 s | 0.53 | 1 % | 0.46 | 52 dBA |
+| Loudspeaker delays not aligned | – | 0.58 | 32 % | 0.49 | 80 seats with echo risk |
+
+Four conclusions for the parish:
+
+- **Room acoustics matter more than speaker count.** A hard timber or tile ceiling keeps the reverberation around 2.2 s, and no loudspeaker layout then reaches STI 0.60. Treating about half the roof lining with slotted acoustic boards is the single most effective change, and still leaves a lively room for singing. A fully absorptive ceiling is clearer but too dry for congregational singing. Slatted panels in the entrance hall, on the wall that faces the loudspeakers, add the next step: seats at STI ≥ 0.60 rise from 63 % to 81 %.
+- **Ceiling fans should be large, slow and quiet.** The common wall-mounted column fans add about 10 dB of noise and wipe out the gain from good loudspeakers.
+- **Time alignment is essential.** Without aligned delays, 80 seats hear the front loudspeakers as an echo.
+- **Run speech a little quieter rather than near feedback.** At 67 dBA the lectern microphones kept only about 2 dB of margin. One decibel less gives a stable system and costs almost no clarity (about 0.003 STI).
+
+---
+
+## 3. Using the simulator
+
+Open **Simulator** (header). The panel has six tabs:
+
+**Lights · Fans · Sound · Décor.** Every object is listed by circuit, each with its own switch. Circuit switches and dimmers act on a whole group. Click a row to edit it:
+
+- **Position:** X along the nave, Z across, height; the drawing axis is shown.
+- **Aim:** direction and tilt for projectors, spotlights, speakers and wall fans.
+- **Lights:** lumens (with watts), dimmer, colour temperature, beam angle, shadows.
+- **Fans:** speed (with airflow, rpm, watts and noise at that speed), oscillation.
+- **Loudspeakers:** level trim, delay, steerable beam opening, and amplifier load with an overdrive warning.
+- **Buttons:** *Show* (flies the camera to it), *Duplicate*, *Mirror B ↔ H*, *Repeat on bays* (copies onto axes 3–9), *Hide* (keep it as an alternative) and *Delete*.
+
+To **add** something, press *Add*, pick a product from the catalogue, then click a beam, ceiling, wall, column or floor in the 3D view. Hanging items snap to the tie beams and get a rod up to the structure above. Shift-click places several. To **move** something, click it once to select it, then drag; it slides along its beam, wall or floor. Shift-drag changes the height. **Ctrl+Z / Ctrl+Shift+Z** undo and redo, **Delete** removes, **Ctrl+D** duplicates and **Esc** cancels.
+
+The **scenes** (top of the panel) follow the plan's operating scenes: *Full service · evening*, *Weekday Mass*, *Prayer & adoration*, *Christmas & festivals*, *Cleaning*, *Night security* and *All off*. *Save scene…* stores your own.
+
+**Analysis.** Colour the plan with *Light*, *Speech level*, *Clarity (STI)*, *Air speed* or *Noise*, then use *Plan view (roof off)* to see it from above. Hover the plan for values. In Walk mode, live chips at the bottom show the values where you stand: light on a book at the seats, or light on the floor in aisles and verandas, where the brief's circulation target applies. The tab also shows:
+
+- results at the 300 sampled seats against the brief targets;
+- reverberation time per octave with controls for congregation size, open doors, roof finish, entrance hall finish and outdoor noise;
+- **design checks:**
+  - light shining through fan blades (strobe)
+  - fan and chandelier clearances
+  - low chandeliers
+  - items in aisles
+  - microphone feedback margin
+  - loudspeakers past their rating
+  - fans blowing at microphones or candles
+  - echo risk
+  - dim seats
+- an electricity estimate per circuit with monthly kWh and cost (edit hours, services and tariff);
+- download of the layout (.json) and the fixture schedule (.csv), opening a saved layout, and saving a picture.
+
+The layout is also saved automatically in the browser.
+
+**Sound → Listen in the church.** Use headphones. Pick a test signal:
+
+- Vietnamese or English speech
+- an organ chorale
+- the STIPA speech-test signal
+- pink noise
+- a hand clap (to hear the reverberation)
+- a sine sweep
+- **your own recording** (for example a homily recorded in the old church)
+- **your live microphone**
+
+Press Play and walk or sit. Each loudspeaker reaches you with its real distance delay (343 m/s) and DSP delay, its coverage pattern, distance loss and HRTF direction, followed by reverberation synthesised from this room's octave-band reverberation times. You can add the priest's own unamplified voice, the running fans and background noise. The panel shows the predicted level, STI and which loudspeaker you hear first. *Align delays* time-aligns every loudspeaker to the talker at the microphone plus 12 ms, so the voice still seems to come from the altar or ambo.
+
+**Settings.** Walking lens, eye height, walking speed, eye adaptation (fixed for fair comparisons, or automatic like the eye), lamp glow, how many lights are drawn individually (*High / Balanced / Fast*; the analysis always uses every light), the earlier proposed truss bracing, structural timber tone, roof underside, entrance hall finish, maintenance factor, drag and snap options, and *Restore the recommended design*.
+
+---
+
+## 4. How the numbers are calculated, and their limits
+
+**Light.** Each luminaire is converted from lumens to candela using the same cone shape the 3D renderer uses, so the picture and the numbers agree. Illuminance is inverse-square with the cosine law. The 18 timber shafts, their bases and the inner C/G walls (with their arched openings) block light. Inter-reflected light comes from an integrating-sphere estimate based on the room's surface areas and reflectances, and values are shown *maintained* (× 0.8). Not included: real IES/LDT photometry, pew-back shadows, glare (UGR) and daylight. Use DIALux or Relux with manufacturer files before ordering.
+
+**Room acoustics.** The volume (≈ 7 450 m³, including the entrance hall that opens into the nave) and surface schedule come from the model. Absorption coefficients are typical published values for plaster, stone, timber, glass, open doorways, empty or occupied pews, the roof finishes and slatted acoustic panels. Reverberation is calculated by Eyring per octave with ISO 9613-1 air absorption at 28 °C and 75 % RH. Reflected energy follows Barron's revised theory. Energy a loudspeaker aims straight at the congregation is partly absorbed at first incidence, which favours directional speakers aimed at people. Speakers in the verandas reach the nave through its openings.
+
+**Loudspeakers and STI.** Each speaker has −6 dB coverage angles per octave, a front-to-back ratio, sensitivity, rated power, frequency response, and (for columns) line-array near-field behaviour. Columns and walls screen high frequencies. STI follows IEC 60268-16 (male weighting): an MTF from the energy-time response of every arrival (direct plus exponential reverberant tail, with each arrival's delay), times the signal-to-noise factor, auditory masking and reception threshold. This is a statistical model, not ray tracing. Confirm the design in EASE/ODEON/CATT and by STIPA measurement on site.
+
+**Feedback.** Each loudspeaker's direct and reverberant sound returning to a cardioid microphone is compared with the talker 0.4 m away, with a 6 dB stability margin. A headset microphone gains roughly 12–18 dB.
+
+**Air.** Ceiling fans are modelled as a down-jet that spreads with distance, plus a radial floor jet whose momentum depends on fan flow and height. Wall and pedestal fans are tilted jets, time-averaged over their oscillation. The cooling effect is an approximate SET-based figure for sedentary people in light clothing. Fans move air but do not lower its temperature or replace ventilation. Use the CBE fan tool and a full-scale trial.
+
+**Electricity.** Rated watts × dimmer, fan speed curves and average amplifier draw. It is a planning estimate, not breaker sizing and not metered data.
+
+**3D picture.** Lights are in physical units (candela) and rendered with an eye-adaptation exposure (default 110 lux). On weaker computers some neighbouring lights are combined for drawing. The analysis still uses every source.
+
+---
+
+## 5. Next steps with professionals
+
+1. Lighting designer: photometric layout with real products (IES files), glare and vertical illuminance on faces, emergency lighting design.
+2. Acoustician: measure reverberation and background noise in the existing building; specify the roof lining treatment; predict and commission the loudspeaker system (STIPA at the agreed seat grid).
+3. Structural engineer: tie beams and spreaders for the slow fans, chandelier chains from the ridge, loudspeaker and projector brackets.
+4. Electrical engineer: circuits, protection, DALI control, metering, as in section 6 of the plan.
+5. Full-scale trial of one bay: reading light, one slow fan, one column loudspeaker, with parishioners seated.
+
+## Files
+
+- `Thach_Bi_Viewer/simulator/`: `physics.js` (calculations), `catalog.js` (products and 3D models), `engine.js` (scene, fixtures, placement, scenes, storage), `design.js` (recommended design), `analysis.js` (maps, seat results, checks), `audio.js` (spatial audio), `ui.js` (panel), `samples.js` (embedded test speech), `simulator.css`.
+- `scripts/verify_simulator.cjs`: headless checks of the as-drawn frame, every catalogue model, that every wall fixture sits on a surface and every pendant hangs from structure, the recommended design, scenes, undo and layout round trip. Run `node scripts/verify_simulator.cjs --report`.
+- `review/simulator-2026-10-06/`: screenshots and the verification report.

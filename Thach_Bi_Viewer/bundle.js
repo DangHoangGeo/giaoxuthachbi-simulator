@@ -39560,7 +39560,7 @@ void main() {
           M(!0),
           Ge(
             j[y]?.walk ? j[y].title : j.nave.title,
-            "Eye height 1.65 m \xB7 move along the clear aisles",
+            `Eye height ${O.eyeHeight.toFixed(2)} m \xB7 move along the clear aisles`,
           ));
       } else
         (o.up.set(0, 1, 0),
@@ -39836,7 +39836,7 @@ void main() {
       ),
         (x("mapPosition").style.opacity = S === "walk" ? "1" : ".48"),
         (x("walkLocation").textContent =
-          `${lt(O.x, O.z) >= 0 ? "+" : ""}${lt(O.x, O.z).toFixed(2)} m floor \xB7 1.65 m eye height`));
+          `${lt(O.x, O.z) >= 0 ? "+" : ""}${lt(O.x, O.z).toFixed(2)} m floor \xB7 ${O.eyeHeight.toFixed(2)} m eye height`));
     }
     let ct = x("minimap");
     ct.addEventListener("click", (V) => {
@@ -40078,7 +40078,7 @@ void main() {
       });
     }
     function tt() {
-      (Et(), n.render(i, b));
+      (Et(), window.CHURCH_SIMULATOR?.frame(0, S, b), n.render(i, b));
     }
     function Et() {
       if (S !== "explore" || b !== o) return;
@@ -40101,7 +40101,7 @@ void main() {
           ge >= 1 && (k = null),
           l.update());
       } else l.update();
-      (Ke(), Et(), window.CHURCH_REALISM.update(S), n.render(i, b));
+      (Ke(), Et(), window.CHURCH_REALISM.update(S), window.CHURCH_SIMULATOR?.frame(_e, S, b), n.render(i, b));
     }
     let vi = {
       ready: !1,
@@ -40158,6 +40158,14 @@ void main() {
           })),
         };
       },
+      walkCamera: a,
+      orbitCamera: o,
+      colliders: Le,
+      walk: O,
+      floorHeight: lt,
+      walkable: de,
+      nearestClear: xe,
+      refreshMap: Ke,
       setWalkPosition(V, _e, ge = O.yaw, Qe = O.pitch) {
         let ot = xe(V, _e);
         return ot
@@ -44988,6 +44996,11 @@ void main() {
     renderer: ni, data: ti, sun: xn, fill: Fp, hemisphere: X0
   });
   window.CHURCH_PLANNING.prepare({THREE: Ec, building: nn, interior: Qo, data: ti, renderer: ni});
+  window.CHURCH_SIMULATOR?.prepare({
+    THREE: Ec, building: nn, scene: ii, roofs: ei, structure: Rr, interior: Qo,
+    data: ti, renderer: ni, sun: xn, fill: Fp, hemisphere: X0, floors: Fn,
+    exterior: Os, plinth: Ui, mat: ce
+  });
   var Bp = new It();
   Bp.name = "Display batches of the shared model";
   ii.add(Bp);
@@ -45022,6 +45035,7 @@ void main() {
   }
   window.CHURCH_REALISM.bindBatches(t_);
   window.CHURCH_PLANNING.bindBatches(t_);
+  window.CHURCH_SIMULATOR?.bindBatches(t_);
   nn.visible = !1;
   ni.shadowMap.autoUpdate = !1;
   ni.shadowMap.needsUpdate = !0;
@@ -45047,6 +45061,7 @@ void main() {
     hemisphere: X0,
     interior: Qo,
   });
+  window.CHURCH_SIMULATOR?.start(window.church);
 })();
 /*! Bundled license information:
 

@@ -56,5 +56,52 @@ energy worksheet. Full researched brief: planning/brief.html; editable source:
 no air conditioning, as confirmed by the owner. Attendance/supply rating pending.
 Seat samples are not approved capacity. Sightline rays only check structural
 columns/piers against one point per target; people and other obstructions are
-excluded. No photometric, acoustic or airflow prediction or live controls.
+excluded. Light, sound and airflow estimates: see DESIGN SIMULATOR below.
 Rebuild geometry-derived plan data: node ../scripts/verify_model.cjs --plan.
+
+
+DESIGN SIMULATOR — 6 OCTOBER 2026
+Header → Simulator opens a test bench for lights, fans, loudspeakers,
+microphones and decoration. Every object has its own on/off switch; circuits,
+dimmers and scenes (Full service, Weekday Mass, Prayer, Christmas, Cleaning,
+Night security, All off) switch groups. Click an object to edit its position,
+aim, lumens, colour temperature, beam, fan speed, speaker level, delay and
+beam opening. Add products from the catalogue by clicking a beam, ceiling,
+wall, column or floor; click once to select, then drag to move (Shift-drag
+changes height). Ctrl+Z / Ctrl+Shift+Z undo and redo. The layout is saved in
+this browser and can be downloaded as .json (layout) or .csv (schedule).
+
+Analysis colours the plan by light (lux), speech level, clarity (STI), air
+speed or noise, lists results at 300 sampled seats against the brief, shows
+reverberation time per octave and runs design checks: light through fan
+blades, clearances, low chandeliers, items in aisles, microphone feedback,
+overdriven speakers, fans at candles or microphones, echo and dim seats.
+It also estimates electricity per circuit and per month.
+
+Sound → Listen in the church plays Vietnamese or English speech, organ, STIPA,
+pink noise, a clap, a sweep, your own recording or your microphone through
+every loudspeaker, with real distance delays, coverage, HRTF direction and
+this room's computed reverberation. Use headphones and walk or sit.
+
+The model opens with a recommended design (projectors under the tie beams,
+three large slow fans, steerable column loudspeakers with aligned delays,
+half acoustic roof lining, timber acoustic slats in the entrance hall).
+Settings → Restore the recommended design.
+Full service, evening: about 262 lux on books (99 % of seats ≥ 200 lux),
+STI 0.62 (min 0.56, 81 % of seats ≥ 0.60), 66 dBA speech with stable
+microphones, 41 dBA background, 0.46 m/s seated air, 4.2 kW.
+No design check warnings.
+Verandas: a lantern at every pier, about 40 lux on the floor.
+
+Scale: the main dimensions match the drawings. Tie beams, side beams and
+purlins now follow section sheet 4; roof bracing that is not on the drawings
+is hidden (Settings → Show earlier proposed truss bracing). The walking lens
+is a natural 75° horizontal (adjustable), 1.4 m/s at 1.60 m eye height.
+The entrance hall behind the main doors had no roof; it now has the +8.39 m
+terrace slab from the front elevation and a gable wall on axis 2′ above it
+(inferred from the elevations; confirm with CAD).
+
+All results are engineering estimates for comparing options. They are not
+certified lighting, acoustic, airflow or electrical design and do not control
+real devices. Guide and results: ../docs/simulator-guide.md.
+Checks: node ../scripts/verify_simulator.cjs --report

@@ -1,8 +1,8 @@
 # Thạch Bi Church — interior and building systems plan
 
-**Working design brief · 5 October 2026 · for parish, architect and engineering review**
+**Working design brief · 5 October 2026, simulator update 6 October 2026 · for parish, architect and engineering review**
 
-[Open the interactive plan](../Thach_Bi_Viewer/planning/index.html) · [Open the 3D simulator](../Thach_Bi_Viewer/OPEN_CHURCH.html)
+[Open the interactive plan](../Thach_Bi_Viewer/planning/index.html) · [Open the 3D simulator](../Thach_Bi_Viewer/OPEN_CHURCH.html) · [Simulator guide and results](simulator-guide.md)
 
 ## 1. Decisions and design basis
 
@@ -20,8 +20,8 @@ Use the original plans and dimension workbook for the envelope. Use the consolid
 | Main structural column rows | D/E, at ±3.60 m; 7.20 m centre-to-centre |
 | Main column axes | 3–11; nine columns per row, 18 total |
 | Typical longitudinal spacing | 4.50 m; axes 9–10 are 7.20 m apart |
-| Main shaft diameter | 0.58–0.64 m, **illustrative and unconfirmed** |
-| Column bases | 0.82 m square, **illustrative** |
+| Main shaft diameter | 0.58–0.64 m taper in the model; section sheet 4 measures ≈0.60 m. **Confirm on site** |
+| Column bases | 0.82 m square in the model; section sheet 4 measures ≈0.84 m wide, 0.60 m high. **Confirm on site** |
 | Wider section at axes 9–10 | Both sides project; retained in both layouts |
 | Sanctuary floor | +0.750 m relative to nave ±0.000 m |
 | Roof ridge / main eave | +12.472 / +7.130 m |
@@ -31,7 +31,9 @@ Source files: `docs/layout_design/04-top-view.png`, `06-slide-cut-inside-church.
 
 ## 2. Why the columns feel crowded
 
-There is a physical reason and a presentation reason. From the outer seats, the line toward the sanctuary crosses a row of structural columns. The repeated 4.50 m bays overlap in perspective. Dark timber finishes and the existing 68° walking camera make the foreground columns visually prominent. The previous standing camera at 1.65 m also did not represent a seated congregation.
+There is a physical reason and a presentation reason. From the outer seats, the line toward the sanctuary crosses a row of structural columns. The repeated 4.50 m bays overlap in perspective. Dark timber finishes and the earlier 68° vertical walking camera (about 100° horizontal on a laptop) made the foreground columns visually prominent. The previous standing camera at 1.65 m also did not represent a seated congregation.
+
+The 6 October scale audit found the main dimensions correct and fixed three presentation problems. The walking camera now uses a natural 75° horizontal lens, walks at 1.4 m/s and stands at 1.60 m. The roof frame now follows section sheet 4: 0.59 m-deep tie beams at +8.59 m, side beams at +6.66 m and purlins about 0.5 m apart. King posts, diagonal braces and knee braces are not on the drawing; they are now an optional, hidden comparison layer. The entrance hall behind the main doors had no roof in the model. It now has the +8.39 m terrace slab shown on the front elevation and a gable wall on axis 2′ above it; both are inferred from the elevations and need CAD confirmation. See the [simulator guide](simulator-guide.md#1-is-the-model-to-scale-why-did-the-interior-feel-cramped).
 
 The simulator now offers **2 wide blocks / 4 short-bench blocks** and **seated views near the centre aisle / near the side aisle at 1.15 m eye height**. Switching layouts changes the furniture and its walking collisions, while keeping the source column grid. These camera points are proposed seated eye positions, not an anthropometric standard.
 
@@ -87,7 +89,7 @@ The following numbers are **initial design targets proposed for the brief, not v
 
 The **east-facing entrance** needs morning-glare review; the west sanctuary end needs afternoon solar-gain and glare review. Side daylight zones should respond independently. The two rows of trees are landscape intent, not a substitute for a solar-shading calculation.
 
-Model the actual luminaires using IES/LDT files, surface reflectance assumptions, maintenance factors, furniture and multiple daylight scenes. Produce lux grids, glare checks, vertical face illumination and external spill calculations. The [IES Lighting Library](https://ies.org/standards/lighting-library/) includes worship-space guidance and maintained-illuminance recommendations; [DIALux](https://www.dialux.com/en-GB/ldt-editor/) supports importing IES/LDT photometry, with [scene and furniture calculation options](https://www.dialux.com/en-GB/dialux-for-interior-lighting/module-4-calculation). The current WebGL lights are visual effects, not photometric evidence.
+Model the actual luminaires using IES/LDT files, surface reflectance assumptions, maintenance factors, furniture and multiple daylight scenes. Produce lux grids, glare checks, vertical face illumination and external spill calculations. The [IES Lighting Library](https://ies.org/standards/lighting-library/) includes worship-space guidance and maintained-illuminance recommendations; [DIALux](https://www.dialux.com/en-GB/ldt-editor/) supports importing IES/LDT photometry, with [scene and furniture calculation options](https://www.dialux.com/en-GB/dialux-for-interior-lighting/module-4-calculation). The simulator scales its lights from lumens and calculates lux with a simplified point-source model. That is useful for comparing options, but it is not photometric evidence.
 
 **Control proposal:** wired DALI-2 for dimmable lighting, wall scene buttons at the sacristy and entrance, and local operation during internet failure. Require certified compatible components. Occupancy and light sensors are covered by [DALI Parts 303 and 304](https://www.dali-alliance.org/dali/sensors.html). Use a service-mode hold so still, seated people do not trigger lights-off. Energy reporting under [Part 252 is optional for DALI-2 and mandatory for D4i drivers](https://www.dali-alliance.org/dali/data.html); specify the feature explicitly and reconcile it with circuit meters. Luminaire telemetry does not replace a billing meter.
 
@@ -101,7 +103,7 @@ Provide lectern and celebrant microphones, a restrained choir/monitor system, DS
 
 **Proposed acceptance brief:** STI ≥0.60 at the agreed occupied-seat test grid under normal service background noise; review every failing seat, rather than relying only on a room average. This is a project target, not a claimed statutory threshold. Agree a level-uniformity target, initially ±3 dB over ordinary seating, and a service-mode background-noise target, initially around 35 dBA where practicable. Confirm suitability after the survey. Do not choose an RT60 target until volume, music priorities and occupied/unoccupied conditions are defined.
 
-[IEC 60268-16:2020](https://webstore.iec.ch/en/publication/26771), including its [2025 corrigendum](https://webstore.iec.ch/en/publication/107581), defines STI methods. [NTi Audio's STIPA measurement guidance](https://www.nti-audio.com/en/download/speech-intelligibility-stipa-4) provides an example of professional commissioning instrumentation. A generic WebAudio reverb/convolver can demonstrate an effect, but cannot predict this church's acoustic field. Model in a room-acoustics tool and verify on site with calibrated measurements.
+[IEC 60268-16:2020](https://webstore.iec.ch/en/publication/26771), including its [2025 corrigendum](https://webstore.iec.ch/en/publication/107581), defines STI methods. [NTi Audio's STIPA measurement guidance](https://www.nti-audio.com/en/download/speech-intelligibility-stipa-4) provides an example of professional commissioning instrumentation. A generic WebAudio reverb/convolver can demonstrate an effect, but cannot predict this church's acoustic field. The simulator's listening mode uses real loudspeaker delays and this room's estimated octave-band reverberation, so it is a better comparison aid, but it is still not a prediction. Model in a room-acoustics tool and verify on site with calibrated measurements.
 
 ## 5. No-AC comfort: fans plus a real ventilation path
 
@@ -190,9 +192,16 @@ Commission lighting at night and with daylight; test emergency operation separat
 
 ### Simulator implementation status
 
-- **Implemented:** two wide blocks with long benches / four blocks with short benches; matching active furniture collisions; seated viewpoints near the centre and side aisles; source-derived floor-plan map; single-point structural sightline audit; planning layers and an example energy worksheet.
-- **Next model refinements:** adjustable real bench/kneeler geometry, wheelchair spaces, populated sightlines, confirmed column sections, and coordinated equipment models after selection.
-- **Engineering work still required:** photometric calculations, acoustic prediction and commissioning, ventilation/thermal analysis, structural review and electrical design. There are no live meter connections or real device commands in this simulator.
+- **Implemented (5 October):** two wide blocks with long benches / four blocks with short benches; matching active furniture collisions; seated viewpoints near the centre and side aisles; source-derived floor-plan map; single-point structural sightline audit; planning layers and an example energy worksheet.
+- **Implemented (6 October), design simulator:** every light, fan, loudspeaker, microphone and decoration is an object with its own switch, circuit and settings (lumens, dimmer, colour temperature, beam, fan speed, speaker level, delay and beam opening). The simulator also provides:
+  - catalogue placement on the drawn structure, the operating scenes from section 6, undo and saved layouts;
+  - lux, speech-level, STI, air-speed and noise maps, with results at 300 sampled seats;
+  - design checks and a per-circuit energy estimate;
+  - spatial listening with real delays, HRTF direction and this room's estimated reverberation.
+
+  It opens with a recommended design that reaches about 262 lux, STI 0.62 (minimum 0.56) and 0.46 m/s at the seats, with no design-check warnings. Results, variants and methods: [simulator guide](simulator-guide.md).
+- **Next model refinements:** adjustable real bench/kneeler geometry, wheelchair spaces, populated sightlines, confirmed column sections, IES/LDT photometry import, and equipment models replaced by the selected products.
+- **Engineering work still required:** the simulator's lighting, acoustic and airflow figures are planning estimates. Certified photometric calculations, acoustic prediction and commissioning, ventilation/thermal analysis, structural review and electrical design are still required. There are no live meter connections or real device commands in this simulator.
 
 The older `Simulator_Test.md` contains illustrative circuit caps and simplified audio assumptions. Its 1800/2400/1200 W circuit numbers are not design ratings. A generic convolver is not a geometry-based echo calculation, and visual light-cone overlap does not establish illuminance. Use this brief and the commissioned engineering documents for subsequent decisions.
 
