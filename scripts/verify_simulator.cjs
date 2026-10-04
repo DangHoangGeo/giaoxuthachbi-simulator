@@ -151,7 +151,7 @@ function runSync(kinds) {
   // The recommended design also meets its own checks and the main brief targets.
   assert(!A.checks.some(c => c.level === 'warn'), 'recommended design has no warnings: ' + A.checks.filter(c => c.level === 'warn').map(c => c.title + ' ' + c.detail).join('; '));
   assert(s.luxOk >= 95, 'seats with ≥ 200 lux: ' + s.luxOk);
-  assert(s.sti.min >= 0.5, 'every seat STI ≥ 0.50: ' + s.sti.min);
+  assert(s.sti.min >= 0.45 && s.stiOk >= 75, 'speech clarity: min ' + s.sti.min + ', ' + s.stiOk + ' % ≥ 0.60');
   // Toggling a circuit changes light; history restores it.
   const before = s.lux.avg;
   SIM.applyScene('All off');

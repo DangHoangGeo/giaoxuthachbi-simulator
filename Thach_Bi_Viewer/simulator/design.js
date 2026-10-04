@@ -13,8 +13,8 @@
  *    brass chandeliers and pier sconces give the evening character.
  *  - Sanctuary: key lights at ~45° for faces, accents for crucifix,
  *    tabernacle and statues.
- *  - Speech: steerable columns on the D/E shafts at axes 9 and 6, delayed
- *    for time alignment; veranda pendants for overflow; courtyard horns off.
+ *  - Speech: slim wall-coloured columns on the side-wall pilasters (axes 4–9),
+ *    time-aligned; veranda pendants for overflow; courtyard horns off.
  * Values are a planning starting point to test, not an engineered design.
  */
 (() => {
@@ -153,17 +153,13 @@
         note: 'Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.' });
     }
 
-    // Loudspeakers · steerable columns on the D/E shafts facing the people.
-    // Main pair: beam steered down (−10°, 30° opening) so the front rows are inside it.
-    // Levels give ≈66 dBA speech with ≥3 dB of feedback margin at both microphones.
-    const columnSpeaker = (k, s, level, name, y, tilt, opening) => {
-      const x = A[k] - 0.315, z = s * 3.6;
-      add({ type: 'steerableColumn', name, circuit: 'A1', mount: 'wall', pos: [x, y, z], yaw: 180 - s * 6, mountYaw: 180, tilt, level, delayMs: 0, params: { opening } });
-    };
-    columnSpeaker('9', -1, -7, 'Main column · axis 9 · B', 2.6, -10, 30);
-    columnSpeaker('9', 1, -7, 'Main column · axis 9 · H', 2.6, -10, 30);
-    columnSpeaker('6', -1, -9, 'Delay column · axis 6 · B', 2.9, -8, 24);
-    columnSpeaker('6', 1, -9, 'Delay column · axis 6 · H', 2.9, -8, 24);
+    // Loudspeakers · a discreet distributed system: slim 0.6 m columns painted
+    // the wall colour on the side-wall pilasters (axes 4–9), below the sconces,
+    // turned 50° toward the back so each covers the rows behind it, and
+    // time-aligned to the talker. Nothing is fixed to the timber columns.
+    for (const k of ['4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) {
+      add({ type: 'slimColumn', name: `Wall speaker · axis ${k} · ${side(s)}`, circuit: 'A1', mount: 'wall', pos: [A[k], 2.8, s * 7.07], yaw: -s * 140, mountYaw: -s * 90, tilt: -14, level: -6, delayMs: 0 });
+    }
     for (const s of [-1, 1]) for (const x of [12.225, 25.725]) {
       add({ type: 'pendantSpeaker', name: `Veranda fill · ${side(s)} · ${x.toFixed(1)}`, circuit: 'A2', mount: 'pendant', pos: [x, 3.9, s * 8.85], anchorY: above(x, s * 8.85, 3.9), yaw: 0, mountYaw: 0, tilt: -90, level: -7 });
     }

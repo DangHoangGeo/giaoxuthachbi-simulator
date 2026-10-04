@@ -56,8 +56,8 @@ Every fixture hangs from, stands on or is fixed to something the model actually 
 | Verandas, steps, façade (L4–L6) | 18 lanterns (2 000 lm), one at every veranda pier; brass sconces beside the main door; step bollards, side-door lanterns, 6 façade floodlights | The rhythm of lights along the arcades in the reference night view; safe routes and a lit landmark |
 | Air (F1) | 12 ceiling fans (1.42 m) mid-bay over the two side aisles, between the centre and outer blocks | Where parishes really hang fans: nothing over the processional aisle, quiet at speed 2, ~0.33 m/s at the seats |
 | Festival exterior (L7, off except at feasts) | Warm bulb strings along the roof ridge, the main and veranda eaves, the rear gable, the front terrace and the tower corners; floods on both tower tops, the central shrine and the rear gable | The church outlined in light for Christmas and feasts; switched on by the *Christmas & festivals* scene |
-| Sound (A1–A3) | 2 steerable DSP columns on the axis-9 shafts, 2 delayed columns on axis 6, 4 veranda pendants, 2 courtyard horns on the tower fronts (off) | Narrow vertical beams aimed at people; time-aligned to the priest's voice |
-| Microphones | Ambo and altar gooseneck mics | The system runs at about 66 dBA, which keeps both microphones more than 3 dB inside the stability allowance |
+| Sound (A1–A3) | 12 slim 0.6 m wall columns, painted the wall colour, on the side-wall pilasters (axes 4–9) under the sconces, turned toward the back; 4 veranda pendants; 2 courtyard horns on the tower fronts (off) | Barely visible and nothing on the timber columns; each speaker covers the rows behind it, time-aligned to the priest's voice |
+| Microphones | Ambo and altar gooseneck mics | The system runs at about 67 dBA, which keeps both microphones more than 3 dB inside the stability allowance |
 | Décor | Statues of Our Lady and Saint Joseph framed by the side arches, flowers, votive candle stands, Paschal candle, palms, banners. Christmas tree, nativity grotto, star, red lanterns, pennants and an aisle carpet are ready but hidden | Matches the reference interior; seasonal items are one switch away |
 | Roof underside | Timber lining with about 50 % slotted acoustic boards | Speech clarity *and* support for singing |
 | Entrance hall | Timber slat acoustic panels (≈ 75 m²) under the terrace and along the top of the entrance wall | The wall facing the loudspeakers: no late reflection back to the sanctuary, and a shorter reverberation for the whole room |
@@ -69,9 +69,9 @@ The **Full service · evening** scene gives these results at the 300 sampled sea
 | Maintained light on books | 330 lux average · 99 % of seats ≥ 200 lux (lowest 171) · uniformity 0.52 | 200–300 lux |
 | Light on the aisle floors | ≈ 85 lux at the main-door threshold, 133–290 lux along the centre, side and cross aisles; entrance hall 59–215 lux | ≈ 100 lux on circulation |
 | Light on the veranda floors | ≈ 36–45 lux average, at least 24 lux | ≈ 100 lux trial (see below) |
-| Speech intelligibility | STI 0.62 average · 0.56 minimum · 77 % of seats ≥ 0.60 · all seats ≥ 0.50 | ≥ 0.60 at every seat |
-| Speech level | 66 dBA, 90 % of seats within ± 2.5 dB | ±3 dB |
-| Microphone feedback | 3.4 dB (ambo) and 3.6 dB (altar) beyond a 6 dB stability allowance | stable with gooseneck microphones |
+| Speech intelligibility | STI 0.64 average · 0.49 minimum · 85 % of seats ≥ 0.60 | ≥ 0.60 at every seat |
+| Speech level | 67.5 dBA, 90 % of seats within ± 1.5 dB | ±3 dB |
+| Microphone feedback | 3.5 dB (ambo) and 3.7 dB (altar) beyond a 6 dB stability allowance | stable with gooseneck microphones |
 | Background noise | 42 dBA (fans + outdoor + people) | ≈ 35 dBA where practicable |
 | Seated air speed | 0.33 m/s average (central 0.30, outer 0.35), up to ≈ 0.45 m/s at fan speed 3 | 0.3–0.8 m/s trial |
 | Reverberation time (500–1000 Hz) | 1.22 s | choose with the acoustician |
@@ -187,3 +187,5 @@ Press Play and walk or sit. Each loudspeaker reaches you with its real distance 
 - `Thach_Bi_Viewer/simulator/`: `physics.js` (calculations), `catalog.js` (products and 3D models), `engine.js` (scene, fixtures, placement, scenes, storage), `design.js` (recommended design), `analysis.js` (maps, seat results, checks), `audio.js` (spatial audio), `ui.js` (panel), `samples.js` (embedded test speech), `simulator.css`.
 - `scripts/verify_simulator.cjs`: headless checks of the as-drawn frame, every catalogue model, that every wall fixture sits on a surface and every pendant hangs from structure, the recommended design, scenes, undo and layout round trip. Run `node scripts/verify_simulator.cjs --report`.
 - `review/simulator-2026-10-06/`: screenshots and the verification report.
+
+> **Update:** the recommended loudspeakers are now a distributed wall system (see the table in section 2); the variant table above was calculated with the earlier column loudspeakers, so its absolute STI values differ slightly, but the comparisons between room finishes still hold.
