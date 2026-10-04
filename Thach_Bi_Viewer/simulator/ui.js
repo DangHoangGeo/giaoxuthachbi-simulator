@@ -389,6 +389,7 @@
       ${sw('autoExposure', 'Automatic eye adaptation', 'Adapts to the light where you stand, like the eye. Off keeps designs comparable.')}
       ${rng('halos', 'Lamp glow', 0, 2, 0.1, fmt(s.halos, 1) + '×')}
       ${field('Lights drawn in 3D', `<select data-setting="quality">${Object.entries(SIM.QUALITY).map(([k, q]) => `<option value="${k}" ${s.quality === k ? 'selected' : ''}>${esc(q.label)}</option>`).join('')}</select>`, true)}
+      ${sw('autoQuality', 'Lighten automatically when walking stutters')}
       <p class="sim-hint">${(() => { const p = SIM.poolStats(); return p ? `${p.emitters} light sources; ${p.points + p.spots + p.shadows} drawn individually${p.clustered > 0 ? `, ${p.clustered} combined with neighbours for speed` : ''}. Analysis always uses every source.` : ''; })()}</p>
       </div>
       <div class="sim-card"><h3>Structure &amp; finishes</h3>

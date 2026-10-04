@@ -69,7 +69,7 @@
     }
     message.textContent = 'Preparing the church model. This may take a few seconds on the first visit.';
     const script = document.createElement('script');
-    script.src = 'bundle.js?v=20261006-1';
+    script.src = 'bundle.js?v=20261006-2';
     script.onload = finish;
     script.onerror = () => fail('The model file could not be loaded. Retry the page. If you downloaded the viewer, extract the whole ZIP and keep its files together.');
     document.body.append(script);

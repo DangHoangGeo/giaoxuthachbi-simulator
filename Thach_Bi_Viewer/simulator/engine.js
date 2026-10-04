@@ -48,13 +48,15 @@
     DECOR: { label: 'Decoration', cat: 'decor' }
   };
   const QUALITY = {
-    high: { points: 32, spots: 56, shadows: 3, label: 'High · up to 91 lights' },
-    balanced: { points: 20, spots: 36, shadows: 2, label: 'Balanced · up to 58 lights' },
-    fast: { points: 10, spots: 14, shadows: 0, label: 'Fast · up to 24 lights' }
+    // Every drawn light is evaluated for every pixel, so counts drive frame rate.
+    // Lights beyond the budget are merged with neighbours; the analysis uses all.
+    high: { points: 24, spots: 40, shadows: 2, label: 'High · up to 66 lights (strong graphics card)' },
+    balanced: { points: 8, spots: 14, shadows: 1, label: 'Balanced · up to 23 lights' },
+    fast: { points: 4, spots: 6, shadows: 0, label: 'Fast · up to 10 lights (smoothest)' }
   };
 
   const defaults = () => ({
-    adaptLux: 110, autoExposure: false, quality: 'balanced', maintenance: 0.8, halos: 1,
+    adaptLux: 110, autoExposure: false, quality: 'balanced', autoQuality: true, maintenance: 0.8, halos: 1,
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
@@ -1224,6 +1226,19 @@
     lightDirty = true;
     for (const fx of fixtures.values()) fx.applyGlow();
   }
+  // Step down to a lighter light budget when walking stutters (under ~28 fps for 2 s).
+  let slowTime = 0, fpsWindow = 0;
+  function watchFrameRate(dt) {
+    if (!dt || dt > 0.5 || !state.settings.autoQuality || state.settings.quality === 'fast') { slowTime = fpsWindow = 0; return; }
+    fpsWindow += dt;
+    slowTime += dt > 1 / 28 ? dt : -dt * 0.5;
+    if (slowTime < 0) slowTime = 0;
+    if (fpsWindow < 3 || slowTime < 2) return;
+    const next = state.settings.quality === 'high' ? 'balanced' : 'fast';
+    slowTime = fpsWindow = 0;
+    setSetting('quality', next);
+    emit('toast', `Lighting switched to “${QUALITY[next].label.split(' ·')[0]}” for smoother walking (Settings → Lights drawn in 3D).`);
+  }
   function environmentFrame(dt, camera) {
     const s = state.settings;
     const roofOff = church?.uiState?.().roof === false;
@@ -1569,6 +1584,7 @@
   function frame(dt, mode, camera) {
     if (!ready || !camera) return;
     timeNow += dt || 0;
+    watchFrameRate(dt);
     if (entranceSlats) entranceSlats.visible = state.settings.entranceFinish === 'slats' && ctx.roofs.visible !== false;
     environmentFrame(dt || 0, camera);
     // Fans: blades at real speed (capped visually), wall fans oscillate.

@@ -151,7 +151,7 @@ The layout is also saved automatically in the browser.
 
 Press Play and walk or sit. Each loudspeaker reaches you with its real distance delay (343 m/s) and DSP delay, its coverage pattern, distance loss and HRTF direction, followed by reverberation synthesised from this room's octave-band reverberation times. You can add the priest's own unamplified voice, the running fans and background noise. The panel shows the predicted level, STI and which loudspeaker you hear first. *Align delays* time-aligns every loudspeaker to the talker at the microphone plus 12 ms, so the voice still seems to come from the altar or ambo.
 
-**Settings.** Walking lens, eye height, walking speed, eye adaptation (fixed for fair comparisons, or automatic like the eye), lamp glow, how many lights are drawn individually (*High / Balanced / Fast*; the analysis always uses every light), the earlier proposed truss bracing, structural timber tone, roof underside, entrance hall finish, maintenance factor, drag and snap options, and *Restore the recommended design*.
+**Settings.** Walking lens, eye height, walking speed, eye adaptation (fixed for fair comparisons, or automatic like the eye), lamp glow, how many lights are drawn individually (*High / Balanced / Fast*; the analysis always uses every light; if walking stutters the simulator steps down to a lighter setting by itself), the earlier proposed truss bracing, structural timber tone, roof underside, entrance hall finish, maintenance factor, drag and snap options, and *Restore the recommended design*.
 
 ---
 
