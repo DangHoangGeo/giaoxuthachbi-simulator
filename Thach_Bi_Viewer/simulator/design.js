@@ -65,7 +65,7 @@
     add({ type: 'chandelier12', name: 'Grand chandelier · crossing 9–10', circuit: 'LD', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 7.2, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
     // Sconces on the C/G piers, facing the nave, and on the sanctuary piers.
     for (const k of ['3', '4', '5', '6', '7', '8']) for (const s of [-1, 1]) {
-      add({ type: 'sconce2', name: `Sconce · axis ${k} · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A[k], 3.7, s * 7.07], yaw: -s * 90, mountYaw: -s * 90 });
+      add({ type: 'sconce2', name: `Sconce · axis ${k} · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A[k], 4.4, s * 7.07], yaw: -s * 90, mountYaw: -s * 90 });
     }
     for (const s of [-1, 1]) add({ type: 'sconce2', name: `Sconce · sanctuary pier · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A['10'] - 0.32, 3.9, s * 3.6], yaw: 180, mountYaw: 180 });
 
@@ -108,16 +108,22 @@
       add({ type: 'exitSign', name: `Exit sign · side door ${x.toFixed(1)} · ${side(s)}`, circuit: 'E1', mount: 'wall', pos: [x, 4.6, s * 7.245], yaw: -s * 90, mountYaw: -s * 90 });
     }
 
-    // L5 · steps & paths; L6 · façade.
-    for (const x of [-7.7, -14.0]) for (const s of [-1, 1]) add({ type: 'bollard', name: `Step bollard · ${x > -10 ? 'top' : 'foot'} · ${side(s)}`, circuit: 'L5', mount: 'floor', pos: [x, x > -10 ? -0.48 : -2.08, s * 9.6], yaw: 180, mountYaw: 180 });
-    for (const s of [-1, 1]) add({ type: 'wallLantern', name: `Side door lantern · ${side(s)}`, circuit: 'L5', mount: 'wall', pos: [15.3, 2.25, s * 10.55], yaw: s * 90, mountYaw: s * 90 });
+    // L5 · steps & paths; L6 · façade. Nothing stands on the courtyard, the
+    // platform or the steps where people walk: every exterior light is fixed
+    // to the building, on the tower faces and ledges or the terrace.
+    const TX = 2.45, TZ = 10.153, ledge = TX - (4.9 + 0.45) / 2 + 0.15; // front edge of the stage-1 cornice
+    const ledgeFlood = (name, circuit, p, target, beam, lumens, on = true) => {
+      const a = aim([p[0], p[1] + 0.32, p[2]], target);
+      add({ type: 'flood', name, circuit, mount: 'floor', pos: p, yaw: a.yaw, mountYaw: a.yaw, tilt: a.tilt, beam, lumens, on });
+    };
     for (const s of [-1, 1]) {
-      const p = [-9.0, -0.48, s * 10.153], a = aim([p[0], p[1] + 0.32, p[2]], [2.45, 21, s * 10.153]);
-      add({ type: 'flood', name: `Tower floodlight · ${side(s)}`, circuit: 'L6', mount: 'floor', pos: p, yaw: a.yaw, mountYaw: a.yaw, tilt: a.tilt, beam: 15, lumens: 12000 });
-      const q = [-16.0, -2.08, s * 3.0], b = aim([q[0], q[1] + 0.32, q[2]], [2.4, 8.5, s * 1.5]);
-      add({ type: 'flood', name: `Façade wash · ${side(s)}`, circuit: 'L6', mount: 'floor', pos: q, yaw: b.yaw, mountYaw: b.yaw, tilt: b.tilt, beam: 50, lumens: 9000 });
-      const r = [27.0, -2.08, s * 18.0], c = aim([r[0], r[1] + 0.32, r[2]], [31.0, 4.0, s * 10.5]);
-      add({ type: 'flood', name: `Side elevation wash · ${side(s)}`, circuit: 'L6', mount: 'floor', pos: r, yaw: c.yaw, mountYaw: c.yaw, tilt: c.tilt, beam: 50, lumens: 7000 });
+      // Lanterns on the tower fronts light the platform and the top of the steps.
+      for (const z of [8.5, 11.9]) add({ type: 'wallLantern', name: `Tower lantern · ${side(s)} · ${z < 10 ? 'inner' : 'outer'}`, circuit: 'L5', mount: 'wall', pos: [z < 10 ? -0.37 : -0.16, 2.6, s * z], yaw: 180, mountYaw: 180 });
+      add({ type: 'wallLantern', name: `Side door lantern · ${side(s)}`, circuit: 'L5', mount: 'wall', pos: [15.3, 2.25, s * 10.55], yaw: s * 90, mountYaw: s * 90 });
+      // Tower faces washed upward from the +8.39 m cornice ledge.
+      for (const dz of [-1.2, 1.2]) ledgeFlood(`Tower uplight · ${side(s)} · ${dz * s < 0 ? 'inner' : 'outer'}`, 'L6', [ledge, 8.4, s * TZ + dz], [-0.4, 22, s * TZ + dz], 15, 6000);
+      // The doors and lower façade between the towers, from the inner tower corners.
+      ledgeFlood(`Façade wash · ${side(s)}`, 'L6', [ledge, 8.4, s * 7.9], [2.4, 2.5, s * 1.5], 50, 6000);
     }
 
     // L7 · festival exterior: bulb strings along the ridge, the main and veranda
@@ -132,17 +138,19 @@
       strand(`veranda eave ${side(s)} · nave`, [21.35, 6.47, s * 10.6], 90, 31.7);
       strand(`veranda eave ${side(s)} · sanctuary`, [48.4, 6.47, s * 10.6], 90, 8.9);
       strand(`rear gable ${side(s)}`, [53.45, 10.0, s * 3.65], 0, 9.07, -s * 36.4);
-      for (const zc of [7.9, 12.2]) strand(`tower ${side(s)} · corner ${zc < 10 ? 'inner' : 'outer'}`, [-0.36, 11.6, s * zc], 0, 21.6, 90, 'wall', 180);
-      const t = [-16, SIM.floorY(-16, s * 15), s * 15], a = aim([t[0], t[1] + 0.32, t[2]], [1.0, 27.5, s * 10.3]);
-      add({ type: 'flood', name: `Festival flood · tower top ${side(s)}`, circuit: 'L7', mount: 'floor', pos: t, yaw: a.yaw, mountYaw: a.yaw, tilt: a.tilt, beam: 15, lumens: 18000, on: false });
+      // Up the corner pilasters of the first three tower stages, which step in as they rise.
+      [[0, 8.39, 4.9, 4.9], [8.39, 15.84, 4.65, 4.72], [15.84, 23.14, 4.45, 4.52]].forEach(([y0, y1, d, u], i) => {
+        for (const e of [-1, 1]) strand(`tower ${side(s)} · stage ${i + 1} · ${e < 0 ? 'inner' : 'outer'} corner`, [2.45 - u / 2 - 0.4, (y0 + y1) / 2, s * (10.153 + e * (d / 2 - 0.12))], 0, y1 - y0 - 0.6, 90, 'wall', 180);
+      });
+      // Belfry and dome lit from the +23.14 m ledge of each tower.
+      for (const dz of [-1.4, 1.4]) ledgeFlood(`Festival flood · tower top ${side(s)} ${dz * s < 0 ? 'inner' : 'outer'}`, 'L7', [0.15, 23.2, s * TZ + dz], [0.8, 31, s * TZ + dz * 0.4], 25, 7000, false);
     }
     strand('front terrace between the towers', [2.15, 8.5, 0], 0, 14.8);
     for (const s of [-1, 1]) {
-      const p = [64, SIM.floorY(64, s * 7), s * 7], a = aim([p[0], p[1] + 0.32, p[2]], [53.3, 11, s * 1.5]);
-      add({ type: 'flood', name: `Festival flood · rear gable ${side(s)}`, circuit: 'L7', mount: 'floor', pos: p, yaw: a.yaw, mountYaw: a.yaw, tilt: a.tilt, beam: 50, lumens: 12000, on: false });
+      // Rear gable from the rear corners of the veranda roofs.
+      ledgeFlood(`Festival flood · rear gable ${side(s)}`, 'L7', [52.6, 6.55, s * 9.8], [53.3, 12.5, s * 1.5], 40, 9000, false);
     }
-    { const p = [-6, SIM.floorY(-6, 0), 0], a = aim([p[0], p[1] + 0.32, p[2]], [2.4, 15.5, 0]);
-      add({ type: 'flood', name: 'Festival flood · central shrine', circuit: 'L7', mount: 'floor', pos: p, yaw: a.yaw, mountYaw: a.yaw, tilt: a.tilt, beam: 15, lumens: 8000, on: false }); }
+    for (const s of [-1, 1]) ledgeFlood(`Festival flood · central shrine · ${side(s)}`, 'L7', [3.6, 8.39, s * 2.6], [2.4, 15.5, 0], 20, 4000, false);
 
     // Fans · 1.42 m ceiling fans mid-bay over the two side aisles (between the
     // centre and outer blocks): the 30°/40° reading beams miss the blades, and
@@ -154,11 +162,12 @@
     }
 
     // Loudspeakers · a discreet distributed system: slim 0.6 m columns painted
-    // the wall colour on the side-wall pilasters (axes 4–9), below the sconces,
+    // the wall colour on the side-wall pilasters (axes 4–9), between the Stations
+    // of the Cross plaques (2.2–2.9 m) and the sconces (4.4 m),
     // turned 50° toward the back so each covers the rows behind it, and
     // time-aligned to the talker. Nothing is fixed to the timber columns.
     for (const k of ['4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) {
-      add({ type: 'slimColumn', name: `Wall speaker · axis ${k} · ${side(s)}`, circuit: 'A1', mount: 'wall', pos: [A[k], 2.8, s * 7.07], yaw: -s * 140, mountYaw: -s * 90, tilt: -14, level: -6, delayMs: 0 });
+      add({ type: 'slimColumn', name: `Wall speaker · axis ${k} · ${side(s)}`, circuit: 'A1', mount: 'wall', pos: [A[k], 3.35, s * 7.07], yaw: -s * 140, mountYaw: -s * 90, tilt: -18, level: -6, delayMs: 0 });
     }
     for (const s of [-1, 1]) for (const x of [12.225, 25.725]) {
       add({ type: 'pendantSpeaker', name: `Veranda fill · ${side(s)} · ${x.toFixed(1)}`, circuit: 'A2', mount: 'pendant', pos: [x, 3.9, s * 8.85], anchorY: above(x, s * 8.85, 3.9), yaw: 0, mountYaw: 0, tilt: -90, level: -7 });
@@ -197,5 +206,5 @@
 
   // Bump when the recommended design changes: browsers holding a layout saved
   // from an older version then load the new design (the old one is kept aside).
-  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-07-wall-speakers' };
+  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-08b-speakers-above-plaques' };
 })();

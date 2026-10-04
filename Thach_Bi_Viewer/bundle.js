@@ -44564,8 +44564,9 @@ void main() {
     for (let l = 0; l < 4; l++) {
       let c = i[l],
         h = i[l + 1],
-        d = 4.9 - l * 0.15,
-        u = 4.9 - l * 0.11;
+        // Stage widths follow the front elevation: the belfry (stage 4) steps in clearly.
+        d = [4.9, 4.65, 4.45, 3.9][l],
+        u = [4.9, 4.72, 4.52, 3.95][l];
       for (let f = 0; f < 4; f++) {
         let p = new It();
         n.add(p);
@@ -44664,7 +44665,7 @@ void main() {
         [1.73, 2.47],
         [1.2, 3.4],
         [0.5, 4.125],
-      ].map(([l, c]) => new pe(l, c)),
+      ].map(([l, c]) => new pe(l * 0.876, c)),
       o = new ws(r),
       a = yi(
         new dr(o.getPoints(60), 64),
@@ -44678,7 +44679,7 @@ void main() {
       let c = (l * Math.PI) / 2,
         h = new I(Math.cos(c), 0, Math.sin(c)),
         d = new It();
-      (d.position.set(h.x * 1.73, 31.6, h.z * 1.73),
+      (d.position.set(h.x * 1.52, 31.6, h.z * 1.52),
         d.quaternion.setFromUnitVectors(
           new I(0, 0, 1),
           h
@@ -44711,16 +44712,16 @@ void main() {
         "Continuous cap cross support",
       ),
       x1(0, 36.92, 0, 1.891, n, 0.93));
-    for (let l of [-2.4, 2.4])
-      for (let c of [-2.76, 2.76]) ss(l, 29.03, c, 1.68, n, 0.66);
-    for (let l of [-2.68, 2.68]) {
-      We(4.9, 0.11, 0.17, 0, 29.8, l, ce.trim, n);
-      for (let c = -2.4; c <= 2.4; c += 0.25)
+    for (let l of [-2.1, 2.1])
+      for (let c of [-2.42, 2.42]) ss(l, 29.03, c, 1.68, n, 0.66);
+    for (let l of [-2.34, 2.34]) {
+      We(4.29, 0.11, 0.17, 0, 29.8, l, ce.trim, n);
+      for (let c = -2.1; c <= 2.1; c += 0.25)
         We(0.055, 0.7, 0.065, c, 29.43, l, ce.trim, n);
     }
-    for (let l of [-2.36, 2.36]) {
-      We(0.17, 0.11, 5.35, l, 29.8, 0, ce.trim, n);
-      for (let c = -2.6; c <= 2.6; c += 0.25)
+    for (let l of [-2.07, 2.07]) {
+      We(0.17, 0.11, 4.69, l, 29.8, 0, ce.trim, n);
+      for (let c = -2.3; c <= 2.3; c += 0.25)
         We(0.065, 0.7, 0.055, l, 29.43, c, ce.trim, n);
     }
   }

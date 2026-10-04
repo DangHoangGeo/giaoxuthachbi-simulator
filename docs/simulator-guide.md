@@ -17,6 +17,7 @@ The primary dimensions match the drawings. The crowded feeling came from three p
 Measured on the vector PDFs (section sheet 4 = `giao-xu-thach-bi-06…pdf`, plan = `…04…pdf`) and compared with the model:
 
 | Item | Drawing | Model | Status |
+| **Tower stages** | **belfry (stage 4) clearly narrower than the stages below** | stages narrowed by only 0.15 m each | **corrected: 4.90 / 4.65 / 4.45 / 3.90 m; balcony and dome scaled to match** |
 |---|---|---|---|
 | Clear width between inner walls C–G | 14.50 m | 14.50 m | ✔ |
 | Column rows D/E | ±3.60 m (7.20 m apart) | ±3.60 m | ✔ |
@@ -53,10 +54,10 @@ Every fixture hangs from, stands on or is fixed to something the model actually 
 | Sanctuary (L3) | Altar key lights at ~45° from the axis-9 beam (with shadows); ambo key light; step fill; crucifix, tabernacle and statue accents | Faces and liturgy lit from the front, not from above |
 | Roof uplight (LA) | 8 wide uplights hidden on top of the tie beams | Warm timber roof in the evening; the nave feels taller |
 | Decorative (LD) | 3 brass chandeliers on chains from the ridge over the crossings; a 12-lamp chandelier at the 9–10 crossing; 14 brass sconces | The character of the reference images |
-| Verandas, steps, façade (L4–L6) | 18 lanterns (2 000 lm), one at every veranda pier; brass sconces beside the main door; step bollards, side-door lanterns, 6 façade floodlights | The rhythm of lights along the arcades in the reference night view; safe routes and a lit landmark |
+| Verandas, steps, façade (L4–L6) | 18 lanterns (2 000 lm), one at every veranda pier; brass sconces beside the main door; lanterns on the tower fronts over the platform and steps; side-door lanterns; tower uplights and façade washes on the +8.39 m tower ledges | Nothing stands on the courtyard, platform or steps where people walk; every exterior light is fixed to the building |
 | Air (F1) | 12 ceiling fans (1.42 m) mid-bay over the two side aisles, between the centre and outer blocks | Where parishes really hang fans: nothing over the processional aisle, quiet at speed 2, ~0.33 m/s at the seats |
-| Festival exterior (L7, off except at feasts) | Warm bulb strings along the roof ridge, the main and veranda eaves, the rear gable, the front terrace and the tower corners; floods on both tower tops, the central shrine and the rear gable | The church outlined in light for Christmas and feasts; switched on by the *Christmas & festivals* scene |
-| Sound (A1–A3) | 12 slim 0.6 m wall columns, painted the wall colour, on the side-wall pilasters (axes 4–9) under the sconces, turned toward the back; 4 veranda pendants; 2 courtyard horns on the tower fronts (off) | Barely visible and nothing on the timber columns; each speaker covers the rows behind it, time-aligned to the priest's voice |
+| Festival exterior (L7, off except at feasts) | Warm bulb strings along the roof ridge, the main and veranda eaves, the rear gable, the front terrace and the corners of the three lower tower stages; floods on the +23.14 m tower ledges (belfry and dome), on the terrace (central shrine) and on the rear veranda roofs (rear gable) | The church outlined in light for Christmas and feasts; switched on by the *Christmas & festivals* scene |
+| Sound (A1–A3) | 12 slim 0.6 m wall columns, painted the wall colour, on the side-wall pilasters (axes 4–9) at 3.35 m, between the Stations of the Cross plaques and the sconces, turned toward the back; 4 veranda pendants; 2 courtyard horns on the tower fronts (off) | Barely visible and nothing on the timber columns; each speaker covers the rows behind it, time-aligned to the priest's voice |
 | Microphones | Ambo and altar gooseneck mics | The system runs at about 67 dBA, which keeps both microphones more than 3 dB inside the stability allowance |
 | Décor | Statues of Our Lady and Saint Joseph framed by the side arches, flowers, votive candle stands, Paschal candle, palms, banners. Christmas tree, nativity grotto, star, red lanterns, pennants and an aisle carpet are ready but hidden | Matches the reference interior; seasonal items are one switch away |
 | Roof underside | Timber lining with about 50 % slotted acoustic boards | Speech clarity *and* support for singing |
@@ -69,8 +70,8 @@ The **Full service · evening** scene gives these results at the 300 sampled sea
 | Maintained light on books | 330 lux average · 99 % of seats ≥ 200 lux (lowest 171) · uniformity 0.52 | 200–300 lux |
 | Light on the aisle floors | ≈ 85 lux at the main-door threshold, 133–290 lux along the centre, side and cross aisles; entrance hall 59–215 lux | ≈ 100 lux on circulation |
 | Light on the veranda floors | ≈ 36–45 lux average, at least 24 lux | ≈ 100 lux trial (see below) |
-| Speech intelligibility | STI 0.64 average · 0.49 minimum · 85 % of seats ≥ 0.60 | ≥ 0.60 at every seat |
-| Speech level | 67.5 dBA, 90 % of seats within ± 1.5 dB | ±3 dB |
+| Speech intelligibility | STI 0.63 average · 0.46 minimum · 80 % of seats ≥ 0.60 | ≥ 0.60 at every seat |
+| Speech level | 67 dBA, 90 % of seats within ± 1.5 dB | ±3 dB |
 | Microphone feedback | 3.5 dB (ambo) and 3.7 dB (altar) beyond a 6 dB stability allowance | stable with gooseneck microphones |
 | Background noise | 42 dBA (fans + outdoor + people) | ≈ 35 dBA where practicable |
 | Seated air speed | 0.33 m/s average (central 0.30, outer 0.35), up to ≈ 0.45 m/s at fan speed 3 | 0.3–0.8 m/s trial |
