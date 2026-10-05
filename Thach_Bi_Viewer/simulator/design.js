@@ -57,7 +57,7 @@
       add({ type: 'projector36', name: `Rear centre light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: q, mountYaw: 0, yaw: b.yaw, tilt: b.tilt, lumens: 3300, beam: 50 });
     }
     // LA · hidden roof uplights on top of every tie beam.
-    for (const k of [...nave, '11']) add({ type: 'uplight', name: `Roof uplight · axis ${k}`, circuit: 'LA', mount: 'floor', pos: [A[k], 9.18, 0], yaw: 90, mountYaw: 90, tilt: 90 });
+    for (const k of [...nave, '10']) add({ type: 'uplight', name: `Roof uplight · axis ${k}`, circuit: 'LA', mount: 'floor', pos: [A[k], 9.18, 0], yaw: 90, mountYaw: 90, tilt: 90 });
 
     // LD · chandeliers on chains from the ridge over the side-door crossings
     // and bay 6–7, plus a grand chandelier at the crossing.
@@ -67,7 +67,7 @@
     for (const k of ['3', '4', '5', '6', '7', '8']) for (const s of [-1, 1]) {
       add({ type: 'sconce2', name: `Sconce · axis ${k} · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A[k], 4.4, s * 7.07], yaw: -s * 90, mountYaw: -s * 90 });
     }
-    for (const s of [-1, 1]) add({ type: 'sconce2', name: `Sconce · sanctuary pier · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A['10'] - 0.32, 3.9, s * 3.6], yaw: 180, mountYaw: 180 });
+    for (const s of [-1, 1]) add({ type: 'sconce2', name: `Sconce · sanctuary pier · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A['11'] - 0.37, 4.3, s * 3.6], yaw: 180, mountYaw: 180 });
 
     // L3 · sanctuary.
     const altar = [43.95, 1.95, 0], ambo = [42.9, 2.25, -2.62], crucifix = [48.0, 5.0, 0];
@@ -87,10 +87,11 @@
     }
     { const p = [A['10'] + 0.33, 4.6, -3.6], a = aim(p, [47.55, 2.5, 0]);
       add({ type: 'spot15', name: 'Tabernacle accent', circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: 0, beam: 10, lumens: 900, shadow: false }); }
-    const statues = { B: [45.7, 0.15, -5.45], H: [45.7, 0.15, 5.45] };
+    // Our Lady (left) and Saint Joseph (right) in the niches beside the reredos.
+    const statues = { B: [48.88, 1.65, -2.62], H: [48.88, 1.65, 2.62] };
     for (const [k, base] of Object.entries(statues)) {
-      const p = [A['9'], sideBeamY - 0.005, base[2] * 1.03], a = aim(p, [base[0], 2.35, base[2]]);
-      add({ type: 'spot15', name: `Statue accent · ${k}`, circuit: 'L3', mount: 'pendant', pos: p, anchorY: sideBeamY, ...a, mountYaw: a.yaw, beam: 10, lumens: 1500, shadow: false });
+      const p = [A['10'], beamY - 0.005, base[2] * 0.95], a = aim(p, [base[0], 2.6, base[2]]);
+      add({ type: 'spot15', name: `Statue accent · ${k}`, circuit: 'L3', mount: 'pendant', pos: p, anchorY: beamY, ...a, mountYaw: a.yaw, beam: 12, lumens: 1200, shadow: false });
     }
 
     // L4 · a veranda lantern at every pier (axes 3–11), the rhythm of the
@@ -180,12 +181,12 @@
     add({ type: 'mic', name: 'Ambo microphone', circuit: 'MIC', mount: 'floor', pos: [42.36, 1.9, -2.62], yaw: 0, mountYaw: 0 });
     add({ type: 'mic', name: 'Altar microphone', circuit: 'MIC', mount: 'floor', pos: [44.45, 1.88, 0.45], yaw: 0, mountYaw: 0 });
 
-    // Decoration · statues framed by the sanctuary side arches, as in the references.
+    // Decoration · statues in the niches either side of the crucifix, as in the reference interior.
     add({ type: 'statueMary', name: 'Statue · Our Lady', circuit: 'DECOR', mount: 'floor', pos: statues.B, yaw: 180, mountYaw: 180 });
     add({ type: 'statueJoseph', name: 'Statue · Saint Joseph', circuit: 'DECOR', mount: 'floor', pos: statues.H, yaw: 180, mountYaw: 180 });
     for (const s of [-1, 1]) {
-      add({ type: 'flowerStand', name: `Flower stand · statue ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [44.95, 0.15, s * 4.65], yaw: 180, mountYaw: 180 });
-      add({ type: 'candleStand', name: `Votive candles · ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [45.1, 0.15, s * 6.35], yaw: 180, mountYaw: 180 });
+      add({ type: 'flowerStand', name: `Flower stand · statue ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [48.0, 0.75, s * 2.62], yaw: 180, mountYaw: 180 });
+      add({ type: 'candleStand', name: `Votive candles · ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [48.1, 0.15, s * 6.2], yaw: 180, mountYaw: 180 });
       add({ type: 'palm', name: `Palm · entrance ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [6.3, 0, s * 6.55], yaw: 0, mountYaw: 0 });
       add({ type: 'banner', name: `Banner · axis 9 · ${side(s)}`, circuit: 'DECOR', mount: 'wall', pos: [A['9'] - 0.315, 6.6, s * 3.6], yaw: 180, mountYaw: 180 });
     }
@@ -206,5 +207,5 @@
 
   // Bump when the recommended design changes: browsers holding a layout saved
   // from an older version then load the new design (the old one is kept aside).
-  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-08b-speakers-above-plaques' };
+  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-10-sanctuary-back-wall' };
 })();

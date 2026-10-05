@@ -53,6 +53,12 @@
     return null;
   }
   function walkAllowed(x,z) {
+    const az=Math.abs(z);
+    // Sanctuary fit-out: service-room walls (door gaps at x 50.65), side benches, furniture.
+    if (x >= 48.6 && x <= 53.1 && az >= 3.42 && az <= 3.8 && Math.abs(x - 50.65) > .4) return false;
+    if (x >= 40.3 && x <= 45.15 && az >= 3.95 && az <= 6.55) return false;
+    if (x >= 52.1 && x <= 53.1 && az < 3.1) return false;
+    if (x >= 48.7 && x <= 49.8 && z >= 1.0 && z <= 1.8) return false;
     if (x >= -13.219 && x <= -.38 && Math.abs(z) <= 13.05) return true;
     if (stairAllowed(x,z)) return true;
     return null;
@@ -385,20 +391,29 @@
       for(const axis of [-1,1])rod([x,8.92,z],[x+axis*.8,9.16,z],.075,im.timber,roofs,'Timber knee brace · proposed section');
     }
     // Section sheet 5: a three-lobed opening under the sanctuary roof.
-    // The curve radii/depth and longitudinal bay placement remain provisional.
+    // The plaster frame closes the sanctuary at axis 11 (its back wall), so the
+    // timber columns on axis 10 stand free in front of it, as in the reference
+    // interior. Curve radii and depth remain provisional.
+    const SX=data.longitudinal['11'];
     const sanctuaryFrame=new T.Group();sanctuaryFrame.name='Sanctuary three-lobed frame · section sheet 5';
-    sanctuaryFrame.position.x=44.175;sanctuaryFrame.rotation.y=-Math.PI/2;structure.add(sanctuaryFrame);
+    sanctuaryFrame.position.x=SX;sanctuaryFrame.rotation.y=-Math.PI/2;structure.add(sanctuaryFrame);
     const obsoleteTies=[];
     roofs.traverse(o=>{
-      if(o.isMesh&&Math.abs(o.position.x-44.175)<.01&&/transverse tie|knee brace|truss diagonal|king post|connection block/i.test(o.name))obsoleteTies.push(o);
+      if(o.isMesh&&Math.abs(o.position.x-SX)<.01&&/transverse tie|knee brace|truss diagonal|king post|connection block/i.test(o.name))obsoleteTies.push(o);
     });
     obsoleteTies.forEach(o=>o.removeFromParent());
-    function lobedFrame(cx,half,spring,shoulder,crown,roofEnd,roofCrown) {
+    floors.traverse(o=>{if(o.name.startsWith('Sanctuary separation'))obsoleteTies.push(o);});
+    obsoleteTies.forEach(o=>o.removeFromParent());
+    function lobedLine(cx,half,spring,shoulder,crown){
       const line=new T.Shape();line.moveTo(cx-half,spring);
       line.quadraticCurveTo(cx-half,shoulder-.05,cx-half*.58,shoulder);
       line.bezierCurveTo(cx-half*.50,crown,cx-half*.15,crown+.04,cx,crown+.04);
       line.bezierCurveTo(cx+half*.15,crown+.04,cx+half*.50,crown,cx+half*.58,shoulder);
       line.quadraticCurveTo(cx+half,shoulder-.05,cx+half,spring);
+      return line;
+    }
+    function lobedFrame(cx,half,spring,shoulder,crown,roofEnd,roofCrown) {
+      const line=lobedLine(cx,half,spring,shoulder,crown);
       const trace=line.getPoints(48);
       line.lineTo(cx+half,roofEnd);line.lineTo(cx,roofCrown);line.lineTo(cx-half,roofEnd);line.closePath();
       const wall=mesh(new T.ExtrudeGeometry(line,{depth:.32,bevelEnabled:false,curveSegments:32}),mat.wall,sanctuaryFrame,'Sanctuary arch spandrel');wall.position.z=-.16;
@@ -410,9 +425,116 @@
     lobedFrame(0,3.3,8.25,9.38,10.83,9.82,12.18);
     for(const sign of [-1,1]) {
       lobedFrame(sign*5.48,1.58,5.55,6.05,6.8,7.1,7.6);
-      box(.64,8.65,.64,sign*3.6,5.075,0,mat.wall,sanctuaryFrame,'Sanctuary plaster pier on D/E grid');
-      box(.84,.18,.84,sign*3.6,9.42,0,mat.trim,sanctuaryFrame,'Sanctuary pier capital');
+      box(.72,9.25,.72,sign*3.6,4.775,0,mat.wall,sanctuaryFrame,'Sanctuary plaster pier on D/E grid · axis 11');
+      box(.9,.18,.9,sign*3.6,9.42,0,mat.trim,sanctuaryFrame,'Sanctuary pier capital');
+      box(.96,.9,.96,sign*3.6,.6,0,mat.trim,sanctuaryFrame,'Sanctuary pier base');
     }
+    // Axis-10 timber columns now stand on the dais: a stone collar at +0.75.
+    for(const sign of [-1,1])box(.84,.22,.84,data.longitudinal['10'],.86,sign*3.6,im.whiteStone,structure,'Carved stone column base on the dais');
+
+    // Back wall inside the lobed arch: the reredos stands in front of it, with
+    // arched niches for Our Lady (left, B side) and Saint Joseph (right, H side).
+    const niche={z:2.62,w:.96,sill:1.65,spring:3.55,rise:.48,depth:.38};
+    const back=lobedLine(0,3.3,8.25,9.38,10.83);
+    back.lineTo(3.3,.15);back.lineTo(-3.3,.15);back.closePath();
+    for(const sign of [-1,1])back.holes.push(arch(sign*niche.z,niche.sill,niche.w,niche.spring,niche.rise));
+    const backWall=mesh(new T.ExtrudeGeometry(back,{depth:.2,bevelEnabled:false,curveSegments:32}),mat.wall,sanctuaryFrame,'Sanctuary back wall behind the reredos');
+    backWall.position.z=-.12;
+    const nicheBack=mat.cap.clone();nicheBack.name='Warm gilt niche lining · proposal';nicheBack.map=null;nicheBack.bumpMap=null;nicheBack.color.set('#d8bb7a');nicheBack.roughness=.55;nicheBack.metalness=.25;
+    for(const sign of [-1,1]){
+      const x=sign*niche.z,top=niche.spring+niche.rise,h=top-niche.sill,zb=-.12-niche.depth;
+      box(niche.w+.1,h+.1,.04,x,niche.sill+h/2,zb,nicheBack,sanctuaryFrame,'Statue niche gilt back');
+      box(niche.w+.2,h+.2,.08,x,niche.sill+h/2,zb-.06,mat.wall,sanctuaryFrame,'Statue niche back plaster');
+      for(const side of [-1,1])box(.05,h,niche.depth,x+side*(niche.w/2+.025),niche.sill+h/2,-.12-niche.depth/2,mat.wall,sanctuaryFrame,'Statue niche reveal');
+      box(niche.w+.1,.05,niche.depth,x,top+.02,-.12-niche.depth/2,mat.wall,sanctuaryFrame,'Statue niche head');
+      box(niche.w,.05,niche.depth+.3,x,niche.sill-.025,-.12-niche.depth/2+.15,im.whiteStone,sanctuaryFrame,'Statue niche floor');
+      // Moulded arched surround and a carved console below.
+      const pts=[];pts.push(new T.Vector3(x-niche.w/2-.06,niche.sill,.1));
+      for(let k=0;k<=24;k++){const a=Math.PI-k*Math.PI/24;pts.push(new T.Vector3(x+Math.cos(a)*(niche.w/2+.06),niche.spring+Math.sin(a)*(niche.rise+.06),.1));}
+      pts.push(new T.Vector3(x+niche.w/2+.06,niche.sill,.1));
+      mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts,false,'catmullrom',.05),64,.045,8,false),mat.trim,sanctuaryFrame,'Niche arch moulding');
+      box(niche.w+.24,.12,.36,x,niche.sill-.06,.26,im.whiteStone,sanctuaryFrame,'Statue console top');
+      box(niche.w-.08,.78,.22,x,niche.sill-.51,.19,mat.trim,sanctuaryFrame,'Statue console body');
+      box(.5,.26,.03,x,niche.sill-.5,.31,mat.darkTrim,sanctuaryFrame,'Console carved panel');
+    }
+
+    // Seating beside the altar on the +0.15 side platforms: the choir on the
+    // right (H, +z) with three stepped rows and a keyboard; servers and
+    // ministers on the left (B, −z). Benches face the altar across the dais.
+    const fit=new T.Group();fit.name='Sanctuary seating and service room · proposal';building.add(fit);
+    function sideBench(x0,x1,z,y,face,name){
+      const len=x1-x0,cx=(x0+x1)/2,out=-face;
+      box(len,.07,.42,cx,y+.44,z,im.wood,fit,`${name} seat`);
+      box(len,.5,.06,cx,y+.84,z+out*.22,im.wood,fit,`${name} back`);
+      box(len,.12,.07,cx,y+.13,z+out*.17,im.wood,fit,`${name} rail`);
+      for(const x of [x0+.03,cx,x1-.03]){
+        box(.06,.42,.4,x,y+.21,z,im.wood,fit,`${name} support`);
+      }
+      for(const x of [x0,x1])box(.07,.95,.5,x,y+.47,z+out*.03,im.wood,fit,`${name} end panel`);
+    }
+    const choirRows=[{z:4.25,y:.15},{z:5.15,y:.33},{z:6.05,y:.51}];
+    choirRows.forEach((r,i)=>{
+      if(i)box(3.95,r.y-.15,.9,43.075,.15+(r.y-.15)/2,r.z,im.woodInset,fit,'Choir riser');
+      sideBench(41.1,45.05,r.z,r.y,-1,`Choir bench row ${i+1}`);
+    });
+    for(const [i,z] of [-4.25,-5.15].entries())sideBench(41.1,45.05,z,.15,1,`Ministers bench row ${i+1}`);
+    // Choir keyboard at the front of the choir, facing the singers.
+    box(.42,.08,1.32,40.68,.98,5.15,im.wood,fit,'Choir keyboard case');
+    box(.16,.03,1.22,40.62,1.035,5.15,im.whiteStone,fit,'Keyboard keys');
+    box(.06,.72,1.32,40.86,.51,5.15,im.wood,fit,'Keyboard stand panel');
+    for(const z of [4.55,5.75])box(.36,.82,.06,40.68,.56,z,im.wood,fit,'Keyboard stand side');
+
+    // Service room (nhà áo / sacristy) behind the altar between the D and E
+    // grids: vesting furniture and the church's electrical and sound control.
+    const room={x0:SX+.12,x1:53.0,half:3.6,h:4.15,door:{x:50.65,w:.95,h:2.2}};
+    for(const sign of [-1,1]){
+      const wall=new T.Shape();wall.moveTo(room.x0,.15);wall.lineTo(room.x1,.15);wall.lineTo(room.x1,room.h);wall.lineTo(room.x0,room.h);wall.closePath();
+      const d=room.door,hole=new T.Path();hole.moveTo(d.x-d.w/2,.15);hole.lineTo(d.x+d.w/2,.15);hole.lineTo(d.x+d.w/2,.15+d.h);hole.lineTo(d.x-d.w/2,.15+d.h);hole.closePath();wall.holes.push(hole);
+      const w=mesh(new T.ExtrudeGeometry(wall,{depth:.2,bevelEnabled:false}),mat.wall,fit,'Service room side wall');w.position.z=sign*room.half-.1;
+      box(d.w+.2,.12,.26,d.x,.15+d.h+.06,sign*room.half,mat.trim,fit,'Service room door head');
+      for(const e of [-1,1])box(.08,d.h,.26,d.x+e*(d.w/2+.04),.15+d.h/2,sign*room.half,mat.trim,fit,'Service room door frame');
+      const hinge=new T.Group();hinge.position.set(d.x-d.w/2+.02,.15,sign*(room.half-.12));hinge.rotation.y=sign*1.25;fit.add(hinge);
+      box(d.w-.04,d.h-.04,.05,(d.w-.04)/2,(d.h-.04)/2,0,mat.wood,hinge,'Service room door leaf (open)');
+    }
+    box(room.x1-room.x0,.12,room.half*2+.2,(room.x0+room.x1)/2,room.h+.06,0,mat.wall,roofs,'Service room ceiling');
+    const panelLight=new T.MeshStandardMaterial({color:'#fffaf0',emissive:'#fff3dc',emissiveIntensity:.9});panelLight.name='Service room ceiling panel';
+    for(const x of [50.0,51.9])box(.6,.03,.6,x,room.h-.01,0,panelLight,fit,'Service room LED ceiling panel');
+    // Vesting wardrobe and vesting counter along the rear wall.
+    box(.62,2.15,2.6,52.55,.15+1.075,-1.75,im.wood,fit,'Vestment wardrobe');
+    for(const z of [-2.4,-1.75,-1.1])box(.02,1.95,.02,52.23,1.225,z,mat.metal,fit,'Wardrobe door joint');
+    box(.62,.9,2.2,52.55,.6,1.45,im.wood,fit,'Vesting counter with drawers');
+    box(.68,.05,2.28,52.53,1.075,1.45,im.whiteStone,fit,'Vesting counter top');
+    for(const y of [.4,.7])box(.02,.02,2.0,52.23,y,1.45,mat.metal,fit,'Drawer line');
+    box(.05,.55,.04,52.95,2.1,1.45,im.wood,fit,'Vesting crucifix upright');box(.05,.04,.32,52.95,2.25,1.45,im.wood,fit,'Vesting crucifix arm');
+    box(.8,.04,.8,50.9,.88,0,im.wood,fit,'Service room table');
+    for(const dx of [-.33,.33])for(const dz of [-.33,.33])box(.05,.73,.05,50.9+dx,.515,dz,im.wood,fit,'Table leg');
+    // Electrical and sound control on the back of the sanctuary wall.
+    function label(text,w,h,x,y,z){
+      const c=document.createElement('canvas');c.width=512;c.height=Math.round(512*h/w);const g=c.getContext('2d');
+      g.fillStyle='#f4f1e8';g.fillRect(0,0,c.width,c.height);g.fillStyle='#2b3a36';g.font=`bold ${Math.round(c.height*.42)}px sans-serif`;g.textAlign='center';g.textBaseline='middle';g.fillText(text,c.width/2,c.height/2);
+      const m=new T.MeshBasicMaterial({map:new T.CanvasTexture(c)});m.map.colorSpace=T.SRGBColorSpace;m.name=`Label · ${text}`;
+      const plane=mesh(new T.PlaneGeometry(w,h),m,fit,`Label · ${text}`);plane.position.set(x,y,z);plane.rotation.y=Math.PI/2;plane.castShadow=false;return plane;
+    }
+    const steel=new T.MeshStandardMaterial({color:'#c9ccc8',roughness:.45,metalness:.55});steel.name='Powder-coated steel enclosure';
+    const dark=new T.MeshStandardMaterial({color:'#1d2124',roughness:.5,metalness:.3});dark.name='Equipment rack black';
+    const wx=SX+.12; // room face of the back wall
+    const boards=[
+      {z:-1.55,w:.8,h:1.1,y:1.75,text:'Main board (MSB)'},
+      {z:-.55,w:.8,h:.9,y:1.85,text:'Lighting L1–L7 · scenes'},
+      {z:.4,w:.6,h:.7,y:1.95,text:'Fans · speed control'},
+    ];
+    for(const b of boards){
+      box(.2,b.h,b.w,wx+.1,b.y,b.z,steel,fit,`Wall enclosure · ${b.text}`);
+      box(.01,b.h-.08,.01,wx+.205,b.y,b.z+b.w*.32,mat.metal,fit,'Enclosure handle');
+      label(b.text,b.w*.92,.12,wx+.206,b.y+b.h/2+.09,b.z);
+    }
+    box(.05,.05,3.1,wx+.04,2.42,-.55,steel,fit,'Cable tray');
+    // Sound rack: amplifiers, DSP, wireless microphone receivers.
+    box(.8,1.6,.62,wx+.48,.95,1.4,dark,fit,'19-inch sound rack');
+    const ledMat=new T.MeshBasicMaterial({color:'#5df08a'});ledMat.name='Status LEDs';
+    for(let k=0;k<6;k++){box(.02,.16,.52,wx+.885,.45+k*.2,1.4,steel,fit,'Rack unit face');box(.02,.025,.025,wx+.9,.45+k*.2,1.62,ledMat,fit,'Rack status LED');}
+    label('Sound · amps · DSP · mics',.56,.1,wx+.882,1.68,1.4);
+    label('Phòng đồ lễ · Service room',.9,.14,52.98-.01,2.85,0).rotation.y=-Math.PI/2;
     const nodes=[];building.traverse(o=>{if(o.isMesh)nodes.push(o);});
     // Warm plaster window reveals, bronze rosettes, richer door-leaf panels.
     for(const o of nodes) {

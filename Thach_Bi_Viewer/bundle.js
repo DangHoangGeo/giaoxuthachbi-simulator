@@ -39301,6 +39301,10 @@ void main() {
     j["side-stair"] = {title: "Side stair and outer doorway", note: "Parallel flights meet a landing before the turn into the door.", pos: [10.7, 3.8, -19.5], target: [16.725, 2.2, -10.414]};
     j["projecting-wing"] = {title: "Wider section at axes 9–10", note: "The wing projects on both sides of the nave.", pos: [29, 9.5, -27], target: [40.575, 4, -12.5]};
     document.getElementById("stairCheckpoint").addEventListener("click", () => { nt("side-stair", {mode:"explore"}); x("settingsPanel").hidden = true; x("settingsButton").setAttribute("aria-expanded","false"); });
+    j["altar-choir"] = {title: "Altar, statues and choir", note: "Crucifix at the centre with Our Lady and Saint Joseph; choir benches on the right, ministers on the left.", pos: [39.2, 3.3, -5.9], target: [46.6, 1.4, 2.6], interior: !0};
+    j["service-room"] = {title: "Service room behind the altar", note: "Vesting room with the main electrical board, lighting and fan controls and the sound rack.", pos: [52.3, 2.2, 3.0], target: [48.8, 1.5, -1.2], interior: !0};
+    for (const [id, key] of [["altarCheckpoint", "altar-choir"], ["serviceCheckpoint", "service-room"]])
+      document.getElementById(id).addEventListener("click", () => { nt(key, {mode:"explore"}); x("settingsPanel").hidden = true; x("settingsButton").setAttribute("aria-expanded","false"); });
     document.getElementById("wingCheckpoint").addEventListener("click", () => { nt("projecting-wing", {mode:"explore"}); x("settingsPanel").hidden = true; x("settingsButton").setAttribute("aria-expanded","false"); });
     for (let V of ["3", "4", "5", "6", "7", "8", "9", "10", "11"]) {
       let _e = c.longitudinal[V];
@@ -42720,11 +42724,11 @@ void main() {
     x("Proposed credence table", 45.7, 46.6, -3.33, -1.91);
     let Q = 48.31,
       oe = new s.Shape();
-    (oe.moveTo(-2.78, 0.8),
-      oe.lineTo(2.78, 0.8),
-      oe.lineTo(2.78, 5.8),
-      oe.absellipse(0, 5.8, 2.78, 1.82, 0, Math.PI, !1),
-      oe.lineTo(-2.78, 0.8),
+    (oe.moveTo(-1.85, 0.8),
+      oe.lineTo(1.85, 0.8),
+      oe.lineTo(1.85, 5.8),
+      oe.absellipse(0, 5.8, 1.85, 1.3, 0, Math.PI, !1),
+      oe.lineTo(-1.85, 0.8),
       oe.closePath());
     let be = p(
       new s.ExtrudeGeometry(oe, {
@@ -42739,9 +42743,7 @@ void main() {
     ((be.rotation.y = Math.PI / 2),
       (be.position.x = Q),
       _(
-        0.1,
-        5.3,
-        3.57,
+        0.1, 5.3, 2.4,
         Q - 0.065,
         3.46,
         0,
@@ -42749,7 +42751,7 @@ void main() {
         Se,
         "Proposed reredos central timber panel",
       ));
-    for (let F of [-1.78, -1.64, 1.64, 1.78])
+    for (let F of [-1.18, -1.08, 1.08, 1.18])
       _(
         0.035,
         5.31,
@@ -42762,12 +42764,12 @@ void main() {
         "Fine reredos inlay",
       );
     let Te = [];
-    Te.push([Q - 0.15, 0.92, -2.56], [Q - 0.15, 5.8, -2.56]);
+    Te.push([Q - 0.15, 0.92, -1.68], [Q - 0.15, 5.8, -1.68]);
     for (let F = 0; F <= 36; F++) {
       let G = Math.PI - (F * Math.PI) / 36;
-      Te.push([Q - 0.15, 5.8 + Math.sin(G) * 1.61, Math.cos(G) * 2.56]);
+      Te.push([Q - 0.15, 5.8 + Math.sin(G) * 1.15, Math.cos(G) * 1.68]);
     }
-    Te.push([Q - 0.15, 0.92, 2.56]);
+    Te.push([Q - 0.15, 0.92, 1.68]);
     for (let F = 1; F < Te.length; F++)
       v(Te[F - 1], Te[F], 0.035, c.brass, Se, "Proposed reredos arch surround");
     for (let F of [-1, 1])
@@ -42777,7 +42779,7 @@ void main() {
         0.21,
         Q - 0.17,
         3.33,
-        F * 2.68,
+        F * 1.76,
         c.stone,
         Se,
         "Reredos pilaster",
@@ -42788,7 +42790,7 @@ void main() {
           0.39,
           Q - 0.17,
           5.82,
-          F * 2.68,
+          F * 1.76,
           c.brass,
           Se,
           "Reredos capital",
@@ -42799,7 +42801,7 @@ void main() {
           0.4,
           Q - 0.17,
           0.89,
-          F * 2.68,
+          F * 1.76,
           c.stone,
           Se,
           "Reredos base",
@@ -42966,7 +42968,7 @@ void main() {
       ),
       Ae(47.55, 2.4, -0.46, Se, 0.74),
       Ae(47.55, 2.4, 0.46, Se, 0.74),
-      x("Proposed reredos and tabernacle", 47.13, 48.57, -2.98, 2.98));
+      x("Proposed reredos and tabernacle", 47.13, 48.57, -1.95, 1.95));
     function Xe(F, G, H = 0.75) {
       let ee = new s.Group();
       ((ee.name = "Proposed modest sanctuary floral arrangement"),
