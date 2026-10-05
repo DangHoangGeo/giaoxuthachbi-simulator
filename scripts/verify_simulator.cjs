@@ -158,6 +158,7 @@ function runSync(kinds) {
   const wingAvg = wingSeats.reduce((t, x) => t + x.sti, 0) / wingSeats.length, wingMin = Math.min(...wingSeats.map(x => x.sti));
   console.log(JSON.stringify({ naveStiOk: Math.round(naveOk), naveStiMin: +naveMin.toFixed(3), wingStiAvg: +wingAvg.toFixed(3), wingStiMin: +wingMin.toFixed(3), wingLuxMin: Math.round(Math.min(...wingSeats.map(x => x.lux))) }));
   assert.equal(wingSeats.length, 80, 'wing benches are analysed');
+  assert(Math.min(...wingSeats.map(x => x.lux)) >= 200, 'every wing seat has ≥ 200 lux');
   assert(naveMin >= 0.45 && naveOk >= 75, 'nave speech clarity: min ' + naveMin + ', ' + naveOk + ' % ≥ 0.60');
   assert(wingMin >= 0.45 && wingAvg >= 0.5, 'wing speech clarity: min ' + wingMin + ', avg ' + wingAvg);
   // Toggling a circuit changes light; history restores it.

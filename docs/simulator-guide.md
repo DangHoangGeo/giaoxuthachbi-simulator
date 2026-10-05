@@ -345,7 +345,7 @@ Still to do:
 
 **Verified 2026-10-15 (full service):**
 - **Nave:** 79 % of seats at STI ≥ 0.60 (was 76 %), worst seat 0.46.
-- **Wings:** speech clarity averages 0.54, worst seat 0.45 (was 0.40 with no wing speakers). Light averages about 296 lux, darkest seat 154.
+- **Wings:** speech clarity averages 0.54, worst seat 0.45 (was 0.40 with no wing speakers). Every wing seat gets at least 200 lux (front-row heads 4000 lm, back-row heads 3800 lm).
 - **Feedback margin:** at least 3 dB at both microphones.
 - **Echo:** no echo seats.
 - **Checks:** `verify_simulator.cjs` now checks the nave and the wings separately.

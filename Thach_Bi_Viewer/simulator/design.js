@@ -65,9 +65,9 @@
     for (const s of [-1, 1]) for (const [mx, bx] of [[40.26, 38.94], [40.86, 42.22]]) {
       const block = bx < 40.5 ? 'front' : 'rear';
       const hi = [mx, 4.15, s * 13.06], a = aim(hi, [bx, 0.48, s * 11.1]);
-      add({ type: 'projector36', name: `Wing light · ${side(s)} · ${block} block · back rows`, circuit: 'L8', mount: 'wall', pos: hi, mountYaw: -s * 90, yaw: a.yaw, tilt: a.tilt, lumens: 3200, beam: 50 });
+      add({ type: 'projector36', name: `Wing light · ${side(s)} · ${block} block · back rows`, circuit: 'L8', mount: 'wall', pos: hi, mountYaw: -s * 90, yaw: a.yaw, tilt: a.tilt, lumens: 3800, beam: 50 });
       const lo = [mx, 2.92, s * 13.06], b = aim(lo, [bx, 0.48, s * 8.7]);
-      add({ type: 'projector36', name: `Wing light · ${side(s)} · ${block} block · front rows`, circuit: 'L8', mount: 'wall', pos: lo, mountYaw: -s * 90, yaw: b.yaw, tilt: b.tilt, lumens: 2600, beam: 36 });
+      add({ type: 'projector36', name: `Wing light · ${side(s)} · ${block} block · front rows`, circuit: 'L8', mount: 'wall', pos: lo, mountYaw: -s * 90, yaw: b.yaw, tilt: b.tilt, lumens: 4000, beam: 36 });
     }
     // LA · hidden roof uplights on top of every tie beam.
     for (const k of [...nave, '10']) add({ type: 'uplight', name: `Roof uplight · axis ${k}`, circuit: 'LA', mount: 'floor', pos: [A[k], 9.18, 0], yaw: 90, mountYaw: 90, tilt: 90 });
