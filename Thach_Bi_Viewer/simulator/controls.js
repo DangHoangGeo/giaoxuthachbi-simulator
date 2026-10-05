@@ -16,20 +16,21 @@
   const present = () => Object.keys(SIM.CIRCUITS).filter(c => items(c).length);
   const fed = () => SIM.state.settings.db2Feed !== false;
   const TOWERS = { off: [], evening: ['L6', 'L9'], festival: ['L6', 'L7', 'L9'] };
-  const TABS = [['scenes', 'Scenes'], ['DB1', 'DB-1 Main'], ['DB2', 'DB-2 Towers'], ['fans', 'Fans'], ['sound', 'Sound']];
+  const TABS = [['scenes', 'Scenes'], ['DB1', 'DB-1'], ['DB2', 'Towers'], ['fans', 'Fans'], ['sound', 'Sound']];
   let tab = 'scenes', open = false;
   try { tab = localStorage.getItem('ctlTab') || tab; open = localStorage.getItem('ctlOpen') === '1'; } catch (e) { /* storage unavailable */ }
 
   const root = document.createElement('div');
   root.className = 'ctl-dock';
   root.innerHTML = `
-    <div class="ctl-stats" id="ctlStats"></div>
     <div class="ctl-panel" id="ctlPanel" ${open ? '' : 'hidden'}>
       <div class="ctl-tabs">${TABS.map(([k, l]) => `<button data-tab="${k}">${l}</button>`).join('')}</div>
       <div class="ctl-body" id="ctlBody"></div>
     </div>
-    <button class="ctl-toggle" id="ctlToggle" aria-expanded="${open}">Control panel</button>`;
-  document.body.append(root);
+    <button class="ctl-toggle" id="ctlToggle" aria-expanded="${open}" title="Control panel">⚡ Controls</button>`;
+  const stats = document.createElement('div');
+  stats.className = 'ctl-stats'; stats.id = 'ctlStats';
+  document.body.append(root, stats);
   const body = root.querySelector('#ctlBody'), panel = root.querySelector('#ctlPanel'), toggle = root.querySelector('#ctlToggle');
 
   /* ------------------------------------------------------------ stats */
@@ -37,7 +38,7 @@
   function renderStats() {
     const s = last?.seats, p = SIM.powerSummary();
     const cell = (k, v, u, ok) => `<div class="ctl-stat${ok === false ? ' bad' : ''}"><b>${v}</b><small>${u}</small><span>${k}</span></div>`;
-    root.querySelector('#ctlStats').innerHTML =
+    stats.innerHTML =
       cell('Light', s?.lux ? fmt(s.lux.avg) : '…', 'lux', s?.lux ? s.lux.avg >= 200 : undefined) +
       cell('Speech', s?.sti ? fmt(s.sti.avg, 2) : '–', 'STI', s?.sti ? s.sti.avg >= 0.6 : undefined) +
       cell('Air', s?.air ? fmt(s.air.avg, 2) : '…', 'm/s', s?.air ? s.air.avg >= 0.3 : undefined) +
@@ -47,17 +48,17 @@
   }
 
   /* ------------------------------------------------------------ panel */
-  const breaker = c => `<button class="ctl-breaker" data-act="breaker" data-circuit="${c}"><span class="ctl-rating"></span><span class="ctl-lever"><b></b></span><span class="ctl-code">${c}</span><span class="ctl-name">${esc(short(c))}</span></button>`;
+  const breaker = c => `<button class="ctl-breaker" data-act="breaker" data-circuit="${c}"><span class="ctl-lever"><b></b></span><span class="ctl-code">${c}</span></button>`;
   const rail = (label, list) => list.length ? `<div class="ctl-rail"><div class="ctl-rail-label">${label}</div><div class="ctl-rail-row">${list.map(breaker).join('')}</div></div>` : '';
   const onBoard = (bd, f) => present().filter(c => (SIM.CIRCUITS[c].board || 'DB1') === bd && f(SIM.CIRCUITS[c]));
   function boardHtml(bd) {
     const B = SIM.BOARDS[bd];
     const areas = [...new Set(onBoard(bd, x => x.cat === 'light').map(c => SIM.CIRCUITS[c].area || 'Other'))];
     const head = bd === 'DB1'
-      ? `<div class="ctl-rail"><div class="ctl-rail-label">Main 63 A · feeds DB-2</div><div class="ctl-rail-row"><button class="ctl-breaker ctl-feeder" data-act="feeder"><span class="ctl-rating">C32</span><span class="ctl-lever"><b></b></span><span class="ctl-code">DB-2</span><span class="ctl-name">Towers board</span></button></div></div>`
-      : `<div class="ctl-dead" data-show="dead">No power · switch on the DB-2 feeder at DB-1</div>
-         <div class="ctl-keys">${Object.keys(TOWERS).map(k => `<button class="ctl-key" data-act="towers" data-mode="${k}"><i></i>Towers ${k}</button>`).join('')}</div>`;
-    return `<div class="ctl-board" data-board="${bd}"><div class="ctl-where">${esc(B.where)} · <span data-board-load="${bd}"></span></div>${head}
+      ? `<div class="ctl-rail"><div class="ctl-rail-label">Feeder</div><div class="ctl-rail-row"><button class="ctl-breaker ctl-feeder" data-act="feeder" title="DB-2 feeder (C32) · cuts the whole towers board"><span class="ctl-lever"><b></b></span><span class="ctl-code">DB-2</span></button></div></div>`
+      : `<div class="ctl-dead" data-show="dead">No power (feeder off at DB-1)</div>
+         <div class="ctl-keys">${Object.keys(TOWERS).map(k => `<button class="ctl-key" data-act="towers" data-mode="${k}" title="Towers ${k}"><i></i>${k[0].toUpperCase() + k.slice(1)}</button>`).join('')}</div>`;
+    return `<div class="ctl-board" data-board="${bd}"><div class="ctl-where" title="${esc(B.where)}"><span data-board-load="${bd}"></span></div>${head}
       ${areas.map(a => rail(a, onBoard(bd, x => x.cat === 'light' && (x.area || 'Other') === a))).join('')}
       ${rail('Fans', onBoard(bd, x => x.cat === 'fan'))}${rail('Decoration', onBoard(bd, x => x.cat === 'decor'))}</div>`;
   }
@@ -71,13 +72,13 @@
       html = `<div class="ctl-reg-row">${present().filter(c => SIM.CIRCUITS[c].cat === 'fan').map(c => `<div class="ctl-regulator">
         <button class="ctl-knob" data-act="knob" data-circuit="${c}"><b></b></button>
         <div class="ctl-ticks" data-ticks="${c}"><span>0</span><span>1</span><span>2</span><span>3</span></div>
-        <div class="ctl-reg-label">${esc(short(c))}<small>${items(c).length} fans</small></div></div>`).join('')}</div>`;
+        <div class="ctl-reg-label" title="${esc(SIM.CIRCUITS[c].label)} · ${items(c).length} fans">${c}</div></div>`).join('')}</div>`;
     } else {
-      html = `<div class="ctl-strips">${present().filter(c => SIM.CIRCUITS[c].cat === 'speaker').map(c => `<div class="ctl-strip" data-strip="${c}"><div class="ctl-strip-name">${c}</div>
+      html = `<div class="ctl-strips">${present().filter(c => SIM.CIRCUITS[c].cat === 'speaker').map(c => `<div class="ctl-strip" data-strip="${c}" title="${esc(SIM.CIRCUITS[c].label)}"><div class="ctl-strip-name">${c}</div>
         <div class="ctl-meter"><i></i></div>
         <input type="range" class="ctl-fader" min="-20" max="6" step="1" data-act="fader" data-circuit="${c}" aria-label="${esc(SIM.CIRCUITS[c].label)} level">
         <div class="ctl-db"></div><button class="ctl-mute" data-act="mute" data-circuit="${c}"></button>
-        <div class="ctl-strip-label">${esc(short(c))}</div></div>`).join('')}</div>`;
+        </div>`).join('')}</div>`;
     }
     body.innerHTML = html;
     root.querySelectorAll('.ctl-tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
@@ -90,8 +91,7 @@
     body.querySelectorAll('[data-act=breaker]').forEach(b => {
       const c = b.dataset.circuit, x = byC[c] || {};
       b.classList.toggle('on', items(c).some(i => i.on));
-      b.querySelector('.ctl-rating').textContent = 'C' + (x.mcb || 6);
-      b.title = `${SIM.CIRCUITS[c].label} · ${items(c).length} fittings · ${fmt(x.amps || 0, 1)} A now`;
+      b.title = `${SIM.CIRCUITS[c].label}\n${items(c).length} fittings · C${x.mcb || 6} breaker · ${fmt(x.amps || 0, 1)} A now`;
     });
     body.querySelectorAll('[data-act=feeder]').forEach(b => b.classList.toggle('on', fed()));
     body.querySelectorAll('[data-board-load]').forEach(el => {

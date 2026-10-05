@@ -379,3 +379,8 @@ Still to do:
   - L9, a new circuit: the stage floods on the tower cornices and the tower door lanterns
 - **Tower buttons:** *Towers off / evening / festival* switch L6, L9 and L7 together.
 - **Simulator card:** the old Controls tab is gone, and the descriptive text over the 3D view is hidden for a clearer picture.
+- **Compact layout (2026-10-17):**
+  - Stats are a slim, see-through strip at the top left, with dark text by day and light text in the evening.
+  - The control panel is about 250 px wide and opens from a small "⚡ Controls" button.
+  - Breakers show only their code (L1, L9…); hover a breaker for its name, breaker rating and current.
+  - The tower buttons read *Off / Evening / Festival*.

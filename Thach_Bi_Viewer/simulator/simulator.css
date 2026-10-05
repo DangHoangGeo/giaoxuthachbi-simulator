@@ -233,7 +233,48 @@ body.sim-open .walk-panel{left:calc(50% + 196px)}
 .ctl-name{height:2.3em;overflow:hidden}
 @media(max-width:760px){.ctl-dock{right:8px;left:8px;width:auto;bottom:90px}.ctl-panel{height:300px}}
 /* Clearer view: keep the dock left of the control panel; drop secondary text over the 3D view. */
-@media(min-width:761px){.place-dock{transform:translateX(calc(-50% - 185px))}.navigation-hint{transform:translateX(calc(-50% - 185px))}}
+@media(min-width:761px){.place-dock{transform:translateX(calc(-50% - 120px))}.navigation-hint{transform:translateX(calc(-50% - 120px))}}
 .scene-heading p,.scene-eyebrow,.detail-hint{display:none}
 .ctl-panel{height:min(300px,calc(100vh - 470px));min-height:220px}
 .ctl-dock .ctl-lever b{transition:none}
+/* Compact v2: small switches (names on hover), slim panel, stats top-left. */
+.ctl-dock{width:248px;right:14px;bottom:14px;gap:5px}
+.ctl-panel{height:auto;max-height:min(270px,calc(100vh - 380px));min-height:0}
+.ctl-tabs button{font-size:9px;padding:4px 1px}
+.ctl-body{padding:5px}
+.ctl-dock .ctl-breaker{width:30px;min-width:30px;max-width:30px;height:42px;padding:3px 1px;gap:2px}
+.ctl-dock .ctl-lever{width:11px;height:18px}.ctl-dock .ctl-lever b{height:8px}.ctl-dock .ctl-breaker.on .ctl-lever b{bottom:9px}
+.ctl-dock .ctl-code{font-size:8px}
+.ctl-dock .ctl-rail{padding:3px 4px 4px;margin-top:4px;border-radius:4px}
+.ctl-dock .ctl-rail-label{font-size:7px;margin-bottom:2px}
+.ctl-dock .ctl-rail-row{gap:3px}
+.ctl-dock .ctl-board{padding:4px}
+.ctl-dock .ctl-where{font-size:8px;margin:0 0 2px;text-align:right}
+.ctl-dock .ctl-keys{gap:3px}
+.ctl-dock .ctl-key{font-size:8.5px;padding:4px 5px;gap:4px;box-shadow:0 1px 0 #b9b098}
+.ctl-dock [data-board=DB2] .ctl-keys{grid-template-columns:repeat(3,1fr)}
+.ctl-dock .ctl-dead{font-size:8px;padding:2px 4px;margin-bottom:3px}
+.ctl-dock .ctl-reg-row{display:flex;gap:6px;justify-content:space-around}
+.ctl-dock .ctl-regulator{padding:4px;min-width:0}
+.ctl-dock .ctl-knob{width:32px;height:32px}
+.ctl-dock .ctl-ticks{font-size:7px}.ctl-dock .ctl-reg-label{font-size:8px}
+.ctl-dock .ctl-strips{gap:3px}.ctl-dock .ctl-strip{padding:3px 2px}
+.ctl-dock .ctl-fader{height:70px}
+.ctl-toggle{padding:6px 12px;font-size:10px}
+.ctl-stats{position:absolute;left:28px;top:90px;z-index:3;display:flex;gap:14px;background:none;padding:0;border-radius:0;backdrop-filter:none;pointer-events:none;filter:drop-shadow(0 1px 2px #0008)}
+.ctl-stat{text-align:left}
+.ctl-stat b{display:inline;font-size:13px;color:#fff}
+.ctl-stat.bad b{color:#ffc27a}
+.ctl-stat small{font-size:8px;color:#e6ece6;margin-left:2px}
+.ctl-stat span{font-size:7px;color:#dfe6df;letter-spacing:.08em}
+[data-lighting=day] .ctl-stat b{color:#20352b}[data-lighting=day] .ctl-stat small,[data-lighting=day] .ctl-stat span{color:#3d5246}
+[data-lighting=day] .ctl-stats{filter:drop-shadow(0 0 2px #fff)}
+.scene-heading{top:124px}.entry-action{top:200px}
+@media(max-width:760px){.ctl-stats{left:14px;top:76px;gap:8px}.ctl-dock{left:auto;width:230px;bottom:90px}}
+/* Stats: dark ink by default (daylight), light ink in the evening. */
+.ctl-stats{filter:drop-shadow(0 0 2px #fffc)}
+.ctl-stat b{color:#20352b}.ctl-stat small,.ctl-stat span{color:#3d5246}.ctl-stat.bad b{color:#b5651d}
+[data-lighting=evening] .ctl-stats{filter:drop-shadow(0 1px 2px #000a)}
+[data-lighting=evening] .ctl-stat b{color:#fff}[data-lighting=evening] .ctl-stat small,[data-lighting=evening] .ctl-stat span{color:#dfe6df}[data-lighting=evening] .ctl-stat.bad b{color:#ffc27a}
+.ctl-stats{filter:none;background:#f8faf38c;backdrop-filter:blur(6px);padding:4px 10px;border-radius:8px;gap:12px}
+[data-lighting=evening] .ctl-stats{filter:none;background:#1b221f73}
