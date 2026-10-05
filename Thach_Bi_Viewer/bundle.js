@@ -42724,11 +42724,11 @@ void main() {
     x("Proposed credence table", 45.7, 46.6, -3.33, -1.91);
     let Q = 48.31,
       oe = new s.Shape();
-    (oe.moveTo(-1.85, 0.8),
-      oe.lineTo(1.85, 0.8),
-      oe.lineTo(1.85, 5.8),
-      oe.absellipse(0, 5.8, 1.85, 1.3, 0, Math.PI, !1),
-      oe.lineTo(-1.85, 0.8),
+    (oe.moveTo(-2.78, 0.8),
+      oe.lineTo(2.78, 0.8),
+      oe.lineTo(2.78, 5.8),
+      oe.absellipse(0, 5.8, 2.78, 1.82, 0, Math.PI, !1),
+      oe.lineTo(-2.78, 0.8),
       oe.closePath());
     let be = p(
       new s.ExtrudeGeometry(oe, {
@@ -42743,7 +42743,7 @@ void main() {
     ((be.rotation.y = Math.PI / 2),
       (be.position.x = Q),
       _(
-        0.1, 5.3, 2.4,
+        0.1, 5.3, 3.57,
         Q - 0.065,
         3.46,
         0,
@@ -42751,7 +42751,7 @@ void main() {
         Se,
         "Proposed reredos central timber panel",
       ));
-    for (let F of [-1.18, -1.08, 1.08, 1.18])
+    for (let F of [-1.78, -1.64, 1.64, 1.78])
       _(
         0.035,
         5.31,
@@ -42764,12 +42764,12 @@ void main() {
         "Fine reredos inlay",
       );
     let Te = [];
-    Te.push([Q - 0.15, 0.92, -1.68], [Q - 0.15, 5.8, -1.68]);
+    Te.push([Q - 0.15, 0.92, -2.56], [Q - 0.15, 5.8, -2.56]);
     for (let F = 0; F <= 36; F++) {
       let G = Math.PI - (F * Math.PI) / 36;
-      Te.push([Q - 0.15, 5.8 + Math.sin(G) * 1.15, Math.cos(G) * 1.68]);
+      Te.push([Q - 0.15, 5.8 + Math.sin(G) * 1.61, Math.cos(G) * 2.56]);
     }
-    Te.push([Q - 0.15, 0.92, 1.68]);
+    Te.push([Q - 0.15, 0.92, 2.56]);
     for (let F = 1; F < Te.length; F++)
       v(Te[F - 1], Te[F], 0.035, c.brass, Se, "Proposed reredos arch surround");
     for (let F of [-1, 1])
@@ -42779,7 +42779,7 @@ void main() {
         0.21,
         Q - 0.17,
         3.33,
-        F * 1.76,
+        F * 2.68,
         c.stone,
         Se,
         "Reredos pilaster",
@@ -42790,7 +42790,7 @@ void main() {
           0.39,
           Q - 0.17,
           5.82,
-          F * 1.76,
+          F * 2.68,
           c.brass,
           Se,
           "Reredos capital",
@@ -42801,7 +42801,7 @@ void main() {
           0.4,
           Q - 0.17,
           0.89,
-          F * 1.76,
+          F * 2.68,
           c.stone,
           Se,
           "Reredos base",
@@ -42968,7 +42968,7 @@ void main() {
       ),
       Ae(47.55, 2.4, -0.46, Se, 0.74),
       Ae(47.55, 2.4, 0.46, Se, 0.74),
-      x("Proposed reredos and tabernacle", 47.13, 48.57, -1.95, 1.95));
+      x("Proposed reredos and tabernacle", 47.13, 48.57, -2.98, 2.98));
     function Xe(F, G, H = 0.75) {
       let ee = new s.Group();
       ((ee.name = "Proposed modest sanctuary floral arrangement"),

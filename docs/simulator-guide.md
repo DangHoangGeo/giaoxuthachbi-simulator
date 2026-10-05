@@ -59,7 +59,7 @@ Every fixture hangs from, stands on or is fixed to something the model actually 
 | Festival exterior (L7, off except at feasts) | Warm bulb strings along the roof ridge, the main and veranda eaves, the rear gable, the front terrace and the corners of the three lower tower stages; floods on the +23.14 m tower ledges (belfry and dome), on the terrace (central shrine) and on the rear veranda roofs (rear gable) | The church outlined in light for Christmas and feasts; switched on by the *Christmas & festivals* scene |
 | Sound (A1–A3) | 12 slim 0.6 m wall columns, painted the wall colour, on the side-wall pilasters (axes 4–9) at 3.35 m, between the Stations of the Cross plaques and the sconces, turned toward the back; 4 veranda pendants; 2 courtyard horns on the tower fronts (off) | Barely visible and nothing on the timber columns; each speaker covers the rows behind it, time-aligned to the priest's voice |
 | Microphones | Ambo and altar gooseneck mics | The system runs at about 67 dBA, which keeps both microphones more than 3 dB inside the stability allowance |
-| Décor | Statues of Our Lady (left) and Saint Joseph (right) in niches either side of the crucifix, flowers, votive candle stands, Paschal candle, palms, banners. Christmas tree, nativity grotto, star, red lanterns, pennants and an aisle carpet are ready but hidden | Matches the reference interior; seasonal items are one switch away |
+| Décor | Statues of Our Lady (left) and Saint Joseph (right) in the side alcoves either side of the crucifix, flowers, votive candle stands, Paschal candle, palms, banners. Christmas tree, nativity grotto, star, red lanterns, pennants and an aisle carpet are ready but hidden | Matches the reference interior; seasonal items are one switch away |
 | Roof underside | Timber lining with about 50 % slotted acoustic boards | Speech clarity *and* support for singing |
 | Entrance hall | Timber slat acoustic panels (≈ 75 m²) under the terrace and along the top of the entrance wall | The wall facing the loudspeakers: no late reflection back to the sanctuary, and a shorter reverberation for the whole room |
 
@@ -196,15 +196,16 @@ Press Play and walk or sit. Each loudspeaker reaches you with its real distance 
 - The plaster three-lobed frame now stands on axis 11 as the back wall of the
   sanctuary. The axis-10 timber columns stand free in front of it, on stone
   bases on the +0.75 m dais, as in the reference interior.
-- The reredos is narrower (3.7 m). The crucifix stays at the centre, with
-  arched, gilt-lined niches either side for Our Lady (left, B side) and Saint
-  Joseph (right, H side). Flowers stand below them.
+- The full-width reredos with the crucifix stays in the centre bay. The two
+  smaller lobed arches beside it are deep, warm-lit alcoves (about 1.4 m).
+  Our Lady stands in the left alcove (B) and Saint Joseph in the right (H),
+  each on a stone plinth with flowers. This follows the reference interior.
 - Benches beside the altar on the +0.15 m side platforms face the altar:
   - choir on the right: three stepped rows of about 3.9 m, plus a keyboard
   - ministers and servers on the left: two rows
 - The service room (sacristy) is behind the back wall, between the D and E
-  grids. It is entered through a door in each side wall, from the side
-  passages. It holds:
+  grids. It is entered through a door in the inner side wall of each statue
+  alcove. It holds:
   - the vestment wardrobe and vesting counter
   - the main electrical board, the lighting (L1–L7) and fan control cabinets,
     and the sound rack (amplifiers, DSP, wireless microphones)
@@ -212,3 +213,17 @@ Press Play and walk or sit. Each loudspeaker reaches you with its real distance 
   and "Service room".
 - All of this is a layout proposal. Room walls, doors, niche sizes and bench
   lengths need confirming against CAD.
+
+## Window glass
+
+View settings → Window glass switches between clear glass and stained glass.
+In the stained option:
+- Each nave-wall arch shows a saint under a Gothic canopy, with a name band:
+  - left: Thánh Micae, Antôn, Phêrô, Gioan, Đức Mẹ Maria, Têrêsa
+  - right: Thánh Anrê Dũng Lạc, Gioan Baotixita, Phaolô, Giuse, Thánh Tâm, Chúa Chiên Lành
+- Window and door fanlights show a gold sunburst around a symbol: dove,
+  chalice, IHS, Chi-Rho, cross, Alpha–Omega, Sacred Heart, Marian M.
+- The round façade windows are a rose with the dove at the centre.
+
+The artwork is drawn by the viewer (glass-art.js). It is a placeholder for
+commissioned windows.

@@ -12,7 +12,7 @@
   function bindBatches(batches) {
     doorBatches = {closed:batches.get(doorGroups.closed), open:batches.get(doorGroups.open)};
     // Glass passes daylight: no glazed batch casts a shadow.
-    for(const group of batches.values())group.traverse(o=>{if(o.isMesh&&(o.material===context.mat.glass||o.material===context.interior.materials.window))o.castShadow=false;});
+    for(const group of batches.values())group.traverse(o=>{if(o.isMesh&&context.artGlass.some(a=>a.m===o.material))o.castShadow=false;});
     update('explore');
     document.getElementById('openingsMode')?.addEventListener('change',event=>setOpenings(event.target.value));
     document.getElementById('glassMode')?.addEventListener('change',event=>setGlass(event.target.value));
@@ -55,8 +55,11 @@
   function walkAllowed(x,z) {
     const az=Math.abs(z);
     // Sanctuary fit-out: service-room walls (door gaps at x 50.65), side benches, furniture.
-    if (x >= 48.6 && x <= 53.1 && az >= 3.42 && az <= 3.8 && Math.abs(x - 50.65) > .4) return false;
-    if (x >= 40.3 && x <= 45.15 && az >= 3.95 && az <= 6.55) return false;
+    if (x >= 48.6 && x <= 53.1 && az >= 3.42 && az <= 3.8 && Math.abs(x - 49.6) > .36) return false;
+    if (x >= 49.95 && x <= 53.2 && az > 3.42 && az < 7.6) return false;
+    if (x >= 49.2 && x <= 50.1 && Math.abs(az - 5.25) < .75) return false;
+    if (x >= 48.7 && x <= 50.1 && az > 7.1 && az < 7.6) return false;
+    if (x >= 40.3 && x <= 45.15 && az >= 4.25 && az <= 6.8) return false;
     if (x >= 52.1 && x <= 53.1 && az < 3.1) return false;
     if (x >= 48.7 && x <= 49.8 && z >= 1.0 && z <= 1.8) return false;
     if (x >= -13.219 && x <= -.38 && Math.abs(z) <= 13.05) return true;
@@ -189,24 +192,45 @@
     surface(mat.ground,'paving',4.8,'#e5e5dd',.65,.012);
     surface(mat.wood,'wood',1.8,'#b38d68',.39,.009);
     mat.recess.color.set('#302319');
-    // Two glazing options share one material: clear float glass or leaded
-    // coloured glass (diamond quarries in jewel tones, 0.5 m repeat).
-    const stained=(()=>{
+    // Glazing has two options: clear float glass, or stained glass. In the
+    // stained option each opening carries its own painted artwork
+    // (glass-art.js); the shared glass material becomes a quiet cathedral
+    // glass of pale leaded quarries for the remaining openings.
+    const art=window.CHURCH_GLASS_ART;
+    function glassTexture(canvas,name,repeat){
+      const t=new T.CanvasTexture(canvas);t.colorSpace=T.SRGBColorSpace;t.anisotropy=anisotropy;t.name=name;
+      if(repeat){t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(...repeat);}
+      return t;
+    }
+    const cathedral=(()=>{
       const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d');
-      const hues=['#b8262f','#1f4fa8','#d9a21c','#2b8a4b','#7d3a9a','#e0632a','#2a7fb8','#c9b04a'];
-      g.fillStyle='#2a241c';g.fillRect(0,0,256,256);
-      for(let row=-1;row<5;row++)for(let col=-1;col<5;col++){
-        const cx=col*64+(row%2?32:0),cy=row*64;
-        g.beginPath();g.moveTo(cx,cy-30);g.lineTo(cx+30,cy);g.lineTo(cx,cy+30);g.lineTo(cx-30,cy);g.closePath();
-        g.fillStyle=hues[((row+8)*3+col+8)%hues.length];g.fill();
-      }
-      for(let row=0;row<4;row++)for(let col=0;col<4;col++){g.fillStyle='rgba(255,240,200,.9)';g.beginPath();g.arc(col*64+32+(row%2?-32:0),row*64+32,6,0,7);g.fill();}
-      const t=new T.CanvasTexture(c);t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(2,2);t.colorSpace=T.SRGBColorSpace;t.anisotropy=anisotropy;t.name='Leaded coloured glass';return t;
+      const tints=['#efe3bf','#e8dcb0','#f2e9cc','#e3dcc0','#ece0b8'];
+      for(let row=0;row<4;row++)for(let col=0;col<4;col++){g.fillStyle=tints[(row*3+col*2)%tints.length];g.fillRect(col*64,row*64,64,64);}
+      g.strokeStyle='#2a241c';g.lineWidth=3;
+      for(let k=0;k<=4;k++){g.beginPath();g.moveTo(k*64,0);g.lineTo(k*64,256);g.moveTo(0,k*64);g.lineTo(256,k*64);g.stroke();}
+      return glassTexture(c,'Cathedral glass quarries',[3,2.2]);
     })();
-    // The nave-wall glazing maps 0–1 across its 2.25 × 3.66 m arch.
-    const innerStained=stained.clone();innerStained.repeat.set(2.6,4.2);innerStained.needsUpdate=true;
-    ctx.glassMaps={stained,innerStained,innerOriginal:interior.materials.window.map};
-    applyGlass(mat.glass,glassKind,lightMode);applyInnerGlass();
+    const artGlass=[{m:mat.glass,map:cathedral}];
+    function artMaterial(canvas,name){
+      const m=mat.glass.clone();m.name=name;artGlass.push({m,map:glassTexture(canvas,name)});return m;
+    }
+    ctx.artGlass=artGlass;
+    const fanCache=new Map();
+    function fanMaterial(index,dims){
+      const key=`${index}|${dims.width}`;
+      if(!fanCache.has(key))fanCache.set(key,artMaterial(art.fanlight(art.FAN_DESIGNS[index%art.FAN_DESIGNS.length],dims),`Stained-glass fanlight ${index+1}`));
+      return fanCache.get(key);
+    }
+    // Twelve saints for the nave-wall arches: left (C, −z) and right (G, +z), front to back.
+    const glazing=[];interior.group.traverse(o=>{if(o.isMesh&&/^Proposed coloured glazing/.test(o.name))glazing.push(o);});
+    for(const [side,list] of [[-1,art.SAINTS.left],[1,art.SAINTS.right]]){
+      glazing.filter(o=>Math.sign(o.position.z)===side).sort((p,q)=>p.position.x-q.position.x).forEach((o,i)=>{
+        const spec=list[i%list.length];o.material=artMaterial(art.saintPanel(spec),`Stained glass · ${spec.name}`);o.name=`Stained-glass window · ${spec.name}`;
+      });
+    }
+    let roseMat=null;
+    building.traverse(o=>{if(o.isMesh&&o.name==='Schematic rose-window infill'){roseMat??=artMaterial(art.rose(),'Stained-glass rose');o.material=roseMat;}});
+    applyGlass();
     mat.metal.color.set('#927043');mat.metal.metalness=.72;mat.metal.roughness=.29;
     mat.wall.name='Ivory mineral plaster · reference finish';mat.roof.name='Terracotta tile · reference finish';
     mat.foundation.name='Gray stone plinth · reference finish';
@@ -289,6 +313,13 @@
     for(const leaf of all.filter(o=>o.name.startsWith('Open side door leaf')))leaf.parent.removeFromParent();
     const sideBays=all.filter(o=>o.name.startsWith('Outer veranda'));
     function pane(shape,parent,material,name){const m=mesh(new T.ShapeGeometry(shape,24),material,parent,name);m.position.z=.10;return m;}
+    // A pane whose UVs run 0–1 across the opening, for the artwork.
+    let fanIndex=0;
+    function fanPane(shape,parent,material,name,x,bottom,width,height){
+      const m=pane(shape,parent,material,name),uv=m.geometry.attributes.uv,pos=m.geometry.attributes.position;
+      for(let i=0;i<pos.count;i++)uv.setXY(i,(pos.getX(i)-(x-width/2))/width,(pos.getY(i)-bottom)/height);
+      uv.needsUpdate=true;return m;
+    }
     function arch(x,bottom,width,spring,rise){const s=new T.Shape();s.moveTo(x-width/2,bottom);s.lineTo(x+width/2,bottom);s.lineTo(x+width/2,spring);s.absellipse(x,spring,width/2,rise,0,Math.PI,false);s.lineTo(x-width/2,bottom);return s;}
     function panels(leaf,width,height) {
       for(const face of [-1,1])for(let row=0;row<3;row++) {
@@ -311,7 +342,7 @@
     for(const bay of sideBays) {
       const door=/ (4–5|8–9|10–11)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
       if(door) {
-        pane(arch(0,3.04,2.25,3.101,1.14),bay,mat.glass,'Outer door fixed fanlight');
+        fanPane(arch(0,3.04,2.25,3.101,1.14),bay,fanMaterial(fanIndex++,{width:2.25,bottom:3.04,spring:3.101,rise:1.14,sectors:8}),'Outer door fixed fanlight',0,3.04,2.25,1.201);
         box(2.25,.11,.16,0,3.04,.13,mat.wood,bay,'Outer doorway timber transom');
         for(let k=1;k<8;k++){const a=k*Math.PI/8;rod([0,3.08,.13],[Math.cos(a)*1.06,3.101+Math.sin(a)*1.07,.13],.022,mat.metal,bay,'Fanlight radial bronze bar');}
         for(const state of ['closed','open']) {
@@ -327,7 +358,7 @@
         // Half-round glazed fanlight over a timber transom, like the doors;
         // the shutter pair below swings out with the doors.
         for(const x of wing?[-2.4,2.4]:[-1,1]) {
-          pane(arch(x,3.0,1,3.101,.507),bay,mat.glass,'Window half-round fanlight');
+          fanPane(arch(x,3.0,1,3.101,.507),bay,fanMaterial(fanIndex++,{width:1,bottom:3.0,spring:3.101,rise:.507,sectors:6}),'Window stained-glass fanlight',x,3.0,1,.608);
           box(1,.085,.15,x,3.0,.13,mat.wood,bay,'Window timber transom');
           for(let k=1;k<6;k++){const a=k*Math.PI/6;rod([x,3.04,.13],[x+Math.cos(a)*.47,3.101+Math.sin(a)*.475,.13],.016,mat.metal,bay,'Fanlight radial bronze bar');}
           rod([x-.49,3.101,.13],[x+.49,3.101,.13],.012,mat.metal,bay,'Fanlight spring bar');
@@ -432,36 +463,38 @@
     // Axis-10 timber columns now stand on the dais: a stone collar at +0.75.
     for(const sign of [-1,1])box(.84,.22,.84,data.longitudinal['10'],.86,sign*3.6,im.whiteStone,structure,'Carved stone column base on the dais');
 
-    // Back wall inside the lobed arch: the reredos stands in front of it, with
-    // arched niches for Our Lady (left, B side) and Saint Joseph (right, H side).
-    const niche={z:2.62,w:.96,sill:1.65,spring:3.55,rise:.48,depth:.38};
+    const fit=new T.Group();fit.name='Sanctuary seating and service room · proposal';building.add(fit);
+    const fit0=fit;
+    // Back wall inside the central lobed arch, behind the reredos (plain).
     const back=lobedLine(0,3.3,8.25,9.38,10.83);
     back.lineTo(3.3,.15);back.lineTo(-3.3,.15);back.closePath();
-    for(const sign of [-1,1])back.holes.push(arch(sign*niche.z,niche.sill,niche.w,niche.spring,niche.rise));
     const backWall=mesh(new T.ExtrudeGeometry(back,{depth:.2,bevelEnabled:false,curveSegments:32}),mat.wall,sanctuaryFrame,'Sanctuary back wall behind the reredos');
     backWall.position.z=-.12;
-    const nicheBack=mat.cap.clone();nicheBack.name='Warm gilt niche lining · proposal';nicheBack.map=null;nicheBack.bumpMap=null;nicheBack.color.set('#d8bb7a');nicheBack.roughness=.55;nicheBack.metalness=.25;
+    // Side alcoves behind the two smaller lobed arches, as in the reference
+    // interior: deep, warm-lit bays with Our Lady (left, B) and Saint Joseph
+    // (right, H) on stone plinths. A door in each alcove's inner side wall
+    // leads to the service room.
+    const alcove={x0:SX+.16,x1:50.1,zIn:3.6,zOut:7.2,top:6.95,plinth:{z:5.25,w:1.25,d:.75,h:.6}};
+    const warm=mat.wall.clone();warm.name='Warm ochre alcove plaster · proposal';warm.color.set('#f1d9a8');
     for(const sign of [-1,1]){
-      const x=sign*niche.z,top=niche.spring+niche.rise,h=top-niche.sill,zb=-.12-niche.depth;
-      box(niche.w+.1,h+.1,.04,x,niche.sill+h/2,zb,nicheBack,sanctuaryFrame,'Statue niche gilt back');
-      box(niche.w+.2,h+.2,.08,x,niche.sill+h/2,zb-.06,mat.wall,sanctuaryFrame,'Statue niche back plaster');
-      for(const side of [-1,1])box(.05,h,niche.depth,x+side*(niche.w/2+.025),niche.sill+h/2,-.12-niche.depth/2,mat.wall,sanctuaryFrame,'Statue niche reveal');
-      box(niche.w+.1,.05,niche.depth,x,top+.02,-.12-niche.depth/2,mat.wall,sanctuaryFrame,'Statue niche head');
-      box(niche.w,.05,niche.depth+.3,x,niche.sill-.025,-.12-niche.depth/2+.15,im.whiteStone,sanctuaryFrame,'Statue niche floor');
-      // Moulded arched surround and a carved console below.
-      const pts=[];pts.push(new T.Vector3(x-niche.w/2-.06,niche.sill,.1));
-      for(let k=0;k<=24;k++){const a=Math.PI-k*Math.PI/24;pts.push(new T.Vector3(x+Math.cos(a)*(niche.w/2+.06),niche.spring+Math.sin(a)*(niche.rise+.06),.1));}
-      pts.push(new T.Vector3(x+niche.w/2+.06,niche.sill,.1));
-      mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts,false,'catmullrom',.05),64,.045,8,false),mat.trim,sanctuaryFrame,'Niche arch moulding');
-      box(niche.w+.24,.12,.36,x,niche.sill-.06,.26,im.whiteStone,sanctuaryFrame,'Statue console top');
-      box(niche.w-.08,.78,.22,x,niche.sill-.51,.19,mat.trim,sanctuaryFrame,'Statue console body');
-      box(.5,.26,.03,x,niche.sill-.5,.31,mat.darkTrim,sanctuaryFrame,'Console carved panel');
+      const zc=(alcove.zIn+alcove.zOut)/2,width=alcove.zOut-alcove.zIn,depth=alcove.x1-alcove.x0;
+      box(.2,alcove.top-.15,width,alcove.x1+.1,(alcove.top+.15)/2,sign*zc,warm,fit0,'Statue alcove back wall');
+      box(depth+.2,.15,width+.1,(alcove.x0+alcove.x1)/2+.1,alcove.top+.075,sign*zc,warm,roofs,'Statue alcove ceiling');
+      // Outer side: closes the alcove against the C/G wall line.
+      box(depth,alcove.top-.15,.16,(alcove.x0+alcove.x1)/2,(alcove.top+.15)/2,sign*(alcove.zOut+.08),warm,fit0,'Statue alcove outer wall');
+      // Stone plinth with a carved panel and a moulded cap.
+      const pl=alcove.plinth,px=alcove.x1-pl.d/2-.02;
+      box(pl.d,pl.h,pl.w,px,.15+pl.h/2,sign*pl.z,im.whiteStone,fit0,'Statue plinth');
+      box(pl.d+.1,.08,pl.w+.1,px,.15+pl.h+.04,sign*pl.z,im.stone,fit0,'Statue plinth cap');
+      box(.02,pl.h*.55,pl.w*.62,px-pl.d/2-.01,.15+pl.h/2,sign*pl.z,mat.darkTrim,fit0,'Plinth carved panel');
+      // Arched halo moulding on the back wall behind the statue.
+      const pts=[];for(let k=0;k<=28;k++){const a=Math.PI-k*Math.PI/28;pts.push(new T.Vector3(alcove.x1-.01,3.6+Math.sin(a)*1.35,sign*pl.z+Math.cos(a)*.95));}
+      mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts),64,.05,8,false),mat.trim,fit0,'Alcove arch moulding');
+      for(const e of [-1,1])box(.06,2.85,.1,alcove.x1-.03,.15+.6+2.85/2,sign*pl.z+e*.95,mat.trim,fit0,'Alcove pilaster strip');
     }
-
     // Seating beside the altar on the +0.15 side platforms: the choir on the
     // right (H, +z) with three stepped rows and a keyboard; servers and
     // ministers on the left (B, −z). Benches face the altar across the dais.
-    const fit=new T.Group();fit.name='Sanctuary seating and service room · proposal';building.add(fit);
     function sideBench(x0,x1,z,y,face,name){
       const len=x1-x0,cx=(x0+x1)/2,out=-face;
       box(len,.07,.42,cx,y+.44,z,im.wood,fit,`${name} seat`);
@@ -472,21 +505,21 @@
       }
       for(const x of [x0,x1])box(.07,.95,.5,x,y+.47,z+out*.03,im.wood,fit,`${name} end panel`);
     }
-    const choirRows=[{z:4.25,y:.15},{z:5.15,y:.33},{z:6.05,y:.51}];
+    const choirRows=[{z:4.55,y:.15},{z:5.42,y:.33},{z:6.29,y:.51}];
     choirRows.forEach((r,i)=>{
       if(i)box(3.95,r.y-.15,.9,43.075,.15+(r.y-.15)/2,r.z,im.woodInset,fit,'Choir riser');
       sideBench(41.1,45.05,r.z,r.y,-1,`Choir bench row ${i+1}`);
     });
-    for(const [i,z] of [-4.25,-5.15].entries())sideBench(41.1,45.05,z,.15,1,`Ministers bench row ${i+1}`);
+    for(const [i,z] of [-4.55,-5.42].entries())sideBench(41.1,45.05,z,.15,1,`Ministers bench row ${i+1}`);
     // Choir keyboard at the front of the choir, facing the singers.
-    box(.42,.08,1.32,40.68,.98,5.15,im.wood,fit,'Choir keyboard case');
-    box(.16,.03,1.22,40.62,1.035,5.15,im.whiteStone,fit,'Keyboard keys');
-    box(.06,.72,1.32,40.86,.51,5.15,im.wood,fit,'Keyboard stand panel');
-    for(const z of [4.55,5.75])box(.36,.82,.06,40.68,.56,z,im.wood,fit,'Keyboard stand side');
+    box(.42,.08,1.32,40.68,.98,5.42,im.wood,fit,'Choir keyboard case');
+    box(.16,.03,1.22,40.62,1.035,5.42,im.whiteStone,fit,'Keyboard keys');
+    box(.06,.72,1.32,40.86,.51,5.42,im.wood,fit,'Keyboard stand panel');
+    for(const z of [4.82,6.02])box(.36,.82,.06,40.68,.56,z,im.wood,fit,'Keyboard stand side');
 
     // Service room (nhà áo / sacristy) behind the altar between the D and E
     // grids: vesting furniture and the church's electrical and sound control.
-    const room={x0:SX+.12,x1:53.0,half:3.6,h:4.15,door:{x:50.65,w:.95,h:2.2}};
+    const room={x0:SX+.12,x1:53.0,half:3.6,h:4.15,door:{x:49.6,w:.82,h:2.2}};
     for(const sign of [-1,1]){
       const wall=new T.Shape();wall.moveTo(room.x0,.15);wall.lineTo(room.x1,.15);wall.lineTo(room.x1,room.h);wall.lineTo(room.x0,room.h);wall.closePath();
       const d=room.door,hole=new T.Path();hole.moveTo(d.x-d.w/2,.15);hole.lineTo(d.x+d.w/2,.15);hole.lineTo(d.x+d.w/2,.15+d.h);hole.lineTo(d.x-d.w/2,.15+d.h);hole.closePath();wall.holes.push(hole);
@@ -665,35 +698,29 @@
       material.map=reference?original.map:null;material.bumpMap=reference?original.bump:null;material.needsUpdate=true;
     }
   }
-  function applyGlass(m,kind,mode){
-    const T=context.THREE,night=mode==='evening';
-    m.transparent=true;m.depthWrite=false;m.side=T.DoubleSide;m.metalness=0;
-    if(kind==='stained'){
-      m.name='Leaded coloured glass · proposal';m.map=m.emissiveMap=context.glassMaps.stained;
-      m.color.set('#ffffff');m.emissive.set('#ffffff');m.emissiveIntensity=night?.06:.75;m.opacity=.93;m.roughness=.35;
-    }else{
-      m.name='Clear float glass · proposal';m.map=m.emissiveMap=null;
-      m.color.set('#cfe2e6');m.emissive.set('#eaf4f6');m.emissiveIntensity=night?0:.05;m.opacity=.22;m.roughness=.04;
+  function applyGlass(){
+    if(!context?.artGlass)return;
+    const T=context.THREE,night=lightMode==='evening';
+    for(const {m,map} of context.artGlass){
+      m.transparent=true;m.depthWrite=false;m.side=T.DoubleSide;m.metalness=0;
+      if(glassKind==='stained'){
+        m.map=m.emissiveMap=map;m.color.set('#ffffff');m.emissive.set('#ffffff');
+        m.emissiveIntensity=night?.05:.62;m.opacity=.96;m.roughness=.35;
+      }else{
+        m.map=m.emissiveMap=null;m.color.set('#cfe2e6');m.emissive.set('#eaf4f6');
+        m.emissiveIntensity=night?0:.05;m.opacity=.22;m.roughness=.04;
+      }
+      m.needsUpdate=true;
     }
-    m.needsUpdate=true;
-  }
-  // Nave-wall arches between the nave and the verandas.
-  function applyInnerGlass(){
-    const m=context.interior.materials.window,maps=context.glassMaps,night=lightMode==='evening';
-    m.transparent=true;m.depthWrite=false;
-    if(glassKind==='stained'){m.map=m.emissiveMap=maps.innerStained;m.color.set('#ffffff');m.opacity=.93;m.emissiveIntensity=night?.06:.7;m.roughness=.35;}
-    else{m.map=m.emissiveMap=null;m.color.set('#d6e6ea');m.emissive.set('#eef6f8');m.opacity=.2;m.emissiveIntensity=night?0:.04;m.roughness=.04;}
-    if(glassKind==='stained')m.emissive.set('#ffffff');
-    m.needsUpdate=true;
   }
   function setGlass(kind){
     glassKind=kind==='stained'?'stained':'clear';
-    if(context){applyGlass(context.mat.glass,glassKind,lightMode);applyInnerGlass();context.renderer.shadowMap.needsUpdate=true;}
+    if(context){applyGlass();context.renderer.shadowMap.needsUpdate=true;}
     return glassKind;
   }
   function lighting(mode) {
     if(!context)return;
-    lightMode=mode==='evening'?'evening':'day';applyGlass(context.mat.glass,glassKind,lightMode);
+    lightMode=mode==='evening'?'evening':'day';applyGlass();
     const {scene,sun,fill,hemisphere,renderer,interior,facadeLights}=context,night=mode==='evening';
     scene.background.set(night?'#17283c':'#d9e4e9');scene.fog.color.copy(scene.background);
     scene.environmentIntensity=night?.18:.6;
@@ -705,7 +732,6 @@
     interior.setLighting(mode);
     interior.lights.forEach(light=>{light.intensity*=night?1.9:.95;});
     facadeLights.forEach((light,index)=>{light.intensity=night?(index<2?430:index===4?450:230):0;});
-    applyInnerGlass();
     renderer.shadowMap.needsUpdate=true;
   }
 })();
