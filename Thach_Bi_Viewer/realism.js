@@ -7,22 +7,33 @@
   const stairs = [];
   let context;
   const doorGroups = {};
-  const api = window.CHURCH_REALISM = { prepare, lighting, finish, floorHeight, walkAllowed, bindBatches, update };
-  let doorBatches, lastMode;
+  const api = window.CHURCH_REALISM = { prepare, lighting, finish, floorHeight, walkAllowed, bindBatches, update, setOpenings, setGlass };
+  let doorBatches, lastMode, openings = 'auto', glassKind = 'clear', lightMode = 'day';
   function bindBatches(batches) {
     doorBatches = {closed:batches.get(doorGroups.closed), open:batches.get(doorGroups.open)};
+    // Glass passes daylight: no glazed batch casts a shadow.
+    for(const group of batches.values())group.traverse(o=>{if(o.isMesh&&(o.material===context.mat.glass||o.material===context.interior.materials.window))o.castShadow=false;});
     update('explore');
+    document.getElementById('openingsMode')?.addEventListener('change',event=>setOpenings(event.target.value));
+    document.getElementById('glassMode')?.addEventListener('change',event=>setGlass(event.target.value));
     const landscape=[...batches.entries()].find(([group])=>group.name==='Two rows of courtyard trees')?.[1];
     document.getElementById('treesToggle')?.addEventListener('change',event=>{
       landscape.visible=event.target.checked;
       context.renderer.shadowMap.needsUpdate=true;
     });
   }
+  // Doors and window shutters: 'auto' opens them while walking.
+  function setOpenings(mode) {
+    openings = ['open','closed'].includes(mode) ? mode : 'auto';
+    const m = lastMode; lastMode = null; update(m || 'explore');
+    return openings;
+  }
   function update(mode) {
     if (!doorBatches || mode === lastMode) return;
     lastMode = mode;
+    const open = openings === 'auto' ? mode === 'walk' : openings === 'open';
     for (const [state,group] of Object.entries(doorBatches)) {
-      group.visible = state === (mode === 'walk' ? 'open' : 'closed');
+      group.visible = state === (open ? 'open' : 'closed');
       doorGroups[state].userData.active = group.visible;
     }
     context.renderer.shadowMap.needsUpdate = true;
@@ -171,7 +182,25 @@
     surface(mat.floor,'marble',3.6,'#c3c2bc',.48,.008);
     surface(mat.ground,'paving',4.8,'#e5e5dd',.65,.012);
     surface(mat.wood,'wood',1.8,'#b38d68',.39,.009);
-    mat.glass.color.set('#4e4536');mat.glass.roughness=.3;mat.recess.color.set('#302319');
+    mat.recess.color.set('#302319');
+    // Two glazing options share one material: clear float glass or leaded
+    // coloured glass (diamond quarries in jewel tones, 0.5 m repeat).
+    const stained=(()=>{
+      const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d');
+      const hues=['#b8262f','#1f4fa8','#d9a21c','#2b8a4b','#7d3a9a','#e0632a','#2a7fb8','#c9b04a'];
+      g.fillStyle='#2a241c';g.fillRect(0,0,256,256);
+      for(let row=-1;row<5;row++)for(let col=-1;col<5;col++){
+        const cx=col*64+(row%2?32:0),cy=row*64;
+        g.beginPath();g.moveTo(cx,cy-30);g.lineTo(cx+30,cy);g.lineTo(cx,cy+30);g.lineTo(cx-30,cy);g.closePath();
+        g.fillStyle=hues[((row+8)*3+col+8)%hues.length];g.fill();
+      }
+      for(let row=0;row<4;row++)for(let col=0;col<4;col++){g.fillStyle='rgba(255,240,200,.9)';g.beginPath();g.arc(col*64+32+(row%2?-32:0),row*64+32,6,0,7);g.fill();}
+      const t=new T.CanvasTexture(c);t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(2,2);t.colorSpace=T.SRGBColorSpace;t.anisotropy=anisotropy;t.name='Leaded coloured glass';return t;
+    })();
+    // The nave-wall glazing maps 0–1 across its 2.25 × 3.66 m arch.
+    const innerStained=stained.clone();innerStained.repeat.set(2.6,4.2);innerStained.needsUpdate=true;
+    ctx.glassMaps={stained,innerStained,innerOriginal:interior.materials.window.map};
+    applyGlass(mat.glass,glassKind,lightMode);applyInnerGlass();
     mat.metal.color.set('#927043');mat.metal.metalness=.72;mat.metal.roughness=.29;
     mat.wall.name='Ivory mineral plaster · reference finish';mat.roof.name='Terracotta tile · reference finish';
     mat.foundation.name='Gray stone plinth · reference finish';
@@ -289,11 +318,26 @@
           }
         }
       } else {
+        // Half-round glazed fanlight over a timber transom, like the doors;
+        // the shutter pair below swings out with the doors.
         for(const x of wing?[-2.4,2.4]:[-1,1]) {
-          pane(arch(x,.85,1,3.101,.507),bay,mat.wood,'Outer arched timber shutter');
-          for(const sign of [-1,1])box(.034,2.15,.07,x+sign*.39,1.98,.14,mat.wood,bay,'Timber shutter frame');
-          box(.045,2.25,.07,x,1.975,.14,mat.wood,bay,'Shutter meeting stile');
-          for(const y of [1.06,1.98,2.98])box(.94,.045,.07,x,y,.14,mat.wood,bay,'Shutter panel rail');
+          pane(arch(x,3.0,1,3.101,.507),bay,mat.glass,'Window half-round fanlight');
+          box(1,.085,.15,x,3.0,.13,mat.wood,bay,'Window timber transom');
+          for(let k=1;k<6;k++){const a=k*Math.PI/6;rod([x,3.04,.13],[x+Math.cos(a)*.47,3.101+Math.sin(a)*.475,.13],.016,mat.metal,bay,'Fanlight radial bronze bar');}
+          rod([x-.49,3.101,.13],[x+.49,3.101,.13],.012,mat.metal,bay,'Fanlight spring bar');
+          for(const state of ['closed','open']) {
+            const frame=new T.Group();frame.position.copy(bay.position);frame.rotation.copy(bay.rotation);doorGroups[state].add(frame);
+            for(const sign of [-1,1]) {
+              const hinge=new T.Group();hinge.position.set(x+sign*.5,.85,.10);hinge.rotation.y=state==='closed'?0:sign*1.5;frame.add(hinge);
+              const leaf=new T.Group();leaf.position.x=-sign*.25;hinge.add(leaf);
+              box(.49,2.1,.06,0,1.05,0,mat.wood,leaf,'Window timber shutter leaf');
+              for(const face of [-1,1]){
+                for(const sx of [-1,1])box(.04,2.1,.03,sx*.225,1.05,face*.04,mat.wood,leaf,'Shutter stile');
+                for(const y of [.04,.72,1.38,2.06])box(.49,.05,.03,0,y,face*.04,mat.wood,leaf,'Shutter rail');
+                for(const y of [.38,1.05,1.72])box(.33,.5,.012,0,y,face*.033,im.woodInset,leaf,'Shutter inset panel');
+              }
+            }
+          }
         }
       }
     }
@@ -499,8 +543,35 @@
       material.map=reference?original.map:null;material.bumpMap=reference?original.bump:null;material.needsUpdate=true;
     }
   }
+  function applyGlass(m,kind,mode){
+    const T=context.THREE,night=mode==='evening';
+    m.transparent=true;m.depthWrite=false;m.side=T.DoubleSide;m.metalness=0;
+    if(kind==='stained'){
+      m.name='Leaded coloured glass · proposal';m.map=m.emissiveMap=context.glassMaps.stained;
+      m.color.set('#ffffff');m.emissive.set('#ffffff');m.emissiveIntensity=night?.06:.75;m.opacity=.93;m.roughness=.35;
+    }else{
+      m.name='Clear float glass · proposal';m.map=m.emissiveMap=null;
+      m.color.set('#cfe2e6');m.emissive.set('#eaf4f6');m.emissiveIntensity=night?0:.05;m.opacity=.22;m.roughness=.04;
+    }
+    m.needsUpdate=true;
+  }
+  // Nave-wall arches between the nave and the verandas.
+  function applyInnerGlass(){
+    const m=context.interior.materials.window,maps=context.glassMaps,night=lightMode==='evening';
+    m.transparent=true;m.depthWrite=false;
+    if(glassKind==='stained'){m.map=m.emissiveMap=maps.innerStained;m.color.set('#ffffff');m.opacity=.93;m.emissiveIntensity=night?.06:.7;m.roughness=.35;}
+    else{m.map=m.emissiveMap=null;m.color.set('#d6e6ea');m.emissive.set('#eef6f8');m.opacity=.2;m.emissiveIntensity=night?0:.04;m.roughness=.04;}
+    if(glassKind==='stained')m.emissive.set('#ffffff');
+    m.needsUpdate=true;
+  }
+  function setGlass(kind){
+    glassKind=kind==='stained'?'stained':'clear';
+    if(context){applyGlass(context.mat.glass,glassKind,lightMode);applyInnerGlass();context.renderer.shadowMap.needsUpdate=true;}
+    return glassKind;
+  }
   function lighting(mode) {
     if(!context)return;
+    lightMode=mode==='evening'?'evening':'day';applyGlass(context.mat.glass,glassKind,lightMode);
     const {scene,sun,fill,hemisphere,renderer,interior,facadeLights}=context,night=mode==='evening';
     scene.background.set(night?'#17283c':'#d9e4e9');scene.fog.color.copy(scene.background);
     scene.environmentIntensity=night?.18:.6;
@@ -512,6 +583,7 @@
     interior.setLighting(mode);
     interior.lights.forEach(light=>{light.intensity*=night?1.9:.95;});
     facadeLights.forEach((light,index)=>{light.intensity=night?(index<2?430:index===4?450:230):0;});
+    applyInnerGlass();
     renderer.shadowMap.needsUpdate=true;
   }
 })();
