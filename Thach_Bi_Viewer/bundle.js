@@ -39552,7 +39552,7 @@ void main() {
         (x("modeHint").textContent =
           S === "walk"
             ? "Drag to look \xB7 W A S D / arrows to walk"
-            : "Drag to orbit \xB7 scroll to zoom \xB7 right-drag to pan"),
+            : "Drag to orbit \xB7 W A S D / arrows to move \xB7 Q E down / up \xB7 scroll to zoom"),
         S === "walk")
       ) {
         if (_e.destination !== !1) {
@@ -39923,6 +39923,8 @@ void main() {
       }),
       n.domElement.addEventListener("contextmenu", (V) => V.preventDefault()));
     let fe = new Set([
+      "KeyQ",
+      "KeyE",
       "KeyW",
       "KeyA",
       "KeyS",
@@ -39944,8 +39946,7 @@ void main() {
         J ? Ce() : S === "walk" && B("explore");
         return;
       }
-      S !== "walk" ||
-        document.querySelector("dialog[open]") ||
+      document.querySelector("dialog[open]") ||
         /INPUT|SELECT|TEXTAREA/.test(V.target.tagName) ||
         (fe.has(V.code) && (V.preventDefault(), X.add(V.code)));
     }),
@@ -40092,6 +40093,27 @@ void main() {
       b.position.y < V + 0.28 &&
         ((b.position.y = V + 0.28), b.lookAt(l.target));
     }
+    // Explore mode: W/S or ↑/↓ move forward and back along the view, A/D or
+    // ←/→ step sideways, Q/E go down and up; Shift is faster. The orbit
+    // target travels with the camera, so drag-to-orbit keeps working.
+    function exploreMove(dt) {
+      const fwd = (X.has("KeyW") || X.has("ArrowUp") ? 1 : 0) - (X.has("KeyS") || X.has("ArrowDown") ? 1 : 0),
+        side = (X.has("KeyD") || X.has("ArrowRight") ? 1 : 0) - (X.has("KeyA") || X.has("ArrowLeft") ? 1 : 0),
+        up = (X.has("KeyE") ? 1 : 0) - (X.has("KeyQ") ? 1 : 0);
+      if (!fwd && !side && !up) return;
+      k = null;
+      const dir = new e.Vector3().subVectors(l.target, b.position);
+      dir.y = 0;
+      if (dir.lengthSq() < 1e-6) dir.set(1, 0, 0);
+      dir.normalize();
+      const right = new e.Vector3(-dir.z, 0, dir.x);
+      const dist = b.position.distanceTo(l.target);
+      const speed = Math.max(4, Math.min(30, dist * 0.8)) * (X.has("ShiftLeft") || X.has("ShiftRight") ? 2.2 : 1);
+      const move = dir.multiplyScalar(fwd).add(right.multiplyScalar(side)).normalize().multiplyScalar(speed * dt);
+      move.y = up * speed * 0.6 * dt;
+      b.position.add(move);
+      l.target.add(move);
+    }
     function St(V = performance.now()) {
       if (z) return;
       Z = requestAnimationFrame(St);
@@ -40104,7 +40126,7 @@ void main() {
           l.target.lerpVectors(k.targetFrom, k.targetTo, Qe),
           ge >= 1 && (k = null),
           l.update());
-      } else l.update();
+      } else (exploreMove(_e), l.update());
       (Ke(), Et(), window.CHURCH_REALISM.update(S), window.CHURCH_SIMULATOR?.frame(_e, S, b), n.render(i, b));
     }
     let vi = {

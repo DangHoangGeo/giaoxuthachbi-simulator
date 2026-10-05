@@ -152,3 +152,53 @@ body.sim-open .walk-panel{left:calc(50% + 196px)}
   .sim-kpi strong{font-size:12px}
 }
 [data-lighting=evening] .sim-placing{background:#4b7a59}
+
+/* Control room: equipment faces as fitted in the service room. */
+.ctl-room{display:flex;flex-direction:column;gap:10px;padding-bottom:12px}
+.sim-link{border:0;background:none;color:#315b43;font:inherit;font-weight:650;text-decoration:underline;padding:0;cursor:pointer}
+.ctl-device{border-radius:10px;padding:9px 10px 10px;box-shadow:inset 0 1px 0 #ffffff80,0 2px 8px #1c2a1f26}
+.ctl-plate-title{display:flex;justify-content:space-between;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.ctl-plate-title span{letter-spacing:0;text-transform:none;font-variant-numeric:tabular-nums}
+/* Keypad: brushed-ivory plate, backlit push buttons. */
+.ctl-keypad{background:linear-gradient(#f4f1e8,#e4dfd1);border:1px solid #cfc8b4;color:#5d5643}
+.ctl-keys{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.ctl-key{display:flex;align-items:center;gap:7px;text-align:left;font-size:10px;font-weight:600;color:#3e3a2e;padding:7px 8px;border-radius:7px;border:1px solid #c9c1aa;background:linear-gradient(#fffdf6,#ece6d6);box-shadow:0 2px 0 #b9b098;cursor:pointer}
+.ctl-key:active{transform:translateY(1px);box-shadow:0 1px 0 #b9b098}
+.ctl-key i{width:7px;height:7px;border-radius:50%;background:#bdb6a2;flex:none}
+.ctl-key.active i{background:#5fd27a;box-shadow:0 0 6px #5fd27a}
+.ctl-key.active{border-color:#8ea77a}
+/* Distribution board: grey steel enclosure, DIN rails, breaker levers. */
+.ctl-board{background:linear-gradient(#d9dcdc,#c4c8c9);border:1px solid #a9aeaf;color:#3c4245}
+.ctl-main{display:flex;align-items:center;gap:6px;font-size:9.5px;font-weight:600;margin-bottom:6px}
+.ctl-led{width:7px;height:7px;border-radius:50%;background:#7a8082}.ctl-led.on{background:#5fd27a;box-shadow:0 0 5px #5fd27a}
+.ctl-rail{background:#2d3235;border-radius:5px;padding:5px 6px 6px;margin-top:6px}
+.ctl-rail-label{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c9ced0;margin-bottom:4px}
+.ctl-rail-row{display:flex;flex-wrap:wrap;gap:4px}
+.ctl-breaker{width:40px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 2px 3px;background:linear-gradient(#fbfbfa,#e5e6e3);border:1px solid #9fa4a5;border-radius:3px;cursor:pointer}
+.ctl-lever{width:14px;height:22px;background:#3a3f42;border-radius:2px;position:relative}
+.ctl-lever b{position:absolute;left:1px;right:1px;height:10px;border-radius:2px;bottom:1px;background:#d9534f;transition:all .15s}
+.ctl-breaker.on .ctl-lever b{bottom:11px;background:#4cae5d}
+.ctl-code{font-size:9px;font-weight:800;color:#2a2f31}
+.ctl-amp{font-size:7.5px;color:#6b7174;font-variant-numeric:tabular-nums}
+.ctl-legend{font-size:8.5px;color:#5c6366;margin-top:6px}
+/* Fan regulators: white plates with rotary knobs. */
+.ctl-fans{background:linear-gradient(#ffffff,#eceeea);border:1px solid #d3d7cf;color:#4a5546}
+.ctl-reg-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+.ctl-regulator{display:flex;flex-direction:column;align-items:center;gap:3px;background:#fbfbf9;border:1px solid #dfe2db;border-radius:8px;padding:7px 4px}
+.ctl-knob{width:40px;height:40px;border-radius:50%;border:1px solid #9aa196;background:radial-gradient(circle at 35% 30%,#ffffff,#cfd4cb 70%);box-shadow:0 2px 4px #0003;position:relative;cursor:pointer;transform:rotate(var(--rot));transition:transform .2s}
+.ctl-knob b{position:absolute;left:50%;top:4px;width:3px;height:12px;margin-left:-1.5px;background:#315b43;border-radius:2px}
+.ctl-ticks{display:flex;gap:7px;font-size:8.5px;color:#9aa196;font-weight:700}.ctl-ticks .on{color:#315b43}
+.ctl-reg-label{font-size:8.5px;text-align:center;font-weight:600;line-height:1.2}.ctl-reg-label small{display:block;color:#8a977f;font-weight:500}
+/* Mixer: dark console, channel strips with meters, faders and mute keys. */
+.ctl-mixer{background:linear-gradient(#2b3134,#1f2426);border:1px solid #111;color:#d6dbdd}
+.ctl-strips{display:flex;gap:5px;overflow-x:auto;padding-bottom:2px}
+.ctl-strip{flex:1;min-width:52px;display:flex;flex-direction:column;align-items:center;gap:4px;background:#353c40;border-radius:6px;padding:6px 3px}
+.ctl-strip.muted{opacity:.6}
+.ctl-strip-name{font-size:10px;font-weight:800;color:#fff}
+.ctl-meter{width:6px;height:46px;background:#14181a;border-radius:3px;display:flex;align-items:flex-end;overflow:hidden}
+.ctl-meter i{display:block;width:100%;background:linear-gradient(to top,#4cae5d 60%,#e8c547 85%,#d9534f)}
+.ctl-fader{writing-mode:vertical-lr;direction:rtl;width:22px;height:86px;accent-color:#e9eef0;margin:0}
+.ctl-db{font-size:8.5px;font-variant-numeric:tabular-nums;color:#c4cacc}
+.ctl-mute{font-size:8px;font-weight:800;border:0;border-radius:4px;padding:3px 6px;background:#4cae5d;color:#0d2312;cursor:pointer}
+.ctl-mute.on{background:#d9534f;color:#fff}
+.ctl-strip-label{font-size:7.5px;text-align:center;color:#aab2b5;line-height:1.15}

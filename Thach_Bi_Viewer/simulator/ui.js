@@ -13,6 +13,7 @@
   const fmt = (v, d = 0) => Number.isFinite(v) ? v.toFixed(d) : '–';
   let tab = 'light', panel, body, picking = null, collapsed = new Set(), lastAnalysis = null, hereTimer = 0;
   const TABS = [
+    { id: 'controls', label: 'Controls' },
     { id: 'light', label: 'Lights', cat: 'light' },
     { id: 'fan', label: 'Fans', cat: 'fan' },
     { id: 'speaker', label: 'Sound', cat: 'speaker' },
@@ -165,6 +166,7 @@
     let html = '';
     if (t.cat) html = renderCategory(t.cat);
     else if (tab === 'analysis') html = renderAnalysis();
+    else if (tab === 'controls') html = renderControls();
     else html = renderSettings();
     body.innerHTML = html;
     if (renderKeepScroll) body.scrollTop = scroll; else body.scrollTop = 0;
@@ -174,6 +176,49 @@
       renderBody.lastSelected = SIM.state.selectedId;
       body.querySelector('.sim-props')?.scrollIntoView({ block: 'nearest' });
     }
+  }
+
+  /* -------------------------------------------- control room (service room) */
+  // The equipment as it would be fitted in the service room behind the altar:
+  // scene keypad, distribution board with one breaker per circuit, fan
+  // regulators and a sound mixer with a channel strip per zone.
+  const circuitItems = c => SIM.state.items.filter(i => i.circuit === c && !i.hidden);
+  function renderControls() {
+    const C = SIM.CIRCUITS, pw = SIM.powerSummary(), byC = Object.fromEntries(pw.byCircuit.map(c => [c.circuit, c]));
+    const present = Object.keys(C).filter(c => circuitItems(c).length);
+    const scenes = [...Object.keys(SIM.SCENES), ...SIM.state.customScenes.map(x => x.name)];
+    const keypad = `<div class="ctl-device ctl-keypad"><div class="ctl-plate-title">Scene keypad · entrance &amp; sacristy</div>
+      <div class="ctl-keys">${scenes.map(n => `<button class="ctl-key${SIM.state.scene === n ? ' active' : ''}" data-act="ctl-scene" data-scene="${esc(n)}"><i></i>${esc(n)}</button>`).join('')}</div></div>`;
+    const group = (title, cat) => present.filter(c => C[c].cat === cat);
+    const breaker = c => {
+      const items = circuitItems(c), on = items.some(i => i.on), w = byC[c]?.watts || 0;
+      return `<button class="ctl-breaker${on ? ' on' : ''}" data-act="ctl-breaker" data-circuit="${c}" title="${esc(C[c].label)} · ${items.length} fittings">
+        <span class="ctl-lever"><b></b></span><span class="ctl-code">${c}</span><span class="ctl-amp">${w > 0 ? Math.max(1, Math.round(w / 230 * 10) / 10) + ' A' : '—'}</span></button>`;
+    };
+    const rail = (label, list) => list.length ? `<div class="ctl-rail"><div class="ctl-rail-label">${label}</div><div class="ctl-rail-row">${list.map(breaker).join('')}</div></div>` : '';
+    const board = `<div class="ctl-device ctl-board"><div class="ctl-plate-title">Distribution board · DB-1 <span>${fmt(pw.total / 1000, 2)} kW · ${fmt(pw.total / 230, 1)} A</span></div>
+      <div class="ctl-main"><span class="ctl-led on"></span> Main switch 63 A · RCCB 30 mA</div>
+      ${rail('Lighting', group('', 'light'))}${rail('Fans & ventilation', group('', 'fan'))}${rail('Sound', group('', 'speaker'))}${rail('Decoration', group('', 'decor'))}
+      <div class="ctl-legend">Lever up = on. Each breaker switches every fitting on its circuit.</div></div>`;
+    const fans = present.filter(c => C[c].cat === 'fan').map(c => {
+      const items = circuitItems(c), on = items.filter(i => i.on), sp = on.length ? Math.round(on.reduce((t, i) => t + (i.speed ?? 2), 0) / on.length) : 0;
+      return `<div class="ctl-regulator"><button class="ctl-knob" data-act="ctl-knob" data-circuit="${c}" style="--rot:${-120 + sp * 80}deg" title="Click to step 0 → 1 → 2 → 3"><b></b></button>
+        <div class="ctl-ticks"><span${sp === 0 ? ' class="on"' : ''}>0</span><span${sp === 1 ? ' class="on"' : ''}>1</span><span${sp === 2 ? ' class="on"' : ''}>2</span><span${sp === 3 ? ' class="on"' : ''}>3</span></div>
+        <div class="ctl-reg-label">${esc(C[c].label.replace(/^\w+ · /, ''))}<small>${items.length} fans</small></div></div>`;
+    }).join('');
+    const fanPanel = fans ? `<div class="ctl-device ctl-fans"><div class="ctl-plate-title">Fan regulators</div><div class="ctl-reg-row">${fans}</div></div>` : '';
+    const strips = present.filter(c => C[c].cat === 'speaker').map(c => {
+      const items = circuitItems(c), on = items.some(i => i.on);
+      const lvl = items.length ? items.reduce((t, i) => t + (i.level ?? 0), 0) / items.length : 0;
+      return `<div class="ctl-strip${on ? '' : ' muted'}"><div class="ctl-strip-name">${c}</div>
+        <div class="ctl-meter"><i style="height:${on ? Math.max(8, Math.min(100, 70 + lvl * 4)) : 0}%"></i></div>
+        <input type="range" class="ctl-fader" orient="vertical" min="-20" max="6" step="1" value="${Math.round(lvl)}" data-act="ctl-fader" data-circuit="${c}" aria-label="${esc(C[c].label)} level">
+        <div class="ctl-db">${lvl > 0 ? '+' : ''}${Math.round(lvl)} dB</div>
+        <button class="ctl-mute${on ? '' : ' on'}" data-act="ctl-mute" data-circuit="${c}">${on ? 'ON' : 'MUTE'}</button>
+        <div class="ctl-strip-label">${esc(C[c].label.replace(/^\w+ · /, ''))}</div></div>`;
+    }).join('');
+    const mixer = strips ? `<div class="ctl-device ctl-mixer"><div class="ctl-plate-title">Sound mixer · zones <span>${lastAnalysis?.seats?.sti ? 'STI ' + fmt(lastAnalysis.seats.sti.avg, 2) : ''}</span></div><div class="ctl-strips">${strips}</div></div>` : '';
+    return `<div class="ctl-room"><p class="sim-hint">The control equipment in the service room behind the altar. Every switch here changes the model and the analysis. <button class="sim-link" data-act="ctl-goto">Show the service room ↗</button></p>${keypad}${board}${fanPanel}${mixer}</div>`;
   }
 
   function itemMeta(it) {
@@ -419,6 +464,24 @@
     if (!el) return;
     const act = el.dataset.act, it = itemFromEvent(e);
     switch (act) {
+      case 'ctl-scene': SIM.applyScene(el.dataset.scene); renderScenes(); toast('Scene: ' + el.dataset.scene); renderBody(); break;
+      case 'ctl-breaker': {
+        const c = el.dataset.circuit, items = circuitItems(c), on = !items.some(i => i.on);
+        for (const i of items) SIM.update(i.id, { on, ...(on && CAT.byId[i.type].light && !(i.dim > 0) ? { dim: 1 } : {}) }, { record: false });
+        SIM.commit((on ? 'Switch on ' : 'Switch off ') + (SIM.CIRCUITS[c]?.label || c)); renderKeepScroll = true; renderBody(); break;
+      }
+      case 'ctl-knob': {
+        const c = el.dataset.circuit, items = circuitItems(c), on = items.filter(i => i.on);
+        const cur = on.length ? Math.round(on.reduce((t, i) => t + (i.speed ?? 2), 0) / on.length) : 0, next = (cur + 1) % 4;
+        for (const i of items) SIM.update(i.id, next ? { on: true, speed: Math.min(next, CAT.byId[i.type].fan.speeds.length) } : { on: false }, { record: false });
+        SIM.commit(`${SIM.CIRCUITS[c]?.label || c}: speed ${next}`); renderKeepScroll = true; renderBody(); break;
+      }
+      case 'ctl-mute': {
+        const c = el.dataset.circuit, items = circuitItems(c), on = !items.some(i => i.on);
+        for (const i of items) SIM.update(i.id, { on }, { record: false });
+        SIM.commit((on ? 'Unmute ' : 'Mute ') + c); renderKeepScroll = true; renderBody(); break;
+      }
+      case 'ctl-goto': window.church?.goTo?.('service-room', { mode: 'explore' }); break;
       case 'close': setOpen(false); break;
       case 'undo': { const l = SIM.undo(); if (l) toast('Undo: ' + l); break; }
       case 'redo': { const l = SIM.redo(); if (l) toast('Redo: ' + l); break; }
@@ -489,6 +552,12 @@
     return { lensDeg: v + '°', eyeHeight: fmt(v, 2) + ' m', walkSpeed: fmt(v, 1) + ' m/s', adaptLux: v + ' lux', halos: fmt(v, 1) + '×', maintenance: fmt(v, 2), occupancy: fmt(v * 100) + ' %', openings: fmt(v * 100) + ' % open', ambientDbA: v + ' dBA' }[key] ?? String(v);
   }
   function onChange(e) {
+    if (e.target.dataset?.act === 'ctl-fader') {
+      const c = e.target.dataset.circuit, v = Number(e.target.value), items = circuitItems(c);
+      const avg = items.reduce((t, i) => t + (i.level ?? 0), 0) / (items.length || 1);
+      for (const i of items) SIM.update(i.id, { level: Math.max(-30, Math.min(6, (i.level ?? 0) + v - avg)) }, { record: false });
+      SIM.commit(`${c} level ${v} dB`); renderKeepScroll = true; renderBody(); return;
+    }
     const t = e.target;
     if (t.id === 'simImportFile') {
       const f = t.files?.[0];

@@ -135,6 +135,20 @@
       ledgeFlood(`Façade wash · ${side(s)}`, 'L6', [ledge, 8.4, s * 7.9], [2.4, 2.5, s * 1.5], 50, 6000);
     }
 
+    // L5 · downlights fixed high on the building for the open spaces: the
+    // front stage (events) from the tower cornices, and the walkways around the
+    // church from the arcade piers, the wing gables and the rear wall.
+    const down = (name, p, target, beam, lumens, mount = 'floor', mountYaw) => {
+      const a = aim(p, target);
+      add({ type: mount === 'floor' ? 'flood' : 'projector36', name, circuit: 'L5', mount, pos: p, yaw: a.yaw, mountYaw: mountYaw ?? a.yaw, tilt: a.tilt, beam, lumens });
+    };
+    for (const s of [-1, 1]) {
+      for (const dz of [-1.7, 1.7]) down(`Stage flood · tower ${side(s)} · ${dz * s < 0 ? 'inner' : 'outer'}`, [ledge, 8.4, s * TZ + dz], [-4.6, -0.48, s * (dz * s < 0 ? 2.2 : 7.5)], 45, 9000);
+      for (const k of ['4', '6', '11']) down(`Path light · axis ${k} · ${side(s)}`, [A[k], 5.9, s * 10.75], [A[k], -2.08, s * 14.5], 50, 2500, 'wall', s * 90);
+      down(`Path light · wing gable ${side(s)}`, [40.575, 6.2, s * 13.13], [40.575, -2.08, s * 17], 55, 3000, 'wall', s * 90);
+      down(`Path light · rear · ${side(s)}`, [53.2, 5.2, s * 4.5], [57.5, -2.08, s * 5], 55, 3000, 'wall', 0);
+    }
+
     // L7 · festival exterior: bulb strings along the ridge, the main and veranda
     // eaves and the rear gable, across the front terrace and up the tower corners,
     // plus floods on the tower tops and the central shrine. Off except at feasts.
@@ -234,8 +248,8 @@
     add({ type: 'paschal', name: 'Paschal candle', circuit: 'DECOR', mount: 'floor', pos: [42.05, 0.75, -1.55], yaw: 180, mountYaw: 180 });
     // Seasonal and festival items, hidden until needed.
     add({ type: 'carpet', name: 'Aisle carpet (weddings & feasts)', circuit: 'DECOR', mount: 'floor', pos: [6.2, 0, 0], yaw: 0, mountYaw: 0, hidden: true, params: { length: 32 } });
-    add({ type: 'christmasTree', name: 'Christmas tree', circuit: 'X1', mount: 'floor', pos: [40.0, 0, 5.9], yaw: 180, mountYaw: 180, hidden: true });
-    add({ type: 'grotto', name: 'Nativity grotto (hang đá)', circuit: 'X1', mount: 'floor', pos: [40.6, -0.32, -10.6], yaw: 90, mountYaw: 90, hidden: true });
+    add({ type: 'christmasTree', name: 'Christmas tree · front stage', circuit: 'X1', mount: 'floor', pos: [-4.2, -0.48, -5.6], yaw: 180, mountYaw: 180, hidden: true });
+    add({ type: 'grotto', name: 'Nativity grotto (hang đá) · front stage', circuit: 'X1', mount: 'floor', pos: [-4.2, -0.48, 5.6], yaw: 180, mountYaw: 180, hidden: true });
     add({ type: 'star', name: 'Star over the crossing', circuit: 'X1', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.4, 0], anchorY: lining(0) - 0.13, yaw: 90, mountYaw: 90, hidden: true });
     // Festival lantern strings mid-bay, clear of the pier lanterns and of the loudspeaker bays (3–4, 6–7).
     for (const k of ['4', '5', '7', '8']) for (const s of [-1, 1]) {
@@ -248,5 +262,5 @@
 
   // Bump when the recommended design changes: browsers holding a layout saved
   // from an older version then load the new design (the old one is kept aside).
-  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-12-fans-speakers-towers' };
+  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-13-stage-lights-christmas-outside' };
 })();

@@ -1224,13 +1224,13 @@
 
   /* ---------------------------------------------------------------- scenes */
   const SCENES = {
-    'Full service · evening': { L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 2, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, DECOR: 1 },
-    'Weekday Mass': { L7: 0, L1: 0.75, L2: 0, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, DECOR: 1 },
-    'Prayer & adoration': { L7: 0, L1: 0, L2: 0, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, DECOR: 1 },
-    'Christmas & festivals': { L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 3, F2: 3, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, DECOR: 1 },
-    'Cleaning': { L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, DECOR: 1 },
-    'Night security': { L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, DECOR: 1 },
-    'All off': { L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, DECOR: 1 }
+    'Full service · evening': { L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 2, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
+    'Weekday Mass': { L7: 0, L1: 0.75, L2: 0, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
+    'Prayer & adoration': { L7: 0, L1: 0, L2: 0, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
+    'Christmas & festivals': { L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 3, F2: 3, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, A5: 1, DECOR: 1 },
+    'Cleaning': { L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 2, V1: 2, A5: 0, DECOR: 1 },
+    'Night security': { L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1 },
+    'All off': { L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1 }
   };
   SIM.SCENES = SCENES;
   function applyScene(name, { record = true } = {}) {

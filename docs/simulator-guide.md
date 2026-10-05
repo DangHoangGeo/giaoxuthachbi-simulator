@@ -297,3 +297,24 @@ Exterior lighting (L6):
 - **Light budget.** The viewer gives its limited light budget to the side
   you are looking from: the exterior floods when the camera is outside, the
   interior lights when inside. The analysis always counts every light.
+
+## Stage lighting, controls and navigation (October 2026 revision)
+
+- **Exterior downlights (L5).** All are fixed high on the building:
+  - four wide floods on the tower cornices light the front stage for events
+  - path lights on the outer arcade piers (axes 4, 6, 11), the wing gables
+    and the rear wall light the walkways around the church
+- **Christmas tree and Nativity grotto.** Both now stand on the front stage
+  in front of the towers. They stay hidden until Christmas; the Christmas
+  scene shows them.
+- **Simulator → Controls.** The equipment in the service room, drawn like the
+  real thing:
+  - a scene keypad
+  - distribution board DB-1, with one breaker per circuit showing its current
+  - fan regulators (0–1–2–3)
+  - a sound mixer with a fader, meter and mute key per zone
+
+  Every control changes the model and the analysis, and Ctrl+Z undoes it.
+- **Explore mode movement.** W A S D or the arrow keys move forward, back
+  and sideways; Q and E go down and up; Shift moves faster. Dragging still
+  orbits, and scrolling still zooms.
