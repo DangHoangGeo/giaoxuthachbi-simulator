@@ -318,3 +318,10 @@ Exterior lighting (L6):
 - **Explore mode movement.** W A S D or the arrow keys move forward, back
   and sideways; Q and E go down and up; Shift moves faster. Dragging still
   orbits, and scrolling still zooms.
+
+### Balanced side-wall fittings (2026-10-14)
+Every side pilaster (axes 3–9) now carries the same ordered column of fittings, with clear gaps between them:
+- Station of the Cross plaque: 2.2–2.9 m
+- Slim speaker: 3.45 m. This is the highest position that still keeps 75 % of seats at STI ≥ 0.60.
+- Brass sconce: 4.6 m. A sconce was added at axis 9, so the sconce row now matches the seven Stations on each side.
+- Optional wall fan: 5.55 m at axes 4, 6 and 8, tilted 38° down. It now sits about 0.5 m clear of the candles instead of touching them.

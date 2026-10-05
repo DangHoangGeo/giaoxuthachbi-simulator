@@ -64,8 +64,8 @@
     for (const k of ['4', '6', '8']) add({ type: 'chandelier8', name: `Chandelier · bay ${k}–${Number(k) + 1}`, circuit: 'LD', mount: 'pendant', pos: [A[k] + 2.25, 6.3, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
     add({ type: 'chandelier12', name: 'Grand chandelier · crossing 9–10', circuit: 'LD', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 7.2, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
     // Sconces on the C/G piers, facing the nave, and on the sanctuary piers.
-    for (const k of ['3', '4', '5', '6', '7', '8']) for (const s of [-1, 1]) {
-      add({ type: 'sconce2', name: `Sconce · axis ${k} · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A[k], 4.4, s * 7.07], yaw: -s * 90, mountYaw: -s * 90 });
+    for (const k of ['3', '4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) {
+      add({ type: 'sconce2', name: `Sconce · axis ${k} · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A[k], 4.6, s * 7.07], yaw: -s * 90, mountYaw: -s * 90 });
     }
     for (const s of [-1, 1]) add({ type: 'sconce2', name: `Sconce · sanctuary pier · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A['11'] - 0.37, 4.3, s * 3.6], yaw: 180, mountYaw: 180 });
 
@@ -190,7 +190,7 @@
     // Optional: small oscillating wall fans on the side-wall pilasters, above the
     // sconces, for the hottest days. Hidden until shown (F2).
     for (const k of ['4', '6', '8']) for (const s of [-1, 1]) {
-      add({ type: 'fanWall', name: `Wall fan · axis ${k} · ${side(s)}`, circuit: 'F2', mount: 'wall', pos: [A[k], 5.0, s * 7.07], yaw: -s * 90, mountYaw: -s * 90, tilt: -32, speed: 1, hidden: true });
+      add({ type: 'fanWall', name: `Wall fan · axis ${k} · ${side(s)}`, circuit: 'F2', mount: 'wall', pos: [A[k], 5.55, s * 7.07], yaw: -s * 90, mountYaw: -s * 90, tilt: -38, speed: 1, hidden: true });
     }
     // Trial: two large circulators on the inside of the entrance wall, blowing
     // down the nave (F4, off). Compare the air map with them on and off.
@@ -205,11 +205,12 @@
 
     // Loudspeakers · a discreet distributed system: slim 0.6 m columns painted
     // the wall colour on the side-wall pilasters (axes 4–9), between the Stations
-    // of the Cross plaques (2.2–2.9 m) and the sconces (4.4 m),
+    // of the Cross plaques (2.2–2.9 m) and the sconces (4.6 m), with clear
+    // gaps so each pilaster reads as one ordered column of fittings,
     // turned 50° toward the back so each covers the rows behind it, and
     // time-aligned to the talker. Nothing is fixed to the timber columns.
     for (const k of ['4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) {
-      add({ type: 'slimColumn', name: `Wall speaker · axis ${k} · ${side(s)}`, circuit: 'A1', mount: 'wall', pos: [A[k], 3.35, s * 7.07], yaw: -s * 140, mountYaw: -s * 90, tilt: -18, level: -6, delayMs: 0 });
+      add({ type: 'slimColumn', name: `Wall speaker · axis ${k} · ${side(s)}`, circuit: 'A1', mount: 'wall', pos: [A[k], 3.45, s * 7.07], yaw: -s * 140, mountYaw: -s * 90, tilt: -18, level: -6, delayMs: 0 });
     }
     // Back of the church, by the towers: two slim columns on the inside of the
     // entrance wall, aimed steeply at the entrance hall and the last rows.
@@ -262,5 +263,5 @@
 
   // Bump when the recommended design changes: browsers holding a layout saved
   // from an older version then load the new design (the old one is kept aside).
-  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-13-stage-lights-christmas-outside' };
+  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-14-balanced-wall-fittings' };
 })();
