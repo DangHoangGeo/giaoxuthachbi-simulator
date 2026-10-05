@@ -231,12 +231,14 @@
       const p = [2.72, 3.6, s * 5.9], a = aim(p, [7.5, 1.2, s * 4.8]);
       add({ type: 'slimColumn', name: `Wall speaker · entrance hall · ${side(s)}`, circuit: 'A5', mount: 'wall', pos: p, yaw: a.yaw, mountYaw: 0, tilt: a.tilt, level: -9, delayMs: 0, on: false });
     }
-    // Wings: the wall speakers face the back of the nave, so each wing gets its
-    // own slim column on the gable between the lights, aimed down the benches
-    // toward the nave and time-aligned to the talker.
-    for (const s of [-1, 1]) {
-      const p = [40.56, 3.55, s * 13.06], a = aim(p, [40.56, 1.0, s * 9.4]);
-      add({ type: 'slimColumn', name: `Wall speaker · wing gable · ${side(s)}`, circuit: 'A1', mount: 'wall', pos: p, yaw: a.yaw, mountYaw: -s * 90, tilt: a.tilt, level: -10, delayMs: 0 });
+    // Wings: the wall speakers face the back of the nave, so each wing gets two
+    // small pendants, one over each bench block behind the fans, just below the
+    // blade level and aimed down toward the front rows: close to every bench,
+    // so they need little level and add little to the reverberant sound that
+    // returns to the altar microphones.
+    for (const s of [-1, 1]) for (const x of [38.94, 42.22]) {
+      const p = [x, 3.0, s * 11.6], a = aim(p, [x, 0.9, s * 9.6]);
+      add({ type: 'pendantSpeaker', name: `Wing speaker · ${side(s)} · ${x < 40.5 ? 'front' : 'rear'} block`, circuit: 'A1', mount: 'pendant', pos: p, anchorY: above(x, s * 11.6, 3.0), yaw: a.yaw, mountYaw: 0, tilt: a.tilt, level: -10, delayMs: 0 });
     }
     for (const s of [-1, 1]) for (const x of [12.225, 25.725]) {
       add({ type: 'pendantSpeaker', name: `Veranda fill · ${side(s)} · ${x.toFixed(1)}`, circuit: 'A2', mount: 'pendant', pos: [x, 3.9, s * 8.85], anchorY: above(x, s * 8.85, 3.9), yaw: 0, mountYaw: 0, tilt: -90, level: -7 });

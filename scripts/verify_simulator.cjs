@@ -151,7 +151,15 @@ function runSync(kinds) {
   // The recommended design also meets its own checks and the main brief targets.
   assert(!A.checks.some(c => c.level === 'warn'), 'recommended design has no warnings: ' + A.checks.filter(c => c.level === 'warn').map(c => c.title + ' ' + c.detail).join('; '));
   assert(s.luxOk >= 95, 'seats with ≥ 200 lux: ' + s.luxOk);
-  assert(s.sti.min >= 0.45 && s.stiOk >= 75, 'speech clarity: min ' + s.sti.min + ', ' + s.stiOk + ' % ≥ 0.60');
+  // Nave seats: the brief's main target. Wing benches (choir, ministers) sit
+  // beside the sanctuary with their own pendant speakers; check them apart.
+  const nave = s.seats.filter(x => x.block !== 'wing'), wingSeats = s.seats.filter(x => x.block === 'wing');
+  const naveOk = 100 * nave.filter(x => x.sti >= 0.6).length / nave.length, naveMin = Math.min(...nave.map(x => x.sti));
+  const wingAvg = wingSeats.reduce((t, x) => t + x.sti, 0) / wingSeats.length, wingMin = Math.min(...wingSeats.map(x => x.sti));
+  console.log(JSON.stringify({ naveStiOk: Math.round(naveOk), naveStiMin: +naveMin.toFixed(3), wingStiAvg: +wingAvg.toFixed(3), wingStiMin: +wingMin.toFixed(3), wingLuxMin: Math.round(Math.min(...wingSeats.map(x => x.lux))) }));
+  assert.equal(wingSeats.length, 80, 'wing benches are analysed');
+  assert(naveMin >= 0.45 && naveOk >= 75, 'nave speech clarity: min ' + naveMin + ', ' + naveOk + ' % ≥ 0.60');
+  assert(wingMin >= 0.45 && wingAvg >= 0.5, 'wing speech clarity: min ' + wingMin + ', avg ' + wingAvg);
   // Toggling a circuit changes light; history restores it.
   const before = s.lux.avg;
   SIM.applyScene('All off');
