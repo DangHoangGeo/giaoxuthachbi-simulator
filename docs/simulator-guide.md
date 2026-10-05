@@ -200,9 +200,9 @@ Press Play and walk or sit. Each loudspeaker reaches you with its real distance 
   smaller lobed arches beside it are deep, warm-lit alcoves (about 1.4 m).
   Our Lady stands in the left alcove (B) and Saint Joseph in the right (H),
   each on a stone plinth with flowers. This follows the reference interior.
-- Benches beside the altar on the +0.15 m side platforms face the altar:
-  - choir on the right: three stepped rows of about 3.9 m, plus a keyboard
-  - ministers and servers on the left: two rows
+- Benches stand in the two projecting wings between axes 9 and 10, facing the nave, five rows in two blocks:
+  - choir on the right (H), with a keyboard at the front
+  - ministers and servers on the left (B)
 - The service room (sacristy) is behind the back wall, between the D and E
   grids. It is entered through a door in the inner side wall of each statue
   alcove. It holds:

@@ -59,7 +59,7 @@
     if (x >= 49.95 && x <= 53.2 && az > 3.42 && az < 7.6) return false;
     if (x >= 49.2 && x <= 50.1 && Math.abs(az - 5.25) < .75) return false;
     if (x >= 48.7 && x <= 50.1 && az > 7.1 && az < 7.6) return false;
-    if (x >= 40.3 && x <= 45.15 && az >= 4.25 && az <= 6.8) return false;
+    if (x >= 37.7 && x <= 43.45 && Math.abs(x - 40.575) > .42 && [8.35,9.25,10.15,11.05,11.95].some(r => Math.abs(az - r) < .33)) return false;
     if (x >= 52.1 && x <= 53.1 && az < 3.1) return false;
     if (x >= 48.7 && x <= 49.8 && z >= 1.0 && z <= 1.8) return false;
     if (x >= -13.219 && x <= -.38 && Math.abs(z) <= 13.05) return true;
@@ -505,17 +505,17 @@
       }
       for(const x of [x0,x1])box(.07,.95,.5,x,y+.47,z+out*.03,im.wood,fit,`${name} end panel`);
     }
-    const choirRows=[{z:4.55,y:.15},{z:5.42,y:.33},{z:6.29,y:.51}];
-    choirRows.forEach((r,i)=>{
-      if(i)box(3.95,r.y-.15,.9,43.075,.15+(r.y-.15)/2,r.z,im.woodInset,fit,'Choir riser');
-      sideBench(41.1,45.05,r.z,r.y,-1,`Choir bench row ${i+1}`);
+    // Benches in the two projecting wings between axes 9 and 10 (plan),
+    // facing the nave: choir on the right (H, +z), ministers and servers on
+    // the left (B, −z). Two blocks per row with a 0.9 m centre aisle.
+    const wingRows=[8.35,9.25,10.15,11.05,11.95],wingY=-.32;
+    for(const sign of [-1,1])wingRows.forEach((az,i)=>{
+      for(const [x0,x1] of [[37.75,40.12],[41.03,43.4]])sideBench(x0,x1,sign*az,wingY,-sign,`${sign>0?'Choir':'Ministers'} bench · wing row ${i+1}`);
     });
-    for(const [i,z] of [-4.55,-5.42].entries())sideBench(41.1,45.05,z,.15,1,`Ministers bench row ${i+1}`);
-    // Choir keyboard at the front of the choir, facing the singers.
-    box(.42,.08,1.32,40.68,.98,5.42,im.wood,fit,'Choir keyboard case');
-    box(.16,.03,1.22,40.62,1.035,5.42,im.whiteStone,fit,'Keyboard keys');
-    box(.06,.72,1.32,40.86,.51,5.42,im.wood,fit,'Keyboard stand panel');
-    for(const z of [4.82,6.02])box(.36,.82,.06,40.68,.56,z,im.wood,fit,'Keyboard stand side');
+    // Choir keyboard at the front of the right wing, beside the nave.
+    box(1.32,.08,.42,40.575,.33,7.75,im.wood,fit,'Choir keyboard case');
+    box(1.22,.03,.16,40.575,.385,7.69,im.whiteStone,fit,'Keyboard keys');
+    for(const x of [40.0,41.15])box(.06,.62,.36,x,-.01,7.75,im.wood,fit,'Keyboard stand side');
 
     // Service room (nhà áo / sacristy) behind the altar between the D and E
     // grids: vesting furniture and the church's electrical and sound control.
