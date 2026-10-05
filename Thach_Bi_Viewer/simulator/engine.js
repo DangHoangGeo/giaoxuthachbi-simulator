@@ -140,7 +140,7 @@
     }
     // Entrance façade (plane inside the wall, inner face at x 2.65): solid apart from the main door and
     // the two side doors, all open in the model's default state.
-    GEO.walls.push({ x: 2.5, z0: -7.25, z1: 7.25, y0: -0.4, y1: 12.5, openings: [
+    GEO.walls.push({ x: 2.35, z0: -7.25, z1: 7.25, y0: -0.4, y1: 12.5, openings: [
       { z0: -1.25, z1: 1.25, y0: -0.4, y1: 4.6 }, { z0: -6.1, z1: -4.9, y0: -0.4, y1: 3.6 }, { z0: 4.9, z1: 6.1, y0: -0.4, y1: 3.6 }] });
     GEO.occluders = P.buildOccluders({
       columns: GEO.columns.map(c => ({ x: c.x, z: c.z, r: c.r, y0: 0, y1: 9.4 })),
@@ -1269,14 +1269,17 @@
     'Full service · evening': { L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 2, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
     'Weekday Mass': { L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
     'Prayer & adoration': { L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
-    'Christmas & festivals': { L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 3, F2: 3, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, A5: 1, DECOR: 1 },
+    'Christmas & festivals': { L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 3, F3: 3, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 2, A5: 0, DECOR: 1 },
+    // Courtyard horns on: for crowds outside. Inside, their sound comes back
+    // through the open windows late enough to blur speech, so use only then.
+    'Festival · courtyard overflow': { L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 3, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, A5: 1, DECOR: 1 },
     'Cleaning': { L8: 1, L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 2, A5: 0, DECOR: 1 },
     'Night security': { L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1 },
     'All off': { L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1 }
   };
   SIM.SCENES = SCENES;
   // Reading light each scene is meant to give on the books (lux, maintained).
-  const SCENE_LUX = { 'Full service · evening': 200, 'Weekday Mass': 150, 'Prayer & adoration': 50, 'Christmas & festivals': 200, 'Cleaning': 100 };
+  const SCENE_LUX = { 'Full service · evening': 200, 'Weekday Mass': 150, 'Prayer & adoration': 50, 'Christmas & festivals': 200, 'Festival · courtyard overflow': 200, 'Cleaning': 100 };
   SIM.sceneLuxTarget = () => state.scene in SCENE_LUX ? SCENE_LUX[state.scene] : state.scene && !SCENES[state.scene] ? 150 : state.scene ? null : 200;
   function applyScene(name, { record = true } = {}) {
     const custom = state.customScenes.find(s => s.name === name);
