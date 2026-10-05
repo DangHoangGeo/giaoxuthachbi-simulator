@@ -88,7 +88,7 @@
     { const p = [A['10'] + 0.33, 4.6, -3.6], a = aim(p, [47.55, 2.5, 0]);
       add({ type: 'spot15', name: 'Tabernacle accent', circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: 0, beam: 10, lumens: 900, shadow: false }); }
     // Our Lady (left) and Saint Joseph (right) in the side alcoves at axis 11.
-    const statues = { B: [49.7, 0.83, -5.25], H: [49.7, 0.83, 5.25] };
+    const statues = { B: [49.7, 0.83, -5.55], H: [49.7, 0.83, 5.55] };
     for (const [k, base] of Object.entries(statues)) {
       const p = [A['9'], sideBeamY - 0.005, base[2]], a = aim(p, [base[0], 2.7, base[2]]);
       add({ type: 'spot15', name: `Statue accent · ${k}`, circuit: 'L3', mount: 'pendant', pos: p, anchorY: sideBeamY, ...a, mountYaw: a.yaw, beam: 12, lumens: 1800, shadow: false });
@@ -185,7 +185,7 @@
     add({ type: 'statueMary', name: 'Statue · Our Lady', circuit: 'DECOR', mount: 'floor', pos: statues.B, yaw: 180, mountYaw: 180 });
     add({ type: 'statueJoseph', name: 'Statue · Saint Joseph', circuit: 'DECOR', mount: 'floor', pos: statues.H, yaw: 180, mountYaw: 180 });
     for (const s of [-1, 1]) {
-      add({ type: 'flowerStand', name: `Flower stand · statue ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [49.45, 0.15, s * 4.2], yaw: 180, mountYaw: 180 });
+      add({ type: 'flowerStand', name: `Flower stand · statue ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [49.45, 0.15, s * 6.6], yaw: 180, mountYaw: 180 });
       add({ type: 'candleStand', name: `Votive candles · ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [48.1, 0.15, s * 6.2], yaw: 180, mountYaw: 180 });
       add({ type: 'palm', name: `Palm · entrance ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [6.3, 0, s * 6.55], yaw: 0, mountYaw: 0 });
       add({ type: 'banner', name: `Banner · axis 9 · ${side(s)}`, circuit: 'DECOR', mount: 'wall', pos: [A['9'] - 0.315, 6.6, s * 3.6], yaw: 180, mountYaw: 180 });
@@ -207,5 +207,5 @@
 
   // Bump when the recommended design changes: browsers holding a layout saved
   // from an older version then load the new design (the old one is kept aside).
-  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-10b-statue-alcoves' };
+  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-11-clear-service-doors' };
 })();

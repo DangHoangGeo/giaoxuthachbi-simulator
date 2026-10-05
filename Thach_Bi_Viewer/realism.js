@@ -57,7 +57,7 @@
     // Sanctuary fit-out: service-room walls (door gaps at x 50.65), side benches, furniture.
     if (x >= 48.6 && x <= 53.1 && az >= 3.42 && az <= 3.8 && Math.abs(x - 49.6) > .36) return false;
     if (x >= 49.95 && x <= 53.2 && az > 3.42 && az < 7.6) return false;
-    if (x >= 49.2 && x <= 50.1 && Math.abs(az - 5.25) < .75) return false;
+    if (x >= 49.2 && x <= 50.1 && Math.abs(az - 5.55) < .65) return false;
     if (x >= 48.7 && x <= 50.1 && az > 7.1 && az < 7.6) return false;
     if (x >= 37.7 && x <= 43.45 && Math.abs(x - 40.575) > .42 && [8.35,9.25,10.15,11.05,11.95].some(r => Math.abs(az - r) < .33)) return false;
     if (x >= 52.1 && x <= 53.1 && az < 3.1) return false;
@@ -474,7 +474,7 @@
     // interior: deep, warm-lit bays with Our Lady (left, B) and Saint Joseph
     // (right, H) on stone plinths. A door in each alcove's inner side wall
     // leads to the service room.
-    const alcove={x0:SX+.16,x1:50.1,zIn:3.6,zOut:7.2,top:6.95,plinth:{z:5.25,w:1.25,d:.75,h:.6}};
+    const alcove={x0:SX+.16,x1:50.1,zIn:3.6,zOut:7.2,top:6.95,plinth:{z:5.55,w:1.1,d:.75,h:.6}};
     const warm=mat.wall.clone();warm.name='Warm ochre alcove plaster · proposal';warm.color.set('#f1d9a8');
     for(const sign of [-1,1]){
       const zc=(alcove.zIn+alcove.zOut)/2,width=alcove.zOut-alcove.zIn,depth=alcove.x1-alcove.x0;
