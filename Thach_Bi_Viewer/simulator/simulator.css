@@ -211,3 +211,29 @@ body.sim-open .walk-panel{left:calc(50% + 196px)}
 .ctl-unpowered .ctl-rail,.ctl-unpowered .ctl-keys{opacity:.4;pointer-events:none}
 .ctl-dead{font-size:9.5px;font-weight:700;color:#a3312d;background:#fbe9e8;border-radius:4px;padding:4px 6px;margin-bottom:6px}
 .ctl-feeder{border-color:#6b7174}
+/* Stand-alone control dock (bottom right): live stats + equipment panel. */
+.ctl-dock{position:absolute;right:18px;bottom:16px;z-index:6;width:340px;display:flex;flex-direction:column;align-items:stretch;gap:6px;pointer-events:none}
+.ctl-dock>*{pointer-events:auto}
+.ctl-stats{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;background:#1f2528e8;border-radius:10px;padding:6px 4px;color:#e8ece6;backdrop-filter:blur(10px)}
+.ctl-stat{text-align:center;line-height:1.1}
+.ctl-stat b{display:block;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;color:#9fe3a8}
+.ctl-stat.bad b{color:#f2b36b}
+.ctl-stat small{font-size:7.5px;color:#aab3ae}
+.ctl-stat span{display:block;font-size:7.5px;letter-spacing:.06em;text-transform:uppercase;color:#7f8a85;margin-top:2px}
+.ctl-panel{height:360px;display:flex;flex-direction:column;background:#f4f5f2f5;border:1px solid #fff;border-radius:12px;box-shadow:0 12px 40px #1b2a2030;overflow:hidden}
+.ctl-tabs{display:flex;gap:2px;padding:4px;background:#e2e5e0;flex:none}
+.ctl-tabs button{flex:1;border:0;background:none;border-radius:6px;padding:6px 2px;font-size:9.5px;font-weight:650;color:#5d6762}
+.ctl-tabs button.active{background:#fff;color:#22302a;box-shadow:0 1px 3px #0001}
+.ctl-body{flex:1;overflow-y:auto;padding:8px;scrollbar-gutter:stable}
+.ctl-toggle{align-self:flex-end;border:0;border-radius:100px;background:#2d3a33;color:#fff;font-size:11px;font-weight:650;padding:9px 16px;box-shadow:0 4px 14px #0003}
+.ctl-toggle[aria-expanded=true]{background:#56625b}
+.ctl-body .ctl-board{background:linear-gradient(#d9dcdc,#c4c8c9);border-radius:8px;padding:6px}
+.ctl-body .ctl-keys{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.ctl-breaker{width:60px;min-width:60px;max-width:60px;height:96px;justify-content:flex-start}
+.ctl-name{height:2.3em;overflow:hidden}
+@media(max-width:760px){.ctl-dock{right:8px;left:8px;width:auto;bottom:90px}.ctl-panel{height:300px}}
+/* Clearer view: keep the dock left of the control panel; drop secondary text over the 3D view. */
+@media(min-width:761px){.place-dock{transform:translateX(calc(-50% - 185px))}.navigation-hint{transform:translateX(calc(-50% - 185px))}}
+.scene-heading p,.scene-eyebrow,.detail-hint{display:none}
+.ctl-panel{height:min(300px,calc(100vh - 470px));min-height:220px}
+.ctl-dock .ctl-lever b{transition:none}

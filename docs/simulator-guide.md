@@ -368,3 +368,14 @@ Still to do:
   - switching the feeder back on restores DB-2's own switch positions
 
   DB-1 decides whether the sub-board has power at all; DB-2 controls the detail.
+
+## Stand-alone control panel (2026-10-17)
+- **Bottom-right corner:** separate from the Simulator card. It has:
+  - **Live stats strip, always visible:** light (lux), speech (STI), air (m/s), noise (dBA), power (kW) and monthly cost. A value turns orange when it misses its target.
+  - **Control panel button:** opens a fixed-size panel with tabs *Scenes · DB-1 Main · DB-2 Towers · Fans · Sound*. Switches update in place, so nothing moves while you use them. The fader moves a whole zone and keeps each speaker's own offset.
+- **The towers are fully on DB-2:**
+  - L6 tower and façade floods
+  - L7 festival lights
+  - L9, a new circuit: the stage floods on the tower cornices and the tower door lanterns
+- **Tower buttons:** *Towers off / evening / festival* switch L6, L9 and L7 together.
+- **Simulator card:** the old Controls tab is gone, and the descriptive text over the 3D view is hidden for a clearer picture.

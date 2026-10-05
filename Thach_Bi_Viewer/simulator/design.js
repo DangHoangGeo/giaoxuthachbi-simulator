@@ -280,10 +280,15 @@
       add({ type: 'lanternString', name: `Red lanterns · veranda ${side(s)} · bay ${k}–${Number(k) + 1}`, circuit: 'X1', mount: 'pendant', pos: [x, 5.6, s * 8.85], anchorY: above(x, s * 8.85, 5.6), yaw: 90, mountYaw: 90, hidden: true, params: { length: 3.4 } });
     }
     for (const k of ['4', '6', '8']) add({ type: 'bunting', name: `Festival pennants · axis ${k}`, circuit: 'DECOR', mount: 'pendant', pos: [A[k], 7.2, 0], anchorY: 7.2, yaw: 0, mountYaw: 0, hidden: true, params: { length: 7 } });
+    // Everything fixed to the towers and the front façade is switched at DB-2
+    // inside the main doors: the stage floods on the tower cornices and the
+    // tower door lanterns form circuit L9 (L6 floods and L7 festival lights are
+    // already there).
+    for (const it of items) if (/^Stage flood · tower|^Tower lantern/.test(it.name)) it.circuit = 'L9';
     return items;
   }
 
   // Bump when the recommended design changes: browsers holding a layout saved
   // from an older version then load the new design (the old one is kept aside).
-  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-15-system-review' };
+  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-16-tower-board' };
 })();
