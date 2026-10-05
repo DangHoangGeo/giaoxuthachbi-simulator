@@ -191,15 +191,16 @@
       <div class="ctl-keys">${scenes.map(n => `<button class="ctl-key${SIM.state.scene === n ? ' active' : ''}" data-act="ctl-scene" data-scene="${esc(n)}"><i></i>${esc(n)}</button>`).join('')}</div></div>`;
     const group = (title, cat) => present.filter(c => C[c].cat === cat);
     const breaker = c => {
-      const items = circuitItems(c), on = items.some(i => i.on), w = byC[c]?.watts || 0;
-      return `<button class="ctl-breaker${on ? ' on' : ''}" data-act="ctl-breaker" data-circuit="${c}" title="${esc(C[c].label)} · ${items.length} fittings">
-        <span class="ctl-lever"><b></b></span><span class="ctl-code">${c}</span><span class="ctl-amp">${w > 0 ? Math.max(1, Math.round(w / 230 * 10) / 10) + ' A' : '—'}</span></button>`;
+      const items = circuitItems(c), on = items.some(i => i.on), b = byC[c] || {};
+      const amps = b.amps || 0, mcb = b.mcb || 6;
+      return `<button class="ctl-breaker${on ? ' on' : ''}" data-act="ctl-breaker" data-circuit="${c}" title="${esc(C[c].label)} · ${items.length} fittings · C${mcb} breaker · full load ${fmt(b.ratedAmps || 0, 1)} A">
+        <span class="ctl-rating">C${mcb}</span><span class="ctl-lever"><b></b></span><span class="ctl-code">${c}</span><span class="ctl-amp">${amps > 0.05 ? fmt(amps, 1) + ' A' : '—'}</span></button>`;
     };
     const rail = (label, list) => list.length ? `<div class="ctl-rail"><div class="ctl-rail-label">${label}</div><div class="ctl-rail-row">${list.map(breaker).join('')}</div></div>` : '';
-    const board = `<div class="ctl-device ctl-board"><div class="ctl-plate-title">Distribution board · DB-1 <span>${fmt(pw.total / 1000, 2)} kW · ${fmt(pw.total / 230, 1)} A</span></div>
+    const board = `<div class="ctl-device ctl-board"><div class="ctl-plate-title">Distribution board · DB-1 <span>${fmt(pw.total / 1000, 2)} kW · ${fmt(pw.amps, 1)} A of 63 A</span></div>
       <div class="ctl-main"><span class="ctl-led on"></span> Main switch 63 A · RCCB 30 mA</div>
       ${rail('Lighting', group('', 'light'))}${rail('Fans & ventilation', group('', 'fan'))}${rail('Sound', group('', 'speaker'))}${rail('Decoration', group('', 'decor'))}
-      <div class="ctl-legend">Lever up = on. Each breaker switches every fitting on its circuit.</div></div>`;
+      <div class="ctl-legend">Lever up = on. Each breaker switches every fitting on its circuit; the number on top is its rating (C-curve MCB sized for the full load at ≤ 80 %), the one below the current now.</div></div>`;
     const fans = present.filter(c => C[c].cat === 'fan').map(c => {
       const items = circuitItems(c), on = items.filter(i => i.on), sp = on.length ? Math.round(on.reduce((t, i) => t + (i.speed ?? 2), 0) / on.length) : 0;
       return `<div class="ctl-regulator"><button class="ctl-knob" data-act="ctl-knob" data-circuit="${c}" style="--rot:${-120 + sp * 80}deg" title="Click to step 0 → 1 → 2 → 3"><b></b></button>

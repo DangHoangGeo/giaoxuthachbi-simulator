@@ -509,8 +509,14 @@
     // facing the nave: choir on the right (H, +z), ministers and servers on
     // the left (B, −z). Two blocks per row with a 0.9 m centre aisle.
     const wingRows=[8.35,9.25,10.15,11.05,11.95],wingY=-.32;
+    api.wingSeats=[];
     for(const sign of [-1,1])wingRows.forEach((az,i)=>{
-      for(const [x0,x1] of [[37.75,40.12],[41.03,43.4]])sideBench(x0,x1,sign*az,wingY,-sign,`${sign>0?'Choir':'Ministers'} bench · wing row ${i+1}`);
+      for(const [x0,x1] of [[37.75,40.12],[41.03,43.4]]){
+        sideBench(x0,x1,sign*az,wingY,-sign,`${sign>0?'Choir':'Ministers'} bench · wing row ${i+1}`);
+        // Seats at 0.55 m for the simulator; the book is held toward the nave.
+        const n=Math.floor((x1-x0-.075)/.55);
+        for(let k=0;k<n;k++)api.wingSeats.push({x:(x0+x1)/2+(k-(n-1)/2)*.55,z:sign*az,y:wingY,book:[0,-sign*.25],block:'wing',pew:`${sign>0?'Choir':'Ministers'} bench · wing row ${i+1}`});
+      }
     });
     // Choir keyboard at the front of the right wing, beside the nave.
     box(1.32,.08,.42,40.575,.33,7.75,im.wood,fit,'Choir keyboard case');

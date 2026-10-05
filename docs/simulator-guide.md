@@ -325,3 +325,20 @@ Every side pilaster (axes 3–9) now carries the same ordered column of fittings
 - Slim speaker: 3.45 m. This is the highest position that still keeps 75 % of seats at STI ≥ 0.60.
 - Brass sconce: 4.6 m. A sconce was added at axis 9, so the sconce row now matches the seven Stations on each side.
 - Optional wall fan: 5.55 m at axes 4, 6 and 8, tilted 38° down. It now sits about 0.5 m clear of the candles instead of touching them.
+
+## System review (2026-10-15) · work in progress
+Changes so far (not yet re-verified with the full check scripts):
+- **Accuracy:** the reverberation time (Eyring) and the reflected-sound term (Barron) now use the speed of sound at the set temperature instead of the 20 °C constants. Power totals no longer show "NaN" when festival strings are on, and fan watts use the same default speed as the airflow.
+- **Wings (choir and ministers):** the 80 wing seats are now part of the analysis. Each wing gets reading lights (new circuit L8) on its end gable: high heads for the back rows, and heads below the fan blades for the front rows, so no light passes through the blades. Each wing also gets a slim speaker on the gable.
+- **Outdoor speakers:** delays are now aligned to the indoor system at the nearest doors and windows, so they don't arrive inside as a late echo.
+- **Scenes:**
+  - Weekday Mass lights the outer blocks at 60 % and runs the fans at speed 2.
+  - Prayer gives about 50 lux for reading.
+  - Cleaning no longer runs the trial entrance fans.
+  - The "Dim seats" check now uses each scene's own light target.
+- **Electrical:** each breaker shows a C-curve MCB rating, sized for its full load at ≤ 80 % (230 V, power factor 0.9). The checks warn when a circuit exceeds 16 A or the board exceeds the 63 A main switch.
+
+Still to do:
+- re-run `scripts/verify_simulator.cjs`
+- tune the outdoor horn levels (Christmas feedback margin was ~2.4 dB)
+- confirm the wing speech clarity and light levels

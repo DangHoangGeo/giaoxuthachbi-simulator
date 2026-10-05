@@ -56,6 +56,19 @@
       const q = [facadeX, 5.95, z], b = aim(q, [6.2, 0.8, s * 1.2]);
       add({ type: 'projector36', name: `Rear centre light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: q, mountYaw: 0, yaw: b.yaw, tilt: b.tilt, lumens: 3300, beam: 50 });
     }
+    // L8 · the two 9–10 wings (choir H, ministers B). The benches face the nave,
+    // so the light comes over the shoulder from the solid centre of each end
+    // gable, between its windows. Per block: a high head for the three back
+    // rows, whose beam crosses the fan plane only beside the gable, clear of
+    // the wing fans; and a head just below the fan blades for the two front
+    // rows, so no light passes through the blades (no flicker).
+    for (const s of [-1, 1]) for (const [mx, bx] of [[40.26, 38.94], [40.86, 42.22]]) {
+      const block = bx < 40.5 ? 'front' : 'rear';
+      const hi = [mx, 4.15, s * 13.06], a = aim(hi, [bx, 0.48, s * 11.1]);
+      add({ type: 'projector36', name: `Wing light · ${side(s)} · ${block} block · back rows`, circuit: 'L8', mount: 'wall', pos: hi, mountYaw: -s * 90, yaw: a.yaw, tilt: a.tilt, lumens: 3200, beam: 50 });
+      const lo = [mx, 2.92, s * 13.06], b = aim(lo, [bx, 0.48, s * 8.7]);
+      add({ type: 'projector36', name: `Wing light · ${side(s)} · ${block} block · front rows`, circuit: 'L8', mount: 'wall', pos: lo, mountYaw: -s * 90, yaw: b.yaw, tilt: b.tilt, lumens: 2600, beam: 36 });
+    }
     // LA · hidden roof uplights on top of every tie beam.
     for (const k of [...nave, '10']) add({ type: 'uplight', name: `Roof uplight · axis ${k}`, circuit: 'LA', mount: 'floor', pos: [A[k], 9.18, 0], yaw: 90, mountYaw: 90, tilt: 90 });
 
@@ -218,6 +231,13 @@
       const p = [2.72, 3.6, s * 5.9], a = aim(p, [7.5, 1.2, s * 4.8]);
       add({ type: 'slimColumn', name: `Wall speaker · entrance hall · ${side(s)}`, circuit: 'A5', mount: 'wall', pos: p, yaw: a.yaw, mountYaw: 0, tilt: a.tilt, level: -9, delayMs: 0, on: false });
     }
+    // Wings: the wall speakers face the back of the nave, so each wing gets its
+    // own slim column on the gable between the lights, aimed down the benches
+    // toward the nave and time-aligned to the talker.
+    for (const s of [-1, 1]) {
+      const p = [40.56, 3.55, s * 13.06], a = aim(p, [40.56, 1.0, s * 9.4]);
+      add({ type: 'slimColumn', name: `Wall speaker · wing gable · ${side(s)}`, circuit: 'A1', mount: 'wall', pos: p, yaw: a.yaw, mountYaw: -s * 90, tilt: a.tilt, level: -10, delayMs: 0 });
+    }
     for (const s of [-1, 1]) for (const x of [12.225, 25.725]) {
       add({ type: 'pendantSpeaker', name: `Veranda fill · ${side(s)} · ${x.toFixed(1)}`, circuit: 'A2', mount: 'pendant', pos: [x, 3.9, s * 8.85], anchorY: above(x, s * 8.85, 3.9), yaw: 0, mountYaw: 0, tilt: -90, level: -7 });
     }
@@ -263,5 +283,5 @@
 
   // Bump when the recommended design changes: browsers holding a layout saved
   // from an older version then load the new design (the old one is kept aside).
-  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-14-balanced-wall-fittings' };
+  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-15-system-review' };
 })();

@@ -56,6 +56,7 @@
   }
   function zoneOf(x, z) {
     const az = Math.abs(z);
+    if (SIM.inWing(x, z)) return 'wing';
     if (az > 7.25) return 'veranda';
     if (x >= 39.75 && x <= 48.65 && az <= 3.6) return 'sanctuary';
     if (x > 38.2) return 'sanctuary-side';
@@ -73,7 +74,9 @@
   }
   function luxAt(lc, x, y, z) {
     const direct = P.illuminance([x, y, z], [0, 1, 0], lc.emitters, lc.occ);
-    const ind = Math.abs(z) <= 7.25 && x > 2.6 ? lc.Eind : Math.abs(z) <= 10.4 ? lc.Eind * 0.35 : 0;
+    // Inter-reflected light: full in the nave, partly in the wings (open to the
+    // veranda on one side), a little spill onto the verandas.
+    const ind = Math.abs(z) <= 7.25 && x > 2.6 ? lc.Eind : SIM.inWing(x, z) ? lc.Eind * 0.6 : Math.abs(z) <= 10.4 ? lc.Eind * 0.35 : 0;
     return (direct + ind) * lc.mf;
   }
   function soundContext() {
@@ -214,7 +217,7 @@
           const fy = s.y;
           const snd = soundAt(sc, s.x, fy + 1.2, s.z);
           const air = airAt(ac, s.x, fy + 0.6, s.z, 0.85);
-          out.push({ ...s, lux: luxAt(lc, s.x + 0.25, fy + 0.8, s.z), sti: snd.sti, spl: snd.spl, noise: snd.noise, echo: snd.echo, air, cooling: P.coolingEffect(air) });
+          out.push({ ...s, lux: luxAt(lc, s.x + (s.book?.[0] ?? 0.25), fy + 0.8, s.z + (s.book?.[1] ?? 0)), sti: snd.sti, spl: snd.spl, noise: snd.noise, echo: snd.echo, air, cooling: P.coolingEffect(air) });
         }
         if (i >= seats.length) { latest.seats = summarize(out); return true; }
         return false;
@@ -230,7 +233,7 @@
   function summarize(seats) {
     const pct = (f, list = seats) => list.length ? 100 * list.filter(f).length / list.length : 0;
     const blocks = {};
-    for (const b of ['central', 'outer', 'long']) {
+    for (const b of ['central', 'outer', 'long', 'wing']) {
       const l = seats.filter(s => s.block === b);
       if (l.length) blocks[b] = { n: l.length, lux: stats(l.map(s => s.lux)), sti: stats(l.map(s => s.sti)), air: stats(l.map(s => s.air)) };
     }
@@ -337,10 +340,17 @@
       const q = exhaust.reduce((t, f) => t + f.flow, 0) * 3600, V = SIM.room?.()?.V || 7456;
       add('info', 'Ventilation', `${exhaust.length} exhaust fans move ≈${Math.round(q).toLocaleString('en')} m³/h ≈ ${(q / V).toFixed(1)} air changes per hour (comfort target in a hot climate with people: 4–6).`, exhaust.map(f => f.id));
     }
+    // Electrical: final circuits above 16 A should be split; the board's main
+    // switch must carry everything that can run at once.
+    const pw = SIM.powerSummary();
+    for (const c of pw.byCircuit) if (c.ratedAmps > 12.8) add('warn', 'Circuit needs splitting', `${c.label}: ${c.ratedAmps.toFixed(1)} A connected; split it so each breaker stays at 16 A or below (${c.mcb} A would need heavier cable).`, []);
+    if (pw.ratedAmps > 63 * 0.8) add('warn', 'Main switch overloaded', `All circuits together can draw ${pw.ratedAmps.toFixed(0)} A, more than 80 % of the 63 A main switch.`, []);
     // 5. Results-based notes.
     const s = latest.seats;
     if (s) {
-      if (s.lux && s.luxLow > 10) add('warn', 'Dim seats', `${s.luxLow.toFixed(0)} % of seats have < 150 lux on the book (maintained).`, []);
+      const target = SIM.sceneLuxTarget?.() ?? 150;
+      const dim = target ? 100 * s.seats.filter(x => x.lux < target).length / s.n : 0;
+      if (s.lux && target && dim > 10) add('warn', 'Dim seats', `${dim.toFixed(0)} % of seats have less than the ${target} lux this scene is meant to give on the book (maintained).`, []);
       if (s.sti && s.stiOk < 80) add(s.stiOk < 50 ? 'warn' : 'info', 'Speech clarity', `${s.stiOk.toFixed(0)} % of seats reach STI ≥ 0.60 (target: every seat). Average ${s.sti.avg.toFixed(2)}.`, []);
       if (s.echoSeats > 0) add('warn', 'Late arrivals (echo risk)', `${s.echoSeats} seats hear a loudspeaker ≥ 50 ms after the first arrival and within 10 dB. Use “Align delays”.`, []);
       if (s.air && s.airStrong > 5) add('info', 'Strong draughts', `${s.airStrong.toFixed(0)} % of seats above 1.0 m/s — pages and candles may be disturbed; reduce speed there.`, []);

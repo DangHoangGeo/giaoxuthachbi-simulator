@@ -35,6 +35,7 @@
     LA: { label: 'LA · Roof uplight', cat: 'light' },
     LD: { label: 'LD · Chandeliers & sconces', cat: 'light' },
     L5: { label: 'L5 · Steps & paths', cat: 'light' },
+    L8: { label: 'L8 · Wings · choir & ministers', cat: 'light' },
     L6: { label: 'L6 · Façade & towers', cat: 'light' },
     L7: { label: 'L7 · Festival exterior (strings & tower floods)', cat: 'light' },
     E1: { label: 'E1 · Exit signs', cat: 'light' },
@@ -102,7 +103,9 @@
     if (x < -8.1 && x >= -13.219 && az <= 13.35) return -2.08 + Math.min(16, Math.max(1, Math.floor((x + 13.219) / 0.32) + 1)) * 0.1;
     return -2.08;
   }
-  function isInterior(p) { return p[0] > 2.3 && p[0] < 53.1 && Math.abs(p[2]) < 7.3 && p[1] < 12.5; }
+  function inWing(x, z) { return x > 37.2 && x < 43.95 && Math.abs(z) > 7.25 && Math.abs(z) < 12.98; }
+  // Inside the church: the nave and sanctuary, plus the two 9–10 wings under their own roof.
+  function isInterior(p) { return p[0] > 2.3 && p[0] < 53.1 && p[1] < 12.5 && (Math.abs(p[2]) < 7.3 || (inWing(p[0], p[2]) && p[1] < 9.6)); }
   function isCovered(p) { return p[0] > 2.3 && p[0] < 53.1 && (Math.abs(p[2]) < 10.6 || (p[0] > 37 && p[0] < 44 && Math.abs(p[2]) < 13)); }
   // Lowest structure above a point: beam undersides, veranda slab, roof lining.
   function structureAbove(x, z, y = 0) {
@@ -781,9 +784,11 @@
     const ref = mic ? [mic.pos[0] + mic.dir[0] * 0.45, mic.pos[1] + 0.05, mic.pos[2] + mic.dir[2] * 0.45] : [44.6, 2.3, 0];
     const c = roomModel().c;
     const changed = [];
-    for (const sp of speakerSources()) {
+    const all = speakerSources(), outside = [];
+    for (const sp of all) {
       const it = sp.item;
       if (it.circuit === 'A4') { it.delayMs = 0; continue; }
+      if (!isInterior(sp.src.pos)) { outside.push(sp); continue; }
       const { pos, f } = sp.src;
       const plane = floorY(pos[0] + f[0] * 6, pos[2] + f[2] * 6) + 1.2;
       let t = f[1] < -0.02 ? (pos[1] - plane) / -f[1] : 12;
@@ -791,6 +796,25 @@
       const aim = [pos[0] + f[0] * t, pos[1] + f[1] * t, pos[2] + f[2] * t];
       const dRef = Math.hypot(ref[0] - aim[0], ref[1] - aim[1], ref[2] - aim[2]);
       const delay = Math.max(0, (dRef - t) / c * 1000 + haasMs);
+      it.delayMs = Math.round(delay * 10) / 10;
+      changed.push({ id: it.id, delayMs: it.delayMs });
+    }
+    // Loudspeakers outside the walls are aligned to the inside system where the
+    // two coverage areas meet (the nearest doors or windows): there both are
+    // heard together, so neither the people inside by the windows nor those
+    // outside hear the other system as a late echo.
+    const inside = all.filter(sp => sp.item.circuit !== 'A4' && isInterior(sp.src.pos));
+    const live = inside.filter(sp => sp.on).length ? inside.filter(sp => sp.on) : inside;
+    const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
+    for (const sp of outside) {
+      const it = sp.item, pos = sp.src.pos, s = Math.sign(pos[2]) || 1;
+      const meet = pos[0] < 2.65 ? [3.0, 1.2, P.clamp(pos[2], -2.4, 2.4)]
+        : pos[0] > 52.85 ? [52.4, 1.2, P.clamp(pos[2], -3, 3)]
+        : inWing(pos[0], P.clamp(pos[2], -12.9, 12.9)) && Math.abs(pos[2]) > 12.9 ? [pos[0], 1.2, s * 12.5]
+        : [pos[0], 1.2, s * 7.0];
+      let tIn = dist(ref, meet) / c;
+      for (const o of live) tIn = Math.min(tIn, (o.item.delayMs || 0) / 1000 + dist(o.src.pos, meet) / c);
+      const delay = Math.max(0, (tIn - dist(pos, meet) / c) * 1000 + haasMs);
       it.delayMs = Math.round(delay * 10) / 10;
       changed.push({ id: it.id, delayMs: it.delayMs });
     }
@@ -852,6 +876,9 @@
         seats[layout].push({ x: p.x + 0.045, z: p.z + off, y: floorY(p.x, p.z), block: o.userData.seatingBlock || (Math.abs(p.z) > 4 ? 'outer' : 'central'), pew: o.name });
       }
     });
+    // Benches in the 9–10 wings (choir and ministers), built by the realism layer.
+    const wing = window.CHURCH_REALISM?.wingSeats || [];
+    for (const layout of [2, 4]) { seats[layout].push(...wing.map(s => ({ ...s }))); areas[layout] += wing.length * 0.55 * 1.13; }
     GEO.seatsByLayout = seats;
     GEO.seatAreas = areas;
     refreshSeats();
@@ -1196,8 +1223,10 @@
   function itemWatts(it, rated = false) {
     const t = CAT.byId[it.type];
     if (it.hidden) return 0;
+    // Strings are rated per metre (no lumen rating to scale by).
+    if (t.light?.wattsPerMetre) return rated || it.on ? t.light.wattsPerMetre * (it.params?.length || 12) * (rated ? 1 : (it.dim ?? 1)) : 0;
     if (t.light) return rated ? t.light.watts * ((it.lumens ?? t.light.lumens) / t.light.lumens) : (it.on ? t.light.watts * ((it.lumens ?? t.light.lumens) / t.light.lumens) * (0.06 + 0.94 * (it.dim ?? 1)) : 0);
-    if (t.fan) { const sp = t.fan.speeds[Math.max(0, (it.speed || 1) - 1)]; return rated ? t.fan.speeds[t.fan.speeds.length - 1].watts : (it.on && it.speed > 0 ? sp.watts : 0); }
+    if (t.fan) { const n = it.speed ?? 2, sp = t.fan.speeds[Math.max(0, Math.min(t.fan.speeds.length, n) - 1)]; return rated ? t.fan.speeds[t.fan.speeds.length - 1].watts : (it.on && n > 0 ? sp.watts : 0); }
     if (t.speaker) {
       if (t.mic) return 0;
       const spec = t.speaker, level = spec.nominal + (it.level ?? 0) + state.settings.mixerDb;
@@ -1205,8 +1234,7 @@
       const avg = Math.min(peak, spec.ratedW) / 8 / 0.7 + (spec.active ? 25 : 6);
       return rated ? (spec.active ? spec.ratedW / 2 : spec.ratedW / 3) : (it.on ? avg : (spec.active ? 4 : 0));
     }
-    if (it.on && t.light?.wattsPerMetre) return t.light.wattsPerMetre * (it.params?.length || 12);
-    return it.on && t.light ? t.light.watts : 0;
+    return 0;
   }
   function powerSummary() {
     const byCircuit = {};
@@ -1217,22 +1245,35 @@
       c.watts += w; c.rated += r; c.count++; if (it.on && !it.hidden) c.on++;
       total += w; rated += r;
     }
+    // Currents at 230 V with a 0.9 power factor (LED drivers, capacitor-run fan
+    // motors, class-D amplifiers). Each breaker is the smallest standard MCB
+    // that carries the full connected load at ≤ 80 % (continuous duty); C-curve
+    // because LED drivers and motors draw an inrush when switched on.
+    const PF = 0.9, MCB = [6, 10, 16, 20, 25, 32, 40];
+    for (const c of Object.values(byCircuit)) {
+      c.amps = c.watts / (230 * PF);
+      c.ratedAmps = c.rated / (230 * PF);
+      c.mcb = MCB.find(a => a * 0.8 >= c.ratedAmps) || 63;
+    }
     const s = state.settings;
     const kWhService = total * s.serviceHours / 1000;
-    return { byCircuit: Object.values(byCircuit).sort((a, b) => a.circuit.localeCompare(b.circuit)), total, rated, kWhService, kWhMonth: kWhService * s.servicesPerMonth, costMonth: kWhService * s.servicesPerMonth * s.tariff };
+    return { byCircuit: Object.values(byCircuit).sort((a, b) => a.circuit.localeCompare(b.circuit)), total, rated, amps: total / (230 * PF), ratedAmps: rated / (230 * PF), kWhService, kWhMonth: kWhService * s.servicesPerMonth, costMonth: kWhService * s.servicesPerMonth * s.tariff };
   }
 
   /* ---------------------------------------------------------------- scenes */
   const SCENES = {
-    'Full service · evening': { L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 2, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
-    'Weekday Mass': { L7: 0, L1: 0.75, L2: 0, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
-    'Prayer & adoration': { L7: 0, L1: 0, L2: 0, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
-    'Christmas & festivals': { L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 3, F2: 3, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, A5: 1, DECOR: 1 },
-    'Cleaning': { L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 2, V1: 2, A5: 0, DECOR: 1 },
-    'Night security': { L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1 },
-    'All off': { L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1 }
+    'Full service · evening': { L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 2, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
+    'Weekday Mass': { L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
+    'Prayer & adoration': { L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
+    'Christmas & festivals': { L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 3, F2: 3, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, A5: 1, DECOR: 1 },
+    'Cleaning': { L8: 1, L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 2, A5: 0, DECOR: 1 },
+    'Night security': { L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1 },
+    'All off': { L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1 }
   };
   SIM.SCENES = SCENES;
+  // Reading light each scene is meant to give on the books (lux, maintained).
+  const SCENE_LUX = { 'Full service · evening': 200, 'Weekday Mass': 150, 'Prayer & adoration': 50, 'Christmas & festivals': 200, 'Cleaning': 100 };
+  SIM.sceneLuxTarget = () => state.scene in SCENE_LUX ? SCENE_LUX[state.scene] : state.scene && !SCENES[state.scene] ? 150 : state.scene ? null : 200;
   function applyScene(name, { record = true } = {}) {
     const custom = state.customScenes.find(s => s.name === name);
     if (custom) {
@@ -1732,5 +1773,6 @@
   SIM.resolvePlacement = (typeId, ev) => resolvePlacement(CAT.byId[typeId], rayFromEvent(ev));
   SIM.itemWatts = itemWatts;
   SIM.isInterior = isInterior;
+  SIM.inWing = inWing;
   SIM.liningY = liningY;
 })();

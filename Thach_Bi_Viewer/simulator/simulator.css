@@ -180,6 +180,7 @@ body.sim-open .walk-panel{left:calc(50% + 196px)}
 .ctl-breaker.on .ctl-lever b{bottom:11px;background:#4cae5d}
 .ctl-code{font-size:9px;font-weight:800;color:#2a2f31}
 .ctl-amp{font-size:7.5px;color:#6b7174;font-variant-numeric:tabular-nums}
+.ctl-rating{font-size:7.5px;font-weight:800;color:#4a5054;background:#e9ebe8;border-radius:2px;padding:0 3px;margin-bottom:2px}
 .ctl-legend{font-size:8.5px;color:#5c6366;margin-top:6px}
 /* Fan regulators: white plates with rotary knobs. */
 .ctl-fans{background:linear-gradient(#ffffff,#eceeea);border:1px solid #d3d7cf;color:#4a5546}

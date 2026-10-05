@@ -210,6 +210,8 @@
 
   /* --------------------------------------------------------------- acoustics */
   P.speedOfSound = T => 331.3 + 0.606 * T;
+  // Sabine / Eyring constant 24·ln10 / c (0.161 at 343 m/s; 0.159 at 28 °C).
+  P.reverbConstant = c => 24 * Math.LN10 / c;
   // ISO 9613-1 air attenuation (dB/m) at the octave centres.
   P.airAttenuationDb = function (tempC = 28, rh = 75, pressureKPa = 101.325) {
     const T = tempC + 273.15, T0 = 293.15, T01 = 273.16, pr = 101.325, pa = pressureKPa;
@@ -296,10 +298,11 @@
     const m = airDb.map(a => a / (10 * Math.log10(Math.E)));
     const A = P.OCTAVES.map((_, b) => surfaces.reduce((s, x) => s + x.area * x.abs[b], 0));
     const alpha = A.map(a => a / S);
-    const T = alpha.map((a, b) => 0.161 * V / (-S * Math.log(1 - Math.min(a, 0.99)) + 4 * m[b] * V));
-    const Tsabine = A.map((a, b) => 0.161 * V / (a + 4 * m[b] * V));
+    const c = P.speedOfSound(tempC), K = P.reverbConstant(c);
+    const T = alpha.map((a, b) => K * V / (-S * Math.log(1 - Math.min(a, 0.99)) + 4 * m[b] * V));
+    const Tsabine = A.map((a, b) => K * V / (a + 4 * m[b] * V));
     const meanReflectance = surfaces.reduce((s, x) => s + x.area * x.rho, 0) / S;
-    return { V, S, A, alpha, T, Tsabine, Tmid: (T[2] + T[3]) / 2, surfaces, airDb, c: P.speedOfSound(tempC),
+    return { V, S, A, alpha, T, Tsabine, Tmid: (T[2] + T[3]) / 2, surfaces, airDb, c, K,
       occupancy, openings, roofFinish: roof, entranceFinish: slats > 0 ? opt.entranceFinish : 'plaster', light: { area: S, meanReflectance } };
   };
 
@@ -370,7 +373,7 @@
     }
     const columnShadow = occluders ? occluders.blockedByColumn(src.pos, rx) : false;
     const wallShadow = occluders && occluders.walls ? occluders.blockedByWall(src.pos, rx) : false;
-    const direct = [], reflected = [];
+    const direct = [], reflected = [], barronK = 16 * PI / (room.K || P.reverbConstant(room.c));
     for (let b = 0; b < 7; b++) {
       const L1 = src.level1m + shape[b] + (src.response ? src.response[b] : 0);
       const rt = src.lineLength ? src.lineLength * src.lineLength * P.OCTAVES[b] / (2 * room.c) : 0;
@@ -381,7 +384,9 @@
       const occ = (columnShadow ? P.COLUMN_SHADOW[b] : 0) + (wallShadow ? P.WALL_SHADOW[b] : 0);
       direct.push(undb(L1 + dir - room.airDb[b] * r + occ) * spread);
       const T = room.T[b];
-      reflected.push(undb(L1) * 312 * T * Math.exp(-0.04 * r / T) / (room.V * P.directivityQ(spec, b)) * (rf ? rf[b] : 1) * (src.coupling ?? 1));
+      // Barron: 31200·T/V·e^(−0.04 r/T) re the direct sound at 10 m, i.e. 16π/K
+      // and 13.82/c with the room's own speed of sound.
+      reflected.push(undb(L1) * barronK * T * Math.exp(-13.82 * r / (room.c * T)) / (room.V * P.directivityQ(spec, b)) * (rf ? rf[b] : 1) * (src.coupling ?? 1));
     }
     return { r, tau: r / room.c + (src.delayMs || 0) / 1000, direct, reflected, angle: ang, shadowed: columnShadow || wallShadow };
   };
