@@ -362,3 +362,9 @@ Still to do:
 - **DB-2 · Towers & entrance**, a small sub-board inside the main doors on the entrance wall, left of the main door. It is fed by one cable from DB-1 and switches the tower and façade floods (L6), the festival exterior lights (L7) and the entrance circulators (F4). It has three buttons: *Towers off*, *Towers · evening* (L6) and *Towers · festival* (L6 + L7).
 - **Cable saving:** short circuit runs from the front of the church replace long ones to the altar end. The Controls tab shows the estimated saving in metres.
 - **Breakers:** each one shows its rating (C-curve, sized for the full load at ≤ 80 %), its current now and a plain-language name.
+- **Board hierarchy:** DB-1 carries a **DB-2 feeder breaker** (C32) that cuts power to the whole of DB-2. While it is off:
+  - DB-2's breakers and tower buttons are greyed out
+  - the scene keypad cannot switch on any DB-2 circuit
+  - switching the feeder back on restores DB-2's own switch positions
+
+  DB-1 decides whether the sub-board has power at all; DB-2 controls the detail.

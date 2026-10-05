@@ -203,9 +203,11 @@
       const B = SIM.BOARDS[bd], list = onBoard(bd, () => true), w = list.reduce((t, c) => t + (byC[c]?.watts || 0), 0);
       const rails = areas(bd).map(a => rail('Lights · ' + a, onBoard(bd, x => x.cat === 'light' && (x.area || 'Other') === a))).join('')
         + rail('Fans & ventilation', onBoard(bd, x => x.cat === 'fan')) + rail('Sound (amplifier rack)', onBoard(bd, x => x.cat === 'speaker')) + rail('Decoration', onBoard(bd, x => x.cat === 'decor'));
-      const extra = bd === 'DB2' ? `<div class="ctl-keys ctl-tower-keys">${[['off', 'Towers off'], ['evening', 'Towers · evening'], ['festival', 'Towers · festival']].map(([k, l]) => `<button class="ctl-key" data-act="ctl-towers" data-mode="${k}"><i></i>${l}</button>`).join('')}</div>
-        <div class="ctl-legend">Fed by one cable from DB-1 (≈${fmt(pw.cable.feeder)} m). Switching the tower, façade and entrance circuits here, instead of at the altar end, saves ≈${fmt(pw.cable.saved)} m of circuit cable runs.</div>` : `<div class="ctl-main"><span class="ctl-led on"></span> Main switch 63 A · RCCB 30 mA · feeds DB-2</div>`;
-      return `<div class="ctl-device ctl-board"><div class="ctl-plate-title">${esc(B.label)} <span>${fmt(w / 1000, 2)} kW · ${fmt(w / 207, 1)} A</span></div>
+      const fed = SIM.state.settings.db2Feed !== false;
+      const feeder = `<div class="ctl-rail"><div class="ctl-rail-label">Sub-board feeder</div><div class="ctl-rail-row"><button class="ctl-breaker ctl-feeder${fed ? ' on' : ''}" data-act="ctl-feeder" title="Cuts power to the whole of DB-2"><span class="ctl-rating">C32</span><span class="ctl-lever"><b></b></span><span class="ctl-code">DB-2</span><span class="ctl-name">Towers &amp; entrance board</span></button></div></div>`;
+      const extra = bd === 'DB2' ? (fed ? '' : `<div class="ctl-dead">⚠ No power: the DB-2 feeder on DB-1 is off. Switch it on at the main board.</div>`) + `<div class="ctl-keys ctl-tower-keys">${[['off', 'Towers off'], ['evening', 'Towers · evening'], ['festival', 'Towers · festival']].map(([k, l]) => `<button class="ctl-key" data-act="ctl-towers" data-mode="${k}"><i></i>${l}</button>`).join('')}</div>
+        <div class="ctl-legend">Fed by one cable from DB-1 (≈${fmt(pw.cable.feeder)} m). Switching the tower, façade and entrance circuits here, instead of at the altar end, saves ≈${fmt(pw.cable.saved)} m of circuit cable runs.</div>` : `<div class="ctl-main"><span class="ctl-led on"></span> Main switch 63 A · RCCB 30 mA</div>${feeder}`;
+      return `<div class="ctl-device ctl-board${bd === 'DB2' && !fed ? ' ctl-unpowered' : ''}"><div class="ctl-plate-title">${esc(B.label)} <span>${fmt(w / 1000, 2)} kW · ${fmt(w / 207, 1)} A</span></div>
         <div class="ctl-where">📍 ${esc(B.where)}</div>${extra}${rails}
         <div class="ctl-legend">Lever up = on. Top number = breaker rating; bottom = current now.</div></div>`;
     };
@@ -476,11 +478,21 @@
     switch (act) {
       case 'ctl-scene': SIM.applyScene(el.dataset.scene); renderScenes(); toast('Scene: ' + el.dataset.scene); renderBody(); break;
       case 'ctl-breaker': {
+        if (SIM.state.settings.db2Feed === false && SIM.CIRCUITS[el.dataset.circuit]?.board === 'DB2') break;
         const c = el.dataset.circuit, items = circuitItems(c), on = !items.some(i => i.on);
         for (const i of items) SIM.update(i.id, { on, ...(on && CAT.byId[i.type].light && !(i.dim > 0) ? { dim: 1 } : {}) }, { record: false });
         SIM.commit((on ? 'Switch on ' : 'Switch off ') + (SIM.CIRCUITS[c]?.label || c)); renderKeepScroll = true; renderBody(); break;
       }
+      case 'ctl-feeder': {
+        // Main board cuts or restores the whole sub-board; DB-2 remembers its own switch positions.
+        const st = SIM.state.settings, fed = st.db2Feed !== false, sub = Object.keys(SIM.CIRCUITS).filter(c => SIM.CIRCUITS[c].board === 'DB2');
+        if (fed) { st.db2Memory = {}; for (const c of sub) for (const i of circuitItems(c)) { st.db2Memory[i.id] = i.on; SIM.update(i.id, { on: false }, { record: false }); } }
+        else for (const c of sub) for (const i of circuitItems(c)) SIM.update(i.id, { on: !!st.db2Memory?.[i.id] }, { record: false });
+        st.db2Feed = !fed;
+        SIM.commit(fed ? 'DB-1: DB-2 feeder off' : 'DB-1: DB-2 feeder on'); renderKeepScroll = true; renderBody(); break;
+      }
       case 'ctl-towers': {
+        if (SIM.state.settings.db2Feed === false) break;
         const m = el.dataset.mode, want = { L6: m !== 'off', L7: m === 'festival' };
         for (const [c, on] of Object.entries(want)) for (const i of circuitItems(c)) SIM.update(i.id, { on, ...(on ? { dim: 1 } : {}) }, { record: false });
         SIM.commit('Towers: ' + m); renderKeepScroll = true; renderBody(); break;

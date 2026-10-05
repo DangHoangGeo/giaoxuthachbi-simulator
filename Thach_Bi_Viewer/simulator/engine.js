@@ -1308,8 +1308,10 @@
       const sc = SCENES[name];
       if (!sc) return false;
       for (const it of state.items) {
-        const v = sc[it.circuit];
+        let v = sc[it.circuit];
         if (v === undefined) continue;
+        // A sub-board without power (feeder off on DB-1) cannot switch anything on.
+        if (CIRCUITS[it.circuit]?.board === 'DB2' && state.settings.db2Feed === false) v = 0;
         const t = CAT.byId[it.type];
         // Scene fan levels 1/2/3 = low/normal/high; 5-step (VFD) fans map to 2/4/5.
         if (t.fan) { it.on = v > 0; if (v > 0) it.speed = t.fan.speeds.length >= 5 ? [0, 2, 4, 5][v] : Math.min(v, t.fan.speeds.length); }
