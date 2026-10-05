@@ -32,6 +32,7 @@
     const beamY = 8.59, sideBeamY = 6.66;
     const facadeX = 2.65; // inner face of the entrance façade; the nave is open to it
     const above = (x, z, y) => SIM.structureAbove(x, z, y)?.y ?? y;
+    for (const x of [50.0, 51.9]) add({ type: 'servicePanel', name: `Service-room ceiling panel · ${x.toFixed(1)} m`, circuit: 'L3', mount: 'pendant', pos: [x, 4.14, 0], anchorY: 4.15, note: 'Retains the existing ceiling-panel geometry; product light/output values are provisional.' });
     const nave = ['3', '4', '5', '6', '7', '8', '9'];
 
     // L1/L2 · reading light: twin-head projectors under the main tie beams
@@ -113,8 +114,15 @@
       const x = A[k];
       add({ type: 'lantern', name: `Veranda lantern · ${side(s)} · axis ${k}`, circuit: 'L4', mount: 'pendant', pos: [x, 4.55, s * 8.85], anchorY: above(x, s * 8.85, 4.55), yaw: 0, mountYaw: 0, lumens: 2000 });
     }
-    // Brass sconces flanking the main door light the threshold.
-    for (const s of [-1, 1]) add({ type: 'sconce2', name: `Sconce · main door · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [facadeX, 3.0, s * 2.4], yaw: 0, mountYaw: 0 });
+    // Only the middle of the three front doors receives decorative lanterns.
+    for (const s of [-1, 1]) add({ type: 'wallLantern', name: `Central front door lantern · ${side(s)}`, circuit: 'L9', mount: 'wall', pos: [2.2, 3.0, s * 2.4], yaw: 180, mountYaw: 180 });
+    // Matching pairs on all six exterior side doors, on solid wall beside the
+    // arch, outside the leaf swing and stair landing. B/H share exact offsets.
+    for (const s of [-1, 1]) for (const x of [16.725, 34.725, 46.425]) for (const e of [-1, 1]) {
+      add({ type: 'wallLantern', name: `Side door lantern · ${side(s)} · ${x.toFixed(3)} · ${e < 0 ? 'front' : 'rear'}`, circuit: 'L5', mount: 'wall', pos: [x + e * 1.425, 2.6, s * 10.55], yaw: s * 90, mountYaw: s * 90 });
+    }
+    // The two service-room doors receive lower-output pairs in the alcoves.
+    for (const s of [-1, 1]) for (const e of [-1, 1]) add({ type: 'wallLantern', name: `Service door lantern · ${side(s)} · ${e < 0 ? 'front' : 'rear'}`, circuit: 'L3', mount: 'wall', pos: [49.6 + e * 0.65, 2.05, s * 3.7], yaw: s * 90, mountYaw: s * 90, lumens: 400 });
     // E1 · exit signs.
     // Main doors: on the façade directly above the arched opening (6.67 m), visible down the nave.
     add({ type: 'exitSign', name: 'Exit sign · main doors', circuit: 'E1', mount: 'wall', pos: [facadeX, 6.95, 0], yaw: 0, mountYaw: 0 });
@@ -130,20 +138,24 @@
       const a = aim([p[0], p[1] + 0.32, p[2]], target);
       add({ type: 'flood', name, circuit, mount: 'floor', pos: p, yaw: a.yaw, mountYaw: a.yaw, tilt: a.tilt, beam, lumens, on });
     };
+    const towerWash = (name, p, target, mountYaw, beam, lumens) => {
+      const reach = 0.5, r = mountYaw * Math.PI / 180;
+      const a = aim([p[0] + reach * Math.cos(r), p[1] + 0.32, p[2] + reach * Math.sin(r)], target);
+      add({ type: 'corniceFlood', name, circuit: 'L6', mount: 'floor', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw, beam, lumens, cct: 3000, params: { outreach: reach } });
+    };
     for (const s of [-1, 1]) {
-      // Lanterns on the tower fronts light the platform and the top of the steps.
-      for (const z of [8.5, 11.9]) add({ type: 'wallLantern', name: `Tower lantern · ${side(s)} · ${z < 10 ? 'inner' : 'outer'}`, circuit: 'L5', mount: 'wall', pos: [z < 10 ? -0.37 : -0.16, 2.6, s * z], yaw: 180, mountYaw: 180 });
-      add({ type: 'wallLantern', name: `Side door lantern · ${side(s)}`, circuit: 'L5', mount: 'wall', pos: [15.3, 2.25, s * 10.55], yaw: s * 90, mountYaw: s * 90 });
-      // Tower faces washed upward from the +8.39 m cornice ledge.
-      // One wide flood per stage, centred, so each face is lit evenly (no ground fittings).
-      ledgeFlood(`Tower stage 2 flood · ${side(s)}`, 'L6', [ledge, 8.4, s * TZ], [0.1, 13.5, s * TZ], 32, 9000);
-      // Upper tower stages: from the stage-2 cornice (+15.84 m) onto stage 3, and
-      // from the +23.14 m ledge onto the belfry and dome; the belfry glows from
-      // inside; the outer side face is washed from the stage-1 cornice.
-      ledgeFlood(`Tower stage 3 flood · ${side(s)}`, 'L6', [TX - 4.72 / 2 - 0.08, 15.88, s * TZ], [0.2, 20.6, s * TZ], 30, 8000);
-      ledgeFlood(`Belfry & dome flood · ${side(s)}`, 'L6', [0.15, 23.2, s * TZ], [0.6, 28.5, s * TZ], 30, 8000);
+      // Base plates sit on the actual cornices; projecting arms keep the
+      // emitting heads outside the wall thickness, mouldings and pilasters.
+      towerWash(`Tower lower front wash · ${side(s)}`, [-0.125, 8.4, s * (TZ + 0.7)], [-0.28, 6.3, s * TZ], 180, 50, 3500);
+      towerWash(`Tower stage 2 flood · ${side(s)}`, [-0.125, 8.4, s * TZ], [-0.19, 13.5, s * TZ], 180, 40, 7000);
+      towerWash(`Tower stage 3 flood · ${side(s)}`, [-0.035, 15.88, s * TZ], [-0.09, 20.6, s * TZ], 180, 40, 6000);
+      towerWash(`Belfry front wash · ${side(s)}`, [0.065, 23.2, s * TZ], [0.195, 27.3, s * TZ], 180, 40, 4500);
+      towerWash(`Dome front wash · ${side(s)}`, [0.35, 29.26, s * TZ], [0.95, 31.6, s * TZ], 180, 36, 2500);
       add({ type: 'uplight', name: `Belfry glow · ${side(s)}`, circuit: 'L6', mount: 'floor', pos: [TX, 23.2, s * TZ], yaw: 0, mountYaw: 0, tilt: 90, lumens: 2500, cct: 2700 });
-      ledgeFlood(`Tower side wash · ${side(s)}`, 'L6', [TX, 8.4, s * (TZ + 2.62)], [TX, 15.5, s * (TZ + 2.4)], 30, 5000);
+      towerWash(`Tower lower side wash · ${side(s)}`, [TX + 0.6, 8.4, s * (TZ + 2.585)], [TX, 6.3, s * (TZ + 2.73)], s * 90, 50, 2500);
+      towerWash(`Tower stage 2 side wash · ${side(s)}`, [TX, 8.4, s * (TZ + 2.585)], [TX, 13.5, s * (TZ + 2.605)], s * 90, 40, 5000);
+      towerWash(`Tower stage 3 side wash · ${side(s)}`, [TX, 15.88, s * (TZ + 2.46)], [TX, 20.6, s * (TZ + 2.505)], s * 90, 40, 4000);
+      towerWash(`Belfry side wash · ${side(s)}`, [TX, 23.2, s * (TZ + 2.36)], [TX, 27.3, s * (TZ + 2.23)], s * 90, 40, 3000);
       // The doors and lower façade between the towers, from the inner tower corners.
       ledgeFlood(`Façade wash · ${side(s)}`, 'L6', [ledge, 8.4, s * 7.9], [2.4, 2.5, s * 1.5], 50, 6000);
     }
@@ -282,13 +294,34 @@
     for (const k of ['4', '6', '8']) add({ type: 'bunting', name: `Festival pennants · axis ${k}`, circuit: 'DECOR', mount: 'pendant', pos: [A[k], 7.2, 0], anchorY: 7.2, yaw: 0, mountYaw: 0, hidden: true, params: { length: 7 } });
     // Everything fixed to the towers and the front façade is switched at DB-2
     // inside the main doors: the stage floods on the tower cornices and the
-    // tower door lanterns form circuit L9 (L6 floods and L7 festival lights are
+    // central entrance lanterns form circuit L9 (L6 floods and L7 festival lights are
     // already there).
-    for (const it of items) if (/^Stage flood · tower|^Tower lantern/.test(it.name)) it.circuit = 'L9';
+    for (const it of items) if (/^Stage flood · tower/.test(it.name)) it.circuit = 'L9';
     return items;
+  }
+
+  const lightingRevision = '2026-10-05-balanced-doors-towers';
+  const reviewedLight = it => /^(Sconce · main door|Side door lantern|Tower lantern|Central front door lantern|Service door lantern|Tower (stage [23] (flood|side wash)|side wash|lower (front|side) wash)|Belfry (& dome flood|front wash|side wash)|Dome front wash) ·/.test(it.name);
+  function upgradeLighting(items, design, scene = {}) {
+    const old = items.filter(reviewedLight), byName = new Map(old.map(it => [it.name, it]));
+    const revised = design.filter(reviewedLight).map(raw => {
+      const sideTag = raw.name.endsWith(' · B') ? 'B' : 'H';
+      let prior = byName.get(raw.name);
+      if (!prior && raw.name.startsWith('Central front door lantern')) prior = byName.get(`Sconce · main door · ${sideTag}`);
+      if (!prior && raw.name.startsWith('Belfry front wash')) prior = byName.get(`Belfry & dome flood · ${sideTag}`);
+      if (!prior && /^Side door lantern · [BH] · 16.725 · front$/.test(raw.name)) prior = byName.get(raw.name.split(' · ').slice(0, 2).join(' · '));
+      const neighbour = prior || old.find(it => it.circuit === raw.circuit);
+      const level = scene[raw.circuit];
+      return { ...raw, ...(prior ? { id: prior.id, hidden: prior.hidden } : {}),
+        on: prior ? prior.on : level !== undefined ? level > 0 : neighbour?.on ?? true,
+        dim: prior?.dim ?? (level > 0 ? Math.min(1, level) : neighbour?.dim ?? 1) };
+    });
+    return [...items.filter(it => !reviewedLight(it)), ...revised];
   }
 
   // Bump when the recommended design changes: browsers holding a layout saved
   // from an older version then load the new design (the old one is kept aside).
-  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-16-tower-board' };
+  // This lighting review migrates only the reviewed fixtures, preserving the
+  // rest of saved layouts. A removed fitting stays removed after the revision.
+  window.CHURCH_SIM_DESIGN = { recommended, aim, upgradeLighting, lightingRevision, version: '2026-10-16-tower-board' };
 })();

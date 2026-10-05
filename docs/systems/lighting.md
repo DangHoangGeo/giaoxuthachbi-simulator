@@ -1,118 +1,94 @@
 # Lighting system · Thạch Bi church
 
-> Generated from the simulator's recommended design (version `2026-10-15-system-review`) and its analysis engine on 2026-10-15.
-> Values are engineering estimates for comparing options, not certified calculations; confirm with a licensed engineer and the chosen manufacturer's data before purchase.
-> Coordinates: x along the nave toward the altar (axis 3 = 9.975 m … axis 10 = 44.175 m), z negative = left side B, positive = right side H, y = height above the nave floor (wings −0.32 m).
+Reviewed on 5 October 2026 against the current 3D geometry. Base design version `2026-10-16-tower-board`; lighting revision `2026-10-05-balanced-doors-towers`.
 
-## 1. Design targets
-- Reading light on the books (0.8 m above the seat floor, maintained, maintenance factor 0.8): ≥ 200 lux for full services, ≥ 150 lux weekday Mass, ≈ 50 lux prayer.
-- No light may shine through spinning fan blades (strobe); exterior lights are fixed high on the building, nothing on the ground in walkways.
-- Colour: 2700–3000 K warm white, CRI ≥ 90 inside.
+## Door decoration
 
-## 2. Fitting types and technical specifications
+| Entrance | Doors | Lanterns per door | Total | Board / circuit | Bracket height | Output each |
+|---|---:|---:|---:|---|---|---|
+| Exterior side entrances, B and H | 6 | 2 | 12 | DB-1 / L5 | 2.60 m | 900 lm / 2700 K / 9 W |
+| Middle front entrance | 1 | 2 | 2 | DB-2 / L9 | 3.00 m | 900 lm / 2700 K / 9 W |
+| Adjacent front entrances | 2 | 0 | 0 | — | — | — |
+| Service-room entrances, B and H | 2 | 2 | 4 | DB-1 / L3 | 2.05 m | 400 lm / 2700 K / about 4 W |
 
-| Type | Description | Luminous flux (catalogue) | Power | CCT | CRI | Beam / field | Quantity |
-|---|---|---|---|---|---|---|---|
-| LED projector · medium 36° | 6 000 lm, 3000 K CRI 90, 36° beam, 50 W. Reading light from the tie beams. | 6,000 lm | 50 W | 3000 K | 90 | 36° / 58° | **80** |
-| Roof uplight · wide flood | 4 000 lm, 2700 K, 100° flood, 32 W. Sits on a tie beam and washes the timber roof. | 4,000 lm | 32 W | 2700 K | 90 | 100° / 150° | **10** |
-| Brass candle chandelier · 8 lamps | 8 × 470 lm candle LEDs, 2700 K, Ø 1.9 m. Sparkle and character; not a reading light. | 3,760 lm | 36 W | 2700 K | 90 | diffuse | **3** |
-| Grand chandelier · 12 lamps | 12 × 470 lm candle LEDs, 2700 K, Ø 2.5 m. For the crossing or sanctuary. | 5,640 lm | 54 W | 2700 K | 90 | diffuse | **1** |
-| Brass candle sconce · 2 lamps | 2 × 470 lm candle LEDs, 2700 K. Wall rhythm and evening atmosphere. | 940 lm | 9 W | 2700 K | 90 | diffuse | **18** |
-| Accent spotlight · 15° | 2 500 lm, 3000 K CRI 95, 15° beam, 22 W. Altar, ambo, crucifix and statues. | 2,500 lm | 22 W | 3000 K | 95 | 15° / 26° | **8** |
-| Pendant lantern · opal | 1 500 lm, 2700 K, 14 W. Verandas and porches. | 1,500 lm | 14 W | 2700 K | 90 | diffuse | **18** |
-| Exit sign (maintained) | 3 W self-contained exit sign. Shown for location only; emergency lighting needs its own design. | 20 lm | 3 W | 6500 K | – | diffuse | **5** |
-| Wall lantern | 900 lm, 2700 K, 9 W. Veranda piers and side doors. | 900 lm | 9 W | 2700 K | 90 | diffuse | **6** |
-| Façade floodlight | 9 000 lm, 3000 K, 30° beam, 70 W, IP66. Towers and façade. | 9,000 lm | 70 W | 3000 K | 80 | 30° / 50° | **18** |
-| Festival bulb string (outdoor) | Warm 2200 K LED bulbs, ~1 W each, IP65. For ridges, eaves, gables and tower edges on big feasts. | 0 lm | 0 W per m | 2200 K | – | diffuse | **24** |
-| Votive candle stand · 7 |  | 84 lm | 0 W | 1900 K | – | diffuse | **2** |
-| Paschal candle |  | 12 lm | 0 W | 1900 K | – | diffuse | **1** |
+Exterior side-door centres are X = 16.725, 34.725 and 46.425 m on both sides. Each pair sits ±1.425 m from its door centre, on the outer wall at Z = ±10.550 m. The central front pair sits at X = 2.200 m, Z = ±2.400 m. Service-door pairs sit ±0.650 m from X = 49.600 m, on Z = ±3.700 m.
 
-**Total light fittings: 194.** Projector outputs are set per position (column ‘Set flux’ below).
+The front pair replaces the former internal main-door sconces. The four old tower-portal lanterns are removed so the middle front door alone has a decorative pair. The 18 veranda pendants and path/stage lights remain functional lighting.
 
-## 3. Schedule by circuit
+The wall-lantern procedural envelope is approximately 404 × 440 × 240 mm, including its bracket. Sizes and ratings are planning categories, not selected manufacturer products. Service-room pairs use the same model at reduced output.
 
-| Circuit | Group | Type | Qty | Axis / position | Height (m) | Set flux each | Beam |
-|---|---|---|---|---|---|---|---|
-| L1 | Reading light | LED projector · medium 36° | 28 | 3; 4; 5; 6; 7; 8; 9 | 8.58 | 2,300 lm | 28° |
-| L2 | Reading light | LED projector · medium 36° | 28 | 3; 4; 5; 6; 7; 8; 9 | 6.66 | 2,300 lm | 36° |
-| L1 | Rear rows light | LED projector · medium 36° | 2 | x 2.65 | 3.45 | 6,000 lm | 44° |
-| L1 | Rear centre light | LED projector · medium 36° | 2 | x 2.65 | 5.95 | 3,300 lm | 50° |
-| L8 | Wing light | LED projector · medium 36° | 8 | x 40.26; x 40.86 | 2.92, 4.15 | 3,800 lm, 4,000 lm | 36°, 50° |
-| LA | Roof uplight | Roof uplight · wide flood | 8 | 10; 3; 4; 5; 6; 7; 8; 9 | 9.18 | 4,000 lm | – |
-| LD | Chandelier | Brass candle chandelier · 8 lamps | 3 | x 16.73; x 25.73; x 34.73 | 6.3 | 3,760 lm | – |
-| LD | Grand chandelier | Grand chandelier · 12 lamps | 1 | x 40.58 | 7.2 | 5,640 lm | – |
-| LD | Sconce | Brass candle sconce · 2 lamps | 18 | 11; 3; 4; 5; 6; 7; 8; 9; x 2.65 | 3, 4.3, 4.6 | 940 lm | – |
-| L3 | Altar key light | Accent spotlight · 15° | 2 | 9 | 8.58 | 3,500 lm | 24° |
-| L3 | Ambo key light | Accent spotlight · 15° | 1 | 9 | 8.58 | 2,500 lm | 15° |
-| L3 | Sanctuary step fill | LED projector · medium 36° | 2 | 9 | 8.58 | 4,000 lm | – |
-| L3 | Crucifix accent | Accent spotlight · 15° | 2 | 10 | 6.6 | 1,200 lm | 15° |
-| L3 | Tabernacle accent | Accent spotlight · 15° | 1 | 10 | 4.6 | 900 lm | 10° |
-| L3 | Statue accent | Accent spotlight · 15° | 2 | 9 | 6.66 | 1,800 lm | 12° |
-| L4 | Veranda lantern | Pendant lantern · opal | 18 | 10; 11; 3; 4; 5; 6; 7; 8; 9 | 4.55 | 2,000 lm | – |
-| E1 | Exit sign | Exit sign (maintained) | 5 | x 16.73; x 2.65; x 34.73 | 4.6, 6.95 | 20 lm | – |
-| L5 | Tower lantern | Wall lantern | 4 | x -0.16; x -0.37 | 2.6 | 900 lm | – |
-| L5 | Side door lantern | Wall lantern | 2 | x 15.30 | 2.25 | 900 lm | – |
-| L6 | Tower stage 2 flood | Façade floodlight | 2 | x -0.08 | 8.4 | 9,000 lm | 32° |
-| L6 | Tower stage 3 flood | Façade floodlight | 2 | x 0.01 | 15.88 | 8,000 lm | 30° |
-| L6 | Belfry & dome flood | Façade floodlight | 2 | x 0.15 | 23.2 | 8,000 lm | 30° |
-| L6 | Belfry glow | Roof uplight · wide flood | 2 | x 2.45 | 23.2 | 2,500 lm | – |
-| L6 | Tower side wash | Façade floodlight | 2 | x 2.45 | 8.4 | 5,000 lm | 30° |
-| L6 | Façade wash | Façade floodlight | 2 | x -0.08 | 8.4 | 6,000 lm | 50° |
-| L5 | Stage flood | Façade floodlight | 4 | x -0.08 | 8.4 | 9,000 lm | 45° |
-| L5 | Path light | LED projector · medium 36° | 10 | 11; 12; 4; 6; x 40.58 | 5.2, 5.9, 6.2 | 2,500 lm, 3,000 lm | 50°, 55° |
-| L7 | Festival lights | Festival bulb string (outdoor) | 24 | 11; x -0.21; x -0.31; x -0.40; x 2.15; x 21.35; x 29.16; x 53.45 | 4.2, 6.47, 7.32, 8.5, 10, 12.12, 12.69, 19.49 | 0 lm | – |
-| L7 | Festival flood | Façade floodlight | 2 | x 52.60 | 6.55 | 9,000 lm | 40° |
-| L6 | Central gable flood | Façade floodlight | 2 | x -0.08 | 8.4 | 4,500 lm | 26° |
-| DECOR | Votive candles | Votive candle stand · 7 | 2 | x 48.10 | 0.15 | 84 lm | – |
-| DECOR | Paschal candle | Paschal candle | 1 | x 42.05 | 0.75 | 12 lm | – |
+## Twin towers
 
-## 4. Circuits and electrical load
+Both towers have identical mirrored arrangements on L6, controlled at DB-2. Warm 3000 K washes reveal the front and outer side faces, with 2700 K glow inside each belfry. L7 outline strings remain a separate festival scene.
 
-| Circuit | Fittings | Running now (full service) | Connected load | Breaker |
-|---|---|---|---|---|
-| L1 · Central seating | 32 | 692 W | 692 W (3.3 A) | C6 |
-| L2 · Outer seating | 28 | 537 W | 537 W (2.6 A) | C6 |
-| L3 · Sanctuary | 10 | 211 W | 211 W (1.0 A) | C6 |
-| L4 · Circulation & verandas | 18 | 336 W | 336 W (1.6 A) | C6 |
-| LA · Roof uplight | 8 | 256 W | 256 W (1.2 A) | C6 |
-| LD · Chandeliers & sconces | 22 | 324 W | 324 W (1.6 A) | C6 |
-| L5 · Steps & paths | 20 | 559 W | 559 W (2.7 A) | C6 |
-| L8 · Wings · choir & ministers | 8 | 260 W | 260 W (1.3 A) | C6 |
-| L6 · Façade & towers | 14 | 670 W | 670 W (3.2 A) | C6 |
-| L7 · Festival exterior (strings & tower floods) | 26 | 0 W | 698 W (3.4 A) | C6 |
-| E1 · Exit signs | 5 | 15 W | 15 W (0.1 A) | C6 |
+| Position | Per tower | Both towers | Base height | Output each | Beam |
+|---|---:|---:|---|---|---|
+| Lower front face, aimed down at masonry above the portal | 1 | 2 | 8.40 m | 3500 lm | 50° |
+| Lower outer side face, aimed down | 1 | 2 | 8.40 m | 2500 lm | 50° |
+| Stage 2 front face | 1 | 2 | 8.40 m | 7000 lm | 40° |
+| Stage 2 outer side face | 1 | 2 | 8.40 m | 5000 lm | 40° |
+| Stage 3 front face | 1 | 2 | 15.88 m | 6000 lm | 40° |
+| Stage 3 outer side face | 1 | 2 | 15.88 m | 4000 lm | 40° |
+| Belfry front face | 1 | 2 | 23.20 m | 4500 lm | 40° |
+| Belfry outer side face | 1 | 2 | 23.20 m | 3000 lm | 40° |
+| Dome front wash | 1 | 2 | 29.26 m | 2500 lm | 36° |
+| Belfry internal glow | 1 | 2 | 23.20 m | 2500 lm | 100° |
 
-## 5. Scenes (keypad)
+Nine floodlights and one internal uplight per tower: **20 architectural tower fittings**. The four front-stage floods are separate on L9. Façade and central-gable washes also remain on L6.
 
-| Scene | L1 | L2 | L3 | L4 | LA | LD | L5 | L8 | L6 | L7 | E1 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Full service · evening | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | off | 100% |
-| Weekday Mass | 75% | 60% | 80% | 50% | 40% | 60% | 100% | 75% | off | off | 100% |
-| Prayer & adoration | 20% | 20% | 45% | 25% | 50% | 35% | 100% | 25% | off | off | 100% |
-| Christmas & festivals | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% |
-| Festival · courtyard overflow | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% |
-| Cleaning | 100% | 100% | 50% | 100% | off | off | off | 100% | off | off | 100% |
-| Night security | off | off | off | 30% | off | off | 100% | off | off | off | 100% |
-| All off | off | off | off | off | off | off | off | off | off | off | 100% |
+The new cornice fixture has a modeled 500 mm projecting arm, with a local envelope approximately 617 × 535 × 340 mm including arm and head. Its base plate sits on the existing cornice; its head projects outward to clear the wall thickness and mouldings. Earlier stage floodlights placed their heads within the wall envelope. Arm strength, fixing, corrosion resistance, weather rating and actual product photometry remain to be specified.
 
-## 6. Test results (simulated, every seat: 380 seats)
+## Installed lighting quantities
 
-| Scene | Avg lux | Min lux | Seats ≥ 200 lux | Lighting + all loads |
-|---|---|---|---|---|
-| Full service · evening | 344 | 193 | 99 % | 5,133 W |
-| Weekday Mass | 236 | 136 | 67 % | 3,549 W |
-| Prayer & adoration | 78 | 45 | 0 % | 2,282 W |
-| Christmas & festivals | 344 | 193 | 99 % | 6,280 W |
-| Festival · courtyard overflow | 344 | 193 | 99 % | 6,341 W |
-| Cleaning | 319 | 171 | 97 % | 3,265 W |
-| Night security | 1 | 0 | 0 % | 689 W |
-| All off | 0 | 0 | 0 % | 15 W |
+The electrical study contains **213 installed lighting fittings/string assemblies**, including exit signs and the off-by-default festival fittings. Literal candles and hidden seasonal alternatives are excluded. A string assembly is one scheduled item; bulb counts depend on its configured length and spacing.
 
-Per seating block, full service: central (150 seats): avg 322, min 194 · outer (150 seats): avg 344, min 193 · wing (80 seats): avg 385, min 203.
+| Product category | Quantity | Model envelope X / Y / Z (mm) | Set specifications | Estimated connected watts |
+|---|---:|---|---|---:|
+| Service-room LED panel · 600 × 600 mm | 2 | 600 / 33 / 600 | 3000 lm · 4000 K | 60.0 |
+| LED projector · medium 36° | 80 | 330 / 222 / 240 | 2300 lm · 3000 K · 28° beam; 2300 lm · 3000 K · 36° beam; 2500 lm · 3000 K · 50° beam; 3000 lm · 3000 K · 55° beam; 3300 lm · 3000 K · 50° beam; 3800 lm · 3000 K · 50° beam; 4000 lm · 3000 K · 36° beam; 6000 lm · 3000 K · 44° beam | 1780.0 |
+| Roof uplight · wide flood | 10 | 320 / 220 / 300 | 2500 lm · 2700 K · 100° beam; 4000 lm · 2700 K · 100° beam | 296.0 |
+| Brass candle chandelier · 8 lamps | 3 | 2040 / 1150 / 2040 | 3760 lm · 2700 K | 108.0 |
+| Grand chandelier · 12 lamps | 1 | 2640 / 1150 / 2640 | 5640 lm · 2700 K | 54.0 |
+| Brass candle sconce · 2 lamps | 16 | 306 / 516 / 453 | 940 lm · 2700 K | 144.0 |
+| Accent spotlight · 15° | 8 | 269 / 197 / 190 | 1200 lm · 3000 K · 15° beam; 1800 lm · 3000 K · 12° beam; 2500 lm · 3000 K · 15° beam; 3500 lm · 3000 K · 24° beam; 900 lm · 3000 K · 10° beam | 144.3 |
+| Pendant lantern · opal | 18 | 332 / 860 / 360 | 2000 lm · 2700 K | 336.0 |
+| Wall lantern | 18 | 404 / 440 / 240 | 400 lm · 2700 K; 900 lm · 2700 K | 142.0 |
+| Exit sign (maintained) | 5 | 55 / 170 / 380 | 20 lm · 6500 K | 15.0 |
+| Tower floodlight · projecting arm | 18 | 617 / 535 / 340 | 2500 lm · 3000 K · 36° beam; 2500 lm · 3000 K · 50° beam; 3000 lm · 3000 K · 40° beam; 3500 lm · 3000 K · 50° beam; 4000 lm · 3000 K · 40° beam; 4500 lm · 3000 K · 40° beam; 5000 lm · 3000 K · 40° beam; 6000 lm · 3000 K · 40° beam; 7000 lm · 3000 K · 40° beam | 591.1 |
+| Façade floodlight | 10 | 215 / 535 / 340 | 4500 lm · 3000 K · 26° beam; 6000 lm · 3000 K · 50° beam; 9000 lm · 3000 K · 40° beam; 9000 lm · 3000 K · 45° beam | 583.3 |
+| Festival bulb string (outdoor) | 24 | Varies with strand length | 2200 K; 6.70–47.30 m strands; luminous output pending | 557.6 |
 
-## 7. Design notes
-- Reading projectors hang under the tie beams (central blocks, 28°) and side beams (outer blocks, 36°), twin heads tilted ±8° along the nave.
-- Bay 2′–3 has no tie beam: brackets on the inner face of the entrance façade light the last rows.
-- Wings (L8): heads on the solid centre of each end gable; the front-row heads sit below the fan blades so no light passes through the blades.
-- Exterior (L5, L6): tower and façade floods, stage floods and path lights are all wall- or cornice-mounted.
-- Exit signs (E1) show location only; emergency lighting needs its own design to the local code.
+Envelope values describe the local procedural model and exclude pendant rods. Floodlight power scales from the catalogue's 9000 lm / 70 W category. Connected watts are category estimates; they are not approved product loads. Outdoor fixture IP ratings, lumen maintenance, dimming drivers and final electrical protection remain pending selection.
+
+## Circuits and editable schedules
+
+| Circuit | Board | Installed fittings | Estimated connected watts |
+|---|---|---:|---:|
+| L3 | DB1 | 16 | 287.0 |
+| L1 | DB1 | 32 | 691.7 |
+| L2 | DB1 | 28 | 536.7 |
+| L8 | DB1 | 8 | 260.0 |
+| LA | DB1 | 8 | 256.0 |
+| LD | DB1 | 20 | 306.0 |
+| L4 | DB1 | 18 | 336.0 |
+| L9 | DB2 | 6 | 298.0 |
+| L5 | DB1 | 22 | 333.0 |
+| E1 | DB1 | 5 | 15.0 |
+| L6 | DB2 | 24 | 794.4 |
+| L7 | DB2 | 26 | 697.6 |
+
+Select each fixture in Simulator; select its route in Wiring. Each light remains connected when switched off. The board schedule contains individual IDs, quantities, dimensions and configured specs: [CSV](electrical-schedule.csv) and [systems JSON](electrical-systems.json). Routing updates automatically with fixture edits.
+
+Existing browser layouts receive the reviewed lights once, retaining unrelated equipment and edits. A pre-review copy is saved under the simulator's `.before-lighting-review` local-storage key. Subsequent removals stay removed. The viewer's Undo command does not undo this startup migration.
+
+## Rendering correction
+
+The former renderer combined neighbouring lights at an average location when the graphics budget was exceeded. For example, combining path lights at axes 4 and 6 placed the virtual source near the speaker at axis 5. It also changed the average beam direction and output, making light appear to come from speakers and leaving tower faces dark.
+
+The renderer now selects actual lamp emitters according to distance and camera direction, preserving their lens positions, beam directions and intensities. Moving or turning refreshes the selected lights. Decorative door pairs receive render slots together to retain balance. Reduced graphics may draw fewer lamps than the full calculated design; choose **Simulator → Settings → Lights drawn in 3D → High** to inspect more sources at once. The analysis continues to use all configured sources.
+
+## Verification
+
+`node scripts/verify_simulator.cjs --report --export-electrical` checks pairs at each modeled side doorway, only one front decorative pair, mirrored tower placements and aims, wall mounts, cornice support, projecting head clearance, real emitter origins at balanced/fast settings, connected routes, selection and reversible systems isolation. Existing lighting, audio, airflow, history and import/export checks also run.
+
+The full-service calculation after this review gives approximately **346 lux average**, **193 lux minimum**, and **99% of seats at or above 200 lux**, with about **5.39 kW** total running load. These are simulator estimates. The 3D preview and calculations do not replace manufacturer photometry or a construction lighting design.

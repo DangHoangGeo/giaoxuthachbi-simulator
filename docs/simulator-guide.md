@@ -171,7 +171,7 @@ Press Play and walk or sit. Each loudspeaker reaches you with its real distance 
 
 **Electricity.** Rated watts × dimmer, fan speed curves and average amplifier draw. It is a planning estimate, not breaker sizing and not metered data.
 
-**3D picture.** Lights are in physical units (candela) and rendered with an eye-adaptation exposure (default 110 lux). On weaker computers some neighbouring lights are combined for drawing. The analysis still uses every source.
+**3D picture.** Lights are in physical units (candela) and rendered with an eye-adaptation exposure (default 110 lux). The renderer prioritizes nearby lamps and lamps illuminating the view within the selected graphics budget. Each drawn light retains its actual fixture position, beam direction and intensity; sources are never combined at virtual midpoints. Moving the camera refreshes the selection. The analysis still uses every source, so reduced graphics can show less coverage than the calculated design. Choose High in Settings → Lights drawn in 3D to review more lamps at once.
 
 ---
 

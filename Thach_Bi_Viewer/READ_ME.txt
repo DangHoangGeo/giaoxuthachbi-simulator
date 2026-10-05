@@ -105,3 +105,28 @@ All results are engineering estimates for comparing options. They are not
 certified lighting, acoustic, airflow or electrical design and do not control
 real devices. Guide and results: ../docs/simulator-guide.md.
 Checks: node ../scripts/verify_simulator.cjs --report
+
+ELECTRICAL ROUTING STUDY — 5 OCTOBER 2026
+Simulator → Wiring → Systems only hides the building and retains selectable
+boards, cables and connected equipment. Restore building restores visibility.
+The existing service-room main board, lighting controls, fan controls and audio
+rack are retained; DB-2 remains inside the main doors. Every wire can be selected
+in 3D, in the flat route plan or in the individual run list. Routes update when
+components move, change circuits, are added, removed, hidden, or restored.
+The default study has 254 connected components and 297 selectable runs.
+Flat board schedules show grouped quantities, model sizes and category specs.
+JSON/CSV export the current layout. Cable sizing and final product specifications
+are pending; routes, enclosures and internal arrangements are planning proposals.
+Documentation and saved default exports: ../docs/systems/electrical.md.
+Wiring checks: node ../scripts/verify_simulator.cjs --electrical.
+
+LIGHTING REVIEW — 5 OCTOBER 2026
+All six exterior side doors now have two matching lanterns. Only the middle
+front door has a decorative pair; both service-room doors also have pairs.
+The towers have matching warm washes on their front and outer faces, belfries
+and domes, with projecting arms keeping the heads clear of the masonry.
+Rendered lights now remain at actual lamp positions. Reduced graphics selects
+nearby lamps instead of merging them at midpoints near the speakers.
+Simulator → Settings → Lights drawn in 3D → High shows more lamps at once.
+Saved layouts receive only the reviewed lights once; other edits are retained.
+Lighting schedule: ../docs/systems/lighting.md.

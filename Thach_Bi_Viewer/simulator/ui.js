@@ -17,6 +17,7 @@
     { id: 'fan', label: 'Fans', cat: 'fan' },
     { id: 'speaker', label: 'Sound', cat: 'speaker' },
     { id: 'decor', label: 'Décor', cat: 'decor' },
+    { id: 'wiring', label: 'Wiring' },
     { id: 'analysis', label: 'Analysis' },
     { id: 'settings', label: 'Settings' }
   ];
@@ -64,6 +65,11 @@
     $('simPlacing').addEventListener('click', e => { if (e.target.dataset.act === 'cancel-place') SIM.cancelPlacement(); });
 
     panel.addEventListener('click', onClick);
+    panel.addEventListener('keydown', e => {
+      if (!['Enter', ' '].includes(e.key)) return;
+      const el = e.target.closest('.electrical-plan [data-act]');
+      if (el) { e.preventDefault(); SIM.electrical?.action(el); }
+    });
     panel.addEventListener('input', onInput);
     panel.addEventListener('change', onChange);
     $('simScene').addEventListener('change', e => { if (e.target.value) { SIM.applyScene(e.target.value); toast('Scene: ' + e.target.value); } });
@@ -75,6 +81,8 @@
       scheduleRender(true);
     });
     SIM.on('history', () => updateUndo());
+    SIM.on('electrical-selection', () => { tab = 'wiring'; setOpen(true); scheduleRender(true); });
+    SIM.on('electrical', () => { if (tab === 'wiring') scheduleRender(true); });
     SIM.on('analysis', r => { lastAnalysis = r; renderKpis(); if (tab === 'analysis') renderBody(); renderLegend(); });
     SIM.on('analysis-start', () => panel.classList.add('sim-busy'));
     SIM.on('analysis', () => panel.classList.remove('sim-busy'));
@@ -165,6 +173,7 @@
     let html = '';
     if (t.cat) html = renderCategory(t.cat);
     else if (tab === 'analysis') html = renderAnalysis();
+    else if (tab === 'wiring') html = SIM.electrical?.renderPanel() || '';
     else html = renderSettings();
     body.innerHTML = html;
     if (renderKeepScroll) body.scrollTop = scroll; else body.scrollTop = 0;
@@ -392,7 +401,7 @@
       ${rng('halos', 'Lamp glow', 0, 2, 0.1, fmt(s.halos, 1) + '×')}
       ${field('Lights drawn in 3D', `<select data-setting="quality">${Object.entries(SIM.QUALITY).map(([k, q]) => `<option value="${k}" ${s.quality === k ? 'selected' : ''}>${esc(q.label)}</option>`).join('')}</select>`, true)}
       ${sw('autoQuality', 'Lighten automatically when walking stutters')}
-      <p class="sim-hint">${(() => { const p = SIM.poolStats(); return p ? `${p.emitters} light sources; ${p.points + p.spots + p.shadows} drawn individually${p.clustered > 0 ? `, ${p.clustered} combined with neighbours for speed` : ''}. Analysis always uses every source.` : ''; })()}</p>
+      <p class="sim-hint">${(() => { const p = SIM.poolStats(); return p ? `${p.emitters} light sources; ${p.points + p.spots + p.shadows} drawn individually${p.culled > 0 ? `, ${p.culled} outside the current drawing budget` : ''}. Analysis always uses every source.` : ''; })()}</p>
       </div>
       <div class="sim-card"><h3>Structure &amp; finishes</h3>
       ${field('Timber frame', `<select data-setting="frameStyle"><option value="drawn" ${s.frameStyle !== 'reference' ? 'selected' : ''}>As drawn (PDF section 4)</option><option value="reference" ${s.frameStyle === 'reference' ? 'selected' : ''}>Reference image (open collar truss)</option></select>`, true)}
@@ -420,6 +429,7 @@
     const el = e.target.closest('[data-act]');
     if (!el) return;
     const act = el.dataset.act, it = itemFromEvent(e);
+    if (act.startsWith('electrical-')) { SIM.electrical?.action(el); return; }
     switch (act) {
       case 'close': setOpen(false); break;
       case 'undo': { const l = SIM.undo(); if (l) toast('Undo: ' + l); break; }

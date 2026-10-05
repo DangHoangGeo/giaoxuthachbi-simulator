@@ -278,3 +278,29 @@ body.sim-open .walk-panel{left:calc(50% + 196px)}
 [data-lighting=evening] .ctl-stat b{color:#fff}[data-lighting=evening] .ctl-stat small,[data-lighting=evening] .ctl-stat span{color:#dfe6df}[data-lighting=evening] .ctl-stat.bad b{color:#ffc27a}
 .ctl-stats{filter:none;background:#f8faf38c;backdrop-filter:blur(6px);padding:4px 10px;border-radius:8px;gap:12px}
 [data-lighting=evening] .ctl-stats{filter:none;background:#1b221f73}
+.electrical-actions { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0; }
+.electrical-actions button, .electrical-circuit-rail button { padding:7px 9px; border:1px solid #cfd9cb; background:#f5f7f1; color:#315b43; border-radius:7px; font-family:inherit; font-size:11px; font-weight:600; cursor:pointer; }
+.electrical-actions .sim-primary { background:#315b43; color:#fff; }
+.electrical-actions button[aria-pressed="true"] { background:#315b43; color:white; }
+.electrical-details { display:grid; grid-template-columns:95px 1fr; gap:7px; font-size:12px; }
+.electrical-details dt { color:#66766a; }
+.electrical-details dd { margin:0; overflow-wrap:anywhere; }
+.electrical-plan { width:100%; min-height:190px; border:1px solid #dce3da; border-radius:8px; }
+.electrical-plan [data-act] { cursor:pointer; }
+.electrical-plan polyline { pointer-events:stroke; }
+.electrical-plan [data-act]:focus { outline:2px solid #00a46d; }
+.electrical-table-wrap { overflow:auto; max-height:340px; }
+.electrical-table { width:100%; border-collapse:collapse; font-size:11px; }
+.electrical-table th { position:sticky; top:0; background:#eff3ec; text-align:left; padding:8px 5px; }
+.electrical-table td { border-bottom:1px solid #e0e6dc; padding:7px 5px; vertical-align:top; }
+.electrical-table td button { border:0; padding:0; background:none; font-size:11px; text-align:left; color:#315b43; }
+.electrical-table small { display:block; margin-top:4px; font-size:10px; color:#66766a; }
+.electrical-circuit-rail { display:flex; gap:5px; flex-wrap:wrap; margin:10px 0; }
+.electrical-circuit-rail button { display:grid; min-width:75px; text-align:left; gap:4px; }
+.electrical-circuit-rail small { font-size:9px; }
+.electrical-run-list { max-height:320px; overflow:auto; }
+.electrical-run-list button { display:flex; align-items:center; gap:8px; width:100%; padding:8px; text-align:left; background:transparent; border:0; border-bottom:1px solid #e0e6dc; }
+.electrical-run-list button.selected { background:#deeee2; }
+.electrical-run-list i { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.electrical-run-list span { font-size:11px; }
+.electrical-run-list small { display:block; margin-top:3px; font-size:10px; color:#66766a; }

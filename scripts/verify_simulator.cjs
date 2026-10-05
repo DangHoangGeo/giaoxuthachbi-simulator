@@ -26,7 +26,7 @@ const sandbox = {
 sandbox.window = sandbox;
 sandbox.addEventListener = (e, f) => { (listeners[e] ||= []).push(f); };
 vm.createContext(sandbox);
-for (const file of ['references.js', 'glass-art.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/design.js', 'simulator/analysis.js'])
+for (const file of ['references.js', 'glass-art.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
   vm.runInContext(fs.readFileSync(path.join(viewer, file), 'utf8'), sandbox, { filename: file });
 
 let src = fs.readFileSync(path.join(viewer, 'bundle.js'), 'utf8');
@@ -64,12 +64,107 @@ assert.equal(interior.lights.length, 0, 'legacy interior lights replaced');
 
 // --- Start with a stub viewer API ------------------------------------------
 const camera = new T.PerspectiveCamera(50, 1.6, 0.05, 500); camera.position.set(20, 1.6, 0);
-const church = { colliders: [], walkCamera: { aspect: 1.6, fov: 68, updateProjectionMatrix() {} }, walk: { eyeHeight: 1.65, speed: 2.05 }, places: {}, goTo() {}, setMode() {}, uiState: () => ({ roof: true }), camera, controls: { target: new T.Vector3(), update() {} } };
+const church = { scene: sandbox.window.model.scene, colliders: [], walkCamera: { aspect: 1.6, fov: 68, updateProjectionMatrix() {} }, walk: { eyeHeight: 1.65, speed: 2.05 }, places: {}, goTo() {}, setMode() {}, uiState: () => ({ roof: true }), camera, controls: { target: new T.Vector3(), update() {} } };
 SIM.start(church);
 assert(SIM.ready, 'simulator started');
 assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.items.length);
 assert.equal(church.walk.speed, 1.4, 'realistic walking speed');
 assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + church.walkCamera.fov.toFixed(1));
+// Door pairs follow the actual openings, with decoration only at the middle
+// front door. The two tower layouts mirror exactly, including arm orientation.
+{
+  const lights = SIM.state.items, near = (a, b) => Math.abs(a - b) < 0.0001;
+  const side = lights.filter(it => it.name.startsWith('Side door lantern ·'));
+  assert.equal(side.length, 12, 'six exterior side doors have twelve lanterns');
+  for (const s of [-1, 1]) for (const x of [16.725, 34.725, 46.425]) {
+    const pair = side.filter(it => near(it.pos[2], s * 10.55) && Math.abs(it.pos[0] - x) < 1.5);
+    assert.equal(pair.length, 2, 'two lanterns beside each exterior side door');
+    assert(near((pair[0].pos[0] + pair[1].pos[0]) / 2, x), 'lantern pair centres on the door');
+    assert(pair.every(it => near(it.pos[1], 2.6) && it.mountYaw === s * 90), 'equal height and outward orientation');
+  }
+  const front = lights.filter(it => it.name.startsWith('Central front door lantern ·'));
+  assert.equal(front.length, 2, 'only one front-door decorative pair');
+  assert(front.every(it => near(it.pos[0], 2.2) && near(Math.abs(it.pos[2]), 2.4) && it.circuit === 'L9'), 'central pair outside the front wall on DB2');
+  assert(!lights.some(it => /^(Tower lantern|Sconce · main door) ·/.test(it.name)), 'old duplicate door decoration removed');
+  assert.equal(lights.filter(it => it.name.startsWith('Service door lantern ·')).length, 4, 'two service doors have balanced pairs');
+  const tower = lights.filter(it => it.type === 'corniceFlood');
+  assert.equal(tower.length, 18, 'nine architecture washes per tower');
+  for (const a of tower.filter(it => it.name.endsWith(' · B'))) {
+    const b = tower.find(it => it.name === a.name.replace(/ · B$/, ' · H'));
+    assert(b && near(a.pos[0], b.pos[0]) && near(a.pos[1], b.pos[1]) && near(a.pos[2], -b.pos[2]), 'mirrored tower mount: ' + a.name);
+    assert(near(a.tilt, b.tilt) && near(Math.cos(a.yaw * Math.PI / 180), Math.cos(b.yaw * Math.PI / 180)) && near(Math.sin(a.yaw * Math.PI / 180), -Math.sin(b.yaw * Math.PI / 180)), 'mirrored tower beam');
+  }
+  const D = sandbox.CHURCH_SIM_DESIGN, unrelated = { id: 'custom-fan', name: 'User fan', type: 'fanWall', circuit: 'F2', pos: [20, 3, 7], speed: 1 };
+  const old = [unrelated, { id: 'old-door', name: 'Side door lantern · B', type: 'wallLantern', circuit: 'L5', pos: [15.3, 2.25, -10.55], on: false, dim: 0.4 }];
+  const revised = D.upgradeLighting(old, D.recommended(SIM.GEO, SIM), SIM.SCENES['All off']);
+  assert.equal(revised.find(it => it.id === unrelated.id), unrelated, 'lighting migration preserves unrelated custom equipment');
+  assert(revised.find(it => it.id === 'old-door')?.name.includes('16.725 · front'), 'migration retains existing door selection ID');
+  assert(revised.filter(it => it.type === 'wallLantern' || it.type === 'corniceFlood').every(it => !it.on), 'migration honours the all-off scene');
+  const twice = D.upgradeLighting(revised, D.recommended(SIM.GEO, SIM), SIM.SCENES['All off']);
+  assert.equal(twice.length, revised.length, 'lighting migration does not duplicate reviewed fittings');
+}
+// --- Electrical network: connectivity, real picking and reversible isolation ---
+{
+  const E = SIM.electrical;
+  assert(E.layer, 'electrical layer starts with the scene');
+  const data = E.exportData(), runs = E.routes;
+  assert.equal(new Set(runs.map(r => r.id)).size, runs.length, 'each run has a unique selection identity');
+  assert.equal(runs.filter(r => r.role === 'feeder' && r.board === 'DB2').length, 1, 'one continuous DB2 feeder');
+  const near = (a, b) => Math.hypot(...a.map((n, k) => n - b[k])) < 0.0001;
+  const onPath = (p, path) => path.slice(1).some((b, i) => {
+    const a = path[i], d = new T.Vector3(...b).sub(new T.Vector3(...a)), v = new T.Vector3(...p).sub(new T.Vector3(...a));
+    const t = Math.max(0, Math.min(1, v.dot(d) / d.lengthSq()));
+    return d.multiplyScalar(t).sub(v).length() < 0.0001;
+  });
+  for (const r of runs) {
+    assert(r.points.every(p => p.length === 3 && p.every(Number.isFinite)), 'finite route ' + r.id);
+    assert(r.length > 0, 'positive measured length ' + r.id);
+    if (r.role === 'drop') {
+      const it = SIM.item(r.itemIds[0]), trunk = runs.find(t => t.id === r.trunkId);
+      assert(near(r.points.at(-1), it.pos), 'drop terminates at component ' + r.id);
+      assert(trunk && onPath(r.points[0], trunk.points), 'drop connects to its trunk ' + r.id);
+    } else assert(near(r.points[0], E.SOURCES[r.source].pos), 'trunk/feeder starts at source ' + r.id);
+  }
+  for (const c of data.components.filter(c => !c.hiddenAlternative)) {
+    assert(runs.some(r => ['drop', 'local'].includes(r.role) && r.itemIds.includes(c.id)), 'every installed component is connected ' + c.id);
+    assert(c.modelSize.length === 3 && c.modelSize.every(Number.isFinite), 'component has model dimensions ' + c.id);
+    const t = CAT.byId[c.type], drops = runs.filter(r => ['drop', 'local'].includes(r.role) && r.itemIds.includes(c.id));
+    if (t.speaker && !t.speaker.active || t.mic) assert(drops.every(r => r.source === 'AV1'), 'passive audio / mic never connected directly to DB mains');
+  }
+  const before = new Map(); church.scene.traverse(o => {
+    for (let p = o; p; p = p.parent) if (p === E.layer || p.userData.simId) return;
+    before.set(o, o.visible);
+  });
+  E.setMode('systems');
+  assert(E.layer.visible, 'wires survive isolation');
+  for (const fx of SIM.fixtures.values()) assert.equal(fx.root.visible, !fx.item.hidden && data.components.some(c => c.id === fx.item.id), 'isolation excludes hidden and non-electrical fixtures');
+  const board = E.SOURCES.DB1;
+  assert.equal(E.pick(new T.Ray(new T.Vector3(board.pos[0] + 1, board.pos[1], board.pos[2]), new T.Vector3(-1, 0, 0))).id, 'DB1', 'real 3D ray selects physical board');
+  E.select('DB1'); assert.equal(E.view.selected, 'DB1', 'physical board can be selected');
+  const drop = runs.find(r => r.role === 'drop'); E.select(drop.id);
+  assert.equal(E.view.selected, drop.id, 'individual run can be selected');
+  const fixture = SIM.item(drop.itemIds[0]), oldPosition = fixture.pos.slice();
+  SIM.update(fixture.id, { pos: [oldPosition[0] + 0.1, oldPosition[1], oldPosition[2]] }, { record: false }); E.rebuild();
+  assert(near(E.routes.find(r => r.id === drop.id).points.at(-1), fixture.pos), 'routes follow edited fixtures with stable IDs');
+  SIM.update(fixture.id, { pos: oldPosition }, { record: false }); E.rebuild();
+  E.setMode('building');
+  for (const [o, v] of before) assert.equal(o.visible, v, 'building visibility restored: ' + o.name);
+  assert([...SIM.fixtures.values()].filter(f => f.item.hidden).every(f => !f.root.visible), 'restoring building does not reveal hidden alternatives');
+  E.select('AV1'); assert.equal(E.view.selected, 'AV1', 'audio rack selectable');
+  const active = SIM.add({ type: 'steerableColumn', circuit: 'A1', pos: [25.725, 3.1, -7.07], mount: 'wall' }, { record: false }); E.rebuild();
+  const feeds = E.routes.filter(r => r.role === 'drop' && r.itemIds.includes(active.id));
+  assert.equal(feeds.length, 2, 'active speaker gets both signal and local power');
+  assert(feeds.some(r => r.source === 'DB1') && feeds.some(r => r.source === 'AV1'), 'active power and signal originate separately');
+  SIM.remove(active.id, { record: false }); E.rebuild();
+  assert(!E.routes.some(r => r.itemIds.includes(active.id)), 'removing a component removes its run');
+  if (process.argv.includes('--export-electrical')) {
+    const dest = path.join(root, 'docs', 'systems');
+    fs.writeFileSync(path.join(dest, 'electrical-systems.json'), JSON.stringify(E.exportData(), null, 2) + '\n');
+    fs.writeFileSync(path.join(dest, 'electrical-schedule.csv'), '\ufeff' + E.csv() + '\n');
+  }
+  console.log(JSON.stringify({ electrical: 'passed', installedComponents: data.components.filter(c => !c.hiddenAlternative).length, selectableRuns: runs.length }));
+  if (process.argv.includes('--electrical')) process.exit(0);
+}
 for (const t of CAT.types) {
   const it = SIM.add({ type: t.id, pos: [20, 1, 0], mount: t.mounts[0], anchorY: 8.59 }, { record: false });
   assert(it, 'catalogue item builds: ' + t.id);
@@ -100,6 +195,14 @@ assert(church.colliders.some(c => c.kind === 'simulator'), 'floor items add walk
     const a = (it.mountYaw ?? 0) * Math.PI / 180, f = [Math.cos(a), 0, Math.sin(a)];
     assert(hit([it.pos[0] + f[0] * 0.25, it.pos[1], it.pos[2] + f[2] * 0.25], [-f[0], 0, -f[2]], 0.4), 'wall item sits on a surface: ' + it.name);
   }
+  for (const it of SIM.state.items.filter(i => i.type === 'corniceFlood')) {
+    assert(hit([it.pos[0], it.pos[1] + 0.1, it.pos[2]], [0, -1, 0], 0.35), 'tower arm base rests on a cornice: ' + it.name);
+    const fx = SIM.fixtures.get(it.id), head = fx.head.getWorldPosition(new T.Vector3());
+    const a = it.mountYaw * Math.PI / 180, f = [Math.cos(a), 0, Math.sin(a)];
+    assert(Math.abs(head.x - it.pos[0] - f[0] * 0.5) < 0.0001 && Math.abs(head.z - it.pos[2] - f[2] * 0.5) < 0.0001, 'tower head projects outward from the ledge: ' + it.name);
+    const h = hit([head.x, head.y, head.z], [-f[0], 0, -f[2]], 0.9);
+    assert(h && h.distance > 0.1, 'tower head clears the masonry: ' + it.name);
+  }
   const seen = new Set();
   for (const it of SIM.state.items.filter(i => i.mount === 'pendant' && !i.params?.spreader && i.type !== 'bunting')) {
     const key = `${it.type}|${it.anchorY.toFixed(2)}|${it.pos[0].toFixed(0)}|${Math.abs(it.pos[2]).toFixed(1)}`; // mirrored pairs share a ray
@@ -114,6 +217,35 @@ assert(church.colliders.some(c => c.kind === 'simulator'), 'floor items add walk
 for (let i = 0; i < 4; i++) SIM.frame(0.05, 'walk', camera);
 const pool = SIM.poolStats();
 assert(pool && pool.emitters > 60, 'light pool fed: ' + JSON.stringify(pool));
+// Reduced graphics must never relocate lamps to synthetic midpoints (which
+// previously made a beam appear to originate at a neighbouring speaker).
+function verifyRenderOrigins() {
+  const sources = SIM.emitters(), drawn = [];
+  church.scene.traverse(o => { if (o.isLight && o.userData.emitter && o.intensity > 0) drawn.push(o); });
+  assert(drawn.length, 'renderer draws real lamps');
+  for (const light of drawn) {
+    const e = light.userData.emitter;
+    assert(SIM.item(e.id) && !CAT.byId[SIM.item(e.id).type].speaker, 'rendered light belongs to a lamp, never a speaker');
+    const source = sources.find(s => s.id === e.id && Math.hypot(...s.pos.map((v, k) => v - e.pos[k])) < 0.0001);
+    assert(source && Math.abs(source.cd - e.cd) < 0.0001, 'renderer preserves the real source position and intensity');
+    assert(light.position.distanceTo(new T.Vector3(...source.pos)) < 0.0001, 'light is drawn at the fixture lens');
+    if (source.dir) assert(new T.Vector3(...source.dir).distanceTo(light.target.position.clone().sub(light.position)) < 0.0001, 'renderer preserves the real beam direction');
+  }
+}
+verifyRenderOrigins();
+for (const s of [-1, 1]) {
+  camera.position.set(16.725, 2.6, s * 15.5); camera.lookAt(16.725, 2.4, s * 10.55);
+  SIM.setSetting('quality', 'balanced');
+  SIM.setSetting('quality', 'fast');
+  SIM.frame(0.05, 'walk', camera);
+  verifyRenderOrigins();
+  const drawnIds = new Set();
+  church.scene.traverse(o => { if (o.isPointLight && o.userData.emitter && o.intensity > 0) drawnIds.add(o.userData.emitter.id); });
+  const pair = SIM.state.items.filter(it => it.name.startsWith(`Side door lantern · ${s < 0 ? 'B' : 'H'} · 16.725`));
+  assert(pair.every(it => drawnIds.has(it.id)), 'both lanterns of the visible doorway receive real light even at fast quality');
+}
+camera.position.set(20, 1.6, 0); camera.lookAt(20, 1.6, -1);
+SIM.setSetting('quality', 'balanced');
 
 // --- Analysis ---------------------------------------------------------------
 const A = SIM.analysis;

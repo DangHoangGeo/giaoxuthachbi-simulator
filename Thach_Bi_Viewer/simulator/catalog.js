@@ -216,6 +216,13 @@
       k.glowPoint([0.06, 0, 0], 0.7);
     });
   }
+  function buildCorniceFlood(k, { params }) {
+    buildFlood(k);
+    const reach = params.outreach ?? 0.5;
+    // The base stays on the ledge; the head clears the projecting masonry.
+    k.box(reach, 0.05, 0.08, 'black', { p: [reach / 2, 0.25, 0] });
+    k.pivots.head = [reach, 0.32, 0];
+  }
   function buildBollard(k) {
     k.cyl(0.09, 0.1, 0.7, 'bronze', { p: [0, 0.35, 0] }, 16);
     k.cyl(0.085, 0.085, 0.12, 'glow', { p: [0, 0.76, 0] }, 16);
@@ -594,6 +601,10 @@
     { id: 'spot15', cat: LIGHT, family: 'Task & accent', name: 'Accent spotlight · 15°', mounts: ['pendant', 'wall', 'floor'], aim: true, defaultTilt: -45, defaultDrop: 0, glow: 'lens', circuit: 'L3', shadow: true,
       desc: '2 500 lm, 3000 K CRI 95, 15° beam, 22 W. Altar, ambo, crucifix and statues.',
       light: { lumens: 2500, watts: 22, cct: 3000, cri: 95, beam: 15, field: 26, optics: [10, 15, 24, 36], emitters: [{ kind: 'spot', head: true, pos: [0.12, 0, 0] }] }, build: k => buildProjector(k, 0.05, 0.17, 'bronze') },
+    { id: 'servicePanel', cat: LIGHT, family: 'Task & accent', name: 'Service-room LED panel · 600 × 600 mm', mounts: ['pendant'], defaultDrop: 0, glow: 'lens', circuit: 'L3',
+      desc: 'Existing 600 × 600 × 30 mm panel geometry. 3000 lm / 30 W are provisional category values; confirm product.',
+      light: { lumens: 3000, watts: 30, cct: 4000, cri: 80, emitters: [{ kind: 'point', pos: [0, -0.02, 0] }] },
+      build: k => { k.box(0.6, 0.03, 0.6, 'white'); k.box(0.58, 0.003, 0.58, 'glow', { p: [0, -0.017, 0] }); } },
     { id: 'highbay', cat: LIGHT, family: 'Task & accent', name: 'LED high-bay · wide 70°', mounts: ['pendant'], aim: true, defaultTilt: -90, defaultDrop: 0.3, glow: 'lens', circuit: 'L4',
       desc: '12 000 lm, 4000 K, 70° beam, 90 W. Cleaning and maintenance light.',
       light: { lumens: 12000, watts: 90, cct: 4000, cri: 80, beam: 70, field: 110, emitters: [{ kind: 'spot', head: true, pos: [0.05, 0, 0] }] }, build: buildHighbay },
@@ -609,6 +620,10 @@
     { id: 'flood', cat: LIGHT, family: 'Exterior', name: 'Façade floodlight', mounts: ['floor'], aim: true, defaultTilt: 50, glow: 'lens', circuit: 'L6',
       desc: '9 000 lm, 3000 K, 30° beam, 70 W, IP66. Towers and façade.',
       light: { lumens: 9000, watts: 70, cct: 3000, cri: 80, beam: 30, field: 50, optics: [15, 30, 50, 70], emitters: [{ kind: 'spot', head: true, pos: [0.05, 0, 0] }] }, build: buildFlood },
+    { id: 'corniceFlood', cat: LIGHT, family: 'Exterior', name: 'Tower floodlight · projecting arm', mounts: ['floor'], aim: true, defaultTilt: 50, glow: 'lens', circuit: 'L6',
+      desc: 'Adjustable flood on a proposed cornice arm. Base follows the ledge; head projects clear of the tower wall. Product and bracket details pending.',
+      params: { outreach: { label: 'Arm outreach (m)', min: 0.25, max: 0.8, step: 0.05, value: 0.5 } },
+      light: { lumens: 9000, watts: 70, cct: 3000, cri: 80, beam: 30, field: 50, optics: [15, 30, 50, 70], emitters: [{ kind: 'spot', head: true, pos: [0.05, 0, 0] }] }, build: buildCorniceFlood },
     { id: 'bollard', cat: LIGHT, family: 'Exterior', name: 'Path bollard', mounts: ['floor'], glow: 'warm', circuit: 'L5',
       desc: '600 lm, 3000 K, 8 W, 0.9 m. Steps and paths.',
       light: { lumens: 600, watts: 8, cct: 3000, cri: 80, emitters: [{ kind: 'point', pos: [0, 0.76, 0] }] }, build: buildBollard },

@@ -37,7 +37,7 @@
     L5: { label: 'L5 · Steps & paths', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
     L8: { label: 'L8 · Wings · choir & ministers', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' },
     L6: { label: 'L6 · Façade & towers', cat: 'light', board: 'DB2', area: 'Towers & façade' },
-    L9: { label: 'L9 · Front stage floods & tower lanterns', cat: 'light', board: 'DB2', area: 'Towers & façade' },
+    L9: { label: 'L9 · Front stage & central door', cat: 'light', board: 'DB2', area: 'Towers & façade' },
     L7: { label: 'L7 · Festival exterior (strings & tower floods)', cat: 'light', board: 'DB2', area: 'Towers & façade' },
     E1: { label: 'E1 · Exit signs', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
     X1: { label: 'X1 · Festival lighting', cat: 'decor', board: 'DB1' },
@@ -59,12 +59,13 @@
   // cable from DB-1 and switches the circuits at the front of the church, so
   // those long circuit runs back to the altar end are not needed.
   const BOARDS = {
-    DB1: { label: 'DB-1 · Main board', where: 'Service room behind the altar', pos: [51.3, 1.5, -1.0] },
-    DB2: { label: 'DB-2 · Towers & entrance', where: 'Inside the main doors, left of the main door', pos: [2.8, 1.5, -3.3] }
+    DB1: { label: 'DB-1 · Main board', where: 'Service room behind the altar · existing back-wall enclosure', pos: [48.895, 1.75, -1.55] },
+    DB2: { label: 'DB-2 · Towers & entrance', where: 'Inside the main doors, left of the main door', pos: [2.73, 1.5, -3.3] }
   };
   const QUALITY = {
     // Every drawn light is evaluated for every pixel, so counts drive frame rate.
-    // Lights beyond the budget are merged with neighbours; the analysis uses all.
+    // Nearby visible lamps receive the budget; emitter positions are never moved.
+    // The analysis uses all fixtures, including those outside the render budget.
     high: { points: 24, spots: 40, shadows: 2, label: 'High · up to 66 lights (strong graphics card)' },
     balanced: { points: 8, spots: 14, shadows: 1, label: 'Balanced · up to 23 lights' },
     fast: { points: 4, spots: 6, shadows: 0, label: 'Fast · up to 10 lights (smoothest)' }
@@ -75,7 +76,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
 
@@ -365,6 +366,15 @@
     const facade = scene.children.filter(o => o.isSpotLight && !o.castShadow);
     for (const l of facade) { scene.remove(l); scene.remove(l.target); l.intensity = 0; }
     GEO.legacy.facadeLights = facade.length;
+    // Replace the static control-board/rack placeholders with the independent
+    // selectable electrical models at the same service-room locations.
+    if (SIM.electrical) {
+      const old = [];
+      ctx.building.traverse(o => {
+        if (/^(Service room LED ceiling panel$|Wall enclosure · |Enclosure handle$|DB-2 indicator$|Cable tray$|19-inch sound rack$|Rack unit face$|Rack status LED$|Label · (Main board|Lighting L1|Fans · speed|Sound · amps|DB-2 Towers))/.test(o.name)) old.push(o);
+      });
+      for (const o of old) o.removeFromParent();
+    }
   }
 
   /* ----------------------------------------------------------- light pool */
@@ -661,7 +671,8 @@
           list.push({ kind: 'spot', pos, dir: worldFrame(it).f, cd: P.peakCandela(lm, cone), cosOuter: cone.cosOuter, cosInner: cone.cosInner,
             angle: cone.angle, penumbra: cone.penumbra, lumens: lm, color, id: it.id, shadow: !!it.shadow, interior: isInterior(pos), flicker: fx.type.flicker });
         } else {
-          list.push({ kind: 'point', pos, cd: P.peakCandela(lm), lumens: lm, color, id: it.id, interior: isInterior(pos), flicker: fx.type.flicker });
+          const pair = /^(Side|Service) door lantern ·/.test(it.name) ? it.name.replace(/ · (front|rear)$/, '') : it.name.startsWith('Central front door lantern ·') ? 'Central front door lantern' : null;
+          list.push({ kind: 'point', pos, cd: P.peakCandela(lm), lumens: lm, color, id: it.id, pair, interior: isInterior(pos), flicker: fx.type.flicker });
         }
       }
       if (opts.includeTiny === false) continue;
@@ -669,8 +680,8 @@
     return list;
   }
 
-  /* Assign emitters to the fixed renderer pool, clustering when over budget. */
-  let interiorFlux = 0, poolScale = 0, viewOutside = false;
+  /* Assign actual emitters to the fixed renderer pool, prioritizing the view. */
+  let interiorFlux = 0, poolScale = 0, viewOutside = false, renderCamera = null, lastPoolView = null;
   function updatePool() {
     if (!pool) return;
     const all = lightEmitters();
@@ -678,10 +689,10 @@
     // From outside, interior fittings are hidden by the walls and roof; from
     // inside, the façade floods do not reach the nave. Draw the side in view.
     const emitters = all.filter(e => e.lumens >= 60 && (viewOutside ? !e.interior : e.interior || e.kind === 'point'));
-    const wantShadow = emitters.filter(e => e.kind === 'spot' && e.shadow).sort((a, b) => b.cd - a.cd);
+    const wantShadow = chooseRenderEmitters(emitters.filter(e => e.kind === 'spot' && e.shadow), pool.shadows.length);
     const shadowSet = new Set(wantShadow.slice(0, pool.shadows.length));
-    const spots = cluster(emitters.filter(e => e.kind === 'spot' && !shadowSet.has(e)), pool.spots.length);
-    const points = cluster(emitters.filter(e => e.kind === 'point'), pool.points.length);
+    const spots = chooseRenderEmitters(emitters.filter(e => e.kind === 'spot' && !shadowSet.has(e)), pool.spots.length);
+    const points = chooseRenderEmitters(emitters.filter(e => e.kind === 'point'), pool.points.length);
     const assign = (light, e) => {
       if (!e) { light.intensity = 0; light.userData.emitter = null; return; }
       light.position.set(...e.pos);
@@ -699,7 +710,8 @@
     pool.spots.forEach((l, i) => assign(l, spots[i]));
     const shadows = [...shadowSet];
     pool.shadows.forEach((l, i) => assign(l, shadows[i]));
-    pool.stats = { emitters: emitters.length, points: points.length, spots: spots.length, shadows: shadows.length, clustered: emitters.length - points.length - spots.length - shadows.length };
+    pool.stats = { emitters: emitters.length, points: points.length, spots: spots.length, shadows: shadows.length, culled: emitters.length - points.length - spots.length - shadows.length };
+    if (renderCamera) lastPoolView = { pos: renderCamera.position.clone(), rotation: renderCamera.quaternion.clone() };
     poolScale = 0;
     scalePool();
     ctx.renderer.shadowMap.needsUpdate = true;
@@ -711,38 +723,34 @@
     poolScale = S;
     for (const l of [...pool.points, ...pool.spots, ...pool.shadows]) l.intensity = l.userData.emitter && l.userData.active !== false ? l.userData.emitter.cd * S : 0;
   }
-  function cluster(list, max) {
-    const items = list.map(e => ({ ...e }));
-    while (items.length > max && items.length > 1) {
-      let best = Infinity, bi = 0, bj = 1;
-      for (let i = 0; i < items.length; i++) for (let j = i + 1; j < items.length; j++) {
-        const a = items[i], b = items[j];
-        const d2 = (a.pos[0] - b.pos[0]) ** 2 + (a.pos[1] - b.pos[1]) ** 2 + (a.pos[2] - b.pos[2]) ** 2;
-        // Prefer merging along a row (same height and side) over merging across zones.
-        let cost = d2 + 4 * (a.pos[1] - b.pos[1]) ** 2 + 0.5 * (a.pos[2] - b.pos[2]) ** 2;
-        if (a.kind === 'spot') {
-          const dot = a.dir[0] * b.dir[0] + a.dir[1] * b.dir[1] + a.dir[2] * b.dir[2];
-          cost *= 1 + 6 * (1 - dot);
-        }
-        cost *= 1 + Math.abs(Math.log(a.lumens / b.lumens)) * 0.3;
-        if (cost < best) { best = cost; bi = i; bj = j; }
-      }
-      const a = items[bi], b = items[bj], wa = a.lumens, wb = b.lumens, w = wa + wb;
-      const m = { ...a, lumens: w, pos: a.pos.map((v, k) => (v * wa + b.pos[k] * wb) / w), color: a.color.map((v, k) => (v * wa + b.color[k] * wb) / w), id: a.id + '+' + b.id, shadow: false };
-      if (a.kind === 'spot') {
-        let d = a.dir.map((v, k) => v * wa + b.dir[k] * wb);
-        const n = Math.hypot(...d) || 1; d = d.map(v => v / n);
-        const spread = Math.acos(P.clamp(a.dir[0] * b.dir[0] + a.dir[1] * b.dir[1] + a.dir[2] * b.dir[2], -1, 1)) / 2;
-        const sep = Math.hypot(a.pos[0] - b.pos[0], a.pos[2] - b.pos[2]);
-        const extra = spread + Math.atan(sep / 2 / Math.max(2, Math.abs(a.pos[1] - 0.8)));
-        const outer = Math.min(Math.PI / 2 - 0.02, Math.max(a.angle, b.angle) + extra);
-        const penumbra = Math.max(a.penumbra, b.penumbra);
-        const cone = { cosOuter: Math.cos(outer), cosInner: Math.cos(outer * (1 - penumbra)) };
-        Object.assign(m, { dir: d, angle: outer, penumbra, cosOuter: cone.cosOuter, cosInner: cone.cosInner, cd: w / P.coneSolidAngle(cone) });
-      } else m.cd = P.peakCandela(w);
-      items.splice(bj, 1); items.splice(bi, 1, m);
-    }
-    return items;
+  function chooseRenderEmitters(list, max) {
+    if (list.length <= max) return list;
+    const camera = renderCamera || church?.camera;
+    if (!camera) return list.slice(0, max);
+    const forward = camera.getWorldDirection(new T.Vector3());
+    const importance = e => {
+      const to = new T.Vector3(...e.pos).sub(camera.position);
+      // A spotlight outside the frame can still illuminate the visible wall
+      // or floor. Consider a point within its beam as well as its lens.
+      const target = to.clone();
+      if (e.dir) target.addScaledVector(new T.Vector3(...e.dir), 6);
+      const facing = Math.max(to.clone().normalize().dot(forward), target.clone().normalize().dot(forward));
+      const distance = Math.min(to.lengthSq(), target.lengthSq());
+      return (0.15 + 0.85 * Math.max(0, facing)) * Math.sqrt(e.lumens) / (4 + distance);
+    };
+    // Decorative pairs receive two slots together so a reduced budget does
+    // not leave just one side of a doorway casting light.
+    const groups = new Map();
+    list.forEach((e, index) => {
+      const key = e.pair || index;
+      if (!groups.has(key)) groups.set(key, { members: [], index, score: 0 });
+      const group = groups.get(key); group.members.push(e); group.score += importance(e);
+    });
+    const ranked = [...groups.values()].map(g => ({ ...g, score: g.score / g.members.length }))
+      .sort((a, b) => b.score - a.score || a.index - b.index);
+    const chosen = [];
+    for (const group of ranked) if (chosen.length + group.members.length <= max) chosen.push(...group.members);
+    return chosen;
   }
 
   /* ------------------------------------------------------ sources for audio */
@@ -1530,7 +1538,7 @@
     let best = null, bestD = Infinity;
     const inv = new T.Matrix4(), local = new T.Ray(), hit = new T.Vector3();
     for (const fx of fixtures.values()) {
-      if (fx.item.hidden) continue;
+      if (fx.item.hidden || !fx.root.visible) continue;
       inv.copy(fx.root.matrixWorld).invert();
       local.copy(ray).applyMatrix4(inv);
       const box = fx.proto.bounds.clone().expandByScalar(0.08);
@@ -1612,8 +1620,14 @@
       if (ev.button !== 0 || !ready) return;
       pointerDown = { x: ev.clientX, y: ev.clientY, time: performance.now() };
       if (placing) { ev.stopImmediatePropagation(); ev.preventDefault(); return; }
-      if (!state.settings.edit || !document.body.classList.contains('sim-open')) return;
-      const hit = pickFixture(rayFromEvent(ev));
+      if (!document.body.classList.contains('sim-open')) return;
+      const ray = rayFromEvent(ev), hit = pickFixture(ray);
+      const electricalHit = SIM.electrical?.pick(ray);
+      if (electricalHit && (!hit || electricalHit.distance < hit.distance - 0.18)) {
+        ev.stopImmediatePropagation(); ev.preventDefault();
+        SIM.electrical.select(electricalHit.id); return;
+      }
+      if (!state.settings.edit) return;
       if (!hit) return;
       ev.stopImmediatePropagation(); ev.preventDefault();
       const it = hit.fx.item;
@@ -1740,6 +1754,20 @@
       applyScene('Full service · evening', { record: false });
       alignDelays({ record: false });
     }
+    // Additive migration keeps the user's saved layout and circuit edits.
+    if (loaded && !state.settings.servicePanelsUpgraded && !state.items.some(it => it.type === 'servicePanel')) {
+      for (const raw of window.CHURCH_SIM_DESIGN.recommended(GEO, SIM).filter(it => it.type === 'servicePanel')) addItem({ ...raw, on: SCENES[state.scene]?.L3 > 0 }, { record: false });
+    }
+    state.settings.servicePanelsUpgraded = true;
+    const D = window.CHURCH_SIM_DESIGN;
+    if (loaded && state.settings.lightingRevision !== D.lightingRevision) {
+      const previous = exportLayout();
+      try { localStorage.setItem(STORAGE_KEY + '.before-lighting-review', JSON.stringify(previous)); } catch {}
+      const items = D.upgradeLighting(state.items, D.recommended(GEO, SIM), SCENES[state.scene]);
+      importLayout({ ...previous, items }, { record: false });
+    }
+    state.settings.lightingRevision = D.lightingRevision;
+    saveNow();
     lastSnapshot = snapshot();
     installPointer();
     new MutationObserver(applyEnvironment).observe(document.body, { attributes: true, attributeFilter: ['data-lighting'] });
@@ -1783,7 +1811,10 @@
     const outside = camera ? !isCovered([camera.position.x, camera.position.y, camera.position.z]) || camera.position.y > 14 : false;
     if (outside !== viewOutside) { viewOutside = outside; lightDirty = true; }
     const now = performance.now();
-    if (lightDirty && now - lastPoolUpdate > 60) { lightDirty = false; lastPoolUpdate = now; updatePool(); }
+    renderCamera = camera;
+    if (camera && now - lastPoolUpdate > 250 && (!lastPoolView ||
+      camera.position.distanceToSquared(lastPoolView.pos) > 0.25 || Math.abs(camera.quaternion.dot(lastPoolView.rotation)) < 0.999)) lightDirty = true;
+    if (lightDirty && (now - lastPoolUpdate > 60 || !pool?.stats)) { lightDirty = false; lastPoolUpdate = now; updatePool(); }
     updateHalos(camera);
     if (selectionHelper && drag) selectionHelper.visible = true;
     emit('frame', { dt, mode, camera });
