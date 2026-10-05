@@ -152,6 +152,16 @@
       return true;
     }
     function segWall(a, b, w) {
+      if (w.x !== undefined) {
+        // Wall in a constant-x plane (the entrance façade), openings in z/y.
+        const ax = a[0] - w.x, bx = b[0] - w.x;
+        if ((ax > 0) === (bx > 0) || Math.abs(ax - bx) < 1e-9) return false;
+        const t = ax / (ax - bx);
+        const z = a[2] + (b[2] - a[2]) * t, y = a[1] + (b[1] - a[1]) * t;
+        if (z < w.z0 || z > w.z1 || y < w.y0 || y > w.y1) return false;
+        for (const o of w.openings) if (z >= o.z0 && z <= o.z1 && y >= o.y0 && y <= o.y1) return false;
+        return true;
+      }
       const da = a[2] - w.z, dbz = b[2] - w.z;
       if ((da > 0) === (dbz > 0) || Math.abs(da - dbz) < 1e-9) return false;
       const t = da / (da - dbz);

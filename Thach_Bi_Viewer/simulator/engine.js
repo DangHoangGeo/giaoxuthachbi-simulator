@@ -138,6 +138,10 @@
       }).filter(o => o.x1 > x0 && o.x0 < x1);
       GEO.walls.push({ z: s * 7.25, x0, x1, y0: -0.4, y1: 7.13, openings });
     }
+    // Entrance façade (plane inside the wall, inner face at x 2.65): solid apart from the main door and
+    // the two side doors, all open in the model's default state.
+    GEO.walls.push({ x: 2.5, z0: -7.25, z1: 7.25, y0: -0.4, y1: 12.5, openings: [
+      { z0: -1.25, z1: 1.25, y0: -0.4, y1: 4.6 }, { z0: -6.1, z1: -4.9, y0: -0.4, y1: 3.6 }, { z0: 4.9, z1: 6.1, y0: -0.4, y1: 3.6 }] });
     GEO.occluders = P.buildOccluders({
       columns: GEO.columns.map(c => ({ x: c.x, z: c.z, r: c.r, y0: 0, y1: 9.4 })),
       boxes: GEO.columns.map(c => ({ min: [c.x - 0.41, 0, c.z - 0.41], max: [c.x + 0.41, 0.6, c.z + 0.41] })),
