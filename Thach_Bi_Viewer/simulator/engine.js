@@ -42,10 +42,13 @@
     F1: { label: 'F1 · Ceiling fans', cat: 'fan' },
     F2: { label: 'F2 · Wall fans', cat: 'fan' },
     F3: { label: 'F3 · Portable fans', cat: 'fan' },
+    F4: { label: 'F4 · Entrance circulators (trial)', cat: 'fan' },
+    V1: { label: 'V1 · Exhaust ventilation', cat: 'fan' },
     A1: { label: 'A1 · Main & delay loudspeakers', cat: 'speaker' },
     A2: { label: 'A2 · Veranda fill', cat: 'speaker' },
     A3: { label: 'A3 · Courtyard', cat: 'speaker' },
     A4: { label: 'A4 · Choir monitors', cat: 'speaker' },
+    A5: { label: 'A5 · Rear fill (crowded feasts)', cat: 'speaker' },
     MIC: { label: 'Microphones', cat: 'speaker' },
     DECOR: { label: 'Decoration', cat: 'decor' }
   };
@@ -651,12 +654,14 @@
   }
 
   /* Assign emitters to the fixed renderer pool, clustering when over budget. */
-  let interiorFlux = 0, poolScale = 0;
+  let interiorFlux = 0, poolScale = 0, viewOutside = false;
   function updatePool() {
     if (!pool) return;
     const all = lightEmitters();
     interiorFlux = all.reduce((s, e) => s + (e.interior ? e.lumens : 0), 0);
-    const emitters = all.filter(e => e.lumens >= 60);
+    // From outside, interior fittings are hidden by the walls and roof; from
+    // inside, the façade floods do not reach the nave. Draw the side in view.
+    const emitters = all.filter(e => e.lumens >= 60 && (viewOutside ? !e.interior : e.interior || e.kind === 'point'));
     const wantShadow = emitters.filter(e => e.kind === 'spot' && e.shadow).sort((a, b) => b.cd - a.cd);
     const shadowSet = new Set(wantShadow.slice(0, pool.shadows.length));
     const spots = cluster(emitters.filter(e => e.kind === 'spot' && !shadowSet.has(e)), pool.spots.length);
@@ -803,7 +808,7 @@
       const sp = f.speeds[Math.max(0, Math.min(f.speeds.length - 1, (it.speed ?? 2) - 1))];
       const running = it.on && (it.speed ?? 2) > 0;
       const pos = f.kind === 'ceiling' ? [it.pos[0], it.pos[1] - (f.rotorDrop || 0.17), it.pos[2]] : emitterWorld(fx, { pos: [0.1, 0, 0], head: true });
-      out.push({ id: it.id, item: it, running, kind: f.kind, pos, diameter: f.diameter, flow: running ? sp.flow : 0, watts: running ? sp.watts : 0, dBA: running ? sp.dBA : 0, rpm: running ? sp.rpm : 0,
+      out.push({ id: it.id, item: it, running, kind: f.exhaust ? 'exhaust' : f.kind, pos, diameter: f.diameter, flow: running ? sp.flow : 0, watts: running ? sp.watts : 0, dBA: running ? sp.dBA : 0, rpm: running ? sp.rpm : 0,
         yaw: (it.yaw ?? 0) * DEG, tilt: (it.tilt ?? 0) * DEG, oscillate: f.oscillate && it.oscillate !== false, sweepDeg: f.sweepDeg || 0, floorY: floorY(it.pos[0], it.pos[2]) });
     }
     return out;
@@ -1708,6 +1713,9 @@
       }
       if (fx.type.flicker && fx.lit()) fx.flicker = 0.88 + 0.12 * Math.abs(Math.sin(timeNow * 13.1 + fx.root.id) * Math.sin(timeNow * 7.3 + fx.root.id * 0.7));
     }
+    // Spend the light budget where the viewer is: inside or outside the church.
+    const outside = camera ? !isCovered([camera.position.x, camera.position.y, camera.position.z]) || camera.position.y > 14 : false;
+    if (outside !== viewOutside) { viewOutside = outside; lightDirty = true; }
     const now = performance.now();
     if (lightDirty && now - lastPoolUpdate > 60) { lightDirty = false; lastPoolUpdate = now; updatePool(); }
     updateHalos(camera);

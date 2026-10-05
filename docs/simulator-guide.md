@@ -255,3 +255,45 @@ posts and walls. A structural engineer has to size the members and the
 pegged or bolted joints, and decide how that thrust is resisted. Options are
 a slim steel tie rod at plate level, steel flitch plates in the joints, or
 moment-resisting post heads. Member sections in this version are visual.
+
+## Fans, ventilation, speakers and tower lighting (October 2026 revision)
+
+Fans and ventilation:
+- **Ceiling fans (F1).** A pair in the back bay by the towers (2′–3) and two in
+  each 9–10 wing over the benches, in addition to the side-aisle fans.
+- **Wall fans (F2, optional, hidden).** Six small oscillating fans on the
+  side-wall pilasters at axes 4, 6 and 8, above the sconces. Show them for
+  very hot days. Tested at low speed, they lift seated air speed from 0.36 to
+  0.38 m/s, but raise background noise to about 46 dBA. Seats reaching STI
+  0.60 then fall from 77 % to 66 %.
+- **Entrance circulators (F4, trial, off).** Two 90 cm wall circulators on
+  the inside of the entrance wall, blowing down the nave. Test result:
+  - at medium speed: average seated air 0.41 m/s (from 0.36), noise 50 dBA,
+    STI ≥ 0.60 at only about 45 % of seats
+  - at low speed: air 0.39 m/s, STI ≥ 0.60 at 66 % of seats
+
+  Use them before and after Mass, not during speech.
+- **Exhaust ventilation (V1).** The fans draw out the hot air under the roof;
+  fresh air enters through the open doors and windows. At low speed they move
+  about 26 000 m³/h, roughly 3.5 air changes per hour of the hall. Fan
+  positions:
+  - four high in the front gable
+  - two in each wing gable
+  - one in the service room
+
+Speakers:
+- **Rear fill (A5, off by default).** Two slim columns on the inside of the
+  entrance wall by the towers, for crowded feasts. With them on, clarity in
+  the nave drops by several points, because they add reverberant sound.
+- **Outdoor (A3, festivals).** A second horn on each tower front, and two
+  horns on each side's outer arcade piers (axes 5 and 8).
+
+Exterior lighting (L6):
+- **Fittings.** Each tower stage has one wide centred flood from the cornice
+  below it: stage 2 from +8.39 m, stage 3 from +15.84 m, and the belfry and
+  dome from +23.14 m. Each tower also has a warm belfry glow inside and a
+  wash on its outer side face. The central gable is lit from the inner tower
+  corners.
+- **Light budget.** The viewer gives its limited light budget to the side
+  you are looking from: the exterior floods when the camera is outside, the
+  interior lights when inside. The analysis always counts every light.

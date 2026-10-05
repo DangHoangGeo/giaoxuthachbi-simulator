@@ -285,6 +285,46 @@
     k.pivots.head = [0.06, 0.04, 0];
     fanHead(k);
   }
+  // Large wall-mounted circulator (≈90 cm): steel bracket, deep guard, 5 blades.
+  function buildLargeWallFan(k) {
+    const R = 0.47;
+    k.box(0.06, 0.5, 0.16, 'steel', { p: [0.03, 0, 0] });
+    k.box(0.32, 0.06, 0.08, 'steel', { p: [0.2, -0.12, 0] });
+    k.pivots.osc = [0.36, -0.12, 0];
+    k.pivots.head = [0.1, 0.12, 0];
+    k.in('head', () => {
+      k.cyl(0.15, 0.14, 0.26, 'steel', { p: [-0.1, 0, 0], r: [0, 0, -PI / 2] }, 18);
+      for (const x of [0.06, 0.3]) k.tor(R, 0.009, 'steel', { p: [x, 0, 0], r: [0, PI / 2, 0] }, 2 * PI, 4, 40);
+      ring(18, (i, a) => k.tube([[0.06, Math.cos(a) * R, Math.sin(a) * R], [0.22, Math.cos(a) * R * 0.6, Math.sin(a) * R * 0.6], [0.3, 0, 0]], 0.004, 'steel', {}, 6, 3));
+      ring(18, (i, a) => k.rod([0.06, Math.cos(a) * R, Math.sin(a) * R], [-0.02, Math.cos(a) * R * 0.35, Math.sin(a) * R * 0.35], 0.004, 'steel', 4));
+    });
+    k.rotorAxis = 'x';
+    k.pivots.rotor = [0.18, 0, 0];
+    k.in('rotor', () => {
+      k.cyl(0.07, 0.07, 0.08, 'steel', { r: [0, 0, -PI / 2] }, 14);
+      ring(5, (i, a) => {
+        const q = new k.T.Quaternion().setFromEuler(new k.T.Euler(a, 0, deg(22), 'XYZ'));
+        const off = new k.T.Vector3(0, 0.24, 0).applyEuler(new k.T.Euler(a, 0, 0));
+        k.box(0.016, 0.38, 0.2, 'steel', { p: off.toArray(), q });
+      });
+    });
+  }
+  // Wall exhaust (ventilation) fan, 50 cm, with weather louvres outside.
+  function buildExhaustFan(k) {
+    k.box(0.08, 0.62, 0.62, 'white', { p: [0.04, 0, 0] });
+    k.box(0.02, 0.54, 0.54, 'grilleWhite', { p: [0.085, 0, 0] });
+    for (let i = -2; i <= 2; i++) k.box(0.025, 0.012, 0.54, 'white', { p: [0.1, i * 0.1, 0] });
+    k.rotorAxis = 'x';
+    k.pivots.rotor = [0.05, 0, 0];
+    k.in('rotor', () => {
+      k.cyl(0.05, 0.05, 0.04, 'white', { r: [0, 0, -PI / 2] }, 12);
+      ring(5, (i, a) => {
+        const q = new k.T.Quaternion().setFromEuler(new k.T.Euler(a, 0, deg(25), 'XYZ'));
+        const off = new k.T.Vector3(0, 0.13, 0).applyEuler(new k.T.Euler(a, 0, 0));
+        k.box(0.01, 0.2, 0.12, 'grilleWhite', { p: off.toArray(), q });
+      });
+    });
+  }
   function buildPedestalFan(k) {
     k.cyl(0.24, 0.27, 0.05, 'white', { p: [0, 0.025, 0] }, 24);
     k.cyl(0.018, 0.022, 1.12, 'white', { p: [0, 0.6, 0] }, 10);
@@ -586,6 +626,12 @@
     { id: 'fanWall', cat: FAN, family: 'Wall', name: 'Wall fan · oscillating 45 cm', mounts: ['wall'], aim: true, defaultHeight: 2.8, defaultTilt: -22, circuit: 'F2',
       desc: 'Common on church columns in Việt Nam. Louder; aim it at people, not microphones or candles.',
       fan: { kind: 'jet', diameter: 0.45, oscillate: true, sweepDeg: 80, speeds: [{ flow: 0.45, watts: 35, dBA: 47, rpm: 900 }, { flow: 0.6, watts: 45, dBA: 52, rpm: 1100 }, { flow: 0.75, watts: 55, dBA: 57, rpm: 1300 }] }, build: buildWallFan },
+    { id: 'fanWallLarge', cat: FAN, family: 'Wall', name: 'Large wall circulator · 90 cm', mounts: ['wall'], aim: true, defaultHeight: 4.5, defaultTilt: -8, circuit: 'F4',
+      desc: 'Industrial wall circulator, long throw down the nave. Loud at high speed; test before buying.',
+      fan: { kind: 'jet', diameter: 0.9, oscillate: false, sweepDeg: 0, speeds: [{ flow: 2.2, watts: 160, dBA: 52, rpm: 450 }, { flow: 3.2, watts: 260, dBA: 58, rpm: 650 }, { flow: 4.2, watts: 380, dBA: 64, rpm: 850 }] }, build: buildLargeWallFan },
+    { id: 'fanExhaust', cat: FAN, family: 'Ventilation', name: 'Exhaust (ventilation) fan · 50 cm', mounts: ['wall'], defaultHeight: 6, circuit: 'V1',
+      desc: 'Extracts the hot air that collects under the roof; fresh air enters through the open doors and windows. Rated by air changes, not by draught on people.',
+      fan: { kind: 'jet', exhaust: true, diameter: 0.5, oscillate: false, sweepDeg: 0, speeds: [{ flow: 0.8, watts: 60, dBA: 40, rpm: 900 }, { flow: 1.2, watts: 110, dBA: 46, rpm: 1300 }, { flow: 1.6, watts: 170, dBA: 52, rpm: 1700 }] }, build: buildExhaustFan },
     { id: 'fanPedestal', cat: FAN, family: 'Portable', name: 'Pedestal fan · 45 cm', mounts: ['floor'], aim: true, defaultTilt: -5, circuit: 'F3',
       desc: 'Temporary fan for festivals and overflow areas.',
       fan: { kind: 'jet', diameter: 0.45, oscillate: true, sweepDeg: 80, speeds: [{ flow: 0.45, watts: 35, dBA: 46, rpm: 900 }, { flow: 0.6, watts: 45, dBA: 51, rpm: 1100 }, { flow: 0.75, watts: 55, dBA: 56, rpm: 1300 }] }, build: buildPedestalFan },

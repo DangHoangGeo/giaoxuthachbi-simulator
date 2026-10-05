@@ -331,6 +331,12 @@
       const v = P.fanAirSpeed(f, [o.pos[0], o.pos[1] + 0.4, o.pos[2]]);
       if (v > 0.35) add('warn', 'Fan blows at ' + (CAT.byId[o.type].mic ? 'a microphone' : 'candles'), `${SIM.item(f.id).name} reaches ${o.name} at ≈${v.toFixed(1)} m/s (wind noise / flame flicker).`, [f.id, o.id]);
     }
+    // Ventilation: exhaust fans by air changes per hour of the hall volume.
+    const exhaust = fans.filter(f => CAT.byId[SIM.item(f.id).type]?.fan?.exhaust);
+    if (exhaust.length) {
+      const q = exhaust.reduce((t, f) => t + f.flow, 0) * 3600, V = SIM.room?.()?.V || 7456;
+      add('info', 'Ventilation', `${exhaust.length} exhaust fans move ≈${Math.round(q).toLocaleString('en')} m³/h ≈ ${(q / V).toFixed(1)} air changes per hour (comfort target in a hot climate with people: 4–6).`, exhaust.map(f => f.id));
+    }
     // 5. Results-based notes.
     const s = latest.seats;
     if (s) {

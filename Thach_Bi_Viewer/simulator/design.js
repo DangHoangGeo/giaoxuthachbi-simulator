@@ -51,8 +51,8 @@
     // entrance aisle (solid wall between the main door and the side doors).
     for (const z of [-4.2, 4.2]) {
       const s = Math.sign(z);
-      const p = [facadeX, 6.4, z], a = aim(p, [7.8, 0.8, s * 5.0]);
-      add({ type: 'projector36', name: `Rear rows light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: p, mountYaw: 0, yaw: a.yaw, tilt: a.tilt, lumens: 6000, beam: 55 });
+      const p = [facadeX, 3.45, z], a = aim(p, [8.2, 0.8, s * 5.0]);
+      add({ type: 'projector36', name: `Rear rows light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: p, mountYaw: 0, yaw: a.yaw, tilt: a.tilt, lumens: 6000, beam: 44 });
       const q = [facadeX, 5.95, z], b = aim(q, [6.2, 0.8, s * 1.2]);
       add({ type: 'projector36', name: `Rear centre light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: q, mountYaw: 0, yaw: b.yaw, tilt: b.tilt, lumens: 3300, beam: 50 });
     }
@@ -122,7 +122,15 @@
       for (const z of [8.5, 11.9]) add({ type: 'wallLantern', name: `Tower lantern · ${side(s)} · ${z < 10 ? 'inner' : 'outer'}`, circuit: 'L5', mount: 'wall', pos: [z < 10 ? -0.37 : -0.16, 2.6, s * z], yaw: 180, mountYaw: 180 });
       add({ type: 'wallLantern', name: `Side door lantern · ${side(s)}`, circuit: 'L5', mount: 'wall', pos: [15.3, 2.25, s * 10.55], yaw: s * 90, mountYaw: s * 90 });
       // Tower faces washed upward from the +8.39 m cornice ledge.
-      for (const dz of [-1.2, 1.2]) ledgeFlood(`Tower uplight · ${side(s)} · ${dz * s < 0 ? 'inner' : 'outer'}`, 'L6', [ledge, 8.4, s * TZ + dz], [-0.4, 22, s * TZ + dz], 15, 6000);
+      // One wide flood per stage, centred, so each face is lit evenly (no ground fittings).
+      ledgeFlood(`Tower stage 2 flood · ${side(s)}`, 'L6', [ledge, 8.4, s * TZ], [0.1, 13.5, s * TZ], 32, 9000);
+      // Upper tower stages: from the stage-2 cornice (+15.84 m) onto stage 3, and
+      // from the +23.14 m ledge onto the belfry and dome; the belfry glows from
+      // inside; the outer side face is washed from the stage-1 cornice.
+      ledgeFlood(`Tower stage 3 flood · ${side(s)}`, 'L6', [TX - 4.72 / 2 - 0.08, 15.88, s * TZ], [0.2, 20.6, s * TZ], 30, 8000);
+      ledgeFlood(`Belfry & dome flood · ${side(s)}`, 'L6', [0.15, 23.2, s * TZ], [0.6, 28.5, s * TZ], 30, 8000);
+      add({ type: 'uplight', name: `Belfry glow · ${side(s)}`, circuit: 'L6', mount: 'floor', pos: [TX, 23.2, s * TZ], yaw: 0, mountYaw: 0, tilt: 90, lumens: 2500, cct: 2700 });
+      ledgeFlood(`Tower side wash · ${side(s)}`, 'L6', [TX, 8.4, s * (TZ + 2.62)], [TX, 15.5, s * (TZ + 2.4)], 30, 5000);
       // The doors and lower façade between the towers, from the inner tower corners.
       ledgeFlood(`Façade wash · ${side(s)}`, 'L6', [ledge, 8.4, s * 7.9], [2.4, 2.5, s * 1.5], 50, 6000);
     }
@@ -144,23 +152,42 @@
         for (const e of [-1, 1]) strand(`tower ${side(s)} · stage ${i + 1} · ${e < 0 ? 'inner' : 'outer'} corner`, [2.45 - u / 2 - 0.4, (y0 + y1) / 2, s * (10.153 + e * (d / 2 - 0.12))], 0, y1 - y0 - 0.6, 90, 'wall', 180);
       });
       // Belfry and dome lit from the +23.14 m ledge of each tower.
-      for (const dz of [-1.4, 1.4]) ledgeFlood(`Festival flood · tower top ${side(s)} ${dz * s < 0 ? 'inner' : 'outer'}`, 'L7', [0.15, 23.2, s * TZ + dz], [0.8, 31, s * TZ + dz * 0.4], 25, 7000, false);
     }
     strand('front terrace between the towers', [2.15, 8.5, 0], 0, 14.8);
     for (const s of [-1, 1]) {
       // Rear gable from the rear corners of the veranda roofs.
       ledgeFlood(`Festival flood · rear gable ${side(s)}`, 'L7', [52.6, 6.55, s * 9.8], [53.3, 12.5, s * 1.5], 40, 9000, false);
     }
-    for (const s of [-1, 1]) ledgeFlood(`Festival flood · central shrine · ${side(s)}`, 'L7', [3.6, 8.39, s * 2.6], [2.4, 15.5, 0], 20, 4000, false);
+    for (const s of [-1, 1]) ledgeFlood(`Central gable flood · ${side(s)}`, 'L6', [ledge, 8.4, s * 7.75], [2.2, 13.5, -s * 0.8], 26, 4500);
 
     // Fans · 1.42 m ceiling fans mid-bay over the two side aisles (between the
     // centre and outer blocks): the 30°/40° reading beams miss the blades, and
     // nothing hangs over the processional aisle.
-    for (const k of ['3', '4', '5', '6', '7', '8']) for (const s of [-1, 1]) {
-      const x = A[k] + 2.25, z = s * 4.4;
-      add({ type: 'fanCeiling', name: `Ceiling fan · bay ${k}–${Number(k) + 1} · ${side(s)} aisle`, circuit: 'F1', mount: 'pendant', pos: [x, 3.9, z], anchorY: lining(z) - 0.06, yaw: 0, mountYaw: 0, speed: 2,
+    for (const k of ['2′', '3', '4', '5', '6', '7', '8']) for (const s of [-1, 1]) {
+      const x = k === '2′' ? (A['2′'] + A['3']) / 2 : A[k] + 2.25, z = s * 4.4, bay = k === '2′' ? '2′–3' : `${k}–${Number(k) + 1}`;
+      add({ type: 'fanCeiling', name: `Ceiling fan · bay ${bay} · ${side(s)} aisle`, circuit: 'F1', mount: 'pendant', pos: [x, 3.9, z], anchorY: lining(z) - 0.06, yaw: 0, mountYaw: 0, speed: 2,
         note: 'Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.' });
     }
+
+    // Wings at 9–10 (choir and ministers' benches): two fans each under the gabled roof.
+    for (const s of [-1, 1]) for (const x of [39.3, 41.85]) {
+      add({ type: 'fanCeiling', name: `Ceiling fan · wing ${side(s)} · ${x < 40.5 ? 'front' : 'rear'}`, circuit: 'F1', mount: 'pendant', pos: [x, 3.3, s * 10.15], anchorY: above(x, s * 10.15, 3.3), yaw: 0, mountYaw: 0, speed: 2 });
+    }
+    // Optional: small oscillating wall fans on the side-wall pilasters, above the
+    // sconces, for the hottest days. Hidden until shown (F2).
+    for (const k of ['4', '6', '8']) for (const s of [-1, 1]) {
+      add({ type: 'fanWall', name: `Wall fan · axis ${k} · ${side(s)}`, circuit: 'F2', mount: 'wall', pos: [A[k], 5.0, s * 7.07], yaw: -s * 90, mountYaw: -s * 90, tilt: -32, speed: 1, hidden: true });
+    }
+    // Trial: two large circulators on the inside of the entrance wall, blowing
+    // down the nave (F4, off). Compare the air map with them on and off.
+    for (const s of [-1, 1]) add({ type: 'fanWallLarge', name: `Entrance circulator · ${side(s)}`, circuit: 'F4', mount: 'wall', pos: [2.72, 5.2, s * 4.6], yaw: 0, mountYaw: 0, tilt: -6, speed: 2, on: false });
+    // Ventilation: exhaust fans draw out the hot air that collects under the
+    // roof; fresh air comes in through the doors and windows (V1). Four high
+    // in the front gable, two in the end gable of each 9–10 wing, and one over
+    // the service room behind the sanctuary wall.
+    for (const z of [-3.4, -1.6, 1.6, 3.4]) add({ type: 'fanExhaust', name: `Exhaust fan · front gable · ${side(z)} ${Math.abs(z) > 2 ? 'outer' : 'inner'}`, circuit: 'V1', mount: 'wall', pos: [5.5, 9.7, z], yaw: 0, mountYaw: 0, speed: 1 });
+    for (const s of [-1, 1]) for (const x of [39.7, 41.45]) add({ type: 'fanExhaust', name: `Exhaust fan · wing gable ${side(s)} · ${x < 40.5 ? 'front' : 'rear'}`, circuit: 'V1', mount: 'wall', pos: [x, 7.6, s * 13.13], yaw: -s * 90, mountYaw: -s * 90, speed: 1 });
+    add({ type: 'fanExhaust', name: 'Exhaust fan · service room', circuit: 'V1', mount: 'wall', pos: [53.12, 3.3, 0], yaw: 180, mountYaw: 180, speed: 1 });
 
     // Loudspeakers · a discreet distributed system: slim 0.6 m columns painted
     // the wall colour on the side-wall pilasters (axes 4–9), between the Stations
@@ -170,6 +197,12 @@
     for (const k of ['4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) {
       add({ type: 'slimColumn', name: `Wall speaker · axis ${k} · ${side(s)}`, circuit: 'A1', mount: 'wall', pos: [A[k], 3.35, s * 7.07], yaw: -s * 140, mountYaw: -s * 90, tilt: -18, level: -6, delayMs: 0 });
     }
+    // Back of the church, by the towers: two slim columns on the inside of the
+    // entrance wall, aimed steeply at the entrance hall and the last rows.
+    for (const s of [-1, 1]) {
+      const p = [2.72, 3.6, s * 5.9], a = aim(p, [7.5, 1.2, s * 4.8]);
+      add({ type: 'slimColumn', name: `Wall speaker · entrance hall · ${side(s)}`, circuit: 'A5', mount: 'wall', pos: p, yaw: a.yaw, mountYaw: 0, tilt: a.tilt, level: -9, delayMs: 0, on: false });
+    }
     for (const s of [-1, 1]) for (const x of [12.225, 25.725]) {
       add({ type: 'pendantSpeaker', name: `Veranda fill · ${side(s)} · ${x.toFixed(1)}`, circuit: 'A2', mount: 'pendant', pos: [x, 3.9, s * 8.85], anchorY: above(x, s * 8.85, 3.9), yaw: 0, mountYaw: 0, tilt: -90, level: -7 });
     }
@@ -177,6 +210,14 @@
       // On the tower fronts (x −0.14), beside the recessed central façade.
       const p = [-0.14, 6.2, s * 8.3], a = aim(p, [-24, 0, s * 5]);
       add({ type: 'horn', name: `Courtyard horn · ${side(s)}`, circuit: 'A3', mount: 'wall', pos: p, yaw: a.yaw, mountYaw: 180, tilt: a.tilt, level: -4, on: false });
+      // A second horn on each tower, on the outer half of its front.
+      const q = [-0.14, 6.2, s * 11.9], b = aim(q, [-24, 0, s * 15]);
+      add({ type: 'horn', name: `Tower horn · ${side(s)} · outer`, circuit: 'A3', mount: 'wall', pos: q, yaw: b.yaw, mountYaw: 180, tilt: b.tilt, level: -4, on: false });
+      // Two on each side, on the outer arcade piers, for the side courtyards.
+      for (const k of ['5', '8']) {
+        const r = [A[k], 5.6, s * 10.75], c = aim(r, [A[k], 0, s * 22]);
+        add({ type: 'horn', name: `Side courtyard horn · axis ${k} · ${side(s)}`, circuit: 'A3', mount: 'wall', pos: r, yaw: c.yaw, mountYaw: s * 90, tilt: c.tilt, level: -6, on: false });
+      }
     }
     add({ type: 'mic', name: 'Ambo microphone', circuit: 'MIC', mount: 'floor', pos: [42.36, 1.9, -2.62], yaw: 0, mountYaw: 0 });
     add({ type: 'mic', name: 'Altar microphone', circuit: 'MIC', mount: 'floor', pos: [44.45, 1.88, 0.45], yaw: 0, mountYaw: 0 });
@@ -207,5 +248,5 @@
 
   // Bump when the recommended design changes: browsers holding a layout saved
   // from an older version then load the new design (the old one is kept aside).
-  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-11-clear-service-doors' };
+  window.CHURCH_SIM_DESIGN = { recommended, aim, version: '2026-10-12-fans-speakers-towers' };
 })();

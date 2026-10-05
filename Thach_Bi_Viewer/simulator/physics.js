@@ -501,7 +501,7 @@
   // Occupied-zone air speed (m/s) at p from one fan. fan: {kind:'ceiling'|'jet',
   // pos, diameter, flow (m³/s), floorY, yaw, tilt (rad), oscillate, sweepDeg}.
   P.fanAirSpeed = function (fan, p, blockage = 1) {
-    if (!fan.flow || fan.flow <= 0) return 0;
+    if (!fan.flow || fan.flow <= 0 || fan.kind === 'exhaust') return 0; // exhaust fans ventilate; no draught at seats
     const D = fan.diameter, u0 = fan.flow / (PI * D * D / 4);
     if (fan.kind === 'ceiling') {
       const r = Math.hypot(p[0] - fan.pos[0], p[2] - fan.pos[2]);
