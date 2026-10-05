@@ -352,3 +352,13 @@ Still to do:
 - **Entrance façade added to the sound and light model**, with its main door and two side doors as openings. Before this, the tower horns and the exterior floods reached the nave straight through the solid façade. The front-row seats now come out a little darker (the darkest at about 194 lux); that is the accurate figure.
 - **Christmas & festivals now runs indoors only:** courtyard horns off, rear fill off, ceiling fans at speed 2. Result: no echo seats, at least 3.1 dB feedback margin, 58 % of seats at STI ≥ 0.60 (was 0 %).
 - **New scene "Festival · courtyard overflow"** switches the courtyard horns on. Use it only when people are standing outside: the horns' sound returns through the open windows late enough to blur speech for those inside.
+
+## Two control boards (2026-10-16)
+- **DB-1 · Main board**, in the service room behind the altar, has the 63 A main switch. Its breakers are grouped by area:
+  - Nave: L1, L2, LA, LD
+  - Sanctuary & wings: L3, L8
+  - Verandas & paths: L4, L5, E1
+  - Fans, ventilation and the sound amplifier rack
+- **DB-2 · Towers & entrance**, a small sub-board inside the main doors on the entrance wall, left of the main door. It is fed by one cable from DB-1 and switches the tower and façade floods (L6), the festival exterior lights (L7) and the entrance circulators (F4). It has three buttons: *Towers off*, *Towers · evening* (L6) and *Towers · festival* (L6 + L7).
+- **Cable saving:** short circuit runs from the front of the church replace long ones to the altar end. The Controls tab shows the estimated saving in metres.
+- **Breakers:** each one shows its rating (C-curve, sized for the full load at ≤ 80 %), its current now and a plain-language name.

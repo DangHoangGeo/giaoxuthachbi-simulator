@@ -28,30 +28,38 @@
   let envMode = 'day', cameraInside = 0, ambientNow = 0, adaptNow = 160, timeNow = 0;
 
   const CIRCUITS = {
-    L1: { label: 'L1 · Central seating', cat: 'light' },
-    L2: { label: 'L2 · Outer seating', cat: 'light' },
-    L3: { label: 'L3 · Sanctuary', cat: 'light' },
-    L4: { label: 'L4 · Circulation & verandas', cat: 'light' },
-    LA: { label: 'LA · Roof uplight', cat: 'light' },
-    LD: { label: 'LD · Chandeliers & sconces', cat: 'light' },
-    L5: { label: 'L5 · Steps & paths', cat: 'light' },
-    L8: { label: 'L8 · Wings · choir & ministers', cat: 'light' },
-    L6: { label: 'L6 · Façade & towers', cat: 'light' },
-    L7: { label: 'L7 · Festival exterior (strings & tower floods)', cat: 'light' },
-    E1: { label: 'E1 · Exit signs', cat: 'light' },
-    X1: { label: 'X1 · Festival lighting', cat: 'decor' },
-    F1: { label: 'F1 · Ceiling fans', cat: 'fan' },
-    F2: { label: 'F2 · Wall fans', cat: 'fan' },
-    F3: { label: 'F3 · Portable fans', cat: 'fan' },
-    F4: { label: 'F4 · Entrance circulators (trial)', cat: 'fan' },
-    V1: { label: 'V1 · Exhaust ventilation', cat: 'fan' },
-    A1: { label: 'A1 · Main & delay loudspeakers', cat: 'speaker' },
-    A2: { label: 'A2 · Veranda fill', cat: 'speaker' },
-    A3: { label: 'A3 · Courtyard', cat: 'speaker' },
-    A4: { label: 'A4 · Choir monitors', cat: 'speaker' },
-    A5: { label: 'A5 · Rear fill (crowded feasts)', cat: 'speaker' },
-    MIC: { label: 'Microphones', cat: 'speaker' },
+    L1: { label: 'L1 · Central seating', cat: 'light', board: 'DB1', area: 'Nave' },
+    L2: { label: 'L2 · Outer seating', cat: 'light', board: 'DB1', area: 'Nave' },
+    L3: { label: 'L3 · Sanctuary', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' },
+    L4: { label: 'L4 · Circulation & verandas', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
+    LA: { label: 'LA · Roof uplight', cat: 'light', board: 'DB1', area: 'Nave' },
+    LD: { label: 'LD · Chandeliers & sconces', cat: 'light', board: 'DB1', area: 'Nave' },
+    L5: { label: 'L5 · Steps & paths', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
+    L8: { label: 'L8 · Wings · choir & ministers', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' },
+    L6: { label: 'L6 · Façade & towers', cat: 'light', board: 'DB2', area: 'Towers & façade' },
+    L7: { label: 'L7 · Festival exterior (strings & tower floods)', cat: 'light', board: 'DB2', area: 'Towers & façade' },
+    E1: { label: 'E1 · Exit signs', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
+    X1: { label: 'X1 · Festival lighting', cat: 'decor', board: 'DB1' },
+    F1: { label: 'F1 · Ceiling fans', cat: 'fan', board: 'DB1' },
+    F2: { label: 'F2 · Wall fans', cat: 'fan', board: 'DB1' },
+    F3: { label: 'F3 · Portable fans', cat: 'fan', board: 'DB1' },
+    F4: { label: 'F4 · Entrance circulators (trial)', cat: 'fan', board: 'DB2' },
+    V1: { label: 'V1 · Exhaust ventilation', cat: 'fan', board: 'DB1' },
+    A1: { label: 'A1 · Main & delay loudspeakers', cat: 'speaker', board: 'DB1' },
+    A2: { label: 'A2 · Veranda fill', cat: 'speaker', board: 'DB1' },
+    A3: { label: 'A3 · Courtyard', cat: 'speaker', board: 'DB1' },
+    A4: { label: 'A4 · Choir monitors', cat: 'speaker', board: 'DB1' },
+    A5: { label: 'A5 · Rear fill (crowded feasts)', cat: 'speaker', board: 'DB1' },
+    MIC: { label: 'Microphones', cat: 'speaker', board: 'DB1' },
     DECOR: { label: 'Decoration', cat: 'decor' }
+  };
+  // Two boards. DB-1 in the service room behind the altar feeds everything
+  // inside; DB-2, a small sub-board just inside the main doors, is fed by one
+  // cable from DB-1 and switches the circuits at the front of the church, so
+  // those long circuit runs back to the altar end are not needed.
+  const BOARDS = {
+    DB1: { label: 'DB-1 · Main board', where: 'Service room behind the altar', pos: [51.3, 1.5, -1.0] },
+    DB2: { label: 'DB-2 · Towers & entrance', where: 'Inside the main doors, left of the main door', pos: [2.8, 1.5, -3.3] }
   };
   const QUALITY = {
     // Every drawn light is evaluated for every pixel, so counts drive frame rate.
@@ -71,7 +79,7 @@
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
 
   const SIM = window.CHURCH_SIMULATOR = {
-    prepare, bindBatches, start, frame, CIRCUITS, QUALITY, state, fixtures,
+    prepare, bindBatches, start, frame, CIRCUITS, BOARDS, QUALITY, state, fixtures,
     get ready() { return ready; }, get church() { return church; }, get THREE() { return T; },
     on(evt, fn) { (handlers[evt] ||= new Set()).add(fn); return () => handlers[evt].delete(fn); },
     emit, item: id => state.items.find(i => i.id === id), typeOf: it => CAT.byId[it.type],
@@ -1259,9 +1267,16 @@
       c.ratedAmps = c.rated / (230 * PF);
       c.mcb = MCB.find(a => a * 0.8 >= c.ratedAmps) || 63;
     }
+    // Cable: each circuit runs from its board to its fittings (plan distance
+    // along the walls + 6 m up and down). DB-2 needs one feeder from DB-1.
+    const run = (b, c) => { const l = state.items.filter(i => i.circuit === c && !i.hidden); if (!l.length) return 0;
+      return l.reduce((t, i) => t + Math.abs(i.pos[0] - b[0]) + Math.abs(i.pos[2] - b[2]), 0) / l.length + 6; };
+    let saved = 0;
+    for (const c of Object.values(byCircuit)) if (CIRCUITS[c.circuit]?.board === 'DB2') { c.runDB2 = run(BOARDS.DB2.pos, c.circuit); c.runDB1 = run(BOARDS.DB1.pos, c.circuit); saved += c.runDB1 - c.runDB2; }
+    const feeder = Math.abs(BOARDS.DB1.pos[0] - BOARDS.DB2.pos[0]) + Math.abs(BOARDS.DB1.pos[2] - BOARDS.DB2.pos[2]) + 3;
     const s = state.settings;
     const kWhService = total * s.serviceHours / 1000;
-    return { byCircuit: Object.values(byCircuit).sort((a, b) => a.circuit.localeCompare(b.circuit)), total, rated, amps: total / (230 * PF), ratedAmps: rated / (230 * PF), kWhService, kWhMonth: kWhService * s.servicesPerMonth, costMonth: kWhService * s.servicesPerMonth * s.tariff };
+    return { byCircuit: Object.values(byCircuit).sort((a, b) => a.circuit.localeCompare(b.circuit)), total, rated, amps: total / (230 * PF), ratedAmps: rated / (230 * PF), cable: { feeder, saved }, kWhService, kWhMonth: kWhService * s.servicesPerMonth, costMonth: kWhService * s.servicesPerMonth * s.tariff };
   }
 
   /* ---------------------------------------------------------------- scenes */

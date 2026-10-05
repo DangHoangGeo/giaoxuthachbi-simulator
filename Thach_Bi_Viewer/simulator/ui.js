@@ -189,18 +189,27 @@
     const scenes = [...Object.keys(SIM.SCENES), ...SIM.state.customScenes.map(x => x.name)];
     const keypad = `<div class="ctl-device ctl-keypad"><div class="ctl-plate-title">Scene keypad · entrance &amp; sacristy</div>
       <div class="ctl-keys">${scenes.map(n => `<button class="ctl-key${SIM.state.scene === n ? ' active' : ''}" data-act="ctl-scene" data-scene="${esc(n)}"><i></i>${esc(n)}</button>`).join('')}</div></div>`;
-    const group = (title, cat) => present.filter(c => C[c].cat === cat);
     const breaker = c => {
       const items = circuitItems(c), on = items.some(i => i.on), b = byC[c] || {};
       const amps = b.amps || 0, mcb = b.mcb || 6;
       return `<button class="ctl-breaker${on ? ' on' : ''}" data-act="ctl-breaker" data-circuit="${c}" title="${esc(C[c].label)} · ${items.length} fittings · C${mcb} breaker · full load ${fmt(b.ratedAmps || 0, 1)} A">
-        <span class="ctl-rating">C${mcb}</span><span class="ctl-lever"><b></b></span><span class="ctl-code">${c}</span><span class="ctl-amp">${amps > 0.05 ? fmt(amps, 1) + ' A' : '—'}</span></button>`;
+        <span class="ctl-rating">C${mcb}</span><span class="ctl-lever"><b></b></span><span class="ctl-code">${c}</span><span class="ctl-amp">${amps > 0.05 ? fmt(amps, 1) + ' A' : '—'}</span>
+        <span class="ctl-name">${esc(C[c].label.replace(/^\w+ · /, ''))}</span></button>`;
     };
     const rail = (label, list) => list.length ? `<div class="ctl-rail"><div class="ctl-rail-label">${label}</div><div class="ctl-rail-row">${list.map(breaker).join('')}</div></div>` : '';
-    const board = `<div class="ctl-device ctl-board"><div class="ctl-plate-title">Distribution board · DB-1 <span>${fmt(pw.total / 1000, 2)} kW · ${fmt(pw.amps, 1)} A of 63 A</span></div>
-      <div class="ctl-main"><span class="ctl-led on"></span> Main switch 63 A · RCCB 30 mA</div>
-      ${rail('Lighting', group('', 'light'))}${rail('Fans & ventilation', group('', 'fan'))}${rail('Sound', group('', 'speaker'))}${rail('Decoration', group('', 'decor'))}
-      <div class="ctl-legend">Lever up = on. Each breaker switches every fitting on its circuit; the number on top is its rating (C-curve MCB sized for the full load at ≤ 80 %), the one below the current now.</div></div>`;
+    const onBoard = (bd, f) => present.filter(c => (C[c].board || 'DB1') === bd && f(C[c]));
+    const areas = bd => [...new Set(onBoard(bd, x => x.cat === 'light').map(c => C[c].area || 'Other'))];
+    const boardHtml = bd => {
+      const B = SIM.BOARDS[bd], list = onBoard(bd, () => true), w = list.reduce((t, c) => t + (byC[c]?.watts || 0), 0);
+      const rails = areas(bd).map(a => rail('Lights · ' + a, onBoard(bd, x => x.cat === 'light' && (x.area || 'Other') === a))).join('')
+        + rail('Fans & ventilation', onBoard(bd, x => x.cat === 'fan')) + rail('Sound (amplifier rack)', onBoard(bd, x => x.cat === 'speaker')) + rail('Decoration', onBoard(bd, x => x.cat === 'decor'));
+      const extra = bd === 'DB2' ? `<div class="ctl-keys ctl-tower-keys">${[['off', 'Towers off'], ['evening', 'Towers · evening'], ['festival', 'Towers · festival']].map(([k, l]) => `<button class="ctl-key" data-act="ctl-towers" data-mode="${k}"><i></i>${l}</button>`).join('')}</div>
+        <div class="ctl-legend">Fed by one cable from DB-1 (≈${fmt(pw.cable.feeder)} m). Switching the tower, façade and entrance circuits here, instead of at the altar end, saves ≈${fmt(pw.cable.saved)} m of circuit cable runs.</div>` : `<div class="ctl-main"><span class="ctl-led on"></span> Main switch 63 A · RCCB 30 mA · feeds DB-2</div>`;
+      return `<div class="ctl-device ctl-board"><div class="ctl-plate-title">${esc(B.label)} <span>${fmt(w / 1000, 2)} kW · ${fmt(w / 207, 1)} A</span></div>
+        <div class="ctl-where">📍 ${esc(B.where)}</div>${extra}${rails}
+        <div class="ctl-legend">Lever up = on. Top number = breaker rating; bottom = current now.</div></div>`;
+    };
+    const board = boardHtml('DB1') + boardHtml('DB2');
     const fans = present.filter(c => C[c].cat === 'fan').map(c => {
       const items = circuitItems(c), on = items.filter(i => i.on), sp = on.length ? Math.round(on.reduce((t, i) => t + (i.speed ?? 2), 0) / on.length) : 0;
       return `<div class="ctl-regulator"><button class="ctl-knob" data-act="ctl-knob" data-circuit="${c}" style="--rot:${-120 + sp * 80}deg" title="Click to step 0 → 1 → 2 → 3"><b></b></button>
@@ -219,7 +228,7 @@
         <div class="ctl-strip-label">${esc(C[c].label.replace(/^\w+ · /, ''))}</div></div>`;
     }).join('');
     const mixer = strips ? `<div class="ctl-device ctl-mixer"><div class="ctl-plate-title">Sound mixer · zones <span>${lastAnalysis?.seats?.sti ? 'STI ' + fmt(lastAnalysis.seats.sti.avg, 2) : ''}</span></div><div class="ctl-strips">${strips}</div></div>` : '';
-    return `<div class="ctl-room"><p class="sim-hint">The control equipment in the service room behind the altar. Every switch here changes the model and the analysis. <button class="sim-link" data-act="ctl-goto">Show the service room ↗</button></p>${keypad}${board}${fanPanel}${mixer}</div>`;
+    return `<div class="ctl-room"><p class="sim-hint">Two boards: DB-1 in the service room behind the altar for everything inside, and DB-2 inside the main doors for the towers, façade and entrance. Every switch changes the model and the analysis. <button class="sim-link" data-act="ctl-goto">Show the service room ↗</button></p>${keypad}${board}${fanPanel}${mixer}</div>`;
   }
 
   function itemMeta(it) {
@@ -470,6 +479,11 @@
         const c = el.dataset.circuit, items = circuitItems(c), on = !items.some(i => i.on);
         for (const i of items) SIM.update(i.id, { on, ...(on && CAT.byId[i.type].light && !(i.dim > 0) ? { dim: 1 } : {}) }, { record: false });
         SIM.commit((on ? 'Switch on ' : 'Switch off ') + (SIM.CIRCUITS[c]?.label || c)); renderKeepScroll = true; renderBody(); break;
+      }
+      case 'ctl-towers': {
+        const m = el.dataset.mode, want = { L6: m !== 'off', L7: m === 'festival' };
+        for (const [c, on] of Object.entries(want)) for (const i of circuitItems(c)) SIM.update(i.id, { on, ...(on ? { dim: 1 } : {}) }, { record: false });
+        SIM.commit('Towers: ' + m); renderKeepScroll = true; renderBody(); break;
       }
       case 'ctl-knob': {
         const c = el.dataset.circuit, items = circuitItems(c), on = items.filter(i => i.on);

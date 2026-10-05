@@ -562,6 +562,11 @@
       {z:-.55,w:.8,h:.9,y:1.85,text:'Lighting L1–L7 · scenes'},
       {z:.4,w:.6,h:.7,y:1.95,text:'Fans · speed control'},
     ];
+    // DB-2: small sub-board for the towers, façade and entrance, inside the
+    // main doors on the entrance wall (left of the main door), fed from DB-1.
+    box(.16,.62,.46,2.73,1.5,-3.3,steel,fit,'Wall enclosure · DB-2 towers & entrance');
+    label('DB-2 Towers',.4,.09,2.82,1.72,-3.3);
+    for(const [i,c] of ['#4cae5d','#4cae5d','#d9534f'].entries()){const m=new T.MeshBasicMaterial({color:c});m.name='DB-2 indicator';box(.02,.03,.03,2.82,1.5,-3.42+i*.12,m,fit,'DB-2 indicator');}
     for(const b of boards){
       box(.2,b.h,b.w,wx+.1,b.y,b.z,steel,fit,`Wall enclosure · ${b.text}`);
       box(.01,b.h-.08,.01,wx+.205,b.y,b.z+b.w*.32,mat.metal,fit,'Enclosure handle');
