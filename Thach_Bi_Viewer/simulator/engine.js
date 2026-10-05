@@ -23,6 +23,7 @@
   const protoCache = new Map();
   let Kit, simGroup, proxyGroup, haloPoints, overlayGroup, selectionHelper, ghost = null;
   let proxies = [], pool = null, trussBatch = null, proposedTruss = null;
+  let drawnFrame = null, referenceFrame = null, frameBatches = {};
   let lightDirty = true, analysisDirty = true, saveTimer = 0, analysisTimer = 0;
   let envMode = 'day', cameraInside = 0, ambientNow = 0, adaptNow = 160, timeNow = 0;
 
@@ -59,7 +60,7 @@
   const defaults = () => ({
     adaptLux: 110, autoExposure: false, quality: 'balanced', autoQuality: true, maintenance: 0.8, halos: 1,
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
-    lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, timberTone: 'reference',
+    lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
     serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8
   });
@@ -190,10 +191,93 @@
       for (const [a, b] of spans) member(b - a, 0.12, 0.09, (a + b) / 2, y, s * z, 'Purlin · as drawn spacing ~0.50 m');
     }
     GEO.trussMoved = moving.length;
+    buildFrameVariants(asDrawn);
     GEO.purlinsAsDrawn = 28;
     closeEntranceBay();
     entranceSlats = buildEntranceSlats();
   }
+  /* ----------------------------------------------- timber frame variants */
+  // Two frames for comparison. 'drawn' follows section sheet 4: round shafts
+  // and a 0.59 m tie beam across the nave at +8.59 m. 'reference' follows the
+  // reference interior (05-interior-day): square posts on tall carved stone
+  // plinths rising to the rafters, a high collar with curved arch braces and
+  // a short upper collar, and a longitudinal plate with brackets. No low tie,
+  // so the nave is open to +10.9 m. Sections are visual; an engineer must
+  // size the members and the joints and resolve the roof thrust.
+  const REF = { collarY: 10.9, upperY: 11.75, post: 0.56 };
+  // Arch brace: a quarter ellipse from the post face (z 3.3, +7.6 m) to the
+  // collar soffit (z 1.7, +10.78 m).
+  const ARCH = { z0: 1.7, z1: 3.3, y0: 7.6, y1: 10.78 };
+  function braceY(az) {
+    if (az >= ARCH.z1) return ARCH.y0;
+    if (az <= ARCH.z0) return REF.collarY - 0.18;
+    const u = (az - ARCH.z0) / (ARCH.z1 - ARCH.z0);
+    return ARCH.y0 + (ARCH.y1 - ARCH.y0) * Math.sqrt(1 - u * u) - 0.1;
+  }
+  // Pendants hung from the drawn tie beam take the arch brace above them.
+  function anchorFor(it) {
+    if (state.settings.frameStyle === 'reference' && it.mount === 'pendant' && Math.abs((it.anchorY ?? 0) - 8.59) < 0.03 &&
+      GEO.mainBeams.some(b => Math.abs(it.pos[0] - b.x) < 0.3)) return braceY(Math.abs(it.pos[2]));
+    return it.anchorY;
+  }
+  function buildFrameVariants(asDrawn) {
+    const { building } = ctx, im = ctx.interior.materials, timber = im.timber, stone = im.whiteStone, carve = ctx.mat?.darkTrim || im.stone;
+    const axes = ['3', '4', '5', '6', '7', '8', '9', '10'], xs = axes.map(k => data().longitudinal[k]);
+    drawnFrame = new T.Group(); drawnFrame.name = 'Timber frame · as drawn (round shafts and tie beams)'; building.add(drawnFrame);
+    referenceFrame = new T.Group(); referenceFrame.name = 'Timber frame · reference interior (posts, collars, arch braces)'; building.add(referenceFrame);
+    building.updateMatrixWorld(true);
+    const move = [];
+    building.traverse(o => {
+      if (!o.isMesh) return;
+      const near = xs.some(x => Math.abs(o.getWorldPosition(new T.Vector3()).x - x) < 0.5);
+      if (/^Main tie beam/.test(o.name) || (near && /^(Central column|Column head|Carved stone pedestal cap|Timber shaft foot|Timber capital collar|Carved stone column base on the dais)/.test(o.name))) move.push(o);
+    });
+    for (const o of move) drawnFrame.attach(o);
+    const box = (w, h, d, x, y, z, mtl, name) => {
+      const m = new T.Mesh(new T.BoxGeometry(w, h, d), mtl); m.position.set(x, y, z); m.name = name;
+      m.castShadow = m.receiveShadow = true; m.userData = { status: 'REFERENCE-IMAGE VARIANT · SECTIONS ILLUSTRATIVE', source: 'references/05-interior-day.png' };
+      referenceFrame.add(m); return m;
+    };
+    const tube = (pts, r, name) => {
+      const m = new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts.map(p => new T.Vector3(...p))), 24, r, 6, false), timber);
+      m.name = name; m.castShadow = m.receiveShadow = true; referenceFrame.add(m); return m;
+    };
+    const P = REF.post, collarHalf = (LINING_RIDGE - REF.collarY - 0.14) / LINING_SLOPE, upperHalf = (LINING_RIDGE - REF.upperY - 0.1) / LINING_SLOPE;
+    axes.forEach((k, i) => {
+      const x = xs[i], floor = k === '10' ? 0.75 : 0, top = liningY(3.6) - 0.08;
+      for (const s of [-1, 1]) {
+        const z = s * 3.6;
+        // Carved stone plinth (1.1 m) with panels on all four faces.
+        box(0.92, 1.1, 0.92, x, floor + 0.55, z, stone, 'Carved stone plinth · reference');
+        box(1.0, 0.1, 1.0, x, floor + 0.05, z, stone, 'Plinth foot moulding');
+        box(0.98, 0.09, 0.98, x, floor + 1.06, z, stone, 'Plinth cap moulding');
+        for (const [dx, dz, w, d] of [[0.465, 0, 0.02, 0.62], [-0.465, 0, 0.02, 0.62], [0, 0.465, 0.62, 0.02], [0, -0.465, 0.62, 0.02]])
+          box(w, 0.66, d, x + dx, floor + 0.56, z + dz, carve, 'Plinth carved panel');
+        // Square post to the rafter, with a moulded capital and bolster.
+        box(P, top - floor - 1.1, P, x, (top + floor + 1.1) / 2, z, timber, 'Square timber post · reference');
+        box(P + 0.12, 0.1, P + 0.12, x, floor + 1.17, z, timber, 'Post base fillet');
+        box(P + 0.14, 0.14, P + 0.14, x, 9.25, z, timber, 'Post capital');
+        box(P + 0.26, 0.1, P + 0.26, x, 9.37, z, timber, 'Post capital abacus');
+        box(1.5, 0.22, 0.4, x, 9.53, z, timber, 'Capital bolster under the plate');
+        // Curved arch brace from the post to the collar, both faces of the truss.
+        const arc = [];
+        for (let k = 0; k <= 12; k++) { const t = k / 12 * Math.PI / 2; arc.push([x, ARCH.y0 + (ARCH.y1 - ARCH.y0) * Math.sin(t), s * (ARCH.z0 + (ARCH.z1 - ARCH.z0) * Math.cos(t))]); }
+        tube(arc, 0.11, 'Curved arch brace · reference');
+        // Queen post from the collar to the rafter, and an upper strut.
+        box(0.18, liningY(collarHalf * 0.55) - REF.collarY - 0.1, 0.18, x, (liningY(collarHalf * 0.55) + REF.collarY) / 2, s * collarHalf * 0.55, timber, 'Queen post · reference');
+      }
+      box(0.26, 0.34, collarHalf * 2, x, REF.collarY, 0, timber, 'Collar beam · reference');
+      box(0.22, 0.24, upperHalf * 2, x, REF.upperY, 0, timber, 'Upper collar · reference');
+      box(0.18, REF.upperY - REF.collarY - 0.25, 0.18, x, (REF.upperY + REF.collarY) / 2, 0, timber, 'King strut · reference');
+      // Longitudinal brackets from each post to the plate.
+      for (const s of [-1, 1]) for (const d of [-1, 1]) if (!(k === '3' && d < 0) && !(k === '10' && d > 0))
+        tube([[x + d * 0.3, 8.55, s * 3.6], [x + d * 0.55, 9.3, s * 3.6], [x + d * 1.15, 9.62, s * 3.6]], 0.08, 'Curved plate bracket · reference');
+    });
+    // Longitudinal plates along the post heads (axes 3–10).
+    for (const s of [-1, 1]) box(xs[xs.length - 1] - xs[0] + 0.6, 0.3, 0.3, (xs[0] + xs[xs.length - 1]) / 2, 9.79, s * 3.6, timber, 'Longitudinal plate · reference');
+    referenceFrame.visible = true;
+  }
+
   // Optional timber slat acoustic panels in the entrance hall (≈75 m²): under the
   // terrace slab and along the upper band of the entrance wall, clear of the
   // fanlight and the exit sign. One instanced mesh, shown with the roof.
@@ -498,7 +582,7 @@
         if (this.head) this.head.rotation.set(0, 0, tilt);
       } else if (this.head) this.head.rotation.set(0, -yawRel, tilt, 'YZX');
       if (this.stem) {
-        const len = Math.max(0, (it.anchorY ?? it.pos[1]) - it.pos[1]);
+        const len = Math.max(0, (anchorFor(it) ?? it.pos[1]) - it.pos[1]);
         const radius = this.type.cat === 'fan' ? (this.type.fan.diameter > 2 ? 0.045 : 0.022) : this.type.cat === 'speaker' ? 0.005 : this.type.cat === 'decor' ? 0.006 : this.type.id.startsWith('chandelier') ? 0.016 : 0.012;
         this.stem.visible = this.canopy.visible = len > 0.03;
         this.stem.scale.set(radius, Math.max(len, 0.001), radius);
@@ -793,6 +877,17 @@
   function bindBatches(batches) {
     trussBatch = batches.get(proposedTruss);
     setTrussVisible(state.settings.showTruss);
+    frameBatches = { drawn: batches.get(drawnFrame), reference: batches.get(referenceFrame) };
+    document.getElementById('frameStyle')?.addEventListener('change', e => setSetting('frameStyle', e.target.value));
+    applyFrameStyle();
+  }
+  function applyFrameStyle() {
+    const style = state.settings.frameStyle === 'reference' ? 'reference' : 'drawn';
+    if (frameBatches.drawn) frameBatches.drawn.visible = style === 'drawn';
+    if (frameBatches.reference) frameBatches.reference.visible = style === 'reference';
+    for (const fx of fixtures.values()) fx.update();
+    ctx.renderer.shadowMap.needsUpdate = true;
+    const select = document.getElementById('frameStyle'); if (select) select.value = style;
   }
   function setTrussVisible(v) {
     if (trussBatch) trussBatch.visible = !!v;
@@ -1179,6 +1274,7 @@
     state.settings[key] = value;
     if (key === 'quality') { createPool(value); }
     if (key === 'showTruss') setTrussVisible(value);
+    if (key === 'frameStyle') applyFrameStyle();
     if (key === 'timberTone') applyTimberTone();
     if (['lensDeg', 'eyeHeight', 'walkSpeed'].includes(key)) applyCamera();
     if (['occupancy', 'openings', 'roofFinish', 'entranceFinish', 'tempC', 'rh'].includes(key)) roomCache = null;
@@ -1191,6 +1287,7 @@
   }
   function applySettings() {
     setTrussVisible(state.settings.showTruss);
+    applyFrameStyle();
     applyTimberTone(); applyCamera(); applyRoofFinish();
     if (pool?.key !== state.settings.quality) createPool(state.settings.quality);
     emit('settings', {});

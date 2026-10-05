@@ -227,3 +227,31 @@ In the stained option:
 
 The artwork is drawn by the viewer (glass-art.js). It is a placeholder for
 commissioned windows.
+
+## Timber frame: two versions
+
+View settings → Timber frame, or Simulator → Settings → Structure.
+
+- **As drawn (PDF section 4).** Round shafts and a 0.30 × 0.59 m tie beam
+  across the nave at +8.59 m on every axis.
+- **Reference image (05-interior-day).** The structure is:
+  - square timber posts (0.56 m) on 1.1 m carved stone plinths, rising to the
+    rafters
+  - a collar beam at +10.9 m, a short upper collar at +11.75 m and a king strut
+  - curved arch braces from each post into the collar
+  - queen posts, and longitudinal plates with curved brackets along the post
+    heads
+
+  The nave is open up to the arch braces (+7.6 m at the posts, about +10.8 m
+  in the centre).
+
+Lights that hang from the drawn tie beam hang from the arch brace above them
+in the reference version. Their position and the analysis are unchanged.
+
+Structural note: dropping the low tie is not automatically stronger. The arch
+braces and collar share load well and stiffen the joint at the post head.
+Without a tie at wall-plate level, though, the rafters push outward on the
+posts and walls. A structural engineer has to size the members and the
+pegged or bolted joints, and decide how that thrust is resisted. Options are
+a slim steel tie rod at plate level, steel flitch plates in the joints, or
+moment-resisting post heads. Member sections in this version are visual.

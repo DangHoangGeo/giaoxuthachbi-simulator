@@ -393,6 +393,7 @@
       <p class="sim-hint">${(() => { const p = SIM.poolStats(); return p ? `${p.emitters} light sources; ${p.points + p.spots + p.shadows} drawn individually${p.clustered > 0 ? `, ${p.clustered} combined with neighbours for speed` : ''}. Analysis always uses every source.` : ''; })()}</p>
       </div>
       <div class="sim-card"><h3>Structure &amp; finishes</h3>
+      ${field('Timber frame', `<select data-setting="frameStyle"><option value="drawn" ${s.frameStyle !== 'reference' ? 'selected' : ''}>As drawn (PDF section 4)</option><option value="reference" ${s.frameStyle === 'reference' ? 'selected' : ''}>Reference image (open collar truss)</option></select>`, true)}
       ${sw('showTruss', 'Show earlier proposed truss bracing', 'King posts, diagonals and knee braces are not on section sheet 4.')}
       ${field('Structural timber tone', `<select data-setting="timberTone"><option value="reference" ${s.timberTone === 'reference' ? 'selected' : ''}>Reference (medium)</option><option value="light" ${s.timberTone === 'light' ? 'selected' : ''}>Light oak</option><option value="dark" ${s.timberTone === 'dark' ? 'selected' : ''}>Dark stained</option></select>`, true)}
       ${field('Roof underside', `<select data-setting="roofFinish">${Object.entries(P.ROOF_FINISHES).map(([k, f]) => `<option value="${k}" ${s.roofFinish === k ? 'selected' : ''}>${esc(f.label)}</option>`).join('')}</select>`, true)}
