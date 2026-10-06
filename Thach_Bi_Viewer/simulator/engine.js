@@ -105,7 +105,7 @@
     setSetting, applyScene, saveNow, exportLayout, importLayout, resetDesign, exportSchedule,
     emitters: lightEmitters, speakers: speakerSources, fans: fanSources, mics: micSources,
     room: roomModel, floorY, structureAbove, seats: () => GEO.seats, markDirty, focusItem,
-    powerSummary, setOverlay, worldFrame
+    powerSummary, setOverlay, worldFrame, refreshSeating, fixtureVisible
   };
   function emit(evt, data) { for (const fn of handlers[evt] || []) { try { fn(data); } catch (e) { console.error(e); } } }
 
@@ -638,7 +638,7 @@
         this.stem.scale.set(radius, Math.max(len, 0.001), radius);
         this.canopy.position.set(0, len, 0);
       }
-      r.visible = !it.hidden;
+      r.visible = fixtureVisible(it);
       r.updateMatrixWorld(true);
       for (const g of this.glows) g.world.set(...g.p).applyMatrix4(this.group(g.group).matrixWorld);
       this.applyGlow();
@@ -937,6 +937,19 @@
     GEO.seatingArea = (GEO.seatAreas?.[blocks] || 200) * 1.25;
     roomCache = null;
   }
+  function fixtureVisible(it) {
+    const blocks=ctx?.interior.seatingState?.().blocks || 4;
+    return !it.hidden && !(blocks===2 && it.type==='palm' && isInterior(it.pos));
+  }
+  function refreshSeating() {
+    if(!ctx)return;
+    refreshSeats();
+    for(const fx of fixtures.values())if(fx.item.type==='palm'){
+      fx.update();syncCollider(fx.item);
+      if(!fx.root.visible&&state.selectedId===fx.item.id)select(null);
+    }
+    markDirty();emit('seats');
+  }
 
   /* ------------------------------------------------------------- prepare */
   function prepare(c) {
@@ -1180,7 +1193,7 @@
     const old = colliderById.get(it.id);
     if (old && list) { const i = list.indexOf(old); if (i >= 0) list.splice(i, 1); colliderById.delete(it.id); }
     const type = CAT.byId[it.type];
-    if (!list || it.hidden || !type?.footprint || it.mount !== 'floor') return;
+    if (!list || !fixtureVisible(it) || !type?.footprint || it.mount !== 'floor') return;
     const [w, d] = type.footprint, c = Math.cos(it.yaw * DEG), s = Math.sin(it.yaw * DEG);
     const hx = Math.abs(c) * w / 2 + Math.abs(s) * d / 2, hz = Math.abs(s) * w / 2 + Math.abs(c) * d / 2;
     const col = { label: it.name, minX: it.pos[0] - hx, maxX: it.pos[0] + hx, minZ: it.pos[2] - hz, maxZ: it.pos[2] + hz, kind: 'simulator', active: true };
@@ -1828,7 +1841,6 @@
     lastSnapshot = snapshot();
     installPointer();
     new MutationObserver(applyEnvironment).observe(document.body, { attributes: true, attributeFilter: ['data-lighting'] });
-    for (const id of ['seating2', 'seating4']) document.getElementById(id)?.addEventListener('click', () => setTimeout(() => { refreshSeats(); markDirty(); emit('seats'); }, 0));
     document.getElementById('colorToggle')?.addEventListener('change', () => setTimeout(applyTimberTone, 0));
     window.addEventListener('resize', applyCamera);
     applyEnvironment();

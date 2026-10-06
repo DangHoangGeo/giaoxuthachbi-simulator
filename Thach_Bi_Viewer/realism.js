@@ -8,7 +8,7 @@
   let context;
   const doorGroups = {};
   const api = window.CHURCH_REALISM = { prepare, lighting, finish, floorHeight, walkAllowed, bindBatches, update, setOpenings, setGlass };
-  let doorBatches, lastMode, openings = 'auto', glassKind = 'clear', lightMode = 'day';
+  let doorBatches, lastMode, openings = 'auto', glassKind = 'stained', lightMode = 'day';
   function bindBatches(batches) {
     doorBatches = {closed:batches.get(doorGroups.closed), open:batches.get(doorGroups.open)};
     // Glass passes daylight: no glazed batch casts a shadow.
@@ -16,6 +16,8 @@
     update('explore');
     document.getElementById('openingsMode')?.addEventListener('change',event=>setOpenings(event.target.value));
     document.getElementById('glassMode')?.addEventListener('change',event=>setGlass(event.target.value));
+    const glassSelect=document.getElementById('glassMode');
+    if(glassSelect)glassSelect.value=glassKind;
     const landscape=[...batches.entries()].find(([group])=>group.name==='Two rows of courtyard trees')?.[1];
     document.getElementById('treesToggle')?.addEventListener('change',event=>{
       landscape.visible=event.target.checked;
@@ -192,42 +194,36 @@
     surface(mat.ground,'paving',4.8,'#e5e5dd',.65,.012);
     surface(mat.wood,'wood',1.8,'#b38d68',.39,.009);
     mat.recess.color.set('#302319');
-    // Glazing has two options: clear float glass, or stained glass. In the
-    // stained option each opening carries its own painted artwork
-    // (glass-art.js); the shared glass material becomes a quiet cathedral
-    // glass of pale leaded quarries for the remaining openings.
+    // One glazing plane per opening: clear bodies with coloured curved heads.
+    // The old full-height interior artwork duplicated the structural panes.
     const art=window.CHURCH_GLASS_ART;
     function glassTexture(canvas,name,repeat){
       const t=new T.CanvasTexture(canvas);t.colorSpace=T.SRGBColorSpace;t.anisotropy=anisotropy;t.name=name;
       if(repeat){t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(...repeat);}
       return t;
     }
-    const cathedral=(()=>{
-      const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d');
-      const tints=['#efe3bf','#e8dcb0','#f2e9cc','#e3dcc0','#ece0b8'];
-      for(let row=0;row<4;row++)for(let col=0;col<4;col++){g.fillStyle=tints[(row*3+col*2)%tints.length];g.fillRect(col*64,row*64,64,64);}
-      g.strokeStyle='#2a241c';g.lineWidth=3;
-      for(let k=0;k<=4;k++){g.beginPath();g.moveTo(k*64,0);g.lineTo(k*64,256);g.moveTo(0,k*64);g.lineTo(256,k*64);g.stroke();}
-      return glassTexture(c,'Cathedral glass quarries',[3,2.2]);
-    })();
-    const artGlass=[{m:mat.glass,map:cathedral}];
+    const originalGlass=mat.glass;
+    mat.glass=new T.MeshPhysicalMaterial({name:'Clear float glass · window bodies',side:T.DoubleSide,
+      metalness:0,roughness:.045,ior:1.52,clearcoat:.35,clearcoatRoughness:.08,
+      transparent:true,opacity:.14,depthWrite:false,envMapIntensity:.85});
+    const artGlass=[{m:mat.glass,map:null}];
     function artMaterial(canvas,name){
-      const m=mat.glass.clone();m.name=name;artGlass.push({m,map:glassTexture(canvas,name)});return m;
+      const m=mat.glass.clone(),maps=art.surfaceMaps(canvas);m.name=name;
+      const bump=glassTexture(maps.bump,`${name} · rolled surface`),rough=glassTexture(maps.roughness,`${name} · lead and glass roughness`);
+      bump.colorSpace=rough.colorSpace=T.NoColorSpace;
+      artGlass.push({m,map:glassTexture(canvas,name),bump,rough});return m;
     }
     ctx.artGlass=artGlass;
     const fanCache=new Map();
     function fanMaterial(index,dims){
-      const key=`${index}|${dims.width}`;
+      const key=`${index%art.FAN_DESIGNS.length}|${JSON.stringify(dims)}`;
       if(!fanCache.has(key))fanCache.set(key,artMaterial(art.fanlight(art.FAN_DESIGNS[index%art.FAN_DESIGNS.length],dims),`Stained-glass fanlight ${index+1}`));
       return fanCache.get(key);
     }
-    // Twelve saints for the nave-wall arches: left (C, −z) and right (G, +z), front to back.
     const glazing=[];interior.group.traverse(o=>{if(o.isMesh&&/^Proposed coloured glazing/.test(o.name))glazing.push(o);});
-    for(const [side,list] of [[-1,art.SAINTS.left],[1,art.SAINTS.right]]){
-      glazing.filter(o=>Math.sign(o.position.z)===side).sort((p,q)=>p.position.x-q.position.x).forEach((o,i)=>{
-        const spec=list[i%list.length];o.material=artMaterial(art.saintPanel(spec),`Stained glass · ${spec.name}`);o.name=`Stained-glass window · ${spec.name}`;
-      });
-    }
+    glazing.forEach(o=>o.removeFromParent());
+    const existingGlass=[];building.traverse(o=>{if(o.isMesh&&o.material===originalGlass)existingGlass.push(o);});
+    for(const o of existingGlass)o.material=mat.glass;
     let roseMat=null;
     building.traverse(o=>{if(o.isMesh&&o.name==='Schematic rose-window infill'){roseMat??=artMaterial(art.rose(),'Stained-glass rose');o.material=roseMat;}});
     applyGlass();
@@ -321,6 +317,28 @@
       uv.needsUpdate=true;return m;
     }
     function arch(x,bottom,width,spring,rise){const s=new T.Shape();s.moveTo(x-width/2,bottom);s.lineTo(x+width/2,bottom);s.lineTo(x+width/2,spring);s.absellipse(x,spring,width/2,rise,0,Math.PI,false);s.lineTo(x-width/2,bottom);return s;}
+    function artworkUV(o,x,bottom,width,height){
+      const uv=o.geometry.attributes.uv,pos=o.geometry.attributes.position;
+      for(let i=0;i<pos.count;i++)uv.setXY(i,(pos.getX(i)-(x-width/2))/width,(pos.getY(i)-bottom)/height);
+      uv.needsUpdate=true;
+    }
+    // Split the traced C/G windows at the spring line, retaining source sizes.
+    for(const o of existingGlass){
+      if(o.name==='Opening infill'&&Math.abs(Math.abs(o.parent.position.z)-7.36)<.001){
+        const spring=3.171,rise=1.14,width=2.25,bottom=.65;
+        const body=new T.Shape();body.moveTo(-width/2,bottom);body.lineTo(width/2,bottom);body.lineTo(width/2,spring);body.lineTo(-width/2,spring);body.closePath();
+        o.geometry=new T.ShapeGeometry(body);o.name='Inner window clear glass body';o.castShadow=false;
+        const head=fanPane(arch(0,spring,width,spring,rise),o.parent,
+          fanMaterial(fanIndex++,{width,bottom:spring,spring,rise,sectors:8}),'Inner window coloured oval',0,spring,width,rise);
+        head.position.copy(o.position);head.castShadow=false;
+        box(width,.045,.045,0,spring,o.position.z,mat.metal,o.parent,'Inner window transom');
+      }else if(o.name.startsWith('Side doorway fixed fanlight')||o.name.startsWith('Upper entrance fanlight')){
+        o.geometry.computeBoundingBox();const b=o.geometry.boundingBox,width=b.max.x-b.min.x,rise=b.max.y-b.min.y,x=(b.min.x+b.max.x)/2,spring=b.min.y;
+        o.material=fanMaterial(fanIndex++,{width,bottom:spring,spring,rise,sectors:8});
+        artworkUV(o,x,spring,width,rise);o.castShadow=false;
+        o.name=o.name.startsWith('Upper entrance')?'Entrance door coloured oval':'Inner doorway coloured oval';
+      }
+    }
     function panels(leaf,width,height) {
       for(const face of [-1,1])for(let row=0;row<3;row++) {
         const y=height*(.18+row*.31),pw=width*.74,ph=height*.255;
@@ -358,6 +376,8 @@
         // Half-round glazed fanlight over a timber transom, like the doors;
         // the shutter pair below swings out with the doors.
         for(const x of wing?[-2.4,2.4]:[-1,1]) {
+          const body=new T.Shape();body.moveTo(x-.5,.85);body.lineTo(x+.5,.85);body.lineTo(x+.5,3.0);body.lineTo(x-.5,3.0);body.closePath();
+          const clearPane=pane(body,bay,mat.glass,'Outer window clear glass body');clearPane.castShadow=false;
           fanPane(arch(x,3.0,1,3.101,.507),bay,fanMaterial(fanIndex++,{width:1,bottom:3.0,spring:3.101,rise:.507,sectors:6}),'Window stained-glass fanlight',x,3.0,1,.608);
           box(1,.085,.15,x,3.0,.13,mat.wood,bay,'Window timber transom');
           for(let k=1;k<6;k++){const a=k*Math.PI/6;rod([x,3.04,.13],[x+Math.cos(a)*.47,3.101+Math.sin(a)*.475,.13],.016,mat.metal,bay,'Fanlight radial bronze bar');}
@@ -699,6 +719,7 @@
     api.measurements=data.refinement;
     building.userData.refinement=data.refinement;
     building.userData.assumptions=data.assumptions;
+    applyGlass();
     finish(true);
   }
 
@@ -712,14 +733,17 @@
   function applyGlass(){
     if(!context?.artGlass)return;
     const T=context.THREE,night=lightMode==='evening';
-    for(const {m,map} of context.artGlass){
+    for(const {m,map,bump,rough} of context.artGlass){
       m.transparent=true;m.depthWrite=false;m.side=T.DoubleSide;m.metalness=0;
-      if(glassKind==='stained'){
+      if(glassKind==='stained'&&map){
         m.map=m.emissiveMap=map;m.color.set('#ffffff');m.emissive.set('#ffffff');
-        m.emissiveIntensity=night?.05:.62;m.opacity=.96;m.roughness=.35;
+        m.emissiveIntensity=night?.012:.24;m.opacity=.92;m.roughness=.44;
+        m.bumpMap=bump;m.bumpScale=.002;m.roughnessMap=rough;
+        m.clearcoat=.28;m.clearcoatRoughness=.16;m.envMapIntensity=.72;
       }else{
-        m.map=m.emissiveMap=null;m.color.set('#cfe2e6');m.emissive.set('#eaf4f6');
-        m.emissiveIntensity=night?0:.05;m.opacity=.22;m.roughness=.04;
+        m.map=m.emissiveMap=m.bumpMap=m.roughnessMap=null;m.color.set('#edf6f5');m.emissive.set('#000000');
+        m.emissiveIntensity=0;m.opacity=.14;m.roughness=.045;
+        m.clearcoat=.35;m.clearcoatRoughness=.08;m.envMapIntensity=.85;
       }
       m.needsUpdate=true;
     }

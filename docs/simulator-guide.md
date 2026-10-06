@@ -218,17 +218,22 @@ Press Play and walk or sit. Each loudspeaker reaches you with its real distance 
 
 ## Window glass
 
-View settings → Window glass switches between clear glass and stained glass.
-In the stained option:
-- Each nave-wall arch shows a saint under a Gothic canopy, with a name band:
-  - left: Thánh Micae, Antôn, Phêrô, Gioan, Đức Mẹ Maria, Têrêsa
-  - right: Thánh Anrê Dũng Lạc, Gioan Baotixita, Phaolô, Giuse, Thánh Tâm, Chúa Chiên Lành
-- Window and door fanlights show a gold sunburst around a symbol: dove,
+View settings → Window glass starts in **Coloured** mode and can switch to clear.
+The rectangular bodies remain transparent clear glass in both modes. The old
+full-height saint panels and their duplicate interior glazing are removed.
+
+- The curved upper sections of inner and outer windows, side doorways and all
+  three front entrance doors show a gold sunburst around a symbol: dove,
   chalice, IHS, Chi-Rho, cross, Alpha–Omega, Sacred Heart, Marian M.
 - The round façade windows are a rose with the dove at the centre.
 
-The artwork is drawn by the viewer (glass-art.js). It is a placeholder for
-commissioned windows.
+The artwork is drawn by the viewer (glass-art.js), with individual lead joints,
+mottled colour, rolled-surface bump maps, varying roughness and physical sky
+reflections. It is a placeholder for commissioned windows.
+
+The indoor potted palms are hidden with **2 blocks** seating and restored with
+**4 blocks** if their individual visibility is enabled. Hidden palms do not
+block walking. Outdoor courtyard trees retain their separate Show trees switch.
 
 ## Timber frame: two versions
 

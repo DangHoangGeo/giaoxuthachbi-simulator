@@ -1,4 +1,4 @@
-/* Stained-glass artwork for the coloured-glass option, 2026-10-10.
+/* Stained-glass artwork for the coloured-glass option, 2026-10-06.
  * Painted on canvases at load time: leaded pieces of mottled glass with
  * grisaille (painted line) detail, in the tradition of church windows.
  *  - saintPanel: a standing figure under a Gothic canopy with a name band,
@@ -46,6 +46,35 @@
   }
   const ellipse = (g, x, y, rx, ry, a0 = 0, a1 = Math.PI * 2, ccw = false) => g.ellipse(x, y, rx, ry, 0, a0, a1, ccw);
   const poly = pts => g => pts.forEach(([x, y], i) => i ? g.lineTo(x, y) : g.moveTo(x, y));
+
+  // Rolled cathedral glass has soft striations and small changes in density,
+  // while lead remains dark. Keep the colour and surface data maps separate.
+  function glassFinish(c) {
+    const g=c.getContext('2d'),pixels=g.getImageData(0,0,c.width,c.height),p=pixels.data;
+    for(let y=0;y<c.height;y++)for(let x=0;x<c.width;x++){
+      const i=(y*c.width+x)*4;
+      if(Math.max(p[i],p[i+1],p[i+2])<65)continue;
+      const wave=Math.sin(x*.077+Math.sin(y*.027)*2.1)*.028+Math.sin(y*.14+x*.014)*.018;
+      const density=1+wave+(rand()-.5)*.055;
+      for(let k=0;k<3;k++)p[i+k]=Math.min(255,Math.round(p[i+k]*density));
+    }
+    g.putImageData(pixels,0,0);return c;
+  }
+  function surfaceMaps(source) {
+    const w=256,h=Math.max(64,Math.round(w*source.height/source.width));
+    const [bump,b]=canvas(w,h),[roughness,r]=canvas(w,h);
+    b.drawImage(source,0,0,w,h);
+    const color=b.getImageData(0,0,w,h),height=b.getImageData(0,0,w,h),rough=r.getImageData(0,0,w,h);
+    for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+      const i=(y*w+x)*4,lead=Math.max(color.data[i],color.data[i+1],color.data[i+2])<70;
+      const ripple=Math.sin(x*.21+Math.sin(y*.095)*2)*9+Math.sin(y*.35+x*.07)*5;
+      const z=lead?185:128+ripple+(rand()-.5)*7,v=lead?220:112+ripple*.6;
+      for(let k=0;k<3;k++){height.data[i+k]=z;rough.data[i+k]=v;}
+      height.data[i+3]=rough.data[i+3]=255;
+    }
+    b.putImageData(height,0,0);r.putImageData(rough,0,0);
+    return {bump,roughness};
+  }
 
   /* ------------------------------------------------------- saint panels */
   // Panel geometry follows the arch UVs: spring at v 0.689, so on a 512×832
@@ -196,16 +225,20 @@
   // A half-round fanlight. bottom/spring/rise in metres (UV 0–1 over the
   // opening's bounding box); bars = number of radial lead bars.
   function fanlight(design, { width = 1, bottom = 3.0, spring = 3.101, rise = .507, sectors = 6 } = {}) {
-    const total = spring + rise - bottom, w = 512, h = Math.round(512 * total / width);
+    const total = spring + rise - bottom, w = 1024, h = Math.round(1024 * total / width);
     const [c, g] = canvas(w, h);
     const cy = h * (1 - (spring - bottom) / total), rx = w / 2, ry = h * rise / total;
     g.fillStyle = '#e8d9a6'; g.fillRect(0, 0, w, h);
     // Sunburst rays alternating gold and amber, a blue outer band with beads.
     for (let k = 0; k < sectors; k++) {
       const a0 = Math.PI + k * Math.PI / sectors, a1 = a0 + Math.PI / sectors;
-      piece(g, gg => { gg.moveTo(rx, cy); ellipse(gg, rx, cy, rx * .8, ry * .8, a0, a1); }, k % 2 ? '#e3a72f' : '#f1cf63', { mottle: 1.5 });
+      piece(g, gg => { gg.moveTo(rx, cy); ellipse(gg, rx, cy, rx * .8, ry * .8, a0, a1); }, k % 2 ? '#cc962e' : '#ebc76e', { lead:4,mottle: 2 });
     }
-    piece(g, gg => { ellipse(gg, rx, cy, rx, ry, Math.PI, Math.PI * 2); gg.lineTo(rx * 1.8, cy); ellipse(gg, rx, cy, rx * .8, ry * .8, 0, Math.PI, true); }, '#1f4a9a', { mottle: 2 });
+    // Individual blue border pieces, with real joints following the rays.
+    for(let k=0;k<sectors;k++){
+      const a0=Math.PI+k*Math.PI/sectors,a1=a0+Math.PI/sectors;
+      piece(g,gg=>{ellipse(gg,rx,cy,rx,ry,a0,a1);gg.lineTo(rx+Math.cos(a1)*rx*.8,cy+Math.sin(a1)*ry*.8);ellipse(gg,rx,cy,rx*.8,ry*.8,a1,a0,true);},k%2?'#214887':'#2a579b',{lead:4,mottle:2});
+    }
     for (let k = 1; k < 14; k++) { const a = Math.PI + k * Math.PI / 14; piece(g, gg => gg.arc(rx + Math.cos(a) * rx * .9, cy + Math.sin(a) * ry * .9, Math.min(rx, ry) * .045, 0, 7), '#e6b23a', { lead: 1.5, mottle: 0 }); }
     // Medallion with the symbol.
     const mr = Math.min(rx, ry) * .42;
@@ -213,7 +246,7 @@
     piece(g, gg => { gg.moveTo(rx - mr * .92, cy); gg.arc(rx, cy, mr * .92, Math.PI, 0); }, '#f6efd8', { mottle: 1 });
     design(g, rx, cy - mr * .38, mr * .7);
     piece(g, poly([[0, cy], [w, cy], [w, h], [0, h]]), '#e8d9a6', { mottle: 1 });
-    return c;
+    return glassFinish(c);
   }
   function rose() {
     const [c, g] = canvas(512, 512), x = 256, y = 256;
@@ -228,7 +261,7 @@
     piece(g, gg => gg.arc(x, y, 120, 0, Math.PI * 2), '#9b1d23', { mottle: 1.5 });
     piece(g, gg => gg.arc(x, y, 92, 0, Math.PI * 2), '#f6efd8', { mottle: 1 });
     SYMBOLS.dove(g, x, y + 10, 90);
-    return c;
+    return glassFinish(c);
   }
-  window.CHURCH_GLASS_ART = { saintPanel, fanlight, rose, SAINTS, FAN_DESIGNS };
+  window.CHURCH_GLASS_ART = { saintPanel, fanlight, rose, surfaceMaps, SAINTS, FAN_DESIGNS };
 })();

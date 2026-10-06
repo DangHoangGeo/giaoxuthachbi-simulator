@@ -49,6 +49,10 @@ Both options add two complete rows in each bay 2–3, 4–5 and 8–9.
 Totals: 2 blocks = 19 rows / 38 benches; 4 blocks = 25 rows / 100 benches.
 Door-bay cross aisles are now proposed at 1.20 m; final access review is pending.
 The switch updates furniture, walk collisions, minimap and exported geometry.
+The indoor palms are hidden in the 2-block layout and restored with 4 blocks.
+Window glass starts Coloured: curved heads, including the entrance-door heads,
+have leaded coloured glass; the lower window bodies remain transparent clear
+glass. Full-height saint panels are removed. Clear mode removes the head colours.
 Seated: near centre aisle / near side aisle compares positions at 1.15 m eye height.
 Open planning/index.html for the interactive plan, system zones and example
 energy worksheet. Full researched brief: planning/brief.html; editable source:

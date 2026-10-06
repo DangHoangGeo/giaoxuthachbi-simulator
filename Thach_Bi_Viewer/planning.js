@@ -103,6 +103,7 @@
     }
     const caption = document.getElementById('seatingSummary');
     if(caption) caption.textContent = `${state().pewCount} benches · ${mode===2?'4.65 m long':'1.73–1.86 m long'} · ${state().pewRows} rows · concept`;
+    window.CHURCH_SIMULATOR?.refreshSeating();
     return state();
   }
 })();

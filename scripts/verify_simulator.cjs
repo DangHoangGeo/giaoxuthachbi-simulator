@@ -199,6 +199,28 @@ for (const it of SIM.state.items) {
 }
 // Floor-standing items collide in walk mode.
 assert(church.colliders.some(c => c.kind === 'simulator'), 'floor items add walk colliders');
+// Seating-dependent palms preserve manual visibility and remove walk obstacles.
+{
+  const planning=sandbox.CHURCH_PLANNING,palms=SIM.state.items.filter(it=>it.type==='palm');
+  assert.equal(palms.length,2);
+  const exteriorPalm=SIM.add({type:'palm',name:'Test courtyard palm',mount:'floor',pos:[-10,-.48,5]}, {record:false});
+  const visibility=palms.map(it=>it.hidden);
+  for(const layout of [2,4,2,4]){
+    planning.setLayout(layout);
+    SIM.electrical.rebuild();SIM.electrical.setMode('systems');SIM.electrical.setMode('building');
+    for(const it of palms){
+      assert.equal(SIM.fixtures.get(it.id).root.visible,layout===4&&!it.hidden);
+      assert.equal(church.colliders.some(c=>c.label===it.name),layout===4&&!it.hidden,'Hidden indoor palms do not block walking');
+    }
+    assert(SIM.fixtures.get(exteriorPalm.id).root.visible,'Outdoor palms are independent of seating');
+    assert.deepEqual(palms.map(it=>it.hidden),visibility,'Layout switching preserves saved decoration settings');
+  }
+  SIM.update(palms[0].id,{hidden:true},{record:false});
+  planning.setLayout(2);planning.setLayout(4);
+  assert.equal(SIM.fixtures.get(palms[0].id).root.visible,false,'Manually hidden palms stay hidden');
+  SIM.update(palms[0].id,{hidden:visibility[0]},{record:false});
+  SIM.remove(exteriorPalm.id,{record:false});
+}
 // Every fixture is fixed to something the model actually has: wall items need a
 // surface right behind them, pendants need structure at their anchor (fans on
 // steel spreaders and strung decorations carry their own support).

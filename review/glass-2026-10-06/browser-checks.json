@@ -1,0 +1,78 @@
+[
+  {
+    "glass": "clear",
+    "blocks": 2,
+    "clearBodies": 40,
+    "clearBodyMaps": 0,
+    "colouredHeads": 0,
+    "palms": [
+      {
+        "name": "Palm · entrance B",
+        "visible": false,
+        "collider": false
+      },
+      {
+        "name": "Palm · entrance H",
+        "visible": false,
+        "collider": false
+      }
+    ]
+  },
+  {
+    "glass": "stained",
+    "blocks": 2,
+    "clearBodies": 40,
+    "clearBodyMaps": 0,
+    "colouredHeads": 102,
+    "palms": [
+      {
+        "name": "Palm · entrance B",
+        "visible": false,
+        "collider": false
+      },
+      {
+        "name": "Palm · entrance H",
+        "visible": false,
+        "collider": false
+      }
+    ]
+  },
+  {
+    "glass": "clear",
+    "blocks": 2,
+    "clearBodies": 40,
+    "clearBodyMaps": 0,
+    "colouredHeads": 0,
+    "palms": [
+      {
+        "name": "Palm · entrance B",
+        "visible": false,
+        "collider": false
+      },
+      {
+        "name": "Palm · entrance H",
+        "visible": false,
+        "collider": false
+      }
+    ]
+  },
+  {
+    "glass": "stained",
+    "blocks": 2,
+    "clearBodies": 40,
+    "clearBodyMaps": 0,
+    "colouredHeads": 102,
+    "palms": [
+      {
+        "name": "Palm · entrance B",
+        "visible": false,
+        "collider": false
+      },
+      {
+        "name": "Palm · entrance H",
+        "visible": false,
+        "collider": false
+      }
+    ]
+  }
+]

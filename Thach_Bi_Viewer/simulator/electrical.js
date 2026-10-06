@@ -189,7 +189,7 @@
       mesh.name = 'Electrical · ' + route.name; mesh.userData.electricalId = route.id; layer.add(mesh); objects.set(route.id, mesh);
     }
     if (view.selected && !routes.some(r => r.id === view.selected) && !SOURCES[view.selected]) view.selected = null;
-    for (const fx of SIM.fixtures.values()) fx.root.visible = !fx.item.hidden && (view.mode !== 'systems' || wired(fx.item));
+    for (const fx of SIM.fixtures.values()) fx.root.visible = SIM.fixtureVisible(fx.item) && (view.mode !== 'systems' || wired(fx.item));
     applyVisibility(); updateHighlight(); SIM.emit('electrical');
   }
   function init() {
@@ -215,7 +215,7 @@
     SIM.on('frame', () => {
       // Re-apply isolation after the viewer's frame and material switches.
       if (savedVisibility) for (const [o] of savedVisibility) o.visible = false;
-      if (savedVisibility) for (const fx of SIM.fixtures.values()) fx.root.visible = !fx.item.hidden && wired(fx.item);
+      if (savedVisibility) for (const fx of SIM.fixtures.values()) fx.root.visible = SIM.fixtureVisible(fx.item) && wired(fx.item);
     });
     const settings = document.getElementById('settingsPanel');
     if (settings) {
@@ -252,7 +252,7 @@
       savedVisibility = null;
     }
     // Non-powered decorative simulator objects also vanish during isolation.
-    for (const fx of SIM.fixtures.values()) fx.root.visible = !fx.item.hidden && (mode !== 'systems' || wired(fx.item));
+    for (const fx of SIM.fixtures.values()) fx.root.visible = SIM.fixtureVisible(fx.item) && (mode !== 'systems' || wired(fx.item));
     const checkbox = document.getElementById('electricalOnlyToggle'); if (checkbox) checkbox.checked = mode === 'systems';
     applyVisibility(); SIM.emit('electrical');
   }

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Glass review</title>
+<style>body{margin:0;background:#eee;font:12px system-ui}nav{height:36px;display:flex;gap:6px;align-items:center;padding:0 10px}iframe{border:0;width:100vw;height:calc(100vh - 36px)}button{cursor:pointer}output{margin-left:auto;white-space:pre-wrap}</style>
+<nav><button data-camera="inner">Inner window</button><button data-camera="entrance">Entrance glass</button><button data-camera="nave">Nave</button><button id="two">2 blocks</button><button id="four">4 blocks</button><button id="clear">Clear</button><button id="colour">Coloured</button><button id="day">Day</button><button id="night">Evening</button><button id="check">Check</button><output id="report">Loading</output></nav>
+<iframe src="../../Thach_Bi_Viewer/OPEN_CHURCH.html" title="Church viewer"></iframe>
+<script>
+const frame=document.querySelector('iframe'),report=document.getElementById('report');
+const cameras={inner:[[7.725,2.8,2.2],[7.725,2.5,7.36]],entrance:[[-7,4.1,0],[2.43,3.8,0]],nave:[[8.2,2.4,-5.25],[27,3,0]]};
+function check(){
+  const w=frame.contentWindow,c=w.church,s=w.CHURCH_SIMULATOR,nodes=[];
+  c.scene.getObjectByName('Single shared architectural reference').traverse(o=>nodes.push(o));
+  const palms=s.state.items.filter(it=>it.type==='palm');
+  const bodies=nodes.filter(o=>/window clear glass body$/.test(o.name));
+  const heads=nodes.filter(o=>/coloured oval$|fixed fanlight$|stained-glass fanlight$|rose-window infill$/.test(o.name));
+  const data={glass:frame.contentDocument.getElementById('glassMode').value,blocks:w.CHURCH_PLANNING.state().blocks,clearBodies:bodies.length,clearBodyMaps:bodies.filter(o=>o.material.map).length,colouredHeads:heads.filter(o=>o.material.map).length,palms:palms.map(it=>({name:it.name,visible:s.fixtures.get(it.id).root.visible,collider:c.colliders.some(o=>o.label===it.name)}))};
+  report.textContent=JSON.stringify(data);report.dataset.result=JSON.stringify(data);return data;
+}
+for(const button of document.querySelectorAll('[data-camera]'))button.onclick=()=>{
+  const c=frame.contentWindow.church,[pos,target]=cameras[button.dataset.camera];
+  c.goTo('nave',{mode:'explore',instant:true});c.orbitCamera.position.set(...pos);c.controls.target.set(...target);c.controls.update();check();
+  if(button.dataset.camera==='inner')frame.contentWindow.CHURCH_REALISM.setOpenings('open');
+};
+document.getElementById('two').onclick=()=>{frame.contentWindow.CHURCH_PLANNING.setLayout(2);check()};
+document.getElementById('four').onclick=()=>{frame.contentWindow.CHURCH_PLANNING.setLayout(4);check()};
+for(const [id,value]of [['clear','clear'],['colour','stained']])document.getElementById(id).onclick=()=>{const e=frame.contentDocument.getElementById('glassMode');e.value=value;e.dispatchEvent(new Event('change'));check()};
+document.getElementById('day').onclick=()=>frame.contentWindow.church.setLighting('day');
+document.getElementById('night').onclick=()=>frame.contentWindow.church.setLighting('evening');
+document.getElementById('check').onclick=check;
+const timer=setInterval(()=>{if(frame.contentWindow.church?.ready){clearInterval(timer);check()}},200);
+</script></html>

@@ -49,6 +49,32 @@ for(const sign of [-1,1]) {
 }
 assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
 assert.equal(nodes.filter(o=>o.name==='Outer door fixed fanlight').length,6);
+const clearBodies=nodes.filter(o=>/^(Inner|Outer) window clear glass body$/.test(o.name));
+assert.equal(clearBodies.filter(o=>o.name.startsWith('Inner')).length,12);
+assert.equal(clearBodies.filter(o=>o.name.startsWith('Outer')).length,28);
+assert(!nodes.some(o=>/^Proposed coloured glazing|^Stained-glass window/.test(o.name)),'Full-height decorative glazing must be removed');
+const innerHeads=nodes.filter(o=>o.name==='Inner window coloured oval');
+assert.equal(innerHeads.length,12);
+assert.equal(nodes.filter(o=>o.name==='Inner doorway coloured oval').length,6);
+assert.equal(nodes.filter(o=>o.name==='Entrance door coloured oval').length,3);
+const colouredHeads=nodes.filter(o=>/coloured oval$|fixed fanlight$|stained-glass fanlight$|rose-window infill$/.test(o.name));
+assert.equal(colouredHeads.length,102);
+for(const o of innerHeads){o.geometry.computeBoundingBox();near(o.geometry.boundingBox.min.y,3.171,'Inner oval spring');near(o.geometry.boundingBox.max.y,4.311,'Inner oval crown');}
+for(const o of clearBodies){
+  assert.equal(o.material,mat.glass);assert.equal(o.material.map,null);
+  assert(o.material.opacity<.2,'Window bodies must stay transparent by default');
+}
+for(const o of colouredHeads){
+  assert(o.material.map,'All curved window and door heads start coloured');
+  assert(o.material.isMeshPhysicalMaterial&&o.material.bumpMap&&o.material.roughnessMap,'Glass uses physical reflections and surface maps');
+  const uv=o.geometry.attributes.uv;
+  for(let i=0;i<uv.count;i++)assert(uv.getX(i)>=-.001&&uv.getX(i)<=1.001&&uv.getY(i)>=-.001&&uv.getY(i)<=1.001,'Artwork UVs must fit each opening');
+}
+for(const kind of ['clear','stained','clear','stained']){
+  realism.setGlass(kind);
+  for(const o of colouredHeads)assert.equal(!!o.material.map,kind==='stained');
+  for(const o of clearBodies)assert.equal(o.material.map,null,'Colour toggle never adds artwork to a window body');
+}
 assert(nodes.filter(o=>o.name==='Schematic bell louver').every(o=>o.material===mat.wood));
 for(const x of [16.725,34.725,46.425])for(const sign of [-1,1])near(realism.floorHeight(x,sign*11.7),-.32,'Side landing navigation height');
 // Both directions on the double stair must rise monotonically to the landing.
