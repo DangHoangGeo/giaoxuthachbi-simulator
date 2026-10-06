@@ -33,7 +33,7 @@
   const buffers = {};
   const chains = new Map();
   let talker = null, noiseBed = null, fanNodes = new Map(), lastUpdate = 0, noiseBuffer = null;
-  const A = SIM.audio = { state, SOURCES, renderPanel, play, stop, get context() { return ctx; } };
+  const A = SIM.audio = { state, SOURCES, renderPanel, play, stop, outputLevels, get context() { return ctx; } };
 
   /* ------------------------------------------------------------- graph */
   function ensureContext() {
@@ -183,7 +183,7 @@
     const speakers = SIM.speakers();
     const report = [];
     const apply = (ch, src, spec, on) => {
-      const a = P.sourceArrivals(src, spec, rx, room, occ, P.FLAT_SPECTRUM);
+      const a = P.sourceArrivals(src, spec, rx, room, occ, P.FLAT_SPECTRUM, SIM.roomCouplingAt(rx));
       const gLo = Math.sqrt(bandMean(a.direct, [1, 2])) * ref, gHi = Math.sqrt(bandMean(a.direct, [3, 4, 5])) * ref;
       const send = Math.sqrt(bandMean(a.reflected, [2, 3, 4])) * ref;
       setParam(ch.gLo.gain, gLo); setParam(ch.gHi.gain, gHi); setParam(ch.send.gain, send);
@@ -442,14 +442,28 @@
 
   /* --------------------------------------------------------------- meter */
   let meterEl = null, meterData = null;
+  // Sample the actual signal after headphone volume and the limiter. Digital
+  // dBFS is kept separate from the room model's acoustic estimates in dBA.
+  // Reading the meter never starts playback or requests a microphone.
+  function outputLevels() {
+    if (!analyser || !state.playing || ctx.state !== 'running') return null;
+    meterData ||= new Float32Array(analyser.fftSize);
+    analyser.getFloatTimeDomainData(meterData);
+    let squares = 0, peak = 0;
+    for (const v of meterData) {
+      squares += v * v;
+      peak = Math.max(peak, Math.abs(v));
+    }
+    const rms = Math.sqrt(squares / meterData.length);
+    return {
+      rmsDb: rms > 0 ? 20 * Math.log10(rms) : -Infinity,
+      peakDb: peak > 0 ? 20 * Math.log10(peak) : -Infinity
+    };
+  }
   function meterLoop() {
     requestAnimationFrame(meterLoop);
     if (!meterEl || !analyser || !meterEl.isConnected) return;
-    meterData ||= new Float32Array(analyser.fftSize);
-    analyser.getFloatTimeDomainData(meterData);
-    let peak = 0;
-    for (const v of meterData) peak = Math.max(peak, Math.abs(v));
-    const dbfs = 20 * Math.log10(peak || 1e-6);
+    const dbfs = outputLevels()?.peakDb ?? -Infinity;
     meterEl.style.width = Math.max(0, Math.min(100, (dbfs + 50) * 2)) + '%';
     meterEl.classList.toggle('hot', dbfs > -3);
   }
@@ -471,7 +485,7 @@
       ${state.error ? `<p class="sim-error">${state.error}</p>` : ''}
       <div class="sim-meter" aria-hidden="true"><span id="simMeter"></span></div>
       <div class="sim-fields">
-        <label class="sim-field wide"><span>Headphone volume</span><span class="sim-range"><input type="range" id="simAudioVolume" min="0" max="2" step="0.05" value="${state.volume}"><output>${Math.round(state.volume * 100)} %</output></span></label>
+        <label class="sim-field wide"><span>Headphone volume</span><span class="sim-range"><input type="range" id="simAudioVolume" aria-label="Headphone volume" min="0" max="2" step="0.05" value="${state.volume}"><output>${Math.round(state.volume * 100)} %</output></span></label>
         <label class="sim-field wide"><span>Sound system level (mixer)</span><span class="sim-range"><input type="range" data-setting="mixerDb" min="-20" max="10" step="0.5" value="${s.mixerDb}"><output>${s.mixerDb > 0 ? '+' : ''}${s.mixerDb} dB</output></span></label>
       </div>
       <label class="switch-row"><span>Priest’s own voice at the microphone<small>Unamplified talker, 62 dBA at 1 m</small></span><input type="checkbox" data-setting="talker" ${s.talker ? 'checked' : ''}></label>

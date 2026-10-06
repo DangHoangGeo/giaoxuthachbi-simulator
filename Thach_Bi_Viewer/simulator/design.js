@@ -197,7 +197,13 @@
       // Rear gable from the rear corners of the veranda roofs.
       ledgeFlood(`Festival flood · rear gable ${side(s)}`, 'L7', [52.6, 6.55, s * 9.8], [53.3, 12.5, s * 1.5], 40, 9000, false);
     }
-    for (const s of [-1, 1]) ledgeFlood(`Central gable flood · ${side(s)}`, 'L6', [ledge, 8.4, s * 7.75], [2.2, 13.5, -s * 0.8], 26, 4500);
+    // Overlapping lower and upper washes cover the full shrine, including the
+    // entablature between the doors and niche and the +21.72 m cross ornament.
+    // Both pairs are mounted on the towers' existing inner front cornices.
+    for (const s of [-1, 1]) {
+      ledgeFlood(`Central gable flood · ${side(s)}`, 'L6', [ledge, 8.4, s * 7.75], [2.2, 12.8, -s * 0.8], 60, 6500);
+      ledgeFlood(`Central crown wash · ${side(s)}`, 'L6', [-0.035, 15.88, s * 7.9], [2.2, 18.6, 0], 55, 6000);
+    }
 
     // Fans · 1.42 m ceiling fans mid-bay over the two side aisles (between the
     // centre and outer blocks): the 30°/40° reading beams miss the blades, and
@@ -319,9 +325,24 @@
     return [...items.filter(it => !reviewedLight(it)), ...revised];
   }
 
+  const facadeRevision = '2026-10-05-continuous-facade-wash-2';
+  const facadeLight = it => /^(Façade wash|Central gable flood|Central crown wash) ·/.test(it.name);
+  function upgradeFacade(items, design, scene = {}) {
+    const byName = new Map(items.filter(facadeLight).map(it => [it.name, it]));
+    const revised = design.filter(facadeLight).map(raw => {
+      const prior = byName.get(raw.name);
+      const neighbour = prior || items.find(it => it.circuit === raw.circuit);
+      const level = scene[raw.circuit];
+      return { ...raw, ...(prior ? { id: prior.id, hidden: prior.hidden } : {}),
+        on: prior ? prior.on : level !== undefined ? level > 0 : neighbour?.on ?? true,
+        dim: prior?.dim ?? (level > 0 ? Math.min(1, level) : neighbour?.dim ?? 1) };
+    });
+    return [...items.filter(it => !facadeLight(it)), ...revised];
+  }
+
   // Bump when the recommended design changes: browsers holding a layout saved
   // from an older version then load the new design (the old one is kept aside).
   // This lighting review migrates only the reviewed fixtures, preserving the
   // rest of saved layouts. A removed fitting stays removed after the revision.
-  window.CHURCH_SIM_DESIGN = { recommended, aim, upgradeLighting, lightingRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, version: '2026-10-16-tower-board' };
 })();

@@ -125,8 +125,12 @@ All six exterior side doors now have two matching lanterns. Only the middle
 front door has a decorative pair; both service-room doors also have pairs.
 The towers have matching warm washes on their front and outer faces, belfries
 and domes, with projecting arms keeping the heads clear of the masonry.
-Rendered lights now remain at actual lamp positions. Reduced graphics selects
-nearby lamps instead of merging them at midpoints near the speakers.
-Simulator → Settings → Lights drawn in 3D → High shows more lamps at once.
+Every switched-on lamp retains illumination and reflections at every distance.
+Additional surface lighting is drawn from real lamp positions, never from
+midpoints near speakers. Switches, dimmers and layout edits update all effects.
+Simulator → Settings → Rendering quality keeps full resolution, illumination,
+reflections and the same shadow sources. Room brightness follows surfaces,
+not camera location. Fixed exposure is the default; automatic eye adaptation
+is optional and deliberately changes brightness while moving.
 Saved layouts receive only the reviewed lights once; other edits are retained.
 Lighting schedule: ../docs/systems/lighting.md.

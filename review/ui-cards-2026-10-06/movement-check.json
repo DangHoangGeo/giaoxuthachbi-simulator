@@ -1,0 +1,15 @@
+{
+  "before": {
+    "center": {
+      "x": 668,
+      "y": 831
+    },
+    "map": "translate(90 156.64) rotate(-90)"
+  },
+  "after": {
+    "knob": "translate(0px, 0px)",
+    "map": "translate(90 155.80494117647058) rotate(-90)"
+  },
+  "moved": true,
+  "knobReset": true
+}

@@ -64,11 +64,11 @@
   };
   const QUALITY = {
     // Every drawn light is evaluated for every pixel, so counts drive frame rate.
-    // Nearby visible lamps receive the budget; emitter positions are never moved.
-    // The analysis uses all fixtures, including those outside the render budget.
-    high: { points: 24, spots: 40, shadows: 2, label: 'High · up to 66 lights (strong graphics card)' },
-    balanced: { points: 8, spots: 14, shadows: 1, label: 'Balanced · up to 23 lights' },
-    fast: { points: 4, spots: 6, shadows: 0, label: 'Fast · up to 10 lights (smoothest)' }
+    // Both rendering paths use the same physical shading. Quality changes the
+    // native/texture split; the two shadow sources and screen resolution stay fixed.
+    high: { points: 24, spots: 40, shadows: 2, label: 'High · strong graphics card' },
+    balanced: { points: 8, spots: 14, shadows: 2, label: 'Balanced' },
+    fast: { points: 4, spots: 6, shadows: 2, label: 'Fast · lighter rendering' }
   };
 
   const defaults = () => ({
@@ -76,9 +76,24 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', stableLightingRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
+  const estimateLimits = {
+    maintenance: [0, 1], occupancy: [0, 1], openings: [0, 1], tempC: [-20, 50], rh: [0, 100],
+    ambientDbA: [0, 120], talkerDbA: [0, 100], micDistance: [0.01, 10], mixerDb: [-60, 24],
+    serviceHours: [0.25, 12], servicesPerMonth: [1, 120], tariff: [0, 10000]
+  };
+  function settingValue(key, value) {
+    const fallback = defaults()[key];
+    if (typeof fallback === 'boolean') return typeof value === 'boolean' ? value : fallback;
+    if (typeof fallback !== 'number') return value;
+    const n = value === '' || value === null ? NaN : Number(value);
+    if (!Number.isFinite(n)) return fallback;
+    const bounds = estimateLimits[key];
+    const result = bounds ? P.clamp(n, ...bounds) : n;
+    return key === 'servicesPerMonth' ? Math.round(result) : result;
+  }
 
   const SIM = window.CHURCH_SIMULATOR = {
     prepare, bindBatches, start, frame, CIRCUITS, BOARDS, QUALITY, state, fixtures,
@@ -117,6 +132,9 @@
   // Inside the church: the nave and sanctuary, plus the two 9–10 wings under their own roof.
   function isInterior(p) { return p[0] > 2.3 && p[0] < 53.1 && p[1] < 12.5 && (Math.abs(p[2]) < 7.3 || (inWing(p[0], p[2]) && p[1] < 9.6)); }
   function isCovered(p) { return p[0] > 2.3 && p[0] < 53.1 && (Math.abs(p[2]) < 10.6 || (p[0] > 37 && p[0] < 44 && Math.abs(p[2]) < 13)); }
+  // Shared planning approximation for sound received from the enclosed room.
+  // A veranda is partly coupled; an open courtyard has no enclosed reverberant field.
+  function roomCouplingAt(p) { return isInterior(p) ? 1 : isCovered(p) ? 0.3 : 0; }
   // Lowest structure above a point: beam undersides, veranda slab, roof lining.
   function structureAbove(x, z, y = 0) {
     const az = Math.abs(z);
@@ -384,7 +402,7 @@
     const out = { ...q };
     while (need(out) > max && (out.spots > 4 || out.points > 4)) {
       out.spots = Math.max(4, Math.floor(out.spots * 0.8)); out.points = Math.max(4, Math.floor(out.points * 0.8));
-      out.shadows = Math.min(out.shadows, 1);
+      // Preserve the same shadow slots on every supported light budget.
     }
     return out;
   }
@@ -393,6 +411,8 @@
     if (pool) for (const l of [...pool.points, ...pool.spots, ...pool.shadows]) { scene.remove(l); if (l.target) scene.remove(l.target); l.dispose?.(); }
     const light = new URLSearchParams(location.search).get('graphics') === 'light';
     const q = uniformBudget(QUALITY[light && qualityKey !== 'fast' ? 'fast' : qualityKey] || QUALITY.balanced);
+    // Keep the viewer's original sharpness even when the light budget adapts.
+    if (ctx.renderer.setPixelRatio) ctx.renderer.setPixelRatio(light ? 1 : Math.min(window.devicePixelRatio || 1, 1.5));
     pool = { key: qualityKey, size: q, points: [], spots: [], shadows: [] };
     for (let i = 0; i < q.points; i++) {
       const l = new T.PointLight(0xffffff, 0, 0, 2); l.name = 'Simulator point light ' + i; l.castShadow = false;
@@ -476,6 +496,7 @@
       const m = new T.MeshStandardMaterial({ color: d.color, metalness: d.metalness ?? 0, roughness: d.roughness ?? 0.6 });
       m.name = 'Simulator · ' + key;
       matLib[key] = m;
+      SIM.persistentLighting?.bindMaterial(m);
     }
     return matLib[key];
   }
@@ -689,8 +710,11 @@
     // From outside, interior fittings are hidden by the walls and roof; from
     // inside, the façade floods do not reach the nave. Draw the side in view.
     const emitters = all.filter(e => e.lumens >= 60 && (viewOutside ? !e.interior : e.interior || e.kind === 'point'));
-    const wantShadow = chooseRenderEmitters(emitters.filter(e => e.kind === 'spot' && e.shadow), pool.shadows.length);
-    const shadowSet = new Set(wantShadow.slice(0, pool.shadows.length));
+    // Keep physical shadow sources fixed, including slots for switched-off lamps.
+    // Their shadows must never jump to a nearer lamp when the viewer moves.
+    const shadowIds = state.items.filter(it => it.shadow && !it.hidden).slice(0, pool.shadows.length).map(it => it.id);
+    const wantShadow = shadowIds.map(id => all.find(e => e.id === id && e.kind === 'spot' && e.shadow));
+    const shadowSet = new Set(wantShadow.filter(Boolean));
     const spots = chooseRenderEmitters(emitters.filter(e => e.kind === 'spot' && !shadowSet.has(e)), pool.spots.length);
     const points = chooseRenderEmitters(emitters.filter(e => e.kind === 'point'), pool.points.length);
     const assign = (light, e) => {
@@ -709,8 +733,10 @@
     pool.points.forEach((l, i) => assign(l, points[i]));
     pool.spots.forEach((l, i) => assign(l, spots[i]));
     const shadows = [...shadowSet];
-    pool.shadows.forEach((l, i) => assign(l, shadows[i]));
-    pool.stats = { emitters: emitters.length, points: points.length, spots: spots.length, shadows: shadows.length, culled: emitters.length - points.length - spots.length - shadows.length };
+    pool.shadows.forEach((l, i) => assign(l, wantShadow[i]));
+    const detailed = new Set([...points, ...spots, ...shadows]);
+    SIM.persistentLighting.update(all, detailed, Math.PI / adaptNow);
+    pool.stats = { emitters: all.length, points: points.length, spots: spots.length, shadows: shadows.length, persistent: all.length - detailed.size, culled: 0 };
     if (renderCamera) lastPoolView = { pos: renderCamera.position.clone(), rotation: renderCamera.quaternion.clone() };
     poolScale = 0;
     scalePool();
@@ -721,6 +747,7 @@
     const S = Math.PI / adaptNow;
     if (Math.abs(S - poolScale) < 1e-6 * S) return;
     poolScale = S;
+    SIM.persistentLighting.scale(S);
     for (const l of [...pool.points, ...pool.spots, ...pool.shadows]) l.intensity = l.userData.emitter && l.userData.active !== false ? l.userData.emitter.cd * S : 0;
   }
   function chooseRenderEmitters(list, max) {
@@ -915,19 +942,24 @@
   function prepare(c) {
     ctx = c; T = c.THREE;
     Kit = CAT.makeKit(T);
-    try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); if (saved?.settings) Object.assign(state.settings, saved.settings); } catch { /* storage unavailable */ }
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      if (saved?.settings) for (const key of Object.keys(defaults())) if (saved.settings[key] !== undefined) state.settings[key] = settingValue(key, saved.settings[key]);
+    } catch { /* storage unavailable */ }
     computeGeometry(c.data);
     correctStructure();
     detachLegacyFixtures();
     buildProxies();
     simGroup = new T.Group(); simGroup.name = 'Simulator fixtures — switchable'; c.scene.add(simGroup);
     overlayGroup = new T.Group(); overlayGroup.name = 'Simulator analysis overlay'; c.scene.add(overlayGroup);
+    SIM.persistentLighting.prepare(c);
     createPool(state.settings.quality);
     createHalos();
     c.data.simulator = { status: 'Interactive planning layer; analysis values are estimates', asDrawnFrame: { mainTie: '0.30 × 0.59 m at +8.59…+9.18 m', sideBeams: '0.22 × 0.34 m at +6.66…+7.00 m', purlinSpacing: '~0.50 m' }, movedProposedMembers: GEO.trussMoved };
     c.data.assumptions.push('Timber frame now follows section sheet 4 as measured on the vector PDF: main tie beam +8.59…+9.18 m (0.59 m deep), side beams +6.66…+7.00 m from the C/G piers to the D/E shafts, purlins about 0.50 m apart. The earlier king posts, diagonal braces and knee braces were not on the drawing and are now an optional "proposed bracing" layer.');
   }
   function bindBatches(batches) {
+    for (const batch of batches.values()) SIM.persistentLighting.bindObject(batch);
     trussBatch = batches.get(proposedTruss);
     setTrussVisible(state.settings.showTruss);
     frameBatches = { drawn: batches.get(drawnFrame), reference: batches.get(referenceFrame) };
@@ -1021,7 +1053,11 @@
     if (!pos) return null;
     const prefix = { light: 'L', fan: 'F', speaker: 'S', decor: 'D' }[type.cat] || 'X';
     const params = {};
-    for (const [k, p] of Object.entries(type.params || {})) params[k] = raw.params?.[k] ?? p.value;
+    for (const [k, p] of Object.entries(type.params || {})) {
+      const value = raw.params?.[k] ?? p.value;
+      params[k] = p.options ? (Object.hasOwn(p.options, value) ? value : p.value)
+        : p.type === 'bool' ? !!value : P.clamp(num(value, p.value), p.min ?? -Infinity, p.max ?? Infinity);
+    }
     const mount = type.mounts.includes(raw.mount) ? raw.mount : type.mounts[0];
     const it = {
       id: typeof raw.id === 'string' && raw.id ? raw.id : newId(prefix),
@@ -1061,7 +1097,9 @@
     const it = SIM.item(id);
     if (!it) return null;
     const before = JSON.stringify({ params: it.params, mount: it.mount });
-    Object.assign(it, patch);
+    const normalized = normalizeItem({ ...it, ...patch });
+    if (!normalized) return null;
+    Object.assign(it, normalized);
     if (patch.pos && it.mount === 'pendant' && patch.anchorY === undefined) {
       const above = structureAbove(it.pos[0], it.pos[2], it.pos[1] + 0.05);
       if (above) it.anchorY = Math.max(above.y, it.pos[1]);
@@ -1210,7 +1248,7 @@
     if (obj.schema && obj.schema > SCHEMA) throw new Error('This layout was saved by a newer simulator version.');
     const valid = obj.items.map(normalizeItem).filter(Boolean);
     if (!valid.length && obj.items.length) throw new Error('No recognisable fixtures in this file.');
-    if (obj.settings) for (const k of Object.keys(defaults())) if (obj.settings[k] !== undefined) state.settings[k] = obj.settings[k];
+    if (obj.settings) for (const k of Object.keys(defaults())) if (obj.settings[k] !== undefined) state.settings[k] = settingValue(k, obj.settings[k]);
     if (Array.isArray(obj.customScenes)) state.customScenes = obj.customScenes.filter(s => s && s.name && s.items).slice(0, 20);
     const prev = lastSnapshot;
     restore(JSON.stringify(valid));
@@ -1243,17 +1281,22 @@
   /* ------------------------------------------------------ power & energy */
   function itemWatts(it, rated = false) {
     const t = CAT.byId[it.type];
-    if (it.hidden) return 0;
+    if (!t || it.hidden || (!rated && !it.on)) return 0;
+    const dim = P.clamp(Number.isFinite(it.dim) ? it.dim : 1, 0, 1);
+    if (t.light?.wattsPerBulb) return t.light.wattsPerBulb * CAT.bulbCount(it.params) * (rated ? 1 : dim);
     // Strings are rated per metre (no lumen rating to scale by).
-    if (t.light?.wattsPerMetre) return rated || it.on ? t.light.wattsPerMetre * (it.params?.length || 12) * (rated ? 1 : (it.dim ?? 1)) : 0;
-    if (t.light) return rated ? t.light.watts * ((it.lumens ?? t.light.lumens) / t.light.lumens) : (it.on ? t.light.watts * ((it.lumens ?? t.light.lumens) / t.light.lumens) * (0.06 + 0.94 * (it.dim ?? 1)) : 0);
-    if (t.fan) { const n = it.speed ?? 2, sp = t.fan.speeds[Math.max(0, Math.min(t.fan.speeds.length, n) - 1)]; return rated ? t.fan.speeds[t.fan.speeds.length - 1].watts : (it.on && n > 0 ? sp.watts : 0); }
+    if (t.light?.wattsPerMetre) return t.light.wattsPerMetre * Math.max(0, Number.isFinite(it.params?.length) ? it.params.length : 12) * (rated ? 1 : dim);
+    if (t.light) {
+      const lumens = Math.max(0, Number.isFinite(it.lumens) ? it.lumens : t.light.lumens);
+      return t.light.lumens > 0 ? t.light.watts * lumens / t.light.lumens * (rated ? 1 : 0.06 + 0.94 * dim) : 0;
+    }
+    if (t.fan) { const n = P.clamp(Math.round(Number.isFinite(it.speed) ? it.speed : 2), 0, t.fan.speeds.length), sp = t.fan.speeds[Math.max(0, n - 1)]; return rated ? t.fan.speeds[t.fan.speeds.length - 1].watts : (n > 0 ? sp.watts : 0); }
     if (t.speaker) {
       if (t.mic) return 0;
       const spec = t.speaker, level = spec.nominal + (it.level ?? 0) + state.settings.mixerDb;
       const peak = Math.pow(10, (level + 10 - spec.sensitivity) / 10);
       const avg = Math.min(peak, spec.ratedW) / 8 / 0.7 + (spec.active ? 25 : 6);
-      return rated ? (spec.active ? spec.ratedW / 2 : spec.ratedW / 3) : (it.on ? avg : (spec.active ? 4 : 0));
+      return rated ? (spec.active ? spec.ratedW / 2 : spec.ratedW / 3) : avg;
     }
     return 0;
   }
@@ -1350,6 +1393,7 @@
   /* ---------------------------------------------------- settings & camera */
   function setSetting(key, value) {
     if (!(key in state.settings)) return;
+    value = settingValue(key, value);
     state.settings[key] = value;
     if (key === 'quality') { createPool(value); }
     if (key === 'showTruss') setTrussVisible(value);
@@ -1415,7 +1459,7 @@
     const next = state.settings.quality === 'high' ? 'balanced' : 'fast';
     slowTime = fpsWindow = 0;
     setSetting('quality', next);
-    emit('toast', `Lighting switched to “${QUALITY[next].label.split(' ·')[0]}” for smoother walking (Settings → Lights drawn in 3D).`);
+    emit('toast', `Rendering switched to “${QUALITY[next].label.split(' ·')[0]}” for smoother walking. All lamps keep their illumination, reflections and shadow sources.`);
   }
   function environmentFrame(dt, camera) {
     const s = state.settings;
@@ -1429,19 +1473,22 @@
       target = local ? P.clamp(local * 0.75, 20, 900) : (cameraInside > 0.5 ? s.adaptLux : 30);
       if (cameraInside < 0.5) target = Math.min(target, 40);
     }
-    adaptNow += (target - adaptNow) * Math.min(1, (dt || 1) * 1.5);
+    if (s.autoExposure && envMode === 'evening') adaptNow += (target - adaptNow) * Math.min(1, (dt || 1) * 1.5);
+    else adaptNow = target;
     if (pool) scalePool();
     const { hemisphere, sun, fill, scene } = ctx;
     if (envMode === 'evening') {
       const S = Math.PI / adaptNow;
       const Eind = P.indirectIlluminance(interiorFlux, roomModel().light);
       ambientNow = Eind;
-      const inside = Eind * S * 0.95, outside = 1.6 * S;
-      hemisphere.intensity = inside * cameraInside + outside * (1 - cameraInside);
-      hemisphere.color.set(cameraInside > 0.5 ? '#fff1dc' : '#9bb1cf');
-      hemisphere.groundColor.set(cameraInside > 0.5 ? '#d9c3a3' : '#4c4038');
+      SIM.persistentLighting.indoorAmbient(Eind * 0.95);
+      hemisphere.intensity = 1.6 * S;
+      hemisphere.color.set('#9bb1cf');
+      hemisphere.groundColor.set('#4c4038');
       sun.intensity = 0.35 * S; fill.intensity = 0.15 * S;
       scene.environmentIntensity = 0.04;
+    } else {
+      SIM.persistentLighting.indoorAmbient(0);
     }
   }
 
@@ -1767,6 +1814,16 @@
       importLayout({ ...previous, items }, { record: false });
     }
     state.settings.lightingRevision = D.lightingRevision;
+    if (loaded && state.settings.facadeRevision !== D.facadeRevision) {
+      const previous = exportLayout();
+      try { localStorage.setItem(STORAGE_KEY + '.before-facade-review', JSON.stringify(previous)); } catch {}
+      importLayout({ ...previous, items: D.upgradeFacade(state.items, D.recommended(GEO, SIM), SCENES[state.scene]) }, { record: false });
+    }
+    state.settings.facadeRevision = D.facadeRevision;
+    if (state.settings.stableLightingRevision !== '2026-10-06-physical-lighting') {
+      state.settings.autoExposure = false;
+      state.settings.stableLightingRevision = '2026-10-06-physical-lighting';
+    }
     saveNow();
     lastSnapshot = snapshot();
     installPointer();
@@ -1829,6 +1886,7 @@
   SIM.resolvePlacement = (typeId, ev) => resolvePlacement(CAT.byId[typeId], rayFromEvent(ev));
   SIM.itemWatts = itemWatts;
   SIM.isInterior = isInterior;
+  SIM.roomCouplingAt = roomCouplingAt;
   SIM.inWing = inWing;
   SIM.liningY = liningY;
 })();

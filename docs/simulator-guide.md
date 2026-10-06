@@ -8,6 +8,8 @@ The simulator turns the existing 3D model into a working test bench. You can pla
 
 All values are transparent engineering estimates for comparing options. They are not certified lighting, acoustic, airflow or electrical calculations. Confirm the final choices with the professional tools and site measurements listed at the end.
 
+**Current estimate audit (6 October 2026):** see the [calculation review and verification results](../review/stats-audit-2026-10-06/README.md). Older numerical benchmarks below describe earlier layouts and formulas. The current model samples 380 seats; the audit records the revised results and remaining design shortfalls.
+
 ---
 
 ## 1. Is the model to scale? Why did the interior feel cramped?
@@ -123,7 +125,7 @@ The **scenes** (top of the panel) follow the plan's operating scenes: *Full serv
 
 **Analysis.** Colour the plan with *Light*, *Speech level*, *Clarity (STI)*, *Air speed* or *Noise*, then use *Plan view (roof off)* to see it from above. Hover the plan for values. In Walk mode, live chips at the bottom show the values where you stand: light on a book at the seats, or light on the floor in aisles and verandas, where the brief's circulation target applies. The tab also shows:
 
-- results at the 300 sampled seats against the brief targets;
+- results at the 380 sampled seats against the brief targets;
 - reverberation time per octave with controls for congregation size, open doors, roof finish, entrance hall finish and outdoor noise;
 - **design checks:**
   - light shining through fan blades (strobe)
@@ -163,15 +165,15 @@ Press Play and walk or sit. Each loudspeaker reaches you with its real distance 
 
 **Room acoustics.** The volume (≈ 7 450 m³, including the entrance hall that opens into the nave) and surface schedule come from the model. Absorption coefficients are typical published values for plaster, stone, timber, glass, open doorways, empty or occupied pews, the roof finishes and slatted acoustic panels. Reverberation is calculated by Eyring per octave with ISO 9613-1 air absorption at 28 °C and 75 % RH. Reflected energy follows Barron's revised theory. Energy a loudspeaker aims straight at the congregation is partly absorbed at first incidence, which favours directional speakers aimed at people. Speakers in the verandas reach the nave through its openings.
 
-**Loudspeakers and STI.** Each speaker has −6 dB coverage angles per octave, a front-to-back ratio, sensitivity, rated power, frequency response, and (for columns) line-array near-field behaviour. Columns and walls screen high frequencies. STI follows IEC 60268-16 (male weighting): an MTF from the energy-time response of every arrival (direct plus exponential reverberant tail, with each arrival's delay), times the signal-to-noise factor, auditory masking and reception threshold. This is a statistical model, not ray tracing. Confirm the design in EASE/ODEON/CATT and by STIPA measurement on site.
+**Loudspeakers and STI.** Each speaker has −6 dB coverage angles per octave, a front-to-back ratio, sensitivity, rated power, frequency response, and (for columns) line-array near-field behaviour. The stated source level is normalized to on-axis direct dBA at 1 m, including the frequency response and line-source reference. Columns and walls screen high frequencies. STI approximates IEC 60268-16 (male weighting): an MTF from the energy-time response of every arrival (direct plus exponential reverberant tail, with each arrival's delay), times the signal-to-noise factor, auditory masking and reception threshold. Speech and noise seating averages use acoustic energy, rather than averaging decibels arithmetically. Enclosed reverberation is excluded at courtyard receivers. This is a statistical planning model. Confirm the design in EASE/ODEON/CATT and by STIPA measurement on site.
 
 **Feedback.** Each loudspeaker's direct and reverberant sound returning to a cardioid microphone is compared with the talker 0.4 m away, with a 6 dB stability margin. A headset microphone gains roughly 12–18 dB.
 
-**Air.** Ceiling fans are modelled as a down-jet that spreads with distance, plus a radial floor jet whose momentum depends on fan flow and height. Wall and pedestal fans are tilted jets, time-averaged over their oscillation. The cooling effect is an approximate SET-based figure for sedentary people in light clothing. Fans move air but do not lower its temperature or replace ventilation. Use the CBE fan tool and a full-scale trial.
+**Air.** Ceiling fans are modelled as a down-jet that spreads with distance, plus a radial floor jet whose momentum depends on fan flow and height. Wall and pedestal fans are tilted jets, time-averaged over their oscillation. The HUD, seat samples and plan share the same seating obstruction allowance; solid walls stop the direct jet. Air is sampled at 0.6 m above the floor and excludes natural wind. The cooling effect is an empirical interpolation for warm, seated conditions, rather than a SET calculation. Fans move air but do not lower its temperature or replace ventilation. Use the CBE fan tool and a full-scale trial.
 
-**Electricity.** Rated watts × dimmer, fan speed curves and average amplifier draw. It is a planning estimate, not breaker sizing and not metered data.
+**Electricity.** Equipment power includes LED output/efficacy with a driver allowance, actual festival bulb count × the assumed 1 W per bulb, fan speed curves and average amplifier allowances. Switched-off or hidden equipment contributes zero operational watts. The All off scene keeps five maintained exit signs on (15 W). Service energy is equipment watts ÷ 1000 × hours, and service cost also multiplies by service count and tariff. Other building loads and use between services are excluded. Actual product ratings and metered data are needed for a complete bill.
 
-**3D picture.** Lights are in physical units (candela) and rendered with an eye-adaptation exposure (default 110 lux). The renderer prioritizes nearby lamps and lamps illuminating the view within the selected graphics budget. Each drawn light retains its actual fixture position, beam direction and intensity; sources are never combined at virtual midpoints. Moving the camera refreshes the selection. The analysis still uses every source, so reduced graphics can show less coverage than the calculated design. Choose High in Settings → Lights drawn in 3D to review more lamps at once.
+**3D picture.** Lights use physical units (candela), with fixed evening exposure by default (110 lux). Every active lamp supplies diffuse illumination and material reflections at every camera distance. Texture-backed sources call the same Three.js physical lighting function as native lights, using their actual lens positions, beam cones, colours and dimmed candela. Each emitter contributes exactly once. Rendering quality changes the native/texture split without dropping reflections, changing screen resolution or moving shadow sources. The two altar shadow slots stay assigned to the same fittings, including when a fitting is switched off; additional lamps use the shared physical shading without extra shadow maps. Warm room bounce follows the surface's position in the nave or wings, rather than the camera's location. Switches, dimmers, fixture edits and scenes update both paths. Saved layouts receive fixed exposure once; automatic eye adaptation remains an optional setting that intentionally changes brightness while moving. Analysis continues to use every source.
 
 ---
 
@@ -371,7 +373,7 @@ Still to do:
 
 ## Stand-alone control panel (2026-10-17)
 - **Bottom-right corner:** separate from the Simulator card. It has:
-  - **Live stats strip, always visible:** light (lux), speech (STI), air (m/s), noise (dBA), power (kW) and monthly cost. A value turns orange when it misses its target.
+  - **Merged bottom stats, always visible:** light (lux), speech clarity (STI), speech level (dBA), air (m/s), background noise (dBA) and equipment power (kW). Six cells share one row on wide desktops and two rows of three on narrower screens. A value turns orange when it misses its target.
   - **Control panel button:** opens a fixed-size panel with tabs *Scenes · DB-1 Main · DB-2 Towers · Fans · Sound*. Switches update in place, so nothing moves while you use them. The fader moves a whole zone and keeps each speaker's own offset.
 - **The towers are fully on DB-2:**
   - L6 tower and façade floods
@@ -379,8 +381,15 @@ Still to do:
   - L9, a new circuit: the stage floods on the tower cornices and the tower door lanterns
 - **Tower buttons:** *Towers off / evening / festival* switch L6, L9 and L7 together.
 - **Simulator card:** the old Controls tab is gone, and the descriptive text over the 3D view is hidden for a clearer picture.
-- **Compact layout (2026-10-17):**
-  - Stats are a slim, see-through strip at the top left, with dark text by day and light text in the evening.
-  - The control panel is about 250 px wide and opens from a small "⚡ Controls" button.
-  - Breakers show only their code (L1, L9…); hover a breaker for its name, breaker rating and current.
+- **Navigation and controls layout (2026-10-06):**
+  - There is one centered bottom stats display, 20 px above the bottom on desktop (12 px on phones and short screens). It shows **At your position** while walking and **Church average · seating** while exploring. Floor light and book light have explicit labels; power always covers the whole church. The old top-left strip is removed, so local readings and church averages no longer appear as conflicting numbers. Monthly cost is removed from the HUD. The service electricity calculator remains in Analysis with explicit hours, service count and tariff inputs; it applies the current load to every service and excludes preparation, cleaning and other use between services, so it does not represent the complete monthly bill.
+  - Discover is a vertical menu just below the header on the left (100 px from the top on desktop, 82 px on phones). Click its header to hide or expand it; the small Discover button stays available, and the choice is remembered. Enter/Space also toggles it, and Escape closes it while focused in the menu. Go inside, Leave walk mode and Guided walk share this menu. The expanded contents scroll together on short screens, keeping every action accessible. The floating scene title and walking-height card are removed.
+  - Floating cards share one translucent glass surface: 20 px backdrop blur, the same tint, border, radius and shadow, with text colors adapted to day/evening views. The position stats, level meters, Discover, location, Controls, Simulator, settings, details and dialogs follow this style; inset controls and status colors also share theme variables. Physical distribution-board faces keep their equipment appearance.
+  - Two vertical level meters sit in the bottom-left corner, with green and red segments filling upward. On phones they sit just above the full-width stats. Discover reserves space above the meters. **Noise estimate** uses exactly the same background-noise reading as the Noise stat, including running fans; its range is 25–85 dBA, with red above 45 dBA. **Sound estimate** shows the predicted speech level in dBA when playback is stopped. These estimates stay still unless their values change.
+  - The walking joystick is centered 12 px above the stats, with four visible direction arrows and a consistent 108 px touch area. It keeps the same center line when menus open. In portrait, opening Simulator docks the stats and meters above its bottom drawer; in short landscape, Simulator stays beside the scene and its header remains visible while scrolling. Meters shorten when needed to leave usable space for editing.
+  - During playback, the sound meter becomes **Audio output**, displaying actual RMS level in dBFS and a peak marker, sampled after headphone volume and the output limiter. It follows the audio signal and volume, with red above −6 dBFS. Acoustic dBA estimates and digital dBFS output levels are labeled separately. There are no generated waves or timer-driven variations, and the meter does not start audio or access the microphone.
+  - The control panel is 224 px wide and 440 px tall on desktop. All five tabs retain the same dimensions and scroll internally. Smaller viewports use a shorter fixed height.
+  - Breakers show their circuit name and On/Off state; hover for the breaker rating and current. Fan groups have direct Off/Low/Medium/High buttons. Sound zones have horizontal level sliders and labeled mute buttons.
+  - Tab controls support arrow keys, Home and End. Escape closes the dock while focused inside it. The detailed Simulator temporarily replaces the compact dock.
+  - Your location stays against the right edge, including when Controls or Simulator opens. Controls occupy the same right column below the map; switching tabs retains the same size. On short screens the right column scrolls and opening Controls brings its header into view. Closing it returns the column to the map. Bottom stats and the centered joystick retain their own space.
   - The tower buttons read *Off / Evening / Festival*.

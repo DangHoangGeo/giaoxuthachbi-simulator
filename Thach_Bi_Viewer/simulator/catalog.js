@@ -511,9 +511,15 @@
     }
   }
   // Festival bulb string: a straight run along local z, tilted by `slope` (90° = vertical).
+  function bulbCount(params = {}) {
+    const length = Number(params.length ?? 12), spacing = Number(params.spacing ?? 0.6);
+    return Number.isFinite(length) && Number.isFinite(spacing) && length > 0 && spacing > 0
+      ? Math.max(2, Math.round(length / spacing)) + 1 : 0;
+  }
   function buildBulbString(k, item) {
-    const len = item.params?.length || 12, slope = (item.params?.slope || 0) * PI / 180, step = item.params?.spacing || 0.6;
-    const n = Math.max(2, Math.round(len / step)), dy = Math.sin(slope), dz = Math.cos(slope);
+    const len = item.params?.length || 12, slope = (item.params?.slope || 0) * PI / 180;
+    const n = bulbCount(item.params) - 1, dy = Math.sin(slope), dz = Math.cos(slope);
+    if (n < 1) return;
     k.tube([[0, -len / 2 * dy, -len / 2 * dz], [0, len / 2 * dy, len / 2 * dz]], 0.006, 'rope', {}, 2, 4);
     for (let i = 0; i <= n; i++) {
       const t = i / n - 0.5, p = [0, t * len * dy, t * len * dz];
@@ -701,7 +707,7 @@
     { id: 'bulbString', cat: LIGHT, family: 'Festival', name: 'Festival bulb string (outdoor)', mounts: ['floor', 'wall'], glow: 'warm', circuit: 'L7',
       params: { length: { label: 'Length (m)', min: 2, max: 60, step: 0.5, value: 12 }, slope: { label: 'Slope (°, 90 = vertical)', min: -90, max: 90, step: 1, value: 0 }, spacing: { label: 'Bulb spacing (m)', min: 0.3, max: 1.5, step: 0.1, value: 0.6 } },
       desc: 'Warm 2200 K LED bulbs, ~1 W each, IP65. For ridges, eaves, gables and tower edges on big feasts.',
-      light: { lumens: 0, watts: 0, wattsPerMetre: 1.7, cct: 2200, emitters: [] }, build: buildBulbString },
+      light: { lumens: 0, watts: 0, wattsPerBulb: 1, cct: 2200, emitters: [] }, build: buildBulbString },
     { id: 'bunting', cat: DECOR, family: 'Festival', name: 'Festival pennants (cờ đuôi nheo)', mounts: ['pendant'], defaultDrop: 0,
       params: { length: { label: 'Length (m)', min: 2, max: 14, step: 0.5, value: 7 } }, build: buildBunting },
     { id: 'christmasTree', cat: DECOR, family: 'Christmas', name: 'Christmas tree with lights', mounts: ['floor'], footprint: [2, 2], glow: 'fairy', circuit: 'X1',
@@ -714,5 +720,5 @@
   ];
   const byId = Object.fromEntries(types.map(t => [t.id, t]));
 
-  window.CHURCH_SIM_CATALOG = { MATERIALS, types, byId, makeKit };
+  window.CHURCH_SIM_CATALOG = { MATERIALS, types, byId, makeKit, bulbCount };
 })();

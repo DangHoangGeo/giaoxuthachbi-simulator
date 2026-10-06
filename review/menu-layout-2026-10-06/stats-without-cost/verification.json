@@ -1,0 +1,220 @@
+{
+  "desktop": {
+    "cells": [
+      {
+        "box": {
+          "bottom": 957,
+          "height": 31.7890625,
+          "right": 465,
+          "width": 94,
+          "x": 371,
+          "y": 925.2109375
+        },
+        "key": "light",
+        "text": "162lux\nFloor light"
+      },
+      {
+        "box": {
+          "bottom": 957,
+          "height": 31.7890625,
+          "right": 565,
+          "width": 94,
+          "x": 471,
+          "y": 925.2109375
+        },
+        "key": "sti",
+        "text": "0.55STI\nClarity"
+      },
+      {
+        "box": {
+          "bottom": 957,
+          "height": 31.7890625,
+          "right": 665,
+          "width": 94,
+          "x": 571,
+          "y": 925.2109375
+        },
+        "key": "speech",
+        "text": "62dBA\nSpeech"
+      },
+      {
+        "box": {
+          "bottom": 957,
+          "height": 31.7890625,
+          "right": 765,
+          "width": 94,
+          "x": 671,
+          "y": 925.2109375
+        },
+        "key": "air",
+        "text": "0.30m/s\nAir"
+      },
+      {
+        "box": {
+          "bottom": 957,
+          "height": 31.7890625,
+          "right": 865,
+          "width": 94,
+          "x": 771,
+          "y": 925.2109375
+        },
+        "key": "noise",
+        "text": "50dBA\nNoise"
+      },
+      {
+        "box": {
+          "bottom": 957,
+          "height": 31.7890625,
+          "right": 965,
+          "width": 94,
+          "x": 871,
+          "y": 925.2109375
+        },
+        "key": "power",
+        "text": "6.2kW\nTotal power"
+      }
+    ],
+    "columns": "94px 94px 94px 94px 94px 94px",
+    "costPresent": false,
+    "glass": "blur(16px) saturate(1.4)",
+    "joystick": {
+      "bottom": 934,
+      "height": 103,
+      "right": 138,
+      "width": 103,
+      "x": 35,
+      "y": 831
+    },
+    "noise": {
+      "bottom": 386,
+      "height": 218,
+      "right": 192,
+      "width": 168,
+      "x": 24,
+      "y": 168
+    },
+    "ready": true,
+    "scope": "At your position · estimates",
+    "stats": {
+      "bottom": 968,
+      "height": 70.484375,
+      "right": 978,
+      "width": 620,
+      "x": 358,
+      "y": 897.515625
+    },
+    "viewport": {
+      "height": 988,
+      "width": 1336
+    }
+  },
+  "phone": {
+    "cells": [
+      {
+        "box": {
+          "bottom": 779.2109375,
+          "height": 31.7890625,
+          "right": 134.328125,
+          "width": 109.328125,
+          "x": 25,
+          "y": 747.421875
+        },
+        "key": "light",
+        "text": "162lux\nFloor light"
+      },
+      {
+        "box": {
+          "bottom": 779.2109375,
+          "height": 31.7890625,
+          "right": 249.6640625,
+          "width": 109.3359375,
+          "x": 140.328125,
+          "y": 747.421875
+        },
+        "key": "sti",
+        "text": "0.55STI\nClarity"
+      },
+      {
+        "box": {
+          "bottom": 779.2109375,
+          "height": 31.7890625,
+          "right": 365,
+          "width": 109.3359375,
+          "x": 255.6640625,
+          "y": 747.421875
+        },
+        "key": "speech",
+        "text": "62dBA\nSpeech"
+      },
+      {
+        "box": {
+          "bottom": 819,
+          "height": 31.7890625,
+          "right": 134.328125,
+          "width": 109.328125,
+          "x": 25,
+          "y": 787.2109375
+        },
+        "key": "air",
+        "text": "0.30m/s\nAir"
+      },
+      {
+        "box": {
+          "bottom": 819,
+          "height": 31.7890625,
+          "right": 249.6640625,
+          "width": 109.3359375,
+          "x": 140.328125,
+          "y": 787.2109375
+        },
+        "key": "noise",
+        "text": "50dBA\nNoise"
+      },
+      {
+        "box": {
+          "bottom": 819,
+          "height": 31.7890625,
+          "right": 365,
+          "width": 109.3359375,
+          "x": 255.6640625,
+          "y": 787.2109375
+        },
+        "key": "power",
+        "text": "6.2kW\nTotal power"
+      }
+    ],
+    "columns": "109.328px 109.336px 109.336px",
+    "costPresent": false,
+    "glass": "blur(16px) saturate(1.4)",
+    "joystick": {
+      "bottom": 705,
+      "height": 94,
+      "right": 112,
+      "width": 94,
+      "x": 18,
+      "y": 611
+    },
+    "noise": {
+      "bottom": 330,
+      "height": 188,
+      "right": 144,
+      "width": 132,
+      "x": 12,
+      "y": 142
+    },
+    "ready": true,
+    "scope": "At your position · estimates",
+    "stats": {
+      "bottom": 830,
+      "height": 110.2734375,
+      "right": 378,
+      "width": 366,
+      "x": 12,
+      "y": 719.7265625
+    },
+    "viewport": {
+      "height": 844,
+      "width": 390
+    }
+  }
+}

@@ -285,7 +285,10 @@
     const type = CAT.byId[it.type], bounds = SIM.fixtures.get(it.id)?.proto.bounds;
     const modelSize = bounds ? [bounds.max.x - bounds.min.x, bounds.max.y - bounds.min.y, bounds.max.z - bounds.min.z] : [];
     const specs = [];
-    if (type.light) { specs.push(`${it.lumens ?? type.light.lumens ?? 'N/A'} lm`, `${it.cct ?? type.light.cct ?? 'N/A'} K`); if (type.light.beam) specs.push(`${it.beam ?? type.light.beam}° beam`); }
+    if (type.light) {
+      specs.push(type.light.wattsPerBulb ? `${CAT.bulbCount(it.params)} bulbs · ${type.light.wattsPerBulb} W/bulb assumed · lumen data needed` : `${it.lumens ?? type.light.lumens ?? 'N/A'} lm`, `${it.cct ?? type.light.cct ?? 'N/A'} K`);
+      if (type.light.beam) specs.push(`${it.beam ?? type.light.beam}° beam`);
+    }
     if (type.fan) specs.push(`${type.fan.diameter} m diameter`, `${type.fan.speeds.at(-1).watts} W at maximum speed`);
     if (type.speaker) specs.push(`${type.speaker.ratedW} W audio rating`, type.speaker.active ? 'Active / local mains + signal' : 'Passive / amplifier output', `${it.delayMs ?? 0} ms delay`);
     if (type.mic) specs.push('Microphone signal → mixer input');

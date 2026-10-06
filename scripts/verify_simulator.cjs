@@ -1,11 +1,19 @@
 /* Headless checks for the simulator layer: runs the actual bundled geometry,
    the as-drawn structure correction, every catalogue model, the recommended
    design and the analysis engine without a GPU or audio device.
-   Usage: node scripts/verify_simulator.cjs [--report]                       */
+   Usage: node scripts/verify_simulator.cjs [--report] [--estimates]
+   --estimates verifies calculation invariants and records unmet design
+   targets; the default mode also requires those design targets to pass.   */
 const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const assert = require('node:assert/strict');
+const estimateAudit = process.argv.includes('--estimates');
+const designTargets = [];
+function target(met, name, detail) {
+  designTargets.push({ name, met: !!met, detail });
+  if (!estimateAudit) assert(met, `${name}: ${detail}`);
+}
 const root = path.resolve(__dirname, '..');
 const viewer = path.join(root, 'Thach_Bi_Viewer');
 
@@ -19,26 +27,26 @@ body.dataset.lighting = 'evening';
 const document = { getElementById() { return null; }, createElement: element, body, querySelector() { return null; }, querySelectorAll() { return []; } };
 const storage = new Map();
 const sandbox = {
-  console, document, location: { search: '' }, URLSearchParams, Uint8ClampedArray, performance, setTimeout, clearTimeout,
+  console, document, devicePixelRatio: 2, location: { search: '' }, URLSearchParams, Uint8ClampedArray, performance, setTimeout, clearTimeout,
   localStorage: { getItem: k => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, String(v)) },
   MutationObserver: class { observe() {} }, requestAnimationFrame: () => 0
 };
 sandbox.window = sandbox;
 sandbox.addEventListener = (e, f) => { (listeners[e] ||= []).push(f); };
 vm.createContext(sandbox);
-for (const file of ['references.js', 'glass-art.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
+for (const file of ['references.js', 'glass-art.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
   vm.runInContext(fs.readFileSync(path.join(viewer, file), 'utf8'), sandbox, { filename: file });
 
 let src = fs.readFileSync(path.join(viewer, 'bundle.js'), 'utf8');
 const begin = src.indexOf('    Us = document.getElementById("viewport"),');
 const end = src.indexOf('  var ce = {};', begin);
 assert(begin > 0 && end > begin);
-src = src.slice(0, begin) + `    ni = {capabilities:{getMaxAnisotropy:()=>8, maxFragmentUniforms:1024}, shadowMap:{enabled:true}, toneMappingExposure:1, domElement:{addEventListener(){}, getBoundingClientRect(){return {left:0,top:0,width:1280,height:800}}, height:800}};
+src = src.slice(0, begin) + `    ni = {pixelRatio:1, setPixelRatio(r){this.pixelRatio=r}, capabilities:{getMaxAnisotropy:()=>8, maxFragmentUniforms:1024}, shadowMap:{enabled:true}, toneMappingExposure:1, domElement:{addEventListener(){}, getBoundingClientRect(){return {left:0,top:0,width:1280,height:800}}, height:800}};
   var ii = new Ti(), xn = new Cs(), Fp = new Cs(), X0 = new xr();
   ii.background = new De('#d9e4e9'); ii.add(xn,Fp,X0);
 ` + src.slice(end);
 const ui = src.lastIndexOf('  z0({');
-src = src.slice(0, ui) + `  window.model={THREE:Ec,building:nn,scene:ii,roofs:ei,mat:ce,data:ti,batches:t_,interior:Qo};\n})();`;
+src = src.slice(0, ui) + `  window.model={THREE:Ec,building:nn,scene:ii,renderer:ni,hemisphere:X0,roofs:ei,mat:ce,data:ti,batches:t_,interior:Qo};\n})();`;
 const t0 = Date.now();
 vm.runInContext(src, sandbox, { timeout: 120000, filename: 'bundle.js' });
 const { THREE: T, building, data, interior, batches } = sandbox.window.model;
@@ -102,6 +110,14 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   assert(revised.filter(it => it.type === 'wallLantern' || it.type === 'corniceFlood').every(it => !it.on), 'migration honours the all-off scene');
   const twice = D.upgradeLighting(revised, D.recommended(SIM.GEO, SIM), SIM.SCENES['All off']);
   assert.equal(twice.length, revised.length, 'lighting migration does not duplicate reviewed fittings');
+  const oldFacade = { ...lights.find(it => it.name === 'Central gable flood · B'), id: 'existing-gable', on: false, dim: 0.4, beam: 26 };
+  const facade = D.upgradeFacade([unrelated, oldFacade], D.recommended(SIM.GEO, SIM), SIM.SCENES['All off']);
+  assert.equal(facade.find(it => it.id === unrelated.id), unrelated, 'facade migration preserves unrelated equipment and edits');
+  const migrated = facade.find(it => it.id === oldFacade.id);
+  assert(migrated && migrated.beam === 60 && !migrated.on && migrated.dim === 0.4, 'facade migration retains selection ID, switch and dimmer');
+  assert.equal(facade.filter(it => it.name.startsWith('Central crown wash ·')).length, 2, 'paired upper fills added once');
+  assert(facade.filter(it => it !== unrelated).every(it => !it.on), 'facade migration honours the all-off scene');
+  assert.equal(D.upgradeFacade(facade, D.recommended(SIM.GEO, SIM), SIM.SCENES['All off']).length, facade.length, 'facade migration has no duplicates');
 }
 // --- Electrical network: connectivity, real picking and reversible isolation ---
 {
@@ -130,6 +146,11 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
     assert(c.modelSize.length === 3 && c.modelSize.every(Number.isFinite), 'component has model dimensions ' + c.id);
     const t = CAT.byId[c.type], drops = runs.filter(r => ['drop', 'local'].includes(r.role) && r.itemIds.includes(c.id));
     if (t.speaker && !t.speaker.active || t.mic) assert(drops.every(r => r.source === 'AV1'), 'passive audio / mic never connected directly to DB mains');
+    if (t.light?.wattsPerBulb) {
+      const item = SIM.item(c.id), bulbs = Math.max(2, Math.round(item.params.length / item.params.spacing)) + 1;
+      assert.equal(c.wattsEstimate, bulbs * t.light.wattsPerBulb, 'board schedule uses the actual string bulb rating');
+      assert(c.specs.includes(`${bulbs} bulbs`) && c.specs.includes('lumen data needed'), 'board string specs identify bulb count and missing photometry');
+    }
   }
   const before = new Map(); church.scene.traverse(o => {
     for (let p = o; p; p = p.parent) if (p === E.layer || p.userData.simId) return;
@@ -203,6 +224,9 @@ assert(church.colliders.some(c => c.kind === 'simulator'), 'floor items add walk
     const h = hit([head.x, head.y, head.z], [-f[0], 0, -f[2]], 0.9);
     assert(h && h.distance > 0.1, 'tower head clears the masonry: ' + it.name);
   }
+  for (const it of SIM.state.items.filter(i => /^(Façade wash|Central gable flood|Central crown wash) ·/.test(i.name))) {
+    assert(hit([it.pos[0], it.pos[1] + 0.1, it.pos[2]], [0, -1, 0], 0.35), 'facade wash base rests on an existing cornice: ' + it.name);
+  }
   const seen = new Set();
   for (const it of SIM.state.items.filter(i => i.mount === 'pendant' && !i.params?.spreader && i.type !== 'bunting')) {
     const key = `${it.type}|${it.anchorY.toFixed(2)}|${it.pos[0].toFixed(0)}|${Math.abs(it.pos[2]).toFixed(1)}`; // mirrored pairs share a ray
@@ -232,13 +256,45 @@ function verifyRenderOrigins() {
     if (source.dir) assert(new T.Vector3(...source.dir).distanceTo(light.target.position.clone().sub(light.position)) < 0.0001, 'renderer preserves the real beam direction');
   }
 }
+function verifyPersistentCoverage() {
+  const sources = SIM.emitters(), native = [], persistent = SIM.persistentLighting.emitters();
+  church.scene.traverse(o => { if (o.isLight && o.userData.emitter && o.intensity > 0) native.push(o.userData.emitter); });
+  const equal = (a, b) => a.id === b.id && Math.hypot(...a.pos.map((v, k) => v - b.pos[k])) < 0.0001;
+  for (const source of sources) {
+    assert.equal([...native, ...persistent].filter(e => equal(source, e)).length, 1, 'every active emitter illuminates exactly once: ' + source.id);
+  }
+  assert.equal(native.length + persistent.length, sources.length, 'complete source coverage without double illumination');
+  assert.equal(SIM.poolStats().culled, 0, 'no switched-on source loses its light spill');
+}
 verifyRenderOrigins();
+// Retina sharpness stays at the viewer's original 1.5 ratio at every light budget.
+for (const quality of ['high', 'balanced', 'fast']) {
+  SIM.setSetting('quality', quality);
+  assert.equal(sandbox.window.model.renderer.pixelRatio, 1.5, 'quality retains original screen sharpness: ' + quality);
+}
+// Sample the front-facing plaster: the former gap was at +8.4–11 m, with
+// the side shrines and top crown also outside the narrow central beams.
+const facadeIds = new Set(SIM.state.items.filter(it => /^(Façade wash|Central gable flood|Central crown wash) ·/.test(it.name)).map(it => it.id));
+const facadeSources = SIM.emitters().filter(e => facadeIds.has(e.id));
+const facadeSamples = [];
+for (const y of [7.5, 8.5, 9.5, 10.25, 11, 13, 15, 17, 19, 21.5]) {
+  for (const z of (y <= 15 ? [-3, 0, 3] : [0])) {
+    const lux = P.illuminance([1.9, y, z], [-1, 0, 0], facadeSources);
+    facadeSamples.push({y,z,lux:+lux.toFixed(1)});
+    assert(lux >= 5, 'continuous center facade coverage at y=' + y + ', z=' + z + ': ' + lux);
+  }
+}
+for (const z of [-5.48, 5.48]) for (const y of [9.5, 11.5, 14, 16]) {
+  assert(P.illuminance([1.9, y, z], [-1, 0, 0], facadeSources) >= 5, 'side shrine is covered: ' + y + '/' + z);
+}
+console.log(JSON.stringify({ facadeCoverage: 'passed', samples: facadeSamples }));
 for (const s of [-1, 1]) {
   camera.position.set(16.725, 2.6, s * 15.5); camera.lookAt(16.725, 2.4, s * 10.55);
   SIM.setSetting('quality', 'balanced');
   SIM.setSetting('quality', 'fast');
   SIM.frame(0.05, 'walk', camera);
   verifyRenderOrigins();
+  verifyPersistentCoverage();
   const drawnIds = new Set();
   church.scene.traverse(o => { if (o.isPointLight && o.userData.emitter && o.intensity > 0) drawnIds.add(o.userData.emitter.id); });
   const pair = SIM.state.items.filter(it => it.name.startsWith(`Side door lantern · ${s < 0 ? 'B' : 'H'} · 16.725`));
@@ -246,6 +302,58 @@ for (const s of [-1, 1]) {
 }
 camera.position.set(20, 1.6, 0); camera.lookAt(20, 1.6, -1);
 SIM.setSetting('quality', 'balanced');
+
+// Moving far away, including changing between inside and outside, retains
+// every emitter. Switching/dimming/removing a remote light updates the atlas.
+for (const [position, target] of [[[0, 20, 90], [25, 5, 0]], [[-95, 30, 0], [2.45, 10, 0]], [[25, 1.6, 0], [40, 2, 0]]]) {
+  camera.position.set(...position); camera.lookAt(...target);
+  SIM.setSetting('quality', 'fast'); SIM.frame(0.05, 'explore', camera);
+  verifyPersistentCoverage();
+}
+const remote = SIM.state.items.find(it => it.name === 'Side door lantern · B · 46.425 · rear');
+const originalDim = remote.dim;
+SIM.update(remote.id, { dim: 0.3 }, { record: false });
+SIM.setSetting('quality', 'fast'); SIM.frame(0.05, 'explore', camera);
+verifyPersistentCoverage();
+assert(Math.abs([...SIM.persistentLighting.emitters()].find(e => e.id === remote.id).lumens - 270) < 0.001, 'remote lamp dimmer updates persistent illumination');
+SIM.update(remote.id, { on: false }, { record: false });
+SIM.setSetting('quality', 'fast'); SIM.frame(0.05, 'explore', camera);
+verifyPersistentCoverage();
+assert(!SIM.persistentLighting.emitters().some(e => e.id === remote.id), 'switched-off remote lamp removes its light spill');
+SIM.update(remote.id, { on: true, dim: originalDim }, { record: false });
+camera.position.set(20, 1.6, 0); camera.lookAt(20, 1.6, -1);
+SIM.setSetting('quality', 'balanced'); SIM.frame(0.05, 'walk', camera);
+verifyPersistentCoverage();
+// A lamp's shadow slot stays on that lamp across viewpoints and light budgets.
+// Room bounce and fixed exposure must not brighten the entire model when the
+// camera enters the building or the roof is removed.
+const shadowSources = () => {
+  const ids = [];
+  church.scene.traverse(o => { if (o.isSpotLight && o.castShadow && o.userData.emitter) ids.push(o.userData.emitter.id); });
+  return ids.join(',');
+};
+let stableShadowIds, stableAmbient;
+for (const quality of ['high', 'balanced', 'fast']) {
+  for (const p of [[7, 1.6, 0], [28, 1.6, 0], [44, 1.6, 0], [-90, 30, 0]]) {
+    camera.position.set(...p); camera.lookAt(45, 2, 0);
+    SIM.setSetting('quality', quality); SIM.frame(0.05, 'walk', camera);
+    verifyPersistentCoverage();
+    const ids = shadowSources();
+    if (stableShadowIds === undefined) stableShadowIds = ids;
+    assert.equal(ids, stableShadowIds, 'same shadow lamps across near/far views and every quality');
+    const hemi = sandbox.window.model.hemisphere;
+    const ambient = JSON.stringify([hemi.intensity, hemi.color.toArray(), hemi.groundColor.toArray(), SIM.ambient().adaptLux]);
+    if (stableAmbient === undefined) stableAmbient = ambient;
+    assert.equal(ambient, stableAmbient, 'camera movement preserves ambient brightness, colour and fixed exposure');
+  }
+}
+assert.equal(stableShadowIds.split(',').length, 2, 'two permanent altar shadow sources');
+const shadowItem = SIM.item(stableShadowIds.split(',')[0]);
+SIM.update(shadowItem.id, {on:false}, {record:false}); SIM.setSetting('quality', 'fast'); SIM.frame(0.05, 'walk', camera);
+assert.equal(shadowSources(), stableShadowIds.split(',')[1], 'turning a shadow lamp off does not reassign its slot to another lamp');
+SIM.update(shadowItem.id, {on:true}, {record:false});
+SIM.setSetting('quality', 'balanced'); SIM.frame(0.05, 'walk', camera);
+console.log(JSON.stringify({ stableInteriorLighting: 'passed', shadowIds: stableShadowIds, ambient: JSON.parse(stableAmbient) }));
 
 // --- Analysis ---------------------------------------------------------------
 const A = SIM.analysis;
@@ -257,6 +365,21 @@ function runSync(kinds) {
   const r = await runSync(['seats', 'lux', 'sti', 'air', 'noise']);
   const s = r.seats;
   assert(s.n >= 300, 'seats evaluated');
+  // The HUD and analysis must use the same physical measurement planes.
+  for (const seat of [s.seats[0], s.seats[Math.floor(s.n / 2)], s.seats.find(x => x.block === 'wing')]) {
+    const point = A.pointValues(seat.x, seat.z, seat.y + 1.2);
+    for (const key of ['lux', 'sti', 'spl', 'noise', 'air']) {
+      assert(Math.abs(point[key] - seat[key]) < 1e-6, `point/seated ${key} agrees at ${seat.x},${seat.z}: ${point[key]} / ${seat[key]}`);
+    }
+  }
+  for (const key of ['spl', 'noise']) {
+    const levels = s.seats.map(x => x[key]).filter(Number.isFinite);
+    const expected = 10 * Math.log10(levels.reduce((sum, L) => sum + 10 ** (L / 10), 0) / levels.length);
+    assert(Math.abs(s[key].avg - expected) < 1e-9, `${key} seating average reconciles with individual energy readings`);
+  }
+  const power = SIM.powerSummary();
+  assert(Math.abs(power.total - power.byCircuit.reduce((sum, c) => sum + c.watts, 0)) < 1e-8, 'power reconciles by circuit');
+  assert(Math.abs(power.kWhService - power.total / 1000 * SIM.state.settings.serviceHours) < 1e-9, 'service energy uses kW × hours');
   const room = SIM.room();
   const report = {
     buildMs: Date.now() - t0,
@@ -281,8 +404,8 @@ function runSync(kinds) {
   assert(s.air.avg > 0.15 && s.air.avg < 1.5, 'seat air speed plausible: ' + s.air.avg);
   assert(!A.checks.some(c => c.level === 'error'), 'recommended design has no errors: ' + A.checks.filter(c => c.level === 'error').map(c => c.title + ' ' + c.detail).join('; '));
   // The recommended design also meets its own checks and the main brief targets.
-  assert(!A.checks.some(c => c.level === 'warn'), 'recommended design has no warnings: ' + A.checks.filter(c => c.level === 'warn').map(c => c.title + ' ' + c.detail).join('; '));
-  assert(s.luxOk >= 95, 'seats with ≥ 200 lux: ' + s.luxOk);
+  target(!A.checks.some(c => c.level === 'warn'), 'No design warnings', A.checks.filter(c => c.level === 'warn').map(c => c.title + ' ' + c.detail).join('; '));
+  target(s.luxOk >= 95, 'At least 95% of seats reach 200 lux', `${s.luxOk.toFixed(1)}%`);
   // Nave seats: the brief's main target. Wing benches (choir, ministers) sit
   // beside the sanctuary with their own pendant speakers; check them apart.
   const nave = s.seats.filter(x => x.block !== 'wing'), wingSeats = s.seats.filter(x => x.block === 'wing');
@@ -290,14 +413,21 @@ function runSync(kinds) {
   const wingAvg = wingSeats.reduce((t, x) => t + x.sti, 0) / wingSeats.length, wingMin = Math.min(...wingSeats.map(x => x.sti));
   console.log(JSON.stringify({ naveStiOk: Math.round(naveOk), naveStiMin: +naveMin.toFixed(3), wingStiAvg: +wingAvg.toFixed(3), wingStiMin: +wingMin.toFixed(3), wingLuxMin: Math.round(Math.min(...wingSeats.map(x => x.lux))) }));
   assert.equal(wingSeats.length, 80, 'wing benches are analysed');
-  assert(Math.min(...wingSeats.map(x => x.lux)) >= 200, 'every wing seat has ≥ 200 lux');
-  assert(naveMin >= 0.45 && naveOk >= 75, 'nave speech clarity: min ' + naveMin + ', ' + naveOk + ' % ≥ 0.60');
-  assert(wingMin >= 0.45 && wingAvg >= 0.5, 'wing speech clarity: min ' + wingMin + ', avg ' + wingAvg);
+  target(Math.min(...wingSeats.map(x => x.lux)) >= 200, 'Every wing seat reaches 200 lux', `${Math.min(...wingSeats.map(x => x.lux)).toFixed(1)} lux minimum`);
+  target(naveMin >= 0.45 && naveOk >= 75, 'Nave clarity: minimum 0.45, at least 75% reaching 0.60', `minimum ${naveMin.toFixed(3)}, ${naveOk.toFixed(1)}% reaching 0.60`);
+  target(wingMin >= 0.45 && wingAvg >= 0.5, 'Wing clarity: minimum 0.45, average 0.50', `minimum ${wingMin.toFixed(3)}, average ${wingAvg.toFixed(3)}`);
   // Toggling a circuit changes light; history restores it.
   const before = s.lux.avg;
   SIM.applyScene('All off');
-  const off = (await runSync(['seats'])).seats.lux.avg;
+  const offStats = (await runSync(['seats'])).seats;
+  const off = offStats.lux.avg, offPower = SIM.powerSummary();
   assert(off < before * 0.3, 'all-off scene removes most reading light: ' + off);
+  assert(offPower.total > 0 && Math.abs(offPower.total - offPower.byCircuit.find(c => c.circuit === 'E1').watts) < 1e-9, 'all-off power contains only maintained exit signs');
+  assert(offPower.byCircuit.filter(c => c.circuit !== 'E1').every(c => c.watts === 0), 'all non-emergency circuits draw zero when off');
+  assert.equal(offStats.air.avg, 0, 'all-off fan airflow is zero');
+  assert(Math.abs(offStats.noise.avg - SIM.state.settings.ambientDbA) < 1e-9, 'all-off noise equals assumed ambient');
+  assert.equal(offStats.spl, null, 'all-off scene has no invented speech level');
+  assert.equal(offStats.sti, null, 'all-off scene has no invented clarity');
   assert(SIM.undo(), 'undo scene');
   const back = (await runSync(['seats'])).seats.lux.avg;
   assert(Math.abs(back - before) < 1, 'undo restores lighting');
@@ -306,5 +436,7 @@ function runSync(kinds) {
   const n = SIM.importLayout(json);
   assert.equal(n, SIM.state.items.length, 'layout round trip');
   assert(SIM.exportSchedule().split('\n').length === SIM.state.items.length + 1, 'schedule CSV rows');
-  console.log(JSON.stringify({ checks: 'passed', items: report.items, lux: report.lux, sti: report.sti, air: report.air, noise: report.noise, Tmid: report.room.Tmid }, null, 1));
+  console.log(JSON.stringify({ checks: 'passed', mode: estimateAudit ? 'calculation audit' : 'calculations and design targets',
+    designTargets, allOff: { watts: offPower.total, lux: off, air: offStats.air.avg, noise: offStats.noise.avg, spl: offStats.spl, sti: offStats.sti },
+    items: report.items, lux: report.lux, sti: report.sti, air: report.air, noise: report.noise, Tmid: report.room.Tmid }, null, 1));
 })().catch(e => { console.error(e); process.exitCode = 1; });

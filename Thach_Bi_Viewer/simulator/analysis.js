@@ -56,6 +56,8 @@
   }
   function zoneOf(x, z) {
     const az = Math.abs(z);
+    const p = [x, SIM.floorY(x, z) + 0.6, z];
+    if (!SIM.isInterior(p)) return SIM.roomCouplingAt(p) > 0 ? 'veranda' : 'outside';
     if (SIM.inWing(x, z)) return 'wing';
     if (az > 7.25) return 'veranda';
     if (x >= 39.75 && x <= 48.65 && az <= 3.6) return 'sanctuary';
@@ -76,7 +78,8 @@
     const direct = P.illuminance([x, y, z], [0, 1, 0], lc.emitters, lc.occ);
     // Inter-reflected light: full in the nave, partly in the wings (open to the
     // veranda on one side), a little spill onto the verandas.
-    const ind = Math.abs(z) <= 7.25 && x > 2.6 ? lc.Eind : SIM.inWing(x, z) ? lc.Eind * 0.6 : Math.abs(z) <= 10.4 ? lc.Eind * 0.35 : 0;
+    const coupling = SIM.roomCouplingAt([x, y, z]);
+    const ind = coupling === 1 ? lc.Eind * (SIM.inWing(x, z) ? 0.6 : 1) : coupling > 0 ? lc.Eind * 0.35 : 0;
     return (direct + ind) * lc.mf;
   }
   function soundContext() {
@@ -87,12 +90,12 @@
     const talker = s.talker ? talkerSource() : null;
     const ambient = P.bandsFromDbA(s.ambientDbA, P.AMBIENT_SPECTRUM);
     // Each fan: free-field level at 1 m plus its reverberant contribution.
-    const fanSpecs = fans.map(f => ({ f, bands: P.bandsFromDbA(f.dBA, P.FAN_SPECTRUM) }));
+    const fanSpecs = fans.map(f => ({ f, bands: P.bandsFromDbA(f.dBA, P.FAN_SPECTRUM), coupling: SIM.roomCouplingAt(f.pos) || 0.05 }));
     const A = room.A;
     const reverbNoise = [0, 0, 0, 0, 0, 0, 0];
-    for (const { bands } of fanSpecs) for (let b = 0; b < 7; b++) {
+    for (const { bands, coupling } of fanSpecs) for (let b = 0; b < 7; b++) {
       const Lw = bands[b] + 11; // sound power from the 1 m free-field level (Q≈1)
-      reverbNoise[b] += P.undb(Lw + 10 * Math.log10(4 / (A[b] + 4 * room.airDb[b] / 4.343 * room.V)));
+      reverbNoise[b] += coupling * P.undb(Lw + 10 * Math.log10(4 / (A[b] + 4 * room.airDb[b] / 4.343 * room.V)));
     }
     return { room, speakers, fans: fanSpecs, talker, ambient, reverbNoise, occ: SIM.GEO.occluders };
   }
@@ -106,27 +109,34 @@
   }
   function noiseAt(sc, x, y, z) {
     const out = [];
+    const receiver = [x, y, z], receiverCoupling = SIM.roomCouplingAt(receiver);
+    // Wall intersections and distance are shared by all seven octave bands.
+    const direct = sc.fans.map(({ f, bands }) => ({ bands,
+      distance2: Math.max(0.25, (x - f.pos[0]) ** 2 + (y - f.pos[1]) ** 2 + (z - f.pos[2]) ** 2),
+      blocked: !!sc.occ?.blockedByWall(f.pos, receiver) }));
     for (let b = 0; b < 7; b++) {
-      let e = P.undb(sc.ambient[b]) + sc.reverbNoise[b];
-      for (const { f, bands } of sc.fans) {
-        const r = Math.max(0.5, Math.hypot(x - f.pos[0], y - f.pos[1], z - f.pos[2]));
-        e += P.undb(bands[b]) / (r * r);
+      let e = P.undb(sc.ambient[b]) + sc.reverbNoise[b] * receiverCoupling;
+      for (const { bands, distance2, blocked } of direct) {
+        e += P.undb(bands[b] + (blocked ? P.WALL_SHADOW[b] : 0)) / distance2;
       }
       out.push(P.db(e));
     }
     return out;
   }
   function soundAt(sc, x, y, z) {
-    const arrivals = sc.speakers.map(sp => P.sourceArrivals(sp.src, sp.spec, [x, y, z], sc.room, sc.occ));
-    if (sc.talker) arrivals.push(P.sourceArrivals(sc.talker.src, sc.talker.spec, [x, y, z], sc.room, sc.occ));
+    const rx = [x, y, z], coupling = SIM.roomCouplingAt(rx);
+    const arrivals = sc.speakers.map(sp => P.sourceArrivals(sp.src, sp.spec, rx, sc.room, sc.occ, undefined, coupling));
+    if (sc.talker) arrivals.push(P.sourceArrivals(sc.talker.src, sc.talker.spec, rx, sc.room, sc.occ, undefined, coupling));
     const noise = noiseAt(sc, x, y, z);
     if (!arrivals.length) return { sti: null, spl: null, noise: P.dbaFromBands(noise), echo: null };
     const r = P.sti(arrivals, noise, sc.room);
     return { sti: r.sti, spl: r.speechDbA, noise: P.dbaFromBands(noise), echo: P.echoCheck(arrivals), mti: r.mti };
   }
-  function airContext() { return { fans: SIM.fans().filter(f => f.running) }; }
-  function airAt(ac, x, y, z, blockage = 1) {
-    return P.combineAirSpeeds(ac.fans.map(f => P.fanAirSpeed(f, [x, y, z], blockage)));
+  function airContext() { return { fans: SIM.fans().filter(f => f.running), occ: SIM.GEO.occluders }; }
+  function airAt(ac, x, y, z) {
+    const seated = SIM.GEO.seats.some(s => Math.abs(s.x - x) < 0.6 && Math.abs(s.z - z) < 0.6);
+    const blockage = seated ? 0.85 : 1;
+    return P.combineAirSpeeds(ac.fans.map(f => ac.occ?.blockedByWall(f.pos, [x, y, z]) ? 0 : P.fanAirSpeed(f, [x, y, z], blockage)));
   }
 
   // Exact values at one point (walk readout, listening panel). Aisles and
@@ -137,8 +147,11 @@
     const s = soundAt(sc, x, eyeY ?? fy + 1.2, z);
     const air = airAt(ac, x, fy + 0.6, z);
     const zone = zoneOf(x, z);
-    const floorLux = zone === 'aisle' || zone === 'veranda' ? luxAt(lc, x, fy + 0.02, z) : null;
-    return { lux: luxAt(lc, x, fy + 0.8, z), floorLux, ...s, air, cooling: P.coolingEffect(air), zone };
+    const floorLux = ['aisle', 'veranda', 'outside'].includes(zone) ? luxAt(lc, x, fy + 0.02, z) : null;
+    const seat = SIM.GEO.seats.filter(s => Math.abs(s.x - x) < 0.6 && Math.abs(s.z - z) < 0.6)
+      .sort((a, b) => Math.hypot(a.x - x, a.z - z) - Math.hypot(b.x - x, b.z - z))[0];
+    const bookX = x + (seat ? seat.book?.[0] ?? 0.25 : 0), bookZ = z + (seat?.book?.[1] ?? 0);
+    return { lux: luxAt(lc, bookX, fy + 0.8, bookZ), floorLux, ...s, air, cooling: P.coolingEffect(air), zone };
   }
   function sampleLux(x, z) {
     const g = latest.lux;
@@ -193,7 +206,7 @@
           const fy = SIM.floorY(x, z), y = fy + K.height;
           let v;
           if (kind === 'lux') v = luxAt(ctx, x, y, z);
-          else if (kind === 'air') v = airAt(ctx, x, y, z, Math.abs(z) < 7.2 && x < 38 ? 0.85 : 1);
+          else if (kind === 'air') v = airAt(ctx, x, y, z);
           else if (kind === 'noise') v = P.dbaFromBands(noiseAt(ctx, x, y, z));
           else { const s = soundAt(ctx, x, y, z); v = kind === 'sti' ? s.sti : s.spl; }
           values[j * nx + i] = v ?? NaN;
@@ -216,7 +229,7 @@
           const s = seats[i];
           const fy = s.y;
           const snd = soundAt(sc, s.x, fy + 1.2, s.z);
-          const air = airAt(ac, s.x, fy + 0.6, s.z, 0.85);
+          const air = airAt(ac, s.x, fy + 0.6, s.z);
           out.push({ ...s, lux: luxAt(lc, s.x + (s.book?.[0] ?? 0.25), fy + 0.8, s.z + (s.book?.[1] ?? 0)), sti: snd.sti, spl: snd.spl, noise: snd.noise, echo: snd.echo, air, cooling: P.coolingEffect(air) });
         }
         if (i >= seats.length) { latest.seats = summarize(out); return true; }
@@ -224,12 +237,7 @@
       }
     };
   }
-  function stats(values) {
-    const v = values.filter(Number.isFinite).sort((a, b) => a - b);
-    if (!v.length) return null;
-    const avg = v.reduce((s, x) => s + x, 0) / v.length;
-    return { n: v.length, avg, min: v[0], max: v[v.length - 1], p10: v[Math.floor(v.length * 0.1)], median: v[Math.floor(v.length / 2)], u0: avg > 0 ? v[0] / avg : 0 };
-  }
+  const stats = P.statistics;
   function summarize(seats) {
     const pct = (f, list = seats) => list.length ? 100 * list.filter(f).length / list.length : 0;
     const blocks = {};
@@ -239,12 +247,12 @@
     }
     return {
       seats, n: seats.length, blocks,
-      lux: stats(seats.map(s => s.lux)), sti: stats(seats.map(s => s.sti)), spl: stats(seats.map(s => s.spl)), noise: stats(seats.map(s => s.noise)), air: stats(seats.map(s => s.air)),
+      lux: stats(seats.map(s => s.lux)), sti: stats(seats.map(s => s.sti)), spl: stats(seats.map(s => s.spl), true), noise: stats(seats.map(s => s.noise), true), air: stats(seats.map(s => s.air)),
       cooling: stats(seats.map(s => s.cooling)),
       luxOk: pct(s => s.lux >= 200), luxLow: pct(s => s.lux < 150),
       stiOk: pct(s => s.sti !== null && s.sti >= 0.6), stiFair: pct(s => s.sti !== null && s.sti >= 0.5),
       airOk: pct(s => s.air >= 0.3 && s.air <= 0.8), airStrong: pct(s => s.air > 1.0), echoSeats: seats.filter(s => s.echo).length,
-      splSpread: (() => { const v = seats.map(s => s.spl).filter(Number.isFinite).sort((a, b) => a - b); return v.length ? v[Math.floor(v.length * 0.95)] - v[Math.floor(v.length * 0.05)] : null; })()
+      splSpread: (() => { const s = stats(seats.map(s => s.spl), true); return s ? s.p95 - s.p05 : null; })()
     };
   }
 

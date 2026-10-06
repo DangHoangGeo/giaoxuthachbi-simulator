@@ -1,0 +1,187 @@
+{
+  "checks": [
+    {
+      "check": "Discover collapses to its header, opens with Enter, and closes with Escape",
+      "pass": true
+    },
+    {
+      "check": "Actual output rises about 6 dB when headphone volume doubles",
+      "pass": true,
+      "lowDb": -46.856018971602644,
+      "highDb": -40.73976684741869,
+      "changeDb": 6.116252124183951
+    },
+    {
+      "check": "Zero volume clears the live meter instead of animating it",
+      "pass": true
+    },
+    {
+      "check": "Stopped playback uses steady noise and speech estimates matching the stats",
+      "pass": true
+    },
+    {
+      "check": "Day and evening panels use translucent backgrounds and real backdrop blur",
+      "pass": true
+    },
+    {
+      "check": "Phone disclosure leaves map fixed and glass HUD clear of the controls",
+      "pass": true
+    },
+    {
+      "check": "Final evening style keeps active segments green/red over translucent glass",
+      "pass": true
+    }
+  ],
+  "audio": {
+    "low": [
+      {
+        "active": 7,
+        "db": -46.45775833491832,
+        "noise": "50 dBA",
+        "noiseStat": "50",
+        "peakVisible": true,
+        "source": "output",
+        "text": "-46.5 dBFS",
+        "volume": "<redacted>"
+      },
+      {
+        "active": 7,
+        "db": -47.00817503323503,
+        "noise": "50 dBA",
+        "noiseStat": "50",
+        "peakVisible": true,
+        "source": "output",
+        "text": "-47.0 dBFS",
+        "volume": "<redacted>"
+      },
+      {
+        "active": 6,
+        "db": -47.18494637065798,
+        "noise": "50 dBA",
+        "noiseStat": "50",
+        "peakVisible": true,
+        "source": "output",
+        "text": "-47.2 dBFS",
+        "volume": "<redacted>"
+      },
+      {
+        "active": 6,
+        "db": -47.18494637065798,
+        "noise": "50 dBA",
+        "noiseStat": "50",
+        "peakVisible": true,
+        "source": "output",
+        "text": "-47.2 dBFS",
+        "volume": "<redacted>"
+      },
+      {
+        "active": 7,
+        "db": -46.44426874854388,
+        "noise": "50 dBA",
+        "noiseStat": "50",
+        "peakVisible": true,
+        "source": "output",
+        "text": "-46.4 dBFS",
+        "volume": "<redacted>"
+      }
+    ],
+    "high": [
+      {
+        "active": 9,
+        "db": -41.384590595452266,
+        "noise": "50 dBA",
+        "noiseStat": "50",
+        "peakVisible": true,
+        "source": "output",
+        "text": "-41.4 dBFS",
+        "volume": "<redacted>"
+      },
+      {
+        "active": 9,
+        "db": -41.384590595452266,
+        "noise": "50 dBA",
+        "noiseStat": "50",
+        "peakVisible": true,
+        "source": "output",
+        "text": "-41.4 dBFS",
+        "volume": "<redacted>"
+      },
+      {
+        "active": 10,
+        "db": -40.24439916305174,
+        "noise": "50 dBA",
+        "noiseStat": "50",
+        "peakVisible": true,
+        "source": "output",
+        "text": "-40.2 dBFS",
+        "volume": "<redacted>"
+      },
+      {
+        "active": 10,
+        "db": -40.24439916305174,
+        "noise": "50 dBA",
+        "noiseStat": "50",
+        "peakVisible": true,
+        "source": "output",
+        "text": "-40.2 dBFS",
+        "volume": "<redacted>"
+      },
+      {
+        "active": 10,
+        "db": -40.44085472008548,
+        "noise": "50 dBA",
+        "noiseStat": "50",
+        "peakVisible": true,
+        "source": "output",
+        "text": "-40.4 dBFS",
+        "volume": "<redacted>"
+      }
+    ],
+    "muted": {
+      "active": 0,
+      "db": -60,
+      "noise": "50 dBA",
+      "noiseStat": "50",
+      "peakVisible": false,
+      "source": "output",
+      "text": "Silence",
+      "volume": "<redacted>"
+    }
+  },
+  "finalNight": {
+    "background": "rgba(20, 40, 28, 0.64)",
+    "blur": "blur(16px) saturate(1.4)",
+    "green": [
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)",
+      "rgb(121, 223, 164)"
+    ],
+    "red": [
+      "rgb(255, 145, 134)",
+      "rgb(255, 145, 134)",
+      "rgb(255, 145, 134)"
+    ]
+  },
+  "errors": []
+}

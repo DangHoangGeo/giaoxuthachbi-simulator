@@ -4,7 +4,7 @@ Open `Thach_Bi_Viewer/OPEN_CHURCH.html` and choose **Simulator → Wiring → Sy
 
 Select a physical enclosure or wire in 3D, a route in the flat plan, or an individual run in the list. The selected route highlights green and reports its source, destination, circuit, length and height range. **Edit component** opens the existing fixture controls. Changes to location, product parameters, circuit, visibility, additions, removal, undo and imported layouts regenerate the wiring. Overlapping runs remain individually selectable through the run list. Filters select DB-1, DB-2, power or audio routes.
 
-The initial recommended design has **274 connected components and 317 selectable runs**. Counts reflect the current layout; hidden alternatives are excluded from installed-study totals and retained separately in the exported component schedule. Lights switched off are still connected. Non-electrical furnishings and candles are excluded. Electrically illuminated seasonal models are retained as equipment when shown.
+The initial recommended design has **276 connected components and 319 selectable runs**. Counts reflect the current layout; hidden alternatives are excluded from installed-study totals and retained separately in the exported component schedule. Lights switched off are still connected. Non-electrical furnishings and candles are excluded. Electrically illuminated seasonal models are retained as equipment when shown.
 
 ## Retained equipment locations
 

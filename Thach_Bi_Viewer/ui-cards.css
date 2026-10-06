@@ -1,0 +1,331 @@
+/* Shared card surfaces and a stable footer for the church viewer. */
+:root {
+  --ui-ink:#263d2f;
+  --ui-muted:#344b3d;
+  --ui-accent:#315b43;
+  --ui-glass:rgba(243,248,239,.64);
+  --ui-border:rgba(255,255,255,.56);
+  --ui-line:rgba(58,86,65,.17);
+  --ui-inset:rgba(250,252,247,.65);
+  --ui-input:rgba(255,255,255,.76);
+  --ui-hover:rgba(61,100,70,.1);
+  --ui-selected:rgba(73,119,76,.16);
+  --ui-good:#287542;
+  --ui-warn:#a25228;
+  --ui-danger:#b9433c;
+  --ui-shadow:inset 0 1px 0 rgba(255,255,255,.36),0 8px 28px rgba(19,41,28,.12);
+  --ui-blur:blur(20px) saturate(135%);
+  --ui-radius:14px;
+  --ui-top:100px;
+  --hud-edge:20px;
+  --hud-gap:12px;
+  --hud-base:var(--hud-edge);
+  --meter-width:168px;
+  --meter-height:218px;
+  --move-size:108px;
+}
+body[data-lighting=evening] {
+  --ui-ink:#edf5ec;
+  --ui-muted:#c8d9cb;
+  --ui-accent:#aad5b6;
+  --ui-glass:rgba(20,40,28,.62);
+  --ui-border:rgba(239,255,243,.26);
+  --ui-line:rgba(209,234,214,.18);
+  --ui-inset:rgba(29,51,36,.66);
+  --ui-input:rgba(37,63,45,.82);
+  --ui-hover:rgba(190,228,200,.12);
+  --ui-selected:rgba(150,211,166,.18);
+  --ui-good:#9adead;
+  --ui-warn:#ffbd83;
+  --ui-danger:#ff9186;
+  --ui-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 8px 28px rgba(0,0,0,.2);
+}
+
+/* Every floating card shares its tint, blur, border and elevation. */
+body[data-lighting] :is(.map-card,.place-dock,.settings-panel,.inspector,
+  .sim-panel,.ctl-panel,.ctl-toggle,.sim-stats,.sim-noise,.joystick,
+  .sim-legend,.sim-readout,.sim-placing,.toast,dialog) {
+  background:var(--ui-glass);
+  color:var(--ui-ink);
+  border:1px solid var(--ui-border);
+  border-radius:var(--ui-radius);
+  box-shadow:var(--ui-shadow);
+  backdrop-filter:var(--ui-blur);
+  -webkit-backdrop-filter:var(--ui-blur);
+}
+body[data-lighting] .app-header {
+  background:var(--ui-glass);
+  color:var(--ui-ink);
+  border-color:var(--ui-line);
+  backdrop-filter:var(--ui-blur);
+  -webkit-backdrop-filter:var(--ui-blur);
+}
+.sim-here,.sim-noise {
+  --hud-ink:var(--ui-ink);
+  --hud-muted:var(--ui-muted);
+  --hud-warn:var(--ui-warn);
+}
+body[data-lighting=evening] :is(.sim-here,.sim-noise) {
+  --hud-ink:var(--ui-ink);
+  --hud-muted:var(--ui-muted);
+  --hud-warn:var(--ui-warn);
+}
+
+/* Meters occupy the left corner; movement and stats share one centre line. */
+body .sim-noise {
+  position:absolute;
+  left:var(--hud-edge);
+  bottom:var(--hud-base);
+  width:var(--meter-width);
+  height:var(--meter-height);
+  z-index:6;
+}
+body .sim-here,body.sim-open .sim-here {
+  left:50%;
+  bottom:var(--hud-base);
+  width:620px;
+  max-width:calc(100% - 512px);
+  transform:translateX(-50%);
+  z-index:6;
+}
+body[data-mode] .joystick {
+  left:50%;
+  right:auto;
+  bottom:calc(var(--hud-base) + var(--stats-height,80px) + var(--hud-gap));
+  width:var(--move-size);
+  height:var(--move-size);
+  transform:translateX(-50%);
+  z-index:6;
+  border-radius:50%;
+}
+body[data-lighting] .joystick { border-radius:50%; }
+body[data-mode] .joystick #joystickKnob {
+  width:36px;
+  height:36px;
+  top:calc(50% - 18px);
+  left:calc(50% - 18px);
+  background:var(--ui-accent);
+  border:2px solid var(--ui-border);
+  box-shadow:0 3px 10px rgba(19,41,28,.2);
+}
+body[data-mode] .joystick-arrows {
+  inset:9px; display:grid; grid-template:repeat(3,1fr)/repeat(3,1fr);
+  place-items:center; font-size:13px; line-height:1; color:var(--ui-muted);
+}
+.joystick-arrow-up { grid-area:1/2; }
+.joystick-arrow-left { grid-area:2/1; }
+.joystick-arrow-right { grid-area:2/3; }
+.joystick-arrow-down { grid-area:3/2; }
+body .left-rail,body[data-mode=walk] .left-rail,body.sim-open .left-rail {
+  left:var(--hud-edge);
+  top:var(--ui-top);
+  bottom:calc(var(--hud-base) + var(--meter-height) + var(--hud-gap));
+}
+body .right-rail { right:var(--hud-edge); top:var(--ui-top); bottom:var(--hud-edge); gap:12px; }
+body.sim-open .sim-panel { bottom:calc(var(--hud-base) + max(var(--meter-height) + var(--hud-gap),var(--stats-height,80px) + var(--move-size) + 2 * var(--hud-gap))); }
+body .navigation-hint { left:50%; bottom:calc(var(--hud-base) + var(--stats-height,80px) + var(--hud-gap)); }
+
+/* A short view can scroll all Discover actions, including Go inside/Leave. */
+.discover-contents { flex:1; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; }
+.discover-contents .place-list { flex:none; overflow:visible; }
+.place-dock .entry-action { border-color:var(--ui-line); }
+.place-dock :is(.discover-toggle,.dock-label) { color:var(--ui-ink); }
+.place-dock .place-icon { color:var(--ui-muted); }
+.place-dock button.active .place-icon { color:var(--ui-accent); }
+.place-dock .discover-toggle:hover,.place-list > button:hover { background:var(--ui-hover); }
+.place-list > button.active { color:var(--ui-ink); background:var(--ui-selected); border-color:var(--ui-line); }
+.place-dock .secondary-button,.place-dock .walk-panel button {
+  background:var(--ui-inset); color:var(--ui-ink); border-color:var(--ui-line);
+}
+.place-dock .walk-panel button { max-width:none; }
+body .ctl-toggle:hover { background:var(--ui-selected); }
+
+/* Repeated content and form controls use the same inset treatment. */
+.sim-panel :is(.sim-card,.sim-group,.sim-picker),.ctl-dock :is(.ctl-regulator,.ctl-strip,.ctl-key),.reference-card {
+  background:var(--ui-inset); color:var(--ui-ink); border-color:var(--ui-line); border-radius:10px;
+}
+.sim-panel :is(.sim-kpi,.sim-checks li,.sim-picker-grid button) {
+  background:var(--ui-inset); color:var(--ui-ink); border-color:var(--ui-line);
+}
+.sim-panel :is(.sim-kpi.good,.sim-checks li.ok) { border-color:var(--ui-good); }
+.sim-panel :is(.sim-kpi.fair,.sim-checks li.warn) { border-color:var(--ui-warn); }
+.sim-panel :is(.sim-kpi.poor,.sim-checks li.error) { border-color:var(--ui-danger); }
+.sim-panel :is(.sim-kpi.good strong,.sim-checks li.ok strong) { color:var(--ui-good); }
+.sim-panel :is(.sim-kpi.fair strong,.sim-checks li.warn strong) { color:var(--ui-warn); }
+.sim-panel :is(.sim-kpi.poor strong,.sim-checks li.error strong,.sim-static.bad,.sim-small.danger,.sim-actions button.danger) { color:var(--ui-danger); }
+.sim-panel :is(.sim-note,.sim-error) {
+  background:var(--ui-inset); color:var(--ui-warn); border-color:var(--ui-warn);
+}
+.sim-panel .sim-error { color:var(--ui-danger); }
+.sim-legend :is(.sim-legend-bar div,.sim-hint),.sim-readout small { color:var(--ui-muted); }
+.sim-placing button { background:var(--ui-accent); color:#fff; }
+body[data-lighting=evening] .sim-placing button { color:#14281c; }
+.sim-panel :is(.sim-group-head,.sim-tabs,.sim-seg),.ctl-dock .ctl-tabs,.settings-panel .lighting-switch {
+  background:var(--ui-hover);
+}
+.sim-panel :is(select,input[type=number],input.sim-name),.settings-panel select {
+  background:var(--ui-input); color:var(--ui-ink); border:1px solid var(--ui-line); border-radius:7px;
+}
+.sim-panel :is(.sim-head strong,.sim-static,.sim-range output,.sim-type strong,.sim-result),
+  .ctl-dock :is(.ctl-head strong,.ctl-section-title h2,.ctl-strip-name,.ctl-strip-name b,.ctl-reg-label b,.ctl-db),
+  .inspector :is(h2,.detail-fact),.sim-panel :is(.sim-rt b,.sim-kpi strong) { color:var(--ui-ink); }
+.ctl-board .ctl-state { color:#4a5054; }
+.ctl-board .ctl-breaker.on .ctl-state { color:#28793e; }
+.sim-panel :is(.sim-eyebrow,.sim-scene,.sim-field,.sim-hint,.sim-count,.sim-row-meta,.sim-card h3,.sim-type,.sim-row-name em),
+  .ctl-dock :is(.ctl-section-title p,.ctl-reg-label,.ctl-reg-label small,.ctl-state),
+  .settings-panel :is(h3,.switch-row,.planning-caption,.planning-link,.settings-footer button),
+  .inspector :is(.detail-source,.detail-note,.panel-title > span),.map-content p,dialog :is(p,li,.help-number),.reference-card span,
+  .sim-panel :is(.sim-kpi span,.sim-kpi small,.sim-group-title small,.sim-hint small,.sim-empty,.sim-rt small,.sim-legend-bar div,.sim-here-audio,.sim-picker h4,.sim-picker-grid small,.sim-checks li span,.electrical-details dt,.electrical-table small) { color:var(--ui-muted); }
+.sim-panel :is(.sim-row,.sim-table th,.sim-table td),.ctl-head,.detail-note,.settings-footer {
+  border-color:var(--ui-line);
+}
+.sim-panel :is(.sim-table th,.sim-table td,.sim-table tr:first-child th,.sim-table td:last-child) { color:var(--ui-muted); }
+.sim-panel .sim-table td.good { color:var(--ui-good); }
+.sim-panel .sim-table td.fair { color:var(--ui-warn); }
+.sim-panel .sim-table td.poor { color:var(--ui-danger); }
+.sim-panel .sim-table tr.total :is(th,td) { color:var(--ui-ink); }
+.sim-panel :is(.sim-tabs button,.sim-seg button),.ctl-dock .ctl-tabs button,.settings-panel .lighting-switch button { color:var(--ui-muted); }
+.sim-panel :is(.sim-tabs button[aria-selected=true],.sim-seg button.active),
+  .ctl-dock .ctl-tabs button.active,.settings-panel .lighting-switch button.active {
+  background:var(--ui-inset); color:var(--ui-ink);
+}
+.sim-panel .sim-row.selected,.ctl-dock .ctl-key.active { background:var(--ui-selected); }
+.sim-panel .sim-row.off .sim-row-name { color:var(--ui-muted); }
+.ctl-dock .ctl-strip.muted { background:var(--ui-hover); }
+.sim-panel :is(.sim-small,.sim-actions button),.settings-panel :is(.detail-buttons button,.drawing-buttons button),
+  .ctl-dock .ctl-speed-options button,.electrical-actions button,.electrical-circuit-rail button {
+  background:var(--ui-inset); color:var(--ui-ink); border-color:var(--ui-line);
+}
+.ctl-dock .ctl-speed-options button.active { background:var(--ui-accent); color:var(--ui-input); border-color:var(--ui-accent); }
+body[data-lighting=evening] .ctl-dock .ctl-speed-options button.active { color:#14281c; }
+.sim-panel :is(.sim-icon,.sim-link),.ctl-dock .ctl-close,.settings-panel .close-button { color:var(--ui-ink); }
+body[data-lighting] dialog .close-button,.inspector .close-button { color:var(--ui-ink); }
+.sim-panel :is(.sim-small,.sim-actions button,.sim-icon,.sim-picker-grid button):hover,
+  .ctl-dock .ctl-close:hover,.settings-panel :is(.detail-buttons button,.drawing-buttons button,.close-button):hover,
+  dialog .close-button:hover,.inspector .close-button:hover { background:var(--ui-hover); }
+.place-dock .walk-panel button.active { background:var(--ui-accent); color:#fff; }
+.place-dock .primary-button,.sim-panel .sim-primary { background:var(--ui-accent); color:#fff; }
+.place-dock .primary-button:hover,.sim-panel .sim-primary:hover { background:color-mix(in srgb,var(--ui-accent) 90%,#000); }
+body[data-lighting=evening] :is(.place-dock .walk-panel button.active,.place-dock .primary-button,.sim-panel .sim-primary) { color:#14281c; }
+.electrical-actions :is(.sim-primary,button[aria-pressed=true]),.electrical-circuit-rail button[aria-pressed=true] {
+  background:var(--ui-accent); color:#fff; border-color:var(--ui-accent);
+}
+body[data-lighting=evening] :is(.electrical-actions,.electrical-circuit-rail) button[aria-pressed=true] { color:#14281c; }
+.electrical-table th { background:var(--ui-input); color:var(--ui-ink); }
+.electrical-table td,.electrical-run-list button { border-color:var(--ui-line); }
+.electrical-table td button,.electrical-run-list button { color:var(--ui-ink); }
+.electrical-run-list button.selected { background:var(--ui-selected); }
+dialog kbd { background:var(--ui-inset); color:var(--ui-ink); border-color:var(--ui-line); }
+dialog .dialog-note { border-color:var(--ui-line); }
+.brand-cross,.map-card #mapToggle .map-chevron { color:var(--ui-muted); }
+.brand small,.mode-switch button,.header-actions :is(button),.map-card #mapToggle { color:var(--ui-muted); }
+.brand { min-width:0; max-width:100%; overflow:hidden; }
+.brand > span:last-child { min-width:0; max-width:100%; }
+.brand :is(small,strong) { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.header-actions .sim-launch.active { background:var(--ui-accent); color:#fff; }
+body[data-lighting=evening] .header-actions .sim-launch.active { color:#14281c; }
+.mode-switch button.active { background:var(--ui-inset); color:var(--ui-ink); }
+.header-actions :is(.icon-button,.text-button):hover { background:var(--ui-hover); }
+.header-actions .sim-launch.active:hover { background:color-mix(in srgb,var(--ui-accent) 90%,#000); }
+body[data-lighting] :is(.sim-panel,.ctl-dock,.settings-panel,.place-dock,dialog) :is(button,input,select,a):focus-visible,
+  body[data-mode] .joystick:focus-visible { outline:2px solid var(--ui-accent); outline-offset:3px; }
+
+@media(max-width:1100px) {
+  .sim-here-values { grid-template-columns:repeat(3,minmax(0,1fr)); row-gap:8px; }
+}
+@media(max-width:760px) {
+  :root {
+    --ui-top:82px; --hud-edge:12px; --meter-height:188px;
+    --meter-width:clamp(82px,calc(50vw - 78px),116px);
+  }
+  body .sim-here,body.sim-open .sim-here { max-width:calc(100% - 24px); }
+  body .sim-noise { bottom:calc(var(--hud-base) + var(--stats-height,110px) + var(--hud-gap)); padding:10px 6px; gap:8px; }
+  body .sim-level-label { font-size:8px; }
+  body .sim-level-label b { font-size:9px; }
+  body .sim-level-row { gap:6px; }
+  body .left-rail,body[data-mode=walk] .left-rail,body.sim-open .left-rail {
+    bottom:calc(var(--hud-base) + var(--stats-height,110px) + var(--meter-height) + 2 * var(--hud-gap));
+  }
+  body .right-rail { bottom:calc(var(--hud-base) + var(--stats-height,110px) + var(--hud-gap)); }
+  body[data-mode=walk] .right-rail { bottom:calc(var(--hud-base) + var(--stats-height,110px) + var(--move-size) + 2 * var(--hud-gap)); }
+  body.sim-open {
+    --meter-height:clamp(108px,calc(100dvh - 550px),188px);
+    --editor-height:min(58dvh,max(180px,calc(100dvh - var(--ui-top) - var(--stats-height,110px) - var(--meter-height) - 3 * var(--hud-gap) - var(--hud-edge))));
+    --hud-base:calc(var(--editor-height) + var(--hud-edge));
+  }
+  body.sim-open .sim-panel { top:auto; bottom:0; height:var(--editor-height); border-radius:var(--ui-radius) var(--ui-radius) 0 0; }
+  body.sim-open .sim-noise { flex:none; min-height:0; }
+  body.sim-open .joystick { left:50%; right:auto; width:var(--move-size); height:var(--move-size); }
+  body.sim-open .right-rail { bottom:calc(var(--hud-base) + var(--stats-height,110px) + var(--hud-gap)); }
+  body.sim-open .right-rail .map-card { width:var(--meter-width); }
+  body.sim-open #mapToggle { font-size:8px; }
+  body.sim-open #mapToggle svg { width:10px; }
+  body.sim-open #minimap { min-height:64px; max-height:calc(var(--meter-height) - 40px); }
+  body.sim-open .map-content p { display:none; }
+  body.sim-open .sim-stat b { font-size:15px; }
+}
+@media(max-width:380px) {
+  .brand strong { font-size:12px; }
+  .brand small { font-size:6.5px; }
+  .mode-switch button { min-width:50px; }
+  .header-actions .icon-button { width:28px; }
+}
+@media(max-width:340px) {
+  body .sim-level-label b { font-size:8px; }
+  body .sim-level-track { width:20px; }
+  body.sim-open #mapToggle { font-size:7px; padding-inline:0; gap:2px; }
+  body.sim-open #mapToggle > span { gap:2px; }
+  body.sim-open #mapToggle > span svg { display:none; }
+}
+@media(max-height:740px) {
+  .sim-panel .sim-kpis { display:none; }
+  .sim-body { min-height:0; }
+  .right-rail { overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; scrollbar-width:thin; }
+  .ctl-dock { flex:none; max-height:none; }
+  .ctl-panel { flex:none; height:clamp(164px,calc(100dvh - var(--ui-top) - var(--stats-height,110px) - var(--move-size) - var(--hud-base) - 3 * var(--hud-gap) - 45px),320px); }
+}
+@media(max-height:600px) {
+  :root { --hud-edge:12px; --meter-height:108px; }
+  body .sim-noise { padding:8px; }
+  body .sim-level-label span { min-height:0; }
+  body .sim-level-row { gap:4px; }
+  body .sim-level-segments { gap:1px; }
+  body.sim-open .sim-panel { width:min(376px,calc(50% - 78px)); }
+  .sim-panel .sim-kpis { display:none; }
+  .sim-panel { overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; }
+  .sim-head { position:sticky; top:0; z-index:1; flex:none; padding:10px 12px 6px; background:var(--ui-input); }
+  .sim-head > div:first-child { min-width:0; }
+  .sim-head .sim-eyebrow { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .sim-head strong { font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .sim-scene { flex:none; padding:0 12px 6px; }
+  .sim-tabs { flex:none; overflow-x:auto; scrollbar-width:thin; }
+  .sim-tabs button { flex:1 0 38px; font-size:9px; padding:6px 2px; }
+  .sim-body { flex:none; min-height:0; overflow-y:visible; }
+}
+@media(max-height:600px) and (max-width:760px) {
+  :root { --meter-height:132px; }
+  body.sim-open .sim-panel { width:auto; }
+  body.sim-open .sim-noise { max-height:calc(100dvh - var(--hud-base) - var(--stats-height,110px) - 2 * var(--hud-gap) - var(--ui-top)); }
+}
+/* Landscape keeps the editor beside the scene instead of lifting the HUD. */
+@media(max-height:600px) and (min-width:500px) {
+  :root { --meter-height:108px; }
+  body.sim-open { --hud-base:var(--hud-edge); --meter-height:108px; }
+  body .sim-here,body.sim-open .sim-here {
+    max-width:calc(100% - 2 * (var(--meter-width) + var(--hud-edge) + var(--hud-gap)));
+  }
+  body .sim-noise,body.sim-open .sim-noise { bottom:var(--hud-base); max-height:none; }
+  body .left-rail,body[data-mode=walk] .left-rail,body.sim-open .left-rail {
+    bottom:calc(var(--hud-base) + var(--meter-height) + var(--hud-gap));
+  }
+  body .right-rail,body[data-mode=walk] .right-rail,body.sim-open .right-rail {
+    bottom:calc(var(--hud-base) + var(--stats-height,110px) + var(--hud-gap));
+    width:min(224px,calc(50% - var(--move-size) / 2 - var(--hud-edge) - var(--hud-gap)));
+  }
+  body.sim-open .sim-panel {
+    left:var(--hud-edge); right:auto; top:var(--ui-top);
+    bottom:calc(var(--hud-base) + var(--meter-height) + var(--hud-gap));
+    width:min(376px,calc(50% - var(--move-size) / 2 - var(--hud-edge) - var(--hud-gap)));
+    height:auto; border-radius:var(--ui-radius);
+  }
+}

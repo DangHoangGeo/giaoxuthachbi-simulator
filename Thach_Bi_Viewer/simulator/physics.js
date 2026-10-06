@@ -44,6 +44,27 @@
   const undb = L => Math.pow(10, L / 10);
   Object.assign(P, { clamp, smoothstep, db, undb });
 
+  // Mean acoustic energy, expressed in dB. Subtract the largest level before
+  // exponentiation so even a wide range of finite readings stays well behaved.
+  P.meanLevel = function (levels) {
+    const v = levels.filter(Number.isFinite);
+    if (!v.length) return null;
+    const peak = Math.max(...v);
+    return peak + db(v.reduce((s, L) => s + undb(L - peak), 0) / v.length);
+  };
+  P.statistics = function (values, decibels = false) {
+    const v = values.filter(Number.isFinite).sort((a, b) => a - b);
+    if (!v.length) return null;
+    const quantile = p => {
+      const i = (v.length - 1) * p, lo = Math.floor(i), hi = Math.ceil(i);
+      return v[lo] + (v[hi] - v[lo]) * (i - lo);
+    };
+    const avg = decibels ? P.meanLevel(v) : v.reduce((s, x) => s + x, 0) / v.length;
+    return { n: v.length, avg, min: v[0], max: v[v.length - 1],
+      p05: quantile(0.05), p10: quantile(0.1), median: quantile(0.5), p95: quantile(0.95),
+      u0: avg > 0 ? v[0] / avg : 0 };
+  };
+
   /* ------------------------------------------------------------------ colour */
   // Planckian locus (Kim et al. cubic spline) → linear sRGB with luminance 1.
   P.cctToLinear = function (kelvin) {
@@ -366,9 +387,12 @@
      pressure re 20 µPa, i.e. 10^(L/10)). src: {pos, f, r, u, level1m, delayMs,
      response[], lineLength}. level1m is the A-weighted programme level 1 m
      on axis. Barron's revised theory supplies the reflected energy. */
-  P.sourceArrivals = function (src, spec, rx, room, occluders, spectrum) {
+  P.sourceArrivals = function (src, spec, rx, room, occluders, spectrum, receiverCoupling = 1) {
     const rf = src.reverbFactor;
     const shape = spectrum || P.SPEECH_SPECTRUM;
+    // Frequency response changes the spectrum, not the stated overall dBA
+    // reference. The on-axis direct level at 1 m must equal level1m.
+    const bands1m = P.bandsFromDbA(src.level1m, shape.map((L, b) => L + (src.response?.[b] ?? 0)));
     const vx = rx[0] - src.pos[0], vy = rx[1] - src.pos[1], vz = rx[2] - src.pos[2];
     const r = Math.max(0.3, Math.hypot(vx, vy, vz));
     const d = [vx / r, vy / r, vz / r];
@@ -385,18 +409,21 @@
     const wallShadow = occluders && occluders.walls ? occluders.blockedByWall(src.pos, rx) : false;
     const direct = [], reflected = [], barronK = 16 * PI / (room.K || P.reverbConstant(room.c));
     for (let b = 0; b < 7; b++) {
-      const L1 = src.level1m + shape[b] + (src.response ? src.response[b] : 0);
+      const L1 = bands1m[b];
       const rt = src.lineLength ? src.lineLength * src.lineLength * P.OCTAVES[b] / (2 * room.c) : 0;
-      const spread = rt > 1 && r < rt ? 1 / (r * rt) : 1 / (r * r);
+      // Normalize the cylindrical/far-field model to the catalogue's 1 m
+      // reference while retaining continuity at the transition distance.
+      const referenceSpread = rt > 1 ? 1 / rt : 1;
+      const spread = (rt > 1 && r < rt ? 1 / (r * rt) : 1 / (r * r)) / referenceSpread;
       const w = rt > 1 ? Math.min(1, r / rt) : 1;
       const v = angNear.v + (ang.v - angNear.v) * w;
       const dir = P.directivityDb(spec, ang.h, v, b);
       const occ = (columnShadow ? P.COLUMN_SHADOW[b] : 0) + (wallShadow ? P.WALL_SHADOW[b] : 0);
-      direct.push(undb(L1 + dir - room.airDb[b] * r + occ) * spread);
+      direct.push(undb(L1 + dir - room.airDb[b] * (r - 1) + occ) * spread);
       const T = room.T[b];
       // Barron: 31200·T/V·e^(−0.04 r/T) re the direct sound at 10 m, i.e. 16π/K
       // and 13.82/c with the room's own speed of sound.
-      reflected.push(undb(L1) * barronK * T * Math.exp(-13.82 * r / (room.c * T)) / (room.V * P.directivityQ(spec, b)) * (rf ? rf[b] : 1) * (src.coupling ?? 1));
+      reflected.push(undb(L1 + room.airDb[b]) / referenceSpread * barronK * T * Math.exp(-13.82 * r / (room.c * T)) / (room.V * P.directivityQ(spec, b)) * (rf ? rf[b] : 1) * (src.coupling ?? 1) * clamp(receiverCoupling, 0, 1));
     }
     return { r, tau: r / room.c + (src.delayMs || 0) / 1000, direct, reflected, angle: ang, shadowed: columnShadow || wallShadow };
   };
@@ -499,17 +526,20 @@
      band 250 Hz–4 kHz) − 6 dB stability margin. Positive is stable. */
   P.feedbackMargin = function (speakers, mic, room, talkerLevel1m = 62, talkerDistance = 0.4) {
     const Lt = talkerLevel1m + 20 * Math.log10(1 / talkerDistance);
+    const talkerBands = P.bandsFromDbA(Lt, P.SPEECH_SPECTRUM);
     const back = [0, 0, 0, 0, 0, 0, 0];
     for (const sp of speakers) {
-      const a = P.sourceArrivals(sp.src, sp.spec, mic.pos, room, null, P.FLAT_SPECTRUM);
+      const a = P.sourceArrivals(sp.src, sp.spec, mic.pos, room, null);
       const v = [sp.src.pos[0] - mic.pos[0], sp.src.pos[1] - mic.pos[1], sp.src.pos[2] - mic.pos[2]];
       const cosM = (v[0] * mic.dir[0] + v[1] * mic.dir[1] + v[2] * mic.dir[2]) / a.r;
       const cardioid = ((1 + cosM) / 2) ** 2;
       for (let b = 0; b < 7; b++) back[b] += a.direct[b] * cardioid + a.reflected[b] / 3;
     }
-    let worst = -Infinity;
-    for (let b = 1; b <= 5; b++) worst = Math.max(worst, db(back[b]));
-    return Lt - worst - 6;
+    let margin = Infinity;
+    // Compare speech and returning sound in the same octave band; comparing
+    // broadband talker dBA to a single return band overstates the margin.
+    for (let b = 1; b <= 5; b++) margin = Math.min(margin, talkerBands[b] - db(back[b]) - 6);
+    return margin;
   };
 
   /* --------------------------------------------------------------- air speed */

@@ -1,0 +1,79 @@
+<!doctype html><meta charset="utf-8"><title>Church lighting continuity check</title>
+<style>body{font:16px system-ui;padding:28px;background:#edf0ea;color:#263224}button{padding:12px 20px}pre{white-space:pre-wrap}iframe{position:absolute;left:-2000px;width:300px;height:220px}canvas{width:243px;height:243px;border:1px solid #ccc;margin-top:16px}</style>
+<h1>Lighting continuity check</h1><p>Compare actual GPU shading across native and texture-backed lamps and near/far cameras.</p><button disabled id="run">Preparing church renderer…</button><pre id="result">Loading the shared Three.js runtime.</pre><div id="sample"></div>
+<iframe id="church" src="../../Thach_Bi_Viewer/OPEN_CHURCH.html"></iframe>
+<script>window.CHURCH_SIMULATOR = {};</script>
+<script src="../../Thach_Bi_Viewer/simulator/persistent-lighting.js?v=20261006-physical-3"></script>
+<script>
+const button = document.getElementById('run'), output = document.getElementById('result'), frame = document.getElementById('church');
+frame.addEventListener('load', () => {
+  const started = performance.now();
+  const ready = setInterval(() => {
+    if (frame.contentWindow.CHURCH_SIMULATOR?.ready && frame.contentWindow.CHURCH_SIMULATOR.THREE) {
+      clearInterval(ready); button.disabled=false; button.textContent='Run GPU comparison'; button.click();
+    } else if (performance.now()-started>45000) {
+      clearInterval(ready); output.textContent='FAILED: Church renderer did not become ready.';
+    }
+  },100);
+});
+button.addEventListener('click', () => {
+  button.disabled = true;
+  try {
+    const T = frame.contentWindow.CHURCH_SIMULATOR.THREE, P = frame.contentWindow.CHURCH_SIM_PHYSICS;
+    const scene = new T.Scene(), renderer = new T.WebGLRenderer({canvas:document.createElement('canvas'), antialias:false, preserveDrawingBuffer:true});
+    renderer.debug.onShaderError = (gl,program,vertex,fragment) => { throw new Error(gl.getProgramInfoLog(program)+'\n'+gl.getShaderInfoLog(vertex)+'\n'+gl.getShaderInfoLog(fragment)); };
+    renderer.setSize(81,81); renderer.toneMapping = T.NoToneMapping;
+    // Release the full-model preview once its shared Three runtime is available.
+    frame.remove();
+    document.getElementById('sample').replaceChildren(renderer.domElement);
+    const target = new T.WebGLRenderTarget(81,81); target.texture.colorSpace = T.LinearSRGBColorSpace;
+    const persistent = window.CHURCH_SIMULATOR.persistentLighting;
+    persistent.prepare({THREE:T, scene, building:new T.Group()});
+    const cone = P.spotCone(50,80), aim = new T.Vector3(1,-1,-2.5).normalize().toArray();
+    const sources = [
+      {id:'point',kind:'point',pos:[1,1,2.5],cd:200,color:[1,0.7,0.4]},
+      {id:'spot',kind:'spot',pos:[-1,1,2.5],dir:aim,cd:250,color:[0.6,0.8,1],...cone}
+    ];
+    const camera = new T.PerspectiveCamera(45,1,0.1,100);
+    const mesh = new T.Mesh(new T.PlaneGeometry(3,3),new T.MeshStandardMaterial());scene.add(mesh);
+    const specs = [
+      ['plaster',{color:0xeed9b9,metalness:0,roughness:0.85}],
+      ['wood',{color:0x6d331a,metalness:0,roughness:0.35}],
+      ['metal',{color:0xdcb464,metalness:1,roughness:0.4}],
+      ['clearcoat',{color:0x987341,roughness:0.45,clearcoat:1,clearcoatRoughness:0.2}],
+      ['sheen',{color:0x806040,roughness:0.5,sheen:1,sheenColor:new T.Color(0.7,0.4,0.2),sheenRoughness:0.5}]
+    ];
+    const modes = [[],[0],[1],[0,1]], results=[]; let maxError=0;
+    for (const [name,params] of specs) {
+      const material = name==='clearcoat'||name==='sheen' ? new T.MeshPhysicalMaterial(params) : new T.MeshStandardMaterial(params);
+      mesh.material = material; persistent.bindMaterial(material);
+      let baseline;
+      for (const distance of [4,9,20]) for (const mode of modes) {
+        const native = [];
+        for (const i of mode) {
+          const s = sources[i];
+          const light = s.kind==='point' ? new T.PointLight(0xffffff,s.cd*0.04,0,2) : new T.SpotLight(0xffffff,s.cd*0.04,0,s.angle,s.penumbra,2);
+          light.color.setRGB(...s.color);light.position.set(...s.pos);
+          if (s.kind==='spot') {light.target.position.set(...s.pos.map((v,k)=>v+s.dir[k]));scene.add(light.target);}
+          scene.add(light);native.push(light);
+        }
+        persistent.update(sources,new Set(mode.map(i=>sources[i])),0.04);
+        camera.position.set(0,0,distance);camera.lookAt(0,0,0);scene.updateMatrixWorld(true);
+        renderer.setRenderTarget(target);renderer.render(scene,camera);
+        const pixel=new Uint8Array(4);renderer.readRenderTargetPixels(target,40,40,1,1,pixel);
+        if (!baseline) baseline=Array.from(pixel).slice(0,3);
+        const error=Math.max(...baseline.map((v,i)=>Math.abs(v-pixel[i])));maxError=Math.max(maxError,error);
+        if (error>2) throw new Error(`${name}, distance ${distance}, native [${mode}]: ${pixel} differs from ${baseline} by ${error}/255`);
+        if (!pixel.slice(0,3).some(v=>v>0)) throw new Error(`${name} lost its illumination/reflection: mode=${mode}, distance=${distance}, GL error=${renderer.getContext().getError()}, context lost=${renderer.getContext().isContextLost()}`);
+        results.push({material:name,distance,native:mode.length,rgb:Array.from(pixel).slice(0,3),error});
+        for (const light of native) {scene.remove(light);if(light.target)scene.remove(light.target);light.dispose();}
+      }
+      material.dispose();
+    }
+    renderer.setRenderTarget(null);renderer.render(scene,camera);
+    output.textContent=JSON.stringify({status:'passed',comparisons:results.length,maxChannelError:maxError,allowedChannelError:2,results},null,2);
+    target.dispose();
+  } catch(e) {output.textContent='FAILED: '+(e.stack||e);}
+  button.disabled=false;
+});
+</script>

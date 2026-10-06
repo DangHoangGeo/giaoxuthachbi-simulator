@@ -1,0 +1,125 @@
+{
+  "desktopTabs": [
+    {
+      "body": [
+        353,
+        454
+      ],
+      "heading": "Scenes",
+      "size": [
+        224,
+        440
+      ],
+      "tab": "Scenes"
+    },
+    {
+      "body": [
+        353,
+        991
+      ],
+      "heading": "Interior circuits",
+      "size": [
+        224,
+        440
+      ],
+      "tab": "DB-1"
+    },
+    {
+      "body": [
+        353,
+        413
+      ],
+      "heading": "Towers & façade",
+      "size": [
+        224,
+        440
+      ],
+      "tab": "Towers"
+    },
+    {
+      "body": [
+        353,
+        494
+      ],
+      "heading": "Fan speed",
+      "size": [
+        224,
+        440
+      ],
+      "tab": "Fans"
+    },
+    {
+      "body": [
+        353,
+        639
+      ],
+      "heading": "Sound zones",
+      "size": [
+        224,
+        440
+      ],
+      "tab": "Sound"
+    }
+  ],
+  "shortTabs": [
+    {
+      "size": [
+        224,
+        426
+      ],
+      "tab": "Scenes"
+    },
+    {
+      "size": [
+        224,
+        426
+      ],
+      "tab": "DB-1"
+    },
+    {
+      "size": [
+        224,
+        426
+      ],
+      "tab": "Towers"
+    },
+    {
+      "size": [
+        224,
+        426
+      ],
+      "tab": "Fans"
+    },
+    {
+      "size": [
+        224,
+        426
+      ],
+      "tab": "Sound"
+    }
+  ],
+  "phone": {
+    "width": 390,
+    "height": 844,
+    "overflow": false
+  },
+  "animation": {
+    "bars": 36,
+    "changedBars": 36
+  },
+  "estimatedNoise": {
+    "quiet": 40,
+    "loud": 50
+  },
+  "navigation": [
+    "enter",
+    "leave"
+  ],
+  "keyboard": [
+    "ArrowRight",
+    "Escape"
+  ],
+  "soundSlider": "Labels, layout and original saved levels inspected; no gain mutation test",
+  "syntax": "Passed",
+  "diffWhitespace": "Passed"
+}

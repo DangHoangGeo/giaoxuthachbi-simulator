@@ -12,6 +12,7 @@
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const fmt = (v, d = 0) => Number.isFinite(v) ? v.toFixed(d) : '–';
   let tab = 'light', panel, body, picking = null, collapsed = new Set(), lastAnalysis = null, hereTimer = 0;
+  let noiseSegments = [], soundSegments = [], speechValue = null, noiseTimer = 0;
   const TABS = [
     { id: 'light', label: 'Lights', cat: 'light' },
     { id: 'fan', label: 'Fans', cat: 'fan' },
@@ -29,6 +30,7 @@
     const btn = document.createElement('button');
     btn.id = 'simulatorButton'; btn.className = 'text-button sim-launch'; btn.setAttribute('aria-expanded', 'false');
     btn.title = 'Lights, fans, sound and decoration simulator';
+    btn.setAttribute('aria-label', 'Simulator');
     btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6m-5 3h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3Z"/></svg><span>Simulator</span>';
     actions.prepend(btn);
     btn.addEventListener('click', () => setOpen(!document.body.classList.contains('sim-open')));
@@ -60,8 +62,29 @@
       <div id="simReadout" class="sim-readout" hidden></div>
       <div id="simPlacing" class="sim-placing" hidden><span></span><button data-act="cancel-place">Done</button></div>
       <div id="simLegend" class="sim-legend" hidden></div>
-      <div id="simHere" class="sim-here" hidden></div>`;
+      <div id="simNoise" class="sim-noise" role="group" aria-label="Noise and sound levels" hidden>
+        <div class="sim-level-row">
+          <div class="sim-level-label"><span>Noise estimate</span><b id="simNoiseValue">– dBA</b></div>
+          <div id="simNoiseMeter" class="sim-level-track" role="meter" aria-label="Background noise estimate" aria-valuemin="25" aria-valuemax="85">
+            <div class="sim-level-segments" aria-hidden="true">${Array.from({ length: 28 }, () => '<i></i>').join('')}</div><i class="sim-level-limit" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="sim-level-row">
+          <div class="sim-level-label"><span id="simSoundLabel">Sound estimate</span><b id="simSoundValue">– dBA</b></div>
+          <div id="simSoundMeter" class="sim-level-track" role="meter" aria-label="Speech level estimate" aria-valuemin="30" aria-valuemax="90">
+            <div class="sim-level-segments" aria-hidden="true">${Array.from({ length: 28 }, () => '<i></i>').join('')}</div><i class="sim-level-limit" aria-hidden="true"></i><i class="sim-level-peak" aria-hidden="true" hidden></i>
+          </div>
+        </div>
+      </div>
+      <div id="simHere" class="sim-here" hidden>
+        <div class="sim-stats"><div id="simStatsScope" class="sim-stats-scope"></div><div id="simHereValues" class="sim-here-values"></div></div>
+      </div>`;
     document.body.append(...extras.children);
+    noiseSegments = [...$('simNoiseMeter').querySelectorAll('.sim-level-segments i')];
+    soundSegments = [...$('simSoundMeter').querySelectorAll('.sim-level-segments i')];
+    new ResizeObserver(() => {
+      document.body.style.setProperty('--stats-height', `${Math.ceil($('simHere').getBoundingClientRect().height)}px`);
+    }).observe($('simHere'));
     $('simPlacing').addEventListener('click', e => { if (e.target.dataset.act === 'cancel-place') SIM.cancelPlacement(); });
 
     panel.addEventListener('click', onClick);
@@ -96,11 +119,14 @@
     SIM.on('toast', toast);
     SIM.on('readout', r => showReadout(r));
     SIM.on('frame', ({ mode, camera }) => {
-      if (mode !== 'walk' || !SIM.analysis) { $('simHere').hidden = true; return; }
+      if (!SIM.analysis || document.body.classList.contains('presentation')) {
+        $('simHere').hidden = true; $('simNoise').hidden = true; return;
+      }
       const now = performance.now();
-      if (now - hereTimer < 400) return;
-      hereTimer = now;
-      showHere(camera);
+      if (now - hereTimer >= 400) { hereTimer = now; showHere(camera, mode); }
+      if (!$('simHere').hidden && now - noiseTimer >= 50 && !document.hidden) {
+        noiseTimer = now; updateSoundMeter();
+      }
     });
     renderScenes(); renderKpis(); renderBody(); updateUndo(); renderMapMarkers();
     SIM.on('items', () => renderMapMarkers());
@@ -146,7 +172,7 @@
   /* ----------------------------------------------------------------- KPIs */
   function kpiClass(kind, v) {
     if (!Number.isFinite(v)) return '';
-    if (kind === 'lux') return v >= 200 && v <= 350 ? 'good' : v >= 150 && v <= 500 ? 'fair' : 'poor';
+    if (kind === 'lux') return v >= 200 && v <= 300 ? 'good' : v >= 150 && v <= 500 ? 'fair' : 'poor';
     if (kind === 'sti') return v >= 0.6 ? 'good' : v >= 0.5 ? 'fair' : 'poor';
     if (kind === 'air') return v >= 0.3 && v <= 0.8 ? 'good' : v >= 0.2 && v <= 1.0 ? 'fair' : 'poor';
     if (kind === 'noise') return v <= 40 ? 'good' : v <= 46 ? 'fair' : 'poor';
@@ -192,12 +218,12 @@
     const parts = [];
     if (t.light) {
       const lm = it.lumens ?? t.light.lumens;
-      parts.push(`${Math.round(lm).toLocaleString('en')} lm`, `${it.cct ?? t.light.cct} K`);
+      parts.push(t.light.wattsPerBulb ? `${CAT.bulbCount(it.params)} bulbs · lumen data needed` : `${Math.round(lm).toLocaleString('en')} lm`, `${it.cct ?? t.light.cct} K`);
       if (t.light.beam) parts.push(`${it.beam ?? t.light.beam}°`);
       if (it.on && (it.dim ?? 1) < 1) parts.push(`${Math.round((it.dim ?? 1) * 100)} %`);
     }
-    if (t.fan) parts.push(t.fan.diameter + ' m', it.on ? `speed ${it.speed}/${t.fan.speeds.length}` : 'off');
-    if (t.speaker) parts.push(`${fmt(t.speaker.nominal + (it.level ?? 0) + SIM.state.settings.mixerDb)} dB @1 m`, `${fmt(it.delayMs, 1)} ms`);
+    if (t.fan) parts.push(t.fan.diameter + ' m', it.on && it.speed > 0 ? `speed ${it.speed}/${t.fan.speeds.length}` : 'off');
+    if (t.speaker) parts.push(`${fmt(t.speaker.nominal + (it.level ?? 0) + SIM.state.settings.mixerDb)} dBA @1 m`, `${fmt(it.delayMs, 1)} ms`);
     if (t.mic && Number.isFinite(it.feedbackMargin)) parts.push(`feedback margin ${fmt(it.feedbackMargin, 1)} dB`);
     parts.push(`axis ${SIM.axisName(it.pos[0])}`, `${fmt(it.pos[1], 2)} m`);
     const w = SIM.itemWatts(it);
@@ -279,7 +305,8 @@
     }
     if (t.light) {
       const L = t.light, lm = it.lumens ?? L.lumens;
-      html += field('Output (lumens)', range('lumens', lm, Math.round(L.lumens * 0.25), Math.round(L.lumens * 2), Math.max(10, Math.round(L.lumens / 100)), `${Math.round(lm)} lm · ${fmt(L.watts * lm / L.lumens)} W`), true);
+      if (L.lumens > 0) html += field('Output (lumens)', range('lumens', lm, Math.round(L.lumens * 0.25), Math.round(L.lumens * 2), Math.max(10, Math.round(L.lumens / 100)), `${Math.round(lm)} lm · ${fmt(L.watts * lm / L.lumens)} W`), true);
+      else if (L.wattsPerBulb) html += field('String load', `<output class="sim-static">${CAT.bulbCount(it.params)} bulbs · ${fmt(SIM.itemWatts(it, true))} W rated</output>`, true);
       html += field('Dimmer', range('dim', Math.round((it.dim ?? 1) * 100), 0, 100, 1, Math.round((it.dim ?? 1) * 100) + ' %'));
       html += field('Colour temperature', `<select data-prop="cct">${[1900, 2200, 2700, 3000, 3500, 4000, 5000].map(k => `<option value="${k}" ${(it.cct ?? L.cct) === k ? 'selected' : ''}>${k} K${k === 2700 ? ' · warm' : k === 3000 ? ' · warm white' : k === 4000 ? ' · neutral' : ''}</option>`).join('')}</select>`);
       if (L.beam) html += field('Beam angle', `<select data-prop="beam">${[...new Set([...(L.optics || []), L.beam, it.beam ?? L.beam, 60, 80, 100])].sort((a, b) => a - b).map(b => `<option value="${b}" ${(it.beam ?? L.beam) === b ? 'selected' : ''}>${b}°</option>`).join('')}</select>`);
@@ -287,14 +314,15 @@
     }
     if (t.fan) {
       html += field('Speed', `<span class="sim-seg">${['Off', ...t.fan.speeds.map((_, i) => String(i + 1))].map((l, i) => `<button data-act="speed" data-speed="${i}" class="${(it.on ? it.speed : 0) === i ? 'active' : ''}">${l}</button>`).join('')}</span>`, true);
+      const running = it.on && !it.hidden && it.speed > 0;
       const sp = t.fan.speeds[Math.max(0, (it.speed || 1) - 1)];
-      html += field('At this speed', `<output class="sim-static">${fmt(sp.flow * 60)} m³/min · ${sp.rpm} rpm · ${sp.watts} W · ${sp.dBA} dBA @1 m</output>`, true);
+      html += field('At this speed', `<output class="sim-static">${running ? `${fmt(sp.flow * 60)} m³/min · ${sp.rpm} rpm · ${sp.watts} W · ${sp.dBA} dBA @1 m` : 'Stopped · 0 W · no fan airflow or noise'}</output>`, true);
       if (t.fan.oscillate) html += field('Oscillate', `<input type="checkbox" data-prop="oscillate" ${it.oscillate !== false ? 'checked' : ''}>`);
     }
     if (t.speaker) {
       const S = t.speaker, lvl = S.nominal + (it.level ?? 0) + SIM.state.settings.mixerDb;
       const w = Math.pow(10, (lvl + 10 - S.sensitivity) / 10);
-      html += field('Level trim', range('level', it.level ?? 0, -30, 12, 0.5, `${fmt(it.level ?? 0, 1)} dB → ${fmt(lvl)} dB @1 m`), true);
+      html += field('Level trim', range('level', it.level ?? 0, -30, 12, 0.5, `${fmt(it.level ?? 0, 1)} dB → ${fmt(lvl)} dBA @1 m`), true);
       html += field('Delay', `<span class="sim-inline">${num('delayMs', it.delayMs ?? 0, 0.5, 0, 400)}<button data-act="align" class="sim-small">Align all</button></span>`);
       html += field('Amplifier peak', `<output class="sim-static ${!S.active && w > S.ratedW ? 'bad' : ''}">${fmt(w)} W of ${S.ratedW} W${S.active ? ' (self-powered)' : ''}</output>`);
     }
@@ -331,14 +359,15 @@
         ${row('Light on books (maintained)', `${fmt(s.lux.avg)} lux avg · ${fmt(s.lux.min)} min`, '200–300 lux', kpiClass('lux', s.lux.avg))}
         ${row('Seats ≥ 200 lux', `${fmt(s.luxOk)} %`, 'all', s.luxOk > 90 ? 'good' : s.luxOk > 70 ? 'fair' : 'poor')}
         ${row('Uniformity (min / avg)', fmt(s.lux.u0, 2), '≥ 0.4 suggested', s.lux.u0 >= 0.4 ? 'good' : 'fair')}
-        ${s.sti ? row('Speech clarity STI', `${fmt(s.sti.avg, 2)} avg · ${fmt(s.sti.min, 2)} min · ${P.stiRating(s.sti.avg)}`, '≥ 0.60 every seat', kpiClass('sti', s.sti.avg)) : row('Speech clarity STI', 'no loudspeaker on', '≥ 0.60', 'poor')}
+        ${s.sti ? row('Speech clarity STI', `${fmt(s.sti.avg, 2)} avg · ${fmt(s.sti.min, 2)} min · ${P.stiRating(s.sti.avg)}`, '≥ 0.60 every seat', kpiClass('sti', s.sti.avg)) : row('Speech clarity STI', 'no speech source on', '≥ 0.60', 'poor')}
         ${s.sti ? row('Seats ≥ 0.60 / ≥ 0.50', `${fmt(s.stiOk)} % / ${fmt(s.stiFair)} %`, '100 %', s.stiOk > 90 ? 'good' : s.stiOk > 60 ? 'fair' : 'poor') : ''}
-        ${s.spl ? row('Speech level', `${fmt(s.spl.avg)} dBA · ±${fmt(s.splSpread / 2, 1)} dB`, '±3 dB uniformity', s.splSpread / 2 <= 3 ? 'good' : 'fair') : ''}
+        ${s.spl ? row('Speech level (energy average)', `${fmt(s.spl.avg)} dBA · ${fmt(s.spl.p05, 1)}–${fmt(s.spl.p95, 1)} dBA at 90 % of seats`, '90 % seat span ≤ 6 dB', s.splSpread <= 6 ? 'good' : 'fair') : ''}
         ${row('Background noise', `${fmt(s.noise.avg)} dBA`, '≈35 dBA where practicable', kpiClass('noise', s.noise.avg))}
         ${row('Seated air speed', `${fmt(s.air.avg, 2)} m/s avg · ${fmt(s.air.min, 2)} min`, '0.3–0.8 m/s trial', kpiClass('air', s.air.avg))}
         ${row('Seats in 0.3–0.8 m/s', `${fmt(s.airOk)} %`, 'most seats', s.airOk > 80 ? 'good' : s.airOk > 50 ? 'fair' : 'poor')}
-        ${row('Feels cooler by', `≈ ${fmt(s.cooling.avg, 1)} °C`, 'estimate (SET method)', '')}
-      </table>${Object.keys(s.blocks).length ? `<p class="sim-hint">${Object.entries(s.blocks).map(([b, v]) => `${b} block: ${fmt(v.lux.avg)} lux, STI ${v.sti ? fmt(v.sti.avg, 2) : '–'}, ${fmt(v.air.avg, 2)} m/s`).join(' · ')}</p>` : ''}</div>`;
+        ${row('Feels cooler by', `≈ ${fmt(s.cooling.avg, 1)} °C`, 'empirical warm/seated estimate', '')}
+      </table>${Object.keys(s.blocks).length ? `<p class="sim-hint">${Object.entries(s.blocks).map(([b, v]) => `${b} block: ${fmt(v.lux.avg)} lux, STI ${v.sti ? fmt(v.sti.avg, 2) : '–'}, ${fmt(v.air.avg, 2)} m/s`).join(' · ')}</p>` : ''}
+      <p class="sim-hint">Design estimates use representative equipment data. Light excludes daylight and bulb strings with no lumen data; air speed covers fan airflow at 0.6 m, excluding natural wind. Speech and noise use energy averages at seated ear height (1.2 m). Confirm the model with actual product data and site readings.</p></div>`;
     } else html += `<div class="sim-card"><p>Calculating…</p></div>`;
     html += `<div class="sim-card"><h3>Room acoustics</h3>
       <div class="sim-rt">${room.T.map((t, b) => `<div><span style="height:${Math.min(100, t / 5 * 100)}%"></span><small>${P.OCTAVES[b] >= 1000 ? P.OCTAVES[b] / 1000 + 'k' : P.OCTAVES[b]}</small><b>${fmt(t, 1)}</b></div>`).join('')}</div>
@@ -353,7 +382,7 @@
     const checks = A?.checks || [];
     html += `<div class="sim-card"><h3>Design checks</h3>${checks.length ? `<ul class="sim-checks">${checks.map(c => `<li class="${c.level}"><strong>${esc(c.title)}</strong><span>${esc(c.detail)}</span>${c.ids.length ? `<button class="sim-small" data-act="select-id" data-id="${esc(c.ids[0])}">Show</button>` : ''}</li>`).join('')}</ul>` : '<p class="sim-hint">No issues found.</p>'}</div>`;
     const pw = SIM.powerSummary(), st = SIM.state.settings;
-    html += `<div class="sim-card"><h3>Electricity (example estimate)</h3>
+    html += `<div class="sim-card"><h3>Service electricity estimate</h3>
       <table class="sim-table compact">${pw.byCircuit.filter(c => c.watts > 0.5 || c.rated > 0).map(c => `<tr><th>${esc(c.label)}</th><td>${fmt(c.watts)} W</td><td>${c.on}/${c.count} on</td></tr>`).join('')}
       <tr class="total"><th>Everything switched on now</th><td>${fmt(pw.total)} W</td><td></td></tr></table>
       <div class="sim-fields">
@@ -361,8 +390,9 @@
         ${field('Services per month', `<input type="number" data-setting="servicesPerMonth" min="1" max="120" step="1" value="${st.servicesPerMonth}">`)}
         ${field('Tariff (VND/kWh)', `<input type="number" data-setting="tariff" min="0" max="10000" step="50" value="${st.tariff}">`)}
       </div>
-      <p class="sim-result">${fmt(pw.kWhService, 1)} kWh per service · ${fmt(pw.kWhMonth)} kWh per month · ≈ ${Math.round(pw.costMonth).toLocaleString('vi-VN')} ₫ per month</p>
-      <p class="sim-hint">Rated watts × dimmer, fan speed curves and amplifier estimates. Replace with metered data; not a quotation or a breaker sizing.</p></div>`;
+      <p class="sim-result">${fmt(pw.kWhService, 1)} kWh per service · ${fmt(pw.kWhMonth)} kWh per month · ≈ ${Math.round(pw.costMonth).toLocaleString('vi-VN')} ₫ per month for services</p>
+      <p class="sim-hint">Uses the equipment currently on for every service. Enter your service count, hours and tariff above. Preparation, cleaning and other use between services are excluded.</p>
+      <p class="sim-hint">Uses LED output and driver allowances, string bulb counts, fan speed curves and amplifier estimates. Confirm with actual equipment ratings and metered data.</p></div>`;
     html += `<div class="sim-card"><h3>Save &amp; share</h3><div class="sim-actions">
       <button data-act="export-json">Download layout (.json)</button>
       <button data-act="import-json">Open layout…</button>
@@ -397,11 +427,11 @@
       ${rng('eyeHeight', 'Standing eye height', 1.3, 1.85, 0.01, fmt(s.eyeHeight, 2) + ' m')}
       ${rng('walkSpeed', 'Walking speed', 0.8, 2.5, 0.1, fmt(s.walkSpeed, 1) + ' m/s')}
       ${rng('adaptLux', 'Eye adaptation (evening)', 40, 500, 10, s.adaptLux + ' lux')}
-      ${sw('autoExposure', 'Automatic eye adaptation', 'Adapts to the light where you stand, like the eye. Off keeps designs comparable.')}
+      ${sw('autoExposure', 'Automatic eye adaptation', 'Adapts to the light where you stand, like the eye. Off keeps room brightness fixed when moving.')}
       ${rng('halos', 'Lamp glow', 0, 2, 0.1, fmt(s.halos, 1) + '×')}
-      ${field('Lights drawn in 3D', `<select data-setting="quality">${Object.entries(SIM.QUALITY).map(([k, q]) => `<option value="${k}" ${s.quality === k ? 'selected' : ''}>${esc(q.label)}</option>`).join('')}</select>`, true)}
-      ${sw('autoQuality', 'Lighten automatically when walking stutters')}
-      <p class="sim-hint">${(() => { const p = SIM.poolStats(); return p ? `${p.emitters} light sources; ${p.points + p.spots + p.shadows} drawn individually${p.culled > 0 ? `, ${p.culled} outside the current drawing budget` : ''}. Analysis always uses every source.` : ''; })()}</p>
+      ${field('Rendering quality', `<select data-setting="quality">${Object.entries(SIM.QUALITY).map(([k, q]) => `<option value="${k}" ${s.quality === k ? 'selected' : ''}>${esc(q.label)}</option>`).join('')}</select>`, true)}
+      ${sw('autoQuality', 'Adjust detail automatically when walking stutters')}
+      <p class="sim-hint">${(() => { const p = SIM.poolStats(); return p ? `All ${p.emitters} active light sources illuminate surfaces at every distance. Full resolution at every quality level. Illumination, reflections and shadow sources stay active at every quality level. Analysis always uses every source.` : ''; })()}</p>
       </div>
       <div class="sim-card"><h3>Structure &amp; finishes</h3>
       ${field('Timber frame', `<select data-setting="frameStyle"><option value="drawn" ${s.frameStyle !== 'reference' ? 'selected' : ''}>As drawn (PDF section 4)</option><option value="reference" ${s.frameStyle === 'reference' ? 'selected' : ''}>Reference image (open collar truss)</option></select>`, true)}
@@ -495,7 +525,7 @@
     else if (key?.startsWith('param:')) { patch.params = { ...it.params, [key.slice(6)]: v }; }
     SIM.update(it.id, patch, { record: false });
     const out = t.parentElement.querySelector('output');
-    if (out) out.textContent = key === 'yaw' || key === 'tilt' ? v + '°' : key === 'lumens' ? `${Math.round(v)} lm · ${fmt(CAT.byId[it.type].light.watts * v / CAT.byId[it.type].light.lumens)} W` : key === 'dim' ? v + ' %' : key === 'level' ? `${fmt(v, 1)} dB → ${fmt(CAT.byId[it.type].speaker.nominal + v + SIM.state.settings.mixerDb)} dB @1 m` : String(v);
+    if (out) out.textContent = key === 'yaw' || key === 'tilt' ? v + '°' : key === 'lumens' ? `${Math.round(v)} lm · ${fmt(CAT.byId[it.type].light.watts * v / CAT.byId[it.type].light.lumens)} W` : key === 'dim' ? v + ' %' : key === 'level' ? `${fmt(v, 1)} dB → ${fmt(CAT.byId[it.type].speaker.nominal + v + SIM.state.settings.mixerDb)} dBA @1 m` : String(v);
   }
   function settingLabel(key, v) {
     return { lensDeg: v + '°', eyeHeight: fmt(v, 2) + ' m', walkSpeed: fmt(v, 1) + ' m/s', adaptLux: v + ' lux', halos: fmt(v, 1) + '×', maintenance: fmt(v, 2), occupancy: fmt(v * 100) + ' %', openings: fmt(v * 100) + ' % open', ambientDbA: v + ' dBA' }[key] ?? String(v);
@@ -553,17 +583,78 @@
     el.style.left = (r.clientX + 14) + 'px'; el.style.top = (r.clientY + 14) + 'px';
     el.hidden = false;
   }
-  function showHere(camera) {
+  function showHere(camera, mode) {
     const el = $('simHere');
     const p = camera.position;
-    if (!SIM.isInterior([p.x, p.y, p.z]) && Math.abs(p.z) > 10.6) { el.hidden = true; return; }
-    const v = SIM.analysis.pointValues(p.x, p.z, p.y);
+    const local = mode === 'walk';
+    const seats = lastAnalysis?.seats;
+    // One set of readings: the camera position while walking, seated averages
+    // while exploring. Power always describes the whole installation.
+    const v = local ? SIM.analysis.pointValues(p.x, p.z, p.y) : {
+      lux: seats?.lux?.avg, sti: seats?.sti?.avg, spl: seats?.spl?.avg,
+      air: seats?.air?.avg, noise: seats?.noise?.avg
+    };
+    const floorLight = Number.isFinite(v.floorLux);
+    const lux = floorLight ? v.floorLux : v.lux;
+    const power = SIM.powerSummary();
+    const scope = local ? 'At your position' : 'Church average · seating';
+    const cell = (key, label, value, unit, title, ok) => `<div class="sim-stat${ok === false ? ' bad' : ''}" data-stat="${key}" title="${esc(title)}"><div><b>${value}</b><small>${unit}</small></div><span>${label}</span></div>`;
     el.hidden = false;
-    el.innerHTML = (v.floorLux !== null && v.floorLux !== undefined
-      ? `<span title="Maintained light on the floor of this aisle or veranda; the brief's circulation target is about 100 lux">☀ ${fmt(v.floorLux)} lux · floor</span>`
-      : `<span title="Maintained light on a book at 0.8 m">☀ ${fmt(v.lux)} lux</span>`) +
-      (v.sti !== null ? `<span title="Speech intelligibility at your ears">◉ STI ${fmt(v.sti, 2)} · ${P.stiRating(v.sti)}</span><span title="Speech level at your ears">♫ ${fmt(v.spl)} dBA</span>` : '<span>◉ no loudspeaker on</span>') +
-      `<span title="Background noise">♪ ${fmt(v.noise)} dBA</span><span title="Seated air speed">≋ ${fmt(v.air, 2)} m/s</span>`;
+    $('simNoise').hidden = false;
+    el.dataset.scope = local ? 'position' : 'average';
+    $('simStatsScope').textContent = `${scope} · ${!local && SIM.analysis.busy ? 'updating estimates' : 'estimates'}`;
+    const values =
+      cell('light', floorLight ? 'Floor light' : 'Book light', fmt(lux), 'lux', `${scope}: maintained modeled light ${floorLight ? 'on the floor' : 'on a book at 0.8 m'}; excludes daylight`, Number.isFinite(lux) ? floorLight ? lux >= 100 : kpiClass('lux', lux) === 'good' : undefined) +
+      cell('sti', 'Clarity', fmt(v.sti, 2), 'STI', `${scope}: speech intelligibility${Number.isFinite(v.sti) ? ' · ' + P.stiRating(v.sti) : ' · no speech source on'}`, Number.isFinite(v.sti) ? v.sti >= 0.6 : undefined) +
+      cell('speech', 'Speech', fmt(v.spl), 'dBA', `${scope}: speech level ${local ? `at your ear height (${fmt(p.y - SIM.floorY(p.x, p.z), 2)} m)` : 'at 1.2 m, averaged by acoustic energy'}`) +
+      cell('air', 'Air', fmt(v.air, 2), 'm/s', `${scope}: fan air speed at 0.6 m; preferred 0.3–0.8 m/s; excludes natural wind`, Number.isFinite(v.air) ? v.air >= 0.3 && v.air <= 0.8 : undefined) +
+      cell('noise', 'Noise', fmt(v.noise), 'dBA', `${scope}: ambient noise plus running fans${local ? '' : ', averaged by acoustic energy'}; preferred ≤ 40 dBA`, Number.isFinite(v.noise) ? v.noise <= 40 : undefined) +
+      cell('power', 'Equipment power', fmt(power.total / 1000, 1), 'kW', 'Estimated current load of modeled equipment, including amplifier allowances; excludes other building loads');
+    if ($('simHereValues').innerHTML !== values) $('simHereValues').innerHTML = values;
+    speechValue = v.spl;
+    const noiseText = Number.isFinite(v.noise) ? `${fmt(v.noise)} dBA` : 'Calculating';
+    $('simNoiseValue').textContent = noiseText;
+    $('simNoiseValue').classList.toggle('hot', v.noise > 45);
+    $('simNoiseMeter').title = `${scope}: background noise estimate, 25–85 dBA. Red begins above 45 dBA.`;
+    setLevelMeter($('simNoiseMeter'), noiseSegments, v.noise, 25, 85, 45, noiseText);
+    updateSoundMeter();
+  }
+
+  function setLevelMeter(el, segments, value, min, max, redAt, text, peak) {
+    const ratio = v => Math.max(0, Math.min(1, (v - min) / (max - min)));
+    const level = Number.isFinite(value) ? ratio(value) : 0;
+    const active = Math.ceil(level * segments.length);
+    segments.forEach((s, i) => {
+      s.classList.toggle('active', i < active);
+      s.classList.toggle('hot', value > redAt && min + (i + 1) / segments.length * (max - min) > redAt);
+    });
+    el.setAttribute('aria-valuemin', String(min));
+    el.setAttribute('aria-valuemax', String(max));
+    el.setAttribute('aria-valuenow', String(Number.isFinite(value) ? Math.max(min, Math.min(max, value)) : min));
+    el.setAttribute('aria-valuetext', text);
+    el.querySelector('.sim-level-limit').style.bottom = `${ratio(redAt) * 100}%`;
+    const marker = el.querySelector('.sim-level-peak');
+    if (marker) {
+      marker.hidden = !Number.isFinite(peak) || peak <= min;
+      if (!marker.hidden) {
+        marker.style.bottom = `${ratio(peak) * 100}%`;
+        marker.classList.toggle('hot', peak > redAt);
+      }
+    }
+  }
+
+  function updateSoundMeter() {
+    const live = SIM.audio?.outputLevels?.();
+    const el = $('simSoundMeter');
+    const value = live ? live.rmsDb : speechValue;
+    const text = live ? (Number.isFinite(value) && value > -90 ? `${fmt(value, 1)} dBFS` : 'Silence') : (Number.isFinite(value) ? `${fmt(value)} dBA` : value === undefined ? 'Calculating' : 'No source on');
+    $('simSoundLabel').textContent = live ? 'Audio output' : 'Sound estimate';
+    $('simSoundValue').textContent = text;
+    $('simSoundValue').classList.toggle('hot', live ? live.peakDb > -6 : value > 76);
+    el.dataset.source = live ? 'output' : 'estimate';
+    el.setAttribute('aria-label', live ? 'Audio output level after headphone volume' : 'Speech level estimate');
+    el.title = live ? `Actual output: RMS ${text}, peak ${fmt(live.peakDb, 1)} dBFS. Red begins above −6 dBFS.` : 'Estimated speech level, 30–90 dBA. Press Play in Simulator → Sound to measure actual output.';
+    setLevelMeter(el, soundSegments, value, live ? -60 : 30, live ? 0 : 90, live ? -6 : 76, text, live?.peakDb);
   }
 
   /* Fixture markers on the existing minimap (same transform as the viewer). */
