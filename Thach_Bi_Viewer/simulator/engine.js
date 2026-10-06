@@ -76,7 +76,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', stableLightingRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', stableLightingRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -1833,6 +1833,12 @@
       importLayout({ ...previous, items: D.upgradeFacade(state.items, D.recommended(GEO, SIM), SCENES[state.scene]) }, { record: false });
     }
     state.settings.facadeRevision = D.facadeRevision;
+    if (loaded && state.settings.entranceRevision !== D.entranceRevision) {
+      const previous = exportLayout();
+      try { localStorage.setItem(STORAGE_KEY + '.before-entrance-review', JSON.stringify(previous)); } catch {}
+      importLayout({ ...previous, items: D.upgradeEntrance(state.items, D.recommended(GEO, SIM)) }, { record: false });
+    }
+    state.settings.entranceRevision = D.entranceRevision;
     if (state.settings.stableLightingRevision !== '2026-10-06-physical-lighting') {
       state.settings.autoExposure = false;
       state.settings.stableLightingRevision = '2026-10-06-physical-lighting';

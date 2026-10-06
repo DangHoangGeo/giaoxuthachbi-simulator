@@ -25,8 +25,8 @@
 |---|---|---|---|---|---|---|
 | F1 | Ceiling fan | Ceiling fan · 1.42 m (56") | 18 | x 12.22; x 16.73; x 21.23; x 25.73; x 30.23; x 34.73; x 39.30; x 41.85; x 7.72 | 3.3, 3.9 | speed 2 |
 | F2 | Wall fan | Wall fan · oscillating 45 cm | 6 | 4; 6; 8 | 5.55 | hidden (optional) |
-| F4 | Entrance circulator | Large wall circulator · 90 cm | 2 | x 2.72 | 5.2 | off (trial) |
-| V1 | Exhaust fan | Exhaust (ventilation) fan · 50 cm | 9 | 12; 2′; x 39.70; x 41.45 | 3.3, 7.6, 9.7 | speed 1 |
+| F4 | Entrance circulator | Large wall circulator · 90 cm | 2 | x 2.66 (entrance wall piers, z ±3.05) | 6.0 | off (trial) |
+| V1 | Exhaust fan | Exhaust (ventilation) fan · 50 cm | 9 | 12; 2′ (z ±0.8, ±2.4); x 39.70; x 41.45 | 3.3, 7.6, 9.4 | speed 1 |
 
 ## 4. Circuits and electrical load
 

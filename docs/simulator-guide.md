@@ -274,7 +274,10 @@ Fans and ventilation:
   0.38 m/s, but raise background noise to about 46 dBA. Seats reaching STI
   0.60 then fall from 77 % to 66 %.
 - **Entrance circulators (F4, trial, off).** Two 90 cm wall circulators on
-  the inside of the entrance wall, blowing down the nave. Test result:
+  the inside of the entrance wall, blowing down the nave. Each is centred on
+  the solid pier between the main door and a side door, 6.0 m up, clear of
+  the fanlights and above the rear-row spotlights, and aimed 8° inward so
+  the two throws meet over the centre blocks. Test result:
   - at medium speed: average seated air 0.41 m/s (from 0.36), noise 50 dBA,
     STI ≥ 0.60 at only about 45 % of seats
   - at low speed: air 0.39 m/s, STI ≥ 0.60 at 66 % of seats
@@ -284,13 +287,14 @@ Fans and ventilation:
   fresh air enters through the open doors and windows. At low speed they move
   about 26 000 m³/h, roughly 3.5 air changes per hour of the hall. Fan
   positions:
-  - four high in the front gable
+  - four in an even row high in the front gable, clear of the roof timbers
   - two in each wing gable
   - one in the service room
 
 Speakers:
 - **Rear fill (A5, off by default).** Two slim columns on the inside of the
-  entrance wall by the towers, for crowded feasts. With them on, clarity in
+  entrance wall, on the piers between the main door and the side doors, for
+  crowded feasts. With them on, clarity in
   the nave drops by several points, because they add reverberant sound.
 - **Outdoor (A3, festivals).** A second horn on each tower front, and two
   horns on each side's outer arcade piers (axes 5 and 8).

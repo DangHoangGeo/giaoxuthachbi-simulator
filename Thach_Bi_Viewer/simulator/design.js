@@ -224,13 +224,22 @@
       add({ type: 'fanWall', name: `Wall fan · axis ${k} · ${side(s)}`, circuit: 'F2', mount: 'wall', pos: [A[k], 5.55, s * 7.07], yaw: -s * 90, mountYaw: -s * 90, tilt: -38, speed: 1, hidden: true });
     }
     // Trial: two large circulators on the inside of the entrance wall, blowing
-    // down the nave (F4, off). Compare the air map with them on and off.
-    for (const s of [-1, 1]) add({ type: 'fanWallLarge', name: `Entrance circulator · ${side(s)}`, circuit: 'F4', mount: 'wall', pos: [2.72, 5.2, s * 4.6], yaw: 0, mountYaw: 0, tilt: -6, speed: 2, on: false });
+    // down the nave (F4, off). Compare the air map with them on and off. Each is
+    // centred on the solid pier between the main door (opening ±1.55 m) and a
+    // side door (4.55–6.45 m), within the upper band: clear of both fanlights
+    // and above the rear-row spotlights, so no beam passes through the blades.
+    // Aimed 8° inward and 14° down, the two throws meet over the centre blocks,
+    // which the side-aisle ceiling fans reach least, and stay inside the column
+    // line. Anywhere on the pier gives the same seat air within 0.02 m/s; the aim
+    // decides it.
+    for (const s of [-1, 1]) add({ type: 'fanWallLarge', name: `Entrance circulator · ${side(s)}`, circuit: 'F4', mount: 'wall', pos: [facadeX + 0.005, 6.0, s * 3.05], yaw: -s * 8, mountYaw: 0, tilt: -14, speed: 2, on: false });
     // Ventilation: exhaust fans draw out the hot air that collects under the
     // roof; fresh air comes in through the doors and windows (V1). Four high
     // in the front gable, two in the end gable of each 9–10 wing, and one over
-    // the service room behind the sanctuary wall.
-    for (const z of [-3.4, -1.6, 1.6, 3.4]) add({ type: 'fanExhaust', name: `Exhaust fan · front gable · ${side(z)} ${Math.abs(z) > 2 ? 'outer' : 'inner'}`, circuit: 'V1', mount: 'wall', pos: [5.5, 9.7, z], yaw: 0, mountYaw: 0, speed: 1 });
+    // the service room behind the sanctuary wall. The gable row is evenly
+    // spaced about the ridge line on the wall's inner face (x 5.475), 0.70 m
+    // above the terrace slab and 0.60 m below the roof lining at its outer corners.
+    for (const z of [-2.4, -0.8, 0.8, 2.4]) add({ type: 'fanExhaust', name: `Exhaust fan · front gable · ${side(z)} ${Math.abs(z) > 2 ? 'outer' : 'inner'}`, circuit: 'V1', mount: 'wall', pos: [5.48, 9.4, z], yaw: 0, mountYaw: 0, speed: 1 });
     for (const s of [-1, 1]) for (const x of [39.7, 41.45]) add({ type: 'fanExhaust', name: `Exhaust fan · wing gable ${side(s)} · ${x < 40.5 ? 'front' : 'rear'}`, circuit: 'V1', mount: 'wall', pos: [x, 7.6, s * 13.13], yaw: -s * 90, mountYaw: -s * 90, speed: 1 });
     add({ type: 'fanExhaust', name: 'Exhaust fan · service room', circuit: 'V1', mount: 'wall', pos: [53.12, 3.3, 0], yaw: 180, mountYaw: 180, speed: 1 });
 
@@ -243,10 +252,12 @@
     for (const k of ['4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) {
       add({ type: 'slimColumn', name: `Wall speaker · axis ${k} · ${side(s)}`, circuit: 'A1', mount: 'wall', pos: [A[k], 3.45, s * 7.07], yaw: -s * 140, mountYaw: -s * 90, tilt: -18, level: -6, delayMs: 0 });
     }
-    // Back of the church, by the towers: two slim columns on the inside of the
-    // entrance wall, aimed steeply at the entrance hall and the last rows.
+    // Back of the church: two slim columns on the inside of the entrance wall,
+    // aimed steeply at the entrance hall and the last rows. Each is on the solid
+    // pier between the main door and a side door, below the circulator and
+    // clear of both door openings.
     for (const s of [-1, 1]) {
-      const p = [2.72, 3.6, s * 5.9], a = aim(p, [7.5, 1.2, s * 4.8]);
+      const p = [facadeX + 0.005, 3.6, s * 3.05], a = aim(p, [7.5, 1.2, s * 3.6]);
       add({ type: 'slimColumn', name: `Wall speaker · entrance hall · ${side(s)}`, circuit: 'A5', mount: 'wall', pos: p, yaw: a.yaw, mountYaw: 0, tilt: a.tilt, level: -9, delayMs: 0, on: false });
     }
     // Wings: the wall speakers face the back of the nave, so each wing gets two
@@ -340,9 +351,21 @@
     return [...items.filter(it => !facadeLight(it)), ...revised];
   }
 
+  // Entrance wall review: saved layouts keep each fitting's switching, level
+  // and circuit, and take only its corrected position and aim.
+  const entranceRevision = '2026-10-07-entrance-wall-2';
+  const entranceFitting = it => /^(Entrance circulator|Exhaust fan · front gable|Wall speaker · entrance hall) ·/.test(it.name);
+  function upgradeEntrance(items, design) {
+    const byName = new Map(design.filter(entranceFitting).map(raw => [raw.name, raw]));
+    return items.map(it => {
+      const raw = entranceFitting(it) && byName.get(it.name);
+      return raw ? { ...it, pos: [...raw.pos], yaw: raw.yaw, mountYaw: raw.mountYaw, tilt: raw.tilt ?? it.tilt } : it;
+    });
+  }
+
   // Bump when the recommended design changes: browsers holding a layout saved
   // from an older version then load the new design (the old one is kept aside).
   // This lighting review migrates only the reviewed fixtures, preserving the
   // rest of saved layouts. A removed fitting stays removed after the revision.
-  window.CHURCH_SIM_DESIGN = { recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

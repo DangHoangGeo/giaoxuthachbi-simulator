@@ -27,7 +27,7 @@
 | Circuit | Group | Type | Qty | Axis / position | Height (m) | Level | Delay (ms) | Default |
 |---|---|---|---|---|---|---|---|---|
 | A1 | Wall speaker | Slim wall column · 0.6 m, wall colour | 12 | 4; 5; 6; 7; 8; 9 | 3.45 | -6 dB | 24.2–89.9 | on |
-| A5 | Wall speaker | Slim wall column · 0.6 m, wall colour | 2 | x 2.72 | 3.6 | -9 dB | 98.7–100.7 | off |
+| A5 | Wall speaker | Slim wall column · 0.6 m, wall colour | 2 | x 2.66 (entrance wall piers, z ±3.05) | 3.6 | -9 dB | 98.6–100.1 | off |
 | A1 | Wing speaker | Pendant loudspeaker · 6" | 4 | x 38.94; x 42.22 | 3 | -10 dB | 23.8–40.4 | on |
 | A2 | Veranda fill | Pendant loudspeaker · 6" | 4 | x 12.22; x 25.73 | 3.9 | -7 dB | 54.4–95.8 | on |
 | A3 | Courtyard horn | Outdoor horn · 30 W | 2 | x -0.14 | 6.2 | -4 dB | 103.1–104.0 | off |

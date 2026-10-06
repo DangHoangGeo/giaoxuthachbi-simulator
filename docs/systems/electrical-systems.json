@@ -13761,12 +13761,12 @@
           -7.36
         ],
         [
-          2.72,
+          2.655,
           6.574,
           -7.36
         ]
       ],
-      "length": 12.036000000000001,
+      "length": 11.971,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -13784,12 +13784,12 @@
       ],
       "trunkId": "trunk:DB2:F4:fan:-1",
       "color": "#b46a48",
-      "upstreamLength": 12.036000000000001,
+      "upstreamLength": 11.971,
       "homeRun": false,
       "installation": "Concealed pier / wall drop, local termination",
       "points": [
         [
-          2.72,
+          2.655,
           6.574,
           -7.36
         ],
@@ -13801,20 +13801,20 @@
         [
           2.35,
           7.65,
-          -4.6
+          -3.05
         ],
         [
           2.35,
-          5.2,
-          -4.6
+          6,
+          -3.05
         ],
         [
-          2.72,
-          5.2,
-          -4.6
+          2.655,
+          6,
+          -3.05
         ]
       ],
-      "length": 6.7178383013416285,
+      "length": 7.3833921494717325,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -13859,12 +13859,12 @@
           7.36
         ],
         [
-          2.72,
+          2.655,
           6.574,
           7.36
         ]
       ],
-      "length": 18.636000000000003,
+      "length": 18.571,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -13882,12 +13882,12 @@
       ],
       "trunkId": "trunk:DB2:F4:fan:1",
       "color": "#b46a48",
-      "upstreamLength": 18.636000000000003,
+      "upstreamLength": 18.571,
       "homeRun": false,
       "installation": "Concealed pier / wall drop, local termination",
       "points": [
         [
-          2.72,
+          2.655,
           6.574,
           7.36
         ],
@@ -13899,20 +13899,20 @@
         [
           2.35,
           7.65,
-          4.6
+          3.05
         ],
         [
           2.35,
-          5.2,
-          4.6
+          6,
+          3.05
         ],
         [
-          2.72,
-          5.2,
-          4.6
+          2.655,
+          6,
+          3.05
         ]
       ],
-      "length": 6.7178383013416285,
+      "length": 7.3833921494717325,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -13991,12 +13991,12 @@
           -7.36
         ],
         [
-          5.5,
+          5.48,
           6.588,
           -7.36
         ]
       ],
-      "length": 76.183,
+      "length": 76.203,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -14014,12 +14014,12 @@
       ],
       "trunkId": "trunk:FC1:V1:fan:-1",
       "color": "#b46a48",
-      "upstreamLength": 76.183,
+      "upstreamLength": 76.203,
       "homeRun": false,
       "installation": "Concealed pier / wall drop, local termination",
       "points": [
         [
-          5.5,
+          5.48,
           6.588,
           -7.36
         ],
@@ -14031,20 +14031,20 @@
         [
           5.475,
           6.588,
-          -3.4
+          -2.4
         ],
         [
           5.475,
-          9.7,
-          -3.4
+          9.4,
+          -2.4
         ],
         [
-          5.5,
-          9.7,
-          -3.4
+          5.48,
+          9.4,
+          -2.4
         ]
       ],
-      "length": 7.122,
+      "length": 7.782000000000003,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -14062,12 +14062,12 @@
       ],
       "trunkId": "trunk:FC1:V1:fan:-1",
       "color": "#b46a48",
-      "upstreamLength": 76.183,
+      "upstreamLength": 76.203,
       "homeRun": false,
       "installation": "Concealed pier / wall drop, local termination",
       "points": [
         [
-          5.5,
+          5.48,
           6.588,
           -7.36
         ],
@@ -14079,20 +14079,20 @@
         [
           5.475,
           6.588,
-          -1.6
+          -0.8
         ],
         [
           5.475,
-          9.7,
-          -1.6
+          9.4,
+          -0.8
         ],
         [
-          5.5,
-          9.7,
-          -1.6
+          5.48,
+          9.4,
+          -0.8
         ]
       ],
-      "length": 8.921999999999999,
+      "length": 9.382000000000003,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -14289,12 +14289,12 @@
           7.36
         ],
         [
-          5.5,
+          5.48,
           6.588,
           7.36
         ]
       ],
-      "length": 83.38300000000001,
+      "length": 83.403,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -14312,12 +14312,12 @@
       ],
       "trunkId": "trunk:FC1:V1:fan:1",
       "color": "#b46a48",
-      "upstreamLength": 83.38300000000001,
+      "upstreamLength": 83.403,
       "homeRun": false,
       "installation": "Concealed pier / wall drop, local termination",
       "points": [
         [
-          5.5,
+          5.48,
           6.588,
           7.36
         ],
@@ -14329,20 +14329,20 @@
         [
           5.475,
           6.588,
-          1.6
+          0.8
         ],
         [
           5.475,
-          9.7,
-          1.6
+          9.4,
+          0.8
         ],
         [
-          5.5,
-          9.7,
-          1.6
+          5.48,
+          9.4,
+          0.8
         ]
       ],
-      "length": 8.921999999999999,
+      "length": 9.382000000000003,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -14360,12 +14360,12 @@
       ],
       "trunkId": "trunk:FC1:V1:fan:1",
       "color": "#b46a48",
-      "upstreamLength": 83.38300000000001,
+      "upstreamLength": 83.403,
       "homeRun": false,
       "installation": "Concealed pier / wall drop, local termination",
       "points": [
         [
-          5.5,
+          5.48,
           6.588,
           7.36
         ],
@@ -14377,20 +14377,20 @@
         [
           5.475,
           6.588,
-          3.4
+          2.4
         ],
         [
           5.475,
-          9.7,
-          3.4
+          9.4,
+          2.4
         ],
         [
-          5.5,
-          9.7,
-          3.4
+          5.48,
+          9.4,
+          2.4
         ]
       ],
-      "length": 7.122,
+      "length": 7.782000000000003,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -15348,12 +15348,12 @@
           -7.36
         ],
         [
-          2.72,
+          2.655,
           6.108,
           -7.36
         ]
       ],
-      "length": 80.863,
+      "length": 80.928,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -15371,12 +15371,12 @@
       ],
       "trunkId": "trunk:AV1:A5:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 80.863,
+      "upstreamLength": 80.928,
       "homeRun": true,
       "installation": "Concealed pier / wall drop, local termination",
       "points": [
         [
-          2.72,
+          2.655,
           6.108,
           -7.36
         ],
@@ -15388,20 +15388,20 @@
         [
           2.35,
           7.65,
-          -5.9
+          -3.05
         ],
         [
           2.35,
           3.6,
-          -5.9
+          -3.05
         ],
         [
-          2.72,
+          2.655,
           3.6,
-          -5.9
+          -3.05
         ]
       ],
-      "length": 7.465769213977874,
+      "length": 10.236874358846789,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -15481,12 +15481,12 @@
           7.36
         ],
         [
-          2.72,
+          2.655,
           6.108,
           7.36
         ]
       ],
-      "length": 88.06299999999999,
+      "length": 88.12799999999999,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -15504,12 +15504,12 @@
       ],
       "trunkId": "trunk:AV1:A5:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 88.06299999999999,
+      "upstreamLength": 88.12799999999999,
       "homeRun": true,
       "installation": "Concealed pier / wall drop, local termination",
       "points": [
         [
-          2.72,
+          2.655,
           6.108,
           7.36
         ],
@@ -15521,20 +15521,20 @@
         [
           2.35,
           7.65,
-          5.9
+          3.05
         ],
         [
           2.35,
           3.6,
-          5.9
+          3.05
         ],
         [
-          2.72,
+          2.655,
           3.6,
-          5.9
+          3.05
         ]
       ],
-      "length": 7.465769213977874,
+      "length": 10.236874358846789,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
@@ -22655,9 +22655,9 @@
       "specs": "0.9 m diameter · 380 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        2.72,
-        5.2,
-        -4.6
+        2.655,
+        6,
+        -3.05
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -22680,9 +22680,9 @@
       "specs": "0.9 m diameter · 380 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        2.72,
-        5.2,
-        4.6
+        2.655,
+        6,
+        3.05
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -22705,9 +22705,9 @@
       "specs": "0.5 m diameter · 170 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        5.5,
-        9.7,
-        -3.4
+        5.48,
+        9.4,
+        -2.4
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -22730,9 +22730,9 @@
       "specs": "0.5 m diameter · 170 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        5.5,
-        9.7,
-        -1.6
+        5.48,
+        9.4,
+        -0.8
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -22755,9 +22755,9 @@
       "specs": "0.5 m diameter · 170 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        5.5,
-        9.7,
-        1.6
+        5.48,
+        9.4,
+        0.8
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -22780,9 +22780,9 @@
       "specs": "0.5 m diameter · 170 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        5.5,
-        9.7,
-        3.4
+        5.48,
+        9.4,
+        2.4
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -23227,12 +23227,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 20,
-      "specs": "60 W audio rating · Passive / amplifier output · 98.7 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 98.6 ms delay",
       "hiddenAlternative": false,
       "position": [
-        2.72,
+        2.655,
         3.6,
-        -5.9
+        -3.05
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -23252,12 +23252,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 20,
-      "specs": "60 W audio rating · Passive / amplifier output · 100.7 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 100.1 ms delay",
       "hiddenAlternative": false,
       "position": [
-        2.72,
+        2.655,
         3.6,
-        5.9
+        3.05
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -25247,7 +25247,7 @@
         0.6000000238418579,
         0.05999999865889549
       ],
-      "specs": "60 W audio rating · Passive / amplifier output · 98.7 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 98.6 ms delay",
       "wattsEachEstimate": 20,
       "itemIds": [
         "S263"
@@ -25264,7 +25264,7 @@
         0.6000000238418579,
         0.05999999865889549
       ],
-      "specs": "60 W audio rating · Passive / amplifier output · 100.7 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 100.1 ms delay",
       "wattsEachEstimate": 20,
       "itemIds": [
         "S264"
