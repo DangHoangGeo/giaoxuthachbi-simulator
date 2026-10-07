@@ -8,7 +8,7 @@ A personal project to help my hometown church in Vietnam make better decisions a
 
 My hometown is a small village in Ninh Bình, Vietnam, formerly in Nam Định Province. Our community has deep Catholic roots, connected to the early history of the faith in Vietnam. The church has long been part of our everyday lives.
 
-As I write this in October 2026, our old church is about 34 years old. Parts of it have deteriorated, and it can no longer comfortably serve the number of people who come there. Building a new church is a major undertaking for a small village. Families contribute what they can afford, and some people contribute their time and labor at the construction site.
+As I write this in October 2026, our old church is about 34 years old. Parts of it have deteriorated, and it can no longer comfortably serve the number of people who come there. Construction of the new church began in **February 2026**. The foundation is already finished, and construction is underway. Building a new church is a major undertaking for a small village. Families contribute what they can afford, and some people contribute their time and labor at the construction site.
 
 When I was a teenager, I also helped with small construction projects at the church. I now live abroad and follow the building work through the parish's Facebook updates. Seeing elderly neighbors turn up and work through hot days has stayed with me. I kept wondering how I could help from far away, beyond making a donation.
 
@@ -30,6 +30,8 @@ My hope reaches beyond this one church. Communities with limited budgets and lim
 - **Equipment records:** maintain six Excel registers by usage category, each with the same Equipment, Electrical Lines and Route Points sheets, plus guidance. A summary reports quantities, modeled usage and missing engineering information.
 
 The immediate priority is to coordinate the positions of lights, speakers, microphones and fans, then refine their wiring and physical controls. Energy use, maintenance access, repairability and long-term operation matter alongside appearance and comfort.
+
+**Construction update — 7 October 2026:** the project owner confirms the February 2026 start, completed foundation and ongoing construction. Exact milestone dates, site photographs and verified as-built measurements will be recorded as they become available. The digital model remains a design study; this progress update does not establish that its geometry matches the work already built.
 
 ## Open the model
 
