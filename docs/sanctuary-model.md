@@ -2,6 +2,8 @@
 
 The interactive viewer builds the sanctuary from `sanctuary.js`, called before geometry batching. The approved generated image and the original church photograph are saved in `Thach_Bi_Viewer/references/` and registered in the References gallery. This revision follows that image and section sheet 5 (“Mặt đứng một vì gian cung thánh”).
 
+**Owner clarification, 7 October 2026:** the current model does not yet fully reflect the latest approved sanctuary and column/beam connection art. The [new church view set](../Thach_Bi_Viewer/references/00-overview/2026-10-07/index.html) therefore combines model layout with the richer approved concepts. Its detailed gilded relief and carved haunches are generated appearance studies; they are not evidence that those details have been implemented in `sanctuary.js` or structurally checked. See the [source hierarchy and model differences](church-view-renderings.md). The geometry and lighting description below records the existing model implementation; this artwork update changes neither its meshes nor its calculated results.
+
 ## Layout
 
 - **Front frame on the column line (axis 10, x 44.175 m).** The three-lobed frame of sheet 5 now stands on the two axis-10 timber columns, in oxblood lacquer with gilded mouldings. The central arch springs at +8.25 m and crowns at +10.87 m; each side arch springs at +6.15 m and crowns at +7.50 m. Spandrels are closed up to the roof lining. As on sheet 5, this axis has no tie beam: the tie, king post, diagonals and knee braces that the model showed on axis 10 are removed. The plaster frame on axis 11 stays as the back wall.

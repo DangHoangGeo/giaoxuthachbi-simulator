@@ -1,6 +1,6 @@
 # Thạch Bi Church · October concept views
 
-4 generated architectural views · 7 October 2026. Based on the current model and approved art concepts. These new images are proposed visualizations, not construction photographs or measured drawings.
+9 generated architectural views · 7 October 2026. Based on the current model and approved art concepts. These new images are proposed visualizations, not construction photographs or measured drawings.
 
 [Open the gallery](index.html) · [Design notes](../../../../docs/church-view-renderings.md) · [Manifest](manifest.json) · [Prompts and source record](../../../../review/church-views-2026-10-07/generation-record.json)
 
@@ -39,3 +39,43 @@ Opposite oblique view with warm facade accents and the Assumption statue at blue
 [Full HD PNG](full-hd/04-exterior-corner-evening.png) · [Native original](masters/04-exterior-corner-evening.png)
 
 ![Opposite oblique view with warm facade accents and the Assumption statue at blue hour.](full-hd/04-exterior-corner-evening.png)
+
+## Nave toward sanctuary · daylight
+
+Long central aisle, timber columns and carved beam heads, with the approved sanctuary concept at the far end.
+
+[Full HD PNG](full-hd/05-nave-overview-day.png) · [Native original](masters/05-nave-overview-day.png)
+
+![Long central aisle, timber columns and carved beam heads, with the approved sanctuary concept at the far end.](full-hd/05-nave-overview-day.png)
+
+## Sanctuary overview · evening
+
+Central Crucifix in its blue recess, Our Lady and Saint Joseph with Child, red lacquer and gilded carving.
+
+[Full HD PNG](full-hd/06-sanctuary-overview-evening.png) · [Native original](masters/06-sanctuary-overview-evening.png)
+
+![Central Crucifix in its blue recess, Our Lady and Saint Joseph with Child, red lacquer and gilded carving.](full-hd/06-sanctuary-overview-evening.png)
+
+## Side aisle toward sanctuary · daylight
+
+Eye-level side view combining the modeled aisle arrangement with the approved sanctuary and column-head art.
+
+[Full HD PNG](full-hd/07-interior-oblique-day.png) · [Native original](masters/07-interior-oblique-day.png)
+
+![Eye-level side view combining the modeled aisle arrangement with the approved sanctuary and column-head art.](full-hd/07-interior-oblique-day.png)
+
+## Sanctuary carving and altar · close view
+
+Oblique close view of the Crucifix niche, layered gilded relief, lacquered chamber and pale stone altar.
+
+[Full HD PNG](full-hd/08-sanctuary-detail-day.png) · [Native original](masters/08-sanctuary-detail-day.png)
+
+![Oblique close view of the Crucifix niche, layered gilded relief, lacquered chamber and pale stone altar.](full-hd/08-sanctuary-detail-day.png)
+
+## Carved column and beam connection · close view
+
+Decorative study of carved haunches, column head, connected beams and upper rail. Concealed joinery is not specified.
+
+[Full HD PNG](full-hd/09-carved-connection-detail.png) · [Native original](masters/09-carved-connection-detail.png)
+
+![Decorative study of carved haunches, column head, connected beams and upper rail. Concealed joinery is not specified.](full-hd/09-carved-connection-detail.png)

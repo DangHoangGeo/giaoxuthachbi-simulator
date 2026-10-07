@@ -23,7 +23,7 @@ Check the working tree and recent changes. Read the relevant sources below and t
 | Simulator methods and limitations | `docs/simulator/README.md`, `docs/simulator/methods-and-limitations.md`, `docs/simulator/guide.md` |
 | Electrical grid, route maps and manual/quick controls | `docs/electrical-grid/README.md`, `routing.md`, `controls.md` and JSON/CSV schedules in that directory |
 | Equipment/line registers and total report | `docs/electrical-grid/categories/README.md`, `summary-report.md`, `register.md` and matching `equipment-layout.json` / `electrical-systems.json` |
-| Art and reference status | `Thach_Bi_Viewer/references/manifest.json`, `coverage.json` and relevant source images |
+| Art and reference status | `docs/church-view-renderings.md`, `Thach_Bi_Viewer/references/manifest.json`, `coverage.json` and relevant source images; approved concepts govern ornament still unfinished in the model |
 | Actual behavior and verification | `Thach_Bi_Viewer/`, `scripts/verify_*.cjs` and relevant records under `review/` |
 | Future public/protected web app | `plan/README.md`, phase dependencies, architecture, data/publication contracts and quality gates |
 

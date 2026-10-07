@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-07",
+  "assetManifest": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+  "assetManifestSha256": "3b94f658c88de6fb60f40468acf0d36034bb1eabfd3af6701cb57c747f901137",
+  "checks": {
+    "nativeOriginals": {
+      "count": 9,
+      "pixels": [
+        1672,
+        941
+      ],
+      "byteIdenticalToGenerator": true
+    },
+    "fullHdExports": {
+      "count": 9,
+      "pixels": [
+        1920,
+        1080
+      ],
+      "decodedAndVisuallyReviewed": true,
+      "resampled": true
+    },
+    "rejectedOrSupersededCandidates": {
+      "count": 7,
+      "copiedIntoReferenceFolders": 0
+    },
+    "notExecutedPrompts": 1,
+    "activeReferencePaths": {
+      "count": 28,
+      "allExist": true,
+      "javascriptMatchesJsonManifest": true
+    },
+    "localDocumentLinks": {
+      "count": 149,
+      "allResolve": true
+    },
+    "browser": [
+      {
+        "surface": "dated gallery",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "imagesLoaded": 9,
+        "allFullHd": true,
+        "horizontalOverflow": false,
+        "altTextPresent": true
+      },
+      {
+        "surface": "dated gallery",
+        "viewport": [
+          390,
+          844
+        ],
+        "imagesLoaded": 9,
+        "allFullHd": true,
+        "horizontalOverflow": false,
+        "altTextPresent": true
+      },
+      {
+        "surface": "offline viewer reference dialog",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "imagesLoaded": 28,
+        "pageErrors": [],
+        "modelErrors": []
+      }
+    ],
+    "browserEngine": "Installed Google Chrome via Playwright, local file URLs",
+    "packageValidation": {
+      "command": "python3 docs/beams-roof-connections/validate.py",
+      "result": "PASS"
+    },
+    "diffWhitespace": "PASS"
+  },
+  "limits": [
+    "Generated concept images are not metrically consistent multi-view geometry, measured construction evidence or engineering approval.",
+    "The model and equipment data did not change; no physics or construction-performance validation was repeated. Existing design shortfalls remain.",
+    "Approved concepts, owner appearance corrections and new generated outputs have distinct approval status.",
+    "Resampling adds no native detail."
+  ]
+}

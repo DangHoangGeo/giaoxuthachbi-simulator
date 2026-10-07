@@ -105,6 +105,116 @@
       "visualReview": "Selected after review for this artwork set; no obvious malformed-image defects found. Not dimensional or engineering verification.",
       "modelCapture": "review/church-views-2026-10-07/model-inputs/04-exterior-corner-evening.png",
       "part": "exterior"
+    },
+    {
+      "id": "church-views-20261007-05-nave-overview-day",
+      "title": "Nave toward sanctuary · daylight",
+      "description": "Long central aisle, timber columns and carved beam heads, with the approved sanctuary concept at the far end.",
+      "generationJob": "05-nave-overview-day-v3-concepts",
+      "generationFile": "exec-37bf5ff2-fd0f-4791-9f50-6e7cb5181459.png",
+      "master": "masters/05-nave-overview-day.png",
+      "fullHd": "full-hd/05-nave-overview-day.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "2e21cbab46662e705e39326708a2f8a56f01b58df94d4f8c2917309a705857e0",
+      "fullHdSha256": "8d5d957fa9949ecbc805217f78bc4332c1d45bfd305c88161829f2eaaa3b65bd",
+      "visualReview": "Selected after review for this artwork set; no obvious malformed-image defects found. Not dimensional or engineering verification.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/05-nave-overview-day.png",
+      "part": "interior"
+    },
+    {
+      "id": "church-views-20261007-06-sanctuary-overview-evening",
+      "title": "Sanctuary overview · evening",
+      "description": "Central Crucifix in its blue recess, Our Lady and Saint Joseph with Child, red lacquer and gilded carving.",
+      "generationJob": "06-sanctuary-overview-evening-v3-concepts",
+      "generationFile": "exec-c1aac607-d457-411d-b1b5-472868f0bc98.png",
+      "master": "masters/06-sanctuary-overview-evening.png",
+      "fullHd": "full-hd/06-sanctuary-overview-evening.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "18da2bbc111b223db76558d292431fd5117f6ab044a021002cda07a5b1d05e85",
+      "fullHdSha256": "526a396415c3f759f1b2f2994fa64c658cbc9fb8fc14b7d5e844abf4a0bfea01",
+      "visualReview": "Selected after review for this artwork set; no obvious malformed-image defects found. Not dimensional or engineering verification.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/06-sanctuary-overview-evening.png",
+      "part": "interior"
+    },
+    {
+      "id": "church-views-20261007-07-interior-oblique-day",
+      "title": "Side aisle toward sanctuary · daylight",
+      "description": "Eye-level side view combining the modeled aisle arrangement with the approved sanctuary and column-head art.",
+      "generationJob": "07-interior-oblique-day-v3-concepts",
+      "generationFile": "exec-c9cb8b46-80ca-4207-803d-f8f8b8aff3a8.png",
+      "master": "masters/07-interior-oblique-day.png",
+      "fullHd": "full-hd/07-interior-oblique-day.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "217b50c1d4945d40ef69f6b31f3ec8c4d94b680eab8bc52a78a16d5238330400",
+      "fullHdSha256": "04d451f7b2d4d82e2b79e82f39ef231239989a067e9a86753dbca5b6bde8e761",
+      "visualReview": "Selected after review for this artwork set; no obvious malformed-image defects found. Not dimensional or engineering verification.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/07-interior-oblique-day.png",
+      "part": "interior"
+    },
+    {
+      "id": "church-views-20261007-08-sanctuary-detail-day",
+      "title": "Sanctuary carving and altar · close view",
+      "description": "Oblique close view of the Crucifix niche, layered gilded relief, lacquered chamber and pale stone altar.",
+      "generationJob": "08-sanctuary-detail-day-v3-concepts",
+      "generationFile": "exec-b39c8298-36d3-4303-90ff-958c71d641fe.png",
+      "master": "masters/08-sanctuary-detail-day.png",
+      "fullHd": "full-hd/08-sanctuary-detail-day.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "7645296d650152beef2c990f23d7d86e2897539d135d5d0ebe5cea5d9169fd60",
+      "fullHdSha256": "f6f6628f52183d109f30fe4e1f4bc165a5b7061f9645aef9a5058c6673976591",
+      "visualReview": "Selected after review for this artwork set; no obvious malformed-image defects found. Not dimensional or engineering verification.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/08-sanctuary-detail-day.png",
+      "part": "interior"
+    },
+    {
+      "id": "church-views-20261007-09-carved-connection-detail",
+      "title": "Carved column and beam connection · close view",
+      "description": "Decorative study of carved haunches, column head, connected beams and upper rail. Concealed joinery is not specified.",
+      "generationJob": "09-carved-connection-detail-v2-wall",
+      "generationFile": "exec-5a059e53-aafe-4fc1-88c3-ca855954afb4.png",
+      "master": "masters/09-carved-connection-detail.png",
+      "fullHd": "full-hd/09-carved-connection-detail.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "f6759fb4f851de0ed6c182906cc621098fbe94073a882de9295094e49fc45ffa",
+      "fullHdSha256": "daaae5972d562ae7302d946f37c44427703eab7df296fa85443ff17b09593f0c",
+      "visualReview": "Selected after review for this artwork set; no obvious malformed-image defects found. Not dimensional or engineering verification.",
+      "modelCapture": null,
+      "part": "interior"
     }
   ]
 }

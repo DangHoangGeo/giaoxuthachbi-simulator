@@ -1,6 +1,6 @@
 # Church view renderings · 7 October 2026
 
-Status: **CONCEPT — visually reviewed artwork**, not construction approval. The [dated gallery](../Thach_Bi_Viewer/references/00-overview/2026-10-07/index.html) currently contains four exterior views: front elevation, two opposite oblique views and an entrance close-up. Daylight and evening appearances are included. Each selected image has a preserved native original and a 1920 × 1080 export.
+Status: **CONCEPT — visually reviewed artwork**, not construction approval. The [dated gallery](../Thach_Bi_Viewer/references/00-overview/2026-10-07/index.html) contains nine views: four exterior views (front elevation, two opposite oblique views and an entrance close-up) and five interior views (nave overview, sanctuary overview, side aisle, sanctuary detail and carved connection detail). Daylight and evening appearances are included. Each selected image has a preserved native original and a 1920 × 1080 export.
 
 ## Reference hierarchy and owner corrections
 
@@ -16,6 +16,8 @@ The visual direction combines the existing Catholic composition with northern Vi
 Use it to discuss composition, finish, iconography, sanctuary richness and carved relief at different distances. Fine sculpture, gilding patterns, finish colors, reflections and lighting are interpretations and may vary across viewpoints. The images are generated independently, so they are not a metrically consistent multi-view model or fabrication set.
 
 The approved concepts supply decorative form; natural-brown timber studies may be interpreted in the model's red-brown lacquer and sanctuary gilding. Keep the two central timber rows and concrete outer supports. Proposed ornament does not define residual timber sections, concealed joinery, fixings, capacity, fire behavior or maintenance clearances. Richer carvings must be coordinated and reviewed before later mesh changes or construction.
+
+The connection close-up is an art study derived directly from the timber and sanctuary references, with a corrected plain upper wall background. It has no matching model camera capture and must not be used to infer an as-modeled connection. The other eight views each retain their associated model capture. The richer sanctuary relief and deep column-head/haunch carvings in views 05–09 remain visual proposals for later model work.
 
 Do not measure equipment positions, cable routes, lamp output, lux, dimensions or quantities from these pictures. Use the model registers and governing documents. No 3D geometry, simulator parameters, equipment IDs, Excel registers or engineering results changed in this image delivery. The model's unfinished decorative details remain unfinished.
 
