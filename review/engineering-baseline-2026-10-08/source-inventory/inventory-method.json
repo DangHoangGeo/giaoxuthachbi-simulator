@@ -1,0 +1,15 @@
+{
+  "generated_at_utc": "2026-10-07T21:59:33.115078+00:00",
+  "repository_root": "/Users/danghoang/Desktop/giaoxuthachbi_work",
+  "python_executable": "/Users/danghoang/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+  "python_version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "method": "Python standard-library zipfile and XML reads. Preserve source strings, cells, XML values, saved caches and formulas. No rendering/edit/export/recalculation or simulations.",
+  "source_workbooks": 7,
+  "zip_crc_checks": "passed for all seven",
+  "formula_cache_limit": "Saved caches are recorded and were not recalculated; no claim of current native-Excel results.",
+  "source_fingerprints_unchanged": true,
+  "git_branch_at_read": "eng/01-baseline",
+  "git_head_at_read": "daadc10210842418eddeba68099f321236c4e96b",
+  "git_mutations": "none",
+  "engineering_review": "none; source inventory and saved-file comparison only"
+}

@@ -1,0 +1,1821 @@
+{
+  "path": "docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
+  "sha256": "95fe13afe5d2b4589eea1bae8225ab4cc99ae4b64640cf67f694d530e320e01b",
+  "record_counts": {
+    "Dimensions": 463,
+    "Model grid": 51,
+    "Open items": 22,
+    "Sources": 9
+  },
+  "dimension_id_prefix_counts": {
+    "P": 213,
+    "E": 85,
+    "S": 165
+  },
+  "basis_counts": {
+    "Ghi trên bản vẽ / Explicit": 391,
+    "Tính từ bản vẽ / Derived": 57,
+    "Cần xác nhận / Unresolved": 15
+  },
+  "source_unit_counts": [
+    {
+      "unit": "mm",
+      "count": 360
+    },
+    {
+      "unit": "m",
+      "count": 46
+    },
+    {
+      "unit": null,
+      "count": 57
+    }
+  ],
+  "open_item_status_counts": {
+    "Chưa xác nhận / Open": 20,
+    "Giả thiết / Assumption": 1,
+    "Còn một phần / Partial": 1
+  },
+  "open_confirmation_value_cells_populated": [],
+  "open_new_reference_cells_populated": [],
+  "unresolved_dimension_records": [
+    {
+      "row": 216,
+      "id": "P209",
+      "id_cell": "A216",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A216",
+          "value": "P209",
+          "xml_type": "str",
+          "stored_xml_value": "P209",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B216",
+          "value": "Cần xác nhận\nSettlement joints at front",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận\nSettlement joints at front",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C216",
+          "value": "joint_width",
+          "xml_type": "str",
+          "stored_xml_value": "joint_width",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D216",
+          "value": "Source: N/A",
+          "xml_type": "str",
+          "stored_xml_value": "Source: N/A",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E216",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F216",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G216",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H216",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G216)>0,\"\",G216/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I216",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J216",
+          "value": "Tờ 11\nFile 5",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 11\nFile 5",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K216",
+          "value": "Near2′ at H and B, labeled khe lún",
+          "xml_type": "str",
+          "stored_xml_value": "Near2′ at H and B, labeled khe lún",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L216",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M216",
+          "value": "Both front-body joints are labeled but no width is printed in these plans.",
+          "xml_type": "str",
+          "stored_xml_value": "Both front-body joints are labeled but no width is printed in these plans.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 217,
+      "id": "P210",
+      "id_cell": "A217",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A217",
+          "value": "P210",
+          "xml_type": "str",
+          "stored_xml_value": "P210",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B217",
+          "value": "Cần xác nhận\nWall and pier profiles",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận\nWall and pier profiles",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C217",
+          "value": "complete_section_dimensions",
+          "xml_type": "str",
+          "stored_xml_value": "complete_section_dimensions",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D217",
+          "value": "Source: N/A",
+          "xml_type": "str",
+          "stored_xml_value": "Source: N/A",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E217",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F217",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G217",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H217",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G217)>0,\"\",G217/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I217",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J217",
+          "value": "Tờ 6\nFile 4",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 6\nFile 4",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K217",
+          "value": "Plan walls, columns, buttresses",
+          "xml_type": "str",
+          "stored_xml_value": "Plan walls, columns, buttresses",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L217",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M217",
+          "value": "Decorative profiles and many wall/pier sizes are not dimensioned in these two plans; do not obtain exact construction sizes by scaling pixels.",
+          "xml_type": "str",
+          "stored_xml_value": "Decorative profiles and many wall/pier sizes are not dimensioned in these two plans; do not obtain exact construction sizes by scaling pixels.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 218,
+      "id": "P211",
+      "id_cell": "A218",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A218",
+          "value": "P211",
+          "xml_type": "str",
+          "stored_xml_value": "P211",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B218",
+          "value": "Cần xác nhận\nRoof pitch",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận\nRoof pitch",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C218",
+          "value": "slope_angle",
+          "xml_type": "str",
+          "stored_xml_value": "slope_angle",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D218",
+          "value": "Source: N/A",
+          "xml_type": "str",
+          "stored_xml_value": "Source: N/A",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E218",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F218",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G218",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H218",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G218)>0,\"\",G218/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I218",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J218",
+          "value": "Tờ 11\nFile 5",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 11\nFile 5",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K218",
+          "value": "Main and transverse roof slopes",
+          "xml_type": "str",
+          "stored_xml_value": "Main and transverse roof slopes",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L218",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M218",
+          "value": "Roof arrows show drainage/slope direction, but no pitch angle is labeled in the roof plan. Use section elevations.",
+          "xml_type": "str",
+          "stored_xml_value": "Roof arrows show drainage/slope direction, but no pitch angle is labeled in the roof plan. Use section elevations.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 219,
+      "id": "P212",
+      "id_cell": "A219",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A219",
+          "value": "P212",
+          "xml_type": "str",
+          "stored_xml_value": "P212",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B219",
+          "value": "Cần xác nhận\nRoof central and side-wing ridges",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận\nRoof central and side-wing ridges",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C219",
+          "value": "ridge_elevations",
+          "xml_type": "str",
+          "stored_xml_value": "ridge_elevations",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D219",
+          "value": "Source: N/A",
+          "xml_type": "str",
+          "stored_xml_value": "Source: N/A",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E219",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F219",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G219",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H219",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G219)>0,\"\",G219/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I219",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J219",
+          "value": "Tờ 11\nFile 5",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 11\nFile 5",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K219",
+          "value": "Roof plan",
+          "xml_type": "str",
+          "stored_xml_value": "Roof plan",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L219",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M219",
+          "value": "Ridge positions/topology are shown but heights must be cross-referenced to elevations/sections.\nCross-reference: Main ridge/reference +12.472m is explicitly available in E049/E071/S001. Side-wing ridge heights remain unspecified; preserve the original plan-only UNRESOLVED source status.",
+          "xml_type": "str",
+          "stored_xml_value": "Ridge positions/topology are shown but heights must be cross-referenced to elevations/sections.\nCross-reference: Main ridge/reference +12.472m is explicitly available in E049/E071/S001. Side-wing ridge heights remain unspecified; preserve the original plan-only UNRESOLVED source status.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 220,
+      "id": "P213",
+      "id_cell": "A220",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A220",
+          "value": "P213",
+          "xml_type": "str",
+          "stored_xml_value": "P213",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B220",
+          "value": "Cần xác nhận\nOpening heights",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận\nOpening heights",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C220",
+          "value": "height",
+          "xml_type": "str",
+          "stored_xml_value": "height",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D220",
+          "value": "Source: N/A",
+          "xml_type": "str",
+          "stored_xml_value": "Source: N/A",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E220",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F220",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G220",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H220",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G220)>0,\"\",G220/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I220",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J220",
+          "value": "Tờ 6\nFile 4",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 6\nFile 4",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K220",
+          "value": "Ground plan",
+          "xml_type": "str",
+          "stored_xml_value": "Ground plan",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L220",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M220",
+          "value": "Widths are dimensioned for selected openings; heights must come from elevations/details.\nCross-reference: Uploaded files8/9, printed sheets12/13, provide selected window and doorway heights/chains. See S088–S134 and derived S150–S155. Mapping every detail to each plan opening and exact curve profiles still requires confirmation; original plan-only status remains unchanged.",
+          "xml_type": "str",
+          "stored_xml_value": "Widths are dimensioned for selected openings; heights must come from elevations/details.\nCross-reference: Uploaded files8/9, printed sheets12/13, provide selected window and doorway heights/chains. See S088–S134 and derived S150–S155. Mapping every detail to each plan opening and exact curve profiles still requires confirmation; original plan-only status remains unchanged.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 461,
+      "id": "S156",
+      "id_cell": "A461",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A461",
+          "value": "S156",
+          "xml_type": "str",
+          "stored_xml_value": "S156",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B461",
+          "value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C461",
+          "value": "RFI-S01",
+          "xml_type": "str",
+          "stored_xml_value": "RFI-S01",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D461",
+          "value": "source drawing → designer confirmation",
+          "xml_type": "str",
+          "stored_xml_value": "source drawing → designer confirmation",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E461",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F461",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G461",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H461",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G461)>0,\"\",G461/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I461",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J461",
+          "value": "Tờ 4\nFile 6",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 4\nFile 6",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K461",
+          "value": "see RFI register",
+          "xml_type": "str",
+          "stored_xml_value": "see RFI register",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L461",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M461",
+          "value": "76 mm section height conflict: Both section sheets label ridge +12.472 m and courtyard −2.08 m, giving14552 mm; overall dimension14476 mm differs76 mm. Obtain corrected level/overall dimension from designer.",
+          "xml_type": "str",
+          "stored_xml_value": "76 mm section height conflict: Both section sheets label ridge +12.472 m and courtyard −2.08 m, giving14552 mm; overall dimension14476 mm differs76 mm. Obtain corrected level/overall dimension from designer.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 462,
+      "id": "S157",
+      "id_cell": "A462",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A462",
+          "value": "S157",
+          "xml_type": "str",
+          "stored_xml_value": "S157",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B462",
+          "value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C462",
+          "value": "RFI-S02",
+          "xml_type": "str",
+          "stored_xml_value": "RFI-S02",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D462",
+          "value": "source drawing → designer confirmation",
+          "xml_type": "str",
+          "stored_xml_value": "source drawing → designer confirmation",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E462",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F462",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G462",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H462",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G462)>0,\"\",G462/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I462",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J462",
+          "value": "Tờ 4\nFile 6",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 4\nFile 6",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K462",
+          "value": "see RFI register",
+          "xml_type": "str",
+          "stored_xml_value": "see RFI register",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L462",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M462",
+          "value": "1 mm exterior cornice conflict: Section +6.325 m and exterior detail chain6325 mm conflict with overall6324 mm on printed sheets12/13.",
+          "xml_type": "str",
+          "stored_xml_value": "1 mm exterior cornice conflict: Section +6.325 m and exterior detail chain6325 mm conflict with overall6324 mm on printed sheets12/13.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 463,
+      "id": "S158",
+      "id_cell": "A463",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A463",
+          "value": "S158",
+          "xml_type": "str",
+          "stored_xml_value": "S158",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B463",
+          "value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C463",
+          "value": "RFI-S03",
+          "xml_type": "str",
+          "stored_xml_value": "RFI-S03",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D463",
+          "value": "source drawing → designer confirmation",
+          "xml_type": "str",
+          "stored_xml_value": "source drawing → designer confirmation",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E463",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F463",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G463",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H463",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G463)>0,\"\",G463/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I463",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J463",
+          "value": "Tờ 4\nFile 6",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 4\nFile 6",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K463",
+          "value": "see RFI register",
+          "xml_type": "str",
+          "stored_xml_value": "see RFI register",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L463",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M463",
+          "value": "1 mm sanctuary doorway chain conflict: Printed2554+396=2950 mm, while aligned right-side dimension is2951 mm. Verify reference surfaces/tolerance.",
+          "xml_type": "str",
+          "stored_xml_value": "1 mm sanctuary doorway chain conflict: Printed2554+396=2950 mm, while aligned right-side dimension is2951 mm. Verify reference surfaces/tolerance.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 464,
+      "id": "S159",
+      "id_cell": "A464",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A464",
+          "value": "S159",
+          "xml_type": "str",
+          "stored_xml_value": "S159",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B464",
+          "value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C464",
+          "value": "RFI-S04",
+          "xml_type": "str",
+          "stored_xml_value": "RFI-S04",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D464",
+          "value": "source drawing → designer confirmation",
+          "xml_type": "str",
+          "stored_xml_value": "source drawing → designer confirmation",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E464",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F464",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G464",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H464",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G464)>0,\"\",G464/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I464",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J464",
+          "value": "Tờ 4\nFile 6",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 4\nFile 6",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K464",
+          "value": "see RFI register",
+          "xml_type": "str",
+          "stored_xml_value": "see RFI register",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L464",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M464",
+          "value": "Interior/exterior door head relationship: Exterior doorway springline3101+rise1140 gives4241 mm; interior doorway2951+band220+rise1140 gives4311 mm. Clarify70 mm offset and wall locations before modeling a shared opening.",
+          "xml_type": "str",
+          "stored_xml_value": "Interior/exterior door head relationship: Exterior doorway springline3101+rise1140 gives4241 mm; interior doorway2951+band220+rise1140 gives4311 mm. Clarify70 mm offset and wall locations before modeling a shared opening.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 465,
+      "id": "S160",
+      "id_cell": "A465",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A465",
+          "value": "S160",
+          "xml_type": "str",
+          "stored_xml_value": "S160",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B465",
+          "value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C465",
+          "value": "RFI-S05",
+          "xml_type": "str",
+          "stored_xml_value": "RFI-S05",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D465",
+          "value": "source drawing → designer confirmation",
+          "xml_type": "str",
+          "stored_xml_value": "source drawing → designer confirmation",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E465",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F465",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G465",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H465",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G465)>0,\"\",G465/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I465",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J465",
+          "value": "Tờ 4\nFile 6",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 4\nFile 6",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K465",
+          "value": "see RFI register",
+          "xml_type": "str",
+          "stored_xml_value": "see RFI register",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L465",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M465",
+          "value": "Roof pitch, member sections and overhang: Roof form and material notes are supplied, but no pitch angle, purlin spacing/section, truss joints, tile thickness, roof overhang dimensions, or complete support contact elevations are given in these four sheets. Need roof framing/details or CAD geometry.",
+          "xml_type": "str",
+          "stored_xml_value": "Roof pitch, member sections and overhang: Roof form and material notes are supplied, but no pitch angle, purlin spacing/section, truss joints, tile thickness, roof overhang dimensions, or complete support contact elevations are given in these four sheets. Need roof framing/details or CAD geometry.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 466,
+      "id": "S161",
+      "id_cell": "A466",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A466",
+          "value": "S161",
+          "xml_type": "str",
+          "stored_xml_value": "S161",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B466",
+          "value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C466",
+          "value": "RFI-S06",
+          "xml_type": "str",
+          "stored_xml_value": "RFI-S06",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D466",
+          "value": "source drawing → designer confirmation",
+          "xml_type": "str",
+          "stored_xml_value": "source drawing → designer confirmation",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E466",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F466",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G466",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H466",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G466)>0,\"\",G466/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I466",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J466",
+          "value": "Tờ 4\nFile 6",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 4\nFile 6",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K466",
+          "value": "see RFI register",
+          "xml_type": "str",
+          "stored_xml_value": "see RFI register",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L466",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M466",
+          "value": "Arches, rosette and ornament surfaces: Arch bounding widths/rises exist, but radii/centres, curve control points, molding widths/depths, column flutes/capitals, rosette outer diameter/thickness, finial cross-sections and ornamental relief depths are absent. Use original DWG/DXF curves or architect-approved tracing, tagged traced not exact.",
+          "xml_type": "str",
+          "stored_xml_value": "Arches, rosette and ornament surfaces: Arch bounding widths/rises exist, but radii/centres, curve control points, molding widths/depths, column flutes/capitals, rosette outer diameter/thickness, finial cross-sections and ornamental relief depths are absent. Use original DWG/DXF curves or architect-approved tracing, tagged traced not exact.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 467,
+      "id": "S162",
+      "id_cell": "A467",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A467",
+          "value": "S162",
+          "xml_type": "str",
+          "stored_xml_value": "S162",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B467",
+          "value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C467",
+          "value": "RFI-S07",
+          "xml_type": "str",
+          "stored_xml_value": "RFI-S07",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D467",
+          "value": "source drawing → designer confirmation",
+          "xml_type": "str",
+          "stored_xml_value": "source drawing → designer confirmation",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E467",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F467",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G467",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H467",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G467)>0,\"\",G467/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I467",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J467",
+          "value": "Tờ 4\nFile 6",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 4\nFile 6",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K467",
+          "value": "see RFI register",
+          "xml_type": "str",
+          "stored_xml_value": "see RFI register",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L467",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M467",
+          "value": "Column and foundation engineering details: Shown foundation offsets are not column shaft sizes; exact post cross-sections, taper, footing depth, concrete grades and reinforcing details are absent from these architectural sections.",
+          "xml_type": "str",
+          "stored_xml_value": "Column and foundation engineering details: Shown foundation offsets are not column shaft sizes; exact post cross-sections, taper, footing depth, concrete grades and reinforcing details are absent from these architectural sections.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 468,
+      "id": "S163",
+      "id_cell": "A468",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A468",
+          "value": "S163",
+          "xml_type": "str",
+          "stored_xml_value": "S163",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B468",
+          "value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C468",
+          "value": "RFI-S08",
+          "xml_type": "str",
+          "stored_xml_value": "RFI-S08",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D468",
+          "value": "source drawing → designer confirmation",
+          "xml_type": "str",
+          "stored_xml_value": "source drawing → designer confirmation",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E468",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F468",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G468",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H468",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G468)>0,\"\",G468/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I468",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J468",
+          "value": "Tờ 4\nFile 6",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 4\nFile 6",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K468",
+          "value": "see RFI register",
+          "xml_type": "str",
+          "stored_xml_value": "see RFI register",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L468",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M468",
+          "value": "Floor and finish thicknesses: Concrete floor slab8 cm, veranda roof RC13 cm and material descriptions exist, but natural-stone thickness, sand-fill depth, waterproofing, roof-tile thickness and finish buildup are unspecified.",
+          "xml_type": "str",
+          "stored_xml_value": "Floor and finish thicknesses: Concrete floor slab8 cm, veranda roof RC13 cm and material descriptions exist, but natural-stone thickness, sand-fill depth, waterproofing, roof-tile thickness and finish buildup are unspecified.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 469,
+      "id": "S164",
+      "id_cell": "A469",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A469",
+          "value": "S164",
+          "xml_type": "str",
+          "stored_xml_value": "S164",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B469",
+          "value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C469",
+          "value": "RFI-S09",
+          "xml_type": "str",
+          "stored_xml_value": "RFI-S09",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D469",
+          "value": "source drawing → designer confirmation",
+          "xml_type": "str",
+          "stored_xml_value": "source drawing → designer confirmation",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E469",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F469",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G469",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H469",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G469)>0,\"\",G469/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I469",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J469",
+          "value": "Tờ 4\nFile 6",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 4\nFile 6",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K469",
+          "value": "see RFI register",
+          "xml_type": "str",
+          "stored_xml_value": "see RFI register",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L469",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M469",
+          "value": "Sanctuary steps and altar furniture: Dais elevations are supplied; stair width/run/treads, altar dimensions/location, liturgical furniture and detailed handrails are not dimensioned in these four sheets.\nCross-reference: Ground plan contains selected stage offsets and a1900×870 unlabeled feature in P111–P127. Exact furniture identity, all step details and handrails remain unspecified.",
+          "xml_type": "str",
+          "stored_xml_value": "Sanctuary steps and altar furniture: Dais elevations are supplied; stair width/run/treads, altar dimensions/location, liturgical furniture and detailed handrails are not dimensioned in these four sheets.\nCross-reference: Ground plan contains selected stage offsets and a1900×870 unlabeled feature in P111–P127. Exact furniture identity, all step details and handrails remain unspecified.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    },
+    {
+      "row": 470,
+      "id": "S165",
+      "id_cell": "A470",
+      "fields": {
+        "Mã / ID": {
+          "cell": "A470",
+          "value": "S165",
+          "xml_type": "str",
+          "stored_xml_value": "S165",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Bộ phận / Part": {
+          "cell": "B470",
+          "value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận thiết kế\nDesigner clarification required",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Thông số / Parameter": {
+          "cell": "C470",
+          "value": "RFI-S10",
+          "xml_type": "str",
+          "stored_xml_value": "RFI-S10",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trục và mốc / Axes and refs": {
+          "cell": "D470",
+          "value": "source drawing → designer confirmation",
+          "xml_type": "str",
+          "stored_xml_value": "source drawing → designer confirmation",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Trị số gốc / Source value": {
+          "cell": "E470",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "ĐVT / Unit": {
+          "cell": "F470",
+          "value": "mm",
+          "xml_type": "str",
+          "stored_xml_value": "mm",
+          "style_index": 25,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Kích thước (mm)": {
+          "cell": "G470",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Quy đổi (m)": {
+          "cell": "H470",
+          "value": null,
+          "xml_type": "str",
+          "stored_xml_value": null,
+          "formula": "IF(COUNTBLANK(G470)>0,\"\",G470/1000)",
+          "formula_attributes": {},
+          "value_is_saved_formula_cache": true,
+          "style_index": 23,
+          "number_format_id": 201,
+          "number_format": "0.000"
+        },
+        "Cơ sở / Basis": {
+          "cell": "I470",
+          "value": "Cần xác nhận / Unresolved",
+          "xml_type": "str",
+          "stored_xml_value": "Cần xác nhận / Unresolved",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Tờ / Drawing": {
+          "cell": "J470",
+          "value": "Tờ 4\nFile 6",
+          "xml_type": "str",
+          "stored_xml_value": "Tờ 4\nFile 6",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Vị trí / Locator": {
+          "cell": "K470",
+          "value": "see RFI register",
+          "xml_type": "str",
+          "stored_xml_value": "see RFI register",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        },
+        "Nhãn gốc / Printed label": {
+          "cell": "L470",
+          "value": null,
+          "xml_type": null,
+          "stored_xml_value": null
+        },
+        "Ghi chú / Notes": {
+          "cell": "M470",
+          "value": "Interior versus exterior window identity: Printed sheet12 exterior is a pair of1000-wide openings with850 sill; interior is one2250-wide opening with650 sill. They correspond to different wall/arcade planes. Do not fuse them into one window without plan confirmation.",
+          "xml_type": "str",
+          "stored_xml_value": "Interior versus exterior window identity: Printed sheet12 exterior is a pair of1000-wide openings with850 sill; interior is one2250-wide opening with650 sill. They correspond to different wall/arcade planes. Do not fuse them into one window without plan confirmation.",
+          "style_index": 18,
+          "number_format_id": 0,
+          "number_format": null
+        }
+      }
+    }
+  ],
+  "keyword_group_counts": {
+    "grid_and_bays": 213,
+    "levels": 137,
+    "roof": 80,
+    "wall_and_openings": 175,
+    "columns_and_supports": 55
+  },
+  "saved_error_cells": []
+}

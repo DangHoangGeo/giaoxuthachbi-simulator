@@ -1,0 +1,157 @@
+{
+  "before": [
+    {
+      "path": "docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
+      "sha256": "95fe13afe5d2b4589eea1bae8225ab4cc99ae4b64640cf67f694d530e320e01b",
+      "bytes": 76336
+    },
+    {
+      "path": "docs/electrical-grid/equipment-layout.json",
+      "sha256": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "bytes": 143159
+    },
+    {
+      "path": "docs/electrical-grid/electrical-systems.json",
+      "sha256": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "bytes": 997151
+    },
+    {
+      "path": "docs/electrical-grid/categories/manifest.json",
+      "sha256": "3b42f014b6e2eab012df5c5d251c0d120c37cf9d06e55c47cad44a1fa146b41b",
+      "bytes": 2253
+    },
+    {
+      "path": "docs/electrical-grid/summary-report.md",
+      "sha256": "b63dd4a73827e02ba1c04eb814e2988d6b1d426e2ee73dfa1f275c4aecdf5510",
+      "bytes": 6241
+    },
+    {
+      "path": "docs/electrical-grid/register.md",
+      "sha256": "09fd5ff9ec7780ad49ee78ac7da1177b0e29d8e85abafdb8ce1b8394027728d2",
+      "bytes": 11077
+    },
+    {
+      "path": "docs/electrical-grid/categories/README.md",
+      "sha256": "e05f8cb34e6d94c285188f5ebb8c1b2c1b5f29347f5a02eea906a31187e95cd3",
+      "bytes": 1519
+    },
+    {
+      "path": "scripts/build_equipment_register.mjs",
+      "sha256": "cf8964f191af7a2338955de068d370843e3b26c8a9db8a09fd5d0a30b1e7d8ae",
+      "bytes": 32777
+    },
+    {
+      "path": "scripts/usage_registers.mjs",
+      "sha256": "2cd3d74e571c2492eb96aafcf86d808dbba11f6c00c18fdf674e43852f5d903e",
+      "bytes": 12414
+    },
+    {
+      "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+      "sha256": "8858d36aa6a1f88d48dfb7e7c90bad4c19c5aa64be3015d70930833fee819721",
+      "bytes": 170001
+    },
+    {
+      "path": "docs/electrical-grid/categories/sound/register.xlsx",
+      "sha256": "9f5e60421fc5cb2943f253d8acd4693e7e5ee749c56709c637ac61fd4388f604",
+      "bytes": 39609
+    },
+    {
+      "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+      "sha256": "f991dd5e11143d0c216acc58f9f2d817c9cb1567a32f75f7074baf00145d5024",
+      "bytes": 34945
+    },
+    {
+      "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+      "sha256": "13244a19667a147836fd25a0901da6724f143bd6dc239db435bf27014099b113",
+      "bytes": 18203
+    },
+    {
+      "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+      "sha256": "c3662afc0e3eeab5c39861a112a8773df81cf23d126dea7e0ab6c422e6975b41",
+      "bytes": 17383
+    },
+    {
+      "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+      "sha256": "dce2be9965f37cf4c3a68cf608a1c907daa3bf484f6683d5d59360adbcdd4877",
+      "bytes": 17237
+    }
+  ],
+  "after": [
+    {
+      "path": "docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
+      "sha256": "95fe13afe5d2b4589eea1bae8225ab4cc99ae4b64640cf67f694d530e320e01b",
+      "bytes": 76336
+    },
+    {
+      "path": "docs/electrical-grid/equipment-layout.json",
+      "sha256": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "bytes": 143159
+    },
+    {
+      "path": "docs/electrical-grid/electrical-systems.json",
+      "sha256": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "bytes": 997151
+    },
+    {
+      "path": "docs/electrical-grid/categories/manifest.json",
+      "sha256": "3b42f014b6e2eab012df5c5d251c0d120c37cf9d06e55c47cad44a1fa146b41b",
+      "bytes": 2253
+    },
+    {
+      "path": "docs/electrical-grid/summary-report.md",
+      "sha256": "b63dd4a73827e02ba1c04eb814e2988d6b1d426e2ee73dfa1f275c4aecdf5510",
+      "bytes": 6241
+    },
+    {
+      "path": "docs/electrical-grid/register.md",
+      "sha256": "09fd5ff9ec7780ad49ee78ac7da1177b0e29d8e85abafdb8ce1b8394027728d2",
+      "bytes": 11077
+    },
+    {
+      "path": "docs/electrical-grid/categories/README.md",
+      "sha256": "e05f8cb34e6d94c285188f5ebb8c1b2c1b5f29347f5a02eea906a31187e95cd3",
+      "bytes": 1519
+    },
+    {
+      "path": "scripts/build_equipment_register.mjs",
+      "sha256": "cf8964f191af7a2338955de068d370843e3b26c8a9db8a09fd5d0a30b1e7d8ae",
+      "bytes": 32777
+    },
+    {
+      "path": "scripts/usage_registers.mjs",
+      "sha256": "2cd3d74e571c2492eb96aafcf86d808dbba11f6c00c18fdf674e43852f5d903e",
+      "bytes": 12414
+    },
+    {
+      "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+      "sha256": "8858d36aa6a1f88d48dfb7e7c90bad4c19c5aa64be3015d70930833fee819721",
+      "bytes": 170001
+    },
+    {
+      "path": "docs/electrical-grid/categories/sound/register.xlsx",
+      "sha256": "9f5e60421fc5cb2943f253d8acd4693e7e5ee749c56709c637ac61fd4388f604",
+      "bytes": 39609
+    },
+    {
+      "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+      "sha256": "f991dd5e11143d0c216acc58f9f2d817c9cb1567a32f75f7074baf00145d5024",
+      "bytes": 34945
+    },
+    {
+      "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+      "sha256": "13244a19667a147836fd25a0901da6724f143bd6dc239db435bf27014099b113",
+      "bytes": 18203
+    },
+    {
+      "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+      "sha256": "c3662afc0e3eeab5c39861a112a8773df81cf23d126dea7e0ab6c422e6975b41",
+      "bytes": 17383
+    },
+    {
+      "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+      "sha256": "dce2be9965f37cf4c3a68cf608a1c907daa3bf484f6683d5d59360adbcdd4877",
+      "bytes": 17237
+    }
+  ],
+  "all_unchanged": true
+}

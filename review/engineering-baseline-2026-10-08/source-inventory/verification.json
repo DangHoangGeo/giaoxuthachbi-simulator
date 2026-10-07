@@ -1,0 +1,21 @@
+{
+  "result": "passed",
+  "python_executable": "/Users/danghoang/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+  "openpyxl_version": "3.1.5",
+  "workbook_mode": "read_only=True; data_only=True and data_only=False; no save operation",
+  "workbooks_checked": 7,
+  "cell_value_comparisons": 43057,
+  "exact_formula_text_comparisons": 4710,
+  "saved_fingerprint_and_count_comparisons": 118,
+  "csv_record_counts": {
+    "dimension-records.csv": 463,
+    "model-grid-records.csv": 51,
+    "open-items.csv": 22,
+    "drawing-sources.csv": 9,
+    "category-counts.csv": 6,
+    "engineering-input-columns.csv": 114,
+    "register-id-index.csv": 3337
+  },
+  "source_fingerprints_rechecked": 15,
+  "scope_limit": "Extraction accuracy and saved-file consistency only. No engineering adequacy or current native-Excel recalculation verified."
+}

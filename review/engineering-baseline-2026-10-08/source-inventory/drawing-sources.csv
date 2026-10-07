@@ -1,0 +1,28 @@
+row,id,id_cell,File,File [cell],File [formula],File [stored XML value],Tờ in / Printed sheet,Tờ in / Printed sheet [cell],Tờ in / Printed sheet [formula],Tờ in / Printed sheet [stored XML value],Nội dung / Drawing,Nội dung / Drawing [cell],Nội dung / Drawing [formula],Nội dung / Drawing [stored XML value],Tên file gốc / Original filename,Tên file gốc / Original filename [cell],Tên file gốc / Original filename [formula],Tên file gốc / Original filename [stored XML value],Trang PDF / Page,Trang PDF / Page [cell],Trang PDF / Page [formula],Trang PDF / Page [stored XML value]
+8,1,A8,1,A8,,1,1,B8,,1,"MẶT ĐỨNG CUỐI
+Twin-tower end",C8,,"MẶT ĐỨNG CUỐI
+Twin-tower end",MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 1.pdf,D8,,MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 1.pdf,1,E8,,1
+9,2,A9,2,A9,,2,2,B9,,2,"MẶT ĐỨNG HAI BÊN
+Both side elevations",C9,,"MẶT ĐỨNG HAI BÊN
+Both side elevations",MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 2.pdf,D9,,MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 2.pdf,1,E9,,1
+10,3,A10,3,A10,,3,3,B10,,3,"MẶT ĐỨNG ĐẦU
+Opposite gabled end",C10,,"MẶT ĐỨNG ĐẦU
+Opposite gabled end",MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 3.pdf,D10,,MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 3.pdf,1,E10,,1
+11,4,A11,4,A11,,4,6,B11,,6,"MẶT BẰNG +00
+Ground-floor plan",C11,,"MẶT BẰNG +00
+Ground-floor plan",MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 4.pdf,D11,,MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 4.pdf,1,E11,,1
+12,5,A12,5,A12,,5,11,B12,,11,"MẶT BẰNG MÁI CHẢY
+Roof plan",C12,,"MẶT BẰNG MÁI CHẢY
+Roof plan",MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 5.pdf,D12,,MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 5.pdf,1,E12,,1
+13,6,A13,6,A13,,6,4,B13,,4,"Mặt cắt thân nhà thờ
+Nave transverse section",C13,,"Mặt cắt thân nhà thờ
+Nave transverse section",MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 6.pdf,D13,,MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 6.pdf,1,E13,,1
+14,7,A14,7,A14,,7,5,B14,,5,"Mặt cắt cung thánh
+Sanctuary transverse section",C14,,"Mặt cắt cung thánh
+Sanctuary transverse section",MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 7.pdf,D14,,MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 7.pdf,1,E14,,1
+15,8,A15,8,A15,,8,12,B15,,12,"Chi tiết cửa sổ, cột và đỉnh
+Window, pilaster and finial details",C15,,"Chi tiết cửa sổ, cột và đỉnh
+Window, pilaster and finial details",MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 8.pdf,D15,,MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 8.pdf,1,E15,,1
+16,9,A16,9,A16,,9,13,B16,,13,"Chi tiết cửa đi
+Doorway bay details",C16,,"Chi tiết cửa đi
+Doorway bay details",MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 9.pdf,D16,,MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 9.pdf,1,E16,,1

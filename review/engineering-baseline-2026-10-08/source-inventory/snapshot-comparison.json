@@ -1,0 +1,1117 @@
+{
+  "source_counts": {
+    "layout_items": 322,
+    "layout_unique_ids": 322,
+    "board_sources": 5,
+    "systems_components": 303,
+    "systems_unique_component_ids": 303,
+    "shown_components": 286,
+    "routes": 329,
+    "unique_route_ids": 329,
+    "vertices": 2681
+  },
+  "layout_metadata": {
+    "schema": 1,
+    "savedAt": "2026-10-07T12:10:03.268Z",
+    "designVersion": "2026-10-16-tower-board",
+    "settings": {
+      "adaptLux": 110,
+      "autoExposure": false,
+      "quality": "fast",
+      "autoQuality": true,
+      "maintenance": 0.8,
+      "halos": 1,
+      "occupancy": 0.6,
+      "openings": 1,
+      "roofFinish": "mixed",
+      "entranceFinish": "slats",
+      "tempC": 28,
+      "rh": 75,
+      "ambientDbA": 40,
+      "lensDeg": 75,
+      "eyeHeight": 1.6,
+      "walkSpeed": 1.4,
+      "showTruss": false,
+      "frameStyle": "drawn",
+      "timberTone": "reference",
+      "overlay": "none",
+      "snap": true,
+      "edit": true,
+      "talker": false,
+      "micDistance": 0.4,
+      "talkerDbA": 62,
+      "serviceHours": 1.5,
+      "servicesPerMonth": 40,
+      "tariff": 2200,
+      "mixerDb": 0,
+      "seatingPlane": 0.8,
+      "servicePanelsUpgraded": true,
+      "lightingRevision": "2026-10-05-balanced-doors-towers",
+      "facadeRevision": "2026-10-05-continuous-facade-wash-2",
+      "entranceRevision": "2026-10-07-entrance-wall-2",
+      "sanctuaryRevision": "2026-10-07-sanctuary-8",
+      "stableLightingRevision": "2026-10-06-physical-lighting"
+    }
+  },
+  "systems_metadata": {
+    "schema": 1,
+    "savedAt": null,
+    "designVersion": null
+  },
+  "manifest_generatedAt": "2026-10-07T12:11:33.278Z",
+  "summary_fingerprints": [
+    {
+      "line": 69,
+      "text": "- [Layout snapshot](equipment-layout.json), SHA-256: 43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac.",
+      "sha256": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac"
+    },
+    {
+      "line": 70,
+      "text": "- [Electrical snapshot](electrical-systems.json), SHA-256: a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d.",
+      "sha256": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d"
+    }
+  ],
+  "summary_quantity_rows": [
+    {
+      "category": "lighting",
+      "source_line": 9,
+      "source_text": "| Lighting | 220 | 220 | 0 | 220 | 194 | 241 | 2050 |",
+      "equipment": 220,
+      "shown": 220,
+      "hidden": 0,
+      "connected": 220,
+      "commandedOn": 194,
+      "routes": 241,
+      "vertices": 2050
+    },
+    {
+      "category": "sound",
+      "source_line": 10,
+      "source_text": "| Sound | 32 | 32 | 0 | 32 | 22 | 42 | 302 |",
+      "equipment": 32,
+      "shown": 32,
+      "hidden": 0,
+      "connected": 32,
+      "commandedOn": 22,
+      "routes": 42,
+      "vertices": 302
+    },
+    {
+      "category": "air-system",
+      "source_line": 11,
+      "source_text": "| Fans and ventilation | 35 | 29 | 6 | 29 | 27 | 35 | 234 |",
+      "equipment": 35,
+      "shown": 29,
+      "hidden": 6,
+      "connected": 29,
+      "commandedOn": 27,
+      "routes": 35,
+      "vertices": 234
+    },
+    {
+      "category": "exit-signs",
+      "source_line": 12,
+      "source_text": "| Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 54 |",
+      "equipment": 5,
+      "shown": 5,
+      "hidden": 0,
+      "connected": 5,
+      "commandedOn": 5,
+      "routes": 7,
+      "vertices": 54
+    },
+    {
+      "category": "decoration",
+      "source_line": 13,
+      "source_text": "| Decoration and furnishings | 30 | 15 | 15 | 0 | 15 | 0 | 0 |",
+      "equipment": 30,
+      "shown": 15,
+      "hidden": 15,
+      "connected": 0,
+      "commandedOn": 15,
+      "routes": 0,
+      "vertices": 0
+    },
+    {
+      "category": "distribution-controls",
+      "source_line": 14,
+      "source_text": "| Distribution and controls | 5 | 5 | 0 | 0 | 0 | 4 | 41 |",
+      "equipment": 5,
+      "shown": 5,
+      "hidden": 0,
+      "connected": 0,
+      "commandedOn": 0,
+      "routes": 4,
+      "vertices": 41
+    },
+    {
+      "category": "total",
+      "source_line": 15,
+      "source_text": "| **Total** | 327 | 306 | 21 | 286 | 263 | 329 | 2681 |",
+      "equipment": 327,
+      "shown": 306,
+      "hidden": 21,
+      "connected": 286,
+      "commandedOn": 263,
+      "routes": 329,
+      "vertices": 2681
+    }
+  ],
+  "comparisons": [
+    {
+      "kind": "manifest_layout_fingerprint",
+      "actual": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "saved": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/layoutHash"
+    },
+    {
+      "kind": "manifest_systems_fingerprint",
+      "actual": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "saved": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/systemsHash"
+    },
+    {
+      "kind": "lighting_workbook_fingerprint",
+      "actual": "8858d36aa6a1f88d48dfb7e7c90bad4c19c5aa64be3015d70930833fee819721",
+      "saved": "8858d36aa6a1f88d48dfb7e7c90bad4c19c5aa64be3015d70930833fee819721",
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/0/sha256"
+    },
+    {
+      "kind": "lighting_equipment_manifest_count",
+      "actual": 220,
+      "saved": 220,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/0/equipment"
+    },
+    {
+      "kind": "lighting_routes_manifest_count",
+      "actual": 241,
+      "saved": 241,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/0/routes"
+    },
+    {
+      "kind": "lighting_vertices_manifest_count",
+      "actual": 2050,
+      "saved": 2050,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/0/vertices"
+    },
+    {
+      "kind": "lighting_readme_layout_hash",
+      "actual": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "saved": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "match": true,
+      "source": "docs/electrical-grid/categories/lighting/register.xlsx",
+      "location": "'Read me'!B14"
+    },
+    {
+      "kind": "lighting_readme_systems_hash",
+      "actual": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "saved": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "match": true,
+      "source": "docs/electrical-grid/categories/lighting/register.xlsx",
+      "location": "'Read me'!B15"
+    },
+    {
+      "kind": "lighting_readme_equipment_count",
+      "actual": 220,
+      "saved": 220,
+      "match": true,
+      "source": "docs/electrical-grid/categories/lighting/register.xlsx",
+      "location": "'Read me'!B5"
+    },
+    {
+      "kind": "lighting_readme_route_count",
+      "actual": 241,
+      "saved": 241,
+      "match": true,
+      "source": "docs/electrical-grid/categories/lighting/register.xlsx",
+      "location": "'Read me'!B6"
+    },
+    {
+      "kind": "sound_workbook_fingerprint",
+      "actual": "9f5e60421fc5cb2943f253d8acd4693e7e5ee749c56709c637ac61fd4388f604",
+      "saved": "9f5e60421fc5cb2943f253d8acd4693e7e5ee749c56709c637ac61fd4388f604",
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/1/sha256"
+    },
+    {
+      "kind": "sound_equipment_manifest_count",
+      "actual": 32,
+      "saved": 32,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/1/equipment"
+    },
+    {
+      "kind": "sound_routes_manifest_count",
+      "actual": 42,
+      "saved": 42,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/1/routes"
+    },
+    {
+      "kind": "sound_vertices_manifest_count",
+      "actual": 302,
+      "saved": 302,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/1/vertices"
+    },
+    {
+      "kind": "sound_readme_layout_hash",
+      "actual": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "saved": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "match": true,
+      "source": "docs/electrical-grid/categories/sound/register.xlsx",
+      "location": "'Read me'!B14"
+    },
+    {
+      "kind": "sound_readme_systems_hash",
+      "actual": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "saved": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "match": true,
+      "source": "docs/electrical-grid/categories/sound/register.xlsx",
+      "location": "'Read me'!B15"
+    },
+    {
+      "kind": "sound_readme_equipment_count",
+      "actual": 32,
+      "saved": 32,
+      "match": true,
+      "source": "docs/electrical-grid/categories/sound/register.xlsx",
+      "location": "'Read me'!B5"
+    },
+    {
+      "kind": "sound_readme_route_count",
+      "actual": 42,
+      "saved": 42,
+      "match": true,
+      "source": "docs/electrical-grid/categories/sound/register.xlsx",
+      "location": "'Read me'!B6"
+    },
+    {
+      "kind": "air-system_workbook_fingerprint",
+      "actual": "f991dd5e11143d0c216acc58f9f2d817c9cb1567a32f75f7074baf00145d5024",
+      "saved": "f991dd5e11143d0c216acc58f9f2d817c9cb1567a32f75f7074baf00145d5024",
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/2/sha256"
+    },
+    {
+      "kind": "air-system_equipment_manifest_count",
+      "actual": 35,
+      "saved": 35,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/2/equipment"
+    },
+    {
+      "kind": "air-system_routes_manifest_count",
+      "actual": 35,
+      "saved": 35,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/2/routes"
+    },
+    {
+      "kind": "air-system_vertices_manifest_count",
+      "actual": 234,
+      "saved": 234,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/2/vertices"
+    },
+    {
+      "kind": "air-system_readme_layout_hash",
+      "actual": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "saved": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "match": true,
+      "source": "docs/electrical-grid/categories/air-system/register.xlsx",
+      "location": "'Read me'!B14"
+    },
+    {
+      "kind": "air-system_readme_systems_hash",
+      "actual": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "saved": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "match": true,
+      "source": "docs/electrical-grid/categories/air-system/register.xlsx",
+      "location": "'Read me'!B15"
+    },
+    {
+      "kind": "air-system_readme_equipment_count",
+      "actual": 35,
+      "saved": 35,
+      "match": true,
+      "source": "docs/electrical-grid/categories/air-system/register.xlsx",
+      "location": "'Read me'!B5"
+    },
+    {
+      "kind": "air-system_readme_route_count",
+      "actual": 35,
+      "saved": 35,
+      "match": true,
+      "source": "docs/electrical-grid/categories/air-system/register.xlsx",
+      "location": "'Read me'!B6"
+    },
+    {
+      "kind": "exit-signs_workbook_fingerprint",
+      "actual": "13244a19667a147836fd25a0901da6724f143bd6dc239db435bf27014099b113",
+      "saved": "13244a19667a147836fd25a0901da6724f143bd6dc239db435bf27014099b113",
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/3/sha256"
+    },
+    {
+      "kind": "exit-signs_equipment_manifest_count",
+      "actual": 5,
+      "saved": 5,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/3/equipment"
+    },
+    {
+      "kind": "exit-signs_routes_manifest_count",
+      "actual": 7,
+      "saved": 7,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/3/routes"
+    },
+    {
+      "kind": "exit-signs_vertices_manifest_count",
+      "actual": 54,
+      "saved": 54,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/3/vertices"
+    },
+    {
+      "kind": "exit-signs_readme_layout_hash",
+      "actual": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "saved": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "match": true,
+      "source": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+      "location": "'Read me'!B14"
+    },
+    {
+      "kind": "exit-signs_readme_systems_hash",
+      "actual": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "saved": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "match": true,
+      "source": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+      "location": "'Read me'!B15"
+    },
+    {
+      "kind": "exit-signs_readme_equipment_count",
+      "actual": 5,
+      "saved": 5,
+      "match": true,
+      "source": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+      "location": "'Read me'!B5"
+    },
+    {
+      "kind": "exit-signs_readme_route_count",
+      "actual": 7,
+      "saved": 7,
+      "match": true,
+      "source": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+      "location": "'Read me'!B6"
+    },
+    {
+      "kind": "decoration_workbook_fingerprint",
+      "actual": "c3662afc0e3eeab5c39861a112a8773df81cf23d126dea7e0ab6c422e6975b41",
+      "saved": "c3662afc0e3eeab5c39861a112a8773df81cf23d126dea7e0ab6c422e6975b41",
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/4/sha256"
+    },
+    {
+      "kind": "decoration_equipment_manifest_count",
+      "actual": 30,
+      "saved": 30,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/4/equipment"
+    },
+    {
+      "kind": "decoration_routes_manifest_count",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/4/routes"
+    },
+    {
+      "kind": "decoration_vertices_manifest_count",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/4/vertices"
+    },
+    {
+      "kind": "decoration_readme_layout_hash",
+      "actual": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "saved": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "match": true,
+      "source": "docs/electrical-grid/categories/decoration/register.xlsx",
+      "location": "'Read me'!B14"
+    },
+    {
+      "kind": "decoration_readme_systems_hash",
+      "actual": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "saved": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "match": true,
+      "source": "docs/electrical-grid/categories/decoration/register.xlsx",
+      "location": "'Read me'!B15"
+    },
+    {
+      "kind": "decoration_readme_equipment_count",
+      "actual": 30,
+      "saved": 30,
+      "match": true,
+      "source": "docs/electrical-grid/categories/decoration/register.xlsx",
+      "location": "'Read me'!B5"
+    },
+    {
+      "kind": "decoration_readme_route_count",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/categories/decoration/register.xlsx",
+      "location": "'Read me'!B6"
+    },
+    {
+      "kind": "distribution-controls_workbook_fingerprint",
+      "actual": "dce2be9965f37cf4c3a68cf608a1c907daa3bf484f6683d5d59360adbcdd4877",
+      "saved": "dce2be9965f37cf4c3a68cf608a1c907daa3bf484f6683d5d59360adbcdd4877",
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/5/sha256"
+    },
+    {
+      "kind": "distribution-controls_equipment_manifest_count",
+      "actual": 5,
+      "saved": 5,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/5/equipment"
+    },
+    {
+      "kind": "distribution-controls_routes_manifest_count",
+      "actual": 4,
+      "saved": 4,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/5/routes"
+    },
+    {
+      "kind": "distribution-controls_vertices_manifest_count",
+      "actual": 41,
+      "saved": 41,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/categories/5/vertices"
+    },
+    {
+      "kind": "distribution-controls_readme_layout_hash",
+      "actual": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "saved": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "match": true,
+      "source": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+      "location": "'Read me'!B14"
+    },
+    {
+      "kind": "distribution-controls_readme_systems_hash",
+      "actual": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "saved": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "match": true,
+      "source": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+      "location": "'Read me'!B15"
+    },
+    {
+      "kind": "distribution-controls_readme_equipment_count",
+      "actual": 5,
+      "saved": 5,
+      "match": true,
+      "source": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+      "location": "'Read me'!B5"
+    },
+    {
+      "kind": "distribution-controls_readme_route_count",
+      "actual": 4,
+      "saved": 4,
+      "match": true,
+      "source": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+      "location": "'Read me'!B6"
+    },
+    {
+      "kind": "total_equipment_manifest_count",
+      "actual": 327,
+      "saved": 327,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/equipment"
+    },
+    {
+      "kind": "total_shown_manifest_count",
+      "actual": 306,
+      "saved": 306,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/shown"
+    },
+    {
+      "kind": "total_hidden_manifest_count",
+      "actual": 21,
+      "saved": 21,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/hidden"
+    },
+    {
+      "kind": "total_connected_manifest_count",
+      "actual": 286,
+      "saved": 286,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/connected"
+    },
+    {
+      "kind": "total_commandedOn_manifest_count",
+      "actual": 263,
+      "saved": 263,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/commandedOn"
+    },
+    {
+      "kind": "total_retiredEquipment_manifest_count",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/retiredEquipment"
+    },
+    {
+      "kind": "total_retiredRoutes_manifest_count",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/retiredRoutes"
+    },
+    {
+      "kind": "total_routes_manifest_count",
+      "actual": 329,
+      "saved": 329,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/routes"
+    },
+    {
+      "kind": "total_vertices_manifest_count",
+      "actual": 2681,
+      "saved": 2681,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/vertices"
+    },
+    {
+      "kind": "total_specsDocumented_manifest_count",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/specsDocumented"
+    },
+    {
+      "kind": "total_controlsDocumented_manifest_count",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/controlsDocumented"
+    },
+    {
+      "kind": "total_cableDocumented_manifest_count",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/cableDocumented"
+    },
+    {
+      "kind": "total_allowancesEntered_manifest_count",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/allowancesEntered"
+    },
+    {
+      "kind": "total_allowancePopulation_manifest_count",
+      "actual": 319,
+      "saved": 319,
+      "match": true,
+      "source": "docs/electrical-grid/categories/manifest.json",
+      "location": "/totals/allowancePopulation"
+    },
+    {
+      "kind": "equipment_count_matches_layout_plus_enclosures",
+      "actual": 327,
+      "saved": 327,
+      "match": true,
+      "source": "docs/electrical-grid/equipment-layout.json + docs/electrical-grid/electrical-systems.json"
+    },
+    {
+      "kind": "route_count_matches_saved_systems",
+      "actual": 329,
+      "saved": 329,
+      "match": true,
+      "source": "docs/electrical-grid/electrical-systems.json",
+      "location": "/routes"
+    },
+    {
+      "kind": "vertex_count_matches_saved_systems",
+      "actual": 2681,
+      "saved": 2681,
+      "match": true,
+      "source": "docs/electrical-grid/electrical-systems.json",
+      "location": "/routes/*/points"
+    },
+    {
+      "kind": "summary_layout_fingerprint",
+      "actual": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "saved": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 69"
+    },
+    {
+      "kind": "summary_systems_fingerprint",
+      "actual": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "saved": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 70"
+    },
+    {
+      "kind": "summary_lighting_equipment",
+      "actual": 220,
+      "saved": 220,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 9"
+    },
+    {
+      "kind": "summary_lighting_shown",
+      "actual": 220,
+      "saved": 220,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 9"
+    },
+    {
+      "kind": "summary_lighting_hidden",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 9"
+    },
+    {
+      "kind": "summary_lighting_connected",
+      "actual": 220,
+      "saved": 220,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 9"
+    },
+    {
+      "kind": "summary_lighting_commandedOn",
+      "actual": 194,
+      "saved": 194,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 9"
+    },
+    {
+      "kind": "summary_lighting_routes",
+      "actual": 241,
+      "saved": 241,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 9"
+    },
+    {
+      "kind": "summary_lighting_vertices",
+      "actual": 2050,
+      "saved": 2050,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 9"
+    },
+    {
+      "kind": "summary_sound_equipment",
+      "actual": 32,
+      "saved": 32,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 10"
+    },
+    {
+      "kind": "summary_sound_shown",
+      "actual": 32,
+      "saved": 32,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 10"
+    },
+    {
+      "kind": "summary_sound_hidden",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 10"
+    },
+    {
+      "kind": "summary_sound_connected",
+      "actual": 32,
+      "saved": 32,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 10"
+    },
+    {
+      "kind": "summary_sound_commandedOn",
+      "actual": 22,
+      "saved": 22,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 10"
+    },
+    {
+      "kind": "summary_sound_routes",
+      "actual": 42,
+      "saved": 42,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 10"
+    },
+    {
+      "kind": "summary_sound_vertices",
+      "actual": 302,
+      "saved": 302,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 10"
+    },
+    {
+      "kind": "summary_air-system_equipment",
+      "actual": 35,
+      "saved": 35,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 11"
+    },
+    {
+      "kind": "summary_air-system_shown",
+      "actual": 29,
+      "saved": 29,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 11"
+    },
+    {
+      "kind": "summary_air-system_hidden",
+      "actual": 6,
+      "saved": 6,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 11"
+    },
+    {
+      "kind": "summary_air-system_connected",
+      "actual": 29,
+      "saved": 29,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 11"
+    },
+    {
+      "kind": "summary_air-system_commandedOn",
+      "actual": 27,
+      "saved": 27,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 11"
+    },
+    {
+      "kind": "summary_air-system_routes",
+      "actual": 35,
+      "saved": 35,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 11"
+    },
+    {
+      "kind": "summary_air-system_vertices",
+      "actual": 234,
+      "saved": 234,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 11"
+    },
+    {
+      "kind": "summary_exit-signs_equipment",
+      "actual": 5,
+      "saved": 5,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 12"
+    },
+    {
+      "kind": "summary_exit-signs_shown",
+      "actual": 5,
+      "saved": 5,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 12"
+    },
+    {
+      "kind": "summary_exit-signs_hidden",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 12"
+    },
+    {
+      "kind": "summary_exit-signs_connected",
+      "actual": 5,
+      "saved": 5,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 12"
+    },
+    {
+      "kind": "summary_exit-signs_commandedOn",
+      "actual": 5,
+      "saved": 5,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 12"
+    },
+    {
+      "kind": "summary_exit-signs_routes",
+      "actual": 7,
+      "saved": 7,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 12"
+    },
+    {
+      "kind": "summary_exit-signs_vertices",
+      "actual": 54,
+      "saved": 54,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 12"
+    },
+    {
+      "kind": "summary_decoration_equipment",
+      "actual": 30,
+      "saved": 30,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 13"
+    },
+    {
+      "kind": "summary_decoration_shown",
+      "actual": 15,
+      "saved": 15,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 13"
+    },
+    {
+      "kind": "summary_decoration_hidden",
+      "actual": 15,
+      "saved": 15,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 13"
+    },
+    {
+      "kind": "summary_decoration_connected",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 13"
+    },
+    {
+      "kind": "summary_decoration_commandedOn",
+      "actual": 15,
+      "saved": 15,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 13"
+    },
+    {
+      "kind": "summary_decoration_routes",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 13"
+    },
+    {
+      "kind": "summary_decoration_vertices",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 13"
+    },
+    {
+      "kind": "summary_distribution-controls_equipment",
+      "actual": 5,
+      "saved": 5,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 14"
+    },
+    {
+      "kind": "summary_distribution-controls_shown",
+      "actual": 5,
+      "saved": 5,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 14"
+    },
+    {
+      "kind": "summary_distribution-controls_hidden",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 14"
+    },
+    {
+      "kind": "summary_distribution-controls_connected",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 14"
+    },
+    {
+      "kind": "summary_distribution-controls_commandedOn",
+      "actual": 0,
+      "saved": 0,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 14"
+    },
+    {
+      "kind": "summary_distribution-controls_routes",
+      "actual": 4,
+      "saved": 4,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 14"
+    },
+    {
+      "kind": "summary_distribution-controls_vertices",
+      "actual": 41,
+      "saved": 41,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 14"
+    },
+    {
+      "kind": "summary_total_equipment",
+      "actual": 327,
+      "saved": 327,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 15"
+    },
+    {
+      "kind": "summary_total_shown",
+      "actual": 306,
+      "saved": 306,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 15"
+    },
+    {
+      "kind": "summary_total_hidden",
+      "actual": 21,
+      "saved": 21,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 15"
+    },
+    {
+      "kind": "summary_total_connected",
+      "actual": 286,
+      "saved": 286,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 15"
+    },
+    {
+      "kind": "summary_total_commandedOn",
+      "actual": 263,
+      "saved": 263,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 15"
+    },
+    {
+      "kind": "summary_total_routes",
+      "actual": 329,
+      "saved": 329,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 15"
+    },
+    {
+      "kind": "summary_total_vertices",
+      "actual": 2681,
+      "saved": 2681,
+      "match": true,
+      "source": "docs/electrical-grid/summary-report.md",
+      "location": "line 15"
+    }
+  ],
+  "mismatches": [],
+  "id_set_comparisons": {
+    "equipment_in_register_only": [],
+    "equipment_in_saved_sources_only": [],
+    "routes_in_register_only": [],
+    "routes_in_saved_systems_only": []
+  },
+  "duplicates": {
+    "equipment": [],
+    "routes": [],
+    "vertices": []
+  }
+}
