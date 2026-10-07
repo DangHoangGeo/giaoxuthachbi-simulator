@@ -2,6 +2,8 @@
 
 Planning baseline: **7 October 2026**. Status: **plan only; implementation has not started**. No framework, account, cloud resource or deployment is created by this plan. Read [AGENTS.md](../AGENTS.md) before executing any phase.
 
+**Execution priority, 8 October 2026:** the [building-systems engineering roadmap](engineering/README.md) comes first. Its six phases cover the baseline, joint light/sound/microphone/dynamic-air optimisation, concealment, routes, boards/controls and coordinated registers/handover. That plan awaits the engineer's approval before phase execution. Then follow the web order below, applying phase 07 before each launch. If engineering work is blocked on external input, its roadmap defines which independent packages can continue without treating an unfinished design as approved.
+
 Build a welcoming public account of Thạch Bi Church and its ongoing construction, a lightweight virtual visit, and reliable private tools for reviewing the design and inspecting construction information. Protect the community's limited time and resources by delivering useful parts early and keeping engineering evidence visible.
 
 ## Confirmed brief
@@ -69,6 +71,8 @@ Read [architecture](architecture.md), [data and publication](data-and-publicatio
 3. Implement the smallest complete change with its documentation. Any model/equipment/route change also follows the existing model/document and Excel synchronization rules.
 4. Run relevant checks, inspect the result and make a small local commit. Do not declare a phase complete because its UI exists; meet its exit criteria.
 5. Update the phase status with commit hashes, tests, preview evidence where authorized, remaining holds and the next package. An implementation request does not by itself authorize paid services, making the repository public or production deployment.
+
+The engineer's 8 October instruction authorizes Git pushes on phase branches and main. Follow the [shared branch, commit, delegation and handover workflow](engineering/README.md#execution-delegation-and-handover): branch each phase from current main, push verified commits, merge/push only after its exit gate passes, give a short handover and start the next ready phase without waiting. Leave blocked phases unmerged and proceed only with independent work. Do not force-push or rewrite shared history. This Git authorization does not resolve the specific publication, account/cost or production-release decisions above.
 
 Use this handover record in the completed phase: `status; source/model/data revisions; commit hashes; checks and results; visual/device evidence; unresolved items with owner; next package`. Keep this roadmap current when a dependency or scope changes.
 
