@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-07",
+  "delivery": "Seven additional side, rear and top-down concept views; gallery total 16",
+  "assetManifest": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+  "assetManifestSha256": "283a94263ee882cd1e12f7dcada14a6c51682ae049f2dd4f618e343045a8aa32",
+  "sources": {
+    "newModelCaptureRevision": "e64143e",
+    "originalModelCaptureRevision": "93e9a1e",
+    "laterModelWork": "c86ea10 is a separate carving change, not the basis of these captured inputs."
+  },
+  "checks": {
+    "modelInputs": {
+      "count": 7,
+      "pixels": [
+        1920,
+        1080
+      ],
+      "captureErrors": [],
+      "metadataAndReferencesResolve": true
+    },
+    "generationRecords": {
+      "newJobs": 14,
+      "newSelections": 7,
+      "newRejectedOrSuperseded": 7,
+      "discardedPixelsInReferenceFolders": 0
+    },
+    "nativeOriginals": {
+      "count": 16,
+      "pixels": [
+        1672,
+        941
+      ],
+      "byteIdenticalToGenerator": true
+    },
+    "fullHdExports": {
+      "count": 16,
+      "pixels": [
+        1920,
+        1080
+      ],
+      "decodedAndVisuallyReviewed": true,
+      "resampled": true
+    },
+    "originalNineViews": "Native masters, Full HD exports and asset records byte-identical to e64143e.",
+    "activeReferencePaths": {
+      "count": 35,
+      "allExist": true,
+      "javascriptMatchesJsonManifest": true
+    },
+    "localDocumentLinks": {
+      "count": 210,
+      "allResolve": true
+    },
+    "browser": [
+      {
+        "surface": "dated gallery",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "imagesLoaded": 16,
+        "allFullHd": true,
+        "horizontalOverflow": false,
+        "altTextPresent": true
+      },
+      {
+        "surface": "dated gallery",
+        "viewport": [
+          390,
+          844
+        ],
+        "imagesLoaded": 16,
+        "allFullHd": true,
+        "horizontalOverflow": false,
+        "altTextPresent": true
+      },
+      {
+        "surface": "offline viewer reference dialog",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "imagesLoaded": 35,
+        "pageErrors": [],
+        "modelErrors": []
+      }
+    ],
+    "browserEngine": "Installed Google Chrome via Playwright, local file URLs",
+    "packageValidation": {
+      "command": "python3 docs/beams-roof-connections/validate.py",
+      "result": "PASS; no structural capacity verified"
+    },
+    "diffWhitespace": "PASS"
+  },
+  "limits": [
+    "Generated concepts are not metrically consistent geometry, site photographs or engineering approval.",
+    "Side-shutter appearance follows owner-preferred interior view 11; prior wide views remain earlier studies.",
+    "View 16 adds proposed B03 nave-row beams from the framing concept. Sections, joints, bearings and wider bay 9–10 sanctuary transition remain engineering holds.",
+    "This image delivery changes no model, equipment, Excel or simulator data. Separate concurrent model work is preserved.",
+    "Full HD resampling adds no native detail.",
+    "delivery-checks.json remains the historical nine-image verification record."
+  ]
+}

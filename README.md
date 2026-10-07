@@ -41,7 +41,7 @@ This is a plan for future implementation. The existing offline viewer below rema
 
 ## Open the model
 
-See the [7 October church concept gallery](Thach_Bi_Viewer/references/00-overview/2026-10-07/index.html) for nine exterior, interior and carved-detail views, with native originals and resampled Full HD copies. These use the model and approved art references; they are generated design concepts, not construction-site photographs. [Design notes and provenance](docs/church-view-renderings.md) explain the source hierarchy and limitations.
+See the [7 October church concept gallery](Thach_Bi_Viewer/references/00-overview/2026-10-07/index.html) for sixteen exterior, interior, carved-detail and top-down views, including side-door/window close-ups and the sanctuary-end rear elevation, with native originals and resampled Full HD copies. These use the model and approved art references; they are generated design concepts, not construction-site photographs. [Design notes and provenance](docs/church-view-renderings.md) explain the source hierarchy and limitations.
 
 1. Download or clone the repository. If downloading a ZIP, extract it completely.
 2. Open [Thach_Bi_Viewer/OPEN_CHURCH.html](Thach_Bi_Viewer/OPEN_CHURCH.html) in a browser with JavaScript and WebGL 2 support.

@@ -1,14 +1,14 @@
 # Thạch Bi Church · October concept views
 
-9 generated architectural views · 7 October 2026. Based on the current model and approved art concepts. These new images are proposed visualizations, not construction photographs or measured drawings.
+16 generated architectural views · 7 October 2026. Based on recorded model captures and approved art concepts.
 
-[Open the gallery](index.html) · [Design notes](../../../../docs/church-view-renderings.md) · [Manifest](manifest.json) · [Prompts and source record](../../../../review/church-views-2026-10-07/generation-record.json)
+[Open the gallery](index.html) · [Design notes](../../../../docs/church-view-renderings.md) · [Asset manifest](manifest.json) · [New prompts and review](../../../../review/church-views-2026-10-07/generation-additions-final.json)
 
-Full HD exports are **1920 × 1080 resampled copies** of preserved **1672 × 941 native originals**. The owner authorized this export. Resampling adds no native detail. Only selected, visually reviewed images are included.
+Full HD files are 1920 × 1080 resampled copies; native originals are preserved. The latest side-window details use the owner-preferred carved timber and gold panels on both faces. Proposed longitudinal nave beams are illustrated in the overhead cutaway. These visual concepts do not establish dimensions, joinery or installed lighting performance.
 
-The model supplies layout and proportions; the approved sanctuary and timber concepts supply details that are unfinished in the model. The Assumption of the Blessed Virgin Mary appears between the front towers. These images do not authorize construction or establish engineering performance.
+## Church, sanctuary and carved connections
 
-## Front elevation · daylight
+### Front elevation · daylight
 
 Twin towers and the Assumption of the Blessed Virgin Mary in the central facade niche.
 
@@ -16,7 +16,7 @@ Twin towers and the Assumption of the Blessed Virgin Mary in the central facade 
 
 ![Twin towers and the Assumption of the Blessed Virgin Mary in the central facade niche.](full-hd/01-exterior-front-day.png)
 
-## Front and long side · daylight
+### Front and long side · daylight
 
 Elevated oblique view showing the facade, Assumption statue, long side and terracotta roofs.
 
@@ -24,7 +24,7 @@ Elevated oblique view showing the facade, Assumption statue, long side and terra
 
 ![Elevated oblique view showing the facade, Assumption statue, long side and terracotta roofs.](full-hd/02-exterior-corner-day.png)
 
-## Main entrance · close view
+### Main entrance · close view
 
 Closer oblique view of the three timber entrances, stone stage and Marian niche.
 
@@ -32,7 +32,7 @@ Closer oblique view of the three timber entrances, stone stage and Marian niche.
 
 ![Closer oblique view of the three timber entrances, stone stage and Marian niche.](full-hd/03-entrance-detail-day.png)
 
-## Opposite front and side · evening
+### Opposite front and side · evening
 
 Opposite oblique view with warm facade accents and the Assumption statue at blue hour.
 
@@ -40,7 +40,7 @@ Opposite oblique view with warm facade accents and the Assumption statue at blue
 
 ![Opposite oblique view with warm facade accents and the Assumption statue at blue hour.](full-hd/04-exterior-corner-evening.png)
 
-## Nave toward sanctuary · daylight
+### Nave toward sanctuary · daylight
 
 Long central aisle, timber columns and carved beam heads, with the approved sanctuary concept at the far end.
 
@@ -48,7 +48,7 @@ Long central aisle, timber columns and carved beam heads, with the approved sanc
 
 ![Long central aisle, timber columns and carved beam heads, with the approved sanctuary concept at the far end.](full-hd/05-nave-overview-day.png)
 
-## Sanctuary overview · evening
+### Sanctuary overview · evening
 
 Central Crucifix in its blue recess, Our Lady and Saint Joseph with Child, red lacquer and gilded carving.
 
@@ -56,7 +56,7 @@ Central Crucifix in its blue recess, Our Lady and Saint Joseph with Child, red l
 
 ![Central Crucifix in its blue recess, Our Lady and Saint Joseph with Child, red lacquer and gilded carving.](full-hd/06-sanctuary-overview-evening.png)
 
-## Side aisle toward sanctuary · daylight
+### Side aisle toward sanctuary · daylight
 
 Eye-level side view combining the modeled aisle arrangement with the approved sanctuary and column-head art.
 
@@ -64,7 +64,7 @@ Eye-level side view combining the modeled aisle arrangement with the approved sa
 
 ![Eye-level side view combining the modeled aisle arrangement with the approved sanctuary and column-head art.](full-hd/07-interior-oblique-day.png)
 
-## Sanctuary carving and altar · close view
+### Sanctuary carving and altar · close view
 
 Oblique close view of the Crucifix niche, layered gilded relief, lacquered chamber and pale stone altar.
 
@@ -72,10 +72,70 @@ Oblique close view of the Crucifix niche, layered gilded relief, lacquered chamb
 
 ![Oblique close view of the Crucifix niche, layered gilded relief, lacquered chamber and pale stone altar.](full-hd/08-sanctuary-detail-day.png)
 
-## Carved column and beam connection · close view
+### Carved column and beam connection · close view
 
 Decorative study of carved haunches, column head, connected beams and upper rail. Concealed joinery is not specified.
 
 [Full HD PNG](full-hd/09-carved-connection-detail.png) · [Native original](masters/09-carved-connection-detail.png)
 
 ![Decorative study of carved haunches, column head, connected beams and upper rail. Concealed joinery is not specified.](full-hd/09-carved-connection-detail.png)
+
+## Side entrances, wall decoration and rear elevation
+
+### Side entrance · exterior close view
+
+Carved timber side doors, stained-glass fanlight, ivory arch mouldings, wall relief and stone landing. Side shutters use the owner-preferred solid carved timber and gilded panels from the interior view.
+
+[Full HD PNG](full-hd/10-side-door-exterior-day.png) · [Native original](masters/10-side-door-exterior-day.png)
+
+![Carved timber side doors, stained-glass fanlight, ivory arch mouldings, wall relief and stone landing. Side shutters use the owner-preferred solid carved timber and gilded panels from the interior view.](full-hd/10-side-door-exterior-day.png)
+
+### Side entrance · interior wall detail
+
+Interior side-door arch, stained glass, devotional panels, wall sconces and nearby lacquered columns.
+
+[Full HD PNG](full-hd/11-side-wall-interior-day.png) · [Native original](masters/11-side-wall-interior-day.png)
+
+![Interior side-door arch, stained glass, devotional panels, wall sconces and nearby lacquered columns.](full-hd/11-side-wall-interior-day.png)
+
+### Side wall · windows and decoration
+
+Close view of the paired timber shutters, coloured fanlights, circular rose windows, pilasters and ornamental cornice. Side shutters use the owner-preferred solid carved timber and gilded panels from the interior view.
+
+[Full HD PNG](full-hd/12-wall-window-decoration-day.png) · [Native original](masters/12-wall-window-decoration-day.png)
+
+![Close view of the paired timber shutters, coloured fanlights, circular rose windows, pilasters and ornamental cornice. Side shutters use the owner-preferred solid carved timber and gilded panels from the interior view.](full-hd/12-wall-window-decoration-day.png)
+
+### Rear elevation · daylight
+
+Straight view of the sanctuary-end exterior, five rear windows, central gable and continuous stone base.
+
+[Full HD PNG](full-hd/13-rear-elevation-day.png) · [Native original](masters/13-rear-elevation-day.png)
+
+![Straight view of the sanctuary-end exterior, five rear windows, central gable and continuous stone base.](full-hd/13-rear-elevation-day.png)
+
+### Rear and long side · evening
+
+Oblique rear view showing the sanctuary-end wall, projecting wing, side entrances and distant front towers. Side shutters use the owner-preferred solid carved timber and gilded panels from the interior view.
+
+[Full HD PNG](full-hd/14-rear-corner-evening.png) · [Native original](masters/14-rear-corner-evening.png)
+
+![Oblique rear view showing the sanctuary-end wall, projecting wing, side entrances and distant front towers. Side shutters use the owner-preferred solid carved timber and gilded panels from the interior view.](full-hd/14-rear-corner-evening.png)
+
+## Top-down roof and interior views
+
+### Top-down · roof and site
+
+Overhead roof view showing both front towers, projecting wings, roof intersections, side stairs and two tree rows.
+
+[Full HD PNG](full-hd/15-top-down-roof-day.png) · [Native original](masters/15-top-down-roof-day.png)
+
+![Overhead roof view showing both front towers, projecting wings, roof intersections, side stairs and two tree rows.](full-hd/15-top-down-roof-day.png)
+
+### Top-down · interior cutaway
+
+Roof-hidden overhead concept showing the nave, four pew blocks, two central column rows, sanctuary and side wings. Two B03 longitudinal nave-row beams are shown as proposed connections from the structural art reference.
+
+[Full HD PNG](full-hd/16-top-down-interior-day.png) · [Native original](masters/16-top-down-interior-day.png)
+
+![Roof-hidden overhead concept showing the nave, four pew blocks, two central column rows, sanctuary and side wings. Two B03 longitudinal nave-row beams are shown as proposed connections from the structural art reference.](full-hd/16-top-down-interior-day.png)

@@ -215,6 +215,181 @@
       "visualReview": "Selected after review for this artwork set; no obvious malformed-image defects found. Not dimensional or engineering verification.",
       "modelCapture": null,
       "part": "interior"
+    },
+    {
+      "id": "church-views-20261007-10-side-door-exterior-day",
+      "title": "Side entrance · exterior close view",
+      "description": "Carved timber side doors, stained-glass fanlight, ivory arch mouldings, wall relief and stone landing. Side shutters use the owner-preferred solid carved timber and gilded panels from the interior view.",
+      "generationJob": "10-side-door-exterior-day-v2-interior-panels",
+      "generationFile": "exec-0561a695-3cf3-432f-92df-91168324b63f.png",
+      "master": "masters/10-side-door-exterior-day.png",
+      "fullHd": "full-hd/10-side-door-exterior-day.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "f1b8b52d6439f9efd3125cbef63172d54d38fc7250dafa5640a3e422d2ae66de",
+      "fullHdSha256": "0b52a887b64549cd8a02d81770e887d0068d5e7f3d4e8a119b95220d22ac73d0",
+      "visualReview": "Visually reviewed concept selection; quantities, dimensions, hidden connections and compliance require source data.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/10-side-door-exterior-day.png",
+      "sourceModelCommit": "e64143e",
+      "referencePart": "04-doors",
+      "part": "exterior"
+    },
+    {
+      "id": "church-views-20261007-11-side-wall-interior-day",
+      "title": "Side entrance · interior wall detail",
+      "description": "Interior side-door arch, stained glass, devotional panels, wall sconces and nearby lacquered columns.",
+      "generationJob": "11-side-wall-interior-day",
+      "generationFile": "exec-46e93de1-43e4-456d-af4c-ddb0a0972ed3.png",
+      "master": "masters/11-side-wall-interior-day.png",
+      "fullHd": "full-hd/11-side-wall-interior-day.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "0b5b3c96245b883f220aa58aa8da1c799edad5a3eca8afb9652fd19ab2be2286",
+      "fullHdSha256": "8d72afe5bbf67c58ecf6a5d1546922bd2d6d3c0761f0a7c221ad936f8ace75d2",
+      "visualReview": "Visually reviewed concept selection; quantities, dimensions, hidden connections and compliance require source data.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/11-side-wall-interior-day.png",
+      "sourceModelCommit": "e64143e",
+      "referencePart": "04-doors",
+      "part": "interior"
+    },
+    {
+      "id": "church-views-20261007-12-wall-window-decoration-day",
+      "title": "Side wall · windows and decoration",
+      "description": "Close view of the paired timber shutters, coloured fanlights, circular rose windows, pilasters and ornamental cornice. Side shutters use the owner-preferred solid carved timber and gilded panels from the interior view.",
+      "generationJob": "12-wall-window-decoration-day-v2-interior-panels",
+      "generationFile": "exec-c50a9cad-9383-4844-9e67-f66f3fb5eeef.png",
+      "master": "masters/12-wall-window-decoration-day.png",
+      "fullHd": "full-hd/12-wall-window-decoration-day.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "920b9a21fcbfb2c82b1620adf6c01a61c807a7fb7c814fc61bf7925a4d4e36a4",
+      "fullHdSha256": "57f66a94691ffae901ece82bbca24b100e95abd7a5f9c5c9edf13f94fa2234d1",
+      "visualReview": "Visually reviewed concept selection; quantities, dimensions, hidden connections and compliance require source data.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/12-wall-window-decoration-day.png",
+      "sourceModelCommit": "e64143e",
+      "referencePart": "05-windows",
+      "part": "exterior"
+    },
+    {
+      "id": "church-views-20261007-13-rear-elevation-day",
+      "title": "Rear elevation · daylight",
+      "description": "Straight view of the sanctuary-end exterior, five rear windows, central gable and continuous stone base.",
+      "generationJob": "13-rear-elevation-day",
+      "generationFile": "exec-66906914-1132-4e51-a631-45979bec99d8.png",
+      "master": "masters/13-rear-elevation-day.png",
+      "fullHd": "full-hd/13-rear-elevation-day.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "b36cf2a8cd82aa5b81f183e339dc9dab91a61a3f1b9075d2065e9a526f63499d",
+      "fullHdSha256": "f8b685ba3759976668793fdc2fc735bba2832f2952de866d78b9fd4c899c1e33",
+      "visualReview": "Visually reviewed concept selection; quantities, dimensions, hidden connections and compliance require source data.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/13-rear-elevation-day.png",
+      "sourceModelCommit": "e64143e",
+      "referencePart": "03-facade",
+      "part": "exterior"
+    },
+    {
+      "id": "church-views-20261007-14-rear-corner-evening",
+      "title": "Rear and long side · evening",
+      "description": "Oblique rear view showing the sanctuary-end wall, projecting wing, side entrances and distant front towers. Side shutters use the owner-preferred solid carved timber and gilded panels from the interior view.",
+      "generationJob": "14-rear-corner-evening-v3-rear-glazing",
+      "generationFile": "exec-7da60b3e-c60e-4ec5-9042-49da279905b8.png",
+      "master": "masters/14-rear-corner-evening.png",
+      "fullHd": "full-hd/14-rear-corner-evening.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "494cc687fc2b069d8e0274284b7ba09bf5c12093a9e3f984c384325620627bdd",
+      "fullHdSha256": "ba36e057ac3ef929b31490e57cd3ea56a8099649df87080deaaaf9f66dbcb67b",
+      "visualReview": "Visually reviewed concept selection; quantities, dimensions, hidden connections and compliance require source data.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/14-rear-corner-evening.png",
+      "sourceModelCommit": "e64143e",
+      "referencePart": "03-facade",
+      "part": "exterior"
+    },
+    {
+      "id": "church-views-20261007-15-top-down-roof-day",
+      "title": "Top-down · roof and site",
+      "description": "Overhead roof view showing both front towers, projecting wings, roof intersections, side stairs and two tree rows.",
+      "generationJob": "15-top-down-roof-day",
+      "generationFile": "exec-95d07772-4064-44e8-802a-0752baff56ce.png",
+      "master": "masters/15-top-down-roof-day.png",
+      "fullHd": "full-hd/15-top-down-roof-day.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "6f91e7f71a047f473f54caa74764fcde4f1bc3cf38863162412e808213aeeb68",
+      "fullHdSha256": "9d826c3b31ec5e360200ad0b791f99d245f61dd290a4ef24b47faa8ec867ae2c",
+      "visualReview": "Visually reviewed concept selection; quantities, dimensions, hidden connections and compliance require source data.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/15-top-down-roof-day.png",
+      "sourceModelCommit": "e64143e",
+      "referencePart": "06-roof",
+      "part": "overhead"
+    },
+    {
+      "id": "church-views-20261007-16-top-down-interior-day",
+      "title": "Top-down · interior cutaway",
+      "description": "Roof-hidden overhead concept showing the nave, four pew blocks, two central column rows, sanctuary and side wings. Two B03 longitudinal nave-row beams are shown as proposed connections from the structural art reference.",
+      "generationJob": "16-top-down-interior-day-v4-longitudinal-beams",
+      "generationFile": "exec-51e2b17b-1047-4a02-a773-7b6bab0dda2d.png",
+      "master": "masters/16-top-down-interior-day.png",
+      "fullHd": "full-hd/16-top-down-interior-day.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "d719f22ba98e7eaf5b037f14dea2f83c57fe05451b63766ad6d126105fa1d7d5",
+      "fullHdSha256": "4d2873314c3f40c0b9adfa9c7f9a72e0b8a41ae5e1c85286e13e2144470e5553",
+      "visualReview": "Visually reviewed concept selection; quantities, dimensions, hidden connections and compliance require source data.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/16-top-down-interior-day.png",
+      "sourceModelCommit": "e64143e",
+      "referencePart": "00-overview",
+      "part": "overhead",
+      "conceptAddition": "B03 longitudinal nave column-line beams from frame concept 08; not established by the roof-hidden screenshot. Sanctuary interface, member sizing and connections remain engineering holds."
     }
+  ],
+  "provenanceAdditions": "../../../../review/church-views-2026-10-07/generation-additions-final.json",
+  "captureAdditions": "../../../../review/church-views-2026-10-07/model-inputs-additions/",
+  "ownerUpdates": [
+    "Side-window shutters follow view 11: solid warm dark-brown paired panels with restrained gold foliate carving, matching inside and outside. Applies to the side-window type, separately from tower louvers and rear glazing.",
+    "B03 longitudinal column-line beams are required by the frame concept. Their illustrative nave connections appear in view 16; final sections, support levels, joints and the wider sanctuary transition need structural coordination."
   ]
 }
