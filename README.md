@@ -33,6 +33,12 @@ The immediate priority is to coordinate the positions of lights, speakers, micro
 
 **Construction update — 7 October 2026:** the project owner confirms the February 2026 start, completed foundation and ongoing construction. Exact milestone dates, site photographs and verified as-built measurements will be recorded as they become available. The digital model remains a design study; this progress update does not establish that its geometry matches the work already built.
 
+## Planned web app
+
+The [web app roadmap](plan/README.md) proposes Next.js on Vercel: a public church homepage and image gallery, a construction timeline, a lightweight 3D visit with local-time day/night settings, and password-protected, read-only engineering views. A later inspection view will help Father find upcoming work and inspect source-backed object positions, dimensions and specifications.
+
+This is a plan for future implementation. The existing offline viewer below remains the current application. The roadmap includes eight phases, data/publication rules, acceptance tests, access control, deployment and long-term maintenance; no web framework or cloud service has been configured yet.
+
 ## Open the model
 
 1. Download or clone the repository. If downloading a ZIP, extract it completely.
@@ -56,6 +62,7 @@ See the [viewer instructions](Thach_Bi_Viewer/READ_ME.txt) and [simulator guide]
 | Inspect equipment, line IDs and positions | [Category Excel registers](docs/electrical-grid/categories/README.md) and [refresh workflow](docs/electrical-grid/register.md) |
 | See total quantities, usage and missing inputs | [Summary report](docs/electrical-grid/summary-report.md) |
 | Contribute code, model changes or documentation | [Project and AI-agent rules](AGENTS.md) |
+| Implement the future public and protected web app | [Web roadmap and phase plans](plan/README.md) |
 
 ## Where community help would matter most
 
@@ -122,6 +129,7 @@ The HTML brief generator requires `marked`. Excel regeneration uses the configur
 | `Thach_Bi_Viewer/` | Offline viewer, model, simulator modules, interactive plan and reference assets. |
 | `docs/` | Drawing sources, design briefs, calculation limitations, engineering studies and equipment registers. |
 | `scripts/` | Verification and document/register generation tools. |
+| `plan/` | Future web architecture, roadmap, implementation phases and release criteria. |
 | `review/` | Dated review evidence and historical comparisons; earlier results may not describe the current model. |
 | `AGENTS.md` | Shared rules for accuracy, coordinated documentation, testing and small commits. |
 
