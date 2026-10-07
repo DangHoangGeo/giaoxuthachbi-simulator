@@ -1,0 +1,53 @@
+{
+  "sourceCommit": "e64143e6a3fbdf6f014a9ea569bdeb75dbd6c9d8",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "shots": [
+    {
+      "id": "15-top-down-roof-day",
+      "pos": [
+        20,
+        110,
+        0.01
+      ],
+      "target": [
+        20,
+        0,
+        0
+      ],
+      "fov": 29,
+      "light": "day",
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "roof": true
+    },
+    {
+      "id": "16-top-down-interior-day",
+      "pos": [
+        26,
+        70,
+        0.01
+      ],
+      "target": [
+        26,
+        0,
+        0
+      ],
+      "fov": 29,
+      "light": "day",
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "roof": false
+    }
+  ],
+  "errors": [],
+  "generated": false
+}

@@ -1,0 +1,86 @@
+{
+  "sourceCommit": "e64143e6a3fbdf6f014a9ea569bdeb75dbd6c9d8",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "shots": [
+    {
+      "id": "10-side-door-exterior-day",
+      "pos": [
+        14,
+        3.7,
+        18.5
+      ],
+      "target": [
+        16.725,
+        3.2,
+        10.414
+      ],
+      "fov": 57,
+      "light": "day"
+    },
+    {
+      "id": "11-side-wall-interior-day",
+      "pos": [
+        16.725,
+        2.1,
+        1
+      ],
+      "target": [
+        16.725,
+        2.6,
+        8.5
+      ],
+      "fov": 50,
+      "light": "day"
+    },
+    {
+      "id": "12-wall-window-decoration-day",
+      "pos": [
+        27.8,
+        5.4,
+        -17.5
+      ],
+      "target": [
+        25.725,
+        4.6,
+        -10.414
+      ],
+      "fov": 54,
+      "light": "day"
+    },
+    {
+      "id": "13-rear-elevation-day",
+      "pos": [
+        91,
+        8,
+        0
+      ],
+      "target": [
+        52,
+        7.7,
+        0
+      ],
+      "fov": 45,
+      "light": "day"
+    },
+    {
+      "id": "14-rear-corner-evening",
+      "pos": [
+        78,
+        14,
+        -42
+      ],
+      "target": [
+        35,
+        9,
+        0
+      ],
+      "fov": 49,
+      "light": "evening"
+    }
+  ],
+  "errors": [],
+  "generated": false
+}
