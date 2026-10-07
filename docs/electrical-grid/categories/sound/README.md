@@ -9,7 +9,7 @@ Loudspeakers, microphones, indoor speech and outdoor overflow.
 
 ## Current scope
 
-32 equipment/enclosures, 42 routes, 256 route vertices. 0 hidden alternatives; 32 shown connected components. Circuits: A1, A2, A3, A5, MIC.
+32 equipment/enclosures, 42 routes, 302 route vertices. 0 hidden alternatives; 32 shown connected components. Circuits: A1, A2, A3, A5, MIC.
 
 ## Editing and coordination
 

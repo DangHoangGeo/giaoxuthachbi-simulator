@@ -2,9 +2,9 @@
 (() => {
   // The three-lobed frame of section sheet 5 stands on the axis-10 timber columns, in lacquered
   // timber. Behind it a timber-lined chamber runs back to the reredos on axis 11.
-  const spec = { revision:'2026-10-07-sanctuary-7-carved', frameAxis:'10', frameX:44.175, centerX:48.12, wingX:44.375, wingZ:5.5, doorHeight:2.2, nicheBase:2.85,
+  const spec = { revision:'2026-10-07-sanctuary-7-carved', serviceRevision:'2026-10-07-concealed-1', frameAxis:'10', frameX:44.175, centerX:48.12, wingX:44.375, wingZ:5.5, doorHeight:2.2, nicheBase:2.85,
     centralArch:{half:3.3,spring:8.25,shoulder:9.38,crown:10.83}, sideArch:{half:1.575,spring:6.15,shoulder:6.75,crown:7.46},
-    chamber:{x0:44.49,x1:48.42,face:3.3,outer:3.75,top:9.45},
+    chamber:{x0:44.49,x1:48.42,face:3.3,outer:3.75,top:9.45,serviceLining:0.04},
     // Crucifix niche: opens through the reredos and the back wall, 1.0 m deep, its blue wall and
     // the cross standing back on a base over the service room. `shell` is the plaster casing
     // seen from the service room; `endX` its rear face.
@@ -36,6 +36,23 @@
     // Carved work is left a little lighter and less polished than the turned and planed timber.
     const carve=material('Sanctuary · carved lacquered timber','#6e2415',0,.36),inset=material('Sanctuary · dark marble inset','#56625c',0,.28),figure=material('Sanctuary · carved figure, natural wood','#c49a6c',0,.5);
     window.CHURCH_SANCTUARY.materials={wood,gold,carve};
+    // Concealed ambo service passage: the original visual pedestal stops below
+    // its sloped desk and the retained microphone base sits above that desk.
+    // Small hollow furniture fittings close those gaps without moving the mic.
+    const desk=building.getObjectByName('Proposed sloped ambo desk'),pedestal=building.getObjectByName('Proposed ambo pedestal');
+    if(desk && pedestal) {
+      const c=centre(desk),pedTop=new T.Box3().setFromObject(pedestal).max.y;
+      const socket=[c.x-.22,1.9,c.z];
+      spec.amboService={x:c.x,z:c.z,deskY:c.y,deskSlope:desk.rotation.z,socket,socketRadius:.07,
+        status:'CONCEPT · removable furniture passage; section and fixing design pending'};
+      const sleeve=(name,x,z,bottom,top,r,finish)=>{
+        const profile=[[.014,bottom],[r,bottom],[r,top],[.014,top],[.014,bottom]].map(p=>new T.Vector2(...p));
+        const part=new T.Mesh(new T.LatheGeometry(profile,16),finish);part.name=name;part.position.set(x,0,z);
+        part.userData={status:spec.amboService.status,engineeringApproved:false,serviceBoreRadius:.014};root.add(part);
+      };
+      sleeve('Proposed ambo service neck',c.x,c.z,pedTop-.01,c.y+.01,.095,pedestal.material);
+      sleeve('Proposed ambo microphone socket',socket[0],socket[2],c.y+Math.tan(desk.rotation.z)*(socket[0]-c.x),socket[1],.07,desk.material);
+    }
     // Parcel-gilt relief of the approved concept: gilded scrollwork on red lacquer for grounds
     // and friezes, and on a gilt ground where the art is gilded all over (pilasters, shrine frames).
     const reliefFinish=(name,ground,tile)=>{
@@ -254,7 +271,20 @@
     const C=spec.chamber,length=C.x1-C.x0,thick=C.outer-C.face,face=thick/2;
     for(const sign of [-1,1]){
       const g=new T.Group();g.name=`Chamber side wall · ${sign<0?'B':'H'}`;g.position.set((C.x0+C.x1)/2,0,sign*(C.face+C.outer)/2);g.rotation.y=sign>0?Math.PI:0;root.add(g);
-      box(g,length,C.top-.15,thick,0,(C.top+.15)/2,0,wood,'Chamber side wall · lacquered timber');
+      // The chamber enclosure is a lining proposal, not a 450 mm structural
+      // timber slab. Reserve an explicit service void between removable skins
+      // without changing either visible face or the acoustic/light boundary.
+      // Skin section, backing, access panels and terminations require design.
+      const skin=C.serviceLining,height=C.top-.15,parts=[];
+      for(const e of [-1,1]) {
+        parts.push([new T.BoxGeometry(length,height,skin),K.TR(0,0,e*(thick-skin)/2)]);
+        parts.push([new T.BoxGeometry(skin,height,thick-2*skin),K.TR(e*(length-skin)/2,0,0)]);
+        parts.push([new T.BoxGeometry(length-2*skin,skin,thick-2*skin),K.TR(0,e*(height-skin)/2,0)]);
+      }
+      const shell=mesh(K.merge(parts),wood,g,'Chamber side wall · lacquered timber',0,(C.top+.15)/2,0);
+      shell.userData={status:'CONCEPT · removable lining with reserved service void',engineeringApproved:false,
+        serviceVoid:{x0:C.x0+skin,x1:C.x1-skin,y0:.15+skin,y1:C.top-skin,zInner:C.face+skin,zOuter:C.outer-skin},
+        source:'docs/electrical-grid/routing.md · concealed-routing review; skin/backing/fire/access specification pending'};
       // Reredos cornice lines carried round the chamber.
       for(const y of [.86,1.18,2.25,2.5]){box(g,length,.14,.1,0,y,face+.04,wood,'Chamber cornice');box(g,length,.035,.12,0,y+.075,face+.045,gold,'Gilded cornice edge');}
       for(let i=0;i<4;i++){const u=-length/2+length*(i+.5)/4;border(g,u,1.72,.74,.76,face+.02);flower(g,u,1.72,face+.03,.15);}

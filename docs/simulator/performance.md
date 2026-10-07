@@ -97,6 +97,13 @@ The measured 32-light circuit action changed from 64 item notifications and 329
 reallocated route geometries to one notification and zero reallocations. Twenty
 forced fixture rebuilds now release all 20 old glow materials.
 
+The later [concealed-wiring revision](../electrical-grid/routing.md#concealment-revision-7-october-2026)
+changes route geometry while preserving those reuse rules. Its removable-cover
+proposals draw in two finish batches; individual hidden source covers retain
+metadata and reusable buffers. Unchanged rebuilds retain both route and cover
+geometry. Filters replace and dispose only affected display batches. This adds
+no continuous allocation loop; it does not establish a frame rate on a weak PC.
+
 The simulator audit stress-tests nested/interrupted batches, undo/redo, live and
 preview cache protection, more than 100 geometry edits, material disposal, route
 reuse and unchanged fan source positions. `verify_viewer_controls.cjs` checks real
@@ -194,7 +201,9 @@ restored equipment `L3`'s position but not its pendant anchor. The exported snap
 therefore showed +10.394880 m instead of the actual model's +8.590 m anchor. The test
 now restores both; the paired electrical exports, category registers and summary
 are refreshed, correcting only route `drop:LC1:L1:light:-1:L3` from 8.391731 m to
-7.005 m. This restores the existing model intent, not a new engineering route design.
+7.005 m in that performance snapshot. This restored the existing model intent.
+Those route lengths are now superseded by the separately recorded
+[concealed-wiring design revision](../electrical-grid/routing.md#concealment-revision-7-october-2026).
 Quantities, IDs, equipment output and entered workbook fields remain preserved.
 Governing documents checked: [sanctuary](../sanctuary-model.md),
 [systems brief](../interior-systems-plan.md), [lighting](../systems/lighting.md), [sound](../systems/sound.md),

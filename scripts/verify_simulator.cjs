@@ -292,6 +292,7 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
 {
   const E = SIM.electrical;
   assert(E.layer, 'electrical layer starts with the scene');
+  require('./verify_concealed_routes.cjs')({ SIM, T, CAT, building });
   const data = E.exportData(), runs = E.routes;
   assert.equal(new Set(runs.map(r => r.id)).size, runs.length, 'each run has a unique selection identity');
   assert.equal(runs.filter(r => r.role === 'feeder' && r.board === 'DB2').length, 1, 'one continuous DB2 feeder');
@@ -306,7 +307,7 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
     assert(r.length > 0, 'positive measured length ' + r.id);
     if (r.role === 'drop') {
       const it = SIM.item(r.itemIds[0]), trunk = runs.find(t => t.id === r.trunkId);
-      assert(near(r.points.at(-1), it.pos), 'drop terminates at component ' + r.id);
+      assert(near(r.points.at(-1), r.termination?.position || it.pos), 'drop terminates at component cable entry ' + r.id);
       assert(trunk && onPath(r.points[0], trunk.points), 'drop connects to its trunk ' + r.id);
     } else assert(near(r.points[0], E.SOURCES[r.source].pos), 'trunk/feeder starts at source ' + r.id);
   }

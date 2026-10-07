@@ -17,42 +17,77 @@
   };
   const COLORS = { light: '#dc9e29', fan: '#b46a48', audio: '#3985c2', mic: '#8263b5', feeder: '#c84c52', decor: '#cb7a36' };
   const view = { visible: false, mode: 'building', board: 'all', kind: 'all', selected: null };
-  let routes = [], layer, highlight, T, scene, savedVisibility = null, rebuildTimer;
-  const objects = new Map(), enclosures = new Map();
+  let routes = [], layer, highlight, T, scene, savedVisibility = null, rebuildTimer, soffitMaterial;
+  const objects = new Map(), enclosures = new Map(), covers = new Map(), coverBatches = new Map();
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const length = p => p.slice(1).reduce((n, v, i) => n + Math.hypot(...v.map((a, k) => a - p[i][k])), 0);
   const clean = p => p.filter((v, i) => !i || v.some((a, k) => Math.abs(a - p[i - 1][k]) > 0.00001)).map(v => v.slice());
   const wired = it => { const t = CAT.byId[it.type]; return t.glow !== 'flame' && !!(t.light || t.fan || t.speaker || t.mic); };
   const circuitIndex = c => Math.max(0, Object.keys(SIM.CIRCUITS).indexOf(c));
-  const height = (c, audio) => (audio ? 5.8 : 6.35) + circuitIndex(c) * 0.014;
-
-  // Main perimeter: retain the missing C/G wall across the 9–10 wings as
-  // ceiling containment, detouring around their outer wall / return walls.
+  const height = (c, audio) => (audio ? 5.55 : 5.9) + circuitIndex(c) * 0.008;
+  const REAR = 53.016, WALL = 7.36, WING = 13.249, ARCADE = 10.414;
+  // These are routing-study clearances, not a selected containment product.
+  // Main-roof paths occupy the modeled space ABOVE the ivory lining. Roofs
+  // without a modeled lining need a removable, finish-matched soffit raceway;
+  // they must not imply chasing the concrete roof or drilling structural wood.
+  function roofY(x, z) {
+    const az = Math.abs(z), main = 12.472 - (5.342 / 7.36) * az;
+    const lean = 7.13 - (0.805 / 3.62) * (az - WALL);
+    const wing = 9.45 - (3.125 / 3.88) * Math.abs(x - 40.575);
+    const surface = az <= WALL ? main : lean;
+    if (Math.abs(x - 40.575) <= 3.88 && wing > surface) return wing - 0.18;
+    return az <= WALL ? main - 0.09 : lean - 0.18;
+  }
+  function roofLine(a, b) {
+    // Include the ridge and valley transitions rather than a chord through the
+    // pitched roof. Collinear samples are removed again (small cached meshes).
+    const n = Math.max(1, Math.ceil(Math.hypot(b[0] - a[0], b[2] - a[2]) / 0.08)), p = [];
+    for (let i = 0; i <= n; i++) {
+      const x = a[0] + (b[0] - a[0]) * i / n, z = a[2] + (b[2] - a[2]) * i / n;
+      p.push([x, roofY(x, z), z]);
+    }
+    for (let i = p.length - 2; i > 0; i--) {
+      const a = p[i - 1], b = p[i], c = p[i + 1];
+      const u = b.map((v, k) => v - a[k]), v = c.map((w, k) => w - b[k]);
+      if (Math.hypot(u[1]*v[2]-u[2]*v[1], u[2]*v[0]-u[0]*v[2], u[0]*v[1]-u[1]*v[0]) < 1e-8) p.splice(i, 1);
+    }
+    return p;
+  }
   function perimeter(s, y) {
-    return [[53.05, y, s * 7.36], [44.175, y, s * 7.36], [44.175, y, s * 13.24],
-      [36.975, y, s * 13.24], [36.975, y, s * 7.36], [5.475, y, s * 7.36], [2.35, y, s * 7.36]];
+    // C/G walls are absent across 9–10. Rise in the solid end piers and follow
+    // the wing roof above the opening; never span the opening at wall-band height.
+    return [[REAR, y, s * WALL], [44.175, y, s * WALL],
+      ...roofLine([44.175, 0, s * WALL], [36.975, 0, s * WALL]),
+      [36.975, y, s * WALL], [5.475, y, s * WALL], [2.35, y, s * WALL]];
   }
   function takeTo(path, stopX) {
-    const out = [path[0]];
+    // At an end pier, prefer the wall band, not the roof riser above it.
+    const candidates = [];
     for (let i = 1; i < path.length; i++) {
-      const a = path[i - 1], b = path[i];
-      if (Math.abs(a[0] - b[0]) > 0.01 && stopX <= Math.max(a[0], b[0]) && stopX >= Math.min(a[0], b[0])) {
-        out.push([stopX, b[1], b[2]]); return out;
+      const a = path[i - 1], b = path[i], dx = b[0] - a[0];
+      if (Math.abs(dx) > 1e-8 && stopX >= Math.min(a[0], b[0]) - 1e-8 && stopX <= Math.max(a[0], b[0]) + 1e-8) {
+        const t = (stopX - a[0]) / dx;
+        candidates.push({ i, p: a.map((v, k) => v + (b[k] - v) * t) });
       }
-      out.push(b);
+      if (Math.abs(b[0] - stopX) < 1e-8) candidates.push({ i, p: b });
     }
-    return out;
+    candidates.sort((a, b) => a.p[1] - b.p[1] || a.i - b.i);
+    const hit = candidates[0];
+    return hit ? clean([...path.slice(0, hit.i), hit.p]) : clean(path);
   }
   function pierX(it) {
-    let x = Math.max(2.35, Math.min(53.05, it.pos[0]));
-    // Drop inside a solid pier beside the window/door, never through its void.
-    for (const wall of SIM.GEO.walls.filter(w => w.z && Math.sign(w.z) === Math.sign(it.pos[2] || -1))) {
+    let x = Math.max(2.35, Math.min(REAR, it.pos[0]));
+    for (const wall of SIM.GEO.walls.filter(w => w.z && Math.sign(w.z) === Math.sign(it.pos[2] || -1) && x >= w.x0 && x <= w.x1)) {
       const o = wall.openings.find(o => x > o.x0 - 0.1 && x < o.x1 + 0.1 && it.pos[1] < o.y1 + 0.12);
       if (o) x = Math.abs(x - o.x0) < Math.abs(x - o.x1) ? o.x0 - 0.18 : o.x1 + 0.18;
     }
     return x;
   }
-  // Risers in the sanctuary back wall climb beside the crucifix niche, not across its opening.
+  function chamberFixture(it) {
+    const c = window.CHURCH_SANCTUARY?.spec.chamber, p = it.pos;
+    return c && p[0] >= c.x0 && p[0] <= c.x1 && Math.abs(p[2]) >= 2.8 && Math.abs(p[2]) <= c.outer && it.mount !== 'pendant';
+  }
+  function connectionX(it) { return chamberFixture(it) ? 48.5 : pierX(it); }
   function riserZ(z) {
     const n = window.CHURCH_SANCTUARY?.spec.niche, clear = n ? n.half + n.shell + 0.2 : 0;
     return Math.abs(z) < clear ? -clear : z;
@@ -60,71 +95,172 @@
   function trunkPath(source, s, y, endX) {
     const p = SOURCES[source].pos, rz = riserZ(p[2]);
     if (source === 'DB2') return clean([p, [2.35, p[1], p[2]], [2.35, 7.65, p[2]],
-      [2.35, 7.65, s * 7.36], [2.35, y, s * 7.36], ...takeTo(perimeter(s, y).reverse(), endX)]);
-    return clean([p, [48.735, p[1], p[2]], [48.735, p[1], rz], [48.735, 4.02, rz], [48.735, 4.02, -3.6], [53.05, 4.02, -3.6],
-      [53.05, y, -3.6], ...takeTo([[53.05, y, -3.6], ...perimeter(s, y)], endX)]);
+      [2.35, 7.65, s * WALL], [2.35, y, s * WALL], ...takeTo(perimeter(s, y).reverse(), endX)]);
+    // Ceiling top is +4.27. The old +4.02 route cut through the edge beam.
+    return clean([p, [48.735, p[1], p[2]], [48.735, p[1], rz], [48.735, 4.33, rz],
+      [48.735, 4.33, -3.3], [REAR, 4.33, -3.3], [REAR, y, -3.3],
+      ...takeTo([[REAR, y, -3.3], ...perimeter(s, y)], endX)]);
   }
   function servicePanelRoute(it) {
     const p = SOURCES.LC1.pos, q = it.pos, rz = riserZ(p[2]);
-    return clean([p, [48.735, p[1], p[2]], [48.735, p[1], rz], [48.735, 4.02, rz], [q[0], 4.02, rz], [q[0], 4.02, q[2]], q]);
+    return clean([p, [48.735, p[1], p[2]], [48.735, p[1], rz], [48.735, 4.33, rz], [q[0], 4.33, rz], [q[0], 4.33, q[2]], q]);
+  }
+  function buriedY(points) {
+    let y = Infinity;
+    for (let i = 1; i < points.length; i++) {
+      const a = points[i - 1], b = points[i], n = Math.max(1, Math.ceil(Math.hypot(b[0]-a[0], b[2]-a[2]) / 0.1));
+      for (let j = 0; j <= n; j++) y = Math.min(y, SIM.floorY(a[0]+(b[0]-a[0])*j/n, a[2]+(b[2]-a[2])*j/n) - 0.12);
+    }
+    return y;
+  }
+  const proposal = (points, method, installation, coverPaths = []) => ({ points: clean(points), method, installation, coverPaths });
+  const cover = (points, finish = 'timber') => ({ points: clean(points), finish, status: 'CONCEPT · removable finish-matched raceway; section, fixings and access pending' });
+  function roofConnection(start, p) {
+    return clean([start, ...roofLine(start, [p[0], 0, start[2]]), ...roofLine([p[0], 0, start[2]], p)]);
   }
   function branchPath(it, start) {
-    const p = it.pos.slice(), s = Math.sign(p[2] || -1), x = start[0], y = start[1], z = start[2];
-    const wing = Math.abs(z) > 12;
-    if (it.mount !== 'pendant' && p[0] >= 5.475 && p[0] <= 53.05 && Math.abs(p[2]) < 7.2 && p[1] > 7.1) {
-      if (p[0] < 5.8 || p[0] > 52.8) {
-        const gx = p[0] < 5.8 ? 5.475 : 53.05;
-        return clean([start, [gx, y, z], [gx, y, p[2]], [gx, p[1], p[2]], p]);
+    const p = it.pos.slice(), s = Math.sign(p[2] || -1), [x, y, z] = start;
+    const t = CAT.byId[it.type];
+    if (t.mic) {
+      const a=window.CHURCH_SANCTUARY?.spec.amboService;
+      // Keep the complete 6 mm cable inside the 28 mm modeled service bore.
+      if(a && Math.hypot(p[0]-a.socket[0],p[2]-a.socket[2])<.01 && Math.abs(p[1]-a.socket[1])<.001) {
+        const deskY=a.deskY+Math.tan(a.deskSlope)*(p[0]-a.x);
+        const furniturePoints=[[a.x,y,a.z],[a.x,a.deskY,a.z],[p[0],deskY,a.z],[p[0],deskY,p[2]],p];
+        return {...proposal([start,[p[0],y,a.z],...furniturePoints],'underfloor-microphone',
+          'Separate AV-1 home run below floor; central ambo passage through proposed hollow neck, sloped desk and removable microphone socket. Floorbox, furniture bore and access pending.'),
+          furnitureConnection:'ambo',furniturePoints:clean(furniturePoints)};
       }
-      const uplight = it.type === 'uplight';
-      return branchPath({ ...it, mount: 'pendant', anchorY: uplight ? 8.59 : SIM.liningY(p[2]) - 0.1 }, start);
+      return proposal([start, [p[0], y, p[2]], p], 'underfloor-microphone',
+        'Separate AV-1 home run below the floor; proposed furniture cable passage to microphone base. Floorbox, floor build-up and furniture access pending.');
+    }
+    if (it.mount === 'floor' && p[1] - SIM.floorY(p[0], p[2]) < 2.1) {
+      const fy = buriedY([start, [p[0], 0, z], p]);
+      return proposal([start, [x, fy, z], [p[0], fy, z], [p[0], fy, p[2]], p], 'underfloor-local',
+        'Solid-pier descent, proposed underfloor containment and local equipment lead; floor construction / outlet details pending.');
+    }
+    if (chamberFixture(it)) {
+      const c = window.CHURCH_SANCTUARY.spec.chamber, cz = s * (c.face + c.outer) / 2;
+      return proposal([start, [48.5, y, cz], [p[0], y, cz], [p[0], p[1], cz], p], 'chamber-lining',
+        'Back-wall band to service space behind chamber lining; local termination behind the fitting / cornice. Removable lining and cable-entry detail pending.');
+    }
+    const main = SIM.GEO.mainBeams.find(b => Math.abs(p[0]-b.x)<0.19 && Math.abs(p[2]) <= b.zHalf &&
+      (Math.abs((it.anchorY ?? p[1])-b.y0)<0.08 || it.type === 'uplight' && Math.abs(p[1]-b.y1)<0.08));
+    const side = SIM.GEO.sideBeams.find(b => Math.abs(p[0]-b.x)<0.15 && Math.sign(p[2])===b.side && Math.abs(p[2]) >= b.zIn && Math.abs(p[2]) <= b.zOut && Math.abs((it.anchorY ?? p[1])-b.y0)<0.08);
+    if (main || side) {
+      const b = main || side, sx = b.x, upper = b.y1 + 0.055;
+      let points, cp = [];
+      if (main) {
+        // Approach above the roof lining, behind both rafter proxies. A short
+        // removable joint return reaches the tie top around the junction block.
+        // This avoids the exposed side-beam/capital riser and all timber cores.
+        // The schematic rafter/tie gap is not an approved chase or bearing detail.
+        const rx=sx+0.345, roof=roofLine([rx,0,s*WALL],[rx,0,s*4.05]);
+        const joint=[roof.at(-1),[rx,upper,s*4.05],[rx,upper,s*3.0],[sx,upper,s*3.0]];
+        points=[start,[rx,y,s*WALL],...roof,...joint,[p[0],upper,p[2]]];
+        cp.push(cover(joint));
+      } else points=[start,[sx,y,s*WALL],[sx,7.055,s*WALL],[p[0],upper,p[2]]];
+      if (p[1] >= b.y1 - 0.01) points.push(p);
+      else {
+        const besideCapital = main && Math.abs(Math.abs(p[2])-3.6)<0.48;
+        const rear = sx + (besideCapital ? 0.52 : b.w / 2 + 0.055), under = b.y0 - (besideCapital ? 0.11 : 0.05);
+        // The existing ambo-light canopy contacts the abacus. Connect to the
+        // actual lamp-body envelope below it instead of drawing a cable through
+        // that solid capital. Keep the optical position/aim and the mounting hold.
+        const head = besideCapital && SIM.fixtures.get(it.id)?.head;
+        let end = p;
+        if (head) { head.updateWorldMatrix(true,false); end = new T.Vector3(-0.08,0,0).applyMatrix4(head.matrixWorld).toArray(); }
+        const tail = [[p[0],upper,p[2]],[rear,upper,p[2]],[rear,under,p[2]],[end[0],under,p[2]],[end[0],under,end[2]],end];
+        points.push(...tail); cp.push(cover(tail));
+        if (head) return { ...proposal(points,'above-main-beam',
+          'Above beam and covered rear-face return to lamp-body cable entry. Existing canopy/capital contact remains on mounting coordination hold; optical position unchanged.',cp),
+          termination: {position:end,basis:'Proposed lamp-body entry within catalogue head envelope; selected-product connector pending'}, reviewRequired:true };
+      }
+      return proposal(points, main ? 'above-main-beam' : 'above-side-beam',
+        'Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.', cp);
     }
     if (it.mount === 'pendant') {
-      const ay = it.anchorY ?? p[1], az = Math.abs(p[2]);
-      if (!wing && az < 7.2 && Math.abs(ay - 8.59) < 0.08) {
-        // Side beam → column riser → main tie → pendant cable.
-        return clean([start, [x, 6.83, z], [x, 6.83, s * 3.6], [x, ay, s * 3.6], [p[0], ay, s * 3.6], [p[0], ay, p[2]], p]);
-      }
-      if (!wing && az < 7.2 && ay > 7.1) {
-        // Follow the actual pitched lining; a horizontal ridge-height route
-        // across to the eave would leave the roof envelope.
-        return clean([start, [x, 7.02, z], [x, SIM.liningY(7.05) - 0.1, s * 7.05],
-          [p[0], SIM.liningY(7.05) - 0.1, s * 7.05], [p[0], SIM.liningY(p[2]) - 0.1, p[2]], [p[0], ay, p[2]], p]);
-      }
-      return clean([start, [x, Math.min(ay, y), z], [p[0], Math.min(ay, y), z], [p[0], Math.min(ay, y), p[2]], [p[0], ay, p[2]], p]);
+      const path = roofConnection(start, p), top = path.at(-1), entry = Math.min(it.anchorY ?? top[1], top[1]);
+      return proposal([...path, [p[0],entry,p[2]], p], 'roof-pendant',
+        'Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.',
+        Math.abs(p[2]) > WALL || Math.abs(p[0]-40.575)<3.88 ? [cover(path, 'soffit')] : []);
     }
-    if (it.mount === 'floor' && p[1] < 1.6) {
-      const fy = SIM.floorY(p[0], p[2]) - 0.12;
-      return clean([start, [x, fy, z], [p[0], fy, z], [p[0], fy, p[2]], p]);
-    }
-    // Façade and tower devices return to the entrance wall, clear of doors.
+    // Façade and tower routes stay on their existing wall/ledge system.
     if (p[0] < 5.475) {
       if (Math.abs(p[2]) > 7.4) {
-        // Stage ledge / pilaster route. The tower footprint steps in above
-        // +8.39 m and +15.84 m; each higher riser returns along its ledge.
-        const tz = s * 10.153;
-        const out = [start, [2.35, 7.65, z], [2.35, 7.65, tz], [0.05, 7.65, tz]];
-        for (const [h, tx] of [[8.39, 0.05], [15.84, 0.09], [23.14, 0.19]]) if (p[1] > h) {
-          const last = out[out.length - 1]; out.push([last[0], h, tz], [tx, h, tz]);
+        const tz=10.153, corner=Math.abs(p[2])>=tz ? 1 : -1;
+        // Stage widths and front faces from the actual tower shell. The old
+        // centreline riser passed through every arched/louvered opening.
+        const stages=[[0,0,4.90,4.90],[8.39,0.09,4.65,4.72],[15.84,0.19,4.45,4.52],[23.14,0.475,3.90,3.95]];
+        const lane=d=>s*(tz+corner*(d/2-0.24));
+        const out=[start,[2.35,7.65,z],[2.35,7.65,s*(tz-2.45)],[0,7.65,s*(tz-2.45)],[0,7.65,lane(4.90)]];
+        let stage=stages[0];
+        for(const next of stages.slice(1)) if(p[1]>=next[0]) {
+          const h=next[0]+0.01,last=out.at(-1);
+          out.push([last[0],h,last[2]],[next[1],h,last[2]],[next[1],h,lane(next[2])]); stage=next;
         }
-        const last = out[out.length - 1];
-        return clean([...out, [last[0], p[1], tz], [p[0], p[1], tz], p]);
+        const [base,tx,width]=stage, pz=s*(tz+Math.sign(Math.abs(p[2])-tz || corner)*width/2);
+        let cornice=false;
+        if(p[0]>0.7 && Math.abs(Math.abs(p[2])-tz)<1) {
+          // Belfry glow: local lead beneath the floor/ledge, not across open air.
+          const fy=base-0.06,last=out.at(-1);
+          out.push([last[0],fy,last[2]],[p[0],fy,last[2]],[p[0],fy,p[2]],p);
+          cornice=true;
+        } else if(p[1]>29.09) {
+          // The dome is narrower than the tower wall. Traverse behind the top
+          // cornice finish, not across the exposed front of the cap at lamp height.
+          const fy=29.03;
+          out.push([tx,fy,lane(width)],[tx,fy,p[2]],[p[0],fy,p[2]],p);
+          cornice=true;
+        } else if(p[0]>0.7) {
+          // Turn through the solid corner into the side wall, then its local base.
+          out.push([tx,p[1],lane(width)],[tx,p[1],pz],[p[0],p[1],pz],p);
+        } else out.push([tx,p[1],lane(width)],[tx,p[1],p[2]],p);
+        return {...proposal(out,cornice?'tower-cornice':'tower-wall',cornice
+          ? 'Tower pier to proposed service space behind removable cornice finish, then local fitting lead. Cornice cavity, access, weathering and cable-entry details remain unresolved.'
+          : 'Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.'),reviewRequired:cornice};
       }
-      const door = SIM.GEO.walls.find(w => w.x)?.openings.find(o => p[2] > o.z0 && p[2] < o.z1 && p[1] < o.y1);
-      const dz = door ? (p[2] < 0 ? door.z0 - 0.18 : door.z1 + 0.18) : p[2];
-      return clean([start, [2.35, 7.65, z], [2.35, 7.65, dz], [2.35, p[1], dz], [2.35, p[1], p[2]], p]);
+      const door = SIM.GEO.walls.find(w => w.x)?.openings.find(o => p[2]>o.z0 && p[2]<o.z1 && p[1]<o.y1);
+      const dz = door ? (p[2]<0 ? door.z0-0.18 : door.z1+0.18) : p[2];
+      return proposal([start,[2.35,7.65,z],[2.35,7.65,dz],[2.35,p[1],dz],[2.35,p[1],p[2]],p], 'entrance-wall', 'Concealed entrance wall band, solid pier and local termination.');
     }
-    return clean([start, [x, p[1], z], [p[0], p[1], z], p]);
+    if (p[0] > 52.7) return proposal([start,[REAR,y,z],[REAR,y,p[2]],[REAR,p[1],p[2]],p], 'rear-wall', 'Rear-wall band and local termination; gable / weatherproof entry details pending.');
+    if (p[0] < 5.8 && p[1] > 8.39) {
+      const path=roofConnection(start,[5.32,0,p[2]]);
+      return proposal([...path,[5.32,p[1],p[2]],p], 'entrance-gable', 'Above roof lining to solid front gable above terrace; local fan connection.');
+    }
+    if (it.mount === 'floor' && p[1] > 5.9) {
+      const path=roofConnection(start,p);
+      return proposal([...path,p], 'roof-local', 'Concealed roof route to local roof-mounted fitting; weatherproof cable entry pending.',
+        Math.abs(p[2])>WALL || Math.abs(p[0]-40.575)<3.88 ? [cover(path,'soffit')] : []);
+    }
+    if (Math.abs(p[2]) > 7.6) {
+      const wz = Math.abs(p[0]-40.575)<3.6 ? WING : ARCADE;
+      const q=[p[0],0,s*wz], path=roofConnection(start,q);
+      return proposal([...path,[p[0],p[1],s*wz],p], 'outer-wall',
+        'Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.', [cover(path,'soffit')]);
+    }
+    if (p[1] > 7.1) {
+      const path=roofConnection(start,p);
+      return proposal([...path,p], 'roof-local', 'Above lining to a local roof fitting; roof entry / weatherproof termination pending.');
+    }
+    if (Math.abs(p[2]) >= 7.0) return proposal([start,[x,p[1],z],[p[0],p[1],z],p], 'side-wall', 'Concealed solid-pier / wall drop and local termination.');
+    // Arbitrary imported wall locations must never get an unlabelled long
+    // horizontal cable across the room. Retain the edit and identify the hold.
+    const fy=buriedY([start,[p[0],0,z],p]);
+    return { ...proposal([start,[x,fy,z],[p[0],fy,z],[p[0],fy,p[2]],p], 'review-local',
+      'Proposed underfloor return; this location needs a concealed local riser / connection design.'), reviewRequired: true };
   }
   function makeRoutes() {
     const result = [], groups = new Map();
     function add(o, points) {
       const p = clean(points);
-      result.push({ ...o, points: p, length: length(p), specification: 'Cable type / conductors / cross-section / conduit: pending electrical design' });
+      result.push({ ...o, points: p, length: length(p), specification: 'Cable type / conductors / cross-section / conduit: pending electrical design',
+        coordinationStatus: o.reviewRequired ? 'REVIEW REQUIRED · local concealment unresolved' : 'CONCEPT · concealed routing / installation details pending' });
     }
     const b1 = SOURCES.DB1.pos, b2 = SOURCES.DB2.pos;
     const feeder = trunkPath('DB1', -1, 6.26, 2.35);
-    add({ id: 'feeder:DB2', name: 'DB-1 → DB-2 feeder', source: 'DB1', board: 'DB2', circuit: 'DB2-FEED', kind: 'feeder', role: 'feeder', itemIds: [], color: COLORS.feeder, installation: 'Wall bands, wing perimeter containment, entrance wall riser' },
+    add({ id: 'feeder:DB2', name: 'DB-1 → DB-2 feeder', source: 'DB1', board: 'DB2', circuit: 'DB2-FEED', kind: 'feeder', role: 'feeder', itemIds: [], color: COLORS.feeder, installation: 'Wall bands, covered wing-roof crossing, entrance wall riser' },
       [...feeder, [2.35, 7.65, -7.36], [2.35, 7.65, b2[2]], [2.35, b2[1], b2[2]], b2]);
     for (const id of ['AV1', 'LC1', 'FC1']) {
       const p = SOURCES[id].pos;
@@ -134,7 +270,7 @@
     for (const it of SIM.state.items.filter(i => !i.hidden && wired(i))) {
       const t = CAT.byId[it.type], audio = !!(t.speaker || t.mic);
       if (it.type === 'servicePanel') {
-        add({ id: `local:${it.id}`, name: `L3 → ${it.name}`, source: 'LC1', board: 'DB1', circuit: 'L3', kind: 'light', role: 'local', itemIds: [it.id], color: COLORS.light, installation: 'Local service-room wall riser and ceiling conduit' }, servicePanelRoute(it));
+        add({ id: `local:${it.id}`, name: `L3 → ${it.name}`, source: 'LC1', board: 'DB1', circuit: 'L3', kind: 'light', role: 'local', itemIds: [it.id], color: COLORS.light, method: 'service-ceiling', installation: 'Wall riser beside niche; containment above ceiling top +4.27 m; panel cable entry pending structural coordination.' }, servicePanelRoute(it));
         continue;
       }
       const source = audio ? 'AV1' : SIM.CIRCUITS[it.circuit]?.board === 'DB2' ? 'DB2' : t.fan ? 'FC1' : t.light ? 'LC1' : 'DB1';
@@ -149,25 +285,44 @@
     }
     for (const [key, g] of groups) {
       const y = height(g.circuit, g.audio), board = SOURCES[g.source].board;
-      const xs = g.items.map(i => pierX(i));
+      const xs = g.items.map(connectionX);
       const endX = g.source === 'DB2' ? Math.max(...xs) : Math.min(...xs);
-      const trunk = trunkPath(g.source, g.s, y, endX);
+      const mic = g.kind === 'mic', rack = SOURCES.AV1.pos, mz = g.s * 1.4;
+      const my = mic ? Math.min(...g.items.map(it => buriedY([rack, [rack[0],0,mz], [it.pos[0],0,mz], it.pos]))) : 0;
+      const micPath = x => clean([rack, [rack[0],my,rack[2]], [rack[0],my,mz], [x,my,mz]]);
+      // A microphone group can contain edited items on either side of the rack.
+      const mx = mic ? g.items.map(it => it.pos[0]) : [];
+      const trunk = mic ? clean([...micPath(Math.min(...mx)), ...(Math.max(...mx)>rack[0] ? [[Math.max(...mx),my,mz]] : [])]) : trunkPath(g.source, g.s, y, endX);
       const trunkId = `trunk:${key}`;
       add({ id: trunkId, name: `${g.circuit} · ${g.s < 0 ? 'B' : 'H'} · ${g.audio ? 'audio home-run bundle' : 'circuit trunk'}`, source: g.source, board, circuit: g.circuit,
-        kind: g.kind, role: 'trunk', itemIds: g.items.map(i => i.id), color: COLORS[g.kind], installation: 'Concealed wall band above openings; ceiling containment at wing returns' }, trunk);
+        kind: g.kind, role: 'trunk', itemIds: g.items.map(i => i.id), color: COLORS[g.kind], method: mic ? 'underfloor-microphone' : 'wall-roof-trunk',
+        installation: mic ? 'Separate microphone home-run bundle below service-room and sanctuary floors; floor build-up / access pending.' : 'Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.' }, trunk);
       for (const it of g.items) {
-        const connection = trunkPath(g.source, g.s, y, pierX(it)), start = connection[connection.length - 1];
-        const points = branchPath(it, start);
+        const connection = mic ? micPath(it.pos[0]) : trunkPath(g.source, g.s, y, connectionX(it)), start = connection[connection.length - 1];
+        const branch = branchPath(it, start);
         add({ id: `drop:${key}:${it.id}`, name: `${g.circuit} → ${it.name}`, source: g.source, board, circuit: g.circuit, kind: g.kind,
           role: 'drop', itemIds: [it.id], trunkId, color: COLORS[g.kind], upstreamLength: length(connection), homeRun: g.audio,
-          installation: it.mount === 'pendant' ? 'Wall / beam or roof containment, then pendant connection' : it.mount === 'floor' && it.pos[1] < 1.6 ? 'Pier drop, proposed underfloor conduit, local flexible connection' : 'Concealed pier / wall drop, local termination' }, points);
+          ...branch }, branch.points);
       }
+    }
+    // The open wing and unlined roofs need a real cover proposal, not a line
+    // hidden by a UI switch. In Systems-only these covers are removed so the
+    // same route vertices remain inspectable. They are not structural members.
+    for (const r of result) {
+      r.coverPaths ||= [];
+      if (r.role === 'trunk' || r.id === 'feeder:DB2') for (let i=1;i<r.points.length;i++) {
+        const a=r.points[i-1], b=r.points[i];
+        if (Math.abs(a[2])===WALL && Math.abs(b[2])===WALL && a[0]>=36.975 && a[0]<=44.175 && b[0]>=36.975 && b[0]<=44.175 && a[1]>6.8 && b[1]>6.8)
+          r.coverPaths.push(cover([a,b],'soffit'));
+      }
+      r.coverPaths = r.coverPaths.filter(c => c.points.length > 1 && length(c.points) > 1e-7);
     }
     return result;
   }
 
-  // One merged mesh per run, retaining an independent selection ID. Drawn
-  // diameter (48 mm) is exaggerated for readability, not a conduit schedule.
+  // One merged mesh per run, retaining its selection ID. Building-view cables
+  // fit within fixture stems; isolation exaggerates them for inspection. Both
+  // thicknesses are display conventions, never a conductor/conduit schedule.
   function pipeGeometry(points, radius = 0.024) {
     const positions = [], indices = [], sides = 6;
     for (let i = 1; i < points.length; i++) {
@@ -189,7 +344,7 @@
     const keep = new Set();
     for (const route of routes) {
       keep.add(route.id);
-      const radius = route.role === 'feeder' ? 0.032 : 0.024;
+      const radius = view.mode === 'systems' ? (route.role === 'feeder' ? 0.032 : 0.024) : 0.003;
       const shape = JSON.stringify([radius, route.points]);
       let mesh = objects.get(route.id);
       if (!mesh) {
@@ -199,10 +354,30 @@
         mesh.geometry.dispose(); mesh.geometry = pipeGeometry(route.points, radius);
       }
       mesh.name = 'Electrical · ' + route.name;
-      mesh.userData.routeShape = shape; mesh.material.color.set(route.color);
+      mesh.userData.routeShape = shape; mesh.material.color.set(view.mode === 'systems' ? route.color : '#343431');
     }
     for (const [id, mesh] of objects) if (!keep.has(id)) {
       mesh.removeFromParent(); mesh.geometry.dispose(); mesh.material.dispose(); objects.delete(id);
+    }
+    const covered = new Set();
+    for (const mesh of covers.values()) mesh.userData.routeIds = [];
+    for (const r of routes) for (const c of r.coverPaths) {
+      const key = JSON.stringify([c.finish,c.points]); covered.add(key);
+      let mesh = covers.get(key);
+      if (!mesh) {
+        const material = c.finish === 'timber' ? window.CHURCH_SANCTUARY.materials.wood : soffitMaterial;
+        const geometry=pipeGeometry(c.points,0.026); geometry.computeVertexNormals();
+        mesh = new T.Mesh(geometry,material);
+        mesh.name = 'Proposed removable cable cover · '+c.finish;
+        mesh.userData = { routeCover: true, finish: c.finish, status: c.status, engineeringApproved: false, routeIds: [] };
+        covers.set(key,mesh); layer.add(mesh);
+      }
+      // Routes can share a single cover (twin lights, bundled circuits).
+      if (!mesh.userData.routeIds.includes(r.id)) mesh.userData.routeIds.push(r.id);
+    }
+    for (const [key, mesh] of covers) if (!covered.has(key)) {
+      mesh.removeFromParent(); mesh.geometry.dispose();
+      covers.delete(key);
     }
     if (view.selected && !routes.some(r => r.id === view.selected) && !SOURCES[view.selected]) view.selected = null;
     for (const fx of SIM.fixtures.values()) fx.root.visible = SIM.fixtureVisible(fx.item) && (view.mode !== 'systems' || wired(fx.item));
@@ -210,6 +385,7 @@
   }
   function init() {
     T = SIM.THREE; scene = SIM.church.scene;
+    soffitMaterial = new T.MeshStandardMaterial({color:'#803c29',roughness:0.85});
     layer = new T.Group(); layer.name = 'Electrical systems · independent selectable routes'; scene.add(layer);
     for (const [id, b] of Object.entries(SOURCES)) {
       const group = new T.Group(); group.name = 'Electrical · ' + b.label; group.userData.electricalId = id;
@@ -246,6 +422,24 @@
     if (!layer) return;
     layer.visible = view.visible;
     for (const r of routes) objects.get(r.id).visible = matches(r);
+    const matched = new Set(routes.filter(matches).map(r=>r.id)), matrix = new T.Matrix4();
+    for (const mesh of covers.values()) mesh.visible = false;
+    // Retain source covers for metadata and reuse, draw only two finish batches.
+    // Switching/dimming equipment does not allocate new cover geometry.
+    for (const finish of ['timber','soffit']) {
+      const source=[...covers.values()].filter(m=>m.userData.finish===finish && m.userData.routeIds.some(id=>matched.has(id)));
+      const shape=source.map(m=>m.geometry.id).join(','), current=coverBatches.get(finish);
+      let batch=current;
+      if (!batch) {
+        batch=new T.Mesh(new T.BufferGeometry(),finish==='timber' ? window.CHURCH_SANCTUARY.materials.wood : soffitMaterial);
+        batch.name='Cable-cover display batch · '+finish; layer.add(batch); coverBatches.set(finish,batch);
+      }
+      if(batch.userData.shape!==shape) {
+        batch.geometry.dispose(); batch.geometry=window.CHURCH_BATCHES.merge(T,source.map(m=>({geo:m.geometry,matrix})));
+        batch.userData.shape=shape;
+      }
+      batch.visible=view.mode==='building' && source.length>0;
+    }
     for (const [id, o] of enclosures) o.visible = view.board === 'all' || SOURCES[id].board === view.board;
     if (highlight) highlight.visible = view.visible && (SOURCES[view.selected] ? enclosures.get(view.selected).visible : !!routes.find(r => r.id === view.selected && matches(r)));
   }
@@ -272,7 +466,7 @@
     const checkbox = document.getElementById('electricalOnlyToggle'); if (checkbox) checkbox.checked = mode === 'systems';
     SIM.church.renderer.shadowMap.needsUpdate = true;
     window.CHURCH_PERFORMANCE?.invalidate();
-    applyVisibility(); SIM.emit('electrical');
+    rebuild();
   }
   function updateHighlight() {
     if (highlight) { highlight.removeFromParent(); highlight.geometry.dispose(); highlight.material.dispose(); highlight = null; }
@@ -330,8 +524,8 @@
   }
   function exportData() {
     return { schema: 1, units: 'metres', status: 'Proposed routing study, not installation documentation',
-      sources: SOURCES, routes: routes.map(r => ({ ...r, drawnDiameter: r.role === 'feeder' ? 0.064 : 0.048, drawnDiameterBasis: 'Exaggerated visual thickness; not specified cable size' })),
-      components: schedule('all'), billOfMaterials: billOfMaterials('all'), unresolved: ['Cable type and conductor sizes', 'Conduit sizing and installation method', 'Supply and phase allocation', 'Earthing / bonding and protective devices', 'Amplifier topology and speaker impedance / line voltage', 'Manufacturer product dimensions and enclosure capacities', 'Permanent routing and outlets for movable equipment'] };
+      routingRevision: '2026-10-07-concealed-1', sources: SOURCES, routes: routes.map(r => ({ ...r, drawnDiameter: r.role === 'feeder' ? 0.064 : 0.048, buildingDrawnDiameter: 0.006, drawnDiameterBasis: 'Systems-only exaggeration / building display convention; neither is a specified cable size' })),
+      components: schedule('all'), billOfMaterials: billOfMaterials('all'), unresolved: ['Cable type and conductor sizes', 'Conduit sizing and installation method', 'Supply and phase allocation', 'Earthing / bonding and protective devices', 'Amplifier topology and speaker impedance / line voltage', 'Manufacturer product dimensions and enclosure capacities', 'Permanent routing and outlets for movable equipment', 'Removable beam/soffit covers: finish, fixings, access and separation', 'Sanctuary lining service space and microphone furniture/floorbox details', 'Ambo key-light canopy contact with capital: mounting coordination hold'] };
   }
   function csv() {
     const rows = [['Board', 'Circuit', 'ID', 'Component', 'Product category', 'Quantity', 'Model envelope X mm', 'Model envelope Y mm', 'Model envelope Z mm', 'Fan diameter mm', 'Load estimate W', 'Category specifications', 'Status']];
@@ -353,12 +547,12 @@
   function renderPanel() {
     const count = schedule().filter(c => !c.hiddenAlternative).length;
     const sel = routes.find(r => r.id === view.selected), board = SOURCES[view.selected];
-    let html = `<div class="sim-card"><h3>Electrical systems</h3><p class="sim-hint">${count} connected components · ${routes.filter(matches).length} selectable runs. Power and audio use separate routes. Wire colours identify systems, not conductor colours.</p>
+    let html = `<div class="sim-card"><h3>Electrical systems</h3><p class="sim-hint">${count} connected components · ${routes.filter(matches).length} selectable runs. Building view shows concealed feeds and finished cable covers. Systems only reveals enlarged, colour-coded routes for inspection.</p>
       <div class="electrical-actions"><button data-act="electrical-mode" data-mode="systems" class="${view.mode === 'systems' ? 'sim-primary' : ''}">Systems only</button><button data-act="electrical-mode" data-mode="building">Restore building</button><button data-act="electrical-visible">${view.visible ? 'Hide' : 'Show'} wiring</button></div>
       <div class="electrical-actions">${Object.entries(SOURCES).map(([id, b]) => `<button data-act="electrical-select" data-electrical-id="${id}">${id}</button>`).join('')}</div>
       <div class="electrical-actions">${['all', 'DB1', 'DB2'].map(b => `<button data-act="electrical-filter" data-board="${b}" aria-pressed="${b === view.board}">${b === 'all' ? 'All boards' : b}</button>`).join('')}</div>
       <div class="electrical-actions">${[['all', 'All cabling'], ['power', 'Power'], ['audio', 'Audio / mic']].map(([k, l]) => `<button data-act="electrical-kind" data-kind="${k}" aria-pressed="${k === view.kind}">${l}</button>`).join('')}</div>
-      <p class="sim-hint">Concealed wall bands stay above doors and windows; drops use piers. Roof, beam and underfloor connections are proposed containment routes. Cable sizes, protective devices and installation details need engineering confirmation.</p></div>`;
+      <p class="sim-hint">Feeds follow wall bands, beam tops and covered roof paths. Microphones return under the floor through their furniture. A selected green route shows through the building so you can inspect its path. Covers, service spaces and connections are proposals awaiting installation design.</p></div>`;
     if (sel) html += `<div class="sim-card"><h3>${esc(sel.name)}</h3><dl class="electrical-details"><dt>Run ID</dt><dd>${esc(sel.id)}</dd><dt>Source</dt><dd>${esc(SOURCES[sel.source].label)}</dd><dt>Circuit / role</dt><dd>${sel.circuit} · ${sel.role}</dd><dt>Drawn length</dt><dd>${sel.length.toFixed(2)} m${sel.homeRun ? ` · full home run ${(sel.length + sel.upstreamLength).toFixed(2)} m` : ''}</dd><dt>Height range</dt><dd>${Math.min(...sel.points.map(p => p[1])).toFixed(2)}–${Math.max(...sel.points.map(p => p[1])).toFixed(2)} m</dd><dt>Installation</dt><dd>${esc(sel.installation)}</dd><dt>Specification</dt><dd>${esc(sel.specification)}</dd></dl><div class="electrical-actions"><button data-act="electrical-focus">Show route</button>${sel.itemIds.length === 1 ? `<button data-act="electrical-component" data-id="${esc(sel.itemIds[0])}">Edit component</button>` : ''}</div></div>`;
     if (board) html += `<div class="sim-card"><h3>${esc(board.label)}</h3><p>${esc(board.where)}</p><p class="sim-hint">Proposed enclosure envelope: ${board.size.map(n => Math.round(n * 1000)).join(' × ')} mm (world X / height / Z). Capacity, product dimensions and internal equipment are pending.</p><button data-act="electrical-focus">Show board</button></div>`;
     html += `<div class="sim-card"><h3>Flat route plan</h3>${flatPlan()}<p class="sim-hint">Click a route or component in the plan. Vertical runs overlap in this top view; use the run list to select each individually.</p></div>`;

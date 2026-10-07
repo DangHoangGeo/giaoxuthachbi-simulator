@@ -6,13 +6,13 @@ Generated 7 October 2026 from the category registers and their matched model sna
 
 | Usage category | Equipment/enclosures | Shown | Hidden alternatives | Connected components | Shown items commanded on | Routes | Route points |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Lighting | 220 | 220 | 0 | 220 | 194 | 241 | 1344 |
-| Sound | 32 | 32 | 0 | 32 | 22 | 42 | 256 |
-| Fans and ventilation | 35 | 29 | 6 | 29 | 27 | 35 | 224 |
-| Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 44 |
+| Lighting | 220 | 220 | 0 | 220 | 194 | 241 | 2050 |
+| Sound | 32 | 32 | 0 | 32 | 22 | 42 | 302 |
+| Fans and ventilation | 35 | 29 | 6 | 29 | 27 | 35 | 234 |
+| Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 54 |
 | Decoration and furnishings | 30 | 15 | 15 | 0 | 15 | 0 | 0 |
-| Distribution and controls | 5 | 5 | 0 | 0 | 0 | 4 | 36 |
-| **Total** | 327 | 306 | 21 | 286 | 263 | 329 | 1904 |
+| Distribution and controls | 5 | 5 | 0 | 0 | 0 | 4 | 41 |
+| **Total** | 327 | 306 | 21 | 286 | 263 | 329 | 2681 |
 
 Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **0 equipment, 0 routes**.
 
@@ -36,13 +36,13 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 2,909.862 | 2,909.862 | 0.000 | 0.000 |
-| Sound | 912.093 | 0.000 | 2,190.073 | 702.416 |
-| Fans and ventilation | 594.615 | 594.615 | 0.000 | 0.000 |
-| Exit signs | 166.944 | 166.944 | 0.000 | 0.000 |
+| Lighting | 2,937.717 | 2,937.717 | 0.000 | 0.000 |
+| Sound | 764.858 | 0.000 | 1,891.275 | 583.921 |
+| Fans and ventilation | 591.868 | 591.868 | 0.000 | 0.000 |
+| Exit signs | 147.736 | 147.736 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
-| Distribution and controls | 100.995 | 100.995 | 0.000 | 0.000 |
-| **Total by length basis** | **4,684.509** | **3,772.416** | **2,190.073** | **702.416** |
+| Distribution and controls | 92.443 | 92.443 | 0.000 | 0.000 |
+| **Total by length basis** | **4,534.622** | **3,769.763** | **1,891.275** | **583.921** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/319 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -66,8 +66,8 @@ The engineering review recorded on 7 October 2026 still identifies low ambo/alta
 
 ## Sources and refresh
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 682cddfb34b9ba0867e0152518ab5a1ad129de7bbb8828a58f64d23cf072cc71.
-- [Electrical snapshot](electrical-systems.json), SHA-256: 4139f272a1dd534c1fd927881b22bba0c4b16ce3b4162f405c44d3aab380f491.
+- [Layout snapshot](equipment-layout.json), SHA-256: 43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac.
+- [Electrical snapshot](electrical-systems.json), SHA-256: a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 
