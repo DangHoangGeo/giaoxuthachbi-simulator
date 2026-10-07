@@ -2,13 +2,13 @@
 
 **6 October 2026 · lights, fans, sound and decoration in the shared 3D model**
 
-[Open the simulator](../Thach_Bi_Viewer/OPEN_CHURCH.html) → choose **Simulator** in the header.
+[Open the simulator](../../Thach_Bi_Viewer/OPEN_CHURCH.html) → choose **Simulator** in the header. See the [documentation index](README.md), [methods and limitations](methods-and-limitations.md), and [electrical grid and controls](../electrical-grid/README.md).
 
-The simulator turns the existing 3D model into a working test bench. You can place every light, fan, loudspeaker, microphone and decoration, and switch each one on or off. You can see the results as numbers and colour maps, and you can **hear** the loudspeakers from any seat. It starts with a recommended design that already meets most of the targets in the [interior and systems plan](interior-systems-plan.md), so the parish can judge changes against a good baseline.
+The simulator turns the existing 3D model into a working test bench. You can place every light, fan, loudspeaker, microphone and decoration, and switch each one on or off. You can see the results as numbers and colour maps, and you can **hear** the loudspeakers from any seat. Its recommended design is a comparison baseline for the [interior and systems plan](../interior-systems-plan.md), with unresolved performance targets recorded below.
 
 All values are transparent engineering estimates for comparing options. They are not certified lighting, acoustic, airflow or electrical calculations. Confirm the final choices with the professional tools and site measurements listed at the end.
 
-**Current estimate audit (6 October 2026):** see the [calculation review and verification results](../review/stats-audit-2026-10-06/README.md). Older numerical benchmarks below describe earlier layouts and formulas. The current model samples 380 seats; the audit records the revised results and remaining design shortfalls.
+**Revision context, 7 October 2026:** the [6 October calculation audit](../../review/stats-audit-2026-10-06/README.md) records the earlier 380-seat model. The current sanctuary revision samples 368 seats; see [sanctuary results and limits](../sanctuary-model.md). Earlier tables and revision notes below retain historical results. Read [methods and limitations](methods-and-limitations.md) before using any estimate or claiming a design target has passed.
 
 ---
 
@@ -163,19 +163,7 @@ Press Play and walk or sit. Each loudspeaker reaches you with its real distance 
 
 ## 4. How the numbers are calculated, and their limits
 
-**Light.** Each luminaire is converted from lumens to candela using the same cone shape the 3D renderer uses, so the picture and the numbers agree. Illuminance is inverse-square with the cosine law. The 18 timber shafts, their bases and the inner C/G walls (with their arched openings) block light. Inter-reflected light comes from an integrating-sphere estimate based on the room's surface areas and reflectances, and values are shown *maintained* (× 0.8). Not included: real IES/LDT photometry, pew-back shadows, glare (UGR) and daylight. Use DIALux or Relux with manufacturer files before ordering.
-
-**Room acoustics.** The volume (≈ 7 450 m³, including the entrance hall that opens into the nave) and surface schedule come from the model. Absorption coefficients are typical published values for plaster, stone, timber, glass, open doorways, empty or occupied pews, the roof finishes and slatted acoustic panels. Reverberation is calculated by Eyring per octave with ISO 9613-1 air absorption at 28 °C and 75 % RH. Reflected energy follows Barron's revised theory. Energy a loudspeaker aims straight at the congregation is partly absorbed at first incidence, which favours directional speakers aimed at people. Speakers in the verandas reach the nave through its openings.
-
-**Loudspeakers and STI.** Each speaker has −6 dB coverage angles per octave, a front-to-back ratio, sensitivity, rated power, frequency response, and (for columns) line-array near-field behaviour. The stated source level is normalized to on-axis direct dBA at 1 m, including the frequency response and line-source reference. Columns and walls screen high frequencies. STI approximates IEC 60268-16 (male weighting): an MTF from the energy-time response of every arrival (direct plus exponential reverberant tail, with each arrival's delay), times the signal-to-noise factor, auditory masking and reception threshold. Speech and noise seating averages use acoustic energy, rather than averaging decibels arithmetically. Enclosed reverberation is excluded at courtyard receivers. This is a statistical planning model. Confirm the design in EASE/ODEON/CATT and by STIPA measurement on site.
-
-**Feedback.** Each loudspeaker's direct and reverberant sound returning to a cardioid microphone is compared with the talker 0.4 m away, with a 6 dB stability margin. A headset microphone gains roughly 12–18 dB.
-
-**Air.** Ceiling fans are modelled as a down-jet that spreads with distance, plus a radial floor jet whose momentum depends on fan flow and height. Wall and pedestal fans are tilted jets, time-averaged over their oscillation. The HUD, seat samples and plan share the same seating obstruction allowance; solid walls stop the direct jet. Air is sampled at 0.6 m above the floor and excludes natural wind. The cooling effect is an empirical interpolation for warm, seated conditions, rather than a SET calculation. Fans move air but do not lower its temperature or replace ventilation. Use the CBE fan tool and a full-scale trial.
-
-**Electricity.** Equipment power includes LED output/efficacy with a driver allowance, actual festival bulb count × the assumed 1 W per bulb, fan speed curves and average amplifier allowances. Switched-off or hidden equipment contributes zero operational watts. The All off scene keeps five maintained exit signs on (15 W). Service energy is equipment watts ÷ 1000 × hours, and service cost also multiplies by service count and tariff. Other building loads and use between services are excluded. Actual product ratings and metered data are needed for a complete bill.
-
-**3D picture.** Lights use physical units (candela), with fixed evening exposure by default (110 lux). Every active lamp supplies diffuse illumination and material reflections at every camera distance. Texture-backed sources call the same Three.js physical lighting function as native lights, using their actual lens positions, beam cones, colours and dimmed candela. Each emitter contributes exactly once. Rendering quality changes the native/texture split without dropping reflections, changing screen resolution or moving shadow sources. The two altar shadow slots stay assigned to the same fittings, including when a fitting is switched off; additional lamps use the shared physical shading without extra shadow maps. Warm room bounce follows the surface's position in the nave or wings, rather than the camera's location. Switches, dimmers, fixture edits and scenes update both paths. Saved layouts receive fixed exposure once; automatic eye adaptation remains an optional setting that intentionally changes brightness while moving. Analysis continues to use every source.
+The calculation methods, measurement planes, assumptions and validation boundaries are maintained in [Methods and limitations](methods-and-limitations.md). Use that document with the [calculation audit](../../review/stats-audit-2026-10-06/README.md) and [current sanctuary results](../sanctuary-model.md) when comparing layouts.
 
 ---
 

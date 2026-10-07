@@ -2,9 +2,11 @@
 
 **Working design brief · 5 October 2026, simulator update 6 October 2026 · for parish, architect and engineering review**
 
-[Open the interactive plan](../Thach_Bi_Viewer/planning/index.html) · [Open the 3D simulator](../Thach_Bi_Viewer/OPEN_CHURCH.html) · [Simulator guide and results](simulator-guide.md)
+[Open the interactive plan](../Thach_Bi_Viewer/planning/index.html) · [Open the 3D simulator](../Thach_Bi_Viewer/OPEN_CHURCH.html) · [Simulator guide and results](simulator/guide.md)
 
 ## 1. Decisions and design basis
+
+**Current work priority (7 October 2026):** optimize light, loudspeaker, microphone and fan positions together, coordinate their 2D/3D wiring maps, and develop main/sub-board manual controls and quick modes. See the [electrical grid and control workstream](electrical-grid/README.md) and [control-design brief](electrical-grid/controls.md). Maintain all equipment and electrical routes in the [category Excel registers](electrical-grid/categories/README.md), using the same IDs and positions as the layout and following the [register workflow](electrical-grid/register.md).
 
 The intended result is a church where people can see the liturgy, understand speech, read comfortably, stay comfortable without air conditioning, and operate the building with simple, measurable controls.
 
@@ -33,7 +35,7 @@ Source files: `docs/layout_design/04-top-view.png`, `06-slide-cut-inside-church.
 
 There is a physical reason and a presentation reason. From the outer seats, the line toward the sanctuary crosses a row of structural columns. The repeated 4.50 m bays overlap in perspective. Dark timber finishes and the earlier 68° vertical walking camera (about 100° horizontal on a laptop) made the foreground columns visually prominent. The previous standing camera at 1.65 m also did not represent a seated congregation.
 
-The 6 October scale audit found the main dimensions correct and fixed three presentation problems. The walking camera now uses a natural 75° horizontal lens, walks at 1.4 m/s and stands at 1.60 m. The roof frame now follows section sheet 4: 0.59 m-deep tie beams at +8.59 m, side beams at +6.66 m and purlins about 0.5 m apart. King posts, diagonal braces and knee braces are not on the drawing; they are now an optional, hidden comparison layer. The entrance hall behind the main doors had no roof in the model. It now has the +8.39 m terrace slab shown on the front elevation and a gable wall on axis 2′ above it; both are inferred from the elevations and need CAD confirmation. See the [simulator guide](simulator-guide.md#1-is-the-model-to-scale-why-did-the-interior-feel-cramped).
+The 6 October scale audit found the main dimensions correct and fixed three presentation problems. The walking camera now uses a natural 75° horizontal lens, walks at 1.4 m/s and stands at 1.60 m. The roof frame now follows section sheet 4: 0.59 m-deep tie beams at +8.59 m, side beams at +6.66 m and purlins about 0.5 m apart. King posts, diagonal braces and knee braces are not on the drawing; they are now an optional, hidden comparison layer. The entrance hall behind the main doors had no roof in the model. It now has the +8.39 m terrace slab shown on the front elevation and a gable wall on axis 2′ above it; both are inferred from the elevations and need CAD confirmation. See the [simulator guide](simulator/guide.md#1-is-the-model-to-scale-why-did-the-interior-feel-cramped).
 
 The simulator now offers **2 wide blocks / 4 short-bench blocks** and **seated views near the centre aisle / near the side aisle at 1.15 m eye height**. Switching layouts changes the furniture and its walking collisions, while keeping the source column grid. These camera points are proposed seated eye positions, not an anthropometric standard.
 
@@ -199,7 +201,7 @@ Commission lighting at night and with daylight; test emergency operation separat
   - design checks and a per-circuit energy estimate;
   - spatial listening with real delays, HRTF direction and this room's estimated reverberation.
 
-  It opens with a recommended design that reaches about 262 lux, STI 0.62 (minimum 0.56) and 0.46 m/s at the seats, with no design-check warnings. Results, variants and methods: [simulator guide](simulator-guide.md).
+  The earlier 262 lux / STI 0.62 / 0.46 m/s summary is historical. The 7 October review of the current sanctuary layout samples 368 seats and retains low ambo/altar microphone feedback margins, a wing speech-clarity shortfall and lighting/ventilation limitations. Results, revision context and methods: [simulator documentation](simulator/README.md).
 - **Next model refinements:** adjustable real bench/kneeler geometry, wheelchair spaces, populated sightlines, confirmed column sections, IES/LDT photometry import, and equipment models replaced by the selected products.
 - **Engineering work still required:** the simulator's lighting, acoustic and airflow figures are planning estimates. Certified photometric calculations, acoustic prediction and commissioning, ventilation/thermal analysis, structural review and electrical design are still required. There are no live meter connections or real device commands in this simulator.
 

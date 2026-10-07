@@ -1,10 +1,12 @@
 # Electrical routing study
 
+See the [electrical grid index](README.md) for the current work priority and [manual boards and quick modes](controls.md) for the control-design brief. This document describes the implemented routing study; physical installation design remains pending.
+
 Open `Thach_Bi_Viewer/OPEN_CHURCH.html` and choose **Simulator → Wiring → Systems only**. The building, roof, furnishings and grounds disappear; boards, wiring and connected equipment remain. **Restore building** restores the architectural visibility, including the previous roof state. **View settings → Electrical systems only** offers the same isolation switch.
 
 Select a physical enclosure or wire in 3D, a route in the flat plan, or an individual run in the list. The selected route highlights green and reports its source, destination, circuit, length and height range. **Edit component** opens the existing fixture controls. Changes to location, product parameters, circuit, visibility, additions, removal, undo and imported layouts regenerate the wiring. Overlapping runs remain individually selectable through the run list. Filters select DB-1, DB-2, power or audio routes.
 
-The initial recommended design has **276 connected components and 319 selectable runs**. Counts reflect the current layout; hidden alternatives are excluded from installed-study totals and retained separately in the exported component schedule. Lights switched off are still connected. Non-electrical furnishings and candles are excluded. Electrically illuminated seasonal models are retained as equipment when shown.
+The recommended design checked on **7 October 2026 has 286 connected components and 329 selectable runs**. Counts reflect that layout; hidden alternatives are excluded from installed-study totals and retained separately in the exported component schedule. Lights switched off are still connected. Non-electrical furnishings and candles are excluded. Electrically illuminated seasonal models are retained as equipment when shown.
 
 ## Retained equipment locations
 
@@ -38,6 +40,8 @@ The Wiring panel includes a clickable top projection, functional circuit blocks 
 
 - [Systems JSON](electrical-systems.json): enclosure locations, every route's 3D vertices and length, individual component records, grouped bill of materials, and unresolved specifications.
 - [Schedule CSV](electrical-schedule.csv): individual component IDs, quantities, circuit/board allocation, model dimensions, category specs, provisional loads, hidden alternatives and route records.
+- [Category Excel registers](categories/README.md): equipment/enclosure IDs, positions/specifications, electrical-line IDs/lengths/specifications and route points in matching files by usage; see the [register workflow](register.md) and [summary report](summary-report.md).
+- [Matching layout JSON](equipment-layout.json): complete simulator item positions/settings for reconciliation and layout import.
 - **Export systems JSON** and **Export board schedule CSV** in the viewer regenerate from the current edited layout. The CSV respects the selected board and cable-type filters for route rows; component rows cover the selected board.
 
 Component dimensions describe the procedural model's local envelope, excluding pendant rods. These are not manufacturer dimensions. Passive loudspeaker wattages are audio ratings, not electrical mains demand. Powered decorations with no known electrical rating report their load as pending.
@@ -50,4 +54,4 @@ Conductor types and cross-sections, conduit sizes, supply phases, earthing/bondi
 
 `node scripts/verify_simulator.cjs --electrical` checks unique selection identities, every installed equipment connection, endpoint continuity, connection to shared trunks, physical board ray picking, separate active-speaker power/signal, dynamic rerouting and removal, and reversible architectural isolation. The full simulator checks include these assertions alongside the existing lighting, acoustic, airflow, placement and history checks.
 
-Regenerate the saved JSON/CSV with `node scripts/verify_simulator.cjs --electrical --export-electrical`. The saved documents reflect the recommended default design, not any browser-specific saved edits.
+Regenerate the saved layout/systems JSON and CSV in `docs/electrical-grid/` with `node scripts/verify_simulator.cjs --electrical --export-electrical`, then refresh Excel with `node scripts/build_equipment_register.mjs --verify-workflow`. These defaults reflect the recommended design; follow the [register workflow](register.md) for browser-specific saved edits.

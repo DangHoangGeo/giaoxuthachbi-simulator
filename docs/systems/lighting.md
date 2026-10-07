@@ -91,7 +91,7 @@ Envelope values describe the local procedural model and exclude pendant rods. Fl
 | L6 | DB2 | 26 | 918.9 |
 | L7 | DB2 | 26 | 697.6 |
 
-Select each fixture in Simulator; select its route in Wiring. Each light remains connected when switched off. The board schedule contains individual IDs, quantities, dimensions and configured specs: [CSV](electrical-schedule.csv) and [systems JSON](electrical-systems.json). Routing updates automatically with fixture edits.
+Select each fixture in Simulator; select its route in Wiring. Each light remains connected when switched off. The board schedule contains individual IDs, quantities, dimensions and configured specs: [CSV](../electrical-grid/electrical-schedule.csv) and [systems JSON](../electrical-grid/electrical-systems.json). Routing updates automatically with fixture edits. These exports can be newer than the historical quantities in this lighting review; check the [export baseline](../electrical-grid/README.md).
 
 Existing browser layouts receive the reviewed lights once, retaining unrelated equipment and edits. A pre-review copy is saved under the simulator's `.before-lighting-review` local-storage key. Subsequent removals stay removed. The viewer's Undo command does not undo this startup migration.
 
