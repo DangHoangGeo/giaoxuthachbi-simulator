@@ -666,29 +666,9 @@
     return [0, 0, 0];
   }
   function mergeGeometries(list) {
-    const prepared = [];
-    let count = 0;
-    for (const { geo, matrix } of list) {
-      const g = geo.index ? geo.toNonIndexed() : geo.clone();
-      g.applyMatrix4(matrix);
-      if (!g.attributes.normal) g.computeVertexNormals();
-      prepared.push(g); count += g.attributes.position.count;
-    }
-    const pos = new Float32Array(count * 3), nor = new Float32Array(count * 3), uv = new Float32Array(count * 2);
-    let o = 0;
-    for (const g of prepared) {
-      pos.set(g.attributes.position.array, o * 3);
-      nor.set(g.attributes.normal.array, o * 3);
-      if (g.attributes.uv) uv.set(g.attributes.uv.array, o * 2);
-      o += g.attributes.position.count; g.dispose();
-    }
-    const out = new T.BufferGeometry();
-    out.setAttribute('position', new T.BufferAttribute(pos, 3));
-    out.setAttribute('normal', new T.BufferAttribute(nor, 3));
-    out.setAttribute('uv', new T.BufferAttribute(uv, 2));
-    out.computeBoundingBox(); out.computeBoundingSphere();
-    return out;
+    return window.CHURCH_BATCHES.merge(T, list);
   }
+
   const stemGeo = () => (stemGeo.g ||= new T.CylinderGeometry(1, 1, 1, 8, 1, true).translate(0, 0.5, 0));
   const canopyGeo = () => (canopyGeo.g ||= new T.CylinderGeometry(0.07, 0.07, 0.05, 14).translate(0, -0.025, 0));
   // A steel channel spanning the 4.50 m bay between two tie beams (HVLS support).

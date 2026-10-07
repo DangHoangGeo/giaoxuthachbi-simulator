@@ -45054,35 +45054,7 @@ void main() {
   var Bp = new It();
   Bp.name = "Display batches of the shared model";
   ii.add(Bp);
-  var t_ = new Map();
-  nn.updateMatrixWorld(!0);
-  for (let s of nn.children) {
-    let e = new It();
-    ((e.name = s.name), Bp.add(e), t_.set(s, e));
-    let t = new Map();
-    s.traverse((n) => {
-      if (!n.isMesh || Array.isArray(n.material)) return;
-      let i = n.geometry.clone();
-      (i.index && (i = i.toNonIndexed()),
-        i.applyMatrix4(n.matrixWorld),
-        i.attributes.normal || i.computeVertexNormals(),
-        i.attributes.uv ||
-          i.setAttribute(
-            "uv",
-            new Fe(new Float32Array(i.attributes.position.count * 2), 2),
-          ));
-      let r = n.material.uuid;
-      (t.has(r) || t.set(r, { material: n.material, geometries: [] }),
-        t.get(r).geometries.push(i));
-    });
-    for (let { material: n, geometries: i } of t.values()) {
-      let r = W0(i, !1);
-      if (!r) continue;
-      let o = new Nt(r, n);
-      ((o.castShadow = !0), (o.receiveShadow = !0), e.add(o));
-      for (let a of i) a.dispose();
-    }
-  }
+  var t_ = window.CHURCH_BATCHES.build(Ec, nn, Bp);
   window.CHURCH_REALISM.bindBatches(t_);
   window.CHURCH_PLANNING.bindBatches(t_);
   window.CHURCH_SIMULATOR?.bindBatches(t_);

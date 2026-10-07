@@ -34,7 +34,7 @@ const sandbox = {
 sandbox.window = sandbox;
 sandbox.addEventListener = (e, f) => { (listeners[e] ||= []).push(f); };
 vm.createContext(sandbox);
-for (const file of ['references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
+for (const file of ['render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
   vm.runInContext(fs.readFileSync(path.join(viewer, file), 'utf8'), sandbox, { filename: file });
 
 let src = fs.readFileSync(path.join(viewer, 'bundle.js'), 'utf8');

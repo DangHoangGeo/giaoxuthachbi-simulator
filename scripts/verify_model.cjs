@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['references.js','glass-art.js','carving.js','sanctuary.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['render-batches.js', 'references.js','glass-art.js','carving.js','sanctuary.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -175,7 +175,7 @@ if(process.argv.includes('--plan')){
   fs.writeFileSync(path.join(planningDir,'model-plan-data.js'),'window.CHURCH_PLAN_DATA = '+JSON.stringify(payload,null,2)+';\n');
 }
 let batchCount=0,triangles=0;
-for(const b of batches.values())for(const m of b.children){batchCount++;triangles+=m.geometry.attributes.position.count/3;}
+for(const b of batches.values())for(const m of b.children){batchCount++;triangles+=(m.geometry.index?.count||m.geometry.attributes.position.count)/3;}
 const ray=new T.Raycaster(new T.Vector3(-10,2,.5),new T.Vector3(1,0,0));
 const hits=ray.intersectObjects(nodes.filter(o=>o.isMesh),false);
 assert(!hits.some(h=>h.object.name==='Source-width centre entry facade'),'Facade must not fill the main door opening');
@@ -184,7 +184,34 @@ for(const sign of [-1,1]) {
   const sideRay=new T.Raycaster(new T.Vector3(16.725,1.8,sign*18),new T.Vector3(0,0,-sign));
   assert(!sideRay.intersectObjects(bays.flatMap(g=>g.children).filter(o=>o.isMesh&&o.name==='Outer arcade wall with arched openings'),false).some(h=>Math.abs(h.point.z)>10),'Outer wall must leave side doorway clear');
 }
-console.log(JSON.stringify({checks:'passed',batchCount,triangles,seating:planning.state(),sightlineSummary,refinement:data.refinement},null,2));
+// Display buffers retain the full source triangle stream and original vertices.
+// Verify transformed position, normal and UV against the previous expanded path.
+let displayBytes=0, expandedBytes=0;
+for(const [source,display] of batches){
+  const parts=new Map();
+  source.traverse(o=>{if(o.isMesh&&!Array.isArray(o.material)){if(!parts.has(o.material))parts.set(o.material,[]);parts.get(o.material).push(o);}});
+  for(const mesh of display.children){
+    const g=mesh.geometry,list=parts.get(mesh.material);let offset=0;
+    assert(g.index,'display batches retain indices');
+    for(const a of [...Object.values(g.attributes),g.index])displayBytes+=a.array.byteLength;
+    expandedBytes+=g.index.count*32;
+    for(const object of list){
+      const local=object.geometry,expected=local.clone().applyMatrix4(object.matrixWorld);
+      const count=local.index?.count||local.attributes.position.count;
+      for(const j of new Set([0,Math.floor(count/2),count-1])){
+        const a=local.index?local.index.getX(j):j,b=g.index.getX(offset+j);
+        for(const name of ['position','normal','uv'])if(expected.attributes[name]){
+          const x=expected.attributes[name],y=g.attributes[name];
+          for(let k=0;k<x.itemSize;k++)assert(Math.abs(x.array[a*x.itemSize+k]-y.array[b*y.itemSize+k])<1e-5,`batch ${name} preserves source vertex`);
+        }
+      }
+      expected.dispose();offset+=count;
+    }
+    assert.equal(g.index.count,offset,'all source triangles retained');
+  }
+}
+assert(displayBytes<expandedBytes*.7,'indexed buffers materially reduce memory without removing triangles');
+console.log(JSON.stringify({checks:'passed',batchCount,triangles,displayBytes,expandedBytes,seating:planning.state(),sightlineSummary,refinement:data.refinement},null,2));
 
 // Sanctuary geometry regression: sheet-5 frame on the column line, shrines in its
 // side arches, the timber-lined chamber behind, and clear routes through it.
