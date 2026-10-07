@@ -1,0 +1,120 @@
+{
+  "sourceCommit": "89a32c3",
+  "sanctuarySpecRevision": "2026-10-07-sanctuary-7-carved",
+  "captured": "2026-10-07",
+  "method": "Headless Chrome (GPU) on the offline viewer served from Thach_Bi_Viewer, fresh profile, recommended design, drawn frame, daylight; canvas exported as PNG and saved as JPEG quality 88",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "renderTriangles": 1644048,
+  "consoleErrors": [],
+  "generated": false,
+  "shots": [
+    {
+      "id": "05-nave-overview-day",
+      "pos": [
+        8,
+        1.7,
+        0
+      ],
+      "target": [
+        46,
+        5,
+        0
+      ],
+      "fov": 54,
+      "light": "day",
+      "file": "05-nave-overview-day.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "081851fb8c80dadfcab737b3d7aacbd013fd2492f107706195ad158ef0521753"
+    },
+    {
+      "id": "06-sanctuary-overview-day",
+      "pos": [
+        32.3,
+        2.5,
+        0
+      ],
+      "target": [
+        45.3,
+        5.3,
+        0
+      ],
+      "fov": 58,
+      "light": "day",
+      "file": "06-sanctuary-overview-day.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "137c00d52e6317a33a0569d42913558d491db44f8a6b2b528db80ede9b3c387d"
+    },
+    {
+      "id": "07-interior-oblique-day",
+      "pos": [
+        25,
+        1.8,
+        -5.5
+      ],
+      "target": [
+        44.2,
+        4.2,
+        -5.5
+      ],
+      "fov": 58,
+      "light": "day",
+      "file": "07-interior-oblique-day.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "1ab4e77810a7053b0752f0a9cb3ece18066d03d1601e6497b75beaa2c6ce6bdc"
+    },
+    {
+      "id": "08-sanctuary-detail-day",
+      "pos": [
+        40.7,
+        2.7,
+        2.4
+      ],
+      "target": [
+        48,
+        4.7,
+        0
+      ],
+      "fov": 52,
+      "light": "day",
+      "file": "08-sanctuary-detail-day.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "0eee691a576a3f90b4972c44df1e4387ab27c011c2b38910e9074bbeb4f046d0"
+    },
+    {
+      "id": "09-carved-connection-day",
+      "pos": [
+        23.6,
+        7.3,
+        0.6
+      ],
+      "target": [
+        27.6,
+        8.75,
+        -3.3
+      ],
+      "fov": 50,
+      "light": "day",
+      "file": "09-carved-connection-day.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "75cbae8c3435ba79cd8481b3054bf74638bc57b38b9510827148ccdb0211b068"
+    }
+  ]
+}
