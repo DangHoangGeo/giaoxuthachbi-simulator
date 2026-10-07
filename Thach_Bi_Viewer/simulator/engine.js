@@ -233,18 +233,37 @@
       m.userData = { status: 'AS DRAWN · SECTION SHEET 4', source: 'Measured on the vector section: tie +8.59…+9.18 m, side beams +6.66…+7.00 m' };
       asDrawn.add(m); return m;
     };
-    // The beams carry the lacquer of the columns (sanctuary.js); their gilding is a border
-    // line and a rosette on both faces of each tie beam, with a band near each shaft, and a
-    // band at each end of the side beams.
-    const gilt = window.CHURCH_SANCTUARY?.materials?.gold;
+    // The beams carry the lacquer of the columns (sanctuary.js). Their ornament follows the approved
+    // timber concept (references/01-timber-frame and the 7 October interior views): gilded border
+    // lines and a carved cartouche on both faces, a band near each support, carved haunches under
+    // the beams and carved ends. All of it is applied decoration (O01/J09 of the beam specification).
+    const gilt = window.CHURCH_SANCTUARY?.materials?.gold, carved = window.CHURCH_SANCTUARY?.materials?.carve;
+    const K = gilt && carved && window.CHURCH_CARVING?.create(T);
     const gild = (geometry, x, y, z, name) => {
       const m = new T.Mesh(geometry, gilt);
       m.position.set(x, y, z); m.name = name; m.receiveShadow = true;
       m.userData = { status: 'PROPOSED FINISH · RED LACQUER AND GILDING', source: 'references/02-sanctuary/concepts/09-sanctuary-approved-concept.png' };
       asDrawn.add(m); return m;
     };
+    const ornament = (geometry, material, x, y, z, yaw, name) => {
+      const m = new T.Mesh(geometry, material);
+      m.position.set(x, y, z); m.rotation.y = yaw; m.name = name; m.castShadow = m.receiveShadow = true;
+      m.userData = { status: 'CONCEPT ORNAMENT · NOT STRUCTURAL', detail: 'O01 / J09 applied ornament', source: 'references/00-overview/2026-10-07/full-hd/09-carved-connection-detail.png', engineeringApproved: false };
+      asDrawn.add(m); return m;
+    };
+    // A haunch is three meshes: the solid bracket in the beam finish, its carved leaves, its gilding.
+    const haunch = (h, x, y, z, yaw, name) => { ornament(h.body, timber, x, y, z, yaw, name); ornament(h.carve, carved, x, y, z, yaw, name + ' · foliage'); ornament(h.gilt, gilt, x, y, z, yaw, name + ' · gilding'); };
+    // Haunch runs stop short of the fittings that hang under the beams: the reading lights 1.0 m
+    // from the column axis under the ties, the outer reading lights and the wall fans on the piers.
+    const carving = K && {
+      tieHaunch: K.haunch({ run: 0.8, rise: 0.62, thick: 0.16 }), longHaunch: K.haunch({ run: 0.95, rise: 0.6, thick: 0.14 }),
+      sideHaunch: K.haunch({ run: 0.8, rise: 0.52, thick: 0.13, u0: 0.24 }), pierBracket: K.haunch({ run: 0.55, rise: 0.42, thick: 0.13, u0: 0 }),
+      tieCartouche: K.cartouche({ len: 1.7, r: 0.17 }), sideCartouche: K.cartouche({ len: 1.1, r: 0.1 }), longCartouche: K.cartouche({ len: 1.5, r: 0.13 }),
+      end: K.cluster({ a: 0.13, b: 0.24, c: 0.07, leaves: 8, blooms: 1, size: 0.15 })
+    };
     const tieLine = new T.BoxGeometry(0.012, 0.035, 5.12), tieBand = new T.BoxGeometry(0.33, 0.62, 0.08), rosette = new T.CylinderGeometry(0.15, 0.15, 0.02, 20);
     const sideBand = new T.BoxGeometry(0.25, 0.37, 0.07), sideLine = new T.BoxGeometry(0.012, 0.03, 2.48);
+    const axis9 = data().longitudinal['9'];
     GEO.mainBeams = [];
     for (const x of [...tieXs].sort((a, b) => a - b)) {
       member(0.3, 0.59, 8.42, x, 8.885, 0, 'Main tie beam 0.30 × 0.59 m · as drawn');
@@ -252,9 +271,18 @@
       if (!gilt) continue;
       for (const f of [-1, 1]) {
         for (const y of [8.65, 9.12]) gild(tieLine, x + f * 0.153, y, 0, 'Main tie beam gilded border');
-        gild(rosette, x + f * 0.156, 8.885, 0, 'Main tie beam gilded rosette').rotation.z = Math.PI / 2;
+        if (carving) gild(carving.tieCartouche, x + f * 0.15, 8.885, 0, 'Main tie beam gilded rosette').rotation.y = f * Math.PI / 2;
+        else gild(rosette, x + f * 0.156, 8.885, 0, 'Main tie beam gilded rosette').rotation.z = Math.PI / 2;
       }
-      for (const s of [-1, 1]) gild(tieBand, x, 8.885, s * 2.6, 'Main tie beam gilded band');
+      for (const s of [-1, 1]) {
+        gild(tieBand, x, 8.885, s * 2.6, 'Main tie beam gilded band');
+        if (!carving) continue;
+        // No haunch on axis 9: the ambo key light and the presider light hang there, 0.45 and
+        // 0.60 m from the column axes. Lighting coordination is an open item.
+        if (Math.abs(x - axis9) > 0.01) haunch(carving.tieHaunch, x, 8.59, s * 3.6, s * Math.PI / 2, 'Main tie beam carved haunch');
+        ornament(carving.end.body, carved, x, 8.83, s * 4.215, s > 0 ? 0 : Math.PI, 'Main tie beam carved end');
+        ornament(carving.end.accent, gilt, x, 8.83, s * 4.215, s > 0 ? 0 : Math.PI, 'Main tie beam carved end · gilding');
+      }
     }
     GEO.sideBeams = [];
     for (const k of ['3', '4', '5', '6', '7', '8', '9']) {
@@ -265,6 +293,38 @@
         if (!gilt) continue;
         for (const z of [4.2, 6.75]) gild(sideBand, x, 6.83, s * z, 'Side beam gilded band');
         for (const f of [-1, 1]) for (const y of [6.71, 6.95]) gild(sideLine, x + f * 0.113, y, s * 5.475, 'Side beam gilded border');
+        if (!carving) continue;
+        for (const f of [-1, 1]) gild(carving.sideCartouche, x + f * 0.11, 6.83, s * 5.475, 'Side beam gilded cartouche').rotation.y = f * Math.PI / 2;
+        haunch(carving.sideHaunch, x, 6.66, s * 3.6, -s * Math.PI / 2, 'Side beam carved haunch');
+        haunch(carving.pierBracket, x, 6.66, s * 7.07, s * Math.PI / 2, 'Side beam carved pier bracket');
+      }
+    }
+    // Lengthwise beams on the column lines (B03 of the beam specification). The owner confirmed
+    // that the frames are connected along the church at column-head level; the drawings give no
+    // section. 0.24 × 0.45 m, top flush with the tie beams, is a visualization proxy on engineering
+    // hold: nothing is mounted on it and it is not a support in structureAbove(). Bay 9–10 ends at
+    // the sanctuary frame; bay 2′–3 has no column line.
+    GEO.longBeams = [];
+    const lineKeys = ['3', '4', '5', '6', '7', '8', '9', '10'], frameKey = window.CHURCH_SANCTUARY?.spec.frameAxis, two = k => k.padStart(2, '0'), borders = new Map();
+    for (let i = 0; i < lineKeys.length - 1; i++) {
+      const a = lineKeys[i], b = lineKeys[i + 1], xa = data().longitudinal[a], xb = data().longitudinal[b], x0 = xa + 0.3, x1 = xb - (b === frameKey ? 0.28 : 0.3), mid = (x0 + x1) / 2;
+      for (const s of [-1, 1]) {
+        const line = s < 0 ? 'D' : 'E', z = s * 3.6, id = `B03-${line}-${two(a)}-${two(b)}`;
+        member(x1 - x0, 0.45, 0.24, mid, 8.955, z, 'Longitudinal column-line beam 0.24 × 0.45 m · concept proxy').userData = {
+          memberId: id, status: 'USER CONFIRMED ARRANGEMENT · SECTION IS A VISUALIZATION PROXY', source: 'docs/beams-roof-connections/SPECIFICATION.md · B03',
+          materialRole: 'timber', structuralRole: 'longitudinal column-line beam', sectionStatus: 'ENGINEERING HOLD', supports: [`${a}/${line}`, `${b}/${line}`],
+          connectionIds: [`J04-${line}-${two(a)}`, `J04-${line}-${two(b)}`], engineeringApproved: false };
+        GEO.longBeams.push({ id, x0, x1, z, y0: 8.73, y1: 9.18, w: 0.24 });
+        if (!gilt) continue;
+        const key = (x1 - x0).toFixed(3);
+        if (!borders.has(key)) borders.set(key, new T.BoxGeometry(x1 - x0 - 0.5, 0.03, 0.012));
+        for (const f of [-1, 1]) {
+          for (const y of [8.79, 9.12]) gild(borders.get(key), mid, y, z + f * 0.123, 'Longitudinal column-line beam gilded border');
+          if (carving) gild(carving.longCartouche, mid, 8.955, z + f * 0.12, 'Longitudinal column-line beam gilded cartouche').rotation.y = f > 0 ? 0 : Math.PI;
+        }
+        if (!carving) continue;
+        haunch(carving.longHaunch, xa, 8.73, z, 0, 'Longitudinal column-line beam carved haunch');
+        haunch(carving.longHaunch, xb, 8.73, z, Math.PI, 'Longitudinal column-line beam carved haunch');
       }
     }
     // Purlins every ~0.50 m across the slope, split at the 9–10 roof valleys.
@@ -316,7 +376,7 @@
     building.traverse(o => {
       if (!o.isMesh) return;
       const near = xs.some(x => Math.abs(o.getWorldPosition(new T.Vector3()).x - x) < 0.5);
-      if (/^Main tie beam/.test(o.name) || (near && /^(Central column|Column head|Carved stone pedestal cap|Timber shaft foot|Timber capital collar|Carved stone column base on the dais|Gilded column (band|capital)|Column carving)/.test(o.name))) move.push(o);
+      if (/^(Main tie beam|Longitudinal column-line beam)/.test(o.name) || (near && /^(Central column|Column head|Carved stone pedestal cap|Timber shaft foot|Timber capital collar|Carved stone column base on the dais|Gilded column (band|capital)|Column carving)/.test(o.name))) move.push(o);
     });
     for (const o of move) drawnFrame.attach(o);
     const box = (w, h, d, x, y, z, mtl, name) => {
@@ -1031,8 +1091,9 @@
     SIM.persistentLighting.prepare(c);
     createPool(state.settings.quality);
     createHalos();
-    c.data.simulator = { status: 'Interactive planning layer; analysis values are estimates', asDrawnFrame: { mainTie: '0.30 × 0.59 m at +8.59…+9.18 m', sideBeams: '0.22 × 0.34 m at +6.66…+7.00 m', purlinSpacing: '~0.50 m' }, movedProposedMembers: GEO.trussMoved };
+    c.data.simulator = { status: 'Interactive planning layer; analysis values are estimates', asDrawnFrame: { mainTie: '0.30 × 0.59 m at +8.59…+9.18 m', sideBeams: '0.22 × 0.34 m at +6.66…+7.00 m', purlinSpacing: '~0.50 m' }, conceptMembers: { longitudinalBeams: GEO.longBeams.map(b => b.id), section: '0.24 × 0.45 m at +8.73…+9.18 m · visualization proxy · ENGINEERING HOLD', source: 'docs/beams-roof-connections/SPECIFICATION.md · B03' }, movedProposedMembers: GEO.trussMoved };
     c.data.assumptions.push('Timber frame now follows section sheet 4 as measured on the vector PDF: main tie beam +8.59…+9.18 m (0.59 m deep), side beams +6.66…+7.00 m from the C/G piers to the D/E shafts, purlins about 0.50 m apart. The earlier king posts, diagonal braces and knee braces were not on the drawing and are now an optional "proposed bracing" layer.');
+    c.data.assumptions.push('Lengthwise beams on the D and E column lines (axes 3 to 10, 14 members, IDs B03-D-03-04 to B03-E-09-10) follow the owner-confirmed arrangement of the beam specification. Their 0.24 × 0.45 m section at +8.73…+9.18 m is a visualization proxy on engineering hold; no equipment is mounted on them. Carved haunches, cartouches and beam ends are applied ornament from the approved concept art and carry nothing. No haunch stands under the axis-9 tie beam, where the ambo key light and the presider light hang close to the columns.');
   }
   function bindBatches(batches) {
     for (const batch of batches.values()) SIM.persistentLighting.bindObject(batch);

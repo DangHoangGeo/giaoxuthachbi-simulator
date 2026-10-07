@@ -210,7 +210,7 @@ assert.equal(shafts.length,18);
 for(const o of shafts)assert.equal(o.material.name,'Sanctuary · oxblood lacquer',`${o.name} is lacquered`);
 assert(shafts[0].material.clearcoat>.4&&shafts[0].material.map,'Lacquer is a clear coat over a faint grain');
 for(const o of nodes.filter(o=>o.isMesh&&/^(Timber shaft foot|Timber capital collar|Column head \+)/.test(o.name)))assert.equal(o.material.name,'Sanctuary · oxblood lacquer',`${o.name} is lacquered`);
-const part=name=>nodes.filter(o=>o.isMesh&&o.name===name),onLine=o=>near(Math.abs(bounds(o).getCenter(new T.Vector3()).z),3.6,`${o.name} on the D/E line`);
+const part=name=>nodes.filter(o=>o.isMesh&&o.name===name),onLine=o=>near(Math.abs(o.getWorldPosition(new T.Vector3()).z),3.6,`${o.name} on the D/E line`);
 const bands=part('Gilded column band'),capitals=part('Gilded column capital');
 assert.equal(bands.length,4,'Gilded bands on the frame axis only');assert.equal(capitals.length,2,'Gilded capitals on the frame axis only');
 for(const o of [...bands,...capitals]){onLine(o);near(bounds(o).getCenter(new T.Vector3()).x,frameX,`${o.name} on the frame axis`);}

@@ -1,6 +1,6 @@
 # Beams and roof connections reference package
 
-Revision 1 · 7 October 2026 · Thạch Bi Church
+Revision 2 · 7 October 2026 · Thạch Bi Church
 
 This package records the agreed frame arrangement, the current drawing-based model geometry, proposed ornamental details, and the structural information needed to turn the concept into construction drawings. It supports both human design coordination and virtual-model implementation.
 

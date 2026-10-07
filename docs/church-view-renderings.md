@@ -54,5 +54,6 @@ Visual review covers silhouette, visible openings, roof continuity, recognizable
 The paragraphs above describe the image delivery, when no geometry had changed. Revision 5 of the [sanctuary model](sanctuary-model.md) now transfers this art into the viewer in steps, as generated carving that approximates the pictures:
 
 1. Columns: turned bases on panelled stone pedestals, carved capitals, junction blocks and dies with gilded lotus panels; clear-coated lacquer.
+2. Beams and connections: lengthwise beams on the column lines (a visual proxy on engineering hold), carved haunches under the tie, side and lengthwise beams, gilded cartouches on the beam faces and carved tie-beam ends. The curved upper rail of the timber concept and the haunches at axis 9 are left out because fittings stand there; see the [beam specification](beams-roof-connections/SPECIFICATION.md).
 
 Parts not yet listed here are still as described above. The art remains the reference for appearance only. Dimensions, structure, equipment and calculated results keep their own sources.

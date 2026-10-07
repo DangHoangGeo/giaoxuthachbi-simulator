@@ -1,6 +1,6 @@
 # Beam and roof connection specification
 
-Revision 1 · 7 October 2026 · Design development reference
+Revision 2 · 7 October 2026 · Design development reference
 
 The church frame must read as a connected assembly across the nave, into both side aisles, and along the church length at column-head and roof levels. Only the two central columns in each typical transverse frame are timber. The two outer side supports are concrete. Carving develops the visible architecture; it must not be mistaken for evidence of structural capacity.
 
@@ -118,6 +118,29 @@ The contractor and engineer must define lifting points, temporary support/bracin
 8. Keep metal/wood/concrete material identity independent of display color and lighting. The natural-brown beam concept and sanctuary red/gold palette are distinct finish references pending material selection.
 9. Export per-member and per-connection metadata with the model. Show unresolved engineering items in handoff reports. Do not export an illustrative mesh as a construction-approved fabrication part.
 
+## Virtual model record · 7 October 2026
+
+What the interactive viewer now contains, for coordination. None of it is a structural design. Carving comes from generated shapes in `Thach_Bi_Viewer/carving.js` that approximate the concept images.
+
+| Item | In the model | Status |
+| --- | --- | --- |
+| B03 longitudinal column-line beams | 14 members on lines D and E, one per bay from axis 3 to axis 10: `B03-D-03-04` to `B03-E-09-10`. Each is 0.240 m (transverse) × 0.450 m (vertical) at Y = 8.730–9.180 m, top flush with the main tie, and runs between the 0.600 m junction blocks of two successive columns. Bay 9–10 (7.200 m) ends at the sanctuary frame. Each mesh records `memberId`, `supports`, `connectionIds` (J04), `sectionStatus` and `engineeringApproved: false`. | USER CONFIRMED arrangement. Section and level are a visualization proxy on ENGINEERING HOLD and are not on the supplied section drawing. No equipment is mounted on these members, and the simulator does not treat them as a support or as an obstacle to light or sound. |
+| C01 central columns | Around the unchanged shaft: a turned base, a carved capital 0.800 m high with its abacus at the tie soffit (+8.590 m), a 0.600 m junction block at beam level and a 0.560 m die with gilded panels under the rafter. | CONCEPT ornament on a MODEL TRANSCRIPTION shaft. Diameter, base restraint and head net section stay on ENGINEERING HOLD. |
+| O01 / J09 haunches | Under the main ties on the nave side at axes 3–8: 0.80 m from the column axis, 0.62 m deep. Under the lengthwise beams at both ends: 0.95 × 0.60 m. Under the side beams at the column (0.80 × 0.52 m) and at the concrete pier (0.55 × 0.42 m). | CONCEPT. Applied decoration with no structural function assigned; fixing and residual sections are unresolved. |
+| O01 cartouches and beam ends | A gilded cartouche on both faces of every tie, side beam and lengthwise beam; carved ends on the ties at Z = ±4.21 m. | CONCEPT. |
+
+The model keeps the drawn tie and side beams of the section sheet. The concept images compress these levels: the side beam is 1.59 m below the tie soffit in the model and level with it in image 07. The drawing governs.
+
+Open coordination items from this model step:
+
+| Item | Question | Responsible |
+| --- | --- | --- |
+| Curved upper rail and short uprights over the tie (images 01, 04, 07) | Not modelled. The roof uplights of the lighting design sit on top of each tie at mid-span, in the path of that rail and its central upright. Choose between moving the uplights and omitting or reshaping the rail. | Architect and lighting designer |
+| Haunches under the axis-9 tie | Not modelled. The ambo key light and the presider light hang 0.45 m and 0.60 m from the column axes and pass the capital with a few centimetres to spare. Move both heads at least 0.25 m toward the nave centre, then add the haunches. | Lighting designer |
+| Haunch runs under the other ties | Limited to 0.80 m so that the reading lights 1.00 m from the column axis stay clear by about 0.08 m. Confirm the fitting envelope and maintenance access. | Lighting designer |
+| Pier brackets | Limited to 0.42 m deep: the wall fans on the piers at axes 4, 6 and 8 reach +5.90 m, leaving about 0.34 m. Confirm the oscillation envelope. | Mechanical designer |
+| Lengthwise beams | Section, level, bearing at each column, splices and their role in longitudinal stability (S01, J04, J07). | Structural engineer |
+
 ## Acceptance and handoff
 
 For the virtual model, verify four support positions per typical frame; two timber inner columns and two concrete outer supports; both side beams; longitudinal continuity at support and roof levels; bearing contacts at both ends; no unexplained collisions or unsupported trimmed ends; correct source elevations; separate handling of the wider bay; and preservation of status/provenance through export. Compare front, side, roof-open oblique and underside views. These are geometry checks, not strength checks.
@@ -150,3 +173,4 @@ The five original other-church photos in `sources/` establish visible timber cra
 | Revision | Date | Author | Change and release status |
 | --- | --- | --- | --- |
 | 1 | 2026-10-07 | Codex, from owner instructions and repository evidence | Initial coordinated specification and image package. Design development only; engineering approval pending. |
+| 2 | 2026-10-07 | Claude, from owner instructions and the 7 October interior views | Virtual model record added: lengthwise beam proxies and concept ornament now in the viewer, with open coordination items. No requirement, connection or engineering input changed. Design development only; engineering approval pending. |

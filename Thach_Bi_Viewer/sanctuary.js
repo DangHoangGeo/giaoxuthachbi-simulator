@@ -11,7 +11,7 @@
     niche:{half:1.9,spring:5.85,rise:1.55,floor:2.6,mouthX:47.99,backX:49,lining:.05,shell:.14,endX:49.23} };
   // Underside of the boarded roof lining, as in the simulator.
   const roofY=u=>12.282-.7258*Math.abs(u)-.1;
-  const LACQUER='#6b2015';
+  const LACQUER='#652016';
   window.CHURCH_SANCTUARY = { spec, prepare, roofY };
   function prepare({THREE:T,building,interior,data,mat,palettes}) {
     spec.frameX=data.longitudinal[spec.frameAxis];spec.wingX=spec.frameX+.2;
@@ -163,6 +163,8 @@
     // The frame axis, which has no tie, keeps gilded bands and a gilded capital under its die.
     const band=new T.CylinderGeometry(.345,.345,.09,24),turnedBase=K.base(.32),head=K.capital({r:.297,h:.8}),framed=K.capital({r:.292,h:.52,flare:.12});
     const frameCapital=K.merge([[framed.core,null],[framed.foliage,null],[framed.gilt,null]]);
+    // On axis 9 the ambo key light and the presider light hang beside the capital: its nave face has no fleuron.
+    const bareHead={[-1]:K.capital({r:.297,h:.8,bare:0}).gilt,1:K.capital({r:.297,h:.8,bare:2}).gilt};
     const corner=K.cluster({a:.15,b:.27,c:.09,leaves:9,blooms:1,size:.17}),diePanel=K.panel({w:.4,h:.19});
     const cornerBody=[],headGilt=[],insets=[];
     for(let k=0;k<4;k++){
@@ -185,7 +187,7 @@
       mesh(turnedBase,wood,root,'Column carving · turned base',x,.78,z);
       mesh(head.core,wood,root,'Column carving · capital bell',x,7.79,z);
       mesh(head.foliage,carve,root,'Column carving · capital foliage',x,7.79,z);
-      mesh(head.gilt,gold,root,'Column carving · capital volutes',x,7.79,z);
+      mesh(key==='9'?bareHead[e]:head.gilt,gold,root,'Column carving · capital volutes',x,7.79,z);
       mesh(junction,wood,root,'Column carving · junction block',x,8.885,z);
       mesh(headCarving,carve,root,'Column carving · junction foliage',x,8.885,z);
       mesh(headGilding,gold,root,'Column carving · junction blooms and die panels',x,8.885,z);

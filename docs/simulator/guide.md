@@ -197,8 +197,12 @@ The calculation methods, measurement planes, assumptions and validation boundari
   beams and dies with gilded lotus panels. The two that carry the sanctuary
   frame keep gilded bands and gilded capitals.
 - The tie beams, side beams, rafters, purlins, ridge and braces take the same
-  red lacquer, with gilded lines, bands and rosettes on the beams, rafters and
-  ridge. The boarded roof lining stays ivory. *Settings → Structural timber
+  red lacquer, with gilded lines, bands and carved cartouches on the beams and
+  gilded lines on the rafters and ridge. Lengthwise beams join the column
+  heads on the D and E lines from axis 3 to the sanctuary frame; carved
+  haunches stand under the beams. These lengthwise beams are a visual proxy
+  (0.24 × 0.45 m, engineering hold): no fitting hangs from them and the
+  analysis does not include them. The boarded roof lining stays ivory. *Settings → Structural timber
   tone* offers natural, light and dark timber as alternatives.
 - At night the centre of the sanctuary is lit lower than before, so the blue
   recess and the red lacquer keep their colour (crucifix about 245 lux, blue
@@ -250,7 +254,10 @@ block walking. Outdoor courtyard trees retain their separate Show trees switch.
 View settings → Timber frame, or Simulator → Settings → Structure.
 
 - **As drawn (PDF section 4).** Round shafts and a 0.30 × 0.59 m tie beam
-  across the nave at +8.59 m on every axis.
+  across the nave at +8.59 m on every axis. This version also carries the
+  concept ornament and members that are not on the drawing: carved capitals
+  and haunches, cartouches, and the lengthwise column-line beams at
+  +8.73…+9.18 m.
 - **Reference image (05-interior-day).** The structure is:
   - square timber posts (0.56 m) on 1.1 m carved stone plinths, rising to the
     rafters
