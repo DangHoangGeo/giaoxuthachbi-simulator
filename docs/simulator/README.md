@@ -10,6 +10,7 @@ The simulator supports the project's first priority: optimize the locations and 
 - [Current sanctuary geometry and results](../sanctuary-model.md)
 - [Recorded calculation audit](../../review/stats-audit-2026-10-06/README.md)
 - [Open the viewer](../../Thach_Bi_Viewer/OPEN_CHURCH.html)
+- [Superseded simulator sketch](old/Simulator_Test.md) — retained as historical context; not a current specification.
 
 ## Working sequence
 
