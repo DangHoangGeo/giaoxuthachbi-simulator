@@ -284,9 +284,11 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   SIM.remove(active.id, { record: false }); E.rebuild();
   assert(!E.routes.some(r => r.itemIds.includes(active.id)), 'removing a component removes its run');
   if (process.argv.includes('--export-electrical')) {
-    const dest = path.join(root, 'docs', 'systems');
+    const dest = path.join(root, 'docs', 'electrical-grid');
+    fs.mkdirSync(dest, { recursive: true });
     fs.writeFileSync(path.join(dest, 'electrical-systems.json'), JSON.stringify(E.exportData(), null, 2) + '\n');
     fs.writeFileSync(path.join(dest, 'electrical-schedule.csv'), '\ufeff' + E.csv() + '\n');
+    fs.writeFileSync(path.join(dest, 'equipment-layout.json'), JSON.stringify(SIM.exportLayout(), null, 2) + '\n');
   }
   console.log(JSON.stringify({ electrical: 'passed', installedComponents: data.components.filter(c => !c.hiddenAlternative).length, selectableRuns: runs.length }));
   if (process.argv.includes('--electrical')) process.exit(0);

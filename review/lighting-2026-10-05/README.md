@@ -6,4 +6,4 @@
 - `front-door-evening.jpg`: the same facade with reduced graphics, illustrating the smaller rendering budget.
 - `verification.log`: passing full simulator checks, including real lamp origins at Balanced/Fast, paired side-door light selection on B/H, tower mounting clearance and electrical connectivity.
 
-Schedules: [lighting](../../docs/systems/lighting.md), [board/component CSV](../../docs/systems/electrical-schedule.csv). The saved schedules reflect the recommended design; browser-specific layouts may retain different edits or removals.
+Schedules: [lighting](../../docs/systems/lighting.md), [board/component CSV](../../docs/electrical-grid/electrical-schedule.csv). The saved schedules reflect the recommended design; browser-specific layouts may retain different edits or removals.

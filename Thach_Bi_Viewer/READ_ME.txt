@@ -113,7 +113,7 @@ terrace slab from the front elevation and a gable wall on axis 2′ above it
 
 All results are engineering estimates for comparing options. They are not
 certified lighting, acoustic, airflow or electrical design and do not control
-real devices. Guide and results: ../docs/simulator-guide.md.
+real devices. Guide and results: ../docs/simulator/guide.md.
 Checks: node ../scripts/verify_simulator.cjs --report
 
 ELECTRICAL ROUTING STUDY — 5 OCTOBER 2026
@@ -123,11 +123,15 @@ The existing service-room main board, lighting controls, fan controls and audio
 rack are retained; DB-2 remains inside the main doors. Every wire can be selected
 in 3D, in the flat route plan or in the individual run list. Routes update when
 components move, change circuits, are added, removed, hidden, or restored.
-The default study has 254 connected components and 297 selectable runs.
+The 5 October study had 254 connected components and 297 selectable runs.
+The 7 October coordinated export has 286 connected components and 329 runs.
 Flat board schedules show grouped quantities, model sizes and category specs.
 JSON/CSV export the current layout. Cable sizing and final product specifications
 are pending; routes, enclosures and internal arrangements are planning proposals.
-Documentation and saved default exports: ../docs/systems/electrical.md.
+Documentation and saved default exports: ../docs/electrical-grid/README.md.
+Equipment/line/route-point files by usage: ../docs/electrical-grid/categories/README.md.
+Total quantities, usage and quality: ../docs/electrical-grid/summary-report.md.
+Register refresh and position proposals: ../docs/electrical-grid/register.md.
 Wiring checks: node ../scripts/verify_simulator.cjs --electrical.
 
 LIGHTING REVIEW — 5 OCTOBER 2026
