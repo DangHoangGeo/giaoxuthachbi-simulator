@@ -1,0 +1,46 @@
+Suggested focused evidence set (all within this source-inventory directory):
+
+README.md
+focused-evidence-set.txt
+inventory-method.json
+source-fingerprints.json
+verification.json
+snapshot-comparison.json
+dimensions-summary.json
+dimension-records.csv
+model-grid-records.csv
+open-items.csv
+drawing-sources.csv
+category-registers.json
+category-counts.csv
+register-id-index.csv
+engineering-input-columns.csv
+extract_inventory.py
+verify_inventory.py
+
+Redundant full extraction outputs, retained for the primary agent's choice:
+
+category-register-records.json (about 6.1 MB): full field/cell/formula metadata
+for all 327 equipment records, 329 routes and 2,681 vertices. IDs and locators
+are in register-id-index.csv; input/count/fingerprint evidence is in the
+compact category files. The untouched six source workbooks and paired
+layout/systems snapshots already retain the full positions/spec strings.
+
+dimensions-workbook.json (about 2.7 MB): full cell metadata plus labelled
+tables, with record values repeated in both structures. The unchanged
+source workbook and four dimension CSVs already retain the source values,
+cells, source strings, formulas and stored caches. Convention notes outside
+the table remain in the unchanged source workbook.
+
+dimensions-focus.json (about 2.0 MB): overlapping keyword-selected groups
+of the dimension records. Those records repeat dimension-records.csv and
+the model-grid/open-item/drawing-source CSVs. The extraction script records
+the literal-source selection patterns; dimensions-summary.json gives counts.
+
+open-item-source-links.json (about 0.4 MB): each open record plus complete
+copies of its referenced dimension rows. open-items.csv already retains the
+source-ID strings, and dimension-records.csv retains their rows/cells.
+
+No output was removed, no source file was altered, and this delegated task
+made no Git changes. The primary agent can choose the evidence files to
+commit after review.

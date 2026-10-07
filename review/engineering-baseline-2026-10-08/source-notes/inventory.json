@@ -1,0 +1,411 @@
+{
+  "inventorySchema": 1,
+  "prepared": "2026-10-08",
+  "branchAtStart": "eng/01-baseline",
+  "headAtStart": "daadc10",
+  "scope": {
+    "requestedDocumentsRead": [
+      "docs/interior-systems-plan.md",
+      "docs/systems/lighting.md",
+      "docs/systems/sound.md",
+      "docs/systems/fans.md",
+      "docs/sanctuary-model.md",
+      "docs/electrical-grid/routing.md",
+      "docs/electrical-grid/controls.md",
+      "docs/beams-roof-connections/SPECIFICATION.md",
+      "docs/beams-roof-connections/requirements.json",
+      "docs/simulator/guide.md",
+      "docs/simulator/methods-and-limitations.md"
+    ],
+    "implementationRead": [
+      "Thach_Bi_Viewer/simulator/engine.js",
+      "Thach_Bi_Viewer/simulator/controls.js",
+      "Thach_Bi_Viewer/simulator/design.js",
+      "Thach_Bi_Viewer/simulator/catalog.js",
+      "Thach_Bi_Viewer/simulator/analysis.js",
+      "Thach_Bi_Viewer/simulator/physics.js",
+      "Thach_Bi_Viewer/sanctuary.js",
+      "docs/electrical-grid/equipment-layout.json"
+    ],
+    "actionsNotPerformed": ["simulation", "network access", "external browsing", "source edits outside source-notes", "commit", "merge", "branch change"]
+  },
+  "repositorySearch": {
+    "method": "rg --files path-name searches plus rg text searches over docs, Thach_Bi_Viewer/simulator, and Thach_Bi_Viewer/sanctuary.js",
+    "siteAndSurveyFileNames": [],
+    "manufacturerPhotometryOrDirectivityFileNames": [],
+    "fanCurveFileNames": [],
+    "iesOrLdtFiles": [],
+    "pdfFilesFound": [
+      "docs/layout_design/giao-xu-thach-bi-02-mat-dung-cuoi-nha-tho.pdf",
+      "docs/layout_design/giao-xu-thach-bi-03-mat-dung-dau-nha-tho.pdf",
+      "docs/layout_design/giao-xu-thach-bi-04-mat-bang-tong-quan-nha-tho-giao-xu.pdf",
+      "docs/layout_design/giao-xu-thach-bi-05-mat-dung-hai-ben-nha-tho.pdf",
+      "docs/layout_design/giao-xu-thach-bi-06-mat-dung-mot-vi-than-nha-tho.pdf",
+      "docs/layout_design/giao-xu-thach-bi-07-mat-dung-mot-vi-gian-cung-thanh.pdf",
+      "docs/layout_design/giao-xu-thach-bi-08-mat-dung-tuong-than-ben-ngoai-mot-gian-cua-so.pdf",
+      "docs/layout_design/giao-xu-thach-bi-09-mat-dung-ben-ngoai-cua-di.pdf",
+      "docs/beams-roof-connections/sources/giao-xu-thach-bi-04-mat-bang-tong-quan-nha-tho-giao-xu.pdf",
+      "docs/beams-roof-connections/sources/giao-xu-thach-bi-06-mat-dung-mot-vi-than-nha-tho.pdf"
+    ],
+    "absenceBoundary": "Findings apply to repository paths visible to rg --files and the stated text-search paths. No private external sources were browsed."
+  },
+  "siteAndApproval": {
+    "ownerReportedAddress": {
+      "value": "756G+GFV, Nam Đồng, Ninh Bình, Vietnam",
+      "status": "owner-reported; not a surveyed address",
+      "source": "docs/interior-systems-plan.md:13"
+    },
+    "ownerReportedEntranceOrientation": {
+      "value": "east-facing",
+      "status": "owner-reported; exact azimuth requires survey",
+      "source": "docs/interior-systems-plan.md:13,92"
+    },
+    "airConditioning": {
+      "value": "none in current brief",
+      "status": "parish-confirmed brief",
+      "source": "docs/interior-systems-plan.md:13"
+    },
+    "unknownInputs": [
+      "exact surveyed azimuth, surroundings and openings",
+      "attendance and service schedule",
+      "budget",
+      "electrical service capacity and single-/three-phase supply",
+      "governing jurisdiction, approving parties and current code editions",
+      "verified site wind/obstruction and weather basis"
+    ],
+    "codeReferencesRecordedButNotValidated": [
+      { "reference": "QCVN 06:2022/BXD and 2023 amendment record", "source": "docs/interior-systems-plan.md:75", "status": "confirm applicability and amendments" },
+      { "reference": "QCVN 10:2024/BXD", "source": "docs/interior-systems-plan.md:75", "status": "confirm applicability and amendments" },
+      { "reference": "QCVN 12:2014/BXD", "source": "docs/interior-systems-plan.md:147", "status": "relevant published reference cited; confirm current applicable provisions" }
+    ]
+  },
+  "defaultStudy": {
+    "implementationDefaults": {
+      "adaptLux": 110,
+      "autoExposure": false,
+      "quality": "fast",
+      "autoQuality": true,
+      "maintenance": 0.8,
+      "occupancy": 0.6,
+      "openings": 1,
+      "roofFinish": "mixed",
+      "entranceFinish": "slats",
+      "tempC": 28,
+      "rhPercent": 75,
+      "ambientDbA": 40,
+      "lensDeg": 75,
+      "eyeHeightM": 1.6,
+      "walkSpeedMPerS": 1.4,
+      "showTruss": false,
+      "frameStyle": "drawn",
+      "timberTone": "reference",
+      "talkerDbA": 62,
+      "micDistanceM": 0.4,
+      "serviceHours": 1.5,
+      "servicesPerMonth": 40,
+      "tariff": 2200,
+      "mixerDb": 0,
+      "seatingPlaneM": 0.8
+    },
+    "source": "Thach_Bi_Viewer/simulator/engine.js:77-83",
+    "implementationSourceStatus": "Simulator defaults; these are inputs, not surveyed conditions.",
+    "analysisPlanes": {
+      "bookLuxHeightM": 0.8,
+      "circulationLuxHeightM": 0.02,
+      "speechEarHeightM": 1.2,
+      "fanAirSpeedHeightM": 0.6
+    },
+    "analysisPlanesSource": "docs/simulator/methods-and-limitations.md:22-25; Thach_Bi_Viewer/simulator/analysis.js:14-23,143-154",
+    "savedLayoutSnapshot": {
+      "path": "docs/electrical-grid/equipment-layout.json",
+      "savedAt": "2026-10-07T12:10:03.268Z",
+      "scene": "Full service · evening",
+      "designVersionLabel": "2026-10-16-tower-board",
+      "note": "The version label postdates the savedAt date and this baseline date; do not treat the version string as evidence of recency."
+    },
+    "sceneStateNuance": "engine.js initializes state.scene as null; resetDesign applies Full service · evening. The saved recommended-layout snapshot names Full service · evening."
+  },
+  "targets": [
+    {
+      "system": "readingLight",
+      "value": [200, 300],
+      "unit": "maintained lux on books at 0.80 m plane",
+      "status": "initial project brief target; not quoted from Vietnamese code or a verified calculation",
+      "source": "docs/interior-systems-plan.md:81-86; Thach_Bi_Viewer/simulator/analysis.js:14-15"
+    },
+    {
+      "system": "sanctuaryTaskLight",
+      "value": [300, 500],
+      "unit": "maintained lux on task surfaces; assess faces vertically",
+      "status": "trial project target",
+      "source": "docs/interior-systems-plan.md:83-87"
+    },
+    {
+      "system": "circulationLight",
+      "value": 100,
+      "unit": "lux on circulation surfaces",
+      "status": "trial project target",
+      "source": "docs/interior-systems-plan.md:83-88"
+    },
+    {
+      "system": "ordinaryExteriorPathLight",
+      "value": [20, 50],
+      "unit": "lux on ordinary walking surfaces",
+      "status": "trial project target; step edges separately checked",
+      "source": "docs/interior-systems-plan.md:88"
+    },
+    {
+      "system": "speechIntelligibility",
+      "value": 0.6,
+      "unit": "STI minimum at every agreed occupied-seat test point",
+      "status": "project acceptance target, not claimed statutory threshold",
+      "source": "docs/interior-systems-plan.md:106; Thach_Bi_Viewer/simulator/analysis.js:18-19"
+    },
+    {
+      "system": "speechLevel",
+      "value": [68, 76],
+      "unit": "dBA",
+      "status": "simulator target range",
+      "source": "Thach_Bi_Viewer/simulator/analysis.js:16-17"
+    },
+    {
+      "system": "speechUniformity",
+      "value": "±3",
+      "unit": "dB over ordinary seating",
+      "status": "initial proposed project target",
+      "source": "docs/interior-systems-plan.md:106"
+    },
+    {
+      "system": "serviceBackgroundNoise",
+      "value": 35,
+      "unit": "approximately dBA where practicable",
+      "status": "initial proposed project target; less strict simulator contour ceiling is 40 dBA",
+      "source": "docs/interior-systems-plan.md:106; Thach_Bi_Viewer/simulator/analysis.js:22-23"
+    },
+    {
+      "system": "seatedAirSpeed",
+      "value": [0.3, 0.8],
+      "unit": "m/s",
+      "status": "mock-up/trial comfort brief; not a guarantee for hot/humid extremes",
+      "source": "docs/interior-systems-plan.md:118; docs/systems/fans.md:7-11; Thach_Bi_Viewer/simulator/analysis.js:20-21"
+    },
+    {
+      "system": "roofExhaustNominalAirChanges",
+      "value": [4, 6],
+      "unit": "air changes per hour",
+      "status": "current model comfort target; outdoor-air delivery is not established by this alone",
+      "source": "docs/systems/fans.md:11,68-72; Thach_Bi_Viewer/simulator/analysis.js:345-350"
+    },
+    {
+      "system": "fanClearance",
+      "value": { "bladeAboveFloorMin": 2.4, "fromColumnsMin": 0.3 },
+      "unit": "m",
+      "status": "planning criterion in fans.md; selected product and structure review pending",
+      "source": "docs/systems/fans.md:7-11"
+    },
+    {
+      "system": "microphoneFeedbackMargin",
+      "value": 3,
+      "unit": "dB",
+      "status": "simulator warning/brief threshold; not a stability guarantee",
+      "source": "docs/systems/sound.md:11-12; docs/sanctuary-model.md:96; Thach_Bi_Viewer/simulator/analysis.js:328-336"
+    }
+  ],
+  "currentBuiltInScenes": {
+    "source": "Thach_Bi_Viewer/simulator/engine.js:1513-1528",
+    "values": {
+      "Full service · evening": { "L9": 1, "L8": 1, "L7": 0, "L1": 1, "L2": 1, "L3": 1, "L4": 1, "LA": 1, "LD": 1, "L5": 1, "L6": 1, "E1": 1, "X1": 0, "F1": 2, "F2": 2, "F3": 0, "A1": 1, "A2": 1, "A3": 0, "A4": 1, "MIC": 1, "F4": 0, "V1": 1, "A5": 0, "DECOR": 1 },
+      "Weekday Mass": { "L9": 1, "L8": 0.75, "L7": 0, "L1": 0.75, "L2": 0.6, "L3": 0.8, "L4": 0.5, "LA": 0.4, "LD": 0.6, "L5": 1, "L6": 0, "E1": 1, "X1": 0, "F1": 2, "F2": 0, "F3": 0, "A1": 1, "A2": 0, "A3": 0, "A4": 0, "MIC": 1, "F4": 0, "V1": 1, "A5": 0, "DECOR": 1 },
+      "Prayer & adoration": { "L9": 1, "L8": 0.25, "L7": 0, "L1": 0.2, "L2": 0.2, "L3": 0.45, "L4": 0.25, "LA": 0.5, "LD": 0.35, "L5": 1, "L6": 0, "E1": 1, "X1": 0, "F1": 1, "F2": 0, "F3": 0, "A1": 0, "A2": 0, "A3": 0, "A4": 0, "MIC": 1, "F4": 0, "V1": 1, "A5": 0, "DECOR": 1 },
+      "Christmas & festivals": { "L9": 1, "L8": 1, "L7": 1, "L1": 1, "L2": 1, "L3": 1, "L4": 1, "LA": 1, "LD": 1, "L5": 1, "L6": 1, "E1": 1, "X1": 1, "F1": 2, "F2": 3, "F3": 3, "A1": 1, "A2": 1, "A3": 0, "A4": 1, "MIC": 1, "F4": 0, "V1": 2, "A5": 0, "DECOR": 1 },
+      "Festival · courtyard overflow": { "L9": 1, "L8": 1, "L7": 1, "L1": 1, "L2": 1, "L3": 1, "L4": 1, "LA": 1, "LD": 1, "L5": 1, "L6": 1, "E1": 1, "X1": 1, "F1": 2, "F2": 3, "F3": 3, "A1": 1, "A2": 1, "A3": 1, "A4": 1, "MIC": 1, "F4": 0, "V1": 2, "A5": 1, "DECOR": 1 },
+      "Cleaning": { "L9": 0, "L8": 1, "L7": 0, "L1": 1, "L2": 1, "L3": 0.5, "L4": 1, "LA": 0, "LD": 0, "L5": 0, "L6": 0, "E1": 1, "X1": 0, "F1": 1, "F2": 0, "F3": 0, "A1": 0, "A2": 0, "A3": 0, "A4": 0, "MIC": 0, "F4": 0, "V1": 2, "A5": 0, "DECOR": 1 },
+      "Night security": { "L9": 1, "L8": 0, "L7": 0, "L1": 0, "L2": 0, "L3": 0, "L4": 0.3, "LA": 0, "LD": 0, "L5": 1, "L6": 0, "E1": 1, "X1": 0, "F1": 0, "F2": 0, "F3": 0, "A1": 0, "A2": 0, "A3": 0, "A4": 0, "MIC": 0, "F4": 0, "V1": 0, "A5": 0, "DECOR": 1 },
+      "All off": { "L9": 0, "L8": 0, "L7": 0, "L1": 0, "L2": 0, "L3": 0, "L4": 0, "LA": 0, "LD": 0, "L5": 0, "L6": 0, "E1": 1, "X1": 0, "F1": 0, "F2": 0, "F3": 0, "A1": 0, "A2": 0, "A3": 0, "A4": 0, "MIC": 0, "F4": 0, "V1": 0, "A5": 0, "DECOR": 1 }
+    },
+    "sceneMaintainedBookLuxTargets": {
+      "Full service · evening": 200,
+      "Weekday Mass": 150,
+      "Prayer & adoration": 50,
+      "Christmas & festivals": 200,
+      "Festival · courtyard overflow": 200,
+      "Cleaning": 100
+    },
+    "applicationSemantics": {
+      "fanSceneLevels": "1/2/3 map to low/normal/high; fans with at least five speeds map via [0,2,4,5]",
+      "lights": "positive scene value turns on and sets dim to min(1, value)",
+      "microphonesAndSpeakers": "positive scene value requests on",
+      "allOffExitSign": "E1 remains at 1; this does not define emergency supply/duration",
+      "source": "Thach_Bi_Viewer/simulator/engine.js:1529-1550; docs/electrical-grid/controls.md:43"
+    }
+  },
+  "boardsAndControlImplementation": {
+    "circuitDefinitionsSource": "Thach_Bi_Viewer/simulator/engine.js:33-58",
+    "db1": { "location": "service room", "role": "main board; DB-2 feeder", "circuits": ["L1", "L2", "L3", "L4", "LA", "LD", "L5", "L8", "E1", "X1", "F1", "F2", "F3", "V1", "A1", "A2", "A3", "A4", "A5", "MIC"] },
+    "db2": { "location": "inside main entrance", "role": "sub-board", "circuits": ["L6", "L9", "L7", "F4"] },
+    "towerQuickModes": {
+      "source": "Thach_Bi_Viewer/simulator/controls.js:14-16,148-154; docs/electrical-grid/controls.md:61",
+      "off": [],
+      "evening": ["L6", "L9"],
+      "festival": ["L6", "L7", "L9"],
+      "note": "The control applies these memberships to L6/L7/L9; it does not operate F4. Compact DB-2 buttons are gated by the modeled DB-1 feeder."
+    },
+    "feederBehavior": {
+      "default": "state.settings.db2Feed is considered available unless exactly false",
+      "builtInScenes": "DB-2 requests are forced off when feeder is false",
+      "customScenes": "custom-scene branch applies saved item states without equivalent feeder check",
+      "restoration": "compact control stores then restores DB-2 item on/off states when feeder returns",
+      "hardwareStatus": "simulator behavior only; real restart/failure behavior pending review per load",
+      "source": "Thach_Bi_Viewer/simulator/controls.js:14-15,132-154; Thach_Bi_Viewer/simulator/engine.js:1529-1548; docs/electrical-grid/controls.md:40-44"
+    },
+    "physicalControlStatus": "Physical channels, terminals, addresses, final enclosure layouts and complete physical/web scene matrix are pending; the UI is not installed-device control.",
+    "source": "docs/electrical-grid/controls.md:20,34,63-71; docs/interior-systems-plan.md:206"
+  },
+  "modeledEquipmentInputs": {
+    "fanSpeedData": {
+      "source": "Thach_Bi_Viewer/simulator/catalog.js:652-667",
+      "evidenceStatus": "Catalogue assumptions in code; no selected-product datasheet or fan curve located.",
+      "ceilingFan1_42m": [
+        { "step": 1, "flowM3PerS": 1.3, "powerW": 18, "noiseDbAAt1m": 32, "rpm": 110 },
+        { "step": 2, "flowM3PerS": 2.0, "powerW": 34, "noiseDbAAt1m": 38, "rpm": 170 },
+        { "step": 3, "flowM3PerS": 2.8, "powerW": 60, "noiseDbAAt1m": 45, "rpm": 240 }
+      ],
+      "wallFan0_45m": [
+        { "step": 1, "flowM3PerS": 0.45, "powerW": 35, "noiseDbAAt1m": 47, "rpm": 900 },
+        { "step": 2, "flowM3PerS": 0.6, "powerW": 45, "noiseDbAAt1m": 52, "rpm": 1100 },
+        { "step": 3, "flowM3PerS": 0.75, "powerW": 55, "noiseDbAAt1m": 57, "rpm": 1300 }
+      ],
+      "entranceCirculator0_9m": [
+        { "step": 1, "flowM3PerS": 2.2, "powerW": 160, "noiseDbAAt1m": 52, "rpm": 450 },
+        { "step": 2, "flowM3PerS": 3.2, "powerW": 260, "noiseDbAAt1m": 58, "rpm": 650 },
+        { "step": 3, "flowM3PerS": 4.2, "powerW": 380, "noiseDbAAt1m": 64, "rpm": 850 }
+      ],
+      "exhaustFan0_5m": [
+        { "step": 1, "flowM3PerS": 0.8, "powerW": 60, "noiseDbAAt1m": 40, "rpm": 900 },
+        { "step": 2, "flowM3PerS": 1.2, "powerW": 110, "noiseDbAAt1m": 46, "rpm": 1300 },
+        { "step": 3, "flowM3PerS": 1.6, "powerW": 170, "noiseDbAAt1m": 52, "rpm": 1700 }
+      ]
+    },
+    "speakerModelData": {
+      "source": "Thach_Bi_Viewer/simulator/catalog.js:681-695; Thach_Bi_Viewer/simulator/physics.js:340-363",
+      "evidenceStatus": "Representative model directivity/response values; not verified manufacturer polar/directivity files.",
+      "slimColumn0_6m": { "coverageAt2kHzHByVdeg": [130, 30], "sensitivityDb1W1m": 89, "ratedW": 60, "nominalDb": 82, "horizontalBandArray": [360, 300, 200, 150, 130, 120, 110], "verticalBandArray": [360, 220, 110, 60, 40, 32, 28], "responseArray": [-14, -6, -1, 0, 0, 0, -3] },
+      "pendant6in": { "coverageAt2kHzHByVdeg": [110, 110], "sensitivityDb1W1m": 89, "ratedW": 30, "horizontalBandArray": [360, 300, 180, 120, 110, 100, 90], "verticalBandArray": [360, 300, 180, 120, 110, 100, 90] },
+      "outdoorHorn30W": { "coverageAt2kHzHByVdeg": [60, 40], "sensitivityDb1W1m": 108, "ratedW": 30, "horizontalBandArray": [360, 200, 110, 70, 60, 55, 50], "verticalBandArray": [360, 160, 80, 50, 40, 36, 32] }
+    },
+    "lightingPhotometry": {
+      "model": "configured lumens/distribution with inverse-square/cosine, modeled occlusion and approximate bounce/maintenance factor",
+      "selectedManufacturerPhotometryImported": false,
+      "source": "docs/simulator/methods-and-limitations.md:11; docs/interior-systems-plan.md:94; Thach_Bi_Viewer/simulator/catalog.js:613-650"
+    }
+  },
+  "currentLayoutEvidence": {
+    "layoutSource": "docs/electrical-grid/equipment-layout.json:1-40",
+    "stableOrAffectedEquipment": [
+      { "id": "L100", "name": "Ambo key light", "circuit": "L3", "positionM": [36.975, 8.585, -3.15], "spec": "1900 lm, 15°", "status": "active in saved snapshot; capital contact/mount entry unresolved", "source": "docs/electrical-grid/equipment-layout.json:2236-2256; docs/electrical-grid/routing.md:56" },
+      { "id": "L103", "name": "Presider chair light", "circuit": "L3", "positionM": [36.975, 8.585, 3.0], "spec": "1400 lm, 15°", "status": "active in saved snapshot; near axis-9 column; movement/haunch coordination open", "source": "docs/electrical-grid/equipment-layout.json:2303-2323; docs/beams-roof-connections/SPECIFICATION.md:139" },
+      { "id": "F244-F249", "name": "Six optional wall fans at axes 4, 6, 8, both sides", "circuit": "F2", "status": "hidden in saved layout; fan oscillation clearance and pier-bracket coordination open", "source": "docs/electrical-grid/equipment-layout.json:5482-5545; docs/beams-roof-connections/SPECIFICATION.md:141" },
+      { "id": "S291", "name": "Ambo microphone", "circuit": "MIC", "positionM": [41.08, 1.9, -2.62], "status": "saved layout; conceptual cable passage", "source": "docs/electrical-grid/equipment-layout.json:6477-6494; docs/sanctuary-model.md:31" },
+      { "id": "S292", "name": "Altar microphone", "circuit": "MIC", "positionM": [44.45, 1.88, 0.45], "status": "saved layout", "source": "docs/electrical-grid/equipment-layout.json:6496-6510" }
+    ],
+    "designVersionAndStatus": "Recommended design is a planning starting point; furniture/equipment remain proposals. The saved layout counts/settings must be treated as one recorded snapshot, not hardware approval."
+  },
+  "structuralAndInstallationHolds": [
+    {
+      "topic": "Structural package status",
+      "ids": ["C01", "C02", "B01", "B02", "B03", "R01", "R02", "R03", "S01", "O01", "J01", "J02", "J03", "J04", "J05", "J06", "J07", "J08", "J09", "J10"],
+      "hold": "DESIGN_DEVELOPMENT_NOT_FOR_CONSTRUCTION; engineeringApproved=false. Connection schedules, bearings, design actions, verified capacities and approved drawings are null for J01-J10; engineeringInputs including species/grade/sections/loads/wind/seismic/standards/bracing/erection/approval are null.",
+      "source": "docs/beams-roof-connections/requirements.json:/releaseStatus, /engineeringApproved, /members, /connections, /engineeringInputs; docs/beams-roof-connections/SPECIFICATION.md:7,66-87"
+    },
+    {
+      "topic": "B03 longitudinal beam proxy",
+      "ids": ["B03-D-03-04", "B03-D-04-05", "B03-D-05-06", "B03-D-06-07", "B03-D-07-08", "B03-D-08-09", "B03-D-09-10", "B03-E-03-04", "B03-E-04-05", "B03-E-05-06", "B03-E-06-07", "B03-E-07-08", "B03-E-08-09", "B03-E-09-10"],
+      "hold": "14 owner-confirmed arrangement members; visual section 0.24 × 0.45 m at Y +8.73 to +9.18 m; engineering section/bearing/splice/stability role null. They are not mounting supports or light/sound occluders in analysis.",
+      "source": "docs/beams-roof-connections/SPECIFICATION.md:127,142; docs/beams-roof-connections/requirements.json:/virtualModel/longitudinalColumnLineBeams; Thach_Bi_Viewer/simulator/engine.js:329-338,1123-1125"
+    },
+    {
+      "topic": "Axis-10 frame",
+      "ids": ["B01", "R01", "J10"],
+      "hold": "Sanctuary model has no tie at axis 10 per printed sheet 5; roof thrust and member scheme still require engineer resolution. B01 package requirement retains intended restraint until analysis resolves it.",
+      "source": "docs/sanctuary-model.md:9,93; docs/beams-roof-connections/SPECIFICATION.md:53,79"
+    },
+    {
+      "topic": "Lighting versus timber ornament / maintenance access",
+      "ids": ["L100", "L103", "L1", "L2", "LA", "F2", "O01", "J09"],
+      "hold": "Upper curved rail/uprights not modelled because LA uplights occupy the same path; axis-9 tie haunches not modelled with L100/L103 close to columns; other tie haunches capped at 0.80 m with reading lights about 1.00 m from column axes; confirm fixture envelope and maintenance access.",
+      "source": "docs/beams-roof-connections/SPECIFICATION.md:138-141; docs/sanctuary-model.md:91-92; docs/electrical-grid/routing.md:56"
+    },
+    {
+      "topic": "Wall fan and pier bracket envelope",
+      "ids": ["F244", "F245", "F246", "F247", "F248", "F249", "F2"],
+      "hold": "Wall fan mounts at axes 4, 6, 8 reach modeled elevation +5.90 m; pier brackets are limited to 0.42 m depth leaving about 0.34 m stated clearance; oscillation envelope and product dimensions require mechanical review.",
+      "source": "docs/beams-roof-connections/SPECIFICATION.md:141; docs/beams-roof-connections/requirements.json:/virtualModel/openCoordination/3; docs/electrical-grid/equipment-layout.json:5482-5545"
+    },
+    {
+      "topic": "Roof, equipment mounts and access",
+      "ids": ["B03", "R01", "R02", "R03", "S01", "J04", "J05", "J06", "J08", "F1", "LA", "L3", "L6", "L7"],
+      "hold": "Equipment attachment loads, drilling/cable holes, bearing/contact, roof build-up, weather/waterproofing, removable containment, cornice service cavities and maintenance access are not released. No load capacity is inferred from rendered brackets or beam meshes.",
+      "source": "docs/beams-roof-connections/SPECIFICATION.md:62,99-107; docs/electrical-grid/routing.md:33-58,62,78"
+    },
+    {
+      "topic": "Electrical conductors and physical controls",
+      "ids": ["DB-1", "DB-2", "LC-1", "FC-1", "AV-1", "L1-L9", "LA", "LD", "E1", "F1-F4", "V1", "A1-A5", "MIC"],
+      "hold": "Supply/fault data, phases, conductor types/sizes, containment, protection, isolation, amplifier/channel design, terminal/control addresses, physical board-face layout and final scene matrix are pending. Routes are geometric centerlines and exclude allowances.",
+      "source": "docs/electrical-grid/routing.md:62,74-78; docs/electrical-grid/controls.md:20,34,63-71; docs/interior-systems-plan.md:145-147"
+    }
+  ],
+  "knownStaleOrConflictingTables": [
+    {
+      "table": "Sound generated schedule/results",
+      "source": "docs/systems/sound.md:3-6,29-75",
+      "staleEvidence": "The document itself labels the schedule historical and says the future-dated 2026-10-15-system-review label does not establish recency.",
+      "notedValues": "Old results report 3.1/3.4 dB full-service feedback and STI minimum 0.452; line 3 points to 7 October audit of 1.2/1.7 dB and wing STI minimum 0.439, average 0.510."
+    },
+    {
+      "table": "Fans generated schedule/results",
+      "source": "docs/systems/fans.md:3-5,24-73",
+      "staleEvidence": "Header says generated 2026-10-15, later than this 8 October baseline. Values are estimates; current code and a fresh result record control. No full analysis was run for this inventory.",
+      "notedValues": "Table reports low-speed V1 at about 3.5 ACH, below stated 4-6 target; it contains scenario-specific averages and noise values."
+    },
+    {
+      "table": "Guide initial 300-seat and room-variant tables",
+      "source": "docs/simulator/guide.md:68-100,184",
+      "staleEvidence": "Line 82 explicitly says the initial table predates the sanctuary rebuild/front-row removal; line 184 says the room-variant table used earlier column loudspeakers."
+    },
+    {
+      "table": "Guide 15-17 October revisions and results",
+      "source": "docs/simulator/guide.md:286-431",
+      "staleEvidence": "Section dates are after baseline; line 368 says changes were not yet re-verified. Values and claims must be compared with actual code, not the date label."
+    },
+    {
+      "table": "Guide Christmas indoor-only claim versus current scene code",
+      "source": "docs/simulator/guide.md:391; Thach_Bi_Viewer/simulator/engine.js:1517,1520; Thach_Bi_Viewer/simulator/engine.js:34-46",
+      "staleEvidence": "Guide says Christmas & festivals runs indoors only; current SCENES sets L7=1 and X1=1, and L7 is the DB-2 festival exterior lighting circuit. A3 courtyard horns remain off in that current scene."
+    },
+    {
+      "table": "Guide older tower-button behavior versus current compact controls",
+      "source": "docs/simulator/guide.md:400,414-418; Thach_Bi_Viewer/simulator/controls.js:14-16,148-149; docs/electrical-grid/controls.md:61",
+      "staleEvidence": "Guide 2026-10-16 text says evening L6 and festival L6+L7; current compact control applies L6+L9 and L6+L7+L9."
+    },
+    {
+      "table": "Lighting review vs sanctuary/guide current-minimum summaries",
+      "source": "docs/systems/lighting.md:112; docs/sanctuary-model.md:103; docs/simulator/guide.md:82",
+      "staleEvidence": "The lighting review gives about 346 lux average and 193 lux minimum; sanctuary/guide summaries give 197 lux minimum. Both describe about 99% at/above 200 lux. Sample/revision identity is not explicit enough in these summaries to reconcile here."
+    },
+    {
+      "table": "Interior plan implementation status versus current sample total",
+      "source": "docs/interior-systems-plan.md:198-205",
+      "staleEvidence": "Line 200 describes 288 sampled nave seats; line 204 states current sanctuary review samples 368 seats total. Methods clarifies 288 nave + 80 wing seats, so distinguish the subsets in later reports."
+    },
+    {
+      "table": "Lighting quantity and circuit schedule",
+      "source": "docs/systems/lighting.md:55-94",
+      "staleEvidence": "The document explicitly says at line 94 that electrical exports can be newer than its historical quantities and directs readers to check the export baseline. Treat the quantities/watts as categories and estimates, not selected equipment or approved loads."
+    },
+    {
+      "table": "Future designVersion labels",
+      "source": "docs/electrical-grid/equipment-layout.json:/designVersion,/savedAt; Thach_Bi_Viewer/simulator/design.js:433; docs/systems/lighting.md:3; docs/systems/sound.md:5; docs/systems/fans.md:3",
+      "staleEvidence": "Several labels say 15-16 October, while this baseline and saved layout are dated 8 and 7 October respectively. File content and source revision, not the largest date string, are the evidence basis."
+    }
+  ]
+}

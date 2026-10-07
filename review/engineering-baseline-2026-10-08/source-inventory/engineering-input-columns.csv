@@ -1,0 +1,115 @@
+category,path,sheet,header,header_cell,data_range,population,nonempty_values,formula_cells
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Equipment,Manufacturer,Q6,Q7:Q226,220,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Equipment,Product model,R6,R7:R226,220,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Equipment,Approved specs,S6,S7:S226,220,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Equipment,Datasheet / approval,T6,T7:T226,220,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Equipment,Manual control ID,U6,U7:U226,220,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Equipment,Control group,V6,V7:V226,220,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Equipment,Proposed X (m),W6,W7:W226,220,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Equipment,Proposed Y (m),X6,X7:X226,220,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Equipment,Proposed Z (m),Y6,Y7:Y226,220,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Equipment,Engineering notes,Z6,Z7:Z226,220,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Electrical Lines,Allowance (m),M6,M7:M247,241,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Electrical Lines,Cable designation,Q6,Q7:Q247,241,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Electrical Lines,Core count,R6,R7:R247,241,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Electrical Lines,Cross-section (mm2),S6,S7:S247,241,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Electrical Lines,Containment specification,T6,T7:T247,241,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Electrical Lines,Manufacturer / product,U6,U7:U247,241,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Electrical Lines,Control / terminal reference,V6,V7:V247,241,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Electrical Lines,Approval reference,W6,W7:W247,241,0,0
+lighting,docs/electrical-grid/categories/lighting/register.xlsx,Electrical Lines,Engineering notes,X6,X7:X247,241,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Equipment,Manufacturer,Q6,Q7:Q38,32,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Equipment,Product model,R6,R7:R38,32,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Equipment,Approved specs,S6,S7:S38,32,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Equipment,Datasheet / approval,T6,T7:T38,32,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Equipment,Manual control ID,U6,U7:U38,32,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Equipment,Control group,V6,V7:V38,32,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Equipment,Proposed X (m),W6,W7:W38,32,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Equipment,Proposed Y (m),X6,X7:X38,32,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Equipment,Proposed Z (m),Y6,Y7:Y38,32,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Equipment,Engineering notes,Z6,Z7:Z38,32,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Electrical Lines,Allowance (m),M6,M7:M48,42,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Electrical Lines,Cable designation,Q6,Q7:Q48,42,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Electrical Lines,Core count,R6,R7:R48,42,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Electrical Lines,Cross-section (mm2),S6,S7:S48,42,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Electrical Lines,Containment specification,T6,T7:T48,42,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Electrical Lines,Manufacturer / product,U6,U7:U48,42,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Electrical Lines,Control / terminal reference,V6,V7:V48,42,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Electrical Lines,Approval reference,W6,W7:W48,42,0,0
+sound,docs/electrical-grid/categories/sound/register.xlsx,Electrical Lines,Engineering notes,X6,X7:X48,42,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Equipment,Manufacturer,Q6,Q7:Q41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Equipment,Product model,R6,R7:R41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Equipment,Approved specs,S6,S7:S41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Equipment,Datasheet / approval,T6,T7:T41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Equipment,Manual control ID,U6,U7:U41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Equipment,Control group,V6,V7:V41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Equipment,Proposed X (m),W6,W7:W41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Equipment,Proposed Y (m),X6,X7:X41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Equipment,Proposed Z (m),Y6,Y7:Y41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Equipment,Engineering notes,Z6,Z7:Z41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Electrical Lines,Allowance (m),M6,M7:M41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Electrical Lines,Cable designation,Q6,Q7:Q41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Electrical Lines,Core count,R6,R7:R41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Electrical Lines,Cross-section (mm2),S6,S7:S41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Electrical Lines,Containment specification,T6,T7:T41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Electrical Lines,Manufacturer / product,U6,U7:U41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Electrical Lines,Control / terminal reference,V6,V7:V41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Electrical Lines,Approval reference,W6,W7:W41,35,0,0
+air-system,docs/electrical-grid/categories/air-system/register.xlsx,Electrical Lines,Engineering notes,X6,X7:X41,35,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Equipment,Manufacturer,Q6,Q7:Q11,5,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Equipment,Product model,R6,R7:R11,5,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Equipment,Approved specs,S6,S7:S11,5,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Equipment,Datasheet / approval,T6,T7:T11,5,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Equipment,Manual control ID,U6,U7:U11,5,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Equipment,Control group,V6,V7:V11,5,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Equipment,Proposed X (m),W6,W7:W11,5,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Equipment,Proposed Y (m),X6,X7:X11,5,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Equipment,Proposed Z (m),Y6,Y7:Y11,5,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Equipment,Engineering notes,Z6,Z7:Z11,5,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Electrical Lines,Allowance (m),M6,M7:M13,7,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Electrical Lines,Cable designation,Q6,Q7:Q13,7,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Electrical Lines,Core count,R6,R7:R13,7,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Electrical Lines,Cross-section (mm2),S6,S7:S13,7,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Electrical Lines,Containment specification,T6,T7:T13,7,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Electrical Lines,Manufacturer / product,U6,U7:U13,7,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Electrical Lines,Control / terminal reference,V6,V7:V13,7,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Electrical Lines,Approval reference,W6,W7:W13,7,0,0
+exit-signs,docs/electrical-grid/categories/exit-signs/register.xlsx,Electrical Lines,Engineering notes,X6,X7:X13,7,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Equipment,Manufacturer,Q6,Q7:Q36,30,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Equipment,Product model,R6,R7:R36,30,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Equipment,Approved specs,S6,S7:S36,30,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Equipment,Datasheet / approval,T6,T7:T36,30,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Equipment,Manual control ID,U6,U7:U36,30,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Equipment,Control group,V6,V7:V36,30,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Equipment,Proposed X (m),W6,W7:W36,30,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Equipment,Proposed Y (m),X6,X7:X36,30,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Equipment,Proposed Z (m),Y6,Y7:Y36,30,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Equipment,Engineering notes,Z6,Z7:Z36,30,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Electrical Lines,Allowance (m),M6,,0,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Electrical Lines,Cable designation,Q6,,0,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Electrical Lines,Core count,R6,,0,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Electrical Lines,Cross-section (mm2),S6,,0,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Electrical Lines,Containment specification,T6,,0,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Electrical Lines,Manufacturer / product,U6,,0,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Electrical Lines,Control / terminal reference,V6,,0,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Electrical Lines,Approval reference,W6,,0,0,0
+decoration,docs/electrical-grid/categories/decoration/register.xlsx,Electrical Lines,Engineering notes,X6,,0,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Equipment,Manufacturer,Q6,Q7:Q11,5,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Equipment,Product model,R6,R7:R11,5,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Equipment,Approved specs,S6,S7:S11,5,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Equipment,Datasheet / approval,T6,T7:T11,5,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Equipment,Manual control ID,U6,U7:U11,5,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Equipment,Control group,V6,V7:V11,5,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Equipment,Proposed X (m),W6,W7:W11,5,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Equipment,Proposed Y (m),X6,X7:X11,5,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Equipment,Proposed Z (m),Y6,Y7:Y11,5,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Equipment,Engineering notes,Z6,Z7:Z11,5,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Electrical Lines,Allowance (m),M6,M7:M10,4,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Electrical Lines,Cable designation,Q6,Q7:Q10,4,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Electrical Lines,Core count,R6,R7:R10,4,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Electrical Lines,Cross-section (mm2),S6,S7:S10,4,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Electrical Lines,Containment specification,T6,T7:T10,4,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Electrical Lines,Manufacturer / product,U6,U7:U10,4,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Electrical Lines,Control / terminal reference,V6,V7:V10,4,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Electrical Lines,Approval reference,W6,W7:W10,4,0,0
+distribution-controls,docs/electrical-grid/categories/distribution-controls/register.xlsx,Electrical Lines,Engineering notes,X6,X7:X10,4,0,0

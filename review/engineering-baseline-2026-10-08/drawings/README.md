@@ -1,0 +1,11 @@
+# Printed drawing spot review
+
+Primary agent visually inspected these three PDF-page renders on 8 October 2026 at the baseline revision `daadc10`. Rasterisation used `pdftoppm -f 1 -singlefile -scale-to 1800 -png SOURCE OUTPUT`; the 1800-pixel render is a review derivative, not a scaled measurement source. Original PDFs were unchanged.
+
+| PDF page 1 source | Printed sheet verified on page | Evidence / observation |
+| --- | --- | --- |
+| [Floor-plan filename 04](../../../docs/layout_design/giao-xu-thach-bi-04-mat-bang-tong-quan-nha-tho-giao-xu.pdf) | **6**, lower-right corner | [Render](printed-sheet-6.png): title `MẶT BẰNG +00 NHÀ THỜ GIÁO XỨ THẠCH BI`; longitudinal dimension chain shows repeated 4500 mm and bay 9–10 7200 mm. Nave ±0.000, sanctuary +0.75 m, lower side approach/wing areas −0.32 m are shown. Workbook Dimensions E10/F10, E17/F17 and Model grid E17/E18 are the transcribed source, not values measured from these pixels. |
+| [Nave-section filename 06](../../../docs/layout_design/giao-xu-thach-bi-06-mat-dung-mot-vi-than-nha-tho.pdf) | **4**, lower-right corner | [Render](printed-sheet-4.png): two central timber columns D/E, concrete outer supports; D–E 7200 mm, C–D and E–G 3760 mm. Ridge +12.472 m, side roof +7.13 m and cornice +6.325 m labels visible. The 14476 mm overall-height dimension conflicts with +12.472 to −2.08 m arithmetic: retain workbook RFI-S01. No concealed cavity or equipment anchor detail is established. |
+| [Sanctuary-section filename 07](../../../docs/layout_design/giao-xu-thach-bi-07-mat-dung-mot-vi-gian-cung-thanh.pdf) | **5**, lower-right corner | [Render](printed-sheet-5.png): lobed sanctuary frame and raised +750 mm platform differ from the nave tie-beam section. This supports separate geometric treatment; it does not verify restraint/load-transfer capacity or connections. Roof valleys require their own coordinated details. |
+
+The [workbook inventory](../source-inventory/README.md) preserves exact cells, original units and existing unresolved questions. This spot review does not validate every workbook row, survey the church, infer hidden members, or approve capacity. Printed drawing revisions are not established by a filename or render date.

@@ -1,0 +1,2551 @@
+{
+  "registers": [
+    {
+      "category": "lighting",
+      "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+      "sha256": "8858d36aa6a1f88d48dfb7e7c90bad4c19c5aa64be3015d70930833fee819721",
+      "bytes": 170001,
+      "sheets": [
+        {
+          "name": "Read me",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet1.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 43,
+          "formula_cells": 3,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Equipment",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet2.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 4213,
+          "formula_cells": 0,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Electrical Lines",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet3.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 3863,
+          "formula_cells": 723,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Route Points",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet4.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 14361,
+          "formula_cells": 2050,
+          "saved_error_cells": []
+        }
+      ],
+      "readme": [
+        {
+          "label": "Lighting: equipment and electrical register",
+          "label_cell": "A1",
+          "value": null,
+          "cell": "B1"
+        },
+        {
+          "label": "Purpose",
+          "label_cell": "A3",
+          "value": "Manage equipment specifications, locations, stable IDs, control mapping and electrical-line specifications against one shared layout.",
+          "cell": "B3"
+        },
+        {
+          "label": "Baseline",
+          "label_cell": "A4",
+          "value": "Lighting. Reading, sanctuary, circulation, paths, facade and festival exterior lighting. Model snapshot: 2026-10-07T12:10:03.268Z.",
+          "cell": "B4"
+        },
+        {
+          "label": "Current equipment",
+          "label_cell": "A5",
+          "value": 220,
+          "cell": "B5"
+        },
+        {
+          "label": "Current routes",
+          "label_cell": "A6",
+          "value": 241,
+          "cell": "B6"
+        },
+        {
+          "label": "Retired equipment / routes",
+          "label_cell": "A7",
+          "value": 0,
+          "cell": "B7"
+        },
+        {
+          "label": "Coordinates",
+          "label_cell": "A8",
+          "value": "Metres: X toward sanctuary from axis 1; Y up from nave ±0.000; negative Z toward B, positive toward H.",
+          "cell": "B8"
+        },
+        {
+          "label": "Amber columns",
+          "label_cell": "A9",
+          "value": "Editable engineering inputs. Approved products/specifications, control IDs, notes and cable allowances survive refresh by ID. Blank means pending.",
+          "cell": "B9"
+        },
+        {
+          "label": "Model columns",
+          "label_cell": "A10",
+          "value": "Imported positions, IDs, planning specs and route vertices refresh from paired layout/systems exports. Use Proposed X/Y/Z for position revisions.",
+          "cell": "B10"
+        },
+        {
+          "label": "Position changes",
+          "label_cell": "A11",
+          "value": "Enter all three Proposed coordinates; export a draft layout, import it in the viewer, check supports/aim/clearances, then export matching layout and systems JSON. Enclosures require a coordinated model-source change.",
+          "cell": "B11"
+        },
+        {
+          "label": "Line lengths",
+          "label_cell": "A12",
+          "value": "Route length sums the ordered 3D segments. Full home-run length adds its upstream path once. Do not add shared bundles again; no procurement total is implied.",
+          "cell": "B12"
+        },
+        {
+          "label": "Specifications",
+          "label_cell": "A13",
+          "value": "Catalogue values and procedural dimensions are planning proxies. Final cable type, core count, cross-section, containment and approvals remain blank until designed.",
+          "cell": "B13"
+        },
+        {
+          "label": "Source layout SHA-256",
+          "label_cell": "A14",
+          "value": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+          "cell": "B14"
+        },
+        {
+          "label": "Source systems SHA-256",
+          "label_cell": "A15",
+          "value": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+          "cell": "B15"
+        },
+        {
+          "label": "Layout version",
+          "label_cell": "A16",
+          "value": "2026-10-16-tower-board; sanctuary 2026-10-07-sanctuary-8",
+          "cell": "B16"
+        },
+        {
+          "label": "Layout source",
+          "label_cell": "A17",
+          "value": "docs/electrical-grid/equipment-layout.json",
+          "cell": "B17"
+        },
+        {
+          "label": "Systems source",
+          "label_cell": "A18",
+          "value": "docs/electrical-grid/electrical-systems.json",
+          "cell": "B18"
+        },
+        {
+          "label": "Viewer",
+          "label_cell": "A19",
+          "value": "Thach_Bi_Viewer/OPEN_CHURCH.html → Simulator → Wiring. Equipment IDs and route IDs match both the 2D and 3D views.",
+          "cell": "B19"
+        },
+        {
+          "label": "Refresh",
+          "label_cell": "A20",
+          "value": "See docs/electrical-grid/register.md. Edit amber fields in the usage-category files. Refresh preserves their values by ID, retains retired records and updates the summary report.",
+          "cell": "B20"
+        },
+        {
+          "label": "Known limits",
+          "label_cell": "A21",
+          "value": "Physical switching channels and cable specifications are pending. Current feedback, speech clarity and other design shortfalls remain open.",
+          "cell": "B21"
+        },
+        {
+          "label": "Scope",
+          "label_cell": "A22",
+          "value": "Reading, sanctuary, circulation, paths, facade and festival exterior lighting. Shared board sources are cross-references to the distribution-controls register; they are not duplicated here. Architectural fabric stays in the drawing specifications.",
+          "cell": "B22"
+        },
+        {
+          "label": "Release status",
+          "label_cell": "A23",
+          "value": "Design development; not issued for purchasing, installation or construction.",
+          "cell": "B23"
+        }
+      ],
+      "counts": {
+        "category": "lighting",
+        "equipment": 220,
+        "routes": 241,
+        "vertices": 2050,
+        "total_equipment_records": 220,
+        "total_route_records": 241,
+        "total_vertex_records": 2050,
+        "retiredEquipment": 0,
+        "retiredRoutes": 0,
+        "retiredVertices": 0,
+        "shown": 220,
+        "hidden": 0,
+        "connected": 220,
+        "commandedOn": 194,
+        "specsDocumented": 0,
+        "controlsDocumented": 0,
+        "cableDocumented": 0,
+        "allowancesEntered": 0,
+        "allowancePopulation": 241,
+        "proposedComplete": 0,
+        "proposedPartial": 0
+      },
+      "input_columns": [
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Manufacturer",
+          "header_cell": "Q6",
+          "data_range": "Q7:Q226",
+          "population": 220,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Product model",
+          "header_cell": "R6",
+          "data_range": "R7:R226",
+          "population": 220,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Approved specs",
+          "header_cell": "S6",
+          "data_range": "S7:S226",
+          "population": 220,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Datasheet / approval",
+          "header_cell": "T6",
+          "data_range": "T7:T226",
+          "population": 220,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Manual control ID",
+          "header_cell": "U6",
+          "data_range": "U7:U226",
+          "population": 220,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Control group",
+          "header_cell": "V6",
+          "data_range": "V7:V226",
+          "population": 220,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed X (m)",
+          "header_cell": "W6",
+          "data_range": "W7:W226",
+          "population": 220,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed Y (m)",
+          "header_cell": "X6",
+          "data_range": "X7:X226",
+          "population": 220,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed Z (m)",
+          "header_cell": "Y6",
+          "data_range": "Y7:Y226",
+          "population": 220,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Engineering notes",
+          "header_cell": "Z6",
+          "data_range": "Z7:Z226",
+          "population": 220,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Allowance (m)",
+          "header_cell": "M6",
+          "data_range": "M7:M247",
+          "population": 241,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Cable designation",
+          "header_cell": "Q6",
+          "data_range": "Q7:Q247",
+          "population": 241,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Core count",
+          "header_cell": "R6",
+          "data_range": "R7:R247",
+          "population": 241,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Cross-section (mm2)",
+          "header_cell": "S6",
+          "data_range": "S7:S247",
+          "population": 241,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Containment specification",
+          "header_cell": "T6",
+          "data_range": "T7:T247",
+          "population": 241,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Manufacturer / product",
+          "header_cell": "U6",
+          "data_range": "U7:U247",
+          "population": 241,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Control / terminal reference",
+          "header_cell": "V6",
+          "data_range": "V7:V247",
+          "population": 241,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Approval reference",
+          "header_cell": "W6",
+          "data_range": "W7:W247",
+          "population": 241,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "lighting",
+          "path": "docs/electrical-grid/categories/lighting/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Engineering notes",
+          "header_cell": "X6",
+          "data_range": "X7:X247",
+          "population": 241,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        }
+      ],
+      "saved_error_cells": [],
+      "zip_crc_check": "passed"
+    },
+    {
+      "category": "sound",
+      "path": "docs/electrical-grid/categories/sound/register.xlsx",
+      "sha256": "9f5e60421fc5cb2943f253d8acd4693e7e5ee749c56709c637ac61fd4388f604",
+      "bytes": 39609,
+      "sheets": [
+        {
+          "name": "Read me",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet1.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 43,
+          "formula_cells": 3,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Equipment",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet2.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 641,
+          "formula_cells": 0,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Electrical Lines",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet3.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 724,
+          "formula_cells": 126,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Route Points",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet4.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 2125,
+          "formula_cells": 302,
+          "saved_error_cells": []
+        }
+      ],
+      "readme": [
+        {
+          "label": "Sound: equipment and electrical register",
+          "label_cell": "A1",
+          "value": null,
+          "cell": "B1"
+        },
+        {
+          "label": "Purpose",
+          "label_cell": "A3",
+          "value": "Manage equipment specifications, locations, stable IDs, control mapping and electrical-line specifications against one shared layout.",
+          "cell": "B3"
+        },
+        {
+          "label": "Baseline",
+          "label_cell": "A4",
+          "value": "Sound. Loudspeakers, microphones, indoor speech and outdoor overflow. Model snapshot: 2026-10-07T12:10:03.268Z.",
+          "cell": "B4"
+        },
+        {
+          "label": "Current equipment",
+          "label_cell": "A5",
+          "value": 32,
+          "cell": "B5"
+        },
+        {
+          "label": "Current routes",
+          "label_cell": "A6",
+          "value": 42,
+          "cell": "B6"
+        },
+        {
+          "label": "Retired equipment / routes",
+          "label_cell": "A7",
+          "value": 0,
+          "cell": "B7"
+        },
+        {
+          "label": "Coordinates",
+          "label_cell": "A8",
+          "value": "Metres: X toward sanctuary from axis 1; Y up from nave ±0.000; negative Z toward B, positive toward H.",
+          "cell": "B8"
+        },
+        {
+          "label": "Amber columns",
+          "label_cell": "A9",
+          "value": "Editable engineering inputs. Approved products/specifications, control IDs, notes and cable allowances survive refresh by ID. Blank means pending.",
+          "cell": "B9"
+        },
+        {
+          "label": "Model columns",
+          "label_cell": "A10",
+          "value": "Imported positions, IDs, planning specs and route vertices refresh from paired layout/systems exports. Use Proposed X/Y/Z for position revisions.",
+          "cell": "B10"
+        },
+        {
+          "label": "Position changes",
+          "label_cell": "A11",
+          "value": "Enter all three Proposed coordinates; export a draft layout, import it in the viewer, check supports/aim/clearances, then export matching layout and systems JSON. Enclosures require a coordinated model-source change.",
+          "cell": "B11"
+        },
+        {
+          "label": "Line lengths",
+          "label_cell": "A12",
+          "value": "Route length sums the ordered 3D segments. Full home-run length adds its upstream path once. Do not add shared bundles again; no procurement total is implied.",
+          "cell": "B12"
+        },
+        {
+          "label": "Specifications",
+          "label_cell": "A13",
+          "value": "Catalogue values and procedural dimensions are planning proxies. Final cable type, core count, cross-section, containment and approvals remain blank until designed.",
+          "cell": "B13"
+        },
+        {
+          "label": "Source layout SHA-256",
+          "label_cell": "A14",
+          "value": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+          "cell": "B14"
+        },
+        {
+          "label": "Source systems SHA-256",
+          "label_cell": "A15",
+          "value": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+          "cell": "B15"
+        },
+        {
+          "label": "Layout version",
+          "label_cell": "A16",
+          "value": "2026-10-16-tower-board; sanctuary 2026-10-07-sanctuary-8",
+          "cell": "B16"
+        },
+        {
+          "label": "Layout source",
+          "label_cell": "A17",
+          "value": "docs/electrical-grid/equipment-layout.json",
+          "cell": "B17"
+        },
+        {
+          "label": "Systems source",
+          "label_cell": "A18",
+          "value": "docs/electrical-grid/electrical-systems.json",
+          "cell": "B18"
+        },
+        {
+          "label": "Viewer",
+          "label_cell": "A19",
+          "value": "Thach_Bi_Viewer/OPEN_CHURCH.html → Simulator → Wiring. Equipment IDs and route IDs match both the 2D and 3D views.",
+          "cell": "B19"
+        },
+        {
+          "label": "Refresh",
+          "label_cell": "A20",
+          "value": "See docs/electrical-grid/register.md. Edit amber fields in the usage-category files. Refresh preserves their values by ID, retains retired records and updates the summary report.",
+          "cell": "B20"
+        },
+        {
+          "label": "Known limits",
+          "label_cell": "A21",
+          "value": "Physical switching channels and cable specifications are pending. Current feedback, speech clarity and other design shortfalls remain open.",
+          "cell": "B21"
+        },
+        {
+          "label": "Scope",
+          "label_cell": "A22",
+          "value": "Loudspeakers, microphones, indoor speech and outdoor overflow. Shared board sources are cross-references to the distribution-controls register; they are not duplicated here. Architectural fabric stays in the drawing specifications.",
+          "cell": "B22"
+        },
+        {
+          "label": "Release status",
+          "label_cell": "A23",
+          "value": "Design development; not issued for purchasing, installation or construction.",
+          "cell": "B23"
+        }
+      ],
+      "counts": {
+        "category": "sound",
+        "equipment": 32,
+        "routes": 42,
+        "vertices": 302,
+        "total_equipment_records": 32,
+        "total_route_records": 42,
+        "total_vertex_records": 302,
+        "retiredEquipment": 0,
+        "retiredRoutes": 0,
+        "retiredVertices": 0,
+        "shown": 32,
+        "hidden": 0,
+        "connected": 32,
+        "commandedOn": 22,
+        "specsDocumented": 0,
+        "controlsDocumented": 0,
+        "cableDocumented": 0,
+        "allowancesEntered": 0,
+        "allowancePopulation": 32,
+        "proposedComplete": 0,
+        "proposedPartial": 0
+      },
+      "input_columns": [
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Manufacturer",
+          "header_cell": "Q6",
+          "data_range": "Q7:Q38",
+          "population": 32,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Product model",
+          "header_cell": "R6",
+          "data_range": "R7:R38",
+          "population": 32,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Approved specs",
+          "header_cell": "S6",
+          "data_range": "S7:S38",
+          "population": 32,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Datasheet / approval",
+          "header_cell": "T6",
+          "data_range": "T7:T38",
+          "population": 32,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Manual control ID",
+          "header_cell": "U6",
+          "data_range": "U7:U38",
+          "population": 32,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Control group",
+          "header_cell": "V6",
+          "data_range": "V7:V38",
+          "population": 32,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed X (m)",
+          "header_cell": "W6",
+          "data_range": "W7:W38",
+          "population": 32,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed Y (m)",
+          "header_cell": "X6",
+          "data_range": "X7:X38",
+          "population": 32,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed Z (m)",
+          "header_cell": "Y6",
+          "data_range": "Y7:Y38",
+          "population": 32,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Engineering notes",
+          "header_cell": "Z6",
+          "data_range": "Z7:Z38",
+          "population": 32,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Allowance (m)",
+          "header_cell": "M6",
+          "data_range": "M7:M48",
+          "population": 42,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Cable designation",
+          "header_cell": "Q6",
+          "data_range": "Q7:Q48",
+          "population": 42,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Core count",
+          "header_cell": "R6",
+          "data_range": "R7:R48",
+          "population": 42,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Cross-section (mm2)",
+          "header_cell": "S6",
+          "data_range": "S7:S48",
+          "population": 42,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Containment specification",
+          "header_cell": "T6",
+          "data_range": "T7:T48",
+          "population": 42,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Manufacturer / product",
+          "header_cell": "U6",
+          "data_range": "U7:U48",
+          "population": 42,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Control / terminal reference",
+          "header_cell": "V6",
+          "data_range": "V7:V48",
+          "population": 42,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Approval reference",
+          "header_cell": "W6",
+          "data_range": "W7:W48",
+          "population": 42,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "sound",
+          "path": "docs/electrical-grid/categories/sound/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Engineering notes",
+          "header_cell": "X6",
+          "data_range": "X7:X48",
+          "population": 42,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        }
+      ],
+      "saved_error_cells": [],
+      "zip_crc_check": "passed"
+    },
+    {
+      "category": "air-system",
+      "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+      "sha256": "f991dd5e11143d0c216acc58f9f2d817c9cb1567a32f75f7074baf00145d5024",
+      "bytes": 34945,
+      "sheets": [
+        {
+          "name": "Read me",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet1.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 43,
+          "formula_cells": 3,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Equipment",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet2.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 692,
+          "formula_cells": 0,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Electrical Lines",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet3.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 584,
+          "formula_cells": 105,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Route Points",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet4.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 1649,
+          "formula_cells": 234,
+          "saved_error_cells": []
+        }
+      ],
+      "readme": [
+        {
+          "label": "Fans and ventilation: equipment and electrical register",
+          "label_cell": "A1",
+          "value": null,
+          "cell": "B1"
+        },
+        {
+          "label": "Purpose",
+          "label_cell": "A3",
+          "value": "Manage equipment specifications, locations, stable IDs, control mapping and electrical-line specifications against one shared layout.",
+          "cell": "B3"
+        },
+        {
+          "label": "Baseline",
+          "label_cell": "A4",
+          "value": "Fans and ventilation. Ceiling, wall, entrance and exhaust fans for air movement and ventilation. Model snapshot: 2026-10-07T12:10:03.268Z.",
+          "cell": "B4"
+        },
+        {
+          "label": "Current equipment",
+          "label_cell": "A5",
+          "value": 35,
+          "cell": "B5"
+        },
+        {
+          "label": "Current routes",
+          "label_cell": "A6",
+          "value": 35,
+          "cell": "B6"
+        },
+        {
+          "label": "Retired equipment / routes",
+          "label_cell": "A7",
+          "value": 0,
+          "cell": "B7"
+        },
+        {
+          "label": "Coordinates",
+          "label_cell": "A8",
+          "value": "Metres: X toward sanctuary from axis 1; Y up from nave ±0.000; negative Z toward B, positive toward H.",
+          "cell": "B8"
+        },
+        {
+          "label": "Amber columns",
+          "label_cell": "A9",
+          "value": "Editable engineering inputs. Approved products/specifications, control IDs, notes and cable allowances survive refresh by ID. Blank means pending.",
+          "cell": "B9"
+        },
+        {
+          "label": "Model columns",
+          "label_cell": "A10",
+          "value": "Imported positions, IDs, planning specs and route vertices refresh from paired layout/systems exports. Use Proposed X/Y/Z for position revisions.",
+          "cell": "B10"
+        },
+        {
+          "label": "Position changes",
+          "label_cell": "A11",
+          "value": "Enter all three Proposed coordinates; export a draft layout, import it in the viewer, check supports/aim/clearances, then export matching layout and systems JSON. Enclosures require a coordinated model-source change.",
+          "cell": "B11"
+        },
+        {
+          "label": "Line lengths",
+          "label_cell": "A12",
+          "value": "Route length sums the ordered 3D segments. Full home-run length adds its upstream path once. Do not add shared bundles again; no procurement total is implied.",
+          "cell": "B12"
+        },
+        {
+          "label": "Specifications",
+          "label_cell": "A13",
+          "value": "Catalogue values and procedural dimensions are planning proxies. Final cable type, core count, cross-section, containment and approvals remain blank until designed.",
+          "cell": "B13"
+        },
+        {
+          "label": "Source layout SHA-256",
+          "label_cell": "A14",
+          "value": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+          "cell": "B14"
+        },
+        {
+          "label": "Source systems SHA-256",
+          "label_cell": "A15",
+          "value": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+          "cell": "B15"
+        },
+        {
+          "label": "Layout version",
+          "label_cell": "A16",
+          "value": "2026-10-16-tower-board; sanctuary 2026-10-07-sanctuary-8",
+          "cell": "B16"
+        },
+        {
+          "label": "Layout source",
+          "label_cell": "A17",
+          "value": "docs/electrical-grid/equipment-layout.json",
+          "cell": "B17"
+        },
+        {
+          "label": "Systems source",
+          "label_cell": "A18",
+          "value": "docs/electrical-grid/electrical-systems.json",
+          "cell": "B18"
+        },
+        {
+          "label": "Viewer",
+          "label_cell": "A19",
+          "value": "Thach_Bi_Viewer/OPEN_CHURCH.html → Simulator → Wiring. Equipment IDs and route IDs match both the 2D and 3D views.",
+          "cell": "B19"
+        },
+        {
+          "label": "Refresh",
+          "label_cell": "A20",
+          "value": "See docs/electrical-grid/register.md. Edit amber fields in the usage-category files. Refresh preserves their values by ID, retains retired records and updates the summary report.",
+          "cell": "B20"
+        },
+        {
+          "label": "Known limits",
+          "label_cell": "A21",
+          "value": "Physical switching channels and cable specifications are pending. Current feedback, speech clarity and other design shortfalls remain open.",
+          "cell": "B21"
+        },
+        {
+          "label": "Scope",
+          "label_cell": "A22",
+          "value": "Ceiling, wall, entrance and exhaust fans for air movement and ventilation. Shared board sources are cross-references to the distribution-controls register; they are not duplicated here. Architectural fabric stays in the drawing specifications.",
+          "cell": "B22"
+        },
+        {
+          "label": "Release status",
+          "label_cell": "A23",
+          "value": "Design development; not issued for purchasing, installation or construction.",
+          "cell": "B23"
+        }
+      ],
+      "counts": {
+        "category": "air-system",
+        "equipment": 35,
+        "routes": 35,
+        "vertices": 234,
+        "total_equipment_records": 35,
+        "total_route_records": 35,
+        "total_vertex_records": 234,
+        "retiredEquipment": 0,
+        "retiredRoutes": 0,
+        "retiredVertices": 0,
+        "shown": 29,
+        "hidden": 6,
+        "connected": 29,
+        "commandedOn": 27,
+        "specsDocumented": 0,
+        "controlsDocumented": 0,
+        "cableDocumented": 0,
+        "allowancesEntered": 0,
+        "allowancePopulation": 35,
+        "proposedComplete": 0,
+        "proposedPartial": 0
+      },
+      "input_columns": [
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Manufacturer",
+          "header_cell": "Q6",
+          "data_range": "Q7:Q41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Product model",
+          "header_cell": "R6",
+          "data_range": "R7:R41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Approved specs",
+          "header_cell": "S6",
+          "data_range": "S7:S41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Datasheet / approval",
+          "header_cell": "T6",
+          "data_range": "T7:T41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Manual control ID",
+          "header_cell": "U6",
+          "data_range": "U7:U41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Control group",
+          "header_cell": "V6",
+          "data_range": "V7:V41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed X (m)",
+          "header_cell": "W6",
+          "data_range": "W7:W41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed Y (m)",
+          "header_cell": "X6",
+          "data_range": "X7:X41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed Z (m)",
+          "header_cell": "Y6",
+          "data_range": "Y7:Y41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Engineering notes",
+          "header_cell": "Z6",
+          "data_range": "Z7:Z41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Allowance (m)",
+          "header_cell": "M6",
+          "data_range": "M7:M41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Cable designation",
+          "header_cell": "Q6",
+          "data_range": "Q7:Q41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Core count",
+          "header_cell": "R6",
+          "data_range": "R7:R41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Cross-section (mm2)",
+          "header_cell": "S6",
+          "data_range": "S7:S41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Containment specification",
+          "header_cell": "T6",
+          "data_range": "T7:T41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Manufacturer / product",
+          "header_cell": "U6",
+          "data_range": "U7:U41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Control / terminal reference",
+          "header_cell": "V6",
+          "data_range": "V7:V41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Approval reference",
+          "header_cell": "W6",
+          "data_range": "W7:W41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "air-system",
+          "path": "docs/electrical-grid/categories/air-system/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Engineering notes",
+          "header_cell": "X6",
+          "data_range": "X7:X41",
+          "population": 35,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        }
+      ],
+      "saved_error_cells": [],
+      "zip_crc_check": "passed"
+    },
+    {
+      "category": "exit-signs",
+      "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+      "sha256": "13244a19667a147836fd25a0901da6724f143bd6dc239db435bf27014099b113",
+      "bytes": 18203,
+      "sheets": [
+        {
+          "name": "Read me",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet1.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 43,
+          "formula_cells": 3,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Equipment",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet2.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 128,
+          "formula_cells": 0,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Electrical Lines",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet3.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 140,
+          "formula_cells": 21,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Route Points",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet4.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 389,
+          "formula_cells": 54,
+          "saved_error_cells": []
+        }
+      ],
+      "readme": [
+        {
+          "label": "Exit signs: equipment and electrical register",
+          "label_cell": "A1",
+          "value": null,
+          "cell": "B1"
+        },
+        {
+          "label": "Purpose",
+          "label_cell": "A3",
+          "value": "Manage equipment specifications, locations, stable IDs, control mapping and electrical-line specifications against one shared layout.",
+          "cell": "B3"
+        },
+        {
+          "label": "Baseline",
+          "label_cell": "A4",
+          "value": "Exit signs. E1 maintained exit-sign group. Emergency supply and duration require separate design. Model snapshot: 2026-10-07T12:10:03.268Z.",
+          "cell": "B4"
+        },
+        {
+          "label": "Current equipment",
+          "label_cell": "A5",
+          "value": 5,
+          "cell": "B5"
+        },
+        {
+          "label": "Current routes",
+          "label_cell": "A6",
+          "value": 7,
+          "cell": "B6"
+        },
+        {
+          "label": "Retired equipment / routes",
+          "label_cell": "A7",
+          "value": 0,
+          "cell": "B7"
+        },
+        {
+          "label": "Coordinates",
+          "label_cell": "A8",
+          "value": "Metres: X toward sanctuary from axis 1; Y up from nave ±0.000; negative Z toward B, positive toward H.",
+          "cell": "B8"
+        },
+        {
+          "label": "Amber columns",
+          "label_cell": "A9",
+          "value": "Editable engineering inputs. Approved products/specifications, control IDs, notes and cable allowances survive refresh by ID. Blank means pending.",
+          "cell": "B9"
+        },
+        {
+          "label": "Model columns",
+          "label_cell": "A10",
+          "value": "Imported positions, IDs, planning specs and route vertices refresh from paired layout/systems exports. Use Proposed X/Y/Z for position revisions.",
+          "cell": "B10"
+        },
+        {
+          "label": "Position changes",
+          "label_cell": "A11",
+          "value": "Enter all three Proposed coordinates; export a draft layout, import it in the viewer, check supports/aim/clearances, then export matching layout and systems JSON. Enclosures require a coordinated model-source change.",
+          "cell": "B11"
+        },
+        {
+          "label": "Line lengths",
+          "label_cell": "A12",
+          "value": "Route length sums the ordered 3D segments. Full home-run length adds its upstream path once. Do not add shared bundles again; no procurement total is implied.",
+          "cell": "B12"
+        },
+        {
+          "label": "Specifications",
+          "label_cell": "A13",
+          "value": "Catalogue values and procedural dimensions are planning proxies. Final cable type, core count, cross-section, containment and approvals remain blank until designed.",
+          "cell": "B13"
+        },
+        {
+          "label": "Source layout SHA-256",
+          "label_cell": "A14",
+          "value": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+          "cell": "B14"
+        },
+        {
+          "label": "Source systems SHA-256",
+          "label_cell": "A15",
+          "value": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+          "cell": "B15"
+        },
+        {
+          "label": "Layout version",
+          "label_cell": "A16",
+          "value": "2026-10-16-tower-board; sanctuary 2026-10-07-sanctuary-8",
+          "cell": "B16"
+        },
+        {
+          "label": "Layout source",
+          "label_cell": "A17",
+          "value": "docs/electrical-grid/equipment-layout.json",
+          "cell": "B17"
+        },
+        {
+          "label": "Systems source",
+          "label_cell": "A18",
+          "value": "docs/electrical-grid/electrical-systems.json",
+          "cell": "B18"
+        },
+        {
+          "label": "Viewer",
+          "label_cell": "A19",
+          "value": "Thach_Bi_Viewer/OPEN_CHURCH.html → Simulator → Wiring. Equipment IDs and route IDs match both the 2D and 3D views.",
+          "cell": "B19"
+        },
+        {
+          "label": "Refresh",
+          "label_cell": "A20",
+          "value": "See docs/electrical-grid/register.md. Edit amber fields in the usage-category files. Refresh preserves their values by ID, retains retired records and updates the summary report.",
+          "cell": "B20"
+        },
+        {
+          "label": "Known limits",
+          "label_cell": "A21",
+          "value": "Physical switching channels and cable specifications are pending. Current feedback, speech clarity and other design shortfalls remain open.",
+          "cell": "B21"
+        },
+        {
+          "label": "Scope",
+          "label_cell": "A22",
+          "value": "E1 maintained exit-sign group. Emergency supply and duration require separate design. Shared board sources are cross-references to the distribution-controls register; they are not duplicated here. Architectural fabric stays in the drawing specifications.",
+          "cell": "B22"
+        },
+        {
+          "label": "Release status",
+          "label_cell": "A23",
+          "value": "Design development; not issued for purchasing, installation or construction.",
+          "cell": "B23"
+        }
+      ],
+      "counts": {
+        "category": "exit-signs",
+        "equipment": 5,
+        "routes": 7,
+        "vertices": 54,
+        "total_equipment_records": 5,
+        "total_route_records": 7,
+        "total_vertex_records": 54,
+        "retiredEquipment": 0,
+        "retiredRoutes": 0,
+        "retiredVertices": 0,
+        "shown": 5,
+        "hidden": 0,
+        "connected": 5,
+        "commandedOn": 5,
+        "specsDocumented": 0,
+        "controlsDocumented": 0,
+        "cableDocumented": 0,
+        "allowancesEntered": 0,
+        "allowancePopulation": 7,
+        "proposedComplete": 0,
+        "proposedPartial": 0
+      },
+      "input_columns": [
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Manufacturer",
+          "header_cell": "Q6",
+          "data_range": "Q7:Q11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Product model",
+          "header_cell": "R6",
+          "data_range": "R7:R11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Approved specs",
+          "header_cell": "S6",
+          "data_range": "S7:S11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Datasheet / approval",
+          "header_cell": "T6",
+          "data_range": "T7:T11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Manual control ID",
+          "header_cell": "U6",
+          "data_range": "U7:U11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Control group",
+          "header_cell": "V6",
+          "data_range": "V7:V11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed X (m)",
+          "header_cell": "W6",
+          "data_range": "W7:W11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed Y (m)",
+          "header_cell": "X6",
+          "data_range": "X7:X11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed Z (m)",
+          "header_cell": "Y6",
+          "data_range": "Y7:Y11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Engineering notes",
+          "header_cell": "Z6",
+          "data_range": "Z7:Z11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Allowance (m)",
+          "header_cell": "M6",
+          "data_range": "M7:M13",
+          "population": 7,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Cable designation",
+          "header_cell": "Q6",
+          "data_range": "Q7:Q13",
+          "population": 7,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Core count",
+          "header_cell": "R6",
+          "data_range": "R7:R13",
+          "population": 7,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Cross-section (mm2)",
+          "header_cell": "S6",
+          "data_range": "S7:S13",
+          "population": 7,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Containment specification",
+          "header_cell": "T6",
+          "data_range": "T7:T13",
+          "population": 7,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Manufacturer / product",
+          "header_cell": "U6",
+          "data_range": "U7:U13",
+          "population": 7,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Control / terminal reference",
+          "header_cell": "V6",
+          "data_range": "V7:V13",
+          "population": 7,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Approval reference",
+          "header_cell": "W6",
+          "data_range": "W7:W13",
+          "population": 7,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "exit-signs",
+          "path": "docs/electrical-grid/categories/exit-signs/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Engineering notes",
+          "header_cell": "X6",
+          "data_range": "X7:X13",
+          "population": 7,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        }
+      ],
+      "saved_error_cells": [],
+      "zip_crc_check": "passed"
+    },
+    {
+      "category": "decoration",
+      "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+      "sha256": "c3662afc0e3eeab5c39861a112a8773df81cf23d126dea7e0ab6c422e6975b41",
+      "bytes": 17383,
+      "sheets": [
+        {
+          "name": "Read me",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet1.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 43,
+          "formula_cells": 3,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Equipment",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet2.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 535,
+          "formula_cells": 0,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Electrical Lines",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet3.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 30,
+          "formula_cells": 0,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Route Points",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet4.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 11,
+          "formula_cells": 0,
+          "saved_error_cells": []
+        }
+      ],
+      "readme": [
+        {
+          "label": "Decoration and furnishings: equipment and electrical register",
+          "label_cell": "A1",
+          "value": null,
+          "cell": "B1"
+        },
+        {
+          "label": "Purpose",
+          "label_cell": "A3",
+          "value": "Manage equipment specifications, locations, stable IDs, control mapping and electrical-line specifications against one shared layout.",
+          "cell": "B3"
+        },
+        {
+          "label": "Baseline",
+          "label_cell": "A4",
+          "value": "Decoration and furnishings. Seasonal decorative lighting and non-electrical simulator furnishings. Model snapshot: 2026-10-07T12:10:03.268Z.",
+          "cell": "B4"
+        },
+        {
+          "label": "Current equipment",
+          "label_cell": "A5",
+          "value": 30,
+          "cell": "B5"
+        },
+        {
+          "label": "Current routes",
+          "label_cell": "A6",
+          "value": 0,
+          "cell": "B6"
+        },
+        {
+          "label": "Retired equipment / routes",
+          "label_cell": "A7",
+          "value": 0,
+          "cell": "B7"
+        },
+        {
+          "label": "Coordinates",
+          "label_cell": "A8",
+          "value": "Metres: X toward sanctuary from axis 1; Y up from nave ±0.000; negative Z toward B, positive toward H.",
+          "cell": "B8"
+        },
+        {
+          "label": "Amber columns",
+          "label_cell": "A9",
+          "value": "Editable engineering inputs. Approved products/specifications, control IDs, notes and cable allowances survive refresh by ID. Blank means pending.",
+          "cell": "B9"
+        },
+        {
+          "label": "Model columns",
+          "label_cell": "A10",
+          "value": "Imported positions, IDs, planning specs and route vertices refresh from paired layout/systems exports. Use Proposed X/Y/Z for position revisions.",
+          "cell": "B10"
+        },
+        {
+          "label": "Position changes",
+          "label_cell": "A11",
+          "value": "Enter all three Proposed coordinates; export a draft layout, import it in the viewer, check supports/aim/clearances, then export matching layout and systems JSON. Enclosures require a coordinated model-source change.",
+          "cell": "B11"
+        },
+        {
+          "label": "Line lengths",
+          "label_cell": "A12",
+          "value": "Route length sums the ordered 3D segments. Full home-run length adds its upstream path once. Do not add shared bundles again; no procurement total is implied.",
+          "cell": "B12"
+        },
+        {
+          "label": "Specifications",
+          "label_cell": "A13",
+          "value": "Catalogue values and procedural dimensions are planning proxies. Final cable type, core count, cross-section, containment and approvals remain blank until designed.",
+          "cell": "B13"
+        },
+        {
+          "label": "Source layout SHA-256",
+          "label_cell": "A14",
+          "value": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+          "cell": "B14"
+        },
+        {
+          "label": "Source systems SHA-256",
+          "label_cell": "A15",
+          "value": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+          "cell": "B15"
+        },
+        {
+          "label": "Layout version",
+          "label_cell": "A16",
+          "value": "2026-10-16-tower-board; sanctuary 2026-10-07-sanctuary-8",
+          "cell": "B16"
+        },
+        {
+          "label": "Layout source",
+          "label_cell": "A17",
+          "value": "docs/electrical-grid/equipment-layout.json",
+          "cell": "B17"
+        },
+        {
+          "label": "Systems source",
+          "label_cell": "A18",
+          "value": "docs/electrical-grid/electrical-systems.json",
+          "cell": "B18"
+        },
+        {
+          "label": "Viewer",
+          "label_cell": "A19",
+          "value": "Thach_Bi_Viewer/OPEN_CHURCH.html → Simulator → Wiring. Equipment IDs and route IDs match both the 2D and 3D views.",
+          "cell": "B19"
+        },
+        {
+          "label": "Refresh",
+          "label_cell": "A20",
+          "value": "See docs/electrical-grid/register.md. Edit amber fields in the usage-category files. Refresh preserves their values by ID, retains retired records and updates the summary report.",
+          "cell": "B20"
+        },
+        {
+          "label": "Known limits",
+          "label_cell": "A21",
+          "value": "Physical switching channels and cable specifications are pending. Current feedback, speech clarity and other design shortfalls remain open.",
+          "cell": "B21"
+        },
+        {
+          "label": "Scope",
+          "label_cell": "A22",
+          "value": "Seasonal decorative lighting and non-electrical simulator furnishings. Shared board sources are cross-references to the distribution-controls register; they are not duplicated here. Architectural fabric stays in the drawing specifications.",
+          "cell": "B22"
+        },
+        {
+          "label": "Release status",
+          "label_cell": "A23",
+          "value": "Design development; not issued for purchasing, installation or construction.",
+          "cell": "B23"
+        }
+      ],
+      "counts": {
+        "category": "decoration",
+        "equipment": 30,
+        "routes": 0,
+        "vertices": 0,
+        "total_equipment_records": 30,
+        "total_route_records": 0,
+        "total_vertex_records": 0,
+        "retiredEquipment": 0,
+        "retiredRoutes": 0,
+        "retiredVertices": 0,
+        "shown": 15,
+        "hidden": 15,
+        "connected": 0,
+        "commandedOn": 15,
+        "specsDocumented": 0,
+        "controlsDocumented": 0,
+        "cableDocumented": 0,
+        "allowancesEntered": 0,
+        "allowancePopulation": 0,
+        "proposedComplete": 0,
+        "proposedPartial": 0
+      },
+      "input_columns": [
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Manufacturer",
+          "header_cell": "Q6",
+          "data_range": "Q7:Q36",
+          "population": 30,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Product model",
+          "header_cell": "R6",
+          "data_range": "R7:R36",
+          "population": 30,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Approved specs",
+          "header_cell": "S6",
+          "data_range": "S7:S36",
+          "population": 30,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Datasheet / approval",
+          "header_cell": "T6",
+          "data_range": "T7:T36",
+          "population": 30,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Manual control ID",
+          "header_cell": "U6",
+          "data_range": "U7:U36",
+          "population": 30,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Control group",
+          "header_cell": "V6",
+          "data_range": "V7:V36",
+          "population": 30,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed X (m)",
+          "header_cell": "W6",
+          "data_range": "W7:W36",
+          "population": 30,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed Y (m)",
+          "header_cell": "X6",
+          "data_range": "X7:X36",
+          "population": 30,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed Z (m)",
+          "header_cell": "Y6",
+          "data_range": "Y7:Y36",
+          "population": 30,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Engineering notes",
+          "header_cell": "Z6",
+          "data_range": "Z7:Z36",
+          "population": 30,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Allowance (m)",
+          "header_cell": "M6",
+          "data_range": null,
+          "population": 0,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Cable designation",
+          "header_cell": "Q6",
+          "data_range": null,
+          "population": 0,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Core count",
+          "header_cell": "R6",
+          "data_range": null,
+          "population": 0,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Cross-section (mm2)",
+          "header_cell": "S6",
+          "data_range": null,
+          "population": 0,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Containment specification",
+          "header_cell": "T6",
+          "data_range": null,
+          "population": 0,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Manufacturer / product",
+          "header_cell": "U6",
+          "data_range": null,
+          "population": 0,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Control / terminal reference",
+          "header_cell": "V6",
+          "data_range": null,
+          "population": 0,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Approval reference",
+          "header_cell": "W6",
+          "data_range": null,
+          "population": 0,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "decoration",
+          "path": "docs/electrical-grid/categories/decoration/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Engineering notes",
+          "header_cell": "X6",
+          "data_range": null,
+          "population": 0,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        }
+      ],
+      "saved_error_cells": [],
+      "zip_crc_check": "passed"
+    },
+    {
+      "category": "distribution-controls",
+      "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+      "sha256": "dce2be9965f37cf4c3a68cf608a1c907daa3bf484f6683d5d59360adbcdd4877",
+      "bytes": 17237,
+      "sheets": [
+        {
+          "name": "Read me",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet1.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 43,
+          "formula_cells": 3,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Equipment",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet2.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 98,
+          "formula_cells": 0,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Electrical Lines",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet3.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 86,
+          "formula_cells": 12,
+          "saved_error_cells": []
+        },
+        {
+          "name": "Route Points",
+          "state": "visible",
+          "xml_part": "xl/worksheets/sheet4.xml",
+          "merged_ranges": [],
+          "declared_dimension": null,
+          "nonempty_or_formula_cells": 298,
+          "formula_cells": 41,
+          "saved_error_cells": []
+        }
+      ],
+      "readme": [
+        {
+          "label": "Distribution and controls: equipment and electrical register",
+          "label_cell": "A1",
+          "value": null,
+          "cell": "B1"
+        },
+        {
+          "label": "Purpose",
+          "label_cell": "A3",
+          "value": "Manage equipment specifications, locations, stable IDs, control mapping and electrical-line specifications against one shared layout.",
+          "cell": "B3"
+        },
+        {
+          "label": "Baseline",
+          "label_cell": "A4",
+          "value": "Distribution and controls. DB1, DB2, LC1, FC1 and AV1 enclosures and their shared supply feeders. Model snapshot: 2026-10-07T12:10:03.268Z.",
+          "cell": "B4"
+        },
+        {
+          "label": "Current equipment",
+          "label_cell": "A5",
+          "value": 5,
+          "cell": "B5"
+        },
+        {
+          "label": "Current routes",
+          "label_cell": "A6",
+          "value": 4,
+          "cell": "B6"
+        },
+        {
+          "label": "Retired equipment / routes",
+          "label_cell": "A7",
+          "value": 0,
+          "cell": "B7"
+        },
+        {
+          "label": "Coordinates",
+          "label_cell": "A8",
+          "value": "Metres: X toward sanctuary from axis 1; Y up from nave ±0.000; negative Z toward B, positive toward H.",
+          "cell": "B8"
+        },
+        {
+          "label": "Amber columns",
+          "label_cell": "A9",
+          "value": "Editable engineering inputs. Approved products/specifications, control IDs, notes and cable allowances survive refresh by ID. Blank means pending.",
+          "cell": "B9"
+        },
+        {
+          "label": "Model columns",
+          "label_cell": "A10",
+          "value": "Imported positions, IDs, planning specs and route vertices refresh from paired layout/systems exports. Use Proposed X/Y/Z for position revisions.",
+          "cell": "B10"
+        },
+        {
+          "label": "Position changes",
+          "label_cell": "A11",
+          "value": "Enter all three Proposed coordinates; export a draft layout, import it in the viewer, check supports/aim/clearances, then export matching layout and systems JSON. Enclosures require a coordinated model-source change.",
+          "cell": "B11"
+        },
+        {
+          "label": "Line lengths",
+          "label_cell": "A12",
+          "value": "Route length sums the ordered 3D segments. Full home-run length adds its upstream path once. Do not add shared bundles again; no procurement total is implied.",
+          "cell": "B12"
+        },
+        {
+          "label": "Specifications",
+          "label_cell": "A13",
+          "value": "Catalogue values and procedural dimensions are planning proxies. Final cable type, core count, cross-section, containment and approvals remain blank until designed.",
+          "cell": "B13"
+        },
+        {
+          "label": "Source layout SHA-256",
+          "label_cell": "A14",
+          "value": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+          "cell": "B14"
+        },
+        {
+          "label": "Source systems SHA-256",
+          "label_cell": "A15",
+          "value": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+          "cell": "B15"
+        },
+        {
+          "label": "Layout version",
+          "label_cell": "A16",
+          "value": "2026-10-16-tower-board; sanctuary 2026-10-07-sanctuary-8",
+          "cell": "B16"
+        },
+        {
+          "label": "Layout source",
+          "label_cell": "A17",
+          "value": "docs/electrical-grid/equipment-layout.json",
+          "cell": "B17"
+        },
+        {
+          "label": "Systems source",
+          "label_cell": "A18",
+          "value": "docs/electrical-grid/electrical-systems.json",
+          "cell": "B18"
+        },
+        {
+          "label": "Viewer",
+          "label_cell": "A19",
+          "value": "Thach_Bi_Viewer/OPEN_CHURCH.html → Simulator → Wiring. Equipment IDs and route IDs match both the 2D and 3D views.",
+          "cell": "B19"
+        },
+        {
+          "label": "Refresh",
+          "label_cell": "A20",
+          "value": "See docs/electrical-grid/register.md. Edit amber fields in the usage-category files. Refresh preserves their values by ID, retains retired records and updates the summary report.",
+          "cell": "B20"
+        },
+        {
+          "label": "Known limits",
+          "label_cell": "A21",
+          "value": "Physical switching channels and cable specifications are pending. Current feedback, speech clarity and other design shortfalls remain open.",
+          "cell": "B21"
+        },
+        {
+          "label": "Scope",
+          "label_cell": "A22",
+          "value": "DB1, DB2, LC1, FC1 and AV1 enclosures and their shared supply feeders. Shared board sources are cross-references to the distribution-controls register; they are not duplicated here. Architectural fabric stays in the drawing specifications.",
+          "cell": "B22"
+        },
+        {
+          "label": "Release status",
+          "label_cell": "A23",
+          "value": "Design development; not issued for purchasing, installation or construction.",
+          "cell": "B23"
+        }
+      ],
+      "counts": {
+        "category": "distribution-controls",
+        "equipment": 5,
+        "routes": 4,
+        "vertices": 41,
+        "total_equipment_records": 5,
+        "total_route_records": 4,
+        "total_vertex_records": 41,
+        "retiredEquipment": 0,
+        "retiredRoutes": 0,
+        "retiredVertices": 0,
+        "shown": 5,
+        "hidden": 0,
+        "connected": 0,
+        "commandedOn": 0,
+        "specsDocumented": 0,
+        "controlsDocumented": 0,
+        "cableDocumented": 0,
+        "allowancesEntered": 0,
+        "allowancePopulation": 4,
+        "proposedComplete": 0,
+        "proposedPartial": 0
+      },
+      "input_columns": [
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Manufacturer",
+          "header_cell": "Q6",
+          "data_range": "Q7:Q11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Product model",
+          "header_cell": "R6",
+          "data_range": "R7:R11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Approved specs",
+          "header_cell": "S6",
+          "data_range": "S7:S11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Datasheet / approval",
+          "header_cell": "T6",
+          "data_range": "T7:T11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Manual control ID",
+          "header_cell": "U6",
+          "data_range": "U7:U11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Control group",
+          "header_cell": "V6",
+          "data_range": "V7:V11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed X (m)",
+          "header_cell": "W6",
+          "data_range": "W7:W11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed Y (m)",
+          "header_cell": "X6",
+          "data_range": "X7:X11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Proposed Z (m)",
+          "header_cell": "Y6",
+          "data_range": "Y7:Y11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Equipment",
+          "header": "Engineering notes",
+          "header_cell": "Z6",
+          "data_range": "Z7:Z11",
+          "population": 5,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Allowance (m)",
+          "header_cell": "M6",
+          "data_range": "M7:M10",
+          "population": 4,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Cable designation",
+          "header_cell": "Q6",
+          "data_range": "Q7:Q10",
+          "population": 4,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Core count",
+          "header_cell": "R6",
+          "data_range": "R7:R10",
+          "population": 4,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Cross-section (mm2)",
+          "header_cell": "S6",
+          "data_range": "S7:S10",
+          "population": 4,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Containment specification",
+          "header_cell": "T6",
+          "data_range": "T7:T10",
+          "population": 4,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Manufacturer / product",
+          "header_cell": "U6",
+          "data_range": "U7:U10",
+          "population": 4,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Control / terminal reference",
+          "header_cell": "V6",
+          "data_range": "V7:V10",
+          "population": 4,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Approval reference",
+          "header_cell": "W6",
+          "data_range": "W7:W10",
+          "population": 4,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        },
+        {
+          "category": "distribution-controls",
+          "path": "docs/electrical-grid/categories/distribution-controls/register.xlsx",
+          "sheet": "Electrical Lines",
+          "header": "Engineering notes",
+          "header_cell": "X6",
+          "data_range": "X7:X10",
+          "population": 4,
+          "nonempty_values": 0,
+          "formula_cells": 0
+        }
+      ],
+      "saved_error_cells": [],
+      "zip_crc_check": "passed"
+    }
+  ],
+  "totals": {
+    "equipment": 327,
+    "routes": 329,
+    "vertices": 2681,
+    "total_equipment_records": 327,
+    "total_route_records": 329,
+    "total_vertex_records": 2681,
+    "retiredEquipment": 0,
+    "retiredRoutes": 0,
+    "retiredVertices": 0,
+    "shown": 306,
+    "hidden": 21,
+    "connected": 286,
+    "commandedOn": 263,
+    "specsDocumented": 0,
+    "controlsDocumented": 0,
+    "cableDocumented": 0,
+    "allowancesEntered": 0,
+    "allowancePopulation": 319,
+    "proposedComplete": 0,
+    "proposedPartial": 0
+  },
+  "duplicates": {
+    "equipment": [],
+    "routes": [],
+    "vertices": []
+  },
+  "retired": {
+    "equipment": [],
+    "routes": [],
+    "vertices": []
+  },
+  "id_set_comparisons": {
+    "equipment_in_register_only": [],
+    "equipment_in_saved_sources_only": [],
+    "routes_in_register_only": [],
+    "routes_in_saved_systems_only": []
+  },
+  "nonempty_engineering_inputs": []
+}

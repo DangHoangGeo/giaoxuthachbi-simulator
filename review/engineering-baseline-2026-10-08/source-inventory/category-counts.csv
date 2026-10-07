@@ -1,0 +1,7 @@
+category,equipment,routes,vertices,total_equipment_records,total_route_records,total_vertex_records,retiredEquipment,retiredRoutes,retiredVertices,shown,hidden,connected,commandedOn,specsDocumented,controlsDocumented,cableDocumented,allowancesEntered,allowancePopulation,proposedComplete,proposedPartial
+lighting,220,241,2050,220,241,2050,0,0,0,220,0,220,194,0,0,0,0,241,0,0
+sound,32,42,302,32,42,302,0,0,0,32,0,32,22,0,0,0,0,32,0,0
+air-system,35,35,234,35,35,234,0,0,0,29,6,29,27,0,0,0,0,35,0,0
+exit-signs,5,7,54,5,7,54,0,0,0,5,0,5,5,0,0,0,0,7,0,0
+decoration,30,0,0,30,0,0,0,0,0,15,15,0,15,0,0,0,0,0,0,0
+distribution-controls,5,4,41,5,4,41,0,0,0,5,0,0,0,0,0,0,0,4,0,0

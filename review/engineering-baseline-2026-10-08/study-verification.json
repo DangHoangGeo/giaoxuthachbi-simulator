@@ -1,0 +1,18 @@
+{
+  "result": "passed",
+  "cases": 24,
+  "receiversPerCase": 368,
+  "receiverEvaluations": 8832,
+  "repeatedEvaluations": 17664,
+  "repeat": {
+    "performed": true,
+    "criterion": "Exact JSON equality excluding export timestamps; no rounding tolerance",
+    "passed": true
+  },
+  "sourceFilesVerified": 19,
+  "resultFilesVerified": 25,
+  "savedLayoutItemsAndSettings": "exact match",
+  "fixedReceiverCoverage": "unchanged within each layout",
+  "noSourceSound": "null preserved",
+  "auditRoundedComparisons": 9
+}

@@ -1,5 +1,7 @@
 # Fans and ventilation · Thạch Bi church
 
+> **Historical schedule and results:** the future-dated label below does not establish recency. Use the [8 October baseline](../engineering/baseline.md) and [24-case results](../../review/engineering-baseline-2026-10-08/study-summary.md): both layouts sample 368 positions; full-service four-block background is about 43.3 dBA. Local-speed shortfalls and nominal exhaust ~3.48 ACH remain. Installed losses, make-up air and heat control are unverified. The [air register](../electrical-grid/categories/air-system/register.xlsx) is the matched inventory, not an approved product schedule.
+
 > Generated from the simulator's recommended design (version `2026-10-15-system-review`) and its analysis engine on 2026-10-15.
 > Values are engineering estimates for comparing options, not certified calculations; confirm with a licensed engineer and the chosen manufacturer's data before purchase.
 > Coordinates: x along the nave toward the altar (axis 3 = 9.975 m … axis 10 = 44.175 m), z negative = left side B, positive = right side H, y = height above the nave floor (wings −0.32 m).
