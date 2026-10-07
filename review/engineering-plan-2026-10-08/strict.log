@@ -1,0 +1,15 @@
+{"concealedRouting":"passed","routes":329,"microphoneHomeRuns":2,"beamFeeds":75,"roofFeeds":95,"coveredRoofSpans":72,"chamberFeeds":11,"chamberVoidSegments":22,"serviceCrossings":34,"openWingCrossings":188,"proposedCovers":149,"timberCores":35,"capitalCores":14,"sourceRoofs":10,"explicitLampEntries":1,"roofSamples":19243,"rafterCores":36,"mainRoofApproaches":43,"amboFurnitureConnections":1,"towerCapCrossings":2,"movedMicrophone":true,"constructionApproved":false}
+{"electrical":"passed","installedComponents":286,"selectableRuns":329}
+{"systemResources":"passed","prototypes":75,"activePrototypes":43,"unusedPrototypes":32,"unusedPrototypeLimit":32,"primitiveGeometries":256}
+{"facadeCoverage":"passed","samples":[{"y":7.5,"z":-3,"lux":41.6},{"y":7.5,"z":0,"lux":19.3},{"y":7.5,"z":3,"lux":41.6},{"y":8.5,"z":-3,"lux":73.1},{"y":8.5,"z":0,"lux":39.7},{"y":8.5,"z":3,"lux":73.1},{"y":9.5,"z":-3,"lux":110.9},{"y":9.5,"z":0,"lux":52.7},{"y":9.5,"z":3,"lux":110.9},{"y":10.25,"z":-3,"lux":110},{"y":10.25,"z":0,"lux":55.2},{"y":10.25,"z":3,"lux":110},{"y":11,"z":-3,"lux":97.9},{"y":11,"z":0,"lux":53.3},{"y":11,"z":3,"lux":97.9},{"y":13,"z":-3,"lux":60},{"y":13,"z":0,"lux":41.8},{"y":13,"z":3,"lux":60},{"y":15,"z":-3,"lux":73.3},{"y":15,"z":0,"lux":65.9},{"y":15,"z":3,"lux":73.3},{"y":17,"z":0,"lux":76.3},{"y":19,"z":0,"lux":60.5},{"y":21.5,"z":0,"lux":35.5}]}
+{"stableInteriorLighting":"passed","shadowIds":"L98,L99","ambient":[0.045695893143124264,[0.3277780980458375,0.4396571738310091,0.623960391667596],[0.07227185067438519,0.051269458367115384,0.03954623527052923],110]}
+AssertionError [ERR_ASSERTION]: No design warnings: Low feedback margin Ambo microphone: only 1.2 dB of margin.; Low feedback margin Altar microphone: only 1.7 dB of margin.
+    at target (/Users/danghoang/Desktop/giaoxuthachbi_work/scripts/verify_simulator.cjs:15:23)
+    at /Users/danghoang/Desktop/giaoxuthachbi_work/scripts/verify_simulator.cjs:709:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
