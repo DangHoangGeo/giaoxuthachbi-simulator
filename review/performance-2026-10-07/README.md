@@ -132,3 +132,54 @@ the affected route vertices/segment lengths. Inspected the saved
 [line length](register-line.png) and [route points](register-points.png).
 The [full calculation audit](simulator-resources.log) has exactly the same numeric
 summary and unmet design targets as the original baseline.
+
+## Spatial audio responsiveness and ownership
+
+Based on `f7b3d91`. The [audio unit checks](audio-unit.log) compare 3,877,132 sample
+values byte-for-byte with the original impulse-response/STIPA-like synthesis at
+44.1 and 48 kHz, plus a low-rate skipped-band case. They also verify canceled
+resume/decode/microphone/file requests, stale errors, shared signal jobs, exact
+receiver/cache invalidation, moving fan emitters, bus disconnection and meter
+shutdown. Removed/muted speakers do not leave permanent bus connections.
+
+Only the 20 switched-on speakers allocate processing chains at startup, instead
+of all 30 registered speakers: **260 instead of 390 speaker-chain nodes**, including
+10 fewer HRTF panners. Muted chains retain up to 1.6 seconds to drain the maximum
+1.45-second delay plus input fade; quick mute/unmute reuses that same delay line.
+Same-ID response changes update the two preview filters in place. Node-graph
+tests verify these lifetimes; headphone transition quality was not listened to.
+
+The [Chrome audio checks](audio/checks.json) run offline with actual Web Audio,
+light graphics and 4× CPU throttling after startup. Digital output is nonzero;
+the device is muted. Embedded Vietnamese speech, late-cancel prevention,
+entrance-finish IR updates and real phone Play/Stop controls pass without console
+errors. Inspected [desktop](audio/listen-desktop.jpg) and
+[phone](audio/listen-phone.jpg) listening panels.
+
+For synthesis isolation, drawing pauses while both the original and new functions
+use the same room and sample rate. Three trials record timer heartbeats; the table
+shows medians of each trial's maximum gap and total preparation time. A timer
+heartbeat is a responsiveness probe, not an input-latency or audio-device metric.
+
+| Signal | Original maximum heartbeat gap | New maximum heartbeat gap | Original → new total preparation |
+| --- | ---: | ---: | ---: |
+| Room response | 85.3 ms | 8.6 ms | 85.2 → 258.3 ms |
+| STIPA-like sample | 594.4 ms | 9.6 ms | 593.8 → 1673.0 ms |
+
+Preparation takes longer overall because it gives control timers and rendering a
+turn between small chunks. Completed signals are cached. During actual walking
+with audio, 27 running fans and all 194 lamps, the median render interval is
+32.5 ms (~31 fps), p95 36.5 ms on the same M1 Pro GPU. This is not a
+weak-GPU result. No acoustical accuracy or headphone-quality claim follows from
+the digital meter, sample parity or timing tests.
+
+[Experiment notes](audio-experiments.json) retain the rejected scheduler-yield
+trial: it reduced preparation time but deferred ordinary timer callbacks. An
+earlier measurement also shut down its interval before an overdue heartbeat ran;
+the final test waits for it, asserts a valid probe and records all three trials.
+
+The [final calculation audit](simulator-audio.log) passes and its complete numeric
+summary equals the starting baseline. The [fresh strict check](simulator-final-strict.log)
+still fails on the established 1.2/1.7 dB microphone feedback margins; wing clarity,
+lighting and ventilation/sightline limitations remain. No input, physical layout,
+analysis formula, target, route or category register changes in this audio update.

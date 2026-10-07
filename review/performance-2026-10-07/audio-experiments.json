@@ -1,0 +1,50 @@
+{
+  "timerPrototype": {
+    "beforeIR": {
+      "totalMs": 84.80000019073486,
+      "maxHeartbeatGapMs": 84.90000009536743,
+      "yieldedHeartbeats": 1,
+      "samples": 216996
+    },
+    "afterIR": {
+      "totalMs": 281.90000009536743,
+      "maxHeartbeatGapMs": 9.900000095367432,
+      "yieldedHeartbeats": 64,
+      "samples": 216996
+    },
+    "beforeStipa": {
+      "totalMs": 693.7999997138977,
+      "maxHeartbeatGapMs": 693.9000000953674,
+      "yieldedHeartbeats": 1,
+      "samples": 882000
+    },
+    "afterStipa": {
+      "totalMs": 1654.7999997138977,
+      "maxHeartbeatGapMs": 9.400000095367432,
+      "yieldedHeartbeats": 366,
+      "samples": 882000
+    }
+  },
+  "schedulerYieldTrial": {
+    "beforeIR": {
+      "totalMs": 85.2,
+      "yieldedHeartbeats": 0
+    },
+    "afterIR": {
+      "totalMs": 140.3,
+      "maxHeartbeatGapMs": 140.4,
+      "yieldedHeartbeats": 1
+    },
+    "beforeStipa": {
+      "totalMs": 711.0,
+      "yieldedHeartbeats": 0
+    },
+    "afterStipa": {
+      "totalMs": 871.4,
+      "maxHeartbeatGapMs": 871.4,
+      "yieldedHeartbeats": 1
+    }
+  },
+  "decision": "Retain timer yielding so existing debounced controls and room-update timers can run during synthesis. Scheduler trial reduced total preparation time but deferred ordinary timer heartbeats. No claim about native input scheduling is inferred from this timer probe.",
+  "probeCorrection": "Early zero-delay probe shutdown could run before the overdue interval and record zero baseline heartbeats. Final benchmark waits 12 ms before shutdown, verifies the probe ran and records three trials."
+}

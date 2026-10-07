@@ -1,0 +1,42 @@
+{
+  "synthesis": {
+    "bitIdenticalSamples": 3877132,
+    "sampleRates": [
+      44100,
+      48000
+    ],
+    "lowRateSkipBands": true,
+    "yieldedTasks": 2588,
+    "cancellation": true
+  },
+  "lifecycle": {
+    "cancelResumeIRDecodeMic": true,
+    "staleDecodeErrorIgnored": true,
+    "sharedDecode": true,
+    "sharedLongSignal": true,
+    "oneCurrentPlayer": true,
+    "retiredBusEdgeReleased": true,
+    "hiddenAmbientSuspended": true
+  },
+  "activeChains": {
+    "offSourcesAllocateNothing": true,
+    "delayedTailDrain": true,
+    "quickToggleReusesChain": true,
+    "filterUpdatesInPlace": true
+  },
+  "acoustics": {
+    "stationaryArrivalCalls": 2,
+    "orientationStillUpdates": true,
+    "exactMovementInvalidates": true,
+    "itemsSettingsSeatsInvalidate": true,
+    "movingFansStayLive": true,
+    "roomReturnCancelsObsoleteIR": true,
+    "latestIRWins": true,
+    "duplicateIRSuppressed": true
+  },
+  "panel": {
+    "cancelFileDecode": true,
+    "closedMeterStops": true
+  }
+}
+Audio synthesis, lifecycle, propagation cache and panel checks passed.

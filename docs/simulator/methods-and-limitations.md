@@ -31,7 +31,7 @@ Every active lamp contributes from its actual modeled position. Native and textu
 
 This keeps the display consistent when moving around or changing graphics quality. It does not establish agreement with measured illuminance: rendering and analysis use different approximations, and most lamps have no individual shadow map. Never use camera exposure to disguise a lighting shortfall.
 
-Listening mode uses speaker direction, propagation/DSP delays and synthesized room reverberation. Headphone output depends on playback hardware and volume. Digital output dBFS is separate from predicted acoustic dBA. Playing a STIPA sample does not perform a calibrated STIPA measurement.
+Listening mode uses speaker direction, propagation/DSP delays and synthesized room reverberation. Headphone output depends on playback hardware and volume. Digital output dBFS is separate from predicted acoustic dBA. Playing a STIPA sample does not perform a calibrated STIPA measurement. Listening signals are prepared in cooperative tasks with sample-for-sample parity to the original generator; stationary propagation calculations are reused without skipping fan movement, source gating or listener orientation. See the [audio performance checks](performance.md#listening-mode).
 
 ## Comparing design options
 

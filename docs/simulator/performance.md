@@ -104,6 +104,44 @@ browser controls, moving blades, systems isolation and saved move/dim/deletion
 through reload and import. Derived feedback margins are recalculated after reload,
 not treated as user-entered fields.
 
+## Listening mode
+
+Room impulse responses and the long STIPA-like sample are generated in small
+cooperative tasks, retaining the original PRNG, filter arithmetic, sample order
+and normalization. Timer-based yielding gives ordinary control timers a turn too. Work checks its
+four-millisecond budget every 4,096 samples. This is a
+cooperative target, not a maximum browser-task latency guarantee. It works offline
+without workers, external audio services or extra runtime packages.
+
+The last complete room response remains active during an update. Only the latest
+requested room can replace it, including when inputs return to an earlier room.
+Initial Play waits for a complete response. Entrance finish, banners, seating and
+bulk settings restores now invalidate it too. Identical pending room/sample jobs
+are shared. Cancel prevents obsolete playback and closes late microphone streams;
+bounded shared signal preparation may finish and cache its result after Cancel.
+
+Only switched-on loudspeakers allocate spatial chains. Muted chains drain for
+1.6 seconds (covering the maximum 1.45-second programme delay and input fade)
+before teardown; a quick re-enable retains the same chain and delay contents.
+Changing a speaker response updates its two preview filters in place. The default
+20 active speakers use 260 chain nodes instead of 390 nodes for all 30 registered
+speakers. Their propagation/DSP delays and analytical inputs are unchanged.
+Only the pure arrival calculation is cached for an unchanged receiver, room and
+source revision. Items, all settings and seating invalidate this cache; receiver
+coordinates are not rounded. Head orientation, source gating, fan position/noise
+and local analysis readings continue to update. Removed chains release their
+specific upstream bus connection as well as their own nodes. Hidden tabs suspend
+the existing audio context; Stop retains the prior fan/background listening
+behavior. A closed listening panel stops its meter timer.
+
+`node scripts/verify_audio.cjs` checks byte-for-byte signal parity against the
+original synthesis at 44.1/48 kHz, low-rate skipped bands, playback races, room
+replacement/cancellation, cache invalidation, active-chain allocation, delayed-tail cleanup and the file/meter UI.
+`verify_audio_browser.cjs` exercises actual Chrome Web Audio, embedded speech,
+digital signal levels, room changes and walking with lights and fans running.
+Its output device is muted. It does not establish headphone sound quality,
+calibrated acoustic accuracy or a frame rate on weak GPUs.
+
 Run `node scripts/verify_model.cjs` to verify source/batch triangle counts,
 transformed positions, normals, UVs and buffer memory reduction, alongside the
 existing geometry and navigation checks. Run `node scripts/verify_simulator.cjs
@@ -132,6 +170,6 @@ are refreshed, correcting only route `drop:LC1:L1:light:-1:L3` from 8.391731 m t
 7.005 m. This restores the existing model intent, not a new engineering route design.
 Quantities, IDs, equipment output and entered workbook fields remain preserved.
 Governing documents checked: [sanctuary](../sanctuary-model.md),
-[systems brief](../interior-systems-plan.md), [lighting](../systems/lighting.md),
+[systems brief](../interior-systems-plan.md), [lighting](../systems/lighting.md), [sound](../systems/sound.md),
 [simulator methods](methods-and-limitations.md), [controls](../electrical-grid/controls.md)
 and [register workflow](../electrical-grid/register.md).
