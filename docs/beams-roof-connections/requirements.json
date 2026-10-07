@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "documentRevision": 1,
+  "documentRevision": 2,
   "date": "2026-10-07",
   "project": "Thạch Bi Church",
   "releaseStatus": "DESIGN_DEVELOPMENT_NOT_FOR_CONSTRUCTION",
@@ -347,5 +347,132 @@
       "url": "https://www.woodworks.org/mass-timber-technical-reference-guide/",
       "role": "Background resources only; not governing local design rules"
     }
-  ]
+  ],
+  "virtualModel": {
+    "recorded": "2026-10-07",
+    "status": "Visualization only. Nothing in this block is an engineering value.",
+    "source": "Thach_Bi_Viewer/simulator/engine.js and Thach_Bi_Viewer/sanctuary.js; shapes from Thach_Bi_Viewer/carving.js",
+    "longitudinalColumnLineBeams": {
+      "member": "B03",
+      "count": 14,
+      "lines": [
+        "D",
+        "E"
+      ],
+      "bays": [
+        "03-04",
+        "04-05",
+        "05-06",
+        "06-07",
+        "07-08",
+        "08-09",
+        "09-10"
+      ],
+      "memberIds": [
+        "B03-D-03-04",
+        "B03-D-04-05",
+        "B03-D-05-06",
+        "B03-D-06-07",
+        "B03-D-07-08",
+        "B03-D-08-09",
+        "B03-D-09-10",
+        "B03-E-03-04",
+        "B03-E-04-05",
+        "B03-E-05-06",
+        "B03-E-06-07",
+        "B03-E-07-08",
+        "B03-E-08-09",
+        "B03-E-09-10"
+      ],
+      "proxySectionM": {
+        "transverse": 0.24,
+        "vertical": 0.45
+      },
+      "proxyLevelM": {
+        "soffit": 8.73,
+        "top": 9.18
+      },
+      "sectionStatus": "VISUALIZATION_PROXY",
+      "engineeringSection": null,
+      "bearingDetail": null,
+      "mountsEquipment": false,
+      "inLightOrSoundAnalysis": false
+    },
+    "appliedOrnament": {
+      "status": "CONCEPT",
+      "structuralFunction": null,
+      "tieHaunches": {
+        "axes": [
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "side": "nave",
+        "runFromColumnAxisM": 0.8,
+        "depthM": 0.62
+      },
+      "longitudinalHaunches": {
+        "count": 28,
+        "runFromColumnAxisM": 0.95,
+        "depthM": 0.6
+      },
+      "sideBeamHaunches": {
+        "atColumn": {
+          "count": 14,
+          "runFromColumnAxisM": 0.8,
+          "depthM": 0.52
+        },
+        "atPier": {
+          "count": 14,
+          "runFromPierFaceM": 0.55,
+          "depthM": 0.42
+        }
+      },
+      "cartouches": {
+        "ties": 14,
+        "sideBeams": 28,
+        "longitudinalBeams": 28
+      },
+      "columnHeads": {
+        "capitalHeightM": 0.8,
+        "junctionBlockM": 0.6,
+        "dieM": 0.56
+      }
+    },
+    "openCoordination": [
+      {
+        "item": "Curved upper rail and short uprights over the tie",
+        "state": "not modelled",
+        "reason": "Roof uplights sit on top of each tie at mid-span",
+        "responsible": "architect and lighting designer"
+      },
+      {
+        "item": "Haunches under the axis-9 tie",
+        "state": "not modelled",
+        "reason": "Ambo key light and presider light hang 0.45 m and 0.60 m from the column axes",
+        "responsible": "lighting designer"
+      },
+      {
+        "item": "Haunch run under the other ties",
+        "state": "limited to 0.80 m",
+        "reason": "Reading lights 1.00 m from the column axis",
+        "responsible": "lighting designer"
+      },
+      {
+        "item": "Pier brackets",
+        "state": "limited to 0.42 m deep",
+        "reason": "Wall fans on the piers at axes 4, 6 and 8 reach +5.90 m",
+        "responsible": "mechanical designer"
+      },
+      {
+        "item": "Lengthwise beams",
+        "state": "proxy section",
+        "reason": "Section, level, bearings, splices and stability role undefined",
+        "responsible": "structural engineer"
+      }
+    ]
+  }
 }

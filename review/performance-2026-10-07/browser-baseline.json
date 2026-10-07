@@ -1,0 +1,77 @@
+{
+  "version": "baseline",
+  "readyMs": 5604,
+  "scenarios": [
+    {
+      "light": "day",
+      "frames": 58,
+      "medianMs": 101.5,
+      "p95Ms": 117.19999980926514,
+      "renderCpuMedian": 9,
+      "shadows": 0,
+      "pixelRatio": 1,
+      "canvas": [
+        1280,
+        800
+      ],
+      "render": {
+        "frame": 121,
+        "calls": 779,
+        "triangles": 1747938,
+        "points": 246,
+        "lines": 0,
+        "batchedMeshes": 136
+      },
+      "memory": {
+        "geometries": 251,
+        "textures": 134
+      },
+      "heap": 365937665,
+      "pool": {
+        "emitters": 194,
+        "points": 8,
+        "spots": 14,
+        "shadows": 2,
+        "persistent": 170,
+        "culled": 0
+      },
+      "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M1 Pro, Unspecified Version)"
+    },
+    {
+      "light": "evening",
+      "frames": 57,
+      "medianMs": 102.40000009536743,
+      "p95Ms": 120.09999990463257,
+      "renderCpuMedian": 9,
+      "shadows": 0,
+      "pixelRatio": 1,
+      "canvas": [
+        1280,
+        800
+      ],
+      "render": {
+        "frame": 213,
+        "calls": 779,
+        "triangles": 1747938,
+        "points": 246,
+        "lines": 0,
+        "batchedMeshes": 136
+      },
+      "memory": {
+        "geometries": 251,
+        "textures": 134
+      },
+      "heap": 363600899,
+      "pool": {
+        "emitters": 194,
+        "points": 8,
+        "spots": 14,
+        "shadows": 2,
+        "persistent": 170,
+        "culled": 0
+      },
+      "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M1 Pro, Unspecified Version)"
+    }
+  ],
+  "errors": []
+}

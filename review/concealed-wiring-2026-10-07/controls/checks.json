@@ -1,0 +1,9 @@
+{
+  "checks": "passed",
+  "circuitNotifications": 1,
+  "fanMotion": true,
+  "soundMute": true,
+  "savedMoveDimDeletion": true,
+  "exportImport": true,
+  "errors": []
+}

@@ -34,7 +34,7 @@ const sandbox = {
 sandbox.window = sandbox;
 sandbox.addEventListener = (e, f) => { (listeners[e] ||= []).push(f); };
 vm.createContext(sandbox);
-for (const file of ['references.js', 'glass-art.js', 'sanctuary.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
+for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
   vm.runInContext(fs.readFileSync(path.join(viewer, file), 'utf8'), sandbox, { filename: file });
 
 let src = fs.readFileSync(path.join(viewer, 'bundle.js'), 'utf8');
@@ -65,7 +65,7 @@ assert(nodes.filter(o => o.name === 'Purlin · as drawn spacing ~0.50 m').length
 // The beams carry the lacquer of the columns, with gilded borders, rosettes and bands.
 {
   const named = name => nodes.filter(o => o.isMesh && o.name === name), timber = interior.materials.timber;
-  assert.equal(timber.color.getHexString(), '571a12', 'structural timber is lacquered by default');
+  assert.equal(timber.color.getHexString(), '652016', 'structural timber is lacquered by default');
   for (const o of [...ties, ...sideBeams, ...named('Purlin · as drawn spacing ~0.50 m')]) assert.equal(o.material, timber, o.name + ' uses the structural timber finish');
   const tieGilding = [...named('Main tie beam gilded border'), ...named('Main tie beam gilded rosette'), ...named('Main tie beam gilded band')];
   assert.equal(named('Main tie beam gilded border').length, 28, 'two border lines on both faces of each tie beam');
@@ -76,9 +76,46 @@ assert(nodes.filter(o => o.name === 'Purlin · as drawn spacing ~0.50 m').length
   for (const o of [...tieGilding, ...named('Side beam gilded band'), ...named('Side beam gilded border')]) assert.equal(o.material.name, 'Sanctuary · carved gilding', o.name + ' is gilded');
   for (const o of tieGilding) {
     const b = new T.Box3().setFromObject(o), tie = ties.find(t => Math.abs(t.position.x - (b.min.x + b.max.x) / 2) < 0.2);
-    assert(tie && new T.Box3().setFromObject(tie).expandByScalar(0.03).containsBox(b), o.name + ' sits on its tie beam');
+    // The carved cartouche (still named rosette) stands a few centimetres proud of the beam face.
+    assert(tie && new T.Box3().setFromObject(tie).expandByScalar(o.name.endsWith('rosette') ? 0.07 : 0.03).containsBox(b), o.name + ' sits on its tie beam');
     assert.equal(o.parent, tie.parent, 'tie-beam gilding shows and hides with the drawn frame');
   }
+  // Lengthwise beams on the D/E column lines (beam specification B03): 14 proxy members with their
+  // top flush with the ties, each between two successive column axes, with member and connection
+  // IDs. None in bay 2′–3, none beyond the sanctuary frame.
+  const long = named('Longitudinal column-line beam 0.24 × 0.45 m · concept proxy'), ids = new Set(), axes = data.longitudinal;
+  assert.equal(long.length, 14, 'a lengthwise beam in each bay 3–10 on both column lines');
+  for (const o of long) {
+    const b = new T.Box3().setFromObject(o), u = o.userData, [x0, x1] = u.supports.map(k => axes[k.split('/')[0]]);
+    assert(Math.abs(b.min.y - 8.73) < 0.002 && Math.abs(b.max.y - 9.18) < 0.002, 'lengthwise beam levels');
+    assert(Math.abs(Math.abs((b.min.z + b.max.z) / 2) - 3.6) < 0.002 && Math.abs(b.max.z - b.min.z - 0.24) < 0.002, 'lengthwise beam on the column line');
+    assert(/^B03-[DE]-\d\d-\d\d$/.test(u.memberId) && !ids.has(u.memberId), 'member ID by family, line and bay: ' + u.memberId);
+    ids.add(u.memberId);
+    assert(x1 - x0 >= 4.5 - 0.001 && b.min.x >= x0 + 0.29 && b.max.x <= x1 - 0.27 && b.min.x < x0 + 0.31 && b.max.x > x1 - 0.31, u.memberId + ' runs from column to column');
+    assert(b.min.x > axes['3'] && b.max.x < axes['10'], u.memberId + ' stays between axis 3 and the sanctuary frame');
+    assert(u.engineeringApproved === false && u.sectionStatus === 'ENGINEERING HOLD' && u.connectionIds.length === 2 && u.connectionIds.every(c => /^J04-[DE]-\d\d$/.test(c)), u.memberId + ' keeps its engineering hold and connection IDs');
+    assert.equal(o.material, timber, 'lengthwise beam uses the structural timber finish');
+    assert.equal(o.parent, ties[0].parent, 'lengthwise beam shows and hides with the drawn frame');
+  }
+  assert.equal(SIM.GEO.longBeams.length, 14);
+  // A proxy member is not a mounting support: only the drawn beams and the roof are.
+  assert.equal(SIM.structureAbove((axes['5'] + axes['6']) / 2, 3.6, 2).kind, 'roof', 'nothing is mounted on a proxy beam');
+  // Carved ornament of the approved concept: haunches under the beams, cartouches on their faces, carved tie ends.
+  const top = o => new T.Box3().setFromObject(o).max.y, centreX = o => new T.Box3().setFromObject(o).getCenter(new T.Vector3()).x;
+  for (const [name, count, soffit] of [['Main tie beam carved haunch', 12, 8.59], ['Longitudinal column-line beam carved haunch', 28, 8.73], ['Side beam carved haunch', 14, 6.66], ['Side beam carved pier bracket', 14, 6.66]]) {
+    const list = named(name);
+    assert.equal(list.length, count, name);
+    for (const o of list) { assert(Math.abs(top(o) - soffit) < 0.002, name + ' springs from the beam soffit'); assert.equal(o.material, timber, name + ' is solid beam timber'); assert.equal(o.userData.engineeringApproved, false); }
+    assert.equal(named(name + ' · foliage').length, count); assert.equal(named(name + ' · gilding').length, count);
+    for (const o of named(name + ' · foliage')) assert.equal(o.material.name, 'Sanctuary · carved lacquered timber');
+  }
+  // No haunch under the axis-9 tie beam, where the ambo key light and the presider light hang.
+  assert(named('Main tie beam carved haunch').every(o => Math.abs(centreX(o) - axes['9']) > 1), 'axis 9 keeps its tie beam soffit clear');
+  for (const [name, count] of [['Main tie beam carved end', 14], ['Side beam gilded cartouche', 28], ['Longitudinal column-line beam gilded cartouche', 28], ['Longitudinal column-line beam gilded border', 56]]) assert.equal(named(name).length, count, name);
+  for (const o of nodes.filter(o => o.isMesh && /^(Main tie beam|Longitudinal column-line beam)/.test(o.name))) assert.equal(o.parent, ties[0].parent, o.name + ' belongs to the drawn frame');
+  let triangles = 0;
+  for (const o of nodes) if (o.isMesh && /^(Main tie beam|Side beam|Longitudinal column-line beam) (carved|gilded (rosette|cartouche))/.test(o.name)) triangles += (o.geometry.index ? o.geometry.index.count : o.geometry.attributes.position.count) / 3;
+  assert(triangles < 260000, 'beam ornament triangle budget: ' + triangles);
 }
 const truss = [...batches.keys()].find(g => g.userData.proposedTruss);
 assert(truss, 'proposed truss layer is a separate batch');
@@ -90,10 +127,37 @@ assert.equal(interior.lights.length, 0, 'legacy interior lights replaced');
 
 // --- Start with a stub viewer API ------------------------------------------
 const camera = new T.PerspectiveCamera(50, 1.6, 0.05, 500); camera.position.set(20, 1.6, 0);
-const church = { scene: sandbox.window.model.scene, colliders: [], walkCamera: { aspect: 1.6, fov: 68, updateProjectionMatrix() {} }, walk: { eyeHeight: 1.65, speed: 2.05 }, places: {}, goTo() {}, setMode() {}, uiState: () => ({ roof: true }), camera, controls: { target: new T.Vector3(), update() {} } };
+const church = { scene: sandbox.window.model.scene, renderer: sandbox.window.model.renderer, colliders: [], walkCamera: { aspect: 1.6, fov: 68, updateProjectionMatrix() {} }, walk: { eyeHeight: 1.65, speed: 2.05 }, places: {}, goTo() {}, setMode() {}, uiState: () => ({ roof: true }), camera, controls: { target: new T.Vector3(), update() {} } };
 SIM.start(church);
 assert(SIM.ready, 'simulator started');
 assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.items.length);
+// Carved ornament keeps clear of every fitting of the recommended design: no vertex of a capital,
+// haunch, cartouche or beam end lies inside a part of a lamp, fan, loudspeaker or banner. One contact
+// is known and recorded as a lighting coordination item: the ambo key light hangs 0.45 m from the
+// axis-9/D column axis and its canopy meets the abacus, as it met the plain capital before.
+{
+  const known = new Set(['Ambo key light|Column carving · capital bell']), contacts = new Map(), v = new T.Vector3();
+  const carved = nodes.filter(o => o.isMesh && /^(Column carving|Gilded column capital|Main tie beam|Side beam|Longitudinal column-line beam)/.test(o.name) && !/as drawn$|concept proxy$/.test(o.name));
+  building.updateMatrixWorld(true);
+  const boxes = carved.map(o => new T.Box3().setFromObject(o));
+  for (const fx of SIM.fixtures.values()) {
+    // Lamps, fans, loudspeakers and microphones, and the banners on the columns. Plants, flowers
+    // and furniture are not fittings.
+    if (fx.type.cat === 'decor' && fx.item.type !== 'banner') continue;
+    fx.root.updateWorldMatrix(true, true);
+    // Part by part: one box round a fan and its long downrod would take in half the bay.
+    const parts = [];
+    fx.root.traverse(m => { if (m.isMesh && m.geometry?.attributes?.position) { const box = new T.Box3().setFromObject(m); if (!box.isEmpty()) parts.push(box); } });
+    carved.forEach((o, i) => {
+      const near = parts.filter(box => boxes[i].intersectsBox(box));
+      if (!near.length) return;
+      const p = o.geometry.attributes.position;
+      for (let k = 0; k < p.count; k++) { v.fromBufferAttribute(p, k).applyMatrix4(o.matrixWorld); if (near.some(box => box.containsPoint(v))) { contacts.set(`${fx.item.name}|${o.name}`, 1); break; } }
+    });
+  }
+  const unexpected = [...contacts.keys()].filter(k => !known.has(k));
+  assert.deepEqual(unexpected, [], 'carved ornament inside a fitting envelope: ' + unexpected.join('; '));
+}
 assert.equal(church.walk.speed, 1.4, 'realistic walking speed');
 assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + church.walkCamera.fov.toFixed(1));
 // Door pairs follow the actual openings, with decoration only at the middle
@@ -210,7 +274,7 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   SIM.setSetting('timberTone', 'dark');
   assert(timber.color.getHexString() === '7c5839' && slats.material.color.getHexString() === '7c5839', 'dark tone applies to beams and slats');
   SIM.setSetting('timberTone', 'reference');
-  assert(timber.color.getHexString() === '571a12' && timber.map === null && slats.material.color.getHexString() === 'ab8d6f', 'reference tone is the red lacquer');
+  assert(timber.color.getHexString() === '652016' && timber.map === null && slats.material.color.getHexString() === 'ab8d6f', 'reference tone is the red lacquer');
 }
 // Day/evening: the viewer redraws in the task that switches the mode, before any observer runs.
 // That frame must already use the new mode, or the evening sky levels overwrite the day ones.
@@ -228,6 +292,7 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
 {
   const E = SIM.electrical;
   assert(E.layer, 'electrical layer starts with the scene');
+  require('./verify_concealed_routes.cjs')({ SIM, T, CAT, building });
   const data = E.exportData(), runs = E.routes;
   assert.equal(new Set(runs.map(r => r.id)).size, runs.length, 'each run has a unique selection identity');
   assert.equal(runs.filter(r => r.role === 'feeder' && r.board === 'DB2').length, 1, 'one continuous DB2 feeder');
@@ -242,7 +307,7 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
     assert(r.length > 0, 'positive measured length ' + r.id);
     if (r.role === 'drop') {
       const it = SIM.item(r.itemIds[0]), trunk = runs.find(t => t.id === r.trunkId);
-      assert(near(r.points.at(-1), it.pos), 'drop terminates at component ' + r.id);
+      assert(near(r.points.at(-1), r.termination?.position || it.pos), 'drop terminates at component cable entry ' + r.id);
       assert(trunk && onPath(r.points[0], trunk.points), 'drop connects to its trunk ' + r.id);
     } else assert(near(r.points[0], E.SOURCES[r.source].pos), 'trunk/feeder starts at source ' + r.id);
   }
@@ -261,7 +326,9 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
     for (let p = o; p; p = p.parent) if (p === E.layer || p.userData.simId) return;
     before.set(o, o.visible);
   });
+  church.renderer.shadowMap.needsUpdate = false;
   E.setMode('systems');
+  assert(church.renderer.shadowMap.needsUpdate, 'systems isolation invalidates cached building shadows');
   assert(E.layer.visible, 'wires survive isolation');
   for (const fx of SIM.fixtures.values()) assert.equal(fx.root.visible, !fx.item.hidden && data.components.some(c => c.id === fx.item.id), 'isolation excludes hidden and non-electrical fixtures');
   const board = E.SOURCES.DB1;
@@ -269,11 +336,13 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   E.select('DB1'); assert.equal(E.view.selected, 'DB1', 'physical board can be selected');
   const drop = runs.find(r => r.role === 'drop'); E.select(drop.id);
   assert.equal(E.view.selected, drop.id, 'individual run can be selected');
-  const fixture = SIM.item(drop.itemIds[0]), oldPosition = fixture.pos.slice();
+  const fixture = SIM.item(drop.itemIds[0]), oldPosition = fixture.pos.slice(), oldAnchor = fixture.anchorY;
   SIM.update(fixture.id, { pos: [oldPosition[0] + 0.1, oldPosition[1], oldPosition[2]] }, { record: false }); E.rebuild();
   assert(near(E.routes.find(r => r.id === drop.id).points.at(-1), fixture.pos), 'routes follow edited fixtures with stable IDs');
-  SIM.update(fixture.id, { pos: oldPosition }, { record: false }); E.rebuild();
+  SIM.update(fixture.id, { pos: oldPosition, anchorY: oldAnchor }, { record: false }); E.rebuild();
+  church.renderer.shadowMap.needsUpdate = false;
   E.setMode('building');
+  assert(church.renderer.shadowMap.needsUpdate, 'restoring the building invalidates cached shadows');
   for (const [o, v] of before) assert.equal(o.visible, v, 'building visibility restored: ' + o.name);
   assert([...SIM.fixtures.values()].filter(f => f.item.hidden).every(f => !f.root.visible), 'restoring building does not reveal hidden alternatives');
   E.select('AV1'); assert.equal(E.view.selected, 'AV1', 'audio rack selectable');
@@ -297,6 +366,82 @@ for (const t of CAT.types) {
   const it = SIM.add({ type: t.id, pos: [20, 1, 0], mount: t.mounts[0], anchorY: 8.59 }, { record: false });
   assert(it, 'catalogue item builds: ' + t.id);
   SIM.remove(it.id, { record: false });
+}
+// Repeated edits must release owned resources and leave active/shared geometry intact.
+{
+  const baseline = JSON.stringify(SIM.state.items), history = SIM.state.history.length;
+  const ids = SIM.state.items.filter(it => it.circuit === 'L1' && !it.hidden).slice(0, 3).map(it => it.id);
+  let events = 0;
+  const stopEvents = SIM.on('items', () => events++);
+  SIM.update(ids[0], { dim: .73 }, { record: false });
+  assert.equal(events, 1, 'one item edit emits one notification');
+  events = 0;
+  SIM.batch(() => {
+    SIM.update(ids[0], { dim: .77 }, { record: false });
+    SIM.batch(() => { for (const id of ids.slice(1)) SIM.update(id, { dim: .77 }, { record: false }); });
+    assert.equal(events, 0, 'batch consumers cannot see a half-updated circuit');
+    SIM.commit('Performance transaction test');
+  });
+  assert.equal(events, 1, 'nested batch emits one complete state');
+  assert.equal(SIM.state.history.length, history + 1, 'one circuit action keeps one history entry');
+  events = 0; SIM.undo();
+  assert.equal(events, 1, 'undo restores a layout in one notification');
+  assert.deepEqual(JSON.parse(JSON.stringify(SIM.state.items)), JSON.parse(baseline), 'undo preserves every prior item field');
+  SIM.redo(); assert(ids.every(id => SIM.item(id).dim === .77), 'redo reapplies the whole circuit');
+  SIM.undo();
+  events = 0;
+  assert.throws(() => SIM.batch(() => { SIM.update(ids[0], { dim: .5 }, { record: false }); throw Error('interrupted transaction'); }), /interrupted/);
+  assert.equal(events, 1, 'an interrupted batch flushes its actual state');
+  SIM.update(ids[0], JSON.parse(baseline).find(it => it.id === ids[0]), { record: false });
+  stopEvents();
+
+  const original = SIM.fixtures.get(ids[0]);
+  let glowsDisposed = 0;
+  original.glowMat.addEventListener('dispose', () => glowsDisposed++);
+  SIM.update(ids[0], {}, { record: false, rebuild: true });
+  assert.equal(glowsDisposed, 1, 'rebuilding a fixture disposes its old glow material');
+  SIM.select(ids[0]);
+  const helper = church.scene.getObjectByName('Simulator selection');
+  let helperMaterials = 0; helper.material.addEventListener('dispose', () => helperMaterials++);
+  SIM.select(null); assert.equal(helperMaterials, 1, 'deselecting releases the helper material');
+
+  const a = SIM.add({ type: 'carpet', pos: [20, 0, 0], params: { length: 6 } }, { record: false });
+  const b = SIM.add({ type: 'carpet', pos: [24, 0, 0], params: { length: 6 } }, { record: false });
+  const shared = SIM.fixtures.get(a.id).proto;
+  assert.equal(SIM.fixtures.get(b.id).proto, shared, 'matching fixtures share prototype buffers');
+  let liveDisposals = 0, retiredDisposals = 0;
+  for (const group of Object.values(shared.groups)) for (const part of group) part.geo.addEventListener('dispose', () => liveDisposals++);
+  SIM.beginPlacement('carpet', { params: { length: 5.01 } });
+  let previewDisposals = 0;
+  church.scene.getObjectByName('Simulator placement preview').traverse(o => o.geometry?.addEventListener('dispose', () => previewDisposals++));
+  SIM.update(b.id, { params: { length: 6.01 } }, { record: false });
+  for (const group of Object.values(SIM.fixtures.get(b.id).proto.groups)) for (const part of group) part.geo.addEventListener('dispose', () => retiredDisposals++);
+  for (let i = 0; i < 100; i++) SIM.update(b.id, { params: { length: 7 + i * .1 } }, { record: false });
+  assert.equal(liveDisposals, 0, 'cache eviction never disposes a live prototype');
+  assert.equal(previewDisposals, 0, 'cache eviction protects an active placement preview');
+  SIM.cancelPlacement();
+  assert(retiredDisposals > 0, 'old unused variants release their geometry');
+  assert(SIM.resourceStats().unusedPrototypes <= SIM.resourceStats().unusedPrototypeLimit, 'unused fixture prototypes are bounded');
+  SIM.update(b.id, { params: { length: 6 } }, { record: false });
+  assert.equal(SIM.fixtures.get(b.id).proto, shared, 'a shared active prototype remains reusable');
+  SIM.remove(a.id, { record: false }); SIM.remove(b.id, { record: false });
+  for (let i = 0; i < 70; i++) SIM.beginPlacement('carpet', { params: { length: 20 + i * .1 } });
+  SIM.cancelPlacement();
+  assert(SIM.resourceStats().unusedPrototypes <= SIM.resourceStats().unusedPrototypeLimit, 'cancelled previews also prune unused geometry');
+  const kitFactory = CAT.makeKit(T);
+  for (let i = 0; i < 600; i++) kitFactory().box(1 + i / 1000, 1, 1, 'black');
+  assert(kitFactory.cacheSize() <= 256, 'temporary primitive cache stays bounded under continuous edits');
+  assert.deepEqual(JSON.parse(JSON.stringify(SIM.state.items)), JSON.parse(baseline), 'resource stress test preserves the design layout');
+
+  const E = SIM.electrical; E.rebuild();
+  const shapes = new Map(E.layer.children.filter(o => o.geometry && o.userData.electricalId).map(o => [o.userData.electricalId, o.geometry]));
+  const paths = JSON.stringify(E.routes), oldDim = SIM.item(ids[0]).dim;
+  SIM.update(ids[0], { dim: .2 }, { record: false }); E.rebuild();
+  assert.equal(JSON.stringify(E.routes), paths, 'dimming leaves every route coordinate and length unchanged');
+  for (const o of E.layer.children) if (shapes.has(o.userData.electricalId)) assert.equal(o.geometry, shapes.get(o.userData.electricalId), 'dimming reuses route GPU buffers');
+  assert.equal(SIM.exportLayout().items.find(it => it.id === ids[0]).dim, .2, 'layout export still reads the current dimmer');
+  SIM.update(ids[0], { dim: oldDim }, { record: false }); E.rebuild();
+  console.log(JSON.stringify({ systemResources: 'passed', ...SIM.resourceStats() }));
 }
 for (const it of SIM.state.items) {
   const t = CAT.byId[it.type];
@@ -494,6 +639,31 @@ function runSync(kinds) {
 }
 (async () => {
   await new Promise(r => setTimeout(r, 400));
+  let analysisRequests = 0;
+  const stopAnalysis = SIM.on('analysis-needed', () => analysisRequests++);
+  const oldHalos = SIM.state.settings.halos;
+  SIM.setSetting('halos', .3);
+  await new Promise(r => setTimeout(r, 180));
+  assert.equal(analysisRequests, 0, 'display preferences do not launch full analyses');
+  SIM.setSetting('halos', oldHalos);
+  SIM.setSetting('occupancy', SIM.state.settings.occupancy);
+  await new Promise(r => setTimeout(r, 180));
+  assert.equal(analysisRequests, 1, 'physical settings still invalidate analysis');
+  stopAnalysis();
+  SIM.frame(0.016, 'walk', camera);
+  const fanBefore = SIM.fans();
+  for (const fx of SIM.fixtures.values()) if (fx.osc && fx.type.fan?.oscillate) fx.update();
+  const fanAfter = SIM.fans();
+  for (let i = 0; i < fanBefore.length; i++) for (let k = 0; k < 3; k++) assert(Math.abs(fanBefore[i].pos[k] - fanAfter[i].pos[k]) < 1e-12, 'lightweight animation preserves the physical fan source position');
+  const gridBuilds = SIM.persistentLighting.stats().gridBuilds;
+  sandbox.window.model.renderer.shadowMap.needsUpdate = false;
+  const oldCamera = camera.position.clone();
+  camera.position.x += 1;
+  await new Promise(r => setTimeout(r, 300));
+  SIM.frame(0.016, 'walk', camera);
+  assert.equal(sandbox.window.model.renderer.shadowMap.needsUpdate, false, 'camera-only light reassignment keeps cached shadows');
+  assert.equal(SIM.persistentLighting.stats().gridBuilds, gridBuilds, 'camera movement does not rebuild spatial light lists');
+  camera.position.copy(oldCamera);
   const r = await runSync(['seats', 'lux', 'sti', 'air', 'noise']);
   const s = r.seats;
   assert(s.n >= 300, 'seats evaluated');

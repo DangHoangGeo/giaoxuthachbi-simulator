@@ -27,17 +27,21 @@
     file: 'Your recording…',
     mic: 'Live microphone (use headphones)'
   };
-  const state = { source: 'speech-vi', playing: false, volume: 0.8, fans: true, noise: true, error: null, fileName: null, irKey: '', here: null };
+  const state = { source: 'speech-vi', playing: false, loading: false, volume: 0.8, fans: true, noise: true, error: null, fileName: null, irKey: '', here: null };
   let ctx = null, master, limiter, programBus, programTrim, reverbIn, convolver, reverbOut, analyser;
-  let player = null, micStream = null, fileBuffer = null;
-  const buffers = {};
+  let player = null, fileBuffer = null, playRequest = 0, sampleScript = null;
+  let irVersion = 0, irJob = null, irTimer = 0, acousticRevision = 0;
+  let forward = null, listenerPose = null, resumeAfterVisibility = false;
+  const buffers = {}, bufferJobs = {};
   const chains = new Map();
   let talker = null, noiseBed = null, fanNodes = new Map(), lastUpdate = 0, noiseBuffer = null;
-  const A = SIM.audio = { state, SOURCES, renderPanel, play, stop, outputLevels, get context() { return ctx; } };
+  const A = SIM.audio = { state, SOURCES, renderPanel, play, stop, outputLevels,
+    resources: () => ({ speakerChains: chains.size, drainingSpeakerChains: [...chains.values()].filter(ch => ch.retireTimer).length, fanSources: fanNodes.size }),
+    get context() { return ctx; } };
 
   /* ------------------------------------------------------------- graph */
   function ensureContext() {
-    if (ctx) { if (ctx.state === 'suspended') ctx.resume(); return ctx; }
+    if (ctx) return ctx;
     const AC = window.AudioContext || window.webkitAudioContext;
     if (!AC) throw new Error('This browser has no Web Audio support.');
     ctx = new AC({ latencyHint: 'interactive' });
@@ -53,7 +57,6 @@
     convolver = ctx.createConvolver(); convolver.normalize = false;
     reverbOut = ctx.createGain();
     reverbIn.connect(convolver); convolver.connect(reverbOut); reverbOut.connect(master);
-    buildIR();
     syncChains();
     meterLoop();
     return ctx;
@@ -75,13 +78,18 @@
     a.connect(b);
     return { input: a, output: b };
   }
-  // One chain per loudspeaker (and one for the unamplified talker).
+  function responseFilters(response) {
+    return [response && response[0] <= -15 ? 220 : response && response[0] <= -10 ? 150 : response && response[0] <= -6 ? 110 : 60,
+      response && response[6] <= -8 ? 6500 : 16000];
+  }
+  // One chain per active loudspeaker (and one for the unamplified talker).
   function makeChain(response) {
     const input = ctx.createGain(); input.gain.value = 0;
     const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.Q.value = 0.7;
-    hp.frequency.value = response && response[0] <= -15 ? 220 : response && response[0] <= -10 ? 150 : response && response[0] <= -6 ? 110 : 60;
+    const [highpass, lowpass] = responseFilters(response);
+    hp.frequency.value = highpass;
     const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 0.7;
-    lp.frequency.value = response && response[6] <= -8 ? 6500 : 16000;
+    lp.frequency.value = lowpass;
     const delay = ctx.createDelay(1.5);
     const lo = lr4('lowpass', 700), hi = lr4('highpass', 700);
     const gLo = ctx.createGain(), gHi = ctx.createGain(), sum = ctx.createGain();
@@ -93,18 +101,39 @@
     lo.output.connect(gLo); hi.output.connect(gHi); gLo.connect(sum); gHi.connect(sum);
     sum.connect(panner); panner.connect(master);
     delay.connect(send); send.connect(reverbIn);
-    return { input, delay, gLo, gHi, send, panner, lastDelay: null, nodes: [input, hp, lp, delay, lo.input, lo.output, hi.input, hi.output, gLo, gHi, sum, send, panner] };
+    return { input, hp, lp, delay, gLo, gHi, send, panner, lastDelay: null, retireTimer: null, nodes: [input, hp, lp, delay, lo.input, lo.output, hi.input, hi.output, gLo, gHi, sum, send, panner] };
   }
   function dropChain(ch) {
+    clearTimeout(ch.retireTimer); ch.retireTimer = null;
     try { ch.input.gain.setTargetAtTime(0, ctx.currentTime, 0.02); } catch { /* closed */ }
-    setTimeout(() => ch.nodes.forEach(n => { try { n.disconnect(); } catch { /* already */ } }), 120);
+    setTimeout(() => {
+      // disconnect() on the input only releases its outputs, not the bus edge.
+      try { programBus.disconnect(ch.input); } catch { /* already detached */ }
+      ch.nodes.forEach(n => { try { n.disconnect(); } catch { /* already */ } });
+    }, 120);
   }
   function syncChains() {
     if (!ctx) return;
     const speakers = SIM.speakers();
     const ids = new Set(speakers.map(s => s.id));
     for (const [id, ch] of chains) if (!ids.has(id)) { dropChain(ch); chains.delete(id); }
-    for (const s of speakers) if (!chains.has(s.id)) chains.set(s.id, makeChain(s.spec.response));
+    for (const s of speakers) {
+      let ch = chains.get(s.id);
+      if (!s.on) {
+        if (ch && !ch.retireTimer) {
+          setParam(ch.input.gain, 0, 0.03);
+          // Allow the maximum 1.45 s programme delay plus its input fade to drain.
+          // A quick re-enable cancels retirement and reuses the same delay line.
+          ch.retireTimer = setTimeout(() => { dropChain(ch); if (chains.get(s.id) === ch) chains.delete(s.id); }, 1600);
+        }
+        continue;
+      }
+      if (!ch) { ch = makeChain(s.spec.response); chains.set(s.id, ch); }
+      clearTimeout(ch.retireTimer); ch.retireTimer = null;
+      const [highpass, lowpass] = responseFilters(s.spec.response);
+      if (ch.hp.frequency.value !== highpass) setParam(ch.hp.frequency, highpass);
+      if (ch.lp.frequency.value !== lowpass) setParam(ch.lp.frequency, lowpass);
+    }
     if (SIM.state.settings.talker && !talker) talker = makeChain(null);
     if (!SIM.state.settings.talker && talker) { dropChain(talker); talker = null; }
     syncFans();
@@ -113,65 +142,45 @@
   }
 
   /* -------------------------------------------------------- reverberation */
-  function biquadBandpass(f, sr) {
-    const w = 2 * Math.PI * f / sr, alpha = Math.sin(w) * Math.sinh(Math.LN2 / 2 * 1.0 * w / Math.sin(w));
-    const b0 = alpha, b2 = -alpha, a0 = 1 + alpha, a1 = -2 * Math.cos(w), a2 = 1 - alpha;
-    return [b0 / a0, 0, b2 / a0, a1 / a0, a2 / a0];
-  }
+  const roomKey = room => room.T.map(t => t.toFixed(2)).join(',');
   function buildIR() {
-    if (!ctx) return;
-    const room = SIM.room();
-    const key = room.T.map(t => t.toFixed(2)).join(',');
-    if (key === state.irKey) return;
-    state.irKey = key;
-    const sr = ctx.sampleRate, Tmax = Math.max(...room.T);
-    const n = Math.min(Math.floor(sr * Math.min(8, Tmax * 1.15 + 0.15)), sr * 8);
-    const ir = ctx.createBuffer(2, n, sr);
-    let seed = 1234567;
-    const rand = () => ((seed = (seed * 1103515245 + 12345) >>> 0) / 4294967296) * 2 - 1;
-    const Tmid = room.Tmid;
-    for (let ch = 0; ch < 2; ch++) {
-      const out = ir.getChannelData(ch);
-      for (let b = 0; b < 7; b++) {
-        const f = P.OCTAVES[b];
-        if (f >= sr / 2.2) continue;
-        const [b0, b1, b2, a1, a2] = biquadBandpass(f, sr);
-        const T = room.T[b], k = -6.9078 / (T * sr);
-        const weight = Math.sqrt(T / Tmid) * (b === 0 ? 0.8 : 1);
-        let x1 = 0, x2 = 0, y1 = 0, y2 = 0;
-        for (let i = 0; i < n; i++) {
-          const x = rand();
-          const y = b0 * x + b1 * x1 + b2 * x2 - a1 * y1 - a2 * y2;
-          x2 = x1; x1 = x; y2 = y1; y1 = y;
-          out[i] += y * Math.exp(k * i) * weight;
-        }
-      }
-      // Onset: the first reflections arrive a few milliseconds after the direct sound.
-      const onset = Math.floor(sr * 0.006), build = Math.floor(sr * 0.05);
-      for (let i = 0; i < Math.min(n, onset + build); i++) out[i] *= i < onset ? 0 : Math.min(1, (i - onset) / build) ** 0.5;
-      for (let r = 0; r < 14; r++) {
-        const t = Math.floor(sr * (0.007 + Math.abs(rand()) * 0.07));
-        if (t < n) out[t] += rand() * 0.9 * Math.exp(-t / sr * 6.9 / Tmid) * 3;
-      }
-    }
-    let e = 0;
-    for (let ch = 0; ch < 2; ch++) { const d = ir.getChannelData(ch); for (let i = 0; i < n; i++) e += d[i] * d[i]; }
-    const g = 1 / Math.sqrt(e / 2);
-    for (let ch = 0; ch < 2; ch++) { const d = ir.getChannelData(ch); for (let i = 0; i < n; i++) d[i] *= g; }
-    convolver.buffer = ir;
+    if (!ctx) return Promise.resolve();
+    const room = SIM.room(), key = roomKey(room);
+    if (irJob?.key === key) return irJob.promise;
+    // Also cancels B when inputs return to the already-applied A.
+    const version = ++irVersion;
+    irJob = null;
+    if (key === state.irKey) return Promise.resolve();
+    const captured = { T: room.T.slice(), Tmid: room.Tmid };
+    const job = { key, promise: null };
+    job.promise = window.CHURCH_AUDIO_SYNTHESIS.makeIR(ctx, captured, P, () => version !== irVersion).then(ir => {
+      if (ir && version === irVersion) { convolver.buffer = ir; state.irKey = key; }
+    }).finally(() => { if (irJob === job) irJob = null; });
+    irJob = job;
+    return job.promise;
   }
+  function scheduleIR() {
+    if (irJob && irJob.key !== roomKey(SIM.room())) { irVersion++; irJob = null; }
+    clearTimeout(irTimer);
+    irTimer = setTimeout(() => buildIR().catch(e => { state.error = e.message || String(e); refreshPanel(); }), 50);
+  }
+  function invalidateAcoustics() { acousticRevision++; lastUpdate = 0; }
 
   /* --------------------------------------------------- per-listener update */
   function listenerUpdate(camera) {
     if (!ctx || ctx.state !== 'running') return;
     const p = camera.position, L = ctx.listener;
-    const f = camera.getWorldDirection(new SIM.THREE.Vector3());
+    const f = camera.getWorldDirection(forward ||= new SIM.THREE.Vector3());
     const t = ctx.currentTime;
-    if (L.positionX) {
-      L.positionX.setTargetAtTime(p.x, t, 0.02); L.positionY.setTargetAtTime(p.y, t, 0.02); L.positionZ.setTargetAtTime(p.z, t, 0.02);
-      L.forwardX.setTargetAtTime(f.x, t, 0.02); L.forwardY.setTargetAtTime(f.y, t, 0.02); L.forwardZ.setTargetAtTime(f.z, t, 0.02);
-      L.upX.value = 0; L.upY.value = 1; L.upZ.value = 0;
-    } else { L.setPosition(p.x, p.y, p.z); L.setOrientation(f.x, f.y, f.z, 0, 1, 0); }
+    if (!listenerPose || listenerPose[0] !== p.x || listenerPose[1] !== p.y || listenerPose[2] !== p.z ||
+        listenerPose[3] !== f.x || listenerPose[4] !== f.y || listenerPose[5] !== f.z) {
+      if (L.positionX) {
+        L.positionX.setTargetAtTime(p.x, t, 0.02); L.positionY.setTargetAtTime(p.y, t, 0.02); L.positionZ.setTargetAtTime(p.z, t, 0.02);
+        L.forwardX.setTargetAtTime(f.x, t, 0.02); L.forwardY.setTargetAtTime(f.y, t, 0.02); L.forwardZ.setTargetAtTime(f.z, t, 0.02);
+        L.upX.value = 0; L.upY.value = 1; L.upZ.value = 0;
+      } else { L.setPosition(p.x, p.y, p.z); L.setOrientation(f.x, f.y, f.z, 0, 1, 0); }
+      listenerPose = [p.x, p.y, p.z, f.x, f.y, f.z];
+    }
     const now = performance.now();
     if (now - lastUpdate < 60) return;
     lastUpdate = now;
@@ -183,7 +192,13 @@
     const speakers = SIM.speakers();
     const report = [];
     const apply = (ch, src, spec, on) => {
-      const a = P.sourceArrivals(src, spec, rx, room, occ, P.FLAT_SPECTRUM, SIM.roomCouplingAt(rx));
+      let cached = ch.arrival;
+      if (!cached || cached.revision !== acousticRevision || cached.room !== room ||
+          cached.rx[0] !== rx[0] || cached.rx[1] !== rx[1] || cached.rx[2] !== rx[2]) {
+        cached = ch.arrival = { revision: acousticRevision, room, rx,
+          value: P.sourceArrivals(src, spec, rx, room, occ, P.FLAT_SPECTRUM, SIM.roomCouplingAt(rx)) };
+      }
+      const a = cached.value;
       const gLo = Math.sqrt(bandMean(a.direct, [1, 2])) * ref, gHi = Math.sqrt(bandMean(a.direct, [3, 4, 5])) * ref;
       const send = Math.sqrt(bandMean(a.reflected, [2, 3, 4])) * ref;
       setParam(ch.gLo.gain, gLo); setParam(ch.gHi.gain, gHi); setParam(ch.send.gain, send);
@@ -310,7 +325,10 @@
 
   /* -------------------------------------------------------------- signals */
   async function decodeSample(key) {
-    if (!window.CHURCH_SIM_SAMPLES) await loadScript('simulator/samples.js?v=20261006-1');
+    if (!window.CHURCH_SIM_SAMPLES) {
+      sampleScript ||= loadScript('simulator/samples.js?v=20261006-1').catch(e => { sampleScript = null; throw e; });
+      await sampleScript;
+    }
     const s = window.CHURCH_SIM_SAMPLES?.[key];
     if (!s) throw new Error('Test speech is missing (simulator/samples.js).');
     const bin = Uint8Array.from(atob(s.data), c => c.charCodeAt(0));
@@ -332,40 +350,24 @@
   }
   async function getBuffer(key) {
     if (buffers[key]) return buffers[key];
+    if (bufferJobs[key]) return bufferJobs[key];
+    const job = bufferJobs[key] = loadBuffer(key);
+    try { return await job; }
+    finally { if (bufferJobs[key] === job) delete bufferJobs[key]; }
+  }
+  async function loadBuffer(key) {
     let b;
     if (key === 'speech-vi' || key === 'speech-en') b = await decodeSample(key);
     else if (key === 'pink') b = makeBuffer(6, d => d.set(getNoiseBuffer().getChannelData(0).subarray(0, d.length)));
     else if (key === 'clap') b = makeBuffer(3.2, (d, sr) => { let s = 99; for (let i = 0; i < sr * 0.08; i++) { s = (s * 16807) % 2147483647; const w = s / 1073741823.5 - 1; d[i] = w * Math.exp(-i / (sr * 0.009)) * (i < sr * 0.0015 ? i / (sr * 0.0015) : 1); } });
     else if (key === 'sweep') b = makeBuffer(6.5, (d, sr) => { const T = 5, f0 = 80, f1 = 12000, K = T / Math.log(f1 / f0); for (let i = 0; i < sr * T; i++) { const t = i / sr; const env = Math.min(1, t / 0.05, (T - t) / 0.05); d[i] = 0.5 * env * Math.sin(2 * Math.PI * f0 * K * (Math.exp(t / K) - 1)); } });
-    else if (key === 'stipa') b = makeStipa();
+    else if (key === 'stipa') b = await window.CHURCH_AUDIO_SYNTHESIS.makeStipa(ctx, P);
     else if (key === 'organ') b = await makeOrgan();
     else if (key === 'file') b = fileBuffer;
     if (!b) throw new Error('No recording chosen yet.');
     // Programme RMS 1.0 ≙ the loudspeaker's speech level; a clap is set by its 80 ms burst.
     buffers[key] = { buffer: b, gain: key === 'clap' ? 0.5 / rmsOf({ numberOfChannels: 1, getChannelData: () => b.getChannelData(0).subarray(0, Math.floor(b.sampleRate * 0.08)) }) : 1 / rmsOf(b) };
     return buffers[key];
-  }
-  // IEC 60268-16 STIPA-like signal: 7 half-octave noise carriers, each with two
-  // intensity modulation frequencies (m = 0.55), shaped to the male speech spectrum.
-  function makeStipa() {
-    const mods = [[1.6, 8], [1, 5], [0.63, 3.15], [2, 10], [1.25, 6.25], [0.8, 4], [2.5, 12.5]];
-    return makeBuffer(20, (d, sr) => {
-      let seed = 4242;
-      const rand = () => ((seed = (seed * 1103515245 + 12345) >>> 0) / 2147483648) - 1;
-      P.OCTAVES.forEach((f, b) => {
-        if (f > sr / 2.3) return;
-        const w = 2 * Math.PI * f / sr, alpha = Math.sin(w) * Math.sinh(Math.LN2 / 2 * 0.5 * w / Math.sin(w));
-        const c = [alpha / (1 + alpha), 0, -alpha / (1 + alpha), -2 * Math.cos(w) / (1 + alpha), (1 - alpha) / (1 + alpha)];
-        const amp = Math.pow(10, P.SPEECH_SPECTRUM[b] / 20);
-        let x1 = 0, x2 = 0, y1 = 0, y2 = 0;
-        for (let i = 0; i < d.length; i++) {
-          const x = rand(), y = c[0] * x + c[2] * x2 - c[3] * y1 - c[4] * y2;
-          x2 = x1; x1 = x; y2 = y1; y1 = y;
-          const t = i / sr, I = 1 + 0.55 * (Math.sin(2 * Math.PI * mods[b][0] * t) - Math.sin(2 * Math.PI * mods[b][1] * t));
-          d[i] += y * amp * Math.sqrt(Math.max(0, I)) * 4;
-        }
-      });
-    });
   }
   // A short original chorale in G major on a principal-chorus organ.
   async function makeOrgan() {
@@ -400,22 +402,33 @@
 
   /* -------------------------------------------------------- play / stop */
   async function play(key = state.source) {
+    stop(true);
+    const request = playRequest;
+    state.error = null; state.source = key; state.loading = true;
+    refreshPanel();
     try {
       ensureContext();
       await ctx.resume();
-      stop(true);
-      state.error = null;
-      state.source = key;
-      buildIR();
+      if (request !== playRequest) return;
+      if (document.hidden) { resumeAfterVisibility = true; void ctx.suspend(); }
+      // Keep the previous complete room response while a replacement builds.
+      do {
+        await buildIR();
+        if (request !== playRequest) return;
+      } while (state.irKey !== roomKey(SIM.room()));
       if (key === 'mic') {
         if (!navigator.mediaDevices?.getUserMedia) throw new Error('Microphone input is not available here (it needs https or localhost in most browsers).');
-        micStream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
-        const src = ctx.createMediaStreamSource(micStream);
-        const g = ctx.createGain(); g.gain.value = 8;
-        src.connect(g); g.connect(programTrim);
-        player = { stop() { try { src.disconnect(); g.disconnect(); } catch { /* */ } micStream?.getTracks().forEach(tk => tk.stop()); micStream = null; } };
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
+        if (request !== playRequest) { stream.getTracks().forEach(tk => tk.stop()); return; }
+        try {
+          const src = ctx.createMediaStreamSource(stream);
+          const g = ctx.createGain(); g.gain.value = 8;
+          src.connect(g); g.connect(programTrim);
+          player = { stop() { try { src.disconnect(); g.disconnect(); } catch { /* */ } stream.getTracks().forEach(tk => tk.stop()); } };
+        } catch (e) { stream.getTracks().forEach(tk => tk.stop()); throw e; }
       } else {
         const { buffer, gain } = await getBuffer(key);
+        if (request !== playRequest) return;
         const src = ctx.createBufferSource();
         src.buffer = buffer; src.loop = true;
         if (/clap|sweep/.test(key)) src.loopEnd = buffer.duration;
@@ -428,20 +441,22 @@
       syncChains();
       lastUpdate = 0;
     } catch (e) {
+      if (request !== playRequest) return;
       state.error = e.message || String(e);
       state.playing = false;
     }
-    refreshPanel();
+    if (request === playRequest) { state.loading = false; refreshPanel(); }
   }
   function stop(silent) {
+    playRequest++;
     if (player) { player.stop(); player = null; }
-    state.playing = false;
+    state.playing = state.loading = false;
     if (ctx) for (const ch of [...chains.values(), talker].filter(Boolean)) setParam(ch.input.gain, 0, 0.02);
     if (!silent) refreshPanel();
   }
 
   /* --------------------------------------------------------------- meter */
-  let meterEl = null, meterData = null;
+  let meterEl = null, meterData = null, meterTimer = null;
   // Sample the actual signal after headphone volume and the limiter. Digital
   // dBFS is kept separate from the room model's acoustic estimates in dBA.
   // Reading the meter never starts playback or requests a microphone.
@@ -461,11 +476,12 @@
     };
   }
   function meterLoop() {
-    requestAnimationFrame(meterLoop);
-    if (!meterEl || !analyser || !meterEl.isConnected) return;
+    clearTimeout(meterTimer); meterTimer = null;
+    if (!meterEl?.isConnected || !analyser || document.hidden) return;
     const dbfs = outputLevels()?.peakDb ?? -Infinity;
     meterEl.style.width = Math.max(0, Math.min(100, (dbfs + 50) * 2)) + '%';
     meterEl.classList.toggle('hot', dbfs > -3);
+    meterTimer = setTimeout(meterLoop, 100);
   }
 
   /* --------------------------------------------------------------- panel */
@@ -478,7 +494,7 @@
       <p class="sim-hint">Use headphones. Choose <b>Walk</b> or a seated view, press Play and move around: each loudspeaker arrives with its real delay, direction and coverage, followed by the room's reverberation.</p>
       <div class="sim-audio-row">
         <select id="simAudioSource" aria-label="Test signal">${Object.entries(SOURCES).map(([k, l]) => `<option value="${k}" ${state.source === k ? 'selected' : ''}>${l}</option>`).join('')}</select>
-        <button id="simAudioPlay" class="sim-primary">${state.playing ? '■ Stop' : '▶ Play'}</button>
+        <button id="simAudioPlay" class="sim-primary">${state.loading ? '■ Cancel' : state.playing ? '■ Stop' : '▶ Play'}</button>
       </div>
       <input type="file" id="simAudioFile" accept="audio/*" hidden>
       ${state.fileName ? `<p class="sim-hint">Recording: ${state.fileName}</p>` : ''}
@@ -493,17 +509,30 @@
       <label class="switch-row"><span>Hear background noise</span><input type="checkbox" id="simAudioNoise" ${state.noise ? 'checked' : ''}></label>
       <div class="sim-actions"><button data-act="align">Align delays</button><button id="simSeatCentral">Sit near the centre aisle</button><button id="simSeatOuter">Sit near the side aisle</button></div>
       <p class="sim-here-audio" id="simHereAudio"></p>`;
-    el.querySelector('#simAudioPlay').addEventListener('click', () => state.playing ? stop() : (state.source === 'file' && !fileBuffer ? el.querySelector('#simAudioFile').click() : play(el.querySelector('#simAudioSource').value)));
+    el.querySelector('#simAudioPlay').addEventListener('click', () => (state.playing || state.loading) ? stop() : (state.source === 'file' && !fileBuffer ? el.querySelector('#simAudioFile').click() : play(el.querySelector('#simAudioSource').value)));
     el.querySelector('#simAudioSource').addEventListener('change', e => {
       state.source = e.target.value;
-      if (state.source === 'file' && !fileBuffer) el.querySelector('#simAudioFile').click();
-      else if (state.playing) play(state.source);
+      if (state.source === 'file' && !fileBuffer) { stop(); el.querySelector('#simAudioFile').click(); }
+      else if (state.playing || state.loading) play(state.source);
     });
     el.querySelector('#simAudioFile').addEventListener('change', async e => {
       const f = e.target.files?.[0];
       if (!f) return;
-      try { ensureContext(); fileBuffer = await ctx.decodeAudioData(await f.arrayBuffer()); delete buffers.file; state.fileName = f.name; play('file'); }
-      catch (err) { state.error = 'Could not decode this file: ' + err.message; refreshPanel(); }
+      stop(true);
+      const request = playRequest;
+      state.loading = true; state.error = null; refreshPanel();
+      try {
+        ensureContext();
+        const data = await f.arrayBuffer();
+        if (request !== playRequest) return;
+        const decoded = await ctx.decodeAudioData(data);
+        if (request !== playRequest) return;
+        fileBuffer = decoded; delete buffers.file; state.fileName = f.name;
+        await play('file');
+      } catch (err) {
+        if (request !== playRequest) return;
+        state.loading = false; state.error = 'Could not decode this file: ' + err.message; refreshPanel();
+      }
     });
     el.querySelector('#simAudioVolume').addEventListener('input', e => { state.volume = Number(e.target.value); e.target.nextElementSibling.textContent = Math.round(state.volume * 100) + ' %'; if (master) setParam(master.gain, state.volume, 0.03); });
     el.querySelector('#simAudioFans').addEventListener('change', e => { state.fans = e.target.checked; syncFans(); });
@@ -511,7 +540,7 @@
     el.querySelector('#simSeatCentral').addEventListener('click', () => document.getElementById('centralSeatView')?.click());
     el.querySelector('#simSeatOuter').addEventListener('click', () => document.getElementById('outerSeatView')?.click());
     meterEl = el.querySelector('#simMeter');
-    renderHere();
+    meterLoop(); renderHere();
   }
   function refreshPanel() { if (panelEl?.isConnected) renderPanel(panelEl); }
   function renderHere() {
@@ -523,13 +552,23 @@
   }
 
   SIM.on('frame', ({ camera }) => { if (ctx) listenerUpdate(camera); });
-  SIM.on('items', () => { if (ctx) syncChains(); });
+  SIM.on('items', () => { invalidateAcoustics(); if (ctx) { syncChains(); scheduleIR(); } });
+  SIM.on('seats', () => { invalidateAcoustics(); if (ctx) scheduleIR(); });
   SIM.on('settings', ({ key }) => {
+    invalidateAcoustics();
     if (!ctx) return;
-    if (['occupancy', 'openings', 'roofFinish', 'tempC', 'rh'].includes(key)) setTimeout(buildIR, 50);
-    if (key === 'talker') syncChains();
-    if (key === 'ambientDbA') syncNoise();
-    lastUpdate = 0;
+    // Keyless notifications restore/import all settings at once.
+    if (!key || ['occupancy', 'openings', 'roofFinish', 'entranceFinish', 'tempC', 'rh'].includes(key)) scheduleIR();
+    if (!key || key === 'talker') syncChains();
+    if (!key || key === 'ambientDbA') syncNoise();
   });
-  document.addEventListener('visibilitychange', () => { if (document.hidden && ctx && state.playing) ctx.suspend(); else if (!document.hidden && ctx && state.playing) ctx.resume(); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      resumeAfterVisibility = !!ctx && ctx.state === 'running';
+      if (resumeAfterVisibility) void ctx.suspend();
+    } else if (resumeAfterVisibility && ctx) {
+      resumeAfterVisibility = false; void ctx.resume();
+    }
+    meterLoop();
+  });
 })();

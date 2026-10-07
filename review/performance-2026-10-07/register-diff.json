@@ -1,0 +1,435 @@
+{
+  "decoration": {
+    "xl/worksheets/sheet1.xml": [
+      {
+        "cell": "B4",
+        "before": {
+          "value": "Decoration and furnishings. Seasonal decorative lighting and non-electrical simulator furnishings. Model snapshot: 2026-10-07T00:43:44.962Z.",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "Decoration and furnishings. Seasonal decorative lighting and non-electrical simulator furnishings. Model snapshot: 2026-10-07T08:19:57.914Z.",
+          "formula": null,
+          "style": "16"
+        }
+      },
+      {
+        "cell": "B15",
+        "before": {
+          "value": "99ba5edfb5f5ec7966456e3ad66285380fe1c91036b9f85ff7846b14c7fd32f2",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "4139f272a1dd534c1fd927881b22bba0c4b16ce3b4162f405c44d3aab380f491",
+          "formula": null,
+          "style": "16"
+        }
+      },
+      {
+        "cell": "B14",
+        "before": {
+          "value": "ec066f78b134a4ab41e86b94133226ce6f6438520682c580b116eb56ed715fc9",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "682cddfb34b9ba0867e0152518ab5a1ad129de7bbb8828a58f64d23cf072cc71",
+          "formula": null,
+          "style": "16"
+        }
+      }
+    ]
+  },
+  "exit-signs": {
+    "xl/worksheets/sheet1.xml": [
+      {
+        "cell": "B4",
+        "before": {
+          "value": "Exit signs. E1 maintained exit-sign group. Emergency supply and duration require separate design. Model snapshot: 2026-10-07T00:43:44.962Z.",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "Exit signs. E1 maintained exit-sign group. Emergency supply and duration require separate design. Model snapshot: 2026-10-07T08:19:57.914Z.",
+          "formula": null,
+          "style": "16"
+        }
+      },
+      {
+        "cell": "B15",
+        "before": {
+          "value": "99ba5edfb5f5ec7966456e3ad66285380fe1c91036b9f85ff7846b14c7fd32f2",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "4139f272a1dd534c1fd927881b22bba0c4b16ce3b4162f405c44d3aab380f491",
+          "formula": null,
+          "style": "16"
+        }
+      },
+      {
+        "cell": "B14",
+        "before": {
+          "value": "ec066f78b134a4ab41e86b94133226ce6f6438520682c580b116eb56ed715fc9",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "682cddfb34b9ba0867e0152518ab5a1ad129de7bbb8828a58f64d23cf072cc71",
+          "formula": null,
+          "style": "16"
+        }
+      }
+    ]
+  },
+  "air-system": {
+    "xl/worksheets/sheet1.xml": [
+      {
+        "cell": "B4",
+        "before": {
+          "value": "Fans and ventilation. Ceiling, wall, entrance and exhaust fans for air movement and ventilation. Model snapshot: 2026-10-07T00:43:44.962Z.",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "Fans and ventilation. Ceiling, wall, entrance and exhaust fans for air movement and ventilation. Model snapshot: 2026-10-07T08:19:57.914Z.",
+          "formula": null,
+          "style": "16"
+        }
+      },
+      {
+        "cell": "B15",
+        "before": {
+          "value": "99ba5edfb5f5ec7966456e3ad66285380fe1c91036b9f85ff7846b14c7fd32f2",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "4139f272a1dd534c1fd927881b22bba0c4b16ce3b4162f405c44d3aab380f491",
+          "formula": null,
+          "style": "16"
+        }
+      },
+      {
+        "cell": "B14",
+        "before": {
+          "value": "ec066f78b134a4ab41e86b94133226ce6f6438520682c580b116eb56ed715fc9",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "682cddfb34b9ba0867e0152518ab5a1ad129de7bbb8828a58f64d23cf072cc71",
+          "formula": null,
+          "style": "16"
+        }
+      }
+    ]
+  },
+  "distribution-controls": {
+    "xl/worksheets/sheet1.xml": [
+      {
+        "cell": "B4",
+        "before": {
+          "value": "Distribution and controls. DB1, DB2, LC1, FC1 and AV1 enclosures and their shared supply feeders. Model snapshot: 2026-10-07T00:43:44.962Z.",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "Distribution and controls. DB1, DB2, LC1, FC1 and AV1 enclosures and their shared supply feeders. Model snapshot: 2026-10-07T08:19:57.914Z.",
+          "formula": null,
+          "style": "16"
+        }
+      },
+      {
+        "cell": "B15",
+        "before": {
+          "value": "99ba5edfb5f5ec7966456e3ad66285380fe1c91036b9f85ff7846b14c7fd32f2",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "4139f272a1dd534c1fd927881b22bba0c4b16ce3b4162f405c44d3aab380f491",
+          "formula": null,
+          "style": "16"
+        }
+      },
+      {
+        "cell": "B14",
+        "before": {
+          "value": "ec066f78b134a4ab41e86b94133226ce6f6438520682c580b116eb56ed715fc9",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "682cddfb34b9ba0867e0152518ab5a1ad129de7bbb8828a58f64d23cf072cc71",
+          "formula": null,
+          "style": "16"
+        }
+      }
+    ]
+  },
+  "lighting": {
+    "xl/worksheets/sheet1.xml": [
+      {
+        "cell": "B4",
+        "before": {
+          "value": "Lighting. Reading, sanctuary, circulation, paths, facade and festival exterior lighting. Model snapshot: 2026-10-07T00:43:44.962Z.",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "Lighting. Reading, sanctuary, circulation, paths, facade and festival exterior lighting. Model snapshot: 2026-10-07T08:19:57.914Z.",
+          "formula": null,
+          "style": "16"
+        }
+      },
+      {
+        "cell": "B15",
+        "before": {
+          "value": "99ba5edfb5f5ec7966456e3ad66285380fe1c91036b9f85ff7846b14c7fd32f2",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "4139f272a1dd534c1fd927881b22bba0c4b16ce3b4162f405c44d3aab380f491",
+          "formula": null,
+          "style": "16"
+        }
+      },
+      {
+        "cell": "B14",
+        "before": {
+          "value": "ec066f78b134a4ab41e86b94133226ce6f6438520682c580b116eb56ed715fc9",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "682cddfb34b9ba0867e0152518ab5a1ad129de7bbb8828a58f64d23cf072cc71",
+          "formula": null,
+          "style": "16"
+        }
+      }
+    ],
+    "xl/worksheets/sheet2.xml": [
+      {
+        "cell": "AC9",
+        "before": {
+          "value": "{\"lumens\":2300,\"dim\":1,\"anchorY\":10.394880434782609}",
+          "formula": null,
+          "style": "8"
+        },
+        "after": {
+          "value": "{\"lumens\":2300,\"dim\":1,\"anchorY\":8.59}",
+          "formula": null,
+          "style": "8"
+        }
+      }
+    ],
+    "xl/worksheets/sheet3.xml": [
+      {
+        "cell": "I10",
+        "before": {
+          "value": "8.3917306647131",
+          "formula": "SUMIF('Route Points'!$A$7:$A$1350,A10,'Route Points'!$F$7:$F$1350)",
+          "style": "11"
+        },
+        "after": {
+          "value": "7.005000000000001",
+          "formula": "SUMIF('Route Points'!$A$7:$A$1350,A10,'Route Points'!$F$7:$F$1350)",
+          "style": "11"
+        }
+      }
+    ],
+    "xl/worksheets/sheet4.xml": [
+      {
+        "cell": "D36",
+        "before": {
+          "value": "7.02",
+          "formula": null,
+          "style": "11"
+        },
+        "after": {
+          "value": "6.83",
+          "formula": null,
+          "style": "11"
+        }
+      },
+      {
+        "cell": "D39",
+        "before": {
+          "value": "10.394880434782609",
+          "formula": null,
+          "style": "11"
+        },
+        "after": {
+          "value": "8.59",
+          "formula": null,
+          "style": "11"
+        }
+      },
+      {
+        "cell": "F39",
+        "before": {
+          "value": "0.09999999999999964",
+          "formula": "SQRT((C39-C38)^2+(D39-D38)^2+(E39-E38)^2)",
+          "style": "11"
+        },
+        "after": {
+          "value": "1",
+          "formula": "SQRT((C39-C38)^2+(D39-D38)^2+(E39-E38)^2)",
+          "style": "11"
+        }
+      },
+      {
+        "cell": "F40",
+        "before": {
+          "value": "1.8098804347826096",
+          "formula": "SQRT((C40-C39)^2+(D40-D39)^2+(E40-E39)^2)",
+          "style": "11"
+        },
+        "after": {
+          "value": "0.005000000000000782",
+          "formula": "SQRT((C40-C39)^2+(D40-D39)^2+(E40-E39)^2)",
+          "style": "11"
+        }
+      },
+      {
+        "cell": "F37",
+        "before": {
+          "value": "0.3132494925336704",
+          "formula": "SQRT((C37-C36)^2+(D37-D36)^2+(E37-E36)^2)",
+          "style": "11"
+        },
+        "after": {
+          "value": "3.7600000000000002",
+          "formula": "SQRT((C37-C36)^2+(D37-D36)^2+(E37-E36)^2)",
+          "style": "11"
+        }
+      },
+      {
+        "cell": "E37",
+        "before": {
+          "value": "-7.05",
+          "formula": null,
+          "style": "11"
+        },
+        "after": {
+          "value": "-3.6",
+          "formula": null,
+          "style": "11"
+        }
+      },
+      {
+        "cell": "E38",
+        "before": {
+          "value": "-2.6",
+          "formula": null,
+          "style": "11"
+        },
+        "after": {
+          "value": "-3.6",
+          "formula": null,
+          "style": "11"
+        }
+      },
+      {
+        "cell": "F36",
+        "before": {
+          "value": "0.6699999999999999",
+          "formula": "SQRT((C36-C35)^2+(D36-D35)^2+(E36-E35)^2)",
+          "style": "11"
+        },
+        "after": {
+          "value": "0.4800000000000004",
+          "formula": "SQRT((C36-C35)^2+(D36-D35)^2+(E36-E35)^2)",
+          "style": "11"
+        }
+      },
+      {
+        "cell": "F38",
+        "before": {
+          "value": "5.49860073739682",
+          "formula": "SQRT((C38-C37)^2+(D38-D37)^2+(E38-E37)^2)",
+          "style": "11"
+        },
+        "after": {
+          "value": "1.7599999999999998",
+          "formula": "SQRT((C38-C37)^2+(D38-D37)^2+(E38-E37)^2)",
+          "style": "11"
+        }
+      },
+      {
+        "cell": "D38",
+        "before": {
+          "value": "10.294880434782609",
+          "formula": null,
+          "style": "11"
+        },
+        "after": {
+          "value": "8.59",
+          "formula": null,
+          "style": "11"
+        }
+      },
+      {
+        "cell": "D37",
+        "before": {
+          "value": "7.065002717391305",
+          "formula": null,
+          "style": "11"
+        },
+        "after": {
+          "value": "6.83",
+          "formula": null,
+          "style": "11"
+        }
+      }
+    ]
+  },
+  "sound": {
+    "xl/worksheets/sheet1.xml": [
+      {
+        "cell": "B4",
+        "before": {
+          "value": "Sound. Loudspeakers, microphones, indoor speech and outdoor overflow. Model snapshot: 2026-10-07T00:43:44.962Z.",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "Sound. Loudspeakers, microphones, indoor speech and outdoor overflow. Model snapshot: 2026-10-07T08:19:57.914Z.",
+          "formula": null,
+          "style": "16"
+        }
+      },
+      {
+        "cell": "B15",
+        "before": {
+          "value": "99ba5edfb5f5ec7966456e3ad66285380fe1c91036b9f85ff7846b14c7fd32f2",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "4139f272a1dd534c1fd927881b22bba0c4b16ce3b4162f405c44d3aab380f491",
+          "formula": null,
+          "style": "16"
+        }
+      },
+      {
+        "cell": "B14",
+        "before": {
+          "value": "ec066f78b134a4ab41e86b94133226ce6f6438520682c580b116eb56ed715fc9",
+          "formula": null,
+          "style": "16"
+        },
+        "after": {
+          "value": "682cddfb34b9ba0867e0152518ab5a1ad129de7bbb8828a58f64d23cf072cc71",
+          "formula": null,
+          "style": "16"
+        }
+      }
+    ]
+  }
+}

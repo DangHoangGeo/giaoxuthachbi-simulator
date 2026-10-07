@@ -189,14 +189,23 @@ The calculation methods, measurement planes, assumptions and validation boundari
   lacquered, gilded timber, with no tie beam on that axis. The plaster frame
   on axis 11 remains as the back wall. See `docs/sanctuary-model.md`.
 - Behind the frame a timber-lined chamber (lacquered walls on the D and E
-  lines, gilded boarded vault) runs back to the reredos. The crucifix stands
+  lines, gilded boarded vault) runs back to the reredos. Pilasters, friezes,
+  grounds and the front frame carry generated gilded relief; the niches are
+  blue with a soft glow; spires and leaf crestings crown the reredos and the
+  shrines. The crucifix stands
   in a niche 1.0 m deep that opens through the back wall onto a base over the
   service room.
-- All round columns on the D and E lines are lacquered with gilded bands and
-  capitals, like the two that carry the sanctuary frame.
+- All round columns on the D and E lines are lacquered. The nave columns have
+  turned bases on panelled stone pedestals, carved capitals under the tie
+  beams and dies with gilded lotus panels. The two that carry the sanctuary
+  frame keep gilded bands and gilded capitals.
 - The tie beams, side beams, rafters, purlins, ridge and braces take the same
-  red lacquer, with gilded lines, bands and rosettes on the beams, rafters and
-  ridge. The boarded roof lining stays ivory. *Settings → Structural timber
+  red lacquer, with gilded lines, bands and carved cartouches on the beams and
+  gilded lines on the rafters and ridge. Lengthwise beams join the column
+  heads on the D and E lines from axis 3 to the sanctuary frame; carved
+  haunches stand under the beams. These lengthwise beams are a visual proxy
+  (0.24 × 0.45 m, engineering hold): no fitting hangs from them and the
+  analysis does not include them. The boarded roof lining stays ivory. *Settings → Structural timber
   tone* offers natural, light and dark timber as alternatives.
 - At night the centre of the sanctuary is lit lower than before, so the blue
   recess and the red lacquer keep their colour (crucifix about 245 lux, blue
@@ -248,7 +257,10 @@ block walking. Outdoor courtyard trees retain their separate Show trees switch.
 View settings → Timber frame, or Simulator → Settings → Structure.
 
 - **As drawn (PDF section 4).** Round shafts and a 0.30 × 0.59 m tie beam
-  across the nave at +8.59 m on every axis.
+  across the nave at +8.59 m on every axis. This version also carries the
+  concept ornament and members that are not on the drawing: carved capitals
+  and haunches, cartouches, and the lengthwise column-line beams at
+  +8.73…+9.18 m.
 - **Reference image (05-interior-day).** The structure is:
   - square timber posts (0.56 m) on 1.1 m carved stone plinths, rising to the
     rafters

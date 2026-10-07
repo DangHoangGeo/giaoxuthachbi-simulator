@@ -9,7 +9,7 @@ Ceiling, wall, entrance and exhaust fans for air movement and ventilation.
 
 ## Current scope
 
-35 equipment/enclosures, 35 routes, 224 route vertices. 6 hidden alternatives; 29 shown connected components. Circuits: F1, F2, F4, V1.
+35 equipment/enclosures, 35 routes, 234 route vertices. 6 hidden alternatives; 29 shown connected components. Circuits: F1, F2, F4, V1.
 
 ## Editing and coordination
 

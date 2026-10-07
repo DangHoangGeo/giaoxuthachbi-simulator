@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['references.js','glass-art.js','sanctuary.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','sanctuary.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -175,7 +175,7 @@ if(process.argv.includes('--plan')){
   fs.writeFileSync(path.join(planningDir,'model-plan-data.js'),'window.CHURCH_PLAN_DATA = '+JSON.stringify(payload,null,2)+';\n');
 }
 let batchCount=0,triangles=0;
-for(const b of batches.values())for(const m of b.children){batchCount++;triangles+=m.geometry.attributes.position.count/3;}
+for(const b of batches.values())for(const m of b.children){batchCount++;triangles+=(m.geometry.index?.count||m.geometry.attributes.position.count)/3;}
 const ray=new T.Raycaster(new T.Vector3(-10,2,.5),new T.Vector3(1,0,0));
 const hits=ray.intersectObjects(nodes.filter(o=>o.isMesh),false);
 assert(!hits.some(h=>h.object.name==='Source-width centre entry facade'),'Facade must not fill the main door opening');
@@ -184,7 +184,34 @@ for(const sign of [-1,1]) {
   const sideRay=new T.Raycaster(new T.Vector3(16.725,1.8,sign*18),new T.Vector3(0,0,-sign));
   assert(!sideRay.intersectObjects(bays.flatMap(g=>g.children).filter(o=>o.isMesh&&o.name==='Outer arcade wall with arched openings'),false).some(h=>Math.abs(h.point.z)>10),'Outer wall must leave side doorway clear');
 }
-console.log(JSON.stringify({checks:'passed',batchCount,triangles,seating:planning.state(),sightlineSummary,refinement:data.refinement},null,2));
+// Display buffers retain the full source triangle stream and original vertices.
+// Verify transformed position, normal and UV against the previous expanded path.
+let displayBytes=0, expandedBytes=0;
+for(const [source,display] of batches){
+  const parts=new Map();
+  source.traverse(o=>{if(o.isMesh&&!Array.isArray(o.material)){if(!parts.has(o.material))parts.set(o.material,[]);parts.get(o.material).push(o);}});
+  for(const mesh of display.children){
+    const g=mesh.geometry,list=parts.get(mesh.material);let offset=0;
+    assert(g.index,'display batches retain indices');
+    for(const a of [...Object.values(g.attributes),g.index])displayBytes+=a.array.byteLength;
+    expandedBytes+=g.index.count*32;
+    for(const object of list){
+      const local=object.geometry,expected=local.clone().applyMatrix4(object.matrixWorld);
+      const count=local.index?.count||local.attributes.position.count;
+      for(const j of new Set([0,Math.floor(count/2),count-1])){
+        const a=local.index?local.index.getX(j):j,b=g.index.getX(offset+j);
+        for(const name of ['position','normal','uv'])if(expected.attributes[name]){
+          const x=expected.attributes[name],y=g.attributes[name];
+          for(let k=0;k<x.itemSize;k++)assert(Math.abs(x.array[a*x.itemSize+k]-y.array[b*y.itemSize+k])<1e-5,`batch ${name} preserves source vertex`);
+        }
+      }
+      expected.dispose();offset+=count;
+    }
+    assert.equal(g.index.count,offset,'all source triangles retained');
+  }
+}
+assert(displayBytes<expandedBytes*.7,'indexed buffers materially reduce memory without removing triangles');
+console.log(JSON.stringify({checks:'passed',batchCount,triangles,displayBytes,expandedBytes,seating:planning.state(),sightlineSummary,refinement:data.refinement},null,2));
 
 // Sanctuary geometry regression: sheet-5 frame on the column line, shrines in its
 // side arches, the timber-lined chamber behind, and clear routes through it.
@@ -202,14 +229,40 @@ for(const name of ['Central column 10/D — illustrative diameter','Central colu
   const column=nodes.find(o=>o.name===name);assert(column,name);
   near(bounds(column).getCenter(new T.Vector3()).x,frameX,'Structural column stays on its grid');
 }
-// Every round column on the D/E lines has the sanctuary finish: lacquer, four gilded bands, a gilded capital.
+// Every round column on the D/E lines is lacquered. Nave shafts (axes 3–9) are plain between a turned base on a
+// panelled stone pedestal and a carved capital under the tie beam, with a junction block at beam level and a die
+// under the rafter. The frame axis, which has no tie, keeps two gilded bands and a gilded capital under its die.
 const shafts=nodes.filter(o=>o.isMesh&&/^Central column /.test(o.name));
 assert.equal(shafts.length,18);
 for(const o of shafts)assert.equal(o.material.name,'Sanctuary · oxblood lacquer',`${o.name} is lacquered`);
-for(const o of nodes.filter(o=>o.isMesh&&/^(Timber shaft foot|Timber capital collar|Column head \+)/.test(o.name)))assert.equal(o.material.name,'Sanctuary · carved gilding',`${o.name} is gilded`);
-const bands=nodes.filter(o=>o.name==='Gilded column band'),capitals=nodes.filter(o=>o.name==='Gilded column capital');
-assert.equal(bands.length,64);assert.equal(capitals.length,16);
-for(const o of capitals){const b=bounds(o),c=b.getCenter(new T.Vector3());near(Math.abs(c.z),3.6,'Capital on the D/E line');if(Math.abs(c.x-frameX)>.5)assert(b.max.y<=8.59,'Nave capital sits under the tie beam');}
+assert(shafts[0].material.clearcoat>.4&&shafts[0].material.map,'Lacquer is a clear coat over a faint grain');
+for(const o of nodes.filter(o=>o.isMesh&&/^(Timber shaft foot|Timber capital collar|Column head \+)/.test(o.name)))assert.equal(o.material.name,'Sanctuary · oxblood lacquer',`${o.name} is lacquered`);
+const part=name=>nodes.filter(o=>o.isMesh&&o.name===name),onLine=o=>near(Math.abs(o.getWorldPosition(new T.Vector3()).z),3.6,`${o.name} on the D/E line`);
+const bands=part('Gilded column band'),capitals=part('Gilded column capital');
+assert.equal(bands.length,4,'Gilded bands on the frame axis only');assert.equal(capitals.length,2,'Gilded capitals on the frame axis only');
+for(const o of [...bands,...capitals]){onLine(o);near(bounds(o).getCenter(new T.Vector3()).x,frameX,`${o.name} on the frame axis`);}
+for(const name of ['pedestal inset','capital bell','capital foliage','capital volutes','junction block','junction foliage','junction blooms and die panels']){
+  const list=part(`Column carving · ${name}`);assert.equal(list.length,14,`${name} on every nave column`);
+  for(const o of list){onLine(o);assert(bounds(o).getCenter(new T.Vector3()).x<frameX-5,`${name} belongs to a nave column`);}
+}
+for(const o of part('Column carving · capital foliage')){assert.equal(o.material.name,'Sanctuary · carved lacquered timber');assert(bounds(o).max.y<=8.59&&bounds(o).min.y>7.7,'Capital leaves stay between the neck and the tie beam');}
+for(const o of part('Column carving · capital bell'))near(bounds(o).max.y,8.59,'Capital abacus meets the tie beam soffit');
+for(const o of part('Column carving · junction block')){const b=bounds(o);near(b.min.y,8.59,'Junction block at the tie beam soffit');near(b.max.y,9.18,'Junction block at the tie beam top');}
+for(const o of part('Timber capital collar')){const b=bounds(o);near(b.min.y,9.18,'Die stands on the beams');assert(b.max.y<9.5,'Die stays under the rafter');}
+const turnedBases=part('Column carving · turned base');
+assert.equal(turnedBases.length,16,'Turned base on every free-standing shaft');
+for(const o of turnedBases){
+  const b=bounds(o),c=b.getCenter(new T.Vector3()),framed=Math.abs(c.x-frameX)<.5;onLine(o);
+  near(b.min.y,framed?.97:.78,'Turned base stands on its plinth');
+  // The base stays inside the 0.84 m pedestal, so walking clearances and sightline blockers are unchanged.
+  assert(b.max.x-b.min.x<=.841&&b.max.z-b.min.z<=.841&&b.max.y-b.min.y<.65,'Turned base stays within the pedestal footprint');
+}
+for(const o of part('Column base +0.600').filter(o=>bounds(o).getCenter(new T.Vector3()).x<frameX-5&&Math.abs(Math.abs(bounds(o).getCenter(new T.Vector3()).z)-3.6)<.01))assert.equal(o.material.name,'Proposed light sanctuary stone','Nave pedestal is pale stone');
+{
+  // Carving is display geometry: keep it within a budget that the batched viewer can carry.
+  let triangles=0;for(const o of nodes)if(o.isMesh&&/^(Column carving|Gilded column)/.test(o.name))triangles+=(o.geometry.index?o.geometry.index.count:o.geometry.attributes.position.count)/3;
+  assert(triangles<200000,`Column ornament triangle budget: ${triangles}`);
+}
 // The beams and roof timbers carry the same lacquer; the nave rafters and the ridge are gilded; the lining stays ivory.
 const named=name=>nodes.filter(o=>o.isMesh&&o.name===name),timber=named('Proposed underside ridge member')[0].material,lacquer=shafts[0].material;
 assert.equal(timber.name,'Proposed exposed roof timber colour');
@@ -278,9 +331,38 @@ assert(niche.backX-niche.mouthX>=1,'Niche is at least 1.0 m deep');
 const corpus=nodes.find(o=>o.name.startsWith('Illustrative bronze corpus'));
 assert(bounds(corpus).min.x>niche.mouthX+.3&&bounds(cross).min.x>niche.mouthX+.3,'Cross and corpus stand inside the niche');
 near(Math.max(...nodes.filter(o=>o.name==='Crucifix base step').map(o=>bounds(o).max.y)),bounds(cross).min.y+.02,'Cross stands on its stepped base');
-for(const name of ['Central carved timber silhouette','Outer carved canopy','Chamber back lining · lacquered timber','Sanctuary back wall behind the reredos']){
+for(const name of ['Central carved timber silhouette','Reredos carved ground','Outer carved canopy','Chamber back lining · lacquered timber','Sanctuary back wall behind the reredos']){
   const hit=new T.Raycaster(new T.Vector3(47,4.5,.6),new T.Vector3(1,0,0)).intersectObject(nodes.find(o=>o.name===name),false);
   assert.equal(hit.length,0,`${name} is open for the niche`);
+}
+// Sanctuary relief of the approved concept: gilded scrollwork and relief as tileable finishes on plates and grounds,
+// a glowing blue behind the crucifix and the statues, crocketed pinnacles, leaf crestings on the arches, a carved
+// wooden corpus with a gilded cloth, and a gilded, domed tabernacle.
+{
+  const finish=name=>nodes.find(o=>o.isMesh&&o.material?.name===name)?.material;
+  for(const name of ['Sanctuary · gilded scrollwork on lacquer','Sanctuary · gilded relief']){
+    const m=finish(name);assert(m&&m.map&&m.bumpMap&&m.metalnessMap&&m.roughnessMap===m.metalnessMap,`${name} is a relief finish with gilded metal and lacquered ground`);
+    assert(m.map.repeat.x>=1&&m.map.repeat.x<=3,`${name} repeats at a carved scale`);
+  }
+  for(const [name,count,material] of [['Central pilaster relief',12,'Sanctuary · gilded relief'],['Chamber pilaster relief',8,'Sanctuary · gilded relief'],['Wing pilaster relief',4,'Sanctuary · gilded relief'],['Shrine jamb relief',4,'Sanctuary · gilded relief'],['Shrine shelf frieze',2,'Sanctuary · gilded relief'],['Reredos frieze relief',2,'Sanctuary · gilded relief'],['Carved panel relief',11,'Sanctuary · gilded scrollwork on lacquer'],['Reredos carved ground',1,'Sanctuary · gilded scrollwork on lacquer'],['Shrine bay relief ground',2,'Sanctuary · gilded scrollwork on lacquer']]){
+    const list=part(name);assert.equal(list.length,count,name);
+    for(const o of list){
+      assert.equal(o.material.name,material,`${name} finish`);
+      // Plates carry metre-based texture coordinates, so the carving keeps one scale on every part.
+      const uv=o.geometry.attributes.uv,size=dimensions(o);let span=0;for(let i=0;i<uv.count;i++)span=Math.max(span,uv.getX(i),uv.getY(i));
+      assert(Math.abs(span-Math.max(size.x,size.y,size.z))<.02||name==='Reredos carved ground',`${name} is mapped in metres`);
+    }
+  }
+  for(const o of nodes.filter(o=>/^Front frame (central|side) spandrel$/.test(o.name)))assert.equal(o.material.name,'Sanctuary · gilded scrollwork on lacquer','Front frame carries gilded scrollwork');
+  for(const [name,material] of [['Blue crucifix recess','Sanctuary · blue niche'],['Wing blue niche','Sanctuary · shrine niche blue']])for(const o of part(name)){assert.equal(o.material.name,material);assert(o.material.map,`${name} has its glow`);}
+  assert.equal(part('Wing blue niche').length,2);
+  assert.equal(part('Carved pinnacle').length,8,'Four spires on the reredos pilasters and four on the gradine');
+  assert.equal(part('Wing pinnacle').length,4);
+  assert(part('Gilded leaf cresting').length>=10&&part('Gilded arch cresting').length===5,'Leaf crestings on the canopy arcs and on the three front arches and two shrine heads');
+  for(const o of nodes.filter(o=>o.isMesh&&/^Illustrative corpus /.test(o.name)))assert.equal(o.material.name,'Sanctuary · carved figure, natural wood');
+  const dome=part('Tabernacle dome')[0],enclosure=part('Proposed tabernacle enclosure')[0];
+  assert(dome&&enclosure&&dome.material===enclosure.material&&dome.material.name==='Sanctuary · carved gilding','Tabernacle is gilded under a dome');
+  near(bounds(dome).min.y,bounds(enclosure).max.y,'Dome stands on the tabernacle');
 }
 const casing=casings.reduce((b,o)=>b.union(bounds(o)),new T.Box3());
 near(casing.max.x,niche.endX,'Casing rear face');

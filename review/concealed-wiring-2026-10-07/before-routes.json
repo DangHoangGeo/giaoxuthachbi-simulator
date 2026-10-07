@@ -1,0 +1,604 @@
+[
+  {
+    "id": "local:L1",
+    "name": "L3 → Service-room ceiling panel · 50.0 m",
+    "source": "LC1",
+    "board": "DB1",
+    "circuit": "L3",
+    "kind": "light",
+    "role": "local",
+    "itemIds": [
+      "L1"
+    ],
+    "color": "#dc9e29",
+    "installation": "Local service-room wall riser and ceiling conduit",
+    "points": [
+      [
+        48.895,
+        1.85,
+        -0.55
+      ],
+      [
+        48.735,
+        1.85,
+        -0.55
+      ],
+      [
+        48.735,
+        1.85,
+        -2.24
+      ],
+      [
+        48.735,
+        4.02,
+        -2.24
+      ],
+      [
+        50,
+        4.02,
+        -2.24
+      ],
+      [
+        50,
+        4.02,
+        0
+      ],
+      [
+        50,
+        4.14,
+        0
+      ]
+    ],
+    "length": 7.645000000000004,
+    "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+    "drawnDiameter": 0.048,
+    "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
+  },
+  {
+    "id": "drop:LC1:L1:light:-1:L3",
+    "name": "L1 → Reading light · axis 3 · B central",
+    "source": "LC1",
+    "board": "DB1",
+    "circuit": "L1",
+    "kind": "light",
+    "role": "drop",
+    "itemIds": [
+      "L3"
+    ],
+    "trunkId": "trunk:LC1:L1:light:-1",
+    "color": "#dc9e29",
+    "upstreamLength": 70.62,
+    "homeRun": false,
+    "installation": "Wall / beam or roof containment, then pendant connection",
+    "points": [
+      [
+        9.975,
+        6.35,
+        -7.36
+      ],
+      [
+        9.975,
+        6.83,
+        -7.36
+      ],
+      [
+        9.975,
+        6.83,
+        -3.6
+      ],
+      [
+        9.975,
+        8.59,
+        -3.6
+      ],
+      [
+        9.975,
+        8.59,
+        -2.6
+      ],
+      [
+        9.975,
+        8.584999999999999,
+        -2.6
+      ]
+    ],
+    "length": 7.005000000000001,
+    "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+    "drawnDiameter": 0.048,
+    "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
+  },
+  {
+    "id": "drop:LC1:L2:light:-1:L31",
+    "name": "L2 → Reading light · axis 3 · B outer",
+    "source": "LC1",
+    "board": "DB1",
+    "circuit": "L2",
+    "kind": "light",
+    "role": "drop",
+    "itemIds": [
+      "L31"
+    ],
+    "trunkId": "trunk:LC1:L2:light:-1",
+    "color": "#dc9e29",
+    "upstreamLength": 70.63399999999999,
+    "homeRun": false,
+    "installation": "Wall / beam or roof containment, then pendant connection",
+    "points": [
+      [
+        9.975,
+        6.364,
+        -7.36
+      ],
+      [
+        9.975,
+        6.364,
+        -5.6
+      ],
+      [
+        9.975,
+        6.66,
+        -5.6
+      ],
+      [
+        9.975,
+        6.655,
+        -5.6
+      ]
+    ],
+    "length": 2.061000000000001,
+    "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+    "drawnDiameter": 0.048,
+    "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
+  },
+  {
+    "id": "drop:LC1:LA:light:-1:L71",
+    "name": "LA → Roof uplight · axis 3",
+    "source": "LC1",
+    "board": "DB1",
+    "circuit": "LA",
+    "kind": "light",
+    "role": "drop",
+    "itemIds": [
+      "L71"
+    ],
+    "trunkId": "trunk:LC1:LA:light:-1",
+    "color": "#dc9e29",
+    "upstreamLength": 70.67599999999999,
+    "homeRun": false,
+    "installation": "Concealed pier / wall drop, local termination",
+    "points": [
+      [
+        9.975,
+        6.406,
+        -7.36
+      ],
+      [
+        9.975,
+        6.83,
+        -7.36
+      ],
+      [
+        9.975,
+        6.83,
+        -3.6
+      ],
+      [
+        9.975,
+        8.59,
+        -3.6
+      ],
+      [
+        9.975,
+        8.59,
+        0
+      ],
+      [
+        9.975,
+        9.18,
+        0
+      ]
+    ],
+    "length": 10.134,
+    "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+    "drawnDiameter": 0.048,
+    "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
+  },
+  {
+    "id": "drop:LC1:LD:light:-1:L81",
+    "name": "LD → Grand chandelier · crossing 9–10",
+    "source": "LC1",
+    "board": "DB1",
+    "circuit": "LD",
+    "kind": "light",
+    "role": "drop",
+    "itemIds": [
+      "L81"
+    ],
+    "trunkId": "trunk:LC1:LD:light:-1",
+    "color": "#dc9e29",
+    "upstreamLength": 34.209999999999994,
+    "homeRun": false,
+    "installation": "Wall / beam or roof containment, then pendant connection",
+    "points": [
+      [
+        40.575,
+        6.42,
+        -13.24
+      ],
+      [
+        40.575,
+        6.42,
+        0
+      ],
+      [
+        40.575,
+        12.152,
+        0
+      ],
+      [
+        40.575,
+        9.2,
+        0
+      ]
+    ],
+    "length": 21.924,
+    "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+    "drawnDiameter": 0.048,
+    "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
+  },
+  {
+    "id": "drop:LC1:L3:light:-1:L107",
+    "name": "L3 → Reredos wash · B",
+    "source": "LC1",
+    "board": "DB1",
+    "circuit": "L3",
+    "kind": "light",
+    "role": "drop",
+    "itemIds": [
+      "L107"
+    ],
+    "trunkId": "trunk:LC1:L3:light:-1",
+    "color": "#dc9e29",
+    "upstreamLength": 24.113,
+    "homeRun": false,
+    "installation": "Concealed pier / wall drop, local termination",
+    "points": [
+      [
+        44.75,
+        6.377999999999999,
+        -7.36
+      ],
+      [
+        44.75,
+        6.7,
+        -7.36
+      ],
+      [
+        44.75,
+        6.7,
+        -3.2399999999999998
+      ]
+    ],
+    "length": 4.442000000000002,
+    "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+    "drawnDiameter": 0.048,
+    "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
+  },
+  {
+    "id": "drop:FC1:F1:fan:-1:F226",
+    "name": "F1 → Ceiling fan · bay 2′–3 · B aisle",
+    "source": "FC1",
+    "board": "DB1",
+    "circuit": "F1",
+    "kind": "fan",
+    "role": "drop",
+    "itemIds": [
+      "F226"
+    ],
+    "trunkId": "trunk:FC1:F1:fan:-1",
+    "color": "#b46a48",
+    "upstreamLength": 72.597,
+    "homeRun": false,
+    "installation": "Wall / beam or roof containment, then pendant connection",
+    "points": [
+      [
+        9.03,
+        6.532,
+        -7.36
+      ],
+      [
+        9.03,
+        7.02,
+        -7.36
+      ],
+      [
+        9.03,
+        7.065002717391305,
+        -7.05
+      ],
+      [
+        7.725,
+        7.065002717391305,
+        -7.05
+      ],
+      [
+        7.725,
+        8.988413043478262,
+        -4.4
+      ],
+      [
+        7.725,
+        9.028413043478261,
+        -4.4
+      ],
+      [
+        7.725,
+        3.9,
+        -4.4
+      ]
+    ],
+    "length": 10.549110166147116,
+    "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+    "drawnDiameter": 0.048,
+    "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
+  },
+  {
+    "id": "drop:AV1:A1:audio:-1:S275",
+    "name": "A1 → Wing speaker · B · front block",
+    "source": "AV1",
+    "board": "DB1",
+    "circuit": "A1",
+    "kind": "audio",
+    "role": "drop",
+    "itemIds": [
+      "S275"
+    ],
+    "trunkId": "trunk:AV1:A1:audio:-1",
+    "color": "#3985c2",
+    "upstreamLength": 38.707,
+    "homeRun": true,
+    "installation": "Wall / beam or roof containment, then pendant connection",
+    "points": [
+      [
+        38.94,
+        6.052,
+        -13.24
+      ],
+      [
+        38.94,
+        6.052,
+        -11.6
+      ],
+      [
+        38.94,
+        8.115059999999996,
+        -11.6
+      ],
+      [
+        38.94,
+        3,
+        -11.6
+      ]
+    ],
+    "length": 8.818119999999993,
+    "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+    "drawnDiameter": 0.048,
+    "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
+  },
+  {
+    "id": "trunk:AV1:MIC:mic:-1",
+    "name": "MIC · B · audio home-run bundle",
+    "source": "AV1",
+    "board": "DB1",
+    "circuit": "MIC",
+    "kind": "mic",
+    "role": "trunk",
+    "itemIds": [
+      "S291"
+    ],
+    "color": "#8263b5",
+    "installation": "Concealed wall band above openings; ceiling containment at wing returns",
+    "points": [
+      [
+        49.275,
+        0.95,
+        1.4
+      ],
+      [
+        48.735,
+        0.95,
+        1.4
+      ],
+      [
+        48.735,
+        0.95,
+        -2.24
+      ],
+      [
+        48.735,
+        4.02,
+        -2.24
+      ],
+      [
+        48.735,
+        4.02,
+        -3.6
+      ],
+      [
+        53.05,
+        4.02,
+        -3.6
+      ],
+      [
+        53.05,
+        6.122,
+        -3.6
+      ],
+      [
+        53.05,
+        6.122,
+        -7.36
+      ],
+      [
+        44.175,
+        6.122,
+        -7.36
+      ],
+      [
+        44.175,
+        6.122,
+        -13.24
+      ],
+      [
+        41.08,
+        6.122,
+        -13.24
+      ]
+    ],
+    "length": 36.637,
+    "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+    "drawnDiameter": 0.048,
+    "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
+  },
+  {
+    "id": "drop:AV1:MIC:mic:-1:S291",
+    "name": "MIC → Ambo microphone",
+    "source": "AV1",
+    "board": "DB1",
+    "circuit": "MIC",
+    "kind": "mic",
+    "role": "drop",
+    "itemIds": [
+      "S291"
+    ],
+    "trunkId": "trunk:AV1:MIC:mic:-1",
+    "color": "#8263b5",
+    "upstreamLength": 36.637,
+    "homeRun": true,
+    "installation": "Concealed pier / wall drop, local termination",
+    "points": [
+      [
+        41.08,
+        6.122,
+        -13.24
+      ],
+      [
+        41.08,
+        1.9,
+        -13.24
+      ],
+      [
+        41.08,
+        1.9,
+        -2.62
+      ]
+    ],
+    "length": 14.842,
+    "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+    "drawnDiameter": 0.048,
+    "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
+  },
+  {
+    "id": "trunk:AV1:MIC:mic:1",
+    "name": "MIC · H · audio home-run bundle",
+    "source": "AV1",
+    "board": "DB1",
+    "circuit": "MIC",
+    "kind": "mic",
+    "role": "trunk",
+    "itemIds": [
+      "S292"
+    ],
+    "color": "#8263b5",
+    "installation": "Concealed wall band above openings; ceiling containment at wing returns",
+    "points": [
+      [
+        49.275,
+        0.95,
+        1.4
+      ],
+      [
+        48.735,
+        0.95,
+        1.4
+      ],
+      [
+        48.735,
+        0.95,
+        -2.24
+      ],
+      [
+        48.735,
+        4.02,
+        -2.24
+      ],
+      [
+        48.735,
+        4.02,
+        -3.6
+      ],
+      [
+        53.05,
+        4.02,
+        -3.6
+      ],
+      [
+        53.05,
+        6.122,
+        -3.6
+      ],
+      [
+        53.05,
+        6.122,
+        7.36
+      ],
+      [
+        44.45,
+        6.122,
+        7.36
+      ]
+    ],
+    "length": 34.58699999999999,
+    "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+    "drawnDiameter": 0.048,
+    "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
+  },
+  {
+    "id": "drop:AV1:MIC:mic:1:S292",
+    "name": "MIC → Altar microphone",
+    "source": "AV1",
+    "board": "DB1",
+    "circuit": "MIC",
+    "kind": "mic",
+    "role": "drop",
+    "itemIds": [
+      "S292"
+    ],
+    "trunkId": "trunk:AV1:MIC:mic:1",
+    "color": "#8263b5",
+    "upstreamLength": 34.58699999999999,
+    "homeRun": true,
+    "installation": "Concealed pier / wall drop, local termination",
+    "points": [
+      [
+        44.45,
+        6.122,
+        7.36
+      ],
+      [
+        44.45,
+        1.88,
+        7.36
+      ],
+      [
+        44.45,
+        1.88,
+        0.45
+      ]
+    ],
+    "length": 11.152000000000001,
+    "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+    "drawnDiameter": 0.048,
+    "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"
+  }
+]

@@ -9,7 +9,7 @@ E1 maintained exit-sign group. Emergency supply and duration require separate de
 
 ## Current scope
 
-5 equipment/enclosures, 7 routes, 44 route vertices. 0 hidden alternatives; 5 shown connected components. Circuits: E1.
+5 equipment/enclosures, 7 routes, 54 route vertices. 0 hidden alternatives; 5 shown connected components. Circuits: E1.
 
 ## Editing and coordination
 

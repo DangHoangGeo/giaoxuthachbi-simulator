@@ -62,8 +62,15 @@
   function makeKit(T) {
     const geoCache = new Map();
     const cached = (key, make) => {
-      if (!geoCache.has(key)) geoCache.set(key, make());
-      return geoCache.get(key);
+      const geo = geoCache.get(key) || make();
+      geoCache.delete(key); geoCache.set(key, geo);
+      // These source primitives are copied into prototype buffers, never drawn.
+      // Eviction cannot invalidate live fixtures or a kit still holding a part.
+      if (geoCache.size > 256) {
+        const oldest = geoCache.keys().next().value;
+        geoCache.get(oldest).dispose(); geoCache.delete(oldest);
+      }
+      return geo;
     };
     const euler = new T.Euler(), quat = new T.Quaternion(), mat4 = new T.Matrix4();
     const vScale = new T.Vector3(), vPos = new T.Vector3();
@@ -74,7 +81,7 @@
       vScale.set(...(Array.isArray(s) ? s : [s, s, s]));
       return mat4.compose(vPos, quat, vScale).clone();
     }
-    return function Kit() {
+    const factory = function Kit() {
       const parts = { root: [], head: [], rotor: [], osc: [], stem: [] };
       let target = 'root';
       const kit = {
@@ -118,6 +125,8 @@
       };
       return kit;
     };
+    factory.cacheSize = () => geoCache.size;
+    return factory;
   }
 
   /* --------------------------------------------------------------- builders */

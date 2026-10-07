@@ -1,5 +1,7 @@
 # Sound system · Thạch Bi church
 
+> **Historical schedule:** the future-dated version label below does not establish recency. Its quantities, electrical allowances and passing feedback figures are stale. The fresh [7 October calculation audit](../../review/performance-2026-10-07/simulator-resources.log) retains low ambo/altar feedback margins (1.2/1.7 dB) and wing speech clarity (minimum STI 0.439, average 0.510). Use the [current sound register](../electrical-grid/categories/sound/register.xlsx) and [electrical summary](../electrical-grid/summary-report.md) for the maintained default equipment record. These remain design-development estimates.
+
 > Generated from the simulator's recommended design (version `2026-10-15-system-review`) and its analysis engine on 2026-10-15.
 > Values are engineering estimates for comparing options, not certified calculations; confirm with a licensed engineer and the chosen manufacturer's data before purchase.
 > Coordinates: x along the nave toward the altar (axis 3 = 9.975 m … axis 10 = 44.175 m), z negative = left side B, positive = right side H, y = height above the nave floor (wings −0.32 m).
@@ -77,3 +79,20 @@ Per block, full service: central (150 seats): avg 0.63, min 0.54 · outer (150 s
 - Wings: two pendants per wing bring the choir and ministers to ≈ 0.54 average. A louder speaker there costs feedback margin at the altar microphones; a headset microphone for the celebrant would allow more level everywhere.
 - Courtyard horns (A3) are only in the scene ‘Festival · courtyard overflow’: their sound returns through the open windows 40–80 ms late and blurs speech inside.
 - The model excludes the talker's own unamplified voice (conservative) and uses statistical reflections, not ray tracing.
+
+## Current listening implementation · 7 October 2026
+
+The performance update changes browser resource handling, not the equipment design
+or acoustic equations. Reverberation and STIPA-like sample generation yield during
+long loops; exact sample parity is checked against the prior implementation.
+Unchanged listener/source/room propagation results are cached, while head rotation,
+fan motion, mute/play state and analysis readouts remain live. Playback loading can
+be canceled, late microphone permissions release their tracks, and retired speaker
+chains disconnect from the programme bus. Muted speakers release their chains
+after their delay contents drain; quick mute/unmute retains the delay line. Only
+switched-on speakers allocate chains at startup. Hidden tabs suspend audio processing.
+
+See [performance methods and tests](../simulator/performance.md#listening-mode).
+Speaker positions, aiming, gain/delay settings, specifications, routes and sound
+register inputs are unchanged by this listening-runtime update. It does not resolve
+the feedback/wing targets above or validate a physical installation.

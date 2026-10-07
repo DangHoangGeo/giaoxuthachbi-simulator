@@ -1,0 +1,5261 @@
+{
+  "results": [
+    {
+      "policy": {
+        "mode": "standard",
+        "resampledImages": 0,
+        "originalPixels": 0,
+        "displayPixels": 0
+      },
+      "materialCount": 763,
+      "textureCount": 146,
+      "canvasCount": 146,
+      "rawCanvasBytes": 99948544,
+      "estimatedRGBA8MipBytes": 133190576,
+      "entries": [
+        {
+          "name": "Reference finish roof",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish roof relief",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish plaster",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish plaster relief",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish ashlar",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish ashlar relief",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish marble",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish marble relief",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass rose",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass rose · rolled surface",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass rose · lead and glass roughness",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 22",
+          "width": 1024,
+          "height": 623,
+          "bytes": 3399788,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 22 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 22 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish wood",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish wood relief",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 23",
+          "width": 1024,
+          "height": 623,
+          "bytes": 3399788,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 23 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 23 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 1",
+          "width": 1024,
+          "height": 519,
+          "bytes": 2832044,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 1 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 1 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 24",
+          "width": 1024,
+          "height": 623,
+          "bytes": 3399788,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 24 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 24 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 25",
+          "width": 1024,
+          "height": 623,
+          "bytes": 3399788,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 25 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 25 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 2",
+          "width": 1024,
+          "height": 519,
+          "bytes": 2832044,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 2 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 2 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 26",
+          "width": 1024,
+          "height": 547,
+          "bytes": 2985260,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 26 · rolled surface",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 26 · lead and glass roughness",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 3",
+          "width": 1024,
+          "height": 519,
+          "bytes": 2832044,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 3 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 3 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 27",
+          "width": 1024,
+          "height": 623,
+          "bytes": 3399788,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 27 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 27 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 28",
+          "width": 1024,
+          "height": 623,
+          "bytes": 3399788,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 28 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 28 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 4",
+          "width": 1024,
+          "height": 519,
+          "bytes": 2832044,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 4 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 4 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 29",
+          "width": 1024,
+          "height": 623,
+          "bytes": 3399788,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 29 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 29 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 5",
+          "width": 1024,
+          "height": 519,
+          "bytes": 2832044,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 5 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 5 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 6",
+          "width": 1024,
+          "height": 519,
+          "bytes": 2832044,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 6 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 6 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 33",
+          "width": 1024,
+          "height": 547,
+          "bytes": 2985260,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 33 · rolled surface",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 33 · lead and glass roughness",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 7",
+          "width": 1024,
+          "height": 519,
+          "bytes": 2832044,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 7 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 7 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 34",
+          "width": 1024,
+          "height": 623,
+          "bytes": 3399788,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 34 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 34 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 36",
+          "width": 1024,
+          "height": 547,
+          "bytes": 2985260,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 36 · rolled surface",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 36 · lead and glass roughness",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 8",
+          "width": 1024,
+          "height": 519,
+          "bytes": 2832044,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 8 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 8 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 11",
+          "width": 1024,
+          "height": 519,
+          "bytes": 2832044,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 11 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 11 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 43",
+          "width": 1024,
+          "height": 547,
+          "bytes": 2985260,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 43 · rolled surface",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 43 · lead and glass roughness",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 12",
+          "width": 1024,
+          "height": 519,
+          "bytes": 2832044,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 12 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 12 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 15",
+          "width": 1024,
+          "height": 519,
+          "bytes": 2832044,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 15 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 15 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 53",
+          "width": 1024,
+          "height": 547,
+          "bytes": 2985260,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 53 · rolled surface",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 53 · lead and glass roughness",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 17",
+          "width": 1024,
+          "height": 519,
+          "bytes": 2832044,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 17 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 17 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 19",
+          "width": 1024,
+          "height": 600,
+          "bytes": 3276524,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 19 · rolled surface",
+          "width": 256,
+          "height": 150,
+          "bytes": 204524,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 19 · lead and glass roughness",
+          "width": 256,
+          "height": 150,
+          "bytes": 204524,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 20",
+          "width": 1024,
+          "height": 585,
+          "bytes": 3193324,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 20 · rolled surface",
+          "width": 256,
+          "height": 146,
+          "bytes": 199148,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 20 · lead and glass roughness",
+          "width": 256,
+          "height": 146,
+          "bytes": 199148,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 21",
+          "width": 1024,
+          "height": 600,
+          "bytes": 3276524,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 21 · rolled surface",
+          "width": 256,
+          "height": 150,
+          "bytes": 204524,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 21 · lead and glass roughness",
+          "width": 256,
+          "height": 150,
+          "bytes": 204524,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 512,
+          "height": 80,
+          "bytes": 218428,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            0.25641025641025644,
+            0.20408163265306128
+          ]
+        },
+        {
+          "name": "",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            2.5,
+            2.5
+          ]
+        },
+        {
+          "name": "",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            2.5,
+            2.5
+          ]
+        },
+        {
+          "name": "",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            2.5,
+            2.5
+          ]
+        },
+        {
+          "name": "",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            0.5617977528089888,
+            0.3076923076923077
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish paving",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish paving relief",
+          "width": 512,
+          "height": 512,
+          "bytes": 1398100,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 1024,
+          "height": 512,
+          "bytes": 2796204,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        }
+      ],
+      "lightGrid": {
+        "count": 182,
+        "capacity": 256,
+        "grid": {
+          "average": 66.4142561983471,
+          "max": 86,
+          "sources": 194,
+          "bytes": 4026880
+        },
+        "gridBuilds": 1
+      }
+    },
+    {
+      "policy": {
+        "mode": "light",
+        "resampledImages": 48,
+        "originalPixels": 21352448,
+        "displayPixels": 5344768
+      },
+      "materialCount": 763,
+      "textureCount": 146,
+      "canvasCount": 146,
+      "rawCanvasBytes": 35917824,
+      "estimatedRGBA8MipBytes": 47871920,
+      "entries": [
+        {
+          "name": "Reference finish roof",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish roof relief",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish plaster",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish plaster relief",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish ashlar",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish ashlar relief",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish marble",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish marble relief",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass rose",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass rose · rolled surface",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass rose · lead and glass roughness",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 22",
+          "width": 512,
+          "height": 312,
+          "bytes": 851820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              623
+            ],
+            "display": [
+              512,
+              312
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 22 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 22 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish wood",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish wood relief",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 23",
+          "width": 512,
+          "height": 312,
+          "bytes": 851820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              623
+            ],
+            "display": [
+              512,
+              312
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 23 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 23 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 1",
+          "width": 512,
+          "height": 260,
+          "bytes": 709804,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              519
+            ],
+            "display": [
+              512,
+              260
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 1 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 1 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 24",
+          "width": 512,
+          "height": 312,
+          "bytes": 851820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              623
+            ],
+            "display": [
+              512,
+              312
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 24 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 24 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 25",
+          "width": 512,
+          "height": 312,
+          "bytes": 851820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              623
+            ],
+            "display": [
+              512,
+              312
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 25 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 25 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 2",
+          "width": 512,
+          "height": 260,
+          "bytes": 709804,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              519
+            ],
+            "display": [
+              512,
+              260
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 2 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 2 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 26",
+          "width": 512,
+          "height": 274,
+          "bytes": 747820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              547
+            ],
+            "display": [
+              512,
+              274
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 26 · rolled surface",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 26 · lead and glass roughness",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 3",
+          "width": 512,
+          "height": 260,
+          "bytes": 709804,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              519
+            ],
+            "display": [
+              512,
+              260
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 3 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 3 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 27",
+          "width": 512,
+          "height": 312,
+          "bytes": 851820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              623
+            ],
+            "display": [
+              512,
+              312
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 27 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 27 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 28",
+          "width": 512,
+          "height": 312,
+          "bytes": 851820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              623
+            ],
+            "display": [
+              512,
+              312
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 28 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 28 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 4",
+          "width": 512,
+          "height": 260,
+          "bytes": 709804,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              519
+            ],
+            "display": [
+              512,
+              260
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 4 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 4 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 29",
+          "width": 512,
+          "height": 312,
+          "bytes": 851820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              623
+            ],
+            "display": [
+              512,
+              312
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 29 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 29 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 5",
+          "width": 512,
+          "height": 260,
+          "bytes": 709804,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              519
+            ],
+            "display": [
+              512,
+              260
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 5 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 5 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 6",
+          "width": 512,
+          "height": 260,
+          "bytes": 709804,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              519
+            ],
+            "display": [
+              512,
+              260
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 6 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 6 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 33",
+          "width": 512,
+          "height": 274,
+          "bytes": 747820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              547
+            ],
+            "display": [
+              512,
+              274
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 33 · rolled surface",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 33 · lead and glass roughness",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 7",
+          "width": 512,
+          "height": 260,
+          "bytes": 709804,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              519
+            ],
+            "display": [
+              512,
+              260
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 7 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 7 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 34",
+          "width": 512,
+          "height": 312,
+          "bytes": 851820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              623
+            ],
+            "display": [
+              512,
+              312
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 34 · rolled surface",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 34 · lead and glass roughness",
+          "width": 256,
+          "height": 156,
+          "bytes": 212844,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 36",
+          "width": 512,
+          "height": 274,
+          "bytes": 747820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              547
+            ],
+            "display": [
+              512,
+              274
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 36 · rolled surface",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 36 · lead and glass roughness",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 8",
+          "width": 512,
+          "height": 260,
+          "bytes": 709804,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              519
+            ],
+            "display": [
+              512,
+              260
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 8 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 8 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 11",
+          "width": 512,
+          "height": 260,
+          "bytes": 709804,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              519
+            ],
+            "display": [
+              512,
+              260
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 11 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 11 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 43",
+          "width": 512,
+          "height": 274,
+          "bytes": 747820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              547
+            ],
+            "display": [
+              512,
+              274
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 43 · rolled surface",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 43 · lead and glass roughness",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 12",
+          "width": 512,
+          "height": 260,
+          "bytes": 709804,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              519
+            ],
+            "display": [
+              512,
+              260
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 12 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 12 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 15",
+          "width": 512,
+          "height": 260,
+          "bytes": 709804,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              519
+            ],
+            "display": [
+              512,
+              260
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 15 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 15 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 53",
+          "width": 512,
+          "height": 274,
+          "bytes": 747820,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              547
+            ],
+            "display": [
+              512,
+              274
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 53 · rolled surface",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 53 · lead and glass roughness",
+          "width": 256,
+          "height": 137,
+          "bytes": 186668,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 17",
+          "width": 512,
+          "height": 260,
+          "bytes": 709804,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              519
+            ],
+            "display": [
+              512,
+              260
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 17 · rolled surface",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 17 · lead and glass roughness",
+          "width": 256,
+          "height": 130,
+          "bytes": 177324,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 19",
+          "width": 512,
+          "height": 300,
+          "bytes": 818924,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              600
+            ],
+            "display": [
+              512,
+              300
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 19 · rolled surface",
+          "width": 256,
+          "height": 150,
+          "bytes": 204524,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 19 · lead and glass roughness",
+          "width": 256,
+          "height": 150,
+          "bytes": 204524,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 20",
+          "width": 512,
+          "height": 293,
+          "bytes": 799212,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              585
+            ],
+            "display": [
+              512,
+              293
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 20 · rolled surface",
+          "width": 256,
+          "height": 146,
+          "bytes": 199148,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 20 · lead and glass roughness",
+          "width": 256,
+          "height": 146,
+          "bytes": 199148,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 21",
+          "width": 512,
+          "height": 300,
+          "bytes": 818924,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              1024,
+              600
+            ],
+            "display": [
+              512,
+              300
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 21 · rolled surface",
+          "width": 256,
+          "height": 150,
+          "bytes": 204524,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Stained-glass fanlight 21 · lead and glass roughness",
+          "width": 256,
+          "height": 150,
+          "bytes": 204524,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 128,
+          "height": 64,
+          "bytes": 43692,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 512,
+          "height": 80,
+          "bytes": 218428,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            0.25641025641025644,
+            0.20408163265306128
+          ]
+        },
+        {
+          "name": "",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            2.5,
+            2.5
+          ]
+        },
+        {
+          "name": "",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            2.5,
+            2.5
+          ]
+        },
+        {
+          "name": "",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            2.5,
+            2.5
+          ]
+        },
+        {
+          "name": "",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            0.5617977528089888,
+            0.3076923076923077
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 320,
+          "height": 96,
+          "bytes": 163832,
+          "resample": null,
+          "colorSpace": "",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish paving",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "srgb",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Reference finish paving relief",
+          "width": 256,
+          "height": 256,
+          "bytes": 349524,
+          "resample": {
+            "kind": "resampled display texture",
+            "source": [
+              512,
+              512
+            ],
+            "display": [
+              256,
+              256
+            ],
+            "mode": "light"
+          },
+          "colorSpace": "",
+          "wrap": [
+            1000,
+            1000
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "width": 1024,
+          "height": 512,
+          "bytes": 2796204,
+          "resample": null,
+          "colorSpace": "srgb",
+          "wrap": [
+            1001,
+            1001
+          ],
+          "repeat": [
+            1,
+            1
+          ]
+        }
+      ],
+      "lightGrid": {
+        "count": 184,
+        "capacity": 256,
+        "grid": {
+          "average": 66.4142561983471,
+          "max": 86,
+          "sources": 194,
+          "bytes": 4026880
+        },
+        "gridBuilds": 1
+      }
+    }
+  ],
+  "materialPropertiesUnchanged": true,
+  "numericLightGridUnchanged": true,
+  "textureToggleIdentity": true,
+  "pngCapture": true,
+  "errors": []
+}

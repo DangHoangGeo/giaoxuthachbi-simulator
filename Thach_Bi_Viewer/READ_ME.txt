@@ -39,7 +39,8 @@ Exact ornamental profiles, stair tread count, furnishings, lighting and the
 sanctuary arch's longitudinal placement remain visual proposals. The workbook
 retains unresolved drawing dimensions. This viewer is not a construction model.
 
-Maintainable refinement: realism.js. References: references.js and
+Maintainable refinement: realism.js. Sanctuary and column finishes: sanctuary.js.
+Carved ornament shapes: carving.js. References: references.js and
 references/manifest.json. Original runtime backup: ../review/original.
 Geometry checks: ../scripts/verify_model.cjs (run with Node.js).
 
@@ -142,8 +143,15 @@ and domes, with projecting arms keeping the heads clear of the masonry.
 Every switched-on lamp retains illumination and reflections at every distance.
 Additional surface lighting is drawn from real lamp positions, never from
 midpoints near speakers. Switches, dimmers and layout edits update all effects.
-Simulator → Settings → Rendering quality keeps full resolution, illumination,
-reflections and the same shadow sources. Room brightness follows surfaces,
+Simulator → Settings → Rendering quality keeps illumination, reflections and
+the same shadow sources. View settings → Preview resolution separately adapts
+sharpness for smoother navigation, with manual full/75%/50% options. Use light
+graphics saves the layout and restarts with 50% resolution, antialiasing off and
+preview shadows off. Static finish/glass/relief textures also use smaller display
+images. Restore standard graphics before detailed image/GLB exports. Original
+artwork, all lamps, physical material settings and calculations remain intact. See
+../docs/simulator/performance.md for methods, checks and measured limits.
+Room brightness follows surfaces,
 not camera location. Fixed exposure is the default; automatic eye adaptation
 is optional and deliberately changes brightness while moving.
 Saved layouts receive only the reviewed lights once; other edits are retained.

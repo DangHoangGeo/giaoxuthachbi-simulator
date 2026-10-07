@@ -1,0 +1,60 @@
+{
+  "baseline": "6c7f528",
+  "checks": "passed",
+  "categories": [
+    {
+      "category": "lighting",
+      "equipment": 220,
+      "routes": 241,
+      "equipmentCellsUnchanged": true,
+      "routeInputsAndAllocationsUnchanged": true,
+      "stylesAndPanesUnchanged": true,
+      "fourSheetsPreserved": true
+    },
+    {
+      "category": "sound",
+      "equipment": 32,
+      "routes": 42,
+      "equipmentCellsUnchanged": true,
+      "routeInputsAndAllocationsUnchanged": true,
+      "stylesAndPanesUnchanged": true,
+      "fourSheetsPreserved": true
+    },
+    {
+      "category": "air-system",
+      "equipment": 35,
+      "routes": 35,
+      "equipmentCellsUnchanged": true,
+      "routeInputsAndAllocationsUnchanged": true,
+      "stylesAndPanesUnchanged": true,
+      "fourSheetsPreserved": true
+    },
+    {
+      "category": "exit-signs",
+      "equipment": 5,
+      "routes": 7,
+      "equipmentCellsUnchanged": true,
+      "routeInputsAndAllocationsUnchanged": true,
+      "stylesAndPanesUnchanged": true,
+      "fourSheetsPreserved": true
+    },
+    {
+      "category": "decoration",
+      "equipment": 30,
+      "routes": 0,
+      "equipmentCellsUnchanged": true,
+      "routeInputsAndAllocationsUnchanged": true,
+      "stylesAndPanesUnchanged": true,
+      "fourSheetsPreserved": true
+    },
+    {
+      "category": "distribution-controls",
+      "equipment": 5,
+      "routes": 4,
+      "equipmentCellsUnchanged": true,
+      "routeInputsAndAllocationsUnchanged": true,
+      "stylesAndPanesUnchanged": true,
+      "fourSheetsPreserved": true
+    }
+  ]
+}

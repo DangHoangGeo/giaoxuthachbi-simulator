@@ -430,8 +430,8 @@
       ${sw('autoExposure', 'Automatic eye adaptation', 'Adapts to the light where you stand, like the eye. Off keeps room brightness fixed when moving.')}
       ${rng('halos', 'Lamp glow', 0, 2, 0.1, fmt(s.halos, 1) + '×')}
       ${field('Rendering quality', `<select data-setting="quality">${Object.entries(SIM.QUALITY).map(([k, q]) => `<option value="${k}" ${s.quality === k ? 'selected' : ''}>${esc(q.label)}</option>`).join('')}</select>`, true)}
-      ${sw('autoQuality', 'Adjust detail automatically when walking stutters')}
-      <p class="sim-hint">${(() => { const p = SIM.poolStats(); return p ? `All ${p.emitters} active light sources illuminate surfaces at every distance. Full resolution at every quality level. Illumination, reflections and shadow sources stay active at every quality level. Analysis always uses every source.` : ''; })()}</p>
+      ${sw('autoQuality', 'Automatically reduce rendering work when walking stutters')}
+      <p class="sim-hint">${(() => { const p = SIM.poolStats(); return p ? `All ${p.emitters} active light sources illuminate surfaces at every distance. View settings → Preview resolution can adapt image size for slower computers. This light budget keeps illumination, reflections and shadow sources. Analysis always uses every source.` : ''; })()}</p>
       </div>
       <div class="sim-card"><h3>Structure &amp; finishes</h3>
       ${field('Timber frame', `<select data-setting="frameStyle"><option value="drawn" ${s.frameStyle !== 'reference' ? 'selected' : ''}>As drawn (PDF section 4)</option><option value="reference" ${s.frameStyle === 'reference' ? 'selected' : ''}>Reference image (open collar truss)</option></select>`, true)}
@@ -501,7 +501,7 @@
   function onInput(e) {
     const t = e.target;
     if (t.dataset.act === 'circuit-dim') {
-      for (const it of SIM.state.items) if (it.circuit === t.dataset.circuit && CAT.byId[it.type].light) SIM.update(it.id, { dim: t.value / 100, on: t.value > 0 }, { record: false });
+      SIM.batch(() => { for (const it of SIM.state.items) if (it.circuit === t.dataset.circuit && CAT.byId[it.type].light) SIM.update(it.id, { dim: t.value / 100, on: t.value > 0 }, { record: false }); });
       t.title = `Dim level ${t.value} %`;
       return;
     }
@@ -540,7 +540,7 @@
     }
     if (t.dataset.act === 'toggle') { const it = itemFromEvent(e); SIM.update(it.id, { on: t.checked, hidden: t.checked ? false : it.hidden }); return; }
     if (t.dataset.act === 'circuit') {
-      for (const it of SIM.state.items) if (it.circuit === t.dataset.circuit && !it.hidden) SIM.update(it.id, { on: t.checked, ...(t.checked && CAT.byId[it.type].light && !(it.dim > 0) ? { dim: 1 } : {}) }, { record: false });
+      SIM.batch(() => { for (const it of SIM.state.items) if (it.circuit === t.dataset.circuit && !it.hidden) SIM.update(it.id, { on: t.checked, ...(t.checked && CAT.byId[it.type].light && !(it.dim > 0) ? { dim: 1 } : {}) }, { record: false }); });
       SIM.commit((t.checked ? 'Switch on ' : 'Switch off ') + (SIM.CIRCUITS[t.dataset.circuit]?.label || t.dataset.circuit));
       return;
     }

@@ -23,10 +23,13 @@ Check the working tree and recent changes. Read the relevant sources below and t
 | Simulator methods and limitations | `docs/simulator/README.md`, `docs/simulator/methods-and-limitations.md`, `docs/simulator/guide.md` |
 | Electrical grid, route maps and manual/quick controls | `docs/electrical-grid/README.md`, `routing.md`, `controls.md` and JSON/CSV schedules in that directory |
 | Equipment/line registers and total report | `docs/electrical-grid/categories/README.md`, `summary-report.md`, `register.md` and matching `equipment-layout.json` / `electrical-systems.json` |
-| Art and reference status | `Thach_Bi_Viewer/references/manifest.json`, `coverage.json` and relevant source images |
+| Art and reference status | `docs/church-view-renderings.md`, `Thach_Bi_Viewer/references/manifest.json`, `coverage.json` and relevant source images; approved concepts govern ornament still unfinished in the model |
 | Actual behavior and verification | `Thach_Bi_Viewer/`, `scripts/verify_*.cjs` and relevant records under `review/` |
+| Future public/protected web app | `plan/README.md`, phase dependencies, architecture, data/publication contracts and quality gates |
 
-`Simulator_Test.md` is a superseded sketch. Historical prompts, `review/original/`, rejected images and old passing logs are historical evidence. Some documents contain future-looking version labels and outdated quantities/results; inspect source revisions, actual code and fresh checks instead of sorting by the largest date string.
+For future web work, follow the phase plan and preserve the offline viewer. Public visits and password-protected review/site views are read-only: navigation, display preferences and selection of published scenarios are allowed; project edits, imports, saving, uploads and physical equipment commands are not. Keep private data out of public bundles/assets and enforce access at server-side data reads. These are planned capabilities until their phase acceptance criteria have been met.
+
+`docs/simulator/old/Simulator_Test.md` is a superseded sketch. Historical prompts, `review/original/`, rejected images and old passing logs are historical evidence. Some documents contain future-looking version labels and outdated quantities/results; inspect source revisions, actual code and fresh checks instead of sorting by the largest date string.
 
 ## Ten shared rules
 

@@ -1,0 +1,183 @@
+{
+  "cpuRate": 4,
+  "graphics": "light",
+  "start": {
+    "startedMs": 1984.2999997138977,
+    "playing": true,
+    "irKey": "2.01,1.56,1.21,1.11,1.09,1.08,0.93",
+    "sampleRate": 44100,
+    "resources": {
+      "speakerChains": 20,
+      "drainingSpeakerChains": 0,
+      "fanSources": 27
+    },
+    "error": null
+  },
+  "levels": {
+    "rmsDb": -26.01265450791958,
+    "peakDb": -15.198803908957894
+  },
+  "synthesis": {
+    "beforeIR": {
+      "totalMs": 85.2000002861023,
+      "maxHeartbeatGapMs": 85.30000019073486,
+      "yieldedHeartbeats": 4,
+      "samples": 216996
+    },
+    "afterIR": {
+      "totalMs": 258.2999997138977,
+      "maxHeartbeatGapMs": 8.599999904632568,
+      "yieldedHeartbeats": 62,
+      "samples": 216996
+    },
+    "beforeStipa": {
+      "totalMs": 593.8000001907349,
+      "maxHeartbeatGapMs": 594.4000000953674,
+      "yieldedHeartbeats": 4,
+      "samples": 882000
+    },
+    "afterStipa": {
+      "totalMs": 1673,
+      "maxHeartbeatGapMs": 9.599999904632568,
+      "yieldedHeartbeats": 373,
+      "samples": 882000
+    },
+    "trials": [
+      {
+        "beforeIR": {
+          "totalMs": 85.90000009536743,
+          "maxHeartbeatGapMs": 85.90000009536743,
+          "yieldedHeartbeats": 4,
+          "samples": 216996
+        },
+        "afterIR": {
+          "totalMs": 260.5,
+          "maxHeartbeatGapMs": 9.400000095367432,
+          "yieldedHeartbeats": 60,
+          "samples": 216996
+        },
+        "beforeStipa": {
+          "totalMs": 702.4000000953674,
+          "maxHeartbeatGapMs": 702.8000001907349,
+          "yieldedHeartbeats": 4,
+          "samples": 882000
+        },
+        "afterStipa": {
+          "totalMs": 1668.3999996185303,
+          "maxHeartbeatGapMs": 9.5,
+          "yieldedHeartbeats": 370,
+          "samples": 882000
+        }
+      },
+      {
+        "beforeIR": {
+          "totalMs": 85.2000002861023,
+          "maxHeartbeatGapMs": 85.30000019073486,
+          "yieldedHeartbeats": 3,
+          "samples": 216996
+        },
+        "afterIR": {
+          "totalMs": 258.2999997138977,
+          "maxHeartbeatGapMs": 8.599999904632568,
+          "yieldedHeartbeats": 62,
+          "samples": 216996
+        },
+        "beforeStipa": {
+          "totalMs": 593.8000001907349,
+          "maxHeartbeatGapMs": 594.4000000953674,
+          "yieldedHeartbeats": 3,
+          "samples": 882000
+        },
+        "afterStipa": {
+          "totalMs": 1695.9000000953674,
+          "maxHeartbeatGapMs": 9.600000381469727,
+          "yieldedHeartbeats": 381,
+          "samples": 882000
+        }
+      },
+      {
+        "beforeIR": {
+          "totalMs": 72.80000019073486,
+          "maxHeartbeatGapMs": 73.40000009536743,
+          "yieldedHeartbeats": 4,
+          "samples": 216996
+        },
+        "afterIR": {
+          "totalMs": 258.09999990463257,
+          "maxHeartbeatGapMs": 8.300000190734863,
+          "yieldedHeartbeats": 62,
+          "samples": 216996
+        },
+        "beforeStipa": {
+          "totalMs": 559.1000003814697,
+          "maxHeartbeatGapMs": 559.8000001907349,
+          "yieldedHeartbeats": 4,
+          "samples": 882000
+        },
+        "afterStipa": {
+          "totalMs": 1673,
+          "maxHeartbeatGapMs": 9.599999904632568,
+          "yieldedHeartbeats": 373,
+          "samples": 882000
+        }
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "movement": "idle",
+      "frames": 117,
+      "medianMs": 33.5,
+      "p95Ms": 46.299999713897705,
+      "arrivalCallsIncludingReadouts": 340,
+      "speakers": 30,
+      "fanSources": 27,
+      "lights": {
+        "count": 184,
+        "capacity": 256,
+        "grid": {
+          "average": 66.4142561983471,
+          "max": 86,
+          "sources": 194,
+          "bytes": 4026880
+        },
+        "gridBuilds": 1
+      },
+      "level": {
+        "rmsDb": -28.47800230226856,
+        "peakDb": -18.283733723756793
+      }
+    },
+    {
+      "movement": "walk",
+      "frames": 124,
+      "medianMs": 32.5,
+      "p95Ms": 36.5,
+      "arrivalCallsIncludingReadouts": 1620,
+      "speakers": 30,
+      "fanSources": 27,
+      "lights": {
+        "count": 184,
+        "capacity": 256,
+        "grid": {
+          "average": 66.4142561983471,
+          "max": 86,
+          "sources": 194,
+          "bytes": 4026880
+        },
+        "gridBuilds": 1
+      },
+      "level": {
+        "rmsDb": -24.67429525940597,
+        "peakDb": -14.375115366684092
+      }
+    }
+  ],
+  "checks": {
+    "entranceFinishRebuildsIR": true,
+    "embeddedSpeechDecoded": true,
+    "cancelCannotStartLater": true,
+    "phonePlayStop": true
+  },
+  "errors": []
+}

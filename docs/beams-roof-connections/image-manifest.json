@@ -12,9 +12,10 @@
         941
       ],
       "resampled": true,
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/01-upper-bay-front.png",
+      "source": "docs/beams-roof-connections/images/01-upper-bay-front.png",
       "sha256": "a6279ea21f941142a9e9eeb7f741333c798b15773689aeb98a31d8df4a780bb0",
-      "engineeringApproved": false
+      "engineeringApproved": false,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/01-upper-bay-front.png"
     },
     {
       "file": "images/02-column-head-three-quarter.png",
@@ -26,9 +27,10 @@
         941
       ],
       "resampled": true,
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/02-column-head-three-quarter.png",
+      "source": "docs/beams-roof-connections/images/02-column-head-three-quarter.png",
       "sha256": "80e608c91a1cb965d1e88526c02dc98745fedc6ffa2342ee65bd9bcc259fd5e2",
-      "engineeringApproved": false
+      "engineeringApproved": false,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/02-column-head-three-quarter.png"
     },
     {
       "file": "images/03-carved-bracket-underside.png",
@@ -40,9 +42,10 @@
         941
       ],
       "resampled": true,
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/03-carved-bracket-underside.png",
+      "source": "docs/beams-roof-connections/images/03-carved-bracket-underside.png",
       "sha256": "55ad957d9fb18309ea92524a1a2f360c23f6e50e30ac04aae0a8bebea8cbb02d",
-      "engineeringApproved": false
+      "engineeringApproved": false,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/03-carved-bracket-underside.png"
     },
     {
       "file": "images/04-upper-rail-roof-connection.png",
@@ -54,9 +57,10 @@
         941
       ],
       "resampled": true,
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/04-upper-rail-roof-connection.png",
+      "source": "docs/beams-roof-connections/images/04-upper-rail-roof-connection.png",
       "sha256": "ce80845fced6761803538b8dad3458ed049e4745959e9f5c289e399a7867ec65",
-      "engineeringApproved": false
+      "engineeringApproved": false,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/04-upper-rail-roof-connection.png"
     },
     {
       "file": "images/07-full-width-frame-concrete-sides.png",
@@ -68,9 +72,10 @@
         941
       ],
       "resampled": true,
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/07-full-width-frame-concrete-sides.png",
+      "source": "docs/beams-roof-connections/images/07-full-width-frame-concrete-sides.png",
       "sha256": "be351782a27031c8c71cec27045dc0237be172cbe861533df3dd84a2794fe8e1",
-      "engineeringApproved": false
+      "engineeringApproved": false,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/07-full-width-frame-concrete-sides.png"
     },
     {
       "file": "images/08-longitudinal-beams-two-frames.png",
@@ -82,9 +87,10 @@
         941
       ],
       "resampled": true,
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/08-longitudinal-beams-two-frames.png",
+      "source": "docs/beams-roof-connections/images/08-longitudinal-beams-two-frames.png",
       "sha256": "e0684f160d8e1fbed2a572e6922a11735234b98807321476301ce183c2b1e2a4",
-      "engineeringApproved": false
+      "engineeringApproved": false,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/08-longitudinal-beams-two-frames.png"
     },
     {
       "file": "images/09-side-beam-concrete-bearing.png",
@@ -96,9 +102,10 @@
         941
       ],
       "resampled": true,
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/09-side-beam-concrete-bearing.png",
+      "source": "docs/beams-roof-connections/images/09-side-beam-concrete-bearing.png",
       "sha256": "ea9a4a39025203edae26d306d526ec70d716992693086aa8d7f32645bc8a0623",
-      "engineeringApproved": false
+      "engineeringApproved": false,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/09-side-beam-concrete-bearing.png"
     },
     {
       "file": "images/10-upper-roof-longitudinal-connections.png",
@@ -110,39 +117,45 @@
         941
       ],
       "resampled": true,
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/10-upper-roof-longitudinal-connections.png",
+      "source": "docs/beams-roof-connections/images/10-upper-roof-longitudinal-connections.png",
       "sha256": "eaa6ff65222030f934fad6ee7797dad44459bfe61b5b062334ac4d5f95adc55b",
-      "engineeringApproved": false
+      "engineeringApproved": false,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/10-upper-roof-longitudinal-connections.png"
     },
     {
       "file": "sources/IMG_20260910_171557_634_1.JPG",
       "role": "other_church_original_photo",
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_20260910_171557_634_1.JPG",
-      "sha256": "6dd42d95c392acad2a12a0ad41b628724c2a2687cb680e67dba4072e8ee6517d"
+      "source": "docs/beams-roof-connections/sources/IMG_20260910_171557_634_1.JPG",
+      "sha256": "6dd42d95c392acad2a12a0ad41b628724c2a2687cb680e67dba4072e8ee6517d",
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_20260910_171557_634_1.JPG"
     },
     {
       "file": "sources/IMG_2676.PNG",
       "role": "other_church_original_photo",
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2676.PNG",
-      "sha256": "de6f575d7e5c0fe91f8bfc57a5504e3cd20096dc3a31444cc1c3e999b83d41af"
+      "source": "docs/beams-roof-connections/sources/IMG_2676.PNG",
+      "sha256": "de6f575d7e5c0fe91f8bfc57a5504e3cd20096dc3a31444cc1c3e999b83d41af",
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2676.PNG"
     },
     {
       "file": "sources/IMG_2677.PNG",
       "role": "other_church_original_photo",
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2677.PNG",
-      "sha256": "ec557cc1ed6e31f018cca0ee3651c0654f173f7479e25c852f65521d29dedeab"
+      "source": "docs/beams-roof-connections/sources/IMG_2677.PNG",
+      "sha256": "ec557cc1ed6e31f018cca0ee3651c0654f173f7479e25c852f65521d29dedeab",
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2677.PNG"
     },
     {
       "file": "sources/IMG_2678.PNG",
       "role": "other_church_original_photo",
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2678.PNG",
-      "sha256": "8c3206df45db771e88c0fd5a4003fbfb5f70ab96f00970378a6e93ff82daf4fa"
+      "source": "docs/beams-roof-connections/sources/IMG_2678.PNG",
+      "sha256": "8c3206df45db771e88c0fd5a4003fbfb5f70ab96f00970378a6e93ff82daf4fa",
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2678.PNG"
     },
     {
       "file": "sources/IMG_2679.PNG",
       "role": "other_church_original_photo",
-      "source": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2679.PNG",
-      "sha256": "ed38c696176ea6655ecfd7807af8b275259e5238c9edc5bba0f3555ee9bb5b59"
+      "source": "docs/beams-roof-connections/sources/IMG_2679.PNG",
+      "sha256": "ed38c696176ea6655ecfd7807af8b275259e5238c9edc5bba0f3555ee9bb5b59",
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2679.PNG"
     },
     {
       "file": "sources/06-slide-cut-inside-church.png",
@@ -167,6 +180,87 @@
       "role": "architectural_source_not_structural_approval",
       "source": "docs/layout_design/giao-xu-thach-bi-04-mat-bang-tong-quan-nha-tho-giao-xu.pdf",
       "sha256": "9fca89fc1c85f171ef5b26271bb4810b2b49e744166c53fedb663e50119e3d6c"
+    },
+    {
+      "file": "masters/01-upper-bay-front.png",
+      "role": "native_generated_concept",
+      "width": 1672,
+      "height": 941,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/masters/01-upper-bay-front.png",
+      "source": "docs/beams-roof-connections/masters/01-upper-bay-front.png",
+      "sha256": "d36b340d9693375ddfbb846b0bcab789345d0dd16477b671796a5a82654b37a3",
+      "engineeringApproved": false
+    },
+    {
+      "file": "masters/02-column-head-three-quarter.png",
+      "role": "native_generated_concept",
+      "width": 1672,
+      "height": 941,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/masters/02-column-head-three-quarter.png",
+      "source": "docs/beams-roof-connections/masters/02-column-head-three-quarter.png",
+      "sha256": "df2c1fa4859bcc06b9c9ddbc30a9b86265b431678b06b0002d9742b7aa1d1942",
+      "engineeringApproved": false
+    },
+    {
+      "file": "masters/03-carved-bracket-underside.png",
+      "role": "native_generated_concept",
+      "width": 1672,
+      "height": 941,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/masters/03-carved-bracket-underside.png",
+      "source": "docs/beams-roof-connections/masters/03-carved-bracket-underside.png",
+      "sha256": "70b5700953bd45b1aff09353fb0fd3ba9fd723d694079bf6d9368762d67732a9",
+      "engineeringApproved": false
+    },
+    {
+      "file": "masters/04-upper-rail-roof-connection.png",
+      "role": "native_generated_concept",
+      "width": 1672,
+      "height": 941,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/masters/04-upper-rail-roof-connection.png",
+      "source": "docs/beams-roof-connections/masters/04-upper-rail-roof-connection.png",
+      "sha256": "5ac11d8a9f3c858d37a99a6056475ae636ca714c155dabd1270d297534a6e0b5",
+      "engineeringApproved": false
+    },
+    {
+      "file": "masters/07-full-width-frame-concrete-sides.png",
+      "role": "native_generated_concept",
+      "width": 1672,
+      "height": 941,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/masters/07-full-width-frame-concrete-sides.png",
+      "source": "docs/beams-roof-connections/masters/07-full-width-frame-concrete-sides.png",
+      "sha256": "162fe45aac764d13894977952ec8ea914fa645f748794ed61f1436b20e3c3abc",
+      "engineeringApproved": false
+    },
+    {
+      "file": "masters/08-longitudinal-beams-two-frames.png",
+      "role": "native_generated_concept",
+      "width": 1672,
+      "height": 941,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/masters/08-longitudinal-beams-two-frames.png",
+      "source": "docs/beams-roof-connections/masters/08-longitudinal-beams-two-frames.png",
+      "sha256": "a3312ef1c0801b55073d95156c37b94bc8cba1686445c8e6c54f916332208f83",
+      "engineeringApproved": false
+    },
+    {
+      "file": "masters/09-side-beam-concrete-bearing.png",
+      "role": "native_generated_concept",
+      "width": 1672,
+      "height": 941,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/masters/09-side-beam-concrete-bearing.png",
+      "source": "docs/beams-roof-connections/masters/09-side-beam-concrete-bearing.png",
+      "sha256": "70c19714ee78bc1eff0f3d5fd7ae3cecb5f7f173a37e1646596ff5846015a13d",
+      "engineeringApproved": false
+    },
+    {
+      "file": "masters/10-upper-roof-longitudinal-connections.png",
+      "role": "native_generated_concept",
+      "width": 1672,
+      "height": 941,
+      "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/masters/10-upper-roof-longitudinal-connections.png",
+      "source": "docs/beams-roof-connections/masters/10-upper-roof-longitudinal-connections.png",
+      "sha256": "77cb263480a2eb16583c7507bb3ac68618df72c96b005e747cdf00ca8564b13c",
+      "engineeringApproved": false
     }
-  ]
+  ],
+  "referenceLibraryCleanup": "2026-10-07: duplicate reference-folder illustrations/photos removed; active package copies and native masters preserved. sourceAtIssue retains the original provenance path."
 }

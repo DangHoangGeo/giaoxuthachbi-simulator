@@ -1,0 +1,131 @@
+{
+  "sourceCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "shots": [
+    {
+      "id": "01-exterior-front-day",
+      "pos": [
+        -92,
+        8,
+        0
+      ],
+      "target": [
+        1,
+        16,
+        0
+      ],
+      "fov": 29,
+      "light": "day"
+    },
+    {
+      "id": "02-exterior-corner-day",
+      "pos": [
+        -47,
+        19,
+        58
+      ],
+      "target": [
+        20,
+        13,
+        0
+      ],
+      "fov": 43,
+      "light": "day"
+    },
+    {
+      "id": "03-entrance-detail-day",
+      "pos": [
+        -18,
+        3.8,
+        -12
+      ],
+      "target": [
+        1,
+        4,
+        0
+      ],
+      "fov": 53,
+      "light": "day"
+    },
+    {
+      "id": "04-exterior-corner-evening",
+      "pos": [
+        -47,
+        19,
+        -58
+      ],
+      "target": [
+        20,
+        13,
+        0
+      ],
+      "fov": 43,
+      "light": "evening"
+    },
+    {
+      "id": "05-nave-overview-day",
+      "pos": [
+        8,
+        1.7,
+        0
+      ],
+      "target": [
+        46,
+        5,
+        0
+      ],
+      "fov": 54,
+      "light": "day"
+    },
+    {
+      "id": "06-sanctuary-overview-evening",
+      "pos": [
+        32.3,
+        2.5,
+        0
+      ],
+      "target": [
+        45.3,
+        5.3,
+        0
+      ],
+      "fov": 58,
+      "light": "evening"
+    },
+    {
+      "id": "07-interior-oblique-day",
+      "pos": [
+        25,
+        1.8,
+        -5.5
+      ],
+      "target": [
+        44.2,
+        4.2,
+        -5.5
+      ],
+      "fov": 58,
+      "light": "day"
+    },
+    {
+      "id": "08-sanctuary-detail-day",
+      "pos": [
+        40.7,
+        2.7,
+        2.4
+      ],
+      "target": [
+        48,
+        4.7,
+        0
+      ],
+      "fov": 52,
+      "light": "day"
+    }
+  ],
+  "errors": [],
+  "generated": false
+}

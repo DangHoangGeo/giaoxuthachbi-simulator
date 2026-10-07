@@ -175,7 +175,7 @@
         for(let j=0;j<3;j++)pixels.data[i+j]=clamp(pixels.data[i+j]+noise,0,255);
       }
       g.putImageData(pixels,0,0);
-      const map=new T.CanvasTexture(c);map.wrapS=map.wrapT=T.RepeatWrapping;map.anisotropy=anisotropy;
+      const map=window.CHURCH_TEXTURES?.create(T,c) || new T.CanvasTexture(c);map.wrapS=map.wrapT=T.RepeatWrapping;map.anisotropy=anisotropy;
       map.colorSpace=dataMap?T.NoColorSpace:T.SRGBColorSpace;
       map.name=`Reference finish ${kind}${dataMap?' relief':''}`;
       return map;
@@ -201,7 +201,7 @@
     // The old full-height interior artwork duplicated the structural panes.
     const art=window.CHURCH_GLASS_ART;
     function glassTexture(canvas,name,repeat){
-      const t=new T.CanvasTexture(canvas);t.colorSpace=T.SRGBColorSpace;t.anisotropy=anisotropy;t.name=name;
+      const t=window.CHURCH_TEXTURES?.create(T,canvas) || new T.CanvasTexture(canvas);t.colorSpace=T.SRGBColorSpace;t.anisotropy=anisotropy;t.name=name;
       if(repeat){t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(...repeat);}
       return t;
     }

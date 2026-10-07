@@ -6,9 +6,11 @@
 (() => {
   'use strict';
   const SIM = window.CHURCH_SIMULATOR;
-  let T, ctx, texture, capacity = 16;
+  let T, ctx, texture, gridTexture, gridKey = '', gridStats = null, gridBuilds = 0, capacity = 16;
+  const GRID = window.CHURCH_LIGHT_GRID;
   const materials = new Set();
   const uniforms = {
+    uSimLightGrid: { value: null }, uSimGridSize: { value: null }, uSimGridEnabled: { value: 0 },
     uSimLightTexture: { value: null }, uSimLightCount: { value: 0 },
     uSimLightTexel: { value: 1 / capacity }, uSimLightScale: { value: 1 },
     uSimIndoorLux: { value: 0 }, uSimIndoorSky: { value: null }, uSimIndoorGround: { value: null }
@@ -29,7 +31,7 @@
     if (!material?.isMeshStandardMaterial || materials.has(material)) return;
     materials.add(material);
     const compile = material.onBeforeCompile, cacheKey = material.customProgramCacheKey.bind(material);
-    material.customProgramCacheKey = () => `${cacheKey()}|persistent-lamps-physical-v2|${capacity}`;
+    material.customProgramCacheKey = () => `${cacheKey()}|persistent-lamps-physical-v3-grid|${capacity}`;
     material.onBeforeCompile = function (shader, renderer) {
       compile.call(this, shader, renderer);
       Object.assign(shader.uniforms, uniforms);
@@ -44,7 +46,9 @@
         #endif
         vSimWorldPosition = (modelMatrix * simPosition).xyz;`);
       shader.fragmentShader = `varying vec3 vSimWorldPosition;
-        uniform sampler2D uSimLightTexture;
+        uniform sampler2D uSimLightTexture, uSimLightGrid;
+        uniform vec2 uSimGridSize;
+        uniform float uSimGridEnabled;
         uniform float uSimLightCount, uSimLightTexel, uSimLightScale, uSimIndoorLux;
         uniform vec3 uSimIndoorSky, uSimIndoorGround;
         float simIndoorWeight(vec3 p) {
@@ -72,10 +76,22 @@
             float simEssMs = material.dfg.x + material.dfg.y;
             material.multiScatteringCompensation = 1.0 + material.specularColorBlended * (1.0 / simEssMs - 1.0);
           #endif
+          float simRow = -1.0;
+          ${GRID ? `vec3 simCell = floor((vSimWorldPosition - vec3(${GRID.min.map(v => v.toFixed(1)).join(',')})) / ${GRID.step.toFixed(1)});
+          if (uSimGridEnabled > 0.5 && all(greaterThanEqual(simCell, vec3(0.0))) && all(lessThan(simCell, vec3(${GRID.dimensions.map(v => v.toFixed(1)).join(',')}))))
+            simRow = simCell.x + ${GRID.dimensions[0].toFixed(1)} * (simCell.y + ${GRID.dimensions[1].toFixed(1)} * simCell.z);` : ''}
+          float simCount = simRow < 0.0 ? uSimLightCount : texture2D(uSimLightGrid, vec2(0.5 / uSimGridSize.x, (simRow + 0.5) / uSimGridSize.y)).x;
           for (int i = 0; i < ${capacity}; i++) {
-            if (float(i) >= uSimLightCount) break;
-            float x = (float(i) + 0.5) * uSimLightTexel;
+            if (float(i) >= simCount) break;
+            float simIndex = float(i);
+            if (simRow >= 0.0) {
+              int slot = i + 1;
+              vec4 packed = texture2D(uSimLightGrid, vec2((float(slot / 4) + 0.5) / uSimGridSize.x, (simRow + 0.5) / uSimGridSize.y));
+              simIndex = packed[slot - (slot / 4) * 4];
+            }
+            float x = (simIndex + 0.5) * uSimLightTexel;
             vec4 source = texture2D(uSimLightTexture, vec2(x, 0.125));
+            if (source.w > 1.5) continue; // this exact source already uses a native light
             vec3 delta = source.xyz - vSimWorldPosition;
             float distance2 = max(dot(delta, delta), 0.01);
             vec3 direction = delta * inversesqrt(distance2);
@@ -110,19 +126,42 @@
     uniforms.uSimIndoorSky.value = new T.Color('#fff1dc');
     uniforms.uSimIndoorGround.value = new T.Color('#d9c3a3');
     allocate(capacity);
+    gridTexture = new T.DataTexture(new Float32Array(4), 1, 1, T.RGBAFormat, T.FloatType);
+    gridTexture.minFilter = gridTexture.magFilter = T.NearestFilter;
+    gridTexture.generateMipmaps = false; gridTexture.needsUpdate = true;
+    uniforms.uSimLightGrid.value = gridTexture;
+    uniforms.uSimGridSize.value = new T.Vector2(1, 1);
     bindObject(ctx.scene); bindObject(ctx.building);
   }
   function update(all, detailed, scale) {
     sources = all.filter(e => !detailed.has(e));
-    if (sources.length > capacity) allocate(sources.length);
+    if (all.length > capacity) allocate(all.length);
     const data = texture.image.data;
-    sources.forEach((e, i) => {
-      data.set([...e.pos, e.kind === 'spot' ? 1 : 0], i * 4);
+    all.forEach((e, i) => {
+      data.set([...e.pos, (e.kind === 'spot' ? 1 : 0) + (detailed.has(e) ? 2 : 0)], i * 4);
       data.set([...e.color.map(c => c * e.cd), 0], (capacity + i) * 4);
       data.set([...(e.dir || [0, 0, 0]), e.cosOuter ?? -1], (2 * capacity + i) * 4);
       data.set([e.cosInner ?? 1, 0, 0, 0], (3 * capacity + i) * 4);
     });
-    uniforms.uSimLightCount.value = sources.length;
+    uniforms.uSimLightCount.value = all.length;
+    // Source order is stable across native pool reassignment. Rebuild only for
+    // actual source membership/geometry/cutoff changes, never just camera motion.
+    if (GRID && (ctx.renderer.capabilities.maxTextureSize || 4096) >= GRID.cells) {
+      const key = capacity + '|' + all.map(e => [e.kind, ...e.pos, ...(e.dir || []), e.cosOuter].join(',')).join(';');
+      if (key !== gridKey) {
+        gridKey = key;
+        const grid = GRID.build(all, capacity);
+        gridTexture.dispose();
+        gridTexture = new T.DataTexture(grid.data, grid.width, grid.height, T.RGBAFormat, T.FloatType);
+        gridTexture.minFilter = gridTexture.magFilter = T.NearestFilter;
+        gridTexture.generateMipmaps = false; gridTexture.needsUpdate = true;
+        uniforms.uSimLightGrid.value = gridTexture;
+        uniforms.uSimGridSize.value.set(grid.width, grid.height);
+        uniforms.uSimGridEnabled.value = 1;
+        gridStats = { average: grid.average, max: grid.max, sources: all.length, bytes: grid.data.byteLength };
+        gridBuilds++;
+      }
+    }
     uniforms.uSimLightScale.value = scale;
     texture.needsUpdate = true;
     // Cover new board/window materials as well as fixture materials, skipping
@@ -133,7 +172,9 @@
     prepare, bindMaterial, bindObject, update,
     scale: value => { uniforms.uSimLightScale.value = value; },
     indoorAmbient: lux => { uniforms.uSimIndoorLux.value = lux; },
-    stats: () => ({ count: sources.length, capacity }),
+    stats: () => ({ count: sources.length, capacity, grid: gridStats, gridBuilds }),
+    // Verification switch: the reference loop uses exactly the same sources/PBR.
+    setGridEnabled: value => { uniforms.uSimGridEnabled.value = value && gridStats ? 1 : 0; },
     // Read-only source records support coverage and switch-state verification.
     emitters: () => sources.slice()
   };

@@ -2,7 +2,7 @@
 
 [Open the registers by usage category](categories/README.md). Maintain lighting, sound, fans/ventilation, exit signs, decoration/furnishings and distribution/control boards in separate Excel files, using the same stable IDs as the coordinated layout. Each file has the same four-sheet structure below. Current coverage is every simulator-managed item, hidden alternative and board/control enclosure. Building fabric and structural members remain in their architectural/structural schedules.
 
-The category files, reviewed **7 October 2026**, together contain **327 equipment/enclosure records**, **329 routes** and **1,904 route vertices** from the recommended design. The 327 records include 322 simulator items and five enclosures; they are not 327 installed electrical loads. The wiring study has 286 shown connected components. See the [summary report](summary-report.md) for quantities, usage estimates, route-length bases and completeness by category. The original combined workbook is preserved in [archive](archive/README.md) and is no longer edited or refreshed.
+The category files, reviewed **7 October 2026**, together contain **327 equipment/enclosure records**, **329 routes** and **2,681 route vertices** from the recommended design. The 327 records include 322 simulator items and five enclosures; they are not 327 installed electrical loads. The wiring study has 286 shown connected components. See the [summary report](summary-report.md) for quantities, usage estimates, route-length bases and completeness by category. The original combined workbook is preserved in [archive](archive/README.md) and is no longer edited or refreshed.
 
 ## Category ownership
 
@@ -26,6 +26,23 @@ Use the header filters and frozen ID columns. Metres use the shared model axes: 
 The category workbooks are the editable engineering registers; the paired [layout JSON](equipment-layout.json) and [systems JSON](electrical-systems.json) supply the model geometry. The generated summary reports their combined results. This is an explicit export/refresh workflow, not a live Excel connection to the viewer or installed hardware.
 
 ## Refresh from the recommended model
+
+The performance review on 7 October 2026 corrected a verification/export side
+effect for equipment `L3` (Reading light · axis 3 · B central). Its temporary move
+test now restores the pendant anchor as well as XYZ before exporting. The actual
+model anchor remains +8.590 m; the prior snapshot incorrectly retained +10.394880 m.
+That performance snapshot corrected `drop:LC1:L1:light:-1:L3` to 7.005 m instead
+of 8.391731 m. Quantities and IDs did not change. See the
+[performance review](../../review/performance-2026-10-07/README.md).
+
+The subsequent [concealed-routing revision](routing.md#concealment-revision-7-october-2026)
+`2026-10-07-concealed-1` supersedes those route lengths. The same L3 drop now
+measures 8.727 m along its above-lining/beam-top approach. All 329 route IDs and
+327 equipment/enclosure records remain; the 2,681 vertices describe the revised
+paths. Microphone full home runs are 15.494 m (ambo) and 8.545 m (altar), before
+installation allowances. These are geometric study lengths, not cable orders.
+The six workbooks preserve equipment fields and entered engineering inputs;
+see the [reconciliation record](../../review/concealed-wiring-2026-10-07/README.md).
 
 Run from the repository root:
 

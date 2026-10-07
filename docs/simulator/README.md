@@ -3,6 +3,7 @@
 The simulator supports the project's first priority: optimize the locations and settings of lights, sound equipment and fans, then coordinate their wiring and manual/quick controls.
 
 - [User guide and revision history](guide.md)
+- [Viewer performance and memory](performance.md)
 - [Calculation methods and limitations](methods-and-limitations.md)
 - [Electrical grid, 2D/3D routes and control boards](../electrical-grid/README.md)
 - [Equipment/line Excel register and layout revision workflow](../electrical-grid/register.md)
@@ -10,6 +11,7 @@ The simulator supports the project's first priority: optimize the locations and 
 - [Current sanctuary geometry and results](../sanctuary-model.md)
 - [Recorded calculation audit](../../review/stats-audit-2026-10-06/README.md)
 - [Open the viewer](../../Thach_Bi_Viewer/OPEN_CHURCH.html)
+- [Superseded simulator sketch](old/Simulator_Test.md) — retained as historical context; not a current specification.
 
 ## Working sequence
 

@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-07",
+  "tool": "Built-in image_gen.imagegen",
+  "request": "Side door/wall close-ups, rear elevation and top-down views; exterior window shutters match owner-preferred interior appearance; cutaway includes proposed B03 longitudinal column-line beams.",
+  "sourceModelCommit": "e64143e",
+  "fullHdPermission": "Owner previously authorized 1920×1080 resampled copies with native originals retained.",
+  "candidatePolicy": "Only final reviewed selections are copied into references. Rejected/superseded pixels remain outside the repository reference folders. Candidate identifiers preserve lineage.",
+  "selectedJobIds": [
+    "10-side-door-exterior-day-v2-interior-panels",
+    "11-side-wall-interior-day",
+    "12-wall-window-decoration-day-v2-interior-panels",
+    "13-rear-elevation-day",
+    "14-rear-corner-evening-v3-rear-glazing",
+    "15-top-down-roof-day",
+    "16-top-down-interior-day-v4-longitudinal-beams"
+  ],
+  "jobs": [
+    {
+      "id": "10-side-door-exterior-day",
+      "title": "Side entrance · exterior close view",
+      "description": "Carved timber side doors, stained-glass fanlight, ivory arch mouldings, wall relief and stone landing.",
+      "status": "rejected-or-superseded",
+      "reason": "Superseded after owner chose the interior solid carved/gilded shutter design instead of louvers.",
+      "prompt": "Use case: sketch-to-render. Create one beautiful detailed photorealistic architectural concept render of Thạch Bi Catholic Church in northern Vietnam, landscape 16:9, Full HD 1920x1080 if supported. Image 1 is the current model and governs the camera, proportions, opening positions and building footprint. Supporting images govern finish and decorative craftsmanship only. Match the existing ivory plaster/stone, terracotta roof tiles, warm dark-brown carved timber and bronze details. Fine northern Vietnamese Catholic floral/foliate craftsmanship. Keep the actual openings, roof forms and supporting wall planes. Refine simple model placeholders into coherent ornament; never invent extra openings or change levels for beauty. No people, vehicles, lettering, watermark, UI, mountains, villages or invented scenery. Flat simple courtyard and only the two longitudinal side tree rows if visible. Crisp believable construction contact and straight architectural perspective, restrained controlled highlights, no melted ornament, clipping, floating parts or disconnected stairs. This is proposed appearance artwork. VIEW: a close exterior oblique view of the modeled side entrance and surrounding wall, using Image 1's framing. Image 2 supplies the existing side-door carving, layered arch trim, foliate relief and cornice decoration. Image 3 supplies coherent facade finish. Keep the closed double timber door in the outer wall plane, bronze pulls, coloured semicircular fanlight, neighboring shuttered windows, small upper circular rose windows, ivory concrete pilasters and gray stone plinth. Show deep but tasteful panel carving and refined mouldings. Preserve lantern positions and modeled stair/landing/balustrade arrangement; stair flights run parallel to the long wall. Sunny soft directional daylight that reveals timber grain and stone texture without harsh blown-out ivory.",
+      "inputReferences": [
+        "review/church-views-2026-10-07/model-inputs-additions/10-side-door-exterior-day.png",
+        "Thach_Bi_Viewer/references/07-stairs/details/08-retained-side-stair-detail.png",
+        "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/03-entrance-detail-day.png"
+      ],
+      "generationFile": "exec-91a11865-fcce-4dca-b134-c091a41c08f9.png",
+      "replaces": null
+    },
+    {
+      "id": "12-wall-window-decoration-day",
+      "title": "Side wall · windows and decoration",
+      "description": "Close view of the paired timber shutters, coloured fanlights, circular rose windows, pilasters and ornamental cornice.",
+      "status": "rejected-or-superseded",
+      "reason": "Superseded after owner chose the interior carved/gilded shutter design.",
+      "prompt": "Use case: sketch-to-render. Create one beautiful detailed photorealistic architectural concept render of Thạch Bi Catholic Church in northern Vietnam, landscape 16:9, Full HD 1920x1080 if supported. Image 1 is the current model and governs the camera, proportions, opening positions and building footprint. Supporting images govern finish and decorative craftsmanship only. Match the existing ivory plaster/stone, terracotta roof tiles, warm dark-brown carved timber and bronze details. Fine northern Vietnamese Catholic floral/foliate craftsmanship. Keep the actual openings, roof forms and supporting wall planes. Refine simple model placeholders into coherent ornament; never invent extra openings or change levels for beauty. No people, vehicles, lettering, watermark, UI, mountains, villages or invented scenery. Flat simple courtyard and only the two longitudinal side tree rows if visible. Crisp believable construction contact and straight architectural perspective, restrained controlled highlights, no melted ornament, clipping, floating parts or disconnected stairs. This is proposed appearance artwork. VIEW: close oblique exterior detail of the side-wall WINDOW BAYS and upper cornice from Image 1. Supporting Image 2 governs layered ivory mouldings and restrained floral relief, Image 3 the facade materials. Preserve the model's paired shuttered arched windows beneath the small circular rose windows, bay spacing, narrow pilasters and terracotta roof eaves. Beautiful carefully sculpted foliate capitals and shallow plaster floral corner relief, legible bronze fanlight divisions, real wood grain and panel edges. Keep window count and upper circles exactly as visible in Image 1; no tall new upper clerestory windows. Keep any visible speakers or exterior fittings discreet and in their model locations. Warm daylight, close enough to understand craftsmanship, not a distant whole-church view.",
+      "inputReferences": [
+        "review/church-views-2026-10-07/model-inputs-additions/12-wall-window-decoration-day.png",
+        "Thach_Bi_Viewer/references/07-stairs/details/08-retained-side-stair-detail.png",
+        "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/02-exterior-corner-day.png"
+      ],
+      "generationFile": "exec-274198ad-ff78-4464-878e-2791b76050b3.png",
+      "replaces": null
+    },
+    {
+      "id": "13-rear-elevation-day",
+      "title": "Rear elevation · daylight",
+      "description": "Straight view of the sanctuary-end exterior, five rear windows, central gable and continuous stone base.",
+      "status": "selected-for-library",
+      "reason": "Visually reviewed selection; proposed art, not dimensional or engineering approval.",
+      "prompt": "Use case: sketch-to-render. Create one beautiful detailed photorealistic architectural concept render of Thạch Bi Catholic Church in northern Vietnam, landscape 16:9, Full HD 1920x1080 if supported. Image 1 is the current model and governs the camera, proportions, opening positions and building footprint. Supporting images govern finish and decorative craftsmanship only. Match the existing ivory plaster/stone, terracotta roof tiles, warm dark-brown carved timber and bronze details. Fine northern Vietnamese Catholic floral/foliate craftsmanship. Keep the actual openings, roof forms and supporting wall planes. Refine simple model placeholders into coherent ornament; never invent extra openings or change levels for beauty. No people, vehicles, lettering, watermark, UI, mountains, villages or invented scenery. Flat simple courtyard and only the two longitudinal side tree rows if visible. Crisp believable construction contact and straight architectural perspective, restrained controlled highlights, no melted ornament, clipping, floating parts or disconnected stairs. This is proposed appearance artwork. VIEW: straight-on full REAR ELEVATION at the sanctuary end, using Image 1's camera and overall silhouette. Image 2 supplies approved earlier rear-wall decorative treatment: five lower arched windows, central gable rose window, ornate ivory pilasters/capitals, layered cornices, foliate trim and continuous gray stone base. Image 3 supplies consistent overall material quality and distant front tower identity. Keep exactly five rear windows, their source model positions, the wide shallow central arch relief and roof slopes. No rear entrance or rear stair flights; any existing SIDE stair flights visible at the far edges remain parallel to the side walls. Front towers may appear far behind the roof, exactly as Image 1; do not move them to the rear. The Assumption statue belongs on the FRONT facade only, not on the rear gable. A rear crest niche is decorative empty plaster, not a duplicate shrine. Simple flat paved foreground, tree rows along the sides, beautiful clear daylight and delicate realistic facade shadow.",
+      "inputReferences": [
+        "review/church-views-2026-10-07/model-inputs-additions/13-rear-elevation-day.png",
+        "Thach_Bi_Viewer/references/03-facade/overview/04-rear-elevation.png",
+        "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/01-exterior-front-day.png"
+      ],
+      "generationFile": "exec-66906914-1132-4e51-a631-45979bec99d8.png",
+      "replaces": null
+    },
+    {
+      "id": "11-side-wall-interior-day",
+      "title": "Side entrance · interior wall detail",
+      "description": "Interior side-door arch, stained glass, devotional panels, wall sconces and nearby lacquered columns.",
+      "status": "selected-for-library",
+      "reason": "Visually reviewed selection; proposed art, not dimensional or engineering approval.",
+      "prompt": "Use case: sketch-to-render. One beautiful photorealistic northern Vietnamese Catholic church INTERIOR SIDE DOOR and WALL DETAIL, 16:9 Full HD 1920x1080 if supported. Image 1 governs exact close frontal framing, wall openings, columns, cross aisle, fans/speakers and doorway. Image 2 governs the previously selected red-brown lacquer, tasteful gold detail and wall/devotional craftsmanship; Image 3 governs carved timber detail where any connection is visible. Keep the full central side-door arch, closed carved timber double door beyond the wall opening, two flanking windows, small devotional timber panels, bronze sconces, modeled suspended fan and the two lacquered columns cropped at frame edges. Refine the primitive door rosettes into deep floral carving and the wall trim into understated foliate relief. Keep the ivory wall mostly calm and uncluttered. Devotional panels retain crosses and simple correct Roman labels XII on the left and XIII on the right, no invented narrative scene. Glass centers use simple Catholic crosses instead of the model's mirrored placeholder lettering, with the same blue/gold/red fanlight scheme. Retain the small green exit sign above the arch as a sign, without invented safety specifications; its depiction is not an egress approval. Retain the clear modeled cross aisle; no pew or ornament obstructs the opening. Warm soft daylight reveals wood grain and shallow wall relief. No new tall upper windows, added columns, people, watermark, UI or text other than those two small Roman labels. Keep source camera and door positions; no generic cathedral substitute. Natural credible beauty and precise straight joints.",
+      "inputReferences": [
+        "review/church-views-2026-10-07/model-inputs-additions/11-side-wall-interior-day.png",
+        "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/05-nave-overview-day.png",
+        "Thach_Bi_Viewer/references/01-timber-frame/full-hd/02-column-head-three-quarter.png"
+      ],
+      "generationFile": "exec-46e93de1-43e4-456d-af4c-ddb0a0972ed3.png",
+      "replaces": null
+    },
+    {
+      "id": "14-rear-corner-evening",
+      "title": "Rear and long side · evening",
+      "description": "Oblique rear view showing the sanctuary-end wall, projecting wing, side entrances and distant front towers.",
+      "status": "rejected-or-superseded",
+      "reason": "Superseded to match the owner-preferred side-window shutters.",
+      "prompt": "Use case: sketch-to-render. Generate one refined photorealistic architectural concept of Thạch Bi Catholic Church northern Vietnam, landscape 16:9 Full HD 1920x1080 if supported. Image 1 is the current model: preserve its exact REAR THREE-QUARTER CAMERA, wall/roof footprint, rear five windows, projecting side wing, side-door order, side stairs and distant FRONT towers. Image 2 is the new selected rear elevation: match its ivory plaster, foliate pilasters, layered cornice, restrained rose-window detailing and stone plinth. Image 3 supplies the blue-hour mood and warm controlled exterior lighting. Show the rear sanctuary-end wall as the foreground subject, with the long side receding toward the entrance towers. Beautiful blue-hour sky with enough ambient light to read the ivory relief and terracotta roof; subtle warm lighting follows modeled lantern/fixture locations, no blanket floodlight glare. Back gable crest niche remains empty; Assumption statue is at the FRONT only and need not be visible from behind. Exactly five rear windows; no rear doorway, staircase across the rear end wall, extra building, invented mountains, village, vehicles or people. Existing side flights run parallel to the long wall. Only the two longitudinal tree rows, flat quiet paved site. Coherent joins and regular tile courses, no warped masonry, melted carving, text or watermark. Appearance study, not proof of installed lighting performance.",
+      "inputReferences": [
+        "review/church-views-2026-10-07/model-inputs-additions/14-rear-corner-evening.png",
+        "generated-candidate:exec-66906914-1132-4e51-a631-45979bec99d8.png",
+        "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/04-exterior-corner-evening.png"
+      ],
+      "generationFile": "exec-774fe7af-9fd1-4e28-9a40-694e8ca1a64f.png",
+      "replaces": null
+    },
+    {
+      "id": "15-top-down-roof-day",
+      "title": "Top-down · roof and site",
+      "description": "Overhead roof view showing both front towers, projecting wings, roof intersections, side stairs and two tree rows.",
+      "status": "selected-for-library",
+      "reason": "Visually reviewed selection; proposed art, not dimensional or engineering approval.",
+      "prompt": "Use case: sketch-to-render. One beautiful photorealistic TRUE TOP-DOWN roof and site rendering of Thạch Bi Catholic Church northern Vietnam, 16:9 Full HD 1920x1080 if supported. Image 1 is the actual model camera: keep precisely its bird's-eye near-vertical view and screen orientation, FRONT/TWIN TOWERS ON THE RIGHT, SANCTUARY/REAR ON THE LEFT. Preserve the entire roof footprint, main longitudinal terracotta tiled roof, lower side roof bands, the two projecting sanctuary-side wings, actual roof intersections and valleys, two ivory front towers and flat front stage/approach. Image 2 supplies coherent polished ivory facade, terracotta tile and gray stone material quality. Keep tower positions, roof shape, stair landings and longitudinal parallel side flights, and ONLY two straight longitudinal tree rows. The front Assumption statue may be barely visible from above; never place it at the rear. Refine roof tiles and decorative crests without adding dormers, windows, towers, roof buildings, new paths, rear stairs or scenery. Bright soft daylight with clear shadows explaining height; a quiet flat paved background. Crisp professional overhead architectural photography, coherent drains/eave edges only where modeled, no invented engineering hardware. No perspective shift to a generic three-quarter aerial, no labels, arrows, text, people, cars or watermark. This is concept roof appearance, not a dimensioned roof or drainage plan.",
+      "inputReferences": [
+        "review/church-views-2026-10-07/model-inputs-additions/15-top-down-roof-day.png",
+        "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/02-exterior-corner-day.png"
+      ],
+      "generationFile": "exec-95d07772-4064-44e8-802a-0752baff56ce.png",
+      "replaces": null
+    },
+    {
+      "id": "16-top-down-interior-day",
+      "title": "Top-down · interior cutaway",
+      "description": "Roof-hidden overhead concept showing the nave, four pew blocks, two central column rows, sanctuary and side wings.",
+      "status": "rejected-or-superseded",
+      "reason": "Rejected: frontal sanctuary artwork was pasted horizontally into the overhead view.",
+      "prompt": "Use case: sketch-to-render. One polished detailed photorealistic TRUE TOP-DOWN architectural INTERIOR CUTAWAY of Thạch Bi Catholic Church northern Vietnam, 16:9 Full HD 1920x1080 if supported. Image 1 is the current model and MUST govern camera, layout and all support/opening locations. Keep its screen orientation: ENTRANCE ON THE RIGHT, SANCTUARY ON THE LEFT. Roof hidden as in the model so the nave and sanctuary layout are visible; do NOT restore a roof/ceiling over it. Preserve four pew blocks, central long aisle, cross aisles, TWO central timber-column rows, outer ivory concrete supports, wider side wings with their seating and clear access. Preserve actual sanctuary platform, altar, ambo, side shrines and service spaces. Image 2 is the approved sanctuary art, Image 3 the approved carved column/beam form, Image 4 the selected interior finishes: integrate richer red-brown lacquer, gold foliate carving and the blue Crucifix recess where actually visible from this top-down angle. Show the top surfaces of the shrines and carved frames naturally; do not rotate statues, altar or arches toward the camera to make a frontal facade pasted into a plan. Keep the modeled surviving transverse timber beams, fans and chandeliers visible as cutaway elements; no floating disconnected components. Pale polished stone floors and dark timber pews, calm warm daylight with physically plausible shadows, clear legible aisles. All new detailed carving is appearance concept. No extra column rows, relocated sanctuary, invented room partitions, duplicated altar, enlarged aisles, labels, dimension arrows, people, text, watermark or UI. Exact quantities and equipment locations must still be read from source schedules, not inferred from this art.",
+      "inputReferences": [
+        "review/church-views-2026-10-07/model-inputs-additions/16-top-down-interior-day.png",
+        "Thach_Bi_Viewer/references/02-sanctuary/concepts/09-sanctuary-approved-concept.png",
+        "Thach_Bi_Viewer/references/01-timber-frame/full-hd/07-full-width-frame-concrete-sides.png",
+        "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/05-nave-overview-day.png"
+      ],
+      "generationFile": "exec-ccb605c0-e71b-45f5-a9c0-d343eb1e3174.png",
+      "replaces": null
+    },
+    {
+      "id": "16-top-down-interior-day-v2-sanctuary",
+      "title": "Top-down · interior cutaway",
+      "description": "Roof-hidden overhead concept showing the nave, four pew blocks, two central column rows, sanctuary and side wings.",
+      "status": "rejected-or-superseded",
+      "reason": "Superseded: flat saint images on shrine tops needed correction.",
+      "prompt": "Use case: precise-object-edit. Correct ONLY the SANCTUARY CHAMBER IN THE LEFT QUARTER of Image 1. Preserve the exact true top-down camera and every other pixel of nave, four pew blocks, two column rows, beams, fans, chandeliers, outer walls, side wings, floor, entrance and right-side towers. The current blue Crucifix and red/gold arch appear pasted flat onto the floor, which is architecturally wrong. REBUILD that small central chamber from Image 2, the actual top-down MODEL: keep the chamber's curved vaulted canopy in place, seen from directly above as a gold curved roof shell with red lacquer border/ribs, matching its model footprint. Apply refined gold floral carving only to the shell edge and frame top surfaces in physical 3D. Do not remove the canopy, turn its arches toward the camera, or paste an elevation onto the floor. The actual blue Crucifix niche is a vertical back-wall recess and is concealed under this canopy in the overhead view; it MUST NOT appear as a blue horizontal rectangle, rug, decal or lying-down Crucifix. Flanking shrine bodies retain their model top surfaces and footprints; saints are upright so only their tops can be seen, no face-up saint pictures lying flat. Preserve altar, ambo, sanctuary platform and steps exactly. Keep the refined red-brown lacquer/gold concept finish. Top surfaces and depth must be coherent with the actual overhead reference. No text, watermark, labels or extra objects. Landscape 16:9, 1920x1080 if supported. Return one corrected beautiful complete cutaway image.",
+      "inputReferences": [
+        "generated-candidate:exec-ccb605c0-e71b-45f5-a9c0-d343eb1e3174.png",
+        "review/church-views-2026-10-07/model-inputs-additions/16-top-down-interior-day.png"
+      ],
+      "generationFile": "exec-e8ba5790-a09c-4bd1-96e5-f8df903d5fa7.png",
+      "replaces": "16-top-down-interior-day"
+    },
+    {
+      "id": "16-top-down-interior-day-v3-shrines",
+      "title": "Top-down · interior cutaway",
+      "description": "Roof-hidden overhead concept showing the nave, four pew blocks, two central column rows, sanctuary and side wings.",
+      "status": "rejected-or-superseded",
+      "reason": "Superseded to show the B03 longitudinal nave column-line connections.",
+      "prompt": "Precise architectural edit of Image 1. Preserve absolutely everything except TWO SMALL SHRINE TOPS, immediately above and below the golden sanctuary canopy in the left quarter. Their blue rectangles currently look like frontal saint pictures laid flat on a horizontal surface. Correct those two shrine bodies to physical upright 3D niches viewed from overhead, matching the geometry visible in Image 2: each shrine is a small red-lacquer enclosure with a GILDED TOP CANOPY visible from above, and the upright saint underneath is mostly hidden by that canopy. Replace both flat blue saint-picture rectangles with refined gilded canopy TOP SURFACES and shallow red-brown roof edges. No face-up painted saint, horizontal blue portrait, rug or lying statue. If a statue head is visible at all, show only a tiny ivory top of the head naturally beneath the canopy edge, never a frontal full-body figure. Keep shrine footprint, location, height, service passage and doors exactly unchanged. Keep the central gold sanctuary vault exactly as Image 1 and keep every nave pixel, pew, aisle, column, beam, fan, light, tower, wall, floor and camera unchanged. No new objects or text. 16:9 landscape, 1920x1080 if supported. Deliver the complete corrected architectural concept.",
+      "inputReferences": [
+        "generated-candidate:exec-e8ba5790-a09c-4bd1-96e5-f8df903d5fa7.png",
+        "review/church-views-2026-10-07/model-inputs-additions/16-top-down-interior-day.png"
+      ],
+      "generationFile": "exec-a700cac5-c568-4c6d-84eb-05325cb8c05c.png",
+      "replaces": "16-top-down-interior-day-v2-sanctuary"
+    },
+    {
+      "id": "10-side-door-exterior-day-v2-interior-panels",
+      "title": "Side entrance · exterior close view",
+      "description": "Carved timber side doors, stained-glass fanlight, ivory arch mouldings, wall relief and stone landing.",
+      "status": "selected-for-library",
+      "reason": "Visually reviewed selection; proposed art, not dimensional or engineering approval.",
+      "prompt": "Use case: precise-object-edit. Update ONLY THE LOWER SIDE-WINDOW TIMBER SHUTTERS in Image 1 to match the OWNER-PREFERRED interior window shutter design visible on both sides of Image 2. Image 2 is the design authority for these shutters: warm dark-brown solid timber paired leaves, deep slender northern Vietnamese Catholic foliate carving, elegant restrained GOLD filigree relief inside the tall inset panels and small gilded borders. Use the same leaf panel proportions and continuous timber grain. Every corresponding exterior side window must show that SAME closed carved solid-panel design, instead of horizontal louver slats, plain cross-and-flower squares, or all-glass lower windows. Keep each existing window opening, arched fanlight, frame, sill, opening size and paired-leaf center seam exactly in place. The selected solid-panel shutters should be recognizable as the same real joinery when viewed from outside and inside, with matching carving on both faces. Apply this to all visible LONG-SIDE window shutters in Image 1. Keep the existing main SIDE DOOR with its round floral panels unchanged; it is a different door type. In a rear-corner view, the five REAR GABLE windows also remain unchanged as they are a different window type. Preserve every other pixel of wall mouldings, rose windows, pilasters, foliage relief, eaves, terracotta roof, stairs, railings, stone base, lanterns, speakers, trees, background, camera and lighting. Do not add openings or extra gold onto plaster. No people, text, watermark or UI. Beautiful coherent 3D architectural concept, 16:9 Full HD 1920x1080 if supported.",
+      "inputReferences": [
+        "generated-candidate:exec-91a11865-fcce-4dca-b134-c091a41c08f9.png",
+        "generated-candidate:exec-46e93de1-43e4-456d-af4c-ddb0a0972ed3.png"
+      ],
+      "generationFile": "exec-0561a695-3cf3-432f-92df-91168324b63f.png",
+      "replaces": "10-side-door-exterior-day"
+    },
+    {
+      "id": "12-wall-window-decoration-day-v2-interior-panels",
+      "title": "Side wall · windows and decoration",
+      "description": "Close view of the paired timber shutters, coloured fanlights, circular rose windows, pilasters and ornamental cornice.",
+      "status": "selected-for-library",
+      "reason": "Visually reviewed selection; proposed art, not dimensional or engineering approval.",
+      "prompt": "Use case: precise-object-edit. Update ONLY THE LOWER SIDE-WINDOW TIMBER SHUTTERS in Image 1 to match the OWNER-PREFERRED interior window shutter design visible on both sides of Image 2. Image 2 is the design authority for these shutters: warm dark-brown solid timber paired leaves, deep slender northern Vietnamese Catholic foliate carving, elegant restrained GOLD filigree relief inside the tall inset panels and small gilded borders. Use the same leaf panel proportions and continuous timber grain. Every corresponding exterior side window must show that SAME closed carved solid-panel design, instead of horizontal louver slats, plain cross-and-flower squares, or all-glass lower windows. Keep each existing window opening, arched fanlight, frame, sill, opening size and paired-leaf center seam exactly in place. The selected solid-panel shutters should be recognizable as the same real joinery when viewed from outside and inside, with matching carving on both faces. Apply this to all visible LONG-SIDE window shutters in Image 1. Keep the existing main SIDE DOOR with its round floral panels unchanged; it is a different door type. In a rear-corner view, the five REAR GABLE windows also remain unchanged as they are a different window type. Preserve every other pixel of wall mouldings, rose windows, pilasters, foliage relief, eaves, terracotta roof, stairs, railings, stone base, lanterns, speakers, trees, background, camera and lighting. Do not add openings or extra gold onto plaster. No people, text, watermark or UI. Beautiful coherent 3D architectural concept, 16:9 Full HD 1920x1080 if supported.",
+      "inputReferences": [
+        "generated-candidate:exec-274198ad-ff78-4464-878e-2791b76050b3.png",
+        "generated-candidate:exec-46e93de1-43e4-456d-af4c-ddb0a0972ed3.png"
+      ],
+      "generationFile": "exec-c50a9cad-9383-4844-9e67-f66f3fb5eeef.png",
+      "replaces": "12-wall-window-decoration-day"
+    },
+    {
+      "id": "14-rear-corner-evening-v2-interior-panels",
+      "title": "Rear and long side · evening",
+      "description": "Oblique rear view showing the sanctuary-end wall, projecting wing, side entrances and distant front towers.",
+      "status": "rejected-or-superseded",
+      "reason": "Superseded to restore rear glazing separately from the long-side carved shutters.",
+      "prompt": "Use case: precise-object-edit. Update ONLY THE LOWER SIDE-WINDOW TIMBER SHUTTERS in Image 1 to match the OWNER-PREFERRED interior window shutter design visible on both sides of Image 2. Image 2 is the design authority for these shutters: warm dark-brown solid timber paired leaves, deep slender northern Vietnamese Catholic foliate carving, elegant restrained GOLD filigree relief inside the tall inset panels and small gilded borders. Use the same leaf panel proportions and continuous timber grain. Every corresponding exterior side window must show that SAME closed carved solid-panel design, instead of horizontal louver slats, plain cross-and-flower squares, or all-glass lower windows. Keep each existing window opening, arched fanlight, frame, sill, opening size and paired-leaf center seam exactly in place. The selected solid-panel shutters should be recognizable as the same real joinery when viewed from outside and inside, with matching carving on both faces. Apply this to all visible LONG-SIDE window shutters in Image 1. Keep the existing main SIDE DOOR with its round floral panels unchanged; it is a different door type. In a rear-corner view, the five REAR GABLE windows also remain unchanged as they are a different window type. Preserve every other pixel of wall mouldings, rose windows, pilasters, foliage relief, eaves, terracotta roof, stairs, railings, stone base, lanterns, speakers, trees, background, camera and lighting. Do not add openings or extra gold onto plaster. No people, text, watermark or UI. Beautiful coherent 3D architectural concept, 16:9 Full HD 1920x1080 if supported.",
+      "inputReferences": [
+        "generated-candidate:exec-774fe7af-9fd1-4e28-9a40-694e8ca1a64f.png",
+        "generated-candidate:exec-46e93de1-43e4-456d-af4c-ddb0a0972ed3.png"
+      ],
+      "generationFile": "exec-aaf07a5d-d993-4817-8bf0-149d0d6b0810.png",
+      "replaces": "14-rear-corner-evening"
+    },
+    {
+      "id": "16-top-down-interior-day-v4-longitudinal-beams",
+      "title": "Top-down · interior cutaway",
+      "description": "Roof-hidden overhead concept showing the nave, four pew blocks, two central column rows, sanctuary and side wings.",
+      "status": "selected-for-library",
+      "reason": "Visually reviewed selection; proposed art, not dimensional or engineering approval.",
+      "prompt": "Use case: precise-object-edit. Image 1 is the selected top-down church cutaway. Add ONLY the missing TWO LONGITUDINAL COLUMN-LINE TIMBER BEAMS from the approved frame concept in Image 2. They connect consecutive column heads within each of the TWO EXISTING central timber column rows, along the church length. In Image 1 this direction runs LEFT TO RIGHT, from the sanctuary-front frame toward the entrance; it is perpendicular to the existing transverse tie beams which run top to bottom across the central aisle. Trace each row's EXISTING carved capital centers exactly: one continuous connected lengthwise beam on the upper row and one on the lower row, with supported contacts at every capital/frame. Span only between the first existing entrance-side column and the existing sanctuary FRONT support column; do not extend across or behind the sanctuary chamber, through a statue shrine, or into an unsupported wall. Keep the axis-10 sanctuary opening free of an added transverse tie. Image 2 governs the beam/carved connection form only, not a new engineering section. Red-brown lacquer, refined narrow gold edge and foliate return carving match the existing cutaway. Slender realistic timber top surfaces clearly visible above the pews with supported ends and subtle floor shadows; the central aisle stays readable. Do not add columns, upright posts, extra beam rows, roof purlins, lining, a roof or invented hidden steel. Preserve all existing transverse ties, capitals, shrine canopy tops, central gold vault, altar, pew blocks, fans, lights, floor, walls, doors, trees, towers, exact top-down camera and lighting. Do not change sculpture or paste blue frontal portraits onto overhead surfaces. No text, labels, arrows, people or watermark. One complete beautiful 16:9 architectural concept. These two B03 column-line beams are a visible PROPOSED DESIGN reference; member sizes, levels and hidden joints require the structural design.",
+      "inputReferences": [
+        "generated-candidate:exec-a700cac5-c568-4c6d-84eb-05325cb8c05c.png",
+        "Thach_Bi_Viewer/references/01-timber-frame/full-hd/08-longitudinal-beams-two-frames.png"
+      ],
+      "generationFile": "exec-51e2b17b-1047-4a02-a773-7b6bab0dda2d.png",
+      "replaces": "16-top-down-interior-day-v3-shrines"
+    },
+    {
+      "id": "14-rear-corner-evening-v3-rear-glazing",
+      "title": "Rear and long side · evening",
+      "description": "Oblique rear view showing the sanctuary-end wall, projecting wing, side entrances and distant front towers.",
+      "status": "selected-for-library",
+      "reason": "Visually reviewed selection; proposed art, not dimensional or engineering approval.",
+      "prompt": "Precise architectural consistency correction. In Image 1 change ONLY the FIVE REAR GABLE WINDOWS facing the camera on the LEFT FOREGROUND rear-elevation wall. Restore those five openings to the full-height decorative dark/amber stained glazing with narrow brown frames and fine bronze leading shown in Image 2, the selected straight rear view. Remove the five closed wood-panel shutter faces from that rear wall only; those rear windows are a different glazing type. Keep their openings, arched tops, pilasters and sill heights unchanged. CRITICAL: preserve ALL GOLD-CARVED WOOD SHUTTERS on the LONG SIDE WALL receding to the right, including the two side windows just around the rear corner; those are the owner-corrected side-window design and must stay. Keep side timber entrance doors, side stair flights, every other ornament, ivy/tree, warm illumination, sky, tower, roof, stone base and the exact Image 1 camera unchanged. Do not alter the central rear arch or add a door or stairs. Beautiful coherent image with clearly different rear stained-glass windows and side carved closed shutters. No text, watermark or extra objects. 16:9 1920x1080 if supported.",
+      "inputReferences": [
+        "generated-candidate:exec-aaf07a5d-d993-4817-8bf0-149d0d6b0810.png",
+        "generated-candidate:exec-66906914-1132-4e51-a631-45979bec99d8.png"
+      ],
+      "generationFile": "exec-7da60b3e-c60e-4ec5-9042-49da279905b8.png",
+      "replaces": "14-rear-corner-evening-v2-interior-panels"
+    }
+  ],
+  "inputRelocations": {
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/02-column-head-three-quarter.png": "docs/beams-roof-connections/images/02-column-head-three-quarter.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/07-full-width-frame-concrete-sides.png": "docs/beams-roof-connections/images/07-full-width-frame-concrete-sides.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/08-longitudinal-beams-two-frames.png": "docs/beams-roof-connections/images/08-longitudinal-beams-two-frames.png",
+    "Thach_Bi_Viewer/references/03-facade/overview/04-rear-elevation.png": "review/church-views-2026-10-07/source-inputs/04-rear-elevation.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/01-exterior-front-day.png": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-01-exterior-front-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/02-exterior-corner-day.png": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-02-exterior-corner-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/03-entrance-detail-day.png": "Thach_Bi_Viewer/references/04-doors/full-hd/2026-10-07-03-entrance-detail-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/04-exterior-corner-evening.png": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-04-exterior-corner-evening.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/05-nave-overview-day.png": "Thach_Bi_Viewer/references/00-overview/full-hd/2026-10-07-05-nave-overview-day.png"
+  },
+  "inputRelocationNote": "Original inputReferences retain the paths used at generation time. Resolve moved inputs through inputRelocations; prompts and selected outputs are unchanged."
+}

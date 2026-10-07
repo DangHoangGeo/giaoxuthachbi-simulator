@@ -8,7 +8,7 @@ A personal project to help my hometown church in Vietnam make better decisions a
 
 My hometown is a small village in Ninh Bình, Vietnam, formerly in Nam Định Province. Our community has deep Catholic roots, connected to the early history of the faith in Vietnam. The church has long been part of our everyday lives.
 
-As I write this in October 2026, our old church is about 34 years old. Parts of it have deteriorated, and it can no longer comfortably serve the number of people who come there. Building a new church is a major undertaking for a small village. Families contribute what they can afford, and some people contribute their time and labor at the construction site.
+As I write this in October 2026, our old church is about 34 years old. Parts of it have deteriorated, and it can no longer comfortably serve the number of people who come there. Construction of the new church began in **February 2026**. The foundation is already finished, and construction is underway. Building a new church is a major undertaking for a small village. Families contribute what they can afford, and some people contribute their time and labor at the construction site.
 
 When I was a teenager, I also helped with small construction projects at the church. I now live abroad and follow the building work through the parish's Facebook updates. Seeing elderly neighbors turn up and work through hot days has stayed with me. I kept wondering how I could help from far away, beyond making a donation.
 
@@ -31,7 +31,17 @@ My hope reaches beyond this one church. Communities with limited budgets and lim
 
 The immediate priority is to coordinate the positions of lights, speakers, microphones and fans, then refine their wiring and physical controls. Energy use, maintenance access, repairability and long-term operation matter alongside appearance and comfort.
 
+**Construction update — 7 October 2026:** the project owner confirms the February 2026 start, completed foundation and ongoing construction. Exact milestone dates, site photographs and verified as-built measurements will be recorded as they become available. The digital model remains a design study; this progress update does not establish that its geometry matches the work already built.
+
+## Planned web app
+
+The [web app roadmap](plan/README.md) proposes Next.js on Vercel: a public church homepage and image gallery, a construction timeline, a lightweight 3D visit with local-time day/night settings, and password-protected, read-only engineering views. A later inspection view will help Father find upcoming work and inspect source-backed object positions, dimensions and specifications.
+
+This is a plan for future implementation. The existing offline viewer below remains the current application. The roadmap includes eight phases, data/publication rules, acceptance tests, access control, deployment and long-term maintenance; no web framework or cloud service has been configured yet.
+
 ## Open the model
+
+See the [7 October church concept gallery](Thach_Bi_Viewer/references/00-overview/2026-10-07/index.html) for sixteen exterior, interior, carved-detail and top-down views, including side-door/window close-ups and the sanctuary-end rear elevation, with native originals and resampled Full HD copies. These use the model and approved art references; they are generated design concepts, not construction-site photographs. [Design notes and provenance](docs/church-view-renderings.md) explain the source hierarchy and limitations.
 
 1. Download or clone the repository. If downloading a ZIP, extract it completely.
 2. Open [Thach_Bi_Viewer/OPEN_CHURCH.html](Thach_Bi_Viewer/OPEN_CHURCH.html) in a browser with JavaScript and WebGL 2 support.
@@ -54,6 +64,7 @@ See the [viewer instructions](Thach_Bi_Viewer/READ_ME.txt) and [simulator guide]
 | Inspect equipment, line IDs and positions | [Category Excel registers](docs/electrical-grid/categories/README.md) and [refresh workflow](docs/electrical-grid/register.md) |
 | See total quantities, usage and missing inputs | [Summary report](docs/electrical-grid/summary-report.md) |
 | Contribute code, model changes or documentation | [Project and AI-agent rules](AGENTS.md) |
+| Implement the future public and protected web app | [Web roadmap and phase plans](plan/README.md) |
 
 ## Where community help would matter most
 
@@ -120,6 +131,7 @@ The HTML brief generator requires `marked`. Excel regeneration uses the configur
 | `Thach_Bi_Viewer/` | Offline viewer, model, simulator modules, interactive plan and reference assets. |
 | `docs/` | Drawing sources, design briefs, calculation limitations, engineering studies and equipment registers. |
 | `scripts/` | Verification and document/register generation tools. |
+| `plan/` | Future web architecture, roadmap, implementation phases and release criteria. |
 | `review/` | Dated review evidence and historical comparisons; earlier results may not describe the current model. |
 | `AGENTS.md` | Shared rules for accuracy, coordinated documentation, testing and small commits. |
 

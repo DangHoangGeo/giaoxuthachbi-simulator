@@ -9,7 +9,7 @@ DB1, DB2, LC1, FC1 and AV1 enclosures and their shared supply feeders.
 
 ## Current scope
 
-5 equipment/enclosures, 4 routes, 36 route vertices. 0 hidden alternatives; 0 shown connected components. Circuits: Shared board feeders.
+5 equipment/enclosures, 4 routes, 41 route vertices. 0 hidden alternatives; 0 shown connected components. Circuits: Shared board feeders.
 
 ## Editing and coordination
 

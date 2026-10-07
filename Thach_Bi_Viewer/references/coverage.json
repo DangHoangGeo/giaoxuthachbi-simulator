@@ -15,58 +15,82 @@
     {
       "folder": "00-overview",
       "title": "Whole church",
-      "status": "Overview references retained; detail work tracked by part."
+      "status": "16 reviewed views in 00-overview/2026-10-07. Native originals and resampled Full HD exports retained. Latest door/window detail views govern the owner-preferred shutters.",
+      "currentImageCount": 3,
+      "currentGuide": "00-overview/README.md"
     },
     {
       "folder": "01-timber-frame",
       "title": "Timber frame and beams",
-      "status": "8 Full HD images ready, including provisional upper roof longitudinal members. Structural sizing and bracing awaiting specifications."
+      "status": "Latest lacquer/gilding connection close-up in this folder. Eight prior structural appearance studies and source photographs remain in docs/beams-roof-connections for engineering coordination; sections and capacity remain unverified.",
+      "currentImageCount": 1,
+      "currentGuide": "01-timber-frame/README.md"
     },
     {
       "folder": "02-sanctuary",
       "title": "Sanctuary",
-      "status": "Overall concept and church source available; center, side wings, altar and canopy close-ups pending."
+      "status": "Approved source concept plus new front, oblique and close sanctuary visualizations in the 7 October overview set. Orthographic fabrication details, rear views and exact ornament dimensions remain pending.",
+      "currentImageCount": 2,
+      "currentGuide": "02-sanctuary/README.md"
     },
     {
       "folder": "03-facade",
       "title": "Facade and towers",
-      "status": "Overview references available; tower crown, capitals and facade junction close-ups pending."
+      "status": "Front, corner and new sanctuary-end rear views available. Fabrication sections and exact relief/crest details remain pending.",
+      "currentImageCount": 5,
+      "currentGuide": "03-facade/README.md"
     },
     {
       "folder": "04-doors",
       "title": "Doors",
-      "status": "Main door detail retained; orthographic leaves, jambs, thresholds and hardware pending."
+      "status": "Main-door reference plus exterior/interior side-door close-ups available. Exact hardware, thresholds and door-leaf fabrication details pending.",
+      "currentImageCount": 3,
+      "currentGuide": "04-doors/README.md"
     },
     {
       "folder": "05-windows",
       "title": "Windows and glazing",
-      "status": "Flat elevation, fanlight, mullion and sill details pending."
+      "status": "Side-window close-up matches owner-preferred solid carved/gilded shutters on both faces; fanlights, round windows and wall relief shown. Opening, glazing, fixing and fabrication specifications pending.",
+      "currentImageCount": 1,
+      "currentGuide": "05-windows/README.md"
     },
     {
       "folder": "06-roof",
       "title": "Roof",
-      "status": "Footprint retained; ridge, eaves, roof intersections and drainage details pending."
+      "status": "Overhead roof footprint view in this folder. Roof intersections remain visual studies; drainage, ridge/eave sections and engineering details pending.",
+      "currentImageCount": 1,
+      "currentGuide": "06-roof/README.md"
     },
     {
       "folder": "07-stairs",
       "title": "Stairs and balustrades",
-      "status": "Side stair reference retained; riser, nosing and balustrade detail set pending."
+      "status": "Side stair reference retained; riser, nosing and balustrade detail set pending.",
+      "currentImageCount": 0,
+      "currentGuide": "07-stairs/README.md"
     },
     {
       "folder": "08-lighting",
       "title": "Lighting and equipment",
-      "status": "Lighting overviews retained; mounting, shielding and cable-routing details pending."
+      "status": "Use the new exterior and sanctuary evening views linked in this folder guide. Superseded lighting thumbnails removed; output, glare, mounting and routes remain engineering work.",
+      "currentImageCount": 0,
+      "currentGuide": "08-lighting/README.md"
     },
     {
       "folder": "09-furniture",
       "title": "Pews and furniture",
-      "status": "Front, side, kneeler, joints and end-panel detail set pending."
+      "status": "Front, side, kneeler, joints and end-panel detail set pending.",
+      "currentImageCount": 0,
+      "currentGuide": "09-furniture/README.md"
     },
     {
       "folder": "10-floors-walls",
       "title": "Floors and wall finishes",
-      "status": "Stone bases, paving joints, skirting and finish transition details pending."
+      "status": "Stone bases, paving joints, skirting and finish transition details pending.",
+      "currentImageCount": 0,
+      "currentGuide": "10-floors-walls/README.md"
     }
   ],
-  "materialRule": "Two central timber columns per transverse frame; outer left/right columns concrete. Side and longitudinal beams remain timber."
+  "materialRule": "Two central timber columns per transverse frame; outer left/right columns concrete. Side and longitudinal beams remain timber.",
+  "currentImageRegister": "current-images.json",
+  "categoryCopyPolicy": "Full HD exports moved byte-for-byte into the discipline folders; dated gallery and viewer use those same files. Preserve native masters and required sources."
 }

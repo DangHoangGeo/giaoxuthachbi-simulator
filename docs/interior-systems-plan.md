@@ -205,7 +205,7 @@ Commission lighting at night and with daylight; test emergency operation separat
 - **Next model refinements:** adjustable real bench/kneeler geometry, wheelchair spaces, populated sightlines, confirmed column sections, IES/LDT photometry import, and equipment models replaced by the selected products.
 - **Engineering work still required:** the simulator's lighting, acoustic and airflow figures are planning estimates. Certified photometric calculations, acoustic prediction and commissioning, ventilation/thermal analysis, structural review and electrical design are still required. There are no live meter connections or real device commands in this simulator.
 
-The older `Simulator_Test.md` contains illustrative circuit caps and simplified audio assumptions. Its 1800/2400/1200 W circuit numbers are not design ratings. A generic convolver is not a geometry-based echo calculation, and visual light-cone overlap does not establish illuminance. Use this brief and the commissioned engineering documents for subsequent decisions.
+The older `docs/simulator/old/Simulator_Test.md` contains illustrative circuit caps and simplified audio assumptions. Its 1800/2400/1200 W circuit numbers are not design ratings. A generic convolver is not a geometry-based echo calculation, and visual light-cone overlap does not establish illuminance. Use this brief and the commissioned engineering documents for subsequent decisions.
 
 ### Immediate information to collect
 
