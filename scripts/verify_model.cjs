@@ -304,9 +304,38 @@ assert(niche.backX-niche.mouthX>=1,'Niche is at least 1.0 m deep');
 const corpus=nodes.find(o=>o.name.startsWith('Illustrative bronze corpus'));
 assert(bounds(corpus).min.x>niche.mouthX+.3&&bounds(cross).min.x>niche.mouthX+.3,'Cross and corpus stand inside the niche');
 near(Math.max(...nodes.filter(o=>o.name==='Crucifix base step').map(o=>bounds(o).max.y)),bounds(cross).min.y+.02,'Cross stands on its stepped base');
-for(const name of ['Central carved timber silhouette','Outer carved canopy','Chamber back lining · lacquered timber','Sanctuary back wall behind the reredos']){
+for(const name of ['Central carved timber silhouette','Reredos carved ground','Outer carved canopy','Chamber back lining · lacquered timber','Sanctuary back wall behind the reredos']){
   const hit=new T.Raycaster(new T.Vector3(47,4.5,.6),new T.Vector3(1,0,0)).intersectObject(nodes.find(o=>o.name===name),false);
   assert.equal(hit.length,0,`${name} is open for the niche`);
+}
+// Sanctuary relief of the approved concept: gilded scrollwork and relief as tileable finishes on plates and grounds,
+// a glowing blue behind the crucifix and the statues, crocketed pinnacles, leaf crestings on the arches, a carved
+// wooden corpus with a gilded cloth, and a gilded, domed tabernacle.
+{
+  const finish=name=>nodes.find(o=>o.isMesh&&o.material?.name===name)?.material;
+  for(const name of ['Sanctuary · gilded scrollwork on lacquer','Sanctuary · gilded relief']){
+    const m=finish(name);assert(m&&m.map&&m.bumpMap&&m.metalnessMap&&m.roughnessMap===m.metalnessMap,`${name} is a relief finish with gilded metal and lacquered ground`);
+    assert(m.map.repeat.x>=1&&m.map.repeat.x<=3,`${name} repeats at a carved scale`);
+  }
+  for(const [name,count,material] of [['Central pilaster relief',12,'Sanctuary · gilded relief'],['Chamber pilaster relief',8,'Sanctuary · gilded relief'],['Wing pilaster relief',4,'Sanctuary · gilded relief'],['Shrine jamb relief',4,'Sanctuary · gilded relief'],['Shrine shelf frieze',2,'Sanctuary · gilded relief'],['Reredos frieze relief',2,'Sanctuary · gilded relief'],['Carved panel relief',11,'Sanctuary · gilded scrollwork on lacquer'],['Reredos carved ground',1,'Sanctuary · gilded scrollwork on lacquer'],['Shrine bay relief ground',2,'Sanctuary · gilded scrollwork on lacquer']]){
+    const list=part(name);assert.equal(list.length,count,name);
+    for(const o of list){
+      assert.equal(o.material.name,material,`${name} finish`);
+      // Plates carry metre-based texture coordinates, so the carving keeps one scale on every part.
+      const uv=o.geometry.attributes.uv,size=dimensions(o);let span=0;for(let i=0;i<uv.count;i++)span=Math.max(span,uv.getX(i),uv.getY(i));
+      assert(Math.abs(span-Math.max(size.x,size.y,size.z))<.02||name==='Reredos carved ground',`${name} is mapped in metres`);
+    }
+  }
+  for(const o of nodes.filter(o=>/^Front frame (central|side) spandrel$/.test(o.name)))assert.equal(o.material.name,'Sanctuary · gilded scrollwork on lacquer','Front frame carries gilded scrollwork');
+  for(const [name,material] of [['Blue crucifix recess','Sanctuary · blue niche'],['Wing blue niche','Sanctuary · shrine niche blue']])for(const o of part(name)){assert.equal(o.material.name,material);assert(o.material.map,`${name} has its glow`);}
+  assert.equal(part('Wing blue niche').length,2);
+  assert.equal(part('Carved pinnacle').length,8,'Four spires on the reredos pilasters and four on the gradine');
+  assert.equal(part('Wing pinnacle').length,4);
+  assert(part('Gilded leaf cresting').length>=10&&part('Gilded arch cresting').length===5,'Leaf crestings on the canopy arcs and on the three front arches and two shrine heads');
+  for(const o of nodes.filter(o=>o.isMesh&&/^Illustrative corpus /.test(o.name)))assert.equal(o.material.name,'Sanctuary · carved figure, natural wood');
+  const dome=part('Tabernacle dome')[0],enclosure=part('Proposed tabernacle enclosure')[0];
+  assert(dome&&enclosure&&dome.material===enclosure.material&&dome.material.name==='Sanctuary · carved gilding','Tabernacle is gilded under a dome');
+  near(bounds(dome).min.y,bounds(enclosure).max.y,'Dome stands on the tabernacle');
 }
 const casing=casings.reduce((b,o)=>b.union(bounds(o)),new T.Box3());
 near(casing.max.x,niche.endX,'Casing rear face');

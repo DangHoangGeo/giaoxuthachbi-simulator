@@ -189,7 +189,10 @@ The calculation methods, measurement planes, assumptions and validation boundari
   lacquered, gilded timber, with no tie beam on that axis. The plaster frame
   on axis 11 remains as the back wall. See `docs/sanctuary-model.md`.
 - Behind the frame a timber-lined chamber (lacquered walls on the D and E
-  lines, gilded boarded vault) runs back to the reredos. The crucifix stands
+  lines, gilded boarded vault) runs back to the reredos. Pilasters, friezes,
+  grounds and the front frame carry generated gilded relief; the niches are
+  blue with a soft glow; spires and leaf crestings crown the reredos and the
+  shrines. The crucifix stands
   in a niche 1.0 m deep that opens through the back wall onto a base over the
   service room.
 - All round columns on the D and E lines are lacquered. The nave columns have

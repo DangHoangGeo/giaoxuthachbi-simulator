@@ -213,6 +213,38 @@
       return merge([[merge(parts), SC(1, 1, .6)]]);
     }
 
+    /* --------------------------------------------------------- sanctuary ornament */
+    // Crocketed pinnacle on a square turret, base at the origin: w wide, h high.
+    function pinnacle({ w = .2, h = .9 } = {}) {
+      const turret = h * .24, spire = h * .62, parts = [[new T.BoxGeometry(w, turret, w), TR(0, turret / 2, 0)], [new T.BoxGeometry(w * 1.3, .02, w * 1.3), TR(0, turret + .01, 0)]];
+      parts.push([new T.ConeGeometry(w * .62, spire, 4, 1), place(RY(Math.PI / 4), TR(0, turret + .02 + spire / 2, 0))]);
+      const crocket = leaf({ len: w * .5, wid: w * .34, thick: w * .08, curl: 2.2, lobes: 0, seg: 4, fine: false });
+      for (let k = 0; k < 4; k++) for (let j = 1; j <= 3; j++) {
+        const t = j / 4.2;
+        parts.push([crocket, place(RX(.7), TR(0, turret + .02 + spire * t, w * .62 * (1 - t) * .72), RY(Math.PI / 4 + k * Math.PI / 2))]);
+      }
+      parts.push([bloom({ r: w * .34, petals: 5, rings: 1, seg: 3 }), place(RX(-Math.PI / 2), TR(0, turret + spire - .01, 0))], [new T.SphereGeometry(w * .13, 6, 5), TR(0, turret + spire + w * .14, 0)]);
+      return merge(parts);
+    }
+    // Cresting of leaves along a line of [x, y] points in the XY plane, facing +Z: tall and short
+    // leaves alternate and point to the side given by `out` (+1 left of the direction of travel).
+    function cresting(points, { size = .16, count = 20, out = 1 } = {}) {
+      const curve = new T.CatmullRomCurve3(points.map(([x, y]) => V(x, y, 0))), parts = [];
+      const tall = leaf({ len: size, wid: size * .62, thick: size * .12, curl: 1.3, lobes: 2, seg: 5, fine: false }), short = leaf({ len: size * .6, wid: size * .5, thick: size * .1, curl: 1.6, lobes: 0, seg: 4, fine: false });
+      for (let i = 0; i <= count; i++) {
+        const t = i / count, p = curve.getPointAt(t), d = curve.getTangentAt(t), nx = -d.y * out, ny = d.x * out;
+        parts.push([i % 2 ? short : tall, place(RZ(Math.atan2(-nx, ny)), TR(p.x, p.y, 0))]);
+      }
+      return merge(parts);
+    }
+    // Flat plate w × h facing +Z whose texture repeats every `tile` metres; `upright` turns the
+    // pattern through a right angle for pilasters.
+    function plate(w, h, tile = .6, upright = false) {
+      const g = new T.PlaneGeometry(w, h), p = g.attributes.position, uv = g.attributes.uv;
+      for (let i = 0; i < p.count; i++) { const a = (p.getX(i) + w / 2) / tile, b = (p.getY(i) + h / 2) / tile; uv.setXY(i, upright ? b : a, upright ? a : b); }
+      return g;
+    }
+
     /* ----------------------------------------------------------------- finishes */
     function canvas(size) { const c = document.createElement('canvas'); c.width = c.height = size; return [c, c.getContext('2d')]; }
     function texture(c, colour) {
@@ -238,6 +270,47 @@
       return texture(c, true);
     }
 
-    return { place, TR, SC, RX, RY, RZ, merge, leaf, stem, scroll, bloom, turned, base, capital, cluster, panel, haunch, cartouche, grain, canvas, texture, rand };
+    // Parcel-gilt relief as a tileable texture set: gilded scrollwork standing on a ground. The
+    // surface layer keeps the gilding metallic and the ground lacquered (green: roughness, blue: metal).
+    function relief({ ground = '#5a170f', size = 512 } = {}) {
+      const [colour, a] = canvas(size), [height, b] = canvas(size), [surface, c] = canvas(size), k = size / 512, TAU = Math.PI * 2;
+      a.fillStyle = ground; a.fillRect(0, 0, size, size); b.fillStyle = '#000'; b.fillRect(0, 0, size, size); c.fillStyle = 'rgb(255,92,0)'; c.fillRect(0, 0, size, size);
+      b.filter = 'blur(1.5px)';
+      // Shadow, body and highlight on the colour layer, then the height and surface layers.
+      const passes = [[a, 'rgba(30,6,3,.85)', 3, 3.5, 1.2], [a, '#c39330', 0, 0, 1], [a, '#f1d47a', -1.3, -1.6, .45], [b, '#fff', 0, 0, 1], [c, 'rgb(255,74,255)', 0, 0, 1]];
+      const each = draw => { for (const [g, style, dx, dy, w] of passes) for (const ox of [-size, 0, size]) for (const oy of [-size, 0, size]) { g.save(); g.translate(ox + dx * k, oy + dy * k); g.beginPath(); draw(g, style, w); g.restore(); } };
+      const line = (path, width) => each((g, style, w) => { path(g); g.strokeStyle = style; g.lineWidth = width * w * k; g.lineCap = g.lineJoin = 'round'; g.stroke(); });
+      const fill = path => each((g, style, w) => { path(g); if (w < 1) { g.strokeStyle = style; g.lineWidth = 1.6 * k; g.stroke(); } else { g.fillStyle = style; g.fill(); } });
+      const petal = (g, x, y, angle, length, width) => {
+        const ux = Math.cos(angle), uy = Math.sin(angle), mx = x + ux * length * .45, my = y + uy * length * .45;
+        g.moveTo(x, y); g.quadraticCurveTo(mx - uy * width, my + ux * width, x + ux * length, y + uy * length); g.quadraticCurveTo(mx + uy * width, my - ux * width, x, y);
+      };
+      // Two running stems, half a tile apart; a scroll with leaves and a rosette in every bend.
+      for (const [cy, phase] of [[size * .25, 0], [size * .75, Math.PI]]) {
+        const y = x => cy + Math.sin(x / size * TAU * 2 + phase) * 26 * k;
+        line(g => { for (let x = -6; x <= size + 6; x += 6) { if (x < 0) g.moveTo(x, y(x)); else g.lineTo(x, y(x)); } }, 9);
+        for (let i = 0; i < 4; i++) {
+          const x = ((Math.PI / 2 + i * Math.PI - phase) / (2 * TAU)) * size, s = i % 2 ? -1 : 1, cx = x, sy = cy - s * 38 * k, r = 54 * k, dir = i % 2 ? 1 : -1, a0 = s * Math.PI / 2;
+          const at = t => { const q = r * (1 - .84 * t), an = a0 + dir * 1.5 * TAU * t; return [cx + Math.cos(an) * q, sy + Math.sin(an) * q, an]; };
+          line(g => { for (let n = 0; n <= 36; n++) { const [px, py] = at(n / 36); if (n) g.lineTo(px, py); else g.moveTo(px, py); } }, 7);
+          for (const t of [.06, .2, .34, .5]) { const [px, py, an] = at(t); fill(g => petal(g, px, py, an + dir * .5, 24 * k * (1 - t * .6), 8 * k)); }
+          for (let n = 0; n < 6; n++) fill(g => petal(g, cx, sy, n * TAU / 6, 15 * k, 6 * k));
+          fill(g => g.arc(cx, sy, 4.5 * k, 0, TAU));
+          fill(g => g.arc(x + size / 8, cy, 5.5 * k, 0, TAU));
+        }
+      }
+      return { map: texture(colour, true), bumpMap: texture(height), surface: texture(surface) };
+    }
+    // Soft glow for a niche wall: light behind the figure, deeper colour towards the edges.
+    function glow(inner, mid, outer, size = 256) {
+      const [c, g] = canvas(size), shade = g.createRadialGradient(size / 2, size * .42, size * .04, size / 2, size * .5, size * .72);
+      shade.addColorStop(0, inner); shade.addColorStop(.38, mid); shade.addColorStop(1, outer);
+      g.fillStyle = shade; g.fillRect(0, 0, size, size);
+      const t = new T.CanvasTexture(c);
+      t.colorSpace = T.SRGBColorSpace;
+      return t;
+    }
+
+    return { place, TR, SC, RX, RY, RZ, merge, pinnacle, cresting, plate, relief, glow, leaf, stem, scroll, bloom, turned, base, capital, cluster, panel, haunch, cartouche, grain, canvas, texture, rand };
   }
 })();

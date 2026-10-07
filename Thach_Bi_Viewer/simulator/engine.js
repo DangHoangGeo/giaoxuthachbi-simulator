@@ -248,7 +248,7 @@
     const ornament = (geometry, material, x, y, z, yaw, name) => {
       const m = new T.Mesh(geometry, material);
       m.position.set(x, y, z); m.rotation.y = yaw; m.name = name; m.castShadow = m.receiveShadow = true;
-      m.userData = { status: 'CONCEPT ORNAMENT · NOT STRUCTURAL', detail: 'O01 / J09 applied ornament', source: 'references/00-overview/2026-10-07/full-hd/09-carved-connection-detail.png', engineeringApproved: false };
+      m.userData = { status: 'CONCEPT ORNAMENT · NOT STRUCTURAL', detail: 'O01 / J09 applied ornament', source: 'references/01-timber-frame/full-hd/2026-10-07-09-carved-connection-detail.png', engineeringApproved: false };
       asDrawn.add(m); return m;
     };
     // A haunch is three meshes: the solid bracket in the beam finish, its carved leaves, its gilding.
