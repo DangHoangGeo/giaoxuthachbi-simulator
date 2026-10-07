@@ -5,6 +5,7 @@ The simulator supports the project's first priority: optimize the locations and 
 - [User guide and revision history](guide.md)
 - [Viewer performance and memory](performance.md)
 - [Calculation methods and limitations](methods-and-limitations.md)
+- [Coordinated baseline, scenarios and unresolved targets](../engineering/baseline.md)
 - [Electrical grid, 2D/3D routes and control boards](../electrical-grid/README.md)
 - [Equipment/line Excel register and layout revision workflow](../electrical-grid/register.md)
 - [Interior and systems brief](../interior-systems-plan.md)

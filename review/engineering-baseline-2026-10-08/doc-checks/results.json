@@ -1,0 +1,150 @@
+{
+  "checkDate": "2026-10-08",
+  "scope": [
+    "docs/engineering/acceptance-matrix.md",
+    "docs/engineering/baseline.md",
+    "docs/engineering/design-basis.md",
+    "docs/engineering/issues.md",
+    "review/engineering-baseline-2026-10-08/README.md",
+    "review/engineering-baseline-2026-10-08/study-summary.md",
+    "review/engineering-baseline-2026-10-08/source-notes/index.md",
+    "review/engineering-baseline-2026-10-08/source-notes/inventory.json",
+    "docs/simulator/methods-and-limitations.md (link check)",
+    "plan/engineering/README.md (link check)"
+  ],
+  "method": "Read-only path, Markdown-link, heading-anchor, JSON-locator, command-path, and result-table comparisons. No simulations, network access, external browsing, or Git operations.",
+  "links": {
+    "markdownFilesChecked": 9,
+    "localLinksChecked": 175,
+    "externalLinksNotFetched": 7,
+    "headingAnchorsChecked": 1,
+    "missingLocalFiles": 0,
+    "invalidHeadingAnchors": 0
+  },
+  "commands": [
+    {
+      "document": "docs/engineering/baseline.md",
+      "line": 14,
+      "command": "node scripts/study_systems.cjs review/engineering-baseline-2026-10-08/study-inputs/scenarios.json /tmp/thachbi-baseline-repeat --repeat",
+      "repositoryRootScriptExists": true,
+      "scenarioInputExists": true,
+      "repeatFlagAcceptedByScript": true,
+      "executionPerformed": false
+    }
+  ],
+  "sourceNotes": {
+    "inventoryJsonParsed": true,
+    "sourceFileLineLocatorsChecked": 90,
+    "invalidLocators": 0
+  },
+  "studyTable": {
+    "summaryDocument": "review/engineering-baseline-2026-10-08/study-summary.md",
+    "resultCasesCompared": 24,
+    "resultCasesPresent": 24,
+    "receiversPerCase": 368,
+    "receiverEvaluations": 8832,
+    "tableRowsMatchingJsonAtDisplayedPrecision": 24,
+    "noSpeechCases": 8,
+    "noSpeechRepresentation": "The table renders minimum STI, below-.60 count, and microphone margins as n/a; corresponding raw speech results are null and threshold lists are empty.",
+    "findings": [
+      {
+        "id": "DOC-CHECK-001",
+        "severity": "wording",
+        "file": "review/engineering-baseline-2026-10-08/study-summary.md",
+        "line": 3,
+        "text": "The sentence says below-STI-threshold counts are zero when there is no speech source, while the table renders the below-.60 column as n/a. The generator at review/engineering-baseline-2026-10-08/summarise_study.py:59-60 explicitly emits n/a for both STI and that count when STI results are absent. No table number differs from its JSON source."
+      }
+    ]
+  },
+  "baselineWorstLocationChecks": {
+    "source": "review/engineering-baseline-2026-10-08/study-results/full-4.json",
+    "layoutItems": {
+      "savedLayout": 322,
+      "baselineSnapshot": 322,
+      "full4Input": 322,
+      "itemsEqualToSavedLayout": true,
+      "settingsEqualToSavedLayout": true
+    },
+    "verifiedValues": {
+      "bookLight": {
+        "meanLuxRounded": 349,
+        "minimumLux": 196.80348977977386,
+        "below200Count": 4,
+        "lowestReceiverId": "R4-55b0e9b61f9c11c8",
+        "lowestPositionM": [6.535, 0, -1.6],
+        "maximumLuxRounded": 707
+      },
+      "speechClarity": {
+        "meanSTIRounded": 0.612,
+        "minimumSTI": 0.43919587826277307,
+        "below060Count": 123,
+        "below045Count": 4,
+        "lowestReceiverId": "R4-ce9f2062283c8cf7",
+        "wingMeanSTIRounded": 0.51
+      },
+      "speechLevel": {
+        "minimumDBA": 66.92041511837641,
+        "maximumDBA": 69.96943850204916,
+        "meanDBARounded": 68.7,
+        "lowestReceiverId": "R4-78e59870525d9cb7"
+      },
+      "backgroundNoise": {
+        "meanDBARounded": 43.3,
+        "maximumDBA": 43.48497489600567,
+        "highestReceiverId": "R4-ffcd355d46cc8d54"
+      },
+      "localAirSpeed": {
+        "meanMPerSRounded": 0.4,
+        "minimumMPerS": 0.2567843009999638,
+        "maximumMPerS": 0.7861560350746976,
+        "below030Count": 18,
+        "lowestReceiverIdMatchesBookLight": true
+      },
+      "microphones": {
+        "S291AmboMarginDB": 1.2062627704490154,
+        "S292AltarMarginDB": 1.7148436355671066,
+        "positionsM": [[41.37, 2.26, -2.62], [44.74, 2.24, 0.45]]
+      },
+      "exhaust": {
+        "modelVolumeM3": 7456.449110144819,
+        "unitsAtSpeedOne": 9,
+        "catalogueFlowM3PerSPerUnit": 0.8,
+        "derivedACH": 3.476328667459029
+      },
+      "usage": {
+        "powerW": 5616.86094282412,
+        "energyKWhPerAssumedService": 8.425291414236181
+      }
+    },
+    "sceneStatementsChecked": {
+      "full2MinimumLux": 201.04451120285307,
+      "full2Below060Count": 109,
+      "full2Below030AirCount": 8,
+      "weekday4MinimumLux": 139.9861402093843,
+      "prayer4MinimumLux": 46.015,
+      "weekday2MinimumLux": 145.166,
+      "prayer2MinimumLux": 46.901,
+      "overflow4MinimumSTI": 0.4207,
+      "overflow4Below060Count": 250,
+      "overflow4AmboMarginDB": -0.44109577712351467,
+      "talkerFarAmboMarginDB": -2.3155624106646115,
+      "talkerFarAltarMarginDB": -1.8069815455465204
+    },
+    "allValuesConsistentWithCitedResults": true
+  },
+  "sourceInventoryCounts": {
+    "dimensionRows": 463,
+    "modelGridRows": 51,
+    "openItems": 22,
+    "equipmentAndEnclosures": 327,
+    "routes": 329,
+    "vertices": 2681,
+    "savedFingerprintAndCountComparisons": 118,
+    "allMatchInventoryVerification": true
+  },
+  "unchecked": [
+    "Engineering adequacy, code applicability, external citations, or acceptance-target validity.",
+    "Every number in the acceptance matrix and design basis beyond the values needed to check study scenarios and baseline rows.",
+    "Running the documented repeat command or any simulation."
+  ]
+}

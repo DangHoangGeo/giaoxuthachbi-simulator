@@ -1,0 +1,559 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-10-07T22:03:59.958Z",
+  "gitCommit": "daadc10210842418eddeba68099f321236c4e96b",
+  "node": "v22.22.2",
+  "platform": "darwin",
+  "sourceSha256": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "2f1114fadfc35f48ab34c66b578b277d22f2b839f66ef7eaf6affdefc2201de3",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "db353c028cfa7377844bfd174941893a04d68ce05ec1719f2f5449d2785a4a46",
+    "Thach_Bi_Viewer/simulator/engine.js": "d94ea996d211291510afe30d888ddae1f94e97a8f4217e7916a48ad7bc267a60",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "7b632d74a358cdc8d65f707864b3abe44d2e32ae070859c45f5b28447d753beb",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "192d0942067dc399f379fca989876817a7468445570323b5c4e325ce6c2b9a4c",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "c6daf306102af14c586e33a12ebc714b83115033973a855130328c469f11c936",
+    "scripts/study_systems.cjs": "7c5523e8a9f399c2ba2c67b3e23f79be3f5ffb361a0ebc05e5c256f15e8c6ea7"
+  },
+  "scenarioSha256": "3b74e2b7e12b385c34fcd1cc344d3d812680435473f04c977546aebea69f31d4",
+  "scenarios": {
+    "schema": 1,
+    "cases": [
+      {
+        "id": "full-4",
+        "layoutBlocks": 4,
+        "scene": "Full service · evening",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "weekday-4",
+        "layoutBlocks": 4,
+        "scene": "Weekday Mass",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "prayer-4",
+        "layoutBlocks": 4,
+        "scene": "Prayer & adoration",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "festival-4",
+        "layoutBlocks": 4,
+        "scene": "Christmas & festivals",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "overflow-4",
+        "layoutBlocks": 4,
+        "scene": "Festival · courtyard overflow",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "cleaning-4",
+        "layoutBlocks": 4,
+        "scene": "Cleaning",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "security-4",
+        "layoutBlocks": 4,
+        "scene": "Night security",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "off-4",
+        "layoutBlocks": 4,
+        "scene": "All off",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "full-2",
+        "layoutBlocks": 2,
+        "scene": "Full service · evening",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "weekday-2",
+        "layoutBlocks": 2,
+        "scene": "Weekday Mass",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "prayer-2",
+        "layoutBlocks": 2,
+        "scene": "Prayer & adoration",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "festival-2",
+        "layoutBlocks": 2,
+        "scene": "Christmas & festivals",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "overflow-2",
+        "layoutBlocks": 2,
+        "scene": "Festival · courtyard overflow",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "cleaning-2",
+        "layoutBlocks": 2,
+        "scene": "Cleaning",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "security-2",
+        "layoutBlocks": 2,
+        "scene": "Night security",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "off-2",
+        "layoutBlocks": 2,
+        "scene": "All off",
+        "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "sensitivity-hot-still-4",
+        "layoutBlocks": 4,
+        "scene": "Full service · evening",
+        "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 35,
+          "rh": 60,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "sensitivity-wet-restricted-4",
+        "layoutBlocks": 4,
+        "scene": "Full service · evening",
+        "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 0.25,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 30,
+          "rh": 90,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "sensitivity-cool-4",
+        "layoutBlocks": 4,
+        "scene": "Full service · evening",
+        "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 20,
+          "rh": 70,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "sensitivity-peak-occupied-4",
+        "layoutBlocks": 4,
+        "scene": "Full service · evening",
+        "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+        "settings": {
+          "occupancy": 1,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "sensitivity-sparse-4",
+        "layoutBlocks": 4,
+        "scene": "Full service · evening",
+        "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+        "settings": {
+          "occupancy": 0.1,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "sensitivity-openings-closed-4",
+        "layoutBlocks": 4,
+        "scene": "Full service · evening",
+        "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 0,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "sensitivity-noisy-4",
+        "layoutBlocks": 4,
+        "scene": "Full service · evening",
+        "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 50,
+          "maintenance": 0.8,
+          "micDistance": 0.4,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      },
+      {
+        "id": "sensitivity-talker-far-4",
+        "layoutBlocks": 4,
+        "scene": "Full service · evening",
+        "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+        "settings": {
+          "occupancy": 0.6,
+          "openings": 1,
+          "roofFinish": "mixed",
+          "entranceFinish": "slats",
+          "tempC": 28,
+          "rh": 75,
+          "ambientDbA": 40,
+          "maintenance": 0.8,
+          "micDistance": 0.6,
+          "talkerDbA": 62,
+          "mixerDb": 0,
+          "talker": false
+        }
+      }
+    ]
+  },
+  "repeat": {
+    "performed": true,
+    "criterion": "Exact JSON equality excluding export timestamps; no rounding tolerance",
+    "passed": true
+  },
+  "receiverIdBasis": "Derived study ID: SHA-256 prefix of layout, pew, block and exact model x/y/z; not an equipment ID or approved capacity",
+  "planesMAboveLocalFloor": {
+    "book": 0.8,
+    "ears": 1.2,
+    "air": 0.6
+  },
+  "bookHorizontalOffset": "Each seat.book, default [0.25, 0]; unchanged analysis.js seatTask",
+  "limitations": [
+    "Headless calculations; no rendering, audio, measured data or construction approval",
+    "Existing empirical methods unchanged; ambient/daylight and actual ventilation paths are not solved",
+    "Every case samples every model seat irrespective of scene occupancy; occupancy is an absorption scalar",
+    "Baseline recommended default only; browser-edited layouts are separate and were not accessed"
+  ],
+  "files": {
+    "baseline-layout.json": "9912ccceaa2951424cea02fae4e0251f6bb2627663897c80fd196b28a2660372",
+    "full-4.json": "825a26b2e88821c72f3cb14302e6e3667e20aeddb4191c7a23e00187774dcba2",
+    "weekday-4.json": "1962685e75327b6273bf1e3fbed42c182a871e06f287c69bb0fa77078657f1ba",
+    "prayer-4.json": "d127ff1f1b933c8ec75fc834460ea992d6d244226c4e8554824c6ca7cb4eb1f1",
+    "festival-4.json": "a7573c88e5276ed1c3c4cae781be4efc91b04cabd9ad656e575f8792d18e4bae",
+    "overflow-4.json": "3ab772d0cf244a7a793e5e9f9e6fd8d19282295be7729b1572b91f76b4172ece",
+    "cleaning-4.json": "d494731f6471b2f6ab7311472bd6f6abb8a5a0ef0acb05195e04e7c263f2d75b",
+    "security-4.json": "4ad1eca5b2126ecbaa4f8f727c28709858714c959d616dff77db2c85d929c184",
+    "off-4.json": "df2197b73fbbfeba199724792cca052ecd6cdf631928c3f66dbe3fcf56a75a67",
+    "full-2.json": "3f0a2e6d60c1e236e301fb70ee07c7677af1270292d8532a004d981b6594a95e",
+    "weekday-2.json": "5e67309f61f28eca96adec249ca4579641a87fdae0ccf365fe865d4f22a39182",
+    "prayer-2.json": "89ac70ec48267488d56e97d590bb0f7a7bccf2d4ef43aa8da999cff4bcf5d08f",
+    "festival-2.json": "c5379644b4c6744f17f7036e76ce0a1c3888766be726ce734bc70918676a7f9d",
+    "overflow-2.json": "9f311db685ca9175988491a47e287208725e7a41c168193d15702f353ae163a6",
+    "cleaning-2.json": "6e674af45ed546fe552ea98d6edae0b6668425fe4c130090cca650bb8a9e5e3c",
+    "security-2.json": "80ed183271f4a32ee4cabda2ede3194a0c534392172dd389d0ab38075421ded1",
+    "off-2.json": "f4af0b36082eb1fea091591a75068d8d00c37407e6c8a645117eafe033c68279",
+    "sensitivity-hot-still-4.json": "4b8e89441cb87f1c0aa0184a20316d7dfb10df334e395a729f8bf9eee01f52d5",
+    "sensitivity-wet-restricted-4.json": "2d812f4f0a7f9eb2bad75f6a3175a17fb83ee495b418a6113804cdad1a9e9ac0",
+    "sensitivity-cool-4.json": "8710dc6a64fe6bb416e6b532e5ffc6eee6c34b0dd7b087a1479d2790c0161105",
+    "sensitivity-peak-occupied-4.json": "e251aa709dec08d5454227e94cc5efa5579c621b02ed6c9593d27b7b78468897",
+    "sensitivity-sparse-4.json": "49271746b938d92b93f3838a0bd61174388c1bd72427c822284f756f999b0a72",
+    "sensitivity-openings-closed-4.json": "49777ecc63d85925526e827b8d070a154b5a74791332e0cdb4192d8a8e31f375",
+    "sensitivity-noisy-4.json": "619c15104778f280387ca377dc775ae5d977cfb6d96d6bb6d9630c5afe86d5f8",
+    "sensitivity-talker-far-4.json": "b93c5979b77f12b0d22621b0dc06235206beffa0df98676d15a3b907d671877c"
+  }
+}

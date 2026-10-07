@@ -4,6 +4,8 @@ Consolidated 7 October 2026 from the implementation, the [calculation audit](../
 
 These methods produce planning estimates for comparing layouts. They do not certify structural, lighting, acoustic, ventilation or electrical performance. The web app does not measure the room or command installed devices.
 
+The [8 October baseline](../engineering/baseline.md) supplies current per-receiver results, reproducible scenarios, source fingerprints and the [criteria/hold matrix](../engineering/acceptance-matrix.md). Later-looking version labels and older passing tables do not supersede that evidence.
+
 ## Calculation basis
 
 | Result | Implemented method | Main limits and required validation |
@@ -20,7 +22,7 @@ These methods produce planning estimates for comparing layouts. They do not cert
 ## Measurement planes and configuration
 
 - Model coordinates are metres in the common X/Y/Z frame defined in [AGENTS.md](../../AGENTS.md). Heights below are above the local floor.
-- Book light uses the configured seating plane, initially 0.80 m. Circulation light uses a near-floor plane at 0.02 m. Acoustic seat samples use ears at 1.20 m; walking readings use the camera's ear height. Fan air speed uses 0.60 m.
+- Book light currently uses a **fixed 0.80 m** height in `analysis.js` (`seatTask` and `pointValues`), with per-seat horizontal book offset (default X +0.25 m). The stored `seatingPlane` setting does not change those expressions; do not claim a different plane from that setting alone. Circulation light uses a near-floor plane at 0.02 m. Acoustic seat samples use ears at 1.20 m; walking readings use the camera's ear height. Fan air speed uses 0.60 m.
 - The default study uses 60% occupancy, open openings, 28 °C, 75% RH, 40 dBA assumed ambient noise and a 0.8 light maintenance factor. These are inputs, not surveyed conditions. Record any overrides.
 - The current sanctuary/seating revision samples 288 nave seats and 80 wing seats. Seat samples are not approved capacity. Occupancy changes room absorption; it does not remove particular sampled seats from the reported average.
 - Keep the recommended default layout and a user's browser-saved layout separate. Record the code/design revision, active scene, seating/frame option and equipment configuration with every comparison.

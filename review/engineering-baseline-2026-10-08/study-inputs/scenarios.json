@@ -1,0 +1,485 @@
+{
+  "schema": 1,
+  "cases": [
+    {
+      "id": "full-4",
+      "layoutBlocks": 4,
+      "scene": "Full service · evening",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "weekday-4",
+      "layoutBlocks": 4,
+      "scene": "Weekday Mass",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "prayer-4",
+      "layoutBlocks": 4,
+      "scene": "Prayer & adoration",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "festival-4",
+      "layoutBlocks": 4,
+      "scene": "Christmas & festivals",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "overflow-4",
+      "layoutBlocks": 4,
+      "scene": "Festival · courtyard overflow",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "cleaning-4",
+      "layoutBlocks": 4,
+      "scene": "Cleaning",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "security-4",
+      "layoutBlocks": 4,
+      "scene": "Night security",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "off-4",
+      "layoutBlocks": 4,
+      "scene": "All off",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "full-2",
+      "layoutBlocks": 2,
+      "scene": "Full service · evening",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "weekday-2",
+      "layoutBlocks": 2,
+      "scene": "Weekday Mass",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "prayer-2",
+      "layoutBlocks": 2,
+      "scene": "Prayer & adoration",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "festival-2",
+      "layoutBlocks": 2,
+      "scene": "Christmas & festivals",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "overflow-2",
+      "layoutBlocks": 2,
+      "scene": "Festival · courtyard overflow",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "cleaning-2",
+      "layoutBlocks": 2,
+      "scene": "Cleaning",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "security-2",
+      "layoutBlocks": 2,
+      "scene": "Night security",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "off-2",
+      "layoutBlocks": 2,
+      "scene": "All off",
+      "inputStatus": "MODEL TRANSCRIPTION: default physical settings; scene is executable preset; every seat sampled",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "sensitivity-hot-still-4",
+      "layoutBlocks": 4,
+      "scene": "Full service · evening",
+      "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 35,
+        "rh": 60,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "sensitivity-wet-restricted-4",
+      "layoutBlocks": 4,
+      "scene": "Full service · evening",
+      "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 0.25,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 30,
+        "rh": 90,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "sensitivity-cool-4",
+      "layoutBlocks": 4,
+      "scene": "Full service · evening",
+      "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 20,
+        "rh": 70,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "sensitivity-peak-occupied-4",
+      "layoutBlocks": 4,
+      "scene": "Full service · evening",
+      "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+      "settings": {
+        "occupancy": 1,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "sensitivity-sparse-4",
+      "layoutBlocks": 4,
+      "scene": "Full service · evening",
+      "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+      "settings": {
+        "occupancy": 0.1,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "sensitivity-openings-closed-4",
+      "layoutBlocks": 4,
+      "scene": "Full service · evening",
+      "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 0,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "sensitivity-noisy-4",
+      "layoutBlocks": 4,
+      "scene": "Full service · evening",
+      "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 50,
+        "maintenance": 0.8,
+        "micDistance": 0.4,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    },
+    {
+      "id": "sensitivity-talker-far-4",
+      "layoutBlocks": 4,
+      "scene": "Full service · evening",
+      "inputStatus": "CONCEPT sensitivity input, not measured weather/occupancy or an approved operating recommendation",
+      "settings": {
+        "occupancy": 0.6,
+        "openings": 1,
+        "roofFinish": "mixed",
+        "entranceFinish": "slats",
+        "tempC": 28,
+        "rh": 75,
+        "ambientDbA": 40,
+        "maintenance": 0.8,
+        "micDistance": 0.6,
+        "talkerDbA": 62,
+        "mixerDb": 0,
+        "talker": false
+      }
+    }
+  ]
+}

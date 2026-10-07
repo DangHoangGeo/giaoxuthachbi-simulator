@@ -8,12 +8,12 @@ Finish the coordinated design of lighting, loudspeakers, microphones, fans and t
 
 - The requested integration is complete: `6ecd7fb` merges all 21 commits from `codex/church-web-roadmap` into `main`, without rewriting history. Both branches were pushed to origin.
 - Plan proposal `cf8ddd8` was committed/pushed on `eng/00-plan`, branched from that main revision. The engineer approved it in this chat on 8 October 2026: “Sure, approved it”.
-- Record this approval, merge/push the verified plan to main, and start `eng/01-baseline`. There is no further routine phase-start approval: complete each exit gate, merge/push, report the handover and continue automatically.
+- Approval was recorded in `5edd115` and merged/pushed to main as `daadc10`; `eng/01-baseline` starts there. There is no further routine phase-start approval: complete each exit gate, merge/push, report the handover and continue automatically.
 - Plan approval authorizes the workflow. It does not approve unresolved dimensions, acceptance criteria, product selections, concealment exceptions, physical hardware or construction release. Request only the specific missing decision when it becomes necessary.
 
 ## Roadmap and dependencies
 
-All six phases are **not started**. Phase files use the same format as [web phases](../phases/00-evidence-and-publication.md). `E` gates are engineering gates; `G` gates belong to the web track. No calendar completion dates are promised before surveys, product data and review availability are known.
+E1 is **complete: baseline established**, with [evidence and remaining design failures](../../docs/engineering/baseline.md). E2–E6 are **not started**. Phase files use the same format as [web phases](../phases/00-evidence-and-publication.md). `E` gates are engineering gates; `G` gates belong to the web track. No calendar completion dates are promised before surveys, product data and review availability are known.
 
 | Phase / branch | Outcome | Depends on | Exit gate |
 | --- | --- | --- | --- |
@@ -77,7 +77,7 @@ Use the existing sources; this roadmap does not create a competing dimensional t
 - [Methods and limitations](../../docs/simulator/methods-and-limitations.md); owning readable modules: [design](../../Thach_Bi_Viewer/simulator/design.js), [catalogue](../../Thach_Bi_Viewer/simulator/catalog.js), [engine](../../Thach_Bi_Viewer/simulator/engine.js), [physics](../../Thach_Bi_Viewer/simulator/physics.js), [analysis](../../Thach_Bi_Viewer/simulator/analysis.js), [electrical](../../Thach_Bi_Viewer/simulator/electrical.js) and [controls](../../Thach_Bi_Viewer/simulator/controls.js).
 - [Electrical routing](../../docs/electrical-grid/routing.md), [control contract](../../docs/electrical-grid/controls.md), [category workbooks](../../docs/electrical-grid/categories/README.md), [preservation workflow](../../docs/electrical-grid/register.md) and [summary](../../docs/electrical-grid/summary-report.md).
 
-Future `docs/engineering/` records hold design basis, scenario/target matrix, candidate comparisons, concealment evidence and issue references. Create these during their phase, not as fabricated completed evidence now. Geometry questions stay in the existing workbook **Open items**; timber questions remain in the structural package. An engineering issue index links those owning records without duplicating or closing them by assumption. Each new issue needs stable ID, affected objects/scenarios, evidence, responsible discipline, required response, blocking scope and disposition.
+The [engineering baseline](../../docs/engineering/baseline.md) links the design basis, scenario/target matrix and issue references. Candidate comparisons and concealment evidence are added during their phases. Geometry questions stay in the existing workbook **Open items**; timber questions remain in the structural package. The issue index links those owning records without duplicating or closing them by assumption. Each new issue needs stable ID, affected objects/scenarios, evidence, responsible discipline, required response, blocking scope and disposition.
 
 ## Checks and synchronized changes
 

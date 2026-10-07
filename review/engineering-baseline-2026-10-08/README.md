@@ -8,6 +8,7 @@ The approved roadmap was merged to main as `daadc10`; E1 begins from that revisi
 | Source facts | [Source inventory](source-notes/index.md), [exact source locators](source-notes/inventory.json). Conflicting/historical values are observations, not endorsed design targets. |
 | Registers and dimensions | [Workbook inventory](source-inventory/README.md), [independent extraction verification](source-inventory/verification.json). 118 saved fingerprint/count comparisons agree. Seven workbooks unchanged; blank engineering inputs and 22 dimension open items remain open. |
 | Drawing spot review | [Printed-sheet observations](drawings/README.md): sheets 6 / 4 / 5 rendered and inspected from floor/nave/sanctuary PDFs. No dimension inferred from raster scaling. |
+| Per-receiver scenarios | [24-case summary](study-summary.md), [manifest](study-results/manifest.json), [verification](study-verification.json). 8,832 evaluations repeated exactly, 19 source hashes, every saved equipment/setting matched; failing IDs and raw checks retained. |
 
 Two full audits agree exactly on eight JSON records and 182 numerical leaves after excluding runtime/timestamp fields. Passing calculation checks do not pass the performance design: ambo/altar feedback ~1.2/1.7 dB, wing STI minimum .439, four of 368 seats below 200 lux, and estimated nominal exhaust rate ~3.5 ACH remain issues. Full method/product/field validation remains required.
 

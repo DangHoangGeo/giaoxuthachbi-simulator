@@ -1,5 +1,7 @@
 # Sound system · Thạch Bi church
 
+> The [8 October baseline](../engineering/baseline.md) and [24-case results](../../review/engineering-baseline-2026-10-08/study-summary.md) supersede older performance tables for current comparisons. Both seating layouts retain speech and feedback failures; overflow and talker-distance sensitivities worsen them. See the [criteria conflicts](../engineering/acceptance-matrix.md) before interpreting a software pass.
+
 > **Historical schedule:** the future-dated version label below does not establish recency. Its quantities, electrical allowances and passing feedback figures are stale. The fresh [7 October calculation audit](../../review/performance-2026-10-07/simulator-resources.log) retains low ambo/altar feedback margins (1.2/1.7 dB) and wing speech clarity (minimum STI 0.439, average 0.510). Use the [current sound register](../electrical-grid/categories/sound/register.xlsx) and [electrical summary](../electrical-grid/summary-report.md) for the maintained default equipment record. These remain design-development estimates.
 
 > Generated from the simulator's recommended design (version `2026-10-15-system-review`) and its analysis engine on 2026-10-15.
