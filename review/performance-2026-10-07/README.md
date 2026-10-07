@@ -183,3 +183,50 @@ summary equals the starting baseline. The [fresh strict check](simulator-final-s
 still fails on the established 1.2/1.7 dB microphone feedback margins; wing clarity,
 lighting and ventilation/sightline limitations remain. No input, physical layout,
 analysis formula, target, route or category register changes in this audio update.
+
+## Final low-memory texture tier
+
+Based on `88f30d2`. The final audit identified full-size generated glass/finish
+canvases as a remaining memory cost even in light graphics. The new display-only
+policy downsamples static canvases at the four existing texture creation points;
+standard graphics retains native canvas identity. Original drawing functions,
+reference images and native masters are intact. No geometry or material parameter
+is changed. Dynamic/numeric light textures, labels, small glows and the environment
+remain outside this policy; detailed image/GLB exports should use standard mode.
+
+The [texture policy checks](texture-policy.log) verify identity, source preservation,
+cache reuse, size/aspect bounds and resampling provenance. The [actual browser
+inventory](textures/checks.json) verifies all physical material properties,
+texture roles/color spaces/wrapping/repeat and the numeric light grid across modes.
+Both retain 146 image textures with one backing canvas each; 48 images are reduced.
+Finish and glass toggles restore identical texture objects, and PNG capture passes.
+
+| Image payload estimate | Standard | Light graphics |
+| --- | ---: | ---: |
+| Backing canvas RGBA8 pixels | 99,948,544 bytes | 35,917,824 bytes |
+| RGBA8 including generated mip levels | 133,190,576 bytes | 47,871,920 bytes |
+
+The estimated texture payload falls **64.1%**. These dimension-based figures do
+not measure VRAM, browser allocation overhead, renderer-generated environment maps
+or transient startup peaks. Standard image resolution is unchanged. Reviewed
+[standard evening](textures/standard-evening.jpg) and
+[light evening](textures/light-evening.jpg) sanctuary close-ups, day views, phone
+day/evening and the [alternate frame/two-block cutaway](textures/phone-cutaway.jpg).
+Light mode's reduced sharpness and absent preview shadows are explicit tradeoffs.
+
+The [final light-graphics profile](final-light-cpu4/profile.json) repeats desktop
+walking and phone captures after the texture change. At 4× CPU throttle on the same
+M1 Pro GPU, day/evening median walking intervals are both 28.0 ms (~36 fps), with
+p95 31.0/31.2 ms. All 194 emitters remain active; the light grid builds once and
+cached shadows do no work in this explicit mode. Browser console/page errors are
+empty. These remain local measurements, not a low-end-GPU guarantee.
+
+[Model checks](model-textures.log), display-policy tests and the
+[simulator calculation audit](simulator-textures.log) pass; the audit's numeric
+summary still equals the original baseline exactly. The prior fresh strict check
+continues to describe the unresolved design targets. This display-only change
+updates the sanctuary/performance/methods/opening instructions, with no changed
+equipment IDs, layouts, circuit settings, routes, workbook inputs or plan geometry.
+The existing paired registers/exports from `f7b3d91` remain current. The remaining
+fixed cost includes full geometry, source-object provenance and individual fixtures;
+actual weak-GPU hardware and headphone listening have not been tested.

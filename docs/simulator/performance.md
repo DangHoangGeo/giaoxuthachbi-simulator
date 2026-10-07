@@ -104,6 +104,33 @@ browser controls, moving blades, systems isolation and saved move/dim/deletion
 through reload and import. Derived feedback margins are recalculated after reload,
 not treated as user-entered fields.
 
+## Memory in light graphics
+
+Explicit `?graphics=light` also resamples static finish, stained-glass and relief
+canvases at texture creation. Images larger than 256 pixels on either axis use half
+width/height, capped at 512 pixels on the longer side, with proportional rounding.
+The drawing code still generates the original artwork, then makes its display
+copy; native reference/gallery files remain untouched. Each reduced texture records
+original/display dimensions and its resampled status in `userData.displayResample`.
+A weak cache shares one reduced canvas per input without retaining the original.
+This reduces resident image storage, not the transient peak of procedural drawing.
+
+Standard mode retains original canvas identity and resolution. Text labels, small
+niche glows, the environment map, shadows and numeric lighting DataTextures are
+outside this policy. Color space, UV repeat, wrapping, texture roles, lacquer/gilt
+material settings and analytical properties stay the same. Finish and clear/stained
+glass toggles reuse their existing textures without allocating a second tier.
+Image/GLB exports from light mode contain the reduced preview detail; restore
+standard graphics for detailed exports. The View settings note states this tradeoff.
+
+`verify_texture_memory.cjs` checks source preservation, shared reuse, idempotence,
+size/aspect bounds and resampling provenance. `verify_texture_browser.cjs` compares
+actual scene textures and every material's physical settings across both modes,
+checks unchanged numeric light-grid data, toggle identity and PNG capture, and
+captures desktop/phone day/evening plus the alternate frame/seating mode. Its
+RGBA8-with-mipmaps estimate comes from image dimensions; it is not measured VRAM
+and excludes renderer allocations such as shadows and environment processing.
+
 ## Listening mode
 
 Room impulse responses and the long STIPA-like sample are generated in small

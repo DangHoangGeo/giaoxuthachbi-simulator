@@ -248,7 +248,7 @@
     /* ----------------------------------------------------------------- finishes */
     function canvas(size) { const c = document.createElement('canvas'); c.width = c.height = size; return [c, c.getContext('2d')]; }
     function texture(c, colour) {
-      const t = new T.CanvasTexture(c);
+      const t = window.CHURCH_TEXTURES?.create(T, c) || new T.CanvasTexture(c);
       t.wrapS = t.wrapT = T.RepeatWrapping; t.anisotropy = 8;
       if (colour) t.colorSpace = T.SRGBColorSpace;
       return t;
@@ -306,7 +306,7 @@
       const [c, g] = canvas(size), shade = g.createRadialGradient(size / 2, size * .42, size * .04, size / 2, size * .5, size * .72);
       shade.addColorStop(0, inner); shade.addColorStop(.38, mid); shade.addColorStop(1, outer);
       g.fillStyle = shade; g.fillRect(0, 0, size, size);
-      const t = new T.CanvasTexture(c);
+      const t = window.CHURCH_TEXTURES?.create(T, c) || new T.CanvasTexture(c);
       t.colorSpace = T.SRGBColorSpace;
       return t;
     }

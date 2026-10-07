@@ -1,0 +1,18 @@
+{
+  "texturePolicy": "passed",
+  "checks": [
+    "standard identity",
+    "aspect ratio",
+    "size cap",
+    "shared canvas reuse",
+    "idempotence",
+    "source preservation",
+    "resampling provenance"
+  ],
+  "stats": {
+    "mode": "light",
+    "resampledImages": 3,
+    "originalPixels": 3595392,
+    "displayPixels": 381952
+  }
+}

@@ -147,7 +147,9 @@ Simulator → Settings → Rendering quality keeps illumination, reflections and
 the same shadow sources. View settings → Preview resolution separately adapts
 sharpness for smoother navigation, with manual full/75%/50% options. Use light
 graphics saves the layout and restarts with 50% resolution, antialiasing off and
-preview shadows off. All lamps and calculations remain active. See
+preview shadows off. Static finish/glass/relief textures also use smaller display
+images. Restore standard graphics before detailed image/GLB exports. Original
+artwork, all lamps, physical material settings and calculations remain intact. See
 ../docs/simulator/performance.md for methods, checks and measured limits.
 Room brightness follows surfaces,
 not camera location. Fixed exposure is the default; automatic eye adaptation

@@ -1,0 +1,237 @@
+{
+  "sourceCommit": "88f30d257ce33b469c0e40c6dc65417e8c956796",
+  "url": "file:///Users/danghoang/Desktop/giaoxuthachbi_work/Thach_Bi_Viewer/OPEN_CHURCH.html?graphics=light",
+  "readyMs": 2921,
+  "cpuRate": 4,
+  "scenarios": [
+    {
+      "lighting": "day",
+      "movement": "idle",
+      "frames": 150,
+      "medianMs": 33.299999713897705,
+      "p95Ms": 35.60000038146973,
+      "renderCpuMedianMs": 24.299999713897705,
+      "shadowRefreshes": 0,
+      "renderer": {
+        "frame": 452,
+        "calls": 779,
+        "triangles": 1747938,
+        "points": 246,
+        "lines": 0,
+        "batchedMeshes": 136
+      },
+      "memory": {
+        "geometries": 251,
+        "textures": 129
+      },
+      "jsHeapBytes": 392705721,
+      "canvas": [
+        640,
+        400
+      ],
+      "performance": {
+        "mode": "low",
+        "pixelRatio": 0.5,
+        "automaticReductions": 0,
+        "idleMaxFps": 30
+      },
+      "lights": {
+        "emitters": 194,
+        "points": 4,
+        "spots": 6,
+        "shadows": 0,
+        "persistent": 184,
+        "culled": 0
+      },
+      "grid": {
+        "count": 184,
+        "capacity": 256,
+        "grid": {
+          "average": 66.4142561983471,
+          "max": 86,
+          "sources": 194,
+          "bytes": 4026880
+        },
+        "gridBuilds": 1
+      },
+      "position": [
+        8,
+        1.6,
+        0
+      ],
+      "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M1 Pro, Unspecified Version)"
+    },
+    {
+      "lighting": "day",
+      "movement": "walk",
+      "frames": 179,
+      "medianMs": 28,
+      "p95Ms": 31,
+      "renderCpuMedianMs": 24,
+      "shadowRefreshes": 0,
+      "renderer": {
+        "frame": 633,
+        "calls": 648,
+        "triangles": 1721852,
+        "points": 246,
+        "lines": 0,
+        "batchedMeshes": 136
+      },
+      "memory": {
+        "geometries": 251,
+        "textures": 129
+      },
+      "jsHeapBytes": 398519860,
+      "canvas": [
+        640,
+        400
+      ],
+      "performance": {
+        "mode": "low",
+        "pixelRatio": 0.5,
+        "automaticReductions": 0,
+        "idleMaxFps": 30
+      },
+      "lights": {
+        "emitters": 194,
+        "points": 4,
+        "spots": 6,
+        "shadows": 0,
+        "persistent": 184,
+        "culled": 0
+      },
+      "grid": {
+        "count": 184,
+        "capacity": 256,
+        "grid": {
+          "average": 66.4142561983471,
+          "max": 86,
+          "sources": 194,
+          "bytes": 4026880
+        },
+        "gridBuilds": 1
+      },
+      "position": [
+        15.069580000000023,
+        1.6,
+        0
+      ],
+      "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M1 Pro, Unspecified Version)"
+    },
+    {
+      "lighting": "evening",
+      "movement": "idle",
+      "frames": 150,
+      "medianMs": 33.30000019073486,
+      "p95Ms": 35.40000009536743,
+      "renderCpuMedianMs": 24.40000009536743,
+      "shadowRefreshes": 0,
+      "renderer": {
+        "frame": 1079,
+        "calls": 779,
+        "triangles": 1747938,
+        "points": 246,
+        "lines": 0,
+        "batchedMeshes": 136
+      },
+      "memory": {
+        "geometries": 251,
+        "textures": 129
+      },
+      "jsHeapBytes": 406434317,
+      "canvas": [
+        640,
+        400
+      ],
+      "performance": {
+        "mode": "low",
+        "pixelRatio": 0.5,
+        "automaticReductions": 0,
+        "idleMaxFps": 30
+      },
+      "lights": {
+        "emitters": 194,
+        "points": 4,
+        "spots": 6,
+        "shadows": 0,
+        "persistent": 184,
+        "culled": 0
+      },
+      "grid": {
+        "count": 184,
+        "capacity": 256,
+        "grid": {
+          "average": 66.4142561983471,
+          "max": 86,
+          "sources": 194,
+          "bytes": 4026880
+        },
+        "gridBuilds": 1
+      },
+      "position": [
+        8,
+        1.6,
+        0
+      ],
+      "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M1 Pro, Unspecified Version)"
+    },
+    {
+      "lighting": "evening",
+      "movement": "walk",
+      "frames": 178,
+      "medianMs": 28,
+      "p95Ms": 31.200000286102295,
+      "renderCpuMedianMs": 24.09999990463257,
+      "shadowRefreshes": 0,
+      "renderer": {
+        "frame": 1257,
+        "calls": 652,
+        "triangles": 1723724,
+        "points": 246,
+        "lines": 0,
+        "batchedMeshes": 136
+      },
+      "memory": {
+        "geometries": 251,
+        "textures": 129
+      },
+      "jsHeapBytes": 404097599,
+      "canvas": [
+        640,
+        400
+      ],
+      "performance": {
+        "mode": "low",
+        "pixelRatio": 0.5,
+        "automaticReductions": 0,
+        "idleMaxFps": 30
+      },
+      "lights": {
+        "emitters": 194,
+        "points": 4,
+        "spots": 6,
+        "shadows": 0,
+        "persistent": 184,
+        "culled": 0
+      },
+      "grid": {
+        "count": 184,
+        "capacity": 256,
+        "grid": {
+          "average": 66.4142561983471,
+          "max": 86,
+          "sources": 194,
+          "bytes": 4026880
+        },
+        "gridBuilds": 1
+      },
+      "position": [
+        14.999720000000032,
+        1.6,
+        0
+      ],
+      "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M1 Pro, Unspecified Version)"
+    }
+  ],
+  "errors": []
+}
