@@ -182,16 +182,27 @@
     }
     const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(positions, 3)); geo.setIndex(indices); geo.computeBoundingSphere(); return geo;
   }
-  function disposeRuns() {
-    for (const o of objects.values()) { o.removeFromParent(); o.geometry.dispose(); o.material.dispose(); }
-    objects.clear();
-  }
   function rebuild() {
     if (!layer) return;
-    routes = makeRoutes(); disposeRuns();
+    clearTimeout(rebuildTimer);
+    routes = makeRoutes();
+    const keep = new Set();
     for (const route of routes) {
-      const mesh = new T.Mesh(pipeGeometry(route.points, route.role === 'feeder' ? 0.032 : 0.024), new T.MeshBasicMaterial({ color: route.color }));
-      mesh.name = 'Electrical · ' + route.name; mesh.userData.electricalId = route.id; layer.add(mesh); objects.set(route.id, mesh);
+      keep.add(route.id);
+      const radius = route.role === 'feeder' ? 0.032 : 0.024;
+      const shape = JSON.stringify([radius, route.points]);
+      let mesh = objects.get(route.id);
+      if (!mesh) {
+        mesh = new T.Mesh(pipeGeometry(route.points, radius), new T.MeshBasicMaterial({ color: route.color }));
+        mesh.userData.electricalId = route.id; layer.add(mesh); objects.set(route.id, mesh);
+      } else if (mesh.userData.routeShape !== shape) {
+        mesh.geometry.dispose(); mesh.geometry = pipeGeometry(route.points, radius);
+      }
+      mesh.name = 'Electrical · ' + route.name;
+      mesh.userData.routeShape = shape; mesh.material.color.set(route.color);
+    }
+    for (const [id, mesh] of objects) if (!keep.has(id)) {
+      mesh.removeFromParent(); mesh.geometry.dispose(); mesh.material.dispose(); objects.delete(id);
     }
     if (view.selected && !routes.some(r => r.id === view.selected) && !SOURCES[view.selected]) view.selected = null;
     for (const fx of SIM.fixtures.values()) fx.root.visible = SIM.fixtureVisible(fx.item) && (view.mode !== 'systems' || wired(fx.item));

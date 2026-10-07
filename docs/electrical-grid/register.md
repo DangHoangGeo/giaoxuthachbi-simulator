@@ -27,6 +27,15 @@ The category workbooks are the editable engineering registers; the paired [layou
 
 ## Refresh from the recommended model
 
+The performance review on 7 October 2026 corrected a verification/export side
+effect for equipment `L3` (Reading light · axis 3 · B central). Its temporary move
+test now restores the pendant anchor as well as XYZ before exporting. The actual
+model anchor remains +8.590 m; the prior snapshot incorrectly retained +10.394880 m.
+Route `drop:LC1:L1:light:-1:L3` is refreshed to the existing beam connection, with
+7.005 m drawn length instead of 8.391731 m. Quantities and IDs do not change. This
+is an export correction, not a newly approved route. See the
+[performance review](../../review/performance-2026-10-07/README.md).
+
 Run from the repository root:
 
 ```sh

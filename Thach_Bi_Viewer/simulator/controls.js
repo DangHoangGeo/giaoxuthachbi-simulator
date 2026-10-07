@@ -141,26 +141,28 @@
     const el = e.target.closest('[data-act]');
     if (!el) return;
     const c = el.dataset.circuit;
-    switch (el.dataset.act) {
-      case 'close': setOpen(false); toggle.focus(); return;
-      case 'scene': SIM.applyScene(el.dataset.scene); break;
-      case 'breaker': if (blocked(c)) return; { const on = !items(c).some(i => i.on); setCircuit(c, on); SIM.commit((on ? 'Switch on ' : 'Switch off ') + SIM.CIRCUITS[c].label); } break;
-      case 'towers': if (!fed()) return; { const want = TOWERS[el.dataset.mode]; for (const x of ['L6', 'L7', 'L9']) setCircuit(x, want.includes(x)); SIM.commit('Towers: ' + el.dataset.mode); } break;
-      case 'feeder': {
-        const st = SIM.state.settings, was = fed();
-        if (was) { st.db2Memory = {}; for (const x of sub()) for (const i of items(x)) { st.db2Memory[i.id] = i.on; SIM.update(i.id, { on: false }, { record: false }); } }
-        else for (const x of sub()) for (const i of items(x)) SIM.update(i.id, { on: !!st.db2Memory?.[i.id] }, { record: false });
-        st.db2Feed = !was; SIM.commit(was ? 'DB-2 feeder off' : 'DB-2 feeder on'); break;
+    SIM.batch(() => {
+      switch (el.dataset.act) {
+        case 'close': setOpen(false); toggle.focus(); return;
+        case 'scene': SIM.applyScene(el.dataset.scene); break;
+        case 'breaker': if (blocked(c)) return; { const on = !items(c).some(i => i.on); setCircuit(c, on); SIM.commit((on ? 'Switch on ' : 'Switch off ') + SIM.CIRCUITS[c].label); } break;
+        case 'towers': if (!fed()) return; { const want = TOWERS[el.dataset.mode]; for (const x of ['L6', 'L7', 'L9']) setCircuit(x, want.includes(x)); SIM.commit('Towers: ' + el.dataset.mode); } break;
+        case 'feeder': {
+          const st = SIM.state.settings, was = fed();
+          if (was) { st.db2Memory = {}; for (const x of sub()) for (const i of items(x)) { st.db2Memory[i.id] = i.on; SIM.update(i.id, { on: false }, { record: false }); } }
+          else for (const x of sub()) for (const i of items(x)) SIM.update(i.id, { on: !!st.db2Memory?.[i.id] }, { record: false });
+          st.db2Feed = !was; SIM.commit(was ? 'DB-2 feeder off' : 'DB-2 feeder on'); break;
+        }
+        case 'speed': {
+          if (blocked(c)) return;
+          const next = Number(el.dataset.speed);
+          for (const i of items(c)) SIM.update(i.id, next ? { on: true, speed: Math.min(next, CAT.byId[i.type].fan.speeds.length) } : { on: false }, { record: false });
+          SIM.commit(`${SIM.CIRCUITS[c].label}: speed ${next}`); break;
+        }
+        case 'mute': if (blocked(c)) return; { const on = !items(c).some(i => i.on); for (const i of items(c)) SIM.update(i.id, { on }, { record: false }); SIM.commit((on ? 'Unmute ' : 'Mute ') + c); } break;
+        default: return;
       }
-      case 'speed': {
-        if (blocked(c)) return;
-        const next = Number(el.dataset.speed);
-        for (const i of items(c)) SIM.update(i.id, next ? { on: true, speed: Math.min(next, CAT.byId[i.type].fan.speeds.length) } : { on: false }, { record: false });
-        SIM.commit(`${SIM.CIRCUITS[c].label}: speed ${next}`); break;
-      }
-      case 'mute': if (blocked(c)) return; { const on = !items(c).some(i => i.on); for (const i of items(c)) SIM.update(i.id, { on }, { record: false }); SIM.commit((on ? 'Unmute ' : 'Mute ') + c); } break;
-      default: return;
-    }
+    });
     sync();
   });
   root.addEventListener('keydown', e => {
@@ -178,7 +180,7 @@
     if (!f || blocked(f.dataset.circuit)) return;
     // Move the whole zone; each loudspeaker keeps its own tuned offset.
     const l = items(f.dataset.circuit), v = Number(f.value), avg = l.reduce((t, i) => t + (i.level ?? 0), 0) / (l.length || 1);
-    for (const i of l) SIM.update(i.id, { level: Math.max(-30, Math.min(6, (i.level ?? 0) + v - avg)) }, { record: false });
+    SIM.batch(() => { for (const i of l) SIM.update(i.id, { level: Math.max(-30, Math.min(6, (i.level ?? 0) + v - avg)) }, { record: false }); });
     SIM.commit(`${f.dataset.circuit} level ${f.value} dB`); sync();
   });
 

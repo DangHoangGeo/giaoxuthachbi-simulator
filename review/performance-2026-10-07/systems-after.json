@@ -1,0 +1,11 @@
+{
+  "items": 32,
+  "notifications": 1,
+  "controlsMs": 0.5999999046325684,
+  "routeMs": 3.5999999046325684,
+  "replacedRouteGeometries": 0,
+  "fixtureRebuilds": 20,
+  "disposedGlowMaterials": 20,
+  "beforeProgramUsers": 498,
+  "afterProgramUsers": 497
+}

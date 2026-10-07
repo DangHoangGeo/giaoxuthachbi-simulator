@@ -501,7 +501,7 @@
   function onInput(e) {
     const t = e.target;
     if (t.dataset.act === 'circuit-dim') {
-      for (const it of SIM.state.items) if (it.circuit === t.dataset.circuit && CAT.byId[it.type].light) SIM.update(it.id, { dim: t.value / 100, on: t.value > 0 }, { record: false });
+      SIM.batch(() => { for (const it of SIM.state.items) if (it.circuit === t.dataset.circuit && CAT.byId[it.type].light) SIM.update(it.id, { dim: t.value / 100, on: t.value > 0 }, { record: false }); });
       t.title = `Dim level ${t.value} %`;
       return;
     }
@@ -540,7 +540,7 @@
     }
     if (t.dataset.act === 'toggle') { const it = itemFromEvent(e); SIM.update(it.id, { on: t.checked, hidden: t.checked ? false : it.hidden }); return; }
     if (t.dataset.act === 'circuit') {
-      for (const it of SIM.state.items) if (it.circuit === t.dataset.circuit && !it.hidden) SIM.update(it.id, { on: t.checked, ...(t.checked && CAT.byId[it.type].light && !(it.dim > 0) ? { dim: 1 } : {}) }, { record: false });
+      SIM.batch(() => { for (const it of SIM.state.items) if (it.circuit === t.dataset.circuit && !it.hidden) SIM.update(it.id, { on: t.checked, ...(t.checked && CAT.byId[it.type].light && !(it.dim > 0) ? { dim: 1 } : {}) }, { record: false }); });
       SIM.commit((t.checked ? 'Switch on ' : 'Switch off ') + (SIM.CIRCUITS[t.dataset.circuit]?.label || t.dataset.circuit));
       return;
     }

@@ -93,3 +93,42 @@ so the original 136 architectural material batches were retained.
 remain explicitly unmet: low ambo/altar feedback margins, wing speech clarity,
 some lighting locations and the documented ventilation/sightline limitations.
 No physics formula, sample set, threshold, equipment layout or route export changed.
+
+## Equipment lifecycle and interaction
+
+[Before](systems-before.json) and [after](systems-after.json) work counts for a
+32-light circuit: **64 → 1** item notifications, **329 → 0** route geometries replaced.
+All 20 discarded glow materials are now disposed during 20 forced fixture rebuilds
+(previously zero). These are work/resource counts; sub-millisecond control timing
+samples are not a reliable user-facing speedup claim.
+
+The audit retains 43 active prototypes and at most 32 unused variants after
+continuous edits/placement previews, with the primitive cache capped at 256. It
+protects every live/shared/preview buffer while evicting unused variants. Fixture
+values, route geometry and fan world positions remain checked against the source.
+Undo, redo, nested/interrupted transactions and display/physical invalidation pass.
+
+[Browser interaction checks](controls/checks.json) pass light circuit toggles,
+fan speed and blade motion, zone mute/fader, systems isolation, moving/dimming a
+fixture, deleting another and retaining the exact inputs through reload/import.
+Inspected [sound controls](controls/sound-controls.jpg) and [systems view](controls/systems.jpg).
+No page or console errors were recorded.
+
+The new undo check exposed an old electrical test side effect: temporary movement
+of equipment `L3` restored XYZ but retained a recomputed roof anchor. The test now
+restores its original +8.590 m beam anchor too. Fresh exports correct the single
+route `drop:LC1:L1:light:-1:L3` to 7.005 m (previous export 8.391731 m). The default
+viewer already used the correct anchor; no equipment was relocated. Both JSON
+snapshots, the flat CSV, all six category workbooks and their summary/manifest are
+refreshed together. Entered fields, quantities and IDs are retained. The rendering
+default in the snapshot changes from balanced to fast. Plan geometry is unchanged.
+
+[Register workflow checks](register-workflow.log) pass input preservation,
+retirement, draft-coordinate validation, formulas and every route length. The
+[saved workbook comparison](register-diff.json) confirms that all styles remain
+identical. The five unaffected categories change only their three source metadata
+cells. Lighting additionally corrects Equipment `AC9`, Electrical Lines `I10` and
+the affected route vertices/segment lengths. Inspected the saved
+[line length](register-line.png) and [route points](register-points.png).
+The [full calculation audit](simulator-resources.log) has exactly the same numeric
+summary and unmet design targets as the original baseline.

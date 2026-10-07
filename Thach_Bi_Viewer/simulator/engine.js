@@ -21,7 +21,10 @@
   const fixtures = new Map();
   const matLib = {};
   const protoCache = new Map();
-  let Kit, simGroup, proxyGroup, haloPoints, overlayGroup, selectionHelper, ghost = null;
+  const UNUSED_PROTOTYPE_LIMIT = 32;
+  let batchDepth = 0, batchDirty = false, batchItems = false;
+  const batchIds = new Set();
+  let Kit, simGroup, proxyGroup, haloPoints, overlayGroup, selectionHelper, ghost = null, ghostPrototype = null;
   let proxies = [], pool = null, trussBatch = null, proposedTruss = null;
   let drawnFrame = null, referenceFrame = null, frameBatches = {};
   let lightDirty = true, analysisDirty = true, saveTimer = 0, analysisTimer = 0;
@@ -99,7 +102,7 @@
     prepare, bindBatches, start, frame, CIRCUITS, BOARDS, QUALITY, state, fixtures,
     get ready() { return ready; }, get church() { return church; }, get THREE() { return T; },
     on(evt, fn) { (handlers[evt] ||= new Set()).add(fn); return () => handlers[evt].delete(fn); },
-    emit, item: id => state.items.find(i => i.id === id), typeOf: it => CAT.byId[it.type],
+    emit, batch, item: id => state.items.find(i => i.id === id), typeOf: it => CAT.byId[it.type],
     add: addItem, update: updateItem, remove: removeItem, duplicate: duplicateItem, mirror: mirrorItem,
     repeatBays: repeatAlongBays, select, beginPlacement, cancelPlacement, undo, redo, commit,
     setSetting, applyScene, saveNow, exportLayout, importLayout, resetDesign, exportSchedule,
@@ -107,7 +110,29 @@
     room: roomModel, floorY, structureAbove, seats: () => GEO.seats, markDirty, focusItem,
     powerSummary, setOverlay, worldFrame, refreshSeating, fixtureVisible
   };
-  function emit(evt, data) { for (const fn of handlers[evt] || []) { try { fn(data); } catch (e) { console.error(e); } } }
+  function emit(evt, data) {
+    if (evt === 'items' && batchDepth) {
+      batchItems = true;
+      if (data?.id) batchIds.add(data.id);
+      return;
+    }
+    for (const fn of handlers[evt] || []) { try { fn(data); } catch (e) { console.error(e); } }
+  }
+  // Synchronous transactions: every fixture updates immediately, then consumers
+  // see one complete state. History/commit boundaries remain the caller's choice.
+  function batch(fn) {
+    batchDepth++;
+    try { return fn(); }
+    finally {
+      if (--batchDepth === 0) {
+        const dirty = batchDirty, items = batchItems, ids = [...batchIds];
+        batchDirty = batchItems = false; batchIds.clear();
+        if (dirty) markDirty();
+        if (items) emit('items', { id: ids.length === 1 ? ids[0] : undefined, ids });
+        prunePrototypes();
+      }
+    }
+  }
 
   /* ------------------------------------------------------- church geometry */
   const GEO = { axes: {}, columns: [], mainBeams: [], sideBeams: [], walls: [], seats: [], seatsByLayout: {} };
@@ -636,7 +661,11 @@
   /* ------------------------------------------------------ fixture models */
   function prototypeFor(type, params) {
     const key = type.id + '|' + JSON.stringify(params || {});
-    if (protoCache.has(key)) return protoCache.get(key);
+    if (protoCache.has(key)) {
+      const proto = protoCache.get(key);
+      protoCache.delete(key); protoCache.set(key, proto); // most recently used
+      return proto;
+    }
     const k = Kit();
     type.build(k, { params: params || {} });
     const groups = {};
@@ -656,6 +685,20 @@
     const proto = { groups, pivots: k.pivots, rotorAxis: k.rotorAxis, glows: k.glows || [], bounds };
     protoCache.set(key, proto);
     return proto;
+  }
+  function activePrototypes() {
+    const active = new Set([...fixtures.values()].map(fx => fx.proto));
+    if (ghostPrototype) active.add(ghostPrototype);
+    return active;
+  }
+  function prunePrototypes(protectedPrototype) {
+    const active = activePrototypes();
+    if (protectedPrototype) active.add(protectedPrototype);
+    const unused = [...protoCache].filter(([, proto]) => !active.has(proto));
+    for (const [key, proto] of unused.slice(0, Math.max(0, unused.length - UNUSED_PROTOTYPE_LIMIT))) {
+      for (const group of Object.values(proto.groups)) for (const part of group) part.geo.dispose();
+      protoCache.delete(key);
+    }
   }
   function pivotWorld(k, name) {
     const add = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
@@ -688,6 +731,8 @@
     build() {
       const { type, item } = this;
       this.root.clear();
+      this.glowMat?.dispose();
+      this.stem = this.canopy = null;
       const proto = this.proto = prototypeFor(type, item.params);
       const glowKind = GLOW[type.glow] ? type.glow : 'warm';
       this.glowMat = new T.MeshBasicMaterial({ color: 0x000000 });
@@ -721,6 +766,7 @@
       }
       this.glows = proto.glows.map(g => ({ ...g, world: new T.Vector3() }));
       this.update();
+      prunePrototypes(proto); // also protects a constructor not in fixtures yet
     }
     group(name) { return name === 'head' ? this.head : name === 'rotor' ? this.rotor : name === 'osc' ? this.osc : this.root; }
     update() {
@@ -1229,7 +1275,6 @@
     syncCollider(it);
     markDirty(it);
     if (record) commit('Edit ' + it.name);
-    emit('items', { id });
     return it;
   }
   function removeItem(id, { record = true } = {}) {
@@ -1238,6 +1283,7 @@
     const [it] = state.items.splice(i, 1);
     fixtures.get(id)?.dispose();
     fixtures.delete(id);
+    if (!batchDepth) prunePrototypes();
     syncCollider({ id, hidden: true });
     if (state.selectedId === id) select(null);
     markDirty(it);
@@ -1310,6 +1356,11 @@
   }
 
   function markDirty(it) {
+    if (batchDepth) {
+      batchDirty = true;
+      if (it) emit('items', { id: it.id });
+      return;
+    }
     // Object edits can move/hide a caster. Camera-only pool reassignment cannot.
     if (ctx?.renderer) ctx.renderer.shadowMap.needsUpdate = true;
     window.CHURCH_PERFORMANCE?.invalidate();
@@ -1334,15 +1385,17 @@
     emit('history');
   }
   function restore(items) {
-    for (const fx of fixtures.values()) fx.dispose();
-    fixtures.clear();
-    for (const [id] of colliderById) syncCollider({ id, hidden: true });
-    state.items = [];
-    for (const raw of JSON.parse(items)) { const it = normalizeItem(raw); if (it) { state.items.push(it); instantiate(it); } }
-    lastSnapshot = snapshot();
-    if (state.selectedId && !SIM.item(state.selectedId)) select(null);
-    markDirty();
-    emit('items', {});
+    batch(() => {
+      for (const fx of fixtures.values()) fx.dispose();
+      fixtures.clear();
+      for (const [id] of colliderById) syncCollider({ id, hidden: true });
+      state.items = [];
+      for (const raw of JSON.parse(items)) { const it = normalizeItem(raw); if (it) { state.items.push(it); instantiate(it); } }
+      lastSnapshot = snapshot();
+      if (state.selectedId && !SIM.item(state.selectedId)) select(null);
+      markDirty();
+      emit('items', {});
+    });
   }
   function undo() {
     const h = state.history.pop();
@@ -1527,9 +1580,14 @@
     if (['lensDeg', 'eyeHeight', 'walkSpeed'].includes(key)) applyCamera();
     if (['occupancy', 'openings', 'roofFinish', 'entranceFinish', 'tempC', 'rh'].includes(key)) roomCache = null;
     if (key === 'roofFinish') applyRoofFinish();
-    lightDirty = true; analysisDirty = true;
-    clearTimeout(analysisTimer);
-    analysisTimer = setTimeout(() => emit('analysis-needed'), 120);
+    lightDirty = true;
+    window.CHURCH_PERFORMANCE?.invalidate();
+    const displayOnly = ['adaptLux', 'autoExposure', 'quality', 'autoQuality', 'halos', 'lensDeg', 'eyeHeight', 'walkSpeed', 'showTruss', 'timberTone', 'snap', 'edit'].includes(key);
+    if (!displayOnly) {
+      analysisDirty = true;
+      clearTimeout(analysisTimer);
+      analysisTimer = setTimeout(() => emit('analysis-needed'), 120);
+    }
     scheduleSave();
     emit('settings', { key, value });
   }
@@ -1628,7 +1686,7 @@
     emit('select', state.selectedId);
   }
   function updateSelectionHelper() {
-    if (selectionHelper) { selectionHelper.removeFromParent(); selectionHelper.geometry.dispose(); selectionHelper = null; }
+    if (selectionHelper) { selectionHelper.removeFromParent(); selectionHelper.geometry.dispose(); selectionHelper.material.dispose(); selectionHelper = null; }
     const fx = fixtures.get(state.selectedId);
     if (!fx) return;
     const pts = [];
@@ -1775,19 +1833,24 @@
     if (!type) return false;
     placing = { type, preset };
     const proto = prototypeFor(type, preset.params || Object.fromEntries(Object.entries(type.params || {}).map(([k, p]) => [k, p.value])));
+    ghostPrototype = proto;
     ghost = new T.Group();
+    ghost.name = 'Simulator placement preview';
     for (const list of Object.values(proto.groups)) for (const { geo } of list) {
       const m = new T.Mesh(geo, new T.MeshBasicMaterial({ color: 0x46c38a, transparent: true, opacity: 0.45, depthTest: false }));
       m.renderOrder = 11; ghost.add(m);
     }
     ghost.visible = false;
     ctx.scene.add(ghost);
+    prunePrototypes();
     document.body.classList.add('sim-is-placing');
     emit('placing', type);
     return true;
   }
   function cancelPlacement() {
     if (ghost) { ghost.removeFromParent(); ghost.traverse(o => o.material?.dispose?.()); ghost = null; }
+    ghostPrototype = null;
+    prunePrototypes();
     if (placing) { placing = null; document.body.classList.remove('sim-is-placing'); emit('placing', null); }
   }
   function installPointer() {
@@ -2003,7 +2066,10 @@
         if (fx.osc && f.oscillate && it.oscillate !== false && running) {
           fx.oscPhase = (fx.oscPhase || 0) + (dt || 0) * 2 * Math.PI / 12;
           fx.oscAngle = Math.sin(fx.oscPhase) * (f.sweepDeg / 2) * DEG;
-          fx.update();
+          const yawRel = (it.yaw ?? 0) * DEG - (it.mountYaw ?? it.yaw ?? 0) * DEG;
+          fx.osc.rotation.y = -(yawRel + fx.oscAngle);
+          fx.osc.updateMatrixWorld(true);
+          for (const g of fx.glows) g.world.set(...g.p).applyMatrix4(fx.group(g.group).matrixWorld);
         }
       }
       if (fx.type.flicker && fx.lit()) fx.flicker = 0.88 + 0.12 * Math.abs(Math.sin(timeNow * 13.1 + fx.root.id) * Math.sin(timeNow * 7.3 + fx.root.id * 0.7));
@@ -2025,6 +2091,12 @@
   SIM.overlayGroup = () => overlayGroup;
   SIM.GEO = GEO;
   SIM.poolStats = () => pool?.stats || null;
+  SIM.resourceStats = () => {
+    const active = activePrototypes();
+    return { prototypes: protoCache.size, activePrototypes: active.size,
+      unusedPrototypes: [...protoCache.values()].filter(p => !active.has(p)).length,
+      unusedPrototypeLimit: UNUSED_PROTOTYPE_LIMIT, primitiveGeometries: Kit?.cacheSize() };
+  };
   SIM.ambient = () => ({ indirectLux: ambientNow, adaptLux: adaptNow, inside: cameraInside, env: envMode });
   SIM.pickFixture = ev => pickFixture(rayFromEvent(ev));
   SIM.resolvePlacement = (typeId, ev) => resolvePlacement(CAT.byId[typeId], rayFromEvent(ev));

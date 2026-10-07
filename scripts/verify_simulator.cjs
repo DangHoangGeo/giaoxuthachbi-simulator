@@ -127,7 +127,7 @@ assert.equal(interior.lights.length, 0, 'legacy interior lights replaced');
 
 // --- Start with a stub viewer API ------------------------------------------
 const camera = new T.PerspectiveCamera(50, 1.6, 0.05, 500); camera.position.set(20, 1.6, 0);
-const church = { scene: sandbox.window.model.scene, colliders: [], walkCamera: { aspect: 1.6, fov: 68, updateProjectionMatrix() {} }, walk: { eyeHeight: 1.65, speed: 2.05 }, places: {}, goTo() {}, setMode() {}, uiState: () => ({ roof: true }), camera, controls: { target: new T.Vector3(), update() {} } };
+const church = { scene: sandbox.window.model.scene, renderer: sandbox.window.model.renderer, colliders: [], walkCamera: { aspect: 1.6, fov: 68, updateProjectionMatrix() {} }, walk: { eyeHeight: 1.65, speed: 2.05 }, places: {}, goTo() {}, setMode() {}, uiState: () => ({ roof: true }), camera, controls: { target: new T.Vector3(), update() {} } };
 SIM.start(church);
 assert(SIM.ready, 'simulator started');
 assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.items.length);
@@ -325,7 +325,9 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
     for (let p = o; p; p = p.parent) if (p === E.layer || p.userData.simId) return;
     before.set(o, o.visible);
   });
+  church.renderer.shadowMap.needsUpdate = false;
   E.setMode('systems');
+  assert(church.renderer.shadowMap.needsUpdate, 'systems isolation invalidates cached building shadows');
   assert(E.layer.visible, 'wires survive isolation');
   for (const fx of SIM.fixtures.values()) assert.equal(fx.root.visible, !fx.item.hidden && data.components.some(c => c.id === fx.item.id), 'isolation excludes hidden and non-electrical fixtures');
   const board = E.SOURCES.DB1;
@@ -333,11 +335,13 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   E.select('DB1'); assert.equal(E.view.selected, 'DB1', 'physical board can be selected');
   const drop = runs.find(r => r.role === 'drop'); E.select(drop.id);
   assert.equal(E.view.selected, drop.id, 'individual run can be selected');
-  const fixture = SIM.item(drop.itemIds[0]), oldPosition = fixture.pos.slice();
+  const fixture = SIM.item(drop.itemIds[0]), oldPosition = fixture.pos.slice(), oldAnchor = fixture.anchorY;
   SIM.update(fixture.id, { pos: [oldPosition[0] + 0.1, oldPosition[1], oldPosition[2]] }, { record: false }); E.rebuild();
   assert(near(E.routes.find(r => r.id === drop.id).points.at(-1), fixture.pos), 'routes follow edited fixtures with stable IDs');
-  SIM.update(fixture.id, { pos: oldPosition }, { record: false }); E.rebuild();
+  SIM.update(fixture.id, { pos: oldPosition, anchorY: oldAnchor }, { record: false }); E.rebuild();
+  church.renderer.shadowMap.needsUpdate = false;
   E.setMode('building');
+  assert(church.renderer.shadowMap.needsUpdate, 'restoring the building invalidates cached shadows');
   for (const [o, v] of before) assert.equal(o.visible, v, 'building visibility restored: ' + o.name);
   assert([...SIM.fixtures.values()].filter(f => f.item.hidden).every(f => !f.root.visible), 'restoring building does not reveal hidden alternatives');
   E.select('AV1'); assert.equal(E.view.selected, 'AV1', 'audio rack selectable');
@@ -361,6 +365,82 @@ for (const t of CAT.types) {
   const it = SIM.add({ type: t.id, pos: [20, 1, 0], mount: t.mounts[0], anchorY: 8.59 }, { record: false });
   assert(it, 'catalogue item builds: ' + t.id);
   SIM.remove(it.id, { record: false });
+}
+// Repeated edits must release owned resources and leave active/shared geometry intact.
+{
+  const baseline = JSON.stringify(SIM.state.items), history = SIM.state.history.length;
+  const ids = SIM.state.items.filter(it => it.circuit === 'L1' && !it.hidden).slice(0, 3).map(it => it.id);
+  let events = 0;
+  const stopEvents = SIM.on('items', () => events++);
+  SIM.update(ids[0], { dim: .73 }, { record: false });
+  assert.equal(events, 1, 'one item edit emits one notification');
+  events = 0;
+  SIM.batch(() => {
+    SIM.update(ids[0], { dim: .77 }, { record: false });
+    SIM.batch(() => { for (const id of ids.slice(1)) SIM.update(id, { dim: .77 }, { record: false }); });
+    assert.equal(events, 0, 'batch consumers cannot see a half-updated circuit');
+    SIM.commit('Performance transaction test');
+  });
+  assert.equal(events, 1, 'nested batch emits one complete state');
+  assert.equal(SIM.state.history.length, history + 1, 'one circuit action keeps one history entry');
+  events = 0; SIM.undo();
+  assert.equal(events, 1, 'undo restores a layout in one notification');
+  assert.deepEqual(JSON.parse(JSON.stringify(SIM.state.items)), JSON.parse(baseline), 'undo preserves every prior item field');
+  SIM.redo(); assert(ids.every(id => SIM.item(id).dim === .77), 'redo reapplies the whole circuit');
+  SIM.undo();
+  events = 0;
+  assert.throws(() => SIM.batch(() => { SIM.update(ids[0], { dim: .5 }, { record: false }); throw Error('interrupted transaction'); }), /interrupted/);
+  assert.equal(events, 1, 'an interrupted batch flushes its actual state');
+  SIM.update(ids[0], JSON.parse(baseline).find(it => it.id === ids[0]), { record: false });
+  stopEvents();
+
+  const original = SIM.fixtures.get(ids[0]);
+  let glowsDisposed = 0;
+  original.glowMat.addEventListener('dispose', () => glowsDisposed++);
+  SIM.update(ids[0], {}, { record: false, rebuild: true });
+  assert.equal(glowsDisposed, 1, 'rebuilding a fixture disposes its old glow material');
+  SIM.select(ids[0]);
+  const helper = church.scene.getObjectByName('Simulator selection');
+  let helperMaterials = 0; helper.material.addEventListener('dispose', () => helperMaterials++);
+  SIM.select(null); assert.equal(helperMaterials, 1, 'deselecting releases the helper material');
+
+  const a = SIM.add({ type: 'carpet', pos: [20, 0, 0], params: { length: 6 } }, { record: false });
+  const b = SIM.add({ type: 'carpet', pos: [24, 0, 0], params: { length: 6 } }, { record: false });
+  const shared = SIM.fixtures.get(a.id).proto;
+  assert.equal(SIM.fixtures.get(b.id).proto, shared, 'matching fixtures share prototype buffers');
+  let liveDisposals = 0, retiredDisposals = 0;
+  for (const group of Object.values(shared.groups)) for (const part of group) part.geo.addEventListener('dispose', () => liveDisposals++);
+  SIM.beginPlacement('carpet', { params: { length: 5.01 } });
+  let previewDisposals = 0;
+  church.scene.getObjectByName('Simulator placement preview').traverse(o => o.geometry?.addEventListener('dispose', () => previewDisposals++));
+  SIM.update(b.id, { params: { length: 6.01 } }, { record: false });
+  for (const group of Object.values(SIM.fixtures.get(b.id).proto.groups)) for (const part of group) part.geo.addEventListener('dispose', () => retiredDisposals++);
+  for (let i = 0; i < 100; i++) SIM.update(b.id, { params: { length: 7 + i * .1 } }, { record: false });
+  assert.equal(liveDisposals, 0, 'cache eviction never disposes a live prototype');
+  assert.equal(previewDisposals, 0, 'cache eviction protects an active placement preview');
+  SIM.cancelPlacement();
+  assert(retiredDisposals > 0, 'old unused variants release their geometry');
+  assert(SIM.resourceStats().unusedPrototypes <= SIM.resourceStats().unusedPrototypeLimit, 'unused fixture prototypes are bounded');
+  SIM.update(b.id, { params: { length: 6 } }, { record: false });
+  assert.equal(SIM.fixtures.get(b.id).proto, shared, 'a shared active prototype remains reusable');
+  SIM.remove(a.id, { record: false }); SIM.remove(b.id, { record: false });
+  for (let i = 0; i < 70; i++) SIM.beginPlacement('carpet', { params: { length: 20 + i * .1 } });
+  SIM.cancelPlacement();
+  assert(SIM.resourceStats().unusedPrototypes <= SIM.resourceStats().unusedPrototypeLimit, 'cancelled previews also prune unused geometry');
+  const kitFactory = CAT.makeKit(T);
+  for (let i = 0; i < 600; i++) kitFactory().box(1 + i / 1000, 1, 1, 'black');
+  assert(kitFactory.cacheSize() <= 256, 'temporary primitive cache stays bounded under continuous edits');
+  assert.deepEqual(JSON.parse(JSON.stringify(SIM.state.items)), JSON.parse(baseline), 'resource stress test preserves the design layout');
+
+  const E = SIM.electrical; E.rebuild();
+  const shapes = new Map(E.layer.children.filter(o => o.geometry && o.userData.electricalId).map(o => [o.userData.electricalId, o.geometry]));
+  const paths = JSON.stringify(E.routes), oldDim = SIM.item(ids[0]).dim;
+  SIM.update(ids[0], { dim: .2 }, { record: false }); E.rebuild();
+  assert.equal(JSON.stringify(E.routes), paths, 'dimming leaves every route coordinate and length unchanged');
+  for (const o of E.layer.children) if (shapes.has(o.userData.electricalId)) assert.equal(o.geometry, shapes.get(o.userData.electricalId), 'dimming reuses route GPU buffers');
+  assert.equal(SIM.exportLayout().items.find(it => it.id === ids[0]).dim, .2, 'layout export still reads the current dimmer');
+  SIM.update(ids[0], { dim: oldDim }, { record: false }); E.rebuild();
+  console.log(JSON.stringify({ systemResources: 'passed', ...SIM.resourceStats() }));
 }
 for (const it of SIM.state.items) {
   const t = CAT.byId[it.type];
@@ -558,7 +638,22 @@ function runSync(kinds) {
 }
 (async () => {
   await new Promise(r => setTimeout(r, 400));
+  let analysisRequests = 0;
+  const stopAnalysis = SIM.on('analysis-needed', () => analysisRequests++);
+  const oldHalos = SIM.state.settings.halos;
+  SIM.setSetting('halos', .3);
+  await new Promise(r => setTimeout(r, 180));
+  assert.equal(analysisRequests, 0, 'display preferences do not launch full analyses');
+  SIM.setSetting('halos', oldHalos);
+  SIM.setSetting('occupancy', SIM.state.settings.occupancy);
+  await new Promise(r => setTimeout(r, 180));
+  assert.equal(analysisRequests, 1, 'physical settings still invalidate analysis');
+  stopAnalysis();
   SIM.frame(0.016, 'walk', camera);
+  const fanBefore = SIM.fans();
+  for (const fx of SIM.fixtures.values()) if (fx.osc && fx.type.fan?.oscillate) fx.update();
+  const fanAfter = SIM.fans();
+  for (let i = 0; i < fanBefore.length; i++) for (let k = 0; k < 3; k++) assert(Math.abs(fanBefore[i].pos[k] - fanAfter[i].pos[k]) < 1e-12, 'lightweight animation preserves the physical fan source position');
   const gridBuilds = SIM.persistentLighting.stats().gridBuilds;
   sandbox.window.model.renderer.shadowMap.needsUpdate = false;
   const oldCamera = camera.position.clone();

@@ -581,22 +581,22 @@
         ],
         [
           9.975,
-          7.02,
+          6.83,
           -7.36
         ],
         [
           9.975,
-          7.065002717391305,
-          -7.05
+          6.83,
+          -3.6
         ],
         [
           9.975,
-          10.294880434782609,
-          -2.6
+          8.59,
+          -3.6
         ],
         [
           9.975,
-          10.394880434782609,
+          8.59,
           -2.6
         ],
         [
@@ -605,7 +605,7 @@
           -2.6
         ]
       ],
-      "length": 8.3917306647131,
+      "length": 7.005000000000001,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "drawnDiameter": 0.048,
       "drawnDiameterBasis": "Exaggerated visual thickness; not specified cable size"

@@ -73,6 +73,37 @@ tabs stop the main viewer work; resume resets timing. The minimap writes to the 
 only when its displayed position/orientation changes. No animation speed, collision
 rule or analysis threshold is adjusted to make a benchmark pass.
 
+## Equipment edits and controls
+
+Circuit switches, dimmers, fan speed controls and sound faders update their fixtures
+in a synchronous batch, then notify the map, control panels, audio and route layer
+once. A single-item edit also emits once. Undo/import restores the complete layout
+before notifying consumers, preserving the existing history boundaries and saved
+IDs. Display-only settings no longer schedule a full lighting/acoustics/air analysis;
+physical inputs still invalidate it.
+
+Rebuilding a fixture releases its old private glow material and obsolete pendant
+references. Selection outlines release both geometry and material. Live fixtures
+and placement previews protect their shared prototypes; only the oldest unused
+variants are evicted, retaining at most 32 unused prototypes. The copied primitive
+cache retains at most 256 entries. Undo can regenerate an evicted variant from its
+unchanged serialized parameters. Fan oscillation updates its moving hierarchy
+directly; the physical fan source coordinates match the former full-fixture update.
+
+Electrical schedules are recalculated from current inputs, while existing route
+meshes keep their buffers whenever their exact points and displayed radius match.
+Moved/removed equipment still changes/removes its route, with the same stable IDs.
+The measured 32-light circuit action changed from 64 item notifications and 329
+reallocated route geometries to one notification and zero reallocations. Twenty
+forced fixture rebuilds now release all 20 old glow materials.
+
+The simulator audit stress-tests nested/interrupted batches, undo/redo, live and
+preview cache protection, more than 100 geometry edits, material disposal, route
+reuse and unchanged fan source positions. `verify_viewer_controls.cjs` checks real
+browser controls, moving blades, systems isolation and saved move/dim/deletion
+through reload and import. Derived feedback margins are recalculated after reload,
+not treated as user-entered fields.
+
 Run `node scripts/verify_model.cjs` to verify source/batch triangle counts,
 transformed positions, normals, UVs and buffer memory reduction, alongside the
 existing geometry and navigation checks. Run `node scripts/verify_simulator.cjs
@@ -92,10 +123,15 @@ PLAYWRIGHT_MODULE=/absolute/path/to/playwright node scripts/profile_viewer.cjs -
 CPU throttling is applied after startup. It does not emulate a weaker GPU or prove
 a frame rate on every old PC. Full resolution remains available for detailed review.
 
-No equipment, electrical route, control mapping or specification changed in this
-rendering work. The existing category workbooks, plan data, schedules and summary
-retain their owning design revision; regenerating them would only change export
-metadata. Governing documents checked: [sanctuary](../sanctuary-model.md),
+No equipment layout, control mapping or specification changes in this rendering
+work. A pre-existing verification side effect was found: its temporary move test
+restored equipment `L3`'s position but not its pendant anchor. The exported snapshot
+therefore showed +10.394880 m instead of the actual model's +8.590 m anchor. The test
+now restores both; the paired electrical exports, category registers and summary
+are refreshed, correcting only route `drop:LC1:L1:light:-1:L3` from 8.391731 m to
+7.005 m. This restores the existing model intent, not a new engineering route design.
+Quantities, IDs, equipment output and entered workbook fields remain preserved.
+Governing documents checked: [sanctuary](../sanctuary-model.md),
 [systems brief](../interior-systems-plan.md), [lighting](../systems/lighting.md),
 [simulator methods](methods-and-limitations.md), [controls](../electrical-grid/controls.md)
 and [register workflow](../electrical-grid/register.md).
