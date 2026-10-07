@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-07",
+  "status": "Proposed architectural artwork for review",
+  "tool": "Built-in image_gen.imagegen",
+  "sourceModelCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+  "modelChanged": false,
+  "sourcePriority": [
+    "Original drawings and checked design govern dimensions and construction.",
+    "Current model governs overall layout, support positions, openings and view composition.",
+    "Owner-approved sanctuary and timber-connection concepts govern ornament missing from the model.",
+    "Owner confirms an Assumption of the Blessed Virgin Mary statue between the front towers; its exact niche fit and mounting remain proposed."
+  ],
+  "resolution": {
+    "method": "Pillow ImageOps.fit, LANCZOS, centered crop to 16:9 then resample to 1920x1080. Sub-pixel edge crop for 1672x941 native output.",
+    "permission": "Owner explicitly authorized Full HD copies and retention of native originals.",
+    "limitation": "Resampling does not add native detail. Native master is a byte-identical copy of the selected generator output."
+  },
+  "provenance": "../../../../review/church-views-2026-10-07/generation-record.json",
+  "designNotes": "../../../../docs/church-view-renderings.md",
+  "assets": [
+    {
+      "id": "church-views-20261007-01-exterior-front-day",
+      "title": "Front elevation · daylight",
+      "description": "Twin towers and the Assumption of the Blessed Virgin Mary in the central facade niche.",
+      "generationJob": "01-exterior-front-day-v2-assumption",
+      "generationFile": "exec-33b60318-fc3f-4ca0-8449-50f394a61131.png",
+      "master": "masters/01-exterior-front-day.png",
+      "fullHd": "full-hd/01-exterior-front-day.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "b66b66c2d5d0db9c4b64d708e94726c8b12097e8b2400a75f7173e01a4bec5b9",
+      "fullHdSha256": "86046a24973bca09b24d7f30b1a8e27aeab2f7ddbb708b843554620984fb0846",
+      "visualReview": "Selected after review for this artwork set; no obvious malformed-image defects found. Not dimensional or engineering verification.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/01-exterior-front-day.png",
+      "part": "exterior"
+    },
+    {
+      "id": "church-views-20261007-02-exterior-corner-day",
+      "title": "Front and long side · daylight",
+      "description": "Elevated oblique view showing the facade, Assumption statue, long side and terracotta roofs.",
+      "generationJob": "02-exterior-corner-day-v2-assumption",
+      "generationFile": "exec-31beda75-f635-452d-8fa3-cf7f717effe4.png",
+      "master": "masters/02-exterior-corner-day.png",
+      "fullHd": "full-hd/02-exterior-corner-day.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "d6a3fdd160d5f9b1207a6ded4d69dc031607a68003a0308a68bf473285b0a715",
+      "fullHdSha256": "72f9ba111840269941ef79358c52bbca6d2d58d4114f2b16e00eec6b96578353",
+      "visualReview": "Selected after review for this artwork set; no obvious malformed-image defects found. Not dimensional or engineering verification.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/02-exterior-corner-day.png",
+      "part": "exterior"
+    },
+    {
+      "id": "church-views-20261007-03-entrance-detail-day",
+      "title": "Main entrance · close view",
+      "description": "Closer oblique view of the three timber entrances, stone stage and Marian niche.",
+      "generationJob": "03-entrance-detail-day-v2-assumption",
+      "generationFile": "exec-53a7b222-cffe-4c05-9f29-4b6d43f3d5b7.png",
+      "master": "masters/03-entrance-detail-day.png",
+      "fullHd": "full-hd/03-entrance-detail-day.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "d77f2efa92b79fe383769b457f21ae1b7baee1a42d622abe7fb614ca29263968",
+      "fullHdSha256": "d91406b69405b1d964b5701afb23fa090617cc018bfb26f0c4c28342e4195b68",
+      "visualReview": "Selected after review for this artwork set; no obvious malformed-image defects found. Not dimensional or engineering verification.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/03-entrance-detail-day.png",
+      "part": "exterior"
+    },
+    {
+      "id": "church-views-20261007-04-exterior-corner-evening",
+      "title": "Opposite front and side · evening",
+      "description": "Opposite oblique view with warm facade accents and the Assumption statue at blue hour.",
+      "generationJob": "04-exterior-corner-evening-v2-assumption",
+      "generationFile": "exec-81a52284-32c4-4420-a02e-9803f0d9cac1.png",
+      "master": "masters/04-exterior-corner-evening.png",
+      "fullHd": "full-hd/04-exterior-corner-evening.png",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "exportPixels": [
+        1920,
+        1080
+      ],
+      "masterSha256": "f7d0284fbbf9c3dbb1892973dff2f2d79fa3b2afc5211956afdf6c4482d4916c",
+      "fullHdSha256": "e376a358d7c56b3928cce24f823229062779a83f6ffc1627edd0b5dd2278eb75",
+      "visualReview": "Selected after review for this artwork set; no obvious malformed-image defects found. Not dimensional or engineering verification.",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/04-exterior-corner-evening.png",
+      "part": "exterior"
+    }
+  ]
+}
