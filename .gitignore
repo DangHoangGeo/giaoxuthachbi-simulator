@@ -1,0 +1,38 @@
+# Operating-system metadata (including nested folders)
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# Local secrets; commit only empty/documented example templates
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# JavaScript dependencies and future web build output
+node_modules/
+.next/
+.vercel/
+/web/out/
+/web/dist/
+*.tsbuildinfo
+
+# Local test output and package-manager diagnostics
+/web/coverage/
+/web/playwright-report/
+/web/test-results/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Python and editor temporary files
+__pycache__/
+*.py[cod]
+*.swp
+*.swo
+~$*.xlsx
+
+# Keep source drawings, model assets, Excel registers, review evidence,
+# package lockfiles and intentional editor/agent configuration tracked.
