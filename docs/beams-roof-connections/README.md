@@ -21,3 +21,7 @@ The package is self-contained for its illustrations: eight separate Full HD conc
 Update the specification, requirements, connection records and image manifest together. Record the author, date, reason and source of a change in the revision table in the specification. Never promote a concept image, a mesh dimension or a software default to an approved structural requirement. Keep later approved engineering drawings separate and record their drawing number and revision before assigning them precedence for structural sizing.
 
 Run `python3 docs/beams-roof-connections/validate.py` from the repository root after edits. It checks package files, images, dimensions and documented span arithmetic; it does not perform structural verification.
+
+## Reference-library cleanup · 7 October 2026
+
+The numbered viewer reference folders now display the newer church concepts. This engineering package continues to use its existing eight beam/roof illustrations and five source photographs; byte-identical duplicates were removed from the viewer folders. Their eight native generator originals are now preserved in `masters/`, recorded in the image manifest. Capacity and construction-approval status remain unchanged.

@@ -201,5 +201,12 @@
       ],
       "generationFile": "exec-5a059e53-aafe-4fc1-88c3-ca855954afb4.png"
     }
-  ]
+  ],
+  "inputRelocations": {
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/02-column-head-three-quarter.png": "docs/beams-roof-connections/images/02-column-head-three-quarter.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/07-full-width-frame-concrete-sides.png": "docs/beams-roof-connections/images/07-full-width-frame-concrete-sides.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/08-longitudinal-beams-two-frames.png": "docs/beams-roof-connections/images/08-longitudinal-beams-two-frames.png",
+    "Thach_Bi_Viewer/references/03-facade/overview/00-front-reference.png": "review/church-views-2026-10-07/source-inputs/00-front-reference.png"
+  },
+  "inputRelocationNote": "Original inputReferences retain the paths used at generation time. Resolve moved inputs through inputRelocations; prompts and selected outputs are unchanged."
 }

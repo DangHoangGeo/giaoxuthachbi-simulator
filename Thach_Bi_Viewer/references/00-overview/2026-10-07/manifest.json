@@ -25,7 +25,7 @@
       "generationJob": "01-exterior-front-day-v2-assumption",
       "generationFile": "exec-33b60318-fc3f-4ca0-8449-50f394a61131.png",
       "master": "masters/01-exterior-front-day.png",
-      "fullHd": "full-hd/01-exterior-front-day.png",
+      "fullHd": "../../03-facade/full-hd/2026-10-07-01-exterior-front-day.png",
       "nativePixels": [
         1672,
         941
@@ -47,7 +47,7 @@
       "generationJob": "02-exterior-corner-day-v2-assumption",
       "generationFile": "exec-31beda75-f635-452d-8fa3-cf7f717effe4.png",
       "master": "masters/02-exterior-corner-day.png",
-      "fullHd": "full-hd/02-exterior-corner-day.png",
+      "fullHd": "../../03-facade/full-hd/2026-10-07-02-exterior-corner-day.png",
       "nativePixels": [
         1672,
         941
@@ -69,7 +69,7 @@
       "generationJob": "03-entrance-detail-day-v2-assumption",
       "generationFile": "exec-53a7b222-cffe-4c05-9f29-4b6d43f3d5b7.png",
       "master": "masters/03-entrance-detail-day.png",
-      "fullHd": "full-hd/03-entrance-detail-day.png",
+      "fullHd": "../../04-doors/full-hd/2026-10-07-03-entrance-detail-day.png",
       "nativePixels": [
         1672,
         941
@@ -91,7 +91,7 @@
       "generationJob": "04-exterior-corner-evening-v2-assumption",
       "generationFile": "exec-81a52284-32c4-4420-a02e-9803f0d9cac1.png",
       "master": "masters/04-exterior-corner-evening.png",
-      "fullHd": "full-hd/04-exterior-corner-evening.png",
+      "fullHd": "../../03-facade/full-hd/2026-10-07-04-exterior-corner-evening.png",
       "nativePixels": [
         1672,
         941
@@ -113,7 +113,7 @@
       "generationJob": "05-nave-overview-day-v3-concepts",
       "generationFile": "exec-37bf5ff2-fd0f-4791-9f50-6e7cb5181459.png",
       "master": "masters/05-nave-overview-day.png",
-      "fullHd": "full-hd/05-nave-overview-day.png",
+      "fullHd": "../../00-overview/full-hd/2026-10-07-05-nave-overview-day.png",
       "nativePixels": [
         1672,
         941
@@ -135,7 +135,7 @@
       "generationJob": "06-sanctuary-overview-evening-v3-concepts",
       "generationFile": "exec-c1aac607-d457-411d-b1b5-472868f0bc98.png",
       "master": "masters/06-sanctuary-overview-evening.png",
-      "fullHd": "full-hd/06-sanctuary-overview-evening.png",
+      "fullHd": "../../02-sanctuary/full-hd/2026-10-07-06-sanctuary-overview-evening.png",
       "nativePixels": [
         1672,
         941
@@ -157,7 +157,7 @@
       "generationJob": "07-interior-oblique-day-v3-concepts",
       "generationFile": "exec-c9cb8b46-80ca-4207-803d-f8f8b8aff3a8.png",
       "master": "masters/07-interior-oblique-day.png",
-      "fullHd": "full-hd/07-interior-oblique-day.png",
+      "fullHd": "../../00-overview/full-hd/2026-10-07-07-interior-oblique-day.png",
       "nativePixels": [
         1672,
         941
@@ -179,7 +179,7 @@
       "generationJob": "08-sanctuary-detail-day-v3-concepts",
       "generationFile": "exec-b39c8298-36d3-4303-90ff-958c71d641fe.png",
       "master": "masters/08-sanctuary-detail-day.png",
-      "fullHd": "full-hd/08-sanctuary-detail-day.png",
+      "fullHd": "../../02-sanctuary/full-hd/2026-10-07-08-sanctuary-detail-day.png",
       "nativePixels": [
         1672,
         941
@@ -201,7 +201,7 @@
       "generationJob": "09-carved-connection-detail-v2-wall",
       "generationFile": "exec-5a059e53-aafe-4fc1-88c3-ca855954afb4.png",
       "master": "masters/09-carved-connection-detail.png",
-      "fullHd": "full-hd/09-carved-connection-detail.png",
+      "fullHd": "../../01-timber-frame/full-hd/2026-10-07-09-carved-connection-detail.png",
       "nativePixels": [
         1672,
         941
@@ -223,7 +223,7 @@
       "generationJob": "10-side-door-exterior-day-v2-interior-panels",
       "generationFile": "exec-0561a695-3cf3-432f-92df-91168324b63f.png",
       "master": "masters/10-side-door-exterior-day.png",
-      "fullHd": "full-hd/10-side-door-exterior-day.png",
+      "fullHd": "../../04-doors/full-hd/2026-10-07-10-side-door-exterior-day.png",
       "nativePixels": [
         1672,
         941
@@ -247,7 +247,7 @@
       "generationJob": "11-side-wall-interior-day",
       "generationFile": "exec-46e93de1-43e4-456d-af4c-ddb0a0972ed3.png",
       "master": "masters/11-side-wall-interior-day.png",
-      "fullHd": "full-hd/11-side-wall-interior-day.png",
+      "fullHd": "../../04-doors/full-hd/2026-10-07-11-side-wall-interior-day.png",
       "nativePixels": [
         1672,
         941
@@ -271,7 +271,7 @@
       "generationJob": "12-wall-window-decoration-day-v2-interior-panels",
       "generationFile": "exec-c50a9cad-9383-4844-9e67-f66f3fb5eeef.png",
       "master": "masters/12-wall-window-decoration-day.png",
-      "fullHd": "full-hd/12-wall-window-decoration-day.png",
+      "fullHd": "../../05-windows/full-hd/2026-10-07-12-wall-window-decoration-day.png",
       "nativePixels": [
         1672,
         941
@@ -295,7 +295,7 @@
       "generationJob": "13-rear-elevation-day",
       "generationFile": "exec-66906914-1132-4e51-a631-45979bec99d8.png",
       "master": "masters/13-rear-elevation-day.png",
-      "fullHd": "full-hd/13-rear-elevation-day.png",
+      "fullHd": "../../03-facade/full-hd/2026-10-07-13-rear-elevation-day.png",
       "nativePixels": [
         1672,
         941
@@ -319,7 +319,7 @@
       "generationJob": "14-rear-corner-evening-v3-rear-glazing",
       "generationFile": "exec-7da60b3e-c60e-4ec5-9042-49da279905b8.png",
       "master": "masters/14-rear-corner-evening.png",
-      "fullHd": "full-hd/14-rear-corner-evening.png",
+      "fullHd": "../../03-facade/full-hd/2026-10-07-14-rear-corner-evening.png",
       "nativePixels": [
         1672,
         941
@@ -343,7 +343,7 @@
       "generationJob": "15-top-down-roof-day",
       "generationFile": "exec-95d07772-4064-44e8-802a-0752baff56ce.png",
       "master": "masters/15-top-down-roof-day.png",
-      "fullHd": "full-hd/15-top-down-roof-day.png",
+      "fullHd": "../../06-roof/full-hd/2026-10-07-15-top-down-roof-day.png",
       "nativePixels": [
         1672,
         941
@@ -367,7 +367,7 @@
       "generationJob": "16-top-down-interior-day-v4-longitudinal-beams",
       "generationFile": "exec-51e2b17b-1047-4a02-a773-7b6bab0dda2d.png",
       "master": "masters/16-top-down-interior-day.png",
-      "fullHd": "full-hd/16-top-down-interior-day.png",
+      "fullHd": "../../00-overview/full-hd/2026-10-07-16-top-down-interior-day.png",
       "nativePixels": [
         1672,
         941
@@ -391,5 +391,6 @@
   "ownerUpdates": [
     "Side-window shutters follow view 11: solid warm dark-brown paired panels with restrained gold foliate carving, matching inside and outside. Applies to the side-window type, separately from tower louvers and rear glazing.",
     "B03 longitudinal column-line beams are required by the frame concept. Their illustrative nave connections appear in view 16; final sections, support levels, joints and the wider sanctuary transition need structural coordination."
-  ]
+  ],
+  "exportLocation": "Full HD files moved to discipline folders on 2026-10-07 at owner request; this dated gallery resolves them through relative links. Native masters are unchanged."
 }

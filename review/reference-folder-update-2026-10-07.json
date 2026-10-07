@@ -1,0 +1,395 @@
+{
+  "date": "2026-10-07",
+  "request": "Put latest images in the numbered reference folders and remove obsolete images unless still required elsewhere.",
+  "categoryRegister": "Thach_Bi_Viewer/references/current-images.json",
+  "relocated": [
+    {
+      "from": "Thach_Bi_Viewer/references/01-timber-frame/masters/01-upper-bay-front.png",
+      "to": "docs/beams-roof-connections/masters/01-upper-bay-front.png",
+      "sha256": "d36b340d9693375ddfbb846b0bcab789345d0dd16477b671796a5a82654b37a3",
+      "reason": "Preserve native original of an engineering appearance study outside the current reference folders."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/01-timber-frame/masters/02-column-head-three-quarter.png",
+      "to": "docs/beams-roof-connections/masters/02-column-head-three-quarter.png",
+      "sha256": "df2c1fa4859bcc06b9c9ddbc30a9b86265b431678b06b0002d9742b7aa1d1942",
+      "reason": "Preserve native original of an engineering appearance study outside the current reference folders."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/01-timber-frame/masters/03-carved-bracket-underside.png",
+      "to": "docs/beams-roof-connections/masters/03-carved-bracket-underside.png",
+      "sha256": "70b5700953bd45b1aff09353fb0fd3ba9fd723d694079bf6d9368762d67732a9",
+      "reason": "Preserve native original of an engineering appearance study outside the current reference folders."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/01-timber-frame/masters/04-upper-rail-roof-connection.png",
+      "to": "docs/beams-roof-connections/masters/04-upper-rail-roof-connection.png",
+      "sha256": "5ac11d8a9f3c858d37a99a6056475ae636ca714c155dabd1270d297534a6e0b5",
+      "reason": "Preserve native original of an engineering appearance study outside the current reference folders."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/01-timber-frame/masters/07-full-width-frame-concrete-sides.png",
+      "to": "docs/beams-roof-connections/masters/07-full-width-frame-concrete-sides.png",
+      "sha256": "162fe45aac764d13894977952ec8ea914fa645f748794ed61f1436b20e3c3abc",
+      "reason": "Preserve native original of an engineering appearance study outside the current reference folders."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/01-timber-frame/masters/08-longitudinal-beams-two-frames.png",
+      "to": "docs/beams-roof-connections/masters/08-longitudinal-beams-two-frames.png",
+      "sha256": "a3312ef1c0801b55073d95156c37b94bc8cba1686445c8e6c54f916332208f83",
+      "reason": "Preserve native original of an engineering appearance study outside the current reference folders."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/01-timber-frame/masters/09-side-beam-concrete-bearing.png",
+      "to": "docs/beams-roof-connections/masters/09-side-beam-concrete-bearing.png",
+      "sha256": "70c19714ee78bc1eff0f3d5fd7ae3cecb5f7f173a37e1646596ff5846015a13d",
+      "reason": "Preserve native original of an engineering appearance study outside the current reference folders."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/01-timber-frame/masters/10-upper-roof-longitudinal-connections.png",
+      "to": "docs/beams-roof-connections/masters/10-upper-roof-longitudinal-connections.png",
+      "sha256": "77cb263480a2eb16583c7507bb3ac68618df72c96b005e747cdf00ca8564b13c",
+      "reason": "Preserve native original of an engineering appearance study outside the current reference folders."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/03-facade/overview/00-front-reference.png",
+      "to": "review/church-views-2026-10-07/source-inputs/00-front-reference.png",
+      "sha256": "75482f56e6f610a2b7e2e68b7570641d01d75641b844eadc12b343a2bd22760a",
+      "reason": "Exact source input to the 7 October generation records, retained for reproducibility only."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/03-facade/overview/04-rear-elevation.png",
+      "to": "review/church-views-2026-10-07/source-inputs/04-rear-elevation.png",
+      "sha256": "cee0929b3ac24595d466c132900f7d064e7584fe696fa07e1205db86baa730fc",
+      "reason": "Exact source input to the 7 October generation records, retained for reproducibility only."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/10-side-door-exterior-day.png",
+      "to": "Thach_Bi_Viewer/references/04-doors/full-hd/2026-10-07-10-side-door-exterior-day.png",
+      "sha256": "0b52a887b64549cd8a02d81770e887d0068d5e7f3d4e8a119b95220d22ac73d0",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/11-side-wall-interior-day.png",
+      "to": "Thach_Bi_Viewer/references/04-doors/full-hd/2026-10-07-11-side-wall-interior-day.png",
+      "sha256": "8d72afe5bbf67c58ecf6a5d1546922bd2d6d3c0761f0a7c221ad936f8ace75d2",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/12-wall-window-decoration-day.png",
+      "to": "Thach_Bi_Viewer/references/05-windows/full-hd/2026-10-07-12-wall-window-decoration-day.png",
+      "sha256": "57f66a94691ffae901ece82bbca24b100e95abd7a5f9c5c9edf13f94fa2234d1",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/13-rear-elevation-day.png",
+      "to": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-13-rear-elevation-day.png",
+      "sha256": "f8b685ba3759976668793fdc2fc735bba2832f2952de866d78b9fd4c899c1e33",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/14-rear-corner-evening.png",
+      "to": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-14-rear-corner-evening.png",
+      "sha256": "ba36e057ac3ef929b31490e57cd3ea56a8099649df87080deaaaf9f66dbcb67b",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/15-top-down-roof-day.png",
+      "to": "Thach_Bi_Viewer/references/06-roof/full-hd/2026-10-07-15-top-down-roof-day.png",
+      "sha256": "9d826c3b31ec5e360200ad0b791f99d245f61dd290a4ef24b47faa8ec867ae2c",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/16-top-down-interior-day.png",
+      "to": "Thach_Bi_Viewer/references/00-overview/full-hd/2026-10-07-16-top-down-interior-day.png",
+      "sha256": "4d2873314c3f40c0b9adfa9c7f9a72e0b8a41ae5e1c85286e13e2144470e5553",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/01-exterior-front-day.png",
+      "to": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-01-exterior-front-day.png",
+      "sha256": "86046a24973bca09b24d7f30b1a8e27aeab2f7ddbb708b843554620984fb0846",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/02-exterior-corner-day.png",
+      "to": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-02-exterior-corner-day.png",
+      "sha256": "72f9ba111840269941ef79358c52bbca6d2d58d4114f2b16e00eec6b96578353",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/03-entrance-detail-day.png",
+      "to": "Thach_Bi_Viewer/references/04-doors/full-hd/2026-10-07-03-entrance-detail-day.png",
+      "sha256": "d91406b69405b1d964b5701afb23fa090617cc018bfb26f0c4c28342e4195b68",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/04-exterior-corner-evening.png",
+      "to": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-04-exterior-corner-evening.png",
+      "sha256": "e376a358d7c56b3928cce24f823229062779a83f6ffc1627edd0b5dd2278eb75",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/05-nave-overview-day.png",
+      "to": "Thach_Bi_Viewer/references/00-overview/full-hd/2026-10-07-05-nave-overview-day.png",
+      "sha256": "8d5d957fa9949ecbc805217f78bc4332c1d45bfd305c88161829f2eaaa3b65bd",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/06-sanctuary-overview-evening.png",
+      "to": "Thach_Bi_Viewer/references/02-sanctuary/full-hd/2026-10-07-06-sanctuary-overview-evening.png",
+      "sha256": "526a396415c3f759f1b2f2994fa64c658cbc9fb8fc14b7d5e844abf4a0bfea01",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/07-interior-oblique-day.png",
+      "to": "Thach_Bi_Viewer/references/00-overview/full-hd/2026-10-07-07-interior-oblique-day.png",
+      "sha256": "04d451f7b2d4d82e2b79e82f39ef231239989a067e9a86753dbca5b6bde8e761",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/08-sanctuary-detail-day.png",
+      "to": "Thach_Bi_Viewer/references/02-sanctuary/full-hd/2026-10-07-08-sanctuary-detail-day.png",
+      "sha256": "f6f6628f52183d109f30fe4e1f4bc165a5b7061f9645aef9a5058c6673976591",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    },
+    {
+      "from": "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/09-carved-connection-detail.png",
+      "to": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/2026-10-07-09-carved-connection-detail.png",
+      "sha256": "daaae5972d562ae7302d946f37c44427703eab7df296fa85443ff17b09593f0c",
+      "reason": "Move the current Full HD export into its discipline folder; dated gallery now links to this one physical export."
+    }
+  ],
+  "removed": [
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/01-upper-bay-front.png",
+      "sha256": "a6279ea21f941142a9e9eeb7f741333c798b15773689aeb98a31d8df4a780bb0",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/images/01-upper-bay-front.png"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/02-column-head-three-quarter.png",
+      "sha256": "80e608c91a1cb965d1e88526c02dc98745fedc6ffa2342ee65bd9bcc259fd5e2",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/images/02-column-head-three-quarter.png"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/03-carved-bracket-underside.png",
+      "sha256": "55ad957d9fb18309ea92524a1a2f360c23f6e50e30ac04aae0a8bebea8cbb02d",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/images/03-carved-bracket-underside.png"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/04-upper-rail-roof-connection.png",
+      "sha256": "ce80845fced6761803538b8dad3458ed049e4745959e9f5c289e399a7867ec65",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/images/04-upper-rail-roof-connection.png"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/07-full-width-frame-concrete-sides.png",
+      "sha256": "be351782a27031c8c71cec27045dc0237be172cbe861533df3dd84a2794fe8e1",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/images/07-full-width-frame-concrete-sides.png"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/08-longitudinal-beams-two-frames.png",
+      "sha256": "e0684f160d8e1fbed2a572e6922a11735234b98807321476301ce183c2b1e2a4",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/images/08-longitudinal-beams-two-frames.png"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/09-side-beam-concrete-bearing.png",
+      "sha256": "ea9a4a39025203edae26d306d526ec70d716992693086aa8d7f32645bc8a0623",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/images/09-side-beam-concrete-bearing.png"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/10-upper-roof-longitudinal-connections.png",
+      "sha256": "eaa6ff65222030f934fad6ee7797dad44459bfe61b5b062334ac4d5f95adc55b",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/images/10-upper-roof-longitudinal-connections.png"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_20260910_171557_634_1.JPG",
+      "sha256": "6dd42d95c392acad2a12a0ad41b628724c2a2687cb680e67dba4072e8ee6517d",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/sources/IMG_20260910_171557_634_1.JPG"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2676.PNG",
+      "sha256": "de6f575d7e5c0fe91f8bfc57a5504e3cd20096dc3a31444cc1c3e999b83d41af",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/sources/IMG_2676.PNG"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2677.PNG",
+      "sha256": "ec557cc1ed6e31f018cca0ee3651c0654f173f7479e25c852f65521d29dedeab",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/sources/IMG_2677.PNG"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2678.PNG",
+      "sha256": "8c3206df45db771e88c0fd5a4003fbfb5f70ab96f00970378a6e93ff82daf4fa",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/sources/IMG_2678.PNG"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2679.PNG",
+      "sha256": "ed38c696176ea6655ecfd7807af8b275259e5238c9edc5bba0f3555ee9bb5b59",
+      "reason": "Duplicate; actively used engineering/source copy exists.",
+      "retainedAt": "docs/beams-roof-connections/sources/IMG_2679.PNG"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/04-doors/details/01-main-doors-detail.png",
+      "sha256": "e447f043eb2e2e371599ebe1823f7e5969f884899e5eba55d6361db3e1a6956d",
+      "reason": "Superseded gallery image or redundant older export archive; no active model/engineering dependency."
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/03-facade/overview/02-front-corner-day.png",
+      "sha256": "c7227e7dd5cb02cfad0858c7e1bfb3029d13574248116350dc4bee4c47d9598e",
+      "reason": "Superseded gallery image or redundant older export archive; no active model/engineering dependency."
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/06-roof/overview/03-roof-footprint.png",
+      "sha256": "dead8126492dce85b0288fdacca33c2b4a98522543183f765f4404b973a6d724",
+      "reason": "Superseded gallery image or redundant older export archive; no active model/engineering dependency."
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/08-lighting/overview/06-exterior-night.png",
+      "sha256": "35ca8f56fc1ccb1233ce05746aff0dfa29e671ce5b18b0718aa8d71d62bdaaf7",
+      "reason": "Superseded gallery image or redundant older export archive; no active model/engineering dependency."
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/08-lighting/overview/07-interior-night.png",
+      "sha256": "7ff2a716c7379f5f68be23c143d4dffa2041b806179cbe4d5beb10508e5ab94c",
+      "reason": "Superseded gallery image or redundant older export archive; no active model/engineering dependency."
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/01-timber-frame/timber-details-full-hd.zip",
+      "sha256": "76b752aa5f59705587d6c352e892469d99e37b0634386fd48813c80bad56478d",
+      "reason": "Superseded gallery image or redundant older export archive; no active model/engineering dependency."
+    }
+  ],
+  "retained": [
+    {
+      "file": "Thach_Bi_Viewer/references/00-overview/05-interior-day.png",
+      "sha256": "c8bcfb48c59419cf6940d84acc2021d8ea1d0d4c8c75dd33374e1454e8579575",
+      "reason": "Existing simulator reference-frame variant cites this exact image; changing its source requires a separate model decision."
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/07-stairs/details/08-retained-side-stair-detail.png",
+      "sha256": "6256d04b347869c4b64fafb4d79b401b44a7dedf5b08de22c9b75a42dbabf897",
+      "reason": "Owner-requested retained stair detail and an exact source input for new side-door/window art."
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/02-sanctuary/concepts/09-sanctuary-approved-concept.png",
+      "sha256": "eae853e9c0295cc823418604332b59c2df516a783127e5dd1943dc35be491043",
+      "reason": "Approved sanctuary appearance source governing current art/model development."
+    },
+    {
+      "file": "Thach_Bi_Viewer/references/02-sanctuary/sources/10-sanctuary-church-reference.jpg",
+      "sha256": "5b5c238fc7fab361f48cdb403a0d1833a175c71f5416f1665b0c725e964abb8f",
+      "reason": "Original church photograph governing sanctuary decoration."
+    }
+  ],
+  "inputRelocations": {
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/01-upper-bay-front.png": "docs/beams-roof-connections/images/01-upper-bay-front.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/02-column-head-three-quarter.png": "docs/beams-roof-connections/images/02-column-head-three-quarter.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/03-carved-bracket-underside.png": "docs/beams-roof-connections/images/03-carved-bracket-underside.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/04-upper-rail-roof-connection.png": "docs/beams-roof-connections/images/04-upper-rail-roof-connection.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/07-full-width-frame-concrete-sides.png": "docs/beams-roof-connections/images/07-full-width-frame-concrete-sides.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/08-longitudinal-beams-two-frames.png": "docs/beams-roof-connections/images/08-longitudinal-beams-two-frames.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/09-side-beam-concrete-bearing.png": "docs/beams-roof-connections/images/09-side-beam-concrete-bearing.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/10-upper-roof-longitudinal-connections.png": "docs/beams-roof-connections/images/10-upper-roof-longitudinal-connections.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_20260910_171557_634_1.JPG": "docs/beams-roof-connections/sources/IMG_20260910_171557_634_1.JPG",
+    "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2676.PNG": "docs/beams-roof-connections/sources/IMG_2676.PNG",
+    "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2677.PNG": "docs/beams-roof-connections/sources/IMG_2677.PNG",
+    "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2678.PNG": "docs/beams-roof-connections/sources/IMG_2678.PNG",
+    "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2679.PNG": "docs/beams-roof-connections/sources/IMG_2679.PNG",
+    "Thach_Bi_Viewer/references/01-timber-frame/masters/01-upper-bay-front.png": "docs/beams-roof-connections/masters/01-upper-bay-front.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/masters/02-column-head-three-quarter.png": "docs/beams-roof-connections/masters/02-column-head-three-quarter.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/masters/03-carved-bracket-underside.png": "docs/beams-roof-connections/masters/03-carved-bracket-underside.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/masters/04-upper-rail-roof-connection.png": "docs/beams-roof-connections/masters/04-upper-rail-roof-connection.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/masters/07-full-width-frame-concrete-sides.png": "docs/beams-roof-connections/masters/07-full-width-frame-concrete-sides.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/masters/08-longitudinal-beams-two-frames.png": "docs/beams-roof-connections/masters/08-longitudinal-beams-two-frames.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/masters/09-side-beam-concrete-bearing.png": "docs/beams-roof-connections/masters/09-side-beam-concrete-bearing.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/masters/10-upper-roof-longitudinal-connections.png": "docs/beams-roof-connections/masters/10-upper-roof-longitudinal-connections.png",
+    "Thach_Bi_Viewer/references/03-facade/overview/00-front-reference.png": "review/church-views-2026-10-07/source-inputs/00-front-reference.png",
+    "Thach_Bi_Viewer/references/03-facade/overview/04-rear-elevation.png": "review/church-views-2026-10-07/source-inputs/04-rear-elevation.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/10-side-door-exterior-day.png": "Thach_Bi_Viewer/references/04-doors/full-hd/2026-10-07-10-side-door-exterior-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/11-side-wall-interior-day.png": "Thach_Bi_Viewer/references/04-doors/full-hd/2026-10-07-11-side-wall-interior-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/12-wall-window-decoration-day.png": "Thach_Bi_Viewer/references/05-windows/full-hd/2026-10-07-12-wall-window-decoration-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/13-rear-elevation-day.png": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-13-rear-elevation-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/14-rear-corner-evening.png": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-14-rear-corner-evening.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/15-top-down-roof-day.png": "Thach_Bi_Viewer/references/06-roof/full-hd/2026-10-07-15-top-down-roof-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/16-top-down-interior-day.png": "Thach_Bi_Viewer/references/00-overview/full-hd/2026-10-07-16-top-down-interior-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/01-exterior-front-day.png": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-01-exterior-front-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/02-exterior-corner-day.png": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-02-exterior-corner-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/03-entrance-detail-day.png": "Thach_Bi_Viewer/references/04-doors/full-hd/2026-10-07-03-entrance-detail-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/04-exterior-corner-evening.png": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-04-exterior-corner-evening.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/05-nave-overview-day.png": "Thach_Bi_Viewer/references/00-overview/full-hd/2026-10-07-05-nave-overview-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/06-sanctuary-overview-evening.png": "Thach_Bi_Viewer/references/02-sanctuary/full-hd/2026-10-07-06-sanctuary-overview-evening.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/07-interior-oblique-day.png": "Thach_Bi_Viewer/references/00-overview/full-hd/2026-10-07-07-interior-oblique-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/08-sanctuary-detail-day.png": "Thach_Bi_Viewer/references/02-sanctuary/full-hd/2026-10-07-08-sanctuary-detail-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/09-carved-connection-detail.png": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/2026-10-07-09-carved-connection-detail.png"
+  },
+  "limits": [
+    "No image pixels regenerated or resized in this update.",
+    "No structural geometry, equipment, simulator calculations or capacity approval changed.",
+    "Existing source-model variant and approved sanctuary inputs remain necessary; cleanup does not change their design status.",
+    "Dated gallery export links and manifest paths changed to the discipline folders; export pixels and native originals are unchanged."
+  ],
+  "verification": {
+    "categoryExports": {
+      "count": 16,
+      "pixels": [
+        1920,
+        1080
+      ],
+      "hashesMatchOriginalExports": true
+    },
+    "nativeOriginals": "All sixteen church masters unchanged; eight prior timber masters relocated without pixel changes.",
+    "activeViewerReferences": 19,
+    "requiredSupportingGallerySources": 3,
+    "localLinksResolved": 378,
+    "generationInputRelocations": "PASS",
+    "mainLibrary": {
+      "desktop": [
+        1440,
+        1000
+      ],
+      "phone": [
+        390,
+        844
+      ],
+      "latestImages": 16,
+      "allImages": 19,
+      "allImagesLoad": true,
+      "thumbnailAspectRatio": "PASS",
+      "horizontalOverflow": false,
+      "categoryFilter": "PASS",
+      "pageErrors": []
+    },
+    "datedGallery": {
+      "images": 16,
+      "desktopAndPhone": "PASS after moving the exports",
+      "allFullHd": true,
+      "altText": true,
+      "horizontalOverflow": false
+    },
+    "offlineViewer": {
+      "referencesLoaded": 19,
+      "pageErrors": [],
+      "modelErrors": []
+    },
+    "modelSmokeCheck": {
+      "command": "node scripts/verify_model.cjs",
+      "result": "PASS; run against the then-current working tree, including separate concurrent model work. This cleanup changes no geometry."
+    },
+    "engineeringPackage": {
+      "command": "python3 docs/beams-roof-connections/validate.py",
+      "result": "PASS; no structural capacity verified"
+    },
+    "whitespace": "PASS"
+  }
+}

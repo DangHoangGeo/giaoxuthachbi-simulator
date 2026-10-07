@@ -218,5 +218,17 @@
       "generationFile": "exec-7da60b3e-c60e-4ec5-9042-49da279905b8.png",
       "replaces": "14-rear-corner-evening-v2-interior-panels"
     }
-  ]
+  ],
+  "inputRelocations": {
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/02-column-head-three-quarter.png": "docs/beams-roof-connections/images/02-column-head-three-quarter.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/07-full-width-frame-concrete-sides.png": "docs/beams-roof-connections/images/07-full-width-frame-concrete-sides.png",
+    "Thach_Bi_Viewer/references/01-timber-frame/full-hd/08-longitudinal-beams-two-frames.png": "docs/beams-roof-connections/images/08-longitudinal-beams-two-frames.png",
+    "Thach_Bi_Viewer/references/03-facade/overview/04-rear-elevation.png": "review/church-views-2026-10-07/source-inputs/04-rear-elevation.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/01-exterior-front-day.png": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-01-exterior-front-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/02-exterior-corner-day.png": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-02-exterior-corner-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/03-entrance-detail-day.png": "Thach_Bi_Viewer/references/04-doors/full-hd/2026-10-07-03-entrance-detail-day.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/04-exterior-corner-evening.png": "Thach_Bi_Viewer/references/03-facade/full-hd/2026-10-07-04-exterior-corner-evening.png",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/full-hd/05-nave-overview-day.png": "Thach_Bi_Viewer/references/00-overview/full-hd/2026-10-07-05-nave-overview-day.png"
+  },
+  "inputRelocationNote": "Original inputReferences retain the paths used at generation time. Resolve moved inputs through inputRelocations; prompts and selected outputs are unchanged."
 }
