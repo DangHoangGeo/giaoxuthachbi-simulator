@@ -1,0 +1,339 @@
+{
+  "checks": "passed",
+  "cases": [
+    {
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "name": "plaster",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "name": "plaster",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "name": "lacquer",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "name": "lacquer",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "name": "gold",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "name": "gold",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "name": "sheen",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "name": "sheen",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        63.7,
+        0,
+        0
+      ],
+      "name": "plaster",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        63.7,
+        0,
+        0
+      ],
+      "name": "plaster",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        63.7,
+        0,
+        0
+      ],
+      "name": "lacquer",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        63.7,
+        0,
+        0
+      ],
+      "name": "lacquer",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        63.7,
+        0,
+        0
+      ],
+      "name": "gold",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        63.7,
+        0,
+        0
+      ],
+      "name": "gold",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        63.7,
+        0,
+        0
+      ],
+      "name": "sheen",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        63.7,
+        0,
+        0
+      ],
+      "name": "sheen",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        -24,
+        0,
+        -31.8
+      ],
+      "name": "plaster",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        -24,
+        0,
+        -31.8
+      ],
+      "name": "plaster",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        -24,
+        0,
+        -31.8
+      ],
+      "name": "lacquer",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        -24,
+        0,
+        -31.8
+      ],
+      "name": "lacquer",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        -24,
+        0,
+        -31.8
+      ],
+      "name": "gold",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        -24,
+        0,
+        -31.8
+      ],
+      "name": "gold",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        -24,
+        0,
+        -31.8
+      ],
+      "name": "sheen",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        -24,
+        0,
+        -31.8
+      ],
+      "name": "sheen",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        66,
+        0,
+        34
+      ],
+      "name": "plaster",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        66,
+        0,
+        34
+      ],
+      "name": "plaster",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        66,
+        0,
+        34
+      ],
+      "name": "lacquer",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        66,
+        0,
+        34
+      ],
+      "name": "lacquer",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        66,
+        0,
+        34
+      ],
+      "name": "gold",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        66,
+        0,
+        34
+      ],
+      "name": "gold",
+      "native": true,
+      "error": 0
+    },
+    {
+      "offset": [
+        66,
+        0,
+        34
+      ],
+      "name": "sheen",
+      "native": false,
+      "error": 0
+    },
+    {
+      "offset": [
+        66,
+        0,
+        34
+      ],
+      "name": "sheen",
+      "native": true,
+      "error": 0
+    }
+  ],
+  "maxError": 0,
+  "comparedChannels": 540800,
+  "grid": {
+    "count": 50,
+    "capacity": 64,
+    "grid": {
+      "average": 18.170196280991735,
+      "max": 44,
+      "sources": 51,
+      "bytes": 1053184
+    },
+    "gridBuilds": 4
+  },
+  "errors": []
+}

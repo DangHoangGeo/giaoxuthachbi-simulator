@@ -27,7 +27,7 @@ These methods produce planning estimates for comparing layouts. They do not cert
 
 ## What the picture and listening mode establish
 
-Every active lamp contributes from its actual modeled position. Native and texture-backed light paths share physical shading; the same two shadow sources and canvas resolution are retained across quality modes. Room bounce follows surface location. Fixed evening exposure is the default; optional eye adaptation changes perceived brightness.
+Every active lamp contributes from its actual modeled position. Native and texture-backed light paths share physical shading; the same two shadow sources are retained across simulator quality modes. A conservative spatial list skips only spots that cannot illuminate a surface cell. The separate View settings resolution control can reduce framebuffer size for smoother navigation. Explicit light graphics also disables antialiasing and preview shadow maps. These display options do not change analytical results. See [performance methods and checks](performance.md). Room bounce follows surface location. Fixed evening exposure is the default; optional eye adaptation changes perceived brightness.
 
 This keeps the display consistent when moving around or changing graphics quality. It does not establish agreement with measured illuminance: rendering and analysis use different approximations, and most lamps have no individual shadow map. Never use camera exposure to disguise a lighting shortfall.
 

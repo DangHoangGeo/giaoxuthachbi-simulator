@@ -143,8 +143,13 @@ and domes, with projecting arms keeping the heads clear of the masonry.
 Every switched-on lamp retains illumination and reflections at every distance.
 Additional surface lighting is drawn from real lamp positions, never from
 midpoints near speakers. Switches, dimmers and layout edits update all effects.
-Simulator → Settings → Rendering quality keeps full resolution, illumination,
-reflections and the same shadow sources. Room brightness follows surfaces,
+Simulator → Settings → Rendering quality keeps illumination, reflections and
+the same shadow sources. View settings → Preview resolution separately adapts
+sharpness for smoother navigation, with manual full/75%/50% options. Use light
+graphics saves the layout and restarts with 50% resolution, antialiasing off and
+preview shadows off. All lamps and calculations remain active. See
+../docs/simulator/performance.md for methods, checks and measured limits.
+Room brightness follows surfaces,
 not camera location. Fixed exposure is the default; automatic eye adaptation
 is optional and deliberately changes brightness while moving.
 Saved layouts receive only the reviewed lights once; other edits are retained.

@@ -259,6 +259,8 @@
     // Non-powered decorative simulator objects also vanish during isolation.
     for (const fx of SIM.fixtures.values()) fx.root.visible = SIM.fixtureVisible(fx.item) && (mode !== 'systems' || wired(fx.item));
     const checkbox = document.getElementById('electricalOnlyToggle'); if (checkbox) checkbox.checked = mode === 'systems';
+    SIM.church.renderer.shadowMap.needsUpdate = true;
+    window.CHURCH_PERFORMANCE?.invalidate();
     applyVisibility(); SIM.emit('electrical');
   }
   function updateHighlight() {

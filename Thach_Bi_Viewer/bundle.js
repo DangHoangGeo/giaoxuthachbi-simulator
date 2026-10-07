@@ -39829,18 +39829,16 @@ void main() {
     function Je(V, _e) {
       return { x: 90 + _e * 4.65, y: 244 - (V + 20) * 3.12 };
     }
+    let minimapState = '';
     function Ke() {
-      let V = Je(
-        S === "walk" ? O.x : j[y]?.walk?.[0] || 7,
-        S === "walk" ? O.z : j[y]?.walk?.[1] || 0,
-      );
-      (x("mapPosition").setAttribute(
-        "transform",
-        `translate(${V.x} ${V.y}) rotate(${(O.yaw * 180) / Math.PI - 90})`,
-      ),
-        (x("mapPosition").style.opacity = S === "walk" ? "1" : ".48"),
-        (x("walkLocation").textContent =
-          `${lt(O.x, O.z) >= 0 ? "+" : ""}${lt(O.x, O.z).toFixed(2)} m floor \xB7 ${O.eyeHeight.toFixed(2)} m eye height`));
+      const signature = [S, y, O.x.toFixed(3), O.z.toFixed(3), O.yaw.toFixed(4), O.eyeHeight].join('|');
+      if (signature === minimapState) return;
+      minimapState = signature;
+      const V = Je(S === "walk" ? O.x : j[y]?.walk?.[0] || 7, S === "walk" ? O.z : j[y]?.walk?.[1] || 0);
+      x("mapPosition").setAttribute("transform", `translate(${V.x} ${V.y}) rotate(${(O.yaw * 180) / Math.PI - 90})`);
+      x("mapPosition").style.opacity = S === "walk" ? "1" : ".48";
+      const floor = lt(O.x, O.z);
+      x("walkLocation").textContent = `${floor >= 0 ? "+" : ""}${floor.toFixed(2)} m floor · ${O.eyeHeight.toFixed(2)} m eye height`;
     }
     let ct = x("minimap");
     ct.addEventListener("click", (V) => {
@@ -40120,6 +40118,7 @@ void main() {
     function St(V = performance.now()) {
       if (z) return;
       Z = requestAnimationFrame(St);
+      if (document.hidden) { K = V; return; }
       let _e = Math.min(0.05, Math.max(0, (V - K) / 1e3));
       if (((K = V), S === "walk")) (Me(_e), Ie(_e), ve());
       else if (k) {
@@ -40130,7 +40129,8 @@ void main() {
           ge >= 1 && (k = null),
           l.update());
       } else (exploreMove(_e), l.update());
-      (Ke(), Et(), window.CHURCH_REALISM.update(S), window.CHURCH_SIMULATOR?.frame(_e, S, b), n.render(i, b));
+      (Ke(), Et(), window.CHURCH_REALISM.update(S), window.CHURCH_SIMULATOR?.frame(_e, S, b));
+      if (window.CHURCH_PERFORMANCE?.shouldRender(V, b) !== false) n.render(i, b);
     }
     let vi = {
       ready: !1,
@@ -43458,9 +43458,10 @@ void main() {
     },
     Us = document.getElementById("viewport"),
     Np = new URLSearchParams(location.search).get("graphics") === "light",
-    ni = new Tc({ antialias: !Np, alpha: !1, preserveDrawingBuffer: !0 });
+    ni = new Tc({ antialias: !Np, alpha: !1, preserveDrawingBuffer: !1 });
   ni.setPixelRatio(Np ? 1 : Math.min(window.devicePixelRatio || 1, 1.5));
   ni.setSize(Us.clientWidth, Us.clientHeight);
+  window.CHURCH_PERFORMANCE?.prepare(ni, Us);
   ni.shadowMap.enabled = !Np;
   ni.shadowMap.type = Do;
   ni.outputColorSpace = Yt;
@@ -45059,6 +45060,7 @@ void main() {
   window.CHURCH_PLANNING.bindBatches(t_);
   window.CHURCH_SIMULATOR?.bindBatches(t_);
   nn.visible = !1;
+  ii.matrixAutoUpdate = !1;
   ni.shadowMap.autoUpdate = !1;
   ni.shadowMap.needsUpdate = !0;
   window.CHURCH_REFERENCES ||= k0;

@@ -34,7 +34,7 @@ const sandbox = {
 sandbox.window = sandbox;
 sandbox.addEventListener = (e, f) => { (listeners[e] ||= []).push(f); };
 vm.createContext(sandbox);
-for (const file of ['render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
+for (const file of ['render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
   vm.runInContext(fs.readFileSync(path.join(viewer, file), 'utf8'), sandbox, { filename: file });
 
 let src = fs.readFileSync(path.join(viewer, 'bundle.js'), 'utf8');
@@ -558,6 +558,16 @@ function runSync(kinds) {
 }
 (async () => {
   await new Promise(r => setTimeout(r, 400));
+  SIM.frame(0.016, 'walk', camera);
+  const gridBuilds = SIM.persistentLighting.stats().gridBuilds;
+  sandbox.window.model.renderer.shadowMap.needsUpdate = false;
+  const oldCamera = camera.position.clone();
+  camera.position.x += 1;
+  await new Promise(r => setTimeout(r, 300));
+  SIM.frame(0.016, 'walk', camera);
+  assert.equal(sandbox.window.model.renderer.shadowMap.needsUpdate, false, 'camera-only light reassignment keeps cached shadows');
+  assert.equal(SIM.persistentLighting.stats().gridBuilds, gridBuilds, 'camera movement does not rebuild spatial light lists');
+  camera.position.copy(oldCamera);
   const r = await runSync(['seats', 'lux', 'sti', 'air', 'noise']);
   const s = r.seats;
   assert(s.n >= 300, 'seats evaluated');

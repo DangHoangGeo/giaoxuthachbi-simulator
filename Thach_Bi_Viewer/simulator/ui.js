@@ -430,8 +430,8 @@
       ${sw('autoExposure', 'Automatic eye adaptation', 'Adapts to the light where you stand, like the eye. Off keeps room brightness fixed when moving.')}
       ${rng('halos', 'Lamp glow', 0, 2, 0.1, fmt(s.halos, 1) + '×')}
       ${field('Rendering quality', `<select data-setting="quality">${Object.entries(SIM.QUALITY).map(([k, q]) => `<option value="${k}" ${s.quality === k ? 'selected' : ''}>${esc(q.label)}</option>`).join('')}</select>`, true)}
-      ${sw('autoQuality', 'Adjust detail automatically when walking stutters')}
-      <p class="sim-hint">${(() => { const p = SIM.poolStats(); return p ? `All ${p.emitters} active light sources illuminate surfaces at every distance. Full resolution at every quality level. Illumination, reflections and shadow sources stay active at every quality level. Analysis always uses every source.` : ''; })()}</p>
+      ${sw('autoQuality', 'Automatically reduce rendering work when walking stutters')}
+      <p class="sim-hint">${(() => { const p = SIM.poolStats(); return p ? `All ${p.emitters} active light sources illuminate surfaces at every distance. View settings → Preview resolution can adapt image size for slower computers. This light budget keeps illumination, reflections and shadow sources. Analysis always uses every source.` : ''; })()}</p>
       </div>
       <div class="sim-card"><h3>Structure &amp; finishes</h3>
       ${field('Timber frame', `<select data-setting="frameStyle"><option value="drawn" ${s.frameStyle !== 'reference' ? 'selected' : ''}>As drawn (PDF section 4)</option><option value="reference" ${s.frameStyle === 'reference' ? 'selected' : ''}>Reference image (open collar truss)</option></select>`, true)}

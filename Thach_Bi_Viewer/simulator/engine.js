@@ -63,16 +63,16 @@
     DB2: { label: 'DB-2 · Towers & entrance', where: 'Inside the main doors, left of the main door', pos: [2.73, 1.5, -3.3] }
   };
   const QUALITY = {
-    // Every drawn light is evaluated for every pixel, so counts drive frame rate.
-    // Both rendering paths use the same physical shading. Quality changes the
-    // native/texture split; the two shadow sources and screen resolution stay fixed.
+    // Both paths use the same physical shading. The texture path skips spots
+    // outside each cell's cone list. Quality changes the native/texture split;
+    // the two shadow sources stay fixed and resolution has its own control.
     high: { points: 24, spots: 40, shadows: 2, label: 'High · strong graphics card' },
     balanced: { points: 8, spots: 14, shadows: 2, label: 'Balanced' },
     fast: { points: 4, spots: 6, shadows: 2, label: 'Fast · lighter rendering' }
   };
 
   const defaults = () => ({
-    adaptLux: 110, autoExposure: false, quality: 'balanced', autoQuality: true, maintenance: 0.8, halos: 1,
+    adaptLux: 110, autoExposure: false, quality: 'fast', autoQuality: true, maintenance: 0.8, halos: 1,
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
@@ -528,8 +528,9 @@
     if (pool) for (const l of [...pool.points, ...pool.spots, ...pool.shadows]) { scene.remove(l); if (l.target) scene.remove(l.target); l.dispose?.(); }
     const light = new URLSearchParams(location.search).get('graphics') === 'light';
     const q = uniformBudget(QUALITY[light && qualityKey !== 'fast' ? 'fast' : qualityKey] || QUALITY.balanced);
-    // Keep the viewer's original sharpness even when the light budget adapts.
-    if (ctx.renderer.setPixelRatio) ctx.renderer.setPixelRatio(light ? 1 : Math.min(window.devicePixelRatio || 1, 1.5));
+    // The independent preview-resolution policy owns framebuffer size.
+    if (window.CHURCH_PERFORMANCE?.renderer === ctx.renderer) window.CHURCH_PERFORMANCE.refresh();
+    else if (ctx.renderer.setPixelRatio) ctx.renderer.setPixelRatio(light ? 1 : Math.min(window.devicePixelRatio || 1, 1.5));
     pool = { key: qualityKey, size: q, points: [], spots: [], shadows: [] };
     for (let i = 0; i < q.points; i++) {
       const l = new T.PointLight(0xffffff, 0, 0, 2); l.name = 'Simulator point light ' + i; l.castShadow = false;
@@ -842,7 +843,9 @@
     if (renderCamera) lastPoolView = { pos: renderCamera.position.clone(), rotation: renderCamera.quaternion.clone() };
     poolScale = 0;
     scalePool();
-    ctx.renderer.shadowMap.needsUpdate = true;
+    const shadowSignature = wantShadow.map(e => e ? [e.id, ...e.pos, ...e.dir, e.angle].join(',') : 'off').join('|');
+    if (pool.shadowSignature !== shadowSignature) ctx.renderer.shadowMap.needsUpdate = true;
+    pool.shadowSignature = shadowSignature;
   }
   // Physical candela → renderer units: S = π / adaptation illuminance.
   function scalePool() {
@@ -1307,6 +1310,9 @@
   }
 
   function markDirty(it) {
+    // Object edits can move/hide a caster. Camera-only pool reassignment cannot.
+    if (ctx?.renderer) ctx.renderer.shadowMap.needsUpdate = true;
+    window.CHURCH_PERFORMANCE?.invalidate();
     lightDirty = true; analysisDirty = true;
     clearTimeout(analysisTimer);
     analysisTimer = setTimeout(() => emit('analysis-needed'), 160);

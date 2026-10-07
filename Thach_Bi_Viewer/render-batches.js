@@ -62,6 +62,11 @@
       }
       display.matrixAutoUpdate = false;
     }
+    // This retained hierarchy is an immutable source/picking/export model. Its
+    // transforms were resolved above; doors/frame/seating change visibility only.
+    // Dynamic equipment lives separately in the simulator's scene group.
+    building.traverse(object => { object.matrixAutoUpdate = false; object.matrixWorldAutoUpdate = false; });
+    displayRoot.matrixAutoUpdate = false;
     return batches;
   }
   window.CHURCH_BATCHES = { merge, build };
