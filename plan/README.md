@@ -2,7 +2,7 @@
 
 Planning baseline: **7 October 2026**. Status: **plan only; implementation has not started**. No framework, account, cloud resource or deployment is created by this plan. Read [AGENTS.md](../AGENTS.md) before executing any phase.
 
-**Execution priority, 8 October 2026:** the [building-systems engineering roadmap](engineering/README.md) comes first. Its six phases cover the baseline, joint light/sound/microphone/dynamic-air optimisation, concealment, routes, boards/controls and coordinated registers/handover. That plan awaits the engineer's approval before phase execution. Then follow the web order below, applying phase 07 before each launch. If engineering work is blocked on external input, its roadmap defines which independent packages can continue without treating an unfinished design as approved.
+**Execution priority, 8 October 2026:** the [building-systems engineering roadmap](engineering/README.md) comes first. Its six phases cover the baseline, joint light/sound/microphone/dynamic-air optimisation, concealment, routes, boards/controls and coordinated registers/handover. The engineer approved execution on 8 October 2026. Then follow the web order below, applying phase 07 before each launch. If engineering work is blocked on external input, its roadmap defines which independent packages can continue without treating an unfinished design as approved.
 
 Build a welcoming public account of Thạch Bi Church and its ongoing construction, a lightweight virtual visit, and reliable private tools for reviewing the design and inspecting construction information. Protect the community's limited time and resources by delivering useful parts early and keeping engineering evidence visible.
 

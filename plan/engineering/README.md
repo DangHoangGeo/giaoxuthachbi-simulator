@@ -1,14 +1,14 @@
 # Church building-systems engineering roadmap
 
-Planning baseline: **8 October 2026**. Status: **proposed; awaiting the engineer's approval before any engineering phase starts**. Read [AGENTS.md](../../AGENTS.md) and the [controls brief](../../docs/electrical-grid/controls.md). This plan is a work programme, not approval to purchase or construct.
+Planning baseline: **8 October 2026**. Status: **execution approved by the engineer on 8 October 2026**. Read [AGENTS.md](../../AGENTS.md) and the [controls brief](../../docs/electrical-grid/controls.md). This plan is a work programme, not approval to purchase or construct.
 
 Finish the coordinated design of lighting, loudspeakers, microphones, fans and the dynamic air system, then their concealed electrical routes, DB-1/DB-2 distribution, physical controls and quick modes. Position, specification and operation are one design problem. The engineer's 8 October instruction makes concealment inside and outside the church a requirement, including equipment bodies and cables. The [web roadmap](../README.md) follows this engineering track.
 
 ## Approval and starting revision
 
 - The requested integration is complete: `6ecd7fb` merges all 21 commits from `codex/church-web-roadmap` into `main`, without rewriting history. Both branches were pushed to origin.
-- The proposed plan is on `eng/00-plan`, branched from that main revision. Committing/pushing the plan does not approve or execute it; leave this proposal branch unmerged until the engineer approves the plan.
-- On approval, record the decision, merge/push the verified plan to main, and start `eng/01-baseline`. There is no further routine phase-start approval: complete each exit gate, merge/push, report the handover and continue automatically.
+- Plan proposal `cf8ddd8` was committed/pushed on `eng/00-plan`, branched from that main revision. The engineer approved it in this chat on 8 October 2026: “Sure, approved it”.
+- Record this approval, merge/push the verified plan to main, and start `eng/01-baseline`. There is no further routine phase-start approval: complete each exit gate, merge/push, report the handover and continue automatically.
 - Plan approval authorizes the workflow. It does not approve unresolved dimensions, acceptance criteria, product selections, concealment exceptions, physical hardware or construction release. Request only the specific missing decision when it becomes necessary.
 
 ## Roadmap and dependencies

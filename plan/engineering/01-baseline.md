@@ -1,6 +1,6 @@
 # Phase 01 — Baseline and design basis
 
-Status: **not started; plan approval required**. Branch: `eng/01-baseline`, from current main. Depends on approval of the [engineering roadmap](README.md). Read [AGENTS.md](../../AGENTS.md), the [systems brief](../../docs/interior-systems-plan.md), [methods](../../docs/simulator/methods-and-limitations.md), [controls](../../docs/electrical-grid/controls.md) and [register workflow](../../docs/electrical-grid/register.md).
+Status: **not started; plan approved 8 October 2026**. Branch: `eng/01-baseline`, from current main. Depends on the approved [engineering roadmap](README.md). Read [AGENTS.md](../../AGENTS.md), the [systems brief](../../docs/interior-systems-plan.md), [methods](../../docs/simulator/methods-and-limitations.md), [controls](../../docs/electrical-grid/controls.md) and [register workflow](../../docs/electrical-grid/register.md).
 
 ## Outcome
 
