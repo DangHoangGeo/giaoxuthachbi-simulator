@@ -12,7 +12,8 @@ If the 3D view cannot start, the page shows a recovery message and reference ima
 Try the lighter graphics option to reduce graphics-memory use.
 
 Explore: drag to orbit, scroll/pinch to zoom, right-drag to pan.
-Walk: W A S D / arrow keys to move, drag to look; touch joystick on phones.
+Walk: W A S D / arrow keys to move; drag the scene to look around (it follows
+the pointer, as in Explore); touch joystick on phones.
 Esc leaves Walk mode. References opens the nine retained reference images.
 
 The original architectural drawings and measurement workbook govern dimensions.
@@ -45,10 +46,19 @@ Geometry checks: ../scripts/verify_model.cjs (run with Node.js).
 INTERIOR AND SYSTEMS STUDY — 5 OCTOBER 2026
 View settings → Seating layout: 2 wide blocks with 4.65 m long benches,
 or 4 blocks with 1.73–1.86 m short benches. These are furniture proposals.
-Both options add two complete rows in each bay 2–3, 4–5 and 8–9.
-Totals: 2 blocks = 19 rows / 38 benches; 4 blocks = 25 rows / 100 benches.
+Both options add two complete rows in each bay 2–3 and 4–5, and one in bay 8–9.
+The front row before the sanctuary (X 35.79 m) was removed on 7 October 2026.
+Columns, beams and roof timbers are red lacquer with gilding, as the sanctuary;
+the roof lining stays ivory (Settings → Structural timber tone offers natural
+timber). Sanctuary lamp outputs were lowered so the blue recess and the red
+lacquer keep their colour at night: see ../docs/sanctuary-model.md.
+Totals: 2 blocks = 18 rows / 36 benches; 4 blocks = 24 rows / 96 benches.
 Door-bay cross aisles are now proposed at 1.20 m; final access review is pending.
 The switch updates furniture, walk collisions, minimap and exported geometry.
+The indoor palms are hidden in the 2-block layout and restored with 4 blocks.
+Window glass starts Coloured: curved heads, including the entrance-door heads,
+have leaded coloured glass; the lower window bodies remain transparent clear
+glass. Full-height saint panels are removed. Clear mode removes the head colours.
 Seated: near centre aisle / near side aisle compares positions at 1.15 m eye height.
 Open planning/index.html for the interactive plan, system zones and example
 energy worksheet. Full researched brief: planning/brief.html; editable source:
@@ -56,5 +66,85 @@ energy worksheet. Full researched brief: planning/brief.html; editable source:
 no air conditioning, as confirmed by the owner. Attendance/supply rating pending.
 Seat samples are not approved capacity. Sightline rays only check structural
 columns/piers against one point per target; people and other obstructions are
-excluded. No photometric, acoustic or airflow prediction or live controls.
+excluded. Light, sound and airflow estimates: see DESIGN SIMULATOR below.
 Rebuild geometry-derived plan data: node ../scripts/verify_model.cjs --plan.
+
+
+DESIGN SIMULATOR — 6 OCTOBER 2026
+Header → Simulator opens a test bench for lights, fans, loudspeakers,
+microphones and decoration. Every object has its own on/off switch; circuits,
+dimmers and scenes (Full service, Weekday Mass, Prayer, Christmas, Cleaning,
+Night security, All off) switch groups. Click an object to edit its position,
+aim, lumens, colour temperature, beam, fan speed, speaker level, delay and
+beam opening. Add products from the catalogue by clicking a beam, ceiling,
+wall, column or floor; click once to select, then drag to move (Shift-drag
+changes height). Ctrl+Z / Ctrl+Shift+Z undo and redo. The layout is saved in
+this browser and can be downloaded as .json (layout) or .csv (schedule).
+
+Analysis colours the plan by light (lux), speech level, clarity (STI), air
+speed or noise, lists results at 288 sampled nave seats against the brief, shows
+reverberation time per octave and runs design checks: light through fan
+blades, clearances, low chandeliers, items in aisles, microphone feedback,
+overdriven speakers, fans at candles or microphones, echo and dim seats.
+It also estimates electricity per circuit and per month.
+
+Sound → Listen in the church plays Vietnamese or English speech, organ, STIPA,
+pink noise, a clap, a sweep, your own recording or your microphone through
+every loudspeaker, with real distance delays, coverage, HRTF direction and
+this room's computed reverberation. Use headphones and walk or sit.
+
+The model opens with a recommended design (projectors under the tie beams,
+three large slow fans, steerable column loudspeakers with aligned delays,
+half acoustic roof lining, timber acoustic slats in the entrance hall).
+Settings → Restore the recommended design.
+Full service, evening: about 262 lux on books (99 % of seats ≥ 200 lux),
+STI 0.62 (min 0.56, 81 % of seats ≥ 0.60), 66 dBA speech with stable
+microphones, 41 dBA background, 0.46 m/s seated air, 4.2 kW.
+No design check warnings.
+Verandas: a lantern at every pier, about 40 lux on the floor.
+
+Scale: the main dimensions match the drawings. Tie beams, side beams and
+purlins now follow section sheet 4; roof bracing that is not on the drawings
+is hidden (Settings → Show earlier proposed truss bracing). The walking lens
+is a natural 75° horizontal (adjustable), 1.4 m/s at 1.60 m eye height.
+The entrance hall behind the main doors had no roof; it now has the +8.39 m
+terrace slab from the front elevation and a gable wall on axis 2′ above it
+(inferred from the elevations; confirm with CAD).
+
+All results are engineering estimates for comparing options. They are not
+certified lighting, acoustic, airflow or electrical design and do not control
+real devices. Guide and results: ../docs/simulator/guide.md.
+Checks: node ../scripts/verify_simulator.cjs --report
+
+ELECTRICAL ROUTING STUDY — 5 OCTOBER 2026
+Simulator → Wiring → Systems only hides the building and retains selectable
+boards, cables and connected equipment. Restore building restores visibility.
+The existing service-room main board, lighting controls, fan controls and audio
+rack are retained; DB-2 remains inside the main doors. Every wire can be selected
+in 3D, in the flat route plan or in the individual run list. Routes update when
+components move, change circuits, are added, removed, hidden, or restored.
+The 5 October study had 254 connected components and 297 selectable runs.
+The 7 October coordinated export has 286 connected components and 329 runs.
+Flat board schedules show grouped quantities, model sizes and category specs.
+JSON/CSV export the current layout. Cable sizing and final product specifications
+are pending; routes, enclosures and internal arrangements are planning proposals.
+Documentation and saved default exports: ../docs/electrical-grid/README.md.
+Equipment/line/route-point files by usage: ../docs/electrical-grid/categories/README.md.
+Total quantities, usage and quality: ../docs/electrical-grid/summary-report.md.
+Register refresh and position proposals: ../docs/electrical-grid/register.md.
+Wiring checks: node ../scripts/verify_simulator.cjs --electrical.
+
+LIGHTING REVIEW — 5 OCTOBER 2026
+All six exterior side doors now have two matching lanterns. Only the middle
+front door has a decorative pair; both service-room doors also have pairs.
+The towers have matching warm washes on their front and outer faces, belfries
+and domes, with projecting arms keeping the heads clear of the masonry.
+Every switched-on lamp retains illumination and reflections at every distance.
+Additional surface lighting is drawn from real lamp positions, never from
+midpoints near speakers. Switches, dimmers and layout edits update all effects.
+Simulator → Settings → Rendering quality keeps full resolution, illumination,
+reflections and the same shadow sources. Room brightness follows surfaces,
+not camera location. Fixed exposure is the default; automatic eye adaptation
+is optional and deliberately changes brightness while moving.
+Saved layouts receive only the reviewed lights once; other edits are retained.
+Lighting schedule: ../docs/systems/lighting.md.

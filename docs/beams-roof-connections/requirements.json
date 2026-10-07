@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 1,
+  "documentRevision": 1,
+  "date": "2026-10-07",
+  "project": "Thạch Bi Church",
+  "releaseStatus": "DESIGN_DEVELOPMENT_NOT_FOR_CONSTRUCTION",
+  "engineeringApproved": false,
+  "units": "m unless explicitly stated",
+  "coordinates": {
+    "X": "entrance toward sanctuary",
+    "Y": "up",
+    "Z": "transverse, negative B/C/D and positive E/G/H"
+  },
+  "userConfirmed": [
+    "Exactly two central timber columns per typical transverse frame",
+    "Outer left and right supports are concrete",
+    "Timber transverse beams continue into both side aisles",
+    "Longitudinal timber members connect successive frames at column and roof levels"
+  ],
+  "sourcePriority": [
+    "Checked approved project structural design for capacity and joints, when available",
+    "Reconciled architectural source drawings for dimensions",
+    "Owner material and visual requirements",
+    "Generated concepts for ornament only"
+  ],
+  "geometry": {
+    "innerColumnZ": {
+      "value": [
+        -3.6,
+        3.6
+      ],
+      "unit": "m",
+      "status": "MODEL_TRANSCRIPTION"
+    },
+    "outerConcreteZ": {
+      "value": [
+        -7.36,
+        7.36
+      ],
+      "unit": "m",
+      "status": "MODEL_TRANSCRIPTION"
+    },
+    "longitudinalX": {
+      "value": {
+        "3": 9.975,
+        "4": 14.475,
+        "5": 18.975,
+        "6": 23.475,
+        "7": 27.975,
+        "8": 32.475,
+        "9": 36.975,
+        "10": 44.175,
+        "11": 48.675
+      },
+      "unit": "m",
+      "status": "MODEL_TRANSCRIPTION"
+    },
+    "ridgeDatum": {
+      "value": 12.472,
+      "unit": "m",
+      "status": "DRAWING_SHOWN",
+      "note": "Architectural datum, not structural member centerline"
+    },
+    "eaveDatum": {
+      "value": 7.13,
+      "unit": "m",
+      "status": "DRAWING_SHOWN"
+    },
+    "roofHalfRun": {
+      "value": 7.36,
+      "unit": "m",
+      "status": "MODEL_TRANSCRIPTION"
+    },
+    "roofPitch": {
+      "value": 35.97271599980672,
+      "unit": "degrees",
+      "status": "DERIVED"
+    },
+    "mainTie": {
+      "sizeM": [
+        0.3,
+        0.59
+      ],
+      "sizeAxes": [
+        "X",
+        "Y"
+      ],
+      "bottomY": 8.59,
+      "topY": 9.18,
+      "status": "MODEL_TRANSCRIPTION",
+      "engineeringApproved": false
+    },
+    "sideBeam": {
+      "sizeM": [
+        0.22,
+        0.34
+      ],
+      "sizeAxes": [
+        "X",
+        "Y"
+      ],
+      "bottomY": 6.66,
+      "topY": 7.0,
+      "status": "MODEL_TRANSCRIPTION",
+      "engineeringApproved": false
+    },
+    "purlinProxy": {
+      "sizeM": [
+        0.09,
+        0.12
+      ],
+      "sizeAxes": [
+        "Z",
+        "Y"
+      ],
+      "rowIncrementHorizontalM": 0.5,
+      "equivalentSlopeIncrementM": 0.6178203075726765,
+      "status": "CONCEPT",
+      "engineeringApproved": false
+    }
+  },
+  "members": [
+    {
+      "id": "C01",
+      "name": "Central timber columns",
+      "requirement": "Two round visible timber shafts per typical frame at D/E. Species, grade, diameter, base restraint and head net section are ENGINEERING HOLD. Older square-post software variants are not the authority for this reference set.",
+      "engineeringApproved": false
+    },
+    {
+      "id": "C02",
+      "name": "Outer concrete supports",
+      "requirement": "Supports at C/G; pale square piers in the concept images. Confirm actual section, reinforcement, surface finish, cap and anchor zones. Do not replace them with carved timber shafts.",
+      "engineeringApproved": false
+    },
+    {
+      "id": "B01",
+      "name": "Main transverse tie",
+      "requirement": "Crosses the nave between D/E. Preserve the intended restraint/load-transfer role until structural analysis resolves it; do not remove it merely to open the view.",
+      "engineeringApproved": false
+    },
+    {
+      "id": "B02",
+      "name": "Side transverse beams",
+      "requirement": "Connect C–D and E–G, visibly continuous into the side aisles. Show timber-to-concrete support distinctly.",
+      "engineeringApproved": false
+    },
+    {
+      "id": "B03",
+      "name": "Longitudinal column-line beams",
+      "requirement": "Run along X between successive frames at the required support levels. Represent the end bearing and connection at each frame; a continuous visual mesh does not prove physical continuity.",
+      "engineeringApproved": false
+    },
+    {
+      "id": "R01",
+      "name": "Principal roof members",
+      "requirement": "Establish each transverse roof frame and support the roof-level longitudinal members. Their frame action, thrust restraint and support reactions need calculation.",
+      "engineeringApproved": false
+    },
+    {
+      "id": "R02",
+      "name": "Longitudinal purlins",
+      "requirement": "Run parallel to X along both roof slopes and bear on successive principal frames. Spacing follows the approved roof build-up and calculation, not the image count.",
+      "engineeringApproved": false
+    },
+    {
+      "id": "R03",
+      "name": "Ridge-line member",
+      "requirement": "Connects the roof-apex locations in the concept. Determine whether it is a structural ridge beam, purlin or alignment member; these are not interchangeable. A decorative ridge cap is not this member.",
+      "engineeringApproved": false
+    },
+    {
+      "id": "S01",
+      "name": "Stability system",
+      "requirement": "Roof-plane diaphragm/bracing and longitudinal restraint must provide a designed route for horizontal forces to the supporting structure and foundations. Ordinary boards and purlins are not automatically a verified diaphragm.",
+      "engineeringApproved": false
+    },
+    {
+      "id": "O01",
+      "name": "Ornament",
+      "requirement": "Carved collars, haunches, floral beam faces, short uprights and curved rails. Classify each as applied decoration or calculated structural timber. Do not assume the decorative arch supports the roof.",
+      "engineeringApproved": false
+    }
+  ],
+  "connections": [
+    {
+      "id": "J01",
+      "interface": "Central column to transverse tie",
+      "requiredResolution": "Show column axis, beam underside, effective bearing and carved envelope separately. Resolve shear, bearing perpendicular to grain, splitting, withdrawal/uplift, any tie axial force and actual joint rotational stiffness. Check the residual column/beam section after mortises or carving.",
+      "status": "ENGINEERING_HOLD",
+      "fastenerSchedule": null,
+      "bearingLengthM": null,
+      "designActions": null,
+      "verifiedCapacity": null,
+      "approvedDrawing": null
+    },
+    {
+      "id": "J02",
+      "interface": "Side beam to central timber column",
+      "requiredResolution": "Show the lower beam entering the column below the main tie, at drawing-controlled elevation. Check interaction between intersecting joints, edge/end distances and the remaining timber ligament; do not place separate decorative joints through the same unverified material volume.",
+      "status": "ENGINEERING_HOLD",
+      "fastenerSchedule": null,
+      "bearingLengthM": null,
+      "designActions": null,
+      "verifiedCapacity": null,
+      "approvedDrawing": null
+    },
+    {
+      "id": "J03",
+      "interface": "Side beam to concrete support",
+      "requiredResolution": "Show the real bearing seat and timber/concrete boundary. Design bearing, uplift anchorage, lateral restraint, concrete breakout/edge conditions and reinforcement coordination. Resolve moisture separation, drainage, movement allowance and inspection access without inventing a standard seat size.",
+      "status": "ENGINEERING_HOLD",
+      "fastenerSchedule": null,
+      "bearingLengthM": null,
+      "designActions": null,
+      "verifiedCapacity": null,
+      "approvedDrawing": null
+    },
+    {
+      "id": "J04",
+      "interface": "Longitudinal beam to frame/column",
+      "requiredResolution": "Show continuity along X and a supported end at each frame. Calculate gravity and any axial/lateral demands, torsion from eccentricity, joint slip and uplift. Define whether the joint is pinned, partially restrained or moment resisting in the analysis.",
+      "status": "ENGINEERING_HOLD",
+      "fastenerSchedule": null,
+      "bearingLengthM": null,
+      "designActions": null,
+      "verifiedCapacity": null,
+      "approvedDrawing": null
+    },
+    {
+      "id": "J05",
+      "interface": "Purlin to principal roof member",
+      "requiredResolution": "Show both contact surfaces and roof pitch; resolve bearing, sliding down the slope, rotation/restraint and uplift. Any notch must have a checked net section. Keep ornamental rails out of the assumed load path.",
+      "status": "ENGINEERING_HOLD",
+      "fastenerSchedule": null,
+      "bearingLengthM": null,
+      "designActions": null,
+      "verifiedCapacity": null,
+      "approvedDrawing": null
+    },
+    {
+      "id": "J06",
+      "interface": "Ridge member at frame apex",
+      "requiredResolution": "Identify the ridge member's structural function and its support reaction. Detail bearing/connection to the actual principal frame. Do not use the floral crown as a support or hide an unsupported ridge behind it.",
+      "status": "ENGINEERING_HOLD",
+      "fastenerSchedule": null,
+      "bearingLengthM": null,
+      "designActions": null,
+      "verifiedCapacity": null,
+      "approvedDrawing": null
+    },
+    {
+      "id": "J07",
+      "interface": "Longitudinal member splice",
+      "requiredResolution": "Identify an engineered splice location and its force envelope. A splice above a support can still carry uplift or axial load; proximity to a support alone is not a capacity check. Define grain direction, fasteners, slip and inspectability.",
+      "status": "ENGINEERING_HOLD",
+      "fastenerSchedule": null,
+      "bearingLengthM": null,
+      "designActions": null,
+      "verifiedCapacity": null,
+      "approvedDrawing": null
+    },
+    {
+      "id": "J08",
+      "interface": "Roof-plane/longitudinal bracing node",
+      "requiredResolution": "Identify actual braced bays or designed diaphragm, collectors and anchorage. Calculate force reversal and any tension-only action, stiffness and transfer into concrete/timber supports. Temporary erection bracing is a separate requirement.",
+      "status": "ENGINEERING_HOLD",
+      "fastenerSchedule": null,
+      "bearingLengthM": null,
+      "designActions": null,
+      "verifiedCapacity": null,
+      "approvedDrawing": null
+    },
+    {
+      "id": "J09",
+      "interface": "Carved haunch or applied ornament",
+      "requiredResolution": "State whether the piece has a structural function. Applied ornament needs its own safe attachment and maintenance access; load-bearing carving needs calculation of its actual residual section. Never credit a decorative mesh as structural restraint.",
+      "status": "ENGINEERING_HOLD",
+      "fastenerSchedule": null,
+      "bearingLengthM": null,
+      "designActions": null,
+      "verifiedCapacity": null,
+      "approvedDrawing": null
+    },
+    {
+      "id": "J10",
+      "interface": "Axes 9–10 and valley junctions",
+      "requiredResolution": "Resolve the wider bay, intersecting roof geometry, cut purlins, valley support and load concentration. Every interrupted member needs a designed support/load transfer; do not simply trim the mesh and leave a floating end.",
+      "status": "ENGINEERING_HOLD",
+      "fastenerSchedule": null,
+      "bearingLengthM": null,
+      "designActions": null,
+      "verifiedCapacity": null,
+      "approvedDrawing": null
+    }
+  ],
+  "spanSensitivity": {
+    "assumptions": "Simply supported prismatic beam, uniform line load, same w/E/I; grid spacing only a provisional span proxy",
+    "typicalSpanM": 4.5,
+    "wideSpanM": 7.2,
+    "momentRatio": 2.56,
+    "reactionRatio": 1.6,
+    "deflectionRatio": 6.5536,
+    "capacityVerified": false
+  },
+  "engineeringInputs": {
+    "timberSpecies": null,
+    "timberGrade": null,
+    "timberMoistureBasis": null,
+    "timberDesignProperties": null,
+    "approvedSections": null,
+    "roofDeadLoad": null,
+    "maintenanceLoad": null,
+    "equipmentPointLoads": null,
+    "windDesign": null,
+    "seismicDesignBasis": null,
+    "governingStandards": null,
+    "connectionSchedule": null,
+    "concreteReinforcementAndAnchors": null,
+    "bracingScheme": null,
+    "erectionPlan": null,
+    "engineerApproval": null
+  },
+  "aiRules": [
+    "Read SPECIFICATION.md and this file before generating or editing models",
+    "Do not infer structural sizes or joints from image pixels",
+    "Do not replace concrete outer columns with timber",
+    "Do not label visual mesh sizes as structurally approved",
+    "Use null for unresolved engineering inputs; do not invent values",
+    "Keep structural cores separate from decorative geometry",
+    "Model longitudinal members with endpoint supports and explicit continuity/splices",
+    "Resolve or flag valley cuts and wider bay spans; no unsupported trimmed ends",
+    "Preserve datum/source/status metadata in exports",
+    "Do not automatically remove the drawn tie beam to match a generated decorative arch"
+  ],
+  "requiredViews": [
+    "full transverse frame",
+    "longitudinal two-frame view",
+    "roof-open oblique",
+    "timber-to-concrete bearing",
+    "column-head underside"
+  ],
+  "imageManifest": "image-manifest.json",
+  "specification": "SPECIFICATION.md",
+  "references": [
+    {
+      "title": "WoodWorks Mass Timber Technical Reference Guide",
+      "url": "https://www.woodworks.org/mass-timber-technical-reference-guide/",
+      "role": "Background resources only; not governing local design rules"
+    }
+  ]
+}

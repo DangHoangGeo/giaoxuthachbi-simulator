@@ -7,22 +7,35 @@
   const stairs = [];
   let context;
   const doorGroups = {};
-  const api = window.CHURCH_REALISM = { prepare, lighting, finish, floorHeight, walkAllowed, bindBatches, update };
-  let doorBatches, lastMode;
+  const api = window.CHURCH_REALISM = { prepare, lighting, finish, floorHeight, walkAllowed, bindBatches, update, setOpenings, setGlass };
+  let doorBatches, lastMode, openings = 'auto', glassKind = 'stained', lightMode = 'day';
   function bindBatches(batches) {
     doorBatches = {closed:batches.get(doorGroups.closed), open:batches.get(doorGroups.open)};
+    // Glass passes daylight: no glazed batch casts a shadow.
+    for(const group of batches.values())group.traverse(o=>{if(o.isMesh&&context.artGlass.some(a=>a.m===o.material))o.castShadow=false;});
     update('explore');
+    document.getElementById('openingsMode')?.addEventListener('change',event=>setOpenings(event.target.value));
+    document.getElementById('glassMode')?.addEventListener('change',event=>setGlass(event.target.value));
+    const glassSelect=document.getElementById('glassMode');
+    if(glassSelect)glassSelect.value=glassKind;
     const landscape=[...batches.entries()].find(([group])=>group.name==='Two rows of courtyard trees')?.[1];
     document.getElementById('treesToggle')?.addEventListener('change',event=>{
       landscape.visible=event.target.checked;
       context.renderer.shadowMap.needsUpdate=true;
     });
   }
+  // Doors and window shutters: 'auto' opens them while walking.
+  function setOpenings(mode) {
+    openings = ['open','closed'].includes(mode) ? mode : 'auto';
+    const m = lastMode; lastMode = null; update(m || 'explore');
+    return openings;
+  }
   function update(mode) {
     if (!doorBatches || mode === lastMode) return;
     lastMode = mode;
+    const open = openings === 'auto' ? mode === 'walk' : openings === 'open';
     for (const [state,group] of Object.entries(doorBatches)) {
-      group.visible = state === (mode === 'walk' ? 'open' : 'closed');
+      group.visible = state === (open ? 'open' : 'closed');
       doorGroups[state].userData.active = group.visible;
     }
     context.renderer.shadowMap.needsUpdate = true;
@@ -42,6 +55,18 @@
     return null;
   }
   function walkAllowed(x,z) {
+    const az=Math.abs(z);
+    // Shrine jambs on the column line; keep the central 1.44 m entrance open.
+    if(x>=43.95 && x<=45.5 && az>=3.7 && az<=7.25 && Math.abs(az-5.5)>=.7)return false;
+    // Lacquered chamber walls on the D/E lines, from the axis-10 columns back to axis 11.
+    if(x>=44.4 && x<=48.6 && az>=3.2 && az<=3.85)return false;
+    // Sanctuary fit-out: the open service room is bounded by the C/G walls and the
+    // rear gable (its doors are closed); side benches, furniture.
+    if (x >= 48.7 && x <= 53.4 && az > 7.1 && az < 7.6) return false;
+    if (x >= 52.7 && x <= 53.4 && az < 7.6) return false;
+    if (x >= 37.7 && x <= 43.45 && Math.abs(x - 40.575) > .42 && [8.35,9.25,10.15,11.05,11.95].some(r => Math.abs(az - r) < .33)) return false;
+    if (x >= 52.1 && x <= 53.1 && az < 3.1) return false;
+    if (x >= 48.7 && x <= 49.8 && z >= 1.0 && z <= 1.8) return false;
     if (x >= -13.219 && x <= -.38 && Math.abs(z) <= 13.05) return true;
     if (stairAllowed(x,z)) return true;
     return null;
@@ -171,7 +196,40 @@
     surface(mat.floor,'marble',3.6,'#c3c2bc',.48,.008);
     surface(mat.ground,'paving',4.8,'#e5e5dd',.65,.012);
     surface(mat.wood,'wood',1.8,'#b38d68',.39,.009);
-    mat.glass.color.set('#4e4536');mat.glass.roughness=.3;mat.recess.color.set('#302319');
+    mat.recess.color.set('#302319');
+    // One glazing plane per opening: clear bodies with coloured curved heads.
+    // The old full-height interior artwork duplicated the structural panes.
+    const art=window.CHURCH_GLASS_ART;
+    function glassTexture(canvas,name,repeat){
+      const t=new T.CanvasTexture(canvas);t.colorSpace=T.SRGBColorSpace;t.anisotropy=anisotropy;t.name=name;
+      if(repeat){t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(...repeat);}
+      return t;
+    }
+    const originalGlass=mat.glass;
+    mat.glass=new T.MeshPhysicalMaterial({name:'Clear float glass · window bodies',side:T.DoubleSide,
+      metalness:0,roughness:.045,ior:1.52,clearcoat:.35,clearcoatRoughness:.08,
+      transparent:true,opacity:.14,depthWrite:false,envMapIntensity:.85});
+    const artGlass=[{m:mat.glass,map:null}];
+    function artMaterial(canvas,name){
+      const m=mat.glass.clone(),maps=art.surfaceMaps(canvas);m.name=name;
+      const bump=glassTexture(maps.bump,`${name} · rolled surface`),rough=glassTexture(maps.roughness,`${name} · lead and glass roughness`);
+      bump.colorSpace=rough.colorSpace=T.NoColorSpace;
+      artGlass.push({m,map:glassTexture(canvas,name),bump,rough});return m;
+    }
+    ctx.artGlass=artGlass;
+    const fanCache=new Map();
+    function fanMaterial(index,dims){
+      const key=`${index%art.FAN_DESIGNS.length}|${JSON.stringify(dims)}`;
+      if(!fanCache.has(key))fanCache.set(key,artMaterial(art.fanlight(art.FAN_DESIGNS[index%art.FAN_DESIGNS.length],dims),`Stained-glass fanlight ${index+1}`));
+      return fanCache.get(key);
+    }
+    const glazing=[];interior.group.traverse(o=>{if(o.isMesh&&/^Proposed coloured glazing/.test(o.name))glazing.push(o);});
+    glazing.forEach(o=>o.removeFromParent());
+    const existingGlass=[];building.traverse(o=>{if(o.isMesh&&o.material===originalGlass)existingGlass.push(o);});
+    for(const o of existingGlass)o.material=mat.glass;
+    let roseMat=null;
+    building.traverse(o=>{if(o.isMesh&&o.name==='Schematic rose-window infill'){roseMat??=artMaterial(art.rose(),'Stained-glass rose');o.material=roseMat;}});
+    applyGlass();
     mat.metal.color.set('#927043');mat.metal.metalness=.72;mat.metal.roughness=.29;
     mat.wall.name='Ivory mineral plaster · reference finish';mat.roof.name='Terracotta tile · reference finish';
     mat.foundation.name='Gray stone plinth · reference finish';
@@ -254,7 +312,36 @@
     for(const leaf of all.filter(o=>o.name.startsWith('Open side door leaf')))leaf.parent.removeFromParent();
     const sideBays=all.filter(o=>o.name.startsWith('Outer veranda'));
     function pane(shape,parent,material,name){const m=mesh(new T.ShapeGeometry(shape,24),material,parent,name);m.position.z=.10;return m;}
+    // A pane whose UVs run 0–1 across the opening, for the artwork.
+    let fanIndex=0;
+    function fanPane(shape,parent,material,name,x,bottom,width,height){
+      const m=pane(shape,parent,material,name),uv=m.geometry.attributes.uv,pos=m.geometry.attributes.position;
+      for(let i=0;i<pos.count;i++)uv.setXY(i,(pos.getX(i)-(x-width/2))/width,(pos.getY(i)-bottom)/height);
+      uv.needsUpdate=true;return m;
+    }
     function arch(x,bottom,width,spring,rise){const s=new T.Shape();s.moveTo(x-width/2,bottom);s.lineTo(x+width/2,bottom);s.lineTo(x+width/2,spring);s.absellipse(x,spring,width/2,rise,0,Math.PI,false);s.lineTo(x-width/2,bottom);return s;}
+    function artworkUV(o,x,bottom,width,height){
+      const uv=o.geometry.attributes.uv,pos=o.geometry.attributes.position;
+      for(let i=0;i<pos.count;i++)uv.setXY(i,(pos.getX(i)-(x-width/2))/width,(pos.getY(i)-bottom)/height);
+      uv.needsUpdate=true;
+    }
+    // Split the traced C/G windows at the spring line, retaining source sizes.
+    for(const o of existingGlass){
+      if(o.name==='Opening infill'&&Math.abs(Math.abs(o.parent.position.z)-7.36)<.001){
+        const spring=3.171,rise=1.14,width=2.25,bottom=.65;
+        const body=new T.Shape();body.moveTo(-width/2,bottom);body.lineTo(width/2,bottom);body.lineTo(width/2,spring);body.lineTo(-width/2,spring);body.closePath();
+        o.geometry=new T.ShapeGeometry(body);o.name='Inner window clear glass body';o.castShadow=false;
+        const head=fanPane(arch(0,spring,width,spring,rise),o.parent,
+          fanMaterial(fanIndex++,{width,bottom:spring,spring,rise,sectors:8}),'Inner window coloured oval',0,spring,width,rise);
+        head.position.copy(o.position);head.castShadow=false;
+        box(width,.045,.045,0,spring,o.position.z,mat.metal,o.parent,'Inner window transom');
+      }else if(o.name.startsWith('Side doorway fixed fanlight')||o.name.startsWith('Upper entrance fanlight')){
+        o.geometry.computeBoundingBox();const b=o.geometry.boundingBox,width=b.max.x-b.min.x,rise=b.max.y-b.min.y,x=(b.min.x+b.max.x)/2,spring=b.min.y;
+        o.material=fanMaterial(fanIndex++,{width,bottom:spring,spring,rise,sectors:8});
+        artworkUV(o,x,spring,width,rise);o.castShadow=false;
+        o.name=o.name.startsWith('Upper entrance')?'Entrance door coloured oval':'Inner doorway coloured oval';
+      }
+    }
     function panels(leaf,width,height) {
       for(const face of [-1,1])for(let row=0;row<3;row++) {
         const y=height*(.18+row*.31),pw=width*.74,ph=height*.255;
@@ -276,7 +363,7 @@
     for(const bay of sideBays) {
       const door=/ (4–5|8–9|10–11)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
       if(door) {
-        pane(arch(0,3.04,2.25,3.101,1.14),bay,mat.glass,'Outer door fixed fanlight');
+        fanPane(arch(0,3.04,2.25,3.101,1.14),bay,fanMaterial(fanIndex++,{width:2.25,bottom:3.04,spring:3.101,rise:1.14,sectors:8}),'Outer door fixed fanlight',0,3.04,2.25,1.201);
         box(2.25,.11,.16,0,3.04,.13,mat.wood,bay,'Outer doorway timber transom');
         for(let k=1;k<8;k++){const a=k*Math.PI/8;rod([0,3.08,.13],[Math.cos(a)*1.06,3.101+Math.sin(a)*1.07,.13],.022,mat.metal,bay,'Fanlight radial bronze bar');}
         for(const state of ['closed','open']) {
@@ -289,11 +376,28 @@
           }
         }
       } else {
+        // Half-round glazed fanlight over a timber transom, like the doors;
+        // the shutter pair below swings out with the doors.
         for(const x of wing?[-2.4,2.4]:[-1,1]) {
-          pane(arch(x,.85,1,3.101,.507),bay,mat.wood,'Outer arched timber shutter');
-          for(const sign of [-1,1])box(.034,2.15,.07,x+sign*.39,1.98,.14,mat.wood,bay,'Timber shutter frame');
-          box(.045,2.25,.07,x,1.975,.14,mat.wood,bay,'Shutter meeting stile');
-          for(const y of [1.06,1.98,2.98])box(.94,.045,.07,x,y,.14,mat.wood,bay,'Shutter panel rail');
+          const body=new T.Shape();body.moveTo(x-.5,.85);body.lineTo(x+.5,.85);body.lineTo(x+.5,3.0);body.lineTo(x-.5,3.0);body.closePath();
+          const clearPane=pane(body,bay,mat.glass,'Outer window clear glass body');clearPane.castShadow=false;
+          fanPane(arch(x,3.0,1,3.101,.507),bay,fanMaterial(fanIndex++,{width:1,bottom:3.0,spring:3.101,rise:.507,sectors:6}),'Window stained-glass fanlight',x,3.0,1,.608);
+          box(1,.085,.15,x,3.0,.13,mat.wood,bay,'Window timber transom');
+          for(let k=1;k<6;k++){const a=k*Math.PI/6;rod([x,3.04,.13],[x+Math.cos(a)*.47,3.101+Math.sin(a)*.475,.13],.016,mat.metal,bay,'Fanlight radial bronze bar');}
+          rod([x-.49,3.101,.13],[x+.49,3.101,.13],.012,mat.metal,bay,'Fanlight spring bar');
+          for(const state of ['closed','open']) {
+            const frame=new T.Group();frame.position.copy(bay.position);frame.rotation.copy(bay.rotation);doorGroups[state].add(frame);
+            for(const sign of [-1,1]) {
+              const hinge=new T.Group();hinge.position.set(x+sign*.5,.85,.10);hinge.rotation.y=state==='closed'?0:sign*1.5;frame.add(hinge);
+              const leaf=new T.Group();leaf.position.x=-sign*.25;hinge.add(leaf);
+              box(.49,2.1,.06,0,1.05,0,mat.wood,leaf,'Window timber shutter leaf');
+              for(const face of [-1,1]){
+                for(const sx of [-1,1])box(.04,2.1,.03,sx*.225,1.05,face*.04,mat.wood,leaf,'Shutter stile');
+                for(const y of [.04,.72,1.38,2.06])box(.49,.05,.03,0,y,face*.04,mat.wood,leaf,'Shutter rail');
+                for(const y of [.38,1.05,1.72])box(.33,.5,.012,0,y,face*.033,im.woodInset,leaf,'Shutter inset panel');
+              }
+            }
+          }
         }
       }
     }
@@ -341,20 +445,29 @@
       for(const axis of [-1,1])rod([x,8.92,z],[x+axis*.8,9.16,z],.075,im.timber,roofs,'Timber knee brace · proposed section');
     }
     // Section sheet 5: a three-lobed opening under the sanctuary roof.
-    // The curve radii/depth and longitudinal bay placement remain provisional.
+    // The plaster frame closes the sanctuary at axis 11 (its back wall), so the
+    // timber columns on axis 10 stand free in front of it, as in the reference
+    // interior. Curve radii and depth remain provisional.
+    const SX=data.longitudinal['11'];
     const sanctuaryFrame=new T.Group();sanctuaryFrame.name='Sanctuary three-lobed frame · section sheet 5';
-    sanctuaryFrame.position.x=44.175;sanctuaryFrame.rotation.y=-Math.PI/2;structure.add(sanctuaryFrame);
+    sanctuaryFrame.position.x=SX;sanctuaryFrame.rotation.y=-Math.PI/2;structure.add(sanctuaryFrame);
     const obsoleteTies=[];
     roofs.traverse(o=>{
-      if(o.isMesh&&Math.abs(o.position.x-44.175)<.01&&/transverse tie|knee brace|truss diagonal|king post|connection block/i.test(o.name))obsoleteTies.push(o);
+      if(o.isMesh&&Math.abs(o.position.x-SX)<.01&&/transverse tie|knee brace|truss diagonal|king post|connection block/i.test(o.name))obsoleteTies.push(o);
     });
     obsoleteTies.forEach(o=>o.removeFromParent());
-    function lobedFrame(cx,half,spring,shoulder,crown,roofEnd,roofCrown) {
+    floors.traverse(o=>{if(o.name.startsWith('Sanctuary separation'))obsoleteTies.push(o);});
+    obsoleteTies.forEach(o=>o.removeFromParent());
+    function lobedLine(cx,half,spring,shoulder,crown){
       const line=new T.Shape();line.moveTo(cx-half,spring);
       line.quadraticCurveTo(cx-half,shoulder-.05,cx-half*.58,shoulder);
       line.bezierCurveTo(cx-half*.50,crown,cx-half*.15,crown+.04,cx,crown+.04);
       line.bezierCurveTo(cx+half*.15,crown+.04,cx+half*.50,crown,cx+half*.58,shoulder);
       line.quadraticCurveTo(cx+half,shoulder-.05,cx+half,spring);
+      return line;
+    }
+    function lobedFrame(cx,half,spring,shoulder,crown,roofEnd,roofCrown) {
+      const line=lobedLine(cx,half,spring,shoulder,crown);
       const trace=line.getPoints(48);
       line.lineTo(cx+half,roofEnd);line.lineTo(cx,roofCrown);line.lineTo(cx-half,roofEnd);line.closePath();
       const wall=mesh(new T.ExtrudeGeometry(line,{depth:.32,bevelEnabled:false,curveSegments:32}),mat.wall,sanctuaryFrame,'Sanctuary arch spandrel');wall.position.z=-.16;
@@ -366,9 +479,109 @@
     lobedFrame(0,3.3,8.25,9.38,10.83,9.82,12.18);
     for(const sign of [-1,1]) {
       lobedFrame(sign*5.48,1.58,5.55,6.05,6.8,7.1,7.6);
-      box(.64,8.65,.64,sign*3.6,5.075,0,mat.wall,sanctuaryFrame,'Sanctuary plaster pier on D/E grid');
-      box(.84,.18,.84,sign*3.6,9.42,0,mat.trim,sanctuaryFrame,'Sanctuary pier capital');
+      box(.72,9.25,.72,sign*3.6,4.775,0,mat.wall,sanctuaryFrame,'Sanctuary plaster pier on D/E grid · axis 11');
+      box(.9,.18,.9,sign*3.6,9.42,0,mat.trim,sanctuaryFrame,'Sanctuary pier capital');
+      box(.96,.9,.96,sign*3.6,.6,0,mat.trim,sanctuaryFrame,'Sanctuary pier base');
     }
+    // Axis-10 timber columns now stand on the dais: a stone collar at +0.75.
+    for(const sign of [-1,1])box(.84,.22,.84,data.longitudinal['10'],.86,sign*3.6,im.whiteStone,structure,'Carved stone column base on the dais');
+
+    const fit=new T.Group();fit.name='Sanctuary seating and service room · proposal';building.add(fit);
+    // Back wall inside the central lobed arch, behind the reredos (plain).
+    const back=lobedLine(0,3.3,8.25,9.38,10.83);
+    back.lineTo(3.3,.15);back.lineTo(-3.3,.15);back.closePath();
+    const backWall=mesh(new T.ExtrudeGeometry(back,{depth:.2,bevelEnabled:false,curveSegments:32}),mat.wall,sanctuaryFrame,'Sanctuary back wall behind the reredos');
+    backWall.position.z=-.12;
+    // Seating beside the altar on the +0.15 side platforms: the choir on the
+    // right (H, +z) with three stepped rows and a keyboard; servers and
+    // ministers on the left (B, −z). Benches face the altar across the dais.
+    function sideBench(x0,x1,z,y,face,name){
+      const len=x1-x0,cx=(x0+x1)/2,out=-face;
+      box(len,.07,.42,cx,y+.44,z,im.wood,fit,`${name} seat`);
+      box(len,.5,.06,cx,y+.84,z+out*.22,im.wood,fit,`${name} back`);
+      box(len,.12,.07,cx,y+.13,z+out*.17,im.wood,fit,`${name} rail`);
+      for(const x of [x0+.03,cx,x1-.03]){
+        box(.06,.42,.4,x,y+.21,z,im.wood,fit,`${name} support`);
+      }
+      for(const x of [x0,x1])box(.07,.95,.5,x,y+.47,z+out*.03,im.wood,fit,`${name} end panel`);
+    }
+    // Benches in the two projecting wings between axes 9 and 10 (plan),
+    // facing the nave: choir on the right (H, +z), ministers and servers on
+    // the left (B, −z). Two blocks per row with a 0.9 m centre aisle.
+    const wingRows=[8.35,9.25,10.15,11.05,11.95],wingY=-.32;
+    api.wingSeats=[];
+    for(const sign of [-1,1])wingRows.forEach((az,i)=>{
+      for(const [x0,x1] of [[37.75,40.12],[41.03,43.4]]){
+        sideBench(x0,x1,sign*az,wingY,-sign,`${sign>0?'Choir':'Ministers'} bench · wing row ${i+1}`);
+        // Seats at 0.55 m for the simulator; the book is held toward the nave.
+        const n=Math.floor((x1-x0-.075)/.55);
+        for(let k=0;k<n;k++)api.wingSeats.push({x:(x0+x1)/2+(k-(n-1)/2)*.55,z:sign*az,y:wingY,book:[0,-sign*.25],block:'wing',pew:`${sign>0?'Choir':'Ministers'} bench · wing row ${i+1}`});
+      }
+    });
+    // Choir keyboard at the front of the right wing, beside the nave.
+    box(1.32,.08,.42,40.575,.33,7.75,im.wood,fit,'Choir keyboard case');
+    box(1.22,.03,.16,40.575,.385,7.69,im.whiteStone,fit,'Keyboard keys');
+    for(const x of [40.0,41.15])box(.06,.62,.36,x,-.01,7.75,im.wood,fit,'Keyboard stand side');
+
+    // Service room (nhà áo / sacristy): one open room across the full width
+    // behind the sanctuary back wall, reached from the passages behind the two
+    // shrines through the side arches on axis 11. There are no inner partitions
+    // or doors. A flat ceiling with a downstand edge beam spans the centre bay
+    // from the back wall to the rear gable, over the vesting furniture and the
+    // electrical and sound control; the side bays are open to the roof.
+    const room={x0:SX+.12,x1:53.0,half:3.6,h:4.15};
+    for(const sign of [-1,1])box(room.x1-room.x0,.22,.2,(room.x0+room.x1)/2,room.h-.11,sign*room.half,mat.wall,fit,'Service room ceiling edge beam');
+    // The crucifix niche (sanctuary.js) stands back through the wall onto this slab,
+    // which is notched round its plaster casing.
+    const niche=window.CHURCH_SANCTUARY?.spec.niche,ceilingHalf=room.half+.1;
+    if(niche){
+      const nz=niche.half+niche.shell+.02,nx=niche.endX+.02;
+      for(const sign of [-1,1])box(room.x1-room.x0,.12,ceilingHalf-nz,(room.x0+room.x1)/2,room.h+.06,sign*(ceilingHalf+nz)/2,mat.wall,roofs,'Service room ceiling');
+      box(room.x1-nx,.12,nz*2,(nx+room.x1)/2,room.h+.06,0,mat.wall,roofs,'Service room ceiling');
+    } else box(room.x1-room.x0,.12,ceilingHalf*2,(room.x0+room.x1)/2,room.h+.06,0,mat.wall,roofs,'Service room ceiling');
+    const panelLight=new T.MeshStandardMaterial({color:'#fffaf0',emissive:'#fff3dc',emissiveIntensity:.9});panelLight.name='Service room ceiling panel';
+    for(const x of [50.0,51.9])box(.6,.03,.6,x,room.h-.01,0,panelLight,fit,'Service room LED ceiling panel');
+    // Vesting wardrobe and vesting counter along the rear wall.
+    box(.62,2.15,2.6,52.55,.15+1.075,-1.75,im.wood,fit,'Vestment wardrobe');
+    for(const z of [-2.4,-1.75,-1.1])box(.02,1.95,.02,52.23,1.225,z,mat.metal,fit,'Wardrobe door joint');
+    box(.62,.9,2.2,52.55,.6,1.45,im.wood,fit,'Vesting counter with drawers');
+    box(.68,.05,2.28,52.53,1.075,1.45,im.whiteStone,fit,'Vesting counter top');
+    for(const y of [.4,.7])box(.02,.02,2.0,52.23,y,1.45,mat.metal,fit,'Drawer line');
+    box(.05,.55,.04,52.95,2.1,1.45,im.wood,fit,'Vesting crucifix upright');box(.05,.04,.32,52.95,2.25,1.45,im.wood,fit,'Vesting crucifix arm');
+    box(.8,.04,.8,50.9,.88,0,im.wood,fit,'Service room table');
+    for(const dx of [-.33,.33])for(const dz of [-.33,.33])box(.05,.73,.05,50.9+dx,.515,dz,im.wood,fit,'Table leg');
+    // Electrical and sound control on the back of the sanctuary wall.
+    function label(text,w,h,x,y,z){
+      const c=document.createElement('canvas');c.width=512;c.height=Math.round(512*h/w);const g=c.getContext('2d');
+      g.fillStyle='#f4f1e8';g.fillRect(0,0,c.width,c.height);g.fillStyle='#2b3a36';g.font=`bold ${Math.round(c.height*.42)}px sans-serif`;g.textAlign='center';g.textBaseline='middle';g.fillText(text,c.width/2,c.height/2);
+      const m=new T.MeshBasicMaterial({map:new T.CanvasTexture(c)});m.map.colorSpace=T.SRGBColorSpace;m.name=`Label · ${text}`;
+      const plane=mesh(new T.PlaneGeometry(w,h),m,fit,`Label · ${text}`);plane.position.set(x,y,z);plane.rotation.y=Math.PI/2;plane.castShadow=false;return plane;
+    }
+    const steel=new T.MeshStandardMaterial({color:'#c9ccc8',roughness:.45,metalness:.55});steel.name='Powder-coated steel enclosure';
+    const dark=new T.MeshStandardMaterial({color:'#1d2124',roughness:.5,metalness:.3});dark.name='Equipment rack black';
+    const wx=SX+.12; // room face of the back wall
+    const boards=[
+      {z:-1.55,w:.8,h:1.1,y:1.75,text:'Main board (MSB)'},
+      {z:-.55,w:.8,h:.9,y:1.85,text:'Lighting L1–L7 · scenes'},
+      {z:.4,w:.6,h:.7,y:1.95,text:'Fans · speed control'},
+    ];
+    // DB-2: small sub-board for the towers, façade and entrance, inside the
+    // main doors on the entrance wall (left of the main door), fed from DB-1.
+    box(.16,.62,.46,2.73,1.5,-3.3,steel,fit,'Wall enclosure · DB-2 towers & entrance');
+    label('DB-2 Towers',.4,.09,2.82,1.72,-3.3);
+    for(const [i,c] of ['#4cae5d','#4cae5d','#d9534f'].entries()){const m=new T.MeshBasicMaterial({color:c});m.name='DB-2 indicator';box(.02,.03,.03,2.82,1.5,-3.42+i*.12,m,fit,'DB-2 indicator');}
+    for(const b of boards){
+      box(.2,b.h,b.w,wx+.1,b.y,b.z,steel,fit,`Wall enclosure · ${b.text}`);
+      box(.01,b.h-.08,.01,wx+.205,b.y,b.z+b.w*.32,mat.metal,fit,'Enclosure handle');
+      label(b.text,b.w*.92,.12,wx+.206,b.y+b.h/2+.09,b.z);
+    }
+    box(.05,.05,3.1,wx+.04,2.42,-.55,steel,fit,'Cable tray');
+    // Sound rack: amplifiers, DSP, wireless microphone receivers.
+    box(.8,1.6,.62,wx+.48,.95,1.4,dark,fit,'19-inch sound rack');
+    const ledMat=new T.MeshBasicMaterial({color:'#5df08a'});ledMat.name='Status LEDs';
+    for(let k=0;k<6;k++){box(.02,.16,.52,wx+.885,.45+k*.2,1.4,steel,fit,'Rack unit face');box(.02,.025,.025,wx+.9,.45+k*.2,1.62,ledMat,fit,'Rack status LED');}
+    label('Sound · amps · DSP · mics',.56,.1,wx+.882,1.68,1.4);
+    label('Phòng đồ lễ · Service room',.9,.14,52.98-.01,2.85,0).rotation.y=-Math.PI/2;
     const nodes=[];building.traverse(o=>{if(o.isMesh)nodes.push(o);});
     // Warm plaster window reveals, bronze rosettes, richer door-leaf panels.
     for(const o of nodes) {
@@ -489,6 +702,8 @@
     api.measurements=data.refinement;
     building.userData.refinement=data.refinement;
     building.userData.assumptions=data.assumptions;
+    window.CHURCH_SANCTUARY?.prepare(ctx);
+    applyGlass();
     finish(true);
   }
 
@@ -499,8 +714,32 @@
       material.map=reference?original.map:null;material.bumpMap=reference?original.bump:null;material.needsUpdate=true;
     }
   }
+  function applyGlass(){
+    if(!context?.artGlass)return;
+    const T=context.THREE,night=lightMode==='evening';
+    for(const {m,map,bump,rough} of context.artGlass){
+      m.transparent=true;m.depthWrite=false;m.side=T.DoubleSide;m.metalness=0;
+      if(glassKind==='stained'&&map){
+        m.map=m.emissiveMap=map;m.color.set('#ffffff');m.emissive.set('#ffffff');
+        m.emissiveIntensity=night?.012:.24;m.opacity=.92;m.roughness=.44;
+        m.bumpMap=bump;m.bumpScale=.002;m.roughnessMap=rough;
+        m.clearcoat=.28;m.clearcoatRoughness=.16;m.envMapIntensity=.72;
+      }else{
+        m.map=m.emissiveMap=m.bumpMap=m.roughnessMap=null;m.color.set('#edf6f5');m.emissive.set('#000000');
+        m.emissiveIntensity=0;m.opacity=.14;m.roughness=.045;
+        m.clearcoat=.35;m.clearcoatRoughness=.08;m.envMapIntensity=.85;
+      }
+      m.needsUpdate=true;
+    }
+  }
+  function setGlass(kind){
+    glassKind=kind==='stained'?'stained':'clear';
+    if(context){applyGlass();context.renderer.shadowMap.needsUpdate=true;}
+    return glassKind;
+  }
   function lighting(mode) {
     if(!context)return;
+    lightMode=mode==='evening'?'evening':'day';applyGlass();
     const {scene,sun,fill,hemisphere,renderer,interior,facadeLights}=context,night=mode==='evening';
     scene.background.set(night?'#17283c':'#d9e4e9');scene.fog.color.copy(scene.background);
     scene.environmentIntensity=night?.18:.6;

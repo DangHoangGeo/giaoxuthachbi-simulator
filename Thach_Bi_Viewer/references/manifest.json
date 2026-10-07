@@ -1,74 +1,239 @@
 [
   {
+    "id": "timber-10-upper-roof-longitudinal-connections",
+    "title": "Upper roof · ridge and longitudinal purlins",
+    "description": "Provisional member-layout view. Ridge and purlins connect successive frames; member sizes, spacing, bearings and bracing are not verified.",
+    "url": "references/01-timber-frame/full-hd/10-upper-roof-longitudinal-connections.png",
+    "part": "01-timber-frame",
+    "type": "Provisional roof connection study",
+    "status": "Not structurally calculated or approved; decorative geometry is illustrative",
+    "width": 1920,
+    "height": 1080,
+    "master": "01-timber-frame/masters/10-upper-roof-longitudinal-connections.png",
+    "nativeWidth": 1672,
+    "nativeHeight": 941,
+    "resolutionStatus": "Full HD export resampled from 1672×941 native master"
+  },
+  {
+    "id": "timber-07-full-width-frame-concrete-sides",
+    "title": "Complete frame · timber center, concrete sides",
+    "description": "Primary flat elevation: central nave and both side beams, with two timber inner columns and two concrete outer piers.",
+    "url": "references/01-timber-frame/full-hd/07-full-width-frame-concrete-sides.png",
+    "part": "01-timber-frame",
+    "type": "Generated detail concept",
+    "status": "User-corrected material direction; proposed ornament, not a construction detail",
+    "width": 1920,
+    "height": 1080,
+    "master": "01-timber-frame/masters/07-full-width-frame-concrete-sides.png",
+    "nativeWidth": 1672,
+    "nativeHeight": 941,
+    "resolutionStatus": "Full HD export resampled from 1672×941 native master",
+    "sha256": "be351782a27031c8c71cec27045dc0237be172cbe861533df3dd84a2794fe8e1"
+  },
+  {
+    "id": "timber-08-longitudinal-beams-two-frames",
+    "title": "Lengthwise beams · two consecutive frames",
+    "description": "Oblique cutaway showing transverse frames connected along the church length.",
+    "url": "references/01-timber-frame/full-hd/08-longitudinal-beams-two-frames.png",
+    "part": "01-timber-frame",
+    "type": "Generated detail concept",
+    "status": "User-corrected material direction; proposed ornament, not a construction detail",
+    "width": 1920,
+    "height": 1080,
+    "master": "01-timber-frame/masters/08-longitudinal-beams-two-frames.png",
+    "nativeWidth": 1672,
+    "nativeHeight": 941,
+    "resolutionStatus": "Full HD export resampled from 1672×941 native master",
+    "sha256": "e0684f160d8e1fbed2a572e6922a11735234b98807321476301ce183c2b1e2a4"
+  },
+  {
+    "id": "timber-09-side-beam-concrete-bearing",
+    "title": "Side beam · timber to concrete",
+    "description": "Close view of side beam from central timber column to outer concrete bearing.",
+    "url": "references/01-timber-frame/full-hd/09-side-beam-concrete-bearing.png",
+    "part": "01-timber-frame",
+    "type": "Generated detail concept",
+    "status": "User-corrected material direction; proposed ornament, not a construction detail",
+    "width": 1920,
+    "height": 1080,
+    "master": "01-timber-frame/masters/09-side-beam-concrete-bearing.png",
+    "nativeWidth": 1672,
+    "nativeHeight": 941,
+    "resolutionStatus": "Full HD export resampled from 1672×941 native master",
+    "sha256": "ea9a4a39025203edae26d306d526ec70d716992693086aa8d7f32645bc8a0623"
+  },
+  {
+    "id": "timber-01-upper-bay-front",
+    "title": "Central bay · flat front study",
+    "description": "Central span only; use full-width frame for overall assembly.",
+    "url": "references/01-timber-frame/full-hd/01-upper-bay-front.png",
+    "type": "Generated detail concept",
+    "status": "Proposed visible ornament; not measured or construction joinery",
+    "part": "01-timber-frame",
+    "width": 1920,
+    "height": 1080,
+    "master": "01-timber-frame/masters/01-upper-bay-front.png",
+    "nativeWidth": 1672,
+    "nativeHeight": 941,
+    "resolutionStatus": "Full HD export resampled from 1672×941 native master",
+    "sha256": "a6279ea21f941142a9e9eeb7f741333c798b15773689aeb98a31d8df4a780bb0"
+  },
+  {
+    "id": "timber-02-column-head-three-quarter",
+    "title": "Column head · oblique close-up",
+    "description": "Carved head, curved haunch and layered beam mouldings.",
+    "url": "references/01-timber-frame/full-hd/02-column-head-three-quarter.png",
+    "type": "Generated detail concept",
+    "status": "Proposed visible ornament; not measured or construction joinery",
+    "part": "01-timber-frame",
+    "width": 1920,
+    "height": 1080,
+    "master": "01-timber-frame/masters/02-column-head-three-quarter.png",
+    "nativeWidth": 1672,
+    "nativeHeight": 941,
+    "resolutionStatus": "Full HD export resampled from 1672×941 native master",
+    "sha256": "80e608c91a1cb965d1e88526c02dc98745fedc6ffa2342ee65bd9bcc259fd5e2"
+  },
+  {
+    "id": "timber-03-carved-bracket-underside",
+    "title": "Carved bracket · underside",
+    "description": "Undercut foliage, solid curved haunch and beam soffit.",
+    "url": "references/01-timber-frame/full-hd/03-carved-bracket-underside.png",
+    "type": "Generated detail concept",
+    "status": "Proposed visible ornament; not measured or construction joinery",
+    "part": "01-timber-frame",
+    "width": 1920,
+    "height": 1080,
+    "master": "01-timber-frame/masters/03-carved-bracket-underside.png",
+    "nativeWidth": 1672,
+    "nativeHeight": 941,
+    "resolutionStatus": "Full HD export resampled from 1672×941 native master",
+    "sha256": "55ad957d9fb18309ea92524a1a2f360c23f6e50e30ac04aae0a8bebea8cbb02d"
+  },
+  {
+    "id": "timber-04-upper-rail-roof-connection",
+    "title": "Upper rail · roof connection",
+    "description": "Short upright, arched rail, rafters and boarding.",
+    "url": "references/01-timber-frame/full-hd/04-upper-rail-roof-connection.png",
+    "type": "Generated detail concept",
+    "status": "Proposed visible ornament; not measured or construction joinery",
+    "part": "01-timber-frame",
+    "width": 1920,
+    "height": 1080,
+    "master": "01-timber-frame/masters/04-upper-rail-roof-connection.png",
+    "nativeWidth": 1672,
+    "nativeHeight": 941,
+    "resolutionStatus": "Full HD export resampled from 1672×941 native master",
+    "sha256": "ce80845fced6761803538b8dad3458ed049e4745959e9f5c289e399a7867ec65"
+  },
+  {
+    "id": "09-sanctuary-approved-concept",
+    "title": "Approved sanctuary concept",
+    "description": "Red and gold center; forward raised Marian and Joseph wings above service-room doors.",
+    "url": "references/02-sanctuary/concepts/09-sanctuary-approved-concept.png",
+    "type": "Approved visual direction",
+    "status": "Image-led concept; drawings govern building dimensions",
+    "part": "02-sanctuary",
+    "resolutionStatus": "Existing reference; not certified as Full HD detail"
+  },
+  {
+    "id": "10-sanctuary-church-reference",
+    "title": "Church sanctuary reference",
+    "description": "Original church reference for central crucifix, lacquer and gilded carving.",
+    "url": "references/02-sanctuary/sources/10-sanctuary-church-reference.jpg",
+    "type": "Church supplied reference",
+    "status": "Central decoration reference",
+    "part": "02-sanctuary",
+    "resolutionStatus": "Existing reference; not certified as Full HD detail"
+  },
+  {
     "id": "01-main-doors-detail",
     "title": "Main doors and carvings",
     "description": "Three timber doors, arch mouldings, capitals and relief.",
-    "url": "references/01-main-doors-detail.png",
+    "url": "references/04-doors/details/01-main-doors-detail.png",
     "type": "New close-up",
-    "status": "Visual reference; measured drawings govern geometry"
+    "status": "Visual reference; measured drawings govern geometry",
+    "part": "04-doors",
+    "resolutionStatus": "Existing reference; not certified as Full HD detail"
   },
   {
     "id": "00-front-reference",
     "title": "Current front reference",
     "description": "Flat stage, open tower arches and brown shutters.",
-    "url": "references/00-front-reference.png",
+    "url": "references/03-facade/overview/00-front-reference.png",
     "type": "Retained reference",
-    "status": "Visual reference; measured drawings govern geometry"
+    "status": "Visual reference; measured drawings govern geometry",
+    "part": "03-facade",
+    "resolutionStatus": "Existing reference; not certified as Full HD detail"
   },
   {
     "id": "02-front-corner-day",
     "title": "Front corner in daylight",
     "description": "Front stage, side-door order and projecting wing.",
-    "url": "references/02-front-corner-day.png",
+    "url": "references/03-facade/overview/02-front-corner-day.png",
     "type": "New checkpoint",
-    "status": "Visual reference; measured drawings govern geometry"
+    "status": "Visual reference; measured drawings govern geometry",
+    "part": "03-facade",
+    "resolutionStatus": "Existing reference; not certified as Full HD detail"
   },
   {
     "id": "03-roof-footprint",
     "title": "Roof footprint",
     "description": "Both 9–10 wings and the main roof. Check side-stair footprint against the plan.",
-    "url": "references/03-roof-footprint.png",
+    "url": "references/06-roof/overview/03-roof-footprint.png",
     "type": "New checkpoint",
-    "status": "Visual reference; measured drawings govern geometry"
+    "status": "Visual reference; measured drawings govern geometry",
+    "part": "06-roof",
+    "resolutionStatus": "Existing reference; not certified as Full HD detail"
   },
   {
     "id": "04-rear-elevation",
     "title": "Rear elevation",
     "description": "Five windows, continuous stone base and no rear stairs.",
-    "url": "references/04-rear-elevation.png",
+    "url": "references/03-facade/overview/04-rear-elevation.png",
     "type": "New checkpoint",
-    "status": "Visual reference; measured drawings govern geometry"
+    "status": "Visual reference; measured drawings govern geometry",
+    "part": "03-facade",
+    "resolutionStatus": "Existing reference; not certified as Full HD detail"
   },
   {
     "id": "08-retained-side-stair-detail",
     "title": "Side stair beside the door",
     "description": "The earlier close-up requested for preservation.",
-    "url": "references/08-retained-side-stair-detail.png",
+    "url": "references/07-stairs/details/08-retained-side-stair-detail.png",
     "type": "Retained unchanged",
-    "status": "Visual reference; measured drawings govern geometry"
+    "status": "Visual reference; measured drawings govern geometry",
+    "part": "07-stairs",
+    "resolutionStatus": "Existing reference; not certified as Full HD detail"
   },
   {
     "id": "05-interior-day",
     "title": "Interior in daylight",
     "description": "Column rows, exposed timber roof and sanctuary arch.",
-    "url": "references/05-interior-day.png",
+    "url": "references/00-overview/05-interior-day.png",
     "type": "New proposal",
-    "status": "Visual reference; measured drawings govern geometry"
+    "status": "Visual reference; measured drawings govern geometry",
+    "part": "00-overview",
+    "resolutionStatus": "Existing reference; not certified as Full HD detail"
   },
   {
     "id": "06-exterior-night",
     "title": "Exterior lighting",
     "description": "Warm light on the towers, facade, entries and steps.",
-    "url": "references/06-exterior-night.png",
+    "url": "references/08-lighting/overview/06-exterior-night.png",
     "type": "New proposal",
-    "status": "Visual reference; measured drawings govern geometry"
+    "status": "Visual reference; measured drawings govern geometry",
+    "part": "08-lighting",
+    "resolutionStatus": "Existing reference; not certified as Full HD detail"
   },
   {
     "id": "07-interior-night",
     "title": "Interior lighting",
     "description": "The same nave under chandeliers, sconces and warm accent lights.",
-    "url": "references/07-interior-night.png",
+    "url": "references/08-lighting/overview/07-interior-night.png",
     "type": "New proposal",
-    "status": "Visual reference; measured drawings govern geometry"
+    "status": "Visual reference; measured drawings govern geometry",
+    "part": "08-lighting",
+    "resolutionStatus": "Existing reference; not certified as Full HD detail"
   }
 ]

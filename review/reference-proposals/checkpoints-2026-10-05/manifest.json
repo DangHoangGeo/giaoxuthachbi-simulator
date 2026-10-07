@@ -10,55 +10,55 @@
   ],
   "views": [
     {
-      "file": "../../../Thach_Bi_Viewer/references/01-main-doors-detail.png",
+      "file": "../../../Thach_Bi_Viewer/references/04-doors/details/01-main-doors-detail.png",
       "title": "Main doors and carvings",
       "type": "New close-up",
       "review_focus": "Three timber doors, arch mouldings, capitals and relief."
     },
     {
-      "file": "../../../Thach_Bi_Viewer/references/00-front-reference.png",
+      "file": "../../../Thach_Bi_Viewer/references/03-facade/overview/00-front-reference.png",
       "title": "Current front reference",
       "type": "Retained reference",
       "review_focus": "Flat stage, open tower arches and brown shutters."
     },
     {
-      "file": "../../../Thach_Bi_Viewer/references/02-front-corner-day.png",
+      "file": "../../../Thach_Bi_Viewer/references/03-facade/overview/02-front-corner-day.png",
       "title": "Front corner in daylight",
       "type": "New checkpoint",
       "review_focus": "Front stage, side-door order and projecting wing."
     },
     {
-      "file": "../../../Thach_Bi_Viewer/references/03-roof-footprint.png",
+      "file": "../../../Thach_Bi_Viewer/references/06-roof/overview/03-roof-footprint.png",
       "title": "Roof footprint",
       "type": "New checkpoint",
       "review_focus": "Both 9–10 wings and the main roof. Check side-stair footprint against the plan."
     },
     {
-      "file": "../../../Thach_Bi_Viewer/references/04-rear-elevation.png",
+      "file": "../../../Thach_Bi_Viewer/references/03-facade/overview/04-rear-elevation.png",
       "title": "Rear elevation",
       "type": "New checkpoint",
       "review_focus": "Five windows, continuous stone base and no rear stairs."
     },
     {
-      "file": "../../../Thach_Bi_Viewer/references/08-retained-side-stair-detail.png",
+      "file": "../../../Thach_Bi_Viewer/references/07-stairs/details/08-retained-side-stair-detail.png",
       "title": "Side stair beside the door",
       "type": "Retained unchanged",
       "review_focus": "The earlier close-up requested for preservation."
     },
     {
-      "file": "../../../Thach_Bi_Viewer/references/05-interior-day.png",
+      "file": "../../../Thach_Bi_Viewer/references/00-overview/05-interior-day.png",
       "title": "Interior in daylight",
       "type": "New proposal",
       "review_focus": "Column rows, exposed timber roof and sanctuary arch."
     },
     {
-      "file": "../../../Thach_Bi_Viewer/references/06-exterior-night.png",
+      "file": "../../../Thach_Bi_Viewer/references/08-lighting/overview/06-exterior-night.png",
       "title": "Exterior lighting",
       "type": "New proposal",
       "review_focus": "Warm light on the towers, facade, entries and steps."
     },
     {
-      "file": "../../../Thach_Bi_Viewer/references/07-interior-night.png",
+      "file": "../../../Thach_Bi_Viewer/references/08-lighting/overview/07-interior-night.png",
       "title": "Interior lighting",
       "type": "New proposal",
       "review_focus": "The same nave under chandeliers, sconces and warm accent lights."

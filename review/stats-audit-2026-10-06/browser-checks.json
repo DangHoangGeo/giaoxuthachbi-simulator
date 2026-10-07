@@ -1,0 +1,1617 @@
+{
+  "passed": 30,
+  "checks": [
+    "All reviewed states retain six finite stats without NaN/Infinity",
+    "Festival ridge string matches rendered bulb count and assumed wattage",
+    "Stopped fan properties show zero operating values",
+    "Desktop analysis and HUD: light agrees",
+    "Desktop analysis and HUD: sti agrees",
+    "Desktop analysis and HUD: speech agrees",
+    "Desktop analysis and HUD: air agrees",
+    "Desktop analysis and HUD: noise agrees",
+    "Desktop analysis and HUD: W and kW agree after display rounding",
+    "Phone analysis and HUD: light agrees",
+    "Phone analysis and HUD: sti agrees",
+    "Phone analysis and HUD: speech agrees",
+    "Phone analysis and HUD: air agrees",
+    "Phone analysis and HUD: noise agrees",
+    "Phone analysis and HUD: W and kW agree after display rounding",
+    "Desktop analysis and HUD: stats fit within viewport",
+    "Desktop analysis and HUD: meters agree with stats",
+    "Final desktop HUD: stats fit within viewport",
+    "Final desktop HUD: meters agree with stats",
+    "Phone HUD: stats fit within viewport",
+    "Phone HUD: meters agree with stats",
+    "Phone analysis and HUD: stats fit within viewport",
+    "Phone analysis and HUD: meters agree with stats",
+    "Walk local HUD: stats fit within viewport",
+    "Walk local HUD: meters agree with stats",
+    "Restored desktop HUD: stats fit within viewport",
+    "Restored desktop HUD: meters agree with stats",
+    "Desktop six-column and phone three-column layouts",
+    "Walking stats use local ear height",
+    "Simulator closed after verification"
+  ],
+  "records": [
+    {
+      "name": "Festival string properties",
+      "analysisRows": [],
+      "columns": "94px 94px 94px 94px 94px 94px",
+      "invalidVisible": false,
+      "noise": "50 dBA",
+      "noiseBox": {
+        "bottom": 318,
+        "height": 218,
+        "right": 584,
+        "width": 168,
+        "x": 416,
+        "y": 100
+      },
+      "panelOpen": true,
+      "properties": [
+        {
+          "label": "Axis",
+          "value": "7+1.2"
+        },
+        {
+          "label": "Circuit"
+        },
+        {
+          "label": "X along nave (m)"
+        },
+        {
+          "label": "Z across (m)"
+        },
+        {
+          "label": "Base height (m)"
+        },
+        {
+          "label": "Rotation (°)",
+          "value": "90°"
+        },
+        {
+          "label": "String load",
+          "value": "80 bulbs · 80 W rated"
+        },
+        {
+          "label": "Dimmer",
+          "value": "100 %"
+        },
+        {
+          "label": "Colour temperature"
+        },
+        {
+          "label": "Length (m)",
+          "value": "47.3"
+        },
+        {
+          "label": "Slope (°, 90 = vertical)",
+          "value": "0"
+        },
+        {
+          "label": "Bulb spacing (m)",
+          "value": "0.6"
+        }
+      ],
+      "scene": "Current: Full service · evening",
+      "scope": "Church average · seating · estimates",
+      "speech": "65 dBA",
+      "stats": [
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 661,
+            "width": 94,
+            "x": 567,
+            "y": 925.2109375
+          },
+          "key": "light",
+          "label": "Book light",
+          "title": "Church average · seating: maintained electric light on a book at 0.8 m; excludes daylight",
+          "unit": "lux",
+          "value": "345"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 761,
+            "width": 94,
+            "x": 667,
+            "y": 925.2109375
+          },
+          "key": "sti",
+          "label": "Clarity",
+          "title": "Church average · seating: speech intelligibility · Fair",
+          "unit": "STI",
+          "value": "0.57"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 861,
+            "width": 94,
+            "x": 767,
+            "y": 925.2109375
+          },
+          "key": "speech",
+          "label": "Speech",
+          "title": "Church average · seating: speech level at 1.2 m, averaged by acoustic energy",
+          "unit": "dBA",
+          "value": "65"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 961,
+            "width": 94,
+            "x": 867,
+            "y": 925.2109375
+          },
+          "key": "air",
+          "label": "Air",
+          "title": "Church average · seating: fan air speed at 0.6 m; preferred 0.3–0.8 m/s; excludes natural wind",
+          "unit": "m/s",
+          "value": "0.42"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 1061,
+            "width": 94,
+            "x": 967,
+            "y": 925.2109375
+          },
+          "key": "noise",
+          "label": "Noise",
+          "title": "Church average · seating: ambient noise plus running fans, averaged by acoustic energy; preferred ≤ 40 dBA",
+          "unit": "dBA",
+          "value": "50"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 1161,
+            "width": 94,
+            "x": 1067,
+            "y": 925.2109375
+          },
+          "key": "power",
+          "label": "Equipment power",
+          "title": "Estimated current load of modeled equipment, including amplifier allowances; excludes other building loads",
+          "unit": "kW",
+          "value": "6.2"
+        }
+      ],
+      "statsBox": {
+        "bottom": 968,
+        "height": 70.484375,
+        "right": 1174,
+        "width": 620,
+        "x": 554,
+        "y": 897.515625
+      },
+      "viewport": {
+        "height": 988,
+        "width": 1336
+      }
+    },
+    {
+      "name": "Desktop analysis and HUD",
+      "analysisRows": [
+        {
+          "label": ""
+        },
+        {
+          "label": "Light on books (maintained)",
+          "value": "345 lux avg · 192 min"
+        },
+        {
+          "label": "Seats ≥ 200 lux",
+          "value": "99 %"
+        },
+        {
+          "label": "Uniformity (min / avg)",
+          "value": "0.56"
+        },
+        {
+          "label": "Speech clarity STI",
+          "value": "0.57 avg · 0.39 min · Fair"
+        },
+        {
+          "label": "Seats ≥ 0.60 / ≥ 0.50",
+          "value": "38 % / 80 %"
+        },
+        {
+          "label": "Speech level (energy average)",
+          "value": "65 dBA · 63.1–65.8 dBA at 90 % of seats"
+        },
+        {
+          "label": "Background noise",
+          "value": "50 dBA"
+        },
+        {
+          "label": "Seated air speed",
+          "value": "0.42 m/s avg · 0.26 min"
+        },
+        {
+          "label": "Seats in 0.3–0.8 m/s",
+          "value": "96 %"
+        },
+        {
+          "label": "Feels cooler by",
+          "value": "≈ 1.5 °C"
+        },
+        {
+          "label": "A1 · Main & delay loudspeakers",
+          "value": "96 W"
+        },
+        {
+          "label": "A2 · Veranda fill",
+          "value": "24 W"
+        },
+        {
+          "label": "A3 · Courtyard",
+          "value": "0 W"
+        },
+        {
+          "label": "A5 · Rear fill (crowded feasts)",
+          "value": "0 W"
+        },
+        {
+          "label": "E1 · Exit signs",
+          "value": "15 W"
+        },
+        {
+          "label": "F1 · Ceiling fans",
+          "value": "612 W"
+        },
+        {
+          "label": "F2 · Wall fans",
+          "value": "270 W"
+        },
+        {
+          "label": "F4 · Entrance circulators (trial)",
+          "value": "0 W"
+        },
+        {
+          "label": "L1 · Central seating",
+          "value": "692 W"
+        },
+        {
+          "label": "L2 · Outer seating",
+          "value": "537 W"
+        },
+        {
+          "label": "L3 · Sanctuary",
+          "value": "227 W"
+        },
+        {
+          "label": "L4 · Circulation & verandas",
+          "value": "336 W"
+        },
+        {
+          "label": "L5 · Steps & paths",
+          "value": "333 W"
+        },
+        {
+          "label": "L6 · Façade & towers",
+          "value": "919 W"
+        },
+        {
+          "label": "L7 · Festival exterior (strings & tower floods)",
+          "value": "0 W"
+        },
+        {
+          "label": "L8 · Wings · choir & ministers",
+          "value": "260 W"
+        },
+        {
+          "label": "L9 · Front stage & central door",
+          "value": "298 W"
+        },
+        {
+          "label": "LA · Roof uplight",
+          "value": "256 W"
+        },
+        {
+          "label": "LD · Chandeliers & sconces",
+          "value": "306 W"
+        },
+        {
+          "label": "V1 · Exhaust ventilation",
+          "value": "990 W"
+        },
+        {
+          "label": "Everything switched on now",
+          "value": "6171 W"
+        }
+      ],
+      "columns": "94px 94px 94px 94px 94px 94px",
+      "invalidVisible": false,
+      "noise": "50 dBA",
+      "noiseBox": {
+        "bottom": 318,
+        "height": 218,
+        "right": 584,
+        "width": 168,
+        "x": 416,
+        "y": 100
+      },
+      "panelOpen": true,
+      "properties": [],
+      "scene": "Current: Full service · evening",
+      "scope": "Church average · seating · estimates",
+      "speech": "65 dBA",
+      "stats": [
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 661,
+            "width": 94,
+            "x": 567,
+            "y": 925.2109375
+          },
+          "key": "light",
+          "label": "Book light",
+          "title": "Church average · seating: maintained electric light on a book at 0.8 m; excludes daylight",
+          "unit": "lux",
+          "value": "345"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 761,
+            "width": 94,
+            "x": 667,
+            "y": 925.2109375
+          },
+          "key": "sti",
+          "label": "Clarity",
+          "title": "Church average · seating: speech intelligibility · Fair",
+          "unit": "STI",
+          "value": "0.57"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 861,
+            "width": 94,
+            "x": 767,
+            "y": 925.2109375
+          },
+          "key": "speech",
+          "label": "Speech",
+          "title": "Church average · seating: speech level at 1.2 m, averaged by acoustic energy",
+          "unit": "dBA",
+          "value": "65"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 961,
+            "width": 94,
+            "x": 867,
+            "y": 925.2109375
+          },
+          "key": "air",
+          "label": "Air",
+          "title": "Church average · seating: fan air speed at 0.6 m; preferred 0.3–0.8 m/s; excludes natural wind",
+          "unit": "m/s",
+          "value": "0.42"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 1061,
+            "width": 94,
+            "x": 967,
+            "y": 925.2109375
+          },
+          "key": "noise",
+          "label": "Noise",
+          "title": "Church average · seating: ambient noise plus running fans, averaged by acoustic energy; preferred ≤ 40 dBA",
+          "unit": "dBA",
+          "value": "50"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 1161,
+            "width": 94,
+            "x": 1067,
+            "y": 925.2109375
+          },
+          "key": "power",
+          "label": "Equipment power",
+          "title": "Estimated current load of modeled equipment, including amplifier allowances; excludes other building loads",
+          "unit": "kW",
+          "value": "6.2"
+        }
+      ],
+      "statsBox": {
+        "bottom": 968,
+        "height": 70.484375,
+        "right": 1174,
+        "width": 620,
+        "x": 554,
+        "y": 897.515625
+      },
+      "viewport": {
+        "height": 988,
+        "width": 1336
+      }
+    },
+    {
+      "name": "Stopped fan properties",
+      "analysisRows": [],
+      "columns": "94px 94px 94px 94px 94px 94px",
+      "invalidVisible": false,
+      "noise": "50 dBA",
+      "noiseBox": {
+        "bottom": 318,
+        "height": 218,
+        "right": 584,
+        "width": 168,
+        "x": 416,
+        "y": 100
+      },
+      "panelOpen": true,
+      "properties": [
+        {
+          "label": "Axis",
+          "value": "2−2.2"
+        },
+        {
+          "label": "Circuit"
+        },
+        {
+          "label": "X along nave (m)"
+        },
+        {
+          "label": "Z across (m)"
+        },
+        {
+          "label": "Mounting height (m above floor)"
+        },
+        {
+          "label": "Aim · direction (°)",
+          "value": "0°"
+        },
+        {
+          "label": "Aim · tilt (°)",
+          "value": "-6°"
+        },
+        {
+          "label": "Speed"
+        },
+        {
+          "label": "At this speed",
+          "value": "Stopped · 0 W · no fan airflow or noise"
+        }
+      ],
+      "scene": "Current: Full service · evening",
+      "scope": "Church average · seating · estimates",
+      "speech": "65 dBA",
+      "stats": [
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 661,
+            "width": 94,
+            "x": 567,
+            "y": 925.2109375
+          },
+          "key": "light",
+          "label": "Book light",
+          "title": "Church average · seating: maintained electric light on a book at 0.8 m; excludes daylight",
+          "unit": "lux",
+          "value": "345"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 761,
+            "width": 94,
+            "x": 667,
+            "y": 925.2109375
+          },
+          "key": "sti",
+          "label": "Clarity",
+          "title": "Church average · seating: speech intelligibility · Fair",
+          "unit": "STI",
+          "value": "0.57"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 861,
+            "width": 94,
+            "x": 767,
+            "y": 925.2109375
+          },
+          "key": "speech",
+          "label": "Speech",
+          "title": "Church average · seating: speech level at 1.2 m, averaged by acoustic energy",
+          "unit": "dBA",
+          "value": "65"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 961,
+            "width": 94,
+            "x": 867,
+            "y": 925.2109375
+          },
+          "key": "air",
+          "label": "Air",
+          "title": "Church average · seating: fan air speed at 0.6 m; preferred 0.3–0.8 m/s; excludes natural wind",
+          "unit": "m/s",
+          "value": "0.42"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 1061,
+            "width": 94,
+            "x": 967,
+            "y": 925.2109375
+          },
+          "key": "noise",
+          "label": "Noise",
+          "title": "Church average · seating: ambient noise plus running fans, averaged by acoustic energy; preferred ≤ 40 dBA",
+          "unit": "dBA",
+          "value": "50"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 1161,
+            "width": 94,
+            "x": 1067,
+            "y": 925.2109375
+          },
+          "key": "power",
+          "label": "Equipment power",
+          "title": "Estimated current load of modeled equipment, including amplifier allowances; excludes other building loads",
+          "unit": "kW",
+          "value": "6.2"
+        }
+      ],
+      "statsBox": {
+        "bottom": 968,
+        "height": 70.484375,
+        "right": 1174,
+        "width": 620,
+        "x": 554,
+        "y": 897.515625
+      },
+      "viewport": {
+        "height": 988,
+        "width": 1336
+      }
+    },
+    {
+      "name": "Final desktop HUD",
+      "analysisRows": [],
+      "columns": "94px 94px 94px 94px 94px 94px",
+      "invalidVisible": false,
+      "noise": "50 dBA",
+      "noiseBox": {
+        "bottom": 386,
+        "height": 218,
+        "right": 192,
+        "width": 168,
+        "x": 24,
+        "y": 168
+      },
+      "panelOpen": false,
+      "properties": [],
+      "scene": "Current: Full service · evening",
+      "scope": "Church average · seating · estimates",
+      "speech": "65 dBA",
+      "stats": [
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 465,
+            "width": 94,
+            "x": 371,
+            "y": 925.2109375
+          },
+          "key": "light",
+          "label": "Book light",
+          "title": "Church average · seating: maintained modeled light on a book at 0.8 m; excludes daylight",
+          "unit": "lux",
+          "value": "345"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 565,
+            "width": 94,
+            "x": 471,
+            "y": 925.2109375
+          },
+          "key": "sti",
+          "label": "Clarity",
+          "title": "Church average · seating: speech intelligibility · Fair",
+          "unit": "STI",
+          "value": "0.57"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 665,
+            "width": 94,
+            "x": 571,
+            "y": 925.2109375
+          },
+          "key": "speech",
+          "label": "Speech",
+          "title": "Church average · seating: speech level at 1.2 m, averaged by acoustic energy",
+          "unit": "dBA",
+          "value": "65"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 765,
+            "width": 94,
+            "x": 671,
+            "y": 925.2109375
+          },
+          "key": "air",
+          "label": "Air",
+          "title": "Church average · seating: fan air speed at 0.6 m; preferred 0.3–0.8 m/s; excludes natural wind",
+          "unit": "m/s",
+          "value": "0.42"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 865,
+            "width": 94,
+            "x": 771,
+            "y": 925.2109375
+          },
+          "key": "noise",
+          "label": "Noise",
+          "title": "Church average · seating: ambient noise plus running fans, averaged by acoustic energy; preferred ≤ 40 dBA",
+          "unit": "dBA",
+          "value": "50"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 965,
+            "width": 94,
+            "x": 871,
+            "y": 925.2109375
+          },
+          "key": "power",
+          "label": "Equipment power",
+          "title": "Estimated current load of modeled equipment, including amplifier allowances; excludes other building loads",
+          "unit": "kW",
+          "value": "6.2"
+        }
+      ],
+      "statsBox": {
+        "bottom": 968,
+        "height": 70.484375,
+        "right": 978,
+        "width": 620,
+        "x": 358,
+        "y": 897.515625
+      },
+      "viewport": {
+        "height": 988,
+        "width": 1336
+      }
+    },
+    {
+      "name": "Phone HUD",
+      "analysisRows": [],
+      "columns": "109.328px 109.336px 109.336px",
+      "invalidVisible": false,
+      "noise": "50 dBA",
+      "noiseBox": {
+        "bottom": 330,
+        "height": 188,
+        "right": 144,
+        "width": 132,
+        "x": 12,
+        "y": 142
+      },
+      "panelOpen": false,
+      "properties": [],
+      "scene": "Current: Full service · evening",
+      "scope": "Church average · seating · estimates",
+      "speech": "65 dBA",
+      "stats": [
+        {
+          "box": {
+            "bottom": 779.2109375,
+            "height": 31.7890625,
+            "right": 134.328125,
+            "width": 109.328125,
+            "x": 25,
+            "y": 747.421875
+          },
+          "key": "light",
+          "label": "Book light",
+          "title": "Church average · seating: maintained modeled light on a book at 0.8 m; excludes daylight",
+          "unit": "lux",
+          "value": "345"
+        },
+        {
+          "box": {
+            "bottom": 779.2109375,
+            "height": 31.7890625,
+            "right": 249.6640625,
+            "width": 109.3359375,
+            "x": 140.328125,
+            "y": 747.421875
+          },
+          "key": "sti",
+          "label": "Clarity",
+          "title": "Church average · seating: speech intelligibility · Fair",
+          "unit": "STI",
+          "value": "0.57"
+        },
+        {
+          "box": {
+            "bottom": 779.2109375,
+            "height": 31.7890625,
+            "right": 365,
+            "width": 109.3359375,
+            "x": 255.6640625,
+            "y": 747.421875
+          },
+          "key": "speech",
+          "label": "Speech",
+          "title": "Church average · seating: speech level at 1.2 m, averaged by acoustic energy",
+          "unit": "dBA",
+          "value": "65"
+        },
+        {
+          "box": {
+            "bottom": 819,
+            "height": 31.7890625,
+            "right": 134.328125,
+            "width": 109.328125,
+            "x": 25,
+            "y": 787.2109375
+          },
+          "key": "air",
+          "label": "Air",
+          "title": "Church average · seating: fan air speed at 0.6 m; preferred 0.3–0.8 m/s; excludes natural wind",
+          "unit": "m/s",
+          "value": "0.42"
+        },
+        {
+          "box": {
+            "bottom": 819,
+            "height": 31.7890625,
+            "right": 249.6640625,
+            "width": 109.3359375,
+            "x": 140.328125,
+            "y": 787.2109375
+          },
+          "key": "noise",
+          "label": "Noise",
+          "title": "Church average · seating: ambient noise plus running fans, averaged by acoustic energy; preferred ≤ 40 dBA",
+          "unit": "dBA",
+          "value": "50"
+        },
+        {
+          "box": {
+            "bottom": 819,
+            "height": 31.7890625,
+            "right": 365,
+            "width": 109.3359375,
+            "x": 255.6640625,
+            "y": 787.2109375
+          },
+          "key": "power",
+          "label": "Equipment power",
+          "title": "Estimated current load of modeled equipment, including amplifier allowances; excludes other building loads",
+          "unit": "kW",
+          "value": "6.2"
+        }
+      ],
+      "statsBox": {
+        "bottom": 830,
+        "height": 110.2734375,
+        "right": 378,
+        "width": 366,
+        "x": 12,
+        "y": 719.7265625
+      },
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "name": "Phone analysis and HUD",
+      "analysisRows": [
+        {
+          "label": ""
+        },
+        {
+          "label": "Light on books (maintained)",
+          "value": "345 lux avg · 192 min"
+        },
+        {
+          "label": "Seats ≥ 200 lux",
+          "value": "99 %"
+        },
+        {
+          "label": "Uniformity (min / avg)",
+          "value": "0.56"
+        },
+        {
+          "label": "Speech clarity STI",
+          "value": "0.57 avg · 0.39 min · Fair"
+        },
+        {
+          "label": "Seats ≥ 0.60 / ≥ 0.50",
+          "value": "38 % / 80 %"
+        },
+        {
+          "label": "Speech level (energy average)",
+          "value": "65 dBA · 63.1–65.8 dBA at 90 % of seats"
+        },
+        {
+          "label": "Background noise",
+          "value": "50 dBA"
+        },
+        {
+          "label": "Seated air speed",
+          "value": "0.42 m/s avg · 0.26 min"
+        },
+        {
+          "label": "Seats in 0.3–0.8 m/s",
+          "value": "96 %"
+        },
+        {
+          "label": "Feels cooler by",
+          "value": "≈ 1.5 °C"
+        },
+        {
+          "label": "A1 · Main & delay loudspeakers",
+          "value": "96 W"
+        },
+        {
+          "label": "A2 · Veranda fill",
+          "value": "24 W"
+        },
+        {
+          "label": "A3 · Courtyard",
+          "value": "0 W"
+        },
+        {
+          "label": "A5 · Rear fill (crowded feasts)",
+          "value": "0 W"
+        },
+        {
+          "label": "E1 · Exit signs",
+          "value": "15 W"
+        },
+        {
+          "label": "F1 · Ceiling fans",
+          "value": "612 W"
+        },
+        {
+          "label": "F2 · Wall fans",
+          "value": "270 W"
+        },
+        {
+          "label": "F4 · Entrance circulators (trial)",
+          "value": "0 W"
+        },
+        {
+          "label": "L1 · Central seating",
+          "value": "692 W"
+        },
+        {
+          "label": "L2 · Outer seating",
+          "value": "537 W"
+        },
+        {
+          "label": "L3 · Sanctuary",
+          "value": "227 W"
+        },
+        {
+          "label": "L4 · Circulation & verandas",
+          "value": "336 W"
+        },
+        {
+          "label": "L5 · Steps & paths",
+          "value": "333 W"
+        },
+        {
+          "label": "L6 · Façade & towers",
+          "value": "919 W"
+        },
+        {
+          "label": "L7 · Festival exterior (strings & tower floods)",
+          "value": "0 W"
+        },
+        {
+          "label": "L8 · Wings · choir & ministers",
+          "value": "260 W"
+        },
+        {
+          "label": "L9 · Front stage & central door",
+          "value": "298 W"
+        },
+        {
+          "label": "LA · Roof uplight",
+          "value": "256 W"
+        },
+        {
+          "label": "LD · Chandeliers & sconces",
+          "value": "306 W"
+        },
+        {
+          "label": "V1 · Exhaust ventilation",
+          "value": "990 W"
+        },
+        {
+          "label": "Everything switched on now",
+          "value": "6171 W"
+        }
+      ],
+      "columns": "61.3281px 61.3359px 61.3281px",
+      "invalidVisible": false,
+      "noise": "50 dBA",
+      "noiseBox": {
+        "bottom": 221.484375,
+        "height": 139.484375,
+        "right": 144,
+        "width": 132,
+        "x": 12,
+        "y": 82
+      },
+      "panelOpen": true,
+      "properties": [],
+      "scene": "Current: Full service · evening",
+      "scope": "Church average · seating · estimates",
+      "speech": "65 dBA",
+      "stats": [
+        {
+          "box": {
+            "bottom": 293.6953125,
+            "height": 31.7890625,
+            "right": 86.328125,
+            "width": 61.328125,
+            "x": 25,
+            "y": 261.90625
+          },
+          "key": "light",
+          "label": "Book light",
+          "title": "Church average · seating: maintained modeled light on a book at 0.8 m; excludes daylight",
+          "unit": "lux",
+          "value": "345"
+        },
+        {
+          "box": {
+            "bottom": 293.6953125,
+            "height": 31.7890625,
+            "right": 153.6640625,
+            "width": 61.3359375,
+            "x": 92.328125,
+            "y": 261.90625
+          },
+          "key": "sti",
+          "label": "Clarity",
+          "title": "Church average · seating: speech intelligibility · Fair",
+          "unit": "STI",
+          "value": "0.57"
+        },
+        {
+          "box": {
+            "bottom": 293.6953125,
+            "height": 31.7890625,
+            "right": 220.9921875,
+            "width": 61.328125,
+            "x": 159.6640625,
+            "y": 261.90625
+          },
+          "key": "speech",
+          "label": "Speech",
+          "title": "Church average · seating: speech level at 1.2 m, averaged by acoustic energy",
+          "unit": "dBA",
+          "value": "65"
+        },
+        {
+          "box": {
+            "bottom": 333.484375,
+            "height": 31.7890625,
+            "right": 86.328125,
+            "width": 61.328125,
+            "x": 25,
+            "y": 301.6953125
+          },
+          "key": "air",
+          "label": "Air",
+          "title": "Church average · seating: fan air speed at 0.6 m; preferred 0.3–0.8 m/s; excludes natural wind",
+          "unit": "m/s",
+          "value": "0.42"
+        },
+        {
+          "box": {
+            "bottom": 333.484375,
+            "height": 31.7890625,
+            "right": 153.6640625,
+            "width": 61.3359375,
+            "x": 92.328125,
+            "y": 301.6953125
+          },
+          "key": "noise",
+          "label": "Noise",
+          "title": "Church average · seating: ambient noise plus running fans, averaged by acoustic energy; preferred ≤ 40 dBA",
+          "unit": "dBA",
+          "value": "50"
+        },
+        {
+          "box": {
+            "bottom": 333.484375,
+            "height": 31.7890625,
+            "right": 220.9921875,
+            "width": 61.328125,
+            "x": 159.6640625,
+            "y": 301.6953125
+          },
+          "key": "power",
+          "label": "Equipment power",
+          "title": "Estimated current load of modeled equipment, including amplifier allowances; excludes other building loads",
+          "unit": "kW",
+          "value": "6.2"
+        }
+      ],
+      "statsBox": {
+        "bottom": 344.484375,
+        "height": 110.2734375,
+        "right": 234,
+        "width": 222,
+        "x": 12,
+        "y": 234.2109375
+      },
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "name": "Walk local HUD",
+      "analysisRows": [
+        {
+          "label": ""
+        },
+        {
+          "label": "Light on books (maintained)",
+          "value": "345 lux avg · 192 min"
+        },
+        {
+          "label": "Seats ≥ 200 lux",
+          "value": "99 %"
+        },
+        {
+          "label": "Uniformity (min / avg)",
+          "value": "0.56"
+        },
+        {
+          "label": "Speech clarity STI",
+          "value": "0.57 avg · 0.39 min · Fair"
+        },
+        {
+          "label": "Seats ≥ 0.60 / ≥ 0.50",
+          "value": "38 % / 80 %"
+        },
+        {
+          "label": "Speech level (energy average)",
+          "value": "65 dBA · 63.1–65.8 dBA at 90 % of seats"
+        },
+        {
+          "label": "Background noise",
+          "value": "50 dBA"
+        },
+        {
+          "label": "Seated air speed",
+          "value": "0.42 m/s avg · 0.26 min"
+        },
+        {
+          "label": "Seats in 0.3–0.8 m/s",
+          "value": "96 %"
+        },
+        {
+          "label": "Feels cooler by",
+          "value": "≈ 1.5 °C"
+        },
+        {
+          "label": "A1 · Main & delay loudspeakers",
+          "value": "96 W"
+        },
+        {
+          "label": "A2 · Veranda fill",
+          "value": "24 W"
+        },
+        {
+          "label": "A3 · Courtyard",
+          "value": "0 W"
+        },
+        {
+          "label": "A5 · Rear fill (crowded feasts)",
+          "value": "0 W"
+        },
+        {
+          "label": "E1 · Exit signs",
+          "value": "15 W"
+        },
+        {
+          "label": "F1 · Ceiling fans",
+          "value": "612 W"
+        },
+        {
+          "label": "F2 · Wall fans",
+          "value": "270 W"
+        },
+        {
+          "label": "F4 · Entrance circulators (trial)",
+          "value": "0 W"
+        },
+        {
+          "label": "L1 · Central seating",
+          "value": "692 W"
+        },
+        {
+          "label": "L2 · Outer seating",
+          "value": "537 W"
+        },
+        {
+          "label": "L3 · Sanctuary",
+          "value": "227 W"
+        },
+        {
+          "label": "L4 · Circulation & verandas",
+          "value": "336 W"
+        },
+        {
+          "label": "L5 · Steps & paths",
+          "value": "333 W"
+        },
+        {
+          "label": "L6 · Façade & towers",
+          "value": "919 W"
+        },
+        {
+          "label": "L7 · Festival exterior (strings & tower floods)",
+          "value": "0 W"
+        },
+        {
+          "label": "L8 · Wings · choir & ministers",
+          "value": "260 W"
+        },
+        {
+          "label": "L9 · Front stage & central door",
+          "value": "298 W"
+        },
+        {
+          "label": "LA · Roof uplight",
+          "value": "256 W"
+        },
+        {
+          "label": "LD · Chandeliers & sconces",
+          "value": "306 W"
+        },
+        {
+          "label": "V1 · Exhaust ventilation",
+          "value": "990 W"
+        },
+        {
+          "label": "Everything switched on now",
+          "value": "6171 W"
+        }
+      ],
+      "columns": "94px 94px 94px 94px 94px 94px",
+      "invalidVisible": false,
+      "noise": "50 dBA",
+      "noiseBox": {
+        "bottom": 386,
+        "height": 218,
+        "right": 192,
+        "width": 168,
+        "x": 24,
+        "y": 168
+      },
+      "panelOpen": false,
+      "properties": [],
+      "scene": "Current: Full service · evening",
+      "scope": "At your position · estimates",
+      "speech": "63 dBA",
+      "stats": [
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 465,
+            "width": 94,
+            "x": 371,
+            "y": 925.2109375
+          },
+          "key": "light",
+          "label": "Floor light",
+          "title": "At your position: maintained modeled light on the floor; excludes daylight",
+          "unit": "lux",
+          "value": "162"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 565,
+            "width": 94,
+            "x": 471,
+            "y": 925.2109375
+          },
+          "key": "sti",
+          "label": "Clarity",
+          "title": "At your position: speech intelligibility · Good",
+          "unit": "STI",
+          "value": "0.60"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 665,
+            "width": 94,
+            "x": 571,
+            "y": 925.2109375
+          },
+          "key": "speech",
+          "label": "Speech",
+          "title": "At your position: speech level at your ear height (1.60 m)",
+          "unit": "dBA",
+          "value": "63"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 765,
+            "width": 94,
+            "x": 671,
+            "y": 925.2109375
+          },
+          "key": "air",
+          "label": "Air",
+          "title": "At your position: fan air speed at 0.6 m; preferred 0.3–0.8 m/s; excludes natural wind",
+          "unit": "m/s",
+          "value": "0.30"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 865,
+            "width": 94,
+            "x": 771,
+            "y": 925.2109375
+          },
+          "key": "noise",
+          "label": "Noise",
+          "title": "At your position: ambient noise plus running fans; preferred ≤ 40 dBA",
+          "unit": "dBA",
+          "value": "50"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 965,
+            "width": 94,
+            "x": 871,
+            "y": 925.2109375
+          },
+          "key": "power",
+          "label": "Equipment power",
+          "title": "Estimated current load of modeled equipment, including amplifier allowances; excludes other building loads",
+          "unit": "kW",
+          "value": "6.2"
+        }
+      ],
+      "statsBox": {
+        "bottom": 968,
+        "height": 70.484375,
+        "right": 978,
+        "width": 620,
+        "x": 358,
+        "y": 897.515625
+      },
+      "viewport": {
+        "height": 988,
+        "width": 1336
+      }
+    },
+    {
+      "name": "Restored desktop HUD",
+      "analysisRows": [
+        {
+          "label": ""
+        },
+        {
+          "label": "Light on books (maintained)",
+          "value": "345 lux avg · 192 min"
+        },
+        {
+          "label": "Seats ≥ 200 lux",
+          "value": "99 %"
+        },
+        {
+          "label": "Uniformity (min / avg)",
+          "value": "0.56"
+        },
+        {
+          "label": "Speech clarity STI",
+          "value": "0.57 avg · 0.39 min · Fair"
+        },
+        {
+          "label": "Seats ≥ 0.60 / ≥ 0.50",
+          "value": "38 % / 80 %"
+        },
+        {
+          "label": "Speech level (energy average)",
+          "value": "65 dBA · 63.1–65.8 dBA at 90 % of seats"
+        },
+        {
+          "label": "Background noise",
+          "value": "50 dBA"
+        },
+        {
+          "label": "Seated air speed",
+          "value": "0.42 m/s avg · 0.26 min"
+        },
+        {
+          "label": "Seats in 0.3–0.8 m/s",
+          "value": "96 %"
+        },
+        {
+          "label": "Feels cooler by",
+          "value": "≈ 1.5 °C"
+        },
+        {
+          "label": "A1 · Main & delay loudspeakers",
+          "value": "96 W"
+        },
+        {
+          "label": "A2 · Veranda fill",
+          "value": "24 W"
+        },
+        {
+          "label": "A3 · Courtyard",
+          "value": "0 W"
+        },
+        {
+          "label": "A5 · Rear fill (crowded feasts)",
+          "value": "0 W"
+        },
+        {
+          "label": "E1 · Exit signs",
+          "value": "15 W"
+        },
+        {
+          "label": "F1 · Ceiling fans",
+          "value": "612 W"
+        },
+        {
+          "label": "F2 · Wall fans",
+          "value": "270 W"
+        },
+        {
+          "label": "F4 · Entrance circulators (trial)",
+          "value": "0 W"
+        },
+        {
+          "label": "L1 · Central seating",
+          "value": "692 W"
+        },
+        {
+          "label": "L2 · Outer seating",
+          "value": "537 W"
+        },
+        {
+          "label": "L3 · Sanctuary",
+          "value": "227 W"
+        },
+        {
+          "label": "L4 · Circulation & verandas",
+          "value": "336 W"
+        },
+        {
+          "label": "L5 · Steps & paths",
+          "value": "333 W"
+        },
+        {
+          "label": "L6 · Façade & towers",
+          "value": "919 W"
+        },
+        {
+          "label": "L7 · Festival exterior (strings & tower floods)",
+          "value": "0 W"
+        },
+        {
+          "label": "L8 · Wings · choir & ministers",
+          "value": "260 W"
+        },
+        {
+          "label": "L9 · Front stage & central door",
+          "value": "298 W"
+        },
+        {
+          "label": "LA · Roof uplight",
+          "value": "256 W"
+        },
+        {
+          "label": "LD · Chandeliers & sconces",
+          "value": "306 W"
+        },
+        {
+          "label": "V1 · Exhaust ventilation",
+          "value": "990 W"
+        },
+        {
+          "label": "Everything switched on now",
+          "value": "6171 W"
+        }
+      ],
+      "columns": "94px 94px 94px 94px 94px 94px",
+      "invalidVisible": false,
+      "noise": "50 dBA",
+      "noiseBox": {
+        "bottom": 386,
+        "height": 218,
+        "right": 192,
+        "width": 168,
+        "x": 24,
+        "y": 168
+      },
+      "panelOpen": false,
+      "properties": [],
+      "scene": "Current: Full service · evening",
+      "scope": "Church average · seating · estimates",
+      "speech": "65 dBA",
+      "stats": [
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 465,
+            "width": 94,
+            "x": 371,
+            "y": 925.2109375
+          },
+          "key": "light",
+          "label": "Book light",
+          "title": "Church average · seating: maintained modeled light on a book at 0.8 m; excludes daylight",
+          "unit": "lux",
+          "value": "345"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 565,
+            "width": 94,
+            "x": 471,
+            "y": 925.2109375
+          },
+          "key": "sti",
+          "label": "Clarity",
+          "title": "Church average · seating: speech intelligibility · Fair",
+          "unit": "STI",
+          "value": "0.57"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 665,
+            "width": 94,
+            "x": 571,
+            "y": 925.2109375
+          },
+          "key": "speech",
+          "label": "Speech",
+          "title": "Church average · seating: speech level at 1.2 m, averaged by acoustic energy",
+          "unit": "dBA",
+          "value": "65"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 765,
+            "width": 94,
+            "x": 671,
+            "y": 925.2109375
+          },
+          "key": "air",
+          "label": "Air",
+          "title": "Church average · seating: fan air speed at 0.6 m; preferred 0.3–0.8 m/s; excludes natural wind",
+          "unit": "m/s",
+          "value": "0.42"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 865,
+            "width": 94,
+            "x": 771,
+            "y": 925.2109375
+          },
+          "key": "noise",
+          "label": "Noise",
+          "title": "Church average · seating: ambient noise plus running fans, averaged by acoustic energy; preferred ≤ 40 dBA",
+          "unit": "dBA",
+          "value": "50"
+        },
+        {
+          "box": {
+            "bottom": 957,
+            "height": 31.7890625,
+            "right": 965,
+            "width": 94,
+            "x": 871,
+            "y": 925.2109375
+          },
+          "key": "power",
+          "label": "Equipment power",
+          "title": "Estimated current load of modeled equipment, including amplifier allowances; excludes other building loads",
+          "unit": "kW",
+          "value": "6.2"
+        }
+      ],
+      "statsBox": {
+        "bottom": 968,
+        "height": 70.484375,
+        "right": 978,
+        "width": 620,
+        "x": 358,
+        "y": 897.515625
+      },
+      "viewport": {
+        "height": 988,
+        "width": 1336
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "basis": [
+    "five user-supplied photos",
+    "realism.js",
+    "simulator/engine.js frame variants",
+    "sanctuary.js"
+  ],
+  "comparison": [
+    [
+      "Column heads",
+      "Photos: deep foliate collars and curved carved haunches around round columns.",
+      "Current model: round-column drawn mode and square-post reference variant; simplified moulded capitals.",
+      "New detail set: deep natural-wood carved heads; retain drawing dimensions when modeling."
+    ],
+    [
+      "Beam continuity",
+      "Photos: transverse nave beams, lower side-aisle beams and longitudinal beams are all visible.",
+      "Current model: structural members exist but junction carving and depth are simplified.",
+      "Primary full-width plate and side junction explicitly show the lateral spans."
+    ],
+    [
+      "Upper structure",
+      "Photos: short carved uprights, pierced shallow arch rails and layered roof timber.",
+      "Current model: geometric braces and collars, with a separate decorative sanctuary frame.",
+      "Proposed layered upper rail and close-up of the roof connection."
+    ],
+    [
+      "Finish and light",
+      "Photos: brown polished wood, bright lamps with glare.",
+      "Current model: configurable timber finishes; sanctuary has red lacquer and gold.",
+      "Natural chestnut detail study uses diffuse light to reveal grain and carving; no lamp output inferred."
+    ]
+  ],
+  "scope": "Reference generation only; no structural or 3D geometry edits in this task.",
+  "latestUserCorrections": [
+    "Beams must extend into both side aisles.",
+    "Only two central columns are timber; outer columns are concrete.",
+    "Show longitudinal beams connecting frames along the length of the church."
+  ]
+}

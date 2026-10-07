@@ -1,0 +1,40 @@
+{
+  "tabs": [
+    {
+      "tab": "Scenes",
+      "height": 440,
+      "width": 224,
+      "x": 1092,
+      "y": 483
+    },
+    {
+      "tab": "DB-1",
+      "height": 440,
+      "width": 224,
+      "x": 1092,
+      "y": 483
+    },
+    {
+      "tab": "Towers",
+      "height": 440,
+      "width": 224,
+      "x": 1092,
+      "y": 483
+    },
+    {
+      "tab": "Fans",
+      "height": 440,
+      "width": 224,
+      "x": 1092,
+      "y": 483
+    },
+    {
+      "tab": "Sound",
+      "height": 440,
+      "width": 224,
+      "x": 1092,
+      "y": 483
+    }
+  ],
+  "sameSize": true
+}

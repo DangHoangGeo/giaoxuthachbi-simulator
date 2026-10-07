@@ -1,0 +1,99 @@
+{
+ "buildMs": 68151,
+ "items": 202,
+ "pool": {
+  "emitters": 130,
+  "points": 8,
+  "spots": 14,
+  "shadows": 1,
+  "clustered": 107
+ },
+ "room": {
+  "V": 7456,
+  "T": [
+   2.12,
+   1.64,
+   1.27,
+   1.17,
+   1.15,
+   1.14,
+   0.97
+  ],
+  "Tmid": 1.22
+ },
+ "seats": 300,
+ "lux": {
+  "avg": 330,
+  "min": 171,
+  "p10": 262,
+  "u0": 0.52,
+  "okPct": 99
+ },
+ "sti": {
+  "avg": 0.621,
+  "min": 0.556,
+  "okPct": 77,
+  "fairPct": 100
+ },
+ "spl": {
+  "avg": 65.8,
+  "spread90": 4.7
+ },
+ "noise": {
+  "avg": 42,
+  "max": 42.1
+ },
+ "air": {
+  "avg": 0.33,
+  "min": 0.14,
+  "max": 0.62,
+  "okPct": 73
+ },
+ "cooling": 1.1,
+ "blocks": {
+  "central": {
+   "lux": 324,
+   "sti": 0.62,
+   "air": 0.3
+  },
+  "outer": {
+   "lux": 336,
+   "sti": 0.62,
+   "air": 0.35
+  }
+ },
+ "checks": [
+  "info: Speech clarity — 77 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.62.",
+  "ok: Feedback margin — Ambo microphone: 3.4 dB of stable gain margin.",
+  "ok: Feedback margin — Altar microphone: 3.6 dB of stable gain margin."
+ ],
+ "power": {
+  "totalW": 3365,
+  "kWhService": 5,
+  "byCircuit": [
+   "A1 100 W",
+   "A2 24 W",
+   "A3 0 W",
+   "DECOR 0 W",
+   "E1 15 W",
+   "F1 408 W",
+   "L1 692 W",
+   "L2 537 W",
+   "L3 206 W",
+   "L4 336 W",
+   "L5 50 W",
+   "L6 436 W",
+   "L7 0 W",
+   "LA 256 W",
+   "LD 306 W",
+   "MIC 0 W",
+   "X1 0 W"
+  ]
+ },
+ "grids": {
+  "lux": 3959,
+  "sti": 1059,
+  "air": 3959,
+  "noise": 1059
+ }
+}

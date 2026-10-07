@@ -1,0 +1,60 @@
+{
+  "checks": "passed",
+  "batchCount": 129,
+  "triangles": 972790,
+  "seating": {
+    "blocks": 4,
+    "pewRows": 25,
+    "pewCount": 100,
+    "benchLengthM": null
+  },
+  "sightlineSummary": {
+    "2": {
+      "pewCount": 38,
+      "pewRows": 19,
+      "sampledSeats": 304,
+      "blocked": {
+        "altar": 106,
+        "ambo": 107,
+        "crucifix": 120
+      }
+    },
+    "4": {
+      "pewCount": 100,
+      "pewRows": 25,
+      "sampledSeats": 300,
+      "blocked": {
+        "altar": 86,
+        "ambo": 86,
+        "crucifix": 94
+      }
+    }
+  },
+  "refinement": {
+    "date": "2026-10-05",
+    "mainOuterPlinthWidth": 22.489,
+    "wingOuterPlinthWidth": 28.158,
+    "frontPlatformWidth": 27.254,
+    "frontPlatformRise": 1.6,
+    "sideLandings": 6,
+    "sideFlights": 8,
+    "rearStairs": 0,
+    "sideDoorPlane": 10.414,
+    "stairRisersPerFlight": 12,
+    "stairRiserHeight": 0.14666666666666667,
+    "treeRows": 2,
+    "treeCount": 16,
+    "stairCountStatus": "Proposed; measured floor levels retained",
+    "references": [
+      "references/01-main-doors-detail.png",
+      "references/00-front-reference.png",
+      "references/02-front-corner-day.png",
+      "references/03-roof-footprint.png",
+      "references/04-rear-elevation.png",
+      "references/08-retained-side-stair-detail.png",
+      "references/05-interior-day.png",
+      "references/06-exterior-night.png",
+      "references/07-interior-night.png"
+    ]
+  }
+}

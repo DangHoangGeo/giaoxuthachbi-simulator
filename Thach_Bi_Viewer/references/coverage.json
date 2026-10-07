@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-07",
+  "requiredPerPart": [
+    "flat-front",
+    "three-quarter",
+    "joint-closeup",
+    "underside-or-reverse"
+  ],
+  "deliveryPixels": [
+    1920,
+    1080
+  ],
+  "masters": "Preserve native output; record any resampling; do not claim enlarged exports contain new native detail.",
+  "parts": [
+    {
+      "folder": "00-overview",
+      "title": "Whole church",
+      "status": "Overview references retained; detail work tracked by part."
+    },
+    {
+      "folder": "01-timber-frame",
+      "title": "Timber frame and beams",
+      "status": "8 Full HD images ready, including provisional upper roof longitudinal members. Structural sizing and bracing awaiting specifications."
+    },
+    {
+      "folder": "02-sanctuary",
+      "title": "Sanctuary",
+      "status": "Overall concept and church source available; center, side wings, altar and canopy close-ups pending."
+    },
+    {
+      "folder": "03-facade",
+      "title": "Facade and towers",
+      "status": "Overview references available; tower crown, capitals and facade junction close-ups pending."
+    },
+    {
+      "folder": "04-doors",
+      "title": "Doors",
+      "status": "Main door detail retained; orthographic leaves, jambs, thresholds and hardware pending."
+    },
+    {
+      "folder": "05-windows",
+      "title": "Windows and glazing",
+      "status": "Flat elevation, fanlight, mullion and sill details pending."
+    },
+    {
+      "folder": "06-roof",
+      "title": "Roof",
+      "status": "Footprint retained; ridge, eaves, roof intersections and drainage details pending."
+    },
+    {
+      "folder": "07-stairs",
+      "title": "Stairs and balustrades",
+      "status": "Side stair reference retained; riser, nosing and balustrade detail set pending."
+    },
+    {
+      "folder": "08-lighting",
+      "title": "Lighting and equipment",
+      "status": "Lighting overviews retained; mounting, shielding and cable-routing details pending."
+    },
+    {
+      "folder": "09-furniture",
+      "title": "Pews and furniture",
+      "status": "Front, side, kneeler, joints and end-panel detail set pending."
+    },
+    {
+      "folder": "10-floors-walls",
+      "title": "Floors and wall finishes",
+      "status": "Stone bases, paving joints, skirting and finish transition details pending."
+    }
+  ],
+  "materialRule": "Two central timber columns per transverse frame; outer left/right columns concrete. Side and longitudinal beams remain timber."
+}

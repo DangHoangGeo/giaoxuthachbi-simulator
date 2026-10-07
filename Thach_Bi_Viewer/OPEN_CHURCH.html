@@ -3,8 +3,10 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#edf0ea"><title>Thạch Bi Church · Explore the design</title>
-<link rel="stylesheet" href="viewer.css">
+<link rel="stylesheet" href="viewer.css?v=20261006-left-rail-1">
 <link rel="stylesheet" href="startup.css">
+<link rel="stylesheet" href="simulator/simulator.css?v=20261006-stats-6">
+<link rel="stylesheet" href="ui-cards.css?v=20261006-glass-layout-2">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23315b43'/%3E%3Cpath d='M16 6v20M9 13h14' stroke='%23f7faf3' stroke-width='3'/%3E%3C/svg%3E">
 </head>
 <body data-mode="explore" data-lighting="day">
@@ -14,9 +16,8 @@
  <div class="mode-switch" aria-label="Navigation mode"><button id="exploreMode" class="active" aria-pressed="true">Explore</button><button id="walkMode" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="13" cy="4" r="2"/><path d="m8 21 3-7m4 7-1-8m-7-3 4-3 3 2 4 2m-7-4-1 6 4 2"/></svg>Walk</button></div>
  <div class="header-actions"><button id="referencesButton" class="text-button" title="Drawing and image references"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 3-3 6 5"/></svg><span>References</span></button><button id="helpButton" class="icon-button" aria-label="Navigation help"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.4 8.6a2.7 2.7 0 0 1 5.2 1.1c0 1.8-2.6 2-2.6 4M12 17h.01"/></svg></button><button id="settingsButton" class="icon-button" aria-expanded="false" aria-label="View settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/></svg></button></div>
 </header>
-<div class="scene-heading"><div class="scene-eyebrow">One shared model · architectural reference</div><h1 id="viewTitle">The whole church</h1><p id="viewCaption">Drag to orbit. Scroll or pinch to move closer.</p></div>
-<div class="entry-action"><button id="goInside" class="primary-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 21H4V3h9m-4 9h12m-5-5 5 5-5 5"/></svg>Go inside</button><button id="exitWalk" class="secondary-button" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 7-5 5 5 5m-5-5h15"/></svg>Leave walk mode</button></div>
-<aside id="walkPanel" class="walk-panel" hidden><div><span class="live-dot"></span><strong>At walking height</strong><small id="walkLocation">0.00 m floor · 1.65 m eye height</small></div><button id="tourButton">Guided walk</button></aside>
+<div class="scene-heading" hidden><h1 id="viewTitle">The whole church</h1><p id="viewCaption">Drag to orbit. Scroll or pinch to move closer.</p></div>
+<div class="right-rail">
 <aside id="mapCard" class="map-card"><button id="mapToggle" aria-expanded="true"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5m6-2v16m6-14v16"/></svg>Your location</span><svg class="map-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 14 5-5 5 5"/></svg></button><div class="map-content"><svg id="minimap" viewBox="0 0 180 254" role="img" aria-label="Church minimap. Click a place to walk there.">
  <defs><pattern id="floorPattern" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M9 0H0V9" fill="none" stroke="#e0e5d9" stroke-width=".5"/></pattern></defs>
  <rect width="180" height="254" rx="8" fill="#f5f7f1"/>
@@ -32,27 +33,49 @@
  <g font-family="Arial,sans-serif" font-size="6.5" font-weight="600" fill="#647459"><text x="90" y="248" text-anchor="middle">COURTYARD</text><text x="90" y="189" text-anchor="middle">ENTRANCE</text><text x="90" y="146" text-anchor="middle">NAVE</text><text x="90" y="53" text-anchor="middle">SANCTUARY</text><text x="13" y="113" transform="rotate(-90 13 113)" text-anchor="middle">SIDE B</text><text x="167" y="113" transform="rotate(90 167 113)" text-anchor="middle">SIDE H</text></g>
  <g id="mapPosition"><path d="m0 0 18-11v22Z" fill="#4c785b" opacity=".18"/><path d="m7 0-10-5 2 5-2 5Z" fill="#2c5c42" stroke="#fff" stroke-width="1.1"/></g>
  </svg><p>Click the map to move to a clear aisle.</p></div></aside>
+</div>
 <aside id="inspector" class="inspector" hidden><div class="panel-title"><span>Design detail</span><button id="closeInspector" class="close-button" aria-label="Close detail">×</button></div><h2 id="detailTitle"></h2><p id="detailFact" class="detail-fact"></p><p id="detailSource" class="detail-source"></p><p id="detailNote" class="detail-note"></p></aside>
 <aside id="settingsPanel" class="settings-panel" hidden><div class="panel-title"><strong>View settings</strong><button id="closeSettings" class="close-button" aria-label="Close settings">×</button></div>
  <h3>Atmosphere</h3><div class="lighting-switch"><button id="dayLighting" class="active">☀ Day</button><button id="eveningLighting">☾ Evening</button></div>
  <label class="switch-row"><span>Show roof</span><input id="roofToggle" type="checkbox" checked></label><label class="switch-row"><span>Reference materials</span><input id="colorToggle" type="checkbox" checked></label><label class="switch-row"><span>Drawing grid</span><input id="gridToggle" type="checkbox"></label>
  <label class="switch-row"><span>Show trees</span><input id="treesToggle" type="checkbox" checked></label>
+ <label class="switch-row"><span>Doors &amp; windows</span><select id="openingsMode"><option value="auto">Open when walking</option><option value="open">Open</option><option value="closed">Closed</option></select></label>
+ <label class="switch-row"><span>Timber frame</span><select id="frameStyle"><option value="drawn">As drawn (PDF)</option><option value="reference">Reference image</option></select></label>
+ <label class="switch-row"><span>Window glass</span><select id="glassMode"><option value="clear">Clear</option><option value="stained" selected>Coloured</option></select></label>
  <h3>Seating layout</h3><div class="lighting-switch"><button id="seating2" aria-pressed="false">2 blocks</button><button id="seating4" class="active" aria-pressed="true">4 blocks</button></div>
  <p id="seatingSummary" class="planning-caption" aria-live="polite">Concept pew layout</p>
  <div class="detail-buttons"><button id="centralSeatView">Seated: near centre aisle</button><button id="outerSeatView">Seated: near side aisle</button></div>
  <a class="planning-link" href="planning/index.html" target="_blank" rel="noopener">Seating &amp; building systems plan ↗</a>
  <h3>Look closer</h3><div class="detail-buttons"><button data-detail="front">Front facade</button><button data-detail="tower">Tower</button><button data-detail="window">Windows</button><button data-detail="columns">Columns &amp; roof</button><button data-detail="sanctuary">Sanctuary</button><button data-detail="roof">Roof junctions</button></div>
- <h3>Reference checkpoints</h3><div class="detail-buttons"><button id="stairCheckpoint">Side stair &amp; door</button><button id="wingCheckpoint">Wider section 9–10</button></div>
+ <h3>Reference checkpoints</h3><div class="detail-buttons"><button id="stairCheckpoint">Side stair &amp; door</button><button id="wingCheckpoint">Wider section 9–10</button><button id="altarCheckpoint">Altar &amp; choir</button><button id="serviceCheckpoint">Service room</button></div>
  <h3>Drawing views</h3><div class="drawing-buttons"><button data-view="front">Tower end</button><button data-view="rear">Altar end</button><button data-view="right">Side B</button><button data-view="left">Side H</button><button data-view="overhead">Roof plan</button><button data-view="cutaway">Roof hidden</button></div>
  <div class="settings-footer"><button id="captureButton">Save this view</button><button id="notesButton">Sources &amp; model notes</button><button id="dataButton">Download model data</button></div>
 </aside>
-<nav class="place-dock" aria-label="Choose a place"><span class="dock-label">Discover</span><button data-place="courtyard"><span class="place-icon">01</span><span>Courtyard</span></button><button data-place="entrance"><span class="place-icon">02</span><span>Front facade</span></button><button data-place="nave"><span class="place-icon">03</span><span>Nave</span></button><button data-place="sanctuary"><span class="place-icon">04</span><span>Sanctuary</span></button><button data-place="veranda"><span class="place-icon">05</span><span>Veranda</span></button></nav>
-<div id="joystick" class="joystick" role="button" tabindex="0" aria-label="Touch movement joystick"><span class="joystick-arrows" aria-hidden="true">↑<br>← &nbsp; →<br>↓</span><span id="joystickKnob"></span></div>
-<div class="navigation-hint"><span id="modeHint">Drag to orbit · scroll to zoom · right-drag to pan</span><span class="detail-hint">Alt-click a part for its source note</span></div>
+<div class="left-rail">
+<nav class="place-dock" aria-label="Choose a place">
+ <button id="discoverToggle" class="discover-toggle" aria-expanded="true" aria-controls="discoverContents" title="Hide Discover"><span class="dock-label">Discover</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
+ <div id="discoverContents" class="discover-contents">
+ <div class="place-list">
+ <button data-place="courtyard"><span class="place-icon" aria-hidden="true">01</span><span>Courtyard</span></button>
+ <button data-place="entrance"><span class="place-icon" aria-hidden="true">02</span><span>Front facade</span></button>
+ <button data-place="nave"><span class="place-icon" aria-hidden="true">03</span><span>Nave</span></button>
+ <button data-place="sanctuary"><span class="place-icon" aria-hidden="true">04</span><span>Sanctuary</span></button>
+ <button data-place="veranda"><span class="place-icon" aria-hidden="true">05</span><span>Veranda</span></button>
+ </div>
+ <div class="entry-action">
+  <button id="goInside" class="primary-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 21H4V3h9m-4 9h12m-5-5 5 5-5 5"/></svg>Go inside</button>
+  <button id="exitWalk" class="secondary-button" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 7-5 5 5 5m-5-5h15"/></svg>Leave walk mode</button>
+ </div>
+ <aside id="walkPanel" class="walk-panel" hidden><small id="walkLocation" hidden>0.00 m floor · 1.65 m eye height</small><button id="tourButton">Guided walk</button></aside>
+ </div>
+</nav>
+</div>
+<div id="joystick" class="joystick" role="button" tabindex="0" aria-label="Touch movement joystick"><span class="joystick-arrows" aria-hidden="true"><span class="joystick-arrow-up">↑</span><span class="joystick-arrow-left">←</span><span class="joystick-arrow-right">→</span><span class="joystick-arrow-down">↓</span></span><span id="joystickKnob"></span></div>
+<div class="navigation-hint"><span id="modeHint">Drag to orbit · W A S D / arrows to move · Q E down / up · scroll to zoom</span><span class="detail-hint">Alt-click a part for its source note</span></div>
 <div id="toast" class="toast" role="status"></div>
-<dialog id="helpDialog"><div class="dialog-heading"><h2>Feel your way around</h2><button id="closeHelp" class="close-button" aria-label="Close help">×</button></div><div class="help-grid"><section><span class="help-number">01</span><h3>Explore the outside</h3><p>Drag to orbit around the church. Scroll or pinch to move closer. Right-drag or use two fingers to pan. Choose <strong>Front facade</strong> for the corrected space between the towers.</p></section><section><span class="help-number">02</span><h3>Walk inside</h3><p>Choose <strong>Go inside</strong>. Use <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> or the arrow keys to move, and drag anywhere in the scene to look around. On touch screens, move with the round control.</p></section><section><span class="help-number">03</span><h3>Choose your next stop</h3><p>Select a place below or click the minimap. <strong>Guided walk</strong> follows a continuous path from the courtyard to the sanctuary. Move yourself to end the tour.</p></section><section><span class="help-number">04</span><h3>Study a detail</h3><p>Open <strong>View settings</strong> for close-ups, day/evening light, roof visibility, and drawing views. In Explore mode, Alt-click a surface to read its source note. <kbd>Esc</kbd> leaves Walk mode.</p></section></div><p class="dialog-note">Navigation stays at human eye height on the modeled floors and avoids walls, columns, and furniture. Stair shapes and navigation boundaries are illustrative.</p></dialog>
+<dialog id="helpDialog"><div class="dialog-heading"><h2>Feel your way around</h2><button id="closeHelp" class="close-button" aria-label="Close help">×</button></div><div class="help-grid"><section><span class="help-number">01</span><h3>Explore the outside</h3><p>Drag to orbit around the church. Scroll or pinch to move closer. Right-drag or use two fingers to pan. Choose <strong>Front facade</strong> for the corrected space between the towers.</p></section><section><span class="help-number">02</span><h3>Walk inside</h3><p>Choose <strong>Go inside</strong>. Use <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> or the arrow keys to move, and drag anywhere in the scene to look around: the scene follows your pointer, as it does outside. On touch screens, move with the round control.</p></section><section><span class="help-number">03</span><h3>Choose your next stop</h3><p>Select a place on the left or click the minimap. <strong>Guided walk</strong> follows a continuous path from the courtyard to the sanctuary. Move yourself to end the tour.</p></section><section><span class="help-number">04</span><h3>Study a detail</h3><p>Open <strong>View settings</strong> for close-ups, day/evening light, roof visibility, and drawing views. In Explore mode, Alt-click a surface to read its source note. <kbd>Esc</kbd> leaves Walk mode.</p></section></div><p class="dialog-note">Navigation stays at human eye height on the modeled floors and avoids walls, columns, and furniture. Stair shapes and navigation boundaries are illustrative.</p></dialog>
 <dialog id="notesDialog"><div class="dialog-heading"><h2>Sources and model notes</h2><button id="closeNotes" class="close-button" aria-label="Close source notes">×</button></div><p>The supplied architectural PDFs control the measured grids, levels, and building form. The companion Excel workbook preserves the explicit dimensions and unresolved drawing differences. Newly generated images and interior decorations are visual proposals.</p><ul id="assumptions"></ul></dialog>
-<dialog id="referencesDialog" class="references-dialog"><div class="dialog-heading"><div><span class="scene-eyebrow">Design references</span><h2>Architecture and atmosphere</h2></div><button id="closeReferences" class="close-button" aria-label="Close references">×</button></div><p>The architectural drawing controls the facade geometry. Generated exterior and interior images explore materials, lighting, and decoration; dimensions continue to come from the source drawings.</p><div id="referenceGrid" class="reference-grid"></div><p id="referencesEmpty">Reference images are included separately in the project pack.</p></dialog>
+<dialog id="referencesDialog" class="references-dialog"><div class="dialog-heading"><div><span class="scene-eyebrow">Design references</span><h2>Architecture and atmosphere</h2></div><button id="closeReferences" class="close-button" aria-label="Close references">×</button></div><p>The architectural drawing controls the facade geometry. Generated exterior and interior images explore materials, lighting, and decoration; dimensions continue to come from the source drawings.</p><p><a href="references/index.html" target="_blank" rel="noopener">Open organized detail library · Full HD close-ups ↗</a></p><div id="referenceGrid" class="reference-grid"></div><p id="referencesEmpty">Reference images are included separately in the project pack.</p></dialog>
 <dialog id="referenceLightbox" class="reference-lightbox"><div class="dialog-heading"><h2 id="referenceLargeTitle">Reference</h2><button id="closeReferenceLightbox" class="close-button" aria-label="Close reference image">×</button></div><img id="referenceLarge" alt=""></dialog>
 <section id="startupScreen" class="startup-screen" role="status" aria-live="polite" aria-busy="true">
 <div class="startup-content">
@@ -64,12 +87,25 @@
 <details hidden><summary>Startup details</summary><pre id="startupError"></pre></details>
 <div id="startupPreviews" class="startup-previews" hidden>
 <h3>View the church images</h3>
-<div class="startup-images"><a href="references/02-front-corner-day.png" target="_blank" rel="noopener"><img src="references/02-front-corner-day.png" alt="Exterior of the shared church model" loading="lazy"><span>Exterior reference</span></a><a href="references/05-interior-day.png" target="_blank" rel="noopener"><img src="references/05-interior-day.png" alt="Furnished nave in the shared church model" loading="lazy"><span>Interior reference</span></a></div>
-<div class="startup-reference-links"><a href="references/00-front-reference.png" target="_blank" rel="noopener">Front concept</a><a href="references/04-rear-elevation.png" target="_blank" rel="noopener">Rear concept</a><a href="references/05-interior-day.png" target="_blank" rel="noopener">Interior daylight</a><a href="references/07-interior-night.png" target="_blank" rel="noopener">Interior evening</a><a href="references/08-retained-side-stair-detail.png" target="_blank" rel="noopener">Side stair detail</a></div>
+<div class="startup-images"><a href="references/03-facade/overview/02-front-corner-day.png" target="_blank" rel="noopener"><img src="references/03-facade/overview/02-front-corner-day.png" alt="Exterior of the shared church model" loading="lazy"><span>Exterior reference</span></a><a href="references/00-overview/05-interior-day.png" target="_blank" rel="noopener"><img src="references/00-overview/05-interior-day.png" alt="Furnished nave in the shared church model" loading="lazy"><span>Interior reference</span></a></div>
+<div class="startup-reference-links"><a href="references/03-facade/overview/00-front-reference.png" target="_blank" rel="noopener">Front concept</a><a href="references/03-facade/overview/04-rear-elevation.png" target="_blank" rel="noopener">Rear concept</a><a href="references/00-overview/05-interior-day.png" target="_blank" rel="noopener">Interior daylight</a><a href="references/08-lighting/overview/07-interior-night.png" target="_blank" rel="noopener">Interior evening</a><a href="references/07-stairs/details/08-retained-side-stair-detail.png" target="_blank" rel="noopener">Side stair detail</a></div>
 </div></div></section>
-<noscript><div class="startup-noscript"><h2>Open the interactive viewer in your browser</h2><p>This 3D model needs JavaScript and WebGL 2. A file preview may not run it.</p><p><a href="references/02-front-corner-day.png">View the exterior image</a> · <a href="references/05-interior-day.png">View the interior image</a></p></div></noscript>
-<script src="references.js?v=20261005-9"></script>
-<script src="realism.js?v=20261005-9"></script>
-<script src="planning.js?v=20261005-9"></script>
-<script src="startup.js?v=20261005-9"></script>
+<noscript><div class="startup-noscript"><h2>Open the interactive viewer in your browser</h2><p>This 3D model needs JavaScript and WebGL 2. A file preview may not run it.</p><p><a href="references/03-facade/overview/02-front-corner-day.png">View the exterior image</a> · <a href="references/00-overview/05-interior-day.png">View the interior image</a></p></div></noscript>
+<script src="references.js?v=20261007-timber-details-1"></script>
+<script src="glass-art.js?v=20261006-clear-body-1"></script>
+<script src="sanctuary.js?v=20261007-21"></script>
+<script src="realism.js?v=20261007-sanctuary-21"></script>
+<script src="planning.js?v=20261007-sanctuary-21"></script>
+<script src="simulator/physics.js?v=20261006-estimates-1"></script>
+<script src="simulator/catalog.js?v=20261007-sanctuary-21"></script>
+<script src="simulator/engine.js?v=20261007-sanctuary-21"></script>
+<script src="simulator/persistent-lighting.js?v=20261006-physical-3"></script>
+<script src="simulator/design.js?v=20261007-sanctuary-21"></script>
+<script src="simulator/analysis.js?v=20261006-estimates-2"></script>
+<script src="simulator/electrical.js?v=20261007-sanctuary-21"></script>
+<script src="simulator/audio.js?v=20261006-estimates-1"></script>
+<script src="simulator/ui.js?v=20261007-timber-2"></script>
+<script src="simulator/controls.js?v=20261006-glass-layout-2"></script>
+<script src="navigation.js?v=20261006-discover-1"></script>
+<script src="startup.js?v=20261007-sanctuary-21"></script>
 </body></html>

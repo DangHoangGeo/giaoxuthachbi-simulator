@@ -1,0 +1,143 @@
+{"electrical":"passed","installedComponents":276,"selectableRuns":319}
+{"facadeCoverage":"passed","samples":[{"y":7.5,"z":-3,"lux":41.6},{"y":7.5,"z":0,"lux":19.3},{"y":7.5,"z":3,"lux":41.6},{"y":8.5,"z":-3,"lux":73.1},{"y":8.5,"z":0,"lux":39.7},{"y":8.5,"z":3,"lux":73.1},{"y":9.5,"z":-3,"lux":110.9},{"y":9.5,"z":0,"lux":52.7},{"y":9.5,"z":3,"lux":110.9},{"y":10.25,"z":-3,"lux":110},{"y":10.25,"z":0,"lux":55.2},{"y":10.25,"z":3,"lux":110},{"y":11,"z":-3,"lux":97.9},{"y":11,"z":0,"lux":53.3},{"y":11,"z":3,"lux":97.9},{"y":13,"z":-3,"lux":60},{"y":13,"z":0,"lux":41.8},{"y":13,"z":3,"lux":60},{"y":15,"z":-3,"lux":73.3},{"y":15,"z":0,"lux":65.9},{"y":15,"z":3,"lux":73.3},{"y":17,"z":0,"lux":76.3},{"y":19,"z":0,"lux":60.5},{"y":21.5,"z":0,"lux":35.5}]}
+{
+  "buildMs": 90166,
+  "items": 308,
+  "pool": {
+    "emitters": 186,
+    "points": 8,
+    "spots": 14,
+    "shadows": 1,
+    "persistent": 163,
+    "culled": 0
+  },
+  "room": {
+    "V": 7456,
+    "T": [
+      1.99,
+      1.55,
+      1.2,
+      1.1,
+      1.08,
+      1.07,
+      0.92
+    ],
+    "Tmid": 1.15
+  },
+  "seats": 380,
+  "lux": {
+    "avg": 346,
+    "min": 193,
+    "p10": 263,
+    "u0": 0.56,
+    "okPct": 99
+  },
+  "sti": {
+    "avg": 0.605,
+    "min": 0.452,
+    "okPct": 63,
+    "fairPct": 94
+  },
+  "spl": {
+    "avg": 67,
+    "spread90": 2.6
+  },
+  "noise": {
+    "avg": 43.8,
+    "max": 43.9
+  },
+  "air": {
+    "avg": 0.4,
+    "min": 0.26,
+    "max": 0.79,
+    "okPct": 95
+  },
+  "cooling": 1.4,
+  "blocks": {
+    "central": {
+      "lux": 323,
+      "sti": 0.63,
+      "air": 0.34
+    },
+    "outer": {
+      "lux": 345,
+      "sti": 0.61,
+      "air": 0.39
+    },
+    "wing": {
+      "lux": 390,
+      "sti": 0.54,
+      "air": 0.53
+    }
+  },
+  "checks": [
+    "info: Ventilation — 9 exhaust fans move ≈25,920 m³/h ≈ 3.5 air changes per hour (comfort target in a hot climate with people: 4–6).",
+    "info: Speech clarity — 63 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.61.",
+    "ok: Feedback margin — Ambo microphone: 3.1 dB of stable gain margin.",
+    "ok: Feedback margin — Altar microphone: 3.4 dB of stable gain margin."
+  ],
+  "power": {
+    "totalW": 5512,
+    "kWhService": 8.3,
+    "byCircuit": [
+      "A1 97 W",
+      "A2 24 W",
+      "A3 0 W",
+      "A5 0 W",
+      "DECOR 0 W",
+      "E1 15 W",
+      "F1 612 W",
+      "F2 0 W",
+      "F4 0 W",
+      "L1 692 W",
+      "L2 537 W",
+      "L3 287 W",
+      "L4 336 W",
+      "L5 333 W",
+      "L6 919 W",
+      "L7 0 W",
+      "L8 260 W",
+      "L9 298 W",
+      "LA 256 W",
+      "LD 306 W",
+      "MIC 0 W",
+      "V1 540 W",
+      "X1 0 W"
+    ]
+  },
+  "grids": {
+    "lux": 3959,
+    "sti": 1059,
+    "air": 3959,
+    "noise": 1059
+  }
+}
+{"naveStiOk":79,"naveStiMin":0.463,"wingStiAvg":0.535,"wingStiMin":0.452,"wingLuxMin":207}
+{
+ "checks": "passed",
+ "items": 308,
+ "lux": {
+  "avg": 346,
+  "min": 193,
+  "p10": 263,
+  "u0": 0.56,
+  "okPct": 99
+ },
+ "sti": {
+  "avg": 0.605,
+  "min": 0.452,
+  "okPct": 63,
+  "fairPct": 94
+ },
+ "air": {
+  "avg": 0.4,
+  "min": 0.26,
+  "max": 0.79,
+  "okPct": 95
+ },
+ "noise": {
+  "avg": 43.8,
+  "max": 43.9
+ },
+ "Tmid": 1.15
+}

@@ -39301,6 +39301,10 @@ void main() {
     j["side-stair"] = {title: "Side stair and outer doorway", note: "Parallel flights meet a landing before the turn into the door.", pos: [10.7, 3.8, -19.5], target: [16.725, 2.2, -10.414]};
     j["projecting-wing"] = {title: "Wider section at axes 9–10", note: "The wing projects on both sides of the nave.", pos: [29, 9.5, -27], target: [40.575, 4, -12.5]};
     document.getElementById("stairCheckpoint").addEventListener("click", () => { nt("side-stair", {mode:"explore"}); x("settingsPanel").hidden = true; x("settingsButton").setAttribute("aria-expanded","false"); });
+    j["altar-choir"] = {title: "Altar, statues and choir", note: "Crucifix at the centre with Our Lady and Saint Joseph; choir benches on the right, ministers on the left.", pos: [39.2, 3.3, -5.9], target: [46.6, 1.4, 2.6], interior: !0};
+    j["service-room"] = {title: "Service room behind the altar", note: "Vesting room with the main electrical board, lighting and fan controls and the sound rack.", pos: [52.3, 2.2, 3.0], target: [48.8, 1.5, -1.2], interior: !0};
+    for (const [id, key] of [["altarCheckpoint", "altar-choir"], ["serviceCheckpoint", "service-room"]])
+      document.getElementById(id).addEventListener("click", () => { nt(key, {mode:"explore"}); x("settingsPanel").hidden = true; x("settingsButton").setAttribute("aria-expanded","false"); });
     document.getElementById("wingCheckpoint").addEventListener("click", () => { nt("projecting-wing", {mode:"explore"}); x("settingsPanel").hidden = true; x("settingsButton").setAttribute("aria-expanded","false"); });
     for (let V of ["3", "4", "5", "6", "7", "8", "9", "10", "11"]) {
       let _e = c.longitudinal[V];
@@ -39547,8 +39551,8 @@ void main() {
         (x("exitWalk").hidden = S !== "walk"),
         (x("modeHint").textContent =
           S === "walk"
-            ? "Drag to look \xB7 W A S D / arrows to walk"
-            : "Drag to orbit \xB7 scroll to zoom \xB7 right-drag to pan"),
+            ? "Drag the scene to look around \xB7 W A S D / arrows to walk"
+            : "Drag to orbit \xB7 W A S D / arrows to move \xB7 Q E down / up \xB7 scroll to zoom"),
         S === "walk")
       ) {
         if (_e.destination !== !1) {
@@ -39560,7 +39564,7 @@ void main() {
           M(!0),
           Ge(
             j[y]?.walk ? j[y].title : j.nave.title,
-            "Eye height 1.65 m \xB7 move along the clear aisles",
+            `Eye height ${O.eyeHeight.toFixed(2)} m \xB7 move along the clear aisles`,
           ));
       } else
         (o.up.set(0, 1, 0),
@@ -39836,7 +39840,7 @@ void main() {
       ),
         (x("mapPosition").style.opacity = S === "walk" ? "1" : ".48"),
         (x("walkLocation").textContent =
-          `${lt(O.x, O.z) >= 0 ? "+" : ""}${lt(O.x, O.z).toFixed(2)} m floor \xB7 1.65 m eye height`));
+          `${lt(O.x, O.z) >= 0 ? "+" : ""}${lt(O.x, O.z).toFixed(2)} m floor \xB7 ${O.eyeHeight.toFixed(2)} m eye height`));
     }
     let ct = x("minimap");
     ct.addEventListener("click", (V) => {
@@ -39904,9 +39908,12 @@ void main() {
           (we.y = V.clientY),
           (we.moved += Math.abs(_e) + Math.abs(ge)),
           we.moved > 5 && (ie = !0),
+          // Walk mode drags the picture the way Explore does: the scene follows
+          // the pointer. Dragging up moves the scene up (the eye tilts down) and
+          // dragging right moves it right (the eye turns left).
           S === "walk" &&
-            ((O.yaw += _e * 0.0032),
-            (O.pitch = e.MathUtils.clamp(O.pitch - ge * 0.0032, -1.35, 1.3)),
+            ((O.yaw -= _e * 0.0032),
+            (O.pitch = e.MathUtils.clamp(O.pitch + ge * 0.0032, -1.35, 1.3)),
             ve(),
             tt()));
       }),
@@ -39919,6 +39926,8 @@ void main() {
       }),
       n.domElement.addEventListener("contextmenu", (V) => V.preventDefault()));
     let fe = new Set([
+      "KeyQ",
+      "KeyE",
       "KeyW",
       "KeyA",
       "KeyS",
@@ -39940,8 +39949,7 @@ void main() {
         J ? Ce() : S === "walk" && B("explore");
         return;
       }
-      S !== "walk" ||
-        document.querySelector("dialog[open]") ||
+      document.querySelector("dialog[open]") ||
         /INPUT|SELECT|TEXTAREA/.test(V.target.tagName) ||
         (fe.has(V.code) && (V.preventDefault(), X.add(V.code)));
     }),
@@ -40078,7 +40086,7 @@ void main() {
       });
     }
     function tt() {
-      (Et(), n.render(i, b));
+      (Et(), window.CHURCH_SIMULATOR?.frame(0, S, b), n.render(i, b));
     }
     function Et() {
       if (S !== "explore" || b !== o) return;
@@ -40087,6 +40095,27 @@ void main() {
         : -2.08;
       b.position.y < V + 0.28 &&
         ((b.position.y = V + 0.28), b.lookAt(l.target));
+    }
+    // Explore mode: W/S or ↑/↓ move forward and back along the view, A/D or
+    // ←/→ step sideways, Q/E go down and up; Shift is faster. The orbit
+    // target travels with the camera, so drag-to-orbit keeps working.
+    function exploreMove(dt) {
+      const fwd = (X.has("KeyW") || X.has("ArrowUp") ? 1 : 0) - (X.has("KeyS") || X.has("ArrowDown") ? 1 : 0),
+        side = (X.has("KeyD") || X.has("ArrowRight") ? 1 : 0) - (X.has("KeyA") || X.has("ArrowLeft") ? 1 : 0),
+        up = (X.has("KeyE") ? 1 : 0) - (X.has("KeyQ") ? 1 : 0);
+      if (!fwd && !side && !up) return;
+      k = null;
+      const dir = new e.Vector3().subVectors(l.target, b.position);
+      dir.y = 0;
+      if (dir.lengthSq() < 1e-6) dir.set(1, 0, 0);
+      dir.normalize();
+      const right = new e.Vector3(-dir.z, 0, dir.x);
+      const dist = b.position.distanceTo(l.target);
+      const speed = Math.max(4, Math.min(30, dist * 0.8)) * (X.has("ShiftLeft") || X.has("ShiftRight") ? 2.2 : 1);
+      const move = dir.multiplyScalar(fwd).add(right.multiplyScalar(side)).normalize().multiplyScalar(speed * dt);
+      move.y = up * speed * 0.6 * dt;
+      b.position.add(move);
+      l.target.add(move);
     }
     function St(V = performance.now()) {
       if (z) return;
@@ -40100,8 +40129,8 @@ void main() {
           l.target.lerpVectors(k.targetFrom, k.targetTo, Qe),
           ge >= 1 && (k = null),
           l.update());
-      } else l.update();
-      (Ke(), Et(), window.CHURCH_REALISM.update(S), n.render(i, b));
+      } else (exploreMove(_e), l.update());
+      (Ke(), Et(), window.CHURCH_REALISM.update(S), window.CHURCH_SIMULATOR?.frame(_e, S, b), n.render(i, b));
     }
     let vi = {
       ready: !1,
@@ -40158,6 +40187,14 @@ void main() {
           })),
         };
       },
+      walkCamera: a,
+      orbitCamera: o,
+      colliders: Le,
+      walk: O,
+      floorHeight: lt,
+      walkable: de,
+      nearestClear: xe,
+      refreshMap: Ke,
       setWalkPosition(V, _e, ge = O.yaw, Qe = O.pitch) {
         let ot = xe(V, _e);
         return ot
@@ -40244,7 +40281,7 @@ void main() {
     "id": "01-main-doors-detail",
     "title": "Main doors and carvings",
     "description": "Three timber doors, arch mouldings, capitals and relief.",
-    "url": "references/01-main-doors-detail.png",
+    "url": "references/04-doors/details/01-main-doors-detail.png",
     "type": "New close-up",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40252,7 +40289,7 @@ void main() {
     "id": "00-front-reference",
     "title": "Current front reference",
     "description": "Flat stage, open tower arches and brown shutters.",
-    "url": "references/00-front-reference.png",
+    "url": "references/03-facade/overview/00-front-reference.png",
     "type": "Retained reference",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40260,7 +40297,7 @@ void main() {
     "id": "02-front-corner-day",
     "title": "Front corner in daylight",
     "description": "Front stage, side-door order and projecting wing.",
-    "url": "references/02-front-corner-day.png",
+    "url": "references/03-facade/overview/02-front-corner-day.png",
     "type": "New checkpoint",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40268,7 +40305,7 @@ void main() {
     "id": "03-roof-footprint",
     "title": "Roof footprint",
     "description": "Both 9–10 wings and the main roof. Check side-stair footprint against the plan.",
-    "url": "references/03-roof-footprint.png",
+    "url": "references/06-roof/overview/03-roof-footprint.png",
     "type": "New checkpoint",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40276,7 +40313,7 @@ void main() {
     "id": "04-rear-elevation",
     "title": "Rear elevation",
     "description": "Five windows, continuous stone base and no rear stairs.",
-    "url": "references/04-rear-elevation.png",
+    "url": "references/03-facade/overview/04-rear-elevation.png",
     "type": "New checkpoint",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40284,7 +40321,7 @@ void main() {
     "id": "08-retained-side-stair-detail",
     "title": "Side stair beside the door",
     "description": "The earlier close-up requested for preservation.",
-    "url": "references/08-retained-side-stair-detail.png",
+    "url": "references/07-stairs/details/08-retained-side-stair-detail.png",
     "type": "Retained unchanged",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40292,7 +40329,7 @@ void main() {
     "id": "05-interior-day",
     "title": "Interior in daylight",
     "description": "Column rows, exposed timber roof and sanctuary arch.",
-    "url": "references/05-interior-day.png",
+    "url": "references/00-overview/05-interior-day.png",
     "type": "New proposal",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40300,7 +40337,7 @@ void main() {
     "id": "06-exterior-night",
     "title": "Exterior lighting",
     "description": "Warm light on the towers, facade, entries and steps.",
-    "url": "references/06-exterior-night.png",
+    "url": "references/08-lighting/overview/06-exterior-night.png",
     "type": "New proposal",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40308,7 +40345,7 @@ void main() {
     "id": "07-interior-night",
     "title": "Interior lighting",
     "description": "The same nave under chandeliers, sconces and warm accent lights.",
-    "url": "references/07-interior-night.png",
+    "url": "references/08-lighting/overview/07-interior-night.png",
     "type": "New proposal",
     "status": "Visual reference; measured drawings govern geometry"
   }
@@ -42591,7 +42628,7 @@ void main() {
     );
     ((xt.rotation.z = -0.12),
       x("Proposed altar", Ge - 0.62, Ge + 0.62, -1.64, 1.64));
-    let nt = 42.58,
+    let nt = 41.3,
       R = -2.62;
     (_(0.78, 0.13, 0.81, nt, 0.815, R, c.whiteStone, Se, "Proposed ambo foot"),
       m(
@@ -42731,9 +42768,7 @@ void main() {
     ((be.rotation.y = Math.PI / 2),
       (be.position.x = Q),
       _(
-        0.1,
-        5.3,
-        3.57,
+        0.1, 5.3, 3.57,
         Q - 0.065,
         3.46,
         0,
@@ -44556,8 +44591,9 @@ void main() {
     for (let l = 0; l < 4; l++) {
       let c = i[l],
         h = i[l + 1],
-        d = 4.9 - l * 0.15,
-        u = 4.9 - l * 0.11;
+        // Stage widths follow the front elevation: the belfry (stage 4) steps in clearly.
+        d = [4.9, 4.65, 4.45, 3.9][l],
+        u = [4.9, 4.72, 4.52, 3.95][l];
       for (let f = 0; f < 4; f++) {
         let p = new It();
         n.add(p);
@@ -44656,7 +44692,7 @@ void main() {
         [1.73, 2.47],
         [1.2, 3.4],
         [0.5, 4.125],
-      ].map(([l, c]) => new pe(l, c)),
+      ].map(([l, c]) => new pe(l * 0.876, c)),
       o = new ws(r),
       a = yi(
         new dr(o.getPoints(60), 64),
@@ -44670,7 +44706,7 @@ void main() {
       let c = (l * Math.PI) / 2,
         h = new I(Math.cos(c), 0, Math.sin(c)),
         d = new It();
-      (d.position.set(h.x * 1.73, 31.6, h.z * 1.73),
+      (d.position.set(h.x * 1.52, 31.6, h.z * 1.52),
         d.quaternion.setFromUnitVectors(
           new I(0, 0, 1),
           h
@@ -44703,17 +44739,39 @@ void main() {
         "Continuous cap cross support",
       ),
       x1(0, 36.92, 0, 1.891, n, 0.93));
-    for (let l of [-2.4, 2.4])
-      for (let c of [-2.76, 2.76]) ss(l, 29.03, c, 1.68, n, 0.66);
-    for (let l of [-2.68, 2.68]) {
-      We(4.9, 0.11, 0.17, 0, 29.8, l, ce.trim, n);
-      for (let c = -2.4; c <= 2.4; c += 0.25)
-        We(0.055, 0.7, 0.065, c, 29.43, l, ce.trim, n);
-    }
-    for (let l of [-2.36, 2.36]) {
-      We(0.17, 0.11, 5.35, l, 29.8, 0, ce.trim, n);
-      for (let c = -2.6; c <= 2.6; c += 0.25)
-        We(0.065, 0.7, 0.055, l, 29.43, c, ce.trim, n);
+    // Belfry balcony after the reference image: corbelled cornice, plinth,
+    // vase balusters between moulded rails, corner pedestals with urn finials.
+    {
+      const H = 2.2, P = 2.02, y0 = 29.09;
+      for (let c = -H + 0.12; c <= H - 0.1; c += 0.3)
+        for (const [x, z] of [[c, -H + 0.06], [c, H - 0.06], [-H + 0.06, c], [H - 0.06, c]])
+          We(0.13, 0.16, 0.13, x, y0 - 0.24, z, ce.trim, n, "Balcony corbel");
+      We(2 * H + 0.12, 0.09, 2 * H + 0.12, 0, y0 - 0.11, 0, ce.trim, n, "Balcony cornice moulding");
+      We(2 * H, 0.16, 2 * H, 0, y0 + 0.08, 0, ce.trim, n, "Balcony plinth");
+      for (const side of [-1, 1]) {
+        for (const axis of [0, 1]) {
+          const len = 2 * P - 0.5, at = side * P;
+          const rail = (y, h, w) => axis ? We(w, h, len, at, y, 0, ce.trim, n, "Balustrade rail") : We(len, h, w, 0, y, at, ce.trim, n, "Balustrade rail");
+          rail(y0 + 0.21, 0.1, 0.24);
+          rail(y0 + 0.86, 0.1, 0.28);
+          for (let c = -P + 0.37; c <= P - 0.36; c += 0.2) {
+            const [x, z] = axis ? [at, c] : [c, at];
+            is(0.045, 0.06, 0.12, x, y0 + 0.32, z, ce.trim, n, "Baluster base", 10);
+            is(0.085, 0.045, 0.22, x, y0 + 0.49, z, ce.trim, n, "Baluster belly", 10);
+            is(0.045, 0.085, 0.16, x, y0 + 0.68, z, ce.trim, n, "Baluster neck", 10);
+          }
+        }
+      }
+      for (const x of [-P, P]) for (const z of [-P, P]) {
+        We(0.4, 0.92, 0.4, x, y0 + 0.62, z, ce.wall, n, "Balustrade corner pedestal");
+        We(0.48, 0.08, 0.48, x, y0 + 1.12, z, ce.trim, n, "Pedestal cap");
+        is(0.1, 0.16, 0.1, x, y0 + 1.21, z, ce.trim, n, "Urn foot", 14);
+        is(0.2, 0.11, 0.26, x, y0 + 1.39, z, ce.trim, n, "Urn body", 14);
+        is(0.08, 0.2, 0.16, x, y0 + 1.6, z, ce.trim, n, "Urn shoulder", 14);
+        is(0.02, 0.08, 0.34, x, y0 + 1.85, z, ce.trim, n, "Urn finial", 10);
+      }
+      is(1.98, 2.04, 0.5, 0, y0 + 0.4, 0, ce.wall, n, "Dome drum", 40);
+      is(2.06, 2.06, 0.08, 0, y0 + 0.69, 0, ce.trim, n, "Dome drum moulding", 40);
     }
   }
   Os.add(V0(Ec, ce, ti));
@@ -44988,6 +45046,11 @@ void main() {
     renderer: ni, data: ti, sun: xn, fill: Fp, hemisphere: X0
   });
   window.CHURCH_PLANNING.prepare({THREE: Ec, building: nn, interior: Qo, data: ti, renderer: ni});
+  window.CHURCH_SIMULATOR?.prepare({
+    THREE: Ec, building: nn, scene: ii, roofs: ei, structure: Rr, interior: Qo,
+    data: ti, renderer: ni, sun: xn, fill: Fp, hemisphere: X0, floors: Fn,
+    exterior: Os, plinth: Ui, mat: ce
+  });
   var Bp = new It();
   Bp.name = "Display batches of the shared model";
   ii.add(Bp);
@@ -45022,6 +45085,7 @@ void main() {
   }
   window.CHURCH_REALISM.bindBatches(t_);
   window.CHURCH_PLANNING.bindBatches(t_);
+  window.CHURCH_SIMULATOR?.bindBatches(t_);
   nn.visible = !1;
   ni.shadowMap.autoUpdate = !1;
   ni.shadowMap.needsUpdate = !0;
@@ -45047,6 +45111,7 @@ void main() {
     hemisphere: X0,
     interior: Qo,
   });
+  window.CHURCH_SIMULATOR?.start(window.church);
 })();
 /*! Bundled license information:
 

@@ -1,0 +1,46 @@
+{
+  "status": "Geometry and conditional span sensitivity only. No strength or connection capacity verification completed.",
+  "basis": {
+    "sectionImage": "docs/layout_design/06-slide-cut-inside-church.png",
+    "gridSource": "Thach_Bi_Viewer/bundle.js longitudinal axes",
+    "purlinSource": "Thach_Bi_Viewer/simulator/engine.js correctStructure()"
+  },
+  "geometry": {
+    "typicalGridSpacingM": 4.5,
+    "axes9to10GridSpacingM": 7.2,
+    "innerColumnGridWidthM": 7.2,
+    "sideAisleGridWidthM": 3.76,
+    "roofRidgeDatumM": 12.472,
+    "roofEaveDatumM": 7.13,
+    "roofHalfRunM": 7.36,
+    "derivedRoofPitchDegrees": 35.97271599980672
+  },
+  "spanSensitivity": {
+    "assumptions": "Simply supported prismatic beam, same uniformly distributed line load w and same E and I. Grid spacing used as a provisional span proxy; actual bearing span remains to be confirmed.",
+    "momentFormula": "Mmax = w L^2 / 8",
+    "deflectionFormula": "delta = 5 w L^4 / (384 E I)",
+    "reactionFormula": "R = w L / 2",
+    "spanRatio": 1.6,
+    "momentRatio": 2.5600000000000005,
+    "deflectionRatio": 6.553600000000001,
+    "reactionRatio": 1.6
+  },
+  "purlinCaveat": "Current code places rows at 0.50 m horizontal transverse increments, equivalent to about 0.618 m along the idealized slope. This is not a validated manufacturer or structural spacing. Rendered purlin counts and sections are illustrative.",
+  "checksRequired": [
+    "Roof dead load, maintenance/live loads, local wind pressure and uplift, applicable load combinations",
+    "Species, grade, moisture, creep, bending, shear, deflection and lateral stability",
+    "Purlin bearing, net sections at notches, splitting, fastener withdrawal and shear, group effects",
+    "Ridge/member support function and splices, principal-frame thrust and reactions",
+    "Roof-plane bracing or designed diaphragm, longitudinal stability and complete load path to foundations",
+    "Timber-to-concrete anchors and concrete edge/reinforcement capacities",
+    "Separate analysis of wider axes 9–10 and roof valleys"
+  ],
+  "missingInputs": [
+    "Structural framing and connection drawings",
+    "Timber species, grade and section schedule",
+    "Roof tile, battens, boarding and ceiling weights",
+    "Fastener and anchor specification",
+    "Site and governing wind/seismic design parameters"
+  ],
+  "reference": "https://www.woodworks.org/mass-timber-technical-reference-guide/"
+}

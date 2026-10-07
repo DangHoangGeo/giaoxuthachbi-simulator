@@ -10,3 +10,87 @@
 @media(max-width:420px){[data-mode=walk] .scene-heading{max-width:calc(100% - 162px)}[data-mode=walk] .scene-heading h1{font-size:18px}}
 
 .planning-caption{font-size:11px;line-height:1.5;color:var(--subtle)}.planning-link{display:block;margin:12px 0 18px;color:var(--green);font-size:12px;line-height:1.5}
+
+/* Discover stays on one side of the scene, including the walking actions. */
+.left-rail {
+  position:absolute; left:24px; top:100px; bottom:calc(var(--stats-height,80px) + 40px);
+  z-index:6; width:168px; display:flex; flex-direction:column; gap:12px; pointer-events:none;
+}
+.left-rail > * { pointer-events:auto; }
+[data-mode=walk] .left-rail { bottom:174px; }
+.place-dock {
+  position:static; flex:0 1 auto; min-height:56px;
+  transform:none; width:100%; max-width:none; max-height:100%;
+  flex-direction:column; align-items:stretch; justify-content:flex-start;
+  gap:4px; padding:10px; border-radius:14px; overflow:hidden;
+}
+.place-dock .discover-toggle {
+  display:flex; flex:none; width:100%; min-width:0; height:34px; padding:0 9px;
+  flex-direction:row; align-items:center; justify-content:space-between;
+  gap:8px; background:none; color:var(--green); border:0; border-radius:7px;
+}
+.place-dock .discover-toggle:hover { background:#e7eee0; }
+.place-dock .discover-toggle:focus-visible { outline:2px solid var(--green); outline-offset:2px; }
+.place-dock .dock-label { display:block; flex:none; padding:0; font-size:9px; }
+.discover-toggle svg { width:14px; height:14px; flex:none; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; transition:transform .15s; }
+.discover-toggle[aria-expanded=true] svg { transform:rotate(180deg); }
+.discover-contents { display:flex; flex-direction:column; gap:4px; min-height:0; }
+.place-list { display:flex; flex-direction:column; gap:4px; min-height:0; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; }
+.place-list > button {
+  flex:none; width:100%; min-width:0; height:42px; padding:0 10px;
+  flex-direction:row; justify-content:flex-start; gap:10px; font-size:11px;
+}
+.place-dock .place-icon { width:20px; flex:none; font-size:10px; text-align:left; }
+.place-dock .entry-action {
+  position:static; display:flex; flex:none; margin-top:6px; padding-top:10px;
+  border-top:1px solid #dce3d6;
+}
+.place-dock .entry-action button {
+  width:100%; min-width:0; height:42px; padding:0 10px; font-size:11px;
+  justify-content:center; flex-direction:row; gap:7px; border-radius:9px;
+}
+.place-dock .primary-button { background:var(--green); color:#fff; }
+.place-dock .primary-button:hover { background:#244832; }
+.place-dock .secondary-button { background:#e7eee0; color:#315b43; border-color:#cbd8c1; }
+.place-dock .walk-panel {
+  position:static; transform:none; display:block; flex:none; width:100%; max-width:none;
+  margin:0; padding:0; background:none; border:0; border-radius:0; box-shadow:none;
+}
+.place-dock .walk-panel button { width:100%; height:36px; padding:0 8px; font-size:10px; white-space:nowrap; }
+.right-rail {
+  position:absolute; top:100px; right:14px; bottom:14px; z-index:6;
+  width:224px; display:flex; flex-direction:column; align-items:flex-end;
+  gap:16px; pointer-events:none;
+}
+.right-rail > * { pointer-events:auto; }
+.right-rail .map-card { position:static; flex:none; max-width:100%; }
+.inspector { left:204px; top:100px; max-height:calc(100dvh - 140px); overflow-y:auto; }
+[data-mode=walk] .navigation-hint { display:none; }
+.navigation-hint { bottom:160px; }
+@media(max-width:760px) {
+  .left-rail { left:12px; top:82px; width:132px; bottom:calc(var(--stats-height,100px) + 40px); }
+  [data-mode=walk] .left-rail { bottom:calc(var(--stats-height,100px) + 134px); }
+  .place-dock {
+    min-height:48px; padding:7px; gap:3px;
+  }
+  .place-dock .discover-toggle { height:32px; padding:0 7px; }
+  .place-dock .dock-label { font-size:9px; }
+  .place-list > button { height:39px; padding:0 7px; font-size:10px; gap:7px; }
+  .place-dock .place-icon { width:16px; font-size:9px; }
+  .place-dock .entry-action button { font-size:10px; padding:0 5px; height:40px; gap:4px; }
+  .place-dock .entry-action svg { width:14px; height:14px; }
+  .right-rail { right:12px; top:82px; bottom:calc(var(--stats-height,170px) + 28px); width:min(224px,calc(100% - 160px)); }
+  .inspector { left:154px; top:82px; width:calc(100% - 166px); max-height:calc(100dvh - 140px); }
+  .navigation-hint { display:none; }
+}
+@media(max-height:600px) {
+  [data-mode=walk] .left-rail { bottom:100px; }
+  .place-list > button { height:36px; }
+  .place-dock .entry-action button { height:36px; }
+  .joystick { bottom:14px; left:24px; width:70px; height:70px; }
+  #joystickKnob { width:28px; height:28px; left:20px; top:20px; }
+  .joystick-arrows { inset:6px; font-size:11px; line-height:16px; }
+  #minimap { max-height:calc(100dvh - 390px); min-height:80px; }
+}
+@media(max-height:600px) and (max-width:760px) { .right-rail { bottom:14px; } }
+@media(prefers-reduced-motion:reduce) { .discover-toggle svg { transition:none; } }

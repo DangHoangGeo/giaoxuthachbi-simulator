@@ -1,4 +1,6 @@
 """Keep the selected checkpoint set; remove superseded generated project images."""
+raise SystemExit('Legacy consolidation retired: organized references must be preserved. Use Thach_Bi_Viewer/references/index.html and manifest.json.')
+
 from pathlib import Path
 import json
 import shutil

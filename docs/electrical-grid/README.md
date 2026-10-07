@@ -1,0 +1,47 @@
+# Electrical grid and controls
+
+## Main goal
+
+First optimize light, loudspeaker, microphone and fan positions and settings together. Develop matching **2D and 3D electrical route maps**, then a coordinated **main/sub-board design with manual controls for each controllable part and quick operating modes** matching the web app's intended behavior.
+
+This folder is the home for that work:
+
+- [Routing study and map behavior](routing.md)
+- [Manual boards and quick-mode design brief](controls.md)
+- [Separate equipment and line Excel registers by usage category](categories/README.md)
+- [Total quantities, usage and quality report](summary-report.md)
+- [Register fields, refresh and Excel position proposals](register.md)
+- [Matching simulator layout JSON](equipment-layout.json)
+- [Systems JSON: sources, routes, equipment and quantities](electrical-systems.json)
+- [Board/component and route schedule CSV](electrical-schedule.csv)
+- [Simulator methods and limitations](../simulator/methods-and-limitations.md)
+- [Lighting](../systems/lighting.md), [sound](../systems/sound.md), [fans and ventilation](../systems/fans.md)
+
+## Delivery order
+
+| Stage | Reviewable output |
+| --- | --- |
+| 1. Optimize positions | Versioned equipment layout with mounting/aiming, seat and zone results, trade-offs, remaining shortfalls and selected-product inputs still needed. |
+| 2. Coordinate routes | The same equipment and route IDs in plan, 3D and schedules; board/feed origin, endpoints, elevations, power/signal distinction, lengths and unresolved penetrations/supports. |
+| 3. Design control boards | Main/sub-board functional diagram, physical control-face proposal, item-to-control schedule, circuit/zone labels and per-item or agreed group operation. |
+| 4. Define quick modes | One scene/control matrix covering physical buttons and web controls, manual overrides, unavailable supply and restart behavior. |
+| 5. Verify and hand over | Reconciled maps/schedules, simulator checks, coordinated engineer review, mock-up and commissioning plan, then installation/operating documentation at its approved status. |
+
+Route feasibility can require another placement iteration. Preserve lighting, intelligibility, comfort, safe access and maintenance before optimizing cable length or cost.
+
+## Current implementation and export baseline
+
+The web app implements selectable 2D/3D routes, circuit and item controls, DB-1/DB-2 board views, the DB-2 feeder, fan speed controls, sound-zone level/mute controls and quick scenes. The physical board faces are schematic. Final wiring, switching hardware, control addresses, enclosure layouts and protective-device design are still pending; see [controls](controls.md).
+
+Exports regenerated on **7 October 2026** from the recommended default layout at code baseline `999485a`: **286 connected components and 329 selectable runs**. This baseline includes the sanctuary revision; older system-study quantities may differ. Version strings alone do not establish chronology. A browser's saved edits form a different configuration and must be exported separately.
+
+The six category registers include **327 equipment/enclosure records** (all 322 simulator items plus five enclosures), including hidden alternatives and non-electrical furnishings. Every file has matching Equipment, Electrical Lines and Route Points sheets plus Read me. Together they manage specifications, positions, IDs and control mapping without duplicate ownership. Keep them and the [summary report](summary-report.md) coordinated using the [register workflow](register.md).
+
+Run from the repository root:
+
+```sh
+node scripts/verify_simulator.cjs --electrical --export-electrical
+node scripts/build_equipment_register.mjs --verify-workflow
+```
+
+The first command checks the implemented electrical route layer and writes layout JSON, systems JSON and the CSV into this folder. The second refreshes all six category workbooks and the summary while preserving engineering-input values by ID. These checks do not verify every control interaction or certify installation design. Keep physical-control addresses, final cable sizes, protection and product selections pending until designed and checked. Update this baseline note when regenerating from a changed design.

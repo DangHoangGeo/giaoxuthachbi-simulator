@@ -1,0 +1,109 @@
+{
+  "checks": [
+    {
+      "check": "Desktop map stays at the right edge with controls open or closed",
+      "pass": true
+    },
+    {
+      "check": "All equipment tabs keep the map and control panel stable",
+      "pass": true
+    },
+    {
+      "check": "Phone map stays visible and fixed with controls open or closed",
+      "pass": true
+    },
+    {
+      "check": "Phone controls fit below the map and above the merged stats",
+      "pass": true
+    },
+    {
+      "check": "Phone map stays fixed and visible while the detailed Simulator opens",
+      "pass": true
+    },
+    {
+      "check": "Short desktop controls fit below the map and keep one size across all tabs",
+      "pass": true
+    },
+    {
+      "check": "Final phone layout keeps map fixed and all equipment tabs the same size",
+      "pass": true
+    },
+    {
+      "check": "One merged bottom display shows seven stats and the visualizer uses the same noise value",
+      "pass": true
+    }
+  ],
+  "layout": {
+    "controls": {
+      "bottom": 929,
+      "height": 440,
+      "right": 1322,
+      "visible": true,
+      "width": 224,
+      "x": 1098,
+      "y": 489
+    },
+    "discover": {
+      "bottom": 481.5,
+      "height": 381.5,
+      "right": 192,
+      "visible": true,
+      "width": 168,
+      "x": 24,
+      "y": 100
+    },
+    "dock": {
+      "bottom": 974,
+      "height": 485,
+      "right": 1322,
+      "visible": true,
+      "width": 224,
+      "x": 1098,
+      "y": 489
+    },
+    "map": {
+      "bottom": 142,
+      "height": 42,
+      "right": 1322,
+      "visible": true,
+      "width": 191,
+      "x": 1131,
+      "y": 100
+    },
+    "mode": "walk",
+    "noise": "At your position: estimated background noise 50 dBA, higher noise",
+    "oldStats": false,
+    "scope": "At your position · estimates",
+    "stats": {
+      "bottom": 968,
+      "height": 141.484375,
+      "right": 978,
+      "visible": true,
+      "width": 620,
+      "x": 358,
+      "y": 826.515625
+    },
+    "title": {
+      "bottom": 0,
+      "height": 0,
+      "right": 0,
+      "visible": false,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "values": "162lux\nFloor light\n0.55STI\nClarity\n62dBA\nSpeech\n0.06m/s\nAir\n50dBA\nNoise\n5.6kW\nTotal power\n742k₫/mo\nMonthly cost",
+    "viewport": {
+      "height": 988,
+      "width": 1336
+    }
+  },
+  "readings": {
+    "cells": 7,
+    "noise": "50",
+    "scope": "position",
+    "titleHidden": true,
+    "wave": "At your position: estimated background noise 50 dBA, higher noise"
+  },
+  "errors": []
+}

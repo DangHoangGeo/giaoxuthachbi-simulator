@@ -1,0 +1,124 @@
+{"electrical":"passed","installedComponents":276,"selectableRuns":319}
+{"facadeCoverage":"passed","samples":[{"y":7.5,"z":-3,"lux":41.6},{"y":7.5,"z":0,"lux":19.3},{"y":7.5,"z":3,"lux":41.6},{"y":8.5,"z":-3,"lux":73.1},{"y":8.5,"z":0,"lux":39.7},{"y":8.5,"z":3,"lux":73.1},{"y":9.5,"z":-3,"lux":110.9},{"y":9.5,"z":0,"lux":52.7},{"y":9.5,"z":3,"lux":110.9},{"y":10.25,"z":-3,"lux":110},{"y":10.25,"z":0,"lux":55.2},{"y":10.25,"z":3,"lux":110},{"y":11,"z":-3,"lux":97.9},{"y":11,"z":0,"lux":53.3},{"y":11,"z":3,"lux":97.9},{"y":13,"z":-3,"lux":60},{"y":13,"z":0,"lux":41.8},{"y":13,"z":3,"lux":60},{"y":15,"z":-3,"lux":73.3},{"y":15,"z":0,"lux":65.9},{"y":15,"z":3,"lux":73.3},{"y":17,"z":0,"lux":76.3},{"y":19,"z":0,"lux":60.5},{"y":21.5,"z":0,"lux":35.5}]}
+{"stableInteriorLighting":"passed","shadowIds":"L99,L100","ambient":[0.045695893143124264,[0.3277780980458375,0.4396571738310091,0.623960391667596],[0.07227185067438519,0.051269458367115384,0.03954623527052923],110]}
+{
+  "buildMs": 90804,
+  "items": 308,
+  "pool": {
+    "emitters": 186,
+    "points": 8,
+    "spots": 14,
+    "shadows": 2,
+    "persistent": 162,
+    "culled": 0
+  },
+  "room": {
+    "V": 7456,
+    "T": [
+      1.99,
+      1.55,
+      1.2,
+      1.1,
+      1.08,
+      1.07,
+      0.92
+    ],
+    "Tmid": 1.15
+  },
+  "seats": 380,
+  "lux": {
+    "avg": 346,
+    "min": 193,
+    "p10": 263,
+    "u0": 0.56,
+    "okPct": 99
+  },
+  "sti": {
+    "avg": 0.611,
+    "min": 0.437,
+    "okPct": 64,
+    "fairPct": 92
+  },
+  "spl": {
+    "avg": 68.7,
+    "spread90": 2.6
+  },
+  "noise": {
+    "avg": 43.3,
+    "max": 43.5
+  },
+  "air": {
+    "avg": 0.39,
+    "min": 0.26,
+    "max": 0.79,
+    "okPct": 94
+  },
+  "cooling": 1.3,
+  "blocks": {
+    "central": {
+      "lux": 323,
+      "sti": 0.65,
+      "air": 0.33
+    },
+    "outer": {
+      "lux": 345,
+      "sti": 0.63,
+      "air": 0.39
+    },
+    "wing": {
+      "lux": 390,
+      "sti": 0.51,
+      "air": 0.52
+    }
+  },
+  "checks": [
+    "warn: Low feedback margin — Ambo microphone: only 1.5 dB of margin.",
+    "warn: Low feedback margin — Altar microphone: only 1.8 dB of margin.",
+    "info: Ventilation — 9 exhaust fans move ≈25,920 m³/h ≈ 3.5 air changes per hour (comfort target in a hot climate with people: 4–6).",
+    "info: Speech clarity — 64 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.61."
+  ],
+  "power": {
+    "totalW": 5512,
+    "kWhService": 8.3,
+    "byCircuit": [
+      "A1 97 W",
+      "A2 24 W",
+      "A3 0 W",
+      "A5 0 W",
+      "DECOR 0 W",
+      "E1 15 W",
+      "F1 612 W",
+      "F2 0 W",
+      "F4 0 W",
+      "L1 692 W",
+      "L2 537 W",
+      "L3 287 W",
+      "L4 336 W",
+      "L5 333 W",
+      "L6 919 W",
+      "L7 0 W",
+      "L8 260 W",
+      "L9 298 W",
+      "LA 256 W",
+      "LD 306 W",
+      "MIC 0 W",
+      "V1 540 W",
+      "X1 0 W"
+    ]
+  },
+  "grids": {
+    "lux": 3959,
+    "sti": 1059,
+    "air": 3959,
+    "noise": 1059
+  }
+}
+AssertionError [ERR_ASSERTION]: recommended design has no warnings: Low feedback margin Ambo microphone: only 1.5 dB of margin.; Low feedback margin Altar microphone: only 1.8 dB of margin.
+    at /Users/danghoang/Desktop/giaoxuthachbi_work/scripts/verify_simulator.cjs:394:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
