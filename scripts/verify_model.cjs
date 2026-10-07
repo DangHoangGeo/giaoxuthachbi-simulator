@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['references.js','glass-art.js','sanctuary.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['references.js','glass-art.js','carving.js','sanctuary.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -202,14 +202,40 @@ for(const name of ['Central column 10/D — illustrative diameter','Central colu
   const column=nodes.find(o=>o.name===name);assert(column,name);
   near(bounds(column).getCenter(new T.Vector3()).x,frameX,'Structural column stays on its grid');
 }
-// Every round column on the D/E lines has the sanctuary finish: lacquer, four gilded bands, a gilded capital.
+// Every round column on the D/E lines is lacquered. Nave shafts (axes 3–9) are plain between a turned base on a
+// panelled stone pedestal and a carved capital under the tie beam, with a junction block at beam level and a die
+// under the rafter. The frame axis, which has no tie, keeps two gilded bands and a gilded capital under its die.
 const shafts=nodes.filter(o=>o.isMesh&&/^Central column /.test(o.name));
 assert.equal(shafts.length,18);
 for(const o of shafts)assert.equal(o.material.name,'Sanctuary · oxblood lacquer',`${o.name} is lacquered`);
-for(const o of nodes.filter(o=>o.isMesh&&/^(Timber shaft foot|Timber capital collar|Column head \+)/.test(o.name)))assert.equal(o.material.name,'Sanctuary · carved gilding',`${o.name} is gilded`);
-const bands=nodes.filter(o=>o.name==='Gilded column band'),capitals=nodes.filter(o=>o.name==='Gilded column capital');
-assert.equal(bands.length,64);assert.equal(capitals.length,16);
-for(const o of capitals){const b=bounds(o),c=b.getCenter(new T.Vector3());near(Math.abs(c.z),3.6,'Capital on the D/E line');if(Math.abs(c.x-frameX)>.5)assert(b.max.y<=8.59,'Nave capital sits under the tie beam');}
+assert(shafts[0].material.clearcoat>.4&&shafts[0].material.map,'Lacquer is a clear coat over a faint grain');
+for(const o of nodes.filter(o=>o.isMesh&&/^(Timber shaft foot|Timber capital collar|Column head \+)/.test(o.name)))assert.equal(o.material.name,'Sanctuary · oxblood lacquer',`${o.name} is lacquered`);
+const part=name=>nodes.filter(o=>o.isMesh&&o.name===name),onLine=o=>near(Math.abs(bounds(o).getCenter(new T.Vector3()).z),3.6,`${o.name} on the D/E line`);
+const bands=part('Gilded column band'),capitals=part('Gilded column capital');
+assert.equal(bands.length,4,'Gilded bands on the frame axis only');assert.equal(capitals.length,2,'Gilded capitals on the frame axis only');
+for(const o of [...bands,...capitals]){onLine(o);near(bounds(o).getCenter(new T.Vector3()).x,frameX,`${o.name} on the frame axis`);}
+for(const name of ['pedestal inset','capital bell','capital foliage','capital volutes','junction block','junction foliage','junction blooms and die panels']){
+  const list=part(`Column carving · ${name}`);assert.equal(list.length,14,`${name} on every nave column`);
+  for(const o of list){onLine(o);assert(bounds(o).getCenter(new T.Vector3()).x<frameX-5,`${name} belongs to a nave column`);}
+}
+for(const o of part('Column carving · capital foliage')){assert.equal(o.material.name,'Sanctuary · carved lacquered timber');assert(bounds(o).max.y<=8.59&&bounds(o).min.y>7.7,'Capital leaves stay between the neck and the tie beam');}
+for(const o of part('Column carving · capital bell'))near(bounds(o).max.y,8.59,'Capital abacus meets the tie beam soffit');
+for(const o of part('Column carving · junction block')){const b=bounds(o);near(b.min.y,8.59,'Junction block at the tie beam soffit');near(b.max.y,9.18,'Junction block at the tie beam top');}
+for(const o of part('Timber capital collar')){const b=bounds(o);near(b.min.y,9.18,'Die stands on the beams');assert(b.max.y<9.5,'Die stays under the rafter');}
+const turnedBases=part('Column carving · turned base');
+assert.equal(turnedBases.length,16,'Turned base on every free-standing shaft');
+for(const o of turnedBases){
+  const b=bounds(o),c=b.getCenter(new T.Vector3()),framed=Math.abs(c.x-frameX)<.5;onLine(o);
+  near(b.min.y,framed?.97:.78,'Turned base stands on its plinth');
+  // The base stays inside the 0.84 m pedestal, so walking clearances and sightline blockers are unchanged.
+  assert(b.max.x-b.min.x<=.841&&b.max.z-b.min.z<=.841&&b.max.y-b.min.y<.65,'Turned base stays within the pedestal footprint');
+}
+for(const o of part('Column base +0.600').filter(o=>bounds(o).getCenter(new T.Vector3()).x<frameX-5&&Math.abs(Math.abs(bounds(o).getCenter(new T.Vector3()).z)-3.6)<.01))assert.equal(o.material.name,'Proposed light sanctuary stone','Nave pedestal is pale stone');
+{
+  // Carving is display geometry: keep it within a budget that the batched viewer can carry.
+  let triangles=0;for(const o of nodes)if(o.isMesh&&/^(Column carving|Gilded column)/.test(o.name))triangles+=(o.geometry.index?o.geometry.index.count:o.geometry.attributes.position.count)/3;
+  assert(triangles<200000,`Column ornament triangle budget: ${triangles}`);
+}
 // The beams and roof timbers carry the same lacquer; the nave rafters and the ridge are gilded; the lining stays ivory.
 const named=name=>nodes.filter(o=>o.isMesh&&o.name===name),timber=named('Proposed underside ridge member')[0].material,lacquer=shafts[0].material;
 assert.equal(timber.name,'Proposed exposed roof timber colour');

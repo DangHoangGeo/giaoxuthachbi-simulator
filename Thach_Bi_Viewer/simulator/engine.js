@@ -316,7 +316,7 @@
     building.traverse(o => {
       if (!o.isMesh) return;
       const near = xs.some(x => Math.abs(o.getWorldPosition(new T.Vector3()).x - x) < 0.5);
-      if (/^Main tie beam/.test(o.name) || (near && /^(Central column|Column head|Carved stone pedestal cap|Timber shaft foot|Timber capital collar|Carved stone column base on the dais|Gilded column (band|capital))/.test(o.name))) move.push(o);
+      if (/^Main tie beam/.test(o.name) || (near && /^(Central column|Column head|Carved stone pedestal cap|Timber shaft foot|Timber capital collar|Carved stone column base on the dais|Gilded column (band|capital)|Column carving)/.test(o.name))) move.push(o);
     });
     for (const o of move) drawnFrame.attach(o);
     const box = (w, h, d, x, y, z, mtl, name) => {

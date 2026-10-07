@@ -30,3 +30,11 @@ The [asset manifest](../Thach_Bi_Viewer/references/00-overview/2026-10-07/manife
 Only selected images enter the reference set. Earlier outputs lacking the requested statue, using obsolete sanctuary/connection art, or adding invented windows/background features stay outside the repository reference folders. Existing older reference assets are retained as earlier design studies. Native selected masters are intentionally retained alongside their Full HD copies.
 
 Visual review covers silhouette, visible openings, roof continuity, recognizable sacred figures, carved form, obvious generation defects and consistency with the stated concept. It is not an engineering acceptance test. Before public use, label these as generated concepts and keep them distinct from dated site photographs in the construction timeline.
+
+## Model follow-up
+
+The paragraphs above describe the image delivery, when no geometry had changed. Revision 5 of the [sanctuary model](sanctuary-model.md) now transfers this art into the viewer in steps, as generated carving that approximates the pictures:
+
+1. Columns: turned bases on panelled stone pedestals, carved capitals, junction blocks and dies with gilded lotus panels; clear-coated lacquer.
+
+Parts not yet listed here are still as described above. The art remains the reference for appearance only. Dimensions, structure, equipment and calculated results keep their own sources.

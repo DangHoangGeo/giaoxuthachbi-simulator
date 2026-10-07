@@ -192,8 +192,10 @@ The calculation methods, measurement planes, assumptions and validation boundari
   lines, gilded boarded vault) runs back to the reredos. The crucifix stands
   in a niche 1.0 m deep that opens through the back wall onto a base over the
   service room.
-- All round columns on the D and E lines are lacquered with gilded bands and
-  capitals, like the two that carry the sanctuary frame.
+- All round columns on the D and E lines are lacquered. The nave columns have
+  turned bases on panelled stone pedestals, carved capitals under the tie
+  beams and dies with gilded lotus panels. The two that carry the sanctuary
+  frame keep gilded bands and gilded capitals.
 - The tie beams, side beams, rafters, purlins, ridge and braces take the same
   red lacquer, with gilded lines, bands and rosettes on the beams, rafters and
   ridge. The boarded roof lining stays ivory. *Settings → Structural timber

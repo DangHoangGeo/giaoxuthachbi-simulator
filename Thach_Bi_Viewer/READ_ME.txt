@@ -39,7 +39,8 @@ Exact ornamental profiles, stair tread count, furnishings, lighting and the
 sanctuary arch's longitudinal placement remain visual proposals. The workbook
 retains unresolved drawing dimensions. This viewer is not a construction model.
 
-Maintainable refinement: realism.js. References: references.js and
+Maintainable refinement: realism.js. Sanctuary and column finishes: sanctuary.js.
+Carved ornament shapes: carving.js. References: references.js and
 references/manifest.json. Original runtime backup: ../review/original.
 Geometry checks: ../scripts/verify_model.cjs (run with Node.js).
 
