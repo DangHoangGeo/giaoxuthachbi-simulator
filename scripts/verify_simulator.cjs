@@ -34,7 +34,7 @@ const sandbox = {
 sandbox.window = sandbox;
 sandbox.addEventListener = (e, f) => { (listeners[e] ||= []).push(f); };
 vm.createContext(sandbox);
-for (const file of ['references.js', 'glass-art.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
+for (const file of ['references.js', 'glass-art.js', 'sanctuary.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
   vm.runInContext(fs.readFileSync(path.join(viewer, file), 'utf8'), sandbox, { filename: file });
 
 let src = fs.readFileSync(path.join(viewer, 'bundle.js'), 'utf8');
@@ -57,11 +57,29 @@ const P = sandbox.CHURCH_SIM_PHYSICS;
 // --- As-drawn frame -------------------------------------------------------
 const nodes = []; building.traverse(o => nodes.push(o));
 const ties = nodes.filter(o => o.name === 'Main tie beam 0.30 × 0.59 m · as drawn');
-assert.equal(ties.length, 8, 'eight main tie beams (axes 3–9 and 11)');
+assert.equal(ties.length, 7, 'seven main tie beams (axes 3–9); axis 10 carries the lobed sanctuary frame');
 for (const t of ties) { const b = new T.Box3().setFromObject(t); assert(Math.abs(b.min.y - 8.59) < 0.002 && Math.abs(b.max.y - 9.18) < 0.002, 'tie beam levels'); }
 const sideBeams = nodes.filter(o => o.name === 'Side beam 0.22 × 0.34 m · as drawn');
 assert.equal(sideBeams.length, 14, 'side beams on axes 3–9, both sides');
 assert(nodes.filter(o => o.name === 'Purlin · as drawn spacing ~0.50 m').length >= 28, 'drawn purlins');
+// The beams carry the lacquer of the columns, with gilded borders, rosettes and bands.
+{
+  const named = name => nodes.filter(o => o.isMesh && o.name === name), timber = interior.materials.timber;
+  assert.equal(timber.color.getHexString(), '571a12', 'structural timber is lacquered by default');
+  for (const o of [...ties, ...sideBeams, ...named('Purlin · as drawn spacing ~0.50 m')]) assert.equal(o.material, timber, o.name + ' uses the structural timber finish');
+  const tieGilding = [...named('Main tie beam gilded border'), ...named('Main tie beam gilded rosette'), ...named('Main tie beam gilded band')];
+  assert.equal(named('Main tie beam gilded border').length, 28, 'two border lines on both faces of each tie beam');
+  assert.equal(named('Main tie beam gilded rosette').length, 14, 'a rosette on both faces of each tie beam');
+  assert.equal(named('Main tie beam gilded band').length, 14, 'a band near each shaft');
+  assert.equal(named('Side beam gilded band').length, 28, 'a band at each end of every side beam');
+  assert.equal(named('Side beam gilded border').length, 56, 'border lines on both faces of every side beam');
+  for (const o of [...tieGilding, ...named('Side beam gilded band'), ...named('Side beam gilded border')]) assert.equal(o.material.name, 'Sanctuary · carved gilding', o.name + ' is gilded');
+  for (const o of tieGilding) {
+    const b = new T.Box3().setFromObject(o), tie = ties.find(t => Math.abs(t.position.x - (b.min.x + b.max.x) / 2) < 0.2);
+    assert(tie && new T.Box3().setFromObject(tie).expandByScalar(0.03).containsBox(b), o.name + ' sits on its tie beam');
+    assert.equal(o.parent, tie.parent, 'tie-beam gilding shows and hides with the drawn frame');
+  }
+}
 const truss = [...batches.keys()].find(g => g.userData.proposedTruss);
 assert(truss, 'proposed truss layer is a separate batch');
 const moved = []; truss.traverse(o => { if (o.isMesh) moved.push(o.name); });
@@ -118,6 +136,93 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   assert.equal(facade.filter(it => it.name.startsWith('Central crown wash ·')).length, 2, 'paired upper fills added once');
   assert(facade.filter(it => it !== unrelated).every(it => !it.on), 'facade migration honours the all-off scene');
   assert.equal(D.upgradeFacade(facade, D.recommended(SIM.GEO, SIM), SIM.SCENES['All off']).length, facade.length, 'facade migration has no duplicates');
+  // Sanctuary revision: a layout saved before the frame moved to the column line.
+  const design = D.recommended(SIM.GEO, SIM), spec = sandbox.CHURCH_SANCTUARY.spec;
+  const saved = [unrelated,
+    { id: 'mary', name: 'Statue · Our Lady', type: 'statueMary', circuit: 'DECOR', mount: 'floor', pos: [49.7, 0.83, -5.55], yaw: 180, mountYaw: 180 },
+    { id: 'accent', name: 'Crucifix accent · B', type: 'spot15', circuit: 'L3', mount: 'wall', pos: [44.505, 6.6, -3.6], yaw: 40, tilt: -20, mountYaw: 0, beam: 15, lumens: 1200, on: false, dim: 0.5 },
+    { id: 'stand', name: 'Flower stand · statue H', type: 'flowerStand', circuit: 'DECOR', mount: 'floor', pos: [49.45, 0.15, 6.6], yaw: 180, mountYaw: 180 },
+    { id: 'tie-uplight', name: 'Roof uplight · axis 10', type: 'uplight', circuit: 'LA', mount: 'floor', pos: [44.175, 9.18, 0], yaw: 90, mountYaw: 90, tilt: 90 },
+    { id: 'votive', name: 'Votive candles · B', type: 'candleStand', circuit: 'DECOR', mount: 'floor', pos: [48.1, 0.15, -6.2], yaw: 180, mountYaw: 180 },
+    { id: 'ambo-mic', name: 'Ambo microphone', type: 'mic', circuit: 'MIC', mount: 'floor', pos: [42.36, 1.9, -2.62], yaw: 0, mountYaw: 0 }];
+  const sanctuary = D.upgradeSanctuary(saved, design);
+  assert.equal(sanctuary.find(it => it.id === unrelated.id), unrelated, 'sanctuary migration preserves unrelated equipment');
+  const mary = sanctuary.find(it => it.id === 'mary'), accent = sanctuary.find(it => it.id === 'accent'), stand = sanctuary.find(it => it.id === 'stand');
+  assert(near(mary.pos[0], spec.wingX - 0.1) && near(mary.pos[1], spec.nicheBase) && near(mary.pos[2], -spec.wingZ), 'statue moves to the shrine on the column line');
+  assert(accent.pos[0] > spec.chamber.x0 && Math.abs(accent.pos[2]) < spec.chamber.face && accent.lumens === 700 && accent.beam === 24 && accent.on === false && accent.dim === 0.5, 'crucifix accent moves inside the chamber, takes the reviewed output and keeps its switch and dimmer');
+  assert(stand.name === 'Flower stand · tabernacle H' && near(stand.pos[0], 47.2), 'flower stand moves to the tabernacle under its new name');
+  assert(!sanctuary.some(it => it.id === 'tie-uplight'), 'axis-10 uplight goes with its tie beam');
+  assert(!sanctuary.some(it => it.id === 'votive') && !design.some(it => it.type === 'candleStand'), 'votive candle stands are removed from the way to the shrines');
+  assert(near(sanctuary.find(it => it.id === 'ambo-mic').pos[0], 41.08), 'ambo microphone follows the ambo forward');
+  assert(near(accent.pos[1], 7.6) && Math.abs(Math.tan(accent.yaw * Math.PI / 180) - (0 - accent.pos[2]) / (spec.niche.backX - 0.5 - accent.pos[0])) < 0.001, 'crucifix accent aims at the corpus inside the niche');
+  for (const name of ['Reredos wash · B', 'Reredos base wash · H', 'Sanctuary vault uplight · B', 'Sanctuary frame wash · H', 'Shrine wash · B', 'Presider chair light', 'Palm · sanctuary H', 'Shrine flowers · B · inner'])
+    assert.equal(sanctuary.filter(it => it.name === name).length, 1, 'new sanctuary fitting added once: ' + name);
+  assert(!sanctuary.some(it => it.name === 'Statue · Saint Joseph'), 'a statue deleted from the saved layout stays deleted');
+  assert.equal(D.upgradeSanctuary(sanctuary, design).length, sanctuary.length, 'sanctuary migration has no duplicates');
+  // Night retune: a layout already at revision 6 keeps every position. Only the output of the
+  // sanctuary fittings changes, and the reredos washes still in place are re-aimed.
+  const pick = name => design.find(it => it.name === name), washB = pick('Reredos wash · B');
+  const at6 = [unrelated,
+    { ...pick('Crucifix accent · H'), id: 'acc-h', lumens: 2000, on: false, dim: 0.5 },
+    { ...pick('Altar key light · B'), id: 'key-b', lumens: 5500, pos: [36.975, 8.585, -1.1] },
+    { ...washB, id: 'wash-b', beam: 50, lumens: 2200, yaw: 10, tilt: -20 },
+    { ...pick('Reredos wash · H'), id: 'wash-h', beam: 50, lumens: 2200, yaw: -10, tilt: -20, pos: [45.5, 6.7, 3.24] },
+    { ...pick('Statue · Our Lady'), id: 'mary-moved', pos: [44.0, 2.85, -5.2] }];
+  {
+    const retuned = D.upgradeSanctuary(at6, design, '2026-10-07-sanctuary-6'), r = id => retuned.find(it => it.id === id);
+    assert.equal(retuned.length, at6.length, 'the night retune adds and removes nothing');
+    assert(retuned[0] === unrelated && r('mary-moved') === at6[5], 'the night retune leaves other equipment and a moved statue untouched');
+    assert(r('acc-h').lumens === 700 && r('acc-h').on === false && r('acc-h').dim === 0.5, 'crucifix accent output lowered; switch and dimmer kept');
+    assert(r('key-b').lumens === 4500 && near(r('key-b').pos[2], -1.1), 'a moved altar key keeps its place');
+    assert(r('wash-b').beam === 36 && r('wash-b').lumens === 650 && near(r('wash-b').yaw, washB.yaw) && near(r('wash-b').tilt, washB.tilt), 'a reredos wash in place takes the tighter beam and its new aim');
+    assert(r('wash-h').lumens === 650 && r('wash-h').yaw === -10 && near(r('wash-h').pos[0], 45.5), 'a moved reredos wash keeps its place and aim');
+  }
+  // The revision travels with the saved settings. (It was not stored before, so the review was
+  // re-applied at every load and reset any sanctuary fitting moved by hand.)
+  const layout = JSON.parse(JSON.stringify(SIM.exportLayout()));
+  assert.equal(layout.settings.sanctuaryRevision, D.sanctuaryRevision, 'sanctuary revision is saved with the layout');
+  SIM.importLayout({ ...layout, settings: { ...layout.settings, sanctuaryRevision: '2026-10-07-sanctuary-6' } }, { record: false });
+  assert.equal(SIM.state.settings.sanctuaryRevision, '2026-10-07-sanctuary-6', 'sanctuary revision is read back from a saved layout');
+  SIM.importLayout(layout, { record: false });
+  assert.equal(SIM.state.settings.sanctuaryRevision, D.sanctuaryRevision);
+  // Night balance of the sanctuary centre (direct, maintained; "Full service · evening").
+  // The picture is exposed for 110 lux by default: a surface near twice that level still shows
+  // its colour, while the 560 lux that stood on the blue recess before washed it out.
+  const em = SIM.emitters(), occ = SIM.GEO.occluders, mf = SIM.state.settings.maintenance;
+  const lux = (p, n) => P.illuminance(p, n, em, occ) * mf, back = [-1, 0, 0];
+  const Eind = P.indirectIlluminance(em.reduce((sum, e) => sum + (e.interior ? e.lumens : 0), 0), SIM.room().light) * mf;
+  const chest = lux([48.45, 5.3, 0], back), blue = lux([48.98, 4.2, 0.6], back), blueSide = lux([48.98, 3.6, 1.3], back);
+  const gilding = lux([47.6, 4.6, 2.4], back), mensa = lux([44.24, 1.89, 0], [0, 1, 0]), statue = lux([44.15, 4.25, 5.5], back), tabernacle = lux([47.2, 2.05, 0], back);
+  assert(blue + Eind < 2.2 * 110 && blueSide < blue, `blue recess stays within about twice the exposure level, darker towards its edges: ${blue.toFixed(0)} / ${blueSide.toFixed(0)} + ${Eind.toFixed(0)} lux`);
+  assert(chest > 1.3 * blue && chest > 200 && chest < 320, `corpus stands out from the recess without glare: ${chest.toFixed(0)} lux`);
+  assert(gilding > 120 && gilding < 220, `reredos lacquer and gilding at a level that keeps the red: ${gilding.toFixed(0)} lux`);
+  assert(mensa >= 300 && mensa > chest && tabernacle > mensa, `altar and tabernacle remain the brightest: ${mensa.toFixed(0)} / ${tabernacle.toFixed(0)} lux`);
+  assert(statue < chest && statue > 120, `statues below the crucifix: ${statue.toFixed(0)} lux`);
+}
+// Structural timber tone: lacquer by default, natural tones bring the grain back; the
+// entrance-hall acoustic slats stay natural timber.
+{
+  const timber = interior.materials.timber;
+  let slats = null; church.scene.traverse(o => { if (o.name === 'Entrance hall acoustic slats (option)') slats = o; });
+  assert(slats && slats.material !== timber && slats.material.color.getHexString() === 'ab8d6f' && slats.material.map, 'entrance slats keep natural timber');
+  SIM.setSetting('timberTone', 'natural');
+  assert(timber.color.getHexString() === 'ab8d6f' && timber.map && timber.roughness === 0.5, 'natural tone restores the grain');
+  SIM.setSetting('timberTone', 'dark');
+  assert(timber.color.getHexString() === '7c5839' && slats.material.color.getHexString() === '7c5839', 'dark tone applies to beams and slats');
+  SIM.setSetting('timberTone', 'reference');
+  assert(timber.color.getHexString() === '571a12' && timber.map === null && slats.material.color.getHexString() === 'ab8d6f', 'reference tone is the red lacquer');
+}
+// Day/evening: the viewer redraws in the task that switches the mode, before any observer runs.
+// That frame must already use the new mode, or the evening sky levels overwrite the day ones.
+{
+  const hemisphere = sandbox.window.model.hemisphere;
+  assert.equal(SIM.ambient().env, 'evening');
+  body.dataset.lighting = 'day'; hemisphere.intensity = 1.15;
+  SIM.frame(0, 'walk', camera);
+  assert(SIM.ambient().env === 'day' && hemisphere.intensity === 1.15, 'the first day frame keeps the day sky level');
+  body.dataset.lighting = 'evening';
+  SIM.frame(0, 'walk', camera);
+  assert(SIM.ambient().env === 'evening' && hemisphere.intensity < 0.2, 'the first evening frame applies the evening level');
 }
 // --- Electrical network: connectivity, real picking and reversible isolation ---
 {
@@ -199,10 +304,12 @@ for (const it of SIM.state.items) {
 }
 // Floor-standing items collide in walk mode.
 assert(church.colliders.some(c => c.kind === 'simulator'), 'floor items add walk colliders');
+assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label)), 'statues and flowers on the raised shrine shelves leave the service doors walkable');
 // Seating-dependent palms preserve manual visibility and remove walk obstacles.
 {
-  const planning=sandbox.CHURCH_PLANNING,palms=SIM.state.items.filter(it=>it.type==='palm');
-  assert.equal(palms.length,2);
+  const planning=sandbox.CHURCH_PLANNING,allPalms=SIM.state.items.filter(it=>it.type==='palm');
+  const palms=allPalms.filter(it=>it.name.startsWith('Palm · entrance')),sanctuaryPalms=allPalms.filter(it=>it.name.startsWith('Palm · sanctuary'));
+  assert.equal(palms.length,2);assert.equal(sanctuaryPalms.length,2);assert.equal(allPalms.length,4);
   const exteriorPalm=SIM.add({type:'palm',name:'Test courtyard palm',mount:'floor',pos:[-10,-.48,5]}, {record:false});
   const visibility=palms.map(it=>it.hidden);
   for(const layout of [2,4,2,4]){
@@ -213,6 +320,7 @@ assert(church.colliders.some(c => c.kind === 'simulator'), 'floor items add walk
       assert.equal(church.colliders.some(c=>c.label===it.name),layout===4&&!it.hidden,'Hidden indoor palms do not block walking');
     }
     assert(SIM.fixtures.get(exteriorPalm.id).root.visible,'Outdoor palms are independent of seating');
+    for(const it of sanctuaryPalms)assert(SIM.fixtures.get(it.id).root.visible,'Sanctuary palms stand clear of the seating in both layouts');
     assert.deepEqual(palms.map(it=>it.hidden),visibility,'Layout switching preserves saved decoration settings');
   }
   SIM.update(palms[0].id,{hidden:true},{record:false});

@@ -45,12 +45,14 @@
       }
       rowIndex++;
     }
-    // Two additional complete rows in each requested drawing bay, in both layouts.
+    // Additional complete rows in the requested drawing bays, in both layouts.
     // Door-bay rows flank a 1.20 m crossing; do not silently fill the door route.
+    // Bay 8–9 keeps only the row behind the crossing: the row in front of it
+    // (x 35.79) stood too close to the sanctuary steps and is removed.
     const additions = [
       {bay:'2–3',xs:[6.49,7.62]},
       {bay:'4–5',xs:[15.61,17.79]},
-      {bay:'8–9',xs:[33.61,35.79]}
+      {bay:'8–9',xs:[33.61]}
     ];
     const crossAisles = ['4','8'].map(axis=>({bay:axis==='4'?'4–5':'8–9',minX:data.longitudinal[axis]+1.75,maxX:data.longitudinal[axis]+2.95,widthM:1.2}));
     for (const layout of [2,4]) {
@@ -70,7 +72,7 @@
     }
     interior.setSeatingLayout = setLayout;
     interior.seatingState = state;
-    data.seatingStudy = {status:'Concept layouts; not approved occupancy',layouts:[2,4],selected:4,longBenchLengthM:4.65,longBenchCentreZ:3.625,additions,crossAisles,note:'Two extra rows in each of bays 2–3, 4–5 and 8–9 for both layouts. Proposed door-bay crossings are 1.20 m. Kneeler clearance requires a mock-up.'};
+    data.seatingStudy = {status:'Concept layouts; not approved occupancy',layouts:[2,4],selected:4,longBenchLengthM:4.65,longBenchCentreZ:3.625,additions,crossAisles,note:'Two extra rows in each of bays 2–3 and 4–5 and one in bay 8–9, for both layouts; the front row before the sanctuary is omitted. Proposed door-bay crossings are 1.20 m. Kneeler clearance requires a mock-up.'};
     setLayout(4);
   }
   function bindBatches(batches) {

@@ -427,8 +427,11 @@
   function buildJoseph(k) {
     pedestal(k, 1.0, 0.5);
     figure(k, 1.0, { robe: 'robeGreen', mantle: 'robeOchre', sash: 'robeBrown', hair: 'hair', beard: true, hands: 'hold', sleeve: 'robeGreen' });
-    k.rod([0.19, 1.6, 0.02], [0.17, 2.55, -0.05], 0.008, 'leaf', 6);
-    for (let i = 0; i < 6; i++) k.cone(0.03, 0.08, 'flowerWhite', { p: [0.19 - i * 0.004, 2.25 + i * 0.06, 0.02 - i * 0.012], r: [PI, 0, deg(20)] }, 8);
+    // Child Jesus held across Joseph's arms, following the approved concept.
+    k.sph(0.065, 'skin', { p: [0.22, 2.23, -0.14] }, 14, 10);
+    k.sph(0.12, 'robeWhite', { p: [0.23, 2.06, -0.12], s: [.7,1.25,.65], r:[.2,0,-.2] }, 14, 10);
+    for(const z of [-.17,-.07])k.rod([.23,1.99,z],[.32,1.88,z],.025,'skin',8);
+    k.rod([.23,2.14,-.17],[.3,2.19,-.27],.02,'skin',8);
   }
   function buildSacredHeart(k) {
     pedestal(k, 1.0, 0.5);

@@ -32,6 +32,11 @@
     const beamY = 8.59, sideBeamY = 6.66;
     const facadeX = 2.65; // inner face of the entrance façade; the nave is open to it
     const above = (x, z, y) => SIM.structureAbove(x, z, y)?.y ?? y;
+    // Sanctuary geometry from sanctuary.js: shrine niches on the column line and
+    // the timber-lined chamber between axes 10 and 11.
+    const sanctuary = window.CHURCH_SANCTUARY?.spec ?? { frameX: 44.175, wingX: 44.375, wingZ: 5.5, nicheBase: 2.85, chamber: { x0: 44.49, x1: 48.42, face: 3.3 }, niche: { backX: 49 } };
+    const shrine = { x: sanctuary.wingX - 0.1, y: sanctuary.nicheBase, z: sanctuary.wingZ };
+    const chamber = { face: sanctuary.chamber.face - 0.06, lightX: sanctuary.chamber.x0 + 0.26, sconceX: (sanctuary.chamber.x0 + sanctuary.chamber.x1) / 2 };
     for (const x of [50.0, 51.9]) add({ type: 'servicePanel', name: `Service-room ceiling panel · ${x.toFixed(1)} m`, circuit: 'L3', mount: 'pendant', pos: [x, 4.14, 0], anchorY: 4.15, note: 'Retains the existing ceiling-panel geometry; product light/output values are provisional.' });
     const nave = ['3', '4', '5', '6', '7', '8', '9'];
 
@@ -70,42 +75,64 @@
       const lo = [mx, 2.92, s * 13.06], b = aim(lo, [bx, 0.48, s * 8.7]);
       add({ type: 'projector36', name: `Wing light · ${side(s)} · ${block} block · front rows`, circuit: 'L8', mount: 'wall', pos: lo, mountYaw: -s * 90, yaw: b.yaw, tilt: b.tilt, lumens: 4000, beam: 36 });
     }
-    // LA · hidden roof uplights on top of every tie beam.
-    for (const k of [...nave, '10']) add({ type: 'uplight', name: `Roof uplight · axis ${k}`, circuit: 'LA', mount: 'floor', pos: [A[k], 9.18, 0], yaw: 90, mountYaw: 90, tilt: 90 });
+    // LA · hidden roof uplights on top of every tie beam. Axis 10 carries the
+    // lobed sanctuary frame instead of a tie; the vault behind it has its own.
+    for (const k of nave) add({ type: 'uplight', name: `Roof uplight · axis ${k}`, circuit: 'LA', mount: 'floor', pos: [A[k], 9.18, 0], yaw: 90, mountYaw: 90, tilt: 90 });
 
     // LD · chandeliers on chains from the ridge over the side-door crossings
     // and bay 6–7, plus a grand chandelier at the crossing.
     for (const k of ['4', '6', '8']) add({ type: 'chandelier8', name: `Chandelier · bay ${k}–${Number(k) + 1}`, circuit: 'LD', mount: 'pendant', pos: [A[k] + 2.25, 6.3, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
-    add({ type: 'chandelier12', name: 'Grand chandelier · crossing 9–10', circuit: 'LD', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 7.2, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
+    // Hung high enough that the lobed sanctuary frame and the reredos crown read below it from the nave.
+    add({ type: 'chandelier12', name: 'Grand chandelier · crossing 9–10', circuit: 'LD', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.2, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
     // Sconces on the C/G piers, facing the nave, and on the sanctuary piers.
     for (const k of ['3', '4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) {
       add({ type: 'sconce2', name: `Sconce · axis ${k} · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A[k], 4.6, s * 7.07], yaw: -s * 90, mountYaw: -s * 90 });
     }
-    for (const s of [-1, 1]) add({ type: 'sconce2', name: `Sconce · sanctuary pier · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A['11'] - 0.37, 4.3, s * 3.6], yaw: 180, mountYaw: 180 });
+    for (const s of [-1, 1]) add({ type: 'sconce2', name: `Sconce · sanctuary pier · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [chamber.sconceX, 4.3, s * chamber.face], yaw: -s * 90, mountYaw: -s * 90, lumens: 560 });
 
     // L3 · sanctuary.
-    const altar = [43.95, 1.95, 0], ambo = [42.9, 2.25, -2.62], crucifix = [48.0, 5.0, 0];
-    for (const z of [-1.4, 1.4]) {
-      const p = [A['9'], beamY - 0.005, z], a = aim(p, [altar[0], altar[1], z * 0.3]);
-      add({ type: 'spot15', name: `Altar key light · ${side(z)}`, circuit: 'L3', mount: 'pendant', pos: p, anchorY: beamY, ...a, mountYaw: a.yaw, beam: 24, lumens: 3500, shadow: true });
-    }
-    { const p = [A['9'], beamY - 0.005, -3.15], a = aim(p, ambo);
-      add({ type: 'spot15', name: 'Ambo key light', circuit: 'L3', mount: 'pendant', pos: p, anchorY: beamY, ...a, mountYaw: a.yaw, beam: 15, lumens: 2500, shadow: true }); }
-    for (const z of [-1.9, 1.9]) {
-      const p = [A['9'], beamY - 0.005, z], a = aim(p, [41.6, 0.75, z * 1.2]);
-      add({ type: 'projector36', name: `Sanctuary step fill · ${side(z)}`, circuit: 'L3', mount: 'pendant', pos: p, anchorY: beamY, ...a, mountYaw: a.yaw, lumens: 4000 });
-    }
+    // The ambo stands 2.3 m in front of the altar (bundle: x 41.3); the reader's head is
+    // 0.32 m behind its centre. The corpus hangs inside the crucifix niche.
+    const amboX = 41.3, altar = [43.95, 1.95, 0], ambo = [amboX + 0.32, 2.25, -2.62], crucifix = [sanctuary.niche.backX - 0.5, 5.1, 0];
+    // Outside the frame, every head hangs from the axis-9 tie beam or side beams
+    // and points away from the congregation.
+    const outside = (name, type, z, y, target, o) => {
+      const p = [A['9'], y - 0.005, z], a = aim(p, target);
+      add({ type, name, circuit: 'L3', mount: 'pendant', pos: p, anchorY: y, ...a, mountYaw: a.yaw, ...o });
+    };
+    for (const z of [-1.4, 1.4]) outside(`Altar key light · ${side(z)}`, 'projector24', z, beamY, [altar[0], altar[1], z * 0.3], { beam: 24, lumens: 4500, shadow: true });
+    outside('Ambo key light', 'spot15', -3.15, beamY, ambo, { beam: 15, lumens: 1900, shadow: true });
+    for (const z of [-1.9, 1.9]) outside(`Sanctuary step fill · ${side(z)}`, 'projector36', z, beamY, [41.6, 0.75, z * 1.2], { lumens: 4000 });
+    // The presider's chair stands inside the chamber, beyond the altar keys.
+    outside('Presider chair light', 'spot15', 3.0, beamY, [46.6, 2.3, 2.2], { beam: 15, lumens: 1400, shadow: false });
+    // The lacquer is dark: the frame's gilding needs its own wash from the front,
+    // and the same beams carry on to the reredos crown under the vault.
+    for (const s of [-1, 1]) outside(`Sanctuary frame wash · ${side(s)}`, 'projector36', s * 0.6, beamY, [sanctuary.frameX - 0.2, 9.8, s * 1.8], { beam: 50, lumens: 3500, shadow: false });
+    // Inside the chamber the heads sit on the lacquered side walls directly
+    // behind the front frame, hidden from the nave by the axis-10 columns.
+    const inside = (name, type, y, s, target, o) => {
+      const p = [chamber.lightX, y, s * chamber.face], a = aim(p, target);
+      add({ type, name, circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: -s * 90, shadow: false, ...o });
+    };
     for (const s of [-1, 1]) {
-      const p = [A['10'] + 0.33, 6.6, s * 3.6], a = aim(p, crucifix);
-      add({ type: 'spot15', name: `Crucifix accent · ${side(s)}`, circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: 0, beam: 15, lumens: 1200, shadow: false });
+      inside(`Crucifix accent · ${side(s)}`, 'spot15', 7.6, s, crucifix, { beam: 24, lumens: 700 });
+      // Each wash covers the gilded side of the reredos on its own wall, aimed outside
+      // the niche so that little of it reaches the blue recess; the lower pair crosses
+      // the chamber to the base panels and the presider's chair.
+      inside(`Reredos wash · ${side(s)}`, 'projector36', 6.7, s, [47.9, 5.0, s * 2.7], { beam: 36, lumens: 650 });
+      inside(`Reredos base wash · ${side(s)}`, 'projector36', 5.4, s, [46.9, 2.3, -s * 2.3], { lumens: 1300 });
+      // Gilded vault: a flood on the springing cornice, aimed up and back.
+      const u = [chamber.lightX + 0.6, 8.42, s * (chamber.face - 0.3)], ua = aim(u, [47.6, 10.4, -s * 0.6]);
+      add({ type: 'uplight', name: `Sanctuary vault uplight · ${side(s)}`, circuit: 'L3', mount: 'floor', pos: u, ...ua, mountYaw: ua.yaw, lumens: 2200 });
     }
-    { const p = [A['10'] + 0.33, 4.6, -3.6], a = aim(p, [47.55, 2.5, 0]);
-      add({ type: 'spot15', name: 'Tabernacle accent', circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: 0, beam: 10, lumens: 900, shadow: false }); }
-    // Our Lady (left) and Saint Joseph (right) in the side alcoves at axis 11.
-    const statues = { B: [49.7, 0.83, -5.55], H: [49.7, 0.83, 5.55] };
+    inside('Tabernacle accent', 'spot15', 4.9, -1, [47.3, 2.05, 0], { beam: 10, lumens: 300 });
+    // Our Lady (left) and Saint Joseph (right) in the shrines on the column line:
+    // a soft wash for the whole carved front and a narrow accent for the figure.
+    const statues = { B: [shrine.x, shrine.y, -shrine.z], H: [shrine.x, shrine.y, shrine.z] };
     for (const [k, base] of Object.entries(statues)) {
-      const p = [A['9'], sideBeamY - 0.005, base[2]], a = aim(p, [base[0], 2.7, base[2]]);
-      add({ type: 'spot15', name: `Statue accent · ${k}`, circuit: 'L3', mount: 'pendant', pos: p, anchorY: sideBeamY, ...a, mountYaw: a.yaw, beam: 12, lumens: 1800, shadow: false });
+      const s = Math.sign(base[2]);
+      outside(`Statue accent · ${k}`, 'spot15', s * (shrine.z - 0.25), sideBeamY, [base[0], shrine.y + 1.25, base[2]], { beam: 12, lumens: 220, shadow: false });
+      outside(`Shrine wash · ${k}`, 'projector36', s * (shrine.z - 0.6), sideBeamY, [base[0] - 0.2, 4.2, base[2]], { beam: 50, lumens: 2400, shadow: false });
     }
 
     // L4 · a veranda lantern at every pier (axes 3–11), the rhythm of the
@@ -121,8 +148,10 @@
     for (const s of [-1, 1]) for (const x of [16.725, 34.725, 46.425]) for (const e of [-1, 1]) {
       add({ type: 'wallLantern', name: `Side door lantern · ${side(s)} · ${x.toFixed(3)} · ${e < 0 ? 'front' : 'rear'}`, circuit: 'L5', mount: 'wall', pos: [x + e * 1.425, 2.6, s * 10.55], yaw: s * 90, mountYaw: s * 90 });
     }
-    // The two service-room doors receive lower-output pairs in the alcoves.
-    for (const s of [-1, 1]) for (const e of [-1, 1]) add({ type: 'wallLantern', name: `Service door lantern · ${side(s)} · ${e < 0 ? 'front' : 'rear'}`, circuit: 'L3', mount: 'wall', pos: [49.6 + e * 0.65, 2.05, s * 3.7], yaw: s * 90, mountYaw: s * 90, lumens: 400 });
+    // The open service room behind the sanctuary has a door to the outside in the
+    // rear gable of each side bay; each receives a lower-output pair on the wall
+    // beside it. ('front' is the lantern nearer the centre.)
+    for (const s of [-1, 1]) for (const e of [-1, 1]) add({ type: 'wallLantern', name: `Service door lantern · ${side(s)} · ${e < 0 ? 'front' : 'rear'}`, circuit: 'L3', mount: 'wall', pos: [52.8, 2.3, s * (5.48 + e * 1.0)], yaw: 180, mountYaw: 180, lumens: 400 });
     // E1 · exit signs.
     // Main doors: on the façade directly above the arched opening (6.67 m), visible down the nave.
     add({ type: 'exitSign', name: 'Exit sign · main doors', circuit: 'E1', mount: 'wall', pos: [facadeX, 6.95, 0], yaw: 0, mountYaw: 0 });
@@ -285,19 +314,24 @@
         add({ type: 'horn', name: `Side courtyard horn · axis ${k} · ${side(s)}`, circuit: 'A3', mount: 'wall', pos: r, yaw: c.yaw, mountYaw: s * 90, tilt: c.tilt, level: -6, on: false });
       }
     }
-    add({ type: 'mic', name: 'Ambo microphone', circuit: 'MIC', mount: 'floor', pos: [42.36, 1.9, -2.62], yaw: 0, mountYaw: 0 });
+    add({ type: 'mic', name: 'Ambo microphone', circuit: 'MIC', mount: 'floor', pos: [amboX - 0.22, 1.9, -2.62], yaw: 0, mountYaw: 0 });
     add({ type: 'mic', name: 'Altar microphone', circuit: 'MIC', mount: 'floor', pos: [44.45, 1.88, 0.45], yaw: 0, mountYaw: 0 });
 
-    // Decoration · statues in the side alcoves either side of the crucifix, as in the reference interior.
+    // Decoration · statues in the raised shrine niches on the column line, as in the approved concept.
     add({ type: 'statueMary', name: 'Statue · Our Lady', circuit: 'DECOR', mount: 'floor', pos: statues.B, yaw: 180, mountYaw: 180 });
     add({ type: 'statueJoseph', name: 'Statue · Saint Joseph', circuit: 'DECOR', mount: 'floor', pos: statues.H, yaw: 180, mountYaw: 180 });
     for (const s of [-1, 1]) {
-      add({ type: 'flowerStand', name: `Flower stand · statue ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [49.45, 0.15, s * 6.6], yaw: 180, mountYaw: 180 });
-      add({ type: 'candleStand', name: `Votive candles · ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [48.1, 0.15, s * 6.2], yaw: 180, mountYaw: 180 });
+      // Tall items stay out of the wing benches' view of the altar, celebrant and
+      // ambo (checked seat by seat), and nothing stands on the way to the shrines:
+      // flowers beside the tabernacle and a palm in each front corner of the
+      // chamber beside the column, as in the concept. No votive candle stands.
+      add({ type: 'flowerStand', name: `Flower stand · tabernacle ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [47.2, 0.75, s * 1.15], yaw: 180, mountYaw: 180 });
+      add({ type: 'palm', name: `Palm · sanctuary ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [sanctuary.chamber.x0 + 0.66, 0.75, s * 2.9], yaw: 0, mountYaw: 0 });
+      for (const e of [-1, 1]) add({ type: 'floorFlowers', name: `Shrine flowers · ${side(s)} · ${e * s < 0 ? 'inner' : 'outer'}`, circuit: 'DECOR', mount: 'floor', pos: [shrine.x - 0.05, shrine.y, s * shrine.z + e * 0.7], yaw: 180, mountYaw: 180 });
       add({ type: 'palm', name: `Palm · entrance ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [6.3, 0, s * 6.55], yaw: 0, mountYaw: 0 });
       add({ type: 'banner', name: `Banner · axis 9 · ${side(s)}`, circuit: 'DECOR', mount: 'wall', pos: [A['9'] - 0.315, 6.6, s * 3.6], yaw: 180, mountYaw: 180 });
     }
-    add({ type: 'paschal', name: 'Paschal candle', circuit: 'DECOR', mount: 'floor', pos: [42.05, 0.75, -1.55], yaw: 180, mountYaw: 180 });
+    add({ type: 'paschal', name: 'Paschal candle', circuit: 'DECOR', mount: 'floor', pos: [amboX - 0.53, 0.75, -1.55], yaw: 180, mountYaw: 180 });
     // Seasonal and festival items, hidden until needed.
     add({ type: 'carpet', name: 'Aisle carpet (weddings & feasts)', circuit: 'DECOR', mount: 'floor', pos: [6.2, 0, 0], yaw: 0, mountYaw: 0, hidden: true, params: { length: 32 } });
     add({ type: 'christmasTree', name: 'Christmas tree · front stage', circuit: 'X1', mount: 'floor', pos: [-4.2, -0.48, -5.6], yaw: 180, mountYaw: 180, hidden: true });
@@ -367,5 +401,34 @@
   // from an older version then load the new design (the old one is kept aside).
   // This lighting review migrates only the reviewed fixtures, preserving the
   // rest of saved layouts. A removed fitting stays removed after the revision.
-  window.CHURCH_SIM_DESIGN = { recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  const sanctuaryRevision = '2026-10-07-sanctuary-8';
+  // Fittings and furnishings that belong to the rebuilt sanctuary take their
+  // reviewed place and output. The axis-10 uplight lost its tie beam and the
+  // votive candle stands stood in the way to the shrines: both are removed.
+  // Everything else in a saved layout, including its switching, is left as it was.
+  const sanctuaryRemoved = /^(Roof uplight · axis 10$|Votive candles ·)/;
+  const sanctuaryNames = /^(Service door lantern ·|Ambo microphone$|Ambo key light$|Paschal candle$|Statue ·|Statue accent ·|Crucifix accent ·|Tabernacle accent|Reredos wash ·|Sanctuary vault uplight ·|Sconce · sanctuary pier ·|Flower stand · tabernacle|Palm · sanctuary|Shrine flowers ·|Shrine wash ·|Sanctuary frame wash ·|Reredos base wash ·|Presider chair light|Altar key light ·|Grand chandelier · crossing)/;
+  // Revision 8 only lowers lamp outputs: at night the centre of the sanctuary was bright
+  // enough to wash out the blue recess and the red lacquer. A layout already at revision 6
+  // keeps every position it has and takes the new output of these fittings.
+  const sanctuaryRetuned = /^(Crucifix accent ·|Reredos wash ·|Reredos base wash ·|Sanctuary vault uplight ·|Tabernacle accent|Altar key light ·|Ambo key light$|Presider chair light|Sanctuary frame wash ·|Shrine wash ·|Statue accent ·|Sconce · sanctuary pier ·)/;
+  function upgradeSanctuary(items, design, from) {
+    const names = new Map(design.filter(it => sanctuaryNames.test(it.name)).map(it => [it.name,it]));
+    if (from === '2026-10-07-sanctuary-6') return items.map(it => {
+      const raw = sanctuaryRetuned.test(it.name) && names.get(it.name);
+      if (!raw) return it;
+      // The reredos washes are also re-aimed, where they still hang in their reviewed place.
+      const aimed = /^Reredos wash ·/.test(it.name) && it.pos.every((v, i) => Math.abs(v - raw.pos[i]) < 0.01) ? { yaw: raw.yaw, tilt: raw.tilt } : {};
+      return { ...it, ...aimed, beam: raw.beam ?? it.beam, lumens: raw.lumens ?? it.lumens };
+    });
+    // The tall flower stands move from the statues to the tabernacle and take its name.
+    const renamed = name => name.replace(/^Flower stand · statue /, 'Flower stand · tabernacle ');
+    const kept = items.filter(it => !sanctuaryRemoved.test(it.name)).map(it => renamed(it.name) === it.name ? it : { ...it, name: renamed(it.name) }).map(it => {
+      const raw=names.get(it.name);names.delete(it.name);
+      return raw ? {...it,type:raw.type,pos:[...raw.pos],anchorY:raw.anchorY ?? it.anchorY,yaw:raw.yaw,mountYaw:raw.mountYaw,tilt:raw.tilt ?? it.tilt,beam:raw.beam ?? it.beam,lumens:raw.lumens ?? it.lumens} : it;
+    });
+    // Only the fittings this revision introduces are added; a deleted statue stays deleted.
+    return [...kept, ...[...names.values()].filter(it => /^(Reredos wash ·|Reredos base wash ·|Sanctuary vault uplight ·|Sanctuary frame wash ·|Shrine wash ·|Presider chair light|Shrine flowers ·|Palm · sanctuary)/.test(it.name))];
+  }
+  window.CHURCH_SIM_DESIGN = { sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

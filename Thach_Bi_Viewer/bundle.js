@@ -39551,7 +39551,7 @@ void main() {
         (x("exitWalk").hidden = S !== "walk"),
         (x("modeHint").textContent =
           S === "walk"
-            ? "Drag to look \xB7 W A S D / arrows to walk"
+            ? "Drag the scene to look around \xB7 W A S D / arrows to walk"
             : "Drag to orbit \xB7 W A S D / arrows to move \xB7 Q E down / up \xB7 scroll to zoom"),
         S === "walk")
       ) {
@@ -39908,9 +39908,12 @@ void main() {
           (we.y = V.clientY),
           (we.moved += Math.abs(_e) + Math.abs(ge)),
           we.moved > 5 && (ie = !0),
+          // Walk mode drags the picture the way Explore does: the scene follows
+          // the pointer. Dragging up moves the scene up (the eye tilts down) and
+          // dragging right moves it right (the eye turns left).
           S === "walk" &&
-            ((O.yaw += _e * 0.0032),
-            (O.pitch = e.MathUtils.clamp(O.pitch - ge * 0.0032, -1.35, 1.3)),
+            ((O.yaw -= _e * 0.0032),
+            (O.pitch = e.MathUtils.clamp(O.pitch + ge * 0.0032, -1.35, 1.3)),
             ve(),
             tt()));
       }),
@@ -40278,7 +40281,7 @@ void main() {
     "id": "01-main-doors-detail",
     "title": "Main doors and carvings",
     "description": "Three timber doors, arch mouldings, capitals and relief.",
-    "url": "references/01-main-doors-detail.png",
+    "url": "references/04-doors/details/01-main-doors-detail.png",
     "type": "New close-up",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40286,7 +40289,7 @@ void main() {
     "id": "00-front-reference",
     "title": "Current front reference",
     "description": "Flat stage, open tower arches and brown shutters.",
-    "url": "references/00-front-reference.png",
+    "url": "references/03-facade/overview/00-front-reference.png",
     "type": "Retained reference",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40294,7 +40297,7 @@ void main() {
     "id": "02-front-corner-day",
     "title": "Front corner in daylight",
     "description": "Front stage, side-door order and projecting wing.",
-    "url": "references/02-front-corner-day.png",
+    "url": "references/03-facade/overview/02-front-corner-day.png",
     "type": "New checkpoint",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40302,7 +40305,7 @@ void main() {
     "id": "03-roof-footprint",
     "title": "Roof footprint",
     "description": "Both 9–10 wings and the main roof. Check side-stair footprint against the plan.",
-    "url": "references/03-roof-footprint.png",
+    "url": "references/06-roof/overview/03-roof-footprint.png",
     "type": "New checkpoint",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40310,7 +40313,7 @@ void main() {
     "id": "04-rear-elevation",
     "title": "Rear elevation",
     "description": "Five windows, continuous stone base and no rear stairs.",
-    "url": "references/04-rear-elevation.png",
+    "url": "references/03-facade/overview/04-rear-elevation.png",
     "type": "New checkpoint",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40318,7 +40321,7 @@ void main() {
     "id": "08-retained-side-stair-detail",
     "title": "Side stair beside the door",
     "description": "The earlier close-up requested for preservation.",
-    "url": "references/08-retained-side-stair-detail.png",
+    "url": "references/07-stairs/details/08-retained-side-stair-detail.png",
     "type": "Retained unchanged",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40326,7 +40329,7 @@ void main() {
     "id": "05-interior-day",
     "title": "Interior in daylight",
     "description": "Column rows, exposed timber roof and sanctuary arch.",
-    "url": "references/05-interior-day.png",
+    "url": "references/00-overview/05-interior-day.png",
     "type": "New proposal",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40334,7 +40337,7 @@ void main() {
     "id": "06-exterior-night",
     "title": "Exterior lighting",
     "description": "Warm light on the towers, facade, entries and steps.",
-    "url": "references/06-exterior-night.png",
+    "url": "references/08-lighting/overview/06-exterior-night.png",
     "type": "New proposal",
     "status": "Visual reference; measured drawings govern geometry"
   },
@@ -40342,7 +40345,7 @@ void main() {
     "id": "07-interior-night",
     "title": "Interior lighting",
     "description": "The same nave under chandeliers, sconces and warm accent lights.",
-    "url": "references/07-interior-night.png",
+    "url": "references/08-lighting/overview/07-interior-night.png",
     "type": "New proposal",
     "status": "Visual reference; measured drawings govern geometry"
   }
@@ -42625,7 +42628,7 @@ void main() {
     );
     ((xt.rotation.z = -0.12),
       x("Proposed altar", Ge - 0.62, Ge + 0.62, -1.64, 1.64));
-    let nt = 42.58,
+    let nt = 41.3,
       R = -2.62;
     (_(0.78, 0.13, 0.81, nt, 0.815, R, c.whiteStone, Se, "Proposed ambo foot"),
       m(

@@ -1,0 +1,172 @@
+{
+  "revision": 1,
+  "date": "2026-10-07",
+  "files": [
+    {
+      "file": "images/01-upper-bay-front.png",
+      "role": "generated_concept",
+      "width": 1920,
+      "height": 1080,
+      "nativeGenerationPixels": [
+        1672,
+        941
+      ],
+      "resampled": true,
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/01-upper-bay-front.png",
+      "sha256": "a6279ea21f941142a9e9eeb7f741333c798b15773689aeb98a31d8df4a780bb0",
+      "engineeringApproved": false
+    },
+    {
+      "file": "images/02-column-head-three-quarter.png",
+      "role": "generated_concept",
+      "width": 1920,
+      "height": 1080,
+      "nativeGenerationPixels": [
+        1672,
+        941
+      ],
+      "resampled": true,
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/02-column-head-three-quarter.png",
+      "sha256": "80e608c91a1cb965d1e88526c02dc98745fedc6ffa2342ee65bd9bcc259fd5e2",
+      "engineeringApproved": false
+    },
+    {
+      "file": "images/03-carved-bracket-underside.png",
+      "role": "generated_concept",
+      "width": 1920,
+      "height": 1080,
+      "nativeGenerationPixels": [
+        1672,
+        941
+      ],
+      "resampled": true,
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/03-carved-bracket-underside.png",
+      "sha256": "55ad957d9fb18309ea92524a1a2f360c23f6e50e30ac04aae0a8bebea8cbb02d",
+      "engineeringApproved": false
+    },
+    {
+      "file": "images/04-upper-rail-roof-connection.png",
+      "role": "generated_concept",
+      "width": 1920,
+      "height": 1080,
+      "nativeGenerationPixels": [
+        1672,
+        941
+      ],
+      "resampled": true,
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/04-upper-rail-roof-connection.png",
+      "sha256": "ce80845fced6761803538b8dad3458ed049e4745959e9f5c289e399a7867ec65",
+      "engineeringApproved": false
+    },
+    {
+      "file": "images/07-full-width-frame-concrete-sides.png",
+      "role": "generated_concept",
+      "width": 1920,
+      "height": 1080,
+      "nativeGenerationPixels": [
+        1672,
+        941
+      ],
+      "resampled": true,
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/07-full-width-frame-concrete-sides.png",
+      "sha256": "be351782a27031c8c71cec27045dc0237be172cbe861533df3dd84a2794fe8e1",
+      "engineeringApproved": false
+    },
+    {
+      "file": "images/08-longitudinal-beams-two-frames.png",
+      "role": "generated_concept",
+      "width": 1920,
+      "height": 1080,
+      "nativeGenerationPixels": [
+        1672,
+        941
+      ],
+      "resampled": true,
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/08-longitudinal-beams-two-frames.png",
+      "sha256": "e0684f160d8e1fbed2a572e6922a11735234b98807321476301ce183c2b1e2a4",
+      "engineeringApproved": false
+    },
+    {
+      "file": "images/09-side-beam-concrete-bearing.png",
+      "role": "generated_concept",
+      "width": 1920,
+      "height": 1080,
+      "nativeGenerationPixels": [
+        1672,
+        941
+      ],
+      "resampled": true,
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/09-side-beam-concrete-bearing.png",
+      "sha256": "ea9a4a39025203edae26d306d526ec70d716992693086aa8d7f32645bc8a0623",
+      "engineeringApproved": false
+    },
+    {
+      "file": "images/10-upper-roof-longitudinal-connections.png",
+      "role": "generated_concept",
+      "width": 1920,
+      "height": 1080,
+      "nativeGenerationPixels": [
+        1672,
+        941
+      ],
+      "resampled": true,
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/full-hd/10-upper-roof-longitudinal-connections.png",
+      "sha256": "eaa6ff65222030f934fad6ee7797dad44459bfe61b5b062334ac4d5f95adc55b",
+      "engineeringApproved": false
+    },
+    {
+      "file": "sources/IMG_20260910_171557_634_1.JPG",
+      "role": "other_church_original_photo",
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_20260910_171557_634_1.JPG",
+      "sha256": "6dd42d95c392acad2a12a0ad41b628724c2a2687cb680e67dba4072e8ee6517d"
+    },
+    {
+      "file": "sources/IMG_2676.PNG",
+      "role": "other_church_original_photo",
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2676.PNG",
+      "sha256": "de6f575d7e5c0fe91f8bfc57a5504e3cd20096dc3a31444cc1c3e999b83d41af"
+    },
+    {
+      "file": "sources/IMG_2677.PNG",
+      "role": "other_church_original_photo",
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2677.PNG",
+      "sha256": "ec557cc1ed6e31f018cca0ee3651c0654f173f7479e25c852f65521d29dedeab"
+    },
+    {
+      "file": "sources/IMG_2678.PNG",
+      "role": "other_church_original_photo",
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2678.PNG",
+      "sha256": "8c3206df45db771e88c0fd5a4003fbfb5f70ab96f00970378a6e93ff82daf4fa"
+    },
+    {
+      "file": "sources/IMG_2679.PNG",
+      "role": "other_church_original_photo",
+      "source": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2679.PNG",
+      "sha256": "ed38c696176ea6655ecfd7807af8b275259e5238c9edc5bba0f3555ee9bb5b59"
+    },
+    {
+      "file": "sources/06-slide-cut-inside-church.png",
+      "role": "architectural_source_not_structural_approval",
+      "source": "docs/layout_design/06-slide-cut-inside-church.png",
+      "sha256": "ca4f0bb3b2c6abf644586cea9038d7ed2764545ea54b53111b03fdc85809c7dd"
+    },
+    {
+      "file": "sources/04-top-view.png",
+      "role": "architectural_source_not_structural_approval",
+      "source": "docs/layout_design/04-top-view.png",
+      "sha256": "1929e61f7d8d8dd3d57845f545e7ee4a239eedbeec46b3eb251355716cdd47ee"
+    },
+    {
+      "file": "sources/giao-xu-thach-bi-06-mat-dung-mot-vi-than-nha-tho.pdf",
+      "role": "architectural_source_not_structural_approval",
+      "source": "docs/layout_design/giao-xu-thach-bi-06-mat-dung-mot-vi-than-nha-tho.pdf",
+      "sha256": "0d7485040df37efea2220e72fb283161717dc660c25fcf68438c1d3e94c4e0aa"
+    },
+    {
+      "file": "sources/giao-xu-thach-bi-04-mat-bang-tong-quan-nha-tho-giao-xu.pdf",
+      "role": "architectural_source_not_structural_approval",
+      "source": "docs/layout_design/giao-xu-thach-bi-04-mat-bang-tong-quan-nha-tho-giao-xu.pdf",
+      "sha256": "9fca89fc1c85f171ef5b26271bb4810b2b49e744166c53fedb663e50119e3d6c"
+    }
+  ]
+}

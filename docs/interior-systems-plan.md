@@ -43,16 +43,16 @@ The audit uses the actual model geometry with THREE.Raycaster. It tests the 18 m
 
 | Alternative | Rows / benches | Sample positions | Altar point blocked | Ambo point blocked | Crucifix point blocked |
 |---|---:|---:|---:|---:|---:|
-| Two wide blocks, 4.65 m benches | 19 / 38 | 304 | 106 | 107 | 120 |
-| Four blocks, 1.73–1.86 m benches | 25 / 100 | 300 | 86 | 86 | 94 |
+| Two wide blocks, 4.65 m benches | 18 / 36 | 288 | 102 | 107 | 122 |
+| Four blocks, 1.73–1.86 m benches | 24 / 96 | 288 | 86 | 85 | 92 |
 
-Both alternatives now include **two additional complete rows in each of bays 2–3, 4–5 and 8–9**: six added rows per layout. The added benches are outlined in the interactive map. Existing rows are retained. The following added-row coordinates are measured along the numbered drawing axes, in metres from axis 1:
+Both alternatives include **two additional complete rows in each of bays 2–3 and 4–5, and one in bay 8–9**: five added rows per layout. The second added row in bay 8–9 (X 35.790 m), the front row of the nave, was removed on 7 October 2026 as too close to the sanctuary; 3.97 m now stays clear between the front benches and the first sanctuary step. The audit targets also follow the 7 October sanctuary: the ambo point is 2.3 m in front of the altar and the crucifix point is inside its niche. The added benches are outlined in the interactive map. Existing rows are retained. The following added-row coordinates are measured along the numbered drawing axes, in metres from axis 1:
 
 | Drawing bay | Added row positions X | Addition in two-block layout | Addition in four-block layout |
 |---|---|---:|---:|
 | 2–3 | 6.490, 7.620 m | 4 long benches | 8 short benches |
 | 4–5 | 15.610, 17.790 m | 4 long benches | 8 short benches |
-| 8–9 | 33.610, 35.790 m | 4 long benches | 8 short benches |
+| 8–9 | 33.610 m | 2 long benches | 4 short benches |
 
 This audit supersedes all earlier sample counts, including the incorrect two-block interpretation that simply removed the outer benches. Its totals are not a conclusion about the maximum capacity of either arrangement.
 
@@ -62,9 +62,9 @@ Next, test target areas rather than single points: the altar top and celebrant, 
 
 ### Seating and circulation corrections to study
 
-- In the two-block proposal, each bench is **4.65 m long**, centred at ±3.625 m across the nave. There are now 19 rows, with gaps around the columns and across the doorway bays. Intermediate supports are shown as a furniture concept, not a structural specification.
+- In the two-block proposal, each bench is **4.65 m long**, centred at ±3.625 m across the nave. There are now 18 rows, with gaps around the columns and across the doorway bays. Intermediate supports are shown as a furniture concept, not a structural specification.
 - The two-block model retains **at least 2.40 m clear at the centre aisle and 1.20 m beside each outer wall**, checked against actual furniture bounds. Confirm the required aisle widths through the occupancy and evacuation design.
-- In the four-block proposal, central benches are 1.86 m long and outer benches 1.73 m, across 25 rows. Its centre aisle is about 2.44 m between nominal bench lengths, reduced by end profiles. The outer-wall gap is only about 0.40 m before end projections; **do not count that gap as a circulation aisle.** These outer benches need a compliant route from their inner ends.
+- In the four-block proposal, central benches are 1.86 m long and outer benches 1.73 m, across 24 rows. Its centre aisle is about 2.44 m between nominal bench lengths, reduced by end profiles. The outer-wall gap is only about 0.40 m before end projections; **do not count that gap as a circulation aisle.** These outer benches need a compliant route from their inner ends.
 - Eight places per long bench or three per short bench at 0.55 m spacing are sampling assumptions. Final usable seating length, end details and accessible positions must be checked.
 - A 1.13 m row pitch minus the current conservative 0.965 m furniture/collision footprint leaves only about 0.165 m between those envelopes with kneelers down. This is not an acceptable assumption for unobstructed row circulation. Resolve folding kneelers, end profiles and row pitch in the furniture mock-up; any increased pitch reduces capacity.
 - To fit the added rows in doorway bays 4–5 and 8–9, the model now reserves **1.20 m cross aisles** at X 16.225–17.425 m and 34.225–35.425 m. The former 2.40 m cross-aisle allowance is reduced. Furniture and collision bounds were checked against these corridors in both layouts. The doorway locations, veranda landings and exterior stairs are unchanged. Confirm these narrower routes against the final occupancy/access design before adopting the seating; this is a model proposal, not an egress approval.
@@ -195,7 +195,7 @@ Commission lighting at night and with daylight; test emergency operation separat
 - **Implemented (5 October):** two wide blocks with long benches / four blocks with short benches; matching active furniture collisions; seated viewpoints near the centre and side aisles; source-derived floor-plan map; single-point structural sightline audit; planning layers and an example energy worksheet.
 - **Implemented (6 October), design simulator:** every light, fan, loudspeaker, microphone and decoration is an object with its own switch, circuit and settings (lumens, dimmer, colour temperature, beam, fan speed, speaker level, delay and beam opening). The simulator also provides:
   - catalogue placement on the drawn structure, the operating scenes from section 6, undo and saved layouts;
-  - lux, speech-level, STI, air-speed and noise maps, with results at 300 sampled seats;
+  - lux, speech-level, STI, air-speed and noise maps, with results at 288 sampled nave seats;
   - design checks and a per-circuit energy estimate;
   - spatial listening with real delays, HRTF direction and this room's estimated reverberation.
 

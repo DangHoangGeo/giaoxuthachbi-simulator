@@ -76,7 +76,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', stableLightingRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -170,10 +170,36 @@
     // the two side doors, all open in the model's default state.
     GEO.walls.push({ x: 2.35, z0: -7.25, z1: 7.25, y0: -0.4, y1: 12.5, openings: [
       { z0: -1.25, z1: 1.25, y0: -0.4, y1: 4.6 }, { z0: -6.1, z1: -4.9, y0: -0.4, y1: 3.6 }, { z0: 4.9, z1: 6.1, y0: -0.4, y1: 3.6 }] });
+    // Sanctuary (sanctuary.js): the lobed timber frame on the column line, the
+    // lacquered chamber walls behind it and the two shrines in its side arches.
+    // Lobed openings are stepped rectangles. Kept apart from GEO.walls, which the
+    // cable router reads as the building's perimeter.
+    const sx = window.CHURCH_SANCTUARY?.spec;
+    GEO.sanctuary = { walls: [], boxes: [] };
+    if (sx) {
+      const { chamber: ch, centralArch: ca, sideArch: sa, wingX: wx, wingZ: wz } = sx;
+      for (const s of [-1, 1]) {
+        GEO.sanctuary.walls.push({ z: s * (ch.face + ch.outer) / 2, x0: ch.x0, x1: ch.x1, y0: 0.15, y1: ch.top, openings: [] });
+        for (const e of [-1, 1]) GEO.sanctuary.boxes.push({ min: [wx - 0.31, 0.15, s * wz + e * 1.03 - 0.32], max: [wx + 1.01, 2.55, s * wz + e * 1.03 + 0.32] });
+        // Shelf, and the lacquered wall that closes the bay behind the shrine up to the roof.
+        GEO.sanctuary.boxes.push({ min: [wx - 0.35, 2.55, s * wz - 1.38], max: [wx + 1.01, 2.85, s * wz + 1.38] },
+          { min: [wx + 0.42, 2.85, s * wz - 1.75], max: [wx + 0.55, 9.5, s * wz + 1.75] });
+      }
+      // Lined back wall of the chamber on axis 11, in front of the service room, open
+      // for the crucifix niche; the niche's reveals and blue back wall close it behind.
+      const n = sx.niche, top = n.spring + n.rise;
+      GEO.sanctuary.walls.push({ x: 48.5, z0: -ca.half, z1: ca.half, y0: 0, y1: 12.5, openings: [
+        { z0: -n.half, z1: n.half, y0: n.floor, y1: n.spring + n.rise * 0.4 }, { z0: -n.half * 0.5, z1: n.half * 0.5, y0: n.floor, y1: top - 0.1 }] });
+      GEO.sanctuary.walls.push({ x: n.backX + 0.03, z0: -n.half - 0.2, z1: n.half + 0.2, y0: n.floor - 0.2, y1: top + 0.2, openings: [] });
+      for (const s of [-1, 1]) GEO.sanctuary.walls.push({ z: s * (n.half + 0.03), x0: n.mouthX, x1: n.backX + 0.1, y0: n.floor - 0.2, y1: top + 0.2, openings: [] });
+      GEO.sanctuary.walls.push({ x: sx.frameX, z0: -7.25, z1: 7.25, y0: 0, y1: 12.5, openings: [
+        { z0: -ca.half, z1: ca.half, y0: 0, y1: ca.spring + 0.5 }, { z0: -ca.half * 0.58, z1: ca.half * 0.58, y0: 0, y1: ca.shoulder }, { z0: -ca.half * 0.36, z1: ca.half * 0.36, y0: 0, y1: ca.crown - 0.4 },
+        ...[-1, 1].flatMap(s => [{ z0: s * wz - sa.half, z1: s * wz + sa.half, y0: 0, y1: sa.spring + 0.3 }, { z0: s * wz - sa.half * 0.5, z1: s * wz + sa.half * 0.5, y0: 0, y1: sa.crown - 0.25 }])] });
+    }
     GEO.occluders = P.buildOccluders({
       columns: GEO.columns.map(c => ({ x: c.x, z: c.z, r: c.r, y0: 0, y1: 9.4 })),
-      boxes: GEO.columns.map(c => ({ min: [c.x - 0.41, 0, c.z - 0.41], max: [c.x + 0.41, 0.6, c.z + 0.41] })),
-      walls: GEO.walls
+      boxes: [...GEO.columns.map(c => ({ min: [c.x - 0.41, 0, c.z - 0.41], max: [c.x + 0.41, 0.6, c.z + 0.41] })), ...GEO.sanctuary.boxes],
+      walls: [...GEO.walls, ...GEO.sanctuary.walls]
     });
   }
 
@@ -207,10 +233,28 @@
       m.userData = { status: 'AS DRAWN · SECTION SHEET 4', source: 'Measured on the vector section: tie +8.59…+9.18 m, side beams +6.66…+7.00 m' };
       asDrawn.add(m); return m;
     };
+    // The beams carry the lacquer of the columns (sanctuary.js); their gilding is a border
+    // line and a rosette on both faces of each tie beam, with a band near each shaft, and a
+    // band at each end of the side beams.
+    const gilt = window.CHURCH_SANCTUARY?.materials?.gold;
+    const gild = (geometry, x, y, z, name) => {
+      const m = new T.Mesh(geometry, gilt);
+      m.position.set(x, y, z); m.name = name; m.receiveShadow = true;
+      m.userData = { status: 'PROPOSED FINISH · RED LACQUER AND GILDING', source: 'references/02-sanctuary/concepts/09-sanctuary-approved-concept.png' };
+      asDrawn.add(m); return m;
+    };
+    const tieLine = new T.BoxGeometry(0.012, 0.035, 5.12), tieBand = new T.BoxGeometry(0.33, 0.62, 0.08), rosette = new T.CylinderGeometry(0.15, 0.15, 0.02, 20);
+    const sideBand = new T.BoxGeometry(0.25, 0.37, 0.07), sideLine = new T.BoxGeometry(0.012, 0.03, 2.48);
     GEO.mainBeams = [];
     for (const x of [...tieXs].sort((a, b) => a - b)) {
       member(0.3, 0.59, 8.42, x, 8.885, 0, 'Main tie beam 0.30 × 0.59 m · as drawn');
       GEO.mainBeams.push({ x, y0: 8.59, y1: 9.18, zHalf: 4.21, w: 0.3 });
+      if (!gilt) continue;
+      for (const f of [-1, 1]) {
+        for (const y of [8.65, 9.12]) gild(tieLine, x + f * 0.153, y, 0, 'Main tie beam gilded border');
+        gild(rosette, x + f * 0.156, 8.885, 0, 'Main tie beam gilded rosette').rotation.z = Math.PI / 2;
+      }
+      for (const s of [-1, 1]) gild(tieBand, x, 8.885, s * 2.6, 'Main tie beam gilded band');
     }
     GEO.sideBeams = [];
     for (const k of ['3', '4', '5', '6', '7', '8', '9']) {
@@ -218,6 +262,9 @@
       for (const s of [-1, 1]) {
         member(0.22, 0.34, 3.15, x, 6.83, s * 5.475, 'Side beam 0.22 × 0.34 m · as drawn');
         GEO.sideBeams.push({ x, y0: 6.66, y1: 7.0, zIn: 3.9, zOut: 7.05, side: s, w: 0.22 });
+        if (!gilt) continue;
+        for (const z of [4.2, 6.75]) gild(sideBand, x, 6.83, s * z, 'Side beam gilded band');
+        for (const f of [-1, 1]) for (const y of [6.71, 6.95]) gild(sideLine, x + f * 0.113, y, s * 5.475, 'Side beam gilded border');
       }
     }
     // Purlins every ~0.50 m across the slope, split at the 9–10 roof valleys.
@@ -260,7 +307,8 @@
   }
   function buildFrameVariants(asDrawn) {
     const { building } = ctx, im = ctx.interior.materials, timber = im.timber, stone = im.whiteStone, carve = ctx.mat?.darkTrim || im.stone;
-    const axes = ['3', '4', '5', '6', '7', '8', '9', '10'], xs = axes.map(k => data().longitudinal[k]);
+    // The sanctuary's own lacquered frame keeps its axis in both variants.
+    const axes = ['3', '4', '5', '6', '7', '8', '9', '10'].filter(k => k !== window.CHURCH_SANCTUARY?.spec.frameAxis), xs = axes.map(k => data().longitudinal[k]);
     drawnFrame = new T.Group(); drawnFrame.name = 'Timber frame · as drawn (round shafts and tie beams)'; building.add(drawnFrame);
     referenceFrame = new T.Group(); referenceFrame.name = 'Timber frame · reference interior (posts, collars, arch braces)'; building.add(referenceFrame);
     building.updateMatrixWorld(true);
@@ -268,12 +316,12 @@
     building.traverse(o => {
       if (!o.isMesh) return;
       const near = xs.some(x => Math.abs(o.getWorldPosition(new T.Vector3()).x - x) < 0.5);
-      if (/^Main tie beam/.test(o.name) || (near && /^(Central column|Column head|Carved stone pedestal cap|Timber shaft foot|Timber capital collar|Carved stone column base on the dais)/.test(o.name))) move.push(o);
+      if (/^Main tie beam/.test(o.name) || (near && /^(Central column|Column head|Carved stone pedestal cap|Timber shaft foot|Timber capital collar|Carved stone column base on the dais|Gilded column (band|capital))/.test(o.name))) move.push(o);
     });
     for (const o of move) drawnFrame.attach(o);
     const box = (w, h, d, x, y, z, mtl, name) => {
       const m = new T.Mesh(new T.BoxGeometry(w, h, d), mtl); m.position.set(x, y, z); m.name = name;
-      m.castShadow = m.receiveShadow = true; m.userData = { status: 'REFERENCE-IMAGE VARIANT · SECTIONS ILLUSTRATIVE', source: 'references/05-interior-day.png' };
+      m.castShadow = m.receiveShadow = true; m.userData = { status: 'REFERENCE-IMAGE VARIANT · SECTIONS ILLUSTRATIVE', source: 'references/00-overview/05-interior-day.png' };
       referenceFrame.add(m); return m;
     };
     const tube = (pts, r, name) => {
@@ -281,6 +329,8 @@
       m.name = name; m.castShadow = m.receiveShadow = true; referenceFrame.add(m); return m;
     };
     const P = REF.post, collarHalf = (LINING_RIDGE - REF.collarY - 0.14) / LINING_SLOPE, upperHalf = (LINING_RIDGE - REF.upperY - 0.1) / LINING_SLOPE;
+    // Posts take the sanctuary finish, like the round shafts of the drawn frame.
+    const lacquer = window.CHURCH_SANCTUARY?.materials?.wood || timber, gilt = window.CHURCH_SANCTUARY?.materials?.gold || timber;
     axes.forEach((k, i) => {
       const x = xs[i], floor = k === '10' ? 0.75 : 0, top = liningY(3.6) - 0.08;
       for (const s of [-1, 1]) {
@@ -292,10 +342,11 @@
         for (const [dx, dz, w, d] of [[0.465, 0, 0.02, 0.62], [-0.465, 0, 0.02, 0.62], [0, 0.465, 0.62, 0.02], [0, -0.465, 0.62, 0.02]])
           box(w, 0.66, d, x + dx, floor + 0.56, z + dz, carve, 'Plinth carved panel');
         // Square post to the rafter, with a moulded capital and bolster.
-        box(P, top - floor - 1.1, P, x, (top + floor + 1.1) / 2, z, timber, 'Square timber post · reference');
-        box(P + 0.12, 0.1, P + 0.12, x, floor + 1.17, z, timber, 'Post base fillet');
-        box(P + 0.14, 0.14, P + 0.14, x, 9.25, z, timber, 'Post capital');
-        box(P + 0.26, 0.1, P + 0.26, x, 9.37, z, timber, 'Post capital abacus');
+        box(P, top - floor - 1.1, P, x, (top + floor + 1.1) / 2, z, lacquer, 'Square timber post · reference');
+        box(P + 0.12, 0.1, P + 0.12, x, floor + 1.17, z, gilt, 'Post base fillet');
+        for (const y of [floor + 2.3, 7.4]) box(P + 0.05, 0.09, P + 0.05, x, y, z, gilt, 'Gilded post band');
+        box(P + 0.14, 0.14, P + 0.14, x, 9.25, z, gilt, 'Post capital');
+        box(P + 0.26, 0.1, P + 0.26, x, 9.37, z, gilt, 'Post capital abacus');
         box(1.5, 0.22, 0.4, x, 9.53, z, timber, 'Capital bolster under the plate');
         // Curved arch brace from the post to the collar, both faces of the truss.
         const arc = [];
@@ -312,21 +363,27 @@
         tube([[x + d * 0.3, 8.55, s * 3.6], [x + d * 0.55, 9.3, s * 3.6], [x + d * 1.15, 9.62, s * 3.6]], 0.08, 'Curved plate bracket · reference');
     });
     // Longitudinal plates along the post heads (axes 3–10).
-    for (const s of [-1, 1]) box(xs[xs.length - 1] - xs[0] + 0.6, 0.3, 0.3, (xs[0] + xs[xs.length - 1]) / 2, 9.79, s * 3.6, timber, 'Longitudinal plate · reference');
+    const plateEnd = data().longitudinal['10'];
+    for (const s of [-1, 1]) box(plateEnd - xs[0] + 0.6, 0.3, 0.3, (xs[0] + plateEnd) / 2, 9.79, s * 3.6, timber, 'Longitudinal plate · reference');
     referenceFrame.visible = true;
   }
 
   // Optional timber slat acoustic panels in the entrance hall (≈75 m²): under the
   // terrace slab and along the upper band of the entrance wall, clear of the
   // fanlight and the exit sign. One instanced mesh, shown with the roof.
-  let entranceSlats = null;
+  let entranceSlats = null, slatMaterial = null;
   function buildEntranceSlats() {
     const boxes = [];
     for (let i = 0; i <= 143; i++) {
       const z = -7.15 + i * 0.1, y0 = Math.abs(z) < 1.75 ? 7.15 : 5.2;
       boxes.push([4.06, 8.115, z, 2.78, 0.05, 0.045], [2.675, (y0 + 8.08) / 2, z, 0.05, 8.08 - y0, 0.045]);
     }
-    const mesh = new T.InstancedMesh(new T.BoxGeometry(1, 1, 1), ctx.interior.materials.timber, boxes.length);
+    // The slats keep natural timber: the structural members are lacquered, these are an acoustic lining.
+    const natural = window.CHURCH_SANCTUARY?.naturalTimber;
+    slatMaterial = ctx.interior.materials.timber.clone();
+    slatMaterial.name = 'Entrance hall acoustic slats · natural timber';
+    if (natural) { slatMaterial.color.copy(natural.color); slatMaterial.map = natural.map; slatMaterial.bumpMap = natural.bumpMap; slatMaterial.roughness = natural.roughness; }
+    const mesh = new T.InstancedMesh(new T.BoxGeometry(1, 1, 1), slatMaterial, boxes.length);
     const m = new T.Matrix4(), q = new T.Quaternion();
     boxes.forEach(([x, y, z, sx, sy, sz], i) => mesh.setMatrixAt(i, m.compose(new T.Vector3(x, y, z), q, new T.Vector3(sx, sy, sz))));
     mesh.instanceMatrix.needsUpdate = true;
@@ -459,6 +516,11 @@
       wall(47.7, 6.3, 29.05, 2.83, s * 10.3, [0, 0, -s]);
       wall(47.7, 8.4, 29.05, 2.1, s * 10.55, [0, 0, s]);
       plane(47.7, 3.05, 29.05, 6.0, s * 8.82, 'ceiling');
+    }
+    // Inner faces of the lacquered sanctuary chamber walls.
+    for (const w of GEO.sanctuary?.walls.filter(w => w.z) ?? []) {
+      const s = Math.sign(w.z), face = window.CHURCH_SANCTUARY.spec.chamber.face;
+      wall(w.x1 - w.x0, 7.5, (w.x0 + w.x1) / 2, 4.5, s * (face - 0.01), [0, 0, -s]);
     }
     plane(4.18, 3.6, 50.76, 0.15, 0, 'floor');
     plane(9.1, 26.7, -3.55, -0.48, 0, 'floor');
@@ -939,7 +1001,8 @@
   }
   function fixtureVisible(it) {
     const blocks=ctx?.interior.seatingState?.().blocks || 4;
-    return !it.hidden && !(blocks===2 && it.type==='palm' && isInterior(it.pos));
+    // Two-block seating fills the nave floor; palms on the sanctuary platforms (x ≥ 38.2) stay.
+    return !it.hidden && !(blocks===2 && it.type==='palm' && isInterior(it.pos) && it.pos[0]<38.2);
   }
   function refreshSeating() {
     if(!ctx)return;
@@ -1194,6 +1257,8 @@
     if (old && list) { const i = list.indexOf(old); if (i >= 0) list.splice(i, 1); colliderById.delete(it.id); }
     const type = CAT.byId[it.type];
     if (!list || !fixtureVisible(it) || !type?.footprint || it.mount !== 'floor') return;
+    // Items standing on a raised shelf (the shrine statues over the service doors) leave the floor below free.
+    if (it.pos[1] - floorY(it.pos[0], it.pos[2]) > 2.1) return;
     const [w, d] = type.footprint, c = Math.cos(it.yaw * DEG), s = Math.sin(it.yaw * DEG);
     const hx = Math.abs(c) * w / 2 + Math.abs(s) * d / 2, hz = Math.abs(s) * w / 2 + Math.abs(c) * d / 2;
     const col = { label: it.name, minX: it.pos[0] - hx, maxX: it.pos[0] + hx, minZ: it.pos[2] - hz, maxZ: it.pos[2] + hz, kind: 'simulator', active: true };
@@ -1428,14 +1493,18 @@
     if (pool?.key !== state.settings.quality) createPool(state.settings.quality);
     emit('settings', {});
   }
-  const TIMBER = { reference: null, light: ['#c9a57a', '#cfad86'], dark: ['#7c5839', '#6e4c31'] };
+  // Structural timber: 'reference' is the red lacquer of the approved sanctuary image, set up
+  // in sanctuary.js for every beam and roof timber. The natural tones bring back the grain.
+  const TIMBER = { reference: null, natural: '#ab8d6f', light: '#c9a57a', dark: '#7c5839' };
   let timberOriginal = null;
   function applyTimberTone() {
-    const im = ctx.interior.materials;
-    timberOriginal ||= { timber: im.timber.color.clone(), wood: im.wood.color.clone() };
+    const timber = ctx.interior.materials.timber, natural = window.CHURCH_SANCTUARY?.naturalTimber;
+    timberOriginal ||= { color: timber.color.clone(), map: timber.map, bumpMap: timber.bumpMap, roughness: timber.roughness };
     const tone = TIMBER[state.settings.timberTone];
-    if (!tone) { im.timber.color.copy(timberOriginal.timber); }
-    else { im.timber.color.set(tone[0]); }
+    const look = tone ? { ...(natural || timberOriginal), color: new T.Color(tone) } : timberOriginal;
+    timber.color.copy(look.color); timber.map = look.map; timber.bumpMap = look.bumpMap; timber.roughness = look.roughness;
+    timber.needsUpdate = true;
+    if (slatMaterial) slatMaterial.color.set(tone || TIMBER.natural);
   }
   let liningOriginal = null;
   function applyRoofFinish() {
@@ -1839,6 +1908,12 @@
       importLayout({ ...previous, items: D.upgradeEntrance(state.items, D.recommended(GEO, SIM)) }, { record: false });
     }
     state.settings.entranceRevision = D.entranceRevision;
+    if (loaded && state.settings.sanctuaryRevision !== D.sanctuaryRevision) {
+      const previous = exportLayout();
+      try { localStorage.setItem(STORAGE_KEY + '.before-sanctuary-review', JSON.stringify(previous)); } catch {}
+      importLayout({ ...previous, items: D.upgradeSanctuary(state.items, D.recommended(GEO, SIM), state.settings.sanctuaryRevision) }, { record: false });
+    }
+    state.settings.sanctuaryRevision = D.sanctuaryRevision;
     if (state.settings.stableLightingRevision !== '2026-10-06-physical-lighting') {
       state.settings.autoExposure = false;
       state.settings.stableLightingRevision = '2026-10-06-physical-lighting';
@@ -1860,6 +1935,10 @@
   let lastPoolUpdate = 0;
   function frame(dt, mode, camera) {
     if (!ready || !camera) return;
+    // The viewer redraws in the same task that switches day/evening, before the lighting
+    // observer has run: without this, that frame put the evening sky levels back over the
+    // day ones and the church stayed dark after returning to day.
+    if ((document.body.dataset.lighting === 'evening' ? 'evening' : 'day') !== envMode) applyEnvironment();
     timeNow += dt || 0;
     watchFrameRate(dt);
     if (entranceSlats) entranceSlats.visible = state.settings.entranceFinish === 'slats' && ctx.roofs.visible !== false;

@@ -40,7 +40,7 @@ Why it felt cramped:
 2. **Invented roof members.** Diagonal braces, king posts and two sets of knee braces filled the space above the nave, but they are not on section sheet 4. The roof now shows the frame as drawn. The earlier bracing can be switched back on for comparison.
 3. **Walking speed and eye height.** Walking at 2.05 m/s (jogging pace) makes rooms feel smaller. It is now 1.4 m/s. The standing eye height is 1.60 m, which suits an average adult in Việt Nam; both are adjustable.
 
-Real constraints remain. The columns really are about 0.6 m timber shafts on 0.84 m bases, 4.5 m apart. From the outer seats they block part of the view, as the earlier sightline study showed. A lighter timber tone (*Settings → Structural timber tone*) makes them visually lighter without changing the structure.
+Real constraints remain. The columns really are about 0.6 m timber shafts on 0.84 m bases, 4.5 m apart. From the outer seats they block part of the view, as the earlier sightline study showed. They now carry the red lacquer and gilding of the sanctuary, as do the beams and roof timbers; *Settings → Structural timber tone* changes the beams and roof timbers back to natural, light or dark timber.
 
 ---
 
@@ -53,15 +53,15 @@ Every fixture hangs from, stands on or is fixed to something the model actually 
 | Reading light, central blocks (L1) | 14 twin-head LED projectors (2 × 2 300 lm, 28°, 3000 K, CRI 90) under the main tie beams (axes 3–9, z ±2.6 m), heads tilted ±8° along the nave | Even light on books under the beams and mid-bay; narrow beams stay off the fan blades |
 | Reading light, outer blocks (L2) | 14 twin-head projectors (2 × 2 300 lm, 36°) under the side beams (z ±5.6 m) | Covers the outer benches between bays |
 | Rear rows and entrance | 2 twin-head brackets inside the entrance façade: one head for the last rows (5 500 lm), one for the centre seats and the entrance aisle (3 300 lm) | Bay 2′–3 has no tie beam, and the nave is open back to the façade; this was the darkest corner |
-| Sanctuary (L3) | Altar key lights at ~45° from the axis-9 beam (with shadows); ambo key light; step fill; crucifix, tabernacle and statue accents | Faces and liturgy lit from the front, not from above |
-| Roof uplight (LA) | 8 wide uplights hidden on top of the tie beams | Warm timber roof in the evening; the nave feels taller |
-| Decorative (LD) | 3 brass chandeliers on chains from the ridge over the crossings; a 12-lamp chandelier at the 9–10 crossing; 14 brass sconces | The character of the reference images |
+| Sanctuary (L3) | From the axis-9 beams: altar key lights (2 × 4 500 lm, 24°, with shadows), ambo key light, step fill, presider's chair spot, two frame washes, and a wash plus a narrow accent for each shrine. Inside the lined chamber, on its side walls behind the front frame: two crucifix accents, the tabernacle accent, reredos washes and base washes, and two vault uplights on the springing cornice | Faces and liturgy lit from the front, not from above; the dark lacquer and gilding get their own light, with the altar brightest and the shrines below the centre. Outputs were lowered so that the blue recess and the red lacquer keep their colour at night. Levels are in `docs/sanctuary-model.md` |
+| Roof uplight (LA) | 7 wide uplights hidden on top of the tie beams (axes 3–9; axis 10 carries the sanctuary frame) | Warm timber roof in the evening; the nave feels taller |
+| Decorative (LD) | 3 brass chandeliers on chains from the ridge over the crossings; a 12-lamp chandelier at the 9–10 crossing, hung at +9.2 m above the sanctuary frame's sightline; 14 brass sconces and 2 on the chamber walls | The character of the reference images |
 | Verandas, steps, façade (L4–L6) | 18 lanterns (2 000 lm), one at every veranda pier; brass sconces beside the main door; lanterns on the tower fronts over the platform and steps; side-door lanterns; tower uplights and façade washes on the +8.39 m tower ledges | Nothing stands on the courtyard, platform or steps where people walk; every exterior light is fixed to the building |
 | Air (F1) | 12 ceiling fans (1.42 m) mid-bay over the two side aisles, between the centre and outer blocks | Where parishes really hang fans: nothing over the processional aisle, quiet at speed 2, ~0.33 m/s at the seats |
 | Festival exterior (L7, off except at feasts) | Warm bulb strings along the roof ridge, the main and veranda eaves, the rear gable, the front terrace and the corners of the three lower tower stages; floods on the +23.14 m tower ledges (belfry and dome), on the terrace (central shrine) and on the rear veranda roofs (rear gable) | The church outlined in light for Christmas and feasts; switched on by the *Christmas & festivals* scene |
 | Sound (A1–A3) | 12 slim 0.6 m wall columns, painted the wall colour, on the side-wall pilasters (axes 4–9) at 3.35 m, between the Stations of the Cross plaques and the sconces, turned toward the back; 4 veranda pendants; 2 courtyard horns on the tower fronts (off) | Barely visible and nothing on the timber columns; each speaker covers the rows behind it, time-aligned to the priest's voice |
 | Microphones | Ambo and altar gooseneck mics | The system runs at about 67 dBA, which keeps both microphones more than 3 dB inside the stability allowance |
-| Décor | Statues of Our Lady (left) and Saint Joseph (right) in the side alcoves either side of the crucifix, flowers, votive candle stands, Paschal candle, palms, banners. Christmas tree, nativity grotto, star, red lanterns, pennants and an aisle carpet are ready but hidden | Matches the reference interior; seasonal items are one switch away |
+| Décor | Statues of Our Lady (left) and Saint Joseph (right) in the raised shrines on the column line, flowers at their feet and beside the tabernacle, Paschal candle beside the ambo, palms, banners. Christmas tree, nativity grotto, star, red lanterns, pennants and an aisle carpet are ready but hidden | Matches the reference interior; seasonal items are one switch away |
 | Roof underside | Timber lining with about 50 % slotted acoustic boards | Speech clarity *and* support for singing |
 | Entrance hall | Timber slat acoustic panels (≈ 75 m²) under the terrace and along the top of the entrance wall | The wall facing the loudspeakers: no late reflection back to the sanctuary, and a shorter reverberation for the whole room |
 
@@ -78,6 +78,8 @@ The **Full service · evening** scene gives these results at the 300 sampled sea
 | Background noise | 42 dBA (fans + outdoor + people) | ≈ 35 dBA where practicable |
 | Seated air speed | 0.33 m/s average (central 0.30, outer 0.35), up to ≈ 0.45 m/s at fan speed 3 | 0.3–0.8 m/s trial |
 | Reverberation time (500–1000 Hz) | 1.22 s | choose with the acoustician |
+
+> **Update (7 October 2026):** the table above predates the sanctuary rebuild and the removal of the front nave row. The current run samples 288 nave seats and 80 wing seats: 349 lux average on books, 99 % of seats at 200 lux or more (lowest 197, four seats at the ends of the last row); STI 0.61 average and 0.44 minimum, with 85 % of nave seats at 0.60 or better; feedback margins of 1.2 dB (ambo) and 1.7 dB (altar), below the 3 dB the checks ask for; 0.40 m/s seated air speed; 43 dBA; 1.16 s. Sanctuary light levels are in `docs/sanctuary-model.md`.
 | Electrical load | ≈ 3.4 kW · 5 kWh per 1.5 h service (festival exterior off) | measure after installation |
 
 The verandas are the one place the lanterns do not reach the brief's 100 lux trial. About 40 lux is enough to walk safely and suits the arcade at night. If the verandas will seat overflow worshippers at festivals, add downlights to the veranda roof for those days. You can test this with *Add → LED projector*.
@@ -195,19 +197,37 @@ Press Play and walk or sit. Each loudspeaker reaches you with its real distance 
 
 ## Sanctuary layout (October 2026 revision)
 
-- The plaster three-lobed frame now stands on axis 11 as the back wall of the
-  sanctuary. The axis-10 timber columns stand free in front of it, on stone
-  bases on the +0.75 m dais, as in the reference interior.
-- The full-width reredos with the crucifix stays in the centre bay. The two
-  smaller lobed arches beside it are deep, warm-lit alcoves (about 1.4 m).
-  Our Lady stands in the left alcove (B) and Saint Joseph in the right (H),
-  each on a stone plinth with flowers. This follows the reference interior.
+- The three-lobed frame of section sheet 5 stands on the axis-10 columns in
+  lacquered, gilded timber, with no tie beam on that axis. The plaster frame
+  on axis 11 remains as the back wall. See `docs/sanctuary-model.md`.
+- Behind the frame a timber-lined chamber (lacquered walls on the D and E
+  lines, gilded boarded vault) runs back to the reredos. The crucifix stands
+  in a niche 1.0 m deep that opens through the back wall onto a base over the
+  service room.
+- All round columns on the D and E lines are lacquered with gilded bands and
+  capitals, like the two that carry the sanctuary frame.
+- The tie beams, side beams, rafters, purlins, ridge and braces take the same
+  red lacquer, with gilded lines, bands and rosettes on the beams, rafters and
+  ridge. The boarded roof lining stays ivory. *Settings → Structural timber
+  tone* offers natural, light and dark timber as alternatives.
+- At night the centre of the sanctuary is lit lower than before, so the blue
+  recess and the red lacquer keep their colour (crucifix about 245 lux, blue
+  wall 60–220, gilded reredos 175, altar 400).
+- The ambo stands 2.0 m in front of the altar. The front row of nave benches
+  is removed: 4 m is clear before the sanctuary steps.
+- Our Lady (B) and Saint Joseph (H) stand in raised shrines in the frame's
+  side arches, on the column line, above 2.2 m service doors. The bay behind
+  each shrine is closed in lacquered timber above the shelf. The passage
+  behind each shrine leads to the veranda door and, through the side arch on
+  axis 11, straight into the service room.
 - Benches stand in the two projecting wings between axes 9 and 10, facing the nave, five rows in two blocks:
   - choir on the right (H), with a keyboard at the front
   - ministers and servers on the left (B)
-- The service room (sacristy) is behind the back wall, between the D and E
-  grids. It is entered through a door in the inner side wall of each statue
-  alcove. It holds:
+- The service room (sacristy) is one open room across the full width behind
+  the back wall. It has no inner partitions or doors: the former statue
+  alcoves and the two small side doors are removed. A flat ceiling spans the
+  centre bay; the side bays are open to the roof, each with a window and a
+  door to the outside in the rear gable. The centre bay holds:
   - the vestment wardrobe and vesting counter
   - the main electrical board, the lighting (L1–L7) and fan control cabinets,
     and the sound rack (amplifiers, DSP, wireless microphones)
@@ -329,6 +349,13 @@ Exterior lighting (L6):
 - **Explore mode movement.** W A S D or the arrow keys move forward, back
   and sideways; Q and E go down and up; Shift moves faster. Dragging still
   orbits, and scrolling still zooms.
+- **Looking around inside (Walk mode).** Dragging now moves the picture the
+  same way as outside: the scene follows the pointer. Drag up and the scene
+  moves up; drag right and it moves right. (Before, the eye turned towards
+  the drag and the picture slid the other way.)
+- **Day after evening.** Switching back from evening to day used to leave the
+  church as dark as at night until the page was reloaded. The day light level
+  now returns at once.
 
 ### Balanced side-wall fittings (2026-10-14)
 Every side pilaster (axes 3–9) now carries the same ordered column of fittings, with clear gaps between them:

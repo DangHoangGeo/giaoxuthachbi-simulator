@@ -56,11 +56,14 @@
   }
   function walkAllowed(x,z) {
     const az=Math.abs(z);
-    // Sanctuary fit-out: service-room walls (door gaps at x 50.65), side benches, furniture.
-    if (x >= 48.6 && x <= 53.1 && az >= 3.42 && az <= 3.8 && Math.abs(x - 49.6) > .36) return false;
-    if (x >= 49.95 && x <= 53.2 && az > 3.42 && az < 7.6) return false;
-    if (x >= 49.2 && x <= 50.1 && Math.abs(az - 5.55) < .65) return false;
-    if (x >= 48.7 && x <= 50.1 && az > 7.1 && az < 7.6) return false;
+    // Shrine jambs on the column line; keep the central 1.44 m entrance open.
+    if(x>=43.95 && x<=45.5 && az>=3.7 && az<=7.25 && Math.abs(az-5.5)>=.7)return false;
+    // Lacquered chamber walls on the D/E lines, from the axis-10 columns back to axis 11.
+    if(x>=44.4 && x<=48.6 && az>=3.2 && az<=3.85)return false;
+    // Sanctuary fit-out: the open service room is bounded by the C/G walls and the
+    // rear gable (its doors are closed); side benches, furniture.
+    if (x >= 48.7 && x <= 53.4 && az > 7.1 && az < 7.6) return false;
+    if (x >= 52.7 && x <= 53.4 && az < 7.6) return false;
     if (x >= 37.7 && x <= 43.45 && Math.abs(x - 40.575) > .42 && [8.35,9.25,10.15,11.05,11.95].some(r => Math.abs(az - r) < .33)) return false;
     if (x >= 52.1 && x <= 53.1 && az < 3.1) return false;
     if (x >= 48.7 && x <= 49.8 && z >= 1.0 && z <= 1.8) return false;
@@ -484,34 +487,11 @@
     for(const sign of [-1,1])box(.84,.22,.84,data.longitudinal['10'],.86,sign*3.6,im.whiteStone,structure,'Carved stone column base on the dais');
 
     const fit=new T.Group();fit.name='Sanctuary seating and service room · proposal';building.add(fit);
-    const fit0=fit;
     // Back wall inside the central lobed arch, behind the reredos (plain).
     const back=lobedLine(0,3.3,8.25,9.38,10.83);
     back.lineTo(3.3,.15);back.lineTo(-3.3,.15);back.closePath();
     const backWall=mesh(new T.ExtrudeGeometry(back,{depth:.2,bevelEnabled:false,curveSegments:32}),mat.wall,sanctuaryFrame,'Sanctuary back wall behind the reredos');
     backWall.position.z=-.12;
-    // Side alcoves behind the two smaller lobed arches, as in the reference
-    // interior: deep, warm-lit bays with Our Lady (left, B) and Saint Joseph
-    // (right, H) on stone plinths. A door in each alcove's inner side wall
-    // leads to the service room.
-    const alcove={x0:SX+.16,x1:50.1,zIn:3.6,zOut:7.2,top:6.95,plinth:{z:5.55,w:1.1,d:.75,h:.6}};
-    const warm=mat.wall.clone();warm.name='Warm ochre alcove plaster · proposal';warm.color.set('#f1d9a8');
-    for(const sign of [-1,1]){
-      const zc=(alcove.zIn+alcove.zOut)/2,width=alcove.zOut-alcove.zIn,depth=alcove.x1-alcove.x0;
-      box(.2,alcove.top-.15,width,alcove.x1+.1,(alcove.top+.15)/2,sign*zc,warm,fit0,'Statue alcove back wall');
-      box(depth+.2,.15,width+.1,(alcove.x0+alcove.x1)/2+.1,alcove.top+.075,sign*zc,warm,roofs,'Statue alcove ceiling');
-      // Outer side: closes the alcove against the C/G wall line.
-      box(depth,alcove.top-.15,.16,(alcove.x0+alcove.x1)/2,(alcove.top+.15)/2,sign*(alcove.zOut+.08),warm,fit0,'Statue alcove outer wall');
-      // Stone plinth with a carved panel and a moulded cap.
-      const pl=alcove.plinth,px=alcove.x1-pl.d/2-.02;
-      box(pl.d,pl.h,pl.w,px,.15+pl.h/2,sign*pl.z,im.whiteStone,fit0,'Statue plinth');
-      box(pl.d+.1,.08,pl.w+.1,px,.15+pl.h+.04,sign*pl.z,im.stone,fit0,'Statue plinth cap');
-      box(.02,pl.h*.55,pl.w*.62,px-pl.d/2-.01,.15+pl.h/2,sign*pl.z,mat.darkTrim,fit0,'Plinth carved panel');
-      // Arched halo moulding on the back wall behind the statue.
-      const pts=[];for(let k=0;k<=28;k++){const a=Math.PI-k*Math.PI/28;pts.push(new T.Vector3(alcove.x1-.01,3.6+Math.sin(a)*1.35,sign*pl.z+Math.cos(a)*.95));}
-      mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts),64,.05,8,false),mat.trim,fit0,'Alcove arch moulding');
-      for(const e of [-1,1])box(.06,2.85,.1,alcove.x1-.03,.15+.6+2.85/2,sign*pl.z+e*.95,mat.trim,fit0,'Alcove pilaster strip');
-    }
     // Seating beside the altar on the +0.15 side platforms: the choir on the
     // right (H, +z) with three stepped rows and a keyboard; servers and
     // ministers on the left (B, −z). Benches face the altar across the dais.
@@ -543,19 +523,22 @@
     box(1.22,.03,.16,40.575,.385,7.69,im.whiteStone,fit,'Keyboard keys');
     for(const x of [40.0,41.15])box(.06,.62,.36,x,-.01,7.75,im.wood,fit,'Keyboard stand side');
 
-    // Service room (nhà áo / sacristy) behind the altar between the D and E
-    // grids: vesting furniture and the church's electrical and sound control.
-    const room={x0:SX+.12,x1:53.0,half:3.6,h:4.15,door:{x:49.6,w:.82,h:2.2}};
-    for(const sign of [-1,1]){
-      const wall=new T.Shape();wall.moveTo(room.x0,.15);wall.lineTo(room.x1,.15);wall.lineTo(room.x1,room.h);wall.lineTo(room.x0,room.h);wall.closePath();
-      const d=room.door,hole=new T.Path();hole.moveTo(d.x-d.w/2,.15);hole.lineTo(d.x+d.w/2,.15);hole.lineTo(d.x+d.w/2,.15+d.h);hole.lineTo(d.x-d.w/2,.15+d.h);hole.closePath();wall.holes.push(hole);
-      const w=mesh(new T.ExtrudeGeometry(wall,{depth:.2,bevelEnabled:false}),mat.wall,fit,'Service room side wall');w.position.z=sign*room.half-.1;
-      box(d.w+.2,.12,.26,d.x,.15+d.h+.06,sign*room.half,mat.trim,fit,'Service room door head');
-      for(const e of [-1,1])box(.08,d.h,.26,d.x+e*(d.w/2+.04),.15+d.h/2,sign*room.half,mat.trim,fit,'Service room door frame');
-      const hinge=new T.Group();hinge.position.set(d.x-d.w/2+.02,.15,sign*(room.half-.12));hinge.rotation.y=sign*1.25;fit.add(hinge);
-      box(d.w-.04,d.h-.04,.05,(d.w-.04)/2,(d.h-.04)/2,0,mat.wood,hinge,'Service room door leaf (open)');
-    }
-    box(room.x1-room.x0,.12,room.half*2+.2,(room.x0+room.x1)/2,room.h+.06,0,mat.wall,roofs,'Service room ceiling');
+    // Service room (nhà áo / sacristy): one open room across the full width
+    // behind the sanctuary back wall, reached from the passages behind the two
+    // shrines through the side arches on axis 11. There are no inner partitions
+    // or doors. A flat ceiling with a downstand edge beam spans the centre bay
+    // from the back wall to the rear gable, over the vesting furniture and the
+    // electrical and sound control; the side bays are open to the roof.
+    const room={x0:SX+.12,x1:53.0,half:3.6,h:4.15};
+    for(const sign of [-1,1])box(room.x1-room.x0,.22,.2,(room.x0+room.x1)/2,room.h-.11,sign*room.half,mat.wall,fit,'Service room ceiling edge beam');
+    // The crucifix niche (sanctuary.js) stands back through the wall onto this slab,
+    // which is notched round its plaster casing.
+    const niche=window.CHURCH_SANCTUARY?.spec.niche,ceilingHalf=room.half+.1;
+    if(niche){
+      const nz=niche.half+niche.shell+.02,nx=niche.endX+.02;
+      for(const sign of [-1,1])box(room.x1-room.x0,.12,ceilingHalf-nz,(room.x0+room.x1)/2,room.h+.06,sign*(ceilingHalf+nz)/2,mat.wall,roofs,'Service room ceiling');
+      box(room.x1-nx,.12,nz*2,(nx+room.x1)/2,room.h+.06,0,mat.wall,roofs,'Service room ceiling');
+    } else box(room.x1-room.x0,.12,ceilingHalf*2,(room.x0+room.x1)/2,room.h+.06,0,mat.wall,roofs,'Service room ceiling');
     const panelLight=new T.MeshStandardMaterial({color:'#fffaf0',emissive:'#fff3dc',emissiveIntensity:.9});panelLight.name='Service room ceiling panel';
     for(const x of [50.0,51.9])box(.6,.03,.6,x,room.h-.01,0,panelLight,fit,'Service room LED ceiling panel');
     // Vesting wardrobe and vesting counter along the rear wall.
@@ -719,6 +702,7 @@
     api.measurements=data.refinement;
     building.userData.refinement=data.refinement;
     building.userData.assumptions=data.assumptions;
+    window.CHURCH_SANCTUARY?.prepare(ctx);
     applyGlass();
     finish(true);
   }

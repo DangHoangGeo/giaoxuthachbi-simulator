@@ -52,16 +52,21 @@
     }
     return x;
   }
+  // Risers in the sanctuary back wall climb beside the crucifix niche, not across its opening.
+  function riserZ(z) {
+    const n = window.CHURCH_SANCTUARY?.spec.niche, clear = n ? n.half + n.shell + 0.2 : 0;
+    return Math.abs(z) < clear ? -clear : z;
+  }
   function trunkPath(source, s, y, endX) {
-    const p = SOURCES[source].pos;
+    const p = SOURCES[source].pos, rz = riserZ(p[2]);
     if (source === 'DB2') return clean([p, [2.35, p[1], p[2]], [2.35, 7.65, p[2]],
       [2.35, 7.65, s * 7.36], [2.35, y, s * 7.36], ...takeTo(perimeter(s, y).reverse(), endX)]);
-    return clean([p, [48.735, p[1], p[2]], [48.735, 4.02, p[2]], [48.735, 4.02, -3.6], [53.05, 4.02, -3.6],
+    return clean([p, [48.735, p[1], p[2]], [48.735, p[1], rz], [48.735, 4.02, rz], [48.735, 4.02, -3.6], [53.05, 4.02, -3.6],
       [53.05, y, -3.6], ...takeTo([[53.05, y, -3.6], ...perimeter(s, y)], endX)]);
   }
   function servicePanelRoute(it) {
-    const p = SOURCES.LC1.pos, q = it.pos;
-    return clean([p, [48.735, p[1], p[2]], [48.735, 4.02, p[2]], [q[0], 4.02, p[2]], [q[0], 4.02, q[2]], q]);
+    const p = SOURCES.LC1.pos, q = it.pos, rz = riserZ(p[2]);
+    return clean([p, [48.735, p[1], p[2]], [48.735, p[1], rz], [48.735, 4.02, rz], [q[0], 4.02, rz], [q[0], 4.02, q[2]], q]);
   }
   function branchPath(it, start) {
     const p = it.pos.slice(), s = Math.sign(p[2] || -1), x = start[0], y = start[1], z = start[2];

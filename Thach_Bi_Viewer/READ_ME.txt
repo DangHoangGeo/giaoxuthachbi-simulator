@@ -12,7 +12,8 @@ If the 3D view cannot start, the page shows a recovery message and reference ima
 Try the lighter graphics option to reduce graphics-memory use.
 
 Explore: drag to orbit, scroll/pinch to zoom, right-drag to pan.
-Walk: W A S D / arrow keys to move, drag to look; touch joystick on phones.
+Walk: W A S D / arrow keys to move; drag the scene to look around (it follows
+the pointer, as in Explore); touch joystick on phones.
 Esc leaves Walk mode. References opens the nine retained reference images.
 
 The original architectural drawings and measurement workbook govern dimensions.
@@ -45,8 +46,13 @@ Geometry checks: ../scripts/verify_model.cjs (run with Node.js).
 INTERIOR AND SYSTEMS STUDY — 5 OCTOBER 2026
 View settings → Seating layout: 2 wide blocks with 4.65 m long benches,
 or 4 blocks with 1.73–1.86 m short benches. These are furniture proposals.
-Both options add two complete rows in each bay 2–3, 4–5 and 8–9.
-Totals: 2 blocks = 19 rows / 38 benches; 4 blocks = 25 rows / 100 benches.
+Both options add two complete rows in each bay 2–3 and 4–5, and one in bay 8–9.
+The front row before the sanctuary (X 35.79 m) was removed on 7 October 2026.
+Columns, beams and roof timbers are red lacquer with gilding, as the sanctuary;
+the roof lining stays ivory (Settings → Structural timber tone offers natural
+timber). Sanctuary lamp outputs were lowered so the blue recess and the red
+lacquer keep their colour at night: see ../docs/sanctuary-model.md.
+Totals: 2 blocks = 18 rows / 36 benches; 4 blocks = 24 rows / 96 benches.
 Door-bay cross aisles are now proposed at 1.20 m; final access review is pending.
 The switch updates furniture, walk collisions, minimap and exported geometry.
 The indoor palms are hidden in the 2-block layout and restored with 4 blocks.
@@ -76,7 +82,7 @@ changes height). Ctrl+Z / Ctrl+Shift+Z undo and redo. The layout is saved in
 this browser and can be downloaded as .json (layout) or .csv (schedule).
 
 Analysis colours the plan by light (lux), speech level, clarity (STI), air
-speed or noise, lists results at 300 sampled seats against the brief, shows
+speed or noise, lists results at 288 sampled nave seats against the brief, shows
 reverberation time per octave and runs design checks: light through fan
 blades, clearances, low chandeliers, items in aisles, microphone feedback,
 overdriven speakers, fans at candles or microphones, echo and dim seats.
