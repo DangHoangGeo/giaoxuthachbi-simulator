@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "07c06b6",
+  "checks": {
+    "yamlParsedWithRubyPsych": true,
+    "readOnlyContentsPermission": true,
+    "pullRequestAndPushTriggersOnly": true,
+    "credentialPersistence": false,
+    "deploymentSteps": 0,
+    "localMarkdownLinks": 10,
+    "cloudConfigured": false,
+    "githubActionsEnabledReadOnlyObservation": true
+  },
+  "actionTagReferences": {
+    "actions/checkout": {
+      "tag": "v7.0.1",
+      "commit": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+    },
+    "actions/setup-node": {
+      "tag": "v7.0.0",
+      "commit": "820762786026740c76f36085b0efc47a31fe5020"
+    }
+  },
+  "sourceHashes": {
+    "docs/web/deployment.md": "1591f30e468d396026f00b99e8589b65288ef7c7c09a78b58bbc6a4cabd0b9b0",
+    "plan/phases/02-homepage-and-gallery.md": "cf3cbed7d957351dfdc25c8028edea5caf2de006589a5e5c165c7cfb052ec426",
+    "plan/phases/04-lightweight-visit.md": "c7e1c9c8d35075cc822d56442507f52969a3f7b2fe553b34cfa9840ce6de57cb",
+    "plan/phases/06-construction-inspector.md": "9f871d47b94dd8b4e1ddfaba3fe0056431bb0e60d1deaea51785e130cfc98991",
+    ".github/workflows/web-checks.yml": "efb3980b48ad70680a1062d1922e947c1a5b877c224ff8bce008df75d12b5fec"
+  },
+  "runtimeCiResult": "pending first pushed workflow run",
+  "applicationSourceChange": false
+}

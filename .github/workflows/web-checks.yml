@@ -1,0 +1,49 @@
+name: Web checks
+
+on:
+  pull_request:
+    paths: ["web/**", ".github/workflows/web-checks.yml"]
+  push:
+    branches: ["main", "web/**"]
+    paths: ["web/**", ".github/workflows/web-checks.yml"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: web-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: web
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout: /web/
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: web/.node-version
+          package-manager-cache: false
+      - name: Confirm the pinned runtime
+        run: |
+          test "$(node --version)" = "v22.23.3"
+          test "$(npm --version)" = "10.9.9"
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm audit --audit-level=high
+      - run: npm run build
+      - run: npm run check:boundary
+      - run: npx --no-install playwright install --with-deps chromium
+      - run: npm run test:browser
