@@ -1,6 +1,6 @@
 # Phase 02 — Public church homepage and gallery
 
-Status: **not started**. Depends on phase 01 and content cleared in phase 00. Read [data/publication rules](../data-and-publication.md) and [quality gates](../quality-and-release.md).
+Status: **local preparation in progress**, 8 October 2026, branch `web/02-homepage` from main `dd2538d`. Phase 01's local foundation passed. Parish review and media rights remain G0/G2 holds; [exact draft and content status](../../docs/web/public-content.md) stay outside application inputs. Read [data/publication rules](../data-and-publication.md) and [quality gates](../quality-and-release.md).
 
 ## Outcome
 
