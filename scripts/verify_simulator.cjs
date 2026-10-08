@@ -65,7 +65,7 @@ assert(nodes.filter(o => o.name === 'Purlin · as drawn spacing ~0.50 m').length
 // The beams carry the lacquer of the columns, with gilded borders, rosettes and bands.
 {
   const named = name => nodes.filter(o => o.isMesh && o.name === name), timber = interior.materials.timber;
-  assert.equal(timber.color.getHexString(), '652016', 'structural timber is lacquered by default');
+  assert.equal(timber.color.getHexString(), '853125', 'structural timber is lacquered by default');
   for (const o of [...ties, ...sideBeams, ...named('Purlin · as drawn spacing ~0.50 m')]) assert.equal(o.material, timber, o.name + ' uses the structural timber finish');
   const tieGilding = [...named('Main tie beam gilded border'), ...named('Main tie beam gilded rosette'), ...named('Main tie beam gilded band')];
   assert.equal(named('Main tie beam gilded border').length, 28, 'two border lines on both faces of each tie beam');
@@ -274,7 +274,7 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   SIM.setSetting('timberTone', 'dark');
   assert(timber.color.getHexString() === '7c5839' && slats.material.color.getHexString() === '7c5839', 'dark tone applies to beams and slats');
   SIM.setSetting('timberTone', 'reference');
-  assert(timber.color.getHexString() === '652016' && timber.map === null && slats.material.color.getHexString() === 'ab8d6f', 'reference tone is the red lacquer');
+  assert(timber.color.getHexString() === '853125' && timber.map === null && slats.material.color.getHexString() === 'ab8d6f', 'reference tone is the red lacquer');
 }
 // Day/evening: the viewer redraws in the task that switches the mode, before any observer runs.
 // That frame must already use the new mode, or the evening sky levels overwrite the day ones.

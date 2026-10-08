@@ -111,3 +111,11 @@ metalness/roughness/bump settings, niche glows, equipment and analytical inputs
 are unchanged. Reference artwork and native masters are untouched. This is display
 resampling, recorded on each affected texture; use standard graphics for detailed
 image/GLB exports. See [memory methods and checks](simulator/performance.md#memory-in-light-graphics).
+
+## Owner-selected brighter red · 8 October 2026
+
+The owner chose the brighter appearance of the detailed architectural preview as the visual direction. The local model now uses sRGB `#853125` for lacquered shafts, sanctuary panels and reference-tone beams, `#8b3827` for carved lacquer, and `#74281e` for the lacquer ground of gilded relief. Previous colours were `#652016`, `#6e2415` and `#5a170f`. These are **CONCEPT display colours**, not paint codes, measured reflectance or an approved physical finish. A real lacquer/gilding sample remains required. Grain, metalness, roughness, clearcoat and geometry are retained. Day/evening lighting, exposure, emitter output, photometry, calculation thresholds and material assumptions in the analytical room model are unchanged.
+
+The private web GLB used the same earlier material factors, but its separate environment lighting made them look brighter. Matching a screenshot by changing engineering light output would be inappropriate; this update records the owner's finish preference directly. The earlier shared/private GLBs and web derivatives are now **stale for finish appearance** and also contain legacy chandelier geometry; they are architectural snapshots, not the local engineering model. They require a simulator-aware export and new verification before being represented as current. No source images were edited.
+
+Local chandelier equipment remains L78/L79/L80 at X 16.725/25.725/34.725 m, Y 6.3 m, Z 0, centred in bays 4–5/6–7/8–9. L81 remains at X 40.575 m, Y 9.2 m, Z 0, the 9–10 midpoint. The old export omitted simulator initialization and retained obsolete decorative chandelier X 12.7/23.475/32.475 m. This is an export-source discrepancy, not a reason to move the correct local emitters or overwrite saved user layouts. Equipment/line registers, route coordinates and quantities are unchanged.

@@ -429,3 +429,7 @@ Still to do:
   - Tab controls support arrow keys, Home and End. Escape closes the dock while focused inside it. The detailed Simulator temporarily replaces the compact dock.
   - Your location stays against the right edge, including when Controls or Simulator opens. Controls occupy the same right column below the map; switching tabs retains the same size. On short screens the right column scrolls and opening Controls brings its header into view. Closing it returns the column to the map. Bottom stats and the centered joystick retain their own space.
   - The tower buttons read *Off / Evening / Festival*.
+
+## Local electrical review layers · 8 October 2026
+
+Open **Simulator → Wiring**. Choose **Lights**, **Sound & microphones**, **Fans & ventilation**, **Exit signs**, **Powered decoration**, or **Distribution only**, then **Systems only** to isolate the corresponding 3D equipment and routes. Choose a **Circuit** or click an equipment row for a single-item trace. Upstream boards and shared supplies remain visible. The flat plan and vertex table use the same coordinates. **Controls · circuit** opens the corresponding simulator controls; **Restore building** restores the normal model. Filters do not change switches, layouts or analysis. Full instructions and outstanding engineering holds are in [routing](../electrical-grid/routing.md#local-engineering-review-layers--8-october-2026).

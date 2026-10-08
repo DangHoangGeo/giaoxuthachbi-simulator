@@ -11,7 +11,8 @@
     niche:{half:1.9,spring:5.85,rise:1.55,floor:2.6,mouthX:47.99,backX:49,lining:.05,shell:.14,endX:49.23} };
   // Underside of the boarded roof lining, as in the simulator.
   const roofY=u=>12.282-.7258*Math.abs(u)-.1;
-  const LACQUER='#652016';
+  // Owner-selected brighter red, 8 October 2026. Display finish, not measured reflectance.
+  const LACQUER='#853125';
   window.CHURCH_SANCTUARY = { spec, prepare, roofY };
   function prepare({THREE:T,building,interior,data,mat,palettes}) {
     spec.frameX=data.longitudinal[spec.frameAxis];spec.wingX=spec.frameX+.2;
@@ -34,7 +35,7 @@
     const wood=new T.MeshPhysicalMaterial({color:LACQUER,roughness:.26,clearcoat:.7,clearcoatRoughness:.12,map:K.grain()});wood.name='Sanctuary · oxblood lacquer';
     const gold=material('Sanctuary · carved gilding','#c7983f',.72,.3),blue=material('Sanctuary · blue niche','#187eaf',0,.8),stone=material('Sanctuary · pale stone','#e5dbc8'),leafGold=material('Sanctuary · gilded vault boarding','#c9a045',.35,.42);
     // Carved work is left a little lighter and less polished than the turned and planed timber.
-    const carve=material('Sanctuary · carved lacquered timber','#6e2415',0,.36),inset=material('Sanctuary · dark marble inset','#56625c',0,.28),figure=material('Sanctuary · carved figure, natural wood','#c49a6c',0,.5);
+    const carve=material('Sanctuary · carved lacquered timber','#8b3827',0,.36),inset=material('Sanctuary · dark marble inset','#56625c',0,.28),figure=material('Sanctuary · carved figure, natural wood','#c49a6c',0,.5);
     window.CHURCH_SANCTUARY.materials={wood,gold,carve};
     // Concealed ambo service passage: the original visual pedestal stops below
     // its sloped desk and the retained microphone base sits above that desk.
@@ -60,7 +61,7 @@
       for(const t of [r.map,r.bumpMap,r.surface])t.repeat.set(1/tile,1/tile);
       m.name=name;return m;
     };
-    const scrollwork=reliefFinish('Sanctuary · gilded scrollwork on lacquer','#5a170f',1),gilded=reliefFinish('Sanctuary · gilded relief','#7a5218',.4);
+    const scrollwork=reliefFinish('Sanctuary · gilded scrollwork on lacquer','#74281e',1),gilded=reliefFinish('Sanctuary · gilded relief','#7a5218',.4);
     // The niche walls glow behind the figures and deepen towards their edges, as on the concept.
     const glowing=(m,texture,half,bottom,height)=>{texture.repeat.set(.5/half,1/height);texture.offset.set(.5,-bottom/height);m.map=texture;m.color.set('#ffffff');return m;};
     const wingBlue=material('Sanctuary · shrine niche blue','#ffffff',0,.8);

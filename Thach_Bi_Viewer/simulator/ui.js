@@ -459,6 +459,7 @@
     const el = e.target.closest('[data-act]');
     if (!el) return;
     const act = el.dataset.act, it = itemFromEvent(e);
+    if (act.startsWith('electrical-') && el.tagName === 'SELECT') return;
     if (act.startsWith('electrical-')) { SIM.electrical?.action(el); return; }
     switch (act) {
       case 'close': setOpen(false); break;
@@ -532,6 +533,7 @@
   }
   function onChange(e) {
     const t = e.target;
+    if (t.matches('select[data-act=electrical-review-circuit]')) { SIM.electrical?.action(t); return; }
     if (t.id === 'simImportFile') {
       const f = t.files?.[0];
       if (!f) return;

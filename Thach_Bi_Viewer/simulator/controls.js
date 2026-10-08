@@ -184,6 +184,16 @@
     SIM.commit(`${f.dataset.circuit} level ${f.value} dB`); sync();
   });
 
+  SIM.controls = { showCircuit(circuit) {
+    const c = SIM.CIRCUITS[circuit]; if (!c) return false;
+    tab = c.cat === 'fan' ? 'fans' : ['speaker','mic'].includes(c.cat) ? 'sound' : c.board === 'DB2' ? 'DB2' : 'DB1';
+    SIM.ui?.setOpen(false); // The simulator drawer normally hides the compact control dock.
+    setOpen(true);
+    const control = [...body.querySelectorAll('[data-circuit]')].find(el => el.dataset.circuit === circuit);
+    control?.focus({preventScroll:true}); control?.scrollIntoView({block:'nearest'});
+    return true;
+  } };
+
   const refresh = () => { if (!panel.hidden) sync(); };
   for (const ev of ['items', 'history', 'scene']) SIM.on(ev, refresh);
   const start = () => { if (SIM.ready) { if (open) { build(); requestAnimationFrame(revealControls); } } else setTimeout(start, 300); };

@@ -16,7 +16,7 @@
     AV1: { label: 'AV-1 · Mixer / amplifier rack', where: 'Existing service-room sound rack', pos: [49.275, 0.95, 1.4], size: [0.8, 1.6, 0.62], facing: 'x', color: '#3985c2', board: 'DB1' }
   };
   const COLORS = { light: '#dc9e29', fan: '#b46a48', audio: '#3985c2', mic: '#8263b5', feeder: '#c84c52', decor: '#cb7a36' };
-  const view = { visible: false, mode: 'building', board: 'all', kind: 'all', selected: null };
+  const view = { visible: false, mode: 'building', board: 'all', kind: 'all', system: 'all', circuit: 'all', item: 'all', selected: null };
   let routes = [], layer, highlight, T, scene, savedVisibility = null, rebuildTimer, soffitMaterial;
   const objects = new Map(), enclosures = new Map(), covers = new Map(), coverBatches = new Map();
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -338,6 +338,7 @@
     const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(positions, 3)); geo.setIndex(indices); geo.computeBoundingSphere(); return geo;
   }
   function rebuild() {
+    reviewCache = null;
     if (!layer) return;
     clearTimeout(rebuildTimer);
     routes = makeRoutes();
@@ -402,12 +403,15 @@
       layer.add(group); enclosures.set(id, group);
     }
     rebuild();
-    SIM.on('items', () => { clearTimeout(rebuildTimer); rebuildTimer = setTimeout(rebuild, 90); });
+    SIM.on('items', () => { reviewCache = null; applyVisibility(); clearTimeout(rebuildTimer); rebuildTimer = setTimeout(rebuild, 90); });
     SIM.on('select', id => { if (id && view.selected) { view.selected = null; updateHighlight(); SIM.emit('electrical'); } });
     SIM.on('frame', () => {
       // Re-apply isolation after the viewer's frame and material switches.
-      if (savedVisibility) for (const [o] of savedVisibility) o.visible = false;
-      if (savedVisibility) for (const fx of SIM.fixtures.values()) fx.root.visible = SIM.fixtureVisible(fx.item) && wired(fx.item);
+      if (savedVisibility) {
+        for (const [o] of savedVisibility) o.visible = false;
+        const ids = new Set(reviewSelection().itemIds);
+        for (const fx of SIM.fixtures.values()) fx.root.visible = SIM.fixtureVisible(fx.item) && ids.has(fx.item.id);
+      }
     });
     const settings = document.getElementById('settingsPanel');
     if (settings) {
@@ -417,12 +421,71 @@
       control.querySelector('input').addEventListener('change', e => { setMode(e.target.checked ? 'systems' : 'building'); if (e.target.checked) SIM.emit('electrical-selection'); });
     }
   }
-  function matches(r) { return (view.board === 'all' || r.board === view.board) && (view.kind === 'all' || (view.kind === 'audio' ? ['audio', 'mic'].includes(r.kind) : !['audio', 'mic'].includes(r.kind))); }
+  function legacyMatches(r) { return (view.board === 'all' || r.board === view.board) && (view.kind === 'all' || (view.kind === 'audio' ? ['audio', 'mic'].includes(r.kind) : !['audio', 'mic'].includes(r.kind))); }
+  let reviewCache = null;
+  const SYSTEMS = { all: 'All systems', lighting: 'Lights', sound: 'Sound & microphones', air: 'Fans & ventilation', exit: 'Exit signs', decoration: 'Powered decoration', distribution: 'Distribution only' };
+  function systemOf(it) {
+    const type = CAT.byId[it.type];
+    return it.circuit === 'E1' ? 'exit' : type.speaker || type.mic ? 'sound' : type.fan ? 'air' : type.cat === 'decor' ? 'decoration' : 'lighting';
+  }
+  // Read-only relationship closure. Shared trunks are context, not extra loads;
+  // keeping a parent feeder never pulls sibling equipment into the selection.
+  function reviewSelection() {
+    const key = [view.system, view.circuit, view.item, view.board, view.kind].join('|');
+    if (reviewCache?.key === key) return reviewCache.selection;
+    const scoped = view.system !== 'all' || view.circuit !== 'all' || view.item !== 'all';
+    const items = SIM.state.items.filter(it => wired(it) && !it.hidden &&
+      (view.board === 'all' || SIM.CIRCUITS[it.circuit]?.board === view.board) &&
+      (view.system === 'all' || systemOf(it) === view.system) &&
+      (view.circuit === 'all' || it.circuit === view.circuit) && (view.item === 'all' || it.id === view.item));
+    const itemIds = new Set(items.map(it => it.id));
+    let selected = routes.filter(r => legacyMatches(r) && (!scoped || r.itemIds.some(id => itemIds.has(id))));
+    if (view.system === 'distribution') selected = routes.filter(r => r.role === 'feeder' && (view.board === 'all' || r.board === view.board));
+    const routeIds = new Set(selected.map(r => r.id)), sourceIds = new Set();
+    if (!scoped) {
+      for (const [id, source] of Object.entries(SOURCES)) if (view.board === 'all' || source.board === view.board) sourceIds.add(id);
+      // A board-only view still needs both endpoints of visible feeders.
+      for (const r of selected) {
+        sourceIds.add(r.source);
+        if (r.role === 'feeder' && SOURCES[r.id.slice(7)]) sourceIds.add(r.id.slice(7));
+      }
+      // Preserve the legacy power/audio selector's equipment semantics, while
+      // advanced discipline/circuit filters always follow complete dependencies.
+      for (const id of [...itemIds]) if (!selected.some(r => r.itemIds.includes(id))) itemIds.delete(id);
+    }
+    if (scoped) {
+      for (let index = 0; index < selected.length; index++) {
+        const r = selected[index]; sourceIds.add(r.source);
+        const destination = r.role === 'feeder' && SOURCES[r.id.slice(7)] ? r.id.slice(7) : null;
+        if (destination) sourceIds.add(destination);
+        for (const id of [r.trunkId, r.source !== 'DB1' ? `feeder:${r.source}` : null]) {
+          const parent = routes.find(p => p.id === id);
+          if (parent && !routeIds.has(parent.id)) { routeIds.add(parent.id); selected.push(parent); }
+        }
+      }
+    }
+    const selection = Object.freeze({ itemIds: Object.freeze([...itemIds]), routeIds: Object.freeze([...routeIds]), sourceIds: Object.freeze([...sourceIds]) });
+    reviewCache = {key, selection}; return selection;
+  }
+  function matches(r) { return reviewSelection().routeIds.includes(r.id); }
+  function setReviewFilter(patch) {
+    if (!patch || Object.keys(patch).some(k => !['system','circuit','item','board'].includes(k))) return false;
+    if (patch.system !== undefined && !Object.hasOwn(SYSTEMS, patch.system) ||
+        patch.circuit !== undefined && patch.circuit !== 'all' && !SIM.CIRCUITS[patch.circuit] ||
+        patch.item !== undefined && patch.item !== 'all' && !SIM.state.items.some(i => i.id === patch.item && wired(i) && !i.hidden) ||
+        patch.board !== undefined && !['all','DB1','DB2'].includes(patch.board)) return false;
+    Object.assign(view, patch); view.kind = 'all';
+    if (view.selected && !reviewSelection().routeIds.includes(view.selected) && !reviewSelection().sourceIds.includes(view.selected)) view.selected = null;
+    applyVisibility(); updateHighlight(); SIM.emit('electrical'); return true;
+  }
   function applyVisibility() {
     if (!layer) return;
     layer.visible = view.visible;
-    for (const r of routes) objects.get(r.id).visible = matches(r);
-    const matched = new Set(routes.filter(matches).map(r=>r.id)), matrix = new T.Matrix4();
+    const selection = reviewSelection(), matched = new Set(selection.routeIds), itemIds = new Set(selection.itemIds);
+    for (const r of routes) objects.get(r.id).visible = matched.has(r.id);
+    const matrix = new T.Matrix4();
+    for (const fx of SIM.fixtures.values()) fx.root.visible = SIM.fixtureVisible(fx.item) && (view.mode !== 'systems' || itemIds.has(fx.item.id));
+    if (view.mode === 'systems' && SIM.state.selectedId && !itemIds.has(SIM.state.selectedId)) SIM.select(null);
     for (const mesh of covers.values()) mesh.visible = false;
     // Retain source covers for metadata and reuse, draw only two finish batches.
     // Switching/dimming equipment does not allocate new cover geometry.
@@ -440,7 +503,7 @@
       }
       batch.visible=view.mode==='building' && source.length>0;
     }
-    for (const [id, o] of enclosures) o.visible = view.board === 'all' || SOURCES[id].board === view.board;
+    for (const [id, o] of enclosures) o.visible = selection.sourceIds.includes(id);
     if (highlight) highlight.visible = view.visible && (SOURCES[view.selected] ? enclosures.get(view.selected).visible : !!routes.find(r => r.id === view.selected && matches(r)));
   }
   function setMode(mode) {
@@ -480,7 +543,8 @@
     if (!SOURCES[id] && !routes.some(r => r.id === id)) return;
     SIM.select(null); view.selected = id; view.visible = true;
     const r = routes.find(r => r.id === id), board = SOURCES[id];
-    if (r && !matches(r)) { view.board = r.board; view.kind = ['audio', 'mic'].includes(r.kind) ? 'audio' : 'power'; }
+    if (r && !matches(r)) { view.system = view.circuit = view.item = 'all'; view.board = r.board; view.kind = ['audio', 'mic'].includes(r.kind) ? 'audio' : 'power'; }
+    if (board && !reviewSelection().sourceIds.includes(id)) { view.system = view.circuit = view.item = 'all'; }
     if (board && view.board !== 'all' && board.board !== view.board) view.board = board.board;
     updateHighlight(); SIM.emit('electrical-selection', id);
   }
@@ -513,9 +577,9 @@
   function schedule(board = view.board) {
     return SIM.state.items.filter(wired).map(component).filter(c => board === 'all' || c.board === board);
   }
-  function billOfMaterials(board = view.board) {
+  function billOfMaterials(board = view.board, ids = null) {
     const groups = new Map();
-    for (const c of schedule(board).filter(c => !c.hiddenAlternative)) {
+    for (const c of schedule(board).filter(c => !c.hiddenAlternative && (!ids || ids.includes(c.id)))) {
       const key = JSON.stringify([c.board, c.circuit, c.type, c.modelSize, c.specs, c.wattsEstimate]);
       if (!groups.has(key)) groups.set(key, { board: c.board, circuit: c.circuit, type: c.type, product: c.product, quantity: 0, modelSize: c.modelSize, specs: c.specs, wattsEachEstimate: c.wattsEstimate, itemIds: [] });
       const g = groups.get(key); g.quantity++; g.itemIds.push(c.id);
@@ -540,28 +604,40 @@
   function flatPlan() {
     const visible = routes.filter(matches), projection = p => [32 + (p[0] + 1) * 8.4, 154 + p[2] * 8.4];
     const route = r => `<polyline data-act="electrical-select" data-electrical-id="${esc(r.id)}" points="${r.points.map(p => projection(p).join(',')).join(' ')}" fill="none" stroke="${r.id === view.selected ? '#00a46d' : r.color}" stroke-width="${r.id === view.selected ? 3.5 : 1.1}" tabindex="0" role="button" aria-label="${esc(r.name)}"><title>${esc(r.name)} · ${r.length.toFixed(1)} m</title></polyline>`;
-    const comps = schedule().filter(c => !c.hiddenAlternative).map(c => { const p = projection(c.position); return `<circle cx="${p[0]}" cy="${p[1]}" r="2.5" fill="#263f39" data-act="electrical-component" data-id="${esc(c.id)}" tabindex="0" role="button" aria-label="${esc(c.name)}"><title>${esc(c.name)}</title></circle>`; }).join('');
-    const boards = Object.entries(SOURCES).filter(([, b]) => view.board === 'all' || b.board === view.board).map(([id, b]) => { const p = projection(b.pos); return `<g data-act="electrical-select" data-electrical-id="${id}" tabindex="0" role="button" aria-label="${esc(b.label)}"><rect x="${p[0] - 4}" y="${p[1] - 4}" width="8" height="8" fill="${b.color}" stroke="#fff"/><title>${esc(b.label)}</title></g>`; }).join('');
+    const selection = reviewSelection();
+    const comps = schedule().filter(c => selection.itemIds.includes(c.id)).map(c => { const p = projection(c.position); return `<circle cx="${p[0]}" cy="${p[1]}" r="2.5" fill="#263f39" data-act="electrical-component" data-id="${esc(c.id)}" tabindex="0" role="button" aria-label="${esc(c.name)}"><title>${esc(c.name)}</title></circle>`; }).join('');
+    const boards = Object.entries(SOURCES).filter(([id]) => selection.sourceIds.includes(id)).map(([id, b]) => { const p = projection(b.pos); return `<g data-act="electrical-select" data-electrical-id="${id}" tabindex="0" role="button" aria-label="${esc(b.label)}"><rect x="${p[0] - 4}" y="${p[1] - 4}" width="8" height="8" fill="${b.color}" stroke="#fff"/><title>${esc(b.label)}</title></g>`; }).join('');
     return `<svg class="electrical-plan" viewBox="0 0 520 302" role="group" aria-label="Flat electrical route plan. Click a wire, board or component."><rect width="520" height="302" fill="#f5f7f4"/><path d="M60 92H352V43H412V92H485V216H412V265H352V216H60Z" fill="none" stroke="#cad3cb" stroke-dasharray="4 3"/><text x="38" y="285" font-size="9" fill="#65746c">Entrance → sanctuary · top projection · heights in selected route</text>${visible.map(route).join('')}${comps}${boards}</svg>`;
   }
   function renderPanel() {
-    const count = schedule().filter(c => !c.hiddenAlternative).length;
+    const selection = reviewSelection(), count = selection.itemIds.length;
+    const chosen = view.item !== 'all' ? SIM.item(view.item) : null;
     const sel = routes.find(r => r.id === view.selected), board = SOURCES[view.selected];
-    let html = `<div class="sim-card"><h3>Electrical systems</h3><p class="sim-hint">${count} connected components · ${routes.filter(matches).length} selectable runs. Building view shows concealed feeds and finished cable covers. Systems only reveals enlarged, colour-coded routes for inspection.</p>
+    let html = `<div class="sim-card"><h3>Electrical systems</h3><p class="sim-hint">${count} equipment in review · ${routes.filter(matches).length} selectable runs. Building view shows concealed feeds and finished cable covers. Systems only reveals enlarged, colour-coded routes for inspection.</p>
       <div class="electrical-actions"><button data-act="electrical-mode" data-mode="systems" class="${view.mode === 'systems' ? 'sim-primary' : ''}">Systems only</button><button data-act="electrical-mode" data-mode="building">Restore building</button><button data-act="electrical-visible">${view.visible ? 'Hide' : 'Show'} wiring</button></div>
       <div class="electrical-actions">${Object.entries(SOURCES).map(([id, b]) => `<button data-act="electrical-select" data-electrical-id="${id}">${id}</button>`).join('')}</div>
       <div class="electrical-actions">${['all', 'DB1', 'DB2'].map(b => `<button data-act="electrical-filter" data-board="${b}" aria-pressed="${b === view.board}">${b === 'all' ? 'All boards' : b}</button>`).join('')}</div>
       <div class="electrical-actions">${[['all', 'All cabling'], ['power', 'Power'], ['audio', 'Audio / mic']].map(([k, l]) => `<button data-act="electrical-kind" data-kind="${k}" aria-pressed="${k === view.kind}">${l}</button>`).join('')}</div>
+      <h3>Review layers</h3><div class="electrical-actions">${Object.entries(SYSTEMS).map(([key,label]) => `<button data-act="electrical-system" data-system="${key}" aria-pressed="${view.system === key}">${label}</button>`).join('')}</div>
+      <label class="sim-field">Circuit<select data-act="electrical-review-circuit" aria-label="Review circuit"><option value="all">All circuits</option>${Object.entries(SIM.CIRCUITS).map(([id,c])=>`<option value="${id}" ${view.circuit===id?'selected':''}>${esc(c.label)}</option>`).join('')}</select></label>
+      <p class="sim-hint">${chosen ? `Only ${esc(chosen.id)} · ${esc(chosen.name)}. ` : ''}Systems only hides unrelated equipment. Related upstream supplies and shared trunks stay visible; other loads on shared trunks stay hidden. This changes display only, not switches or calculations.</p>
+      <div class="electrical-actions"><button data-act="electrical-review-reset">Clear review filters</button>${SIM.state.selectedId ? `<button data-act="electrical-isolate-item" data-id="${esc(SIM.state.selectedId)}">Trace selected equipment</button>` : ''}</div>
       <p class="sim-hint">Feeds follow wall bands, beam tops and covered roof paths. Microphones return under the floor through their furniture. A selected green route shows through the building so you can inspect its path. Covers, service spaces and connections are proposals awaiting installation design.</p></div>`;
-    if (sel) html += `<div class="sim-card"><h3>${esc(sel.name)}</h3><dl class="electrical-details"><dt>Run ID</dt><dd>${esc(sel.id)}</dd><dt>Source</dt><dd>${esc(SOURCES[sel.source].label)}</dd><dt>Circuit / role</dt><dd>${sel.circuit} · ${sel.role}</dd><dt>Drawn length</dt><dd>${sel.length.toFixed(2)} m${sel.homeRun ? ` · full home run ${(sel.length + sel.upstreamLength).toFixed(2)} m` : ''}</dd><dt>Height range</dt><dd>${Math.min(...sel.points.map(p => p[1])).toFixed(2)}–${Math.max(...sel.points.map(p => p[1])).toFixed(2)} m</dd><dt>Installation</dt><dd>${esc(sel.installation)}</dd><dt>Specification</dt><dd>${esc(sel.specification)}</dd></dl><div class="electrical-actions"><button data-act="electrical-focus">Show route</button>${sel.itemIds.length === 1 ? `<button data-act="electrical-component" data-id="${esc(sel.itemIds[0])}">Edit component</button>` : ''}</div></div>`;
+    if (view.system !== 'all' || view.circuit !== 'all' || view.item !== 'all') {
+      const members = SIM.state.items.filter(i => selection.itemIds.includes(i.id)), circuits = [...new Set(members.map(i=>i.circuit))];
+      html += `<div class="sim-card"><h3>Equipment → circuit → controls</h3><p class="sim-hint">Shown boards: ${selection.sourceIds.map(esc).join(', ') || 'none'}. Physical terminals, independent channels, final cable sizes and protection are pending. These controls operate the simulator only.</p>
+        <div class="electrical-actions">${circuits.map(c=>`<button data-act="electrical-open-controls" data-circuit="${c}">Controls · ${esc(c)}</button>`).join('')}</div>
+        <div class="electrical-run-list">${members.map(i=>`<button data-act="electrical-isolate-item" data-id="${esc(i.id)}"><span>${esc(i.id)} · ${esc(i.name)}<small>${esc(i.circuit)} · ${esc(SIM.CIRCUITS[i.circuit]?.board)} · ${i.pos.map(n=>n.toFixed(3)).join(' / ')} m</small></span></button>`).join('')}</div></div>`;
+    }
+    if (sel) html += `<div class="sim-card"><h3>${esc(sel.name)}</h3><dl class="electrical-details"><dt>Run ID</dt><dd>${esc(sel.id)}</dd><dt>Source</dt><dd>${esc(SOURCES[sel.source].label)}</dd><dt>Circuit / role</dt><dd>${sel.circuit} · ${sel.role}</dd><dt>Drawn length</dt><dd>${sel.length.toFixed(2)} m${sel.homeRun ? ` · full home run ${(sel.length + sel.upstreamLength).toFixed(2)} m` : ''}</dd><dt>Height range</dt><dd>${Math.min(...sel.points.map(p => p[1])).toFixed(2)}–${Math.max(...sel.points.map(p => p[1])).toFixed(2)} m</dd><dt>Installation</dt><dd>${esc(sel.installation)}</dd><dt>Specification</dt><dd>${esc(sel.specification)}</dd></dl><details><summary>Route vertices · metres</summary><div class="electrical-table-wrap"><table class="electrical-table"><thead><tr><th>Vertex</th><th>X</th><th>Y</th><th>Z</th></tr></thead><tbody>${sel.points.map((p,index)=>`<tr><td>${index+1}</td>${p.map(n=>`<td>${n.toFixed(3)}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="sim-hint">X increases toward the sanctuary; Y is height above nave floor; negative Z is side B. Three decimals are model display precision, not survey accuracy. Export retains source coordinates.</p></details><div class="electrical-actions"><button data-act="electrical-focus">Show route</button>${sel.itemIds.length === 1 ? `<button data-act="electrical-component" data-id="${esc(sel.itemIds[0])}">Edit component</button>` : ''}</div></div>`;
     if (board) html += `<div class="sim-card"><h3>${esc(board.label)}</h3><p>${esc(board.where)}</p><p class="sim-hint">Proposed enclosure envelope: ${board.size.map(n => Math.round(n * 1000)).join(' × ')} mm (world X / height / Z). Capacity, product dimensions and internal equipment are pending.</p><button data-act="electrical-focus">Show board</button></div>`;
     html += `<div class="sim-card"><h3>Flat route plan</h3>${flatPlan()}<p class="sim-hint">Click a route or component in the plan. Vertical runs overlap in this top view; use the run list to select each individually.</p></div>`;
     for (const b of ['DB1', 'DB2'].filter(b => view.board === 'all' || view.board === b)) {
-      const components = schedule(b), active = components.filter(c => !c.hiddenAlternative), circuits = [...new Set(active.map(c => c.circuit))];
+      const components = schedule(b).filter(c => selection.itemIds.includes(c.id)), active = components.filter(c => !c.hiddenAlternative), circuits = [...new Set(active.map(c => c.circuit))];
       html += `<div class="sim-card"><h3>${esc(SOURCES[b].label)} · flat schedule</h3><p class="sim-hint">${active.length} installed-study components · ${components.length - active.length} hidden alternatives. Circuit blocks below are a functional schedule, not a physical breaker arrangement.</p><div class="electrical-circuit-rail">${circuits.map(c => `<button data-act="electrical-select" data-electrical-id="${esc(routes.find(r => r.board === b && r.circuit === c)?.id || b)}"><b>${c}</b><small>${active.filter(i => i.circuit === c).length} components</small></button>`).join('')}</div>
-        <div class="electrical-table-wrap"><table class="electrical-table"><thead><tr><th>Component / circuit</th><th>Qty</th><th>Size / specs</th></tr></thead><tbody>${billOfMaterials(b).map(c => `<tr><td><button data-act="electrical-component" data-id="${esc(c.itemIds[0])}">${esc(c.product)}</button><small>${c.circuit} · ${c.itemIds.length} individually selectable in run list</small></td><td>${c.quantity}</td><td><small>${c.modelSize.map(n => Math.round(n * 1000)).join(' × ')} mm model envelope</small><small>${esc(c.specs)}</small></td></tr>`).join('')}</tbody></table></div><p class="sim-hint">Dimensions are the model envelope, excluding pendant rods. Specs are representative catalogue values; confirm manufacturer and product before procurement. Passive speaker wattages are audio ratings.</p></div>`;
+        <div class="electrical-table-wrap"><table class="electrical-table"><thead><tr><th>Component / circuit</th><th>Qty</th><th>Size / specs</th></tr></thead><tbody>${billOfMaterials(b, selection.itemIds).map(c => `<tr><td><button data-act="electrical-component" data-id="${esc(c.itemIds[0])}">${esc(c.product)}</button><small>${c.circuit} · ${c.itemIds.length} individually selectable in run list</small></td><td>${c.quantity}</td><td><small>${c.modelSize.map(n => Math.round(n * 1000)).join(' × ')} mm model envelope</small><small>${esc(c.specs)}</small></td></tr>`).join('')}</tbody></table></div><p class="sim-hint">Dimensions are the model envelope, excluding pendant rods. Specs are representative catalogue values; confirm manufacturer and product before procurement. Passive speaker wattages are audio ratings.</p></div>`;
     }
-    html += `<div class="sim-card"><h3>Selectable runs</h3><div class="electrical-run-list">${routes.filter(matches).map(r => `<button data-act="electrical-select" data-electrical-id="${esc(r.id)}" class="${r.id === view.selected ? 'selected' : ''}"><i style="background:${r.color}"></i><span>${esc(r.name)}<small>${r.source} · ${r.role} · ${r.length.toFixed(1)} m</small></span></button>`).join('')}</div><div class="electrical-actions"><button data-act="electrical-json">Export systems JSON</button><button data-act="electrical-csv">Export board schedule CSV</button></div><p class="sim-hint">Lengths are drawn centreline lengths with no spare, terminations or installation allowance. Audio bundles represent individual home runs; do not add bundle lengths to full home-run cable lengths.</p></div>`;
+    html += `<div class="sim-card"><h3>Selectable runs</h3><div class="electrical-run-list">${routes.filter(matches).map(r => `<button data-act="electrical-select" data-electrical-id="${esc(r.id)}" class="${r.id === view.selected ? 'selected' : ''}"><i style="background:${r.color}"></i><span>${esc(r.name)}<small>${r.source} · ${r.role} · ${r.length.toFixed(1)} m</small></span></button>`).join('')}</div><div class="electrical-actions"><button data-act="electrical-json">Export systems JSON</button><button data-act="electrical-csv">Export schedule CSV</button></div><p class="sim-hint">JSON exports the complete design. CSV contains equipment for the selected board and currently filtered routes. Lengths are drawn centreline lengths with no spare, terminations or installation allowance. Audio bundles represent individual home runs; do not add bundle lengths to full home-run cable lengths.</p></div>`;
     return html;
   }
   function action(el) {
@@ -576,7 +652,12 @@
       }
       case 'electrical-visible': view.visible = !view.visible; applyVisibility(); break;
       case 'electrical-filter': view.board = el.dataset.board; applyVisibility(); break;
-      case 'electrical-kind': view.kind = el.dataset.kind; applyVisibility(); break;
+      case 'electrical-system': setReviewFilter({system:el.dataset.system,circuit:'all',item:'all'}); break;
+      case 'electrical-review-circuit': setReviewFilter({system:'all',circuit:el.value,item:'all'}); break;
+      case 'electrical-review-reset': setReviewFilter({system:'all',circuit:'all',item:'all',board:'all'}); break;
+      case 'electrical-isolate-item': setReviewFilter({system:'all',circuit:'all',board:'all',item:el.dataset.id}); setMode('systems'); SIM.focusItem(el.dataset.id); break;
+      case 'electrical-open-controls': SIM.controls?.showCircuit(el.dataset.circuit); break;
+      case 'electrical-kind': view.system = view.circuit = view.item = 'all'; view.kind = el.dataset.kind; applyVisibility(); break;
       case 'electrical-select': select(el.dataset.electricalId); break;
       case 'electrical-component': SIM.select(el.dataset.id); SIM.focusItem(el.dataset.id); break;
       case 'electrical-focus': {
@@ -588,6 +669,6 @@
     }
     SIM.emit('electrical');
   }
-  SIM.electrical = { SOURCES, view, get routes() { return routes; }, get layer() { return layer; }, makeRoutes, rebuild, setMode, select, pick, schedule, billOfMaterials, exportData, csv, renderPanel, action };
+  SIM.electrical = { SOURCES, view, get routes() { return routes; }, get layer() { return layer; }, makeRoutes, rebuild, setMode, setReviewFilter, reviewSelection, select, pick, schedule, billOfMaterials, exportData, csv, renderPanel, action };
   SIM.on('ready', init);
 })();
