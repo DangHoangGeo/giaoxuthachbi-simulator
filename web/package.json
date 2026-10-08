@@ -16,6 +16,7 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "test:browser": "playwright test",
+    "check:boundary": "node scripts/check-build-boundary.mjs",
     "format": "biome check . --write"
   },
   "dependencies": {

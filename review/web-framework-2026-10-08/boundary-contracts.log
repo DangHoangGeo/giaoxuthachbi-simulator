@@ -1,0 +1,27 @@
+
+> thach-bi-web@0.1.0 check:boundary
+> node scripts/check-build-boundary.mjs
+
+{
+  "schemaVersion": 1,
+  "buildId": "GUt_snBRGZt2bHhfkj7m-",
+  "inspectedEntries": 1807,
+  "inspectedBytes": 53598653,
+  "traceReferences": 2799,
+  "forbiddenMarkers": [
+    "synthetic-private-canary",
+    "synthetic-private-path",
+    "synthetic-unpublished-title",
+    "legacy-viewer-directory",
+    "engineering-source-directory",
+    "dimension-source-directory",
+    "private-test-fixture"
+  ],
+  "failures": [],
+  "limits": "Exact byte/path canaries and trace containment only; not a universal secret detector or authorization test."
+}
+npm notice
+npm notice New major version of npm available! 10.9.9 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

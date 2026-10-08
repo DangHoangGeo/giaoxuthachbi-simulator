@@ -1,9 +1,12 @@
 import { notFound } from "next/navigation";
 import { SiteShell } from "@/components/site-shell";
 import { isLocale, localizedPath, words } from "@/lib/locales";
+import { readPublicContent } from "@/lib/server/public-content";
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
+  const content = readPublicContent();
+  if (content.state === "unavailable") throw new Error("Public content unavailable");
   const copy = words[locale];
   return (
     <SiteShell locale={locale}>

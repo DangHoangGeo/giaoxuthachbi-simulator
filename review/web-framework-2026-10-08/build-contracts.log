@@ -1,0 +1,40 @@
+
+> thach-bi-web@0.1.0 build
+> next build && node scripts/prepare-standalone.mjs
+
+▲ Next.js 16.4.0 (Turbopack)
+✓ Running next.config.ts took 19ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 342ms
+  Running TypeScript ...
+  Finished TypeScript in 1107ms ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/7) ...
+  Generating static pages using 7 workers (1/7)
+  Generating static pages using 7 workers (3/7)
+  Generating static pages using 7 workers (5/7)
+✓ Generating static pages using 7 workers (7/7) in 353ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├   /[locale]
+│ ├ ● /vi
+│ └ ● /en
+├ ƒ /[locale]/[...unavailable]
+├   /[locale]/about-this-site
+│ ├ ● /vi/about-this-site
+│ └ ● /en/about-this-site
+└ ○ /icon.svg
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+npm notice
+npm notice New major version of npm available! 10.9.9 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
