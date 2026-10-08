@@ -1,6 +1,6 @@
 # Phase 02 — Public church homepage and gallery
 
-Status: **local preparation in progress**, 8 October 2026, branch `web/02-homepage` from main `dd2538d`. Phase 01's local foundation passed. Parish review and media rights remain G0/G2 holds; [exact draft and content status](../../docs/web/public-content.md) stay outside application inputs. Read [data/publication rules](../data-and-publication.md) and [quality gates](../quality-and-release.md).
+Status: **independent local software verified; G2 held and branch unmerged**, 8 October 2026, branch `web/02-homepage` from main `dd2538d`. Phase 01's local foundation passed. Parish review and media rights remain G0/G2 holds; [exact draft and content status](../../docs/web/public-content.md) stay outside application inputs. Read [data/publication rules](../data-and-publication.md) and [quality gates](../quality-and-release.md).
 
 ## Outcome
 
@@ -40,3 +40,13 @@ Suggested commit boundaries: approved content/manifests; homepage; accessible ga
 ## Risks and handover
 
 If real photos are not cleared, a text-and-design release may be prepared, but label the real-photo requirement as incomplete. Keep placeholders and stock images out of the construction record. Pass event/media IDs and public components to phase 03; launch only after the relevant phase 07 gate.
+
+## Execution handover — 8 October 2026
+
+Completed independent work: private bilingual narrative draft (`dec7a73`), private derivative generation/build byte safeguards (`ce692c3`), and the containing commit's bilingual gallery/narrative presentation. The real application still has an unpublished pointer, `null` release and zero cleared public images. A separate synthetic test app exercises image categories/dates, keyboard enlargement/focus return, failures, escaped content and no-JavaScript access; the production reader always rejects fixtures.
+
+Local checks and evidence are in the [media record](../../review/web-content-2026-10-08/media/README.md) and [gallery record](../../review/web-content-2026-10-08/gallery/README.md): lint/types, 69 unit cases, 5 actual production browser journeys, 5 synthetic presentation journeys with accessibility scans, artifact isolation, desktop/large-text screenshots and provisional empty-route payload measurements. No phone work. The containing commit keeps the code, tests, docs and evidence together. Engineering model/register/route fingerprints remain unchanged and existing targets remain unmet.
+
+G2 cannot close until the parish approves or corrects the exact bilingual copy and public identity, names the publisher/reviewer and backup, and supplies cleared originals with date/category/creator/rights/privacy decisions. Real-photo quality/performance, intended parish desktop/network and assistive-technology review must follow. Canonical domain, social image, public sitemap and substantive structured data await the same publication inputs; search indexing stays off. No cloud deployment is made.
+
+Leave this branch unmerged. Next independent package: phase 03 event-history validation and timeline software with isolated fixtures, retaining G0/G2/G3 publication holds. Reuse verified software explicitly without treating the held phase as approved.

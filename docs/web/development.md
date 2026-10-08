@@ -1,6 +1,6 @@
 # Local web development
 
-Phase 01 local foundation, 8 October 2026. No public launch, cloud account or private viewer is enabled. Branch `web/01-framework` starts from main `9c37b38`; the private Web00 preparation remains unmerged at [`84edc9e`](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/tree/84edc9e). Its publication holds remain in force. No originals, engineering records or cleared launch media are copied into this application.
+Phase 01 local foundation and phase 02 local gallery preparation, 8 October 2026. No public launch, cloud account or private viewer is enabled. Branch `web/01-framework` starts from main `9c37b38`; the private Web00 preparation remains unmerged at [`84edc9e`](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/tree/84edc9e). Its publication holds remain in force. No originals, engineering records or cleared launch media are copied into this application.
 
 ## Runtime and commands
 
@@ -24,7 +24,7 @@ npm start -- --port 3100
 PLAYWRIGHT_CHANNEL=chrome HEADED=1 npm run test:browser
 ```
 
-This uses installed desktop Chrome and a fresh automation context. CI can use Playwright's installed Chromium instead. No phone profile is configured. Public text and language links work without JavaScript. `/` redirects to `/vi`; supported pages are `/vi`, `/en` and their `/about-this-site` equivalents. Unimplemented review, site and sign-in paths return 404 and are absent from navigation. These 404s are not a substitute for phase-05 authorization.
+This uses installed desktop Chrome and a fresh automation context. CI can use Playwright's installed Chromium instead. No phone profile is configured. Public text and language links work without JavaScript. `/` redirects to `/vi`; supported pages are `/vi`, `/en` and their `/about-this-site` and `/design` equivalents. Unimplemented review, site and sign-in paths return 404 and are absent from navigation. These 404s are not a substitute for phase-05 authorization.
 
 The `(public)` loading boundary deliberately excludes the unavailable-path fallback, allowing the latter to send a real 404 before streaming. Error, missing-content and loading presentations are separate. Preview copy remains parish-review pending and the shell sends `noindex` metadata/headers; this does not provide confidentiality or publication approval.
 
@@ -41,3 +41,11 @@ Tailwind **4.3.3** uses `@tailwindcss/postcss`. Tests use Vitest **5.0.3** and P
 The [framework evidence](../../review/web-framework-2026-10-08/README.md) records exact checks, visual review and source hashes. The `design-taste-frontend` and `vercel:react-best-practices` skills guided a simple server-rendered shell with isolated error interactions. Functional/accessibility scope takes priority over decorative motion; no perpetual animation, model rebuild or physical-system changes are part of this phase.
 
 No production credentials are required. Keep `.env` files ignored; `.env.example` documents the current absence of integrations. The [strict public reader and disabled protected interface](data-boundary.md) are implemented with contract tests and a production artifact scan (`npm run check:boundary`). A clean-copy run, negative boundary probes and GitHub CI passed; see the [delivery evidence](../../review/web-framework-2026-10-08/delivery/README.md) and [deployment runbook](deployment.md). Cloud setup remains pending. Engineering target failures and publication/site/cloud input holds remain independent of this web shell.
+
+The isolated synthetic gallery suite builds its own temporary presentation copy and serves loopback port 3120:
+
+```sh
+PLAYWRIGHT_CHANNEL=chrome HEADED=1 npx --no-install playwright test --config playwright.gallery.config.ts
+```
+
+This is test tooling only. It cannot approve publication or replace the real production build/boundary checks. See the [gallery workflow](public-content.md#gallery-and-narrative-presentation). Do not deploy the test copy.

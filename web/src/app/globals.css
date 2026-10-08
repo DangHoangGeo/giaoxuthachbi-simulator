@@ -54,3 +54,16 @@ button:active {
     scroll-behavior: auto;
   }
 }
+.gallery-dialog {
+  width: min(72rem, calc(100vw - 4rem));
+  max-height: calc(100dvh - 4rem);
+  margin: auto;
+  padding: 2rem;
+  border: 1px solid #a8a29e;
+  background: #f7f5ef;
+  color: #26392f;
+  overflow: auto;
+}
+.gallery-dialog::backdrop {
+  background: rgb(15 23 18 / 80%);
+}

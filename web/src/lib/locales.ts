@@ -30,6 +30,8 @@ export const words = {
     aboutTitle: "Về trang này",
     aboutBody:
       "Đây là bản xem trước trên máy tính. Bạn có thể đọc nội dung và chuyển ngôn ngữ. Thông tin về công trình sẽ được ghi rõ nguồn và ngày cập nhật khi được công bố.",
+    aboutPublished:
+      "Trang này giới thiệu nội dung đã công bố và hình ảnh có ghi nguồn, loại và ngày đã biết. Bạn có thể đọc nội dung và chuyển ngôn ngữ.",
     aboutDetail:
       "Các chức năng tham quan, xem hồ sơ và theo dõi thi công đang được chuẩn bị. Trang này không điều khiển thiết bị trong nhà thờ.",
     footer: "Nội dung đang chờ giáo xứ duyệt.",
@@ -57,6 +59,8 @@ export const words = {
     aboutTitle: "About this site",
     aboutBody:
       "This is a desktop preview. You can read and switch languages. Published construction information will identify its sources and update dates.",
+    aboutPublished:
+      "This site presents published stories and images with their sources, categories and known dates. You can read and switch languages.",
     aboutDetail:
       "The visit, document review and construction views are being prepared. This site does not operate equipment in the church.",
     footer: "Content awaits parish review.",

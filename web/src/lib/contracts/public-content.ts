@@ -93,6 +93,7 @@ export const publicReleaseSchema = z
       .array(
         z.strictObject({ id: publicId, slug: publicId, title: localizedText, body: localizedText }),
       )
+      .min(1)
       .max(100),
     media: z.array(media).max(1000),
     events: z.array(event).max(10000),
@@ -109,6 +110,22 @@ export const publicReleaseSchema = z
     }
     if (Date.parse(release.createdAt) > Date.parse(release.publishedAt))
       issue("Publication precedes creation");
+    if (Number.isFinite(Date.parse(release.publishedAt))) {
+      const publicationParts = new Intl.DateTimeFormat("en", {
+        timeZone: "Asia/Ho_Chi_Minh",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }).formatToParts(new Date(release.publishedAt));
+      const part = (type: string) => publicationParts.find((entry) => entry.type === type)?.value;
+      const publicationDay = `${part("year")}-${part("month")}-${part("day")}`;
+      for (const item of release.media) {
+        if (item.capturedOn) {
+          const earliest = `${item.capturedOn.value}${item.capturedOn.precision === "month" ? "-01" : ""}`;
+          if (earliest > publicationDay) issue("Media date is after publication");
+        }
+      }
+    }
     const mediaIds = new Set(release.media.map((record) => record.id));
     for (const item of release.events) {
       if (item.mediaIds.some((id) => !mediaIds.has(id))) issue("Unknown media reference");

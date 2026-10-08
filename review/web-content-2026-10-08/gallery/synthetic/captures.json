@@ -1,0 +1,65 @@
+{
+  "kind": "synthetic presentation evidence only",
+  "browser": "headed Chrome",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "captures": [
+    {
+      "name": "en-all.png",
+      "url": "http://127.0.0.1:3120/en/design",
+      "overflow": false,
+      "focused": {
+        "tag": "BODY",
+        "label": null
+      }
+    },
+    {
+      "name": "en-dialog-keyboard.png",
+      "url": "http://127.0.0.1:3120/en/design",
+      "overflow": false,
+      "focused": {
+        "tag": "BUTTON",
+        "label": "Close image ×"
+      }
+    },
+    {
+      "name": "en-concept-filter.png",
+      "url": "http://127.0.0.1:3120/en/design?category=concept-art",
+      "overflow": false,
+      "focused": {
+        "tag": "BODY",
+        "label": null
+      }
+    },
+    {
+      "name": "vi-all.png",
+      "url": "http://127.0.0.1:3120/vi/design",
+      "overflow": false,
+      "focused": {
+        "tag": "BODY",
+        "label": null
+      }
+    },
+    {
+      "name": "vi-dialog-keyboard.png",
+      "url": "http://127.0.0.1:3120/vi/design",
+      "overflow": false,
+      "focused": {
+        "tag": "BUTTON",
+        "label": "Đóng hình ảnh ×"
+      }
+    },
+    {
+      "name": "vi-concept-filter.png",
+      "url": "http://127.0.0.1:3120/vi/design?category=concept-art",
+      "overflow": false,
+      "focused": {
+        "tag": "BODY",
+        "label": null
+      }
+    }
+  ],
+  "errors": []
+}
