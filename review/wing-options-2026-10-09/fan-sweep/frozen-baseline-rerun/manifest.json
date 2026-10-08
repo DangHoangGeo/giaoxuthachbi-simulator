@@ -1,0 +1,225 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-10-08T22:18:42.442Z",
+  "gitCommit": "f9f4b5c4708afccbd1ba43522710cb09bd275876",
+  "gitBranch": "eng/10-wing-review",
+  "node": "v22.22.2",
+  "platform": "darwin",
+  "inputStatus": "MODEL TRANSCRIPTION / CONCEPT / DERIVED; ENGINEERING HOLD retained",
+  "caseCount": 31,
+  "sourceSha256": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "ea98e993b2356e9bb7a744262fdb4543f9997e2efe66e39d988c1e43727fe695",
+    "Thach_Bi_Viewer/simulator/engine.js": "b83dbb26338b907f514b34fbf4cae4cbabec3a723b85655c98e02c0e66246f6d",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "95ab9cdc750b49f32c5e7331d5606f9acd17d3d38012cb53a6d06ad69907b81e",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "4e9126cf5d5448d4aefd0e85265c384decbecb6c53937cb3154e2299a16fd4c6",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
+    "scripts/study_wing_fans.cjs": "8a73c6c1a130c5bf19564c6425d0159b859dfa15e43cfcf6755ca84c6038925b",
+    "review/wing-options-2026-10-09/baseline-layout.json": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac"
+  },
+  "documentSha256AtRead": {
+    "AGENTS.md": "2e301343cab062a57bd6da1b49b95bd3669041f0ec4361f1da962c70cd42ee5f",
+    "docs/systems/fans.md": "36d17233a96b2222c5d4f8237c6a4b67d1bce217a953cd3bdd6b6566dde96312",
+    "docs/engineering/central-view-constraint.md": "d761eddaac5c241c587bb6c7cc1be471c6e69698a462ba341b26d9599cbd60b0",
+    "docs/simulator/methods-and-limitations.md": "fa8710686ed4a3b5e9740b179368a25c6f5951eced2bf7e6738b38f3f02a8769"
+  },
+  "baselineInput": {
+    "path": "review/wing-options-2026-10-09/baseline-layout.json",
+    "sha256": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+    "schema": 1,
+    "designVersion": "2026-10-16-tower-board",
+    "scene": "Full service · evening"
+  },
+  "parameters": {
+    "heightsModelYMetres": [
+      2.7,
+      3.2,
+      3.7
+    ],
+    "speeds": [
+      1,
+      2
+    ],
+    "oscillate": true,
+    "fanType": "fanWall",
+    "diameterMetres": 0.45,
+    "outerGableCentreAbsZMetres": 13.249,
+    "modeledWallThicknessMetres": 0.3,
+    "innerFaceAbsZMetres": 13.099,
+    "mountingAbsZMetres": 13.06,
+    "windowsXMetres": [
+      [
+        37.675,
+        38.675
+      ],
+      [
+        42.475,
+        43.475
+      ]
+    ],
+    "windowTopModelYMetres": 3.608,
+    "twoFans": {
+      "xMetres": [
+        40.26,
+        40.86
+      ],
+      "targetXMetres": [
+        38.94,
+        42.22
+      ],
+      "targetAbsZMetres": [
+        9.5,
+        10.15,
+        11
+      ]
+    },
+    "fourFans": {
+      "xMetres": [
+        39.15,
+        39.95,
+        41.2,
+        42
+      ],
+      "targetXMetres": [
+        38.94,
+        38.94,
+        42.22,
+        42.22
+      ],
+      "outerTargetAbsZMetres": 11.5,
+      "innerTargetAbsZMetres": [
+        8.6,
+        9
+      ]
+    },
+    "airPlaneMetresAboveLocalFloor": 0.6,
+    "noisePlaneMetresAboveLocalFloor": 1.2,
+    "heightsBasis": "Absolute model Y; wing floor is −0.32 m, so tested mounting heights above floor are 3.02/3.52/4.02 m.",
+    "geometryBasis": "MODEL TRANSCRIPTION from bundle.js outer veranda axis 9–10: centre X 40.575, Z ±13.249, wall 0.30 m, window offsets ±2.4 m / width 1 m / spring 3.101 + rise 0.507 m.",
+    "approval": "CONCEPT / ENGINEERING HOLD. A centre point between modeled windows does not approve its fixing, envelope, concealment or maintenance access."
+  },
+  "caseParametersSha256": "b24e21f808c2cf0d9688df9764e2b3f5a49c488d668dd29db481065fe86aea61",
+  "fanCatalogue": {
+    "kind": "jet",
+    "diameter": 0.45,
+    "oscillate": true,
+    "sweepDeg": 80,
+    "speeds": [
+      {
+        "flow": 0.45,
+        "watts": 35,
+        "dBA": 47,
+        "rpm": 900
+      },
+      {
+        "flow": 0.6,
+        "watts": 45,
+        "dBA": 52,
+        "rpm": 1100
+      },
+      {
+        "flow": 0.75,
+        "watts": 55,
+        "dBA": 57,
+        "rpm": 1300
+      }
+    ]
+  },
+  "baselineScene": "Full service · evening",
+  "baselineSettings": {
+    "adaptLux": 110,
+    "autoExposure": false,
+    "quality": "fast",
+    "autoQuality": true,
+    "maintenance": 0.8,
+    "halos": 1,
+    "occupancy": 0.6,
+    "openings": 1,
+    "roofFinish": "mixed",
+    "entranceFinish": "slats",
+    "tempC": 28,
+    "rh": 75,
+    "ambientDbA": 40,
+    "lensDeg": 75,
+    "eyeHeight": 1.6,
+    "walkSpeed": 1.4,
+    "showTruss": false,
+    "frameStyle": "drawn",
+    "timberTone": "reference",
+    "overlay": "none",
+    "snap": true,
+    "edit": true,
+    "talker": false,
+    "micDistance": 0.4,
+    "talkerDbA": 62,
+    "serviceHours": 1.5,
+    "servicesPerMonth": 40,
+    "tariff": 2200,
+    "mixerDb": 0,
+    "seatingPlane": 0.8,
+    "servicePanelsUpgraded": true,
+    "lightingRevision": "2026-10-05-balanced-doors-towers",
+    "facadeRevision": "2026-10-05-continuous-facade-wash-2",
+    "entranceRevision": "2026-10-07-entrance-wall-2",
+    "sanctuaryRevision": "2026-10-07-sanctuary-8",
+    "stableLightingRevision": "2026-10-06-physical-lighting",
+    "wingReviewRevision": "2026-10-09-wing-held-1"
+  },
+  "receiverCount": 80,
+  "receiverCoordinateSha256": "7034d08d1d3130e02f9452e7d89264b4f49fef9c5fc503f7122c219807c532a6",
+  "receiverIdBasis": "SHA-256 prefix of four-block layout, pew, block and exact existing seat x/y/z; study IDs, not approved capacity.",
+  "fullAnalysisParity": [
+    {
+      "id": "baseline-roof-fans",
+      "fullReceiverCount": 368,
+      "wingReceiverCount": 80,
+      "exactEquality": true,
+      "maxAirDelta": 0,
+      "maxNoiseDelta": 0
+    },
+    {
+      "id": "wall-2-h2p7-s1-z9p5",
+      "fullReceiverCount": 368,
+      "wingReceiverCount": 80,
+      "exactEquality": true,
+      "maxAirDelta": 0,
+      "maxNoiseDelta": 0
+    }
+  ],
+  "fixtureTypeCacheCheckedEveryCase": true,
+  "exactBaselineRestoration": true,
+  "sourceFingerprintsUnchangedDuringRun": true,
+  "limitations": [
+    "Empirical unchanged fan jet/downflow equation and oscillation averaging, not CFD, manufacturer throw/directivity or measured performance.",
+    "All 80 existing wing receivers are retained; no receiver removal, relocation, target or sampling adjustment.",
+    "Air speed is floor +0.60 m with the existing 0.85 seated allowance and root-sum-square combination; background noise is floor +1.20 m with unchanged catalogue noise and analysis.js octave-band direct/reverberant energy.",
+    "Wall blocking uses the current analytical solid-wall/intersection model. It does not resolve timber, roofs, fan guards, screens, brackets, furniture, people, curtain effects, inlet starvation, gable-window flow or natural wind.",
+    "No proposed fan mount is engineer-approved. A mounting centre between modeled windows is only a geometry predicate; strength, full motion envelope, blade/light conflicts, acoustic feedback, mic wind, concealment and maintenance remain held.",
+    "No outside-air delivery, heat-removal, ACH, comfort, noise-compliance, safety or all-hidden fan-brief acceptance is established by this sweep.",
+    "Other fans and all non-fan equipment remain unchanged; the six optional nave wall fans are visible but OFF in every comparison. Physical concealment and power switching are not simulated installations.",
+    "No candidate is selected. A later complete coordinated study and specialist review must assess light, speech, feedback, electrical/control routes and physical access before adoption.",
+    "Source model files, user layouts, original drawings, registers and saved electrical schedules were not changed. Browser saved configurations were not read.",
+    "Equipment/scenario inputs come from the explicitly imported frozen baseline file, not the current recommended default. Current source/geometry/catalogue hashes remain part of every run."
+  ],
+  "files": {
+    "source-layout.json": "cfe8e70b5f27c34552e33259cb665213470931a0a6c03c20884a6e5c871ba212",
+    "study-baseline-layout.json": "05d59674f45c6038c4db721c66657026720244ad8744adf9afe8ce86a98cbb57",
+    "receivers.json": "0f492a51f27e9793130a2121a5d460dab95a54acbd5484469121c093fc3dc8cb",
+    "cases.json": "e08f9ad7ad00ae002b1db77e84f8a6741df3639aa4ca17607e4abc2b9ab15063",
+    "parity.json": "e9684553ba3d80257a63ed02613905903fd36417181a1fc8d97c4aebfbafe5ff",
+    "summary.csv": "353af4a8df63cc73cfb918a1e6d0558e566293295e105bbe4a432899de0fe3a8"
+  }
+}

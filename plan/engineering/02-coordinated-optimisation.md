@@ -43,3 +43,8 @@ Suggested commit boundaries: calculation/method corrections with independent evi
 ## Risks and handover
 
 Hiding current ceiling fans or enlarging concealed speaker output may prove incompatible with airflow, speech or maintenance. Show the conflicting options and required decision. Missing product data may permit a comparative study but cannot pass a gate whose result depends on that data. Keep the branch unmerged if E2 is blocked and continue independent concealment prototypes, route/control schemas or tests under the [blocked-work rule](README.md#blocked-work-and-phase-completion). E3 must rerun E2 if concealment alters performance or placement.
+
+
+### 9 October wing review continuation
+
+The owner requested smaller brass chandeliers and wall fans in both wings, with existing nave wall fans shown by default. The [held wing review](../../docs/engineering/wing-review.md) compares nominal/sensitivity lighting, wall-fan placements/speeds, noise/STI and physical envelopes using the unchanged model methods and receivers. Its model, wiring, registers and printable package are a coordinated **review configuration** on `eng/10-wing-review`. E2 remains incomplete: no feasible all-criteria/hidden-equipment solution or selected-product approval exists. Do not merge this design phase to main merely because the software/package checks pass.

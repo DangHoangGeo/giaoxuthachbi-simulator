@@ -142,7 +142,7 @@ ${rows.map(r => `| ${r.name} | ${r.specsDocumented}/${r.equipment} | ${r.control
 
 These counts measure field completeness only; filled fields still require source and engineering review. A 0/0 population is not applicable. Product selection, protection, final cable/containment specifications, actual control channels and commissioning evidence remain pending where fields are blank. No overall quality score is invented.
 
-The engineering review recorded on 7 October 2026 still identifies low ambo/altar microphone feedback margins, wing speech clarity below the test target, and lighting/ventilation limitations. This register refresh does not rerun or resolve those performance studies. See [simulator validation status](../simulator/README.md) and [control requirements](controls.md). Status: **design development**.
+The held wing review of 9 October 2026 changes L63–L70 to small brass chandelier concepts, replaces four wing roof fans with eight F5 wall-fan concepts, and shows six F2 nave wall fans OFF. It has not resolved airflow, noise, speech, glare, concealment or mounting holds; see [wing comparison](../engineering/wing-review.md). The earlier low ambo/altar microphone feedback margins and remaining nave lighting/air limitations persist. This register refresh does not rerun or resolve those performance studies. See [simulator validation status](../simulator/README.md) and [control requirements](controls.md). Status: **design development**.
 
 ## Sources and refresh
 

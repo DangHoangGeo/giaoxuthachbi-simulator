@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "freshModelRuns": 2,
+  "caseCount": 31,
+  "receiversPerCase": 80,
+  "exactUnroundedAirAndNoise": true,
+  "exactNozzlesAndTargets": true,
+  "initialManifestSha256": "62a9a72f829d06ef7dad43885717934391588e4cb0939bd55af310da5eb6bc45",
+  "finalManifestSha256": "56b2775bb10aad277ade721acf19b198a2d055e91f07ababfdeb4a63f1d29064",
+  "difference": "Only explicit floor/air/noise plane labels in summary points and dynamic full receiver count reporting changed; raw numerical output is identical."
+}

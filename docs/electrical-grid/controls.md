@@ -75,3 +75,18 @@ The present Excel register and JSON/CSV exports provide route and equipment data
 The local Wiring tab now filters by usage system, board, circuit or one equipment ID and retains the required upstream enclosure/feeder context. **Controls · circuit** opens the existing simulator dock at the corresponding board, fan regulator or sound strip. Opening this dock does not operate a circuit. Return through **Simulator → Wiring** to the retained view. This is a traceable review aid; unknown physical addresses and independent control capability remain pending. See [review layers](routing.md#local-engineering-review-layers--8-october-2026).
 
 The 9 October connection inspector shows feeder/trunk/branch relationships above the local review filters and links each route to its details. It keeps AV rack power separate from microphone/loudspeaker signals. **Controls · circuit** still opens the existing simulator control without actuating it; the inspector does not assign physical terminals, channels or protective devices. Its filtered JSON snapshot is a review aid, not a physical board drawing.
+
+
+## Held wing control group · 9 October 2026
+
+The [wing review](../engineering/wing-review.md) introduces logical **F5 · Wing wall fans · held review** for eight small wall fans through **DB-1 → FC-1 → F5**. The 14 remaining nave ceiling fans stay on F1. The six nave wall fans on F2 are shown by default but OFF in every built-in mode; their visibility does not enable them. Manual simulator operation remains available for comparison. L63–L70 remain eight items on L8, now concept chandelier assemblies. Existing speaker/microphone positions and signal circuits remain unchanged.
+
+| Built-in review mode | L8 dim | F5 | F2 |
+| --- | --- | --- | --- |
+| Full service / Christmas / courtyard festival | 1.00 | Low (1) | OFF |
+| Weekday Mass | 0.75 | Low (1) | OFF |
+| Prayer & adoration | 0.25 | Low (1) | OFF |
+| Cleaning | 1.00 | Low (1) | OFF |
+| Night security / All off | 0 | OFF | OFF |
+
+These states are reproducible comparison inputs. Quiet-prayer noise, thermal comfort, light minima, speech and physical concealment remain held; the matrix is not an approved operating policy. F5 has no assigned physical control/channel/terminal or protective device. FC-1 capacity, regulation compatibility, inrush, restart/isolation and safe commissioning require the electrical/mechanical designers. Generated routes and drawings express logical connectivity only. The Wiring tab now labels the proposal ENGINEERING HOLD and shows actual proposal counts so a preserved custom layout is not mistaken for the default.

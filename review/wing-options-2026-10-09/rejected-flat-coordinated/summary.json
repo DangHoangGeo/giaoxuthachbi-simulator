@@ -1,0 +1,2780 @@
+[
+  {
+    "case": {
+      "id": "baseline"
+    },
+    "zones": {
+      "all": {
+        "n": 368,
+        "lux": {
+          "min": 196.80348977977386,
+          "max": 707.1363624890557,
+          "mean": 349.442165204923,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            39.21,
+            -0.32,
+            11.05
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 4,
+          "above": 284
+        },
+        "air": {
+          "min": 0.2567843009999638,
+          "max": 0.7861560350746976,
+          "mean": 0.39587820535590384,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 18,
+          "above": 0
+        },
+        "noise": {
+          "min": 43.23856136197094,
+          "max": 43.48497489600567,
+          "mean": 43.33176266229086,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            39.760000000000005,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            39.760000000000005,
+            -0.32,
+            10.15
+          ],
+          "below": 0,
+          "above": 0
+        },
+        "sti": {
+          "min": 0.43919587826277307,
+          "max": 0.704499745673427,
+          "mean": 0.6123422370430948,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            13.315,
+            0,
+            2.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "below": 123,
+          "above": null
+        }
+      },
+      "wing-B": {
+        "n": 40,
+        "lux": {
+          "min": 210.0156908577925,
+          "max": 707.1363624890557,
+          "mean": 391.53949592467256,
+          "minimumSeatFloor": [
+            41.39,
+            -0.32,
+            -8.35
+          ],
+          "maximumSeatFloor": [
+            39.21,
+            -0.32,
+            -11.05
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            -8.35
+          ],
+          "below": 0,
+          "above": 28
+        },
+        "air": {
+          "min": 0.3150735712664535,
+          "max": 0.7861560350746976,
+          "mean": 0.5208431197353213,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            -10.15
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "below": 0,
+          "above": 0
+        },
+        "noise": {
+          "min": 43.26532783615653,
+          "max": 43.48497489600567,
+          "mean": 43.37214249341025,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -8.35
+          ],
+          "maximumSeatFloor": [
+            39.760000000000005,
+            -0.32,
+            -10.15
+          ],
+          "worstSeatFloor": [
+            39.760000000000005,
+            -0.32,
+            -10.15
+          ],
+          "below": 0,
+          "above": 0
+        },
+        "sti": {
+          "min": 0.43919587826277307,
+          "max": 0.542384971210222,
+          "mean": 0.5010881997531366,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            -10.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "below": 40,
+          "above": null
+        }
+      },
+      "wing-H": {
+        "n": 40,
+        "lux": {
+          "min": 210.0156908577925,
+          "max": 707.1363624890557,
+          "mean": 391.53949592467256,
+          "minimumSeatFloor": [
+            41.39,
+            -0.32,
+            8.35
+          ],
+          "maximumSeatFloor": [
+            39.21,
+            -0.32,
+            11.05
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            8.35
+          ],
+          "below": 0,
+          "above": 28
+        },
+        "air": {
+          "min": 0.3150735712664535,
+          "max": 0.7861560350746976,
+          "mean": 0.5208431197353213,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 0
+        },
+        "noise": {
+          "min": 43.26532783615653,
+          "max": 43.48497489600567,
+          "mean": 43.37214249341025,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            8.35
+          ],
+          "maximumSeatFloor": [
+            39.760000000000005,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            39.760000000000005,
+            -0.32,
+            10.15
+          ],
+          "below": 0,
+          "above": 0
+        },
+        "sti": {
+          "min": 0.45829698145196607,
+          "max": 0.5587317913811963,
+          "mean": 0.5196551043921126,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "below": 40,
+          "above": null
+        }
+      },
+      "nave": {
+        "n": 288,
+        "lux": {
+          "min": 196.80348977977386,
+          "max": 498.9025548594412,
+          "mean": 337.7484622272151,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            9.925,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 4,
+          "above": 228
+        },
+        "air": {
+          "min": 0.2567843009999638,
+          "max": 0.6228357180740961,
+          "mean": 0.361165729139399,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            30.265,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 18,
+          "above": 0
+        },
+        "noise": {
+          "min": 43.23856136197094,
+          "max": 43.3719856715068,
+          "mean": 43.320546042535454,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            12.185,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            12.185,
+            0,
+            5.4350000000000005
+          ],
+          "below": 0,
+          "above": 0
+        },
+        "sti": {
+          "min": 0.53257965987397,
+          "max": 0.704499745673427,
+          "mean": 0.6406673995348919,
+          "minimumSeatFloor": [
+            33.655,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            13.315,
+            0,
+            2.15
+          ],
+          "worstSeatFloor": [
+            33.655,
+            0,
+            -6.535
+          ],
+          "below": 43,
+          "above": null
+        }
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "feedbackMarginDb": 1.2062627704490154
+      },
+      {
+        "id": "S292",
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "feedbackMarginDb": 1.7148436355671066
+      }
+    ],
+    "checks": [
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Ambo microphone: only 1.2 dB of margin.",
+        "ids": [
+          "S291"
+        ]
+      },
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Altar microphone: only 1.7 dB of margin.",
+        "ids": [
+          "S292"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Ventilation",
+        "detail": "9 exhaust fans move ≈25,920 m³/h ≈ 3.5 air changes per hour (comfort target in a hot climate with people: 4–6).",
+        "ids": [
+          "F252",
+          "F253",
+          "F254",
+          "F255",
+          "F256",
+          "F257",
+          "F258",
+          "F259",
+          "F260"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Speech clarity",
+        "detail": "67 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.61.",
+        "ids": []
+      }
+    ]
+  },
+  {
+    "case": {
+      "id": "review-wall-low",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9
+          },
+          {
+            "x": 42,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    "zones": {
+      "all": {
+        "n": 368,
+        "lux": {
+          "min": 203.6956339920438,
+          "max": 505.83222594598413,
+          "mean": 334.3130141516873,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            9.925,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 0,
+          "above": 272
+        },
+        "air": {
+          "min": 0.2347922292633654,
+          "max": 0.7696855313546056,
+          "mean": 0.3781017487910781,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "below": 36,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.36864765826399,
+          "max": 49.14232356613827,
+          "mean": 46.73292617472318,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 368
+        },
+        "sti": {
+          "min": 0.4241651601922075,
+          "max": 0.6980232572969733,
+          "mean": 0.6049545098890409,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            13.315,
+            0,
+            2.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "below": 125,
+          "above": null
+        }
+      },
+      "wing-B": {
+        "n": 40,
+        "lux": {
+          "min": 204.32496817781987,
+          "max": 365.9077181098452,
+          "mean": 295.46078715565284,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "below": 0,
+          "above": 20
+        },
+        "air": {
+          "min": 0.2347922292633654,
+          "max": 0.7696855313546056,
+          "mean": 0.45113653881729726,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "below": 6,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.96449140609197,
+          "max": 49.14232356613827,
+          "mean": 47.765901515535916,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -8.35
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "below": 0,
+          "above": 40
+        },
+        "sti": {
+          "min": 0.4241651601922075,
+          "max": 0.533073151344483,
+          "mean": 0.49026625919782063,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            -10.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "below": 40,
+          "above": null
+        }
+      },
+      "wing-H": {
+        "n": 40,
+        "lux": {
+          "min": 204.3249681778199,
+          "max": 365.9077181098451,
+          "mean": 295.46078715565284,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            11.95
+          ],
+          "maximumSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 20
+        },
+        "air": {
+          "min": 0.2347922292633654,
+          "max": 0.7696855313546056,
+          "mean": 0.45113653881729726,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "below": 6,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.964491406091966,
+          "max": 49.14232356613827,
+          "mean": 47.765901515535916,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            8.35
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 40
+        },
+        "sti": {
+          "min": 0.4423678178670492,
+          "max": 0.5486765001559634,
+          "mean": 0.5080945697711481,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "below": 40,
+          "above": null
+        }
+      },
+      "nave": {
+        "n": 288,
+        "lux": {
+          "min": 203.6956339920438,
+          "max": 505.83222594598413,
+          "mean": 345.1052994283639,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            9.925,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 0,
+          "above": 232
+        },
+        "air": {
+          "min": 0.25572656334397964,
+          "max": 0.6214689944774888,
+          "mean": 0.3578143071171282,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            21.225,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 24,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.36864765826399,
+          "max": 46.63376677689817,
+          "mean": 46.445988580052976,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            33.655,
+            0,
+            6.535
+          ],
+          "worstSeatFloor": [
+            33.655,
+            0,
+            6.535
+          ],
+          "below": 0,
+          "above": 288
+        },
+        "sti": {
+          "min": 0.5266216690907265,
+          "max": 0.6980232572969733,
+          "mean": 0.6343362030569728,
+          "minimumSeatFloor": [
+            33.655,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            13.315,
+            0,
+            2.15
+          ],
+          "worstSeatFloor": [
+            33.655,
+            0,
+            -6.535
+          ],
+          "below": 45,
+          "above": null
+        }
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "feedbackMarginDb": 1.2062627704490154
+      },
+      {
+        "id": "S292",
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "feedbackMarginDb": 1.7148436355671066
+      }
+    ],
+    "checks": [
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Ambo microphone: only 1.2 dB of margin.",
+        "ids": [
+          "S291"
+        ]
+      },
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Altar microphone: only 1.7 dB of margin.",
+        "ids": [
+          "S292"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Ventilation",
+        "detail": "9 exhaust fans move ≈25,920 m³/h ≈ 3.5 air changes per hour (comfort target in a hot climate with people: 4–6).",
+        "ids": [
+          "F252",
+          "F253",
+          "F254",
+          "F255",
+          "F256",
+          "F257",
+          "F258",
+          "F259",
+          "F260"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Speech clarity",
+        "detail": "66 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.60.",
+        "ids": []
+      }
+    ]
+  },
+  {
+    "case": {
+      "id": "review-two-block",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9
+          },
+          {
+            "x": 42,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      },
+      "blocks": 2
+    },
+    "zones": {
+      "all": {
+        "n": 368,
+        "lux": {
+          "min": 204.44499665898252,
+          "max": 448.2175074863068,
+          "mean": 327.67849673484494,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            8.795,
+            0,
+            4.45
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "below": 0,
+          "above": 298
+        },
+        "air": {
+          "min": 0.2347922292633654,
+          "max": 0.7696855313546056,
+          "mean": 0.4725508751003734,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "below": 24,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.39960119499305,
+          "max": 49.14926832050294,
+          "mean": 46.75714434857767,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.6999999999999997
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 368
+        },
+        "sti": {
+          "min": 0.42331264518503825,
+          "max": 0.6995938667143832,
+          "mean": 0.6115321171503011,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            12.15,
+            0,
+            3.35
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "below": 112,
+          "above": null
+        }
+      },
+      "wing-B": {
+        "n": 40,
+        "lux": {
+          "min": 204.44499665898252,
+          "max": 366.0277465910078,
+          "mean": 295.5808156368156,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "below": 0,
+          "above": 20
+        },
+        "air": {
+          "min": 0.2347922292633654,
+          "max": 0.7696855313546056,
+          "mean": 0.45113653881729726,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "below": 6,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.97595218736832,
+          "max": 49.14926832050294,
+          "mean": 47.77553453602155,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -8.35
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "below": 0,
+          "above": 40
+        },
+        "sti": {
+          "min": 0.42331264518503825,
+          "max": 0.5320276022444739,
+          "mean": 0.48928638696920357,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            -10.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "below": 40,
+          "above": null
+        }
+      },
+      "wing-H": {
+        "n": 40,
+        "lux": {
+          "min": 204.44499665898255,
+          "max": 366.02774659100777,
+          "mean": 295.5808156368156,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            11.95
+          ],
+          "maximumSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 20
+        },
+        "air": {
+          "min": 0.2347922292633654,
+          "max": 0.7696855313546056,
+          "mean": 0.45113653881729726,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "below": 6,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.97595218736832,
+          "max": 49.14926832050294,
+          "mean": 47.77553453602155,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            8.35
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 40
+        },
+        "sti": {
+          "min": 0.44143847396013686,
+          "max": 0.5476070513987149,
+          "mean": 0.5070853426207979,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "below": 40,
+          "above": null
+        }
+      },
+      "nave": {
+        "n": 288,
+        "lux": {
+          "min": 207.9559297565512,
+          "max": 448.2175074863068,
+          "mean": 336.59451926207544,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.6999999999999997
+          ],
+          "maximumSeatFloor": [
+            8.795,
+            0,
+            4.45
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.6999999999999997
+          ],
+          "below": 0,
+          "above": 258
+        },
+        "air": {
+          "min": 0.2593892449856796,
+          "max": 0.7594436867939494,
+          "mean": 0.47849930184567224,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.6999999999999997
+          ],
+          "maximumSeatFloor": [
+            21.150000000000002,
+            0,
+            4.45
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.6999999999999997
+          ],
+          "below": 12,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.39960119499305,
+          "max": 46.64553168998623,
+          "mean": 46.47425818539884,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.6999999999999997
+          ],
+          "maximumSeatFloor": [
+            33.655,
+            0,
+            5.550000000000001
+          ],
+          "worstSeatFloor": [
+            33.655,
+            0,
+            5.550000000000001
+          ],
+          "below": 0,
+          "above": 288
+        },
+        "sti": {
+          "min": 0.5519449820035076,
+          "max": 0.6995938667143832,
+          "mean": 0.6430171872489953,
+          "minimumSeatFloor": [
+            33.655,
+            0,
+            -5.550000000000001
+          ],
+          "maximumSeatFloor": [
+            12.15,
+            0,
+            3.35
+          ],
+          "worstSeatFloor": [
+            33.655,
+            0,
+            -5.550000000000001
+          ],
+          "below": 32,
+          "above": null
+        }
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "feedbackMarginDb": 1.1777750016088788
+      },
+      {
+        "id": "S292",
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "feedbackMarginDb": 1.6838224855868518
+      }
+    ],
+    "checks": [
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Ambo microphone: only 1.2 dB of margin.",
+        "ids": [
+          "S291"
+        ]
+      },
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Altar microphone: only 1.7 dB of margin.",
+        "ids": [
+          "S292"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Ventilation",
+        "detail": "9 exhaust fans move ≈25,920 m³/h ≈ 3.5 air changes per hour (comfort target in a hot climate with people: 4–6).",
+        "ids": [
+          "F252",
+          "F253",
+          "F254",
+          "F255",
+          "F256",
+          "F257",
+          "F258",
+          "F259",
+          "F260"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Speech clarity",
+        "detail": "70 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.61.",
+        "ids": []
+      }
+    ]
+  },
+  {
+    "case": {
+      "id": "review-wall-medium",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 2,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9
+          },
+          {
+            "x": 42,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    "zones": {
+      "all": {
+        "n": 368,
+        "lux": {
+          "min": 203.6956339920438,
+          "max": 505.83222594598413,
+          "mean": 334.3130141516873,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            9.925,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 0,
+          "above": 272
+        },
+        "air": {
+          "min": 0.25572656334397964,
+          "max": 1.023249985074681,
+          "mean": 0.40930984520282404,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 24,
+          "above": 12
+        },
+        "noise": {
+          "min": 49.763819480625095,
+          "max": 53.39703052648154,
+          "mean": 50.24250481446199,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 368
+        },
+        "sti": {
+          "min": 0.3975077668230943,
+          "max": 0.6838290697116609,
+          "mean": 0.5905260015008378,
+          "minimumSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            13.315,
+            0,
+            2.15
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "below": 146,
+          "above": null
+        }
+      },
+      "wing-B": {
+        "n": 40,
+        "lux": {
+          "min": 204.32496817781987,
+          "max": 365.9077181098452,
+          "mean": 295.46078715565284,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "below": 0,
+          "above": 20
+        },
+        "air": {
+          "min": 0.3032360011028001,
+          "max": 1.023249985074681,
+          "mean": 0.5946936963966959,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "below": 0,
+          "above": 6
+        },
+        "noise": {
+          "min": 50.668771788466806,
+          "max": 53.39703052648154,
+          "mean": 51.693690389114536,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -8.35
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "below": 0,
+          "above": 40
+        },
+        "sti": {
+          "min": 0.3975077668230943,
+          "max": 0.5150435268000567,
+          "mean": 0.4705427831975075,
+          "minimumSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            -10.15
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "below": 40,
+          "above": null
+        }
+      },
+      "wing-H": {
+        "n": 40,
+        "lux": {
+          "min": 204.3249681778199,
+          "max": 365.9077181098451,
+          "mean": 295.46078715565284,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            11.95
+          ],
+          "maximumSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 20
+        },
+        "air": {
+          "min": 0.3032360011028001,
+          "max": 1.023249985074681,
+          "mean": 0.5946936963966958,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "below": 0,
+          "above": 6
+        },
+        "noise": {
+          "min": 50.668771788466806,
+          "max": 53.39703052648154,
+          "mean": 51.693690389114536,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            8.35
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 40
+        },
+        "sti": {
+          "min": 0.41455571680922787,
+          "max": 0.529480176635246,
+          "mean": 0.4872408873674412,
+          "minimumSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "below": 40,
+          "above": null
+        }
+      },
+      "nave": {
+        "n": 288,
+        "lux": {
+          "min": 203.6956339920438,
+          "max": 505.83222594598413,
+          "mean": 345.1052994283639,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            9.925,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 0,
+          "above": 232
+        },
+        "air": {
+          "min": 0.25572656334397964,
+          "max": 0.6214689944774888,
+          "mean": 0.3578143309823042,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            21.225,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 24,
+          "above": 0
+        },
+        "noise": {
+          "min": 49.763819480625095,
+          "max": 50.134505800952155,
+          "mean": 49.83939771039184,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            33.655,
+            0,
+            6.535
+          ],
+          "worstSeatFloor": [
+            33.655,
+            0,
+            6.535
+          ],
+          "below": 0,
+          "above": 288
+        },
+        "sti": {
+          "min": 0.5147419314698445,
+          "max": 0.6838290697116609,
+          "mean": 0.6215354921170496,
+          "minimumSeatFloor": [
+            33.655,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            13.315,
+            0,
+            2.15
+          ],
+          "worstSeatFloor": [
+            33.655,
+            0,
+            -6.535
+          ],
+          "below": 66,
+          "above": null
+        }
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "feedbackMarginDb": 1.2062627704490154
+      },
+      {
+        "id": "S292",
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "feedbackMarginDb": 1.7148436355671066
+      }
+    ],
+    "checks": [
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Ambo microphone: only 1.2 dB of margin.",
+        "ids": [
+          "S291"
+        ]
+      },
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Altar microphone: only 1.7 dB of margin.",
+        "ids": [
+          "S292"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Ventilation",
+        "detail": "9 exhaust fans move ≈25,920 m³/h ≈ 3.5 air changes per hour (comfort target in a hot climate with people: 4–6).",
+        "ids": [
+          "F252",
+          "F253",
+          "F254",
+          "F255",
+          "F256",
+          "F257",
+          "F258",
+          "F259",
+          "F260"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Speech clarity",
+        "detail": "60 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.59.",
+        "ids": []
+      }
+    ]
+  },
+  {
+    "case": {
+      "id": "review-candle-only",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 2820,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9
+          },
+          {
+            "x": 42,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    "zones": {
+      "all": {
+        "n": 368,
+        "lux": {
+          "min": 78.33168672155121,
+          "max": 500.5134249458277,
+          "mean": 285.0247097384655,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            9.925,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "below": 84,
+          "above": 232
+        },
+        "air": {
+          "min": 0.2347922292633654,
+          "max": 0.7696855313546056,
+          "mean": 0.3781017487910781,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "below": 36,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.36864765826399,
+          "max": 49.14232356613827,
+          "mean": 46.73292617472318,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 368
+        },
+        "sti": {
+          "min": 0.4241651601922075,
+          "max": 0.6980232572969733,
+          "mean": 0.6049545098890409,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            13.315,
+            0,
+            2.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "below": 125,
+          "above": null
+        }
+      },
+      "wing-B": {
+        "n": 40,
+        "lux": {
+          "min": 78.33168672155121,
+          "max": 100.81693725037945,
+          "mean": 87.90852938612113,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            38.11,
+            -0.32,
+            -8.35
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "below": 40,
+          "above": 0
+        },
+        "air": {
+          "min": 0.2347922292633654,
+          "max": 0.7696855313546056,
+          "mean": 0.45113653881729726,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "below": 6,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.96449140609197,
+          "max": 49.14232356613827,
+          "mean": 47.765901515535916,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -8.35
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "below": 0,
+          "above": 40
+        },
+        "sti": {
+          "min": 0.4241651601922075,
+          "max": 0.533073151344483,
+          "mean": 0.49026625919782063,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            -10.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "below": 40,
+          "above": null
+        }
+      },
+      "wing-H": {
+        "n": 40,
+        "lux": {
+          "min": 78.33168672155121,
+          "max": 100.81693725037945,
+          "mean": 87.90852938612113,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            11.95
+          ],
+          "maximumSeatFloor": [
+            38.11,
+            -0.32,
+            8.35
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            11.95
+          ],
+          "below": 40,
+          "above": 0
+        },
+        "air": {
+          "min": 0.2347922292633654,
+          "max": 0.7696855313546056,
+          "mean": 0.45113653881729726,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "below": 6,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.964491406091966,
+          "max": 49.14232356613827,
+          "mean": 47.765901515535916,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            8.35
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 40
+        },
+        "sti": {
+          "min": 0.4423678178670492,
+          "max": 0.5486765001559634,
+          "mean": 0.5080945697711481,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "below": 40,
+          "above": null
+        }
+      },
+      "nave": {
+        "n": 288,
+        "lux": {
+          "min": 198.37683299188734,
+          "max": 500.5134249458277,
+          "mean": 339.7792042807838,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            9.925,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 4,
+          "above": 232
+        },
+        "air": {
+          "min": 0.25572656334397964,
+          "max": 0.6214689944774888,
+          "mean": 0.3578143071171282,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            21.225,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 24,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.36864765826399,
+          "max": 46.63376677689817,
+          "mean": 46.445988580052976,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            33.655,
+            0,
+            6.535
+          ],
+          "worstSeatFloor": [
+            33.655,
+            0,
+            6.535
+          ],
+          "below": 0,
+          "above": 288
+        },
+        "sti": {
+          "min": 0.5266216690907265,
+          "max": 0.6980232572969733,
+          "mean": 0.6343362030569728,
+          "minimumSeatFloor": [
+            33.655,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            13.315,
+            0,
+            2.15
+          ],
+          "worstSeatFloor": [
+            33.655,
+            0,
+            -6.535
+          ],
+          "below": 45,
+          "above": null
+        }
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "feedbackMarginDb": 1.2062627704490154
+      },
+      {
+        "id": "S292",
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "feedbackMarginDb": 1.7148436355671066
+      }
+    ],
+    "checks": [
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Ambo microphone: only 1.2 dB of margin.",
+        "ids": [
+          "S291"
+        ]
+      },
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Altar microphone: only 1.7 dB of margin.",
+        "ids": [
+          "S292"
+        ]
+      },
+      {
+        "level": "warn",
+        "title": "Dim seats",
+        "detail": "23 % of seats have less than the 200 lux this scene is meant to give on the book (maintained).",
+        "ids": []
+      },
+      {
+        "level": "info",
+        "title": "Ventilation",
+        "detail": "9 exhaust fans move ≈25,920 m³/h ≈ 3.5 air changes per hour (comfort target in a hot climate with people: 4–6).",
+        "ids": [
+          "F252",
+          "F253",
+          "F254",
+          "F255",
+          "F256",
+          "F257",
+          "F258",
+          "F259",
+          "F260"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Speech clarity",
+        "detail": "66 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.60.",
+        "ids": []
+      }
+    ]
+  },
+  {
+    "case": {
+      "id": "review-low-output",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 4512,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9
+          },
+          {
+            "x": 42,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    "zones": {
+      "all": {
+        "n": 368,
+        "lux": {
+          "min": 173.6674778667613,
+          "max": 503.6918518704974,
+          "mean": 322.02452698166366,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            9.925,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "below": 12,
+          "above": 238
+        },
+        "air": {
+          "min": 0.2347922292633654,
+          "max": 0.7696855313546056,
+          "mean": 0.3781017487910781,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "below": 36,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.36864765826399,
+          "max": 49.14232356613827,
+          "mean": 46.73292617472318,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 368
+        },
+        "sti": {
+          "min": 0.4241651601922075,
+          "max": 0.6980232572969733,
+          "mean": 0.6049545098890409,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            13.315,
+            0,
+            2.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "below": 125,
+          "above": null
+        }
+      },
+      "wing-B": {
+        "n": 40,
+        "lux": {
+          "min": 173.6674778667613,
+          "max": 303.3890562841396,
+          "mean": 246.9625073085909,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            -11.95
+          ],
+          "below": 6,
+          "above": 3
+        },
+        "air": {
+          "min": 0.2347922292633654,
+          "max": 0.7696855313546056,
+          "mean": 0.45113653881729726,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            -10.15
+          ],
+          "below": 6,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.96449140609197,
+          "max": 49.14232356613827,
+          "mean": 47.765901515535916,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            -8.35
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            -11.95
+          ],
+          "below": 0,
+          "above": 40
+        },
+        "sti": {
+          "min": 0.4241651601922075,
+          "max": 0.533073151344483,
+          "mean": 0.49026625919782063,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            -10.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            -11.95
+          ],
+          "below": 40,
+          "above": null
+        }
+      },
+      "wing-H": {
+        "n": 40,
+        "lux": {
+          "min": 173.6674778667613,
+          "max": 303.3890562841396,
+          "mean": 246.9625073085909,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            11.95
+          ],
+          "maximumSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            38.11,
+            -0.32,
+            11.95
+          ],
+          "below": 6,
+          "above": 3
+        },
+        "air": {
+          "min": 0.2347922292633654,
+          "max": 0.7696855313546056,
+          "mean": 0.45113653881729726,
+          "minimumSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "maximumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            39.21,
+            -0.32,
+            10.15
+          ],
+          "below": 6,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.964491406091966,
+          "max": 49.14232356613827,
+          "mean": 47.765901515535916,
+          "minimumSeatFloor": [
+            38.11,
+            -0.32,
+            8.35
+          ],
+          "maximumSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "worstSeatFloor": [
+            41.39,
+            -0.32,
+            11.95
+          ],
+          "below": 0,
+          "above": 40
+        },
+        "sti": {
+          "min": 0.4423678178670492,
+          "max": 0.5486765001559634,
+          "mean": 0.5080945697711481,
+          "minimumSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "maximumSeatFloor": [
+            41.940000000000005,
+            -0.32,
+            10.15
+          ],
+          "worstSeatFloor": [
+            43.040000000000006,
+            -0.32,
+            11.95
+          ],
+          "below": 40,
+          "above": null
+        }
+      },
+      "nave": {
+        "n": 288,
+        "lux": {
+          "min": 201.5627652914116,
+          "max": 503.6918518704974,
+          "mean": 342.8750880019616,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            9.925,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 0,
+          "above": 232
+        },
+        "air": {
+          "min": 0.25572656334397964,
+          "max": 0.6214689944774888,
+          "mean": 0.3578143071171282,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "maximumSeatFloor": [
+            21.225,
+            0,
+            5.4350000000000005
+          ],
+          "worstSeatFloor": [
+            6.535,
+            0,
+            -1.5999999999999999
+          ],
+          "below": 24,
+          "above": 0
+        },
+        "noise": {
+          "min": 46.36864765826399,
+          "max": 46.63376677689817,
+          "mean": 46.445988580052976,
+          "minimumSeatFloor": [
+            6.535,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            33.655,
+            0,
+            6.535
+          ],
+          "worstSeatFloor": [
+            33.655,
+            0,
+            6.535
+          ],
+          "below": 0,
+          "above": 288
+        },
+        "sti": {
+          "min": 0.5266216690907265,
+          "max": 0.6980232572969733,
+          "mean": 0.6343362030569728,
+          "minimumSeatFloor": [
+            33.655,
+            0,
+            -6.535
+          ],
+          "maximumSeatFloor": [
+            13.315,
+            0,
+            2.15
+          ],
+          "worstSeatFloor": [
+            33.655,
+            0,
+            -6.535
+          ],
+          "below": 45,
+          "above": null
+        }
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "feedbackMarginDb": 1.2062627704490154
+      },
+      {
+        "id": "S292",
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "feedbackMarginDb": 1.7148436355671066
+      }
+    ],
+    "checks": [
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Ambo microphone: only 1.2 dB of margin.",
+        "ids": [
+          "S291"
+        ]
+      },
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Altar microphone: only 1.7 dB of margin.",
+        "ids": [
+          "S292"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Ventilation",
+        "detail": "9 exhaust fans move ≈25,920 m³/h ≈ 3.5 air changes per hour (comfort target in a hot climate with people: 4–6).",
+        "ids": [
+          "F252",
+          "F253",
+          "F254",
+          "F255",
+          "F256",
+          "F257",
+          "F258",
+          "F259",
+          "F260"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Speech clarity",
+        "detail": "66 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.60.",
+        "ids": []
+      }
+    ]
+  }
+]

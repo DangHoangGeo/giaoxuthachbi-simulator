@@ -1,0 +1,117 @@
+{
+  "basis": "Move rear chandelier row inward to separate its full bounding envelope from existing pendant speakers. Fixed receivers and photometry assumptions.",
+  "cases": [
+    {
+      "id": "clearance-z10.6-y4.1-b90",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 0.8,
+        "beam": 90
+      }
+    },
+    {
+      "id": "clearance-z10.6-y4.1-b100",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 0.8,
+        "beam": 100
+      }
+    },
+    {
+      "id": "clearance-z10.6-y4.4-b90",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 0.8,
+        "beam": 90
+      }
+    },
+    {
+      "id": "clearance-z10.6-y4.4-b100",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 0.8,
+        "beam": 100
+      }
+    },
+    {
+      "id": "clearance-z10.75-y4.1-b90",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 10.75,
+        "lumens": 5640,
+        "dim": 0.8,
+        "beam": 90
+      }
+    },
+    {
+      "id": "clearance-z10.75-y4.1-b100",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 10.75,
+        "lumens": 5640,
+        "dim": 0.8,
+        "beam": 100
+      }
+    },
+    {
+      "id": "clearance-z10.75-y4.4-b90",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.75,
+        "lumens": 5640,
+        "dim": 0.8,
+        "beam": 90
+      }
+    },
+    {
+      "id": "clearance-z10.75-y4.4-b100",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.75,
+        "lumens": 5640,
+        "dim": 0.8,
+        "beam": 100
+      }
+    }
+  ]
+}

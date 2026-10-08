@@ -1,6 +1,6 @@
 # Printable electrical review drawings and 3D sequence
 
-Implemented 9 October 2026 for the **local default model**. These are design-development review sheets, not approved installation, fabrication, procurement or construction documents. The owner has subsequently requested a new wing lighting/fan comparison; the current sheets remain the **pre-wing-review baseline** until that design, routes and category registers are reconciled and re-exported.
+Implemented 9 October 2026 for the **local default model**. These are design-development review sheets, not approved installation, fabrication, procurement or construction documents. The current sheets include the [held wing lighting/fan review](../engineering/wing-review.md), with matched equipment, routes and category registers. The wing proposal remains on the engineering branch because noise, speech, air, photometry and physical installation criteria are unresolved.
 
 ## Rebuild the paper set
 
@@ -48,6 +48,6 @@ This is a **proposed coordination sequence**. It does not mark work complete, re
 
 ## Status and verification
 
-The initial baseline set contains 286 connected items, 329 routes and 2,681 route vertices; 327 equipment/enclosure register records include hidden alternatives and non-electrical objects outside the print scope. The printing/walkthrough tools change no positions, physics, operating states, route geometry or registers. All lighting, feedback, wing-clarity, air/noise, concealment, supply/product, mounting/access and life-safety holds remain in [issues](../engineering/issues.md).
+The current held review set contains 296 connected items,343 current routes and 2,775 current route vertices;331 current equipment/enclosure register records include hidden alternatives and non-electrical objects outside the print scope. The earlier baseline was 286/329/2,681 with 327 register records. The printing/walkthrough tools themselves change no positions, physics, operating states, route geometry or registers; the separate wing design revision supplies the changed source data. All lighting, feedback, wing-clarity, air/noise, concealment, supply/product, mounting/access and life-safety holds remain in [issues](../engineering/issues.md).
 
 Verification and rendered/desktop evidence are recorded in the [review record](../../review/print-sequence-2026-10-09/README.md). The private/public architectural web viewer is unchanged; these tools belong to the local full simulator.

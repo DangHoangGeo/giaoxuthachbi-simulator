@@ -1,0 +1,12 @@
+{
+  "schema":1,
+  "basis":"Owner 9 October: visible wall fans; smaller brass wing chandeliers matching the nave; replace roof fans with wall-mounted fans. Concept options, no product approval.",
+  "cases":[
+    {"id":"baseline"},
+    {"id":"small-brass-two","showWall":true,"light":{"type":"chandelier6","countPerWing":2,"y":4.6,"lumens":2820}},
+    {"id":"small-brass-four","showWall":true,"light":{"type":"chandelier6","countPerWing":4,"y":4.6,"frontZ":8.9,"backZ":10.85,"lumens":2820}},
+    {"id":"reading-four-low","showWall":true,"light":{"type":"chandelier6Reading","countPerWing":4,"y":4.6,"frontZ":8.9,"backZ":10.85,"lumens":5640,"dim":0.75}},
+    {"id":"reading-four-higher","showWall":true,"light":{"type":"chandelier6Reading","countPerWing":4,"y":5.1,"frontZ":8.9,"backZ":10.85,"lumens":5640,"dim":1}},
+    {"id":"reading-four-full","showWall":true,"light":{"type":"chandelier6Reading","countPerWing":4,"y":4.6,"frontZ":8.9,"backZ":10.85,"lumens":5640,"dim":1}}
+  ]
+}

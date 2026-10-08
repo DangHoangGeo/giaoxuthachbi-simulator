@@ -106,3 +106,10 @@ Selecting an equipment row opens its connection inspector above the layer filter
 ## Paper drawings and installation review
 
 See the [reusable Python drawing workflow](print-drawings.md) for scaled A3 plans, height projections and companion route vertices. The local Wiring tab adds a read-only nine-stage 3D walkthrough. It filters existing geometry and keeps electrical settings unchanged. Pending wing changes require fresh calculation, routes and register reconciliation before a new issue.
+
+
+## Held wing route revision · 9 October 2026
+
+The [wing review](../engineering/wing-review.md) retains L63–L70 and replaces their wall-projector routing with pendant feeds to smaller chandelier concepts. F240–F243 change from roof-mounted F1 fans to wall-mounted F5 concepts; four additional F-WING IDs complete the eight-fan comparison. The six previously hidden F2 nave wall-fan concepts are now shown, adding their route context while keeping them OFF in built-in modes. Source enclosures and DB-1/DB-2 feeder topology are unchanged; F5 is supplied through FC-1.
+
+The matched current export has 296 connected components,343 routes and 2,775 ordered vertices. Four former roof-fan drop paths remain Retired in the registers, with their 12 vertices; stable equipment IDs retain all entered fields. New/changed route lengths are model polylines, not installed cable orders. Fan oscillation, source-product clearances, structural anchors, service access, containment capacity/separation, fire stopping, physical controls and cable/protection sizing remain on hold. The 2D printable and 3D review views show this held configuration; they do not establish buildability.

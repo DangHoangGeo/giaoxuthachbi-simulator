@@ -1,0 +1,19 @@
+{
+  "final/manifest.json": {
+    "sourceFiles": 21,
+    "current": true
+  },
+  "default-scenarios/manifest.json": {
+    "sourceFiles": 20,
+    "current": true
+  },
+  "verification/manifest.json": {
+    "sourceFiles": 24,
+    "current": true
+  },
+  "verification/desktop/results.json": {
+    "sourceFiles": 23,
+    "current": true
+  },
+  "localDocLinks": 172
+}

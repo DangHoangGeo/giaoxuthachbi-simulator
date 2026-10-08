@@ -1,0 +1,9 @@
+These outputs preserve the wall-fan sweep before adoption of later default-layout changes. They remain historical calculated evidence with their original source and output fingerprints. No candidate was accepted by this sweep, and mounting, concealment and coordinated-performance holds remain.
+
+The current [runner](../../../scripts/study_wing_fans.cjs) explicitly imports the frozen [baseline layout](../baseline-layout.json) and includes that file in its input hashes. Its completed [frozen-baseline rerun](frozen-baseline-rerun/README.md) retains all 31 original cases under the final held-review source hashes. It exactly reproduces every historical receiver value, fan nozzle/source, target, changed item and summary. Use a new output subdirectory for any later run so the exclusive writer preserves existing evidence.
+
+The frozen baseline matches this directory's historical `source-layout.json` exactly after excluding the export timestamp `savedAt`. Scenario parameters, physics, receiver/equipment IDs and candidate geometry were unchanged by binding that input file. The [historical runner](historical-runner.cjs) preserves the exact source matching this directory's original manifest. The earlier metadata correction and its original runner are preserved under [initial-run](initial-run/README.md).
+
+The historical [manifest](manifest.json) and [repeat verification](repeat-verification.json) remain intact. The rerun has its own manifest tied to the revised runner and source hashes; existing output manifests were not rewritten to claim that rerun occurred.
+
+Same-height four-fan layouts remain comparison evidence. The parent's primary movement-envelope review rejected adjacent swept-envelope overlap; the final held viewer uses outer fans at Y 3.50 m and inner fans at Y 2.70 m. This original 31-case sweep does not evaluate that staggered layout and does not select a winner or approve any mounting, concealment or engineering performance.
