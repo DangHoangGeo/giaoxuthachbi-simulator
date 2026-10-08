@@ -1,0 +1,546 @@
+{
+  "status": "PASS",
+  "scope": "brief clarification only; no model/register change or new performance claim",
+  "baseline": "703268a",
+  "frozen_source_recovered_at": "ae18c68",
+  "frozen_source_sha256": {
+    "docs/electrical-grid/equipment-layout.json": "200928e34221b09fac1e79bb8a5e18f8723f3e06dbb9046864a623a8b379ec91",
+    "Thach_Bi_Viewer/simulator/catalog.js": "db353c028cfa7377844bfd174941893a04d68ce05ec1719f2f5449d2785a4a46",
+    "Thach_Bi_Viewer/simulator/design.js": "7b632d74a358cdc8d65f707864b3abe44d2e32ae070859c45f5b28447d753beb",
+    "Thach_Bi_Viewer/simulator/engine.js": "4a8392e0aaee5282fe6ba69324d005ab1af66b69f79140799a770d96315042c6",
+    "docs/systems/fans.md": "16405cd1b297e0c362bbaedefec61933ba037c35ff6789f69e65e14a41281ce3"
+  },
+  "fan_records_equal_to_main": 35,
+  "candidate_exact_z0_counts": {
+    "a-distributed": 0,
+    "b-high-integration": 0,
+    "c-large-directional": 6
+  },
+  "unchanged_model_register_files": {
+    "Thach_Bi_Viewer/simulator/design.js": "7b632d74a358cdc8d65f707864b3abe44d2e32ae070859c45f5b28447d753beb",
+    "Thach_Bi_Viewer/simulator/catalog.js": "db353c028cfa7377844bfd174941893a04d68ce05ec1719f2f5449d2785a4a46",
+    "Thach_Bi_Viewer/simulator/engine.js": "d94ea996d211291510afe30d888ddae1f94e97a8f4217e7916a48ad7bc267a60",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "192d0942067dc399f379fca989876817a7468445570323b5c4e325ce6c2b9a4c",
+    "docs/electrical-grid/equipment-layout.json": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac",
+    "docs/electrical-grid/electrical-systems.json": "a162fc27119841a75190b0bc0153cc17495a8bc432ad574a535e8a6799eb9a3d",
+    "docs/electrical-grid/electrical-schedule.csv": "4ab114761ed48723315bd5da2c4ac3883277731e961e4dbc47b8cbb7eef9d764",
+    "docs/electrical-grid/summary-report.md": "b63dd4a73827e02ba1c04eb814e2988d6b1d426e2ee73dfa1f275c4aecdf5510",
+    "docs/electrical-grid/categories/manifest.json": "3b42f014b6e2eab012df5c5d251c0d120c37cf9d06e55c47cad44a1fa146b41b",
+    "docs/electrical-grid/categories/air-system/register.xlsx": "f991dd5e11143d0c216acc58f9f2d817c9cb1567a32f75f7074baf00145d5024",
+    "docs/electrical-grid/categories/decoration/register.xlsx": "c3662afc0e3eeab5c39861a112a8773df81cf23d126dea7e0ab6c422e6975b41",
+    "docs/electrical-grid/categories/distribution-controls/register.xlsx": "dce2be9965f37cf4c3a68cf608a1c907daa3bf484f6683d5d59360adbcdd4877",
+    "docs/electrical-grid/categories/exit-signs/register.xlsx": "13244a19667a147836fd25a0901da6724f143bd6dc239db435bf27014099b113",
+    "docs/electrical-grid/categories/lighting/register.xlsx": "8858d36aa6a1f88d48dfb7e7c90bad4c19c5aa64be3015d70930833fee819721",
+    "docs/electrical-grid/categories/sound/register.xlsx": "9f5e60421fc5cb2943f253d8acd4693e7e5ee749c56709c637ac61fd4388f604"
+  },
+  "markdown_files": [
+    "AGENTS.md",
+    "docs/engineering/central-view-constraint.md",
+    "docs/engineering/issues.md",
+    "docs/systems/fans.md",
+    "plan/README.md",
+    "plan/engineering/02-coordinated-optimisation.md",
+    "plan/engineering/03-concealment.md",
+    "plan/engineering/04-routes.md",
+    "plan/engineering/05-boards-and-controls.md",
+    "plan/engineering/06-registers-and-handover.md",
+    "plan/engineering/README.md",
+    "plan/phases/01-framework-and-delivery.md",
+    "plan/phases/02-homepage-and-gallery.md",
+    "plan/phases/04-lightweight-visit.md",
+    "plan/phases/06-construction-inspector.md",
+    "plan/quality-and-release.md",
+    "review/engineering-central-view-2026-10-08/README.md"
+  ],
+  "local_links": [
+    {
+      "file": "docs/engineering/central-view-constraint.md",
+      "target": "../../review/engineering-central-view-2026-10-08/README.md"
+    },
+    {
+      "file": "docs/engineering/issues.md",
+      "target": "design-basis.md"
+    },
+    {
+      "file": "docs/engineering/issues.md",
+      "target": "../../review/engineering-baseline-2026-10-08/source-inventory/README.md"
+    },
+    {
+      "file": "docs/engineering/issues.md",
+      "target": "baseline.md"
+    },
+    {
+      "file": "docs/engineering/issues.md",
+      "target": "../simulator/methods-and-limitations.md"
+    },
+    {
+      "file": "docs/engineering/issues.md",
+      "target": "../electrical-grid/routing.md"
+    },
+    {
+      "file": "docs/engineering/issues.md",
+      "target": "../../review/engineering-baseline-2026-10-08/source-inventory/README.md"
+    },
+    {
+      "file": "docs/engineering/issues.md",
+      "target": "../beams-roof-connections/SPECIFICATION.md"
+    },
+    {
+      "file": "docs/engineering/issues.md",
+      "target": "../beams-roof-connections/requirements.json"
+    },
+    {
+      "file": "docs/engineering/issues.md",
+      "target": "acceptance-matrix.md"
+    },
+    {
+      "file": "docs/engineering/issues.md",
+      "target": "central-view-constraint.md"
+    },
+    {
+      "file": "docs/engineering/issues.md",
+      "target": "baseline.md"
+    },
+    {
+      "file": "docs/systems/fans.md",
+      "target": "../engineering/central-view-constraint.md"
+    },
+    {
+      "file": "docs/systems/fans.md",
+      "target": "../engineering/baseline.md"
+    },
+    {
+      "file": "docs/systems/fans.md",
+      "target": "../../review/engineering-baseline-2026-10-08/study-summary.md"
+    },
+    {
+      "file": "docs/systems/fans.md",
+      "target": "../electrical-grid/categories/air-system/register.xlsx"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "../AGENTS.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "engineering/README.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "quality-and-release.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "architecture.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "phases/00-evidence-and-publication.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "phases/01-framework-and-delivery.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "phases/02-homepage-and-gallery.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "phases/03-construction-timeline.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "phases/04-lightweight-visit.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "phases/05-protected-review.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "phases/06-construction-inspector.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "phases/07-release-and-operations.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "architecture.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "data-and-publication.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "quality-and-release.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "decisions-and-sources.md"
+    },
+    {
+      "file": "plan/README.md",
+      "target": "engineering/README.md#execution-delegation-and-handover"
+    },
+    {
+      "file": "plan/engineering/02-coordinated-optimisation.md",
+      "target": "README.md#shared-comparison-and-concealment-contract"
+    },
+    {
+      "file": "plan/engineering/02-coordinated-optimisation.md",
+      "target": "../../docs/systems/lighting.md"
+    },
+    {
+      "file": "plan/engineering/02-coordinated-optimisation.md",
+      "target": "../../docs/systems/sound.md"
+    },
+    {
+      "file": "plan/engineering/02-coordinated-optimisation.md",
+      "target": "../../docs/systems/fans.md"
+    },
+    {
+      "file": "plan/engineering/02-coordinated-optimisation.md",
+      "target": "../../docs/simulator/methods-and-limitations.md"
+    },
+    {
+      "file": "plan/engineering/02-coordinated-optimisation.md",
+      "target": "../../docs/engineering/central-view-constraint.md"
+    },
+    {
+      "file": "plan/engineering/02-coordinated-optimisation.md",
+      "target": "README.md#blocked-work-and-phase-completion"
+    },
+    {
+      "file": "plan/engineering/03-concealment.md",
+      "target": "README.md#shared-comparison-and-concealment-contract"
+    },
+    {
+      "file": "plan/engineering/03-concealment.md",
+      "target": "../../docs/electrical-grid/routing.md"
+    },
+    {
+      "file": "plan/engineering/03-concealment.md",
+      "target": "../../docs/sanctuary-model.md"
+    },
+    {
+      "file": "plan/engineering/03-concealment.md",
+      "target": "../../docs/beams-roof-connections/SPECIFICATION.md"
+    },
+    {
+      "file": "plan/engineering/03-concealment.md",
+      "target": "../../docs/church-view-renderings.md"
+    },
+    {
+      "file": "plan/engineering/03-concealment.md",
+      "target": "../../docs/engineering/central-view-constraint.md"
+    },
+    {
+      "file": "plan/engineering/04-routes.md",
+      "target": "../../docs/electrical-grid/routing.md"
+    },
+    {
+      "file": "plan/engineering/04-routes.md",
+      "target": "../../docs/electrical-grid/controls.md"
+    },
+    {
+      "file": "plan/engineering/04-routes.md",
+      "target": "../../docs/electrical-grid/register.md"
+    },
+    {
+      "file": "plan/engineering/04-routes.md",
+      "target": "README.md#checks-and-synchronized-changes"
+    },
+    {
+      "file": "plan/engineering/05-boards-and-controls.md",
+      "target": "../../docs/electrical-grid/controls.md"
+    },
+    {
+      "file": "plan/engineering/05-boards-and-controls.md",
+      "target": "../../docs/electrical-grid/README.md"
+    },
+    {
+      "file": "plan/engineering/05-boards-and-controls.md",
+      "target": "../../docs/interior-systems-plan.md"
+    },
+    {
+      "file": "plan/engineering/05-boards-and-controls.md",
+      "target": "../architecture.md#read-only-capability-model"
+    },
+    {
+      "file": "plan/engineering/06-registers-and-handover.md",
+      "target": "../../AGENTS.md"
+    },
+    {
+      "file": "plan/engineering/06-registers-and-handover.md",
+      "target": "../../docs/electrical-grid/register.md"
+    },
+    {
+      "file": "plan/engineering/06-registers-and-handover.md",
+      "target": "../../docs/electrical-grid/categories/README.md"
+    },
+    {
+      "file": "plan/engineering/06-registers-and-handover.md",
+      "target": "../../docs/electrical-grid/summary-report.md"
+    },
+    {
+      "file": "plan/engineering/06-registers-and-handover.md",
+      "target": "../data-and-publication.md"
+    },
+    {
+      "file": "plan/engineering/06-registers-and-handover.md",
+      "target": "../README.md"
+    },
+    {
+      "file": "plan/engineering/06-registers-and-handover.md",
+      "target": "README.md#execution-delegation-and-handover"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../AGENTS.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/electrical-grid/controls.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../README.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/engineering/central-view-constraint.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/engineering/baseline.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../phases/00-evidence-and-publication.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "01-baseline.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "02-coordinated-optimisation.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "03-concealment.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "04-routes.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "05-boards-and-controls.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "06-registers-and-handover.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../review/engineering-plan-2026-10-08/README.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/electrical-grid/routing.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/sanctuary-model.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/electrical-grid/summary-report.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/electrical-grid/controls.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/layout_design/Thach_Bi_Church_Dimensions.xlsx"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/interior-systems-plan.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/systems/README.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/sanctuary-model.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/beams-roof-connections/SPECIFICATION.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/church-view-renderings.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/simulator/methods-and-limitations.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../Thach_Bi_Viewer/simulator/design.js"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../Thach_Bi_Viewer/simulator/catalog.js"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../Thach_Bi_Viewer/simulator/engine.js"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../Thach_Bi_Viewer/simulator/physics.js"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../Thach_Bi_Viewer/simulator/analysis.js"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../Thach_Bi_Viewer/simulator/electrical.js"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../Thach_Bi_Viewer/simulator/controls.js"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/electrical-grid/routing.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/electrical-grid/controls.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/electrical-grid/categories/README.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/electrical-grid/register.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/electrical-grid/summary-report.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../../docs/engineering/baseline.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../data-and-publication.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../architecture.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../quality-and-release.md"
+    },
+    {
+      "file": "plan/engineering/README.md",
+      "target": "../decisions-and-sources.md"
+    },
+    {
+      "file": "plan/phases/01-framework-and-delivery.md",
+      "target": "../architecture.md"
+    },
+    {
+      "file": "plan/phases/01-framework-and-delivery.md",
+      "target": "../quality-and-release.md"
+    },
+    {
+      "file": "plan/phases/02-homepage-and-gallery.md",
+      "target": "../data-and-publication.md"
+    },
+    {
+      "file": "plan/phases/02-homepage-and-gallery.md",
+      "target": "../quality-and-release.md"
+    },
+    {
+      "file": "plan/phases/02-homepage-and-gallery.md",
+      "target": "../../README.md"
+    },
+    {
+      "file": "plan/phases/04-lightweight-visit.md",
+      "target": "../architecture.md"
+    },
+    {
+      "file": "plan/phases/04-lightweight-visit.md",
+      "target": "../quality-and-release.md"
+    },
+    {
+      "file": "plan/phases/06-construction-inspector.md",
+      "target": "../data-and-publication.md"
+    },
+    {
+      "file": "plan/phases/06-construction-inspector.md",
+      "target": "../../AGENTS.md"
+    },
+    {
+      "file": "plan/quality-and-release.md",
+      "target": "README.md"
+    },
+    {
+      "file": "plan/quality-and-release.md",
+      "target": "../AGENTS.md"
+    },
+    {
+      "file": "plan/quality-and-release.md",
+      "target": "../docs/electrical-grid/register.md"
+    },
+    {
+      "file": "review/engineering-central-view-2026-10-08/README.md",
+      "target": "fan-inventory.csv"
+    },
+    {
+      "file": "review/engineering-central-view-2026-10-08/README.md",
+      "target": "candidate-inventory.json"
+    },
+    {
+      "file": "review/engineering-central-view-2026-10-08/README.md",
+      "target": "../../docs/engineering/central-view-constraint.md"
+    },
+    {
+      "file": "review/engineering-central-view-2026-10-08/README.md",
+      "target": "verification.json"
+    }
+  ],
+  "git_blob_links_resolve": [
+    "https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/8274191/docs/engineering/options.md",
+    "https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/ae18c68/review/engineering-controls-2026-10-08/README.md",
+    "https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/8274191/docs/engineering/options.md",
+    "https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/a9e6515/docs/engineering/concealment.md",
+    "https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/e6a3dcd/docs/electrical-grid/route-maps/README.md",
+    "https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/ae18c68/review/engineering-controls-2026-10-08/README.md",
+    "https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/8274191/docs/engineering/options.md",
+    "https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/a9e6515/docs/engineering/concealment.md",
+    "https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/e6a3dcd/docs/electrical-grid/route-maps/README.md",
+    "https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/ae18c68/review/engineering-controls-2026-10-08/README.md",
+    "https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/5bbd09f/AGENTS.md#L40",
+    "https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/5bbd09f/docs/systems/fans.md#L7"
+  ],
+  "limitations": "Protected-view envelope, concealed equipment performance and physical approvals remain held. No numerical engineering threshold changed."
+}

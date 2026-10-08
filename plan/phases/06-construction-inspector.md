@@ -4,7 +4,7 @@ Status: **not started; future capability**. Depends on phase 05 and a source-bac
 
 ## Outcome
 
-Father can open the next construction package on a phone/tablet, filter layers and layouts, select a real project object, and see its position, width, height, other relevant dimensions and specifications with evidence. He can recognize what is checked, proposed, conflicting or missing without searching a paper drawing first.
+Father can open the next construction package on a desktop, filter layers and layouts, select a real project object, and see its position, width, height, other relevant dimensions and specifications with evidence. He can recognize what is checked, proposed, conflicting or missing without searching a paper drawing first.
 
 “Real time” means current published revision and immediate object lookup. It does not mean live survey, automatic detection of work on site or continuous construction verification. This view remains read-only and never instructs workers to build an unresolved detail.
 

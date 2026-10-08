@@ -1,6 +1,8 @@
 # Phase 05 — Boards, circuits and operating controls
 
-Status: **not started**. Branch: `eng/05-boards-and-controls`, from current main. Depends on E2 settings, E3 concealment/access, E4 routes and the necessary verified supply/product/interface data. Read the [owning control brief](../../docs/electrical-grid/controls.md), [electrical index](../../docs/electrical-grid/README.md), [systems brief](../../docs/interior-systems-plan.md) and [web capability boundary](../architecture.md#read-only-capability-model).
+Status: **blocked; independent package committed and pushed, branch unmerged**. Branch: `eng/05-boards-and-controls`, from main `703268a`. Depends on E2 settings, E3 concealment/access, E4 routes and the necessary verified supply/product/interface data. Read the [owning control brief](../../docs/electrical-grid/controls.md), [electrical index](../../docs/electrical-grid/README.md), [systems brief](../../docs/interior-systems-plan.md) and [web capability boundary](../architecture.md#read-only-capability-model).
+
+[Branch evidence at ae18c68](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/ae18c68/review/engineering-controls-2026-10-08/README.md). The independent software/control map and six-register package is verified. Physical supply/product/interface design remains held. Its software is on the phase branch, not in this main checkout.
 
 ## Outcome
 
@@ -35,7 +37,7 @@ Suggested commit boundaries: supply/load/calculation and board design package; s
 - [ ] DB-1/DB-2 feeder, LC-1/FC-1/AV-1 relationships, enclosure/access/thermal constraints and power-versus-audio distinctions reconcile to E3/E4 and registers.
 - [ ] Every quick mode and dynamic-air transition has an explicit setpoint/priority/override/failure/restart definition; required emergency and ventilation functions are protected.
 - [ ] Tests cover all simulator entry paths, feeder loss/restoration, overrides and persistence; command is never mistaken for supply or measured feedback. Product/site tests remain separately identified until witnessed.
-- [ ] Applicable model, estimates, strict/full simulator and electrical checks, actual desktop/phone controls and saved-layout checks run; numerical/performance regressions are resolved without relaxed targets.
+- [ ] Applicable model, estimates, strict/full simulator and electrical checks, actual desktop controls and saved-layout checks run; numerical/performance regressions are resolved without relaxed targets.
 - [ ] Single-source mappings, docs, matched exports, six register structures/retained inputs and summary reconcile; `--verify-workflow` and diff checks pass. Public/protected web boundaries remain read-only.
 
 ## Risks and handover

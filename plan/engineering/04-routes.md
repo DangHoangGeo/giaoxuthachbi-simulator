@@ -1,6 +1,8 @@
 # Phase 04 — Coordinated 2D/3D routes
 
-Status: **not started**. Branch: `eng/04-routes`, from current main. Depends on E2/E3 accepted equipment, access and connection geometry. Read [routing](../../docs/electrical-grid/routing.md), [controls](../../docs/electrical-grid/controls.md), [register preservation](../../docs/electrical-grid/register.md) and the [shared verification matrix](README.md#checks-and-synchronized-changes).
+Status: **blocked; independent package committed and pushed, branch unmerged**. Branch: `eng/04-routes`, from main `703268a`. Depends on E2/E3 accepted equipment, access and connection geometry. Read [routing](../../docs/electrical-grid/routing.md), [controls](../../docs/electrical-grid/controls.md), [register preservation](../../docs/electrical-grid/register.md) and the [shared verification matrix](README.md#checks-and-synchronized-changes).
+
+[Branch evidence at e6a3dcd](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/e6a3dcd/docs/electrical-grid/route-maps/README.md). The independent map package is verified; accepted concealed equipment/installation geometry remains missing.
 
 ## Outcome
 
@@ -34,7 +36,7 @@ Suggested commit boundaries: topology/endpoint corrections with tests; coordinat
 - [ ] 2D plans/sections and 3D paths use the same dataset and revision; independent length recomputation agrees within documented numeric tolerance, distinct from survey accuracy.
 - [ ] Geometric length, shared paths, actual cable multiplicity and installed allowances are separately stated. Unknown final sizes/allowances are pending, not zero; no purchasing grand total mixes these bases.
 - [ ] `node scripts/verify_simulator.cjs --electrical` and applicable model/estimate/full/strict checks pass their required scope with retained design failures reported. Dynamic reroute, removal, undo, import/reload and selection are checked.
-- [ ] Real desktop/phone route selection/filtering/isolation, normal concealed appearance and restoration of building/roof state are inspected without console errors; relevant day/evening/frame/seating modes are covered.
+- [ ] Real desktop route selection/filtering/isolation, normal concealed appearance and restoration of building/roof state are inspected without console errors; relevant day/evening/frame/seating modes are covered.
 - [ ] Electrical exports and `build_equipment_register.mjs --verify-workflow` reconcile; inputs, retired IDs and all six workbook structures survive; affected docs/plans and diff checks pass.
 
 ## Risks and handover

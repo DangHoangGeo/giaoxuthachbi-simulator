@@ -4,6 +4,8 @@ Planning baseline: **8 October 2026**. Status: **execution approved by the engin
 
 Finish the coordinated design of lighting, loudspeakers, microphones, fans and the dynamic air system, then their concealed electrical routes, DB-1/DB-2 distribution, physical controls and quick modes. Position, specification and operation are one design problem. The engineer's 8 October instruction makes concealment inside and outside the church a requirement, including equipment bodies and cables. The [web roadmap](../README.md) follows this engineering track.
 
+**Owner clarifications, 8 October 2026:** desktop-only use; no further phone UI/UX testing. Keep the central church view clear of visible fans/supports and exclude exposed centreline schemes. [Governing brief](../../docs/engineering/central-view-constraint.md). These instructions supersede the earlier device scope without relaxing engineering targets.
+
 ## Approval and starting revision
 
 - The requested integration is complete: `6ecd7fb` merges all 21 commits from `codex/church-web-roadmap` into `main`, without rewriting history. Both branches were pushed to origin.
@@ -13,7 +15,7 @@ Finish the coordinated design of lighting, loudspeakers, microphones, fans and t
 
 ## Roadmap and dependencies
 
-E1 is **complete: baseline established**, with [evidence and remaining design failures](../../docs/engineering/baseline.md). E2–E6 are **not started**. Phase files use the same format as [web phases](../phases/00-evidence-and-publication.md). `E` gates are engineering gates; `G` gates belong to the web track. No calendar completion dates are promised before surveys, product data and review availability are known.
+E1 is **complete: baseline established**, with [evidence and remaining design failures](../../docs/engineering/baseline.md). E2–E5 are **blocked and unmerged**: [E2 options 8274191](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/8274191/docs/engineering/options.md), [E3 concealment a9e6515](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/a9e6515/docs/engineering/concealment.md), [E4 route maps e6a3dcd](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/e6a3dcd/docs/electrical-grid/route-maps/README.md), and [E5 controls ae18c68](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/ae18c68/review/engineering-controls-2026-10-08/README.md). These references do not adopt their software or held layouts into main. E6 is next for independent reconciliation/handover work. Phase files use the same format as [web phases](../phases/00-evidence-and-publication.md). `E` gates are engineering gates; `G` gates belong to the web track. No calendar completion dates are promised before surveys, product data and review availability are known.
 
 | Phase / branch | Outcome | Depends on | Exit gate |
 | --- | --- | --- | --- |
@@ -92,7 +94,7 @@ Run from the repository root. Apply checks to the change; the listed commands ar
 | Equipment/line changes | `node scripts/verify_simulator.cjs --electrical --export-electrical`, then `node scripts/build_equipment_register.mjs --verify-workflow` with the bundled artifact runtime |
 | Changed plans/HTML brief | `node scripts/verify_model.cjs --plan`; `node scripts/build_planning.cjs` with its documented `marked` dependency |
 | Timber/reference package | `python3 docs/beams-roof-connections/validate.py` |
-| Visual/interactive behavior | Actual desktop/phone views, day/evening, relevant seating/frame modes, affected controls, console errors, reload/undo/import/export; record viewport emulation separately from a physical-device trial |
+| Visual/interactive behavior | Actual desktop views, day/evening, relevant seating/frame modes, affected controls, console errors, reload/undo/import/export; record viewport emulation separately from a physical-device trial |
 | Documentation only | Local links/anchors, source facts, paths/commands, Markdown structure and `git diff --check`; no unrelated simulation reruns |
 
 Each equipment/line/model change includes its owning documents, matched JSON/CSV, affected plans, all affected category workbooks, manifest and summary in the same logical commit. Preserve named engineering-input fields, retired IDs and user layouts. Back up workbooks; handle Excel proposed coordinates through model review and re-export. Each ID/route/vertex belongs to exactly one category; shared boards are referenced, not counted again. Six files retain **Read me / Equipment / Electrical Lines / Route Points**. Browser layouts require their own unchanged matched export pair.

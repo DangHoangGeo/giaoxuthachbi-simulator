@@ -25,7 +25,7 @@ Suggested commit boundaries: approved content/manifests; homepage; accessible ga
 - Public homepage and `/design` routes with locale content under `web/content/`.
 - Validated public media manifest and responsive derivative generation workflow.
 - `docs/web/public-content.md`: content owners, provenance and translation status.
-- Phone/desktop, keyboard and reduced-motion review evidence under a dated `review/web/` folder with public-safe screenshots only.
+- Desktop, keyboard and reduced-motion review evidence under a dated `review/web/` folder with public-safe screenshots only.
 
 ## Checks and exit gate G2
 

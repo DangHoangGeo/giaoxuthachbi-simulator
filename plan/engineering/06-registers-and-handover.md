@@ -26,7 +26,7 @@ Suggested commit boundaries: issue reconciliation and preserved register refresh
 
 - Updated `docs/electrical-grid/categories/` workbooks/manifest, paired layout/systems JSON and schedule CSV, `summary-report.md`, route maps, control/board drawings and calculation references.
 - `docs/engineering/handover.md`: issue manifest, scope/status, responsible approvals, open holds, acceptance evidence, operating/maintenance/commissioning responsibilities and next site actions.
-- Revisioned reproducibility, register preservation, workbook/desktop/phone inspection and specialist/trial evidence under `review/`; signed/checked external evidence referenced with its proper access status.
+- Revisioned reproducibility, register preservation, workbook/desktop inspection and specialist/trial evidence under `review/`; signed/checked external evidence referenced with its proper access status.
 - An engineering release contract for web phases 00/05/06, retaining private/public classification, stable IDs, units, source precision, limitations and immutable revision matching.
 
 ## Checks and exit gate E6
@@ -35,7 +35,7 @@ Suggested commit boundaries: issue reconciliation and preserved register refresh
 - [ ] All six category files retain the four required sheets, engineering inputs and retired IDs; every equipment/route/vertex belongs once, shared boards are referenced, and source/workbook fingerprints match the final summary.
 - [ ] Independent route/quantity/load/energy checks agree with the source and length bases; unknown values stay pending, assumptions and installation allowances are explicit, and no passive audio rating is summed as mains demand.
 - [ ] Applicable model, estimates, strict/full simulator, electrical, register preservation and timber checks have recorded outcomes on the issue candidate. Every required phase check passes; known failures outside an accepted limited scope remain named and cannot be waived silently.
-- [ ] Workbook rendering and relevant desktop/phone day/evening/seating/frame/control inspections pass; measured, specialist, browser and headless evidence are separately labeled.
+- [ ] Workbook rendering and relevant desktop day/evening/seating/frame/control inspections pass; measured, specialist, browser and headless evidence are separately labeled.
 - [ ] The responsible engineer accepts the stated design-issue scope and limitations. A construction/purchase claim is blocked until all its required calculations, products, coordinated details and approvals exist; a design-development issue stays labeled accordingly.
 - [ ] Commissioning, as-built updates, training, maintenance/spares, backup/recovery and seasonal checks have explicit procedures, criteria and responsible owners. Planned future tests are not marked passed.
 - [ ] Final manifest, documentation links, staged diff checks, local/remote commit refs and Git status are checked; completed verified work is committed and pushed.

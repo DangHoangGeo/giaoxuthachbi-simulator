@@ -1,6 +1,8 @@
 # Phase 02 — Coordinated optimisation and dynamic air
 
-Status: **not started**. Branch: `eng/02-coordinated-optimisation`, from current main. Depends on E1 and adopted criteria/evidence for the evaluated scope. Read the [comparison contract](README.md#shared-comparison-and-concealment-contract), [lighting](../../docs/systems/lighting.md), [sound](../../docs/systems/sound.md), [fans](../../docs/systems/fans.md) and [methods](../../docs/simulator/methods-and-limitations.md); historical tables are not current results.
+Status: **blocked; independent package committed and pushed, branch unmerged**. Branch: `eng/02-coordinated-optimisation`, from main `703268a`. Depends on E1 and adopted criteria/evidence for the evaluated scope. Read the [comparison contract](README.md#shared-comparison-and-concealment-contract), [lighting](../../docs/systems/lighting.md), [sound](../../docs/systems/sound.md), [fans](../../docs/systems/fans.md) and [methods](../../docs/simulator/methods-and-limitations.md); historical tables are not current results.
+
+[Branch evidence at 8274191](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/8274191/docs/engineering/options.md). A/B/C comparisons are complete; no feasible layout was selected. Apply the new [central-view constraint](../../docs/engineering/central-view-constraint.md) before any further candidate selection.
 
 ## Outcome
 
@@ -35,7 +37,7 @@ Suggested commit boundaries: calculation/method corrections with independent evi
 - [ ] Every accepted position/setting/spec has source and evidence status; manufacturer/specialist validation supports engineering claims. Empirical-only findings are labeled and cannot close an outdoor-air or compliance requirement.
 - [ ] Dynamic-air path, noise, fan/light/microphone interactions, physical envelopes and credible concealment/access/route options are coordinated; critical geometry or support assumptions are held.
 - [ ] `verify_model`, `verify_estimates`, strict `verify_simulator`, full `--report --estimates` and `--electrical` checks run as applicable, with independent cases for changed calculations. No threshold/sample relaxation or new software failure remains.
-- [ ] Desktop/phone, day/evening, relevant seating/frame modes and move/delete/reload/undo/import/export behavior are inspected. A physical product trial or specialist result is identified separately from a browser check.
+- [ ] Desktop, day/evening, relevant seating/frame modes and move/delete/reload/undo/import/export behavior are inspected. A physical product trial or specialist result is identified separately from a browser check.
 - [ ] Changed model, docs, plans, matched exports, category workbooks and summary reconcile; register preservation and diff checks pass.
 
 ## Risks and handover

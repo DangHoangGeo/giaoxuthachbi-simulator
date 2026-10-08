@@ -6,6 +6,8 @@ Planning baseline: **7 October 2026**. Status: **plan only; implementation has n
 
 Build a welcoming public account of Thạch Bi Church and its ongoing construction, a lightweight virtual visit, and reliable private tools for reviewing the design and inspecting construction information. Protect the community's limited time and resources by delivering useful parts early and keeping engineering evidence visible.
 
+**Usage update, 8 October 2026:** the engineer confirmed desktop-only use and no phone UI/UX testing. Apply the desktop acceptance scope in [quality gates](quality-and-release.md); retain accessibility, network fallback and read-only/data protections.
+
 ## Confirmed brief
 
 - Construction began in **February 2026**; the foundation is finished and construction is underway, as reported by the owner on 7 October 2026. Exact start day, foundation completion date and verified as-built geometry are not supplied.
@@ -31,7 +33,7 @@ Every phase is initially **not started**. Effort depends on available photograph
 | [01 — Framework and delivery foundation](phases/01-framework-and-delivery.md) | Reproducible Next.js shell, route boundaries, CI and Vercel preview setup | 00 | G1: deployable shell with safe sample data |
 | [02 — Church homepage and gallery](phases/02-homepage-and-gallery.md) | Vietnamese-first introduction, design gallery and real construction photos | 01; cleared content from 00 | G2: parish content and accessibility review |
 | [03 — Construction timeline](phases/03-construction-timeline.md) | Honest dated progress, photo publication workflow and freshness indicators | 02; evidence/media contracts | G3: publication, correction and stale-data tests |
-| [04 — Lightweight virtual visit](phases/04-lightweight-visit.md) | Phone-friendly walk/orbit experience and local-time atmosphere | 01; public model approval from 00 | G4: performance, visual and read-only tests |
+| [04 — Lightweight virtual visit](phases/04-lightweight-visit.md) | Desktop walk/orbit experience and local-time atmosphere | 01; public model approval from 00 | G4: performance, visual and read-only tests |
 | [05 — Protected engineering review](phases/05-protected-review.md) | Invited password access to immutable scenarios, documents and system maps | 01; release contracts from 00; viewer isolation proven in 04 | G5: security and calculation-parity tests |
 | [06 — Father's construction inspector](phases/06-construction-inspector.md) | Layer/layout navigation, source-backed object inspection and upcoming work | 05; site evidence and object registry pilot | G6: site-user trial and traceability acceptance |
 | [07 — Release and long-term operation](phases/07-release-and-operations.md) | Controlled launch, backups, rollback, maintenance and handover | Relevant feature gates | G7: repeat for each release below |

@@ -1,5 +1,7 @@
 # Fans and ventilation · Thạch Bi church
 
+> **Current owner requirement, 8 October 2026:** keep the central church view clear of visible fans/supports. Exposed centreline schemes are excluded. Current side-aisle fans are unapproved visible concepts; moving a fan sideways does not prove concealment. See the [central-view constraint and next comparisons](../engineering/central-view-constraint.md).
+
 > **Historical schedule and results:** the future-dated label below does not establish recency. Use the [8 October baseline](../engineering/baseline.md) and [24-case results](../../review/engineering-baseline-2026-10-08/study-summary.md): both layouts sample 368 positions; full-service four-block background is about 43.3 dBA. Local-speed shortfalls and nominal exhaust ~3.48 ACH remain. Installed losses, make-up air and heat control are unverified. The [air register](../electrical-grid/categories/air-system/register.xlsx) is the matched inventory, not an approved product schedule.
 
 > Generated from the simulator's recommended design (version `2026-10-15-system-review`) and its analysis engine on 2026-10-15.
