@@ -444,6 +444,11 @@
     const routeIds = new Set(selected.map(r => r.id)), sourceIds = new Set();
     if (!scoped) {
       for (const [id, source] of Object.entries(SOURCES)) if (view.board === 'all' || source.board === view.board) sourceIds.add(id);
+      // A board-only view still needs both endpoints of visible feeders.
+      for (const r of selected) {
+        sourceIds.add(r.source);
+        if (r.role === 'feeder' && SOURCES[r.id.slice(7)]) sourceIds.add(r.id.slice(7));
+      }
       // Preserve the legacy power/audio selector's equipment semantics, while
       // advanced discipline/circuit filters always follow complete dependencies.
       for (const id of [...itemIds]) if (!selected.some(r => r.itemIds.includes(id))) itemIds.delete(id);

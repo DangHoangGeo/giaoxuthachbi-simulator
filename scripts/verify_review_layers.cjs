@@ -130,6 +130,9 @@ try {
   assert(db2.itemIds.length > 0, 'DB-2 lighting case has equipment');
   assert(db2.routeIds.includes('feeder:DB2') && db2.sourceIds.includes('DB2') && db2.sourceIds.includes('DB1'), 'DB-2 lighting retains its feeder and both boards');
 
+  const boardOnly = checkCase('DB-2 board only', { board: 'DB2' }, itemsMatching(item => SIM.CIRCUITS[item.circuit]?.board === 'DB2'), before);
+  assert(boardOnly.sourceIds.includes('DB1') && boardOnly.sourceIds.includes('DB2'), 'board-only filter retains both feeder endpoint enclosures');
+
   const sound = checkCase('Sound', { system: 'sound' }, itemsMatching((_item, type) => !!(type.speaker || type.mic)), before);
   assert(sound.itemIds.some(id => CAT.byId[SIM.item(id).type].mic), 'sound includes microphones');
   assert(sound.routeIds.includes('feeder:AV1') && sound.sourceIds.includes('AV1') && sound.sourceIds.includes('DB1'), 'sound retains the mixer/rack supply');
