@@ -1,0 +1,35 @@
+{
+  "base": "https://giaoxuthachbi-simulator-8kojnh22k-danghoanggeos-projects.vercel.app",
+  "started": "2026-10-08T14:10:27.259Z",
+  "checks": [
+    {
+      "path": "/vi/review",
+      "status": 401
+    },
+    {
+      "path": "/vi/review/model",
+      "status": 401
+    },
+    {
+      "path": "/en/review?_rsc=probe",
+      "status": 401
+    },
+    {
+      "authenticatedPage": 200,
+      "head": 200,
+      "range": 416,
+      "modelRequests": 1,
+      "reentry": false,
+      "closeDisposes": true,
+      "denialAfterClose": true,
+      "shareLinkWithoutVercelAccount": true
+    }
+  ],
+  "errors": [],
+  "expectedDenialLogs": [
+    "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+  ],
+  "loadMs": 34287,
+  "browser": "154.0.8037.98",
+  "finished": "2026-10-08T14:11:10.437Z"
+}
