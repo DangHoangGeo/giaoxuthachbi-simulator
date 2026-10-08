@@ -108,6 +108,46 @@ const fixture = {
   events: [],
   retiredIds: [],
 };
+// Deliberately synthetic history, including imprecise dates and a retained withdrawal.
+fixture.events = Array.from({ length: 45 }, (_, index) => ({
+  id: `synthetic-event-${String(index + 1).padStart(3, "0")}`,
+  slug: `synthetic-update-${String(index + 1).padStart(3, "0")}`,
+  title: { vi: `Cập nhật kiểm thử ${index + 1}`, en: `Synthetic update ${index + 1}` },
+  body: {
+    vi: "Nội dung kiểm thử, không phải dữ kiện công trường.",
+    en: "Synthetic presentation data, not a site construction fact.",
+  },
+  occurredOn:
+    index === 0
+      ? { precision: "month", value: "2026-02" }
+      : index === 1
+        ? null
+        : { precision: "day", value: `2026-02-${String((index % 28) + 1).padStart(2, "0")}` },
+  occurredUntil: null,
+  timeZone: "Asia/Ho_Chi_Minh",
+  reportedAsOf: "2026-03-01",
+  evidence: "owner-reported",
+  evidenceRef: null,
+  mediaIds: index === 0 ? [media[0].id] : [],
+  workPackageRef: null,
+  designReleaseRef: null,
+  publishedAt: "2026-03-02T01:00:00Z",
+  updatedAt: index === 2 ? "2026-03-04T01:00:00Z" : "2026-03-02T01:00:00Z",
+  status: index === 2 ? "withdrawn" : "published",
+  corrections:
+    index === 2
+      ? [
+          {
+            previousReleaseId: "synthetic-before-withdrawal",
+            changedAt: "2026-03-04T01:00:00Z",
+            explanation: {
+              vi: "Rút nội dung kiểm thử để minh họa.",
+              en: "Synthetic withdrawal notice for presentation testing.",
+            },
+          },
+        ]
+      : [],
+}));
 await writeFile(path.join(target, "content/release.json"), JSON.stringify(fixture));
 await writeFile(
   path.join(target, "src/lib/server/public-content.ts"),

@@ -3,7 +3,8 @@ import { defineConfig } from "@playwright/test";
 // Presentation-only synthetic app in a disposable directory. Production never imports it.
 export default defineConfig({
   testDir: "tests/harness",
-  testMatch: "gallery.spec.ts",
+  outputDir: "test-results/synthetic",
+  testMatch: ["gallery.spec.ts", "progress.spec.ts"],
   workers: 1,
   use: {
     baseURL: "http://127.0.0.1:3120",

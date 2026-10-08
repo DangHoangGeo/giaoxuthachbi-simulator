@@ -1,6 +1,6 @@
 # Phase 03 — Construction timeline and fresh updates
 
-Status: **independent local software in progress; G3 held**, 8 October 2026, branch `web/03-timeline` from main `dd2538d`. Explicit `-x` cherry-picks reuse verified phase-02 software (`173a4d2`, `afff2df`, `d8d645d`) without merging its held publication gate. Read the event/media/work-package [contracts](../data-and-publication.md) and [maintainer runbook](../../docs/web/progress-publishing.md).
+Status: **independent local software verified; G3 held and branch unmerged**, 8 October 2026, branch `web/03-timeline` from main `dd2538d`. Explicit `-x` cherry-picks reuse verified phase-02 software (`173a4d2`, `afff2df`, `d8d645d`) without merging its held publication gate. Read the event/media/work-package [contracts](../data-and-publication.md) and [maintainer runbook](../../docs/web/progress-publishing.md).
 
 ## Outcome
 
@@ -40,3 +40,14 @@ Suggested commit boundaries: event contract/tests; timeline UI; publication tool
 ## Risks and handover
 
 Without a contributor, the software cannot create real-time site evidence. Show the last update date honestly and avoid a misleading “live” badge. Prepare public increment A for phase 07 while phase 04 continues. Later private work packages may publish sanitized public events, but never expose private source records automatically.
+
+
+## Execution handover — 8 October 2026
+
+Phase branch `web/03-timeline` starts at main `dd2538d`, with explicit reuse of held phase-02 code. Contract/private-staging commit `b6643d3` and the containing timeline commit implement the local packages. [Timeline behavior and limitations](../../docs/web/timeline.md), [publishing runbook](../../docs/web/progress-publishing.md), [contract checks](../../review/web-progress-2026-10-08/contracts/README.md) and [desktop/build evidence](../../review/web-progress-2026-10-08/timeline/README.md) form the handover.
+
+Final local checks: lint/typecheck; 110 unit cases; 7 production and 8 synthetic headed desktop browser journeys; build and boundary scan; separate publication/history staging tests; bilingual desktop/large-text/no-JavaScript evidence. The actual release remains null/unpublished. No cloud deployment, real site update, phone test or engineering/model/register change is included.
+
+G3 remains held for the exact real contributor/reviewer/publisher/backup, publication-ready update and media, authorized hosting/domain, parish desktop/network, real publication/correction/withdrawal/rollback rehearsal and backup training. Synthetic virtual-time tests do not establish origin-to-client latency on the actual host. All engineering targets/holds remain unchanged; see the engineering roadmap for decisions already requested.
+
+The owner added a 20-minute remaining-work budget during this phase. Stop at its end after verified commits and pushes; phases 04–07 remain not started. The next independent phase is 04 (public visit extraction/benchmarking with publication approval held), while G0/G2/G3 and engineering holds await their recorded inputs. No held phase is merged to main.

@@ -49,3 +49,6 @@ PLAYWRIGHT_CHANNEL=chrome HEADED=1 npx --no-install playwright test --config pla
 ```
 
 This is test tooling only. It cannot approve publication or replace the real production build/boundary checks. See the [gallery workflow](public-content.md#gallery-and-narrative-presentation). Do not deploy the test copy.
+
+
+Phase 03 adds `/vi/progress`, `/en/progress` and known stable event-ID pages. Actual content remains unpublished; unknown event IDs return 404. See [timeline behavior](timeline.md) and [maintainer staging](progress-publishing.md). `npm run build` now runs `check:content` before `check:media`. Existing `npm run test:browser` includes production timeline/GET/304/405/no-JS cases; `playwright.gallery.config.ts` includes synthetic gallery and progress cases. Both configs use separate output directories; running sequentially is the documented default. No authenticated, publication-write or physical-control route is added.

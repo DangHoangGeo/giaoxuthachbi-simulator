@@ -25,7 +25,7 @@ Start with reviewed files and a maintainer publishing workflow. Use invited indi
 
 ## Roadmap and dependencies
 
-Phase 00 independent preparation is complete on its unmerged branch; its publication gate remains held. Phase 01 has passed its local foundation gate using the independent work permitted by phase 00 package 6; cloud setup remains pending. Phase 02 independent local content/gallery software is verified on its unmerged branch; parish wording/media review and G2 remain held. Phase 03 independent event-history/timeline work is in progress on `web/03-timeline`; G3 publication remains held. Phases 04–07 remain not started. Effort depends on available photographs, source reconciliation and desktop measurements; there are no promised calendar completion dates.
+Phase 00 independent preparation is complete on its unmerged branch; its publication gate remains held. Phase 01 has passed its local foundation gate using the independent work permitted by phase 00 package 6; cloud setup remains pending. Phase 02 independent local content/gallery software is verified on its unmerged branch; parish wording/media review and G2 remain held. Phase 03 independent event-history/timeline software is locally verified on unmerged `web/03-timeline`; real publication/rehearsal and G3 remain held. Phases 04–07 remain not started. Effort depends on available photographs, source reconciliation and desktop measurements; there are no promised calendar completion dates.
 
 | Phase | Outcome | Depends on | Release gate |
 | --- | --- | --- | --- |

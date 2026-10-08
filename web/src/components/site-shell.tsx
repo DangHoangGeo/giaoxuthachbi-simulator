@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { type GalleryCategory, galleryPath, galleryWords } from "@/lib/gallery";
 import { type Locale, localizedPath, words } from "@/lib/locales";
+import { progressWords } from "@/lib/progress";
 
 export function SiteShell({
   locale,
@@ -8,12 +9,14 @@ export function SiteShell({
   children,
   galleryFilter = "all",
   publishedAt,
+  equivalentQuery = "",
 }: {
   locale: Locale;
   path?: string;
   children: ReactNode;
   galleryFilter?: GalleryCategory;
   publishedAt?: string;
+  equivalentQuery?: string;
 }) {
   const copy = words[locale];
   const other = locale === "vi" ? "en" : "vi";
@@ -50,6 +53,13 @@ export function SiteShell({
             </a>
             <a
               className="nav-link"
+              aria-current={path.startsWith("/progress") ? "page" : undefined}
+              href={localizedPath(locale, "/progress")}
+            >
+              {progressWords[locale].title}
+            </a>
+            <a
+              className="nav-link"
               aria-current={path === "/about-this-site" ? "page" : undefined}
               href={localizedPath(locale, "/about-this-site")}
             >
@@ -58,7 +68,9 @@ export function SiteShell({
             <a
               className="nav-link border-l border-stone-300 pl-8"
               href={
-                path === "/design" ? galleryPath(other, galleryFilter) : localizedPath(other, path)
+                path === "/design"
+                  ? galleryPath(other, galleryFilter)
+                  : `${localizedPath(other, path)}${equivalentQuery}`
               }
               hrefLang={other}
               lang={other}
