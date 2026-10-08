@@ -1,0 +1,74 @@
+{
+  "count": 17,
+  "links": [
+    {
+      "source": "docs/web/public-content.md",
+      "href": "../../review/web-framework-2026-10-08/delivery/README.md"
+    },
+    {
+      "source": "docs/web/public-content.md",
+      "href": "../../plan/data-and-publication.md"
+    },
+    {
+      "source": "docs/web/public-content.md",
+      "href": "public-copy-draft.json"
+    },
+    {
+      "source": "docs/web/public-content.md",
+      "href": "../../README.md"
+    },
+    {
+      "source": "docs/web/data-boundary.md",
+      "href": "../../plan/data-and-publication.md"
+    },
+    {
+      "source": "docs/web/data-boundary.md",
+      "href": "public-content.md#private-media-preparation"
+    },
+    {
+      "source": "docs/web/data-boundary.md",
+      "href": "../../review/web-framework-2026-10-08/README.md"
+    },
+    {
+      "source": "docs/web/development.md",
+      "href": "public-content.md#private-media-preparation"
+    },
+    {
+      "source": "docs/web/development.md",
+      "href": "../../review/web-framework-2026-10-08/README.md"
+    },
+    {
+      "source": "docs/web/development.md",
+      "href": "data-boundary.md"
+    },
+    {
+      "source": "docs/web/development.md",
+      "href": "../../review/web-framework-2026-10-08/delivery/README.md"
+    },
+    {
+      "source": "docs/web/development.md",
+      "href": "deployment.md"
+    },
+    {
+      "source": "docs/web/deployment.md",
+      "href": "development.md"
+    },
+    {
+      "source": "docs/web/deployment.md",
+      "href": "data-boundary.md"
+    },
+    {
+      "source": "docs/web/deployment.md",
+      "href": "../../.github/workflows/web-checks.yml"
+    },
+    {
+      "source": "review/web-content-2026-10-08/media/README.md",
+      "href": "manifest.json"
+    },
+    {
+      "source": "review/web-content-2026-10-08/media/README.md",
+      "href": "../draft-check.json"
+    }
+  ],
+  "failures": []
+}

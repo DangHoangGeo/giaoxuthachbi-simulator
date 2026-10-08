@@ -18,7 +18,7 @@ NEXT_TELEMETRY_DISABLED=1 npm run build
 npm start -- --port 3100
 ```
 
-`npm run dev` binds only loopback. `npm start` runs the standalone production server, also on loopback. The build copies only `web/.next/static` and an optional `web/public` into standalone output. Never copy repository-level sources there. Run the browser suite after building; it starts and stops its own production server on port 3100:
+`npm run dev` binds only loopback. `npm start` runs the standalone production server, also on loopback. Phase 02 adds `npm run check:media` as a mandatory pre-build check of all public media bytes and inventory; the [private media workflow](public-content.md#private-media-preparation) documents preparation and review. Sharp 0.35.5 is pinned explicitly as a development tool (the same version already present transitively). The build copies only `web/.next/static` and an optional `web/public` into standalone output. Never copy repository-level sources there. Run the browser suite after building; it starts and stops its own production server on port 3100:
 
 ```sh
 PLAYWRIGHT_CHANNEL=chrome HEADED=1 npm run test:browser
