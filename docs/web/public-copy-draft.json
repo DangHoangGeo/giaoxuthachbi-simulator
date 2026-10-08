@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "kind": "private-editorial-draft",
+  "visibility": "unpublished",
+  "publication": {"status": "pending-parish-review", "reviewer": null, "publisher": null, "publishedAt": null},
+  "sources": [
+    {"file": "README.md", "revision": "9c37b3812f769bfcc4a96c9c901962b1b14ba3be", "sections": ["Why I started", "Construction update — 7 October 2026"], "basis": "project-owner account; not an independent site inspection"},
+    {"file": "docs/web/content-draft.json", "revision": "84edc9e", "basis": "unpublished editorial baseline on web/00-evidence"}
+  ],
+  "workingName": {"vi": "Nhà thờ Thạch Bi", "en": "Thạch Bi Church"},
+  "sections": [
+    {
+      "id": "community",
+      "title": {"vi": "Cùng xây dựng nhà thờ", "en": "Building the church together"},
+      "body": {"vi": "Theo chia sẻ của người khởi xướng dự án, bà con đang cùng góp công và kinh phí để xây dựng nhà thờ mới. Dự án thiết kế này mong góp thêm một phần công sức: kiểm tra các phương án để cộng đoàn có cơ sở lựa chọn trước khi thi công.", "en": "The project owner describes a community contributing money and time to build a new church. This design project adds another form of help: checking options so the parish can make informed choices before installation."},
+      "evidence": "owner-account"
+    },
+    {
+      "id": "construction-report",
+      "title": {"vi": "Thông tin công trình", "en": "Construction update"},
+      "body": {"vi": "Theo thông tin chủ dự án cung cấp ngày 7 tháng 10 năm 2026, công trình khởi công trong tháng 2 năm 2026, phần móng đã hoàn thành và việc xây dựng đang tiếp tục. Ngày hoàn thành móng cụ thể chưa được xác nhận.", "en": "The owner reported on 7 October 2026 that construction began in February 2026, the foundation was complete and work was continuing. The exact foundation completion date has not been confirmed."},
+      "evidence": "owner-reported",
+      "start": {"precision": "month", "value": "2026-02"},
+      "foundationCompletedOn": null,
+      "reportedAsOf": "2026-10-07"
+    },
+    {
+      "id": "design-work",
+      "title": {"vi": "Đóng góp từ xa", "en": "Contributing from afar"},
+      "body": {"vi": "Người khởi xướng dự án hiện sống ở nước ngoài và dùng kinh nghiệm phần mềm, kiến thức xây dựng cùng công cụ AI để hỗ trợ xem xét ánh sáng, âm thanh, quạt và hệ thống điện. Mô hình số và các phép tính là công cụ nghiên cứu thiết kế; những thông tin dùng để thi công cần được người thiết kế có trách nhiệm kiểm tra và chấp thuận.", "en": "The project owner lives abroad and is using software experience, civil-engineering knowledge and AI tools to help study lighting, sound, fans and electrical systems. The digital model and calculations support design development; information used for construction needs checking and authorization by the responsible designers."},
+      "evidence": "owner-account-and-project-limitations"
+    },
+    {
+      "id": "technical-help",
+      "title": {"vi": "Cùng kiểm tra và hoàn thiện", "en": "Help check and improve the work"},
+      "body": {"vi": "Các kỹ sư, kiến trúc sư và người có kinh nghiệm thi công có thể giúp bằng cách chỉ ra một giả thiết chưa phù hợp, kiểm tra một chi tiết hoặc cung cấp dữ liệu đo và tài liệu sản phẩm. Mỗi góp ý nên ghi rõ vị trí, nguồn thông tin và điều còn chưa chắc chắn.", "en": "Engineers, architects and experienced builders can help by questioning an assumption, checking a detail or providing measurements and product data. Each contribution should identify the location, its sources and what remains uncertain."},
+      "evidence": "proposed-invitation",
+      "approvedHelpLink": null
+    }
+  ],
+  "translationReview": "pending-native-parish-review",
+  "approvedMedia": [],
+  "approvedPublicLinks": [],
+  "completionPercent": null,
+  "plannedOpeningDate": null
+}
