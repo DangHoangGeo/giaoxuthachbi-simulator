@@ -8,6 +8,7 @@ export type VisitAsset = {
   sha256: string;
   bytes: number;
   decodedBytes: number;
+  decodedSha256?: string;
   sourceRevision: string;
 };
 export type Viewpoint = "exterior" | "nave" | "sanctuary" | "overhead";
@@ -102,7 +103,10 @@ export async function createVisit(
     renderer.domElement.remove();
   };
   try {
-    const response = await fetch(asset.path, { signal });
+    const response = await fetch(asset.path, {
+      signal,
+      cache: asset.decodedSha256 ? "no-store" : "default",
+    });
     if (!response.ok || !response.body) throw Error("Model unavailable");
     const reader = response.body.getReader();
     const chunks: Uint8Array[] = [];
@@ -125,16 +129,41 @@ export async function createVisit(
       packed.set(chunk, offset);
       offset += chunk.length;
     }
+    chunks.length = 0;
     const hash = [...new Uint8Array(await crypto.subtle.digest("SHA-256", packed))]
       .map((v) => v.toString(16).padStart(2, "0"))
       .join("");
     if (hash !== asset.sha256) throw Error("Model checksum mismatch");
+    let decodedSize = 0;
+    const bounded = new TransformStream<Uint8Array, Uint8Array>({
+      transform(chunk, controller) {
+        decodedSize += chunk.length;
+        if (decodedSize > asset.decodedBytes) throw Error("Decoded model exceeds declared size");
+        controller.enqueue(chunk);
+      },
+    });
     const buffer = await new Response(
-      new Blob([packed]).stream().pipeThrough(new DecompressionStream("gzip")),
+      new Blob([packed]).stream().pipeThrough(new DecompressionStream("gzip")).pipeThrough(bounded),
     ).arrayBuffer();
     if (buffer.byteLength !== asset.decodedBytes) throw Error("Model size mismatch");
     signal.throwIfAborted();
-    const loaded = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(buffer, "");
+    if (asset.decodedSha256) {
+      const decodedHash = [...new Uint8Array(await crypto.subtle.digest("SHA-256", buffer))]
+        .map((v) => v.toString(16).padStart(2, "0"))
+        .join("");
+      if (decodedHash !== asset.decodedSha256) throw Error("Decoded model checksum mismatch");
+    }
+    const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+    loader.register((parser) => ({
+      name: "EXT_materials_bump",
+      async extendMaterialParams(index, params) {
+        const bump = parser.json.materials[index].extensions?.EXT_materials_bump;
+        if (!bump) return;
+        if (bump.bumpTexture) await parser.assignTexture(params, "bumpMap", bump.bumpTexture);
+        if (Number.isFinite(bump.bumpFactor)) params.bumpScale = bump.bumpFactor;
+      },
+    }));
+    const loaded = await loader.parseAsync(buffer, "");
     model = loaded.scene;
     if (signal.aborted) {
       dispose();

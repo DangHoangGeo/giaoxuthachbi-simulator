@@ -2,7 +2,7 @@
 
 **Current development release, 8 October 2026:** `development-content-20261008-two` selects a limited introduction, two owner-reported milestones and sixteen AI concepts plus a separate lightweight architectural 3D visit as application inputs. The owner permits showing this project-created work with prominent “In development / Đang phát triển” and “Not for construction / Không dùng để thi công” notes; see [permission and scope](publication-permission.md). Actual hosting, real-site-photo and operating checks remain open; full G2/G3 are held.
 
-This is a local configuration handover, not a deployment record. Web01 created no Vercel project, domain, auth tenant, private store or production environment. The [selected pointer](../../web/content/current.json) now names the development release; that application state does not confirm a deployed URL. The owner will connect an existing hosting project to GitHub; its target and settings have not been supplied. The repository remains private. The [development guide](development.md) contains the working local commands and the [data boundary](data-boundary.md) defines allowed build inputs.
+The initial sections record the local foundation; the private-review increment below records the confirmed hosting configuration. Exact new deployment verification is retained in phase evidence. Web01 created no Vercel project, domain, auth tenant, private store or production environment. The [selected pointer](../../web/content/current.json) now names the development release; that application state does not confirm a deployed URL. The existing church Vercel project is now connected to this GitHub repository; its settings were read through the CLI on 8 October 2026. The repository remains private. The [development guide](development.md) contains the working local commands and the [data boundary](data-boundary.md) defines allowed build inputs.
 
 ## Unprivileged checks
 
@@ -14,7 +14,7 @@ The workflow runs locked install, lint, type generation/checks, unit tests, a hi
 
 ## Proposed Vercel project settings
 
-The owner handles the existing project's GitHub connection. Use `web` as the Root Directory for this application. The table records the proposed Vercel configuration; the actual provider/project, URL, preview policy, billing owner/budget and configured values remain unconfirmed. Verify platform support when those settings are applied.
+The owner connected the existing project to GitHub. Use `web` as the Root Directory for this application. The table distinguishes proposed build settings from the confirmed project/storage scope; release acceptance and longer-term operating ownership remain open. Verify platform support when those settings are applied.
 
 | Setting | Proposed value / remaining decision |
 | --- | --- |
@@ -26,11 +26,11 @@ The owner handles the existing project's GitHub connection. Use `web` as the Roo
 | Include source files outside root | Disabled; no extra `includeFiles` or repository-copy step |
 | Node | Supported Node 22 line, verify actual Vercel patch/npm compatibility with the pins before enabling |
 | Public inputs | Only the reviewed `web/content` files and explicitly cleared `web/public` derivatives |
-| Private inputs | None today; later runtime authorization/storage only, never bundled originals |
+| Private inputs | Full-detail architectural gzip and policy/manifest in private Blob; runtime authenticated reads on phase-05 preview, never bundled originals |
 | Preview environment | Owner-managed development target using the selected public-safe content; URL/access settings unconfirmed, no production credentials in source |
-| Branch/auto-deploy | `web/04-lightweight-visit` currently carries the expanded development content and 3D visit; `main` remains `dd2538d`. The owner configures the existing project's branch/auto-deploy settings; no actual setting is confirmed |
-| Region for private reads | Pending storage/provider jurisdiction and owner choice; no guess |
-| Public domain, team, budget, billing owner | Pending |
+| Branch/auto-deploy | Confirmed GitHub integration: production `main` remains `dd2538d`; phase-04 preview is READY. Phase-05 protected preview is on `web/05-protected-review`; phases remain unmerged |
+| Region for private storage | Singapore `sin1`, private `thachbi-private-review` store; preview/development only |
+| Project / team / plan | `giaoxuthachbi-simulator` / `danghoanggeos-projects` / existing Hobby; no paid plan change. Parish operating owner and longer-term budget remain open |
 
 `rootDirectory` is a project setting, not a `vercel.json` key. No guessed project configuration or CLI deployment token is committed. The loopback standalone server is for local verification; Vercel uses the framework's native build output. The platform controls its runtime patch versions, so local reproducibility is not proof that a cloud build will accept the current engine constraints.
 
@@ -41,3 +41,7 @@ The owner will supply the hosting target and configured branch, administrators, 
 When the owner-connected development preview is available, repeat the included route/locale/no-JS/error/denial and artifact checks on that exact preview; record its URL, commit, content hash and environment. Keep unfinished private paths inaccessible. Phase 07 requires the release scope, rights, operator ownership, recovery rehearsal and post-deploy checks before a completed public launch. Historical local G1 checks do not satisfy these later gates or establish deployment of the selected content.
 
 Sources checked 8 October 2026: [GitHub secure workflow guidance](https://docs.github.com/en/actions/reference/security/secure-use), [Vercel build settings](https://vercel.com/docs/builds/configure-a-build), [checkout v7.0.1](https://github.com/actions/checkout/releases/tag/v7.0.1), [setup-node v7.0.0](https://github.com/actions/setup-node/releases/tag/v7.0.0). The Vercel deployments/CI skill informed this runbook; no deployment action was taken.
+
+## Private-review increment, 8 October 2026
+
+The CLI confirmed the existing `giaoxuthachbi-simulator` project and GitHub integration: root `web`, production branch `main`, project setting Node 24.x, Hobby plan. The earlier statement that no target is known is historical. Phase-04 preview deployment was ready on the provider; the full-detail increment is prepared on `web/05-protected-review`. See [access control and private storage](access-control.md) for the owner-selected shared password, preview/development-only store, and unchanged production boundary. Actual deployment and verification are recorded separately; this configuration note does not itself certify release acceptance.
