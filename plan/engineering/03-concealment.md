@@ -1,6 +1,8 @@
 # Phase 03 — Concealment and installation access
 
-Status: **not started**. Branch: `eng/03-concealment`, from current main. Depends on E2's accepted candidate and reliable architectural/product envelopes. Read the [concealment contract](README.md#shared-comparison-and-concealment-contract), [routing proposals](../../docs/electrical-grid/routing.md), [sanctuary](../../docs/sanctuary-model.md), [timber specification](../../docs/beams-roof-connections/SPECIFICATION.md) and [art/reference status](../../docs/church-view-renderings.md).
+Status: **blocked; independent package committed and pushed, branch unmerged**. Branch: `eng/03-concealment`, from main `703268a`. Depends on E2's accepted candidate and reliable architectural/product envelopes. Read the [concealment contract](README.md#shared-comparison-and-concealment-contract), [routing proposals](../../docs/electrical-grid/routing.md), [sanctuary](../../docs/sanctuary-model.md), [timber specification](../../docs/beams-roof-connections/SPECIFICATION.md) and [art/reference status](../../docs/church-view-renderings.md).
+
+[Branch evidence at a9e6515](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/a9e6515/docs/engineering/concealment.md). Baseline viewpoint evidence is complete; concealment and performance/access acceptance remain held. Apply the [central-view constraint](../../docs/engineering/central-view-constraint.md).
 
 ## Outcome
 
@@ -24,7 +26,7 @@ Suggested commit boundaries: viewpoint/visibility inventory and evidence tooling
 ## Planned deliverables
 
 - `docs/engineering/concealment.md`: item/detail/viewpoint matrix, support/void references, screen losses/thermal/access evidence and explicit exceptions or holds.
-- Revisioned viewpoint coordinates, visibility results, desktop/phone day/evening captures, detail sections and removal/access drawings under `review/`.
+- Revisioned viewpoint coordinates, visibility results, desktop day/evening captures, detail sections and removal/access drawings under `review/`.
 - Owning model/specification changes and refreshed affected plan/electrical/register outputs at the same revision.
 
 ## Checks and exit gate E3

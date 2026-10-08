@@ -1,0 +1,1431 @@
+{
+  "scope": "Read-only fact inventory. No repository files were changed.",
+  "currentCheckout": {
+    "branch": "eng/05-boards-and-controls",
+    "head": "5bbd09f20f7336b85c046fab1c3ddf3b361210c2",
+    "workingTreeWasAlreadyDirty": true,
+    "e2TipIsAncestorOfCurrentHead": false
+  },
+  "currentDefaultLayout": {
+    "source": "docs/electrical-grid/equipment-layout.json",
+    "sha256": "200928e34221b09fac1e79bb8a5e18f8723f3e06dbb9046864a623a8b379ec91",
+    "scene": "Full service · evening",
+    "sceneOverride": false,
+    "itemCount": 322,
+    "fanCount": 35,
+    "coordinates": "AGENTS.md:40; docs/systems/fans.md:7; z=0 is the model centre axis between D/E; negative B, positive H."
+  },
+  "sourceHashes": {
+    "docs/electrical-grid/equipment-layout.json": "200928e34221b09fac1e79bb8a5e18f8723f3e06dbb9046864a623a8b379ec91",
+    "Thach_Bi_Viewer/simulator/catalog.js": "db353c028cfa7377844bfd174941893a04d68ce05ec1719f2f5449d2785a4a46",
+    "Thach_Bi_Viewer/simulator/design.js": "7b632d74a358cdc8d65f707864b3abe44d2e32ae070859c45f5b28447d753beb",
+    "Thach_Bi_Viewer/simulator/engine.js": "4a8392e0aaee5282fe6ba69324d005ab1af66b69f79140799a770d96315042c6",
+    "docs/systems/fans.md": "16405cd1b297e0c362bbaedefec61933ba037c35ff6789f69e65e14a41281ce3"
+  },
+  "interpretationBoundary": "z=0 classification is coordinate-only. No protected-view corridor width or architecture decision is inferred. Catalog dimensions are generic viewer proxies, not selected-product or installation-clearance envelopes.",
+  "currentFans": [
+    {
+      "id": "F226",
+      "type": "fanCeiling",
+      "positionM": [
+        7.725,
+        3.9,
+        -4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F227",
+      "type": "fanCeiling",
+      "positionM": [
+        7.725,
+        3.9,
+        4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F228",
+      "type": "fanCeiling",
+      "positionM": [
+        12.225,
+        3.9,
+        -4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F229",
+      "type": "fanCeiling",
+      "positionM": [
+        12.225,
+        3.9,
+        4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F230",
+      "type": "fanCeiling",
+      "positionM": [
+        16.725,
+        3.9,
+        -4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F231",
+      "type": "fanCeiling",
+      "positionM": [
+        16.725,
+        3.9,
+        4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F232",
+      "type": "fanCeiling",
+      "positionM": [
+        21.225,
+        3.9,
+        -4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F233",
+      "type": "fanCeiling",
+      "positionM": [
+        21.225,
+        3.9,
+        4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F234",
+      "type": "fanCeiling",
+      "positionM": [
+        25.725,
+        3.9,
+        -4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F235",
+      "type": "fanCeiling",
+      "positionM": [
+        25.725,
+        3.9,
+        4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F236",
+      "type": "fanCeiling",
+      "positionM": [
+        30.225,
+        3.9,
+        -4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F237",
+      "type": "fanCeiling",
+      "positionM": [
+        30.225,
+        3.9,
+        4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F238",
+      "type": "fanCeiling",
+      "positionM": [
+        34.725,
+        3.9,
+        -4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F239",
+      "type": "fanCeiling",
+      "positionM": [
+        34.725,
+        3.9,
+        4.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F240",
+      "type": "fanCeiling",
+      "positionM": [
+        39.3,
+        3.3,
+        -10.15
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F241",
+      "type": "fanCeiling",
+      "positionM": [
+        41.85,
+        3.3,
+        -10.15
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F242",
+      "type": "fanCeiling",
+      "positionM": [
+        39.3,
+        3.3,
+        10.15
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F243",
+      "type": "fanCeiling",
+      "positionM": [
+        41.85,
+        3.3,
+        10.15
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "F1"
+    },
+    {
+      "id": "F244",
+      "type": "fanWall",
+      "positionM": [
+        14.475,
+        5.55,
+        -7.07
+      ],
+      "hidden": true,
+      "on": true,
+      "circuit": "F2"
+    },
+    {
+      "id": "F245",
+      "type": "fanWall",
+      "positionM": [
+        14.475,
+        5.55,
+        7.07
+      ],
+      "hidden": true,
+      "on": true,
+      "circuit": "F2"
+    },
+    {
+      "id": "F246",
+      "type": "fanWall",
+      "positionM": [
+        23.475,
+        5.55,
+        -7.07
+      ],
+      "hidden": true,
+      "on": true,
+      "circuit": "F2"
+    },
+    {
+      "id": "F247",
+      "type": "fanWall",
+      "positionM": [
+        23.475,
+        5.55,
+        7.07
+      ],
+      "hidden": true,
+      "on": true,
+      "circuit": "F2"
+    },
+    {
+      "id": "F248",
+      "type": "fanWall",
+      "positionM": [
+        32.475,
+        5.55,
+        -7.07
+      ],
+      "hidden": true,
+      "on": true,
+      "circuit": "F2"
+    },
+    {
+      "id": "F249",
+      "type": "fanWall",
+      "positionM": [
+        32.475,
+        5.55,
+        7.07
+      ],
+      "hidden": true,
+      "on": true,
+      "circuit": "F2"
+    },
+    {
+      "id": "F250",
+      "type": "fanWallLarge",
+      "positionM": [
+        2.655,
+        6,
+        -3.05
+      ],
+      "hidden": false,
+      "on": false,
+      "circuit": "F4"
+    },
+    {
+      "id": "F251",
+      "type": "fanWallLarge",
+      "positionM": [
+        2.655,
+        6,
+        3.05
+      ],
+      "hidden": false,
+      "on": false,
+      "circuit": "F4"
+    },
+    {
+      "id": "F252",
+      "type": "fanExhaust",
+      "positionM": [
+        5.48,
+        9.4,
+        -2.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "V1"
+    },
+    {
+      "id": "F253",
+      "type": "fanExhaust",
+      "positionM": [
+        5.48,
+        9.4,
+        -0.8
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "V1"
+    },
+    {
+      "id": "F254",
+      "type": "fanExhaust",
+      "positionM": [
+        5.48,
+        9.4,
+        0.8
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "V1"
+    },
+    {
+      "id": "F255",
+      "type": "fanExhaust",
+      "positionM": [
+        5.48,
+        9.4,
+        2.4
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "V1"
+    },
+    {
+      "id": "F256",
+      "type": "fanExhaust",
+      "positionM": [
+        39.7,
+        7.6,
+        -13.13
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "V1"
+    },
+    {
+      "id": "F257",
+      "type": "fanExhaust",
+      "positionM": [
+        41.45,
+        7.6,
+        -13.13
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "V1"
+    },
+    {
+      "id": "F258",
+      "type": "fanExhaust",
+      "positionM": [
+        39.7,
+        7.6,
+        13.13
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "V1"
+    },
+    {
+      "id": "F259",
+      "type": "fanExhaust",
+      "positionM": [
+        41.45,
+        7.6,
+        13.13
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "V1"
+    },
+    {
+      "id": "F260",
+      "type": "fanExhaust",
+      "positionM": [
+        53.12,
+        3.3,
+        0
+      ],
+      "hidden": false,
+      "on": true,
+      "circuit": "V1"
+    }
+  ],
+  "e2CandidateBranch": {
+    "ref": "eng/02-coordinated-optimisation",
+    "tip": "8274191bb9be59620cd9738c6e02bdda8c1691c6",
+    "mergedIntoCurrentHead": false,
+    "optionsDocStatusSource": "eng/02-coordinated-optimisation:docs/engineering/options.md:3"
+  },
+  "candidates": [
+    {
+      "id": "a-distributed",
+      "title": "Adjusted distributed equipment and settings",
+      "inputStatus": "CONCEPT — not adopted; no construction/product approval",
+      "sourceRevision": "703268a",
+      "catalogueBasis": "Thach_Bi_Viewer/simulator/catalog.js; generic unvalidated proxies, no manufacturer claims",
+      "inputSource": {
+        "ref": "eng/02-coordinated-optimisation",
+        "commit": "8274191bb9be59620cd9738c6e02bdda8c1691c6",
+        "path": "review/engineering-options-2026-10-08/inputs/a-distributed.json",
+        "sha256": "cb0e71feda7433a468f8714fb01f881e0c32d88f75d31e8369e0be5caf73e8f3"
+      },
+      "optionDisposition": {
+        "source": "eng/02-coordinated-optimisation:docs/engineering/options.md",
+        "statusLine": 3,
+        "candidateRejectionLine": 70,
+        "disposition": "E2 documents record this candidate as rejected for adoption."
+      },
+      "fanPatches": [
+        {
+          "id": "F226",
+          "inputLine": 69,
+          "jsonPointer": "/equipment/5",
+          "patchPointer": "/equipment/5/patch",
+          "patch": {
+            "pos": [
+              6.85,
+              3.9,
+              -3.6
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/5/patch/pos"
+          }
+        },
+        {
+          "id": "F227",
+          "inputLine": 81,
+          "jsonPointer": "/equipment/6",
+          "patchPointer": "/equipment/6/patch",
+          "patch": {
+            "pos": [
+              6.85,
+              3.9,
+              3.6
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/6/patch/pos"
+          }
+        },
+        {
+          "id": "F228",
+          "inputLine": 93,
+          "jsonPointer": "/equipment/7",
+          "patchPointer": "/equipment/7/patch",
+          "patch": {
+            "pos": [
+              12.225,
+              3.9,
+              -3.9
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/7/patch/pos"
+          }
+        },
+        {
+          "id": "F229",
+          "inputLine": 105,
+          "jsonPointer": "/equipment/8",
+          "patchPointer": "/equipment/8/patch",
+          "patch": {
+            "pos": [
+              12.225,
+              3.9,
+              3.9
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/8/patch/pos"
+          }
+        },
+        {
+          "id": "F230",
+          "inputLine": 117,
+          "jsonPointer": "/equipment/9",
+          "patchPointer": "/equipment/9/patch",
+          "patch": {
+            "pos": [
+              16.725,
+              3.9,
+              -3.9
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/9/patch/pos"
+          }
+        },
+        {
+          "id": "F231",
+          "inputLine": 129,
+          "jsonPointer": "/equipment/10",
+          "patchPointer": "/equipment/10/patch",
+          "patch": {
+            "pos": [
+              16.725,
+              3.9,
+              3.9
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/10/patch/pos"
+          }
+        },
+        {
+          "id": "F232",
+          "inputLine": 141,
+          "jsonPointer": "/equipment/11",
+          "patchPointer": "/equipment/11/patch",
+          "patch": {
+            "pos": [
+              21.225,
+              3.9,
+              -3.9
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/11/patch/pos"
+          }
+        },
+        {
+          "id": "F233",
+          "inputLine": 153,
+          "jsonPointer": "/equipment/12",
+          "patchPointer": "/equipment/12/patch",
+          "patch": {
+            "pos": [
+              21.225,
+              3.9,
+              3.9
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/12/patch/pos"
+          }
+        },
+        {
+          "id": "F234",
+          "inputLine": 165,
+          "jsonPointer": "/equipment/13",
+          "patchPointer": "/equipment/13/patch",
+          "patch": {
+            "pos": [
+              25.725,
+              3.9,
+              -3.9
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/13/patch/pos"
+          }
+        },
+        {
+          "id": "F235",
+          "inputLine": 177,
+          "jsonPointer": "/equipment/14",
+          "patchPointer": "/equipment/14/patch",
+          "patch": {
+            "pos": [
+              25.725,
+              3.9,
+              3.9
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/14/patch/pos"
+          }
+        },
+        {
+          "id": "F236",
+          "inputLine": 189,
+          "jsonPointer": "/equipment/15",
+          "patchPointer": "/equipment/15/patch",
+          "patch": {
+            "pos": [
+              30.225,
+              3.9,
+              -3.9
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/15/patch/pos"
+          }
+        },
+        {
+          "id": "F237",
+          "inputLine": 201,
+          "jsonPointer": "/equipment/16",
+          "patchPointer": "/equipment/16/patch",
+          "patch": {
+            "pos": [
+              30.225,
+              3.9,
+              3.9
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/16/patch/pos"
+          }
+        },
+        {
+          "id": "F238",
+          "inputLine": 213,
+          "jsonPointer": "/equipment/17",
+          "patchPointer": "/equipment/17/patch",
+          "patch": {
+            "pos": [
+              34.725,
+              3.9,
+              -3.9
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/17/patch/pos"
+          }
+        },
+        {
+          "id": "F239",
+          "inputLine": 225,
+          "jsonPointer": "/equipment/18",
+          "patchPointer": "/equipment/18/patch",
+          "patch": {
+            "pos": [
+              34.725,
+              3.9,
+              3.9
+            ]
+          },
+          "reason": "Move circulation towards under-served central/rear seats; retain all outer receivers and medium fan catalogue type. New support point provisional.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/18/patch/pos"
+          }
+        }
+      ],
+      "explicitCenterlinePositions": []
+    },
+    {
+      "id": "b-high-integration",
+      "title": "Higher architectural integration, unscreened bound",
+      "inputStatus": "CONCEPT — not adopted; no construction/product approval",
+      "sourceRevision": "703268a",
+      "catalogueBasis": "Thach_Bi_Viewer/simulator/catalog.js; generic unvalidated proxies, no manufacturer claims",
+      "inputSource": {
+        "ref": "eng/02-coordinated-optimisation",
+        "commit": "8274191bb9be59620cd9738c6e02bdda8c1691c6",
+        "path": "review/engineering-options-2026-10-08/inputs/b-high-integration.json",
+        "sha256": "e555f93f0b5aa92d7fee23f83c77c150776c3b11c77752c4dae0e7c4c3e3fcce"
+      },
+      "optionDisposition": {
+        "source": "eng/02-coordinated-optimisation:docs/engineering/options.md",
+        "statusLine": 3,
+        "candidateRejectionLine": 72,
+        "disposition": "E2 documents record this candidate as rejected for adoption."
+      },
+      "fanPatches": [
+        {
+          "id": "F226",
+          "inputLine": 235,
+          "jsonPointer": "/equipment/17",
+          "patchPointer": "/equipment/17/patch",
+          "patch": {
+            "pos": [
+              7.725,
+              6.1,
+              -4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/17/patch/pos"
+          }
+        },
+        {
+          "id": "F227",
+          "inputLine": 247,
+          "jsonPointer": "/equipment/18",
+          "patchPointer": "/equipment/18/patch",
+          "patch": {
+            "pos": [
+              7.725,
+              6.1,
+              4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/18/patch/pos"
+          }
+        },
+        {
+          "id": "F228",
+          "inputLine": 259,
+          "jsonPointer": "/equipment/19",
+          "patchPointer": "/equipment/19/patch",
+          "patch": {
+            "pos": [
+              12.225,
+              6.1,
+              -4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/19/patch/pos"
+          }
+        },
+        {
+          "id": "F229",
+          "inputLine": 271,
+          "jsonPointer": "/equipment/20",
+          "patchPointer": "/equipment/20/patch",
+          "patch": {
+            "pos": [
+              12.225,
+              6.1,
+              4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/20/patch/pos"
+          }
+        },
+        {
+          "id": "F230",
+          "inputLine": 283,
+          "jsonPointer": "/equipment/21",
+          "patchPointer": "/equipment/21/patch",
+          "patch": {
+            "pos": [
+              16.725,
+              6.1,
+              -4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/21/patch/pos"
+          }
+        },
+        {
+          "id": "F231",
+          "inputLine": 295,
+          "jsonPointer": "/equipment/22",
+          "patchPointer": "/equipment/22/patch",
+          "patch": {
+            "pos": [
+              16.725,
+              6.1,
+              4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/22/patch/pos"
+          }
+        },
+        {
+          "id": "F232",
+          "inputLine": 307,
+          "jsonPointer": "/equipment/23",
+          "patchPointer": "/equipment/23/patch",
+          "patch": {
+            "pos": [
+              21.225,
+              6.1,
+              -4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/23/patch/pos"
+          }
+        },
+        {
+          "id": "F233",
+          "inputLine": 319,
+          "jsonPointer": "/equipment/24",
+          "patchPointer": "/equipment/24/patch",
+          "patch": {
+            "pos": [
+              21.225,
+              6.1,
+              4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/24/patch/pos"
+          }
+        },
+        {
+          "id": "F234",
+          "inputLine": 331,
+          "jsonPointer": "/equipment/25",
+          "patchPointer": "/equipment/25/patch",
+          "patch": {
+            "pos": [
+              25.725,
+              6.1,
+              -4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/25/patch/pos"
+          }
+        },
+        {
+          "id": "F235",
+          "inputLine": 343,
+          "jsonPointer": "/equipment/26",
+          "patchPointer": "/equipment/26/patch",
+          "patch": {
+            "pos": [
+              25.725,
+              6.1,
+              4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/26/patch/pos"
+          }
+        },
+        {
+          "id": "F236",
+          "inputLine": 355,
+          "jsonPointer": "/equipment/27",
+          "patchPointer": "/equipment/27/patch",
+          "patch": {
+            "pos": [
+              30.225,
+              6.1,
+              -4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/27/patch/pos"
+          }
+        },
+        {
+          "id": "F237",
+          "inputLine": 367,
+          "jsonPointer": "/equipment/28",
+          "patchPointer": "/equipment/28/patch",
+          "patch": {
+            "pos": [
+              30.225,
+              6.1,
+              4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/28/patch/pos"
+          }
+        },
+        {
+          "id": "F238",
+          "inputLine": 379,
+          "jsonPointer": "/equipment/29",
+          "patchPointer": "/equipment/29/patch",
+          "patch": {
+            "pos": [
+              34.725,
+              6.1,
+              -4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/29/patch/pos"
+          }
+        },
+        {
+          "id": "F239",
+          "inputLine": 391,
+          "jsonPointer": "/equipment/30",
+          "patchPointer": "/equipment/30/patch",
+          "patch": {
+            "pos": [
+              34.725,
+              6.1,
+              4.4
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/30/patch/pos"
+          }
+        },
+        {
+          "id": "F240",
+          "inputLine": 403,
+          "jsonPointer": "/equipment/31",
+          "patchPointer": "/equipment/31/patch",
+          "patch": {
+            "pos": [
+              39.3,
+              5.4,
+              -10.15
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/31/patch/pos"
+          }
+        },
+        {
+          "id": "F241",
+          "inputLine": 415,
+          "jsonPointer": "/equipment/32",
+          "patchPointer": "/equipment/32/patch",
+          "patch": {
+            "pos": [
+              41.85,
+              5.4,
+              -10.15
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/32/patch/pos"
+          }
+        },
+        {
+          "id": "F242",
+          "inputLine": 427,
+          "jsonPointer": "/equipment/33",
+          "patchPointer": "/equipment/33/patch",
+          "patch": {
+            "pos": [
+              39.3,
+              5.4,
+              10.15
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/33/patch/pos"
+          }
+        },
+        {
+          "id": "F243",
+          "inputLine": 439,
+          "jsonPointer": "/equipment/34",
+          "patchPointer": "/equipment/34/patch",
+          "patch": {
+            "pos": [
+              41.85,
+              5.4,
+              10.15
+            ]
+          },
+          "reason": "Higher circulation source trial to expose occupied-speed penalty; unscreened upper-bound comparison, not a concealed fan solution.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "pos": "/equipment/34/patch/pos"
+          }
+        }
+      ],
+      "explicitCenterlinePositions": []
+    },
+    {
+      "id": "c-large-directional",
+      "title": "Fewer larger fans with directional sound",
+      "inputStatus": "CONCEPT — not adopted; no construction/product approval",
+      "sourceRevision": "703268a",
+      "catalogueBasis": "Thach_Bi_Viewer/simulator/catalog.js; generic unvalidated proxies, no manufacturer claims",
+      "inputSource": {
+        "ref": "eng/02-coordinated-optimisation",
+        "commit": "8274191bb9be59620cd9738c6e02bdda8c1691c6",
+        "path": "review/engineering-options-2026-10-08/inputs/c-large-directional.json",
+        "sha256": "4df9348b376880772df8b8e241c420d2bdb8fc52ecaf0746264279824c0f048a"
+      },
+      "optionDisposition": {
+        "source": "eng/02-coordinated-optimisation:docs/engineering/options.md",
+        "statusLine": 3,
+        "candidateRejectionLine": 74,
+        "disposition": "E2 documents record this candidate as rejected for adoption."
+      },
+      "fanPatches": [
+        {
+          "id": "F226",
+          "inputLine": 69,
+          "jsonPointer": "/equipment/5",
+          "patchPointer": "/equipment/5/patch",
+          "patch": {
+            "type": "fanHVLS",
+            "pos": [
+              7.8,
+              5.0,
+              0
+            ],
+            "params": {
+              "spreader": false
+            }
+          },
+          "reason": "Existing 3.0 m generic catalogue proxy centred between D/E rows; roof bracket/load and moving envelope remain held. Preserve original equipment ID only within this trial.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "type": "/equipment/5/patch/type",
+            "pos": "/equipment/5/patch/pos",
+            "params": "/equipment/5/patch/params"
+          }
+        },
+        {
+          "id": "F227",
+          "inputLine": 85,
+          "jsonPointer": "/equipment/6",
+          "patchPointer": "/equipment/6/patch",
+          "patch": {
+            "type": "fanHVLS",
+            "pos": [
+              13.4,
+              5.0,
+              0
+            ],
+            "params": {
+              "spreader": false
+            }
+          },
+          "reason": "Existing 3.0 m generic catalogue proxy centred between D/E rows; roof bracket/load and moving envelope remain held. Preserve original equipment ID only within this trial.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "type": "/equipment/6/patch/type",
+            "pos": "/equipment/6/patch/pos",
+            "params": "/equipment/6/patch/params"
+          }
+        },
+        {
+          "id": "F228",
+          "inputLine": 101,
+          "jsonPointer": "/equipment/7",
+          "patchPointer": "/equipment/7/patch",
+          "patch": {
+            "type": "fanHVLS",
+            "pos": [
+              19.0,
+              5.0,
+              0
+            ],
+            "params": {
+              "spreader": false
+            }
+          },
+          "reason": "Existing 3.0 m generic catalogue proxy centred between D/E rows; roof bracket/load and moving envelope remain held. Preserve original equipment ID only within this trial.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "type": "/equipment/7/patch/type",
+            "pos": "/equipment/7/patch/pos",
+            "params": "/equipment/7/patch/params"
+          }
+        },
+        {
+          "id": "F229",
+          "inputLine": 117,
+          "jsonPointer": "/equipment/8",
+          "patchPointer": "/equipment/8/patch",
+          "patch": {
+            "type": "fanHVLS",
+            "pos": [
+              24.6,
+              5.0,
+              0
+            ],
+            "params": {
+              "spreader": false
+            }
+          },
+          "reason": "Existing 3.0 m generic catalogue proxy centred between D/E rows; roof bracket/load and moving envelope remain held. Preserve original equipment ID only within this trial.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "type": "/equipment/8/patch/type",
+            "pos": "/equipment/8/patch/pos",
+            "params": "/equipment/8/patch/params"
+          }
+        },
+        {
+          "id": "F230",
+          "inputLine": 133,
+          "jsonPointer": "/equipment/9",
+          "patchPointer": "/equipment/9/patch",
+          "patch": {
+            "type": "fanHVLS",
+            "pos": [
+              30.2,
+              5.0,
+              0
+            ],
+            "params": {
+              "spreader": false
+            }
+          },
+          "reason": "Existing 3.0 m generic catalogue proxy centred between D/E rows; roof bracket/load and moving envelope remain held. Preserve original equipment ID only within this trial.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "type": "/equipment/9/patch/type",
+            "pos": "/equipment/9/patch/pos",
+            "params": "/equipment/9/patch/params"
+          }
+        },
+        {
+          "id": "F231",
+          "inputLine": 149,
+          "jsonPointer": "/equipment/10",
+          "patchPointer": "/equipment/10/patch",
+          "patch": {
+            "type": "fanHVLS",
+            "pos": [
+              35.0,
+              5.0,
+              0
+            ],
+            "params": {
+              "spreader": false
+            }
+          },
+          "reason": "Existing 3.0 m generic catalogue proxy centred between D/E rows; roof bracket/load and moving envelope remain held. Preserve original equipment ID only within this trial.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "type": "/equipment/10/patch/type",
+            "pos": "/equipment/10/patch/pos",
+            "params": "/equipment/10/patch/params"
+          }
+        },
+        {
+          "id": "F232",
+          "inputLine": 165,
+          "jsonPointer": "/equipment/11",
+          "patchPointer": "/equipment/11/patch",
+          "patch": {
+            "hidden": true,
+            "on": false
+          },
+          "reason": "Explicit removal from candidate operation/geometry, retained ID for comparison; this is not concealment of running equipment.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "hidden": "/equipment/11/patch/hidden",
+            "on": "/equipment/11/patch/on"
+          }
+        },
+        {
+          "id": "F233",
+          "inputLine": 174,
+          "jsonPointer": "/equipment/12",
+          "patchPointer": "/equipment/12/patch",
+          "patch": {
+            "hidden": true,
+            "on": false
+          },
+          "reason": "Explicit removal from candidate operation/geometry, retained ID for comparison; this is not concealment of running equipment.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "hidden": "/equipment/12/patch/hidden",
+            "on": "/equipment/12/patch/on"
+          }
+        },
+        {
+          "id": "F234",
+          "inputLine": 183,
+          "jsonPointer": "/equipment/13",
+          "patchPointer": "/equipment/13/patch",
+          "patch": {
+            "hidden": true,
+            "on": false
+          },
+          "reason": "Explicit removal from candidate operation/geometry, retained ID for comparison; this is not concealment of running equipment.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "hidden": "/equipment/13/patch/hidden",
+            "on": "/equipment/13/patch/on"
+          }
+        },
+        {
+          "id": "F235",
+          "inputLine": 192,
+          "jsonPointer": "/equipment/14",
+          "patchPointer": "/equipment/14/patch",
+          "patch": {
+            "hidden": true,
+            "on": false
+          },
+          "reason": "Explicit removal from candidate operation/geometry, retained ID for comparison; this is not concealment of running equipment.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "hidden": "/equipment/14/patch/hidden",
+            "on": "/equipment/14/patch/on"
+          }
+        },
+        {
+          "id": "F236",
+          "inputLine": 201,
+          "jsonPointer": "/equipment/15",
+          "patchPointer": "/equipment/15/patch",
+          "patch": {
+            "hidden": true,
+            "on": false
+          },
+          "reason": "Explicit removal from candidate operation/geometry, retained ID for comparison; this is not concealment of running equipment.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "hidden": "/equipment/15/patch/hidden",
+            "on": "/equipment/15/patch/on"
+          }
+        },
+        {
+          "id": "F237",
+          "inputLine": 210,
+          "jsonPointer": "/equipment/16",
+          "patchPointer": "/equipment/16/patch",
+          "patch": {
+            "hidden": true,
+            "on": false
+          },
+          "reason": "Explicit removal from candidate operation/geometry, retained ID for comparison; this is not concealment of running equipment.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "hidden": "/equipment/16/patch/hidden",
+            "on": "/equipment/16/patch/on"
+          }
+        },
+        {
+          "id": "F238",
+          "inputLine": 219,
+          "jsonPointer": "/equipment/17",
+          "patchPointer": "/equipment/17/patch",
+          "patch": {
+            "hidden": true,
+            "on": false
+          },
+          "reason": "Explicit removal from candidate operation/geometry, retained ID for comparison; this is not concealment of running equipment.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "hidden": "/equipment/17/patch/hidden",
+            "on": "/equipment/17/patch/on"
+          }
+        },
+        {
+          "id": "F239",
+          "inputLine": 228,
+          "jsonPointer": "/equipment/18",
+          "patchPointer": "/equipment/18/patch",
+          "patch": {
+            "hidden": true,
+            "on": false
+          },
+          "reason": "Explicit removal from candidate operation/geometry, retained ID for comparison; this is not concealment of running equipment.",
+          "evidenceClass": "CONCEPT design variable; baseline position/type is MODEL TRANSCRIPTION",
+          "patchFieldPointers": {
+            "hidden": "/equipment/18/patch/hidden",
+            "on": "/equipment/18/patch/on"
+          }
+        }
+      ],
+      "explicitCenterlinePositions": [
+        {
+          "id": "F226",
+          "x_m": 7.8,
+          "y_m": 5.0,
+          "z_m": 0,
+          "type": "fanHVLS",
+          "patchPointer": "/equipment/5/patch",
+          "positionPointer": "/equipment/5/patch/pos",
+          "typePointer": "/equipment/5/patch/type"
+        },
+        {
+          "id": "F227",
+          "x_m": 13.4,
+          "y_m": 5.0,
+          "z_m": 0,
+          "type": "fanHVLS",
+          "patchPointer": "/equipment/6/patch",
+          "positionPointer": "/equipment/6/patch/pos",
+          "typePointer": "/equipment/6/patch/type"
+        },
+        {
+          "id": "F228",
+          "x_m": 19.0,
+          "y_m": 5.0,
+          "z_m": 0,
+          "type": "fanHVLS",
+          "patchPointer": "/equipment/7/patch",
+          "positionPointer": "/equipment/7/patch/pos",
+          "typePointer": "/equipment/7/patch/type"
+        },
+        {
+          "id": "F229",
+          "x_m": 24.6,
+          "y_m": 5.0,
+          "z_m": 0,
+          "type": "fanHVLS",
+          "patchPointer": "/equipment/8/patch",
+          "positionPointer": "/equipment/8/patch/pos",
+          "typePointer": "/equipment/8/patch/type"
+        },
+        {
+          "id": "F230",
+          "x_m": 30.2,
+          "y_m": 5.0,
+          "z_m": 0,
+          "type": "fanHVLS",
+          "patchPointer": "/equipment/9/patch",
+          "positionPointer": "/equipment/9/patch/pos",
+          "typePointer": "/equipment/9/patch/type"
+        },
+        {
+          "id": "F231",
+          "x_m": 35.0,
+          "y_m": 5.0,
+          "z_m": 0,
+          "type": "fanHVLS",
+          "patchPointer": "/equipment/10/patch",
+          "positionPointer": "/equipment/10/patch/pos",
+          "typePointer": "/equipment/10/patch/type"
+        }
+      ]
+    }
+  ]
+}

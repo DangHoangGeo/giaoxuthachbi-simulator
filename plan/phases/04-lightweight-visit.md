@@ -4,7 +4,7 @@ Status: **not started**. Depends on phase 01 and the public-model approval from 
 
 ## Outcome
 
-A calm public `/visit` experience that works on modest phones: look around or walk through the church, choose a few viewpoints and see day/night atmosphere based on local time. It is clearly a digital design model, not a live camera or measured lighting prediction.
+A calm public `/visit` experience that works on the agreed desktop: look around or walk through the church, choose a few viewpoints and see day/night atmosphere based on local time. It is clearly a digital design model, not a live camera or measured lighting prediction.
 
 ## Inputs
 

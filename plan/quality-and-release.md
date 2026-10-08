@@ -4,7 +4,7 @@ These are planned acceptance criteria, not passing results. Return to the [roadm
 
 ## Performance and usability budgets
 
-The following are initial project budgets. Phase 00 must identify one modest Android phone, an iPhone/iPad available to Father and a desktop browser, record OS/GPU/browser versions, and measure real devices as well as repeatable lab profiles. Use a provisional cold-cache lab network of 10 Mbps downstream, 1 Mbps upstream and 100 ms RTT, plus a 1 Mbps failure/fallback check. Revise budgets only with recorded measurements and a reason.
+The following are initial project budgets. Following the engineer’s 8 October desktop-only clarification, phase 00 must identify the actual desktop/browser available to the engineer and Father, record OS/GPU/browser versions, and measure that machine as well as repeatable lab profiles. No phone UI/UX test or mobile-device procurement is required. Use a provisional cold-cache lab network of 10 Mbps downstream, 1 Mbps upstream and 100 ms RTT, plus a 1 Mbps failure/fallback check. Revise budgets only with recorded measurements and a reason.
 
 | Surface | Proposed acceptance |
 | --- | --- |
@@ -12,14 +12,14 @@ The following are initial project budgets. Phase 00 must identify one modest And
 | Home/gallery first view | ≤1.5 MB transferred before interaction on the baseline viewport; responsive images; no 3D, simulator or private-data chunk loaded |
 | Initial non-3D JavaScript | ≤200 KB compressed app/vendor transfer per initial public route, measured with production build and cache disabled |
 | Public visit | Explicit “Enter 3D” loads ≤10 MB compressed initial scene/assets; remaining optional detail on demand; interactive within 12 s on the baseline network/device |
-| 3D motion | 95th-percentile frame time ≤33 ms during a fixed 60-second navigation path on the baseline phone; record stalls, GPU context loss and thermal behavior in a 10-minute session |
+| 3D motion | 95th-percentile frame time ≤33 ms during a fixed 60-second navigation path on the baseline desktop; record stalls, GPU context loss and thermal behavior in a 10-minute session |
 | 3D fallback | Low-quality mode, cancel/retry and an immediate static gallery/2D alternative; WebGL failure must not block the rest of the site |
 | Private object lookup | A visible loading state immediately; selected object's already-loaded card updates within 300 ms, otherwise a network status appears; measured private fetch target ≤2 s under baseline conditions |
 | Published updates | Active online client notices an origin-published update within two minutes in the controlled test; last successful check/capture/publication times remain distinguishable |
 
-Web Vitals thresholds come from [web.dev](https://web.dev/articles/vitals); download, frame-time and lookup budgets are project proposals, not engineering standards. Test the actual phone rather than assuming desktop emulation predicts GPU performance. Do not reduce analytical geometry or move emitters to meet rendering budgets.
+Web Vitals thresholds come from [web.dev](https://web.dev/articles/vitals); download, frame-time and lookup budgets are project proposals, not engineering standards. Test the actual desktop GPU/browser; headless or emulated results alone do not establish hardware performance. Do not reduce analytical geometry or move emitters to meet rendering budgets.
 
-Target [WCAG 2.2 AA](https://www.w3.org/TR/WCAG22/) for content and controls. Test keyboard navigation, focus, screen-reader names/status, text resizing, contrast, reflow, reduced motion and sign-in. Provide a meaningful text/2D alternative to the spatial viewer. Target 44 CSS px touch controls for site use as a project usability preference. Automated accessibility scans alone do not establish conformance.
+Target [WCAG 2.2 AA](https://www.w3.org/TR/WCAG22/) for content and controls. Test keyboard navigation, focus, screen-reader names/status, text resizing, contrast, reflow, reduced motion and sign-in. Provide a meaningful text/2D alternative to the spatial viewer. Target 44 CSS px pointer controls for site use as a project usability preference. Automated accessibility scans alone do not establish conformance.
 
 ## Required verification matrix
 

@@ -35,7 +35,7 @@ Suggested commit boundaries: framework/toolchain; route shell; schema/boundary t
 - [ ] No model, simulator, protected fixture or production secret appears in initial public assets.
 - [ ] Existing offline opening workflow remains usable; run model checks if its code was touched.
 - [ ] Root-directory/include-files rules are proven by inspecting production build artifacts.
-- [ ] Authorized preview is inspected on phone and desktop, or cloud setup is explicitly still pending; no claim of deployment readiness without it.
+- [ ] Authorized preview is inspected on desktop, or cloud setup is explicitly still pending; no claim of deployment readiness without it.
 
 ## Risks and handover
 
