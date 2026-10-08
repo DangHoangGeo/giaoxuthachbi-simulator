@@ -1,0 +1,241 @@
+{
+  "schema": 1,
+  "observed_date": "2026-10-09",
+  "timezone": "Asia/Tokyo",
+  "marketplace": "amazon.co.jp",
+  "currency": "JPY",
+  "references": [
+    {
+      "reference_id": "amazon-jp-flood-sukiten-60w-2pack",
+      "matched_type_ids": ["flood"],
+      "product_title": "SUKITEN LED Floodlight 60W, 2-Pack, IP66, 6500K",
+      "marketplace": "amazon.co.jp",
+      "url": "https://www.amazon.co.jp/dp/B0CPDVMFH1",
+      "asin": "B0CPDVMFH1",
+      "currency": "JPY",
+      "price": 4980,
+      "pack_quantity": 2,
+      "pack_unit": "item",
+      "voltage": "AC 100 V, 50–60 Hz (listing)",
+      "input_voltage_220_240_compatible": false,
+      "pricing_scope": "complete_assembly",
+      "compatibility_gaps": [
+        "Generic outdoor worklight comparison; not a selected church fixture.",
+        "Each 60 W head and claimed 8,000 lm output with a 120-degree beam differ from the modeled optics and lighting role; no project IES/LDT data or aiming/fixing coordination was verified.",
+        "The listing states 100 V, so it is not compatible with a 220–240 V input; the church supply is unresolved."
+      ],
+      "price_status": "observed_in_stock_direct_page"
+    },
+    {
+      "reference_id": "amazon-jp-bulbstring-benature-115m",
+      "matched_type_ids": ["bulbString"],
+      "product_title": "Benature LED String Lights, 11.5 m, G40 E12, 24 bulbs",
+      "marketplace": "amazon.co.jp",
+      "url": "https://www.amazon.co.jp/dp/B083Q2Z12N",
+      "asin": "B083Q2Z12N",
+      "currency": "JPY",
+      "price": 3499,
+      "pack_quantity": 1,
+      "pack_unit": "item",
+      "voltage": "AC 100 V, 50/60 Hz (listing)",
+      "input_voltage_220_240_compatible": false,
+      "pricing_scope": "complete_assembly",
+      "compatibility_gaps": [
+        "Decorative festoon comparison only; modeled string length and installation specification are not established by this one 11.5 m unit.",
+        "Listing describes 22 sockets, 22 bulbs plus 2 spare bulbs, 0.8 W per bulb, 60 lm, 2700 K, and IP44; this is not a photometric match or project-selected outdoor rating.",
+        "The listing states 100 V, so it is not compatible with a 220–240 V input; the church supply is unresolved.",
+        "The bulbs are included with the string assembly and must not be costed again as separate replacement bulbs in a base subtotal."
+      ],
+      "price_status": "observed_in_stock_direct_page"
+    },
+    {
+      "reference_id": "amazon-jp-chandelier-aoowang-6light-e17",
+      "matched_type_ids": ["chandelier6Reading"],
+      "product_title": "AooLiWang 6-Light E17 LED-Compatible Crystal Ceiling Chandelier",
+      "marketplace": "amazon.co.jp",
+      "url": "https://www.amazon.co.jp/dp/B01MR3TIOK",
+      "asin": "B01MR3TIOK",
+      "currency": "JPY",
+      "price": 10999,
+      "pack_quantity": 1,
+      "pack_unit": "item",
+      "voltage": null,
+      "input_voltage_220_240_compatible": null,
+      "pricing_scope": "body_only",
+      "compatibility_gaps": [
+        "Low-confidence household ornamental fixture comparison only; do not extrapolate its price to the model's 8-light, 12-light, or 2-head types.",
+        "Six E17 lamp holders; listing specifies maximum 40 W per holder and excludes lamps. It provides no verified voltage, photometry, ingress rating, church mounting/anchorage, or project lifetime/spares information.",
+        "The model's separate optic/emitter assumptions are not established by this decorative fixture. Lamps are excluded from this body-only price and must not be double-counted against a complete luminaire elsewhere."
+      ],
+      "price_status": "observed_in_stock_direct_page_limited_stock"
+    },
+    {
+      "reference_id": "amazon-jp-panasonic-fy08pd9-pipe-exhaust-fan",
+      "matched_type_ids": ["fanExhaust"],
+      "product_title": "Panasonic FY-08PD9 Pipe Fan Exhaust Type with Plug Cord",
+      "marketplace": "amazon.co.jp",
+      "url": "https://www.amazon.co.jp/dp/B00YS9AVRQ",
+      "asin": "B00YS9AVRQ",
+      "currency": "JPY",
+      "price": 3934,
+      "pack_quantity": 1,
+      "pack_unit": "item",
+      "voltage": null,
+      "input_voltage_220_240_compatible": null,
+      "pricing_scope": "complete_assembly",
+      "compatibility_gaps": [
+        "One household 100 mm pipe fan is only a secondary comparison: the modeled exhaust type is 0.5 m diameter, so this is not a size match or a selected church device and must be excluded from the project subtotal.",
+        "The Amazon listing did not state voltage, input power, airflow, sound level, or IP rating; do not infer compatibility or use this listing as a ventilation calculation.",
+        "No product-specific service life, spares availability, installation suitability for the modeled locations, or church supply compatibility is confirmed."
+      ],
+      "price_status": "observed_in_stock_direct_page"
+    },
+    {
+      "reference_id": "amazon-jp-panasonic-fgu301a-30cm-wall-fan",
+      "matched_type_ids": ["fanWall"],
+      "product_title": "Panasonic F-GU301-A 30 cm Wall Fan",
+      "marketplace": "amazon.co.jp",
+      "url": "https://www.amazon.co.jp/dp/B0948S1TFK",
+      "asin": "B0948S1TFK",
+      "currency": "JPY",
+      "price": 9131,
+      "pack_quantity": 1,
+      "pack_unit": "item",
+      "voltage": null,
+      "input_voltage_220_240_compatible": null,
+      "pricing_scope": "complete_assembly",
+      "compatibility_gaps": [
+        "One household 30 cm pull-cord oscillating wall fan is only a secondary comparison: the modeled fanWall is 0.45 m diameter, so this is undersized and must be excluded from the project subtotal; it is also not a match for fanWallLarge or a ceiling-fan scheme.",
+        "The Amazon listing did not state voltage, watts, airflow, sound level, ingress rating, or high-mount suitability for this church.",
+        "Product airflow, mounting load/support, maintenance access, noise during worship, and supply compatibility require manufacturer data and project engineering review."
+      ],
+      "price_status": "observed_in_stock_direct_page"
+    },
+    {
+      "reference_id": "amazon-jp-fuji-vvf-2c-2mm-100m",
+      "matched_type_ids": [],
+      "product_title": "Fuji Electric Wire Industries VVF 2-core 2.0 mm, 100 m roll",
+      "marketplace": "amazon.co.jp",
+      "url": "https://www.amazon.co.jp/dp/B003NCQ6W8",
+      "asin": "B003NCQ6W8",
+      "currency": "JPY",
+      "price": 23000,
+      "pack_quantity": 100,
+      "pack_unit": "m",
+      "voltage": "600 V cable rating (listing)",
+      "input_voltage_220_240_compatible": null,
+      "pricing_scope": "cable",
+      "compatibility_gaps": [
+        "A 100 m domestic VVF wiring cable comparison unit; not a selected cable type, conductor size, installation method, or project take-off.",
+        "Project voltage, conductor count and cross-sections, ampacity, derating, voltage drop, route separation, fire stopping, and local code basis remain pending.",
+        "The modeled route lengths do not equal purchased conductor lengths or cable allowance; the 2-core 2.0 mm roll must not be multiplied across them as a design quantity."
+      ],
+      "price_status": "observed_in_stock_direct_page_limited_stock"
+    },
+    {
+      "reference_id": "amazon-jp-mirai-mfs16-pfs-50m",
+      "matched_type_ids": [],
+      "product_title": "Mirai Kogyo Miraflex SS PFS MFS-16, 16 mm nominal, 50 m roll",
+      "marketplace": "amazon.co.jp",
+      "url": "https://www.amazon.co.jp/dp/B0116F80OU",
+      "asin": "B0116F80OU",
+      "currency": "JPY",
+      "price": 5250,
+      "pack_quantity": 50,
+      "pack_unit": "m",
+      "voltage": null,
+      "input_voltage_220_240_compatible": null,
+      "pricing_scope": "infrastructure",
+      "compatibility_gaps": [
+        "One 50 m Japanese PFS conduit roll for unit-price comparison only; the listing gives 23 mm outside diameter and approximately 16 mm inside diameter.",
+        "No modeled conduit size, fill, bend radius, support spacing, fire/smoke rating, environment rating, or approved route installation method is established by this retail listing.",
+        "Do not scale this roll to the route model's drawn lengths as a project conduit take-off; routing and material selection remain engineering work."
+      ],
+      "price_status": "observed_in_stock_direct_page"
+    },
+    {
+      "reference_id": "amazon-jp-koden-azf451wmc-45cm-wall-fan",
+      "matched_type_ids": ["fanWall"],
+      "product_title": "KODEN AZF451WMC 45 cm Commercial Wall-Mounted Fan, Aluminum Blades",
+      "marketplace": "amazon.co.jp",
+      "url": "https://www.amazon.co.jp/dp/B0DYTQ5C69",
+      "asin": "B0DYTQ5C69",
+      "currency": "JPY",
+      "price": 9980,
+      "pack_quantity": 1,
+      "pack_unit": "item",
+      "voltage": "100 V (listing)",
+      "input_voltage_220_240_compatible": false,
+      "pricing_scope": "complete_assembly",
+      "compatibility_gaps": [
+        "Commercial wall-fan comparison only, not a selected fixture. Its listed 45 cm blade size matches the modeled fanWall 0.45 m diameter; the page does not verify the model's 55 W maximum rating or airflow/noise duty.",
+        "The Amazon page explicitly says 100 V, so this unit is incompatible with a 220–240 V input; the church supply remains unresolved. The listing does not state an IP rating, acoustic level, or airflow quantity.",
+        "The fan weighs about 4.2 kg and requires a separately checked support and safe access. Listing does not establish structural anchor capacity, installation hardware suitability, service life, or spares support in Vietnam."
+      ],
+      "price_status": "observed_in_stock_direct_page"
+    },
+    {
+      "reference_id": "amazon-jp-yamaha-vxl1b8-slim-column-speaker",
+      "matched_type_ids": ["slimColumn"],
+      "product_title": "Yamaha VXL1B-8 Speaker System",
+      "marketplace": "amazon.co.jp",
+      "url": "https://www.amazon.co.jp/dp/B07H183SWF",
+      "asin": "B07H183SWF",
+      "currency": "JPY",
+      "price": 52250,
+      "pack_quantity": 1,
+      "pack_unit": "item",
+      "voltage": null,
+      "input_voltage_220_240_compatible": null,
+      "pricing_scope": "complete_assembly",
+      "compatibility_gaps": [
+        "Passive speaker comparison only; speaker power ratings are audio-system ratings, not mains input. The Amazon page does not state a maximum audio input rating or impedance to compare with the modeled 60 W column.",
+        "Listing gives 24 × 1.5-inch full-range units, 170° horizontal by 40° vertical coverage and a 54 mm width; the model is a 0.6 m, 4 × 2.5-inch column with a modeled 130° × 30° pattern. Exact length and acoustic match are unverified.",
+        "The product information marks it as not waterproof. No outdoor protection, church-specific mounting/aiming, measured STI, spares availability, or Vietnam warranty/service support is established."
+      ],
+      "price_status": "observed_in_stock_direct_page"
+    },
+    {
+      "reference_id": "amazon-jp-panasonic-wths105-5w-horn",
+      "matched_type_ids": ["horn"],
+      "product_title": "Panasonic WT-HS105 5 W Trumpet Speaker",
+      "marketplace": "amazon.co.jp",
+      "url": "https://www.amazon.co.jp/dp/B019HXKV5E",
+      "asin": "B019HXKV5E",
+      "currency": "JPY",
+      "price": 9220,
+      "pack_quantity": 1,
+      "pack_unit": "item",
+      "voltage": null,
+      "input_voltage_220_240_compatible": null,
+      "pricing_scope": "complete_assembly",
+      "compatibility_gaps": [
+        "Passive audio loudspeaker comparison only; its 5 W rated input and 2 kΩ / 3.3 kΩ / 10 kΩ audio input taps are not mains voltage. Amazon does not state speaker-system line-tap/impedance compatibility; modeled horn rating is 30 W.",
+        "Page description claims IP65 drip-proof performance, while the product-information field says waterproof false. Treat outdoor ingress suitability as unresolved until the manufacturer confirms the rating and test conditions.",
+        "Listing gives 400 Hz–8 kHz response, 105 dB at 1 W/1 m, about 152 mm diameter × 200.5 mm high, 1.3 kg and stainless mounting hardware. No modeled horn directivity/power match, structural anchor design, project aim, service-life evidence, or Vietnam spares/warranty confirmation."
+      ],
+      "price_status": "observed_in_stock_direct_page_limited_stock"
+    },
+    {
+      "reference_id": "amazon-jp-audiotechnica-pro49ql-microphone",
+      "matched_type_ids": ["mic"],
+      "product_title": "audio-technica PRO49QL Gooseneck Condenser Microphone",
+      "marketplace": "amazon.co.jp",
+      "url": "https://www.amazon.co.jp/dp/B0832LSRHJ",
+      "asin": "B0832LSRHJ",
+      "currency": "JPY",
+      "price": 29998,
+      "pack_quantity": 1,
+      "pack_unit": "item",
+      "voltage": "Phantom DC 9–52 V microphone supply (listing; not AC mains)",
+      "input_voltage_220_240_compatible": null,
+      "pricing_scope": "complete_assembly",
+      "compatibility_gaps": [
+        "Microphone comparison only; listing says unidirectional, which does not verify the modeled cardioid polar pattern. It gives 70–16,000 Hz response, −37 dB sensitivity, 134 dB maximum SPL, 66 dB signal-to-noise ratio and 418 mm length.",
+        "The item includes a windscreen and quick-mount XLR-M connector; a desk/base mounting fixture, cable, mixer input and phantom supply are not included or confirmed. Phantom supply and the 2 mA microphone current are not AC mains load.",
+        "No feedback performance at the modeled ambo/altar positions, installation base, expected service life, replacement parts, or Vietnam warranty/support availability is established."
+      ],
+      "price_status": "observed_in_stock_direct_page"
+    }
+  ]
+}

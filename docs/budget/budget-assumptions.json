@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "marketplace": "amazon.co.jp",
+  "currency": "JPY",
+  "owner_request": "2026-10-09: Japanese market only; compare documented suppliers, include all open layout/design questions",
+  "selected_price_reference_by_type": {
+    "slimColumn": "amazon-jp-yamaha-vxl1b8-slim-column-speaker",
+    "mic": "amazon-jp-audiotechnica-pro49ql-microphone"
+  },
+  "selection_status": "Market comparison references only; no equipment selected or approved",
+  "shipping_jpy": null,
+  "import_tax_jpy": null,
+  "vietnam_installation_labour_jpy": null,
+  "scaffolding_access_jpy": null,
+  "fixings_containment_firestopping_jpy": null,
+  "commissioning_training_jpy": null,
+  "spares_maintenance_jpy": null,
+  "contingency_percent": null,
+  "full_project_budget_jpy": null,
+  "note": "Missing items are pending, never zero. Do not add alternative product references together as a project total. Model quantities need site and engineering review. No exchange conversion without a separately dated rate."
+}

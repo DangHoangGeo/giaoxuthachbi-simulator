@@ -1,0 +1,11 @@
+{
+  "supplier_rows": 12,
+  "official_source_observations": 38,
+  "all_supplier_fact_fields_source_referenced": true,
+  "local_markdown_links_verified": 9,
+  "unknown_supply_preserved": true,
+  "no_product_selection_or_model_register_edits": true,
+  "verification_scope": "Documentation/JSON; simulator and procurement not performed",
+  "new_file_whitespace_checks": 5,
+  "git_diff_check": "passed"
+}

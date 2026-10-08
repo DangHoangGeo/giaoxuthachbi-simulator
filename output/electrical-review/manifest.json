@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "status": "ENGINEERING HOLD / comparison sizing, not purchasing approval",
+  "draft": false,
+  "gitRevision": "c132cfeb405ece803553707d9503bbf597e80f3c",
+  "modelSourceSha256": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "ea98e993b2356e9bb7a744262fdb4543f9997e2efe66e39d988c1e43727fe695",
+    "Thach_Bi_Viewer/simulator/engine.js": "b83dbb26338b907f514b34fbf4cae4cbabec3a723b85655c98e02c0e66246f6d",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "95ab9cdc750b49f32c5e7331d5606f9acd17d3d38012cb53a6d06ad69907b81e",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "4e9126cf5d5448d4aefd0e85265c384decbecb6c53937cb3154e2299a16fd4c6",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
+    "scripts/export_electrical_loads.cjs": "066af5453cb3e782abe4cfaf585b6cd9b04ebafad050e18c73615e7ca6fdca2b",
+    "docs/electrical-grid/electrical-systems.json": "c883a38876b1d2b04788046ec5e1d87651113aa8dbfeb0f5415ba0b829f004ab",
+    "docs/electrical-grid/equipment-layout.json": "53ff13ffefd2679cbf8d12a1e21bde566f40af08275ae4f0ff95823f70ea1b77",
+    "docs/electrical-grid/categories/manifest.json": "c92d2b2789032c5f60f683d6789ef9604b2d2dfe22fa8d15883439e68930f7d4"
+  },
+  "sourceSha256": {
+    "scripts/export_electrical_loads.cjs": "066af5453cb3e782abe4cfaf585b6cd9b04ebafad050e18c73615e7ca6fdca2b",
+    "scripts/electrical_review.py": "258d09d41ed0aaef5cb142eee31feea1944cba012500b7223c11f5f6363cf926",
+    "scripts/build_electrical_budget.py": "8f4273c57c888c4fa1416a466004141ada7a7379f82cb479cee3814f41821a02",
+    "scripts/review_drawings_i18n.py": "654228b3ca0c2aabc7aee87ddff0ff369c7dd21e4283fbb1af202335878e6406",
+    "docs/electrical-grid/cable-design-inputs.json": "7adde749874bd11327e5e944e6218b0fd2026a073ec9e44d210dbb3803d554b1",
+    "docs/engineering/questions-for-parish-and-designers.json": "90dafe2943fbdaa67b845dfa0dc1df7290de2d9dc7861a2098613eb935ff0871",
+    "docs/budget/budget-assumptions.json": "ce8c1a43076fad6f87495443861af2584aecaa780010bfa3b9d45f552963bf72",
+    "docs/budget/supplier-shortlist.json": "b0b2e5a8b1f1ab8a0a7a218d55daa6b4b394753ce757725097ca374520096987",
+    "docs/budget/product-reference-review.json": "e35414133e4293720e00f90aae811f1dde73555fb4f64dc6e62abf652423207f",
+    "docs/budget/report-text-vi.json": "e836b33d0f4acacfcf844bab609145171f111b2ef0bedf644ce21fe15dcb6ba9",
+    "docs/budget/amazon-price-references.json": "b7e527b5a1d2b0212a86975c379938a3a2c63c4f237395e4827d3a12045f501a",
+    "docs/budget/japan-suppliers.json": "bfe68fa1852fc4ed8f3da0c2f174f4b70b162cd15111a3a7e0112dc439b657d7"
+  },
+  "fontSha256": {
+    "scripts/fonts/NotoSans-Regular.ttf": "f5f552c8c5edb61fe6efb824baf4d4de47b1a8689ab4925ff43f7bd6a4ebece5",
+    "scripts/fonts/NotoSans-Bold.ttf": "3a08a47daa00cade516425c15c57615aef2fd418ec9811a7b9f465088f92cc05",
+    "scripts/fonts/OFL.txt": "231dfd281eb8f5101e897083691cc4071432352458b9bab58f767b0bb7753b60",
+    "scripts/fonts/README.md": "00f89d81570614cb4b271adcae3f0b9bdfbffc76c7b773fe6eaa4e695e3a8ffb"
+  },
+  "outputSha256": {
+    "budget-japan.json": "06a2af6fb453df635c65b2a0a1c7f43ac24f1edcc875dd933b17a934f78eb521",
+    "budget-quantity-groups.csv": "b295445ec9f25de3712eaab79bf662e011da7464e0bbb6efe526c175fbe2cbeb",
+    "equipment-budget.csv": "9d3c3d6ad9f7e475b961a42d57c2e53edf8ee6609e3b45bd32f7ee395824e6eb",
+    "load-snapshot.json": "3a1c72428f9d969c769219e56b13cacabe63bf12bb9e3bee6e454db8710256fa",
+    "open-questions.csv": "b58444be3714f73d6f34d04abcec6f3450a63da9b48a230c0aaf2fc57ac0757d",
+    "route-load-review.json": "811bfe9fb30accd904c7b98c41afbed0da7e1573d05c2ba59e775763556bdb1c",
+    "route-load-schedule.csv": "bc258531a0a60409de29deea91bad808262341cfe9cfcda0e4eb8824ad34d06f",
+    "thach-bi-budget-japan-vi.pdf": "14a455cb2c23ef08696c82b099452f26e4e7e6e15240fe45acb44a3e4faec365",
+    "thach-bi-cable-load-review-vi.pdf": "7f7965e01e9eae5a24f11474f7419706b291a9e7090d10b9175cdc7d40bbe063"
+  },
+  "counts": {
+    "equipment_items": 326,
+    "enclosures": 5,
+    "connected_items": 296,
+    "routes": 343,
+    "model_maximum_known_mains_proxy_w": 9101.51762647754,
+    "known_proxy_with_reserve_w": 11376.897033096924,
+    "maximum_complete_mains_load_w": null,
+    "av1_maximum_mains_w": null,
+    "operating_model_w": 5908.860942824119,
+    "service_hours": 1.5,
+    "model_cable_centreline_m": 5879.121531816646,
+    "quote_cable_m": 7133.0336849983105,
+    "bundle_corridors_excluded_from_cable_m": 583.9210424894335,
+    "conduit_tray_purchase_length_m": null,
+    "approved_cable_routes": 0,
+    "known_proxy_supply_current_cases": [
+      {
+        "case_id": "S1-230-PF09-45C-4",
+        "known_only_current_a": 54.96085523235229
+      },
+      {
+        "case_id": "S2-220-PF08-50C-6",
+        "known_only_current_a": 64.64146041532344
+      }
+    ],
+    "limitations": [
+      "All routes remain held; faults, PE, inrush, actual products and supply absent",
+      "AV rack/nameplate loads excluded from maximum; total is a known-subset proxy, not an upper bound of the installation",
+      "No diversity; all shown light/fan catalogue maxima included, even normally-off items",
+      "Operating estimates are traced loads, not energy consumed by the route; never sum upstream and downstream rows",
+      "No utility-to-DB1 route; total installation voltage drop cannot pass",
+      "Conduit/tray quantities require unique shared containment geometry and fill/separation design"
+    ]
+  },
+  "budgetSummary": {
+    "shown_equipment_enclosures": 316,
+    "hidden_alternatives": 15,
+    "priced_comparison_groups": 2,
+    "unpriced_or_excluded_shown_groups": 33,
+    "priced_comparison_subtotal_jpy": 791496,
+    "complete_equipment_budget_jpy": null,
+    "complete_installed_project_budget_jpy": null,
+    "scope_note": "Subtotal of explicitly chosen comparable complete assemblies only; does not represent a complete budget. All product fit remains unapproved."
+  },
+  "open_questions": 40
+}

@@ -1,0 +1,505 @@
+{
+  "schema": 1,
+  "observed_date": "2026-10-09",
+  "method": "Read official manufacturer/corporate/distributor pages and official search-index excerpts; access status is recorded per source. No supplier contacted; no price/stock/warranty inferred. Text is paraphrased; no full manufacturer document mirrored.",
+  "local_sources_checked": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "2e301343cab062a57bd6da1b49b95bd3669041f0ec4361f1da962c70cd42ee5f"
+    },
+    {
+      "path": "docs/interior-systems-plan.md",
+      "sha256": "f943469f33f7bc45b41f386a1a49eee3deabd8c01ada01a1dca31d1a7e397ef1"
+    },
+    {
+      "path": "docs/systems/README.md",
+      "sha256": "63f580346a8d77c7b35f143f56c5fecf46e1f49384f2a7724ba4364cec9183ec"
+    },
+    {
+      "path": "docs/systems/lighting.md",
+      "sha256": "fa92d7d76061ded96933173c1870fb8588fabe6e2c0c5c0a0a11ca9c6f8060bc"
+    },
+    {
+      "path": "docs/systems/sound.md",
+      "sha256": "e600108183b621328a0037cc6c6fbc8fd717d95c72a5edbe7fa1d9c89ab24fdf"
+    },
+    {
+      "path": "docs/systems/fans.md",
+      "sha256": "36d17233a96b2222c5d4f8237c6a4b67d1bce217a953cd3bdd6b6566dde96312"
+    },
+    {
+      "path": "docs/electrical-grid/summary-report.md",
+      "sha256": "ceb4bb67761f71be848a3746dc1de3d5a5eadcef27e529e6419717de6919ce0a"
+    },
+    {
+      "path": "docs/electrical-grid/controls.md",
+      "sha256": "da6ff96508541edc21649dbbe24d39008eee631cefb304e42b834c5ab2e5fa02"
+    },
+    {
+      "path": "docs/electrical-grid/cable-design-inputs.json",
+      "sha256": "7adde749874bd11327e5e944e6218b0fd2026a073ec9e44d210dbb3803d554b1"
+    },
+    {
+      "path": "docs/engineering/central-view-constraint.md",
+      "sha256": "d761eddaac5c241c587bb6c7cc1be471c6e69698a462ba341b26d9599cbd60b0"
+    }
+  ],
+  "sources": [
+    {
+      "id": "EN-NET",
+      "title": "ENDO global network",
+      "url": "https://www.endo-lighting.com/company/network/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Sales Subsidiaries > Vietnam; Headquarters > International Division",
+      "access_status": "official_page_read",
+      "observations": [
+        "Vietnam sales subsidiary and Japan international division are listed."
+      ]
+    },
+    {
+      "id": "EN-DATA",
+      "title": "ENDO downloads",
+      "url": "https://www.endo-lighting.com/download/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Product Data; Tools > DIALux",
+      "access_status": "official_page_read",
+      "observations": [
+        "Manufacturer product-data search and DIALux partnership are published."
+      ]
+    },
+    {
+      "id": "EN-SPOT",
+      "title": "ENDO ACCORD55 GSTSA0900WA-WH27",
+      "url": "https://data5.endo-lighting.co.jp/products/search/pupup_syousaiPage.jsp?hinban=GSTSA0900WA-WH27&step=INDOOR%2FSPOTLIGHT%2FACCORD55",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Fixture/Driver Specifications; Download",
+      "access_status": "official_search_index_excerpt_direct_fetch_unverified",
+      "observations": [
+        "Example: AC220–240V, non-dimmable integrated driver; IES, specification and installation downloads listed. Accessories need separate photometry."
+      ]
+    },
+    {
+      "id": "EN-OUT",
+      "title": "ENDO Synca SXS3032S",
+      "url": "https://data5.endo-lighting.co.jp/products/search/pupup_syousaiPage.jsp?hinban=SXS3032S&step=Synca%2FTunableLEDZ%2FSynca%2FOUTDOOR+SPOTLIGHT",
+      "observed_date": "2026-10-09",
+      "published_revision": "Product page notes fixture-size change 2023-07-07",
+      "location": "Driver Specification; Download; Option Accessories",
+      "access_status": "official_search_index_excerpt_direct_fetch_unverified",
+      "observations": [
+        "Example: AC100–242V and SmartLEDZ; IES listed; accessory IES is obtained separately."
+      ]
+    },
+    {
+      "id": "PA-LIGHT",
+      "title": "Panasonic Vietnam lighting products",
+      "url": "https://panasonic.net/electricworks/lighting/en_vn/products/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Professional Indoor/Outdoor Fixtures; DIALux link",
+      "access_status": "official_page_read",
+      "observations": [
+        "Vietnam range includes downlights, panels, floods, strips and suspended lighting; DIALux download is linked."
+      ]
+    },
+    {
+      "id": "PA-DIALUX",
+      "title": "Panasonic DIALux plug-in",
+      "url": "https://www2.panasonic.biz/jp/cec/dialux-plugin/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "DIALux Plug-in page",
+      "access_status": "official_page_read",
+      "observations": [
+        "Official plug-in download route; exact selected international SKU photometry still needs checking."
+      ]
+    },
+    {
+      "id": "PA-AIR",
+      "title": "Panasonic Vietnam fan download library",
+      "url": "https://www.panasonic.com/vn/support/air-solution-download.html",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Fans/Ventilation sections",
+      "access_status": "official_page_read",
+      "observations": [
+        "Official Vietnam manuals are listed for fan and ducted exhaust product families."
+      ]
+    },
+    {
+      "id": "PA-CAB",
+      "title": "Panasonic FV-15NS3 cabinet fan specification",
+      "url": "https://www.panasonic.com/content/dam/pim/vn/vi/FV/FV-CAB/FV-CAB-STD-SPP/FV-15NS3_SpecSheet.pdf",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Indexed specification table",
+      "access_status": "official_search_index_excerpt_pdf_fetch_failed",
+      "observations": [
+        "Indexed table includes 220/230/240V at 50Hz, airflow, static pressure, noise, current and power. Full PDF fetch failed."
+      ]
+    },
+    {
+      "id": "PA-ERV",
+      "title": "Panasonic Vietnam ERV/cabinet brochure",
+      "url": "https://www.panasonic.com/content/dam/pim/vn/vi/FY/FY-SWG/FY-SWGR1-SPP/IAQ-ERV-Cabinet-Fan-2024-VN-VI.pdf",
+      "observed_date": "2026-10-09",
+      "published_revision": "Brochure title 2024; not proof of current stock",
+      "location": "Indexed performance diagram",
+      "access_status": "official_search_index_excerpt_pdf_fetch_failed",
+      "observations": [
+        "Indexed performance diagram indicates 220–240V 50Hz pressure/flow curves; full PDF fetch failed."
+      ]
+    },
+    {
+      "id": "OD-DATA",
+      "title": "ODELIC download instructions",
+      "url": "https://www.odelic.co.jp/search/DispUsageInstructions.do?tag=1",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Downloadable data types",
+      "access_status": "official_page_read",
+      "observations": [
+        "IES, CAD, catalogue, specification and instruction files are listed; not every product has every file."
+      ]
+    },
+    {
+      "id": "OD-VOLT",
+      "title": "ODELIC domestic downlight catalogue example",
+      "url": "https://www.odelic.co.jp/search/fileDownload?fileID=t010001142555&volumeName=00002",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Printed page 150, Q-series downlights",
+      "access_status": "official_search_index_excerpt_pdf_not_downloaded",
+      "observations": [
+        "Domestic downlight examples specify 100V; this does not describe all ODELIC products."
+      ]
+    },
+    {
+      "id": "OD-SERVICE",
+      "title": "ODELIC warranty and service",
+      "url": "https://www.odelic.co.jp/support/after-service/index.html",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Warranty exclusions; minimum performance-parts retention",
+      "access_status": "official_page_read",
+      "observations": [
+        "Out-of-Japan use is in the exclusions for free repair. Electrical performance parts are retained at least six years after production ends."
+      ]
+    },
+    {
+      "id": "TO-NET",
+      "title": "TOA global network",
+      "url": "https://www.toa-global.com/en/profile/company/network",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Asia and Pacific > Sales",
+      "access_status": "official_page_read",
+      "observations": [
+        "Manufacturer lists Hanoi and Ho Chi Minh sales offices and links toa-vn.com; manufacturing office is separate."
+      ]
+    },
+    {
+      "id": "TO-SPK",
+      "title": "TOA SR-H2L",
+      "url": "https://www.toa.nl/producten/sr-h2l/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Specifications; Accessories; Downloads",
+      "access_status": "official_page_read",
+      "observations": [
+        "Passive 8-ohm line-array example with optional matching transformer; datasheet, CAD and EASE simulation-data links are present."
+      ]
+    },
+    {
+      "id": "YA-VXL",
+      "title": "Yamaha Vietnam VXL",
+      "url": "https://vn.yamaha.com/vi/business/audio/products/speakers/vxl/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Product line and accessories",
+      "access_status": "official_page_read",
+      "observations": [
+        "Slim columns, brackets and an optional high-impedance transformer are listed; weather-resistant variants differ."
+      ]
+    },
+    {
+      "id": "YA-DATA",
+      "title": "Yamaha speaker modelling data",
+      "url": "https://usa.yamaha.com/products/contents/proaudio/downloads/speaker_data.html",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "EASE/GLL speaker-data downloads",
+      "access_status": "official_page_read",
+      "observations": [
+        "Manufacturer acoustic modelling downloads are available; obtain exact model/version before church simulation."
+      ]
+    },
+    {
+      "id": "YA-POWER",
+      "title": "Yamaha installed-audio 2026 announcement",
+      "url": "https://www.yamaha.com/ja/news_release/2026/26020301/",
+      "observed_date": "2026-10-09",
+      "published_revision": "Manufacturer release 2026-02-03; release schedule is not inventory confirmation",
+      "location": "Main specifications, DME and XMS; release schedule",
+      "access_status": "official_page_read",
+      "observations": [
+        "DME3/DME5 and XMS examples specify 100–240V 50/60Hz. XMS output choices include low-impedance and 70/100V speaker lines."
+      ]
+    },
+    {
+      "id": "AT-DATA",
+      "title": "Audio-Technica ES925C/XLR manual",
+      "url": "https://docs.audio-technica.com/us/ES925C_XLR_UM_EN.pdf",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Phantom power requirements; technical/polar diagrams",
+      "access_status": "official_search_index_excerpt_pdf_not_downloaded",
+      "observations": [
+        "ES925C/XLR example uses 11–52V DC phantom power; exact base and connector variants must be distinguished."
+      ]
+    },
+    {
+      "id": "AT-SEA",
+      "title": "Audio-Technica SEA authorized resellers",
+      "url": "https://www.audio-technica.com/en-sea/retail",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Professional channels, Vietnam entries",
+      "access_status": "official_page_read",
+      "observations": [
+        "Vietnam entries include DLPRO, ProAVL Vietnam, IO Trading and Quang Minh; the listing alone does not confirm a particular installation-mic SKU."
+      ]
+    },
+    {
+      "id": "AT-JP",
+      "title": "Audio-Technica Japan authorized sellers",
+      "url": "https://www.audio-technica.co.jp/support/storelist",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Domestic authorized seller list",
+      "access_status": "official_search_index_excerpt",
+      "observations": [
+        "Manufacturer names its official Amazon store among Japan authorized channels; each listing seller still needs checking."
+      ]
+    },
+    {
+      "id": "KD-NET",
+      "title": "KDK worldwide agents",
+      "url": "https://kdk.jp/worldwide-agent",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Asia > Vietnam",
+      "access_status": "official_search_index_excerpt",
+      "observations": [
+        "Manufacturer names Thanh Cong Trading and Marketing Company Limited as Vietnam agent."
+      ]
+    },
+    {
+      "id": "KD-CAT",
+      "title": "KDK Malaysia 2024/2025 catalogue",
+      "url": "https://www.kdk.com.my/wp-content/uploads/2024/06/MNE_2025_ED1.pdf",
+      "observed_date": "2026-10-09",
+      "published_revision": "Cover: 2024/2025, 1st Edition",
+      "location": "PDF pages 33, 35–37 (printed 31, 33–35); cover revision",
+      "access_status": "official_pdf_read",
+      "observations": [
+        "Ducted/sirocco and industrial examples publish pressure/flow curves, noise and motor data. 40KAQA example is 220–240V 50Hz; other examples are 240V."
+      ]
+    },
+    {
+      "id": "KD-SKU",
+      "title": "KDK Malaysia 24CUBM",
+      "url": "https://www.kdk.com.my/product/24cubm/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Product voltage/frequency",
+      "access_status": "official_search_index_excerpt",
+      "observations": [
+        "Malaysia product page states 220–240V 50Hz; Vietnam version and duty point must be confirmed."
+      ]
+    },
+    {
+      "id": "ME-NET",
+      "title": "Mitsubishi Electric Vietnam contact/distribution",
+      "url": "https://vn.mitsubishielectric.com/vi/contact/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Product enquiries and Vietnam distribution network",
+      "access_status": "official_page_read",
+      "observations": [
+        "Corporate page links household and factory-automation distribution and local warranty service."
+      ]
+    },
+    {
+      "id": "ME-LV",
+      "title": "Mitsubishi low-voltage circuit breakers",
+      "url": "https://www.mitsubishielectric.com/fa/products/lvd/lvcb/index.html",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Product list",
+      "access_status": "official_page_read",
+      "observations": [
+        "Manufacturer lists MCCB, MCB, RCCB/RCBO and accessories. No particular church rating is selected."
+      ]
+    },
+    {
+      "id": "ME-FAN",
+      "title": "Mitsubishi Vietnam ventilation catalogue",
+      "url": "https://web-api.mitsubishi-electric.vn/Uploads/files/catalogue-fan-ver-72020-da-nen-802ac6ec-edb0-4515-8b8a-9dc7deff2014.pdf",
+      "observed_date": "2026-10-09",
+      "published_revision": "Filename suggests 2020; no current product approval inferred",
+      "location": "Indexed ventilation-fan group",
+      "access_status": "official_search_index_excerpt_pdf_not_downloaded",
+      "observations": [
+        "Official Vietnam catalogue identifies a ventilation range; exact voltage, curve and noise data need current model documents."
+      ]
+    },
+    {
+      "id": "NI-CAT",
+      "title": "Nitto Kogyo enclosures",
+      "url": "https://www.nito.co.jp/english/products/enclosures/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Category list",
+      "access_status": "official_page_read",
+      "observations": [
+        "Manufacturer offers general, weatherproof and stainless enclosures; these are empty enclosures, not approved church boards."
+      ]
+    },
+    {
+      "id": "NI-SPEC",
+      "title": "Nitto Kogyo CN-U enclosure",
+      "url": "https://www.nito.co.jp/english/products/enclosures/control-enclosure-for-small-fa/CN-U-enclosure/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Usage environment; ingress; dimensions",
+      "access_status": "official_search_index_excerpt",
+      "observations": [
+        "Indoor steel CN-U example lists IP66 and dimension/drawing tables; rating applies to that product condition."
+      ]
+    },
+    {
+      "id": "NI-NET",
+      "title": "Nitto Kogyo overseas bases",
+      "url": "https://www.nito.co.jp/english/company/global/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Singapore; Thailand",
+      "access_status": "official_page_read",
+      "observations": [
+        "Regional group sites include Singapore board manufacture and Thailand enclosures; Vietnam-specific warranty is unverified."
+      ]
+    },
+    {
+      "id": "TE-NET",
+      "title": "Terasaki global network",
+      "url": "https://www.terasaki.co.jp/english/about/offices.html",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Agents > Asia > Vietnam",
+      "access_status": "official_page_read",
+      "observations": [
+        "Vietnam is assigned to TERASAKI CIRCUIT BREAKERS(S) PTE. LTD. in Singapore."
+      ]
+    },
+    {
+      "id": "TE-SPEC",
+      "title": "Terasaki TemBreak PRO standard series",
+      "url": "https://www.terasaki.co.jp/english/business/breaker/tbp/hanyo_general.html",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Ratings/specification table",
+      "access_status": "official_search_index_excerpt",
+      "observations": [
+        "Ratings provide poles, amperes and Icu/Ics at AC415V, including differing breaking capacities across frames."
+      ]
+    },
+    {
+      "id": "TE-CAT",
+      "title": "Terasaki TemBreak PRO international catalogue",
+      "url": "https://www.terasaki.co.jp/english/files/business/breaker/23-I68E_web_24.6.28.pdf",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Catalogue standard/rating sections",
+      "access_status": "official_search_index_excerpt_pdf_not_downloaded",
+      "observations": [
+        "Manufacturer publishes IEC 60947-2 catalogue; exact voltage rating, trip curve and selectivity require selected device data."
+      ]
+    },
+    {
+      "id": "FD-CAT",
+      "title": "Fujikura Dia Cable 600V CV catalogue",
+      "url": "https://www.fujikura-dia.co.jp/pdf/catalog/catalog-600V-CV.pdf",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "PDF pages 0–1, printed pages 14–15",
+      "access_status": "official_pdf_read",
+      "observations": [
+        "600V CV single/multicore cable construction references JIS C 3605; tables use Japanese nominal conductor sections."
+      ]
+    },
+    {
+      "id": "FD-AMP",
+      "title": "Fujikura Dia Cable ampacity method",
+      "url": "https://www.fujikura-dia.co.jp/tech/documents/allowable-current.php",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "600V cable/insulated-wire sections; derating tables",
+      "access_status": "official_page_read",
+      "observations": [
+        "Ampacity data separates installation, temperature and grouping assumptions; cannot transplant a single value into the church design."
+      ]
+    },
+    {
+      "id": "FD-SITE",
+      "title": "Fujikura Dia Cable official product scope",
+      "url": "https://www.fujikura-dia.co.jp/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Product-field navigation",
+      "access_status": "official_page_read",
+      "observations": [
+        "Power, control/instrumentation, communications and disaster-prevention cable classes are listed."
+      ]
+    },
+    {
+      "id": "MI-SKU",
+      "title": "MISUMI Vietnam Nitto enclosure listing",
+      "url": "https://vn.misumi-ec.com/vona2/detail/222000234195/?HissuCode=TE12-34R",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Brand/model; CAD; dimensions",
+      "access_status": "official_distributor_search_index_excerpt",
+      "observations": [
+        "MISUMI Vietnam identifies NITTO KOGYO TE12-34R with 2D CAD and dimensions. Listing is channel evidence, not an accepted board design."
+      ]
+    },
+    {
+      "id": "MI-TERM",
+      "title": "MISUMI Vietnam website operator/CAD terms",
+      "url": "https://vn.misumi-ec.com/contents/terms/CAD/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Website operator; CAD-data terms",
+      "access_status": "official_distributor_search_index_excerpt",
+      "observations": [
+        "MISUMI VIETNAM CO., LTD. operates the Vietnam website; CAD data has separate use terms."
+      ]
+    },
+    {
+      "id": "MO-SHIP",
+      "title": "MonotaRO Japan delivery terms",
+      "url": "https://www.monotaro.com/main/rule/",
+      "observed_date": "2026-10-09",
+      "published_revision": null,
+      "location": "Product delivery, paragraph 5",
+      "access_status": "official_distributor_search_index_excerpt",
+      "observations": [
+        "Japan delivery only; forwarding companies and overseas forwarding services are excluded."
+      ]
+    }
+  ]
+}

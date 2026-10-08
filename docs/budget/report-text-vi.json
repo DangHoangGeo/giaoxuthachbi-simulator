@@ -1,0 +1,218 @@
+{
+  "schema": 1,
+  "suppliers": {
+    "JP-ENDO": {
+      "product_classes_vi": "Đèn rọi kiến trúc, đèn chiếu xuống, chiếu sáng ngoài trời và các dòng điều khiển tương thích; các ví dụ được dẫn là minh chứng tham khảo, chưa phải thiết bị thay thế được chọn.",
+      "documentation_vi": "Có công cụ tra cứu sản phẩm chính thức và nguồn dữ liệu DIALux; các trang mẫu liệt kê IES, kích thước, thông số và hướng dẫn lắp đặt. Chưa nhập dữ liệu quang trắc vào nghiên cứu này.",
+      "gaps_vi": [
+        "Ví dụ ACCORD55 được dẫn không hỗ trợ giảm sáng; không thể áp dụng chức năng giảm sáng của các chế độ vận hành cho sản phẩm này.",
+        "Quang học chính xác, quang trắc khi dùng phụ kiện, độ chói, giá đỡ ngoài trời và điều kiện dịch vụ tại Việt Nam còn chờ xác nhận."
+      ]
+    },
+    "JP-PANASONIC": {
+      "product_classes_vi": "Các dòng chiếu sáng chuyên dụng trong nhà/ngoài trời, bóng đèn và quạt/thông gió tại Việt Nam.",
+      "documentation_vi": "Có hướng dẫn chính thức tại Việt Nam và nguồn dữ liệu DIALux; dữ liệu quạt hộp được lập chỉ mục gồm áp suất, lưu lượng, tiếng ồn và dòng điện. Chưa tải được toàn bộ các PDF quạt đã dẫn.",
+      "gaps_vi": [
+        "Tài liệu sản phẩm dạng hộp/ống dẫn hỗ trợ nghiên cứu che giấu; chưa chấp thuận thiết kế ống dẫn/miệng gió cho nhà thờ.",
+        "Pin và thời gian duy trì của biển khẩn cấp, giảm sáng, phụ tùng và điểm làm việc cuối cùng còn chờ xác nhận."
+      ]
+    },
+    "JP-ODELIC": {
+      "product_classes_vi": "Danh mục chiếu sáng nội địa Nhật Bản; có thể tham khảo hình thức và chi tiết.",
+      "documentation_vi": "IES, CAD, thông số và hướng dẫn được liệt kê trong các loại tài liệu tải xuống.",
+      "gaps_vi": [
+        "Các ví dụ nội địa phải được xem xét có điều kiện; chưa chọn mã sản phẩm hoặc kênh cung ứng tương thích tại Việt Nam.",
+        "Chính sách lưu giữ phụ tùng nội địa không chứng minh có hàng tại địa phương hoặc có bảo hành ở nước ngoài."
+      ]
+    },
+    "JP-TOA": {
+      "product_classes_vi": "Loa cột/loa mảng lắp đặt cố định và tham khảo hệ thống âm thanh liên quan; SR-H2L là ví dụ có tài liệu.",
+      "documentation_vi": "Trang dữ liệu SR-H2L liệt kê EASE, bảng thông số, CAD, hướng dẫn và phụ kiện gá lắp.",
+      "gaps_vi": [
+        "Dữ liệu nhà sản xuất phải thay thế đặc tính hướng tính giả định; cấu hình bộ khuếch đại/DSP/phân vùng và phản hồi gây hú của micro vẫn đang chờ giải quyết.",
+        "Cần xác minh chính xác các nấc biến áp, giá đỡ, nghiệm thu tại địa phương và điều kiện dịch vụ."
+      ]
+    },
+    "JP-YAMAHA": {
+      "product_classes_vi": "Loa cột VXL lắp đặt cố định và phụ kiện gá lắp; các dòng âm thanh lắp đặt cố định/DSP DME/XMS.",
+      "documentation_vi": "Có thư viện tải dữ liệu âm học của nhà sản xuất, các trang VXL tại Việt Nam và chi tiết gá lắp. Cần lấy GLL và phiên bản đúng với mã sản phẩm.",
+      "gaps_vi": [
+        "Thông báo ra mắt năm 2026 không chứng minh sản phẩm đang có hàng.",
+        "Độ trễ DSP, điều khiển thủ công tại chỗ, hành vi khi lỗi mạng/khởi động lại và mức lấy điện lưới tối đa của bộ khuếch đại cần được xác định từ hướng dẫn sản phẩm được chọn và thử nghiệm nghiệm thu."
+      ]
+    },
+    "JP-AUDIO-TECHNICA": {
+      "product_classes_vi": "Micro cổ ngỗng ES925 lắp đặt cố định; đầu thu, chiều dài và đế cụ thể là các lựa chọn riêng.",
+      "documentation_vi": "Hướng dẫn micro chính thức mô tả yêu cầu điện; cần lấy dữ liệu hướng thu/đáp ứng chính xác và đúng biến thể sản phẩm.",
+      "gaps_vi": [
+        "Biến thể 5 chân và XLR khác nhau; cần xác nhận đầu nối, nguồn phantom và dây LED/điều khiển.",
+        "Cần xác minh tư cách được ủy quyền của nhà cung cấp đối với mã sản phẩm được chọn, cách ly gió/tiếng ồn và mức khuếch đại thực tế trước khi gây hú."
+      ]
+    },
+    "JP-KDK": {
+      "product_classes_vi": "Thông gió bằng quạt nối ống/quạt ly tâm kiểu sirocco và quạt công nghiệp; danh mục cũng có quạt tường/quạt trần.",
+      "documentation_vi": "Danh mục 2024/2025 cung cấp đường đặc tính áp suất/lưu lượng, kích thước, dữ liệu động cơ và tiếng ồn cho các nhóm thông gió được dẫn.",
+      "gaps_vi": [
+        "Quạt tường/quạt trần để lộ không đáp ứng yêu cầu che giấu toàn bộ chỉ vì thương hiệu đã được đưa vào danh sách tham khảo.",
+        "Chưa xác lập tổn thất ống dẫn, vị trí cửa hút/xả, tầm thổi trong vùng có người hoặc không gian tháo thiết bị để bảo trì."
+      ]
+    },
+    "JP-MITSUBISHI": {
+      "product_classes_vi": "Các dòng thông gió; riêng biệt với MCCB/MCB/RCCB/RCBO và phụ kiện bảo vệ.",
+      "documentation_vi": "Đã xác định các nhóm thiết bị bảo vệ chính thức và danh mục thông gió tại Việt Nam; đường đặc tính sản phẩm được chọn, tiếng ồn/thông số nhãn máy và phối hợp tác động bảo vệ còn chờ xác nhận.",
+      "gaps_vi": [
+        "Không dùng danh mục thông gió cũ làm bằng chứng cho mã sản phẩm hiện hành hoặc tình trạng có hàng.",
+        "Dòng sự cố, nối đất, số pha, giảm định mức và hiệu năng quạt khi che giấu vẫn chưa được giải quyết."
+      ]
+    },
+    "JP-NITTO": {
+      "product_classes_vi": "Vỏ tủ rỗng bằng thép/thép không gỉ và loại chống thời tiết; CN-U là ví dụ dùng trong nhà, cấp IP66, có bản vẽ.",
+      "documentation_vi": "Có kích thước/bản vẽ và dữ liệu cấp môi trường của nhà sản xuất; MISUMI Việt Nam niêm yết một mã Nitto mẫu có CAD.",
+      "gaps_vi": [
+        "Vỏ tủ không phải một tủ phân phối/điều khiển đã được kiểm chứng.",
+        "Độ tăng nhiệt trong tủ, cửa vào cáp/đầu siết cáp, khả năng chịu ngắn mạch, điều khiển thủ công tại chỗ và chống ăn mòn/bảo trì còn chờ xác nhận."
+      ]
+    },
+    "JP-TERASAKI": {
+      "product_classes_vi": "Dòng áp tô mát vỏ đúc TemBreak PRO và các dòng thiết bị bảo vệ liên quan.",
+      "documentation_vi": "Có danh mục và bảng định mức chính thức theo IEC 60947-2; chưa áp dụng đường đặc tính và tính chọn lọc chính xác vào nghiên cứu này.",
+      "gaps_vi": [
+        "Chưa chọn định mức thiết bị bảo vệ; dữ liệu đầu vào dòng điện/dòng sự cố của DB-1/DB-2 hiện là null, tức chưa có dữ liệu.",
+        "Bộ tác động chính xác, phối hợp chọn lọc, bố trí chống xung/chống sét và yêu cầu lắp đặt tại Việt Nam còn chờ xác nhận."
+      ]
+    },
+    "JP-FUJIKURA-DIA": {
+      "product_classes_vi": "Các nhóm cáp điện lực, điều khiển/đo lường, truyền thông và phòng cháy/phòng ngừa thiên tai; cáp 600V CV là ví dụ có tài liệu về cấu tạo.",
+      "documentation_vi": "Các bảng cấu tạo/tiết diện danh định tham chiếu JIS C 3605; phương pháp khả năng tải dòng/giảm định mức đã công bố cần dữ liệu đầu vào riêng cho điều kiện lắp đặt.",
+      "gaps_vi": [
+        "Không được tự ý thay thế hệ tiết diện dây dẫn và phương pháp của Nhật Bản cho cơ sở thiết kế IEC/TCVN của dự án.",
+        "Đặc tính cháy, cấu hình lắp đặt/phụ trội chiều dài, tương thích đầu nối và nguồn cáp hợp pháp tại địa phương còn chờ xác nhận."
+      ]
+    },
+    "JP-MISUMI": {
+      "product_classes_vi": "Kênh mua linh kiện công nghiệp; niêm yết vỏ tủ Nitto có tài liệu là một ví dụ.",
+      "documentation_vi": "Niêm yết mẫu có thương hiệu/mã sản phẩm, kích thước và CAD 2D; việc sử dụng CAD phải theo điều khoản đã công bố.",
+      "gaps_vi": [
+        "Niêm yết chứng minh có một kênh mua hàng, không chứng minh mọi sản phẩm đều được bảo hành theo ủy quyền của nhà sản xuất.",
+        "Tồn kho thực tế, thời hạn giá, giao hàng/đổi trả, xuất xứ và bảo hành của từng sản phẩm được chọn cần có báo giá bằng văn bản."
+      ]
+    }
+  },
+  "prices": {
+    "amazon-jp-flood-sukiten-60w-2pack": {
+      "product_title_vi": "Đèn chiếu rộng LED SUKITEN 60W, bộ 2 đèn, IP66, 6500K",
+      "voltage_vi": "AC 100 V, 50-60 Hz (theo niêm yết)",
+      "price_status_vi": "Đã ghi nhận còn hàng trực tiếp trên trang sản phẩm",
+      "gaps_vi": [
+        "Chỉ dùng để so sánh với đèn làm việc ngoài trời phổ thông; chưa phải bộ đèn được chọn cho nhà thờ.",
+        "Mỗi đầu đèn 60 W và công bố quang thông 8,000 lm với góc chiếu 120 độ khác quang học và nhiệm vụ chiếu sáng trong mô hình; chưa xác minh dữ liệu IES/LDT cho dự án hoặc phối hợp hướng chiếu/gá lắp.",
+        "Niêm yết ghi 100 V, nên không tương thích với đầu vào 220-240 V; nguồn điện nhà thờ còn chưa xác định."
+      ]
+    },
+    "amazon-jp-bulbstring-benature-115m": {
+      "product_title_vi": "Dây đèn LED Benature, 11.5 m, G40 E12, 24 bóng",
+      "voltage_vi": "AC 100 V, 50/60 Hz (theo niêm yết)",
+      "price_status_vi": "Đã ghi nhận còn hàng trực tiếp trên trang sản phẩm",
+      "gaps_vi": [
+        "Chỉ dùng để so sánh dây đèn trang trí; một bộ dài 11.5 m này không xác lập chiều dài dây hoặc quy cách lắp đặt trong mô hình.",
+        "Niêm yết mô tả 22 đui, 22 bóng cộng 2 bóng dự phòng, 0.8 W mỗi bóng, 60 lm, 2700 K và IP44; đây không phải sản phẩm khớp quang trắc hoặc cấp bảo vệ ngoài trời được dự án chọn.",
+        "Niêm yết ghi 100 V, nên không tương thích với đầu vào 220-240 V; nguồn điện nhà thờ còn chưa xác định.",
+        "Bóng đã nằm trong bộ dây đèn, nên không được tính thêm như bóng thay thế riêng trong tổng tạm tính cơ sở."
+      ]
+    },
+    "amazon-jp-chandelier-aoowang-6light-e17": {
+      "product_title_vi": "Đèn chùm pha lê gắn trần AooLiWang, 6 bóng E17, tương thích bóng LED",
+      "voltage_vi": "CHỜ XÁC NHẬN",
+      "price_status_vi": "Đã ghi nhận còn hàng trực tiếp trên trang sản phẩm; lượng hàng còn hạn chế",
+      "gaps_vi": [
+        "Chỉ là so sánh bộ đèn trang trí gia đình với độ tin cậy thấp; không suy rộng giá sang các loại 8 bóng, 12 bóng hoặc 2 đầu trong mô hình.",
+        "Có 6 đui E17; niêm yết ghi tối đa 40 W mỗi đui và không kèm bóng. Chưa có điện áp, quang trắc, cấp chống xâm nhập, gá lắp/neo tại nhà thờ hoặc thông tin tuổi thọ/phụ tùng của dự án đã được kiểm chứng.",
+        "Bộ đèn trang trí này không xác lập giả định về quang học/nguồn phát riêng của mô hình. Giá chỉ gồm thân đèn, không gồm bóng; không được tính trùng bóng với một bộ đèn hoàn chỉnh ở phần khác."
+      ]
+    },
+    "amazon-jp-panasonic-fy08pd9-pipe-exhaust-fan": {
+      "product_title_vi": "Quạt ống hút thải Panasonic FY-08PD9, có dây và phích cắm",
+      "voltage_vi": "CHỜ XÁC NHẬN",
+      "price_status_vi": "Đã ghi nhận còn hàng trực tiếp trên trang sản phẩm",
+      "gaps_vi": [
+        "Một quạt ống gia đình 100 mm chỉ là tham khảo phụ: loại quạt hút thải trong mô hình có đường kính 0.5 m, nên sản phẩm này không khớp kích thước, chưa được chọn cho nhà thờ và phải loại khỏi tổng tạm tính dự án.",
+        "Niêm yết Amazon không ghi điện áp, công suất vào, lưu lượng, mức âm hoặc cấp IP; không suy đoán tương thích hoặc dùng niêm yết này làm tính toán thông gió.",
+        "Chưa xác nhận tuổi thọ riêng của sản phẩm, khả năng cung cấp phụ tùng, phù hợp lắp đặt tại các vị trí mô hình hoặc tương thích nguồn điện nhà thờ."
+      ]
+    },
+    "amazon-jp-panasonic-fgu301a-30cm-wall-fan": {
+      "product_title_vi": "Quạt tường Panasonic F-GU301-A, 30 cm",
+      "voltage_vi": "CHỜ XÁC NHẬN",
+      "price_status_vi": "Đã ghi nhận còn hàng trực tiếp trên trang sản phẩm",
+      "gaps_vi": [
+        "Một quạt tường gia đình đảo hướng bằng dây kéo, 30 cm, chỉ là tham khảo phụ: fanWall trong mô hình có đường kính 0.45 m, nên sản phẩm này nhỏ hơn và phải loại khỏi tổng tạm tính dự án; cũng không khớp fanWallLarge hoặc phương án quạt trần.",
+        "Niêm yết Amazon không ghi điện áp, công suất W, lưu lượng, mức âm, cấp chống xâm nhập hoặc sự phù hợp khi lắp cao trong nhà thờ này.",
+        "Lưu lượng sản phẩm, tải gá lắp/kết cấu đỡ, tiếp cận bảo trì, tiếng ồn trong phụng vụ và tương thích nguồn điện cần dữ liệu nhà sản xuất và rà soát kỹ thuật dự án."
+      ]
+    },
+    "amazon-jp-fuji-vvf-2c-2mm-100m": {
+      "product_title_vi": "Dây VVF Fuji Electric Wire Industries, 2 lõi 2.0 mm, cuộn 100 m",
+      "voltage_vi": "Cấp điện áp định mức cáp 600 V (theo niêm yết)",
+      "price_status_vi": "Đã ghi nhận còn hàng trực tiếp trên trang sản phẩm; lượng hàng còn hạn chế",
+      "gaps_vi": [
+        "Một đơn vị cáp đi dây VVF nội địa dài 100 m để so sánh; chưa phải loại cáp, cỡ dây dẫn, phương pháp lắp đặt hoặc khối lượng được chọn cho dự án.",
+        "Điện áp dự án, số lõi và tiết diện, khả năng tải dòng, giảm định mức, sụt áp, phân cách tuyến, bịt ngăn cháy và cơ sở quy chuẩn địa phương còn chờ xác nhận.",
+        "Chiều dài tuyến trong mô hình không bằng chiều dài dây dẫn mua hoặc phụ trội chiều dài cáp; không được nhân cuộn 2 lõi 2.0 mm này theo các tuyến để tạo khối lượng thiết kế."
+      ]
+    },
+    "amazon-jp-mirai-mfs16-pfs-50m": {
+      "product_title_vi": "Ống Mirai Kogyo Miraflex SS PFS MFS-16, danh nghĩa 16 mm, cuộn 50 m",
+      "voltage_vi": "CHỜ XÁC NHẬN",
+      "price_status_vi": "Đã ghi nhận còn hàng trực tiếp trên trang sản phẩm",
+      "gaps_vi": [
+        "Một cuộn ống PFS Nhật Bản dài 50 m chỉ để so sánh đơn giá; niêm yết ghi đường kính ngoài 23 mm và đường kính trong khoảng 16 mm.",
+        "Niêm yết bán lẻ này không xác lập kích thước ống, tỷ lệ lấp đầy, bán kính uốn, khoảng cách giá đỡ, cấp cháy/khói, cấp môi trường hoặc phương pháp lắp tuyến được phê duyệt trong mô hình.",
+        "Không quy đổi cuộn này theo chiều dài hình học của tuyến thành khối lượng ống dự án; chọn tuyến và vật liệu vẫn là công việc kỹ thuật."
+      ]
+    },
+    "amazon-jp-koden-azf451wmc-45cm-wall-fan": {
+      "product_title_vi": "Quạt tường thương mại KODEN AZF451WMC, 45 cm, cánh nhôm",
+      "voltage_vi": "100 V (theo niêm yết)",
+      "price_status_vi": "Đã ghi nhận còn hàng trực tiếp trên trang sản phẩm",
+      "gaps_vi": [
+        "Chỉ để so sánh quạt tường thương mại, chưa phải thiết bị được chọn. Kích thước cánh 45 cm niêm yết khớp đường kính fanWall 0.45 m trong mô hình; trang không xác minh định mức tối đa 55 W hoặc điểm làm việc lưu lượng/tiếng ồn của mô hình.",
+        "Trang Amazon ghi rõ 100 V, nên thiết bị không tương thích với đầu vào 220-240 V; nguồn điện nhà thờ vẫn chưa xác định. Niêm yết không ghi cấp IP, mức âm hoặc lưu lượng.",
+        "Quạt nặng khoảng 4.2 kg, cần kiểm tra riêng kết cấu đỡ và tiếp cận an toàn. Niêm yết không xác lập khả năng chịu lực của neo, sự phù hợp của phụ kiện lắp, tuổi thọ hoặc hỗ trợ phụ tùng tại Việt Nam."
+      ]
+    },
+    "amazon-jp-yamaha-vxl1b8-slim-column-speaker": {
+      "product_title_vi": "Hệ thống loa Yamaha VXL1B-8",
+      "voltage_vi": "Không áp dụng điện lưới: loa thụ động",
+      "price_status_vi": "Đã ghi nhận còn hàng trực tiếp trên trang sản phẩm",
+      "gaps_vi": [
+        "Chỉ so sánh loa thụ động; định mức công suất loa là định mức của hệ thống âm thanh, không phải công suất đầu vào điện lưới. Trang Amazon không ghi định mức đầu vào âm thanh tối đa hoặc trở kháng để so sánh với loa cột 60 W trong mô hình.",
+        "Niêm yết ghi 24 x 1.5 inch củ loa toàn dải, góc phủ ngang 170° và đứng 40°, rộng 54 mm; mô hình là loa cột 0.6 m, 4 x 2.5 inch, với góc phủ giả định 130° x 30°. Chiều dài chính xác và mức độ phù hợp âm học chưa được kiểm chứng.",
+        "Thông tin sản phẩm đánh dấu không chống nước. Chưa xác lập bảo vệ ngoài trời, gá lắp/hướng loa riêng cho nhà thờ, STI đo thực tế, khả năng cung cấp phụ tùng hoặc bảo hành/dịch vụ tại Việt Nam."
+      ]
+    },
+    "amazon-jp-panasonic-wths105-5w-horn": {
+      "product_title_vi": "Loa nén Panasonic WT-HS105, 5 W",
+      "voltage_vi": "Không áp dụng điện lưới: loa thụ động",
+      "price_status_vi": "Đã ghi nhận còn hàng trực tiếp trên trang sản phẩm; lượng hàng còn hạn chế",
+      "gaps_vi": [
+        "Chỉ so sánh loa âm thanh thụ động; đầu vào định mức 5 W và các nấc đầu vào âm thanh 2 kΩ / 3.3 kΩ / 10 kΩ không phải điện áp lưới. Amazon không nêu tương thích nấc đường loa/trở kháng của hệ thống loa; định mức loa nén trong mô hình là 30 W.",
+        "Mô tả trang công bố khả năng chống nước nhỏ giọt IP65, trong khi trường thông tin sản phẩm ghi không chống nước. Mức phù hợp chống xâm nhập ngoài trời vẫn chưa xác định cho đến khi nhà sản xuất xác nhận cấp bảo vệ và điều kiện thử.",
+        "Niêm yết ghi đáp ứng 400 Hz-8 kHz, 105 dB tại 1 W/1 m, đường kính khoảng 152 mm x cao 200.5 mm, 1.3 kg và phụ kiện gá bằng thép không gỉ. Chưa xác nhận phù hợp hướng tính/công suất loa nén trong mô hình, thiết kế neo kết cấu, hướng loa dự án, bằng chứng tuổi thọ hoặc phụ tùng/bảo hành tại Việt Nam."
+      ]
+    },
+    "amazon-jp-audiotechnica-pro49ql-microphone": {
+      "product_title_vi": "Micro tụ điện cổ ngỗng audio-technica PRO49QL",
+      "voltage_vi": "Nguồn phantom DC 9-52 V cấp micro (theo niêm yết; không phải điện lưới AC)",
+      "price_status_vi": "Đã ghi nhận còn hàng trực tiếp trên trang sản phẩm",
+      "gaps_vi": [
+        "Chỉ so sánh micro; niêm yết ghi thu đơn hướng, chưa xác minh hướng thu hình tim trong mô hình. Thông số gồm đáp ứng 70-16,000 Hz, độ nhạy -37 dB, SPL tối đa 134 dB, tỷ số tín hiệu/nhiễu 66 dB và chiều dài 418 mm.",
+        "Sản phẩm có mút chắn gió và đầu nối XLR-M gá nhanh; phụ kiện gá bàn/đế, cáp, đầu vào bộ trộn và nguồn phantom không đi kèm hoặc chưa được xác nhận. Nguồn phantom và dòng micro 2 mA không phải tải điện lưới AC.",
+        "Chưa xác lập hiệu năng chống hú tại vị trí giảng đài/bàn thờ trong mô hình, đế lắp, tuổi thọ dự kiến, phụ tùng thay thế hoặc khả năng bảo hành/hỗ trợ tại Việt Nam."
+      ]
+    }
+  },
+  "sourceSha256": {
+    "docs/budget/japan-suppliers.json": "bfe68fa1852fc4ed8f3da0c2f174f4b70b162cd15111a3a7e0112dc439b657d7",
+    "docs/budget/amazon-price-references.json": "b7e527b5a1d2b0212a86975c379938a3a2c63c4f237395e4827d3a12045f501a"
+  }
+}
