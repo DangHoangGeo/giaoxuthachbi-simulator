@@ -21,7 +21,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'playwright');const ro
  await p.locator('[data-act=electrical-system][data-system=lighting]').click();await p.locator('[data-act=electrical-isolate-item][data-id=L78]').click();state=await inspect('06-chandelier-trace');assert.deepEqual(state.itemIds,['L78']);assert.equal(state.routeIds.length,3);
  const lengths=await p.evaluate(()=>{const E=CHURCH_SIMULATOR.electrical;return E.routes.filter(r=>E.reviewSelection().routeIds.includes(r.id)).map(r=>({id:r.id,length:r.length,points:r.points}));});
  const drop=lengths.find(r=>r.id.startsWith('drop:'));assert(drop,'individual chandelier has a branch route');
- await p.locator('button[data-act=electrical-select][data-electrical-id="'+drop.id+'"]').click();
+ await p.locator('button[data-act=electrical-select][data-electrical-id="'+drop.id+'"]').last().click();
  await p.getByText('Route vertices · metres',{exact:true}).click();
  const rows=await p.locator('details .electrical-table tbody tr').allTextContents();assert.equal(rows.length,drop.points.length,'all route vertices displayed');
  await p.screenshot({path:path.join(out,'vertices-L78.png')});

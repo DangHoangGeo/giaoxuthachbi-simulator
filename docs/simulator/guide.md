@@ -433,3 +433,7 @@ Still to do:
 ## Local electrical review layers · 8 October 2026
 
 Open **Simulator → Wiring**. Choose **Lights**, **Sound & microphones**, **Fans & ventilation**, **Exit signs**, **Powered decoration**, or **Distribution only**, then **Systems only** to isolate the corresponding 3D equipment and routes. Choose a **Circuit** or click an equipment row for a single-item trace. Upstream boards and shared supplies remain visible. The flat plan and vertex table use the same coordinates. **Controls · circuit** opens the corresponding simulator controls; **Restore building** restores the normal model. Filters do not change switches, layouts or analysis. Full instructions and outstanding engineering holds are in [routing](../electrical-grid/routing.md#local-engineering-review-layers--8-october-2026).
+
+### Connection review and framing · 9 October 2026
+
+Click an equipment row in **Wiring** to see its supply and branch relationships at the top of the panel. Click a linked route for its details. **Fit review** frames the current routes; **Show route** frames the selected run. **Export this review** saves only the displayed equipment and related upstream route/source context in a separate JSON review file. Full-design exports remain separate. Signal lines, shared-trunk lengths and unresolved electrical specifications are labeled explicitly; see [routing](../electrical-grid/routing.md#connection-inspector-and-review-snapshots--9-october-2026).

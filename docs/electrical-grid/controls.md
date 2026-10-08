@@ -73,3 +73,5 @@ The present Excel register and JSON/CSV exports provide route and equipment data
 ## Local 3D review navigation · 8 October 2026
 
 The local Wiring tab now filters by usage system, board, circuit or one equipment ID and retains the required upstream enclosure/feeder context. **Controls · circuit** opens the existing simulator dock at the corresponding board, fan regulator or sound strip. Opening this dock does not operate a circuit. Return through **Simulator → Wiring** to the retained view. This is a traceable review aid; unknown physical addresses and independent control capability remain pending. See [review layers](routing.md#local-engineering-review-layers--8-october-2026).
+
+The 9 October connection inspector shows feeder/trunk/branch relationships above the local review filters and links each route to its details. It keeps AV rack power separate from microphone/loudspeaker signals. **Controls · circuit** still opens the existing simulator control without actuating it; the inspector does not assign physical terminals, channels or protective devices. Its filtered JSON snapshot is a review aid, not a physical board drawing.

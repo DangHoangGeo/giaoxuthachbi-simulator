@@ -204,6 +204,11 @@
     body.innerHTML = html;
     if (renderKeepScroll) body.scrollTop = scroll; else body.scrollTop = 0;
     renderKeepScroll = false;
+    if (tab === 'wiring') {
+      const key = [SIM.electrical?.view.item, SIM.electrical?.view.selected].join('|');
+      if (key !== renderBody.lastElectricalSelection) body.scrollTop = 0;
+      renderBody.lastElectricalSelection = key;
+    }
     if (tab === 'speaker') SIM.audio?.renderPanel?.(body.querySelector('#simAudio'));
     if (SIM.state.selectedId !== renderBody.lastSelected) {
       renderBody.lastSelected = SIM.state.selectedId;
