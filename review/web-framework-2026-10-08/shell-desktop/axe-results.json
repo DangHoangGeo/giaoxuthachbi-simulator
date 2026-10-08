@@ -1,0 +1,24 @@
+{
+  "viHome": {
+    "available": true,
+    "violations": [],
+    "passes": 19,
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious"
+      }
+    ]
+  },
+  "enHome": {
+    "available": true,
+    "violations": [],
+    "passes": 19,
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious"
+      }
+    ]
+  }
+}

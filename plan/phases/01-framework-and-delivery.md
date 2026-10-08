@@ -1,6 +1,6 @@
 # Phase 01 — Framework and delivery foundation
 
-Status: **not started**. Depends on phase 00's approved publication boundary and safe fixtures. Read [architecture](../architecture.md) and [quality gates](../quality-and-release.md).
+Status: **local foundation in progress**, 8 October 2026. Branch `web/01-framework` starts from main `9c37b38`. Phase 00 preparation is retained unmerged at [`84edc9e`](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/tree/84edc9e); its G0 publication rights/profile and named-owner decisions remain held. Phase-00 package 6 permits independent local schema/content/viewer prototypes using synthetic fixtures. No public or cloud release is authorized by this continuation. Read [architecture](../architecture.md) and [quality gates](../quality-and-release.md).
 
 ## Outcome
 
@@ -38,5 +38,7 @@ Suggested commit boundaries: framework/toolchain; route shell; schema/boundary t
 - [ ] Authorized preview is inspected on desktop, or cloud setup is explicitly still pending; no claim of deployment readiness without it.
 
 ## Risks and handover
+
+The first local package implements a pinned Next.js/React/TypeScript shell, Vietnamese/English routing, a no-JavaScript reading path, desktop keyboard navigation, loading/error/not-found states, loopback standalone serving and test commands. It uses Biome because current Next ESLint plugins require an end-of-life ESLint major or incompatible peer overrides. See [development](../../docs/web/development.md) and [evidence](../../review/web-framework-2026-10-08/README.md). Production data readers/contracts, boundary scans, clean-copy checks and delivery configuration remain subsequent packages; no G1 box is closed merely by this initial build.
 
 Do not run the full legacy simulator during server rendering. Browser-only code must be behind a client boundary with cleanup. If hosting/account input is unavailable, complete local outputs and record the exact pending preview check; do not provision a substitute account. Pass the documented commands, content contract and validated shell to phase 02.
