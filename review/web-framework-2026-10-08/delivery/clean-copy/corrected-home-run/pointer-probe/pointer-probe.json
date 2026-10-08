@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "test": "malformed unpublished pointer with extra synthetic private field must fail generically without leaking canary field/value",
+  "changedPath": {
+    "path": "web/content/current.json",
+    "before": "original committed bytes",
+    "mutated": true,
+    "originalBytes": 90,
+    "originalSha256": "3569452f721ab9e5a4539eb831a017228759457305126a871ad28d02ffaafef0",
+    "mutatedBytes": 146,
+    "mutatedSha256": "45de0ec4d2c8d2777a350656994055d2faf8334fc7dbbbbb5552a073d35b2e9f",
+    "restoredByteForByte": true,
+    "restoredBytes": 90,
+    "restoredSha256": "3569452f721ab9e5a4539eb831a017228759457305126a871ad28d02ffaafef0"
+  },
+  "build": {
+    "command": "NEXT_TELEMETRY_DISABLED=1 npm run build",
+    "exitCode": 1,
+    "signal": null,
+    "spawnError": null,
+    "log": "logs/build-malformed-pointer.log",
+    "logBytes": 1268,
+    "logSha256": "faa7d888548e02fc426281da97333cc9a98aabac316b824db7b2627b42188290",
+    "containsGenericUnavailable": true,
+    "leakedCanaryField": false,
+    "leakedCanaryValue": false
+  },
+  "restoreError": null,
+  "assertions": {
+    "buildFails": true,
+    "genericUnavailableObserved": true,
+    "canaryFieldNotLeaked": true,
+    "canaryValueNotLeaked": true,
+    "pointerRestoredByteForByte": true
+  }
+}

@@ -1,0 +1,302 @@
+[
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "logs/npm-ci.log",
+    "matchingArchive": "clean-copy/logs/npm-ci.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "logs/lint.log",
+    "matchingArchive": "clean-copy/logs/lint.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "logs/typecheck.log",
+    "matchingArchive": "clean-copy/logs/typecheck.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "logs/unit-tests.log",
+    "matchingArchive": "clean-copy/logs/unit-tests.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "logs/production-build.log",
+    "matchingArchive": "clean-copy/logs/production-build.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "logs/boundary-scan.log",
+    "matchingArchive": "clean-copy/logs/boundary-scan.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "logs/headed-browser-tests.log",
+    "matchingArchive": "clean-copy/logs/headed-browser-tests.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/logs/npm-ci.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/npm-ci.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/logs/lint.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/lint.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/logs/typecheck.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/typecheck.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/logs/unit-tests.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/unit-tests.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/logs/production-build.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/production-build.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/logs/boundary-scan.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/boundary-scan.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/logs/headed-browser-tests.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/headed-browser-tests.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/logs/canary-detected.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/canary-detected.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/logs/canary-clean.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/canary-clean.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/canary-correction/logs/canary-detected-corrected.log",
+    "matchingArchive": "clean-copy/corrected-home-run/canary-correction/logs/canary-detected-corrected.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/canary-correction/logs/canary-clean-corrected.log",
+    "matchingArchive": "clean-copy/corrected-home-run/canary-correction/logs/canary-clean-corrected.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/pointer-probe/logs/build-malformed-pointer.log",
+    "matchingArchive": "clean-copy/corrected-home-run/pointer-probe/logs/build-malformed-pointer.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/client-boundary-probe/logs/build-client-server-boundary.log",
+    "matchingArchive": "clean-copy/corrected-home-run/client-boundary-probe/logs/build-client-server-boundary.log.gz"
+  },
+  {
+    "record": "clean-copy/evidence-index.json",
+    "declaredLog": "corrected-home-run/client-boundary-probe-routable/logs/build-client-server-boundary-routable.log",
+    "matchingArchive": "clean-copy/corrected-home-run/client-boundary-probe-routable/logs/build-client-server-boundary-routable.log.gz"
+  },
+  {
+    "record": "clean-copy/check-results.json",
+    "declaredLog": "logs/npm-ci.log",
+    "matchingArchive": "clean-copy/logs/npm-ci.log.gz"
+  },
+  {
+    "record": "clean-copy/check-results.json",
+    "declaredLog": "logs/lint.log",
+    "matchingArchive": "clean-copy/logs/lint.log.gz"
+  },
+  {
+    "record": "clean-copy/check-results.json",
+    "declaredLog": "logs/typecheck.log",
+    "matchingArchive": "clean-copy/logs/typecheck.log.gz"
+  },
+  {
+    "record": "clean-copy/check-results.json",
+    "declaredLog": "logs/unit-tests.log",
+    "matchingArchive": "clean-copy/logs/unit-tests.log.gz"
+  },
+  {
+    "record": "clean-copy/check-results.json",
+    "declaredLog": "logs/production-build.log",
+    "matchingArchive": "clean-copy/logs/production-build.log.gz"
+  },
+  {
+    "record": "clean-copy/check-results.json",
+    "declaredLog": "logs/boundary-scan.log",
+    "matchingArchive": "clean-copy/logs/boundary-scan.log.gz"
+  },
+  {
+    "record": "clean-copy/check-results.json",
+    "declaredLog": "logs/headed-browser-tests.log",
+    "matchingArchive": "clean-copy/logs/headed-browser-tests.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/baseline-run.json",
+    "declaredLog": "logs/npm-ci.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/npm-ci.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/baseline-run.json",
+    "declaredLog": "logs/lint.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/lint.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/baseline-run.json",
+    "declaredLog": "logs/typecheck.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/typecheck.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/baseline-run.json",
+    "declaredLog": "logs/unit-tests.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/unit-tests.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/baseline-run.json",
+    "declaredLog": "logs/production-build.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/production-build.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/baseline-run.json",
+    "declaredLog": "logs/boundary-scan.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/boundary-scan.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/baseline-run.json",
+    "declaredLog": "logs/headed-browser-tests.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/headed-browser-tests.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/final-restoration-check.json",
+    "declaredLog": "logs/npm-ci.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/npm-ci.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/final-restoration-check.json",
+    "declaredLog": "logs/lint.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/lint.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/final-restoration-check.json",
+    "declaredLog": "logs/typecheck.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/typecheck.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/final-restoration-check.json",
+    "declaredLog": "logs/unit-tests.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/unit-tests.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/final-restoration-check.json",
+    "declaredLog": "logs/production-build.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/production-build.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/final-restoration-check.json",
+    "declaredLog": "logs/boundary-scan.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/boundary-scan.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/final-restoration-check.json",
+    "declaredLog": "logs/headed-browser-tests.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/headed-browser-tests.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/final-restoration-check.json",
+    "declaredLog": "logs/canary-detected-corrected.log",
+    "matchingArchive": "clean-copy/corrected-home-run/canary-correction/logs/canary-detected-corrected.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/final-restoration-check.json",
+    "declaredLog": "logs/canary-clean-corrected.log",
+    "matchingArchive": "clean-copy/corrected-home-run/canary-correction/logs/canary-clean-corrected.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/final-restoration-check.json",
+    "declaredLog": "logs/build-malformed-pointer.log",
+    "matchingArchive": "clean-copy/corrected-home-run/pointer-probe/logs/build-malformed-pointer.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/final-restoration-check.json",
+    "declaredLog": "logs/build-client-server-boundary-routable.log",
+    "matchingArchive": "clean-copy/corrected-home-run/client-boundary-probe-routable/logs/build-client-server-boundary-routable.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/check-results.json",
+    "declaredLog": "logs/npm-ci.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/npm-ci.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/check-results.json",
+    "declaredLog": "logs/lint.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/lint.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/check-results.json",
+    "declaredLog": "logs/typecheck.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/typecheck.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/check-results.json",
+    "declaredLog": "logs/unit-tests.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/unit-tests.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/check-results.json",
+    "declaredLog": "logs/production-build.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/production-build.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/check-results.json",
+    "declaredLog": "logs/boundary-scan.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/boundary-scan.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/check-results.json",
+    "declaredLog": "logs/headed-browser-tests.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/headed-browser-tests.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/canary-probe.json",
+    "declaredLog": "logs/canary-detected.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/canary-detected.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/canary-probe.json",
+    "declaredLog": "logs/canary-clean.log",
+    "matchingArchive": "clean-copy/corrected-home-run/logs/canary-clean.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/client-boundary-probe-routable/client-boundary-probe-routable.json",
+    "declaredLog": "logs/build-client-server-boundary-routable.log",
+    "matchingArchive": "clean-copy/corrected-home-run/client-boundary-probe-routable/logs/build-client-server-boundary-routable.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/canary-correction/canary-probe-corrected.json",
+    "declaredLog": "logs/canary-detected-corrected.log",
+    "matchingArchive": "clean-copy/corrected-home-run/canary-correction/logs/canary-detected-corrected.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/canary-correction/canary-probe-corrected.json",
+    "declaredLog": "logs/canary-clean-corrected.log",
+    "matchingArchive": "clean-copy/corrected-home-run/canary-correction/logs/canary-clean-corrected.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/client-boundary-probe/client-boundary-probe.json",
+    "declaredLog": "logs/build-client-server-boundary.log",
+    "matchingArchive": "clean-copy/corrected-home-run/client-boundary-probe/logs/build-client-server-boundary.log.gz"
+  },
+  {
+    "record": "clean-copy/corrected-home-run/pointer-probe/pointer-probe.json",
+    "declaredLog": "logs/build-malformed-pointer.log",
+    "matchingArchive": "clean-copy/corrected-home-run/pointer-probe/logs/build-malformed-pointer.log.gz"
+  }
+]

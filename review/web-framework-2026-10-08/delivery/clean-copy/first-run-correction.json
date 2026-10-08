@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T01:22:46.283471+00:00",
+  "status": "superseded environment/setup attempt; retained unchanged for audit",
+  "clonePath": "/private/tmp/thachbi-web01-clean-0a5Kpc",
+  "commit": "07c06b6b6911b1898f4f32e5132375b004cfda83",
+  "homeHandling": "Incorrect first attempt set HOME to a task temporary directory. It was not the original HOME. This attempt is retained and is not authoritative; no system HOME was altered or deleted.",
+  "initialTemporaryHomePath": "/private/tmp/thachbi-web01-clean-env-0a5Kpc/home",
+  "checkExitCodes": [
+    {
+      "id": "npm-ci",
+      "status": "passed",
+      "exitCode": 0,
+      "runtimeMs": 4736.371
+    },
+    {
+      "id": "lint",
+      "status": "passed",
+      "exitCode": 0,
+      "runtimeMs": 1963.765
+    },
+    {
+      "id": "typecheck",
+      "status": "passed",
+      "exitCode": 0,
+      "runtimeMs": 3632.278
+    },
+    {
+      "id": "unit-tests",
+      "status": "passed",
+      "exitCode": 0,
+      "runtimeMs": 2711.716
+    },
+    {
+      "id": "production-build",
+      "status": "failed",
+      "exitCode": 1,
+      "runtimeMs": 17122.771
+    },
+    {
+      "id": "boundary-scan",
+      "status": "failed",
+      "exitCode": 1,
+      "runtimeMs": 135.985
+    },
+    {
+      "id": "headed-browser-tests",
+      "status": "failed",
+      "exitCode": 1,
+      "runtimeMs": 859.86
+    }
+  ],
+  "buildFailureExcerpt": "Turbopack could not create a new process/bind an internal port (Operation not permitted) while building /icon.svg/route under the default sandbox.",
+  "boundaryAndBrowserFailures": "Ran after the failed production build in this first attempt; retained as non-authoritative cascade results.",
+  "nextRun": "Fresh clone, preserve process.env.HOME unchanged, use task-specific TMPDIR/minimal PATH/CI flags; do not overwrite this evidence."
+}

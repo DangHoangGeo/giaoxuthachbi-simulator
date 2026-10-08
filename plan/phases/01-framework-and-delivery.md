@@ -1,6 +1,6 @@
 # Phase 01 — Framework and delivery foundation
 
-Status: **local foundation in progress**, 8 October 2026. Branch `web/01-framework` starts from main `9c37b38`. Phase 00 preparation is retained unmerged at [`84edc9e`](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/tree/84edc9e); its G0 publication rights/profile and named-owner decisions remain held. Phase-00 package 6 permits independent local schema/content/viewer prototypes using synthetic fixtures. No public or cloud release is authorized by this continuation. Read [architecture](../architecture.md) and [quality gates](../quality-and-release.md).
+Status: **G1 local foundation passed**, 8 October 2026. [Exit evidence and handover](../../review/web-framework-2026-10-08/delivery/README.md). Cloud setup remains explicitly pending. Branch `web/01-framework` starts from main `9c37b38`. Phase 00 preparation is retained unmerged at [`84edc9e`](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/tree/84edc9e); its G0 publication rights/profile and named-owner decisions remain held. Phase-00 package 6 permits independent local schema/content/viewer prototypes using synthetic fixtures. No public or cloud release is authorized by this continuation. Read [architecture](../architecture.md) and [quality gates](../quality-and-release.md).
 
 ## Outcome
 
@@ -30,15 +30,15 @@ Suggested commit boundaries: framework/toolchain; route shell; schema/boundary t
 
 ## Checks and exit gate G1
 
-- [ ] Clean clone → locked install → lint/typecheck/unit tests → production build succeeds under the documented runtime.
-- [ ] Public shell routes and deep links work in browser; errors and missing content remain understandable.
-- [ ] No model, simulator, protected fixture or production secret appears in initial public assets.
-- [ ] Existing offline opening workflow remains usable; run model checks if its code was touched.
-- [ ] Root-directory/include-files rules are proven by inspecting production build artifacts.
-- [ ] Authorized preview is inspected on desktop, or cloud setup is explicitly still pending; no claim of deployment readiness without it.
+- [x] Clean clone → locked install → lint/typecheck/unit tests → production build succeeds under the documented runtime.
+- [x] Public shell routes and deep links work in browser; errors and missing content remain understandable.
+- [x] No model, simulator, protected fixture or production secret appears in initial public assets.
+- [x] Existing offline opening workflow remains usable; run model checks if its code was touched.
+- [x] Root-directory/include-files rules are proven by inspecting production build artifacts.
+- [x] Authorized preview is inspected on desktop, or cloud setup is explicitly still pending; no claim of deployment readiness without it.
 
 ## Risks and handover
 
-The first local package implements a pinned Next.js/React/TypeScript shell, Vietnamese/English routing, a no-JavaScript reading path, desktop keyboard navigation, loading/error/not-found states, loopback standalone serving and test commands. It uses Biome because current Next ESLint plugins require an end-of-life ESLint major or incompatible peer overrides. See [development](../../docs/web/development.md) and [evidence](../../review/web-framework-2026-10-08/README.md). A second package adds strict public release schemas, immutable release/hash validation, an always-denied server-only protected interface and output/trace leakage checks; see the [data boundary](../../docs/web/data-boundary.md). Clean-copy checks and delivery configuration remain subsequent packages; no G1 box is closed merely by these builds.
+The first local package implements a pinned Next.js/React/TypeScript shell, Vietnamese/English routing, a no-JavaScript reading path, desktop keyboard navigation, loading/error/not-found states, loopback standalone serving and test commands. It uses Biome because current Next ESLint plugins require an end-of-life ESLint major or incompatible peer overrides. See [development](../../docs/web/development.md) and [evidence](../../review/web-framework-2026-10-08/README.md). A second package adds strict public release schemas, immutable release/hash validation, an always-denied server-only protected interface and output/trace leakage checks; see the [data boundary](../../docs/web/data-boundary.md). A clean detached copy, three negative boundary probes and GitHub CI pass; the delivery runbook records the unconfigured cloud target. G1 covers only this local foundation, with cloud setup explicitly pending under its final criterion. Publication/private-access/engineering gates are separate.
 
 Do not run the full legacy simulator during server rendering. Browser-only code must be behind a client boundary with cleanup. If hosting/account input is unavailable, complete local outputs and record the exact pending preview check; do not provision a substitute account. Pass the documented commands, content contract and validated shell to phase 02.

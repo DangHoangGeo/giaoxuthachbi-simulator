@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-08T01:24:31.135Z",
+  "clone": "/private/tmp/thachbi-web01-clean-rerun-xLc8CE",
+  "workingDirectory": "/private/tmp/thachbi-web01-clean-rerun-xLc8CE/web",
+  "safeEnvironment": {
+    "PATH": "/private/tmp/thachbi-node22/node-v22.23.3-darwin-arm64/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "HOME": "preserved unchanged from process.env.HOME; value omitted",
+    "TMPDIR": "/private/tmp/thachbi-web01-clean-rerun-env/tmp",
+    "CI": "1",
+    "NEXT_TELEMETRY_DISABLED": "1"
+  },
+  "checks": [
+    {
+      "id": "npm-ci",
+      "command": "npm ci --cache=/private/tmp/thachbi-npm-cache --offline",
+      "log": "logs/npm-ci.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 4446.635,
+      "logBytes": 303,
+      "logSha256": "9726105353726c4b952f2086d9e65118ceebbe1949e0c2ea8608503d1b910c31"
+    },
+    {
+      "id": "lint",
+      "command": "npm run lint",
+      "log": "logs/lint.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 2062.847,
+      "logBytes": 293,
+      "logSha256": "4e2b823a4836f05268837a114d8d857307101cb1b3cd2f3ca22ecc269535e6d9"
+    },
+    {
+      "id": "typecheck",
+      "command": "npm run typecheck",
+      "log": "logs/typecheck.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 3692.674,
+      "logBytes": 313,
+      "logSha256": "775451a93bb6a46943248eedf7e0bbae82cbe08b2e55a1b08a5cf7b2f1e33849"
+    },
+    {
+      "id": "unit-tests",
+      "command": "npm test",
+      "log": "logs/unit-tests.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 2643.073,
+      "logBytes": 911,
+      "logSha256": "f2b8fc1bb9a7edc3f7fe77ed60dd4de9e1fa6ed66c4a223fd48b9429d4be1b32"
+    },
+    {
+      "id": "production-build",
+      "command": "NEXT_TELEMETRY_DISABLED=1 npm run build",
+      "log": "logs/production-build.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 4768.907,
+      "logBytes": 1364,
+      "logSha256": "069bde3a0efa2455d3aa671f248386d66af2c0f8b96e5ebb13994c12e8fe43a5"
+    },
+    {
+      "id": "boundary-scan",
+      "command": "npm run check:boundary",
+      "log": "logs/boundary-scan.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 537.426,
+      "logBytes": 816,
+      "logSha256": "296b467a6178318156af9963fa295684f6b3a516d99b44a86d017903c8462352"
+    },
+    {
+      "id": "headed-browser-tests",
+      "command": "PLAYWRIGHT_CHANNEL=chrome HEADED=1 npm run test:browser",
+      "log": "logs/headed-browser-tests.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 3787.196,
+      "logBytes": 339,
+      "logSha256": "bdee6147b7bf289275e2566deda74c2ffdf6d23f207802dab96e6323e308d272"
+    }
+  ],
+  "updatedAt": "2026-10-08T01:25:34.764Z"
+}

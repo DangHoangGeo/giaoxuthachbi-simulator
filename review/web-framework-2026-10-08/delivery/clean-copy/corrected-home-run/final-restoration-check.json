@@ -1,0 +1,613 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-08T01:30:28.321Z",
+  "evidenceRoot": "/private/tmp/thachbi-web01-clean-evidence",
+  "environmentHandling": {
+    "firstRun": {
+      "schemaVersion": 1,
+      "recordedAt": "2026-10-08T01:22:46.283471+00:00",
+      "status": "superseded environment/setup attempt; retained unchanged for audit",
+      "clonePath": "/private/tmp/thachbi-web01-clean-0a5Kpc",
+      "commit": "07c06b6b6911b1898f4f32e5132375b004cfda83",
+      "homeHandling": "Incorrect first attempt set HOME to a task temporary directory. It was not the original HOME. This attempt is retained and is not authoritative; no system HOME was altered or deleted.",
+      "initialTemporaryHomePath": "/private/tmp/thachbi-web01-clean-env-0a5Kpc/home",
+      "checkExitCodes": [
+        {
+          "id": "npm-ci",
+          "status": "passed",
+          "exitCode": 0,
+          "runtimeMs": 4736.371
+        },
+        {
+          "id": "lint",
+          "status": "passed",
+          "exitCode": 0,
+          "runtimeMs": 1963.765
+        },
+        {
+          "id": "typecheck",
+          "status": "passed",
+          "exitCode": 0,
+          "runtimeMs": 3632.278
+        },
+        {
+          "id": "unit-tests",
+          "status": "passed",
+          "exitCode": 0,
+          "runtimeMs": 2711.716
+        },
+        {
+          "id": "production-build",
+          "status": "failed",
+          "exitCode": 1,
+          "runtimeMs": 17122.771
+        },
+        {
+          "id": "boundary-scan",
+          "status": "failed",
+          "exitCode": 1,
+          "runtimeMs": 135.985
+        },
+        {
+          "id": "headed-browser-tests",
+          "status": "failed",
+          "exitCode": 1,
+          "runtimeMs": 859.86
+        }
+      ],
+      "buildFailureExcerpt": "Turbopack could not create a new process/bind an internal port (Operation not permitted) while building /icon.svg/route under the default sandbox.",
+      "boundaryAndBrowserFailures": "Ran after the failed production build in this first attempt; retained as non-authoritative cascade results.",
+      "nextRun": "Fresh clone, preserve process.env.HOME unchanged, use task-specific TMPDIR/minimal PATH/CI flags; do not overwrite this evidence."
+    },
+    "correctedRun": {
+      "PATH": "/private/tmp/thachbi-node22/node-v22.23.3-darwin-arm64/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+      "HOME": "preserved unchanged from process.env.HOME; value omitted",
+      "TMPDIR": "/private/tmp/thachbi-web01-clean-rerun-env/tmp",
+      "CI": "1",
+      "NEXT_TELEMETRY_DISABLED": "1"
+    },
+    "correctedHomePreservedUnchanged": true,
+    "homeValueRecorded": false
+  },
+  "clone": {
+    "path": "/private/tmp/thachbi-web01-clean-rerun-xLc8CE",
+    "expectedHead": "07c06b6b6911b1898f4f32e5132375b004cfda83",
+    "head": "07c06b6b6911b1898f4f32e5132375b004cfda83",
+    "expectedTree": "9e1348bfa86103b1df6d542ab0be1dfc80b64e63",
+    "tree": "9e1348bfa86103b1df6d542ab0be1dfc80b64e63",
+    "gitStatusPorcelain": "",
+    "sourceClean": true
+  },
+  "baselineChecks": {
+    "commandExitCodes": [
+      {
+        "id": "npm-ci",
+        "exitCode": 0,
+        "log": "logs/npm-ci.log",
+        "logSha256": "9726105353726c4b952f2086d9e65118ceebbe1949e0c2ea8608503d1b910c31"
+      },
+      {
+        "id": "lint",
+        "exitCode": 0,
+        "log": "logs/lint.log",
+        "logSha256": "4e2b823a4836f05268837a114d8d857307101cb1b3cd2f3ca22ecc269535e6d9"
+      },
+      {
+        "id": "typecheck",
+        "exitCode": 0,
+        "log": "logs/typecheck.log",
+        "logSha256": "775451a93bb6a46943248eedf7e0bbae82cbe08b2e55a1b08a5cf7b2f1e33849"
+      },
+      {
+        "id": "unit-tests",
+        "exitCode": 0,
+        "log": "logs/unit-tests.log",
+        "logSha256": "f2b8fc1bb9a7edc3f7fe77ed60dd4de9e1fa6ed66c4a223fd48b9429d4be1b32"
+      },
+      {
+        "id": "production-build",
+        "exitCode": 0,
+        "log": "logs/production-build.log",
+        "logSha256": "069bde3a0efa2455d3aa671f248386d66af2c0f8b96e5ebb13994c12e8fe43a5"
+      },
+      {
+        "id": "boundary-scan",
+        "exitCode": 0,
+        "log": "logs/boundary-scan.log",
+        "logSha256": "296b467a6178318156af9963fa295684f6b3a516d99b44a86d017903c8462352"
+      },
+      {
+        "id": "headed-browser-tests",
+        "exitCode": 0,
+        "log": "logs/headed-browser-tests.log",
+        "logSha256": "bdee6147b7bf289275e2566deda74c2ffdf6d23f207802dab96e6323e308d272"
+      }
+    ],
+    "allRequestedChecksPassed": true,
+    "node": "v22.23.3",
+    "npm": "10.9.9",
+    "lockSha256Before": "3ad37cadd2142f0da1abd9d561137184e4e810461e2a65c89351c5d95d087789",
+    "lockSha256AfterBaseline": "3ad37cadd2142f0da1abd9d561137184e4e810461e2a65c89351c5d95d087789",
+    "lockSha256Final": "3ad37cadd2142f0da1abd9d561137184e4e810461e2a65c89351c5d95d087789",
+    "successfulBaselineBuildId": "hKcCFWOvrxcJTevqBEF7o",
+    "currentGeneratedBuildIdAfterNegativeProbes": null
+  },
+  "engineeringSourceHashes": {
+    "count": 59,
+    "matches": 59,
+    "allMatch": true,
+    "entries": [
+      {
+        "path": "Thach_Bi_Viewer/bundle.js",
+        "expectedSha256": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+        "actualSha256": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/carving.js",
+        "expectedSha256": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+        "actualSha256": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/glass-art.js",
+        "expectedSha256": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+        "actualSha256": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/navigation.js",
+        "expectedSha256": "829bedaeb24a98aea41769520546d7ac39f5953ba91a7205c2f5759f4ed11f16",
+        "actualSha256": "829bedaeb24a98aea41769520546d7ac39f5953ba91a7205c2f5759f4ed11f16",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/planning/model-plan-data.js",
+        "expectedSha256": "fa02b393409c549470a9a10bf012dc17d0c5e435c844e535438b8841939417eb",
+        "actualSha256": "fa02b393409c549470a9a10bf012dc17d0c5e435c844e535438b8841939417eb",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/planning/plan.js",
+        "expectedSha256": "6f4ccce9caed6f4a9f065d6ff2d590492a8a2f1ce10cde6343ec1a687dac5774",
+        "actualSha256": "6f4ccce9caed6f4a9f065d6ff2d590492a8a2f1ce10cde6343ec1a687dac5774",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/planning.js",
+        "expectedSha256": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+        "actualSha256": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/realism.js",
+        "expectedSha256": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+        "actualSha256": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/references.js",
+        "expectedSha256": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+        "actualSha256": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/render-batches.js",
+        "expectedSha256": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+        "actualSha256": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/sanctuary.js",
+        "expectedSha256": "2f1114fadfc35f48ab34c66b578b277d22f2b839f66ef7eaf6affdefc2201de3",
+        "actualSha256": "2f1114fadfc35f48ab34c66b578b277d22f2b839f66ef7eaf6affdefc2201de3",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/analysis.js",
+        "expectedSha256": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+        "actualSha256": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/audio-synthesis.js",
+        "expectedSha256": "0ac8dba169e165579126a678bcd91e8d330ac85a6956e70749c9ebf12e1aee23",
+        "actualSha256": "0ac8dba169e165579126a678bcd91e8d330ac85a6956e70749c9ebf12e1aee23",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/audio.js",
+        "expectedSha256": "b5d5140c527c80e1c86e043292172505ee5cc6ed032a1392c8cf4664ee763cad",
+        "actualSha256": "b5d5140c527c80e1c86e043292172505ee5cc6ed032a1392c8cf4664ee763cad",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/catalog.js",
+        "expectedSha256": "db353c028cfa7377844bfd174941893a04d68ce05ec1719f2f5449d2785a4a46",
+        "actualSha256": "db353c028cfa7377844bfd174941893a04d68ce05ec1719f2f5449d2785a4a46",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/controls.js",
+        "expectedSha256": "02ba5f27a1cca4e8217a6bb4a84e70794609082a2b19d805dc12d43790b91e58",
+        "actualSha256": "02ba5f27a1cca4e8217a6bb4a84e70794609082a2b19d805dc12d43790b91e58",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/design.js",
+        "expectedSha256": "7b632d74a358cdc8d65f707864b3abe44d2e32ae070859c45f5b28447d753beb",
+        "actualSha256": "7b632d74a358cdc8d65f707864b3abe44d2e32ae070859c45f5b28447d753beb",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/electrical.js",
+        "expectedSha256": "192d0942067dc399f379fca989876817a7468445570323b5c4e325ce6c2b9a4c",
+        "actualSha256": "192d0942067dc399f379fca989876817a7468445570323b5c4e325ce6c2b9a4c",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/engine.js",
+        "expectedSha256": "d94ea996d211291510afe30d888ddae1f94e97a8f4217e7916a48ad7bc267a60",
+        "actualSha256": "d94ea996d211291510afe30d888ddae1f94e97a8f4217e7916a48ad7bc267a60",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/light-grid.js",
+        "expectedSha256": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+        "actualSha256": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/persistent-lighting.js",
+        "expectedSha256": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+        "actualSha256": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/physics.js",
+        "expectedSha256": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+        "actualSha256": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/samples.js",
+        "expectedSha256": "d249a101c740bfff5a4154ec2fcc7343e314505332191f435dcad609e83d85d3",
+        "actualSha256": "d249a101c740bfff5a4154ec2fcc7343e314505332191f435dcad609e83d85d3",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/ui.js",
+        "expectedSha256": "51a5d17ba3827509568e42ee5d06b5a0e833b4f739bc10ac631426401658bcb8",
+        "actualSha256": "51a5d17ba3827509568e42ee5d06b5a0e833b4f739bc10ac631426401658bcb8",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/startup.js",
+        "expectedSha256": "c58afab77ff08d8d509ecdf0aa0c11bd6737b832122e726de8c48cce98ee77ce",
+        "actualSha256": "c58afab77ff08d8d509ecdf0aa0c11bd6737b832122e726de8c48cce98ee77ce",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/texture-memory.js",
+        "expectedSha256": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+        "actualSha256": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+        "matches": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/viewer-performance.js",
+        "expectedSha256": "f45fee8c12aa37f9e6a7e4bcbe75b8a679b79c5241f199ccd5349edc204b60d8",
+        "actualSha256": "f45fee8c12aa37f9e6a7e4bcbe75b8a679b79c5241f199ccd5349edc204b60d8",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/image-manifest.json",
+        "expectedSha256": "330cfe1af35e6e9d2cf09ced1b0f572da3461b692625b333e367bcd192102cfc",
+        "actualSha256": "330cfe1af35e6e9d2cf09ced1b0f572da3461b692625b333e367bcd192102cfc",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/01-upper-bay-front.png",
+        "expectedSha256": "a6279ea21f941142a9e9eeb7f741333c798b15773689aeb98a31d8df4a780bb0",
+        "actualSha256": "a6279ea21f941142a9e9eeb7f741333c798b15773689aeb98a31d8df4a780bb0",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/02-column-head-three-quarter.png",
+        "expectedSha256": "80e608c91a1cb965d1e88526c02dc98745fedc6ffa2342ee65bd9bcc259fd5e2",
+        "actualSha256": "80e608c91a1cb965d1e88526c02dc98745fedc6ffa2342ee65bd9bcc259fd5e2",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/03-carved-bracket-underside.png",
+        "expectedSha256": "55ad957d9fb18309ea92524a1a2f360c23f6e50e30ac04aae0a8bebea8cbb02d",
+        "actualSha256": "55ad957d9fb18309ea92524a1a2f360c23f6e50e30ac04aae0a8bebea8cbb02d",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/04-upper-rail-roof-connection.png",
+        "expectedSha256": "ce80845fced6761803538b8dad3458ed049e4745959e9f5c289e399a7867ec65",
+        "actualSha256": "ce80845fced6761803538b8dad3458ed049e4745959e9f5c289e399a7867ec65",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/07-full-width-frame-concrete-sides.png",
+        "expectedSha256": "be351782a27031c8c71cec27045dc0237be172cbe861533df3dd84a2794fe8e1",
+        "actualSha256": "be351782a27031c8c71cec27045dc0237be172cbe861533df3dd84a2794fe8e1",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/08-longitudinal-beams-two-frames.png",
+        "expectedSha256": "e0684f160d8e1fbed2a572e6922a11735234b98807321476301ce183c2b1e2a4",
+        "actualSha256": "e0684f160d8e1fbed2a572e6922a11735234b98807321476301ce183c2b1e2a4",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/09-side-beam-concrete-bearing.png",
+        "expectedSha256": "ea9a4a39025203edae26d306d526ec70d716992693086aa8d7f32645bc8a0623",
+        "actualSha256": "ea9a4a39025203edae26d306d526ec70d716992693086aa8d7f32645bc8a0623",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/10-upper-roof-longitudinal-connections.png",
+        "expectedSha256": "eaa6ff65222030f934fad6ee7797dad44459bfe61b5b062334ac4d5f95adc55b",
+        "actualSha256": "eaa6ff65222030f934fad6ee7797dad44459bfe61b5b062334ac4d5f95adc55b",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/01-upper-bay-front.png",
+        "expectedSha256": "d36b340d9693375ddfbb846b0bcab789345d0dd16477b671796a5a82654b37a3",
+        "actualSha256": "d36b340d9693375ddfbb846b0bcab789345d0dd16477b671796a5a82654b37a3",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/02-column-head-three-quarter.png",
+        "expectedSha256": "df2c1fa4859bcc06b9c9ddbc30a9b86265b431678b06b0002d9742b7aa1d1942",
+        "actualSha256": "df2c1fa4859bcc06b9c9ddbc30a9b86265b431678b06b0002d9742b7aa1d1942",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/03-carved-bracket-underside.png",
+        "expectedSha256": "70b5700953bd45b1aff09353fb0fd3ba9fd723d694079bf6d9368762d67732a9",
+        "actualSha256": "70b5700953bd45b1aff09353fb0fd3ba9fd723d694079bf6d9368762d67732a9",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/04-upper-rail-roof-connection.png",
+        "expectedSha256": "5ac11d8a9f3c858d37a99a6056475ae636ca714c155dabd1270d297534a6e0b5",
+        "actualSha256": "5ac11d8a9f3c858d37a99a6056475ae636ca714c155dabd1270d297534a6e0b5",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/07-full-width-frame-concrete-sides.png",
+        "expectedSha256": "162fe45aac764d13894977952ec8ea914fa645f748794ed61f1436b20e3c3abc",
+        "actualSha256": "162fe45aac764d13894977952ec8ea914fa645f748794ed61f1436b20e3c3abc",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/08-longitudinal-beams-two-frames.png",
+        "expectedSha256": "a3312ef1c0801b55073d95156c37b94bc8cba1686445c8e6c54f916332208f83",
+        "actualSha256": "a3312ef1c0801b55073d95156c37b94bc8cba1686445c8e6c54f916332208f83",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/09-side-beam-concrete-bearing.png",
+        "expectedSha256": "70c19714ee78bc1eff0f3d5fd7ae3cecb5f7f173a37e1646596ff5846015a13d",
+        "actualSha256": "70c19714ee78bc1eff0f3d5fd7ae3cecb5f7f173a37e1646596ff5846015a13d",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/10-upper-roof-longitudinal-connections.png",
+        "expectedSha256": "77cb263480a2eb16583c7507bb3ac68618df72c96b005e747cdf00ca8564b13c",
+        "actualSha256": "77cb263480a2eb16583c7507bb3ac68618df72c96b005e747cdf00ca8564b13c",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/requirements.json",
+        "expectedSha256": "d82687d2f11a0e60e80c3745b78fadda726c8c79b525ea1be02fba5fbcf29581",
+        "actualSha256": "d82687d2f11a0e60e80c3745b78fadda726c8c79b525ea1be02fba5fbcf29581",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/04-top-view.png",
+        "expectedSha256": "1929e61f7d8d8dd3d57845f545e7ee4a239eedbeec46b3eb251355716cdd47ee",
+        "actualSha256": "1929e61f7d8d8dd3d57845f545e7ee4a239eedbeec46b3eb251355716cdd47ee",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/06-slide-cut-inside-church.png",
+        "expectedSha256": "ca4f0bb3b2c6abf644586cea9038d7ed2764545ea54b53111b03fdc85809c7dd",
+        "actualSha256": "ca4f0bb3b2c6abf644586cea9038d7ed2764545ea54b53111b03fdc85809c7dd",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/IMG_20260910_171557_634_1.JPG",
+        "expectedSha256": "6dd42d95c392acad2a12a0ad41b628724c2a2687cb680e67dba4072e8ee6517d",
+        "actualSha256": "6dd42d95c392acad2a12a0ad41b628724c2a2687cb680e67dba4072e8ee6517d",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/IMG_2676.PNG",
+        "expectedSha256": "de6f575d7e5c0fe91f8bfc57a5504e3cd20096dc3a31444cc1c3e999b83d41af",
+        "actualSha256": "de6f575d7e5c0fe91f8bfc57a5504e3cd20096dc3a31444cc1c3e999b83d41af",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/IMG_2677.PNG",
+        "expectedSha256": "ec557cc1ed6e31f018cca0ee3651c0654f173f7479e25c852f65521d29dedeab",
+        "actualSha256": "ec557cc1ed6e31f018cca0ee3651c0654f173f7479e25c852f65521d29dedeab",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/IMG_2678.PNG",
+        "expectedSha256": "8c3206df45db771e88c0fd5a4003fbfb5f70ab96f00970378a6e93ff82daf4fa",
+        "actualSha256": "8c3206df45db771e88c0fd5a4003fbfb5f70ab96f00970378a6e93ff82daf4fa",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/IMG_2679.PNG",
+        "expectedSha256": "ed38c696176ea6655ecfd7807af8b275259e5238c9edc5bba0f3555ee9bb5b59",
+        "actualSha256": "ed38c696176ea6655ecfd7807af8b275259e5238c9edc5bba0f3555ee9bb5b59",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/giao-xu-thach-bi-04-mat-bang-tong-quan-nha-tho-giao-xu.pdf",
+        "expectedSha256": "9fca89fc1c85f171ef5b26271bb4810b2b49e744166c53fedb663e50119e3d6c",
+        "actualSha256": "9fca89fc1c85f171ef5b26271bb4810b2b49e744166c53fedb663e50119e3d6c",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/giao-xu-thach-bi-06-mat-dung-mot-vi-than-nha-tho.pdf",
+        "expectedSha256": "0d7485040df37efea2220e72fb283161717dc660c25fcf68438c1d3e94c4e0aa",
+        "actualSha256": "0d7485040df37efea2220e72fb283161717dc660c25fcf68438c1d3e94c4e0aa",
+        "matches": true
+      },
+      {
+        "path": "docs/beams-roof-connections/validate.py",
+        "expectedSha256": "68bf3f41998643efb1b68ec8702ab808684a292f34b8197b86f9c4b1b96a90aa",
+        "actualSha256": "68bf3f41998643efb1b68ec8702ab808684a292f34b8197b86f9c4b1b96a90aa",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify_concealed_routes.cjs",
+        "expectedSha256": "87b8011452afb00d56826c8aac99ca98eab0278aff89fe0a7602447cb7c7b207",
+        "actualSha256": "87b8011452afb00d56826c8aac99ca98eab0278aff89fe0a7602447cb7c7b207",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify_estimates.cjs",
+        "expectedSha256": "b2862659596eb35d4d3a39cd95005d038e766e0cf238c9f089a481dae3b15ba8",
+        "actualSha256": "b2862659596eb35d4d3a39cd95005d038e766e0cf238c9f089a481dae3b15ba8",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify_model.cjs",
+        "expectedSha256": "36c0e242ef722b09ecdefb2a59a9170a39efc96a1c0df2e2c93e5e80d33da189",
+        "actualSha256": "36c0e242ef722b09ecdefb2a59a9170a39efc96a1c0df2e2c93e5e80d33da189",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify_simulator.cjs",
+        "expectedSha256": "44ce5c6d5c34abefd367b37c0da0205fb547b6df88c15ab9d3fcb11e9c23f4f1",
+        "actualSha256": "44ce5c6d5c34abefd367b37c0da0205fb547b6df88c15ab9d3fcb11e9c23f4f1",
+        "matches": true
+      }
+    ]
+  },
+  "negativeProbes": {
+    "canary": {
+      "correctedAttempt": {
+        "detectedNonzero": true,
+        "detectedNamesMarker": true,
+        "detectedNamesFile": true,
+        "removedOnlyInjectedFile": true,
+        "cleanScannerPasses": true
+      },
+      "detectedScan": {
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null,
+        "log": "logs/canary-detected-corrected.log",
+        "logBytes": 856,
+        "logSha256": "d924b4e1ac8fd80b2fd98fd2c2cb60587a14c31690e9a101ce1dedd30cd17452",
+        "containsRequiredMarkerLabel": true,
+        "containsInjectedRelativePath": true
+      },
+      "cleanScan": {
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "log": "logs/canary-clean-corrected.log",
+        "logBytes": 736,
+        "logSha256": "d36a7c031dd4e11447d445c21da6a7ccb682abea088030ac845a2cb1ceb68147"
+      },
+      "supersededHarnessAttempt": {
+        "assertions": {
+          "detectedNonzero": true,
+          "detectedNamesMarker": true,
+          "detectedNamesFile": false,
+          "removedOnlyInjectedFile": true,
+          "cleanScannerPasses": true
+        },
+        "note": "The scanner reported `.next/static/...`; the first harness compared against `web/.next/static/...`. The scanner behavior itself was correct, and the separately preserved corrected attempt passes."
+      },
+      "injectedFilesAbsent": [
+        {
+          "path": "web/.next/static/synthetic-private-canary-probe-f6f9931f-3f51-41b5-9e3c-93833314858b.txt",
+          "absent": true
+        },
+        {
+          "path": "web/.next/static/synthetic-private-canary-probe-cfc5f08c-fc0e-4689-be31-1c0d4e5d8bf7.txt",
+          "absent": true
+        }
+      ]
+    },
+    "malformedPointer": {
+      "assertions": {
+        "buildFails": true,
+        "genericUnavailableObserved": true,
+        "canaryFieldNotLeaked": true,
+        "canaryValueNotLeaked": true,
+        "pointerRestoredByteForByte": true
+      },
+      "build": {
+        "command": "NEXT_TELEMETRY_DISABLED=1 npm run build",
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null,
+        "log": "logs/build-malformed-pointer.log",
+        "logBytes": 1268,
+        "logSha256": "faa7d888548e02fc426281da97333cc9a98aabac316b824db7b2627b42188290",
+        "containsGenericUnavailable": true,
+        "leakedCanaryField": false,
+        "leakedCanaryValue": false
+      },
+      "pointerRestoredFromProbe": true,
+      "originalSha256": "3569452f721ab9e5a4539eb831a017228759457305126a871ad28d02ffaafef0",
+      "currentSha256": "3569452f721ab9e5a4539eb831a017228759457305126a871ad28d02ffaafef0",
+      "currentMatchesOriginal": true
+    },
+    "clientBoundary": {
+      "supersededNonRoutableFixture": {
+        "assertions": {
+          "buildFails": false,
+          "serverOnlyImportRejected": false,
+          "clientBoundaryNamed": false,
+          "protectedModuleNamed": false,
+          "onlyTemporaryPageRemoved": true
+        },
+        "note": "Leading-underscore route folder was excluded by Next.js private-folder convention, so this attempt did not exercise the boundary."
+      },
+      "routableFixture": {
+        "assertions": {
+          "buildFails": true,
+          "serverOnlyImportRejected": true,
+          "clientBoundaryNamed": true,
+          "protectedModuleNamed": true,
+          "onlyTemporaryPageRemoved": true
+        },
+        "build": {
+          "command": "NEXT_TELEMETRY_DISABLED=1 npm run build",
+          "exitCode": 1,
+          "signal": null,
+          "spawnError": null,
+          "log": "logs/build-client-server-boundary-routable.log",
+          "logBytes": 2761,
+          "logSha256": "80fd5370faa14cda085f25257560c0f5678c822b9006aadcf632d8ff96b01322",
+          "containsServerOnlyDiagnostic": true,
+          "containsClientBoundaryDiagnostic": true,
+          "containsProtectedModuleDiagnostic": true
+        }
+      }
+    }
+  },
+  "restoration": {
+    "pointerMatchesOriginal": true,
+    "temporaryProbeRoutesAbsent": true,
+    "allCanaryFilesAbsent": true,
+    "gitSourceClean": true,
+    "lockUnchangedFromBaseline": true,
+    "engineeringHashesUnchanged": true
+  },
+  "interpretation": "The successful baseline build ID is retained from the clean pre-probe baseline. Later intentionally negative build probes may have changed ignored .next output; the current BUILD_ID is recorded separately and is not represented as a successful final build. No repository source/tests/thresholds were edited.",
+  "allFinalAssertionsPass": true
+}

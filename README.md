@@ -37,7 +37,7 @@ The immediate priority is to coordinate the positions of lights, speakers, micro
 
 The [web app roadmap](plan/README.md) proposes Next.js on Vercel: a public church homepage and image gallery, a construction timeline, a lightweight 3D visit with local-time day/night settings, and password-protected, read-only engineering views. A later inspection view will help Father find upcoming work and inspect source-backed object positions, dimensions and specifications.
 
-This is a plan for future implementation. The existing offline viewer below remains the current application. The roadmap includes eight phases, data/publication rules, acceptance tests, access control, deployment and long-term maintenance; no web framework or cloud service has been configured yet.
+A local desktop web foundation now exists under `web/`: Vietnamese/English preview pages, strict public-content validation and desktop tests. See the [development guide](docs/web/development.md) and [delivery status](docs/web/deployment.md). Public content remains unpublished, protected reads are disabled, and no cloud service has been configured. The eight-phase roadmap still governs the remaining features and launch gates. The offline viewer below remains the engineering authoring application.
 
 ## Open the model
 
@@ -131,7 +131,8 @@ The HTML brief generator requires `marked`. Excel regeneration uses the configur
 | `Thach_Bi_Viewer/` | Offline viewer, model, simulator modules, interactive plan and reference assets. |
 | `docs/` | Drawing sources, design briefs, calculation limitations, engineering studies and equipment registers. |
 | `scripts/` | Verification and document/register generation tools. |
-| `plan/` | Future web architecture, roadmap, implementation phases and release criteria. |
+| `web/` | Local desktop web foundation; unpublished public shell and disabled private access. |
+| `plan/` | Engineering/web roadmaps, implementation phases and release criteria. |
 | `review/` | Dated review evidence and historical comparisons; earlier results may not describe the current model. |
 | `AGENTS.md` | Shared rules for accuracy, coordinated documentation, testing and small commits. |
 

@@ -1,6 +1,6 @@
 # Church web app roadmap
 
-Planning baseline: **7 October 2026**. Execution update: **8 October 2026 — local phase-01 foundation in progress**. Phase 00 preparation is pushed and unmerged at [`84edc9e`](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/tree/84edc9e); real publication rights/owners remain held. No cloud account or deployment is created. Read [AGENTS.md](../AGENTS.md) before executing any phase.
+Planning baseline: **7 October 2026**. Execution update: **8 October 2026 — local phase-01 foundation verified**. Phase 00 preparation is pushed and unmerged at [`84edc9e`](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/tree/84edc9e); real publication rights/owners remain held. No cloud account or deployment is created. Read [AGENTS.md](../AGENTS.md) before executing any phase.
 
 **Execution priority, 8 October 2026:** the [building-systems engineering roadmap](engineering/README.md) comes first. Its six phases cover the baseline, joint light/sound/microphone/dynamic-air optimisation, concealment, routes, boards/controls and coordinated registers/handover. The engineer approved execution on 8 October 2026. Then follow the web order below, applying phase 07 before each launch. If engineering work is blocked on external input, its roadmap defines which independent packages can continue without treating an unfinished design as approved.
 
@@ -25,7 +25,7 @@ Start with reviewed files and a maintainer publishing workflow. Use invited indi
 
 ## Roadmap and dependencies
 
-Phase 00 independent preparation is complete on its unmerged branch; its publication gate remains held. Phase 01 proceeds only with local framework/schema work permitted by phase 00 package 6. Phases 02–07 remain not started. Effort depends on available photographs, source reconciliation and desktop measurements; there are no promised calendar completion dates.
+Phase 00 independent preparation is complete on its unmerged branch; its publication gate remains held. Phase 01 has passed its local foundation gate using the independent work permitted by phase 00 package 6; cloud setup remains pending. Phase 02 is next; phases 02–07 remain not started. Effort depends on available photographs, source reconciliation and desktop measurements; there are no promised calendar completion dates.
 
 | Phase | Outcome | Depends on | Release gate |
 | --- | --- | --- | --- |
