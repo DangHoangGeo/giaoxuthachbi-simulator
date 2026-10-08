@@ -210,8 +210,8 @@
     "web/vitest.config.ts": "bc57c471e4c655f469044190ba61633d548ebda78a2a5d76296d84e49150f65f"
   },
   "evidence": {
-    "review/web-visit-2026-10-08/README.md": "8a22b7a1ef614902181e48585fa29672abab20cf3a98d87c6b00fac8f3125a3c",
-    "review/web-visit-2026-10-08/ci-software.md": "4cf9e3dbcb8d80a68960f525e2d732e6d74db0a07bfd1e1afa531e3e858ecd4b",
+    "review/web-visit-2026-10-08/README.md": "1e176fab270767f240f5b59e3d7e38c1fb092628dc51b071cf84a6a7d22a1482",
+    "review/web-visit-2026-10-08/ci-software.md": "d9538e1e7acf618b5521cd4808d590783450154d179b489a3128627a33eb8ec8",
     "review/web-visit-2026-10-08/compression-reproduction.json": "d470c361b2d59b6d4dc147fa81c123d39d7f0a4c771f9b0fbdb1c43ca20a0b76",
     "review/web-visit-2026-10-08/desktop/capture-final.as-run.mjs": "9533d0232956cb129bda1ab0cbe7646b75be131b8203a61f37b715162bd2229a",
     "review/web-visit-2026-10-08/desktop/capture-gallery-after-scroll.mjs": "0be46fee530f79615e0e7eb8f3bebf82d0f6949c51c91a6837a04ccbdf3dc28d",
@@ -244,6 +244,8 @@
     "review/web-visit-2026-10-08/logs/app-audit.log": "6d8c5c8f3d7684adb070417bd608d01ae90aa3dc26a65af03ffda4955f38d9a3",
     "review/web-visit-2026-10-08/logs/boundary.log": "48004286333fa474d9677b3441886eb4cd63e3448626249f1d65c9859c43b6c9",
     "review/web-visit-2026-10-08/logs/build.log.gz": "c13b99766741da230ed6ba92ba8e52b185091795fc55fc87c8c3514186811ed4",
+    "review/web-visit-2026-10-08/logs/ci-success.json": "bba5112a23bdd4c794a82700497cf39bb2ab9712a22168010af6be7eea659c1f",
+    "review/web-visit-2026-10-08/logs/ci-success.log.gz": "5b231031e25cd71fefa38895200fc31a4f524cdeab26a419c84cbeb21a82b491",
     "review/web-visit-2026-10-08/logs/ci-typecheck.log": "4889b59e6354e56173151591b7ee77917d09f0842831adb7a1855be3b7e7a825",
     "review/web-visit-2026-10-08/logs/initial-ci-failure.log.gz": "1775436828125dea3afbcea6290a2c5bb5816193083c5b159f94e74b6b4faf22",
     "review/web-visit-2026-10-08/logs/lint.log": "c8b293bc60b27cb2977a70e50f49c2dbe33ca0dac65a45694906e43dc425b7af",

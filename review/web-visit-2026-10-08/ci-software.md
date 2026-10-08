@@ -7,3 +7,7 @@ The initial GitHub run for `cbc1672`, [37781114802](https://github.com/DangHoang
 Local verification: `CI=1 PLAYWRIGHT_CHANNEL=chrome npm run test:browser -- tests/browser/visit.spec.ts` passed all four visit cases in 37.3 seconds. This is functional software-rendering evidence, not a hardware-performance acceptance. The fixed 60-second headed M1 Pro measurement and all original performance targets remain separate and unchanged. App/model/physics code is unchanged by this follow-up.
 
 [Chromium's SwiftShader documentation](https://chromium.googlesource.com/chromium/src/+/main/docs/gpu/swiftshader.md) describes the explicit ANGLE software driver for GPU-less testing. This configuration applies only to the isolated local-content CI browser; it is not a flag prescribed to parish users.
+
+## Verified GitHub outcome
+
+Run [37782934382](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/actions/runs/37782934382) completed successfully on `cc63f2db9cde23520331dd439eba3bbe4bc59c29`. All 133 unit checks, 12 production browser cases and 8 synthetic gallery/timeline cases passed, along with lint, type checking, audit, build and boundary checks. The software-driver configuration resolved the observed CI test timeout in this run; it does not establish the exact cause of the first failure. Raw run metadata and compressed logs are preserved in `logs/ci-success.json` and `logs/ci-success.log.gz`.
