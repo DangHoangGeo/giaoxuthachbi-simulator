@@ -1,5 +1,17 @@
 import { expect, test } from "@playwright/test";
 
+test.afterEach(async ({ page }, info) => {
+  if (info.status !== info.expectedStatus) {
+    console.error(
+      "Visit failure state:",
+      await page
+        .locator("main")
+        .innerText()
+        .catch(() => "Page unavailable"),
+    );
+  }
+});
+
 test("Enter waits for hydration on a slow script connection", async ({ page }) => {
   let releaseScripts: () => void = () => {};
   const ready = new Promise<void>((resolve) => {

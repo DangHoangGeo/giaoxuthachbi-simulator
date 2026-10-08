@@ -1,0 +1,518 @@
+{
+  "startedAt": "2026-10-08T13:10:40.817Z",
+  "finishedAt": "2026-10-08T13:10:49.438Z",
+  "buildId": "1WAT1D-QKfVwh3_eGjCPT",
+  "routeStatus": 200,
+  "throttle": {
+    "downstreamBps": 125000,
+    "upstreamBps": 125000,
+    "latencyMs": 100
+  },
+  "entered3D": true,
+  "modelRequestStarted": true,
+  "modelResponseStatus": 200,
+  "modelBytesReceivedBeforeCancel": 114603,
+  "elapsedBeforeCancelMs": 6970,
+  "modelEvents": [
+    {
+      "kind": "request",
+      "id": "24669.30",
+      "url": "http://127.0.0.1:3132/models/9736bdc3a84bcc163cf56207e04a12c5ad05afb9a1b2f2d2da44baa03d6a6f48.glb.gz",
+      "at": "2026-10-08T13:10:46.772Z"
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "mimeType": "application/gzip",
+      "contentLength": null,
+      "at": "2026-10-08T13:10:46.878Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 1500,
+      "at": "2026-10-08T13:10:46.892Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 3000,
+      "at": "2026-10-08T13:10:46.901Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 603,
+      "totalBytes": 3603,
+      "at": "2026-10-08T13:10:46.901Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 5103,
+      "at": "2026-10-08T13:10:46.915Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 6603,
+      "at": "2026-10-08T13:10:46.926Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 8103,
+      "at": "2026-10-08T13:10:46.938Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 9603,
+      "at": "2026-10-08T13:10:46.950Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 11103,
+      "at": "2026-10-08T13:10:46.963Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 12603,
+      "at": "2026-10-08T13:10:46.975Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 14103,
+      "at": "2026-10-08T13:10:46.987Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 15603,
+      "at": "2026-10-08T13:10:46.998Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 17103,
+      "at": "2026-10-08T13:10:47.010Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 18603,
+      "at": "2026-10-08T13:10:47.024Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 20103,
+      "at": "2026-10-08T13:10:47.034Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 21603,
+      "at": "2026-10-08T13:10:47.046Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 23103,
+      "at": "2026-10-08T13:10:47.059Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 24603,
+      "at": "2026-10-08T13:10:47.070Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 26103,
+      "at": "2026-10-08T13:10:47.083Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 27603,
+      "at": "2026-10-08T13:10:47.093Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 29103,
+      "at": "2026-10-08T13:10:47.108Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 30603,
+      "at": "2026-10-08T13:10:47.118Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 32103,
+      "at": "2026-10-08T13:10:47.130Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 33603,
+      "at": "2026-10-08T13:10:47.142Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 35103,
+      "at": "2026-10-08T13:10:47.154Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 36603,
+      "at": "2026-10-08T13:10:47.167Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 38103,
+      "at": "2026-10-08T13:10:47.179Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 39603,
+      "at": "2026-10-08T13:10:47.191Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 41103,
+      "at": "2026-10-08T13:10:47.201Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 42603,
+      "at": "2026-10-08T13:10:47.213Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 44103,
+      "at": "2026-10-08T13:10:47.225Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 45603,
+      "at": "2026-10-08T13:10:47.238Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 47103,
+      "at": "2026-10-08T13:10:47.250Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 48603,
+      "at": "2026-10-08T13:10:47.262Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 50103,
+      "at": "2026-10-08T13:10:47.275Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 51603,
+      "at": "2026-10-08T13:10:47.287Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 53103,
+      "at": "2026-10-08T13:10:47.298Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 54603,
+      "at": "2026-10-08T13:10:47.310Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 56103,
+      "at": "2026-10-08T13:10:47.323Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 57603,
+      "at": "2026-10-08T13:10:47.333Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 59103,
+      "at": "2026-10-08T13:10:47.346Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 60603,
+      "at": "2026-10-08T13:10:47.359Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 62103,
+      "at": "2026-10-08T13:10:47.370Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 63603,
+      "at": "2026-10-08T13:10:47.383Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 65103,
+      "at": "2026-10-08T13:10:47.393Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 66603,
+      "at": "2026-10-08T13:10:47.408Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 68103,
+      "at": "2026-10-08T13:10:47.417Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 69603,
+      "at": "2026-10-08T13:10:47.432Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 71103,
+      "at": "2026-10-08T13:10:47.442Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 72603,
+      "at": "2026-10-08T13:10:47.455Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 74103,
+      "at": "2026-10-08T13:10:47.467Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 75603,
+      "at": "2026-10-08T13:10:47.479Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 77103,
+      "at": "2026-10-08T13:10:47.491Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 78603,
+      "at": "2026-10-08T13:10:47.502Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 80103,
+      "at": "2026-10-08T13:10:47.515Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 81603,
+      "at": "2026-10-08T13:10:47.525Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 83103,
+      "at": "2026-10-08T13:10:47.538Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 84603,
+      "at": "2026-10-08T13:10:47.550Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 86103,
+      "at": "2026-10-08T13:10:47.562Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 87603,
+      "at": "2026-10-08T13:10:47.575Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 89103,
+      "at": "2026-10-08T13:10:47.587Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 90603,
+      "at": "2026-10-08T13:10:47.598Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 92103,
+      "at": "2026-10-08T13:10:47.610Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 93603,
+      "at": "2026-10-08T13:10:47.622Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 95103,
+      "at": "2026-10-08T13:10:47.633Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 96603,
+      "at": "2026-10-08T13:10:47.646Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 98103,
+      "at": "2026-10-08T13:10:47.658Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 99603,
+      "at": "2026-10-08T13:10:47.670Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 101103,
+      "at": "2026-10-08T13:10:47.683Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 102603,
+      "at": "2026-10-08T13:10:47.693Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 104103,
+      "at": "2026-10-08T13:10:47.708Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 105603,
+      "at": "2026-10-08T13:10:47.719Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 107103,
+      "at": "2026-10-08T13:10:47.729Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 108603,
+      "at": "2026-10-08T13:10:47.742Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 110103,
+      "at": "2026-10-08T13:10:47.754Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 111603,
+      "at": "2026-10-08T13:10:47.767Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 113103,
+      "at": "2026-10-08T13:10:47.779Z"
+    },
+    {
+      "kind": "data",
+      "bytes": 1500,
+      "totalBytes": 114603,
+      "at": "2026-10-08T13:10:47.791Z"
+    },
+    {
+      "kind": "loadingFailed",
+      "error": "net::ERR_ABORTED",
+      "canceled": true,
+      "at": "2026-10-08T13:10:47.806Z"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:3132/models/9736bdc3a84bcc163cf56207e04a12c5ad05afb9a1b2f2d2da44baa03d6a6f48.glb.gz",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-10-08T13:10:47.806Z"
+    }
+  ],
+  "canvasAfterCancel": 0,
+  "cancelVisibleAfter": false,
+  "galleryLinkAvailable": true,
+  "galleryUrl": "http://127.0.0.1:3132/en/design",
+  "galleryHeading": "Images and design",
+  "galleryStatus": 200,
+  "errors": [],
+  "screenshot": {
+    "path": "/private/tmp/thachbi-visit-desktop-evidence/final/low-bandwidth-active-cancel.png",
+    "bytes": 187242,
+    "sha256": "7343f1e4282d3af505c9b90293635eeef2a7d2f28441d5dea343e51a0df5e0db"
+  },
+  "scope": "Separate supplemental in-flight cancellation probe. Its media/model bytes are not included in cold initial-load measurements."
+}

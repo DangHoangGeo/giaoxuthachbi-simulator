@@ -24,7 +24,7 @@ The compression order matters: convert textures **before** Meshopt. Running a ge
 
 Known material difference: glTF-transform 4.5.1 does not preserve the optional `EXT_materials_bump` extension. The web copy loses this bump detail; the full-resolution sharing GLB retains it. Web lighting uses a presentation environment and ambient/directional lights. It is not the source photometric simulation. Source procedural/shader behavior, shadows and reflections are not guaranteed to match another GLB viewer. The conceptual artwork also contains ornament not yet fully modelled.
 
-A generated GLB avoids shipping the legacy application and its private catalogs/editing capability, and reduces public transfer below the scene-byte target. A measured thin-procedural-adapter comparison has **not** been completed; this is a reversible development implementation, not closure of phase 04 package 1 or G4. Runtime/network measurements and limitations are recorded in the [review evidence](../../review/web-visit-2026-10-08/README.md).
+A generated GLB avoids shipping the legacy application and its private catalogs/editing capability, and reduces public transfer below the scene-byte target. A measured thin-procedural-adapter comparison has **not** been completed; this is a reversible development implementation, not closure of phase 04 package 1 or G4. Final local measurements were 7.984 seconds to interactive at 10 Mbps/100 ms, 9.3 ms p95 RAF cadence, and a 600-second five-cycle session with one canvas after each entry and successful context-loss retry. These are headed M1 Pro lab observations, not confirmation on the parish desktop; see [full review evidence and limitations](../../review/web-visit-2026-10-08/README.md).
 
 ### Commands
 

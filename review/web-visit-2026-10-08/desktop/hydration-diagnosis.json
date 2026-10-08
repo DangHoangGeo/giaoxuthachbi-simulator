@@ -1,0 +1,1382 @@
+{
+  "startedAt": "2026-10-08T12:53:57.230Z",
+  "finishedAt": "2026-10-08T12:54:33.550Z",
+  "first": {
+    "status": 200,
+    "url": "http://127.0.0.1:3132/en/visit",
+    "waitUntil": "networkidle"
+  },
+  "firstReady": true,
+  "exitStatus": 200,
+  "reenterStatus": 200,
+  "immediateReady": false,
+  "retryAfterHydration": true,
+  "secondReady": true,
+  "errors": [
+    {
+      "kind": "nave-timeout",
+      "message": "TimeoutError: locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Nave', exact: true }) to be visible\u001b[22m\n",
+      "at": 1791464062061,
+      "waitMs": 15000,
+      "elapsedMs": 15038
+    }
+  ],
+  "modelEvents": [
+    {
+      "event": "Network.loadingFinished",
+      "id": "6945C338892D631653E842FDEEA7B7D0",
+      "encoded": 4426,
+      "at": 1791464037384
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.4",
+      "encoded": 2632,
+      "at": 1791464037492
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.3",
+      "encoded": 5127,
+      "at": 1791464037505
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.5",
+      "encoded": 9057,
+      "at": 1791464037544
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.8",
+      "encoded": 4537,
+      "at": 1791464037612
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.7",
+      "encoded": 46113,
+      "at": 1791464037616
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.9",
+      "encoded": 4111,
+      "at": 1791464037620
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.10",
+      "encoded": 3229,
+      "at": 1791464037631
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.6",
+      "encoded": 72546,
+      "at": 1791464037665
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.11",
+      "encoded": 3184,
+      "at": 1791464037719
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.12",
+      "encoded": 3506,
+      "at": 1791464037724
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.2",
+      "encoded": 287384,
+      "at": 1791464037843
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.28",
+      "encoded": 774,
+      "at": 1791464037948
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.29",
+      "encoded": 167883,
+      "at": 1791464038719
+    },
+    {
+      "event": "Network.requestWillBeSent",
+      "id": "23336.30",
+      "url": "http://127.0.0.1:3132/models/9736bdc3a84bcc163cf56207e04a12c5ad05afb9a1b2f2d2da44baa03d6a6f48.glb.gz",
+      "at": 1791464038743
+    },
+    {
+      "event": "request",
+      "url": "http://127.0.0.1:3132/models/9736bdc3a84bcc163cf56207e04a12c5ad05afb9a1b2f2d2da44baa03d6a6f48.glb.gz",
+      "at": 1791464038743
+    },
+    {
+      "event": "response",
+      "url": "http://127.0.0.1:3132/models/9736bdc3a84bcc163cf56207e04a12c5ad05afb9a1b2f2d2da44baa03d6a6f48.glb.gz",
+      "status": 200,
+      "at": 1791464038848
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.30",
+      "encoded": 8770573,
+      "at": 1791464045955
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.31",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.32",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.33",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.34",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.35",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.36",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.37",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.38",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.39",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.40",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.41",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.42",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.43",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.44",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.45",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.46",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.47",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.48",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.49",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.50",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.51",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.52",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.53",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.54",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.55",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.56",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.57",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.58",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.59",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.60",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.61",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.62",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.63",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.64",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.65",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.66",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.67",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.68",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.69",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.70",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.71",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.72",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.73",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.74",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.75",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.76",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.77",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.78",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.79",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.80",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.81",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.82",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.83",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.84",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.85",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.86",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.87",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.88",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.89",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.90",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.91",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.92",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.93",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.94",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.95",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.96",
+      "encoded": 0,
+      "at": 1791464046085
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.97",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.98",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.99",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.100",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.101",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.102",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.103",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.104",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.105",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.106",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.107",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.108",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.109",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.110",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.111",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.112",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.113",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.114",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.115",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.116",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.117",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.118",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.119",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.120",
+      "encoded": 0,
+      "at": 1791464046086
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "DBD3403230636BC371E703AF63C9B310",
+      "encoded": 4949,
+      "at": 1791464046557
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.124",
+      "encoded": 2632,
+      "at": 1791464046669
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.123",
+      "encoded": 5127,
+      "at": 1791464046681
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.125",
+      "encoded": 9057,
+      "at": 1791464046713
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.128",
+      "encoded": 4537,
+      "at": 1791464046789
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.127",
+      "encoded": 46113,
+      "at": 1791464046792
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.129",
+      "encoded": 4111,
+      "at": 1791464046796
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.130",
+      "encoded": 3229,
+      "at": 1791464046807
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.126",
+      "encoded": 72546,
+      "at": 1791464046842
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.122",
+      "encoded": 123985,
+      "at": 1791464046882
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "297553CD362DF5B0210F40C5DCED2B8D",
+      "encoded": 4426,
+      "at": 1791464046897
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.151",
+      "encoded": 2632,
+      "at": 1791464047008
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.150",
+      "encoded": 5127,
+      "at": 1791464047021
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.152",
+      "encoded": 9057,
+      "at": 1791464047036
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.155",
+      "encoded": 4537,
+      "at": 1791464047129
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.154",
+      "encoded": 46113,
+      "at": 1791464047131
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.156",
+      "encoded": 4111,
+      "at": 1791464047136
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.157",
+      "encoded": 3229,
+      "at": 1791464047147
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.153",
+      "encoded": 72546,
+      "at": 1791464047180
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.158",
+      "encoded": 3184,
+      "at": 1791464047238
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.159",
+      "encoded": 3506,
+      "at": 1791464047240
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.149",
+      "encoded": 287384,
+      "at": 1791464047359
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.175",
+      "encoded": 774,
+      "at": 1791464047467
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.176",
+      "encoded": 167883,
+      "at": 1791464065715
+    },
+    {
+      "event": "Network.requestWillBeSent",
+      "id": "23336.177",
+      "url": "http://127.0.0.1:3132/models/9736bdc3a84bcc163cf56207e04a12c5ad05afb9a1b2f2d2da44baa03d6a6f48.glb.gz",
+      "at": 1791464065725
+    },
+    {
+      "event": "request",
+      "url": "http://127.0.0.1:3132/models/9736bdc3a84bcc163cf56207e04a12c5ad05afb9a1b2f2d2da44baa03d6a6f48.glb.gz",
+      "at": 1791464065725
+    },
+    {
+      "event": "response",
+      "url": "http://127.0.0.1:3132/models/9736bdc3a84bcc163cf56207e04a12c5ad05afb9a1b2f2d2da44baa03d6a6f48.glb.gz",
+      "status": 200,
+      "at": 1791464065835
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.177",
+      "encoded": 8770573,
+      "at": 1791464073082
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.178",
+      "encoded": 0,
+      "at": 1791464073228
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.179",
+      "encoded": 0,
+      "at": 1791464073228
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.180",
+      "encoded": 0,
+      "at": 1791464073228
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.181",
+      "encoded": 0,
+      "at": 1791464073228
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.182",
+      "encoded": 0,
+      "at": 1791464073228
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.183",
+      "encoded": 0,
+      "at": 1791464073229
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.184",
+      "encoded": 0,
+      "at": 1791464073229
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.185",
+      "encoded": 0,
+      "at": 1791464073229
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.186",
+      "encoded": 0,
+      "at": 1791464073229
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.187",
+      "encoded": 0,
+      "at": 1791464073229
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.188",
+      "encoded": 0,
+      "at": 1791464073229
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.189",
+      "encoded": 0,
+      "at": 1791464073229
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.190",
+      "encoded": 0,
+      "at": 1791464073229
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.191",
+      "encoded": 0,
+      "at": 1791464073229
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.192",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.193",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.194",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.195",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.196",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.197",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.198",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.199",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.200",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.201",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.202",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.203",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.204",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.205",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.206",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.207",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.208",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.209",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.210",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.211",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.212",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.213",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.214",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.215",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.216",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.217",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.218",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.219",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.220",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.221",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.222",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.223",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.224",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.225",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.226",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.227",
+      "encoded": 0,
+      "at": 1791464073234
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.228",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.229",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.230",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.231",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.232",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.233",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.234",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.235",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.236",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.237",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.238",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.239",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.240",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.241",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.242",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.243",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.244",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.245",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.246",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.247",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.248",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.249",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.250",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.251",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.252",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.253",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.254",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.255",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.256",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.257",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.258",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.259",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.260",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.261",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.262",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.263",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.264",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.265",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.266",
+      "encoded": 0,
+      "at": 1791464073235
+    },
+    {
+      "event": "Network.loadingFinished",
+      "id": "23336.267",
+      "encoded": 0,
+      "at": 1791464073235
+    }
+  ],
+  "buildId": "YqF7Sc6PWFsKIEZ6CNGoI",
+  "buildIdSha256": "9f21b58d69437ec70e0eb05df802af61b7405bd7acef189d9be130b05005b639"
+}

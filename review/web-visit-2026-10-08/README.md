@@ -25,7 +25,22 @@ Synthetic tests now open the metadata details control before checking its note, 
 
 ## Desktop evidence and outstanding checks
 
-An initial headed M1 Pro/ANGLE Metal run measured 10,888 ms from Enter to controls at 10 Mbps down, 1 Mbps up and 100 ms latency. Model response including HTTP overhead was 8,770,573 bytes. Initial homepage/gallery transferred 280,438 / 581,157 bytes; JS 145,409 / 154,324 bytes, with no pre-entry model request. A 60-second viewpoint path had 9.3 ms p95 RAF intervals. These are local laboratory measurements, not parish hardware or field Web Vitals. The final post-hydration-fix extended session is recorded separately when complete; the first soak exposed the early-click bug and must not be labeled a pass.
+The final headed Chrome/M1 Pro/ANGLE Metal run used build `1WAT1D-QKfVwh3_eGjCPT`, whose application sources match `cbc1672`. [Raw desktop results](desktop/results.json) and [screenshots/method](desktop/summary.md) record:
+
+| Check | Observed result |
+| --- | --- |
+| Cold home / gallery initial transfer | 280,474 / 581,190 bytes; JS 145,409 / 154,324 bytes; zero model requests before Enter |
+| Enter at 10 Mbps down, 1 Mbps up, 100 ms latency | 7,984 ms to controls/canvas; model response 8,770,573 bytes including HTTP overhead; 8,938,456 total post-click bytes |
+| Fixed 60-second viewpoint path | 7,200 RAF intervals; p95 9.3 ms; maximum 9.8 ms; zero over 33 ms |
+| Ten-minute session | 600,028 ms, five full route exits/re-entries; zero canvases on exit and one on re-entry; no errors or horizontal overflow |
+| JS heap samples | About 75–165 MB, falling after garbage collection; final 75.4 MB |
+| Forced graphics-context loss | Retry appeared and restored canvas/controls |
+| 1 Mbps fallback | Cancel visible after 59 ms before fetch; a separate in-flight probe aborted after 114,603 bytes with `net::ERR_ABORTED`, zero canvas, and gallery HTTP 200 |
+| Full gallery after scrolling | All sixteen images decoded with positive naturalWidth; no failed images/errors |
+
+These are local laboratory observations, not parish-device acceptance, field Web Vitals, GPU timestamps or a comprehensive GPU-memory leak proof. A separate software-Chrome test overlapped the final soak minutes, after the 60-second RAF measurement; those late heap/soak observations include that concurrent load. Temperature was not measured. [Supplemental notes](desktop/supplemental-notes.json) and [in-flight cancellation](desktop/low-bandwidth-active-cancel.json) qualify the measurements. The initial gallery screenshot includes intentional unloaded off-screen images: use [the scrolled all-images capture](desktop/vi-design-scrolled-all-images.png) for complete visual review. Its scroll-triggered image bytes are excluded from initial-transfer measurements.
+
+The earlier initial run took 10,888 ms and exposed the pre-hydration Enter bug in its first soak cycle. Its [diagnosis](desktop/hydration-diagnosis.json) is retained; it is not a passing soak. The final run above verifies the fix. Initial GitHub CI later stalled in software 3D; [the CI follow-up](ci-software.md) records the exact failure, explicit software-renderer configuration and unchanged functional/performance criteria.
 
 Primary visual review covered all sixteen concept contact-sheet images and exterior, nave, sanctuary and roof-hidden model screenshots. The web model retains the two timber-column rows, pew aisles, sanctuary and exterior proportions. Its smaller textures omit optional bump detail and its presentation lights are brighter/flatter than the original artistic scene; this does not alter source materials or photometry. Portrait/phone testing is outside the owner's confirmed scope.
 
