@@ -1,0 +1,152 @@
+{
+  "method": "Raw logs preserved losslessly as gzip; JSON log paths refer to the decompressed .log names. No log content normalized.",
+  "logs": [
+    {
+      "path": "logs/lint.log.gz",
+      "rawPath": "logs/lint.log",
+      "rawBytes": 287,
+      "rawSha256": "bdb99f82e8f68d0de33b9e13f7c9ddcbbe0750e60dc72c2d54479f11c411c097",
+      "gzipSha256": "c464d2a9626d077c3dc1a072f315032c6667de148bc6adf0efbb842f38a980a5"
+    },
+    {
+      "path": "logs/npm-ci.log.gz",
+      "rawPath": "logs/npm-ci.log",
+      "rawBytes": 237,
+      "rawSha256": "f02caed57684eb39c74132f0d26204e206839461ba9578b2edbe517edc7fbb14",
+      "gzipSha256": "b533aea2f8fb32c2c5e86cd27371306f75632b4b4fad2c4f4565331d14dad69f"
+    },
+    {
+      "path": "logs/typecheck.log.gz",
+      "rawPath": "logs/typecheck.log",
+      "rawBytes": 307,
+      "rawSha256": "c27f780ac296e64f196b61f038a2fbd3a1f41de0b90c777fb0ad7f907ed5ed9d",
+      "gzipSha256": "e0cb914a2c2440eb785ed425983d80bb5c9c50b25d7b17208481f466bcb6c13a"
+    },
+    {
+      "path": "logs/unit-tests.log.gz",
+      "rawPath": "logs/unit-tests.log",
+      "rawBytes": 899,
+      "rawSha256": "0bc8dfa1e21092f7df48a54e36b768fdca16a959ae69f8b976a063e298ab2f06",
+      "gzipSha256": "1279cdfdffe47e36eb7a19bc0a2f57385762d773095b017ce322d99eeeb09e7f"
+    },
+    {
+      "path": "logs/production-build.log.gz",
+      "rawPath": "logs/production-build.log",
+      "rawBytes": 3357,
+      "rawSha256": "54c3e2cbea07e7c9b46e9c705e0799f125b3b304d787717500c506ba7b114ade",
+      "gzipSha256": "ba614d2fc5af3033698aa0f4c269cd1ca12ea881d570cd259ef30e6f7d07db08"
+    },
+    {
+      "path": "logs/headed-browser-tests.log.gz",
+      "rawPath": "logs/headed-browser-tests.log",
+      "rawBytes": 1265,
+      "rawSha256": "aed26552b66cd6e1646137e1029f06e12dfd718d4d5bbecf01205b42e9128adc",
+      "gzipSha256": "298380e7bb4333d431fd8cdfa3032226cf9925f54702cd80f98bf6f78b19807f"
+    },
+    {
+      "path": "logs/boundary-scan.log.gz",
+      "rawPath": "logs/boundary-scan.log",
+      "rawBytes": 881,
+      "rawSha256": "9b596e455c491fb9faac31ff4bc801981e151d4f91177d91a04f7384740ad38c",
+      "gzipSha256": "6026dcdb439c06f469ec8dca7ca1e100506d3ed570da3585dd3d6b8d885355cc"
+    },
+    {
+      "path": "corrected-home-run/logs/lint.log.gz",
+      "rawPath": "corrected-home-run/logs/lint.log",
+      "rawBytes": 293,
+      "rawSha256": "4e2b823a4836f05268837a114d8d857307101cb1b3cd2f3ca22ecc269535e6d9",
+      "gzipSha256": "c89cc8bc5aaebd7ca6f7aeae049bb41c58e2267dc0a6ac36dd55304807891bdd"
+    },
+    {
+      "path": "corrected-home-run/logs/npm-ci.log.gz",
+      "rawPath": "corrected-home-run/logs/npm-ci.log",
+      "rawBytes": 303,
+      "rawSha256": "9726105353726c4b952f2086d9e65118ceebbe1949e0c2ea8608503d1b910c31",
+      "gzipSha256": "5eb61941f9b44514d6ac5f068f25cc1aa9be0456b87fc40ed56fe8f864b5b0a2"
+    },
+    {
+      "path": "corrected-home-run/logs/canary-clean.log.gz",
+      "rawPath": "corrected-home-run/logs/canary-clean.log",
+      "rawBytes": 736,
+      "rawSha256": "d36a7c031dd4e11447d445c21da6a7ccb682abea088030ac845a2cb1ceb68147",
+      "gzipSha256": "e3c421b36afd7c628a0e6d6dcd161285df8db6d6634bd23428b2f0c3b1ceca88"
+    },
+    {
+      "path": "corrected-home-run/logs/typecheck.log.gz",
+      "rawPath": "corrected-home-run/logs/typecheck.log",
+      "rawBytes": 313,
+      "rawSha256": "775451a93bb6a46943248eedf7e0bbae82cbe08b2e55a1b08a5cf7b2f1e33849",
+      "gzipSha256": "0945f46a63ed836d48c6de74d88d6dd37f79dad049ccbb050eb8ab53f6b9b278"
+    },
+    {
+      "path": "corrected-home-run/logs/unit-tests.log.gz",
+      "rawPath": "corrected-home-run/logs/unit-tests.log",
+      "rawBytes": 911,
+      "rawSha256": "f2b8fc1bb9a7edc3f7fe77ed60dd4de9e1fa6ed66c4a223fd48b9429d4be1b32",
+      "gzipSha256": "f2c81911444138f8b7333b48983f42dc83c49c9cfe8a7310d4278bf587f6d6ef"
+    },
+    {
+      "path": "corrected-home-run/logs/production-build.log.gz",
+      "rawPath": "corrected-home-run/logs/production-build.log",
+      "rawBytes": 1364,
+      "rawSha256": "069bde3a0efa2455d3aa671f248386d66af2c0f8b96e5ebb13994c12e8fe43a5",
+      "gzipSha256": "f259d609f87d132d992f48efee921f59a95fb4f0ea88f211c6ca4adf3dbc6c3f"
+    },
+    {
+      "path": "corrected-home-run/logs/headed-browser-tests.log.gz",
+      "rawPath": "corrected-home-run/logs/headed-browser-tests.log",
+      "rawBytes": 339,
+      "rawSha256": "bdee6147b7bf289275e2566deda74c2ffdf6d23f207802dab96e6323e308d272",
+      "gzipSha256": "bbf89962e86b087fd52bb78746ba42ec1dc594f54663917d9b112e82b72150b8"
+    },
+    {
+      "path": "corrected-home-run/logs/boundary-scan.log.gz",
+      "rawPath": "corrected-home-run/logs/boundary-scan.log",
+      "rawBytes": 816,
+      "rawSha256": "296b467a6178318156af9963fa295684f6b3a516d99b44a86d017903c8462352",
+      "gzipSha256": "1b98fc2250ef90cd883dbfe366beaabc5c327df72f173cb8eab63c47a8b5e02f"
+    },
+    {
+      "path": "corrected-home-run/logs/canary-detected.log.gz",
+      "rawPath": "corrected-home-run/logs/canary-detected.log",
+      "rawBytes": 856,
+      "rawSha256": "71b70b15a26027b2de2734e50789003d7b35b738b51d47b43c5c9a3877065b13",
+      "gzipSha256": "42a8c4877e2debd481113b64adc6f07c9d6e03ed28f9ba2471cb98887d1a6548"
+    },
+    {
+      "path": "corrected-home-run/pointer-probe/logs/build-malformed-pointer.log.gz",
+      "rawPath": "corrected-home-run/pointer-probe/logs/build-malformed-pointer.log",
+      "rawBytes": 1268,
+      "rawSha256": "faa7d888548e02fc426281da97333cc9a98aabac316b824db7b2627b42188290",
+      "gzipSha256": "fb38a4e8a899e5366478cf15d09135a6578dcc01b61f18a32c1e1bcd9201ea0a"
+    },
+    {
+      "path": "corrected-home-run/client-boundary-probe/logs/build-client-server-boundary.log.gz",
+      "rawPath": "corrected-home-run/client-boundary-probe/logs/build-client-server-boundary.log",
+      "rawBytes": 1246,
+      "rawSha256": "ef9d9a72fc2be4fa7b4b590ee9c5a082dfefff01820c44424264d72496548f0b",
+      "gzipSha256": "af241be2f92f275cc2532d2a2dfb39e3b5103d2ead68b59096ce2c96db8d4c52"
+    },
+    {
+      "path": "corrected-home-run/canary-correction/logs/canary-detected-corrected.log.gz",
+      "rawPath": "corrected-home-run/canary-correction/logs/canary-detected-corrected.log",
+      "rawBytes": 856,
+      "rawSha256": "d924b4e1ac8fd80b2fd98fd2c2cb60587a14c31690e9a101ce1dedd30cd17452",
+      "gzipSha256": "e35fe80c87ed0b132989e205fba59582889623be5ff61c46e1d03ae1162ac6a1"
+    },
+    {
+      "path": "corrected-home-run/canary-correction/logs/canary-clean-corrected.log.gz",
+      "rawPath": "corrected-home-run/canary-correction/logs/canary-clean-corrected.log",
+      "rawBytes": 736,
+      "rawSha256": "d36a7c031dd4e11447d445c21da6a7ccb682abea088030ac845a2cb1ceb68147",
+      "gzipSha256": "e3c421b36afd7c628a0e6d6dcd161285df8db6d6634bd23428b2f0c3b1ceca88"
+    },
+    {
+      "path": "corrected-home-run/client-boundary-probe-routable/logs/build-client-server-boundary-routable.log.gz",
+      "rawPath": "corrected-home-run/client-boundary-probe-routable/logs/build-client-server-boundary-routable.log",
+      "rawBytes": 2761,
+      "rawSha256": "80fd5370faa14cda085f25257560c0f5678c822b9006aadcf632d8ff96b01322",
+      "gzipSha256": "4518d6bd25c1bb4c696b50dda482f23b6f0f74c867506fa7201e3c7969eb2190"
+    }
+  ]
+}

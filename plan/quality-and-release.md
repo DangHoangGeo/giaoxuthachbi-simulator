@@ -38,7 +38,7 @@ Target [WCAG 2.2 AA](https://www.w3.org/TR/WCAG22/) for content and controls. Te
 | Unsafe content handling | Untrusted captions/Markdown cannot run scripts; media type/size validation, bounded asset lookup, traversal/URL injection checks, exact allowed image origins and sensible security headers |
 | Recovery and continuity | Missing content store/auth provider, invalid release, network loss, cost limit, rollback, account revocation and backup restore rehearsals |
 
-Use Vitest (or an equivalent established test runner) for contracts, dates and pure adapter functions; Playwright for browser and authorization journeys; accessibility automation plus manual checks; production bundle reports and device traces for performance. These are planned tools, not installed dependencies or runnable commands today.
+Use Vitest (or an equivalent established test runner) for contracts, dates and pure adapter functions; Playwright for browser and authorization journeys; accessibility automation plus manual checks; production bundle reports and device traces for performance. Phase 01 now installs pinned Vitest/Playwright and Biome for the local shell; see [working commands](../docs/web/development.md). Later contract/authorization/performance cases remain planned until their recorded checks pass.
 
 For implementation, establish `web/` scripts for lint, type checking, unit tests, production build and browser checks, then document their exact commands. Keep secrets out of output and browser recordings. Use synthetic private documents in CI; security evidence must not leak actual protected content.
 

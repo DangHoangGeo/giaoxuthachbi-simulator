@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "test": "routable temporary use-client page imports server-only protected-resource reader and references it in an event handler; production build must reject the boundary",
+  "changedPaths": [
+    {
+      "path": "web/src/app/[locale]/boundary-canary/page.tsx",
+      "before": "absent",
+      "inserted": true,
+      "insertedBytes": 227,
+      "insertedSha256": "f42a5648530d3356c340edae57a7fd4a6f0ab03aaaa358594ababfcb26f4384b",
+      "removed": true,
+      "afterExists": false
+    }
+  ],
+  "build": {
+    "command": "NEXT_TELEMETRY_DISABLED=1 npm run build",
+    "exitCode": 1,
+    "signal": null,
+    "spawnError": null,
+    "log": "logs/build-client-server-boundary-routable.log",
+    "logBytes": 2761,
+    "logSha256": "80fd5370faa14cda085f25257560c0f5678c822b9006aadcf632d8ff96b01322",
+    "containsServerOnlyDiagnostic": true,
+    "containsClientBoundaryDiagnostic": true,
+    "containsProtectedModuleDiagnostic": true
+  },
+  "restoreError": null,
+  "assertions": {
+    "buildFails": true,
+    "serverOnlyImportRejected": true,
+    "clientBoundaryNamed": true,
+    "protectedModuleNamed": true,
+    "onlyTemporaryPageRemoved": true
+  }
+}

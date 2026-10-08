@@ -1,0 +1,892 @@
+{
+  "capturedAt": "2026-10-08T01:04:53.562Z",
+  "browser": {
+    "channel": "chrome",
+    "product": "154.0.8037.98",
+    "headed": true,
+    "playwrightVersion": "1.64.0"
+  },
+  "buildId": "efVlO2wA-NVYxmc39G-a5",
+  "routes": [
+    {
+      "locale": "vi",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "rootBackground": "rgb(247, 245, 239)",
+      "body": {
+        "label": "body",
+        "tag": "BODY",
+        "className": "",
+        "text": "Đến nội dung chính Bản xem trước · Chưa công bố Nhà thờ Thạch Bi Trang chủ Về trang này English CÙNG XÂY DỰNG NHÀ THỜ Một nơi để cùng hướng về. Trang giới thiệu nhà thờ đang được c",
+        "foregroundColor": "rgb(38, 57, 47)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 759
+        },
+        "visible": true,
+        "backgroundAncestors": [
+          {
+            "tag": "HTML",
+            "className": "",
+            "backgroundColor": "rgb(247, 245, 239)"
+          }
+        ]
+      },
+      "headings": [
+        {
+          "label": "heading-1",
+          "tag": "H1",
+          "className": "max-w-[14ch] font-serif text-5xl leading-[1.15] tracking-tight",
+          "text": "Một nơi để cùng hướng về.",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "48px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 112,
+            "y": 242,
+            "width": 412.453125,
+            "height": 110.390625
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "heading-2",
+          "tag": "H2",
+          "className": "text-xl font-semibold",
+          "text": "Thông tin rõ ràng, dễ tìm.",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "20px",
+          "fontWeight": "600",
+          "rect": {
+            "x": 891.0703125,
+            "y": 295,
+            "width": 436.9296875,
+            "height": 28
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ],
+      "bodyCopy": [
+        {
+          "label": "main-paragraph-1",
+          "tag": "P",
+          "className": "mb-7 text-xs font-semibold uppercase tracking-[0.18em] text-stone-600",
+          "text": "CÙNG XÂY DỰNG NHÀ THỜ",
+          "foregroundColor": "lab(35.5168 1.08604 4.07829)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "12px",
+          "fontWeight": "600",
+          "rect": {
+            "x": 112,
+            "y": 198,
+            "width": 699.0703125,
+            "height": 16
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "main-paragraph-2",
+          "tag": "P",
+          "className": "mt-8 max-w-[52ch] text-lg leading-relaxed text-stone-700",
+          "text": "Trang giới thiệu nhà thờ đang được chuẩn bị. Nội dung và hình ảnh sẽ được công bố sau khi giáo xứ duyệt.",
+          "foregroundColor": "lab(27.3812 1.32917 3.57789)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "18px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 112,
+            "y": 384.390625,
+            "width": 520.5546875,
+            "height": 58.5
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "main-paragraph-3",
+          "tag": "P",
+          "className": "mt-5 max-w-[36ch] text-base leading-relaxed text-stone-700",
+          "text": "Bạn sẽ có thể theo dõi thông tin đã công bố và tìm hiểu thiết kế nhà thờ. Hiện chưa có hình ảnh hoặc thông tin tiến độ được duyệt để hiển thị tại đây.",
+          "foregroundColor": "lab(27.3812 1.32917 3.57789)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 891.0703125,
+            "y": 343,
+            "width": 320.34375,
+            "height": 104
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ],
+      "mainLinks": [
+        {
+          "label": "main-link-1",
+          "tag": "A",
+          "className": "mt-10 inline-flex min-h-12 items-center border-b border-current text-sm font-semibold",
+          "text": "Tìm hiểu về trang này →",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "rect": {
+            "x": 112,
+            "y": 482.890625,
+            "width": 173.9296875,
+            "height": 48
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ],
+      "navigation": [
+        {
+          "label": "navigation-link-1",
+          "tag": "A",
+          "className": "nav-link",
+          "text": "Trang chủ",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 1043.171875,
+            "y": 61,
+            "width": 62.515625,
+            "height": 44
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "navigation-link-2",
+          "tag": "A",
+          "className": "nav-link",
+          "text": "Về trang này",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 1137.6875,
+            "y": 61,
+            "width": 79.390625,
+            "height": 44
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "navigation-link-3",
+          "tag": "A",
+          "className": "nav-link border-l border-stone-300 pl-8",
+          "text": "English",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 1249.078125,
+            "y": 61,
+            "width": 78.921875,
+            "height": 44
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ],
+      "preview": [
+        {
+          "label": "preview-banner-1",
+          "tag": "DIV",
+          "className": "border-b border-stone-300 bg-stone-100 px-8 py-2 text-center text-xs tracking-wide",
+          "text": "Bản xem trước · Chưa công bố",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "lab(96.5286 -0.0991821 0.364268)",
+          "opacity": "1",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 33
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "DIV",
+              "className": "border-b border-stone-300 bg-stone-100 px-8 py-2 text-center text-xs tracking-wide",
+              "backgroundColor": "lab(96.5286 -0.0991821 0.364268)"
+            },
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "preview-banner-2",
+          "tag": "DIV",
+          "className": "mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 border-b border-stone-300 px-8 py-7",
+          "text": "Nhà thờ Thạch Bi Trang chủ Về trang này English",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 80,
+            "y": 33,
+            "width": 1280,
+            "height": 101
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ],
+      "footer": [
+        {
+          "label": "footer-1",
+          "tag": "FOOTER",
+          "className": "mx-auto flex max-w-7xl flex-wrap justify-between gap-4 border-t border-stone-300 px-8 py-8 text-sm text-stone-600",
+          "text": "Nhà thờ Thạch Bi Nội dung đang chờ giáo xứ duyệt.",
+          "foregroundColor": "lab(35.5168 1.08604 4.07829)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 80,
+            "y": 674,
+            "width": 1280,
+            "height": 85
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ],
+      "footerText": [
+        {
+          "label": "footer-text-1",
+          "tag": "SPAN",
+          "className": "",
+          "text": "Nhà thờ Thạch Bi",
+          "foregroundColor": "lab(35.5168 1.08604 4.07829)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 112,
+            "y": 707,
+            "width": 109.3203125,
+            "height": 20
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "footer-text-2",
+          "tag": "SPAN",
+          "className": "",
+          "text": "Nội dung đang chờ giáo xứ duyệt.",
+          "foregroundColor": "lab(35.5168 1.08604 4.07829)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 1116.4140625,
+            "y": 707,
+            "width": 211.5859375,
+            "height": 20
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "rootBackground": "rgb(247, 245, 239)",
+      "body": {
+        "label": "body",
+        "tag": "BODY",
+        "className": "",
+        "text": "Skip to main content Preview · Unpublished Thạch Bi Church Home About this site Tiếng Việt BUILDING OUR CHURCH TOGETHER A place to return to, together. The church website is being ",
+        "foregroundColor": "rgb(38, 57, 47)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 759
+        },
+        "visible": true,
+        "backgroundAncestors": [
+          {
+            "tag": "HTML",
+            "className": "",
+            "backgroundColor": "rgb(247, 245, 239)"
+          }
+        ]
+      },
+      "headings": [
+        {
+          "label": "heading-1",
+          "tag": "H1",
+          "className": "max-w-[14ch] font-serif text-5xl leading-[1.15] tracking-tight",
+          "text": "A place to return to, together.",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "48px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 112,
+            "y": 242,
+            "width": 412.453125,
+            "height": 110.390625
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "heading-2",
+          "tag": "H2",
+          "className": "text-xl font-semibold",
+          "text": "Clear information, easy to find.",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "20px",
+          "fontWeight": "600",
+          "rect": {
+            "x": 891.0703125,
+            "y": 295,
+            "width": 436.9296875,
+            "height": 28
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ],
+      "bodyCopy": [
+        {
+          "label": "main-paragraph-1",
+          "tag": "P",
+          "className": "mb-7 text-xs font-semibold uppercase tracking-[0.18em] text-stone-600",
+          "text": "BUILDING OUR CHURCH TOGETHER",
+          "foregroundColor": "lab(35.5168 1.08604 4.07829)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "12px",
+          "fontWeight": "600",
+          "rect": {
+            "x": 112,
+            "y": 198,
+            "width": 699.0703125,
+            "height": 16
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "main-paragraph-2",
+          "tag": "P",
+          "className": "mt-8 max-w-[52ch] text-lg leading-relaxed text-stone-700",
+          "text": "The church website is being prepared. Its stories and images will appear after parish review.",
+          "foregroundColor": "lab(27.3812 1.32917 3.57789)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "18px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 112,
+            "y": 384.390625,
+            "width": 520.5546875,
+            "height": 58.5
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "main-paragraph-3",
+          "tag": "P",
+          "className": "mt-5 max-w-[36ch] text-base leading-relaxed text-stone-700",
+          "text": "You will be able to follow published updates and explore the church design. No images or construction updates have been cleared for display here yet.",
+          "foregroundColor": "lab(27.3812 1.32917 3.57789)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 891.0703125,
+            "y": 343,
+            "width": 320.34375,
+            "height": 104
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ],
+      "mainLinks": [
+        {
+          "label": "main-link-1",
+          "tag": "A",
+          "className": "mt-10 inline-flex min-h-12 items-center border-b border-current text-sm font-semibold",
+          "text": "About this site →",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "rect": {
+            "x": 112,
+            "y": 482.890625,
+            "width": 127.2265625,
+            "height": 48
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ],
+      "navigation": [
+        {
+          "label": "navigation-link-1",
+          "tag": "A",
+          "className": "nav-link",
+          "text": "Home",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 1043.4453125,
+            "y": 61,
+            "width": 37.3515625,
+            "height": 44
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "navigation-link-2",
+          "tag": "A",
+          "className": "nav-link",
+          "text": "About this site",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 1112.796875,
+            "y": 61,
+            "width": 87.9375,
+            "height": 44
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "navigation-link-3",
+          "tag": "A",
+          "className": "nav-link border-l border-stone-300 pl-8",
+          "text": "Tiếng Việt",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 1232.734375,
+            "y": 61,
+            "width": 95.265625,
+            "height": 44
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ],
+      "preview": [
+        {
+          "label": "preview-banner-1",
+          "tag": "DIV",
+          "className": "border-b border-stone-300 bg-stone-100 px-8 py-2 text-center text-xs tracking-wide",
+          "text": "Preview · Unpublished",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "lab(96.5286 -0.0991821 0.364268)",
+          "opacity": "1",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 33
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "DIV",
+              "className": "border-b border-stone-300 bg-stone-100 px-8 py-2 text-center text-xs tracking-wide",
+              "backgroundColor": "lab(96.5286 -0.0991821 0.364268)"
+            },
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "preview-banner-2",
+          "tag": "DIV",
+          "className": "mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 border-b border-stone-300 px-8 py-7",
+          "text": "Thạch Bi Church Home About this site Tiếng Việt",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 80,
+            "y": 33,
+            "width": 1280,
+            "height": 101
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ],
+      "footer": [
+        {
+          "label": "footer-1",
+          "tag": "FOOTER",
+          "className": "mx-auto flex max-w-7xl flex-wrap justify-between gap-4 border-t border-stone-300 px-8 py-8 text-sm text-stone-600",
+          "text": "Thạch Bi Church Content awaits parish review.",
+          "foregroundColor": "lab(35.5168 1.08604 4.07829)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 80,
+            "y": 674,
+            "width": 1280,
+            "height": 85
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ],
+      "footerText": [
+        {
+          "label": "footer-text-1",
+          "tag": "SPAN",
+          "className": "",
+          "text": "Thạch Bi Church",
+          "foregroundColor": "lab(35.5168 1.08604 4.07829)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 112,
+            "y": 707,
+            "width": 104.2734375,
+            "height": 20
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        },
+        {
+          "label": "footer-text-2",
+          "tag": "SPAN",
+          "className": "",
+          "text": "Content awaits parish review.",
+          "foregroundColor": "lab(35.5168 1.08604 4.07829)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 1145.90625,
+            "y": 707,
+            "width": 182.09375,
+            "height": 20
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "focused200CssTextResize": {
+    "target": "Skip to main content",
+    "foregroundColor": "rgb(38, 57, 47)",
+    "backgroundColor": "rgb(255, 255, 255)",
+    "fontSize": "32px",
+    "rect": {
+      "x": 32,
+      "y": 32,
+      "width": 353.9375,
+      "height": 112
+    },
+    "outline": {
+      "style": "solid",
+      "width": "3px",
+      "color": "rgb(49, 91, 69)"
+    },
+    "visible": true
+  },
+  "errors": [],
+  "sourceHashes": {
+    "before": {
+      "web/.env.example": "c73933ef36c7b7e93f69f8f3428fe068a9087e295f1373562563d1a4f5cf16f9",
+      "web/.node-version": "6d07ac247e81cd42c2c20abf8dfe504413d6b2422e4aba9b2c975a776f155921",
+      "web/.npmrc": "c429c8321bafcb3f69b357c9d312c8f09846c4a7d6ab2027eaf5062d784774fb",
+      "web/biome.json": "cba164fb90f80967e099cb41e7a6346905d4ed9fa779ee29f7f2875e9afc536d",
+      "web/next.config.ts": "960ca49e3bd33ff016448d59405f163b2f8fb66277ca9b82b64b7d59bd868dc2",
+      "web/package-lock.json": "3ad37cadd2142f0da1abd9d561137184e4e810461e2a65c89351c5d95d087789",
+      "web/package.json": "aaaaa1cd24af0eda242390352954b55791d9f56f7ca2e3293c682d2ea12342fb",
+      "web/playwright.config.ts": "a409e49939cb6afbf3146b58275e81118a6f87bd0268e087b268dd81f04e0317",
+      "web/postcss.config.mjs": "b783348d5618047d0f37e12acd15c5a2c5f02809d8711e0764c9cea52750346c",
+      "web/scripts/prepare-standalone.mjs": "6cba10e88a767c3ae5b05d1cbf396440b331c21c57b4396ad5ae0c6a30da965e",
+      "web/scripts/start.mjs": "a118786ec3316249847ea2be2fe631b13eed2f568b25dc256d559d67347d0cd2",
+      "web/src/app/[locale]/(public)/about-this-site/page.tsx": "0deff81da9081e17057b1ecb1259ba82eb56708d1cdda612dcc5ba483a7496b8",
+      "web/src/app/[locale]/(public)/loading.tsx": "166346ecaf512cbdf28ff8c67c692c4ade97622697f62577cdb05f62dbdac8e4",
+      "web/src/app/[locale]/(public)/page.tsx": "98c8c991fe5c406c047bd2375f45a8fe62b653105f633ffeec19ed852b7bb332",
+      "web/src/app/[locale]/[...unavailable]/page.tsx": "82027ec8f4f6f08e92ba9ef3c695efcc82f72292837ef8963b1fb7a0dcbaf96f",
+      "web/src/app/[locale]/error.tsx": "03b651f3ca2654099b289334909aa3c3cf03d1ca05c96118a37fdc71035c9290",
+      "web/src/app/[locale]/layout.tsx": "484c304be93f65d519b4c0fcfdbddc32f90a9783953958e4dc489cbe1a0b4c9f",
+      "web/src/app/[locale]/not-found.tsx": "cea2a15d31186bf452bf449ce5dee212750e261a94730a1d46a9471869d16c5c",
+      "web/src/app/globals.css": "35bed690cd652cedcbb045fe3e9642abf9457f99795507dc16db8e8bc084f552",
+      "web/src/app/icon.svg": "c496003e7e9b2a51fd8fb92a5f89ed792c585f3f7925b80bff0f5d8813db7f77",
+      "web/src/components/site-shell.tsx": "da9eeb55b70b2eb4fb2b3aad02aa5db242e40e2285bc2bbba7d298ec06854426",
+      "web/src/lib/locales.ts": "0e2f66a47dda4d3133e6fdd79b155fe554ad83f05b16d31d43e315c93d7306b7",
+      "web/tsconfig.json": "29c5cc4c45c8547da6771cab92163880505b7d757fb12c5a74a987dd9b3e6ad2",
+      "web/vitest.config.ts": "bc57c471e4c655f469044190ba61633d548ebda78a2a5d76296d84e49150f65f"
+    },
+    "after": {
+      "web/.env.example": "c73933ef36c7b7e93f69f8f3428fe068a9087e295f1373562563d1a4f5cf16f9",
+      "web/.node-version": "6d07ac247e81cd42c2c20abf8dfe504413d6b2422e4aba9b2c975a776f155921",
+      "web/.npmrc": "c429c8321bafcb3f69b357c9d312c8f09846c4a7d6ab2027eaf5062d784774fb",
+      "web/biome.json": "cba164fb90f80967e099cb41e7a6346905d4ed9fa779ee29f7f2875e9afc536d",
+      "web/next.config.ts": "960ca49e3bd33ff016448d59405f163b2f8fb66277ca9b82b64b7d59bd868dc2",
+      "web/package-lock.json": "3ad37cadd2142f0da1abd9d561137184e4e810461e2a65c89351c5d95d087789",
+      "web/package.json": "aaaaa1cd24af0eda242390352954b55791d9f56f7ca2e3293c682d2ea12342fb",
+      "web/playwright.config.ts": "a409e49939cb6afbf3146b58275e81118a6f87bd0268e087b268dd81f04e0317",
+      "web/postcss.config.mjs": "b783348d5618047d0f37e12acd15c5a2c5f02809d8711e0764c9cea52750346c",
+      "web/scripts/prepare-standalone.mjs": "6cba10e88a767c3ae5b05d1cbf396440b331c21c57b4396ad5ae0c6a30da965e",
+      "web/scripts/start.mjs": "a118786ec3316249847ea2be2fe631b13eed2f568b25dc256d559d67347d0cd2",
+      "web/src/app/[locale]/(public)/about-this-site/page.tsx": "0deff81da9081e17057b1ecb1259ba82eb56708d1cdda612dcc5ba483a7496b8",
+      "web/src/app/[locale]/(public)/loading.tsx": "166346ecaf512cbdf28ff8c67c692c4ade97622697f62577cdb05f62dbdac8e4",
+      "web/src/app/[locale]/(public)/page.tsx": "98c8c991fe5c406c047bd2375f45a8fe62b653105f633ffeec19ed852b7bb332",
+      "web/src/app/[locale]/[...unavailable]/page.tsx": "82027ec8f4f6f08e92ba9ef3c695efcc82f72292837ef8963b1fb7a0dcbaf96f",
+      "web/src/app/[locale]/error.tsx": "03b651f3ca2654099b289334909aa3c3cf03d1ca05c96118a37fdc71035c9290",
+      "web/src/app/[locale]/layout.tsx": "484c304be93f65d519b4c0fcfdbddc32f90a9783953958e4dc489cbe1a0b4c9f",
+      "web/src/app/[locale]/not-found.tsx": "cea2a15d31186bf452bf449ce5dee212750e261a94730a1d46a9471869d16c5c",
+      "web/src/app/globals.css": "35bed690cd652cedcbb045fe3e9642abf9457f99795507dc16db8e8bc084f552",
+      "web/src/app/icon.svg": "c496003e7e9b2a51fd8fb92a5f89ed792c585f3f7925b80bff0f5d8813db7f77",
+      "web/src/components/site-shell.tsx": "da9eeb55b70b2eb4fb2b3aad02aa5db242e40e2285bc2bbba7d298ec06854426",
+      "web/src/lib/locales.ts": "0e2f66a47dda4d3133e6fdd79b155fe554ad83f05b16d31d43e315c93d7306b7",
+      "web/tsconfig.json": "29c5cc4c45c8547da6771cab92163880505b7d757fb12c5a74a987dd9b3e6ad2",
+      "web/vitest.config.ts": "bc57c471e4c655f469044190ba61633d548ebda78a2a5d76296d84e49150f65f"
+    },
+    "changedPaths": []
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "evidenceRoot": "/private/tmp/thachbi-web01-clean-evidence",
+  "finalStatus": "complete; corrected clean-clone checks and all three intended negative probes passed; no repository source changes",
+  "initialAttempt": {
+    "status": "superseded/non-authoritative because HOME was redirected and default-sandbox Turbopack build hit EPERM; downstream boundary/browser exits are cascade results",
+    "correctionRecord": "first-run-correction.json",
+    "checks": [
+      {
+        "id": "npm-ci",
+        "status": "passed",
+        "exitCode": 0,
+        "log": "logs/npm-ci.log",
+        "sha256": "f02caed57684eb39c74132f0d26204e206839461ba9578b2edbe517edc7fbb14"
+      },
+      {
+        "id": "lint",
+        "status": "passed",
+        "exitCode": 0,
+        "log": "logs/lint.log",
+        "sha256": "bdb99f82e8f68d0de33b9e13f7c9ddcbbe0750e60dc72c2d54479f11c411c097"
+      },
+      {
+        "id": "typecheck",
+        "status": "passed",
+        "exitCode": 0,
+        "log": "logs/typecheck.log",
+        "sha256": "c27f780ac296e64f196b61f038a2fbd3a1f41de0b90c777fb0ad7f907ed5ed9d"
+      },
+      {
+        "id": "unit-tests",
+        "status": "passed",
+        "exitCode": 0,
+        "log": "logs/unit-tests.log",
+        "sha256": "0bc8dfa1e21092f7df48a54e36b768fdca16a959ae69f8b976a063e298ab2f06"
+      },
+      {
+        "id": "production-build",
+        "status": "failed",
+        "exitCode": 1,
+        "log": "logs/production-build.log",
+        "sha256": "54c3e2cbea07e7c9b46e9c705e0799f125b3b304d787717500c506ba7b114ade"
+      },
+      {
+        "id": "boundary-scan",
+        "status": "failed",
+        "exitCode": 1,
+        "log": "logs/boundary-scan.log",
+        "sha256": "9b596e455c491fb9faac31ff4bc801981e151d4f91177d91a04f7384740ad38c"
+      },
+      {
+        "id": "headed-browser-tests",
+        "status": "failed",
+        "exitCode": 1,
+        "log": "logs/headed-browser-tests.log",
+        "sha256": "aed26552b66cd6e1646137e1029f06e12dfd718d4d5bbecf01205b42e9128adc"
+      }
+    ]
+  },
+  "correctedRun": {
+    "status": "authoritative clean clone at detached target commit; process.env.HOME preserved unchanged and its value omitted; TMPDIR task-specific; npm ci offline",
+    "preflight": "corrected-home-run/preflight.json",
+    "summary": "corrected-home-run/baseline-run.json",
+    "results": "corrected-home-run/check-results.json",
+    "head": "07c06b6b6911b1898f4f32e5132375b004cfda83",
+    "tree": "9e1348bfa86103b1df6d542ab0be1dfc80b64e63",
+    "node": "v22.23.3",
+    "npm": "10.9.9",
+    "buildId": "hKcCFWOvrxcJTevqBEF7o",
+    "checks": [
+      {
+        "id": "npm-ci",
+        "status": "passed",
+        "exitCode": 0,
+        "log": "corrected-home-run/logs/npm-ci.log",
+        "sha256": "9726105353726c4b952f2086d9e65118ceebbe1949e0c2ea8608503d1b910c31"
+      },
+      {
+        "id": "lint",
+        "status": "passed",
+        "exitCode": 0,
+        "log": "corrected-home-run/logs/lint.log",
+        "sha256": "4e2b823a4836f05268837a114d8d857307101cb1b3cd2f3ca22ecc269535e6d9"
+      },
+      {
+        "id": "typecheck",
+        "status": "passed",
+        "exitCode": 0,
+        "log": "corrected-home-run/logs/typecheck.log",
+        "sha256": "775451a93bb6a46943248eedf7e0bbae82cbe08b2e55a1b08a5cf7b2f1e33849"
+      },
+      {
+        "id": "unit-tests",
+        "status": "passed",
+        "exitCode": 0,
+        "log": "corrected-home-run/logs/unit-tests.log",
+        "sha256": "f2b8fc1bb9a7edc3f7fe77ed60dd4de9e1fa6ed66c4a223fd48b9429d4be1b32"
+      },
+      {
+        "id": "production-build",
+        "status": "passed",
+        "exitCode": 0,
+        "log": "corrected-home-run/logs/production-build.log",
+        "sha256": "069bde3a0efa2455d3aa671f248386d66af2c0f8b96e5ebb13994c12e8fe43a5"
+      },
+      {
+        "id": "boundary-scan",
+        "status": "passed",
+        "exitCode": 0,
+        "log": "corrected-home-run/logs/boundary-scan.log",
+        "sha256": "296b467a6178318156af9963fa295684f6b3a516d99b44a86d017903c8462352"
+      },
+      {
+        "id": "headed-browser-tests",
+        "status": "passed",
+        "exitCode": 0,
+        "log": "corrected-home-run/logs/headed-browser-tests.log",
+        "sha256": "bdee6147b7bf289275e2566deda74c2ffdf6d23f207802dab96e6323e308d272"
+      }
+    ],
+    "allChecksPassed": true
+  },
+  "negativeProbes": [
+    {
+      "id": "static-canary-first-harness",
+      "status": "superseded harness assertion mismatch; scanner correctly reported `.next/static/...`, while harness expected `web/.next/static/...`; removal and clean scan passed",
+      "result": "corrected-home-run/canary-probe.json",
+      "assertions": {
+        "detectedNonzero": true,
+        "detectedNamesMarker": true,
+        "detectedNamesFile": false,
+        "removedOnlyInjectedFile": true,
+        "cleanScannerPasses": true
+      }
+    },
+    {
+      "id": "static-canary-corrected",
+      "status": "passed",
+      "result": "corrected-home-run/canary-correction/canary-probe-corrected.json",
+      "assertions": {
+        "detectedNonzero": true,
+        "detectedNamesMarker": true,
+        "detectedNamesFile": true,
+        "removedOnlyInjectedFile": true,
+        "cleanScannerPasses": true
+      }
+    },
+    {
+      "id": "malformed-pointer",
+      "status": "passed; generic build failure and no canary disclosure; exact pointer bytes restored",
+      "result": "corrected-home-run/pointer-probe/pointer-probe.json",
+      "assertions": {
+        "buildFails": true,
+        "genericUnavailableObserved": true,
+        "canaryFieldNotLeaked": true,
+        "canaryValueNotLeaked": true,
+        "pointerRestoredByteForByte": true
+      }
+    },
+    {
+      "id": "client-boundary-nonroutable-fixture",
+      "status": "superseded fixture; underscore-prefixed folder was excluded by Next private-folder convention, so build success did not exercise the boundary; probe cleaned",
+      "result": "corrected-home-run/client-boundary-probe/client-boundary-probe.json",
+      "assertions": {
+        "buildFails": false,
+        "serverOnlyImportRejected": false,
+        "clientBoundaryNamed": false,
+        "protectedModuleNamed": false,
+        "onlyTemporaryPageRemoved": true
+      }
+    },
+    {
+      "id": "client-boundary-routable-fixture",
+      "status": "passed; production build rejected the client import with server-only/Client Component/protected-content diagnostics; temporary page removed",
+      "result": "corrected-home-run/client-boundary-probe-routable/client-boundary-probe-routable.json",
+      "assertions": {
+        "buildFails": true,
+        "serverOnlyImportRejected": true,
+        "clientBoundaryNamed": true,
+        "protectedModuleNamed": true,
+        "onlyTemporaryPageRemoved": true
+      }
+    }
+  ],
+  "rawLogs": [
+    {
+      "id": "canary-first-detected",
+      "exitCode": 1,
+      "log": "corrected-home-run/logs/canary-detected.log",
+      "sha256": "71b70b15a26027b2de2734e50789003d7b35b738b51d47b43c5c9a3877065b13"
+    },
+    {
+      "id": "canary-first-clean",
+      "exitCode": 0,
+      "log": "corrected-home-run/logs/canary-clean.log",
+      "sha256": "d36a7c031dd4e11447d445c21da6a7ccb682abea088030ac845a2cb1ceb68147"
+    },
+    {
+      "id": "canary-corrected-detected",
+      "exitCode": 1,
+      "log": "corrected-home-run/canary-correction/logs/canary-detected-corrected.log",
+      "sha256": "d924b4e1ac8fd80b2fd98fd2c2cb60587a14c31690e9a101ce1dedd30cd17452"
+    },
+    {
+      "id": "canary-corrected-clean",
+      "exitCode": 0,
+      "log": "corrected-home-run/canary-correction/logs/canary-clean-corrected.log",
+      "sha256": "d36a7c031dd4e11447d445c21da6a7ccb682abea088030ac845a2cb1ceb68147"
+    },
+    {
+      "id": "malformed-pointer-build",
+      "exitCode": 1,
+      "log": "corrected-home-run/pointer-probe/logs/build-malformed-pointer.log",
+      "sha256": "faa7d888548e02fc426281da97333cc9a98aabac316b824db7b2627b42188290"
+    },
+    {
+      "id": "client-nonroutable-build",
+      "exitCode": 0,
+      "log": "corrected-home-run/client-boundary-probe/logs/build-client-server-boundary.log",
+      "sha256": "ef9d9a72fc2be4fa7b4b590ee9c5a082dfefff01820c44424264d72496548f0b"
+    },
+    {
+      "id": "client-routable-build",
+      "exitCode": 1,
+      "log": "corrected-home-run/client-boundary-probe-routable/logs/build-client-server-boundary-routable.log",
+      "sha256": "80fd5370faa14cda085f25257560c0f5678c822b9006aadcf632d8ff96b01322"
+    }
+  ],
+  "finalRestoration": {
+    "record": "corrected-home-run/final-restoration-check.json",
+    "gitHead": "07c06b6b6911b1898f4f32e5132375b004cfda83",
+    "gitTree": "9e1348bfa86103b1df6d542ab0be1dfc80b64e63",
+    "gitStatusPorcelain": "",
+    "sourceClean": true,
+    "lock": {
+      "path": "web/package-lock.json",
+      "sha256Before": "3ad37cadd2142f0da1abd9d561137184e4e810461e2a65c89351c5d95d087789",
+      "sha256After": "3ad37cadd2142f0da1abd9d561137184e4e810461e2a65c89351c5d95d087789",
+      "unchanged": true
+    },
+    "engineeringSourceHashes": {
+      "manifest": "review/web-framework-2026-10-08/contracts/manifest.json",
+      "count": 59,
+      "matches": 59,
+      "allMatch": true
+    },
+    "pointerRestored": true,
+    "temporaryPagesAbsent": true,
+    "canaryFilesAbsent": true
+  },
+  "generatedBuildNote": "The successful baseline build ID is recorded. Later negative build probes intentionally affected ignored .next output; current generated build output is not described as a successful final build."
+}

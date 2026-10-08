@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "test": "temporary use-client page imports a server-only protected-resource reader; production build must reject the boundary",
+  "changedPaths": [
+    {
+      "path": "web/src/app/[locale]/(public)/__server_boundary_canary/page.tsx",
+      "before": "absent",
+      "inserted": true,
+      "insertedBytes": 193,
+      "insertedSha256": "2ed560ebc718d8ed0276ede433c12dac154280a0ae6047bb3bf7ba4c32e3bcac",
+      "removed": true,
+      "afterExists": false
+    }
+  ],
+  "build": {
+    "command": "NEXT_TELEMETRY_DISABLED=1 npm run build",
+    "exitCode": 0,
+    "signal": null,
+    "spawnError": null,
+    "log": "logs/build-client-server-boundary.log",
+    "logBytes": 1246,
+    "logSha256": "ef9d9a72fc2be4fa7b4b590ee9c5a082dfefff01820c44424264d72496548f0b",
+    "containsServerOnlyDiagnostic": false,
+    "containsClientBoundaryDiagnostic": false,
+    "containsProtectedModuleDiagnostic": false
+  },
+  "restoreError": null,
+  "assertions": {
+    "buildFails": false,
+    "serverOnlyImportRejected": false,
+    "clientBoundaryNamed": false,
+    "protectedModuleNamed": false,
+    "onlyTemporaryPageRemoved": true
+  }
+}

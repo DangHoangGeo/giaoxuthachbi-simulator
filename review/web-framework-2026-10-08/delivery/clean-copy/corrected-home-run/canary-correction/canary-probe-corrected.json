@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T01:27:40.114Z",
+  "test": "inject only one synthetic canary file in .next/static; scanner must name the marker; remove injected file; clean scanner must pass",
+  "markerLabel": "synthetic-private-canary",
+  "markerValueRecorded": false,
+  "changedPath": {
+    "path": "web/.next/static/synthetic-private-canary-probe-cfc5f08c-fc0e-4689-be31-1c0d4e5d8bf7.txt",
+    "before": "absent",
+    "inserted": true,
+    "removed": true,
+    "afterExists": false,
+    "insertedBytes": 42,
+    "insertedSha256": "e068c944d7ec04383ae1c9f19c23d04021d10066bbcecc6003afb840b26c3aba"
+  },
+  "detectedScan": {
+    "exitCode": 1,
+    "signal": null,
+    "spawnError": null,
+    "log": "logs/canary-detected-corrected.log",
+    "logBytes": 856,
+    "logSha256": "d924b4e1ac8fd80b2fd98fd2c2cb60587a14c31690e9a101ce1dedd30cd17452",
+    "containsRequiredMarkerLabel": true,
+    "containsInjectedRelativePath": true
+  },
+  "cleanScan": {
+    "exitCode": 0,
+    "signal": null,
+    "spawnError": null,
+    "log": "logs/canary-clean-corrected.log",
+    "logBytes": 736,
+    "logSha256": "d36a7c031dd4e11447d445c21da6a7ccb682abea088030ac845a2cb1ceb68147"
+  },
+  "cleanupFailure": null,
+  "assertions": {
+    "detectedNonzero": true,
+    "detectedNamesMarker": true,
+    "detectedNamesFile": true,
+    "removedOnlyInjectedFile": true,
+    "cleanScannerPasses": true
+  },
+  "interpretation": "Scanner negative detection is expected evidence; the clean follow-up confirms removal and restored baseline scan."
+}

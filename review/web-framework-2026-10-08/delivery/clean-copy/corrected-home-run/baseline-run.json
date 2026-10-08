@@ -1,0 +1,621 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T01:26:03.775Z",
+  "clone": {
+    "path": "/private/tmp/thachbi-web01-clean-rerun-xLc8CE",
+    "head": "07c06b6b6911b1898f4f32e5132375b004cfda83",
+    "tree": "9e1348bfa86103b1df6d542ab0be1dfc80b64e63",
+    "gitStatusPorcelain": "",
+    "sourceClean": true,
+    "nodeModulesPresent": true,
+    "nextOutputPresent": true
+  },
+  "source": {
+    "lockPath": "web/package-lock.json",
+    "lockSha256Before": "3ad37cadd2142f0da1abd9d561137184e4e810461e2a65c89351c5d95d087789",
+    "lockSha256After": "3ad37cadd2142f0da1abd9d561137184e4e810461e2a65c89351c5d95d087789",
+    "lockUnchanged": true,
+    "baselineManifest": "review/web-framework-2026-10-08/contracts/manifest.json",
+    "baselineManifestBaseCommit": "e6c32f8",
+    "baselineEngineeringHashCount": 59,
+    "baselineEngineeringHashMatchesBefore": 59,
+    "baselineEngineeringHashMatchesAfter": 59,
+    "baselineEngineeringHashes": [
+      {
+        "path": "Thach_Bi_Viewer/bundle.js",
+        "expectedSha256": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+        "actualSha256Before": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+        "actualSha256After": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/carving.js",
+        "expectedSha256": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+        "actualSha256Before": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+        "actualSha256After": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/glass-art.js",
+        "expectedSha256": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+        "actualSha256Before": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+        "actualSha256After": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/navigation.js",
+        "expectedSha256": "829bedaeb24a98aea41769520546d7ac39f5953ba91a7205c2f5759f4ed11f16",
+        "actualSha256Before": "829bedaeb24a98aea41769520546d7ac39f5953ba91a7205c2f5759f4ed11f16",
+        "actualSha256After": "829bedaeb24a98aea41769520546d7ac39f5953ba91a7205c2f5759f4ed11f16",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/planning/model-plan-data.js",
+        "expectedSha256": "fa02b393409c549470a9a10bf012dc17d0c5e435c844e535438b8841939417eb",
+        "actualSha256Before": "fa02b393409c549470a9a10bf012dc17d0c5e435c844e535438b8841939417eb",
+        "actualSha256After": "fa02b393409c549470a9a10bf012dc17d0c5e435c844e535438b8841939417eb",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/planning/plan.js",
+        "expectedSha256": "6f4ccce9caed6f4a9f065d6ff2d590492a8a2f1ce10cde6343ec1a687dac5774",
+        "actualSha256Before": "6f4ccce9caed6f4a9f065d6ff2d590492a8a2f1ce10cde6343ec1a687dac5774",
+        "actualSha256After": "6f4ccce9caed6f4a9f065d6ff2d590492a8a2f1ce10cde6343ec1a687dac5774",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/planning.js",
+        "expectedSha256": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+        "actualSha256Before": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+        "actualSha256After": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/realism.js",
+        "expectedSha256": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+        "actualSha256Before": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+        "actualSha256After": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/references.js",
+        "expectedSha256": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+        "actualSha256Before": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+        "actualSha256After": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/render-batches.js",
+        "expectedSha256": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+        "actualSha256Before": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+        "actualSha256After": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/sanctuary.js",
+        "expectedSha256": "2f1114fadfc35f48ab34c66b578b277d22f2b839f66ef7eaf6affdefc2201de3",
+        "actualSha256Before": "2f1114fadfc35f48ab34c66b578b277d22f2b839f66ef7eaf6affdefc2201de3",
+        "actualSha256After": "2f1114fadfc35f48ab34c66b578b277d22f2b839f66ef7eaf6affdefc2201de3",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/analysis.js",
+        "expectedSha256": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+        "actualSha256Before": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+        "actualSha256After": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/audio-synthesis.js",
+        "expectedSha256": "0ac8dba169e165579126a678bcd91e8d330ac85a6956e70749c9ebf12e1aee23",
+        "actualSha256Before": "0ac8dba169e165579126a678bcd91e8d330ac85a6956e70749c9ebf12e1aee23",
+        "actualSha256After": "0ac8dba169e165579126a678bcd91e8d330ac85a6956e70749c9ebf12e1aee23",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/audio.js",
+        "expectedSha256": "b5d5140c527c80e1c86e043292172505ee5cc6ed032a1392c8cf4664ee763cad",
+        "actualSha256Before": "b5d5140c527c80e1c86e043292172505ee5cc6ed032a1392c8cf4664ee763cad",
+        "actualSha256After": "b5d5140c527c80e1c86e043292172505ee5cc6ed032a1392c8cf4664ee763cad",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/catalog.js",
+        "expectedSha256": "db353c028cfa7377844bfd174941893a04d68ce05ec1719f2f5449d2785a4a46",
+        "actualSha256Before": "db353c028cfa7377844bfd174941893a04d68ce05ec1719f2f5449d2785a4a46",
+        "actualSha256After": "db353c028cfa7377844bfd174941893a04d68ce05ec1719f2f5449d2785a4a46",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/controls.js",
+        "expectedSha256": "02ba5f27a1cca4e8217a6bb4a84e70794609082a2b19d805dc12d43790b91e58",
+        "actualSha256Before": "02ba5f27a1cca4e8217a6bb4a84e70794609082a2b19d805dc12d43790b91e58",
+        "actualSha256After": "02ba5f27a1cca4e8217a6bb4a84e70794609082a2b19d805dc12d43790b91e58",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/design.js",
+        "expectedSha256": "7b632d74a358cdc8d65f707864b3abe44d2e32ae070859c45f5b28447d753beb",
+        "actualSha256Before": "7b632d74a358cdc8d65f707864b3abe44d2e32ae070859c45f5b28447d753beb",
+        "actualSha256After": "7b632d74a358cdc8d65f707864b3abe44d2e32ae070859c45f5b28447d753beb",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/electrical.js",
+        "expectedSha256": "192d0942067dc399f379fca989876817a7468445570323b5c4e325ce6c2b9a4c",
+        "actualSha256Before": "192d0942067dc399f379fca989876817a7468445570323b5c4e325ce6c2b9a4c",
+        "actualSha256After": "192d0942067dc399f379fca989876817a7468445570323b5c4e325ce6c2b9a4c",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/engine.js",
+        "expectedSha256": "d94ea996d211291510afe30d888ddae1f94e97a8f4217e7916a48ad7bc267a60",
+        "actualSha256Before": "d94ea996d211291510afe30d888ddae1f94e97a8f4217e7916a48ad7bc267a60",
+        "actualSha256After": "d94ea996d211291510afe30d888ddae1f94e97a8f4217e7916a48ad7bc267a60",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/light-grid.js",
+        "expectedSha256": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+        "actualSha256Before": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+        "actualSha256After": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/persistent-lighting.js",
+        "expectedSha256": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+        "actualSha256Before": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+        "actualSha256After": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/physics.js",
+        "expectedSha256": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+        "actualSha256Before": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+        "actualSha256After": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/samples.js",
+        "expectedSha256": "d249a101c740bfff5a4154ec2fcc7343e314505332191f435dcad609e83d85d3",
+        "actualSha256Before": "d249a101c740bfff5a4154ec2fcc7343e314505332191f435dcad609e83d85d3",
+        "actualSha256After": "d249a101c740bfff5a4154ec2fcc7343e314505332191f435dcad609e83d85d3",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/simulator/ui.js",
+        "expectedSha256": "51a5d17ba3827509568e42ee5d06b5a0e833b4f739bc10ac631426401658bcb8",
+        "actualSha256Before": "51a5d17ba3827509568e42ee5d06b5a0e833b4f739bc10ac631426401658bcb8",
+        "actualSha256After": "51a5d17ba3827509568e42ee5d06b5a0e833b4f739bc10ac631426401658bcb8",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/startup.js",
+        "expectedSha256": "c58afab77ff08d8d509ecdf0aa0c11bd6737b832122e726de8c48cce98ee77ce",
+        "actualSha256Before": "c58afab77ff08d8d509ecdf0aa0c11bd6737b832122e726de8c48cce98ee77ce",
+        "actualSha256After": "c58afab77ff08d8d509ecdf0aa0c11bd6737b832122e726de8c48cce98ee77ce",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/texture-memory.js",
+        "expectedSha256": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+        "actualSha256Before": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+        "actualSha256After": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "Thach_Bi_Viewer/viewer-performance.js",
+        "expectedSha256": "f45fee8c12aa37f9e6a7e4bcbe75b8a679b79c5241f199ccd5349edc204b60d8",
+        "actualSha256Before": "f45fee8c12aa37f9e6a7e4bcbe75b8a679b79c5241f199ccd5349edc204b60d8",
+        "actualSha256After": "f45fee8c12aa37f9e6a7e4bcbe75b8a679b79c5241f199ccd5349edc204b60d8",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/image-manifest.json",
+        "expectedSha256": "330cfe1af35e6e9d2cf09ced1b0f572da3461b692625b333e367bcd192102cfc",
+        "actualSha256Before": "330cfe1af35e6e9d2cf09ced1b0f572da3461b692625b333e367bcd192102cfc",
+        "actualSha256After": "330cfe1af35e6e9d2cf09ced1b0f572da3461b692625b333e367bcd192102cfc",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/01-upper-bay-front.png",
+        "expectedSha256": "a6279ea21f941142a9e9eeb7f741333c798b15773689aeb98a31d8df4a780bb0",
+        "actualSha256Before": "a6279ea21f941142a9e9eeb7f741333c798b15773689aeb98a31d8df4a780bb0",
+        "actualSha256After": "a6279ea21f941142a9e9eeb7f741333c798b15773689aeb98a31d8df4a780bb0",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/02-column-head-three-quarter.png",
+        "expectedSha256": "80e608c91a1cb965d1e88526c02dc98745fedc6ffa2342ee65bd9bcc259fd5e2",
+        "actualSha256Before": "80e608c91a1cb965d1e88526c02dc98745fedc6ffa2342ee65bd9bcc259fd5e2",
+        "actualSha256After": "80e608c91a1cb965d1e88526c02dc98745fedc6ffa2342ee65bd9bcc259fd5e2",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/03-carved-bracket-underside.png",
+        "expectedSha256": "55ad957d9fb18309ea92524a1a2f360c23f6e50e30ac04aae0a8bebea8cbb02d",
+        "actualSha256Before": "55ad957d9fb18309ea92524a1a2f360c23f6e50e30ac04aae0a8bebea8cbb02d",
+        "actualSha256After": "55ad957d9fb18309ea92524a1a2f360c23f6e50e30ac04aae0a8bebea8cbb02d",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/04-upper-rail-roof-connection.png",
+        "expectedSha256": "ce80845fced6761803538b8dad3458ed049e4745959e9f5c289e399a7867ec65",
+        "actualSha256Before": "ce80845fced6761803538b8dad3458ed049e4745959e9f5c289e399a7867ec65",
+        "actualSha256After": "ce80845fced6761803538b8dad3458ed049e4745959e9f5c289e399a7867ec65",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/07-full-width-frame-concrete-sides.png",
+        "expectedSha256": "be351782a27031c8c71cec27045dc0237be172cbe861533df3dd84a2794fe8e1",
+        "actualSha256Before": "be351782a27031c8c71cec27045dc0237be172cbe861533df3dd84a2794fe8e1",
+        "actualSha256After": "be351782a27031c8c71cec27045dc0237be172cbe861533df3dd84a2794fe8e1",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/08-longitudinal-beams-two-frames.png",
+        "expectedSha256": "e0684f160d8e1fbed2a572e6922a11735234b98807321476301ce183c2b1e2a4",
+        "actualSha256Before": "e0684f160d8e1fbed2a572e6922a11735234b98807321476301ce183c2b1e2a4",
+        "actualSha256After": "e0684f160d8e1fbed2a572e6922a11735234b98807321476301ce183c2b1e2a4",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/09-side-beam-concrete-bearing.png",
+        "expectedSha256": "ea9a4a39025203edae26d306d526ec70d716992693086aa8d7f32645bc8a0623",
+        "actualSha256Before": "ea9a4a39025203edae26d306d526ec70d716992693086aa8d7f32645bc8a0623",
+        "actualSha256After": "ea9a4a39025203edae26d306d526ec70d716992693086aa8d7f32645bc8a0623",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/images/10-upper-roof-longitudinal-connections.png",
+        "expectedSha256": "eaa6ff65222030f934fad6ee7797dad44459bfe61b5b062334ac4d5f95adc55b",
+        "actualSha256Before": "eaa6ff65222030f934fad6ee7797dad44459bfe61b5b062334ac4d5f95adc55b",
+        "actualSha256After": "eaa6ff65222030f934fad6ee7797dad44459bfe61b5b062334ac4d5f95adc55b",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/01-upper-bay-front.png",
+        "expectedSha256": "d36b340d9693375ddfbb846b0bcab789345d0dd16477b671796a5a82654b37a3",
+        "actualSha256Before": "d36b340d9693375ddfbb846b0bcab789345d0dd16477b671796a5a82654b37a3",
+        "actualSha256After": "d36b340d9693375ddfbb846b0bcab789345d0dd16477b671796a5a82654b37a3",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/02-column-head-three-quarter.png",
+        "expectedSha256": "df2c1fa4859bcc06b9c9ddbc30a9b86265b431678b06b0002d9742b7aa1d1942",
+        "actualSha256Before": "df2c1fa4859bcc06b9c9ddbc30a9b86265b431678b06b0002d9742b7aa1d1942",
+        "actualSha256After": "df2c1fa4859bcc06b9c9ddbc30a9b86265b431678b06b0002d9742b7aa1d1942",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/03-carved-bracket-underside.png",
+        "expectedSha256": "70b5700953bd45b1aff09353fb0fd3ba9fd723d694079bf6d9368762d67732a9",
+        "actualSha256Before": "70b5700953bd45b1aff09353fb0fd3ba9fd723d694079bf6d9368762d67732a9",
+        "actualSha256After": "70b5700953bd45b1aff09353fb0fd3ba9fd723d694079bf6d9368762d67732a9",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/04-upper-rail-roof-connection.png",
+        "expectedSha256": "5ac11d8a9f3c858d37a99a6056475ae636ca714c155dabd1270d297534a6e0b5",
+        "actualSha256Before": "5ac11d8a9f3c858d37a99a6056475ae636ca714c155dabd1270d297534a6e0b5",
+        "actualSha256After": "5ac11d8a9f3c858d37a99a6056475ae636ca714c155dabd1270d297534a6e0b5",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/07-full-width-frame-concrete-sides.png",
+        "expectedSha256": "162fe45aac764d13894977952ec8ea914fa645f748794ed61f1436b20e3c3abc",
+        "actualSha256Before": "162fe45aac764d13894977952ec8ea914fa645f748794ed61f1436b20e3c3abc",
+        "actualSha256After": "162fe45aac764d13894977952ec8ea914fa645f748794ed61f1436b20e3c3abc",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/08-longitudinal-beams-two-frames.png",
+        "expectedSha256": "a3312ef1c0801b55073d95156c37b94bc8cba1686445c8e6c54f916332208f83",
+        "actualSha256Before": "a3312ef1c0801b55073d95156c37b94bc8cba1686445c8e6c54f916332208f83",
+        "actualSha256After": "a3312ef1c0801b55073d95156c37b94bc8cba1686445c8e6c54f916332208f83",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/09-side-beam-concrete-bearing.png",
+        "expectedSha256": "70c19714ee78bc1eff0f3d5fd7ae3cecb5f7f173a37e1646596ff5846015a13d",
+        "actualSha256Before": "70c19714ee78bc1eff0f3d5fd7ae3cecb5f7f173a37e1646596ff5846015a13d",
+        "actualSha256After": "70c19714ee78bc1eff0f3d5fd7ae3cecb5f7f173a37e1646596ff5846015a13d",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/masters/10-upper-roof-longitudinal-connections.png",
+        "expectedSha256": "77cb263480a2eb16583c7507bb3ac68618df72c96b005e747cdf00ca8564b13c",
+        "actualSha256Before": "77cb263480a2eb16583c7507bb3ac68618df72c96b005e747cdf00ca8564b13c",
+        "actualSha256After": "77cb263480a2eb16583c7507bb3ac68618df72c96b005e747cdf00ca8564b13c",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/requirements.json",
+        "expectedSha256": "d82687d2f11a0e60e80c3745b78fadda726c8c79b525ea1be02fba5fbcf29581",
+        "actualSha256Before": "d82687d2f11a0e60e80c3745b78fadda726c8c79b525ea1be02fba5fbcf29581",
+        "actualSha256After": "d82687d2f11a0e60e80c3745b78fadda726c8c79b525ea1be02fba5fbcf29581",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/04-top-view.png",
+        "expectedSha256": "1929e61f7d8d8dd3d57845f545e7ee4a239eedbeec46b3eb251355716cdd47ee",
+        "actualSha256Before": "1929e61f7d8d8dd3d57845f545e7ee4a239eedbeec46b3eb251355716cdd47ee",
+        "actualSha256After": "1929e61f7d8d8dd3d57845f545e7ee4a239eedbeec46b3eb251355716cdd47ee",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/06-slide-cut-inside-church.png",
+        "expectedSha256": "ca4f0bb3b2c6abf644586cea9038d7ed2764545ea54b53111b03fdc85809c7dd",
+        "actualSha256Before": "ca4f0bb3b2c6abf644586cea9038d7ed2764545ea54b53111b03fdc85809c7dd",
+        "actualSha256After": "ca4f0bb3b2c6abf644586cea9038d7ed2764545ea54b53111b03fdc85809c7dd",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/IMG_20260910_171557_634_1.JPG",
+        "expectedSha256": "6dd42d95c392acad2a12a0ad41b628724c2a2687cb680e67dba4072e8ee6517d",
+        "actualSha256Before": "6dd42d95c392acad2a12a0ad41b628724c2a2687cb680e67dba4072e8ee6517d",
+        "actualSha256After": "6dd42d95c392acad2a12a0ad41b628724c2a2687cb680e67dba4072e8ee6517d",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/IMG_2676.PNG",
+        "expectedSha256": "de6f575d7e5c0fe91f8bfc57a5504e3cd20096dc3a31444cc1c3e999b83d41af",
+        "actualSha256Before": "de6f575d7e5c0fe91f8bfc57a5504e3cd20096dc3a31444cc1c3e999b83d41af",
+        "actualSha256After": "de6f575d7e5c0fe91f8bfc57a5504e3cd20096dc3a31444cc1c3e999b83d41af",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/IMG_2677.PNG",
+        "expectedSha256": "ec557cc1ed6e31f018cca0ee3651c0654f173f7479e25c852f65521d29dedeab",
+        "actualSha256Before": "ec557cc1ed6e31f018cca0ee3651c0654f173f7479e25c852f65521d29dedeab",
+        "actualSha256After": "ec557cc1ed6e31f018cca0ee3651c0654f173f7479e25c852f65521d29dedeab",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/IMG_2678.PNG",
+        "expectedSha256": "8c3206df45db771e88c0fd5a4003fbfb5f70ab96f00970378a6e93ff82daf4fa",
+        "actualSha256Before": "8c3206df45db771e88c0fd5a4003fbfb5f70ab96f00970378a6e93ff82daf4fa",
+        "actualSha256After": "8c3206df45db771e88c0fd5a4003fbfb5f70ab96f00970378a6e93ff82daf4fa",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/IMG_2679.PNG",
+        "expectedSha256": "ed38c696176ea6655ecfd7807af8b275259e5238c9edc5bba0f3555ee9bb5b59",
+        "actualSha256Before": "ed38c696176ea6655ecfd7807af8b275259e5238c9edc5bba0f3555ee9bb5b59",
+        "actualSha256After": "ed38c696176ea6655ecfd7807af8b275259e5238c9edc5bba0f3555ee9bb5b59",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/giao-xu-thach-bi-04-mat-bang-tong-quan-nha-tho-giao-xu.pdf",
+        "expectedSha256": "9fca89fc1c85f171ef5b26271bb4810b2b49e744166c53fedb663e50119e3d6c",
+        "actualSha256Before": "9fca89fc1c85f171ef5b26271bb4810b2b49e744166c53fedb663e50119e3d6c",
+        "actualSha256After": "9fca89fc1c85f171ef5b26271bb4810b2b49e744166c53fedb663e50119e3d6c",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/sources/giao-xu-thach-bi-06-mat-dung-mot-vi-than-nha-tho.pdf",
+        "expectedSha256": "0d7485040df37efea2220e72fb283161717dc660c25fcf68438c1d3e94c4e0aa",
+        "actualSha256Before": "0d7485040df37efea2220e72fb283161717dc660c25fcf68438c1d3e94c4e0aa",
+        "actualSha256After": "0d7485040df37efea2220e72fb283161717dc660c25fcf68438c1d3e94c4e0aa",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "docs/beams-roof-connections/validate.py",
+        "expectedSha256": "68bf3f41998643efb1b68ec8702ab808684a292f34b8197b86f9c4b1b96a90aa",
+        "actualSha256Before": "68bf3f41998643efb1b68ec8702ab808684a292f34b8197b86f9c4b1b96a90aa",
+        "actualSha256After": "68bf3f41998643efb1b68ec8702ab808684a292f34b8197b86f9c4b1b96a90aa",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "scripts/verify_concealed_routes.cjs",
+        "expectedSha256": "87b8011452afb00d56826c8aac99ca98eab0278aff89fe0a7602447cb7c7b207",
+        "actualSha256Before": "87b8011452afb00d56826c8aac99ca98eab0278aff89fe0a7602447cb7c7b207",
+        "actualSha256After": "87b8011452afb00d56826c8aac99ca98eab0278aff89fe0a7602447cb7c7b207",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "scripts/verify_estimates.cjs",
+        "expectedSha256": "b2862659596eb35d4d3a39cd95005d038e766e0cf238c9f089a481dae3b15ba8",
+        "actualSha256Before": "b2862659596eb35d4d3a39cd95005d038e766e0cf238c9f089a481dae3b15ba8",
+        "actualSha256After": "b2862659596eb35d4d3a39cd95005d038e766e0cf238c9f089a481dae3b15ba8",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "scripts/verify_model.cjs",
+        "expectedSha256": "36c0e242ef722b09ecdefb2a59a9170a39efc96a1c0df2e2c93e5e80d33da189",
+        "actualSha256Before": "36c0e242ef722b09ecdefb2a59a9170a39efc96a1c0df2e2c93e5e80d33da189",
+        "actualSha256After": "36c0e242ef722b09ecdefb2a59a9170a39efc96a1c0df2e2c93e5e80d33da189",
+        "matchesBefore": true,
+        "matchesAfter": true
+      },
+      {
+        "path": "scripts/verify_simulator.cjs",
+        "expectedSha256": "44ce5c6d5c34abefd367b37c0da0205fb547b6df88c15ab9d3fcb11e9c23f4f1",
+        "actualSha256Before": "44ce5c6d5c34abefd367b37c0da0205fb547b6df88c15ab9d3fcb11e9c23f4f1",
+        "actualSha256After": "44ce5c6d5c34abefd367b37c0da0205fb547b6df88c15ab9d3fcb11e9c23f4f1",
+        "matchesBefore": true,
+        "matchesAfter": true
+      }
+    ]
+  },
+  "host": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "25.5.0",
+    "version": "Darwin Kernel Version 25.5.0: Mon Apr 27 20:38:56 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_T6000",
+    "cpuModel": "Apple M1 Pro",
+    "logicalCpuCount": 10
+  },
+  "runtime": {
+    "nodeVersion": "v22.23.3",
+    "nodeExecutable": "/private/tmp/thachbi-node22/node-v22.23.3-darwin-arm64/bin/node",
+    "npmVersion": "10.9.9",
+    "npmPackageManager": "npm@10.9.9",
+    "safeEnvironment": {
+      "PATH": "/private/tmp/thachbi-node22/node-v22.23.3-darwin-arm64/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+      "HOME": "preserved unchanged from process.env.HOME; value omitted",
+      "TMPDIR": "/private/tmp/thachbi-web01-clean-rerun-env/tmp",
+      "CI": "1",
+      "NEXT_TELEMETRY_DISABLED": "1"
+    },
+    "homePreservedUnchanged": true,
+    "cachePath": "/private/tmp/thachbi-npm-cache"
+  },
+  "environmentCorrection": {
+    "firstRun": "HOME was temporarily redirected; first run preserved unchanged in parent evidence as non-authoritative.",
+    "correctedRun": "process.env.HOME was passed unchanged to each child; HOME value omitted from output. TMPDIR remained task-specific. Child variables were limited to PATH, HOME, TMPDIR, CI, NEXT_TELEMETRY_DISABLED, plus the two explicitly requested headed-browser variables.",
+    "npmCiOffline": true
+  },
+  "productionBuild": {
+    "command": "NEXT_TELEMETRY_DISABLED=1 npm run build",
+    "exitCode": 0,
+    "buildId": "hKcCFWOvrxcJTevqBEF7o",
+    "buildIdPath": "web/.next/BUILD_ID"
+  },
+  "checks": [
+    {
+      "id": "npm-ci",
+      "command": "npm ci --cache=/private/tmp/thachbi-npm-cache --offline",
+      "log": "logs/npm-ci.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 4446.635,
+      "logBytes": 303,
+      "logSha256": "9726105353726c4b952f2086d9e65118ceebbe1949e0c2ea8608503d1b910c31"
+    },
+    {
+      "id": "lint",
+      "command": "npm run lint",
+      "log": "logs/lint.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 2062.847,
+      "logBytes": 293,
+      "logSha256": "4e2b823a4836f05268837a114d8d857307101cb1b3cd2f3ca22ecc269535e6d9"
+    },
+    {
+      "id": "typecheck",
+      "command": "npm run typecheck",
+      "log": "logs/typecheck.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 3692.674,
+      "logBytes": 313,
+      "logSha256": "775451a93bb6a46943248eedf7e0bbae82cbe08b2e55a1b08a5cf7b2f1e33849"
+    },
+    {
+      "id": "unit-tests",
+      "command": "npm test",
+      "log": "logs/unit-tests.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 2643.073,
+      "logBytes": 911,
+      "logSha256": "f2b8fc1bb9a7edc3f7fe77ed60dd4de9e1fa6ed66c4a223fd48b9429d4be1b32"
+    },
+    {
+      "id": "production-build",
+      "command": "NEXT_TELEMETRY_DISABLED=1 npm run build",
+      "log": "logs/production-build.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 4768.907,
+      "logBytes": 1364,
+      "logSha256": "069bde3a0efa2455d3aa671f248386d66af2c0f8b96e5ebb13994c12e8fe43a5"
+    },
+    {
+      "id": "boundary-scan",
+      "command": "npm run check:boundary",
+      "log": "logs/boundary-scan.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 537.426,
+      "logBytes": 816,
+      "logSha256": "296b467a6178318156af9963fa295684f6b3a516d99b44a86d017903c8462352"
+    },
+    {
+      "id": "headed-browser-tests",
+      "command": "PLAYWRIGHT_CHANNEL=chrome HEADED=1 npm run test:browser",
+      "log": "logs/headed-browser-tests.log",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "runtimeMs": 3787.196,
+      "logBytes": 339,
+      "logSha256": "bdee6147b7bf289275e2566deda74c2ffdf6d23f207802dab96e6323e308d272"
+    }
+  ],
+  "allRequestedChecksPassed": true,
+  "initialClonePath": "/private/tmp/thachbi-web01-clean-0a5Kpc",
+  "initialAttemptNote": "See ../first-run-correction.json; its default-sandbox Turbopack EPERM failure was not counted as authoritative."
+}

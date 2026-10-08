@@ -32,7 +32,7 @@ Suggested commit boundaries: approved content/manifests; homepage; accessible ga
 - [ ] Parish/owner review confirms church identity, wording and public images; uncertain historical details are not stated as fact.
 - [ ] Each gallery entry has correct type, attribution, permission and date precision; missing images have a readable fallback.
 - [ ] No public photo exposes unapproved personal information or unnecessary EXIF/GPS metadata.
-- [ ] Public text and navigation work at narrow widths, large text, keyboard and screen-reader focus order.
+- [ ] Public text and navigation work at desktop window widths, with large text, keyboard and screen-reader focus order.
 - [ ] The page meets the proposed public payload budgets or has a measured, reviewed remediation plan before launch.
 - [ ] The homepage loads no 3D/simulator code and no private engineering data.
 - [ ] SEO previews, sitemap and localization contain only approved public content.

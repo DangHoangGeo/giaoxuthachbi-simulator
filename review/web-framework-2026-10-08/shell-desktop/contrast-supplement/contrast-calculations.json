@@ -1,0 +1,642 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T01:08:34.700Z",
+  "input": {
+    "path": "/private/tmp/thachbi-web01-shell-visual/evidence-final/contrast-colors.json",
+    "sha256": "36b0c8670b7e5f9b47f5e40351c632401ffc321f9d8080ca2bb64830a07b3e0d",
+    "buildId": "efVlO2wA-NVYxmc39G-a5",
+    "sourceHashCount": 24,
+    "sourceChangesDuringBrowserCapture": []
+  },
+  "browser": {
+    "channel": "chrome",
+    "version": "154.0.8037.98",
+    "playwrightVersion": "1.64.0",
+    "canvas": {
+      "contextColorSpaceRequested": "srgb",
+      "pixelFormat": "unorm8",
+      "api": "CanvasRenderingContext2D.fillStyle + getImageData(0,0,1,1)"
+    }
+  },
+  "conversions": {
+    "lab(27.3812 1.32917 3.57789)": {
+      "css": "lab(27.3812 1.32917 3.57789)",
+      "acceptedByCanvasParser": true,
+      "rgba8": [
+        68,
+        64,
+        59,
+        255
+      ],
+      "alpha": 1,
+      "fullyOpaque": true,
+      "canvasColorSpace": "srgb"
+    },
+    "lab(35.5168 1.08604 4.07829)": {
+      "css": "lab(35.5168 1.08604 4.07829)",
+      "acceptedByCanvasParser": true,
+      "rgba8": [
+        87,
+        83,
+        77,
+        255
+      ],
+      "alpha": 1,
+      "fullyOpaque": true,
+      "canvasColorSpace": "srgb"
+    },
+    "lab(96.5286 -0.0991821 0.364268)": {
+      "css": "lab(96.5286 -0.0991821 0.364268)",
+      "acceptedByCanvasParser": true,
+      "rgba8": [
+        245,
+        245,
+        244,
+        255
+      ],
+      "alpha": 1,
+      "fullyOpaque": true,
+      "canvasColorSpace": "srgb"
+    },
+    "rgb(247, 245, 239)": {
+      "css": "rgb(247, 245, 239)",
+      "acceptedByCanvasParser": true,
+      "rgba8": [
+        247,
+        245,
+        239,
+        255
+      ],
+      "alpha": 1,
+      "fullyOpaque": true,
+      "canvasColorSpace": "srgb"
+    },
+    "rgb(255, 255, 255)": {
+      "css": "rgb(255, 255, 255)",
+      "acceptedByCanvasParser": true,
+      "rgba8": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "fullyOpaque": true,
+      "canvasColorSpace": "srgb"
+    },
+    "rgb(38, 57, 47)": {
+      "css": "rgb(38, 57, 47)",
+      "acceptedByCanvasParser": true,
+      "rgba8": [
+        38,
+        57,
+        47,
+        255
+      ],
+      "alpha": 1,
+      "fullyOpaque": true,
+      "canvasColorSpace": "srgb"
+    },
+    "rgb(49, 91, 69)": {
+      "css": "rgb(49, 91, 69)",
+      "acceptedByCanvasParser": true,
+      "rgba8": [
+        49,
+        91,
+        69,
+        255
+      ],
+      "alpha": 1,
+      "fullyOpaque": true,
+      "canvasColorSpace": "srgb"
+    },
+    "rgba(0, 0, 0, 0)": {
+      "css": "rgba(0, 0, 0, 0)",
+      "acceptedByCanvasParser": true,
+      "rgba8": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "fullyOpaque": false,
+      "canvasColorSpace": "srgb"
+    }
+  },
+  "transparency": {
+    "recordedCssTransparent": {
+      "css": "rgba(0, 0, 0, 0)",
+      "acceptedByCanvasParser": true,
+      "rgba8": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "fullyOpaque": false,
+      "canvasColorSpace": "srgb"
+    },
+    "note": "Transparent element backgrounds are preserved as alpha zero and are not treated as opaque contrast surfaces. Text-background comparisons use the nearest opaque ancestor surface recorded in the input. Focus outline comparisons use each adjacent opaque surface separately."
+  },
+  "formula": {
+    "encodedSrgbByteNormalization": "c = byte / 255",
+    "linearization": "c_linear = c / 12.92 when c <= 0.04045; otherwise ((c + 0.055) / 1.055)^2.4",
+    "relativeLuminance": "L = 0.2126 R_linear + 0.7152 G_linear + 0.0722 B_linear",
+    "contrast": "(max(L_foreground, L_background) + 0.05) / (min(L_foreground, L_background) + 0.05)"
+  },
+  "comparisons": [
+    {
+      "id": "body-on-cream",
+      "label": "Body inherited foreground against the opaque root cream",
+      "foreground": {
+        "css": "rgb(38, 57, 47)",
+        "rgba8": [
+          38,
+          57,
+          47,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.035435598819445115,
+        "source": {
+          "label": "body",
+          "tag": "BODY",
+          "className": "",
+          "text": "Đến nội dung chính Bản xem trước · Chưa công bố Nhà thờ Thạch Bi Trang chủ Về trang này English CÙNG XÂY DỰNG NHÀ THỜ Một nơi để cùng hướng về. Trang giới thiệu nhà thờ đang được c",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 759
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      },
+      "background": {
+        "css": "rgb(247, 245, 239)",
+        "rgba8": [
+          247,
+          245,
+          239,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.9131096750646547,
+        "basis": {
+          "source": "nearest opaque ancestor from recorded route",
+          "recordedElementBackground": "rgba(0, 0, 0, 0)",
+          "ancestor": {
+            "tag": "HTML",
+            "className": "",
+            "backgroundColor": "rgb(247, 245, 239)"
+          }
+        }
+      },
+      "wcagContrastRatio": 11.272931756468841,
+      "wcagContrastRatioRounded2dp": 11.27
+    },
+    {
+      "id": "heading-on-cream",
+      "label": "Heading foreground against the opaque root cream",
+      "foreground": {
+        "css": "rgb(38, 57, 47)",
+        "rgba8": [
+          38,
+          57,
+          47,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.035435598819445115,
+        "source": {
+          "label": "heading-1",
+          "tag": "H1",
+          "className": "max-w-[14ch] font-serif text-5xl leading-[1.15] tracking-tight",
+          "text": "Một nơi để cùng hướng về.",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "48px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 112,
+            "y": 242,
+            "width": 412.453125,
+            "height": 110.390625
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      },
+      "background": {
+        "css": "rgb(247, 245, 239)",
+        "rgba8": [
+          247,
+          245,
+          239,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.9131096750646547,
+        "basis": {
+          "source": "nearest opaque ancestor",
+          "recordedElementBackground": "rgba(0, 0, 0, 0)",
+          "ancestor": {
+            "tag": "HTML",
+            "className": "",
+            "backgroundColor": "rgb(247, 245, 239)"
+          }
+        }
+      },
+      "wcagContrastRatio": 11.272931756468841,
+      "wcagContrastRatioRounded2dp": 11.27
+    },
+    {
+      "id": "navigation-on-cream",
+      "label": "Navigation link foreground against the opaque root cream",
+      "foreground": {
+        "css": "rgb(38, 57, 47)",
+        "rgba8": [
+          38,
+          57,
+          47,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.035435598819445115,
+        "source": {
+          "label": "navigation-link-1",
+          "tag": "A",
+          "className": "nav-link",
+          "text": "Trang chủ",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 1043.171875,
+            "y": 61,
+            "width": 62.515625,
+            "height": 44
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      },
+      "background": {
+        "css": "rgb(247, 245, 239)",
+        "rgba8": [
+          247,
+          245,
+          239,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.9131096750646547,
+        "basis": {
+          "source": "nearest opaque ancestor",
+          "recordedElementBackground": "rgba(0, 0, 0, 0)",
+          "ancestor": {
+            "tag": "HTML",
+            "className": "",
+            "backgroundColor": "rgb(247, 245, 239)"
+          }
+        }
+      },
+      "wcagContrastRatio": 11.272931756468841,
+      "wcagContrastRatioRounded2dp": 11.27
+    },
+    {
+      "id": "main-paragraph-on-cream",
+      "label": "Main paragraph foreground against the opaque root cream",
+      "foreground": {
+        "css": "lab(27.3812 1.32917 3.57789)",
+        "rgba8": [
+          68,
+          64,
+          59,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.052115020200090095,
+        "source": {
+          "label": "main-paragraph-2",
+          "tag": "P",
+          "className": "mt-8 max-w-[52ch] text-lg leading-relaxed text-stone-700",
+          "text": "Trang giới thiệu nhà thờ đang được chuẩn bị. Nội dung và hình ảnh sẽ được công bố sau khi giáo xứ duyệt.",
+          "foregroundColor": "lab(27.3812 1.32917 3.57789)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "fontSize": "18px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 112,
+            "y": 384.390625,
+            "width": 520.5546875,
+            "height": 58.5
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      },
+      "background": {
+        "css": "rgb(247, 245, 239)",
+        "rgba8": [
+          247,
+          245,
+          239,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.9131096750646547,
+        "basis": {
+          "source": "nearest opaque ancestor",
+          "recordedElementBackground": "rgba(0, 0, 0, 0)",
+          "ancestor": {
+            "tag": "HTML",
+            "className": "",
+            "backgroundColor": "rgb(247, 245, 239)"
+          }
+        }
+      },
+      "wcagContrastRatio": 9.431616163591622,
+      "wcagContrastRatioRounded2dp": 9.43
+    },
+    {
+      "id": "eyebrow-footer-on-cream",
+      "label": "Eyebrow and footer foreground against the opaque root cream",
+      "foreground": {
+        "css": "lab(35.5168 1.08604 4.07829)",
+        "rgba8": [
+          87,
+          83,
+          77,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.08748571749133029,
+        "source": {
+          "eyebrow": {
+            "label": "main-paragraph-1",
+            "tag": "P",
+            "className": "mb-7 text-xs font-semibold uppercase tracking-[0.18em] text-stone-600",
+            "text": "CÙNG XÂY DỰNG NHÀ THỜ",
+            "foregroundColor": "lab(35.5168 1.08604 4.07829)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "fontSize": "12px",
+            "fontWeight": "600",
+            "rect": {
+              "x": 112,
+              "y": 198,
+              "width": 699.0703125,
+              "height": 16
+            },
+            "visible": true,
+            "backgroundAncestors": [
+              {
+                "tag": "HTML",
+                "className": "",
+                "backgroundColor": "rgb(247, 245, 239)"
+              }
+            ]
+          },
+          "footerText": {
+            "label": "footer-text-1",
+            "tag": "SPAN",
+            "className": "",
+            "text": "Nhà thờ Thạch Bi",
+            "foregroundColor": "lab(35.5168 1.08604 4.07829)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "rect": {
+              "x": 112,
+              "y": 707,
+              "width": 109.3203125,
+              "height": 20
+            },
+            "visible": true,
+            "backgroundAncestors": [
+              {
+                "tag": "HTML",
+                "className": "",
+                "backgroundColor": "rgb(247, 245, 239)"
+              }
+            ]
+          }
+        }
+      },
+      "background": {
+        "css": "rgb(247, 245, 239)",
+        "rgba8": [
+          247,
+          245,
+          239,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.9131096750646547,
+        "basis": {
+          "source": "nearest opaque ancestor for both recorded elements",
+          "eyebrowElementBackground": "rgba(0, 0, 0, 0)",
+          "footerElementBackground": "rgba(0, 0, 0, 0)",
+          "ancestor": {
+            "tag": "HTML",
+            "className": "",
+            "backgroundColor": "rgb(247, 245, 239)"
+          }
+        }
+      },
+      "wcagContrastRatio": 7.005161646157081,
+      "wcagContrastRatioRounded2dp": 7.01
+    },
+    {
+      "id": "preview-on-preview-background",
+      "label": "Preview-banner foreground against the opaque preview banner background",
+      "foreground": {
+        "css": "rgb(38, 57, 47)",
+        "rgba8": [
+          38,
+          57,
+          47,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.035435598819445115,
+        "source": {
+          "label": "preview-banner-1",
+          "tag": "DIV",
+          "className": "border-b border-stone-300 bg-stone-100 px-8 py-2 text-center text-xs tracking-wide",
+          "text": "Bản xem trước · Chưa công bố",
+          "foregroundColor": "rgb(38, 57, 47)",
+          "backgroundColor": "lab(96.5286 -0.0991821 0.364268)",
+          "opacity": "1",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 33
+          },
+          "visible": true,
+          "backgroundAncestors": [
+            {
+              "tag": "DIV",
+              "className": "border-b border-stone-300 bg-stone-100 px-8 py-2 text-center text-xs tracking-wide",
+              "backgroundColor": "lab(96.5286 -0.0991821 0.364268)"
+            },
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      },
+      "background": {
+        "css": "lab(96.5286 -0.0991821 0.364268)",
+        "rgba8": [
+          245,
+          245,
+          244,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.9124894659249753,
+        "basis": {
+          "source": "the preview banner itself",
+          "recordedBackgroundAncestors": [
+            {
+              "tag": "DIV",
+              "className": "border-b border-stone-300 bg-stone-100 px-8 py-2 text-center text-xs tracking-wide",
+              "backgroundColor": "lab(96.5286 -0.0991821 0.364268)"
+            },
+            {
+              "tag": "HTML",
+              "className": "",
+              "backgroundColor": "rgb(247, 245, 239)"
+            }
+          ]
+        }
+      },
+      "wcagContrastRatio": 11.265672380421274,
+      "wcagContrastRatioRounded2dp": 11.27
+    },
+    {
+      "id": "focus-outline-on-white",
+      "label": "Focused skip-link outline against the white skip-link surface",
+      "foreground": {
+        "css": "rgb(49, 91, 69)",
+        "rgba8": [
+          49,
+          91,
+          69,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.0856480989549594,
+        "source": {
+          "style": "solid",
+          "width": "3px",
+          "color": "rgb(49, 91, 69)"
+        }
+      },
+      "background": {
+        "css": "rgb(255, 255, 255)",
+        "rgba8": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 1,
+        "basis": {
+          "source": "focused link background",
+          "recordedForegroundColor": "rgb(38, 57, 47)"
+        }
+      },
+      "wcagContrastRatio": 7.740617141627928,
+      "wcagContrastRatioRounded2dp": 7.74
+    },
+    {
+      "id": "focus-outline-on-cream",
+      "label": "Focused skip-link outline against the surrounding opaque root cream",
+      "foreground": {
+        "css": "rgb(49, 91, 69)",
+        "rgba8": [
+          49,
+          91,
+          69,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.0856480989549594,
+        "source": {
+          "style": "solid",
+          "width": "3px",
+          "color": "rgb(49, 91, 69)"
+        }
+      },
+      "background": {
+        "css": "rgb(247, 245, 239)",
+        "rgba8": [
+          247,
+          245,
+          239,
+          255
+        ],
+        "alpha": 1,
+        "relativeLuminance": 0.9131096750646547,
+        "basis": {
+          "source": "adjacent page canvas outside the focused link",
+          "linkBackground": "rgb(255, 255, 255)"
+        }
+      },
+      "wcagContrastRatio": 7.100060247688734,
+      "wcagContrastRatioRounded2dp": 7.1
+    }
+  ],
+  "limitations": [
+    "Canvas getImageData returns 8-bit unorm sRGB channels; the ratios therefore use the exact browser conversion quantized to 8-bit, not source-gamut floating-point coordinates.",
+    "Computed colors are sampled from the captured default desktop routes and the 200% CSS-root-text-size focus state; this does not test every browser, display profile, hover state, or user preference.",
+    "A contrast ratio is an input to accessibility review, not a full WCAG certification. This calculation does not verify all text-size classification, non-text contrast, focus appearance requirements, use contexts, or the remaining accessibility criteria.",
+    "Axe reported color-contrast as incomplete; these calculations do not convert that incomplete result into a passing axe audit."
+  ]
+}
