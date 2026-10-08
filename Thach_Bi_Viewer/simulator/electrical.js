@@ -677,7 +677,7 @@
     const selection = reviewSelection(), count = selection.itemIds.length;
     const chosen = view.item !== 'all' ? SIM.item(view.item) : null;
     const sel = routes.find(r => r.id === view.selected), board = SOURCES[view.selected];
-    let html = '';
+    let html = SIM.installationReview?.render() || '';
     if (sel) html += `<div class="sim-card"><h3>${esc(sel.name)}</h3><dl class="electrical-details"><dt>Run ID</dt><dd>${esc(sel.id)}</dd><dt>Source</dt><dd>${esc(SOURCES[sel.source].label)}</dd><dt>Circuit / role</dt><dd>${sel.circuit} · ${sel.role}</dd><dt>Drawn length</dt><dd>${sel.length.toFixed(2)} m${sel.homeRun ? ` · full home run ${(sel.length + sel.upstreamLength).toFixed(2)} m` : ''}</dd><dt>Height range</dt><dd>${Math.min(...sel.points.map(p => p[1])).toFixed(2)}–${Math.max(...sel.points.map(p => p[1])).toFixed(2)} m</dd><dt>Installation</dt><dd>${esc(sel.installation)}</dd><dt>Specification</dt><dd>${esc(sel.specification)}</dd></dl><details><summary>Route vertices · metres</summary><div class="electrical-table-wrap"><table class="electrical-table"><thead><tr><th>Vertex</th><th>X</th><th>Y</th><th>Z</th></tr></thead><tbody>${sel.points.map((p,index)=>`<tr><td>${index+1}</td>${p.map(n=>`<td>${n.toFixed(3)}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="sim-hint">X increases toward the sanctuary; Y is height above nave floor; negative Z is side B. Three decimals are model display precision, not survey accuracy. Export retains source coordinates.</p></details><div class="electrical-actions"><button data-act="electrical-focus">Show route</button>${sel.itemIds.length === 1 ? `<button data-act="electrical-component" data-id="${esc(sel.itemIds[0])}">Edit component</button>` : ''}</div></div>`;
     if (board) html += `<div class="sim-card"><h3>${esc(board.label)}</h3><p>${esc(board.where)}</p><p class="sim-hint">Proposed enclosure envelope: ${board.size.map(n => Math.round(n * 1000)).join(' × ')} mm (world X / height / Z). Capacity, product dimensions and internal equipment are pending.</p><button data-act="electrical-focus">Show board</button></div>`;
     html += connectionInspector(chosen);
@@ -708,6 +708,8 @@
   }
   function action(el) {
     switch (el.dataset.act) {
+      case 'electrical-step': SIM.installationReview?.go(Number(el.dataset.step)); break;
+      case 'electrical-step-stop': SIM.installationReview?.stop(); break;
       case 'electrical-mode': {
         setMode(el.dataset.mode);
         if (el.dataset.mode === 'systems') {

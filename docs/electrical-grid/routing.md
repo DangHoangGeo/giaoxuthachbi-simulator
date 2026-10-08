@@ -102,3 +102,7 @@ Selecting an equipment row opens its connection inspector above the layer filter
 **Export this review** downloads `thach-bi-electrical-review.json`, a separate, labeled design-development snapshot: current filters, selected equipment/route/source IDs, their matching component records, source enclosures and route vertices/specification holds. Shared trunks are included as context without adding sibling equipment. Route length is not installed cable quantity, and no new cable allowance or physical hardware specification is inferred. The full systems JSON and legacy schedule CSV remain available with the scopes described above. Do not import this filtered review as a complete simulator layout or use it to replace the category registers.
 
 [Verification, screenshots and example snapshot](../../review/electrical-review-navigation-2026-10-09/README.md) record the source revision and preservation checks. Existing matched workbook quantities and engineering holds remain unchanged.
+
+## Paper drawings and installation review
+
+See the [reusable Python drawing workflow](print-drawings.md) for scaled A3 plans, height projections and companion route vertices. The local Wiring tab adds a read-only nine-stage 3D walkthrough. It filters existing geometry and keeps electrical settings unchanged. Pending wing changes require fresh calculation, routes and register reconciliation before a new issue.

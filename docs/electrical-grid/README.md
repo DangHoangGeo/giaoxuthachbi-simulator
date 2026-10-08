@@ -45,3 +45,7 @@ node scripts/build_equipment_register.mjs --verify-workflow
 ```
 
 The first command checks the implemented electrical route layer and writes layout JSON, systems JSON and the CSV into this folder. The second refreshes all six category workbooks and the summary while preserving engineering-input values by ID. These checks do not verify every control interaction or certify installation design. Keep physical-control addresses, final cable sizes, protection and product selections pending until designed and checked. Update this baseline note when regenerating from a changed design.
+
+## Printable review set and 3D installation planning
+
+The [Python export workflow](print-drawings.md) builds A3 circuit plans, height projections, coordinates and a unique route index from a fresh default-model snapshot. **Simulator → Wiring → Start 3D walkthrough** provides the matching nine-stage review with explicit holds. Both are design-development aids; the current paper set is the baseline before the owner-requested wing redesign.
