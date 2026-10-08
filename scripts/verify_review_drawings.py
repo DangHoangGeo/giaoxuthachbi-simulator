@@ -2,7 +2,7 @@
 """Independently check the generated A3 electrical review set without writing it.
 
 Run from the repository root after build_review_drawings.py:
-    python3 scripts/verify_review_drawings.py [--output output/pdf]
+    python3 scripts/verify_review_drawings.py [--language en|vi] [--output folder]
 
 Requires pypdf, pdfplumber and the builder's reportlab dependency. Counts come
 from the snapshot, so adding/removing equipment does not require editing this
@@ -24,6 +24,7 @@ import re
 import subprocess
 import sys
 from unittest.mock import patch
+from review_drawings_i18n import FONT_FILES, equipment_name, pdf_name, printable, product, text as translated_text
 
 try:
     from pypdf import PdfReader
@@ -35,12 +36,12 @@ except ImportError as exc:
 
 ROOT = Path(__file__).resolve().parents[1]
 MM = 72 / 25.4
-PDF_NAME = "thach-bi-electrical-review-A3.pdf"
-EXPECTED_FILES = {
-    PDF_NAME, "model-snapshot.json", "drawing-index.json",
-    "route-vertices.csv", "equipment-coordinates.csv",
-}
 HASH_RE = re.compile(r"[0-9a-f]{64}\Z")
+
+
+def expected_files(language):
+    return {pdf_name(language), "model-snapshot.json", "drawing-index.json",
+            "route-vertices.csv", "equipment-coordinates.csv"}
 
 
 def digest(path):
@@ -83,13 +84,14 @@ def compare_ids(actual, expected, label):
             f"{label} missing {sorted(missing)}; unexpected {sorted(extra)}")
 
 
-def file_checks(output, data, manifest):
+def file_checks(output, data, manifest, language):
     require(manifest.get("schema") == 1 and data.get("schema") == 1,
             "Unsupported manifest/snapshot schema")
     require(data["full"]["units"] == "metres", "Snapshot units must be metres")
     require("not for construction" in manifest["status"].lower(),
             "Manifest does not identify the construction hold")
-    compare_ids(manifest["files"], EXPECTED_FILES, "Generated files")
+    require(manifest.get("language", "en") == language, "Manifest language differs from requested language")
+    compare_ids(manifest["files"], expected_files(language), "Generated files")
     for name, checksum in manifest["files"].items():
         require(HASH_RE.fullmatch(checksum), f"Invalid file hash: {name}")
         require(digest(output / name) == checksum, f"Stale or altered output: {name}")
@@ -108,7 +110,10 @@ def file_checks(output, data, manifest):
     required_sources = set(expected_model_sources) | {
         "scripts/lib/study_model.cjs", "scripts/export_print_model.cjs",
         "scripts/build_review_drawings.py",
+        "scripts/review_drawings_i18n.py",
     }
+    if language == "vi":
+        required_sources |= {"scripts/fonts/"+name for name in FONT_FILES}
     require(required_sources <= set(sources),
             f"Manifest omits dependencies: {sorted(required_sources - set(sources))}")
     require(set(expected_model_sources) <= set(data["sourceFiles"]),
@@ -123,7 +128,7 @@ def file_checks(output, data, manifest):
         "Snapshot is not the matching saved electrical design")
     require(manifest["gitRevision"] == data["gitRevision"],
             "Manifest/snapshot source commit mismatch")
-    return f"{len(EXPECTED_FILES)} outputs; {len(sources)} source hashes"
+    return f"{len(expected_files(language))} outputs; {len(sources)} source hashes; language {language}"
 
 
 def csv_checks(output, equipment, routes):
@@ -207,8 +212,10 @@ def table_rows(runs, header):
     return body
 
 
-def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks):
-    reader = PdfReader(str(output / PDF_NAME))
+def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks, language):
+    reader = PdfReader(str(output / pdf_name(language)))
+    def tr(value, **fields):
+        return printable(translated_text(value, language, **fields), language)
     require(not reader.is_encrypted, "Review PDF is encrypted")
     require(len(reader.pages) == len(index) == manifest["counts"]["pages"],
             "PDF/index/manifest page count differs")
@@ -226,9 +233,9 @@ def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks
         require(int(page.get("/Rotate", 0)) % 360 == 0, f"Page {number} has unexpected rotation")
         runs = fragments(page)
         text = "\n".join(run["text"] for run in runs)
-        for label in [entry["sheet"], "NOT FOR CONSTRUCTION", "DESIGN DEVELOPMENT",
-                      "MODEL TRANSCRIPTION / DERIVED.", "Print 100% / no fit-to-page",
-                      f"A3 / sheet {number:02}", data["gitRevision"][:10],
+        for label in [entry["sheet"], printable(entry["title"], language), tr("NOT FOR CONSTRUCTION"), tr("DESIGN DEVELOPMENT"),
+                      tr("MODEL TRANSCRIPTION / DERIVED. Metres; displayed decimals are not survey accuracy. Review before installation."), tr("Print 100% / no fit-to-page"),
+                      tr("A3 / sheet {page:02}", page=number), data["gitRevision"][:10],
                       data["full"]["routingRevision"]]:
             require(label in text, f"Page {number} omits its title/footer/hold: {label}")
         require(any(run["text"] == entry["sheet"] and run["y"] > 250 * MM for run in runs),
@@ -240,16 +247,16 @@ def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks
     refs = {route_id: f"R{n:03}" for n, route_id in enumerate(routes, 1)}
     for entry, runs in zip(index, all_runs):
         if entry["sheet"].startswith("EQ-"):
-            eq_rows += table_rows(runs, ["ID", "Circuit", "Board", "Provisional category",
-                                          "Model equipment name"])
+            eq_rows += table_rows(runs, [tr(s) for s in ["ID", "Circuit", "Board", "Provisional category",
+                                          "Model equipment name"]])
         elif entry["sheet"].startswith("RI-"):
-            route_rows += table_rows(runs, ["Ref", "Stable route ID", "From", "Circuit/zone",
-                                              "Equipment / context", "Drawn m", "Audio home run m"])
+            route_rows += table_rows(runs, [tr(s) for s in ["Ref", "Stable route ID", "From", "Circuit/zone",
+                                              "Equipment / context", "Drawn m", "Audio home run m"]])
         elif re.fullmatch(r"E-\d{3}(?:-\d+)?", entry["sheet"]) and entry["sheet"] != "E-000":
             # Right-hand coordinate table: use its printed ID/X/Y/Z headings,
             # rather than accidentally counting a label elsewhere in the plan.
             rows = baseline_rows(runs)
-            headers = [row for row in rows if [r["text"] for r in row[:4]] == ["ID", "X", "Y", "Z"]]
+            headers = [row for row in rows if [r["text"] for r in row[:4]] == [tr("ID"), "X", "Y", "Z"]]
             require(len(headers) == 1, f"Coordinate headings missing on {entry['sheet']}")
             positions = [r["x"] for r in headers[0][:4]]
             for row in rows:
@@ -270,6 +277,9 @@ def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks
         item = equipment[row[0]["text"]]
         require(row[1]["text"] == item["circuit"] and row[2]["text"] == item["board"],
                 f"PDF equipment circuit/board differs: {item['id']}")
+        require(row[3]["text"] == printable(product(item["product"], language), language) and
+                row[4]["text"] == printable(equipment_name(item["name"], language), language),
+                f"PDF equipment description/name differs or loses accents: {item['id']}")
     compare_ids(plan_ids, equipment, "PDF plan coordinate table IDs")
     require(Counter(plan_ids) == Counter({key: 1 for key in equipment}),
             "Plan coordinate tables repeat or omit an installed item")
@@ -283,7 +293,7 @@ def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks
         require(values[0] == refs[route_id], f"PDF route reference differs: {route_id}")
         require(values[2] == route["source"] and values[3] == route["circuit"],
                 f"PDF route source/circuit differs: {route_id}")
-        expected_endpoint = ",".join(route["itemIds"]) if route["role"] in ("drop", "local") else "Shared context"
+        expected_endpoint = ",".join(route["itemIds"]) if route["role"] in ("drop", "local") else tr("Shared context")
         require(values[4] == expected_endpoint, f"PDF endpoint/context differs: {route_id}")
         require(abs(float(values[5]) - lengths[route_id]) <= .0050001,
                 f"Printed geometric length differs: {route_id}")
@@ -296,13 +306,31 @@ def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks
     expected_circuits = {item["circuit"] for item in equipment.values()}
     require({s["id"] for s in data["sheets"]} == expected_circuits | {"distribution"},
             "Drawing scopes do not dynamically cover current circuits")
+    sequence = " ".join(" ".join(page.split()) for page, entry in zip(pages, index) if entry["sheet"].startswith("SQ-"))
+    for step in data["steps"]:
+        for field in ("title", "task", "hold"):
+            require(" ".join(tr(step[field]).split()) in sequence,
+                    f"PDF installation sequence loses {field} or accents: {step['id']}")
+    if language == "vi":
+        embedded = set()
+        for page in reader.pages:
+            for ref in page["/Resources"]["/Font"].values():
+                font = ref.get_object()
+                if "NotoSans" not in font.get("/BaseFont", ""):
+                    continue
+                require("/ToUnicode" in font and font["/ToUnicode"].get_data(), "Vietnamese font has no Unicode mapping")
+                descriptor = font["/FontDescriptor"].get_object()
+                require("/FontFile2" in descriptor and descriptor["/FontFile2"].get_data(), "Vietnamese font is not embedded")
+                embedded.add(str(font["/BaseFont"]))
+        require(len(embedded) == 2, "Vietnamese regular/bold fonts are not both embedded")
+        require(all("\ufffd" not in page for page in pages), "PDF text contains replacement glyphs")
     return f"{len(reader.pages)} A3 pages; exact ID coverage; coordinates and 3D lengths"
 
 
-def layout_checks(output, checks):
+def layout_checks(output, checks, language):
     tiny = Counter()
     collisions, offpage = [], []
-    with pdfplumber.open(output / PDF_NAME) as pdf:
+    with pdfplumber.open(output / pdf_name(language)) as pdf:
         for number, page in enumerate(pdf.pages, 1):
             for char in page.chars:
                 if not char["text"].strip():
@@ -340,7 +368,7 @@ def layout_checks(output, checks):
     return "No off-page text or text below 5.5 pt; overlaps remain a visual-screening concern"
 
 
-def refusal_checks(output, data):
+def refusal_checks(output, data, language):
     # Import only the validator. Suppress bytecode files and do not call generate.
     sys.dont_write_bytecode = True
     spec = importlib.util.spec_from_file_location("review_drawing_builder", ROOT / "scripts/build_review_drawings.py")
@@ -395,17 +423,53 @@ def refusal_checks(output, data):
             refuses("category manifest " + field, data)
     require(before == {p.name: digest(p) for p in output.iterdir() if p.is_file()},
             "Validator altered a delivered output file")
+    try:
+        builder.generate(output, 'vi' if language == 'en' else 'en')
+    except ValueError:
+        rejected.append('opposite-language output folder')
+    else:
+        raise ValueError('Builder overwrites a set in the opposite language')
+    for name, translate in [('untranslated drawing text', translated_text), ('untranslated product', product),
+                            ('untranslated equipment name', equipment_name)]:
+        try:
+            translate('unreviewed new source text', 'vi')
+        except ValueError:
+            rejected.append(name)
+        else:
+            raise ValueError('Vietnamese builder accepts '+name)
+    require(before == {p.name: digest(p) for p in output.iterdir() if p.is_file()},
+            "Language/refusal checks altered delivered output")
     return f"{len(rejected)} invalid inputs rejected; delivered files untouched"
+
+
+def language_equivalence(output, other_output, index, data, manifest):
+    other_manifest = json.loads((other_output / 'manifest.json').read_text())
+    other_index = json.loads((other_output / 'drawing-index.json').read_text())
+    require({manifest.get('language','en'), other_manifest.get('language','en')} == {'en','vi'},
+            'Comparison must contain one English and one Vietnamese set')
+    for name in ('model-snapshot.json', 'equipment-coordinates.csv', 'route-vertices.csv'):
+        require((output / name).read_bytes() == (other_output / name).read_bytes(),
+                'Language variants differ in source geometry/data: '+name)
+    require([(row['page'],row['sheet']) for row in index] == [(row['page'],row['sheet']) for row in other_index],
+            'Language variants differ in pages or sheet scopes')
+    require(manifest['scales'] == other_manifest['scales'] and manifest['counts'] == other_manifest['counts'],
+            'Language variants differ in counts or scales')
+    require(manifest['gitRevision'] == other_manifest['gitRevision'] and manifest['systemsHash'] == other_manifest['systemsHash'],
+            'Language variants differ in engineering source revision')
+    return 'Identical full snapshots, coordinate/vertex CSVs, page scopes, scales and source revision'
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=ROOT / "output/pdf")
+    parser.add_argument("--language", choices=['en','vi'], default='en')
+    parser.add_argument("--output", type=Path)
+    parser.add_argument("--compare-language", type=Path, help='Compare lossless source data with the other-language output folder')
     args = parser.parse_args()
-    output = args.output.resolve()
+    output = (args.output or ROOT / ('output/pdf-vi' if args.language == 'vi' else 'output/pdf')).resolve()
+    files = expected_files(args.language)
     checks = Checks()
     try:
-        before = {name: digest(output / name) for name in EXPECTED_FILES | {"manifest.json"}}
+        before = {name: digest(output / name) for name in files | {"manifest.json"}}
         data = json.loads((output / "model-snapshot.json").read_text())
         manifest = json.loads((output / "manifest.json").read_text())
         index = json.loads((output / "drawing-index.json").read_text())
@@ -414,7 +478,7 @@ def main():
     except (OSError, ValueError, KeyError, TypeError) as exc:
         print(f"FAIL Read review set: {exc}")
         return 1
-    checks.run("File integrity and source freshness", lambda: file_checks(output, data, manifest))
+    checks.run("File integrity and source freshness", lambda: file_checks(output, data, manifest, args.language))
     csv_result = {}
 
     def verify_csv():
@@ -425,11 +489,14 @@ def main():
     checks.run("CSV reconciliation and independent lengths", verify_csv)
     if "lengths" in csv_result:
         checks.run("PDF geometry, identifiers and schedules", lambda: pdf_checks(
-            output, data, manifest, index, equipment, routes, csv_result["lengths"], checks))
-    checks.run("Text bounding-box screening", lambda: layout_checks(output, checks))
-    checks.run("Builder stale-data refusal", lambda: refusal_checks(output, data))
+            output, data, manifest, index, equipment, routes, csv_result["lengths"], checks, args.language))
+    checks.run("Text bounding-box screening", lambda: layout_checks(output, checks, args.language))
+    checks.run("Builder stale-data refusal", lambda: refusal_checks(output, data, args.language))
+    if args.compare_language:
+        checks.run("Language source/geometry equivalence", lambda: language_equivalence(
+            output, args.compare_language.resolve(), index, data, manifest))
     checks.run("Read-only delivered set", lambda: require(
-        before == {name: digest(output / name) for name in EXPECTED_FILES | {"manifest.json"}},
+        before == {name: digest(output / name) for name in files | {"manifest.json"}},
         "Output files changed during verification; regenerate completed set and retry"))
     print(f"Result: {checks.failed} failed checks; {len(checks.warnings)} layout screening warnings.")
     print("These checks do not replace rendered-page inspection or qualified engineering approval.")

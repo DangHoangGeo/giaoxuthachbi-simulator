@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "language": "en",
+  "language": "vi",
   "status": "Design development - not for construction",
   "basis": "Fresh default model, not saved browser layout",
   "gitRevision": "eefc2712fde7e5f788ca8dad7c10adc016d7988e",
@@ -26,7 +26,11 @@
     "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
     "scripts/build_review_drawings.py": "11c50afeee67cb18d448280d94b66ad36393a90aa2c44b36037bdf3ecbf18230",
     "scripts/export_print_model.cjs": "1ca96bbe3dd4c77fa36641e8367b37ea3538bd44ce0fd70be377d4f6b7f47805",
-    "scripts/review_drawings_i18n.py": "654228b3ca0c2aabc7aee87ddff0ff369c7dd21e4283fbb1af202335878e6406"
+    "scripts/review_drawings_i18n.py": "654228b3ca0c2aabc7aee87ddff0ff369c7dd21e4283fbb1af202335878e6406",
+    "scripts/fonts/NotoSans-Regular.ttf": "f5f552c8c5edb61fe6efb824baf4d4de47b1a8689ab4925ff43f7bd6a4ebece5",
+    "scripts/fonts/NotoSans-Bold.ttf": "3a08a47daa00cade516425c15c57615aef2fd418ec9811a7b9f465088f92cc05",
+    "scripts/fonts/OFL.txt": "231dfd281eb8f5101e897083691cc4071432352458b9bab58f767b0bb7753b60",
+    "scripts/fonts/README.md": "00f89d81570614cb4b271adcae3f0b9bdfbffc76c7b773fe6eaa4e695e3a8ffb"
   },
   "systemsHash": "c883a38876b1d2b04788046ec5e1d87651113aa8dbfeb0f5415ba0b829f004ab",
   "counts": {
@@ -40,10 +44,10 @@
     "height": 500
   },
   "files": {
-    "drawing-index.json": "ebd3e626e485b16e33970285b23be639a96fe4d6aec48fc1bcd98d8027af3cb2",
+    "drawing-index.json": "633549c29c68622b1aaacf02a0087fba2b659d6bef470b669e8808c23ecac0ba",
     "equipment-coordinates.csv": "77c44292a9be0d5783cca25c993338397c8f7c58b3e97aa0bb2b326717e3da38",
     "model-snapshot.json": "5cbab70862cc2352257e0a6e8a916c14adc5e7d0ee8fccc2b752d15dafccc9f8",
     "route-vertices.csv": "a23e298d77563d880c64929921baf5c89caa79b02d3dcb5a6fb4cb5112f8bc5a",
-    "thach-bi-electrical-review-A3.pdf": "53edc4cb0d4bb8f3fb6062d09296d98daf47cb1ab6c5eea450a295d7ecb2bb04"
+    "thach-bi-electrical-review-A3-vi.pdf": "da16e876336af21aa748cfd5a444e53975fc5ca5984f711303e3115285643761"
   }
 }
