@@ -3,7 +3,7 @@ import {
   type PublicRelease,
   publicPointerSchema,
   publicReleaseSchema,
-} from "../contracts/public-content";
+} from "../contracts/public-content.ts";
 
 // Defined here, rather than JSON.stringify key insertion order, for reproducible maintainer hashes.
 // Input is schema-validated JSON: no undefined, non-finite numbers, prototypes or cycles.

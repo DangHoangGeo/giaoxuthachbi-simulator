@@ -10,7 +10,7 @@
   "packageManager": "npm@10.9.9",
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",
-    "build": "npm run check:media && next build && node scripts/prepare-standalone.mjs",
+    "build": "npm run check:content && npm run check:media && next build && node scripts/prepare-standalone.mjs",
     "start": "node scripts/start.mjs",
     "lint": "biome check . --error-on-warnings",
     "typecheck": "next typegen && tsc --noEmit",
@@ -18,7 +18,8 @@
     "test:browser": "playwright test",
     "check:boundary": "node scripts/check-build-boundary.mjs",
     "format": "biome check . --write",
-    "check:media": "node scripts/check-media.mjs"
+    "check:media": "node scripts/check-media.mjs",
+    "check:content": "node scripts/check-content.ts"
   },
   "dependencies": {
     "next": "16.4.0",

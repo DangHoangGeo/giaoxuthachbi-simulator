@@ -1,6 +1,6 @@
 # Phase 03 — Construction timeline and fresh updates
 
-Status: **not started**. Depends on phase 02 and the event/media/work-package [contracts](../data-and-publication.md).
+Status: **independent local software in progress; G3 held**, 8 October 2026, branch `web/03-timeline` from main `dd2538d`. Explicit `-x` cherry-picks reuse verified phase-02 software (`173a4d2`, `afff2df`, `d8d645d`) without merging its held publication gate. Read the event/media/work-package [contracts](../data-and-publication.md) and [maintainer runbook](../../docs/web/progress-publishing.md).
 
 ## Outcome
 

@@ -20,6 +20,28 @@ export const occurrenceDate = z.discriminatedUnion("precision", [
   z.strictObject({ precision: z.literal("month"), value: calendarMonth }),
   z.strictObject({ precision: z.literal("day"), value: calendarDay }),
 ]);
+export type OccurrenceDate = z.infer<typeof occurrenceDate>;
+export function earliestDay(date: OccurrenceDate) {
+  return `${date.value}${date.precision === "month" ? "-01" : ""}`;
+}
+export function latestDay(date: OccurrenceDate) {
+  if (date.precision === "day") return date.value;
+  // Refinements may still run after a nested regex error. Keep safeParse non-throwing.
+  if (!calendarMonth.safeParse(date.value).success) return date.value;
+  const [year, month] = date.value.split("-").map(Number);
+  return new Date(Date.UTC(year, month, 0)).toISOString().slice(0, 10);
+}
+export function churchDay(timestamp: string) {
+  if (!Number.isFinite(Date.parse(timestamp))) return null;
+  const parts = new Intl.DateTimeFormat("en", {
+    timeZone: "Asia/Ho_Chi_Minh",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date(timestamp));
+  const part = (type: string) => parts.find((entry) => entry.type === type)?.value;
+  return `${part("year")}-${part("month")}-${part("day")}`;
+}
 export const instant = z.iso
   .datetime({ offset: true })
   .refine(
