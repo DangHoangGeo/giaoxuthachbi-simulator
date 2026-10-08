@@ -1,0 +1,88 @@
+{
+  "states": [
+    {
+      "place": "nave",
+      "mode": "day",
+      "exposure": 1,
+      "environmentIntensity": 0.6,
+      "wood": "853125",
+      "carve": "8b3827"
+    },
+    {
+      "place": "nave",
+      "mode": "evening",
+      "exposure": 1.12,
+      "environmentIntensity": 0.04,
+      "wood": "853125",
+      "carve": "8b3827"
+    },
+    {
+      "place": "nave",
+      "mode": "day",
+      "exposure": 1,
+      "environmentIntensity": 0.6,
+      "wood": "853125",
+      "carve": "8b3827"
+    },
+    {
+      "place": "sanctuary",
+      "mode": "day",
+      "exposure": 1,
+      "environmentIntensity": 0.6,
+      "wood": "853125",
+      "carve": "8b3827"
+    },
+    {
+      "place": "sanctuary",
+      "mode": "evening",
+      "exposure": 1.12,
+      "environmentIntensity": 0.04,
+      "wood": "853125",
+      "carve": "8b3827"
+    }
+  ],
+  "chandeliers": [
+    {
+      "id": "L78",
+      "position": [
+        16.725,
+        6.3,
+        0
+      ],
+      "expectedMidpoint": 16.725,
+      "offset": 0
+    },
+    {
+      "id": "L79",
+      "position": [
+        25.725,
+        6.3,
+        0
+      ],
+      "expectedMidpoint": 25.725,
+      "offset": 0
+    },
+    {
+      "id": "L80",
+      "position": [
+        34.725,
+        6.3,
+        0
+      ],
+      "expectedMidpoint": 34.725,
+      "offset": 0
+    },
+    {
+      "id": "L81",
+      "position": [
+        40.575,
+        9.2,
+        0
+      ],
+      "expectedMidpoint": 40.575,
+      "offset": 0
+    }
+  ],
+  "unchangedEquipment": true,
+  "errors": []
+}
