@@ -1,0 +1,2 @@
+# Vector PDF streams are binary artifacts, including ASCII-encoded ReportLab output.
+*.pdf binary

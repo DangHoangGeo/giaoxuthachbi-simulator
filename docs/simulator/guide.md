@@ -437,3 +437,7 @@ Open **Simulator → Wiring**. Choose **Lights**, **Sound & microphones**, **Fan
 ### Connection review and framing · 9 October 2026
 
 Click an equipment row in **Wiring** to see its supply and branch relationships at the top of the panel. Click a linked route for its details. **Fit review** frames the current routes; **Show route** frames the selected run. **Export this review** saves only the displayed equipment and related upstream route/source context in a separate JSON review file. Full-design exports remain separate. Signal lines, shared-trunk lengths and unresolved electrical specifications are labeled explicitly; see [routing](../electrical-grid/routing.md#connection-inspector-and-review-snapshots--9-october-2026).
+
+## Printable review and staged 3D coordination
+
+Choose **Simulator → Wiring → Start 3D walkthrough** for nine proposed installation-planning stages. Previous, Next review step, Reset stage view and End walkthrough change display only. Each stage states the unverified work that requires a responsible specialist. Generate the matching A3 review drawings with `python3 scripts/build_review_drawings.py`; see the [print workflow](../electrical-grid/print-drawings.md). This uses the default model, not saved browser edits, and is not construction authorization.

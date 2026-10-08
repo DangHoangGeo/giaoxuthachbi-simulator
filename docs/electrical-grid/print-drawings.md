@@ -1,0 +1,53 @@
+# Printable electrical review drawings and 3D sequence
+
+Implemented 9 October 2026 for the **local default model**. These are design-development review sheets, not approved installation, fabrication, procurement or construction documents. The owner has subsequently requested a new wing lighting/fan comparison; the current sheets remain the **pre-wing-review baseline** until that design, routes and category registers are reconciled and re-exported.
+
+## Rebuild the paper set
+
+The reusable [Python program](../../scripts/build_review_drawings.py) generates [the A3 PDF](../../output/pdf/thach-bi-electrical-review-A3.pdf), [sheet index](../../output/pdf/drawing-index.json), [equipment coordinates](../../output/pdf/equipment-coordinates.csv), [route vertices](../../output/pdf/route-vertices.csv), a complete model snapshot and a SHA-256 manifest. It invokes the small [Node adapter](../../scripts/export_print_model.cjs) to evaluate the actual viewer geometry, catalogue, default equipment and electrical routing. It does not scrape an old screenshot, read browser storage or edit workbooks.
+
+From the project root, with Python 3 and Node.js installed:
+
+```sh
+python3 -m pip install -r scripts/requirements-drawings.txt
+python3 scripts/build_review_drawings.py
+```
+
+The dependency file includes ReportLab for generation and pypdf/pdfplumber for verification. The same command may use a configured Python runtime with these packages already installed. `--output /absolute/folder` selects a different output folder. Generated named files are replaced after successful validation/build; unrelated files are preserved. A failed model or register validation leaves the previous set intact. Keep the PDF and its companion manifest/CSVs together.
+
+After a coordinated equipment addition, removal, move or specification change in the **owning default model**, first complete its engineering/software checks and refresh the matched sources:
+
+```sh
+node scripts/verify_simulator.cjs --electrical --export-electrical
+node scripts/build_equipment_register.mjs --verify-workflow
+python3 scripts/build_review_drawings.py
+python3 scripts/verify_review_drawings.py
+```
+
+The register command needs the artifact runtime described in the [preservation workflow](register.md). It preserves engineering inputs and retired IDs; never replace a workbook by hand to bypass that workflow. Review the generated diffs and counts. The Python program refuses fresh-model versus saved-JSON differences, stale source fingerprints, unsupported units/schema, stale register manifests and changed workbooks. It independently recomputes every 3D centreline length and checks unique IDs, equipment connections and drawing coverage. No threshold or physics parameter is adjusted by printing.
+
+**Browser-edited layouts are separate.** Export and reconcile them using the register workflow before adopting them into the default design. Running the Python command does not capture an unsaved browser edit. The manifest states this scope; importing arbitrary JSON into this builder is intentionally unsupported.
+
+## Read and print
+
+Print **A3 landscape, 100%, no fit-to-page** and measure the 100 mm calibration bar on the cover. The current full-model plan is 1:200 and the height projection 1:500. Scales are computed from source bounds and may increase for a larger future model; each sheet states its actual scale. A resized A4 print has a different scale.
+
+Each populated circuit/zone gets a sheet, plus a distribution sheet. Long equipment lists continue onto additional sheets. Top views show X/Z and height views show X/Y with all Z superimposed. These are **grid-based electrical projections**, not complete architectural floor plans or structural support drawings. Original drawing/workbook dimensions and outstanding survey conflicts remain governed by `docs/layout_design/`; the snapshot retains the model grid's source, revision, assumptions and unresolved records.
+
+Equipment labels, source enclosures and trunk/feeder references link to the coordinate table and unique route index. Branch references beside each equipment coordinate identify its route-index entry. `R001` style references are local to that issue; the full route and equipment IDs are the stable identities. Circles mark equipment, squares mark enclosures; power is solid, audio dashed and microphones dotted. Crossing/overlapping projections do not establish junctions. Use ordered CSV vertices and the 3D inspector to disambiguate height and connectivity.
+
+Coordinates are model reference points, not terminal/anchor set-out points. Three decimals are display precision, not surveyed accuracy. Drawn lengths exclude spares, terminations and installation allowance. Shared context repeats across sheets but the route index owns every route once. Full audio home runs already include their own upstream path; adding shared bundle lengths again would double-count. No conductor size, protective rating, cable quantity or terminal is invented.
+
+## Step-by-step 3D review
+
+Open [OPEN_CHURCH.html](../../Thach_Bi_Viewer/OPEN_CHURCH.html), then **Simulator → Wiring → Start 3D walkthrough**. Previous/Next review step changes the selected system and camera. Reset stage view restores the current stage after exploring an individual circuit. End walkthrough restores the prior electrical filters, mode and architectural visibility; camera position is left at the last review view.
+
+The nine stages cover survey/coordination, distribution, concealed containment, lighting, sound/microphones, fans/ventilation, exit functions, powered decoration, and inspection/commissioning/handover. Each stage has its task and an explicit engineering hold. The same [stage source](../../Thach_Bi_Viewer/simulator/installation-review.js) supplies the PDF sequence sheets. Containment is an all-system coordination view; it does not simulate actual pulling order or isolate individual conductors. Empty stages are legitimate where no equipment of that class is installed.
+
+This is a **proposed coordination sequence**. It does not mark work complete, release holds, operate switches, authorize energization, choose fixings, or constitute a contractor's approved method statement. Keep equipment/route inspection and simulator controls separate. Physical construction requires checked design and the responsible professionals' installation and commissioning procedures.
+
+## Status and verification
+
+The initial baseline set contains 286 connected items, 329 routes and 2,681 route vertices; 327 equipment/enclosure register records include hidden alternatives and non-electrical objects outside the print scope. The printing/walkthrough tools change no positions, physics, operating states, route geometry or registers. All lighting, feedback, wing-clarity, air/noise, concealment, supply/product, mounting/access and life-safety holds remain in [issues](../engineering/issues.md).
+
+Verification and rendered/desktop evidence are recorded in the [review record](../../review/print-sequence-2026-10-09/README.md). The private/public architectural web viewer is unchanged; these tools belong to the local full simulator.
