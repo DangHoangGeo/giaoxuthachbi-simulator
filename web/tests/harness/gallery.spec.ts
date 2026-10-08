@@ -63,13 +63,17 @@ test("filters synthetic gallery records and labels dates, categories, credits an
     const card = page.locator("figure").first();
     await expect(card.locator(":scope > p").first()).toHaveText(example.category);
     await expect(card.getByRole("heading", { level: 2 })).toHaveText(example.caption);
-    await expect(card).toContainText(example.note);
-    await expect(card).toContainText("Creator / source:");
-    await expect(card).toContainText("Synthetic test generator; no parish image");
-    await expect(card).toContainText(example.date);
+    const details = card.locator("details");
+    await expect(details).not.toHaveAttribute("open", "");
+    await details.getByText("Date, source and notes", { exact: true }).click();
+    await expect(details).toHaveAttribute("open", "");
+    await expect(details.getByText(example.note, { exact: true })).toBeVisible();
+    await expect(details.getByText(/Creator \/ source:/)).toBeVisible();
+    await expect(details.getByText("Synthetic test generator; no parish image")).toBeVisible();
+    await expect(details.getByText(example.date, { exact: true })).toBeVisible();
     if (example.dateTime)
-      await expect(card.locator("time")).toHaveAttribute("datetime", example.dateTime);
-    else await expect(card.locator("time")).toHaveCount(0);
+      await expect(details.locator("time")).toHaveAttribute("datetime", example.dateTime);
+    else await expect(details.locator("time")).toHaveCount(0);
     await expect(navigation.getByRole("link", { name: example.filter })).toHaveAttribute(
       "aria-current",
       "page",
@@ -128,7 +132,9 @@ test("shows the card caption and source when a synthetic media request fails", a
   await expect(card.getByRole("heading", { level: 2 })).toHaveText(
     "Synthetic example 1 — no church evidence",
   );
-  await expect(card).toContainText("Synthetic test generator; no parish image");
+  const details = card.locator("details");
+  await details.getByText("Date, source and notes", { exact: true }).click();
+  await expect(details.getByText("Synthetic test generator; no parish image")).toBeVisible();
 });
 
 test("works without JavaScript and opens the full-size image anchor", async ({ browser }) => {

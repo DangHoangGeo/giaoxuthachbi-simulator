@@ -1,7 +1,13 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import developmentRelease from "../../content/release.json" with { type: "json" };
 
 const ownerEvidence = "Reported by the owner — not independently verified";
+const latestEventAt = developmentRelease.events.reduce<string | null>(
+  (latest, event) =>
+    !latest || Date.parse(event.updatedAt) > Date.parse(latest) ? event.updatedAt : latest,
+  null,
+);
 
 test("published owner-reported milestones retain occurrence and report-date uncertainty", async ({
   page,
@@ -58,10 +64,10 @@ test("published owner-reported milestones retain occurrence and report-date unce
     ["latestEventAt", "publishedAt", "releaseId", "sha256", "state"].sort(),
   );
   expect(version.state).toBe("published");
-  expect(version.releaseId).toBe("development-content-20261008-one");
+  expect(version.releaseId).toBe(developmentRelease.releaseId);
   expect(version.sha256).toMatch(/^[a-f0-9]{64}$/);
-  expect(version.publishedAt).toBe("2026-10-08T11:48:24Z");
-  expect(version.latestEventAt).toBe("2026-10-08T11:48:24Z");
+  expect(version.publishedAt).toBe(developmentRelease.publishedAt);
+  expect(version.latestEventAt).toBe(latestEventAt);
   expect(response.headers().etag).toBe(`"${version.sha256}"`);
   expect(response.headers()["cache-control"]).toContain("no-store");
 

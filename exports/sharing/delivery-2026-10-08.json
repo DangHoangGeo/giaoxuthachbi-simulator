@@ -1,0 +1,15 @@
+{
+  "status": "design-development-not-for-construction",
+  "files": [
+    {
+      "file": "Thach-Bi-full-detail-2026-10-08.glb",
+      "bytes": 125105044,
+      "sha256": "a8968ba5368da66f46083321ebc586c151ffa72a8c823bbfb09d9d769509e341"
+    },
+    {
+      "file": "Thach-Bi-full-detail-2026-10-08.zip",
+      "bytes": 53232485,
+      "sha256": "d1a022efba5471d437a6e8847ebf3a21460b5d1f80787f587264e824d2f06954"
+    }
+  ]
+}

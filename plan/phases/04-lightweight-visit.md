@@ -1,6 +1,6 @@
 # Phase 04 — Lightweight virtual church visit
 
-Status: **not started**. Depends on phase 01 and the public-model approval from phase 00. Can proceed while phase 03 content is being collected. Read [architecture](../architecture.md) and [performance/verification criteria](../quality-and-release.md).
+Status: **in progress; G4 remains open and branch unmerged**. The desktop development visit and separate full-detail sharing export are implemented; see [delivery/profile](../../docs/web/viewer.md) and [checks/evidence](../../review/web-visit-2026-10-08/README.md). Depends on phase 01 and the public-model approval from phase 00. Can proceed while phase 03 content is being collected. Read [architecture](../architecture.md) and [performance/verification criteria](../quality-and-release.md).
 
 ## Outcome
 

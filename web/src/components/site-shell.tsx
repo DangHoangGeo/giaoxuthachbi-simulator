@@ -28,9 +28,8 @@ export function SiteShell({
       <header>
         <div className="border-b border-stone-300 bg-stone-100 px-8 py-2 text-center text-xs tracking-wide">
           <p className="font-semibold">{copy.development}</p>
-          <p className="mx-auto mt-1 max-w-4xl leading-relaxed">{copy.developmentDetail}</p>
         </div>
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 border-b border-stone-300 px-8 py-7">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 border-b border-stone-300 px-8 py-4">
           <a className="text-xl font-semibold tracking-tight" href={localizedPath(locale)}>
             {copy.name}
           </a>
@@ -51,6 +50,13 @@ export function SiteShell({
               href={galleryPath(locale)}
             >
               {galleryWords[locale].title}
+            </a>
+            <a
+              className="nav-link"
+              aria-current={path === "/visit" ? "page" : undefined}
+              href={localizedPath(locale, "/visit")}
+            >
+              {locale === "vi" ? "Mô hình 3D" : "3D model"}
             </a>
             <a
               className="nav-link"
@@ -81,7 +87,7 @@ export function SiteShell({
           </nav>
         </div>
       </header>
-      <main id="main" tabIndex={-1} className="mx-auto min-h-[60dvh] max-w-7xl px-8 py-16">
+      <main id="main" tabIndex={-1} className="mx-auto min-h-[60dvh] max-w-7xl px-8 py-8">
         {children}
       </main>
       <footer className="mx-auto flex max-w-7xl flex-wrap justify-between gap-4 border-t border-stone-300 px-8 py-8 text-sm text-stone-600">

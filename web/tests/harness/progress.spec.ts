@@ -15,6 +15,7 @@ test("timeline dates, pagination, persistent language and withdrawn stable links
   await expect(page).toHaveURL(/\/vi\/progress\?sort=oldest&page=2/);
   await page.goto("/en/progress/synthetic-event-001");
   await expect(page.locator("dl").getByText("February 2026", { exact: true })).toBeVisible();
+  await page.locator("figcaption summary").click();
   await expect(
     page.locator("figcaption").getByText("Photograph recorded on site.", { exact: true }),
   ).toBeVisible();

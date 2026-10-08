@@ -19,11 +19,18 @@ describe("owner-authorized development release", () => {
     });
   });
 
-  it("contains three dated concepts and no site photographs or private source paths", () => {
+  it("contains sixteen dated concepts, preserves the original three IDs, and has no site photographs or private source paths", () => {
     const release = publicReleaseSchema.parse(developmentRelease);
 
-    expect(release.media).toHaveLength(3);
+    expect(release.media).toHaveLength(16);
     expect(release.media.every((item) => item.category === "concept-art")).toBe(true);
+    expect(release.media.map((item) => item.id)).toEqual(
+      expect.arrayContaining([
+        "concept-front-20261007",
+        "concept-nave-20261007",
+        "concept-sanctuary-20261007",
+      ]),
+    );
     expect(release.media.filter((item) => item.category === "site-photo")).toHaveLength(0);
     for (const item of release.media) {
       expect(item.capturedOn).toEqual({ precision: "day", value: "2026-10-07" });

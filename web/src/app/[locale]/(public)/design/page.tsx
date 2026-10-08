@@ -39,12 +39,16 @@ export default async function Design({
       publishedAt={content.state === "published" ? content.release.publishedAt : undefined}
     >
       <div className="max-w-[65ch]">
-        <h1 className="font-serif text-5xl leading-tight">{copy.title}</h1>
-        <p className="mt-7 text-lg leading-relaxed text-stone-700">{copy.introduction}</p>
+        <h1 className="font-serif text-4xl leading-tight">{copy.title}</h1>
+        <p className="mt-3 text-sm text-stone-600">
+          {locale === "vi"
+            ? "Ý tưởng kiến trúc · Chọn hình để xem lớn."
+            : "Architectural ideas · Select an image to explore."}
+        </p>
       </div>
       <nav
         aria-label={copy.filter}
-        className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-y border-stone-300 py-3"
+        className="mt-5 flex flex-wrap gap-x-7 gap-y-3 border-y border-stone-300 py-3"
       >
         {galleryCategories.map((item) => (
           <a
@@ -64,11 +68,11 @@ export default async function Design({
           </a>
         ))}
       </nav>
-      <p className="mt-6 text-sm text-stone-600">
+      <p className="mt-4 text-xs text-stone-600">
         {filtered.length} {locale === "en" && filtered.length === 1 ? "image" : copy.count}
       </p>
       {filtered.length ? (
-        <div className="mt-8 grid grid-cols-[repeat(auto-fill,minmax(min(100%,18rem),1fr))] items-start gap-x-9 gap-y-14">
+        <div className="mt-4 grid grid-cols-2 items-start gap-x-7 gap-y-10">
           {filtered.map((item, index) => (
             <GalleryCard key={item.id} media={item} locale={locale} priority={index === 0} />
           ))}

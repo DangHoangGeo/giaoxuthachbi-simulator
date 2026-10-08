@@ -1,6 +1,6 @@
 # Delivery configuration and pending cloud setup
 
-**Current development release, 8 October 2026:** `development-content-20261008-one` selects a limited introduction, two owner-reported milestones and three AI concepts as application inputs. The owner permits showing this project-created work with prominent “In development / Đang phát triển” and “Not for construction / Không dùng để thi công” notes; see [permission and scope](publication-permission.md). Actual hosting, real-site-photo and operating checks remain open; full G2/G3 are held.
+**Current development release, 8 October 2026:** `development-content-20261008-two` selects a limited introduction, two owner-reported milestones and sixteen AI concepts plus a separate lightweight architectural 3D visit as application inputs. The owner permits showing this project-created work with prominent “In development / Đang phát triển” and “Not for construction / Không dùng để thi công” notes; see [permission and scope](publication-permission.md). Actual hosting, real-site-photo and operating checks remain open; full G2/G3 are held.
 
 This is a local configuration handover, not a deployment record. Web01 created no Vercel project, domain, auth tenant, private store or production environment. The [selected pointer](../../web/content/current.json) now names the development release; that application state does not confirm a deployed URL. The owner will connect an existing hosting project to GitHub; its target and settings have not been supplied. The repository remains private. The [development guide](development.md) contains the working local commands and the [data boundary](data-boundary.md) defines allowed build inputs.
 
@@ -28,7 +28,7 @@ The owner handles the existing project's GitHub connection. Use `web` as the Roo
 | Public inputs | Only the reviewed `web/content` files and explicitly cleared `web/public` derivatives |
 | Private inputs | None today; later runtime authorization/storage only, never bundled originals |
 | Preview environment | Owner-managed development target using the selected public-safe content; URL/access settings unconfirmed, no production credentials in source |
-| Branch/auto-deploy | `web/03-timeline` currently carries the development content; `main` remains `dd2538d`. The owner configures the existing project's branch/auto-deploy settings; no actual setting is confirmed |
+| Branch/auto-deploy | `web/04-lightweight-visit` currently carries the expanded development content and 3D visit; `main` remains `dd2538d`. The owner configures the existing project's branch/auto-deploy settings; no actual setting is confirmed |
 | Region for private reads | Pending storage/provider jurisdiction and owner choice; no guess |
 | Public domain, team, budget, billing owner | Pending |
 

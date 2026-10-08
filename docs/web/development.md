@@ -1,6 +1,6 @@
 # Local web development
 
-Phase 01 local foundation and phase 02 local gallery preparation, 8 October 2026. No public launch, cloud account or private viewer is enabled. Branch `web/01-framework` starts from main `9c37b38`; the private Web00 preparation remains unmerged at [`84edc9e`](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/tree/84edc9e). Its publication holds remain in force. No originals, engineering records or cleared launch media are copied into this application.
+Current work is the owner-authorized desktop development preview on `web/04-lightweight-visit`: a visual homepage, sixteen-image gallery, owner-reported timeline and lightweight 3D visit. See [publication scope](publication-permission.md), [viewer/sharing profiles](viewer.md) and [current evidence](../../review/web-visit-2026-10-08/README.md). No cloud URL or private viewer is enabled. Original sources and engineering records stay outside the application.
 
 ## Runtime and commands
 
@@ -24,9 +24,9 @@ npm start -- --port 3100
 PLAYWRIGHT_CHANNEL=chrome HEADED=1 npm run test:browser
 ```
 
-This uses installed desktop Chrome and a fresh automation context. CI can use Playwright's installed Chromium instead. No phone profile is configured. Public text and language links work without JavaScript. `/` redirects to `/vi`; supported pages are `/vi`, `/en` and their `/about-this-site` and `/design` equivalents. Unimplemented review, site and sign-in paths return 404 and are absent from navigation. These 404s are not a substitute for phase-05 authorization.
+This uses installed desktop Chrome and a fresh automation context. CI can use Playwright's installed Chromium instead. No phone profile is configured. Public text and language links work without JavaScript. `/` redirects to `/vi`; supported pages are `/vi`, `/en` and their `/about-this-site`, `/design`, `/progress` and `/visit` equivalents. Unimplemented review, site and sign-in paths return 404 and are absent from navigation. These 404s are not a substitute for phase-05 authorization.
 
-The `(public)` loading boundary deliberately excludes the unavailable-path fallback, allowing the latter to send a real 404 before streaming. Error, missing-content and loading presentations are separate. Preview copy remains parish-review pending and the shell sends `noindex` metadata/headers; this does not provide confidentiality or publication approval.
+Public text routes omit a streaming loading boundary: under slower rendering, its reveal script left complete gallery HTML hidden when JavaScript was disabled. Complete server-rendered pages preserve the no-JavaScript reading path and real unavailable-route 404s. The 3D interaction retains its own loading, cancel and error states. Preview copy remains parish-review pending and the shell sends `noindex` metadata/headers; this does not provide confidentiality or publication approval.
 
 ## Dependency decisions
 
@@ -51,4 +51,4 @@ PLAYWRIGHT_CHANNEL=chrome HEADED=1 npx --no-install playwright test --config pla
 This is test tooling only. It cannot approve publication or replace the real production build/boundary checks. See the [gallery workflow](public-content.md#gallery-and-narrative-presentation). Do not deploy the test copy.
 
 
-Phase 03 adds `/vi/progress`, `/en/progress` and known stable event-ID pages. Actual content remains unpublished; unknown event IDs return 404. See [timeline behavior](timeline.md) and [maintainer staging](progress-publishing.md). `npm run build` now runs `check:content` before `check:media`. Existing `npm run test:browser` includes production timeline/GET/304/405/no-JS cases; `playwright.gallery.config.ts` includes synthetic gallery and progress cases. Both configs use separate output directories; running sequentially is the documented default. No authenticated, publication-write or physical-control route is added.
+Phase 03 adds `/vi/progress`, `/en/progress` and known stable event-ID pages. The current selected owner-authorized release is published in the local application inputs; this is not a cloud deployment claim. Unknown event IDs return 404. See [timeline behavior](timeline.md) and [maintainer staging](progress-publishing.md). `npm run build` now runs `check:content` before `check:media`. Existing `npm run test:browser` includes production timeline/GET/304/405/no-JS cases; `playwright.gallery.config.ts` includes synthetic gallery and progress cases. Both configs use separate output directories; running sequentially is the documented default. No authenticated, publication-write or physical-control route is added.

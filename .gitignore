@@ -18,6 +18,10 @@ node_modules/
 /web/dist/
 *.tsbuildinfo
 
+# Large direct-sharing deliverables; keep their source manifests and README tracked.
+/exports/sharing/*.glb
+/exports/sharing/*.zip
+
 # Local test output and package-manager diagnostics
 /web/coverage/
 /web/playwright-report/

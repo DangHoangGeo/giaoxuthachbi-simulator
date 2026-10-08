@@ -1,6 +1,6 @@
 # Public progress publishing
 
-**Current development release, 8 October 2026:** [development-content-20261008-one](../../web/content/release.json) selects a limited introduction, two owner-reported milestones and three AI concepts as application inputs. The owner permits showing this project-created work with prominent “In development / Đang phát triển” and “Not for construction / Không dùng để thi công” notes; see [permission and scope](publication-permission.md). Actual hosting, real-site-photo and operating checks remain open.
+**Current development release, 8 October 2026:** [development-content-20261008-two](../../web/content/release.json) selects a limited introduction, two owner-reported milestones and sixteen AI concepts as application inputs. The owner permits showing this project-created work with prominent “In development / Đang phát triển” and “Not for construction / Không dùng để thi công” notes; see [permission and scope](publication-permission.md). Actual hosting, real-site-photo and operating checks remain open.
 
 The selected pointer/release is now application input on `web/03-timeline`; `main` remains `dd2538d`. This is not a confirmed cloud deployment, and full G0/G2/G3 remain held. The two selected milestones retain the owner's report: a February 2026 construction start (month only) and foundation completion/construction continuing as of 7 October (completion day unknown). They are explicitly owner-reported, not independently verified or as-built records. No completion percentage, planned opening date or site photograph is invented.
 

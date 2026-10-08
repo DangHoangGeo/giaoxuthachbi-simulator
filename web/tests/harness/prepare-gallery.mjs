@@ -29,6 +29,7 @@ const config = path.join(target, "next.config.ts");
 await writeFile(config, (await readFile(config, "utf8")).replace('output: "standalone",', ""));
 await symlink(path.join(web, "node_modules"), path.join(target, "node_modules"), "dir");
 await mkdir(path.join(target, "content"));
+await writeFile(path.join(target, "content/visit.json"), "null\n");
 await mkdir(path.join(target, "public/media"), { recursive: true });
 const media = [];
 for (const [index, category] of [
@@ -97,7 +98,10 @@ const fixture = {
     {
       id: "synthetic-intro",
       slug: "introduction",
-      title: { vi: "Nội dung kiểm thử", en: "Synthetic presentation test" },
+      title: {
+        vi: "Nội dung kiểm thử",
+        en: "Synthetic presentation test <script>window.harnessInjection=1</script>",
+      },
       body: {
         vi: "Không phải thông tin giáo xứ. <script>window.harnessInjection=1</script>",
         en: "No parish facts. <script>window.harnessInjection=1</script>",

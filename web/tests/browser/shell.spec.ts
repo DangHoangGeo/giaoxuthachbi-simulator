@@ -20,6 +20,17 @@ test("published home retains the development notice across locales and supports 
     "Cùng xây dựng nhà thờ Thạch Bi",
   );
   await expect(page.getByText(/chưa phải hồ sơ được phép dùng để thi công/)).toBeVisible();
+  await expect(page.getByRole("link", { name: /Khám phá mô hình 3D/ })).toHaveAttribute(
+    "href",
+    "/vi/visit",
+  );
+  await expect(page.getByRole("link", { name: /16 hình ý tưởng/ })).toHaveAttribute(
+    "href",
+    "/vi/design",
+  );
+  const hero = page.getByRole("link", { name: "Xem bộ hình ý tưởng" });
+  await expect(hero.getByRole("img")).toBeVisible();
+  await expect(hero.getByRole("img")).toHaveAttribute("alt", /Hình ý tưởng nhà thờ/);
 
   await page.keyboard.press("Tab");
   await expect(page.getByText("Đến nội dung chính", { exact: true })).toBeFocused();
@@ -55,6 +66,17 @@ test("published site content and language navigation work without JavaScript", a
       "Building Thạch Bi Church together",
     );
     await expect(page.getByText(/not construction-approved documents/)).toBeVisible();
+    await expect(page.getByRole("link", { name: /Explore the 3D model/ })).toHaveAttribute(
+      "href",
+      "/en/visit",
+    );
+    await expect(page.getByRole("link", { name: /16 design ideas/ })).toHaveAttribute(
+      "href",
+      "/en/design",
+    );
+    await expect(
+      page.getByRole("link", { name: "Browse the design ideas" }).getByRole("img"),
+    ).toBeVisible();
     await page
       .getByRole("navigation")
       .getByRole("link", { name: "Tiếng Việt", exact: true })

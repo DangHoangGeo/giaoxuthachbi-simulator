@@ -1,6 +1,6 @@
 # Web architecture and framework decision
 
-Status: architecture proposed 7 October 2026; local Web01 shell/read boundaries implemented 8 October. Protected access, 3D migration and hosting remain planned; see [development](../docs/web/development.md) and [delivery status](../docs/web/deployment.md). Return to the [roadmap](README.md). Cross-cutting data and security requirements apply to every phase.
+Status: architecture proposed 7 October 2026; local Web01 shell/read boundaries implemented 8 October. The public 3D development visit is now implemented as a reviewed GLB derivative with its own lifecycle. Protected access and hosting remain planned; see [development](../docs/web/development.md) and [delivery status](../docs/web/deployment.md). Return to the [roadmap](README.md). Cross-cutting data and security requirements apply to every phase.
 
 ## Decision: Next.js, with a small client-side 3D viewer
 

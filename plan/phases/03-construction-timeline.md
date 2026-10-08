@@ -60,3 +60,7 @@ The owner added a 20-minute remaining-work budget during this phase. Stop at its
 The owner's later instruction resumes work and authorizes showing our work with permanent development notes. Release `development-content-20261008-one` contains a limited bilingual introduction, three dated AI concepts and two owner-reported milestones. February remains month-only and foundation completion remains undated. [Current verification](../../review/web-development-display-2026-10-08/README.md) supersedes empty-content performance figures for this release; historical records retain their original inputs/hashes.
 
 The owner will connect an existing hosting project to GitHub. Use root `web` and this `web/03-timeline` branch for the development preview; main `dd2538d` contains the verified foundation only. No cloud URL has been tested. G3 stays held for actual-host refresh/recovery and the real contributor/publisher/backup rehearsal. Physical engineering holds are unchanged.
+
+### Subsequent phase-04 presentation work
+
+The [lightweight visit branch](04-lightweight-visit.md) carries the verified timeline dependencies and expanded `development-content-20261008-two` gallery. Existing event records retain their dates, evidence and uncertainty. The earlier three-image review remains historical evidence; [current scope](../../docs/web/viewer.md) does not close G3 operational/hosting holds.

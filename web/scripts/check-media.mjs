@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { lstat, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { gunzipSync } from "node:zlib";
 import sharp from "sharp";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
@@ -49,8 +50,61 @@ try {
       }
     }
   } else throw new Error("Invalid release state");
+  const visit = await readFile(path.join(root, "content/visit.json"), "utf8")
+    .then(JSON.parse)
+    .catch((error) => {
+      if (error.code === "ENOENT") return null;
+      throw error;
+    });
+  if (visit !== null) {
+    if (
+      pointer.state !== "published" ||
+      Object.keys(visit).sort().join(",") !== "bytes,decodedBytes,path,sha256,sourceRevision" ||
+      !/^[a-f0-9]{7,40}$/.test(visit.sourceRevision) ||
+      !/^[a-f0-9]{64}$/.test(visit.sha256) ||
+      visit.path !== `/models/${visit.sha256}.glb.gz` ||
+      !Number.isInteger(visit.bytes) ||
+      visit.bytes < 1 ||
+      visit.bytes > 10_000_000 ||
+      !Number.isInteger(visit.decodedBytes) ||
+      visit.decodedBytes < 20 ||
+      visit.decodedBytes > 150_000_000
+    )
+      throw new Error("Invalid model manifest");
+    const filename = path.join(root, "public", visit.path);
+    const stat = await lstat(filename);
+    if (!stat.isFile() || stat.isSymbolicLink() || stat.size !== visit.bytes)
+      throw new Error("Invalid model file");
+    const packed = await readFile(filename);
+    if (sha256(packed) !== visit.sha256) throw new Error("Model checksum mismatch");
+    const glb = gunzipSync(packed, { maxOutputLength: 150_000_000 });
+    if (
+      glb.length !== visit.decodedBytes ||
+      glb.readUInt32LE(0) !== 0x46546c67 ||
+      glb.readUInt32LE(4) !== 2 ||
+      glb.readUInt32LE(8) !== glb.length ||
+      glb.readUInt32LE(16) !== 0x4e4f534a
+    )
+      throw new Error("Invalid GLB");
+    const text = glb.subarray(20, 20 + glb.readUInt32LE(12)).toString("utf8");
+    const data = JSON.parse(text);
+    if (/Thach_Bi_Viewer|docs\/|\/Users\/|ENGINEERING_PRIVATE|localStorage/.test(text))
+      throw new Error("Private model metadata");
+    function check(node) {
+      if (!node || typeof node !== "object") return;
+      if (Object.hasOwn(node, "extras") || Object.hasOwn(node, "uri"))
+        throw new Error("Unexpected external model resource or metadata");
+      for (const value of Object.values(node)) check(value);
+    }
+    check(data);
+    if (data.asset?.version !== "2.0" || !data.nodes?.length || !data.meshes?.length)
+      throw new Error("Empty model");
+  }
   const files = await regularFiles(path.join(root, "public"));
-  if (files.length !== assets.size || files.some((file) => !assets.has(file)))
+  if (
+    files.length !== assets.size + (visit ? 1 : 0) ||
+    files.some((file) => !assets.has(file) && file !== visit?.path)
+  )
     throw new Error("Public files disagree with release");
   for (const [name, asset] of assets) {
     const filename = path.join(root, "public", name);

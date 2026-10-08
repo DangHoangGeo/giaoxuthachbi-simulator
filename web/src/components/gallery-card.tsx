@@ -30,8 +30,8 @@ export function GalleryCard({
   const caption = media.caption[locale];
   const date = mediaDate(media, locale);
   return (
-    <figure className="min-w-0 border-t border-stone-300 pt-5">
-      <p className="mb-4 text-xs font-semibold uppercase tracking-wider">
+    <figure className="min-w-0">
+      <p className="mb-2 text-xs font-semibold uppercase tracking-wider">
         {copy.categories[media.category]}
       </p>
       <a
@@ -49,7 +49,7 @@ export function GalleryCard({
         }}
       >
         {failed ? (
-          <p className="flex aspect-[4/3] items-center p-6 text-sm leading-relaxed">
+          <p className="flex aspect-video items-center p-6 text-sm leading-relaxed">
             {copy.unavailable}
           </p>
         ) : (
@@ -58,50 +58,55 @@ export function GalleryCard({
               <source
                 type="image/avif"
                 srcSet={choices.avif}
-                sizes="(min-width: 1024px) 384px, 640px"
+                sizes="(min-width: 1024px) 608px, 640px"
               />
             )}
             {choices.webp && (
               <source
                 type="image/webp"
                 srcSet={choices.webp}
-                sizes="(min-width: 1024px) 384px, 640px"
+                sizes="(min-width: 1024px) 608px, 640px"
               />
             )}
             <img
               ref={thumbnail}
               src={choices.fallback.path}
               srcSet={choices.srcSet}
-              sizes="(min-width: 1024px) 384px, 640px"
+              sizes="(min-width: 1024px) 608px, 640px"
               alt={media.alt[locale]}
               width={choices.fallback.width}
               height={choices.fallback.height}
               loading={priority ? "eager" : "lazy"}
               decoding="async"
               onError={() => setFailed(true)}
-              className="aspect-[4/3] w-full object-contain"
+              className="aspect-video w-full object-contain"
             />
           </picture>
         )}
-        <span aria-hidden="true" className="block py-3 text-sm underline underline-offset-4">
+        <span aria-hidden="true" className="block px-3 py-2 text-xs underline underline-offset-4">
           {copy.view} ↗
         </span>
       </a>
-      <figcaption className="mt-5">
-        <h2 className="text-xl font-semibold leading-snug">{caption}</h2>
-        <p className="mt-3 text-sm leading-relaxed text-stone-700">{copy.notes[media.category]}</p>
-        <p className="mt-4 text-sm text-stone-600">
-          {media.capturedOn ? (
-            <>
-              {copy.date}: <time dateTime={media.capturedOn.value}>{date}</time>
-            </>
-          ) : (
-            date
-          )}
-        </p>
-        <p className="mt-2 text-sm text-stone-600">
-          {copy.credit}: {media.attribution}
-        </p>
+      <figcaption className="mt-3">
+        <h2 className="text-base font-semibold leading-snug">{caption}</h2>
+        <details className="mt-2 text-sm text-stone-600">
+          <summary className="cursor-pointer min-h-9 py-2">
+            {locale === "vi" ? "Ngày, nguồn và ghi chú" : "Date, source and notes"}
+          </summary>
+          <p className="mt-2 leading-relaxed">{copy.notes[media.category]}</p>
+          <p className="mt-4 text-sm text-stone-600">
+            {media.capturedOn ? (
+              <>
+                {copy.date}: <time dateTime={media.capturedOn.value}>{date}</time>
+              </>
+            ) : (
+              date
+            )}
+          </p>
+          <p className="mt-2 text-sm text-stone-600">
+            {copy.credit}: {media.attribution}
+          </p>
+        </details>
       </figcaption>
       <dialog
         ref={dialog}
