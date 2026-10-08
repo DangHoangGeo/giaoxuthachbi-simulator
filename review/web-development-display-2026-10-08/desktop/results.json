@@ -1,0 +1,2516 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-08T12:04:18.775Z",
+  "project": "Thạch Bi development-display desktop evidence (actual local production build)",
+  "source": {
+    "baseUrl": "http://127.0.0.1:3130",
+    "gitHead": "581d3810d302fa908a183c1efdf122af5fce0d45",
+    "gitBranch": "web/03-timeline",
+    "gitStatusBefore": [
+      "## web/03-timeline...origin/web/03-timeline",
+      " M AGENTS.md",
+      " M docs/web/data-boundary.md",
+      " M docs/web/deployment.md",
+      " M docs/web/progress-publishing.md",
+      " M docs/web/public-content.md",
+      " M docs/web/timeline.md",
+      " M plan/README.md",
+      " M plan/phases/00-evidence-and-publication.md",
+      " M plan/phases/02-homepage-and-gallery.md",
+      " M plan/phases/03-construction-timeline.md",
+      " M web/content/current.json",
+      " M web/content/release.json",
+      " M web/src/app/[locale]/(public)/about-this-site/page.tsx",
+      " M web/src/app/[locale]/(public)/page.tsx",
+      " M web/src/components/site-shell.tsx",
+      " M web/src/lib/locales.ts",
+      " M web/tests/browser/gallery.spec.ts",
+      " M web/tests/browser/progress.spec.ts",
+      " M web/tests/browser/shell.spec.ts",
+      " M web/tests/harness/gallery.spec.ts",
+      "?? docs/web/development-publication-assets.json",
+      "?? docs/web/publication-permission.md",
+      "?? review/web-development-display-2026-10-08/",
+      "?? web/public/",
+      "?? web/tests/unit/development-release.test.ts"
+    ],
+    "expectedBuildId": "oT1CH6lG1eRFtvqP9unlz",
+    "localBuildIdBefore": "oT1CH6lG1eRFtvqP9unlz",
+    "releaseId": "development-content-20261008-one",
+    "contentPointer": {
+      "schemaVersion": 1,
+      "state": "published",
+      "releaseId": "development-content-20261008-one",
+      "sha256": "2dbb3a1c9292d6820480f10917cedbb6596368fc4b85bddf6f9b93d0e2d16c45"
+    },
+    "sourceHashesBefore": {
+      "AGENTS.md": "f9c5d44243aa0611fae48fed2efd2bc2d07ff2aa1ce36cee5a03cb27e22c8357",
+      "docs/web/publication-permission.md": "8d4abe511816bfacd08e3db51fdd5d5f6ab73e6903817c677a09aaf3eb080794",
+      "docs/web/development-publication-assets.json": "d1e6b464b172d5756f20103909072c4cf734952a917fed58ba55b6145321f5e1",
+      "web/package.json": "f730e483a9fa9a92d8cb0a25905ef00f06775d06e40f231b2bb3dff32467c59b",
+      "web/package-lock.json": "07a215879498fd1ce060f12617b06a878cd9ae61ac65e9df0e7dd232cd2efb97",
+      "web/.node-version": "6d07ac247e81cd42c2c20abf8dfe504413d6b2422e4aba9b2c975a776f155921",
+      "web/.next/BUILD_ID": "ddd13ae098d32cd6c9477ac1b4a45595cd65f31fdd9f44cea255e19c68e1fcb1",
+      "web/content/current.json": "93c5c3066f081498036bdad2d2ad7cec0364ca96112d4cc65797ae6ed67a817d",
+      "web/content/release.json": "97f4764ead6a67815fc66fbcd89d77a44a9c777747e36118067fa0a83778e223",
+      "web/src/app/globals.css": "0a4e9afcb00ffc40118a2e4b1002e793ba0d7c9f3738616ea99d8fea1ace8595",
+      "web/src/app/[locale]/layout.tsx": "484c304be93f65d519b4c0fcfdbddc32f90a9783953958e4dc489cbe1a0b4c9f",
+      "web/src/app/[locale]/(public)/page.tsx": "741c743d7e3a8de95e684dfa4e91c7c3cb771e8d5073c38918bddbb7fc688bd4",
+      "web/src/app/[locale]/(public)/design/page.tsx": "a1d4abdde50007e1efdfc08f9ab0cffe4870e044eaaca9c565bdec46f3ff4dc2",
+      "web/src/app/[locale]/(public)/progress/page.tsx": "c2a407ead63d2a3e47b72b89e5c2f5caa1ea62cfcd93ca7f33f63032da1bb988",
+      "web/src/app/[locale]/(public)/progress/[eventId]/page.tsx": "1d93247972a3ba63054202b91203b45fe88e1c4c47e2f095dbdacbf780435e0f",
+      "web/src/app/[locale]/(public)/about-this-site/page.tsx": "7a475a77a7c7ef927df80f3a074757f48fa9a5a1f2ab64066eb09afd0718db16",
+      "web/src/components/site-shell.tsx": "f361f677750367dc2179aa0371f34b02845381870eba4c2c5313f04dfee4dee0",
+      "web/src/components/gallery-card.tsx": "20fe33a237d9ba04307e85b9cc27c91a3483c8751ef929b12c1a8214a94ae037",
+      "web/src/components/event-dates.tsx": "5ffcd36e3a069ecd8736547c06eab0a574bc1880b5a2cf78143d0cd28f73ac52",
+      "web/src/components/freshness.tsx": "51d07e08a7173eb6e4c45f7574de671cc69ba4874901696941e09526e223f69c",
+      "web/src/lib/gallery.ts": "3456d0ab93f9ed2f9f3a851d6ec8d309c6792eb17fe89a99873d17ff4b9d205d",
+      "web/src/lib/locales.ts": "278d088a9c6e790d9e26206ef5ce69065a9189dcade4046beb6a813786752336",
+      "web/src/lib/progress.ts": "b4d849a5a9b55e8fc22e82251ba0c5365def93288a3e8447e111f2ec87a4d79f",
+      "web/src/lib/server/public-content.ts": "936f30757cd6977d6d6ad1d4894eff7d1b199f568d4266966d5001f55479f1d3",
+      "web/src/lib/server/public-validation.ts": "5a76a2f8f2525b13816103ff59f08a7f70653f97d7164c449580474cd995d07d",
+      "web/src/lib/server/public-version.ts": "a11cab27c10f93e6c94508511ffff89ca4010be699df665f597268187346fae6",
+      "web/src/lib/contracts/public-content.ts": "158d2c10555104bf3db053a2757e2cd0dbc5ada9bf3465b0dff03ec82d31052e",
+      "web/src/lib/contracts/common.ts": "46865f733ad805a9f4f82eb29371115efa4abd885b24d73681cca706be623cdc",
+      "web/public/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp": "1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d",
+      "web/public/media/1a2ffdfa7aa2187ed1165bf9428cbbe8f53a26c19af788a5600f9c2482598fc8.jpg": "1a2ffdfa7aa2187ed1165bf9428cbbe8f53a26c19af788a5600f9c2482598fc8",
+      "web/public/media/fffd8f6b4cc589f391a44ba76a2fddf3a1d36ebaa9b11311b185ca93b5634455.webp": "fffd8f6b4cc589f391a44ba76a2fddf3a1d36ebaa9b11311b185ca93b5634455",
+      "web/public/media/c5372c4e71712f81e2671d334a63fdc2f900b71b5e054df437548f0b54e6a200.jpg": "c5372c4e71712f81e2671d334a63fdc2f900b71b5e054df437548f0b54e6a200",
+      "web/public/media/9819ea980b00590c5d4a5af4346af86a7261f8f18a5d4a642400a76eeda690eb.webp": "9819ea980b00590c5d4a5af4346af86a7261f8f18a5d4a642400a76eeda690eb",
+      "web/public/media/4e6e2bb4f686af73a1a5db63b11cad60b91132b1fb24a828523d8ea3fe73a60c.jpg": "4e6e2bb4f686af73a1a5db63b11cad60b91132b1fb24a828523d8ea3fe73a60c",
+      "web/public/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp": "3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea",
+      "web/public/media/171cb708424690eb99464940895ee09dd42db9f7571715f22e7f64c7ec1eda5f.jpg": "171cb708424690eb99464940895ee09dd42db9f7571715f22e7f64c7ec1eda5f",
+      "web/public/media/04a0ab41d016f215beacb6b9727a522ad834c0ef6fb55f75bc3aa3ba4547a45a.webp": "04a0ab41d016f215beacb6b9727a522ad834c0ef6fb55f75bc3aa3ba4547a45a",
+      "web/public/media/b493a3a19bde347cfc5c2d108ba77edb64b96d51210200d5cba30ad32004f897.jpg": "b493a3a19bde347cfc5c2d108ba77edb64b96d51210200d5cba30ad32004f897",
+      "web/public/media/a34ef00942845bcee074b9908b105f5322919e38ae8651961a9e85c2db55182d.webp": "a34ef00942845bcee074b9908b105f5322919e38ae8651961a9e85c2db55182d",
+      "web/public/media/f6770503a3d21efc68d6d802253d88c6923cadb8c39f298d5e04bd4c692ca99c.jpg": "f6770503a3d21efc68d6d802253d88c6923cadb8c39f298d5e04bd4c692ca99c",
+      "web/public/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp": "05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827",
+      "web/public/media/065b454d1e267d1fa1d6197ede837fa4633260df80873b7b83dfbfb044c0c24a.jpg": "065b454d1e267d1fa1d6197ede837fa4633260df80873b7b83dfbfb044c0c24a",
+      "web/public/media/bc642f36d5920e416768d7ad92663c31ecbb9464543304d00d7ce3dc90b6941a.webp": "bc642f36d5920e416768d7ad92663c31ecbb9464543304d00d7ce3dc90b6941a",
+      "web/public/media/2f467caf731ce06fa6e8b467249678d719e1a7020ee13a8d26048951180527dd.jpg": "2f467caf731ce06fa6e8b467249678d719e1a7020ee13a8d26048951180527dd",
+      "web/public/media/505663f3f8bf044ab893f32b4da7844ecd57bcc2423e05d811178d801b1e274d.webp": "505663f3f8bf044ab893f32b4da7844ecd57bcc2423e05d811178d801b1e274d",
+      "web/public/media/7e2e488f9e91e54dfa935a6128fab3125c3ca4a5a8e3faee0cecdec3f6d24181.jpg": "7e2e488f9e91e54dfa935a6128fab3125c3ca4a5a8e3faee0cecdec3f6d24181"
+    },
+    "servedBuildProbe": {
+      "route": "/en/design",
+      "status": 200,
+      "servedHtmlSha256": "8f18c4b5d91d2fa219c487247a9b6d4534511de4c33935fc70c254d01ba3db4d",
+      "htmlBytes": 30425,
+      "expectedBuildIdFound": true,
+      "parsedBuildIdCandidates": [
+        "oT1CH6lG1eRFtvqP9unlz",
+        "chunks"
+      ],
+      "matchesExpected": true,
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    "sourceHashesAfter": {
+      "AGENTS.md": "f9c5d44243aa0611fae48fed2efd2bc2d07ff2aa1ce36cee5a03cb27e22c8357",
+      "docs/web/publication-permission.md": "8d4abe511816bfacd08e3db51fdd5d5f6ab73e6903817c677a09aaf3eb080794",
+      "docs/web/development-publication-assets.json": "d1e6b464b172d5756f20103909072c4cf734952a917fed58ba55b6145321f5e1",
+      "web/package.json": "f730e483a9fa9a92d8cb0a25905ef00f06775d06e40f231b2bb3dff32467c59b",
+      "web/package-lock.json": "07a215879498fd1ce060f12617b06a878cd9ae61ac65e9df0e7dd232cd2efb97",
+      "web/.node-version": "6d07ac247e81cd42c2c20abf8dfe504413d6b2422e4aba9b2c975a776f155921",
+      "web/.next/BUILD_ID": "ddd13ae098d32cd6c9477ac1b4a45595cd65f31fdd9f44cea255e19c68e1fcb1",
+      "web/content/current.json": "93c5c3066f081498036bdad2d2ad7cec0364ca96112d4cc65797ae6ed67a817d",
+      "web/content/release.json": "97f4764ead6a67815fc66fbcd89d77a44a9c777747e36118067fa0a83778e223",
+      "web/src/app/globals.css": "0a4e9afcb00ffc40118a2e4b1002e793ba0d7c9f3738616ea99d8fea1ace8595",
+      "web/src/app/[locale]/layout.tsx": "484c304be93f65d519b4c0fcfdbddc32f90a9783953958e4dc489cbe1a0b4c9f",
+      "web/src/app/[locale]/(public)/page.tsx": "741c743d7e3a8de95e684dfa4e91c7c3cb771e8d5073c38918bddbb7fc688bd4",
+      "web/src/app/[locale]/(public)/design/page.tsx": "a1d4abdde50007e1efdfc08f9ab0cffe4870e044eaaca9c565bdec46f3ff4dc2",
+      "web/src/app/[locale]/(public)/progress/page.tsx": "c2a407ead63d2a3e47b72b89e5c2f5caa1ea62cfcd93ca7f33f63032da1bb988",
+      "web/src/app/[locale]/(public)/progress/[eventId]/page.tsx": "1d93247972a3ba63054202b91203b45fe88e1c4c47e2f095dbdacbf780435e0f",
+      "web/src/app/[locale]/(public)/about-this-site/page.tsx": "7a475a77a7c7ef927df80f3a074757f48fa9a5a1f2ab64066eb09afd0718db16",
+      "web/src/components/site-shell.tsx": "f361f677750367dc2179aa0371f34b02845381870eba4c2c5313f04dfee4dee0",
+      "web/src/components/gallery-card.tsx": "20fe33a237d9ba04307e85b9cc27c91a3483c8751ef929b12c1a8214a94ae037",
+      "web/src/components/event-dates.tsx": "5ffcd36e3a069ecd8736547c06eab0a574bc1880b5a2cf78143d0cd28f73ac52",
+      "web/src/components/freshness.tsx": "51d07e08a7173eb6e4c45f7574de671cc69ba4874901696941e09526e223f69c",
+      "web/src/lib/gallery.ts": "3456d0ab93f9ed2f9f3a851d6ec8d309c6792eb17fe89a99873d17ff4b9d205d",
+      "web/src/lib/locales.ts": "278d088a9c6e790d9e26206ef5ce69065a9189dcade4046beb6a813786752336",
+      "web/src/lib/progress.ts": "b4d849a5a9b55e8fc22e82251ba0c5365def93288a3e8447e111f2ec87a4d79f",
+      "web/src/lib/server/public-content.ts": "936f30757cd6977d6d6ad1d4894eff7d1b199f568d4266966d5001f55479f1d3",
+      "web/src/lib/server/public-validation.ts": "5a76a2f8f2525b13816103ff59f08a7f70653f97d7164c449580474cd995d07d",
+      "web/src/lib/server/public-version.ts": "a11cab27c10f93e6c94508511ffff89ca4010be699df665f597268187346fae6",
+      "web/src/lib/contracts/public-content.ts": "158d2c10555104bf3db053a2757e2cd0dbc5ada9bf3465b0dff03ec82d31052e",
+      "web/src/lib/contracts/common.ts": "46865f733ad805a9f4f82eb29371115efa4abd885b24d73681cca706be623cdc",
+      "web/public/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp": "1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d",
+      "web/public/media/1a2ffdfa7aa2187ed1165bf9428cbbe8f53a26c19af788a5600f9c2482598fc8.jpg": "1a2ffdfa7aa2187ed1165bf9428cbbe8f53a26c19af788a5600f9c2482598fc8",
+      "web/public/media/fffd8f6b4cc589f391a44ba76a2fddf3a1d36ebaa9b11311b185ca93b5634455.webp": "fffd8f6b4cc589f391a44ba76a2fddf3a1d36ebaa9b11311b185ca93b5634455",
+      "web/public/media/c5372c4e71712f81e2671d334a63fdc2f900b71b5e054df437548f0b54e6a200.jpg": "c5372c4e71712f81e2671d334a63fdc2f900b71b5e054df437548f0b54e6a200",
+      "web/public/media/9819ea980b00590c5d4a5af4346af86a7261f8f18a5d4a642400a76eeda690eb.webp": "9819ea980b00590c5d4a5af4346af86a7261f8f18a5d4a642400a76eeda690eb",
+      "web/public/media/4e6e2bb4f686af73a1a5db63b11cad60b91132b1fb24a828523d8ea3fe73a60c.jpg": "4e6e2bb4f686af73a1a5db63b11cad60b91132b1fb24a828523d8ea3fe73a60c",
+      "web/public/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp": "3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea",
+      "web/public/media/171cb708424690eb99464940895ee09dd42db9f7571715f22e7f64c7ec1eda5f.jpg": "171cb708424690eb99464940895ee09dd42db9f7571715f22e7f64c7ec1eda5f",
+      "web/public/media/04a0ab41d016f215beacb6b9727a522ad834c0ef6fb55f75bc3aa3ba4547a45a.webp": "04a0ab41d016f215beacb6b9727a522ad834c0ef6fb55f75bc3aa3ba4547a45a",
+      "web/public/media/b493a3a19bde347cfc5c2d108ba77edb64b96d51210200d5cba30ad32004f897.jpg": "b493a3a19bde347cfc5c2d108ba77edb64b96d51210200d5cba30ad32004f897",
+      "web/public/media/a34ef00942845bcee074b9908b105f5322919e38ae8651961a9e85c2db55182d.webp": "a34ef00942845bcee074b9908b105f5322919e38ae8651961a9e85c2db55182d",
+      "web/public/media/f6770503a3d21efc68d6d802253d88c6923cadb8c39f298d5e04bd4c692ca99c.jpg": "f6770503a3d21efc68d6d802253d88c6923cadb8c39f298d5e04bd4c692ca99c",
+      "web/public/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp": "05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827",
+      "web/public/media/065b454d1e267d1fa1d6197ede837fa4633260df80873b7b83dfbfb044c0c24a.jpg": "065b454d1e267d1fa1d6197ede837fa4633260df80873b7b83dfbfb044c0c24a",
+      "web/public/media/bc642f36d5920e416768d7ad92663c31ecbb9464543304d00d7ce3dc90b6941a.webp": "bc642f36d5920e416768d7ad92663c31ecbb9464543304d00d7ce3dc90b6941a",
+      "web/public/media/2f467caf731ce06fa6e8b467249678d719e1a7020ee13a8d26048951180527dd.jpg": "2f467caf731ce06fa6e8b467249678d719e1a7020ee13a8d26048951180527dd",
+      "web/public/media/505663f3f8bf044ab893f32b4da7844ecd57bcc2423e05d811178d801b1e274d.webp": "505663f3f8bf044ab893f32b4da7844ecd57bcc2423e05d811178d801b1e274d",
+      "web/public/media/7e2e488f9e91e54dfa935a6128fab3125c3ca4a5a8e3faee0cecdec3f6d24181.jpg": "7e2e488f9e91e54dfa935a6128fab3125c3ca4a5a8e3faee0cecdec3f6d24181"
+    },
+    "changedFilesDuringCapture": [],
+    "hashesStableDuringCapture": true,
+    "localBuildIdAfter": "oT1CH6lG1eRFtvqP9unlz",
+    "buildIdStableDuringCapture": true,
+    "gitStatusAfter": [
+      "## web/03-timeline...origin/web/03-timeline",
+      " M AGENTS.md",
+      " M docs/web/data-boundary.md",
+      " M docs/web/deployment.md",
+      " M docs/web/progress-publishing.md",
+      " M docs/web/public-content.md",
+      " M docs/web/timeline.md",
+      " M plan/README.md",
+      " M plan/phases/00-evidence-and-publication.md",
+      " M plan/phases/02-homepage-and-gallery.md",
+      " M plan/phases/03-construction-timeline.md",
+      " M web/content/current.json",
+      " M web/content/release.json",
+      " M web/src/app/[locale]/(public)/about-this-site/page.tsx",
+      " M web/src/app/[locale]/(public)/page.tsx",
+      " M web/src/components/site-shell.tsx",
+      " M web/src/lib/locales.ts",
+      " M web/tests/browser/gallery.spec.ts",
+      " M web/tests/browser/progress.spec.ts",
+      " M web/tests/browser/shell.spec.ts",
+      " M web/tests/harness/gallery.spec.ts",
+      "?? docs/web/development-publication-assets.json",
+      "?? docs/web/publication-permission.md",
+      "?? review/web-development-display-2026-10-08/",
+      "?? web/public/",
+      "?? web/tests/unit/development-release.test.ts"
+    ]
+  },
+  "environment": {
+    "runtime": {
+      "nodePath": "/private/tmp/thachbi-node22/node-v22.23.3-darwin-arm64/bin/node",
+      "nodeVersion": "v22.23.3",
+      "playwrightVersion": "1.64.0",
+      "axePlaywrightDeclared": "4.13.0"
+    },
+    "os": {
+      "platform": "darwin",
+      "release": "25.5.0",
+      "version": "Darwin Kernel Version 25.5.0: Mon Apr 27 20:38:56 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_T6000",
+      "arch": "arm64",
+      "hardwareModel": "MacBookPro18,1",
+      "cpuModel": "Apple M1 Pro",
+      "logicalCpuCount": 10,
+      "macOSProductVersion": "26.5.1"
+    },
+    "browser": {
+      "name": "Google Chrome (Playwright channel chrome)",
+      "version": "154.0.8037.98",
+      "headed": true
+    },
+    "axeAvailable": true
+  },
+  "contentCheck": {
+    "releaseId": "development-content-20261008-one",
+    "publishedAt": "2026-10-08T11:48:24Z",
+    "sourceRevision": "source-581d381",
+    "concepts": [
+      {
+        "id": "concept-front-20261007",
+        "caption": {
+          "vi": "Mặt tiền — hình ý tưởng ban ngày",
+          "en": "Front elevation — daylight concept"
+        },
+        "category": "concept-art",
+        "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+        "derivativeCount": 6
+      },
+      {
+        "id": "concept-nave-20261007",
+        "caption": {
+          "vi": "Gian chính — ý tưởng nội thất; thiết bị còn phải phối hợp và che giấu",
+          "en": "Nave interior concept; equipment coordination and concealment remain unresolved"
+        },
+        "category": "concept-art",
+        "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+        "derivativeCount": 6
+      },
+      {
+        "id": "concept-sanctuary-20261007",
+        "caption": {
+          "vi": "Cung thánh — hình ý tưởng buổi tối, không phải dự báo độ sáng",
+          "en": "Sanctuary — evening concept, not a lighting prediction"
+        },
+        "category": "concept-art",
+        "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+        "derivativeCount": 6
+      }
+    ],
+    "events": [
+      {
+        "id": "construction-start-2026",
+        "slug": "construction-start",
+        "title": {
+          "vi": "Khởi công trong tháng 2 năm 2026",
+          "en": "Construction began in February 2026"
+        },
+        "evidence": "owner-reported",
+        "evidenceRef": "owner-report-20261007",
+        "occurredOn": {
+          "precision": "month",
+          "value": "2026-02"
+        },
+        "reportedAsOf": "2026-10-07",
+        "linkedMediaCount": 0
+      },
+      {
+        "id": "foundation-owner-report-2026",
+        "slug": "foundation-reported-complete",
+        "title": {
+          "vi": "Ghi nhận: móng đã hoàn thành, công trình đang tiếp tục",
+          "en": "Owner report: foundation complete, construction continuing"
+        },
+        "evidence": "owner-reported",
+        "evidenceRef": "owner-report-20261007",
+        "occurredOn": null,
+        "reportedAsOf": "2026-10-07",
+        "linkedMediaCount": 0
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "file": "screenshots/vi-home-1440x900.png",
+      "sha256": "aa1dd434572ea00669e85e9490c1425cab2e0c6b5a45f4ebb45c211b98dbbbfd",
+      "bytes": 100972,
+      "route": "/vi",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200
+    },
+    {
+      "file": "screenshots/en-home-1440x900.png",
+      "sha256": "b36a2379672af273ea61c8a0178943cd29e9c1240fa97b76f9525d306eb17ae6",
+      "bytes": 96227,
+      "route": "/en",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200
+    },
+    {
+      "file": "screenshots/vi-design-1440x900.png",
+      "sha256": "06396aaf21a7b559aaad0a950c264cc96bad7bbd2fa6a14ab29c405e1aed7df3",
+      "bytes": 492901,
+      "route": "/vi/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200
+    },
+    {
+      "file": "screenshots/en-design-1440x900.png",
+      "sha256": "aabffc516a8014613c5ea1c4d5f5d9f5b7a13ed688e4346f2d1719a6726f9faf",
+      "bytes": 494037,
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200
+    },
+    {
+      "file": "screenshots/en-progress-1440x900.png",
+      "sha256": "e414264d3a794e6a26902f95c11de0b1325bcd0709ce70c57395b65cafe30e1e",
+      "bytes": 88349,
+      "route": "/en/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200
+    },
+    {
+      "file": "screenshots/en-foundation-detail-1440x900.png",
+      "sha256": "19fcf13b779d196b2c07f2f94cabeca282242dd58fbd5bc5e47e71be7bdbe90b",
+      "bytes": 99916,
+      "route": "/en/progress/foundation-owner-report-2026",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200
+    },
+    {
+      "file": "screenshots/en-about-1440x900.png",
+      "sha256": "a8d1c72f5ef41c119c17d53100c55623389d4217e1d2e4666f3ab8d3c4e829cf",
+      "bytes": 104432,
+      "route": "/en/about-this-site",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200
+    },
+    {
+      "file": "screenshots/en-foundation-detail-fullpage.png",
+      "sha256": "fc7236d3b4b6edd0e5fcb82345dfc0bbce0d61082026d8ed62d9e364e4afe809",
+      "bytes": 99916,
+      "route": "/en/progress/foundation-owner-report-2026",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "full page",
+      "status": 200,
+      "fullPage": true
+    },
+    {
+      "file": "screenshots/en-design-1280x800.png",
+      "sha256": "a3e7813e43fff08bf72cb95d9248c3c5edd79c83b2d4c737a233669fb350a29a",
+      "bytes": 380264,
+      "route": "/en/design",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "state": "initial viewport",
+      "status": 200
+    },
+    {
+      "file": "screenshots/en-design-first-concept-enlarged-1440x900.png",
+      "sha256": "eaa2c167a26ab4b8def5b92fed6c35e73219bc5a7760cb58d95aaa2569b96822",
+      "bytes": 666580,
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "first concept dialog open",
+      "status": 200
+    },
+    {
+      "file": "screenshots/en-design-keyboard-first-focus-1440x900.png",
+      "sha256": "87bb01a1b1787a8426888a627b3b6b94d0f25410e5624b31099bc09db0a8fc22",
+      "bytes": 496500,
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "after first Tab",
+      "status": 200
+    },
+    {
+      "file": "screenshots/en-design-css-text-200-percent-1440x900.png",
+      "sha256": "54a4ac8def2a49ec85bc3b12f2df6d1885933b7ca95d93866c01b19f25aabdc9",
+      "bytes": 90133,
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "CSS root font-size 200%; not native browser zoom",
+      "status": 200
+    },
+    {
+      "file": "screenshots/en-design-reduced-motion-1440x900.png",
+      "sha256": "aabffc516a8014613c5ea1c4d5f5d9f5b7a13ed688e4346f2d1719a6726f9faf",
+      "bytes": 494037,
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "prefers-reduced-motion: reduce",
+      "status": 200
+    }
+  ],
+  "pages": [
+    {
+      "route": "/vi",
+      "status": 200,
+      "title": "Cùng xây dựng nhà thờ Thạch Bi | Nhà thờ Thạch Bi",
+      "heading": "Cùng xây dựng nhà thờ Thạch Bi",
+      "facts": {
+        "route": "/vi",
+        "title": "Cùng xây dựng nhà thờ Thạch Bi | Nhà thờ Thạch Bi",
+        "language": "vi",
+        "heading": "Cùng xây dựng nhà thờ Thạch Bi",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "pageTextLength": 1126,
+        "latestPublishedUpdate": {
+          "title": "Khởi công trong tháng 2 năm 2026",
+          "href": "/vi/progress/construction-start-2026",
+          "context": "Cập nhật được công bố gần nhất\nKhởi công trong tháng 2 năm 2026\n\nlúc 18:48 8 tháng 10, 2026 · Chủ đầu tư ghi nhận — chưa xác minh độc lập"
+        },
+        "developmentBanner": {
+          "visible": true,
+          "text": "Đang phát triển · Không dùng để thi công",
+          "includesDevelopment": true,
+          "includesNotForConstruction": true
+        },
+        "imageCount": 0,
+        "images": [],
+        "visibleImageCount": 0,
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1502,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "overflowElements": [],
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false
+      },
+      "axe": {
+        "violations": [],
+        "passesCount": 19,
+        "incompleteCount": 0,
+        "incompleteRules": []
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/en",
+      "status": 200,
+      "title": "Building Thạch Bi Church together | Thạch Bi Church",
+      "heading": "Building Thạch Bi Church together",
+      "facts": {
+        "route": "/en",
+        "title": "Building Thạch Bi Church together | Thạch Bi Church",
+        "language": "en",
+        "heading": "Building Thạch Bi Church together",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "pageTextLength": 1112,
+        "latestPublishedUpdate": {
+          "title": "Construction began in February 2026",
+          "href": "/en/progress/construction-start-2026",
+          "context": "Latest published update\nConstruction began in February 2026\n\n8 October 2026 at 18:48 · Reported by the owner — not independently verified"
+        },
+        "developmentBanner": {
+          "visible": true,
+          "text": "In development · Not for construction",
+          "includesDevelopment": true,
+          "includesNotForConstruction": true
+        },
+        "imageCount": 0,
+        "images": [],
+        "visibleImageCount": 0,
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1502,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "overflowElements": [],
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false
+      },
+      "axe": {
+        "violations": [],
+        "passesCount": 19,
+        "incompleteCount": 0,
+        "incompleteRules": []
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/vi/design",
+      "status": 200,
+      "title": "Hình ảnh và thiết kế | Nhà thờ Thạch Bi",
+      "heading": "Hình ảnh và thiết kế",
+      "facts": {
+        "route": "/vi/design",
+        "title": "Hình ảnh và thiết kế | Nhà thờ Thạch Bi",
+        "language": "vi",
+        "heading": "Hình ảnh và thiết kế",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "pageTextLength": 1022,
+        "latestPublishedUpdate": null,
+        "developmentBanner": {
+          "visible": true,
+          "text": "Đang phát triển · Không dùng để thi công",
+          "includesDevelopment": true,
+          "includesNotForConstruction": true
+        },
+        "imageCount": 3,
+        "images": [
+          {
+            "alt": "Hình ý tưởng nhà thờ với hai tháp, tượng Đức Mẹ ở giữa và ba cửa gỗ.",
+            "srcPath": "/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "eager"
+          },
+          {
+            "alt": "Hình ý tưởng nhìn dọc lối giữa về cung thánh, các hàng ghế và cột gỗ; còn thấy quạt, loa và đèn.",
+            "srcPath": "/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "lazy"
+          },
+          {
+            "alt": "Hình ý tưởng cung thánh chạm khắc sơn son thếp vàng, thánh giá ở giữa, bàn thờ và hai tượng hai bên.",
+            "srcPath": "/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "lazy"
+          }
+        ],
+        "visibleImageCount": 3,
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1280,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "overflowElements": [],
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false
+      },
+      "axe": {
+        "violations": [],
+        "passesCount": 23,
+        "incompleteCount": 0,
+        "incompleteRules": []
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/en/design",
+      "status": 200,
+      "title": "Images and design | Thạch Bi Church",
+      "heading": "Images and design",
+      "facts": {
+        "route": "/en/design",
+        "title": "Images and design | Thạch Bi Church",
+        "language": "en",
+        "heading": "Images and design",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "pageTextLength": 1026,
+        "latestPublishedUpdate": null,
+        "developmentBanner": {
+          "visible": true,
+          "text": "In development · Not for construction",
+          "includesDevelopment": true,
+          "includesNotForConstruction": true
+        },
+        "imageCount": 3,
+        "images": [
+          {
+            "alt": "Concept of the church with twin towers, a central Marian statue and three timber entrances.",
+            "srcPath": "/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "eager"
+          },
+          {
+            "alt": "Concept view along the central aisle toward the sanctuary, with pews and timber columns; fans, speakers and lights remain visible.",
+            "srcPath": "/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "lazy"
+          },
+          {
+            "alt": "Concept of a red-and-gold carved sanctuary, central crucifix, altar and statues to either side.",
+            "srcPath": "/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "lazy"
+          }
+        ],
+        "visibleImageCount": 3,
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1307,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "overflowElements": [],
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false
+      },
+      "axe": {
+        "violations": [],
+        "passesCount": 23,
+        "incompleteCount": 0,
+        "incompleteRules": []
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/en/progress",
+      "status": 200,
+      "title": "Construction updates | Thạch Bi Church",
+      "heading": "Construction updates",
+      "facts": {
+        "route": "/en/progress",
+        "title": "Construction updates | Thạch Bi Church",
+        "language": "en",
+        "heading": "Construction updates",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "pageTextLength": 1451,
+        "latestPublishedUpdate": {
+          "title": "Owner report: foundation complete, construction continuing",
+          "href": "/en/progress/foundation-owner-report-2026",
+          "context": "October 2026\n\nReported by the owner — not independently verified\n\nOwner report: foundation complete, construction continuing\n\nAs of 7 October 2026, the project owner reported that the foundation was complete and construction was continuing. The exact foundation completion date is unknown. This owner report is not a structural inspection or verification of as-built dimensions.\n\nWhen it happened\nExact occurrence date unknown\nReported as of\n7 October 2026\nFirst published\n8 October 2026 at 18:48"
+        },
+        "developmentBanner": {
+          "visible": true,
+          "text": "In development · Not for construction",
+          "includesDevelopment": true,
+          "includesNotForConstruction": true
+        },
+        "imageCount": 0,
+        "images": [],
+        "visibleImageCount": 0,
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1929,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "overflowElements": [],
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false
+      },
+      "axe": {
+        "violations": [],
+        "passesCount": 27,
+        "incompleteCount": 0,
+        "incompleteRules": []
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/en/progress/foundation-owner-report-2026",
+      "status": 200,
+      "title": "Owner report: foundation complete, construction continuing | Thạch Bi Church",
+      "heading": "Owner report: foundation complete, construction continuing",
+      "facts": {
+        "route": "/en/progress/foundation-owner-report-2026",
+        "title": "Owner report: foundation complete, construction continuing | Thạch Bi Church",
+        "language": "en",
+        "heading": "Owner report: foundation complete, construction continuing",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "pageTextLength": 686,
+        "latestPublishedUpdate": null,
+        "developmentBanner": {
+          "visible": true,
+          "text": "In development · Not for construction",
+          "includesDevelopment": true,
+          "includesNotForConstruction": true
+        },
+        "imageCount": 0,
+        "images": [],
+        "visibleImageCount": 0,
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1245,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "overflowElements": [],
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false
+      },
+      "axe": {
+        "violations": [],
+        "passesCount": 21,
+        "incompleteCount": 0,
+        "incompleteRules": []
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/en/about-this-site",
+      "status": 200,
+      "title": "About this site | Thạch Bi Church",
+      "heading": "About this site",
+      "facts": {
+        "route": "/en/about-this-site",
+        "title": "About this site | Thạch Bi Church",
+        "language": "en",
+        "heading": "About this site",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "pageTextLength": 773,
+        "latestPublishedUpdate": null,
+        "developmentBanner": {
+          "visible": true,
+          "text": "In development · Not for construction",
+          "includesDevelopment": true,
+          "includesNotForConstruction": true
+        },
+        "imageCount": 0,
+        "images": [],
+        "visibleImageCount": 0,
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 934,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "overflowElements": [],
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false
+      },
+      "axe": {
+        "violations": [],
+        "passesCount": 19,
+        "incompleteCount": 0,
+        "incompleteRules": []
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    }
+  ],
+  "interactionChecks": [
+    {
+      "kind": "foundation-detail-full-page",
+      "route": "/en/progress/foundation-owner-report-2026",
+      "status": 200,
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "kind": "gallery-1280x800",
+      "route": "/en/design",
+      "status": 200,
+      "facts": {
+        "route": "/en/design",
+        "title": "Images and design | Thạch Bi Church",
+        "language": "en",
+        "heading": "Images and design",
+        "viewport": {
+          "width": 1280,
+          "height": 800,
+          "dpr": 1
+        },
+        "pageTextLength": 1026,
+        "latestPublishedUpdate": null,
+        "developmentBanner": {
+          "visible": true,
+          "text": "In development · Not for construction",
+          "includesDevelopment": true,
+          "includesNotForConstruction": true
+        },
+        "imageCount": 3,
+        "images": [
+          {
+            "alt": "Concept of the church with twin towers, a central Marian statue and three timber entrances.",
+            "srcPath": "/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "eager"
+          },
+          {
+            "alt": "Concept view along the central aisle toward the sanctuary, with pews and timber columns; fans, speakers and lights remain visible.",
+            "srcPath": "/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "lazy"
+          },
+          {
+            "alt": "Concept of a red-and-gold carved sanctuary, central crucifix, altar and statues to either side.",
+            "srcPath": "/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "lazy"
+          }
+        ],
+        "visibleImageCount": 3,
+        "document": {
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "scrollHeight": 1307,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1280,
+          "horizontalOverflow": false
+        },
+        "overflowElements": [],
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "kind": "first-concept-enlarged",
+      "route": "/en/design",
+      "status": 200,
+      "firstConceptAriaLabel": "Enlarge: Front elevation — daylight concept",
+      "modalFacts": {
+        "open": true,
+        "title": "Front elevation — daylight concept",
+        "alt": "Concept of the church with twin towers, a central Marian statue and three timber entrances.",
+        "imageNaturalSize": {
+          "width": 1672,
+          "height": 941
+        },
+        "closeButtonFocused": true,
+        "dialogRect": {
+          "x": 144,
+          "y": 43,
+          "width": 1152,
+          "height": 814
+        }
+      },
+      "axe": {
+        "violations": [],
+        "passesCount": 15,
+        "incompleteCount": 1,
+        "incompleteRules": [
+          "color-contrast"
+        ]
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "kind": "gallery-keyboard-tab-sequence",
+      "route": "/en/design",
+      "status": 200,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "Skip to main content",
+          "href": "#main",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 16,
+            "y": 16,
+            "width": 177,
+            "height": 56
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Thạch Bi Church",
+          "href": "/en",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 112,
+            "y": 93,
+            "width": 153,
+            "height": 28
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Home",
+          "href": "/en",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 729,
+            "y": 85,
+            "width": 37,
+            "height": 44
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Images and design",
+          "href": "/en/design",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 798,
+            "y": 85,
+            "width": 118,
+            "height": 44
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Construction updates",
+          "href": "/en/progress",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 948,
+            "y": 85,
+            "width": 132,
+            "height": 44
+          }
+        },
+        {
+          "tag": "A",
+          "label": "About this site",
+          "href": "/en/about-this-site",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 1113,
+            "y": 85,
+            "width": 88,
+            "height": 44
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Tiếng Việt",
+          "href": "/vi/design",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 1233,
+            "y": 85,
+            "width": 95,
+            "height": 44
+          }
+        }
+      ],
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "kind": "gallery-text-resize",
+      "route": "/en/design",
+      "status": 200,
+      "method": "Temporary injected CSS: html { font-size: 200% !important; }; not native Chrome zoom or text-only zoom.",
+      "beforeRootFontSize": "16px",
+      "afterRootFontSize": "32px",
+      "facts": {
+        "route": "/en/design",
+        "title": "Images and design | Thạch Bi Church",
+        "language": "en",
+        "heading": "Images and design",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "pageTextLength": 1026,
+        "latestPublishedUpdate": null,
+        "developmentBanner": {
+          "visible": true,
+          "text": "In development · Not for construction",
+          "includesDevelopment": true,
+          "includesNotForConstruction": true
+        },
+        "imageCount": 3,
+        "images": [
+          {
+            "alt": "Concept of the church with twin towers, a central Marian statue and three timber entrances.",
+            "srcPath": "/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "eager"
+          },
+          {
+            "alt": "Concept view along the central aisle toward the sanctuary, with pews and timber columns; fans, speakers and lights remain visible.",
+            "srcPath": "/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "lazy"
+          },
+          {
+            "alt": "Concept of a red-and-gold carved sanctuary, central crucifix, altar and statues to either side.",
+            "srcPath": "/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "lazy"
+          }
+        ],
+        "visibleImageCount": 0,
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 3846,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "overflowElements": [],
+        "rootFontSize": "32px",
+        "reducedMotionMatches": false
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "kind": "gallery-reduced-motion",
+      "route": "/en/design",
+      "status": 200,
+      "facts": {
+        "route": "/en/design",
+        "title": "Images and design | Thạch Bi Church",
+        "language": "en",
+        "heading": "Images and design",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "pageTextLength": 1026,
+        "latestPublishedUpdate": null,
+        "developmentBanner": {
+          "visible": true,
+          "text": "In development · Not for construction",
+          "includesDevelopment": true,
+          "includesNotForConstruction": true
+        },
+        "imageCount": 3,
+        "images": [
+          {
+            "alt": "Concept of the church with twin towers, a central Marian statue and three timber entrances.",
+            "srcPath": "/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "eager"
+          },
+          {
+            "alt": "Concept view along the central aisle toward the sanctuary, with pews and timber columns; fans, speakers and lights remain visible.",
+            "srcPath": "/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "lazy"
+          },
+          {
+            "alt": "Concept of a red-and-gold carved sanctuary, central crucifix, altar and statues to either side.",
+            "srcPath": "/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+            "complete": true,
+            "naturalWidth": 384,
+            "naturalHeight": 216,
+            "loading": "lazy"
+          }
+        ],
+        "visibleImageCount": 3,
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1307,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "overflowElements": [],
+        "rootFontSize": "16px",
+        "reducedMotionMatches": true
+      },
+      "animationCount": 0,
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    }
+  ],
+  "performance": {
+    "profile": {
+      "downMbps": 10,
+      "upMbps": 1,
+      "rttMs": 100,
+      "cdpDownloadBytesPerSecond": 1250000,
+      "cdpUploadBytesPerSecond": 125000,
+      "cacheDisabled": true,
+      "freshBrowserContextPerSample": true,
+      "serviceWorkers": "blocked",
+      "samples": 3
+    },
+    "samples": [
+      {
+        "route": "/en/design",
+        "sampleIndex": 1,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100
+        },
+        "freshContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "status": 200,
+        "navigationError": null,
+        "settleWindowMs": 1316,
+        "metrics": {
+          "navigation": {
+            "responseStart": 6.900000095367432,
+            "domContentLoadedEventEnd": 260.59999990463257,
+            "loadEventEnd": 532.5,
+            "transferSize": 8727,
+            "encodedBodySize": 8427,
+            "decodedBodySize": 30365
+          },
+          "lcp": [
+            {
+              "startTime": 280,
+              "size": 26875,
+              "tag": "P",
+              "id": ""
+            },
+            {
+              "startTime": 320,
+              "size": 81641,
+              "tag": "IMG",
+              "id": ""
+            },
+            {
+              "startTime": 540,
+              "size": 81724,
+              "tag": "IMG",
+              "id": ""
+            },
+            {
+              "startTime": 556,
+              "size": 81831,
+              "tag": "IMG",
+              "id": ""
+            }
+          ],
+          "clsEntries": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "route": "/en/design",
+          "title": "Images and design | Thạch Bi Church",
+          "language": "en",
+          "heading": "Images and design",
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "pageTextLength": 1026,
+          "latestPublishedUpdate": null,
+          "developmentBanner": {
+            "visible": true,
+            "text": "In development · Not for construction",
+            "includesDevelopment": true,
+            "includesNotForConstruction": true
+          },
+          "imageCount": 3,
+          "images": [
+            {
+              "alt": "Concept of the church with twin towers, a central Marian statue and three timber entrances.",
+              "srcPath": "/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+              "complete": true,
+              "naturalWidth": 384,
+              "naturalHeight": 216,
+              "loading": "eager"
+            },
+            {
+              "alt": "Concept view along the central aisle toward the sanctuary, with pews and timber columns; fans, speakers and lights remain visible.",
+              "srcPath": "/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+              "complete": true,
+              "naturalWidth": 384,
+              "naturalHeight": 216,
+              "loading": "lazy"
+            },
+            {
+              "alt": "Concept of a red-and-gold carved sanctuary, central crucifix, altar and statues to either side.",
+              "srcPath": "/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+              "complete": true,
+              "naturalWidth": 384,
+              "naturalHeight": 216,
+              "loading": "lazy"
+            }
+          ],
+          "visibleImageCount": 3,
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 1307,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "overflowElements": [],
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false
+        },
+        "totalRequests": 15,
+        "encodedResponseBytesCdp": 314464,
+        "javascriptRequests": 9,
+        "javascriptEncodedResponseBytesCdp": 154267,
+        "externalScriptUrls": [
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "bytes": 2632,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+            "bytes": 9057,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+            "bytes": 72546,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+            "bytes": 46113,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+            "bytes": 4537,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+            "bytes": 4111,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2re-am44cne1a.js",
+            "bytes": 3229,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/40_f2hmqldaj2.js",
+            "bytes": 3184,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/3p9klc4tf_zff.js",
+            "bytes": 8858,
+            "status": 200
+          }
+        ],
+        "serverOrSimulatorScripts": [],
+        "failedRequests": [],
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "rawRequests": [
+          {
+            "requestId": "1EEA54B041B6B9EE4602CD7E77D336C1",
+            "url": "http://127.0.0.1:3130/en/design",
+            "method": "GET",
+            "resourceType": "Document",
+            "initiatorType": "other",
+            "status": 200,
+            "mimeType": "text/html",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 9030,
+            "failed": null,
+            "responseEncodedDataLength": 572
+          },
+          {
+            "requestId": "18072.2",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/3e7dho59bxk0r.css",
+            "method": "GET",
+            "resourceType": "Stylesheet",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "text/css",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 4625,
+            "failed": null,
+            "responseEncodedDataLength": 566
+          },
+          {
+            "requestId": "18072.3",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 2632,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18072.4",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 9057,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18072.5",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 72546,
+            "failed": null,
+            "responseEncodedDataLength": 581
+          },
+          {
+            "requestId": "18072.6",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 46113,
+            "failed": null,
+            "responseEncodedDataLength": 581
+          },
+          {
+            "requestId": "18072.7",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 4537,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18072.8",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 4111,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18072.9",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2re-am44cne1a.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 3229,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18072.10",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/40_f2hmqldaj2.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 3184,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18072.11",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/3p9klc4tf_zff.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 8858,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18072.12",
+            "url": "http://127.0.0.1:3130/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+            "method": "GET",
+            "resourceType": "Image",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "image/webp",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 30185,
+            "failed": null,
+            "responseEncodedDataLength": 483
+          },
+          {
+            "requestId": "18072.24",
+            "url": "http://127.0.0.1:3130/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+            "method": "GET",
+            "resourceType": "Image",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "image/webp",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 49511,
+            "failed": null,
+            "responseEncodedDataLength": 483
+          },
+          {
+            "requestId": "18072.25",
+            "url": "http://127.0.0.1:3130/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+            "method": "GET",
+            "resourceType": "Image",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "image/webp",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 66072,
+            "failed": null,
+            "responseEncodedDataLength": 484
+          },
+          {
+            "requestId": "18072.30",
+            "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+            "method": "GET",
+            "resourceType": "Other",
+            "initiatorType": "other",
+            "status": 200,
+            "mimeType": "image/svg+xml",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 774,
+            "failed": null,
+            "responseEncodedDataLength": 520
+          }
+        ]
+      },
+      {
+        "route": "/en/design",
+        "sampleIndex": 2,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100
+        },
+        "freshContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "status": 200,
+        "navigationError": null,
+        "settleWindowMs": 1317,
+        "metrics": {
+          "navigation": {
+            "responseStart": 7.800000190734863,
+            "domContentLoadedEventEnd": 260.5,
+            "loadEventEnd": 534.0999999046326,
+            "transferSize": 8727,
+            "encodedBodySize": 8427,
+            "decodedBodySize": 30365
+          },
+          "lcp": [
+            {
+              "startTime": 280,
+              "size": 26875,
+              "tag": "P",
+              "id": ""
+            },
+            {
+              "startTime": 320,
+              "size": 81641,
+              "tag": "IMG",
+              "id": ""
+            },
+            {
+              "startTime": 540,
+              "size": 81724,
+              "tag": "IMG",
+              "id": ""
+            },
+            {
+              "startTime": 564,
+              "size": 81831,
+              "tag": "IMG",
+              "id": ""
+            }
+          ],
+          "clsEntries": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "route": "/en/design",
+          "title": "Images and design | Thạch Bi Church",
+          "language": "en",
+          "heading": "Images and design",
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "pageTextLength": 1026,
+          "latestPublishedUpdate": null,
+          "developmentBanner": {
+            "visible": true,
+            "text": "In development · Not for construction",
+            "includesDevelopment": true,
+            "includesNotForConstruction": true
+          },
+          "imageCount": 3,
+          "images": [
+            {
+              "alt": "Concept of the church with twin towers, a central Marian statue and three timber entrances.",
+              "srcPath": "/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+              "complete": true,
+              "naturalWidth": 384,
+              "naturalHeight": 216,
+              "loading": "eager"
+            },
+            {
+              "alt": "Concept view along the central aisle toward the sanctuary, with pews and timber columns; fans, speakers and lights remain visible.",
+              "srcPath": "/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+              "complete": true,
+              "naturalWidth": 384,
+              "naturalHeight": 216,
+              "loading": "lazy"
+            },
+            {
+              "alt": "Concept of a red-and-gold carved sanctuary, central crucifix, altar and statues to either side.",
+              "srcPath": "/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+              "complete": true,
+              "naturalWidth": 384,
+              "naturalHeight": 216,
+              "loading": "lazy"
+            }
+          ],
+          "visibleImageCount": 3,
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 1307,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "overflowElements": [],
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false
+        },
+        "totalRequests": 15,
+        "encodedResponseBytesCdp": 314464,
+        "javascriptRequests": 9,
+        "javascriptEncodedResponseBytesCdp": 154267,
+        "externalScriptUrls": [
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "bytes": 2632,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+            "bytes": 9057,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+            "bytes": 72546,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+            "bytes": 46113,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+            "bytes": 4537,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+            "bytes": 4111,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2re-am44cne1a.js",
+            "bytes": 3229,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/40_f2hmqldaj2.js",
+            "bytes": 3184,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/3p9klc4tf_zff.js",
+            "bytes": 8858,
+            "status": 200
+          }
+        ],
+        "serverOrSimulatorScripts": [],
+        "failedRequests": [],
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "rawRequests": [
+          {
+            "requestId": "9C21315CDFF34F920AD89973826480AC",
+            "url": "http://127.0.0.1:3130/en/design",
+            "method": "GET",
+            "resourceType": "Document",
+            "initiatorType": "other",
+            "status": 200,
+            "mimeType": "text/html",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 9030,
+            "failed": null,
+            "responseEncodedDataLength": 572
+          },
+          {
+            "requestId": "18075.2",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/3e7dho59bxk0r.css",
+            "method": "GET",
+            "resourceType": "Stylesheet",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "text/css",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 4625,
+            "failed": null,
+            "responseEncodedDataLength": 566
+          },
+          {
+            "requestId": "18075.3",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 2632,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18075.4",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 9057,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18075.5",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 72546,
+            "failed": null,
+            "responseEncodedDataLength": 581
+          },
+          {
+            "requestId": "18075.6",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 46113,
+            "failed": null,
+            "responseEncodedDataLength": 581
+          },
+          {
+            "requestId": "18075.7",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 4537,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18075.8",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 4111,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18075.9",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2re-am44cne1a.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 3229,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18075.10",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/40_f2hmqldaj2.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 3184,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18075.11",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/3p9klc4tf_zff.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 8858,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18075.12",
+            "url": "http://127.0.0.1:3130/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+            "method": "GET",
+            "resourceType": "Image",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "image/webp",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 30185,
+            "failed": null,
+            "responseEncodedDataLength": 483
+          },
+          {
+            "requestId": "18075.24",
+            "url": "http://127.0.0.1:3130/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+            "method": "GET",
+            "resourceType": "Image",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "image/webp",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 49511,
+            "failed": null,
+            "responseEncodedDataLength": 483
+          },
+          {
+            "requestId": "18075.25",
+            "url": "http://127.0.0.1:3130/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+            "method": "GET",
+            "resourceType": "Image",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "image/webp",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 66072,
+            "failed": null,
+            "responseEncodedDataLength": 484
+          },
+          {
+            "requestId": "18075.30",
+            "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+            "method": "GET",
+            "resourceType": "Other",
+            "initiatorType": "other",
+            "status": 200,
+            "mimeType": "image/svg+xml",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 774,
+            "failed": null,
+            "responseEncodedDataLength": 520
+          }
+        ]
+      },
+      {
+        "route": "/en/design",
+        "sampleIndex": 3,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100
+        },
+        "freshContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "status": 200,
+        "navigationError": null,
+        "settleWindowMs": 1317,
+        "metrics": {
+          "navigation": {
+            "responseStart": 6.799999713897705,
+            "domContentLoadedEventEnd": 261.3999996185303,
+            "loadEventEnd": 536.3999996185303,
+            "transferSize": 8727,
+            "encodedBodySize": 8427,
+            "decodedBodySize": 30365
+          },
+          "lcp": [
+            {
+              "startTime": 276,
+              "size": 26875,
+              "tag": "P",
+              "id": ""
+            },
+            {
+              "startTime": 320,
+              "size": 81641,
+              "tag": "IMG",
+              "id": ""
+            },
+            {
+              "startTime": 536,
+              "size": 81724,
+              "tag": "IMG",
+              "id": ""
+            },
+            {
+              "startTime": 560,
+              "size": 81831,
+              "tag": "IMG",
+              "id": ""
+            }
+          ],
+          "clsEntries": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "route": "/en/design",
+          "title": "Images and design | Thạch Bi Church",
+          "language": "en",
+          "heading": "Images and design",
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "pageTextLength": 1026,
+          "latestPublishedUpdate": null,
+          "developmentBanner": {
+            "visible": true,
+            "text": "In development · Not for construction",
+            "includesDevelopment": true,
+            "includesNotForConstruction": true
+          },
+          "imageCount": 3,
+          "images": [
+            {
+              "alt": "Concept of the church with twin towers, a central Marian statue and three timber entrances.",
+              "srcPath": "/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+              "complete": true,
+              "naturalWidth": 384,
+              "naturalHeight": 216,
+              "loading": "eager"
+            },
+            {
+              "alt": "Concept view along the central aisle toward the sanctuary, with pews and timber columns; fans, speakers and lights remain visible.",
+              "srcPath": "/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+              "complete": true,
+              "naturalWidth": 384,
+              "naturalHeight": 216,
+              "loading": "lazy"
+            },
+            {
+              "alt": "Concept of a red-and-gold carved sanctuary, central crucifix, altar and statues to either side.",
+              "srcPath": "/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+              "complete": true,
+              "naturalWidth": 384,
+              "naturalHeight": 216,
+              "loading": "lazy"
+            }
+          ],
+          "visibleImageCount": 3,
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 1307,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "overflowElements": [],
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false
+        },
+        "totalRequests": 15,
+        "encodedResponseBytesCdp": 314464,
+        "javascriptRequests": 9,
+        "javascriptEncodedResponseBytesCdp": 154267,
+        "externalScriptUrls": [
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "bytes": 2632,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+            "bytes": 9057,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+            "bytes": 72546,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+            "bytes": 46113,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+            "bytes": 4537,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+            "bytes": 4111,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2re-am44cne1a.js",
+            "bytes": 3229,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/40_f2hmqldaj2.js",
+            "bytes": 3184,
+            "status": 200
+          },
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/3p9klc4tf_zff.js",
+            "bytes": 8858,
+            "status": 200
+          }
+        ],
+        "serverOrSimulatorScripts": [],
+        "failedRequests": [],
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "rawRequests": [
+          {
+            "requestId": "E374B974CC544F62CEE51E000EC250AC",
+            "url": "http://127.0.0.1:3130/en/design",
+            "method": "GET",
+            "resourceType": "Document",
+            "initiatorType": "other",
+            "status": 200,
+            "mimeType": "text/html",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 9030,
+            "failed": null,
+            "responseEncodedDataLength": 572
+          },
+          {
+            "requestId": "18078.2",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/3e7dho59bxk0r.css",
+            "method": "GET",
+            "resourceType": "Stylesheet",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "text/css",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 4625,
+            "failed": null,
+            "responseEncodedDataLength": 566
+          },
+          {
+            "requestId": "18078.3",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 2632,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18078.4",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 9057,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18078.5",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 72546,
+            "failed": null,
+            "responseEncodedDataLength": 581
+          },
+          {
+            "requestId": "18078.6",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 46113,
+            "failed": null,
+            "responseEncodedDataLength": 581
+          },
+          {
+            "requestId": "18078.7",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 4537,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18078.8",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 4111,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18078.9",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2re-am44cne1a.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 3229,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18078.10",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/40_f2hmqldaj2.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 3184,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18078.11",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/3p9klc4tf_zff.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 8858,
+            "failed": null,
+            "responseEncodedDataLength": 580
+          },
+          {
+            "requestId": "18078.12",
+            "url": "http://127.0.0.1:3130/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+            "method": "GET",
+            "resourceType": "Image",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "image/webp",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 30185,
+            "failed": null,
+            "responseEncodedDataLength": 483
+          },
+          {
+            "requestId": "18078.24",
+            "url": "http://127.0.0.1:3130/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+            "method": "GET",
+            "resourceType": "Image",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "image/webp",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 49511,
+            "failed": null,
+            "responseEncodedDataLength": 483
+          },
+          {
+            "requestId": "18078.25",
+            "url": "http://127.0.0.1:3130/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+            "method": "GET",
+            "resourceType": "Image",
+            "initiatorType": "parser",
+            "status": 200,
+            "mimeType": "image/webp",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 66072,
+            "failed": null,
+            "responseEncodedDataLength": 484
+          },
+          {
+            "requestId": "18078.30",
+            "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+            "method": "GET",
+            "resourceType": "Other",
+            "initiatorType": "other",
+            "status": 200,
+            "mimeType": "image/svg+xml",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "loadingFinishedEncodedBytes": 774,
+            "failed": null,
+            "responseEncodedDataLength": 520
+          }
+        ]
+      }
+    ],
+    "budgetSummary": {
+      "transferBudgetBytes": 1500000,
+      "javascriptBudgetBytes": 204800,
+      "samples": [
+        {
+          "sampleIndex": 1,
+          "status": 200,
+          "encodedResponseBytesCdp": 314464,
+          "javascriptEncodedResponseBytesCdp": 154267,
+          "lcpLast": {
+            "startTime": 556,
+            "size": 81831,
+            "tag": "IMG",
+            "id": ""
+          },
+          "clsTotal": 0,
+          "passedTransferBudget": true,
+          "passedJavascriptBudget": true
+        },
+        {
+          "sampleIndex": 2,
+          "status": 200,
+          "encodedResponseBytesCdp": 314464,
+          "javascriptEncodedResponseBytesCdp": 154267,
+          "lcpLast": {
+            "startTime": 564,
+            "size": 81831,
+            "tag": "IMG",
+            "id": ""
+          },
+          "clsTotal": 0,
+          "passedTransferBudget": true,
+          "passedJavascriptBudget": true
+        },
+        {
+          "sampleIndex": 3,
+          "status": 200,
+          "encodedResponseBytesCdp": 314464,
+          "javascriptEncodedResponseBytesCdp": 154267,
+          "lcpLast": {
+            "startTime": 560,
+            "size": 81831,
+            "tag": "IMG",
+            "id": ""
+          },
+          "clsTotal": 0,
+          "passedTransferBudget": true,
+          "passedJavascriptBudget": true
+        }
+      ],
+      "sampleRange": {
+        "transferBytes": {
+          "min": 314464,
+          "max": 314464
+        },
+        "javascriptBytes": {
+          "min": 154267,
+          "max": 154267
+        }
+      },
+      "measurementDefinition": "CDP Network.loadingFinished.encodedDataLength summed across completed initial document/resource requests before user interaction, with a 500 ms post-load settle window. JavaScript total counts external Script resource responses; inline JS/RSC embedded in HTML is not separately attributed. These are local lab response-byte measurements, not field transfer measurements."
+    },
+    "fieldMetricCaveat": "Desktop lab observations only. No INP/field data or actual parish device acceptance is measured or claimed."
+  },
+  "captureErrors": [],
+  "finishedAt": "2026-10-08T12:04:34.655Z",
+  "measurementNotes": [
+    "All screenshots use headed desktop Google Chrome at deviceScaleFactor 1; no phone viewport/device testing was run.",
+    "The 200% text capture injects CSS html { font-size: 200% !important; }; it is not native browser zoom or text-only zoom.",
+    "Reduced motion is Playwright context emulation of prefers-reduced-motion: reduce.",
+    "The content record contains three project AI concepts and two owner-reported events; owner reports are not independently verified and no site photographs accompany them.",
+    "Performance is three cold-context local lab samples under CDP 10 Mbps down / 1 Mbps up / 100 ms RTT; no INP, field metric or parish hardware acceptance is inferred.",
+    "A response-byte budget is reported separately from LCP/CLS; LCP/CLS values are lab observations from this one desktop and release."
+  ]
+}

@@ -9,7 +9,9 @@ test("filters synthetic gallery records and labels dates, categories, credits an
     page.getByText("SYNTHETIC TEST BUILD — NO CHURCH EVIDENCE", { exact: true }),
   ).toBeVisible();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Images and design");
-  await expect(page.locator("header").getByText("Published", { exact: true })).toBeVisible();
+  await expect(
+    page.locator("header").getByText("In development · Not for construction", { exact: true }),
+  ).toBeVisible();
   await expect(page.locator("footer")).toContainText("Published:");
   const cards = page.locator("figure");
   await expect(cards).toHaveCount(4);

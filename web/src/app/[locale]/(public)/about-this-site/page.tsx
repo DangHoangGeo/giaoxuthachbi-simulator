@@ -29,6 +29,11 @@ export default async function About({ params }: { params: Promise<{ locale: stri
           {content.state === "published" ? copy.aboutPublished : copy.aboutBody}
         </p>
         <p className="mt-6 text-lg leading-relaxed text-stone-700">{copy.aboutDetail}</p>
+        <section className="mt-10 border-t border-stone-300 pt-7">
+          <h2 className="text-2xl font-semibold">{copy.limitationsTitle}</h2>
+          <p className="mt-5 text-lg leading-relaxed text-stone-700">{copy.limitations}</p>
+          <p className="mt-5 text-lg leading-relaxed text-stone-700">{copy.centralView}</p>
+        </section>
       </article>
     </SiteShell>
   );

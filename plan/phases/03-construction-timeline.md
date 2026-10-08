@@ -1,5 +1,7 @@
 # Phase 03 — Construction timeline and fresh updates
 
+**Owner update, 8 October 2026:** showing our project work is now authorized with permanent development/not-for-construction notes. The [selected public scope](../../docs/web/publication-permission.md) supersedes earlier blanket permission holds for that scope. Full parish-operation/real-host checks remain open; historical evidence is unchanged.
+
 Status: **independent local software verified; G3 held and branch unmerged**, 8 October 2026, branch `web/03-timeline` from main `dd2538d`. Explicit `-x` cherry-picks reuse verified phase-02 software (`173a4d2`, `afff2df`, `d8d645d`) without merging its held publication gate. Read the event/media/work-package [contracts](../data-and-publication.md) and [maintainer runbook](../../docs/web/progress-publishing.md).
 
 ## Outcome
@@ -42,7 +44,7 @@ Suggested commit boundaries: event contract/tests; timeline UI; publication tool
 Without a contributor, the software cannot create real-time site evidence. Show the last update date honestly and avoid a misleading “live” badge. Prepare public increment A for phase 07 while phase 04 continues. Later private work packages may publish sanitized public events, but never expose private source records automatically.
 
 
-## Execution handover — 8 October 2026
+## Historical handover before display permission — 8 October 2026
 
 Phase branch `web/03-timeline` starts at main `dd2538d`, with explicit reuse of held phase-02 code. Contract/private-staging commit `b6643d3` and the containing timeline commit implement the local packages. [Timeline behavior and limitations](../../docs/web/timeline.md), [publishing runbook](../../docs/web/progress-publishing.md), [contract checks](../../review/web-progress-2026-10-08/contracts/README.md) and [desktop/build evidence](../../review/web-progress-2026-10-08/timeline/README.md) form the handover.
 
@@ -50,4 +52,11 @@ Final local checks: lint/typecheck; 110 unit cases; 7 production and 8 synthetic
 
 G3 remains held for the exact real contributor/reviewer/publisher/backup, publication-ready update and media, authorized hosting/domain, parish desktop/network, real publication/correction/withdrawal/rollback rehearsal and backup training. Synthetic virtual-time tests do not establish origin-to-client latency on the actual host. All engineering targets/holds remain unchanged; see the engineering roadmap for decisions already requested.
 
-The owner added a 20-minute remaining-work budget during this phase. Stop at its end after verified commits and pushes; phases 04–07 remain not started. The next independent phase is 04 (public visit extraction/benchmarking with publication approval held), while G0/G2/G3 and engineering holds await their recorded inputs. No held phase is merged to main.
+The owner added a 20-minute remaining-work budget during this phase. Stop at its end after verified commits and pushes; phases 04–07 remain not started. At that stopping point, the next independent phase was 04 (public visit extraction/benchmarking with publication approval then held), while G0/G2/G3 and engineering holds await their recorded inputs. No held phase is merged to main.
+
+
+## Current development display — 8 October 2026
+
+The owner's later instruction resumes work and authorizes showing our work with permanent development notes. Release `development-content-20261008-one` contains a limited bilingual introduction, three dated AI concepts and two owner-reported milestones. February remains month-only and foundation completion remains undated. [Current verification](../../review/web-development-display-2026-10-08/README.md) supersedes empty-content performance figures for this release; historical records retain their original inputs/hashes.
+
+The owner will connect an existing hosting project to GitHub. Use root `web` and this `web/03-timeline` branch for the development preview; main `dd2538d` contains the verified foundation only. No cloud URL has been tested. G3 stays held for actual-host refresh/recovery and the real contributor/publisher/backup rehearsal. Physical engineering holds are unchanged.

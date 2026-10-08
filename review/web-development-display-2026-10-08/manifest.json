@@ -1,0 +1,516 @@
+{
+  "buildId": "oT1CH6lG1eRFtvqP9unlz",
+  "parentCommit": "581d3810d302fa908a183c1efdf122af5fce0d45",
+  "releaseId": "development-content-20261008-one",
+  "sources": {
+    "AGENTS.md": "f9c5d44243aa0611fae48fed2efd2bc2d07ff2aa1ce36cee5a03cb27e22c8357",
+    "docs/web/data-boundary.md": "dab2b874e6611f3c871b0a7f850bd0fa511b1c185832d18b20a25cfe749e9734",
+    "docs/web/deployment.md": "221c14b93ca5d4e44047082c7942a1cc8052bcd04751fb2e6fe635d0f9a7cdc6",
+    "docs/web/development-publication-assets.json": "d1e6b464b172d5756f20103909072c4cf734952a917fed58ba55b6145321f5e1",
+    "docs/web/progress-publishing.md": "4c4da4611abc60f793d4f7b316e3dde008213fb0f4cd57e842d0e978effc6bfc",
+    "docs/web/public-content.md": "3e8797ce9b9299eb795f2e8df5addf3fb3b708b7b26e0155b4470e8ed112e865",
+    "docs/web/publication-permission.md": "8d4abe511816bfacd08e3db51fdd5d5f6ab73e6903817c677a09aaf3eb080794",
+    "docs/web/timeline.md": "48b3a99f7d228f7d3ff0d1caa076db5b2e27874f70c4143d628be5d27c38098c",
+    "plan/README.md": "08e9b6689fedf153d57a9e7ba83cd424eb216045d880702e8020d8de9207cc1f",
+    "plan/phases/00-evidence-and-publication.md": "29b95ed13ef9f6988a5c390df6df9ce11b7c218792e345f2469e1ccfd4d10dbd",
+    "plan/phases/02-homepage-and-gallery.md": "c7c6c486a3c1832bb5d707d94ac1e666eaa2cb285f671a68685a3a067d93cc98",
+    "plan/phases/03-construction-timeline.md": "5d77a1595d25a5a9c18d3b79746414cea3c64265bcf20e7a3b908641cdec7c03",
+    "web/content/current.json": "93c5c3066f081498036bdad2d2ad7cec0364ca96112d4cc65797ae6ed67a817d",
+    "web/content/release.json": "97f4764ead6a67815fc66fbcd89d77a44a9c777747e36118067fa0a83778e223",
+    "web/public/media/04a0ab41d016f215beacb6b9727a522ad834c0ef6fb55f75bc3aa3ba4547a45a.webp": "04a0ab41d016f215beacb6b9727a522ad834c0ef6fb55f75bc3aa3ba4547a45a",
+    "web/public/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp": "05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827",
+    "web/public/media/065b454d1e267d1fa1d6197ede837fa4633260df80873b7b83dfbfb044c0c24a.jpg": "065b454d1e267d1fa1d6197ede837fa4633260df80873b7b83dfbfb044c0c24a",
+    "web/public/media/171cb708424690eb99464940895ee09dd42db9f7571715f22e7f64c7ec1eda5f.jpg": "171cb708424690eb99464940895ee09dd42db9f7571715f22e7f64c7ec1eda5f",
+    "web/public/media/1a2ffdfa7aa2187ed1165bf9428cbbe8f53a26c19af788a5600f9c2482598fc8.jpg": "1a2ffdfa7aa2187ed1165bf9428cbbe8f53a26c19af788a5600f9c2482598fc8",
+    "web/public/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp": "1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d",
+    "web/public/media/2f467caf731ce06fa6e8b467249678d719e1a7020ee13a8d26048951180527dd.jpg": "2f467caf731ce06fa6e8b467249678d719e1a7020ee13a8d26048951180527dd",
+    "web/public/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp": "3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea",
+    "web/public/media/4e6e2bb4f686af73a1a5db63b11cad60b91132b1fb24a828523d8ea3fe73a60c.jpg": "4e6e2bb4f686af73a1a5db63b11cad60b91132b1fb24a828523d8ea3fe73a60c",
+    "web/public/media/505663f3f8bf044ab893f32b4da7844ecd57bcc2423e05d811178d801b1e274d.webp": "505663f3f8bf044ab893f32b4da7844ecd57bcc2423e05d811178d801b1e274d",
+    "web/public/media/7e2e488f9e91e54dfa935a6128fab3125c3ca4a5a8e3faee0cecdec3f6d24181.jpg": "7e2e488f9e91e54dfa935a6128fab3125c3ca4a5a8e3faee0cecdec3f6d24181",
+    "web/public/media/9819ea980b00590c5d4a5af4346af86a7261f8f18a5d4a642400a76eeda690eb.webp": "9819ea980b00590c5d4a5af4346af86a7261f8f18a5d4a642400a76eeda690eb",
+    "web/public/media/a34ef00942845bcee074b9908b105f5322919e38ae8651961a9e85c2db55182d.webp": "a34ef00942845bcee074b9908b105f5322919e38ae8651961a9e85c2db55182d",
+    "web/public/media/b493a3a19bde347cfc5c2d108ba77edb64b96d51210200d5cba30ad32004f897.jpg": "b493a3a19bde347cfc5c2d108ba77edb64b96d51210200d5cba30ad32004f897",
+    "web/public/media/bc642f36d5920e416768d7ad92663c31ecbb9464543304d00d7ce3dc90b6941a.webp": "bc642f36d5920e416768d7ad92663c31ecbb9464543304d00d7ce3dc90b6941a",
+    "web/public/media/c5372c4e71712f81e2671d334a63fdc2f900b71b5e054df437548f0b54e6a200.jpg": "c5372c4e71712f81e2671d334a63fdc2f900b71b5e054df437548f0b54e6a200",
+    "web/public/media/f6770503a3d21efc68d6d802253d88c6923cadb8c39f298d5e04bd4c692ca99c.jpg": "f6770503a3d21efc68d6d802253d88c6923cadb8c39f298d5e04bd4c692ca99c",
+    "web/public/media/fffd8f6b4cc589f391a44ba76a2fddf3a1d36ebaa9b11311b185ca93b5634455.webp": "fffd8f6b4cc589f391a44ba76a2fddf3a1d36ebaa9b11311b185ca93b5634455",
+    "web/src/app/[locale]/(public)/about-this-site/page.tsx": "7a475a77a7c7ef927df80f3a074757f48fa9a5a1f2ab64066eb09afd0718db16",
+    "web/src/app/[locale]/(public)/page.tsx": "741c743d7e3a8de95e684dfa4e91c7c3cb771e8d5073c38918bddbb7fc688bd4",
+    "web/src/components/site-shell.tsx": "f361f677750367dc2179aa0371f34b02845381870eba4c2c5313f04dfee4dee0",
+    "web/src/lib/locales.ts": "278d088a9c6e790d9e26206ef5ce69065a9189dcade4046beb6a813786752336",
+    "web/tests/browser/gallery.spec.ts": "be065ca6d7f47ab2b5ac51b4e3c64887d5b75baa0d4a078fedee64d50d7ed1df",
+    "web/tests/browser/progress.spec.ts": "b2345c3578624d3c100cc6e7a584cbcf0057823547f799060f58520311da7c68",
+    "web/tests/browser/shell.spec.ts": "2787d263ef21f521c4fd5cac02a9a4826f4adb35fce8e853166419c21447eb7c",
+    "web/tests/harness/gallery.spec.ts": "54fc247971b5cbc7abf9f986a540771ccff6e82d388ab928f38a41c217ad0910",
+    "web/tests/unit/development-release.test.ts": "38f9b19ae9a57bbd70f5dcbba39f59e498fb88f64e455936ebb6da82227c8644"
+  },
+  "evidence": {
+    "review/web-development-display-2026-10-08/README.md": "fcd792c232c2f40893f54ebf56f512b9dc3e7345daeee652988f43487e37a8b7",
+    "review/web-development-display-2026-10-08/desktop/capture.mjs": "ddd9fc1625d2ea98ee837c4a45f88a049b0a047627ba3a9f6696b236adb246f0",
+    "review/web-development-display-2026-10-08/desktop/manifest.json": "02849124795fcb41b5853994325d4d11da3484513d37805c5c9351796a17467c",
+    "review/web-development-display-2026-10-08/desktop/results.json": "16c253f55ae684373c9e5bf2f40943d12f65b47f334390276b898a5322c6dfd2",
+    "review/web-development-display-2026-10-08/desktop/screenshots/en-about-1440x900.png": "a8d1c72f5ef41c119c17d53100c55623389d4217e1d2e4666f3ab8d3c4e829cf",
+    "review/web-development-display-2026-10-08/desktop/screenshots/en-design-1280x800.png": "a3e7813e43fff08bf72cb95d9248c3c5edd79c83b2d4c737a233669fb350a29a",
+    "review/web-development-display-2026-10-08/desktop/screenshots/en-design-1440x900.png": "aabffc516a8014613c5ea1c4d5f5d9f5b7a13ed688e4346f2d1719a6726f9faf",
+    "review/web-development-display-2026-10-08/desktop/screenshots/en-design-css-text-200-percent-1440x900.png": "54a4ac8def2a49ec85bc3b12f2df6d1885933b7ca95d93866c01b19f25aabdc9",
+    "review/web-development-display-2026-10-08/desktop/screenshots/en-design-first-concept-enlarged-1440x900.png": "eaa2c167a26ab4b8def5b92fed6c35e73219bc5a7760cb58d95aaa2569b96822",
+    "review/web-development-display-2026-10-08/desktop/screenshots/en-design-keyboard-first-focus-1440x900.png": "87bb01a1b1787a8426888a627b3b6b94d0f25410e5624b31099bc09db0a8fc22",
+    "review/web-development-display-2026-10-08/desktop/screenshots/en-design-reduced-motion-1440x900.png": "aabffc516a8014613c5ea1c4d5f5d9f5b7a13ed688e4346f2d1719a6726f9faf",
+    "review/web-development-display-2026-10-08/desktop/screenshots/en-foundation-detail-1440x900.png": "19fcf13b779d196b2c07f2f94cabeca282242dd58fbd5bc5e47e71be7bdbe90b",
+    "review/web-development-display-2026-10-08/desktop/screenshots/en-foundation-detail-fullpage.png": "fc7236d3b4b6edd0e5fcb82345dfc0bbce0d61082026d8ed62d9e364e4afe809",
+    "review/web-development-display-2026-10-08/desktop/screenshots/en-home-1440x900.png": "b36a2379672af273ea61c8a0178943cd29e9c1240fa97b76f9525d306eb17ae6",
+    "review/web-development-display-2026-10-08/desktop/screenshots/en-progress-1440x900.png": "e414264d3a794e6a26902f95c11de0b1325bcd0709ce70c57395b65cafe30e1e",
+    "review/web-development-display-2026-10-08/desktop/screenshots/vi-design-1440x900.png": "06396aaf21a7b559aaad0a950c264cc96bad7bbd2fa6a14ab29c405e1aed7df3",
+    "review/web-development-display-2026-10-08/desktop/screenshots/vi-home-1440x900.png": "aa1dd434572ea00669e85e9490c1425cab2e0c6b5a45f4ebb45c211b98dbbbfd",
+    "review/web-development-display-2026-10-08/desktop/summary.md": "41bbe68c6100c19a91cb0f04419679710a10ebea601629c432b3dc96e2067a2d",
+    "review/web-development-display-2026-10-08/logs/boundary.log": "4eaeb559fc3af23bb45dac93a4337540aa9a885e82d18dc1a0875a55b86b3c65",
+    "review/web-development-display-2026-10-08/logs/build.log": "bfa2122749ce2fca5dadf3085e92c61a7b9aaa14e0d232f27a8bbe1d408265a2",
+    "review/web-development-display-2026-10-08/logs/build.log.gz": "c6b949fdec464cd199e19fb32c1d6b183a00a6f48d3d701521037a05e6a14e36",
+    "review/web-development-display-2026-10-08/logs/lint.log": "29bb3c70303cd412c146e73573fe8765965374c6e96669c1f002a06654ebb33c",
+    "review/web-development-display-2026-10-08/logs/production-browser.log": "5eea89c633179332e462def16394a01dd60a7888db1bb1ef05416646772de703",
+    "review/web-development-display-2026-10-08/logs/synthetic-browser.log": "05281ba9017219f7b12fac88a2329a31b79dc811ab16c2b5dcb2c5ff5b15d56c",
+    "review/web-development-display-2026-10-08/logs/typecheck.log": "8be17e7c1071648573404cf6c59640ff681ed80eda8749e0e3b8623561ebbf82",
+    "review/web-development-display-2026-10-08/logs/unit.log": "2f47c3401344af6d22680c2a0479c73e58e5192c5d4b5954d3f41d0ba5d89cbb",
+    "review/web-development-display-2026-10-08/logs/unit.log.gz": "721f93b56be51cbf945b3cd9a9c65f45ae9f728cedfd1241df4f4a97098724bb",
+    "review/web-development-display-2026-10-08/verify.py": "d37ae9012b76dcde546e8d868920855a057ba9eaf46555280430956bda2d45cf"
+  },
+  "unchangedEngineeringSources": {
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/navigation.js": "829bedaeb24a98aea41769520546d7ac39f5953ba91a7205c2f5759f4ed11f16",
+    "Thach_Bi_Viewer/planning/model-plan-data.js": "fa02b393409c549470a9a10bf012dc17d0c5e435c844e535438b8841939417eb",
+    "Thach_Bi_Viewer/planning/plan.js": "6f4ccce9caed6f4a9f065d6ff2d590492a8a2f1ce10cde6343ec1a687dac5774",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/sanctuary.js": "2f1114fadfc35f48ab34c66b578b277d22f2b839f66ef7eaf6affdefc2201de3",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/audio-synthesis.js": "0ac8dba169e165579126a678bcd91e8d330ac85a6956e70749c9ebf12e1aee23",
+    "Thach_Bi_Viewer/simulator/audio.js": "b5d5140c527c80e1c86e043292172505ee5cc6ed032a1392c8cf4664ee763cad",
+    "Thach_Bi_Viewer/simulator/catalog.js": "db353c028cfa7377844bfd174941893a04d68ce05ec1719f2f5449d2785a4a46",
+    "Thach_Bi_Viewer/simulator/controls.js": "02ba5f27a1cca4e8217a6bb4a84e70794609082a2b19d805dc12d43790b91e58",
+    "Thach_Bi_Viewer/simulator/design.js": "7b632d74a358cdc8d65f707864b3abe44d2e32ae070859c45f5b28447d753beb",
+    "Thach_Bi_Viewer/simulator/electrical.js": "192d0942067dc399f379fca989876817a7468445570323b5c4e325ce6c2b9a4c",
+    "Thach_Bi_Viewer/simulator/engine.js": "d94ea996d211291510afe30d888ddae1f94e97a8f4217e7916a48ad7bc267a60",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/samples.js": "d249a101c740bfff5a4154ec2fcc7343e314505332191f435dcad609e83d85d3",
+    "Thach_Bi_Viewer/simulator/ui.js": "51a5d17ba3827509568e42ee5d06b5a0e833b4f739bc10ac631426401658bcb8",
+    "Thach_Bi_Viewer/startup.js": "c58afab77ff08d8d509ecdf0aa0c11bd6737b832122e726de8c48cce98ee77ce",
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/viewer-performance.js": "f45fee8c12aa37f9e6a7e4bcbe75b8a679b79c5241f199ccd5349edc204b60d8",
+    "docs/beams-roof-connections/image-manifest.json": "330cfe1af35e6e9d2cf09ced1b0f572da3461b692625b333e367bcd192102cfc",
+    "docs/beams-roof-connections/images/01-upper-bay-front.png": "a6279ea21f941142a9e9eeb7f741333c798b15773689aeb98a31d8df4a780bb0",
+    "docs/beams-roof-connections/images/02-column-head-three-quarter.png": "80e608c91a1cb965d1e88526c02dc98745fedc6ffa2342ee65bd9bcc259fd5e2",
+    "docs/beams-roof-connections/images/03-carved-bracket-underside.png": "55ad957d9fb18309ea92524a1a2f360c23f6e50e30ac04aae0a8bebea8cbb02d",
+    "docs/beams-roof-connections/images/04-upper-rail-roof-connection.png": "ce80845fced6761803538b8dad3458ed049e4745959e9f5c289e399a7867ec65",
+    "docs/beams-roof-connections/images/07-full-width-frame-concrete-sides.png": "be351782a27031c8c71cec27045dc0237be172cbe861533df3dd84a2794fe8e1",
+    "docs/beams-roof-connections/images/08-longitudinal-beams-two-frames.png": "e0684f160d8e1fbed2a572e6922a11735234b98807321476301ce183c2b1e2a4",
+    "docs/beams-roof-connections/images/09-side-beam-concrete-bearing.png": "ea9a4a39025203edae26d306d526ec70d716992693086aa8d7f32645bc8a0623",
+    "docs/beams-roof-connections/images/10-upper-roof-longitudinal-connections.png": "eaa6ff65222030f934fad6ee7797dad44459bfe61b5b062334ac4d5f95adc55b",
+    "docs/beams-roof-connections/masters/01-upper-bay-front.png": "d36b340d9693375ddfbb846b0bcab789345d0dd16477b671796a5a82654b37a3",
+    "docs/beams-roof-connections/masters/02-column-head-three-quarter.png": "df2c1fa4859bcc06b9c9ddbc30a9b86265b431678b06b0002d9742b7aa1d1942",
+    "docs/beams-roof-connections/masters/03-carved-bracket-underside.png": "70b5700953bd45b1aff09353fb0fd3ba9fd723d694079bf6d9368762d67732a9",
+    "docs/beams-roof-connections/masters/04-upper-rail-roof-connection.png": "5ac11d8a9f3c858d37a99a6056475ae636ca714c155dabd1270d297534a6e0b5",
+    "docs/beams-roof-connections/masters/07-full-width-frame-concrete-sides.png": "162fe45aac764d13894977952ec8ea914fa645f748794ed61f1436b20e3c3abc",
+    "docs/beams-roof-connections/masters/08-longitudinal-beams-two-frames.png": "a3312ef1c0801b55073d95156c37b94bc8cba1686445c8e6c54f916332208f83",
+    "docs/beams-roof-connections/masters/09-side-beam-concrete-bearing.png": "70c19714ee78bc1eff0f3d5fd7ae3cecb5f7f173a37e1646596ff5846015a13d",
+    "docs/beams-roof-connections/masters/10-upper-roof-longitudinal-connections.png": "77cb263480a2eb16583c7507bb3ac68618df72c96b005e747cdf00ca8564b13c",
+    "docs/beams-roof-connections/requirements.json": "d82687d2f11a0e60e80c3745b78fadda726c8c79b525ea1be02fba5fbcf29581",
+    "docs/beams-roof-connections/sources/04-top-view.png": "1929e61f7d8d8dd3d57845f545e7ee4a239eedbeec46b3eb251355716cdd47ee",
+    "docs/beams-roof-connections/sources/06-slide-cut-inside-church.png": "ca4f0bb3b2c6abf644586cea9038d7ed2764545ea54b53111b03fdc85809c7dd",
+    "docs/beams-roof-connections/sources/IMG_20260910_171557_634_1.JPG": "6dd42d95c392acad2a12a0ad41b628724c2a2687cb680e67dba4072e8ee6517d",
+    "docs/beams-roof-connections/sources/IMG_2676.PNG": "de6f575d7e5c0fe91f8bfc57a5504e3cd20096dc3a31444cc1c3e999b83d41af",
+    "docs/beams-roof-connections/sources/IMG_2677.PNG": "ec557cc1ed6e31f018cca0ee3651c0654f173f7479e25c852f65521d29dedeab",
+    "docs/beams-roof-connections/sources/IMG_2678.PNG": "8c3206df45db771e88c0fd5a4003fbfb5f70ab96f00970378a6e93ff82daf4fa",
+    "docs/beams-roof-connections/sources/IMG_2679.PNG": "ed38c696176ea6655ecfd7807af8b275259e5238c9edc5bba0f3555ee9bb5b59",
+    "docs/beams-roof-connections/sources/giao-xu-thach-bi-04-mat-bang-tong-quan-nha-tho-giao-xu.pdf": "9fca89fc1c85f171ef5b26271bb4810b2b49e744166c53fedb663e50119e3d6c",
+    "docs/beams-roof-connections/sources/giao-xu-thach-bi-06-mat-dung-mot-vi-than-nha-tho.pdf": "0d7485040df37efea2220e72fb283161717dc660c25fcf68438c1d3e94c4e0aa",
+    "docs/beams-roof-connections/validate.py": "68bf3f41998643efb1b68ec8702ab808684a292f34b8197b86f9c4b1b96a90aa",
+    "scripts/verify_concealed_routes.cjs": "87b8011452afb00d56826c8aac99ca98eab0278aff89fe0a7602447cb7c7b207",
+    "scripts/verify_estimates.cjs": "b2862659596eb35d4d3a39cd95005d038e766e0cf238c9f089a481dae3b15ba8",
+    "scripts/verify_model.cjs": "36c0e242ef722b09ecdefb2a59a9170a39efc96a1c0df2e2c93e5e80d33da189",
+    "scripts/verify_simulator.cjs": "44ce5c6d5c34abefd367b37c0da0205fb547b6df88c15ab9d3fcb11e9c23f4f1"
+  },
+  "localLinks": [
+    {
+      "from": "docs/web/data-boundary.md",
+      "target": "../../plan/data-and-publication.md",
+      "resolved": "plan/data-and-publication.md"
+    },
+    {
+      "from": "docs/web/data-boundary.md",
+      "target": "publication-permission.md",
+      "resolved": "docs/web/publication-permission.md"
+    },
+    {
+      "from": "docs/web/data-boundary.md",
+      "target": "timeline.md",
+      "resolved": "docs/web/timeline.md"
+    },
+    {
+      "from": "docs/web/data-boundary.md",
+      "target": "public-content.md",
+      "resolved": "docs/web/public-content.md"
+    },
+    {
+      "from": "docs/web/data-boundary.md",
+      "target": "progress-publishing.md",
+      "resolved": "docs/web/progress-publishing.md"
+    },
+    {
+      "from": "docs/web/data-boundary.md",
+      "target": "../../review/web-framework-2026-10-08/README.md",
+      "resolved": "review/web-framework-2026-10-08/README.md"
+    },
+    {
+      "from": "docs/web/deployment.md",
+      "target": "publication-permission.md",
+      "resolved": "docs/web/publication-permission.md"
+    },
+    {
+      "from": "docs/web/deployment.md",
+      "target": "../../web/content/current.json",
+      "resolved": "web/content/current.json"
+    },
+    {
+      "from": "docs/web/deployment.md",
+      "target": "development.md",
+      "resolved": "docs/web/development.md"
+    },
+    {
+      "from": "docs/web/deployment.md",
+      "target": "data-boundary.md",
+      "resolved": "docs/web/data-boundary.md"
+    },
+    {
+      "from": "docs/web/deployment.md",
+      "target": "../../.github/workflows/web-checks.yml",
+      "resolved": ".github/workflows/web-checks.yml"
+    },
+    {
+      "from": "docs/web/progress-publishing.md",
+      "target": "../../web/content/release.json",
+      "resolved": "web/content/release.json"
+    },
+    {
+      "from": "docs/web/progress-publishing.md",
+      "target": "publication-permission.md",
+      "resolved": "docs/web/publication-permission.md"
+    },
+    {
+      "from": "docs/web/progress-publishing.md",
+      "target": "development.md",
+      "resolved": "docs/web/development.md"
+    },
+    {
+      "from": "docs/web/progress-publishing.md",
+      "target": "public-content.md",
+      "resolved": "docs/web/public-content.md"
+    },
+    {
+      "from": "docs/web/public-content.md",
+      "target": "../../web/content/release.json",
+      "resolved": "web/content/release.json"
+    },
+    {
+      "from": "docs/web/public-content.md",
+      "target": "publication-permission.md",
+      "resolved": "docs/web/publication-permission.md"
+    },
+    {
+      "from": "docs/web/public-content.md",
+      "target": "../../review/web-framework-2026-10-08/delivery/README.md",
+      "resolved": "review/web-framework-2026-10-08/delivery/README.md"
+    },
+    {
+      "from": "docs/web/public-content.md",
+      "target": "../../plan/data-and-publication.md",
+      "resolved": "plan/data-and-publication.md"
+    },
+    {
+      "from": "docs/web/public-content.md",
+      "target": "public-copy-draft.json",
+      "resolved": "docs/web/public-copy-draft.json"
+    },
+    {
+      "from": "docs/web/public-content.md",
+      "target": "../../README.md",
+      "resolved": "README.md"
+    },
+    {
+      "from": "docs/web/public-content.md",
+      "target": "publication-permission.md",
+      "resolved": "docs/web/publication-permission.md"
+    },
+    {
+      "from": "docs/web/public-content.md",
+      "target": "development-publication-assets.json",
+      "resolved": "docs/web/development-publication-assets.json"
+    },
+    {
+      "from": "docs/web/public-content.md",
+      "target": "../../web/content/current.json",
+      "resolved": "web/content/current.json"
+    },
+    {
+      "from": "docs/web/public-content.md",
+      "target": "timeline.md",
+      "resolved": "docs/web/timeline.md"
+    },
+    {
+      "from": "docs/web/timeline.md",
+      "target": "../../web/content/release.json",
+      "resolved": "web/content/release.json"
+    },
+    {
+      "from": "docs/web/timeline.md",
+      "target": "publication-permission.md",
+      "resolved": "docs/web/publication-permission.md"
+    },
+    {
+      "from": "docs/web/timeline.md",
+      "target": "progress-publishing.md",
+      "resolved": "docs/web/progress-publishing.md"
+    },
+    {
+      "from": "docs/web/timeline.md",
+      "target": "../../review/web-progress-2026-10-08/timeline/README.md",
+      "resolved": "review/web-progress-2026-10-08/timeline/README.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "../docs/web/publication-permission.md",
+      "resolved": "docs/web/publication-permission.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "../AGENTS.md",
+      "resolved": "AGENTS.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "engineering/README.md",
+      "resolved": "plan/engineering/README.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "quality-and-release.md",
+      "resolved": "plan/quality-and-release.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "architecture.md",
+      "resolved": "plan/architecture.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "phases/00-evidence-and-publication.md",
+      "resolved": "plan/phases/00-evidence-and-publication.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "phases/01-framework-and-delivery.md",
+      "resolved": "plan/phases/01-framework-and-delivery.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "phases/02-homepage-and-gallery.md",
+      "resolved": "plan/phases/02-homepage-and-gallery.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "phases/03-construction-timeline.md",
+      "resolved": "plan/phases/03-construction-timeline.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "phases/04-lightweight-visit.md",
+      "resolved": "plan/phases/04-lightweight-visit.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "phases/05-protected-review.md",
+      "resolved": "plan/phases/05-protected-review.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "phases/06-construction-inspector.md",
+      "resolved": "plan/phases/06-construction-inspector.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "phases/07-release-and-operations.md",
+      "resolved": "plan/phases/07-release-and-operations.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "architecture.md",
+      "resolved": "plan/architecture.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "data-and-publication.md",
+      "resolved": "plan/data-and-publication.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "quality-and-release.md",
+      "resolved": "plan/quality-and-release.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "decisions-and-sources.md",
+      "resolved": "plan/decisions-and-sources.md"
+    },
+    {
+      "from": "plan/README.md",
+      "target": "engineering/README.md",
+      "resolved": "plan/engineering/README.md"
+    },
+    {
+      "from": "plan/phases/00-evidence-and-publication.md",
+      "target": "../../docs/web/publication-permission.md",
+      "resolved": "docs/web/publication-permission.md"
+    },
+    {
+      "from": "plan/phases/00-evidence-and-publication.md",
+      "target": "../README.md",
+      "resolved": "plan/README.md"
+    },
+    {
+      "from": "plan/phases/00-evidence-and-publication.md",
+      "target": "../data-and-publication.md",
+      "resolved": "plan/data-and-publication.md"
+    },
+    {
+      "from": "plan/phases/00-evidence-and-publication.md",
+      "target": "../decisions-and-sources.md",
+      "resolved": "plan/decisions-and-sources.md"
+    },
+    {
+      "from": "plan/phases/00-evidence-and-publication.md",
+      "target": "../README.md",
+      "resolved": "plan/README.md"
+    },
+    {
+      "from": "plan/phases/02-homepage-and-gallery.md",
+      "target": "../../docs/web/publication-permission.md",
+      "resolved": "docs/web/publication-permission.md"
+    },
+    {
+      "from": "plan/phases/02-homepage-and-gallery.md",
+      "target": "../../docs/web/public-content.md",
+      "resolved": "docs/web/public-content.md"
+    },
+    {
+      "from": "plan/phases/02-homepage-and-gallery.md",
+      "target": "../data-and-publication.md",
+      "resolved": "plan/data-and-publication.md"
+    },
+    {
+      "from": "plan/phases/02-homepage-and-gallery.md",
+      "target": "../quality-and-release.md",
+      "resolved": "plan/quality-and-release.md"
+    },
+    {
+      "from": "plan/phases/02-homepage-and-gallery.md",
+      "target": "../../README.md",
+      "resolved": "README.md"
+    },
+    {
+      "from": "plan/phases/02-homepage-and-gallery.md",
+      "target": "../../review/web-content-2026-10-08/media/README.md",
+      "resolved": "review/web-content-2026-10-08/media/README.md"
+    },
+    {
+      "from": "plan/phases/02-homepage-and-gallery.md",
+      "target": "../../review/web-content-2026-10-08/gallery/README.md",
+      "resolved": "review/web-content-2026-10-08/gallery/README.md"
+    },
+    {
+      "from": "plan/phases/03-construction-timeline.md",
+      "target": "../../docs/web/publication-permission.md",
+      "resolved": "docs/web/publication-permission.md"
+    },
+    {
+      "from": "plan/phases/03-construction-timeline.md",
+      "target": "../data-and-publication.md",
+      "resolved": "plan/data-and-publication.md"
+    },
+    {
+      "from": "plan/phases/03-construction-timeline.md",
+      "target": "../../docs/web/progress-publishing.md",
+      "resolved": "docs/web/progress-publishing.md"
+    },
+    {
+      "from": "plan/phases/03-construction-timeline.md",
+      "target": "../../docs/web/timeline.md",
+      "resolved": "docs/web/timeline.md"
+    },
+    {
+      "from": "plan/phases/03-construction-timeline.md",
+      "target": "../../docs/web/progress-publishing.md",
+      "resolved": "docs/web/progress-publishing.md"
+    },
+    {
+      "from": "plan/phases/03-construction-timeline.md",
+      "target": "../../review/web-progress-2026-10-08/contracts/README.md",
+      "resolved": "review/web-progress-2026-10-08/contracts/README.md"
+    },
+    {
+      "from": "plan/phases/03-construction-timeline.md",
+      "target": "../../review/web-progress-2026-10-08/timeline/README.md",
+      "resolved": "review/web-progress-2026-10-08/timeline/README.md"
+    },
+    {
+      "from": "plan/phases/03-construction-timeline.md",
+      "target": "../../review/web-development-display-2026-10-08/README.md",
+      "resolved": "review/web-development-display-2026-10-08/README.md"
+    },
+    {
+      "from": "docs/web/publication-permission.md",
+      "target": "development-publication-assets.json",
+      "resolved": "docs/web/development-publication-assets.json"
+    },
+    {
+      "from": "review/web-development-display-2026-10-08/README.md",
+      "target": "../../docs/web/publication-permission.md",
+      "resolved": "docs/web/publication-permission.md"
+    },
+    {
+      "from": "review/web-development-display-2026-10-08/README.md",
+      "target": "../../docs/web/development-publication-assets.json",
+      "resolved": "docs/web/development-publication-assets.json"
+    },
+    {
+      "from": "review/web-development-display-2026-10-08/README.md",
+      "target": "logs/production-browser.log",
+      "resolved": "review/web-development-display-2026-10-08/logs/production-browser.log"
+    },
+    {
+      "from": "review/web-development-display-2026-10-08/README.md",
+      "target": "logs/synthetic-browser.log",
+      "resolved": "review/web-development-display-2026-10-08/logs/synthetic-browser.log"
+    },
+    {
+      "from": "review/web-development-display-2026-10-08/README.md",
+      "target": "logs/boundary.log",
+      "resolved": "review/web-development-display-2026-10-08/logs/boundary.log"
+    },
+    {
+      "from": "review/web-development-display-2026-10-08/README.md",
+      "target": "desktop/summary.md",
+      "resolved": "review/web-development-display-2026-10-08/desktop/summary.md"
+    },
+    {
+      "from": "review/web-development-display-2026-10-08/README.md",
+      "target": "../../docs/web/deployment.md",
+      "resolved": "docs/web/deployment.md"
+    }
+  ]
+}

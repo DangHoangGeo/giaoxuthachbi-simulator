@@ -1,6 +1,8 @@
 # Church web app roadmap
 
-Planning baseline: **7 October 2026**. Execution update: **8 October 2026 — local phase-01 foundation verified**. Phase 00 preparation is pushed and unmerged at [`84edc9e`](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/tree/84edc9e); real publication rights/owners remain held. No cloud account or deployment is created. Read [AGENTS.md](../AGENTS.md) before executing any phase.
+**Latest owner instruction, 8 October 2026:** continue work and show our project work with clear development notes. [Selected publication scope](../docs/web/publication-permission.md) is now authorized; this supersedes the preceding session time limit and blanket permission hold for project-created preview material. Engineering approval and actual-host/operational gates remain separate.
+
+Planning baseline: **7 October 2026**. Execution update: **8 October 2026 — local phase-01 foundation verified**. Phase 00 preparation is pushed and unmerged at [`84edc9e`](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/tree/84edc9e); selected project-created preview content is now owner-authorized, while broader rights/operating-owner decisions remain held. The owner will connect an existing hosting project to GitHub; no deployed URL has been verified. Read [AGENTS.md](../AGENTS.md) before executing any phase.
 
 **Execution priority, 8 October 2026:** the [building-systems engineering roadmap](engineering/README.md) comes first. Its six phases cover the baseline, joint light/sound/microphone/dynamic-air optimisation, concealment, routes, boards/controls and coordinated registers/handover. The engineer approved execution on 8 October 2026. Then follow the web order below, applying phase 07 before each launch. If engineering work is blocked on external input, its roadmap defines which independent packages can continue without treating an unfinished design as approved.
 
@@ -25,7 +27,7 @@ Start with reviewed files and a maintainer publishing workflow. Use invited indi
 
 ## Roadmap and dependencies
 
-Phase 00 independent preparation is complete on its unmerged branch; its publication gate remains held. Phase 01 has passed its local foundation gate using the independent work permitted by phase 00 package 6; cloud setup remains pending. Phase 02 independent local content/gallery software is verified on its unmerged branch; parish wording/media review and G2 remain held. Phase 03 independent event-history/timeline software is locally verified on unmerged `web/03-timeline`; real publication/rehearsal and G3 remain held. Phases 04–07 remain not started. Effort depends on available photographs, source reconciliation and desktop measurements; there are no promised calendar completion dates.
+Phase 00 independent preparation is complete on its unmerged branch; its publication gate remains held. Phase 01 has passed its local foundation gate using the independent work permitted by phase 00 package 6; cloud setup remains pending. Phase 02 independent local content/gallery software is verified on its unmerged branch; parish wording/media review and G2 remain held. Phase 03 independent event-history/timeline software is locally verified on unmerged `web/03-timeline`; actual-host publication/rehearsal and G3 remain held. The branch now includes the owner-authorized development introduction, three labeled AI concepts and two owner-reported construction milestones. Phases 04–07 remain not started. Effort depends on available photographs, source reconciliation and desktop measurements; there are no promised calendar completion dates.
 
 | Phase | Outcome | Depends on | Release gate |
 | --- | --- | --- | --- |

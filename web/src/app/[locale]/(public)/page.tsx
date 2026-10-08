@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { SiteShell } from "@/components/site-shell";
 import { galleryPath, galleryWords } from "@/lib/gallery";
 import { isLocale, localizedPath, words } from "@/lib/locales";
+import { eventPath, instantLabel, progressWords } from "@/lib/progress";
 import { readPublicContent } from "@/lib/server/public-content";
 export async function generateMetadata({
   params,
@@ -29,6 +30,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const copy = words[locale];
   if (content.state === "published") {
     const [introduction, ...sections] = content.release.pages;
+    const latest = [...content.release.events].sort(
+      (a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt) || a.id.localeCompare(b.id),
+    )[0];
     return (
       <SiteShell locale={locale} publishedAt={content.release.publishedAt}>
         <article className="max-w-[68ch]">
@@ -41,6 +45,20 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <p className="mt-8 whitespace-pre-line text-lg leading-relaxed text-stone-700">
             {introduction?.body[locale] ?? copy.introduction}
           </p>
+          {latest && (
+            <section className="mt-10 border-y border-stone-300 py-6">
+              <h2 className="text-sm font-semibold">{progressWords[locale].latest}</h2>
+              <a className="nav-link mt-3 text-xl underline" href={eventPath(locale, latest.id)}>
+                {latest.title[locale]}
+              </a>
+              <p className="mt-2 text-sm text-stone-600">
+                <time dateTime={latest.updatedAt}>{instantLabel(latest.updatedAt, locale)}</time> ·{" "}
+                {latest.status === "withdrawn"
+                  ? progressWords[locale].withdrawn
+                  : progressWords[locale][latest.evidence]}
+              </p>
+            </section>
+          )}
           {sections.map((section) => (
             <section key={section.id} className="mt-12 border-t border-stone-300 pt-8">
               <h2 className="font-serif text-3xl leading-tight">{section.title[locale]}</h2>

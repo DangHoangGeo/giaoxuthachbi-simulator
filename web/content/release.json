@@ -1,1 +1,297 @@
-null
+{
+  "schemaVersion": 1,
+  "kind": "public-content",
+  "fixtureOnly": false,
+  "releaseId": "development-content-20261008-one",
+  "sourceRevision": "source-581d381",
+  "locales": ["vi", "en"],
+  "createdAt": "2026-10-08T11:48:24Z",
+  "publishedAt": "2026-10-08T11:48:24Z",
+  "publication": "published",
+  "reviewRef": "owner-development-display-20261008",
+  "pages": [
+    {
+      "id": "project-introduction",
+      "slug": "introduction",
+      "title": {
+        "vi": "Cùng xây dựng nhà thờ Thạch Bi",
+        "en": "Building Thạch Bi Church together"
+      },
+      "body": {
+        "vi": "Chúng tôi chia sẻ công việc thiết kế đang phát triển để cộng đoàn và những người có kinh nghiệm có thể cùng xem xét, góp ý và hoàn thiện. Mô hình, hình ý tưởng và phép tính là công cụ nghiên cứu thiết kế; chưa phải hồ sơ được phép dùng để thi công.",
+        "en": "We are sharing design work in progress so the community and experienced contributors can review and improve it together. Models, concepts and calculations support design development; they are not construction-approved documents."
+      }
+    },
+    {
+      "id": "coordinated-design",
+      "slug": "coordinated-design",
+      "title": {
+        "vi": "Phối hợp các hệ thống",
+        "en": "Coordinating the building systems"
+      },
+      "body": {
+        "vi": "Công việc tập trung vào vị trí và cách sử dụng đèn, loa, micro, quạt và hệ thống thông gió, cùng tuyến điện, tủ điện và điều khiển. Phải giữ tầm nhìn về cung thánh, khả năng bảo trì và hiệu quả hoạt động. Phương án quạt lộ rõ trên trục giữa đã bị loại; quạt và loa còn thấy trong hình ý tưởng cũ chưa phải vị trí lắp đặt đã chốt.",
+        "en": "The work coordinates lights, loudspeakers, microphones, fans and ventilation with electrical routes, boards and controls. Sanctuary sightlines, maintenance access and performance must be preserved. Exposed centreline fan schemes are excluded; fans and speakers still visible in earlier concepts are not an agreed installation layout."
+      }
+    },
+    {
+      "id": "development-limits",
+      "slug": "development-limits",
+      "title": {
+        "vi": "Những điều chưa được xác nhận",
+        "en": "What remains unverified"
+      },
+      "body": {
+        "vi": "Một số mục tiêu về ánh sáng, độ rõ lời nói, chống hú và luồng gió còn chưa đạt. Khả năng che giấu thiết bị, dữ liệu sản phẩm, điều kiện lắp đặt và các thông số điện còn phải được kiểm tra. Thông tin dùng để xây dựng cần được người thiết kế có trách nhiệm kiểm tra và chấp thuận.",
+        "en": "Some lighting, speech clarity, feedback and airflow targets remain unmet. Equipment concealment, product data, installation conditions and electrical specifications still require checking. Information used to build must be checked and authorized by the responsible designers."
+      }
+    }
+  ],
+  "media": [
+    {
+      "id": "concept-front-20261007",
+      "category": "concept-art",
+      "caption": {
+        "vi": "Mặt tiền — hình ý tưởng ban ngày",
+        "en": "Front elevation — daylight concept"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng nhà thờ với hai tháp, tượng Đức Mẹ ở giữa và ba cửa gỗ.",
+        "en": "Concept of the church with twin towers, a central Marian statue and three timber entrances."
+      },
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "capturedOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "rights": "cleared",
+      "rightsRef": "owner-development-display-20261008",
+      "derivatives": [
+        {
+          "path": "/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+          "sha256": "1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d",
+          "width": 640,
+          "height": 360,
+          "bytes": 29702
+        },
+        {
+          "path": "/media/1a2ffdfa7aa2187ed1165bf9428cbbe8f53a26c19af788a5600f9c2482598fc8.jpg",
+          "sha256": "1a2ffdfa7aa2187ed1165bf9428cbbe8f53a26c19af788a5600f9c2482598fc8",
+          "width": 640,
+          "height": 360,
+          "bytes": 36616
+        },
+        {
+          "path": "/media/fffd8f6b4cc589f391a44ba76a2fddf3a1d36ebaa9b11311b185ca93b5634455.webp",
+          "sha256": "fffd8f6b4cc589f391a44ba76a2fddf3a1d36ebaa9b11311b185ca93b5634455",
+          "width": 1280,
+          "height": 720,
+          "bytes": 93648
+        },
+        {
+          "path": "/media/c5372c4e71712f81e2671d334a63fdc2f900b71b5e054df437548f0b54e6a200.jpg",
+          "sha256": "c5372c4e71712f81e2671d334a63fdc2f900b71b5e054df437548f0b54e6a200",
+          "width": 1280,
+          "height": 720,
+          "bytes": 123500
+        },
+        {
+          "path": "/media/9819ea980b00590c5d4a5af4346af86a7261f8f18a5d4a642400a76eeda690eb.webp",
+          "sha256": "9819ea980b00590c5d4a5af4346af86a7261f8f18a5d4a642400a76eeda690eb",
+          "width": 1672,
+          "height": 941,
+          "bytes": 138966
+        },
+        {
+          "path": "/media/4e6e2bb4f686af73a1a5db63b11cad60b91132b1fb24a828523d8ea3fe73a60c.jpg",
+          "sha256": "4e6e2bb4f686af73a1a5db63b11cad60b91132b1fb24a828523d8ea3fe73a60c",
+          "width": 1672,
+          "height": 941,
+          "bytes": 191066
+        }
+      ]
+    },
+    {
+      "id": "concept-nave-20261007",
+      "category": "concept-art",
+      "caption": {
+        "vi": "Gian chính — ý tưởng nội thất; thiết bị còn phải phối hợp và che giấu",
+        "en": "Nave interior concept; equipment coordination and concealment remain unresolved"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng nhìn dọc lối giữa về cung thánh, các hàng ghế và cột gỗ; còn thấy quạt, loa và đèn.",
+        "en": "Concept view along the central aisle toward the sanctuary, with pews and timber columns; fans, speakers and lights remain visible."
+      },
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "capturedOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "rights": "cleared",
+      "rightsRef": "owner-development-display-20261008",
+      "derivatives": [
+        {
+          "path": "/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+          "sha256": "3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea",
+          "width": 640,
+          "height": 360,
+          "bytes": 49028
+        },
+        {
+          "path": "/media/171cb708424690eb99464940895ee09dd42db9f7571715f22e7f64c7ec1eda5f.jpg",
+          "sha256": "171cb708424690eb99464940895ee09dd42db9f7571715f22e7f64c7ec1eda5f",
+          "width": 640,
+          "height": 360,
+          "bytes": 57654
+        },
+        {
+          "path": "/media/04a0ab41d016f215beacb6b9727a522ad834c0ef6fb55f75bc3aa3ba4547a45a.webp",
+          "sha256": "04a0ab41d016f215beacb6b9727a522ad834c0ef6fb55f75bc3aa3ba4547a45a",
+          "width": 1280,
+          "height": 720,
+          "bytes": 143398
+        },
+        {
+          "path": "/media/b493a3a19bde347cfc5c2d108ba77edb64b96d51210200d5cba30ad32004f897.jpg",
+          "sha256": "b493a3a19bde347cfc5c2d108ba77edb64b96d51210200d5cba30ad32004f897",
+          "width": 1280,
+          "height": 720,
+          "bytes": 187345
+        },
+        {
+          "path": "/media/a34ef00942845bcee074b9908b105f5322919e38ae8651961a9e85c2db55182d.webp",
+          "sha256": "a34ef00942845bcee074b9908b105f5322919e38ae8651961a9e85c2db55182d",
+          "width": 1672,
+          "height": 941,
+          "bytes": 211470
+        },
+        {
+          "path": "/media/f6770503a3d21efc68d6d802253d88c6923cadb8c39f298d5e04bd4c692ca99c.jpg",
+          "sha256": "f6770503a3d21efc68d6d802253d88c6923cadb8c39f298d5e04bd4c692ca99c",
+          "width": 1672,
+          "height": 941,
+          "bytes": 286899
+        }
+      ]
+    },
+    {
+      "id": "concept-sanctuary-20261007",
+      "category": "concept-art",
+      "caption": {
+        "vi": "Cung thánh — hình ý tưởng buổi tối, không phải dự báo độ sáng",
+        "en": "Sanctuary — evening concept, not a lighting prediction"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng cung thánh chạm khắc sơn son thếp vàng, thánh giá ở giữa, bàn thờ và hai tượng hai bên.",
+        "en": "Concept of a red-and-gold carved sanctuary, central crucifix, altar and statues to either side."
+      },
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "capturedOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "rights": "cleared",
+      "rightsRef": "owner-development-display-20261008",
+      "derivatives": [
+        {
+          "path": "/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+          "sha256": "05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827",
+          "width": 640,
+          "height": 360,
+          "bytes": 65588
+        },
+        {
+          "path": "/media/065b454d1e267d1fa1d6197ede837fa4633260df80873b7b83dfbfb044c0c24a.jpg",
+          "sha256": "065b454d1e267d1fa1d6197ede837fa4633260df80873b7b83dfbfb044c0c24a",
+          "width": 640,
+          "height": 360,
+          "bytes": 69822
+        },
+        {
+          "path": "/media/bc642f36d5920e416768d7ad92663c31ecbb9464543304d00d7ce3dc90b6941a.webp",
+          "sha256": "bc642f36d5920e416768d7ad92663c31ecbb9464543304d00d7ce3dc90b6941a",
+          "width": 1280,
+          "height": 720,
+          "bytes": 214618
+        },
+        {
+          "path": "/media/2f467caf731ce06fa6e8b467249678d719e1a7020ee13a8d26048951180527dd.jpg",
+          "sha256": "2f467caf731ce06fa6e8b467249678d719e1a7020ee13a8d26048951180527dd",
+          "width": 1280,
+          "height": 720,
+          "bytes": 243110
+        },
+        {
+          "path": "/media/505663f3f8bf044ab893f32b4da7844ecd57bcc2423e05d811178d801b1e274d.webp",
+          "sha256": "505663f3f8bf044ab893f32b4da7844ecd57bcc2423e05d811178d801b1e274d",
+          "width": 1672,
+          "height": 941,
+          "bytes": 318184
+        },
+        {
+          "path": "/media/7e2e488f9e91e54dfa935a6128fab3125c3ca4a5a8e3faee0cecdec3f6d24181.jpg",
+          "sha256": "7e2e488f9e91e54dfa935a6128fab3125c3ca4a5a8e3faee0cecdec3f6d24181",
+          "width": 1672,
+          "height": 941,
+          "bytes": 377607
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "construction-start-2026",
+      "slug": "construction-start",
+      "title": {
+        "vi": "Khởi công trong tháng 2 năm 2026",
+        "en": "Construction began in February 2026"
+      },
+      "body": {
+        "vi": "Chủ dự án cho biết ngày 7 tháng 10 năm 2026 rằng công trình đã khởi công trong tháng 2 năm 2026. Chưa cung cấp ngày khởi công cụ thể hoặc ảnh công trường đã xác minh.",
+        "en": "On 7 October 2026, the project owner reported that construction began during February 2026. The exact start day and verified site photographs have not been supplied."
+      },
+      "occurredOn": {
+        "precision": "month",
+        "value": "2026-02"
+      },
+      "occurredUntil": null,
+      "timeZone": "Asia/Ho_Chi_Minh",
+      "reportedAsOf": "2026-10-07",
+      "evidence": "owner-reported",
+      "evidenceRef": "owner-report-20261007",
+      "mediaIds": [],
+      "workPackageRef": null,
+      "designReleaseRef": null,
+      "publishedAt": "2026-10-08T11:48:24Z",
+      "updatedAt": "2026-10-08T11:48:24Z",
+      "status": "published",
+      "corrections": []
+    },
+    {
+      "id": "foundation-owner-report-2026",
+      "slug": "foundation-reported-complete",
+      "title": {
+        "vi": "Ghi nhận: móng đã hoàn thành, công trình đang tiếp tục",
+        "en": "Owner report: foundation complete, construction continuing"
+      },
+      "body": {
+        "vi": "Theo thông tin chủ dự án cung cấp đến ngày 7 tháng 10 năm 2026, phần móng đã hoàn thành và công trình đang tiếp tục. Ngày hoàn thành móng cụ thể chưa được xác nhận. Đây là thông tin được chủ dự án ghi nhận, không phải biên bản kiểm tra kết cấu hay xác nhận kích thước hoàn công.",
+        "en": "As of 7 October 2026, the project owner reported that the foundation was complete and construction was continuing. The exact foundation completion date is unknown. This owner report is not a structural inspection or verification of as-built dimensions."
+      },
+      "occurredOn": null,
+      "occurredUntil": null,
+      "timeZone": "Asia/Ho_Chi_Minh",
+      "reportedAsOf": "2026-10-07",
+      "evidence": "owner-reported",
+      "evidenceRef": "owner-report-20261007",
+      "mediaIds": [],
+      "workPackageRef": null,
+      "designReleaseRef": null,
+      "publishedAt": "2026-10-08T11:48:24Z",
+      "updatedAt": "2026-10-08T11:48:24Z",
+      "status": "published",
+      "corrections": []
+    }
+  ],
+  "retiredIds": []
+}

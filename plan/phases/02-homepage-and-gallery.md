@@ -1,6 +1,8 @@
 # Phase 02 — Public church homepage and gallery
 
-Status: **independent local software verified; G2 held and branch unmerged**, 8 October 2026, branch `web/02-homepage` from main `dd2538d`. Phase 01's local foundation passed. Parish review and media rights remain G0/G2 holds; [exact draft and content status](../../docs/web/public-content.md) stay outside application inputs. Read [data/publication rules](../data-and-publication.md) and [quality gates](../quality-and-release.md).
+**Owner update, 8 October 2026:** showing our project work is now authorized with permanent development/not-for-construction notes. The [selected public scope](../../docs/web/publication-permission.md) supersedes earlier blanket permission holds for that scope. Full parish-operation/real-host checks remain open; historical evidence is unchanged.
+
+Status: **independent local software verified; G2 held and branch unmerged**, 8 October 2026, branch `web/02-homepage` from main `dd2538d`. Phase 01's local foundation passed. Broader parish/operator review and rights outside the selected scope remain G0/G2 holds; the full private draft stays outside application inputs, while the narrower owner-authorized development release is included on `web/03-timeline`. See [current content status](../../docs/web/public-content.md). Read [data/publication rules](../data-and-publication.md) and [quality gates](../quality-and-release.md).
 
 ## Outcome
 
@@ -41,7 +43,7 @@ Suggested commit boundaries: approved content/manifests; homepage; accessible ga
 
 If real photos are not cleared, a text-and-design release may be prepared, but label the real-photo requirement as incomplete. Keep placeholders and stock images out of the construction record. Pass event/media IDs and public components to phase 03; launch only after the relevant phase 07 gate.
 
-## Execution handover — 8 October 2026
+## Historical handover before display permission — 8 October 2026
 
 Completed independent work: private bilingual narrative draft (`dec7a73`), private derivative generation/build byte safeguards (`ce692c3`), and the containing commit's bilingual gallery/narrative presentation. The real application still has an unpublished pointer, `null` release and zero cleared public images. A separate synthetic test app exercises image categories/dates, keyboard enlargement/focus return, failures, escaped content and no-JavaScript access; the production reader always rejects fixtures.
 

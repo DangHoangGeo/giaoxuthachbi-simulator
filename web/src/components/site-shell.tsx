@@ -27,7 +27,8 @@ export function SiteShell({
       </a>
       <header>
         <div className="border-b border-stone-300 bg-stone-100 px-8 py-2 text-center text-xs tracking-wide">
-          {publishedAt ? galleryWords[locale].published : copy.preview}
+          <p className="font-semibold">{copy.development}</p>
+          <p className="mx-auto mt-1 max-w-4xl leading-relaxed">{copy.developmentDetail}</p>
         </div>
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 border-b border-stone-300 px-8 py-7">
           <a className="text-xl font-semibold tracking-tight" href={localizedPath(locale)}>
