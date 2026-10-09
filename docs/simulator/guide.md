@@ -513,3 +513,9 @@ At the owner's request the viewer now has a sky: blue overhead, paling to a ligh
 - Drawing views (elevations and roof plan) look along the horizon or straight down, so they keep a plain pale ground.
 - **Wiring → Systems only** hides the dome with the rest of the building and shows the plain horizon colour.
 - The sky does not represent a time of day, a season or the site's real surroundings.
+
+## Public visit mode · 10 October 2026
+
+Adding `?visit` to the address (`OPEN_CHURCH.html?visit`) opens the viewer as the website shows it. The Simulator button and panel are hidden and cannot be opened, so nothing can be added, moved or deleted. The viewer always shows the recommended design: it does not load the layout saved in this browser and does not change it. Explore, Walk, Discover, day and evening, the Controls dock, the films and the estimate read-outs work as usual, and a “Design in development · Not for construction” notice stays on screen.
+
+The website copies the viewer files unchanged and opens them in this mode; see [the website viewer document](../web/viewer.md). Check a viewer change in this mode too before it is merged, because it reaches the public website.

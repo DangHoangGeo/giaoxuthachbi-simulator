@@ -1,5 +1,7 @@
 # Local web development
 
+**Update, 10 October 2026:** the 3D visit now embeds the project's own viewer and the private review increment is retired; see [the viewer document](viewer.md) and [access control](access-control.md). `npm run dev` and `npm run build` first run `scripts/prepare-viewer.mjs`, which copies `../Thach_Bi_Viewer` into the ignored folder `web/public/viewer/`, and the build runs `npm run check:viewer` to confirm that copy equals the source. `three`, `@types/three` and `@vercel/blob` are no longer dependencies. The paragraph below is the earlier status.
+
 Current work is the owner-authorized desktop development preview with the phase-05 private increment on `web/05-protected-review`: a visual homepage, sixteen-image gallery, owner-reported timeline and lightweight 3D visit. See [publication scope](publication-permission.md), [viewer/sharing profiles](viewer.md) and [current evidence](../../review/web-visit-2026-10-08/README.md). The GitHub-connected hosting project is confirmed; the shared-password full-detail preview is described in [access controls](access-control.md), with deployment verification recorded separately. Original sources and engineering records stay outside the application.
 
 ## Runtime and commands

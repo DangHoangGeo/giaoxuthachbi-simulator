@@ -19,6 +19,11 @@ const forbidden = [
   ["synthetic-gallery-credit", "Synthetic test generator; no parish image"],
   ["private-test-fixture", "tests/fixtures/private-canary.json"],
 ].map(([label, value]) => [label, Buffer.from(value)]);
+const sourceDirectoryMarkers = new Set([
+  "legacy-viewer-directory",
+  "engineering-source-directory",
+  "dimension-source-directory",
+]);
 
 async function inspect(file) {
   const actual = await realpath(file);
@@ -36,7 +41,14 @@ async function inspect(file) {
   }
   const buffer = await readFile(actual);
   bytes += buffer.length;
+  // The published viewer copy is the project's own public source, so its files may
+  // name repository directories. Application code may not, and canaries apply everywhere.
+  const viewerCopy = relative
+    .split(path.sep)
+    .join("/")
+    .startsWith(".next/standalone/public/viewer/");
   for (const [label, needle] of forbidden) {
+    if (viewerCopy && sourceDirectoryMarkers.has(label)) continue;
     if (buffer.includes(needle)) failures.push(`${label}: ${relative}`);
   }
   if (file.endsWith(".nft.json")) {

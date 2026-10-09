@@ -1,6 +1,6 @@
 # Phase 04 — Lightweight virtual church visit
 
-Status: **in progress; G4 remains open and branch unmerged**. The desktop development visit and separate full-detail sharing export are implemented; see [delivery/profile](../../docs/web/viewer.md) and [checks/evidence](../../review/web-visit-2026-10-08/README.md). Depends on phase 01 and the public-model approval from phase 00. Can proceed while phase 03 content is being collected. Read [architecture](../architecture.md) and [performance/verification criteria](../quality-and-release.md).
+Status: **approach changed by owner decision, 10 October 2026; G4 remains open.** The exported lightweight model is replaced by the project's own viewer in visit-only mode ([delivery](../../docs/web/viewer.md), [checks](../../review/web-public-viewer-2026-10-10/README.md)). Measurement on the parish computer and network is still open. Earlier status: **in progress; G4 remains open and branch unmerged**. The desktop development visit and separate full-detail sharing export are implemented; see [delivery/profile](../../docs/web/viewer.md) and [checks/evidence](../../review/web-visit-2026-10-08/README.md). Depends on phase 01 and the public-model approval from phase 00. Can proceed while phase 03 content is being collected. Read [architecture](../architecture.md) and [performance/verification criteria](../quality-and-release.md).
 
 ## Outcome
 
