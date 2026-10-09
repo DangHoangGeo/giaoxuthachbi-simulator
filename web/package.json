@@ -9,8 +9,8 @@
   },
   "packageManager": "npm@10.9.9",
   "scripts": {
-    "dev": "node scripts/prepare-viewer.mjs && next dev --hostname 127.0.0.1",
-    "build": "node scripts/prepare-viewer.mjs && npm run check:content && npm run check:media && npm run check:viewer && next build && node scripts/prepare-standalone.mjs",
+    "dev": "node scripts/prepare-viewer.mjs && node scripts/prepare-guide.mjs && next dev --hostname 127.0.0.1",
+    "build": "node scripts/prepare-viewer.mjs && node scripts/prepare-guide.mjs && npm run check:content && npm run check:media && npm run check:viewer && npm run check:guide && next build && node scripts/prepare-standalone.mjs",
     "start": "node scripts/start.mjs",
     "lint": "biome check . --error-on-warnings",
     "typecheck": "next typegen && tsc --noEmit",
@@ -20,6 +20,7 @@
     "format": "biome check . --write",
     "check:media": "node scripts/check-media.mjs",
     "check:viewer": "node scripts/check-viewer.mjs",
+    "check:guide": "node scripts/check-guide.mjs",
     "check:content": "node scripts/check-content.ts"
   },
   "dependencies": {

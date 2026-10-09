@@ -17,6 +17,8 @@ node_modules/
 /web/out/
 # Build-time copy of Thach_Bi_Viewer for the 3D visit page (web/scripts/prepare-viewer.mjs)
 /web/public/viewer/
+# Build-time copy of docs/guides/father-quick-start (web/scripts/prepare-guide.mjs)
+/web/public/guide/
 /web/dist/
 *.tsbuildinfo
 
@@ -51,3 +53,6 @@ __pycache__/
 # Curated evidence under review/ (READMEs, verification JSON, logs, screenshots) stays trackable.
 review/*/exports/baseline/
 review/*/exports/registers/
+
+# Narrated quick-start video; only its small HTML guide, images, narration and clips are tracked.
+/docs/guides/father-quick-start/*.mp4
