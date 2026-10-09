@@ -250,7 +250,12 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   SIM.importLayout(layout, { record: false });
   assert.equal(SIM.state.settings.sanctuaryRevision, D.sanctuaryRevision);
   // Night balance of the sanctuary centre (direct, maintained; "Full service · evening").
-  // The picture is exposed for 110 lux by default: a surface near twice that level still shows
+  // Evening picture exposure: 160 lux by default since 9 October 2026 (the nave is lit to about 310 lux
+  // on the book, and at 110 the whole view burned out). Display only. The limits below were set for
+  // the earlier 110 lux and are kept as they are, so the lamps themselves are not allowed to rise.
+  assert.equal(SIM.state.settings.adaptLux, 160, 'default evening exposure');
+  assert.equal(SIM.state.settings.eveningExposureRevision, '2026-10-09-evening-160', 'evening exposure revision is kept in the saved settings');
+  // At 110 lux a surface near twice that level still shows
   // its colour, while the 560 lux that stood on the blue recess before washed it out.
   const em = SIM.emitters(), occ = SIM.GEO.occluders, mf = SIM.state.settings.maintenance;
   const lux = (p, n) => P.illuminance(p, n, em, occ) * mf, back = [-1, 0, 0];

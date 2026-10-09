@@ -16,6 +16,8 @@ Taken in the local desktop viewer (`OPEN_CHURCH.html` served from `Thach_Bi_View
 | [sanctuary-evening-red-and-gold.jpg](sanctuary-evening-red-and-gold.jpg) | The same view in the evening lighting state. |
 | [altar-and-chairs-day.jpg](altar-and-chairs-day.jpg) | Altar, gilded emblem, chairs and flower stand. Taken before the satin red was toned by 0.84 and before the flower stands were changed: the chairs are a little brighter here than in the final source. |
 | [detail-face-before-recolour.jpg](detail-face-before-recolour.jpg), [detail-hand-before-recolour.jpg](detail-hand-before-recolour.jpg), [detail-feet-before-recolour.jpg](detail-feet-before-recolour.jpg) | Close views of the carving. The figure is as in the final source except for a smaller ankle joint and thumb; the cross is still brown in these three. |
+| [evening-entrance-before-110-lux.jpg](evening-entrance-before-110-lux.jpg), [evening-entrance-after-160-lux-matt-cross.jpg](evening-entrance-after-160-lux-matt-cross.jpg) | Follow-up of the same day: the evening view from the entrance before and after the matt satin finish and the 160 lux evening exposure. |
+| [evening-sanctuary-before-110-lux.jpg](evening-sanctuary-before-110-lux.jpg), [evening-sanctuary-after-160-lux-matt-cross.jpg](evening-sanctuary-after-160-lux-matt-cross.jpg) | The same from the front of the nave. [crucifix-evening.jpg](crucifix-evening.jpg) and [sanctuary-evening-red-and-gold.jpg](sanctuary-evening-red-and-gold.jpg) above show the state before this follow-up. |
 
 Not captured: the wings and shrines, views from the wing benches, the evening view with a night sky, and final close views with the red cross.
 
@@ -41,6 +43,8 @@ Read from the rendered day view with `gl.readPixels` (9 × 9 pixel means, sRGB),
 | `node scripts/verify_simulator.cjs --report --estimates` | calculation checks passed (including the carved-ornament clash check against fittings); unmet design targets unchanged: feedback margins 0.9 / 1.3 dB, 11 % of seats below 200 lux, 65 % of seats at STI ≥ 0.60 |
 | `node scripts/verify_cinematic.cjs` | passed: 19 scenes, path, scene and score checks |
 | `git diff --check` | clean |
+
+Follow-up (evening view): `verify_model` (matt satin assertion), `verify_estimates`, `verify_simulator --report --estimates` (default evening exposure 160 lux asserted; unmet design targets unchanged), the electrical export, the register workflow and `build_electrical_safety_review.py --check` passed again; the layout export changes only in its saved settings.
 
 Not run: the `*_browser` checks (Playwright is not installed on this machine). `verify_wing_revision`, `verify_wing_review` and `verify_wing_sound` still fail on their fixed 320-item inventory, as before this change.
 

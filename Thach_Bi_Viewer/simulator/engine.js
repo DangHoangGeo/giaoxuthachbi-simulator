@@ -84,12 +84,16 @@
     fast: { points: 4, spots: 6, shadows: 2, label: 'Fast · lighter rendering' }
   };
 
+  // Evening picture exposure. 110 lux suited the earlier, dimmer nave; with about 310 lux on the
+  // book the whole evening view burned out and the sanctuary was hard to read from the entrance
+  // (owner, 9 October 2026). Display only: no lamp, lux value or analysis depends on it.
+  const EVENING_ADAPT_LUX = 160, EVENING_ADAPT_BEFORE = 110, EVENING_EXPOSURE_REVISION = '2026-10-09-evening-160';
   const defaults = () => ({
-    adaptLux: 110, autoExposure: false, quality: 'fast', autoQuality: true, maintenance: 0.8, halos: 1,
+    adaptLux: EVENING_ADAPT_LUX, autoExposure: false, quality: 'fast', autoQuality: true, maintenance: 0.8, halos: 1,
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -1904,7 +1908,8 @@
     const p = camera.position;
     const insideTarget = roofOff || (isCovered([p.x, p.y, p.z]) && p.y < 12.6 && p.y > -0.6) ? 1 : 0;
     cameraInside += (insideTarget - cameraInside) * Math.min(1, dt * 3 || 1);
-    let target = envMode === 'day' ? Math.max(900, s.adaptLux * 11) : s.adaptLux;
+    // The day picture keeps its exposure: 1 210 lux at the default evening setting, as before.
+    let target = envMode === 'day' ? Math.max(900, s.adaptLux * 1210 / EVENING_ADAPT_LUX) : s.adaptLux;
     if (s.autoExposure && envMode === 'evening') {
       const local = SIM.analysis?.sampleLux?.(p.x, p.z);
       target = local ? P.clamp(local * 0.75, 20, 900) : (cameraInside > 0.5 ? s.adaptLux : 30);
@@ -2298,6 +2303,11 @@
       }
     }
 
+    // A saved evening exposure still at the old default moves once; any other chosen value is kept.
+    if (state.settings.eveningExposureRevision !== EVENING_EXPOSURE_REVISION) {
+      if (loaded && state.settings.adaptLux === EVENING_ADAPT_BEFORE) state.settings.adaptLux = EVENING_ADAPT_LUX;
+      state.settings.eveningExposureRevision = EVENING_EXPOSURE_REVISION;
+    }
     if (state.settings.stableLightingRevision !== '2026-10-06-physical-lighting') {
       state.settings.autoExposure = false;
       state.settings.stableLightingRevision = '2026-10-06-physical-lighting';

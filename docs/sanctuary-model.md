@@ -32,7 +32,7 @@ The cross, corpus, altar and tabernacle remain real geometry. Building grids and
 
 ## Lighting (circuit L3), lowered for the night view
 
-At night the centre was bright enough to wash out its own colours. The evening picture is exposed for 110 lux (*Settings → Eye adaptation*). A surface lit to about twice that level still shows its colour; at four or five times it burns out towards white. The blue recess stood at 560 lux in all and the corpus at 780, against about 250 lux in the nave. The output of the sanctuary fittings is now lower, most of all inside the chamber, and the reredos washes are tighter and aimed outside the niche.
+At night the centre was bright enough to wash out its own colours. The evening picture was exposed for 110 lux at that time (*Settings → Eye adaptation*; the default is 160 lux since 9 October 2026, see [Evening view from the entrance](#evening-view-from-the-entrance--9-october-2026)). A surface lit to about twice that level still shows its colour; at four or five times it burns out towards white. The blue recess stood at 560 lux in all and the corpus at 780, against about 250 lux in the nave. The output of the sanctuary fittings is now lower, most of all inside the chamber, and the reredos washes are tighter and aimed outside the niche.
 
 Direct maintained illuminance from the simulator's photometry (maintenance factor 0.8), scene “Full service · evening”. The whole-room inter-reflected estimate adds about 64 lux everywhere.
 
@@ -95,7 +95,7 @@ The chamber walls, the lined back wall with its niche opening, the niche reveals
 - The two stone planters at the front corners of the dais, which were there before, stand between 11 wing seats on each side and the centre of the altar.
 - The ambo microphone's feedback margin fell from 1.5 to 1.2 dB with the ambo nearer the nave loudspeakers. It was already below the 3 dB the checks ask for.
 - With less light in the sanctuary, less is reflected back into the nave (about 5 lux). Four seats at the ends of the last row now calculate at 197 lux, where 200 is the aim and they had 201. The lamp that serves the outer two is already at full output; one more small fitting on the entrance wall would restore them.
-- The night levels above suit the default exposure of 110 lux. If *Eye adaptation* is set higher the whole picture darkens and the centre can take more light again.
+- The night levels above were set for an exposure of 110 lux and are unchanged. The default exposure is now 160 lux, which shows them with more colour. If *Eye adaptation* is set higher still the whole picture darkens and the centre can take more light again.
 - Lux values are direct light from the planning photometry. Real lacquer and gilding are glossy: check glare and reflections on a sample before fixing lamp outputs.
 
 ## Validation
@@ -151,10 +151,32 @@ The corpus is carved natural wood, its hair, beard and crown a darker tone of th
 1. The cross, the sanctuary chairs and the ambo desk carried the general brown joinery finish of the building model.
 2. The flat boards round the crucifix niche (canopy, arch silhouette and niche reveal) carried the polished column lacquer. On a flat board seen at a glancing angle its clear coat mirrors the daylight and its long grain is stretched, so the red washed out to a brown rosewood tone.
 
-These parts now take **“oxblood lacquer, satin”**: the same owner-selected red (`#853125`, toned by 0.84 because the polished finish is darkened by its grain map), less polished and without the grain. It covers the cross and its stepped base, the three niche boards, the chair frames and the ambo desk. The round columns, beams and wall linings keep the polished lacquer unchanged. The small cross emblems on the altar, ambo and tabernacle are gilded, the chair cushions are crimson, and the two flower stands beside the tabernacle are red lacquer. Rendered samples in the day view (sRGB, 9 × 9 pixels): column shafts 91–110 / 42–45 / 42–43, cross 122 / 53 / 42, niche arch board 109 / 60 / 36. These are screen colours of a display finish, not measured reflectance or a paint specification.
+These parts now take **“oxblood lacquer, satin”**: the same owner-selected red (`#853125`, toned by 0.84 because the polished finish is darkened by its grain map), less polished and without the grain (roughness 0.62 and a thin 0.12 clear coat since the evening correction below). It covers the cross and its stepped base, the three niche boards, the chair frames and the ambo desk. The round columns, beams and wall linings keep the polished lacquer unchanged. The small cross emblems on the altar, ambo and tabernacle are gilded, the chair cushions are crimson, and the two flower stands beside the tabernacle are red lacquer. Rendered samples in the day view (sRGB, 9 × 9 pixels): column shafts 91–110 / 42–45 / 42–43, cross 122 / 53 / 42, niche arch board 109 / 60 / 36. These are screen colours of a display finish, not measured reflectance or a paint specification.
 
 The approved concept shows the cross in natural honey-coloured wood. The red cross is a departure from that picture made on the owner's instruction; the concept image itself is unchanged. The terracotta plant pots, the altar book, the upholstery of the nave and the church doors were left as they were.
 
-**Light and analysis.** No lamp, switch, circuit or route changed. The corpus is not an occluder or a receiver in the light, sound or air analysis, so the lighting table above is unchanged; its head and feet values were calculated at the earlier proxy's points (head centre +5.83 m, feet +4.09 m), while the new head centre is at about +5.73 m and the toes at about +3.82 m. By evening the two 700 lm accents fall on a lighter cross than before; the picture is in the evidence folder, and the balance has not been retuned.
+**Light and analysis.** No lamp, switch, circuit or route changed. The corpus is not an occluder or a receiver in the light, sound or air analysis, so the lighting table above is unchanged; its head and feet values were calculated at the earlier proxy's points (head centre +5.83 m, feet +4.09 m), while the new head centre is at about +5.73 m and the toes at about +3.82 m. By evening the two 700 lm accents fall on a lighter cross than the earlier brown one; this is corrected in the next section without changing a lamp.
 
 Evidence: [review/sanctuary-corpus-2026-10-09](../review/sanctuary-corpus-2026-10-09/README.md).
+
+## Evening view from the entrance · 9 October 2026
+
+Owner, 9 October 2026: at night the sanctuary looks a little too bright, and from the entrance it is hard to see. Two causes were found in the picture, not in the lamps:
+
+1. **Sheen on the new red cross.** The satin lacquer was given roughness 0.40 with a 0.30 clear coat. Under the two crucifix accents its broad highlight alone rendered as a pale salmon (116 / 94 / 60 with the colour set to black), so the cross lost its red and merged with the lit recess and the pale corpus. The finish is now matt: roughness 0.62, clear coat 0.12. By day it is unchanged in hue and slightly deeper (cross 106 / 36 / 30 against column shafts 91–110 / 42–45 / 42–43).
+2. **Evening exposure.** The picture was exposed for 110 lux while the full evening service lights the seats to about 312 lux on the book (mean of 368 seats) and the crucifix to 244 lux, so the nave floor, the walls and the centre of the sanctuary all burned out towards white. The default *Eye adaptation (evening)* is now **160 lux**. A saved setting still at the old default of 110 moves to 160 once; any other value a user has chosen is kept. The day picture keeps its exposure (1,210 lux).
+
+No lamp, output, aim, switch or circuit changed; the lighting table above and every analysis result are the same. The exposure is a display setting: screen brightness is not a lux measurement and says nothing about glare or adaptation on site.
+
+Rendered samples from the entrance (camera at X 4.5, eye 1.65 m, evening lighting state, sRGB, 5 × 5 pixel means):
+
+| Surface | Before (110 lux, sheen) | After (160 lux, matt) |
+| --- | --- | --- |
+| Cross upright | 230 / 180 / 134 | 193 / 95 / 58 |
+| Corpus chest | 250 / 233 / 196 | 246 / 222 / 172 |
+| Blue recess, side | 176 / 217 / 226 | 146 / 200 / 212 |
+| Blue recess, centre glow | 241 / 243 / 239 | 233 / 236 / 231 |
+| Column 10/D | 165 / 88 / 63 | 136 / 67 / 47 |
+| Nave floor | 242 / 238 / 232 | 235 / 230 / 220 |
+
+Still pale after the change: the glow in the centre of the recess and the corpus in front of it, both lit to about 244 lux by the accents. If the crucifix should stand out more strongly at night, the next step is a lighting decision (lower accents or a deeper recess centre) for the lighting designer and the owner, with a mock-up on site.

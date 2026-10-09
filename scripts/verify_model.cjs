@@ -347,6 +347,7 @@ assert(bounds(corpus).min.x>niche.mouthX+.3&&bounds(cross).min.x>niche.mouthX+.3
     for(const o of nodes.filter(o=>o.isMesh&&o.name===name))assert.equal(o.material.name,'Sanctuary · oxblood lacquer, satin',`${name} is red lacquer`);
   const satin=cross.material,polished=shafts[0].material;
   assert(satin.color.r>2.2*satin.color.g&&satin.color.r>2.2*satin.color.b&&!satin.map&&satin.clearcoat<polished.clearcoat,'satin lacquer is the column red without the mirror coat');
+  assert(satin.roughness>=.55&&satin.clearcoat<=.15,'satin lacquer stays matt: no pale sheen on the cross under the evening accents');
   assert(!nodes.some(o=>o.isMesh&&o.material?.name==='Proposed dark-stained timber joinery'&&bounds(o).min.x>S.frameX-4&&bounds(o).max.x<niche.endX&&Math.abs((bounds(o).min.z+bounds(o).max.z)/2)<7.3),'no brown joinery left in the sanctuary');
 }
 near(Math.max(...nodes.filter(o=>o.name==='Crucifix base step').map(o=>bounds(o).max.y)),bounds(cross).min.y+.02,'Cross stands on its stepped base');

@@ -1,19 +1,19 @@
 {
  "schema": 1,
  "status": "DERIVED / CONCEPT / ENGINEERING HOLD · comparison screens only",
- "model_git_revision": "e79da667a0b6b205e0e080b45d995d342ce3fcdd",
+ "model_git_revision": "7c2fb30cd443c52a5b27c61392466553db3c44cc",
  "source_sha256": {
   "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
   "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
   "Thach_Bi_Viewer/references.js": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
   "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
   "Thach_Bi_Viewer/carving.js": "5624bd11c10c1c75a0c80a4f2b9612652664e6592eceff0d8a6ac6c5c70c1367",
-  "Thach_Bi_Viewer/sanctuary.js": "760ca3b1c2989ae78a1270d738589bc8a36f09afc0f808362684778a0f22de34",
+  "Thach_Bi_Viewer/sanctuary.js": "bb3bd18a65f2200d40df0939a37d815db05a99f2d17142a2e13c1489b6b3e2ac",
   "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
   "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
   "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
   "Thach_Bi_Viewer/simulator/catalog.js": "c34f71219af9765b1ecbd0b51f0839579119ed3b0e446a3c365bb24688a9cc5b",
-  "Thach_Bi_Viewer/simulator/engine.js": "0cf80a42cb05237771b388b7c0a81c163384c7fd4e07a4485242621a7602604a",
+  "Thach_Bi_Viewer/simulator/engine.js": "6d7c431a7d15727afad9871866b5dc4c4f7b2e3f63f55ee95259d41be1a91bb9",
   "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
   "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
   "Thach_Bi_Viewer/simulator/design.js": "d30e2a9daeeae39c96a84030a83a15bb2c15f63a0b9f66cc9d59df5d0d830e1e",
@@ -24,8 +24,8 @@
   "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
   "scripts/export_electrical_loads.cjs": "066af5453cb3e782abe4cfaf585b6cd9b04ebafad050e18c73615e7ca6fdca2b",
   "docs/electrical-grid/electrical-systems.json": "e25c59374b1948a67cdb0ee5bed0beb9884da65931cb92b8dc2af738d4ae1e28",
-  "docs/electrical-grid/equipment-layout.json": "e8b0d45e0c5518ca0cc64c1fa511adc8ba03ba31bef6d46426ff3c0c3e699bab",
-  "docs/electrical-grid/categories/manifest.json": "ca1d767588ff243acbe044aef62667590f10b7a2b45c568585d38cf9c8ae80af"
+  "docs/electrical-grid/equipment-layout.json": "0a6cf2aa5294b46ad1ca267ef78dada74d793fdb4a83f39e392746594b74ba7c",
+  "docs/electrical-grid/categories/manifest.json": "c11d5df9734afb51211e6a1b211e4da5ff6518d1bbc54e0a3f3a29dccb751515"
  },
  "default_scene": "Full service · evening",
  "assumptions": {

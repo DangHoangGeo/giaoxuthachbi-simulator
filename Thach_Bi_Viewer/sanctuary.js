@@ -41,7 +41,9 @@
     // coat on a flat board mirrors the daylight at a glancing angle, and with the long grain it
     // read as brown wood beside the red columns (owner, 9 October 2026: the sanctuary is red and gold).
     // The polished lacquer is darkened a little by its grain map; the plain satin coat is toned to match it.
-    const satin=new T.MeshPhysicalMaterial({color:new T.Color(LACQUER).multiplyScalar(SATIN_TONE),roughness:.4,clearcoat:.3,clearcoatRoughness:.35,envMapIntensity:.45});satin.name='Sanctuary · oxblood lacquer, satin';
+    // It is kept matt enough that the crucifix accents do not raise a pale sheen on the cross at night:
+    // at roughness .4 the highlight alone read as salmon and the cross was lost against the lit recess.
+    const satin=new T.MeshPhysicalMaterial({color:new T.Color(LACQUER).multiplyScalar(SATIN_TONE),roughness:.62,clearcoat:.12,clearcoatRoughness:.5,envMapIntensity:.45});satin.name='Sanctuary · oxblood lacquer, satin';
     const velvet=material('Sanctuary · crimson upholstery','#7c1f24',0,.82);
     window.CHURCH_SANCTUARY.materials={wood,gold,carve,satin};
     building.getObjectByName('Proposed sanctuary furnishings \u2014 layout to confirm')?.traverse(o=>{

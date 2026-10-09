@@ -2,10 +2,10 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-09T04:54:03.663Z",
+  "savedAt": "2026-10-09T06:49:14.923Z",
   "scene": "Full service · evening",
   "settings": {
-    "adaptLux": 110,
+    "adaptLux": 160,
     "autoExposure": false,
     "quality": "fast",
     "autoQuality": true,
@@ -46,7 +46,8 @@
     "wingArtRevision": "2026-10-09-wing-peter-paul-concept-1",
     "naveFanRevision": "2026-10-09-eight-wall-fans-per-side",
     "outletRevision": "2026-10-09-socket-outlets-1",
-    "facadeStatueRevision": "2026-10-09-facade-statues-3-concealed-light-candles"
+    "facadeStatueRevision": "2026-10-09-facade-statues-3-concealed-light-candles",
+    "eveningExposureRevision": "2026-10-09-evening-160"
   },
   "customScenes": [],
   "items": [
