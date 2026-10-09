@@ -14,6 +14,7 @@ This folder is the home for that work:
 - [Socket outlets, façade statues and their light: positions, basis and holds](../engineering/outlets-and-facade-statues.md)
 - [Register fields, refresh and Excel position proposals](register.md)
 - [Conditional route-load/cable review and confirmation questions](cable-load-review.md)
+- [Walk-round safety and efficiency review: zones, circuit screens, supply scenarios and energy](safety-efficiency-review.md)
 - [Japanese supplier shortlist and separate budget review](../budget/README.md)
 - [Matching simulator layout JSON](equipment-layout.json)
 - [Systems JSON: sources, routes, equipment and quantities](electrical-systems.json)
@@ -39,7 +40,7 @@ The local offline HTML viewer implements selectable 2D/3D routes, circuit and it
 
 Exports regenerated on **9 October 2026** for the [socket-outlet and façade-statue issue](../engineering/outlets-and-facade-statues.md): **317 connected components, 370 selectable routes and 2,928 vertices**. The preceding `7216da8` snapshot ([eight-per-side nave fan review](../engineering/nave-wall-fans.md), retaining the [held wing review](../engineering/wing-review.md)) had 296 components, 343 routes and 2,779 vertices; `614222c` had 286, 333 and 2,749. The routing revision remains `2026-10-07-concealed-1`; it names the route method, not the latest equipment issue. Feeds follow wall bands, roof lining/covered soffits and beam tops; microphones return below the floor. See the [routing basis and installation holds](routing.md#concealment-revision-7-october-2026). Saved browser edits form a separate configuration.
 
-The six category registers include **359 current equipment/enclosure records** (354 simulator items plus five enclosures), including hidden alternatives and non-electrical furnishings. Socket outlets and their P1–P4 routes are owned by distribution-controls. Ten retired equipment IDs, fourteen retired routes and46vertices remain preserved. Every file has matching Equipment, Electrical Lines and Route Points sheets plus Read me. Keep them and the [summary](summary-report.md) coordinated using the [register workflow](register.md).
+The six category registers include **359 current equipment/enclosure records** (354 simulator items plus five enclosures), including hidden alternatives and non-electrical furnishings. Socket outlets and their P1–P4 routes are owned by distribution-controls. Ten retired equipment IDs, 21 retired routes and 100 retired vertices remain preserved; seven of those routes are the earlier LC-1 origins of the E1 exit-sign routes, which leave DB-1 directly since the [walk-round review](safety-efficiency-review.md) of 9 October 2026 (same 370 routes and 2,928 vertices; drawn length 5,008.066 m). Every file has matching Equipment, Electrical Lines and Route Points sheets plus Read me. Keep them and the [summary](summary-report.md) coordinated using the [register workflow](register.md).
 
 
 Run from the repository root:
@@ -47,9 +48,11 @@ Run from the repository root:
 ```sh
 node scripts/verify_simulator.cjs --electrical --export-electrical
 node scripts/build_equipment_register.mjs --verify-workflow
+python3 scripts/build_electrical_safety_review.py
+python3 scripts/build_electrical_safety_review.py --check
 ```
 
-The first command checks the implemented electrical route layer and writes layout JSON, systems JSON and the CSV into this folder. The second refreshes all six category workbooks and the summary while preserving engineering-input values by ID. These checks do not verify every control interaction or certify installation design. Keep physical-control addresses, final cable sizes, protection and product selections pending until designed and checked. Update this baseline note when regenerating from a changed design.
+The first command checks the implemented electrical route layer and writes layout JSON, systems JSON and the CSV into this folder. The second refreshes all six category workbooks and the summary while preserving engineering-input values by ID. The third command rebuilds the [safety and efficiency review](safety-efficiency-review.md) and its evidence from the same model (Python 3 standard library only); `--check` recomputes it and fails when the saved result no longer matches the model. These checks do not verify every control interaction or certify installation design. Keep physical-control addresses, final cable sizes, protection and product selections pending until designed and checked. Update this baseline note when regenerating from a changed design.
 
 ## Printable review set and 3D installation planning
 

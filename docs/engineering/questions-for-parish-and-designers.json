@@ -434,6 +434,24 @@
       "evidence": "Mẫu hoặc bản vẽ của nhà điêu khắc, mẫu màu sơn son và thếp vàng xem tại chỗ dưới ánh sáng ngày và đèn, tính toán neo và trọng lượng, phương án lắp đặt và bảo trì ở cao độ +3,4 đến +6,8 m",
       "blocks": "Tượng trong mô hình là hình tạo sinh để xem bố cục; không xác định kích thước, vật liệu, liên kết hay tải trọng",
       "answer": null
+    },
+    {
+      "id": "Q48",
+      "discipline": "Âm thanh / điện",
+      "owner": "Thiết kế âm thanh / kỹ sư điện",
+      "question_vi": "Dây loa đi chung dải tường với cáp đèn, quạt và cáp cấp DB-2 (mô hình: 632 m trong 720 m tuyến loa nằm cách tuyến điện lực dưới 0,30 m; 262 m trùng tuyến). Loa dùng đường 100 V hay trở kháng thấp? Dây loa và cáp điện lực được tách ngăn, tách ống hay dùng cáp có cách điện phù hợp điện áp bên cạnh thế nào?",
+      "evidence": "Sơ đồ khuếch đại và loại đường loa, loại cáp và cấp cách điện, chi tiết máng/ống có vách ngăn, yêu cầu tách tuyến theo tiêu chuẩn áp dụng",
+      "blocks": "Chi tiết máng ống ở hai dải tường lòng nhà thờ, hệ số đi chung khi chọn tiết diện cáp, nhiễu và an toàn của tuyến loa",
+      "answer": null
+    },
+    {
+      "id": "Q49",
+      "discipline": "Vận hành / chiếu sáng",
+      "owner": "Cha xứ / thiết kế chiếu sáng / kỹ sư điện",
+      "question_vi": "Đèn ngoài nhà (mặt tiền và tháp L6 919 W, sân khấu và cửa chính L9, tượng mặt tiền L10, hành lang L4, bậc và lối đi L5) bật những giờ nào ngoài giờ lễ? Có dùng công tắc thời gian, giờ tắt muộn và mức giảm sáng ban đêm không?",
+      "evidence": "Lịch vận hành mong muốn theo ngày thường, Chúa nhật và lễ trọng; yêu cầu an ninh ban đêm; thiết bị hẹn giờ/điều khiển được chọn",
+      "blocks": "Ước tính điện năng cả năm (mô hình: riêng L6, L9, L10 bật 4 giờ mỗi đêm khoảng 1.826 kWh/năm), thiết kế điều khiển DB-2 và chế độ nhanh",
+      "answer": null
     }
   ]
 }

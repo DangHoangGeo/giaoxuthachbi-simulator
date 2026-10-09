@@ -293,7 +293,9 @@
         add({ id: `local:${it.id}`, name: `L3 → ${it.name}`, source: 'LC1', board: 'DB1', circuit: 'L3', kind: 'light', role: 'local', itemIds: [it.id], color: COLORS.light, method: 'service-ceiling', installation: 'Wall riser beside niche; containment above ceiling top +4.27 m; panel cable entry pending structural coordination.' }, servicePanelRoute(it));
         continue;
       }
-      const source = audio ? 'AV1' : SIM.CIRCUITS[it.circuit]?.board === 'DB2' ? 'DB2' : t.fan ? 'FC1' : t.light ? 'LC1' : 'DB1';
+      // Exit signs leave DB-1 on their own way: a life-safety function must not depend on the
+      // lighting and scene-control enclosure (electrical walk-round review, 9 October 2026).
+      const source = audio ? 'AV1' : SIM.CIRCUITS[it.circuit]?.board === 'DB2' ? 'DB2' : it.circuit === 'E1' ? 'DB1' : t.fan ? 'FC1' : t.light ? 'LC1' : 'DB1';
       const kind = t.mic ? 'mic' : audio ? 'audio' : t.fan ? 'fan' : t.outlet ? 'power' : t.cat === 'decor' ? 'decor' : 'light';
       const feeds = [{ source, kind, audio }];
       if (t.speaker?.active) feeds.push({ source: 'DB1', kind: 'feeder', audio: false });

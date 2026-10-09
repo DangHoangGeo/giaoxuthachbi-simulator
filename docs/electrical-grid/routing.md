@@ -132,3 +132,9 @@ The [coordinated record](../engineering/outlets-and-facade-statues.md) owns posi
 - **Review layers.** *Socket outlets* is a new system choice in **Wiring → Review layers**. The nine-stage walkthrough is unchanged: outlets appear in its all-system steps.
 
 The three façade statues are unpowered decoration records without routes.
+
+## Exit signs from DB-1 and the walk-round review · 9 October 2026
+
+The [walk-round safety and efficiency review](safety-efficiency-review.md) found the five exit signs routed from LC-1 like ordinary lighting. A life-safety function should not depend on the lighting and scene-control enclosure, so the E1 trunks and drops now start at DB-1 (`trunk:DB1:E1:light:±1`, five `drop:DB1:E1:…`). They follow the same wall bands; the sign positions and the 15 W group are unchanged. Drawn E1 length is 145.936 m (was 147.736 m). The seven earlier route IDs are retired in the exit-signs register. Protection, the emergency supply, its duration and emergency escape lighting remain undesigned (Q14).
+
+The same review measured route sharing from the model centre lines: 632 m of the 720 m of loudspeaker route lies within 0.30 m of a mains route (262 m on the same line), because the loudspeaker trunks follow the wall bands of the lighting trunks and the DB-2 feeder, while the microphone lines keep their own under-floor route (0.46 m of 24.0 m within 0.30 m). About 987 m of mains route lies on timber beam tops, the boarded roof lining or the chamber lining. Compartments, separation, containment and fire performance for these shared and timber routes are open (Q05, Q09, Q48). No route other than E1 was changed.

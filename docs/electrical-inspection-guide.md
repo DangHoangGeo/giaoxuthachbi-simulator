@@ -90,6 +90,7 @@ Open **Controls → Towers**. Each button is a separate switch at DB-2:
 5. Read the words on each item and route: **CONCEPT** means an idea to review; **ENGINEERING HOLD** means do not build or buy until an engineer has checked it; **REVIEW REQUIRED** means a known conflict.
 6. Results that still miss the brief are listed in **Analysis → Design checks**, including some dim seats, speech clarity in the wings and low microphone feedback margins.
 7. Record site measurements and corrections against the equipment ID and route ID, so that the model and registers can be updated together.
+8. Read the [walk-round safety and efficiency review](electrical-grid/safety-efficiency-review.md): what was found zone by zone, the comparison table for every circuit, the supply question for the event points, and where energy can be saved. Its numbers are comparisons for your own design, not a design.
 
 ## 8. What the model cannot tell you
 

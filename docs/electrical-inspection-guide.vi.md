@@ -92,6 +92,7 @@ Mở **Controls → Towers**. Mỗi nút là một công tắc riêng tại DB-2
 5. Đọc chữ ghi trên từng thiết bị và tuyến dây: **CONCEPT** là ý tưởng cần xem xét; **ENGINEERING HOLD** là chưa thi công, chưa mua cho đến khi kỹ sư kiểm tra; **REVIEW REQUIRED** là đã biết có xung đột.
 6. Những kết quả chưa đạt yêu cầu nằm ở **Analysis → Design checks**, gồm một số ghế thiếu sáng, độ rõ lời ở hai cánh và biên độ chống hú của micro còn thấp.
 7. Ghi số đo và chỉnh sửa tại hiện trường theo mã thiết bị và mã tuyến, để mô hình và sổ Excel được cập nhật cùng nhau.
+8. Đọc [bản rà soát an toàn và hiệu quả điện](electrical-grid/safety-efficiency-review.md) (tiếng Anh): kết quả theo từng khu vực, bảng so sánh cho từng mạch, câu hỏi về nguồn cấp cho hai tủ sự kiện và những chỗ có thể tiết kiệm điện. Các con số là phép so sánh để kỹ sư tự thiết kế, chưa phải thiết kế.
 
 ## 8. Những điều mô hình không trả lời được
 

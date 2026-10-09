@@ -14,7 +14,7 @@ Generated 9 October 2026 from the category registers and their matched model sna
 | Distribution and controls | 11 | 11 | 0 | 6 | 4 | 14 | 105 |
 | **Total** | 359 | 344 | 15 | 317 | 283 | 370 | 2928 |
 
-Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **10 equipment, 14 routes**.
+Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **10 equipment, 21 routes**.
 
 ## Usage and energy estimate
 
@@ -39,10 +39,10 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 | Lighting | 3,046.922 | 3,046.922 | 0.000 | 0.000 |
 | Sound | 744.183 | 0.000 | 1,790.080 | 583.921 |
 | Fans and ventilation | 826.041 | 826.041 | 0.000 | 0.000 |
-| Exit signs | 147.736 | 147.736 | 0.000 | 0.000 |
+| Exit signs | 145.936 | 145.936 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 244.983 | 244.983 | 0.000 | 0.000 |
-| **Total by length basis** | **5,009.866** | **4,265.683** | **1,790.080** | **583.921** |
+| **Total by length basis** | **5,008.066** | **4,263.883** | **1,790.080** | **583.921** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/360 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -62,12 +62,12 @@ The build verified unique equipment/route IDs, unique ordered vertices, complete
 
 These counts measure field completeness only; filled fields still require source and engineering review. A 0/0 population is not applicable. Product selection, protection, final cable/containment specifications, actual control channels and commissioning evidence remain pending where fields are blank. No overall quality score is invented.
 
-The held wing review of 9 October 2026 retains four small brass chandeliers (L63/L65/L67/L69), four F5 above-window wall fans (F240–F243, extended bracket proxy), and two entrance-facing wing wall speakers (S276/S278). Four light IDs, four appended fan IDs and S275/S277 are retired; sixteen F2 nave wall fans (eight per side, extended bracket proxy) remain shown/OFF. Four unpowered Peter/Paul pictures are decoration records with no electrical routes. Task lighting, airflow, noise, speech/feedback, glare, concealment, product and mounting holds remain; see [wing comparison](../engineering/wing-review.md). The seating-cache correction is independently verified, not design approval. The outlet and façade-statue issue of 9 October 2026 adds six socket-outlet points on P1–P4 (four indoor double outlets from DB-1, two lockable tower event points from DB-2, owned by distribution-controls), three façade statues as unpowered decoration records, and fifteen L10 lighting records for them (nine concealed light lines and six candle lights). Socket rated values are planning allowances per circuit, not equipment loads, and add nothing to the operating estimate while no test load is entered. Supply, feeder, protection, accessories, slots and fixings remain held; see [outlets and façade statues](../engineering/outlets-and-facade-statues.md). Register refresh does not resolve performance failures. See [simulator validation status](../simulator/README.md) and [control requirements](controls.md). Status: **design development**.
+The held wing review of 9 October 2026 retains four small brass chandeliers (L63/L65/L67/L69), four F5 above-window wall fans (F240–F243, extended bracket proxy), and two entrance-facing wing wall speakers (S276/S278). Four light IDs, four appended fan IDs and S275/S277 are retired; sixteen F2 nave wall fans (eight per side, extended bracket proxy) remain shown/OFF. Four unpowered Peter/Paul pictures are decoration records with no electrical routes. Task lighting, airflow, noise, speech/feedback, glare, concealment, product and mounting holds remain; see [wing comparison](../engineering/wing-review.md). The seating-cache correction is independently verified, not design approval. The outlet and façade-statue issue of 9 October 2026 adds six socket-outlet points on P1–P4 (four indoor double outlets from DB-1, two lockable tower event points from DB-2, owned by distribution-controls), three façade statues as unpowered decoration records, and fifteen L10 lighting records for them (nine concealed light lines and six candle lights). Socket rated values are planning allowances per circuit, not equipment loads, and add nothing to the operating estimate while no test load is entered. The electrical walk-round review of 9 October 2026 moves the origin of the seven E1 exit-sign routes from LC-1 to DB-1, so that the signs do not depend on the lighting-control enclosure; the seven earlier route IDs are retired and the signs, their positions and their 15 W are unchanged. See the [safety and efficiency review](safety-efficiency-review.md). Supply, feeder, protection, accessories, slots and fixings remain held; see [outlets and façade statues](../engineering/outlets-and-facade-statues.md). Register refresh does not resolve performance failures. See [simulator validation status](../simulator/README.md) and [control requirements](controls.md). Status: **design development**.
 
 ## Sources and refresh
 
-- [Layout snapshot](equipment-layout.json), SHA-256: f58ecb8c7e66db5f5a9c359a0501f9a7ff3253b9cb9664b76918bdc2f036e05a.
-- [Electrical snapshot](electrical-systems.json), SHA-256: 1646f19d4f8b80070625f5fb407f54d11abbea5d7ecb7c88a4a2534f18542306.
+- [Layout snapshot](equipment-layout.json), SHA-256: e8b0d45e0c5518ca0cc64c1fa511adc8ba03ba31bef6d46426ff3c0c3e699bab.
+- [Electrical snapshot](electrical-systems.json), SHA-256: e25c59374b1948a67cdb0ee5bed0beb9884da65931cb92b8dc2af738d4ae1e28.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 

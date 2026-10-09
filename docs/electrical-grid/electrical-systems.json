@@ -18459,9 +18459,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "trunk:LC1:E1:light:-1",
+      "id": "trunk:DB1:E1:light:-1",
       "name": "E1 · B · circuit trunk",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -18477,17 +18477,17 @@
       "points": [
         [
           48.895,
-          1.85,
-          -0.55
+          1.75,
+          -1.55
         ],
         [
           48.735,
-          1.85,
-          -0.55
+          1.75,
+          -1.55
         ],
         [
           48.735,
-          1.85,
+          1.75,
           -2.24
         ],
         [
@@ -18571,7 +18571,7 @@
           -7.36
         ]
       ],
-      "length": 69.5751303111792,
+      "length": 68.67513031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -18677,9 +18677,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:-1:L155",
+      "id": "drop:DB1:E1:light:-1:L155",
       "name": "E1 → Exit sign · main doors",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -18687,9 +18687,9 @@
       "itemIds": [
         "L155"
       ],
-      "trunkId": "trunk:LC1:E1:light:-1",
+      "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 69.5751303111792,
+      "upstreamLength": 68.67513031117919,
       "homeRun": false,
       "points": [
         [
@@ -18729,9 +18729,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:-1:L156",
+      "id": "drop:DB1:E1:light:-1:L156",
       "name": "E1 → Exit sign · side door 16.7 · B",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -18739,9 +18739,9 @@
       "itemIds": [
         "L156"
       ],
-      "trunkId": "trunk:LC1:E1:light:-1",
+      "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 55.50013031117919,
+      "upstreamLength": 54.60013031117919,
       "homeRun": false,
       "points": [
         [
@@ -18771,9 +18771,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:-1:L158",
+      "id": "drop:DB1:E1:light:-1:L158",
       "name": "E1 → Exit sign · side door 34.7 · B",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -18781,9 +18781,9 @@
       "itemIds": [
         "L158"
       ],
-      "trunkId": "trunk:LC1:E1:light:-1",
+      "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 37.50013031117919,
+      "upstreamLength": 36.60013031117919,
       "homeRun": false,
       "points": [
         [
@@ -18813,9 +18813,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "trunk:LC1:E1:light:1",
+      "id": "trunk:DB1:E1:light:1",
       "name": "E1 · H · circuit trunk",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -18830,17 +18830,17 @@
       "points": [
         [
           48.895,
-          1.85,
-          -0.55
+          1.75,
+          -1.55
         ],
         [
           48.735,
-          1.85,
-          -0.55
+          1.75,
+          -1.55
         ],
         [
           48.735,
-          1.85,
+          1.75,
           -2.24
         ],
         [
@@ -18919,7 +18919,7 @@
           7.36
         ]
       ],
-      "length": 62.10013031117919,
+      "length": 61.20013031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -19025,9 +19025,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:1:L157",
+      "id": "drop:DB1:E1:light:1:L157",
       "name": "E1 → Exit sign · side door 16.7 · H",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -19035,9 +19035,9 @@
       "itemIds": [
         "L157"
       ],
-      "trunkId": "trunk:LC1:E1:light:1",
+      "trunkId": "trunk:DB1:E1:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 62.10013031117919,
+      "upstreamLength": 61.20013031117919,
       "homeRun": false,
       "points": [
         [
@@ -19067,9 +19067,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:1:L159",
+      "id": "drop:DB1:E1:light:1:L159",
       "name": "E1 → Exit sign · side door 34.7 · H",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -19077,9 +19077,9 @@
       "itemIds": [
         "L159"
       ],
-      "trunkId": "trunk:LC1:E1:light:1",
+      "trunkId": "trunk:DB1:E1:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 44.10013031117919,
+      "upstreamLength": 43.20013031117919,
       "homeRun": false,
       "points": [
         [
