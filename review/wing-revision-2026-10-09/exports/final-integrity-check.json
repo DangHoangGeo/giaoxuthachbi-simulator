@@ -1,0 +1,57 @@
+{
+  "status": "Passed",
+  "checks": [
+    "Final README local links resolve",
+    "54 source / 42 owning output hashes match current files",
+    "Retained helper / baseline hashes match",
+    "git diff --check passed"
+  ],
+  "counts": {
+    "equipment": 325,
+    "shown": 310,
+    "hidden": 15,
+    "connected": 286,
+    "commandedOn": 261,
+    "retiredEquipment": 10,
+    "retiredRoutes": 14,
+    "routes": 333,
+    "vertices": 2749,
+    "routeMetres": 4661.175546229245,
+    "homeRunMetres": 1790.0795233369959,
+    "bundleMetres": 583.9210424894335,
+    "segmentMetres": 3916.992368493474,
+    "watts": 5552.950015021,
+    "kWhService": 8.3294250225315,
+    "kWhMonth": 333.17700090126,
+    "specsDocumented": 0,
+    "controlsDocumented": 0,
+    "cableDocumented": 0,
+    "allowancesEntered": 0,
+    "allowancePopulation": 323
+  },
+  "pdfPages": {
+    "EN_A3": 44,
+    "VI_A3": 44,
+    "VI_cable": 14,
+    "VI_Japan_budget": 10
+  },
+  "readmeSha256": "1afee0fcf7cef13104dcc7fcda8876d4d2507fe51d19ca1ced8ba958676ca9b7",
+  "sourceHashesSha256": "63e51283b2d63fbecfdb2b3c44dcecd24916edb176e23c5ecc85b25e0038eac4",
+  "finalPdfSha256": {
+    "output/electrical-review/thach-bi-budget-japan-vi.pdf": "d0e4bbcd97f83e8ce7c397a727611f0667a4fbb7eda5c0e6b2db020e820da31e",
+    "output/electrical-review/thach-bi-cable-load-review-vi.pdf": "f0e401bde310474a02f70c2316397e97489643608c95788af012ccdf76f23016",
+    "output/pdf-vi/thach-bi-electrical-review-A3-vi.pdf": "67e72b47bfec0b69ab80f266914a9e7856d3eea510f5cad59db5df520dd8aca7",
+    "output/pdf/thach-bi-electrical-review-A3.pdf": "2ccb548219a52615af7ef833d5bbe6782e806fde9e70872bca00670efbfb7832"
+  },
+  "criticalSourceSha256": {
+    "Thach_Bi_Viewer/simulator/catalog.js": "67035bc56dac74b154f3c80b5f3a5ec46187df5894c4a8c8230741d4c4f85694",
+    "Thach_Bi_Viewer/simulator/design.js": "44e8c4c39b2c3a6833c46642133e4f3a6eafae6c6c2176d5cf3a9a609840ffb1",
+    "Thach_Bi_Viewer/simulator/engine.js": "a6ea21ce0d9d54cc26c5d5141082e5dcc19128db07357afbc169bc8413b657fe",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
+    "scripts/review_drawings_i18n.py": "09b6333b181e552c69718a284f7f82e93721156d4c0548545fc7a326277741ce",
+    "docs/electrical-grid/equipment-layout.json": "d4067e8bb027f3bb435cc6fee67c0fc1d0e462a2d8802a6ada0bb37df793ab52",
+    "docs/electrical-grid/electrical-systems.json": "e2130aeffb518d934149fa35c32d858856db06e804d9cb98aac4f1896cd3b761",
+    "docs/electrical-grid/categories/manifest.json": "bd2ad3804f688c4060855e2d2d802bddf92e35fe7c83d3c98627798d9b185a2f"
+  },
+  "documentationWhitespaceCleanup": "../final-whitespace-cleanup.json; parsed provenance and all owning outputs unchanged"
+}

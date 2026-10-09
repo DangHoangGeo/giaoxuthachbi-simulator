@@ -1,0 +1,4706 @@
+[
+  {
+    "rankByMinimumWingSti": 1,
+    "case": {
+      "id": "column-y4.4-tilt-50-level-6",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 4.4,
+      "tilt": -50,
+      "level": -6,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.48986931694414027,
+      "min": 0.4292340377030768,
+      "max": 0.5959887060544604,
+      "p05": 0.4375886209307427,
+      "p10": 0.44191322852848924,
+      "median": 0.4846951743741475,
+      "p95": 0.5630038126480025,
+      "u0": 0.8762215204264819,
+      "mean": 0.48986931694414027,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4898693169441402,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -8.35
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 1",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          41.39,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -8.35
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 1",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6280906678971756,
+      "min": 0.5185330577904543,
+      "max": 0.6916954105760875,
+      "p05": 0.5579395214554669,
+      "p10": 0.5719834169221856,
+      "median": 0.631054839029819,
+      "p95": 0.6768518398115762,
+      "u0": 0.82557039022166,
+      "mean": 0.6280906678971756,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6280906678971758,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5980425481247763,
+      "min": 0.4292340377030768,
+      "max": 0.6916954105760875,
+      "p05": 0.4597518666832892,
+      "p10": 0.48218462292450165,
+      "median": 0.6175535010719613,
+      "p95": 0.6757656112775563,
+      "u0": 0.717731604630781,
+      "mean": 0.5980425481247763,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5980425481247768,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -8.35
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 1",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -8.35
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 1",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 0.8546193267022417,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.3467673781580416,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 0,
+      "worstByGap": null,
+      "maxGapMs": null,
+      "maxSeverity": null
+    },
+    "failureCounts": {
+      "stiBelow0p6": 132,
+      "stiBelow0p45": 10,
+      "stiNotApplicable": 0,
+      "splBelow68": 116,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 2,
+    "case": {
+      "id": "column-y3.8-tilt-50-level-6",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 3.8,
+      "tilt": -50,
+      "level": -6,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.49572422319004883,
+      "min": 0.4222191231343788,
+      "max": 0.6293100221611269,
+      "p05": 0.4368329662706025,
+      "p10": 0.44180923458760657,
+      "median": 0.48299176050580617,
+      "p95": 0.6019468272806917,
+      "u0": 0.8517217908322993,
+      "mean": 0.49572422319004883,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.49572422319004905,
+      "minimumSeat": {
+        "floor": [
+          38.11,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          41.39,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          38.11,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.627854351424444,
+      "min": 0.5180222070271545,
+      "max": 0.6914885753169666,
+      "p05": 0.5576688596793555,
+      "p10": 0.5715624475780385,
+      "median": 0.6308106075363099,
+      "p95": 0.6766422050974803,
+      "u0": 0.8250674791882736,
+      "mean": 0.627854351424444,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6278543514244439,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5991304105039232,
+      "min": 0.4222191231343788,
+      "max": 0.6914885753169666,
+      "p05": 0.4605055638893602,
+      "p10": 0.47966984810325114,
+      "median": 0.6182948321990256,
+      "p95": 0.6755484713544404,
+      "u0": 0.7047199002622051,
+      "mean": 0.5991304105039232,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5991304105039231,
+      "minimumSeat": {
+        "floor": [
+          38.11,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          38.11,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 0.8628494706072587,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.3521209440905793,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 0,
+      "worstByGap": null,
+      "maxGapMs": null,
+      "maxSeverity": null
+    },
+    "failureCounts": {
+      "stiBelow0p6": 127,
+      "stiBelow0p45": 13,
+      "stiNotApplicable": 0,
+      "splBelow68": 102,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 3,
+    "case": {
+      "id": "column-y3.8-tilt-35-level-6",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 3.8,
+      "tilt": -35,
+      "level": -6,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.489433123466291,
+      "min": 0.40974508042905655,
+      "max": 0.576408540869699,
+      "p05": 0.4163075906153026,
+      "p10": 0.4308298309981967,
+      "median": 0.496704283288421,
+      "p95": 0.5501265208381306,
+      "u0": 0.837182979213047,
+      "mean": 0.489433123466291,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4894331234662911,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          39.760000000000005,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6284092109294985,
+      "min": 0.521711900426489,
+      "max": 0.6918624860546281,
+      "p05": 0.5585647322960136,
+      "p10": 0.5729181570311495,
+      "median": 0.6313553461926915,
+      "p95": 0.6770253525330563,
+      "u0": 0.8302104605608972,
+      "mean": 0.6284092109294985,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6284092109294993,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5981970180027144,
+      "min": 0.40974508042905655,
+      "max": 0.6918624860546281,
+      "p05": 0.4501683414123814,
+      "p10": 0.49235324208919723,
+      "median": 0.6178947933288317,
+      "p95": 0.6759644660268057,
+      "u0": 0.6849667719794572,
+      "mean": 0.5981970180027144,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5981970180027149,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 0.8535154304661532,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.3521890002151196,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 0,
+      "worstByGap": null,
+      "maxGapMs": null,
+      "maxSeverity": null
+    },
+    "failureCounts": {
+      "stiBelow0p6": 132,
+      "stiBelow0p45": 18,
+      "stiNotApplicable": 0,
+      "splBelow68": 116,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 4,
+    "case": {
+      "id": "column-y4.4-tilt-35-level-6",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 4.4,
+      "tilt": -35,
+      "level": -6,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.47389305890382827,
+      "min": 0.39829870936314693,
+      "max": 0.5503058126674331,
+      "p05": 0.4040605211216256,
+      "p10": 0.41240809168304077,
+      "median": 0.47967055473416886,
+      "p95": 0.539361602759372,
+      "u0": 0.8404822604586356,
+      "mean": 0.47389305890382827,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4738930589038282,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          39.760000000000005,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6287253661806134,
+      "min": 0.5237957069393333,
+      "max": 0.6920761380592528,
+      "p05": 0.5592349785120939,
+      "p10": 0.5736411263431936,
+      "median": 0.6316473104263075,
+      "p95": 0.6772436084522303,
+      "u0": 0.8331073233473818,
+      "mean": 0.6287253661806134,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6287253661806134,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5950661689465296,
+      "min": 0.39829870936314693,
+      "max": 0.6920761380592528,
+      "p05": 0.42853392399750506,
+      "p10": 0.47386014324054593,
+      "median": 0.6181739756278943,
+      "p95": 0.6762017833836236,
+      "u0": 0.6693351599340148,
+      "mean": 0.5950661689465296,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5950661689465294,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 0.8499793315086208,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.3496378572325014,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 2,
+      "worstByGap": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -8.35
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 1",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maxGapMs": 52.49367909658412,
+      "maxSeverity": 2.435250014649114
+    },
+    "failureCounts": {
+      "stiBelow0p6": 132,
+      "stiBelow0p45": 29,
+      "stiNotApplicable": 0,
+      "splBelow68": 116,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 5,
+    "case": {
+      "id": "column-y3.8-tilt-50-level-10",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 3.8,
+      "tilt": -50,
+      "level": -10,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.4457600278259304,
+      "min": 0.39426850255819357,
+      "max": 0.5407177253287815,
+      "p05": 0.39985639428759545,
+      "p10": 0.40905582283636266,
+      "median": 0.4357838974227498,
+      "p95": 0.5211261359927928,
+      "u0": 0.8844859968291183,
+      "mean": 0.4457600278259304,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4457600278259304,
+      "minimumSeat": {
+        "floor": [
+          38.11,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          41.39,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          38.11,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6341812221867705,
+      "min": 0.522966453565427,
+      "max": 0.6981293865690527,
+      "p05": 0.5642134636511509,
+      "p10": 0.5777832262297232,
+      "median": 0.637136910886398,
+      "p95": 0.6831018701573718,
+      "u0": 0.8246325108178778,
+      "mean": 0.6341812221867705,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.63418122218677,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5932200929778925,
+      "min": 0.39426850255819357,
+      "max": 0.6981293865690527,
+      "p05": 0.4210889572784142,
+      "p10": 0.4344875579053695,
+      "median": 0.6235087452931207,
+      "p95": 0.6820479546033907,
+      "u0": 0.6646243227855176,
+      "mean": 0.5932200929778925,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5932200929778915,
+      "minimumSeat": {
+        "floor": [
+          38.11,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          38.11,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.3979149919571512,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.8667368974219727,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 7,
+      "worstByGap": {
+        "floor": [
+          38.11,
+          -0.32,
+          8.35
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 1",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "maxGapMs": 66.43130443040818,
+      "maxSeverity": 6.47444573157351
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 54,
+      "stiNotApplicable": 0,
+      "splBelow68": 120,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 6,
+    "case": {
+      "id": "point-y3.8-tilt-35-level-10",
+      "kind": "two-wall",
+      "type": "pointSpeaker",
+      "y": 3.8,
+      "tilt": -35,
+      "level": -10,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.44557595642445297,
+      "min": 0.3940796461907709,
+      "max": 0.5079399853279338,
+      "p05": 0.4016959738195294,
+      "p10": 0.4117246877012996,
+      "median": 0.44449746884269625,
+      "p95": 0.48999990637248647,
+      "u0": 0.8844275381308344,
+      "mean": 0.44557595642445297,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.44557595642445297,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          41.39,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6334216831781079,
+      "min": 0.5233737298549078,
+      "max": 0.6973003423395695,
+      "p05": 0.563265688728142,
+      "p10": 0.5776704304091803,
+      "median": 0.6364725731219363,
+      "p95": 0.6822933483595517,
+      "u0": 0.8262643097864139,
+      "mean": 0.6334216831781079,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6334216831781077,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5925856556229654,
+      "min": 0.3940796461907709,
+      "max": 0.6973003423395695,
+      "p05": 0.4251858738390236,
+      "p10": 0.4438052831692087,
+      "median": 0.6226862065011205,
+      "p95": 0.6812834018124992,
+      "u0": 0.6650171877287313,
+      "mean": 0.5925856556229654,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5925856556229655,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.4090674377090266,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.8688917567167564,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 15,
+      "worstByGap": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          9.25
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 2",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "maxGapMs": 66.08330341749586,
+      "maxSeverity": 5.021213127864442
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 46,
+      "stiNotApplicable": 0,
+      "splBelow68": 116,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 7,
+    "case": {
+      "id": "column-y4.4-tilt-50-level-10",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 4.4,
+      "tilt": -50,
+      "level": -10,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.44028506716100513,
+      "min": 0.3923547395014268,
+      "max": 0.5128871189610769,
+      "p05": 0.3982852852738516,
+      "p10": 0.41042909813195144,
+      "median": 0.4396104924526859,
+      "p95": 0.48537786182734205,
+      "u0": 0.8911379666618332,
+      "mean": 0.44028506716100513,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.440285067161005,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          41.39,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6342788483599779,
+      "min": 0.5231747723136424,
+      "max": 0.6982152628806149,
+      "p05": 0.5643249321276248,
+      "p10": 0.5779541447595692,
+      "median": 0.6372246575679231,
+      "p95": 0.6831902195382812,
+      "u0": 0.8248340200313922,
+      "mean": 0.6342788483599779,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6342788483599774,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5921062872297665,
+      "min": 0.3923547395014268,
+      "max": 0.6982152628806149,
+      "p05": 0.4217816615256921,
+      "p10": 0.43815590715317404,
+      "median": 0.6235962921460149,
+      "p95": 0.6821379070809446,
+      "u0": 0.6626424139779041,
+      "mean": 0.5921062872297665,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5921062872297661,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.394206988418631,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.864336669741732,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 8,
+      "worstByGap": {
+        "floor": [
+          38.11,
+          -0.32,
+          8.35
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 1",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "maxGapMs": 66.43130443040818,
+      "maxSeverity": 5.686047083984263
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 55,
+      "stiNotApplicable": 0,
+      "splBelow68": 120,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 8,
+    "case": {
+      "id": "column-y3.8-tilt-20-level-6",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 3.8,
+      "tilt": -20,
+      "level": -6,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.4501963478266073,
+      "min": 0.39181726680048157,
+      "max": 0.51538897346527,
+      "p05": 0.3972585936744906,
+      "p10": 0.40082059224954947,
+      "median": 0.4512197277553276,
+      "p95": 0.5056484494572887,
+      "u0": 0.8703252896031703,
+      "mean": 0.4501963478266073,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4501963478266072,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          38.11,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6299580439771846,
+      "min": 0.5344672285337712,
+      "max": 0.6924957215180285,
+      "p05": 0.5632275639590802,
+      "p10": 0.5760065397031686,
+      "median": 0.6326345544822753,
+      "p95": 0.6777093247254915,
+      "u0": 0.8484171821340029,
+      "mean": 0.6299580439771846,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6299580439771841,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.590879414379233,
+      "min": 0.39181726680048157,
+      "max": 0.6924957215180285,
+      "p05": 0.41316984790245953,
+      "p10": 0.4332898106176306,
+      "median": 0.6192073314987652,
+      "p95": 0.676985957653608,
+      "u0": 0.6631086771098932,
+      "mean": 0.590879414379233,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5908794143792325,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 0.8463338985880426,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.3469390039286822,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 14,
+      "worstByGap": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maxGapMs": 65.52996203962317,
+      "maxSeverity": 2.8105091353110225
+    },
+    "failureCounts": {
+      "stiBelow0p6": 130,
+      "stiBelow0p45": 40,
+      "stiNotApplicable": 0,
+      "splBelow68": 116,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 9,
+    "case": {
+      "id": "point-y4.4-tilt-35-level-10",
+      "kind": "two-wall",
+      "type": "pointSpeaker",
+      "y": 4.4,
+      "tilt": -35,
+      "level": -10,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.4364143840086297,
+      "min": 0.38918691836798674,
+      "max": 0.4849419250716787,
+      "p05": 0.39657571990599183,
+      "p10": 0.4039801830587635,
+      "median": 0.4369948985980414,
+      "p95": 0.47316372616555563,
+      "u0": 0.8917829765214406,
+      "mean": 0.4364143840086297,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4364143840086296,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          39.760000000000005,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.633610229545638,
+      "min": 0.524020597473321,
+      "max": 0.6974461106980384,
+      "p05": 0.5635293178610469,
+      "p10": 0.5780180321254481,
+      "median": 0.6366519970023752,
+      "p95": 0.682441744144388,
+      "u0": 0.8270393580120956,
+      "mean": 0.633610229545638,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6336102295456381,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5907415674723755,
+      "min": 0.38918691836798674,
+      "max": 0.6974461106980384,
+      "p05": 0.4152287329507702,
+      "p10": 0.43527051917514153,
+      "median": 0.6228744644607043,
+      "p95": 0.6814453479161597,
+      "u0": 0.6588107893494156,
+      "mean": 0.5907415674723755,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.590741567472375,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.4049869174205867,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.866637635631058,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 17,
+      "worstByGap": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          9.25
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 2",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "maxGapMs": 66.08330341749586,
+      "maxSeverity": 5.292447612594003
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 56,
+      "stiNotApplicable": 0,
+      "splBelow68": 116,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 10,
+    "case": {
+      "id": "column-y4.4-tilt-20-level-6",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 4.4,
+      "tilt": -20,
+      "level": -6,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.4305245113179999,
+      "min": 0.385482611862018,
+      "max": 0.48404058666121996,
+      "p05": 0.3881997106757923,
+      "p10": 0.39096904690736284,
+      "median": 0.4271646371170607,
+      "p95": 0.4763812377551953,
+      "u0": 0.8953790126418321,
+      "mean": 0.4305245113179999,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4305245113179999,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          38.11,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6303007917915516,
+      "min": 0.5359848968426763,
+      "max": 0.6926393688895306,
+      "p05": 0.5637834523681784,
+      "p10": 0.5764750738042019,
+      "median": 0.6329085224760722,
+      "p95": 0.677879421871797,
+      "u0": 0.850363673698086,
+      "mean": 0.6303007917915516,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6303007917915522,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.586871165601649,
+      "min": 0.385482611862018,
+      "max": 0.6926393688895306,
+      "p05": 0.401716472036684,
+      "p10": 0.42400371739836884,
+      "median": 0.619564941846925,
+      "p95": 0.6771485093961715,
+      "u0": 0.6568436727792354,
+      "mean": 0.586871165601649,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5868711656016493,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 0.8460759677817293,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.3445473453947372,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 29,
+      "worstByGap": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -10.15
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 3",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maxGapMs": 65.55711846278875,
+      "maxSeverity": 4.302824268335399
+    },
+    "failureCounts": {
+      "stiBelow0p6": 129,
+      "stiBelow0p45": 52,
+      "stiNotApplicable": 0,
+      "splBelow68": 116,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 11,
+    "case": {
+      "id": "point-y3.8-tilt-20-level-10",
+      "kind": "two-wall",
+      "type": "pointSpeaker",
+      "y": 3.8,
+      "tilt": -20,
+      "level": -10,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.42403961472713636,
+      "min": 0.383778523026033,
+      "max": 0.4682388622588572,
+      "p05": 0.3885104329738957,
+      "p10": 0.3932970504236844,
+      "median": 0.4237592611958445,
+      "p95": 0.4613698975799377,
+      "u0": 0.9050534659904103,
+      "mean": 0.42403961472713636,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4240396147271365,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          39.21,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.633959405450927,
+      "min": 0.5257597307047114,
+      "max": 0.6976359019268239,
+      "p05": 0.5642829032020268,
+      "p10": 0.578704199053334,
+      "median": 0.6370704706368253,
+      "p95": 0.6826339140774463,
+      "u0": 0.8293271243933126,
+      "mean": 0.633959405450927,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6339594054509271,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5883246683370594,
+      "min": 0.383778523026033,
+      "max": 0.6976359019268239,
+      "p05": 0.4034591110060166,
+      "p10": 0.42288091711603193,
+      "median": 0.6232116849991466,
+      "p95": 0.6817144207104595,
+      "u0": 0.6523243774747873,
+      "mean": 0.5883246683370594,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5883246683370598,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.4038721508434264,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.8637906677206075,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 25,
+      "worstByGap": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          10.15
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 3",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "maxGapMs": 73.09853030001238,
+      "maxSeverity": 5.919807555059975
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 68,
+      "stiNotApplicable": 0,
+      "splBelow68": 116,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 12,
+    "case": {
+      "id": "point-y4.4-tilt-20-level-10",
+      "kind": "two-wall",
+      "type": "pointSpeaker",
+      "y": 4.4,
+      "tilt": -20,
+      "level": -10,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.4140667629950829,
+      "min": 0.38127756023052745,
+      "max": 0.44780991233491996,
+      "p05": 0.3839712256950129,
+      "p10": 0.38758726037326424,
+      "median": 0.41286296468488715,
+      "p95": 0.4460769082697943,
+      "u0": 0.920811797287519,
+      "mean": 0.4140667629950829,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4140667629950829,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          38.11,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6342513370843617,
+      "min": 0.5263624585731649,
+      "max": 0.6978478846541322,
+      "p05": 0.5648620410035582,
+      "p10": 0.579173535896567,
+      "median": 0.6373449749038405,
+      "p95": 0.682850277876888,
+      "u0": 0.8298957019039812,
+      "mean": 0.6342513370843617,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6342513370843618,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5863851253258227,
+      "min": 0.38127756023052745,
+      "max": 0.6978478846541322,
+      "p05": 0.39574409063658467,
+      "p10": 0.4124221701387047,
+      "median": 0.6235250639516795,
+      "p95": 0.6819919676832048,
+      "u0": 0.6502169713439986,
+      "mean": 0.5863851253258227,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5863851253258232,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.4023863411242274,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.862587490294544,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 39,
+      "worstByGap": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          11.05
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 4",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "maxGapMs": 74.86168439733375,
+      "maxSeverity": 7.215857686055315
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 80,
+      "stiNotApplicable": 0,
+      "splBelow68": 116,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 13,
+    "case": {
+      "id": "point-y3.8-tilt-35-level-14",
+      "kind": "two-wall",
+      "type": "pointSpeaker",
+      "y": 3.8,
+      "tilt": -35,
+      "level": -14,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.4128472464115561,
+      "min": 0.3797518581004813,
+      "max": 0.4453951604301093,
+      "p05": 0.3861083982508396,
+      "p10": 0.39224300797164474,
+      "median": 0.4110547297926172,
+      "p95": 0.441591706362392,
+      "u0": 0.919836238224336,
+      "mean": 0.4128472464115561,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.41284724641155623,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          38.660000000000004,
+          -0.32,
+          9.25
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 2",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6364738429051943,
+      "min": 0.5251911667015627,
+      "max": 0.7005115451336232,
+      "p05": 0.5665429108038783,
+      "p10": 0.5803516479021709,
+      "median": 0.6393697037241124,
+      "p95": 0.685420382119451,
+      "u0": 0.8251575026309328,
+      "mean": 0.6364738429051943,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6364738429051945,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5878593654065775,
+      "min": 0.3797518581004813,
+      "max": 0.7005115451336232,
+      "p05": 0.3998217485434437,
+      "p10": 0.40974713160988224,
+      "median": 0.6256537575973105,
+      "p95": 0.6843976926043621,
+      "u0": 0.6459909979282815,
+      "mean": 0.5878593654065775,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5878593654065775,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.05
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 4",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.6354178655527747,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 2.0907798060791194,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 39,
+      "worstByGap": {
+        "floor": [
+          41.940000000000005,
+          -0.32,
+          9.25
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 2",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "maxGapMs": 73.30855145292102,
+      "maxSeverity": 8.75987147440594
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 80,
+      "stiNotApplicable": 0,
+      "splBelow68": 122,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 14,
+    "case": {
+      "id": "column-y3.8-tilt-35-level-10",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 3.8,
+      "tilt": -35,
+      "level": -10,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.4390508825786119,
+      "min": 0.37944663683248525,
+      "max": 0.499810735337776,
+      "p05": 0.38813784658859213,
+      "p10": 0.3944410988094349,
+      "median": 0.4433898715703387,
+      "p95": 0.4820113249143937,
+      "u0": 0.8642429656534069,
+      "mean": 0.4390508825786119,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.43905088257861175,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          39.760000000000005,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.634404176238152,
+      "min": 0.524448226848875,
+      "max": 0.6982837082467824,
+      "p05": 0.5645582973064724,
+      "p10": 0.5783104866511803,
+      "median": 0.6373133141451529,
+      "p95": 0.6832613895885807,
+      "u0": 0.8266783960325002,
+      "mean": 0.634404176238152,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6344041762381513,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5919360689208601,
+      "min": 0.37944663683248525,
+      "max": 0.6982837082467824,
+      "p05": 0.41197871157736377,
+      "p10": 0.4404749672525593,
+      "median": 0.6236796019688946,
+      "p95": 0.6822182790957719,
+      "u0": 0.641026382332542,
+      "mean": 0.5919360689208601,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5919360689208599,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.3937093460685475,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.8667673993247291,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 12,
+      "worstByGap": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maxGapMs": 67.01129135448843,
+      "maxSeverity": 3.160000999720147
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 43,
+      "stiNotApplicable": 0,
+      "splBelow68": 118,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 15,
+    "case": {
+      "id": "point-y4.4-tilt-35-level-14",
+      "kind": "two-wall",
+      "type": "pointSpeaker",
+      "y": 4.4,
+      "tilt": -35,
+      "level": -14,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.4074602729209006,
+      "min": 0.3777910736338659,
+      "max": 0.44366583540903853,
+      "p05": 0.3804196568607287,
+      "p10": 0.387813164146256,
+      "median": 0.4051738236712876,
+      "p95": 0.4357159603931949,
+      "u0": 0.9271850502765595,
+      "mean": 0.4074602729209006,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4074602729209006,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          38.660000000000004,
+          -0.32,
+          9.25
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 2",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6365515735299434,
+      "min": 0.5254527303133473,
+      "max": 0.7005722662178058,
+      "p05": 0.5666508907808396,
+      "p10": 0.5804902505596866,
+      "median": 0.6394369979913943,
+      "p95": 0.6854821547513682,
+      "u0": 0.8254676481270687,
+      "mean": 0.6365515735299434,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.636551573529943,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5867491168758037,
+      "min": 0.3777910736338659,
+      "max": 0.7005722662178058,
+      "p05": 0.3948280467544274,
+      "p10": 0.40403944871896913,
+      "median": 0.6257269827581913,
+      "p95": 0.6844649455105766,
+      "u0": 0.6438715675371564,
+      "mean": 0.5867491168758037,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5867491168758032,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.6337060024539056,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 2.089835241776882,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 44,
+      "worstByGap": {
+        "floor": [
+          41.940000000000005,
+          -0.32,
+          9.25
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 2",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "maxGapMs": 73.30855145292102,
+      "maxSeverity": 8.630738004031166
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 80,
+      "stiNotApplicable": 0,
+      "splBelow68": 122,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 16,
+    "case": {
+      "id": "point-y3.8-tilt-20-level-14",
+      "kind": "two-wall",
+      "type": "pointSpeaker",
+      "y": 3.8,
+      "tilt": -20,
+      "level": -14,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.4007072171545138,
+      "min": 0.37577721105022577,
+      "max": 0.4369641227048409,
+      "p05": 0.37838452175183424,
+      "p10": 0.38110142403223896,
+      "median": 0.3979175293542483,
+      "p95": 0.4251600726718258,
+      "u0": 0.9377849835565228,
+      "mean": 0.4007072171545138,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4007072171545138,
+      "minimumSeat": {
+        "floor": [
+          41.39,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          38.660000000000004,
+          -0.32,
+          9.25
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 2",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          41.39,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6366940497759686,
+      "min": 0.5261558118293139,
+      "max": 0.7006519109880682,
+      "p05": 0.5669532470153483,
+      "p10": 0.5807649768855591,
+      "median": 0.6395575657671826,
+      "p95": 0.6855628521439778,
+      "u0": 0.8263871980811673,
+      "mean": 0.6366940497759686,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6366940497759687,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5853925644234786,
+      "min": 0.37577721105022577,
+      "max": 0.7006519109880682,
+      "p05": 0.3883992651722815,
+      "p10": 0.3951894218349011,
+      "median": 0.6258688119174975,
+      "p95": 0.6845685457271798,
+      "u0": 0.6419234440060037,
+      "mean": 0.5853925644234786,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5853925644234786,
+      "minimumSeat": {
+        "floor": [
+          41.39,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          41.39,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.6332381723163678,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 2.088641844568521,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 57,
+      "worstByGap": {
+        "floor": [
+          41.940000000000005,
+          -0.32,
+          9.25
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 2",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "maxGapMs": 73.30855145292102,
+      "maxSeverity": 8.956196610731162
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 80,
+      "stiNotApplicable": 0,
+      "splBelow68": 122,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 17,
+    "case": {
+      "id": "column-y4.4-tilt-35-level-10",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 4.4,
+      "tilt": -35,
+      "level": -10,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.4295244615594319,
+      "min": 0.37523983492388674,
+      "max": 0.48035495624866853,
+      "p05": 0.3805571158116342,
+      "p10": 0.38663536571251916,
+      "median": 0.43450552202917003,
+      "p95": 0.4731214027375657,
+      "u0": 0.873616914765554,
+      "mean": 0.4295244615594319,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4295244615594319,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          39.21,
+          -0.32,
+          11.95
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 5",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6345329073758389,
+      "min": 0.5252986101252255,
+      "max": 0.6983720341025693,
+      "p05": 0.564823885580631,
+      "p10": 0.5785993411002458,
+      "median": 0.6374047953524731,
+      "p95": 0.6833511300069782,
+      "u0": 0.8278508553601097,
+      "mean": 0.6345329073758389,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6345329073758392,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5899658539374897,
+      "min": 0.37523983492388674,
+      "max": 0.6983720341025693,
+      "p05": 0.39822997286911005,
+      "p10": 0.42888612127229736,
+      "median": 0.6237820420699054,
+      "p95": 0.6823132930952677,
+      "u0": 0.6360365306220681,
+      "mean": 0.5899658539374897,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5899658539374899,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.392114785984873,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.8656238286143605,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 21,
+      "worstByGap": {
+        "floor": [
+          42.49,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maxGapMs": 66.13619407750903,
+      "maxSeverity": 6.435250014649121
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 53,
+      "stiNotApplicable": 0,
+      "splBelow68": 118,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 18,
+    "case": {
+      "id": "point-y4.4-tilt-20-level-14",
+      "kind": "two-wall",
+      "type": "pointSpeaker",
+      "y": 4.4,
+      "tilt": -20,
+      "level": -14,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.3965466276979785,
+      "min": 0.3732881871706477,
+      "max": 0.4331648859528074,
+      "p05": 0.3765463788163982,
+      "p10": 0.3789844178456635,
+      "median": 0.3925623887922103,
+      "p95": 0.4223585677981214,
+      "u0": 0.941347526614083,
+      "mean": 0.3965466276979785,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.3965466276979783,
+      "minimumSeat": {
+        "floor": [
+          41.940000000000005,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          38.11,
+          -0.32,
+          8.35
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 1",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          41.940000000000005,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6368140959299794,
+      "min": 0.5264064266573422,
+      "max": 0.7007396373060563,
+      "p05": 0.5671886257167487,
+      "p10": 0.5809579257769052,
+      "median": 0.639653040891719,
+      "p95": 0.6856495138060857,
+      "u0": 0.8266249601284312,
+      "mean": 0.6368140959299794,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6368140959299793,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5845820376186744,
+      "min": 0.3732881871706477,
+      "max": 0.7007396373060563,
+      "p05": 0.38481630823837015,
+      "p10": 0.39231254215076744,
+      "median": 0.6260033225002266,
+      "p95": 0.6846667727457437,
+      "u0": 0.638555691329923,
+      "mean": 0.5845820376186744,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5845820376186748,
+      "minimumSeat": {
+        "floor": [
+          41.940000000000005,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          41.940000000000005,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.6326145194731296,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 2.0881373578600915,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 64,
+      "worstByGap": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          11.05
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 4",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "maxGapMs": 74.86168439733375,
+      "maxSeverity": 9.690299709356132
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 80,
+      "stiNotApplicable": 0,
+      "splBelow68": 122,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 19,
+    "case": {
+      "id": "column-y3.8-tilt-20-level-10",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 3.8,
+      "tilt": -20,
+      "level": -10,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.4123624869753793,
+      "min": 0.37245622945017137,
+      "max": 0.4559005478552086,
+      "p05": 0.3753207714740955,
+      "p10": 0.37838449192246953,
+      "median": 0.4124690591180389,
+      "p95": 0.44925970394463677,
+      "u0": 0.90322529622441,
+      "mean": 0.4123624869753793,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.4123624869753792,
+      "minimumSeat": {
+        "floor": [
+          42.49,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          38.660000000000004,
+          -0.32,
+          8.35
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 1",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          42.49,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6350245302397536,
+      "min": 0.5298975553136184,
+      "max": 0.6985429292201678,
+      "p05": 0.5665716498772805,
+      "p10": 0.5796958813222318,
+      "median": 0.6377712204527501,
+      "p95": 0.6835318520828639,
+      "u0": 0.8344521039424343,
+      "mean": 0.6350245302397536,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6350245302397535,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5866197382257592,
+      "min": 0.37245622945017137,
+      "max": 0.6985429292201678,
+      "p05": 0.38676537556971835,
+      "p10": 0.4081383733255401,
+      "median": 0.6241512495646557,
+      "p95": 0.6826357467672637,
+      "u0": 0.6349193611805004,
+      "mean": 0.5866197382257592,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5866197382257591,
+      "minimumSeat": {
+        "floor": [
+          42.49,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          42.49,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.3904701768128405,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.8644136420830293,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 38,
+      "worstByGap": {
+        "floor": [
+          42.49,
+          -0.32,
+          9.25
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 2",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "maxGapMs": 67.02554318212212,
+      "maxSeverity": 6.810509135311015
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 76,
+      "stiNotApplicable": 0,
+      "splBelow68": 118,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  },
+  {
+    "rankByMinimumWingSti": 20,
+    "case": {
+      "id": "column-y4.4-tilt-20-level-10",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 4.4,
+      "tilt": -20,
+      "level": -10,
+      "alignDelays": true
+    },
+    "wingSti": {
+      "n": 80,
+      "avg": 0.40150951618001257,
+      "min": 0.3710377119224979,
+      "max": 0.4469298008630189,
+      "p05": 0.3740772342455815,
+      "p10": 0.3754893146194675,
+      "median": 0.39944219327429187,
+      "p95": 0.4351244184808534,
+      "u0": 0.9241068940347283,
+      "mean": 0.40150951618001257,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.40150951618001274,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          38.660000000000004,
+          -0.32,
+          8.35
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 1",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "naveSti": {
+      "n": 288,
+      "avg": 0.6351645576390288,
+      "min": 0.5306118178667573,
+      "max": 0.6986017548002721,
+      "p05": 0.5670796619899939,
+      "p10": 0.5799688516622584,
+      "median": 0.6378822593916531,
+      "p95": 0.6835988046257532,
+      "u0": 0.8353926734185159,
+      "mean": 0.6351645576390288,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.6351645576390288,
+      "minimumSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          33.655,
+          0,
+          -6.535
+        ],
+        "block": "outer",
+        "pew": "Proposed pew 24, outer B, added bay 8–9",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      }
+    },
+    "allSti": {
+      "n": 368,
+      "avg": 0.5843699834088079,
+      "min": 0.3710377119224979,
+      "max": 0.6986017548002721,
+      "p05": 0.3838977226179509,
+      "p10": 0.3972806428863488,
+      "median": 0.6242719499002634,
+      "p95": 0.6827471467916498,
+      "u0": 0.6349362945682495,
+      "mean": 0.5843699834088079,
+      "meanBasis": "arithmetic mean",
+      "arithmeticMean": 0.5843699834088081,
+      "minimumSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      },
+      "maximumSeat": {
+        "floor": [
+          13.315,
+          0,
+          2.15
+        ],
+        "block": "central",
+        "pew": "Proposed pew 5, central H",
+        "bookOffset": [
+          0.25,
+          0
+        ]
+      },
+      "worstSeat": {
+        "floor": [
+          43.040000000000006,
+          -0.32,
+          -11.95
+        ],
+        "block": "wing",
+        "pew": "Ministers bench · wing row 5",
+        "bookOffset": [
+          0,
+          0.25
+        ]
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.3903537846011886,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.8633408573465289,
+        "meets3Db": false
+      }
+    ],
+    "echo": {
+      "seats": 49,
+      "worstByGap": {
+        "floor": [
+          41.940000000000005,
+          -0.32,
+          9.25
+        ],
+        "block": "wing",
+        "pew": "Choir bench · wing row 2",
+        "bookOffset": [
+          0,
+          -0.25
+        ]
+      },
+      "maxGapMs": 73.30855145292102,
+      "maxSeverity": 8.302824268335407
+    },
+    "failureCounts": {
+      "stiBelow0p6": 125,
+      "stiBelow0p45": 80,
+      "stiNotApplicable": 0,
+      "splBelow68": 118,
+      "splAbove76": 0,
+      "luxBelow200": 0,
+      "luxAbove300": 272,
+      "airBelow0p3": 36,
+      "airAbove0p8": 0,
+      "noiseAbove45": 368
+    }
+  }
+]

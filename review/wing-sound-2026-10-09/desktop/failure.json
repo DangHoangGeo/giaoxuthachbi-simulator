@@ -1,0 +1,5084 @@
+{
+  "generatedAt": "2026-10-09T01:07:20.736Z",
+  "error": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /04 · Lighting routes and fittings/. Input:\n\n'INSTALLATION PLANNING · READ-ONLY\\n' +\n  'STEP-BY-STEP 3D REVIEW\\n' +\n  '\\n' +\n  'Proposed coordination sequence. Not instructions authorizing construction. Steps change the view only.\\n' +\n  '\\n' +\n  'Review step 4 of 9\\n' +\n  '\\n' +\n  '04 · LIGHTING ROUTES AND FITTINGS\\n' +\n  '\\n' +\n  'Review each light circuit and its LC-1 or DB-2 supply. Check chandelier support, aim, driver access, fan-blade interaction and labels against the matching paper sheet.\\n' +\n  '\\n' +\n  'HOLD · Selected-product photometry, support design, control channels, dimming compatibility and installation details remain pending. Review current per-seat lighting failures in the matching calculation report.\\n' +\n  '\\n' +\n  'Previous\\n' +\n  'Reset stage view\\n' +\n  'Next review step\\n' +\n  'End walkthrough\\n' +\n  '\\n' +\n  'Paper sheets: run python3 scripts/build_review_drawings.py from the project folder. The PDF represents the default model; saved browser layouts are separate.'\n\n    at lightingWalkthrough (/Users/danghoang/Desktop/giaoxuthachbi_work/scripts/verify_wing_sound_browser.cjs:213:14)\n    at async /Users/danghoang/Desktop/giaoxuthachbi_work/scripts/verify_wing_sound_browser.cjs:468:5",
+  "checks": [],
+  "frames": [
+    {
+      "file": "00-fresh-saints-B-standing-day.png",
+      "side": "B",
+      "lighting": "day",
+      "observer": "standing",
+      "category": "fresh saints art",
+      "camera": [
+        40.575,
+        1.2799999999999994,
+        -7.795000000000001
+      ],
+      "target": [
+        40.575,
+        2.2,
+        -13.095
+      ],
+      "floorY": -0.32,
+      "nominalEyeHeight": 1.6,
+      "ui": {
+        "mode": "explore",
+        "place": "wing-art-evidence",
+        "view": "wing-art-evidence",
+        "lighting": "day",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "visible": true,
+          "projected": [
+            -0.22834036101233843,
+            -9.271176274180336e-17,
+            0.9871029634612759
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "visible": true,
+          "projected": [
+            0.22834036101233843,
+            -9.271176274180336e-17,
+            0.9871029634612759
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        }
+      ],
+      "receiverCount": 368,
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "actualLoadedMaps": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "layoutSha256": "493b6d01d1b3404016e0404f66d97225d497a4e60af7accf1044dfe669dda70e"
+    },
+    {
+      "file": "00-fresh-saints-B-standing-evening.png",
+      "side": "B",
+      "lighting": "evening",
+      "observer": "standing",
+      "category": "fresh saints art",
+      "camera": [
+        40.575,
+        1.2799999999999994,
+        -7.795000000000001
+      ],
+      "target": [
+        40.575,
+        2.2,
+        -13.095
+      ],
+      "floorY": -0.32,
+      "nominalEyeHeight": 1.6,
+      "ui": {
+        "mode": "explore",
+        "place": "wing-art-evidence",
+        "view": "wing-art-evidence",
+        "lighting": "evening",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "visible": true,
+          "projected": [
+            -0.22834036101233843,
+            -9.271176274180336e-17,
+            0.9871029634612759
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "visible": true,
+          "projected": [
+            0.22834036101233843,
+            -9.271176274180336e-17,
+            0.9871029634612759
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        }
+      ],
+      "receiverCount": 368,
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "actualLoadedMaps": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "layoutSha256": "493b6d01d1b3404016e0404f66d97225d497a4e60af7accf1044dfe669dda70e"
+    },
+    {
+      "file": "00-fresh-saints-B-short-seated-day.png",
+      "side": "B",
+      "lighting": "day",
+      "observer": "short-seated",
+      "category": "fresh saints art",
+      "camera": [
+        40.575,
+        0.7300000000000002,
+        -7.795000000000001
+      ],
+      "target": [
+        40.575,
+        2.2,
+        -13.095
+      ],
+      "floorY": -0.32,
+      "nominalEyeHeight": 1.05,
+      "ui": {
+        "mode": "explore",
+        "place": "wing-art-evidence",
+        "view": "wing-art-evidence",
+        "lighting": "day",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "visible": true,
+          "projected": [
+            -0.22332419797907965,
+            -2.720252341602609e-16,
+            0.9873888476159434
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "visible": true,
+          "projected": [
+            0.22332419797907965,
+            -2.720252341602609e-16,
+            0.9873888476159434
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        }
+      ],
+      "receiverCount": 368,
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "actualLoadedMaps": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "layoutSha256": "493b6d01d1b3404016e0404f66d97225d497a4e60af7accf1044dfe669dda70e"
+    },
+    {
+      "file": "00-fresh-saints-B-short-seated-evening.png",
+      "side": "B",
+      "lighting": "evening",
+      "observer": "short-seated",
+      "category": "fresh saints art",
+      "camera": [
+        40.575,
+        0.7300000000000002,
+        -7.795000000000001
+      ],
+      "target": [
+        40.575,
+        2.2,
+        -13.095
+      ],
+      "floorY": -0.32,
+      "nominalEyeHeight": 1.05,
+      "ui": {
+        "mode": "explore",
+        "place": "wing-art-evidence",
+        "view": "wing-art-evidence",
+        "lighting": "evening",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "visible": true,
+          "projected": [
+            -0.22332419797907965,
+            -2.720252341602609e-16,
+            0.9873888476159434
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "visible": true,
+          "projected": [
+            0.22332419797907965,
+            -2.720252341602609e-16,
+            0.9873888476159434
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        }
+      ],
+      "receiverCount": 368,
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "actualLoadedMaps": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "layoutSha256": "493b6d01d1b3404016e0404f66d97225d497a4e60af7accf1044dfe669dda70e"
+    },
+    {
+      "file": "00-fresh-saints-B-wheelchair-day.png",
+      "side": "B",
+      "lighting": "day",
+      "observer": "wheelchair",
+      "category": "fresh saints art",
+      "camera": [
+        40.575,
+        0.7800000000000005,
+        -7.795000000000001
+      ],
+      "target": [
+        40.575,
+        2.2,
+        -13.095
+      ],
+      "floorY": -0.32,
+      "nominalEyeHeight": 1.1,
+      "ui": {
+        "mode": "explore",
+        "place": "wing-art-evidence",
+        "view": "wing-art-evidence",
+        "lighting": "day",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "visible": true,
+          "projected": [
+            -0.2238594947550421,
+            9.089242161664082e-17,
+            0.9873583396628969
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "visible": true,
+          "projected": [
+            0.2238594947550421,
+            9.089242161664082e-17,
+            0.9873583396628969
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        }
+      ],
+      "receiverCount": 368,
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "actualLoadedMaps": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "layoutSha256": "493b6d01d1b3404016e0404f66d97225d497a4e60af7accf1044dfe669dda70e"
+    },
+    {
+      "file": "00-fresh-saints-B-wheelchair-evening.png",
+      "side": "B",
+      "lighting": "evening",
+      "observer": "wheelchair",
+      "category": "fresh saints art",
+      "camera": [
+        40.575,
+        0.7800000000000005,
+        -7.795000000000001
+      ],
+      "target": [
+        40.575,
+        2.2,
+        -13.095
+      ],
+      "floorY": -0.32,
+      "nominalEyeHeight": 1.1,
+      "ui": {
+        "mode": "explore",
+        "place": "wing-art-evidence",
+        "view": "wing-art-evidence",
+        "lighting": "evening",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "visible": true,
+          "projected": [
+            -0.2238594947550421,
+            9.089242161664082e-17,
+            0.9873583396628969
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "visible": true,
+          "projected": [
+            0.2238594947550421,
+            9.089242161664082e-17,
+            0.9873583396628969
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        }
+      ],
+      "receiverCount": 368,
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "actualLoadedMaps": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "layoutSha256": "493b6d01d1b3404016e0404f66d97225d497a4e60af7accf1044dfe669dda70e"
+    },
+    {
+      "file": "00-fresh-saints-H-standing-day.png",
+      "side": "H",
+      "lighting": "day",
+      "observer": "standing",
+      "category": "fresh saints art",
+      "camera": [
+        40.575,
+        1.2799999999999994,
+        7.795000000000001
+      ],
+      "target": [
+        40.575,
+        2.2,
+        13.095
+      ],
+      "floorY": -0.32,
+      "nominalEyeHeight": 1.6,
+      "ui": {
+        "mode": "explore",
+        "place": "wing-art-evidence",
+        "view": "wing-art-evidence",
+        "lighting": "day",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "pictures": [
+        {
+          "id": "D-WING-H-PETER",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "visible": true,
+          "projected": [
+            0.2283403610123402,
+            -1.7962904031224394e-16,
+            0.987102963461276
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "visible": true,
+          "projected": [
+            -0.22834036101233648,
+            -1.7962904031224394e-16,
+            0.987102963461276
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        }
+      ],
+      "receiverCount": 368,
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "actualLoadedMaps": [
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "layoutSha256": "493b6d01d1b3404016e0404f66d97225d497a4e60af7accf1044dfe669dda70e"
+    },
+    {
+      "file": "00-fresh-saints-H-standing-evening.png",
+      "side": "H",
+      "lighting": "evening",
+      "observer": "standing",
+      "category": "fresh saints art",
+      "camera": [
+        40.575,
+        1.2799999999999994,
+        7.795000000000001
+      ],
+      "target": [
+        40.575,
+        2.2,
+        13.095
+      ],
+      "floorY": -0.32,
+      "nominalEyeHeight": 1.6,
+      "ui": {
+        "mode": "explore",
+        "place": "wing-art-evidence",
+        "view": "wing-art-evidence",
+        "lighting": "evening",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "pictures": [
+        {
+          "id": "D-WING-H-PETER",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "visible": true,
+          "projected": [
+            0.2283403610123402,
+            -1.7962904031224394e-16,
+            0.987102963461276
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "visible": true,
+          "projected": [
+            -0.22834036101233648,
+            -1.7962904031224394e-16,
+            0.987102963461276
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        }
+      ],
+      "receiverCount": 368,
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "actualLoadedMaps": [
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "layoutSha256": "493b6d01d1b3404016e0404f66d97225d497a4e60af7accf1044dfe669dda70e"
+    },
+    {
+      "file": "00-fresh-saints-H-short-seated-day.png",
+      "side": "H",
+      "lighting": "day",
+      "observer": "short-seated",
+      "category": "fresh saints art",
+      "camera": [
+        40.575,
+        0.7300000000000002,
+        7.795000000000001
+      ],
+      "target": [
+        40.575,
+        2.2,
+        13.095
+      ],
+      "floorY": -0.32,
+      "nominalEyeHeight": 1.05,
+      "ui": {
+        "mode": "explore",
+        "place": "wing-art-evidence",
+        "view": "wing-art-evidence",
+        "lighting": "day",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "pictures": [
+        {
+          "id": "D-WING-H-PETER",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "visible": true,
+          "projected": [
+            0.22332419797908168,
+            2.7202523416026114e-16,
+            0.9873888476159435
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "visible": true,
+          "projected": [
+            -0.22332419797907804,
+            2.7202523416026114e-16,
+            0.9873888476159435
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        }
+      ],
+      "receiverCount": 368,
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "actualLoadedMaps": [
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "layoutSha256": "493b6d01d1b3404016e0404f66d97225d497a4e60af7accf1044dfe669dda70e"
+    },
+    {
+      "file": "00-fresh-saints-H-short-seated-evening.png",
+      "side": "H",
+      "lighting": "evening",
+      "observer": "short-seated",
+      "category": "fresh saints art",
+      "camera": [
+        40.575,
+        0.7300000000000002,
+        7.795000000000001
+      ],
+      "target": [
+        40.575,
+        2.2,
+        13.095
+      ],
+      "floorY": -0.32,
+      "nominalEyeHeight": 1.05,
+      "ui": {
+        "mode": "explore",
+        "place": "wing-art-evidence",
+        "view": "wing-art-evidence",
+        "lighting": "evening",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "pictures": [
+        {
+          "id": "D-WING-H-PETER",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "visible": true,
+          "projected": [
+            0.22332419797908168,
+            2.7202523416026114e-16,
+            0.9873888476159435
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "visible": true,
+          "projected": [
+            -0.22332419797907804,
+            2.7202523416026114e-16,
+            0.9873888476159435
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        }
+      ],
+      "receiverCount": 368,
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "actualLoadedMaps": [
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "layoutSha256": "493b6d01d1b3404016e0404f66d97225d497a4e60af7accf1044dfe669dda70e"
+    },
+    {
+      "file": "00-fresh-saints-H-wheelchair-day.png",
+      "side": "H",
+      "lighting": "day",
+      "observer": "wheelchair",
+      "category": "fresh saints art",
+      "camera": [
+        40.575,
+        0.7800000000000005,
+        7.795000000000001
+      ],
+      "target": [
+        40.575,
+        2.2,
+        13.095
+      ],
+      "floorY": -0.32,
+      "nominalEyeHeight": 1.1,
+      "ui": {
+        "mode": "explore",
+        "place": "wing-art-evidence",
+        "view": "wing-art-evidence",
+        "lighting": "day",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "pictures": [
+        {
+          "id": "D-WING-H-PETER",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "visible": true,
+          "projected": [
+            0.22385949475504027,
+            -1.8178484323328164e-16,
+            0.9873583396628969
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "visible": true,
+          "projected": [
+            -0.2238594947550439,
+            -1.8178484323328164e-16,
+            0.9873583396628969
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        }
+      ],
+      "receiverCount": 368,
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "actualLoadedMaps": [
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "layoutSha256": "493b6d01d1b3404016e0404f66d97225d497a4e60af7accf1044dfe669dda70e"
+    },
+    {
+      "file": "00-fresh-saints-H-wheelchair-evening.png",
+      "side": "H",
+      "lighting": "evening",
+      "observer": "wheelchair",
+      "category": "fresh saints art",
+      "camera": [
+        40.575,
+        0.7800000000000005,
+        7.795000000000001
+      ],
+      "target": [
+        40.575,
+        2.2,
+        13.095
+      ],
+      "floorY": -0.32,
+      "nominalEyeHeight": 1.1,
+      "ui": {
+        "mode": "explore",
+        "place": "wing-art-evidence",
+        "view": "wing-art-evidence",
+        "lighting": "evening",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "pictures": [
+        {
+          "id": "D-WING-H-PETER",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "visible": true,
+          "projected": [
+            0.22385949475504027,
+            -1.8178484323328164e-16,
+            0.9873583396628969
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "visible": true,
+          "projected": [
+            -0.2238594947550439,
+            -1.8178484323328164e-16,
+            0.9873583396628969
+          ],
+          "textureVersion": 1,
+          "uploadedVersion": 1,
+          "hasGPUTexture": true,
+          "centerInFrustum": true
+        }
+      ],
+      "receiverCount": 368,
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "actualLoadedMaps": [
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "layoutSha256": "493b6d01d1b3404016e0404f66d97225d497a4e60af7accf1044dfe669dda70e"
+    }
+  ],
+  "routeChecks": [],
+  "artworkChecks": [
+    {
+      "label": "fresh defaults",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    },
+    {
+      "label": "fresh B standing day",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    },
+    {
+      "label": "fresh B standing evening",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    },
+    {
+      "label": "fresh B short-seated day",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    },
+    {
+      "label": "fresh B short-seated evening",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    },
+    {
+      "label": "fresh B wheelchair day",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    },
+    {
+      "label": "fresh B wheelchair evening",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    },
+    {
+      "label": "fresh H standing day",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    },
+    {
+      "label": "fresh H standing evening",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    },
+    {
+      "label": "fresh H short-seated day",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    },
+    {
+      "label": "fresh H short-seated evening",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    },
+    {
+      "label": "fresh H wheelchair day",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    },
+    {
+      "label": "fresh H wheelchair evening",
+      "pictures": [
+        {
+          "id": "D-WING-B-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-B-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            -13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PETER",
+          "type": "saintPeterPicture",
+          "pos": [
+            39.7,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPeterArt",
+              "materialUuid": "d756a76e-cd30-4c92-a063-90ced7667a72",
+              "mapUuid": "e42ba4de-1fac-4053-9fc5-c95aee1c8935",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+              "nativePayloadBytes": 2609696
+            }
+          ]
+        },
+        {
+          "id": "D-WING-H-PAUL",
+          "type": "saintPaulPicture",
+          "pos": [
+            41.45,
+            2.2,
+            13.095
+          ],
+          "fixtureVisible": true,
+          "maps": [
+            {
+              "materialName": "Simulator · saintPaulArt",
+              "materialUuid": "64e8ebcb-b2b8-4c72-a9ad-884f506afe22",
+              "mapUuid": "affe29e3-78c1-4dc2-bf46-280665216286",
+              "colorSpace": "srgb",
+              "srgbExpected": "srgb",
+              "src": "data:image/png;base64,[native payload omitted]",
+              "complete": true,
+              "naturalWidth": 1024,
+              "naturalHeight": 1536,
+              "width": 1024,
+              "height": 1536,
+              "geometry": {
+                "type": "BufferGeometry",
+                "isBufferGeometry": true,
+                "vertexCount": 4,
+                "uvCount": 4,
+                "finiteVertices": true,
+                "finiteUV": true,
+                "bounds": [
+                  [
+                    0.04500000178813934,
+                    -0.75,
+                    -0.5
+                  ],
+                  [
+                    0.04500000178813934,
+                    0.75,
+                    0.5
+                  ]
+                ],
+                "extents": [
+                  0,
+                  1.5,
+                  1
+                ]
+              },
+              "scheme": "data:",
+              "nativePayloadSha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+              "nativePayloadBytes": 2386800
+            }
+          ]
+        }
+      ],
+      "nativeImageCount": 2,
+      "renderedPictureCount": 4,
+      "noExternalImageURLs": true
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    {
+      "name": "fresh default",
+      "message": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      "count": 29
+    }
+  ],
+  "sourceSha256": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "67035bc56dac74b154f3c80b5f3a5ec46187df5894c4a8c8230741d4c4f85694",
+    "Thach_Bi_Viewer/simulator/engine.js": "a6ea21ce0d9d54cc26c5d5141082e5dcc19128db07357afbc169bc8413b657fe",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "44e8c4c39b2c3a6833c46642133e4f3a6eafae6c6c2176d5cf3a9a609840ffb1",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "fcbdf178a7a8c23a7ef911bd76576050f3add7867186be94245310e5c2ab7bea",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "Thach_Bi_Viewer/OPEN_CHURCH.html": "3bb537bd636337635017465746e2a4036d01ffd9a40d685b09a9314bc3db53b9",
+    "Thach_Bi_Viewer/simulator/ui.js": "f7de8a8123aa294ea6182209b928e79f516c0a1719af8f6600723a6f0d6077e7",
+    "Thach_Bi_Viewer/simulator/simulator.css": "362b1fd39ed5aeb49b776427bbfd7d2cf75a79a70d456ec47801c3cf184c386f",
+    "Thach_Bi_Viewer/references/10-wing-saints/saint-peter-concept-v1.png": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+    "Thach_Bi_Viewer/references/10-wing-saints/saint-paul-concept-v1.png": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+    "Thach_Bi_Viewer/wing-saint-textures.js": "8e5a469232c47bca675d670f33c7fd4daa969b4b17e58292cc4da49b30f8be35",
+    "scripts/build_saint_textures.py": "5dcaf9152169b9e1ce2960ab40c2d99c2f67291e3ef99617f3302d2420f4f26f",
+    "Thach_Bi_Viewer/references/10-wing-saints/README.md": "670b4f2f5ddbab6325bbf32b1247119ba3a529687648d88ffd677b0e557d9a5c",
+    "Thach_Bi_Viewer/references/10-wing-saints/provenance.json": "6942fed1e5e448bb2be37c1ecf935eeb63fee1dbcdc3dc5d58353c1e75133e0a",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
+    "scripts/verify_wing_review.cjs": "c3e1e982dc6d974f876429cdb2e14f1eb326ac535fabb88d2aadbfd5daee94de",
+    "scripts/verify_wing_sound_browser.cjs": "c07a1e595ffa5ec15dcc456e4d0a337920d4338bd97dd44378a7b02a775df29f",
+    "scripts/review_drawings_i18n.py": "09b6333b181e552c69718a284f7f82e93721156d4c0548545fc7a326277741ce",
+    "review/wing-options-2026-10-09/baseline-layout.json": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac"
+  }
+}

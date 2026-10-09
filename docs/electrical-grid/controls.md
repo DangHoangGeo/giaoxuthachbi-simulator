@@ -25,7 +25,7 @@ The source of circuit membership and scene values is [engine.js](../../Thach_Bi_
 
 | Board / panel | Current function and groups | Physical design to develop |
 | --- | --- | --- |
-| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/V1, audio groups A1–A5/MIC and seasonal X1. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
+| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/F5/V1, audio groups A1–A5/MIC and seasonal X1. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
 | DB-2, inside main entrance | Sub-board for L6 façade/towers, L7 festival exterior, L9 stage/central door and F4 trial entrance circulators. Fed from DB-1. | Local manual control for those groups, feeder-availability indication and tower quick-mode buttons. Confirm physical enclosure size and installation details. |
 | LC-1 / lighting operator controls | Lighting groups and scene functions. | Required individual/group on/off and dimming channels; main scene keypad and any agreed local repeat controls. |
 | FC-1 / fan operator controls | Fan/exhaust groups and speed selection. | Compatible controls for the selected motors; independent/group operation and clear Off/Low/Medium/High or product-specific labels. |
@@ -79,7 +79,7 @@ The 9 October connection inspector shows feeder/trunk/branch relationships above
 
 ## Held wing control group · 9 October 2026
 
-The [wing review](../engineering/wing-review.md) introduces logical **F5 · Wing wall fans · held review** for eight small wall fans through **DB-1 → FC-1 → F5**. The 14 remaining nave ceiling fans stay on F1. The six nave wall fans on F2 are shown by default but OFF in every built-in mode; their visibility does not enable them. Manual simulator operation remains available for comparison. L63–L70 remain eight items on L8, now concept chandelier assemblies. Existing speaker/microphone positions and signal circuits remain unchanged.
+The [wing review](../engineering/wing-review.md) introduces logical **F5 · Wing wall fans · held review** for four small wall fans through **DB-1 → FC-1 → F5**. The 14 remaining nave ceiling fans stay on F1. The six nave wall fans on F2 are shown by default but OFF in every built-in mode; their visibility does not enable them. Manual simulator operation remains available for comparison. L63/L65/L67/L69 remain four chandelier items on L8; four former light IDs and four appended fan IDs are retired. S276/S278 are the two wing wall speakers on A1, facing −X toward the entrance; S275/S277 are retired. Microphones and DB-1/DB-2 feeder logic are unchanged. Four unpowered Peter/Paul pictures are decoration records without circuits to energize or electrical routes.
 
 | Built-in review mode | L8 dim | F5 | F2 |
 | --- | --- | --- | --- |

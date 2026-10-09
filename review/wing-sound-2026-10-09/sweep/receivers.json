@@ -1,0 +1,3191 @@
+{
+  "blocks": 4,
+  "signature": [
+    [
+      8.795,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 1, central B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 1, central B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 1, central B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 1, side B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 1, side B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 1, side B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 1, central H",
+      null
+    ],
+    [
+      8.795,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 1, central H",
+      null
+    ],
+    [
+      8.795,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 1, central H",
+      null
+    ],
+    [
+      8.795,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 1, side H",
+      null
+    ],
+    [
+      8.795,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 1, side H",
+      null
+    ],
+    [
+      8.795,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 1, side H",
+      null
+    ],
+    [
+      9.925,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 2, central B",
+      null
+    ],
+    [
+      9.925,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 2, central B",
+      null
+    ],
+    [
+      9.925,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 2, central B",
+      null
+    ],
+    [
+      9.925,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 2, side B",
+      null
+    ],
+    [
+      9.925,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 2, side B",
+      null
+    ],
+    [
+      9.925,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 2, side B",
+      null
+    ],
+    [
+      9.925,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 2, central H",
+      null
+    ],
+    [
+      9.925,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 2, central H",
+      null
+    ],
+    [
+      9.925,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 2, central H",
+      null
+    ],
+    [
+      9.925,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 2, side H",
+      null
+    ],
+    [
+      9.925,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 2, side H",
+      null
+    ],
+    [
+      9.925,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 2, side H",
+      null
+    ],
+    [
+      11.055,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 3, central B",
+      null
+    ],
+    [
+      11.055,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 3, central B",
+      null
+    ],
+    [
+      11.055,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 3, central B",
+      null
+    ],
+    [
+      11.055,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 3, side B",
+      null
+    ],
+    [
+      11.055,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 3, side B",
+      null
+    ],
+    [
+      11.055,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 3, side B",
+      null
+    ],
+    [
+      11.055,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 3, central H",
+      null
+    ],
+    [
+      11.055,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 3, central H",
+      null
+    ],
+    [
+      11.055,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 3, central H",
+      null
+    ],
+    [
+      11.055,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 3, side H",
+      null
+    ],
+    [
+      11.055,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 3, side H",
+      null
+    ],
+    [
+      11.055,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 3, side H",
+      null
+    ],
+    [
+      12.185,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 4, central B",
+      null
+    ],
+    [
+      12.185,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 4, central B",
+      null
+    ],
+    [
+      12.185,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 4, central B",
+      null
+    ],
+    [
+      12.185,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 4, side B",
+      null
+    ],
+    [
+      12.185,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 4, side B",
+      null
+    ],
+    [
+      12.185,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 4, side B",
+      null
+    ],
+    [
+      12.185,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 4, central H",
+      null
+    ],
+    [
+      12.185,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 4, central H",
+      null
+    ],
+    [
+      12.185,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 4, central H",
+      null
+    ],
+    [
+      12.185,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 4, side H",
+      null
+    ],
+    [
+      12.185,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 4, side H",
+      null
+    ],
+    [
+      12.185,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 4, side H",
+      null
+    ],
+    [
+      13.315,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 5, central B",
+      null
+    ],
+    [
+      13.315,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 5, central B",
+      null
+    ],
+    [
+      13.315,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 5, central B",
+      null
+    ],
+    [
+      13.315,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 5, side B",
+      null
+    ],
+    [
+      13.315,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 5, side B",
+      null
+    ],
+    [
+      13.315,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 5, side B",
+      null
+    ],
+    [
+      13.315,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 5, central H",
+      null
+    ],
+    [
+      13.315,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 5, central H",
+      null
+    ],
+    [
+      13.315,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 5, central H",
+      null
+    ],
+    [
+      13.315,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 5, side H",
+      null
+    ],
+    [
+      13.315,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 5, side H",
+      null
+    ],
+    [
+      13.315,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 5, side H",
+      null
+    ],
+    [
+      14.445,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 6, central B",
+      null
+    ],
+    [
+      14.445,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 6, central B",
+      null
+    ],
+    [
+      14.445,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 6, central B",
+      null
+    ],
+    [
+      14.445,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 6, side B",
+      null
+    ],
+    [
+      14.445,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 6, side B",
+      null
+    ],
+    [
+      14.445,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 6, side B",
+      null
+    ],
+    [
+      14.445,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 6, central H",
+      null
+    ],
+    [
+      14.445,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 6, central H",
+      null
+    ],
+    [
+      14.445,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 6, central H",
+      null
+    ],
+    [
+      14.445,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 6, side H",
+      null
+    ],
+    [
+      14.445,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 6, side H",
+      null
+    ],
+    [
+      14.445,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 6, side H",
+      null
+    ],
+    [
+      18.965000000000003,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 7, central B",
+      null
+    ],
+    [
+      18.965000000000003,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 7, central B",
+      null
+    ],
+    [
+      18.965000000000003,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 7, central B",
+      null
+    ],
+    [
+      18.965000000000003,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 7, side B",
+      null
+    ],
+    [
+      18.965000000000003,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 7, side B",
+      null
+    ],
+    [
+      18.965000000000003,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 7, side B",
+      null
+    ],
+    [
+      18.965000000000003,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 7, central H",
+      null
+    ],
+    [
+      18.965000000000003,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 7, central H",
+      null
+    ],
+    [
+      18.965000000000003,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 7, central H",
+      null
+    ],
+    [
+      18.965000000000003,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 7, side H",
+      null
+    ],
+    [
+      18.965000000000003,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 7, side H",
+      null
+    ],
+    [
+      18.965000000000003,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 7, side H",
+      null
+    ],
+    [
+      20.095000000000002,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 8, central B",
+      null
+    ],
+    [
+      20.095000000000002,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 8, central B",
+      null
+    ],
+    [
+      20.095000000000002,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 8, central B",
+      null
+    ],
+    [
+      20.095000000000002,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 8, side B",
+      null
+    ],
+    [
+      20.095000000000002,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 8, side B",
+      null
+    ],
+    [
+      20.095000000000002,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 8, side B",
+      null
+    ],
+    [
+      20.095000000000002,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 8, central H",
+      null
+    ],
+    [
+      20.095000000000002,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 8, central H",
+      null
+    ],
+    [
+      20.095000000000002,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 8, central H",
+      null
+    ],
+    [
+      20.095000000000002,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 8, side H",
+      null
+    ],
+    [
+      20.095000000000002,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 8, side H",
+      null
+    ],
+    [
+      20.095000000000002,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 8, side H",
+      null
+    ],
+    [
+      21.225,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 9, central B",
+      null
+    ],
+    [
+      21.225,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 9, central B",
+      null
+    ],
+    [
+      21.225,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 9, central B",
+      null
+    ],
+    [
+      21.225,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 9, side B",
+      null
+    ],
+    [
+      21.225,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 9, side B",
+      null
+    ],
+    [
+      21.225,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 9, side B",
+      null
+    ],
+    [
+      21.225,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 9, central H",
+      null
+    ],
+    [
+      21.225,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 9, central H",
+      null
+    ],
+    [
+      21.225,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 9, central H",
+      null
+    ],
+    [
+      21.225,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 9, side H",
+      null
+    ],
+    [
+      21.225,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 9, side H",
+      null
+    ],
+    [
+      21.225,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 9, side H",
+      null
+    ],
+    [
+      22.355,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 10, central B",
+      null
+    ],
+    [
+      22.355,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 10, central B",
+      null
+    ],
+    [
+      22.355,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 10, central B",
+      null
+    ],
+    [
+      22.355,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 10, side B",
+      null
+    ],
+    [
+      22.355,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 10, side B",
+      null
+    ],
+    [
+      22.355,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 10, side B",
+      null
+    ],
+    [
+      22.355,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 10, central H",
+      null
+    ],
+    [
+      22.355,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 10, central H",
+      null
+    ],
+    [
+      22.355,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 10, central H",
+      null
+    ],
+    [
+      22.355,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 10, side H",
+      null
+    ],
+    [
+      22.355,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 10, side H",
+      null
+    ],
+    [
+      22.355,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 10, side H",
+      null
+    ],
+    [
+      23.485000000000003,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 11, central B",
+      null
+    ],
+    [
+      23.485000000000003,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 11, central B",
+      null
+    ],
+    [
+      23.485000000000003,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 11, central B",
+      null
+    ],
+    [
+      23.485000000000003,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 11, side B",
+      null
+    ],
+    [
+      23.485000000000003,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 11, side B",
+      null
+    ],
+    [
+      23.485000000000003,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 11, side B",
+      null
+    ],
+    [
+      23.485000000000003,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 11, central H",
+      null
+    ],
+    [
+      23.485000000000003,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 11, central H",
+      null
+    ],
+    [
+      23.485000000000003,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 11, central H",
+      null
+    ],
+    [
+      23.485000000000003,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 11, side H",
+      null
+    ],
+    [
+      23.485000000000003,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 11, side H",
+      null
+    ],
+    [
+      23.485000000000003,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 11, side H",
+      null
+    ],
+    [
+      24.615000000000002,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 12, central B",
+      null
+    ],
+    [
+      24.615000000000002,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 12, central B",
+      null
+    ],
+    [
+      24.615000000000002,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 12, central B",
+      null
+    ],
+    [
+      24.615000000000002,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 12, side B",
+      null
+    ],
+    [
+      24.615000000000002,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 12, side B",
+      null
+    ],
+    [
+      24.615000000000002,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 12, side B",
+      null
+    ],
+    [
+      24.615000000000002,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 12, central H",
+      null
+    ],
+    [
+      24.615000000000002,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 12, central H",
+      null
+    ],
+    [
+      24.615000000000002,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 12, central H",
+      null
+    ],
+    [
+      24.615000000000002,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 12, side H",
+      null
+    ],
+    [
+      24.615000000000002,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 12, side H",
+      null
+    ],
+    [
+      24.615000000000002,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 12, side H",
+      null
+    ],
+    [
+      25.745,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 13, central B",
+      null
+    ],
+    [
+      25.745,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 13, central B",
+      null
+    ],
+    [
+      25.745,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 13, central B",
+      null
+    ],
+    [
+      25.745,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 13, side B",
+      null
+    ],
+    [
+      25.745,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 13, side B",
+      null
+    ],
+    [
+      25.745,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 13, side B",
+      null
+    ],
+    [
+      25.745,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 13, central H",
+      null
+    ],
+    [
+      25.745,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 13, central H",
+      null
+    ],
+    [
+      25.745,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 13, central H",
+      null
+    ],
+    [
+      25.745,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 13, side H",
+      null
+    ],
+    [
+      25.745,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 13, side H",
+      null
+    ],
+    [
+      25.745,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 13, side H",
+      null
+    ],
+    [
+      26.875,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 14, central B",
+      null
+    ],
+    [
+      26.875,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 14, central B",
+      null
+    ],
+    [
+      26.875,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 14, central B",
+      null
+    ],
+    [
+      26.875,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 14, side B",
+      null
+    ],
+    [
+      26.875,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 14, side B",
+      null
+    ],
+    [
+      26.875,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 14, side B",
+      null
+    ],
+    [
+      26.875,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 14, central H",
+      null
+    ],
+    [
+      26.875,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 14, central H",
+      null
+    ],
+    [
+      26.875,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 14, central H",
+      null
+    ],
+    [
+      26.875,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 14, side H",
+      null
+    ],
+    [
+      26.875,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 14, side H",
+      null
+    ],
+    [
+      26.875,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 14, side H",
+      null
+    ],
+    [
+      28.005000000000003,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 15, central B",
+      null
+    ],
+    [
+      28.005000000000003,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 15, central B",
+      null
+    ],
+    [
+      28.005000000000003,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 15, central B",
+      null
+    ],
+    [
+      28.005000000000003,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 15, side B",
+      null
+    ],
+    [
+      28.005000000000003,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 15, side B",
+      null
+    ],
+    [
+      28.005000000000003,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 15, side B",
+      null
+    ],
+    [
+      28.005000000000003,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 15, central H",
+      null
+    ],
+    [
+      28.005000000000003,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 15, central H",
+      null
+    ],
+    [
+      28.005000000000003,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 15, central H",
+      null
+    ],
+    [
+      28.005000000000003,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 15, side H",
+      null
+    ],
+    [
+      28.005000000000003,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 15, side H",
+      null
+    ],
+    [
+      28.005000000000003,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 15, side H",
+      null
+    ],
+    [
+      29.135,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 16, central B",
+      null
+    ],
+    [
+      29.135,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 16, central B",
+      null
+    ],
+    [
+      29.135,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 16, central B",
+      null
+    ],
+    [
+      29.135,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 16, side B",
+      null
+    ],
+    [
+      29.135,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 16, side B",
+      null
+    ],
+    [
+      29.135,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 16, side B",
+      null
+    ],
+    [
+      29.135,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 16, central H",
+      null
+    ],
+    [
+      29.135,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 16, central H",
+      null
+    ],
+    [
+      29.135,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 16, central H",
+      null
+    ],
+    [
+      29.135,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 16, side H",
+      null
+    ],
+    [
+      29.135,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 16, side H",
+      null
+    ],
+    [
+      29.135,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 16, side H",
+      null
+    ],
+    [
+      30.265,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 17, central B",
+      null
+    ],
+    [
+      30.265,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 17, central B",
+      null
+    ],
+    [
+      30.265,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 17, central B",
+      null
+    ],
+    [
+      30.265,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 17, side B",
+      null
+    ],
+    [
+      30.265,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 17, side B",
+      null
+    ],
+    [
+      30.265,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 17, side B",
+      null
+    ],
+    [
+      30.265,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 17, central H",
+      null
+    ],
+    [
+      30.265,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 17, central H",
+      null
+    ],
+    [
+      30.265,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 17, central H",
+      null
+    ],
+    [
+      30.265,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 17, side H",
+      null
+    ],
+    [
+      30.265,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 17, side H",
+      null
+    ],
+    [
+      30.265,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 17, side H",
+      null
+    ],
+    [
+      31.395000000000003,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 18, central B",
+      null
+    ],
+    [
+      31.395000000000003,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 18, central B",
+      null
+    ],
+    [
+      31.395000000000003,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 18, central B",
+      null
+    ],
+    [
+      31.395000000000003,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 18, side B",
+      null
+    ],
+    [
+      31.395000000000003,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 18, side B",
+      null
+    ],
+    [
+      31.395000000000003,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 18, side B",
+      null
+    ],
+    [
+      31.395000000000003,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 18, central H",
+      null
+    ],
+    [
+      31.395000000000003,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 18, central H",
+      null
+    ],
+    [
+      31.395000000000003,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 18, central H",
+      null
+    ],
+    [
+      31.395000000000003,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 18, side H",
+      null
+    ],
+    [
+      31.395000000000003,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 18, side H",
+      null
+    ],
+    [
+      31.395000000000003,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 18, side H",
+      null
+    ],
+    [
+      32.525,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 19, central B",
+      null
+    ],
+    [
+      32.525,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 19, central B",
+      null
+    ],
+    [
+      32.525,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 19, central B",
+      null
+    ],
+    [
+      32.525,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 19, side B",
+      null
+    ],
+    [
+      32.525,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 19, side B",
+      null
+    ],
+    [
+      32.525,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 19, side B",
+      null
+    ],
+    [
+      32.525,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 19, central H",
+      null
+    ],
+    [
+      32.525,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 19, central H",
+      null
+    ],
+    [
+      32.525,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 19, central H",
+      null
+    ],
+    [
+      32.525,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 19, side H",
+      null
+    ],
+    [
+      32.525,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 19, side H",
+      null
+    ],
+    [
+      32.525,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 19, side H",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 20, central B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 20, central B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 20, central B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 20, outer B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 20, outer B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 20, outer B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 20, central H, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 20, central H, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 20, central H, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 20, outer H, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 20, outer H, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 20, outer H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 21, central B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 21, central B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 21, central B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 21, outer B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 21, outer B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 21, outer B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 21, central H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 21, central H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 21, central H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 21, outer H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 21, outer H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 21, outer H, added bay 2–3",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 22, central B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 22, central B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 22, central B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 22, outer B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 22, outer B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 22, outer B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 22, central H, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 22, central H, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 22, central H, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 22, outer H, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 22, outer H, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 22, outer H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 23, central B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 23, central B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 23, central B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 23, outer B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 23, outer B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 23, outer B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 23, central H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 23, central H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 23, central H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 23, outer H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 23, outer H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 23, outer H, added bay 4–5",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -2.7,
+      "central",
+      "Proposed pew 24, central B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -2.15,
+      "central",
+      "Proposed pew 24, central B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -1.5999999999999999,
+      "central",
+      "Proposed pew 24, central B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -6.535,
+      "outer",
+      "Proposed pew 24, outer B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -5.985,
+      "outer",
+      "Proposed pew 24, outer B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -5.4350000000000005,
+      "outer",
+      "Proposed pew 24, outer B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      1.5999999999999999,
+      "central",
+      "Proposed pew 24, central H, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      2.15,
+      "central",
+      "Proposed pew 24, central H, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      2.7,
+      "central",
+      "Proposed pew 24, central H, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      5.4350000000000005,
+      "outer",
+      "Proposed pew 24, outer H, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      5.985,
+      "outer",
+      "Proposed pew 24, outer H, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      6.535,
+      "outer",
+      "Proposed pew 24, outer H, added bay 8–9",
+      null
+    ],
+    [
+      38.11,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ]
+  ],
+  "sha256": "41c45e5e2b3287eb5e65df5dbe9257863468973362cdeb2f14bb4a4e0dd73f65",
+  "n": 368
+}

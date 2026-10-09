@@ -1,25 +1,25 @@
 {
   "schema": 1,
   "basis": "Fresh default model, not saved browser layout",
-  "gitRevision": "eefc2712fde7e5f788ca8dad7c10adc016d7988e",
+  "gitRevision": "cbf47dad34bf680ff71e905965539e44aa653a0c",
   "sourceFiles": {
     "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
     "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
-    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/references.js": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
     "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
     "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
     "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
     "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
     "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
     "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
-    "Thach_Bi_Viewer/simulator/catalog.js": "ea98e993b2356e9bb7a744262fdb4543f9997e2efe66e39d988c1e43727fe695",
-    "Thach_Bi_Viewer/simulator/engine.js": "b83dbb26338b907f514b34fbf4cae4cbabec3a723b85655c98e02c0e66246f6d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "67035bc56dac74b154f3c80b5f3a5ec46187df5894c4a8c8230741d4c4f85694",
+    "Thach_Bi_Viewer/simulator/engine.js": "a6ea21ce0d9d54cc26c5d5141082e5dcc19128db07357afbc169bc8413b657fe",
     "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
     "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
-    "Thach_Bi_Viewer/simulator/design.js": "95ab9cdc750b49f32c5e7331d5606f9acd17d3d38012cb53a6d06ad69907b81e",
+    "Thach_Bi_Viewer/simulator/design.js": "44e8c4c39b2c3a6833c46642133e4f3a6eafae6c6c2176d5cf3a9a609840ffb1",
     "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
-    "Thach_Bi_Viewer/simulator/electrical.js": "4e9126cf5d5448d4aefd0e85265c384decbecb6c53937cb3154e2299a16fd4c6",
-    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/simulator/electrical.js": "fcbdf178a7a8c23a7ef911bd76576050f3add7867186be94245310e5c2ab7bea",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
     "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
     "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
   },
@@ -154,7 +154,9 @@
         "references/01-timber-frame/full-hd/2026-10-07-09-carved-connection-detail.png",
         "references/02-sanctuary/concepts/09-sanctuary-approved-concept.png",
         "references/02-sanctuary/sources/10-sanctuary-church-reference.jpg",
-        "references/07-stairs/details/08-retained-side-stair-detail.png"
+        "references/07-stairs/details/08-retained-side-stair-detail.png",
+        "references/10-wing-saints/saint-peter-concept-v1.png",
+        "references/10-wing-saints/saint-paul-concept-v1.png"
       ]
     },
     "sanctuary": {
@@ -8723,9 +8725,7 @@
         "role": "trunk",
         "itemIds": [
           "L63",
-          "L64",
-          "L65",
-          "L66"
+          "L65"
         ],
         "color": "#dc9e29",
         "method": "wall-roof-trunk",
@@ -8899,12 +8899,12 @@
           [
             38.94,
             7.953150773195873,
-            -10.6
+            -10.15
           ],
           [
             38.94,
-            4.4,
-            -10.6
+            3.8,
+            -10.15
           ]
         ],
         "method": "roof-pendant",
@@ -8920,73 +8920,14 @@
               [
                 38.94,
                 7.953150773195873,
-                -10.6
+                -10.15
               ]
             ],
             "finish": "soffit",
             "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
           }
         ],
-        "length": 6.793150773195872,
-        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-        "drawnDiameter": 0.048,
-        "buildingDrawnDiameter": 0.006,
-        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-      },
-      {
-        "id": "drop:LC1:L8:light:-1:L64",
-        "name": "L8 → Wing light · B · front block · front rows",
-        "source": "LC1",
-        "board": "DB1",
-        "circuit": "L8",
-        "kind": "light",
-        "role": "drop",
-        "itemIds": [
-          "L64"
-        ],
-        "trunkId": "trunk:LC1:L8:light:-1",
-        "color": "#dc9e29",
-        "upstreamLength": 31.83942622175583,
-        "homeRun": false,
-        "points": [
-          [
-            38.94,
-            7.953150773195872,
-            -7.36
-          ],
-          [
-            38.94,
-            7.953150773195873,
-            -8.8
-          ],
-          [
-            38.94,
-            4.4,
-            -8.8
-          ]
-        ],
-        "method": "roof-pendant",
-        "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-        "coverPaths": [
-          {
-            "points": [
-              [
-                38.94,
-                7.953150773195872,
-                -7.36
-              ],
-              [
-                38.94,
-                7.953150773195873,
-                -8.8
-              ]
-            ],
-            "finish": "soffit",
-            "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-          }
-        ],
-        "length": 4.993150773195873,
+        "length": 6.943150773195873,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
@@ -9017,12 +8958,12 @@
           [
             42.22,
             7.9450966494845385,
-            -10.6
+            -10.15
           ],
           [
             42.22,
-            4.4,
-            -10.6
+            3.8,
+            -10.15
           ]
         ],
         "method": "roof-pendant",
@@ -9038,73 +8979,14 @@
               [
                 42.22,
                 7.9450966494845385,
-                -10.6
+                -10.15
               ]
             ],
             "finish": "soffit",
             "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
           }
         ],
-        "length": 6.7850966494845375,
-        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-        "drawnDiameter": 0.048,
-        "buildingDrawnDiameter": 0.006,
-        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-      },
-      {
-        "id": "drop:LC1:L8:light:-1:L66",
-        "name": "L8 → Wing light · B · rear block · front rows",
-        "source": "LC1",
-        "board": "DB1",
-        "circuit": "L8",
-        "kind": "light",
-        "role": "drop",
-        "itemIds": [
-          "L66"
-        ],
-        "trunkId": "trunk:LC1:L8:light:-1",
-        "color": "#dc9e29",
-        "upstreamLength": 27.627863960578313,
-        "homeRun": false,
-        "points": [
-          [
-            42.22,
-            7.945096649484534,
-            -7.36
-          ],
-          [
-            42.22,
-            7.9450966494845385,
-            -8.8
-          ],
-          [
-            42.22,
-            4.4,
-            -8.8
-          ]
-        ],
-        "method": "roof-pendant",
-        "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-        "coverPaths": [
-          {
-            "points": [
-              [
-                42.22,
-                7.945096649484534,
-                -7.36
-              ],
-              [
-                42.22,
-                7.9450966494845385,
-                -8.8
-              ]
-            ],
-            "finish": "soffit",
-            "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-          }
-        ],
-        "length": 4.985096649484539,
+        "length": 6.935096649484539,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
@@ -9121,9 +9003,7 @@
         "role": "trunk",
         "itemIds": [
           "L67",
-          "L68",
-          "L69",
-          "L70"
+          "L69"
         ],
         "color": "#dc9e29",
         "method": "wall-roof-trunk",
@@ -9297,12 +9177,12 @@
           [
             38.94,
             7.953150773195873,
-            10.6
+            10.15
           ],
           [
             38.94,
-            4.4,
-            10.6
+            3.8,
+            10.15
           ]
         ],
         "method": "roof-pendant",
@@ -9318,73 +9198,14 @@
               [
                 38.94,
                 7.953150773195873,
-                10.6
+                10.15
               ]
             ],
             "finish": "soffit",
             "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
           }
         ],
-        "length": 6.793150773195872,
-        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-        "drawnDiameter": 0.048,
-        "buildingDrawnDiameter": 0.006,
-        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-      },
-      {
-        "id": "drop:LC1:L8:light:1:L68",
-        "name": "L8 → Wing light · H · front block · front rows",
-        "source": "LC1",
-        "board": "DB1",
-        "circuit": "L8",
-        "kind": "light",
-        "role": "drop",
-        "itemIds": [
-          "L68"
-        ],
-        "trunkId": "trunk:LC1:L8:light:1",
-        "color": "#dc9e29",
-        "upstreamLength": 38.43942622175583,
-        "homeRun": false,
-        "points": [
-          [
-            38.94,
-            7.953150773195872,
-            7.36
-          ],
-          [
-            38.94,
-            7.953150773195873,
-            8.8
-          ],
-          [
-            38.94,
-            4.4,
-            8.8
-          ]
-        ],
-        "method": "roof-pendant",
-        "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-        "coverPaths": [
-          {
-            "points": [
-              [
-                38.94,
-                7.953150773195872,
-                7.36
-              ],
-              [
-                38.94,
-                7.953150773195873,
-                8.8
-              ]
-            ],
-            "finish": "soffit",
-            "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-          }
-        ],
-        "length": 4.993150773195873,
+        "length": 6.943150773195873,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
@@ -9415,12 +9236,12 @@
           [
             42.22,
             7.9450966494845385,
-            10.6
+            10.15
           ],
           [
             42.22,
-            4.4,
-            10.6
+            3.8,
+            10.15
           ]
         ],
         "method": "roof-pendant",
@@ -9436,73 +9257,14 @@
               [
                 42.22,
                 7.9450966494845385,
-                10.6
+                10.15
               ]
             ],
             "finish": "soffit",
             "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
           }
         ],
-        "length": 6.7850966494845375,
-        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-        "drawnDiameter": 0.048,
-        "buildingDrawnDiameter": 0.006,
-        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-      },
-      {
-        "id": "drop:LC1:L8:light:1:L70",
-        "name": "L8 → Wing light · H · rear block · front rows",
-        "source": "LC1",
-        "board": "DB1",
-        "circuit": "L8",
-        "kind": "light",
-        "role": "drop",
-        "itemIds": [
-          "L70"
-        ],
-        "trunkId": "trunk:LC1:L8:light:1",
-        "color": "#dc9e29",
-        "upstreamLength": 34.22786396057831,
-        "homeRun": false,
-        "points": [
-          [
-            42.22,
-            7.945096649484534,
-            7.36
-          ],
-          [
-            42.22,
-            7.9450966494845385,
-            8.8
-          ],
-          [
-            42.22,
-            4.4,
-            8.8
-          ]
-        ],
-        "method": "roof-pendant",
-        "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-        "coverPaths": [
-          {
-            "points": [
-              [
-                42.22,
-                7.945096649484534,
-                7.36
-              ],
-              [
-                42.22,
-                7.9450966494845385,
-                8.8
-              ]
-            ],
-            "finish": "soffit",
-            "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-          }
-        ],
-        "length": 4.985096649484539,
+        "length": 6.935096649484539,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
@@ -25795,9 +25557,7 @@
         "role": "trunk",
         "itemIds": [
           "F240",
-          "F241",
-          "F-WING-B-3",
-          "F-WING-B-4"
+          "F241"
         ],
         "color": "#b46a48",
         "method": "wall-roof-trunk",
@@ -25869,12 +25629,12 @@
             -7.36
           ],
           [
-            39.15,
-            8.122287371134018,
+            38.05,
+            7.236333762886593,
             -7.36
           ]
         ],
-        "length": 32.419783516009694,
+        "length": 33.83219768896557,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "coverPaths": [
@@ -25934,8 +25694,8 @@
                 -7.36
               ],
               [
-                39.15,
-                8.122287371134018,
+                38.05,
+                7.236333762886593,
                 -7.36
               ]
             ],
@@ -25960,27 +25720,27 @@
         ],
         "trunkId": "trunk:FC1:F5:fan:-1",
         "color": "#b46a48",
-        "upstreamLength": 32.419783516009694,
+        "upstreamLength": 33.83219768896557,
         "homeRun": false,
         "points": [
           [
-            39.15,
-            8.122287371134018,
+            38.05,
+            7.236333762886593,
             -7.36
           ],
           [
-            39.15,
-            8.122287371134016,
+            38.05,
+            7.236333762886593,
             -13.249
           ],
           [
-            39.15,
-            3.5,
+            38.05,
+            4.05,
             -13.249
           ],
           [
-            39.15,
-            3.5,
+            38.05,
+            4.05,
             -13.06
           ]
         ],
@@ -25990,13 +25750,13 @@
           {
             "points": [
               [
-                39.15,
-                8.122287371134018,
+                38.05,
+                7.236333762886593,
                 -7.36
               ],
               [
-                39.15,
-                8.122287371134016,
+                38.05,
+                7.236333762886593,
                 -13.249
               ]
             ],
@@ -26004,7 +25764,7 @@
             "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
           }
         ],
-        "length": 10.700287371134017,
+        "length": 9.264333762886594,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
@@ -26024,27 +25784,27 @@
         ],
         "trunkId": "trunk:FC1:F5:fan:-1",
         "color": "#b46a48",
-        "upstreamLength": 31.392573208405416,
+        "upstreamLength": 27.3479326222136,
         "homeRun": false,
         "points": [
           [
-            39.95,
-            8.766617268041237,
+            43.1,
+            7.236333762886598,
             -7.36
           ],
           [
-            39.95,
-            8.766617268041237,
+            43.1,
+            7.2363337628865985,
             -13.249
           ],
           [
-            39.95,
-            2.7,
+            43.1,
+            4.05,
             -13.249
           ],
           [
-            39.95,
-            2.7,
+            43.1,
+            4.05,
             -13.06
           ]
         ],
@@ -26054,13 +25814,13 @@
           {
             "points": [
               [
-                39.95,
-                8.766617268041237,
+                43.1,
+                7.236333762886598,
                 -7.36
               ],
               [
-                39.95,
-                8.766617268041237,
+                43.1,
+                7.2363337628865985,
                 -13.249
               ]
             ],
@@ -26068,135 +25828,7 @@
             "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
           }
         ],
-        "length": 12.144617268041237,
-        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-        "drawnDiameter": 0.048,
-        "buildingDrawnDiameter": 0.006,
-        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-      },
-      {
-        "id": "drop:FC1:F5:fan:-1:F-WING-B-3",
-        "name": "F5 → Wall fan · wing B · 3 · held review",
-        "source": "FC1",
-        "board": "DB1",
-        "circuit": "F5",
-        "kind": "fan",
-        "role": "drop",
-        "itemIds": [
-          "F-WING-B-3"
-        ],
-        "trunkId": "trunk:FC1:F5:fan:-1",
-        "color": "#b46a48",
-        "upstreamLength": 29.787557102773743,
-        "homeRun": false,
-        "points": [
-          [
-            41.2,
-            8.766617268041228,
-            -7.36
-          ],
-          [
-            41.2,
-            8.766617268041237,
-            -13.249
-          ],
-          [
-            41.2,
-            2.7,
-            -13.249
-          ],
-          [
-            41.2,
-            2.7,
-            -13.06
-          ]
-        ],
-        "method": "outer-wall",
-        "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-        "coverPaths": [
-          {
-            "points": [
-              [
-                41.2,
-                8.766617268041228,
-                -7.36
-              ],
-              [
-                41.2,
-                8.766617268041237,
-                -13.249
-              ]
-            ],
-            "finish": "soffit",
-            "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-          }
-        ],
-        "length": 12.144617268041237,
-        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-        "drawnDiameter": 0.048,
-        "buildingDrawnDiameter": 0.006,
-        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-      },
-      {
-        "id": "drop:FC1:F5:fan:-1:F-WING-B-4",
-        "name": "F5 → Wall fan · wing B · 4 · held review",
-        "source": "FC1",
-        "board": "DB1",
-        "circuit": "F5",
-        "kind": "fan",
-        "role": "drop",
-        "itemIds": [
-          "F-WING-B-4"
-        ],
-        "trunkId": "trunk:FC1:F5:fan:-1",
-        "color": "#b46a48",
-        "upstreamLength": 28.760346795169475,
-        "homeRun": false,
-        "points": [
-          [
-            42,
-            8.122287371134018,
-            -7.36
-          ],
-          [
-            42,
-            8.122287371134023,
-            -13.249
-          ],
-          [
-            42,
-            3.5,
-            -13.249
-          ],
-          [
-            42,
-            3.5,
-            -13.06
-          ]
-        ],
-        "method": "outer-wall",
-        "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-        "coverPaths": [
-          {
-            "points": [
-              [
-                42,
-                8.122287371134018,
-                -7.36
-              ],
-              [
-                42,
-                8.122287371134023,
-                -13.249
-              ]
-            ],
-            "finish": "soffit",
-            "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-          }
-        ],
-        "length": 10.700287371134024,
+        "length": 9.264333762886599,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
@@ -26213,9 +25845,7 @@
         "role": "trunk",
         "itemIds": [
           "F242",
-          "F243",
-          "F-WING-H-3",
-          "F-WING-H-4"
+          "F243"
         ],
         "color": "#b46a48",
         "method": "wall-roof-trunk",
@@ -26287,12 +25917,12 @@
             7.36
           ],
           [
-            39.15,
-            8.122287371134018,
+            38.05,
+            7.236333762886593,
             7.36
           ]
         ],
-        "length": 39.0197835160097,
+        "length": 40.43219768896557,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "coverPaths": [
@@ -26352,8 +25982,8 @@
                 7.36
               ],
               [
-                39.15,
-                8.122287371134018,
+                38.05,
+                7.236333762886593,
                 7.36
               ]
             ],
@@ -26378,27 +26008,27 @@
         ],
         "trunkId": "trunk:FC1:F5:fan:1",
         "color": "#b46a48",
-        "upstreamLength": 39.0197835160097,
+        "upstreamLength": 40.43219768896557,
         "homeRun": false,
         "points": [
           [
-            39.15,
-            8.122287371134018,
+            38.05,
+            7.236333762886593,
             7.36
           ],
           [
-            39.15,
-            8.122287371134016,
+            38.05,
+            7.236333762886593,
             13.249
           ],
           [
-            39.15,
-            3.5,
+            38.05,
+            4.05,
             13.249
           ],
           [
-            39.15,
-            3.5,
+            38.05,
+            4.05,
             13.06
           ]
         ],
@@ -26408,13 +26038,13 @@
           {
             "points": [
               [
-                39.15,
-                8.122287371134018,
+                38.05,
+                7.236333762886593,
                 7.36
               ],
               [
-                39.15,
-                8.122287371134016,
+                38.05,
+                7.236333762886593,
                 13.249
               ]
             ],
@@ -26422,7 +26052,7 @@
             "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
           }
         ],
-        "length": 10.700287371134017,
+        "length": 9.264333762886594,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
@@ -26442,27 +26072,27 @@
         ],
         "trunkId": "trunk:FC1:F5:fan:1",
         "color": "#b46a48",
-        "upstreamLength": 37.992573208405425,
+        "upstreamLength": 33.94793262221361,
         "homeRun": false,
         "points": [
           [
-            39.95,
-            8.766617268041237,
+            43.1,
+            7.236333762886598,
             7.36
           ],
           [
-            39.95,
-            8.766617268041237,
+            43.1,
+            7.2363337628865985,
             13.249
           ],
           [
-            39.95,
-            2.7,
+            43.1,
+            4.05,
             13.249
           ],
           [
-            39.95,
-            2.7,
+            43.1,
+            4.05,
             13.06
           ]
         ],
@@ -26472,13 +26102,13 @@
           {
             "points": [
               [
-                39.95,
-                8.766617268041237,
+                43.1,
+                7.236333762886598,
                 7.36
               ],
               [
-                39.95,
-                8.766617268041237,
+                43.1,
+                7.2363337628865985,
                 13.249
               ]
             ],
@@ -26486,135 +26116,7 @@
             "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
           }
         ],
-        "length": 12.144617268041237,
-        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-        "drawnDiameter": 0.048,
-        "buildingDrawnDiameter": 0.006,
-        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-      },
-      {
-        "id": "drop:FC1:F5:fan:1:F-WING-H-3",
-        "name": "F5 → Wall fan · wing H · 3 · held review",
-        "source": "FC1",
-        "board": "DB1",
-        "circuit": "F5",
-        "kind": "fan",
-        "role": "drop",
-        "itemIds": [
-          "F-WING-H-3"
-        ],
-        "trunkId": "trunk:FC1:F5:fan:1",
-        "color": "#b46a48",
-        "upstreamLength": 36.38755710277375,
-        "homeRun": false,
-        "points": [
-          [
-            41.2,
-            8.766617268041228,
-            7.36
-          ],
-          [
-            41.2,
-            8.766617268041237,
-            13.249
-          ],
-          [
-            41.2,
-            2.7,
-            13.249
-          ],
-          [
-            41.2,
-            2.7,
-            13.06
-          ]
-        ],
-        "method": "outer-wall",
-        "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-        "coverPaths": [
-          {
-            "points": [
-              [
-                41.2,
-                8.766617268041228,
-                7.36
-              ],
-              [
-                41.2,
-                8.766617268041237,
-                13.249
-              ]
-            ],
-            "finish": "soffit",
-            "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-          }
-        ],
-        "length": 12.144617268041237,
-        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-        "drawnDiameter": 0.048,
-        "buildingDrawnDiameter": 0.006,
-        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-      },
-      {
-        "id": "drop:FC1:F5:fan:1:F-WING-H-4",
-        "name": "F5 → Wall fan · wing H · 4 · held review",
-        "source": "FC1",
-        "board": "DB1",
-        "circuit": "F5",
-        "kind": "fan",
-        "role": "drop",
-        "itemIds": [
-          "F-WING-H-4"
-        ],
-        "trunkId": "trunk:FC1:F5:fan:1",
-        "color": "#b46a48",
-        "upstreamLength": 35.36034679516948,
-        "homeRun": false,
-        "points": [
-          [
-            42,
-            8.122287371134018,
-            7.36
-          ],
-          [
-            42,
-            8.122287371134023,
-            13.249
-          ],
-          [
-            42,
-            3.5,
-            13.249
-          ],
-          [
-            42,
-            3.5,
-            13.06
-          ]
-        ],
-        "method": "outer-wall",
-        "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-        "coverPaths": [
-          {
-            "points": [
-              [
-                42,
-                8.122287371134018,
-                7.36
-              ],
-              [
-                42,
-                8.122287371134023,
-                13.249
-              ]
-            ],
-            "finish": "soffit",
-            "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-          }
-        ],
-        "length": 10.700287371134024,
+        "length": 9.264333762886599,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
@@ -28486,7 +27988,6 @@
           "S267",
           "S269",
           "S271",
-          "S275",
           "S276"
         ],
         "color": "#3985c2",
@@ -28942,67 +28443,8 @@
         "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
       },
       {
-        "id": "drop:AV1:A1:audio:-1:S275",
-        "name": "A1 → Wing speaker · B · front block",
-        "source": "AV1",
-        "board": "DB1",
-        "circuit": "A1",
-        "kind": "audio",
-        "role": "drop",
-        "itemIds": [
-          "S275"
-        ],
-        "trunkId": "trunk:AV1:A1:audio:-1",
-        "color": "#3985c2",
-        "upstreamLength": 35.06942622175582,
-        "homeRun": true,
-        "points": [
-          [
-            38.94,
-            7.953150773195872,
-            -7.36
-          ],
-          [
-            38.94,
-            7.953150773195873,
-            -11.6
-          ],
-          [
-            38.94,
-            3,
-            -11.6
-          ]
-        ],
-        "method": "roof-pendant",
-        "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-        "coverPaths": [
-          {
-            "points": [
-              [
-                38.94,
-                7.953150773195872,
-                -7.36
-              ],
-              [
-                38.94,
-                7.953150773195873,
-                -11.6
-              ]
-            ],
-            "finish": "soffit",
-            "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-          }
-        ],
-        "length": 9.193150773195871,
-        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-        "drawnDiameter": 0.048,
-        "buildingDrawnDiameter": 0.006,
-        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-      },
-      {
         "id": "drop:AV1:A1:audio:-1:S276",
-        "name": "A1 → Wing speaker · B · rear block",
+        "name": "A1 → Wing speaker · B · toward entrance · held",
         "source": "AV1",
         "board": "DB1",
         "circuit": "A1",
@@ -29013,46 +28455,81 @@
         ],
         "trunkId": "trunk:AV1:A1:audio:-1",
         "color": "#3985c2",
-        "upstreamLength": 30.857863960578303,
+        "upstreamLength": 28.966999999999995,
         "homeRun": true,
         "points": [
           [
-            42.22,
-            7.945096649484534,
+            43.72,
+            7.04,
             -7.36
           ],
           [
-            42.22,
-            7.9450966494845385,
-            -11.6
+            43.72,
+            6.932303102135284,
+            -7.439581081081082
           ],
           [
-            42.22,
-            3,
-            -11.6
+            43.72,
+            6.737637225623414,
+            -8.314972972972974
+          ],
+          [
+            43.72,
+            6.736978092783508,
+            -8.394554054054055
+          ],
+          [
+            43.72,
+            6.736978092783508,
+            -13.249
+          ],
+          [
+            43.72,
+            4.85,
+            -13.249
+          ],
+          [
+            43.72,
+            4.85,
+            -13.06
           ]
         ],
-        "method": "roof-pendant",
-        "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+        "method": "outer-wall",
+        "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
         "coverPaths": [
           {
             "points": [
               [
-                42.22,
-                7.945096649484534,
+                43.72,
+                7.04,
                 -7.36
               ],
               [
-                42.22,
-                7.9450966494845385,
-                -11.6
+                43.72,
+                6.932303102135284,
+                -7.439581081081082
+              ],
+              [
+                43.72,
+                6.737637225623414,
+                -8.314972972972974
+              ],
+              [
+                43.72,
+                6.736978092783508,
+                -8.394554054054055
+              ],
+              [
+                43.72,
+                6.736978092783508,
+                -13.249
               ]
             ],
             "finish": "soffit",
             "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
           }
         ],
-        "length": 9.185096649484539,
+        "length": 8.040692614226739,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
@@ -29074,7 +28551,6 @@
           "S268",
           "S270",
           "S272",
-          "S277",
           "S278"
         ],
         "color": "#3985c2",
@@ -29530,67 +29006,8 @@
         "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
       },
       {
-        "id": "drop:AV1:A1:audio:1:S277",
-        "name": "A1 → Wing speaker · H · front block",
-        "source": "AV1",
-        "board": "DB1",
-        "circuit": "A1",
-        "kind": "audio",
-        "role": "drop",
-        "itemIds": [
-          "S277"
-        ],
-        "trunkId": "trunk:AV1:A1:audio:1",
-        "color": "#3985c2",
-        "upstreamLength": 41.66942622175582,
-        "homeRun": true,
-        "points": [
-          [
-            38.94,
-            7.953150773195872,
-            7.36
-          ],
-          [
-            38.94,
-            7.953150773195873,
-            11.6
-          ],
-          [
-            38.94,
-            3,
-            11.6
-          ]
-        ],
-        "method": "roof-pendant",
-        "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-        "coverPaths": [
-          {
-            "points": [
-              [
-                38.94,
-                7.953150773195872,
-                7.36
-              ],
-              [
-                38.94,
-                7.953150773195873,
-                11.6
-              ]
-            ],
-            "finish": "soffit",
-            "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-          }
-        ],
-        "length": 9.193150773195871,
-        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-        "drawnDiameter": 0.048,
-        "buildingDrawnDiameter": 0.006,
-        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-      },
-      {
         "id": "drop:AV1:A1:audio:1:S278",
-        "name": "A1 → Wing speaker · H · rear block",
+        "name": "A1 → Wing speaker · H · toward entrance · held",
         "source": "AV1",
         "board": "DB1",
         "circuit": "A1",
@@ -29601,46 +29018,81 @@
         ],
         "trunkId": "trunk:AV1:A1:audio:1",
         "color": "#3985c2",
-        "upstreamLength": 37.4578639605783,
+        "upstreamLength": 35.56699999999999,
         "homeRun": true,
         "points": [
           [
-            42.22,
-            7.945096649484534,
+            43.72,
+            7.04,
             7.36
           ],
           [
-            42.22,
-            7.9450966494845385,
-            11.6
+            43.72,
+            6.932303102135284,
+            7.439581081081082
           ],
           [
-            42.22,
-            3,
-            11.6
+            43.72,
+            6.737637225623414,
+            8.314972972972974
+          ],
+          [
+            43.72,
+            6.736978092783508,
+            8.394554054054055
+          ],
+          [
+            43.72,
+            6.736978092783508,
+            13.249
+          ],
+          [
+            43.72,
+            4.85,
+            13.249
+          ],
+          [
+            43.72,
+            4.85,
+            13.06
           ]
         ],
-        "method": "roof-pendant",
-        "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+        "method": "outer-wall",
+        "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
         "coverPaths": [
           {
             "points": [
               [
-                42.22,
-                7.945096649484534,
+                43.72,
+                7.04,
                 7.36
               ],
               [
-                42.22,
-                7.9450966494845385,
-                11.6
+                43.72,
+                6.932303102135284,
+                7.439581081081082
+              ],
+              [
+                43.72,
+                6.737637225623414,
+                8.314972972972974
+              ],
+              [
+                43.72,
+                6.736978092783508,
+                8.394554054054055
+              ],
+              [
+                43.72,
+                6.736978092783508,
+                13.249
               ]
             ],
             "finish": "soffit",
             "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
           }
         ],
-        "length": 9.185096649484539,
+        "length": 8.040692614226739,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
@@ -33786,33 +33238,8 @@
         "hiddenAlternative": false,
         "position": [
           38.94,
-          4.4,
-          -10.6
-        ],
-        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-      },
-      {
-        "id": "L64",
-        "name": "Wing light · B · front block · front rows",
-        "type": "chandelier6Reading",
-        "product": "Small brass chandelier + reading optic · concept",
-        "circuit": "L8",
-        "board": "DB1",
-        "quantity": 1,
-        "modelSize": [
-          1.340000033378601,
-          1.2404999719560146,
-          1.1792304515838623
-        ],
-        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-        "diameter": null,
-        "wattsEstimate": 51,
-        "specs": "5640 lm · 2700 K · 100° beam",
-        "hiddenAlternative": false,
-        "position": [
-          38.94,
-          4.4,
-          -8.8
+          3.8,
+          -10.15
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       },
@@ -33836,33 +33263,8 @@
         "hiddenAlternative": false,
         "position": [
           42.22,
-          4.4,
-          -10.6
-        ],
-        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-      },
-      {
-        "id": "L66",
-        "name": "Wing light · B · rear block · front rows",
-        "type": "chandelier6Reading",
-        "product": "Small brass chandelier + reading optic · concept",
-        "circuit": "L8",
-        "board": "DB1",
-        "quantity": 1,
-        "modelSize": [
-          1.340000033378601,
-          1.2404999719560146,
-          1.1792304515838623
-        ],
-        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-        "diameter": null,
-        "wattsEstimate": 51,
-        "specs": "5640 lm · 2700 K · 100° beam",
-        "hiddenAlternative": false,
-        "position": [
-          42.22,
-          4.4,
-          -8.8
+          3.8,
+          -10.15
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       },
@@ -33886,33 +33288,8 @@
         "hiddenAlternative": false,
         "position": [
           38.94,
-          4.4,
-          10.6
-        ],
-        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-      },
-      {
-        "id": "L68",
-        "name": "Wing light · H · front block · front rows",
-        "type": "chandelier6Reading",
-        "product": "Small brass chandelier + reading optic · concept",
-        "circuit": "L8",
-        "board": "DB1",
-        "quantity": 1,
-        "modelSize": [
-          1.340000033378601,
-          1.2404999719560146,
-          1.1792304515838623
-        ],
-        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-        "diameter": null,
-        "wattsEstimate": 51,
-        "specs": "5640 lm · 2700 K · 100° beam",
-        "hiddenAlternative": false,
-        "position": [
-          38.94,
-          4.4,
-          8.8
+          3.8,
+          10.15
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       },
@@ -33936,33 +33313,8 @@
         "hiddenAlternative": false,
         "position": [
           42.22,
-          4.4,
-          10.6
-        ],
-        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-      },
-      {
-        "id": "L70",
-        "name": "Wing light · H · rear block · front rows",
-        "type": "chandelier6Reading",
-        "product": "Small brass chandelier + reading optic · concept",
-        "circuit": "L8",
-        "board": "DB1",
-        "quantity": 1,
-        "modelSize": [
-          1.340000033378601,
-          1.2404999719560146,
-          1.1792304515838623
-        ],
-        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-        "diameter": null,
-        "wattsEstimate": 51,
-        "specs": "5640 lm · 2700 K · 100° beam",
-        "hiddenAlternative": false,
-        "position": [
-          42.22,
-          4.4,
-          8.8
+          3.8,
+          10.15
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       },
@@ -38194,13 +37546,13 @@
       {
         "id": "F240",
         "name": "Wall fan · wing B · 1 · held review",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
+        "type": "fanWingWall",
+        "product": "Wing wall fan · 45 cm · extended bracket concept",
         "circuit": "F5",
         "board": "DB1",
         "quantity": 1,
         "modelSize": [
-          0.4599999934434891,
+          0.6649999977648258,
           0.49000000953674316,
           0.49000000953674316
         ],
@@ -38210,8 +37562,8 @@
         "specs": "0.45 m diameter · 55 W at maximum speed",
         "hiddenAlternative": false,
         "position": [
-          39.15,
-          3.5,
+          38.05,
+          4.05,
           -13.06
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -38219,13 +37571,13 @@
       {
         "id": "F241",
         "name": "Wall fan · wing B · 2 · held review",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
+        "type": "fanWingWall",
+        "product": "Wing wall fan · 45 cm · extended bracket concept",
         "circuit": "F5",
         "board": "DB1",
         "quantity": 1,
         "modelSize": [
-          0.4599999934434891,
+          0.6649999977648258,
           0.49000000953674316,
           0.49000000953674316
         ],
@@ -38235,8 +37587,8 @@
         "specs": "0.45 m diameter · 55 W at maximum speed",
         "hiddenAlternative": false,
         "position": [
-          39.95,
-          2.7,
+          43.1,
+          4.05,
           -13.06
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -38244,13 +37596,13 @@
       {
         "id": "F242",
         "name": "Wall fan · wing H · 1 · held review",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
+        "type": "fanWingWall",
+        "product": "Wing wall fan · 45 cm · extended bracket concept",
         "circuit": "F5",
         "board": "DB1",
         "quantity": 1,
         "modelSize": [
-          0.4599999934434891,
+          0.6649999977648258,
           0.49000000953674316,
           0.49000000953674316
         ],
@@ -38260,8 +37612,8 @@
         "specs": "0.45 m diameter · 55 W at maximum speed",
         "hiddenAlternative": false,
         "position": [
-          39.15,
-          3.5,
+          38.05,
+          4.05,
           13.06
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -38269,13 +37621,13 @@
       {
         "id": "F243",
         "name": "Wall fan · wing H · 2 · held review",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
+        "type": "fanWingWall",
+        "product": "Wing wall fan · 45 cm · extended bracket concept",
         "circuit": "F5",
         "board": "DB1",
         "quantity": 1,
         "modelSize": [
-          0.4599999934434891,
+          0.6649999977648258,
           0.49000000953674316,
           0.49000000953674316
         ],
@@ -38285,8 +37637,8 @@
         "specs": "0.45 m diameter · 55 W at maximum speed",
         "hiddenAlternative": false,
         "position": [
-          39.95,
-          2.7,
+          43.1,
+          4.05,
           13.06
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -39067,102 +38419,52 @@
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       },
       {
-        "id": "S275",
-        "name": "Wing speaker · B · front block",
-        "type": "pendantSpeaker",
-        "product": "Pendant loudspeaker · 6\"",
-        "circuit": "A1",
-        "board": "DB1",
-        "quantity": 1,
-        "modelSize": [
-          0.3669999949634075,
-          0.2573535740375519,
-          0.25999999046325684
-        ],
-        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-        "diameter": null,
-        "wattsEstimate": 10,
-        "specs": "30 W audio rating · Passive / amplifier output · 25.2 ms delay",
-        "hiddenAlternative": false,
-        "position": [
-          38.94,
-          3,
-          -11.6
-        ],
-        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-      },
-      {
         "id": "S276",
-        "name": "Wing speaker · B · rear block",
-        "type": "pendantSpeaker",
-        "product": "Pendant loudspeaker · 6\"",
+        "name": "Wing speaker · B · toward entrance · held",
+        "type": "slimColumn",
+        "product": "Slim wall column · 0.6 m, wall colour",
         "circuit": "A1",
         "board": "DB1",
         "quantity": 1,
         "modelSize": [
-          0.3669999949634075,
-          0.2573535740375519,
-          0.25999999046325684
+          0.14600000105798241,
+          0.6000000238418579,
+          0.05999999865889549
         ],
         "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
         "diameter": null,
-        "wattsEstimate": 10,
-        "specs": "30 W audio rating · Passive / amplifier output · 23.7 ms delay",
+        "wattsEstimate": 20,
+        "specs": "60 W audio rating · Passive / amplifier output · 22.9 ms delay",
         "hiddenAlternative": false,
         "position": [
-          42.22,
-          3,
-          -11.6
-        ],
-        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-      },
-      {
-        "id": "S277",
-        "name": "Wing speaker · H · front block",
-        "type": "pendantSpeaker",
-        "product": "Pendant loudspeaker · 6\"",
-        "circuit": "A1",
-        "board": "DB1",
-        "quantity": 1,
-        "modelSize": [
-          0.3669999949634075,
-          0.2573535740375519,
-          0.25999999046325684
-        ],
-        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-        "diameter": null,
-        "wattsEstimate": 10,
-        "specs": "30 W audio rating · Passive / amplifier output · 39.4 ms delay",
-        "hiddenAlternative": false,
-        "position": [
-          38.94,
-          3,
-          11.6
+          43.72,
+          4.85,
+          -13.06
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       },
       {
         "id": "S278",
-        "name": "Wing speaker · H · rear block",
-        "type": "pendantSpeaker",
-        "product": "Pendant loudspeaker · 6\"",
+        "name": "Wing speaker · H · toward entrance · held",
+        "type": "slimColumn",
+        "product": "Slim wall column · 0.6 m, wall colour",
         "circuit": "A1",
         "board": "DB1",
         "quantity": 1,
         "modelSize": [
-          0.3669999949634075,
-          0.2573535740375519,
-          0.25999999046325684
+          0.14600000105798241,
+          0.6000000238418579,
+          0.05999999865889549
         ],
         "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
         "diameter": null,
-        "wattsEstimate": 10,
-        "specs": "30 W audio rating · Passive / amplifier output · 38.5 ms delay",
+        "wattsEstimate": 20,
+        "specs": "60 W audio rating · Passive / amplifier output · 37.1 ms delay",
         "hiddenAlternative": false,
         "position": [
-          42.22,
-          3,
-          11.6
+          43.72,
+          4.85,
+          13.06
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       },
@@ -39790,106 +39092,6 @@
           8.85
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-      },
-      {
-        "id": "F-WING-B-3",
-        "name": "Wall fan · wing B · 3 · held review",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
-        "circuit": "F5",
-        "board": "DB1",
-        "quantity": 1,
-        "modelSize": [
-          0.4599999934434891,
-          0.49000000953674316,
-          0.49000000953674316
-        ],
-        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-        "diameter": 0.45,
-        "wattsEstimate": 55,
-        "specs": "0.45 m diameter · 55 W at maximum speed",
-        "hiddenAlternative": false,
-        "position": [
-          41.2,
-          2.7,
-          -13.06
-        ],
-        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-      },
-      {
-        "id": "F-WING-B-4",
-        "name": "Wall fan · wing B · 4 · held review",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
-        "circuit": "F5",
-        "board": "DB1",
-        "quantity": 1,
-        "modelSize": [
-          0.4599999934434891,
-          0.49000000953674316,
-          0.49000000953674316
-        ],
-        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-        "diameter": 0.45,
-        "wattsEstimate": 55,
-        "specs": "0.45 m diameter · 55 W at maximum speed",
-        "hiddenAlternative": false,
-        "position": [
-          42,
-          3.5,
-          -13.06
-        ],
-        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-      },
-      {
-        "id": "F-WING-H-3",
-        "name": "Wall fan · wing H · 3 · held review",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
-        "circuit": "F5",
-        "board": "DB1",
-        "quantity": 1,
-        "modelSize": [
-          0.4599999934434891,
-          0.49000000953674316,
-          0.49000000953674316
-        ],
-        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-        "diameter": 0.45,
-        "wattsEstimate": 55,
-        "specs": "0.45 m diameter · 55 W at maximum speed",
-        "hiddenAlternative": false,
-        "position": [
-          41.2,
-          2.7,
-          13.06
-        ],
-        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-      },
-      {
-        "id": "F-WING-H-4",
-        "name": "Wall fan · wing H · 4 · held review",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
-        "circuit": "F5",
-        "board": "DB1",
-        "quantity": 1,
-        "modelSize": [
-          0.4599999934434891,
-          0.49000000953674316,
-          0.49000000953674316
-        ],
-        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-        "diameter": 0.45,
-        "wattsEstimate": 55,
-        "specs": "0.45 m diameter · 55 W at maximum speed",
-        "hiddenAlternative": false,
-        "position": [
-          42,
-          3.5,
-          13.06
-        ],
-        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       }
     ],
     "billOfMaterials": [
@@ -40040,7 +39242,7 @@
         "circuit": "L8",
         "type": "chandelier6Reading",
         "product": "Small brass chandelier + reading optic · concept",
-        "quantity": 8,
+        "quantity": 4,
         "modelSize": [
           1.340000033378601,
           1.2404999719560146,
@@ -40050,13 +39252,9 @@
         "wattsEachEstimate": 51,
         "itemIds": [
           "L63",
-          "L64",
           "L65",
-          "L66",
           "L67",
-          "L68",
-          "L69",
-          "L70"
+          "L69"
         ]
       },
       {
@@ -40999,11 +40197,11 @@
       {
         "board": "DB1",
         "circuit": "F5",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
-        "quantity": 8,
+        "type": "fanWingWall",
+        "product": "Wing wall fan · 45 cm · extended bracket concept",
+        "quantity": 4,
         "modelSize": [
-          0.4599999934434891,
+          0.6649999977648258,
           0.49000000953674316,
           0.49000000953674316
         ],
@@ -41013,11 +40211,7 @@
           "F240",
           "F241",
           "F242",
-          "F243",
-          "F-WING-B-3",
-          "F-WING-B-4",
-          "F-WING-H-3",
-          "F-WING-H-4"
+          "F243"
         ]
       },
       {
@@ -41326,33 +40520,16 @@
       {
         "board": "DB1",
         "circuit": "A1",
-        "type": "pendantSpeaker",
-        "product": "Pendant loudspeaker · 6\"",
+        "type": "slimColumn",
+        "product": "Slim wall column · 0.6 m, wall colour",
         "quantity": 1,
         "modelSize": [
-          0.3669999949634075,
-          0.2573535740375519,
-          0.25999999046325684
+          0.14600000105798241,
+          0.6000000238418579,
+          0.05999999865889549
         ],
-        "specs": "30 W audio rating · Passive / amplifier output · 25.2 ms delay",
-        "wattsEachEstimate": 10,
-        "itemIds": [
-          "S275"
-        ]
-      },
-      {
-        "board": "DB1",
-        "circuit": "A1",
-        "type": "pendantSpeaker",
-        "product": "Pendant loudspeaker · 6\"",
-        "quantity": 1,
-        "modelSize": [
-          0.3669999949634075,
-          0.2573535740375519,
-          0.25999999046325684
-        ],
-        "specs": "30 W audio rating · Passive / amplifier output · 23.7 ms delay",
-        "wattsEachEstimate": 10,
+        "specs": "60 W audio rating · Passive / amplifier output · 22.9 ms delay",
+        "wattsEachEstimate": 20,
         "itemIds": [
           "S276"
         ]
@@ -41360,33 +40537,16 @@
       {
         "board": "DB1",
         "circuit": "A1",
-        "type": "pendantSpeaker",
-        "product": "Pendant loudspeaker · 6\"",
+        "type": "slimColumn",
+        "product": "Slim wall column · 0.6 m, wall colour",
         "quantity": 1,
         "modelSize": [
-          0.3669999949634075,
-          0.2573535740375519,
-          0.25999999046325684
+          0.14600000105798241,
+          0.6000000238418579,
+          0.05999999865889549
         ],
-        "specs": "30 W audio rating · Passive / amplifier output · 39.4 ms delay",
-        "wattsEachEstimate": 10,
-        "itemIds": [
-          "S277"
-        ]
-      },
-      {
-        "board": "DB1",
-        "circuit": "A1",
-        "type": "pendantSpeaker",
-        "product": "Pendant loudspeaker · 6\"",
-        "quantity": 1,
-        "modelSize": [
-          0.3669999949634075,
-          0.2573535740375519,
-          0.25999999046325684
-        ],
-        "specs": "30 W audio rating · Passive / amplifier output · 38.5 ms delay",
-        "wattsEachEstimate": 10,
+        "specs": "60 W audio rating · Passive / amplifier output · 37.1 ms delay",
+        "wattsEachEstimate": 20,
         "itemIds": [
           "S278"
         ]
@@ -55490,25 +54650,17 @@
       },
       "itemIds": [
         "L63",
-        "L64",
         "L65",
-        "L66",
         "L67",
-        "L68",
-        "L69",
-        "L70"
+        "L69"
       ],
       "routeIds": [
         "trunk:LC1:L8:light:-1",
         "drop:LC1:L8:light:-1:L63",
-        "drop:LC1:L8:light:-1:L64",
         "drop:LC1:L8:light:-1:L65",
-        "drop:LC1:L8:light:-1:L66",
         "trunk:LC1:L8:light:1",
         "drop:LC1:L8:light:1:L67",
-        "drop:LC1:L8:light:1:L68",
         "drop:LC1:L8:light:1:L69",
-        "drop:LC1:L8:light:1:L70",
         "feeder:LC1"
       ],
       "sourceIds": [
@@ -55613,9 +54765,7 @@
           "role": "trunk",
           "itemIds": [
             "L63",
-            "L64",
-            "L65",
-            "L66"
+            "L65"
           ],
           "color": "#dc9e29",
           "method": "wall-roof-trunk",
@@ -55789,12 +54939,12 @@
             [
               38.94,
               7.953150773195873,
-              -10.6
+              -10.15
             ],
             [
               38.94,
-              4.4,
-              -10.6
+              3.8,
+              -10.15
             ]
           ],
           "method": "roof-pendant",
@@ -55810,73 +54960,14 @@
                 [
                   38.94,
                   7.953150773195873,
-                  -10.6
+                  -10.15
                 ]
               ],
               "finish": "soffit",
               "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
             }
           ],
-          "length": 6.793150773195872,
-          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-          "drawnDiameter": 0.048,
-          "buildingDrawnDiameter": 0.006,
-          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-        },
-        {
-          "id": "drop:LC1:L8:light:-1:L64",
-          "name": "L8 → Wing light · B · front block · front rows",
-          "source": "LC1",
-          "board": "DB1",
-          "circuit": "L8",
-          "kind": "light",
-          "role": "drop",
-          "itemIds": [
-            "L64"
-          ],
-          "trunkId": "trunk:LC1:L8:light:-1",
-          "color": "#dc9e29",
-          "upstreamLength": 31.83942622175583,
-          "homeRun": false,
-          "points": [
-            [
-              38.94,
-              7.953150773195872,
-              -7.36
-            ],
-            [
-              38.94,
-              7.953150773195873,
-              -8.8
-            ],
-            [
-              38.94,
-              4.4,
-              -8.8
-            ]
-          ],
-          "method": "roof-pendant",
-          "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-          "coverPaths": [
-            {
-              "points": [
-                [
-                  38.94,
-                  7.953150773195872,
-                  -7.36
-                ],
-                [
-                  38.94,
-                  7.953150773195873,
-                  -8.8
-                ]
-              ],
-              "finish": "soffit",
-              "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-            }
-          ],
-          "length": 4.993150773195873,
+          "length": 6.943150773195873,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
@@ -55907,12 +54998,12 @@
             [
               42.22,
               7.9450966494845385,
-              -10.6
+              -10.15
             ],
             [
               42.22,
-              4.4,
-              -10.6
+              3.8,
+              -10.15
             ]
           ],
           "method": "roof-pendant",
@@ -55928,73 +55019,14 @@
                 [
                   42.22,
                   7.9450966494845385,
-                  -10.6
+                  -10.15
                 ]
               ],
               "finish": "soffit",
               "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
             }
           ],
-          "length": 6.7850966494845375,
-          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-          "drawnDiameter": 0.048,
-          "buildingDrawnDiameter": 0.006,
-          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-        },
-        {
-          "id": "drop:LC1:L8:light:-1:L66",
-          "name": "L8 → Wing light · B · rear block · front rows",
-          "source": "LC1",
-          "board": "DB1",
-          "circuit": "L8",
-          "kind": "light",
-          "role": "drop",
-          "itemIds": [
-            "L66"
-          ],
-          "trunkId": "trunk:LC1:L8:light:-1",
-          "color": "#dc9e29",
-          "upstreamLength": 27.627863960578313,
-          "homeRun": false,
-          "points": [
-            [
-              42.22,
-              7.945096649484534,
-              -7.36
-            ],
-            [
-              42.22,
-              7.9450966494845385,
-              -8.8
-            ],
-            [
-              42.22,
-              4.4,
-              -8.8
-            ]
-          ],
-          "method": "roof-pendant",
-          "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-          "coverPaths": [
-            {
-              "points": [
-                [
-                  42.22,
-                  7.945096649484534,
-                  -7.36
-                ],
-                [
-                  42.22,
-                  7.9450966494845385,
-                  -8.8
-                ]
-              ],
-              "finish": "soffit",
-              "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-            }
-          ],
-          "length": 4.985096649484539,
+          "length": 6.935096649484539,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
@@ -56011,9 +55043,7 @@
           "role": "trunk",
           "itemIds": [
             "L67",
-            "L68",
-            "L69",
-            "L70"
+            "L69"
           ],
           "color": "#dc9e29",
           "method": "wall-roof-trunk",
@@ -56187,12 +55217,12 @@
             [
               38.94,
               7.953150773195873,
-              10.6
+              10.15
             ],
             [
               38.94,
-              4.4,
-              10.6
+              3.8,
+              10.15
             ]
           ],
           "method": "roof-pendant",
@@ -56208,73 +55238,14 @@
                 [
                   38.94,
                   7.953150773195873,
-                  10.6
+                  10.15
                 ]
               ],
               "finish": "soffit",
               "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
             }
           ],
-          "length": 6.793150773195872,
-          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-          "drawnDiameter": 0.048,
-          "buildingDrawnDiameter": 0.006,
-          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-        },
-        {
-          "id": "drop:LC1:L8:light:1:L68",
-          "name": "L8 → Wing light · H · front block · front rows",
-          "source": "LC1",
-          "board": "DB1",
-          "circuit": "L8",
-          "kind": "light",
-          "role": "drop",
-          "itemIds": [
-            "L68"
-          ],
-          "trunkId": "trunk:LC1:L8:light:1",
-          "color": "#dc9e29",
-          "upstreamLength": 38.43942622175583,
-          "homeRun": false,
-          "points": [
-            [
-              38.94,
-              7.953150773195872,
-              7.36
-            ],
-            [
-              38.94,
-              7.953150773195873,
-              8.8
-            ],
-            [
-              38.94,
-              4.4,
-              8.8
-            ]
-          ],
-          "method": "roof-pendant",
-          "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-          "coverPaths": [
-            {
-              "points": [
-                [
-                  38.94,
-                  7.953150773195872,
-                  7.36
-                ],
-                [
-                  38.94,
-                  7.953150773195873,
-                  8.8
-                ]
-              ],
-              "finish": "soffit",
-              "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-            }
-          ],
-          "length": 4.993150773195873,
+          "length": 6.943150773195873,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
@@ -56305,12 +55276,12 @@
             [
               42.22,
               7.9450966494845385,
-              10.6
+              10.15
             ],
             [
               42.22,
-              4.4,
-              10.6
+              3.8,
+              10.15
             ]
           ],
           "method": "roof-pendant",
@@ -56326,73 +55297,14 @@
                 [
                   42.22,
                   7.9450966494845385,
-                  10.6
+                  10.15
                 ]
               ],
               "finish": "soffit",
               "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
             }
           ],
-          "length": 6.7850966494845375,
-          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-          "drawnDiameter": 0.048,
-          "buildingDrawnDiameter": 0.006,
-          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-        },
-        {
-          "id": "drop:LC1:L8:light:1:L70",
-          "name": "L8 → Wing light · H · rear block · front rows",
-          "source": "LC1",
-          "board": "DB1",
-          "circuit": "L8",
-          "kind": "light",
-          "role": "drop",
-          "itemIds": [
-            "L70"
-          ],
-          "trunkId": "trunk:LC1:L8:light:1",
-          "color": "#dc9e29",
-          "upstreamLength": 34.22786396057831,
-          "homeRun": false,
-          "points": [
-            [
-              42.22,
-              7.945096649484534,
-              7.36
-            ],
-            [
-              42.22,
-              7.9450966494845385,
-              8.8
-            ],
-            [
-              42.22,
-              4.4,
-              8.8
-            ]
-          ],
-          "method": "roof-pendant",
-          "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-          "coverPaths": [
-            {
-              "points": [
-                [
-                  42.22,
-                  7.945096649484534,
-                  7.36
-                ],
-                [
-                  42.22,
-                  7.9450966494845385,
-                  8.8
-                ]
-              ],
-              "finish": "soffit",
-              "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-            }
-          ],
-          "length": 4.985096649484539,
+          "length": 6.935096649484539,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
@@ -56421,33 +55333,8 @@
           "hiddenAlternative": false,
           "position": [
             38.94,
-            4.4,
-            -10.6
-          ],
-          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-        },
-        {
-          "id": "L64",
-          "name": "Wing light · B · front block · front rows",
-          "type": "chandelier6Reading",
-          "product": "Small brass chandelier + reading optic · concept",
-          "circuit": "L8",
-          "board": "DB1",
-          "quantity": 1,
-          "modelSize": [
-            1.340000033378601,
-            1.2404999719560146,
-            1.1792304515838623
-          ],
-          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-          "diameter": null,
-          "wattsEstimate": 51,
-          "specs": "5640 lm · 2700 K · 100° beam",
-          "hiddenAlternative": false,
-          "position": [
-            38.94,
-            4.4,
-            -8.8
+            3.8,
+            -10.15
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
         },
@@ -56471,33 +55358,8 @@
           "hiddenAlternative": false,
           "position": [
             42.22,
-            4.4,
-            -10.6
-          ],
-          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-        },
-        {
-          "id": "L66",
-          "name": "Wing light · B · rear block · front rows",
-          "type": "chandelier6Reading",
-          "product": "Small brass chandelier + reading optic · concept",
-          "circuit": "L8",
-          "board": "DB1",
-          "quantity": 1,
-          "modelSize": [
-            1.340000033378601,
-            1.2404999719560146,
-            1.1792304515838623
-          ],
-          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-          "diameter": null,
-          "wattsEstimate": 51,
-          "specs": "5640 lm · 2700 K · 100° beam",
-          "hiddenAlternative": false,
-          "position": [
-            42.22,
-            4.4,
-            -8.8
+            3.8,
+            -10.15
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
         },
@@ -56521,33 +55383,8 @@
           "hiddenAlternative": false,
           "position": [
             38.94,
-            4.4,
-            10.6
-          ],
-          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-        },
-        {
-          "id": "L68",
-          "name": "Wing light · H · front block · front rows",
-          "type": "chandelier6Reading",
-          "product": "Small brass chandelier + reading optic · concept",
-          "circuit": "L8",
-          "board": "DB1",
-          "quantity": 1,
-          "modelSize": [
-            1.340000033378601,
-            1.2404999719560146,
-            1.1792304515838623
-          ],
-          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-          "diameter": null,
-          "wattsEstimate": 51,
-          "specs": "5640 lm · 2700 K · 100° beam",
-          "hiddenAlternative": false,
-          "position": [
-            38.94,
-            4.4,
-            8.8
+            3.8,
+            10.15
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
         },
@@ -56571,33 +55408,8 @@
           "hiddenAlternative": false,
           "position": [
             42.22,
-            4.4,
-            10.6
-          ],
-          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-        },
-        {
-          "id": "L70",
-          "name": "Wing light · H · rear block · front rows",
-          "type": "chandelier6Reading",
-          "product": "Small brass chandelier + reading optic · concept",
-          "circuit": "L8",
-          "board": "DB1",
-          "quantity": 1,
-          "modelSize": [
-            1.340000033378601,
-            1.2404999719560146,
-            1.1792304515838623
-          ],
-          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-          "diameter": null,
-          "wattsEstimate": 51,
-          "specs": "5640 lm · 2700 K · 100° beam",
-          "hiddenAlternative": false,
-          "position": [
-            42.22,
-            4.4,
-            8.8
+            3.8,
+            10.15
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
         }
@@ -75852,23 +74664,15 @@
         "F240",
         "F241",
         "F242",
-        "F243",
-        "F-WING-B-3",
-        "F-WING-B-4",
-        "F-WING-H-3",
-        "F-WING-H-4"
+        "F243"
       ],
       "routeIds": [
         "trunk:FC1:F5:fan:-1",
         "drop:FC1:F5:fan:-1:F240",
         "drop:FC1:F5:fan:-1:F241",
-        "drop:FC1:F5:fan:-1:F-WING-B-3",
-        "drop:FC1:F5:fan:-1:F-WING-B-4",
         "trunk:FC1:F5:fan:1",
         "drop:FC1:F5:fan:1:F242",
         "drop:FC1:F5:fan:1:F243",
-        "drop:FC1:F5:fan:1:F-WING-H-3",
-        "drop:FC1:F5:fan:1:F-WING-H-4",
         "feeder:FC1"
       ],
       "sourceIds": [
@@ -75973,9 +74777,7 @@
           "role": "trunk",
           "itemIds": [
             "F240",
-            "F241",
-            "F-WING-B-3",
-            "F-WING-B-4"
+            "F241"
           ],
           "color": "#b46a48",
           "method": "wall-roof-trunk",
@@ -76047,12 +74849,12 @@
               -7.36
             ],
             [
-              39.15,
-              8.122287371134018,
+              38.05,
+              7.236333762886593,
               -7.36
             ]
           ],
-          "length": 32.419783516009694,
+          "length": 33.83219768896557,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "coverPaths": [
@@ -76112,8 +74914,8 @@
                   -7.36
                 ],
                 [
-                  39.15,
-                  8.122287371134018,
+                  38.05,
+                  7.236333762886593,
                   -7.36
                 ]
               ],
@@ -76138,27 +74940,27 @@
           ],
           "trunkId": "trunk:FC1:F5:fan:-1",
           "color": "#b46a48",
-          "upstreamLength": 32.419783516009694,
+          "upstreamLength": 33.83219768896557,
           "homeRun": false,
           "points": [
             [
-              39.15,
-              8.122287371134018,
+              38.05,
+              7.236333762886593,
               -7.36
             ],
             [
-              39.15,
-              8.122287371134016,
+              38.05,
+              7.236333762886593,
               -13.249
             ],
             [
-              39.15,
-              3.5,
+              38.05,
+              4.05,
               -13.249
             ],
             [
-              39.15,
-              3.5,
+              38.05,
+              4.05,
               -13.06
             ]
           ],
@@ -76168,13 +74970,13 @@
             {
               "points": [
                 [
-                  39.15,
-                  8.122287371134018,
+                  38.05,
+                  7.236333762886593,
                   -7.36
                 ],
                 [
-                  39.15,
-                  8.122287371134016,
+                  38.05,
+                  7.236333762886593,
                   -13.249
                 ]
               ],
@@ -76182,7 +74984,7 @@
               "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
             }
           ],
-          "length": 10.700287371134017,
+          "length": 9.264333762886594,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
@@ -76202,27 +75004,27 @@
           ],
           "trunkId": "trunk:FC1:F5:fan:-1",
           "color": "#b46a48",
-          "upstreamLength": 31.392573208405416,
+          "upstreamLength": 27.3479326222136,
           "homeRun": false,
           "points": [
             [
-              39.95,
-              8.766617268041237,
+              43.1,
+              7.236333762886598,
               -7.36
             ],
             [
-              39.95,
-              8.766617268041237,
+              43.1,
+              7.2363337628865985,
               -13.249
             ],
             [
-              39.95,
-              2.7,
+              43.1,
+              4.05,
               -13.249
             ],
             [
-              39.95,
-              2.7,
+              43.1,
+              4.05,
               -13.06
             ]
           ],
@@ -76232,13 +75034,13 @@
             {
               "points": [
                 [
-                  39.95,
-                  8.766617268041237,
+                  43.1,
+                  7.236333762886598,
                   -7.36
                 ],
                 [
-                  39.95,
-                  8.766617268041237,
+                  43.1,
+                  7.2363337628865985,
                   -13.249
                 ]
               ],
@@ -76246,135 +75048,7 @@
               "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
             }
           ],
-          "length": 12.144617268041237,
-          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-          "drawnDiameter": 0.048,
-          "buildingDrawnDiameter": 0.006,
-          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-        },
-        {
-          "id": "drop:FC1:F5:fan:-1:F-WING-B-3",
-          "name": "F5 → Wall fan · wing B · 3 · held review",
-          "source": "FC1",
-          "board": "DB1",
-          "circuit": "F5",
-          "kind": "fan",
-          "role": "drop",
-          "itemIds": [
-            "F-WING-B-3"
-          ],
-          "trunkId": "trunk:FC1:F5:fan:-1",
-          "color": "#b46a48",
-          "upstreamLength": 29.787557102773743,
-          "homeRun": false,
-          "points": [
-            [
-              41.2,
-              8.766617268041228,
-              -7.36
-            ],
-            [
-              41.2,
-              8.766617268041237,
-              -13.249
-            ],
-            [
-              41.2,
-              2.7,
-              -13.249
-            ],
-            [
-              41.2,
-              2.7,
-              -13.06
-            ]
-          ],
-          "method": "outer-wall",
-          "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-          "coverPaths": [
-            {
-              "points": [
-                [
-                  41.2,
-                  8.766617268041228,
-                  -7.36
-                ],
-                [
-                  41.2,
-                  8.766617268041237,
-                  -13.249
-                ]
-              ],
-              "finish": "soffit",
-              "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-            }
-          ],
-          "length": 12.144617268041237,
-          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-          "drawnDiameter": 0.048,
-          "buildingDrawnDiameter": 0.006,
-          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-        },
-        {
-          "id": "drop:FC1:F5:fan:-1:F-WING-B-4",
-          "name": "F5 → Wall fan · wing B · 4 · held review",
-          "source": "FC1",
-          "board": "DB1",
-          "circuit": "F5",
-          "kind": "fan",
-          "role": "drop",
-          "itemIds": [
-            "F-WING-B-4"
-          ],
-          "trunkId": "trunk:FC1:F5:fan:-1",
-          "color": "#b46a48",
-          "upstreamLength": 28.760346795169475,
-          "homeRun": false,
-          "points": [
-            [
-              42,
-              8.122287371134018,
-              -7.36
-            ],
-            [
-              42,
-              8.122287371134023,
-              -13.249
-            ],
-            [
-              42,
-              3.5,
-              -13.249
-            ],
-            [
-              42,
-              3.5,
-              -13.06
-            ]
-          ],
-          "method": "outer-wall",
-          "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-          "coverPaths": [
-            {
-              "points": [
-                [
-                  42,
-                  8.122287371134018,
-                  -7.36
-                ],
-                [
-                  42,
-                  8.122287371134023,
-                  -13.249
-                ]
-              ],
-              "finish": "soffit",
-              "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-            }
-          ],
-          "length": 10.700287371134024,
+          "length": 9.264333762886599,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
@@ -76391,9 +75065,7 @@
           "role": "trunk",
           "itemIds": [
             "F242",
-            "F243",
-            "F-WING-H-3",
-            "F-WING-H-4"
+            "F243"
           ],
           "color": "#b46a48",
           "method": "wall-roof-trunk",
@@ -76465,12 +75137,12 @@
               7.36
             ],
             [
-              39.15,
-              8.122287371134018,
+              38.05,
+              7.236333762886593,
               7.36
             ]
           ],
-          "length": 39.0197835160097,
+          "length": 40.43219768896557,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "coverPaths": [
@@ -76530,8 +75202,8 @@
                   7.36
                 ],
                 [
-                  39.15,
-                  8.122287371134018,
+                  38.05,
+                  7.236333762886593,
                   7.36
                 ]
               ],
@@ -76556,27 +75228,27 @@
           ],
           "trunkId": "trunk:FC1:F5:fan:1",
           "color": "#b46a48",
-          "upstreamLength": 39.0197835160097,
+          "upstreamLength": 40.43219768896557,
           "homeRun": false,
           "points": [
             [
-              39.15,
-              8.122287371134018,
+              38.05,
+              7.236333762886593,
               7.36
             ],
             [
-              39.15,
-              8.122287371134016,
+              38.05,
+              7.236333762886593,
               13.249
             ],
             [
-              39.15,
-              3.5,
+              38.05,
+              4.05,
               13.249
             ],
             [
-              39.15,
-              3.5,
+              38.05,
+              4.05,
               13.06
             ]
           ],
@@ -76586,13 +75258,13 @@
             {
               "points": [
                 [
-                  39.15,
-                  8.122287371134018,
+                  38.05,
+                  7.236333762886593,
                   7.36
                 ],
                 [
-                  39.15,
-                  8.122287371134016,
+                  38.05,
+                  7.236333762886593,
                   13.249
                 ]
               ],
@@ -76600,7 +75272,7 @@
               "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
             }
           ],
-          "length": 10.700287371134017,
+          "length": 9.264333762886594,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
@@ -76620,27 +75292,27 @@
           ],
           "trunkId": "trunk:FC1:F5:fan:1",
           "color": "#b46a48",
-          "upstreamLength": 37.992573208405425,
+          "upstreamLength": 33.94793262221361,
           "homeRun": false,
           "points": [
             [
-              39.95,
-              8.766617268041237,
+              43.1,
+              7.236333762886598,
               7.36
             ],
             [
-              39.95,
-              8.766617268041237,
+              43.1,
+              7.2363337628865985,
               13.249
             ],
             [
-              39.95,
-              2.7,
+              43.1,
+              4.05,
               13.249
             ],
             [
-              39.95,
-              2.7,
+              43.1,
+              4.05,
               13.06
             ]
           ],
@@ -76650,13 +75322,13 @@
             {
               "points": [
                 [
-                  39.95,
-                  8.766617268041237,
+                  43.1,
+                  7.236333762886598,
                   7.36
                 ],
                 [
-                  39.95,
-                  8.766617268041237,
+                  43.1,
+                  7.2363337628865985,
                   13.249
                 ]
               ],
@@ -76664,135 +75336,7 @@
               "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
             }
           ],
-          "length": 12.144617268041237,
-          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-          "drawnDiameter": 0.048,
-          "buildingDrawnDiameter": 0.006,
-          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-        },
-        {
-          "id": "drop:FC1:F5:fan:1:F-WING-H-3",
-          "name": "F5 → Wall fan · wing H · 3 · held review",
-          "source": "FC1",
-          "board": "DB1",
-          "circuit": "F5",
-          "kind": "fan",
-          "role": "drop",
-          "itemIds": [
-            "F-WING-H-3"
-          ],
-          "trunkId": "trunk:FC1:F5:fan:1",
-          "color": "#b46a48",
-          "upstreamLength": 36.38755710277375,
-          "homeRun": false,
-          "points": [
-            [
-              41.2,
-              8.766617268041228,
-              7.36
-            ],
-            [
-              41.2,
-              8.766617268041237,
-              13.249
-            ],
-            [
-              41.2,
-              2.7,
-              13.249
-            ],
-            [
-              41.2,
-              2.7,
-              13.06
-            ]
-          ],
-          "method": "outer-wall",
-          "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-          "coverPaths": [
-            {
-              "points": [
-                [
-                  41.2,
-                  8.766617268041228,
-                  7.36
-                ],
-                [
-                  41.2,
-                  8.766617268041237,
-                  13.249
-                ]
-              ],
-              "finish": "soffit",
-              "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-            }
-          ],
-          "length": 12.144617268041237,
-          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-          "drawnDiameter": 0.048,
-          "buildingDrawnDiameter": 0.006,
-          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-        },
-        {
-          "id": "drop:FC1:F5:fan:1:F-WING-H-4",
-          "name": "F5 → Wall fan · wing H · 4 · held review",
-          "source": "FC1",
-          "board": "DB1",
-          "circuit": "F5",
-          "kind": "fan",
-          "role": "drop",
-          "itemIds": [
-            "F-WING-H-4"
-          ],
-          "trunkId": "trunk:FC1:F5:fan:1",
-          "color": "#b46a48",
-          "upstreamLength": 35.36034679516948,
-          "homeRun": false,
-          "points": [
-            [
-              42,
-              8.122287371134018,
-              7.36
-            ],
-            [
-              42,
-              8.122287371134023,
-              13.249
-            ],
-            [
-              42,
-              3.5,
-              13.249
-            ],
-            [
-              42,
-              3.5,
-              13.06
-            ]
-          ],
-          "method": "outer-wall",
-          "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-          "coverPaths": [
-            {
-              "points": [
-                [
-                  42,
-                  8.122287371134018,
-                  7.36
-                ],
-                [
-                  42,
-                  8.122287371134023,
-                  13.249
-                ]
-              ],
-              "finish": "soffit",
-              "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-            }
-          ],
-          "length": 10.700287371134024,
+          "length": 9.264333762886599,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
@@ -76804,13 +75348,13 @@
         {
           "id": "F240",
           "name": "Wall fan · wing B · 1 · held review",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
+          "type": "fanWingWall",
+          "product": "Wing wall fan · 45 cm · extended bracket concept",
           "circuit": "F5",
           "board": "DB1",
           "quantity": 1,
           "modelSize": [
-            0.4599999934434891,
+            0.6649999977648258,
             0.49000000953674316,
             0.49000000953674316
           ],
@@ -76820,8 +75364,8 @@
           "specs": "0.45 m diameter · 55 W at maximum speed",
           "hiddenAlternative": false,
           "position": [
-            39.15,
-            3.5,
+            38.05,
+            4.05,
             -13.06
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -76829,13 +75373,13 @@
         {
           "id": "F241",
           "name": "Wall fan · wing B · 2 · held review",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
+          "type": "fanWingWall",
+          "product": "Wing wall fan · 45 cm · extended bracket concept",
           "circuit": "F5",
           "board": "DB1",
           "quantity": 1,
           "modelSize": [
-            0.4599999934434891,
+            0.6649999977648258,
             0.49000000953674316,
             0.49000000953674316
           ],
@@ -76845,8 +75389,8 @@
           "specs": "0.45 m diameter · 55 W at maximum speed",
           "hiddenAlternative": false,
           "position": [
-            39.95,
-            2.7,
+            43.1,
+            4.05,
             -13.06
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -76854,13 +75398,13 @@
         {
           "id": "F242",
           "name": "Wall fan · wing H · 1 · held review",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
+          "type": "fanWingWall",
+          "product": "Wing wall fan · 45 cm · extended bracket concept",
           "circuit": "F5",
           "board": "DB1",
           "quantity": 1,
           "modelSize": [
-            0.4599999934434891,
+            0.6649999977648258,
             0.49000000953674316,
             0.49000000953674316
           ],
@@ -76870,8 +75414,8 @@
           "specs": "0.45 m diameter · 55 W at maximum speed",
           "hiddenAlternative": false,
           "position": [
-            39.15,
-            3.5,
+            38.05,
+            4.05,
             13.06
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -76879,13 +75423,13 @@
         {
           "id": "F243",
           "name": "Wall fan · wing H · 2 · held review",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
+          "type": "fanWingWall",
+          "product": "Wing wall fan · 45 cm · extended bracket concept",
           "circuit": "F5",
           "board": "DB1",
           "quantity": 1,
           "modelSize": [
-            0.4599999934434891,
+            0.6649999977648258,
             0.49000000953674316,
             0.49000000953674316
           ],
@@ -76895,108 +75439,8 @@
           "specs": "0.45 m diameter · 55 W at maximum speed",
           "hiddenAlternative": false,
           "position": [
-            39.95,
-            2.7,
-            13.06
-          ],
-          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-        },
-        {
-          "id": "F-WING-B-3",
-          "name": "Wall fan · wing B · 3 · held review",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
-          "circuit": "F5",
-          "board": "DB1",
-          "quantity": 1,
-          "modelSize": [
-            0.4599999934434891,
-            0.49000000953674316,
-            0.49000000953674316
-          ],
-          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-          "diameter": 0.45,
-          "wattsEstimate": 55,
-          "specs": "0.45 m diameter · 55 W at maximum speed",
-          "hiddenAlternative": false,
-          "position": [
-            41.2,
-            2.7,
-            -13.06
-          ],
-          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-        },
-        {
-          "id": "F-WING-B-4",
-          "name": "Wall fan · wing B · 4 · held review",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
-          "circuit": "F5",
-          "board": "DB1",
-          "quantity": 1,
-          "modelSize": [
-            0.4599999934434891,
-            0.49000000953674316,
-            0.49000000953674316
-          ],
-          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-          "diameter": 0.45,
-          "wattsEstimate": 55,
-          "specs": "0.45 m diameter · 55 W at maximum speed",
-          "hiddenAlternative": false,
-          "position": [
-            42,
-            3.5,
-            -13.06
-          ],
-          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-        },
-        {
-          "id": "F-WING-H-3",
-          "name": "Wall fan · wing H · 3 · held review",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
-          "circuit": "F5",
-          "board": "DB1",
-          "quantity": 1,
-          "modelSize": [
-            0.4599999934434891,
-            0.49000000953674316,
-            0.49000000953674316
-          ],
-          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-          "diameter": 0.45,
-          "wattsEstimate": 55,
-          "specs": "0.45 m diameter · 55 W at maximum speed",
-          "hiddenAlternative": false,
-          "position": [
-            41.2,
-            2.7,
-            13.06
-          ],
-          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-        },
-        {
-          "id": "F-WING-H-4",
-          "name": "Wall fan · wing H · 4 · held review",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
-          "circuit": "F5",
-          "board": "DB1",
-          "quantity": 1,
-          "modelSize": [
-            0.4599999934434891,
-            0.49000000953674316,
-            0.49000000953674316
-          ],
-          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-          "diameter": 0.45,
-          "wattsEstimate": 55,
-          "specs": "0.45 m diameter · 55 W at maximum speed",
-          "hiddenAlternative": false,
-          "position": [
-            42,
-            3.5,
+            43.1,
+            4.05,
             13.06
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -79924,9 +78368,7 @@
         "S270",
         "S271",
         "S272",
-        "S275",
         "S276",
-        "S277",
         "S278"
       ],
       "routeIds": [
@@ -79937,7 +78379,6 @@
         "drop:AV1:A1:audio:-1:S267",
         "drop:AV1:A1:audio:-1:S269",
         "drop:AV1:A1:audio:-1:S271",
-        "drop:AV1:A1:audio:-1:S275",
         "drop:AV1:A1:audio:-1:S276",
         "trunk:AV1:A1:audio:1",
         "drop:AV1:A1:audio:1:S262",
@@ -79946,7 +78387,6 @@
         "drop:AV1:A1:audio:1:S268",
         "drop:AV1:A1:audio:1:S270",
         "drop:AV1:A1:audio:1:S272",
-        "drop:AV1:A1:audio:1:S277",
         "drop:AV1:A1:audio:1:S278",
         "feeder:AV1"
       ],
@@ -80057,7 +78497,6 @@
             "S267",
             "S269",
             "S271",
-            "S275",
             "S276"
           ],
           "color": "#3985c2",
@@ -80513,67 +78952,8 @@
           "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
         },
         {
-          "id": "drop:AV1:A1:audio:-1:S275",
-          "name": "A1 → Wing speaker · B · front block",
-          "source": "AV1",
-          "board": "DB1",
-          "circuit": "A1",
-          "kind": "audio",
-          "role": "drop",
-          "itemIds": [
-            "S275"
-          ],
-          "trunkId": "trunk:AV1:A1:audio:-1",
-          "color": "#3985c2",
-          "upstreamLength": 35.06942622175582,
-          "homeRun": true,
-          "points": [
-            [
-              38.94,
-              7.953150773195872,
-              -7.36
-            ],
-            [
-              38.94,
-              7.953150773195873,
-              -11.6
-            ],
-            [
-              38.94,
-              3,
-              -11.6
-            ]
-          ],
-          "method": "roof-pendant",
-          "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-          "coverPaths": [
-            {
-              "points": [
-                [
-                  38.94,
-                  7.953150773195872,
-                  -7.36
-                ],
-                [
-                  38.94,
-                  7.953150773195873,
-                  -11.6
-                ]
-              ],
-              "finish": "soffit",
-              "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-            }
-          ],
-          "length": 9.193150773195871,
-          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-          "drawnDiameter": 0.048,
-          "buildingDrawnDiameter": 0.006,
-          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-        },
-        {
           "id": "drop:AV1:A1:audio:-1:S276",
-          "name": "A1 → Wing speaker · B · rear block",
+          "name": "A1 → Wing speaker · B · toward entrance · held",
           "source": "AV1",
           "board": "DB1",
           "circuit": "A1",
@@ -80584,46 +78964,81 @@
           ],
           "trunkId": "trunk:AV1:A1:audio:-1",
           "color": "#3985c2",
-          "upstreamLength": 30.857863960578303,
+          "upstreamLength": 28.966999999999995,
           "homeRun": true,
           "points": [
             [
-              42.22,
-              7.945096649484534,
+              43.72,
+              7.04,
               -7.36
             ],
             [
-              42.22,
-              7.9450966494845385,
-              -11.6
+              43.72,
+              6.932303102135284,
+              -7.439581081081082
             ],
             [
-              42.22,
-              3,
-              -11.6
+              43.72,
+              6.737637225623414,
+              -8.314972972972974
+            ],
+            [
+              43.72,
+              6.736978092783508,
+              -8.394554054054055
+            ],
+            [
+              43.72,
+              6.736978092783508,
+              -13.249
+            ],
+            [
+              43.72,
+              4.85,
+              -13.249
+            ],
+            [
+              43.72,
+              4.85,
+              -13.06
             ]
           ],
-          "method": "roof-pendant",
-          "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+          "method": "outer-wall",
+          "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
           "coverPaths": [
             {
               "points": [
                 [
-                  42.22,
-                  7.945096649484534,
+                  43.72,
+                  7.04,
                   -7.36
                 ],
                 [
-                  42.22,
-                  7.9450966494845385,
-                  -11.6
+                  43.72,
+                  6.932303102135284,
+                  -7.439581081081082
+                ],
+                [
+                  43.72,
+                  6.737637225623414,
+                  -8.314972972972974
+                ],
+                [
+                  43.72,
+                  6.736978092783508,
+                  -8.394554054054055
+                ],
+                [
+                  43.72,
+                  6.736978092783508,
+                  -13.249
                 ]
               ],
               "finish": "soffit",
               "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
             }
           ],
-          "length": 9.185096649484539,
+          "length": 8.040692614226739,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
@@ -80645,7 +79060,6 @@
             "S268",
             "S270",
             "S272",
-            "S277",
             "S278"
           ],
           "color": "#3985c2",
@@ -81101,67 +79515,8 @@
           "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
         },
         {
-          "id": "drop:AV1:A1:audio:1:S277",
-          "name": "A1 → Wing speaker · H · front block",
-          "source": "AV1",
-          "board": "DB1",
-          "circuit": "A1",
-          "kind": "audio",
-          "role": "drop",
-          "itemIds": [
-            "S277"
-          ],
-          "trunkId": "trunk:AV1:A1:audio:1",
-          "color": "#3985c2",
-          "upstreamLength": 41.66942622175582,
-          "homeRun": true,
-          "points": [
-            [
-              38.94,
-              7.953150773195872,
-              7.36
-            ],
-            [
-              38.94,
-              7.953150773195873,
-              11.6
-            ],
-            [
-              38.94,
-              3,
-              11.6
-            ]
-          ],
-          "method": "roof-pendant",
-          "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-          "coverPaths": [
-            {
-              "points": [
-                [
-                  38.94,
-                  7.953150773195872,
-                  7.36
-                ],
-                [
-                  38.94,
-                  7.953150773195873,
-                  11.6
-                ]
-              ],
-              "finish": "soffit",
-              "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-            }
-          ],
-          "length": 9.193150773195871,
-          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-          "drawnDiameter": 0.048,
-          "buildingDrawnDiameter": 0.006,
-          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-        },
-        {
           "id": "drop:AV1:A1:audio:1:S278",
-          "name": "A1 → Wing speaker · H · rear block",
+          "name": "A1 → Wing speaker · H · toward entrance · held",
           "source": "AV1",
           "board": "DB1",
           "circuit": "A1",
@@ -81172,46 +79527,81 @@
           ],
           "trunkId": "trunk:AV1:A1:audio:1",
           "color": "#3985c2",
-          "upstreamLength": 37.4578639605783,
+          "upstreamLength": 35.56699999999999,
           "homeRun": true,
           "points": [
             [
-              42.22,
-              7.945096649484534,
+              43.72,
+              7.04,
               7.36
             ],
             [
-              42.22,
-              7.9450966494845385,
-              11.6
+              43.72,
+              6.932303102135284,
+              7.439581081081082
             ],
             [
-              42.22,
-              3,
-              11.6
+              43.72,
+              6.737637225623414,
+              8.314972972972974
+            ],
+            [
+              43.72,
+              6.736978092783508,
+              8.394554054054055
+            ],
+            [
+              43.72,
+              6.736978092783508,
+              13.249
+            ],
+            [
+              43.72,
+              4.85,
+              13.249
+            ],
+            [
+              43.72,
+              4.85,
+              13.06
             ]
           ],
-          "method": "roof-pendant",
-          "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+          "method": "outer-wall",
+          "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
           "coverPaths": [
             {
               "points": [
                 [
-                  42.22,
-                  7.945096649484534,
+                  43.72,
+                  7.04,
                   7.36
                 ],
                 [
-                  42.22,
-                  7.9450966494845385,
-                  11.6
+                  43.72,
+                  6.932303102135284,
+                  7.439581081081082
+                ],
+                [
+                  43.72,
+                  6.737637225623414,
+                  8.314972972972974
+                ],
+                [
+                  43.72,
+                  6.736978092783508,
+                  8.394554054054055
+                ],
+                [
+                  43.72,
+                  6.736978092783508,
+                  13.249
                 ]
               ],
               "finish": "soffit",
               "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
             }
           ],
-          "length": 9.185096649484539,
+          "length": 8.040692614226739,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
@@ -81521,102 +79911,52 @@
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
         },
         {
-          "id": "S275",
-          "name": "Wing speaker · B · front block",
-          "type": "pendantSpeaker",
-          "product": "Pendant loudspeaker · 6\"",
-          "circuit": "A1",
-          "board": "DB1",
-          "quantity": 1,
-          "modelSize": [
-            0.3669999949634075,
-            0.2573535740375519,
-            0.25999999046325684
-          ],
-          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-          "diameter": null,
-          "wattsEstimate": 10,
-          "specs": "30 W audio rating · Passive / amplifier output · 25.2 ms delay",
-          "hiddenAlternative": false,
-          "position": [
-            38.94,
-            3,
-            -11.6
-          ],
-          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-        },
-        {
           "id": "S276",
-          "name": "Wing speaker · B · rear block",
-          "type": "pendantSpeaker",
-          "product": "Pendant loudspeaker · 6\"",
+          "name": "Wing speaker · B · toward entrance · held",
+          "type": "slimColumn",
+          "product": "Slim wall column · 0.6 m, wall colour",
           "circuit": "A1",
           "board": "DB1",
           "quantity": 1,
           "modelSize": [
-            0.3669999949634075,
-            0.2573535740375519,
-            0.25999999046325684
+            0.14600000105798241,
+            0.6000000238418579,
+            0.05999999865889549
           ],
           "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
           "diameter": null,
-          "wattsEstimate": 10,
-          "specs": "30 W audio rating · Passive / amplifier output · 23.7 ms delay",
+          "wattsEstimate": 20,
+          "specs": "60 W audio rating · Passive / amplifier output · 22.9 ms delay",
           "hiddenAlternative": false,
           "position": [
-            42.22,
-            3,
-            -11.6
-          ],
-          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-        },
-        {
-          "id": "S277",
-          "name": "Wing speaker · H · front block",
-          "type": "pendantSpeaker",
-          "product": "Pendant loudspeaker · 6\"",
-          "circuit": "A1",
-          "board": "DB1",
-          "quantity": 1,
-          "modelSize": [
-            0.3669999949634075,
-            0.2573535740375519,
-            0.25999999046325684
-          ],
-          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-          "diameter": null,
-          "wattsEstimate": 10,
-          "specs": "30 W audio rating · Passive / amplifier output · 39.4 ms delay",
-          "hiddenAlternative": false,
-          "position": [
-            38.94,
-            3,
-            11.6
+            43.72,
+            4.85,
+            -13.06
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
         },
         {
           "id": "S278",
-          "name": "Wing speaker · H · rear block",
-          "type": "pendantSpeaker",
-          "product": "Pendant loudspeaker · 6\"",
+          "name": "Wing speaker · H · toward entrance · held",
+          "type": "slimColumn",
+          "product": "Slim wall column · 0.6 m, wall colour",
           "circuit": "A1",
           "board": "DB1",
           "quantity": 1,
           "modelSize": [
-            0.3669999949634075,
-            0.2573535740375519,
-            0.25999999046325684
+            0.14600000105798241,
+            0.6000000238418579,
+            0.05999999865889549
           ],
           "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
           "diameter": null,
-          "wattsEstimate": 10,
-          "specs": "30 W audio rating · Passive / amplifier output · 38.5 ms delay",
+          "wattsEstimate": 20,
+          "specs": "60 W audio rating · Passive / amplifier output · 37.1 ms delay",
           "hiddenAlternative": false,
           "position": [
-            42.22,
-            3,
-            11.6
+            43.72,
+            4.85,
+            13.06
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
         }
@@ -85186,7 +83526,7 @@
       "system": "lighting",
       "mode": "systems",
       "task": "Review each light circuit and its LC-1 or DB-2 supply. Check chandelier support, aim, driver access, fan-blade interaction and labels against the matching paper sheet.",
-      "hold": "Selected-product photometry, support design, control channels, dimming compatibility and installation details remain pending. Four default sampled seats miss the lighting brief."
+      "hold": "Selected-product photometry, support design, control channels, dimming compatibility and installation details remain pending. Review current per-seat lighting failures in the matching calculation report."
     },
     {
       "id": "sound",
@@ -85229,5 +83569,5 @@
       "hold": "No commissioning or construction approval is recorded here. Progress through these review steps does not release a hold or mark any work installed."
     }
   ],
-  "registerSystemsHash": "c883a38876b1d2b04788046ec5e1d87651113aa8dbfeb0f5415ba0b829f004ab"
+  "registerSystemsHash": "e2130aeffb518d934149fa35c32d858856db06e804d9cb98aac4f1896cd3b761"
 }

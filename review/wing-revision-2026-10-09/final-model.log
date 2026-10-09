@@ -1,0 +1,75 @@
+{
+  "checks": "passed",
+  "batchCount": 138,
+  "triangles": 1468040,
+  "displayBytes": 93565540,
+  "expandedBytes": 140931840,
+  "seating": {
+    "blocks": 4,
+    "pewRows": 24,
+    "pewCount": 96,
+    "benchLengthM": null
+  },
+  "sightlineSummary": {
+    "2": {
+      "pewCount": 36,
+      "pewRows": 18,
+      "sampledSeats": 288,
+      "blocked": {
+        "altar": 102,
+        "ambo": 107,
+        "crucifix": 122
+      }
+    },
+    "4": {
+      "pewCount": 96,
+      "pewRows": 24,
+      "sampledSeats": 288,
+      "blocked": {
+        "altar": 86,
+        "ambo": 85,
+        "crucifix": 92
+      }
+    }
+  },
+  "refinement": {
+    "date": "2026-10-05",
+    "mainOuterPlinthWidth": 22.489,
+    "wingOuterPlinthWidth": 28.158,
+    "frontPlatformWidth": 27.254,
+    "frontPlatformRise": 1.6,
+    "sideLandings": 6,
+    "sideFlights": 8,
+    "rearStairs": 0,
+    "sideDoorPlane": 10.414,
+    "stairRisersPerFlight": 12,
+    "stairRiserHeight": 0.14666666666666667,
+    "treeRows": 2,
+    "treeCount": 16,
+    "stairCountStatus": "Proposed; measured floor levels retained",
+    "references": [
+      "references/04-doors/full-hd/2026-10-07-10-side-door-exterior-day.png",
+      "references/04-doors/full-hd/2026-10-07-11-side-wall-interior-day.png",
+      "references/05-windows/full-hd/2026-10-07-12-wall-window-decoration-day.png",
+      "references/03-facade/full-hd/2026-10-07-13-rear-elevation-day.png",
+      "references/03-facade/full-hd/2026-10-07-14-rear-corner-evening.png",
+      "references/06-roof/full-hd/2026-10-07-15-top-down-roof-day.png",
+      "references/00-overview/full-hd/2026-10-07-16-top-down-interior-day.png",
+      "references/03-facade/full-hd/2026-10-07-01-exterior-front-day.png",
+      "references/03-facade/full-hd/2026-10-07-02-exterior-corner-day.png",
+      "references/04-doors/full-hd/2026-10-07-03-entrance-detail-day.png",
+      "references/03-facade/full-hd/2026-10-07-04-exterior-corner-evening.png",
+      "references/00-overview/full-hd/2026-10-07-05-nave-overview-day.png",
+      "references/02-sanctuary/full-hd/2026-10-07-06-sanctuary-overview-evening.png",
+      "references/00-overview/full-hd/2026-10-07-07-interior-oblique-day.png",
+      "references/02-sanctuary/full-hd/2026-10-07-08-sanctuary-detail-day.png",
+      "references/01-timber-frame/full-hd/2026-10-07-09-carved-connection-detail.png",
+      "references/02-sanctuary/concepts/09-sanctuary-approved-concept.png",
+      "references/02-sanctuary/sources/10-sanctuary-church-reference.jpg",
+      "references/07-stairs/details/08-retained-side-stair-detail.png",
+      "references/10-wing-saints/saint-peter-concept-v1.png",
+      "references/10-wing-saints/saint-paul-concept-v1.png"
+    ]
+  }
+}
+Sanctuary: sheet-5 frame, shrine line, chamber lining, lacquered roof timbers, door headroom, routes, open service room passed

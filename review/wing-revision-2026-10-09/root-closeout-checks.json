@@ -1,0 +1,78 @@
+{
+  "status": "PASS software/source consistency; ENGINEERING HOLD remains",
+  "localLinksChecked": 261,
+  "missingLiveLinks": [],
+  "archivedByteCopies": "Original relative links in archived output copies resolve against their owning repository paths; current documentation checked above.",
+  "results": [
+    {
+      "file": "review/wing-revision-2026-10-09/current-default-parity.json",
+      "sha256": "6e0c936cd118b26fcc9fd26b5ff7b96197192b206b0e7fa0d493c02808fde31b",
+      "status": "PASS software/calculation parity; ENGINEERING HOLD remains",
+      "everySourceHashCurrent": true,
+      "metadataOnlyDelta": [],
+      "everyRuntimeAndNativeAssetHashCurrent": true
+    },
+    {
+      "file": "review/wing-revision-2026-10-09/migration/headless-results.json",
+      "sha256": "0e4f2580d853adda67adfa54b904c257bd75c125cc59e27463031cf842ef8015",
+      "status": "PASS",
+      "everySourceHashCurrent": true,
+      "metadataOnlyDelta": [],
+      "everyRuntimeAndNativeAssetHashCurrent": true
+    },
+    {
+      "file": "review/wing-art-2026-10-09/headless/art-results.json",
+      "sha256": "da4d5c3c25715a77d0899ef13a147c00c986d1fcf9eb6d16e4045088804f2776",
+      "status": "PASS software preservation and geometry screen; CONCEPT / ENGINEERING HOLD remains",
+      "everySourceHashCurrent": true,
+      "metadataOnlyDelta": [],
+      "everyRuntimeAndNativeAssetHashCurrent": true
+    },
+    {
+      "file": "review/wing-sound-2026-10-09/headless/sound-results.json",
+      "sha256": "7c7062cf4447d8ca89338d6cd544535fbd838dcad0b5d75b14410fcc36b5bb3b",
+      "status": "PASS software preservation/parity; ENGINEERING HOLD remains",
+      "everySourceHashCurrent": true,
+      "metadataOnlyDelta": [],
+      "everyRuntimeAndNativeAssetHashCurrent": true
+    },
+    {
+      "file": "review/wing-revision-2026-10-09/desktop-adoption/results.json",
+      "sha256": "deb13385fbeeb5291138c374d3aaffdae1fda0a1dd3b4ac0e22ba307452a4e25",
+      "status": "PASS",
+      "everySourceHashCurrent": true,
+      "metadataOnlyDelta": [],
+      "everyRuntimeAndNativeAssetHashCurrent": true
+    },
+    {
+      "file": "review/wing-sound-2026-10-09/ordinary-file/results.json",
+      "sha256": "da663f8aa5bae8fd93013ce0c90ee8792b90167b9aeb83bce1bec806133ca838",
+      "status": "PASS",
+      "everySourceHashCurrent": false,
+      "metadataOnlyDelta": [
+        {
+          "path": "Thach_Bi_Viewer/references/10-wing-saints/provenance.json",
+          "reason": "Final EOF whitespace only; parsed JSON and native/runtime bytes unchanged",
+          "trace": "final-whitespace-cleanup.json"
+        }
+      ],
+      "everyRuntimeAndNativeAssetHashCurrent": true
+    },
+    {
+      "file": "review/wing-sound-2026-10-09/desktop/results.json",
+      "sha256": "1cf28f634eb28833971a70df75430f6351bd040197d0b1e85004ff7e902f56fa",
+      "status": "PASS",
+      "everySourceHashCurrent": false,
+      "metadataOnlyDelta": [
+        {
+          "path": "Thach_Bi_Viewer/references/10-wing-saints/provenance.json",
+          "reason": "Final EOF whitespace only; parsed JSON and native/runtime bytes unchanged",
+          "trace": "final-whitespace-cleanup.json"
+        }
+      ],
+      "everyRuntimeAndNativeAssetHashCurrent": true
+    }
+  ],
+  "constructionApproved": false,
+  "finalMetadataCleanupTrace": "final-whitespace-cleanup.json"
+}

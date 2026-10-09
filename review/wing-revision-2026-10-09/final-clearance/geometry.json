@@ -1,0 +1,308 @@
+{
+  "speakerChecks": [
+    {
+      "id": "S276",
+      "mount": "wall",
+      "aimYawDegrees": 180,
+      "envelope": {
+        "minimum": [
+          43.458047276969104,
+          4.618861486704716,
+          -13.059999999329449
+        ],
+        "maximum": [
+          43.962669093974036,
+          5.058157179088518,
+          -12.940000000670553
+        ]
+      }
+    },
+    {
+      "id": "S278",
+      "mount": "wall",
+      "aimYawDegrees": 180,
+      "envelope": {
+        "minimum": [
+          43.458047276969104,
+          4.618861486704716,
+          12.940000000670553
+        ],
+        "maximum": [
+          43.962669093974036,
+          5.058157179088518,
+          13.059999999329449
+        ]
+      }
+    }
+  ],
+  "pictureEnvelopes": [
+    {
+      "id": "D-WING-B-PETER",
+      "minimum": [
+        39.13999999761582,
+        1.3899999976158144,
+        -13.094999999552966
+      ],
+      "maximum": [
+        40.26000000238419,
+        3.010000002384186,
+        -13.024999999701977
+      ]
+    },
+    {
+      "id": "D-WING-B-PAUL",
+      "minimum": [
+        40.88999999761582,
+        1.3899999976158144,
+        -13.094999999552966
+      ],
+      "maximum": [
+        42.01000000238419,
+        3.010000002384186,
+        -13.024999999701977
+      ]
+    },
+    {
+      "id": "D-WING-H-PETER",
+      "minimum": [
+        39.13999999761582,
+        1.3899999976158144,
+        13.024999999701977
+      ],
+      "maximum": [
+        40.26000000238419,
+        3.010000002384186,
+        13.094999999552966
+      ]
+    },
+    {
+      "id": "D-WING-H-PAUL",
+      "minimum": [
+        40.88999999761582,
+        1.3899999976158144,
+        13.024999999701977
+      ],
+      "maximum": [
+        42.01000000238419,
+        3.010000002384186,
+        13.094999999552966
+      ]
+    }
+  ],
+  "status": "Software geometry screen passed; physical design remains ENGINEERING HOLD",
+  "lightEnvelopes": [
+    {
+      "id": "L63",
+      "minimum": [
+        38.2699999833107,
+        2.5595000267028807,
+        -10.739615225791932
+      ],
+      "maximum": [
+        39.6100000166893,
+        8.115060000372525,
+        -9.56038477420807
+      ]
+    },
+    {
+      "id": "L65",
+      "minimum": [
+        41.5499999833107,
+        2.5595000267028807,
+        -10.739615225791932
+      ],
+      "maximum": [
+        42.8900000166893,
+        8.083580000372532,
+        -9.56038477420807
+      ]
+    },
+    {
+      "id": "L67",
+      "minimum": [
+        38.2699999833107,
+        2.5595000267028807,
+        9.56038477420807
+      ],
+      "maximum": [
+        39.6100000166893,
+        8.115060000372525,
+        10.739615225791932
+      ]
+    },
+    {
+      "id": "L69",
+      "minimum": [
+        41.5499999833107,
+        2.5595000267028807,
+        9.56038477420807
+      ],
+      "maximum": [
+        42.8900000166893,
+        8.083580000372532,
+        10.739615225791932
+      ]
+    }
+  ],
+  "fans": [
+    {
+      "id": "F240",
+      "sweptEnvelope": {
+        "minimum": [
+          37.67000478698408,
+          3.7365987502694815,
+          -13.059999999552966
+        ],
+        "maximum": [
+          38.50163077545298,
+          4.402308102737657,
+          -12.208417141364963
+        ]
+      },
+      "minimumAboveWingFloorM": 4.056598750269481,
+      "minimumAngleFromAnyWingReadingOpticDegrees": 103.81793085257482
+    },
+    {
+      "id": "F241",
+      "sweptEnvelope": {
+        "minimum": [
+          42.64837720778363,
+          3.7366277149857874,
+          -13.059999999552966
+        ],
+        "maximum": [
+          43.48002116588939,
+          4.402293815269002,
+          -12.208442632852964
+        ]
+      },
+      "minimumAboveWingFloorM": 4.056627714985788,
+      "minimumAngleFromAnyWingReadingOpticDegrees": 103.84113850925233
+    },
+    {
+      "id": "F242",
+      "sweptEnvelope": {
+        "minimum": [
+          37.67000478698408,
+          3.7365987502694815,
+          12.208417141364963
+        ],
+        "maximum": [
+          38.50163077545298,
+          4.402308102737657,
+          13.059999999552966
+        ]
+      },
+      "minimumAboveWingFloorM": 4.056598750269481,
+      "minimumAngleFromAnyWingReadingOpticDegrees": 103.81793085257482
+    },
+    {
+      "id": "F243",
+      "sweptEnvelope": {
+        "minimum": [
+          42.64837720778363,
+          3.7366277149857874,
+          12.208442632852964
+        ],
+        "maximum": [
+          43.48002116588939,
+          4.402293815269002,
+          13.059999999552966
+        ]
+      },
+      "minimumAboveWingFloorM": 4.056627714985788,
+      "minimumAngleFromAnyWingReadingOpticDegrees": 103.84113850925233
+    }
+  ],
+  "fixturePairs": [
+    {
+      "a": "L63",
+      "b": "S276",
+      "axisAlignedEnvelopeGapM": 4.432737401974604
+    },
+    {
+      "a": "L63",
+      "b": "F240",
+      "axisAlignedEnvelopeGapM": 1.4688019155730316
+    },
+    {
+      "a": "L63",
+      "b": "F241",
+      "axisAlignedEnvelopeGapM": 3.374787386946907
+    },
+    {
+      "a": "L63",
+      "b": "L65",
+      "axisAlignedEnvelopeGapM": 1.9399999666214
+    },
+    {
+      "a": "L65",
+      "b": "S276",
+      "axisAlignedEnvelopeGapM": 2.272525213815907
+    },
+    {
+      "a": "L65",
+      "b": "F240",
+      "axisAlignedEnvelopeGapM": 3.383775095157197
+    },
+    {
+      "a": "L65",
+      "b": "F241",
+      "axisAlignedEnvelopeGapM": 1.468827407061033
+    },
+    {
+      "a": "L67",
+      "b": "S278",
+      "axisAlignedEnvelopeGapM": 4.432737401974604
+    },
+    {
+      "a": "L67",
+      "b": "F242",
+      "axisAlignedEnvelopeGapM": 1.4688019155730316
+    },
+    {
+      "a": "L67",
+      "b": "F243",
+      "axisAlignedEnvelopeGapM": 3.374787386946907
+    },
+    {
+      "a": "L67",
+      "b": "L69",
+      "axisAlignedEnvelopeGapM": 1.9399999666214
+    },
+    {
+      "a": "L69",
+      "b": "S278",
+      "axisAlignedEnvelopeGapM": 2.272525213815907
+    },
+    {
+      "a": "L69",
+      "b": "F242",
+      "axisAlignedEnvelopeGapM": 3.383775095157197
+    },
+    {
+      "a": "L69",
+      "b": "F243",
+      "axisAlignedEnvelopeGapM": 1.468827407061033
+    }
+  ],
+  "fanPairs": [
+    {
+      "a": "F240",
+      "b": "F241",
+      "axisAlignedEnvelopeGapM": 4.1467464323306515
+    },
+    {
+      "a": "F242",
+      "b": "F243",
+      "axisAlignedEnvelopeGapM": 4.1467464323306515
+    }
+  ],
+  "limits": [
+    "17 yaw samples do not prove the continuous swept envelope or installation tolerances",
+    "Full AABB separation is conservative geometry evidence, not an approved service clearance",
+    "Task beam half-angle is 50 degrees; wider field tails and decorative point light can reach fan blades, so flicker remains unverified",
+    "Roof projection supplies visualization anchor only; substrate capacity, cable/driver access and load restraint are unknown",
+    "No complete architecture, inclusive sightline or concealment approval"
+  ]
+}

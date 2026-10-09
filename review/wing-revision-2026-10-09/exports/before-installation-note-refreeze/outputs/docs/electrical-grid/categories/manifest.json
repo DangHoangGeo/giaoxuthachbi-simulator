@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-10-09T00:47:30.498Z",
+  "layoutHash": "4ae7e1535959a20d2f5749b1ba03c885f39cbcfde41c0856c11d90946754f1c6",
+  "systemsHash": "e2130aeffb518d934149fa35c32d858856db06e804d9cb98aac4f1896cd3b761",
+  "categories": [
+    {
+      "id": "lighting",
+      "file": "lighting/register.xlsx",
+      "sha256": "dc55c383be3988ae47066568fc11514e68cd3058c66a2dc4c859ebaccc2ae996",
+      "equipment": 220,
+      "routes": 241,
+      "vertices": 2042
+    },
+    {
+      "id": "sound",
+      "file": "sound/register.xlsx",
+      "sha256": "1cc65011bced00dbedf629c2be74ef390ff89eb08f8d5a4d1122335ed9bd1107",
+      "equipment": 32,
+      "routes": 42,
+      "vertices": 310
+    },
+    {
+      "id": "air-system",
+      "file": "air-system/register.xlsx",
+      "sha256": "e6758335419e0a089b9efc25a59ea12db21bd535781c95ab1427d12e3e2228a4",
+      "equipment": 39,
+      "routes": 53,
+      "vertices": 348
+    },
+    {
+      "id": "exit-signs",
+      "file": "exit-signs/register.xlsx",
+      "sha256": "e6176b578834fbabb52a31458db67ba85ff6410f2e75f0d130a2c60fbc89f741",
+      "equipment": 5,
+      "routes": 7,
+      "vertices": 54
+    },
+    {
+      "id": "decoration",
+      "file": "decoration/register.xlsx",
+      "sha256": "d8c5aa79947e4e431d19f2e540d0c9d7888fd1b65983831c7aa24c44507319d7",
+      "equipment": 34,
+      "routes": 0,
+      "vertices": 0
+    },
+    {
+      "id": "distribution-controls",
+      "file": "distribution-controls/register.xlsx",
+      "sha256": "4ffb72c90ed716a133890b4429cc98c7a0000f4952e578902d239d27473b3eeb",
+      "equipment": 5,
+      "routes": 4,
+      "vertices": 41
+    }
+  ],
+  "totals": {
+    "equipment": 325,
+    "shown": 310,
+    "hidden": 15,
+    "connected": 286,
+    "commandedOn": 261,
+    "retiredEquipment": 10,
+    "retiredRoutes": 14,
+    "routes": 333,
+    "vertices": 2749,
+    "routeMetres": 4661.175546229245,
+    "homeRunMetres": 1790.0795233369959,
+    "bundleMetres": 583.9210424894335,
+    "segmentMetres": 3916.992368493474,
+    "watts": 5552.950015021,
+    "kWhService": 8.3294250225315,
+    "kWhMonth": 333.17700090126,
+    "specsDocumented": 0,
+    "controlsDocumented": 0,
+    "cableDocumented": 0,
+    "allowancesEntered": 0,
+    "allowancePopulation": 323
+  }
+}

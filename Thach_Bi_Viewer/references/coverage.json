@@ -88,6 +88,13 @@
       "status": "Stone bases, paving joints, skirting and finish transition details pending.",
       "currentImageCount": 0,
       "currentGuide": "10-floors-walls/README.md"
+    },
+    {
+      "folder": "10-wing-saints",
+      "title": "Saint Peter and Saint Paul · sanctuary wings",
+      "status": "Two generated native portrait concepts serve four model frames, Peter+Paul in eachwing between windows. Final size/height/art/frame/fixings pending; no orthographic fabrication views.",
+      "currentImageCount": 2,
+      "currentGuide": "10-wing-saints/README.md"
     }
   ],
   "materialRule": "Two central timber columns per transverse frame; outer left/right columns concrete. Side and longitudinal beams remain timber.",

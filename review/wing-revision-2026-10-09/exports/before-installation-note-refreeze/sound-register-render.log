@@ -1,0 +1,100 @@
+{
+  "workbook": "/Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/sound/register.xlsx",
+  "equipment": [
+    {
+      "row": 21,
+      "id": "S276",
+      "type": "60 W audio rating · Passive / amplifier output · 22.9 ms delay. Passive speaker; audio rating is not mains demand",
+      "coordinates": [
+        43.72,
+        4.85,
+        -13.06
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 22,
+      "id": "S278",
+      "type": "60 W audio rating · Passive / amplifier output · 37.1 ms delay. Passive speaker; audio rating is not mains demand",
+      "coordinates": [
+        43.72,
+        4.85,
+        13.06
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 37,
+      "id": "S275",
+      "type": "30 W audio rating · Passive / amplifier output · 25.2 ms delay. Passive speaker; audio rating is not mains demand",
+      "coordinates": [
+        38.94,
+        3,
+        -11.6
+      ],
+      "recordState": "Retired"
+    },
+    {
+      "row": 38,
+      "id": "S277",
+      "type": "30 W audio rating · Passive / amplifier output · 39.4 ms delay. Passive speaker; audio rating is not mains demand",
+      "coordinates": [
+        38.94,
+        3,
+        11.6
+      ],
+      "recordState": "Retired"
+    }
+  ],
+  "lines": [
+    {
+      "row": 7,
+      "id": "trunk:AV1:A1:audio:-1",
+      "destinations": "S261\nS263\nS265\nS267\nS269\nS271\nS276",
+      "routeLength": 61.27413031117918,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 14,
+      "id": "drop:AV1:A1:audio:-1:S276",
+      "destinations": "S276",
+      "routeLength": 8.040692614226739,
+      "fullHomeRun": 37.007692614226734,
+      "recordState": "Current"
+    },
+    {
+      "row": 15,
+      "id": "trunk:AV1:A1:audio:1",
+      "destinations": "S262\nS264\nS266\nS268\nS270\nS272\nS278",
+      "routeLength": 67.87413031117919,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 22,
+      "id": "drop:AV1:A1:audio:1:S278",
+      "destinations": "S278",
+      "routeLength": 8.040692614226739,
+      "fullHomeRun": 43.607692614226735,
+      "recordState": "Current"
+    },
+    {
+      "row": 47,
+      "id": "drop:AV1:A1:audio:-1:S275",
+      "destinations": "S275",
+      "routeLength": 9.193150773195871,
+      "fullHomeRun": 44.26257699495169,
+      "recordState": "Retired"
+    },
+    {
+      "row": 48,
+      "id": "drop:AV1:A1:audio:1:S277",
+      "destinations": "S277",
+      "routeLength": 9.193150773195871,
+      "fullHomeRun": 50.862576994951695,
+      "recordState": "Retired"
+    }
+  ]
+}
+Rendered 54 PNG ranges; workbook byte-for-byte unchanged.

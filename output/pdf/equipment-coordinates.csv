@@ -61,14 +61,10 @@ L59,L1,DB1,2.65,3.45,-4.2,LED projector · medium 36°
 L60,L1,DB1,2.65,5.95,-4.2,LED projector · medium 36°
 L61,L1,DB1,2.65,3.45,4.2,LED projector · medium 36°
 L62,L1,DB1,2.65,5.95,4.2,LED projector · medium 36°
-L63,L8,DB1,38.94,4.4,-10.6,Small brass chandelier + reading optic · concept
-L64,L8,DB1,38.94,4.4,-8.8,Small brass chandelier + reading optic · concept
-L65,L8,DB1,42.22,4.4,-10.6,Small brass chandelier + reading optic · concept
-L66,L8,DB1,42.22,4.4,-8.8,Small brass chandelier + reading optic · concept
-L67,L8,DB1,38.94,4.4,10.6,Small brass chandelier + reading optic · concept
-L68,L8,DB1,38.94,4.4,8.8,Small brass chandelier + reading optic · concept
-L69,L8,DB1,42.22,4.4,10.6,Small brass chandelier + reading optic · concept
-L70,L8,DB1,42.22,4.4,8.8,Small brass chandelier + reading optic · concept
+L63,L8,DB1,38.94,3.8,-10.15,Small brass chandelier + reading optic · concept
+L65,L8,DB1,42.22,3.8,-10.15,Small brass chandelier + reading optic · concept
+L67,L8,DB1,38.94,3.8,10.15,Small brass chandelier + reading optic · concept
+L69,L8,DB1,42.22,3.8,10.15,Small brass chandelier + reading optic · concept
 L71,LA,DB1,9.975,9.18,0,Roof uplight · wide flood
 L72,LA,DB1,14.475,9.18,0,Roof uplight · wide flood
 L73,LA,DB1,18.975,9.18,0,Roof uplight · wide flood
@@ -238,10 +234,10 @@ F236,F1,DB1,30.225,3.9,-4.4,"Ceiling fan · 1.42 m (56"")"
 F237,F1,DB1,30.225,3.9,4.4,"Ceiling fan · 1.42 m (56"")"
 F238,F1,DB1,34.725,3.9,-4.4,"Ceiling fan · 1.42 m (56"")"
 F239,F1,DB1,34.725,3.9,4.4,"Ceiling fan · 1.42 m (56"")"
-F240,F5,DB1,39.15,3.5,-13.06,Wall fan · oscillating 45 cm
-F241,F5,DB1,39.95,2.7,-13.06,Wall fan · oscillating 45 cm
-F242,F5,DB1,39.15,3.5,13.06,Wall fan · oscillating 45 cm
-F243,F5,DB1,39.95,2.7,13.06,Wall fan · oscillating 45 cm
+F240,F5,DB1,38.05,4.05,-13.06,Wing wall fan · 45 cm · extended bracket concept
+F241,F5,DB1,43.1,4.05,-13.06,Wing wall fan · 45 cm · extended bracket concept
+F242,F5,DB1,38.05,4.05,13.06,Wing wall fan · 45 cm · extended bracket concept
+F243,F5,DB1,43.1,4.05,13.06,Wing wall fan · 45 cm · extended bracket concept
 F244,F2,DB1,14.475,5.55,-7.07,Wall fan · oscillating 45 cm
 F245,F2,DB1,14.475,5.55,7.07,Wall fan · oscillating 45 cm
 F246,F2,DB1,23.475,5.55,-7.07,Wall fan · oscillating 45 cm
@@ -273,10 +269,8 @@ S271,A1,DB1,36.975,3.45,-7.07,"Slim wall column · 0.6 m, wall colour"
 S272,A1,DB1,36.975,3.45,7.07,"Slim wall column · 0.6 m, wall colour"
 S273,A5,DB1,2.655,3.6,-3.05,"Slim wall column · 0.6 m, wall colour"
 S274,A5,DB1,2.655,3.6,3.05,"Slim wall column · 0.6 m, wall colour"
-S275,A1,DB1,38.94,3,-11.6,"Pendant loudspeaker · 6"""
-S276,A1,DB1,42.22,3,-11.6,"Pendant loudspeaker · 6"""
-S277,A1,DB1,38.94,3,11.6,"Pendant loudspeaker · 6"""
-S278,A1,DB1,42.22,3,11.6,"Pendant loudspeaker · 6"""
+S276,A1,DB1,43.72,4.85,-13.06,"Slim wall column · 0.6 m, wall colour"
+S278,A1,DB1,43.72,4.85,13.06,"Slim wall column · 0.6 m, wall colour"
 S279,A2,DB1,12.225,3.9,-8.85,"Pendant loudspeaker · 6"""
 S280,A2,DB1,25.725,3.9,-8.85,"Pendant loudspeaker · 6"""
 S281,A2,DB1,12.225,3.9,8.85,"Pendant loudspeaker · 6"""
@@ -291,7 +285,3 @@ S289,A3,DB1,18.975,5.6,10.75,Outdoor horn · 30 W
 S290,A3,DB1,32.475,5.6,10.75,Outdoor horn · 30 W
 S291,MIC,DB1,41.08,1.9,-2.62,Gooseneck microphone (cardioid)
 S292,MIC,DB1,44.45,1.88,0.45,Gooseneck microphone (cardioid)
-F-WING-B-3,F5,DB1,41.2,2.7,-13.06,Wall fan · oscillating 45 cm
-F-WING-B-4,F5,DB1,42,3.5,-13.06,Wall fan · oscillating 45 cm
-F-WING-H-3,F5,DB1,41.2,2.7,13.06,Wall fan · oscillating 45 cm
-F-WING-H-4,F5,DB1,42,3.5,13.06,Wall fan · oscillating 45 cm

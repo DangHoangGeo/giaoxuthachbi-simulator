@@ -1,0 +1,12 @@
+{
+  "attemptStatus": "INVALIDATED SOURCE FREEZE",
+  "recordedAtUTC": "2026-10-09T00:44:23.805985+00:00",
+  "command": "node scripts/verify_wing_art.cjs",
+  "functionalChecks": "All 47 cases completed before the final freeze guard; no functional failure was observed.",
+  "failedCheck": "Every loaded source must remain unchanged during verification.",
+  "changedFile": "Thach_Bi_Viewer/references.js",
+  "beforeSha256": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+  "afterSha256": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
+  "reason": "Root regenerated the reference gallery once to include the two new artwork records during the run.",
+  "action": "Preserve this earlier-attempt metadata, mark its PASS report stale, and rerun the unchanged functional assertions against frozen final sources."
+}

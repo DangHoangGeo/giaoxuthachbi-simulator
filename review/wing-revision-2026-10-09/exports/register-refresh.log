@@ -1,0 +1,26 @@
+Workflow checks passed: retained keyed inputs, retired records, complete XYZ draft and invalid-proposal rejection.
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Previous workbook backed up to /var/folders/sv/q0qz4b6n7v34w0wzt91xqzgw0000gn/T/thachbi-register-backup-1791508027193.xlsx
+Inspect result written to file: /Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/lighting/register.xlsx.tmp.xlsx.inspect.ndjson
+{"workbook":"/Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/lighting/register.xlsx","equipment":220,"routes":241,"vertices":2042}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Previous workbook backed up to /var/folders/sv/q0qz4b6n7v34w0wzt91xqzgw0000gn/T/thachbi-register-backup-1791508032947.xlsx
+Inspect result written to file: /Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/sound/register.xlsx.tmp.xlsx.inspect.ndjson
+{"workbook":"/Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/sound/register.xlsx","equipment":32,"routes":42,"vertices":310}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Previous workbook backed up to /var/folders/sv/q0qz4b6n7v34w0wzt91xqzgw0000gn/T/thachbi-register-backup-1791508033460.xlsx
+Inspect result written to file: /Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/air-system/register.xlsx.tmp.xlsx.inspect.ndjson
+{"workbook":"/Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/air-system/register.xlsx","equipment":39,"routes":53,"vertices":348}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Previous workbook backed up to /var/folders/sv/q0qz4b6n7v34w0wzt91xqzgw0000gn/T/thachbi-register-backup-1791508033808.xlsx
+Inspect result written to file: /Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/exit-signs/register.xlsx.tmp.xlsx.inspect.ndjson
+{"workbook":"/Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/exit-signs/register.xlsx","equipment":5,"routes":7,"vertices":54}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Previous workbook backed up to /var/folders/sv/q0qz4b6n7v34w0wzt91xqzgw0000gn/T/thachbi-register-backup-1791508034043.xlsx
+Inspect result written to file: /Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/decoration/register.xlsx.tmp.xlsx.inspect.ndjson
+{"workbook":"/Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/decoration/register.xlsx","equipment":34,"routes":0,"vertices":0}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Previous workbook backed up to /var/folders/sv/q0qz4b6n7v34w0wzt91xqzgw0000gn/T/thachbi-register-backup-1791508034247.xlsx
+Inspect result written to file: /Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/distribution-controls/register.xlsx.tmp.xlsx.inspect.ndjson
+{"workbook":"/Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/distribution-controls/register.xlsx","equipment":5,"routes":4,"vertices":41}
+{"categories":6,"report":"/Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/summary-report.md","totals":{"equipment":325,"shown":310,"hidden":15,"connected":286,"commandedOn":261,"retiredEquipment":10,"retiredRoutes":14,"routes":333,"vertices":2749,"routeMetres":4661.175546229245,"homeRunMetres":1790.0795233369959,"bundleMetres":583.9210424894335,"segmentMetres":3916.992368493474,"watts":5552.950015021,"kWhService":8.3294250225315,"kWhMonth":333.17700090126,"specsDocumented":0,"controlsDocumented":0,"cableDocumented":0,"allowancesEntered":0,"allowancePopulation":323}}

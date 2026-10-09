@@ -1,0 +1,499 @@
+{
+  "schema": 1,
+  "startedAt": "2026-10-09T00:34:04.760Z",
+  "status": "Complete numerical comparison; CONCEPT / ENGINEERING HOLD, no approved choice",
+  "baseline": {
+    "layout": "baseline-layout.json",
+    "sha256": "337cab47cd012447ebc6e3d10cadf9de6bebeaa9a22ba7a4c1f13f39ac727268",
+    "sourceResult": "review/wing-sound-2026-10-09/current-4-block/column-y4.4-tilt-50-level-6.json",
+    "sourceResultSha256": "545ec30d724d051eb62bc42e1fd43ded49c0a8bd5abbbcd88c2d498ddba01830"
+  },
+  "blocks": 4,
+  "runtimeSourceHashes": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "a21af1979c410c7bd44f0ebc8915c88da21701855b10da2a6e0ad677daeae1c5",
+    "Thach_Bi_Viewer/simulator/engine.js": "f33b046cecc29fcbd2687c5101f30980c7ae9628df956ff1c2fcd75529eca00e",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "060ba7de57e0f712aa43cd766c4ef212a66100344e66392cd4bf3741c6ee19e7",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "741087397cc56f8d4f13866554835f4de9b1cc84c747e6e186a5470a95449fba",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
+  },
+  "currentSourceHashesStart": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "67035bc56dac74b154f3c80b5f3a5ec46187df5894c4a8c8230741d4c4f85694",
+    "Thach_Bi_Viewer/simulator/engine.js": "72f11fb5e07ed9b41842e82493314a1c9e70fcdfcd067a89e0f344f9a4d25f5f",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "0770352f3add1261f52fda3b97514d1ac0b722a28106191c6499f40b8a28e4e0",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "fcbdf178a7a8c23a7ef911bd76576050f3add7867186be94245310e5c2ab7bea",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
+  },
+  "runnerSha256": "67bfe0dc699116be518e4be911e1118636180e7c7c464eeb0521189ae00ce4ab",
+  "sourceMode": "Temporary frozen source snapshot",
+  "cases": [
+    {
+      "id": "lights4-y4.4-fans4-speed1",
+      "light": {
+        "id": "lights4-y4.4",
+        "countPerWing": 4,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans4-speed1",
+        "countPerWing": 4,
+        "speed": 1
+      }
+    },
+    {
+      "id": "lights4-y4.4-fans4-speed2",
+      "light": {
+        "id": "lights4-y4.4",
+        "countPerWing": 4,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans4-speed2",
+        "countPerWing": 4,
+        "speed": 2
+      }
+    },
+    {
+      "id": "lights4-y4.4-fans2-y2.7-speed1",
+      "light": {
+        "id": "lights4-y4.4",
+        "countPerWing": 4,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans2-y2.7-speed1",
+        "countPerWing": 2,
+        "y": 2.7,
+        "speed": 1
+      }
+    },
+    {
+      "id": "lights4-y4.4-fans2-y2.7-speed2",
+      "light": {
+        "id": "lights4-y4.4",
+        "countPerWing": 4,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans2-y2.7-speed2",
+        "countPerWing": 2,
+        "y": 2.7,
+        "speed": 2
+      }
+    },
+    {
+      "id": "lights4-y4.4-fans2-y3.5-speed1",
+      "light": {
+        "id": "lights4-y4.4",
+        "countPerWing": 4,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans2-y3.5-speed1",
+        "countPerWing": 2,
+        "y": 3.5,
+        "speed": 1
+      }
+    },
+    {
+      "id": "lights4-y4.4-fans2-y3.5-speed2",
+      "light": {
+        "id": "lights4-y4.4",
+        "countPerWing": 4,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans2-y3.5-speed2",
+        "countPerWing": 2,
+        "y": 3.5,
+        "speed": 2
+      }
+    },
+    {
+      "id": "lights2-y3.8-fans4-speed1",
+      "light": {
+        "id": "lights2-y3.8",
+        "countPerWing": 2,
+        "y": 3.8
+      },
+      "fan": {
+        "id": "fans4-speed1",
+        "countPerWing": 4,
+        "speed": 1
+      }
+    },
+    {
+      "id": "lights2-y3.8-fans4-speed2",
+      "light": {
+        "id": "lights2-y3.8",
+        "countPerWing": 2,
+        "y": 3.8
+      },
+      "fan": {
+        "id": "fans4-speed2",
+        "countPerWing": 4,
+        "speed": 2
+      }
+    },
+    {
+      "id": "lights2-y3.8-fans2-y2.7-speed1",
+      "light": {
+        "id": "lights2-y3.8",
+        "countPerWing": 2,
+        "y": 3.8
+      },
+      "fan": {
+        "id": "fans2-y2.7-speed1",
+        "countPerWing": 2,
+        "y": 2.7,
+        "speed": 1
+      }
+    },
+    {
+      "id": "lights2-y3.8-fans2-y2.7-speed2",
+      "light": {
+        "id": "lights2-y3.8",
+        "countPerWing": 2,
+        "y": 3.8
+      },
+      "fan": {
+        "id": "fans2-y2.7-speed2",
+        "countPerWing": 2,
+        "y": 2.7,
+        "speed": 2
+      }
+    },
+    {
+      "id": "lights2-y3.8-fans2-y3.5-speed1",
+      "light": {
+        "id": "lights2-y3.8",
+        "countPerWing": 2,
+        "y": 3.8
+      },
+      "fan": {
+        "id": "fans2-y3.5-speed1",
+        "countPerWing": 2,
+        "y": 3.5,
+        "speed": 1
+      }
+    },
+    {
+      "id": "lights2-y3.8-fans2-y3.5-speed2",
+      "light": {
+        "id": "lights2-y3.8",
+        "countPerWing": 2,
+        "y": 3.8
+      },
+      "fan": {
+        "id": "fans2-y3.5-speed2",
+        "countPerWing": 2,
+        "y": 3.5,
+        "speed": 2
+      }
+    },
+    {
+      "id": "lights2-y4.4-fans4-speed1",
+      "light": {
+        "id": "lights2-y4.4",
+        "countPerWing": 2,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans4-speed1",
+        "countPerWing": 4,
+        "speed": 1
+      }
+    },
+    {
+      "id": "lights2-y4.4-fans4-speed2",
+      "light": {
+        "id": "lights2-y4.4",
+        "countPerWing": 2,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans4-speed2",
+        "countPerWing": 4,
+        "speed": 2
+      }
+    },
+    {
+      "id": "lights2-y4.4-fans2-y2.7-speed1",
+      "light": {
+        "id": "lights2-y4.4",
+        "countPerWing": 2,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans2-y2.7-speed1",
+        "countPerWing": 2,
+        "y": 2.7,
+        "speed": 1
+      }
+    },
+    {
+      "id": "lights2-y4.4-fans2-y2.7-speed2",
+      "light": {
+        "id": "lights2-y4.4",
+        "countPerWing": 2,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans2-y2.7-speed2",
+        "countPerWing": 2,
+        "y": 2.7,
+        "speed": 2
+      }
+    },
+    {
+      "id": "lights2-y4.4-fans2-y3.5-speed1",
+      "light": {
+        "id": "lights2-y4.4",
+        "countPerWing": 2,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans2-y3.5-speed1",
+        "countPerWing": 2,
+        "y": 3.5,
+        "speed": 1
+      }
+    },
+    {
+      "id": "lights2-y4.4-fans2-y3.5-speed2",
+      "light": {
+        "id": "lights2-y4.4",
+        "countPerWing": 2,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans2-y3.5-speed2",
+        "countPerWing": 2,
+        "y": 3.5,
+        "speed": 2
+      }
+    },
+    {
+      "id": "lights2-y3.8-fans0-comparison-only",
+      "light": {
+        "id": "lights2-y3.8",
+        "countPerWing": 2,
+        "y": 3.8
+      },
+      "fan": {
+        "id": "fans0-comparison-only",
+        "countPerWing": 0,
+        "speed": 0
+      },
+      "comparisonOnly": true
+    },
+    {
+      "id": "lights2-y4.4-fans0-comparison-only",
+      "light": {
+        "id": "lights2-y4.4",
+        "countPerWing": 2,
+        "y": 4.4
+      },
+      "fan": {
+        "id": "fans0-comparison-only",
+        "countPerWing": 0,
+        "speed": 0
+      },
+      "comparisonOnly": true
+    }
+  ],
+  "settings": {
+    "adaptLux": 110,
+    "autoExposure": false,
+    "quality": "fast",
+    "autoQuality": true,
+    "maintenance": 0.8,
+    "halos": 1,
+    "occupancy": 0.6,
+    "openings": 1,
+    "roofFinish": "mixed",
+    "entranceFinish": "slats",
+    "tempC": 28,
+    "rh": 75,
+    "ambientDbA": 40,
+    "lensDeg": 75,
+    "eyeHeight": 1.6,
+    "walkSpeed": 1.4,
+    "showTruss": false,
+    "frameStyle": "drawn",
+    "timberTone": "reference",
+    "overlay": "none",
+    "snap": true,
+    "edit": true,
+    "talker": false,
+    "micDistance": 0.4,
+    "talkerDbA": 62,
+    "serviceHours": 1.5,
+    "servicesPerMonth": 40,
+    "tariff": 2200,
+    "mixerDb": 0,
+    "seatingPlane": 0.8,
+    "servicePanelsUpgraded": true,
+    "lightingRevision": "2026-10-05-balanced-doors-towers",
+    "facadeRevision": "2026-10-05-continuous-facade-wash-2",
+    "entranceRevision": "2026-10-07-entrance-wall-2",
+    "sanctuaryRevision": "2026-10-07-sanctuary-8",
+    "stableLightingRevision": "2026-10-06-physical-lighting",
+    "wingReviewRevision": "2026-10-09-wing-held-1"
+  },
+  "scene": "Full service · evening",
+  "criteria": {
+    "lux": [
+      200,
+      300
+    ],
+    "air": [
+      0.3,
+      0.8
+    ],
+    "noiseDbA": 45,
+    "stiEverySeat": 0.6,
+    "weakerWingStiMin": 0.45,
+    "weakerWingStiMean": 0.5,
+    "splDbA": [
+      68,
+      76
+    ],
+    "feedbackDb": 3
+  },
+  "artwork": {
+    "source": "USER CONFIRMED: saints pictures between the two end-gable windows",
+    "reservedStripX": [
+      38.675,
+      42.475
+    ],
+    "extentHeight": null,
+    "pictureSize": null,
+    "status": "Entire central end-gable strip reserved in concept because picture height/size is unknown; actual equipment envelope clearance unreviewed",
+    "constructionApproved": false
+  },
+  "catalogLimits": {
+    "lightType": "chandelier6Reading",
+    "lumensPerAssembly": 5640,
+    "wattsPerAssembly": 51,
+    "beamDegrees": 100,
+    "cctK": 2700,
+    "dim": 1,
+    "fanType": "fanWall",
+    "speeds": {
+      "1": "Low",
+      "2": "Medium"
+    },
+    "selectedProduct": null
+  },
+  "measurementPlanes": {
+    "lux": "model book offset at local floor +0.80 m",
+    "air": "seat X/Z at local floor +0.60 m",
+    "noiseStiSplEcho": "seat X/Z at local floor +1.20 m",
+    "reportedSeatXYZ": "seat floor XYZ in metres"
+  },
+  "limitations": [
+    "Catalogue light/fan/speaker data remain representative assumptions; no output, noise, directivity or rating is increased or tuned.",
+    "Removing equipment from a calculation layout does not change or approve the default design, registers or physical construction.",
+    "Empirical oscillating fan jets and statistical room acoustics are unchanged; product duty points and site conditions are unverified.",
+    "Fan mount points outside the artwork strip are not proof that their bodies, sweeps, supports or maintenance areas clear the pictures.",
+    "The root agent must review complete fixture geometry, windows, supports, movement, artwork, sightlines and maintenance access.",
+    "No case is a design choice; thresholds, complete receiver sampling and all unmet targets remain visible."
+  ],
+  "catalogValidation": {
+    "physicalInputsSha256": "45a285fd65b61cfc2ae3882ea727c53b1c507fe9bd911e2b4e7a8b898e13215c",
+    "existingPhysicalTypes": 38,
+    "allExistingPhysicalObjectsExact": true,
+    "catalogFileHashChanged": true,
+    "changeReason": "Root added two unpowered saint-picture decor types and local image materials only; existing physical specifications remain exact."
+  },
+  "completedAt": "2026-10-09T00:35:03.971Z",
+  "currentSourceHashesEnd": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "67035bc56dac74b154f3c80b5f3a5ec46187df5894c4a8c8230741d4c4f85694",
+    "Thach_Bi_Viewer/simulator/engine.js": "6321c9b893644bd994c8b41e22a422a06e8a5dcdcc47631524a3b513e0a5958c",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "0770352f3add1261f52fda3b97514d1ac0b722a28106191c6499f40b8a28e4e0",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "fcbdf178a7a8c23a7ef911bd76576050f3add7867186be94245310e5c2ab7bea",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
+  },
+  "runtimeSourceHashesEnd": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "a21af1979c410c7bd44f0ebc8915c88da21701855b10da2a6e0ad677daeae1c5",
+    "Thach_Bi_Viewer/simulator/engine.js": "f33b046cecc29fcbd2687c5101f30980c7ae9628df956ff1c2fcd75529eca00e",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "060ba7de57e0f712aa43cd766c4ef212a66100344e66392cd4bf3741c6ee19e7",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "741087397cc56f8d4f13866554835f4de9b1cc84c747e6e186a5470a95449fba",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
+  },
+  "runtimeSourceFilesStableAtEnd": true,
+  "sourceDrift": [
+    {
+      "path": "Thach_Bi_Viewer/simulator/engine.js",
+      "startSha256": "72f11fb5e07ed9b41842e82493314a1c9e70fcdfcd067a89e0f344f9a4d25f5f",
+      "endSha256": "6321c9b893644bd994c8b41e22a422a06e8a5dcdcc47631524a3b513e0a5958c"
+    }
+  ],
+  "invariants": {
+    "full368Receivers": true,
+    "all80WingReceivers": true,
+    "receiverPositionsUnchanged": true,
+    "frozenFourBlockBaselineSeatParity": true,
+    "twoBlockHistoricalLightAirNoiseParity": false,
+    "audienceFactorsMatchIndependentCalculationEveryCase": true,
+    "luxInvariantForFixedLightCase": true,
+    "airNoiseInvariantForFixedFanCase": true,
+    "catalogRatingsUnchanged": true
+  }
+}

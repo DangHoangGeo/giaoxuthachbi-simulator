@@ -58,3 +58,9 @@ The paragraphs above describe the image delivery, when no geometry had changed. 
 3. Sanctuary: gilded scrollwork and relief finishes on the reredos, chamber, shrines and front frame; glowing blue niches; crocketed pinnacles and leaf crestings; a carved wooden corpus with a gilded cloth; a gilded, domed tabernacle.
 
 Still simpler in the model than in the art: the statues, the closed and panelled shrine doors, the carved altar front, the depth of the relief (a generated pattern with a height map) and the curved upper rail over the tie beams. Parts not listed here are still as described above. The art remains the reference for appearance only. Dimensions, structure, equipment and calculated results keep their own sources.
+
+## Wing Saint Peter and Saint Paul concepts · 9 October 2026
+
+The owner requested a Peter/Paul pair between the two end-gable windows in **each** sanctuary wing. [Two native1024×1536 artworks](../Thach_Bi_Viewer/references/10-wing-saints/README.md), generated with `image_gen.imagegen`, serve four local3D frames and appear in the reference manifest. Exact prompts, source paths, hashes and native status are retained; no resampling or copied-room rendering establishes dimensions. Peter carries keys/book; Paul carries book/downward symbolic sword. Root visual review confirms the paired composition; final artwork/product approval remains pending.
+
+The model uses unpowered stable decoration IDs `D-WING-B/H-PETER/PAUL`, frame proxy1.12×1.62 m atY2.20, between modeled windows. Actual picture/frame size, height, substrate/glass, fixing, moisture/glare and service details remain unknown. These pictures do not add electrical demand, light emitters or acoustic absorption assumptions. [Wing coordination](engineering/wing-review.md) reserves the wall strip and retains the lighting/sound/air/structural/concealment failures; the source image cannot approve any capacity or installation.

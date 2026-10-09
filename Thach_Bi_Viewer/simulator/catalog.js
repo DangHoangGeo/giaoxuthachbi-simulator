@@ -55,7 +55,9 @@
     carpetRed: { color: '#8c1c23', roughness: 0.97 },
     rope: { color: '#3a2f25', roughness: 0.9 },
     pine: { color: '#2f5a33', roughness: 0.9 },
-    lanternFrame: { color: '#3b2a1c', metalness: 0.2, roughness: 0.6 }
+    lanternFrame: { color: '#3b2a1c', metalness: 0.2, roughness: 0.6 },
+    saintPeterArt: { color: '#ffffff', roughness: 0.9, textureUrl: 'references/10-wing-saints/saint-peter-concept-v1.png' },
+    saintPaulArt: { color: '#ffffff', roughness: 0.9, textureUrl: 'references/10-wing-saints/saint-paul-concept-v1.png' }
   };
 
   /* ------------------------------------------------------------ geometry kit */
@@ -294,10 +296,10 @@
       });
     });
   }
-  function buildWallFan(k) {
+  function buildWallFan(k, context, extraOutreach = 0) {
     k.box(0.04, 0.2, 0.08, 'white', { p: [0.02, 0, 0] });
-    k.box(0.12, 0.04, 0.05, 'white', { p: [0.08, -0.04, 0] });
-    k.pivots.osc = [0.14, -0.04, 0];
+    k.box(0.12 + extraOutreach, 0.04, 0.05, 'white', { p: [0.08 + extraOutreach / 2, -0.04, 0] });
+    k.pivots.osc = [0.14 + extraOutreach, -0.04, 0];
     k.pivots.head = [0.06, 0.04, 0];
     fanHead(k);
   }
@@ -669,6 +671,9 @@
     { id: 'fanWall', cat: FAN, family: 'Wall', name: 'Wall fan · oscillating 45 cm', mounts: ['wall'], aim: true, defaultHeight: 2.8, defaultTilt: -22, circuit: 'F2',
       desc: 'Common on church columns in Việt Nam. Louder; aim it at people, not microphones or candles.',
       fan: { kind: 'jet', diameter: 0.45, oscillate: true, sweepDeg: 80, speeds: [{ flow: 0.45, watts: 35, dBA: 47, rpm: 900 }, { flow: 0.6, watts: 45, dBA: 52, rpm: 1100 }, { flow: 0.75, watts: 55, dBA: 57, rpm: 1300 }] }, build: buildWallFan },
+    { id: 'fanWingWall', cat: FAN, family: 'Wall', name: 'Wing wall fan · 45 cm · extended bracket concept', mounts: ['wall'], aim: true, defaultHeight: 4.05, defaultTilt: -52, circuit: 'F5',
+      desc: 'Unverified 0.40 m pivot outreach proxy clears modeled swept guard from wall. Same fan ratings as fanWall; bracket, anchors, vibration, real dimensions and concealment ENGINEERING HOLD.',
+      fan: { kind: 'jet', diameter: 0.45, oscillate: true, sweepDeg: 80, speeds: [{ flow: 0.45, watts: 35, dBA: 47, rpm: 900 }, { flow: 0.6, watts: 45, dBA: 52, rpm: 1100 }, { flow: 0.75, watts: 55, dBA: 57, rpm: 1300 }] }, build: k => buildWallFan(k, null, 0.26) },
     { id: 'fanWallLarge', cat: FAN, family: 'Wall', name: 'Large wall circulator · 90 cm', mounts: ['wall'], aim: true, defaultHeight: 4.5, defaultTilt: -8, circuit: 'F4',
       desc: 'Industrial wall circulator, long throw down the nave. Loud at high speed; test before buying.',
       fan: { kind: 'jet', diameter: 0.9, oscillate: false, sweepDeg: 0, speeds: [{ flow: 2.2, watts: 160, dBA: 52, rpm: 450 }, { flow: 3.2, watts: 260, dBA: 58, rpm: 650 }, { flow: 4.2, watts: 380, dBA: 64, rpm: 850 }] }, build: buildLargeWallFan },
@@ -711,6 +716,18 @@
     { id: 'mic', cat: SPK, family: 'Microphone', name: 'Gooseneck microphone (cardioid)', mounts: ['floor'], circuit: 'MIC', mic: { pattern: 'cardioid' },
       desc: 'Feedback check point. Place at the ambo or altar; the talker is ~0.4 m away.', build: buildMic },
 
+    ...[['saintPeterPicture', 'Saint Peter (Thánh Phêrô)', 'saintPeterArt'], ['saintPaulPicture', 'Saint Paul (Thánh Phaolô)', 'saintPaulArt']].map(([id, name, art]) => ({
+      id, cat: DECOR, family: 'Sacred pictures', name: name + ' · concept picture', mounts: ['wall'], circuit: 'DECOR',
+      desc: 'Generated devotional concept. Frame proxy 1.12 × 1.62 m; actual size, material, glass, mounting and artwork approval pending. Unpowered.',
+      build: k => {
+        // +X faces into the room. A 1.00 × 1.50 m native-ratio artwork is
+        // surrounded by a modeled frame; these are review envelopes only.
+        k.box(0.04, 1.62, 1.12, 'darkWood', { p: [0.02, 0, 0] });
+        for (const y of [-0.78, 0.78]) k.box(0.035, 0.06, 1.12, 'agedBrass', { p: [0.0525, y, 0] });
+        for (const z of [-0.53, 0.53]) k.box(0.035, 1.50, 0.06, 'agedBrass', { p: [0.0525, 0, z] });
+        k.plane(1.00, 1.50, art, { p: [0.045, 0, 0], r: [0, PI / 2, 0] });
+      }
+    })),
     { id: 'statueMary', cat: DECOR, family: 'Statues', name: 'Statue · Our Lady (Đức Mẹ)', mounts: ['floor'], footprint: [0.7, 0.7], build: buildMary },
     { id: 'statueJoseph', cat: DECOR, family: 'Statues', name: 'Statue · Saint Joseph', mounts: ['floor'], footprint: [0.7, 0.7], build: buildJoseph },
     { id: 'statueSacredHeart', cat: DECOR, family: 'Statues', name: 'Statue · Sacred Heart', mounts: ['floor'], footprint: [0.7, 0.7], build: buildSacredHeart },

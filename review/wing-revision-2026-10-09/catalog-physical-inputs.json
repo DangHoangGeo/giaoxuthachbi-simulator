@@ -1,0 +1,1232 @@
+{
+  "chandelier6": {
+    "cat": "light",
+    "mounts": [
+      "pendant"
+    ],
+    "defaultDrop": 2.4,
+    "light": {
+      "lumens": 2820,
+      "watts": 27,
+      "cct": 2700,
+      "cri": 90,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0,
+            -0.3,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "chandelier6Reading": {
+    "cat": "light",
+    "mounts": [
+      "pendant"
+    ],
+    "defaultTilt": -90,
+    "defaultDrop": 2.4,
+    "aim": true,
+    "light": {
+      "lumens": 5640,
+      "watts": 51,
+      "cct": 2700,
+      "cri": 90,
+      "beam": 70,
+      "field": 112,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0,
+            -0.3,
+            0
+          ]
+        },
+        {
+          "kind": "spot",
+          "pos": [
+            0,
+            -1.245,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "chandelier8": {
+    "cat": "light",
+    "mounts": [
+      "pendant"
+    ],
+    "defaultDrop": 2.4,
+    "light": {
+      "lumens": 3760,
+      "watts": 36,
+      "cct": 2700,
+      "cri": 90,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0,
+            -0.3,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "chandelier12": {
+    "cat": "light",
+    "mounts": [
+      "pendant"
+    ],
+    "defaultDrop": 2.6,
+    "light": {
+      "lumens": 5640,
+      "watts": 54,
+      "cct": 2700,
+      "cri": 90,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0,
+            -0.3,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "sconce2": {
+    "cat": "light",
+    "mounts": [
+      "wall"
+    ],
+    "defaultHeight": 3.6,
+    "light": {
+      "lumens": 940,
+      "watts": 9,
+      "cct": 2700,
+      "cri": 90,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0.24,
+            0.2,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "projector24": {
+    "cat": "light",
+    "mounts": [
+      "pendant",
+      "wall"
+    ],
+    "defaultTilt": -90,
+    "defaultDrop": 0,
+    "aim": true,
+    "light": {
+      "lumens": 6000,
+      "watts": 50,
+      "cct": 3000,
+      "cri": 90,
+      "beam": 24,
+      "field": 40,
+      "optics": [
+        15,
+        24,
+        36,
+        50
+      ],
+      "emitters": [
+        {
+          "kind": "spot",
+          "head": true,
+          "pos": [
+            0.17,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "projector36": {
+    "cat": "light",
+    "mounts": [
+      "pendant",
+      "wall"
+    ],
+    "defaultTilt": -90,
+    "defaultDrop": 0,
+    "aim": true,
+    "light": {
+      "lumens": 6000,
+      "watts": 50,
+      "cct": 3000,
+      "cri": 90,
+      "beam": 36,
+      "field": 58,
+      "optics": [
+        15,
+        24,
+        36,
+        50
+      ],
+      "emitters": [
+        {
+          "kind": "spot",
+          "head": true,
+          "pos": [
+            0.17,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "spot15": {
+    "cat": "light",
+    "mounts": [
+      "pendant",
+      "wall",
+      "floor"
+    ],
+    "defaultTilt": -45,
+    "defaultDrop": 0,
+    "aim": true,
+    "light": {
+      "lumens": 2500,
+      "watts": 22,
+      "cct": 3000,
+      "cri": 95,
+      "beam": 15,
+      "field": 26,
+      "optics": [
+        10,
+        15,
+        24,
+        36
+      ],
+      "emitters": [
+        {
+          "kind": "spot",
+          "head": true,
+          "pos": [
+            0.12,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "servicePanel": {
+    "cat": "light",
+    "mounts": [
+      "pendant"
+    ],
+    "defaultDrop": 0,
+    "light": {
+      "lumens": 3000,
+      "watts": 30,
+      "cct": 4000,
+      "cri": 80,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0,
+            -0.02,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "highbay": {
+    "cat": "light",
+    "mounts": [
+      "pendant"
+    ],
+    "defaultTilt": -90,
+    "defaultDrop": 0.3,
+    "aim": true,
+    "light": {
+      "lumens": 12000,
+      "watts": 90,
+      "cct": 4000,
+      "cri": 80,
+      "beam": 70,
+      "field": 110,
+      "emitters": [
+        {
+          "kind": "spot",
+          "head": true,
+          "pos": [
+            0.05,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "uplight": {
+    "cat": "light",
+    "mounts": [
+      "floor",
+      "wall"
+    ],
+    "defaultTilt": 90,
+    "aim": true,
+    "light": {
+      "lumens": 4000,
+      "watts": 32,
+      "cct": 2700,
+      "cri": 90,
+      "beam": 100,
+      "field": 150,
+      "emitters": [
+        {
+          "kind": "spot",
+          "head": true,
+          "pos": [
+            0.04,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "lantern": {
+    "cat": "light",
+    "mounts": [
+      "pendant"
+    ],
+    "defaultDrop": 1.2,
+    "light": {
+      "lumens": 1500,
+      "watts": 14,
+      "cct": 2700,
+      "cri": 90,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0,
+            -0.48,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "wallLantern": {
+    "cat": "light",
+    "mounts": [
+      "wall"
+    ],
+    "defaultHeight": 2.6,
+    "light": {
+      "lumens": 900,
+      "watts": 9,
+      "cct": 2700,
+      "cri": 90,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0.3,
+            -0.2,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "flood": {
+    "cat": "light",
+    "mounts": [
+      "floor"
+    ],
+    "defaultTilt": 50,
+    "aim": true,
+    "light": {
+      "lumens": 9000,
+      "watts": 70,
+      "cct": 3000,
+      "cri": 80,
+      "beam": 30,
+      "field": 50,
+      "optics": [
+        15,
+        30,
+        50,
+        70
+      ],
+      "emitters": [
+        {
+          "kind": "spot",
+          "head": true,
+          "pos": [
+            0.05,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "corniceFlood": {
+    "cat": "light",
+    "mounts": [
+      "floor"
+    ],
+    "defaultTilt": 50,
+    "aim": true,
+    "params": {
+      "outreach": {
+        "label": "Arm outreach (m)",
+        "min": 0.25,
+        "max": 0.8,
+        "step": 0.05,
+        "value": 0.5
+      }
+    },
+    "light": {
+      "lumens": 9000,
+      "watts": 70,
+      "cct": 3000,
+      "cri": 80,
+      "beam": 30,
+      "field": 50,
+      "optics": [
+        15,
+        30,
+        50,
+        70
+      ],
+      "emitters": [
+        {
+          "kind": "spot",
+          "head": true,
+          "pos": [
+            0.05,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "bollard": {
+    "cat": "light",
+    "mounts": [
+      "floor"
+    ],
+    "light": {
+      "lumens": 600,
+      "watts": 8,
+      "cct": 3000,
+      "cri": 80,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0,
+            0.76,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "exitSign": {
+    "cat": "light",
+    "mounts": [
+      "wall",
+      "pendant"
+    ],
+    "defaultHeight": 2.4,
+    "light": {
+      "lumens": 20,
+      "watts": 3,
+      "cct": 6500,
+      "emitters": []
+    }
+  },
+  "fanCeiling": {
+    "cat": "fan",
+    "mounts": [
+      "pendant"
+    ],
+    "defaultDrop": 3,
+    "fan": {
+      "kind": "ceiling",
+      "diameter": 1.42,
+      "rotorDrop": 0.17,
+      "speeds": [
+        {
+          "flow": 1.3,
+          "watts": 18,
+          "dBA": 32,
+          "rpm": 110
+        },
+        {
+          "flow": 2,
+          "watts": 34,
+          "dBA": 38,
+          "rpm": 170
+        },
+        {
+          "flow": 2.8,
+          "watts": 60,
+          "dBA": 45,
+          "rpm": 240
+        }
+      ]
+    }
+  },
+  "fanHVLS": {
+    "cat": "fan",
+    "mounts": [
+      "pendant"
+    ],
+    "defaultDrop": 3.2,
+    "params": {
+      "spreader": {
+        "label": "Steel spreader between tie beams",
+        "type": "bool",
+        "value": false
+      }
+    },
+    "fan": {
+      "kind": "ceiling",
+      "diameter": 3,
+      "rotorDrop": 0.42,
+      "speeds": [
+        {
+          "flow": 4,
+          "watts": 45,
+          "dBA": 33,
+          "rpm": 35
+        },
+        {
+          "flow": 7,
+          "watts": 120,
+          "dBA": 36,
+          "rpm": 50
+        },
+        {
+          "flow": 10,
+          "watts": 250,
+          "dBA": 39,
+          "rpm": 70
+        },
+        {
+          "flow": 13,
+          "watts": 420,
+          "dBA": 42,
+          "rpm": 85
+        },
+        {
+          "flow": 16,
+          "watts": 650,
+          "dBA": 45,
+          "rpm": 100
+        }
+      ]
+    }
+  },
+  "fanWall": {
+    "cat": "fan",
+    "mounts": [
+      "wall"
+    ],
+    "defaultHeight": 2.8,
+    "defaultTilt": -22,
+    "aim": true,
+    "fan": {
+      "kind": "jet",
+      "diameter": 0.45,
+      "oscillate": true,
+      "sweepDeg": 80,
+      "speeds": [
+        {
+          "flow": 0.45,
+          "watts": 35,
+          "dBA": 47,
+          "rpm": 900
+        },
+        {
+          "flow": 0.6,
+          "watts": 45,
+          "dBA": 52,
+          "rpm": 1100
+        },
+        {
+          "flow": 0.75,
+          "watts": 55,
+          "dBA": 57,
+          "rpm": 1300
+        }
+      ]
+    }
+  },
+  "fanWallLarge": {
+    "cat": "fan",
+    "mounts": [
+      "wall"
+    ],
+    "defaultHeight": 4.5,
+    "defaultTilt": -8,
+    "aim": true,
+    "fan": {
+      "kind": "jet",
+      "diameter": 0.9,
+      "oscillate": false,
+      "sweepDeg": 0,
+      "speeds": [
+        {
+          "flow": 2.2,
+          "watts": 160,
+          "dBA": 52,
+          "rpm": 450
+        },
+        {
+          "flow": 3.2,
+          "watts": 260,
+          "dBA": 58,
+          "rpm": 650
+        },
+        {
+          "flow": 4.2,
+          "watts": 380,
+          "dBA": 64,
+          "rpm": 850
+        }
+      ]
+    }
+  },
+  "fanExhaust": {
+    "cat": "fan",
+    "mounts": [
+      "wall"
+    ],
+    "defaultHeight": 6,
+    "fan": {
+      "kind": "jet",
+      "exhaust": true,
+      "diameter": 0.5,
+      "oscillate": false,
+      "sweepDeg": 0,
+      "speeds": [
+        {
+          "flow": 0.8,
+          "watts": 60,
+          "dBA": 40,
+          "rpm": 900
+        },
+        {
+          "flow": 1.2,
+          "watts": 110,
+          "dBA": 46,
+          "rpm": 1300
+        },
+        {
+          "flow": 1.6,
+          "watts": 170,
+          "dBA": 52,
+          "rpm": 1700
+        }
+      ]
+    }
+  },
+  "fanPedestal": {
+    "cat": "fan",
+    "mounts": [
+      "floor"
+    ],
+    "defaultTilt": -5,
+    "aim": true,
+    "fan": {
+      "kind": "jet",
+      "diameter": 0.45,
+      "oscillate": true,
+      "sweepDeg": 80,
+      "speeds": [
+        {
+          "flow": 0.45,
+          "watts": 35,
+          "dBA": 46,
+          "rpm": 900
+        },
+        {
+          "flow": 0.6,
+          "watts": 45,
+          "dBA": 51,
+          "rpm": 1100
+        },
+        {
+          "flow": 0.75,
+          "watts": 55,
+          "dBA": 56,
+          "rpm": 1300
+        }
+      ]
+    }
+  },
+  "columnSpeaker": {
+    "cat": "speaker",
+    "mounts": [
+      "wall"
+    ],
+    "defaultHeight": 3.2,
+    "defaultTilt": -6,
+    "aim": true,
+    "speaker": {
+      "hb": [
+        360,
+        300,
+        220,
+        160,
+        140,
+        130,
+        120
+      ],
+      "vb": [
+        360,
+        160,
+        75,
+        40,
+        25,
+        20,
+        16
+      ],
+      "rear": [
+        3,
+        5,
+        8,
+        12,
+        15,
+        18,
+        20
+      ],
+      "sensitivity": 93,
+      "ratedW": 160,
+      "lineLength": 1,
+      "response": [
+        -12,
+        -4,
+        0,
+        0,
+        0,
+        0,
+        -3
+      ],
+      "nominal": 86
+    }
+  },
+  "steerableColumn": {
+    "cat": "speaker",
+    "mounts": [
+      "wall"
+    ],
+    "defaultHeight": 3.1,
+    "defaultTilt": -7,
+    "aim": true,
+    "params": {
+      "opening": {
+        "label": "Vertical beam opening (°)",
+        "min": 8,
+        "max": 45,
+        "step": 1,
+        "value": 20
+      }
+    },
+    "speaker": {
+      "hb": [
+        360,
+        300,
+        220,
+        170,
+        150,
+        140,
+        130
+      ],
+      "vb": [
+        360,
+        110,
+        50,
+        24,
+        15,
+        12,
+        10
+      ],
+      "rear": [
+        3,
+        6,
+        10,
+        14,
+        18,
+        20,
+        22
+      ],
+      "sensitivity": 97,
+      "ratedW": 400,
+      "lineLength": 2,
+      "response": [
+        -8,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        -2
+      ],
+      "nominal": 86,
+      "active": true,
+      "steerable": true,
+      "opening": 20
+    }
+  },
+  "slimColumn": {
+    "cat": "speaker",
+    "mounts": [
+      "wall"
+    ],
+    "defaultHeight": 2.7,
+    "defaultTilt": -8,
+    "aim": true,
+    "speaker": {
+      "hb": [
+        360,
+        300,
+        200,
+        150,
+        130,
+        120,
+        110
+      ],
+      "vb": [
+        360,
+        220,
+        110,
+        60,
+        40,
+        32,
+        28
+      ],
+      "rear": [
+        3,
+        5,
+        8,
+        12,
+        15,
+        17,
+        19
+      ],
+      "sensitivity": 89,
+      "ratedW": 60,
+      "lineLength": 0.6,
+      "response": [
+        -14,
+        -6,
+        -1,
+        0,
+        0,
+        0,
+        -3
+      ],
+      "nominal": 82
+    }
+  },
+  "pointSpeaker": {
+    "cat": "speaker",
+    "mounts": [
+      "wall"
+    ],
+    "defaultHeight": 3.5,
+    "defaultTilt": -12,
+    "aim": true,
+    "speaker": {
+      "hb": [
+        360,
+        240,
+        140,
+        100,
+        90,
+        85,
+        80
+      ],
+      "vb": [
+        360,
+        200,
+        120,
+        80,
+        60,
+        55,
+        50
+      ],
+      "rear": [
+        4,
+        7,
+        11,
+        14,
+        17,
+        19,
+        21
+      ],
+      "sensitivity": 92,
+      "ratedW": 200,
+      "response": [
+        -6,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -2
+      ],
+      "nominal": 84
+    }
+  },
+  "pendantSpeaker": {
+    "cat": "speaker",
+    "mounts": [
+      "pendant"
+    ],
+    "defaultTilt": -90,
+    "defaultDrop": 2.5,
+    "aim": true,
+    "speaker": {
+      "hb": [
+        360,
+        300,
+        180,
+        120,
+        110,
+        100,
+        90
+      ],
+      "vb": [
+        360,
+        300,
+        180,
+        120,
+        110,
+        100,
+        90
+      ],
+      "rear": [
+        3,
+        5,
+        8,
+        12,
+        15,
+        17,
+        18
+      ],
+      "sensitivity": 89,
+      "ratedW": 30,
+      "response": [
+        -12,
+        -4,
+        0,
+        0,
+        0,
+        -1,
+        -4
+      ],
+      "nominal": 80
+    }
+  },
+  "horn": {
+    "cat": "speaker",
+    "mounts": [
+      "wall",
+      "pendant"
+    ],
+    "defaultHeight": 4.5,
+    "defaultTilt": -15,
+    "aim": true,
+    "speaker": {
+      "hb": [
+        360,
+        200,
+        110,
+        70,
+        60,
+        55,
+        50
+      ],
+      "vb": [
+        360,
+        160,
+        80,
+        50,
+        40,
+        36,
+        32
+      ],
+      "rear": [
+        3,
+        6,
+        10,
+        14,
+        17,
+        18,
+        20
+      ],
+      "sensitivity": 108,
+      "ratedW": 30,
+      "response": [
+        -22,
+        -12,
+        -4,
+        0,
+        0,
+        -2,
+        -10
+      ],
+      "nominal": 98
+    }
+  },
+  "wedge": {
+    "cat": "speaker",
+    "mounts": [
+      "floor"
+    ],
+    "defaultTilt": 0,
+    "aim": true,
+    "speaker": {
+      "hb": [
+        360,
+        240,
+        140,
+        100,
+        90,
+        85,
+        80
+      ],
+      "vb": [
+        360,
+        200,
+        120,
+        80,
+        60,
+        55,
+        50
+      ],
+      "rear": [
+        4,
+        7,
+        11,
+        14,
+        17,
+        19,
+        21
+      ],
+      "sensitivity": 95,
+      "ratedW": 250,
+      "response": [
+        -4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2
+      ],
+      "nominal": 80,
+      "upward": 40
+    }
+  },
+  "mic": {
+    "cat": "speaker",
+    "mounts": [
+      "floor"
+    ],
+    "mic": {
+      "pattern": "cardioid"
+    }
+  },
+  "candleStand": {
+    "cat": "decor",
+    "mounts": [
+      "floor"
+    ],
+    "light": {
+      "lumens": 84,
+      "watts": 0,
+      "cct": 1900,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0,
+            1.25,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "paschal": {
+    "cat": "decor",
+    "mounts": [
+      "floor"
+    ],
+    "light": {
+      "lumens": 12,
+      "watts": 0,
+      "cct": 1900,
+      "emitters": []
+    }
+  },
+  "lanternString": {
+    "cat": "decor",
+    "mounts": [
+      "pendant"
+    ],
+    "defaultDrop": 0,
+    "params": {
+      "length": {
+        "label": "Length (m)",
+        "min": 2,
+        "max": 14,
+        "step": 0.5,
+        "value": 6
+      }
+    },
+    "light": {
+      "lumens": 240,
+      "watts": 18,
+      "cct": 2200,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0,
+            -0.6,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "bulbString": {
+    "cat": "light",
+    "mounts": [
+      "floor",
+      "wall"
+    ],
+    "params": {
+      "length": {
+        "label": "Length (m)",
+        "min": 2,
+        "max": 60,
+        "step": 0.5,
+        "value": 12
+      },
+      "slope": {
+        "label": "Slope (°, 90 = vertical)",
+        "min": -90,
+        "max": 90,
+        "step": 1,
+        "value": 0
+      },
+      "spacing": {
+        "label": "Bulb spacing (m)",
+        "min": 0.3,
+        "max": 1.5,
+        "step": 0.1,
+        "value": 0.6
+      }
+    },
+    "light": {
+      "lumens": 0,
+      "watts": 0,
+      "wattsPerBulb": 1,
+      "cct": 2200,
+      "emitters": []
+    }
+  },
+  "christmasTree": {
+    "cat": "decor",
+    "mounts": [
+      "floor"
+    ],
+    "light": {
+      "lumens": 350,
+      "watts": 25,
+      "cct": 2400,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0,
+            1.8,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "grotto": {
+    "cat": "decor",
+    "mounts": [
+      "floor"
+    ],
+    "light": {
+      "lumens": 400,
+      "watts": 6,
+      "cct": 3000,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0.4,
+            2.2,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "star": {
+    "cat": "decor",
+    "mounts": [
+      "pendant"
+    ],
+    "defaultDrop": 1.2,
+    "light": {
+      "lumens": 500,
+      "watts": 12,
+      "cct": 5000,
+      "emitters": [
+        {
+          "kind": "point",
+          "pos": [
+            0,
+            -1.15,
+            0
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "language": "en",
+  "status": "Design development - not for construction",
+  "basis": "Fresh default model, not saved browser layout",
+  "gitRevision": "cbf47dad34bf680ff71e905965539e44aa653a0c",
+  "sourceFiles": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "67035bc56dac74b154f3c80b5f3a5ec46187df5894c4a8c8230741d4c4f85694",
+    "Thach_Bi_Viewer/simulator/engine.js": "a6ea21ce0d9d54cc26c5d5141082e5dcc19128db07357afbc169bc8413b657fe",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "44e8c4c39b2c3a6833c46642133e4f3a6eafae6c6c2176d5cf3a9a609840ffb1",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "fcbdf178a7a8c23a7ef911bd76576050f3add7867186be94245310e5c2ab7bea",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
+    "scripts/build_review_drawings.py": "11c50afeee67cb18d448280d94b66ad36393a90aa2c44b36037bdf3ecbf18230",
+    "scripts/export_print_model.cjs": "1ca96bbe3dd4c77fa36641e8367b37ea3538bd44ce0fd70be377d4f6b7f47805",
+    "scripts/review_drawings_i18n.py": "4f63b8e9b02d2bb3110557dfa82a7780084f2581790facb63801b3cb51a46ddc"
+  },
+  "systemsHash": "e2130aeffb518d934149fa35c32d858856db06e804d9cb98aac4f1896cd3b761",
+  "counts": {
+    "equipment": 286,
+    "routes": 333,
+    "vertices": 2749,
+    "pages": 44
+  },
+  "scales": {
+    "plan": 200,
+    "height": 500
+  },
+  "files": {
+    "drawing-index.json": "ebd3e626e485b16e33970285b23be639a96fe4d6aec48fc1bcd98d8027af3cb2",
+    "equipment-coordinates.csv": "7b9c46e74158bf570b6ab2e801c452b6c3c31c4de800c8036f26296d02618f93",
+    "model-snapshot.json": "abd2c95b7541c32bce06276e9eb62fa6fd06789de5a02b2a791939649bcb5954",
+    "route-vertices.csv": "49d7560763e646c88a1724d288c5848db6e9c39bdf84eb7375dd828378b89ed8",
+    "thach-bi-electrical-review-A3.pdf": "b1442e21ee163bffd59e9c3550fee662bf87c6e253bae96172430f63304302e5"
+  }
+}

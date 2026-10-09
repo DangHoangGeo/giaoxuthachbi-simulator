@@ -1,0 +1,23 @@
+{
+  "status": "PASS documentation/log whitespace only",
+  "reason": "Staged whitespace check includes new files; remove two extra EOF blank lines.",
+  "records": [
+    {
+      "path": "Thach_Bi_Viewer/references/10-wing-saints/provenance.json",
+      "beforeSha256": "6942fed1e5e448bb2be37c1ecf935eeb63fee1dbcdc3dc5d58353c1e75133e0a",
+      "afterSha256": "79cfd3586a384cb633ce2b97978f0ba8c7086b9517b76d92755b0e117eb6fd63",
+      "onlyFinalBlankLineRemoved": true,
+      "parsedJSONUnchanged": true
+    },
+    {
+      "path": "review/wing-revision-2026-10-09/audience-cache-negative-control.log",
+      "beforeSha256": "48ff50767351b94c24710bc16ddc46de13af33bc879afd02867fd42786b907d6",
+      "afterSha256": "da6169535fa4a6eeb4c92255b02e7303b66dd53fde66b82fca41a9b06de53c84",
+      "onlyFinalBlankLineRemoved": true,
+      "parsedJSONUnchanged": null
+    }
+  ],
+  "nativePNGBytesAndRuntimeSourcesUnchanged": true,
+  "desktopEvidence": "Previous desktop fingerprints record the pre-cleanup provenance bytes; parsed provenance is exactly equal. This file records the final metadata-only delta.",
+  "engineeringAcceptance": false
+}

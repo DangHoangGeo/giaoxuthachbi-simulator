@@ -130,7 +130,7 @@ VI = {
     'Containment size, power/signal separation, fixings, fire stopping, access panels and penetrations require coordinated approval. Coloured routes are enlarged display lines, not cable diameters.': 'Kích thước ống/máng, tách điện/tín hiệu, gá lắp, bịt ngăn cháy, cửa thăm và lỗ xuyên cần được phê duyệt phối hợp. Tuyến màu là nét hiển thị phóng to, không phải đường kính cáp.',
     '04 · Lighting routes and fittings': '04 / Tuyến chiếu sáng và bộ đèn',
     'Review each light circuit and its LC-1 or DB-2 supply. Check chandelier support, aim, driver access, fan-blade interaction and labels against the matching paper sheet.': 'Rà soát từng mạch đèn và nguồn từ LC-1 hoặc DB-2. Kiểm tra đỡ đèn chùm, hướng chiếu, tiếp cận bộ nguồn, tương tác cánh quạt và nhãn theo tờ bản in tương ứng.',
-    'Selected-product photometry, support design, control channels, dimming compatibility and installation details remain pending. Four default sampled seats miss the lighting brief.': 'Quang trắc sản phẩm được chọn, thiết kế giá đỡ, kênh điều khiển, khả năng tương thích giảm sáng và chi tiết lắp đặt còn chờ. Bốn ghế lấy mẫu mặc định chưa đạt yêu cầu chiếu sáng.',
+    'Selected-product photometry, support design, control channels, dimming compatibility and installation details remain pending. Review current per-seat lighting failures in the matching calculation report.': 'Quang trắc sản phẩm được chọn, thiết kế giá đỡ, kênh điều khiển, khả năng tương thích giảm sáng và chi tiết lắp đặt còn chờ. Xem các điểm đọc sách chưa đạt chiếu sáng của phương án hiện tại trong báo cáo tính toán cùng phiên bản.',
     '05 · Sound and microphone connections': '05 / Kết nối âm thanh và micro',
     'Trace speaker and microphone lines to AV-1 separately from rack mains. Review polarity, intended zones, furniture/floor interfaces and service access.': 'Tra tuyến loa và micro về AV-1 riêng với điện nguồn của tủ âm thanh. Rà soát cực tính, khu phục vụ dự kiến, tiếp giáp nội thất/sàn và tiếp cận bảo trì.',
     'Amplifier topology, impedance/line voltage, connectors, shielding and separation are pending. Passive speaker ratings are not mains loads; feedback and wing clarity targets remain unmet.': 'Cấu hình bộ khuếch đại, trở kháng/điện áp đường loa, đầu nối, chống nhiễu và phân cách còn chờ. Công suất loa thụ động không phải tải điện lưới; mục tiêu chống hú và độ rõ lời cánh ngang chưa đạt.',
@@ -149,6 +149,9 @@ VI = {
 }
 
 PRODUCTS = {
+    'Wing wall fan · 45 cm · extended bracket concept': 'Quạt tường cánh ngang / 45 cm / giá vươn còn chờ duyệt',
+    'Saint Peter (Thánh Phêrô) · concept picture': 'Tranh Thánh Phêrô / ý tưởng',
+    'Saint Paul (Thánh Phaolô) · concept picture': 'Tranh Thánh Phaolô / ý tưởng',
     'Service-room LED panel · 600 × 600 mm': 'Đèn tấm LED phòng phụ trợ / 600 x 600 mm',
     'LED projector · medium 36°': 'Đèn chiếu LED / góc trung bình 36°',
     'Small brass chandelier + reading optic · concept': 'Đèn chùm đồng thau nhỏ + quang học đọc sách / ý tưởng',
@@ -175,6 +178,10 @@ PRODUCTS = {
 }
 
 NAME_PARTS = {
+    'Saint Peter picture': 'Tranh Thánh Phêrô',
+    'Saint Paul picture': 'Tranh Thánh Phaolô',
+    'toward entrance': 'hướng về cửa vào',
+    'concept': 'ý tưởng',
     'Service-room ceiling panel': 'Đèn tấm trần phòng phụ trợ',
     'Reading light': 'Đèn đọc sách',
     'Rear rows light': 'Đèn hàng ghế sau',
@@ -252,6 +259,7 @@ NAME_PARTS = {
     'entrance hall': 'sảnh cửa vào',
     'main doors': 'cửa chính',
     'held review': 'còn chờ duyệt',
+    'held': 'còn chờ xác minh kỹ thuật',
 }
 
 

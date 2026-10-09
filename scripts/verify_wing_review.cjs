@@ -32,7 +32,7 @@ const edits = {
 };
 
 function run() {
-  const out = process.argv[2] ? path.resolve(process.argv[2]) : path.join(root, 'review/wing-options-2026-10-09/verification');
+  const out = process.argv[2] ? path.resolve(process.argv[2]) : path.join(root, 'review/wing-revision-2026-10-09/migration');
   fs.mkdirSync(out, { recursive: true });
   const sourceSha256 = fingerprints(), baseline = frozenBaseline(), cases = [], study = loadStudyModel();
   const { SIM } = study;
@@ -46,24 +46,27 @@ function run() {
     assert.equal(typeof D.upgradeWingReview, 'function');
     assert.equal(originalDefault.settings.wingReviewRevision, D.wingReviewRevision);
     const affected = new Set([...groups.B, ...groups.H, ...groups.nave]);
-    assert.equal(design.length, baseline.items.length + 4, 'only the four appended fans add inventory');
-    assert.deepEqual(design.slice(0, baseline.items.length).map(it => it.id), baseline.items.map(it => it.id), 'every existing default equipment ID retains its slot');
-    assert.deepEqual(design.slice(baseline.items.length).map(it => it.id), groups.appended);
+    const retiredSoundIds = ['S275', 'S277'];
+    const changedSoundIds = new Set(['S275', 'S276', 'S277', 'S278']);
+    const retired = new Set([...D.wingReviewRetiredIds, ...retiredSoundIds]);
+    const artIds = ['D-WING-B-PETER', 'D-WING-B-PAUL', 'D-WING-H-PETER', 'D-WING-H-PAUL'];
+    assert.equal(design.length, baseline.items.filter(it => !retired.has(it.id)).length + 4, 'retired lights/speakers and four unpowered pictures define inventory');
+    assert.deepEqual(design.map(it => it.id), [...baseline.items.filter(it => !retired.has(it.id)).map(it => it.id), ...artIds], 'every retained default ID and ordering stays exact');
     for (const side of ['B', 'H']) {
-      for (const id of groups[side].filter(id => id.startsWith('L'))) {
+      for (const id of groups[side].filter(id => id.startsWith('L') && !retired.has(id))) {
         const it = design.find(it => it.id === id);
         assert.equal(it.type, 'chandelier6Reading'); assert.equal(it.circuit, 'L8'); assert.equal(it.mount, 'pendant');
-        assert.equal(it.hidden, false); assert.match(it.note, /HELD/);
+        assert.equal(it.hidden, false); assert.equal(it.pos[1], 3.8); assert.equal(Math.abs(it.pos[2]), 10.15); assert.match(it.note, /HELD/);
       }
-      for (const id of [...groups[side].filter(id => id.startsWith('F')), ...groups.appended.filter(id => id.includes('-' + side + '-'))]) {
+      for (const id of groups[side].filter(id => id.startsWith('F'))) {
         const it = design.find(it => it.id === id);
-        assert.equal(it.type, 'fanWall'); assert.equal(it.circuit, 'F5'); assert.equal(it.mount, 'wall');
-        assert.equal(it.hidden, false); assert.equal(it.on, true); assert.equal(it.speed, 1); assert.match(it.note, /ENGINEERING HOLD/);
+        assert.equal(it.type, 'fanWingWall'); assert.equal(it.circuit, 'F5'); assert.equal(it.mount, 'wall');
+        assert.equal(it.hidden, false); assert.equal(it.on, true); assert.equal(it.speed, 1); assert.equal(it.pos[1], 4.05); assert.match(it.note, /ENGINEERING HOLD/);
       }
     }
     for (const id of groups.nave) { const it = design.find(it => it.id === id); assert.equal(it.hidden, false); assert.equal(it.on, false); }
     assert.equal(design.filter(it => it.type === 'fanCeiling' && Math.abs(it.pos[2]) > 7.25).length, 0, 'four former wing roof fans are replaced');
-    for (const it of baseline.items.filter(it => !affected.has(it.id))) assert.deepEqual(design.find(raw => raw.id === it.id), it, 'unrelated default equipment remains exact: ' + it.id);
+    for (const it of baseline.items.filter(it => !affected.has(it.id) && !changedSoundIds.has(it.id))) assert.deepEqual(design.find(raw => raw.id === it.id), it, 'unrelated default equipment remains exact: ' + it.id);
 
     const byDesignId = new Map(design.map(it => [it.id, it]));
     function checkMigration(name, inputItems, blocked = [], editedNave = [], overrideDesign = design) {
@@ -72,18 +75,18 @@ function run() {
       assert.deepEqual(input, before, name + ': caller items not mutated');
       assert.deepEqual(overrideDesign, beforeDesign, name + ': design templates not mutated');
       assert.equal(new Set(output.map(it => it.id)).size, output.length, name + ': no duplicate equipment IDs');
-      const blockedIds = new Set(blocked.flatMap(side => groups[side]));
+      const blockedIds = new Set(blocked.flatMap(side => [...groups[side], ...groups.appended.filter(id => id.includes('-' + side + '-'))]));
       for (const it of before) {
         let expected = it;
-        if ((groups.B.includes(it.id) || groups.H.includes(it.id)) && !blockedIds.has(it.id)) expected = byDesignId.get(it.id);
+        if ((groups.B.includes(it.id) || groups.H.includes(it.id) || groups.appended.includes(it.id)) && !blockedIds.has(it.id) && !blocked.some(side => it.id.includes('-' + side + '-'))) expected = byDesignId.get(it.id);
         if (groups.nave.includes(it.id) && !editedNave.includes(it.id)) expected = { ...it, hidden: false, on: false };
         assert.deepEqual(output.find(raw => raw.id === it.id), expected, name + ': exact preservation/replacement ' + it.id);
       }
       for (const side of ['B', 'H']) for (const id of groups.appended.filter(id => id.includes('-' + side + '-'))) {
         const existing = before.find(it => it.id === id), actual = output.find(it => it.id === id);
-        assert.deepEqual(actual, existing || (blocked.includes(side) ? undefined : byDesignId.get(id)), name + ': append only unedited wing and preserve existing ID ' + id);
+        assert.deepEqual(actual, blocked.includes(side) ? existing : undefined, name + ': append only unedited wing and preserve existing ID ' + id);
       }
-      assert.deepEqual(output.slice(0, before.length).map(it => it.id), before.map(it => it.id), name + ': saved ordering retained');
+      assert.deepEqual(output.map(it => it.id), before.filter(it => output.some(raw => raw.id === it.id)).map(it => it.id), name + ': retained saved ordering exact');
       assert.deepEqual(plain(D.upgradeWingReview(output, overrideDesign)), output, name + ': repeated migration is idempotent');
       cases.push({ name, inputItems: before.length, outputItems: output.length, blockedWings: blocked, preservedEditedNaveIds: editedNave, sha256: sha256(JSON.stringify(output)) });
       return output;
@@ -110,8 +113,15 @@ function run() {
       collision.push({ ...plain(baseline.items.find(it => it.id === 'F244')), id, name: 'Owner item at reserved ID', pos: [12, 4, -6], note: 'Do not infer a replacement from this ID.' });
       checkMigration('reserved appended-ID collision ' + id, collision, [id.includes('-B-') ? 'B' : 'H']);
     }
-    const missing = design.filter(it => it.id !== 'L64');
+    const missing = design.filter(it => it.id !== 'L63');
     checkMigration('incomplete recommended wing template', baseline.items, ['B'], [], missing);
+
+    const intermediate = JSON.parse(fs.readFileSync(path.join(root, 'review/wing-revision-2026-10-09/baseline-layout.json'), 'utf8'));
+    checkMigration('untouched intermediate four-light/four-fan review', intermediate.items);
+    for (const side of ['B', 'H']) for (const id of [...groups[side], ...groups.appended.filter(id => id.includes('-' + side + '-'))]) for (const [edit, change] of Object.entries(edits)) {
+      const items = plain(intermediate.items); change(items, id);
+      checkMigration(`intermediate ${side}/${id}/${edit}`, items, [side]);
+    }
 
     function assertFixtures(message) {
       assert.equal(SIM.fixtures.size, SIM.state.items.length, message + ': one instantiated fixture per ID');
@@ -126,7 +136,7 @@ function run() {
     assert.deepEqual(plain(SIM.state.items), upgraded, 'migrated layout imports exact normalized records');
     assertFixtures('migrated layout');
     const electrical = plain(SIM.electrical.exportData());
-    for (const id of [...groups.B, ...groups.H, ...groups.nave, ...groups.appended]) {
+    for (const id of [...groups.B, ...groups.H, ...groups.nave].filter(id => !D.wingReviewRetiredIds.includes(id))) {
       const component = electrical.components.find(it => it.id === id), routes = electrical.routes.filter(route => route.itemIds.includes(id));
       assert(component, 'equipment exists in actual electrical export ' + id);
       assert.equal(component.type, SIM.item(id).type, 'electrical type matches actual fixture ' + id);

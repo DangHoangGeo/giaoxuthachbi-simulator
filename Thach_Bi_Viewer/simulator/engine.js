@@ -80,7 +80,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -646,6 +646,22 @@
       m.name = 'Simulator · ' + key;
       matLib[key] = m;
       SIM.persistentLighting?.bindMaterial(m);
+      // Native local artwork is shared by all frames. Headless calculations
+      // have no browser Image service and do not claim texture verification.
+      if (d.textureUrl && typeof window.Image === 'function') {
+        const picture = new window.Image();
+        picture.onload = () => {
+          const texture = new T.Texture(picture);
+          texture.colorSpace = T.SRGBColorSpace;
+          texture.needsUpdate = true;
+          m.map = texture; m.needsUpdate = true;
+          window.CHURCH_PERFORMANCE?.invalidate();
+        };
+        picture.onerror = () => console.error('Local concept artwork could not load: ' + d.textureUrl);
+        // file: PNG image origins cannot be uploaded in ordinary Chrome.
+        // The generated local script preserves native bytes as data URLs.
+        picture.src = window.CHURCH_WING_SAINT_TEXTURES?.[d.textureUrl]?.imageUrl || d.textureUrl;
+      }
     }
     return matLib[key];
   }
@@ -1085,7 +1101,11 @@
   }
   function refreshSeats() {
     const blocks = ctx.interior.seatingState?.().blocks || window.CHURCH_PLANNING?.state?.().blocks || 4;
-    GEO.seats = GEO.seatsByLayout[blocks] || [];
+    const seats = GEO.seatsByLayout[blocks] || [];
+    // Equal receiver counts can have different positions/audience interception.
+    // Invalidate directional fractions when the actual seating array changes.
+    if (GEO.seats !== seats) audienceCache.clear();
+    GEO.seats = seats;
     GEO.seatingArea = (GEO.seatAreas?.[blocks] || 200) * 1.25;
     roomCache = null;
   }
@@ -1209,7 +1229,7 @@
   let nextId = 1;
   function newId(prefix) {
     let id;
-    do { id = `${prefix}${nextId++}`; } while (state.items.some(i => i.id === id));
+    do { id = `${prefix}${nextId++}`; } while (state.items.some(i => i.id === id) || window.CHURCH_SIM_DESIGN?.wingSoundRetiredIds?.includes(id) || window.CHURCH_SIM_DESIGN?.wingReviewRetiredIds?.includes(id));
     return id;
   }
   function normalizeItem(raw) {
@@ -1242,6 +1262,8 @@
     if (type.fan) { it.speed = P.clamp(Math.round(num(raw.speed, 2)), 0, type.fan.speeds.length); it.oscillate = raw.oscillate !== false; }
     if (type.speaker) { it.level = P.clamp(num(raw.level, 0), -30, 12); it.delayMs = P.clamp(num(raw.delayMs, 0), 0, 400); }
     if (it.mount === 'pendant' && it.anchorY === undefined) it.anchorY = structureAbove(pos[0], pos[2], pos[1])?.y ?? pos[1];
+    const numericId = it.id.match(/^[LFSDX](\d+)$/);
+    if (numericId) nextId = Math.max(nextId, Number(numericId[1]) + 1);
     return it;
   }
   function addItem(raw, { record = true, select: doSelect = false } = {}) {
@@ -1457,16 +1479,17 @@
       : a && b && typeof a === 'object' && typeof b === 'object' ? Object.keys(a).length === Object.keys(b).length && Object.keys(a).every(k => same(a[k], b[k])) : a === b;
     const sides = ['B', 'H'].map(side => {
       const targets = reviewedWingItems(side);
-      const ids = new Set(targets.map(it => it.id));
+      const ids = new Set(window.CHURCH_SIM_DESIGN.wingReviewScope(side));
       const items = state.items.filter(it => ids.has(it.id) && !it.hidden);
+      const obsoleteIds = state.items.filter(it => ids.has(it.id) && window.CHURCH_SIM_DESIGN.wingReviewRetiredIds.includes(it.id)).map(it => it.id);
       const mismatchingIds = targets.filter(target => {
         const prior = SIM.item(target.id);
         return !prior || fields.some(field => !same(prior[field], target[field]));
       }).map(it => it.id);
-      const conflictIds = targets.filter(target => target.id.startsWith('F-WING-') && SIM.item(target.id) && SIM.item(target.id).name !== target.name).map(it => it.id);
-      return { side, current: !mismatchingIds.length, mismatchingIds, conflictIds,
+      const conflictIds = window.CHURCH_SIM_DESIGN.wingReviewScope(side).filter(id => id.startsWith('F-WING-') && SIM.item(id) && !new RegExp('^Wall fan · wing ' + side + ' · [34] · held review$').test(SIM.item(id).name));
+      return { side, current: !mismatchingIds.length && !obsoleteIds.length, mismatchingIds, conflictIds, obsoleteIds,
         counts: { chandeliers: items.filter(it => it.type === 'chandelier6Reading').length,
-          wallFans: items.filter(it => it.type === 'fanWall' && it.circuit === 'F5').length,
+          wallFans: items.filter(it => CAT.byId[it.type]?.fan?.kind === 'jet' && it.circuit === 'F5').length,
           roofFans: items.filter(it => it.type === 'fanCeiling').length } };
     });
     return { sourceRevision: window.CHURCH_SIM_DESIGN.wingReviewRevision, sides };
@@ -1477,7 +1500,7 @@
     if (status.conflictIds.length) throw new Error('Reserved IDs belong to renamed/custom equipment: ' + status.conflictIds.join(', ') + '. Export and resolve these records first.');
     if (status.current) return { backupKey: null, changedIds: [] };
     const previous = JSON.parse(JSON.stringify(exportLayout()));
-    const history = state.history.slice(), future = state.future.slice(), selectedId = state.selectedId;
+    const history = state.history.slice(), future = state.future.slice(), selectedId = state.selectedId, lastSnapshotBefore = lastSnapshot;
     const targets = reviewedWingItems(side);
     const scene = SCENES[state.scene] || {};
     const replacements = new Map(targets.map(target => {
@@ -1495,12 +1518,15 @@
       return [target.id, target];
     }));
     const present = new Set(previous.items.map(it => it.id));
-    const items = [...previous.items.map(it => replacements.get(it.id) || it), ...targets.filter(it => !present.has(it.id))];
+    const retiredIds = window.CHURCH_SIM_DESIGN.wingReviewScope(side).filter(id => window.CHURCH_SIM_DESIGN.wingReviewRetiredIds.includes(id));
+    const items = [...previous.items.filter(it => !retiredIds.includes(it.id)).map(it => replacements.get(it.id) || it), ...targets.filter(it => !present.has(it.id))];
     let suffix = Date.now(), backupKey;
     do { backupKey = STORAGE_KEY + '.before-wing-adoption.' + suffix++; } while (localStorage.getItem(backupKey));
     // A failed durable backup must leave the current layout and history intact.
     localStorage.setItem(backupKey, JSON.stringify(previous));
     try {
+      // Capture the actual preceding equipment, including unrecorded slider/batch edits.
+      lastSnapshot = JSON.stringify(previous.items);
       importLayout({ ...previous, items });
       state.history[state.history.length - 1].label = 'Use reviewed wing ' + side + ' lights and fans';
       state.settings.wingReviewRevision = window.CHURCH_SIM_DESIGN.wingReviewRevision;
@@ -1509,7 +1535,7 @@
       Object.assign(state.settings, previous.settings);
       state.customScenes = previous.customScenes;
       restore(JSON.stringify(previous.items));
-      state.history = history; state.future = future;
+      state.history = history; state.future = future; lastSnapshot = lastSnapshotBefore;
       select(selectedId); applySettings(); emit('history');
       throw error;
     }
@@ -1518,6 +1544,96 @@
   }
   SIM.wingReviewStatus = wingReviewStatus;
   SIM.adoptWingReview = adoptWingReview;
+
+  function wingArtStatus() {
+    const D = window.CHURCH_SIM_DESIGN;
+    const same = (a, b) => Array.isArray(a) && Array.isArray(b) ? a.length === b.length && a.every((v, n) => same(v, b[n])) : typeof a === 'number' && typeof b === 'number' ? Math.abs(a - b) < 1e-9 : a === b;
+    return { sourceRevision: D.wingArtRevision, sides: ['B', 'H'].map(side => {
+      const targets = D.wingArtTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+      const mismatchingIds = targets.filter(t => { const p = SIM.item(t.id); return !p || ['type', 'mount', 'pos', 'yaw', 'mountYaw', 'hidden'].some(k => !same(p[k], t[k])); }).map(t => t.id);
+      const conflictIds = targets.filter(t => { const p = SIM.item(t.id); return p && !['saintPeterPicture', 'saintPaulPicture'].includes(p.type); }).map(t => t.id);
+      return { side, current: !mismatchingIds.length, mismatchingIds, conflictIds, counts: { pictures: targets.filter(t => { const p = SIM.item(t.id); return p && !p.hidden && ['saintPeterPicture', 'saintPaulPicture'].includes(p.type); }).length } };
+    }) };
+  }
+  function adoptWingArt(side) {
+    const status = wingArtStatus().sides.find(s => s.side === side);
+    if (!status) throw new Error('Choose wing B or H.');
+    if (status.conflictIds.length) throw new Error('Reserved saints IDs belong to other equipment: ' + status.conflictIds.join(', '));
+    if (status.current) return { backupKey: null, changedIds: [] };
+    const D = window.CHURCH_SIM_DESIGN, previous = JSON.parse(JSON.stringify(exportLayout()));
+    const targets = D.wingArtTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+    for (const t of targets) if (SIM.item(t.id)?.note) t.note = SIM.item(t.id).note;
+    const replacements = new Map(targets.map(t => [t.id, t])), present = new Set(previous.items.map(it => it.id));
+    const items = [...previous.items.map(it => replacements.get(it.id) || it), ...targets.filter(t => !present.has(t.id))];
+    const history = state.history.slice(), future = state.future.slice(), selectedId = state.selectedId, lastSnapshotBefore = lastSnapshot;
+    let suffix = Date.now(), backupKey; do { backupKey = STORAGE_KEY + '.before-wing-art-adoption.' + suffix++; } while (localStorage.getItem(backupKey));
+    localStorage.setItem(backupKey, JSON.stringify(previous));
+    try {
+      lastSnapshot = JSON.stringify(previous.items);
+      importLayout({ ...previous, items });
+      state.history[state.history.length - 1].label = 'Use reviewed wing ' + side + ' saints';
+      state.settings.wingArtRevision = D.wingArtRevision;
+      if (!saveNow()) throw new Error('The pictures could not be saved; the preceding layout is retained.');
+    } catch (error) {
+      Object.assign(state.settings, previous.settings); state.customScenes = previous.customScenes;
+      restore(JSON.stringify(previous.items)); state.history = history; state.future = future; lastSnapshot = lastSnapshotBefore;
+      select(selectedId); applySettings(); emit('history'); throw error;
+    }
+    emit('items', {}); return { backupKey, changedIds: targets.map(t => t.id) };
+  }
+  SIM.wingArtStatus = wingArtStatus; SIM.adoptWingArt = adoptWingArt;
+
+  function wingSoundStatus() {
+    const D = window.CHURCH_SIM_DESIGN;
+    const fields = ['type', 'circuit', 'mount', 'pos', 'yaw', 'tilt', 'mountYaw', 'anchorY', 'hidden', 'level', 'delayMs'];
+    const same = (a, b) => typeof a === 'number' && typeof b === 'number' ? Math.abs(a - b) < 1e-9 : Array.isArray(a) && Array.isArray(b) ? a.length === b.length && a.every((v, n) => same(v, b[n])) : a === b;
+    return { sourceRevision: D.wingSoundRevision, sides: ['B', 'H'].map(side => {
+      const targets = D.wingSoundTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+      const retiredId = side === 'B' ? 'S275' : 'S277';
+      const obsoleteIds = SIM.item(retiredId) ? [retiredId] : [];
+      const mismatchingIds = targets.filter(t => { const p = SIM.item(t.id); return !p || fields.some(k => !same(p[k], t[k])); }).map(t => t.id);
+      const items = state.items.filter(it => [targets[0].id, retiredId].includes(it.id) && !it.hidden);
+      return { side, current: !obsoleteIds.length && !mismatchingIds.length, mismatchingIds, obsoleteIds,
+        counts: { wallSpeakers: items.filter(it => it.mount === 'wall' && CAT.byId[it.type].speaker).length, pendantSpeakers: items.filter(it => it.mount === 'pendant' && CAT.byId[it.type].speaker).length } };
+    }) };
+  }
+  function adoptWingSound(side) {
+    const status = wingSoundStatus().sides.find(it => it.side === side);
+    if (!status) throw new Error('Choose wing B or H.');
+    if (status.current) return { backupKey: null, changedIds: [], retiredIds: [] };
+    const D = window.CHURCH_SIM_DESIGN, previous = JSON.parse(JSON.stringify(exportLayout()));
+    const targets = D.wingSoundTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+    const retiredIds = side === 'B' ? ['S275'] : ['S277'];
+    const replacements = new Map(targets.map(it => {
+      const prior = SIM.item(it.id);
+      it.on = prior?.on ?? ((SCENES[state.scene]?.A1 ?? 1) > 0);
+      if (prior?.note) it.note = prior.note;
+      return [it.id, it];
+    }));
+    const present = new Set(previous.items.map(it => it.id));
+    const items = [...previous.items.filter(it => !retiredIds.includes(it.id)).map(it => replacements.get(it.id) || it), ...targets.filter(it => !present.has(it.id))];
+    const history = state.history.slice(), future = state.future.slice(), selectedId = state.selectedId, lastSnapshotBefore = lastSnapshot;
+    let suffix = Date.now(), backupKey;
+    do { backupKey = STORAGE_KEY + '.before-wing-sound-adoption.' + suffix++; } while (localStorage.getItem(backupKey));
+    localStorage.setItem(backupKey, JSON.stringify(previous));
+    try {
+      // Capture the actual preceding equipment, including unrecorded slider/batch edits.
+      lastSnapshot = JSON.stringify(previous.items);
+      importLayout({ ...previous, items });
+      state.history[state.history.length - 1].label = 'Use reviewed wing ' + side + ' speaker';
+      state.settings.wingSoundRevision = D.wingSoundRevision;
+      if (!saveNow()) throw new Error('The updated sound layout could not be saved; the previous layout is retained.');
+    } catch (error) {
+      Object.assign(state.settings, previous.settings); state.customScenes = previous.customScenes;
+      restore(JSON.stringify(previous.items)); state.history = history; state.future = future; lastSnapshot = lastSnapshotBefore;
+      select(selectedId); applySettings(); emit('history'); throw error;
+    }
+    emit('items', {});
+    return { backupKey, changedIds: targets.map(it => it.id), retiredIds: retiredIds.filter(id => present.has(id)) };
+  }
+  SIM.wingSoundStatus = wingSoundStatus;
+  SIM.adoptWingSound = adoptWingSound;
+
   function exportSchedule() {
     const rows = [['ID', 'Name', 'Category', 'Type', 'Circuit', 'Axis', 'X (m)', 'Z (m)', 'Height (m)', 'Aim yaw°', 'Aim tilt°', 'On', 'Dim %', 'Lumens', 'CCT K', 'Beam°', 'Watts', 'Fan speed', 'Speaker level dB', 'Delay ms', 'Notes']];
     for (const it of state.items) {
@@ -2098,15 +2214,26 @@
       importLayout({ ...previous, items: D.upgradeSanctuary(state.items, D.recommended(GEO, SIM), state.settings.sanctuaryRevision) }, { record: false });
     }
     state.settings.sanctuaryRevision = D.sanctuaryRevision;
-    if (loaded && state.settings.wingReviewRevision !== D.wingReviewRevision) {
-      const previous = exportLayout();
-      // If a durable backup cannot be written, preserve the saved layout.
+    // New scoped reviews require both a full backup and durable new state.
+    // A failed write restores the preceding in-memory layout and marker.
+    for (const [field, revision, suffix, upgrade] of [
+      ['wingReviewRevision', D.wingReviewRevision, '.before-wing-review', D.upgradeWingReview],
+      ['wingSoundRevision', D.wingSoundRevision, '.before-wing-sound-review', D.upgradeWingSound],
+      ['wingArtRevision', D.wingArtRevision, '.before-wing-art-review', D.upgradeWingArt]
+    ]) {
+      if (!loaded) { state.settings[field] = revision; continue; }
+      if (state.settings[field] === revision) continue;
+      const previous = JSON.parse(JSON.stringify(exportLayout()));
       try {
-        localStorage.setItem(STORAGE_KEY + '.before-wing-review', JSON.stringify(previous));
-        importLayout({ ...previous, items: D.upgradeWingReview(state.items, D.recommended(GEO, SIM)) }, { record: false });
-        state.settings.wingReviewRevision = D.wingReviewRevision;
-      } catch (error) { console.warn('Wing review migration skipped; saved layout retained:', error.message); }
-    } else if (!loaded) state.settings.wingReviewRevision = D.wingReviewRevision;
+        localStorage.setItem(STORAGE_KEY + suffix, JSON.stringify(previous));
+        importLayout({ ...previous, items: upgrade(state.items, D.recommended(GEO, SIM)) }, { record: false });
+        state.settings[field] = revision;
+        if (!saveNow()) throw new Error('Updated layout could not be saved.');
+      } catch (error) {
+        importLayout(previous, { record: false });
+        console.warn(field + ' migration skipped; saved layout retained:', error.message);
+      }
+    }
 
     if (state.settings.stableLightingRevision !== '2026-10-06-physical-lighting') {
       state.settings.autoExposure = false;

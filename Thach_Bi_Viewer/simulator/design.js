@@ -27,7 +27,12 @@
 
   function recommended(GEO, SIM) {
     const A = GEO.axes, items = [];
-    const add = o => items.push(o);
+    // Stamp every original slot before retiring items, so downstream IDs never shift.
+    const add = o => {
+      const cat = window.CHURCH_SIM_CATALOG.byId[o.type].cat;
+      const prefix = { light: 'L', fan: 'F', speaker: 'S', decor: 'D' }[cat] || 'X';
+      items.push({ ...o, id: o.id || prefix + (items.length + 1) });
+    };
     const lining = z => SIM.liningY(z);
     const beamY = 8.59, sideBeamY = 6.66;
     const facadeX = 2.65; // inner face of the entrance façade; the nave is open to it
@@ -69,8 +74,8 @@
     for (const sign of [-1, 1]) for (const x of [38.94, 42.22]) {
       for (const [z, rows] of [[10.6, 'back'], [8.8, 'front']]) {
         add({ type: 'chandelier6Reading', name: `Wing light · ${side(sign)} · ${x < 40.5 ? 'front' : 'rear'} block · ${rows} rows`, circuit: 'L8', mount: 'pendant',
-          pos: [x, 4.4, sign * z], anchorY: above(x, sign * z, 4.4), yaw: 0, mountYaw: 0, tilt: -90, lumens: 5640, beam: 100, cct: 2700,
-          note: 'HELD wing concept: 6 brass candle lamps plus downward reading optic. Unverified photometry, glare, thermal design, support and maintenance. See docs/engineering/wing-review.md.' });
+          pos: [x, 3.8, sign * 10.15], anchorY: above(x, sign * 10.15, 3.85), yaw: 0, mountYaw: 0, tilt: -90, lumens: 5640, beam: 100, cct: 2700,
+          note: 'HELD two-light wing concept: unchanged 5640 lm/51 W assembly. Some wing book points remain below200 lux. Photometry, glare, thermal design, support and maintenance pending. See docs/engineering/wing-review.md.' });
       }
     }
     // LA · hidden roof uplights on top of every tie beam. Axis 10 carries the
@@ -244,11 +249,11 @@
     // Held wing wall-fan comparison. Keep the original four item slots so
     // existing equipment IDs remain stable; append the extra four at the end.
     const wingFan = (sign, index) => {
-      const [x, targetX, targetZ] = [[39.15, 38.94, 11.5], [39.95, 38.94, 9], [41.2, 42.22, 9], [42, 42.22, 11.5]][index];
-      const pos = [x, index === 0 || index === 3 ? 3.5 : 2.7, sign * 13.06];
-      return { type: 'fanWall', name: `Wall fan · wing ${side(sign)} · ${index + 1} · held review`, circuit: 'F5', mount: 'wall', pos, mountYaw: -sign * 90,
-        ...aim(pos, [targetX, 0.28, sign * targetZ]), speed: 1, on: true, hidden: false,
-        note: 'ENGINEERING HOLD: 4 per wing at low speed cover 68/80 seats; noise and speech criteria fail. Gable anchors, concealment, sweep clearance and maintenance unapproved.' };
+      const x = index === 0 ? 38.05 : 43.10;
+      const pos = [x, 4.05, sign * 13.06];
+      return { type: 'fanWingWall', name: `Wall fan · wing ${side(sign)} · ${index + 1} · held review`, circuit: 'F5', mount: 'wall', pos, mountYaw: -sign * 90,
+        ...aim(pos, [index === 0 ? 38.94 : 42.22, 0.28, sign * 10.15]), speed: 1, on: true, hidden: false,
+        note: 'ENGINEERING HOLD: two fans per wing above window openings, clear of central saints strip. Same catalog flow/power/noise; extended bracket proxy unverified. Air, noise, speech, mounting, concealment and maintenance remain held.' };
     };
     for (const sign of [-1, 1]) for (const index of [0, 1]) add(wingFan(sign, index));
     // Show the six existing nave wall-fan concepts by default, as requested.
@@ -300,7 +305,11 @@
     // returns to the altar microphones.
     for (const s of [-1, 1]) for (const x of [38.94, 42.22]) {
       const p = [x, 3.0, s * 11.6], a = aim(p, [x, 0.9, s * 9.6]);
-      add({ type: 'pendantSpeaker', name: `Wing speaker · ${side(s)} · ${x < 40.5 ? 'front' : 'rear'} block`, circuit: 'A1', mount: 'pendant', pos: p, anchorY: above(x, s * 11.6, 3.0), yaw: a.yaw, mountYaw: 0, tilt: a.tilt, level: -10, delayMs: 0 });
+      if (x < 40.5) {
+        // Keep the original slot until all IDs are stamped; retire it below.
+        add({ type: 'pendantSpeaker', name: `Wing speaker · ${side(s)} · front block`, circuit: 'A1', mount: 'pendant', pos: p, anchorY: above(x, s * 11.6, 3.0), yaw: a.yaw, mountYaw: 0, tilt: a.tilt, level: -10, delayMs: 0 });
+      } else add({ type: 'slimColumn', name: `Wing speaker · ${side(s)} · toward entrance · held`, circuit: 'A1', mount: 'wall', pos: [43.72, 4.85, s * 13.06], anchorY: 4.85, yaw: 180, mountYaw: -s * 90, tilt: -50, level: -6, delayMs: s < 0 ? 22.9 : 37.1,
+        note: 'ENGINEERING HOLD: two total wall speakers toward entrance (-X), raised for full fan/return-wall envelope clearance. Speech and feedback still require coordinated validation; product, concealment, fixing and commissioning pending.' });
     }
     for (const s of [-1, 1]) for (const x of [12.225, 25.725]) {
       add({ type: 'pendantSpeaker', name: `Veranda fill · ${side(s)} · ${x.toFixed(1)}`, circuit: 'A2', mount: 'pendant', pos: [x, 3.9, s * 8.85], anchorY: above(x, s * 8.85, 3.9), yaw: 0, mountYaw: 0, tilt: -90, level: -7 });
@@ -353,7 +362,12 @@
     // already there).
     for (const it of items) if (/^Stage flood · tower/.test(it.name)) it.circuit = 'L9';
     for (const sign of [-1, 1]) for (const index of [2, 3]) add({ ...wingFan(sign, index), id: `F-WING-${side(sign)}-${index + 1}` });
-    return items;
+    for (const sign of [-1, 1]) for (const [saint, type, x] of [['PETER', 'saintPeterPicture', 39.7], ['PAUL', 'saintPaulPicture', 41.45]]) {
+      add({ id: `D-WING-${side(sign)}-${saint}`, type, name: `Saint ${saint === 'PETER' ? 'Peter' : 'Paul'} picture · wing ${side(sign)} · concept`, circuit: 'DECOR', mount: 'wall',
+        pos: [x, 2.2, sign * 13.095], yaw: -sign * 90, mountYaw: -sign * 90, on: true, hidden: false,
+        note: 'USER CONFIRMED subjects/location: Peter and Paul between windows in each wing. CONCEPT 1.12 ×1.62 m frame proxy, Y2.20 centre. Actual size, height, substrate, frame, artwork and fixings pending. Unpowered.' });
+    }
+    return items.filter(it => ![...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id));
   }
 
   const lightingRevision = '2026-10-05-balanced-doors-towers';
@@ -439,7 +453,8 @@
   // Conservative one-time update: only an entire untouched wing can migrate.
   // Deleted, moved, renamed, hidden or retuned items block that wing's update.
   // The exact pre-review default records are retained for audit and comparison.
-  const wingReviewRevision = '2026-10-09-wing-held-1';
+  const wingReviewRevision = '2026-10-09-wing-two-light-art-2';
+  const wingReviewRetiredIds = ['L64', 'L66', 'L68', 'L70', 'F-WING-B-3', 'F-WING-B-4', 'F-WING-H-3', 'F-WING-H-4'];
   const wingBefore = [
     {"id":"L63","type":"projector36","name":"Wing light · B · front block · back rows","circuit":"L8","mount":"wall","pos":[40.26,4.15,-13.06],"yaw":123.95905981967627,"tilt":-57.22322254475144,"mountYaw":90,"on":true,"hidden":false,"dim":1,"params":{},"lumens":3800,"beam":50,"shadow":false},
     {"id":"L64","type":"projector36","name":"Wing light · B · front block · front rows","circuit":"L8","mount":"wall","pos":[40.26,2.92,-13.06],"yaw":106.84380855172743,"tilt":-28.17456054434298,"mountYaw":90,"on":true,"hidden":false,"dim":1,"params":{},"lumens":4000,"beam":36,"shadow":false},
@@ -460,48 +475,94 @@
     {"id":"F248","type":"fanWall","name":"Wall fan · axis 8 · B","circuit":"F2","mount":"wall","pos":[32.475,5.55,-7.07],"yaw":90,"tilt":-38,"mountYaw":90,"on":true,"hidden":true,"dim":1,"params":{},"speed":2,"oscillate":true},
     {"id":"F249","type":"fanWall","name":"Wall fan · axis 8 · H","circuit":"F2","mount":"wall","pos":[32.475,5.55,7.07],"yaw":-90,"tilt":-38,"mountYaw":-90,"on":true,"hidden":true,"dim":1,"params":{},"speed":2,"oscillate":true},
   ];
-  function upgradeWingReview(items, design) {
-    const same = (a, b) => {
-      if (typeof a === 'number' && typeof b === 'number') return Math.abs(a - b) < 1e-9;
-      if (a && b && typeof a === 'object' && typeof b === 'object') {
-        const keys = [...new Set([...Object.keys(a), ...Object.keys(b)])];
-        return keys.every(k => same(a[k], b[k]));
-      }
-      return a === b;
-    };
-    const byId = new Map(items.map(it => [it.id, it])), replacements = new Map(), additions = [];
-    for (const sign of [-1, 1]) {
-      const old = wingBefore.filter(it => Math.sign(it.pos[2]) === sign && (it.circuit === 'L8' || it.type === 'fanCeiling'));
-      if (!old.every(it => same(it, byId.get(it.id)))) continue;
-      // Reserved-ID collisions can represent owner additions: preserve the
-      // entire wing rather than silently substituting that item for a fan.
-      if (design.some(it => it.id?.startsWith(`F-WING-${side(sign)}-`) && byId.has(it.id))) continue;
-      const targetNames = old.map(it => it.circuit === 'L8' ? it.name : `Wall fan · wing ${side(sign)} · ${it.name.endsWith('front') ? 1 : 2} · held review`);
-      if (targetNames.some(name => !design.some(it => it.name === name))) continue;
-      old.forEach((it, n) => replacements.set(it.id, { ...design.find(raw => raw.name === targetNames[n]), id: it.id }));
-      additions.push(...design.filter(it => it.id?.startsWith(`F-WING-${side(sign)}-`) && !byId.has(it.id)));
-    }
-    for (const old of wingBefore.filter(it => it.type === 'fanWall')) {
-      if (same(old, byId.get(old.id))) replacements.set(old.id, { ...byId.get(old.id), hidden: false, on: false });
-    }
-    return [...items.map(it => replacements.get(it.id) || it), ...additions];
-  }
-
-  // Explicit adoption is separate from the conservative automatic migration.
-  // Stable scope IDs come from the frozen pre-review design, never a user's
-  // current positions, names or circuit membership.
+  // Frozen intermediate four-chandelier/four-wall-fan review. Only complete
+  // exact records may migrate; operating overrides/notes/deletions retain it.
+  const wingIntermediate = [{"id":"L63","type":"chandelier6Reading","name":"Wing light · B · front block · back rows","circuit":"L8","mount":"pendant","pos":[38.94,4.4,-10.6],"yaw":0,"tilt":-90,"mountYaw":0,"anchorY":8.115059999999996,"on":true,"hidden":false,"dim":1,"params":{},"note":"HELD wing concept: 6 brass candle lamps plus downward reading optic. Unverified photometry, glare, thermal design, support and maintenance. See docs/engineering/wing-review.md.","lumens":5640,"cct":2700,"beam":100,"shadow":false},{"id":"L64","type":"chandelier6Reading","name":"Wing light · B · front block · front rows","circuit":"L8","mount":"pendant","pos":[38.94,4.4,-8.8],"yaw":0,"tilt":-90,"mountYaw":0,"anchorY":8.115059999999996,"on":true,"hidden":false,"dim":1,"params":{},"note":"HELD wing concept: 6 brass candle lamps plus downward reading optic. Unverified photometry, glare, thermal design, support and maintenance. See docs/engineering/wing-review.md.","lumens":5640,"cct":2700,"beam":100,"shadow":false},{"id":"L65","type":"chandelier6Reading","name":"Wing light · B · rear block · back rows","circuit":"L8","mount":"pendant","pos":[42.22,4.4,-10.6],"yaw":0,"tilt":-90,"mountYaw":0,"anchorY":8.083580000000003,"on":true,"hidden":false,"dim":1,"params":{},"note":"HELD wing concept: 6 brass candle lamps plus downward reading optic. Unverified photometry, glare, thermal design, support and maintenance. See docs/engineering/wing-review.md.","lumens":5640,"cct":2700,"beam":100,"shadow":false},{"id":"L66","type":"chandelier6Reading","name":"Wing light · B · rear block · front rows","circuit":"L8","mount":"pendant","pos":[42.22,4.4,-8.8],"yaw":0,"tilt":-90,"mountYaw":0,"anchorY":8.083580000000003,"on":true,"hidden":false,"dim":1,"params":{},"note":"HELD wing concept: 6 brass candle lamps plus downward reading optic. Unverified photometry, glare, thermal design, support and maintenance. See docs/engineering/wing-review.md.","lumens":5640,"cct":2700,"beam":100,"shadow":false},{"id":"L67","type":"chandelier6Reading","name":"Wing light · H · front block · back rows","circuit":"L8","mount":"pendant","pos":[38.94,4.4,10.6],"yaw":0,"tilt":-90,"mountYaw":0,"anchorY":8.115059999999996,"on":true,"hidden":false,"dim":1,"params":{},"note":"HELD wing concept: 6 brass candle lamps plus downward reading optic. Unverified photometry, glare, thermal design, support and maintenance. See docs/engineering/wing-review.md.","lumens":5640,"cct":2700,"beam":100,"shadow":false},{"id":"L68","type":"chandelier6Reading","name":"Wing light · H · front block · front rows","circuit":"L8","mount":"pendant","pos":[38.94,4.4,8.8],"yaw":0,"tilt":-90,"mountYaw":0,"anchorY":8.115059999999996,"on":true,"hidden":false,"dim":1,"params":{},"note":"HELD wing concept: 6 brass candle lamps plus downward reading optic. Unverified photometry, glare, thermal design, support and maintenance. See docs/engineering/wing-review.md.","lumens":5640,"cct":2700,"beam":100,"shadow":false},{"id":"L69","type":"chandelier6Reading","name":"Wing light · H · rear block · back rows","circuit":"L8","mount":"pendant","pos":[42.22,4.4,10.6],"yaw":0,"tilt":-90,"mountYaw":0,"anchorY":8.083580000000003,"on":true,"hidden":false,"dim":1,"params":{},"note":"HELD wing concept: 6 brass candle lamps plus downward reading optic. Unverified photometry, glare, thermal design, support and maintenance. See docs/engineering/wing-review.md.","lumens":5640,"cct":2700,"beam":100,"shadow":false},{"id":"L70","type":"chandelier6Reading","name":"Wing light · H · rear block · front rows","circuit":"L8","mount":"pendant","pos":[42.22,4.4,8.8],"yaw":0,"tilt":-90,"mountYaw":0,"anchorY":8.083580000000003,"on":true,"hidden":false,"dim":1,"params":{},"note":"HELD wing concept: 6 brass candle lamps plus downward reading optic. Unverified photometry, glare, thermal design, support and maintenance. See docs/engineering/wing-review.md.","lumens":5640,"cct":2700,"beam":100,"shadow":false},{"id":"F240","type":"fanWall","name":"Wall fan · wing B · 1 · held review","circuit":"F5","mount":"wall","pos":[39.15,3.5,-13.06],"yaw":97.66680426181422,"tilt":-63.94867424281879,"mountYaw":90,"on":true,"hidden":false,"dim":1,"params":{},"note":"ENGINEERING HOLD: 4 per wing at low speed cover 68/80 seats; noise and speech criteria fail. Gable anchors, concealment, sweep clearance and maintenance unapproved.","speed":1,"oscillate":true},{"id":"F241","type":"fanWall","name":"Wall fan · wing B · 2 · held review","circuit":"F5","mount":"wall","pos":[39.95,2.7,-13.06],"yaw":103.96981360840223,"tilt":-30.04635493627147,"mountYaw":90,"on":true,"hidden":false,"dim":1,"params":{},"note":"ENGINEERING HOLD: 4 per wing at low speed cover 68/80 seats; noise and speech criteria fail. Gable anchors, concealment, sweep clearance and maintenance unapproved.","speed":1,"oscillate":true},{"id":"F242","type":"fanWall","name":"Wall fan · wing H · 1 · held review","circuit":"F5","mount":"wall","pos":[39.15,3.5,13.06],"yaw":-97.66680426181422,"tilt":-63.94867424281879,"mountYaw":-90,"on":true,"hidden":false,"dim":1,"params":{},"note":"ENGINEERING HOLD: 4 per wing at low speed cover 68/80 seats; noise and speech criteria fail. Gable anchors, concealment, sweep clearance and maintenance unapproved.","speed":1,"oscillate":true},{"id":"F243","type":"fanWall","name":"Wall fan · wing H · 2 · held review","circuit":"F5","mount":"wall","pos":[39.95,2.7,13.06],"yaw":-103.96981360840223,"tilt":-30.04635493627147,"mountYaw":-90,"on":true,"hidden":false,"dim":1,"params":{},"note":"ENGINEERING HOLD: 4 per wing at low speed cover 68/80 seats; noise and speech criteria fail. Gable anchors, concealment, sweep clearance and maintenance unapproved.","speed":1,"oscillate":true},{"id":"F-WING-B-3","type":"fanWall","name":"Wall fan · wing B · 3 · held review","circuit":"F5","mount":"wall","pos":[41.2,2.7,-13.06],"yaw":75.89736516026656,"tilt":-30.031965296126412,"mountYaw":90,"on":true,"hidden":false,"dim":1,"params":{},"note":"ENGINEERING HOLD: 4 per wing at low speed cover 68/80 seats; noise and speech criteria fail. Gable anchors, concealment, sweep clearance and maintenance unapproved.","speed":1,"oscillate":true},{"id":"F-WING-B-4","type":"fanWall","name":"Wall fan · wing B · 4 · held review","circuit":"F5","mount":"wall","pos":[42,3.5,-13.06],"yaw":81.9727624895681,"tilt":-63.92906953677533,"mountYaw":90,"on":true,"hidden":false,"dim":1,"params":{},"note":"ENGINEERING HOLD: 4 per wing at low speed cover 68/80 seats; noise and speech criteria fail. Gable anchors, concealment, sweep clearance and maintenance unapproved.","speed":1,"oscillate":true},{"id":"F-WING-H-3","type":"fanWall","name":"Wall fan · wing H · 3 · held review","circuit":"F5","mount":"wall","pos":[41.2,2.7,13.06],"yaw":-75.89736516026656,"tilt":-30.031965296126412,"mountYaw":-90,"on":true,"hidden":false,"dim":1,"params":{},"note":"ENGINEERING HOLD: 4 per wing at low speed cover 68/80 seats; noise and speech criteria fail. Gable anchors, concealment, sweep clearance and maintenance unapproved.","speed":1,"oscillate":true},{"id":"F-WING-H-4","type":"fanWall","name":"Wall fan · wing H · 4 · held review","circuit":"F5","mount":"wall","pos":[42,3.5,13.06],"yaw":-81.9727624895681,"tilt":-63.92906953677533,"mountYaw":-90,"on":true,"hidden":false,"dim":1,"params":{},"note":"ENGINEERING HOLD: 4 per wing at low speed cover 68/80 seats; noise and speech criteria fail. Gable anchors, concealment, sweep clearance and maintenance unapproved.","speed":1,"oscillate":true}];
   function wingReviewTargets(design, code) {
     if (!['B', 'H'].includes(code)) throw new Error('Choose wing B or H.');
     const sign = code === 'B' ? -1 : 1;
-    const old = wingBefore.filter(it => Math.sign(it.pos[2]) === sign && (it.circuit === 'L8' || it.type === 'fanCeiling'));
-    const targets = old.map(it => {
-      const name = it.circuit === 'L8' ? it.name : `Wall fan · wing ${code} · ${it.name.endsWith('front') ? 1 : 2} · held review`;
-      const raw = design.find(candidate => candidate.name === name);
-      if (!raw) throw new Error('Incomplete wing review template: ' + name);
-      return { ...raw, id: it.id };
+    const ids = wingBefore.filter(it => Math.sign(it.pos[2]) === sign && (it.circuit === 'L8' || it.type === 'fanCeiling') && !wingReviewRetiredIds.includes(it.id)).map(it => it.id);
+    return ids.map(id => {
+      const raw = design.find(it => it.id === id);
+      if (!raw) throw new Error('Incomplete wing review template: ' + id);
+      return { ...raw };
     });
-    return [...targets, ...design.filter(it => it.id?.startsWith(`F-WING-${code}-`))];
+  }
+  function wingReviewScope(code) {
+    if (!['B', 'H'].includes(code)) throw new Error('Choose wing B or H.');
+    const sign = code === 'B' ? -1 : 1;
+    return wingIntermediate.filter(it => Math.sign(it.pos[2]) === sign).map(it => it.id);
+  }
+  function upgradeWingReview(items, design) {
+    const same = (a, b) => {
+      if (typeof a === 'number' && typeof b === 'number') return Math.abs(a - b) < 1e-9;
+      if (a && b && typeof a === 'object' && typeof b === 'object') return [...new Set([...Object.keys(a), ...Object.keys(b)])].every(k => same(a[k], b[k]));
+      return a === b;
+    };
+    const replacements = new Map(), retired = new Set();
+    for (const code of ['B', 'H']) {
+      const sign = code === 'B' ? -1 : 1;
+      const original = wingBefore.filter(it => Math.sign(it.pos[2]) === sign && (it.circuit === 'L8' || it.type === 'fanCeiling'));
+      const intermediate = wingIntermediate.filter(it => Math.sign(it.pos[2]) === sign);
+      const hasExtra = items.some(it => it.id.startsWith(`F-WING-${code}-`));
+      const untouched = (!hasExtra && original.every(it => same(it, items.find(raw => raw.id === it.id)))) || intermediate.every(it => same(it, items.find(raw => raw.id === it.id)));
+      if (!untouched) continue;
+      let targets; try { targets = wingReviewTargets(design, code); } catch { continue; }
+      targets.forEach(it => replacements.set(it.id, it));
+      wingReviewScope(code).filter(id => wingReviewRetiredIds.includes(id)).forEach(id => retired.add(id));
+    }
+    for (const old of wingBefore.filter(it => it.type === 'fanWall')) if (same(old, items.find(it => it.id === old.id))) replacements.set(old.id, { ...old, hidden: false, on: false });
+    return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  const wingArtRevision = '2026-10-09-wing-peter-paul-concept-1';
+  function wingArtTargets(design, code) {
+    if (!['B', 'H'].includes(code)) throw new Error('Choose wing B or H.');
+    return ['PETER', 'PAUL'].map(saint => {
+      const id = `D-WING-${code}-${saint}`, target = design.find(it => it.id === id);
+      if (!target) throw new Error('Incomplete saints concept template: ' + id);
+      return { ...target };
+    });
+  }
+  function upgradeWingArt(items, design) {
+    const additions = [];
+    for (const code of ['B', 'H']) {
+      let targets; try { targets = wingArtTargets(design, code); } catch { continue; }
+      // A partial/edited pair stays partial. The engine runs this additive
+      // first-issue migration once; subsequent deleted pictures stay deleted.
+      if (!targets.some(t => items.some(it => it.id === t.id))) additions.push(...targets);
+    }
+    return [...items, ...additions];
+  }
+
+
+  const wingSoundRevision = '2026-10-09-wing-sound-art-clearance-2';
+  const wingSoundRetiredIds = ['S275', 'S277'];
+  const wingSoundBefore = [{"id":"S275","type":"pendantSpeaker","name":"Wing speaker · B · front block","circuit":"A1","mount":"pendant","pos":[38.94,3,-11.6],"yaw":90,"tilt":-46.39718102729638,"mountYaw":0,"anchorY":8.115059999999996,"on":true,"hidden":false,"dim":1,"params":{},"level":-10,"delayMs":25.2},{"id":"S276","type":"pendantSpeaker","name":"Wing speaker · B · rear block","circuit":"A1","mount":"pendant","pos":[42.22,3,-11.6],"yaw":90,"tilt":-46.39718102729638,"mountYaw":0,"anchorY":8.083580000000003,"on":true,"hidden":false,"dim":1,"params":{},"level":-10,"delayMs":23.7},{"id":"S277","type":"pendantSpeaker","name":"Wing speaker · H · front block","circuit":"A1","mount":"pendant","pos":[38.94,3,11.6],"yaw":-90,"tilt":-46.39718102729638,"mountYaw":0,"anchorY":8.115059999999996,"on":true,"hidden":false,"dim":1,"params":{},"level":-10,"delayMs":39.4},{"id":"S278","type":"pendantSpeaker","name":"Wing speaker · H · rear block","circuit":"A1","mount":"pendant","pos":[42.22,3,11.6],"yaw":-90,"tilt":-46.39718102729638,"mountYaw":0,"anchorY":8.083580000000003,"on":true,"hidden":false,"dim":1,"params":{},"level":-10,"delayMs":38.5}];
+  function wingSoundTargets(design, code) {
+    const id = code === 'B' ? 'S276' : code === 'H' ? 'S278' : null;
+    if (!id) throw new Error('Choose wing B or H.');
+    const target = design.find(it => it.id === id);
+    if (!target) throw new Error('Incomplete wing sound review template: ' + id);
+    return [{ ...target }];
+  }
+  function upgradeWingSound(items, design) {
+    const same = (a, b) => {
+      if (typeof a === 'number' && typeof b === 'number') return Math.abs(a - b) < 1e-9;
+      if (a && b && typeof a === 'object' && typeof b === 'object') return [...new Set([...Object.keys(a), ...Object.keys(b)])].every(k => same(a[k], b[k]));
+      return a === b;
+    };
+    const replacements = new Map(), retired = new Set();
+    for (const code of ['B', 'H']) {
+      const old = wingSoundBefore.filter(it => Math.sign(it.pos[2]) === (code === 'B' ? -1 : 1));
+      if (!old.every(it => same(it, items.find(raw => raw.id === it.id)))) continue;
+      let targets;
+      try { targets = wingSoundTargets(design, code); } catch { continue; }
+      targets.forEach(it => replacements.set(it.id, it));
+      old.filter(it => wingSoundRetiredIds.includes(it.id)).forEach(it => retired.add(it.id));
+    }
+    return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
+  }
+
+  window.CHURCH_SIM_DESIGN = { wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();
