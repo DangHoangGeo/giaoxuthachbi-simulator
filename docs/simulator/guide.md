@@ -502,3 +502,13 @@ Controls: **Space** or a click pauses and continues, **←** and **→** change 
 2. **Frame by frame** with `scripts/film_export/` gives a smooth 30 frames a second on any computer and takes about ten minutes for the short film. Follow `scripts/film_export/README.md`. The file shared on 9 October 2026 was made this way.
 
 `node scripts/verify_cinematic.cjs` checks the short film as well: length within X's 2 min 20 s, bells first, scene changes under black, the request and the design status on the closing card. `CHURCH_CINEMA.audit({ film: 'short' })` gives its camera clearance.
+
+## Blue sky · 9 October 2026
+
+At the owner's request the viewer now has a sky: blue overhead, paling to a light haze at the horizon by day, and a dark blue that deepens overhead in the evening. It replaces the flat pale background in every view of the project, not only in the films.
+
+- It is a dome that travels with the camera (`Thach_Bi_Viewer/realism.js`, the `SKY` colours and "Sky dome · display only"). The horizon colour is also the fog colour, so the far ground meets the sky without a line.
+- **Display only.** The dome gives no light and casts no shadow. Daylight, lamp outputs, the lux, sound and air calculations, the reflections on materials (which already used their own sky map), the GLB export and the registers are unchanged.
+- Drawing views (elevations and roof plan) look along the horizon or straight down, so they keep a plain pale ground.
+- **Wiring → Systems only** hides the dome with the rest of the building and shows the plain horizon colour.
+- The sky does not represent a time of day, a season or the site's real surroundings.
