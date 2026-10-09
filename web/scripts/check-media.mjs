@@ -50,9 +50,10 @@ try {
     }
   } else throw new Error("Invalid release state");
   // public/viewer is the build-time copy of the project's viewer. Its exact file
-  // inventory and bytes are verified against the source by check-viewer.mjs.
+  // inventory and bytes are verified against the source by check-viewer.mjs;
+  // public/guide is the quick-start guide copy, verified by check-guide.mjs.
   const files = (await regularFiles(path.join(root, "public"))).filter(
-    (file) => !file.startsWith("/viewer/"),
+    (file) => !file.startsWith("/viewer/") && !file.startsWith("/guide/"),
   );
   if (files.length !== assets.size || files.some((file) => !assets.has(file)))
     throw new Error("Public files disagree with release");

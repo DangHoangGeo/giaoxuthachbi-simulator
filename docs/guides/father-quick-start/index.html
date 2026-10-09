@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hướng dẫn xem mô hình 3D nhà thờ Thạch Bi</title>
+<style>
+:root{--green:#2f5f45;--green-d:#1f4331;--cream:#f6f3ea;--ink:#1d2a23;--gold:#ffb703;--line:#d9dfd2}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;background:var(--cream);color:var(--ink);font:18px/1.55 "SF Pro Text","Segoe UI","Helvetica Neue",Arial,sans-serif}
+a{color:var(--green-d)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.notice{background:#7a3b00;color:#fff;text-align:center;padding:10px 16px;font-weight:700;font-size:16px}
+header.hero{padding:34px 0 18px}
+header.hero h1{margin:0 0 6px;font-size:clamp(28px,4vw,42px);line-height:1.15;color:var(--green-d)}
+header.hero p{margin:0;color:#4b5a51;font-size:20px}
+.five{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:22px 0 8px;padding:0;list-style:none;counter-reset:s}
+.five li{counter-increment:s;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 14px 56px;position:relative;font-weight:600;font-size:17px;line-height:1.35}
+.five li::before{content:counter(s);position:absolute;left:14px;top:12px;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:800}
+.five li small{display:block;font-weight:400;color:#5a6a60;margin-top:3px;font-size:15px}
+@media(max-width:900px){.five{grid-template-columns:1fr}}
+section.block{margin:26px 0}
+section.block>h2{font-size:26px;margin:0 0 12px;color:var(--green-d)}
+.player{background:#111b16;border-radius:20px;padding:14px;box-shadow:0 8px 30px rgba(20,40,30,.25)}
+.stage-wrap{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#dfe6dc}
+.controls{display:flex;gap:10px;align-items:center;margin-top:12px;color:#e8efe9;flex-wrap:wrap}
+.controls button,.audio-btn{font:inherit;font-weight:700;border:0;border-radius:12px;padding:10px 18px;background:var(--gold);color:#2a1c00;cursor:pointer}
+.controls button.alt{background:#2f4a3b;color:#fff}
+.controls .dots{display:flex;gap:6px;flex:1;min-width:200px;justify-content:center;flex-wrap:wrap}
+.controls .dots button{width:16px;height:16px;padding:0;border-radius:50%;background:#4d6657}
+.controls .dots button.on{background:var(--gold)}
+.controls .status{font-size:15px;opacity:.85}
+.videobox video{width:100%;border-radius:14px;background:#000}
+.chapters{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chapters button{font:inherit;font-size:15px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;cursor:pointer;color:var(--green-d)}
+.chapters button:hover{background:#e8efe9}
+article.step{display:grid;grid-template-columns:minmax(0,520px) 1fr;gap:22px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin:14px 0}
+article.step h3{margin:0 0 6px;font-size:21px;color:var(--green-d)}
+article.step ol{margin:0 0 12px;padding-left:22px}
+article.step li{margin:4px 0}
+.audio-btn{font-size:16px;padding:8px 14px}
+@media(max-width:860px){article.step{grid-template-columns:1fr}}
+.stepgroup{margin:34px 0 4px;font-size:24px;color:var(--green);border-bottom:3px solid var(--green);padding-bottom:4px}
+footer{margin:40px 0 50px;color:#52625a;font-size:16px}
+footer h2{font-size:20px;color:var(--green-d)}
+
+/* ---------- 1920 x 1080 stage (shared by the page and the video frames) ---------- */
+.stage{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;transform-origin:0 0;background:#dfe6dc;font-family:"SF Pro Text","Segoe UI","Helvetica Neue",Arial,sans-serif;color:#fff}
+.stage *{box-sizing:border-box}
+.stage .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stage.overlay{background:transparent}
+.win{position:absolute;left:80px;top:36px;width:1760px;height:1100px;background:#fff;border-radius:18px;box-shadow:0 18px 60px rgba(0,0,0,.35);overflow:hidden}
+.win .bar{height:64px;background:#e9edf0;display:flex;align-items:center;gap:14px;padding:0 20px;border-bottom:1px solid #cdd3d8}
+.win .dot{width:16px;height:16px;border-radius:50%}
+.win .url{margin-left:20px;flex:1;height:42px;border-radius:21px;background:#fff;border:1px solid #c5ccd2;color:#222;font-size:25px;line-height:40px;padding:0 22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.win .url i{font-style:normal;color:#6b7680}
+.win img{display:block;width:1760px;height:auto}
+.dim{position:absolute;left:0;top:0;z-index:5;pointer-events:none;transition:opacity .4s}
+.ring{position:absolute;border:6px solid var(--gold);border-radius:16px;z-index:5;transition:opacity .4s}
+.stage.nospot .dim,.stage.nospot .ring,.stage.nospot .tag{opacity:0}
+.tag{position:absolute;z-index:6;background:var(--gold);color:#2a1c00;font-weight:800;font-size:36px;line-height:1.1;padding:12px 22px;border-radius:14px;white-space:nowrap;transition:opacity .4s}
+.tag::after{content:"";position:absolute;width:22px;height:22px;background:var(--gold);transform:rotate(45deg)}
+.tag.below::after{top:-9px;left:34px}
+.tag.left::after{right:-9px;top:calc(50% - 11px)}
+.tag.right::after{left:-9px;top:calc(50% - 11px)}
+.tag.above::after{bottom:-9px;left:34px}
+.cap{position:absolute;left:80px;right:80px;bottom:38px;z-index:20;background:rgba(14,26,20,.9);border-radius:24px;padding:20px 36px 24px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.cap.top{bottom:auto;top:98px}
+.cap .pill{display:inline-block;background:#3d8a60;color:#fff;font-weight:800;font-size:26px;padding:4px 16px;border-radius:999px;margin-bottom:8px;letter-spacing:.01em}
+.cap .txt{font-size:46px;line-height:1.28;font-weight:600;min-height:118px;display:flex;align-items:center}
+.cap .txt b{color:#ffd166;font-weight:800}
+.lab{position:absolute;z-index:6;background:rgba(14,26,20,.88);color:#ffd166;font-weight:800;font-size:34px;padding:10px 22px;border-radius:14px}
+.stage .cover-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,24,16,.88) 0%,rgba(10,24,16,.7) 38%,rgba(10,24,16,.05) 72%),linear-gradient(180deg,rgba(10,24,16,.35) 0%,rgba(10,24,16,0) 40%,rgba(10,24,16,.6) 100%)}
+.cover-title{position:absolute;left:100px;width:1000px;top:190px;z-index:3}
+.cover-title h2{margin:0;font-size:110px;line-height:1.08;font-weight:800;text-shadow:0 4px 30px rgba(0,0,0,.55)}
+.cover-title p{margin:20px 0 0;font-size:44px;font-weight:500;color:#f1e9cf;text-shadow:0 3px 18px rgba(0,0,0,.6)}
+.devtag{position:absolute;right:48px;top:40px;z-index:4;background:#7a3b00;color:#fff;font-weight:800;font-size:28px;padding:10px 22px;border-radius:12px}
+.cover-note{position:absolute;left:120px;top:60px;z-index:4;color:#ffe9a8;font-size:28px;font-weight:600}
+.panel{position:absolute;background:#fff;color:#1d2a23;border-radius:26px;box-shadow:0 14px 50px rgba(0,0,0,.25)}
+.stage.illus{background:linear-gradient(180deg,#eef2e8,#dfe7da)}
+.illus h4{margin:0;font-size:44px;font-weight:800;color:#1f4331}
+.fileicon{position:relative;width:150px;height:190px;background:#fff;border:5px solid #8a9a8f;border-radius:14px}
+.fileicon::before{content:"";position:absolute;right:-5px;top:-5px;width:46px;height:46px;background:#dfe7da;border-left:5px solid #8a9a8f;border-bottom:5px solid #8a9a8f;border-radius:0 12px 0 14px}
+.fileicon .zip{position:absolute;left:50%;top:20px;width:30px;height:120px;transform:translateX(-50%);background:repeating-linear-gradient(180deg,#8a9a8f 0 10px,#fff 10px 20px);border-radius:4px}
+.fileicon span{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-weight:800;font-size:34px;color:#1f4331}
+.foldericon{width:200px;height:150px;background:#f2b84b;border-radius:12px 12px 16px 16px;position:relative;box-shadow:inset 0 -10px 0 rgba(0,0,0,.08)}
+.foldericon::before{content:"";position:absolute;left:0;top:-26px;width:90px;height:34px;background:#f2b84b;border-radius:12px 12px 0 0}
+.fname{font-size:27px;font-weight:600;color:#33433a;text-align:center;max-width:380px;word-break:break-all;line-height:1.25;margin-top:14px}
+.arrowbig{font-size:64px;font-weight:800;color:#2f5f45;text-align:center;line-height:1}
+.arrowbig small{display:block;font-size:30px;margin-top:6px}
+.menu{background:#fff;border:2px solid #b8c0c6;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.22);width:380px;font-size:30px;color:#222;padding:8px}
+.menu div{padding:10px 18px;border-radius:8px}
+.menu .sep{height:2px;padding:0;margin:6px 8px;background:#dde2e6}
+.hl{transition:all .4s}
+.stage:not(.nospot) .hl{outline:8px solid var(--gold);outline-offset:6px;border-radius:12px;background:#fff3c4}
+.dlg{background:#fff;border:2px solid #b8c0c6;border-radius:10px;width:500px;box-shadow:0 10px 30px rgba(0,0,0,.22);font-size:25px;color:#222}
+.dlg .t{background:#e9edf0;padding:12px 18px;font-weight:700;border-bottom:1px solid #cdd3d8;border-radius:10px 10px 0 0}
+.dlg .b{padding:18px}
+.btnx{display:inline-block;background:#e6edf5;border:2px solid #7a8fa6;border-radius:8px;padding:8px 26px;font-weight:700}
+.warn{position:absolute;z-index:3;background:#fff;border:6px solid #c0392b;color:#8e2418;border-radius:18px;padding:14px 30px;font-size:38px;font-weight:800}
+.fwin{background:#fff;color:#1d2a23;border-radius:20px;box-shadow:0 14px 50px rgba(0,0,0,.28);overflow:hidden;position:absolute}
+.fwin .tb{background:#e9edf0;padding:16px 26px;font-size:28px;font-weight:700;border-bottom:1px solid #cdd3d8;color:#33433a}
+.frow{display:flex;align-items:center;gap:20px;padding:11px 30px;font-size:33px;border-bottom:1px solid #eef1ec}
+.frow .ic{width:44px;height:34px;border-radius:6px;flex:none}
+.frow .ic.fo{background:#f2b84b}.frow .ic.fi{background:#fff;border:3px solid #8a9a8f;width:34px;height:42px}
+.frow .ic.ht{background:#4c8bf5;border:0;width:34px;height:42px;border-radius:6px}
+.frow .kind{margin-left:auto;font-size:25px;color:#7a887f}
+.outro-list{list-style:none;padding:0;margin:0;position:absolute;left:120px;top:150px;z-index:3;font-size:50px;font-weight:700;line-height:1.5;color:#fff}
+.cmpbox{position:absolute;top:110px;width:880px;height:495px;border-radius:18px;overflow:hidden;box-shadow:0 14px 50px rgba(0,0,0,.3);background:#fff}
+.cmpbox img{display:block;width:880px;height:495px;object-fit:cover}
+.cmplab{position:absolute;left:0;right:0;bottom:0;background:rgba(14,26,20,.88);color:#ffd166;font-weight:800;font-size:40px;padding:12px 24px}
+.outro-list li{margin:0}
+.outro-list li span{color:#ffd166}
+</style>
+</head>
+<body>
+<div class="notice">Đang phát triển · Không dùng để thi công — In development · Not for construction</div>
+<div id="app"></div>
+<script src="scenes.js"></script>
+<script src="timings.js" onerror="void 0"></script>
+<script>
+(function(){
+'use strict';
+var G = window.GUIDE, T = window.TIMINGS || {};
+var md = function(s){ return s.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>'); };
+var esc = function(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); };
+var q = new URLSearchParams(location.search);
+var scenes = G.scenes, byId = {}; scenes.forEach(function(s){ byId[s.id]=s; });
+
+// ---- stage rendering -------------------------------------------------------
+var WIN = { x:80, y:100, k:1760/1920 };   // screenshot placed inside the browser frame
+function mapRect(sc, r){
+  if (sc.kind==='browser') return [WIN.x+r[0]*WIN.k, WIN.y+r[1]*WIN.k, r[2]*WIN.k, r[3]*WIN.k];
+  return r;
+}
+function stageInner(sc, opt){
+  var h = '', sp = [];
+  if (sc.kind==='cover'){
+    h += '<img class="bg" src="'+sc.bg+'" alt=""><div class="cover-shade"></div><div class="devtag">Đang phát triển · Không dùng để thi công</div>'
+      + '<div class="cover-title"><h2>'+esc(sc.title)+'</h2><p>'+esc(sc.sub)+'</p></div>'
+      + '<div class="cover-note">Hình nền: hình minh họa thiết kế, không phải ảnh công trình</div>';
+  } else if (sc.kind==='outro'){
+    h += '<img class="bg" src="assets/cover.jpg" alt=""><div class="cover-shade" style="background:rgba(10,24,16,.84)"></div><div class="devtag">Đang phát triển · Không dùng để thi công</div>'
+      + '<ol class="outro-list"><li><span>1.</span> Mở trang GitHub của dự án</li><li><span>2.</span> Code → Download ZIP</li><li><span>3.</span> Giải nén ra thư mục</li><li><span>4.</span> Nhấp đúp OPEN_CHURCH.html</li><li><span>5.</span> Khám phá: kéo chuột, Go inside, Simulator, References</li></ol>';
+  } else if (sc.kind==='browser'){
+    h += '<div class="win"><div class="bar"><i class="dot" style="background:#ff5f57"></i><i class="dot" style="background:#febc2e"></i><i class="dot" style="background:#28c840"></i>'
+      + '<div class="url">'+(sc.local?'<i>Thư mục trên máy: </i>':'<i>https://</i>')+esc(sc.url)+'</div></div><img src="'+sc.img+'" alt=""></div>';
+    if (sc.urlSpot) sp.push({ r:[WIN.x+70, 36+10, 1500, 46], label:'Gõ địa chỉ này', side:'below' });
+  } else if (sc.kind==='app'){
+    h += '<img class="bg" src="'+sc.img+'" alt="">';
+  } else if (sc.kind==='clip'){
+    if (!opt.overlay){
+      h += opt.live && sc.clip
+        ? '<video class="bg" src="'+sc.clip+'" poster="'+sc.poster+'" muted loop playsinline></video>'
+        : '<img class="bg" src="'+sc.poster+'" alt="">';
+    }
+    (sc.labels||[]).forEach(function(l){ h += '<div class="lab" style="left:'+l.x+'px;top:'+l.y+'px">'+esc(l.text)+'</div>'; });
+  } else if (sc.kind==='compare'){
+    h += '<div class="cmp"></div>' + sc.imgs.map(function(im,i){ var x = i? 980 : 60;
+      return '<div class="cmpbox" style="left:'+x+'px"><img src="'+im.src+'" alt=""><div class="cmplab">'+esc(im.label)+'</div></div>'; }).join('');
+  } else if (sc.kind==='extract'){
+    h += EXTRACT;
+  } else if (sc.kind==='folder'){
+    h += FOLDER;
+  }
+  (sc.spots||[]).forEach(function(s){ sp.push({ r:mapRect(sc, s.rect), label:s.label, side:s.side, dy:s.dy }); });
+  return h + spotsHtml(sp);
+}
+function spotsHtml(items){
+  if (!items.length) return '';
+  var pad = 6, holes = '', rings = '', tags = '';
+  items.forEach(function(it){
+    var r = it.r, x=r[0]-pad, y=r[1]-pad, w=r[2]+2*pad, hh=r[3]+2*pad;
+    holes += '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+hh+'" rx="16" fill="#000"/>';
+    rings += '<div class="ring" style="left:'+x+'px;top:'+y+'px;width:'+w+'px;height:'+hh+'px"></div>';
+    if (!it.label) return;
+    var cx = r[0]+r[2]/2, cy = r[1]+r[3]/2+(it.dy||0), side = it.side||'below';
+    var pos = side==='left' ? 'right:'+(1920-x+26)+'px;top:'+cy+'px;transform:translateY(-50%)'
+            : side==='right' ? 'left:'+(x+w+26)+'px;top:'+cy+'px;transform:translateY(-50%)'
+            : side==='above' ? 'left:'+r[0]+'px;bottom:'+(1080-y+26)+'px'
+            : 'left:'+Math.max(30,Math.min(r[0],1920-520))+'px;top:'+(y+hh+26)+'px';
+    tags += '<div class="tag '+side+'" style="'+pos+'">'+esc(it.label)+'</div>';
+  });
+  return '<svg class="dim" width="1920" height="1080" viewBox="0 0 1920 1080"><defs><mask id="m"><rect width="1920" height="1080" fill="#fff"/>'+holes+'</mask></defs><rect width="1920" height="1080" fill="rgba(8,20,14,.62)" mask="url(#m)"/></svg>'+rings+tags;
+}
+var EXTRACT =
+ '<div class="illus"></div>'
++'<div class="panel" style="left:80px;top:40px;width:830px;height:640px;padding:30px 40px">'
++  '<h4>Máy Mac</h4>'
++  '<div style="display:flex;align-items:center;justify-content:space-around;margin-top:60px">'
++    '<div style="display:flex;flex-direction:column;align-items:center"><div class="fileicon hl"><i class="zip"></i><span>ZIP</span></div><div class="fname">giaoxuthachbi-simulator-dev.zip</div></div>'
++    '<div class="arrowbig">→<small>nhấp đúp</small></div>'
++    '<div style="display:flex;flex-direction:column;align-items:center"><div class="foldericon"></div><div class="fname">giaoxuthachbi-simulator-dev</div></div>'
++  '</div></div>'
++'<div class="panel" style="left:970px;top:40px;width:870px;height:640px;padding:30px 40px">'
++  '<h4>Máy Windows</h4>'
++  '<div style="display:flex;gap:36px;align-items:flex-start;margin-top:36px">'
++    '<div class="menu"><div>Open</div><div>Open with</div><div class="sep"></div><div class="hl" style="font-weight:800">Extract All…</div><div class="sep"></div><div>Copy</div><div>Properties</div></div>'
++    '<div class="arrowbig" style="align-self:center">→</div>'
++    '<div class="dlg"><div class="t">Extract Compressed Folders</div><div class="b">Files will be extracted to this folder:<div style="margin:12px 0;border:1px solid #bbb;padding:6px 10px;font-size:20px;color:#555">…\\Downloads\\giaoxuthachbi-simulator-dev</div><div style="text-align:right"><span class="btnx hl">Extract</span></div></div></div>'
++  '</div><div style="margin-top:26px;font-size:28px;color:#4b5a51">Bấm chuột phải vào tệp ZIP → <b>Extract All…</b> → <b>Extract</b></div></div>'
++'<div class="warn" style="left:80px;top:712px">✗ Đừng mở tệp bên trong ZIP: hãy giải nén ra thư mục trước</div>';
+var FOLDER =
+ '<div class="fwin" style="left:70px;top:50px;width:1060px;height:760px">'
++  '<div class="tb">giaoxuthachbi-simulator-dev  ›  <span style="color:#1f4331">Thach_Bi_Viewer</span></div>'
++  '<div class="frow"><span class="ic fo"></span>planning<span class="kind">Thư mục</span></div>'
++  '<div class="frow"><span class="ic fo"></span>references<span class="kind">Thư mục</span></div>'
++  '<div class="frow"><span class="ic fo"></span>simulator<span class="kind">Thư mục</span></div>'
++  '<div class="frow"><span class="ic fi"></span>bundle.js<span class="kind">Tệp</span></div>'
++  '<div class="frow hl" style="font-weight:800"><span class="ic ht"></span>OPEN_CHURCH.html<span class="kind" style="color:#7a4b00;font-weight:800">Nhấp đúp vào đây</span></div>'
++  '<div class="frow"><span class="ic fi"></span>READ_ME.txt<span class="kind">Tệp</span></div>'
++  '<div class="frow"><span class="ic fi"></span>viewer.css<span class="kind">Tệp</span></div>'
++  '<div class="frow" style="color:#7a887f">… và các tệp khác: giữ nguyên tất cả trong cùng thư mục<span class="kind"></span></div>'
++'</div>'
++'<div class="arrowbig" style="position:absolute;left:1150px;top:360px;color:#2f5f45">→</div>'
++'<div class="fwin" style="left:1260px;top:200px;width:600px;height:400px"><div class="tb">Trình duyệt</div><img src="assets/v-start.jpg" alt="" style="width:600px;display:block"></div>'
++'<div style="position:absolute;left:1260px;top:625px;width:600px;text-align:center;font-size:30px;font-weight:700;color:#1f4331">Nhà thờ hiện ra sau vài giây</div>';
+
+function Stage(sc, opt){
+  opt = opt||{};
+  var root = document.createElement('div');
+  root.className = 'stage' + (opt.overlay?' overlay':'') + (sc.kind==='extract'||sc.kind==='folder'||sc.kind==='compare'?' illus':'') + (opt.spot===false?' nospot':'');
+  root.innerHTML = stageInner(sc, opt)
+    + '<div class="cap'+(sc.cap==='top'?' top':'')+'"><span class="pill">'+esc(G.steps[sc.step])+'</span><div class="txt"><span></span></div></div>';
+  var txt = root.querySelector('.txt span');
+  var api = {
+    root: root,
+    setK: function(k){ txt.innerHTML = k==null?'':md(sc.sentences[Math.max(0,Math.min(k,sc.sentences.length-1))]); },
+    setSpot: function(on){ root.classList.toggle('nospot', !on); }
+  };
+  api.setK(opt.k==null?0:opt.k);
+  return api;
+}
+function fit(wrap, stage){
+  var f = function(){ stage.style.transform = 'scale('+(wrap.clientWidth/1920)+')'; };
+  f(); if (window.ResizeObserver) new ResizeObserver(f).observe(wrap); else addEventListener('resize', f);
+}
+
+// ---- video-frame mode: ?frame=ID&k=0&spot=1&overlay=0 --------------------------
+if (q.has('frame')){
+  var sc = byId[q.get('frame')];
+  document.documentElement.style.cssText = 'background:transparent';
+  document.body.style.cssText = 'margin:0;background:transparent;width:1920px;height:1080px;overflow:hidden';
+  document.querySelector('.notice').remove();
+  var st = Stage(sc, { k:+(q.get('k')||0), spot:q.get('spot')!=='0', overlay:q.get('overlay')==='1' });
+  st.root.style.position = 'relative';
+  document.getElementById('app').appendChild(st.root);
+  document.title = 'ready';
+  return;
+}
+
+// ---- guide page ----------------------------------------------------------------
+var app = document.getElementById('app');
+var five = [['Mở trang GitHub','của dự án'],['Code → Download ZIP','tải tệp nén về máy'],['Giải nén','ra một thư mục'],['Nhấp đúp OPEN_CHURCH.html','trong thư mục Thach_Bi_Viewer'],['Khám phá','kéo chuột, Go inside, Simulator, References']];
+var html = '<div class="wrap"><header class="hero"><h1>Xem mô hình 3D nhà thờ Thạch Bi trên máy tính</h1>'
+ + '<p>Hướng dẫn cho Cha: tải về từ GitHub, mở mô hình 3D và xem các hình minh họa đề xuất. Không cần cài phần mềm.</p>'
+ + '<ol class="five">'+five.map(function(f){ return '<li>'+f[0]+'<small>'+f[1]+'</small></li>'; }).join('')+'</ol></header>'
+ + '<section class="block videobox" id="videobox" hidden><h2>Video hướng dẫn</h2><video id="mainvideo" controls preload="metadata" poster="assets/cover.jpg"><source src="huong-dan-xem-mo-hinh-3d.mp4" type="video/mp4"></video><div class="chapters" id="chapters" aria-label="Mục lục video"></div></section>'
+ + '<section class="block"><h2>Xem từng bước, có giọng đọc</h2><div class="player"><div class="stage-wrap" id="pwrap"></div>'
+ + '<div class="controls"><button id="prev" class="alt">‹ Trước</button><button id="play">▶ Phát có tiếng</button><button id="next" class="alt">Sau ›</button><div class="dots" id="dots"></div><span class="status" id="pstatus"></span></div></div></section>'
+ + '<section class="block"><h2>Các bước bằng chữ</h2><div id="steps"></div></section>'
+ + '<footer><h2>Cần biết</h2><ul>'
+ + '<li>Tệp ZIP khoảng 500 MB (ước tính từ nội dung nhánh <code>dev</code> ngày 10/10/2026). Nên tải khi mạng tốt.</li>'
+ + '<li>Dùng máy tính để bàn hoặc laptop, trình duyệt Chrome hoặc Edge. Mô hình chạy trên máy, không cần internet.</li>'
+ + '<li>Tên nút trong mô hình là tiếng Anh; hướng dẫn này giữ nguyên tên đó (in đậm) để dễ tìm.</li>'
+ + '<li>Đây là bản nghiên cứu thiết kế đang phát triển, không dùng để thi công. Kích thước và kết cấu thực tế theo bản vẽ và kỹ sư.</li>'
+ + '<li>Xem thêm: <a href="https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/dev/docs/electrical-inspection-guide.vi.md">Hướng dẫn xem hệ thống điện trong mô hình 3D</a> · <a href="https://github.com/DangHoangGeo/giaoxuthachbi-simulator">Trang GitHub của dự án</a>.</li>'
+ + '<li>Giọng đọc là giọng tổng hợp tiếng Việt (macOS “Linh”). Các hình chụp GitHub và mô hình được chụp ngày 10/10/2026.</li></ul></footer></div>';
+app.innerHTML = html;
+
+// video, shown only when the file sits next to this page
+var vb = document.getElementById('videobox'), mv = document.getElementById('mainvideo');
+mv.addEventListener('loadedmetadata', function(){ vb.hidden=false; });
+// chapters: start time of each group of scenes (the video is the scenes in order, one narration track each)
+(function(){ var at = 0, last = -1, box = document.getElementById('chapters');
+  scenes.forEach(function(sc){
+    if (sc.step!==last && T[sc.id]){ last = sc.step; var t0 = at, b = document.createElement('button'); b.type='button';
+      b.textContent = G.steps[sc.step]+' · '+Math.floor(t0/60)+':'+('0'+Math.floor(t0%60)).slice(-2);
+      b.onclick = function(){ mv.currentTime = t0; mv.play(); }; box.appendChild(b); }
+    if (T[sc.id]) at += T[sc.id].duration; });
+})();
+
+// player
+var pwrap = document.getElementById('pwrap'), dots = document.getElementById('dots'), pstatus = document.getElementById('pstatus');
+var cur = -1, st = null, audio = new Audio(), playing = false, timer = null;
+scenes.forEach(function(s,i){ var b=document.createElement('button'); b.title=G.steps[s.step]+' · '+(i+1); b.onclick=function(){ show(i, playing); }; dots.appendChild(b); });
+function timing(sc){ var t = T[sc.id]; if (t) return t.sentences;
+  var n = sc.sentences.reduce(function(a,s){return a+s.length;},0), at = 0;   // estimate when audio timings are missing
+  return sc.sentences.map(function(s){ var d = s.length/n*(n/14); var r={start:at,end:at+d}; at+=d; return r; }); }
+function show(i, autoplay){
+  clearTimeout(timer); audio.pause();
+  cur = Math.max(0, Math.min(scenes.length-1, i));
+  var sc = scenes[cur];
+  pwrap.innerHTML = ''; st = Stage(sc, { live:true, k:0, spot:false });
+  pwrap.appendChild(st.root); fit(pwrap, st.root);
+  setTimeout(function(){ st.setSpot(true); }, 700);
+  var v = st.root.querySelector('video'); if (v) v.play().catch(function(){});
+  Array.prototype.forEach.call(dots.children, function(d,j){ d.classList.toggle('on', j===cur); });
+  pstatus.textContent = (cur+1)+' / '+scenes.length;
+  audio.src = 'audio/'+sc.id+'.m4a'; audio.currentTime = 0;
+  if (autoplay){ audio.play().catch(function(){ playing=false; setBtn(); }); }
+}
+audio.addEventListener('timeupdate', function(){
+  if (cur<0||!st) return; var sc=scenes[cur], t=timing(sc), now=audio.currentTime, k=0;
+  for (var j=0;j<t.length;j++){ if (now>=t[j].start-0.05) k=j; }
+  st.setK(k);
+});
+audio.addEventListener('ended', function(){
+  if (!playing) return;
+  if (cur<scenes.length-1) timer = setTimeout(function(){ show(cur+1, true); }, 500);
+  else { playing=false; setBtn(); }
+});
+audio.addEventListener('error', function(){ // no narration file: advance by reading time
+  if (!playing||cur<0) return; var sc=scenes[cur], n=sc.sentences.join(' ').length;
+  var k=0; (function step(){ if(!playing) return; st.setK(k); k++; if(k<sc.sentences.length) timer=setTimeout(step, sc.sentences[k-1].length*70); else timer=setTimeout(function(){ if(cur<scenes.length-1) show(cur+1,true); else {playing=false;setBtn();} }, sc.sentences[k-1].length*70+800); })(); });
+function setBtn(){ document.getElementById('play').textContent = playing ? '❚❚ Tạm dừng' : '▶ Phát có tiếng'; }
+document.getElementById('play').onclick = function(){
+  if (playing){ playing=false; audio.pause(); clearTimeout(timer); setBtn(); return; }
+  playing = true; setBtn(); if (audio.ended || audio.currentTime===0 || cur<0) show(cur<0?0:(audio.ended?Math.min(cur+1,scenes.length-1):cur), true); else audio.play();
+};
+document.getElementById('prev').onclick = function(){ show(cur-1, playing); };
+document.getElementById('next').onclick = function(){ show(cur+1, playing); };
+addEventListener('keydown', function(e){ if (e.key==='ArrowRight') show(cur+1, playing); if (e.key==='ArrowLeft') show(cur-1, playing); });
+show(0, false);
+
+// written steps
+var stepsEl = document.getElementById('steps'), lastStep = -1;
+scenes.forEach(function(sc){
+  if (sc.step!==lastStep){ lastStep = sc.step; var h=document.createElement('h2'); h.className='stepgroup'; h.textContent=G.steps[sc.step]; stepsEl.appendChild(h); }
+  var a = document.createElement('article'); a.className='step';
+  var w = document.createElement('div'); w.className='stage-wrap';
+  var s2 = Stage(sc, { k:0, spot:true }); w.appendChild(s2.root);
+  var d = document.createElement('div');
+  d.innerHTML = '<ol>'+sc.sentences.map(function(s){return '<li>'+md(esc(s))+'</li>';}).join('')+'</ol>'
+    + '<button class="audio-btn" type="button">▶ Nghe đoạn này</button>';
+  var btn = d.querySelector('button'), au = null;
+  btn.onclick = function(){ if (!au){ au = new Audio('audio/'+sc.id+'.m4a'); au.onended=function(){ btn.textContent='▶ Nghe đoạn này'; }; }
+    if (au.paused){ au.currentTime = 0; au.play().catch(function(){ btn.textContent='Chưa có tệp tiếng'; }); btn.textContent='❚❚ Dừng'; } else { au.pause(); btn.textContent='▶ Nghe đoạn này'; } };
+  a.appendChild(w); a.appendChild(d); stepsEl.appendChild(a); fit(w, s2.root);
+});
+})();
+</script>
+</body>
+</html>

@@ -51,6 +51,8 @@ See the [7 October church concept gallery](Thach_Bi_Viewer/references/00-overvie
 
 Keep the whole viewer folder and its assets together. The viewer runs locally without installing a server or downloading runtime dependencies. Opening an HTML file in GitHub's source preview does not run the model.
 
+For Father and first-time visitors there is a step-by-step Vietnamese guide with narration and a short video: [Hướng dẫn tải về và xem mô hình](docs/guides/father-quick-start/README.md) (also at `/guide/index.html` on the website).
+
 See the [viewer instructions](Thach_Bi_Viewer/READ_ME.txt) and [simulator guide](docs/simulator/guide.md) for controls. To inspect the lights, fans, sound, socket outlets and cable routes system by system, start with the short [inspection guide for the parish priest and local engineer](docs/electrical-inspection-guide.md) ([tiếng Việt](docs/electrical-inspection-guide.vi.md)). Edited layouts are saved in the browser; export a layout JSON before moving to another browser or sharing a study. Browser edits do not automatically update the repository or the Excel files. The simulator does not control installed equipment.
 
 ## Start here
