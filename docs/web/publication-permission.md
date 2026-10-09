@@ -16,3 +16,11 @@ This permission does not convert pending engineering calculations into approval,
 The selected content revision is `development-content-20261008-two`, based on source `c151c71`, with a content timestamp of 8 October 2026 at 21:14 JST (12:14 UTC). The application pointer is prepared for this release; this file is not a cloud deployment record. The original bilingual editorial draft remains private; this release uses a narrower project description and no personal biography, contact details or unsupported history. Native parish-language review and the contributor/backup rehearsal remain later operating checks, not a reason to leave owner-authorized project work hidden.
 
 Historical evidence under `review/` keeps its original unpublished status and hashes. Current working docs link this decision so an old hold is not mistaken for the current permission. Full G0/G2/G3 parish-operation gates, the actual-host checks and G7 release record remain open where they require real operators, site photographs, field hardware or deployment evidence. No gate is marked passed solely because the user allowed a development preview.
+
+## Wider permission, 10 October 2026
+
+**USER CONFIRMED, 10 October 2026:** “we just make it close to the local version as possible. we don't need a private version anymore. everything could be public now.” Asked how the website should show the 3D church, the owner chose the real viewer in visit-only mode.
+
+This widens the scope above in two ways. The GitHub repository is public under the licences in [NOTICE](../../NOTICE.md), and the website's 3D visit is the project's own viewer with the recommended design, including the modelled equipment and the simulator's estimate read-outs, without the editing tools ([viewer document](viewer.md)). The password-protected preview is retired ([access control](access-control.md)).
+
+Unchanged: the “In development · Not for construction” notices; the limits on what the estimates mean; the engineering holds; and the open items for third-party drawings and photographs in the [publication checklist](../open-source/publication-checklist.md), which this permission does not settle because those belong to other people.

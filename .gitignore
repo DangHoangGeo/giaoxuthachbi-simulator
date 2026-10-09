@@ -15,6 +15,8 @@ node_modules/
 .next/
 .vercel/
 /web/out/
+# Build-time copy of Thach_Bi_Viewer for the 3D visit page (web/scripts/prepare-viewer.mjs)
+/web/public/viewer/
 /web/dist/
 *.tsbuildinfo
 

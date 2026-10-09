@@ -4,6 +4,17 @@
 
 The initial sections record the local foundation; the private-review increment below records the confirmed hosting configuration. Exact new deployment verification is retained in phase evidence. Web01 created no Vercel project, domain, auth tenant, private store or production environment. The [selected pointer](../../web/content/current.json) now names the development release; that application state does not confirm a deployed URL. The existing church Vercel project is now connected to this GitHub repository; its settings were read through the CLI on 8 October 2026. The repository was private on that date. **Update, 10 October 2026:** the owner has made the repository public, and merging to `main` creates a Vercel production deployment (observed for `cf07b7c`; see H6 in the [publication checklist](../open-source/publication-checklist.md)). Contributions now go to `dev`, and promoting `dev` to `main` is a website release. The [development guide](development.md) contains the working local commands and the [data boundary](data-boundary.md) defines allowed build inputs.
 
+## Update, 10 October 2026: the viewer is published and the private preview is retired
+
+Owner decision (USER CONFIRMED): the website should show the same 3D model as the local viewer, and no private version is needed. See the [viewer document](viewer.md) and [access control](access-control.md). For hosting this means:
+
+- **The build reads outside the `web` root.** `scripts/prepare-viewer.mjs` copies `../Thach_Bi_Viewer` into `web/public/viewer/` before every build. The Vercel project must allow source files outside the root directory, which reverses the “Disabled” line in the table below. Confirm it from the preview build of the pull request that introduced this change.
+- **No runtime credentials.** The private Blob store, its connection variables and the shared password are no longer used by any code. The owner may delete the store and the variables; nothing in this repository did so.
+- **Web checks** now also run when `Thach_Bi_Viewer/**` changes, and the workflow checks out `/web/` and `/Thach_Bi_Viewer/`. It still uses read-only permission and no credentials.
+- **Every merge to `main` deploys production** (publication checklist, H6). A viewer change that reaches `main` is therefore a website change.
+
+The sections below record the earlier configuration and are kept as history. Where they describe private inputs, a private preview or a private store, they describe what was retired on this date.
+
 ## Unprivileged checks
 
 [Web checks](../../.github/workflows/web-checks.yml) runs on ordinary pull requests and pushes affecting `web/` or its workflow, on `main`/`web/**` branches. It uses read-only repository permission, a 15-minute cap, no deployment credentials, no privileged pull-request trigger, no cache shared with a publisher and no retained auth state. Checkout persists no credentials and requests only `web/` with a shallow sparse checkout. Sparse checkout limits working files; it is not a security sandbox for arbitrary code or a way to make a private Git repository public-safe.
