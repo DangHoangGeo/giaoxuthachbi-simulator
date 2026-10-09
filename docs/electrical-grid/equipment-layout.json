@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-09T01:06:21.478Z",
+  "savedAt": "2026-10-09T01:31:17.233Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 110,
@@ -43,7 +43,8 @@
     "stableLightingRevision": "2026-10-06-physical-lighting",
     "wingReviewRevision": "2026-10-09-wing-two-light-art-2",
     "wingSoundRevision": "2026-10-09-wing-sound-art-clearance-2",
-    "wingArtRevision": "2026-10-09-wing-peter-paul-concept-1"
+    "wingArtRevision": "2026-10-09-wing-peter-paul-concept-1",
+    "naveFanRevision": "2026-10-09-eight-wall-fans-per-side"
   },
   "customScenes": [],
   "items": [
@@ -5407,7 +5408,7 @@
     },
     {
       "id": "F244",
-      "type": "fanWall",
+      "type": "fanNaveWall",
       "name": "Wall fan · axis 4 · B",
       "circuit": "F2",
       "mount": "wall",
@@ -5428,7 +5429,7 @@
     },
     {
       "id": "F245",
-      "type": "fanWall",
+      "type": "fanNaveWall",
       "name": "Wall fan · axis 4 · H",
       "circuit": "F2",
       "mount": "wall",
@@ -5449,7 +5450,7 @@
     },
     {
       "id": "F246",
-      "type": "fanWall",
+      "type": "fanNaveWall",
       "name": "Wall fan · axis 6 · B",
       "circuit": "F2",
       "mount": "wall",
@@ -5470,7 +5471,7 @@
     },
     {
       "id": "F247",
-      "type": "fanWall",
+      "type": "fanNaveWall",
       "name": "Wall fan · axis 6 · H",
       "circuit": "F2",
       "mount": "wall",
@@ -5491,7 +5492,7 @@
     },
     {
       "id": "F248",
-      "type": "fanWall",
+      "type": "fanNaveWall",
       "name": "Wall fan · axis 8 · B",
       "circuit": "F2",
       "mount": "wall",
@@ -5512,7 +5513,7 @@
     },
     {
       "id": "F249",
-      "type": "fanWall",
+      "type": "fanNaveWall",
       "name": "Wall fan · axis 8 · H",
       "circuit": "F2",
       "mount": "wall",
@@ -7097,6 +7098,216 @@
       "dim": 1,
       "params": {},
       "note": "USER CONFIRMED subjects/location: Peter and Paul between windows in each wing. CONCEPT 1.12 ×1.62 m frame proxy, Y2.20 centre. Actual size, height, substrate, frame, artwork and fixings pending. Unpow"
+    },
+    {
+      "id": "F-NAVE-B-2P",
+      "type": "fanNaveWall",
+      "name": "Wall fan · axis 2′ · B",
+      "circuit": "F2",
+      "mount": "wall",
+      "pos": [
+        5.475,
+        5.55,
+        -7.07
+      ],
+      "yaw": 90,
+      "tilt": -38,
+      "mountYaw": 90,
+      "on": false,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "speed": 1,
+      "oscillate": true
+    },
+    {
+      "id": "F-NAVE-H-2P",
+      "type": "fanNaveWall",
+      "name": "Wall fan · axis 2′ · H",
+      "circuit": "F2",
+      "mount": "wall",
+      "pos": [
+        5.475,
+        5.55,
+        7.07
+      ],
+      "yaw": -90,
+      "tilt": -38,
+      "mountYaw": -90,
+      "on": false,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "speed": 1,
+      "oscillate": true
+    },
+    {
+      "id": "F-NAVE-B-3",
+      "type": "fanNaveWall",
+      "name": "Wall fan · axis 3 · B",
+      "circuit": "F2",
+      "mount": "wall",
+      "pos": [
+        9.975,
+        5.55,
+        -7.07
+      ],
+      "yaw": 90,
+      "tilt": -38,
+      "mountYaw": 90,
+      "on": false,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "speed": 1,
+      "oscillate": true
+    },
+    {
+      "id": "F-NAVE-H-3",
+      "type": "fanNaveWall",
+      "name": "Wall fan · axis 3 · H",
+      "circuit": "F2",
+      "mount": "wall",
+      "pos": [
+        9.975,
+        5.55,
+        7.07
+      ],
+      "yaw": -90,
+      "tilt": -38,
+      "mountYaw": -90,
+      "on": false,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "speed": 1,
+      "oscillate": true
+    },
+    {
+      "id": "F-NAVE-B-5",
+      "type": "fanNaveWall",
+      "name": "Wall fan · axis 5 · B",
+      "circuit": "F2",
+      "mount": "wall",
+      "pos": [
+        18.975,
+        5.55,
+        -7.07
+      ],
+      "yaw": 90,
+      "tilt": -38,
+      "mountYaw": 90,
+      "on": false,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "speed": 1,
+      "oscillate": true
+    },
+    {
+      "id": "F-NAVE-H-5",
+      "type": "fanNaveWall",
+      "name": "Wall fan · axis 5 · H",
+      "circuit": "F2",
+      "mount": "wall",
+      "pos": [
+        18.975,
+        5.55,
+        7.07
+      ],
+      "yaw": -90,
+      "tilt": -38,
+      "mountYaw": -90,
+      "on": false,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "speed": 1,
+      "oscillate": true
+    },
+    {
+      "id": "F-NAVE-B-7",
+      "type": "fanNaveWall",
+      "name": "Wall fan · axis 7 · B",
+      "circuit": "F2",
+      "mount": "wall",
+      "pos": [
+        27.975,
+        5.55,
+        -7.07
+      ],
+      "yaw": 90,
+      "tilt": -38,
+      "mountYaw": 90,
+      "on": false,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "speed": 1,
+      "oscillate": true
+    },
+    {
+      "id": "F-NAVE-H-7",
+      "type": "fanNaveWall",
+      "name": "Wall fan · axis 7 · H",
+      "circuit": "F2",
+      "mount": "wall",
+      "pos": [
+        27.975,
+        5.55,
+        7.07
+      ],
+      "yaw": -90,
+      "tilt": -38,
+      "mountYaw": -90,
+      "on": false,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "speed": 1,
+      "oscillate": true
+    },
+    {
+      "id": "F-NAVE-B-9",
+      "type": "fanNaveWall",
+      "name": "Wall fan · axis 9 · B",
+      "circuit": "F2",
+      "mount": "wall",
+      "pos": [
+        36.975,
+        5.55,
+        -7.07
+      ],
+      "yaw": 90,
+      "tilt": -38,
+      "mountYaw": 90,
+      "on": false,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "speed": 1,
+      "oscillate": true
+    },
+    {
+      "id": "F-NAVE-H-9",
+      "type": "fanNaveWall",
+      "name": "Wall fan · axis 9 · H",
+      "circuit": "F2",
+      "mount": "wall",
+      "pos": [
+        36.975,
+        5.55,
+        7.07
+      ],
+      "yaw": -90,
+      "tilt": -38,
+      "mountYaw": -90,
+      "on": false,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "speed": 1,
+      "oscillate": true
     }
   ]
 }

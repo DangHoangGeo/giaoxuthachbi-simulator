@@ -466,16 +466,26 @@
       "compatibility_gaps": []
     },
     {
-      "type": "fanWall",
+      "type": "fanNaveWall",
       "scope": "Shown model scope",
-      "quantity": 6,
+      "quantity": 16,
       "equipment_ids": [
         "F244",
         "F245",
         "F246",
         "F247",
         "F248",
-        "F249"
+        "F249",
+        "F-NAVE-B-2P",
+        "F-NAVE-H-2P",
+        "F-NAVE-B-3",
+        "F-NAVE-H-3",
+        "F-NAVE-B-5",
+        "F-NAVE-H-5",
+        "F-NAVE-B-7",
+        "F-NAVE-H-7",
+        "F-NAVE-B-9",
+        "F-NAVE-H-9"
       ],
       "model_specs": [
         "0.45 m diameter · 55 W at maximum speed"
@@ -1324,7 +1334,7 @@
     }
   ],
   "summary": {
-    "shown_equipment_enclosures": 310,
+    "shown_equipment_enclosures": 320,
     "hidden_alternatives": 15,
     "priced_comparison_groups": 2,
     "unpriced_or_excluded_shown_groups": 36,

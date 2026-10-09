@@ -1,0 +1,34 @@
+{
+  "revision": "2026-10-09-eight-wall-fans-per-side",
+  "scope": "Desktop only (owner scope). Built-in Browser pane at http://127.0.0.1:8765 (scratch origin; the user's localhost layout was not touched).",
+  "checked": {
+    "defaultLayout": {
+      "f2Fans": 16,
+      "perSide": [
+        8,
+        8
+      ],
+      "type": "fanNaveWall",
+      "visible": 16,
+      "on": 0,
+      "fixturesMounted": 16,
+      "consoleErrors": 0
+    },
+    "wiringCard": "Nave wall fans card rendered; both sides 'Current review'; adopt buttons disabled when current",
+    "legacySixFanMigration": {
+      "seeded": "six fanWall items, F244 ON, no naveFanRevision",
+      "result": "16 fans, all fanNaveWall, F244 still ON, ten new fans OFF, no duplicate IDs",
+      "backupKey": "thachbi.simulator.v1.before-nave-fans-review"
+    },
+    "deletionPersistence": "Deleted F-NAVE-B-3, reloaded: 329 items, fan stayed deleted; status reported side B as preserved/custom",
+    "explicitAdoption": "adoptNaveFans('B') restored all eight side-B IDs with a full backup; Undo returned to 15 fans",
+    "visual": "evening-wall-fan-axis4-H.jpg: axis-4 H fan above the window opening, clear of it (walk view, Full service evening scene)"
+  },
+  "notChecked": [
+    "Day lighting view",
+    "Audible fan playback and fan-on rendering of all sixteen units",
+    "Every fan from standing/seated/wheelchair eye heights",
+    "Reload of a user's real saved layout"
+  ],
+  "status": "Software/desktop-pane behaviour only; not engineering approval"
+}

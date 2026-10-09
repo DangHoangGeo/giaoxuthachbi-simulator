@@ -256,10 +256,10 @@
         note: 'ENGINEERING HOLD: two fans per wing above window openings, clear of central saints strip. Same catalog flow/power/noise; extended bracket proxy unverified. Air, noise, speech, mounting, concealment and maintenance remain held.' };
     };
     for (const sign of [-1, 1]) for (const index of [0, 1]) add(wingFan(sign, index));
-    // Show the six existing nave wall-fan concepts by default, as requested.
+    // Preserve the original six numeric slots; append ten named IDs below.
     // Display visibility is separate from operation: full service keeps F2 off.
     for (const k of ['4', '6', '8']) for (const sign of [-1, 1]) {
-      add({ type: 'fanWall', name: `Wall fan · axis ${k} · ${side(sign)}`, circuit: 'F2', mount: 'wall', pos: [A[k], 5.55, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
+      add({ type: 'fanNaveWall', name: `Wall fan · axis ${k} · ${side(sign)}`, circuit: 'F2', mount: 'wall', pos: [A[k], 5.55, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
     }
     // Trial: two large circulators on the inside of the entrance wall, blowing
     // down the nave (F4, off). Compare the air map with them on and off. Each is
@@ -367,7 +367,36 @@
         pos: [x, 2.2, sign * 13.095], yaw: -sign * 90, mountYaw: -sign * 90, on: true, hidden: false,
         note: 'USER CONFIRMED subjects/location: Peter and Paul between windows in each wing. CONCEPT 1.12 ×1.62 m frame proxy, Y2.20 centre. Actual size, height, substrate, frame, artwork and fixings pending. Unpowered.' });
     }
+    for (const k of ['2′', '3', '5', '7', '9']) for (const sign of [-1, 1]) {
+      add({ id: `F-NAVE-${side(sign)}-${k === '2′' ? '2P' : k}`, type: 'fanNaveWall', name: `Wall fan · axis ${k} · ${side(sign)}`, circuit: 'F2', mount: 'wall',
+        pos: [A[k], 5.55, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
+    }
     return items.filter(it => ![...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id));
+  }
+
+  const naveFanRevision = '2026-10-09-eight-wall-fans-per-side';
+  const naveFanLegacyIds = ['F244', 'F245', 'F246', 'F247', 'F248', 'F249'];
+  function naveFanTargets(design, code) {
+    if (!['B', 'H'].includes(code)) throw new Error('Choose nave side B or H.');
+    return design.filter(it => it.circuit === 'F2' && Math.sign(it.pos[2]) === (code === 'B' ? -1 : 1));
+  }
+  function upgradeNaveFans(items, design) {
+    const added = [], replacements = new Map();
+    for (const code of ['B', 'H']) {
+      const targets = naveFanTargets(design, code);
+      const legacy = targets.filter(it => naveFanLegacyIds.includes(it.id));
+      // State overrides survive. Geometry, deletion, visibility, name or notes
+      // block this side's automatic additions; explicit adoption is separate.
+      const fields = ['type', 'name', 'circuit', 'mount', 'pos', 'yaw', 'mountYaw', 'tilt', 'hidden', 'params', 'oscillate', 'note'];
+      const untouched = legacy.every(raw => {
+        const prior = items.find(it => it.id === raw.id);
+        return prior && fields.every(k => JSON.stringify(prior[k]) === JSON.stringify((k === 'type' ? 'fanWall' : raw[k]) ?? (k === 'params' ? {} : k === 'oscillate' ? true : undefined)));
+      });
+      if (!untouched || targets.some(t => !naveFanLegacyIds.includes(t.id) && items.some(it => it.id === t.id))) continue;
+      for (const t of legacy) replacements.set(t.id, { ...items.find(it => it.id === t.id), type: t.type });
+      added.push(...targets.filter(t => !naveFanLegacyIds.includes(t.id)));
+    }
+    return [...items.map(it => replacements.get(it.id) || it), ...added];
   }
 
   const lightingRevision = '2026-10-05-balanced-doors-towers';
@@ -564,5 +593,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

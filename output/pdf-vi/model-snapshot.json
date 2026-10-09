@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "basis": "Fresh default model, not saved browser layout",
-  "gitRevision": "cbf47dad34bf680ff71e905965539e44aa653a0c",
+  "gitRevision": "614222c44fb6b4fac234b80a29fbe67a686bbbca",
   "sourceFiles": {
     "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
     "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
@@ -12,13 +12,13 @@
     "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
     "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
     "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
-    "Thach_Bi_Viewer/simulator/catalog.js": "67035bc56dac74b154f3c80b5f3a5ec46187df5894c4a8c8230741d4c4f85694",
-    "Thach_Bi_Viewer/simulator/engine.js": "a6ea21ce0d9d54cc26c5d5141082e5dcc19128db07357afbc169bc8413b657fe",
+    "Thach_Bi_Viewer/simulator/catalog.js": "702b103b0006ddd7a0fd5ec0b3cb6210142bd3bc59e86410065247e2b6c23c57",
+    "Thach_Bi_Viewer/simulator/engine.js": "9bdd3aae58b7dc49a40566b2dac33a3658e9cc4e2993e0f585693a0829e1c3f9",
     "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
     "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
-    "Thach_Bi_Viewer/simulator/design.js": "44e8c4c39b2c3a6833c46642133e4f3a6eafae6c6c2176d5cf3a9a609840ffb1",
+    "Thach_Bi_Viewer/simulator/design.js": "32e8ae7cf594ab7792f51d50cb4911a965eb0b070cd8cbbb0413faac481a0372",
     "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
-    "Thach_Bi_Viewer/simulator/electrical.js": "fcbdf178a7a8c23a7ef911bd76576050f3add7867186be94245310e5c2ab7bea",
+    "Thach_Bi_Viewer/simulator/electrical.js": "f28cc2e419c5b74b173a170dbfdb526cad3f218a84d9afce85c35484f4cc60a0",
     "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
     "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
     "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
@@ -26134,7 +26134,12 @@
         "itemIds": [
           "F244",
           "F246",
-          "F248"
+          "F248",
+          "F-NAVE-B-2P",
+          "F-NAVE-B-3",
+          "F-NAVE-B-5",
+          "F-NAVE-B-7",
+          "F-NAVE-B-9"
         ],
         "color": "#b46a48",
         "method": "wall-roof-trunk",
@@ -26226,12 +26231,12 @@
             -7.36
           ],
           [
-            14.475000000000001,
+            5.475000000000001,
             6.0120000000000005,
             -7.36
           ]
         ],
-        "length": 58.576130311179185,
+        "length": 67.57613031117918,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "coverPaths": [
@@ -26463,6 +26468,216 @@
         "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
       },
       {
+        "id": "drop:FC1:F2:fan:-1:F-NAVE-B-2P",
+        "name": "F2 → Wall fan · axis 2′ · B",
+        "source": "FC1",
+        "board": "DB1",
+        "circuit": "F2",
+        "kind": "fan",
+        "role": "drop",
+        "itemIds": [
+          "F-NAVE-B-2P"
+        ],
+        "trunkId": "trunk:FC1:F2:fan:-1",
+        "color": "#b46a48",
+        "upstreamLength": 67.57613031117918,
+        "homeRun": false,
+        "points": [
+          [
+            5.475000000000001,
+            6.0120000000000005,
+            -7.36
+          ],
+          [
+            5.475000000000001,
+            5.55,
+            -7.36
+          ],
+          [
+            5.475,
+            5.55,
+            -7.07
+          ]
+        ],
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
+        "coverPaths": [],
+        "length": 0.7520000000000007,
+        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+        "drawnDiameter": 0.048,
+        "buildingDrawnDiameter": 0.006,
+        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+      },
+      {
+        "id": "drop:FC1:F2:fan:-1:F-NAVE-B-3",
+        "name": "F2 → Wall fan · axis 3 · B",
+        "source": "FC1",
+        "board": "DB1",
+        "circuit": "F2",
+        "kind": "fan",
+        "role": "drop",
+        "itemIds": [
+          "F-NAVE-B-3"
+        ],
+        "trunkId": "trunk:FC1:F2:fan:-1",
+        "color": "#b46a48",
+        "upstreamLength": 63.076130311179185,
+        "homeRun": false,
+        "points": [
+          [
+            9.975000000000001,
+            6.0120000000000005,
+            -7.36
+          ],
+          [
+            9.975000000000001,
+            5.55,
+            -7.36
+          ],
+          [
+            9.975,
+            5.55,
+            -7.07
+          ]
+        ],
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
+        "coverPaths": [],
+        "length": 0.7520000000000007,
+        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+        "drawnDiameter": 0.048,
+        "buildingDrawnDiameter": 0.006,
+        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+      },
+      {
+        "id": "drop:FC1:F2:fan:-1:F-NAVE-B-5",
+        "name": "F2 → Wall fan · axis 5 · B",
+        "source": "FC1",
+        "board": "DB1",
+        "circuit": "F2",
+        "kind": "fan",
+        "role": "drop",
+        "itemIds": [
+          "F-NAVE-B-5"
+        ],
+        "trunkId": "trunk:FC1:F2:fan:-1",
+        "color": "#b46a48",
+        "upstreamLength": 54.076130311179185,
+        "homeRun": false,
+        "points": [
+          [
+            18.975,
+            6.0120000000000005,
+            -7.36
+          ],
+          [
+            18.975,
+            5.55,
+            -7.36
+          ],
+          [
+            18.975,
+            5.55,
+            -7.07
+          ]
+        ],
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
+        "coverPaths": [],
+        "length": 0.7520000000000007,
+        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+        "drawnDiameter": 0.048,
+        "buildingDrawnDiameter": 0.006,
+        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+      },
+      {
+        "id": "drop:FC1:F2:fan:-1:F-NAVE-B-7",
+        "name": "F2 → Wall fan · axis 7 · B",
+        "source": "FC1",
+        "board": "DB1",
+        "circuit": "F2",
+        "kind": "fan",
+        "role": "drop",
+        "itemIds": [
+          "F-NAVE-B-7"
+        ],
+        "trunkId": "trunk:FC1:F2:fan:-1",
+        "color": "#b46a48",
+        "upstreamLength": 45.076130311179185,
+        "homeRun": false,
+        "points": [
+          [
+            27.975,
+            6.0120000000000005,
+            -7.36
+          ],
+          [
+            27.975,
+            5.55,
+            -7.36
+          ],
+          [
+            27.975,
+            5.55,
+            -7.07
+          ]
+        ],
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
+        "coverPaths": [],
+        "length": 0.7520000000000007,
+        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+        "drawnDiameter": 0.048,
+        "buildingDrawnDiameter": 0.006,
+        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+      },
+      {
+        "id": "drop:FC1:F2:fan:-1:F-NAVE-B-9",
+        "name": "F2 → Wall fan · axis 9 · B",
+        "source": "FC1",
+        "board": "DB1",
+        "circuit": "F2",
+        "kind": "fan",
+        "role": "drop",
+        "itemIds": [
+          "F-NAVE-B-9"
+        ],
+        "trunkId": "trunk:FC1:F2:fan:-1",
+        "color": "#b46a48",
+        "upstreamLength": 36.076130311179185,
+        "homeRun": false,
+        "points": [
+          [
+            36.975,
+            6.0120000000000005,
+            -7.36
+          ],
+          [
+            36.975,
+            5.55,
+            -7.36
+          ],
+          [
+            36.975,
+            5.55,
+            -7.07
+          ]
+        ],
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
+        "coverPaths": [],
+        "length": 0.7520000000000007,
+        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+        "drawnDiameter": 0.048,
+        "buildingDrawnDiameter": 0.006,
+        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+      },
+      {
         "id": "trunk:FC1:F2:fan:1",
         "name": "F2 · H · circuit trunk",
         "source": "FC1",
@@ -26473,7 +26688,12 @@
         "itemIds": [
           "F245",
           "F247",
-          "F249"
+          "F249",
+          "F-NAVE-H-2P",
+          "F-NAVE-H-3",
+          "F-NAVE-H-5",
+          "F-NAVE-H-7",
+          "F-NAVE-H-9"
         ],
         "color": "#b46a48",
         "method": "wall-roof-trunk",
@@ -26565,12 +26785,12 @@
             7.36
           ],
           [
-            14.475000000000001,
+            5.475000000000001,
             6.0120000000000005,
             7.36
           ]
         ],
-        "length": 65.17613031117918,
+        "length": 74.17613031117918,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "coverPaths": [
@@ -26787,6 +27007,216 @@
           ],
           [
             32.475,
+            5.55,
+            7.07
+          ]
+        ],
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
+        "coverPaths": [],
+        "length": 0.7520000000000007,
+        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+        "drawnDiameter": 0.048,
+        "buildingDrawnDiameter": 0.006,
+        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+      },
+      {
+        "id": "drop:FC1:F2:fan:1:F-NAVE-H-2P",
+        "name": "F2 → Wall fan · axis 2′ · H",
+        "source": "FC1",
+        "board": "DB1",
+        "circuit": "F2",
+        "kind": "fan",
+        "role": "drop",
+        "itemIds": [
+          "F-NAVE-H-2P"
+        ],
+        "trunkId": "trunk:FC1:F2:fan:1",
+        "color": "#b46a48",
+        "upstreamLength": 74.17613031117918,
+        "homeRun": false,
+        "points": [
+          [
+            5.475000000000001,
+            6.0120000000000005,
+            7.36
+          ],
+          [
+            5.475000000000001,
+            5.55,
+            7.36
+          ],
+          [
+            5.475,
+            5.55,
+            7.07
+          ]
+        ],
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
+        "coverPaths": [],
+        "length": 0.7520000000000007,
+        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+        "drawnDiameter": 0.048,
+        "buildingDrawnDiameter": 0.006,
+        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+      },
+      {
+        "id": "drop:FC1:F2:fan:1:F-NAVE-H-3",
+        "name": "F2 → Wall fan · axis 3 · H",
+        "source": "FC1",
+        "board": "DB1",
+        "circuit": "F2",
+        "kind": "fan",
+        "role": "drop",
+        "itemIds": [
+          "F-NAVE-H-3"
+        ],
+        "trunkId": "trunk:FC1:F2:fan:1",
+        "color": "#b46a48",
+        "upstreamLength": 69.67613031117918,
+        "homeRun": false,
+        "points": [
+          [
+            9.975000000000001,
+            6.0120000000000005,
+            7.36
+          ],
+          [
+            9.975000000000001,
+            5.55,
+            7.36
+          ],
+          [
+            9.975,
+            5.55,
+            7.07
+          ]
+        ],
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
+        "coverPaths": [],
+        "length": 0.7520000000000007,
+        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+        "drawnDiameter": 0.048,
+        "buildingDrawnDiameter": 0.006,
+        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+      },
+      {
+        "id": "drop:FC1:F2:fan:1:F-NAVE-H-5",
+        "name": "F2 → Wall fan · axis 5 · H",
+        "source": "FC1",
+        "board": "DB1",
+        "circuit": "F2",
+        "kind": "fan",
+        "role": "drop",
+        "itemIds": [
+          "F-NAVE-H-5"
+        ],
+        "trunkId": "trunk:FC1:F2:fan:1",
+        "color": "#b46a48",
+        "upstreamLength": 60.676130311179186,
+        "homeRun": false,
+        "points": [
+          [
+            18.975,
+            6.0120000000000005,
+            7.36
+          ],
+          [
+            18.975,
+            5.55,
+            7.36
+          ],
+          [
+            18.975,
+            5.55,
+            7.07
+          ]
+        ],
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
+        "coverPaths": [],
+        "length": 0.7520000000000007,
+        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+        "drawnDiameter": 0.048,
+        "buildingDrawnDiameter": 0.006,
+        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+      },
+      {
+        "id": "drop:FC1:F2:fan:1:F-NAVE-H-7",
+        "name": "F2 → Wall fan · axis 7 · H",
+        "source": "FC1",
+        "board": "DB1",
+        "circuit": "F2",
+        "kind": "fan",
+        "role": "drop",
+        "itemIds": [
+          "F-NAVE-H-7"
+        ],
+        "trunkId": "trunk:FC1:F2:fan:1",
+        "color": "#b46a48",
+        "upstreamLength": 51.676130311179186,
+        "homeRun": false,
+        "points": [
+          [
+            27.975,
+            6.0120000000000005,
+            7.36
+          ],
+          [
+            27.975,
+            5.55,
+            7.36
+          ],
+          [
+            27.975,
+            5.55,
+            7.07
+          ]
+        ],
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
+        "coverPaths": [],
+        "length": 0.7520000000000007,
+        "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+        "drawnDiameter": 0.048,
+        "buildingDrawnDiameter": 0.006,
+        "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+      },
+      {
+        "id": "drop:FC1:F2:fan:1:F-NAVE-H-9",
+        "name": "F2 → Wall fan · axis 9 · H",
+        "source": "FC1",
+        "board": "DB1",
+        "circuit": "F2",
+        "kind": "fan",
+        "role": "drop",
+        "itemIds": [
+          "F-NAVE-H-9"
+        ],
+        "trunkId": "trunk:FC1:F2:fan:1",
+        "color": "#b46a48",
+        "upstreamLength": 42.676130311179186,
+        "homeRun": false,
+        "points": [
+          [
+            36.975,
+            6.0120000000000005,
+            7.36
+          ],
+          [
+            36.975,
+            5.55,
+            7.36
+          ],
+          [
+            36.975,
             5.55,
             7.07
           ]
@@ -37646,13 +38076,13 @@
       {
         "id": "F244",
         "name": "Wall fan · axis 4 · B",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
         "circuit": "F2",
         "board": "DB1",
         "quantity": 1,
         "modelSize": [
-          0.4599999934434891,
+          0.6649999977648258,
           0.49000000953674316,
           0.49000000953674316
         ],
@@ -37671,13 +38101,13 @@
       {
         "id": "F245",
         "name": "Wall fan · axis 4 · H",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
         "circuit": "F2",
         "board": "DB1",
         "quantity": 1,
         "modelSize": [
-          0.4599999934434891,
+          0.6649999977648258,
           0.49000000953674316,
           0.49000000953674316
         ],
@@ -37696,13 +38126,13 @@
       {
         "id": "F246",
         "name": "Wall fan · axis 6 · B",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
         "circuit": "F2",
         "board": "DB1",
         "quantity": 1,
         "modelSize": [
-          0.4599999934434891,
+          0.6649999977648258,
           0.49000000953674316,
           0.49000000953674316
         ],
@@ -37721,13 +38151,13 @@
       {
         "id": "F247",
         "name": "Wall fan · axis 6 · H",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
         "circuit": "F2",
         "board": "DB1",
         "quantity": 1,
         "modelSize": [
-          0.4599999934434891,
+          0.6649999977648258,
           0.49000000953674316,
           0.49000000953674316
         ],
@@ -37746,13 +38176,13 @@
       {
         "id": "F248",
         "name": "Wall fan · axis 8 · B",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
         "circuit": "F2",
         "board": "DB1",
         "quantity": 1,
         "modelSize": [
-          0.4599999934434891,
+          0.6649999977648258,
           0.49000000953674316,
           0.49000000953674316
         ],
@@ -37771,13 +38201,13 @@
       {
         "id": "F249",
         "name": "Wall fan · axis 8 · H",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
         "circuit": "F2",
         "board": "DB1",
         "quantity": 1,
         "modelSize": [
-          0.4599999934434891,
+          0.6649999977648258,
           0.49000000953674316,
           0.49000000953674316
         ],
@@ -39092,6 +39522,256 @@
           8.85
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+      },
+      {
+        "id": "F-NAVE-B-2P",
+        "name": "Wall fan · axis 2′ · B",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
+        "circuit": "F2",
+        "board": "DB1",
+        "quantity": 1,
+        "modelSize": [
+          0.6649999977648258,
+          0.49000000953674316,
+          0.49000000953674316
+        ],
+        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+        "diameter": 0.45,
+        "wattsEstimate": 55,
+        "specs": "0.45 m diameter · 55 W at maximum speed",
+        "hiddenAlternative": false,
+        "position": [
+          5.475,
+          5.55,
+          -7.07
+        ],
+        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+      },
+      {
+        "id": "F-NAVE-H-2P",
+        "name": "Wall fan · axis 2′ · H",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
+        "circuit": "F2",
+        "board": "DB1",
+        "quantity": 1,
+        "modelSize": [
+          0.6649999977648258,
+          0.49000000953674316,
+          0.49000000953674316
+        ],
+        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+        "diameter": 0.45,
+        "wattsEstimate": 55,
+        "specs": "0.45 m diameter · 55 W at maximum speed",
+        "hiddenAlternative": false,
+        "position": [
+          5.475,
+          5.55,
+          7.07
+        ],
+        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+      },
+      {
+        "id": "F-NAVE-B-3",
+        "name": "Wall fan · axis 3 · B",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
+        "circuit": "F2",
+        "board": "DB1",
+        "quantity": 1,
+        "modelSize": [
+          0.6649999977648258,
+          0.49000000953674316,
+          0.49000000953674316
+        ],
+        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+        "diameter": 0.45,
+        "wattsEstimate": 55,
+        "specs": "0.45 m diameter · 55 W at maximum speed",
+        "hiddenAlternative": false,
+        "position": [
+          9.975,
+          5.55,
+          -7.07
+        ],
+        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+      },
+      {
+        "id": "F-NAVE-H-3",
+        "name": "Wall fan · axis 3 · H",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
+        "circuit": "F2",
+        "board": "DB1",
+        "quantity": 1,
+        "modelSize": [
+          0.6649999977648258,
+          0.49000000953674316,
+          0.49000000953674316
+        ],
+        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+        "diameter": 0.45,
+        "wattsEstimate": 55,
+        "specs": "0.45 m diameter · 55 W at maximum speed",
+        "hiddenAlternative": false,
+        "position": [
+          9.975,
+          5.55,
+          7.07
+        ],
+        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+      },
+      {
+        "id": "F-NAVE-B-5",
+        "name": "Wall fan · axis 5 · B",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
+        "circuit": "F2",
+        "board": "DB1",
+        "quantity": 1,
+        "modelSize": [
+          0.6649999977648258,
+          0.49000000953674316,
+          0.49000000953674316
+        ],
+        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+        "diameter": 0.45,
+        "wattsEstimate": 55,
+        "specs": "0.45 m diameter · 55 W at maximum speed",
+        "hiddenAlternative": false,
+        "position": [
+          18.975,
+          5.55,
+          -7.07
+        ],
+        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+      },
+      {
+        "id": "F-NAVE-H-5",
+        "name": "Wall fan · axis 5 · H",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
+        "circuit": "F2",
+        "board": "DB1",
+        "quantity": 1,
+        "modelSize": [
+          0.6649999977648258,
+          0.49000000953674316,
+          0.49000000953674316
+        ],
+        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+        "diameter": 0.45,
+        "wattsEstimate": 55,
+        "specs": "0.45 m diameter · 55 W at maximum speed",
+        "hiddenAlternative": false,
+        "position": [
+          18.975,
+          5.55,
+          7.07
+        ],
+        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+      },
+      {
+        "id": "F-NAVE-B-7",
+        "name": "Wall fan · axis 7 · B",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
+        "circuit": "F2",
+        "board": "DB1",
+        "quantity": 1,
+        "modelSize": [
+          0.6649999977648258,
+          0.49000000953674316,
+          0.49000000953674316
+        ],
+        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+        "diameter": 0.45,
+        "wattsEstimate": 55,
+        "specs": "0.45 m diameter · 55 W at maximum speed",
+        "hiddenAlternative": false,
+        "position": [
+          27.975,
+          5.55,
+          -7.07
+        ],
+        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+      },
+      {
+        "id": "F-NAVE-H-7",
+        "name": "Wall fan · axis 7 · H",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
+        "circuit": "F2",
+        "board": "DB1",
+        "quantity": 1,
+        "modelSize": [
+          0.6649999977648258,
+          0.49000000953674316,
+          0.49000000953674316
+        ],
+        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+        "diameter": 0.45,
+        "wattsEstimate": 55,
+        "specs": "0.45 m diameter · 55 W at maximum speed",
+        "hiddenAlternative": false,
+        "position": [
+          27.975,
+          5.55,
+          7.07
+        ],
+        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+      },
+      {
+        "id": "F-NAVE-B-9",
+        "name": "Wall fan · axis 9 · B",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
+        "circuit": "F2",
+        "board": "DB1",
+        "quantity": 1,
+        "modelSize": [
+          0.6649999977648258,
+          0.49000000953674316,
+          0.49000000953674316
+        ],
+        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+        "diameter": 0.45,
+        "wattsEstimate": 55,
+        "specs": "0.45 m diameter · 55 W at maximum speed",
+        "hiddenAlternative": false,
+        "position": [
+          36.975,
+          5.55,
+          -7.07
+        ],
+        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+      },
+      {
+        "id": "F-NAVE-H-9",
+        "name": "Wall fan · axis 9 · H",
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
+        "circuit": "F2",
+        "board": "DB1",
+        "quantity": 1,
+        "modelSize": [
+          0.6649999977648258,
+          0.49000000953674316,
+          0.49000000953674316
+        ],
+        "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+        "diameter": 0.45,
+        "wattsEstimate": 55,
+        "specs": "0.45 m diameter · 55 W at maximum speed",
+        "hiddenAlternative": false,
+        "position": [
+          36.975,
+          5.55,
+          7.07
+        ],
+        "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       }
     ],
     "billOfMaterials": [
@@ -40217,11 +40897,11 @@
       {
         "board": "DB1",
         "circuit": "F2",
-        "type": "fanWall",
-        "product": "Wall fan · oscillating 45 cm",
-        "quantity": 6,
+        "type": "fanNaveWall",
+        "product": "Nave wall fan · 45 cm · extended bracket concept",
+        "quantity": 16,
         "modelSize": [
-          0.4599999934434891,
+          0.6649999977648258,
           0.49000000953674316,
           0.49000000953674316
         ],
@@ -40233,7 +40913,17 @@
           "F246",
           "F247",
           "F248",
-          "F249"
+          "F249",
+          "F-NAVE-B-2P",
+          "F-NAVE-H-2P",
+          "F-NAVE-B-3",
+          "F-NAVE-H-3",
+          "F-NAVE-B-5",
+          "F-NAVE-H-5",
+          "F-NAVE-B-7",
+          "F-NAVE-H-7",
+          "F-NAVE-B-9",
+          "F-NAVE-H-9"
         ]
       },
       {
@@ -75480,17 +76170,37 @@
         "F246",
         "F247",
         "F248",
-        "F249"
+        "F249",
+        "F-NAVE-B-2P",
+        "F-NAVE-H-2P",
+        "F-NAVE-B-3",
+        "F-NAVE-H-3",
+        "F-NAVE-B-5",
+        "F-NAVE-H-5",
+        "F-NAVE-B-7",
+        "F-NAVE-H-7",
+        "F-NAVE-B-9",
+        "F-NAVE-H-9"
       ],
       "routeIds": [
         "trunk:FC1:F2:fan:-1",
         "drop:FC1:F2:fan:-1:F244",
         "drop:FC1:F2:fan:-1:F246",
         "drop:FC1:F2:fan:-1:F248",
+        "drop:FC1:F2:fan:-1:F-NAVE-B-2P",
+        "drop:FC1:F2:fan:-1:F-NAVE-B-3",
+        "drop:FC1:F2:fan:-1:F-NAVE-B-5",
+        "drop:FC1:F2:fan:-1:F-NAVE-B-7",
+        "drop:FC1:F2:fan:-1:F-NAVE-B-9",
         "trunk:FC1:F2:fan:1",
         "drop:FC1:F2:fan:1:F245",
         "drop:FC1:F2:fan:1:F247",
         "drop:FC1:F2:fan:1:F249",
+        "drop:FC1:F2:fan:1:F-NAVE-H-2P",
+        "drop:FC1:F2:fan:1:F-NAVE-H-3",
+        "drop:FC1:F2:fan:1:F-NAVE-H-5",
+        "drop:FC1:F2:fan:1:F-NAVE-H-7",
+        "drop:FC1:F2:fan:1:F-NAVE-H-9",
         "feeder:FC1"
       ],
       "sourceIds": [
@@ -75596,7 +76306,12 @@
           "itemIds": [
             "F244",
             "F246",
-            "F248"
+            "F248",
+            "F-NAVE-B-2P",
+            "F-NAVE-B-3",
+            "F-NAVE-B-5",
+            "F-NAVE-B-7",
+            "F-NAVE-B-9"
           ],
           "color": "#b46a48",
           "method": "wall-roof-trunk",
@@ -75688,12 +76403,12 @@
               -7.36
             ],
             [
-              14.475000000000001,
+              5.475000000000001,
               6.0120000000000005,
               -7.36
             ]
           ],
-          "length": 58.576130311179185,
+          "length": 67.57613031117918,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "coverPaths": [
@@ -75925,6 +76640,216 @@
           "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
         },
         {
+          "id": "drop:FC1:F2:fan:-1:F-NAVE-B-2P",
+          "name": "F2 → Wall fan · axis 2′ · B",
+          "source": "FC1",
+          "board": "DB1",
+          "circuit": "F2",
+          "kind": "fan",
+          "role": "drop",
+          "itemIds": [
+            "F-NAVE-B-2P"
+          ],
+          "trunkId": "trunk:FC1:F2:fan:-1",
+          "color": "#b46a48",
+          "upstreamLength": 67.57613031117918,
+          "homeRun": false,
+          "points": [
+            [
+              5.475000000000001,
+              6.0120000000000005,
+              -7.36
+            ],
+            [
+              5.475000000000001,
+              5.55,
+              -7.36
+            ],
+            [
+              5.475,
+              5.55,
+              -7.07
+            ]
+          ],
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
+          "coverPaths": [],
+          "length": 0.7520000000000007,
+          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+          "drawnDiameter": 0.048,
+          "buildingDrawnDiameter": 0.006,
+          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+        },
+        {
+          "id": "drop:FC1:F2:fan:-1:F-NAVE-B-3",
+          "name": "F2 → Wall fan · axis 3 · B",
+          "source": "FC1",
+          "board": "DB1",
+          "circuit": "F2",
+          "kind": "fan",
+          "role": "drop",
+          "itemIds": [
+            "F-NAVE-B-3"
+          ],
+          "trunkId": "trunk:FC1:F2:fan:-1",
+          "color": "#b46a48",
+          "upstreamLength": 63.076130311179185,
+          "homeRun": false,
+          "points": [
+            [
+              9.975000000000001,
+              6.0120000000000005,
+              -7.36
+            ],
+            [
+              9.975000000000001,
+              5.55,
+              -7.36
+            ],
+            [
+              9.975,
+              5.55,
+              -7.07
+            ]
+          ],
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
+          "coverPaths": [],
+          "length": 0.7520000000000007,
+          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+          "drawnDiameter": 0.048,
+          "buildingDrawnDiameter": 0.006,
+          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+        },
+        {
+          "id": "drop:FC1:F2:fan:-1:F-NAVE-B-5",
+          "name": "F2 → Wall fan · axis 5 · B",
+          "source": "FC1",
+          "board": "DB1",
+          "circuit": "F2",
+          "kind": "fan",
+          "role": "drop",
+          "itemIds": [
+            "F-NAVE-B-5"
+          ],
+          "trunkId": "trunk:FC1:F2:fan:-1",
+          "color": "#b46a48",
+          "upstreamLength": 54.076130311179185,
+          "homeRun": false,
+          "points": [
+            [
+              18.975,
+              6.0120000000000005,
+              -7.36
+            ],
+            [
+              18.975,
+              5.55,
+              -7.36
+            ],
+            [
+              18.975,
+              5.55,
+              -7.07
+            ]
+          ],
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
+          "coverPaths": [],
+          "length": 0.7520000000000007,
+          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+          "drawnDiameter": 0.048,
+          "buildingDrawnDiameter": 0.006,
+          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+        },
+        {
+          "id": "drop:FC1:F2:fan:-1:F-NAVE-B-7",
+          "name": "F2 → Wall fan · axis 7 · B",
+          "source": "FC1",
+          "board": "DB1",
+          "circuit": "F2",
+          "kind": "fan",
+          "role": "drop",
+          "itemIds": [
+            "F-NAVE-B-7"
+          ],
+          "trunkId": "trunk:FC1:F2:fan:-1",
+          "color": "#b46a48",
+          "upstreamLength": 45.076130311179185,
+          "homeRun": false,
+          "points": [
+            [
+              27.975,
+              6.0120000000000005,
+              -7.36
+            ],
+            [
+              27.975,
+              5.55,
+              -7.36
+            ],
+            [
+              27.975,
+              5.55,
+              -7.07
+            ]
+          ],
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
+          "coverPaths": [],
+          "length": 0.7520000000000007,
+          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+          "drawnDiameter": 0.048,
+          "buildingDrawnDiameter": 0.006,
+          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+        },
+        {
+          "id": "drop:FC1:F2:fan:-1:F-NAVE-B-9",
+          "name": "F2 → Wall fan · axis 9 · B",
+          "source": "FC1",
+          "board": "DB1",
+          "circuit": "F2",
+          "kind": "fan",
+          "role": "drop",
+          "itemIds": [
+            "F-NAVE-B-9"
+          ],
+          "trunkId": "trunk:FC1:F2:fan:-1",
+          "color": "#b46a48",
+          "upstreamLength": 36.076130311179185,
+          "homeRun": false,
+          "points": [
+            [
+              36.975,
+              6.0120000000000005,
+              -7.36
+            ],
+            [
+              36.975,
+              5.55,
+              -7.36
+            ],
+            [
+              36.975,
+              5.55,
+              -7.07
+            ]
+          ],
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
+          "coverPaths": [],
+          "length": 0.7520000000000007,
+          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+          "drawnDiameter": 0.048,
+          "buildingDrawnDiameter": 0.006,
+          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+        },
+        {
           "id": "trunk:FC1:F2:fan:1",
           "name": "F2 · H · circuit trunk",
           "source": "FC1",
@@ -75935,7 +76860,12 @@
           "itemIds": [
             "F245",
             "F247",
-            "F249"
+            "F249",
+            "F-NAVE-H-2P",
+            "F-NAVE-H-3",
+            "F-NAVE-H-5",
+            "F-NAVE-H-7",
+            "F-NAVE-H-9"
           ],
           "color": "#b46a48",
           "method": "wall-roof-trunk",
@@ -76027,12 +76957,12 @@
               7.36
             ],
             [
-              14.475000000000001,
+              5.475000000000001,
               6.0120000000000005,
               7.36
             ]
           ],
-          "length": 65.17613031117918,
+          "length": 74.17613031117918,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "coverPaths": [
@@ -76262,19 +77192,229 @@
           "drawnDiameter": 0.048,
           "buildingDrawnDiameter": 0.006,
           "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+        },
+        {
+          "id": "drop:FC1:F2:fan:1:F-NAVE-H-2P",
+          "name": "F2 → Wall fan · axis 2′ · H",
+          "source": "FC1",
+          "board": "DB1",
+          "circuit": "F2",
+          "kind": "fan",
+          "role": "drop",
+          "itemIds": [
+            "F-NAVE-H-2P"
+          ],
+          "trunkId": "trunk:FC1:F2:fan:1",
+          "color": "#b46a48",
+          "upstreamLength": 74.17613031117918,
+          "homeRun": false,
+          "points": [
+            [
+              5.475000000000001,
+              6.0120000000000005,
+              7.36
+            ],
+            [
+              5.475000000000001,
+              5.55,
+              7.36
+            ],
+            [
+              5.475,
+              5.55,
+              7.07
+            ]
+          ],
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
+          "coverPaths": [],
+          "length": 0.7520000000000007,
+          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+          "drawnDiameter": 0.048,
+          "buildingDrawnDiameter": 0.006,
+          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+        },
+        {
+          "id": "drop:FC1:F2:fan:1:F-NAVE-H-3",
+          "name": "F2 → Wall fan · axis 3 · H",
+          "source": "FC1",
+          "board": "DB1",
+          "circuit": "F2",
+          "kind": "fan",
+          "role": "drop",
+          "itemIds": [
+            "F-NAVE-H-3"
+          ],
+          "trunkId": "trunk:FC1:F2:fan:1",
+          "color": "#b46a48",
+          "upstreamLength": 69.67613031117918,
+          "homeRun": false,
+          "points": [
+            [
+              9.975000000000001,
+              6.0120000000000005,
+              7.36
+            ],
+            [
+              9.975000000000001,
+              5.55,
+              7.36
+            ],
+            [
+              9.975,
+              5.55,
+              7.07
+            ]
+          ],
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
+          "coverPaths": [],
+          "length": 0.7520000000000007,
+          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+          "drawnDiameter": 0.048,
+          "buildingDrawnDiameter": 0.006,
+          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+        },
+        {
+          "id": "drop:FC1:F2:fan:1:F-NAVE-H-5",
+          "name": "F2 → Wall fan · axis 5 · H",
+          "source": "FC1",
+          "board": "DB1",
+          "circuit": "F2",
+          "kind": "fan",
+          "role": "drop",
+          "itemIds": [
+            "F-NAVE-H-5"
+          ],
+          "trunkId": "trunk:FC1:F2:fan:1",
+          "color": "#b46a48",
+          "upstreamLength": 60.676130311179186,
+          "homeRun": false,
+          "points": [
+            [
+              18.975,
+              6.0120000000000005,
+              7.36
+            ],
+            [
+              18.975,
+              5.55,
+              7.36
+            ],
+            [
+              18.975,
+              5.55,
+              7.07
+            ]
+          ],
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
+          "coverPaths": [],
+          "length": 0.7520000000000007,
+          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+          "drawnDiameter": 0.048,
+          "buildingDrawnDiameter": 0.006,
+          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+        },
+        {
+          "id": "drop:FC1:F2:fan:1:F-NAVE-H-7",
+          "name": "F2 → Wall fan · axis 7 · H",
+          "source": "FC1",
+          "board": "DB1",
+          "circuit": "F2",
+          "kind": "fan",
+          "role": "drop",
+          "itemIds": [
+            "F-NAVE-H-7"
+          ],
+          "trunkId": "trunk:FC1:F2:fan:1",
+          "color": "#b46a48",
+          "upstreamLength": 51.676130311179186,
+          "homeRun": false,
+          "points": [
+            [
+              27.975,
+              6.0120000000000005,
+              7.36
+            ],
+            [
+              27.975,
+              5.55,
+              7.36
+            ],
+            [
+              27.975,
+              5.55,
+              7.07
+            ]
+          ],
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
+          "coverPaths": [],
+          "length": 0.7520000000000007,
+          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+          "drawnDiameter": 0.048,
+          "buildingDrawnDiameter": 0.006,
+          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+        },
+        {
+          "id": "drop:FC1:F2:fan:1:F-NAVE-H-9",
+          "name": "F2 → Wall fan · axis 9 · H",
+          "source": "FC1",
+          "board": "DB1",
+          "circuit": "F2",
+          "kind": "fan",
+          "role": "drop",
+          "itemIds": [
+            "F-NAVE-H-9"
+          ],
+          "trunkId": "trunk:FC1:F2:fan:1",
+          "color": "#b46a48",
+          "upstreamLength": 42.676130311179186,
+          "homeRun": false,
+          "points": [
+            [
+              36.975,
+              6.0120000000000005,
+              7.36
+            ],
+            [
+              36.975,
+              5.55,
+              7.36
+            ],
+            [
+              36.975,
+              5.55,
+              7.07
+            ]
+          ],
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
+          "coverPaths": [],
+          "length": 0.7520000000000007,
+          "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+          "drawnDiameter": 0.048,
+          "buildingDrawnDiameter": 0.006,
+          "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
         }
       ],
       "components": [
         {
           "id": "F244",
           "name": "Wall fan · axis 4 · B",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
           "circuit": "F2",
           "board": "DB1",
           "quantity": 1,
           "modelSize": [
-            0.4599999934434891,
+            0.6649999977648258,
             0.49000000953674316,
             0.49000000953674316
           ],
@@ -76293,13 +77433,13 @@
         {
           "id": "F245",
           "name": "Wall fan · axis 4 · H",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
           "circuit": "F2",
           "board": "DB1",
           "quantity": 1,
           "modelSize": [
-            0.4599999934434891,
+            0.6649999977648258,
             0.49000000953674316,
             0.49000000953674316
           ],
@@ -76318,13 +77458,13 @@
         {
           "id": "F246",
           "name": "Wall fan · axis 6 · B",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
           "circuit": "F2",
           "board": "DB1",
           "quantity": 1,
           "modelSize": [
-            0.4599999934434891,
+            0.6649999977648258,
             0.49000000953674316,
             0.49000000953674316
           ],
@@ -76343,13 +77483,13 @@
         {
           "id": "F247",
           "name": "Wall fan · axis 6 · H",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
           "circuit": "F2",
           "board": "DB1",
           "quantity": 1,
           "modelSize": [
-            0.4599999934434891,
+            0.6649999977648258,
             0.49000000953674316,
             0.49000000953674316
           ],
@@ -76368,13 +77508,13 @@
         {
           "id": "F248",
           "name": "Wall fan · axis 8 · B",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
           "circuit": "F2",
           "board": "DB1",
           "quantity": 1,
           "modelSize": [
-            0.4599999934434891,
+            0.6649999977648258,
             0.49000000953674316,
             0.49000000953674316
           ],
@@ -76393,13 +77533,13 @@
         {
           "id": "F249",
           "name": "Wall fan · axis 8 · H",
-          "type": "fanWall",
-          "product": "Wall fan · oscillating 45 cm",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
           "circuit": "F2",
           "board": "DB1",
           "quantity": 1,
           "modelSize": [
-            0.4599999934434891,
+            0.6649999977648258,
             0.49000000953674316,
             0.49000000953674316
           ],
@@ -76410,6 +77550,256 @@
           "hiddenAlternative": false,
           "position": [
             32.475,
+            5.55,
+            7.07
+          ],
+          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+        },
+        {
+          "id": "F-NAVE-B-2P",
+          "name": "Wall fan · axis 2′ · B",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
+          "circuit": "F2",
+          "board": "DB1",
+          "quantity": 1,
+          "modelSize": [
+            0.6649999977648258,
+            0.49000000953674316,
+            0.49000000953674316
+          ],
+          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+          "diameter": 0.45,
+          "wattsEstimate": 55,
+          "specs": "0.45 m diameter · 55 W at maximum speed",
+          "hiddenAlternative": false,
+          "position": [
+            5.475,
+            5.55,
+            -7.07
+          ],
+          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+        },
+        {
+          "id": "F-NAVE-H-2P",
+          "name": "Wall fan · axis 2′ · H",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
+          "circuit": "F2",
+          "board": "DB1",
+          "quantity": 1,
+          "modelSize": [
+            0.6649999977648258,
+            0.49000000953674316,
+            0.49000000953674316
+          ],
+          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+          "diameter": 0.45,
+          "wattsEstimate": 55,
+          "specs": "0.45 m diameter · 55 W at maximum speed",
+          "hiddenAlternative": false,
+          "position": [
+            5.475,
+            5.55,
+            7.07
+          ],
+          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+        },
+        {
+          "id": "F-NAVE-B-3",
+          "name": "Wall fan · axis 3 · B",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
+          "circuit": "F2",
+          "board": "DB1",
+          "quantity": 1,
+          "modelSize": [
+            0.6649999977648258,
+            0.49000000953674316,
+            0.49000000953674316
+          ],
+          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+          "diameter": 0.45,
+          "wattsEstimate": 55,
+          "specs": "0.45 m diameter · 55 W at maximum speed",
+          "hiddenAlternative": false,
+          "position": [
+            9.975,
+            5.55,
+            -7.07
+          ],
+          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+        },
+        {
+          "id": "F-NAVE-H-3",
+          "name": "Wall fan · axis 3 · H",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
+          "circuit": "F2",
+          "board": "DB1",
+          "quantity": 1,
+          "modelSize": [
+            0.6649999977648258,
+            0.49000000953674316,
+            0.49000000953674316
+          ],
+          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+          "diameter": 0.45,
+          "wattsEstimate": 55,
+          "specs": "0.45 m diameter · 55 W at maximum speed",
+          "hiddenAlternative": false,
+          "position": [
+            9.975,
+            5.55,
+            7.07
+          ],
+          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+        },
+        {
+          "id": "F-NAVE-B-5",
+          "name": "Wall fan · axis 5 · B",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
+          "circuit": "F2",
+          "board": "DB1",
+          "quantity": 1,
+          "modelSize": [
+            0.6649999977648258,
+            0.49000000953674316,
+            0.49000000953674316
+          ],
+          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+          "diameter": 0.45,
+          "wattsEstimate": 55,
+          "specs": "0.45 m diameter · 55 W at maximum speed",
+          "hiddenAlternative": false,
+          "position": [
+            18.975,
+            5.55,
+            -7.07
+          ],
+          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+        },
+        {
+          "id": "F-NAVE-H-5",
+          "name": "Wall fan · axis 5 · H",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
+          "circuit": "F2",
+          "board": "DB1",
+          "quantity": 1,
+          "modelSize": [
+            0.6649999977648258,
+            0.49000000953674316,
+            0.49000000953674316
+          ],
+          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+          "diameter": 0.45,
+          "wattsEstimate": 55,
+          "specs": "0.45 m diameter · 55 W at maximum speed",
+          "hiddenAlternative": false,
+          "position": [
+            18.975,
+            5.55,
+            7.07
+          ],
+          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+        },
+        {
+          "id": "F-NAVE-B-7",
+          "name": "Wall fan · axis 7 · B",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
+          "circuit": "F2",
+          "board": "DB1",
+          "quantity": 1,
+          "modelSize": [
+            0.6649999977648258,
+            0.49000000953674316,
+            0.49000000953674316
+          ],
+          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+          "diameter": 0.45,
+          "wattsEstimate": 55,
+          "specs": "0.45 m diameter · 55 W at maximum speed",
+          "hiddenAlternative": false,
+          "position": [
+            27.975,
+            5.55,
+            -7.07
+          ],
+          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+        },
+        {
+          "id": "F-NAVE-H-7",
+          "name": "Wall fan · axis 7 · H",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
+          "circuit": "F2",
+          "board": "DB1",
+          "quantity": 1,
+          "modelSize": [
+            0.6649999977648258,
+            0.49000000953674316,
+            0.49000000953674316
+          ],
+          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+          "diameter": 0.45,
+          "wattsEstimate": 55,
+          "specs": "0.45 m diameter · 55 W at maximum speed",
+          "hiddenAlternative": false,
+          "position": [
+            27.975,
+            5.55,
+            7.07
+          ],
+          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+        },
+        {
+          "id": "F-NAVE-B-9",
+          "name": "Wall fan · axis 9 · B",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
+          "circuit": "F2",
+          "board": "DB1",
+          "quantity": 1,
+          "modelSize": [
+            0.6649999977648258,
+            0.49000000953674316,
+            0.49000000953674316
+          ],
+          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+          "diameter": 0.45,
+          "wattsEstimate": 55,
+          "specs": "0.45 m diameter · 55 W at maximum speed",
+          "hiddenAlternative": false,
+          "position": [
+            36.975,
+            5.55,
+            -7.07
+          ],
+          "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+        },
+        {
+          "id": "F-NAVE-H-9",
+          "name": "Wall fan · axis 9 · H",
+          "type": "fanNaveWall",
+          "product": "Nave wall fan · 45 cm · extended bracket concept",
+          "circuit": "F2",
+          "board": "DB1",
+          "quantity": 1,
+          "modelSize": [
+            0.6649999977648258,
+            0.49000000953674316,
+            0.49000000953674316
+          ],
+          "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+          "diameter": 0.45,
+          "wattsEstimate": 55,
+          "specs": "0.45 m diameter · 55 W at maximum speed",
+          "hiddenAlternative": false,
+          "position": [
+            36.975,
             5.55,
             7.07
           ],
@@ -83569,5 +84959,5 @@
       "hold": "No commissioning or construction approval is recorded here. Progress through these review steps does not release a hold or mark any work installed."
     }
   ],
-  "registerSystemsHash": "e2130aeffb518d934149fa35c32d858856db06e804d9cb98aac4f1896cd3b761"
+  "registerSystemsHash": "78a1f21a5458fc451b1fadb227a547feb6afa62226cd02a3db53eaacd4fe65ce"
 }

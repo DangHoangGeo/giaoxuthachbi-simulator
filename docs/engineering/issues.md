@@ -45,3 +45,7 @@ Use the exact worst receiver IDs/coordinates in the [baseline](baseline.md), plu
 ## Held wing/saints revision · 9 October 2026
 
 ENG-002/003/004/005/006/007/010/011/013/014/015 remain open. The current [two-light/two-fan, one-speaker and Peter/Paul review](wing-review.md) supersedes earlier quantities/performance for the default. It deliberately exposes insufficient lighting and coordinated noise/air/speech/feedback trade-offs. A seating-cache defect is corrected against independent audience fractions; it does not resolve these design gates. Saints subjects/location are USER CONFIRMED; actual print/frame dimensions/height/material/artwork/fixings remain open as Q41. Extended fan bracket 0.40 m pivot outreach is a visualization proxy without checked support/vibration/access. Software mesh/route/backup checks are not approvals. Branch remains unmerged while phase engineering exits fail.
+
+## Nave quantity and mounting hold · ENG-029
+
+Owner confirms eight visible wall fans per nave side. [Review](nave-wall-fans.md) preserves six IDs, adds ten, and replaces penetrating short bracket geometry with an extended proxy. The electrical/mechanical/structural designers must resolve motor load/inrush/regulation, protective devices, anchor capacity/vibration/corrosion, continuous/product/service clearances, noise/speech, air throw, concealment and high-level maintenance. No software count or clearance pass releases construction or purchasing.

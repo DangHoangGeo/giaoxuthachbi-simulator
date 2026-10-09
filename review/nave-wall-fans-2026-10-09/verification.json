@@ -1,0 +1,45 @@
+{
+  "checksPassed": 28,
+  "sideFans": 8,
+  "totalFans": 16,
+  "newIds": [
+    "F-NAVE-B-2P",
+    "F-NAVE-H-2P",
+    "F-NAVE-B-3",
+    "F-NAVE-H-3",
+    "F-NAVE-B-5",
+    "F-NAVE-H-5",
+    "F-NAVE-B-7",
+    "F-NAVE-H-7",
+    "F-NAVE-B-9",
+    "F-NAVE-H-9"
+  ],
+  "sourceHashes": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "702b103b0006ddd7a0fd5ec0b3cb6210142bd3bc59e86410065247e2b6c23c57",
+    "Thach_Bi_Viewer/simulator/engine.js": "9bdd3aae58b7dc49a40566b2dac33a3658e9cc4e2993e0f585693a0829e1c3f9",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "32e8ae7cf594ab7792f51d50cb4911a965eb0b070cd8cbbb0413faac481a0372",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "f28cc2e419c5b74b173a170dbfdb526cad3f218a84d9afce85c35484f4cc60a0",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/verify_nave_fans.cjs": "8d65b3d9d37ab0a0c171b105b97bdadddd73bd84f7425f427de1fd8d2a9fbcfd"
+  },
+  "ratingsUnchanged": true,
+  "counts": {
+    "modelItems": 330,
+    "components": 307,
+    "routes": 343
+  },
+  "constructionApproved": false
+}

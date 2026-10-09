@@ -3,7 +3,7 @@
   "language": "en",
   "status": "Design development - not for construction",
   "basis": "Fresh default model, not saved browser layout",
-  "gitRevision": "cbf47dad34bf680ff71e905965539e44aa653a0c",
+  "gitRevision": "614222c44fb6b4fac234b80a29fbe67a686bbbca",
   "sourceFiles": {
     "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
     "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
@@ -14,25 +14,25 @@
     "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
     "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
     "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
-    "Thach_Bi_Viewer/simulator/catalog.js": "67035bc56dac74b154f3c80b5f3a5ec46187df5894c4a8c8230741d4c4f85694",
-    "Thach_Bi_Viewer/simulator/engine.js": "a6ea21ce0d9d54cc26c5d5141082e5dcc19128db07357afbc169bc8413b657fe",
+    "Thach_Bi_Viewer/simulator/catalog.js": "702b103b0006ddd7a0fd5ec0b3cb6210142bd3bc59e86410065247e2b6c23c57",
+    "Thach_Bi_Viewer/simulator/engine.js": "9bdd3aae58b7dc49a40566b2dac33a3658e9cc4e2993e0f585693a0829e1c3f9",
     "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
     "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
-    "Thach_Bi_Viewer/simulator/design.js": "44e8c4c39b2c3a6833c46642133e4f3a6eafae6c6c2176d5cf3a9a609840ffb1",
+    "Thach_Bi_Viewer/simulator/design.js": "32e8ae7cf594ab7792f51d50cb4911a965eb0b070cd8cbbb0413faac481a0372",
     "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
-    "Thach_Bi_Viewer/simulator/electrical.js": "fcbdf178a7a8c23a7ef911bd76576050f3add7867186be94245310e5c2ab7bea",
+    "Thach_Bi_Viewer/simulator/electrical.js": "f28cc2e419c5b74b173a170dbfdb526cad3f218a84d9afce85c35484f4cc60a0",
     "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
     "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
     "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
     "scripts/build_review_drawings.py": "11c50afeee67cb18d448280d94b66ad36393a90aa2c44b36037bdf3ecbf18230",
     "scripts/export_print_model.cjs": "1ca96bbe3dd4c77fa36641e8367b37ea3538bd44ce0fd70be377d4f6b7f47805",
-    "scripts/review_drawings_i18n.py": "09b6333b181e552c69718a284f7f82e93721156d4c0548545fc7a326277741ce"
+    "scripts/review_drawings_i18n.py": "17d5721f5e3cc583f3cd440981dbf4c97a7cdc15db3a1822413cf3b1b0f1f1fe"
   },
-  "systemsHash": "e2130aeffb518d934149fa35c32d858856db06e804d9cb98aac4f1896cd3b761",
+  "systemsHash": "78a1f21a5458fc451b1fadb227a547feb6afa62226cd02a3db53eaacd4fe65ce",
   "counts": {
-    "equipment": 286,
-    "routes": 333,
-    "vertices": 2749,
+    "equipment": 296,
+    "routes": 343,
+    "vertices": 2779,
     "pages": 44
   },
   "scales": {
@@ -41,9 +41,9 @@
   },
   "files": {
     "drawing-index.json": "ebd3e626e485b16e33970285b23be639a96fe4d6aec48fc1bcd98d8027af3cb2",
-    "equipment-coordinates.csv": "7b9c46e74158bf570b6ab2e801c452b6c3c31c4de800c8036f26296d02618f93",
-    "model-snapshot.json": "6fd8c5c9c3095d82ed344cf4e6654f9e639b2000edd15e0f957d4c7a9fcd9b46",
-    "route-vertices.csv": "49d7560763e646c88a1724d288c5848db6e9c39bdf84eb7375dd828378b89ed8",
-    "thach-bi-electrical-review-A3.pdf": "2ccb548219a52615af7ef833d5bbe6782e806fde9e70872bca00670efbfb7832"
+    "equipment-coordinates.csv": "9039eb7d1b34bce24b4e6a998e747058fdb11b1f8500cb9ee428c1942109d1db",
+    "model-snapshot.json": "0fc7707bdb17238ea4e4e22ae9606d86ff6ed4257224e1c9a53ae7253a6a48be",
+    "route-vertices.csv": "da0cd4ae7c8ea1fd9c56fc1b94aaf80f820723a3ec092fa26d7d7d074e902acb",
+    "thach-bi-electrical-review-A3.pdf": "9671753ad8ae4f927ccf8e7a775b9da999fb9e6cd2dd106873d4c2dc5219167a"
   }
 }

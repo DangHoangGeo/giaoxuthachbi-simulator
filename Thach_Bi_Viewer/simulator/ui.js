@@ -207,6 +207,11 @@
     if (!retained.length) return '';
     return `<div class="sim-card"><h3>Wing picture layout retained</h3><p class="sim-hint">Wing ${retained.map(s => esc(s.side)).join(' / ')} uses preserved or custom saints' pictures. Compare its pictures with the concept review in Wiring.</p><button data-act="wing-art-review">Review wing saints in Wiring</button></div>`;
   }
+  function retainedNaveFansNotice() {
+    const retained = SIM.naveFanStatus?.().sides.filter(s => !s.current) || [];
+    if (!retained.length) return '';
+    return `<div class="sim-card"><h3>Nave fan layout retained</h3><p class="sim-hint">Nave side ${retained.map(s => esc(s.side)).join(' / ')} uses preserved or custom fans. The held review has 8 visible wall fans per side on F2. Compare this layout in Wiring; visibility does not switch fans on.</p><button data-tab-jump="wiring">Review nave fans in Wiring</button></div>`;
+  }
   function renderBody() {
     const scroll = body.scrollTop;
     for (const b of panel.querySelectorAll('[data-tab]')) b.setAttribute('aria-selected', String(b.dataset.tab === tab));
@@ -216,7 +221,7 @@
     else if (tab === 'analysis') html = renderAnalysis();
     else if (tab === 'wiring') html = SIM.electrical?.renderPanel() || '';
     else html = renderSettings();
-    body.innerHTML = (tab !== 'wiring' ? retainedWingNotice() + retainedWingSoundNotice() + retainedWingArtNotice() : '') + html;
+    body.innerHTML = (tab !== 'wiring' ? retainedWingNotice() + retainedWingSoundNotice() + retainedWingArtNotice() : '') + (tab === 'fan' ? retainedNaveFansNotice() : '') + html;
     if (renderKeepScroll) body.scrollTop = scroll; else body.scrollTop = 0;
     renderKeepScroll = false;
     if (tab === 'wiring') {
@@ -535,6 +540,23 @@
         } catch (err) {
           renderBody();
           toast(`Could not apply wing ${side} saints review: ${err.message || String(err)}`);
+        }
+        break;
+      }
+      case 'nave-fans-adopt': {
+        const side = el.dataset.side;
+        if (el.disabled || !['B', 'H'].includes(side)) break;
+        try {
+          const status = SIM.naveFanStatus?.().sides.find(s => s.side === side);
+          if (!status || !SIM.adoptNaveFans) throw new Error('Nave fan review is unavailable.');
+          if (status.conflictIds.length) throw new Error('Resolve conflicting fan IDs: ' + status.conflictIds.join(', '));
+          if (status.current) { toast(`Nave side ${side} already uses the reviewed fans.`); break; }
+          const result = SIM.adoptNaveFans(side);
+          renderBody(); updateUndo();
+          toast(result.changedIds.length ? `Nave side ${side} fan review adopted. Full browser backup saved; use Undo.` : `Nave side ${side} already uses the reviewed fans.`);
+        } catch (err) {
+          renderBody();
+          toast(`Could not apply nave side ${side} fan review: ${err.message || String(err)}`);
         }
         break;
       }

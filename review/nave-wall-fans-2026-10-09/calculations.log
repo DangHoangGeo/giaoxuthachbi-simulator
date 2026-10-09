@@ -1,0 +1,6 @@
+{"mode":"previous-six-off","blocks":4,"allFailures":{"luxBelow200":40,"airBelow0p3":72,"airAbove0p8":0,"noiseAbove45":364,"stiBelow0p6":129,"splBelow68":116},"power":5552.950015021001}
+{"mode":"current-sixteen-off","blocks":4,"allFailures":{"luxBelow200":40,"airBelow0p3":72,"airAbove0p8":0,"noiseAbove45":364,"stiBelow0p6":129,"splBelow68":116},"power":5552.950015021001}
+{"mode":"current-sixteen-low","blocks":4,"allFailures":{"luxBelow200":40,"airBelow0p3":54,"airAbove0p8":0,"noiseAbove45":368,"stiBelow0p6":159,"splBelow68":116},"power":6112.950015021001}
+{"mode":"previous-six-off","blocks":2,"allFailures":{"luxBelow200":40,"airBelow0p3":72,"airAbove0p8":0,"noiseAbove45":364,"stiBelow0p6":129,"splBelow68":116},"power":5552.950015021001}
+{"mode":"current-sixteen-off","blocks":2,"allFailures":{"luxBelow200":40,"airBelow0p3":72,"airAbove0p8":0,"noiseAbove45":364,"stiBelow0p6":129,"splBelow68":116},"power":5552.950015021001}
+{"mode":"current-sixteen-low","blocks":2,"allFailures":{"luxBelow200":40,"airBelow0p3":54,"airAbove0p8":0,"noiseAbove45":368,"stiBelow0p6":159,"splBelow68":116},"power":6112.950015021001}

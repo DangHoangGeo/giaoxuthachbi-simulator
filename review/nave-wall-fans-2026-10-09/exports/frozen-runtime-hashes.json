@@ -1,0 +1,18 @@
+{
+  "Thach_Bi_Viewer/OPEN_CHURCH.html": "27b95e1fbedca9b4fad1f460a20a59e122b18186c05174ee87ac60e845a0b877",
+  "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+  "Thach_Bi_Viewer/simulator/audio-synthesis.js": "0ac8dba169e165579126a678bcd91e8d330ac85a6956e70749c9ebf12e1aee23",
+  "Thach_Bi_Viewer/simulator/audio.js": "b5d5140c527c80e1c86e043292172505ee5cc6ed032a1392c8cf4664ee763cad",
+  "Thach_Bi_Viewer/simulator/catalog.js": "702b103b0006ddd7a0fd5ec0b3cb6210142bd3bc59e86410065247e2b6c23c57",
+  "Thach_Bi_Viewer/simulator/controls.js": "08adf73fe5a5dd0db3cce97b04704b561a9690aa83cf4286e41253346c604bfe",
+  "Thach_Bi_Viewer/simulator/design.js": "32e8ae7cf594ab7792f51d50cb4911a965eb0b070cd8cbbb0413faac481a0372",
+  "Thach_Bi_Viewer/simulator/electrical.js": "f28cc2e419c5b74b173a170dbfdb526cad3f218a84d9afce85c35484f4cc60a0",
+  "Thach_Bi_Viewer/simulator/engine.js": "9bdd3aae58b7dc49a40566b2dac33a3658e9cc4e2993e0f585693a0829e1c3f9",
+  "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
+  "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+  "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+  "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+  "Thach_Bi_Viewer/simulator/samples.js": "d249a101c740bfff5a4154ec2fcc7343e314505332191f435dcad609e83d85d3",
+  "Thach_Bi_Viewer/simulator/ui.js": "3a5afd239df8bdde8bca95735f568e934f72e768cafdca988bdbff7b175ec60f",
+  "scripts/usage_registers.mjs": "f7a515dd3e44c9b4dcbea6411672ae1474a1313e6b6ca3f29a4446abfaad21cf"
+}

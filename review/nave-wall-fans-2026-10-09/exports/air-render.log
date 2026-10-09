@@ -1,0 +1,100 @@
+{
+  "workbook": "docs/electrical-grid/categories/air-system/register.xlsx",
+  "equipment": [
+    {
+      "row": 25,
+      "id": "F244",
+      "type": "0.45 m diameter · 55 W at maximum speed. Speed steps: 1: 0.45 m3/s, 35 W, 47 dBA, 900 rpm; 2: 0.6 m3/s, 45 W, 52 dBA, 1100 rpm; 3: 0.75 m3/s, 55 W, 57 dBA, 1300 rpm",
+      "coordinates": [
+        14.475,
+        5.55,
+        -7.07
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 30,
+      "id": "F249",
+      "type": "0.45 m diameter · 55 W at maximum speed. Speed steps: 1: 0.45 m3/s, 35 W, 47 dBA, 900 rpm; 2: 0.6 m3/s, 45 W, 52 dBA, 1100 rpm; 3: 0.75 m3/s, 55 W, 57 dBA, 1300 rpm",
+      "coordinates": [
+        32.475,
+        5.55,
+        7.07
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 42,
+      "id": "F-NAVE-B-2P",
+      "type": "0.45 m diameter · 55 W at maximum speed. Speed steps: 1: 0.45 m3/s, 35 W, 47 dBA, 900 rpm; 2: 0.6 m3/s, 45 W, 52 dBA, 1100 rpm; 3: 0.75 m3/s, 55 W, 57 dBA, 1300 rpm",
+      "coordinates": [
+        5.475,
+        5.55,
+        -7.07
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 51,
+      "id": "F-NAVE-H-9",
+      "type": "0.45 m diameter · 55 W at maximum speed. Speed steps: 1: 0.45 m3/s, 35 W, 47 dBA, 900 rpm; 2: 0.6 m3/s, 45 W, 52 dBA, 1100 rpm; 3: 0.75 m3/s, 55 W, 57 dBA, 1300 rpm",
+      "coordinates": [
+        36.975,
+        5.55,
+        7.07
+      ],
+      "recordState": "Current"
+    }
+  ],
+  "lines": [
+    {
+      "row": 29,
+      "id": "trunk:FC1:F2:fan:-1",
+      "destinations": "F244\nF246\nF248\nF-NAVE-B-2P\nF-NAVE-B-3\nF-NAVE-B-5\nF-NAVE-B-7\nF-NAVE-B-9",
+      "routeLength": 67.57613031117918,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 30,
+      "id": "drop:FC1:F2:fan:-1:F244",
+      "destinations": "F244",
+      "routeLength": 0.7520000000000007,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 33,
+      "id": "drop:FC1:F2:fan:-1:F-NAVE-B-2P",
+      "destinations": "F-NAVE-B-2P",
+      "routeLength": 0.7520000000000007,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 38,
+      "id": "trunk:FC1:F2:fan:1",
+      "destinations": "F245\nF247\nF249\nF-NAVE-H-2P\nF-NAVE-H-3\nF-NAVE-H-5\nF-NAVE-H-7\nF-NAVE-H-9",
+      "routeLength": 74.17613031117918,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 41,
+      "id": "drop:FC1:F2:fan:1:F249",
+      "destinations": "F249",
+      "routeLength": 0.7520000000000007,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 46,
+      "id": "drop:FC1:F2:fan:1:F-NAVE-H-9",
+      "destinations": "F-NAVE-H-9",
+      "routeLength": 0.7520000000000007,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    }
+  ]
+}
+Rendered 54 PNG ranges; workbook byte-for-byte unchanged.

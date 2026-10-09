@@ -150,6 +150,7 @@ VI = {
 
 PRODUCTS = {
     'Wing wall fan · 45 cm · extended bracket concept': 'Quạt tường cánh ngang / 45 cm / giá vươn còn chờ duyệt',
+    'Nave wall fan · 45 cm · extended bracket concept': 'Quạt tường gian chính / 45 cm / giá vươn còn chờ duyệt',
     'Saint Peter (Thánh Phêrô) · concept picture': 'Tranh Thánh Phêrô / ý tưởng',
     'Saint Paul (Thánh Phaolô) · concept picture': 'Tranh Thánh Phaolô / ý tưởng',
     'Service-room LED panel · 600 × 600 mm': 'Đèn tấm LED phòng phụ trợ / 600 x 600 mm',
@@ -296,7 +297,7 @@ def name_part(part):
     if re.fullmatch(r'[BH]|[0-9.]+(?: m)?', part):
         return part
     for pattern, target in [
-        (r'axis (\d+)', 'trục {0}'),
+        (r'axis (\d+(?:′)?)', 'trục {0}'),
         (r'bay ([0-9]+(?:′)?[–-][0-9]+)', 'khoang {0}'),
         (r'crossing ([0-9]+[–-][0-9]+)', 'giao cắt {0}'),
         (r'([BH]) central', 'dãy giữa {0}'),

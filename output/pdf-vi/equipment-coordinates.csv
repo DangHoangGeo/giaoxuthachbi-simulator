@@ -238,12 +238,12 @@ F240,F5,DB1,38.05,4.05,-13.06,Wing wall fan · 45 cm · extended bracket concept
 F241,F5,DB1,43.1,4.05,-13.06,Wing wall fan · 45 cm · extended bracket concept
 F242,F5,DB1,38.05,4.05,13.06,Wing wall fan · 45 cm · extended bracket concept
 F243,F5,DB1,43.1,4.05,13.06,Wing wall fan · 45 cm · extended bracket concept
-F244,F2,DB1,14.475,5.55,-7.07,Wall fan · oscillating 45 cm
-F245,F2,DB1,14.475,5.55,7.07,Wall fan · oscillating 45 cm
-F246,F2,DB1,23.475,5.55,-7.07,Wall fan · oscillating 45 cm
-F247,F2,DB1,23.475,5.55,7.07,Wall fan · oscillating 45 cm
-F248,F2,DB1,32.475,5.55,-7.07,Wall fan · oscillating 45 cm
-F249,F2,DB1,32.475,5.55,7.07,Wall fan · oscillating 45 cm
+F244,F2,DB1,14.475,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F245,F2,DB1,14.475,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F246,F2,DB1,23.475,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F247,F2,DB1,23.475,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F248,F2,DB1,32.475,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F249,F2,DB1,32.475,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
 F250,F4,DB2,2.655,6,-3.05,Large wall circulator · 90 cm
 F251,F4,DB2,2.655,6,3.05,Large wall circulator · 90 cm
 F252,V1,DB1,5.48,9.4,-2.4,Exhaust (ventilation) fan · 50 cm
@@ -285,3 +285,13 @@ S289,A3,DB1,18.975,5.6,10.75,Outdoor horn · 30 W
 S290,A3,DB1,32.475,5.6,10.75,Outdoor horn · 30 W
 S291,MIC,DB1,41.08,1.9,-2.62,Gooseneck microphone (cardioid)
 S292,MIC,DB1,44.45,1.88,0.45,Gooseneck microphone (cardioid)
+F-NAVE-B-2P,F2,DB1,5.475,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-H-2P,F2,DB1,5.475,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-B-3,F2,DB1,9.975,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-H-3,F2,DB1,9.975,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-B-5,F2,DB1,18.975,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-H-5,F2,DB1,18.975,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-B-7,F2,DB1,27.975,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-H-7,F2,DB1,27.975,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-B-9,F2,DB1,36.975,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-H-9,F2,DB1,36.975,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept

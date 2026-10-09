@@ -1,0 +1,1640 @@
+{
+  "status": "Software geometry screen passed; physical design remains ENGINEERING HOLD",
+  "testedLayout": "Actual default F2 fanNaveWall layout; no saved layout mutation",
+  "modelRevision": "REFERENCE-REALISM-2026-10-05",
+  "units": "m",
+  "sources": [
+    {
+      "path": "Thach_Bi_Viewer/bundle.js",
+      "sha256": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b"
+    },
+    {
+      "path": "Thach_Bi_Viewer/realism.js",
+      "sha256": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4"
+    },
+    {
+      "path": "Thach_Bi_Viewer/simulator/catalog.js",
+      "sha256": "702b103b0006ddd7a0fd5ec0b3cb6210142bd3bc59e86410065247e2b6c23c57"
+    },
+    {
+      "path": "Thach_Bi_Viewer/simulator/design.js",
+      "sha256": "32e8ae7cf594ab7792f51d50cb4911a965eb0b070cd8cbbb0413faac481a0372"
+    },
+    {
+      "path": "Thach_Bi_Viewer/simulator/engine.js",
+      "sha256": "9bdd3aae58b7dc49a40566b2dac33a3658e9cc4e2993e0f585693a0829e1c3f9"
+    },
+    {
+      "path": "scripts/lib/study_model.cjs",
+      "sha256": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
+    },
+    {
+      "path": "scripts/verify_nave_fan_clearance.cjs",
+      "sha256": "c81054f3c0be53263cd6227b6f3ee8559fb1c7eeabbdbddf94c4be543bc49392"
+    },
+    {
+      "path": "docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
+      "sha256": "95fe13afe5d2b4589eea1bae8225ab4cc99ae4b64640cf67f694d530e320e01b"
+    }
+  ],
+  "dimensionBasis": {
+    "workbook": "docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
+    "modelGridAxisMetres": "Model grid!E10:E17",
+    "CGAxisMetres": "Model grid!E30 and E33",
+    "naveClearWidth": "Dimensions!H36, 14.500 m inner C/G faces, printed plan sheet 6/file 4",
+    "windowCrown": "Dimensions!H456, DERIVED 4.311 m nave floor to crown, printed sheet 12/file 8",
+    "doorCrown": "Dimensions!H459, DERIVED 4.311 m nave floor to crown, printed sheet 13/file 9",
+    "wallTop": "Dimensions!H457 and H460, DERIVED 7.057 m; separate from 7.130 m roof reference",
+    "mountingFace": "MODEL TRANSCRIPTION 0.58 m side-column shaft at Z±7.36 m, inner face Z±7.07 m; unknown physical section RFI-S07"
+  },
+  "method": "For each moving mesh vertex, evaluate endpoints and every stationary angle of a*cos(yaw)+b*sin(yaw) over the full ±40° interval. Union with the rotor all-angle sphere and 17 transformed full-mesh AABBs. Test strict volume penetration against all original building mesh AABBs and all other fixture AABBs; mounting face contact is permitted.",
+  "fans": [
+    {
+      "id": "F-NAVE-B-2P",
+      "axis": "2′",
+      "side": "B",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        5.475,
+        5.55,
+        -7.07
+      ],
+      "yawDegrees": 90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          5.139825677,
+          5.25227491,
+          -7.07
+        ],
+        "maximum": [
+          5.810174323,
+          5.735260032,
+          -6.309888055
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          5.047958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          5.902041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          5.047958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          5.902041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": []
+    },
+    {
+      "id": "F-NAVE-B-3",
+      "axis": "3",
+      "side": "B",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        9.975,
+        5.55,
+        -7.07
+      ],
+      "yawDegrees": 90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          9.639825677,
+          5.25227491,
+          -7.07
+        ],
+        "maximum": [
+          10.310174323,
+          5.735260032,
+          -6.309888055
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          9.547958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          10.402041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          9.547958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          10.402041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L31",
+          "name": "Reading light · axis 3 · B outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L32",
+          "name": "Reading light · axis 3 · B outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L82",
+          "name": "Sconce · axis 3 · B",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F244",
+      "axis": "4",
+      "side": "B",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        14.475,
+        5.55,
+        -7.07
+      ],
+      "yawDegrees": 90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          14.139825677,
+          5.25227491,
+          -7.07
+        ],
+        "maximum": [
+          14.810174323,
+          5.735260032,
+          -6.309888055
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          14.047958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          14.902041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          14.047958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          14.902041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L35",
+          "name": "Reading light · axis 4 · B outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L36",
+          "name": "Reading light · axis 4 · B outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L84",
+          "name": "Sconce · axis 4 · B",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F-NAVE-B-5",
+      "axis": "5",
+      "side": "B",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        18.975,
+        5.55,
+        -7.07
+      ],
+      "yawDegrees": 90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          18.639825677,
+          5.25227491,
+          -7.07
+        ],
+        "maximum": [
+          19.310174323,
+          5.735260032,
+          -6.309888055
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          18.547958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          19.402041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          18.547958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          19.402041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L39",
+          "name": "Reading light · axis 5 · B outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L40",
+          "name": "Reading light · axis 5 · B outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L86",
+          "name": "Sconce · axis 5 · B",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F246",
+      "axis": "6",
+      "side": "B",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        23.475,
+        5.55,
+        -7.07
+      ],
+      "yawDegrees": 90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          23.139825677,
+          5.25227491,
+          -7.07
+        ],
+        "maximum": [
+          23.810174323,
+          5.735260032,
+          -6.309888055
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          23.047958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          23.902041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          23.047958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          23.902041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L43",
+          "name": "Reading light · axis 6 · B outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L44",
+          "name": "Reading light · axis 6 · B outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L88",
+          "name": "Sconce · axis 6 · B",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F-NAVE-B-7",
+      "axis": "7",
+      "side": "B",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        27.975,
+        5.55,
+        -7.07
+      ],
+      "yawDegrees": 90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          27.639825677,
+          5.25227491,
+          -7.07
+        ],
+        "maximum": [
+          28.310174323,
+          5.735260032,
+          -6.309888055
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          27.547958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          28.402041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          27.547958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          28.402041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L47",
+          "name": "Reading light · axis 7 · B outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L48",
+          "name": "Reading light · axis 7 · B outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L90",
+          "name": "Sconce · axis 7 · B",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F248",
+      "axis": "8",
+      "side": "B",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        32.475,
+        5.55,
+        -7.07
+      ],
+      "yawDegrees": 90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          32.139825677,
+          5.25227491,
+          -7.07
+        ],
+        "maximum": [
+          32.810174323,
+          5.735260032,
+          -6.309888055
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          32.047958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          32.902041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          32.047958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          32.902041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L51",
+          "name": "Reading light · axis 8 · B outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L52",
+          "name": "Reading light · axis 8 · B outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L92",
+          "name": "Sconce · axis 8 · B",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F-NAVE-B-9",
+      "axis": "9",
+      "side": "B",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        36.975,
+        5.55,
+        -7.07
+      ],
+      "yawDegrees": 90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          36.639825677,
+          5.25227491,
+          -7.07
+        ],
+        "maximum": [
+          37.310174323,
+          5.735260032,
+          -6.309888055
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          36.547958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          37.402041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          36.547958329,
+          5.23072676,
+          -7.07
+        ],
+        "maximum": [
+          37.402041671,
+          5.900056312,
+          -6.224438532
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L55",
+          "name": "Reading light · axis 9 · B outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L56",
+          "name": "Reading light · axis 9 · B outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L94",
+          "name": "Sconce · axis 9 · B",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        },
+        {
+          "id": "L115",
+          "name": "Statue accent · B",
+          "hidden": false,
+          "clearanceM": 1.014519138,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F-NAVE-H-2P",
+      "axis": "2′",
+      "side": "H",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        5.475,
+        5.55,
+        7.07
+      ],
+      "yawDegrees": -90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          5.139825677,
+          5.25227491,
+          6.309888055
+        ],
+        "maximum": [
+          5.810174323,
+          5.735260032,
+          7.07
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          5.047958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          5.902041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          5.047958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          5.902041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": []
+    },
+    {
+      "id": "F-NAVE-H-3",
+      "axis": "3",
+      "side": "H",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        9.975,
+        5.55,
+        7.07
+      ],
+      "yawDegrees": -90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          9.639825677,
+          5.25227491,
+          6.309888055
+        ],
+        "maximum": [
+          10.310174323,
+          5.735260032,
+          7.07
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          9.547958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          10.402041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          9.547958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          10.402041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L33",
+          "name": "Reading light · axis 3 · H outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L34",
+          "name": "Reading light · axis 3 · H outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L83",
+          "name": "Sconce · axis 3 · H",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F245",
+      "axis": "4",
+      "side": "H",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        14.475,
+        5.55,
+        7.07
+      ],
+      "yawDegrees": -90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          14.139825677,
+          5.25227491,
+          6.309888055
+        ],
+        "maximum": [
+          14.810174323,
+          5.735260032,
+          7.07
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          14.047958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          14.902041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          14.047958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          14.902041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L37",
+          "name": "Reading light · axis 4 · H outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L38",
+          "name": "Reading light · axis 4 · H outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L85",
+          "name": "Sconce · axis 4 · H",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F-NAVE-H-5",
+      "axis": "5",
+      "side": "H",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        18.975,
+        5.55,
+        7.07
+      ],
+      "yawDegrees": -90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          18.639825677,
+          5.25227491,
+          6.309888055
+        ],
+        "maximum": [
+          19.310174323,
+          5.735260032,
+          7.07
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          18.547958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          19.402041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          18.547958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          19.402041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L41",
+          "name": "Reading light · axis 5 · H outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L42",
+          "name": "Reading light · axis 5 · H outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L87",
+          "name": "Sconce · axis 5 · H",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F247",
+      "axis": "6",
+      "side": "H",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        23.475,
+        5.55,
+        7.07
+      ],
+      "yawDegrees": -90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          23.139825677,
+          5.25227491,
+          6.309888055
+        ],
+        "maximum": [
+          23.810174323,
+          5.735260032,
+          7.07
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          23.047958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          23.902041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          23.047958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          23.902041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L45",
+          "name": "Reading light · axis 6 · H outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L46",
+          "name": "Reading light · axis 6 · H outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L89",
+          "name": "Sconce · axis 6 · H",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F-NAVE-H-7",
+      "axis": "7",
+      "side": "H",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        27.975,
+        5.55,
+        7.07
+      ],
+      "yawDegrees": -90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          27.639825677,
+          5.25227491,
+          6.309888055
+        ],
+        "maximum": [
+          28.310174323,
+          5.735260032,
+          7.07
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          27.547958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          28.402041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          27.547958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          28.402041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L49",
+          "name": "Reading light · axis 7 · H outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L50",
+          "name": "Reading light · axis 7 · H outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L91",
+          "name": "Sconce · axis 7 · H",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F249",
+      "axis": "8",
+      "side": "H",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        32.475,
+        5.55,
+        7.07
+      ],
+      "yawDegrees": -90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          32.139825677,
+          5.25227491,
+          6.309888055
+        ],
+        "maximum": [
+          32.810174323,
+          5.735260032,
+          7.07
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          32.047958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          32.902041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          32.047958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          32.902041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L53",
+          "name": "Reading light · axis 8 · H outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L54",
+          "name": "Reading light · axis 8 · H outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L93",
+          "name": "Sconce · axis 8 · H",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        }
+      ]
+    },
+    {
+      "id": "F-NAVE-H-9",
+      "axis": "9",
+      "side": "H",
+      "type": "fanNaveWall",
+      "mountingPositionM": [
+        36.975,
+        5.55,
+        7.07
+      ],
+      "yawDegrees": -90,
+      "tiltDegrees": -38,
+      "hidden": false,
+      "on": false,
+      "continuousYawDegrees": [
+        -40,
+        40
+      ],
+      "meshVertexCount": 1514,
+      "rotorAllAngleSphereRadiusM": 0.221310869,
+      "continuousVertexAndRotorEnvelope": {
+        "minimum": [
+          36.639825677,
+          5.25227491,
+          6.309888055
+        ],
+        "maximum": [
+          37.310174323,
+          5.735260032,
+          7.07
+        ]
+      },
+      "sampled17YawFullMeshAABB": {
+        "minimum": [
+          36.547958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          37.402041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "conservativeEnvelope": {
+        "minimum": [
+          36.547958329,
+          5.23072676,
+          6.224438532
+        ],
+        "maximum": [
+          37.402041671,
+          5.900056312,
+          7.07
+        ]
+      },
+      "modeledWindowCrownGapM": 0.91972676,
+      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledSideColumnFaceMaximumPenetrationM": 0,
+      "nearbyFixtures": [
+        {
+          "id": "L57",
+          "name": "Reading light · axis 9 · H outer",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L58",
+          "name": "Reading light · axis 9 · H outer · twin",
+          "hidden": false,
+          "clearanceM": 0.653470805,
+          "intersection": false
+        },
+        {
+          "id": "L95",
+          "name": "Sconce · axis 9 · H",
+          "hidden": false,
+          "clearanceM": 0.324486768,
+          "intersection": false
+        },
+        {
+          "id": "L117",
+          "name": "Statue accent · H",
+          "hidden": false,
+          "clearanceM": 1.014519138,
+          "intersection": false
+        }
+      ]
+    }
+  ],
+  "fanPairs": [
+    {
+      "a": "F244",
+      "b": "F246",
+      "clearanceM": 8.145916657
+    },
+    {
+      "a": "F244",
+      "b": "F248",
+      "clearanceM": 17.145916657
+    },
+    {
+      "a": "F244",
+      "b": "F-NAVE-B-2P",
+      "clearanceM": 8.145916657
+    },
+    {
+      "a": "F244",
+      "b": "F-NAVE-B-3",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F244",
+      "b": "F-NAVE-B-5",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F244",
+      "b": "F-NAVE-B-7",
+      "clearanceM": 12.645916657
+    },
+    {
+      "a": "F244",
+      "b": "F-NAVE-B-9",
+      "clearanceM": 21.645916657
+    },
+    {
+      "a": "F245",
+      "b": "F247",
+      "clearanceM": 8.145916657
+    },
+    {
+      "a": "F245",
+      "b": "F249",
+      "clearanceM": 17.145916657
+    },
+    {
+      "a": "F245",
+      "b": "F-NAVE-H-2P",
+      "clearanceM": 8.145916657
+    },
+    {
+      "a": "F245",
+      "b": "F-NAVE-H-3",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F245",
+      "b": "F-NAVE-H-5",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F245",
+      "b": "F-NAVE-H-7",
+      "clearanceM": 12.645916657
+    },
+    {
+      "a": "F245",
+      "b": "F-NAVE-H-9",
+      "clearanceM": 21.645916657
+    },
+    {
+      "a": "F246",
+      "b": "F248",
+      "clearanceM": 8.145916657
+    },
+    {
+      "a": "F246",
+      "b": "F-NAVE-B-2P",
+      "clearanceM": 17.145916657
+    },
+    {
+      "a": "F246",
+      "b": "F-NAVE-B-3",
+      "clearanceM": 12.645916657
+    },
+    {
+      "a": "F246",
+      "b": "F-NAVE-B-5",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F246",
+      "b": "F-NAVE-B-7",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F246",
+      "b": "F-NAVE-B-9",
+      "clearanceM": 12.645916657
+    },
+    {
+      "a": "F247",
+      "b": "F249",
+      "clearanceM": 8.145916657
+    },
+    {
+      "a": "F247",
+      "b": "F-NAVE-H-2P",
+      "clearanceM": 17.145916657
+    },
+    {
+      "a": "F247",
+      "b": "F-NAVE-H-3",
+      "clearanceM": 12.645916657
+    },
+    {
+      "a": "F247",
+      "b": "F-NAVE-H-5",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F247",
+      "b": "F-NAVE-H-7",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F247",
+      "b": "F-NAVE-H-9",
+      "clearanceM": 12.645916657
+    },
+    {
+      "a": "F248",
+      "b": "F-NAVE-B-2P",
+      "clearanceM": 26.145916657
+    },
+    {
+      "a": "F248",
+      "b": "F-NAVE-B-3",
+      "clearanceM": 21.645916657
+    },
+    {
+      "a": "F248",
+      "b": "F-NAVE-B-5",
+      "clearanceM": 12.645916657
+    },
+    {
+      "a": "F248",
+      "b": "F-NAVE-B-7",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F248",
+      "b": "F-NAVE-B-9",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F249",
+      "b": "F-NAVE-H-2P",
+      "clearanceM": 26.145916657
+    },
+    {
+      "a": "F249",
+      "b": "F-NAVE-H-3",
+      "clearanceM": 21.645916657
+    },
+    {
+      "a": "F249",
+      "b": "F-NAVE-H-5",
+      "clearanceM": 12.645916657
+    },
+    {
+      "a": "F249",
+      "b": "F-NAVE-H-7",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F249",
+      "b": "F-NAVE-H-9",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F-NAVE-B-2P",
+      "b": "F-NAVE-B-3",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F-NAVE-B-2P",
+      "b": "F-NAVE-B-5",
+      "clearanceM": 12.645916657
+    },
+    {
+      "a": "F-NAVE-B-2P",
+      "b": "F-NAVE-B-7",
+      "clearanceM": 21.645916657
+    },
+    {
+      "a": "F-NAVE-B-2P",
+      "b": "F-NAVE-B-9",
+      "clearanceM": 30.645916657
+    },
+    {
+      "a": "F-NAVE-H-2P",
+      "b": "F-NAVE-H-3",
+      "clearanceM": 3.645916657
+    },
+    {
+      "a": "F-NAVE-H-2P",
+      "b": "F-NAVE-H-5",
+      "clearanceM": 12.645916657
+    },
+    {
+      "a": "F-NAVE-H-2P",
+      "b": "F-NAVE-H-7",
+      "clearanceM": 21.645916657
+    },
+    {
+      "a": "F-NAVE-H-2P",
+      "b": "F-NAVE-H-9",
+      "clearanceM": 30.645916657
+    },
+    {
+      "a": "F-NAVE-B-3",
+      "b": "F-NAVE-B-5",
+      "clearanceM": 8.145916657
+    },
+    {
+      "a": "F-NAVE-B-3",
+      "b": "F-NAVE-B-7",
+      "clearanceM": 17.145916657
+    },
+    {
+      "a": "F-NAVE-B-3",
+      "b": "F-NAVE-B-9",
+      "clearanceM": 26.145916657
+    },
+    {
+      "a": "F-NAVE-H-3",
+      "b": "F-NAVE-H-5",
+      "clearanceM": 8.145916657
+    },
+    {
+      "a": "F-NAVE-H-3",
+      "b": "F-NAVE-H-7",
+      "clearanceM": 17.145916657
+    },
+    {
+      "a": "F-NAVE-H-3",
+      "b": "F-NAVE-H-9",
+      "clearanceM": 26.145916657
+    },
+    {
+      "a": "F-NAVE-B-5",
+      "b": "F-NAVE-B-7",
+      "clearanceM": 8.145916657
+    },
+    {
+      "a": "F-NAVE-B-5",
+      "b": "F-NAVE-B-9",
+      "clearanceM": 17.145916657
+    },
+    {
+      "a": "F-NAVE-H-5",
+      "b": "F-NAVE-H-7",
+      "clearanceM": 8.145916657
+    },
+    {
+      "a": "F-NAVE-H-5",
+      "b": "F-NAVE-H-9",
+      "clearanceM": 17.145916657
+    },
+    {
+      "a": "F-NAVE-B-7",
+      "b": "F-NAVE-B-9",
+      "clearanceM": 8.145916657
+    },
+    {
+      "a": "F-NAVE-H-7",
+      "b": "F-NAVE-H-9",
+      "clearanceM": 8.145916657
+    }
+  ],
+  "limits": [
+    "The .40 m pivot outreach is a visualization concept; actual product/bracket dimensions, support loads, anchors, vibration and corrosion remain unknown",
+    "Continuous bounds apply to these finite meshes; they do not establish installation tolerance, selected-product motion stops or required service clearance",
+    "Axis 2′ entrance return wall and nave openings/side beams are included in the structure screen; wall buildup and surveyed face offsets remain unconfirmed",
+    "No screen establishes light-field/blade interaction, lux, speech/noise/feedback, occupied-zone airflow, thermal comfort, maintenance access or inclusive sightline/concealment approval",
+    "Model visible and OFF state is separate from a physical installation and from hardware operation"
+  ]
+}

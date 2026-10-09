@@ -80,7 +80,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -1545,6 +1545,49 @@
   SIM.wingReviewStatus = wingReviewStatus;
   SIM.adoptWingReview = adoptWingReview;
 
+  function naveFanStatus() {
+    const D = window.CHURCH_SIM_DESIGN;
+    const fields = ['type', 'circuit', 'mount', 'pos', 'yaw', 'tilt', 'mountYaw', 'hidden', 'params', 'oscillate'];
+    return { sourceRevision: D.naveFanRevision, sides: ['B', 'H'].map(side => {
+      const targets = D.naveFanTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+      const mismatchingIds = targets.filter(t => { const p = SIM.item(t.id); return !p || fields.some(k => JSON.stringify(p[k]) !== JSON.stringify(t[k])); }).map(t => t.id);
+      const conflictIds = targets.filter(t => { const p = SIM.item(t.id); return p && (!['fanWall', 'fanNaveWall'].includes(p.type) || p.circuit !== 'F2' || p.name !== t.name); }).map(t => t.id);
+      const items = state.items.filter(it => it.circuit === 'F2' && Math.sign(it.pos[2]) === (side === 'B' ? -1 : 1) && !it.hidden && CAT.byId[it.type]?.fan?.kind === 'jet');
+      return { side, current: !mismatchingIds.length, mismatchingIds, conflictIds, counts: { wallFans: items.length } };
+    }) };
+  }
+  function adoptNaveFans(side) {
+    const status = naveFanStatus().sides.find(s => s.side === side);
+    if (!status) throw new Error('Choose nave side B or H.');
+    if (status.conflictIds.length) throw new Error('Reserved fan IDs belong to renamed/custom equipment: ' + status.conflictIds.join(', '));
+    if (status.current) return { backupKey: null, changedIds: [] };
+    const D = window.CHURCH_SIM_DESIGN, previous = JSON.parse(JSON.stringify(exportLayout()));
+    const targets = D.naveFanTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+    for (const t of targets) {
+      const prior = SIM.item(t.id);
+      if (prior) { t.on = prior.on; t.speed = prior.speed; if (prior.note) t.note = prior.note; }
+      else { t.on = false; t.speed = 1; }
+    }
+    const replacements = new Map(targets.map(t => [t.id, t])), present = new Set(previous.items.map(it => it.id));
+    const items = [...previous.items.map(it => replacements.get(it.id) || it), ...targets.filter(t => !present.has(t.id))];
+    const history = state.history.slice(), future = state.future.slice(), selectedId = state.selectedId, lastSnapshotBefore = lastSnapshot;
+    let suffix = Date.now(), backupKey; do { backupKey = STORAGE_KEY + '.before-nave-fans-adoption.' + suffix++; } while (localStorage.getItem(backupKey));
+    localStorage.setItem(backupKey, JSON.stringify(previous));
+    try {
+      lastSnapshot = JSON.stringify(previous.items);
+      importLayout({ ...previous, items });
+      state.history[state.history.length - 1].label = 'Use eight wall fans on nave side ' + side;
+      state.settings.naveFanRevision = D.naveFanRevision;
+      if (!saveNow()) throw new Error('The updated fans could not be saved; the preceding layout is retained.');
+    } catch (error) {
+      Object.assign(state.settings, previous.settings); state.customScenes = previous.customScenes;
+      restore(JSON.stringify(previous.items)); state.history = history; state.future = future; lastSnapshot = lastSnapshotBefore;
+      select(selectedId); applySettings(); emit('history'); throw error;
+    }
+    emit('items', {}); return { backupKey, changedIds: targets.map(t => t.id) };
+  }
+  SIM.naveFanStatus = naveFanStatus; SIM.adoptNaveFans = adoptNaveFans;
+
   function wingArtStatus() {
     const D = window.CHURCH_SIM_DESIGN;
     const same = (a, b) => Array.isArray(a) && Array.isArray(b) ? a.length === b.length && a.every((v, n) => same(v, b[n])) : typeof a === 'number' && typeof b === 'number' ? Math.abs(a - b) < 1e-9 : a === b;
@@ -2219,7 +2262,8 @@
     for (const [field, revision, suffix, upgrade] of [
       ['wingReviewRevision', D.wingReviewRevision, '.before-wing-review', D.upgradeWingReview],
       ['wingSoundRevision', D.wingSoundRevision, '.before-wing-sound-review', D.upgradeWingSound],
-      ['wingArtRevision', D.wingArtRevision, '.before-wing-art-review', D.upgradeWingArt]
+      ['wingArtRevision', D.wingArtRevision, '.before-wing-art-review', D.upgradeWingArt],
+      ['naveFanRevision', D.naveFanRevision, '.before-nave-fans-review', D.upgradeNaveFans]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;

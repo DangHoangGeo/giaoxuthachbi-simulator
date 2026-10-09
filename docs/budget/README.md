@@ -11,9 +11,9 @@ Status: **quantity takeoff / market comparison / ENGINEERING HOLD**. The owner r
 - [Japanese suppliers](japan-suppliers.md) / [structured supplier evidence](japan-suppliers.json): primary manufacturer/channel documentation and support evidence.
 - [Budget inputs](budget-assumptions.json): deliberate reference mappings and missing installation/import costs. A listed price is a comparison, not an approved product selection.
 - [Vietnamese display text](report-text-vi.json): translates all 12 supplier rows and 11 retail-reference gaps; source fingerprints prevent stale translations after a fact change. Canonical technical descriptions/IDs in the takeoff stay linked to the model.
-- `equipment-budget.csv`: all **320 model items plus five enclosures**, each once, with type/specification/coordinates/model envelope/quantity and electrical class. **15 hidden alternatives** are retained and excluded from the shown scope.
+- `equipment-budget.csv`: all **330 model items plus five enclosures**, each once, with type/specification/coordinates/model envelope/quantity and electrical class. **15 hidden alternatives** are retained and excluded from the shown scope.
 - `budget-quantity-groups.csv`: quantity groups with complete equipment ID membership; rounded required pack counts only when a comparable complete assembly and verified pack unit exist.
-- `route-load-schedule.csv`: all **333 routes** and conditional load/cable/length calculations. Cable/containment budget quantities remain unapproved.
+- `route-load-schedule.csv`: all **343 routes** and conditional load/cable/length calculations. Cable/containment budget quantities remain unapproved.
 
 ## Supplier decision criteria
 
