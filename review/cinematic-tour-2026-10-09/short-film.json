@@ -1,0 +1,197 @@
+{
+  "what": "Short film for sharing (2 min 15 s): clearance, sound levels and the exported video. Values are for the fourth revision of 9 October 2026 unless a block says otherwise.",
+  "date": "2026-10-09",
+  "viewer": "http://127.0.0.1:8765/OPEN_CHURCH.html (scratch origin, recommended design, 354 items of which 15 hidden)",
+  "film": {
+    "seconds": 135,
+    "bars": 54,
+    "barSeconds": 2.5,
+    "scenes": 13,
+    "notes": 981,
+    "bellStrokes": 20
+  },
+  "clearance": {
+    "method": "CHURCH_CINEMA.audit({ film: 'short', step: 0.1, reach: 1.5 }); wiring-only scenes are checked against the building as if it were shown",
+    "units": {
+      "clearance": "m",
+      "fastest": "m/s"
+    },
+    "scenes": [
+      {
+        "id": "evening-front",
+        "clearance": "> 1.5",
+        "fastest": 3.1
+      },
+      {
+        "id": "towers",
+        "clearance": "> 1.5",
+        "fastest": 5.13
+      },
+      {
+        "id": "roof",
+        "clearance": "> 1.5",
+        "fastest": 7.99
+      },
+      {
+        "id": "enter",
+        "clearance": 1.18,
+        "fastest": 1.95,
+        "nearest": "Open timber door leaf",
+        "at": {
+          "time": 35.4,
+          "eye": [
+            1.21,
+            1.43,
+            0
+          ]
+        }
+      },
+      {
+        "id": "rise",
+        "clearance": 1.44,
+        "fastest": 1.02,
+        "nearest": "Simulator · Chandelier · bay 4–5",
+        "at": {
+          "time": 48.6,
+          "eye": [
+            16.33,
+            5.73,
+            1.66
+          ]
+        }
+      },
+      {
+        "id": "timber",
+        "clearance": 1.31,
+        "fastest": 1.4,
+        "nearest": "Central column 6/E",
+        "at": {
+          "time": 54.3,
+          "eye": [
+            23.48,
+            6.98,
+            2
+          ]
+        }
+      },
+      {
+        "id": "sanctuary",
+        "clearance": 1.35,
+        "fastest": 1.44,
+        "nearest": "Central column 8/E",
+        "at": {
+          "time": 61.3,
+          "eye": [
+            32.53,
+            6.12,
+            1.95
+          ]
+        }
+      },
+      {
+        "id": "evening",
+        "clearance": "> 1.5",
+        "fastest": 2.14
+      },
+      {
+        "id": "roof-off",
+        "clearance": "> 1.5",
+        "fastest": 10.24
+      },
+      {
+        "id": "wiring",
+        "clearance": "> 1.5",
+        "fastest": 6.34
+      },
+      {
+        "id": "wiring-nave",
+        "clearance": "> 1.5",
+        "fastest": 3.14
+      },
+      {
+        "id": "boards",
+        "clearance": 0.59,
+        "fastest": 0.27,
+        "nearest": "Vestment wardrobe",
+        "at": {
+          "eye": [
+            51.65,
+            1.9,
+            -0.47
+          ]
+        }
+      },
+      {
+        "id": "ask",
+        "clearance": "> 1.5",
+        "fastest": 2.46
+      }
+    ]
+  },
+  "figuresShown": {
+    "source": "read from the open model when the film starts (CHURCH_SIMULATOR.powerSummary(), electrical.routes, visible items by catalogue category)",
+    "values": {
+      "lamps": 236,
+      "fans": 45,
+      "loudspeakers": 30,
+      "cableRoutes": 370,
+      "routeLengthKm": 5.0,
+      "circuits": 29,
+      "connectedRatingKw": 29.6
+    },
+    "limits": "Simulator values of a design-development model. Route length is the modelled route, not installed cable length. Connected rating is the sum of ratings, not operating consumption (5.6 kW in the scene that was open)."
+  },
+  "musicOutput": {
+    "what": "Sound of the exported file by section (ffmpeg volumedetect: mean and maximum in dB below full scale). Digital levels, not acoustic levels.",
+    "sections": [
+      {
+        "seconds": "0–10",
+        "content": "bells alone",
+        "meanDb": -19.9,
+        "maxDb": -4.9
+      },
+      {
+        "seconds": "10–20",
+        "content": "last bell strokes over the organ's soft entry and growth",
+        "meanDb": -22.3,
+        "maxDb": -6.0
+      },
+      {
+        "seconds": "20–30",
+        "content": "toccata",
+        "meanDb": -19.7,
+        "maxDb": -6.0
+      },
+      {
+        "seconds": "85–135",
+        "content": "wiring scenes to the close, full organ",
+        "meanDb": -19.9,
+        "maxDb": -4.1
+      },
+      {
+        "seconds": "0–135",
+        "content": "whole film",
+        "meanDb": -20.2,
+        "maxDb": -4.1
+      }
+    ],
+    "firstRevision": "Per-scene levels of the first score (bells returning at the close) were measured in the viewer and are in the Git history of this file."
+  },
+  "recordingInViewer": {
+    "what": "Save as video, real time, in the Claude desktop browser pane (Chrome 152) on an Apple-silicon Mac",
+    "result": "MP4, H.264 + AAC, 1920 × 1080, 121.0 s, 47 MB; 956 pictures in 120 s (about 8 a second, 4 to 15 by scene)",
+    "judgement": "Works; too jerky to post from this computer"
+  },
+  "sharedFile": {
+    "path": "exports/sharing/thach-bi-short-film-2026-10-09.mp4 (not in the repository; replaces the first export of the same name)",
+    "method": "scripts/film_export: 4050 pictures drawn one at a time (466 s), the first 300 drawn again after the opening card's shading was lightened; sound from one complete real-time recording (135.4 s) with a 0.06 s lead removed; joined by ffmpeg",
+    "ffprobe": {
+      "video": "h264 high, 1920 × 1080, yuv420p limited range BT.709, 30 frames/s, 4050 frames, 9.6 Mbit/s",
+      "audio": "aac LC, 48 kHz stereo, 192 kbit/s",
+      "seconds": 135.0,
+      "megabytes": 156.8
+    },
+    "viewed": "Fifteen pictures across the film, and the first frame at full size: the lit church with the title, not black",
+    "incidents": "Two export passes were spoiled by clicks in the page (a sound recording cut at 56 s; a frame pass stopped at frame 126) and were repeated. driver.js now refuses a short sound recording and recovers from an interrupted frame pass."
+  }
+}

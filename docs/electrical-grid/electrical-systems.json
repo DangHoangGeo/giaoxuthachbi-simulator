@@ -18459,9 +18459,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "trunk:LC1:E1:light:-1",
+      "id": "trunk:DB1:E1:light:-1",
       "name": "E1 · B · circuit trunk",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -18477,17 +18477,17 @@
       "points": [
         [
           48.895,
-          1.85,
-          -0.55
+          1.75,
+          -1.55
         ],
         [
           48.735,
-          1.85,
-          -0.55
+          1.75,
+          -1.55
         ],
         [
           48.735,
-          1.85,
+          1.75,
           -2.24
         ],
         [
@@ -18571,7 +18571,7 @@
           -7.36
         ]
       ],
-      "length": 69.5751303111792,
+      "length": 68.67513031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -18677,9 +18677,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:-1:L155",
+      "id": "drop:DB1:E1:light:-1:L155",
       "name": "E1 → Exit sign · main doors",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -18687,9 +18687,9 @@
       "itemIds": [
         "L155"
       ],
-      "trunkId": "trunk:LC1:E1:light:-1",
+      "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 69.5751303111792,
+      "upstreamLength": 68.67513031117919,
       "homeRun": false,
       "points": [
         [
@@ -18729,9 +18729,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:-1:L156",
+      "id": "drop:DB1:E1:light:-1:L156",
       "name": "E1 → Exit sign · side door 16.7 · B",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -18739,9 +18739,9 @@
       "itemIds": [
         "L156"
       ],
-      "trunkId": "trunk:LC1:E1:light:-1",
+      "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 55.50013031117919,
+      "upstreamLength": 54.60013031117919,
       "homeRun": false,
       "points": [
         [
@@ -18771,9 +18771,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:-1:L158",
+      "id": "drop:DB1:E1:light:-1:L158",
       "name": "E1 → Exit sign · side door 34.7 · B",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -18781,9 +18781,9 @@
       "itemIds": [
         "L158"
       ],
-      "trunkId": "trunk:LC1:E1:light:-1",
+      "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 37.50013031117919,
+      "upstreamLength": 36.60013031117919,
       "homeRun": false,
       "points": [
         [
@@ -18813,9 +18813,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "trunk:LC1:E1:light:1",
+      "id": "trunk:DB1:E1:light:1",
       "name": "E1 · H · circuit trunk",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -18830,17 +18830,17 @@
       "points": [
         [
           48.895,
-          1.85,
-          -0.55
+          1.75,
+          -1.55
         ],
         [
           48.735,
-          1.85,
-          -0.55
+          1.75,
+          -1.55
         ],
         [
           48.735,
-          1.85,
+          1.75,
           -2.24
         ],
         [
@@ -18919,7 +18919,7 @@
           7.36
         ]
       ],
-      "length": 62.10013031117919,
+      "length": 61.20013031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -19025,9 +19025,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:1:L157",
+      "id": "drop:DB1:E1:light:1:L157",
       "name": "E1 → Exit sign · side door 16.7 · H",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -19035,9 +19035,9 @@
       "itemIds": [
         "L157"
       ],
-      "trunkId": "trunk:LC1:E1:light:1",
+      "trunkId": "trunk:DB1:E1:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 62.10013031117919,
+      "upstreamLength": 61.20013031117919,
       "homeRun": false,
       "points": [
         [
@@ -19067,9 +19067,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:1:L159",
+      "id": "drop:DB1:E1:light:1:L159",
       "name": "E1 → Exit sign · side door 34.7 · H",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -19077,9 +19077,9 @@
       "itemIds": [
         "L159"
       ],
-      "trunkId": "trunk:LC1:E1:light:1",
+      "trunkId": "trunk:DB1:E1:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 44.10013031117919,
+      "upstreamLength": 43.20013031117919,
       "homeRun": false,
       "points": [
         [
@@ -31785,6 +31785,1671 @@
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:DB1:P1:power:-1",
+      "name": "P1 · B · circuit trunk",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "P1",
+      "kind": "power",
+      "role": "trunk",
+      "itemIds": [
+        "P-SANCT-B",
+        "P-NAVE-B"
+      ],
+      "color": "#2f9c95",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.75,
+          -1.55
+        ],
+        [
+          48.735,
+          1.75,
+          -1.55
+        ],
+        [
+          48.735,
+          1.75,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          6.1080000000000005,
+          -3.3
+        ],
+        [
+          53.016,
+          6.1080000000000005,
+          -7.36
+        ],
+        [
+          44.175,
+          6.1080000000000005,
+          -7.36
+        ],
+        [
+          44.175,
+          7.04,
+          -7.36
+        ],
+        [
+          43.535,
+          7.04,
+          -7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          -7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          -7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          -7.36
+        ],
+        [
+          37.615,
+          7.04,
+          -7.36
+        ],
+        [
+          36.975,
+          7.04,
+          -7.36
+        ],
+        [
+          36.975,
+          6.1080000000000005,
+          -7.36
+        ],
+        [
+          22.83,
+          6.1080000000000005,
+          -7.36
+        ]
+      ],
+      "length": 48.37513031117919,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              -7.36
+            ],
+            [
+              43.535,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              -7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ],
+            [
+              37.615,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              -7.36
+            ],
+            [
+              36.975,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB1:P1:power:-1:P-SANCT-B",
+      "name": "P1 → Socket · sanctuary side B · axis 10 pier",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "P1",
+      "kind": "power",
+      "role": "drop",
+      "itemIds": [
+        "P-SANCT-B"
+      ],
+      "trunkId": "trunk:DB1:P1:power:-1",
+      "color": "#2f9c95",
+      "upstreamLength": 23.450000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          44.175,
+          6.1080000000000005,
+          -7.36
+        ],
+        [
+          44.175,
+          0.85,
+          -7.36
+        ],
+        [
+          43.89,
+          0.85,
+          -7.36
+        ],
+        [
+          43.89,
+          0.85,
+          -7.25
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 5.652999999999998,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB1:P1:power:-1:P-NAVE-B",
+      "name": "P1 → Socket · mid-nave side B · axis 6",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "P1",
+      "kind": "power",
+      "role": "drop",
+      "itemIds": [
+        "P-NAVE-B"
+      ],
+      "trunkId": "trunk:DB1:P1:power:-1",
+      "color": "#2f9c95",
+      "upstreamLength": 48.37513031117919,
+      "homeRun": false,
+      "points": [
+        [
+          22.83,
+          6.1080000000000005,
+          -7.36
+        ],
+        [
+          22.83,
+          0.45,
+          -7.36
+        ],
+        [
+          22.83,
+          0.45,
+          -7.25
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 5.768000000000001,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:DB2:P3:power:-1",
+      "name": "P3 · B · circuit trunk",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "P3",
+      "kind": "power",
+      "role": "trunk",
+      "itemIds": [
+        "P-TOWER-B"
+      ],
+      "color": "#2f9c95",
+      "method": "underfloor-event",
+      "installation": "Dedicated buried duct from DB-2 below the entrance-hall floor to the tower base; duct, depth, draw pits and water sealing pending.",
+      "points": [
+        [
+          2.73,
+          1.5,
+          -3.3
+        ],
+        [
+          2.73,
+          -0.12,
+          -3.3
+        ],
+        [
+          2.73,
+          -0.12,
+          -7.7
+        ],
+        [
+          0.45,
+          -0.12,
+          -7.7
+        ]
+      ],
+      "length": 8.3,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:P3:power:-1:P-TOWER-B",
+      "name": "P3 → Event power · tower B · inside the porch",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "P3",
+      "kind": "power",
+      "role": "drop",
+      "itemIds": [
+        "P-TOWER-B"
+      ],
+      "trunkId": "trunk:DB2:P3:power:-1",
+      "color": "#2f9c95",
+      "upstreamLength": 8.3,
+      "homeRun": false,
+      "points": [
+        [
+          0.45,
+          -0.12,
+          -7.7
+        ],
+        [
+          0.45,
+          1.3,
+          -7.7
+        ],
+        [
+          0.45,
+          1.3,
+          -7.85
+        ]
+      ],
+      "method": "underfloor-event",
+      "installation": "Buried duct below the entrance-hall floor and tower plinth, rising inside the solid tower pier to the cabinet. Duct size, depth, draw pits, water sealing and separation pending; no chase through the arch mouldings.",
+      "coverPaths": [],
+      "length": 1.5699999999999994,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:DB1:P2:power:1",
+      "name": "P2 · H · circuit trunk",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "P2",
+      "kind": "power",
+      "role": "trunk",
+      "itemIds": [
+        "P-SANCT-H",
+        "P-NAVE-H"
+      ],
+      "color": "#2f9c95",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.75,
+          -1.55
+        ],
+        [
+          48.735,
+          1.75,
+          -1.55
+        ],
+        [
+          48.735,
+          1.75,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          6.1160000000000005,
+          -3.3
+        ],
+        [
+          53.016,
+          6.1160000000000005,
+          7.36
+        ],
+        [
+          44.175,
+          6.1160000000000005,
+          7.36
+        ],
+        [
+          44.175,
+          7.04,
+          7.36
+        ],
+        [
+          43.535,
+          7.04,
+          7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          7.36
+        ],
+        [
+          37.615,
+          7.04,
+          7.36
+        ],
+        [
+          36.975,
+          7.04,
+          7.36
+        ],
+        [
+          36.975,
+          6.1160000000000005,
+          7.36
+        ],
+        [
+          22.83,
+          6.1160000000000005,
+          7.36
+        ]
+      ],
+      "length": 54.96713031117919,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              7.36
+            ],
+            [
+              43.535,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              7.36
+            ],
+            [
+              37.615,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              7.36
+            ],
+            [
+              36.975,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB1:P2:power:1:P-SANCT-H",
+      "name": "P2 → Socket · sanctuary side H · axis 10 pier",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "P2",
+      "kind": "power",
+      "role": "drop",
+      "itemIds": [
+        "P-SANCT-H"
+      ],
+      "trunkId": "trunk:DB1:P2:power:1",
+      "color": "#2f9c95",
+      "upstreamLength": 30.058000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          44.175,
+          6.1160000000000005,
+          7.36
+        ],
+        [
+          44.175,
+          0.85,
+          7.36
+        ],
+        [
+          43.89,
+          0.85,
+          7.36
+        ],
+        [
+          43.89,
+          0.85,
+          7.25
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 5.660999999999998,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB1:P2:power:1:P-NAVE-H",
+      "name": "P2 → Socket · mid-nave side H · axis 6",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "P2",
+      "kind": "power",
+      "role": "drop",
+      "itemIds": [
+        "P-NAVE-H"
+      ],
+      "trunkId": "trunk:DB1:P2:power:1",
+      "color": "#2f9c95",
+      "upstreamLength": 54.96713031117919,
+      "homeRun": false,
+      "points": [
+        [
+          22.83,
+          6.1160000000000005,
+          7.36
+        ],
+        [
+          22.83,
+          0.45,
+          7.36
+        ],
+        [
+          22.83,
+          0.45,
+          7.25
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 5.776000000000001,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:DB2:P4:power:1",
+      "name": "P4 · H · circuit trunk",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "P4",
+      "kind": "power",
+      "role": "trunk",
+      "itemIds": [
+        "P-TOWER-H"
+      ],
+      "color": "#2f9c95",
+      "method": "underfloor-event",
+      "installation": "Dedicated buried duct from DB-2 below the entrance-hall floor to the tower base; duct, depth, draw pits and water sealing pending.",
+      "points": [
+        [
+          2.73,
+          1.5,
+          -3.3
+        ],
+        [
+          2.73,
+          -0.12,
+          -3.3
+        ],
+        [
+          2.73,
+          -0.12,
+          7.7
+        ],
+        [
+          0.45,
+          -0.12,
+          7.7
+        ]
+      ],
+      "length": 14.9,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:P4:power:1:P-TOWER-H",
+      "name": "P4 → Event power · tower H · inside the porch",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "P4",
+      "kind": "power",
+      "role": "drop",
+      "itemIds": [
+        "P-TOWER-H"
+      ],
+      "trunkId": "trunk:DB2:P4:power:1",
+      "color": "#2f9c95",
+      "upstreamLength": 14.9,
+      "homeRun": false,
+      "points": [
+        [
+          0.45,
+          -0.12,
+          7.7
+        ],
+        [
+          0.45,
+          1.3,
+          7.7
+        ],
+        [
+          0.45,
+          1.3,
+          7.85
+        ]
+      ],
+      "method": "underfloor-event",
+      "installation": "Buried duct below the entrance-hall floor and tower plinth, rising inside the solid tower pier to the cabinet. Duct size, depth, draw pits, water sealing and separation pending; no chase through the arch mouldings.",
+      "coverPaths": [],
+      "length": 1.5699999999999994,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:DB2:L10:light:-1",
+      "name": "L10 · B · circuit trunk",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L-STATUE-C-ARCH",
+        "L-STATUE-C-JAMB-1",
+        "L-STATUE-C-CANDLE-1",
+        "L-STATUE-B-ARCH",
+        "L-STATUE-B-JAMB-1",
+        "L-STATUE-B-CANDLE-1",
+        "L-STATUE-B-JAMB-2",
+        "L-STATUE-B-CANDLE-2"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          2.73,
+          1.5,
+          -3.3
+        ],
+        [
+          2.35,
+          1.5,
+          -3.3
+        ],
+        [
+          2.35,
+          7.65,
+          -3.3
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ]
+      ],
+      "length": 12.1,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-C-ARCH",
+      "name": "L10 → Hidden arch light · Assumption of Our Lady",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-C-ARCH"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          0
+        ],
+        [
+          2.35,
+          15.64,
+          0
+        ],
+        [
+          2.13,
+          15.64,
+          0
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 17.08,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-C-JAMB-1",
+      "name": "L10 → Hidden jamb light · Assumption of Our Lady · B side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-C-JAMB-1"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -0.905
+        ],
+        [
+          2.35,
+          13.3,
+          -0.905
+        ],
+        [
+          2.13,
+          13.3,
+          -0.905
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 13.835,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-C-CANDLE-1",
+      "name": "L10 → Statue candle light · Assumption of Our Lady · B side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-C-CANDLE-1"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -0.47
+        ],
+        [
+          2.35,
+          11.8,
+          -0.47
+        ],
+        [
+          2.1,
+          11.8,
+          -0.47
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 12.8,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-B-ARCH",
+      "name": "L10 → Hidden arch light · Saint Peter",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-B-ARCH"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -5.48
+        ],
+        [
+          2.35,
+          12.62,
+          -5.48
+        ],
+        [
+          2.13,
+          12.62,
+          -5.48
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 8.58,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-B-JAMB-1",
+      "name": "L10 → Hidden jamb light · Saint Peter · B side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-B-JAMB-1"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -5.985
+        ],
+        [
+          2.35,
+          11.05,
+          -5.985
+        ],
+        [
+          2.13,
+          11.05,
+          -5.985
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 6.505000000000001,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-B-CANDLE-1",
+      "name": "L10 → Statue candle light · Saint Peter · B side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-B-CANDLE-1"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -5.79
+        ],
+        [
+          2.35,
+          10.08,
+          -5.79
+        ],
+        [
+          2.1,
+          10.08,
+          -5.79
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 5.76,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-B-JAMB-2",
+      "name": "L10 → Hidden jamb light · Saint Peter · H side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-B-JAMB-2"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -4.9750000000000005
+        ],
+        [
+          2.35,
+          11.05,
+          -4.9750000000000005
+        ],
+        [
+          2.13,
+          11.05,
+          -4.9750000000000005
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 7.515000000000001,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-B-CANDLE-2",
+      "name": "L10 → Statue candle light · Saint Peter · H side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-B-CANDLE-2"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -5.170000000000001
+        ],
+        [
+          2.35,
+          10.08,
+          -5.170000000000001
+        ],
+        [
+          2.1,
+          10.08,
+          -5.170000000000001
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 6.379999999999999,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:DB2:L10:light:1",
+      "name": "L10 · H · circuit trunk",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L-STATUE-C-JAMB-2",
+        "L-STATUE-C-CANDLE-2",
+        "L-STATUE-H-ARCH",
+        "L-STATUE-H-JAMB-1",
+        "L-STATUE-H-CANDLE-1",
+        "L-STATUE-H-JAMB-2",
+        "L-STATUE-H-CANDLE-2"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          2.73,
+          1.5,
+          -3.3
+        ],
+        [
+          2.35,
+          1.5,
+          -3.3
+        ],
+        [
+          2.35,
+          7.65,
+          -3.3
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ]
+      ],
+      "length": 18.700000000000003,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-C-JAMB-2",
+      "name": "L10 → Hidden jamb light · Assumption of Our Lady · H side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-C-JAMB-2"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          0.905
+        ],
+        [
+          2.35,
+          13.3,
+          0.905
+        ],
+        [
+          2.13,
+          13.3,
+          0.905
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 13.835,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-C-CANDLE-2",
+      "name": "L10 → Statue candle light · Assumption of Our Lady · H side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-C-CANDLE-2"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          0.47
+        ],
+        [
+          2.35,
+          11.8,
+          0.47
+        ],
+        [
+          2.1,
+          11.8,
+          0.47
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 12.8,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-H-ARCH",
+      "name": "L10 → Hidden arch light · Saint Paul",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-H-ARCH"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          5.48
+        ],
+        [
+          2.35,
+          12.62,
+          5.48
+        ],
+        [
+          2.13,
+          12.62,
+          5.48
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 8.58,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-H-JAMB-1",
+      "name": "L10 → Hidden jamb light · Saint Paul · B side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-H-JAMB-1"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          4.9750000000000005
+        ],
+        [
+          2.35,
+          11.05,
+          4.9750000000000005
+        ],
+        [
+          2.13,
+          11.05,
+          4.9750000000000005
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 7.515000000000001,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-H-CANDLE-1",
+      "name": "L10 → Statue candle light · Saint Paul · B side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-H-CANDLE-1"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          5.170000000000001
+        ],
+        [
+          2.35,
+          10.08,
+          5.170000000000001
+        ],
+        [
+          2.1,
+          10.08,
+          5.170000000000001
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 6.379999999999999,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-H-JAMB-2",
+      "name": "L10 → Hidden jamb light · Saint Paul · H side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-H-JAMB-2"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          5.985
+        ],
+        [
+          2.35,
+          11.05,
+          5.985
+        ],
+        [
+          2.13,
+          11.05,
+          5.985
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 6.505000000000001,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-H-CANDLE-2",
+      "name": "L10 → Statue candle light · Saint Paul · H side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-H-CANDLE-2"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          5.79
+        ],
+        [
+          2.35,
+          10.08,
+          5.79
+        ],
+        [
+          2.1,
+          10.08,
+          5.79
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 5.76,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     }
   ],
   "components": [
@@ -39462,6 +41127,531 @@
         7.07
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "P-SANCT-B",
+      "name": "Socket · sanctuary side B · axis 10 pier",
+      "type": "socketDouble",
+      "product": "Double socket outlet · 16 A · recessed",
+      "circuit": "P1",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.017999999277293684,
+        0.0860000029206276,
+        0.1459999978542328
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1656,
+      "specs": "2 × 16 A 2P+E shuttered · 16 A circuit · 30 mA RCD (provisional) · IP20 indoor · 1656 W planning allowance, not a product load",
+      "hiddenAlternative": false,
+      "position": [
+        43.89,
+        0.85,
+        -7.25
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "P-NAVE-B",
+      "name": "Socket · mid-nave side B · axis 6",
+      "type": "socketDouble",
+      "product": "Double socket outlet · 16 A · recessed",
+      "circuit": "P1",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.017999999277293684,
+        0.0860000029206276,
+        0.1459999978542328
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1656,
+      "specs": "2 × 16 A 2P+E shuttered · 16 A circuit · 30 mA RCD (provisional) · IP20 indoor · 1656 W planning allowance, not a product load",
+      "hiddenAlternative": false,
+      "position": [
+        22.83,
+        0.45,
+        -7.25
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "P-TOWER-B",
+      "name": "Event power · tower B · inside the porch",
+      "type": "socketEvent",
+      "product": "Event power point · 32 A + 2 × 16 A · lockable",
+      "circuit": "P3",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.22081214174977504,
+        0.6307986080646515,
+        0.4399999976158142
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 6624,
+      "specs": "1 × 32 A 2P+E industrial + 2 × 16 A · 32 A circuit · 30 mA RCD (provisional) · IP66 lockable (provisional) · 6624 W planning allowance, not a product load",
+      "hiddenAlternative": false,
+      "position": [
+        0.45,
+        1.3,
+        -7.85
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "P-SANCT-H",
+      "name": "Socket · sanctuary side H · axis 10 pier",
+      "type": "socketDouble",
+      "product": "Double socket outlet · 16 A · recessed",
+      "circuit": "P2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.017999999277293684,
+        0.0860000029206276,
+        0.1459999978542328
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1656,
+      "specs": "2 × 16 A 2P+E shuttered · 16 A circuit · 30 mA RCD (provisional) · IP20 indoor · 1656 W planning allowance, not a product load",
+      "hiddenAlternative": false,
+      "position": [
+        43.89,
+        0.85,
+        7.25
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "P-NAVE-H",
+      "name": "Socket · mid-nave side H · axis 6",
+      "type": "socketDouble",
+      "product": "Double socket outlet · 16 A · recessed",
+      "circuit": "P2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.017999999277293684,
+        0.0860000029206276,
+        0.1459999978542328
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1656,
+      "specs": "2 × 16 A 2P+E shuttered · 16 A circuit · 30 mA RCD (provisional) · IP20 indoor · 1656 W planning allowance, not a product load",
+      "hiddenAlternative": false,
+      "position": [
+        22.83,
+        0.45,
+        7.25
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "P-TOWER-H",
+      "name": "Event power · tower H · inside the porch",
+      "type": "socketEvent",
+      "product": "Event power point · 32 A + 2 × 16 A · lockable",
+      "circuit": "P4",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.22081214174977504,
+        0.6307986080646515,
+        0.4399999976158142
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 6624,
+      "specs": "1 × 32 A 2P+E industrial + 2 × 16 A · 32 A circuit · 30 mA RCD (provisional) · IP66 lockable (provisional) · 6624 W planning allowance, not a product load",
+      "hiddenAlternative": false,
+      "position": [
+        0.45,
+        1.3,
+        7.85
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-C-ARCH",
+      "name": "Hidden arch light · Assumption of Our Lady",
+      "type": "nicheArchLine",
+      "product": "Concealed light line · niche arch",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.050000001117587095,
+        0.029999998994171606,
+        0.800000011920929
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 5.5,
+      "specs": "440 lm · 3000 K · 60° beam · 0.8 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        15.64,
+        0
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-C-JAMB-1",
+      "name": "Hidden jamb light · Assumption of Our Lady · B side",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.029999998994171606,
+        2,
+        0.05000000074505806
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 3.611111111111111,
+      "specs": "260 lm · 3000 K · 80° beam · 2 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        13.3,
+        -0.905
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-C-CANDLE-1",
+      "name": "Statue candle light · Assumption of Our Lady · B side",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        2.1,
+        11.8,
+        -0.47
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-C-JAMB-2",
+      "name": "Hidden jamb light · Assumption of Our Lady · H side",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.029999998994171606,
+        2,
+        0.05000000074505806
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 3.611111111111111,
+      "specs": "260 lm · 3000 K · 80° beam · 2 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        13.3,
+        0.905
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-C-CANDLE-2",
+      "name": "Statue candle light · Assumption of Our Lady · H side",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        2.1,
+        11.8,
+        0.47
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-B-ARCH",
+      "name": "Hidden arch light · Saint Peter",
+      "type": "nicheArchLine",
+      "product": "Concealed light line · niche arch",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.050000001117587095,
+        0.029999998994171606,
+        0.5
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 3.75,
+      "specs": "300 lm · 3000 K · 60° beam · 0.5 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        12.62,
+        -5.48
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-B-JAMB-1",
+      "name": "Hidden jamb light · Saint Peter · B side",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.029999998994171606,
+        1.2999999523162842,
+        0.05000000074505806
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1.9444444444444444,
+      "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        11.05,
+        -5.985
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-B-CANDLE-1",
+      "name": "Statue candle light · Saint Peter · B side",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        2.1,
+        10.08,
+        -5.79
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-B-JAMB-2",
+      "name": "Hidden jamb light · Saint Peter · H side",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.029999998994171606,
+        1.2999999523162842,
+        0.05000000074505806
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1.9444444444444444,
+      "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        11.05,
+        -4.9750000000000005
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-B-CANDLE-2",
+      "name": "Statue candle light · Saint Peter · H side",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        2.1,
+        10.08,
+        -5.170000000000001
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-H-ARCH",
+      "name": "Hidden arch light · Saint Paul",
+      "type": "nicheArchLine",
+      "product": "Concealed light line · niche arch",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.050000001117587095,
+        0.029999998994171606,
+        0.5
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 3.75,
+      "specs": "300 lm · 3000 K · 60° beam · 0.5 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        12.62,
+        5.48
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-H-JAMB-1",
+      "name": "Hidden jamb light · Saint Paul · B side",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.029999998994171606,
+        1.2999999523162842,
+        0.05000000074505806
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1.9444444444444444,
+      "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        11.05,
+        4.9750000000000005
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-H-CANDLE-1",
+      "name": "Statue candle light · Saint Paul · B side",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        2.1,
+        10.08,
+        5.170000000000001
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-H-JAMB-2",
+      "name": "Hidden jamb light · Saint Paul · H side",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.029999998994171606,
+        1.2999999523162842,
+        0.05000000074505806
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1.9444444444444444,
+      "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        11.05,
+        5.985
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-H-CANDLE-2",
+      "name": "Statue candle light · Saint Paul · H side",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        2.1,
+        10.08,
+        5.79
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     }
   ],
   "billOfMaterials": [
@@ -41151,6 +43341,171 @@
       "itemIds": [
         "S291",
         "S292"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "P1",
+      "type": "socketDouble",
+      "product": "Double socket outlet · 16 A · recessed",
+      "quantity": 2,
+      "modelSize": [
+        0.017999999277293684,
+        0.0860000029206276,
+        0.1459999978542328
+      ],
+      "specs": "2 × 16 A 2P+E shuttered · 16 A circuit · 30 mA RCD (provisional) · IP20 indoor · 1656 W planning allowance, not a product load",
+      "wattsEachEstimate": 1656,
+      "itemIds": [
+        "P-SANCT-B",
+        "P-NAVE-B"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "P3",
+      "type": "socketEvent",
+      "product": "Event power point · 32 A + 2 × 16 A · lockable",
+      "quantity": 1,
+      "modelSize": [
+        0.22081214174977504,
+        0.6307986080646515,
+        0.4399999976158142
+      ],
+      "specs": "1 × 32 A 2P+E industrial + 2 × 16 A · 32 A circuit · 30 mA RCD (provisional) · IP66 lockable (provisional) · 6624 W planning allowance, not a product load",
+      "wattsEachEstimate": 6624,
+      "itemIds": [
+        "P-TOWER-B"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "P2",
+      "type": "socketDouble",
+      "product": "Double socket outlet · 16 A · recessed",
+      "quantity": 2,
+      "modelSize": [
+        0.017999999277293684,
+        0.0860000029206276,
+        0.1459999978542328
+      ],
+      "specs": "2 × 16 A 2P+E shuttered · 16 A circuit · 30 mA RCD (provisional) · IP20 indoor · 1656 W planning allowance, not a product load",
+      "wattsEachEstimate": 1656,
+      "itemIds": [
+        "P-SANCT-H",
+        "P-NAVE-H"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "P4",
+      "type": "socketEvent",
+      "product": "Event power point · 32 A + 2 × 16 A · lockable",
+      "quantity": 1,
+      "modelSize": [
+        0.22081214174977504,
+        0.6307986080646515,
+        0.4399999976158142
+      ],
+      "specs": "1 × 32 A 2P+E industrial + 2 × 16 A · 32 A circuit · 30 mA RCD (provisional) · IP66 lockable (provisional) · 6624 W planning allowance, not a product load",
+      "wattsEachEstimate": 6624,
+      "itemIds": [
+        "P-TOWER-H"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "L10",
+      "type": "nicheArchLine",
+      "product": "Concealed light line · niche arch",
+      "quantity": 1,
+      "modelSize": [
+        0.050000001117587095,
+        0.029999998994171606,
+        0.800000011920929
+      ],
+      "specs": "440 lm · 3000 K · 60° beam · 0.8 m strand",
+      "wattsEachEstimate": 5.5,
+      "itemIds": [
+        "L-STATUE-C-ARCH"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "L10",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "quantity": 2,
+      "modelSize": [
+        0.029999998994171606,
+        2,
+        0.05000000074505806
+      ],
+      "specs": "260 lm · 3000 K · 80° beam · 2 m strand",
+      "wattsEachEstimate": 3.611111111111111,
+      "itemIds": [
+        "L-STATUE-C-JAMB-1",
+        "L-STATUE-C-JAMB-2"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "L10",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "quantity": 6,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "specs": "40 lm · 2200 K",
+      "wattsEachEstimate": 1,
+      "itemIds": [
+        "L-STATUE-C-CANDLE-1",
+        "L-STATUE-C-CANDLE-2",
+        "L-STATUE-B-CANDLE-1",
+        "L-STATUE-B-CANDLE-2",
+        "L-STATUE-H-CANDLE-1",
+        "L-STATUE-H-CANDLE-2"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "L10",
+      "type": "nicheArchLine",
+      "product": "Concealed light line · niche arch",
+      "quantity": 2,
+      "modelSize": [
+        0.050000001117587095,
+        0.029999998994171606,
+        0.5
+      ],
+      "specs": "300 lm · 3000 K · 60° beam · 0.5 m strand",
+      "wattsEachEstimate": 3.75,
+      "itemIds": [
+        "L-STATUE-B-ARCH",
+        "L-STATUE-H-ARCH"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "L10",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "quantity": 4,
+      "modelSize": [
+        0.029999998994171606,
+        1.2999999523162842,
+        0.05000000074505806
+      ],
+      "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
+      "wattsEachEstimate": 1.9444444444444444,
+      "itemIds": [
+        "L-STATUE-B-JAMB-1",
+        "L-STATUE-B-JAMB-2",
+        "L-STATUE-H-JAMB-1",
+        "L-STATUE-H-JAMB-2"
       ]
     }
   ],

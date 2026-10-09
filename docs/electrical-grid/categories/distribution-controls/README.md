@@ -1,6 +1,6 @@
 # Distribution and controls
 
-DB1, DB2, LC1, FC1 and AV1 enclosures and their shared supply feeders.
+DB1, DB2, LC1, FC1 and AV1 enclosures, their shared supply feeders, and the socket-outlet circuits P1–P4.
 
 ## Files and structure
 
@@ -9,7 +9,7 @@ DB1, DB2, LC1, FC1 and AV1 enclosures and their shared supply feeders.
 
 ## Current scope
 
-5 equipment/enclosures, 4 routes, 41 route vertices. 0 hidden alternatives; 0 shown connected components. Circuits: Shared board feeders.
+11 equipment/enclosures, 14 routes, 105 route vertices. 0 hidden alternatives; 6 shown connected components. Circuits: P1, P2, P3, P4.
 
 ## Editing and coordination
 

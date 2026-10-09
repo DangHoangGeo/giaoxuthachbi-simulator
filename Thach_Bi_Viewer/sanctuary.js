@@ -13,6 +13,7 @@
   const roofY=u=>12.282-.7258*Math.abs(u)-.1;
   // Owner-selected brighter red, 8 October 2026. Display finish, not measured reflectance.
   const LACQUER='#853125';
+  const SATIN_TONE=.84;
   window.CHURCH_SANCTUARY = { spec, prepare, roofY };
   function prepare({THREE:T,building,interior,data,mat,palettes}) {
     spec.frameX=data.longitudinal[spec.frameAxis];spec.wingX=spec.frameX+.2;
@@ -36,7 +37,42 @@
     const gold=material('Sanctuary · carved gilding','#c7983f',.72,.3),blue=material('Sanctuary · blue niche','#187eaf',0,.8),stone=material('Sanctuary · pale stone','#e5dbc8'),leafGold=material('Sanctuary · gilded vault boarding','#c9a045',.35,.42);
     // Carved work is left a little lighter and less polished than the turned and planed timber.
     const carve=material('Sanctuary · carved lacquered timber','#8b3827',0,.36),inset=material('Sanctuary · dark marble inset','#56625c',0,.28),figure=material('Sanctuary · carved figure, natural wood','#c49a6c',0,.5);
-    window.CHURCH_SANCTUARY.materials={wood,gold,carve};
+    // Flat boards, the cross and the furniture take a satin coat of the same red. A polished clear
+    // coat on a flat board mirrors the daylight at a glancing angle, and with the long grain it
+    // read as brown wood beside the red columns (owner, 9 October 2026: the sanctuary is red and gold).
+    // The polished lacquer is darkened a little by its grain map; the plain satin coat is toned to match it.
+    // It is kept matt enough that the crucifix accents do not raise a pale sheen on the cross at night:
+    // at roughness .4 the highlight alone read as salmon and the cross was lost against the lit recess.
+    const satin=new T.MeshPhysicalMaterial({color:new T.Color(LACQUER).multiplyScalar(SATIN_TONE),roughness:.62,clearcoat:.12,clearcoatRoughness:.5,envMapIntensity:.45});satin.name='Sanctuary · oxblood lacquer, satin';
+    const velvet=material('Sanctuary · crimson upholstery','#7c1f24',0,.82);
+    window.CHURCH_SANCTUARY.materials={wood,gold,carve,satin};
+    building.getObjectByName('Proposed sanctuary furnishings \u2014 layout to confirm')?.traverse(o=>{
+      if(!o.isMesh)return;
+      if(o.material.name==='Proposed dark-stained timber joinery')o.material=satin;
+      else if(/^(Altar|Ambo|Tabernacle) cross (arm|stem)$/.test(o.name))o.material=gold;
+      else if(/^Chair (cushion|back inset)$/.test(o.name))o.material=velvet;
+    });
+    // The corpus is carved in the round (carving.js) and takes the place of the bundle's jointed
+    // proxy in the same group, hung from the same crossarm. Its hair, beard and crown of thorns
+    // are a darker tone of the same wood, the cloth is gilded and the three nails are iron. The
+    // gilded title board follows the approved concept; the cross itself is lacquered red.
+    const proxy=building.getObjectByName('Illustrative bronze corpus — sculpture proxy'),crossarm=building.getObjectByName('Proposed sanctuary crucifix crossarm'),upright=building.getObjectByName('Proposed sanctuary crucifix upright');
+    if(proxy&&crossarm&&upright){
+      for(const o of [...proxy.children]){o.geometry?.dispose();o.removeFromParent();}
+      const carved=K.corpus(),faceX=crossarm.position.x-crossarm.geometry.parameters.width/2,x=faceX-proxy.position.x,y=crossarm.position.y;
+      const tone=material('Sanctuary · carved figure, darker tone','#7d5532',0,.62),iron=material('Sanctuary · forged iron nail','#3b3733',.55,.5);
+      for(const [geometry,finish,name] of [[carved.figure,figure,'Illustrative corpus · carved figure'],[carved.hair,tone,'Carved corpus hair, beard and crown of thorns'],[carved.cloth,gold,'Illustrative modest draped loincloth'],[carved.nails,iron,'Crucifix nails']]){
+        const part=new T.Mesh(geometry,finish);part.name=name;part.position.set(x,y,0);part.castShadow=part.receiveShadow=true;proxy.add(part);
+      }
+      spec.corpus={status:'CONCEPT · generated carving; sculptor\'s design, size, timber and fixings pending',nailLineY:y,faceX,height:carved.height,span:carved.span};
+      const [c,g]=K.canvas(256);
+      g.fillStyle='#d2a94e';g.fillRect(0,0,256,256);g.strokeStyle='#853125';g.lineWidth=10;g.strokeRect(9,71,238,114);
+      g.fillStyle='#7a2219';g.font='bold 86px Georgia, "Times New Roman", serif';g.textAlign='center';g.textBaseline='middle';g.fillText('INRI',128,131);
+      const lettering=K.texture(c,true);lettering.repeat.set(1,.5);lettering.offset.set(0,.25);
+      const boardY=upright.position.y+upright.geometry.parameters.height/2-.33,board=new T.Mesh(new T.BoxGeometry(.03,.17,.36),gold),title=new T.Mesh(new T.PlaneGeometry(.34,.17),new T.MeshStandardMaterial({map:lettering,roughness:.4,metalness:.45}));
+      board.name='Crucifix title board';board.position.set(x-.015,boardY,0);title.name='Crucifix title · INRI';title.material.name='Sanctuary · gilded title board';title.position.set(x-.0305,boardY,0);title.rotation.y=-Math.PI/2;
+      board.castShadow=board.receiveShadow=title.receiveShadow=true;proxy.add(board,title);
+    }
     // Concealed ambo service passage: the original visual pedestal stops below
     // its sloped desk and the retained microphone base sits above that desk.
     // Small hollow furniture fittings close those gaps without moving the mic.
@@ -158,15 +194,15 @@
     const N=spec.niche,outline=(grow=0)=>archShape(N.half+grow,N.spring,N.rise+grow,N.floor-grow),opening=grow=>new T.Path(outline(grow).getPoints(18).reverse());
     const casing=(outer,inner)=>{const s=outline(outer);s.holes.push(opening(inner));return s;};
     const center=group('Central gilded reredos',spec.centerX,0);
-    arch(center,3.26,8.05,2.3,.75,-.23,wood,'Outer carved canopy',opening(N.lining));
+    arch(center,3.26,8.05,2.3,.75,-.23,satin,'Outer carved canopy',opening(N.lining));
     for(let j=0;j<3;j++)crown(center,3.05+j*.075,7.75+j*.23,1.95+j*.09,.03+j*.04);
     for(const e of [-1,1])vine(center,e*3.13,2.65,5.25,.07);
-    arch(center,3.14,6.6,2.35,.75,0,wood,'Central carved timber silhouette',opening(N.lining));
+    arch(center,3.14,6.6,2.35,.75,0,satin,'Central carved timber silhouette',opening(N.lining));
     // Deep crucifix niche. Local v runs towards the nave: mouth at the reredos face, blue wall
     // 1.0 m behind it. A lacquered reveal lines it; a plaster casing shows in the service room,
     // boxed out above the boards and standing through the notched ceiling slab.
     const vMouth=spec.centerX-N.mouthX,vBack=spec.centerX-N.backX,vRoom=spec.centerX-(data.longitudinal['11']+.12),vEnd=spec.centerX-N.endX,plaster=mat?.wall||wood;
-    slab(center,casing(N.lining,0),vBack,vMouth,wood,'Crucifix niche reveal · lacquered timber');
+    slab(center,casing(N.lining,0),vBack,vMouth,satin,'Crucifix niche reveal · lacquered timber');
     slab(center,outline(N.lining),vBack-.05,vBack,glowing(blue,K.glow('#d7ecfb','#4aa0e6','#1c6fc6'),N.half+N.lining,N.floor-N.lining,N.rise+N.spring-N.floor+2*N.lining),'Blue crucifix recess');
     slab(center,casing(N.shell,N.lining+.01),vEnd+.08,vRoom,plaster,'Crucifix niche casing · plaster');
     slab(center,outline(N.shell),vEnd,vEnd+.08,plaster,'Crucifix niche casing · plaster');
@@ -175,7 +211,7 @@
     box(center,N.half*2,.04,.07,0,N.floor+.02,vMouth-.035,gold,'Gilded niche sill');
     // The cross stands on a stepped base on the niche floor.
     const vCross=spec.centerX-(N.backX-.17);
-    for(const [w,h,d,y] of [[.6,.3,.34,.15],[.42,.28,.28,.44],[.27,.24,.22,.7]]){box(center,w,h,d,0,N.floor+y,vCross,wood,'Crucifix base step');box(center,w+.04,.03,d+.04,0,N.floor+y+h/2,vCross,gold,'Gilded base step edge');}
+    for(const [w,h,d,y] of [[.6,.3,.34,.15],[.42,.28,.28,.44],[.27,.24,.22,.7]]){box(center,w,h,d,0,N.floor+y,vCross,satin,'Crucifix base step');box(center,w+.04,.03,d+.04,0,N.floor+y+h/2,vCross,gold,'Gilded base step edge');}
     for(let i=0;i<3;i++)crown(center,2.02+i*.43,5.9+i*.27,1.55+i*.16,.34+i*.035);
     const spire=K.pinnacle({w:.3,h:1.15}),smallSpire=K.pinnacle({w:.2,h:.95});
     for(const sign of [-1,1])for(let k=0;k<2;k++){
@@ -331,7 +367,7 @@
       // veranda door and, through the side arch on axis 11, the open service room.
       for(const e of [-1,1]){const hinge=new T.Group();hinge.position.set(e*.72,.15,-.28);hinge.rotation.y=-e*1.5;g.add(hinge);panel(hinge,-e*.35,1.1,.7,2.2,0);box(hinge,.035,.27,.08,-e*.58,1.06,.14,gold,'Service door handle');}
     }
-    data.sanctuary={...spec,crossShift,reference:'references/02-sanctuary/concepts/09-sanctuary-approved-concept.png',materials:['oxblood lacquer','carved lacquered timber','gilded carved relief','gilded scrollwork on lacquer','gilded relief','gilded vault boarding','blue niche','shrine niche blue','carved figure, natural wood','pale stone','dark marble inset'],roofTimber:'oxblood lacquer with gilded soffit lines; natural tones remain a simulator setting',status:'Image-led concept; ornamental profiles, relief textures and sculpture are generated approximations'};
+    data.sanctuary={...spec,crossShift,reference:'references/02-sanctuary/concepts/09-sanctuary-approved-concept.png',materials:['oxblood lacquer','oxblood lacquer, satin (cross, niche boards, furniture)','carved lacquered timber','gilded carved relief','gilded scrollwork on lacquer','gilded relief','gilded vault boarding','blue niche','shrine niche blue','carved figure, natural wood','carved figure, darker tone','crimson upholstery','forged iron nail','pale stone','dark marble inset'],roofTimber:'oxblood lacquer with gilded soffit lines; natural tones remain a simulator setting',status:'Image-led concept; ornamental profiles, relief textures and sculpture are generated approximations'};
     data.assumptions.push('Sanctuary revised from the approved concept and section sheet 5: the three-lobed frame stands on the axis-10 columns in lacquered timber, without a tie beam, and the Marian and Joseph shrines stand in its side arches on the same line, with 2.2 m service entrances below raised niches. A timber-lined chamber with a gilded boarded vault runs from the frame back to the reredos on axis 11, where the crucifix stands in a niche 1.0 m deep that opens through the back wall onto a base over the service room. The bay behind each shrine is closed in lacquered timber above the shelf, and every round column on the D/E lines is lacquered: the nave columns have turned bases on panelled stone pedestals, carved capitals, junction blocks and dies with gilded lotus panels, and the two frame columns keep gilded bands and capitals. The tie beams, side beams, rafters, purlins, ridge and braces take the same lacquer, with gilded lines and bosses on the nave rafters and ridge; the boarded roof lining stays ivory. The reredos, chamber, shrines and front frame carry generated gilded relief, crocketed pinnacles and leaf crestings after the 7 October interior views; the niches are blue with a soft glow, the corpus is carved wood with a gilded cloth and the tabernacle is gilded under a dome. Member sizes, the roof thrust on axis 10 and the relief are proposals within the retained building grids.');
   }
 })();

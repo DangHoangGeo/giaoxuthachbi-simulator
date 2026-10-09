@@ -15,6 +15,15 @@ Explore: drag to orbit, scroll/pinch to zoom, right-drag to pan.
 Walk: W A S D / arrow keys to move; drag the scene to look around (it follows
 the pointer, as in Explore); touch joystick on phones.
 Esc leaves Walk mode. References opens the nine retained reference images.
+Cinematic tour (Discover menu): a five-minute film around and through the
+church, ending at night with the roof hidden. The viewer generates its organ
+music: a homeland theme outside and the Bach-Gounod Ave Maria inside.
+Space pauses, left/right arrows change scene, M switches the music, F fills
+the screen, Esc stops. The music is presentation music, not an acoustic
+prediction for this church.
+Short film (Discover menu): a cut of 2 min 15 s for sharing, with bells and
+organ, ending with a request for engineering advice. "Save as video" in
+either film records it as a video file in the browser.
 
 The original architectural drawings and measurement workbook govern dimensions.
 Finishes, furniture and lighting are visual proposals.

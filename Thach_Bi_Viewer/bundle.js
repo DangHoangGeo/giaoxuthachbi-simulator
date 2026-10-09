@@ -39791,6 +39791,24 @@ void main() {
         )));
     }
     function Xe() {
+      // Cinematic tour (cinematic-tour.js) drives the orbit camera from the
+      // render loop; the straight walk below remains the fallback without it.
+      if (J?.cinema) return !0;
+      if (
+        window.CHURCH_CINEMA &&
+        (B("explore"), Ae(o), (o.zoom = 1), window.CHURCH_CINEMA.start(vi))
+      )
+        return (
+          (J = { cinema: !0 }),
+          (P = !1),
+          (k = null),
+          (y = "custom"),
+          (C = "cinematic"),
+          R(),
+          (x("tourButton").textContent = "\u25A0 Stop cinematic tour"),
+          x("tourButton").classList.add("active"),
+          !0
+        );
       return (
         nt("courtyard", { mode: "walk", instant: !0 }),
         (O.pitch = 0.15),
@@ -39805,10 +39823,12 @@ void main() {
       );
     }
     function Ce() {
+      let V = J?.cinema;
       ((J = null),
         x("tourButton") &&
-          ((x("tourButton").textContent = "Guided walk"),
-          x("tourButton").classList.remove("active")));
+          ((x("tourButton").textContent = "\u25B6 Cinematic tour"),
+          x("tourButton").classList.remove("active")),
+        V && window.CHURCH_CINEMA?.stop());
     }
     function Ie(V) {
       if (!J) return;
@@ -40120,7 +40140,8 @@ void main() {
       Z = requestAnimationFrame(St);
       if (document.hidden) { K = V; return; }
       let _e = Math.min(0.05, Math.max(0, (V - K) / 1e3));
-      if (((K = V), S === "walk")) (Me(_e), Ie(_e), ve());
+      if (((K = V), J?.cinema)) window.CHURCH_CINEMA.frame(_e);
+      else if (S === "walk") (Me(_e), Ie(_e), ve());
       else if (k) {
         let ge = e.MathUtils.clamp((V - k.start) / k.duration, 0, 1),
           Qe = ge * ge * (3 - 2 * ge);
@@ -40130,7 +40151,8 @@ void main() {
           l.update());
       } else (exploreMove(_e), l.update());
       (Ke(), Et(), window.CHURCH_REALISM.update(S), window.CHURCH_SIMULATOR?.frame(_e, S, b));
-      if (window.CHURCH_PERFORMANCE?.shouldRender(V, b) !== false) n.render(i, b);
+      if (window.CHURCH_PERFORMANCE?.shouldRender(V, b) !== false)
+        (n.render(i, b), J?.cinema && window.CHURCH_CINEMA.rendered?.(n.domElement));
     }
     let vi = {
       ready: !1,

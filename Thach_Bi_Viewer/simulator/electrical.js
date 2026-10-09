@@ -15,14 +15,14 @@
     FC1: { label: 'FC-1 · Fan speed controls', where: 'Existing service-room fan enclosure', pos: [48.895, 1.95, 0.4], size: [0.2, 0.7, 0.6], facing: 'x', color: '#b46a48', board: 'DB1' },
     AV1: { label: 'AV-1 · Mixer / amplifier rack', where: 'Existing service-room sound rack', pos: [49.275, 0.95, 1.4], size: [0.8, 1.6, 0.62], facing: 'x', color: '#3985c2', board: 'DB1' }
   };
-  const COLORS = { light: '#dc9e29', fan: '#b46a48', audio: '#3985c2', mic: '#8263b5', feeder: '#c84c52', decor: '#cb7a36' };
+  const COLORS = { light: '#dc9e29', fan: '#b46a48', audio: '#3985c2', mic: '#8263b5', feeder: '#c84c52', decor: '#cb7a36', power: '#2f9c95' };
   const view = { visible: false, mode: 'building', board: 'all', kind: 'all', system: 'all', circuit: 'all', item: 'all', selected: null };
   let routes = [], layer, highlight, T, scene, savedVisibility = null, rebuildTimer, soffitMaterial;
   const objects = new Map(), enclosures = new Map(), covers = new Map(), coverBatches = new Map();
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const length = p => p.slice(1).reduce((n, v, i) => n + Math.hypot(...v.map((a, k) => a - p[i][k])), 0);
   const clean = p => p.filter((v, i) => !i || v.some((a, k) => Math.abs(a - p[i - 1][k]) > 0.00001)).map(v => v.slice());
-  const wired = it => { const t = CAT.byId[it.type]; return t.glow !== 'flame' && !!(t.light || t.fan || t.speaker || t.mic); };
+  const wired = it => { const t = CAT.byId[it.type]; return t.glow !== 'flame' && !!(t.light || t.fan || t.speaker || t.mic || t.outlet); };
   const circuitIndex = c => Math.max(0, Object.keys(SIM.CIRCUITS).indexOf(c));
   const height = (c, audio) => (audio ? 5.55 : 5.9) + circuitIndex(c) * 0.008;
   const REAR = 53.016, WALL = 7.36, WING = 13.249, ARCADE = 10.414;
@@ -87,7 +87,14 @@
     const c = window.CHURCH_SANCTUARY?.spec.chamber, p = it.pos;
     return c && p[0] >= c.x0 && p[0] <= c.x1 && Math.abs(p[2]) >= 2.8 && Math.abs(p[2]) <= c.outer && it.mount !== 'pendant';
   }
-  function connectionX(it) { return chamberFixture(it) ? 48.5 : pierX(it); }
+  function connectionX(it) {
+    if (chamberFixture(it)) return 48.5;
+    // A socket on an end pier of the open 9–10 wing drops down that pier line,
+    // not from the wing-roof crossing beside it.
+    if (CAT.byId[it.type].outlet && Math.abs(Math.abs(it.pos[2]) - WALL) < 0.45)
+      for (const x of [36.975, 44.175]) if (Math.abs(it.pos[0] - x) < 0.45) return x;
+    return pierX(it);
+  }
   function riserZ(z) {
     const n = window.CHURCH_SANCTUARY?.spec.niche, clear = n ? n.half + n.shell + 0.2 : 0;
     return Math.abs(z) < clear ? -clear : z;
@@ -118,9 +125,22 @@
   function roofConnection(start, p) {
     return clean([start, ...roofLine(start, [p[0], 0, start[2]]), ...roofLine([p[0], 0, start[2]], p)]);
   }
+  // Event power at a tower base. A high-load circuit should not climb to the
+  // +7.65 m entrance band and back down: it runs 120 mm below the entrance-hall
+  // floor and the tower plinth top, then rises inside the solid front pier of
+  // the tower's inner flank wall. Depth, duct and draw-pit details are pending.
+  const EVENT = { wallZ: 7.70, depth: 0.12 };
+  const eventPoint = it => !!CAT.byId[it.type].outlet && SIM.CIRCUITS[it.circuit]?.board === 'DB2' &&
+    it.pos[0] < 0.85 && Math.abs(it.pos[2]) > 7.56 && Math.abs(it.pos[2]) < 8.1 && it.pos[1] < 3;
+  function eventTrunk(s, endX) {
+    const b = SOURCES.DB2.pos, fy = -EVENT.depth;
+    return clean([b, [b[0], fy, b[2]], [b[0], fy, s * EVENT.wallZ], [endX, fy, s * EVENT.wallZ]]);
+  }
   function branchPath(it, start) {
     const p = it.pos.slice(), s = Math.sign(p[2] || -1), [x, y, z] = start;
     const t = CAT.byId[it.type];
+    if (eventPoint(it)) return proposal([start, [p[0], p[1], s * EVENT.wallZ], p], 'underfloor-event',
+      'Buried duct below the entrance-hall floor and tower plinth, rising inside the solid tower pier to the cabinet. Duct size, depth, draw pits, water sealing and separation pending; no chase through the arch mouldings.');
     if (t.mic) {
       const a=window.CHURCH_SANCTUARY?.spec.amboService;
       // Keep the complete 6 mm cable inside the 28 mm modeled service bore.
@@ -273,8 +293,10 @@
         add({ id: `local:${it.id}`, name: `L3 → ${it.name}`, source: 'LC1', board: 'DB1', circuit: 'L3', kind: 'light', role: 'local', itemIds: [it.id], color: COLORS.light, method: 'service-ceiling', installation: 'Wall riser beside niche; containment above ceiling top +4.27 m; panel cable entry pending structural coordination.' }, servicePanelRoute(it));
         continue;
       }
-      const source = audio ? 'AV1' : SIM.CIRCUITS[it.circuit]?.board === 'DB2' ? 'DB2' : t.fan ? 'FC1' : t.light ? 'LC1' : 'DB1';
-      const kind = t.mic ? 'mic' : audio ? 'audio' : t.fan ? 'fan' : t.cat === 'decor' ? 'decor' : 'light';
+      // Exit signs leave DB-1 on their own way: a life-safety function must not depend on the
+      // lighting and scene-control enclosure (electrical walk-round review, 9 October 2026).
+      const source = audio ? 'AV1' : SIM.CIRCUITS[it.circuit]?.board === 'DB2' ? 'DB2' : it.circuit === 'E1' ? 'DB1' : t.fan ? 'FC1' : t.light ? 'LC1' : 'DB1';
+      const kind = t.mic ? 'mic' : audio ? 'audio' : t.fan ? 'fan' : t.outlet ? 'power' : t.cat === 'decor' ? 'decor' : 'light';
       const feeds = [{ source, kind, audio }];
       if (t.speaker?.active) feeds.push({ source: 'DB1', kind: 'feeder', audio: false });
       for (const f of feeds) {
@@ -292,13 +314,15 @@
       const micPath = x => clean([rack, [rack[0],my,rack[2]], [rack[0],my,mz], [x,my,mz]]);
       // A microphone group can contain edited items on either side of the rack.
       const mx = mic ? g.items.map(it => it.pos[0]) : [];
-      const trunk = mic ? clean([...micPath(Math.min(...mx)), ...(Math.max(...mx)>rack[0] ? [[Math.max(...mx),my,mz]] : [])]) : trunkPath(g.source, g.s, y, endX);
+      // Tower event points share one buried run per side from DB-2.
+      const event = g.kind === 'power' && g.items.every(eventPoint), eventX = event ? Math.min(...g.items.map(it => it.pos[0])) : 0;
+      const trunk = mic ? clean([...micPath(Math.min(...mx)), ...(Math.max(...mx)>rack[0] ? [[Math.max(...mx),my,mz]] : [])]) : event ? eventTrunk(g.s, eventX) : trunkPath(g.source, g.s, y, endX);
       const trunkId = `trunk:${key}`;
       add({ id: trunkId, name: `${g.circuit} · ${g.s < 0 ? 'B' : 'H'} · ${g.audio ? 'audio home-run bundle' : 'circuit trunk'}`, source: g.source, board, circuit: g.circuit,
-        kind: g.kind, role: 'trunk', itemIds: g.items.map(i => i.id), color: COLORS[g.kind], method: mic ? 'underfloor-microphone' : 'wall-roof-trunk',
-        installation: mic ? 'Separate microphone home-run bundle below service-room and sanctuary floors; floor build-up / access pending.' : 'Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.' }, trunk);
+        kind: g.kind, role: 'trunk', itemIds: g.items.map(i => i.id), color: COLORS[g.kind], method: mic ? 'underfloor-microphone' : event ? 'underfloor-event' : 'wall-roof-trunk',
+        installation: mic ? 'Separate microphone home-run bundle below service-room and sanctuary floors; floor build-up / access pending.' : event ? 'Dedicated buried duct from DB-2 below the entrance-hall floor to the tower base; duct, depth, draw pits and water sealing pending.' : 'Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.' }, trunk);
       for (const it of g.items) {
-        const connection = mic ? micPath(it.pos[0]) : trunkPath(g.source, g.s, y, connectionX(it)), start = connection[connection.length - 1];
+        const connection = mic ? micPath(it.pos[0]) : event ? eventTrunk(g.s, it.pos[0]) : trunkPath(g.source, g.s, y, connectionX(it)), start = connection[connection.length - 1];
         const branch = branchPath(it, start);
         add({ id: `drop:${key}:${it.id}`, name: `${g.circuit} → ${it.name}`, source: g.source, board, circuit: g.circuit, kind: g.kind,
           role: 'drop', itemIds: [it.id], trunkId, color: COLORS[g.kind], upstreamLength: length(connection), homeRun: g.audio,
@@ -423,10 +447,10 @@
   }
   function legacyMatches(r) { return (view.board === 'all' || r.board === view.board) && (view.kind === 'all' || (view.kind === 'audio' ? ['audio', 'mic'].includes(r.kind) : !['audio', 'mic'].includes(r.kind))); }
   let reviewCache = null;
-  const SYSTEMS = { all: 'All systems', lighting: 'Lights', sound: 'Sound & microphones', air: 'Fans & ventilation', exit: 'Exit signs', decoration: 'Powered decoration', distribution: 'Distribution only' };
+  const SYSTEMS = { all: 'All systems', lighting: 'Lights', sound: 'Sound & microphones', air: 'Fans & ventilation', power: 'Socket outlets', exit: 'Exit signs', decoration: 'Powered decoration', distribution: 'Distribution only' };
   function systemOf(it) {
     const type = CAT.byId[it.type];
-    return it.circuit === 'E1' ? 'exit' : type.speaker || type.mic ? 'sound' : type.fan ? 'air' : type.cat === 'decor' ? 'decoration' : 'lighting';
+    return it.circuit === 'E1' ? 'exit' : type.speaker || type.mic ? 'sound' : type.fan ? 'air' : type.outlet ? 'power' : type.cat === 'decor' ? 'decoration' : 'lighting';
   }
   // Read-only relationship closure. Shared trunks are context, not extra loads;
   // keeping a parent feeder never pulls sibling equipment into the selection.
@@ -569,10 +593,11 @@
     if (type.fan) specs.push(`${type.fan.diameter} m diameter`, `${type.fan.speeds.at(-1).watts} W at maximum speed`);
     if (type.speaker) specs.push(`${type.speaker.ratedW} W audio rating`, type.speaker.active ? 'Active / local mains + signal' : 'Passive / amplifier output', `${it.delayMs ?? 0} ms delay`);
     if (type.mic) specs.push('Microphone signal → mixer input');
+    if (type.outlet) specs.push(type.outlet.outlets, `${type.outlet.ratingA} A circuit · ${type.outlet.rcdmA} mA RCD (provisional)`, type.outlet.protection, `${type.outlet.allowanceW} W planning allowance, not a product load`);
     if (it.params?.length) specs.push(`${it.params.length} m strand`);
     return { id: it.id, name: it.name, type: it.type, product: type.name, circuit: it.circuit, board: SIM.CIRCUITS[it.circuit]?.board || 'DB1',
       quantity: 1, modelSize, modelSizeBasis: 'Local model envelope; excludes pendant rod. Verify product dimensions.',
-      diameter: type.fan?.diameter ?? null, wattsEstimate: type.light || type.fan || type.speaker || type.mic ? SIM.itemWatts(it, true) : null,
+      diameter: type.fan?.diameter ?? null, wattsEstimate: type.light || type.fan || type.speaker || type.mic || type.outlet ? SIM.itemWatts(it, true) : null,
       specs: specs.join(' · ') || 'Electrical load and product specification pending', hiddenAlternative: it.hidden, position: it.pos.slice(), procurementStatus: 'Planning category; manufacturer / model / IP / final rating pending' };
   }
   function schedule(board = view.board) {

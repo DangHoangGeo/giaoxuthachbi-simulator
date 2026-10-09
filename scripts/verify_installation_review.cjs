@@ -87,7 +87,7 @@ function assertPreserved(before, message) {
 function expectedItems(system, full) {
   return full.components.filter(component => !component.hiddenAlternative).filter(component => {
     const item = SIM.item(component.id), type = CAT.byId[component.type];
-    const category = item.circuit === 'E1' ? 'exit' : type.speaker || type.mic ? 'sound' : type.fan ? 'air' : type.cat === 'decor' ? 'decoration' : 'lighting';
+    const category = item.circuit === 'E1' ? 'exit' : type.speaker || type.mic ? 'sound' : type.fan ? 'air' : type.outlet ? 'power' : type.cat === 'decor' ? 'decoration' : 'lighting';
     return system === 'all' || system === category;
   }).map(component => component.id);
 }

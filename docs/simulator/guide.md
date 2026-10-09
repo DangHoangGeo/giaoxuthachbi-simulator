@@ -452,3 +452,64 @@ Use **Use reviewed lights and fans · B/H** only to adopt that side's held fixtu
 ## Wing saints and latest source review
 
 The current default has two small brass chandeliers, two above-window wall fans, one entrance-facing wall speaker and one Peter/Paul picture pair perwing. **Simulator→Wiring** compares the actual saved layout separately for lights/fans, sound and saints. Adopt only the desired scope with **Use reviewed lights and fans**, **Use reviewed speaker** or **Use reviewed saints ·B/H**. These local actions write full backups, preserve unrelated records and support Undo/Redo. Deleted/moved/retuned saved items are not silently reset; a first-issue artwork marker prevents later deletions being recreated. The source remains an engineering hold: some seats are too dark, speech/feedback/air/noise and physical concealment/product/fixings remain unresolved. See [the coordinated review](../engineering/wing-review.md). Peter/Paul textures are local native generated concepts; modeled frame dimensions/height are review proxies.
+
+## Cinematic tour · 9 October 2026
+
+**Discover → ▶ Cinematic tour** plays a film of about five minutes. It replaces the earlier guided walk, which only moved in a straight line from the courtyard to the sanctuary.
+
+| Part | Scenes | Light and roof |
+| --- | --- | --- |
+| I · Around the church | Opening aerial view, tower front, around the bell towers, along side B, the altar end, back over the roof | Day, roof on |
+| II · Inside | Through the central door, the nave, the timber roof, side aisle and windows, the two wings, the sanctuary, around the altar, looking back to the entrance | Day, roof on |
+| III · Evening | The lit nave, plan view from above with the roof hidden, a circle round the open church, a flight over the timber frames, the lit tower front | Evening; roof hidden for the three views from above |
+
+Controls: **Space** or a click pauses and continues, **←** and **→** change scene, **M** switches the organ music, **F** fills the screen, **Esc** or **✕ Stop** ends the film. The buttons at the bottom appear when the pointer moves.
+
+- Captions are in English and Vietnamese. The figures they quote (tower stages, cross apex, ridge, axis 1–12 length, sanctuary platform, central door) are the values in the model data. Since the second revision of 9 October 2026 they also describe what is shown: the red clay tiles (*ngói đỏ*) of the roof, the verandas and the no-air-conditioning brief, the carved and gilded beams, and the red-lacquer-and-gold sanctuary in the spirit of *sơn son thếp vàng*. Finishes are named as proposals, following `docs/church-view-renderings.md` and `docs/sanctuary-model.md`.
+- The opening and closing cards carry a dedication chosen for the owner's request of 9 October 2026 ("An invitation to come home", "With love for our parish and our hometown", "Until we meet again at home", each with its Vietnamese). The closing card still states that the model is not a construction-approved design. The owner accepted the captions and card wording on 9 October 2026. The wording is in the `card` entries of `Thach_Bi_Viewer/cinematic-tour.js`.
+- The film shows the layout that is open in the viewer, including any equipment you have moved or hidden. It changes nothing in the design and saves nothing.
+- While it plays, the film sets day or evening light, shows or hides the roof, opens the doors and changes the lens angle. Doors and lens are put back when it ends. A film that runs to its end also restores the light and roof you had and returns to the overview. If you stop it part-way, the view stays where it is so that you can continue in Explore; a message names any evening light or hidden roof that is still on (change them in View settings).
+- **The organ music is generated in the browser** on synthesised pipe tones with artificial reverberation, in three parts:
+  - *Homeland* (outside, 26 bars): an original melody on the five notes C D E G A, on a flute stop with tremulant over warm strings. It quotes no existing song.
+  - *Ave Maria* (41 bars, complete): Charles Gounod's melody of 1853 over J. S. Bach's Prelude in C, BWV 846. Both are in the public domain. The notes were transcribed from Mutopia Project edition no. 2167 (after Heugel, 1856) and checked against that edition's MIDI file. The prelude begins as the camera reaches the church door; the hush at bar 29 is the turn to evening; the "tutta forza" of bar 33 is the moment the roof is lifted away; the final tonic arrives as the circle round the open church begins.
+  - *Homeland* again on full organ over the timber frames, ending quietly under the closing card.
+
+  It is presentation music. It does not pass through the modelled loudspeakers or the room model, and it is not a prediction of how an organ or the sound system will sound in the church. For the room-based listening preview use **Simulator → Sound → Listen in the church**.
+- Evening scenes show the proposed lighting as the viewer draws it. Screen brightness is not a lux measurement.
+- Some browsers hold sound back until the page is clicked. The film then shows "Click once to switch the organ music on".
+- The route is fixed: centre aisle below 4.3 m, 1.5–2 m beside the centreline at 6.4–7.1 m under the roof, and the side-B aisle at 2–2.4 m. After placing equipment in those zones, run `CHURCH_CINEMA.audit()` in the browser console: it reports the nearest surface to the camera in each scene. `node scripts/verify_cinematic.cjs` checks the shot list, camera path, scene changes and score without a browser. Record: `review/cinematic-tour-2026-10-09/`.
+
+### Short film for sharing · 9 October 2026
+
+**Discover → ▶ Short film · 2 min 15** plays a second, separate film of 2 min 15 s (X allows 2 min 20 s). The five-minute tour above is unchanged. The short film was made at the owner's request to post on X and Instagram and ask engineers for advice on the electrical design.
+
+| Time | Scenes | Light, roof, view |
+| --- | --- | --- |
+| 0:00–0:10 | The lit church from outside, with the title on the first frame (a post shows this frame before it plays, so it is not black) | Evening, roof on |
+| 0:10–1:10 | Around the bell towers, the red tile roof, in through the door, a slow glide down the nave, the timber roof, the sanctuary | Day, roof on |
+| 1:10–1:30 | The lit nave, then the plan from above | Evening; roof hidden for the plan |
+| 1:30–1:50 | The wiring on its own, from outside and from the nave | Evening, **Wiring → Systems only** view |
+| 1:50–2:15 | The main board DB-1 in the service room, then the lit tower front with the request, held for 15 s | Evening, roof on |
+
+- **Music:** two synthesised bells a fifth apart ring alone over the evening scene. As the picture turns to daylight their last strokes ring out over a soft entry of strings and one flute, and the organ grows from there into an original toccata on the homeland melody of the long film. The bells ring only at the opening and the film closes on the organ alone (owner's direction, 9 October 2026). It quotes no existing piece and is not a recording of the church's bells.
+- **Figures** in the captions (numbers of lamps, fans and loudspeakers; cable routes and their total route length; circuits; connected kW) are read from the model that is open when the film starts, so they follow your layout. They are simulator values: route length is not installed cable length, and connected rating is not operating consumption. The caption says "Model estimates, not a checked design".
+- **The request** on the closing card reads: "Can you advise us? I built this model to help my home parish. I am not an electrical engineer. Electrical, lighting and sound engineers: please reply or send a message." The caption before it lists what needs an engineer: supply and earthing, cable sizes and voltage drop, protection and discrimination, surge and lightning protection, emergency lighting. The card keeps "Design-development model, not approved for construction". Wording is in the `SHORT_SHOTS` list of `Thach_Bi_Viewer/cinematic-tour.js`.
+- The film names the province (Ninh Bình, Việt Nam) and shows where the boards and cable routes are proposed. Check that you are content to publish both before posting.
+- While it plays, the film switches the Wiring view to **Systems only** for two scenes and puts back the view and overlay you had when it ends.
+
+**Saving a video file.** There are two ways:
+
+1. **● Save as video** in the film's control bar (either film) plays the film from the start and records it in the browser: 1920 × 1080, captions and cards drawn into the picture, with the music, as MP4 where the browser can (Chrome can). It records in real time, so the number of frames a second is whatever the computer manages. On the Mac this was built on it reached about 8 frames a second, which is jerky. Keep the window in front until the film ends.
+2. **Frame by frame** with `scripts/film_export/` gives a smooth 30 frames a second on any computer and takes about twelve minutes for the short film. Follow `scripts/film_export/README.md`. The file shared on 9 October 2026 was made this way.
+
+`node scripts/verify_cinematic.cjs` checks the short film as well: length within X's 2 min 20 s, a first frame that is not black, bells at the opening only, scene changes under black, an unhurried pace indoors, the request and the design status on the closing card. `CHURCH_CINEMA.audit({ film: 'short' })` gives its camera clearance.
+
+## Blue sky · 9 October 2026
+
+At the owner's request the viewer now has a sky: blue overhead, paling to a light haze at the horizon by day, and a dark blue that deepens overhead in the evening. It replaces the flat pale background in every view of the project, not only in the films.
+
+- It is a dome that travels with the camera (`Thach_Bi_Viewer/realism.js`, the `SKY` colours and "Sky dome · display only"). The horizon colour is also the fog colour, so the far ground meets the sky without a line.
+- **Display only.** The dome gives no light and casts no shadow. Daylight, lamp outputs, the lux, sound and air calculations, the reflections on materials (which already used their own sky map), the GLB export and the registers are unchanged.
+- Drawing views (elevations and roof plan) look along the horizon or straight down, so they keep a plain pale ground.
+- **Wiring → Systems only** hides the dome with the rest of the building and shows the plain horizon colour.
+- The sky does not represent a time of day, a season or the site's real surroundings.

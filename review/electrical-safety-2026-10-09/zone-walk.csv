@@ -1,0 +1,10 @@
+zone,wired_points,lights,fans,loudspeakers,microphones,sockets,exit_signs,circuits,connected_fixed_w,full_service_w,within_reach,covered_exterior,open_to_weather
+Service room and boards,6,6,0,0,0,0,0,L3,76,76,4,0,0
+Sanctuary,16,12,0,0,2,2,0,L3 LD MIC P1 P2,147.383404,147.383404,2,0,0
+Wing B (ministers),5,2,2,1,0,0,0,A1 F5 L8,212,178.089498,0,0,0
+Wing H (choir),5,2,2,1,0,0,0,A1 F5 L8,212,178.089498,0,0,0
+Nave,138,92,28,12,0,2,4,A1 E1 F1 F2 L1 L2 L3 LA LD P1 P2,3426.245333,2365.319306,2,0,0
+Entrance hall and DB-2,15,4,8,2,0,0,1,A5 E1 F2 F4 L1 V1,1708.0,398.0,0,0,0
+Verandas and side paths,55,46,1,8,0,0,0,A2 A3 L4 L5 L7 V1,1119.0,753.17942,0,36,19
+"Roof, eaves and gables",21,17,4,0,0,0,0,L6 L7 V1,1197.555556,505.555556,0,0,21
+"Towers, façade and front stage",56,50,0,4,0,2,0,A3 L10 L6 L7 L9 P3 P4,1163.333333,985.333333,2,0,56

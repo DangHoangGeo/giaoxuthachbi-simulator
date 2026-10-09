@@ -16,7 +16,7 @@ Reviewed 7 October 2026. Return to the [roadmap](README.md). This register disti
 | D08 | Proposed: maintainer-reviewed manifests first; external publishing integration later | Enables frequent progress without an in-app editor or immediate CMS dependency |
 | D09 | Proposed: local 06:00–18:00 daytime atmosphere, manual Auto/Day/Night | Predictable no-location-permission behavior; aesthetic mode, not astronomical daylight analysis |
 | D10 | Proposed: pilot one checked work package for Father before whole-building coverage | Prevents incomplete object semantics being presented as complete construction information |
-| D11 | Open: project/source licenses and public repository scope | Owner/source-rights review before public GitHub release; existing mixed-provenance assets cannot be relicensed by assumption |
+| D11 | Decided in part, 10 October 2026: the owner opens the project to community contribution and selects MIT for software and CC BY 4.0 for the project's own documents, data and images ([NOTICE](../NOTICE.md)). Open: public repository scope for third-party drawings and photographs and for the unmerged web branches | The repository stays private until the owner closes the holds in the [publication checklist](../docs/open-source/publication-checklist.md); existing mixed-provenance assets cannot be relicensed by assumption |
 | D12 | Open: named operators, account/domain ownership and recurring budget | Needed before provisioning/launch; prototype work can use safe local fixtures |
 
 ## Inputs to obtain at the relevant phase

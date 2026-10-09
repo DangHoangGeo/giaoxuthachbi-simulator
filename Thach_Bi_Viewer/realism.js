@@ -6,6 +6,12 @@
   'use strict';
   const stairs = [];
   let context;
+  // Sky colours from the zenith (0) down to the horizon (0.5 of the dome's height
+  // map); the horizon colour is also the fog and the plain background.
+  const SKY = {
+    day: { horizon: '#dbe8f1', stops: [[0, '#3b78c2'], [0.333, '#6ea4dd'], [0.444, '#a9cbea'], [0.492, '#d3e3f0'], [0.5, '#dbe8f1'], [1, '#dbe8f1']] },
+    evening: { horizon: '#17283c', stops: [[0, '#070f1d'], [0.3, '#0d1a2e'], [0.46, '#152538'], [0.5, '#17283c'], [1, '#17283c']] }
+  };
   const doorGroups = {};
   const api = window.CHURCH_REALISM = { prepare, lighting, finish, floorHeight, walkAllowed, bindBatches, update, setOpenings, setGlass };
   let doorBatches, lastMode, openings = 'auto', glassKind = 'stained', lightMode = 'day';
@@ -675,7 +681,24 @@
     const glow=sg.createRadialGradient(210,130,1,210,130,85);glow.addColorStop(0,'rgba(255,244,209,1)');glow.addColorStop(1,'rgba(255,244,209,0)');sg.fillStyle=glow;sg.fillRect(0,0,1024,512);
     const environment=new T.CanvasTexture(sky);environment.mapping=T.EquirectangularReflectionMapping;environment.colorSpace=T.SRGBColorSpace;
     scene.environment=environment;scene.environmentIntensity=.6;
-    scene.fog=new T.Fog('#d9e4e9',120,380);
+    scene.fog=new T.Fog(SKY.day.horizon,120,380);
+    // Visible sky: a dome that travels with the camera, blue overhead and paling
+    // to the fog colour at the horizon, so the far ground meets it without a line.
+    // Display only: it gives no light, casts no shadow and is not part of the
+    // building, its exports or any calculation. Drawing views look along the
+    // horizon or straight down and so keep a plain pale ground.
+    const skyMap=stops=>{
+      const c=document.createElement('canvas');c.width=8;c.height=512;
+      const g=c.getContext('2d'),fade=g.createLinearGradient(0,0,0,512);
+      for(const [at,colour] of stops)fade.addColorStop(at,colour);
+      g.fillStyle=fade;g.fillRect(0,0,8,512);
+      const map=new T.CanvasTexture(c);map.colorSpace=T.SRGBColorSpace;return map;
+    };
+    ctx.skyMaps={day:skyMap(SKY.day.stops),evening:skyMap(SKY.evening.stops)};
+    const dome=new T.Mesh(new T.SphereGeometry(300,32,16),new T.MeshBasicMaterial({map:ctx.skyMaps.day,side:T.BackSide,fog:false,depthTest:false,depthWrite:false,toneMapped:false}));
+    dome.name='Sky dome · display only';dome.renderOrder=-1000;dome.frustumCulled=false;dome.matrixAutoUpdate=false;dome.raycast=()=>{};
+    dome.onBeforeRender=(r,s,camera)=>dome.matrixWorld.copyPosition(camera.matrixWorld);
+    scene.add(dome);ctx.skyDome=dome;
     sun.position.set(-35,48,-48);sun.target.position.set(20,9,0);
     sun.shadow.mapSize.set(lightGraphics?1024:4096,lightGraphics?1024:4096);
     Object.assign(sun.shadow.camera,{left:-48,right:48,top:47,bottom:-39,near:.5,far:180});sun.shadow.camera.updateProjectionMatrix();sun.shadow.normalBias=.035;sun.shadow.bias=-.00008;
@@ -741,7 +764,8 @@
     if(!context)return;
     lightMode=mode==='evening'?'evening':'day';applyGlass();
     const {scene,sun,fill,hemisphere,renderer,interior,facadeLights}=context,night=mode==='evening';
-    scene.background.set(night?'#17283c':'#d9e4e9');scene.fog.color.copy(scene.background);
+    scene.background.set(SKY[lightMode].horizon);scene.fog.color.copy(scene.background);
+    if(context.skyDome)context.skyDome.material.map=context.skyMaps[lightMode];
     scene.environmentIntensity=night?.18:.6;
     hemisphere.color.set(night?'#9bb1cf':'#d9edff');hemisphere.groundColor.set(night?'#4c4038':'#b4a28a');hemisphere.intensity=night?.22:1.15;
     sun.color.set(night?'#adbedc':'#fff0d5');sun.intensity=night?.09:3.15;

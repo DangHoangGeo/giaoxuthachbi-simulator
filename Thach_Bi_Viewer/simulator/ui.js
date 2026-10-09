@@ -18,6 +18,7 @@
     { id: 'fan', label: 'Fans', cat: 'fan' },
     { id: 'speaker', label: 'Sound', cat: 'speaker' },
     { id: 'decor', label: 'Décor', cat: 'decor' },
+    { id: 'power', label: 'Power', cat: 'power' },
     { id: 'wiring', label: 'Wiring' },
     { id: 'analysis', label: 'Analysis' },
     { id: 'settings', label: 'Settings' }
@@ -249,6 +250,7 @@
     }
     if (t.fan) parts.push(t.fan.diameter + ' m', it.on && it.speed > 0 ? `speed ${it.speed}/${t.fan.speeds.length}` : 'off');
     if (t.speaker) parts.push(`${fmt(t.speaker.nominal + (it.level ?? 0) + SIM.state.settings.mixerDb)} dBA @1 m`, `${fmt(it.delayMs, 1)} ms`);
+    if (t.outlet) parts.push(`${t.outlet.ratingA} A circuit`, it.on ? 'live' : 'isolated');
     if (t.mic && Number.isFinite(it.feedbackMargin)) parts.push(`feedback margin ${fmt(it.feedbackMargin, 1)} dB`);
     parts.push(`axis ${SIM.axisName(it.pos[0])}`, `${fmt(it.pos[1], 2)} m`);
     const w = SIM.itemWatts(it);
@@ -263,7 +265,7 @@
     let html = '';
     if (sel && CAT.byId[sel.type].cat === cat) html += renderProps(sel);
     if (cat === 'speaker') html += `<div id="simAudio" class="sim-card sim-audio"></div>`;
-    html += `<div class="sim-toolbar"><button class="sim-primary" data-act="add" data-cat="${cat}">＋ Add ${cat === 'light' ? 'a light' : cat === 'fan' ? 'a fan' : cat === 'speaker' ? 'a loudspeaker or mic' : 'a decoration'}</button>
+    html += `<div class="sim-toolbar"><button class="sim-primary" data-act="add" data-cat="${cat}">＋ Add ${cat === 'light' ? 'a light' : cat === 'fan' ? 'a fan' : cat === 'speaker' ? 'a loudspeaker or mic' : cat === 'power' ? 'a socket outlet' : 'a decoration'}</button>
       <span class="sim-count">${items.filter(i => !i.hidden).length} in the model${items.some(i => i.hidden) ? ` · ${items.filter(i => i.hidden).length} hidden alternatives` : ''}</span></div>`;
     if (picking === cat) html += renderPicker(cat);
     const order = Object.keys(SIM.CIRCUITS);
@@ -343,6 +345,12 @@
       const sp = t.fan.speeds[Math.max(0, (it.speed || 1) - 1)];
       html += field('At this speed', `<output class="sim-static">${running ? `${fmt(sp.flow * 60)} m³/min · ${sp.rpm} rpm · ${sp.watts} W · ${sp.dBA} dBA @1 m` : 'Stopped · 0 W · no fan airflow or noise'}</output>`, true);
       if (t.fan.oscillate) html += field('Oscillate', `<input type="checkbox" data-prop="oscillate" ${it.oscillate !== false ? 'checked' : ''}>`);
+    }
+    if (t.outlet) {
+      const O = t.outlet, load = SIM.itemWatts(it), amps = load / (230 * 0.9), circuit = SIM.powerSummary().byCircuit.find(c => c.circuit === it.circuit);
+      html += field('Outlets', `<output class="sim-static">${esc(O.outlets)} · ${esc(O.protection)}</output>`, true);
+      html += field('Circuit protection', `<output class="sim-static">${O.ratingA} A · ${O.rcdmA} mA residual-current device · provisional, not yet engineered</output>`, true);
+      html += field('Test load now', `<output class="sim-static ${circuit?.overloaded ? 'bad' : ''}">${it.on && !it.hidden ? `${fmt(load)} W · ${fmt(amps, 1)} A here · ${fmt(circuit?.amps || 0, 1)} A of ${O.ratingA} A on ${esc(it.circuit)}` : 'Isolated · no load'}</output>`, true);
     }
     if (t.speaker) {
       const S = t.speaker, lvl = S.nominal + (it.level ?? 0) + SIM.state.settings.mixerDb;
@@ -770,7 +778,7 @@
     }
     const open = document.body.classList.contains('sim-open');
     const cat = TABS.find(t => t.id === tab)?.cat;
-    const color = { light: '#e0a826', fan: '#3a9bb5', speaker: '#7a5bb5', decor: '#c0577a' };
+    const color = { light: '#e0a826', fan: '#3a9bb5', speaker: '#7a5bb5', decor: '#c0577a', power: '#2f9c95' };
     g.innerHTML = open ? SIM.state.items.filter(it => !it.hidden && (!cat || CAT.byId[it.type].cat === cat)).map(it => {
       const x = 90 + it.pos[2] * 4.65, y = 244 - (it.pos[0] + 20) * 3.12;
       const sel = it.id === SIM.state.selectedId;

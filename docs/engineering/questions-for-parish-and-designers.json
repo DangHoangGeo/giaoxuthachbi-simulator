@@ -380,6 +380,78 @@
       "evidence": "Mẫu tranh và khảo sát tường/cửa, bản vẽ có ID và kích thước đã ký, kiểm tra chói và neo",
       "blocks": "Khung1.12×1.62 m và tâmY2.20 chỉ là bao ý tưởng; chưa phải kích thước hay liên kết thi công",
       "answer": null
+    },
+    {
+      "id": "Q42",
+      "discipline": "Điện / nguồn cấp",
+      "owner": "Cha xứ / kỹ sư điện / điện lực",
+      "question_vi": "Nguồn cấp, số pha và aptomat tổng có đủ cho hai tủ ổ cắm sự kiện 32 A ở hai tháp (P3, P4) cùng lúc với tải nhà thờ không? Có thể cấp ba pha tới DB-2 hoặc lấy nguồn sự kiện gần mặt tiền không?",
+      "evidence": "Hợp đồng/biên bản điện lực, công suất và số pha được cấp, sơ đồ một sợi và tính toán phụ tải do kỹ sư điện ký",
+      "blocks": "So sánh có điều kiện: 64 A thêm vào khoảng 13 A tại DB-2 trên cáp DB-1→DB-2 dài 80,683 m cho sụt áp 5,6 % với 25 mm² một pha; chưa chọn được cáp, aptomat hay cách cấp nguồn",
+      "answer": null
+    },
+    {
+      "id": "Q43",
+      "discipline": "Điện / sử dụng",
+      "owner": "Cha xứ / ban hành giáo / kỹ sư điện",
+      "question_vi": "Sự kiện ngoài trời lớn nhất dùng những thiết bị nào (âm thanh, ánh sáng, gian hàng, máy phát dự phòng), công suất bao nhiêu và cắm ở đâu? Có cần ổ ba pha hoặc thêm điểm cấp ở sân không?",
+      "evidence": "Danh sách thiết bị và công suất của các dịp lễ gần đây, yêu cầu của đơn vị âm thanh/ánh sáng",
+      "blocks": "Định mức 32 A một pha cho mỗi tháp chỉ là giá trị quy hoạch; loại ổ, cấp bảo vệ, khóa và vị trí chưa được duyệt",
+      "answer": null
+    },
+    {
+      "id": "Q44",
+      "discipline": "Điện / kết cấu / kiến trúc",
+      "owner": "Kỹ sư điện / kỹ sư kết cấu / kiến trúc sư",
+      "question_vi": "Bốn ổ cắm trong nhà (trụ trục 10 hai bên cung thánh, tường cạnh trụ trục 6 hai bên lòng nhà thờ) được lắp nổi hay âm, ở cao độ nào, loại ổ nào, và đi ống thế nào để không đục vào trụ chịu lực? Ống ngầm tới hai tháp đi ở độ sâu nào, có hố kéo cáp và chống thấm ra sao?",
+      "evidence": "Khảo sát trụ/tường/sàn, chi tiết hộp và ống đã ký, loại ổ và cấp bảo vệ được chọn",
+      "blocks": "Vị trí, cao độ 0,45/0,85/1,30 m và tuyến ngầm sâu 0,12 m là giá trị nghiên cứu; so sánh sụt áp cho thấy 2,5 mm² không đạt 5 % ở ổ giữa nhà thờ với tải 16 A",
+      "answer": null
+    },
+    {
+      "id": "Q45",
+      "discipline": "Mỹ thuật / phụng vụ",
+      "owner": "Cha xứ / hội đồng mục vụ / nhà điêu khắc",
+      "question_vi": "Hai tượng thánh ở hai hốc bên mặt tiền là vị thánh nào? Mô hình tạm đề xuất Thánh Phêrô (bên B) và Thánh Phaolô (bên H). Tượng Đức Mẹ Hồn Xác Lên Trời và hai tượng thánh có kích thước, chất liệu, màu và mẫu điêu khắc được duyệt nào?",
+      "evidence": "Quyết định của cha xứ, mẫu/phác thảo của nhà điêu khắc, kích thước hốc tượng đo tại hiện trường",
+      "blocks": "Hình tượng trong mô hình là hình tạo sinh để xem xét (2,20 m và 1,78 m); độ sâu hốc trong mô hình chỉ minh họa",
+      "answer": null
+    },
+    {
+      "id": "Q46",
+      "discipline": "Kết cấu / chiếu sáng / bảo trì",
+      "owner": "Kỹ sư kết cấu / thiết kế chiếu sáng / nhà thầu",
+      "question_vi": "Tượng được neo vào bệ thế nào (trọng lượng, gió, động đất, chống sét)? Khe giấu dải đèn ở vòm và hai má hốc, gờ che, vị trí bộ nguồn, đèn nến điện trên bệ và cách tiếp cận bảo trì ở cao độ +10 đến +15 m được thiết kế ra sao?",
+      "evidence": "Tính toán neo và bệ, chi tiết khe/gờ, sản phẩm chống nước được chọn, thử nghiệm ánh sáng ban đêm trên mẫu thật, phương án bảo trì an toàn",
+      "blocks": "Chín dải sáng giấu và sáu đèn nến trên mạch L10 là ý tưởng; chưa có tải trọng, liên kết, sản phẩm hay kết quả đo",
+      "answer": null
+    },
+    {
+      "id": "Q47",
+      "discipline": "Nghệ thuật thánh / kết cấu",
+      "owner": "Cha xứ / nhà điêu khắc / kỹ sư kết cấu",
+      "question_vi": "Tượng Chúa chịu nạn trên thánh giá cung thánh: ai thiết kế và tạc tượng, kích thước tượng và thánh giá (mô hình: tượng khoảng 2,06 m, thánh giá cao 3,41 m, đòn ngang 2,10 m), loại gỗ và lớp hoàn thiện? Thánh giá sơn son đỏ theo yêu cầu ngày 9/10/2026 hay gỗ tự nhiên như ảnh ý tưởng đã duyệt? Thánh giá và tượng được neo vào bệ và tường hốc thế nào?",
+      "evidence": "Mẫu hoặc bản vẽ của nhà điêu khắc, mẫu màu sơn son và thếp vàng xem tại chỗ dưới ánh sáng ngày và đèn, tính toán neo và trọng lượng, phương án lắp đặt và bảo trì ở cao độ +3,4 đến +6,8 m",
+      "blocks": "Tượng trong mô hình là hình tạo sinh để xem bố cục; không xác định kích thước, vật liệu, liên kết hay tải trọng",
+      "answer": null
+    },
+    {
+      "id": "Q48",
+      "discipline": "Âm thanh / điện",
+      "owner": "Thiết kế âm thanh / kỹ sư điện",
+      "question_vi": "Dây loa đi chung dải tường với cáp đèn, quạt và cáp cấp DB-2 (mô hình: 632 m trong 720 m tuyến loa nằm cách tuyến điện lực dưới 0,30 m; 262 m trùng tuyến). Loa dùng đường 100 V hay trở kháng thấp? Dây loa và cáp điện lực được tách ngăn, tách ống hay dùng cáp có cách điện phù hợp điện áp bên cạnh thế nào?",
+      "evidence": "Sơ đồ khuếch đại và loại đường loa, loại cáp và cấp cách điện, chi tiết máng/ống có vách ngăn, yêu cầu tách tuyến theo tiêu chuẩn áp dụng",
+      "blocks": "Chi tiết máng ống ở hai dải tường lòng nhà thờ, hệ số đi chung khi chọn tiết diện cáp, nhiễu và an toàn của tuyến loa",
+      "answer": null
+    },
+    {
+      "id": "Q49",
+      "discipline": "Vận hành / chiếu sáng",
+      "owner": "Cha xứ / thiết kế chiếu sáng / kỹ sư điện",
+      "question_vi": "Đèn ngoài nhà (mặt tiền và tháp L6 919 W, sân khấu và cửa chính L9, tượng mặt tiền L10, hành lang L4, bậc và lối đi L5) bật những giờ nào ngoài giờ lễ? Có dùng công tắc thời gian, giờ tắt muộn và mức giảm sáng ban đêm không?",
+      "evidence": "Lịch vận hành mong muốn theo ngày thường, Chúa nhật và lễ trọng; yêu cầu an ninh ban đêm; thiết bị hẹn giờ/điều khiển được chọn",
+      "blocks": "Ước tính điện năng cả năm (mô hình: riêng L6, L9, L10 bật 4 giờ mỗi đêm khoảng 1.826 kWh/năm), thiết kế điều khiển DB-2 và chế độ nhanh",
+      "answer": null
     }
   ]
 }

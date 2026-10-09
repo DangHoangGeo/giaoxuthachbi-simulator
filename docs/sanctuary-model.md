@@ -23,7 +23,7 @@ The interactive viewer builds the sanctuary from `sanctuary.js`, called before g
   - *Two relief finishes*, both generated: gilded scrollwork on red lacquer (a running stem with scrolls, leaves and rosettes, repeating every 1.0 m) and gilded relief on a gilt ground (the same pattern every 0.4 m). Each has a height map and keeps the gilding metallic and the ground lacquered. Gilded relief covers the faces and returns of the four reredos pilasters, the chamber wall pilasters, the shrine pilasters and door jambs, the shrine shelf and the two friezes of the reredos. Scrollwork covers the ground round the crucifix niche, the panels of the reredos base and the door leaves, the ground behind each shrine and both faces of the front frame on axis 10.
   - *Blue niches.* The wall behind the crucifix is azure with a soft glow behind the corpus, deeper towards the edges; the two shrine niches are a lighter blue with the same glow.
   - *Pinnacles and crestings.* Crocketed spires on square turrets stand on the four reredos pilasters (1.15 m), on the gradine (0.95 m) and on the shrine pilasters (1.0 m, passing under the side arches). A cresting of leaves follows each arc of the canopy, the three arches of the front frame and the two shrine heads, in place of the strung flowers.
-  - *Figures and tabernacle.* The corpus is carved natural wood with a gilded cloth. The tabernacle is gilded under a dome.
+  - *Figures and tabernacle.* The corpus is carved natural wood with a gilded cloth. The tabernacle is gilded under a dome. Since 9 October 2026 the corpus is a carved figure and the cross is lacquered red: see [Carved corpus and red-and-gold finishes](#carved-corpus-and-red-and-gold-finishes--9-october-2026).
 - **One open service room.** The room behind the sanctuary back wall now runs the full width between the C and G walls (about 14.5 × 4.2 m). The ochre statue alcoves (back wall, outer lining and ceiling) and the two partitions with their small doors are removed. The flat ceiling underside at +4.15 m stays over the centre bay, finished with a downstand edge beam on the D and E lines; the side bays are open to the roof. The concealed-routing revision moves horizontal board feeds above the +4.27 m ceiling top, with their wall risers beside the niche, instead of crossing the edge beam. Access and penetrations remain pending. Vesting furniture, boards and sound rack are where they were.
 
 The cross, corpus, altar and tabernacle remain real geometry. Building grids and structural columns are unchanged.
@@ -32,7 +32,7 @@ The cross, corpus, altar and tabernacle remain real geometry. Building grids and
 
 ## Lighting (circuit L3), lowered for the night view
 
-At night the centre was bright enough to wash out its own colours. The evening picture is exposed for 110 lux (*Settings → Eye adaptation*). A surface lit to about twice that level still shows its colour; at four or five times it burns out towards white. The blue recess stood at 560 lux in all and the corpus at 780, against about 250 lux in the nave. The output of the sanctuary fittings is now lower, most of all inside the chamber, and the reredos washes are tighter and aimed outside the niche.
+At night the centre was bright enough to wash out its own colours. The evening picture was exposed for 110 lux at that time (*Settings → Eye adaptation*; the default is 160 lux since 9 October 2026, see [Evening view from the entrance](#evening-view-from-the-entrance--9-october-2026)). A surface lit to about twice that level still shows its colour; at four or five times it burns out towards white. The blue recess stood at 560 lux in all and the corpus at 780, against about 250 lux in the nave. The output of the sanctuary fittings is now lower, most of all inside the chamber, and the reredos washes are tighter and aimed outside the niche.
 
 Direct maintained illuminance from the simulator's photometry (maintenance factor 0.8), scene “Full service · evening”. The whole-room inter-reflected estimate adds about 64 lux everywhere.
 
@@ -84,7 +84,7 @@ The chamber walls, the lined back wall with its niche opening, the niche reveals
 
 ## Limits
 
-- Sculptures, lattice and floral carving are procedural approximations, not scanned sculpture or construction joinery. The relief finishes are generated patterns on flat faces with a height map: they give the density of the concept at a distance, and close up they repeat and have no real depth. The statues of Our Lady and Saint Joseph are still simple figures, the shrine doors still stand open, and the altar front is still plain.
+- Sculptures, lattice and floral carving are procedural approximations, not scanned sculpture or construction joinery. The relief finishes are generated patterns on flat faces with a height map: they give the density of the concept at a distance, and close up they repeat and have no real depth. The statues of Our Lady and Saint Joseph were simple figures until 9 October 2026 (see *Sculpted statues* below); the shrine doors still stand open, and the altar front is still plain.
 - The lighting table above is unchanged: the analysis uses its own reflectance schedule, not the rendered finishes. More gilding and a lighter blue will reflect more light in the real building; check them on samples before fixing lamp outputs.
 - Column capitals, bases, blooms and leaves are generated shapes (about 190 000 triangles for all columns, and about 250 000 more for the beam haunches, cartouches and ends). They sit inside the footprint of the existing pedestals and shafts, so walking clearances and the sightline study are unchanged. The simulator still models each column as its shaft and 0.82 m pedestal: capitals and base mouldings are not in the light or sound analysis.
 - The lengthwise beams and all haunches are display geometry. Their real section, bearing, splices and fixing are for the structural engineer; see the [beam specification](beams-roof-connections/SPECIFICATION.md) and its open coordination items.
@@ -95,7 +95,7 @@ The chamber walls, the lined back wall with its niche opening, the niche reveals
 - The two stone planters at the front corners of the dais, which were there before, stand between 11 wing seats on each side and the centre of the altar.
 - The ambo microphone's feedback margin fell from 1.5 to 1.2 dB with the ambo nearer the nave loudspeakers. It was already below the 3 dB the checks ask for.
 - With less light in the sanctuary, less is reflected back into the nave (about 5 lux). Four seats at the ends of the last row now calculate at 197 lux, where 200 is the aim and they had 201. The lamp that serves the outer two is already at full output; one more small fitting on the entrance wall would restore them.
-- The night levels above suit the default exposure of 110 lux. If *Eye adaptation* is set higher the whole picture darkens and the centre can take more light again.
+- The night levels above were set for an exposure of 110 lux and are unchanged. The default exposure is now 160 lux, which shows them with more colour. If *Eye adaptation* is set higher still the whole picture darkens and the centre can take more light again.
 - Lux values are direct light from the planning photometry. Real lacquer and gilding are glossy: check glare and reflections on a sample before fixing lamp outputs.
 
 ## Validation
@@ -123,3 +123,60 @@ Local chandelier equipment remains L78/L79/L80 at X 16.725/25.725/34.725 m, Y 6.
 ## Sanctuary wing pictures and equipment · 9 October 2026
 
 The current local simulator adds Peter and Paul as two unpowered concept pictures between the windows in each wing (four frames, two shared native textures). The model reserves central end-gable X 38.675–42.475 for them; frame proxy 1.12×1.62 m / centre Y 2.20 remains unapproved. Two smaller brass chandeliers and two extended-bracket wall fans per wing replace the earlier four-of-each review, with one entrance-facing speaker each raised clear of their envelopes. No sanctuary structural geometry/finish/drawing changes or acoustic material tuning are made. See [coordinated source/settings, comparisons and holds](engineering/wing-review.md) and [art provenance](../Thach_Bi_Viewer/references/10-wing-saints/README.md). All mounting, physical sizes, concealment, performance and artwork decisions still require responsible review.
+
+## Sculpted statues · 9 October 2026
+
+The owner asked for more realistic statues. The simulator's figure builder in `simulator/catalog.js` now lofts each body with drapery folds and models the head and face, veil or hair and beard, sleeves and hands. Our Lady (prayer, veil, blue mantle, twelve-star halo) and Saint Joseph (carrying the Child Jesus, as in the approved concept) keep their stable records, positions on the shrine shelves at +2.85 m, pedestals and switching; saved layouts need no migration. The Sacred Heart catalogue figure uses the same builder. Each statue is about 32,000–62,000 triangles.
+
+These are generated approximations that read as carved, painted statues at viewing distance. They are not scans or sculptor's models, and they set no size, material or fixing. The crucifix corpus belongs to the building model; it was the earlier simple jointed figure at that revision and is replaced in the section below. The lighting table above is unchanged: the statues are not in the light or sound analysis, and the statue-face value was calculated at a point, not on the new geometry. Three façade figures built the same way are recorded in the [façade statue record](engineering/outlets-and-facade-statues.md).
+
+## Carved corpus and red-and-gold finishes · 9 October 2026
+
+Owner requests of 9 October 2026 (`USER CONFIRMED` appearance intent): improve the statue of Jesus as the other statues were improved, and make the timber of the sanctuary red like the columns, "red and gold", not brown. Status: **CONCEPT**. Nothing here fixes a size, timber, joint, fixing or load.
+
+**Corpus.** The jointed proxy of the building model (spheres and cylinders) is replaced by a figure carved in the round, generated in `Thach_Bi_Viewer/carving.js` (`corpus()`) and placed by `sanctuary.js` in the same group on the same cross. It follows the [approved concept](../Thach_Bi_Viewer/references/02-sanctuary/concepts/09-sanctuary-approved-concept.png): head bowed towards his right shoulder with closed eyes, beard, long hair and a crown of thorns; modelled chest, ribs and belly with the wound of the lance; arms raised to the nails with open hands; knees bent, the right foot over the left; a gilded cloth slung from a knot on his right hip; three iron nails; a gilded title board `INRI`.
+
+| Item | Model value | Basis |
+| --- | --- | --- |
+| Nail line of the hands | +5.88 m, the centre line of the existing crossarm | `MODEL TRANSCRIPTION` of the earlier proposal; unchanged |
+| Figure | about 2.06 m from the crown of the head to the toes as hung, 1.72 m between the finger tips | `CONCEPT`; a little over life size so that it reads from the nave. The earlier proxy was about 1.95 m and 1.98 m |
+| Cross | upright 0.16 × 0.20 × 3.41 m and crossarm 2.10 m, on the stepped base | unchanged geometry; finish changed (below) |
+| Title board | 0.36 × 0.17 m, centre 0.33 m below the top of the upright | `CONCEPT`, after the approved concept |
+| Triangles | about 56,000 for figure, hair, cloth and nails | viewer cost only |
+
+The corpus is carved natural wood, its hair, beard and crown a darker tone of the same wood, the cloth gilded. On the approved concept the feet end about 0.9 m above the base; in the model they end about 0.4 m above it, because the model's cross is shorter in proportion to the figure. The cross was not resized. The sculptor's design, the size of figure and cross, the timber and all fixings remain open ([Q47](engineering/questions-for-parish-and-designers.json)).
+
+**Red and gold.** Two things read as brown beside the red columns:
+
+1. The cross, the sanctuary chairs and the ambo desk carried the general brown joinery finish of the building model.
+2. The flat boards round the crucifix niche (canopy, arch silhouette and niche reveal) carried the polished column lacquer. On a flat board seen at a glancing angle its clear coat mirrors the daylight and its long grain is stretched, so the red washed out to a brown rosewood tone.
+
+These parts now take **“oxblood lacquer, satin”**: the same owner-selected red (`#853125`, toned by 0.84 because the polished finish is darkened by its grain map), less polished and without the grain (roughness 0.62 and a thin 0.12 clear coat since the evening correction below). It covers the cross and its stepped base, the three niche boards, the chair frames and the ambo desk. The round columns, beams and wall linings keep the polished lacquer unchanged. The small cross emblems on the altar, ambo and tabernacle are gilded, the chair cushions are crimson, and the two flower stands beside the tabernacle are red lacquer. Rendered samples in the day view (sRGB, 9 × 9 pixels): column shafts 91–110 / 42–45 / 42–43, cross 122 / 53 / 42, niche arch board 109 / 60 / 36. These are screen colours of a display finish, not measured reflectance or a paint specification.
+
+The approved concept shows the cross in natural honey-coloured wood. The red cross is a departure from that picture made on the owner's instruction; the concept image itself is unchanged. The terracotta plant pots, the altar book, the upholstery of the nave and the church doors were left as they were.
+
+**Light and analysis.** No lamp, switch, circuit or route changed. The corpus is not an occluder or a receiver in the light, sound or air analysis, so the lighting table above is unchanged; its head and feet values were calculated at the earlier proxy's points (head centre +5.83 m, feet +4.09 m), while the new head centre is at about +5.73 m and the toes at about +3.82 m. By evening the two 700 lm accents fall on a lighter cross than the earlier brown one; this is corrected in the next section without changing a lamp.
+
+Evidence: [review/sanctuary-corpus-2026-10-09](../review/sanctuary-corpus-2026-10-09/README.md).
+
+## Evening view from the entrance · 9 October 2026
+
+Owner, 9 October 2026: at night the sanctuary looks a little too bright, and from the entrance it is hard to see. Two causes were found in the picture, not in the lamps:
+
+1. **Sheen on the new red cross.** The satin lacquer was given roughness 0.40 with a 0.30 clear coat. Under the two crucifix accents its broad highlight alone rendered as a pale salmon (116 / 94 / 60 with the colour set to black), so the cross lost its red and merged with the lit recess and the pale corpus. The finish is now matt: roughness 0.62, clear coat 0.12. By day it is unchanged in hue and slightly deeper (cross 106 / 36 / 30 against column shafts 91–110 / 42–45 / 42–43).
+2. **Evening exposure.** The picture was exposed for 110 lux while the full evening service lights the seats to about 312 lux on the book (mean of 368 seats) and the crucifix to 244 lux, so the nave floor, the walls and the centre of the sanctuary all burned out towards white. The default *Eye adaptation (evening)* is now **160 lux**. A saved setting still at the old default of 110 moves to 160 once; any other value a user has chosen is kept. The day picture keeps its exposure (1,210 lux).
+
+No lamp, output, aim, switch or circuit changed; the lighting table above and every analysis result are the same. The exposure is a display setting: screen brightness is not a lux measurement and says nothing about glare or adaptation on site.
+
+Rendered samples from the entrance (camera at X 4.5, eye 1.65 m, evening lighting state, sRGB, 5 × 5 pixel means):
+
+| Surface | Before (110 lux, sheen) | After (160 lux, matt) |
+| --- | --- | --- |
+| Cross upright | 230 / 180 / 134 | 193 / 95 / 58 |
+| Corpus chest | 250 / 233 / 196 | 246 / 222 / 172 |
+| Blue recess, side | 176 / 217 / 226 | 146 / 200 / 212 |
+| Blue recess, centre glow | 241 / 243 / 239 | 233 / 236 / 231 |
+| Column 10/D | 165 / 88 / 63 | 136 / 67 / 47 |
+| Nave floor | 242 / 238 / 232 | 235 / 230 / 220 |
+
+Still pale after the change: the glow in the centre of the recess and the corpus in front of it, both lit to about 244 lux by the accents. If the crucifix should stand out more strongly at night, the next step is a lighting decision (lower accents or a deeper recess centre) for the lighting designer and the owner, with a mock-up on site.

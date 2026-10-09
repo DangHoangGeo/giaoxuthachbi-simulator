@@ -6,12 +6,14 @@ export const categories = [
   { id: 'air-system', name: 'Fans and ventilation', usage: 'Ceiling, wall, entrance and exhaust fans for air movement and ventilation.' },
   { id: 'exit-signs', name: 'Exit signs', usage: 'E1 maintained exit-sign group. Emergency supply and duration require separate design.' },
   { id: 'decoration', name: 'Decoration and furnishings', usage: 'Seasonal decorative lighting and non-electrical simulator furnishings.' },
-  { id: 'distribution-controls', name: 'Distribution and controls', usage: 'DB1, DB2, LC1, FC1 and AV1 enclosures and their shared supply feeders.' }
+  { id: 'distribution-controls', name: 'Distribution and controls', usage: 'DB1, DB2, LC1, FC1 and AV1 enclosures, their shared supply feeders, and the socket-outlet circuits P1–P4.' }
 ];
 
 export function equipmentCategory(row) {
   if (row.Category === 'enclosure') return 'distribution-controls';
   if (row.Circuit === 'E1') return 'exit-signs';
+  // Socket outlets are general distribution, not a lighting, sound or air load.
+  if (row.Category === 'power') return 'distribution-controls';
   const category = { light: 'lighting', speaker: 'sound', mic: 'sound', fan: 'air-system', decor: 'decoration' }[row.Category];
   assert(category, `Unclassified equipment ${row['Equipment ID']}: ${row.Category}`);
   return category;
@@ -142,7 +144,7 @@ ${rows.map(r => `| ${r.name} | ${r.specsDocumented}/${r.equipment} | ${r.control
 
 These counts measure field completeness only; filled fields still require source and engineering review. A 0/0 population is not applicable. Product selection, protection, final cable/containment specifications, actual control channels and commissioning evidence remain pending where fields are blank. No overall quality score is invented.
 
-The held wing review of 9 October 2026 retains four small brass chandeliers (L63/L65/L67/L69), four F5 above-window wall fans (F240–F243, extended bracket proxy), and two entrance-facing wing wall speakers (S276/S278). Four light IDs, four appended fan IDs and S275/S277 are retired; sixteen F2 nave wall fans (eight per side, extended bracket proxy) remain shown/OFF. Four unpowered Peter/Paul pictures are decoration records with no electrical routes. Task lighting, airflow, noise, speech/feedback, glare, concealment, product and mounting holds remain; see [wing comparison](../engineering/wing-review.md). The seating-cache correction is independently verified, not design approval. Register refresh does not resolve performance failures. See [simulator validation status](../simulator/README.md) and [control requirements](controls.md). Status: **design development**.
+The held wing review of 9 October 2026 retains four small brass chandeliers (L63/L65/L67/L69), four F5 above-window wall fans (F240–F243, extended bracket proxy), and two entrance-facing wing wall speakers (S276/S278). Four light IDs, four appended fan IDs and S275/S277 are retired; sixteen F2 nave wall fans (eight per side, extended bracket proxy) remain shown/OFF. Four unpowered Peter/Paul pictures are decoration records with no electrical routes. Task lighting, airflow, noise, speech/feedback, glare, concealment, product and mounting holds remain; see [wing comparison](../engineering/wing-review.md). The seating-cache correction is independently verified, not design approval. The outlet and façade-statue issue of 9 October 2026 adds six socket-outlet points on P1–P4 (four indoor double outlets from DB-1, two lockable tower event points from DB-2, owned by distribution-controls), three façade statues as unpowered decoration records, and fifteen L10 lighting records for them (nine concealed light lines and six candle lights). Socket rated values are planning allowances per circuit, not equipment loads, and add nothing to the operating estimate while no test load is entered. The electrical walk-round review of 9 October 2026 moves the origin of the seven E1 exit-sign routes from LC-1 to DB-1, so that the signs do not depend on the lighting-control enclosure; the seven earlier route IDs are retired and the signs, their positions and their 15 W are unchanged. See the [safety and efficiency review](safety-efficiency-review.md). Supply, feeder, protection, accessories, slots and fixings remain held; see [outlets and façade statues](../engineering/outlets-and-facade-statues.md). Register refresh does not resolve performance failures. See [simulator validation status](../simulator/README.md) and [control requirements](controls.md). Status: **design development**.
 
 ## Sources and refresh
 
