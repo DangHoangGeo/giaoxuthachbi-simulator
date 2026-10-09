@@ -23,16 +23,17 @@ Owner request: richer captions (the red roof material, the special sanctuary) an
 | Change | Basis | Check |
 | --- | --- | --- |
 | Captions describe what is on screen: red clay tiles (*ngói đỏ*), verandas and the no-air-conditioning brief, carved and gilded beams, the sanctuary in red lacquer and gold (*sơn son thếp vàng*), altar, tabernacle and crucifix, the Assumption on the tower front | `realism.js` tile finish; `docs/interior-systems-plan.md` §5; `docs/sanctuary-model.md`; `docs/church-view-renderings.md` (visual direction, `USER CONFIRMED` Assumption) | `verify_cinematic.cjs` ties the quoted figures to the model data and requires finishes to be named as proposals. Roof, sanctuary and closing captions viewed on screen |
-| Dedication on the opening and closing cards; design status and music credit moved to a foot line | Owner request of 9 October 2026 | Both cards viewed on screen. The exact wording is the assistant's proposal and is for the owner to confirm |
+| Dedication on the opening and closing cards; design status and music credit moved to a foot line | Owner request of 9 October 2026 | Both cards viewed on screen. Wording proposed by the assistant; the owner accepted the film's text on 9 October 2026 (`USER CONFIRMED` wording) |
 | Score: original pentatonic "homeland" theme, then the complete Bach–Gounod *Ave Maria*, then the homeland theme on full organ | Public-domain edition, Mutopia no. 2167 | Transcription compared with the edition's MIDI: identical. `verify_cinematic.cjs` locks the notes and the four points where music and picture meet. Output levels in `clearance-audit.json`: loudest at the bar-34 fortissimo, peak −5.8 dBFS, no clipping |
 | Sound: string céleste, tremulant on the solo stops, 16 ft pedal throughout, longer reverberation tail | Presentation choice | Levels only |
 
 The camera path is unchanged from the first revision, so the clearance audit stands.
 
+**Owner review, 9 October 2026:** after watching the second revision the owner said "the text is good now". This covers the captions in both languages and the dedication cards. It is acceptance of wording, not of any dimension, finish or engineering matter the captions mention.
+
 ## Not verified
 
 - **How the music sounds.** Notes and levels were checked; nobody has listened to the second score in this session. Registration, balance between melody and broken chords, tremulant depth and reverberation may need adjusting by ear.
-- **The Vietnamese captions** were written by the assistant and have not been read by a native speaker in this session.
 - **Full screen (F)** and **the notice shown when a browser withholds sound** were not exercised with a real key press.
 - **Smoothness on slower computers.** The film was run on one Mac in the desktop app's browser pane. Automatic resolution stays active during the film.
 - Phone layout: outside the current owner scope (desktop only).
