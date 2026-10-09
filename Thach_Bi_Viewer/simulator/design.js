@@ -487,5 +487,21 @@
     return [...items.map(it => replacements.get(it.id) || it), ...additions];
   }
 
-  window.CHURCH_SIM_DESIGN = { wingReviewRevision, upgradeWingReview, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  // Explicit adoption is separate from the conservative automatic migration.
+  // Stable scope IDs come from the frozen pre-review design, never a user's
+  // current positions, names or circuit membership.
+  function wingReviewTargets(design, code) {
+    if (!['B', 'H'].includes(code)) throw new Error('Choose wing B or H.');
+    const sign = code === 'B' ? -1 : 1;
+    const old = wingBefore.filter(it => Math.sign(it.pos[2]) === sign && (it.circuit === 'L8' || it.type === 'fanCeiling'));
+    const targets = old.map(it => {
+      const name = it.circuit === 'L8' ? it.name : `Wall fan · wing ${code} · ${it.name.endsWith('front') ? 1 : 2} · held review`;
+      const raw = design.find(candidate => candidate.name === name);
+      if (!raw) throw new Error('Incomplete wing review template: ' + name);
+      return { ...raw, id: it.id };
+    });
+    return [...targets, ...design.filter(it => it.id?.startsWith(`F-WING-${code}-`))];
+  }
+
+  window.CHURCH_SIM_DESIGN = { wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

@@ -1445,6 +1445,79 @@
     lastSnapshot = snapshot();
     emit('history');
   }
+
+  function reviewedWingItems(side) {
+    const D = window.CHURCH_SIM_DESIGN;
+    return D.wingReviewTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+  }
+  function wingReviewStatus() {
+    const fields = ['type', 'circuit', 'mount', 'pos', 'yaw', 'tilt', 'mountYaw', 'anchorY', 'hidden', 'lumens', 'beam', 'cct', 'oscillate', 'shadow', 'params'];
+    const same = (a, b) => typeof a === 'number' && typeof b === 'number' ? Math.abs(a - b) < 1e-9
+      : Array.isArray(a) && Array.isArray(b) ? a.length === b.length && a.every((v, n) => same(v, b[n]))
+      : a && b && typeof a === 'object' && typeof b === 'object' ? Object.keys(a).length === Object.keys(b).length && Object.keys(a).every(k => same(a[k], b[k])) : a === b;
+    const sides = ['B', 'H'].map(side => {
+      const targets = reviewedWingItems(side);
+      const ids = new Set(targets.map(it => it.id));
+      const items = state.items.filter(it => ids.has(it.id) && !it.hidden);
+      const mismatchingIds = targets.filter(target => {
+        const prior = SIM.item(target.id);
+        return !prior || fields.some(field => !same(prior[field], target[field]));
+      }).map(it => it.id);
+      const conflictIds = targets.filter(target => target.id.startsWith('F-WING-') && SIM.item(target.id) && SIM.item(target.id).name !== target.name).map(it => it.id);
+      return { side, current: !mismatchingIds.length, mismatchingIds, conflictIds,
+        counts: { chandeliers: items.filter(it => it.type === 'chandelier6Reading').length,
+          wallFans: items.filter(it => it.type === 'fanWall' && it.circuit === 'F5').length,
+          roofFans: items.filter(it => it.type === 'fanCeiling').length } };
+    });
+    return { sourceRevision: window.CHURCH_SIM_DESIGN.wingReviewRevision, sides };
+  }
+  function adoptWingReview(side) {
+    const status = wingReviewStatus().sides.find(row => row.side === side);
+    if (!status) throw new Error('Choose wing B or H.');
+    if (status.conflictIds.length) throw new Error('Reserved IDs belong to renamed/custom equipment: ' + status.conflictIds.join(', ') + '. Export and resolve these records first.');
+    if (status.current) return { backupKey: null, changedIds: [] };
+    const previous = JSON.parse(JSON.stringify(exportLayout()));
+    const history = state.history.slice(), future = state.future.slice(), selectedId = state.selectedId;
+    const targets = reviewedWingItems(side);
+    const scene = SCENES[state.scene] || {};
+    const replacements = new Map(targets.map(target => {
+      const prior = SIM.item(target.id);
+      if (prior?.note) target.note = prior.note; // entered notes survive explicit adoption
+      if (CAT.byId[target.type].light) {
+        target.on = prior?.on ?? ((scene.L8 ?? 1) > 0);
+        target.dim = prior?.dim ?? Math.min(1, scene.L8 ?? 1);
+      } else {
+        // The reviewed F5 low setting is separate from the old F1 roof-fan
+        // speed. Never inherit a different product's speed index.
+        target.on = (scene.F5 ?? 1) > 0;
+        target.speed = target.on ? 1 : 0;
+      }
+      return [target.id, target];
+    }));
+    const present = new Set(previous.items.map(it => it.id));
+    const items = [...previous.items.map(it => replacements.get(it.id) || it), ...targets.filter(it => !present.has(it.id))];
+    let suffix = Date.now(), backupKey;
+    do { backupKey = STORAGE_KEY + '.before-wing-adoption.' + suffix++; } while (localStorage.getItem(backupKey));
+    // A failed durable backup must leave the current layout and history intact.
+    localStorage.setItem(backupKey, JSON.stringify(previous));
+    try {
+      importLayout({ ...previous, items });
+      state.history[state.history.length - 1].label = 'Use reviewed wing ' + side + ' lights and fans';
+      state.settings.wingReviewRevision = window.CHURCH_SIM_DESIGN.wingReviewRevision;
+      if (!saveNow()) throw new Error('The updated layout could not be saved; the previous layout is retained.');
+    } catch (error) {
+      Object.assign(state.settings, previous.settings);
+      state.customScenes = previous.customScenes;
+      restore(JSON.stringify(previous.items));
+      state.history = history; state.future = future;
+      select(selectedId); applySettings(); emit('history');
+      throw error;
+    }
+    emit('items', {});
+    return { backupKey, changedIds: targets.map(it => it.id) };
+  }
+  SIM.wingReviewStatus = wingReviewStatus;
+  SIM.adoptWingReview = adoptWingReview;
   function exportSchedule() {
     const rows = [['ID', 'Name', 'Category', 'Type', 'Circuit', 'Axis', 'X (m)', 'Z (m)', 'Height (m)', 'Aim yaw°', 'Aim tilt°', 'On', 'Dim %', 'Lumens', 'CCT K', 'Beam°', 'Watts', 'Fan speed', 'Speaker level dB', 'Delay ms', 'Notes']];
     for (const it of state.items) {

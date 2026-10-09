@@ -1,0 +1,183 @@
+{"concealedRouting":"passed","routes":343,"microphoneHomeRuns":2,"beamFeeds":75,"roofFeeds":99,"coveredRoofSpans":76,"chamberFeeds":11,"chamberVoidSegments":22,"serviceCrossings":38,"openWingCrossings":208,"proposedCovers":159,"timberCores":35,"capitalCores":14,"sourceRoofs":10,"explicitLampEntries":1,"roofSamples":20215,"rafterCores":36,"mainRoofApproaches":43,"amboFurnitureConnections":1,"towerCapCrossings":2,"movedMicrophone":true,"constructionApproved":false}
+{"electrical":"passed","installedComponents":296,"selectableRuns":343}
+{"systemResources":"passed","prototypes":76,"activePrototypes":44,"unusedPrototypes":32,"unusedPrototypeLimit":32,"primitiveGeometries":256}
+{"facadeCoverage":"passed","samples":[{"y":7.5,"z":-3,"lux":41.6},{"y":7.5,"z":0,"lux":19.3},{"y":7.5,"z":3,"lux":41.6},{"y":8.5,"z":-3,"lux":73.1},{"y":8.5,"z":0,"lux":39.7},{"y":8.5,"z":3,"lux":73.1},{"y":9.5,"z":-3,"lux":110.9},{"y":9.5,"z":0,"lux":52.7},{"y":9.5,"z":3,"lux":110.9},{"y":10.25,"z":-3,"lux":110},{"y":10.25,"z":0,"lux":55.2},{"y":10.25,"z":3,"lux":110},{"y":11,"z":-3,"lux":97.9},{"y":11,"z":0,"lux":53.3},{"y":11,"z":3,"lux":97.9},{"y":13,"z":-3,"lux":60},{"y":13,"z":0,"lux":41.8},{"y":13,"z":3,"lux":60},{"y":15,"z":-3,"lux":73.3},{"y":15,"z":0,"lux":65.9},{"y":15,"z":3,"lux":73.3},{"y":17,"z":0,"lux":76.3},{"y":19,"z":0,"lux":60.5},{"y":21.5,"z":0,"lux":35.5}]}
+{"stableInteriorLighting":"passed","shadowIds":"L98,L99","ambient":[0.045695893143124264,[0.3277780980458375,0.4396571738310091,0.623960391667596],[0.07227185067438519,0.051269458367115384,0.03954623527052923],110]}
+{
+  "buildMs": 100318,
+  "items": 326,
+  "pool": {
+    "emitters": 202,
+    "points": 4,
+    "spots": 6,
+    "shadows": 2,
+    "persistent": 190,
+    "culled": 0
+  },
+  "room": {
+    "V": 7456,
+    "T": [
+      2.01,
+      1.56,
+      1.21,
+      1.11,
+      1.09,
+      1.08,
+      0.93
+    ],
+    "Tmid": 1.16
+  },
+  "seats": 368,
+  "lux": {
+    "avg": 334,
+    "min": 204,
+    "p10": 269,
+    "u0": 0.61,
+    "okPct": 100
+  },
+  "sti": {
+    "avg": 0.605,
+    "min": 0.426,
+    "okPct": 66,
+    "fairPct": 91
+  },
+  "spl": {
+    "avg": 68.7,
+    "spread90": 2.6
+  },
+  "noise": {
+    "avg": 46.7,
+    "max": 48.8
+  },
+  "air": {
+    "avg": 0.37,
+    "min": 0.23,
+    "max": 0.62,
+    "okPct": 90
+  },
+  "cooling": 1.3,
+  "blocks": {
+    "central": {
+      "lux": 334,
+      "sti": 0.65,
+      "air": 0.33
+    },
+    "outer": {
+      "lux": 356,
+      "sti": 0.62,
+      "air": 0.38
+    },
+    "wing": {
+      "lux": 295,
+      "sti": 0.5,
+      "air": 0.41
+    }
+  },
+  "checks": [
+    "warn: Low feedback margin — Ambo microphone: only 1.2 dB of margin.",
+    "warn: Low feedback margin — Altar microphone: only 1.7 dB of margin.",
+    "info: Ventilation — 9 exhaust fans move ≈25,920 m³/h ≈ 3.5 air changes per hour (comfort target in a hot climate with people: 4–6).",
+    "info: Speech clarity — 66 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.61."
+  ],
+  "power": {
+    "totalW": 5909,
+    "kWhService": 8.9,
+    "byCircuit": [
+      "A1 97 W",
+      "A2 24 W",
+      "A3 0 W",
+      "A5 0 W",
+      "DECOR 0 W",
+      "E1 15 W",
+      "F1 476 W",
+      "F2 0 W",
+      "F4 0 W",
+      "F5 280 W",
+      "L1 692 W",
+      "L2 537 W",
+      "L3 432 W",
+      "L4 336 W",
+      "L5 333 W",
+      "L6 919 W",
+      "L7 0 W",
+      "L8 408 W",
+      "L9 298 W",
+      "LA 224 W",
+      "LD 299 W",
+      "MIC 0 W",
+      "V1 540 W",
+      "X1 0 W"
+    ]
+  },
+  "grids": {
+    "lux": 3959,
+    "sti": 1059,
+    "air": 3959,
+    "noise": 1059
+  }
+}
+{"naveStiOk":84,"naveStiMin":0.527,"wingStiAvg":0.5,"wingStiMin":0.426,"wingLuxMin":204}
+{
+ "checks": "passed",
+ "mode": "calculation audit",
+ "designTargets": [
+  {
+   "name": "No design warnings",
+   "met": false,
+   "detail": "Low feedback margin Ambo microphone: only 1.2 dB of margin.; Low feedback margin Altar microphone: only 1.7 dB of margin."
+  },
+  {
+   "name": "At least 95% of seats reach 200 lux",
+   "met": true,
+   "detail": "100.0%"
+  },
+  {
+   "name": "Every wing seat reaches 200 lux",
+   "met": true,
+   "detail": "204.3 lux minimum"
+  },
+  {
+   "name": "Nave clarity: minimum 0.45, at least 75% reaching 0.60",
+   "met": true,
+   "detail": "minimum 0.527, 84.4% reaching 0.60"
+  },
+  {
+   "name": "Wing clarity: minimum 0.45, average 0.50",
+   "met": false,
+   "detail": "minimum 0.426, average 0.500"
+  }
+ ],
+ "allOff": {
+  "watts": 15,
+  "lux": 0,
+  "air": 0,
+  "noise": 40,
+  "spl": null,
+  "sti": null
+ },
+ "items": 326,
+ "lux": {
+  "avg": 334,
+  "min": 204,
+  "p10": 269,
+  "u0": 0.61,
+  "okPct": 100
+ },
+ "sti": {
+  "avg": 0.605,
+  "min": 0.426,
+  "okPct": 66,
+  "fairPct": 91
+ },
+ "air": {
+  "avg": 0.37,
+  "min": 0.23,
+  "max": 0.62,
+  "okPct": 90
+ },
+ "noise": {
+  "avg": 46.7,
+  "max": 48.8
+ },
+ "Tmid": 1.16
+}

@@ -192,6 +192,11 @@
   }
 
   /* ----------------------------------------------------------------- body */
+  function retainedWingNotice() {
+    const retained = SIM.wingReviewStatus?.().sides.filter(s => !s.current) || [];
+    if (!retained.length) return '';
+    return `<div class="sim-card"><h3>Wing layout retained</h3><p class="sim-hint">Wing ${retained.map(s => esc(s.side)).join(' / ')} uses preserved or custom lights and fans. Compare its equipment with the held review in Wiring.</p><button data-tab-jump="wiring">Review wing layout in Wiring</button></div>`;
+  }
   function renderBody() {
     const scroll = body.scrollTop;
     for (const b of panel.querySelectorAll('[data-tab]')) b.setAttribute('aria-selected', String(b.dataset.tab === tab));
@@ -201,7 +206,7 @@
     else if (tab === 'analysis') html = renderAnalysis();
     else if (tab === 'wiring') html = SIM.electrical?.renderPanel() || '';
     else html = renderSettings();
-    body.innerHTML = html;
+    body.innerHTML = (tab !== 'wiring' ? retainedWingNotice() : '') + html;
     if (renderKeepScroll) body.scrollTop = scroll; else body.scrollTop = 0;
     renderKeepScroll = false;
     if (tab === 'wiring') {
@@ -460,7 +465,8 @@
     if (tabBtn) { tab = tabBtn.dataset.tab; picking = null; renderBody(); renderMapMarkers(); return; }
     const kpi = e.target.closest('[data-overlay]');
     if (kpi) { SIM.setOverlay(kpi.dataset.overlay); tab = 'analysis'; renderBody(); renderLegend(); return; }
-    if (e.target.closest('[data-tab-jump]')) { tab = 'analysis'; renderBody(); return; }
+    const jump = e.target.closest('[data-tab-jump]');
+    if (jump && TABS.some(t => t.id === jump.dataset.tabJump)) { tab = jump.dataset.tabJump; picking = null; renderBody(); renderMapMarkers(); return; }
     const el = e.target.closest('[data-act]');
     if (!el) return;
     const act = el.dataset.act, it = itemFromEvent(e);
@@ -470,6 +476,23 @@
       case 'close': setOpen(false); break;
       case 'undo': { const l = SIM.undo(); if (l) toast('Undo: ' + l); break; }
       case 'redo': { const l = SIM.redo(); if (l) toast('Redo: ' + l); break; }
+      case 'wing-adopt': {
+        const side = el.dataset.side;
+        if (el.disabled || !['B', 'H'].includes(side)) break;
+        try {
+          const status = SIM.wingReviewStatus?.().sides.find(s => s.side === side);
+          if (!status || !SIM.adoptWingReview) throw new Error('Wing review is unavailable.');
+          if (status.conflictIds.length) throw new Error('Resolve conflicting equipment IDs: ' + status.conflictIds.join(', '));
+          if (status.current) { toast(`Wing ${side} already uses the reviewed layout.`); break; }
+          const result = SIM.adoptWingReview(side);
+          renderBody(); updateUndo();
+          toast(result.changedIds.length ? `Wing ${side} review adopted. Full browser backup saved; use Undo.` : `Wing ${side} already uses the reviewed layout.`);
+        } catch (err) {
+          renderBody();
+          toast(`Could not apply wing ${side} review: ${err.message || String(err)}`);
+        }
+        break;
+      }
       case 'save-scene': { const n = prompt('Name this scene (for example “Sunday 6 pm Mass”):'); if (n) { SIM.saveScene(n.trim()); renderScenes(); toast('Saved scene ' + n); } break; }
       case 'select': if (it) { SIM.select(it.id === SIM.state.selectedId ? null : it.id); } break;
       case 'deselect': SIM.select(null); break;
