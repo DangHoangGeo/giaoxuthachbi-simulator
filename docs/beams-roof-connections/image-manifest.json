@@ -1,6 +1,7 @@
 {
-  "revision": 1,
-  "date": "2026-10-07",
+  "revision": 2,
+  "date": "2026-10-10",
+  "revisionNote": "Revision 2, 2026-10-10: the four phone screenshots IMG_2676–IMG_2679 were cropped to the picture area to remove the messaging-app frame, which showed a private person's name, profile picture and message date, and the video file name and player controls. No pixels inside the kept region were changed. Records under review/ dated before 2026-10-10 keep the hashes of the uncropped files. The uncropped files remain in the Git history.",
   "files": [
     {
       "file": "images/01-upper-bay-front.png",
@@ -133,28 +134,64 @@
       "file": "sources/IMG_2676.PNG",
       "role": "other_church_original_photo",
       "source": "docs/beams-roof-connections/sources/IMG_2676.PNG",
-      "sha256": "de6f575d7e5c0fe91f8bfc57a5504e3cd20096dc3a31444cc1c3e999b83d41af",
+      "sha256": "f057429d311eeefb9bfbc8da9293cbfc4a18f27ae79259d49330be6cfc4d69e0",
+      "width": 1170,
+      "height": 1830,
+      "privacyCrop": {
+        "date": "2026-10-10",
+        "originalSha256": "de6f575d7e5c0fe91f8bfc57a5504e3cd20096dc3a31444cc1c3e999b83d41af",
+        "originalWidth": 1170,
+        "originalHeight": 2532,
+        "keptRegionPx": { "x": 0, "y": 300, "width": 1170, "height": 1830 }
+      },
       "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2676.PNG"
     },
     {
       "file": "sources/IMG_2677.PNG",
       "role": "other_church_original_photo",
       "source": "docs/beams-roof-connections/sources/IMG_2677.PNG",
-      "sha256": "ec557cc1ed6e31f018cca0ee3651c0654f173f7479e25c852f65521d29dedeab",
+      "sha256": "7631e89ddc515d1d30c97c236dea7ab89db35c02572abf099da7804d002cecfc",
+      "width": 1170,
+      "height": 1830,
+      "privacyCrop": {
+        "date": "2026-10-10",
+        "originalSha256": "ec557cc1ed6e31f018cca0ee3651c0654f173f7479e25c852f65521d29dedeab",
+        "originalWidth": 1170,
+        "originalHeight": 2532,
+        "keptRegionPx": { "x": 0, "y": 300, "width": 1170, "height": 1830 }
+      },
       "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2677.PNG"
     },
     {
       "file": "sources/IMG_2678.PNG",
       "role": "other_church_original_photo",
       "source": "docs/beams-roof-connections/sources/IMG_2678.PNG",
-      "sha256": "8c3206df45db771e88c0fd5a4003fbfb5f70ab96f00970378a6e93ff82daf4fa",
+      "sha256": "1464791e50a745c1f9070be01943a15470521e7fedffcaa360fdc5abf38ffa96",
+      "width": 1170,
+      "height": 1830,
+      "privacyCrop": {
+        "date": "2026-10-10",
+        "originalSha256": "8c3206df45db771e88c0fd5a4003fbfb5f70ab96f00970378a6e93ff82daf4fa",
+        "originalWidth": 1170,
+        "originalHeight": 2532,
+        "keptRegionPx": { "x": 0, "y": 300, "width": 1170, "height": 1830 }
+      },
       "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2678.PNG"
     },
     {
       "file": "sources/IMG_2679.PNG",
       "role": "other_church_original_photo",
       "source": "docs/beams-roof-connections/sources/IMG_2679.PNG",
-      "sha256": "ed38c696176ea6655ecfd7807af8b275259e5238c9edc5bba0f3555ee9bb5b59",
+      "sha256": "62861041a56c9aa9acc722bac45b77d30cafe83709a3ea853fc10dbe31b25118",
+      "width": 1170,
+      "height": 1830,
+      "privacyCrop": {
+        "date": "2026-10-10",
+        "originalSha256": "ed38c696176ea6655ecfd7807af8b275259e5238c9edc5bba0f3555ee9bb5b59",
+        "originalWidth": 1170,
+        "originalHeight": 2532,
+        "keptRegionPx": { "x": 0, "y": 300, "width": 1170, "height": 1830 }
+      },
       "sourceAtIssue": "Thach_Bi_Viewer/references/01-timber-frame/sources/IMG_2679.PNG"
     },
     {
