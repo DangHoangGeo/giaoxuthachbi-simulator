@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "project": "Thạch Bi development-display desktop evidence (actual local production build)",
+  "buildId": "oT1CH6lG1eRFtvqP9unlz",
+  "releaseId": "development-content-20261008-one",
+  "screenshots": [
+    {
+      "file": "screenshots/vi-home-1440x900.png",
+      "sha256": "aa1dd434572ea00669e85e9490c1425cab2e0c6b5a45f4ebb45c211b98dbbbfd",
+      "bytes": 100972,
+      "route": "/vi",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200,
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/en-home-1440x900.png",
+      "sha256": "b36a2379672af273ea61c8a0178943cd29e9c1240fa97b76f9525d306eb17ae6",
+      "bytes": 96227,
+      "route": "/en",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200,
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/vi-design-1440x900.png",
+      "sha256": "06396aaf21a7b559aaad0a950c264cc96bad7bbd2fa6a14ab29c405e1aed7df3",
+      "bytes": 492901,
+      "route": "/vi/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200,
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/en-design-1440x900.png",
+      "sha256": "aabffc516a8014613c5ea1c4d5f5d9f5b7a13ed688e4346f2d1719a6726f9faf",
+      "bytes": 494037,
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200,
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/en-progress-1440x900.png",
+      "sha256": "e414264d3a794e6a26902f95c11de0b1325bcd0709ce70c57395b65cafe30e1e",
+      "bytes": 88349,
+      "route": "/en/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200,
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/en-foundation-detail-1440x900.png",
+      "sha256": "19fcf13b779d196b2c07f2f94cabeca282242dd58fbd5bc5e47e71be7bdbe90b",
+      "bytes": 99916,
+      "route": "/en/progress/foundation-owner-report-2026",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200,
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/en-about-1440x900.png",
+      "sha256": "a8d1c72f5ef41c119c17d53100c55623389d4217e1d2e4666f3ab8d3c4e829cf",
+      "bytes": 104432,
+      "route": "/en/about-this-site",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "initial viewport",
+      "status": 200,
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/en-foundation-detail-fullpage.png",
+      "sha256": "fc7236d3b4b6edd0e5fcb82345dfc0bbce0d61082026d8ed62d9e364e4afe809",
+      "bytes": 99916,
+      "route": "/en/progress/foundation-owner-report-2026",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "full page",
+      "status": 200,
+      "fullPage": true
+    },
+    {
+      "file": "screenshots/en-design-1280x800.png",
+      "sha256": "a3e7813e43fff08bf72cb95d9248c3c5edd79c83b2d4c737a233669fb350a29a",
+      "bytes": 380264,
+      "route": "/en/design",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "state": "initial viewport",
+      "status": 200,
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/en-design-first-concept-enlarged-1440x900.png",
+      "sha256": "eaa2c167a26ab4b8def5b92fed6c35e73219bc5a7760cb58d95aaa2569b96822",
+      "bytes": 666580,
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "first concept dialog open",
+      "status": 200,
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/en-design-keyboard-first-focus-1440x900.png",
+      "sha256": "87bb01a1b1787a8426888a627b3b6b94d0f25410e5624b31099bc09db0a8fc22",
+      "bytes": 496500,
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "after first Tab",
+      "status": 200,
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/en-design-css-text-200-percent-1440x900.png",
+      "sha256": "54a4ac8def2a49ec85bc3b12f2df6d1885933b7ca95d93866c01b19f25aabdc9",
+      "bytes": 90133,
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "CSS root font-size 200%; not native browser zoom",
+      "status": 200,
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/en-design-reduced-motion-1440x900.png",
+      "sha256": "aabffc516a8014613c5ea1c4d5f5d9f5b7a13ed688e4346f2d1719a6726f9faf",
+      "bytes": 494037,
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "prefers-reduced-motion: reduce",
+      "status": 200,
+      "fullPage": false
+    }
+  ],
+  "sourceHashCount": 46,
+  "sourceHashStable": true
+}

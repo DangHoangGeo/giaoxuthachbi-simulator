@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "state": "unpublished",
-  "releaseId": null,
-  "sha256": null
+  "state": "published",
+  "releaseId": "development-content-20261008-two",
+  "sha256": "8db8b123c1cca8582b18989d28f3f37c4114a2e2a23ceea853f5d9c4c4a2a5c5"
 }

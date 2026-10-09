@@ -47,3 +47,4 @@ jobs:
       - run: npm run check:boundary
       - run: npx --no-install playwright install --with-deps chromium
       - run: npm run test:browser
+      - run: npx --no-install playwright test --config playwright.gallery.config.ts

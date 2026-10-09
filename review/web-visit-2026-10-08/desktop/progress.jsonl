@@ -1,0 +1,17 @@
+{"at":"2026-10-08T12:56:51.966Z","stage":"capture-start","head":"c151c71c1f81ec327701c705822dc6dee252eaa6","branch":"web/04-lightweight-visit","buildId":"1WAT1D-QKfVwh3_eGjCPT","buildIdFileSha256":"51b8cf9d3cc81b2abb87ad167973a984a726162534807fa3643dcaa042e1643b"}
+{"at":"2026-10-08T12:56:53.506Z","stage":"static-page-done","route":"/vi","totalEncodedBytes":280474,"jsEncodedBytes":145409,"modelRequestsBeforeEnter":0}
+{"at":"2026-10-08T12:56:54.842Z","stage":"static-page-done","route":"/vi/design","totalEncodedBytes":581190,"jsEncodedBytes":154324,"modelRequestsBeforeEnter":0}
+{"at":"2026-10-08T12:57:04.448Z","stage":"visit-interactive-ready","readyMs":7984,"modelBytes":8770573,"totalBytes":8938456,"gpu":{"context":true,"vendor":"Google Inc. (Apple)","renderer":"ANGLE (Apple, ANGLE Metal Renderer: Apple M1 Pro, Unspecified Version)","version":"WebGL 2.0 (OpenGL ES 3.0 Chromium)","shadingLanguageVersion":"WebGL GLSL ES 3.00 (OpenGL ES GLSL ES 3.0 Chromium)"}}
+{"at":"2026-10-08T12:58:05.492Z","stage":"frame-path-done","samples":7200,"p50Ms":8.30000000000291,"p95Ms":9.299999999995634,"p99Ms":9.399999999999636,"maxMs":9.799999999999272,"over33ms":0,"over50ms":0}
+{"at":"2026-10-08T12:58:05.494Z","stage":"soak-minute","canvasCount":1,"heapUsedBytes":76505032,"heapTotalBytes":110638052,"documentWidth":1440,"viewportWidth":1440,"minute":0,"elapsedMs":1}
+{"at":"2026-10-08T12:59:14.720Z","stage":"soak-minute","canvasCount":1,"heapUsedBytes":154592893,"heapTotalBytes":203469533,"documentWidth":1440,"viewportWidth":1440,"minute":1,"elapsedMs":69227}
+{"at":"2026-10-08T13:00:05.514Z","stage":"soak-minute","canvasCount":1,"heapUsedBytes":87316299,"heapTotalBytes":137120071,"documentWidth":1440,"viewportWidth":1440,"minute":2,"elapsedMs":120021}
+{"at":"2026-10-08T13:01:14.302Z","stage":"soak-minute","canvasCount":1,"heapUsedBytes":164898524,"heapTotalBytes":208612948,"documentWidth":1440,"viewportWidth":1440,"minute":3,"elapsedMs":188809}
+{"at":"2026-10-08T13:02:05.514Z","stage":"soak-minute","canvasCount":1,"heapUsedBytes":75285231,"heapTotalBytes":142526635,"documentWidth":1440,"viewportWidth":1440,"minute":4,"elapsedMs":240021}
+{"at":"2026-10-08T13:03:14.717Z","stage":"soak-minute","canvasCount":1,"heapUsedBytes":147624482,"heapTotalBytes":207101614,"documentWidth":1440,"viewportWidth":1440,"minute":5,"elapsedMs":309224}
+{"at":"2026-10-08T13:04:05.515Z","stage":"soak-minute","canvasCount":1,"heapUsedBytes":82673996,"heapTotalBytes":144623796,"documentWidth":1440,"viewportWidth":1440,"minute":6,"elapsedMs":360022}
+{"at":"2026-10-08T13:05:14.898Z","stage":"soak-minute","canvasCount":1,"heapUsedBytes":74603076,"heapTotalBytes":141215956,"documentWidth":1440,"viewportWidth":1440,"minute":7,"elapsedMs":429405}
+{"at":"2026-10-08T13:06:05.519Z","stage":"soak-minute","canvasCount":1,"heapUsedBytes":77274047,"heapTotalBytes":144361647,"documentWidth":1440,"viewportWidth":1440,"minute":8,"elapsedMs":480026}
+{"at":"2026-10-08T13:07:14.195Z","stage":"soak-minute","canvasCount":1,"heapUsedBytes":164885022,"heapTotalBytes":209137870,"documentWidth":1440,"viewportWidth":1440,"minute":9,"elapsedMs":548702}
+{"at":"2026-10-08T13:08:05.520Z","stage":"soak-minute","canvasCount":1,"heapUsedBytes":75375356,"heapTotalBytes":143575220,"documentWidth":1440,"viewportWidth":1440,"minute":10,"elapsedMs":600027}
+{"at":"2026-10-08T13:08:15.082Z","stage":"interactive-finished","soakDurationMs":600028,"canvasCounts":[1],"contextLoss":{"extensionAvailable":true,"retryVisible":true,"retrySucceeded":true}}

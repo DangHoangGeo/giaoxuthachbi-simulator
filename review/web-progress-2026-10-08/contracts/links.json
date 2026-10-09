@@ -1,0 +1,127 @@
+[
+  {
+    "source": "docs/web/progress-publishing.md",
+    "target": "development.md",
+    "exists": true
+  },
+  {
+    "source": "docs/web/progress-publishing.md",
+    "target": "public-content.md#private-media-preparation",
+    "exists": true
+  },
+  {
+    "source": "docs/web/data-boundary.md",
+    "target": "../../plan/data-and-publication.md",
+    "exists": true
+  },
+  {
+    "source": "docs/web/data-boundary.md",
+    "target": "public-content.md#private-media-preparation",
+    "exists": true
+  },
+  {
+    "source": "docs/web/data-boundary.md",
+    "target": "progress-publishing.md",
+    "exists": true
+  },
+  {
+    "source": "docs/web/data-boundary.md",
+    "target": "../../review/web-framework-2026-10-08/README.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "../AGENTS.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "engineering/README.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "quality-and-release.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "architecture.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "phases/00-evidence-and-publication.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "phases/01-framework-and-delivery.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "phases/02-homepage-and-gallery.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "phases/03-construction-timeline.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "phases/04-lightweight-visit.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "phases/05-protected-review.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "phases/06-construction-inspector.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "phases/07-release-and-operations.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "architecture.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "data-and-publication.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "quality-and-release.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "decisions-and-sources.md",
+    "exists": true
+  },
+  {
+    "source": "plan/README.md",
+    "target": "engineering/README.md#execution-delegation-and-handover",
+    "exists": true
+  },
+  {
+    "source": "plan/phases/03-construction-timeline.md",
+    "target": "../data-and-publication.md",
+    "exists": true
+  },
+  {
+    "source": "plan/phases/03-construction-timeline.md",
+    "target": "../../docs/web/progress-publishing.md",
+    "exists": true
+  }
+]

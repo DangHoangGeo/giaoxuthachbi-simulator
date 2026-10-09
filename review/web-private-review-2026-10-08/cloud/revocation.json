@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-08T14:12:33.121Z",
+  "checks": [
+    {
+      "path": "/vi/review",
+      "disabledPolicy": 401
+    },
+    {
+      "path": "/vi/review/model",
+      "disabledPolicy": 401
+    },
+    {
+      "path": "/vi/review/access",
+      "disabledPolicy": 401
+    }
+  ],
+  "restored": 204
+}

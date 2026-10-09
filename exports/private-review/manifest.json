@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "private-full-detail-20261008",
+  "classification": "private-review",
+  "status": "design-development-not-for-construction",
+  "sourceCommit": "c151c71c1f81ec327701c705822dc6dee252eaa6",
+  "source": {
+    "file": "exports/sharing/Thach-Bi-full-detail-2026-10-08.glb",
+    "bytes": 125105044,
+    "sha256": "a8968ba5368da66f46083321ebc586c151ffa72a8c823bbfb09d9d769509e341"
+  },
+  "deliveryManifest": {
+    "file": "exports/sharing/delivery-2026-10-08.json",
+    "bytes": 424,
+    "sha256": "3950749bf42c10b5e931e86e9f947da12a6fe4e79306302efba38c50f33a4598"
+  },
+  "exportSourceManifest": {
+    "file": "exports/sharing/source-manifest-2026-10-08.json",
+    "bytes": 15111,
+    "sha256": "d5eacc60a28f8713c0901c2dfb497f4453020a5c002e7b475c7182ba89517b30"
+  },
+  "package": {
+    "file": "exports/private-review/Thach-Bi-full-detail-2026-10-08.glb.gz",
+    "mimeType": "model/gltf-binary",
+    "contentEncoding": "gzip",
+    "bytes": 53230983,
+    "sha256": "e81a94607d7edae12784375d39f9a56aa2a2a60490b64c9c8ef0d819b762c944"
+  },
+  "compression": {
+    "method": "gzip",
+    "level": 9,
+    "mtime": 0,
+    "filenameHeader": "",
+    "osHeader": 255,
+    "streamBlockBytes": 1048576,
+    "pythonVersion": "3.13.4",
+    "zlibBuildVersion": "1.2.12",
+    "zlibRuntimeVersion": "1.2.12"
+  },
+  "verification": {
+    "deliveryHashMatch": true,
+    "sourceManifestHashMatch": true,
+    "deterministicReplayMatch": true,
+    "roundtripHashMatch": true,
+    "decoded": {
+      "bytes": 125105044,
+      "sha256": "a8968ba5368da66f46083321ebc586c151ffa72a8c823bbfb09d9d769509e341"
+    },
+    "glb": {
+      "version": 2,
+      "assetVersion": "2.0",
+      "generator": "THREE.GLTFExporter r186",
+      "chunks": [
+        {
+          "type": "JSON",
+          "bytes": 184636
+        },
+        {
+          "type": "BIN",
+          "bytes": 124920380
+        }
+      ],
+      "counts": {
+        "scenes": 1,
+        "nodes": 144,
+        "meshes": 131,
+        "materials": 100,
+        "textures": 126,
+        "images": 126,
+        "buffers": 1,
+        "bufferViews": 650,
+        "accessors": 524,
+        "animations": 0
+      },
+      "imageMimeTypes": [
+        "image/png"
+      ],
+      "extensionsUsed": [
+        "EXT_materials_bump",
+        "KHR_materials_clearcoat",
+        "KHR_materials_ior",
+        "KHR_materials_emissive_strength",
+        "KHR_materials_unlit",
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "resourceUriCount": 0,
+      "embeddedOnly": true
+    }
+  },
+  "units": "metres",
+  "axes": "X toward sanctuary; Y up from nave FFL; Z centered D/E, negative B positive H",
+  "profile": "visible display batches, four pew blocks, doors open; no simulator equipment, private metadata, editors, source drawings or reference originals",
+  "limitations": [
+    "Architectural display model; the engineering simulator and its controls/results are absent.",
+    "No decoded-byte, geometry, material, texture, or coordinate changes were made by this package.",
+    "Optional EXT_materials_bump requires explicit loader support; generic GLB rendering can differ.",
+    "Omitted equipment does not prove concealment; central-view/fan constraints and engineering holds remain.",
+    "Lighting, speech/feedback, airflow, mounting/maintenance, route/control and specialist approvals remain unresolved.",
+    "Authentication, storage access, cache policy, browser rendering and cloud delivery are separate verification work."
+  ]
+}

@@ -154,3 +154,25 @@ describe("publication boundary", () => {
       expect(publicReleaseSchema.safeParse(variant).success).toBe(false);
   });
 });
+
+// Capture/creation dates are calendar dates at the church, not the viewer's timezone.
+it("rejects future media dates and retains uncertainty within a known month", () => {
+  const release = syntheticRelease();
+  release.publishedAt = "2026-03-01T18:00:00Z"; // 2 March in Vietnam.
+  release.media[0].capturedOn = { precision: "day", value: "2026-03-02" };
+  expect(publicReleaseSchema.safeParse(release).success).toBe(true);
+  release.media[0].capturedOn = { precision: "day", value: "2026-03-03" };
+  expect(publicReleaseSchema.safeParse(release).success).toBe(false);
+  release.media[0].capturedOn = { precision: "month", value: "2026-03" };
+  expect(publicReleaseSchema.safeParse(release).success).toBe(true);
+  release.media[0].capturedOn = { precision: "month", value: "2026-04" };
+  expect(publicReleaseSchema.safeParse(release).success).toBe(false);
+  release.publishedAt = "invalid-time";
+  expect(publicReleaseSchema.safeParse(release).success).toBe(false);
+});
+
+it("requires a homepage narrative before accepting a public release", () => {
+  const release = syntheticRelease();
+  release.pages = [];
+  expect(publicReleaseSchema.safeParse(release).success).toBe(false);
+});

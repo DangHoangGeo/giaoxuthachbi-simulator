@@ -1,5 +1,7 @@
 # Phase 00 — Evidence and publication boundary
 
+**Owner update, 8 October 2026:** showing our project work is now authorized with permanent development/not-for-construction notes. The [selected public scope](../../docs/web/publication-permission.md) supersedes earlier blanket permission holds for that scope. Full parish-operation/real-host checks remain open; historical evidence is unchanged.
+
 Status: **independent preparation complete on an unmerged phase branch; G0 held**, 8 October 2026. The detailed evidence/checklist/handover is preserved at [`web/00-evidence`, commit `84edc9e`](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/84edc9e/plan/phases/00-evidence-and-publication.md). Actual public asset/model permissions and named parish publication owners remain missing. Phase 01 may perform the independent local fixture/framework work permitted by package 6 below. Read the [roadmap](../README.md), [data contracts](../data-and-publication.md) and [decision register](../decisions-and-sources.md).
 
 ## Outcome

@@ -1,0 +1,180 @@
+{
+  "permissionDate": "2026-10-08",
+  "scope": "Selected project-created work for development preview only",
+  "media": [
+    {
+      "mediaId": "concept-front-20261007",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/01-exterior-front-day.png",
+      "sha256": "b66b66c2d5d0db9c4b64d708e94726c8b12097e8b2400a75f7173e01a4bec5b9",
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "sourceModelCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "permission": "USER CONFIRMED: show our work with development notes, 8 October 2026",
+      "category": "Generated architectural concept, not site photograph or calculated/model-exact render",
+      "visualReview": "Primary inspected source pixels; no real people or personal documents visible. Existing visible equipment and ornament are unresolved conceptual design, not installation approval.",
+      "derivatives": [
+        {
+          "path": "/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+          "sha256": "1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d",
+          "width": 640,
+          "height": 360,
+          "bytes": 29702
+        },
+        {
+          "path": "/media/1a2ffdfa7aa2187ed1165bf9428cbbe8f53a26c19af788a5600f9c2482598fc8.jpg",
+          "sha256": "1a2ffdfa7aa2187ed1165bf9428cbbe8f53a26c19af788a5600f9c2482598fc8",
+          "width": 640,
+          "height": 360,
+          "bytes": 36616
+        },
+        {
+          "path": "/media/fffd8f6b4cc589f391a44ba76a2fddf3a1d36ebaa9b11311b185ca93b5634455.webp",
+          "sha256": "fffd8f6b4cc589f391a44ba76a2fddf3a1d36ebaa9b11311b185ca93b5634455",
+          "width": 1280,
+          "height": 720,
+          "bytes": 93648
+        },
+        {
+          "path": "/media/c5372c4e71712f81e2671d334a63fdc2f900b71b5e054df437548f0b54e6a200.jpg",
+          "sha256": "c5372c4e71712f81e2671d334a63fdc2f900b71b5e054df437548f0b54e6a200",
+          "width": 1280,
+          "height": 720,
+          "bytes": 123500
+        },
+        {
+          "path": "/media/9819ea980b00590c5d4a5af4346af86a7261f8f18a5d4a642400a76eeda690eb.webp",
+          "sha256": "9819ea980b00590c5d4a5af4346af86a7261f8f18a5d4a642400a76eeda690eb",
+          "width": 1672,
+          "height": 941,
+          "bytes": 138966
+        },
+        {
+          "path": "/media/4e6e2bb4f686af73a1a5db63b11cad60b91132b1fb24a828523d8ea3fe73a60c.jpg",
+          "sha256": "4e6e2bb4f686af73a1a5db63b11cad60b91132b1fb24a828523d8ea3fe73a60c",
+          "width": 1672,
+          "height": 941,
+          "bytes": 191066
+        }
+      ]
+    },
+    {
+      "mediaId": "concept-nave-20261007",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/05-nave-overview-day.png",
+      "sha256": "2e21cbab46662e705e39326708a2f8a56f01b58df94d4f8c2917309a705857e0",
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "sourceModelCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "permission": "USER CONFIRMED: show our work with development notes, 8 October 2026",
+      "category": "Generated architectural concept, not site photograph or calculated/model-exact render",
+      "visualReview": "Primary inspected source pixels; no real people or personal documents visible. Existing visible equipment and ornament are unresolved conceptual design, not installation approval.",
+      "derivatives": [
+        {
+          "path": "/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+          "sha256": "3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea",
+          "width": 640,
+          "height": 360,
+          "bytes": 49028
+        },
+        {
+          "path": "/media/171cb708424690eb99464940895ee09dd42db9f7571715f22e7f64c7ec1eda5f.jpg",
+          "sha256": "171cb708424690eb99464940895ee09dd42db9f7571715f22e7f64c7ec1eda5f",
+          "width": 640,
+          "height": 360,
+          "bytes": 57654
+        },
+        {
+          "path": "/media/04a0ab41d016f215beacb6b9727a522ad834c0ef6fb55f75bc3aa3ba4547a45a.webp",
+          "sha256": "04a0ab41d016f215beacb6b9727a522ad834c0ef6fb55f75bc3aa3ba4547a45a",
+          "width": 1280,
+          "height": 720,
+          "bytes": 143398
+        },
+        {
+          "path": "/media/b493a3a19bde347cfc5c2d108ba77edb64b96d51210200d5cba30ad32004f897.jpg",
+          "sha256": "b493a3a19bde347cfc5c2d108ba77edb64b96d51210200d5cba30ad32004f897",
+          "width": 1280,
+          "height": 720,
+          "bytes": 187345
+        },
+        {
+          "path": "/media/a34ef00942845bcee074b9908b105f5322919e38ae8651961a9e85c2db55182d.webp",
+          "sha256": "a34ef00942845bcee074b9908b105f5322919e38ae8651961a9e85c2db55182d",
+          "width": 1672,
+          "height": 941,
+          "bytes": 211470
+        },
+        {
+          "path": "/media/f6770503a3d21efc68d6d802253d88c6923cadb8c39f298d5e04bd4c692ca99c.jpg",
+          "sha256": "f6770503a3d21efc68d6d802253d88c6923cadb8c39f298d5e04bd4c692ca99c",
+          "width": 1672,
+          "height": 941,
+          "bytes": 286899
+        }
+      ]
+    },
+    {
+      "mediaId": "concept-sanctuary-20261007",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/06-sanctuary-overview-evening.png",
+      "sha256": "18da2bbc111b223db76558d292431fd5117f6ab044a021002cda07a5b1d05e85",
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "sourceModelCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "permission": "USER CONFIRMED: show our work with development notes, 8 October 2026",
+      "category": "Generated architectural concept, not site photograph or calculated/model-exact render",
+      "visualReview": "Primary inspected source pixels; no real people or personal documents visible. Existing visible equipment and ornament are unresolved conceptual design, not installation approval.",
+      "derivatives": [
+        {
+          "path": "/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+          "sha256": "05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827",
+          "width": 640,
+          "height": 360,
+          "bytes": 65588
+        },
+        {
+          "path": "/media/065b454d1e267d1fa1d6197ede837fa4633260df80873b7b83dfbfb044c0c24a.jpg",
+          "sha256": "065b454d1e267d1fa1d6197ede837fa4633260df80873b7b83dfbfb044c0c24a",
+          "width": 640,
+          "height": 360,
+          "bytes": 69822
+        },
+        {
+          "path": "/media/bc642f36d5920e416768d7ad92663c31ecbb9464543304d00d7ce3dc90b6941a.webp",
+          "sha256": "bc642f36d5920e416768d7ad92663c31ecbb9464543304d00d7ce3dc90b6941a",
+          "width": 1280,
+          "height": 720,
+          "bytes": 214618
+        },
+        {
+          "path": "/media/2f467caf731ce06fa6e8b467249678d719e1a7020ee13a8d26048951180527dd.jpg",
+          "sha256": "2f467caf731ce06fa6e8b467249678d719e1a7020ee13a8d26048951180527dd",
+          "width": 1280,
+          "height": 720,
+          "bytes": 243110
+        },
+        {
+          "path": "/media/505663f3f8bf044ab893f32b4da7844ecd57bcc2423e05d811178d801b1e274d.webp",
+          "sha256": "505663f3f8bf044ab893f32b4da7844ecd57bcc2423e05d811178d801b1e274d",
+          "width": 1672,
+          "height": 941,
+          "bytes": 318184
+        },
+        {
+          "path": "/media/7e2e488f9e91e54dfa935a6128fab3125c3ca4a5a8e3faee0cecdec3f6d24181.jpg",
+          "sha256": "7e2e488f9e91e54dfa935a6128fab3125c3ca4a5a8e3faee0cecdec3f6d24181",
+          "width": 1672,
+          "height": 941,
+          "bytes": 377607
+        }
+      ]
+    }
+  ]
+}

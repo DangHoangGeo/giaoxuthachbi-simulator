@@ -2,13 +2,16 @@ import { z } from "zod";
 import {
   calendarDay,
   checksum,
+  churchDay,
+  earliestDay,
   instant,
+  latestDay,
   localizedText,
   occurrenceDate,
   plainText,
   publicId,
   uniqueIds,
-} from "./common";
+} from "./common.ts";
 
 const derivative = z
   .strictObject({
@@ -40,6 +43,8 @@ const event = z
     title: localizedText,
     body: localizedText,
     occurredOn: occurrenceDate.nullable(),
+    occurredUntil: occurrenceDate.nullable(),
+    timeZone: z.literal("Asia/Ho_Chi_Minh"),
     reportedAsOf: calendarDay.nullable(),
     evidence: z.enum(["planned", "owner-reported", "verified"]),
     evidenceRef: publicId.nullable(),
@@ -64,17 +69,44 @@ const event = z
     if (item.evidence === "verified" && item.evidenceRef === null)
       issue("Verification needs evidence");
     if (item.occurredOn === null && item.reportedAsOf === null) issue("A date basis is required");
+    if (
+      item.occurredUntil &&
+      (!item.occurredOn || latestDay(item.occurredUntil) < earliestDay(item.occurredOn))
+    )
+      issue("Occurrence interval is reversed or has no start");
+    const end = item.occurredUntil ?? item.occurredOn;
+    if (
+      item.evidence !== "planned" &&
+      end &&
+      item.reportedAsOf &&
+      earliestDay(end) > item.reportedAsOf
+    )
+      issue("Occurrence follows the report date");
+    if (item.evidence === "planned" && (!item.occurredOn || !item.evidenceRef))
+      issue("A public plan needs a date basis and reviewed evidence reference");
+    if (item.status === "withdrawn" && item.mediaIds.length > 0)
+      issue("Withdrawn event retains media");
     if (Date.parse(item.updatedAt) < Date.parse(item.publishedAt))
       issue("Update precedes publication");
     if (item.status !== "published" && item.corrections.length === 0)
       issue("A correction notice is required");
+    let previousChange = Date.parse(item.publishedAt);
+    if (
+      new Set(item.corrections.map((change) => change.previousReleaseId)).size !==
+      item.corrections.length
+    )
+      issue("Duplicate correction release");
     for (const change of item.corrections) {
       if (
         Date.parse(change.changedAt) < Date.parse(item.publishedAt) ||
         Date.parse(change.changedAt) > Date.parse(item.updatedAt)
       )
         issue("Correction outside event history");
+      if (Date.parse(change.changedAt) < previousChange) issue("Corrections are out of order");
+      previousChange = Date.parse(change.changedAt);
     }
+    if (item.status === "published" && item.corrections.length > 0)
+      issue("Corrected history needs a visible status");
   });
 
 export const publicReleaseSchema = z
@@ -93,6 +125,7 @@ export const publicReleaseSchema = z
       .array(
         z.strictObject({ id: publicId, slug: publicId, title: localizedText, body: localizedText }),
       )
+      .min(1)
       .max(100),
     media: z.array(media).max(1000),
     events: z.array(event).max(10000),
@@ -109,8 +142,22 @@ export const publicReleaseSchema = z
     }
     if (Date.parse(release.createdAt) > Date.parse(release.publishedAt))
       issue("Publication precedes creation");
+    const publicationDay = churchDay(release.publishedAt);
+    if (publicationDay) {
+      for (const item of release.media) {
+        if (item.capturedOn) {
+          const earliest = earliestDay(item.capturedOn);
+          if (earliest > publicationDay) issue("Media date is after publication");
+        }
+      }
+    }
     const mediaIds = new Set(release.media.map((record) => record.id));
     for (const item of release.events) {
+      if (publicationDay && item.reportedAsOf && item.reportedAsOf > publicationDay)
+        issue("Report date follows publication");
+      const end = item.occurredUntil ?? item.occurredOn;
+      if (publicationDay && end && item.evidence !== "planned" && earliestDay(end) > publicationDay)
+        issue("Future occurrence must be an explicitly reviewed plan");
       if (item.mediaIds.some((id) => !mediaIds.has(id))) issue("Unknown media reference");
       if (Date.parse(item.updatedAt) > Date.parse(release.publishedAt))
         issue("Event newer than release");

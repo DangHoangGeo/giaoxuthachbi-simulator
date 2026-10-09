@@ -1,0 +1,465 @@
+{
+  "capturedAt": "2026-10-08T13:08:51.574Z",
+  "route": "/vi/design",
+  "status": 200,
+  "buildId": "1WAT1D-QKfVwh3_eGjCPT",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "method": "Separate post-soak headed Chrome context; scrolled each gallery image into view and awaited decode()/complete/naturalWidth>0, returned to top, then fullPage screenshot. These image transfers are excluded from the cold initial-load metrics.",
+  "imageCount": 16,
+  "initialImages": [
+    {
+      "index": 0,
+      "src": "http://127.0.0.1:3132/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "loading": "eager"
+    },
+    {
+      "index": 1,
+      "src": "http://127.0.0.1:3132/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "loading": "lazy"
+    },
+    {
+      "index": 2,
+      "src": "http://127.0.0.1:3132/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "loading": "lazy"
+    },
+    {
+      "index": 3,
+      "src": "http://127.0.0.1:3132/media/56cbd3645307f5fdbadf04fe130ba8d078cc7cae54cfeb52941d8afd5547686f.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "loading": "lazy"
+    },
+    {
+      "index": 4,
+      "src": "http://127.0.0.1:3132/media/de2e18035a5530ad85be31dd5b8d922e6f215b079e87a45f38b4a01dacef66c0.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "loading": "lazy"
+    },
+    {
+      "index": 5,
+      "src": "http://127.0.0.1:3132/media/742665321cb7fd07210caeacdb5b9a5fa46b2083653dfbd9ce1f74d299d2594f.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "loading": "lazy"
+    },
+    {
+      "index": 6,
+      "src": "http://127.0.0.1:3132/media/7ce4ac060bc8f650ac8f81869a29364004203177982080f3a130b74f961af3b7.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "loading": "lazy"
+    },
+    {
+      "index": 7,
+      "src": "http://127.0.0.1:3132/media/6b61beab751b380d2d62d04b99b7276df0157632bca9fac5882397acdd411f01.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "loading": "lazy"
+    },
+    {
+      "index": 8,
+      "src": "http://127.0.0.1:3132/media/4185c9a55f381aaf0c428af7fde5824d52c6e99d03ba621804bf6f76d3aea945.jpg",
+      "complete": false,
+      "naturalWidth": 0,
+      "loading": "lazy"
+    },
+    {
+      "index": 9,
+      "src": "http://127.0.0.1:3132/media/98b95081222d1240695a93fad73a0d6141dbd660692b99379bab8eb26707dd6b.jpg",
+      "complete": false,
+      "naturalWidth": 0,
+      "loading": "lazy"
+    },
+    {
+      "index": 10,
+      "src": "http://127.0.0.1:3132/media/07e72fc698601da02c428c93113afd0bb340f9e5a38a9fa52af68031a18cd3b9.jpg",
+      "complete": false,
+      "naturalWidth": 0,
+      "loading": "lazy"
+    },
+    {
+      "index": 11,
+      "src": "http://127.0.0.1:3132/media/00d94011ac40b83a144266ecb1045762a49c96bc215c104b1e51b001255528f5.jpg",
+      "complete": false,
+      "naturalWidth": 0,
+      "loading": "lazy"
+    },
+    {
+      "index": 12,
+      "src": "http://127.0.0.1:3132/media/331f2743c64128ab773b245d7e6ed20ccc7dd253345761166acfd3c29f702aa3.jpg",
+      "complete": false,
+      "naturalWidth": 0,
+      "loading": "lazy"
+    },
+    {
+      "index": 13,
+      "src": "http://127.0.0.1:3132/media/7b5b7887eca62da30c0c3e1e0fdc4cbe22777f8faac27e433bad6a33a7bb33ff.jpg",
+      "complete": false,
+      "naturalWidth": 0,
+      "loading": "lazy"
+    },
+    {
+      "index": 14,
+      "src": "http://127.0.0.1:3132/media/b5f2910bdef6140608ed84d6ac80f8a85a52f5b99db960f8ba4b08b08a9b25c8.jpg",
+      "complete": false,
+      "naturalWidth": 0,
+      "loading": "lazy"
+    },
+    {
+      "index": 15,
+      "src": "http://127.0.0.1:3132/media/8b1cb9f3efb83ddb91f540d30c4fb6f7a1c8f088541b16fb072aca11172c9dce.jpg",
+      "complete": false,
+      "naturalWidth": 0,
+      "loading": "lazy"
+    }
+  ],
+  "loadedImages": [
+    {
+      "index": 0,
+      "src": "http://127.0.0.1:3132/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "eager"
+    },
+    {
+      "index": 1,
+      "src": "http://127.0.0.1:3132/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 2,
+      "src": "http://127.0.0.1:3132/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 3,
+      "src": "http://127.0.0.1:3132/media/56cbd3645307f5fdbadf04fe130ba8d078cc7cae54cfeb52941d8afd5547686f.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 4,
+      "src": "http://127.0.0.1:3132/media/de2e18035a5530ad85be31dd5b8d922e6f215b079e87a45f38b4a01dacef66c0.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 5,
+      "src": "http://127.0.0.1:3132/media/742665321cb7fd07210caeacdb5b9a5fa46b2083653dfbd9ce1f74d299d2594f.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 6,
+      "src": "http://127.0.0.1:3132/media/7ce4ac060bc8f650ac8f81869a29364004203177982080f3a130b74f961af3b7.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 7,
+      "src": "http://127.0.0.1:3132/media/6b61beab751b380d2d62d04b99b7276df0157632bca9fac5882397acdd411f01.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 8,
+      "src": "http://127.0.0.1:3132/media/3c642a728a3a314dba9d1ecf69f388b17a1f533f063a20c17ee815a630fb0bd5.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 9,
+      "src": "http://127.0.0.1:3132/media/aca9f8ea76c3cba0013c3d74f565833563d1ce1a14316f7085f2f9a69d910529.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 10,
+      "src": "http://127.0.0.1:3132/media/1d1474a3ae45c0e2a73954ec678c8800ca75fe5f055a5bcd7cbf02fc3c2f6642.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 11,
+      "src": "http://127.0.0.1:3132/media/024ceb2a96699df3255d00fb6ee3b9768be795ebf98afa6a77bb85c4e3aca278.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 12,
+      "src": "http://127.0.0.1:3132/media/36a5bb8cf4a9775fbbd55dc3c138af3b6284f7189ad218c98adea25af04a314c.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 13,
+      "src": "http://127.0.0.1:3132/media/ca312a6a81eda70b04a7095cfc7190af775cb0ae404d8769152c40fbdbe05c80.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 14,
+      "src": "http://127.0.0.1:3132/media/d7cbb474fe5eea892b4ec5dde6b2c7fc5084896b228bca4d9c9b0a2c7f59f6d5.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    },
+    {
+      "index": 15,
+      "src": "http://127.0.0.1:3132/media/f61293b7df401200d756a3e249e0a0aec316482c976308de0088a2703812e941.webp",
+      "complete": true,
+      "naturalWidth": 608,
+      "naturalHeight": 342,
+      "loading": "lazy"
+    }
+  ],
+  "failures": [],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:3132/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+      "status": 200,
+      "contentLength": "29702"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+      "status": 200,
+      "contentLength": "49028"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+      "status": 200,
+      "contentLength": "65588"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/56cbd3645307f5fdbadf04fe130ba8d078cc7cae54cfeb52941d8afd5547686f.webp",
+      "status": 200,
+      "contentLength": "41850"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/de2e18035a5530ad85be31dd5b8d922e6f215b079e87a45f38b4a01dacef66c0.webp",
+      "status": 200,
+      "contentLength": "50756"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/7ce4ac060bc8f650ac8f81869a29364004203177982080f3a130b74f961af3b7.webp",
+      "status": 200,
+      "contentLength": "48654"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/742665321cb7fd07210caeacdb5b9a5fa46b2083653dfbd9ce1f74d299d2594f.webp",
+      "status": 200,
+      "contentLength": "30256"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/6b61beab751b380d2d62d04b99b7276df0157632bca9fac5882397acdd411f01.webp",
+      "status": 200,
+      "contentLength": "81092"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/aca9f8ea76c3cba0013c3d74f565833563d1ce1a14316f7085f2f9a69d910529.webp",
+      "status": 200,
+      "contentLength": "59268"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/3c642a728a3a314dba9d1ecf69f388b17a1f533f063a20c17ee815a630fb0bd5.webp",
+      "status": 200,
+      "contentLength": "60996"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/1d1474a3ae45c0e2a73954ec678c8800ca75fe5f055a5bcd7cbf02fc3c2f6642.webp",
+      "status": 200,
+      "contentLength": "31192"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/024ceb2a96699df3255d00fb6ee3b9768be795ebf98afa6a77bb85c4e3aca278.webp",
+      "status": 200,
+      "contentLength": "58496"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/ca312a6a81eda70b04a7095cfc7190af775cb0ae404d8769152c40fbdbe05c80.webp",
+      "status": 200,
+      "contentLength": "46524"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/36a5bb8cf4a9775fbbd55dc3c138af3b6284f7189ad218c98adea25af04a314c.webp",
+      "status": 200,
+      "contentLength": "45094"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/d7cbb474fe5eea892b4ec5dde6b2c7fc5084896b228bca4d9c9b0a2c7f59f6d5.webp",
+      "status": 200,
+      "contentLength": "57768"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/f61293b7df401200d756a3e249e0a0aec316482c976308de0088a2703812e941.webp",
+      "status": 200,
+      "contentLength": "48668"
+    }
+  ],
+  "mediaResourceTransfers": [
+    {
+      "url": "http://127.0.0.1:3132/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+      "transferSize": 30002,
+      "encodedBodySize": 29702,
+      "durationMs": 6.799999713897705,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+      "transferSize": 49328,
+      "encodedBodySize": 49028,
+      "durationMs": 5.700000286102295,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+      "transferSize": 65888,
+      "encodedBodySize": 65588,
+      "durationMs": 7.099999904632568,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/56cbd3645307f5fdbadf04fe130ba8d078cc7cae54cfeb52941d8afd5547686f.webp",
+      "transferSize": 42150,
+      "encodedBodySize": 41850,
+      "durationMs": 7,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/de2e18035a5530ad85be31dd5b8d922e6f215b079e87a45f38b4a01dacef66c0.webp",
+      "transferSize": 51056,
+      "encodedBodySize": 50756,
+      "durationMs": 7.300000190734863,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/7ce4ac060bc8f650ac8f81869a29364004203177982080f3a130b74f961af3b7.webp",
+      "transferSize": 48954,
+      "encodedBodySize": 48654,
+      "durationMs": 7.700000286102295,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/742665321cb7fd07210caeacdb5b9a5fa46b2083653dfbd9ce1f74d299d2594f.webp",
+      "transferSize": 30556,
+      "encodedBodySize": 30256,
+      "durationMs": 8,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/6b61beab751b380d2d62d04b99b7276df0157632bca9fac5882397acdd411f01.webp",
+      "transferSize": 81392,
+      "encodedBodySize": 81092,
+      "durationMs": 10.300000190734863,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/3c642a728a3a314dba9d1ecf69f388b17a1f533f063a20c17ee815a630fb0bd5.webp",
+      "transferSize": 61296,
+      "encodedBodySize": 60996,
+      "durationMs": 2.200000286102295,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/aca9f8ea76c3cba0013c3d74f565833563d1ce1a14316f7085f2f9a69d910529.webp",
+      "transferSize": 59568,
+      "encodedBodySize": 59268,
+      "durationMs": 2,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/1d1474a3ae45c0e2a73954ec678c8800ca75fe5f055a5bcd7cbf02fc3c2f6642.webp",
+      "transferSize": 31492,
+      "encodedBodySize": 31192,
+      "durationMs": 2.200000286102295,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/024ceb2a96699df3255d00fb6ee3b9768be795ebf98afa6a77bb85c4e3aca278.webp",
+      "transferSize": 58796,
+      "encodedBodySize": 58496,
+      "durationMs": 2.3000001907348633,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/ca312a6a81eda70b04a7095cfc7190af775cb0ae404d8769152c40fbdbe05c80.webp",
+      "transferSize": 46824,
+      "encodedBodySize": 46524,
+      "durationMs": 2,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/36a5bb8cf4a9775fbbd55dc3c138af3b6284f7189ad218c98adea25af04a314c.webp",
+      "transferSize": 45394,
+      "encodedBodySize": 45094,
+      "durationMs": 2.0999999046325684,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/d7cbb474fe5eea892b4ec5dde6b2c7fc5084896b228bca4d9c9b0a2c7f59f6d5.webp",
+      "transferSize": 58068,
+      "encodedBodySize": 57768,
+      "durationMs": 2.700000286102295,
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:3132/media/f61293b7df401200d756a3e249e0a0aec316482c976308de0088a2703812e941.webp",
+      "transferSize": 48968,
+      "encodedBodySize": 48668,
+      "durationMs": 2.8000001907348633,
+      "initiatorType": "img"
+    }
+  ],
+  "totalMediaTransferBytes": 809732,
+  "overflow": {
+    "viewportWidth": 1440,
+    "documentWidth": 1440,
+    "horizontalOverflow": false
+  },
+  "errors": [],
+  "screenshot": {
+    "path": "/private/tmp/thachbi-visit-desktop-evidence/final/vi-design-scrolled-all-images.png",
+    "bytes": 5339470,
+    "sha256": "bdea0563346ba821dd5d0cd269e4dd5c70d43fbba128b8938823460c869e69b9"
+  }
+}

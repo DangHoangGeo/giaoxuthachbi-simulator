@@ -8,7 +8,7 @@ This package records the agreed frame arrangement, the current drawing-based mod
 
 Start with [SPECIFICATION.md](SPECIFICATION.md). Use [requirements.json](requirements.json) for machine-readable constraints and [image-manifest.json](image-manifest.json) for image provenance. Read the status of each value before using it.
 
-The package is self-contained for its illustrations: eight separate Full HD concepts, five original other-church photographs, the architectural section image, plan image, and their corresponding source PDFs are included. The concept images are 1920 × 1080 exports resampled from 1672 × 941 generations; enlargement does not add native detail. No superseded all-timber outer-column concept is included.
+The package is self-contained for its illustrations: eight separate Full HD concepts, five other-church photographs (one original photograph and four phone screenshots of a shared video, cropped on 10 October 2026 to remove the messaging-app frame and the sender's details), the architectural section image, plan image, and their corresponding source PDFs are included. The concept images are 1920 × 1080 exports resampled from 1672 × 941 generations; enlargement does not add native detail. No superseded all-timber outer-column concept is included.
 
 ## Primary illustrations
 
@@ -24,4 +24,4 @@ Run `python3 docs/beams-roof-connections/validate.py` from the repository root a
 
 ## Reference-library cleanup · 7 October 2026
 
-The numbered viewer reference folders now display the newer church concepts. This engineering package continues to use its existing eight beam/roof illustrations and five source photographs; byte-identical duplicates were removed from the viewer folders. Their eight native generator originals are now preserved in `masters/`, recorded in the image manifest. Capacity and construction-approval status remain unchanged.
+The numbered viewer reference folders now display the newer church concepts. This engineering package continues to use its existing eight beam/roof illustrations and five source photographs; byte-identical duplicates were removed from the viewer folders on 7 October 2026, before the four screenshots were cropped. Their eight native generator originals are now preserved in `masters/`, recorded in the image manifest. Capacity and construction-approval status remain unchanged.

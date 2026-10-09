@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "c151c71c1f81ec327701c705822dc6dee252eaa6",
+  "sources": {
+    "texture-memory.js": {
+      "sha256": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+      "bytes": 1780
+    },
+    "render-batches.js": {
+      "sha256": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+      "bytes": 3650
+    },
+    "glass-art.js": {
+      "sha256": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+      "bytes": 22910
+    },
+    "carving.js": {
+      "sha256": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+      "bytes": 23838
+    },
+    "sanctuary.js": {
+      "sha256": "2f1114fadfc35f48ab34c66b578b277d22f2b839f66ef7eaf6affdefc2201de3",
+      "bytes": 32162
+    },
+    "realism.js": {
+      "sha256": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+      "bytes": 51523
+    },
+    "planning.js": {
+      "sha256": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+      "bytes": 5803
+    },
+    "bundle.js": {
+      "sha256": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+      "bytes": 1423236
+    }
+  },
+  "units": "metres",
+  "axes": "X toward sanctuary; Y up from nave FFL; Z centered D/E, negative B positive H",
+  "profile": "visible display batches, four pew blocks, doors open; no simulator equipment, private metadata, editors, source drawings or reference originals",
+  "texturePolicy": "Export maximum512px; original generated maps retained in offline source. Display approximation only.",
+  "buildMs": 2981,
+  "revision": "186",
+  "buildRootMeshes": 138,
+  "buildRootVertices": 2424443,
+  "buildRootTriangles": 1468040,
+  "materials": 100,
+  "textures": 126,
+  "sourceTextureRgbaBytes": 94040064,
+  "bounds": {
+    "min": [
+      -13.418999671936035,
+      -2.105621814727783,
+      -25.682998657226562
+    ],
+    "max": [
+      54.88284683227539,
+      36.91999816894531,
+      25.75681495666504
+    ]
+  },
+  "mapping": [
+    {
+      "publicName": "roof",
+      "sourceName": "Roof assembly — toggle",
+      "visible": true
+    },
+    {
+      "publicName": "part-1",
+      "sourceName": "Plinth and approach",
+      "visible": true
+    },
+    {
+      "publicName": "part-2",
+      "sourceName": "Illustrative undimensioned ornament",
+      "visible": true
+    },
+    {
+      "publicName": "part-3",
+      "sourceName": "Grid driven structure",
+      "visible": true
+    },
+    {
+      "publicName": "part-4",
+      "sourceName": "Floor and altar zones",
+      "visible": true
+    },
+    {
+      "publicName": "part-5",
+      "sourceName": "Exterior and openings",
+      "visible": true
+    },
+    {
+      "publicName": "part-6",
+      "sourceName": "Interior proposal — pews, sanctuary, decoration and fixtures",
+      "visible": true
+    },
+    {
+      "publicName": "part-7",
+      "sourceName": "Entrance joinery · closed",
+      "visible": false
+    },
+    {
+      "publicName": "part-8",
+      "sourceName": "Entrance joinery · open",
+      "visible": true
+    },
+    {
+      "publicName": "part-9",
+      "sourceName": "Sanctuary seating and service room · proposal",
+      "visible": true
+    },
+    {
+      "publicName": "part-10",
+      "sourceName": "Two rows of courtyard trees",
+      "visible": true
+    },
+    {
+      "publicName": "part-11",
+      "sourceName": "Reference sanctuary · red lacquer and gilded relief",
+      "visible": true
+    },
+    {
+      "publicName": "part-12",
+      "sourceName": "Proposed pews and kneelers — clear aisles",
+      "visible": true
+    },
+    {
+      "publicName": "part-13",
+      "sourceName": "Two wide seating blocks — long benches",
+      "visible": false
+    }
+  ],
+  "exportMs": 3559.2000002861023,
+  "bytes": 107705312,
+  "gzipBytes": 37885533,
+  "sha256": "312ba31808edef13e611f9cd67eefc3e81ad242b96de86514355ff57fea316fb",
+  "diagnostics": [
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    },
+    {
+      "type": "warning",
+      "text": "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+    }
+  ]
+}

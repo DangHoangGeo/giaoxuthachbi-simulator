@@ -1,0 +1,63 @@
+
+> thach-bi-web@0.1.0 build
+> npm run check:content && npm run check:media && next build && node scripts/prepare-standalone.mjs
+
+
+> thach-bi-web@0.1.0 check:content
+> node scripts/check-content.ts
+
+{"publicContent":"published","checks":"strict schema, fixture exclusion, release ID, canonical checksum"}
+
+> thach-bi-web@0.1.0 check:media
+> node scripts/check-media.mjs
+
+{"publicAssets":18,"checks":"bytes, hash, type, dimensions, metadata, decode, exact file inventory"}
+npm notice
+npm notice New major version of npm available! 10.9.9 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+▲ Next.js 16.4.0 (Turbopack)
+✓ Running next.config.ts took 17ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 641ms
+  Running TypeScript ...
+  Finished TypeScript in 1198ms ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/15) ...
+  Generating static pages using 9 workers (3/15)
+  Generating static pages using 9 workers (7/15)
+  Generating static pages using 9 workers (11/15)
+✓ Generating static pages using 9 workers (15/15) in 229ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├   /[locale]
+│ ├ ● /vi
+│ └ ● /en
+├ ƒ /[locale]/[...unavailable]
+├   /[locale]/about-this-site
+│ ├ ● /vi/about-this-site
+│ └ ● /en/about-this-site
+├ ƒ /[locale]/design
+├ ƒ /[locale]/progress
+├   /[locale]/progress/[eventId]
+│ ├ ● /vi/progress/construction-start-2026
+│ ├ ● /vi/progress/foundation-owner-report-2026
+│ ├ ● /en/progress/construction-start-2026
+│ └ ● /en/progress/foundation-owner-report-2026
+├ ƒ /api/public/version
+└ ○ /icon.svg
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+npm notice
+npm notice New major version of npm available! 10.9.9 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

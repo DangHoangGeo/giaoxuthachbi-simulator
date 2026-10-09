@@ -1,0 +1,5 @@
+
+> thach-bi-web@0.1.0 lint
+> biome check . --error-on-warnings
+
+Checked 71 files in 146ms. No fixes applied.

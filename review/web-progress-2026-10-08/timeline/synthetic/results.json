@@ -1,0 +1,242 @@
+{
+  "startedAt": "2026-10-08T02:50:06.871Z",
+  "baseUrl": "http://127.0.0.1:3120",
+  "serverLog": "/private/tmp/thachbi-web03-harness-capture.log",
+  "runtime": {
+    "node": "v22.23.3",
+    "os": "darwin 25.5.0",
+    "browser": "154.0.8037.98",
+    "headed": true
+  },
+  "screenshots": [
+    {
+      "file": "screenshots/en-progress-oldest-first-viewport.png",
+      "route": "/en/progress?sort=oldest",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/vi-progress-oldest-first-viewport.png",
+      "route": "/vi/progress?sort=oldest",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "fullPage": false
+    },
+    {
+      "file": "screenshots/en-synthetic-event-002-fullpage.png",
+      "route": "/en/progress/synthetic-event-002",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "fullPage": true
+    },
+    {
+      "file": "screenshots/vi-synthetic-event-003-fullpage.png",
+      "route": "/vi/progress/synthetic-event-003",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "fullPage": true
+    }
+  ],
+  "pages": [
+    {
+      "route": "/en/progress?sort=oldest",
+      "status": 200,
+      "facts": {
+        "pathname": "/en/progress",
+        "search": "?sort=oldest",
+        "title": "Construction updates | Thạch Bi Church",
+        "h1": "Construction updates",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 7667,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "mainTextLength": 5266,
+        "syntheticBannerLines": [
+          "SYNTHETIC TEST BUILD — NO CHURCH EVIDENCE",
+          "Synthetic update 1",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 29",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 30",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 3",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 31",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 4",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 32",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 5",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 33",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 6",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 34",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 7",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 35",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 8",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 36",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 9",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 37",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 10",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 38",
+          "Synthetic presentation data, not a site construction fact.",
+          "Synthetic update 11",
+          "Synthetic presentation data, not a site construction fact."
+        ],
+        "syntheticBannerVisible": true
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "screenshots/en-progress-oldest-first-viewport.png"
+    },
+    {
+      "route": "/vi/progress?sort=oldest",
+      "status": 200,
+      "facts": {
+        "pathname": "/vi/progress",
+        "search": "?sort=oldest",
+        "title": "Tiến trình xây dựng | Nhà thờ Thạch Bi",
+        "h1": "Tiến trình xây dựng",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 7667,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "mainTextLength": 5236,
+        "syntheticBannerLines": [
+          "SYNTHETIC TEST BUILD — NO CHURCH EVIDENCE"
+        ],
+        "syntheticBannerVisible": true
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "screenshots/vi-progress-oldest-first-viewport.png"
+    },
+    {
+      "route": "/en/progress/synthetic-event-002",
+      "status": 200,
+      "facts": {
+        "pathname": "/en/progress/synthetic-event-002",
+        "search": "",
+        "title": "Synthetic update 2 | Thạch Bi Church",
+        "h1": "Synthetic update 2",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1083,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "mainTextLength": 448,
+        "syntheticBannerLines": [
+          "SYNTHETIC TEST BUILD — NO CHURCH EVIDENCE",
+          "Synthetic update 2",
+          "Synthetic presentation data, not a site construction fact."
+        ],
+        "syntheticBannerVisible": true
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "screenshots/en-synthetic-event-002-fullpage.png"
+    },
+    {
+      "route": "/vi/progress/synthetic-event-003",
+      "status": 200,
+      "facts": {
+        "pathname": "/vi/progress/synthetic-event-003",
+        "search": "",
+        "title": "Cập nhật kiểm thử 3 | Nhà thờ Thạch Bi",
+        "h1": "Cập nhật kiểm thử 3",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1333,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "mainTextLength": 526,
+        "syntheticBannerLines": [
+          "SYNTHETIC TEST BUILD — NO CHURCH EVIDENCE"
+        ],
+        "syntheticBannerVisible": true
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "screenshots/vi-synthetic-event-003-fullpage.png"
+    }
+  ],
+  "finishedAt": "2026-10-08T02:50:10.311Z"
+}

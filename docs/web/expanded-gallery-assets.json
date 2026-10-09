@@ -1,0 +1,1667 @@
+{
+  "schemaVersion": 1,
+  "scope": "Owner-authorized development gallery: all sixteen current-concept 7 October 2026 native masters; three supporting references excluded.",
+  "releaseId": "development-content-20261008-two",
+  "previousReleaseId": "development-content-20261008-one",
+  "sourceCommit": "c151c71c1f81ec327701c705822dc6dee252eaa6",
+  "releaseCreatedAt": "2026-10-08T12:14:14Z",
+  "releasePublishedAt": "2026-10-08T12:14:14Z",
+  "clockSource": "clock.curr_time: 2026-10-08 12:14:14 UTC",
+  "rightsRef": "owner-development-display-20261008",
+  "permissionRecord": "docs/web/publication-permission.md",
+  "displayPermissionSupplement": "The owner requested the remaining idea images and permitted showing our work with development notes; permission applies to this selected project-created artwork, not construction approval or publication of supporting source references.",
+  "publicReleaseChecksum": "8db8b123c1cca8582b18989d28f3f37c4114a2e2a23ceea853f5d9c4c4a2a5c5",
+  "sourceLibrary": {
+    "path": "Thach_Bi_Viewer/references/manifest.json",
+    "sha256": "a8118c8bfbb031c73e50c723c59ebf169dcf0be46da1c2d364b62a16459399d2",
+    "currentConceptCount": 16,
+    "supportingReferenceCount": 3
+  },
+  "provenanceManifest": {
+    "path": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+    "sha256": "aaded2de37a6b4ffd91d7dad2fb4750b70239d7d2d661d85ebb4a9afe151631f"
+  },
+  "sourceDesignNotes": "docs/church-view-renderings.md",
+  "excludedSupportingReferences": [
+    "09-sanctuary-approved-concept",
+    "10-sanctuary-church-reference",
+    "08-retained-side-stair-detail"
+  ],
+  "preservation": {
+    "existingThreeMediaObjectsUnchanged": true,
+    "eventsUnchangedWithoutCorrections": true,
+    "pagesUnchanged": true,
+    "retiredIdsUnchanged": true,
+    "nativeOriginalsUnchanged": true,
+    "previousReleaseBytesSha256": "97f4764ead6a67815fc66fbcd89d77a44a9c777747e36118067fa0a83778e223"
+  },
+  "delivery": {
+    "newMediaItems": 13,
+    "totalMediaItems": 16,
+    "newDerivativeFiles": 78,
+    "totalDerivativeFiles": 96,
+    "totalDeclaredDerivativeBytes": 15465653,
+    "nativeOriginalsOrPrivateManifestsCopiedToPublic": false,
+    "formats": ["webp", "jpg"],
+    "boundsWithoutEnlargement": [640, 1280, 1920],
+    "largestSourceNativePixels": [1672, 941],
+    "publicDomain": null,
+    "deployedUrl": null,
+    "engineeringApproval": false
+  },
+  "media": [
+    {
+      "mediaId": "concept-front-20261007",
+      "libraryId": "church-views-20261007-01-exterior-front-day",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/01-exterior-front-day.png",
+      "sha256": "b66b66c2d5d0db9c4b64d708e94726c8b12097e8b2400a75f7173e01a4bec5b9",
+      "sourceBytes": 2006605,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "01-exterior-front-day-v2-assumption",
+      "generationFile": "exec-33b60318-fc3f-4ca0-8449-50f394a61131.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/01-exterior-front-day.png",
+      "sourceModelCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+      "sourceLibraryStatus": "Visually reviewed concept; source concepts govern ornament. New image is not owner-approved or construction-approved.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Mặt tiền — hình ý tưởng ban ngày",
+        "en": "Front elevation — daylight concept"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng nhà thờ với hai tháp, tượng Đức Mẹ ở giữa và ba cửa gỗ.",
+        "en": "Concept of the church with twin towers, a central Marian statue and three timber entrances."
+      },
+      "retainedExistingMediaRecord": true,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions.",
+        "Earlier concept details can differ from later shutter, carving or model coordination work."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d.webp",
+          "sha256": "1e3b8ee60051cb990ce8380cbe21cd066164a06e3e87ce6c7d44ca284f7a542d",
+          "width": 640,
+          "height": 360,
+          "bytes": 29702
+        },
+        {
+          "path": "/media/1a2ffdfa7aa2187ed1165bf9428cbbe8f53a26c19af788a5600f9c2482598fc8.jpg",
+          "sha256": "1a2ffdfa7aa2187ed1165bf9428cbbe8f53a26c19af788a5600f9c2482598fc8",
+          "width": 640,
+          "height": 360,
+          "bytes": 36616
+        },
+        {
+          "path": "/media/fffd8f6b4cc589f391a44ba76a2fddf3a1d36ebaa9b11311b185ca93b5634455.webp",
+          "sha256": "fffd8f6b4cc589f391a44ba76a2fddf3a1d36ebaa9b11311b185ca93b5634455",
+          "width": 1280,
+          "height": 720,
+          "bytes": 93648
+        },
+        {
+          "path": "/media/c5372c4e71712f81e2671d334a63fdc2f900b71b5e054df437548f0b54e6a200.jpg",
+          "sha256": "c5372c4e71712f81e2671d334a63fdc2f900b71b5e054df437548f0b54e6a200",
+          "width": 1280,
+          "height": 720,
+          "bytes": 123500
+        },
+        {
+          "path": "/media/9819ea980b00590c5d4a5af4346af86a7261f8f18a5d4a642400a76eeda690eb.webp",
+          "sha256": "9819ea980b00590c5d4a5af4346af86a7261f8f18a5d4a642400a76eeda690eb",
+          "width": 1672,
+          "height": 941,
+          "bytes": 138966
+        },
+        {
+          "path": "/media/4e6e2bb4f686af73a1a5db63b11cad60b91132b1fb24a828523d8ea3fe73a60c.jpg",
+          "sha256": "4e6e2bb4f686af73a1a5db63b11cad60b91132b1fb24a828523d8ea3fe73a60c",
+          "width": 1672,
+          "height": 941,
+          "bytes": 191066
+        }
+      ],
+      "preparation": {
+        "retainedRecord": "docs/web/development-publication-assets.json",
+        "regenerated": false
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-02-exterior-corner-day",
+      "libraryId": "church-views-20261007-02-exterior-corner-day",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/02-exterior-corner-day.png",
+      "sha256": "d6a3fdd160d5f9b1207a6ded4d69dc031607a68003a0308a68bf473285b0a715",
+      "sourceBytes": 2268158,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "02-exterior-corner-day-v2-assumption",
+      "generationFile": "exec-31beda75-f635-452d-8fa3-cf7f717effe4.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/02-exterior-corner-day.png",
+      "sourceModelCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+      "sourceLibraryStatus": "Visually reviewed concept; source concepts govern ornament. New image is not owner-approved or construction-approved.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Mặt tiền và tường bên — ý tưởng ban ngày",
+        "en": "Front and long side — daylight concept"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng nhìn chéo từ trên cao: hai tháp, tượng Đức Mẹ giữa mặt tiền, mái ngói và các cửa bên.",
+        "en": "Elevated oblique concept view of twin towers, a Marian statue in the facade, tiled roofs and side entrances."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions.",
+        "Earlier concept details can differ from later shutter, carving or model coordination work."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/56cbd3645307f5fdbadf04fe130ba8d078cc7cae54cfeb52941d8afd5547686f.webp",
+          "sha256": "56cbd3645307f5fdbadf04fe130ba8d078cc7cae54cfeb52941d8afd5547686f",
+          "width": 640,
+          "height": 360,
+          "bytes": 41850
+        },
+        {
+          "path": "/media/4c6097dab9ff92af1559ee7ea5bd701e3cef222f472267a9988c908e403b9cb9.jpg",
+          "sha256": "4c6097dab9ff92af1559ee7ea5bd701e3cef222f472267a9988c908e403b9cb9",
+          "width": 640,
+          "height": 360,
+          "bytes": 47538
+        },
+        {
+          "path": "/media/5829420a13c6ff46a5029c9afc23233c5459a76c20a3b38fa07746f21afe711e.webp",
+          "sha256": "5829420a13c6ff46a5029c9afc23233c5459a76c20a3b38fa07746f21afe711e",
+          "width": 1280,
+          "height": 720,
+          "bytes": 127044
+        },
+        {
+          "path": "/media/9feed7b9b7e0bc886dc4c6e1676d6fc48ae8fdacfdc66a3318ec4143bcb5169d.jpg",
+          "sha256": "9feed7b9b7e0bc886dc4c6e1676d6fc48ae8fdacfdc66a3318ec4143bcb5169d",
+          "width": 1280,
+          "height": 720,
+          "bytes": 157815
+        },
+        {
+          "path": "/media/d90080d244213ba6266a25ac84fc5f95cc9ad118548a1b773979646e84d2c9fa.webp",
+          "sha256": "d90080d244213ba6266a25ac84fc5f95cc9ad118548a1b773979646e84d2c9fa",
+          "width": 1672,
+          "height": 941,
+          "bytes": 187164
+        },
+        {
+          "path": "/media/cde15b1c9b3391ee99b1deb86cee3e7cc92f4241a9a9e12966c5563dc699ce00.jpg",
+          "sha256": "cde15b1c9b3391ee99b1deb86cee3e7cc92f4241a9a9e12966c5563dc699ce00",
+          "width": 1672,
+          "height": 941,
+          "bytes": 244249
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "34f8a617322bd8f6cea80f11029da8dc6b403975fc6eb253ea4f87ce2c9200bc",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-03-entrance-detail-day",
+      "libraryId": "church-views-20261007-03-entrance-detail-day",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/03-entrance-detail-day.png",
+      "sha256": "d77f2efa92b79fe383769b457f21ae1b7baee1a42d622abe7fb614ca29263968",
+      "sourceBytes": 2446742,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "03-entrance-detail-day-v2-assumption",
+      "generationFile": "exec-53a7b222-cffe-4c05-9f29-4b6d43f3d5b7.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/03-entrance-detail-day.png",
+      "sourceModelCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+      "sourceLibraryStatus": "Visually reviewed concept; source concepts govern ornament. New image is not owner-approved or construction-approved.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Cửa chính — ý tưởng chi tiết",
+        "en": "Main entrance — detail concept"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng nhìn gần các cửa gỗ, bậc đá phía trước và tượng Đức Mẹ trong hốc giữa mặt tiền.",
+        "en": "Close concept view of timber entrances, front stone steps and a Marian statue in the central facade niche."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions.",
+        "Earlier concept details can differ from later shutter, carving or model coordination work."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/de2e18035a5530ad85be31dd5b8d922e6f215b079e87a45f38b4a01dacef66c0.webp",
+          "sha256": "de2e18035a5530ad85be31dd5b8d922e6f215b079e87a45f38b4a01dacef66c0",
+          "width": 640,
+          "height": 360,
+          "bytes": 50756
+        },
+        {
+          "path": "/media/9081965c275d04067beee15dfe8f1659d46d7b09671d7b5902f6f6b578fb625b.jpg",
+          "sha256": "9081965c275d04067beee15dfe8f1659d46d7b09671d7b5902f6f6b578fb625b",
+          "width": 640,
+          "height": 360,
+          "bytes": 56482
+        },
+        {
+          "path": "/media/9eb708ce6ea1e0aa0b729a97c269a3c0bb8cc5c1d6d265d97f9e87079616372a.webp",
+          "sha256": "9eb708ce6ea1e0aa0b729a97c269a3c0bb8cc5c1d6d265d97f9e87079616372a",
+          "width": 1280,
+          "height": 720,
+          "bytes": 153886
+        },
+        {
+          "path": "/media/09f8068d00146e74a7e0613a4d11b9e8039e20792f3718f200683c13c18bfc89.jpg",
+          "sha256": "09f8068d00146e74a7e0613a4d11b9e8039e20792f3718f200683c13c18bfc89",
+          "width": 1280,
+          "height": 720,
+          "bytes": 188504
+        },
+        {
+          "path": "/media/93f78fd28f82164ada2a6231b15e6b5573f1ee8fb306fa248520e31d2e2db1af.webp",
+          "sha256": "93f78fd28f82164ada2a6231b15e6b5573f1ee8fb306fa248520e31d2e2db1af",
+          "width": 1672,
+          "height": 941,
+          "bytes": 219260
+        },
+        {
+          "path": "/media/d0ce52aa6e752bce00f3cbdb8a41d7bf616a4ac9f8bd8385bc4fd43d92ab0fe8.jpg",
+          "sha256": "d0ce52aa6e752bce00f3cbdb8a41d7bf616a4ac9f8bd8385bc4fd43d92ab0fe8",
+          "width": 1672,
+          "height": 941,
+          "bytes": 290524
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "1caf6758e5e19a24e4d31e10e70196fb987ecb2798da20487cac68294a2b8275",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-04-exterior-corner-evening",
+      "libraryId": "church-views-20261007-04-exterior-corner-evening",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/04-exterior-corner-evening.png",
+      "sha256": "f7d0284fbbf9c3dbb1892973dff2f2d79fa3b2afc5211956afdf6c4482d4916c",
+      "sourceBytes": 1962582,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "04-exterior-corner-evening-v2-assumption",
+      "generationFile": "exec-81a52284-32c4-4420-a02e-9803f0d9cac1.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/04-exterior-corner-evening.png",
+      "sourceModelCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+      "sourceLibraryStatus": "Visually reviewed concept; source concepts govern ornament. New image is not owner-approved or construction-approved.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Mặt tiền và tường bên — ý tưởng buổi tối",
+        "en": "Front and long side — evening concept"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng nhìn chéo mặt tiền hai tháp và tường bên dưới bầu trời xanh tối, với ánh sáng vàng trên mặt đứng.",
+        "en": "Oblique concept view of the twin-tower facade and long side under a dark blue sky, with warm facade lighting."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions.",
+        "Earlier concept details can differ from later shutter, carving or model coordination work."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/742665321cb7fd07210caeacdb5b9a5fa46b2083653dfbd9ce1f74d299d2594f.webp",
+          "sha256": "742665321cb7fd07210caeacdb5b9a5fa46b2083653dfbd9ce1f74d299d2594f",
+          "width": 640,
+          "height": 360,
+          "bytes": 30256
+        },
+        {
+          "path": "/media/e8fb3c5479a5b647c8e1ab18af6edb53bafe769a7dd8a7cf9d874381e87e0e7b.jpg",
+          "sha256": "e8fb3c5479a5b647c8e1ab18af6edb53bafe769a7dd8a7cf9d874381e87e0e7b",
+          "width": 640,
+          "height": 360,
+          "bytes": 37818
+        },
+        {
+          "path": "/media/24df82578b8b9de11bcf68e70f94b6b2691d3a64f35d32010f10d498d54ca316.webp",
+          "sha256": "24df82578b8b9de11bcf68e70f94b6b2691d3a64f35d32010f10d498d54ca316",
+          "width": 1280,
+          "height": 720,
+          "bytes": 92780
+        },
+        {
+          "path": "/media/a72d18a6efbd02fcc8470554e899ecf9efbbd44ea51a772d13830ec8c52eeba9.jpg",
+          "sha256": "a72d18a6efbd02fcc8470554e899ecf9efbbd44ea51a772d13830ec8c52eeba9",
+          "width": 1280,
+          "height": 720,
+          "bytes": 122094
+        },
+        {
+          "path": "/media/2f737040fa1a686ecfc5b0a9ad78a5619a96afcb4d30efc62a4bd9aafa516426.webp",
+          "sha256": "2f737040fa1a686ecfc5b0a9ad78a5619a96afcb4d30efc62a4bd9aafa516426",
+          "width": 1672,
+          "height": 941,
+          "bytes": 133878
+        },
+        {
+          "path": "/media/c80e91f2293690a9662e3dacde136e17e088b766890109ccef3e9af96757f0aa.jpg",
+          "sha256": "c80e91f2293690a9662e3dacde136e17e088b766890109ccef3e9af96757f0aa",
+          "width": 1672,
+          "height": 941,
+          "bytes": 187182
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "17cc66ae9f283a9a600c34fb639d0a4fa6dfd5f5f5b0185f3c95ceadd82376c4",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    },
+    {
+      "mediaId": "concept-nave-20261007",
+      "libraryId": "church-views-20261007-05-nave-overview-day",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/05-nave-overview-day.png",
+      "sha256": "2e21cbab46662e705e39326708a2f8a56f01b58df94d4f8c2917309a705857e0",
+      "sourceBytes": 2287552,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "05-nave-overview-day-v3-concepts",
+      "generationFile": "exec-37bf5ff2-fd0f-4791-9f50-6e7cb5181459.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/05-nave-overview-day.png",
+      "sourceModelCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+      "sourceLibraryStatus": "Visually reviewed concept; source concepts govern ornament. New image is not owner-approved or construction-approved.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Gian chính — ý tưởng nội thất; thiết bị còn phải phối hợp và che giấu",
+        "en": "Nave interior concept; equipment coordination and concealment remain unresolved"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng nhìn dọc lối giữa về cung thánh, các hàng ghế và cột gỗ; còn thấy quạt, loa và đèn.",
+        "en": "Concept view along the central aisle toward the sanctuary, with pews and timber columns; fans, speakers and lights remain visible."
+      },
+      "retainedExistingMediaRecord": true,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions.",
+        "Earlier concept details can differ from later shutter, carving or model coordination work.",
+        "Visible fans/speakers are unresolved concept equipment, not agreed installed positions. Exposed centreline fan schemes remain excluded; concealment must preserve performance and maintenance access."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea.webp",
+          "sha256": "3d5c40d8a0a3da2295a4e4a9704fcb1cc5808e901da74c6e8deab97bd200b9ea",
+          "width": 640,
+          "height": 360,
+          "bytes": 49028
+        },
+        {
+          "path": "/media/171cb708424690eb99464940895ee09dd42db9f7571715f22e7f64c7ec1eda5f.jpg",
+          "sha256": "171cb708424690eb99464940895ee09dd42db9f7571715f22e7f64c7ec1eda5f",
+          "width": 640,
+          "height": 360,
+          "bytes": 57654
+        },
+        {
+          "path": "/media/04a0ab41d016f215beacb6b9727a522ad834c0ef6fb55f75bc3aa3ba4547a45a.webp",
+          "sha256": "04a0ab41d016f215beacb6b9727a522ad834c0ef6fb55f75bc3aa3ba4547a45a",
+          "width": 1280,
+          "height": 720,
+          "bytes": 143398
+        },
+        {
+          "path": "/media/b493a3a19bde347cfc5c2d108ba77edb64b96d51210200d5cba30ad32004f897.jpg",
+          "sha256": "b493a3a19bde347cfc5c2d108ba77edb64b96d51210200d5cba30ad32004f897",
+          "width": 1280,
+          "height": 720,
+          "bytes": 187345
+        },
+        {
+          "path": "/media/a34ef00942845bcee074b9908b105f5322919e38ae8651961a9e85c2db55182d.webp",
+          "sha256": "a34ef00942845bcee074b9908b105f5322919e38ae8651961a9e85c2db55182d",
+          "width": 1672,
+          "height": 941,
+          "bytes": 211470
+        },
+        {
+          "path": "/media/f6770503a3d21efc68d6d802253d88c6923cadb8c39f298d5e04bd4c692ca99c.jpg",
+          "sha256": "f6770503a3d21efc68d6d802253d88c6923cadb8c39f298d5e04bd4c692ca99c",
+          "width": 1672,
+          "height": 941,
+          "bytes": 286899
+        }
+      ],
+      "preparation": {
+        "retainedRecord": "docs/web/development-publication-assets.json",
+        "regenerated": false
+      }
+    },
+    {
+      "mediaId": "concept-sanctuary-20261007",
+      "libraryId": "church-views-20261007-06-sanctuary-overview-evening",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/06-sanctuary-overview-evening.png",
+      "sha256": "18da2bbc111b223db76558d292431fd5117f6ab044a021002cda07a5b1d05e85",
+      "sourceBytes": 2806591,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "06-sanctuary-overview-evening-v3-concepts",
+      "generationFile": "exec-c1aac607-d457-411d-b1b5-472868f0bc98.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/06-sanctuary-overview-evening.png",
+      "sourceModelCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+      "sourceLibraryStatus": "Visually reviewed concept; source concepts govern ornament. New image is not owner-approved or construction-approved.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Cung thánh — hình ý tưởng buổi tối, không phải dự báo độ sáng",
+        "en": "Sanctuary — evening concept, not a lighting prediction"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng cung thánh chạm khắc sơn son thếp vàng, thánh giá ở giữa, bàn thờ và hai tượng hai bên.",
+        "en": "Concept of a red-and-gold carved sanctuary, central crucifix, altar and statues to either side."
+      },
+      "retainedExistingMediaRecord": true,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions.",
+        "Earlier concept details can differ from later shutter, carving or model coordination work.",
+        "Visible fans/speakers are unresolved concept equipment, not agreed installed positions. Exposed centreline fan schemes remain excluded; concealment must preserve performance and maintenance access."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827.webp",
+          "sha256": "05c53c362913037a7873d518b128efa3991c298987c4dca7058fd6111fdff827",
+          "width": 640,
+          "height": 360,
+          "bytes": 65588
+        },
+        {
+          "path": "/media/065b454d1e267d1fa1d6197ede837fa4633260df80873b7b83dfbfb044c0c24a.jpg",
+          "sha256": "065b454d1e267d1fa1d6197ede837fa4633260df80873b7b83dfbfb044c0c24a",
+          "width": 640,
+          "height": 360,
+          "bytes": 69822
+        },
+        {
+          "path": "/media/bc642f36d5920e416768d7ad92663c31ecbb9464543304d00d7ce3dc90b6941a.webp",
+          "sha256": "bc642f36d5920e416768d7ad92663c31ecbb9464543304d00d7ce3dc90b6941a",
+          "width": 1280,
+          "height": 720,
+          "bytes": 214618
+        },
+        {
+          "path": "/media/2f467caf731ce06fa6e8b467249678d719e1a7020ee13a8d26048951180527dd.jpg",
+          "sha256": "2f467caf731ce06fa6e8b467249678d719e1a7020ee13a8d26048951180527dd",
+          "width": 1280,
+          "height": 720,
+          "bytes": 243110
+        },
+        {
+          "path": "/media/505663f3f8bf044ab893f32b4da7844ecd57bcc2423e05d811178d801b1e274d.webp",
+          "sha256": "505663f3f8bf044ab893f32b4da7844ecd57bcc2423e05d811178d801b1e274d",
+          "width": 1672,
+          "height": 941,
+          "bytes": 318184
+        },
+        {
+          "path": "/media/7e2e488f9e91e54dfa935a6128fab3125c3ca4a5a8e3faee0cecdec3f6d24181.jpg",
+          "sha256": "7e2e488f9e91e54dfa935a6128fab3125c3ca4a5a8e3faee0cecdec3f6d24181",
+          "width": 1672,
+          "height": 941,
+          "bytes": 377607
+        }
+      ],
+      "preparation": {
+        "retainedRecord": "docs/web/development-publication-assets.json",
+        "regenerated": false
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-07-interior-oblique-day",
+      "libraryId": "church-views-20261007-07-interior-oblique-day",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/07-interior-oblique-day.png",
+      "sha256": "217b50c1d4945d40ef69f6b31f3ec8c4d94b680eab8bc52a78a16d5238330400",
+      "sourceBytes": 2345021,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "07-interior-oblique-day-v3-concepts",
+      "generationFile": "exec-c9cb8b46-80ca-4207-803d-f8f8b8aff3a8.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/07-interior-oblique-day.png",
+      "sourceModelCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+      "sourceLibraryStatus": "Visually reviewed concept; source concepts govern ornament. New image is not owner-approved or construction-approved.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Lối bên nhìn về cung thánh — ý tưởng; thiết bị chưa chốt",
+        "en": "Side aisle toward sanctuary — concept; equipment unresolved"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng từ lối bên: các hàng ghế, cột gỗ sơn đỏ, cung thánh thếp vàng và quạt còn nhìn thấy.",
+        "en": "Side-aisle concept with pews, red lacquered timber columns, a gilded sanctuary and fans still visible."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions.",
+        "Earlier concept details can differ from later shutter, carving or model coordination work.",
+        "Visible fans/speakers are unresolved concept equipment, not agreed installed positions. Exposed centreline fan schemes remain excluded; concealment must preserve performance and maintenance access."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/7ce4ac060bc8f650ac8f81869a29364004203177982080f3a130b74f961af3b7.webp",
+          "sha256": "7ce4ac060bc8f650ac8f81869a29364004203177982080f3a130b74f961af3b7",
+          "width": 640,
+          "height": 360,
+          "bytes": 48654
+        },
+        {
+          "path": "/media/bc2ebfe2350eb5c54cf560fefc3f74eb9fb405e880fbd4e1a6061b8ba3439a64.jpg",
+          "sha256": "bc2ebfe2350eb5c54cf560fefc3f74eb9fb405e880fbd4e1a6061b8ba3439a64",
+          "width": 640,
+          "height": 360,
+          "bytes": 57285
+        },
+        {
+          "path": "/media/19aaa14d3c3f24563849de3337c456e2d3eec9b916a8ab10892c0b7f5a8daaa4.webp",
+          "sha256": "19aaa14d3c3f24563849de3337c456e2d3eec9b916a8ab10892c0b7f5a8daaa4",
+          "width": 1280,
+          "height": 720,
+          "bytes": 149626
+        },
+        {
+          "path": "/media/00365948d4faf2d08be449ed62ac370485b41810a866ee443aa88c3cb84269b9.jpg",
+          "sha256": "00365948d4faf2d08be449ed62ac370485b41810a866ee443aa88c3cb84269b9",
+          "width": 1280,
+          "height": 720,
+          "bytes": 188482
+        },
+        {
+          "path": "/media/9736fac1fe44a5259d08e0743115ea2075f02c3a1ce5b53edfc8d177f618ddee.webp",
+          "sha256": "9736fac1fe44a5259d08e0743115ea2075f02c3a1ce5b53edfc8d177f618ddee",
+          "width": 1672,
+          "height": 941,
+          "bytes": 220898
+        },
+        {
+          "path": "/media/e411df597f7d519f3b287d0435b3919c47fe54d3845b6b10600a15687cff5b6e.jpg",
+          "sha256": "e411df597f7d519f3b287d0435b3919c47fe54d3845b6b10600a15687cff5b6e",
+          "width": 1672,
+          "height": 941,
+          "bytes": 287490
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "a8db6e802ee2d39a9593b8f34b44c3587338d1a5ba266b25b90bbfe7f1404acd",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-08-sanctuary-detail-day",
+      "libraryId": "church-views-20261007-08-sanctuary-detail-day",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/08-sanctuary-detail-day.png",
+      "sha256": "7645296d650152beef2c990f23d7d86e2897539d135d5d0ebe5cea5d9169fd60",
+      "sourceBytes": 3101285,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "08-sanctuary-detail-day-v3-concepts",
+      "generationFile": "exec-b39c8298-36d3-4303-90ff-958c71d641fe.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs/08-sanctuary-detail-day.png",
+      "sourceModelCommit": "93e9a1ee1c224a96b7d7c2b3c1dbfadd9c8ba992",
+      "sourceLibraryStatus": "Visually reviewed concept; source concepts govern ornament. New image is not owner-approved or construction-approved.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Cung thánh và bàn thờ — ý tưởng chi tiết",
+        "en": "Sanctuary and altar — detail concept"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng cận cảnh thánh giá trong hốc xanh, các lớp hoa văn thếp vàng, gỗ sơn đỏ và bàn thờ đá sáng màu.",
+        "en": "Close concept view of a crucifix in a blue recess, layered gilded carving, red lacquer and a pale stone altar."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions.",
+        "Earlier concept details can differ from later shutter, carving or model coordination work."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/6b61beab751b380d2d62d04b99b7276df0157632bca9fac5882397acdd411f01.webp",
+          "sha256": "6b61beab751b380d2d62d04b99b7276df0157632bca9fac5882397acdd411f01",
+          "width": 640,
+          "height": 360,
+          "bytes": 81092
+        },
+        {
+          "path": "/media/164c7993d45b579abb5bf3240b6e720f0b329fe3643cc58f82ff23be0ca9dbc5.jpg",
+          "sha256": "164c7993d45b579abb5bf3240b6e720f0b329fe3643cc58f82ff23be0ca9dbc5",
+          "width": 640,
+          "height": 360,
+          "bytes": 80652
+        },
+        {
+          "path": "/media/fc8d5c324cd6a858ad8949885eb4dcd43d260e1352401f9c55df2a5e789fef2e.webp",
+          "sha256": "fc8d5c324cd6a858ad8949885eb4dcd43d260e1352401f9c55df2a5e789fef2e",
+          "width": 1280,
+          "height": 720,
+          "bytes": 260438
+        },
+        {
+          "path": "/media/f7da3fc075113641fbbd84fdb0cb1b6be3518695cb451f1cb934370c132feb6f.jpg",
+          "sha256": "f7da3fc075113641fbbd84fdb0cb1b6be3518695cb451f1cb934370c132feb6f",
+          "width": 1280,
+          "height": 720,
+          "bytes": 278694
+        },
+        {
+          "path": "/media/b338728fed5bf05ffacfd6568f25d026d3d909a2f678238bdb54ee397df90602.webp",
+          "sha256": "b338728fed5bf05ffacfd6568f25d026d3d909a2f678238bdb54ee397df90602",
+          "width": 1672,
+          "height": 941,
+          "bytes": 383252
+        },
+        {
+          "path": "/media/ad8d576b9b06c7aeb0536be03d516273aed7890582727e2b838927dfe9b43adc.jpg",
+          "sha256": "ad8d576b9b06c7aeb0536be03d516273aed7890582727e2b838927dfe9b43adc",
+          "width": 1672,
+          "height": 941,
+          "bytes": 429986
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "199549ccad513a928c8cc8c17d0e26db3d03601092850e87ba853dd360b9ad2a",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-09-carved-connection-detail",
+      "libraryId": "church-views-20261007-09-carved-connection-detail",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/09-carved-connection-detail.png",
+      "sha256": "f6759fb4f851de0ed6c182906cc621098fbe94073a882de9295094e49fc45ffa",
+      "sourceBytes": 2577196,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "09-carved-connection-detail-v2-wall",
+      "generationFile": "exec-5a059e53-aafe-4fc1-88c3-ca855954afb4.png",
+      "modelCapture": null,
+      "sourceModelCommit": null,
+      "sourceLibraryStatus": "Visually reviewed concept; source concepts govern ornament. New image is not owner-approved or construction-approved.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Cột và dầm chạm khắc — ý tưởng; liên kết chưa chốt",
+        "en": "Carved column and beams — concept; connections unresolved"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng cận cảnh đầu cột, cốn và dầm gỗ sơn đỏ với hoa văn thếp vàng.",
+        "en": "Close concept view of a column head, carved haunches and red lacquered beams with gilded ornament."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions.",
+        "Art-reference connection study has no matching model camera capture. Actual sections, concealed joinery, bearings, capacity and fixings remain ENGINEERING HOLD."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/3c642a728a3a314dba9d1ecf69f388b17a1f533f063a20c17ee815a630fb0bd5.webp",
+          "sha256": "3c642a728a3a314dba9d1ecf69f388b17a1f533f063a20c17ee815a630fb0bd5",
+          "width": 640,
+          "height": 360,
+          "bytes": 60996
+        },
+        {
+          "path": "/media/4185c9a55f381aaf0c428af7fde5824d52c6e99d03ba621804bf6f76d3aea945.jpg",
+          "sha256": "4185c9a55f381aaf0c428af7fde5824d52c6e99d03ba621804bf6f76d3aea945",
+          "width": 640,
+          "height": 360,
+          "bytes": 66080
+        },
+        {
+          "path": "/media/aa5d2996522d42f1dd9b21e0715467de688eca4ceed91938f94d0867c13013c0.webp",
+          "sha256": "aa5d2996522d42f1dd9b21e0715467de688eca4ceed91938f94d0867c13013c0",
+          "width": 1280,
+          "height": 720,
+          "bytes": 170412
+        },
+        {
+          "path": "/media/3426aab9275707c8e6a8f17d47b427024e4794f8d172eda15c48a5706a359e8c.jpg",
+          "sha256": "3426aab9275707c8e6a8f17d47b427024e4794f8d172eda15c48a5706a359e8c",
+          "width": 1280,
+          "height": 720,
+          "bytes": 204636
+        },
+        {
+          "path": "/media/878595b7268a668424507483f37c2656f043f3da2decf17b3e3a9b0eede113a6.webp",
+          "sha256": "878595b7268a668424507483f37c2656f043f3da2decf17b3e3a9b0eede113a6",
+          "width": 1672,
+          "height": 941,
+          "bytes": 243640
+        },
+        {
+          "path": "/media/085e8980465540a4c56deb6f2162325b29ed666d522d0709fe8c8510f0ca3d50.jpg",
+          "sha256": "085e8980465540a4c56deb6f2162325b29ed666d522d0709fe8c8510f0ca3d50",
+          "width": 1672,
+          "height": 941,
+          "bytes": 309673
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "60f7b31b8e9b6f5128f5f1eecab2ded2733430d147ae2287f0a68f67e1ea3b53",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-10-side-door-exterior-day",
+      "libraryId": "church-views-20261007-10-side-door-exterior-day",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/10-side-door-exterior-day.png",
+      "sha256": "f1b8b52d6439f9efd3125cbef63172d54d38fc7250dafa5640a3e422d2ae66de",
+      "sourceBytes": 2754341,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "10-side-door-exterior-day-v2-interior-panels",
+      "generationFile": "exec-0561a695-3cf3-432f-92df-91168324b63f.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/10-side-door-exterior-day.png",
+      "sourceModelCommit": "e64143e",
+      "sourceLibraryStatus": "Owner-corrected appearance intent; new image remains proposed art, not construction approval.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Cửa bên — ý tưởng nhìn từ ngoài",
+        "en": "Side entrance — exterior concept"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng cửa gỗ đôi có hoa văn tròn, kính màu vòm, cửa sổ gỗ chạm khắc và chiếu nghỉ đá.",
+        "en": "Exterior concept of double timber doors with circular panels, a stained-glass fanlight, carved timber shutters and a stone landing."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/aca9f8ea76c3cba0013c3d74f565833563d1ce1a14316f7085f2f9a69d910529.webp",
+          "sha256": "aca9f8ea76c3cba0013c3d74f565833563d1ce1a14316f7085f2f9a69d910529",
+          "width": 640,
+          "height": 360,
+          "bytes": 59268
+        },
+        {
+          "path": "/media/98b95081222d1240695a93fad73a0d6141dbd660692b99379bab8eb26707dd6b.jpg",
+          "sha256": "98b95081222d1240695a93fad73a0d6141dbd660692b99379bab8eb26707dd6b",
+          "width": 640,
+          "height": 360,
+          "bytes": 64659
+        },
+        {
+          "path": "/media/c6833b5f857790839470bc06f177d7b4835bbcc5972985196bdb7836e3375336.webp",
+          "sha256": "c6833b5f857790839470bc06f177d7b4835bbcc5972985196bdb7836e3375336",
+          "width": 1280,
+          "height": 720,
+          "bytes": 185808
+        },
+        {
+          "path": "/media/5501da95b95e827fe97e8ee1919a5b6718ddaeb559c36ca398350f0951f74be9.jpg",
+          "sha256": "5501da95b95e827fe97e8ee1919a5b6718ddaeb559c36ca398350f0951f74be9",
+          "width": 1280,
+          "height": 720,
+          "bytes": 222277
+        },
+        {
+          "path": "/media/f1797e8b273e3dd7c7dfca82257437e1bc5e05c7779a4594eafc10fde198666d.webp",
+          "sha256": "f1797e8b273e3dd7c7dfca82257437e1bc5e05c7779a4594eafc10fde198666d",
+          "width": 1672,
+          "height": 941,
+          "bytes": 265890
+        },
+        {
+          "path": "/media/f81dc834b24900144a11e7c29f29f5cee89870121e5786405a7bad450a1c96b6.jpg",
+          "sha256": "f81dc834b24900144a11e7c29f29f5cee89870121e5786405a7bad450a1c96b6",
+          "width": 1672,
+          "height": 941,
+          "bytes": 343783
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "4404305d255fac1f52832bb00a9d02236fcec44f51fc93209d2077e5b0520f19",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-11-side-wall-interior-day",
+      "libraryId": "church-views-20261007-11-side-wall-interior-day",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/11-side-wall-interior-day.png",
+      "sha256": "0b5b3c96245b883f220aa58aa8da1c799edad5a3eca8afb9652fd19ab2be2286",
+      "sourceBytes": 1987796,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "11-side-wall-interior-day",
+      "generationFile": "exec-46e93de1-43e4-456d-af4c-ddb0a0972ed3.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/11-side-wall-interior-day.png",
+      "sourceModelCommit": "e64143e",
+      "sourceLibraryStatus": "Owner-corrected appearance intent; new image remains proposed art, not construction approval.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Tường và cửa bên — ý tưởng; thiết bị chưa chốt",
+        "en": "Side wall and entrance — concept; equipment unresolved"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng cửa gỗ và kính màu vòm giữa hai cửa sổ; có ghế, cột gỗ, đèn tường, loa và quạt còn nhìn thấy.",
+        "en": "Interior concept of timber doors and an arched stained-glass fanlight between windows, with pews, timber columns, wall lights, speakers and a visible fan."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions.",
+        "Visible fans/speakers are unresolved concept equipment, not agreed installed positions. Exposed centreline fan schemes remain excluded; concealment must preserve performance and maintenance access."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/1d1474a3ae45c0e2a73954ec678c8800ca75fe5f055a5bcd7cbf02fc3c2f6642.webp",
+          "sha256": "1d1474a3ae45c0e2a73954ec678c8800ca75fe5f055a5bcd7cbf02fc3c2f6642",
+          "width": 640,
+          "height": 360,
+          "bytes": 31192
+        },
+        {
+          "path": "/media/07e72fc698601da02c428c93113afd0bb340f9e5a38a9fa52af68031a18cd3b9.jpg",
+          "sha256": "07e72fc698601da02c428c93113afd0bb340f9e5a38a9fa52af68031a18cd3b9",
+          "width": 640,
+          "height": 360,
+          "bytes": 41724
+        },
+        {
+          "path": "/media/2d3aa6e8b0cca1c9e6be1f5dc5f00b865b8708c5619bc49b20c5d610c501a23c.webp",
+          "sha256": "2d3aa6e8b0cca1c9e6be1f5dc5f00b865b8708c5619bc49b20c5d610c501a23c",
+          "width": 1280,
+          "height": 720,
+          "bytes": 88020
+        },
+        {
+          "path": "/media/313a2b116e4db0392b94c216fbc5c9e24e3beacacd4dfda2febcabeae63adcba.jpg",
+          "sha256": "313a2b116e4db0392b94c216fbc5c9e24e3beacacd4dfda2febcabeae63adcba",
+          "width": 1280,
+          "height": 720,
+          "bytes": 129707
+        },
+        {
+          "path": "/media/0c417003ad86629a02d7925426fef9c741a71bde8c9c4767cd9ce8864a64e480.webp",
+          "sha256": "0c417003ad86629a02d7925426fef9c741a71bde8c9c4767cd9ce8864a64e480",
+          "width": 1672,
+          "height": 941,
+          "bytes": 125466
+        },
+        {
+          "path": "/media/f48d1809c53e656b3501e0bb690e6bf91b8fa9bdaee6fbcd05cac549da0d5be3.jpg",
+          "sha256": "f48d1809c53e656b3501e0bb690e6bf91b8fa9bdaee6fbcd05cac549da0d5be3",
+          "width": 1672,
+          "height": 941,
+          "bytes": 197374
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "9056b4c7e5400c4d8a9bd87a038f215f140046f734afb93cc203194f7c23ab4a",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-12-wall-window-decoration-day",
+      "libraryId": "church-views-20261007-12-wall-window-decoration-day",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/12-wall-window-decoration-day.png",
+      "sha256": "920b9a21fcbfb2c82b1620adf6c01a61c807a7fb7c814fc61bf7925a4d4e36a4",
+      "sourceBytes": 2637575,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "12-wall-window-decoration-day-v2-interior-panels",
+      "generationFile": "exec-c50a9cad-9383-4844-9e67-f66f3fb5eeef.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/12-wall-window-decoration-day.png",
+      "sourceModelCommit": "e64143e",
+      "sourceLibraryStatus": "Owner-corrected appearance intent; new image remains proposed art, not construction approval.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Cửa sổ và trang trí tường — ý tưởng",
+        "en": "Windows and wall decoration — concept"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng các cửa sổ gỗ đôi chạm khắc thếp vàng, kính màu tròn và vòm, cùng hoa văn dưới mái ngói.",
+        "en": "Concept of paired carved timber shutters with gilding, round and arched stained glass, and ornament below the tiled roof."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/024ceb2a96699df3255d00fb6ee3b9768be795ebf98afa6a77bb85c4e3aca278.webp",
+          "sha256": "024ceb2a96699df3255d00fb6ee3b9768be795ebf98afa6a77bb85c4e3aca278",
+          "width": 640,
+          "height": 360,
+          "bytes": 58496
+        },
+        {
+          "path": "/media/00d94011ac40b83a144266ecb1045762a49c96bc215c104b1e51b001255528f5.jpg",
+          "sha256": "00d94011ac40b83a144266ecb1045762a49c96bc215c104b1e51b001255528f5",
+          "width": 640,
+          "height": 360,
+          "bytes": 64775
+        },
+        {
+          "path": "/media/7c14b91f263a397aaf36d86ac1c143220b46ed40601002f56b50404c80eb7d2b.webp",
+          "sha256": "7c14b91f263a397aaf36d86ac1c143220b46ed40601002f56b50404c80eb7d2b",
+          "width": 1280,
+          "height": 720,
+          "bytes": 180268
+        },
+        {
+          "path": "/media/360832594339fa78aa408a9a9f81cdd056e26d731bd93c92516c7672b9ec7d96.jpg",
+          "sha256": "360832594339fa78aa408a9a9f81cdd056e26d731bd93c92516c7672b9ec7d96",
+          "width": 1280,
+          "height": 720,
+          "bytes": 222563
+        },
+        {
+          "path": "/media/983633e643efc88130d5ed2c1b7c1af081570398f6fd449612a7daebbb3ef99c.webp",
+          "sha256": "983633e643efc88130d5ed2c1b7c1af081570398f6fd449612a7daebbb3ef99c",
+          "width": 1672,
+          "height": 941,
+          "bytes": 259222
+        },
+        {
+          "path": "/media/c2b6ea1680e0faf251b77fa1b0ef86c767cfa56f0e9c9588d828625d8105ced5.jpg",
+          "sha256": "c2b6ea1680e0faf251b77fa1b0ef86c767cfa56f0e9c9588d828625d8105ced5",
+          "width": 1672,
+          "height": 941,
+          "bytes": 342401
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "3137d1af07392f28fa229e8c34e52e94bfc3293d678e3e5ea82a399ab06aa5b6",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-13-rear-elevation-day",
+      "libraryId": "church-views-20261007-13-rear-elevation-day",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/13-rear-elevation-day.png",
+      "sha256": "b36cf2a8cd82aa5b81f183e339dc9dab91a61a3f1b9075d2065e9a526f63499d",
+      "sourceBytes": 2457677,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "13-rear-elevation-day",
+      "generationFile": "exec-66906914-1132-4e51-a631-45979bec99d8.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/13-rear-elevation-day.png",
+      "sourceModelCommit": "e64143e",
+      "sourceLibraryStatus": "Owner-corrected appearance intent; new image remains proposed art, not construction approval.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Mặt sau — ý tưởng ban ngày",
+        "en": "Rear elevation — daylight concept"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng nhìn thẳng mặt sau cung thánh, hàng cửa sổ vòm, mái ngói và hai tháp phía xa.",
+        "en": "Straight concept view of the sanctuary-end exterior, a row of arched windows, tiled roofs and distant twin towers."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/36a5bb8cf4a9775fbbd55dc3c138af3b6284f7189ad218c98adea25af04a314c.webp",
+          "sha256": "36a5bb8cf4a9775fbbd55dc3c138af3b6284f7189ad218c98adea25af04a314c",
+          "width": 640,
+          "height": 360,
+          "bytes": 45094
+        },
+        {
+          "path": "/media/331f2743c64128ab773b245d7e6ed20ccc7dd253345761166acfd3c29f702aa3.jpg",
+          "sha256": "331f2743c64128ab773b245d7e6ed20ccc7dd253345761166acfd3c29f702aa3",
+          "width": 640,
+          "height": 360,
+          "bytes": 50276
+        },
+        {
+          "path": "/media/2d44f8c1780b677a4c33b7984ac5f8c1c6e4aee97f12cc1587c0a0d6baa752d0.webp",
+          "sha256": "2d44f8c1780b677a4c33b7984ac5f8c1c6e4aee97f12cc1587c0a0d6baa752d0",
+          "width": 1280,
+          "height": 720,
+          "bytes": 149366
+        },
+        {
+          "path": "/media/8015828e1d23d3ee433af06976679fcf50478831b283149532f7db6b9a97acea.jpg",
+          "sha256": "8015828e1d23d3ee433af06976679fcf50478831b283149532f7db6b9a97acea",
+          "width": 1280,
+          "height": 720,
+          "bytes": 175259
+        },
+        {
+          "path": "/media/064131eb8dc2deb9430767cd9be0e661666afe4a13594177928158f537864457.webp",
+          "sha256": "064131eb8dc2deb9430767cd9be0e661666afe4a13594177928158f537864457",
+          "width": 1672,
+          "height": 941,
+          "bytes": 220034
+        },
+        {
+          "path": "/media/9d745f0129797b370138b47cc955aa7738b92c6d08e9f4c0b9a37ffd3b76ac3d.jpg",
+          "sha256": "9d745f0129797b370138b47cc955aa7738b92c6d08e9f4c0b9a37ffd3b76ac3d",
+          "width": 1672,
+          "height": 941,
+          "bytes": 273490
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "ba929d1f086377f4f453dd88f82e3d65e2e0f713746cb658c06c4576dc8561b4",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-14-rear-corner-evening",
+      "libraryId": "church-views-20261007-14-rear-corner-evening",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/14-rear-corner-evening.png",
+      "sha256": "494cc687fc2b069d8e0274284b7ba09bf5c12093a9e3f984c384325620627bdd",
+      "sourceBytes": 2297267,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "14-rear-corner-evening-v3-rear-glazing",
+      "generationFile": "exec-7da60b3e-c60e-4ec5-9042-49da279905b8.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/14-rear-corner-evening.png",
+      "sourceModelCommit": "e64143e",
+      "sourceLibraryStatus": "Owner-corrected appearance intent; new image remains proposed art, not construction approval.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Mặt sau và tường bên — ý tưởng buổi tối",
+        "en": "Rear and long side — evening concept"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng nhìn chéo từ phía sau: tường đầu cung thánh, tường bên, mái ngói, hai tháp phía xa và hàng cây.",
+        "en": "Evening oblique concept from the rear showing the sanctuary-end wall, long side, tiled roofs, distant twin towers and tree rows."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/ca312a6a81eda70b04a7095cfc7190af775cb0ae404d8769152c40fbdbe05c80.webp",
+          "sha256": "ca312a6a81eda70b04a7095cfc7190af775cb0ae404d8769152c40fbdbe05c80",
+          "width": 640,
+          "height": 360,
+          "bytes": 46524
+        },
+        {
+          "path": "/media/7b5b7887eca62da30c0c3e1e0fdc4cbe22777f8faac27e433bad6a33a7bb33ff.jpg",
+          "sha256": "7b5b7887eca62da30c0c3e1e0fdc4cbe22777f8faac27e433bad6a33a7bb33ff",
+          "width": 640,
+          "height": 360,
+          "bytes": 51864
+        },
+        {
+          "path": "/media/6e58839711ad6f54c5f2e41d89bb26cda2142e068eb303f930d5ff4ba1c17a88.webp",
+          "sha256": "6e58839711ad6f54c5f2e41d89bb26cda2142e068eb303f930d5ff4ba1c17a88",
+          "width": 1280,
+          "height": 720,
+          "bytes": 141354
+        },
+        {
+          "path": "/media/885299885585fb7ca7fc4ee85812da46b299d75e9f646f9f38666d8b6aeba249.jpg",
+          "sha256": "885299885585fb7ca7fc4ee85812da46b299d75e9f646f9f38666d8b6aeba249",
+          "width": 1280,
+          "height": 720,
+          "bytes": 173869
+        },
+        {
+          "path": "/media/0c798adafe0a40bae48aa6ff4d6cfc7fb478fb42a3a9751ad8764362ec608205.webp",
+          "sha256": "0c798adafe0a40bae48aa6ff4d6cfc7fb478fb42a3a9751ad8764362ec608205",
+          "width": 1672,
+          "height": 941,
+          "bytes": 202784
+        },
+        {
+          "path": "/media/6c985a5520168bd4361e5f6cb0b0d1cfcc2f2295a005e9282066ab75b005ba8f.jpg",
+          "sha256": "6c985a5520168bd4361e5f6cb0b0d1cfcc2f2295a005e9282066ab75b005ba8f",
+          "width": 1672,
+          "height": 941,
+          "bytes": 266580
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "17c70b91e2d007296145cf378c245a47fd191546e646f6144c051db5fa02c221",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-15-top-down-roof-day",
+      "libraryId": "church-views-20261007-15-top-down-roof-day",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/15-top-down-roof-day.png",
+      "sha256": "6f91e7f71a047f473f54caa74764fcde4f1bc3cf38863162412e808213aeeb68",
+      "sourceBytes": 3005450,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "15-top-down-roof-day",
+      "generationFile": "exec-95d07772-4064-44e8-802a-0752baff56ce.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/15-top-down-roof-day.png",
+      "sourceModelCommit": "e64143e",
+      "sourceLibraryStatus": "Owner-corrected appearance intent; new image remains proposed art, not construction approval.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Nhìn từ trên cao — ý tưởng mái và sân",
+        "en": "Overhead — roof and site concept"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng nhìn từ trên cao: mái ngói đỏ, hai cánh bên, hai tháp ở phía phải và các hàng cây hai bên.",
+        "en": "Overhead concept of red tiled roofs, projecting side wings, twin front towers on the right and tree rows along both sides."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions.",
+        "Image orientation places entrance/towers on the right and sanctuary on the left; the view is not a measured roof/framing plan."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/d7cbb474fe5eea892b4ec5dde6b2c7fc5084896b228bca4d9c9b0a2c7f59f6d5.webp",
+          "sha256": "d7cbb474fe5eea892b4ec5dde6b2c7fc5084896b228bca4d9c9b0a2c7f59f6d5",
+          "width": 640,
+          "height": 360,
+          "bytes": 57768
+        },
+        {
+          "path": "/media/b5f2910bdef6140608ed84d6ac80f8a85a52f5b99db960f8ba4b08b08a9b25c8.jpg",
+          "sha256": "b5f2910bdef6140608ed84d6ac80f8a85a52f5b99db960f8ba4b08b08a9b25c8",
+          "width": 640,
+          "height": 360,
+          "bytes": 59031
+        },
+        {
+          "path": "/media/007380384e63195ea282304c24838cf4d105dbd58b2049c14177eaaa14dd5fb7.webp",
+          "sha256": "007380384e63195ea282304c24838cf4d105dbd58b2049c14177eaaa14dd5fb7",
+          "width": 1280,
+          "height": 720,
+          "bytes": 206532
+        },
+        {
+          "path": "/media/40b5fa2733a45b08a21ae26716c595fbdc27bbcd28a68c3193d434f40a97c769.jpg",
+          "sha256": "40b5fa2733a45b08a21ae26716c595fbdc27bbcd28a68c3193d434f40a97c769",
+          "width": 1280,
+          "height": 720,
+          "bytes": 223175
+        },
+        {
+          "path": "/media/e365f1d85aa658cc84e424a8be46736772ceda6e927bca7ec2bbc08cc03dd8ec.webp",
+          "sha256": "e365f1d85aa658cc84e424a8be46736772ceda6e927bca7ec2bbc08cc03dd8ec",
+          "width": 1672,
+          "height": 941,
+          "bytes": 301008
+        },
+        {
+          "path": "/media/765d1a40efd9c7999fe1df0d7065bf72341abe608849f8d0579c84d18ef57455.jpg",
+          "sha256": "765d1a40efd9c7999fe1df0d7065bf72341abe608849f8d0579c84d18ef57455",
+          "width": 1672,
+          "height": 941,
+          "bytes": 354010
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "f04d47b091da22561458f6fbb299a43dcd37752e1984965e653c555755eb5f4f",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    },
+    {
+      "mediaId": "church-views-20261007-16-top-down-interior-day",
+      "libraryId": "church-views-20261007-16-top-down-interior-day",
+      "libraryRole": "current-concept",
+      "source": "Thach_Bi_Viewer/references/00-overview/2026-10-07/masters/16-top-down-interior-day.png",
+      "sha256": "d719f22ba98e7eaf5b037f14dea2f83c57fe05451b63766ad6d126105fa1d7d5",
+      "sourceBytes": 2224025,
+      "nativePixels": [1672, 941],
+      "nativeOriginalUnchanged": true,
+      "provenance": "Thach_Bi_Viewer/references/00-overview/2026-10-07/manifest.json",
+      "generationJob": "16-top-down-interior-day-v4-longitudinal-beams",
+      "generationFile": "exec-51e2b17b-1047-4a02-a773-7b6bab0dda2d.png",
+      "modelCapture": "review/church-views-2026-10-07/model-inputs-additions/16-top-down-interior-day.png",
+      "sourceModelCommit": "e64143e",
+      "sourceLibraryStatus": "Owner-corrected appearance intent; new image remains proposed art, not construction approval.",
+      "category": "concept-art",
+      "attribution": "Dự án Thạch Bi / Thạch Bi project · AI-generated concept (image_gen), 2026-10-07",
+      "createdOn": {
+        "precision": "day",
+        "value": "2026-10-07"
+      },
+      "permission": "USER CONFIRMED: show project-created work with prominent development/not-for-construction notes; this task expands the selected current-concept gallery to all sixteen 7 October 2026 masters.",
+      "rightsRef": "owner-development-display-20261008",
+      "caption": {
+        "vi": "Cắt mái nhìn từ trên cao — ý tưởng; kết cấu và thiết bị chưa chốt",
+        "en": "Roof-hidden interior — concept; structure and equipment unresolved"
+      },
+      "alt": {
+        "vi": "Hình ý tưởng bỏ mái nhìn từ trên cao: các khối ghế, hai hàng cột, dầm đề xuất và quạt còn thấy; cung thánh bên trái, mặt tiền bên phải.",
+        "en": "Roof-hidden overhead concept with pew blocks, two column rows, proposed beams and visible fans; the sanctuary is on the left and entrance on the right."
+      },
+      "retainedExistingMediaRecord": false,
+      "pixelReview": {
+        "reviewDate": "2026-10-08",
+        "method": "All sixteen native-master pixels inspected in four private contact sheets; native-size detail inspection additionally covered views 09, 11 and 16.",
+        "privatePeopleOrDocuments": "None observed; sacred statues and decorative figures are generated artwork, not real-person site photographs.",
+        "scope": "Visible source content and category/caption consistency only; not an engineering acceptance or a site privacy-consent record."
+      },
+      "holdNotes": [
+        "Generated independently: not a metrically consistent multi-view model or construction/fabrication record.",
+        "Lighting appearance is artwork, not photometry or commissioned performance. Drawings, checked specifications and surveys govern dimensions.",
+        "Visible fans/speakers are unresolved concept equipment, not agreed installed positions. Exposed centreline fan schemes remain excluded; concealment must preserve performance and maintenance access.",
+        "B03 column-line beams are artwork proposals; this image does not establish checked bearings, member sizing, joints or the bay 9–10 sanctuary transition. Structural coordination remains ENGINEERING HOLD.",
+        "Image orientation places entrance/towers on the right and sanctuary on the left; the view is not a measured roof/framing plan."
+      ],
+      "derivatives": [
+        {
+          "path": "/media/f61293b7df401200d756a3e249e0a0aec316482c976308de0088a2703812e941.webp",
+          "sha256": "f61293b7df401200d756a3e249e0a0aec316482c976308de0088a2703812e941",
+          "width": 640,
+          "height": 360,
+          "bytes": 48668
+        },
+        {
+          "path": "/media/8b1cb9f3efb83ddb91f540d30c4fb6f7a1c8f088541b16fb072aca11172c9dce.jpg",
+          "sha256": "8b1cb9f3efb83ddb91f540d30c4fb6f7a1c8f088541b16fb072aca11172c9dce",
+          "width": 640,
+          "height": 360,
+          "bytes": 57515
+        },
+        {
+          "path": "/media/cf8597f4e24f317efc53751d22f9f581a29cad6ad820758b22d3470678978e57.webp",
+          "sha256": "cf8597f4e24f317efc53751d22f9f581a29cad6ad820758b22d3470678978e57",
+          "width": 1280,
+          "height": 720,
+          "bytes": 128498
+        },
+        {
+          "path": "/media/1bb5e15cdcfaf8d9b070de9b4b121d88a3289d5610f0e93606f36d96defd4660.jpg",
+          "sha256": "1bb5e15cdcfaf8d9b070de9b4b121d88a3289d5610f0e93606f36d96defd4660",
+          "width": 1280,
+          "height": 720,
+          "bytes": 176101
+        },
+        {
+          "path": "/media/b93f4b2dfb866a9400ff020bd8ac005470825bb10232a51febd4fdd5c7e1f6ce.webp",
+          "sha256": "b93f4b2dfb866a9400ff020bd8ac005470825bb10232a51febd4fdd5c7e1f6ce",
+          "width": 1672,
+          "height": 941,
+          "bytes": 180398
+        },
+        {
+          "path": "/media/6d283a8ba8f529ec31cfdd8e41c0f82554983c0b48a65e12b7c09a0f2917153a.jpg",
+          "sha256": "6d283a8ba8f529ec31cfdd8e41c0f82554983c0b48a65e12b7c09a0f2917153a",
+          "width": 1672,
+          "height": 941,
+          "bytes": 264275
+        }
+      ],
+      "preparation": {
+        "script": "web/scripts/prepare-media.mjs",
+        "scriptSha256": "b40fe10ceb475286003ea7ec9155147084245913e3af90963475f8c1adb1032b",
+        "runtime": "Node 22.23.3",
+        "privateManifestSha256": "ea2b25123ac4a51a733eadda6660ca3d6e7234d7aefc83f8b95684ce3e148abb",
+        "pipeline": {
+          "sharp": "0.35.5",
+          "vips": "8.18.7",
+          "bounds": [640, 1280, 1920]
+        },
+        "sourceFormat": "png",
+        "sourceOrientation": null,
+        "regeneratedFromNative": true
+      }
+    }
+  ],
+  "pixelReviewSummary": {
+    "nativeSources": "All sixteen inspected in private contact sheets; views 09, 11 and 16 additionally inspected at native resolution.",
+    "preparedDerivatives": "All sixteen 640-pixel JPEG derivatives inspected in private contact sheets; no obvious orientation/cropping mismatch observed.",
+    "limits": "Visible-pixel/provenance review only; no real site photographs, construction approval or engineering performance inferred."
+  },
+  "preflightBeforeAppCopy": {
+    "prepareContent": "Passed prior/next schema and history staging without activation.",
+    "checkContent": "Passed strict schema, fixture exclusion, release ID and canonical checksum in isolated private app.",
+    "checkMedia": "Passed all 96 files: bytes, hash, type, dimensions, metadata, full decode and exact inventory in isolated private app."
+  }
+}

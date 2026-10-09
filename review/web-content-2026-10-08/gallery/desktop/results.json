@@ -1,0 +1,4121 @@
+{
+  "schemaVersion": 1,
+  "captureStartedAt": "2026-10-08T02:22:40.292Z",
+  "project": "Thạch Bi web phase 02 desktop gallery, real unpublished routes",
+  "source": {
+    "baseUrl": "http://127.0.0.1:3130",
+    "branch": "web/02-homepage",
+    "gitHead": "ce692c308e5cfe73c37777d8382a50b053e37baa",
+    "gitStatus": [
+      "## web/02-homepage...origin/web/02-homepage",
+      " M .github/workflows/web-checks.yml",
+      " M docs/web/data-boundary.md",
+      " M docs/web/development.md",
+      " M docs/web/public-content.md",
+      " M plan/README.md",
+      " M plan/phases/02-homepage-and-gallery.md",
+      " M web/scripts/check-build-boundary.mjs",
+      " M web/src/app/[locale]/(public)/about-this-site/page.tsx",
+      " M web/src/app/[locale]/(public)/page.tsx",
+      " M web/src/app/globals.css",
+      " M web/src/components/site-shell.tsx",
+      " M web/src/lib/contracts/public-content.ts",
+      " M web/src/lib/locales.ts",
+      " M web/tests/unit/public-content.test.ts",
+      "?? review/web-content-2026-10-08/gallery/",
+      "?? web/playwright.gallery.config.ts",
+      "?? web/src/app/[locale]/(public)/design/",
+      "?? web/src/components/gallery-card.tsx",
+      "?? web/src/lib/gallery.ts",
+      "?? web/tests/browser/gallery.spec.ts",
+      "?? web/tests/harness/",
+      "?? web/tests/unit/gallery.test.ts"
+    ],
+    "expectedBuildId": "9MolEJEIEN4WJpmEQVAoD",
+    "localBuildId": "9MolEJEIEN4WJpmEQVAoD",
+    "sourceHashesBefore": {
+      "web/package.json": "44504691494e1d8aa87d0688dbc2f3c1bbbac4e763bad9555155e688c9adb981",
+      "web/package-lock.json": "07a215879498fd1ce060f12617b06a878cd9ae61ac65e9df0e7dd232cd2efb97",
+      "web/.node-version": "6d07ac247e81cd42c2c20abf8dfe504413d6b2422e4aba9b2c975a776f155921",
+      "web/.next/BUILD_ID": "e85dc6fe8cf8e1305d1503c18f7222bd3710f236c235cde2db94aeebe5f85bba",
+      "web/content/current.json": "3569452f721ab9e5a4539eb831a017228759457305126a871ad28d02ffaafef0",
+      "web/content/release.json": "38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed",
+      "web/src/app/[locale]/layout.tsx": "484c304be93f65d519b4c0fcfdbddc32f90a9783953958e4dc489cbe1a0b4c9f",
+      "web/src/app/[locale]/(public)/page.tsx": "b17036faa64164d54148d4a498a32587c890d4fb9e9e5150be226daba6dc57db",
+      "web/src/app/[locale]/(public)/design/page.tsx": "a1d4abdde50007e1efdfc08f9ab0cffe4870e044eaaca9c565bdec46f3ff4dc2",
+      "web/src/app/[locale]/(public)/about-this-site/page.tsx": "e65e18bb6f50008b25088ae44dd212a9e6991b3ccbaf9141d5665f4733c219cc",
+      "web/src/components/site-shell.tsx": "b91dc2e9b12986768273ca1f0b74576035822bb7481bf00fb3e253ae3202158d",
+      "web/src/components/gallery-card.tsx": "20fe33a237d9ba04307e85b9cc27c91a3483c8751ef929b12c1a8214a94ae037",
+      "web/src/app/globals.css": "c7c044762bc42db5faffdf1e43ece33450a6ce87b18533489c96ec701c37dbcd",
+      "web/src/lib/gallery.ts": "3456d0ab93f9ed2f9f3a851d6ec8d309c6792eb17fe89a99873d17ff4b9d205d",
+      "web/src/lib/locales.ts": "be079569233cc520cde0f5233879b7e5006b0f1d6895dfd261abf3b5e5768df6",
+      "web/src/lib/server/public-content.ts": "936f30757cd6977d6d6ad1d4894eff7d1b199f568d4266966d5001f55479f1d3",
+      "web/src/lib/server/public-validation.ts": "bec777e5e9a1718539ea5c02de693ab5aea0d208e888aa23881365fc3f14f575",
+      "web/src/lib/contracts/public-content.ts": "f9dd96b3c01f80c7dcc817700f6fc60a68c582008f8fbf46fa5ad6e3a7d1d05a",
+      "web/src/lib/contracts/common.ts": "edef9e6f9b37aee9d719fa133b064fe11fecd6e1843150b34b1f7a999d58b865"
+    },
+    "servedBuildIdCandidates": [
+      "chunks"
+    ],
+    "buildIdVerifiedFromLocalNextBuild": true,
+    "serverProbe": {
+      "status": 200,
+      "route": "/en/design",
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    "sourceHashesAfter": {
+      "web/package.json": "44504691494e1d8aa87d0688dbc2f3c1bbbac4e763bad9555155e688c9adb981",
+      "web/package-lock.json": "07a215879498fd1ce060f12617b06a878cd9ae61ac65e9df0e7dd232cd2efb97",
+      "web/.node-version": "6d07ac247e81cd42c2c20abf8dfe504413d6b2422e4aba9b2c975a776f155921",
+      "web/.next/BUILD_ID": "e85dc6fe8cf8e1305d1503c18f7222bd3710f236c235cde2db94aeebe5f85bba",
+      "web/content/current.json": "3569452f721ab9e5a4539eb831a017228759457305126a871ad28d02ffaafef0",
+      "web/content/release.json": "38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed",
+      "web/src/app/[locale]/layout.tsx": "484c304be93f65d519b4c0fcfdbddc32f90a9783953958e4dc489cbe1a0b4c9f",
+      "web/src/app/[locale]/(public)/page.tsx": "b17036faa64164d54148d4a498a32587c890d4fb9e9e5150be226daba6dc57db",
+      "web/src/app/[locale]/(public)/design/page.tsx": "a1d4abdde50007e1efdfc08f9ab0cffe4870e044eaaca9c565bdec46f3ff4dc2",
+      "web/src/app/[locale]/(public)/about-this-site/page.tsx": "e65e18bb6f50008b25088ae44dd212a9e6991b3ccbaf9141d5665f4733c219cc",
+      "web/src/components/site-shell.tsx": "b91dc2e9b12986768273ca1f0b74576035822bb7481bf00fb3e253ae3202158d",
+      "web/src/components/gallery-card.tsx": "20fe33a237d9ba04307e85b9cc27c91a3483c8751ef929b12c1a8214a94ae037",
+      "web/src/app/globals.css": "c7c044762bc42db5faffdf1e43ece33450a6ce87b18533489c96ec701c37dbcd",
+      "web/src/lib/gallery.ts": "3456d0ab93f9ed2f9f3a851d6ec8d309c6792eb17fe89a99873d17ff4b9d205d",
+      "web/src/lib/locales.ts": "be079569233cc520cde0f5233879b7e5006b0f1d6895dfd261abf3b5e5768df6",
+      "web/src/lib/server/public-content.ts": "936f30757cd6977d6d6ad1d4894eff7d1b199f568d4266966d5001f55479f1d3",
+      "web/src/lib/server/public-validation.ts": "bec777e5e9a1718539ea5c02de693ab5aea0d208e888aa23881365fc3f14f575",
+      "web/src/lib/contracts/public-content.ts": "f9dd96b3c01f80c7dcc817700f6fc60a68c582008f8fbf46fa5ad6e3a7d1d05a",
+      "web/src/lib/contracts/common.ts": "edef9e6f9b37aee9d719fa133b064fe11fecd6e1843150b34b1f7a999d58b865"
+    },
+    "hashesStableDuringCapture": true,
+    "unstableSourceFiles": [],
+    "localBuildIdAfter": "9MolEJEIEN4WJpmEQVAoD",
+    "buildIdStableDuringCapture": true
+  },
+  "environment": {
+    "runtime": {
+      "nodePath": "/private/tmp/thachbi-node22/node-v22.23.3-darwin-arm64/bin/node",
+      "nodeVersion": "v22.23.3",
+      "npmVersion": "10.9.9"
+    },
+    "os": {
+      "platform": "darwin",
+      "release": "25.5.0",
+      "version": "Darwin Kernel Version 25.5.0: Mon Apr 27 20:38:56 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_T6000",
+      "arch": "arm64",
+      "hardwareModel": "MacBookPro18,1",
+      "cpuModel": "Apple M1 Pro",
+      "logicalCpuCount": 10,
+      "macOSProductVersion": "26.5.1"
+    },
+    "browser": {
+      "name": "Google Chrome (Playwright channel chrome)",
+      "version": "154.0.8037.98",
+      "headed": true
+    },
+    "axeAvailable": true,
+    "contentState": {
+      "pointerState": "unpublished",
+      "releaseIsNull": true,
+      "publicDirectoryExists": false
+    }
+  },
+  "screenshots": [
+    {
+      "file": "screenshots/en-design-1440x900.png",
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200
+    },
+    {
+      "file": "screenshots/en-design-1280x800.png",
+      "route": "/en/design",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200
+    },
+    {
+      "file": "screenshots/vi-design-1440x900.png",
+      "route": "/vi/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200
+    },
+    {
+      "file": "screenshots/vi-design-1280x800.png",
+      "route": "/vi/design",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200
+    },
+    {
+      "file": "screenshots/en-design-keyboard-focus-1440x900.png",
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "after first Tab"
+    },
+    {
+      "file": "screenshots/vi-design-keyboard-focus-1440x900.png",
+      "route": "/vi/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "after first Tab"
+    },
+    {
+      "file": "screenshots/en-design-text-200-percent-1440x900.png",
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "root font-size set to 200%"
+    },
+    {
+      "file": "screenshots/vi-design-text-200-percent-1440x900.png",
+      "route": "/vi/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "root font-size set to 200%"
+    },
+    {
+      "file": "screenshots/en-design-reduced-motion-1440x900.png",
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "prefers-reduced-motion: reduce"
+    },
+    {
+      "file": "screenshots/vi-design-reduced-motion-1440x900.png",
+      "route": "/vi/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "prefers-reduced-motion: reduce"
+    },
+    {
+      "file": "screenshots/en-design-1mbps-nojs-readable.png",
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "1 Mbps down / 1 Mbps up / 100 ms RTT; JavaScript disabled"
+    }
+  ],
+  "desktopChecks": [
+    {
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "facts": {
+        "path": "/en/design",
+        "title": "Images and design | Thạch Bi Church",
+        "heading": "Images and design",
+        "headingVisible": true,
+        "mainTextLength": 323,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 900,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false,
+        "animationCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axe": {
+        "violations": [],
+        "incompleteCount": 0,
+        "passesCount": 19
+      }
+    },
+    {
+      "route": "/en/design",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "facts": {
+        "path": "/en/design",
+        "title": "Images and design | Thạch Bi Church",
+        "heading": "Images and design",
+        "headingVisible": true,
+        "mainTextLength": 323,
+        "viewport": {
+          "width": 1280,
+          "height": 800,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "scrollHeight": 837,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1280,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false,
+        "animationCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axe": {
+        "violations": [],
+        "incompleteCount": 0,
+        "passesCount": 19
+      }
+    },
+    {
+      "route": "/vi/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "facts": {
+        "path": "/vi/design",
+        "title": "Hình ảnh và thiết kế | Nhà thờ Thạch Bi",
+        "heading": "Hình ảnh và thiết kế",
+        "headingVisible": true,
+        "mainTextLength": 352,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 900,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false,
+        "animationCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axe": {
+        "violations": [],
+        "incompleteCount": 0,
+        "passesCount": 19
+      }
+    },
+    {
+      "route": "/vi/design",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "facts": {
+        "path": "/vi/design",
+        "title": "Hình ảnh và thiết kế | Nhà thờ Thạch Bi",
+        "heading": "Hình ảnh và thiết kế",
+        "headingVisible": true,
+        "mainTextLength": 352,
+        "viewport": {
+          "width": 1280,
+          "height": 800,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "scrollHeight": 863,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1280,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false,
+        "animationCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axe": {
+        "violations": [],
+        "incompleteCount": 0,
+        "passesCount": 19
+      }
+    }
+  ],
+  "keyboardFocus": [
+    {
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "firstTabFocused": {
+        "tag": "A",
+        "role": null,
+        "accessibleLabel": "Skip to main content",
+        "href": "#main",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(49, 91, 69)",
+        "boxShadow": "none",
+        "visibleRect": {
+          "x": 16,
+          "y": 16,
+          "width": 177,
+          "height": 56
+        },
+        "viewportVisible": true
+      },
+      "tabSequence": [
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Skip to main content",
+          "href": "#main",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 16,
+            "y": 16,
+            "width": 177,
+            "height": 56
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Thạch Bi Church",
+          "href": "/en",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 112,
+            "y": 69,
+            "width": 153,
+            "height": 28
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Home",
+          "href": "/en",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 893,
+            "y": 61,
+            "width": 37,
+            "height": 44
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Images and design",
+          "href": "/en/design",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 962,
+            "y": 61,
+            "width": 118,
+            "height": 44
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "About this site",
+          "href": "/en/about-this-site",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 1113,
+            "y": 61,
+            "width": 88,
+            "height": 44
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Tiếng Việt",
+          "href": "/vi/design",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 1233,
+            "y": 61,
+            "width": 95,
+            "height": 44
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "All (0)",
+          "href": "/en/design",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 112,
+            "y": 398,
+            "width": 41,
+            "height": 44
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Site photographs (0)",
+          "href": "/en/design?category=site-photo",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 181,
+            "y": 398,
+            "width": 131,
+            "height": 44
+          },
+          "viewportVisible": true
+        }
+      ],
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/vi/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "firstTabFocused": {
+        "tag": "A",
+        "role": null,
+        "accessibleLabel": "Đến nội dung chính",
+        "href": "#main",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(49, 91, 69)",
+        "boxShadow": "none",
+        "visibleRect": {
+          "x": 16,
+          "y": 16,
+          "width": 171,
+          "height": 56
+        },
+        "viewportVisible": true
+      },
+      "tabSequence": [
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Đến nội dung chính",
+          "href": "#main",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 16,
+            "y": 16,
+            "width": 171,
+            "height": 56
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Nhà thờ Thạch Bi",
+          "href": "/vi",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 112,
+            "y": 69,
+            "width": 158,
+            "height": 28
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Trang chủ",
+          "href": "/vi",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 887,
+            "y": 61,
+            "width": 63,
+            "height": 44
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Hình ảnh và thiết kế",
+          "href": "/vi/design",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 981,
+            "y": 61,
+            "width": 125,
+            "height": 44
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Về trang này",
+          "href": "/vi/about-this-site",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 1138,
+            "y": 61,
+            "width": 79,
+            "height": 44
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "English",
+          "href": "/en/design",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 1249,
+            "y": 61,
+            "width": 79,
+            "height": 44
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Tất cả (0)",
+          "href": "/vi/design",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 112,
+            "y": 398,
+            "width": 64,
+            "height": 44
+          },
+          "viewportVisible": true
+        },
+        {
+          "tag": "A",
+          "role": null,
+          "accessibleLabel": "Ảnh công trường (0)",
+          "href": "/vi/design?category=site-photo",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(49, 91, 69)",
+          "boxShadow": "none",
+          "visibleRect": {
+            "x": 204,
+            "y": 398,
+            "width": 131,
+            "height": 44
+          },
+          "viewportVisible": true
+        }
+      ],
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    }
+  ],
+  "textResize": [
+    {
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "method": "Injected temporary CSS `html { font-size: 200% !important; }` after load; root computed font size is recorded before/after. This scales rem-based type and spacing, not a native Chrome UI zoom setting.",
+      "beforeRootFontSize": "16px",
+      "after": "32px",
+      "facts": {
+        "path": "/en/design",
+        "title": "Images and design | Thạch Bi Church",
+        "heading": "Images and design",
+        "headingVisible": true,
+        "mainTextLength": 323,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1594,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "32px",
+        "reducedMotionMatches": false,
+        "animationCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/vi/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "method": "Injected temporary CSS `html { font-size: 200% !important; }` after load; root computed font size is recorded before/after. This scales rem-based type and spacing, not a native Chrome UI zoom setting.",
+      "beforeRootFontSize": "16px",
+      "after": "32px",
+      "facts": {
+        "path": "/vi/design",
+        "title": "Hình ảnh và thiết kế | Nhà thờ Thạch Bi",
+        "heading": "Hình ảnh và thiết kế",
+        "headingVisible": true,
+        "mainTextLength": 352,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1646,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "32px",
+        "reducedMotionMatches": false,
+        "animationCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    }
+  ],
+  "reducedMotion": [
+    {
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "preferenceMatched": true,
+      "documentAnimations": 0,
+      "facts": {
+        "path": "/en/design",
+        "title": "Images and design | Thạch Bi Church",
+        "heading": "Images and design",
+        "headingVisible": true,
+        "mainTextLength": 323,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 900,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "reducedMotionMatches": true,
+        "animationCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/vi/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "preferenceMatched": true,
+      "documentAnimations": 0,
+      "facts": {
+        "path": "/vi/design",
+        "title": "Hình ảnh và thiết kế | Nhà thờ Thạch Bi",
+        "heading": "Hình ảnh và thiết kế",
+        "headingVisible": true,
+        "mainTextLength": 352,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 900,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "reducedMotionMatches": true,
+        "animationCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    }
+  ],
+  "performance": {
+    "profile": {
+      "downMbps": 10,
+      "upMbps": 1,
+      "rttMs": 100,
+      "cdpDownBytesPerSecond": 1250000,
+      "cdpUpBytesPerSecond": 125000,
+      "cacheDisabled": true,
+      "newContextPerSample": true,
+      "serviceWorkers": "blocked"
+    },
+    "samples": [
+      {
+        "route": "/en",
+        "run": 1,
+        "sampleIndex": 1,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100,
+          "cdpDownBytesPerSecond": 1250000,
+          "cdpUpBytesPerSecond": 125000
+        },
+        "freshBrowserContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "navigation": {
+          "status": 200,
+          "url": "http://127.0.0.1:3130/en"
+        },
+        "navigationError": null,
+        "wallMs": 1364,
+        "webMetrics": {
+          "navigation": {
+            "type": "navigate",
+            "domContentLoadedEventEnd": 268,
+            "loadEventEnd": 357.90000009536743,
+            "responseStart": 8.900000095367432,
+            "transferSize": 3799,
+            "encodedBodySize": 3499,
+            "decodedBodySize": 12848
+          },
+          "fcpSamplesMs": [
+            264
+          ],
+          "lcpSamples": [
+            {
+              "startTime": 264,
+              "size": 43581,
+              "tag": "H1",
+              "id": ""
+            }
+          ],
+          "clsSamples": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "path": "/en",
+          "title": "Thạch Bi Church",
+          "heading": "A place to return to, together.",
+          "headingVisible": true,
+          "mainTextLength": 359,
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false,
+          "animationCount": 0
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "cdpBytes": {
+          "requestCount": 11,
+          "loadingFinishedEncodedBytes": 153321,
+          "dataReceivedEncodedBodyBytes": 143429,
+          "javascriptRequestCount": 8,
+          "javascriptLoadingFinishedEncodedBytes": 143962,
+          "javascriptDataReceivedEncodedBodyBytes": 139322,
+          "failures": [],
+          "rawRequests": [
+            {
+              "requestId": "974C66363E36EEAFFB9D39BC9A8B709F",
+              "url": "http://127.0.0.1:3130/en",
+              "method": "GET",
+              "resourceType": "Document",
+              "initiatorType": "other",
+              "requestTimestamp": 2996282.454117,
+              "responseStatus": 200,
+              "mimeType": "text/html",
+              "encodedBodyBytes": 0,
+              "decodedBodyBytes": 12848,
+              "loadingFinishedEncodedBytes": 4166,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 650,
+              "finishTimestamp": 2996282.56185
+            },
+            {
+              "requestId": "8776.2",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2onf6kft_k6b6.css",
+              "method": "GET",
+              "resourceType": "Stylesheet",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996282.561826,
+              "responseStatus": 200,
+              "mimeType": "text/css",
+              "encodedBodyBytes": 3853,
+              "decodedBodyBytes": 13424,
+              "loadingFinishedEncodedBytes": 4419,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 566,
+              "finishTimestamp": 2996282.681581
+            },
+            {
+              "requestId": "8776.3",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996282.561957,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 2052,
+              "decodedBodyBytes": 5584,
+              "loadingFinishedEncodedBytes": 2632,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996282.675782
+            },
+            {
+              "requestId": "8776.4",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996282.561999,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8477,
+              "decodedBodyBytes": 31293,
+              "loadingFinishedEncodedBytes": 9057,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996282.699942
+            },
+            {
+              "requestId": "8776.5",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996282.562026,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 71965,
+              "decodedBodyBytes": 229597,
+              "loadingFinishedEncodedBytes": 72546,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996282.786164
+            },
+            {
+              "requestId": "8776.6",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996282.562048,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 45532,
+              "decodedBodyBytes": 165614,
+              "loadingFinishedEncodedBytes": 46113,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996282.758395
+            },
+            {
+              "requestId": "8776.7",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996282.562077,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3957,
+              "decodedBodyBytes": 10030,
+              "loadingFinishedEncodedBytes": 4537,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996282.687837
+            },
+            {
+              "requestId": "8776.8",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996282.5621,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3531,
+              "decodedBodyBytes": 13822,
+              "loadingFinishedEncodedBytes": 4111,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996282.782355
+            },
+            {
+              "requestId": "8776.9",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996282.562119,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1925,
+              "decodedBodyBytes": 3893,
+              "loadingFinishedEncodedBytes": 2504,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996282.787516
+            },
+            {
+              "requestId": "8776.10",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996282.562143,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1883,
+              "decodedBodyBytes": 3819,
+              "loadingFinishedEncodedBytes": 2462,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996282.790934
+            },
+            {
+              "requestId": "8776.22",
+              "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+              "method": "GET",
+              "resourceType": "Other",
+              "initiatorType": "other",
+              "requestTimestamp": 2996282.813356,
+              "responseStatus": 200,
+              "mimeType": "image/svg+xml",
+              "encodedBodyBytes": 254,
+              "decodedBodyBytes": 243,
+              "loadingFinishedEncodedBytes": 774,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 520,
+              "finishTimestamp": 2996282.918209
+            }
+          ]
+        }
+      },
+      {
+        "route": "/en",
+        "run": 2,
+        "sampleIndex": 2,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100,
+          "cdpDownBytesPerSecond": 1250000,
+          "cdpUpBytesPerSecond": 125000
+        },
+        "freshBrowserContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "navigation": {
+          "status": 200,
+          "url": "http://127.0.0.1:3130/en"
+        },
+        "navigationError": null,
+        "wallMs": 1366,
+        "webMetrics": {
+          "navigation": {
+            "type": "navigate",
+            "domContentLoadedEventEnd": 260.2999997138977,
+            "loadEventEnd": 358.2999997138977,
+            "responseStart": 2.1999998092651367,
+            "transferSize": 3799,
+            "encodedBodySize": 3499,
+            "decodedBodySize": 12848
+          },
+          "fcpSamplesMs": [
+            280
+          ],
+          "lcpSamples": [
+            {
+              "startTime": 280,
+              "size": 43581,
+              "tag": "H1",
+              "id": ""
+            }
+          ],
+          "clsSamples": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "path": "/en",
+          "title": "Thạch Bi Church",
+          "heading": "A place to return to, together.",
+          "headingVisible": true,
+          "mainTextLength": 359,
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false,
+          "animationCount": 0
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "cdpBytes": {
+          "requestCount": 11,
+          "loadingFinishedEncodedBytes": 153321,
+          "dataReceivedEncodedBodyBytes": 143429,
+          "javascriptRequestCount": 8,
+          "javascriptLoadingFinishedEncodedBytes": 143962,
+          "javascriptDataReceivedEncodedBodyBytes": 139322,
+          "failures": [],
+          "rawRequests": [
+            {
+              "requestId": "A351346B472325CBCF9DBC9261448213",
+              "url": "http://127.0.0.1:3130/en",
+              "method": "GET",
+              "resourceType": "Document",
+              "initiatorType": "other",
+              "requestTimestamp": 2996284.016476,
+              "responseStatus": 200,
+              "mimeType": "text/html",
+              "encodedBodyBytes": 0,
+              "decodedBodyBytes": 12848,
+              "loadingFinishedEncodedBytes": 4166,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 650,
+              "finishTimestamp": 2996284.124401
+            },
+            {
+              "requestId": "8788.2",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2onf6kft_k6b6.css",
+              "method": "GET",
+              "resourceType": "Stylesheet",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996284.1246,
+              "responseStatus": 200,
+              "mimeType": "text/css",
+              "encodedBodyBytes": 3853,
+              "decodedBodyBytes": 13424,
+              "loadingFinishedEncodedBytes": 4419,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 566,
+              "finishTimestamp": 2996284.244243
+            },
+            {
+              "requestId": "8788.3",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996284.124736,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 2052,
+              "decodedBodyBytes": 5584,
+              "loadingFinishedEncodedBytes": 2632,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996284.238373
+            },
+            {
+              "requestId": "8788.4",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996284.124777,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8477,
+              "decodedBodyBytes": 31293,
+              "loadingFinishedEncodedBytes": 9057,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996284.262232
+            },
+            {
+              "requestId": "8788.5",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996284.124862,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 71965,
+              "decodedBodyBytes": 229597,
+              "loadingFinishedEncodedBytes": 72546,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996284.348732
+            },
+            {
+              "requestId": "8788.6",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996284.12495,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 45532,
+              "decodedBodyBytes": 165614,
+              "loadingFinishedEncodedBytes": 46113,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996284.321164
+            },
+            {
+              "requestId": "8788.7",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996284.124985,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3957,
+              "decodedBodyBytes": 10030,
+              "loadingFinishedEncodedBytes": 4537,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996284.250385
+            },
+            {
+              "requestId": "8788.8",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996284.125008,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3531,
+              "decodedBodyBytes": 13822,
+              "loadingFinishedEncodedBytes": 4111,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996284.344967
+            },
+            {
+              "requestId": "8788.9",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996284.12503,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1925,
+              "decodedBodyBytes": 3893,
+              "loadingFinishedEncodedBytes": 2504,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996284.350093
+            },
+            {
+              "requestId": "8788.10",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996284.125056,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1883,
+              "decodedBodyBytes": 3819,
+              "loadingFinishedEncodedBytes": 2462,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996284.353519
+            },
+            {
+              "requestId": "8788.22",
+              "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+              "method": "GET",
+              "resourceType": "Other",
+              "initiatorType": "other",
+              "requestTimestamp": 2996284.379521,
+              "responseStatus": 200,
+              "mimeType": "image/svg+xml",
+              "encodedBodyBytes": 254,
+              "decodedBodyBytes": 243,
+              "loadingFinishedEncodedBytes": 774,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 520,
+              "finishTimestamp": 2996284.484433
+            }
+          ]
+        }
+      },
+      {
+        "route": "/en",
+        "run": 3,
+        "sampleIndex": 3,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100,
+          "cdpDownBytesPerSecond": 1250000,
+          "cdpUpBytesPerSecond": 125000
+        },
+        "freshBrowserContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "navigation": {
+          "status": 200,
+          "url": "http://127.0.0.1:3130/en"
+        },
+        "navigationError": null,
+        "wallMs": 1362,
+        "webMetrics": {
+          "navigation": {
+            "type": "navigate",
+            "domContentLoadedEventEnd": 239.69999980926514,
+            "loadEventEnd": 359.19999980926514,
+            "responseStart": 2.799999713897705,
+            "transferSize": 3799,
+            "encodedBodySize": 3499,
+            "decodedBodySize": 12848
+          },
+          "fcpSamplesMs": [
+            264
+          ],
+          "lcpSamples": [
+            {
+              "startTime": 264,
+              "size": 43581,
+              "tag": "H1",
+              "id": ""
+            }
+          ],
+          "clsSamples": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "path": "/en",
+          "title": "Thạch Bi Church",
+          "heading": "A place to return to, together.",
+          "headingVisible": true,
+          "mainTextLength": 359,
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false,
+          "animationCount": 0
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "cdpBytes": {
+          "requestCount": 11,
+          "loadingFinishedEncodedBytes": 153321,
+          "dataReceivedEncodedBodyBytes": 143429,
+          "javascriptRequestCount": 8,
+          "javascriptLoadingFinishedEncodedBytes": 143962,
+          "javascriptDataReceivedEncodedBodyBytes": 139322,
+          "failures": [],
+          "rawRequests": [
+            {
+              "requestId": "A83ED489C93BD6E7EB64D616F0B26311",
+              "url": "http://127.0.0.1:3130/en",
+              "method": "GET",
+              "resourceType": "Document",
+              "initiatorType": "other",
+              "requestTimestamp": 2996285.558616,
+              "responseStatus": 200,
+              "mimeType": "text/html",
+              "encodedBodyBytes": 0,
+              "decodedBodyBytes": 12848,
+              "loadingFinishedEncodedBytes": 4166,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 650,
+              "finishTimestamp": 2996285.666313
+            },
+            {
+              "requestId": "8792.2",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2onf6kft_k6b6.css",
+              "method": "GET",
+              "resourceType": "Stylesheet",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996285.666844,
+              "responseStatus": 200,
+              "mimeType": "text/css",
+              "encodedBodyBytes": 3853,
+              "decodedBodyBytes": 13424,
+              "loadingFinishedEncodedBytes": 4419,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 566,
+              "finishTimestamp": 2996285.786571
+            },
+            {
+              "requestId": "8792.3",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996285.666976,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 2052,
+              "decodedBodyBytes": 5584,
+              "loadingFinishedEncodedBytes": 2632,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996285.77921
+            },
+            {
+              "requestId": "8792.4",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996285.667021,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8477,
+              "decodedBodyBytes": 31293,
+              "loadingFinishedEncodedBytes": 9057,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996285.804393
+            },
+            {
+              "requestId": "8792.5",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996285.667065,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 71965,
+              "decodedBodyBytes": 229597,
+              "loadingFinishedEncodedBytes": 72546,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996285.892114
+            },
+            {
+              "requestId": "8792.6",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996285.667094,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 45532,
+              "decodedBodyBytes": 165614,
+              "loadingFinishedEncodedBytes": 46113,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996285.863344
+            },
+            {
+              "requestId": "8792.7",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996285.667124,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3957,
+              "decodedBodyBytes": 10030,
+              "loadingFinishedEncodedBytes": 4537,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996285.792515
+            },
+            {
+              "requestId": "8792.8",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996285.667157,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3531,
+              "decodedBodyBytes": 13822,
+              "loadingFinishedEncodedBytes": 4111,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996285.886099
+            },
+            {
+              "requestId": "8792.9",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996285.667189,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1925,
+              "decodedBodyBytes": 3893,
+              "loadingFinishedEncodedBytes": 2504,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996285.890887
+            },
+            {
+              "requestId": "8792.10",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996285.667219,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1883,
+              "decodedBodyBytes": 3819,
+              "loadingFinishedEncodedBytes": 2462,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996285.895704
+            },
+            {
+              "requestId": "8792.22",
+              "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+              "method": "GET",
+              "resourceType": "Other",
+              "initiatorType": "other",
+              "requestTimestamp": 2996285.919266,
+              "responseStatus": 200,
+              "mimeType": "image/svg+xml",
+              "encodedBodyBytes": 254,
+              "decodedBodyBytes": 243,
+              "loadingFinishedEncodedBytes": 774,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 520,
+              "finishTimestamp": 2996286.02159
+            }
+          ]
+        }
+      },
+      {
+        "route": "/en",
+        "run": 4,
+        "sampleIndex": 4,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100,
+          "cdpDownBytesPerSecond": 1250000,
+          "cdpUpBytesPerSecond": 125000
+        },
+        "freshBrowserContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "navigation": {
+          "status": 200,
+          "url": "http://127.0.0.1:3130/en"
+        },
+        "navigationError": null,
+        "wallMs": 1358,
+        "webMetrics": {
+          "navigation": {
+            "type": "navigate",
+            "domContentLoadedEventEnd": 234.80000019073486,
+            "loadEventEnd": 354,
+            "responseStart": 2.5,
+            "transferSize": 3799,
+            "encodedBodySize": 3499,
+            "decodedBodySize": 12848
+          },
+          "fcpSamplesMs": [
+            256
+          ],
+          "lcpSamples": [
+            {
+              "startTime": 256,
+              "size": 43581,
+              "tag": "H1",
+              "id": ""
+            }
+          ],
+          "clsSamples": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "path": "/en",
+          "title": "Thạch Bi Church",
+          "heading": "A place to return to, together.",
+          "headingVisible": true,
+          "mainTextLength": 359,
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false,
+          "animationCount": 0
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "cdpBytes": {
+          "requestCount": 11,
+          "loadingFinishedEncodedBytes": 153321,
+          "dataReceivedEncodedBodyBytes": 143429,
+          "javascriptRequestCount": 8,
+          "javascriptLoadingFinishedEncodedBytes": 143962,
+          "javascriptDataReceivedEncodedBodyBytes": 139322,
+          "failures": [],
+          "rawRequests": [
+            {
+              "requestId": "B2807D8BAAF9E0D5C16B2EADEDBA69A9",
+              "url": "http://127.0.0.1:3130/en",
+              "method": "GET",
+              "resourceType": "Document",
+              "initiatorType": "other",
+              "requestTimestamp": 2996287.09943,
+              "responseStatus": 200,
+              "mimeType": "text/html",
+              "encodedBodyBytes": 0,
+              "decodedBodyBytes": 12848,
+              "loadingFinishedEncodedBytes": 4166,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 650,
+              "finishTimestamp": 2996287.203582
+            },
+            {
+              "requestId": "8795.2",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2onf6kft_k6b6.css",
+              "method": "GET",
+              "resourceType": "Stylesheet",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996287.203838,
+              "responseStatus": 200,
+              "mimeType": "text/css",
+              "encodedBodyBytes": 3853,
+              "decodedBodyBytes": 13424,
+              "loadingFinishedEncodedBytes": 4419,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 566,
+              "finishTimestamp": 2996287.322331
+            },
+            {
+              "requestId": "8795.3",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996287.203977,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 2052,
+              "decodedBodyBytes": 5584,
+              "loadingFinishedEncodedBytes": 2632,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996287.315051
+            },
+            {
+              "requestId": "8795.4",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996287.204022,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8477,
+              "decodedBodyBytes": 31293,
+              "loadingFinishedEncodedBytes": 9057,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996287.340259
+            },
+            {
+              "requestId": "8795.5",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996287.204059,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 71965,
+              "decodedBodyBytes": 229597,
+              "loadingFinishedEncodedBytes": 72546,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996287.427981
+            },
+            {
+              "requestId": "8795.6",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996287.204087,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 45532,
+              "decodedBodyBytes": 165614,
+              "loadingFinishedEncodedBytes": 46113,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996287.400096
+            },
+            {
+              "requestId": "8795.7",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996287.204121,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3957,
+              "decodedBodyBytes": 10030,
+              "loadingFinishedEncodedBytes": 4537,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996287.331857
+            },
+            {
+              "requestId": "8795.8",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996287.204143,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3531,
+              "decodedBodyBytes": 13822,
+              "loadingFinishedEncodedBytes": 4111,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996287.421889
+            },
+            {
+              "requestId": "8795.9",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996287.204168,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1925,
+              "decodedBodyBytes": 3893,
+              "loadingFinishedEncodedBytes": 2504,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996287.426542
+            },
+            {
+              "requestId": "8795.10",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996287.204192,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1883,
+              "decodedBodyBytes": 3819,
+              "loadingFinishedEncodedBytes": 2462,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996287.435078
+            },
+            {
+              "requestId": "8795.22",
+              "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+              "method": "GET",
+              "resourceType": "Other",
+              "initiatorType": "other",
+              "requestTimestamp": 2996287.45482,
+              "responseStatus": 200,
+              "mimeType": "image/svg+xml",
+              "encodedBodyBytes": 254,
+              "decodedBodyBytes": 243,
+              "loadingFinishedEncodedBytes": 774,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 520,
+              "finishTimestamp": 2996287.558635
+            }
+          ]
+        }
+      },
+      {
+        "route": "/en",
+        "run": 5,
+        "sampleIndex": 5,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100,
+          "cdpDownBytesPerSecond": 1250000,
+          "cdpUpBytesPerSecond": 125000
+        },
+        "freshBrowserContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "navigation": {
+          "status": 200,
+          "url": "http://127.0.0.1:3130/en"
+        },
+        "navigationError": null,
+        "wallMs": 1360,
+        "webMetrics": {
+          "navigation": {
+            "type": "navigate",
+            "domContentLoadedEventEnd": 238.7000002861023,
+            "loadEventEnd": 356.2000002861023,
+            "responseStart": 2.5,
+            "transferSize": 3799,
+            "encodedBodySize": 3499,
+            "decodedBodySize": 12848
+          },
+          "fcpSamplesMs": [
+            264
+          ],
+          "lcpSamples": [
+            {
+              "startTime": 264,
+              "size": 43581,
+              "tag": "H1",
+              "id": ""
+            }
+          ],
+          "clsSamples": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "path": "/en",
+          "title": "Thạch Bi Church",
+          "heading": "A place to return to, together.",
+          "headingVisible": true,
+          "mainTextLength": 359,
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false,
+          "animationCount": 0
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "cdpBytes": {
+          "requestCount": 11,
+          "loadingFinishedEncodedBytes": 153321,
+          "dataReceivedEncodedBodyBytes": 143429,
+          "javascriptRequestCount": 8,
+          "javascriptLoadingFinishedEncodedBytes": 143962,
+          "javascriptDataReceivedEncodedBodyBytes": 139322,
+          "failures": [],
+          "rawRequests": [
+            {
+              "requestId": "AC83BB89B52C539C596141F86AD5E9A2",
+              "url": "http://127.0.0.1:3130/en",
+              "method": "GET",
+              "resourceType": "Document",
+              "initiatorType": "other",
+              "requestTimestamp": 2996288.643262,
+              "responseStatus": 200,
+              "mimeType": "text/html",
+              "encodedBodyBytes": 0,
+              "decodedBodyBytes": 12848,
+              "loadingFinishedEncodedBytes": 4166,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 650,
+              "finishTimestamp": 2996288.749313
+            },
+            {
+              "requestId": "8798.2",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2onf6kft_k6b6.css",
+              "method": "GET",
+              "resourceType": "Stylesheet",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996288.749564,
+              "responseStatus": 200,
+              "mimeType": "text/css",
+              "encodedBodyBytes": 3853,
+              "decodedBodyBytes": 13424,
+              "loadingFinishedEncodedBytes": 4419,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 566,
+              "finishTimestamp": 2996288.870403
+            },
+            {
+              "requestId": "8798.3",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996288.749718,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 2052,
+              "decodedBodyBytes": 5584,
+              "loadingFinishedEncodedBytes": 2632,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996288.864466
+            },
+            {
+              "requestId": "8798.4",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996288.749759,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8477,
+              "decodedBodyBytes": 31293,
+              "loadingFinishedEncodedBytes": 9057,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996288.888421
+            },
+            {
+              "requestId": "8798.5",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996288.749838,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 71965,
+              "decodedBodyBytes": 229597,
+              "loadingFinishedEncodedBytes": 72546,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996288.974739
+            },
+            {
+              "requestId": "8798.6",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996288.749889,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 45532,
+              "decodedBodyBytes": 165614,
+              "loadingFinishedEncodedBytes": 46113,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996288.948399
+            },
+            {
+              "requestId": "8798.7",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996288.749924,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3957,
+              "decodedBodyBytes": 10030,
+              "loadingFinishedEncodedBytes": 4537,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996288.877608
+            },
+            {
+              "requestId": "8798.8",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996288.749951,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3531,
+              "decodedBodyBytes": 13822,
+              "loadingFinishedEncodedBytes": 4111,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996288.970942
+            },
+            {
+              "requestId": "8798.9",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996288.749972,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1925,
+              "decodedBodyBytes": 3893,
+              "loadingFinishedEncodedBytes": 2504,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996288.976053
+            },
+            {
+              "requestId": "8798.10",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996288.749997,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1883,
+              "decodedBodyBytes": 3819,
+              "loadingFinishedEncodedBytes": 2462,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996288.980585
+            },
+            {
+              "requestId": "8798.22",
+              "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+              "method": "GET",
+              "resourceType": "Other",
+              "initiatorType": "other",
+              "requestTimestamp": 2996289.001018,
+              "responseStatus": 200,
+              "mimeType": "image/svg+xml",
+              "encodedBodyBytes": 254,
+              "decodedBodyBytes": 243,
+              "loadingFinishedEncodedBytes": 774,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 520,
+              "finishTimestamp": 2996289.105619
+            }
+          ]
+        }
+      },
+      {
+        "route": "/en/design",
+        "run": 1,
+        "sampleIndex": 6,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100,
+          "cdpDownBytesPerSecond": 1250000,
+          "cdpUpBytesPerSecond": 125000
+        },
+        "freshBrowserContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "navigation": {
+          "status": 200,
+          "url": "http://127.0.0.1:3130/en/design"
+        },
+        "navigationError": null,
+        "wallMs": 1366,
+        "webMetrics": {
+          "navigation": {
+            "type": "navigate",
+            "domContentLoadedEventEnd": 240.69999980926514,
+            "loadEventEnd": 361.3999996185303,
+            "responseStart": 7.899999618530273,
+            "transferSize": 4568,
+            "encodedBodySize": 4268,
+            "decodedBodySize": 14974
+          },
+          "fcpSamplesMs": [
+            256
+          ],
+          "lcpSamples": [
+            {
+              "startTime": 256,
+              "size": 26875,
+              "tag": "P",
+              "id": ""
+            }
+          ],
+          "clsSamples": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "path": "/en/design",
+          "title": "Images and design | Thạch Bi Church",
+          "heading": "Images and design",
+          "headingVisible": true,
+          "mainTextLength": 323,
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false,
+          "animationCount": 0
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "cdpBytes": {
+          "requestCount": 12,
+          "loadingFinishedEncodedBytes": 162883,
+          "dataReceivedEncodedBodyBytes": 151707,
+          "javascriptRequestCount": 9,
+          "javascriptLoadingFinishedEncodedBytes": 152820,
+          "javascriptDataReceivedEncodedBodyBytes": 147600,
+          "failures": [],
+          "rawRequests": [
+            {
+              "requestId": "B1214CE88480AA9D6CA55031B9B5F00E",
+              "url": "http://127.0.0.1:3130/en/design",
+              "method": "GET",
+              "resourceType": "Document",
+              "initiatorType": "other",
+              "requestTimestamp": 2996290.166143,
+              "responseStatus": 200,
+              "mimeType": "text/html",
+              "encodedBodyBytes": 0,
+              "decodedBodyBytes": 14974,
+              "loadingFinishedEncodedBytes": 4870,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 572,
+              "finishTimestamp": 2996290.275292
+            },
+            {
+              "requestId": "8801.2",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2onf6kft_k6b6.css",
+              "method": "GET",
+              "resourceType": "Stylesheet",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996290.274509,
+              "responseStatus": 200,
+              "mimeType": "text/css",
+              "encodedBodyBytes": 3853,
+              "decodedBodyBytes": 13424,
+              "loadingFinishedEncodedBytes": 4419,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 566,
+              "finishTimestamp": 2996290.395097
+            },
+            {
+              "requestId": "8801.3",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996290.274639,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 2052,
+              "decodedBodyBytes": 5584,
+              "loadingFinishedEncodedBytes": 2632,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996290.388061
+            },
+            {
+              "requestId": "8801.4",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996290.274682,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8477,
+              "decodedBodyBytes": 31293,
+              "loadingFinishedEncodedBytes": 9057,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996290.413113
+            },
+            {
+              "requestId": "8801.5",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996290.274719,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 71965,
+              "decodedBodyBytes": 229597,
+              "loadingFinishedEncodedBytes": 72546,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996290.500991
+            },
+            {
+              "requestId": "8801.6",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996290.274747,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 45532,
+              "decodedBodyBytes": 165614,
+              "loadingFinishedEncodedBytes": 46113,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996290.473194
+            },
+            {
+              "requestId": "8801.7",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996290.274776,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3957,
+              "decodedBodyBytes": 10030,
+              "loadingFinishedEncodedBytes": 4537,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996290.402569
+            },
+            {
+              "requestId": "8801.8",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996290.274801,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3531,
+              "decodedBodyBytes": 13822,
+              "loadingFinishedEncodedBytes": 4111,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996290.494896
+            },
+            {
+              "requestId": "8801.9",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996290.274835,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1925,
+              "decodedBodyBytes": 3893,
+              "loadingFinishedEncodedBytes": 2504,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996290.49959
+            },
+            {
+              "requestId": "8801.10",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996290.274865,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1883,
+              "decodedBodyBytes": 3819,
+              "loadingFinishedEncodedBytes": 2462,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996290.505577
+            },
+            {
+              "requestId": "8801.11",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/3p9klc4tf_zff.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996290.274886,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8278,
+              "decodedBodyBytes": 21765,
+              "loadingFinishedEncodedBytes": 8858,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996290.521137
+            },
+            {
+              "requestId": "8801.24",
+              "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+              "method": "GET",
+              "resourceType": "Other",
+              "initiatorType": "other",
+              "requestTimestamp": 2996290.528658,
+              "responseStatus": 200,
+              "mimeType": "image/svg+xml",
+              "encodedBodyBytes": 254,
+              "decodedBodyBytes": 243,
+              "loadingFinishedEncodedBytes": 774,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 520,
+              "finishTimestamp": 2996290.634118
+            }
+          ]
+        }
+      },
+      {
+        "route": "/en/design",
+        "run": 2,
+        "sampleIndex": 7,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100,
+          "cdpDownBytesPerSecond": 1250000,
+          "cdpUpBytesPerSecond": 125000
+        },
+        "freshBrowserContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "navigation": {
+          "status": 200,
+          "url": "http://127.0.0.1:3130/en/design"
+        },
+        "navigationError": null,
+        "wallMs": 1364,
+        "webMetrics": {
+          "navigation": {
+            "type": "navigate",
+            "domContentLoadedEventEnd": 240.40000009536743,
+            "loadEventEnd": 360.40000009536743,
+            "responseStart": 6.599999904632568,
+            "transferSize": 4568,
+            "encodedBodySize": 4268,
+            "decodedBodySize": 14974
+          },
+          "fcpSamplesMs": [
+            260
+          ],
+          "lcpSamples": [
+            {
+              "startTime": 260,
+              "size": 26875,
+              "tag": "P",
+              "id": ""
+            }
+          ],
+          "clsSamples": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "path": "/en/design",
+          "title": "Images and design | Thạch Bi Church",
+          "heading": "Images and design",
+          "headingVisible": true,
+          "mainTextLength": 323,
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false,
+          "animationCount": 0
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "cdpBytes": {
+          "requestCount": 12,
+          "loadingFinishedEncodedBytes": 162883,
+          "dataReceivedEncodedBodyBytes": 151692,
+          "javascriptRequestCount": 9,
+          "javascriptLoadingFinishedEncodedBytes": 152820,
+          "javascriptDataReceivedEncodedBodyBytes": 147585,
+          "failures": [],
+          "rawRequests": [
+            {
+              "requestId": "C961AEE42D23911F273A9B5FA201018C",
+              "url": "http://127.0.0.1:3130/en/design",
+              "method": "GET",
+              "resourceType": "Document",
+              "initiatorType": "other",
+              "requestTimestamp": 2996291.720951,
+              "responseStatus": 200,
+              "mimeType": "text/html",
+              "encodedBodyBytes": 0,
+              "decodedBodyBytes": 14974,
+              "loadingFinishedEncodedBytes": 4870,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 572,
+              "finishTimestamp": 2996291.829673
+            },
+            {
+              "requestId": "8804.2",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2onf6kft_k6b6.css",
+              "method": "GET",
+              "resourceType": "Stylesheet",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996291.828752,
+              "responseStatus": 200,
+              "mimeType": "text/css",
+              "encodedBodyBytes": 3853,
+              "decodedBodyBytes": 13424,
+              "loadingFinishedEncodedBytes": 4419,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 566,
+              "finishTimestamp": 2996291.949737
+            },
+            {
+              "requestId": "8804.3",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996291.828877,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 2052,
+              "decodedBodyBytes": 5584,
+              "loadingFinishedEncodedBytes": 2632,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996291.943965
+            },
+            {
+              "requestId": "8804.4",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996291.828916,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8477,
+              "decodedBodyBytes": 31293,
+              "loadingFinishedEncodedBytes": 9057,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996291.967935
+            },
+            {
+              "requestId": "8804.5",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996291.828942,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 71965,
+              "decodedBodyBytes": 229597,
+              "loadingFinishedEncodedBytes": 72546,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996292.054198
+            },
+            {
+              "requestId": "8804.6",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996291.828964,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 45532,
+              "decodedBodyBytes": 165614,
+              "loadingFinishedEncodedBytes": 46113,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996292.026791
+            },
+            {
+              "requestId": "8804.7",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996291.828993,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3957,
+              "decodedBodyBytes": 10030,
+              "loadingFinishedEncodedBytes": 4537,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996291.957095
+            },
+            {
+              "requestId": "8804.8",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996291.829014,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3516,
+              "decodedBodyBytes": 13822,
+              "loadingFinishedEncodedBytes": 4111,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996292.050487
+            },
+            {
+              "requestId": "8804.9",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996291.829034,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1925,
+              "decodedBodyBytes": 3893,
+              "loadingFinishedEncodedBytes": 2504,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996292.055455
+            },
+            {
+              "requestId": "8804.10",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996291.829056,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1883,
+              "decodedBodyBytes": 3819,
+              "loadingFinishedEncodedBytes": 2462,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996292.060424
+            },
+            {
+              "requestId": "8804.11",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/3p9klc4tf_zff.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996291.82908,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8278,
+              "decodedBodyBytes": 21765,
+              "loadingFinishedEncodedBytes": 8858,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996292.077097
+            },
+            {
+              "requestId": "8804.24",
+              "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+              "method": "GET",
+              "resourceType": "Other",
+              "initiatorType": "other",
+              "requestTimestamp": 2996292.082455,
+              "responseStatus": 200,
+              "mimeType": "image/svg+xml",
+              "encodedBodyBytes": 254,
+              "decodedBodyBytes": 243,
+              "loadingFinishedEncodedBytes": 774,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 520,
+              "finishTimestamp": 2996292.188805
+            }
+          ]
+        }
+      },
+      {
+        "route": "/en/design",
+        "run": 3,
+        "sampleIndex": 8,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100,
+          "cdpDownBytesPerSecond": 1250000,
+          "cdpUpBytesPerSecond": 125000
+        },
+        "freshBrowserContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "navigation": {
+          "status": 200,
+          "url": "http://127.0.0.1:3130/en/design"
+        },
+        "navigationError": null,
+        "wallMs": 1362,
+        "webMetrics": {
+          "navigation": {
+            "type": "navigate",
+            "domContentLoadedEventEnd": 239.30000019073486,
+            "loadEventEnd": 360,
+            "responseStart": 5.700000286102295,
+            "transferSize": 4568,
+            "encodedBodySize": 4268,
+            "decodedBodySize": 14974
+          },
+          "fcpSamplesMs": [
+            260
+          ],
+          "lcpSamples": [
+            {
+              "startTime": 260,
+              "size": 26875,
+              "tag": "P",
+              "id": ""
+            }
+          ],
+          "clsSamples": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "path": "/en/design",
+          "title": "Images and design | Thạch Bi Church",
+          "heading": "Images and design",
+          "headingVisible": true,
+          "mainTextLength": 323,
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false,
+          "animationCount": 0
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "cdpBytes": {
+          "requestCount": 12,
+          "loadingFinishedEncodedBytes": 162883,
+          "dataReceivedEncodedBodyBytes": 151707,
+          "javascriptRequestCount": 9,
+          "javascriptLoadingFinishedEncodedBytes": 152820,
+          "javascriptDataReceivedEncodedBodyBytes": 147600,
+          "failures": [],
+          "rawRequests": [
+            {
+              "requestId": "36741E62A578EF5DFE1DC4D1403B2582",
+              "url": "http://127.0.0.1:3130/en/design",
+              "method": "GET",
+              "resourceType": "Document",
+              "initiatorType": "other",
+              "requestTimestamp": 2996293.254863,
+              "responseStatus": 200,
+              "mimeType": "text/html",
+              "encodedBodyBytes": 0,
+              "decodedBodyBytes": 14974,
+              "loadingFinishedEncodedBytes": 4870,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 572,
+              "finishTimestamp": 2996293.3622
+            },
+            {
+              "requestId": "8807.2",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2onf6kft_k6b6.css",
+              "method": "GET",
+              "resourceType": "Stylesheet",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996293.361332,
+              "responseStatus": 200,
+              "mimeType": "text/css",
+              "encodedBodyBytes": 3853,
+              "decodedBodyBytes": 13424,
+              "loadingFinishedEncodedBytes": 4419,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 566,
+              "finishTimestamp": 2996293.482538
+            },
+            {
+              "requestId": "8807.3",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996293.361458,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 2052,
+              "decodedBodyBytes": 5584,
+              "loadingFinishedEncodedBytes": 2632,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996293.475237
+            },
+            {
+              "requestId": "8807.4",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996293.361497,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8477,
+              "decodedBodyBytes": 31293,
+              "loadingFinishedEncodedBytes": 9057,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996293.500481
+            },
+            {
+              "requestId": "8807.5",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996293.361527,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 71965,
+              "decodedBodyBytes": 229597,
+              "loadingFinishedEncodedBytes": 72546,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996293.58813
+            },
+            {
+              "requestId": "8807.6",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996293.361551,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 45532,
+              "decodedBodyBytes": 165614,
+              "loadingFinishedEncodedBytes": 46113,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996293.560519
+            },
+            {
+              "requestId": "8807.7",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996293.361578,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3957,
+              "decodedBodyBytes": 10030,
+              "loadingFinishedEncodedBytes": 4537,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996293.48968
+            },
+            {
+              "requestId": "8807.8",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996293.361598,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3531,
+              "decodedBodyBytes": 13822,
+              "loadingFinishedEncodedBytes": 4111,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996293.581884
+            },
+            {
+              "requestId": "8807.9",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996293.361618,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1925,
+              "decodedBodyBytes": 3893,
+              "loadingFinishedEncodedBytes": 2504,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996293.586877
+            },
+            {
+              "requestId": "8807.10",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996293.361643,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1883,
+              "decodedBodyBytes": 3819,
+              "loadingFinishedEncodedBytes": 2462,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996293.591747
+            },
+            {
+              "requestId": "8807.11",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/3p9klc4tf_zff.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996293.361664,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8278,
+              "decodedBodyBytes": 21765,
+              "loadingFinishedEncodedBytes": 8858,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996293.609728
+            },
+            {
+              "requestId": "8807.24",
+              "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+              "method": "GET",
+              "resourceType": "Other",
+              "initiatorType": "other",
+              "requestTimestamp": 2996293.616033,
+              "responseStatus": 200,
+              "mimeType": "image/svg+xml",
+              "encodedBodyBytes": 254,
+              "decodedBodyBytes": 243,
+              "loadingFinishedEncodedBytes": 774,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 520,
+              "finishTimestamp": 2996293.722439
+            }
+          ]
+        }
+      },
+      {
+        "route": "/en/design",
+        "run": 4,
+        "sampleIndex": 9,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100,
+          "cdpDownBytesPerSecond": 1250000,
+          "cdpUpBytesPerSecond": 125000
+        },
+        "freshBrowserContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "navigation": {
+          "status": 200,
+          "url": "http://127.0.0.1:3130/en/design"
+        },
+        "navigationError": null,
+        "wallMs": 1363,
+        "webMetrics": {
+          "navigation": {
+            "type": "navigate",
+            "domContentLoadedEventEnd": 240.2999997138977,
+            "loadEventEnd": 358.7999997138977,
+            "responseStart": 5.399999618530273,
+            "transferSize": 4568,
+            "encodedBodySize": 4268,
+            "decodedBodySize": 14974
+          },
+          "fcpSamplesMs": [
+            260
+          ],
+          "lcpSamples": [
+            {
+              "startTime": 260,
+              "size": 26875,
+              "tag": "P",
+              "id": ""
+            }
+          ],
+          "clsSamples": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "path": "/en/design",
+          "title": "Images and design | Thạch Bi Church",
+          "heading": "Images and design",
+          "headingVisible": true,
+          "mainTextLength": 323,
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false,
+          "animationCount": 0
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "cdpBytes": {
+          "requestCount": 12,
+          "loadingFinishedEncodedBytes": 162883,
+          "dataReceivedEncodedBodyBytes": 151707,
+          "javascriptRequestCount": 9,
+          "javascriptLoadingFinishedEncodedBytes": 152820,
+          "javascriptDataReceivedEncodedBodyBytes": 147600,
+          "failures": [],
+          "rawRequests": [
+            {
+              "requestId": "C2FFD324D6490AD5104A21A4EDC31511",
+              "url": "http://127.0.0.1:3130/en/design",
+              "method": "GET",
+              "resourceType": "Document",
+              "initiatorType": "other",
+              "requestTimestamp": 2996294.796581,
+              "responseStatus": 200,
+              "mimeType": "text/html",
+              "encodedBodyBytes": 0,
+              "decodedBodyBytes": 14974,
+              "loadingFinishedEncodedBytes": 4870,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 572,
+              "finishTimestamp": 2996294.904805
+            },
+            {
+              "requestId": "8810.2",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2onf6kft_k6b6.css",
+              "method": "GET",
+              "resourceType": "Stylesheet",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996294.904127,
+              "responseStatus": 200,
+              "mimeType": "text/css",
+              "encodedBodyBytes": 3853,
+              "decodedBodyBytes": 13424,
+              "loadingFinishedEncodedBytes": 4419,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 566,
+              "finishTimestamp": 2996295.024913
+            },
+            {
+              "requestId": "8810.3",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996294.904254,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 2052,
+              "decodedBodyBytes": 5584,
+              "loadingFinishedEncodedBytes": 2632,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996295.01895
+            },
+            {
+              "requestId": "8810.4",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996294.904295,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8477,
+              "decodedBodyBytes": 31293,
+              "loadingFinishedEncodedBytes": 9057,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996295.042915
+            },
+            {
+              "requestId": "8810.5",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996294.904336,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 71965,
+              "decodedBodyBytes": 229597,
+              "loadingFinishedEncodedBytes": 72546,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996295.129186
+            },
+            {
+              "requestId": "8810.6",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996294.904358,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 45532,
+              "decodedBodyBytes": 165614,
+              "loadingFinishedEncodedBytes": 46113,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996295.101498
+            },
+            {
+              "requestId": "8810.7",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996294.904387,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3957,
+              "decodedBodyBytes": 10030,
+              "loadingFinishedEncodedBytes": 4537,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996295.032105
+            },
+            {
+              "requestId": "8810.8",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996294.904493,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3531,
+              "decodedBodyBytes": 13822,
+              "loadingFinishedEncodedBytes": 4111,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996295.125475
+            },
+            {
+              "requestId": "8810.9",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996294.904524,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1925,
+              "decodedBodyBytes": 3893,
+              "loadingFinishedEncodedBytes": 2504,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996295.130667
+            },
+            {
+              "requestId": "8810.10",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996294.904553,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1883,
+              "decodedBodyBytes": 3819,
+              "loadingFinishedEncodedBytes": 2462,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996295.135076
+            },
+            {
+              "requestId": "8810.11",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/3p9klc4tf_zff.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996294.904582,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8278,
+              "decodedBodyBytes": 21765,
+              "loadingFinishedEncodedBytes": 8858,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996295.150744
+            },
+            {
+              "requestId": "8810.24",
+              "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+              "method": "GET",
+              "resourceType": "Other",
+              "initiatorType": "other",
+              "requestTimestamp": 2996295.156925,
+              "responseStatus": 200,
+              "mimeType": "image/svg+xml",
+              "encodedBodyBytes": 254,
+              "decodedBodyBytes": 243,
+              "loadingFinishedEncodedBytes": 774,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 520,
+              "finishTimestamp": 2996295.258836
+            }
+          ]
+        }
+      },
+      {
+        "route": "/en/design",
+        "run": 5,
+        "sampleIndex": 10,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100,
+          "cdpDownBytesPerSecond": 1250000,
+          "cdpUpBytesPerSecond": 125000
+        },
+        "freshBrowserContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "navigation": {
+          "status": 200,
+          "url": "http://127.0.0.1:3130/en/design"
+        },
+        "navigationError": null,
+        "wallMs": 1362,
+        "webMetrics": {
+          "navigation": {
+            "type": "navigate",
+            "domContentLoadedEventEnd": 240.2000002861023,
+            "loadEventEnd": 359.30000019073486,
+            "responseStart": 5.200000286102295,
+            "transferSize": 4568,
+            "encodedBodySize": 4268,
+            "decodedBodySize": 14974
+          },
+          "fcpSamplesMs": [
+            260
+          ],
+          "lcpSamples": [
+            {
+              "startTime": 260,
+              "size": 26875,
+              "tag": "P",
+              "id": ""
+            }
+          ],
+          "clsSamples": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "facts": {
+          "path": "/en/design",
+          "title": "Images and design | Thạch Bi Church",
+          "heading": "Images and design",
+          "headingVisible": true,
+          "mainTextLength": 323,
+          "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1
+          },
+          "document": {
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "horizontalOverflow": false
+          },
+          "body": {
+            "scrollWidth": 1440,
+            "horizontalOverflow": false
+          },
+          "rootFontSize": "16px",
+          "reducedMotionMatches": false,
+          "animationCount": 0
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "cdpBytes": {
+          "requestCount": 12,
+          "loadingFinishedEncodedBytes": 162883,
+          "dataReceivedEncodedBodyBytes": 151707,
+          "javascriptRequestCount": 9,
+          "javascriptLoadingFinishedEncodedBytes": 152820,
+          "javascriptDataReceivedEncodedBodyBytes": 147600,
+          "failures": [],
+          "rawRequests": [
+            {
+              "requestId": "70D496892724C6D24B449EEF137B030E",
+              "url": "http://127.0.0.1:3130/en/design",
+              "method": "GET",
+              "resourceType": "Document",
+              "initiatorType": "other",
+              "requestTimestamp": 2996296.327851,
+              "responseStatus": 200,
+              "mimeType": "text/html",
+              "encodedBodyBytes": 0,
+              "decodedBodyBytes": 14974,
+              "loadingFinishedEncodedBytes": 4870,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 572,
+              "finishTimestamp": 2996296.437462
+            },
+            {
+              "requestId": "8813.2",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2onf6kft_k6b6.css",
+              "method": "GET",
+              "resourceType": "Stylesheet",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996296.436719,
+              "responseStatus": 200,
+              "mimeType": "text/css",
+              "encodedBodyBytes": 3853,
+              "decodedBodyBytes": 13424,
+              "loadingFinishedEncodedBytes": 4419,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 566,
+              "finishTimestamp": 2996296.556426
+            },
+            {
+              "requestId": "8813.3",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996296.436849,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 2052,
+              "decodedBodyBytes": 5584,
+              "loadingFinishedEncodedBytes": 2632,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996296.550433
+            },
+            {
+              "requestId": "8813.4",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996296.436893,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8477,
+              "decodedBodyBytes": 31293,
+              "loadingFinishedEncodedBytes": 9057,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996296.574318
+            },
+            {
+              "requestId": "8813.5",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996296.436927,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 71965,
+              "decodedBodyBytes": 229597,
+              "loadingFinishedEncodedBytes": 72546,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996296.660836
+            },
+            {
+              "requestId": "8813.6",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996296.436958,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 45532,
+              "decodedBodyBytes": 165614,
+              "loadingFinishedEncodedBytes": 46113,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 581,
+              "finishTimestamp": 2996296.63324
+            },
+            {
+              "requestId": "8813.7",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996296.436988,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3957,
+              "decodedBodyBytes": 10030,
+              "loadingFinishedEncodedBytes": 4537,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996296.563518
+            },
+            {
+              "requestId": "8813.8",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996296.437021,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 3531,
+              "decodedBodyBytes": 13822,
+              "loadingFinishedEncodedBytes": 4111,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996296.656985
+            },
+            {
+              "requestId": "8813.9",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996296.437044,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1925,
+              "decodedBodyBytes": 3893,
+              "loadingFinishedEncodedBytes": 2504,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996296.662102
+            },
+            {
+              "requestId": "8813.10",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996296.437067,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 1883,
+              "decodedBodyBytes": 3819,
+              "loadingFinishedEncodedBytes": 2462,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 579,
+              "finishTimestamp": 2996296.666731
+            },
+            {
+              "requestId": "8813.11",
+              "url": "http://127.0.0.1:3130/_next/static/chunks/3p9klc4tf_zff.js",
+              "method": "GET",
+              "resourceType": "Script",
+              "initiatorType": "parser",
+              "requestTimestamp": 2996296.437092,
+              "responseStatus": 200,
+              "mimeType": "application/javascript",
+              "encodedBodyBytes": 8278,
+              "decodedBodyBytes": 21765,
+              "loadingFinishedEncodedBytes": 8858,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 580,
+              "finishTimestamp": 2996296.682459
+            },
+            {
+              "requestId": "8813.24",
+              "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+              "method": "GET",
+              "resourceType": "Other",
+              "initiatorType": "other",
+              "requestTimestamp": 2996296.688643,
+              "responseStatus": 200,
+              "mimeType": "image/svg+xml",
+              "encodedBodyBytes": 254,
+              "decodedBodyBytes": 243,
+              "loadingFinishedEncodedBytes": 774,
+              "fromDiskCache": false,
+              "fromServiceWorker": false,
+              "failed": null,
+              "responseEncodedDataLength": 520,
+              "finishTimestamp": 2996296.792896
+            }
+          ]
+        }
+      }
+    ],
+    "oneMbpsDegradedReadableCheck": {
+      "route": "/en/design",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "profile": {
+        "downMbps": 1,
+        "upMbps": 1,
+        "rttMs": 100,
+        "cdpDownBytesPerSecond": 125000,
+        "cdpUpBytesPerSecond": 125000,
+        "javaScriptEnabled": false
+      },
+      "navigation": {
+        "status": 200,
+        "url": "http://127.0.0.1:3130/en/design"
+      },
+      "error": null,
+      "wallMs": 468,
+      "facts": {
+        "path": "/en/design",
+        "title": "Images and design | Thạch Bi Church",
+        "heading": "Images and design",
+        "headingVisible": true,
+        "mainTextLength": 323,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 900,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "reducedMotionMatches": false,
+        "animationCount": 0
+      },
+      "readableServerRenderedContent": true,
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "method": "GET",
+            "failure": "csp"
+          }
+        ],
+        "httpErrors": []
+      },
+      "cdpBytes": {
+        "requestCount": 4,
+        "loadingFinishedEncodedBytes": 10063,
+        "dataReceivedEncodedBodyBytes": 4107,
+        "failures": [
+          {
+            "requestId": "8816.14",
+            "errorText": "",
+            "canceled": false,
+            "blockedReason": "csp"
+          }
+        ],
+        "rawRequests": [
+          {
+            "requestId": "007538B7B24210A29497A9CADEC442BF",
+            "url": "http://127.0.0.1:3130/en/design",
+            "method": "GET",
+            "resourceType": "Document",
+            "initiatorType": "other",
+            "requestTimestamp": 2996297.867921,
+            "responseStatus": 200,
+            "mimeType": "text/html",
+            "encodedBodyBytes": 0,
+            "decodedBodyBytes": 14974,
+            "loadingFinishedEncodedBytes": 4870,
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "failed": null,
+            "responseEncodedDataLength": 572,
+            "finishTimestamp": 2996298.012575
+          },
+          {
+            "requestId": "8816.2",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2onf6kft_k6b6.css",
+            "method": "GET",
+            "resourceType": "Stylesheet",
+            "initiatorType": "parser",
+            "requestTimestamp": 2996297.988876,
+            "responseStatus": 200,
+            "mimeType": "text/css",
+            "encodedBodyBytes": 3853,
+            "decodedBodyBytes": 13424,
+            "loadingFinishedEncodedBytes": 4419,
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "failed": null,
+            "responseEncodedDataLength": 566,
+            "finishTimestamp": 2996298.120597
+          },
+          {
+            "requestId": "8816.14",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "initiatorType": "parser",
+            "requestTimestamp": 2996297.989469,
+            "responseStatus": null,
+            "mimeType": null,
+            "encodedBodyBytes": 0,
+            "decodedBodyBytes": 0,
+            "loadingFinishedEncodedBytes": null,
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "failed": {
+              "requestId": "8816.14",
+              "errorText": "",
+              "canceled": false,
+              "blockedReason": "csp"
+            }
+          },
+          {
+            "requestId": "8816.15",
+            "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+            "method": "GET",
+            "resourceType": "Other",
+            "initiatorType": "other",
+            "requestTimestamp": 2996298.128703,
+            "responseStatus": 200,
+            "mimeType": "image/svg+xml",
+            "encodedBodyBytes": 254,
+            "decodedBodyBytes": 243,
+            "loadingFinishedEncodedBytes": 774,
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "failed": null,
+            "responseEncodedDataLength": 520,
+            "finishTimestamp": 2996298.238919
+          }
+        ]
+      }
+    },
+    "fieldMetricCaveat": "These are lab measurements on one desktop and empty unpublished pages. No INP/field metric or real-photo budget/acceptance is claimed."
+  },
+  "stability": null,
+  "captureFinishedAt": "2026-10-08T02:23:04.889Z",
+  "measurementNotes": [
+    "All page captures used visible Google Chrome via Playwright channel chrome; no phone viewport/device profile was used.",
+    "Performance sampling used 5 new browser contexts per route, with cache disabled and service workers blocked; CDP Network.emulateNetworkConditions used decimal Mbps converted to bytes/s and RTT as listed.",
+    "LCP and CLS are raw in-page PerformanceObserver samples. Encoded byte totals are raw CDP Network.loadingFinished.encodedDataLength and Network.dataReceived.encodedDataLength aggregations, preserved per request; they are not field data.",
+    "No INP was measured or inferred. These are empty unpublished routes with no cleared real photographs; no real-photo transfer budget or parish-device acceptance is claimed.",
+    "200% text resize was simulated by temporary CSS setting the root font size to 200%; this is not native Chrome text-only zoom."
+  ]
+}

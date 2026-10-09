@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-08T02:48:29.249Z",
+  "progress": {
+    "url": "http://127.0.0.1:3130/en/progress",
+    "status": 200,
+    "diskBuildId": "QQh-hTBf3dlLBbHcS_6Yk",
+    "servedBuildId": "QQh-hTBf3dlLBbHcS_6Yk",
+    "rscBuildIdFieldMatches": 1,
+    "htmlBytes": 14750,
+    "htmlSha256": "7c3cbae80a40300ab850afd298c2aa5fd2bf1cd5447ef3dcdb9bcd687d1cf733",
+    "htmlDumpWritten": false,
+    "buildIdMatchesDisk": true
+  },
+  "missingEvent": {
+    "url": "http://127.0.0.1:3130/en/progress/missing",
+    "status": 404,
+    "htmlBytes": 6735,
+    "expected404": true
+  },
+  "passed": true
+}

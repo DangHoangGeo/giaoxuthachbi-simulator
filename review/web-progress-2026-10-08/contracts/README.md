@@ -1,0 +1,5 @@
+# Timeline contracts and maintainer staging
+
+8 October 2026, parent `d8d645d`, containing commit identifies this change. [Source fingerprints](manifest.json) retain 59 unchanged engineering sources. Focused public contract/history/staging suite: **51 tests passed** on Node 22.23.3. Lint and typecheck passed against the working tree (which also contained the subsequent timeline UI); the focused suite covers this contract package. No activation, deployment or physical change.
+
+Tests cover imprecise/unknown/interval dates, prior-release history, retained tombstones, correction notices, new evidence references, file preservation, fixture rejection and private staging. A malformed interval probe initially threw RangeError; the date-bound helper is now guarded and a regression case proves safeParse rejects without throwing. Overlapping month uncertainty is retained. The maintainer tool is not an approval system; editorial truth, publication permissions and the real contributor rehearsal remain held.

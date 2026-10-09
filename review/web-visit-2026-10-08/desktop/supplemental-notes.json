@@ -1,0 +1,17 @@
+{
+  "concurrentLoad": {
+    "source": "Parent's coordination message",
+    "reportedAt": "2026-10-08T13:08Z approximate",
+    "activity": "A separate CI=1 software-Chrome smoke suite ran against port 3100 around 13:07\u201313:08 UTC.",
+    "overlap": "The end of this run's 10-minute soak (minutes 9\u201310) overlapped that software-browser work. Heap/soak observations in this interval may reflect concurrent CPU pressure. The 60-second RAF sample ended around 12:58 UTC, before the reported concurrent suite.",
+    "limits": "No cross-process CPU utilization trace was collected; overlap is recorded as a possible confound, not a measured causal effect.",
+    "testOutcome": "Parent later reported four software-Chrome visit tests passed locally in 37.3 seconds; no app-source changes followed."
+  },
+  "galleryScreenshots": {
+    "initialLazyState": "vi-design-initial-lazy.png preserves the initial full-page screenshot taken before scrolling; lower lazy images were not yet loaded.",
+    "postScrollState": "vi-design-scrolled-all-images.png is a separate post-soak headed capture; each of 16 image elements was scrolled into view and awaited decode plus complete/naturalWidth > 0.",
+    "initialLoadAccounting": "Scroll-triggered media transfers are separate and excluded from the cold initial route transfer and JS totals in results.json."
+  },
+  "scope": "Desktop preview evidence only; not parish-device acceptance, field performance, or engineering approval.",
+  "soakMemoryLimit": "The soak sampled performance.memory JavaScript heap only. No WebGL/GPU memory counter was collected; one-canvas and JS-heap stability do not prove absence of a GPU memory leak."
+}

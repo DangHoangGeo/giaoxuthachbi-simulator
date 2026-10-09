@@ -1,0 +1,28 @@
+
+> thach-bi-web@0.1.0 test:browser
+> playwright test
+
+[WebServer] (node:16723) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:16746) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:16747) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/browser/gallery.spec.ts:19:1 › published concepts identify category, date and AI source; site-photo remains empty (1.0s)
+  ✓  2 tests/browser/gallery.spec.ts:65:1 › a published concept opens from the keyboard and returns focus on close (415ms)
+  ✓  3 tests/browser/gallery.spec.ts:82:1 › published gallery content, empty site-photo fallback and language navigation work without JavaScript (462ms)
+  ✓  4 tests/browser/progress.spec.ts:6:1 › published owner-reported milestones retain occurrence and report-date uncertainty (852ms)
+  ✓  5 tests/browser/progress.spec.ts:79:1 › timeline content, query navigation and language work without JavaScript (385ms)
+  ✓  6 tests/browser/shell.spec.ts:4:1 › published home retains the development notice across locales and supports keyboard use (858ms)
+  ✓  7 tests/browser/shell.spec.ts:41:1 › published site content and language navigation work without JavaScript (401ms)
+  ✓  8 tests/browser/shell.spec.ts:74:1 › unimplemented routes expose no protected content (63ms)
+
+  8 passed (6.2s)
+npm notice
+npm notice New major version of npm available! 10.9.9 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

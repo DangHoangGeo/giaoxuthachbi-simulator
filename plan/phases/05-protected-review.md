@@ -1,6 +1,6 @@
 # Phase 05 — Protected engineering review
 
-Status: **not started**. Depends on phase 01, phase 00 release contracts and phase 04's proven viewer isolation. Read [architecture](../architecture.md), [data contracts](../data-and-publication.md) and the [security/quality matrix](../quality-and-release.md).
+Status: **in progress; full G5 remains open**. The owner requested a shared-password full-detail architectural preview on 8 October 2026; see [scope and access controls](../../docs/web/access-control.md). [The scoped preview is deployed and verified](../../review/web-private-review-2026-10-08/delivery.md). This is an explicit scoped exception to the individual-account proposal, not completion of the engineering-review workspace. Depends on phase 01, phase 00 release contracts and phase 04's proven viewer isolation. Read [architecture](../architecture.md), [data contracts](../data-and-publication.md) and the [security/quality matrix](../quality-and-release.md).
 
 ## Outcome
 
