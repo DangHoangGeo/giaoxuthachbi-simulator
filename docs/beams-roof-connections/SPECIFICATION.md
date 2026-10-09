@@ -166,7 +166,7 @@ The following images are generated concepts, all supplied as separate 1920 × 10
 
 ![Column head and carved haunch](images/02-column-head-three-quarter.png)
 
-The five original other-church photos in `sources/` establish visible timber craftsmanship only. They do not establish this church's dimensions, material strengths or hidden joints. Source copies and package images are listed with hashes in [image-manifest.json](image-manifest.json). Superseded concepts 05 and 06 incorrectly used timber outer columns and must not be used.
+The five other-church photos in `sources/` establish visible timber craftsmanship only. Four are phone screenshots of a shared video, cropped on 10 October 2026 to the picture area so that the sender's name and profile picture are not shown; the crop is recorded in the image manifest. Their photographer and permission are still not recorded. They do not establish this church's dimensions, material strengths or hidden joints. Source copies and package images are listed with hashes in [image-manifest.json](image-manifest.json). Superseded concepts 05 and 06 incorrectly used timber outer columns and must not be used.
 
 ## Revision record
 

@@ -30,7 +30,7 @@ No licence is granted by this project for the following. They are kept as source
 | Material | Where | Status |
 | --- | --- | --- |
 | The church's architectural drawings and images taken from them | `docs/layout_design/*.pdf`, the drawing images `docs/layout_design/*.png`, and the copies in `docs/beams-roof-connections/sources/` | Rights remain with the drawing authors and the parish. Permission to publish them is a **PUBLICATION HOLD** in the [publication checklist](docs/open-source/publication-checklist.md). |
-| Five photographs and phone screenshots of other churches | `docs/beams-roof-connections/sources/IMG_*` | Third-party images. Their photographer and permission are not recorded. **PUBLICATION HOLD**. |
+| Five photographs and phone screenshots of other churches | `docs/beams-roof-connections/sources/IMG_*` | Third-party images. Their photographer and permission are not recorded. The four screenshots were cropped on 10 October 2026 to remove the sender's name and profile picture. **PUBLICATION HOLD**. |
 | three.js, bundled inside the viewer | `Thach_Bi_Viewer/bundle.js` | MIT, © three.js authors: [THREE_LICENSE.txt](Thach_Bi_Viewer/THREE_LICENSE.txt) |
 | Noto Sans fonts for PDF exports | `scripts/fonts/` | SIL Open Font License 1.1: [OFL.txt](scripts/fonts/OFL.txt) |
 | Web application dependencies | installed from `web/package-lock.json`, not stored here | Each package's own licence |
