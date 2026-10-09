@@ -18,17 +18,17 @@ Nothing leaves the computer: the page sends its pictures to a small receiver on 
 3. Open the browser console, paste the whole of `driver.js`, then run:
 
    ```js
-   exportFilm('short')   // two-minute film; 'full' for the five-minute film
+   exportFilm('short')   // the 2 min 15 s film; 'full' for the five-minute film
    ```
 
-   The film plays once for the sound, then the picture steps through frame by frame. `window.filmExport` shows progress. Allow about 10 minutes for the short film.
+   The film plays once for the sound, then the picture steps through frame by frame. `window.filmExport` shows progress. Allow about 12 minutes for the short film. Leave the page alone while it works. A click during the sound pass spoils the recording, and the driver then stops with a message; a click while the picture is stepping is recovered from (`window.filmExport.recoveries` counts them).
 4. Join the files:
 
    ```bash
    scripts/film_export/build.sh exports/film-export short exports/sharing/thach-bi-short-film.mp4
    ```
 
-The result is H.264 + AAC at 1920 × 1080, 30 frames a second, which X and Instagram accept. X limits ordinary posts to 2 min 20 s; the short film is 2 min.
+The result is H.264 + AAC at 1920 × 1080, 30 frames a second, which X and Instagram accept. X limits ordinary posts to 2 min 20 s; the short film is 2 min 15 s.
 
 ## What the film shows
 

@@ -124,9 +124,11 @@
   ];
 
   /* ---------------------------------------------------------- short film
-   * A two-minute cut for sharing (X allows 2 min 20 s): the church by day, then
-   * the building systems at night, the wiring on its own, and a request for
-   * engineering advice. Twelve scenes of four bars at 2.5 s a bar. Camera
+   * A cut of 2 min 15 s for sharing (X allows 2 min 20 s): the lit church at
+   * evening from the first frame, the church by day, then the building systems
+   * at night, the wiring on its own, and a request for
+   * engineering advice. Thirteen scenes at 2.5 s a bar: four bars each, six for
+   * the closing request. Camera
    * routes are taken from the long film, travelled faster. Text in braces is
    * filled from the open model when the film starts; `plain` is used without it.
    */
@@ -136,32 +138,39 @@
     systems: { en: 'The building systems', vi: 'Hệ thống kỹ thuật' }
   };
   const SHORT_SHOTS = [
-    { id: 'bells', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.5, 0.8],
-      card: { at: 1, small: 'Ninh Bình · Việt Nam', title: 'Nhà thờ Thạch Bi', line: 'A 3D design model of our parish church · Mô hình 3D nhà thờ giáo xứ' },
-      keys: [[-29, 27, -5, 2.4, 26, -0.5, 44], [-15, 33, -21, 2.6, 28.5, -1, 44], [7, 36, -27, 3.5, 28, -1.5, 44]] },
-    { id: 'whole', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [0.8, 0.6],
+    // The first frame is the lit church with its title, not black: posts show it before they play.
+    { id: 'evening-front', chapter: 'church', bars: 4, light: 'evening', roof: true, cut: 'cut', ease: [0.6, 0.6],
+      card: { at: 0, shade: 0.4, small: 'Ninh Bình · Việt Nam', title: 'Nhà thờ Thạch Bi', line: 'A 3D design model of our parish church · Mô hình 3D nhà thờ giáo xứ' },
+      keys: [[-60, 25, 37, 9, 12.5, 0, 42], [-50, 20, 30, 8, 12.5, 0, 43], [-40, 15, 22, 6, 13, 0, 44]] },
+    { id: 'towers', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.5, 0.8],
       en: 'Twin towers, 36.9 m to the cross', vi: 'Hai tháp chuông, cao 36,9 m',
       note: { en: 'Modelled from the architect’s drawings: 53 m long under one continuous roof.' },
-      keys: [[-84, 44, 54, 13, 12, 0, 40], [-64, 31, 42, 11, 12.5, 0, 42], [-46, 19, 27, 8, 13, 0, 44]] },
+      keys: [[-29, 27, -5, 2.4, 26, -0.5, 44], [-15, 33, -21, 2.6, 28.5, -1, 44], [7, 36, -27, 3.5, 28, -1.5, 44]] },
     { id: 'roof', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [0.7, 0.6],
       en: 'A roof of red clay tiles', vi: 'Mái ngói đỏ',
       note: { en: 'Ngói đỏ, the fired-clay roof of Vietnamese villages. A proposed finish.' },
       keys: [[52, 19, 31, 34, 8, 0, 46], [22, 26, 30, 17, 9.5, 0, 45], [-14, 22, 17, 4, 11.5, 0, 44]] },
-    { id: 'enter', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.5, 0.7],
+    { id: 'enter', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.9],
       en: 'Come inside', vi: 'Mời bạn vào',
-      note: { en: 'Timber columns in red lacquer above the pews.' },
-      keys: [[-13.6, -0.3, 0, 6, 3.4, 0, 52], [-8, 1.2, 0, 14, 3, 0, 52], [-1, 1.25, 0, 26, 3, 0, 54], [3.2, 1.6, 0, 38, 3.2, 0, 56], [9.5, 1.7, 0, 48, 3.5, 0, 56], [21, 2.5, 0, 48.6, 3.9, 0, 54]] },
-    { id: 'timber', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [0.5, 0.5],
+      note: { en: 'Up the forecourt steps and through the central door.' },
+      keys: [[-7, 1.2, 0, 16, 3, 0, 52], [-1, 1.25, 0, 26, 3, 0, 54], [3.2, 1.6, 0, 38, 3.2, 0, 56], [9.5, 1.7, 0, 48, 3.5, 0, 56]] },
+    // One movement from the door: up to the timber roof, along it, and down to
+    // the sanctuary. The walk down the nave is kept for the evening scene.
+    { id: 'rise', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [1, 1],
+      en: 'The nave', vi: 'Lòng nhà thờ',
+      note: { en: 'Fourteen timber columns in red lacquer carry the roof above the pews.' },
+      keys: [[9.5, 1.7, 0, 48, 3.5, 0, 56], [13.2, 3.7, 1, 40, 7.5, 0, 58], [17.5, 6.5, 1.9, 33, 10.6, -0.4, 60]] },
+    { id: 'timber', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [1, 1],
       en: 'Carved and gilded timber', vi: 'Gỗ chạm khắc, thếp vàng',
-      keys: [[33.4, 6.4, 1.9, 22, 11.6, -0.6, 62], [25.6, 7, 2, 14, 11.8, -1, 62], [18.6, 7.1, 1.9, 7, 11, -0.6, 60]] },
-    { id: 'sanctuary', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [0.3, 0.2],
+      keys: [[17.5, 6.5, 1.9, 33, 10.6, -0.4, 60], [24.5, 7, 2, 39, 10.2, -0.3, 60], [31, 6.6, 1.9, 46, 8.4, 0, 58]] },
+    { id: 'sanctuary', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [1, 0.2],
       en: 'A sanctuary in red and gold', vi: 'Cung thánh sơn son thếp vàng',
       note: { en: 'An art proposal in the spirit of northern Vietnamese lacquer craft.' },
-      keys: [[34.6, 2, 0, 48.8, 4.4, 0, 48], [39.2, 2.5, 0, 48.8, 4.7, 0, 43], [41.7, 2.8, 0, 48.8, 5.1, 0, 38]] },
+      keys: [[31, 6.6, 1.9, 46, 8.4, 0, 58], [35.6, 5.1, 1.9, 48.4, 6.4, 0, 54], [39.2, 3.4, 0.6, 48.8, 5.3, 0, 48], [41.7, 2.8, 0, 48.8, 5.1, 0, 40]] },
     { id: 'evening', chapter: 'systems', bars: 4, light: 'evening', roof: true, cut: 'fade', ease: [0.2, 0.5],
-      en: 'Then the hard part: light, sound, air, power', vi: 'Phần khó: ánh sáng, âm thanh, thông gió, điện',
-      note: { en: '{lights} lamps, {fans} fans and {speakers} loudspeakers are placed in the model. No air conditioning: fans and open windows.' },
-      plain: 'Lamps, fans and loudspeakers are placed in the model. No air conditioning: fans and open windows.',
+      en: 'After dark: light, sound, air, power', vi: 'Khi đêm xuống: ánh sáng, âm thanh, thông gió, điện',
+      note: { en: 'In the evening the church must be lit, heard and kept cool without air conditioning. {lights} lamps, {fans} fans and {speakers} loudspeakers are placed in the model.' },
+      plain: 'In the evening the church must be lit, heard and kept cool without air conditioning. Lamps, fans and loudspeakers are placed in the model.',
       keys: [[5.4, 1.9, 0, 48.8, 3.8, 0, 56], [14, 2.3, 0, 48.8, 4, 0, 54], [22.5, 2.9, 0, 48.8, 4.4, 0, 52]] },
     { id: 'roof-off', chapter: 'systems', bars: 4, light: 'evening', roof: false, cut: 'dip', ease: [0.2, 0], up: [0, 0, -1],
       en: 'The roof lifted away', vi: 'Nhấc mái để nhìn từ trên',
@@ -180,11 +189,11 @@
       en: 'The main board, DB-1', vi: 'Tủ điện chính DB-1',
       note: { en: 'In the service room behind the sanctuary, with the lighting, fan and sound controls. DB-2 serves the towers and entrance. Nothing here is approved for construction.' },
       keys: [[51.9, 1.9, 0.9, 48.9, 1.8, 0, 58], [51.7, 1.9, -0.2, 48.9, 1.8, -0.6, 57], [51.5, 1.9, -1.2, 48.9, 1.8, -1.1, 56]] },
-    { id: 'ask', chapter: 'systems', bars: 4, light: 'evening', roof: true, cut: 'dip', ease: [0.2, 0], end: true,
+    { id: 'ask', chapter: 'systems', bars: 6, light: 'evening', roof: true, cut: 'dip', ease: [0.2, 0], end: true,
       card: { at: 0.8, hold: true, small: 'Nhà thờ Thạch Bi · Ninh Bình, Việt Nam', title: 'Can you advise us?',
         line: 'I built this model to help my home parish. I am not an electrical engineer.',
         second: 'Electrical, lighting and sound engineers: please reply or send a message.',
-        foot: ['Design-development model, not approved for construction · Organ and bells generated by the viewer', 'Xin cảm ơn · Thank you'] },
+        foot: ['Design-development model, not approved for construction · Bells and organ generated by the viewer', 'Xin cảm ơn · Thank you'] },
       keys: [[-12.5, 1.4, 1.2, 2.4, 9, 0, 54], [-22, 3.4, 5, 2.4, 11, 0, 50], [-36, 8, 12, 4, 13, 0, 46]] }
   ];
 
@@ -279,10 +288,11 @@
   }
   // When a scene's caption and title card are on screen.
   function showing(shot, local) {
-    const cardFrom = shot.card?.at ?? 1.2, cardTo = shot.card?.hold ? shot.duration + 1 : shot.card?.at ? shot.duration - 2.4 : 9.5;
+    const timed = shot.card?.at !== undefined;
+    const cardFrom = shot.card?.at ?? 1.2, cardTo = shot.card?.hold ? shot.duration + 1 : timed ? shot.duration - 2.4 : 9.5;
     // A caption stays long enough to read, and clears before a title card.
-    const captionTo = shot.card?.at ? shot.card.at - 1.2 : Math.min(shot.duration - 1.2, 14.5);
-    return { card: !!shot.card && local > cardFrom && local < cardTo, caption: !!shot.en && local > 1 && local < captionTo };
+    const captionTo = timed ? shot.card.at - 1.2 : Math.min(shot.duration - 1.2, 14.5);
+    return { card: !!shot.card && local >= cardFrom && local < cardTo, caption: !!shot.en && local > 1 && local < captionTo };
   }
 
   /* --------------------------------------------------------------- music
@@ -482,10 +492,12 @@
   }
   const score = compose();
 
-  /* Short film: the bells of the two towers, then a toccata on the homeland
-   * theme. 4/4 at 96 beats a minute, one bar for every 2.5 s of film, 48 bars.
+  /* Short film: the bells of the two towers over the evening scene, handing
+   * over to the organ as daylight comes, then a toccata on the homeland theme. 4/4 at 96 beats a minute, one
+   * bar for every 2.5 s of film, 54 bars.
    * Original; it quotes no existing piece. The melody is the homeland melody of
-   * the long film, here on the reeds under running semiquavers. */
+   * the long film, here on the reeds under running semiquavers. The bells ring
+   * only at the opening. */
   function composeShort() {
     const bar = SHORT_BAR, beat = bar / 4, events = [];
     const add = (voice, time, length, note, stops, level) => { const event = { part: 'short', voice, time, length, note, stops, level }; events.push(event); return event; };
@@ -532,31 +544,32 @@
       }
       return index;
     }
-    // Bars 1–4: the bells alone; the organ creeps in beneath them.
-    peal(0, 4.4, 1);
-    add('bass', 2 * bar, 2 * bar, midi('A2'), 'softPedal', 0.6);
-    for (const name of ['A3', 'C4', 'E4']) add('inner', 3 * bar, bar, midi(name), 'celeste', 0.5);
+    // Bars 1–4, the evening scene: the bells alone. As the picture turns to
+    // daylight (bar 5) the last strokes ring out over a soft entry of strings
+    // and one flute, and the organ grows from there into the toccata.
+    peal(0, 4.7, 1);
     let next = block(4, [
-      // Bars 5–8: fanfare.
-      { pad: 'full', solo: 'reed', pedal: 'fullPedal', level: 0.72, swell: 0.07, bars: [['Am', 'A4:1 C5:1 E5:2'], ['F', 'F5:1 A5:1 C6:2'], ['Dm', 'D5:1 F5:1 A5:2'], ['G', 'G5:2 B5:1 D6:1']] },
-      // Bars 9–24: toccata on the homeland theme.
+      { pad: 'celeste', solo: 'voice', level: 0.3, swell: 0.12, bars: [['Am', 'A4:1 C5:1 E5:2'], ['F', 'F5:1 A5:1 C6:2']] },
+      { pad: 'principals', solo: 'song', pedal: 'pedal', level: 0.56, swell: 0.12, bars: [['Dm', 'D5:1 F5:1 A5:2'], ['G', 'G5:2 B5:1 D6:1']] },
+      // Bars 9–28: toccata on the homeland theme, coming to rest at the sanctuary.
       { pad: 'principals', solo: 'reed', pedal: 'pedal', level: 0.82, running: true, doubled: true, bars: HOME_A },
       { pad: 'principals', solo: 'reed', pedal: 'pedal', level: 0.88, running: true, doubled: true, bars: HOME_B },
-      // Bars 25–32: evening. Strings, a single voice, a quiet pulse.
+      { pad: 'principals', solo: 'reed', pedal: 'pedal', level: 0.8, running: true, doubled: true, bars: HOME_A.slice(4) },
+      // Evening. Strings, a single voice, a quiet pulse.
       { pad: 'celeste', solo: 'voice', level: 0.52, swell: 0.012, pulse: true, bars: [['Am', 'E5:2 D5:1 C5:1'], ['Am', 'A4:4'], ['F', 'C5:2 A4:1 C5:1'], ['F', 'F5:3 E5:1'],
         ['Dm', 'D5:2 F5:1 E5:1'], ['Dm', 'D5:4'], ['E', 'B4:2 E5:2'], ['E', 'G#5:3 B5:1']] },
-      // Bars 33–36: the wiring revealed; the organ gathers.
+      // The wiring revealed; the organ gathers.
       { pad: 'full', solo: 'reed', pedal: 'fullPedal', level: 0.7, swell: 0.08, running: true, bars: [['Am', 'A4:1 C5:1 E5:2'], ['F', 'F5:1 A5:1 C6:2'], ['G', 'D5:1 G5:1 B5:2'], ['G', 'D6:4']] },
-      // Bars 37–44: the theme on full organ, with the bells.
+      // The theme on full organ.
       { pad: 'full', solo: 'reed', pedal: 'fullPedal', level: 1, running: true, doubled: true, bars: HOME_A },
-      // Bars 45–47: close; bar 48 is left to the bells.
-      { pad: 'full', solo: 'reed', pedal: 'fullPedal', level: 0.94, bars: [['F/C', 'A5:2 C6:2'], ['C', 'C6:8'], ['C', '']] }
+      // Close: six bars under the request, ending on a held chord before the picture fades.
+      { pad: 'full', solo: 'reed', pedal: 'fullPedal', level: 0.9, bars: [['F', 'A4:1 C5:1 F5:2'], ['G', 'B4:1 D5:1 G5:2'], ['F/C', 'A5:2 C6:2'], ['C', 'C6:8'], ['C', ''], ['C', '']] }
     ]);
-    peal(34, 47.4, 0.72);
-    // Nothing sounds past the last bar: the final bell rings into the fade.
-    const end = (next + 1) * bar;
-    for (const event of events) event.length = Math.min(event.length, end - event.time + 0.2);
-    return { events: events.sort((a, b) => a.time - b.time), bars: next + 1, bar };
+    // The bells belong to the opening only (owner, 9 October 2026): the close is the organ alone.
+    // The last chord stops a second before the end, leaving its echo for the fade.
+    const end = next * bar - 1;
+    for (const event of events) event.length = Math.min(event.length, end - event.time);
+    return { events: events.sort((a, b) => a.time - b.time), bars: next, bar };
   }
   FILMS.full.score = score;
   FILMS.short.score = composeShort();
@@ -662,7 +675,7 @@
       const partial = ctx.createOscillator(), gain = ctx.createGain();
       partial.frequency.value = frequency * ratio;
       gain.gain.setValueAtTime(0, begin);
-      gain.gain.linearRampToValueAtTime(level * event.level * 0.13, begin + 0.004);
+      gain.gain.linearRampToValueAtTime(level * event.level * 0.18, begin + 0.004);
       gain.gain.setTargetAtTime(0, begin + 0.004, fade / 3);
       partial.connect(gain); gain.connect(music.epoch[0]);
       partial.start(begin); partial.stop(begin + fade * 2.4);
@@ -1090,7 +1103,9 @@
     const W = VIDEO.width, H = VIDEO.height, width = W * 0.8;
     g.save(); g.globalAlpha = alpha;
     const shade = g.createRadialGradient(W / 2, H / 2, 60, W / 2, H / 2, W * 0.55);
-    shade.addColorStop(0, 'rgba(0,0,0,.66)'); shade.addColorStop(0.6, 'rgba(0,0,0,.36)'); shade.addColorStop(1, 'rgba(0,0,0,0)');
+    // `shade` below 1 keeps the picture bright behind a card, as on the opening frame of a post.
+    const dark = card.shade ?? 1;
+    shade.addColorStop(0, `rgba(0,0,0,${0.66 * dark})`); shade.addColorStop(0.6, `rgba(0,0,0,${0.36 * dark})`); shade.addColorStop(1, 'rgba(0,0,0,0)');
     g.fillStyle = shade; g.fillRect(0, 0, W, H);
     g.textAlign = 'center'; g.textBaseline = 'top'; g.fillStyle = '#f6f2e6'; g.shadowColor = 'rgba(0,0,0,.85)'; g.shadowBlur = 22;
     const rows = [];
@@ -1146,7 +1161,8 @@
     if (h > source.height) { h = source.height; w = h * target; }
     g.drawImage(source, (source.width - w) / 2, (source.height - h) / 2, w, h, 0, 0, W, H);
     const p = pose(film.time), on = showing(p.shot, film.time - p.shot.start);
-    const step = Math.min(1, Math.abs(film.time - tape.last) / 0.4); tape.last = film.time;
+    // Text fades in and out, except in the film's first moments, where it is simply there.
+    const step = film.time < 0.3 ? 1 : Math.min(1, Math.abs(film.time - tape.last) / 0.4); tape.last = film.time;
     tape.fx.caption += ((on.caption ? 1 : 0) - tape.fx.caption) * step;
     tape.fx.card += ((on.card ? 1 : 0) - tape.fx.card) * step;
     const black = blackAt(film.time);
@@ -1163,7 +1179,7 @@
     const of = FILMS[id];
     const T = window.CHURCH_SIMULATOR?.THREE;
     if (!T || !church) throw new Error('The clearance audit needs the open viewer.');
-    const skipped = /^(Display batches of the shared model|Presentation ground|Simulator analysis overlay|Simulator lamp halos|Grid labels|Electrical systems)/;
+    const skipped = /^(Display batches of the shared model|Presentation ground|Sky dome|Simulator analysis overlay|Simulator lamp halos|Grid labels|Electrical systems)/;
     const all = [], roofless = [];
     (function walk(node, underRoof) {
       if (skipped.test(node.name)) return;

@@ -9,7 +9,7 @@
  *
  * Paste into the browser console of the open viewer after clicking once in
  * the page (sound needs a click), or run it from an automation tool:
- *   exportFilm('short')            two-minute film, sound and frames
+ *   exportFilm('short')            the 2 min 15 s film, sound and frames
  *   exportFilm('full')             five-minute film
  *   exportFilm('short', { sound: false })   frames only, keep an earlier sound file
  * Progress: window.filmExport. Nothing leaves this computer.
@@ -17,7 +17,7 @@
 window.exportFilm = async function exportFilm(film = 'short', { base = 'http://127.0.0.1:8799', fps = 30, sound = true, quality = 0.93 } = {}) {
   const cinema = window.CHURCH_CINEMA, church = window.church;
   const reel = cinema.films[film];
-  const state = window.filmExport = { film, fps, phase: 'starting', frames: 0, total: Math.round(reel.length * fps), seconds: 0, soundLead: null, errors: [], done: false };
+  const state = window.filmExport = { film, fps, phase: 'starting', frames: 0, total: Math.round(reel.length * fps), seconds: 0, soundLead: null, recoveries: 0, errors: [], done: false };
   const put = async (name, body) => {
     const response = await fetch(`${base}/${name}`, { method: 'PUT', body });
     if (response.status !== 201) throw new Error(`${name}: ${response.status}`);
@@ -33,15 +33,27 @@ window.exportFilm = async function exportFilm(film = 'short', { base = 'http://1
       });
       clearInterval(keepMoving);
       state.soundLead = video.soundLead;
+      // A sound recording shorter than the film means it was stopped part-way: do not use it.
+      if (!cinema.video || Math.abs(cinema.state().time - reel.length) > 1) throw new Error('the sound pass was interrupted; run the export again');
       await put(`${film}-sound.${video.type === 'video/mp4' ? 'mp4' : 'webm'}`, video.blob);
     }
     state.phase = 'frames';
-    cinema.play(film); cinema.setPaused(true);
-    church.pause(); // the viewer's own drawing loop would only compete for the graphics card
+    // Pause the film at its start. The viewer's own drawing loop is stopped too:
+    // it would only compete for the graphics card.
+    const arm = () => { if (cinema.state().running) church.stopTour(); cinema.play(film); cinema.setPaused(true); church.pause(); };
+    arm();
     const began = performance.now();
     for (let i = 0; i < state.total; i++) {
-      const canvas = cinema.still(i / fps);
-      if (!canvas) throw new Error(`no picture for frame ${i}`);
+      let canvas = cinema.still(i / fps);
+      if (!canvas) {
+        // A click or key in the page resumed or stopped the film. Start it again,
+        // replay the last frames unseen so that fading text is where it was, and go on.
+        if (++state.recoveries > 30) throw new Error(`interrupted too often at frame ${i}`);
+        arm();
+        for (let k = Math.max(0, i - 20); k < i; k++) cinema.still(k / fps);
+        canvas = cinema.still(i / fps);
+        if (!canvas) throw new Error(`no picture for frame ${i}`);
+      }
       // toDataURL encodes at once; toBlob waits for idle time that never comes with the loop paused.
       const text = atob(canvas.toDataURL('image/jpeg', quality).split(',')[1]), bytes = new Uint8Array(text.length);
       for (let k = 0; k < text.length; k++) bytes[k] = text.charCodeAt(k);

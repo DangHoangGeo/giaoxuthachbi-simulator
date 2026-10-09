@@ -47,9 +47,28 @@ Owner request: keep the five-minute film; add a version of about two minutes to 
 
 Camera clearance of the short film: nearest approach 0.59 m (the vestment wardrobe in the service room). Full list in `short-film.json`.
 
+## Fourth revision, 9 October 2026: owner's notes on the short film, and a sky
+
+After watching the first export the owner asked for four changes.
+
+| Owner's note | Change | Check |
+| --- | --- | --- |
+| "The opening organ sound is mixed with the bell's sound": organ softer, bell a little higher | The bells ring alone for ten seconds as before; the organ no longer creeps in beneath them. Three steps, each after a note from the owner: the organ entry at 0:10 was first softened to principals at 40–70 % under continuing bells; then ("the opening with organ sound must be reducing more") to strings and one flute at 20–38 %; then ("after turning to the day light, just transition to the organ sound to make it more natural") the bells stop within a bar of daylight and the organ grows from 30 % at 0:10 to the toccata at 0:20 in even steps. Bell strokes are about 2.8 dB louder. "Higher" was read as louder, not as a higher pitch | `verify_cinematic.cjs`: no organ before 0:10; the last bell struck within a bar of daylight, over soft strings and flute only; organ level rising bar by bar from 0:10 to 0:20 |
+| "At around 1:29 I heard the bell's sound too, you can just remove it" | The returning bells (1:25 to the end) are removed; the film closes on a held organ chord | `verify_cinematic.cjs`: no bell after 0:12.5 |
+| "At frame 0:00 we should start with the church outside in the evening, to avoid black screen on X" | The first scene is the lit church from the air at evening with the title already on the first frame and no fade from black; the daytime tower scene follows after a fade | `verify_cinematic.cjs`: first frame not black, evening, outside. First exported frame viewed |
+| "How about the sky colour? … blue sky for the project too, not only for this video" | A sky dome in `realism.js` for the whole viewer: blue overhead, pale at the horizon; dark blue in the evening | Viewed by day and evening in the viewer. `verify_model.cjs` and `verify_simulator.cjs --estimates`: see the commit message. Display only: no light, shadow, calculation or export changes |
+
+| "The flying from door entrance to the Sanctuary is quite fast now"; then "a little longer than 2 minutes is ok" and "just make the best video as you could" | The film is now 2 min 15 s in 13 scenes. The way in takes two scenes: through the door (about 2.0 m/s), then a glide down the nave (about 2.1 m/s), where it was one scene at up to 5.1 m/s. The closing request is held for 15 s in place of 10 | `verify_cinematic.cjs`: 135 s, within X's 2 min 20 s; no scene faster than 3.5 m/s inside the church. Clearance audit re-run: nearest approach still 0.59 m in the service room |
+
+| "From 0:39 … move the camera up to show the timber, then move down to show the sanctuary", since the evening scene already walks in from the entrance | From the door the camera now makes one movement in three captioned parts: up past the first chandelier, along under the tie beams, and down to the crucifix (1.0–1.4 m/s). The daytime run down the nave is gone | `verify_cinematic.cjs`: the four scenes join exactly. Clearance audit at 0.1 s steps: nearest 1.31 m. Four moments viewed in the viewer |
+| "For the night, don't need to say the hardest part … Just remove: 'the hard part:'" | Evening caption: "After dark: light, sound, air, power", with a note that says what the evening asks of the building | `verify_cinematic.cjs` forbids the phrase |
+| (assistant) The first frame was dimmed by the shading behind the title | The opening card's shading in the recorded picture is 40 % of the usual | First frame of the file viewed |
+
+The owner first asked to do the recording personally and then to "make the best video", so the file was exported again frame by frame: see `short-film.json`.
+
 ## Not verified
 
-- **How the short film sounds.** Nobody has listened to the bells or the toccata; the bell tone is synthesised and may need adjusting by ear. Picture and sound were joined with a measured 0.06 s offset, not checked by eye and ear.
+- **How the short film sounds.** The owner listened to earlier versions and directed the changes of the fourth revision; the final version was checked by notes and levels only. Picture and sound were joined with a measured 0.06 s offset, not checked by eye and ear.
 - **Posting.** The file was not uploaded anywhere. Its format follows the published limits of X and Instagram as understood on 9 October 2026; the platforms were not consulted in this session.
 - **The wording of the request** and the mention of Ninh Bình are the assistant's proposal for the owner to confirm before posting.
 - **How the music sounds.** Notes and levels were checked; nobody has listened to the long film's second score in this session. Registration, balance between melody and broken chords, tremulant depth and reverberation may need adjusting by ear.
