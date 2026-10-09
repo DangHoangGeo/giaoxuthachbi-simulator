@@ -63,6 +63,19 @@ export function Visit({ locale, poster, src }: { locale: Locale; poster: string;
           </p>
         </>
       )}
+      <p className="mt-6 border-l-4 border-stone-400 bg-[#f7f5ef] p-4 text-sm">
+        <a className="nav-link font-semibold underline" href="/guide/index.html">
+          {vi
+            ? "Hướng dẫn từng bước: tải về và xem mô hình 3D trên máy tính"
+            : "Step-by-step guide (in Vietnamese): download and open the 3D model on a computer"}{" "}
+          ↗
+        </a>
+        <span className="block text-stone-600">
+          {vi
+            ? "Có giọng đọc tiếng Việt và video ngắn; dành cho cha xứ và người xem lần đầu."
+            : "With Vietnamese narration and short clips; written for the parish priest and first-time visitors."}
+        </span>
+      </p>
       <div className="mt-4 flex flex-wrap justify-between gap-4 text-sm">
         <a className="nav-link underline" href={`/${locale}/design`}>
           {vi ? "Xem bộ hình ý tưởng" : "Browse the design images"} →
