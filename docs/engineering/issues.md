@@ -49,3 +49,11 @@ ENG-002/003/004/005/006/007/010/011/013/014/015 remain open. The current [two-li
 ## Nave quantity and mounting hold · ENG-029
 
 Owner confirms eight visible wall fans per nave side. [Review](nave-wall-fans.md) preserves six IDs, adds ten, and replaces penetrating short bracket geometry with an extended proxy. The electrical/mechanical/structural designers must resolve motor load/inrush/regulation, protective devices, anchor capacity/vibration/corrosion, continuous/product/service clearances, noise/speech, air throw, concealment and high-level maintenance. No software count or clearance pass releases construction or purchasing.
+
+## Socket outlets and event power · ENG-030
+
+Owner asks for two outlets at the sanctuary, two at mid-nave and two higher-rated outlets at the towers for outdoor events. [Record](outlets-and-facade-statues.md): four indoor double outlets on P1/P2 from DB-1 and two lockable 32 A event points on P3/P4 from DB-2, with dedicated buried tower routes. Ratings, accessories, heights, RCD arrangement and fixing are provisional. A conditional comparison shows 2.5 mm² is not enough for 16 A at the mid-nave points, and that 64 A of event load cannot sensibly be carried single-phase on the present 80.683 m DB-1 → DB-2 feeder. Supply capacity and phases, feeder and main-switch design, discrimination, restart behaviour, duct and draw pits, and box fixing clear of structural piers are open (Q42–Q44). ENG-002/003 (supply and feeder) now also depend on this. ENGINEERING HOLD.
+
+## Façade statues and hidden light · ENG-031
+
+Owner confirms the Assumption in the central façade niche with a saint each side, lit without visible lamps, two candle lights on each base, and separate switches for statues, towers and stage. [Record](outlets-and-facade-statues.md): three removable generated figures on the drawn pedestals and circuit L10 with nine hidden light lines and six electric candles. Open: identity of the two saints (Peter and Paul proposed), sculptor's design, real niche depth and fit, weight and fixing for wind, seismic and lightning, slots and lips for the light lines, weatherproof products and drivers, wall penetrations, safe maintenance access at +10 to +15 m, glare and a night mock-up (Q45–Q46). The printed drawings, cable/budget reports and web/GLB snapshots are stale for ENG-030/031. CONCEPT / ENGINEERING HOLD.

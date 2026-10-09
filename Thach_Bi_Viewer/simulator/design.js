@@ -30,7 +30,7 @@
     // Stamp every original slot before retiring items, so downstream IDs never shift.
     const add = o => {
       const cat = window.CHURCH_SIM_CATALOG.byId[o.type].cat;
-      const prefix = { light: 'L', fan: 'F', speaker: 'S', decor: 'D' }[cat] || 'X';
+      const prefix = { light: 'L', fan: 'F', speaker: 'S', decor: 'D', power: 'P' }[cat] || 'X';
       items.push({ ...o, id: o.id || prefix + (items.length + 1) });
     };
     const lining = z => SIM.liningY(z);
@@ -371,7 +371,68 @@
       add({ id: `F-NAVE-${side(sign)}-${k === '2′' ? '2P' : k}`, type: 'fanNaveWall', name: `Wall fan · axis ${k} · ${side(sign)}`, circuit: 'F2', mount: 'wall',
         pos: [A[k], 5.55, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
     }
+    // Socket outlets, 9 October 2026 (owner request). One 16 A radial per side
+    // from DB-1 serves that side's sanctuary and mid-nave points along the wall
+    // band the other circuits already use, so a trip on one side leaves the
+    // opposite outlet at each place live. Each tower has its own 32 A event
+    // circuit at DB-2, isolated outside events. Ratings, accessories, heights
+    // and fixing into piers/walls are provisional and on ENGINEERING HOLD.
+    for (const sign of [-1, 1]) {
+      const code = side(sign);
+      add({ id: `P-SANCT-${code}`, type: 'socketDouble', name: `Socket · sanctuary side ${code} · axis 10 pier`, circuit: sign < 0 ? 'P1' : 'P2', mount: 'wall',
+        pos: [43.89, 0.85, sign * 7.25], yaw: 180, mountYaw: 180,
+        note: 'CONCEPT: pier face toward the nave, 0.70 m above the side platform and 1.17 m above the wing floor. Surface or casing box; no chase into the structural pier. ENGINEERING HOLD.' });
+      add({ id: `P-NAVE-${code}`, type: 'socketDouble', name: `Socket · mid-nave side ${code} · axis 6`, circuit: sign < 0 ? 'P1' : 'P2', mount: 'wall',
+        pos: [22.83, 0.45, sign * 7.25], yaw: -sign * 90, mountYaw: -sign * 90,
+        note: 'CONCEPT: masonry wall between the window and the axis-6 pier, 0.45 m above the nave floor, reached between the bench rows. Not in the structural pier. ENGINEERING HOLD.' });
+      add({ id: `P-TOWER-${code}`, type: 'socketEvent', name: `Event power · tower ${code} · inside the porch`, circuit: sign < 0 ? 'P3' : 'P4', mount: 'wall',
+        pos: [0.45, 1.3, sign * 7.85], yaw: sign * 90, mountYaw: sign * 90, on: false,
+        note: 'CONCEPT: inside the tower porch on the front pier, hidden from the front view, 1.3 m above the tower floor. Own 32 A circuit at DB-2, isolated outside events. Supply and feeder size on ENGINEERING HOLD.' });
+    }
+    // Façade niche statues, 9 October 2026 (owner request). The Assumption stands
+    // on the modelled pedestal of the central niche between the towers, with
+    // Saint Peter (B) and Saint Paul (H) in the side niches. Owner direction the
+    // same day: no visible lamps at the statues, and two candle lights on each
+    // base. Each niche is lit by three concealed lines on circuit L10 at DB-2:
+    // one under the arch for the face and one behind a lip on each jamb, so the
+    // niche glows and the figure stands in soft relief. The electric candles
+    // stand on the pedestal top at the feet and share L10. Statues (L10), towers
+    // and façade (L6) and the open front stage (L9) switch separately. Subjects of the side figures, sizes, sculptor, weights,
+    // fixings, slots, lamps and drivers are proposals: CONCEPT / ENGINEERING HOLD.
+    const nicheX = 2.29, lipX = 2.13;
+    for (const [code, type, name, z, base, crown, face, half, mid, length] of [
+      ['C', 'statueAssumption', 'Assumption of Our Lady', 0, 11.8, 15.63, 14.1, 0.925, 13.3, 2.0],
+      ['B', 'statuePeter', 'Saint Peter', -5.48, 10.08, 12.61, 11.72, 0.525, 11.05, 1.3],
+      ['H', 'statuePaul', 'Saint Paul', 5.48, 10.08, 12.61, 11.72, 0.525, 11.05, 1.3]]) {
+      add({ id: `D-FACADE-${code}`, type, name: `Façade statue · ${name}`, circuit: 'DECOR', mount: 'floor', pos: [nicheX, base, z], yaw: 180, mountYaw: 180,
+        note: `${code === 'C' ? 'USER CONFIRMED subject and place.' : 'PROPOSED subject; owner to confirm the two saints.'} Generated figure on the drawn niche pedestal. Sculptor, size, material, weight and fixing pending.` });
+      const top = [lipX, crown + 0.01, z], down = aim(top, [nicheX - 0.09, face, z]);
+      add({ id: `L-STATUE-${code}-ARCH`, type: 'nicheArchLine', name: `Hidden arch light · ${name}`, circuit: 'L10', mount: 'wall', pos: top, yaw: down.yaw, tilt: down.tilt, mountYaw: 180, lumens: code === 'C' ? 440 : 300, beam: 60, shadow: false, params: { length: code === 'C' ? 0.8 : 0.5 },
+        note: 'CONCEPT: light line in a slot behind a matching lip under the arch; no lamp is seen. Slot, weatherproof product, driver place and access pending.' });
+      for (const e of [-1, 1]) {
+        const p = [lipX, mid, z + e * (half - 0.02)], a = aim(p, [nicheX + 0.16, mid, z]);
+        add({ id: `L-STATUE-${code}-JAMB-${e < 0 ? '1' : '2'}`, type: 'nicheJambLine', name: `Hidden jamb light · ${name} · ${e < 0 ? 'B' : 'H'} side`, circuit: 'L10', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: -e * 90, lumens: code === 'C' ? 260 : 140, beam: 80, shadow: false, params: { length },
+          note: 'CONCEPT: light line in a slot behind a matching lip at the front edge of the jamb; no lamp is seen. Slot, weatherproof product, driver place and access pending.' });
+        add({ id: `L-STATUE-${code}-CANDLE-${e < 0 ? '1' : '2'}`, type: 'nicheCandle', name: `Statue candle light · ${name} · ${e < 0 ? 'B' : 'H'} side`, circuit: 'L10', mount: 'floor', pos: [nicheX - 0.19, base, z + e * (code === 'C' ? 0.47 : 0.31)], yaw: 180, mountYaw: 180,
+          note: 'USER CONFIRMED: two candle lights on the base of each statue. CONCEPT electric candle; product, weather protection, fixing and lamp access pending.' });
+      }
+    }
     return items.filter(it => ![...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id));
+  }
+
+  // Additive one-time issue for saved layouts, as for the outlets below.
+  const facadeStatueRevision = '2026-10-09-facade-statues-3-concealed-light-candles';
+  const facadeStatueIds = ['C', 'B', 'H'].flatMap(code => [`D-FACADE-${code}`, `L-STATUE-${code}-ARCH`, `L-STATUE-${code}-JAMB-1`, `L-STATUE-${code}-JAMB-2`, `L-STATUE-${code}-CANDLE-1`, `L-STATUE-${code}-CANDLE-2`]);
+  function upgradeFacadeStatues(items, design, scene = {}) {
+    return [...items, ...design.filter(it => facadeStatueIds.includes(it.id) && !items.some(have => have.id === it.id)).map(it => ({ ...it }))];
+  }
+
+  // Additive one-time issue: a saved layout gains the six outlets it does not
+  // have. Outlets deleted afterwards stay deleted; nothing else is touched.
+  const outletRevision = '2026-10-09-socket-outlets-1';
+  const outletIds = ['B', 'H'].flatMap(code => [`P-SANCT-${code}`, `P-NAVE-${code}`, `P-TOWER-${code}`]);
+  function upgradeOutlets(items, design) {
+    return [...items, ...design.filter(it => outletIds.includes(it.id) && !items.some(have => have.id === it.id)).map(it => ({ ...it }))];
   }
 
   const naveFanRevision = '2026-10-09-eight-wall-fans-per-side';
@@ -593,5 +654,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

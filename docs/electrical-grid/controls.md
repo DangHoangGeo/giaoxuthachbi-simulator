@@ -25,8 +25,8 @@ The source of circuit membership and scene values is [engine.js](../../Thach_Bi_
 
 | Board / panel | Current function and groups | Physical design to develop |
 | --- | --- | --- |
-| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/F5/V1, audio groups A1–A5/MIC and seasonal X1. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
-| DB-2, inside main entrance | Sub-board for L6 façade/towers, L7 festival exterior, L9 stage/central door and F4 trial entrance circulators. Fed from DB-1. | Local manual control for those groups, feeder-availability indication and tower quick-mode buttons. Confirm physical enclosure size and installation details. |
+| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/F5/V1, audio groups A1–A5/MIC, seasonal X1 and indoor socket circuits P1/P2. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
+| DB-2, inside main entrance | Sub-board for L6 façade/towers, L7 festival exterior, L9 stage/central door, L10 façade statues and candles, F4 trial entrance circulators and event power P3/P4. Fed from DB-1. | Local manual control for those groups, feeder-availability indication and tower quick-mode buttons. Confirm physical enclosure size and installation details. |
 | LC-1 / lighting operator controls | Lighting groups and scene functions. | Required individual/group on/off and dimming channels; main scene keypad and any agreed local repeat controls. |
 | FC-1 / fan operator controls | Fan/exhaust groups and speed selection. | Compatible controls for the selected motors; independent/group operation and clear Off/Low/Medium/High or product-specific labels. |
 | AV-1 / audio operator controls | Signal routing reference, speaker zones and microphones. | Zone level/mute, agreed microphone access and rack power sequencing. Audio zones and passive-speaker lines are not separate mains circuits merely because the web app lists them as “circuits.” |
@@ -58,7 +58,7 @@ Use these existing web-app names as the starting operator vocabulary. Final setp
 | Night security | Agreed access/security lighting and unoccupied operating state. |
 | All off | Discretionary systems off; required maintained/emergency provisions remain subject to the life-safety design. |
 
-DB-2 also has **Towers Off / Evening / Festival**: the current Evening button requests L6 + L9, Festival requests L6 + L7 + L9, and Off clears those three groups. These buttons do not operate F4. All remain dependent on the DB-1 feeder.
+DB-2 also has **Towers Off / Evening / Festival**: the current Evening button requests L6 + L9 + L10, Festival requests L6 + L7 + L9 + L10, and Off clears those four groups. These buttons do not operate F4. All remain dependent on the DB-1 feeder.
 
 ## Required design outputs and acceptance
 
@@ -95,3 +95,25 @@ These states are reproducible comparison inputs. Quiet-prayer noise, thermal com
 ## Nave wall-fan quantity revision · 9 October 2026
 
 [Eight wall fans per side](../engineering/nave-wall-fans.md) means sixteen F2 items through DB-1 → FC-1 → F2, visible by default and OFF in every built-in scene. Six old IDs remain and ten named IDs are appended; all receive matching drop routes. Representative maximum F2 mains proxy is880W; the simulator breaker graphic is not an approved protective-device selection. Product motor loads/inrush, physical channels, regulation compatibility, restart/isolation and actual cable/protection remain pending. Per-side adoption in Wiring changes model geometry/visibility with durable backups and Undo, preserving existing operating overrides and unrelated equipment. It issues no physical hardware command.
+
+## Separate front switches, statue light and socket circuits · 9 October 2026
+
+Owner requirement (`USER CONFIRMED`, 9 October 2026): the light on the statues, the light on the towers and the light on the open space (stage) must each have their own switch. In the simulator these are three separate DB-2 circuits, each with its own switch on **Controls → Towers**:
+
+| Circuit | Operator label | Content |
+| --- | --- | --- |
+| L10 | Façade statues & candles | Nine hidden light lines and six candle lights in the three façade niches |
+| L6 | Façade & towers | Tower and façade floods |
+| L9 | Front stage & central door | The open space in front of the church and the central door |
+
+L7 (festival exterior) and the event power circuits P3/P4 are further separate switches on the same board.
+
+| Built-in mode | L10 |
+| --- | --- |
+| Full service · evening / Christmas & festivals / Festival · courtyard overflow | 1.00 |
+| Weekday Mass / Prayer & adoration | 0.60 |
+| Cleaning / Night security / All off | OFF |
+
+Socket circuits are in **no** quick mode. P1/P2 (indoor, DB-1) stay as they are set, including in All off, so cleaning equipment can be used; P3/P4 (tower event points, DB-2) are OFF by default and are meant to be isolated and locked outside events. Like every DB-2 circuit they cannot be switched on while the DB-1 feeder is off, and the feeder switch restores their previous state when it is turned back on: review that restart rule for event power before any physical design.
+
+Provisional planning ratings: P1/P2 16 A and P3/P4 32 A, each with 30 mA residual-current protection. The simulator shows these ratings on the board graphics in place of its usual load-derived breaker size. They are not selected devices. Physical switch positions, labels, lockable isolation, channels, protection, discrimination with the feeder and the supply itself remain pending; see the [coordinated record](../engineering/outlets-and-facade-statues.md) and questions Q42–Q46. These states are comparison inputs, not an approved operating policy.

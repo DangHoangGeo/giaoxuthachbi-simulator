@@ -351,8 +351,13 @@
     // Electrical: final circuits above 16 A should be split; the board's main
     // switch must carry everything that can run at once.
     const pw = SIM.powerSummary();
-    for (const c of pw.byCircuit) if (c.ratedAmps > 12.8) add('warn', 'Circuit needs splitting', `${c.label}: ${c.ratedAmps.toFixed(1)} A connected; split it so each breaker stays at 16 A or below (${c.mcb} A would need heavier cable).`, []);
-    if (pw.ratedAmps > 63 * 0.8) add('warn', 'Main switch overloaded', `All circuits together can draw ${pw.ratedAmps.toFixed(0)} A, more than 80 % of the 63 A main switch.`, []);
+    // Socket circuits are rated by design (16 A indoor, 32 A event power), so
+    // they are reported apart from the fixed equipment on the main switch.
+    const fixedAmps = pw.ratedAmps - (pw.outletRatedAmps || 0);
+    for (const c of pw.byCircuit) if (!c.outlet && c.ratedAmps > 12.8) add('warn', 'Circuit needs splitting', `${c.label}: ${c.ratedAmps.toFixed(1)} A connected; split it so each breaker stays at 16 A or below (${c.mcb} A would need heavier cable).`, []);
+    if (fixedAmps > 63 * 0.8) add('warn', 'Main switch overloaded', `All circuits together can draw ${fixedAmps.toFixed(0)} A, more than 80 % of the 63 A main switch.`, []);
+    for (const c of pw.byCircuit) if (c.overloaded) add('warn', 'Socket circuit overloaded', `${c.label}: the test load draws ${c.amps.toFixed(1)} A on a ${c.mcb} A circuit. Move equipment to another outlet or reduce the load.`, []);
+    if (pw.outletRatedAmps > 0) add('info', 'Socket outlets need a supply check', `Socket circuits can add up to ${pw.outletRatedAmps.toFixed(0)} A (planning allowance) to the ${fixedAmps.toFixed(0)} A of fixed equipment. The supply, phases, main switch and the DB-2 feeder are not yet confirmed for this: the electrical designer must size them before the outlets are installed.`, []);
     // 5. Results-based notes.
     const s = latest.seats;
     if (s) {

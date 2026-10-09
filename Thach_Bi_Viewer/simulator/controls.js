@@ -12,7 +12,7 @@
   const items = c => SIM.state.items.filter(i => i.circuit === c && !i.hidden);
   const present = () => Object.keys(SIM.CIRCUITS).filter(c => items(c).length);
   const fed = () => SIM.state.settings.db2Feed !== false;
-  const TOWERS = { off: [], evening: ['L6', 'L9'], festival: ['L6', 'L7', 'L9'] };
+  const TOWERS = { off: [], evening: ['L6', 'L9', 'L10'], festival: ['L6', 'L7', 'L9', 'L10'] }, TOWER_CIRCUITS = ['L6', 'L7', 'L9', 'L10'];
   const TABS = [['scenes', 'Scenes'], ['DB1', 'DB-1'], ['DB2', 'Towers'], ['fans', 'Fans'], ['sound', 'Sound']];
   const TITLES = { scenes: ['Scenes', 'Set lights, fans and sound together.'], DB1: ['Interior circuits', 'Switch a circuit by area.'], DB2: ['Towers & façade', 'Powered by the DB-1 feeder.'], fans: ['Fan speed', 'Choose a speed for each group.'], sound: ['Sound zones', 'Adjust the level or mute a zone.'] };
   const SPEEDS = ['Off', 'Low', 'Med', 'High'];
@@ -58,7 +58,7 @@
          <div class="ctl-keys">${Object.keys(TOWERS).map(k => `<button class="ctl-key" data-act="towers" data-mode="${k}" title="Towers ${k}"><i></i>${k[0].toUpperCase() + k.slice(1)}</button>`).join('')}</div>`;
     return `<div class="ctl-board" data-board="${bd}"><div class="ctl-where" title="${esc(B.where)}"><span>${bd === 'DB1' ? 'DB-1' : 'DB-2'}</span><b data-board-load="${bd}"></b></div>${head}
       ${areas.map(a => rail(a, onBoard(bd, x => x.cat === 'light' && (x.area || 'Other') === a))).join('')}
-      ${rail('Fans', onBoard(bd, x => x.cat === 'fan'))}${rail('Decoration', onBoard(bd, x => x.cat === 'decor'))}</div>`;
+      ${rail('Fans', onBoard(bd, x => x.cat === 'fan'))}${rail(bd === 'DB2' ? 'Event power · keep off outside events' : 'Socket outlets', onBoard(bd, x => x.cat === 'power'))}${rail('Decoration', onBoard(bd, x => x.cat === 'decor'))}</div>`;
   }
   function build() {
     let html = '';
@@ -95,7 +95,8 @@
       const on = items(c).some(i => i.on);
       b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); b.disabled = blocked(c);
       b.querySelector('.ctl-state').textContent = on ? 'On' : 'Off';
-      b.title = `${SIM.CIRCUITS[c].label}\n${items(c).length} fittings · C${x.mcb || 6} breaker · ${fmt(x.amps || 0, 1)} A now`;
+      b.title = x.outlet ? `${SIM.CIRCUITS[c].label}\n${items(c).length} outlet points · ${x.mcb} A with ${x.rcdmA} mA residual-current protection (provisional) · ${fmt(x.amps || 0, 1)} A test load`
+        : `${SIM.CIRCUITS[c].label}\n${items(c).length} fittings · C${x.mcb || 6} breaker · ${fmt(x.amps || 0, 1)} A now`;
     });
     body.querySelectorAll('[data-act=feeder]').forEach(b => { b.classList.toggle('on', fed()); b.setAttribute('aria-pressed', String(fed())); b.querySelector('.ctl-state').textContent = fed() ? 'On' : 'Off'; });
     body.querySelectorAll('[data-board-load]').forEach(el => {
@@ -106,7 +107,7 @@
     if (db2) { db2.classList.toggle('ctl-unpowered', !fed()); db2.querySelector('[data-show=dead]').hidden = fed(); }
     body.querySelectorAll('[data-act=towers]').forEach(b => {
       const want = TOWERS[b.dataset.mode];
-      const active = ['L6', 'L7', 'L9'].every(c => items(c).some(i => i.on) === want.includes(c));
+      const active = TOWER_CIRCUITS.every(c => items(c).some(i => i.on) === want.includes(c));
       b.classList.toggle('active', active); b.setAttribute('aria-pressed', String(active)); b.disabled = !fed();
     });
     body.querySelectorAll('[data-regulator]').forEach(reg => {
@@ -146,7 +147,7 @@
         case 'close': setOpen(false); toggle.focus(); return;
         case 'scene': SIM.applyScene(el.dataset.scene); break;
         case 'breaker': if (blocked(c)) return; { const on = !items(c).some(i => i.on); setCircuit(c, on); SIM.commit((on ? 'Switch on ' : 'Switch off ') + SIM.CIRCUITS[c].label); } break;
-        case 'towers': if (!fed()) return; { const want = TOWERS[el.dataset.mode]; for (const x of ['L6', 'L7', 'L9']) setCircuit(x, want.includes(x)); SIM.commit('Towers: ' + el.dataset.mode); } break;
+        case 'towers': if (!fed()) return; { const want = TOWERS[el.dataset.mode]; for (const x of TOWER_CIRCUITS) setCircuit(x, want.includes(x)); SIM.commit('Towers: ' + el.dataset.mode); } break;
         case 'feeder': {
           const st = SIM.state.settings, was = fed();
           if (was) { st.db2Memory = {}; for (const x of sub()) for (const i of items(x)) { st.db2Memory[i.id] = i.on; SIM.update(i.id, { on: false }, { record: false }); } }

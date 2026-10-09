@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-09T01:31:17.233Z",
+  "savedAt": "2026-10-09T03:17:36.119Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 110,
@@ -44,7 +44,9 @@
     "wingReviewRevision": "2026-10-09-wing-two-light-art-2",
     "wingSoundRevision": "2026-10-09-wing-sound-art-clearance-2",
     "wingArtRevision": "2026-10-09-wing-peter-paul-concept-1",
-    "naveFanRevision": "2026-10-09-eight-wall-fans-per-side"
+    "naveFanRevision": "2026-10-09-eight-wall-fans-per-side",
+    "outletRevision": "2026-10-09-socket-outlets-1",
+    "facadeStatueRevision": "2026-10-09-facade-statues-3-concealed-light-candles"
   },
   "customScenes": [],
   "items": [
@@ -7308,6 +7310,549 @@
       "params": {},
       "speed": 1,
       "oscillate": true
+    },
+    {
+      "id": "P-SANCT-B",
+      "type": "socketDouble",
+      "name": "Socket · sanctuary side B · axis 10 pier",
+      "circuit": "P1",
+      "mount": "wall",
+      "pos": [
+        43.89,
+        0.85,
+        -7.25
+      ],
+      "yaw": 180,
+      "tilt": 0,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "loadW": 0
+      },
+      "note": "CONCEPT: pier face toward the nave, 0.70 m above the side platform and 1.17 m above the wing floor. Surface or casing box; no chase into the structural pier. ENGINEERING HOLD."
+    },
+    {
+      "id": "P-NAVE-B",
+      "type": "socketDouble",
+      "name": "Socket · mid-nave side B · axis 6",
+      "circuit": "P1",
+      "mount": "wall",
+      "pos": [
+        22.83,
+        0.45,
+        -7.25
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "loadW": 0
+      },
+      "note": "CONCEPT: masonry wall between the window and the axis-6 pier, 0.45 m above the nave floor, reached between the bench rows. Not in the structural pier. ENGINEERING HOLD."
+    },
+    {
+      "id": "P-TOWER-B",
+      "type": "socketEvent",
+      "name": "Event power · tower B · inside the porch",
+      "circuit": "P3",
+      "mount": "wall",
+      "pos": [
+        0.45,
+        1.3,
+        -7.85
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": false,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "loadW": 0
+      },
+      "note": "CONCEPT: inside the tower porch on the front pier, hidden from the front view, 1.3 m above the tower floor. Own 32 A circuit at DB-2, isolated outside events. Supply and feeder size on ENGINEERING HOL"
+    },
+    {
+      "id": "P-SANCT-H",
+      "type": "socketDouble",
+      "name": "Socket · sanctuary side H · axis 10 pier",
+      "circuit": "P2",
+      "mount": "wall",
+      "pos": [
+        43.89,
+        0.85,
+        7.25
+      ],
+      "yaw": 180,
+      "tilt": 0,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "loadW": 0
+      },
+      "note": "CONCEPT: pier face toward the nave, 0.70 m above the side platform and 1.17 m above the wing floor. Surface or casing box; no chase into the structural pier. ENGINEERING HOLD."
+    },
+    {
+      "id": "P-NAVE-H",
+      "type": "socketDouble",
+      "name": "Socket · mid-nave side H · axis 6",
+      "circuit": "P2",
+      "mount": "wall",
+      "pos": [
+        22.83,
+        0.45,
+        7.25
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "loadW": 0
+      },
+      "note": "CONCEPT: masonry wall between the window and the axis-6 pier, 0.45 m above the nave floor, reached between the bench rows. Not in the structural pier. ENGINEERING HOLD."
+    },
+    {
+      "id": "P-TOWER-H",
+      "type": "socketEvent",
+      "name": "Event power · tower H · inside the porch",
+      "circuit": "P4",
+      "mount": "wall",
+      "pos": [
+        0.45,
+        1.3,
+        7.85
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": false,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "loadW": 0
+      },
+      "note": "CONCEPT: inside the tower porch on the front pier, hidden from the front view, 1.3 m above the tower floor. Own 32 A circuit at DB-2, isolated outside events. Supply and feeder size on ENGINEERING HOL"
+    },
+    {
+      "id": "D-FACADE-C",
+      "type": "statueAssumption",
+      "name": "Façade statue · Assumption of Our Lady",
+      "circuit": "DECOR",
+      "mount": "floor",
+      "pos": [
+        2.29,
+        11.8,
+        0
+      ],
+      "yaw": 180,
+      "tilt": 0,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "USER CONFIRMED subject and place. Generated figure on the drawn niche pedestal. Sculptor, size, material, weight and fixing pending."
+    },
+    {
+      "id": "L-STATUE-C-ARCH",
+      "type": "nicheArchLine",
+      "name": "Hidden arch light · Assumption of Our Lady",
+      "circuit": "L10",
+      "mount": "wall",
+      "pos": [
+        2.13,
+        15.64,
+        0
+      ],
+      "yaw": 0,
+      "tilt": -87.39743779750019,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "length": 0.8
+      },
+      "note": "CONCEPT: light line in a slot behind a matching lip under the arch; no lamp is seen. Slot, weatherproof product, driver place and access pending.",
+      "lumens": 440,
+      "beam": 60,
+      "shadow": false
+    },
+    {
+      "id": "L-STATUE-C-JAMB-1",
+      "type": "nicheJambLine",
+      "name": "Hidden jamb light · Assumption of Our Lady · B side",
+      "circuit": "L10",
+      "mount": "wall",
+      "pos": [
+        2.13,
+        13.3,
+        -0.905
+      ],
+      "yaw": 70.52685579699832,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "length": 2
+      },
+      "note": "CONCEPT: light line in a slot behind a matching lip at the front edge of the jamb; no lamp is seen. Slot, weatherproof product, driver place and access pending.",
+      "lumens": 260,
+      "beam": 80,
+      "shadow": false
+    },
+    {
+      "id": "L-STATUE-C-CANDLE-1",
+      "type": "nicheCandle",
+      "name": "Statue candle light · Assumption of Our Lady · B side",
+      "circuit": "L10",
+      "mount": "floor",
+      "pos": [
+        2.1,
+        11.8,
+        -0.47
+      ],
+      "yaw": 180,
+      "tilt": 0,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "USER CONFIRMED: two candle lights on the base of each statue. CONCEPT electric candle; product, weather protection, fixing and lamp access pending.",
+      "shadow": false
+    },
+    {
+      "id": "L-STATUE-C-JAMB-2",
+      "type": "nicheJambLine",
+      "name": "Hidden jamb light · Assumption of Our Lady · H side",
+      "circuit": "L10",
+      "mount": "wall",
+      "pos": [
+        2.13,
+        13.3,
+        0.905
+      ],
+      "yaw": -70.52685579699832,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "length": 2
+      },
+      "note": "CONCEPT: light line in a slot behind a matching lip at the front edge of the jamb; no lamp is seen. Slot, weatherproof product, driver place and access pending.",
+      "lumens": 260,
+      "beam": 80,
+      "shadow": false
+    },
+    {
+      "id": "L-STATUE-C-CANDLE-2",
+      "type": "nicheCandle",
+      "name": "Statue candle light · Assumption of Our Lady · H side",
+      "circuit": "L10",
+      "mount": "floor",
+      "pos": [
+        2.1,
+        11.8,
+        0.47
+      ],
+      "yaw": 180,
+      "tilt": 0,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "USER CONFIRMED: two candle lights on the base of each statue. CONCEPT electric candle; product, weather protection, fixing and lamp access pending.",
+      "shadow": false
+    },
+    {
+      "id": "D-FACADE-B",
+      "type": "statuePeter",
+      "name": "Façade statue · Saint Peter",
+      "circuit": "DECOR",
+      "mount": "floor",
+      "pos": [
+        2.29,
+        10.08,
+        -5.48
+      ],
+      "yaw": 180,
+      "tilt": 0,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "PROPOSED subject; owner to confirm the two saints. Generated figure on the drawn niche pedestal. Sculptor, size, material, weight and fixing pending."
+    },
+    {
+      "id": "L-STATUE-B-ARCH",
+      "type": "nicheArchLine",
+      "name": "Hidden arch light · Saint Peter",
+      "circuit": "L10",
+      "mount": "wall",
+      "pos": [
+        2.13,
+        12.62,
+        -5.48
+      ],
+      "yaw": 0,
+      "tilt": -85.55261514990949,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "length": 0.5
+      },
+      "note": "CONCEPT: light line in a slot behind a matching lip under the arch; no lamp is seen. Slot, weatherproof product, driver place and access pending.",
+      "lumens": 300,
+      "beam": 60,
+      "shadow": false
+    },
+    {
+      "id": "L-STATUE-B-JAMB-1",
+      "type": "nicheJambLine",
+      "name": "Hidden jamb light · Saint Peter · B side",
+      "circuit": "L10",
+      "mount": "wall",
+      "pos": [
+        2.13,
+        11.05,
+        -5.985
+      ],
+      "yaw": 57.63906244063007,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "length": 1.3
+      },
+      "note": "CONCEPT: light line in a slot behind a matching lip at the front edge of the jamb; no lamp is seen. Slot, weatherproof product, driver place and access pending.",
+      "lumens": 140,
+      "beam": 80,
+      "shadow": false
+    },
+    {
+      "id": "L-STATUE-B-CANDLE-1",
+      "type": "nicheCandle",
+      "name": "Statue candle light · Saint Peter · B side",
+      "circuit": "L10",
+      "mount": "floor",
+      "pos": [
+        2.1,
+        10.08,
+        -5.79
+      ],
+      "yaw": 180,
+      "tilt": 0,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "USER CONFIRMED: two candle lights on the base of each statue. CONCEPT electric candle; product, weather protection, fixing and lamp access pending.",
+      "shadow": false
+    },
+    {
+      "id": "L-STATUE-B-JAMB-2",
+      "type": "nicheJambLine",
+      "name": "Hidden jamb light · Saint Peter · H side",
+      "circuit": "L10",
+      "mount": "wall",
+      "pos": [
+        2.13,
+        11.05,
+        -4.9750000000000005
+      ],
+      "yaw": -57.63906244063007,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "length": 1.3
+      },
+      "note": "CONCEPT: light line in a slot behind a matching lip at the front edge of the jamb; no lamp is seen. Slot, weatherproof product, driver place and access pending.",
+      "lumens": 140,
+      "beam": 80,
+      "shadow": false
+    },
+    {
+      "id": "L-STATUE-B-CANDLE-2",
+      "type": "nicheCandle",
+      "name": "Statue candle light · Saint Peter · H side",
+      "circuit": "L10",
+      "mount": "floor",
+      "pos": [
+        2.1,
+        10.08,
+        -5.170000000000001
+      ],
+      "yaw": 180,
+      "tilt": 0,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "USER CONFIRMED: two candle lights on the base of each statue. CONCEPT electric candle; product, weather protection, fixing and lamp access pending.",
+      "shadow": false
+    },
+    {
+      "id": "D-FACADE-H",
+      "type": "statuePaul",
+      "name": "Façade statue · Saint Paul",
+      "circuit": "DECOR",
+      "mount": "floor",
+      "pos": [
+        2.29,
+        10.08,
+        5.48
+      ],
+      "yaw": 180,
+      "tilt": 0,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "PROPOSED subject; owner to confirm the two saints. Generated figure on the drawn niche pedestal. Sculptor, size, material, weight and fixing pending."
+    },
+    {
+      "id": "L-STATUE-H-ARCH",
+      "type": "nicheArchLine",
+      "name": "Hidden arch light · Saint Paul",
+      "circuit": "L10",
+      "mount": "wall",
+      "pos": [
+        2.13,
+        12.62,
+        5.48
+      ],
+      "yaw": 0,
+      "tilt": -85.55261514990949,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "length": 0.5
+      },
+      "note": "CONCEPT: light line in a slot behind a matching lip under the arch; no lamp is seen. Slot, weatherproof product, driver place and access pending.",
+      "lumens": 300,
+      "beam": 60,
+      "shadow": false
+    },
+    {
+      "id": "L-STATUE-H-JAMB-1",
+      "type": "nicheJambLine",
+      "name": "Hidden jamb light · Saint Paul · B side",
+      "circuit": "L10",
+      "mount": "wall",
+      "pos": [
+        2.13,
+        11.05,
+        4.9750000000000005
+      ],
+      "yaw": 57.63906244063007,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "length": 1.3
+      },
+      "note": "CONCEPT: light line in a slot behind a matching lip at the front edge of the jamb; no lamp is seen. Slot, weatherproof product, driver place and access pending.",
+      "lumens": 140,
+      "beam": 80,
+      "shadow": false
+    },
+    {
+      "id": "L-STATUE-H-CANDLE-1",
+      "type": "nicheCandle",
+      "name": "Statue candle light · Saint Paul · B side",
+      "circuit": "L10",
+      "mount": "floor",
+      "pos": [
+        2.1,
+        10.08,
+        5.170000000000001
+      ],
+      "yaw": 180,
+      "tilt": 0,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "USER CONFIRMED: two candle lights on the base of each statue. CONCEPT electric candle; product, weather protection, fixing and lamp access pending.",
+      "shadow": false
+    },
+    {
+      "id": "L-STATUE-H-JAMB-2",
+      "type": "nicheJambLine",
+      "name": "Hidden jamb light · Saint Paul · H side",
+      "circuit": "L10",
+      "mount": "wall",
+      "pos": [
+        2.13,
+        11.05,
+        5.985
+      ],
+      "yaw": -57.63906244063007,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "length": 1.3
+      },
+      "note": "CONCEPT: light line in a slot behind a matching lip at the front edge of the jamb; no lamp is seen. Slot, weatherproof product, driver place and access pending.",
+      "lumens": 140,
+      "beam": 80,
+      "shadow": false
+    },
+    {
+      "id": "L-STATUE-H-CANDLE-2",
+      "type": "nicheCandle",
+      "name": "Statue candle light · Saint Paul · H side",
+      "circuit": "L10",
+      "mount": "floor",
+      "pos": [
+        2.1,
+        10.08,
+        5.79
+      ],
+      "yaw": 180,
+      "tilt": 0,
+      "mountYaw": 180,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "USER CONFIRMED: two candle lights on the base of each statue. CONCEPT electric candle; product, weather protection, fixing and lamp access pending.",
+      "shadow": false
     }
   ]
 }
