@@ -425,6 +425,15 @@
       "evidence": "Tính toán neo và bệ, chi tiết khe/gờ, sản phẩm chống nước được chọn, thử nghiệm ánh sáng ban đêm trên mẫu thật, phương án bảo trì an toàn",
       "blocks": "Chín dải sáng giấu và sáu đèn nến trên mạch L10 là ý tưởng; chưa có tải trọng, liên kết, sản phẩm hay kết quả đo",
       "answer": null
+    },
+    {
+      "id": "Q47",
+      "discipline": "Nghệ thuật thánh / kết cấu",
+      "owner": "Cha xứ / nhà điêu khắc / kỹ sư kết cấu",
+      "question_vi": "Tượng Chúa chịu nạn trên thánh giá cung thánh: ai thiết kế và tạc tượng, kích thước tượng và thánh giá (mô hình: tượng khoảng 2,06 m, thánh giá cao 3,41 m, đòn ngang 2,10 m), loại gỗ và lớp hoàn thiện? Thánh giá sơn son đỏ theo yêu cầu ngày 9/10/2026 hay gỗ tự nhiên như ảnh ý tưởng đã duyệt? Thánh giá và tượng được neo vào bệ và tường hốc thế nào?",
+      "evidence": "Mẫu hoặc bản vẽ của nhà điêu khắc, mẫu màu sơn son và thếp vàng xem tại chỗ dưới ánh sáng ngày và đèn, tính toán neo và trọng lượng, phương án lắp đặt và bảo trì ở cao độ +3,4 đến +6,8 m",
+      "blocks": "Tượng trong mô hình là hình tạo sinh để xem bố cục; không xác định kích thước, vật liệu, liên kết hay tải trọng",
+      "answer": null
     }
   ]
 }

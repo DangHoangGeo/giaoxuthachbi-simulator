@@ -21,6 +21,8 @@
     steel: { color: '#9aa0a6', metalness: 0.7, roughness: 0.35 },
     aluminium: { color: '#c9ccd0', metalness: 0.75, roughness: 0.3 },
     darkWood: { color: '#5a3a22', roughness: 0.55 },
+    // Sanctuary furniture: the red lacquer of the columns (owner, 9 October 2026: red and gold).
+    lacquerRed: { color: '#702a1f', roughness: 0.4 },
     wood: { color: '#8a6040', roughness: 0.5 },
     ivory: { color: '#f3ead6', roughness: 0.62 },
     candle: { color: '#f4ecdc', roughness: 0.7 },
@@ -661,8 +663,8 @@
     }
   }
   function buildFlowerStand(k) {
-    k.cyl(0.18, 0.22, 0.06, 'darkWood', { p: [0, 0.03, 0] }, 16);
-    k.lathe([[0.06, 0.06], [0.05, 0.3], [0.07, 0.5], [0.045, 0.7], [0.06, 0.95], [0.12, 1.0]], 'darkWood', {}, 16);
+    k.cyl(0.18, 0.22, 0.06, 'lacquerRed', { p: [0, 0.03, 0] }, 16);
+    k.lathe([[0.06, 0.06], [0.05, 0.3], [0.07, 0.5], [0.045, 0.7], [0.06, 0.95], [0.12, 1.0]], 'lacquerRed', {}, 16);
     k.lathe([[0.001, 1.0], [0.12, 1.0], [0.16, 1.08], [0.14, 1.2], [0.17, 1.27], [0.15, 1.28]], 'brass', {}, 18);
     bouquet(k, 0, 1.24, 0, 1.25, ['flowerWhite', 'flowerWhite', 'flowerCream']);
   }

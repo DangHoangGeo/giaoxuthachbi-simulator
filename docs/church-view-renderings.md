@@ -57,6 +57,8 @@ The paragraphs above describe the image delivery, when no geometry had changed. 
 2. Beams and connections: lengthwise beams on the column lines (a visual proxy on engineering hold), carved haunches under the tie, side and lengthwise beams, gilded cartouches on the beam faces and carved tie-beam ends. The curved upper rail of the timber concept and the haunches at axis 9 are left out because fittings stand there; see the [beam specification](beams-roof-connections/SPECIFICATION.md).
 3. Sanctuary: gilded scrollwork and relief finishes on the reredos, chamber, shrines and front frame; glowing blue niches; crocketed pinnacles and leaf crestings; a carved wooden corpus with a gilded cloth; a gilded, domed tabernacle.
 
+Since 9 October 2026 the corpus is a figure carved in the round with a title board, and the cross, niche boards and sanctuary furniture are red lacquer at the owner's request (the concept shows a natural wood cross): see the [sanctuary record](sanctuary-model.md#carved-corpus-and-red-and-gold-finishes--9-october-2026).
+
 Still simpler in the model than in the art: the statues, the closed and panelled shrine doors, the carved altar front, the depth of the relief (a generated pattern with a height map) and the curved upper rail over the tie beams. Parts not listed here are still as described above. The art remains the reference for appearance only. Dimensions, structure, equipment and calculated results keep their own sources.
 
 ## Wing Saint Peter and Saint Paul concepts · 9 October 2026

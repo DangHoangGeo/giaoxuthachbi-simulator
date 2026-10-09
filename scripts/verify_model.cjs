@@ -330,6 +330,25 @@ near(bounds(reveal).min.x,niche.mouthX,'Niche opens at the reredos face');near(b
 assert(niche.backX-niche.mouthX>=1,'Niche is at least 1.0 m deep');
 const corpus=nodes.find(o=>o.name.startsWith('Illustrative bronze corpus'));
 assert(bounds(corpus).min.x>niche.mouthX+.3&&bounds(cross).min.x>niche.mouthX+.3,'Cross and corpus stand inside the niche');
+// The corpus is one carved figure hung from the crossarm (9 October 2026), not the earlier jointed proxy.
+{
+  const carved=nodes.filter(o=>o.isMesh&&o.name==='Illustrative corpus · carved figure'),arm=nodes.find(o=>o.name==='Proposed sanctuary crucifix crossarm'),b=bounds(corpus),a=bounds(arm),f=bounds(carved[0]);
+  assert.equal(carved.length,1,'one carved corpus');
+  assert(!nodes.some(o=>/^Illustrative corpus (head|torso|upper arm|forearm|hand|upper leg|lower leg)$/.test(o.name)),'jointed proxy parts removed');
+  assert(carved[0].geometry.attributes.position.count/3>20000,'corpus is modelled in the round');
+  assert(f.max.x<=a.min.x+.012&&f.min.x>a.min.x-.45,'corpus hangs on the face of the cross, towards the nave');
+  assert(f.max.z-f.min.z>1.6&&f.max.z-f.min.z<a.max.z-a.min.z&&f.max.y-f.min.y>1.9&&f.max.y-f.min.y<2.2,'corpus span and height fit the cross');
+  assert(Math.abs(f.max.y-(a.min.y+a.max.y)/2)<.12&&f.min.y>bounds(cross).min.y+.3,'hands at the crossarm, feet above the base');
+  for(const [name,material] of [['Illustrative modest draped loincloth','Sanctuary · carved gilding'],['Carved corpus hair, beard and crown of thorns','Sanctuary · carved figure, darker tone'],['Crucifix nails','Sanctuary · forged iron nail'],['Crucifix title board','Sanctuary · carved gilding'],['Crucifix title · INRI','Sanctuary · gilded title board']]){
+    const o=nodes.find(o=>o.name===name);assert(o&&o.material.name===material,`${name}: ${material}`);assert(bounds(o).min.x>niche.mouthX+.3&&bounds(o).max.x<bounds(blue).min.x,`${name} inside the niche`);
+  }
+  // Owner, 9 October 2026: the sanctuary timber is red and gold. Cross, niche boards, base and furniture take the satin red lacquer.
+  for(const name of ['Proposed sanctuary crucifix upright','Proposed sanctuary crucifix crossarm','Crucifix niche reveal · lacquered timber','Outer carved canopy','Central carved timber silhouette','Crucifix base step','Proposed sloped ambo desk','Proposed sanctuary chair seat','Chair leg'])
+    for(const o of nodes.filter(o=>o.isMesh&&o.name===name))assert.equal(o.material.name,'Sanctuary · oxblood lacquer, satin',`${name} is red lacquer`);
+  const satin=cross.material,polished=shafts[0].material;
+  assert(satin.color.r>2.2*satin.color.g&&satin.color.r>2.2*satin.color.b&&!satin.map&&satin.clearcoat<polished.clearcoat,'satin lacquer is the column red without the mirror coat');
+  assert(!nodes.some(o=>o.isMesh&&o.material?.name==='Proposed dark-stained timber joinery'&&bounds(o).min.x>S.frameX-4&&bounds(o).max.x<niche.endX&&Math.abs((bounds(o).min.z+bounds(o).max.z)/2)<7.3),'no brown joinery left in the sanctuary');
+}
 near(Math.max(...nodes.filter(o=>o.name==='Crucifix base step').map(o=>bounds(o).max.y)),bounds(cross).min.y+.02,'Cross stands on its stepped base');
 for(const name of ['Central carved timber silhouette','Reredos carved ground','Outer carved canopy','Chamber back lining · lacquered timber','Sanctuary back wall behind the reredos']){
   const hit=new T.Raycaster(new T.Vector3(47,4.5,.6),new T.Vector3(1,0,0)).intersectObject(nodes.find(o=>o.name===name),false);
