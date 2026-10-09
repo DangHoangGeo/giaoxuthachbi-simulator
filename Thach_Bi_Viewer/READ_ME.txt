@@ -15,6 +15,11 @@ Explore: drag to orbit, scroll/pinch to zoom, right-drag to pan.
 Walk: W A S D / arrow keys to move; drag the scene to look around (it follows
 the pointer, as in Explore); touch joystick on phones.
 Esc leaves Walk mode. References opens the nine retained reference images.
+Cinematic tour (Discover menu): a five-minute film around and through the
+church with generated organ music, ending at night with the roof hidden.
+Space pauses, left/right arrows change scene, M switches the music, F fills
+the screen, Esc stops. The music is presentation music, not an acoustic
+prediction for this church.
 
 The original architectural drawings and measurement workbook govern dimensions.
 Finishes, furniture and lighting are visual proposals.

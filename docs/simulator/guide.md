@@ -452,3 +452,23 @@ Use **Use reviewed lights and fans · B/H** only to adopt that side's held fixtu
 ## Wing saints and latest source review
 
 The current default has two small brass chandeliers, two above-window wall fans, one entrance-facing wall speaker and one Peter/Paul picture pair perwing. **Simulator→Wiring** compares the actual saved layout separately for lights/fans, sound and saints. Adopt only the desired scope with **Use reviewed lights and fans**, **Use reviewed speaker** or **Use reviewed saints ·B/H**. These local actions write full backups, preserve unrelated records and support Undo/Redo. Deleted/moved/retuned saved items are not silently reset; a first-issue artwork marker prevents later deletions being recreated. The source remains an engineering hold: some seats are too dark, speech/feedback/air/noise and physical concealment/product/fixings remain unresolved. See [the coordinated review](../engineering/wing-review.md). Peter/Paul textures are local native generated concepts; modeled frame dimensions/height are review proxies.
+
+## Cinematic tour · 9 October 2026
+
+**Discover → ▶ Cinematic tour** plays a film of about five minutes. It replaces the earlier guided walk, which only moved in a straight line from the courtyard to the sanctuary.
+
+| Part | Scenes | Light and roof |
+| --- | --- | --- |
+| I · Around the church | Opening aerial view, tower front, around the bell towers, along side B, the altar end, back over the roof | Day, roof on |
+| II · Inside | Through the central door, the nave, the timber roof, side aisle and windows, the two wings, the sanctuary, around the altar, looking back to the entrance | Day, roof on |
+| III · Evening | The lit nave, plan view from above with the roof hidden, a circle round the open church, a flight over the timber frames, the lit tower front | Evening; roof hidden for the three views from above |
+
+Controls: **Space** or a click pauses and continues, **←** and **→** change scene, **M** switches the organ music, **F** fills the screen, **Esc** or **✕ Stop** ends the film. The buttons at the bottom appear when the pointer moves.
+
+- Captions are in English and Vietnamese. The figures they quote (tower stages, cross apex, ridge, axis 1–12 length, sanctuary platform, central door) are the values in the model data.
+- The film shows the layout that is open in the viewer, including any equipment you have moved or hidden. It changes nothing in the design and saves nothing.
+- While it plays, the film sets day or evening light, shows or hides the roof, opens the doors and changes the lens angle. Doors and lens are put back when it ends. A film that runs to its end also restores the light and roof you had and returns to the overview. If you stop it part-way, the view stays where it is so that you can continue in Explore; a message names any evening light or hidden roof that is still on (change them in View settings).
+- **The organ music is generated in the browser**: an original piece on synthesised pipe tones with artificial reverberation. It is presentation music. It does not pass through the modelled loudspeakers or the room model, and it is not a prediction of how an organ or the sound system will sound in the church. For the room-based listening preview use **Simulator → Sound → Listen in the church**.
+- Evening scenes show the proposed lighting as the viewer draws it. Screen brightness is not a lux measurement.
+- Some browsers hold sound back until the page is clicked. The film then shows "Click once to switch the organ music on".
+- The route is fixed: centre aisle below 4.3 m, 1.5–2 m beside the centreline at 6.4–7.1 m under the roof, and the side-B aisle at 2–2.4 m. After placing equipment in those zones, run `CHURCH_CINEMA.audit()` in the browser console: it reports the nearest surface to the camera in each scene. `node scripts/verify_cinematic.cjs` checks the shot list, camera path, scene changes and score without a browser. Record: `review/cinematic-tour-2026-10-09/`.

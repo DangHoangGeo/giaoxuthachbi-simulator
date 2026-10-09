@@ -1,0 +1,42 @@
+{
+  "what": "Camera clearance of the cinematic tour from the model and every visible fitting",
+  "method": "CHURCH_CINEMA.audit({ step: 0.25, reach: 1.5 }) in the open viewer: 26 rays from each sampled camera position against the architecture, both timber frame versions, open doors, and all simulator fittings that are not hidden. Roof parts are left out for the scenes that hide the roof.",
+  "date": "2026-10-09",
+  "viewer": "http://127.0.0.1:8765/OPEN_CHURCH.html (scratch origin, recommended design)",
+  "model": { "items": 354, "hiddenItems": 15, "frameStyle": "drawn", "seating": "4 blocks; repeated with 2 blocks, same result" },
+  "film": { "seconds": 308, "bars": 77, "scenes": 19 },
+  "units": { "clearance": "m, nearest surface within the 1.5 m reach", "fastest": "m/s camera speed" },
+  "scenes": [
+    { "id": "opening", "clearance": "> 1.5", "fastest": 5.33 },
+    { "id": "facade", "clearance": "> 1.5", "fastest": 2.55 },
+    { "id": "towers", "clearance": "> 1.5", "fastest": 5.85 },
+    { "id": "side-b", "clearance": "> 1.5", "fastest": 4.44 },
+    { "id": "rear", "clearance": "> 1.5", "fastest": 6.02 },
+    { "id": "return", "clearance": "> 1.5", "fastest": 7.26 },
+    { "id": "enter", "clearance": 1.23, "fastest": 2.93, "nearest": "Recessed carved timber panel (open central door leaf)", "at": { "time": 107.75, "eye": [1.54, 1.47, 0] } },
+    { "id": "nave", "clearance": 1.31, "fastest": 1.5, "nearest": "Simulator · Chandelier · bay 8–9", "at": { "time": 131.5, "eye": [34.77, 3.88, 0] } },
+    { "id": "timber", "clearance": 1.32, "fastest": 1.65, "nearest": "Central column 6/E", "at": { "time": 139.75, "eye": [23.57, 7.07, 2] } },
+    { "id": "aisle", "clearance": 0.9, "fastest": 1.59, "nearest": "Central column 8/D", "at": { "time": 163.25, "eye": [32.39, 2.39, -4.8] } },
+    { "id": "wings", "clearance": "> 1.5", "fastest": 0.39 },
+    { "id": "sanctuary", "clearance": "> 1.5", "fastest": 0.59 },
+    { "id": "altar-arc", "clearance": "> 1.5", "fastest": 0.65 },
+    { "id": "look-back", "clearance": "> 1.5", "fastest": 0.53 },
+    { "id": "evening-nave", "clearance": "> 1.5", "fastest": 1.37 },
+    { "id": "roof-off", "clearance": "> 1.5", "fastest": 6.68 },
+    { "id": "night-orbit", "clearance": "> 1.5", "fastest": 9.65 },
+    { "id": "over-nave", "clearance": "> 1.5", "fastest": 6.74 },
+    { "id": "closing", "clearance": "> 1.5", "fastest": 3.18 }
+  ],
+  "musicOutput": {
+    "what": "Digital level of the generated organ music after its limiter, largest value over 3 s at each point. dBFS of the browser output, not an acoustic level.",
+    "samples": [
+      { "section": "introduction, flutes", "filmSeconds": 4, "rmsDbfs": -23.4, "peakDbfs": -14.4 },
+      { "section": "theme, flutes", "filmSeconds": 25, "rmsDbfs": -19.4, "peakDbfs": -10.2 },
+      { "section": "inside, principals", "filmSeconds": 105, "rmsDbfs": -20.1, "peakDbfs": -10.9 },
+      { "section": "inside, principals with quavers", "filmSeconds": 175, "rmsDbfs": -18.4, "peakDbfs": -9.0 },
+      { "section": "evening, strings", "filmSeconds": 223, "rmsDbfs": -24.6, "peakDbfs": -16.0 },
+      { "section": "roof hidden, full organ", "filmSeconds": 257, "rmsDbfs": -17.3, "peakDbfs": -6.8 },
+      { "section": "closing", "filmSeconds": 289, "rmsDbfs": -19.0, "peakDbfs": -8.2 }
+    ]
+  }
+}
