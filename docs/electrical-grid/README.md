@@ -10,6 +10,7 @@ This folder is the home for that work:
 - [Manual boards and quick-mode design brief](controls.md)
 - [Separate equipment and line Excel registers by usage category](categories/README.md)
 - [Total quantities, usage and quality report](summary-report.md)
+- [How to inspect the systems in the 3D model: simple guide for the priest and local engineer](../electrical-inspection-guide.md) ([tiếng Việt](../electrical-inspection-guide.vi.md))
 - [Socket outlets, façade statues and their light: positions, basis and holds](../engineering/outlets-and-facade-statues.md)
 - [Register fields, refresh and Excel position proposals](register.md)
 - [Conditional route-load/cable review and confirmation questions](cable-load-review.md)

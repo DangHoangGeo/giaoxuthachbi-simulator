@@ -49,7 +49,7 @@ See the [7 October church concept gallery](Thach_Bi_Viewer/references/00-overvie
 
 Keep the whole viewer folder and its assets together. The viewer runs locally without installing a server or downloading runtime dependencies. Opening an HTML file in GitHub's source preview does not run the model.
 
-See the [viewer instructions](Thach_Bi_Viewer/READ_ME.txt) and [simulator guide](docs/simulator/guide.md) for controls. Edited layouts are saved in the browser; export a layout JSON before moving to another browser or sharing a study. Browser edits do not automatically update the repository or the Excel files. The simulator does not control installed equipment.
+See the [viewer instructions](Thach_Bi_Viewer/READ_ME.txt) and [simulator guide](docs/simulator/guide.md) for controls. To inspect the lights, fans, sound, socket outlets and cable routes system by system, start with the short [inspection guide for the parish priest and local engineer](docs/electrical-inspection-guide.md) ([tiếng Việt](docs/electrical-inspection-guide.vi.md)). Edited layouts are saved in the browser; export a layout JSON before moving to another browser or sharing a study. Browser edits do not automatically update the repository or the Excel files. The simulator does not control installed equipment.
 
 ## Start here
 

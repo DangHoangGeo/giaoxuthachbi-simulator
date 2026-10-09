@@ -3,6 +3,7 @@
 The simulator supports the project's first priority: optimize the locations and settings of lights, sound equipment and fans, then coordinate their wiring and manual/quick controls.
 
 - [User guide and revision history](guide.md)
+- [Short inspection guide for the priest and local engineer](../electrical-inspection-guide.md) ([tiếng Việt](../electrical-inspection-guide.vi.md))
 - [Viewer performance and memory](performance.md)
 - [Calculation methods and limitations](methods-and-limitations.md)
 - [Coordinated baseline, scenarios and unresolved targets](../engineering/baseline.md)
