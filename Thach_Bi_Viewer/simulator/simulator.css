@@ -359,3 +359,5 @@ body.sim-open .walk-panel{left:calc(50% + 196px)}
 .electrical-connection button { border:0; padding:0; background:transparent; color:var(--ui-ink, #263f39); font:inherit; text-align:left; text-decoration:underline; cursor:pointer; }
 .electrical-connection small { display:block; color:var(--ui-muted, #66766a); margin-top:3px; }
 .electrical-hold { border-left:3px solid var(--ui-warn, #985d28); padding-left:9px; color:var(--ui-ink, #263f39); font-size:12px; line-height:1.5; }
+/* Public visit: the design simulator is not offered. */
+.visit-only #simulatorButton,.visit-only #simPanel{display:none!important}

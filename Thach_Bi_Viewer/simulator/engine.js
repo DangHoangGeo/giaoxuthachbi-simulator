@@ -13,7 +13,12 @@
   const P = window.CHURCH_SIM_PHYSICS;
   const CAT = window.CHURCH_SIM_CATALOG;
   const DEG = Math.PI / 180;
-  const STORAGE_KEY = 'thachbi.simulator.v1';
+  // Public visit (website, or ?visit): the Simulator panel is not offered and the
+  // recommended design is shown on every load. It uses its own key, cleared here,
+  // so it never reads, migrates or overwrites an engineering layout.
+  const VISIT_ONLY = !!globalThis.document?.documentElement?.classList?.contains('visit-only');
+  const STORAGE_KEY = VISIT_ONLY ? 'thachbi.visit.v1' : 'thachbi.simulator.v1';
+  if (VISIT_ONLY) { try { localStorage.removeItem(STORAGE_KEY); } catch { /* storage unavailable */ } }
   const SCHEMA = 1;
 
   let T, ctx, church = null, ready = false;
@@ -113,6 +118,7 @@
   }
 
   const SIM = window.CHURCH_SIMULATOR = {
+    visitOnly: VISIT_ONLY,
     prepare, bindBatches, start, frame, CIRCUITS, BOARDS, QUALITY, state, fixtures,
     get ready() { return ready; }, get church() { return church; }, get THREE() { return T; },
     on(evt, fn) { (handlers[evt] ||= new Set()).add(fn); return () => handlers[evt].delete(fn); },

@@ -20,6 +20,8 @@
     errorText.textContent = detail;
     errorText.parentElement.hidden = !detail;
     actions.hidden = false;
+    // The fallback pictures are large, so they are fetched only when they are shown.
+    for (const image of previews.querySelectorAll('img[data-src]')) { image.src = image.dataset.src; image.removeAttribute('data-src'); }
     previews.hidden = false;
     screen.setAttribute('aria-busy', 'false');
   }
