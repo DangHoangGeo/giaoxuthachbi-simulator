@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "status": "Concept comparison; not a performance or construction approval",
+  "sources": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "ea98e993b2356e9bb7a744262fdb4543f9997e2efe66e39d988c1e43727fe695",
+    "Thach_Bi_Viewer/simulator/engine.js": "b83dbb26338b907f514b34fbf4cae4cbabec3a723b85655c98e02c0e66246f6d",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "5816024f7acb41ae9fd49fe9595ff524dd050f69833008fbbd610c41c35d723d",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "4e9126cf5d5448d4aefd0e85265c384decbecb6c53937cb3154e2299a16fd4c6",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
+    "scripts/study_wing_options.cjs": "5d98f25686d006a5c338fa4e23b0dacb4ae6e2a5153756ca0616fe0f1ebb06fb",
+    "review/wing-options-2026-10-09/baseline-layout.json": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac"
+  },
+  "inputs": {
+    "basis": "Increase inner-to-outer fan spacing by100 mm while retaining central solid gable mounting zone; physical tolerance and servicing remain pending.",
+    "cases": [
+      {
+        "id": "central-spacing-s1",
+        "showWall": true,
+        "light": {
+          "type": "chandelier6Reading",
+          "countPerWing": 4,
+          "y": 4.4,
+          "frontZ": 8.8,
+          "backZ": 10.6,
+          "lumens": 5640,
+          "dim": 1,
+          "beam": 100
+        },
+        "fans": {
+          "y": 2.7,
+          "speed": 1,
+          "points": [
+            {
+              "x": 39.15,
+              "targetX": 38.94,
+              "targetZ": 11.5
+            },
+            {
+              "x": 40.05,
+              "targetX": 38.94,
+              "targetZ": 9
+            },
+            {
+              "x": 41.1,
+              "targetX": 42.22,
+              "targetZ": 9
+            },
+            {
+              "x": 42,
+              "targetX": 42.22,
+              "targetZ": 11.5
+            }
+          ]
+        }
+      },
+      {
+        "id": "central-spacing-s2",
+        "showWall": true,
+        "light": {
+          "type": "chandelier6Reading",
+          "countPerWing": 4,
+          "y": 4.4,
+          "frontZ": 8.8,
+          "backZ": 10.6,
+          "lumens": 5640,
+          "dim": 1,
+          "beam": 100
+        },
+        "fans": {
+          "y": 2.7,
+          "speed": 2,
+          "points": [
+            {
+              "x": 39.15,
+              "targetX": 38.94,
+              "targetZ": 11.5
+            },
+            {
+              "x": 40.05,
+              "targetX": 38.94,
+              "targetZ": 9
+            },
+            {
+              "x": 41.1,
+              "targetX": 42.22,
+              "targetZ": 9
+            },
+            {
+              "x": 42,
+              "targetX": 42.22,
+              "targetZ": 11.5
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "measurementPlanes": {
+    "lux": "book position from model, local floor + 0.80 m",
+    "air": "seat XZ, local floor + 0.60 m",
+    "noise": "seat XZ, local floor + 1.20 m",
+    "sti": "seat XZ, local floor + 1.20 m",
+    "summaryCoordinates": "seat floor XYZ, not measurement-plane XYZ"
+  },
+  "criteria": {
+    "lux": 200,
+    "preferredLuxUpper": 300,
+    "air": [
+      0.3,
+      0.8
+    ],
+    "sti": 0.6,
+    "wingTestFloor": 0.45,
+    "feedbackDb": 3,
+    "noiseDbA": 45
+  },
+  "limitations": [
+    "Unchanged empirical fan jet model; no duty curves, pressure network or time-resolved CFD",
+    "Catalogue assumptions and model geometry, no selected product or survey",
+    "Occluders do not include all displayed geometry; physical beam/blade/sightline/mount checks remain",
+    "Fan sweep averages are not guaranteed instantaneous air speed"
+  ]
+}

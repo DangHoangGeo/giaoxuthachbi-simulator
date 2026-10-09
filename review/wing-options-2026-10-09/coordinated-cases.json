@@ -1,0 +1,210 @@
+{
+  "schema": 1,
+  "basis": "Owner requested appearance, held coordinated comparison. Fixed lower catalogue speed; separate 20 percent light-output sensitivity, not new threshold.",
+  "cases": [
+    {
+      "id": "baseline"
+    },
+    {
+      "id": "coordinated-wall-low",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 0.8,
+        "beam": 90
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "coordinated-two-block",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 0.8,
+        "beam": 90
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      },
+      "blocks": 2
+    },
+    {
+      "id": "coordinated-wall-medium",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 0.8,
+        "beam": 90
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 2,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "coordinated-candle-only",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 2820,
+        "dim": 0.8,
+        "beam": 90
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "coordinated-low-output",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 4512.0,
+        "dim": 0.8,
+        "beam": 90
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    }
+  ]
+}

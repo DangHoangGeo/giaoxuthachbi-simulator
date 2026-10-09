@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "selected": {
+    "itemIds": [
+      "F240",
+      "F241",
+      "F242",
+      "F243",
+      "F-WING-B-3",
+      "F-WING-B-4",
+      "F-WING-H-3",
+      "F-WING-H-4"
+    ],
+    "routeIds": [
+      "trunk:FC1:F5:fan:-1",
+      "drop:FC1:F5:fan:-1:F240",
+      "drop:FC1:F5:fan:-1:F241",
+      "drop:FC1:F5:fan:-1:F-WING-B-3",
+      "drop:FC1:F5:fan:-1:F-WING-B-4",
+      "trunk:FC1:F5:fan:1",
+      "drop:FC1:F5:fan:1:F242",
+      "drop:FC1:F5:fan:1:F243",
+      "drop:FC1:F5:fan:1:F-WING-H-3",
+      "drop:FC1:F5:fan:1:F-WING-H-4",
+      "feeder:FC1"
+    ],
+    "sourceIds": [
+      "FC1",
+      "DB1"
+    ]
+  },
+  "checks": [
+    "actual F5 circuit selector scopes eight wing fans",
+    "DB1 and FC1 upstream context retained",
+    "Controls F5 opens visible fan regulator",
+    "Off and Low affect only F5; original equipment state restored",
+    "zero browser errors"
+  ],
+  "limitations": [
+    "simulator operation only; no physical FC-1 hardware tested"
+  ]
+}

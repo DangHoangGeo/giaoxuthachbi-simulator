@@ -1,0 +1,11 @@
+{
+  "pdf": "output/pdf/thach-bi-electrical-review-A3.pdf",
+  "sha256": "2ccb548219a52615af7ef833d5bbe6782e806fde9e70872bca00670efbfb7832",
+  "previousSha256": "b1442e21ee163bffd59e9c3550fee662bf87c6e253bae96172430f63304302e5",
+  "pageCount": 44,
+  "changedTextPages": [
+    43
+  ],
+  "priorVisualEvidence": "before-installation-note-refreeze/pdf/en-render-index.json",
+  "currentStagePage": "pdf/en-SQ-02.png"
+}

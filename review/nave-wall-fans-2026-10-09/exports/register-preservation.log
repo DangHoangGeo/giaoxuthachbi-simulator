@@ -1,0 +1,132 @@
+{
+  "before": "review/nave-wall-fans-2026-10-09/exports/baseline/before-registers.json",
+  "after": "review/nave-wall-fans-2026-10-09/exports/registers/after-registers.json",
+  "tables": {
+    "Equipment": {
+      "before": 335,
+      "after": 345,
+      "current": 335,
+      "retired": 10
+    },
+    "Electrical Lines": {
+      "before": 347,
+      "after": 357,
+      "current": 343,
+      "retired": 14
+    }
+  },
+  "retiredEquipment": [
+    "L64",
+    "L66",
+    "L68",
+    "L70",
+    "S275",
+    "S277",
+    "F-WING-B-3",
+    "F-WING-B-4",
+    "F-WING-H-3",
+    "F-WING-H-4"
+  ],
+  "retiredRoutes": [
+    "drop:LC1:L8:light:-1:L64",
+    "drop:LC1:L8:light:-1:L66",
+    "drop:LC1:L8:light:1:L68",
+    "drop:LC1:L8:light:1:L70",
+    "drop:AV1:A1:audio:-1:S275",
+    "drop:AV1:A1:audio:1:S277",
+    "drop:FC1:F5:fan:-1:F-WING-B-3",
+    "drop:FC1:F5:fan:-1:F-WING-B-4",
+    "drop:FC1:F5:fan:1:F-WING-H-3",
+    "drop:FC1:F5:fan:1:F-WING-H-4",
+    "drop:FC1:F1:fan:-1:F240",
+    "drop:FC1:F1:fan:-1:F241",
+    "drop:FC1:F1:fan:1:F242",
+    "drop:FC1:F1:fan:1:F243"
+  ],
+  "newEquipment": [
+    {
+      "category": "air-system",
+      "id": "F-NAVE-B-2P",
+      "board": "DB1",
+      "circuit": "F2",
+      "routes": "drop:FC1:F2:fan:-1:F-NAVE-B-2P",
+      "recordState": "Current"
+    },
+    {
+      "category": "air-system",
+      "id": "F-NAVE-H-2P",
+      "board": "DB1",
+      "circuit": "F2",
+      "routes": "drop:FC1:F2:fan:1:F-NAVE-H-2P",
+      "recordState": "Current"
+    },
+    {
+      "category": "air-system",
+      "id": "F-NAVE-B-3",
+      "board": "DB1",
+      "circuit": "F2",
+      "routes": "drop:FC1:F2:fan:-1:F-NAVE-B-3",
+      "recordState": "Current"
+    },
+    {
+      "category": "air-system",
+      "id": "F-NAVE-H-3",
+      "board": "DB1",
+      "circuit": "F2",
+      "routes": "drop:FC1:F2:fan:1:F-NAVE-H-3",
+      "recordState": "Current"
+    },
+    {
+      "category": "air-system",
+      "id": "F-NAVE-B-5",
+      "board": "DB1",
+      "circuit": "F2",
+      "routes": "drop:FC1:F2:fan:-1:F-NAVE-B-5",
+      "recordState": "Current"
+    },
+    {
+      "category": "air-system",
+      "id": "F-NAVE-H-5",
+      "board": "DB1",
+      "circuit": "F2",
+      "routes": "drop:FC1:F2:fan:1:F-NAVE-H-5",
+      "recordState": "Current"
+    },
+    {
+      "category": "air-system",
+      "id": "F-NAVE-B-7",
+      "board": "DB1",
+      "circuit": "F2",
+      "routes": "drop:FC1:F2:fan:-1:F-NAVE-B-7",
+      "recordState": "Current"
+    },
+    {
+      "category": "air-system",
+      "id": "F-NAVE-H-7",
+      "board": "DB1",
+      "circuit": "F2",
+      "routes": "drop:FC1:F2:fan:1:F-NAVE-H-7",
+      "recordState": "Current"
+    },
+    {
+      "category": "air-system",
+      "id": "F-NAVE-B-9",
+      "board": "DB1",
+      "circuit": "F2",
+      "routes": "drop:FC1:F2:fan:-1:F-NAVE-B-9",
+      "recordState": "Current"
+    },
+    {
+      "category": "air-system",
+      "id": "F-NAVE-H-9",
+      "board": "DB1",
+      "circuit": "F2",
+      "routes": "drop:FC1:F2:fan:1:F-NAVE-H-9",
+      "recordState": "Current"
+    }
+  ],
+  "preservedInputCells": 6473,
+  "nonemptyPreservedInputCells": 0,
+  "retiredVertices": 46,
+  "status": "Passed: every prior entered field, stable ID, category owner and retired record preserved."
+}

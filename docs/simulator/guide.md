@@ -441,3 +441,14 @@ Click an equipment row in **Wiring** to see its supply and branch relationships 
 ## Printable review and staged 3D coordination
 
 Choose **Simulator → Wiring → Start 3D walkthrough** for nine proposed installation-planning stages. Previous, Next review step, Reset stage view and End walkthrough change display only. Each stage states the unverified work that requires a responsible specialist. Generate the matching A3 review drawings with `python3 scripts/build_review_drawings.py`; see the [print workflow](../electrical-grid/print-drawings.md). This uses the default model, not saved browser edits, and is not construction authorization.
+
+
+## Reviewing a preserved wing layout · 9 October 2026
+
+Open the current local `Thach_Bi_Viewer/OPEN_CHURCH.html`, then **Simulator → Wiring**. Each wing shows its actual visible chandeliers, wall fans and roof fans, source review, mismatching IDs and whether it matches the held review. A migration marker is history only. Older operating modes and deliberate imports can preserve the previous equipment; no automatic reset is implied.
+
+Use **Use reviewed lights and fans · B/H** only to adopt that side's held fixture types, positions, aim and circuits. Existing light ON/dim values, other equipment and custom scenes/settings remain. F5 uses the low/off comparison setting of the current built-in mode. The action first stores a full browser backup, and Undo/Redo restores the equipment change. Failed backup/persistence or a reserved-ID conflict leaves the layout unchanged. Current sides have no adoption action. Export your layout JSON for a durable copy outside browser storage. These controls edit the local simulator only; the proposal and physical controls remain ENGINEERING HOLD.
+
+## Wing saints and latest source review
+
+The current default has two small brass chandeliers, two above-window wall fans, one entrance-facing wall speaker and one Peter/Paul picture pair perwing. **Simulator→Wiring** compares the actual saved layout separately for lights/fans, sound and saints. Adopt only the desired scope with **Use reviewed lights and fans**, **Use reviewed speaker** or **Use reviewed saints ·B/H**. These local actions write full backups, preserve unrelated records and support Undo/Redo. Deleted/moved/retuned saved items are not silently reset; a first-issue artwork marker prevents later deletions being recreated. The source remains an engineering hold: some seats are too dark, speech/feedback/air/noise and physical concealment/product/fixings remain unresolved. See [the coordinated review](../engineering/wing-review.md). Peter/Paul textures are local native generated concepts; modeled frame dimensions/height are review proxies.

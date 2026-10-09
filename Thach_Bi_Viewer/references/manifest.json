@@ -335,5 +335,41 @@
     "part": "07-stairs",
     "resolutionStatus": "Existing reference; not certified as Full HD detail",
     "libraryRole": "supporting-reference"
+  },
+  {
+    "id": "wing-saint-peter-concept-v1",
+    "title": "Saint Peter — generated devotional painting",
+    "description": "Generated concept texture reused in one unpowered framed picture per wing, between the windows. Subjects/location USER CONFIRMED; physical dimensions and final artwork pending.",
+    "url": "references/10-wing-saints/saint-peter-concept-v1.png",
+    "part": "10-wing-saints",
+    "type": "Generated devotional concept",
+    "status": "CONCEPT; final artwork, print, fixing, moisture/glare and engineering approvals pending.",
+    "width": 1024,
+    "height": 1536,
+    "master": "10-wing-saints/saint-peter-concept-v1.png",
+    "nativeWidth": 1024,
+    "nativeHeight": 1536,
+    "resolutionStatus": "Native 1024 ×1536, no resampling",
+    "sha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+    "libraryRole": "current-concept",
+    "provenanceManifest": "10-wing-saints/provenance.json"
+  },
+  {
+    "id": "wing-saint-paul-concept-v1",
+    "title": "Saint Paul — generated devotional painting",
+    "description": "Generated concept texture reused in one unpowered framed picture per wing, between the windows. Subjects/location USER CONFIRMED; physical dimensions and final artwork pending.",
+    "url": "references/10-wing-saints/saint-paul-concept-v1.png",
+    "part": "10-wing-saints",
+    "type": "Generated devotional concept",
+    "status": "CONCEPT; final artwork, print, fixing, moisture/glare and engineering approvals pending.",
+    "width": 1024,
+    "height": 1536,
+    "master": "10-wing-saints/saint-paul-concept-v1.png",
+    "nativeWidth": 1024,
+    "nativeHeight": 1536,
+    "resolutionStatus": "Native 1024 ×1536, no resampling",
+    "sha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+    "libraryRole": "current-concept",
+    "provenanceManifest": "10-wing-saints/provenance.json"
   }
 ]

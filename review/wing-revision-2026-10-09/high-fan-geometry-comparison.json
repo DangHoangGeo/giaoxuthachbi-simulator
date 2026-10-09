@@ -1,0 +1,634 @@
+[
+  {
+    "x": 37.5,
+    "y": 4.05,
+    "aim": "straight",
+    "records": [
+      {
+        "id": "F240",
+        "min": [
+          37.068570857258976,
+          3.738018201888809,
+          -13.299449258228963
+        ],
+        "max": [
+          37.931429142741024,
+          4.401562202712283,
+          -12.468847251272761
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.20044925822896253,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F241",
+        "min": [
+          43.21857085725898,
+          3.738018201888809,
+          -13.299449258228963
+        ],
+        "max": [
+          44.08142914274103,
+          4.401562202712283,
+          -12.468847251272761
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.20044925822896253,
+        "speakerIntersects": true
+      },
+      {
+        "id": "F242",
+        "min": [
+          37.068570857258976,
+          3.738018201888809,
+          12.468847251272761
+        ],
+        "max": [
+          37.931429142741024,
+          4.401562202712283,
+          13.299449258228963
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.20044925822896253,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F243",
+        "min": [
+          43.21857085725898,
+          3.738018201888809,
+          12.468847251272761
+        ],
+        "max": [
+          44.08142914274103,
+          4.401562202712283,
+          13.299449258228963
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.20044925822896253,
+        "speakerIntersects": true
+      }
+    ]
+  },
+  {
+    "x": 37.5,
+    "y": 4.05,
+    "aim": "bench",
+    "records": [
+      {
+        "id": "F240",
+        "min": [
+          37.11889604871971,
+          3.7347859899012015,
+          -13.301101889025995
+        ],
+        "max": [
+          37.95160043443329,
+          4.4031004128826075,
+          -12.468512790915339
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.2021018890259949,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F241",
+        "min": [
+          43.19841668399643,
+          3.7348210170592337,
+          -13.301108007822505
+        ],
+        "max": [
+          44.03110923232028,
+          4.403087367218009,
+          -12.468545136762032
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.20210800782250438,
+        "speakerIntersects": true
+      },
+      {
+        "id": "F242",
+        "min": [
+          37.11889604871971,
+          3.7347859899012015,
+          12.468512790915339
+        ],
+        "max": [
+          37.95160043443329,
+          4.4031004128826075,
+          13.301101889025995
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.2021018890259949,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F243",
+        "min": [
+          43.19841668399643,
+          3.7348210170592337,
+          12.468545136762032
+        ],
+        "max": [
+          44.03110923232028,
+          4.403087367218009,
+          13.301108007822505
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.20210800782250438,
+        "speakerIntersects": true
+      }
+    ]
+  },
+  {
+    "x": 37.5,
+    "y": 4.2,
+    "aim": "straight",
+    "records": [
+      {
+        "id": "F240",
+        "min": [
+          37.06875879822148,
+          3.8893626215096795,
+          -13.298651928726095
+        ],
+        "max": [
+          37.93124120177852,
+          4.550784371520166,
+          -12.469086758415282
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.1996519287260945,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F241",
+        "min": [
+          43.21875879822149,
+          3.8893626215096795,
+          -13.298651928726095
+        ],
+        "max": [
+          44.081241201778525,
+          4.550784371520166,
+          -12.469086758415282
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.1996519287260945,
+        "speakerIntersects": true
+      },
+      {
+        "id": "F242",
+        "min": [
+          37.06875879822148,
+          3.8893626215096795,
+          12.469086758415282
+        ],
+        "max": [
+          37.93124120177852,
+          4.550784371520166,
+          13.298651928726095
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.1996519287260945,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F243",
+        "min": [
+          43.21875879822149,
+          3.8893626215096795,
+          12.469086758415282
+        ],
+        "max": [
+          44.081241201778525,
+          4.550784371520166,
+          13.298651928726095
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.1996519287260945,
+        "speakerIntersects": true
+      }
+    ]
+  },
+  {
+    "x": 37.5,
+    "y": 4.2,
+    "aim": "bench",
+    "records": [
+      {
+        "id": "F240",
+        "min": [
+          37.11944747115125,
+          3.88584172453385,
+          -13.300571514476237
+        ],
+        "max": [
+          37.951624022380635,
+          4.55266514939886,
+          -12.468488580151044
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.2015715144762371,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F241",
+        "min": [
+          43.198396572433666,
+          3.885880574496575,
+          -13.300573048256316
+        ],
+        "max": [
+          44.03055561915234,
+          4.5526476453918425,
+          -12.468524421292052
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.20157304825631606,
+        "speakerIntersects": true
+      },
+      {
+        "id": "F242",
+        "min": [
+          37.11944747115125,
+          3.88584172453385,
+          12.468488580151044
+        ],
+        "max": [
+          37.951624022380635,
+          4.55266514939886,
+          13.300571514476237
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.2015715144762371,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F243",
+        "min": [
+          43.198396572433666,
+          3.885880574496575,
+          12.468524421292052
+        ],
+        "max": [
+          44.03055561915234,
+          4.5526476453918425,
+          13.300573048256316
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": true,
+        "wallBodyPenetration": 0.20157304825631606,
+        "speakerIntersects": true
+      }
+    ]
+  },
+  {
+    "x": 38.05,
+    "y": 4.05,
+    "aim": "straight",
+    "records": [
+      {
+        "id": "F240",
+        "min": [
+          37.61857085725897,
+          3.738018201888809,
+          -13.299449258228963
+        ],
+        "max": [
+          38.48142914274102,
+          4.401562202712283,
+          -12.468847251272761
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.20044925822896253,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F241",
+        "min": [
+          42.668570857258985,
+          3.738018201888809,
+          -13.299449258228963
+        ],
+        "max": [
+          43.53142914274103,
+          4.401562202712283,
+          -12.468847251272761
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.20044925822896253,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F242",
+        "min": [
+          37.61857085725897,
+          3.738018201888809,
+          12.468847251272761
+        ],
+        "max": [
+          38.48142914274102,
+          4.401562202712283,
+          13.299449258228963
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.20044925822896253,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F243",
+        "min": [
+          42.668570857258985,
+          3.738018201888809,
+          12.468847251272761
+        ],
+        "max": [
+          43.53142914274103,
+          4.401562202712283,
+          13.299449258228963
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.20044925822896253,
+        "speakerIntersects": false
+      }
+    ]
+  },
+  {
+    "x": 38.05,
+    "y": 4.05,
+    "aim": "bench",
+    "records": [
+      {
+        "id": "F240",
+        "min": [
+          37.67000478698408,
+          3.7365987502694815,
+          -13.300047947187084
+        ],
+        "max": [
+          38.50163077545298,
+          4.402308102737657,
+          -12.468417141364963
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.2010479471870834,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F241",
+        "min": [
+          42.64837720778364,
+          3.7366277149857874,
+          -13.300070017962229
+        ],
+        "max": [
+          43.4800211658894,
+          4.402293815269002,
+          -12.468442632852964
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.20107001796222868,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F242",
+        "min": [
+          37.67000478698408,
+          3.7365987502694815,
+          12.468417141364963
+        ],
+        "max": [
+          38.50163077545298,
+          4.402308102737657,
+          13.300047947187084
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.2010479471870834,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F243",
+        "min": [
+          42.64837720778364,
+          3.7366277149857874,
+          12.468442632852964
+        ],
+        "max": [
+          43.4800211658894,
+          4.402293815269002,
+          13.300070017962229
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.20107001796222868,
+        "speakerIntersects": false
+      }
+    ]
+  },
+  {
+    "x": 38.05,
+    "y": 4.2,
+    "aim": "straight",
+    "records": [
+      {
+        "id": "F240",
+        "min": [
+          37.61875879822148,
+          3.8893626215096795,
+          -13.298651928726095
+        ],
+        "max": [
+          38.481241201778516,
+          4.550784371520166,
+          -12.469086758415282
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.1996519287260945,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F241",
+        "min": [
+          42.66875879822149,
+          3.8893626215096795,
+          -13.298651928726095
+        ],
+        "max": [
+          43.53124120177853,
+          4.550784371520166,
+          -12.469086758415282
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.1996519287260945,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F242",
+        "min": [
+          37.61875879822148,
+          3.8893626215096795,
+          12.469086758415282
+        ],
+        "max": [
+          38.481241201778516,
+          4.550784371520166,
+          13.298651928726095
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.1996519287260945,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F243",
+        "min": [
+          42.66875879822149,
+          3.8893626215096795,
+          12.469086758415282
+        ],
+        "max": [
+          43.53124120177853,
+          4.550784371520166,
+          13.298651928726095
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.1996519287260945,
+        "speakerIntersects": false
+      }
+    ]
+  },
+  {
+    "x": 38.05,
+    "y": 4.2,
+    "aim": "bench",
+    "records": [
+      {
+        "id": "F240",
+        "min": [
+          37.67072103572666,
+          3.887830117208467,
+          -13.299372594103252
+        ],
+        "max": [
+          38.501492764857595,
+          4.551665946731105,
+          -12.468556677025264
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.2003725941032517,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F241",
+        "min": [
+          42.64851726680893,
+          3.8878615743047096,
+          -13.299390597612149
+        ],
+        "max": [
+          43.47930440447109,
+          4.551648690892805,
+          -12.468584808333349
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.20039059761214872,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F242",
+        "min": [
+          37.67072103572666,
+          3.887830117208467,
+          12.468556677025264
+        ],
+        "max": [
+          38.501492764857595,
+          4.551665946731105,
+          13.299372594103252
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.2003725941032517,
+        "speakerIntersects": false
+      },
+      {
+        "id": "F243",
+        "min": [
+          42.64851726680893,
+          3.8878615743047096,
+          12.468584808333349
+        ],
+        "max": [
+          43.47930440447109,
+          4.551648690892805,
+          13.299390597612149
+        ],
+        "windowIntersects": false,
+        "artStripIntersects": false,
+        "returnIntersects": false,
+        "wallBodyPenetration": 0.20039059761214872,
+        "speakerIntersects": false
+      }
+    ]
+  }
+]

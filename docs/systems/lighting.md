@@ -1,5 +1,7 @@
 # Lighting system · Thạch Bi church
 
+> **Current held wing review, 9 October 2026:** L63–L70 are eight smaller brass chandelier concepts, four per wing, replacing the eight end-wall projectors in the local review default. Each has six candle lamps plus a separate downward reading optic; this is an unselected 5,640 lm / 51 W concept, not manufacturer photometry. [Wing comparison](../engineering/wing-review.md) records all alternatives, clearance corrections and sensitivity failures. L8 retains its circuit and scene levels. Earlier quantities/results below predate this change; the [matched lighting register](../electrical-grid/categories/lighting/register.xlsx) owns current inventory. Glare, daylight, field-tail/blade interaction, thermal design, support and maintenance remain on hold.
+
 > Current comparison evidence is the [8 October baseline](../engineering/baseline.md). The four-block default minimum is 196.803 lux, with four of 368 positions below 200 lux; older minima and date labels below are historical results. Selected photometry, vertical faces, daylight/glare and concealed installation remain unverified. No target has been relaxed.
 
 Reviewed on 5 October 2026 against the current 3D geometry. Base design version `2026-10-16-tower-board`; lighting revision `2026-10-05-balanced-doors-towers`; façade revision `2026-10-05-continuous-facade-wash-2`.

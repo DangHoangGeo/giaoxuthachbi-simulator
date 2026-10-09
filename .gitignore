@@ -36,3 +36,8 @@ __pycache__/
 
 # Keep source drawings, model assets, Excel registers, review evidence,
 # package lockfiles and intentional editor/agent configuration tracked.
+
+# Bulky, regenerable review snapshots (register JSON dumps and rendered previews).
+# Curated evidence under review/ (READMEs, verification JSON, logs, screenshots) stays trackable.
+review/*/exports/baseline/
+review/*/exports/registers/

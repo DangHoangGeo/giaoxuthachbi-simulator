@@ -1,0 +1,43 @@
+{
+  "status": "Text-only final source correction; numeric and prior visual evidence retained.",
+  "pdfs": {
+    "en": {
+      "pdf": "output/pdf/thach-bi-electrical-review-A3.pdf",
+      "sha256": "2ccb548219a52615af7ef833d5bbe6782e806fde9e70872bca00670efbfb7832",
+      "previousSha256": "b1442e21ee163bffd59e9c3550fee662bf87c6e253bae96172430f63304302e5",
+      "pageCount": 44,
+      "changedTextPages": [
+        43
+      ],
+      "priorVisualEvidence": "before-installation-note-refreeze/pdf/en-render-index.json",
+      "currentStagePage": "pdf/en-SQ-02.png"
+    },
+    "vi": {
+      "pdf": "output/pdf-vi/thach-bi-electrical-review-A3-vi.pdf",
+      "sha256": "67e72b47bfec0b69ab80f266914a9e7856d3eea510f5cad59db5df520dd8aca7",
+      "previousSha256": "8ef4f8a0e876523dcce6c88e038bdb0a75ea648b3101bdcf4d3a7ad8c26f2059",
+      "pageCount": 44,
+      "changedTextPages": [
+        43
+      ],
+      "priorVisualEvidence": "before-installation-note-refreeze/pdf/vi-render-index.json",
+      "currentStagePage": "pdf/vi-SQ-02.png"
+    },
+    "cable-vi": {
+      "pdf": "output/electrical-review/thach-bi-cable-load-review-vi.pdf",
+      "sha256": "f0e401bde310474a02f70c2316397e97489643608c95788af012ccdf76f23016",
+      "previousSha256": "f0e401bde310474a02f70c2316397e97489643608c95788af012ccdf76f23016",
+      "pageCount": 14,
+      "changedTextPages": [],
+      "priorVisualEvidence": "before-installation-note-refreeze/budget/cable-vi-render-index.json"
+    },
+    "budget-vi": {
+      "pdf": "output/electrical-review/thach-bi-budget-japan-vi.pdf",
+      "sha256": "d0e4bbcd97f83e8ce7c397a727611f0667a4fbb7eda5c0e6b2db020e820da31e",
+      "previousSha256": "d0e4bbcd97f83e8ce7c397a727611f0667a4fbb7eda5c0e6b2db020e820da31e",
+      "pageCount": 10,
+      "changedTextPages": [],
+      "priorVisualEvidence": "before-installation-note-refreeze/budget/budget-vi-render-index.json"
+    }
+  }
+}

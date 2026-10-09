@@ -1,0 +1,7 @@
+Vietnamese A3 build did not publish outputs.
+Command: bundled python3 scripts/build_review_drawings.py --language vi
+Model export passed: 286 installed components, 333 routes, 23 drawing scopes.
+Failure in schedules(): scripts/build_review_drawings.py:317 called equipment_name(); scripts/review_drawings_i18n.py:317 raised:
+ValueError: Missing Vietnamese equipment-name part: 'held'
+Affected new default labels: S276/S278 (Wing speaker · B/H · toward entrance · held).
+Root owns the translation-source repair. Dependent drawing verification and budget generation paused until its new freeze.

@@ -1,0 +1,209 @@
+{
+  "basis": "Final held review: rear chandelier envelope inward of unchanged pendant speakers. Compare full coordinated air/light/sound without changing criteria.",
+  "cases": [
+    {
+      "id": "baseline"
+    },
+    {
+      "id": "review-wall-low",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "review-two-block",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      },
+      "blocks": 2
+    },
+    {
+      "id": "review-wall-medium",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 2,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "review-candle-only",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 2820,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "review-low-output",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 4512.0,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    }
+  ]
+}

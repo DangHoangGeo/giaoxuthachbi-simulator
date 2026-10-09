@@ -1,0 +1,176 @@
+{
+  "workbook": "/Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/lighting/register.xlsx",
+  "equipment": [
+    {
+      "row": 69,
+      "id": "L63",
+      "type": "5640 lm · 2700 K · 100° beam",
+      "coordinates": [
+        38.94,
+        3.8,
+        -10.15
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 70,
+      "id": "L65",
+      "type": "5640 lm · 2700 K · 100° beam",
+      "coordinates": [
+        42.22,
+        3.8,
+        -10.15
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 71,
+      "id": "L67",
+      "type": "5640 lm · 2700 K · 100° beam",
+      "coordinates": [
+        38.94,
+        3.8,
+        10.15
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 72,
+      "id": "L69",
+      "type": "5640 lm · 2700 K · 100° beam",
+      "coordinates": [
+        42.22,
+        3.8,
+        10.15
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 223,
+      "id": "L64",
+      "type": "5640 lm · 2700 K · 100° beam",
+      "coordinates": [
+        38.94,
+        4.4,
+        -8.8
+      ],
+      "recordState": "Retired"
+    },
+    {
+      "row": 224,
+      "id": "L66",
+      "type": "5640 lm · 2700 K · 100° beam",
+      "coordinates": [
+        42.22,
+        4.4,
+        -8.8
+      ],
+      "recordState": "Retired"
+    },
+    {
+      "row": 225,
+      "id": "L68",
+      "type": "5640 lm · 2700 K · 100° beam",
+      "coordinates": [
+        38.94,
+        4.4,
+        8.8
+      ],
+      "recordState": "Retired"
+    },
+    {
+      "row": 226,
+      "id": "L70",
+      "type": "5640 lm · 2700 K · 100° beam",
+      "coordinates": [
+        42.22,
+        4.4,
+        8.8
+      ],
+      "recordState": "Retired"
+    }
+  ],
+  "lines": [
+    {
+      "row": 73,
+      "id": "trunk:LC1:L8:light:-1",
+      "destinations": "L63\nL65",
+      "routeLength": 31.83942622175583,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 74,
+      "id": "drop:LC1:L8:light:-1:L63",
+      "destinations": "L63",
+      "routeLength": 6.943150773195873,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 75,
+      "id": "drop:LC1:L8:light:-1:L65",
+      "destinations": "L65",
+      "routeLength": 6.935096649484539,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 76,
+      "id": "trunk:LC1:L8:light:1",
+      "destinations": "L67\nL69",
+      "routeLength": 38.43942622175583,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 77,
+      "id": "drop:LC1:L8:light:1:L67",
+      "destinations": "L67",
+      "routeLength": 6.943150773195873,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 78,
+      "id": "drop:LC1:L8:light:1:L69",
+      "destinations": "L69",
+      "routeLength": 6.935096649484539,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 244,
+      "id": "drop:LC1:L8:light:-1:L64",
+      "destinations": "L64",
+      "routeLength": 4.993150773195873,
+      "fullHomeRun": null,
+      "recordState": "Retired"
+    },
+    {
+      "row": 245,
+      "id": "drop:LC1:L8:light:-1:L66",
+      "destinations": "L66",
+      "routeLength": 4.985096649484539,
+      "fullHomeRun": null,
+      "recordState": "Retired"
+    },
+    {
+      "row": 246,
+      "id": "drop:LC1:L8:light:1:L68",
+      "destinations": "L68",
+      "routeLength": 4.993150773195873,
+      "fullHomeRun": null,
+      "recordState": "Retired"
+    },
+    {
+      "row": 247,
+      "id": "drop:LC1:L8:light:1:L70",
+      "destinations": "L70",
+      "routeLength": 4.985096649484539,
+      "fullHomeRun": null,
+      "recordState": "Retired"
+    }
+  ]
+}
+Rendered 90 PNG ranges; workbook byte-for-byte unchanged.

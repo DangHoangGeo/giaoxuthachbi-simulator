@@ -1,0 +1,3 @@
+wingArtRevision migration skipped; saved layout retained: Injected startup quota failure
+wingArtRevision migration skipped; saved layout retained: Updated layout could not be saved.
+PASS: 47 wing-art cases; native hashes, frame/window envelopes, unpowered routes, pure one-time migration, scoped durable adoption, failures and reload preservation.

@@ -1,0 +1,51 @@
+{
+  "workbook": "/Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/decoration/register.xlsx",
+  "equipment": [
+    {
+      "row": 37,
+      "id": "D-WING-B-PETER",
+      "type": "Generated devotional concept. Frame proxy 1.12 × 1.62 m; actual size, material, glass, mounting and artwork approval pending. Unpowered.",
+      "coordinates": [
+        39.7,
+        2.2,
+        -13.095
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 38,
+      "id": "D-WING-B-PAUL",
+      "type": "Generated devotional concept. Frame proxy 1.12 × 1.62 m; actual size, material, glass, mounting and artwork approval pending. Unpowered.",
+      "coordinates": [
+        41.45,
+        2.2,
+        -13.095
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 39,
+      "id": "D-WING-H-PETER",
+      "type": "Generated devotional concept. Frame proxy 1.12 × 1.62 m; actual size, material, glass, mounting and artwork approval pending. Unpowered.",
+      "coordinates": [
+        39.7,
+        2.2,
+        13.095
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 40,
+      "id": "D-WING-H-PAUL",
+      "type": "Generated devotional concept. Frame proxy 1.12 × 1.62 m; actual size, material, glass, mounting and artwork approval pending. Unpowered.",
+      "coordinates": [
+        41.45,
+        2.2,
+        13.095
+      ],
+      "recordState": "Current"
+    }
+  ],
+  "lines": []
+}
+Rendered 30 PNG ranges; workbook byte-for-byte unchanged.

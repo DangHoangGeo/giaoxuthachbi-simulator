@@ -1,0 +1,734 @@
+{
+  "schema": 1,
+  "observed_date": "2026-10-09",
+  "status": "DESIGN DEVELOPMENT — supplier evidence only; product selection and purchasing held",
+  "scope": "Japan-origin suppliers and documented Japan/Vietnam/regional channels; no claim every product is made in Japan.",
+  "source_register": "../../review/japan-suppliers-2026-10-09/sources.json",
+  "project_basis": {
+    "source": "../electrical-grid/summary-report.md",
+    "source_revision": "Generated 2026-10-09",
+    "model_items": {
+      "lighting": 220,
+      "sound": 32,
+      "air_system": 39,
+      "exit_signs": 5,
+      "enclosures": 5
+    },
+    "supply_source": "../electrical-grid/cable-design-inputs.json",
+    "supply_voltage_v": null,
+    "phases": null,
+    "selected_products": null,
+    "quantity_note": "Model assemblies/items, not a purchase BOM; no equipment/route/register changes."
+  },
+  "summary_criteria": [
+    "Use manufacturer documentation and manufacturer-named local/regional channels; distinguish reseller listing from authorized warranty.",
+    "Gate each selected SKU on actual supply/frequency and maximum nameplate current/inrush; a 100V domestic product is not automatically usable.",
+    "Lighting: obtain exact optics/driver/accessory IES or LDT, dimming/flicker and replacement data.",
+    "Sound: obtain exact-model directivity/GLL, DSP/zone settings and microphones; separate speaker-line rating from mains demand.",
+    "Air: obey all-hidden central-view brief; duty-point curves/noise and maintainable duct/grille/support design precede selection.",
+    "Distribution/controls: preserve DB-1/DB-2 logic and offline manual operation; establish fault/earthing/protection and restart behavior.",
+    "Compare installed cost, commissioning, written warranty, spare lead times and local repair over an agreed service-life horizon; no invented score or best supplier."
+  ],
+  "suppliers": [
+    {
+      "id": "JP-ENDO",
+      "name": "ENDO Lighting",
+      "discipline": [
+        "lighting"
+      ],
+      "official_url": "https://www.endo-lighting.com/",
+      "observed_date": "2026-10-09",
+      "source_urls": [
+        "https://www.endo-lighting.com/company/network/",
+        "https://www.endo-lighting.com/download/",
+        "https://data5.endo-lighting.co.jp/products/search/pupup_syousaiPage.jsp?hinban=GSTSA0900WA-WH27&step=INDOOR%2FSPOTLIGHT%2FACCORD55",
+        "https://data5.endo-lighting.co.jp/products/search/pupup_syousaiPage.jsp?hinban=SXS3032S&step=Synca%2FTunableLEDZ%2FSynca%2FOUTDOOR+SPOTLIGHT"
+      ],
+      "source_ids": [
+        "EN-NET",
+        "EN-DATA",
+        "EN-SPOT",
+        "EN-OUT"
+      ],
+      "product_classes": {
+        "text": "Architectural spots, downlights, outdoor lighting and compatible control ranges; cited examples are evidence, not substitutes.",
+        "source_ids": [
+          "EN-DATA",
+          "EN-SPOT",
+          "EN-OUT"
+        ]
+      },
+      "voltage_status": {
+        "text": "International example GSTSA0900WA-WH27: AC220–240V; SXS3032S: AC100–242V. Check chosen SKU/frequency/driver.",
+        "source_ids": [
+          "EN-SPOT",
+          "EN-OUT"
+        ],
+        "project_supply_confirmed": false
+      },
+      "documentation": {
+        "text": "Official product search/DIALux route; sample pages list IES, dimensions, specification and installation manuals. No photometry imported here.",
+        "source_ids": [
+          "EN-DATA",
+          "EN-SPOT",
+          "EN-OUT"
+        ]
+      },
+      "channel_support": {
+        "text": "Japan international division and ENDO Lighting Vietnam sales subsidiary are manufacturer-listed.",
+        "source_ids": [
+          "EN-NET"
+        ],
+        "warranty_terms": null,
+        "spares_commitment": null,
+        "export_terms": null
+      },
+      "compatibility_gaps": [
+        "ACCORD55 cited example is non-dimmable; it cannot inherit scene dimming.",
+        "Exact optics, accessory photometry, glare, outdoor supports and Vietnam service terms pending."
+      ],
+      "recommendation_status": "evidence_candidate",
+      "selected_for_project": false
+    },
+    {
+      "id": "JP-PANASONIC",
+      "name": "Panasonic Electric Works / Panasonic Vietnam",
+      "discipline": [
+        "lighting",
+        "air-system",
+        "controls"
+      ],
+      "official_url": "https://panasonic.net/electricworks/lighting/en_vn/",
+      "observed_date": "2026-10-09",
+      "source_urls": [
+        "https://panasonic.net/electricworks/lighting/en_vn/products/",
+        "https://www2.panasonic.biz/jp/cec/dialux-plugin/",
+        "https://www.panasonic.com/vn/support/air-solution-download.html",
+        "https://www.panasonic.com/content/dam/pim/vn/vi/FV/FV-CAB/FV-CAB-STD-SPP/FV-15NS3_SpecSheet.pdf",
+        "https://www.panasonic.com/content/dam/pim/vn/vi/FY/FY-SWG/FY-SWGR1-SPP/IAQ-ERV-Cabinet-Fan-2024-VN-VI.pdf"
+      ],
+      "source_ids": [
+        "PA-LIGHT",
+        "PA-DIALUX",
+        "PA-AIR",
+        "PA-CAB",
+        "PA-ERV"
+      ],
+      "product_classes": {
+        "text": "Vietnam professional indoor/outdoor lighting, lamps and fan/ventilation ranges.",
+        "source_ids": [
+          "PA-LIGHT",
+          "PA-AIR"
+        ]
+      },
+      "voltage_status": {
+        "text": "FV-15NS3 indexed fan table includes 220/230/240V at 50Hz. Lighting driver and selected Vietnam SKU nameplates remain pending.",
+        "source_ids": [
+          "PA-CAB"
+        ],
+        "project_supply_confirmed": false
+      },
+      "documentation": {
+        "text": "Official Vietnam manuals and DIALux route; indexed cabinet-fan data includes pressure, flow, noise and current. Full cited fan PDFs could not be fetched.",
+        "source_ids": [
+          "PA-DIALUX",
+          "PA-AIR",
+          "PA-CAB",
+          "PA-ERV"
+        ]
+      },
+      "channel_support": {
+        "text": "Use official Vietnam product/support route to establish local dealer, exact SKU and service coverage.",
+        "source_ids": [
+          "PA-LIGHT",
+          "PA-AIR"
+        ],
+        "warranty_terms": null,
+        "spares_commitment": null,
+        "export_terms": null
+      },
+      "compatibility_gaps": [
+        "Cabinet/ducted product evidence supports studying concealment; no church duct/grille design accepted.",
+        "Emergency-sign battery/endurance, dimming, spares and final duty point remain pending."
+      ],
+      "recommendation_status": "evidence_candidate",
+      "selected_for_project": false
+    },
+    {
+      "id": "JP-ODELIC",
+      "name": "ODELIC",
+      "discipline": [
+        "lighting"
+      ],
+      "official_url": "https://www.odelic.co.jp/",
+      "observed_date": "2026-10-09",
+      "source_urls": [
+        "https://www.odelic.co.jp/search/DispUsageInstructions.do?tag=1",
+        "https://www.odelic.co.jp/search/fileDownload?fileID=t010001142555&volumeName=00002",
+        "https://www.odelic.co.jp/support/after-service/index.html"
+      ],
+      "source_ids": [
+        "OD-DATA",
+        "OD-VOLT",
+        "OD-SERVICE"
+      ],
+      "product_classes": {
+        "text": "Japan domestic lighting catalogue; possible appearance/detail reference.",
+        "source_ids": [
+          "OD-VOLT"
+        ]
+      },
+      "voltage_status": {
+        "text": "Cited domestic downlight examples are 100V; other ranges require exact driver proof.",
+        "source_ids": [
+          "OD-VOLT"
+        ],
+        "project_supply_confirmed": false
+      },
+      "documentation": {
+        "text": "IES, CAD, specifications and manuals are listed as download types.",
+        "source_ids": [
+          "OD-DATA"
+        ]
+      },
+      "channel_support": {
+        "text": "Japan service terms place use outside Japan in free-repair exclusions; electrical performance parts retained at least six years after discontinuation.",
+        "source_ids": [
+          "OD-SERVICE"
+        ],
+        "warranty_terms": "Domestic policy verified; Vietnam cover not confirmed",
+        "spares_commitment": "Domestic retention policy only",
+        "export_terms": null
+      },
+      "compatibility_gaps": [
+        "Keep domestic examples conditional; no selected Vietnam-compatible SKU/channel.",
+        "Domestic parts retention does not prove local stock or overseas warranty."
+      ],
+      "recommendation_status": "evidence_candidate",
+      "selected_for_project": false
+    },
+    {
+      "id": "JP-TOA",
+      "name": "TOA",
+      "discipline": [
+        "sound"
+      ],
+      "official_url": "https://www.toa-global.com/",
+      "observed_date": "2026-10-09",
+      "source_urls": [
+        "https://www.toa-global.com/en/profile/company/network",
+        "https://www.toa.nl/producten/sr-h2l/"
+      ],
+      "source_ids": [
+        "TO-NET",
+        "TO-SPK"
+      ],
+      "product_classes": {
+        "text": "Installed column/array speakers and associated audio-system comparison; SR-H2L is a documented example.",
+        "source_ids": [
+          "TO-SPK"
+        ]
+      },
+      "voltage_status": {
+        "text": "SR-H2L is a passive 8-ohm example, with optional transformer for high-impedance audio. Audio line voltage is separate from mains; selected amplifier PSU pending.",
+        "source_ids": [
+          "TO-SPK"
+        ],
+        "project_supply_confirmed": false
+      },
+      "documentation": {
+        "text": "SR-H2L data page lists EASE, datasheet, CAD, instructions and mounting accessories.",
+        "source_ids": [
+          "TO-SPK"
+        ]
+      },
+      "channel_support": {
+        "text": "Manufacturer lists Hanoi/HCMC sales offices and official Vietnam site toa-vn.com.",
+        "source_ids": [
+          "TO-NET"
+        ],
+        "warranty_terms": null,
+        "spares_commitment": null,
+        "export_terms": null
+      },
+      "compatibility_gaps": [
+        "Manufacturer data must replace proxy directivity; amplifier/DSP/zone topology and microphone feedback remain held.",
+        "Verify exact transformer taps, brackets, local commissioning and service terms."
+      ],
+      "recommendation_status": "evidence_candidate",
+      "selected_for_project": false
+    },
+    {
+      "id": "JP-YAMAHA",
+      "name": "Yamaha",
+      "discipline": [
+        "sound",
+        "audio-controls"
+      ],
+      "official_url": "https://vn.yamaha.com/vi/business/audio/",
+      "observed_date": "2026-10-09",
+      "source_urls": [
+        "https://vn.yamaha.com/vi/business/audio/products/speakers/vxl/",
+        "https://usa.yamaha.com/products/contents/proaudio/downloads/speaker_data.html",
+        "https://www.yamaha.com/ja/news_release/2026/26020301/"
+      ],
+      "source_ids": [
+        "YA-VXL",
+        "YA-DATA",
+        "YA-POWER"
+      ],
+      "product_classes": {
+        "text": "VXL installed columns, mounting accessories; DME/XMS installed-audio/DSP families.",
+        "source_ids": [
+          "YA-VXL",
+          "YA-POWER"
+        ]
+      },
+      "voltage_status": {
+        "text": "DME3/DME5 and XMS announcement examples: 100–240V 50/60Hz; passive VXL requires amplifier/transformer selection.",
+        "source_ids": [
+          "YA-POWER",
+          "YA-VXL"
+        ],
+        "project_supply_confirmed": false
+      },
+      "documentation": {
+        "text": "Manufacturer acoustic-data download library; Vietnam VXL pages and mounting details. Obtain exact model GLL/version.",
+        "source_ids": [
+          "YA-DATA",
+          "YA-VXL"
+        ]
+      },
+      "channel_support": {
+        "text": "Official Vietnam business-audio product route is present; local dealer/installation support and stock need confirmation.",
+        "source_ids": [
+          "YA-VXL"
+        ],
+        "warranty_terms": null,
+        "spares_commitment": null,
+        "export_terms": null
+      },
+      "compatibility_gaps": [
+        "2026 release announcement is not stock proof.",
+        "DSP delay, physical local controls, network failure/restart and amplifier maximum mains draw require selected manuals and commissioning."
+      ],
+      "recommendation_status": "evidence_candidate",
+      "selected_for_project": false
+    },
+    {
+      "id": "JP-AUDIO-TECHNICA",
+      "name": "Audio-Technica",
+      "discipline": [
+        "sound",
+        "microphones"
+      ],
+      "official_url": "https://www.audio-technica.com/en-sea/",
+      "observed_date": "2026-10-09",
+      "source_urls": [
+        "https://docs.audio-technica.com/us/ES925C_XLR_UM_EN.pdf",
+        "https://www.audio-technica.com/en-sea/retail",
+        "https://www.audio-technica.co.jp/support/storelist"
+      ],
+      "source_ids": [
+        "AT-DATA",
+        "AT-SEA",
+        "AT-JP"
+      ],
+      "product_classes": {
+        "text": "ES925 installed gooseneck microphones; exact capsule, length and base are separate selections.",
+        "source_ids": [
+          "AT-DATA"
+        ]
+      },
+      "voltage_status": {
+        "text": "ES925C/XLR example: 11–52V DC phantom power; mains applies at the mixer/PSU, not at the capsule.",
+        "source_ids": [
+          "AT-DATA"
+        ],
+        "project_supply_confirmed": false
+      },
+      "documentation": {
+        "text": "Official microphone manuals describe electrical requirements; exact polar/response data and variant must be obtained.",
+        "source_ids": [
+          "AT-DATA"
+        ]
+      },
+      "channel_support": {
+        "text": "SEA manufacturer lists Vietnam professional resellers DLPRO, ProAVL Vietnam, IO Trading and Quang Minh; Japan official Amazon store is also manufacturer-listed.",
+        "source_ids": [
+          "AT-SEA",
+          "AT-JP"
+        ],
+        "warranty_terms": null,
+        "spares_commitment": null,
+        "export_terms": null
+      },
+      "compatibility_gaps": [
+        "5-pin and XLR variants differ; confirm connector, phantom source and LED/control wiring.",
+        "Verify supplier authority for selected SKU, wind/noise isolation and actual gain-before-feedback."
+      ],
+      "recommendation_status": "evidence_candidate",
+      "selected_for_project": false
+    },
+    {
+      "id": "JP-KDK",
+      "name": "KDK",
+      "discipline": [
+        "air-system"
+      ],
+      "official_url": "https://kdk.jp/",
+      "observed_date": "2026-10-09",
+      "source_urls": [
+        "https://kdk.jp/worldwide-agent",
+        "https://www.kdk.com.my/wp-content/uploads/2024/06/MNE_2025_ED1.pdf",
+        "https://www.kdk.com.my/product/24cubm/"
+      ],
+      "source_ids": [
+        "KD-NET",
+        "KD-CAT",
+        "KD-SKU"
+      ],
+      "product_classes": {
+        "text": "Ducted/sirocco and industrial ventilation; catalogue also contains wall/ceiling fans.",
+        "source_ids": [
+          "KD-CAT"
+        ]
+      },
+      "voltage_status": {
+        "text": "Malaysia examples include 220–240V 50Hz and 240V-only ratings; selected Vietnam model/tolerance must be confirmed.",
+        "source_ids": [
+          "KD-CAT",
+          "KD-SKU"
+        ],
+        "project_supply_confirmed": false
+      },
+      "documentation": {
+        "text": "2024/2025 catalogue provides pressure/flow curves, dimensions, motor and noise data for cited ventilation classes.",
+        "source_ids": [
+          "KD-CAT"
+        ]
+      },
+      "channel_support": {
+        "text": "KDK names Thanh Cong Trading and Marketing Company Limited as Vietnam agent.",
+        "source_ids": [
+          "KD-NET"
+        ],
+        "warranty_terms": null,
+        "spares_commitment": null,
+        "export_terms": null
+      },
+      "compatibility_gaps": [
+        "Exposed wall/ceiling fans do not meet the all-hidden brief merely because a brand is shortlisted.",
+        "No duct loss, inlet/outlet position, occupied-zone throw or service removal envelope established."
+      ],
+      "recommendation_status": "evidence_candidate",
+      "selected_for_project": false
+    },
+    {
+      "id": "JP-MITSUBISHI",
+      "name": "Mitsubishi Electric",
+      "discipline": [
+        "air-system",
+        "distribution-controls"
+      ],
+      "official_url": "https://vn.mitsubishielectric.com/",
+      "observed_date": "2026-10-09",
+      "source_urls": [
+        "https://vn.mitsubishielectric.com/vi/contact/",
+        "https://www.mitsubishielectric.com/fa/products/lvd/lvcb/index.html",
+        "https://web-api.mitsubishi-electric.vn/Uploads/files/catalogue-fan-ver-72020-da-nen-802ac6ec-edb0-4515-8b8a-9dc7deff2014.pdf"
+      ],
+      "source_ids": [
+        "ME-NET",
+        "ME-LV",
+        "ME-FAN"
+      ],
+      "product_classes": {
+        "text": "Ventilation range; separate MCCB/MCB/RCCB/RCBO and protection accessories.",
+        "source_ids": [
+          "ME-FAN",
+          "ME-LV"
+        ]
+      },
+      "voltage_status": {
+        "text": "No exact church fan, breaker, control-coil or PSU voltage selected; request international/Vietnam model data.",
+        "source_ids": [
+          "ME-FAN",
+          "ME-LV"
+        ],
+        "project_supply_confirmed": false
+      },
+      "documentation": {
+        "text": "Official breaker categories and Vietnam ventilation catalogue identified; selected curves, noise/nameplate and trip coordination still pending.",
+        "source_ids": [
+          "ME-LV",
+          "ME-FAN"
+        ]
+      },
+      "channel_support": {
+        "text": "Corporate Vietnam page links household/FA distribution and warranty routes.",
+        "source_ids": [
+          "ME-NET"
+        ],
+        "warranty_terms": null,
+        "spares_commitment": null,
+        "export_terms": null
+      },
+      "compatibility_gaps": [
+        "Do not use historical ventilation catalogue as current SKU/stock proof.",
+        "Fault current, earthing, phases, derating and concealed fan performance remain unresolved."
+      ],
+      "recommendation_status": "evidence_candidate",
+      "selected_for_project": false
+    },
+    {
+      "id": "JP-NITTO",
+      "name": "Nitto Kogyo",
+      "discipline": [
+        "distribution-controls",
+        "enclosures"
+      ],
+      "official_url": "https://www.nito.co.jp/english/",
+      "observed_date": "2026-10-09",
+      "source_urls": [
+        "https://www.nito.co.jp/english/products/enclosures/",
+        "https://www.nito.co.jp/english/products/enclosures/control-enclosure-for-small-fa/CN-U-enclosure/",
+        "https://www.nito.co.jp/english/company/global/",
+        "https://vn.misumi-ec.com/vona2/detail/222000234195/?HissuCode=TE12-34R"
+      ],
+      "source_ids": [
+        "NI-CAT",
+        "NI-SPEC",
+        "NI-NET",
+        "MI-SKU"
+      ],
+      "product_classes": {
+        "text": "Empty steel/stainless/weatherproof enclosures; CN-U is an indoor IP66 example with drawings.",
+        "source_ids": [
+          "NI-CAT",
+          "NI-SPEC"
+        ]
+      },
+      "voltage_status": {
+        "text": "Empty enclosure has no operating mains rating to infer; finished board/component assembly must be checked separately.",
+        "source_ids": [
+          "NI-CAT",
+          "NI-SPEC"
+        ],
+        "project_supply_confirmed": false
+      },
+      "documentation": {
+        "text": "Manufacturer dimensions/drawings and environmental-class data; MISUMI Vietnam lists example Nitto model with CAD.",
+        "source_ids": [
+          "NI-SPEC",
+          "MI-SKU"
+        ]
+      },
+      "channel_support": {
+        "text": "Manufacturer regional bases and MISUMI Vietnam listing are documented; Vietnam warranty terms unverified.",
+        "source_ids": [
+          "NI-NET",
+          "MI-SKU"
+        ],
+        "warranty_terms": null,
+        "spares_commitment": null,
+        "export_terms": null
+      },
+      "compatibility_gaps": [
+        "An enclosure is not a verified distribution/control board.",
+        "Board heat rise, cable entry/glands, short-circuit withstand, local manual controls and corrosion/maintenance pending."
+      ],
+      "recommendation_status": "evidence_candidate",
+      "selected_for_project": false
+    },
+    {
+      "id": "JP-TERASAKI",
+      "name": "Terasaki Electric",
+      "discipline": [
+        "distribution-controls",
+        "protection"
+      ],
+      "official_url": "https://www.terasaki.co.jp/english/",
+      "observed_date": "2026-10-09",
+      "source_urls": [
+        "https://www.terasaki.co.jp/english/about/offices.html",
+        "https://www.terasaki.co.jp/english/business/breaker/tbp/hanyo_general.html",
+        "https://www.terasaki.co.jp/english/files/business/breaker/23-I68E_web_24.6.28.pdf"
+      ],
+      "source_ids": [
+        "TE-NET",
+        "TE-SPEC",
+        "TE-CAT"
+      ],
+      "product_classes": {
+        "text": "TemBreak PRO molded-case and associated protection-device families.",
+        "source_ids": [
+          "TE-SPEC",
+          "TE-CAT"
+        ]
+      },
+      "voltage_status": {
+        "text": "Published ratings distinguish poles/current and Icu/Ics at AC415V; selected supply, coil voltage and device ratings pending.",
+        "source_ids": [
+          "TE-SPEC"
+        ],
+        "project_supply_confirmed": false
+      },
+      "documentation": {
+        "text": "Official IEC 60947-2 catalogue and rating tables are available; exact curves/selectivity not adopted here.",
+        "source_ids": [
+          "TE-CAT",
+          "TE-SPEC"
+        ]
+      },
+      "channel_support": {
+        "text": "Manufacturer assigns Vietnam to TERASAKI CIRCUIT BREAKERS(S) PTE. LTD., Singapore.",
+        "source_ids": [
+          "TE-NET"
+        ],
+        "warranty_terms": null,
+        "spares_commitment": null,
+        "export_terms": null
+      },
+      "compatibility_gaps": [
+        "No breaker size is selected; present DB-1/DB-2 current/fault inputs are null.",
+        "Exact trips, discrimination, surge/lightning arrangement and Vietnam installation requirements pending."
+      ],
+      "recommendation_status": "evidence_candidate",
+      "selected_for_project": false
+    },
+    {
+      "id": "JP-FUJIKURA-DIA",
+      "name": "Fujikura Dia Cable",
+      "discipline": [
+        "electrical-lines",
+        "power-control-cable"
+      ],
+      "official_url": "https://www.fujikura-dia.co.jp/",
+      "observed_date": "2026-10-09",
+      "source_urls": [
+        "https://www.fujikura-dia.co.jp/pdf/catalog/catalog-600V-CV.pdf",
+        "https://www.fujikura-dia.co.jp/tech/documents/allowable-current.php",
+        "https://www.fujikura-dia.co.jp/"
+      ],
+      "source_ids": [
+        "FD-CAT",
+        "FD-AMP",
+        "FD-SITE"
+      ],
+      "product_classes": {
+        "text": "Power, control/instrumentation, communications and fire/disaster-prevention cable classes; 600V CV is a documented construction example.",
+        "source_ids": [
+          "FD-SITE",
+          "FD-CAT"
+        ]
+      },
+      "voltage_status": {
+        "text": "600V CV cable voltage class is documented; it does not confirm the church supply or a selected conductor section.",
+        "source_ids": [
+          "FD-CAT"
+        ],
+        "project_supply_confirmed": false
+      },
+      "documentation": {
+        "text": "Construction/nominal-section tables reference JIS C 3605; published ampacity/derating methods require installation-specific inputs.",
+        "source_ids": [
+          "FD-CAT",
+          "FD-AMP"
+        ]
+      },
+      "channel_support": {
+        "text": "Official Japan manufacturer product route identified; Vietnam/export channel, terms and local replacement stock unverified.",
+        "source_ids": [
+          "FD-SITE"
+        ],
+        "warranty_terms": null,
+        "spares_commitment": null,
+        "export_terms": null
+      },
+      "compatibility_gaps": [
+        "Japanese conductor-size series and method cannot be silently substituted for the project IEC/TCVN design basis.",
+        "Fire performance, installed topology/allowance, termination compatibility and legitimate local cable supply pending."
+      ],
+      "recommendation_status": "evidence_candidate",
+      "selected_for_project": false
+    },
+    {
+      "id": "JP-MISUMI",
+      "name": "MISUMI Vietnam / Japan channel",
+      "discipline": [
+        "distribution-controls",
+        "procurement-channel"
+      ],
+      "official_url": "https://vn.misumi-ec.com/",
+      "observed_date": "2026-10-09",
+      "source_urls": [
+        "https://vn.misumi-ec.com/vona2/detail/222000234195/?HissuCode=TE12-34R",
+        "https://vn.misumi-ec.com/contents/terms/CAD/"
+      ],
+      "source_ids": [
+        "MI-SKU",
+        "MI-TERM"
+      ],
+      "product_classes": {
+        "text": "Industrial component procurement channel; documented Nitto enclosure listing is an example.",
+        "source_ids": [
+          "MI-SKU"
+        ]
+      },
+      "voltage_status": {
+        "text": "Model-specific voltage must come from each manufacturer; website/channel itself has no common voltage rating.",
+        "source_ids": [
+          "MI-SKU"
+        ],
+        "project_supply_confirmed": false
+      },
+      "documentation": {
+        "text": "Example listing has brand/model, dimensions and 2D CAD; CAD use is subject to published terms.",
+        "source_ids": [
+          "MI-SKU",
+          "MI-TERM"
+        ]
+      },
+      "channel_support": {
+        "text": "Vietnam site is operated by MISUMI VIETNAM CO., LTD.; use its local quotation route to verify supply/return terms.",
+        "source_ids": [
+          "MI-TERM"
+        ],
+        "warranty_terms": null,
+        "spares_commitment": null,
+        "export_terms": null
+      },
+      "compatibility_gaps": [
+        "Listing proves a purchasing route, not blanket manufacturer-authorized warranty.",
+        "Actual stock, price validity, delivery/returns, origin and warranty for each selected item need a written quote."
+      ],
+      "recommendation_status": "evidence_candidate",
+      "selected_for_project": false
+    }
+  ],
+  "excluded_direct_export_channels": [
+    {
+      "name": "MonotaRO Japan",
+      "reason": {
+        "text": "Official delivery terms restrict shipping to Japan and exclude overseas forwarding companies/services. Do not assume direct Vietnam supply.",
+        "source_ids": [
+          "MO-SHIP"
+        ]
+      },
+      "observed_date": "2026-10-09"
+    }
+  ],
+  "unresolved_quote_requirements": [
+    "Exact product IDs mapped to church equipment IDs",
+    "Manufacturer data/ratings for each international/Vietnam SKU",
+    "Authenticated seller and written Vietnam warranty/export/import terms",
+    "Spare models, prices/lead times and replacement/cleaning access",
+    "Engineering-approved layout, loads, routes, control behavior and commissioning plan"
+  ],
+  "research_actions": {
+    "purchases": false,
+    "supplier_contact": false,
+    "model_or_register_changes": false
+  }
+}

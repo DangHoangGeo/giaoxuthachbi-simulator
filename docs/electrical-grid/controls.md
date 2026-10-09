@@ -25,7 +25,7 @@ The source of circuit membership and scene values is [engine.js](../../Thach_Bi_
 
 | Board / panel | Current function and groups | Physical design to develop |
 | --- | --- | --- |
-| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/V1, audio groups A1–A5/MIC and seasonal X1. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
+| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/F5/V1, audio groups A1–A5/MIC and seasonal X1. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
 | DB-2, inside main entrance | Sub-board for L6 façade/towers, L7 festival exterior, L9 stage/central door and F4 trial entrance circulators. Fed from DB-1. | Local manual control for those groups, feeder-availability indication and tower quick-mode buttons. Confirm physical enclosure size and installation details. |
 | LC-1 / lighting operator controls | Lighting groups and scene functions. | Required individual/group on/off and dimming channels; main scene keypad and any agreed local repeat controls. |
 | FC-1 / fan operator controls | Fan/exhaust groups and speed selection. | Compatible controls for the selected motors; independent/group operation and clear Off/Low/Medium/High or product-specific labels. |
@@ -75,3 +75,23 @@ The present Excel register and JSON/CSV exports provide route and equipment data
 The local Wiring tab now filters by usage system, board, circuit or one equipment ID and retains the required upstream enclosure/feeder context. **Controls · circuit** opens the existing simulator dock at the corresponding board, fan regulator or sound strip. Opening this dock does not operate a circuit. Return through **Simulator → Wiring** to the retained view. This is a traceable review aid; unknown physical addresses and independent control capability remain pending. See [review layers](routing.md#local-engineering-review-layers--8-october-2026).
 
 The 9 October connection inspector shows feeder/trunk/branch relationships above the local review filters and links each route to its details. It keeps AV rack power separate from microphone/loudspeaker signals. **Controls · circuit** still opens the existing simulator control without actuating it; the inspector does not assign physical terminals, channels or protective devices. Its filtered JSON snapshot is a review aid, not a physical board drawing.
+
+
+## Held wing control group · 9 October 2026
+
+The [wing review](../engineering/wing-review.md) introduces logical **F5 · Wing wall fans · held review** for four small wall fans through **DB-1 → FC-1 → F5**. The 14 remaining nave ceiling fans stay on F1. The sixteen nave wall fans on F2 (eight per side) are shown by default but OFF in every built-in mode; their visibility does not enable them. Manual simulator operation remains available for comparison. L63/L65/L67/L69 remain four chandelier items on L8; four former light IDs and four appended fan IDs are retired. S276/S278 are the two wing wall speakers on A1, facing −X toward the entrance; S275/S277 are retired. Microphones and DB-1/DB-2 feeder logic are unchanged. Four unpowered Peter/Paul pictures are decoration records without circuits to energize or electrical routes.
+
+| Built-in review mode | L8 dim | F5 | F2 |
+| --- | --- | --- | --- |
+| Full service / Christmas / courtyard festival | 1.00 | Low (1) | OFF |
+| Weekday Mass | 0.75 | Low (1) | OFF |
+| Prayer & adoration | 0.25 | Low (1) | OFF |
+| Cleaning | 1.00 | Low (1) | OFF |
+| Night security / All off | 0 | OFF | OFF |
+
+These states are reproducible comparison inputs. Quiet-prayer noise, thermal comfort, light minima, speech and physical concealment remain held; the matrix is not an approved operating policy. F5 has no assigned physical control/channel/terminal or protective device. FC-1 capacity, regulation compatibility, inrush, restart/isolation and safe commissioning require the electrical/mechanical designers. Generated routes and drawings express logical connectivity only. The Wiring tab labels the proposal ENGINEERING HOLD and compares each side’s actual equipment content and visible counts with the source review. The saved migration marker is history only. Explicit per-side lights/fans adoption writes a full backup first and supports Undo/Redo while retaining unrelated edits; current-layout or backup persistence failure blocks the update. This is a local model edit, not a physical command. See the [saved-layout workflow](../engineering/wing-review.md#saved-layouts).
+
+
+## Nave wall-fan quantity revision · 9 October 2026
+
+[Eight wall fans per side](../engineering/nave-wall-fans.md) means sixteen F2 items through DB-1 → FC-1 → F2, visible by default and OFF in every built-in scene. Six old IDs remain and ten named IDs are appended; all receive matching drop routes. Representative maximum F2 mains proxy is880W; the simulator breaker graphic is not an approved protective-device selection. Product motor loads/inrush, physical channels, regulation compatibility, restart/isolation and actual cable/protection remain pending. Per-side adoption in Wiring changes model geometry/visibility with durable backups and Undo, preserving existing operating overrides and unrelated equipment. It issues no physical hardware command.

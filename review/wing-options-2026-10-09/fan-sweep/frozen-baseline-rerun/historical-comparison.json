@@ -1,0 +1,294 @@
+{
+  "status": "PASS",
+  "sourceHistorical": "../cases.json",
+  "sourceCurrent": "cases.json",
+  "caseCount": 31,
+  "receiverCount": 80,
+  "comparison": "Exact unrounded receiver values, summary/wing statistics, every computed fan nozzle/source, requested targets and changed equipment for every case. New recommended defaults are not equipment/scenario inputs.",
+  "sourceLayoutDifference": {
+    "field": "settings.wingReviewRevision",
+    "current": "2026-10-09-wing-held-1",
+    "basis": "importLayout preserves missing settings from the current initialized state; equipment and all frozen baseline settings remain exact."
+  },
+  "cases": [
+    {
+      "id": "baseline-roof-fans",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h2p7-s1-z9p5",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h2p7-s1-z10p15",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h2p7-s1-z11",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h2p7-s2-z9p5",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h2p7-s2-z10p15",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h2p7-s2-z11",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h3p2-s1-z9p5",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h3p2-s1-z10p15",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h3p2-s1-z11",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h3p2-s2-z9p5",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h3p2-s2-z10p15",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h3p2-s2-z11",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h3p7-s1-z9p5",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h3p7-s1-z10p15",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h3p7-s1-z11",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h3p7-s2-z9p5",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h3p7-s2-z10p15",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-2-h3p7-s2-z11",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-4-h2p7-s1-front8p6",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-4-h2p7-s1-front9",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-4-h2p7-s2-front8p6",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-4-h2p7-s2-front9",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-4-h3p2-s1-front8p6",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-4-h3p2-s1-front9",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-4-h3p2-s2-front8p6",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-4-h3p2-s2-front9",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-4-h3p7-s1-front8p6",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-4-h3p7-s1-front9",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-4-h3p7-s2-front8p6",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    },
+    {
+      "id": "wall-4-h3p7-s2-front9",
+      "summaryExact": true,
+      "wingsExact": true,
+      "receiversExact": true,
+      "allFanSourcesExact": true,
+      "requestedTargetsExact": true,
+      "changedItemsExact": true
+    }
+  ]
+}

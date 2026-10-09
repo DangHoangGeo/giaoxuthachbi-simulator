@@ -1,0 +1,29 @@
+{
+  "passed": 24,
+  "checks": [
+    "Point illuminance: cosine law and inverse square",
+    "Spotlight normalization conserves lumens and reaches half intensity at beam angle",
+    "A-weighted band conversion round-trips arbitrary levels and spectra",
+    "Acoustic averages use energy; equal sources add 3.0103 dB",
+    "Statistics use interpolated percentiles and exclude unavailable readings",
+    "Speaker on-axis direct SPL at 1 m matches its stated dBA, with response and line length",
+    "Point speech loses 6.0206 dB when distance doubles",
+    "Line source has continuous transition and correct near/far distance slopes",
+    "Outdoor receivers have no enclosed reverberation, without changing direct sound",
+    "STI remains bounded and decreases with additional background noise",
+    "Feedback margin responds to gain, microphone distance and additional source energy",
+    "Fan airflow and cooling outputs have physically appropriate boundaries",
+    "Every catalogue item draws zero operational watts when off or hidden",
+    "Fan power follows discrete speeds and preserves connected rating while off",
+    "LED power uses the declared efficacy and dimmer/driver allowance",
+    "Festival power follows the actual number of bulbs, including spacing",
+    "Power totals and service energy are dimensionally correct and reconcile by circuit",
+    "Invalid estimate settings cannot generate negative loads, energy or invalid acoustics",
+    "HUD point and seated sample agree at the same book, ear and airflow planes",
+    "Air and noise plan samples agree with the exact point calculation",
+    "Air does not pass through solid walls",
+    "No fans or speakers gives zero fan airflow, ambient-only noise and no invented speech/STI",
+    "Indoor diffuse light does not extend beyond the church envelope",
+    "Outdoor noise follows free-field fan spreading without a room-wide noise floor"
+  ]
+}

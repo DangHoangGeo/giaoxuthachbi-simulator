@@ -4,6 +4,8 @@ Status: **blocked; independent package committed and pushed, branch unmerged**. 
 
 [Branch evidence at ae18c68](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/ae18c68/review/engineering-controls-2026-10-08/README.md). The independent software/control map and six-register package is verified. Physical supply/product/interface design remains held. Its software is on the phase branch, not in this main checkout.
 
+9 October continuation on `eng/10-wing-review`: [all-route load/cable comparisons](../../docs/electrical-grid/cable-load-review.md), [40 open confirmation questions](../../docs/engineering/questions-for-parish-and-designers.json), Vietnamese A3 drawings and [Japanese supplier/budget review](../../docs/budget/README.md) are independent review work. The parish reports no supply/installation information. All actual cable/protection/nameplate approvals remain pending, AV maximum is unknown, and E5 is not passed. This continuation does not merge the separate E5 software branch or approve physical boards.
+
 ## Outcome
 
 A coordinated DB-1/DB-2 and LC-1/FC-1/AV-1 design, with checked circuit/load/protection decisions, usable concealed physical control locations, explicit item/group channels and predictable operating modes. Physical manual operation works without internet by design; software controls remain a simulation until a separate engineered hardware commissioning scope is authorized.

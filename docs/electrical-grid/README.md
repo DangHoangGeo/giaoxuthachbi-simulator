@@ -11,6 +11,8 @@ This folder is the home for that work:
 - [Separate equipment and line Excel registers by usage category](categories/README.md)
 - [Total quantities, usage and quality report](summary-report.md)
 - [Register fields, refresh and Excel position proposals](register.md)
+- [Conditional route-load/cable review and confirmation questions](cable-load-review.md)
+- [Japanese supplier shortlist and separate budget review](../budget/README.md)
 - [Matching simulator layout JSON](equipment-layout.json)
 - [Systems JSON: sources, routes, equipment and quantities](electrical-systems.json)
 - [Board/component and route schedule CSV](electrical-schedule.csv)
@@ -33,9 +35,10 @@ Route feasibility can require another placement iteration. Preserve lighting, in
 
 The local offline HTML viewer implements selectable 2D/3D routes, circuit and item controls, DB-1/DB-2 board views, the DB-2 feeder, fan speed controls, sound-zone level/mute controls and quick scenes. Its Wiring tab now filters by discipline, circuit, board or individual equipment and retains the related upstream feeds; see the [local review workflow](routing.md#local-engineering-review-layers--8-october-2026). The hosted architectural GLB preview does not contain this simulator or its controls. The physical board faces are schematic. Final wiring, switching hardware, control addresses, enclosure layouts and protective-device design are still pending; see [controls](controls.md).
 
-Exports regenerated on **7 October 2026**, routing revision `2026-10-07-concealed-1`, from the recommended default layout: **286 connected components and 329 selectable runs**. Feeds now follow wall bands, roof lining/covered soffits and beam tops; microphones return below the floor. Equipment positions, IDs, circuits and optical/acoustic settings are preserved. See the [routing basis and installation holds](routing.md#concealment-revision-7-october-2026) and [review record](../../review/concealed-wiring-2026-10-07/README.md). Older exports and route lengths are superseded. A browser's saved edits form a different configuration and must be exported separately.
+Exports regenerated on **9 October 2026** for the [eight-per-side nave fan review](../engineering/nave-wall-fans.md), retaining the [held wing review](../engineering/wing-review.md): **296 connected components,343selectable routes and2,779vertices**. The preceding `614222c` snapshot had286components,333routes and2,749vertices. The routing revision remains `2026-10-07-concealed-1`; it names the route method, not the latest equipment issue. Feeds follow wall bands, roof lining/covered soffits and beam tops; microphones return below the floor. See the [routing basis and installation holds](routing.md#concealment-revision-7-october-2026). Saved browser edits form a separate configuration.
 
-The six category registers include **327 equipment/enclosure records** (all 322 simulator items plus five enclosures), including hidden alternatives and non-electrical furnishings. Every file has matching Equipment, Electrical Lines and Route Points sheets plus Read me. Together they manage specifications, positions, IDs and control mapping without duplicate ownership. Keep them and the [summary report](summary-report.md) coordinated using the [register workflow](register.md).
+The six category registers include **335current equipment/enclosure records** (330simulator items plus five enclosures), including hidden alternatives and non-electrical furnishings. Ten retired equipment IDs, fourteen retired routes and46vertices remain preserved. Every file has matching Equipment, Electrical Lines and Route Points sheets plus Read me. Keep them and the [summary](summary-report.md) coordinated using the [register workflow](register.md).
+
 
 Run from the repository root:
 
@@ -48,4 +51,4 @@ The first command checks the implemented electrical route layer and writes layou
 
 ## Printable review set and 3D installation planning
 
-The [Python export workflow](print-drawings.md) builds A3 circuit plans, height projections, coordinates and a unique route index from a fresh default-model snapshot. **Simulator → Wiring → Start 3D walkthrough** provides the matching nine-stage review with explicit holds. Both are design-development aids; the current paper set is the baseline before the owner-requested wing redesign.
+The [Python export workflow](print-drawings.md) builds matched English and Vietnamese A3 circuit plans, height projections, coordinates and a unique route index from a fresh default-model snapshot. **Simulator → Wiring → Start 3D walkthrough** provides the matching nine-stage review with explicit holds. The current paper set includes the held wing redesign. The [separate Python load/budget workflow](cable-load-review.md) adds all-route conditional calculations, quantity CSVs and two Vietnamese reports. It checks existing register hashes and does not overwrite approved/input fields. All outputs are design-development aids; none are approved to purchase or build.

@@ -192,6 +192,26 @@
   }
 
   /* ----------------------------------------------------------------- body */
+  function retainedWingNotice() {
+    const retained = SIM.wingReviewStatus?.().sides.filter(s => !s.current) || [];
+    if (!retained.length) return '';
+    return `<div class="sim-card"><h3>Wing layout retained</h3><p class="sim-hint">Wing ${retained.map(s => esc(s.side)).join(' / ')} uses preserved or custom lights and fans. Compare its equipment with the held review in Wiring.</p><button data-tab-jump="wiring">Review wing layout in Wiring</button></div>`;
+  }
+  function retainedWingSoundNotice() {
+    const retained = SIM.wingSoundStatus?.().sides.filter(s => !s.current) || [];
+    if (!retained.length) return '';
+    return `<div class="sim-card"><h3>Wing speaker layout retained</h3><p class="sim-hint">Wing ${retained.map(s => esc(s.side)).join(' / ')} uses preserved or custom speakers. Compare its equipment with the held sound review in Wiring.</p><button data-act="wing-sound-review">Review wing speakers in Wiring</button></div>`;
+  }
+  function retainedWingArtNotice() {
+    const retained = SIM.wingArtStatus?.().sides.filter(s => !s.current) || [];
+    if (!retained.length) return '';
+    return `<div class="sim-card"><h3>Wing picture layout retained</h3><p class="sim-hint">Wing ${retained.map(s => esc(s.side)).join(' / ')} uses preserved or custom saints' pictures. Compare its pictures with the concept review in Wiring.</p><button data-act="wing-art-review">Review wing saints in Wiring</button></div>`;
+  }
+  function retainedNaveFansNotice() {
+    const retained = SIM.naveFanStatus?.().sides.filter(s => !s.current) || [];
+    if (!retained.length) return '';
+    return `<div class="sim-card"><h3>Nave fan layout retained</h3><p class="sim-hint">Nave side ${retained.map(s => esc(s.side)).join(' / ')} uses preserved or custom fans. The held review has 8 visible wall fans per side on F2. Compare this layout in Wiring; visibility does not switch fans on.</p><button data-tab-jump="wiring">Review nave fans in Wiring</button></div>`;
+  }
   function renderBody() {
     const scroll = body.scrollTop;
     for (const b of panel.querySelectorAll('[data-tab]')) b.setAttribute('aria-selected', String(b.dataset.tab === tab));
@@ -201,7 +221,7 @@
     else if (tab === 'analysis') html = renderAnalysis();
     else if (tab === 'wiring') html = SIM.electrical?.renderPanel() || '';
     else html = renderSettings();
-    body.innerHTML = html;
+    body.innerHTML = (tab !== 'wiring' ? retainedWingNotice() + retainedWingSoundNotice() + retainedWingArtNotice() : '') + (tab === 'fan' ? retainedNaveFansNotice() : '') + html;
     if (renderKeepScroll) body.scrollTop = scroll; else body.scrollTop = 0;
     renderKeepScroll = false;
     if (tab === 'wiring') {
@@ -460,7 +480,8 @@
     if (tabBtn) { tab = tabBtn.dataset.tab; picking = null; renderBody(); renderMapMarkers(); return; }
     const kpi = e.target.closest('[data-overlay]');
     if (kpi) { SIM.setOverlay(kpi.dataset.overlay); tab = 'analysis'; renderBody(); renderLegend(); return; }
-    if (e.target.closest('[data-tab-jump]')) { tab = 'analysis'; renderBody(); return; }
+    const jump = e.target.closest('[data-tab-jump]');
+    if (jump && TABS.some(t => t.id === jump.dataset.tabJump)) { tab = jump.dataset.tabJump; picking = null; renderBody(); renderMapMarkers(); return; }
     const el = e.target.closest('[data-act]');
     if (!el) return;
     const act = el.dataset.act, it = itemFromEvent(e);
@@ -470,6 +491,75 @@
       case 'close': setOpen(false); break;
       case 'undo': { const l = SIM.undo(); if (l) toast('Undo: ' + l); break; }
       case 'redo': { const l = SIM.redo(); if (l) toast('Redo: ' + l); break; }
+      case 'wing-sound-review': tab = 'wiring'; picking = null; renderBody(); renderMapMarkers(); break;
+      case 'wing-art-review': tab = 'wiring'; picking = null; renderBody(); renderMapMarkers(); break;
+      case 'wing-adopt': {
+        const side = el.dataset.side;
+        if (el.disabled || !['B', 'H'].includes(side)) break;
+        try {
+          const status = SIM.wingReviewStatus?.().sides.find(s => s.side === side);
+          if (!status || !SIM.adoptWingReview) throw new Error('Wing review is unavailable.');
+          if (status.conflictIds.length) throw new Error('Resolve conflicting equipment IDs: ' + status.conflictIds.join(', '));
+          if (status.current) { toast(`Wing ${side} already uses the reviewed layout.`); break; }
+          const result = SIM.adoptWingReview(side);
+          renderBody(); updateUndo();
+          toast(result.changedIds.length ? `Wing ${side} review adopted. Full browser backup saved; use Undo.` : `Wing ${side} already uses the reviewed layout.`);
+        } catch (err) {
+          renderBody();
+          toast(`Could not apply wing ${side} review: ${err.message || String(err)}`);
+        }
+        break;
+      }
+      case 'wing-sound-adopt': {
+        const side = el.dataset.side;
+        if (el.disabled || !['B', 'H'].includes(side)) break;
+        try {
+          const status = SIM.wingSoundStatus?.().sides.find(s => s.side === side);
+          if (!status || !SIM.adoptWingSound) throw new Error('Wing sound review is unavailable.');
+          if (status.current) { toast(`Wing ${side} already uses the reviewed speaker.`); break; }
+          const result = SIM.adoptWingSound(side);
+          renderBody(); updateUndo();
+          toast(result.changedIds.length || result.retiredIds.length ? `Wing ${side} speaker review adopted. Full browser backup saved; use Undo.` : `Wing ${side} already uses the reviewed speaker.`);
+        } catch (err) {
+          renderBody();
+          toast(`Could not apply wing ${side} speaker review: ${err.message || String(err)}`);
+        }
+        break;
+      }
+      case 'wing-art-adopt': {
+        const side = el.dataset.side;
+        if (el.disabled || !['B', 'H'].includes(side)) break;
+        try {
+          const status = SIM.wingArtStatus?.().sides.find(s => s.side === side);
+          if (!status || !SIM.adoptWingArt) throw new Error('Wing saints review is unavailable.');
+          if (status.conflictIds.length) throw new Error('Resolve conflicting picture IDs: ' + status.conflictIds.join(', '));
+          if (status.current) { toast(`Wing ${side} already uses the reviewed saints' pictures.`); break; }
+          const result = SIM.adoptWingArt(side);
+          renderBody(); updateUndo();
+          toast(result.changedIds.length ? `Wing ${side} saints review adopted. Full browser backup saved; use Undo.` : `Wing ${side} already uses the reviewed saints' pictures.`);
+        } catch (err) {
+          renderBody();
+          toast(`Could not apply wing ${side} saints review: ${err.message || String(err)}`);
+        }
+        break;
+      }
+      case 'nave-fans-adopt': {
+        const side = el.dataset.side;
+        if (el.disabled || !['B', 'H'].includes(side)) break;
+        try {
+          const status = SIM.naveFanStatus?.().sides.find(s => s.side === side);
+          if (!status || !SIM.adoptNaveFans) throw new Error('Nave fan review is unavailable.');
+          if (status.conflictIds.length) throw new Error('Resolve conflicting fan IDs: ' + status.conflictIds.join(', '));
+          if (status.current) { toast(`Nave side ${side} already uses the reviewed fans.`); break; }
+          const result = SIM.adoptNaveFans(side);
+          renderBody(); updateUndo();
+          toast(result.changedIds.length ? `Nave side ${side} fan review adopted. Full browser backup saved; use Undo.` : `Nave side ${side} already uses the reviewed fans.`);
+        } catch (err) {
+          renderBody();
+          toast(`Could not apply nave side ${side} fan review: ${err.message || String(err)}`);
+        }
+        break;
+      }
       case 'save-scene': { const n = prompt('Name this scene (for example “Sunday 6 pm Mass”):'); if (n) { SIM.saveScene(n.trim()); renderScenes(); toast('Saved scene ' + n); } break; }
       case 'select': if (it) { SIM.select(it.id === SIM.state.selectedId ? null : it.id); } break;
       case 'deselect': SIM.select(null); break;

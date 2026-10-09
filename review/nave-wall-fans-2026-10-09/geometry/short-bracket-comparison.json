@@ -1,0 +1,170 @@
+{
+  "status": "REJECTED GEOMETRY: displayed layout uses fanNaveWall; this is the old fanWall bracket at the same positions",
+  "modelRevision": "REFERENCE-REALISM-2026-10-05",
+  "units": "m",
+  "sixteenFansTested": 16,
+  "fansEnteringColumnFace": [
+    "F-NAVE-B-2P",
+    "F-NAVE-B-3",
+    "F244",
+    "F-NAVE-B-5",
+    "F246",
+    "F-NAVE-B-7",
+    "F248",
+    "F-NAVE-B-9",
+    "F-NAVE-H-2P",
+    "F-NAVE-H-3",
+    "F245",
+    "F-NAVE-H-5",
+    "F247",
+    "F-NAVE-H-7",
+    "F249",
+    "F-NAVE-H-9"
+  ],
+  "maximumPenetrationIntoColumnFaceM": 0.240999264,
+  "perFan": [
+    {
+      "id": "F-NAVE-B-2P",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Entrance hall side return — plan offset proxy"
+      ]
+    },
+    {
+      "id": "F-NAVE-B-3",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F244",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F-NAVE-B-5",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F246",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F-NAVE-B-7",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F248",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F-NAVE-B-9",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F-NAVE-H-2P",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Entrance hall side return — plan offset proxy"
+      ]
+    },
+    {
+      "id": "F-NAVE-H-3",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F245",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F-NAVE-H-5",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F247",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F-NAVE-H-7",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F249",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening",
+        "Inner C/G wall with opening"
+      ]
+    },
+    {
+      "id": "F-NAVE-H-9",
+      "penetrationM": 0.240999264,
+      "buildingMeshes": [
+        "Side column — illustrative shaft width",
+        "Inner C/G wall with opening"
+      ]
+    }
+  ],
+  "note": "Software geometry screen only; real product and bracket dimensions are unknown."
+}

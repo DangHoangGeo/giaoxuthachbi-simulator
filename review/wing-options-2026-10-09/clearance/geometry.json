@@ -1,0 +1,618 @@
+{
+  "status": "Software geometry screen passed; physical design remains ENGINEERING HOLD",
+  "lightEnvelopes": [
+    {
+      "id": "L63",
+      "minimum": [
+        38.2699999833107,
+        3.159500026702881,
+        -11.18961522579193
+      ],
+      "maximum": [
+        39.6100000166893,
+        8.115060000372525,
+        -10.010384774208068
+      ]
+    },
+    {
+      "id": "L64",
+      "minimum": [
+        38.2699999833107,
+        3.159500026702881,
+        -9.389615225791932
+      ],
+      "maximum": [
+        39.6100000166893,
+        8.115060000372525,
+        -8.21038477420807
+      ]
+    },
+    {
+      "id": "L65",
+      "minimum": [
+        41.5499999833107,
+        3.159500026702881,
+        -11.18961522579193
+      ],
+      "maximum": [
+        42.8900000166893,
+        8.083580000372532,
+        -10.010384774208068
+      ]
+    },
+    {
+      "id": "L66",
+      "minimum": [
+        41.5499999833107,
+        3.159500026702881,
+        -9.389615225791932
+      ],
+      "maximum": [
+        42.8900000166893,
+        8.083580000372532,
+        -8.21038477420807
+      ]
+    },
+    {
+      "id": "L67",
+      "minimum": [
+        38.2699999833107,
+        3.159500026702881,
+        10.010384774208068
+      ],
+      "maximum": [
+        39.6100000166893,
+        8.115060000372525,
+        11.18961522579193
+      ]
+    },
+    {
+      "id": "L68",
+      "minimum": [
+        38.2699999833107,
+        3.159500026702881,
+        8.21038477420807
+      ],
+      "maximum": [
+        39.6100000166893,
+        8.115060000372525,
+        9.389615225791932
+      ]
+    },
+    {
+      "id": "L69",
+      "minimum": [
+        41.5499999833107,
+        3.159500026702881,
+        10.010384774208068
+      ],
+      "maximum": [
+        42.8900000166893,
+        8.083580000372532,
+        11.18961522579193
+      ]
+    },
+    {
+      "id": "L70",
+      "minimum": [
+        41.5499999833107,
+        3.159500026702881,
+        8.21038477420807
+      ],
+      "maximum": [
+        42.8900000166893,
+        8.083580000372532,
+        9.389615225791932
+      ]
+    }
+  ],
+  "fans": [
+    {
+      "id": "F240",
+      "sweptEnvelope": {
+        "minimum": [
+          38.71138477097162,
+          3.208229648454757,
+          -13.286120556533394
+        ],
+        "maximum": [
+          39.55497933261118,
+          3.836690398434773,
+          -12.476168535401918
+        ]
+      },
+      "minimumAboveWingFloorM": 3.528229648454757,
+      "minimumAngleFromAnyWingReadingOpticDegrees": 90.90471375100879
+    },
+    {
+      "id": "F241",
+      "sweptEnvelope": {
+        "minimum": [
+          39.51465345604978,
+          2.385279349802812,
+          -13.294424049997883
+        ],
+        "maximum": [
+          40.328186340984985,
+          3.0397556732500224,
+          -12.48444251371455
+        ]
+      },
+      "minimumAboveWingFloorM": 2.705279349802812,
+      "minimumAngleFromAnyWingReadingOpticDegrees": 72.89597950136495
+    },
+    {
+      "id": "F242",
+      "sweptEnvelope": {
+        "minimum": [
+          38.71138477097162,
+          3.208229648454757,
+          12.476168535401918
+        ],
+        "maximum": [
+          39.55497933261118,
+          3.836690398434773,
+          13.286120556533394
+        ]
+      },
+      "minimumAboveWingFloorM": 3.528229648454757,
+      "minimumAngleFromAnyWingReadingOpticDegrees": 90.90471375100879
+    },
+    {
+      "id": "F243",
+      "sweptEnvelope": {
+        "minimum": [
+          39.51465345604978,
+          2.385279349802812,
+          12.48444251371455
+        ],
+        "maximum": [
+          40.328186340984985,
+          3.0397556732500224,
+          13.294424049997883
+        ]
+      },
+      "minimumAboveWingFloorM": 2.705279349802812,
+      "minimumAngleFromAnyWingReadingOpticDegrees": 72.89597950136495
+    },
+    {
+      "id": "F-WING-B-3",
+      "sweptEnvelope": {
+        "minimum": [
+          40.82232758550079,
+          2.385293117689031,
+          -13.29443497403255
+        ],
+        "maximum": [
+          41.63535485159391,
+          3.0397310346915902,
+          -12.484461894277638
+        ]
+      },
+      "minimumAboveWingFloorM": 2.7052931176890307,
+      "minimumAngleFromAnyWingReadingOpticDegrees": 72.92222679216009
+    },
+    {
+      "id": "F-WING-B-4",
+      "sweptEnvelope": {
+        "minimum": [
+          41.59615792386884,
+          3.208185157472229,
+          -13.286116890688687
+        ],
+        "maximum": [
+          42.439054746309026,
+          3.836727373216918,
+          -12.476114707882099
+        ]
+      },
+      "minimumAboveWingFloorM": 3.5281851574722287,
+      "minimumAngleFromAnyWingReadingOpticDegrees": 90.90524870820003
+    },
+    {
+      "id": "F-WING-H-3",
+      "sweptEnvelope": {
+        "minimum": [
+          40.82232758550079,
+          2.385293117689031,
+          12.484461894277638
+        ],
+        "maximum": [
+          41.63535485159391,
+          3.0397310346915902,
+          13.29443497403255
+        ]
+      },
+      "minimumAboveWingFloorM": 2.7052931176890307,
+      "minimumAngleFromAnyWingReadingOpticDegrees": 72.92222679216009
+    },
+    {
+      "id": "F-WING-H-4",
+      "sweptEnvelope": {
+        "minimum": [
+          41.59615792386884,
+          3.208185157472229,
+          12.476114707882099
+        ],
+        "maximum": [
+          42.439054746309026,
+          3.836727373216918,
+          13.286116890688687
+        ]
+      },
+      "minimumAboveWingFloorM": 3.5281851574722287,
+      "minimumAngleFromAnyWingReadingOpticDegrees": 90.90524870820003
+    }
+  ],
+  "fixturePairs": [
+    {
+      "a": "L63",
+      "b": "S275",
+      "axisAlignedEnvelopeGapM": 0.3309981298857725
+    },
+    {
+      "a": "L63",
+      "b": "S276",
+      "axisAlignedEnvelopeGapM": 2.501991147638232
+    },
+    {
+      "a": "L63",
+      "b": "F240",
+      "axisAlignedEnvelopeGapM": 1.286553309609987
+    },
+    {
+      "a": "L63",
+      "b": "F241",
+      "axisAlignedEnvelopeGapM": 1.3003524198204452
+    },
+    {
+      "a": "L63",
+      "b": "F-WING-B-3",
+      "axisAlignedEnvelopeGapM": 1.7778387554658357
+    },
+    {
+      "a": "L63",
+      "b": "F-WING-B-4",
+      "axisAlignedEnvelopeGapM": 2.366411661074648
+    },
+    {
+      "a": "L63",
+      "b": "L64",
+      "axisAlignedEnvelopeGapM": 0.6207695484161366
+    },
+    {
+      "a": "L63",
+      "b": "L65",
+      "axisAlignedEnvelopeGapM": 1.9399999666214
+    },
+    {
+      "a": "L63",
+      "b": "L66",
+      "axisAlignedEnvelopeGapM": 2.0368983044648568
+    },
+    {
+      "a": "L64",
+      "b": "S275",
+      "axisAlignedEnvelopeGapM": 2.1309981298857714
+    },
+    {
+      "a": "L64",
+      "b": "S276",
+      "axisAlignedEnvelopeGapM": 3.269794025691657
+    },
+    {
+      "a": "L64",
+      "b": "F240",
+      "axisAlignedEnvelopeGapM": 3.086553309609986
+    },
+    {
+      "a": "L64",
+      "b": "F241",
+      "axisAlignedEnvelopeGapM": 3.097142982210267
+    },
+    {
+      "a": "L64",
+      "b": "F-WING-B-3",
+      "axisAlignedEnvelopeGapM": 3.3259823581890586
+    },
+    {
+      "a": "L64",
+      "b": "F-WING-B-4",
+      "axisAlignedEnvelopeGapM": 3.670327272219015
+    },
+    {
+      "a": "L64",
+      "b": "L65",
+      "axisAlignedEnvelopeGapM": 2.0368983044648568
+    },
+    {
+      "a": "L64",
+      "b": "L66",
+      "axisAlignedEnvelopeGapM": 1.9399999666214
+    },
+    {
+      "a": "L65",
+      "b": "S275",
+      "axisAlignedEnvelopeGapM": 2.501991147638232
+    },
+    {
+      "a": "L65",
+      "b": "S276",
+      "axisAlignedEnvelopeGapM": 0.3309981298857725
+    },
+    {
+      "a": "L65",
+      "b": "F240",
+      "axisAlignedEnvelopeGapM": 2.373884330624795
+    },
+    {
+      "a": "L65",
+      "b": "F241",
+      "axisAlignedEnvelopeGapM": 1.7843051847445028
+    },
+    {
+      "a": "L65",
+      "b": "F-WING-B-3",
+      "axisAlignedEnvelopeGapM": 1.3003739871036857
+    },
+    {
+      "a": "L65",
+      "b": "F-WING-B-4",
+      "axisAlignedEnvelopeGapM": 1.2864994820901678
+    },
+    {
+      "a": "L65",
+      "b": "L66",
+      "axisAlignedEnvelopeGapM": 0.6207695484161366
+    },
+    {
+      "a": "L66",
+      "b": "S275",
+      "axisAlignedEnvelopeGapM": 3.269794025691657
+    },
+    {
+      "a": "L66",
+      "b": "S276",
+      "axisAlignedEnvelopeGapM": 2.1309981298857714
+    },
+    {
+      "a": "L66",
+      "b": "F240",
+      "axisAlignedEnvelopeGapM": 3.675176013442333
+    },
+    {
+      "a": "L66",
+      "b": "F241",
+      "axisAlignedEnvelopeGapM": 3.329432868947433
+    },
+    {
+      "a": "L66",
+      "b": "F-WING-B-3",
+      "axisAlignedEnvelopeGapM": 3.097163300971468
+    },
+    {
+      "a": "L66",
+      "b": "F-WING-B-4",
+      "axisAlignedEnvelopeGapM": 3.086499482090167
+    },
+    {
+      "a": "L67",
+      "b": "S277",
+      "axisAlignedEnvelopeGapM": 0.3309981298857725
+    },
+    {
+      "a": "L67",
+      "b": "S278",
+      "axisAlignedEnvelopeGapM": 2.501991147638232
+    },
+    {
+      "a": "L67",
+      "b": "F242",
+      "axisAlignedEnvelopeGapM": 1.286553309609987
+    },
+    {
+      "a": "L67",
+      "b": "F243",
+      "axisAlignedEnvelopeGapM": 1.3003524198204452
+    },
+    {
+      "a": "L67",
+      "b": "F-WING-H-3",
+      "axisAlignedEnvelopeGapM": 1.7778387554658357
+    },
+    {
+      "a": "L67",
+      "b": "F-WING-H-4",
+      "axisAlignedEnvelopeGapM": 2.366411661074648
+    },
+    {
+      "a": "L67",
+      "b": "L68",
+      "axisAlignedEnvelopeGapM": 0.6207695484161366
+    },
+    {
+      "a": "L67",
+      "b": "L69",
+      "axisAlignedEnvelopeGapM": 1.9399999666214
+    },
+    {
+      "a": "L67",
+      "b": "L70",
+      "axisAlignedEnvelopeGapM": 2.0368983044648568
+    },
+    {
+      "a": "L68",
+      "b": "S277",
+      "axisAlignedEnvelopeGapM": 2.1309981298857714
+    },
+    {
+      "a": "L68",
+      "b": "S278",
+      "axisAlignedEnvelopeGapM": 3.269794025691657
+    },
+    {
+      "a": "L68",
+      "b": "F242",
+      "axisAlignedEnvelopeGapM": 3.086553309609986
+    },
+    {
+      "a": "L68",
+      "b": "F243",
+      "axisAlignedEnvelopeGapM": 3.097142982210267
+    },
+    {
+      "a": "L68",
+      "b": "F-WING-H-3",
+      "axisAlignedEnvelopeGapM": 3.3259823581890586
+    },
+    {
+      "a": "L68",
+      "b": "F-WING-H-4",
+      "axisAlignedEnvelopeGapM": 3.670327272219015
+    },
+    {
+      "a": "L68",
+      "b": "L69",
+      "axisAlignedEnvelopeGapM": 2.0368983044648568
+    },
+    {
+      "a": "L68",
+      "b": "L70",
+      "axisAlignedEnvelopeGapM": 1.9399999666214
+    },
+    {
+      "a": "L69",
+      "b": "S277",
+      "axisAlignedEnvelopeGapM": 2.501991147638232
+    },
+    {
+      "a": "L69",
+      "b": "S278",
+      "axisAlignedEnvelopeGapM": 0.3309981298857725
+    },
+    {
+      "a": "L69",
+      "b": "F242",
+      "axisAlignedEnvelopeGapM": 2.373884330624795
+    },
+    {
+      "a": "L69",
+      "b": "F243",
+      "axisAlignedEnvelopeGapM": 1.7843051847445028
+    },
+    {
+      "a": "L69",
+      "b": "F-WING-H-3",
+      "axisAlignedEnvelopeGapM": 1.3003739871036857
+    },
+    {
+      "a": "L69",
+      "b": "F-WING-H-4",
+      "axisAlignedEnvelopeGapM": 1.2864994820901678
+    },
+    {
+      "a": "L69",
+      "b": "L70",
+      "axisAlignedEnvelopeGapM": 0.6207695484161366
+    },
+    {
+      "a": "L70",
+      "b": "S277",
+      "axisAlignedEnvelopeGapM": 3.269794025691657
+    },
+    {
+      "a": "L70",
+      "b": "S278",
+      "axisAlignedEnvelopeGapM": 2.1309981298857714
+    },
+    {
+      "a": "L70",
+      "b": "F242",
+      "axisAlignedEnvelopeGapM": 3.675176013442333
+    },
+    {
+      "a": "L70",
+      "b": "F243",
+      "axisAlignedEnvelopeGapM": 3.329432868947433
+    },
+    {
+      "a": "L70",
+      "b": "F-WING-H-3",
+      "axisAlignedEnvelopeGapM": 3.097163300971468
+    },
+    {
+      "a": "L70",
+      "b": "F-WING-H-4",
+      "axisAlignedEnvelopeGapM": 3.086499482090167
+    }
+  ],
+  "fanPairs": [
+    {
+      "a": "F240",
+      "b": "F241",
+      "axisAlignedEnvelopeGapM": 0.16847397520473484
+    },
+    {
+      "a": "F240",
+      "b": "F-WING-B-3",
+      "axisAlignedEnvelopeGapM": 1.2785004407282938
+    },
+    {
+      "a": "F240",
+      "b": "F-WING-B-4",
+      "axisAlignedEnvelopeGapM": 2.0411785912576548
+    },
+    {
+      "a": "F241",
+      "b": "F-WING-B-3",
+      "axisAlignedEnvelopeGapM": 0.4941412445158022
+    },
+    {
+      "a": "F241",
+      "b": "F-WING-B-4",
+      "axisAlignedEnvelopeGapM": 1.2791092315186927
+    },
+    {
+      "a": "F242",
+      "b": "F243",
+      "axisAlignedEnvelopeGapM": 0.16847397520473484
+    },
+    {
+      "a": "F242",
+      "b": "F-WING-H-3",
+      "axisAlignedEnvelopeGapM": 1.2785004407282938
+    },
+    {
+      "a": "F242",
+      "b": "F-WING-H-4",
+      "axisAlignedEnvelopeGapM": 2.0411785912576548
+    },
+    {
+      "a": "F243",
+      "b": "F-WING-H-3",
+      "axisAlignedEnvelopeGapM": 0.4941412445158022
+    },
+    {
+      "a": "F243",
+      "b": "F-WING-H-4",
+      "axisAlignedEnvelopeGapM": 1.2791092315186927
+    },
+    {
+      "a": "F-WING-B-3",
+      "b": "F-WING-B-4",
+      "axisAlignedEnvelopeGapM": 0.16845412278063865
+    },
+    {
+      "a": "F-WING-H-3",
+      "b": "F-WING-H-4",
+      "axisAlignedEnvelopeGapM": 0.16845412278063865
+    }
+  ],
+  "limits": [
+    "17 yaw samples do not prove the continuous swept envelope or installation tolerances",
+    "Full AABB separation is conservative geometry evidence, not an approved service clearance",
+    "Task beam half-angle is 50 degrees; wider field tails and decorative point light can reach fan blades, so flicker remains unverified",
+    "Roof projection supplies visualization anchor only; substrate capacity, cable/driver access and load restraint are unknown",
+    "No complete architecture, inclusive sightline or concealment approval"
+  ]
+}

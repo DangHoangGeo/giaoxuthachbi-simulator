@@ -1,0 +1,3191 @@
+{
+  "blocks": 2,
+  "signature": [
+    [
+      8.795,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 1, long B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      -5,
+      "long",
+      "Proposed pew 1, long B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 1, long B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 1, long B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 1, long B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 1, long B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 1, long B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 1, long B",
+      null
+    ],
+    [
+      8.795,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 1, long H",
+      null
+    ],
+    [
+      8.795,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 1, long H",
+      null
+    ],
+    [
+      8.795,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 1, long H",
+      null
+    ],
+    [
+      8.795,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 1, long H",
+      null
+    ],
+    [
+      8.795,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 1, long H",
+      null
+    ],
+    [
+      8.795,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 1, long H",
+      null
+    ],
+    [
+      8.795,
+      0,
+      5,
+      "long",
+      "Proposed pew 1, long H",
+      null
+    ],
+    [
+      8.795,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 1, long H",
+      null
+    ],
+    [
+      11.02,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 2, long B",
+      null
+    ],
+    [
+      11.02,
+      0,
+      -5,
+      "long",
+      "Proposed pew 2, long B",
+      null
+    ],
+    [
+      11.02,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 2, long B",
+      null
+    ],
+    [
+      11.02,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 2, long B",
+      null
+    ],
+    [
+      11.02,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 2, long B",
+      null
+    ],
+    [
+      11.02,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 2, long B",
+      null
+    ],
+    [
+      11.02,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 2, long B",
+      null
+    ],
+    [
+      11.02,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 2, long B",
+      null
+    ],
+    [
+      11.02,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 2, long H",
+      null
+    ],
+    [
+      11.02,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 2, long H",
+      null
+    ],
+    [
+      11.02,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 2, long H",
+      null
+    ],
+    [
+      11.02,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 2, long H",
+      null
+    ],
+    [
+      11.02,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 2, long H",
+      null
+    ],
+    [
+      11.02,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 2, long H",
+      null
+    ],
+    [
+      11.02,
+      0,
+      5,
+      "long",
+      "Proposed pew 2, long H",
+      null
+    ],
+    [
+      11.02,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 2, long H",
+      null
+    ],
+    [
+      12.15,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 3, long B",
+      null
+    ],
+    [
+      12.15,
+      0,
+      -5,
+      "long",
+      "Proposed pew 3, long B",
+      null
+    ],
+    [
+      12.15,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 3, long B",
+      null
+    ],
+    [
+      12.15,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 3, long B",
+      null
+    ],
+    [
+      12.15,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 3, long B",
+      null
+    ],
+    [
+      12.15,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 3, long B",
+      null
+    ],
+    [
+      12.15,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 3, long B",
+      null
+    ],
+    [
+      12.15,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 3, long B",
+      null
+    ],
+    [
+      12.15,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 3, long H",
+      null
+    ],
+    [
+      12.15,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 3, long H",
+      null
+    ],
+    [
+      12.15,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 3, long H",
+      null
+    ],
+    [
+      12.15,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 3, long H",
+      null
+    ],
+    [
+      12.15,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 3, long H",
+      null
+    ],
+    [
+      12.15,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 3, long H",
+      null
+    ],
+    [
+      12.15,
+      0,
+      5,
+      "long",
+      "Proposed pew 3, long H",
+      null
+    ],
+    [
+      12.15,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 3, long H",
+      null
+    ],
+    [
+      13.28,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 4, long B",
+      null
+    ],
+    [
+      13.28,
+      0,
+      -5,
+      "long",
+      "Proposed pew 4, long B",
+      null
+    ],
+    [
+      13.28,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 4, long B",
+      null
+    ],
+    [
+      13.28,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 4, long B",
+      null
+    ],
+    [
+      13.28,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 4, long B",
+      null
+    ],
+    [
+      13.28,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 4, long B",
+      null
+    ],
+    [
+      13.28,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 4, long B",
+      null
+    ],
+    [
+      13.28,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 4, long B",
+      null
+    ],
+    [
+      13.28,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 4, long H",
+      null
+    ],
+    [
+      13.28,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 4, long H",
+      null
+    ],
+    [
+      13.28,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 4, long H",
+      null
+    ],
+    [
+      13.28,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 4, long H",
+      null
+    ],
+    [
+      13.28,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 4, long H",
+      null
+    ],
+    [
+      13.28,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 4, long H",
+      null
+    ],
+    [
+      13.28,
+      0,
+      5,
+      "long",
+      "Proposed pew 4, long H",
+      null
+    ],
+    [
+      13.28,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 4, long H",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 5, long B",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      -5,
+      "long",
+      "Proposed pew 5, long B",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 5, long B",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 5, long B",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 5, long B",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 5, long B",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 5, long B",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 5, long B",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 5, long H",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 5, long H",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 5, long H",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 5, long H",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 5, long H",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 5, long H",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      5,
+      "long",
+      "Proposed pew 5, long H",
+      null
+    ],
+    [
+      20.020000000000003,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 5, long H",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 6, long B",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      -5,
+      "long",
+      "Proposed pew 6, long B",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 6, long B",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 6, long B",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 6, long B",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 6, long B",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 6, long B",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 6, long B",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 6, long H",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 6, long H",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 6, long H",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 6, long H",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 6, long H",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 6, long H",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      5,
+      "long",
+      "Proposed pew 6, long H",
+      null
+    ],
+    [
+      21.150000000000002,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 6, long H",
+      null
+    ],
+    [
+      22.28,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 7, long B",
+      null
+    ],
+    [
+      22.28,
+      0,
+      -5,
+      "long",
+      "Proposed pew 7, long B",
+      null
+    ],
+    [
+      22.28,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 7, long B",
+      null
+    ],
+    [
+      22.28,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 7, long B",
+      null
+    ],
+    [
+      22.28,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 7, long B",
+      null
+    ],
+    [
+      22.28,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 7, long B",
+      null
+    ],
+    [
+      22.28,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 7, long B",
+      null
+    ],
+    [
+      22.28,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 7, long B",
+      null
+    ],
+    [
+      22.28,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 7, long H",
+      null
+    ],
+    [
+      22.28,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 7, long H",
+      null
+    ],
+    [
+      22.28,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 7, long H",
+      null
+    ],
+    [
+      22.28,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 7, long H",
+      null
+    ],
+    [
+      22.28,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 7, long H",
+      null
+    ],
+    [
+      22.28,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 7, long H",
+      null
+    ],
+    [
+      22.28,
+      0,
+      5,
+      "long",
+      "Proposed pew 7, long H",
+      null
+    ],
+    [
+      22.28,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 7, long H",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 8, long B",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      -5,
+      "long",
+      "Proposed pew 8, long B",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 8, long B",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 8, long B",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 8, long B",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 8, long B",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 8, long B",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 8, long B",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 8, long H",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 8, long H",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 8, long H",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 8, long H",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 8, long H",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 8, long H",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      5,
+      "long",
+      "Proposed pew 8, long H",
+      null
+    ],
+    [
+      24.520000000000003,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 8, long H",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 9, long B",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      -5,
+      "long",
+      "Proposed pew 9, long B",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 9, long B",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 9, long B",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 9, long B",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 9, long B",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 9, long B",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 9, long B",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 9, long H",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 9, long H",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 9, long H",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 9, long H",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 9, long H",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 9, long H",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      5,
+      "long",
+      "Proposed pew 9, long H",
+      null
+    ],
+    [
+      25.650000000000002,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 9, long H",
+      null
+    ],
+    [
+      26.78,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 10, long B",
+      null
+    ],
+    [
+      26.78,
+      0,
+      -5,
+      "long",
+      "Proposed pew 10, long B",
+      null
+    ],
+    [
+      26.78,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 10, long B",
+      null
+    ],
+    [
+      26.78,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 10, long B",
+      null
+    ],
+    [
+      26.78,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 10, long B",
+      null
+    ],
+    [
+      26.78,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 10, long B",
+      null
+    ],
+    [
+      26.78,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 10, long B",
+      null
+    ],
+    [
+      26.78,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 10, long B",
+      null
+    ],
+    [
+      26.78,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 10, long H",
+      null
+    ],
+    [
+      26.78,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 10, long H",
+      null
+    ],
+    [
+      26.78,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 10, long H",
+      null
+    ],
+    [
+      26.78,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 10, long H",
+      null
+    ],
+    [
+      26.78,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 10, long H",
+      null
+    ],
+    [
+      26.78,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 10, long H",
+      null
+    ],
+    [
+      26.78,
+      0,
+      5,
+      "long",
+      "Proposed pew 10, long H",
+      null
+    ],
+    [
+      26.78,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 10, long H",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 11, long B",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      -5,
+      "long",
+      "Proposed pew 11, long B",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 11, long B",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 11, long B",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 11, long B",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 11, long B",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 11, long B",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 11, long B",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 11, long H",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 11, long H",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 11, long H",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 11, long H",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 11, long H",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 11, long H",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      5,
+      "long",
+      "Proposed pew 11, long H",
+      null
+    ],
+    [
+      29.020000000000003,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 11, long H",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 12, long B",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      -5,
+      "long",
+      "Proposed pew 12, long B",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 12, long B",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 12, long B",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 12, long B",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 12, long B",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 12, long B",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 12, long B",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 12, long H",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 12, long H",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 12, long H",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 12, long H",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 12, long H",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 12, long H",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      5,
+      "long",
+      "Proposed pew 12, long H",
+      null
+    ],
+    [
+      30.150000000000002,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 12, long H",
+      null
+    ],
+    [
+      31.28,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 13, long B",
+      null
+    ],
+    [
+      31.28,
+      0,
+      -5,
+      "long",
+      "Proposed pew 13, long B",
+      null
+    ],
+    [
+      31.28,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 13, long B",
+      null
+    ],
+    [
+      31.28,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 13, long B",
+      null
+    ],
+    [
+      31.28,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 13, long B",
+      null
+    ],
+    [
+      31.28,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 13, long B",
+      null
+    ],
+    [
+      31.28,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 13, long B",
+      null
+    ],
+    [
+      31.28,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 13, long B",
+      null
+    ],
+    [
+      31.28,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 13, long H",
+      null
+    ],
+    [
+      31.28,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 13, long H",
+      null
+    ],
+    [
+      31.28,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 13, long H",
+      null
+    ],
+    [
+      31.28,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 13, long H",
+      null
+    ],
+    [
+      31.28,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 13, long H",
+      null
+    ],
+    [
+      31.28,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 13, long H",
+      null
+    ],
+    [
+      31.28,
+      0,
+      5,
+      "long",
+      "Proposed pew 13, long H",
+      null
+    ],
+    [
+      31.28,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 13, long H",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 14, long B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -5,
+      "long",
+      "Proposed pew 14, long B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 14, long B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 14, long B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 14, long B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 14, long B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 14, long B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 14, long B, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 14, long H, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 14, long H, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 14, long H, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 14, long H, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 14, long H, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 14, long H, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      5,
+      "long",
+      "Proposed pew 14, long H, added bay 2–3",
+      null
+    ],
+    [
+      6.535,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 14, long H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 15, long B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -5,
+      "long",
+      "Proposed pew 15, long B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 15, long B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 15, long B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 15, long B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 15, long B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 15, long B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 15, long B, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 15, long H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 15, long H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 15, long H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 15, long H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 15, long H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 15, long H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      5,
+      "long",
+      "Proposed pew 15, long H, added bay 2–3",
+      null
+    ],
+    [
+      7.665,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 15, long H, added bay 2–3",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 16, long B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -5,
+      "long",
+      "Proposed pew 16, long B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 16, long B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 16, long B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 16, long B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 16, long B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 16, long B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 16, long B, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 16, long H, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 16, long H, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 16, long H, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 16, long H, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 16, long H, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 16, long H, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      5,
+      "long",
+      "Proposed pew 16, long H, added bay 4–5",
+      null
+    ],
+    [
+      15.655,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 16, long H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 17, long B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -5,
+      "long",
+      "Proposed pew 17, long B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 17, long B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 17, long B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 17, long B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 17, long B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 17, long B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 17, long B, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 17, long H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 17, long H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 17, long H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 17, long H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 17, long H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 17, long H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      5,
+      "long",
+      "Proposed pew 17, long H, added bay 4–5",
+      null
+    ],
+    [
+      17.835,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 17, long H, added bay 4–5",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -5.550000000000001,
+      "long",
+      "Proposed pew 18, long B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -5,
+      "long",
+      "Proposed pew 18, long B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -4.45,
+      "long",
+      "Proposed pew 18, long B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -3.9,
+      "long",
+      "Proposed pew 18, long B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -3.35,
+      "long",
+      "Proposed pew 18, long B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -2.8,
+      "long",
+      "Proposed pew 18, long B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -2.25,
+      "long",
+      "Proposed pew 18, long B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      -1.6999999999999997,
+      "long",
+      "Proposed pew 18, long B, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      1.6999999999999997,
+      "long",
+      "Proposed pew 18, long H, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      2.25,
+      "long",
+      "Proposed pew 18, long H, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      2.8,
+      "long",
+      "Proposed pew 18, long H, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      3.35,
+      "long",
+      "Proposed pew 18, long H, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      3.9,
+      "long",
+      "Proposed pew 18, long H, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      4.45,
+      "long",
+      "Proposed pew 18, long H, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      5,
+      "long",
+      "Proposed pew 18, long H, added bay 8–9",
+      null
+    ],
+    [
+      33.655,
+      0,
+      5.550000000000001,
+      "long",
+      "Proposed pew 18, long H, added bay 8–9",
+      null
+    ],
+    [
+      38.11,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      -8.35,
+      "wing",
+      "Ministers bench · wing row 1",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      -9.25,
+      "wing",
+      "Ministers bench · wing row 2",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      -10.15,
+      "wing",
+      "Ministers bench · wing row 3",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      -11.05,
+      "wing",
+      "Ministers bench · wing row 4",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      -11.95,
+      "wing",
+      "Ministers bench · wing row 5",
+      [
+        0,
+        0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      8.35,
+      "wing",
+      "Choir bench · wing row 1",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      9.25,
+      "wing",
+      "Choir bench · wing row 2",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      10.15,
+      "wing",
+      "Choir bench · wing row 3",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      11.05,
+      "wing",
+      "Choir bench · wing row 4",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.11,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      38.660000000000004,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.21,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      39.760000000000005,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.39,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      41.940000000000005,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      42.49,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ],
+    [
+      43.040000000000006,
+      -0.32,
+      11.95,
+      "wing",
+      "Choir bench · wing row 5",
+      [
+        0,
+        -0.25
+      ]
+    ]
+  ],
+  "sha256": "f7fa69162bb2d87c89cfd3515b6ed21c15a1725ddb967eb2c60d54e0ad881258",
+  "n": 368
+}

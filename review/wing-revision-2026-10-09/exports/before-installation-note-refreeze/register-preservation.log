@@ -1,0 +1,84 @@
+{
+  "before": "/tmp/thachbi-wing-register-review.UrtKe4/before-registers.json",
+  "after": "review/wing-revision-2026-10-09/exports/registers/after-registers.json",
+  "tables": {
+    "Equipment": {
+      "before": 331,
+      "after": 335,
+      "current": 325,
+      "retired": 10
+    },
+    "Electrical Lines": {
+      "before": 347,
+      "after": 347,
+      "current": 333,
+      "retired": 14
+    }
+  },
+  "retiredEquipment": [
+    "L64",
+    "L66",
+    "L68",
+    "L70",
+    "S275",
+    "S277",
+    "F-WING-B-3",
+    "F-WING-B-4",
+    "F-WING-H-3",
+    "F-WING-H-4"
+  ],
+  "retiredRoutes": [
+    "drop:LC1:L8:light:-1:L64",
+    "drop:LC1:L8:light:-1:L66",
+    "drop:LC1:L8:light:1:L68",
+    "drop:LC1:L8:light:1:L70",
+    "drop:AV1:A1:audio:-1:S275",
+    "drop:AV1:A1:audio:1:S277",
+    "drop:FC1:F5:fan:-1:F-WING-B-3",
+    "drop:FC1:F5:fan:-1:F-WING-B-4",
+    "drop:FC1:F5:fan:1:F-WING-H-3",
+    "drop:FC1:F5:fan:1:F-WING-H-4",
+    "drop:FC1:F1:fan:-1:F240",
+    "drop:FC1:F1:fan:-1:F241",
+    "drop:FC1:F1:fan:1:F242",
+    "drop:FC1:F1:fan:1:F243"
+  ],
+  "newEquipment": [
+    {
+      "category": "decoration",
+      "id": "D-WING-B-PETER",
+      "board": null,
+      "circuit": "DECOR",
+      "routes": null,
+      "recordState": "Current"
+    },
+    {
+      "category": "decoration",
+      "id": "D-WING-B-PAUL",
+      "board": null,
+      "circuit": "DECOR",
+      "routes": null,
+      "recordState": "Current"
+    },
+    {
+      "category": "decoration",
+      "id": "D-WING-H-PETER",
+      "board": null,
+      "circuit": "DECOR",
+      "routes": null,
+      "recordState": "Current"
+    },
+    {
+      "category": "decoration",
+      "id": "D-WING-H-PAUL",
+      "board": null,
+      "circuit": "DECOR",
+      "routes": null,
+      "recordState": "Current"
+    }
+  ],
+  "preservedInputCells": 6433,
+  "nonemptyPreservedInputCells": 0,
+  "retiredVertices": 46,
+  "status": "Passed: every prior entered field, stable ID, category owner and retired record preserved."
+}

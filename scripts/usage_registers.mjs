@@ -142,7 +142,7 @@ ${rows.map(r => `| ${r.name} | ${r.specsDocumented}/${r.equipment} | ${r.control
 
 These counts measure field completeness only; filled fields still require source and engineering review. A 0/0 population is not applicable. Product selection, protection, final cable/containment specifications, actual control channels and commissioning evidence remain pending where fields are blank. No overall quality score is invented.
 
-The engineering review recorded on 7 October 2026 still identifies low ambo/altar microphone feedback margins, wing speech clarity below the test target, and lighting/ventilation limitations. This register refresh does not rerun or resolve those performance studies. See [simulator validation status](../simulator/README.md) and [control requirements](controls.md). Status: **design development**.
+The held wing review of 9 October 2026 retains four small brass chandeliers (L63/L65/L67/L69), four F5 above-window wall fans (F240–F243, extended bracket proxy), and two entrance-facing wing wall speakers (S276/S278). Four light IDs, four appended fan IDs and S275/S277 are retired; sixteen F2 nave wall fans (eight per side, extended bracket proxy) remain shown/OFF. Four unpowered Peter/Paul pictures are decoration records with no electrical routes. Task lighting, airflow, noise, speech/feedback, glare, concealment, product and mounting holds remain; see [wing comparison](../engineering/wing-review.md). The seating-cache correction is independently verified, not design approval. Register refresh does not resolve performance failures. See [simulator validation status](../simulator/README.md) and [control requirements](controls.md). Status: **design development**.
 
 ## Sources and refresh
 

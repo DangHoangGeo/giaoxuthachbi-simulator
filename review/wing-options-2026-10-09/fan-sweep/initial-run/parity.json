@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "method": "Exact unrounded equality against untouched analysis.js seatTask at all 80 wing receivers in two states.",
+  "cases": [
+    {
+      "id": "baseline-roof-fans",
+      "fullReceiverCount": 368,
+      "wingReceiverCount": 80,
+      "exactEquality": true,
+      "maxAirDelta": 0,
+      "maxNoiseDelta": 0
+    },
+    {
+      "id": "wall-2-h2p7-s1-z9p5",
+      "fullReceiverCount": 368,
+      "wingReceiverCount": 80,
+      "exactEquality": true,
+      "maxAirDelta": 0,
+      "maxNoiseDelta": 0
+    }
+  ]
+}

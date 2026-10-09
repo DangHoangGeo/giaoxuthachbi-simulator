@@ -1,0 +1,429 @@
+{
+  "basis": "Resolve sampled fan-sweep clash before adopting any wall-fan arrangement: staggered middle mounts or evenly distributed above-window mounts. No criterion/physics/receiver change.",
+  "cases": [
+    {
+      "id": "stagger-outer-2p7-inner-3p5-s1",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5,
+            "y": 2.7
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0,
+            "y": 3.5
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0,
+            "y": 3.5
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5,
+            "y": 2.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "stagger-outer-2p7-inner-3p5-s2",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 2,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5,
+            "y": 2.7
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0,
+            "y": 3.5
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0,
+            "y": 3.5
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5,
+            "y": 2.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "stagger-outer-3p5-inner-2p7-s1",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5,
+            "y": 3.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0,
+            "y": 2.7
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0,
+            "y": 2.7
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5,
+            "y": 3.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "stagger-outer-3p5-inner-2p7-s2",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 2,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5,
+            "y": 3.5
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0,
+            "y": 2.7
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0,
+            "y": 2.7
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5,
+            "y": 3.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "stagger-outer-2p7-inner-3p7-s1",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5,
+            "y": 2.7
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0,
+            "y": 3.7
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0,
+            "y": 3.7
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5,
+            "y": 2.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "stagger-outer-2p7-inner-3p7-s2",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 2,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5,
+            "y": 2.7
+          },
+          {
+            "x": 39.95,
+            "targetX": 38.94,
+            "targetZ": 9.0,
+            "y": 3.7
+          },
+          {
+            "x": 41.2,
+            "targetX": 42.22,
+            "targetZ": 9.0,
+            "y": 3.7
+          },
+          {
+            "x": 42.0,
+            "targetX": 42.22,
+            "targetZ": 11.5,
+            "y": 2.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "wide-h4p1-s1",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 4.1,
+        "speed": 1,
+        "points": [
+          {
+            "x": 38.0,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.7,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.45,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 43.15,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "wide-h4p1-s2",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 4.1,
+        "speed": 2,
+        "points": [
+          {
+            "x": 38.0,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.7,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.45,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 43.15,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "wide-h4p5-s1",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 4.5,
+        "speed": 1,
+        "points": [
+          {
+            "x": 38.0,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.7,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.45,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 43.15,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "wide-h4p5-s2",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 4.5,
+        "speed": 2,
+        "points": [
+          {
+            "x": 38.0,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 39.7,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.45,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 43.15,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    }
+  ]
+}

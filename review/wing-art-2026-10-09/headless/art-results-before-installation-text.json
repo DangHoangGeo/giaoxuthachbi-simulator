@@ -1,0 +1,561 @@
+{
+  "status": "PASS software preservation and geometry screen; CONCEPT / ENGINEERING HOLD remains",
+  "generatedAt": "2026-10-09T00:48:39.997Z",
+  "node": "v22.22.2",
+  "wingArtRevision": "2026-10-09-wing-peter-paul-concept-1",
+  "pictureIds": [
+    "D-WING-B-PETER",
+    "D-WING-B-PAUL",
+    "D-WING-H-PETER",
+    "D-WING-H-PAUL"
+  ],
+  "nativeAssets": [
+    {
+      "file": "saint-peter-concept-v1.png",
+      "material": "saintPeterArt",
+      "type": "saintPeterPicture",
+      "sha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9"
+    },
+    {
+      "file": "saint-paul-concept-v1.png",
+      "material": "saintPaulArt",
+      "type": "saintPaulPicture",
+      "sha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0"
+    }
+  ],
+  "cases": [
+    {
+      "name": "native artwork hashes, 2:3 pixel dimensions, provenance, offline pointers and independently decoded native-byte package",
+      "passed": true
+    },
+    {
+      "name": "complete rendered frame and mesh envelopes between both wing windows",
+      "passed": true
+    },
+    {
+      "name": "unpowered decorative equipment absent from mains schedule/routes with zero power delta",
+      "passed": true
+    },
+    {
+      "name": "first issue adds exactly four missing pictures",
+      "passed": true,
+      "inputItems": 316,
+      "outputItems": 320
+    },
+    {
+      "name": "repeat with existing complete pairs is unchanged",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "B incomplete template skips whole pair",
+      "passed": true,
+      "inputItems": 316,
+      "outputItems": 318
+    },
+    {
+      "name": "H incomplete template skips whole pair",
+      "passed": true,
+      "inputItems": 316,
+      "outputItems": 318
+    },
+    {
+      "name": "first-issue ID collision preserves and skips whole pair: D-WING-B-PETER",
+      "passed": true,
+      "inputItems": 317,
+      "outputItems": 319
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-B-PETER/delete",
+      "passed": true,
+      "inputItems": 319,
+      "outputItems": 319
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-B-PETER/move",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-B-PETER/rename",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-B-PETER/hide",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-B-PETER/switch",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-B-PETER/annotate",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "first-issue ID collision preserves and skips whole pair: D-WING-B-PAUL",
+      "passed": true,
+      "inputItems": 317,
+      "outputItems": 319
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-B-PAUL/delete",
+      "passed": true,
+      "inputItems": 319,
+      "outputItems": 319
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-B-PAUL/move",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-B-PAUL/rename",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-B-PAUL/hide",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-B-PAUL/switch",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-B-PAUL/annotate",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "first-issue ID collision preserves and skips whole pair: D-WING-H-PETER",
+      "passed": true,
+      "inputItems": 317,
+      "outputItems": 319
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-H-PETER/delete",
+      "passed": true,
+      "inputItems": 319,
+      "outputItems": 319
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-H-PETER/move",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-H-PETER/rename",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-H-PETER/hide",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-H-PETER/switch",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-H-PETER/annotate",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "first-issue ID collision preserves and skips whole pair: D-WING-H-PAUL",
+      "passed": true,
+      "inputItems": 317,
+      "outputItems": 319
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-H-PAUL/delete",
+      "passed": true,
+      "inputItems": 319,
+      "outputItems": 319
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-H-PAUL/move",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-H-PAUL/rename",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-H-PAUL/hide",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-H-PAUL/switch",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "existing/partial pair art edit preserved: D-WING-H-PAUL/annotate",
+      "passed": true,
+      "inputItems": 320,
+      "outputItems": 320
+    },
+    {
+      "name": "B scoped adoption, full durable backup, exact unrelated edits, undo/redo and current no-op",
+      "passed": true
+    },
+    {
+      "name": "H scoped adoption, full durable backup, exact unrelated edits, undo/redo and current no-op",
+      "passed": true
+    },
+    {
+      "name": "B adoption updates existing moved pictures while preserving entered target notes",
+      "passed": true
+    },
+    {
+      "name": "H adoption updates existing moved pictures while preserving entered target notes",
+      "passed": true
+    },
+    {
+      "name": "explicit adoption backup failure retains complete layout and history",
+      "passed": true
+    },
+    {
+      "name": "explicit adoption save failure retains complete layout and history",
+      "passed": true
+    },
+    {
+      "name": "B reserved-ID adoption refuses overwrite",
+      "passed": true
+    },
+    {
+      "name": "H reserved-ID adoption refuses overwrite",
+      "passed": true
+    },
+    {
+      "name": "invalid requested wing refuses mutation",
+      "passed": true
+    },
+    {
+      "name": "actual first startup and later reload preserve deleted/moved/hidden art after marker",
+      "passed": true
+    },
+    {
+      "name": "startup backup failure retains complete saved layout and pending marker",
+      "passed": true
+    },
+    {
+      "name": "startup save failure restores complete saved layout and pending marker",
+      "passed": true
+    }
+  ],
+  "geometry": [
+    {
+      "id": "D-WING-B-PETER",
+      "minimum": [
+        39.13999999761582,
+        1.3899999976158144,
+        -13.094999999552966
+      ],
+      "maximum": [
+        40.26000000238419,
+        3.010000002384186,
+        -13.024999999701977
+      ],
+      "meshes": [
+        {
+          "name": "",
+          "min": [
+            39.13999999761582,
+            1.3899999976158144,
+            -13.094999999552966
+          ],
+          "max": [
+            40.26000000238419,
+            3.010000002384186,
+            -13.05500000089407
+          ]
+        },
+        {
+          "name": "",
+          "min": [
+            39.13999999761582,
+            1.3899999976158144,
+            -13.059999999850989
+          ],
+          "max": [
+            40.26000000238419,
+            3.010000002384186,
+            -13.024999999701977
+          ]
+        },
+        {
+          "name": "",
+          "min": [
+            39.2,
+            1.4500000000000002,
+            -13.049999998211861
+          ],
+          "max": [
+            40.2,
+            2.95,
+            -13.049999998211861
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D-WING-B-PAUL",
+      "minimum": [
+        40.88999999761582,
+        1.3899999976158144,
+        -13.094999999552966
+      ],
+      "maximum": [
+        42.01000000238419,
+        3.010000002384186,
+        -13.024999999701977
+      ],
+      "meshes": [
+        {
+          "name": "",
+          "min": [
+            40.88999999761582,
+            1.3899999976158144,
+            -13.094999999552966
+          ],
+          "max": [
+            42.01000000238419,
+            3.010000002384186,
+            -13.05500000089407
+          ]
+        },
+        {
+          "name": "",
+          "min": [
+            40.88999999761582,
+            1.3899999976158144,
+            -13.059999999850989
+          ],
+          "max": [
+            42.01000000238419,
+            3.010000002384186,
+            -13.024999999701977
+          ]
+        },
+        {
+          "name": "",
+          "min": [
+            40.95,
+            1.4500000000000002,
+            -13.049999998211861
+          ],
+          "max": [
+            41.95,
+            2.95,
+            -13.049999998211861
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D-WING-H-PETER",
+      "minimum": [
+        39.13999999761582,
+        1.3899999976158144,
+        13.024999999701977
+      ],
+      "maximum": [
+        40.26000000238419,
+        3.010000002384186,
+        13.094999999552966
+      ],
+      "meshes": [
+        {
+          "name": "",
+          "min": [
+            39.13999999761582,
+            1.3899999976158144,
+            13.05500000089407
+          ],
+          "max": [
+            40.26000000238419,
+            3.010000002384186,
+            13.094999999552966
+          ]
+        },
+        {
+          "name": "",
+          "min": [
+            39.13999999761582,
+            1.3899999976158144,
+            13.024999999701977
+          ],
+          "max": [
+            40.26000000238419,
+            3.010000002384186,
+            13.059999999850989
+          ]
+        },
+        {
+          "name": "",
+          "min": [
+            39.2,
+            1.4500000000000002,
+            13.049999998211861
+          ],
+          "max": [
+            40.2,
+            2.95,
+            13.049999998211861
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D-WING-H-PAUL",
+      "minimum": [
+        40.88999999761582,
+        1.3899999976158144,
+        13.024999999701977
+      ],
+      "maximum": [
+        42.01000000238419,
+        3.010000002384186,
+        13.094999999552966
+      ],
+      "meshes": [
+        {
+          "name": "",
+          "min": [
+            40.88999999761582,
+            1.3899999976158144,
+            13.05500000089407
+          ],
+          "max": [
+            42.01000000238419,
+            3.010000002384186,
+            13.094999999552966
+          ]
+        },
+        {
+          "name": "",
+          "min": [
+            40.88999999761582,
+            1.3899999976158144,
+            13.024999999701977
+          ],
+          "max": [
+            42.01000000238419,
+            3.010000002384186,
+            13.059999999850989
+          ]
+        },
+        {
+          "name": "",
+          "min": [
+            40.95,
+            1.4500000000000002,
+            13.049999998211861
+          ],
+          "max": [
+            41.95,
+            2.95,
+            13.049999998211861
+          ]
+        }
+      ]
+    }
+  ],
+  "sourceSha256": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "67035bc56dac74b154f3c80b5f3a5ec46187df5894c4a8c8230741d4c4f85694",
+    "Thach_Bi_Viewer/simulator/engine.js": "a6ea21ce0d9d54cc26c5d5141082e5dcc19128db07357afbc169bc8413b657fe",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "44e8c4c39b2c3a6833c46642133e4f3a6eafae6c6c2176d5cf3a9a609840ffb1",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "fcbdf178a7a8c23a7ef911bd76576050f3add7867186be94245310e5c2ab7bea",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
+    "scripts/verify_wing_art.cjs": "430921e5d0c17ef84e7cb7d0a6ee699e8f87521c3d29565a55d195fc96e3ae73",
+    "Thach_Bi_Viewer/wing-saint-textures.js": "8e5a469232c47bca675d670f33c7fd4daa969b4b17e58292cc4da49b30f8be35",
+    "scripts/build_saint_textures.py": "5dcaf9152169b9e1ce2960ab40c2d99c2f67291e3ef99617f3302d2420f4f26f",
+    "Thach_Bi_Viewer/references/10-wing-saints/saint-peter-concept-v1.png": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+    "Thach_Bi_Viewer/references/10-wing-saints/saint-paul-concept-v1.png": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+    "Thach_Bi_Viewer/references/10-wing-saints/provenance.json": "6942fed1e5e448bb2be37c1ecf935eeb63fee1dbcdc3dc5d58353c1e75133e0a",
+    "Thach_Bi_Viewer/references/10-wing-saints/README.md": "670b4f2f5ddbab6325bbf32b1247119ba3a529687648d88ffd677b0e557d9a5c"
+  },
+  "finalSourceSha256": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "67035bc56dac74b154f3c80b5f3a5ec46187df5894c4a8c8230741d4c4f85694",
+    "Thach_Bi_Viewer/simulator/engine.js": "a6ea21ce0d9d54cc26c5d5141082e5dcc19128db07357afbc169bc8413b657fe",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "44e8c4c39b2c3a6833c46642133e4f3a6eafae6c6c2176d5cf3a9a609840ffb1",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "fcbdf178a7a8c23a7ef911bd76576050f3add7867186be94245310e5c2ab7bea",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
+    "scripts/verify_wing_art.cjs": "430921e5d0c17ef84e7cb7d0a6ee699e8f87521c3d29565a55d195fc96e3ae73",
+    "Thach_Bi_Viewer/wing-saint-textures.js": "8e5a469232c47bca675d670f33c7fd4daa969b4b17e58292cc4da49b30f8be35",
+    "scripts/build_saint_textures.py": "5dcaf9152169b9e1ce2960ab40c2d99c2f67291e3ef99617f3302d2420f4f26f",
+    "Thach_Bi_Viewer/references/10-wing-saints/saint-peter-concept-v1.png": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+    "Thach_Bi_Viewer/references/10-wing-saints/saint-paul-concept-v1.png": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+    "Thach_Bi_Viewer/references/10-wing-saints/provenance.json": "6942fed1e5e448bb2be37c1ecf935eeb63fee1dbcdc3dc5d58353c1e75133e0a",
+    "Thach_Bi_Viewer/references/10-wing-saints/README.md": "670b4f2f5ddbab6325bbf32b1247119ba3a529687648d88ffd677b0e557d9a5c"
+  },
+  "freezeExcludedSources": [],
+  "limits": [
+    "Headless GPU/browser image services are stubbed; texture appearance and desktop UI are separately inspected.",
+    "Window checks use the existing model opening projection; source drawing/survey and actual installed clearances remain separate.",
+    "No physical frame material, artwork clearance, product specification, mounting capacity, acoustic or photometric approval is inferred.",
+    "Passing software checks does not resolve existing lighting, ventilation, speech-clarity, feedback or sightline limitations."
+  ]
+}
