@@ -8,17 +8,31 @@ This is a display feature. It changes no dimension, equipment position, setting,
 
 | Check | How | Result |
 | --- | --- | --- |
-| Shot list, camera path, scene changes, score, viewer hooks | `node scripts/verify_cinematic.cjs` | Passed: 19 scenes, 308 s, 77 bars, 976 notes; fastest camera 9.7 m/s (night orbit), quickest turn 24.1 °/s; no scene indoors faster than 3.2 m/s |
+| Shot list, camera path, scene changes, score, viewer hooks | `node scripts/verify_cinematic.cjs` | Passed: 19 scenes, 308 s, 77 bars, 1061 notes (second score); fastest camera 9.7 m/s (night orbit), quickest turn 24.1 °/s; no scene indoors faster than 3.2 m/s |
 | Camera clear of the model and fittings | `CHURCH_CINEMA.audit()` in the open viewer, 0.25 s steps | Nearest approach 0.90 m (column 8/D, side-aisle scene). Full list in `clearance-audit.json`. Same result with the 2-block seating |
 | Every scene on screen | Desktop viewer, each scene viewed at one or two moments, day and evening | Framing as intended. Roof-hidden scenes show the lit plan, the orbit and the flight over the frames |
 | Controls | Real click and key presses in the desktop viewer | Start, Space pause/continue, → next scene, M music off, Esc stop all respond. Esc restores the menus, the 48° lens, orbit control and the door setting; a toast names any light or roof state left on |
 | Running to the end | Played from 4 min 58 s to the end | Returns to the overview with the light and roof that were set before the film; no console errors |
-| Music | Started by a click; output level sampled at seven points | Sound clock drives the picture. Peaks between −16 and −6.8 dBFS: no clipping, quietest in the evening strings, loudest in the full organ |
+| Music | Started by a click; output level sampled at seven points | Sound clock drives the picture. First score: peaks between −16 and −6.8 dBFS. Second score: see below |
 | Existing model checks | `node scripts/verify_model.cjs`, `node scripts/verify_simulator.cjs --estimates` | Both exit 0 after the `bundle.js` hooks. `--estimates` means the calculation checks passed; the design targets already recorded as unmet (microphone feedback margins, wing speech clarity, four end seats under 200 lux) are unchanged by this work |
+
+## Second revision, 9 October 2026: captions and score
+
+Owner request: richer captions (the red roof material, the special sanctuary) and deeper, more emotional music that speaks of love for the church and of calling people home, linked to good church music.
+
+| Change | Basis | Check |
+| --- | --- | --- |
+| Captions describe what is on screen: red clay tiles (*ngói đỏ*), verandas and the no-air-conditioning brief, carved and gilded beams, the sanctuary in red lacquer and gold (*sơn son thếp vàng*), altar, tabernacle and crucifix, the Assumption on the tower front | `realism.js` tile finish; `docs/interior-systems-plan.md` §5; `docs/sanctuary-model.md`; `docs/church-view-renderings.md` (visual direction, `USER CONFIRMED` Assumption) | `verify_cinematic.cjs` ties the quoted figures to the model data and requires finishes to be named as proposals. Roof, sanctuary and closing captions viewed on screen |
+| Dedication on the opening and closing cards; design status and music credit moved to a foot line | Owner request of 9 October 2026 | Both cards viewed on screen. The exact wording is the assistant's proposal and is for the owner to confirm |
+| Score: original pentatonic "homeland" theme, then the complete Bach–Gounod *Ave Maria*, then the homeland theme on full organ | Public-domain edition, Mutopia no. 2167 | Transcription compared with the edition's MIDI: identical. `verify_cinematic.cjs` locks the notes and the four points where music and picture meet. Output levels in `clearance-audit.json`: loudest at the bar-34 fortissimo, peak −5.8 dBFS, no clipping |
+| Sound: string céleste, tremulant on the solo stops, 16 ft pedal throughout, longer reverberation tail | Presentation choice | Levels only |
+
+The camera path is unchanged from the first revision, so the clearance audit stands.
 
 ## Not verified
 
-- **How the music sounds.** Levels were measured; nobody has listened to it in this session. The piece, registration and reverberation are generated and may need adjusting by ear.
+- **How the music sounds.** Notes and levels were checked; nobody has listened to the second score in this session. Registration, balance between melody and broken chords, tremulant depth and reverberation may need adjusting by ear.
+- **The Vietnamese captions** were written by the assistant and have not been read by a native speaker in this session.
 - **Full screen (F)** and **the notice shown when a browser withholds sound** were not exercised with a real key press.
 - **Smoothness on slower computers.** The film was run on one Mac in the desktop app's browser pane. Automatic resolution stays active during the film.
 - Phone layout: outside the current owner scope (desktop only).

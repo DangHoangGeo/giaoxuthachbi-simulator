@@ -16,7 +16,8 @@ Walk: W A S D / arrow keys to move; drag the scene to look around (it follows
 the pointer, as in Explore); touch joystick on phones.
 Esc leaves Walk mode. References opens the nine retained reference images.
 Cinematic tour (Discover menu): a five-minute film around and through the
-church with generated organ music, ending at night with the roof hidden.
+church, ending at night with the roof hidden. The viewer generates its organ
+music: a homeland theme outside and the Bach-Gounod Ave Maria inside.
 Space pauses, left/right arrows change scene, M switches the music, F fills
 the screen, Esc stops. The music is presentation music, not an acoustic
 prediction for this church.

@@ -13,6 +13,8 @@ const film = sandbox.window.CHURCH_CINEMA;
 const { shots, score } = film;
 const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
 const unit = v => { const n = Math.hypot(...v); return v.map(x => x / n); };
+// Values made inside the sandbox compare by content, not by prototype.
+const plain = value => JSON.parse(JSON.stringify(value));
 
 // Film and music have the same length, in whole four-second bars.
 assert.equal(shots.reduce((sum, shot) => sum + shot.bars, 0), score.bars, 'shots and score cover the same bars');
@@ -77,24 +79,51 @@ for (const [from, to] of [['facade', 'towers'], ['side-b', 'rear'], ['rear', 're
 // hands over to the level-horizon orbit without a visible change: both poses
 // lie in the vertical plane through the look point.
 const plan = shots.find(shot => shot.id === 'roof-off');
-assert.deepEqual([...plan.up], [0, 0, -1]);
+assert.deepEqual(plain(plan.up), [0, 0, -1]);
 assert(plan.keys.every(key => key[0] === key[3]), 'plan view stays in one vertical plane');
 assert(plan.keys[0][1] > 80 && Math.abs(plan.keys[0][2]) < 2, 'starts directly above the church');
 
-// Score: sorted, inside the film, organ compass, G major with the one D sharp
-// of the B major chord, a pedal note under every bar.
-const scale = new Set([7, 9, 11, 0, 2, 4, 6, 3]);
+// Score: sorted, inside the film, within the organ compass, a pedal note
+// under the whole film.
 let bassCover = 0;
 score.events.forEach((event, i) => {
   if (i) assert(event.time >= score.events[i - 1].time, 'events in time order');
   assert(event.time >= 0 && event.length > 0.2 && event.time + event.length <= film.length + 0.25, 'note inside the film');
-  assert(event.note >= 36 && event.note <= 84, `note ${event.note} within C2–C6`);
-  assert(scale.has(event.note % 12), `note ${event.note} belongs to the key`);
+  assert(event.note >= 36 && event.note <= 88, `note ${event.note} within C2–E6`);
   assert(event.level > 0 && event.level <= 1);
-  if (/[pP]edal/.test(event.stops)) bassCover += event.length;
+  if (event.voice === 'bass') bassCover += event.length;
 });
-assert(Math.abs(bassCover - film.length) < 0.5, `pedal line covers the film (${bassCover.toFixed(1)} s)`);
-assert(score.events.length > 600);
+assert(bassCover > film.length * 0.97, `pedal line covers the film (${bassCover.toFixed(1)} s)`);
+// The homeland melody stays on the five notes C D E G A.
+const pentatonic = new Set([0, 2, 4, 7, 9]);
+const home = score.events.filter(event => event.part === 'homeland' && event.voice === 'melody');
+assert(home.length > 80 && home.every(event => pentatonic.has(event.note % 12)), 'homeland melody is pentatonic');
+// Ave Maria (Bach–Gounod): complete in 41 bars, transcribed from Mutopia
+// edition 2167. These lock the transcription and its place in the film.
+const ave = score.events.filter(event => event.part === 'ave'), at = bar => (score.aveMaria.firstBar + bar - 1) * 4;
+assert.deepEqual(plain(score.aveMaria), { firstBar: 26, bars: 41 });
+const sung = ave.filter(event => event.voice === 'melody');
+assert.equal(sung.length, 106, 'melody notes');
+assert.deepEqual(plain(sung.slice(0, 5).map(event => [event.note, event.time])), [[76, at(5)], [77, at(6)], [79, at(7)], [74, at(7) + 3], [76, at(8)]], 'opening phrase E F G D E from bar 5');
+// Sum of the 106 MIDI note numbers, as in the edition's own MIDI file (second pass of the repeat).
+assert.equal(sung.reduce((sum, event) => sum + event.note, 0), 8040, 'melody pitches');
+const top = sung.reduce((a, b) => (b.note > a.note ? b : a));
+assert.deepEqual([top.note, top.time], [88, at(34)], 'the melody peaks on E6 in bar 34');
+const broken = ave.filter(event => event.voice === 'broken');
+assert.equal(broken.length, 37 * 12 + 28, 'broken chords of the prelude');
+assert.deepEqual(plain(broken.slice(0, 6).map(event => event.note)), [67, 72, 76, 67, 72, 76], 'bar 1: G C E twice');
+assert.deepEqual(plain(ave.filter(event => event.voice === 'bass').map(event => event.note).filter((n, i, all) => n !== all[i - 1])),
+  [60, 59, 60, 59, 60, 59, 57, 50, 55, 53, 52, 50, 43, 48, 41, 42, 43, 44, 43, 36], 'bass line of the prelude');
+// Where the music meets the picture: the prelude begins as the camera reaches
+// the church door, the hush of bar 29 is the turn to evening, the "tutta
+// forza" of bar 33 is the roof lifted away, and the final tonic of bar 37
+// arrives as the orbit begins.
+const scene = id => shots.find(shot => shot.id === id);
+assert(at(1) > scene('enter').start && at(5) < scene('nave').start + scene('nave').duration, 'Ave Maria begins on entering');
+assert.equal(at(29), scene('evening-nave').start);
+assert.equal(at(33), scene('roof-off').start);
+assert.equal(at(37), scene('night-orbit').start);
+assert(score.events.length > 900);
 
 // Figures quoted in the captions are the values held in the model data.
 const bundle = read('bundle.js'), text = JSON.stringify(shots);
@@ -103,6 +132,13 @@ for (const [quoted, source] of [['+36.920 m', 'crossTop: 36.92'], ['+12.472 m', 
   assert(text.includes(quoted), `caption quotes ${quoted}`);
   assert(bundle.includes(source), `model data holds ${source}`);
 }
+
+// Finishes named in the captions are the ones recorded for the model.
+assert(/red clay tiles/.test(text) && read('realism.js').includes('Terracotta tile · reference finish'), 'roof caption follows the tile finish');
+const sanctuaryNotes = fs.readFileSync(path.resolve(__dirname, '../docs/sanctuary-model.md'), 'utf8');
+assert(/sơn son thếp vàng/.test(text) && /lacquer/.test(sanctuaryNotes) && /gilded/.test(sanctuaryNotes), 'sanctuary caption follows the recorded finishes');
+assert(/proposed finish|art proposal/i.test(text), 'finishes are presented as proposals');
+assert(/not a construction-approved design/.test(text), 'closing card keeps the design status');
 
 // Viewer hooks: the tour button starts the film, the render loop drives it,
 // and every way of ending a tour stops it.

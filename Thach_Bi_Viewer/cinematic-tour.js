@@ -11,11 +11,13 @@
  * state and lens back when it ends; a film that runs to its end also restores
  * the light and the roof.
  *
- * The organ music is an original piece synthesised in the browser (additive
- * pipe tones, artificial reverberation). It is presentation music. It is not
- * routed through the modelled loudspeakers and says nothing about how an organ
- * or the sound system will sound in this church: see simulator/audio.js for the
- * room-based listening preview.
+ * The organ music is synthesised in the browser (additive pipe tones,
+ * artificial reverberation): an original "homeland" theme outside, and the
+ * Bach–Gounod "Ave Maria" (public domain) from the church door to the open
+ * roof. It is presentation music. It is not routed through the modelled
+ * loudspeakers and says nothing about how an organ or the sound system will
+ * sound in this church: see simulator/audio.js for the room-based listening
+ * preview.
  *
  * Works offline: no files are fetched and nothing is stored.
  */
@@ -40,62 +42,65 @@
   };
   const SHOTS = [
     { id: 'opening', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.25, 0.7],
-      card: { small: 'Explore the design · Khám phá thiết kế', title: 'Nhà thờ Thạch Bi', line: 'A flight around and through the church · Một vòng quanh và bên trong nhà thờ' },
+      card: { small: 'Giáo xứ Thạch Bi', title: 'Nhà thờ Thạch Bi', line: 'Một lời mời trở về quê nhà · An invitation to come home' },
       keys: [[-98, 54, 60, 14, 12, 0, 38], [-70, 36, 46, 12, 12.5, 0, 40], [-46, 19, 27, 8, 13, 0, 44]] },
     { id: 'facade', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.3, 0.6],
       en: 'The tower front', vi: 'Mặt tiền hai tháp',
-      note: { en: 'Twin towers either side of three entrance doors. The cross apex is drawn at +36.920 m above the nave floor.', vi: 'Hai tháp chuông hai bên ba cửa chính. Đỉnh thánh giá theo bản vẽ ở cao độ +36,920 m so với nền lòng nhà thờ.' },
+      note: { en: 'Twin bell towers frame three doors, with Our Lady of the Assumption between them. The cross apex is drawn at +36.920 m above the nave floor.', vi: 'Hai tháp chuông ôm lấy ba cửa chính, ở giữa là tượng Đức Mẹ Lên Trời. Đỉnh thánh giá theo bản vẽ ở cao độ +36,920 m so với nền lòng nhà thờ.' },
       keys: [[-27, -0.5, 3.2, 2, 6, 0, 46], [-22, 6.5, 1.6, 2.2, 11, 0, 46], [-21, 17, -0.5, 2.4, 19, 0, 45], [-29, 27, -5, 2.4, 26, -0.5, 44]] },
     { id: 'towers', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [0.6, 0.6],
       en: 'Around the bell towers', vi: 'Vòng quanh tháp chuông',
-      note: { en: 'Tower stages at +8.390, +15.840, +23.140 and +29.090 m. Ornament depth is still schematic.', vi: 'Các tầng tháp ở +8,390, +15,840, +23,140 và +29,090 m. Chiều sâu hoa văn còn là sơ phác.' },
+      note: { en: 'Four stages at +8.390, +15.840, +23.140 and +29.090 m, with louvred belfry arches under each dome. Ornament depth is still schematic.', vi: 'Bốn tầng tháp ở +8,390, +15,840, +23,140 và +29,090 m, với các vòm cửa chớp của lầu chuông dưới mỗi mái vòm. Chiều sâu hoa văn còn là sơ phác.' },
       keys: [[-29, 27, -5, 2.4, 26, -0.5, 44], [-15, 33, -21, 2.6, 28.5, -1, 44], [7, 36, -27, 3.5, 28, -1.5, 44], [25, 34, -23, 4.5, 26, -1, 45], [36, 29, -12, 6, 24, 0, 46]] },
     { id: 'side-b', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.6, 0.6],
-      en: 'Along side B', vi: 'Dọc mặt bên B',
-      note: { en: 'Open verandas in 4.50 m bays, three side doors with their stairs, and the wider section between axes 9 and 10.', vi: 'Hành lang hiên theo bước gian 4,50 m, ba cửa bên với bậc cấp, và phần mở rộng giữa trục 9 và 10.' },
+      en: 'Verandas for shade and breeze', vi: 'Hàng hiên che nắng, đón gió',
+      note: { en: 'Open verandas in 4.50 m bays shade the walls and let the air through. The church is planned for fans and open windows, without air conditioning.', vi: 'Hàng hiên mở theo bước gian 4,50 m che nắng cho tường và đón gió. Nhà thờ được tính toán dùng quạt và cửa mở, không dùng điều hòa.' },
       keys: [[-11, 1.4, -19.4, 8, 4.2, -10, 50], [9, 2.1, -18.6, 26, 4.2, -10.5, 50], [29, 3, -18.6, 43, 4.8, -12, 50], [50, 4.6, -18.6, 57, 6, -5, 50]] },
     { id: 'rear', chapter: 'outside', bars: 3, light: 'day', roof: true, cut: 'cut', ease: [0.6, 0.6],
       en: 'The altar end', vi: 'Đầu cung thánh',
-      note: { en: 'Axes 1 to 12 measure 53.016 m. The service room sits behind the sanctuary wall.', vi: 'Từ trục 1 đến trục 12 dài 53,016 m. Phòng áo nằm sau tường cung thánh.' },
+      note: { en: 'From axis 1 to axis 12 the church measures 53.016 m. A cross crowns the gable above the sanctuary; the vesting room sits behind its wall.', vi: 'Từ trục 1 đến trục 12 nhà thờ dài 53,016 m. Thánh giá trên đỉnh đầu hồi phía cung thánh; phòng áo nằm ngay sau tường.' },
       keys: [[50, 4.6, -18.6, 57, 6, -5, 50], [66, 9, -13, 51, 8, -1, 48], [72, 12, 4, 49, 8.5, 0, 47], [62, 14, 25, 42, 7, 5, 46]] },
     { id: 'return', chapter: 'outside', bars: 5, light: 'day', roof: true, cut: 'cut', ease: [0.6, 0.15],
-      en: 'One continuous roof', vi: 'Một mái liên tục',
-      note: { en: 'Main ridge at +12.472 m, with paired side gables over the wider section.', vi: 'Nóc mái chính ở +12,472 m, hai mái hồi bên trên phần mở rộng.' },
+      en: 'A roof of red clay tiles', vi: 'Mái ngói đỏ',
+      note: { en: 'Ngói đỏ, fired-clay tiles: the red roof long familiar on Vietnamese village houses, communal halls and churches. A proposed finish, on one continuous roof with its ridge at +12.472 m.', vi: 'Ngói đỏ đất nung, màu mái thân quen của nhà làng, đình và nhà thờ Việt Nam. Đây là vật liệu đề xuất, trên một mái liên tục có nóc ở +12,472 m.' },
       keys: [[62, 14, 25, 42, 7, 5, 46], [38, 22, 32, 27, 8, 0, 46], [10, 28, 28, 13, 10, 0, 45], [-20, 21, 14, 3, 12, 0, 44], [-34, 9, 2, 2.4, 10, 0, 42]] },
 
     { id: 'enter', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.3, 0.75],
-      en: 'Through the central door', vi: 'Qua cửa chính giữa',
-      note: { en: 'Up the forecourt steps and under the towers. The central door is 3.100 m clear.', vi: 'Lên bậc tiền sảnh, đi dưới hai tháp. Cửa giữa rộng thông thủy 3,100 m.' },
+      en: 'The doors stand open', vi: 'Cánh cửa rộng mở',
+      note: { en: 'Up the forecourt steps and in between the towers. The central door is 3.100 m clear, under an arch of coloured glass.', vi: 'Bước lên bậc tiền sảnh, đi vào giữa hai tháp. Cửa giữa rộng thông thủy 3,100 m, phía trên là vòm kính màu.' },
       keys: [[-23, -0.35, 0, 2.4, 4.2, 0, 50], [-13.6, -0.3, 0, 6, 3.4, 0, 50], [-8, 1.2, 0, 14, 3, 0, 52], [-1, 1.25, 0, 26, 3, 0, 54], [3.2, 1.6, 0, 38, 3.2, 0, 56], [9.5, 1.7, 0, 48, 3.5, 0, 56]] },
     { id: 'nave', chapter: 'inside', bars: 5, light: 'day', roof: true, cut: 'cut', ease: [0.75, 0.3],
       en: 'The nave', vi: 'Lòng nhà thờ',
-      note: { en: 'Two rows of timber columns carry the roof frames. Pews, lamps, fans and loudspeakers are a design proposal.', vi: 'Hai hàng cột gỗ đỡ vì kèo mái. Ghế, đèn, quạt và loa là phương án đề xuất.' },
+      note: { en: 'Fourteen timber columns in red lacquer carry the roof frames above the pews. Pews, lamps, fans and loudspeakers are a design proposal.', vi: 'Mười bốn cột gỗ sơn son đỡ các vì kèo phía trên hàng ghế. Ghế, đèn, quạt và loa là phương án đề xuất.' },
       keys: [[9.5, 1.7, 0, 48, 3.5, 0, 56], [19, 2.3, 0, 48.5, 3.8, 0, 54], [28.5, 3.3, 0, 48.8, 4.2, 0, 52], [35, 3.9, 0, 48.8, 4.6, 0, 50]] },
     { id: 'timber', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.4],
-      en: 'The timber roof', vi: 'Vì kèo gỗ',
-      note: { en: 'Tie beams and frames follow the drawn section. Member sizes and joints remain an engineering hold.', vi: 'Quá giang và vì kèo theo mặt cắt bản vẽ. Tiết diện và mối nối còn chờ kỹ sư kết cấu.' },
+      en: 'Carved and gilded beams', vi: 'Xà kèo chạm khắc, thếp vàng',
+      note: { en: 'Each tie beam carries a gilded bloom between leafy scrolls, under an ivory boarded lining that keeps the roof light. Member sizes and joints remain an engineering hold.', vi: 'Mỗi quá giang mang một bông hoa thếp vàng giữa hai dải lá cuốn, dưới lớp ván lót màu ngà giúp mái sáng và nhẹ. Tiết diện và mối nối còn chờ kỹ sư kết cấu.' },
       keys: [[33.4, 6.4, 1.9, 22, 11.6, -0.6, 62], [25.6, 7, 2, 14, 11.8, -1, 62], [18.6, 7.1, 1.9, 7, 11, -0.6, 60], [12.6, 6.8, 1.5, 3, 8.5, 0, 58]] },
     { id: 'aisle', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.5, 0.5],
-      en: 'Side aisle and windows', vi: 'Lối bên và cửa sổ',
-      note: { en: 'Inner and outer window layers stand either side of the veranda, with coloured glass in the arched heads.', vi: 'Hai lớp cửa sổ trong và ngoài ở hai bên hiên, kính màu trên các vòm cửa.' },
+      en: 'Light through two layers of windows', vi: 'Ánh sáng qua hai lớp cửa',
+      note: { en: 'Inner and outer windows stand either side of the veranda, with coloured glass in the arched heads and timber shutters below.', vi: 'Hai lớp cửa sổ trong và ngoài nằm hai bên hiên, kính màu trên các vòm cửa và cánh cửa gỗ bên dưới.' },
       keys: [[11.5, 2, -4.8, 21, 3, -7.6, 54], [22, 2.2, -4.85, 31, 3.2, -7.6, 54], [33, 2.4, -4.8, 41, 3.3, -9.5, 54]] },
     { id: 'wings', chapter: 'inside', bars: 3, light: 'day', roof: true, cut: 'cut', ease: [0.3, 0.3],
-      en: 'The two wings', vi: 'Hai cánh',
-      note: { en: 'Between axes 9 and 10 the plan widens on both sides, with Saint Peter and Saint Paul facing each other.', vi: 'Giữa trục 9 và 10 mặt bằng mở rộng hai bên, với Thánh Phêrô và Thánh Phaolô đối diện nhau.' },
+      en: 'The two wings', vi: 'Hai cánh nhà thờ',
+      note: { en: 'Between axes 9 and 10 the church widens on both sides, like the arms of a cross. Saint Peter and Saint Paul face each other across the sanctuary steps.', vi: 'Giữa trục 9 và 10 nhà thờ mở rộng sang hai bên như hai cánh thánh giá. Thánh Phêrô và Thánh Phaolô đối diện nhau qua bậc cung thánh.' },
       keys: [[37.4, 2.5, 1.6, 40.6, 3.4, -12.5, 58], [37, 2.6, 0, 48.6, 4, 0, 58], [37.4, 2.5, -1.6, 40.6, 3.4, 12.5, 58]] },
     { id: 'sanctuary', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.2, 0.2],
-      en: 'The sanctuary', vi: 'Cung thánh',
-      note: { en: 'The platform is drawn at +0.750 m. Altar, ambo, tabernacle, crucifix and statues are proposals.', vi: 'Bục cung thánh theo bản vẽ ở +0,750 m. Bàn thờ, giảng đài, nhà tạm, thánh giá và tượng là đề xuất.' },
+      en: 'The sanctuary in red and gold', vi: 'Cung thánh sơn son thếp vàng',
+      note: { en: 'Red lacquer and gilded carving, in the spirit of sơn son thếp vàng, the timber craft of northern Vietnam, frame the altar under three arches. An art proposal on the drawn +0.750 m platform.', vi: 'Sơn son thếp vàng theo tinh thần nghề mộc truyền thống Bắc Bộ ôm lấy bàn thờ dưới ba vòm cung. Đây là đề xuất mỹ thuật trên bục cung thánh +0,750 m theo bản vẽ.' },
       keys: [[34.6, 2, 0, 48.8, 4.4, 0, 48], [39.2, 2.5, 0, 48.8, 4.7, 0, 43], [41.7, 2.8, 0, 48.8, 5.1, 0, 38]] },
     { id: 'altar-arc', chapter: 'inside', bars: 3, light: 'day', roof: true, cut: 'cut', ease: [0.4, 0.4],
+      en: 'Altar, tabernacle and crucifix', vi: 'Bàn thờ, nhà tạm và thánh giá',
+      note: { en: 'The carved Christ hangs on a red cross in an azure niche above the gilded tabernacle, with Our Lady and Saint Joseph in the shrines on either side.', vi: 'Tượng Chúa chịu nạn chạm gỗ trên thánh giá đỏ, trong hốc tường xanh thiên thanh phía trên nhà tạm thếp vàng; Đức Mẹ và Thánh Giuse ở hai bàn thờ bên.' },
       keys: [[39.7, 3, -3, 45.6, 2.7, 0.4, 50], [38.7, 3.1, 0, 45.8, 2.6, 0, 50], [39.7, 3, 3, 45.6, 2.7, -0.4, 50]] },
     { id: 'look-back', chapter: 'inside', bars: 3, light: 'day', roof: true, cut: 'cut', ease: [0.25, 0.1],
       en: 'Looking back to the entrance', vi: 'Nhìn về phía cửa chính',
+      note: { en: 'From the sanctuary steps, the whole length of the nave back to the doors.', vi: 'Từ bậc cung thánh nhìn suốt lòng nhà thờ về phía cửa chính.' },
       keys: [[40.6, 2.6, 0, 22, 3.8, 0, 56], [39.6, 4.8, 0, 12, 5.2, 0, 58], [38.7, 6.9, 0, 3, 6.4, 0, 60]] },
 
     { id: 'evening-nave', chapter: 'night', bars: 4, light: 'evening', roof: true, cut: 'fade', ease: [0.15, 0.4],
       en: 'After dark', vi: 'Khi đêm xuống',
-      note: { en: 'The proposed lighting, as the viewer draws it. Screen brightness is not a lux measurement.', vi: 'Phương án chiếu sáng đề xuất theo cách hiển thị của mô hình. Độ sáng màn hình không phải số đo lux.' },
+      note: { en: 'Evening light: the sanctuary glows at the end of the nave. This is the proposed lighting as the viewer draws it; screen brightness is not a lux measurement.', vi: 'Ánh đèn buổi tối: cung thánh rực sáng cuối lòng nhà thờ. Đây là phương án chiếu sáng đề xuất theo cách hiển thị của mô hình; độ sáng màn hình không phải số đo lux.' },
       keys: [[5.4, 1.9, 0, 48.8, 3.8, 0, 56], [14, 2.3, 0, 48.8, 4, 0, 54], [22.5, 2.9, 0, 48.8, 4.4, 0, 52]] },
     { id: 'roof-off', chapter: 'night', bars: 4, light: 'evening', roof: false, cut: 'fade', ease: [0, 0], up: [0, 0, -1],
       en: 'The roof lifted away', vi: 'Nhấc mái để nhìn từ trên',
@@ -103,12 +108,18 @@
       keys: [[26.5, 96, 0.6, 26.5, 0, 0, 40], [26.5, 70, 7, 26.5, 1, 0, 42], [26.5, 46, 31, 26.5, 2, 0, 44], [26.5, 38, 42, 26.5, 2.5, 0, 45]] },
     { id: 'night-orbit', chapter: 'night', bars: 6, light: 'evening', roof: false, cut: 'cut', ease: [0, 0.6],
       en: 'Around the open church', vi: 'Vòng quanh nhà thờ mở mái',
+      note: { en: 'With the roof hidden, the lit interior shows how nave, wings, verandas and sanctuary fit together.', vi: 'Khi ẩn mái, nội thất sáng đèn cho thấy lòng nhà thờ, hai cánh, hàng hiên và cung thánh gắn kết với nhau thế nào.' },
       keys: [[26.5, 38, 42, 26.5, 2.5, 0, 45], [59, 34, 33, 27, 2.5, 0, 45], [74, 30, 0, 28, 2.5, 0, 45], [59, 27, -33, 27, 2.5, 0, 45], [26.5, 25, -44, 25, 2.5, 0, 46], [-8, 24, -31, 22, 3, 0, 46]] },
     { id: 'over-nave', chapter: 'night', bars: 4, light: 'evening', roof: false, cut: 'cut', ease: [0.6, 0.3],
       en: 'Over the timber frames', vi: 'Bay trên các vì kèo',
+      note: { en: 'Frame after frame, from the towers to the sanctuary.', vi: 'Vì kèo nối tiếp vì kèo, từ tháp chuông đến cung thánh.' },
       keys: [[-8, 24, -31, 22, 3, 0, 46], [-14, 26, -8, 14, 2, 0, 50], [1, 26, 0, 22, 0.5, 0, 54], [20, 16.5, 0, 36, 0.8, 0, 56], [38, 15.2, 0, 47, 1.5, 0, 56]] },
     { id: 'closing', chapter: 'night', bars: 5, light: 'evening', roof: true, cut: 'fade', ease: [0.1, 0], end: true,
-      card: { at: 9, small: 'Design-development model · Mô hình phát triển thiết kế', title: 'Nhà thờ Thạch Bi', line: 'Not a construction-approved design · Chưa phải thiết kế được duyệt để thi công' },
+      en: 'The lights of home', vi: 'Ánh đèn quê nhà',
+      note: { en: 'The tower front after dark, with the proposed concealed lighting on the statues and towers.', vi: 'Mặt tiền về đêm với phương án chiếu sáng giấu đèn cho các tượng và hai tháp.' },
+      card: { at: 9, small: 'Với tình yêu dành cho giáo xứ và quê hương\nWith love for our parish and our hometown', title: 'Nhà thờ Thạch Bi', line: 'Hẹn gặp lại ở quê nhà · Until we meet again at home',
+        foot: ['Design-development model, not a construction-approved design · Mô hình phát triển thiết kế, chưa phải thiết kế được duyệt để thi công',
+          'Music generated in the viewer: an original homeland theme and “Ave Maria” (Bach–Gounod) · Nhạc do mô hình tạo ra: giai điệu quê hương và “Ave Maria” (Bach–Gounod)'] },
       keys: [[-12.5, 1.4, 1.2, 2.4, 9, 0, 54], [-22, 3.4, 5, 2.4, 11, 0, 50], [-36, 8, 12, 4, 13, 0, 46], [-50, 14, 22, 8, 13, 0, 44]] }
   ];
 
@@ -194,47 +205,85 @@
   }
 
   /* --------------------------------------------------------------- music
-   * An original processional in G major, 4/4 at 60 beats a minute, one bar per
-   * four seconds of film. Each bar lists its chords (equal shares of the bar)
-   * and the melody as note:beats. Inner parts, pedal and the flowing quavers
-   * are voiced from the chords.
+   * 4/4 at 60 beats a minute: one bar for every four seconds of film.
+   *
+   *  1. "Homeland" (film bars 1–26, outside). An original melody on the five
+   *     notes C D E G A, the scale of much Vietnamese folk song, on a flute
+   *     stop over warm strings. It quotes no existing song.
+   *  2. "Ave Maria" (bars 27–67, from the church door to the open roof).
+   *     Charles Gounod's melody of 1853 over J. S. Bach's Prelude in C,
+   *     BWV 846, complete in 41 bars. Both are in the public domain. Notes are
+   *     transcribed from the Mutopia Project edition no. 2167 (after Heugel,
+   *     1856; released into the public domain by its editor). Its "tutta
+   *     forza" bar falls where the roof is lifted away.
+   *  3. "Homeland" again on full organ (bars 68–77), ending quietly.
    */
-  const THEME = [['G G/B', 'B4:2 D5:2'], ['C D', 'E5:2 D5:2'], ['Em C', 'B4:2 C5:1 E5:1'], ['Am D', 'C5:2 B4:1 A4:1'],
-    ['G Em', 'B4:1 D5:1 G5:2'], ['C G/B', 'E5:2 D5:1 B4:1'], ['Am D7', 'C5:1 B4:1 A4:2'], ['G', 'G4:4']];
-  const SECOND = [['Em Bm/D', 'G5:2 F#5:2'], ['C G/B', 'E5:2 D5:2'], ['Am Em/G', 'C5:2 B4:2'], ['Am/C B', 'A4:1 C5:1 B4:2'],
-    ['Em C', 'B4:1 E5:1 G5:2'], ['G/D D', 'D5:1 G5:1 F#5:2'], ['C D7', 'E5:2 D5:1 C5:1'], ['G', 'B4:4']];
-  const quiet = bars => bars.map(([chords]) => [chords, '']);
-  const SCORE = [
-    // I · outside, 24 bars: flutes, the tune enters with the tower front.
-    { stops: 'flutes', level: 0.62, quavers: true, bars: [['G', ''], ['Em', ''], ['C', ''], ['D', '']] },
-    { stops: 'flutes', solo: 'solo', level: 0.7, quavers: true, bars: THEME },
-    { stops: 'flutes', solo: 'solo', level: 0.74, quavers: true, bars: SECOND },
-    { stops: 'flutes', solo: 'solo', level: 0.66, quavers: true, bars: [['C G/B', 'E5:2 D5:2'], ['Am D7', 'C5:2 A4:2'], ['G', 'G4:4'], ['G', '']] },
-    // II · inside, 30 bars: the principal chorus with pedal.
-    { stops: 'principals', solo: 'chorus', pedal: true, level: 0.8, bars: THEME },
-    { stops: 'principals', solo: 'chorus', pedal: true, level: 0.8, quavers: true, bars: SECOND },
-    { stops: 'principals', solo: 'chorus', pedal: true, level: 0.86, quavers: true, bars: THEME },
-    { stops: 'flutes', solo: 'solo', pedal: true, level: 0.7, bars: [['Em', 'G4:2 B4:2'], ['C', 'E5:3 D5:1'], ['Am', 'C5:2 E5:2'], ['D/F#', 'D5:3 C5:1'], ['G/D', 'B4:4'], ['D', 'A4:4']] },
-    // III · evening, 23 bars: hushed strings, then full organ over the open roof.
-    { stops: 'strings', level: 0.6, bars: quiet([['Em'], ['C'], ['G/B'], ['D']]) },
-    { stops: 'principals', solo: 'chorus', pedal: true, level: 0.78, quavers: true, bars: [['G', 'D5:4'], ['D/F#', 'D5:2 A4:2'], ['Em', 'B4:2 E5:2'], ['C D', 'E5:2 F#5:2']] },
-    { stops: 'full', solo: 'reed', pedal: true, level: 1, quavers: true, bars: THEME.slice(0, 7).concat([['G D', 'G4:2 A4:2']]) },
-    { stops: 'full', solo: 'reed', pedal: true, level: 1, bars: [['C G/B', 'E5:2 D5:2'], ['Am D7', 'C5:2 A4:2']] },
-    { stops: 'principals', solo: 'chorus', pedal: true, level: 0.84, bars: [['Em C', 'B4:2 E5:2'], ['Am D7', 'C5:2 A4:2'], ['G', 'G4:4'], ['C/G', 'G4:2 E4:2'], ['G', 'G4:4']] }
+  // Homeland: [chords sharing the bar equally, melody as note:beats].
+  const HOME_A = [['C', 'E4:1 G4:1 A4:2'], ['Am', 'C5:1.5 A4:.5 G4:2'], ['F', 'A4:1 C5:1 D5:1.5 C5:.5'], ['G', 'D5:4'],
+    ['Am', 'E5:1.5 D5:.5 C5:1 A4:1'], ['F', 'C5:1 D5:.5 C5:.5 A4:2'], ['F G', 'G4:1 A4:1 D5:1.5 C5:.5'], ['C', 'C5:4']];
+  const HOME_B = [['Am', 'E5:2 G5:1 E5:1'], ['F', 'D5:1 C5:1 A4:2'], ['C/E', 'G4:1 C5:1 E5:1.5 D5:.5'], ['G', 'D5:3 G4:1'],
+    ['Am', 'A4:1 C5:1 E5:1 G5:1'], ['F', 'A5:2 G5:1 E5:1'], ['F G', 'C5:1 A4:1 G4:1 D5:1'], ['C', 'C5:4']];
+  const HOMELAND = [
+    { pad: 'celeste', solo: 'voice', level: 0.52, bars: [['C', ''], ['C', 'r:2 E5:.5 G5:.5 A5:1'], ['Am', 'A5:1 G5:.5 E5:.5 G5:2'], ['F G', 'A4:2 D5:2']] },
+    { pad: 'celeste', solo: 'voice', level: 0.62, bars: HOME_A },
+    { pad: 'celeste', solo: 'voice', level: 0.7, quavers: true, bars: HOME_B },
+    { pad: 'celeste', solo: 'voice', level: 0.6, bars: HOME_A.slice(4) },
+    { pad: 'celeste', solo: 'voice', level: 0.46, bars: [['C', 'E5:1 G5:1 A5:2'], ['C', 'G5:4']] }
   ];
-  // Ranks: [tone, pitch (1 = 8 ft, 2 = 4 ft, 0.5 = 16 ft), level].
+  const FINALE = [
+    { pad: 'full', solo: 'reed', pedal: 'fullPedal', level: 0.74, quavers: true, bars: [['G', 'G4:1 A4:1 C5:1 D5:1']] },
+    { pad: 'full', solo: 'reed', pedal: 'fullPedal', level: 0.9, quavers: true, doubled: true, bars: HOME_A.slice(0, 4) },
+    { pad: 'principals', solo: 'song', pedal: 'pedal', level: 0.78, bars: HOME_A.slice(4) },
+    { pad: 'celeste', solo: 'voice', level: 0.5, bars: [['C', 'G4:1 A4:1 C5:2']] }
+  ];
+  // Ave Maria. Prelude bars 1–37: bass, held second note, and the three notes
+  // of the broken chord, played twice in each bar as Bach wrote them. Bar 27 is
+  // the bar Gounod's edition adds to Bach's text.
+  const PRELUDE = ['C4 E4 G4 C5 E5', 'C4 D4 A4 D5 F5', 'B3 D4 G4 D5 F5', 'C4 E4 G4 C5 E5',
+    'C4 E4 G4 C5 E5', 'C4 D4 A4 D5 F5', 'B3 D4 G4 D5 F5', 'C4 E4 G4 C5 E5',
+    'C4 E4 A4 E5 A5', 'C4 D4 F#4 A4 D5', 'B3 D4 G4 D5 G5', 'B3 C4 E4 G4 C5',
+    'A3 C4 E4 G4 C5', 'D3 A3 D4 F#4 C5', 'G3 B3 D4 G4 B4',
+    'G3 Bb3 E4 G4 C#5', 'F3 A3 D4 A4 D5', 'F3 Ab3 D4 F4 B4', 'E3 G3 C4 G4 C5',
+    'E3 F3 A3 C4 F4', 'D3 F3 A3 C4 F4', 'G2 D3 G3 B3 F4', 'C3 E3 G3 C4 E4',
+    'C3 G3 Bb3 C4 E4', 'F2 F3 A3 C4 E4', 'F#2 C3 A3 C4 Eb4', 'G2 Eb3 B3 C4 Eb4', 'Ab2 F3 B3 C4 D4',
+    'G2 F3 G3 B3 D4', 'G2 E3 G3 C4 E4', 'G2 D3 G3 C4 F4', 'G2 D3 G3 B3 F4',
+    'G2 Eb3 A3 C4 F#4', 'G2 E3 G3 C4 G4', 'G2 D3 G3 C4 F4', 'G2 D3 G3 B3 F4',
+    'C2 C3 G3 Bb3 E4'];
+  // Bars 38 and 39: free broken chords over the held bass, after a quaver rest.
+  const CADENZA = ['F3 A3 C4 A3 C4 F4 C4 A3 C4 A3 F3 A3 F3 D3', 'G4 B4 D5 F5 D5 B4 D5 B4 G4 B4 D4 F4 E4 D4'];
+  // Gounod's melody from bar 5, at the pitch of the violin edition.
+  const AVE = ['E5:4', 'F5:4', 'G5:3 D5:1', 'E5:3 r:1',
+    'A5:2.5 A4:.5 B4:.5 C5:.5', 'D5:1.75 E5:.25 D5:1 r:1', 'G5:2.5 G4:.5 A4:.5 B4:.5', 'C5:1.75 D5:.25 C5:1 r:1',
+    'C6:2.5 C5:.5 D5:.5 E5:.5', 'F#5:1.5 E5:.5 D5:1 A4:1', 'B4:2.5 r:.5 D5:1',
+    'E5:2.5 E5:.5 F5:.5 G5:.5', 'A5:2 A4:1 r:1', 'D5:2.5 D5:.5 E5:.5 F5:.5', 'G5:2 G4:1 r:1',
+    'C5:2.5 C5:.5 D5:.5 E5:.5', 'F5:2.5 F5:.5 G5:.5 A5:.5', 'B5:1.5 A5:.5 G5:1 D5:1', 'E5:3 r:.75 E5:.25',
+    'G5:2 E5:1 r:.75 E5:.25', 'A5:2 A4:1 r:.75 A5:.25', 'A5:2 C5:1 r:.75 A5:.25', 'C6:2 Eb5:1 r:.75 C6:.25', 'C6:2 D5:1 r:.75 D5:.25',
+    'D5:2.5 D5:.5 C5:.5 B4:.5', 'G5:1.5 E5:.5 C5:1 r:1', 'F5:2.5 F5:.5 E5:.5 D5:.5', 'D6:1.5 B5:.5 G5:2',
+    'A5:2.5 A5:.5 B5:.5 C6:.5', 'E6:2.5 C6:.5 G5:.5 E5:.5', 'D5:2.5 A5:.5 B5:.5 A5:.5', 'A5:.5 G5:.5 F5:.5 D5:.5 B4:.5 G4:.5 F4:.5 D4:.5',
+    'C4:8', '', 'G3:8', ''];
+  // The edition's dynamics, bar by bar (pp … ff as a share of full organ). The
+  // hush at bar 29 is where the film turns to evening.
+  const AVE_SWELL = [0.5, 0.5, 0.5, 0.5, 0.54, 0.54, 0.54, 0.54, 0.64, 0.54, 0.64, 0.54, 0.7, 0.62, 0.54, 0.64, 0.56, 0.66, 0.56,
+    0.64, 0.74, 0.86, 0.6, 0.64, 0.7, 0.78, 0.84, 0.9, 0.5, 0.6, 0.72, 0.86, 0.94, 1, 0.96, 0.96, 0.8, 0.56, 0.46, 0.42, 0.42];
+  const AVE_STARTS = 26; // film bars before the prelude begins
+
+  // Ranks: [tone, pitch (1 = 8 ft, 2 = 4 ft, 0.5 = 16 ft), level, detune in cents].
   const STOPS = {
-    flutes: [['flute', 1, 0.5], ['flute', 2, 0.16]],
-    strings: [['string', 1, 0.34], ['flute', 1, 0.22]],
-    principals: [['principal', 1, 0.42], ['flute', 1, 0.2], ['principal', 2, 0.16]],
-    full: [['principal', 1, 0.44], ['principal', 2, 0.24], ['principal', 4, 0.09], ['flute', 1, 0.18]],
-    solo: [['flute', 1, 0.62], ['principal', 2, 0.1]],
-    chorus: [['principal', 1, 0.6], ['principal', 2, 0.2]],
-    reed: [['reed', 1, 0.34], ['principal', 1, 0.42], ['principal', 2, 0.22]],
-    quavers: [['flute', 2, 0.2]],
-    pedal: [['principal', 0.5, 0.5], ['flute', 1, 0.3]],
-    softPedal: [['flute', 0.5, 0.42], ['flute', 1, 0.24]]
+    celeste: [['string', 1, 0.26, -6], ['string', 1, 0.26, 7], ['flute', 1, 0.16]],
+    principals: [['principal', 1, 0.4], ['flute', 1, 0.2], ['principal', 2, 0.15], ['string', 1, 0.1, 5]],
+    full: [['principal', 1, 0.42], ['principal', 2, 0.22], ['principal', 4, 0.07], ['flute', 1, 0.18], ['string', 1, 0.12, 5]],
+    voice: [['flute', 1, 0.58], ['string', 1, 0.2, 4], ['principal', 1, 0.12]],
+    song: [['principal', 1, 0.5], ['flute', 1, 0.32], ['string', 1, 0.2, 4], ['principal', 2, 0.14]],
+    reed: [['reed', 1, 0.3], ['principal', 1, 0.44], ['principal', 2, 0.22], ['principal', 4, 0.06]],
+    broken: [['flute', 1, 0.36], ['flute', 2, 0.06]],
+    held: [['flute', 1, 0.26], ['string', 1, 0.1, -4]],
+    quavers: [['flute', 2, 0.17]],
+    softPedal: [['flute', 0.5, 0.5], ['flute', 1, 0.26]],
+    pedal: [['principal', 0.5, 0.46], ['flute', 0.5, 0.3], ['flute', 1, 0.24]],
+    fullPedal: [['principal', 0.5, 0.56], ['reed', 0.5, 0.13], ['principal', 1, 0.3]]
   };
+  // Solo stops speak through the tremulant: a slow, shallow wave in loudness.
+  const TREMULANT = new Set(['voice', 'song']);
   const TONES = {
     flute: [1, 0.1, 0.3, 0.03, 0.09, 0.01, 0.03],
     principal: [1, 0.62, 0.4, 0.38, 0.16, 0.12, 0.06, 0.1, 0.03],
@@ -243,7 +292,7 @@
   };
   const STEP = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
   const pitchClass = name => (STEP[name[0]] + (name[1] === '#' ? 1 : name[1] === 'b' ? -1 : 0) + 12) % 12;
-  const midi = name => { const m = name.match(/^([A-G][#b]?)(\d)$/); return 12 * (Number(m[2]) + 1) + pitchClass(m[1]); };
+  const midi = name => { const m = name.match(/^([A-G][#b]?)(\d)$/); return 12 * (Number(m[2]) + 1) + STEP[m[1][0]] + (m[1][1] === '#' ? 1 : m[1][1] === 'b' ? -1 : 0); };
   function chord(symbol) {
     const [body, bass] = symbol.split('/'), m = body.match(/^([A-G][#b]?)(m?)(7?)$/);
     const root = pitchClass(m[1]);
@@ -252,52 +301,102 @@
     return { tones, bass: bass ? pitchClass(bass) : root };
   }
   // Nearest placement of a pitch class to a centre note.
-  const place = (pc, centre) => { let n = pc + 12 * Math.round((centre - pc) / 12); return n; };
+  const place = (pc, centre) => pc + 12 * Math.round((centre - pc) / 12);
+  const tune = (text, start) => {
+    const notes = [];
+    let when = start;
+    for (const token of text ? text.split(' ') : []) {
+      const [name, beats] = token.split(':');
+      if (name !== 'r') notes.push({ time: when, length: Number(beats), note: midi(name) });
+      when += Number(beats);
+    }
+    return notes;
+  };
 
   function compose() {
     const events = [];
-    const add = (time, length, note, stops, level) => events.push({ time, length, note, stops, level });
-    let bar = 0;
-    for (const section of SCORE) {
-      const held = new Map(); // part → event still sounding, so repeated notes tie like a held key
-      const tie = (part, time, length, note, stops, level) => {
-        const last = held.get(part);
-        if (last && last.note === note && Math.abs(last.time + last.length - time) < 1e-6) { last.length += length; return; }
-        const event = { time, length, note, stops, level };
-        events.push(event); held.set(part, event);
-      };
-      for (const [chords, melody] of section.bars) {
-        const start = bar * BAR, list = chords.split(' '), share = BAR / list.length;
-        let top = 96, when = start;
-        const tune = [];
-        for (const token of melody ? melody.split(' ') : []) {
-          const [name, beats] = token.split(':');
-          tune.push({ time: when, length: Number(beats), note: midi(name) });
-          when += Number(beats);
-        }
-        for (const note of tune) add(note.time, note.length - 0.06, note.note, section.solo || section.stops, section.level);
-        list.forEach((symbol, k) => {
-          const c = chord(symbol), time = start + k * share;
-          const sung = tune.filter(n => n.time < time + share && n.time + n.length > time).map(n => n.note);
-          if (sung.length) top = Math.min(...sung);
-          // Inner parts in close position round D4, kept below the tune.
-          const inner = c.tones.map(pc => place(pc, 62)).map(n => (n > top - 2 ? n - 12 : n)).sort((a, b) => a - b);
-          inner.forEach((note, part) => tie('inner' + part + ':' + (note % 12), time, share, note, section.stops, section.level * 0.8));
-          tie('bass', time, share, 36 + ((c.bass - 36) % 12 + 12) % 12 + (section.pedal ? 0 : 12), section.pedal ? 'pedal' : 'softPedal', section.level);
-          if (section.quavers) {
-            const ladder = c.tones.map(pc => place(pc, 72)).sort((a, b) => a - b);
-            ladder.push(ladder[0] + 12);
-            const figure = [0, 1, 2, 3, 2, 1, 2, 1];
-            for (let i = 0; i < share * 2; i++) add(time + i * 0.5, 0.46, ladder[figure[i % 8] % ladder.length], 'quavers', section.level * (i % 4 ? 0.8 : 1));
+    const add = (part, voice, time, length, note, stops, level) => {
+      const event = { part, voice, time, length, note, stops, level };
+      events.push(event);
+      return event;
+    };
+    // Repeated notes in a held part tie, as a key that stays down.
+    const held = new Map();
+    const tie = (part, voice, key, time, length, note, stops, level) => {
+      const last = held.get(key);
+      if (last && last.note === note && last.stops === stops && Math.abs(last.time + last.length - time) < 1e-6) { last.length += length; return; }
+      held.set(key, add(part, voice, time, length, note, stops, level));
+    };
+
+    // Melody with chords: inner parts, pedal and flowing quavers are voiced from the chords.
+    function chordal(sections, firstBar) {
+      let bar = firstBar;
+      for (const section of sections) {
+        for (const [chords, melody] of section.bars) {
+          const start = bar * BAR, list = chords.split(' '), share = BAR / list.length;
+          const sung = tune(melody, start);
+          for (const note of sung) {
+            add('homeland', 'melody', note.time, note.length - 0.05, note.note, section.solo, section.level);
+            // On full organ the melody is doubled at the octave above.
+            if (section.doubled) add('homeland', 'melody', note.time, note.length - 0.05, note.note + 12, 'song', section.level * 0.7);
           }
-        });
-        bar++;
+          let top = 96;
+          list.forEach((symbol, k) => {
+            const c = chord(symbol), time = start + k * share;
+            const above = sung.filter(n => n.time < time + share && n.time + n.length > time).map(n => n.note);
+            if (above.length) top = Math.min(...above);
+            // Inner parts in close position round D4, kept below the melody.
+            c.tones.map(pc => place(pc, 62)).map(n => (n > top - 2 ? n - 12 : n))
+              .forEach((note, i) => tie('homeland', 'inner', `inner${i}:${note}`, time, share, note, section.pad, section.level * 0.8));
+            tie('homeland', 'bass', 'bass', time, share, 36 + c.bass, section.pedal || 'softPedal', section.level);
+            if (section.quavers) {
+              const ladder = c.tones.map(pc => place(pc, 72)).sort((a, b) => a - b);
+              ladder.push(ladder[0] + 12);
+              const figure = [0, 1, 2, 3, 2, 1, 2, 1];
+              for (let i = 0; i < share * 2; i++) add('homeland', 'quavers', time + i * 0.5, 0.46, ladder[figure[i % 8] % ladder.length], 'quavers', section.level * (i % 4 ? 0.8 : 1));
+            }
+          });
+          bar++;
+        }
       }
+      return bar;
     }
+
+    let bar = chordal(HOMELAND, 0);
+    // Ave Maria.
+    const origin = bar * BAR;
+    PRELUDE.forEach((text, index) => {
+      const [bass, second, ...broken] = text.split(' ').map(midi), level = AVE_SWELL[index], start = origin + index * BAR;
+      const forte = index >= 31 && index <= 36; // bars 32–37: principals join, then full organ
+      for (const half of [0, 2]) {
+        tie('ave', 'bass', 'bass', start + half, 2, bass, forte ? 'fullPedal' : index >= 21 ? 'pedal' : 'softPedal', level);
+        tie('ave', 'second', 'second', start + half + 0.25, 1.75, second, 'held', level);
+        for (let i = 0; i < 6; i++) add('ave', 'broken', start + half + 0.5 + i * 0.25, 0.27, broken[i % 3], 'broken', level * 0.92);
+      }
+      if (forte) for (const note of [second, ...broken]) add('ave', 'chord', start, BAR - 0.04, note + (note < 55 ? 12 : 0), index === 31 || index === 36 ? 'principals' : 'full', level * 0.92);
+    });
+    CADENZA.forEach((text, index) => {
+      const bars = PRELUDE.length + index, level = AVE_SWELL[bars], start = origin + bars * BAR;
+      tie('ave', 'bass', 'bass', start, BAR, midi('C2'), 'softPedal', level);
+      add('ave', 'second', start + 0.25, BAR - 0.25, midi(index ? 'B2' : 'C3'), 'held', level);
+      text.split(' ').map(midi).forEach((note, i) => add('ave', 'broken', start + 0.5 + i * 0.25, 0.27, note, 'broken', level * 0.92));
+    });
+    // Closing chord, bars 40–41, held to the end of the piece.
+    const close = origin + (PRELUDE.length + CADENZA.length) * BAR;
+    tie('ave', 'bass', 'bass', close, 2 * BAR - 0.6, midi('C2'), 'softPedal', AVE_SWELL[39]);
+    for (const name of ['G2', 'C3', 'E4', 'G4', 'C5']) add('ave', 'chord', close, 2 * BAR - 0.6, midi(name), 'held', AVE_SWELL[39]);
+    AVE.forEach((text, index) => {
+      const number = index + 4, level = AVE_SWELL[number];
+      const stops = number >= 32 && number <= 35 ? 'reed' : level >= 0.84 ? 'song' : 'voice';
+      for (const note of tune(text, origin + number * BAR)) add('ave', 'melody', note.time, note.length - (note.length > 0.3 ? 0.05 : 0.02), note.note, stops, Math.min(1, level * 1.05));
+    });
+    bar += AVE_SWELL.length;
+    held.clear();
+    bar = chordal(FINALE, bar);
     // The last chord rings on under the closing card.
     const end = bar * BAR;
     for (const event of events) if (Math.abs(event.time + event.length - end) < 0.07) event.length = end - event.time + 0.2;
-    return { events: events.sort((a, b) => a.time - b.time), bars: bar };
+    return { events: events.sort((a, b) => a.time - b.time), bars: bar, aveMaria: { firstBar: AVE_STARTS, bars: AVE_SWELL.length } };
   }
   const score = compose();
 
@@ -319,31 +418,38 @@
     limiter.threshold.value = -9; limiter.knee.value = 8; limiter.ratio.value = 8; limiter.attack.value = 0.004; limiter.release.value = 0.3;
     music.meter = ctx.createAnalyser(); music.meter.fftSize = 4096;
     music.master.connect(limiter); limiter.connect(music.meter); music.meter.connect(ctx.destination);
-    music.dry = ctx.createGain(); music.dry.gain.value = 0.62; music.dry.connect(music.master);
+    music.dry = ctx.createGain(); music.dry.gain.value = 0.58; music.dry.connect(music.master);
     // Artificial reverberation: decaying noise, darker as it dies away. A
-    // generic large-room tail for the film; not this church's predicted response.
-    const seconds = 4.2, rate = ctx.sampleRate, impulse = ctx.createBuffer(2, Math.floor(seconds * rate), rate);
+    // generic large-church tail for the film; not this church's predicted response.
+    const seconds = 5.5, rate = ctx.sampleRate, impulse = ctx.createBuffer(2, Math.floor(seconds * rate), rate);
     let seed = 20261009;
     const random = () => ((seed = (seed * 1103515245 + 12345) >>> 0) / 2147483648) - 1;
     for (let ch = 0; ch < 2; ch++) {
       const data = impulse.getChannelData(ch);
       let low = 0;
       for (let i = 0; i < data.length; i++) {
-        const t = i / rate, keep = 0.5 * Math.exp(-t * 0.9) + 0.06;
+        const t = i / rate, keep = 0.5 * Math.exp(-t * 0.8) + 0.05;
         low += (random() - low) * keep;
-        data[i] = low * Math.exp(-t * 6.9 / 3.4) * Math.min(1, t / 0.012);
+        data[i] = low * Math.exp(-t * 6.9 / 4.4) * Math.min(1, t / 0.014);
       }
     }
     const hall = ctx.createConvolver(); hall.buffer = impulse;
-    music.wet = ctx.createGain(); music.wet.gain.value = 0.5;
+    music.wet = ctx.createGain(); music.wet.gain.value = 0.6;
     music.send = ctx.createGain(); music.send.connect(hall); hall.connect(music.wet); music.wet.connect(music.master);
+    // Tremulant for the solo stops.
+    music.solo = ctx.createGain(); music.solo.gain.value = 0.94;
+    music.solo.connect(music.dry); music.solo.connect(music.send);
+    const wave = ctx.createOscillator(), depth = ctx.createGain();
+    wave.frequency.value = 5.3; depth.gain.value = 0.085;
+    wave.connect(depth); depth.connect(music.solo.gain); wave.start();
     return ctx;
   }
   function musicCut() {
     const ctx = music.context, old = music.epoch;
-    if (old) { old.gain.setTargetAtTime(0, ctx.currentTime, 0.03); setTimeout(() => old.disconnect(), 400); }
-    music.epoch = ctx.createGain();
-    music.epoch.connect(music.dry); music.epoch.connect(music.send);
+    if (old) for (const node of old) { node.gain.setTargetAtTime(0, ctx.currentTime, 0.03); setTimeout(() => node.disconnect(), 400); }
+    const plain = ctx.createGain(), solo = ctx.createGain();
+    plain.connect(music.dry); plain.connect(music.send); solo.connect(music.solo);
+    music.epoch = [plain, solo];
   }
   // Start the score at a film time: notes already sounding there come in held.
   function musicSeek(time) {
@@ -351,30 +457,31 @@
     if (!ctx) return;
     musicCut();
     music.zero = ctx.currentTime + 0.06 - time;
-    music.next = score.events.findIndex(event => event.time + event.length > time + 0.05);
-    if (music.next < 0) music.next = score.events.length;
+    music.next = 0;
     musicPump();
   }
   function musicPump() {
     const ctx = music.context;
-    if (!ctx || ctx.state !== 'running' || !music.synced) return;
-    const horizon = ctx.currentTime - music.zero + 1.6;
+    if (!ctx || ctx.state !== 'running' || !music.synced || !music.epoch) return;
+    const now = ctx.currentTime - music.zero, horizon = now + 1.6;
     while (music.next < score.events.length && score.events[music.next].time < horizon) {
       const event = score.events[music.next++];
       const begin = Math.max(ctx.currentTime + 0.01, music.zero + event.time), end = music.zero + event.time + event.length;
       if (end - begin < 0.05) continue;
-      const frequency = 440 * Math.pow(2, (event.note - 69) / 12);
-      STOPS[event.stops].forEach(([tone, pitch, level], rank) => {
+      const frequency = 440 * Math.pow(2, (event.note - 69) / 12), out = music.epoch[TREMULANT.has(event.stops) ? 1 : 0];
+      STOPS[event.stops].forEach(([tone, pitch, level, cents = 0], rank) => {
         const pipe = ctx.createOscillator(), gain = ctx.createGain(), peak = level * event.level * 0.2;
+        // Strings speak slowly; flutes and principals promptly.
+        const attack = tone === 'string' ? 0.14 : 0.045;
         pipe.setPeriodicWave(music.waves[tone]);
         // Ranks are tuned a hair apart, as real pipes are.
-        pipe.frequency.value = frequency * pitch * (1 + (rank - 1) * 0.0009);
+        pipe.frequency.value = frequency * pitch * Math.pow(2, (cents + (rank - 1) * 1.5) / 1200);
         gain.gain.setValueAtTime(0, begin);
-        gain.gain.linearRampToValueAtTime(peak, begin + 0.045);
-        gain.gain.setValueAtTime(peak, Math.max(begin + 0.05, end - 0.02));
-        gain.gain.linearRampToValueAtTime(0, end + 0.09);
-        pipe.connect(gain); gain.connect(music.epoch);
-        pipe.start(begin); pipe.stop(end + 0.12);
+        gain.gain.linearRampToValueAtTime(peak, begin + Math.min(attack, (end - begin) * 0.5));
+        gain.gain.setValueAtTime(peak, Math.max(begin + Math.min(attack, (end - begin) * 0.5) + 0.005, end - 0.02));
+        gain.gain.linearRampToValueAtTime(0, end + 0.1);
+        pipe.connect(gain); gain.connect(out);
+        pipe.start(begin); pipe.stop(end + 0.13);
       });
     }
   }
@@ -393,7 +500,7 @@
     layer.id = 'cinemaLayer'; layer.className = 'cinema-layer'; layer.hidden = true;
     layer.innerHTML = `<div class="cinema-fade"></div>
 <div class="cinema-bar cinema-bar-top"></div><div class="cinema-bar cinema-bar-bottom"></div>
-<div class="cinema-card"><small></small><h1></h1><p></p></div>
+<div class="cinema-card"><small></small><h1></h1><p></p><footer></footer></div>
 <div class="cinema-caption" aria-live="polite"><span class="cinema-chapter"></span><strong></strong><em></em><p class="cinema-note"></p><p class="cinema-note cinema-note-vi"></p></div>
 <div class="cinema-status" role="status"></div>
 <div class="cinema-controls" role="toolbar" aria-label="Cinematic tour controls">
@@ -444,6 +551,7 @@
       card.querySelector('small').textContent = shot.card.small;
       card.querySelector('h1').textContent = shot.card.title;
       card.querySelector('p').textContent = shot.card.line;
+      card.querySelector('footer').replaceChildren(...(shot.card.foot || []).map(text => Object.assign(document.createElement('span'), { textContent: text })));
     }
   }
   function draw() {
@@ -460,7 +568,9 @@
     layer.querySelector('.cinema-fade').style.opacity = blackAt(film.time).toFixed(3);
     const cardFrom = p.shot.card?.at ?? 1.2, cardTo = p.shot.card?.at ? p.shot.duration - 2.4 : 9.5;
     part('.cinema-card').classList.toggle('visible', !!p.shot.card && local > cardFrom && local < cardTo);
-    part('.cinema-caption').classList.toggle('visible', !!p.shot.en && local > 1 && local < Math.min(p.shot.duration - 1, 11) && left > 1);
+    // A caption stays long enough to read both languages, and clears before a title card.
+    const captionTo = p.shot.card?.at ? p.shot.card.at - 1.2 : Math.min(p.shot.duration - 1.2, 14.5);
+    part('.cinema-caption').classList.toggle('visible', !!p.shot.en && local > 1 && local < captionTo);
     part('.cinema-progress i').style.width = `${(100 * film.time / filmLength).toFixed(2)}%`;
     const clock = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
     part('.cinema-clock').textContent = `${clock(film.time)} / ${clock(filmLength)} · scene ${p.shot.index + 1} of ${SHOTS.length}`;
@@ -536,7 +646,7 @@
     if (music.context) {
       musicLevel(0.5);
       const ctx = music.context;
-      setTimeout(() => { if (!film.running) { if (music.epoch) { music.epoch.disconnect(); music.epoch = null; } void ctx.suspend(); } }, 900);
+      setTimeout(() => { if (!film.running) { if (music.epoch) { music.epoch.forEach(node => node.disconnect()); music.epoch = null; } void ctx.suspend(); } }, 900);
     }
     document.body.classList.remove('cinema');
     film.layer.hidden = true;

@@ -10,11 +10,14 @@ body.cinema > :not(#viewport):not(#cinemaLayer):not(dialog) { opacity:0 !importa
 
 .cinema-card { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:0 8vw; text-align:center; background:radial-gradient(ellipse 58% 44% at 50% 50%,#000000a6,#00000059 55%,#0000 100%); opacity:0; transition:opacity 1.6s ease; pointer-events:none; text-shadow:0 2px 26px #000c, 0 0 3px #0009; }
 .cinema-card.visible { opacity:1; }
-.cinema-card small { font-size:clamp(11px,1.05vw,15px); letter-spacing:.34em; text-transform:uppercase; opacity:.86; }
+.cinema-card small { font-size:clamp(11px,1.05vw,15px); letter-spacing:.24em; line-height:1.7; text-transform:uppercase; white-space:pre-line; opacity:.9; }
 .cinema-card h1 { margin:0; font-family:Georgia,"Times New Roman",serif; font-weight:400; font-size:clamp(40px,6.4vw,104px); letter-spacing:.03em; line-height:1.05; }
-.cinema-card p { margin:0; font-size:clamp(13px,1.3vw,19px); letter-spacing:.06em; opacity:.92; }
+.cinema-card p { margin:0; font-size:clamp(14px,1.5vw,22px); letter-spacing:.06em; opacity:.95; }
+.cinema-card footer { position:absolute; left:8vw; right:8vw; bottom:calc(9.5vh + 22px); display:flex; flex-direction:column; align-items:center; gap:4px; font-size:clamp(10px,.86vw,13px); letter-spacing:.03em; line-height:1.35; }
+.cinema-card footer span { padding:3px 10px; border-radius:4px; background:#000000a8; color:#f6f2e6d9; }
+.cinema-card footer:empty { display:none; }
 
-.cinema-caption { position:absolute; left:4.5vw; bottom:calc(9.5vh + 30px); max-width:min(46vw,640px); padding:14px 26px 16px 18px; border-left:2px solid #d9b96a; background:linear-gradient(90deg,#0d1210b8,#0d121078 70%,#0d121000); opacity:0; transform:translateY(10px); transition:opacity 1s ease, transform 1s ease; pointer-events:none; text-shadow:0 1px 14px #000d, 0 0 2px #000b; }
+.cinema-caption { position:absolute; left:4.5vw; bottom:calc(9.5vh + 30px); max-width:min(50vw,700px); padding:14px 26px 16px 18px; border-left:2px solid #d9b96a; background:linear-gradient(90deg,#0d1210b8,#0d121078 70%,#0d121000); opacity:0; transform:translateY(10px); transition:opacity 1s ease, transform 1s ease; pointer-events:none; text-shadow:0 1px 14px #000d, 0 0 2px #000b; }
 .cinema-caption.visible { opacity:1; transform:none; }
 .cinema-caption[data-empty=true] { display:none; }
 .cinema-chapter { display:block; margin-bottom:6px; font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:#e6cf93; }
