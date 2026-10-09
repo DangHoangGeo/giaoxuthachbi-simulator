@@ -15,6 +15,8 @@ const forbidden = [
   ["legacy-viewer-directory", "Thach_Bi_Viewer/"],
   ["engineering-source-directory", "docs/electrical-grid/"],
   ["dimension-source-directory", "docs/layout_design/"],
+  ["synthetic-gallery-build", "SYNTHETIC TEST BUILD"],
+  ["synthetic-gallery-credit", "Synthetic test generator; no parish image"],
   ["private-test-fixture", "tests/fixtures/private-canary.json"],
 ].map(([label, value]) => [label, Buffer.from(value)]);
 

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "dd2538d60bb9ce850da5395d6afc3ed951ff30f9",
+  "checks": {
+    "privateUnpublishedDraft": true,
+    "datesAndNullsPreserved": true,
+    "bilingualSections": 4,
+    "noClearedMediaOrLinks": true,
+    "localLinks": 25,
+    "sourceRevisionsResolvable": true,
+    "applicationAndEngineeringSourcesUnchanged": true
+  },
+  "files": {
+    "docs/web/public-content.md": "0644b1a27a98bf2a2bf4cfecf559eb06aff50bbee346849ffb23d44be8537bdb",
+    "docs/web/public-copy-draft.json": "bab11ad51c16b906d1903f6238b226efee84446c468a8e660746d95ef9be1557",
+    "plan/phases/02-homepage-and-gallery.md": "50ff5190672071f8cf9b5326f69c31b459554b777d9a2a30d90ec2a682cdc1cb",
+    "plan/README.md": "0d3113757f16a0eb2f5afbb5932191746c89e82980ff9374e121b45afcbdcbb6"
+  },
+  "limitations": [
+    "Parish and native-language review pending",
+    "No public content/assets activated",
+    "Not a construction status verification"
+  ]
+}

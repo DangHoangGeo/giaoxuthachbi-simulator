@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-08T14:09:38.916Z",
+  "base": "https://giaoxuthachbi-simulator-8kojnh22k-danghoanggeos-projects.vercel.app",
+  "shareExpiresAt": "2026-11-07T14:06:05.000Z",
+  "checks": [
+    {
+      "shareOnly": 401,
+      "parishChallenge": true
+    },
+    {
+      "wrongPassword": 401
+    },
+    {
+      "shareWithPassword": 200,
+      "modelHead": 200,
+      "modelBytes": 53230983,
+      "access": 204,
+      "vercelAccountRequired": false
+    }
+  ]
+}

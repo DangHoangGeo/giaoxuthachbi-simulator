@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-08T02:24:05.662Z",
+  "url": "http://127.0.0.1:3130/en/design",
+  "status": 200,
+  "expectedBuildId": "9MolEJEIEN4WJpmEQVAoD",
+  "extractedBuildId": "9MolEJEIEN4WJpmEQVAoD",
+  "matchingFieldCount": 1,
+  "distinctBuildIdCount": 1,
+  "htmlBytes": 14974,
+  "htmlSha256": "79ff9c4c8f57fc0c3260e4f8469e058ea2ca0c81187964d23832d68a8808d1db",
+  "htmlDumpWritten": false,
+  "passed": true
+}

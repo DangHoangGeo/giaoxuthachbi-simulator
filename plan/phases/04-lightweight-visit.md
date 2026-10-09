@@ -1,6 +1,6 @@
 # Phase 04 — Lightweight virtual church visit
 
-Status: **not started**. Depends on phase 01 and the public-model approval from phase 00. Can proceed while phase 03 content is being collected. Read [architecture](../architecture.md) and [performance/verification criteria](../quality-and-release.md).
+Status: **in progress; G4 remains open and branch unmerged**. The desktop development visit and separate full-detail sharing export are implemented; see [delivery/profile](../../docs/web/viewer.md) and [checks/evidence](../../review/web-visit-2026-10-08/README.md). Depends on phase 01 and the public-model approval from phase 00. Can proceed while phase 03 content is being collected. Read [architecture](../architecture.md) and [performance/verification criteria](../quality-and-release.md).
 
 ## Outcome
 
@@ -41,3 +41,7 @@ Suggested commit boundaries: export/adapter proof and decision; viewer lifecycle
 ## Risks and handover
 
 If compression or a format export breaks artistic materials, use a simpler measured adapter until fidelity is proven. A public asset can be downloaded; never put restricted detail in it. Prepare increment B for phase 07 and pass the tested read-only adapter pattern to phase 05 without assuming its public geometry suffices for engineering inspection.
+
+## Development handover, 8 October 2026
+
+Implementation `cbc1672` provides the lighter public profile and separate full-detail sharing export. Local tests, source-coordinate checks and a ten-minute headed desktop session passed; [evidence](../../review/web-visit-2026-10-08/README.md) retains the discovered/repaired hydration and no-JavaScript defects. The same source model and engineering holds remain. G4 is still open for a measured adapter comparison, agreed parish desktop/network and full navigation/acceptance review. This branch stays unmerged. The owner-connected hosting target/URL and actual parish desktop profile are the outstanding owner inputs; no credentials should be sent in chat.

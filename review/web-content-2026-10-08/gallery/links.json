@@ -1,0 +1,174 @@
+{
+  "count": 42,
+  "links": [
+    {
+      "source": "docs/web/data-boundary.md",
+      "href": "../../plan/data-and-publication.md"
+    },
+    {
+      "source": "docs/web/data-boundary.md",
+      "href": "public-content.md#private-media-preparation"
+    },
+    {
+      "source": "docs/web/data-boundary.md",
+      "href": "../../review/web-framework-2026-10-08/README.md"
+    },
+    {
+      "source": "docs/web/development.md",
+      "href": "public-content.md#private-media-preparation"
+    },
+    {
+      "source": "docs/web/development.md",
+      "href": "../../review/web-framework-2026-10-08/README.md"
+    },
+    {
+      "source": "docs/web/development.md",
+      "href": "data-boundary.md"
+    },
+    {
+      "source": "docs/web/development.md",
+      "href": "../../review/web-framework-2026-10-08/delivery/README.md"
+    },
+    {
+      "source": "docs/web/development.md",
+      "href": "deployment.md"
+    },
+    {
+      "source": "docs/web/development.md",
+      "href": "public-content.md#gallery-and-narrative-presentation"
+    },
+    {
+      "source": "docs/web/public-content.md",
+      "href": "../../review/web-framework-2026-10-08/delivery/README.md"
+    },
+    {
+      "source": "docs/web/public-content.md",
+      "href": "../../plan/data-and-publication.md"
+    },
+    {
+      "source": "docs/web/public-content.md",
+      "href": "public-copy-draft.json"
+    },
+    {
+      "source": "docs/web/public-content.md",
+      "href": "../../README.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "../AGENTS.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "engineering/README.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "quality-and-release.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "architecture.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "phases/00-evidence-and-publication.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "phases/01-framework-and-delivery.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "phases/02-homepage-and-gallery.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "phases/03-construction-timeline.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "phases/04-lightweight-visit.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "phases/05-protected-review.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "phases/06-construction-inspector.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "phases/07-release-and-operations.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "architecture.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "data-and-publication.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "quality-and-release.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "decisions-and-sources.md"
+    },
+    {
+      "source": "plan/README.md",
+      "href": "engineering/README.md#execution-delegation-and-handover"
+    },
+    {
+      "source": "plan/phases/02-homepage-and-gallery.md",
+      "href": "../../docs/web/public-content.md"
+    },
+    {
+      "source": "plan/phases/02-homepage-and-gallery.md",
+      "href": "../data-and-publication.md"
+    },
+    {
+      "source": "plan/phases/02-homepage-and-gallery.md",
+      "href": "../quality-and-release.md"
+    },
+    {
+      "source": "plan/phases/02-homepage-and-gallery.md",
+      "href": "../../README.md"
+    },
+    {
+      "source": "plan/phases/02-homepage-and-gallery.md",
+      "href": "../../review/web-content-2026-10-08/media/README.md"
+    },
+    {
+      "source": "plan/phases/02-homepage-and-gallery.md",
+      "href": "../../review/web-content-2026-10-08/gallery/README.md"
+    },
+    {
+      "source": "review/web-content-2026-10-08/gallery/README.md",
+      "href": "manifest.json"
+    },
+    {
+      "source": "review/web-content-2026-10-08/gallery/README.md",
+      "href": "desktop/summary.md"
+    },
+    {
+      "source": "review/web-content-2026-10-08/gallery/README.md",
+      "href": "synthetic/captures.json"
+    },
+    {
+      "source": "review/web-content-2026-10-08/gallery/README.md",
+      "href": "../media/audit.json"
+    },
+    {
+      "source": "review/web-content-2026-10-08/gallery/desktop/summary.md",
+      "href": "results.json"
+    },
+    {
+      "source": "review/web-content-2026-10-08/gallery/desktop/summary.md",
+      "href": "served-build-check.json"
+    }
+  ],
+  "failures": []
+}

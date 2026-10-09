@@ -1,0 +1,12 @@
+
+> thach-bi-web@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/danghoang/Desktop/giaoxuthachbi_work/web
+
+
+ Test Files  10 passed (10)
+      Tests  113 passed (113)
+   Start at  21:01:54
+   Duration  2.79s (tests 75%, import 13%, transform 12%, worker 1%)

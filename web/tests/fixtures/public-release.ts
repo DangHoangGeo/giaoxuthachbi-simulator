@@ -38,6 +38,8 @@ export function syntheticRelease(): PublicRelease {
         title: text,
         body: text,
         occurredOn: { precision: "month", value: "2026-02" },
+        occurredUntil: null,
+        timeZone: "Asia/Ho_Chi_Minh",
         reportedAsOf: "2026-03-01",
         evidence: "owner-reported",
         evidenceRef: null,

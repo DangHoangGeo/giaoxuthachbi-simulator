@@ -1,0 +1,1641 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-08T02:46:29.142Z",
+  "project": "web03 desktop progress-route evidence",
+  "source": {
+    "baseUrl": "http://127.0.0.1:3130",
+    "gitHead": "d8d645dbd0f3b5c3d9e6e6dc43988acdd615d9f7",
+    "gitBranch": "web/03-timeline",
+    "gitStatus": [
+      "## web/03-timeline...origin/web/03-timeline",
+      " M docs/web/data-boundary.md",
+      " M plan/README.md",
+      " M plan/phases/03-construction-timeline.md",
+      " M web/package.json",
+      " M web/playwright.gallery.config.ts",
+      " M web/src/app/globals.css",
+      " M web/src/components/site-shell.tsx",
+      " M web/src/lib/contracts/common.ts",
+      " M web/src/lib/contracts/public-content.ts",
+      " M web/src/lib/server/public-validation.ts",
+      " M web/tests/fixtures/public-release.ts",
+      " M web/tests/harness/prepare-gallery.mjs",
+      " M web/tsconfig.json",
+      "?? docs/web/progress-publishing.md",
+      "?? web/scripts/check-content.ts",
+      "?? web/scripts/prepare-content.ts",
+      "?? web/src/app/[locale]/(public)/progress/",
+      "?? web/src/app/api/",
+      "?? web/src/components/event-dates.tsx",
+      "?? web/src/components/freshness.tsx",
+      "?? web/src/lib/contracts/public-history.ts",
+      "?? web/src/lib/progress.ts",
+      "?? web/src/lib/public-version-shape.ts",
+      "?? web/src/lib/server/public-version.ts",
+      "?? web/tests/browser/progress.spec.ts",
+      "?? web/tests/harness/progress.spec.ts",
+      "?? web/tests/unit/content-staging.test.ts",
+      "?? web/tests/unit/progress.test.ts",
+      "?? web/tests/unit/public-history.test.ts",
+      "?? web/tests/unit/public-version.test.ts"
+    ],
+    "expectedBuildId": "9IgjMN2j4cCibIDB0AiU0",
+    "buildIdBefore": "9IgjMN2j4cCibIDB0AiU0",
+    "sourceHashesBefore": {
+      "web/package.json": "f730e483a9fa9a92d8cb0a25905ef00f06775d06e40f231b2bb3dff32467c59b",
+      "web/package-lock.json": "07a215879498fd1ce060f12617b06a878cd9ae61ac65e9df0e7dd232cd2efb97",
+      "web/.node-version": "6d07ac247e81cd42c2c20abf8dfe504413d6b2422e4aba9b2c975a776f155921",
+      "web/.next/BUILD_ID": "da933b5e4ac04314baab9db7dc026db837e5dbb091d110319438f485a43ff1a5",
+      "web/content/current.json": "3569452f721ab9e5a4539eb831a017228759457305126a871ad28d02ffaafef0",
+      "web/content/release.json": "38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed",
+      "web/src/app/globals.css": "0a4e9afcb00ffc40118a2e4b1002e793ba0d7c9f3738616ea99d8fea1ace8595",
+      "web/src/app/[locale]/layout.tsx": "484c304be93f65d519b4c0fcfdbddc32f90a9783953958e4dc489cbe1a0b4c9f",
+      "web/src/app/[locale]/(public)/progress/page.tsx": "c2a407ead63d2a3e47b72b89e5c2f5caa1ea62cfcd93ca7f33f63032da1bb988",
+      "web/src/app/[locale]/(public)/progress/[eventId]/page.tsx": "1d93247972a3ba63054202b91203b45fe88e1c4c47e2f095dbdacbf780435e0f",
+      "web/src/components/site-shell.tsx": "699f5d0a85bce1ea921713f1a71a46a89497b291e70b02446ef989ae52eac6a4",
+      "web/src/components/event-dates.tsx": "5ffcd36e3a069ecd8736547c06eab0a574bc1880b5a2cf78143d0cd28f73ac52",
+      "web/src/components/freshness.tsx": "51d07e08a7173eb6e4c45f7574de671cc69ba4874901696941e09526e223f69c",
+      "web/src/lib/locales.ts": "be079569233cc520cde0f5233879b7e5006b0f1d6895dfd261abf3b5e5768df6",
+      "web/src/lib/progress.ts": "b4d849a5a9b55e8fc22e82251ba0c5365def93288a3e8447e111f2ec87a4d79f",
+      "web/src/lib/contracts/public-history.ts": "721d13a51ebdd9a992a3c31d8a4568d8af94495956a4d57d38ef2716582eaec6",
+      "web/src/lib/server/public-content.ts": "936f30757cd6977d6d6ad1d4894eff7d1b199f568d4266966d5001f55479f1d3",
+      "web/src/lib/server/public-validation.ts": "5a76a2f8f2525b13816103ff59f08a7f70653f97d7164c449580474cd995d07d"
+    },
+    "sourceHashesAfter": {
+      "web/package.json": "f730e483a9fa9a92d8cb0a25905ef00f06775d06e40f231b2bb3dff32467c59b",
+      "web/package-lock.json": "07a215879498fd1ce060f12617b06a878cd9ae61ac65e9df0e7dd232cd2efb97",
+      "web/.node-version": "6d07ac247e81cd42c2c20abf8dfe504413d6b2422e4aba9b2c975a776f155921",
+      "web/.next/BUILD_ID": "da933b5e4ac04314baab9db7dc026db837e5dbb091d110319438f485a43ff1a5",
+      "web/content/current.json": "3569452f721ab9e5a4539eb831a017228759457305126a871ad28d02ffaafef0",
+      "web/content/release.json": "38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed",
+      "web/src/app/globals.css": "0a4e9afcb00ffc40118a2e4b1002e793ba0d7c9f3738616ea99d8fea1ace8595",
+      "web/src/app/[locale]/layout.tsx": "484c304be93f65d519b4c0fcfdbddc32f90a9783953958e4dc489cbe1a0b4c9f",
+      "web/src/app/[locale]/(public)/progress/page.tsx": "c2a407ead63d2a3e47b72b89e5c2f5caa1ea62cfcd93ca7f33f63032da1bb988",
+      "web/src/app/[locale]/(public)/progress/[eventId]/page.tsx": "1d93247972a3ba63054202b91203b45fe88e1c4c47e2f095dbdacbf780435e0f",
+      "web/src/components/site-shell.tsx": "699f5d0a85bce1ea921713f1a71a46a89497b291e70b02446ef989ae52eac6a4",
+      "web/src/components/event-dates.tsx": "5ffcd36e3a069ecd8736547c06eab0a574bc1880b5a2cf78143d0cd28f73ac52",
+      "web/src/components/freshness.tsx": "51d07e08a7173eb6e4c45f7574de671cc69ba4874901696941e09526e223f69c",
+      "web/src/lib/locales.ts": "be079569233cc520cde0f5233879b7e5006b0f1d6895dfd261abf3b5e5768df6",
+      "web/src/lib/progress.ts": "b4d849a5a9b55e8fc22e82251ba0c5365def93288a3e8447e111f2ec87a4d79f",
+      "web/src/lib/contracts/public-history.ts": "721d13a51ebdd9a992a3c31d8a4568d8af94495956a4d57d38ef2716582eaec6",
+      "web/src/lib/server/public-content.ts": "936f30757cd6977d6d6ad1d4894eff7d1b199f568d4266966d5001f55479f1d3",
+      "web/src/lib/server/public-validation.ts": "5a76a2f8f2525b13816103ff59f08a7f70653f97d7164c449580474cd995d07d"
+    },
+    "changedFilesDuringCapture": [],
+    "hashesStableDuringCapture": true,
+    "buildIdAfter": "9IgjMN2j4cCibIDB0AiU0",
+    "buildIdStableDuringCapture": true
+  },
+  "environment": {
+    "node": "v22.23.3",
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "cpuModel": "Apple M1 Pro",
+    "logicalCpuCount": 10,
+    "macOSProductVersion": "26.5.1",
+    "axeAvailable": true,
+    "browser": {
+      "name": "Google Chrome (Playwright channel chrome)",
+      "version": "154.0.8037.98",
+      "headed": true
+    }
+  },
+  "screenshots": [
+    {
+      "file": "screenshots/en-progress-1440x900.png",
+      "route": "/en/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "normal"
+    },
+    {
+      "file": "screenshots/en-progress-1280x800.png",
+      "route": "/en/progress",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "state": "normal"
+    },
+    {
+      "file": "screenshots/en-progress-keyboard-focus-1440x900.png",
+      "route": "/en/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "after first Tab"
+    },
+    {
+      "file": "screenshots/en-progress-text-200-percent-css-1440x900.png",
+      "route": "/en/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "root font-size set to 200% by CSS"
+    },
+    {
+      "file": "screenshots/en-progress-reduced-motion-1440x900.png",
+      "route": "/en/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "prefers-reduced-motion: reduce"
+    },
+    {
+      "file": "screenshots/en-progress-nojs-1440x900.png",
+      "route": "/en/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "JavaScript disabled"
+    },
+    {
+      "file": "screenshots/vi-progress-1440x900.png",
+      "route": "/vi/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "normal"
+    },
+    {
+      "file": "screenshots/vi-progress-1280x800.png",
+      "route": "/vi/progress",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "state": "normal"
+    },
+    {
+      "file": "screenshots/vi-progress-keyboard-focus-1440x900.png",
+      "route": "/vi/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "after first Tab"
+    },
+    {
+      "file": "screenshots/vi-progress-text-200-percent-css-1440x900.png",
+      "route": "/vi/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "root font-size set to 200% by CSS"
+    },
+    {
+      "file": "screenshots/vi-progress-reduced-motion-1440x900.png",
+      "route": "/vi/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "prefers-reduced-motion: reduce"
+    },
+    {
+      "file": "screenshots/vi-progress-nojs-1440x900.png",
+      "route": "/vi/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "JavaScript disabled"
+    }
+  ],
+  "desktopChecks": [
+    {
+      "route": "/en/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "facts": {
+        "path": "/en/progress",
+        "title": "Construction updates | Thạch Bi Church",
+        "language": "en",
+        "heading": "Construction updates",
+        "headingVisible": true,
+        "mainTextLength": 572,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1018,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "imageCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axe": {
+        "violations": [],
+        "passesCount": 39,
+        "incompleteCount": 0
+      }
+    },
+    {
+      "route": "/en/progress",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "facts": {
+        "path": "/en/progress",
+        "title": "Construction updates | Thạch Bi Church",
+        "language": "en",
+        "heading": "Construction updates",
+        "headingVisible": true,
+        "mainTextLength": 572,
+        "viewport": {
+          "width": 1280,
+          "height": 800,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "scrollHeight": 1018,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1280,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "imageCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axe": {
+        "violations": [],
+        "passesCount": 39,
+        "incompleteCount": 0
+      }
+    },
+    {
+      "route": "/vi/progress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "facts": {
+        "path": "/vi/progress",
+        "title": "Tiến trình xây dựng | Nhà thờ Thạch Bi",
+        "language": "vi",
+        "heading": "Tiến trình xây dựng",
+        "headingVisible": true,
+        "mainTextLength": 555,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1018,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "imageCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axe": {
+        "violations": [],
+        "passesCount": 39,
+        "incompleteCount": 0
+      }
+    },
+    {
+      "route": "/vi/progress",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "facts": {
+        "path": "/vi/progress",
+        "title": "Tiến trình xây dựng | Nhà thờ Thạch Bi",
+        "language": "vi",
+        "heading": "Tiến trình xây dựng",
+        "headingVisible": true,
+        "mainTextLength": 555,
+        "viewport": {
+          "width": 1280,
+          "height": 800,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "scrollHeight": 1018,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1280,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "imageCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axe": {
+        "violations": [],
+        "passesCount": 39,
+        "incompleteCount": 0
+      }
+    }
+  ],
+  "keyboardFocus": [
+    {
+      "route": "/en/progress",
+      "status": 200,
+      "firstTab": {
+        "tag": "A",
+        "label": "Skip to main content",
+        "href": "#main",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "rect": {
+          "x": 16,
+          "y": 16,
+          "width": 177,
+          "height": 56
+        }
+      },
+      "tabSequence": [
+        {
+          "tag": "A",
+          "label": "Skip to main content",
+          "href": "#main",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 16,
+            "y": 16,
+            "width": 177,
+            "height": 56
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Thạch Bi Church",
+          "href": "/en",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 112,
+            "y": 69,
+            "width": 153,
+            "height": 28
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Home",
+          "href": "/en",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 729,
+            "y": 61,
+            "width": 37,
+            "height": 44
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Images and design",
+          "href": "/en/design",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 798,
+            "y": 61,
+            "width": 118,
+            "height": 44
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Construction updates",
+          "href": "/en/progress",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 948,
+            "y": 61,
+            "width": 132,
+            "height": 44
+          }
+        },
+        {
+          "tag": "A",
+          "label": "About this site",
+          "href": "/en/about-this-site",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 1113,
+            "y": 61,
+            "width": 88,
+            "height": 44
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Tiếng Việt",
+          "href": "/vi/progress",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 1233,
+            "y": 61,
+            "width": 95,
+            "height": 44
+          }
+        },
+        {
+          "tag": "SELECT",
+          "label": "Newest first\nOldest first",
+          "href": null,
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 112,
+            "y": 595,
+            "width": 116,
+            "height": 44
+          }
+        }
+      ],
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/vi/progress",
+      "status": 200,
+      "firstTab": {
+        "tag": "A",
+        "label": "Đến nội dung chính",
+        "href": "#main",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "rect": {
+          "x": 16,
+          "y": 16,
+          "width": 171,
+          "height": 56
+        }
+      },
+      "tabSequence": [
+        {
+          "tag": "A",
+          "label": "Đến nội dung chính",
+          "href": "#main",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 16,
+            "y": 16,
+            "width": 171,
+            "height": 56
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Nhà thờ Thạch Bi",
+          "href": "/vi",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 112,
+            "y": 69,
+            "width": 158,
+            "height": 28
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Trang chủ",
+          "href": "/vi",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 734,
+            "y": 61,
+            "width": 63,
+            "height": 44
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Hình ảnh và thiết kế",
+          "href": "/vi/design",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 828,
+            "y": 61,
+            "width": 125,
+            "height": 44
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Tiến trình xây dựng",
+          "href": "/vi/progress",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 985,
+            "y": 61,
+            "width": 121,
+            "height": 44
+          }
+        },
+        {
+          "tag": "A",
+          "label": "Về trang này",
+          "href": "/vi/about-this-site",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 1138,
+            "y": 61,
+            "width": 79,
+            "height": 44
+          }
+        },
+        {
+          "tag": "A",
+          "label": "English",
+          "href": "/en/progress",
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 1249,
+            "y": 61,
+            "width": 79,
+            "height": 44
+          }
+        },
+        {
+          "tag": "SELECT",
+          "label": "Mới trước\nCũ trước",
+          "href": null,
+          "focusVisible": true,
+          "outlineStyle": "solid",
+          "outlineWidth": "3px",
+          "rect": {
+            "x": 112,
+            "y": 595,
+            "width": 104,
+            "height": 44
+          }
+        }
+      ],
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    }
+  ],
+  "textResize": [
+    {
+      "route": "/en/progress",
+      "status": 200,
+      "method": "Injected CSS html { font-size: 200% !important; }; not native browser zoom or text-only zoom.",
+      "beforeRootFontSize": "16px",
+      "afterRootFontSize": "32px",
+      "facts": {
+        "path": "/en/progress",
+        "title": "Construction updates | Thạch Bi Church",
+        "language": "en",
+        "heading": "Construction updates",
+        "headingVisible": true,
+        "mainTextLength": 572,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 2092,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "32px",
+        "imageCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/vi/progress",
+      "status": 200,
+      "method": "Injected CSS html { font-size: 200% !important; }; not native browser zoom or text-only zoom.",
+      "beforeRootFontSize": "16px",
+      "afterRootFontSize": "32px",
+      "facts": {
+        "path": "/vi/progress",
+        "title": "Tiến trình xây dựng | Nhà thờ Thạch Bi",
+        "language": "vi",
+        "heading": "Tiến trình xây dựng",
+        "headingVisible": true,
+        "mainTextLength": 555,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 2150,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "32px",
+        "imageCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    }
+  ],
+  "reducedMotion": [
+    {
+      "route": "/en/progress",
+      "status": 200,
+      "preferenceMatched": true,
+      "documentAnimations": 0,
+      "facts": {
+        "path": "/en/progress",
+        "title": "Construction updates | Thạch Bi Church",
+        "language": "en",
+        "heading": "Construction updates",
+        "headingVisible": true,
+        "mainTextLength": 572,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1018,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "imageCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/vi/progress",
+      "status": 200,
+      "preferenceMatched": true,
+      "documentAnimations": 0,
+      "facts": {
+        "path": "/vi/progress",
+        "title": "Tiến trình xây dựng | Nhà thờ Thạch Bi",
+        "language": "vi",
+        "heading": "Tiến trình xây dựng",
+        "headingVisible": true,
+        "mainTextLength": 555,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1018,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "imageCount": 0
+      },
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    }
+  ],
+  "noJavaScript": [
+    {
+      "route": "/en/progress",
+      "status": 200,
+      "facts": {
+        "path": "/en/progress",
+        "title": "Construction updates | Thạch Bi Church",
+        "language": "en",
+        "heading": "Construction updates",
+        "headingVisible": true,
+        "mainTextLength": 638,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1041,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "imageCount": 0
+      },
+      "readableServerRenderedContent": true,
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "method": "GET",
+            "failure": "csp"
+          }
+        ],
+        "httpErrors": []
+      }
+    },
+    {
+      "route": "/vi/progress",
+      "status": 200,
+      "facts": {
+        "path": "/vi/progress",
+        "title": "Tiến trình xây dựng | Nhà thờ Thạch Bi",
+        "language": "vi",
+        "heading": "Tiến trình xây dựng",
+        "headingVisible": true,
+        "mainTextLength": 604,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 1041,
+          "horizontalOverflow": false
+        },
+        "body": {
+          "scrollWidth": 1440,
+          "horizontalOverflow": false
+        },
+        "rootFontSize": "16px",
+        "imageCount": 0
+      },
+      "readableServerRenderedContent": true,
+      "diagnostics": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [
+          {
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "method": "GET",
+            "failure": "csp"
+          }
+        ],
+        "httpErrors": []
+      }
+    }
+  ],
+  "performance": {
+    "profile": {
+      "downMbps": 10,
+      "upMbps": 1,
+      "rttMs": 100,
+      "coldContexts": 3,
+      "cacheDisabled": true,
+      "serviceWorkers": "blocked"
+    },
+    "samples": [
+      {
+        "route": "/en/progress",
+        "sampleIndex": 1,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100
+        },
+        "freshContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "status": 200,
+        "navigationError": null,
+        "wallMs": 781,
+        "metrics": {
+          "navigation": {
+            "responseStart": 5,
+            "domContentLoadedEventEnd": 284.19999980926514,
+            "loadEventEnd": 370,
+            "transferSize": 5135,
+            "encodedBodySize": 4835,
+            "decodedBodySize": 14750
+          },
+          "lcp": [
+            {
+              "startTime": 280,
+              "size": 34515,
+              "tag": "P"
+            }
+          ],
+          "cls": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "totalRequests": 13,
+        "loadingFinishedEncodedBytes": 159239,
+        "javascriptRequests": 9,
+        "javascriptEncodedBytes": 147804,
+        "requestFailures": [],
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "rawRequests": [
+          {
+            "requestId": "87C4462E59883BABD2475871F9752355",
+            "url": "http://127.0.0.1:3130/en/progress",
+            "method": "GET",
+            "resourceType": "Document",
+            "requestTimestamp": 2997712.00307,
+            "status": 200,
+            "mimeType": "text/html",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 0,
+            "decodedBodyBytes": 14750,
+            "loadingFinishedEncodedBytes": 5437
+          },
+          {
+            "requestId": "12308.2",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/35gdjxoqhbcwv.css",
+            "method": "GET",
+            "resourceType": "Stylesheet",
+            "requestTimestamp": 2997712.116253,
+            "status": 200,
+            "mimeType": "text/css",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 4045,
+            "decodedBodyBytes": 14781,
+            "loadingFinishedEncodedBytes": 4611
+          },
+          {
+            "requestId": "12308.3",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997712.116383,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 2052,
+            "decodedBodyBytes": 5584,
+            "loadingFinishedEncodedBytes": 2632
+          },
+          {
+            "requestId": "12308.4",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997712.116423,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 8477,
+            "decodedBodyBytes": 31293,
+            "loadingFinishedEncodedBytes": 9057
+          },
+          {
+            "requestId": "12308.5",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997712.11645,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 71965,
+            "decodedBodyBytes": 229597,
+            "loadingFinishedEncodedBytes": 72546
+          },
+          {
+            "requestId": "12308.6",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997712.116476,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 45532,
+            "decodedBodyBytes": 165614,
+            "loadingFinishedEncodedBytes": 46113
+          },
+          {
+            "requestId": "12308.7",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997712.116505,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 3957,
+            "decodedBodyBytes": 10030,
+            "loadingFinishedEncodedBytes": 4537
+          },
+          {
+            "requestId": "12308.8",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997712.11653,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 3531,
+            "decodedBodyBytes": 13822,
+            "loadingFinishedEncodedBytes": 4111
+          },
+          {
+            "requestId": "12308.9",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997712.116554,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 1925,
+            "decodedBodyBytes": 3893,
+            "loadingFinishedEncodedBytes": 2504
+          },
+          {
+            "requestId": "12308.10",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997712.116577,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 1878,
+            "decodedBodyBytes": 3819,
+            "loadingFinishedEncodedBytes": 2462
+          },
+          {
+            "requestId": "12308.11",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2p12cdnjk0p97.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997712.116598,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 3262,
+            "decodedBodyBytes": 6854,
+            "loadingFinishedEncodedBytes": 3842
+          },
+          {
+            "requestId": "12308.24",
+            "url": "http://127.0.0.1:3130/api/public/version",
+            "method": "GET",
+            "resourceType": "Fetch",
+            "requestTimestamp": 2997712.375834,
+            "status": 200,
+            "mimeType": "application/json",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 105,
+            "decodedBodyBytes": 94,
+            "loadingFinishedEncodedBytes": 613
+          },
+          {
+            "requestId": "12308.25",
+            "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+            "method": "GET",
+            "resourceType": "Other",
+            "requestTimestamp": 2997712.376461,
+            "status": 200,
+            "mimeType": "image/svg+xml",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 254,
+            "decodedBodyBytes": 243,
+            "loadingFinishedEncodedBytes": 774
+          }
+        ]
+      },
+      {
+        "route": "/en/progress",
+        "sampleIndex": 2,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100
+        },
+        "freshContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "status": 200,
+        "navigationError": null,
+        "wallMs": 779,
+        "metrics": {
+          "navigation": {
+            "responseStart": 5.5,
+            "domContentLoadedEventEnd": 285.19999980926514,
+            "loadEventEnd": 369.2999997138977,
+            "transferSize": 5135,
+            "encodedBodySize": 4835,
+            "decodedBodySize": 14750
+          },
+          "lcp": [
+            {
+              "startTime": 284,
+              "size": 34515,
+              "tag": "P"
+            }
+          ],
+          "cls": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "totalRequests": 13,
+        "loadingFinishedEncodedBytes": 159239,
+        "javascriptRequests": 9,
+        "javascriptEncodedBytes": 147804,
+        "requestFailures": [],
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "rawRequests": [
+          {
+            "requestId": "9B3AB36A894124DBA9A05557ABC7D0F0",
+            "url": "http://127.0.0.1:3130/en/progress",
+            "method": "GET",
+            "resourceType": "Document",
+            "requestTimestamp": 2997712.958664,
+            "status": 200,
+            "mimeType": "text/html",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 0,
+            "decodedBodyBytes": 14750,
+            "loadingFinishedEncodedBytes": 5437
+          },
+          {
+            "requestId": "12311.2",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/35gdjxoqhbcwv.css",
+            "method": "GET",
+            "resourceType": "Stylesheet",
+            "requestTimestamp": 2997713.072957,
+            "status": 200,
+            "mimeType": "text/css",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 4045,
+            "decodedBodyBytes": 14781,
+            "loadingFinishedEncodedBytes": 4611
+          },
+          {
+            "requestId": "12311.3",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997713.073089,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 2052,
+            "decodedBodyBytes": 5584,
+            "loadingFinishedEncodedBytes": 2632
+          },
+          {
+            "requestId": "12311.4",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997713.073131,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 8477,
+            "decodedBodyBytes": 31293,
+            "loadingFinishedEncodedBytes": 9057
+          },
+          {
+            "requestId": "12311.5",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997713.073157,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 71965,
+            "decodedBodyBytes": 229597,
+            "loadingFinishedEncodedBytes": 72546
+          },
+          {
+            "requestId": "12311.6",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997713.073179,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 45532,
+            "decodedBodyBytes": 165614,
+            "loadingFinishedEncodedBytes": 46113
+          },
+          {
+            "requestId": "12311.7",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997713.073206,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 3957,
+            "decodedBodyBytes": 10030,
+            "loadingFinishedEncodedBytes": 4537
+          },
+          {
+            "requestId": "12311.8",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997713.073231,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 3531,
+            "decodedBodyBytes": 13822,
+            "loadingFinishedEncodedBytes": 4111
+          },
+          {
+            "requestId": "12311.9",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997713.073252,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 1925,
+            "decodedBodyBytes": 3893,
+            "loadingFinishedEncodedBytes": 2504
+          },
+          {
+            "requestId": "12311.10",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997713.073274,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 1883,
+            "decodedBodyBytes": 3819,
+            "loadingFinishedEncodedBytes": 2462
+          },
+          {
+            "requestId": "12311.11",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2p12cdnjk0p97.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997713.073297,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 3262,
+            "decodedBodyBytes": 6854,
+            "loadingFinishedEncodedBytes": 3842
+          },
+          {
+            "requestId": "12311.24",
+            "url": "http://127.0.0.1:3130/api/public/version",
+            "method": "GET",
+            "resourceType": "Fetch",
+            "requestTimestamp": 2997713.330541,
+            "status": 200,
+            "mimeType": "application/json",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 105,
+            "decodedBodyBytes": 94,
+            "loadingFinishedEncodedBytes": 613
+          },
+          {
+            "requestId": "12311.25",
+            "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+            "method": "GET",
+            "resourceType": "Other",
+            "requestTimestamp": 2997713.331175,
+            "status": 200,
+            "mimeType": "image/svg+xml",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 254,
+            "decodedBodyBytes": 243,
+            "loadingFinishedEncodedBytes": 774
+          }
+        ]
+      },
+      {
+        "route": "/en/progress",
+        "sampleIndex": 3,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "networkProfile": {
+          "downMbps": 10,
+          "upMbps": 1,
+          "rttMs": 100
+        },
+        "freshContext": true,
+        "cacheDisabled": true,
+        "serviceWorkers": "blocked",
+        "status": 200,
+        "navigationError": null,
+        "wallMs": 782,
+        "metrics": {
+          "navigation": {
+            "responseStart": 5.5,
+            "domContentLoadedEventEnd": 285.09999990463257,
+            "loadEventEnd": 370.09999990463257,
+            "transferSize": 5135,
+            "encodedBodySize": 4835,
+            "decodedBodySize": 14750
+          },
+          "lcp": [
+            {
+              "startTime": 280,
+              "size": 34515,
+              "tag": "P"
+            }
+          ],
+          "cls": [],
+          "clsTotal": 0,
+          "observerErrors": {
+            "lcp": null,
+            "cls": null
+          }
+        },
+        "totalRequests": 13,
+        "loadingFinishedEncodedBytes": 159239,
+        "javascriptRequests": 9,
+        "javascriptEncodedBytes": 147804,
+        "requestFailures": [],
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "httpErrors": []
+        },
+        "rawRequests": [
+          {
+            "requestId": "6E00AA52763A0ED1CED01A8F977BF02D",
+            "url": "http://127.0.0.1:3130/en/progress",
+            "method": "GET",
+            "resourceType": "Document",
+            "requestTimestamp": 2997713.91923,
+            "status": 200,
+            "mimeType": "text/html",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 0,
+            "decodedBodyBytes": 14750,
+            "loadingFinishedEncodedBytes": 5437
+          },
+          {
+            "requestId": "12314.2",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/35gdjxoqhbcwv.css",
+            "method": "GET",
+            "resourceType": "Stylesheet",
+            "requestTimestamp": 2997714.033534,
+            "status": 200,
+            "mimeType": "text/css",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 4045,
+            "decodedBodyBytes": 14781,
+            "loadingFinishedEncodedBytes": 4611
+          },
+          {
+            "requestId": "12314.3",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1ckvzn7sfprko.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997714.033722,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 2052,
+            "decodedBodyBytes": 5584,
+            "loadingFinishedEncodedBytes": 2632
+          },
+          {
+            "requestId": "12314.4",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2rq17bbyxsfng.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997714.033796,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 8477,
+            "decodedBodyBytes": 31293,
+            "loadingFinishedEncodedBytes": 9057
+          },
+          {
+            "requestId": "12314.5",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0s7mvllxht1mo.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997714.033829,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 71965,
+            "decodedBodyBytes": 229597,
+            "loadingFinishedEncodedBytes": 72546
+          },
+          {
+            "requestId": "12314.6",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/02qraml2o5i23.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997714.033859,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 45532,
+            "decodedBodyBytes": 165614,
+            "loadingFinishedEncodedBytes": 46113
+          },
+          {
+            "requestId": "12314.7",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997714.03389,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 3957,
+            "decodedBodyBytes": 10030,
+            "loadingFinishedEncodedBytes": 4537
+          },
+          {
+            "requestId": "12314.8",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/0umf92h1sb77c.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997714.033912,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 3531,
+            "decodedBodyBytes": 13822,
+            "loadingFinishedEncodedBytes": 4111
+          },
+          {
+            "requestId": "12314.9",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/1cnplcjecq337.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997714.03394,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 1920,
+            "decodedBodyBytes": 3893,
+            "loadingFinishedEncodedBytes": 2504
+          },
+          {
+            "requestId": "12314.10",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/12270yiqxhfs5.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997714.033963,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 1878,
+            "decodedBodyBytes": 3819,
+            "loadingFinishedEncodedBytes": 2462
+          },
+          {
+            "requestId": "12314.11",
+            "url": "http://127.0.0.1:3130/_next/static/chunks/2p12cdnjk0p97.js",
+            "method": "GET",
+            "resourceType": "Script",
+            "requestTimestamp": 2997714.033984,
+            "status": 200,
+            "mimeType": "application/javascript",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 3262,
+            "decodedBodyBytes": 6854,
+            "loadingFinishedEncodedBytes": 3842
+          },
+          {
+            "requestId": "12314.24",
+            "url": "http://127.0.0.1:3130/api/public/version",
+            "method": "GET",
+            "resourceType": "Fetch",
+            "requestTimestamp": 2997714.292005,
+            "status": 200,
+            "mimeType": "application/json",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 105,
+            "decodedBodyBytes": 94,
+            "loadingFinishedEncodedBytes": 613
+          },
+          {
+            "requestId": "12314.25",
+            "url": "http://127.0.0.1:3130/icon.svg?icon.2152c6x52je_t.svg",
+            "method": "GET",
+            "resourceType": "Other",
+            "requestTimestamp": 2997714.292685,
+            "status": 200,
+            "mimeType": "image/svg+xml",
+            "fromDiskCache": false,
+            "fromServiceWorker": false,
+            "encodedBodyBytes": 254,
+            "decodedBodyBytes": 243,
+            "loadingFinishedEncodedBytes": 774
+          }
+        ]
+      }
+    ]
+  },
+  "captureErrors": [],
+  "finishedAt": "2026-10-08T02:46:41.183Z",
+  "measurementNotes": [
+    "All screenshots were headed desktop Google Chrome; no phone/device profile was used.",
+    "200% text is a temporary CSS root-font-size change, not native Chrome zoom.",
+    "No-JavaScript checks record expected script failures from disabled JavaScript separately.",
+    "Performance values are lab samples from one desktop and empty progress history; no INP/field performance is measured or inferred."
+  ]
+}

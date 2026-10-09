@@ -1,0 +1,24 @@
+{
+  "base": "http://127.0.0.1:3133",
+  "started": "2026-10-08T13:54:10.493Z",
+  "checks": [
+    {
+      "path": "/vi/review",
+      "status": 401
+    },
+    {
+      "path": "/vi/review/model",
+      "status": 401
+    },
+    {
+      "path": "/en/review?_rsc=probe",
+      "status": 401
+    }
+  ],
+  "errors": [],
+  "expectedDenialLogs": [
+    "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+  ],
+  "loadMs": 41770,
+  "failure": "Error: expect(locator).toContainText(expected) failed\n\nLocator: getByRole('alert')\nExpected substring: \"Phiên xem đã đóng\"\nError: strict mode violation: getByRole('alert') resolved to 2 elements:\n    1) <p role=\"alert\" class=\"my-8 border p-8\">Phiên xem đã đóng vì chưa xác nhận được quyền tru…</p> aka getByText('Phiên xem đã đóng vì chưa xác')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div> aka locator('[id=\"__next-route-announcer__\"]')\n\nCall log:\n  - Expect \"toContainText\" getByRole('alert') with timeout 5000ms\n  - waiting for getByRole('alert')\n    - locator resolved to <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div>\n    - unexpected value \"\"\n"
+}

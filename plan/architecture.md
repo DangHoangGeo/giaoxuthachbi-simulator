@@ -1,6 +1,6 @@
 # Web architecture and framework decision
 
-Status: architecture proposed 7 October 2026; local Web01 shell/read boundaries implemented 8 October. Protected access, 3D migration and hosting remain planned; see [development](../docs/web/development.md) and [delivery status](../docs/web/deployment.md). Return to the [roadmap](README.md). Cross-cutting data and security requirements apply to every phase.
+Status: architecture proposed 7 October 2026; local Web01 shell/read boundaries implemented 8 October. The public 3D development visit is now implemented as a reviewed GLB derivative with its own lifecycle. The shared-password architectural preview is implemented and hosting is connected; broader engineering access and release acceptance remain open; see [development](../docs/web/development.md) and [delivery status](../docs/web/deployment.md). Return to the [roadmap](README.md). Cross-cutting data and security requirements apply to every phase.
 
 ## Decision: Next.js, with a small client-side 3D viewer
 
@@ -68,6 +68,8 @@ Use separate public and engineering release profiles. Public assets contain only
 The private profile preserves stable object IDs and links to its exact release registry. Merged/instanced geometry needs a tested instance-to-object map; optimization must not make selection return another member's specifications. Reuse the same model coordinates and export transform in 2D, 3D, route maps and object cards. Do not let a second hand-edited web model become the dimensional source of truth.
 
 ## Authentication and private delivery
+
+**Owner exception, 8 October 2026:** the initial full-detail architectural preview uses one shared parish password, as explicitly chosen by the owner. Standard HTTP Basic authentication, private-origin policy checks and private model streaming are documented in [access-control.md](../docs/web/access-control.md). The individual-account design below remains the proposal for broader engineering/site work; this increment does not claim those role/session features.
 
 Proposed default: **Clerk with invited individual email/password accounts**, no open registration, with `reviewer` and `site_manager` grants maintained outside the app by the designated administrator. This avoids building password storage and recovery for a volunteer project. Provider cost, production availability, data handling and account ownership are phase 00 decisions. Clerk supports invite-only access; verify password, recovery and revocation settings against the selected production plan. [Clerk access controls](https://clerk.com/docs/guides/secure/restricting-access).
 

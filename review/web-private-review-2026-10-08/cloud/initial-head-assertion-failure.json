@@ -1,0 +1,22 @@
+{
+  "base": "https://giaoxuthachbi-simulator-8kojnh22k-danghoanggeos-projects.vercel.app",
+  "started": "2026-10-08T14:06:41.385Z",
+  "checks": [
+    {
+      "path": "/vi/review",
+      "status": 401
+    },
+    {
+      "path": "/vi/review/model",
+      "status": 401
+    },
+    {
+      "path": "/en/review?_rsc=probe",
+      "status": 401
+    }
+  ],
+  "errors": [],
+  "expectedDenialLogs": [],
+  "loadMs": 138214,
+  "failure": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"53230983\"\nReceived: undefined"
+}

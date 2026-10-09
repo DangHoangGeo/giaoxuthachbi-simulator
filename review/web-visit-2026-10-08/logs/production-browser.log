@@ -1,0 +1,32 @@
+
+> thach-bi-web@0.1.0 test:browser
+> playwright test
+
+[WebServer] (node:23730) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:23753) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+
+(node:23754) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/browser/gallery.spec.ts:12:1 › published concepts identify category, date and AI source; site-photo remains empty (1.9s)
+  ✓   2 tests/browser/gallery.spec.ts:63:1 › a published concept opens from the keyboard and returns focus on close (443ms)
+  ✓   3 tests/browser/gallery.spec.ts:81:1 › published gallery content, empty site-photo fallback and language navigation work without JavaScript (568ms)
+  ✓   4 tests/browser/progress.spec.ts:12:1 › published owner-reported milestones retain occurrence and report-date uncertainty (936ms)
+  ✓   5 tests/browser/progress.spec.ts:85:1 › timeline content, query navigation and language work without JavaScript (391ms)
+  ✓   6 tests/browser/shell.spec.ts:4:1 › published home retains the development notice across locales and supports keyboard use (893ms)
+  ✓   7 tests/browser/shell.spec.ts:52:1 › published site content and language navigation work without JavaScript (433ms)
+  ✓   8 tests/browser/shell.spec.ts:96:1 › unimplemented routes expose no protected content (63ms)
+  ✓   9 tests/browser/visit.spec.ts:3:1 › Enter waits for hydration on a slow script connection (335ms)
+  ✓  10 tests/browser/visit.spec.ts:20:1 › 3D loads only on entry, stays read-only and disposes on close (1.7s)
+  ✓  11 tests/browser/visit.spec.ts:68:1 › unavailable model keeps a retry and static gallery (449ms)
+  ✓  12 tests/browser/visit.spec.ts:76:1 › visit fallback works without JavaScript (419ms)
+
+  12 passed (10.6s)
+npm notice
+npm notice New major version of npm available! 10.9.9 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
