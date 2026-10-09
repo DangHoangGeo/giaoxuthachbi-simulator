@@ -1,0 +1,428 @@
+{
+  "schema": 1,
+  "status": "Filtered design-development review; not installation or purchase documentation",
+  "units": "metres",
+  "routingRevision": "2026-10-07-concealed-1",
+  "filters": {
+    "system": "all",
+    "circuit": "all",
+    "item": "L78",
+    "board": "all",
+    "kind": "all"
+  },
+  "itemIds": [
+    "L78"
+  ],
+  "routeIds": [
+    "trunk:LC1:LD:light:-1",
+    "drop:LC1:LD:light:-1:L78",
+    "feeder:LC1"
+  ],
+  "sourceIds": [
+    "LC1",
+    "DB1"
+  ],
+  "sources": {
+    "DB1": {
+      "label": "DB-1 · Main board",
+      "where": "Service room behind the altar · existing back-wall enclosure",
+      "pos": [
+        48.895,
+        1.75,
+        -1.55
+      ],
+      "size": [
+        0.2,
+        1.1,
+        0.8
+      ],
+      "facing": "x",
+      "color": "#c96440",
+      "board": "DB1"
+    },
+    "LC1": {
+      "label": "LC-1 · Lighting & scene controls",
+      "where": "Existing service-room lighting enclosure",
+      "pos": [
+        48.895,
+        1.85,
+        -0.55
+      ],
+      "size": [
+        0.2,
+        0.9,
+        0.8
+      ],
+      "facing": "x",
+      "color": "#dc9e29",
+      "board": "DB1"
+    }
+  },
+  "routes": [
+    {
+      "id": "feeder:LC1",
+      "name": "DB-1 → LC1 equipment supply",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "LC1-SUPPLY",
+      "kind": "feeder",
+      "role": "feeder",
+      "itemIds": [],
+      "color": "#c84c52",
+      "installation": "Existing service-room wall tray / local equipment connection",
+      "points": [
+        [
+          48.895,
+          1.75,
+          -1.55
+        ],
+        [
+          48.735,
+          1.75,
+          -1.55
+        ],
+        [
+          48.735,
+          2.42,
+          -1.55
+        ],
+        [
+          48.735,
+          2.42,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -0.55
+        ],
+        [
+          48.895,
+          1.85,
+          -0.55
+        ]
+      ],
+      "length": 2.560000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [],
+      "drawnDiameter": 0.064,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:LC1:LD:light:-1",
+      "name": "LD · B · circuit trunk",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L78",
+        "L79",
+        "L80",
+        "L81",
+        "L82",
+        "L84",
+        "L86",
+        "L88",
+        "L90",
+        "L92",
+        "L94",
+        "L96"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          5.94,
+          -3.3
+        ],
+        [
+          53.016,
+          5.94,
+          -7.36
+        ],
+        [
+          44.175,
+          5.94,
+          -7.36
+        ],
+        [
+          44.175,
+          7.04,
+          -7.36
+        ],
+        [
+          43.535,
+          7.04,
+          -7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          -7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          -7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          -7.36
+        ],
+        [
+          37.615,
+          7.04,
+          -7.36
+        ],
+        [
+          36.975,
+          7.04,
+          -7.36
+        ],
+        [
+          36.975,
+          5.94,
+          -7.36
+        ],
+        [
+          9.975000000000001,
+          5.94,
+          -7.36
+        ]
+      ],
+      "length": 62.29813031117919,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              -7.36
+            ],
+            [
+              43.535,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              -7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ],
+            [
+              37.615,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              -7.36
+            ],
+            [
+              36.975,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L78",
+      "name": "LD → Chandelier · bay 4–5",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L78"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 55.54813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          16.725,
+          5.94,
+          -7.36
+        ],
+        [
+          16.725,
+          7.04,
+          -7.36
+        ],
+        [
+          16.725,
+          12.382,
+          0
+        ],
+        [
+          16.725,
+          12.152,
+          0
+        ],
+        [
+          16.725,
+          6.3,
+          0
+        ]
+      ],
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "coverPaths": [],
+      "length": 16.276314927469798,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    }
+  ],
+  "components": [
+    {
+      "id": "L78",
+      "name": "Chandelier · bay 4–5",
+      "type": "chandelier8",
+      "product": "Brass candle chandelier · 8 lamps",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        2.0399999618530273,
+        1.1499999748170375,
+        2.0399999618530273
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 36,
+      "specs": "3760 lm · 2700 K",
+      "hiddenAlternative": false,
+      "position": [
+        16.725,
+        6.3,
+        0
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    }
+  ],
+  "lengthBasis": "Drawn route geometry; shared trunks are context, not additional installed cable quantities. No slack, terminations or installation allowances included.",
+  "unresolved": [
+    "Cable type and conductor sizes",
+    "Conduit sizing and installation method",
+    "Supply and phase allocation",
+    "Earthing / bonding and protective devices",
+    "Amplifier topology and speaker impedance / line voltage",
+    "Manufacturer product dimensions and enclosure capacities",
+    "Permanent routing and outlets for movable equipment",
+    "Removable beam/soffit covers: finish, fixings, access and separation",
+    "Sanctuary lining service space and microphone furniture/floorbox details",
+    "Ambo key-light canopy contact with capital: mounting coordination hold"
+  ]
+}

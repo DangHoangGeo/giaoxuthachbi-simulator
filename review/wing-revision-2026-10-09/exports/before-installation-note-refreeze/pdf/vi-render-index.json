@@ -1,0 +1,108 @@
+{
+  "pdf": "output/pdf-vi/thach-bi-electrical-review-A3-vi.pdf",
+  "sha256": "8ef4f8a0e876523dcce6c88e038bdb0a75ea648b3101bdcf4d3a7ad8c26f2059",
+  "pageCount": 44,
+  "allPageRenders": "/var/folders/sv/q0qz4b6n7v34w0wzt91xqzgw0000gn/T/thachbi-wing-pdf-review-crgtycs2",
+  "contactSheets": [
+    "review/wing-revision-2026-10-09/exports/pdf/vi-contact-01.png",
+    "review/wing-revision-2026-10-09/exports/pdf/vi-contact-02.png",
+    "review/wing-revision-2026-10-09/exports/pdf/vi-contact-03.png",
+    "review/wing-revision-2026-10-09/exports/pdf/vi-contact-04.png",
+    "review/wing-revision-2026-10-09/exports/pdf/vi-contact-05.png"
+  ],
+  "selectedPages": [
+    {
+      "page": 1,
+      "sheet": "E-000",
+      "path": "review/wing-revision-2026-10-09/exports/pdf/vi-E-000.png",
+      "matchingIds": []
+    },
+    {
+      "page": 6,
+      "sheet": "E-005",
+      "path": "review/wing-revision-2026-10-09/exports/pdf/vi-E-005.png",
+      "matchingIds": [
+        "L63",
+        "L65",
+        "L67",
+        "L69"
+      ]
+    },
+    {
+      "page": 16,
+      "sheet": "E-015",
+      "path": "review/wing-revision-2026-10-09/exports/pdf/vi-E-015.png",
+      "matchingIds": [
+        "F240",
+        "F241",
+        "F242",
+        "F243"
+      ]
+    },
+    {
+      "page": 20,
+      "sheet": "E-019",
+      "path": "review/wing-revision-2026-10-09/exports/pdf/vi-E-019.png",
+      "matchingIds": [
+        "S276",
+        "S278"
+      ]
+    },
+    {
+      "page": 26,
+      "sheet": "EQ-02",
+      "path": "review/wing-revision-2026-10-09/exports/pdf/vi-EQ-02.png",
+      "matchingIds": [
+        "L63",
+        "L65",
+        "L67",
+        "L69"
+      ]
+    },
+    {
+      "page": 31,
+      "sheet": "EQ-07",
+      "path": "review/wing-revision-2026-10-09/exports/pdf/vi-EQ-07.png",
+      "matchingIds": [
+        "F240",
+        "F241",
+        "F242",
+        "F243",
+        "S276",
+        "S278"
+      ]
+    },
+    {
+      "page": 34,
+      "sheet": "RI-02",
+      "path": "review/wing-revision-2026-10-09/exports/pdf/vi-RI-02.png",
+      "matchingIds": [
+        "L63",
+        "L65",
+        "L67",
+        "L69"
+      ]
+    },
+    {
+      "page": 39,
+      "sheet": "RI-07",
+      "path": "review/wing-revision-2026-10-09/exports/pdf/vi-RI-07.png",
+      "matchingIds": [
+        "F240",
+        "F241",
+        "F242",
+        "F243"
+      ]
+    },
+    {
+      "page": 40,
+      "sheet": "RI-08",
+      "path": "review/wing-revision-2026-10-09/exports/pdf/vi-RI-08.png",
+      "matchingIds": [
+        "S276",
+        "S278"
+      ]
+    }
+  ],
+  "status": "All pages rendered; source PDF byte-for-byte unchanged."
+}

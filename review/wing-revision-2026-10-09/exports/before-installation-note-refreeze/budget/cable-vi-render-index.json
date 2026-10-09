@@ -1,0 +1,75 @@
+{
+  "pdf": "output/electrical-review/thach-bi-cable-load-review-vi.pdf",
+  "sha256": "f0e401bde310474a02f70c2316397e97489643608c95788af012ccdf76f23016",
+  "pageCount": 14,
+  "allPageRenders": "/var/folders/sv/q0qz4b6n7v34w0wzt91xqzgw0000gn/T/thachbi-wing-pdf-review-r8wpyus2",
+  "contactSheets": [
+    "review/wing-revision-2026-10-09/exports/budget/cable-vi-contact-01.png",
+    "review/wing-revision-2026-10-09/exports/budget/cable-vi-contact-02.png"
+  ],
+  "selectedPages": [
+    {
+      "page": 1,
+      "sheet": "p01",
+      "path": "review/wing-revision-2026-10-09/exports/budget/cable-vi-p01.png",
+      "matchingIds": []
+    },
+    {
+      "page": 2,
+      "sheet": "p02",
+      "path": "review/wing-revision-2026-10-09/exports/budget/cable-vi-p02.png",
+      "matchingIds": []
+    },
+    {
+      "page": 4,
+      "sheet": "p04",
+      "path": "review/wing-revision-2026-10-09/exports/budget/cable-vi-p04.png",
+      "matchingIds": [
+        "L63"
+      ]
+    },
+    {
+      "page": 9,
+      "sheet": "p09",
+      "path": "review/wing-revision-2026-10-09/exports/budget/cable-vi-p09.png",
+      "matchingIds": [
+        "F240"
+      ]
+    },
+    {
+      "page": 10,
+      "sheet": "p10",
+      "path": "review/wing-revision-2026-10-09/exports/budget/cable-vi-p10.png",
+      "matchingIds": [
+        "S276"
+      ]
+    },
+    {
+      "page": 11,
+      "sheet": "p11",
+      "path": "review/wing-revision-2026-10-09/exports/budget/cable-vi-p11.png",
+      "matchingIds": [
+        "S278"
+      ]
+    },
+    {
+      "page": 12,
+      "sheet": "p12",
+      "path": "review/wing-revision-2026-10-09/exports/budget/cable-vi-p12.png",
+      "matchingIds": []
+    },
+    {
+      "page": 13,
+      "sheet": "p13",
+      "path": "review/wing-revision-2026-10-09/exports/budget/cable-vi-p13.png",
+      "matchingIds": []
+    },
+    {
+      "page": 14,
+      "sheet": "p14",
+      "path": "review/wing-revision-2026-10-09/exports/budget/cable-vi-p14.png",
+      "matchingIds": []
+    }
+  ],
+  "status": "All pages rendered; source PDF byte-for-byte unchanged."
+}

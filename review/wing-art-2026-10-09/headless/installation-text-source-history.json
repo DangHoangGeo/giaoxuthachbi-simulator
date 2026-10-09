@@ -1,0 +1,10 @@
+{
+  "reason": "Final installation-review lighting-stage prose updated to refer to the current report; no physics, equipment position, layout or native artwork change.",
+  "recordedAtUTC": "2026-10-09T01:06:11.258311+00:00",
+  "preservedPriorPassingResult": "art-results-before-installation-text.json",
+  "priorResultSha256": "56f57480fdbf18933ab90b11ee61d58eeae1370e767180760aa672200cc95fcb",
+  "changedSource": "Thach_Bi_Viewer/simulator/installation-review.js",
+  "previousSourceSha256": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+  "newSourceSha256": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
+  "action": "Rerun unchanged 47-case art suite and native package --check; overwrite only the current art-results.json after success."
+}

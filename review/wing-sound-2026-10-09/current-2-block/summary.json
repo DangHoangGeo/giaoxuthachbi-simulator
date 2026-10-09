@@ -1,0 +1,5421 @@
+[
+  {
+    "case": {
+      "id": "baseline-existing-delays",
+      "kind": "baseline",
+      "alignDelays": false
+    },
+    "blocks": 2,
+    "elapsedSeconds": 0.996658207999997,
+    "receiverSha256": "f7fa69162bb2d87c89cfd3515b6ed21c15a1725ddb967eb2c60d54e0ad881258",
+    "zones": {
+      "all": {
+        "n": 368,
+        "lux": {
+          "n": 368,
+          "avg": 327.6784967348448,
+          "min": 204.44499665898252,
+          "max": 448.2175074863068,
+          "p05": 238.7180467514747,
+          "p10": 279.53645485332726,
+          "median": 327.86099089972726,
+          "p95": 381.2961296326188,
+          "u0": 0.6239194780743211,
+          "mean": 327.6784967348448,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 327.67849673484494,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              8.795,
+              0,
+              4.45
+            ],
+            "block": "long",
+            "pew": "Proposed pew 1, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "air": {
+          "n": 368,
+          "avg": 0.46411425513470056,
+          "min": 0.23449950256762514,
+          "max": 0.7594436867939494,
+          "p05": 0.28831592399686157,
+          "p10": 0.3113924470717611,
+          "median": 0.45202343472624296,
+          "p95": 0.6424463876568585,
+          "u0": 0.5052624434032219,
+          "mean": 0.46411425513470056,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.46411425513469956,
+          "minimumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              21.150000000000002,
+              0,
+              4.45
+            ],
+            "block": "long",
+            "pew": "Proposed pew 6, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "noise": {
+          "n": 368,
+          "avg": 46.755854340099816,
+          "min": 46.399588888652296,
+          "max": 48.76048867605671,
+          "p05": 46.427618200261946,
+          "p10": 46.435851289802656,
+          "median": 46.47753312317347,
+          "p95": 48.03298789398835,
+          "u0": 0.9923803028203471,
+          "mean": 46.755854340099816,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 46.7208353109313,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "sti": {
+          "n": 368,
+          "avg": 0.6116882007676151,
+          "min": 0.42481189687122534,
+          "max": 0.6995939304243471,
+          "p05": 0.474269267571013,
+          "p10": 0.504959281999099,
+          "median": 0.6333610180138374,
+          "p95": 0.6899141146671922,
+          "u0": 0.6944909127528104,
+          "mean": 0.6116882007676151,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.6116882007676147,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              12.15,
+              0,
+              3.35
+            ],
+            "block": "long",
+            "pew": "Proposed pew 3, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "spl": {
+          "n": 368,
+          "avg": 68.768192286903,
+          "min": 66.97900656819291,
+          "max": 69.95053530831294,
+          "p05": 67.09974442975363,
+          "p10": 67.32937235925935,
+          "median": 69.0623478798552,
+          "p95": 69.72809996347513,
+          "u0": 0.9739823651137207,
+          "mean": 68.768192286903,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 68.6757710880145,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              25.650000000000002,
+              0,
+              -5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 9, long B",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 112,
+          "stiBelow0p45": 11,
+          "stiNotApplicable": 0,
+          "splBelow68": 122,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 298,
+          "airBelow0p3": 24,
+          "airAbove0p8": 0,
+          "noiseAbove45": 368
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      },
+      "nave": {
+        "n": 288,
+        "lux": {
+          "n": 288,
+          "avg": 336.59451926207544,
+          "min": 207.9559297565512,
+          "max": 448.2175074863068,
+          "p05": 286.5608310004495,
+          "p10": 297.81083487499103,
+          "median": 331.8071482821815,
+          "p95": 383.03483770086797,
+          "u0": 0.6178232795128636,
+          "mean": 336.59451926207544,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 336.59451926207544,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              8.795,
+              0,
+              4.45
+            ],
+            "block": "long",
+            "pew": "Proposed pew 1, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "air": {
+          "n": 288,
+          "avg": 0.47849930184567285,
+          "min": 0.2593892449856796,
+          "max": 0.7594436867939494,
+          "p05": 0.30727107038827556,
+          "p10": 0.31394005878416326,
+          "median": 0.4567789302947661,
+          "p95": 0.656127176177818,
+          "u0": 0.5420890772152864,
+          "mean": 0.47849930184567285,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.47849930184567224,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              21.150000000000002,
+              0,
+              4.45
+            ],
+            "block": "long",
+            "pew": "Proposed pew 6, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "noise": {
+          "n": 288,
+          "avg": 46.47419889569236,
+          "min": 46.399588888652296,
+          "max": 46.64250317145812,
+          "p05": 46.4264811677849,
+          "p10": 46.434131315247654,
+          "median": 46.465372881506966,
+          "p95": 46.557332757753784,
+          "u0": 0.9983945929394604,
+          "mean": 46.47419889569236,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 46.47402732847961,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              33.655,
+              0,
+              5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 18, long H, added bay 8–9",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              33.655,
+              0,
+              5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 18, long H, added bay 8–9",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "sti": {
+          "n": 288,
+          "avg": 0.64301774797195,
+          "min": 0.5519527415426434,
+          "max": 0.6995939304243471,
+          "p05": 0.5811862087360432,
+          "p10": 0.5952757837252599,
+          "median": 0.6448942569529816,
+          "p95": 0.6920864133741071,
+          "u0": 0.8583787046057101,
+          "mean": 0.64301774797195,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.64301774797195,
+          "minimumSeat": {
+            "floor": [
+              33.655,
+              0,
+              -5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 18, long B, added bay 8–9",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              12.15,
+              0,
+              3.35
+            ],
+            "block": "long",
+            "pew": "Proposed pew 3, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              33.655,
+              0,
+              -5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 18, long B, added bay 8–9",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "spl": {
+          "n": 288,
+          "avg": 69.04300182055174,
+          "min": 66.98059995357195,
+          "max": 69.95053530831294,
+          "p05": 67.09974442975363,
+          "p10": 67.37745417125598,
+          "median": 69.27934304426965,
+          "p95": 69.79714646236839,
+          "u0": 0.9701287340845908,
+          "mean": 69.04300182055174,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 68.97620771740176,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long H, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              25.650000000000002,
+              0,
+              -5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 9, long B",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              6.535,
+              0,
+              5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long H, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 32,
+          "stiBelow0p45": 0,
+          "stiNotApplicable": 0,
+          "splBelow68": 48,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 258,
+          "airBelow0p3": 12,
+          "airAbove0p8": 0,
+          "noiseAbove45": 288
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      },
+      "wing": {
+        "n": 80,
+        "lux": {
+          "n": 80,
+          "avg": 295.58081563681543,
+          "min": 204.44499665898252,
+          "max": 366.0277465910078,
+          "p05": 226.1953982631557,
+          "p10": 237.02110882426115,
+          "median": 299.4588305428234,
+          "p95": 363.56123069881266,
+          "u0": 0.6916720769530156,
+          "mean": 295.58081563681543,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 295.58081563681554,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "air": {
+          "n": 80,
+          "avg": 0.4123280869752003,
+          "min": 0.23449950256762514,
+          "max": 0.590859306706755,
+          "p05": 0.2384551988062211,
+          "p10": 0.24788269794534995,
+          "median": 0.41942824304810855,
+          "p95": 0.5676412909325245,
+          "u0": 0.5687206619560924,
+          "mean": 0.4123280869752003,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4123280869752004,
+          "minimumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "noise": {
+          "n": 80,
+          "avg": 47.64098255268105,
+          "min": 46.942914800962626,
+          "max": 48.76048867605671,
+          "p05": 46.99613700203307,
+          "p10": 47.0284451585878,
+          "median": 47.53465900452201,
+          "p95": 48.5418143533,
+          "u0": 0.9853473267276445,
+          "mean": 47.64098255268105,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 47.60934404775748,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "sti": {
+          "n": 80,
+          "avg": 0.4989018308320087,
+          "min": 0.42481189687122534,
+          "max": 0.5480793172389531,
+          "p05": 0.44242956852568893,
+          "p10": 0.44744650294531924,
+          "median": 0.5058254105506076,
+          "p95": 0.5399581926072599,
+          "u0": 0.8514939625753126,
+          "mean": 0.4989018308320087,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4989018308320089,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.940000000000005,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "spl": {
+          "n": 80,
+          "avg": 67.60389986838302,
+          "min": 66.97900656819291,
+          "max": 68.06936406559923,
+          "p05": 67.12522305109555,
+          "p10": 67.23026547562,
+          "median": 67.62429772913399,
+          "p95": 68.00368121401402,
+          "u0": 0.9907565495273689,
+          "mean": 67.60389986838302,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 67.59419922222045,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -11.05
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 4",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 80,
+          "stiBelow0p45": 11,
+          "stiNotApplicable": 0,
+          "splBelow68": 74,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 40,
+          "airBelow0p3": 12,
+          "airAbove0p8": 0,
+          "noiseAbove45": 80
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      },
+      "wing-B": {
+        "n": 40,
+        "lux": {
+          "n": 40,
+          "avg": 295.5808156368156,
+          "min": 204.44499665898252,
+          "max": 366.0277465910078,
+          "p05": 226.1953982631557,
+          "p10": 237.02110882426115,
+          "median": 299.4588305428234,
+          "p95": 363.56123069881266,
+          "u0": 0.6916720769530152,
+          "mean": 295.5808156368156,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 295.5808156368156,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "air": {
+          "n": 40,
+          "avg": 0.4123280869752005,
+          "min": 0.23449950256762514,
+          "max": 0.590859306706755,
+          "p05": 0.2384551988062211,
+          "p10": 0.24788269794534995,
+          "median": 0.41942824304810855,
+          "p95": 0.5676412909325245,
+          "u0": 0.568720661956092,
+          "mean": 0.4123280869752005,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4123280869752005,
+          "minimumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "noise": {
+          "n": 40,
+          "avg": 47.64098255268105,
+          "min": 46.942914800962626,
+          "max": 48.76048867605671,
+          "p05": 46.99613700203307,
+          "p10": 47.0284451585878,
+          "median": 47.53465900452201,
+          "p95": 48.5418143533,
+          "u0": 0.9853473267276445,
+          "mean": 47.64098255268105,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 47.60934404775749,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "sti": {
+          "n": 40,
+          "avg": 0.48998135710721613,
+          "min": 0.42481189687122534,
+          "max": 0.5324673750991187,
+          "p05": 0.4284073568662415,
+          "p10": 0.44562772453122546,
+          "median": 0.4963310719100278,
+          "p95": 0.5286206197361593,
+          "u0": 0.8669960411948273,
+          "mean": 0.48998135710721613,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4899813571072162,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.940000000000005,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "spl": {
+          "n": 40,
+          "avg": 67.60453089429139,
+          "min": 66.98057025107806,
+          "max": 68.06936406559923,
+          "p05": 67.12636824600253,
+          "p10": 67.23140192059543,
+          "median": 67.62489899515498,
+          "p95": 68.0037426108477,
+          "u0": 0.9907704315826262,
+          "mean": 67.60453089429139,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 67.59483237568102,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -11.05
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 4",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 40,
+          "stiBelow0p45": 8,
+          "stiNotApplicable": 0,
+          "splBelow68": 37,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 20,
+          "airBelow0p3": 6,
+          "airAbove0p8": 0,
+          "noiseAbove45": 40
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      },
+      "wing-H": {
+        "n": 40,
+        "lux": {
+          "n": 40,
+          "avg": 295.5808156368156,
+          "min": 204.44499665898255,
+          "max": 366.02774659100777,
+          "p05": 226.19539826315568,
+          "p10": 237.02110882426115,
+          "median": 299.4588305428234,
+          "p95": 363.5612306988127,
+          "u0": 0.6916720769530152,
+          "mean": 295.5808156368156,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 295.5808156368156,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "air": {
+          "n": 40,
+          "avg": 0.4123280869752005,
+          "min": 0.23449950256762514,
+          "max": 0.590859306706755,
+          "p05": 0.2384551988062211,
+          "p10": 0.24788269794534995,
+          "median": 0.41942824304810855,
+          "p95": 0.5676412909325245,
+          "u0": 0.568720661956092,
+          "mean": 0.4123280869752005,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4123280869752005,
+          "minimumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "noise": {
+          "n": 40,
+          "avg": 47.64098255268105,
+          "min": 46.942914800962626,
+          "max": 48.76048867605671,
+          "p05": 46.99613700203307,
+          "p10": 47.0284451585878,
+          "median": 47.53465900452201,
+          "p95": 48.5418143533,
+          "u0": 0.9853473267276445,
+          "mean": 47.64098255268105,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 47.60934404775749,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              8.35
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 1",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "sti": {
+          "n": 40,
+          "avg": 0.5078223045568018,
+          "min": 0.44302249976147257,
+          "max": 0.5480793172389531,
+          "p05": 0.44704466625616474,
+          "p10": 0.4635288684666368,
+          "median": 0.5145188228448172,
+          "p95": 0.5442553869980233,
+          "u0": 0.8723966942494131,
+          "mean": 0.5078223045568018,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.5078223045568018,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.940000000000005,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "spl": {
+          "n": 40,
+          "avg": 67.60326875077385,
+          "min": 66.97900656819291,
+          "max": 68.06813588971235,
+          "p05": 67.12516168888902,
+          "p10": 67.23011085279768,
+          "median": 67.62374273823087,
+          "p95": 68.00255682054205,
+          "u0": 0.9907657988420303,
+          "mean": 67.60326875077385,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 67.59356606875987,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              11.05
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 4",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 40,
+          "stiBelow0p45": 3,
+          "stiNotApplicable": 0,
+          "splBelow68": 37,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 20,
+          "airBelow0p3": 6,
+          "airAbove0p8": 0,
+          "noiseAbove45": 40
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.1777750016088788,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.6838224855868518,
+        "meets3Db": false
+      }
+    ],
+    "checks": [
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Ambo microphone: only 1.2 dB of margin.",
+        "ids": [
+          "S291"
+        ]
+      },
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Altar microphone: only 1.7 dB of margin.",
+        "ids": [
+          "S292"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Ventilation",
+        "detail": "9 exhaust fans move ≈25,920 m³/h ≈ 3.5 air changes per hour (comfort target in a hot climate with people: 4–6).",
+        "ids": [
+          "F252",
+          "F253",
+          "F254",
+          "F255",
+          "F256",
+          "F257",
+          "F258",
+          "F259",
+          "F260"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Speech clarity",
+        "detail": "70 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.61.",
+        "ids": []
+      }
+    ],
+    "power": {
+      "byCircuit": [
+        {
+          "circuit": "A1",
+          "label": "A1 · Main & delay loudspeakers",
+          "watts": 97.16389588718656,
+          "rated": 280,
+          "count": 16,
+          "on": 16,
+          "amps": 0.46939080138737466,
+          "ratedAmps": 1.3526570048309179,
+          "mcb": 6
+        },
+        {
+          "circuit": "A2",
+          "label": "A2 · Veranda fill",
+          "watts": 24.17942045939354,
+          "rated": 40,
+          "count": 4,
+          "on": 4,
+          "amps": 0.11680879448982387,
+          "ratedAmps": 0.1932367149758454,
+          "mcb": 6
+        },
+        {
+          "circuit": "A3",
+          "label": "A3 · Courtyard",
+          "watts": 0,
+          "rated": 80,
+          "count": 8,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 0.3864734299516908,
+          "mcb": 6
+        },
+        {
+          "circuit": "A5",
+          "label": "A5 · Rear fill (crowded feasts)",
+          "watts": 0,
+          "rated": 40,
+          "count": 2,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 0.1932367149758454,
+          "mcb": 6
+        },
+        {
+          "circuit": "DECOR",
+          "label": "Decoration",
+          "watts": 0,
+          "rated": 0,
+          "count": 19,
+          "on": 15,
+          "amps": 0,
+          "ratedAmps": 0,
+          "mcb": 6
+        },
+        {
+          "circuit": "E1",
+          "label": "E1 · Exit signs",
+          "watts": 15,
+          "rated": 15,
+          "count": 5,
+          "on": 5,
+          "amps": 0.07246376811594203,
+          "ratedAmps": 0.07246376811594203,
+          "mcb": 6
+        },
+        {
+          "circuit": "F1",
+          "label": "F1 · Ceiling fans",
+          "watts": 476,
+          "rated": 840,
+          "count": 14,
+          "on": 14,
+          "amps": 2.2995169082125604,
+          "ratedAmps": 4.057971014492754,
+          "mcb": 6
+        },
+        {
+          "circuit": "F2",
+          "label": "F2 · Wall fans",
+          "watts": 0,
+          "rated": 330,
+          "count": 6,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 1.5942028985507246,
+          "mcb": 6
+        },
+        {
+          "circuit": "F4",
+          "label": "F4 · Entrance circulators (trial)",
+          "watts": 0,
+          "rated": 760,
+          "count": 2,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 3.6714975845410627,
+          "mcb": 6,
+          "runDB2": 9.375,
+          "runDB1": 55.29
+        },
+        {
+          "circuit": "F5",
+          "label": "F5 · Wing wall fans · held review",
+          "watts": 280,
+          "rated": 440,
+          "count": 8,
+          "on": 8,
+          "amps": 1.3526570048309179,
+          "ratedAmps": 2.1256038647342996,
+          "mcb": 6
+        },
+        {
+          "circuit": "L1",
+          "label": "L1 · Central seating",
+          "watts": 691.6666666666669,
+          "rated": 691.6666666666669,
+          "count": 32,
+          "on": 32,
+          "amps": 3.3413848631239946,
+          "ratedAmps": 3.3413848631239946,
+          "mcb": 6
+        },
+        {
+          "circuit": "L2",
+          "label": "L2 · Outer seating",
+          "watts": 536.6666666666669,
+          "rated": 536.6666666666669,
+          "count": 28,
+          "on": 28,
+          "amps": 2.5925925925925934,
+          "ratedAmps": 2.5925925925925934,
+          "mcb": 6
+        },
+        {
+          "circuit": "L3",
+          "label": "L3 · Sanctuary",
+          "watts": 431.57200000000006,
+          "rated": 431.57200000000006,
+          "count": 27,
+          "on": 27,
+          "amps": 2.084888888888889,
+          "ratedAmps": 2.084888888888889,
+          "mcb": 6
+        },
+        {
+          "circuit": "L4",
+          "label": "L4 · Circulation & verandas",
+          "watts": 336.00000000000006,
+          "rated": 336.00000000000006,
+          "count": 18,
+          "on": 18,
+          "amps": 1.6231884057971018,
+          "ratedAmps": 1.6231884057971018,
+          "mcb": 6
+        },
+        {
+          "circuit": "L5",
+          "label": "L5 · Steps & paths",
+          "watts": 333,
+          "rated": 333,
+          "count": 22,
+          "on": 22,
+          "amps": 1.608695652173913,
+          "ratedAmps": 1.608695652173913,
+          "mcb": 6
+        },
+        {
+          "circuit": "L6",
+          "label": "L6 · Façade & towers",
+          "watts": 918.8888888888888,
+          "rated": 918.8888888888888,
+          "count": 26,
+          "on": 26,
+          "amps": 4.439076757917337,
+          "ratedAmps": 4.439076757917337,
+          "mcb": 6,
+          "runDB2": 18.238846153846154,
+          "runDB1": 64.35461538461539
+        },
+        {
+          "circuit": "L7",
+          "label": "L7 · Festival exterior (strings & tower floods)",
+          "watts": 0,
+          "rated": 710,
+          "count": 26,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 3.429951690821256,
+          "mcb": 6,
+          "runDB2": 34.797153846153854,
+          "runDB1": 44.8083076923077
+        },
+        {
+          "circuit": "L8",
+          "label": "L8 · Wings · choir & ministers",
+          "watts": 408,
+          "rated": 408,
+          "count": 8,
+          "on": 8,
+          "amps": 1.9710144927536233,
+          "ratedAmps": 1.9710144927536233,
+          "mcb": 6
+        },
+        {
+          "circuit": "L9",
+          "label": "L9 · Front stage & central door",
+          "watts": 298,
+          "rated": 298,
+          "count": 6,
+          "on": 6,
+          "amps": 1.4396135265700483,
+          "ratedAmps": 1.4396135265700483,
+          "mcb": 6,
+          "runDB2": 15.915333333333335,
+          "runDB1": 61.780333333333346
+        },
+        {
+          "circuit": "LA",
+          "label": "LA · Roof uplight",
+          "watts": 224,
+          "rated": 224,
+          "count": 7,
+          "on": 7,
+          "amps": 1.0821256038647342,
+          "ratedAmps": 1.0821256038647342,
+          "mcb": 6
+        },
+        {
+          "circuit": "LD",
+          "label": "LD · Chandeliers & sconces",
+          "watts": 298.7234042553191,
+          "rated": 298.7234042553191,
+          "count": 20,
+          "on": 20,
+          "amps": 1.4431082331174836,
+          "ratedAmps": 1.4431082331174836,
+          "mcb": 6
+        },
+        {
+          "circuit": "MIC",
+          "label": "Microphones",
+          "watts": 0,
+          "rated": 0,
+          "count": 2,
+          "on": 2,
+          "amps": 0,
+          "ratedAmps": 0,
+          "mcb": 6
+        },
+        {
+          "circuit": "V1",
+          "label": "V1 · Exhaust ventilation",
+          "watts": 540,
+          "rated": 1530,
+          "count": 9,
+          "on": 9,
+          "amps": 2.608695652173913,
+          "ratedAmps": 7.391304347826087,
+          "mcb": 10
+        },
+        {
+          "circuit": "X1",
+          "label": "X1 · Festival lighting",
+          "watts": 0,
+          "rated": 0,
+          "count": 11,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 0,
+          "mcb": 6
+        }
+      ],
+      "total": 5908.860942824119,
+      "rated": 9541.517626477536,
+      "amps": 28.545221946010237,
+      "ratedAmps": 46.094288050616115,
+      "cable": {
+        "feeder": 50.915000000000006,
+        "saved": 147.90692307692308
+      },
+      "kWhService": 8.863291414236178,
+      "kWhMonth": 354.53165656944714,
+      "costMonth": 779969.6444527837
+    }
+  },
+  {
+    "case": {
+      "id": "baseline-aligned",
+      "kind": "baseline",
+      "alignDelays": true
+    },
+    "blocks": 2,
+    "elapsedSeconds": 0.9037458330000009,
+    "receiverSha256": "f7fa69162bb2d87c89cfd3515b6ed21c15a1725ddb967eb2c60d54e0ad881258",
+    "zones": {
+      "all": {
+        "n": 368,
+        "lux": {
+          "n": 368,
+          "avg": 327.6784967348448,
+          "min": 204.44499665898252,
+          "max": 448.2175074863068,
+          "p05": 238.7180467514747,
+          "p10": 279.53645485332726,
+          "median": 327.86099089972726,
+          "p95": 381.2961296326188,
+          "u0": 0.6239194780743211,
+          "mean": 327.6784967348448,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 327.67849673484494,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              8.795,
+              0,
+              4.45
+            ],
+            "block": "long",
+            "pew": "Proposed pew 1, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "air": {
+          "n": 368,
+          "avg": 0.46411425513470056,
+          "min": 0.23449950256762514,
+          "max": 0.7594436867939494,
+          "p05": 0.28831592399686157,
+          "p10": 0.3113924470717611,
+          "median": 0.45202343472624296,
+          "p95": 0.6424463876568585,
+          "u0": 0.5052624434032219,
+          "mean": 0.46411425513470056,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.46411425513469956,
+          "minimumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              21.150000000000002,
+              0,
+              4.45
+            ],
+            "block": "long",
+            "pew": "Proposed pew 6, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "noise": {
+          "n": 368,
+          "avg": 46.755854340099816,
+          "min": 46.399588888652296,
+          "max": 48.76048867605671,
+          "p05": 46.427618200261946,
+          "p10": 46.435851289802656,
+          "median": 46.47753312317347,
+          "p95": 48.03298789398835,
+          "u0": 0.9923803028203471,
+          "mean": 46.755854340099816,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 46.7208353109313,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "sti": {
+          "n": 368,
+          "avg": 0.6116882007676151,
+          "min": 0.42481189687122534,
+          "max": 0.6995939304243471,
+          "p05": 0.474269267571013,
+          "p10": 0.504959281999099,
+          "median": 0.6333610180138374,
+          "p95": 0.6899141146671922,
+          "u0": 0.6944909127528104,
+          "mean": 0.6116882007676151,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.6116882007676147,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              12.15,
+              0,
+              3.35
+            ],
+            "block": "long",
+            "pew": "Proposed pew 3, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "spl": {
+          "n": 368,
+          "avg": 68.768192286903,
+          "min": 66.97900656819291,
+          "max": 69.95053530831294,
+          "p05": 67.09974442975363,
+          "p10": 67.32937235925935,
+          "median": 69.0623478798552,
+          "p95": 69.72809996347513,
+          "u0": 0.9739823651137207,
+          "mean": 68.768192286903,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 68.6757710880145,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              25.650000000000002,
+              0,
+              -5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 9, long B",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 112,
+          "stiBelow0p45": 11,
+          "stiNotApplicable": 0,
+          "splBelow68": 122,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 298,
+          "airBelow0p3": 24,
+          "airAbove0p8": 0,
+          "noiseAbove45": 368
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      },
+      "nave": {
+        "n": 288,
+        "lux": {
+          "n": 288,
+          "avg": 336.59451926207544,
+          "min": 207.9559297565512,
+          "max": 448.2175074863068,
+          "p05": 286.5608310004495,
+          "p10": 297.81083487499103,
+          "median": 331.8071482821815,
+          "p95": 383.03483770086797,
+          "u0": 0.6178232795128636,
+          "mean": 336.59451926207544,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 336.59451926207544,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              8.795,
+              0,
+              4.45
+            ],
+            "block": "long",
+            "pew": "Proposed pew 1, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "air": {
+          "n": 288,
+          "avg": 0.47849930184567285,
+          "min": 0.2593892449856796,
+          "max": 0.7594436867939494,
+          "p05": 0.30727107038827556,
+          "p10": 0.31394005878416326,
+          "median": 0.4567789302947661,
+          "p95": 0.656127176177818,
+          "u0": 0.5420890772152864,
+          "mean": 0.47849930184567285,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.47849930184567224,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              21.150000000000002,
+              0,
+              4.45
+            ],
+            "block": "long",
+            "pew": "Proposed pew 6, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "noise": {
+          "n": 288,
+          "avg": 46.47419889569236,
+          "min": 46.399588888652296,
+          "max": 46.64250317145812,
+          "p05": 46.4264811677849,
+          "p10": 46.434131315247654,
+          "median": 46.465372881506966,
+          "p95": 46.557332757753784,
+          "u0": 0.9983945929394604,
+          "mean": 46.47419889569236,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 46.47402732847961,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              33.655,
+              0,
+              5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 18, long H, added bay 8–9",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              33.655,
+              0,
+              5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 18, long H, added bay 8–9",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "sti": {
+          "n": 288,
+          "avg": 0.64301774797195,
+          "min": 0.5519527415426434,
+          "max": 0.6995939304243471,
+          "p05": 0.5811862087360432,
+          "p10": 0.5952757837252599,
+          "median": 0.6448942569529816,
+          "p95": 0.6920864133741071,
+          "u0": 0.8583787046057101,
+          "mean": 0.64301774797195,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.64301774797195,
+          "minimumSeat": {
+            "floor": [
+              33.655,
+              0,
+              -5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 18, long B, added bay 8–9",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              12.15,
+              0,
+              3.35
+            ],
+            "block": "long",
+            "pew": "Proposed pew 3, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              33.655,
+              0,
+              -5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 18, long B, added bay 8–9",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "spl": {
+          "n": 288,
+          "avg": 69.04300182055174,
+          "min": 66.98059995357195,
+          "max": 69.95053530831294,
+          "p05": 67.09974442975363,
+          "p10": 67.37745417125598,
+          "median": 69.27934304426965,
+          "p95": 69.79714646236839,
+          "u0": 0.9701287340845908,
+          "mean": 69.04300182055174,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 68.97620771740176,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long H, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              25.650000000000002,
+              0,
+              -5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 9, long B",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              6.535,
+              0,
+              5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long H, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 32,
+          "stiBelow0p45": 0,
+          "stiNotApplicable": 0,
+          "splBelow68": 48,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 258,
+          "airBelow0p3": 12,
+          "airAbove0p8": 0,
+          "noiseAbove45": 288
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      },
+      "wing": {
+        "n": 80,
+        "lux": {
+          "n": 80,
+          "avg": 295.58081563681543,
+          "min": 204.44499665898252,
+          "max": 366.0277465910078,
+          "p05": 226.1953982631557,
+          "p10": 237.02110882426115,
+          "median": 299.4588305428234,
+          "p95": 363.56123069881266,
+          "u0": 0.6916720769530156,
+          "mean": 295.58081563681543,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 295.58081563681554,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "air": {
+          "n": 80,
+          "avg": 0.4123280869752003,
+          "min": 0.23449950256762514,
+          "max": 0.590859306706755,
+          "p05": 0.2384551988062211,
+          "p10": 0.24788269794534995,
+          "median": 0.41942824304810855,
+          "p95": 0.5676412909325245,
+          "u0": 0.5687206619560924,
+          "mean": 0.4123280869752003,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4123280869752004,
+          "minimumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "noise": {
+          "n": 80,
+          "avg": 47.64098255268105,
+          "min": 46.942914800962626,
+          "max": 48.76048867605671,
+          "p05": 46.99613700203307,
+          "p10": 47.0284451585878,
+          "median": 47.53465900452201,
+          "p95": 48.5418143533,
+          "u0": 0.9853473267276445,
+          "mean": 47.64098255268105,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 47.60934404775748,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "sti": {
+          "n": 80,
+          "avg": 0.4989018308320087,
+          "min": 0.42481189687122534,
+          "max": 0.5480793172389531,
+          "p05": 0.44242956852568893,
+          "p10": 0.44744650294531924,
+          "median": 0.5058254105506076,
+          "p95": 0.5399581926072599,
+          "u0": 0.8514939625753126,
+          "mean": 0.4989018308320087,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4989018308320089,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.940000000000005,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "spl": {
+          "n": 80,
+          "avg": 67.60389986838302,
+          "min": 66.97900656819291,
+          "max": 68.06936406559923,
+          "p05": 67.12522305109555,
+          "p10": 67.23026547562,
+          "median": 67.62429772913399,
+          "p95": 68.00368121401402,
+          "u0": 0.9907565495273689,
+          "mean": 67.60389986838302,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 67.59419922222045,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -11.05
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 4",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 80,
+          "stiBelow0p45": 11,
+          "stiNotApplicable": 0,
+          "splBelow68": 74,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 40,
+          "airBelow0p3": 12,
+          "airAbove0p8": 0,
+          "noiseAbove45": 80
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      },
+      "wing-B": {
+        "n": 40,
+        "lux": {
+          "n": 40,
+          "avg": 295.5808156368156,
+          "min": 204.44499665898252,
+          "max": 366.0277465910078,
+          "p05": 226.1953982631557,
+          "p10": 237.02110882426115,
+          "median": 299.4588305428234,
+          "p95": 363.56123069881266,
+          "u0": 0.6916720769530152,
+          "mean": 295.5808156368156,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 295.5808156368156,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "air": {
+          "n": 40,
+          "avg": 0.4123280869752005,
+          "min": 0.23449950256762514,
+          "max": 0.590859306706755,
+          "p05": 0.2384551988062211,
+          "p10": 0.24788269794534995,
+          "median": 0.41942824304810855,
+          "p95": 0.5676412909325245,
+          "u0": 0.568720661956092,
+          "mean": 0.4123280869752005,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4123280869752005,
+          "minimumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "noise": {
+          "n": 40,
+          "avg": 47.64098255268105,
+          "min": 46.942914800962626,
+          "max": 48.76048867605671,
+          "p05": 46.99613700203307,
+          "p10": 47.0284451585878,
+          "median": 47.53465900452201,
+          "p95": 48.5418143533,
+          "u0": 0.9853473267276445,
+          "mean": 47.64098255268105,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 47.60934404775749,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "sti": {
+          "n": 40,
+          "avg": 0.48998135710721613,
+          "min": 0.42481189687122534,
+          "max": 0.5324673750991187,
+          "p05": 0.4284073568662415,
+          "p10": 0.44562772453122546,
+          "median": 0.4963310719100278,
+          "p95": 0.5286206197361593,
+          "u0": 0.8669960411948273,
+          "mean": 0.48998135710721613,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4899813571072162,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.940000000000005,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "spl": {
+          "n": 40,
+          "avg": 67.60453089429139,
+          "min": 66.98057025107806,
+          "max": 68.06936406559923,
+          "p05": 67.12636824600253,
+          "p10": 67.23140192059543,
+          "median": 67.62489899515498,
+          "p95": 68.0037426108477,
+          "u0": 0.9907704315826262,
+          "mean": 67.60453089429139,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 67.59483237568102,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -11.05
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 4",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 40,
+          "stiBelow0p45": 8,
+          "stiNotApplicable": 0,
+          "splBelow68": 37,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 20,
+          "airBelow0p3": 6,
+          "airAbove0p8": 0,
+          "noiseAbove45": 40
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      },
+      "wing-H": {
+        "n": 40,
+        "lux": {
+          "n": 40,
+          "avg": 295.5808156368156,
+          "min": 204.44499665898255,
+          "max": 366.02774659100777,
+          "p05": 226.19539826315568,
+          "p10": 237.02110882426115,
+          "median": 299.4588305428234,
+          "p95": 363.5612306988127,
+          "u0": 0.6916720769530152,
+          "mean": 295.5808156368156,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 295.5808156368156,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "air": {
+          "n": 40,
+          "avg": 0.4123280869752005,
+          "min": 0.23449950256762514,
+          "max": 0.590859306706755,
+          "p05": 0.2384551988062211,
+          "p10": 0.24788269794534995,
+          "median": 0.41942824304810855,
+          "p95": 0.5676412909325245,
+          "u0": 0.568720661956092,
+          "mean": 0.4123280869752005,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4123280869752005,
+          "minimumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "noise": {
+          "n": 40,
+          "avg": 47.64098255268105,
+          "min": 46.942914800962626,
+          "max": 48.76048867605671,
+          "p05": 46.99613700203307,
+          "p10": 47.0284451585878,
+          "median": 47.53465900452201,
+          "p95": 48.5418143533,
+          "u0": 0.9853473267276445,
+          "mean": 47.64098255268105,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 47.60934404775749,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              8.35
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 1",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "sti": {
+          "n": 40,
+          "avg": 0.5078223045568018,
+          "min": 0.44302249976147257,
+          "max": 0.5480793172389531,
+          "p05": 0.44704466625616474,
+          "p10": 0.4635288684666368,
+          "median": 0.5145188228448172,
+          "p95": 0.5442553869980233,
+          "u0": 0.8723966942494131,
+          "mean": 0.5078223045568018,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.5078223045568018,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.940000000000005,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "spl": {
+          "n": 40,
+          "avg": 67.60326875077385,
+          "min": 66.97900656819291,
+          "max": 68.06813588971235,
+          "p05": 67.12516168888902,
+          "p10": 67.23011085279768,
+          "median": 67.62374273823087,
+          "p95": 68.00255682054205,
+          "u0": 0.9907657988420303,
+          "mean": 67.60326875077385,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 67.59356606875987,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              11.05
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 4",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 40,
+          "stiBelow0p45": 3,
+          "stiNotApplicable": 0,
+          "splBelow68": 37,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 20,
+          "airBelow0p3": 6,
+          "airAbove0p8": 0,
+          "noiseAbove45": 40
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.1777750016088788,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.6838224855868518,
+        "meets3Db": false
+      }
+    ],
+    "checks": [
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Ambo microphone: only 1.2 dB of margin.",
+        "ids": [
+          "S291"
+        ]
+      },
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Altar microphone: only 1.7 dB of margin.",
+        "ids": [
+          "S292"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Ventilation",
+        "detail": "9 exhaust fans move ≈25,920 m³/h ≈ 3.5 air changes per hour (comfort target in a hot climate with people: 4–6).",
+        "ids": [
+          "F252",
+          "F253",
+          "F254",
+          "F255",
+          "F256",
+          "F257",
+          "F258",
+          "F259",
+          "F260"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Speech clarity",
+        "detail": "70 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.61.",
+        "ids": []
+      }
+    ],
+    "power": {
+      "byCircuit": [
+        {
+          "circuit": "A1",
+          "label": "A1 · Main & delay loudspeakers",
+          "watts": 97.16389588718656,
+          "rated": 280,
+          "count": 16,
+          "on": 16,
+          "amps": 0.46939080138737466,
+          "ratedAmps": 1.3526570048309179,
+          "mcb": 6
+        },
+        {
+          "circuit": "A2",
+          "label": "A2 · Veranda fill",
+          "watts": 24.17942045939354,
+          "rated": 40,
+          "count": 4,
+          "on": 4,
+          "amps": 0.11680879448982387,
+          "ratedAmps": 0.1932367149758454,
+          "mcb": 6
+        },
+        {
+          "circuit": "A3",
+          "label": "A3 · Courtyard",
+          "watts": 0,
+          "rated": 80,
+          "count": 8,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 0.3864734299516908,
+          "mcb": 6
+        },
+        {
+          "circuit": "A5",
+          "label": "A5 · Rear fill (crowded feasts)",
+          "watts": 0,
+          "rated": 40,
+          "count": 2,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 0.1932367149758454,
+          "mcb": 6
+        },
+        {
+          "circuit": "DECOR",
+          "label": "Decoration",
+          "watts": 0,
+          "rated": 0,
+          "count": 19,
+          "on": 15,
+          "amps": 0,
+          "ratedAmps": 0,
+          "mcb": 6
+        },
+        {
+          "circuit": "E1",
+          "label": "E1 · Exit signs",
+          "watts": 15,
+          "rated": 15,
+          "count": 5,
+          "on": 5,
+          "amps": 0.07246376811594203,
+          "ratedAmps": 0.07246376811594203,
+          "mcb": 6
+        },
+        {
+          "circuit": "F1",
+          "label": "F1 · Ceiling fans",
+          "watts": 476,
+          "rated": 840,
+          "count": 14,
+          "on": 14,
+          "amps": 2.2995169082125604,
+          "ratedAmps": 4.057971014492754,
+          "mcb": 6
+        },
+        {
+          "circuit": "F2",
+          "label": "F2 · Wall fans",
+          "watts": 0,
+          "rated": 330,
+          "count": 6,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 1.5942028985507246,
+          "mcb": 6
+        },
+        {
+          "circuit": "F4",
+          "label": "F4 · Entrance circulators (trial)",
+          "watts": 0,
+          "rated": 760,
+          "count": 2,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 3.6714975845410627,
+          "mcb": 6,
+          "runDB2": 9.375,
+          "runDB1": 55.29
+        },
+        {
+          "circuit": "F5",
+          "label": "F5 · Wing wall fans · held review",
+          "watts": 280,
+          "rated": 440,
+          "count": 8,
+          "on": 8,
+          "amps": 1.3526570048309179,
+          "ratedAmps": 2.1256038647342996,
+          "mcb": 6
+        },
+        {
+          "circuit": "L1",
+          "label": "L1 · Central seating",
+          "watts": 691.6666666666669,
+          "rated": 691.6666666666669,
+          "count": 32,
+          "on": 32,
+          "amps": 3.3413848631239946,
+          "ratedAmps": 3.3413848631239946,
+          "mcb": 6
+        },
+        {
+          "circuit": "L2",
+          "label": "L2 · Outer seating",
+          "watts": 536.6666666666669,
+          "rated": 536.6666666666669,
+          "count": 28,
+          "on": 28,
+          "amps": 2.5925925925925934,
+          "ratedAmps": 2.5925925925925934,
+          "mcb": 6
+        },
+        {
+          "circuit": "L3",
+          "label": "L3 · Sanctuary",
+          "watts": 431.57200000000006,
+          "rated": 431.57200000000006,
+          "count": 27,
+          "on": 27,
+          "amps": 2.084888888888889,
+          "ratedAmps": 2.084888888888889,
+          "mcb": 6
+        },
+        {
+          "circuit": "L4",
+          "label": "L4 · Circulation & verandas",
+          "watts": 336.00000000000006,
+          "rated": 336.00000000000006,
+          "count": 18,
+          "on": 18,
+          "amps": 1.6231884057971018,
+          "ratedAmps": 1.6231884057971018,
+          "mcb": 6
+        },
+        {
+          "circuit": "L5",
+          "label": "L5 · Steps & paths",
+          "watts": 333,
+          "rated": 333,
+          "count": 22,
+          "on": 22,
+          "amps": 1.608695652173913,
+          "ratedAmps": 1.608695652173913,
+          "mcb": 6
+        },
+        {
+          "circuit": "L6",
+          "label": "L6 · Façade & towers",
+          "watts": 918.8888888888888,
+          "rated": 918.8888888888888,
+          "count": 26,
+          "on": 26,
+          "amps": 4.439076757917337,
+          "ratedAmps": 4.439076757917337,
+          "mcb": 6,
+          "runDB2": 18.238846153846154,
+          "runDB1": 64.35461538461539
+        },
+        {
+          "circuit": "L7",
+          "label": "L7 · Festival exterior (strings & tower floods)",
+          "watts": 0,
+          "rated": 710,
+          "count": 26,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 3.429951690821256,
+          "mcb": 6,
+          "runDB2": 34.797153846153854,
+          "runDB1": 44.8083076923077
+        },
+        {
+          "circuit": "L8",
+          "label": "L8 · Wings · choir & ministers",
+          "watts": 408,
+          "rated": 408,
+          "count": 8,
+          "on": 8,
+          "amps": 1.9710144927536233,
+          "ratedAmps": 1.9710144927536233,
+          "mcb": 6
+        },
+        {
+          "circuit": "L9",
+          "label": "L9 · Front stage & central door",
+          "watts": 298,
+          "rated": 298,
+          "count": 6,
+          "on": 6,
+          "amps": 1.4396135265700483,
+          "ratedAmps": 1.4396135265700483,
+          "mcb": 6,
+          "runDB2": 15.915333333333335,
+          "runDB1": 61.780333333333346
+        },
+        {
+          "circuit": "LA",
+          "label": "LA · Roof uplight",
+          "watts": 224,
+          "rated": 224,
+          "count": 7,
+          "on": 7,
+          "amps": 1.0821256038647342,
+          "ratedAmps": 1.0821256038647342,
+          "mcb": 6
+        },
+        {
+          "circuit": "LD",
+          "label": "LD · Chandeliers & sconces",
+          "watts": 298.7234042553191,
+          "rated": 298.7234042553191,
+          "count": 20,
+          "on": 20,
+          "amps": 1.4431082331174836,
+          "ratedAmps": 1.4431082331174836,
+          "mcb": 6
+        },
+        {
+          "circuit": "MIC",
+          "label": "Microphones",
+          "watts": 0,
+          "rated": 0,
+          "count": 2,
+          "on": 2,
+          "amps": 0,
+          "ratedAmps": 0,
+          "mcb": 6
+        },
+        {
+          "circuit": "V1",
+          "label": "V1 · Exhaust ventilation",
+          "watts": 540,
+          "rated": 1530,
+          "count": 9,
+          "on": 9,
+          "amps": 2.608695652173913,
+          "ratedAmps": 7.391304347826087,
+          "mcb": 10
+        },
+        {
+          "circuit": "X1",
+          "label": "X1 · Festival lighting",
+          "watts": 0,
+          "rated": 0,
+          "count": 11,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 0,
+          "mcb": 6
+        }
+      ],
+      "total": 5908.860942824119,
+      "rated": 9541.517626477536,
+      "amps": 28.545221946010237,
+      "ratedAmps": 46.094288050616115,
+      "cable": {
+        "feeder": 50.915000000000006,
+        "saved": 147.90692307692308
+      },
+      "kWhService": 8.863291414236178,
+      "kWhMonth": 354.53165656944714,
+      "costMonth": 779969.6444527837
+    }
+  },
+  {
+    "case": {
+      "id": "column-y4.4-tilt-50-level-6",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 4.4,
+      "tilt": -50,
+      "level": -6,
+      "alignDelays": true
+    },
+    "blocks": 2,
+    "elapsedSeconds": 0.9560314590000016,
+    "receiverSha256": "f7fa69162bb2d87c89cfd3515b6ed21c15a1725ddb967eb2c60d54e0ad881258",
+    "zones": {
+      "all": {
+        "n": 368,
+        "lux": {
+          "n": 368,
+          "avg": 327.6784967348448,
+          "min": 204.44499665898252,
+          "max": 448.2175074863068,
+          "p05": 238.7180467514747,
+          "p10": 279.53645485332726,
+          "median": 327.86099089972726,
+          "p95": 381.2961296326188,
+          "u0": 0.6239194780743211,
+          "mean": 327.6784967348448,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 327.67849673484494,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              8.795,
+              0,
+              4.45
+            ],
+            "block": "long",
+            "pew": "Proposed pew 1, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "air": {
+          "n": 368,
+          "avg": 0.46411425513470056,
+          "min": 0.23449950256762514,
+          "max": 0.7594436867939494,
+          "p05": 0.28831592399686157,
+          "p10": 0.3113924470717611,
+          "median": 0.45202343472624296,
+          "p95": 0.6424463876568585,
+          "u0": 0.5052624434032219,
+          "mean": 0.46411425513470056,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.46411425513469956,
+          "minimumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              21.150000000000002,
+              0,
+              4.45
+            ],
+            "block": "long",
+            "pew": "Proposed pew 6, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "noise": {
+          "n": 368,
+          "avg": 46.755854340099816,
+          "min": 46.399588888652296,
+          "max": 48.76048867605671,
+          "p05": 46.427618200261946,
+          "p10": 46.435851289802656,
+          "median": 46.47753312317347,
+          "p95": 48.03298789398835,
+          "u0": 0.9923803028203471,
+          "mean": 46.755854340099816,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 46.7208353109313,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "sti": {
+          "n": 368,
+          "avg": 0.6045690318199006,
+          "min": 0.4283058091213201,
+          "max": 0.6932452929393337,
+          "p05": 0.4588251643764485,
+          "p10": 0.4812078926897957,
+          "median": 0.6273739182705242,
+          "p95": 0.6837235085587966,
+          "u0": 0.7084481450067247,
+          "mean": 0.6045690318199006,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.6045690318199004,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              12.15,
+              0,
+              3.35
+            ],
+            "block": "long",
+            "pew": "Proposed pew 3, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "spl": {
+          "n": 368,
+          "avg": 68.81707845642605,
+          "min": 67.0076234626878,
+          "max": 70.03744470994745,
+          "p05": 67.13801983894629,
+          "p10": 67.24652187486828,
+          "median": 69.1514617025866,
+          "p95": 69.80603618871405,
+          "u0": 0.9737063090394928,
+          "mean": 68.81707845642605,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 68.71049500334797,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              8.35
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 1",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              25.650000000000002,
+              0,
+              -5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 9, long B",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              8.35
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 1",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 120,
+          "stiBelow0p45": 10,
+          "stiNotApplicable": 0,
+          "splBelow68": 126,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 298,
+          "airBelow0p3": 24,
+          "airAbove0p8": 0,
+          "noiseAbove45": 368
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      },
+      "nave": {
+        "n": 288,
+        "lux": {
+          "n": 288,
+          "avg": 336.59451926207544,
+          "min": 207.9559297565512,
+          "max": 448.2175074863068,
+          "p05": 286.5608310004495,
+          "p10": 297.81083487499103,
+          "median": 331.8071482821815,
+          "p95": 383.03483770086797,
+          "u0": 0.6178232795128636,
+          "mean": 336.59451926207544,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 336.59451926207544,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              8.795,
+              0,
+              4.45
+            ],
+            "block": "long",
+            "pew": "Proposed pew 1, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "air": {
+          "n": 288,
+          "avg": 0.47849930184567285,
+          "min": 0.2593892449856796,
+          "max": 0.7594436867939494,
+          "p05": 0.30727107038827556,
+          "p10": 0.31394005878416326,
+          "median": 0.4567789302947661,
+          "p95": 0.656127176177818,
+          "u0": 0.5420890772152864,
+          "mean": 0.47849930184567285,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.47849930184567224,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              21.150000000000002,
+              0,
+              4.45
+            ],
+            "block": "long",
+            "pew": "Proposed pew 6, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "noise": {
+          "n": 288,
+          "avg": 46.47419889569236,
+          "min": 46.399588888652296,
+          "max": 46.64250317145812,
+          "p05": 46.4264811677849,
+          "p10": 46.434131315247654,
+          "median": 46.465372881506966,
+          "p95": 46.557332757753784,
+          "u0": 0.9983945929394604,
+          "mean": 46.47419889569236,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 46.47402732847961,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              -1.6999999999999997
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long B, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              33.655,
+              0,
+              5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 18, long H, added bay 8–9",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              33.655,
+              0,
+              5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 18, long H, added bay 8–9",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "sti": {
+          "n": 288,
+          "avg": 0.6367042632679445,
+          "min": 0.5437579430817441,
+          "max": 0.6932452929393337,
+          "p05": 0.5747776643077384,
+          "p10": 0.5882246885967523,
+          "median": 0.6385811997559293,
+          "p95": 0.6859515159290338,
+          "u0": 0.8540196358837858,
+          "mean": 0.6367042632679445,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.6367042632679444,
+          "minimumSeat": {
+            "floor": [
+              33.655,
+              0,
+              -5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 18, long B, added bay 8–9",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              12.15,
+              0,
+              3.35
+            ],
+            "block": "long",
+            "pew": "Proposed pew 3, long H",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              33.655,
+              0,
+              -5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 18, long B, added bay 8–9",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "spl": {
+          "n": 288,
+          "avg": 69.13571755401327,
+          "min": 67.07327829205875,
+          "max": 70.03744470994745,
+          "p05": 67.1994745028756,
+          "p10": 67.47279806111032,
+          "median": 69.36932291975717,
+          "p95": 69.88017087746535,
+          "u0": 0.9701682526062854,
+          "mean": 69.13571755401327,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 69.069218117503,
+          "minimumSeat": {
+            "floor": [
+              6.535,
+              0,
+              5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long H, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              25.650000000000002,
+              0,
+              -5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 9, long B",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              6.535,
+              0,
+              5.550000000000001
+            ],
+            "block": "long",
+            "pew": "Proposed pew 14, long H, added bay 2–3",
+            "bookOffset": [
+              0.25,
+              0
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 40,
+          "stiBelow0p45": 0,
+          "stiNotApplicable": 0,
+          "splBelow68": 48,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 258,
+          "airBelow0p3": 12,
+          "airAbove0p8": 0,
+          "noiseAbove45": 288
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      },
+      "wing": {
+        "n": 80,
+        "lux": {
+          "n": 80,
+          "avg": 295.58081563681543,
+          "min": 204.44499665898252,
+          "max": 366.0277465910078,
+          "p05": 226.1953982631557,
+          "p10": 237.02110882426115,
+          "median": 299.4588305428234,
+          "p95": 363.56123069881266,
+          "u0": 0.6916720769530156,
+          "mean": 295.58081563681543,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 295.58081563681554,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "air": {
+          "n": 80,
+          "avg": 0.4123280869752003,
+          "min": 0.23449950256762514,
+          "max": 0.590859306706755,
+          "p05": 0.2384551988062211,
+          "p10": 0.24788269794534995,
+          "median": 0.41942824304810855,
+          "p95": 0.5676412909325245,
+          "u0": 0.5687206619560924,
+          "mean": 0.4123280869752003,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4123280869752004,
+          "minimumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "noise": {
+          "n": 80,
+          "avg": 47.64098255268105,
+          "min": 46.942914800962626,
+          "max": 48.76048867605671,
+          "p05": 46.99613700203307,
+          "p10": 47.0284451585878,
+          "median": 47.53465900452201,
+          "p95": 48.5418143533,
+          "u0": 0.9853473267276445,
+          "mean": 47.64098255268105,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 47.60934404775748,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "sti": {
+          "n": 80,
+          "avg": 0.4888821986069426,
+          "min": 0.4283058091213201,
+          "max": 0.594888799296425,
+          "p05": 0.4366713629099588,
+          "p10": 0.4410132563798147,
+          "median": 0.48372010412939853,
+          "p95": 0.5619348686496675,
+          "u0": 0.8760920531403406,
+          "mean": 0.4888821986069426,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.48888219860694254,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "spl": {
+          "n": 80,
+          "avg": 67.4260821040025,
+          "min": 67.0076234626878,
+          "max": 68.0157740331666,
+          "p05": 67.10335833490103,
+          "p10": 67.134843006177,
+          "median": 67.38439707617984,
+          "p95": 67.86533129187907,
+          "u0": 0.9937938164541543,
+          "mean": 67.4260821040025,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 67.4190917923899,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              8.35
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 1",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.940000000000005,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              8.35
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 1",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 80,
+          "stiBelow0p45": 10,
+          "stiNotApplicable": 0,
+          "splBelow68": 78,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 40,
+          "airBelow0p3": 12,
+          "airAbove0p8": 0,
+          "noiseAbove45": 80
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      },
+      "wing-B": {
+        "n": 40,
+        "lux": {
+          "n": 40,
+          "avg": 295.5808156368156,
+          "min": 204.44499665898252,
+          "max": 366.0277465910078,
+          "p05": 226.1953982631557,
+          "p10": 237.02110882426115,
+          "median": 299.4588305428234,
+          "p95": 363.56123069881266,
+          "u0": 0.6916720769530152,
+          "mean": 295.5808156368156,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 295.5808156368156,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "air": {
+          "n": 40,
+          "avg": 0.4123280869752005,
+          "min": 0.23449950256762514,
+          "max": 0.590859306706755,
+          "p05": 0.2384551988062211,
+          "p10": 0.24788269794534995,
+          "median": 0.41942824304810855,
+          "p95": 0.5676412909325245,
+          "u0": 0.568720661956092,
+          "mean": 0.4123280869752005,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4123280869752005,
+          "minimumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              -10.15
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 3",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "noise": {
+          "n": 40,
+          "avg": 47.64098255268105,
+          "min": 46.942914800962626,
+          "max": 48.76048867605671,
+          "p05": 46.99613700203307,
+          "p10": 47.0284451585878,
+          "median": 47.53465900452201,
+          "p95": 48.5418143533,
+          "u0": 0.9853473267276445,
+          "mean": 47.64098255268105,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 47.60934404775749,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "sti": {
+          "n": 40,
+          "avg": 0.47979152236651795,
+          "min": 0.4283058091213201,
+          "max": 0.5818106362575209,
+          "p05": 0.43329411564646453,
+          "p10": 0.4366143136007957,
+          "median": 0.4757464672333551,
+          "p95": 0.5580589103945446,
+          "u0": 0.89269149027217,
+          "mean": 0.47979152236651795,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.47979152236651784,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "spl": {
+          "n": 40,
+          "avg": 67.4271283751336,
+          "min": 67.00971188677376,
+          "max": 68.0157740331666,
+          "p05": 67.10544381163474,
+          "p10": 67.13669504196544,
+          "median": 67.38542796462613,
+          "p95": 67.86543872663732,
+          "u0": 0.9938093687449132,
+          "mean": 67.4271283751336,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 67.42013830907952,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.940000000000005,
+              -0.32,
+              -11.95
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 5",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              -8.35
+            ],
+            "block": "wing",
+            "pew": "Ministers bench · wing row 1",
+            "bookOffset": [
+              0,
+              0.25
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 40,
+          "stiBelow0p45": 10,
+          "stiNotApplicable": 0,
+          "splBelow68": 39,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 20,
+          "airBelow0p3": 6,
+          "airAbove0p8": 0,
+          "noiseAbove45": 40
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      },
+      "wing-H": {
+        "n": 40,
+        "lux": {
+          "n": 40,
+          "avg": 295.5808156368156,
+          "min": 204.44499665898255,
+          "max": 366.02774659100777,
+          "p05": 226.19539826315568,
+          "p10": 237.02110882426115,
+          "median": 299.4588305428234,
+          "p95": 363.5612306988127,
+          "u0": 0.6916720769530152,
+          "mean": 295.5808156368156,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 295.5808156368156,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "air": {
+          "n": 40,
+          "avg": 0.4123280869752005,
+          "min": 0.23449950256762514,
+          "max": 0.590859306706755,
+          "p05": 0.2384551988062211,
+          "p10": 0.24788269794534995,
+          "median": 0.41942824304810855,
+          "p95": 0.5676412909325245,
+          "u0": 0.568720661956092,
+          "mean": 0.4123280869752005,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4123280869752005,
+          "minimumSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              39.21,
+              -0.32,
+              10.15
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 3",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "noise": {
+          "n": 40,
+          "avg": 47.64098255268105,
+          "min": 46.942914800962626,
+          "max": 48.76048867605671,
+          "p05": 46.99613700203307,
+          "p10": 47.0284451585878,
+          "median": 47.53465900452201,
+          "p95": 48.5418143533,
+          "u0": 0.9853473267276445,
+          "mean": 47.64098255268105,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 47.60934404775749,
+          "minimumSeat": {
+            "floor": [
+              38.11,
+              -0.32,
+              8.35
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 1",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "sti": {
+          "n": 40,
+          "avg": 0.4979728748473672,
+          "min": 0.45128201984411614,
+          "max": 0.594888799296425,
+          "p05": 0.453763130538546,
+          "p10": 0.4547544897108149,
+          "median": 0.49151046996608394,
+          "p95": 0.5711674101643808,
+          "u0": 0.9062381560088746,
+          "mean": 0.4979728748473672,
+          "meanBasis": "arithmetic mean",
+          "arithmeticMean": 0.4979728748473674,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              8.35
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 1",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.39,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              8.35
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 1",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "spl": {
+          "n": 40,
+          "avg": 67.42503558075055,
+          "min": 67.0076234626878,
+          "max": 68.01360442568475,
+          "p05": 67.10324285587289,
+          "p10": 67.13462006356554,
+          "median": 67.38334890855455,
+          "p95": 67.86332879500563,
+          "u0": 0.993809241412074,
+          "mean": 67.42503558075055,
+          "meanBasis": "acoustic energy mean, dBA",
+          "arithmeticMean": 67.41804527570032,
+          "minimumSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              8.35
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 1",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "maximumSeat": {
+            "floor": [
+              41.940000000000005,
+              -0.32,
+              11.95
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 5",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          },
+          "worstSeat": {
+            "floor": [
+              43.040000000000006,
+              -0.32,
+              8.35
+            ],
+            "block": "wing",
+            "pew": "Choir bench · wing row 1",
+            "bookOffset": [
+              0,
+              -0.25
+            ]
+          }
+        },
+        "failureCounts": {
+          "stiBelow0p6": 40,
+          "stiBelow0p45": 0,
+          "stiNotApplicable": 0,
+          "splBelow68": 39,
+          "splAbove76": 0,
+          "luxBelow200": 0,
+          "luxAbove300": 20,
+          "airBelow0p3": 6,
+          "airAbove0p8": 0,
+          "noiseAbove45": 40
+        },
+        "echo": {
+          "seats": 0,
+          "worstByGap": null,
+          "maxGapMs": null,
+          "maxSeverity": null
+        }
+      }
+    },
+    "microphones": [
+      {
+        "id": "S291",
+        "name": "Ambo microphone",
+        "on": true,
+        "position": [
+          41.37,
+          2.26,
+          -2.62
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 0.8261419653556743,
+        "meets3Db": false
+      },
+      {
+        "id": "S292",
+        "name": "Altar microphone",
+        "on": true,
+        "position": [
+          44.74,
+          2.2399999999999998,
+          0.45
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "feedbackMarginDb": 1.3157700707447546,
+        "meets3Db": false
+      }
+    ],
+    "checks": [
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Ambo microphone: only 0.8 dB of margin.",
+        "ids": [
+          "S291"
+        ]
+      },
+      {
+        "level": "warn",
+        "title": "Low feedback margin",
+        "detail": "Altar microphone: only 1.3 dB of margin.",
+        "ids": [
+          "S292"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Ventilation",
+        "detail": "9 exhaust fans move ≈25,920 m³/h ≈ 3.5 air changes per hour (comfort target in a hot climate with people: 4–6).",
+        "ids": [
+          "F252",
+          "F253",
+          "F254",
+          "F255",
+          "F256",
+          "F257",
+          "F258",
+          "F259",
+          "F260"
+        ]
+      },
+      {
+        "level": "info",
+        "title": "Speech clarity",
+        "detail": "67 % of seats reach STI ≥ 0.60 (target: every seat). Average 0.60.",
+        "ids": []
+      }
+    ],
+    "power": {
+      "byCircuit": [
+        {
+          "circuit": "A1",
+          "label": "A1 · Main & delay loudspeakers",
+          "watts": 85.25296808406816,
+          "rated": 280,
+          "count": 14,
+          "on": 14,
+          "amps": 0.4118500873626481,
+          "ratedAmps": 1.3526570048309179,
+          "mcb": 6
+        },
+        {
+          "circuit": "A2",
+          "label": "A2 · Veranda fill",
+          "watts": 24.17942045939354,
+          "rated": 40,
+          "count": 4,
+          "on": 4,
+          "amps": 0.11680879448982387,
+          "ratedAmps": 0.1932367149758454,
+          "mcb": 6
+        },
+        {
+          "circuit": "A3",
+          "label": "A3 · Courtyard",
+          "watts": 0,
+          "rated": 80,
+          "count": 8,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 0.3864734299516908,
+          "mcb": 6
+        },
+        {
+          "circuit": "A5",
+          "label": "A5 · Rear fill (crowded feasts)",
+          "watts": 0,
+          "rated": 40,
+          "count": 2,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 0.1932367149758454,
+          "mcb": 6
+        },
+        {
+          "circuit": "DECOR",
+          "label": "Decoration",
+          "watts": 0,
+          "rated": 0,
+          "count": 19,
+          "on": 15,
+          "amps": 0,
+          "ratedAmps": 0,
+          "mcb": 6
+        },
+        {
+          "circuit": "E1",
+          "label": "E1 · Exit signs",
+          "watts": 15,
+          "rated": 15,
+          "count": 5,
+          "on": 5,
+          "amps": 0.07246376811594203,
+          "ratedAmps": 0.07246376811594203,
+          "mcb": 6
+        },
+        {
+          "circuit": "F1",
+          "label": "F1 · Ceiling fans",
+          "watts": 476,
+          "rated": 840,
+          "count": 14,
+          "on": 14,
+          "amps": 2.2995169082125604,
+          "ratedAmps": 4.057971014492754,
+          "mcb": 6
+        },
+        {
+          "circuit": "F2",
+          "label": "F2 · Wall fans",
+          "watts": 0,
+          "rated": 330,
+          "count": 6,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 1.5942028985507246,
+          "mcb": 6
+        },
+        {
+          "circuit": "F4",
+          "label": "F4 · Entrance circulators (trial)",
+          "watts": 0,
+          "rated": 760,
+          "count": 2,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 3.6714975845410627,
+          "mcb": 6,
+          "runDB2": 9.375,
+          "runDB1": 55.29
+        },
+        {
+          "circuit": "F5",
+          "label": "F5 · Wing wall fans · held review",
+          "watts": 280,
+          "rated": 440,
+          "count": 8,
+          "on": 8,
+          "amps": 1.3526570048309179,
+          "ratedAmps": 2.1256038647342996,
+          "mcb": 6
+        },
+        {
+          "circuit": "L1",
+          "label": "L1 · Central seating",
+          "watts": 691.6666666666669,
+          "rated": 691.6666666666669,
+          "count": 32,
+          "on": 32,
+          "amps": 3.3413848631239946,
+          "ratedAmps": 3.3413848631239946,
+          "mcb": 6
+        },
+        {
+          "circuit": "L2",
+          "label": "L2 · Outer seating",
+          "watts": 536.6666666666669,
+          "rated": 536.6666666666669,
+          "count": 28,
+          "on": 28,
+          "amps": 2.5925925925925934,
+          "ratedAmps": 2.5925925925925934,
+          "mcb": 6
+        },
+        {
+          "circuit": "L3",
+          "label": "L3 · Sanctuary",
+          "watts": 431.57200000000006,
+          "rated": 431.57200000000006,
+          "count": 27,
+          "on": 27,
+          "amps": 2.084888888888889,
+          "ratedAmps": 2.084888888888889,
+          "mcb": 6
+        },
+        {
+          "circuit": "L4",
+          "label": "L4 · Circulation & verandas",
+          "watts": 336.00000000000006,
+          "rated": 336.00000000000006,
+          "count": 18,
+          "on": 18,
+          "amps": 1.6231884057971018,
+          "ratedAmps": 1.6231884057971018,
+          "mcb": 6
+        },
+        {
+          "circuit": "L5",
+          "label": "L5 · Steps & paths",
+          "watts": 333,
+          "rated": 333,
+          "count": 22,
+          "on": 22,
+          "amps": 1.608695652173913,
+          "ratedAmps": 1.608695652173913,
+          "mcb": 6
+        },
+        {
+          "circuit": "L6",
+          "label": "L6 · Façade & towers",
+          "watts": 918.8888888888888,
+          "rated": 918.8888888888888,
+          "count": 26,
+          "on": 26,
+          "amps": 4.439076757917337,
+          "ratedAmps": 4.439076757917337,
+          "mcb": 6,
+          "runDB2": 18.238846153846154,
+          "runDB1": 64.35461538461539
+        },
+        {
+          "circuit": "L7",
+          "label": "L7 · Festival exterior (strings & tower floods)",
+          "watts": 0,
+          "rated": 710,
+          "count": 26,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 3.429951690821256,
+          "mcb": 6,
+          "runDB2": 34.797153846153854,
+          "runDB1": 44.8083076923077
+        },
+        {
+          "circuit": "L8",
+          "label": "L8 · Wings · choir & ministers",
+          "watts": 408,
+          "rated": 408,
+          "count": 8,
+          "on": 8,
+          "amps": 1.9710144927536233,
+          "ratedAmps": 1.9710144927536233,
+          "mcb": 6
+        },
+        {
+          "circuit": "L9",
+          "label": "L9 · Front stage & central door",
+          "watts": 298,
+          "rated": 298,
+          "count": 6,
+          "on": 6,
+          "amps": 1.4396135265700483,
+          "ratedAmps": 1.4396135265700483,
+          "mcb": 6,
+          "runDB2": 15.915333333333335,
+          "runDB1": 61.780333333333346
+        },
+        {
+          "circuit": "LA",
+          "label": "LA · Roof uplight",
+          "watts": 224,
+          "rated": 224,
+          "count": 7,
+          "on": 7,
+          "amps": 1.0821256038647342,
+          "ratedAmps": 1.0821256038647342,
+          "mcb": 6
+        },
+        {
+          "circuit": "LD",
+          "label": "LD · Chandeliers & sconces",
+          "watts": 298.7234042553191,
+          "rated": 298.7234042553191,
+          "count": 20,
+          "on": 20,
+          "amps": 1.4431082331174836,
+          "ratedAmps": 1.4431082331174836,
+          "mcb": 6
+        },
+        {
+          "circuit": "MIC",
+          "label": "Microphones",
+          "watts": 0,
+          "rated": 0,
+          "count": 2,
+          "on": 2,
+          "amps": 0,
+          "ratedAmps": 0,
+          "mcb": 6
+        },
+        {
+          "circuit": "V1",
+          "label": "V1 · Exhaust ventilation",
+          "watts": 540,
+          "rated": 1530,
+          "count": 9,
+          "on": 9,
+          "amps": 2.608695652173913,
+          "ratedAmps": 7.391304347826087,
+          "mcb": 10
+        },
+        {
+          "circuit": "X1",
+          "label": "X1 · Festival lighting",
+          "watts": 0,
+          "rated": 0,
+          "count": 11,
+          "on": 0,
+          "amps": 0,
+          "ratedAmps": 0,
+          "mcb": 6
+        }
+      ],
+      "total": 5896.950015021,
+      "rated": 9541.517626477536,
+      "amps": 28.487681231985505,
+      "ratedAmps": 46.094288050616115,
+      "cable": {
+        "feeder": 50.915000000000006,
+        "saved": 147.90692307692308
+      },
+      "kWhService": 8.845425022531499,
+      "kWhMonth": 353.81700090126,
+      "costMonth": 778397.4019827719
+    }
+  }
+]

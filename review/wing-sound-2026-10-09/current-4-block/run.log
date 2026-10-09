@@ -1,0 +1,3 @@
+{"id":"baseline-existing-delays","seconds":0.965,"wingStiMin":0.425675584825402,"wingStiMean":0.4999018068659867,"naveStiMin":0.5266327747379425,"allStiMin":0.425675584825402,"feedback":[["S291",1.2062627704490154],["S292",1.7148436355671066]],"echoes":0}
+{"id":"baseline-aligned","seconds":0.91,"wingStiMin":0.425675584825402,"wingStiMean":0.4999018068659867,"naveStiMin":0.5266327747379425,"allStiMin":0.425675584825402,"feedback":[["S291",1.2062627704490154],["S292",1.7148436355671066]],"echoes":0}
+{"id":"column-y4.4-tilt-50-level-6","seconds":0.957,"wingStiMin":0.4292340377030768,"wingStiMean":0.48986931694414027,"naveStiMin":0.5185330577904543,"allStiMin":0.4292340377030768,"feedback":[["S291",0.8546193267022417],["S292",1.3467673781580416]],"echoes":0}

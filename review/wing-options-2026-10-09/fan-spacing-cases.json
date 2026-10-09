@@ -1,0 +1,85 @@
+{
+  "basis": "Increase inner-to-outer fan spacing by100 mm while retaining central solid gable mounting zone; physical tolerance and servicing remain pending.",
+  "cases": [
+    {
+      "id": "central-spacing-s1",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 1,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 40.05,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.1,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 42,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "central-spacing-s2",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 10.6,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 100
+      },
+      "fans": {
+        "y": 2.7,
+        "speed": 2,
+        "points": [
+          {
+            "x": 39.15,
+            "targetX": 38.94,
+            "targetZ": 11.5
+          },
+          {
+            "x": 40.05,
+            "targetX": 38.94,
+            "targetZ": 9.0
+          },
+          {
+            "x": 41.1,
+            "targetX": 42.22,
+            "targetZ": 9.0
+          },
+          {
+            "x": 42,
+            "targetX": 42.22,
+            "targetZ": 11.5
+          }
+        ]
+      }
+    }
+  ]
+}

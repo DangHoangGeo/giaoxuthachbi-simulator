@@ -1,0 +1,4 @@
+# Vector PDF streams are binary artifacts, including ASCII-encoded ReportLab output.
+*.pdf binary
+# Preserve the bundled font license byte-for-byte, including its final blank line.
+scripts/fonts/OFL.txt whitespace=-blank-at-eof

@@ -1,0 +1,31 @@
+PASS: 315 conservative migration cases; stable IDs, exact import, actual fixture types/electrical routes and undo/redo.
+ines
+
+  {
+    'Thach_Bi_Viewer/bundle.js': '3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b',
+    'Thach_Bi_Viewer/carving.js': '3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7',
+    'Thach_Bi_Viewer/glass-art.js': '4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a',
+    'Thach_Bi_Viewer/planning.js': '8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf',
+...
+    'scripts/lib/study_model.cjs': 'ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029',
++   'scripts/verify_wing_review.cjs': 'c3e1e982dc6d974f876429cdb2e14f1eb326ac535fabb88d2aadbfd5daee94de'
+-   'scripts/verify_wing_review.cjs': '8944715a7ace2d21ec0dc00b8fb7ed9dc68dfe60184a01dd8300a3ffff812d75'
+  }
+
+    at run (/Users/danghoang/Desktop/giaoxuthachbi_work/scripts/verify_wing_review.cjs:158:12)
+    at Object.<anonymous> (/Users/danghoang/Desktop/giaoxuthachbi_work/scripts/verify_wing_review.cjs:170:38)
+    at Module._compile (node:internal/modules/cjs/loader:1705:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1838:10)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Module._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+    at node:internal/main/run_main_module:36:49 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [Object],
+  expected: [Object],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}

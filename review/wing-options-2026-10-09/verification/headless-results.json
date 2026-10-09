@@ -1,0 +1,1777 @@
+{
+  "status": "PASS",
+  "generatedAt": "2026-10-08T22:17:53.630Z",
+  "node": "v22.22.2",
+  "revision": "2026-10-09-wing-held-1",
+  "baseline": {
+    "path": "review/wing-options-2026-10-09/baseline-layout.json",
+    "items": 322
+  },
+  "defaultItems": 326,
+  "stableIds": [
+    "L63",
+    "L64",
+    "L65",
+    "L66",
+    "F240",
+    "F241",
+    "L67",
+    "L68",
+    "L69",
+    "L70",
+    "F242",
+    "F243",
+    "F244",
+    "F245",
+    "F246",
+    "F247",
+    "F248",
+    "F249"
+  ],
+  "appendedIds": [
+    "F-WING-B-3",
+    "F-WING-B-4",
+    "F-WING-H-3",
+    "F-WING-H-4"
+  ],
+  "migrationCases": [
+    {
+      "name": "untouched frozen baseline",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [],
+      "sha256": "1c8e8dc4f5eed6e7190882d72b7cad2b1287ba8d25d5c669c9668a0bf95d1500"
+    },
+    {
+      "name": "B wing L63 deleted",
+      "inputItems": 321,
+      "outputItems": 323,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c5f0e23fbfa548b9aaf6f73aff325948643fdd504fd04512acb9891326cc1944"
+    },
+    {
+      "name": "B wing L63 moved",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e20230fd357ae345313cc41bac18c5ca4a92878e58adca3a97d08696f25c564c"
+    },
+    {
+      "name": "B wing L63 renamed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e67ca0c1f55922f89f22d909653797534ac751fe39f6e30a59fa5533c99624e6"
+    },
+    {
+      "name": "B wing L63 retuned",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "69828cca778ca24014223fabcf2a997c1a2cac16b7562d30f5e98731f217b56d"
+    },
+    {
+      "name": "B wing L63 hidden",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "31841bc8729f08aabfed983a2ae484e74c272d54d772e9f3406118ab710d375b"
+    },
+    {
+      "name": "B wing L63 switched",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b265907d60227b830b39c72481c94e5a4156a414d0e11740ed7885c862b355a7"
+    },
+    {
+      "name": "B wing L63 aimed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6c12807ddc9ae2fd3dd240ca580c83386c4f35370c0074f283e6029742962b41"
+    },
+    {
+      "name": "B wing L63 annotated",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "3a8cb1ccd76231f2190ee222bc6ddac97d37b38fe770240be9e6019bd60d7784"
+    },
+    {
+      "name": "B wing L63 recircuited",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f6e5dfe8a9b4cc94ed956e63ae7f823317773ab923ad2d563da309a41f6d0a7e"
+    },
+    {
+      "name": "B wing L64 deleted",
+      "inputItems": 321,
+      "outputItems": 323,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4429220af7aad3595211622a63b9e16df77760a8bac47e3c9ef0355e64cb2984"
+    },
+    {
+      "name": "B wing L64 moved",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "13d731afee6afaf2b6b8c41c1fe74d529bf277de62bae406ba064d395bd1b9e0"
+    },
+    {
+      "name": "B wing L64 renamed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "75b374f65dbe68f05bc4db3341e9958fc9a6b0afa8357c417698d1d3a1a94e93"
+    },
+    {
+      "name": "B wing L64 retuned",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c2cc6e5c8c75dc8e9c5a3b80c8ab9e1dd35602ed1b093d31933c7999121c3870"
+    },
+    {
+      "name": "B wing L64 hidden",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "1c32623bbc687808b0d255f52931d9f63bef245af93fcf7cf46ebbf12bb72e24"
+    },
+    {
+      "name": "B wing L64 switched",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "aa693c0d0aef215a384966ebbdbf6dd3889041f5095722eab4bebf227d914c64"
+    },
+    {
+      "name": "B wing L64 aimed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "8efc907a6d3bb150df19f1e3b2c1386c405f70c59e09edcb59fe8251fc6e3f39"
+    },
+    {
+      "name": "B wing L64 annotated",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "3ffacf6258083310bc1fbd4f164a707577916295df9c6d25feba182910ecfd63"
+    },
+    {
+      "name": "B wing L64 recircuited",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "90783ab6ec292a6878db88f1c0bfd259bc3990202e1d267d6d0e73b0f7994bf7"
+    },
+    {
+      "name": "B wing L65 deleted",
+      "inputItems": 321,
+      "outputItems": 323,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "a317f9e6492b7ee7e29871c316af588f218bbd4c223dc4c2ede548e358cfe99b"
+    },
+    {
+      "name": "B wing L65 moved",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "35117a4d0222a3654c610a723bea3c90fb56e24ca06eb4956c98ff98c6a1046e"
+    },
+    {
+      "name": "B wing L65 renamed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "013449e17f35d7385ccc354cd6599e02546a5cc3e97aecf58610033a1125334a"
+    },
+    {
+      "name": "B wing L65 retuned",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "07554f4c3414542a2ab7c62c1c06a4b0c41b0f228436e6edcef28b19c86f6a56"
+    },
+    {
+      "name": "B wing L65 hidden",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b99fca6fb24cd4712fe43220f7a832f3e513bfeea975b0258b01fbd5c840e946"
+    },
+    {
+      "name": "B wing L65 switched",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "65a56d41dacbd9fd95db9292054b6a63b409453545c7c1348ea249f3ee22e44f"
+    },
+    {
+      "name": "B wing L65 aimed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "126ffde1be70cd3a0622c865ea02ffc31f1a21128a010e7afd01ecc8f7075da2"
+    },
+    {
+      "name": "B wing L65 annotated",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "43fdf4f92019542bc9c38c46a0ef270a750bd0035f568fbe710ff58ec9568327"
+    },
+    {
+      "name": "B wing L65 recircuited",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "da2f0b7e136146b04568bb88599780b10f2807544d37c9939ae946fbc8688b27"
+    },
+    {
+      "name": "B wing L66 deleted",
+      "inputItems": 321,
+      "outputItems": 323,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "5a1b1c9e6f92937c51b7143ef7304c473e88f40af132d835a703b1daae5a8010"
+    },
+    {
+      "name": "B wing L66 moved",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "8c680d1688c733ef90aa13369f4c19a14c70a878f0a2fbac97d33ff109cd3721"
+    },
+    {
+      "name": "B wing L66 renamed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "116cd535dd03b57262d8ceddea333c06067d6f36427268ada9efd0a72f9e1f76"
+    },
+    {
+      "name": "B wing L66 retuned",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e60b4c9ac013efbcf17f067e008340ff1483e9baaf033a2060661a25de40c08e"
+    },
+    {
+      "name": "B wing L66 hidden",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7ba0a33b53930b46080ecc43f32c395467d4ce44bbf9b972217ad47946571234"
+    },
+    {
+      "name": "B wing L66 switched",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e77716723b7ac4099b459160f5a3092ca07bbfb26195c1d6d3cbe9bec49c088c"
+    },
+    {
+      "name": "B wing L66 aimed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9c9c8d4d56cc3f4517298b087046f0d12e93bacc208d296b63426fe6947f325d"
+    },
+    {
+      "name": "B wing L66 annotated",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0c558b55c384e7edd06b33496d80d836d340a53f672e9d3825811d97603a804a"
+    },
+    {
+      "name": "B wing L66 recircuited",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f312977dc2c49aa69580708d2b7f86ec26fc1ec44bc7023794d2d5662cc1909c"
+    },
+    {
+      "name": "B wing F240 deleted",
+      "inputItems": 321,
+      "outputItems": 323,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "2f77f508bbeb074a04e33cede97651f5d33f8f1d2595333bd384bf20fc3dfeea"
+    },
+    {
+      "name": "B wing F240 moved",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4ed4b87a01dfffa4e94e7e5f3ee2dbd3fcfcf6fba7d93e12f8fd7626aeb2ac8e"
+    },
+    {
+      "name": "B wing F240 renamed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "39700e77f3b4789784d544e4b22b38d084cf5bf3e63cf52162f272a2d07484ad"
+    },
+    {
+      "name": "B wing F240 retuned",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e38048013529aff3b3cd04b887f0d199dd03441d0be34837e2d39ab7aa3fc5c9"
+    },
+    {
+      "name": "B wing F240 hidden",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b85debe20e9ed99bd85e1bed180c83b95d9f5e133a464fe61ebe3adf45fe9c7d"
+    },
+    {
+      "name": "B wing F240 switched",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f2cc045dd8858b88dbf45f642632c69ae8d20569767cea57b52fb93b9cc65a6f"
+    },
+    {
+      "name": "B wing F240 aimed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "78af64c7a7f418b863db5b370a0e40a254caf1d52e64dd1bc0d19b95c2e518b1"
+    },
+    {
+      "name": "B wing F240 annotated",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "20bdf01300d096a845c742bda1fb762bd977babc33fa98b5d6cf4fb66b69f330"
+    },
+    {
+      "name": "B wing F240 recircuited",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6243b9c82c3967032b40d5f0df78c617368e89fab9aa1bc38aa7dafbb55c7d32"
+    },
+    {
+      "name": "B wing F241 deleted",
+      "inputItems": 321,
+      "outputItems": 323,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "942d0b1acaac0a9e8faa16bfaaa015fe2f5534ecbfaf3f369d0f14c17ef70962"
+    },
+    {
+      "name": "B wing F241 moved",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f7790b917353ce7b9aa7aa28615d71624bf2d01d3fced05db064744043dfdc13"
+    },
+    {
+      "name": "B wing F241 renamed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "58fdeb24f6d945cd83b80898be8c1954c57232df303047347aaca549b932c616"
+    },
+    {
+      "name": "B wing F241 retuned",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d8664cab3c60664b4170a127764bd41460f113965459170da28e5fb2f8a0fb44"
+    },
+    {
+      "name": "B wing F241 hidden",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d7fc6bca22cfeb115476a9a25b67f0257a416e4a356dcb2fa82af3b9c6aa8ef6"
+    },
+    {
+      "name": "B wing F241 switched",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "3da6b69004a398a2829a79c3f47cad8d41a84c73b2a01663dc16058d1dd6fd6b"
+    },
+    {
+      "name": "B wing F241 aimed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "db52622e57bd1979e9074bebd57f0397061fed9e88fd4e7df90d87c3cfca24e5"
+    },
+    {
+      "name": "B wing F241 annotated",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6f1b2a8d6c831e0e1bcb867f9a50cc5dd9fa0f72c78e8aaea03da08b8918018c"
+    },
+    {
+      "name": "B wing F241 recircuited",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "cabb22fdabcc6e0fd41101baf977b356a1ce849165f524ab4b55f37cd8cff277"
+    },
+    {
+      "name": "H wing L67 deleted",
+      "inputItems": 321,
+      "outputItems": 323,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "28a8fac539d1f3049a27b7eb61aa8e8e18661766fcb5db0d4e70b5657285be37"
+    },
+    {
+      "name": "H wing L67 moved",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d737cda83492e4529fa85cc1b99839f34bf527c554ba33c9477aabdae01f9ba9"
+    },
+    {
+      "name": "H wing L67 renamed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "eedb1c6e1bc472895588d52d5765bac9effbb14ff03982008cd99152769d1882"
+    },
+    {
+      "name": "H wing L67 retuned",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4c9c2512d7a6149a0c004b12fe56b61521b22d2b6d8964682f7498f481cb1e52"
+    },
+    {
+      "name": "H wing L67 hidden",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "a5b18dd5ab8379c756a3448443be94d9ac33ab72af201f43f4f37e1cdaa5f9bb"
+    },
+    {
+      "name": "H wing L67 switched",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "849dab09fabaaf4efa67470d05d02ca0a632064942abf1697a50cc06e504fb16"
+    },
+    {
+      "name": "H wing L67 aimed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "5d5ee85cb37ddc457ae727e146fd73c185204bb3e5001a608c050207af161c05"
+    },
+    {
+      "name": "H wing L67 annotated",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6971bceaf019e2c6d6e3b73802c3510a40bf348c18be47fb97b6550b90595bae"
+    },
+    {
+      "name": "H wing L67 recircuited",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "37b3e29bed887b5aafc5d70985cfcacc2fd6c92b7347d98f6555fab5f737a013"
+    },
+    {
+      "name": "H wing L68 deleted",
+      "inputItems": 321,
+      "outputItems": 323,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6510c2119a02501893522b537bceaf3e163f8b6f552e0b46340a1e51bb59a80e"
+    },
+    {
+      "name": "H wing L68 moved",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b8643376f4fef65b92d4ad98216f1052e475a31c4fc7817ca823a11e4a6b6f5c"
+    },
+    {
+      "name": "H wing L68 renamed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "5d54d2185b8210d50ef20152af26e305c79b6fedb86352eb9546d94cf61fb120"
+    },
+    {
+      "name": "H wing L68 retuned",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "52d83ea6597f784c45575457bb566b05ecb5d118761980e557d1a77dde5f59b1"
+    },
+    {
+      "name": "H wing L68 hidden",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "114f2d3cefc91ddfb15f6088916ac6702c74fdcfa02ce2b5420a489e3818fa16"
+    },
+    {
+      "name": "H wing L68 switched",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b5fe5c5c104a8d1c37ad0a2086dfbb3a25211f4bcf6fbc6a3fff9dbbe1338732"
+    },
+    {
+      "name": "H wing L68 aimed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b53878d4768eb7d30d26a42a0bfd692853a0f99995bcf315383e9df85881e953"
+    },
+    {
+      "name": "H wing L68 annotated",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "aa01b653561605dee975810abb1a7834efd13b1d36233056f30a69e5602cbf5b"
+    },
+    {
+      "name": "H wing L68 recircuited",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6036d28dd3c1fa1da36933d0b954c5c115e124524ac2ab92f940cf1730e4cf11"
+    },
+    {
+      "name": "H wing L69 deleted",
+      "inputItems": 321,
+      "outputItems": 323,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "dbb33e48e86d25ebccbfddf9ed7f85354a425d322dc11250b14222287b18c8c9"
+    },
+    {
+      "name": "H wing L69 moved",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "1f4aacf581badcc9008eb95e418ca81b4f3b75ac9d4b5cfb85825fb7786c1547"
+    },
+    {
+      "name": "H wing L69 renamed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "08db83ea9d209ce93c3d968a4dc7b3dc3ec3171d5c432f2d8743626439113639"
+    },
+    {
+      "name": "H wing L69 retuned",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "df7634385cab00b96443524663d3820dfc9f0dd5d8440c17b4e6b3436dc84a76"
+    },
+    {
+      "name": "H wing L69 hidden",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9a3ed0a32098eea1f80652acd31e9f3cfd9005d6e8501f5c99510a4bd929129e"
+    },
+    {
+      "name": "H wing L69 switched",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "fee0e5f4bc6316201520608d66c1962e31d4a395122c198d87440689d207958c"
+    },
+    {
+      "name": "H wing L69 aimed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "48d77a1ffd596ae86c6fc22a58b43b89c5ac6dd7d4ae94dc3088e4be6f2527d7"
+    },
+    {
+      "name": "H wing L69 annotated",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "460da80bb090bbdebe2a4a20a2c21e38ee8a5dbc28ef36ca982ddc2f39e07aa8"
+    },
+    {
+      "name": "H wing L69 recircuited",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d454498566a03c8595a91485ffaedd3491776c34a1ef2d38094c3ee8a743fd30"
+    },
+    {
+      "name": "H wing L70 deleted",
+      "inputItems": 321,
+      "outputItems": 323,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b0d0e2201107a43bd78ad7867743055cd66256649b127265f5ea761452b9641e"
+    },
+    {
+      "name": "H wing L70 moved",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4bed0168ab486300ae36c389d7ca3f667d1a671e77e7fe5fa782574711cb5d19"
+    },
+    {
+      "name": "H wing L70 renamed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "fbbd5eddc30a68e6c214e23ae161e2ef0f96f631fae5fe244161a854f2f318b3"
+    },
+    {
+      "name": "H wing L70 retuned",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "300f304611bb567caa8450e52d2539545b6fb91cb6b16f937bbc05d57c586444"
+    },
+    {
+      "name": "H wing L70 hidden",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "3c26c381995c4ff6444e73fc3da2d4b4e4c9f3841778a37a5ab92afc89ff4568"
+    },
+    {
+      "name": "H wing L70 switched",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "416f1f6c6508ecd8753f96fa140597f148f096d4115889c44eee687916307013"
+    },
+    {
+      "name": "H wing L70 aimed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "deed54f11c624a08a507c03070336b2d209485fc4fb8c6aa656561a5fd1dd267"
+    },
+    {
+      "name": "H wing L70 annotated",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "189b11458b6969b1b332bde99925630551797a02525c478315c5f31819a00644"
+    },
+    {
+      "name": "H wing L70 recircuited",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c742df9f922b8d81dbeeeee573c07e3a300b0b49a0eb9ade732c414747c4bbf9"
+    },
+    {
+      "name": "H wing F242 deleted",
+      "inputItems": 321,
+      "outputItems": 323,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9335c72248b353780ad821065f120140583b6d78c953d98b1c577646122a29fc"
+    },
+    {
+      "name": "H wing F242 moved",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "a16daa6da63f866b2f18e9762c3abb9c41431ee65391e5c0a4c7cbd5693dba49"
+    },
+    {
+      "name": "H wing F242 renamed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e54fd3b0634edfdc2ee9cb4d3597a2957bad59ea5d474eb920cafdc24e8cb053"
+    },
+    {
+      "name": "H wing F242 retuned",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "327e1c7c65541042482f334d00c079ec23ea10fa19b69c0271a8ba231e583afc"
+    },
+    {
+      "name": "H wing F242 hidden",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f00bb4aa0b5825bef089b1451a9d971712849e50c3556cdf07080974eb478d1a"
+    },
+    {
+      "name": "H wing F242 switched",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "190bf63394c1d06f6f7cf213ea6c9a2c86d80f767899bd99c7fad03d8110e100"
+    },
+    {
+      "name": "H wing F242 aimed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f12a547cf6047c7e710f68a8e9d1d66574e6d2d5d1c37c8e84184c300d3ab862"
+    },
+    {
+      "name": "H wing F242 annotated",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c50fc3601236df87433d5087ba25a7760066133a6e0630de83903e2744a60190"
+    },
+    {
+      "name": "H wing F242 recircuited",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d20a02e57929d1a5dbca6705a71ce115a8dbc08bdecd87d23af217a2fc817cbe"
+    },
+    {
+      "name": "H wing F243 deleted",
+      "inputItems": 321,
+      "outputItems": 323,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d0384cce946ccfaf7ed3e33cec97baf6623bfbf5b7384b3ebd2493216d915d34"
+    },
+    {
+      "name": "H wing F243 moved",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b30c37742ffd2e00f193a3dfd07d693ba28394503aa8f1ef0fc223bf1d3850d1"
+    },
+    {
+      "name": "H wing F243 renamed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "38b5186d321e6d8f654de2239e739f64d9a9ffa16e413a03790d5be688bfb0c5"
+    },
+    {
+      "name": "H wing F243 retuned",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d857d50a92390ff15ee23433a582f47a3776814a1367cf73e6a79bd9de6de4c6"
+    },
+    {
+      "name": "H wing F243 hidden",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "eca74b8b8182c0e64f95e61abe7a849e9d135456a9e62dac81826b9c9e2c22f3"
+    },
+    {
+      "name": "H wing F243 switched",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "8f42dce99dd999dcdd72018ad2321ef228afedfbe41e4e02f9bba64a876b845b"
+    },
+    {
+      "name": "H wing F243 aimed",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9306713fae97878a819eb303dec662c3daa2aaf5adafde64d169ad3f25aca481"
+    },
+    {
+      "name": "H wing F243 annotated",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "aacd4c84b7b481304ed3be02985f749871b15ecc3c77d5c74aa0c2f1ff97564d"
+    },
+    {
+      "name": "H wing F243 recircuited",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e3b18d79a5f92e161641eaae7d2b0841659ec7ebe5466febe91fbc0912502374"
+    },
+    {
+      "name": "optional nave F244 deleted",
+      "inputItems": 321,
+      "outputItems": 325,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "cd36dd721b31dfc82cc69f5e38220c9d9ca1f89be2add359d7eb8424ae71da2c"
+    },
+    {
+      "name": "optional nave F244 moved",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "ba80dba11788128b5bc6631dcf2efbf1be10ca5a8e3dce6217b4256ef273bd78"
+    },
+    {
+      "name": "optional nave F244 renamed",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "68fdfe6d0c9dd7a42282c151ac9be4663e8863a755ac2468b9de3323c65da873"
+    },
+    {
+      "name": "optional nave F244 retuned",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "fc4d8452f8bb2a22fb6e9218b82f2ca97b40febc5ebd547db02e526700069133"
+    },
+    {
+      "name": "optional nave F244 hidden",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "ae61358b9f42b28a5eda2efcb308690f10b5da000ab16d46d6a229d8e35d4e9d"
+    },
+    {
+      "name": "optional nave F244 switched",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "058ae2dbeffc59992ba9aa195669376b5d822ef9714a9c0b58a241f4bcdc8f1e"
+    },
+    {
+      "name": "optional nave F244 aimed",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "bfabd2f80f47c22b0a6e769da7c37dfae24f5c87576258a0161c50e3237d7003"
+    },
+    {
+      "name": "optional nave F244 annotated",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "d6c012b69bcb33b293e392189edb78fd571580417455f1eb3a794ed58d493dd9"
+    },
+    {
+      "name": "optional nave F244 recircuited",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "268462c0214ddf36b545aecf6ca9af8ce18e526a33d6fa1402b0364e8dbb1b30"
+    },
+    {
+      "name": "optional nave F245 deleted",
+      "inputItems": 321,
+      "outputItems": 325,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "5aa981f72c748e6a81f0f87d37ecd6c005f4d9c03a9185e3685d0bee428e4cd9"
+    },
+    {
+      "name": "optional nave F245 moved",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "3fc3c53eb8789c33728f628fae097543fbaea97ba42064c95b060ce2db1fe8c0"
+    },
+    {
+      "name": "optional nave F245 renamed",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "e047dc415b89c0976d7e68398c2165c584de2cf18d5a56058d5985605a4a62a0"
+    },
+    {
+      "name": "optional nave F245 retuned",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "9142a80cb8d568778e83443226083debd559fb99400d33087ecd3f2361e6c42c"
+    },
+    {
+      "name": "optional nave F245 hidden",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "a83d2008105097fed89154f8ff6f37625c2a4c8f1c2414d4fdd0866418f57448"
+    },
+    {
+      "name": "optional nave F245 switched",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "43274527125f09349b115af6745b238428c13fb0915bcd6a97557800d8de9f12"
+    },
+    {
+      "name": "optional nave F245 aimed",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "6757d63ecc5ec1f1edaa62ddccc01bf3b88a1ff8bc37e1311b15434d2d30b213"
+    },
+    {
+      "name": "optional nave F245 annotated",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "d285d18468ad289b3a69c4db8db02fb64a6df2e864629f522e9b3b65a4c763b7"
+    },
+    {
+      "name": "optional nave F245 recircuited",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "690dc979fd302319f885030c448dbcd7ef15d9bd16615e535f05945a8a3d4669"
+    },
+    {
+      "name": "optional nave F246 deleted",
+      "inputItems": 321,
+      "outputItems": 325,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "c31e12f7acb689b39f77eb242e107dd6fc1050516c741d31c6be321fd1490407"
+    },
+    {
+      "name": "optional nave F246 moved",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "0f59c02c60061dc3a3d3d060b9ec3acabe9f73e5675bccdb24a7dc8c758dc5e7"
+    },
+    {
+      "name": "optional nave F246 renamed",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "bd371919fe0fe8cbd5b9b29c522c8b0aadfd25bf6b7a4a2f6dc96cb5de6646a1"
+    },
+    {
+      "name": "optional nave F246 retuned",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "bd27f8d3d12fd1a1dc855ec39272fd002b4c90212f341cc37d61df705afa1a39"
+    },
+    {
+      "name": "optional nave F246 hidden",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "9b1264d68168e70ef28f09d2142d3a6d8865d03f0cf4d556638673220f276144"
+    },
+    {
+      "name": "optional nave F246 switched",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "2fac64bd40e4003af4975f2680f4cc2be98154bec6b0c8e6d279b55caccc1840"
+    },
+    {
+      "name": "optional nave F246 aimed",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "24a51e043465b38e3aeea85da83ef8c1cc2b6c86c49f098e518c00bf4689342c"
+    },
+    {
+      "name": "optional nave F246 annotated",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "a26be908a935732bdd34e2ff668391c1ade828a396012e361ad4bdd9be5e44eb"
+    },
+    {
+      "name": "optional nave F246 recircuited",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "1f21d30b44850bf35117c6ba3c98e35c12152aa005d14dbc09b488dbf81d9c20"
+    },
+    {
+      "name": "optional nave F247 deleted",
+      "inputItems": 321,
+      "outputItems": 325,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "467abca1a1fe5b9d271f90f7d306a69f39243a8502762719f0df36101a434490"
+    },
+    {
+      "name": "optional nave F247 moved",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "317c992ce52e73d6726c3af7544ed1b3a1c8e3f6b3a97e3a3bb3d70884ac36cd"
+    },
+    {
+      "name": "optional nave F247 renamed",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "be3a7890c665f835c3569cacd890532e15aaa17502ea73675098c5cd5b040713"
+    },
+    {
+      "name": "optional nave F247 retuned",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "3d8dc22a7153dcd13c80b113f7dadc8cf8336936d292c14459303684437c0f8e"
+    },
+    {
+      "name": "optional nave F247 hidden",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "abe9bbb1c5ed7262a24a903f471fdb5d21f1d4df858ac9016062cb26679c6d3a"
+    },
+    {
+      "name": "optional nave F247 switched",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "5bdd06349d937a0c4cd5a9edd18c57106ffffe5633e29e50789e41c71c9e06d0"
+    },
+    {
+      "name": "optional nave F247 aimed",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "c285aa3b786b4db3c020837ceb1563bec3e9ec3711f43458082fe8f007452761"
+    },
+    {
+      "name": "optional nave F247 annotated",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "2c2e29e9d16dcc5fdff15eed22a1c83344437be38873ce471772c10fba30fe78"
+    },
+    {
+      "name": "optional nave F247 recircuited",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "62763fd05a2254dd48b2b740213a7fbf2b5d8be9de5ed2d1c253a284d8d67b80"
+    },
+    {
+      "name": "optional nave F248 deleted",
+      "inputItems": 321,
+      "outputItems": 325,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "c744586c9a21c1bd8aefe3fe7f4238f87fbd32471479e975815839c7e2f09493"
+    },
+    {
+      "name": "optional nave F248 moved",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "19fcba57dde7972bcf7afdad9d346ae2229ac71bc653a22edff2282b2b618ec3"
+    },
+    {
+      "name": "optional nave F248 renamed",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "cda5c786434c07a692f968ac8aeb7d2698fe48fd3a7e69ff18b4938866d8ff62"
+    },
+    {
+      "name": "optional nave F248 retuned",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "9dd5e98519496af48ef1d4779a8df3b3959bc7a4f837ad6ae1e98202109b0dfc"
+    },
+    {
+      "name": "optional nave F248 hidden",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "5d78d730d310e76becb1046cd64335c785518fcf99c68605674a48b64744b758"
+    },
+    {
+      "name": "optional nave F248 switched",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "edcd579de564e6f7ba9b1e7562133cec33c91d9db720ab892d90e997b43906b3"
+    },
+    {
+      "name": "optional nave F248 aimed",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "58a9a0354882a55e032c53c7f1ca6512abe4e9c2c170ec0fb59c8da8610fdf3a"
+    },
+    {
+      "name": "optional nave F248 annotated",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "6b2601f347ce6a27ae10ece2234022fe68c1daa26f3e0a1bfcd841a7612ea737"
+    },
+    {
+      "name": "optional nave F248 recircuited",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "d6d88a7219b2507ebe6ab024fa8cfb39614556b38ceb23679ef1564525c59bf4"
+    },
+    {
+      "name": "optional nave F249 deleted",
+      "inputItems": 321,
+      "outputItems": 325,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "60f09062812c9b226705cd6cc51be3e606cd73c20e44cee8a3002c8755b244fb"
+    },
+    {
+      "name": "optional nave F249 moved",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "ba4787a85e66ade6afc96ddccff4b49a28bd28b7b116aeb76a04c6d09807007c"
+    },
+    {
+      "name": "optional nave F249 renamed",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "e04e5250466702540a59501413e203811b66d46d969bc96b96d2a9fdd3936d76"
+    },
+    {
+      "name": "optional nave F249 retuned",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "5d8873646c515b241b4803dd83f4711f5956a4e70763419a713590ae4c0d5f23"
+    },
+    {
+      "name": "optional nave F249 hidden",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "1c27f04179440a7998e4343b1d88fb302c06929e1c13a4739237e513fbf8e696"
+    },
+    {
+      "name": "optional nave F249 switched",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "140b28c5166cb1c527fa9034722c73fe8d1c2035b739a8dac02862bff86a8a9c"
+    },
+    {
+      "name": "optional nave F249 aimed",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "fe8a1ee65cef2316e0265106ba71b22b7746f1ed3a65b4fbfc02325ee3d76d3f"
+    },
+    {
+      "name": "optional nave F249 annotated",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "3f0e233be6e56e95519a6a916d4882a372b0b292ec46f7136fbff46a4e0299ae"
+    },
+    {
+      "name": "optional nave F249 recircuited",
+      "inputItems": 322,
+      "outputItems": 326,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "22a522393cb9f29abd57d763b1296e82ed94907176caef17b529147d3ab6731d"
+    },
+    {
+      "name": "both wings modified",
+      "inputItems": 321,
+      "outputItems": 321,
+      "blockedWings": [
+        "B",
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4adcb498c6c39b3ea9ec192e06aa33d97a2df6029aa8b737989ba10efd19e91c"
+    },
+    {
+      "name": "unrelated edits, custom item, notes and existing appended ID",
+      "inputItems": 324,
+      "outputItems": 326,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "1b02081f7b5cbbd4f2482864abaeb358afb2cc13c5f3413c90d91af54ef933b3"
+    },
+    {
+      "name": "reserved appended-ID collision F-WING-B-3",
+      "inputItems": 323,
+      "outputItems": 325,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6de2d8973734f82a4ebf4cb75c3d773bfcd920f546d63e2cad7b257cbda83352"
+    },
+    {
+      "name": "reserved appended-ID collision F-WING-B-4",
+      "inputItems": 323,
+      "outputItems": 325,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e27dab14c8a307140c9fa69dc21aba6aff789de533fe0bd3d33e85f14f505cd6"
+    },
+    {
+      "name": "reserved appended-ID collision F-WING-H-3",
+      "inputItems": 323,
+      "outputItems": 325,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9827033f8213f684bae90ca1756b080b002f5935666d3b7a9aa2a8a1dc74c6b3"
+    },
+    {
+      "name": "reserved appended-ID collision F-WING-H-4",
+      "inputItems": 323,
+      "outputItems": 325,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "cca264a7c6f10980f4ad49c4bd7640172ca0350b92d8db0d1813fbb11859168a"
+    },
+    {
+      "name": "incomplete recommended wing template",
+      "inputItems": 322,
+      "outputItems": 324,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "2ec118f0ddf76ead7daffe9083723b6de5dffb6421fd7c80c54645b82db41bbb"
+    }
+  ],
+  "checks": [
+    "exact full baseline import",
+    "all deleted/moved/renamed/retuned/hidden/switched/aimed/annotated/recircuited group preservation",
+    "unrelated/custom/note preservation",
+    "append ID collision preservation",
+    "incomplete template skip",
+    "input immutability",
+    "repeat idempotence",
+    "cached fixture type",
+    "electrical route/type presence",
+    "actual import undo redo"
+  ],
+  "sourceSha256": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "ea98e993b2356e9bb7a744262fdb4543f9997e2efe66e39d988c1e43727fe695",
+    "Thach_Bi_Viewer/simulator/engine.js": "b83dbb26338b907f514b34fbf4cae4cbabec3a723b85655c98e02c0e66246f6d",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "95ab9cdc750b49f32c5e7331d5606f9acd17d3d38012cb53a6d06ad69907b81e",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "4e9126cf5d5448d4aefd0e85265c384decbecb6c53937cb3154e2299a16fd4c6",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
+    "scripts/verify_wing_review.cjs": "de9eeedaa2bfebb926fdeb897d6b6ab7dcb0b87400ccf828c2ebea8f8afd891f",
+    "review/wing-options-2026-10-09/baseline-layout.json": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac"
+  },
+  "limitations": [
+    "Headless services are stubbed; desktop GPU and startup localStorage checks are separate.",
+    "Passing software preservation does not approve fan concealment, mounting, product performance or construction."
+  ]
+}

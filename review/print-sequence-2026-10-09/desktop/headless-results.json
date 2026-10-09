@@ -1,0 +1,476 @@
+{
+  "installationReview": "passed",
+  "stageTransitions": 51,
+  "sessions": 3,
+  "invalidIndexesPerState": 11,
+  "cases": [
+    {
+      "name": "Initially building forward 1",
+      "stage": "survey",
+      "system": "all",
+      "mode": "building",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially building forward 2",
+      "stage": "distribution",
+      "system": "distribution",
+      "mode": "systems",
+      "items": 0,
+      "routes": 4,
+      "sources": 5
+    },
+    {
+      "name": "Initially building forward 3",
+      "stage": "containment",
+      "system": "all",
+      "mode": "systems",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially building forward 4",
+      "stage": "lighting",
+      "system": "lighting",
+      "mode": "systems",
+      "items": 220,
+      "routes": 243,
+      "sources": 3
+    },
+    {
+      "name": "Initially building forward 5",
+      "stage": "sound",
+      "system": "sound",
+      "mode": "systems",
+      "items": 32,
+      "routes": 43,
+      "sources": 2
+    },
+    {
+      "name": "Initially building forward 6",
+      "stage": "air",
+      "system": "air",
+      "mode": "systems",
+      "items": 29,
+      "routes": 37,
+      "sources": 3
+    },
+    {
+      "name": "Initially building forward 7",
+      "stage": "exit",
+      "system": "exit",
+      "mode": "systems",
+      "items": 5,
+      "routes": 8,
+      "sources": 2
+    },
+    {
+      "name": "Initially building forward 8",
+      "stage": "decoration",
+      "system": "decoration",
+      "mode": "systems",
+      "items": 0,
+      "routes": 0,
+      "sources": 0
+    },
+    {
+      "name": "Initially building forward 9",
+      "stage": "commission",
+      "system": "all",
+      "mode": "building",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially building previous 8",
+      "stage": "decoration",
+      "system": "decoration",
+      "mode": "systems",
+      "items": 0,
+      "routes": 0,
+      "sources": 0
+    },
+    {
+      "name": "Initially building previous 7",
+      "stage": "exit",
+      "system": "exit",
+      "mode": "systems",
+      "items": 5,
+      "routes": 8,
+      "sources": 2
+    },
+    {
+      "name": "Initially building previous 6",
+      "stage": "air",
+      "system": "air",
+      "mode": "systems",
+      "items": 29,
+      "routes": 37,
+      "sources": 3
+    },
+    {
+      "name": "Initially building previous 5",
+      "stage": "sound",
+      "system": "sound",
+      "mode": "systems",
+      "items": 32,
+      "routes": 43,
+      "sources": 2
+    },
+    {
+      "name": "Initially building previous 4",
+      "stage": "lighting",
+      "system": "lighting",
+      "mode": "systems",
+      "items": 220,
+      "routes": 243,
+      "sources": 3
+    },
+    {
+      "name": "Initially building previous 3",
+      "stage": "containment",
+      "system": "all",
+      "mode": "systems",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially building previous 2",
+      "stage": "distribution",
+      "system": "distribution",
+      "mode": "systems",
+      "items": 0,
+      "routes": 4,
+      "sources": 5
+    },
+    {
+      "name": "Initially building previous 1",
+      "stage": "survey",
+      "system": "all",
+      "mode": "building",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially filtered systems forward 1",
+      "stage": "survey",
+      "system": "all",
+      "mode": "building",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially filtered systems forward 2",
+      "stage": "distribution",
+      "system": "distribution",
+      "mode": "systems",
+      "items": 0,
+      "routes": 4,
+      "sources": 5
+    },
+    {
+      "name": "Initially filtered systems forward 3",
+      "stage": "containment",
+      "system": "all",
+      "mode": "systems",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially filtered systems forward 4",
+      "stage": "lighting",
+      "system": "lighting",
+      "mode": "systems",
+      "items": 220,
+      "routes": 243,
+      "sources": 3
+    },
+    {
+      "name": "Initially filtered systems forward 5",
+      "stage": "sound",
+      "system": "sound",
+      "mode": "systems",
+      "items": 32,
+      "routes": 43,
+      "sources": 2
+    },
+    {
+      "name": "Initially filtered systems forward 6",
+      "stage": "air",
+      "system": "air",
+      "mode": "systems",
+      "items": 29,
+      "routes": 37,
+      "sources": 3
+    },
+    {
+      "name": "Initially filtered systems forward 7",
+      "stage": "exit",
+      "system": "exit",
+      "mode": "systems",
+      "items": 5,
+      "routes": 8,
+      "sources": 2
+    },
+    {
+      "name": "Initially filtered systems forward 8",
+      "stage": "decoration",
+      "system": "decoration",
+      "mode": "systems",
+      "items": 0,
+      "routes": 0,
+      "sources": 0
+    },
+    {
+      "name": "Initially filtered systems forward 9",
+      "stage": "commission",
+      "system": "all",
+      "mode": "building",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially filtered systems previous 8",
+      "stage": "decoration",
+      "system": "decoration",
+      "mode": "systems",
+      "items": 0,
+      "routes": 0,
+      "sources": 0
+    },
+    {
+      "name": "Initially filtered systems previous 7",
+      "stage": "exit",
+      "system": "exit",
+      "mode": "systems",
+      "items": 5,
+      "routes": 8,
+      "sources": 2
+    },
+    {
+      "name": "Initially filtered systems previous 6",
+      "stage": "air",
+      "system": "air",
+      "mode": "systems",
+      "items": 29,
+      "routes": 37,
+      "sources": 3
+    },
+    {
+      "name": "Initially filtered systems previous 5",
+      "stage": "sound",
+      "system": "sound",
+      "mode": "systems",
+      "items": 32,
+      "routes": 43,
+      "sources": 2
+    },
+    {
+      "name": "Initially filtered systems previous 4",
+      "stage": "lighting",
+      "system": "lighting",
+      "mode": "systems",
+      "items": 220,
+      "routes": 243,
+      "sources": 3
+    },
+    {
+      "name": "Initially filtered systems previous 3",
+      "stage": "containment",
+      "system": "all",
+      "mode": "systems",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially filtered systems previous 2",
+      "stage": "distribution",
+      "system": "distribution",
+      "mode": "systems",
+      "items": 0,
+      "routes": 4,
+      "sources": 5
+    },
+    {
+      "name": "Initially filtered systems previous 1",
+      "stage": "survey",
+      "system": "all",
+      "mode": "building",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially systems with audio kind forward 1",
+      "stage": "survey",
+      "system": "all",
+      "mode": "building",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially systems with audio kind forward 2",
+      "stage": "distribution",
+      "system": "distribution",
+      "mode": "systems",
+      "items": 0,
+      "routes": 4,
+      "sources": 5
+    },
+    {
+      "name": "Initially systems with audio kind forward 3",
+      "stage": "containment",
+      "system": "all",
+      "mode": "systems",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially systems with audio kind forward 4",
+      "stage": "lighting",
+      "system": "lighting",
+      "mode": "systems",
+      "items": 220,
+      "routes": 243,
+      "sources": 3
+    },
+    {
+      "name": "Initially systems with audio kind forward 5",
+      "stage": "sound",
+      "system": "sound",
+      "mode": "systems",
+      "items": 32,
+      "routes": 43,
+      "sources": 2
+    },
+    {
+      "name": "Initially systems with audio kind forward 6",
+      "stage": "air",
+      "system": "air",
+      "mode": "systems",
+      "items": 29,
+      "routes": 37,
+      "sources": 3
+    },
+    {
+      "name": "Initially systems with audio kind forward 7",
+      "stage": "exit",
+      "system": "exit",
+      "mode": "systems",
+      "items": 5,
+      "routes": 8,
+      "sources": 2
+    },
+    {
+      "name": "Initially systems with audio kind forward 8",
+      "stage": "decoration",
+      "system": "decoration",
+      "mode": "systems",
+      "items": 0,
+      "routes": 0,
+      "sources": 0
+    },
+    {
+      "name": "Initially systems with audio kind forward 9",
+      "stage": "commission",
+      "system": "all",
+      "mode": "building",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially systems with audio kind previous 8",
+      "stage": "decoration",
+      "system": "decoration",
+      "mode": "systems",
+      "items": 0,
+      "routes": 0,
+      "sources": 0
+    },
+    {
+      "name": "Initially systems with audio kind previous 7",
+      "stage": "exit",
+      "system": "exit",
+      "mode": "systems",
+      "items": 5,
+      "routes": 8,
+      "sources": 2
+    },
+    {
+      "name": "Initially systems with audio kind previous 6",
+      "stage": "air",
+      "system": "air",
+      "mode": "systems",
+      "items": 29,
+      "routes": 37,
+      "sources": 3
+    },
+    {
+      "name": "Initially systems with audio kind previous 5",
+      "stage": "sound",
+      "system": "sound",
+      "mode": "systems",
+      "items": 32,
+      "routes": 43,
+      "sources": 2
+    },
+    {
+      "name": "Initially systems with audio kind previous 4",
+      "stage": "lighting",
+      "system": "lighting",
+      "mode": "systems",
+      "items": 220,
+      "routes": 243,
+      "sources": 3
+    },
+    {
+      "name": "Initially systems with audio kind previous 3",
+      "stage": "containment",
+      "system": "all",
+      "mode": "systems",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    },
+    {
+      "name": "Initially systems with audio kind previous 2",
+      "stage": "distribution",
+      "system": "distribution",
+      "mode": "systems",
+      "items": 0,
+      "routes": 4,
+      "sources": 5
+    },
+    {
+      "name": "Initially systems with audio kind previous 1",
+      "stage": "survey",
+      "system": "all",
+      "mode": "building",
+      "items": 286,
+      "routes": 329,
+      "sources": 5
+    }
+  ],
+  "completeDesignPreservation": true,
+  "architecture": {
+    "nodes": 49426,
+    "geometries": 27674,
+    "materials": 119,
+    "sha256": "ce9a6b8dfd3b3b2fa936bd6106adc3b3e76aa8d0ccb39948153f5ff108234f3b"
+  },
+  "noSwitchActions": true,
+  "scope": "Headless software and visibility regression; no construction approval or engineering-target validation."
+}

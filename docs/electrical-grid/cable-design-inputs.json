@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "status": "ENGINEERING HOLD: inputs below are not confirmed design data",
+  "supply": {
+    "voltage_v": null,
+    "phases": null,
+    "earthing": null,
+    "fault_current_db1_a": null,
+    "upstream_voltage_drop_percent": null,
+    "main_breaker_a": null,
+    "source_reference": null
+  },
+  "installation": {
+    "reference_method": null,
+    "ambient_temperature_c": null,
+    "grouped_circuits": null,
+    "insulation": null,
+    "fire_performance": null,
+    "source_reference": null
+  },
+  "equipment_nameplates": {},
+  "route_approvals": {},
+  "comparison_cases": [
+    {"id":"S1-230-PF09-45C-4", "voltage_v":230, "power_factor":0.9, "temperature_c":45, "temperature_factor":0.79, "grouped_circuits":4, "grouping_factor":0.65},
+    {"id":"S2-220-PF08-50C-6", "voltage_v":220, "power_factor":0.8, "temperature_c":50, "temperature_factor":0.71, "grouped_circuits":6, "grouping_factor":0.57}
+  ],
+  "comparison_method": "PVC copper multicore B2; three loaded conductors table used as conservative comparison for assumed single-phase circuits. Actual method/temperatures/grouping/products/phases unknown.",
+  "planning_reserve_factor": 1.25,
+  "reserve_status": "Explicit 25% planning reserve above catalogue maximum proxy. Not a Vietnamese code rule, not protection against arbitrary overload.",
+  "quote_length_allowance_percent": 10,
+  "quote_termination_allowance_m_per_piece": 2,
+  "quantity_status": "Quotation allowance only; not surveyed installation length or approved purchasing quantity",
+  "reference_sources": [
+    {"id":"VN-QCVN12", "url":"https://tieuchuanxaydung.vsqi.gov.vn/quychuan/view?sohieu=QCVN+12%3A2014%2FBXD", "checked_date":"2026-10-09", "location":"official catalogue; active status/scope", "limitation":"Full official text fetch returned HTTP 403; project clauses and approval schedule remain pending"},
+    {"id":"SE-CABLE", "url":"https://www.electrical-installation.org/enwiki/General_method_for_cable_sizing", "checked_date":"2026-10-09", "location":"Figures G10 B2, G12 PVC 45/50 C, G16 bunched 4/6, G20 B2 copper PVC three loaded conductors", "limitation":"International comparison reference; not adopted Vietnamese project compliance"},
+    {"id":"SE-PROTECT", "url":"https://www.electrical-installation.org/enwiki/Practical_values_for_a_protective_scheme", "checked_date":"2026-10-09", "location":"General rules and circuit-breaker criteria Ib <= In <= Iz; I2 <= 1.45 Iz; fault breaking rating", "limitation":"Trip curve, fault current, disconnection, selectivity and product still unknown"},
+    {"id":"SE-VDROP", "url":"https://www.electrical-installation.org/enwiki/Calculation_of_voltage_drop_in_steady_load_conditions", "checked_date":"2026-10-09", "location":"Figure G29 phase/neutral: 2 I (R cos phi + X sin phi) L; copper resistance benchmark 23.7/S ohm/km; X 0.08 ohm/km", "limitation":"23.7 benchmark is for hot copper in the guide's XLPE example; used here as conservative resistance comparison, not permission to operate PVC at XLPE temperature. Manufacturer resistance pending"},
+    {"id":"SE-VDROP-LIMIT", "url":"https://www.electrical-installation.org/enwiki/Maximum_voltage_drop_limit", "checked_date":"2026-10-09", "location":"Figure G27 public-LV comparison 3% lighting/5% other, origin to load", "limitation":"Comparison budgets only; unmodeled origin-to-DB1 drop means project total cannot pass"}
+  ]
+}

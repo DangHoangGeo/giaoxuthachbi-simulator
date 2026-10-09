@@ -18,6 +18,7 @@
     { id: 'fan', label: 'Fans', cat: 'fan' },
     { id: 'speaker', label: 'Sound', cat: 'speaker' },
     { id: 'decor', label: 'Décor', cat: 'decor' },
+    { id: 'power', label: 'Power', cat: 'power' },
     { id: 'wiring', label: 'Wiring' },
     { id: 'analysis', label: 'Analysis' },
     { id: 'settings', label: 'Settings' }
@@ -192,6 +193,26 @@
   }
 
   /* ----------------------------------------------------------------- body */
+  function retainedWingNotice() {
+    const retained = SIM.wingReviewStatus?.().sides.filter(s => !s.current) || [];
+    if (!retained.length) return '';
+    return `<div class="sim-card"><h3>Wing layout retained</h3><p class="sim-hint">Wing ${retained.map(s => esc(s.side)).join(' / ')} uses preserved or custom lights and fans. Compare its equipment with the held review in Wiring.</p><button data-tab-jump="wiring">Review wing layout in Wiring</button></div>`;
+  }
+  function retainedWingSoundNotice() {
+    const retained = SIM.wingSoundStatus?.().sides.filter(s => !s.current) || [];
+    if (!retained.length) return '';
+    return `<div class="sim-card"><h3>Wing speaker layout retained</h3><p class="sim-hint">Wing ${retained.map(s => esc(s.side)).join(' / ')} uses preserved or custom speakers. Compare its equipment with the held sound review in Wiring.</p><button data-act="wing-sound-review">Review wing speakers in Wiring</button></div>`;
+  }
+  function retainedWingArtNotice() {
+    const retained = SIM.wingArtStatus?.().sides.filter(s => !s.current) || [];
+    if (!retained.length) return '';
+    return `<div class="sim-card"><h3>Wing picture layout retained</h3><p class="sim-hint">Wing ${retained.map(s => esc(s.side)).join(' / ')} uses preserved or custom saints' pictures. Compare its pictures with the concept review in Wiring.</p><button data-act="wing-art-review">Review wing saints in Wiring</button></div>`;
+  }
+  function retainedNaveFansNotice() {
+    const retained = SIM.naveFanStatus?.().sides.filter(s => !s.current) || [];
+    if (!retained.length) return '';
+    return `<div class="sim-card"><h3>Nave fan layout retained</h3><p class="sim-hint">Nave side ${retained.map(s => esc(s.side)).join(' / ')} uses preserved or custom fans. The held review has 8 visible wall fans per side on F2. Compare this layout in Wiring; visibility does not switch fans on.</p><button data-tab-jump="wiring">Review nave fans in Wiring</button></div>`;
+  }
   function renderBody() {
     const scroll = body.scrollTop;
     for (const b of panel.querySelectorAll('[data-tab]')) b.setAttribute('aria-selected', String(b.dataset.tab === tab));
@@ -201,9 +222,14 @@
     else if (tab === 'analysis') html = renderAnalysis();
     else if (tab === 'wiring') html = SIM.electrical?.renderPanel() || '';
     else html = renderSettings();
-    body.innerHTML = html;
+    body.innerHTML = (tab !== 'wiring' ? retainedWingNotice() + retainedWingSoundNotice() + retainedWingArtNotice() : '') + (tab === 'fan' ? retainedNaveFansNotice() : '') + html;
     if (renderKeepScroll) body.scrollTop = scroll; else body.scrollTop = 0;
     renderKeepScroll = false;
+    if (tab === 'wiring') {
+      const key = [SIM.electrical?.view.item, SIM.electrical?.view.selected].join('|');
+      if (key !== renderBody.lastElectricalSelection) body.scrollTop = 0;
+      renderBody.lastElectricalSelection = key;
+    }
     if (tab === 'speaker') SIM.audio?.renderPanel?.(body.querySelector('#simAudio'));
     if (SIM.state.selectedId !== renderBody.lastSelected) {
       renderBody.lastSelected = SIM.state.selectedId;
@@ -224,6 +250,7 @@
     }
     if (t.fan) parts.push(t.fan.diameter + ' m', it.on && it.speed > 0 ? `speed ${it.speed}/${t.fan.speeds.length}` : 'off');
     if (t.speaker) parts.push(`${fmt(t.speaker.nominal + (it.level ?? 0) + SIM.state.settings.mixerDb)} dBA @1 m`, `${fmt(it.delayMs, 1)} ms`);
+    if (t.outlet) parts.push(`${t.outlet.ratingA} A circuit`, it.on ? 'live' : 'isolated');
     if (t.mic && Number.isFinite(it.feedbackMargin)) parts.push(`feedback margin ${fmt(it.feedbackMargin, 1)} dB`);
     parts.push(`axis ${SIM.axisName(it.pos[0])}`, `${fmt(it.pos[1], 2)} m`);
     const w = SIM.itemWatts(it);
@@ -238,7 +265,7 @@
     let html = '';
     if (sel && CAT.byId[sel.type].cat === cat) html += renderProps(sel);
     if (cat === 'speaker') html += `<div id="simAudio" class="sim-card sim-audio"></div>`;
-    html += `<div class="sim-toolbar"><button class="sim-primary" data-act="add" data-cat="${cat}">＋ Add ${cat === 'light' ? 'a light' : cat === 'fan' ? 'a fan' : cat === 'speaker' ? 'a loudspeaker or mic' : 'a decoration'}</button>
+    html += `<div class="sim-toolbar"><button class="sim-primary" data-act="add" data-cat="${cat}">＋ Add ${cat === 'light' ? 'a light' : cat === 'fan' ? 'a fan' : cat === 'speaker' ? 'a loudspeaker or mic' : cat === 'power' ? 'a socket outlet' : 'a decoration'}</button>
       <span class="sim-count">${items.filter(i => !i.hidden).length} in the model${items.some(i => i.hidden) ? ` · ${items.filter(i => i.hidden).length} hidden alternatives` : ''}</span></div>`;
     if (picking === cat) html += renderPicker(cat);
     const order = Object.keys(SIM.CIRCUITS);
@@ -318,6 +345,12 @@
       const sp = t.fan.speeds[Math.max(0, (it.speed || 1) - 1)];
       html += field('At this speed', `<output class="sim-static">${running ? `${fmt(sp.flow * 60)} m³/min · ${sp.rpm} rpm · ${sp.watts} W · ${sp.dBA} dBA @1 m` : 'Stopped · 0 W · no fan airflow or noise'}</output>`, true);
       if (t.fan.oscillate) html += field('Oscillate', `<input type="checkbox" data-prop="oscillate" ${it.oscillate !== false ? 'checked' : ''}>`);
+    }
+    if (t.outlet) {
+      const O = t.outlet, load = SIM.itemWatts(it), amps = load / (230 * 0.9), circuit = SIM.powerSummary().byCircuit.find(c => c.circuit === it.circuit);
+      html += field('Outlets', `<output class="sim-static">${esc(O.outlets)} · ${esc(O.protection)}</output>`, true);
+      html += field('Circuit protection', `<output class="sim-static">${O.ratingA} A · ${O.rcdmA} mA residual-current device · provisional, not yet engineered</output>`, true);
+      html += field('Test load now', `<output class="sim-static ${circuit?.overloaded ? 'bad' : ''}">${it.on && !it.hidden ? `${fmt(load)} W · ${fmt(amps, 1)} A here · ${fmt(circuit?.amps || 0, 1)} A of ${O.ratingA} A on ${esc(it.circuit)}` : 'Isolated · no load'}</output>`, true);
     }
     if (t.speaker) {
       const S = t.speaker, lvl = S.nominal + (it.level ?? 0) + SIM.state.settings.mixerDb;
@@ -455,15 +488,86 @@
     if (tabBtn) { tab = tabBtn.dataset.tab; picking = null; renderBody(); renderMapMarkers(); return; }
     const kpi = e.target.closest('[data-overlay]');
     if (kpi) { SIM.setOverlay(kpi.dataset.overlay); tab = 'analysis'; renderBody(); renderLegend(); return; }
-    if (e.target.closest('[data-tab-jump]')) { tab = 'analysis'; renderBody(); return; }
+    const jump = e.target.closest('[data-tab-jump]');
+    if (jump && TABS.some(t => t.id === jump.dataset.tabJump)) { tab = jump.dataset.tabJump; picking = null; renderBody(); renderMapMarkers(); return; }
     const el = e.target.closest('[data-act]');
     if (!el) return;
     const act = el.dataset.act, it = itemFromEvent(e);
+    if (act.startsWith('electrical-') && el.tagName === 'SELECT') return;
     if (act.startsWith('electrical-')) { SIM.electrical?.action(el); return; }
     switch (act) {
       case 'close': setOpen(false); break;
       case 'undo': { const l = SIM.undo(); if (l) toast('Undo: ' + l); break; }
       case 'redo': { const l = SIM.redo(); if (l) toast('Redo: ' + l); break; }
+      case 'wing-sound-review': tab = 'wiring'; picking = null; renderBody(); renderMapMarkers(); break;
+      case 'wing-art-review': tab = 'wiring'; picking = null; renderBody(); renderMapMarkers(); break;
+      case 'wing-adopt': {
+        const side = el.dataset.side;
+        if (el.disabled || !['B', 'H'].includes(side)) break;
+        try {
+          const status = SIM.wingReviewStatus?.().sides.find(s => s.side === side);
+          if (!status || !SIM.adoptWingReview) throw new Error('Wing review is unavailable.');
+          if (status.conflictIds.length) throw new Error('Resolve conflicting equipment IDs: ' + status.conflictIds.join(', '));
+          if (status.current) { toast(`Wing ${side} already uses the reviewed layout.`); break; }
+          const result = SIM.adoptWingReview(side);
+          renderBody(); updateUndo();
+          toast(result.changedIds.length ? `Wing ${side} review adopted. Full browser backup saved; use Undo.` : `Wing ${side} already uses the reviewed layout.`);
+        } catch (err) {
+          renderBody();
+          toast(`Could not apply wing ${side} review: ${err.message || String(err)}`);
+        }
+        break;
+      }
+      case 'wing-sound-adopt': {
+        const side = el.dataset.side;
+        if (el.disabled || !['B', 'H'].includes(side)) break;
+        try {
+          const status = SIM.wingSoundStatus?.().sides.find(s => s.side === side);
+          if (!status || !SIM.adoptWingSound) throw new Error('Wing sound review is unavailable.');
+          if (status.current) { toast(`Wing ${side} already uses the reviewed speaker.`); break; }
+          const result = SIM.adoptWingSound(side);
+          renderBody(); updateUndo();
+          toast(result.changedIds.length || result.retiredIds.length ? `Wing ${side} speaker review adopted. Full browser backup saved; use Undo.` : `Wing ${side} already uses the reviewed speaker.`);
+        } catch (err) {
+          renderBody();
+          toast(`Could not apply wing ${side} speaker review: ${err.message || String(err)}`);
+        }
+        break;
+      }
+      case 'wing-art-adopt': {
+        const side = el.dataset.side;
+        if (el.disabled || !['B', 'H'].includes(side)) break;
+        try {
+          const status = SIM.wingArtStatus?.().sides.find(s => s.side === side);
+          if (!status || !SIM.adoptWingArt) throw new Error('Wing saints review is unavailable.');
+          if (status.conflictIds.length) throw new Error('Resolve conflicting picture IDs: ' + status.conflictIds.join(', '));
+          if (status.current) { toast(`Wing ${side} already uses the reviewed saints' pictures.`); break; }
+          const result = SIM.adoptWingArt(side);
+          renderBody(); updateUndo();
+          toast(result.changedIds.length ? `Wing ${side} saints review adopted. Full browser backup saved; use Undo.` : `Wing ${side} already uses the reviewed saints' pictures.`);
+        } catch (err) {
+          renderBody();
+          toast(`Could not apply wing ${side} saints review: ${err.message || String(err)}`);
+        }
+        break;
+      }
+      case 'nave-fans-adopt': {
+        const side = el.dataset.side;
+        if (el.disabled || !['B', 'H'].includes(side)) break;
+        try {
+          const status = SIM.naveFanStatus?.().sides.find(s => s.side === side);
+          if (!status || !SIM.adoptNaveFans) throw new Error('Nave fan review is unavailable.');
+          if (status.conflictIds.length) throw new Error('Resolve conflicting fan IDs: ' + status.conflictIds.join(', '));
+          if (status.current) { toast(`Nave side ${side} already uses the reviewed fans.`); break; }
+          const result = SIM.adoptNaveFans(side);
+          renderBody(); updateUndo();
+          toast(result.changedIds.length ? `Nave side ${side} fan review adopted. Full browser backup saved; use Undo.` : `Nave side ${side} already uses the reviewed fans.`);
+        } catch (err) {
+          renderBody();
+          toast(`Could not apply nave side ${side} fan review: ${err.message || String(err)}`);
+        }
+        break;
+      }
       case 'save-scene': { const n = prompt('Name this scene (for example “Sunday 6 pm Mass”):'); if (n) { SIM.saveScene(n.trim()); renderScenes(); toast('Saved scene ' + n); } break; }
       case 'select': if (it) { SIM.select(it.id === SIM.state.selectedId ? null : it.id); } break;
       case 'deselect': SIM.select(null); break;
@@ -532,6 +636,7 @@
   }
   function onChange(e) {
     const t = e.target;
+    if (t.matches('select[data-act=electrical-review-circuit]')) { SIM.electrical?.action(t); return; }
     if (t.id === 'simImportFile') {
       const f = t.files?.[0];
       if (!f) return;
@@ -673,7 +778,7 @@
     }
     const open = document.body.classList.contains('sim-open');
     const cat = TABS.find(t => t.id === tab)?.cat;
-    const color = { light: '#e0a826', fan: '#3a9bb5', speaker: '#7a5bb5', decor: '#c0577a' };
+    const color = { light: '#e0a826', fan: '#3a9bb5', speaker: '#7a5bb5', decor: '#c0577a', power: '#2f9c95' };
     g.innerHTML = open ? SIM.state.items.filter(it => !it.hidden && (!cat || CAT.byId[it.type].cat === cat)).map(it => {
       const x = 90 + it.pos[2] * 4.65, y = 244 - (it.pos[0] + 20) * 3.12;
       const sel = it.id === SIM.state.selectedId;

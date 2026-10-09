@@ -1,0 +1,28 @@
+{
+  "equipmentRows": 331,
+  "currentEquipment": 331,
+  "retiredEquipment": 0,
+  "routeRows": 347,
+  "currentRoutes": 343,
+  "retiredRoutes": [
+    "drop:FC1:F1:fan:-1:F240",
+    "drop:FC1:F1:fan:-1:F241",
+    "drop:FC1:F1:fan:1:F242",
+    "drop:FC1:F1:fan:1:F243"
+  ],
+  "pointRows": 2787,
+  "currentVertices": 2775,
+  "retiredVertices": 12,
+  "namedAmberInputsPreserved": true,
+  "retiredRouteVerticesPreserved": true,
+  "frozenSourcesUnchanged": true,
+  "unrelatedExportsUntouched": true,
+  "workbookHashes": {
+    "docs/electrical-grid/categories/air-system/register.xlsx": "91a0a0fc8879c1d4dd5a9db71e49d07e0b3a79b1ef088f1ca6cbb199f2c37056",
+    "docs/electrical-grid/categories/decoration/register.xlsx": "a412a7177231dd21d7bcf1c09b4adb8fa9a60f1b30fa57bf9d7d8f3a44cd7601",
+    "docs/electrical-grid/categories/distribution-controls/register.xlsx": "8408e4dc02610fc21022833fc3a0e905e1972c3db94893f9e55275947aa82004",
+    "docs/electrical-grid/categories/exit-signs/register.xlsx": "664ff8b55b90667cc134384d7d2fe0f7433015c74eb891478948bcb3e2e7906e",
+    "docs/electrical-grid/categories/lighting/register.xlsx": "54b1768d47795165dd363472989ffd103f033fe608c3d9368dfdb312b2c5b3ea",
+    "docs/electrical-grid/categories/sound/register.xlsx": "ef8809d2ff006b92bc42b3159e0b839c445f967da759f4c3e546c123bd000c2b"
+  }
+}

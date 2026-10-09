@@ -1,0 +1,258 @@
+{
+  "schema": 1,
+  "status": "Complete numerical comparison; no optimum, selected-product or construction approval",
+  "startedAt": "2026-10-09T00:10:27.991Z",
+  "baseline": {
+    "layout": "baseline-layout.json",
+    "sha256": "3535b41c4a99a09b8dff3c3046286cc93ff6c2ed49a3a8e1e7f85120be93a7ac",
+    "sourceHashes": {
+      "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+      "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+      "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+      "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+      "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+      "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+      "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+      "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+      "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+      "Thach_Bi_Viewer/simulator/catalog.js": "ea98e993b2356e9bb7a744262fdb4543f9997e2efe66e39d988c1e43727fe695",
+      "Thach_Bi_Viewer/simulator/engine.js": "b83dbb26338b907f514b34fbf4cae4cbabec3a723b85655c98e02c0e66246f6d",
+      "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+      "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+      "Thach_Bi_Viewer/simulator/design.js": "95ab9cdc750b49f32c5e7331d5606f9acd17d3d38012cb53a6d06ad69907b81e",
+      "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+      "Thach_Bi_Viewer/simulator/electrical.js": "4e9126cf5d5448d4aefd0e85265c384decbecb6c53937cb3154e2299a16fd4c6",
+      "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+      "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+      "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
+    }
+  },
+  "runtimeSourceHashes": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "ea98e993b2356e9bb7a744262fdb4543f9997e2efe66e39d988c1e43727fe695",
+    "Thach_Bi_Viewer/simulator/engine.js": "7da0ce8f24984745b1330aa4c58351dbc87f6ce69b380dd7a33114ba0a51962c",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "15ebeffa09db3dcefed698bd382d7cceb7d25eb9f1e4ff96ab998962ce91e652",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "5e78b4e4f7e4e65d5f7a46fac14392d88d7518e822dd16dff01e7b0d3bed3f94",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
+  },
+  "currentSourceHashesStart": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "ea98e993b2356e9bb7a744262fdb4543f9997e2efe66e39d988c1e43727fe695",
+    "Thach_Bi_Viewer/simulator/engine.js": "7da0ce8f24984745b1330aa4c58351dbc87f6ce69b380dd7a33114ba0a51962c",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "15ebeffa09db3dcefed698bd382d7cceb7d25eb9f1e4ff96ab998962ce91e652",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "5e78b4e4f7e4e65d5f7a46fac14392d88d7518e822dd16dff01e7b0d3bed3f94",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
+  },
+  "runnerSha256": "3019b6f72caa9a54457d50a5d1acaa38f73efdf5e49353581e12c5894603e5e0",
+  "sourceMode": "current source with frozen imported baseline",
+  "fixed": {
+    "scene": "Full service · evening",
+    "blocks": 2,
+    "fanSetting": "F5 low (1), F2 off; all other baseline fan states unchanged",
+    "settings": {
+      "adaptLux": 110,
+      "autoExposure": false,
+      "quality": "fast",
+      "autoQuality": true,
+      "maintenance": 0.8,
+      "halos": 1,
+      "occupancy": 0.6,
+      "openings": 1,
+      "roofFinish": "mixed",
+      "entranceFinish": "slats",
+      "tempC": 28,
+      "rh": 75,
+      "ambientDbA": 40,
+      "lensDeg": 75,
+      "eyeHeight": 1.6,
+      "walkSpeed": 1.4,
+      "showTruss": false,
+      "frameStyle": "drawn",
+      "timberTone": "reference",
+      "overlay": "none",
+      "snap": true,
+      "edit": true,
+      "talker": false,
+      "micDistance": 0.4,
+      "talkerDbA": 62,
+      "serviceHours": 1.5,
+      "servicesPerMonth": 40,
+      "tariff": 2200,
+      "mixerDb": 0,
+      "seatingPlane": 0.8,
+      "servicePanelsUpgraded": true,
+      "lightingRevision": "2026-10-05-balanced-doors-towers",
+      "facadeRevision": "2026-10-05-continuous-facade-wash-2",
+      "entranceRevision": "2026-10-07-entrance-wall-2",
+      "sanctuaryRevision": "2026-10-07-sanctuary-8",
+      "stableLightingRevision": "2026-10-06-physical-lighting",
+      "wingReviewRevision": "2026-10-09-wing-held-1"
+    },
+    "measurementPlanes": {
+      "lux": "seat book offset, seat floor Y + 0.80 m",
+      "air": "seat X/Z, seat floor Y + 0.60 m",
+      "noiseStiSplEcho": "seat X/Z, seat floor Y + 1.20 m",
+      "seatCoordinates": "model floor XYZ; metres"
+    },
+    "criteria": {
+      "stiEverySeat": 0.6,
+      "weakerWingTestMin": 0.45,
+      "weakerWingTestMean": 0.5,
+      "feedbackDb": 3,
+      "splDbA": [
+        68,
+        76
+      ],
+      "bookLux": [
+        200,
+        300
+      ],
+      "airMps": [
+        0.3,
+        0.8
+      ],
+      "noiseComparisonDbA": 45
+    },
+    "configuration": {
+      "retainedWingIds": [
+        "S276",
+        "S278"
+      ],
+      "omittedWingIds": [
+        "S275",
+        "S277"
+      ],
+      "wallMountX": 43.82,
+      "wallMountAbsZ": 13.06,
+      "yaw": 180,
+      "mountYaw": "-sign(Z) * 90 degrees"
+    }
+  },
+  "cases": [
+    {
+      "id": "baseline-existing-delays",
+      "kind": "baseline",
+      "alignDelays": false
+    },
+    {
+      "id": "baseline-aligned",
+      "kind": "baseline",
+      "alignDelays": true
+    },
+    {
+      "id": "column-y4.4-tilt-50-level-6",
+      "kind": "two-wall",
+      "type": "slimColumn",
+      "y": 4.4,
+      "tilt": -50,
+      "level": -6,
+      "alignDelays": true
+    }
+  ],
+  "limitations": [
+    "Existing catalogue directivity, response, ratings and fan noise are representative assumptions; no selected-product validation.",
+    "Existing statistical reflections, empirical fan jets, occluders, receivers and criteria are unchanged.",
+    "Per-seat STI, feedback, light, air and noise failures remain visible; raw arithmetic and acoustic-energy means are distinguished.",
+    "Two wall mounting references are concepts; body/support clashes, window clearance, service access and structure are separately held.",
+    "Passive audio peak/programme W and model amplifier operating allowance are distinct from approved mains demand.",
+    "Ranking by minimum wing STI is a raw comparison order; root/owner retains coordinated design disposition."
+  ],
+  "completedAt": "2026-10-09T00:10:55.871Z",
+  "currentSourceHashesEnd": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "ea98e993b2356e9bb7a744262fdb4543f9997e2efe66e39d988c1e43727fe695",
+    "Thach_Bi_Viewer/simulator/engine.js": "7da0ce8f24984745b1330aa4c58351dbc87f6ce69b380dd7a33114ba0a51962c",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "15ebeffa09db3dcefed698bd382d7cceb7d25eb9f1e4ff96ab998962ce91e652",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "5e78b4e4f7e4e65d5f7a46fac14392d88d7518e822dd16dff01e7b0d3bed3f94",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
+  },
+  "sourceDrift": [],
+  "driftFromFrozenBaseline": [
+    {
+      "path": "Thach_Bi_Viewer/simulator/engine.js",
+      "baselineSha256": "b83dbb26338b907f514b34fbf4cae4cbabec3a723b85655c98e02c0e66246f6d",
+      "currentSha256": "7da0ce8f24984745b1330aa4c58351dbc87f6ce69b380dd7a33114ba0a51962c"
+    },
+    {
+      "path": "Thach_Bi_Viewer/simulator/design.js",
+      "baselineSha256": "95ab9cdc750b49f32c5e7331d5606f9acd17d3d38012cb53a6d06ad69907b81e",
+      "currentSha256": "15ebeffa09db3dcefed698bd382d7cceb7d25eb9f1e4ff96ab998962ce91e652"
+    },
+    {
+      "path": "Thach_Bi_Viewer/simulator/electrical.js",
+      "baselineSha256": "4e9126cf5d5448d4aefd0e85265c384decbecb6c53937cb3154e2299a16fd4c6",
+      "currentSha256": "5e78b4e4f7e4e65d5f7a46fac14392d88d7518e822dd16dff01e7b0d3bed3f94"
+    }
+  ],
+  "runtimeSourceHashesEnd": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "2a7806caa302117f5b54e9ccae1e931f574c68632d4f7b6aba92c10adfa3879f",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "ea98e993b2356e9bb7a744262fdb4543f9997e2efe66e39d988c1e43727fe695",
+    "Thach_Bi_Viewer/simulator/engine.js": "7da0ce8f24984745b1330aa4c58351dbc87f6ce69b380dd7a33114ba0a51962c",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "15ebeffa09db3dcefed698bd382d7cceb7d25eb9f1e4ff96ab998962ce91e652",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "5e78b4e4f7e4e65d5f7a46fac14392d88d7518e822dd16dff01e7b0d3bed3f94",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "0f429cf3299c6e0e7139e4e4b089ca7d7bc5af30bc08681ca753e5b2daacff47",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
+  },
+  "runtimeSourceFilesStableAtEnd": true,
+  "liveSourceDriftRequiresStableRerun": false,
+  "invariants": {
+    "full368ReceiversEachCase": true,
+    "receiverSignatureUnchanged": true,
+    "frozen80WingReceiversRetained": true,
+    "frozenFourBlockNumericalParity": null,
+    "luxAirNoiseIdenticalBetweenCases": true,
+    "fixturesMatchImportedCatalogType": true,
+    "everyMicrophoneRetained": true
+  }
+}

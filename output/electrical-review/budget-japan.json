@@ -1,0 +1,1367 @@
+{
+  "schema": 1,
+  "currency": "JPY",
+  "marketplace": "amazon.co.jp",
+  "lines": [
+    {
+      "type": "banner",
+      "scope": "Shown model scope",
+      "quantity": 2,
+      "equipment_ids": [
+        "D300",
+        "D306"
+      ],
+      "model_specs": [
+        ""
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "bulbString",
+      "scope": "Shown model scope",
+      "quantity": 24,
+      "equipment_ids": [
+        "L196",
+        "L197",
+        "L198",
+        "L199",
+        "L200",
+        "L201",
+        "L202",
+        "L203",
+        "L204",
+        "L205",
+        "L206",
+        "L207",
+        "L208",
+        "L209",
+        "L210",
+        "L211",
+        "L212",
+        "L213",
+        "L214",
+        "L215",
+        "L216",
+        "L217",
+        "L218",
+        "L219"
+      ],
+      "model_specs": [
+        "12 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 6.700000000000001 m strand",
+        "12 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 6.85 m strand",
+        "14 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 7.790000000000001 m strand",
+        "16 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 8.9 m strand",
+        "16 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 9.07 m strand",
+        "26 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 14.8 m strand",
+        "54 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 31.7 m strand",
+        "80 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 47.3 m strand"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "bunting",
+      "scope": "Hidden alternative / excluded",
+      "quantity": 3,
+      "equipment_ids": [
+        "D320",
+        "D321",
+        "D322"
+      ],
+      "model_specs": [
+        ""
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "carpet",
+      "scope": "Hidden alternative / excluded",
+      "quantity": 1,
+      "equipment_ids": [
+        "D308"
+      ],
+      "model_specs": [
+        ""
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "chandelier12",
+      "scope": "Shown model scope",
+      "quantity": 1,
+      "equipment_ids": [
+        "L81"
+      ],
+      "model_specs": [
+        "5640 lm · 2700 K"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "chandelier6Reading",
+      "scope": "Shown model scope",
+      "quantity": 4,
+      "equipment_ids": [
+        "L63",
+        "L65",
+        "L67",
+        "L69"
+      ],
+      "model_specs": [
+        "5640 lm · 2700 K · 100° beam"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "chandelier8",
+      "scope": "Shown model scope",
+      "quantity": 3,
+      "equipment_ids": [
+        "L78",
+        "L79",
+        "L80"
+      ],
+      "model_specs": [
+        "3760 lm · 2700 K"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "christmasTree",
+      "scope": "Hidden alternative / excluded",
+      "quantity": 1,
+      "equipment_ids": [
+        "D309"
+      ],
+      "model_specs": [
+        "350 lm · 2400 K"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "corniceFlood",
+      "scope": "Shown model scope",
+      "quantity": 18,
+      "equipment_ids": [
+        "L160",
+        "L161",
+        "L162",
+        "L163",
+        "L164",
+        "L166",
+        "L167",
+        "L168",
+        "L169",
+        "L171",
+        "L172",
+        "L173",
+        "L174",
+        "L175",
+        "L177",
+        "L178",
+        "L179",
+        "L180"
+      ],
+      "model_specs": [
+        "2500 lm · 3000 K · 36° beam",
+        "2500 lm · 3000 K · 50° beam",
+        "3000 lm · 3000 K · 40° beam",
+        "3500 lm · 3000 K · 50° beam",
+        "4000 lm · 3000 K · 40° beam",
+        "4500 lm · 3000 K · 40° beam",
+        "5000 lm · 3000 K · 40° beam",
+        "6000 lm · 3000 K · 40° beam",
+        "7000 lm · 3000 K · 40° beam"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "enclosure:AV1",
+      "scope": "Shown enclosure proxy",
+      "quantity": 1,
+      "equipment_ids": [
+        "AV1"
+      ],
+      "model_specs": [
+        "Visualization envelope; internal modules/channels/capacity unknown"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "enclosure:DB1",
+      "scope": "Shown enclosure proxy",
+      "quantity": 1,
+      "equipment_ids": [
+        "DB1"
+      ],
+      "model_specs": [
+        "Visualization envelope; internal modules/channels/capacity unknown"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "enclosure:DB2",
+      "scope": "Shown enclosure proxy",
+      "quantity": 1,
+      "equipment_ids": [
+        "DB2"
+      ],
+      "model_specs": [
+        "Visualization envelope; internal modules/channels/capacity unknown"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "enclosure:FC1",
+      "scope": "Shown enclosure proxy",
+      "quantity": 1,
+      "equipment_ids": [
+        "FC1"
+      ],
+      "model_specs": [
+        "Visualization envelope; internal modules/channels/capacity unknown"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "enclosure:LC1",
+      "scope": "Shown enclosure proxy",
+      "quantity": 1,
+      "equipment_ids": [
+        "LC1"
+      ],
+      "model_specs": [
+        "Visualization envelope; internal modules/channels/capacity unknown"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "exitSign",
+      "scope": "Shown model scope",
+      "quantity": 5,
+      "equipment_ids": [
+        "L155",
+        "L156",
+        "L157",
+        "L158",
+        "L159"
+      ],
+      "model_specs": [
+        "20 lm · 6500 K"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "fanCeiling",
+      "scope": "Shown model scope",
+      "quantity": 14,
+      "equipment_ids": [
+        "F226",
+        "F227",
+        "F228",
+        "F229",
+        "F230",
+        "F231",
+        "F232",
+        "F233",
+        "F234",
+        "F235",
+        "F236",
+        "F237",
+        "F238",
+        "F239"
+      ],
+      "model_specs": [
+        "1.42 m diameter · 60 W at maximum speed"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "fanExhaust",
+      "scope": "Shown model scope",
+      "quantity": 9,
+      "equipment_ids": [
+        "F252",
+        "F253",
+        "F254",
+        "F255",
+        "F256",
+        "F257",
+        "F258",
+        "F259",
+        "F260"
+      ],
+      "model_specs": [
+        "0.5 m diameter · 170 W at maximum speed"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "fanNaveWall",
+      "scope": "Shown model scope",
+      "quantity": 16,
+      "equipment_ids": [
+        "F244",
+        "F245",
+        "F246",
+        "F247",
+        "F248",
+        "F249",
+        "F-NAVE-B-2P",
+        "F-NAVE-H-2P",
+        "F-NAVE-B-3",
+        "F-NAVE-H-3",
+        "F-NAVE-B-5",
+        "F-NAVE-H-5",
+        "F-NAVE-B-7",
+        "F-NAVE-H-7",
+        "F-NAVE-B-9",
+        "F-NAVE-H-9"
+      ],
+      "model_specs": [
+        "0.45 m diameter · 55 W at maximum speed"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "fanWallLarge",
+      "scope": "Shown model scope",
+      "quantity": 2,
+      "equipment_ids": [
+        "F250",
+        "F251"
+      ],
+      "model_specs": [
+        "0.9 m diameter · 380 W at maximum speed"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "fanWingWall",
+      "scope": "Shown model scope",
+      "quantity": 4,
+      "equipment_ids": [
+        "F240",
+        "F241",
+        "F242",
+        "F243"
+      ],
+      "model_specs": [
+        "0.45 m diameter · 55 W at maximum speed"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "flood",
+      "scope": "Shown model scope",
+      "quantity": 12,
+      "equipment_ids": [
+        "L170",
+        "L181",
+        "L182",
+        "L183",
+        "L189",
+        "L190",
+        "L220",
+        "L221",
+        "L222",
+        "L223",
+        "L224",
+        "L225"
+      ],
+      "model_specs": [
+        "6000 lm · 3000 K · 50° beam",
+        "6000 lm · 3000 K · 55° beam",
+        "6500 lm · 3000 K · 60° beam",
+        "9000 lm · 3000 K · 40° beam",
+        "9000 lm · 3000 K · 45° beam"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "floorFlowers",
+      "scope": "Shown model scope",
+      "quantity": 4,
+      "equipment_ids": [
+        "D297",
+        "D298",
+        "D303",
+        "D304"
+      ],
+      "model_specs": [
+        ""
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "flowerStand",
+      "scope": "Shown model scope",
+      "quantity": 2,
+      "equipment_ids": [
+        "D295",
+        "D301"
+      ],
+      "model_specs": [
+        ""
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "grotto",
+      "scope": "Hidden alternative / excluded",
+      "quantity": 1,
+      "equipment_ids": [
+        "D310"
+      ],
+      "model_specs": [
+        "400 lm · 3000 K"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "horn",
+      "scope": "Shown model scope",
+      "quantity": 8,
+      "equipment_ids": [
+        "S283",
+        "S284",
+        "S285",
+        "S286",
+        "S287",
+        "S288",
+        "S289",
+        "S290"
+      ],
+      "model_specs": [
+        "30 W audio rating · Passive / amplifier output · 100.3 ms delay",
+        "30 W audio rating · Passive / amplifier output · 25 ms delay",
+        "30 W audio rating · Passive / amplifier output · 33.6 ms delay",
+        "30 W audio rating · Passive / amplifier output · 62 ms delay",
+        "30 W audio rating · Passive / amplifier output · 66.4 ms delay",
+        "30 W audio rating · Passive / amplifier output · 91.3 ms delay",
+        "30 W audio rating · Passive / amplifier output · 92.2 ms delay",
+        "30 W audio rating · Passive / amplifier output · 99.4 ms delay"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "lantern",
+      "scope": "Shown model scope",
+      "quantity": 18,
+      "equipment_ids": [
+        "L119",
+        "L120",
+        "L121",
+        "L122",
+        "L123",
+        "L124",
+        "L125",
+        "L126",
+        "L127",
+        "L128",
+        "L129",
+        "L130",
+        "L131",
+        "L132",
+        "L133",
+        "L134",
+        "L135",
+        "L136"
+      ],
+      "model_specs": [
+        "2000 lm · 2700 K"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "lanternString",
+      "scope": "Hidden alternative / excluded",
+      "quantity": 8,
+      "equipment_ids": [
+        "D312",
+        "D313",
+        "D314",
+        "D315",
+        "D316",
+        "D317",
+        "D318",
+        "D319"
+      ],
+      "model_specs": [
+        "240 lm · 2200 K · 3.4 m strand"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "mic",
+      "scope": "Shown model scope",
+      "quantity": 2,
+      "equipment_ids": [
+        "S291",
+        "S292"
+      ],
+      "model_specs": [
+        "Microphone signal → mixer input"
+      ],
+      "reference_id": "amazon-jp-audiotechnica-pro49ql-microphone",
+      "comparison_product": "audio-technica PRO49QL Gooseneck Condenser Microphone",
+      "unit_comparison_price_jpy": 29998.0,
+      "pack_quantity": 1,
+      "comparison_packs": 2,
+      "comparison_extension_jpy": 59996,
+      "reference_only_extension_jpy": 59996,
+      "included_in_comparison_subtotal": true,
+      "price_status": "Market comparison only; engineering fit pending",
+      "url": "https://www.amazon.co.jp/dp/B0832LSRHJ",
+      "compatibility_gaps": [
+        "Microphone comparison only; listing says unidirectional, which does not verify the modeled cardioid polar pattern. It gives 70–16,000 Hz response, −37 dB sensitivity, 134 dB maximum SPL, 66 dB signal-to-noise ratio and 418 mm length.",
+        "The item includes a windscreen and quick-mount XLR-M connector; a desk/base mounting fixture, cable, mixer input and phantom supply are not included or confirmed. Phantom supply and the 2 mA microphone current are not AC mains load.",
+        "No feedback performance at the modeled ambo/altar positions, installation base, expected service life, replacement parts, or Vietnam warranty/support availability is established."
+      ]
+    },
+    {
+      "type": "palm",
+      "scope": "Shown model scope",
+      "quantity": 4,
+      "equipment_ids": [
+        "D296",
+        "D299",
+        "D302",
+        "D305"
+      ],
+      "model_specs": [
+        ""
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "paschal",
+      "scope": "Shown model scope",
+      "quantity": 1,
+      "equipment_ids": [
+        "D307"
+      ],
+      "model_specs": [
+        ""
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "pendantSpeaker",
+      "scope": "Shown model scope",
+      "quantity": 4,
+      "equipment_ids": [
+        "S279",
+        "S280",
+        "S281",
+        "S282"
+      ],
+      "model_specs": [
+        "30 W audio rating · Passive / amplifier output · 50.9 ms delay",
+        "30 W audio rating · Passive / amplifier output · 56.8 ms delay",
+        "30 W audio rating · Passive / amplifier output · 88.8 ms delay",
+        "30 W audio rating · Passive / amplifier output · 92.3 ms delay"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "projector24",
+      "scope": "Shown model scope",
+      "quantity": 2,
+      "equipment_ids": [
+        "L98",
+        "L99"
+      ],
+      "model_specs": [
+        "4500 lm · 3000 K · 24° beam"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "projector36",
+      "scope": "Shown model scope",
+      "quantity": 80,
+      "equipment_ids": [
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7",
+        "L8",
+        "L9",
+        "L10",
+        "L11",
+        "L12",
+        "L13",
+        "L14",
+        "L15",
+        "L16",
+        "L17",
+        "L18",
+        "L19",
+        "L20",
+        "L21",
+        "L22",
+        "L23",
+        "L24",
+        "L25",
+        "L26",
+        "L27",
+        "L28",
+        "L29",
+        "L30",
+        "L31",
+        "L32",
+        "L33",
+        "L34",
+        "L35",
+        "L36",
+        "L37",
+        "L38",
+        "L39",
+        "L40",
+        "L41",
+        "L42",
+        "L43",
+        "L44",
+        "L45",
+        "L46",
+        "L47",
+        "L48",
+        "L49",
+        "L50",
+        "L51",
+        "L52",
+        "L53",
+        "L54",
+        "L55",
+        "L56",
+        "L57",
+        "L58",
+        "L59",
+        "L60",
+        "L61",
+        "L62",
+        "L101",
+        "L102",
+        "L104",
+        "L105",
+        "L107",
+        "L108",
+        "L111",
+        "L112",
+        "L116",
+        "L118",
+        "L184",
+        "L185",
+        "L186",
+        "L187",
+        "L188",
+        "L191",
+        "L192",
+        "L193",
+        "L194",
+        "L195"
+      ],
+      "model_specs": [
+        "1300 lm · 3000 K · 36° beam",
+        "2300 lm · 3000 K · 28° beam",
+        "2300 lm · 3000 K · 36° beam",
+        "2400 lm · 3000 K · 50° beam",
+        "2500 lm · 3000 K · 50° beam",
+        "3000 lm · 3000 K · 55° beam",
+        "3300 lm · 3000 K · 50° beam",
+        "3500 lm · 3000 K · 50° beam",
+        "4000 lm · 3000 K · 36° beam",
+        "6000 lm · 3000 K · 44° beam",
+        "650 lm · 3000 K · 36° beam"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "saintPaulPicture",
+      "scope": "Shown model scope",
+      "quantity": 2,
+      "equipment_ids": [
+        "D-WING-B-PAUL",
+        "D-WING-H-PAUL"
+      ],
+      "model_specs": [
+        "Generated devotional concept. Frame proxy 1.12 × 1.62 m; actual size, material, glass, mounting and artwork approval pending. Unpowered."
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "saintPeterPicture",
+      "scope": "Shown model scope",
+      "quantity": 2,
+      "equipment_ids": [
+        "D-WING-B-PETER",
+        "D-WING-H-PETER"
+      ],
+      "model_specs": [
+        "Generated devotional concept. Frame proxy 1.12 × 1.62 m; actual size, material, glass, mounting and artwork approval pending. Unpowered."
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "sconce2",
+      "scope": "Shown model scope",
+      "quantity": 16,
+      "equipment_ids": [
+        "L82",
+        "L83",
+        "L84",
+        "L85",
+        "L86",
+        "L87",
+        "L88",
+        "L89",
+        "L90",
+        "L91",
+        "L92",
+        "L93",
+        "L94",
+        "L95",
+        "L96",
+        "L97"
+      ],
+      "model_specs": [
+        "560 lm · 2700 K",
+        "940 lm · 2700 K"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "servicePanel",
+      "scope": "Shown model scope",
+      "quantity": 2,
+      "equipment_ids": [
+        "L1",
+        "L2"
+      ],
+      "model_specs": [
+        "3000 lm · 4000 K"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "slimColumn",
+      "scope": "Shown model scope",
+      "quantity": 16,
+      "equipment_ids": [
+        "S261",
+        "S262",
+        "S263",
+        "S264",
+        "S265",
+        "S266",
+        "S267",
+        "S268",
+        "S269",
+        "S270",
+        "S271",
+        "S272",
+        "S273",
+        "S274",
+        "S276",
+        "S278"
+      ],
+      "model_specs": [
+        "60 W audio rating · Passive / amplifier output · 20.6 ms delay",
+        "60 W audio rating · Passive / amplifier output · 22.9 ms delay",
+        "60 W audio rating · Passive / amplifier output · 24.1 ms delay",
+        "60 W audio rating · Passive / amplifier output · 33.5 ms delay",
+        "60 W audio rating · Passive / amplifier output · 36 ms delay",
+        "60 W audio rating · Passive / amplifier output · 37.1 ms delay",
+        "60 W audio rating · Passive / amplifier output · 46.3 ms delay",
+        "60 W audio rating · Passive / amplifier output · 48.3 ms delay",
+        "60 W audio rating · Passive / amplifier output · 59.2 ms delay",
+        "60 W audio rating · Passive / amplifier output · 60.8 ms delay",
+        "60 W audio rating · Passive / amplifier output · 72.2 ms delay",
+        "60 W audio rating · Passive / amplifier output · 73.5 ms delay",
+        "60 W audio rating · Passive / amplifier output · 85.1 ms delay",
+        "60 W audio rating · Passive / amplifier output · 86.2 ms delay",
+        "60 W audio rating · Passive / amplifier output · 94.9 ms delay",
+        "60 W audio rating · Passive / amplifier output · 96.5 ms delay"
+      ],
+      "reference_id": "amazon-jp-yamaha-vxl1b8-slim-column-speaker",
+      "comparison_product": "Yamaha VXL1B-8 Speaker System",
+      "unit_comparison_price_jpy": 52250.0,
+      "pack_quantity": 1,
+      "comparison_packs": 16,
+      "comparison_extension_jpy": 836000,
+      "reference_only_extension_jpy": 836000,
+      "included_in_comparison_subtotal": true,
+      "price_status": "Market comparison only; engineering fit pending",
+      "url": "https://www.amazon.co.jp/dp/B07H183SWF",
+      "compatibility_gaps": [
+        "Passive speaker comparison only; speaker power ratings are audio-system ratings, not mains input. The Amazon page does not state a maximum audio input rating or impedance to compare with the modeled 60 W column.",
+        "Listing gives 24 × 1.5-inch full-range units, 170° horizontal by 40° vertical coverage and a 54 mm width; the model is a 0.6 m, 4 × 2.5-inch column with a modeled 130° × 30° pattern. Exact length and acoustic match are unverified.",
+        "The product information marks it as not waterproof. No outdoor protection, church-specific mounting/aiming, measured STI, spares availability, or Vietnam warranty/service support is established."
+      ]
+    },
+    {
+      "type": "spot15",
+      "scope": "Shown model scope",
+      "quantity": 7,
+      "equipment_ids": [
+        "L100",
+        "L103",
+        "L106",
+        "L110",
+        "L114",
+        "L115",
+        "L117"
+      ],
+      "model_specs": [
+        "1400 lm · 3000 K · 15° beam",
+        "1900 lm · 3000 K · 15° beam",
+        "220 lm · 3000 K · 12° beam",
+        "300 lm · 3000 K · 10° beam",
+        "700 lm · 3000 K · 24° beam"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "star",
+      "scope": "Hidden alternative / excluded",
+      "quantity": 1,
+      "equipment_ids": [
+        "D311"
+      ],
+      "model_specs": [
+        "500 lm · 5000 K"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "statueJoseph",
+      "scope": "Shown model scope",
+      "quantity": 1,
+      "equipment_ids": [
+        "D294"
+      ],
+      "model_specs": [
+        ""
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "statueMary",
+      "scope": "Shown model scope",
+      "quantity": 1,
+      "equipment_ids": [
+        "D293"
+      ],
+      "model_specs": [
+        ""
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "uplight",
+      "scope": "Shown model scope",
+      "quantity": 11,
+      "equipment_ids": [
+        "L71",
+        "L72",
+        "L73",
+        "L74",
+        "L75",
+        "L76",
+        "L77",
+        "L109",
+        "L113",
+        "L165",
+        "L176"
+      ],
+      "model_specs": [
+        "2200 lm · 2700 K · 100° beam",
+        "2500 lm · 2700 K · 100° beam",
+        "4000 lm · 2700 K · 100° beam"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    },
+    {
+      "type": "wallLantern",
+      "scope": "Shown model scope",
+      "quantity": 18,
+      "equipment_ids": [
+        "L137",
+        "L138",
+        "L139",
+        "L140",
+        "L141",
+        "L142",
+        "L143",
+        "L144",
+        "L145",
+        "L146",
+        "L147",
+        "L148",
+        "L149",
+        "L150",
+        "L151",
+        "L152",
+        "L153",
+        "L154"
+      ],
+      "model_specs": [
+        "400 lm · 2700 K",
+        "900 lm · 2700 K"
+      ],
+      "reference_id": null,
+      "comparison_product": null,
+      "unit_comparison_price_jpy": null,
+      "pack_quantity": null,
+      "comparison_packs": null,
+      "comparison_extension_jpy": null,
+      "reference_only_extension_jpy": null,
+      "included_in_comparison_subtotal": false,
+      "price_status": "Unpriced / pending",
+      "url": null,
+      "compatibility_gaps": []
+    }
+  ],
+  "summary": {
+    "shown_equipment_enclosures": 320,
+    "hidden_alternatives": 15,
+    "priced_comparison_groups": 2,
+    "unpriced_or_excluded_shown_groups": 36,
+    "priced_comparison_subtotal_jpy": 895996,
+    "complete_equipment_budget_jpy": null,
+    "complete_installed_project_budget_jpy": null,
+    "scope_note": "Subtotal of explicitly chosen comparable complete assemblies only; does not represent a complete budget. All product fit remains unapproved."
+  },
+  "assumptions": {
+    "schema": 1,
+    "marketplace": "amazon.co.jp",
+    "currency": "JPY",
+    "owner_request": "2026-10-09: Japanese market only; compare documented suppliers, include all open layout/design questions",
+    "selected_price_reference_by_type": {
+      "slimColumn": "amazon-jp-yamaha-vxl1b8-slim-column-speaker",
+      "mic": "amazon-jp-audiotechnica-pro49ql-microphone"
+    },
+    "selection_status": "Market comparison references only; no equipment selected or approved",
+    "shipping_jpy": null,
+    "import_tax_jpy": null,
+    "vietnam_installation_labour_jpy": null,
+    "scaffolding_access_jpy": null,
+    "fixings_containment_firestopping_jpy": null,
+    "commissioning_training_jpy": null,
+    "spares_maintenance_jpy": null,
+    "contingency_percent": null,
+    "full_project_budget_jpy": null,
+    "note": "Missing items are pending, never zero. Do not add alternative product references together as a project total. Model quantities need site and engineering review. No exchange conversion without a separately dated rate."
+  }
+}

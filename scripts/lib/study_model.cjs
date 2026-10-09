@@ -7,7 +7,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '../..');
-const modules = ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'];
+const modules = ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js', 'simulator/installation-review.js'];
 function loadStudyModel() {
   const timers = new Set();
   const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };

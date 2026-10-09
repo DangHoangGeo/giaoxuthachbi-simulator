@@ -1,0 +1,13 @@
+{
+  "status": "Passed: text-only refresh retained every Equipment, Electrical Lines and Route Points table value across all six workbooks, plus identical default layout items/components/routes.",
+  "preservedInputCells": 6473,
+  "tableRows": {
+    "Equipment": 335,
+    "Electrical Lines": 347,
+    "Route Points": 2795
+  },
+  "additionalNewDecorationInputsPreserved": 40,
+  "baseline": "before-installation-note-refreeze/before-refreeze-registers.json",
+  "after": "registers/after-registers.json",
+  "textCorrection": "Stale four-seat lighting hold replaced with a reference to current per-seat failures (40 total, 36 wings); no physics, positions, ratings or settings changed."
+}

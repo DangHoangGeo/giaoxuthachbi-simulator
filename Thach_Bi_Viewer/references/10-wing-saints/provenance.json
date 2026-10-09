@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "revision": "2026-10-09-wing-saints-concept-v1",
+  "generatedDate": "2026-10-09",
+  "status": "CONCEPT",
+  "intentStatus": "USER CONFIRMED subjects and location intent only",
+  "intendedUse": "A Saint Peter and Saint Paul pair between the two windows in each sanctuary wing; two native textures reused for four modeled pictures.",
+  "tool": {
+    "name": "image_gen.imagegen",
+    "mode": "built-in",
+    "calls": 2,
+    "modelIdentifier": null,
+    "modelIdentifierNote": "Not reported by the built-in tool result."
+  },
+  "repositoryBaseRevisionRead": "cbf47da",
+  "documentsChecked": [
+    "../../../AGENTS.md",
+    "../../../docs/sanctuary-model.md",
+    "../../../docs/church-view-renderings.md",
+    "../manifest.json",
+    "../coverage.json"
+  ],
+  "scope": "Native artwork and provenance only. Model placement, frames, dimensions, electrical impacts, category registers, global reference manifests and integrated desktop verification belong to the coordinated model change.",
+  "approval": {
+    "subjectsAndLocationIntent": "USER CONFIRMED",
+    "finalArtwork": null,
+    "physicalProduct": null,
+    "publicUseAndRightsReview": null,
+    "engineeringAndConstruction": null
+  },
+  "nativePreservation": "Byte-identical PNG copies of the selected built-in outputs; no crop, color alteration, resize or resampling. Originals remain at the generated file paths.",
+  "limitations": [
+    "Generated devotional concepts are representative sacred art, not verified historical likenesses.",
+    "The source-file modification timestamps document the native files; the built-in result did not provide a separate generation timestamp or model identifier.",
+    "No physical print size, substrate, finish, framing, mounting capacity, moisture resistance, glare performance or maintenance specification has been selected or approved.",
+    "No public-use/copyright clearance or final owner artwork approval is implied.",
+    "Visual asset inspection does not approve geometry, sightlines, acoustic behavior, photometry or engineering performance."
+  ],
+  "assets": [
+    {
+      "id": "saint-peter-concept-v1",
+      "file": "saint-peter-concept-v1.png",
+      "sourceGeneratedFile": "/Users/danghoang/.codex/generated_images/01a11e0b-9b87-72f0-b9af-f0cf54dc5208/exec-4326c2eb-ee46-4f6a-a1d1-38a59ccb4d75.png",
+      "nativeWidth": 1024,
+      "nativeHeight": 1536,
+      "sha256": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+      "bytes": 2609696,
+      "sourceFileModifiedAtUTC": "2026-10-09T00:25:16.248475+00:00",
+      "resampled": false,
+      "title": "Saint Peter — generated devotional painting",
+      "status": "CONCEPT",
+      "generationDate": "2026-10-09",
+      "generationTool": "image_gen.imagegen",
+      "transparentBackground": false,
+      "prompt": "Use case: stylized-concept\nAsset type: original unframed devotional painting texture for the Catholic Thạch Bi Church sanctuary, part of a matched Saint Peter / Saint Paul pair.\nPrimary request: Create ONE high-quality portrait painting of Saint Peter, the apostle, in a 2:3 portrait canvas. Deliver the artwork itself edge to edge, intended native canvas 1024 by 1536 pixels.\nScene/backdrop: restrained warm umber and muted ochre-gold painted atmosphere, softly luminous behind the head, darkened gently toward the lower corners; no architecture, room, landscape or objects in the background.\nSubject: one elderly Mediterranean apostle, dignified weathered face, short curling grey-white hair and beard, calm compassionate expression. His hands must be well formed. He carries a clearly recognizable pair of large keys, one warm brass-gold and one silver, in one hand; his other arm holds a closed dark reddish-brown book with a plain cover and no lettering. A delicate circular gold halo identifies the sacred figure.\nStyle/medium: original classical Catholic sacred oil painting, rich but restrained glazing, refined painterly realism, softly visible brushwork, convincing fabric folds, warm flesh tones, no imitation of a named painter.\nComposition/framing: single near-frontal standing figure shown from head to just below the knees, centered, filling most of the portrait; halo and head have breathing room at the top, both hands, entire keys and book clearly visible. Large simple shapes, strong readable silhouette and expressive face suitable for viewing across a church.\nLighting/mood: gentle light from upper left, reverent and peaceful, moderate contrast, neither gloomy nor theatrical.\nColor palette: muted deep blue tunic, warm ochre-gold mantle, earth browns, subtle red accents; harmonious with brass and red lacquer church decoration.\nConstraints: exactly one person, no extra hands, coherent anatomy, no frame or decorative border, no room view or mockup, no printed text, no letters or numbers, no writing on the book, no inscriptions, no logos, no watermark.",
+      "referencedImagePaths": [],
+      "referenceRole": null,
+      "intendedAspectRatio": "2:3",
+      "nativeAspectRatio": "2:3",
+      "intendedReuseCount": 2,
+      "visualReview": {
+        "date": "2026-10-09",
+        "method": "Viewed full built-in native output",
+        "result": "Single elderly grey-haired apostle; brass/silver keys, plain book, blue tunic, ochre-gold mantle and delicate halo are visible. Portrait fills the canvas; no visible frame, room mockup, text, watermark or extra people.",
+        "finalOwnerApproval": null
+      }
+    },
+    {
+      "id": "saint-paul-concept-v1",
+      "file": "saint-paul-concept-v1.png",
+      "sourceGeneratedFile": "/Users/danghoang/.codex/generated_images/01a11e0b-9b87-72f0-b9af-f0cf54dc5208/exec-b8c0960b-d081-4d0a-a87f-304e41be64e8.png",
+      "nativeWidth": 1024,
+      "nativeHeight": 1536,
+      "sha256": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+      "bytes": 2386800,
+      "sourceFileModifiedAtUTC": "2026-10-09T00:26:01.515221+00:00",
+      "resampled": false,
+      "title": "Saint Paul — generated devotional painting",
+      "status": "CONCEPT",
+      "generationDate": "2026-10-09",
+      "generationTool": "image_gen.imagegen",
+      "transparentBackground": false,
+      "prompt": "Use case: stylized-concept\nAsset type: original unframed devotional painting texture for the Catholic Thạch Bi Church sanctuary, the Saint Paul companion to the Saint Peter style reference.\nPrimary request: Create ONE new high-quality portrait painting of Saint Paul, the apostle, in a 2:3 portrait canvas. Deliver the artwork itself edge to edge, intended native canvas 1024 by 1536 pixels.\nInput images: Image 1 is a STYLE AND COMPOSITION REFERENCE ONLY, the newly generated Saint Peter painting. Match its painterly technique, warm backdrop, scale of the figure, face lighting, halo treatment and sense of dignity. Create a visibly distinct Saint Paul; do not retain Peter's face, white hair, keys or gold mantle.\nScene/backdrop: the same restrained warm umber and muted ochre-gold painted atmosphere, softly luminous behind the head, darkened gently toward the lower corners; no architecture, room, landscape or objects in the background.\nSubject: exactly one mature Mediterranean apostle with a high balding forehead, short dark brown hair at the sides and a full dark beard with a little grey, thoughtful dignified face and calm peaceful expression. His hands must be well formed. One arm cradles a closed dark reddish-brown book with a plain cover and no lettering. The other hand rests gently around the hilt of one simple straight symbolic sword at waist height, the entire sword held vertically downward beside the body, tip down, blade clear and visible. Peaceful traditional Catholic iconography, no combat posture. A delicate circular gold halo identifies the sacred figure.\nStyle/medium: original classical Catholic sacred oil painting, rich but restrained glazing, refined painterly realism, softly visible brushwork, convincing fabric folds, warm flesh tones, no imitation of a named painter.\nComposition/framing: single near-frontal standing figure shown from head to just below the knees, centered, filling most of the portrait at the same scale as the reference; halo and head have breathing room at the top, both hands, the entire sword including downward tip, and book clearly visible. Large simple shapes, strong readable silhouette and expressive face suitable for viewing across a church.\nLighting/mood: gentle light from upper left, reverent and peaceful, moderate contrast, neither gloomy nor theatrical.\nColor palette: muted deep blue tunic, rich subdued red mantle, earth browns and muted gold accents; harmonious with the Saint Peter companion, brass and red lacquer church decoration.\nConstraints: exactly one person, exactly one downward-held sword, no keys, no extra hands, coherent anatomy, no frame or decorative border, no room view or mockup, no printed text, no letters or numbers, no writing on the book, no inscriptions, no logos, no watermark.",
+      "referencedImagePaths": [
+        "/Users/danghoang/.codex/generated_images/01a11e0b-9b87-72f0-b9af-f0cf54dc5208/exec-4326c2eb-ee46-4f6a-a1d1-38a59ccb4d75.png"
+      ],
+      "referenceRole": "Saint Peter native output used only as a painterly style/composition reference for the new Saint Paul companion.",
+      "intendedAspectRatio": "2:3",
+      "nativeAspectRatio": "2:3",
+      "intendedReuseCount": 2,
+      "visualReview": {
+        "date": "2026-10-09",
+        "method": "Viewed full built-in native output",
+        "result": "Single mature balding apostle; plain book, full downward-held symbolic sword, blue tunic, subdued red mantle and delicate halo are visible. Light, canvas, scale and backdrop match the Peter reference; no visible frame, room mockup, text, watermark, keys or extra people.",
+        "finalOwnerApproval": null
+      }
+    }
+  ]
+}

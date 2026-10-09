@@ -1,0 +1,12 @@
+{
+  "status": "PASS calculation consistency; ENGINEERING HOLD remains",
+  "finalCasesReviewed": 12,
+  "checks": [
+    "all368 unique unchanged study receivers",
+    "every zone min/max/arithmetic mean",
+    "dBA acoustic energy mean",
+    "unrounded lux/air/STI failure counts"
+  ],
+  "method": "Independent Python reaggregation of all12 raw final-case per-seat records",
+  "designAcceptance": false
+}

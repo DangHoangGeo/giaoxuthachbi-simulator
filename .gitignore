@@ -32,6 +32,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Local exports: rendered films and private-review packages. Never publish from here.
+/exports/
+
 # Python and editor temporary files
 __pycache__/
 *.py[cod]
@@ -41,3 +44,8 @@ __pycache__/
 
 # Keep source drawings, model assets, Excel registers, review evidence,
 # package lockfiles and intentional editor/agent configuration tracked.
+
+# Bulky, regenerable review snapshots (register JSON dumps and rendered previews).
+# Curated evidence under review/ (READMEs, verification JSON, logs, screenshots) stays trackable.
+review/*/exports/baseline/
+review/*/exports/registers/

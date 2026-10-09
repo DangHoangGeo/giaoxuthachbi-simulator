@@ -1,0 +1,174 @@
+{
+  "schema": 1,
+  "basis": "Concept sensitivity: height, optic angle and dimming; fixed eight wing luminaires and all receivers. No photometric validation.",
+  "cases": [
+    {
+      "id": "y4p1-b80-d0p75",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 0.75,
+        "beam": 80
+      }
+    },
+    {
+      "id": "y4p1-b80-d1",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 80
+      }
+    },
+    {
+      "id": "y4p1-b90-d0p75",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 0.75,
+        "beam": 90
+      }
+    },
+    {
+      "id": "y4p1-b90-d1",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.1,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 90
+      }
+    },
+    {
+      "id": "y4p4-b80-d0p75",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 0.75,
+        "beam": 80
+      }
+    },
+    {
+      "id": "y4p4-b80-d1",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 80
+      }
+    },
+    {
+      "id": "y4p4-b90-d0p75",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 0.75,
+        "beam": 90
+      }
+    },
+    {
+      "id": "y4p4-b90-d1",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.4,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 90
+      }
+    },
+    {
+      "id": "y4p7-b80-d0p75",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.7,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 0.75,
+        "beam": 80
+      }
+    },
+    {
+      "id": "y4p7-b80-d1",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.7,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 80
+      }
+    },
+    {
+      "id": "y4p7-b90-d0p75",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.7,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 0.75,
+        "beam": 90
+      }
+    },
+    {
+      "id": "y4p7-b90-d1",
+      "showWall": true,
+      "light": {
+        "type": "chandelier6Reading",
+        "countPerWing": 4,
+        "y": 4.7,
+        "frontZ": 8.8,
+        "backZ": 11.25,
+        "lumens": 5640,
+        "dim": 1,
+        "beam": 90
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "currentEquipment": 331,
+  "currentRoutes": 343,
+  "currentVertices": 2775,
+  "exactWorkbookGeometryAndIds": true,
+  "cachedExcelLengthsChecked": 343,
+  "flatCsvEquipment": 307,
+  "flatCsvRoutes": 343,
+  "flatCsvIdsEndpointsAndLengthsAgree": true,
+  "categoryWorkbookHashesAgree": 6,
+  "pdfSourceHashesAgree": 21,
+  "pdfCompanionHashesAgree": 5,
+  "generatedLocalLinksChecked": 54,
+  "expectedWingConfiguration": true,
+  "designSourceSHA256": "95ab9cdc750b49f32c5e7331d5606f9acd17d3d38012cb53a6d06ad69907b81e",
+  "layoutSHA256": "53ff13ffefd2679cbf8d12a1e21bde566f40af08275ae4f0ff95823f70ea1b77",
+  "systemsSHA256": "c883a38876b1d2b04788046ec5e1d87651113aa8dbfeb0f5415ba0b829f004ab",
+  "pdfSHA256": "41328d7a20463400ae6f8a6ef8c22bf4bdd7104a62d2e02027c14f1b6e593ddc"
+}

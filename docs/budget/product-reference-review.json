@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "reviewed_date": "2026-10-09",
+  "status": "Manufacturer checks of retail comparisons; no product selection or model substitution",
+  "reviews": [
+    {
+      "reference_id": "amazon-jp-yamaha-vxl1b8-slim-column-speaker",
+      "note_vi": "Trang Amazon ghi 24 driver, nhưng bảng hãng cho VXL1B-8 là 8 driver; không chuyển thông số listing sang mô hình. Bảng Nhật ghi thân 54 × 480 × 104 mm, khác loa proxy cao 600 mm. Mẫu -8 và -8-WR là phiên bản khác nhau. Góc phủ/đáp tuyến/công suất và phụ kiện phải nhập từ đúng hồ sơ và tính lại trước khi chọn.",
+      "sources": [{"url":"https://jp.yamaha.com/products/proaudio/speakers/vxl/specs.html", "location":"official indexed specification table; VXL1B-8 versus -24/-16/-WR columns", "access":"Official search index read; direct page returned 403", "date":"2026-10-09"}],
+      "selected_for_project": false
+    },
+    {
+      "reference_id": "amazon-jp-audiotechnica-pro49ql-microphone",
+      "note_vi": "Hướng dẫn hãng xác nhận cardioid, XLR-M 3 chân và PRO49QL dài 418 mm. Bảng thông số bản hướng dẫn ghi phantom 11–52 V DC/2 mA điển hình; câu hướng dẫn nói 48 V. Listing và tài liệu cũ ghi 9–52 V: chốt bản sản phẩm và nguồn phantom theo hãng. Đây là tải DC của micro, không phải tải AC để chọn cáp. Chân đế, mixer/cáp, feedback và bảo hành Việt Nam chưa xác nhận.",
+      "sources": [{"url":"https://sea.audio-technica.com/image/catalog/Manual/PRO49Q_49QL_142316610_UM_V1_11L_web_190123.pdf", "location":"page 1 English/Japanese specifications and connection procedure", "access":"Full official two-page PDF read", "date":"2026-10-09"}],
+      "selected_for_project": false
+    },
+    {
+      "reference_id": "amazon-jp-fuji-vvf-2c-2mm-100m",
+      "note_vi": "Ký hiệu dây VVF đặc 2.0 mm là đường kính ruột dẫn, không phải 2.0 mm²; diện tích hình tròn suy ra khoảng 3.142 mm² chưa thay thế chứng nhận hãng. Cuộn 2 lõi không tự có PE thứ ba. Không dùng đơn giá này cho bảng cáp đồng 3 lõi tính theo mm² hoặc nhân với toàn mét tuyến.",
+      "sources": [],
+      "selected_for_project": false
+    }
+  ]
+}

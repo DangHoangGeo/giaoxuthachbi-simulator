@@ -1,0 +1,208 @@
+{
+  "workbook": "/Users/danghoang/Desktop/giaoxuthachbi_work/docs/electrical-grid/categories/air-system/register.xlsx",
+  "equipment": [
+    {
+      "row": 21,
+      "id": "F240",
+      "type": "0.45 m diameter · 55 W at maximum speed. Speed steps: 1: 0.45 m3/s, 35 W, 47 dBA, 900 rpm; 2: 0.6 m3/s, 45 W, 52 dBA, 1100 rpm; 3: 0.75 m3/s, 55 W, 57 dBA, 1300 rpm",
+      "coordinates": [
+        38.05,
+        4.05,
+        -13.06
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 22,
+      "id": "F241",
+      "type": "0.45 m diameter · 55 W at maximum speed. Speed steps: 1: 0.45 m3/s, 35 W, 47 dBA, 900 rpm; 2: 0.6 m3/s, 45 W, 52 dBA, 1100 rpm; 3: 0.75 m3/s, 55 W, 57 dBA, 1300 rpm",
+      "coordinates": [
+        43.1,
+        4.05,
+        -13.06
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 23,
+      "id": "F242",
+      "type": "0.45 m diameter · 55 W at maximum speed. Speed steps: 1: 0.45 m3/s, 35 W, 47 dBA, 900 rpm; 2: 0.6 m3/s, 45 W, 52 dBA, 1100 rpm; 3: 0.75 m3/s, 55 W, 57 dBA, 1300 rpm",
+      "coordinates": [
+        38.05,
+        4.05,
+        13.06
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 24,
+      "id": "F243",
+      "type": "0.45 m diameter · 55 W at maximum speed. Speed steps: 1: 0.45 m3/s, 35 W, 47 dBA, 900 rpm; 2: 0.6 m3/s, 45 W, 52 dBA, 1100 rpm; 3: 0.75 m3/s, 55 W, 57 dBA, 1300 rpm",
+      "coordinates": [
+        43.1,
+        4.05,
+        13.06
+      ],
+      "recordState": "Current"
+    },
+    {
+      "row": 42,
+      "id": "F-WING-B-3",
+      "type": "0.45 m diameter · 55 W at maximum speed. Speed steps: 1: 0.45 m3/s, 35 W, 47 dBA, 900 rpm; 2: 0.6 m3/s, 45 W, 52 dBA, 1100 rpm; 3: 0.75 m3/s, 55 W, 57 dBA, 1300 rpm",
+      "coordinates": [
+        41.2,
+        2.7,
+        -13.06
+      ],
+      "recordState": "Retired"
+    },
+    {
+      "row": 43,
+      "id": "F-WING-B-4",
+      "type": "0.45 m diameter · 55 W at maximum speed. Speed steps: 1: 0.45 m3/s, 35 W, 47 dBA, 900 rpm; 2: 0.6 m3/s, 45 W, 52 dBA, 1100 rpm; 3: 0.75 m3/s, 55 W, 57 dBA, 1300 rpm",
+      "coordinates": [
+        42,
+        3.5,
+        -13.06
+      ],
+      "recordState": "Retired"
+    },
+    {
+      "row": 44,
+      "id": "F-WING-H-3",
+      "type": "0.45 m diameter · 55 W at maximum speed. Speed steps: 1: 0.45 m3/s, 35 W, 47 dBA, 900 rpm; 2: 0.6 m3/s, 45 W, 52 dBA, 1100 rpm; 3: 0.75 m3/s, 55 W, 57 dBA, 1300 rpm",
+      "coordinates": [
+        41.2,
+        2.7,
+        13.06
+      ],
+      "recordState": "Retired"
+    },
+    {
+      "row": 45,
+      "id": "F-WING-H-4",
+      "type": "0.45 m diameter · 55 W at maximum speed. Speed steps: 1: 0.45 m3/s, 35 W, 47 dBA, 900 rpm; 2: 0.6 m3/s, 45 W, 52 dBA, 1100 rpm; 3: 0.75 m3/s, 55 W, 57 dBA, 1300 rpm",
+      "coordinates": [
+        42,
+        3.5,
+        13.06
+      ],
+      "recordState": "Retired"
+    }
+  ],
+  "lines": [
+    {
+      "row": 23,
+      "id": "trunk:FC1:F5:fan:-1",
+      "destinations": "F240\nF241",
+      "routeLength": 33.83219768896557,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 24,
+      "id": "drop:FC1:F5:fan:-1:F240",
+      "destinations": "F240",
+      "routeLength": 9.264333762886594,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 25,
+      "id": "drop:FC1:F5:fan:-1:F241",
+      "destinations": "F241",
+      "routeLength": 9.264333762886599,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 26,
+      "id": "trunk:FC1:F5:fan:1",
+      "destinations": "F242\nF243",
+      "routeLength": 40.43219768896558,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 27,
+      "id": "drop:FC1:F5:fan:1:F242",
+      "destinations": "F242",
+      "routeLength": 9.264333762886594,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 28,
+      "id": "drop:FC1:F5:fan:1:F243",
+      "destinations": "F243",
+      "routeLength": 9.264333762886599,
+      "fullHomeRun": null,
+      "recordState": "Current"
+    },
+    {
+      "row": 52,
+      "id": "drop:FC1:F5:fan:-1:F-WING-B-3",
+      "destinations": "F-WING-B-3",
+      "routeLength": 12.144617268041237,
+      "fullHomeRun": null,
+      "recordState": "Retired"
+    },
+    {
+      "row": 53,
+      "id": "drop:FC1:F5:fan:-1:F-WING-B-4",
+      "destinations": "F-WING-B-4",
+      "routeLength": 10.700287371134024,
+      "fullHomeRun": null,
+      "recordState": "Retired"
+    },
+    {
+      "row": 54,
+      "id": "drop:FC1:F5:fan:1:F-WING-H-3",
+      "destinations": "F-WING-H-3",
+      "routeLength": 12.144617268041237,
+      "fullHomeRun": null,
+      "recordState": "Retired"
+    },
+    {
+      "row": 55,
+      "id": "drop:FC1:F5:fan:1:F-WING-H-4",
+      "destinations": "F-WING-H-4",
+      "routeLength": 10.700287371134024,
+      "fullHomeRun": null,
+      "recordState": "Retired"
+    },
+    {
+      "row": 56,
+      "id": "drop:FC1:F1:fan:-1:F240",
+      "destinations": "F240",
+      "routeLength": 7.73309922680412,
+      "fullHomeRun": null,
+      "recordState": "Retired"
+    },
+    {
+      "row": 57,
+      "id": "drop:FC1:F1:fan:-1:F241",
+      "destinations": "F241",
+      "routeLength": 7.733099226804125,
+      "fullHomeRun": null,
+      "recordState": "Retired"
+    },
+    {
+      "row": 58,
+      "id": "drop:FC1:F1:fan:1:F242",
+      "destinations": "F242",
+      "routeLength": 7.73309922680412,
+      "fullHomeRun": null,
+      "recordState": "Retired"
+    },
+    {
+      "row": 59,
+      "id": "drop:FC1:F1:fan:1:F243",
+      "destinations": "F243",
+      "routeLength": 7.733099226804125,
+      "fullHomeRun": null,
+      "recordState": "Retired"
+    }
+  ]
+}
+Rendered 106 PNG ranges; workbook byte-for-byte unchanged.

@@ -1,0 +1,70 @@
+[
+  {
+    "id": "F240",
+    "min": [
+      36.94266231002306,
+      3.1813783878990494,
+      -13.302373449685296
+    ],
+    "max": [
+      37.77491790446966,
+      3.8533884833647987,
+      -12.469884605798969
+    ],
+    "speakerIntersects": false,
+    "windowIntersects": true,
+    "artStripIntersects": false,
+    "outsideWall": true
+  },
+  {
+    "id": "F241",
+    "min": [
+      43.37502149675558,
+      3.1813952237235257,
+      -13.302357090592706
+    ],
+    "max": [
+      44.20731580177056,
+      3.853397778804603,
+      -12.469844096053562
+    ],
+    "speakerIntersects": false,
+    "windowIntersects": true,
+    "artStripIntersects": false,
+    "outsideWall": true
+  },
+  {
+    "id": "F242",
+    "min": [
+      36.94266231002306,
+      3.1813783878990494,
+      12.469884605798969
+    ],
+    "max": [
+      37.77491790446966,
+      3.8533884833647987,
+      13.302373449685296
+    ],
+    "speakerIntersects": false,
+    "windowIntersects": true,
+    "artStripIntersects": false,
+    "outsideWall": true
+  },
+  {
+    "id": "F243",
+    "min": [
+      43.37502149675558,
+      3.1813952237235257,
+      12.469844096053562
+    ],
+    "max": [
+      44.20731580177056,
+      3.853397778804603,
+      13.302357090592706
+    ],
+    "speakerIntersects": false,
+    "windowIntersects": true,
+    "artStripIntersects": false,
+    "outsideWall": true
+  }
+]

@@ -1,0 +1,8 @@
+PASS source/output/register hashes and fresh model equivalence
+PASS independent load/current/ampacity/drop/path audit: 333 routes; 323 cable pieces
+PASS quantities, pack/currency/exclusion rules and 41 open questions
+PASS all route IDs, Vietnamese glyph mapping, A3 bounds and printed holds: {'thach-bi-cable-load-review-vi.pdf': 14, 'thach-bi-budget-japan-vi.pdf': 10}
+PASS analytical cases and 10 invalid-input refusals
+PASS independent pack rounding, 100 V/component/hidden price exclusions
+PASS failed-PDF preservation and unsupported-glyph refusal
+All software/package checks pass. Engineering holds remain.

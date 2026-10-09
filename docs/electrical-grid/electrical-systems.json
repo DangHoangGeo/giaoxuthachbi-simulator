@@ -8415,9 +8415,7 @@
       "role": "trunk",
       "itemIds": [
         "L63",
-        "L64",
-        "L65",
-        "L66"
+        "L65"
       ],
       "color": "#dc9e29",
       "method": "wall-roof-trunk",
@@ -8489,12 +8487,12 @@
           -7.36
         ],
         [
-          40.26,
-          9.01629510309278,
+          38.94,
+          7.953150773195872,
           -7.36
         ]
       ],
-      "length": 30.144529214208777,
+      "length": 31.83942622175583,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -8554,8 +8552,8 @@
               -7.36
             ],
             [
-              40.26,
-              9.01629510309278,
+              38.94,
+              7.953150773195872,
               -7.36
             ]
           ],
@@ -8580,115 +8578,46 @@
       ],
       "trunkId": "trunk:LC1:L8:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 30.144529214208777,
+      "upstreamLength": 31.83942622175583,
       "homeRun": false,
       "points": [
         [
-          40.26,
-          9.01629510309278,
+          38.94,
+          7.953150773195872,
           -7.36
         ],
         [
-          40.26,
-          9.01629510309278,
-          -13.249
+          38.94,
+          7.953150773195873,
+          -10.15
         ],
         [
-          40.26,
-          4.15,
-          -13.249
-        ],
-        [
-          40.26,
-          4.15,
-          -13.06
+          38.94,
+          3.8,
+          -10.15
         ]
       ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [
         {
           "points": [
             [
-              40.26,
-              9.01629510309278,
+              38.94,
+              7.953150773195872,
               -7.36
             ],
             [
-              40.26,
-              9.01629510309278,
-              -13.249
+              38.94,
+              7.953150773195873,
+              -10.15
             ]
           ],
           "finish": "soffit",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 10.94429510309278,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L8:light:-1:L64",
-      "name": "L8 → Wing light · B · front block · front rows",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L8",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L64"
-      ],
-      "trunkId": "trunk:LC1:L8:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 30.144529214208777,
-      "homeRun": false,
-      "points": [
-        [
-          40.26,
-          9.01629510309278,
-          -7.36
-        ],
-        [
-          40.26,
-          9.01629510309278,
-          -13.249
-        ],
-        [
-          40.26,
-          2.92,
-          -13.249
-        ],
-        [
-          40.26,
-          2.92,
-          -13.06
-        ]
-      ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              40.26,
-              9.01629510309278,
-              -7.36
-            ],
-            [
-              40.26,
-              9.01629510309278,
-              -13.249
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 12.174295103092781,
+      "length": 6.943150773195873,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -8708,115 +8637,46 @@
       ],
       "trunkId": "trunk:LC1:L8:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 29.374121483505572,
+      "upstreamLength": 27.627863960578313,
       "homeRun": false,
       "points": [
         [
-          40.86,
-          9.040457474226796,
+          42.22,
+          7.945096649484534,
           -7.36
         ],
         [
-          40.86,
-          9.040457474226807,
-          -13.249
+          42.22,
+          7.9450966494845385,
+          -10.15
         ],
         [
-          40.86,
-          4.15,
-          -13.249
-        ],
-        [
-          40.86,
-          4.15,
-          -13.06
+          42.22,
+          3.8,
+          -10.15
         ]
       ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [
         {
           "points": [
             [
-              40.86,
-              9.040457474226796,
+              42.22,
+              7.945096649484534,
               -7.36
             ],
             [
-              40.86,
-              9.040457474226807,
-              -13.249
+              42.22,
+              7.9450966494845385,
+              -10.15
             ]
           ],
           "finish": "soffit",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 10.968457474226806,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L8:light:-1:L66",
-      "name": "L8 → Wing light · B · rear block · front rows",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L8",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L66"
-      ],
-      "trunkId": "trunk:LC1:L8:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 29.374121483505572,
-      "homeRun": false,
-      "points": [
-        [
-          40.86,
-          9.040457474226796,
-          -7.36
-        ],
-        [
-          40.86,
-          9.040457474226807,
-          -13.249
-        ],
-        [
-          40.86,
-          2.92,
-          -13.249
-        ],
-        [
-          40.86,
-          2.92,
-          -13.06
-        ]
-      ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              40.86,
-              9.040457474226796,
-              -7.36
-            ],
-            [
-              40.86,
-              9.040457474226807,
-              -13.249
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 12.198457474226807,
+      "length": 6.935096649484539,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -8833,9 +8693,7 @@
       "role": "trunk",
       "itemIds": [
         "L67",
-        "L68",
-        "L69",
-        "L70"
+        "L69"
       ],
       "color": "#dc9e29",
       "method": "wall-roof-trunk",
@@ -8907,12 +8765,12 @@
           7.36
         ],
         [
-          40.26,
-          9.01629510309278,
+          38.94,
+          7.953150773195872,
           7.36
         ]
       ],
-      "length": 36.744529214208775,
+      "length": 38.43942622175583,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -8972,8 +8830,8 @@
               7.36
             ],
             [
-              40.26,
-              9.01629510309278,
+              38.94,
+              7.953150773195872,
               7.36
             ]
           ],
@@ -8998,115 +8856,46 @@
       ],
       "trunkId": "trunk:LC1:L8:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 36.744529214208775,
+      "upstreamLength": 38.43942622175583,
       "homeRun": false,
       "points": [
         [
-          40.26,
-          9.01629510309278,
+          38.94,
+          7.953150773195872,
           7.36
         ],
         [
-          40.26,
-          9.01629510309278,
-          13.249
+          38.94,
+          7.953150773195873,
+          10.15
         ],
         [
-          40.26,
-          4.15,
-          13.249
-        ],
-        [
-          40.26,
-          4.15,
-          13.06
+          38.94,
+          3.8,
+          10.15
         ]
       ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [
         {
           "points": [
             [
-              40.26,
-              9.01629510309278,
+              38.94,
+              7.953150773195872,
               7.36
             ],
             [
-              40.26,
-              9.01629510309278,
-              13.249
+              38.94,
+              7.953150773195873,
+              10.15
             ]
           ],
           "finish": "soffit",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 10.94429510309278,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L8:light:1:L68",
-      "name": "L8 → Wing light · H · front block · front rows",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L8",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L68"
-      ],
-      "trunkId": "trunk:LC1:L8:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 36.744529214208775,
-      "homeRun": false,
-      "points": [
-        [
-          40.26,
-          9.01629510309278,
-          7.36
-        ],
-        [
-          40.26,
-          9.01629510309278,
-          13.249
-        ],
-        [
-          40.26,
-          2.92,
-          13.249
-        ],
-        [
-          40.26,
-          2.92,
-          13.06
-        ]
-      ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              40.26,
-              9.01629510309278,
-              7.36
-            ],
-            [
-              40.26,
-              9.01629510309278,
-              13.249
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 12.174295103092781,
+      "length": 6.943150773195873,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -9126,115 +8915,46 @@
       ],
       "trunkId": "trunk:LC1:L8:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 35.97412148350557,
+      "upstreamLength": 34.22786396057831,
       "homeRun": false,
       "points": [
         [
-          40.86,
-          9.040457474226796,
+          42.22,
+          7.945096649484534,
           7.36
         ],
         [
-          40.86,
-          9.040457474226807,
-          13.249
+          42.22,
+          7.9450966494845385,
+          10.15
         ],
         [
-          40.86,
-          4.15,
-          13.249
-        ],
-        [
-          40.86,
-          4.15,
-          13.06
+          42.22,
+          3.8,
+          10.15
         ]
       ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [
         {
           "points": [
             [
-              40.86,
-              9.040457474226796,
+              42.22,
+              7.945096649484534,
               7.36
             ],
             [
-              40.86,
-              9.040457474226807,
-              13.249
+              42.22,
+              7.9450966494845385,
+              10.15
             ]
           ],
           "finish": "soffit",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 10.968457474226806,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L8:light:1:L70",
-      "name": "L8 → Wing light · H · rear block · front rows",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L8",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L70"
-      ],
-      "trunkId": "trunk:LC1:L8:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 35.97412148350557,
-      "homeRun": false,
-      "points": [
-        [
-          40.86,
-          9.040457474226796,
-          7.36
-        ],
-        [
-          40.86,
-          9.040457474226807,
-          13.249
-        ],
-        [
-          40.86,
-          2.92,
-          13.249
-        ],
-        [
-          40.86,
-          2.92,
-          13.06
-        ]
-      ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              40.86,
-              9.040457474226796,
-              7.36
-            ],
-            [
-              40.86,
-              9.040457474226807,
-              13.249
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 12.198457474226807,
+      "length": 6.935096649484539,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -18739,9 +18459,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "trunk:LC1:E1:light:-1",
+      "id": "trunk:DB1:E1:light:-1",
       "name": "E1 · B · circuit trunk",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -18757,17 +18477,17 @@
       "points": [
         [
           48.895,
-          1.85,
-          -0.55
+          1.75,
+          -1.55
         ],
         [
           48.735,
-          1.85,
-          -0.55
+          1.75,
+          -1.55
         ],
         [
           48.735,
-          1.85,
+          1.75,
           -2.24
         ],
         [
@@ -18851,7 +18571,7 @@
           -7.36
         ]
       ],
-      "length": 69.5751303111792,
+      "length": 68.67513031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -18957,9 +18677,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:-1:L155",
+      "id": "drop:DB1:E1:light:-1:L155",
       "name": "E1 → Exit sign · main doors",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -18967,9 +18687,9 @@
       "itemIds": [
         "L155"
       ],
-      "trunkId": "trunk:LC1:E1:light:-1",
+      "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 69.5751303111792,
+      "upstreamLength": 68.67513031117919,
       "homeRun": false,
       "points": [
         [
@@ -19009,9 +18729,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:-1:L156",
+      "id": "drop:DB1:E1:light:-1:L156",
       "name": "E1 → Exit sign · side door 16.7 · B",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -19019,9 +18739,9 @@
       "itemIds": [
         "L156"
       ],
-      "trunkId": "trunk:LC1:E1:light:-1",
+      "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 55.50013031117919,
+      "upstreamLength": 54.60013031117919,
       "homeRun": false,
       "points": [
         [
@@ -19051,9 +18771,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:-1:L158",
+      "id": "drop:DB1:E1:light:-1:L158",
       "name": "E1 → Exit sign · side door 34.7 · B",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -19061,9 +18781,9 @@
       "itemIds": [
         "L158"
       ],
-      "trunkId": "trunk:LC1:E1:light:-1",
+      "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 37.50013031117919,
+      "upstreamLength": 36.60013031117919,
       "homeRun": false,
       "points": [
         [
@@ -19093,9 +18813,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "trunk:LC1:E1:light:1",
+      "id": "trunk:DB1:E1:light:1",
       "name": "E1 · H · circuit trunk",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -19110,17 +18830,17 @@
       "points": [
         [
           48.895,
-          1.85,
-          -0.55
+          1.75,
+          -1.55
         ],
         [
           48.735,
-          1.85,
-          -0.55
+          1.75,
+          -1.55
         ],
         [
           48.735,
-          1.85,
+          1.75,
           -2.24
         ],
         [
@@ -19199,7 +18919,7 @@
           7.36
         ]
       ],
-      "length": 62.10013031117919,
+      "length": 61.20013031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -19305,9 +19025,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:1:L157",
+      "id": "drop:DB1:E1:light:1:L157",
       "name": "E1 → Exit sign · side door 16.7 · H",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -19315,9 +19035,9 @@
       "itemIds": [
         "L157"
       ],
-      "trunkId": "trunk:LC1:E1:light:1",
+      "trunkId": "trunk:DB1:E1:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 62.10013031117919,
+      "upstreamLength": 61.20013031117919,
       "homeRun": false,
       "points": [
         [
@@ -19347,9 +19067,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:E1:light:1:L159",
+      "id": "drop:DB1:E1:light:1:L159",
       "name": "E1 → Exit sign · side door 34.7 · H",
-      "source": "LC1",
+      "source": "DB1",
       "board": "DB1",
       "circuit": "E1",
       "kind": "light",
@@ -19357,9 +19077,9 @@
       "itemIds": [
         "L159"
       ],
-      "trunkId": "trunk:LC1:E1:light:1",
+      "trunkId": "trunk:DB1:E1:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 44.10013031117919,
+      "upstreamLength": 43.20013031117919,
       "homeRun": false,
       "points": [
         [
@@ -24300,9 +24020,7 @@
         "F232",
         "F234",
         "F236",
-        "F238",
-        "F240",
-        "F241"
+        "F238"
       ],
       "color": "#b46a48",
       "method": "wall-roof-trunk",
@@ -24904,124 +24622,6 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:FC1:F1:fan:-1:F240",
-      "name": "F1 → Ceiling fan · wing B · front",
-      "source": "FC1",
-      "board": "DB1",
-      "circuit": "F1",
-      "kind": "fan",
-      "role": "drop",
-      "itemIds": [
-        "F240"
-      ],
-      "trunkId": "trunk:FC1:F1:fan:-1",
-      "color": "#b46a48",
-      "upstreamLength": 32.2271815833339,
-      "homeRun": false,
-      "points": [
-        [
-          39.3,
-          8.24309922680412,
-          -7.36
-        ],
-        [
-          39.3,
-          8.24309922680412,
-          -10.15
-        ],
-        [
-          39.3,
-          3.3,
-          -10.15
-        ]
-      ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              39.3,
-              8.24309922680412,
-              -7.36
-            ],
-            [
-              39.3,
-              8.24309922680412,
-              -10.15
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 7.73309922680412,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:FC1:F1:fan:-1:F241",
-      "name": "F1 → Ceiling fan · wing B · rear",
-      "source": "FC1",
-      "board": "DB1",
-      "circuit": "F1",
-      "kind": "fan",
-      "role": "drop",
-      "itemIds": [
-        "F241"
-      ],
-      "trunkId": "trunk:FC1:F1:fan:-1",
-      "color": "#b46a48",
-      "upstreamLength": 28.952948727845282,
-      "homeRun": false,
-      "points": [
-        [
-          41.85,
-          8.243099226804118,
-          -7.36
-        ],
-        [
-          41.85,
-          8.243099226804125,
-          -10.15
-        ],
-        [
-          41.85,
-          3.3,
-          -10.15
-        ]
-      ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              41.85,
-              8.243099226804118,
-              -7.36
-            ],
-            [
-              41.85,
-              8.243099226804125,
-              -10.15
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 7.733099226804125,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
       "id": "trunk:FC1:F1:fan:1",
       "name": "F1 · H · circuit trunk",
       "source": "FC1",
@@ -25036,9 +24636,7 @@
         "F233",
         "F235",
         "F237",
-        "F239",
-        "F242",
-        "F243"
+        "F239"
       ],
       "color": "#b46a48",
       "method": "wall-roof-trunk",
@@ -25640,58 +25238,223 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:FC1:F1:fan:1:F242",
-      "name": "F1 → Ceiling fan · wing H · front",
+      "id": "trunk:FC1:F5:fan:-1",
+      "name": "F5 · B · circuit trunk",
       "source": "FC1",
       "board": "DB1",
-      "circuit": "F1",
+      "circuit": "F5",
       "kind": "fan",
-      "role": "drop",
+      "role": "trunk",
       "itemIds": [
-        "F242"
+        "F240",
+        "F241"
       ],
-      "trunkId": "trunk:FC1:F1:fan:1",
       "color": "#b46a48",
-      "upstreamLength": 38.8271815833339,
-      "homeRun": false,
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
       "points": [
         [
-          39.3,
-          8.24309922680412,
-          7.36
+          48.895,
+          1.95,
+          0.4
         ],
         [
-          39.3,
-          8.24309922680412,
-          10.15
+          48.735,
+          1.95,
+          0.4
         ],
         [
-          39.3,
-          3.3,
-          10.15
+          48.735,
+          1.95,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          6.1000000000000005,
+          -3.3
+        ],
+        [
+          53.016,
+          6.1000000000000005,
+          -7.36
+        ],
+        [
+          44.175,
+          6.1000000000000005,
+          -7.36
+        ],
+        [
+          44.175,
+          7.04,
+          -7.36
+        ],
+        [
+          43.535,
+          7.04,
+          -7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          -7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          -7.36
+        ],
+        [
+          38.05,
+          7.236333762886593,
+          -7.36
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "length": 33.83219768896557,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
         {
           "points": [
             [
-              39.3,
-              8.24309922680412,
-              7.36
+              44.175,
+              7.04,
+              -7.36
             ],
             [
-              39.3,
-              8.24309922680412,
-              10.15
+              43.535,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              -7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ],
+            [
+              38.05,
+              7.236333762886593,
+              -7.36
             ]
           ],
           "finish": "soffit",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 7.73309922680412,
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F5:fan:-1:F240",
+      "name": "F5 → Wall fan · wing B · 1 · held review",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F5",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F240"
+      ],
+      "trunkId": "trunk:FC1:F5:fan:-1",
+      "color": "#b46a48",
+      "upstreamLength": 33.83219768896557,
+      "homeRun": false,
+      "points": [
+        [
+          38.05,
+          7.236333762886593,
+          -7.36
+        ],
+        [
+          38.05,
+          7.236333762886593,
+          -13.249
+        ],
+        [
+          38.05,
+          4.05,
+          -13.249
+        ],
+        [
+          38.05,
+          4.05,
+          -13.06
+        ]
+      ],
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              38.05,
+              7.236333762886593,
+              -7.36
+            ],
+            [
+              38.05,
+              7.236333762886593,
+              -13.249
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 9.264333762886594,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -25699,58 +25462,1459 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:FC1:F1:fan:1:F243",
-      "name": "F1 → Ceiling fan · wing H · rear",
+      "id": "drop:FC1:F5:fan:-1:F241",
+      "name": "F5 → Wall fan · wing B · 2 · held review",
       "source": "FC1",
       "board": "DB1",
-      "circuit": "F1",
+      "circuit": "F5",
       "kind": "fan",
       "role": "drop",
       "itemIds": [
-        "F243"
+        "F241"
       ],
-      "trunkId": "trunk:FC1:F1:fan:1",
+      "trunkId": "trunk:FC1:F5:fan:-1",
       "color": "#b46a48",
-      "upstreamLength": 35.552948727845276,
+      "upstreamLength": 27.3479326222136,
       "homeRun": false,
       "points": [
         [
-          41.85,
-          8.243099226804118,
-          7.36
+          43.1,
+          7.236333762886598,
+          -7.36
         ],
         [
-          41.85,
-          8.243099226804125,
-          10.15
+          43.1,
+          7.2363337628865985,
+          -13.249
         ],
         [
-          41.85,
-          3.3,
-          10.15
+          43.1,
+          4.05,
+          -13.249
+        ],
+        [
+          43.1,
+          4.05,
+          -13.06
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
       "coverPaths": [
         {
           "points": [
             [
-              41.85,
-              8.243099226804118,
-              7.36
+              43.1,
+              7.236333762886598,
+              -7.36
             ],
             [
-              41.85,
-              8.243099226804125,
-              10.15
+              43.1,
+              7.2363337628865985,
+              -13.249
             ]
           ],
           "finish": "soffit",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 7.733099226804125,
+      "length": 9.264333762886599,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:FC1:F5:fan:1",
+      "name": "F5 · H · circuit trunk",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F5",
+      "kind": "fan",
+      "role": "trunk",
+      "itemIds": [
+        "F242",
+        "F243"
+      ],
+      "color": "#b46a48",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.95,
+          0.4
+        ],
+        [
+          48.735,
+          1.95,
+          0.4
+        ],
+        [
+          48.735,
+          1.95,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          6.1000000000000005,
+          -3.3
+        ],
+        [
+          53.016,
+          6.1000000000000005,
+          7.36
+        ],
+        [
+          44.175,
+          6.1000000000000005,
+          7.36
+        ],
+        [
+          44.175,
+          7.04,
+          7.36
+        ],
+        [
+          43.535,
+          7.04,
+          7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          7.36
+        ],
+        [
+          38.05,
+          7.236333762886593,
+          7.36
+        ]
+      ],
+      "length": 40.43219768896557,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              7.36
+            ],
+            [
+              43.535,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ],
+            [
+              38.05,
+              7.236333762886593,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F5:fan:1:F242",
+      "name": "F5 → Wall fan · wing H · 1 · held review",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F5",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F242"
+      ],
+      "trunkId": "trunk:FC1:F5:fan:1",
+      "color": "#b46a48",
+      "upstreamLength": 40.43219768896557,
+      "homeRun": false,
+      "points": [
+        [
+          38.05,
+          7.236333762886593,
+          7.36
+        ],
+        [
+          38.05,
+          7.236333762886593,
+          13.249
+        ],
+        [
+          38.05,
+          4.05,
+          13.249
+        ],
+        [
+          38.05,
+          4.05,
+          13.06
+        ]
+      ],
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              38.05,
+              7.236333762886593,
+              7.36
+            ],
+            [
+              38.05,
+              7.236333762886593,
+              13.249
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 9.264333762886594,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F5:fan:1:F243",
+      "name": "F5 → Wall fan · wing H · 2 · held review",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F5",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F243"
+      ],
+      "trunkId": "trunk:FC1:F5:fan:1",
+      "color": "#b46a48",
+      "upstreamLength": 33.94793262221361,
+      "homeRun": false,
+      "points": [
+        [
+          43.1,
+          7.236333762886598,
+          7.36
+        ],
+        [
+          43.1,
+          7.2363337628865985,
+          13.249
+        ],
+        [
+          43.1,
+          4.05,
+          13.249
+        ],
+        [
+          43.1,
+          4.05,
+          13.06
+        ]
+      ],
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              43.1,
+              7.236333762886598,
+              7.36
+            ],
+            [
+              43.1,
+              7.2363337628865985,
+              13.249
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 9.264333762886599,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:FC1:F2:fan:-1",
+      "name": "F2 · B · circuit trunk",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "trunk",
+      "itemIds": [
+        "F244",
+        "F246",
+        "F248",
+        "F-NAVE-B-2P",
+        "F-NAVE-B-3",
+        "F-NAVE-B-5",
+        "F-NAVE-B-7",
+        "F-NAVE-B-9"
+      ],
+      "color": "#b46a48",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.95,
+          0.4
+        ],
+        [
+          48.735,
+          1.95,
+          0.4
+        ],
+        [
+          48.735,
+          1.95,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          6.0120000000000005,
+          -3.3
+        ],
+        [
+          53.016,
+          6.0120000000000005,
+          -7.36
+        ],
+        [
+          44.175,
+          6.0120000000000005,
+          -7.36
+        ],
+        [
+          44.175,
+          7.04,
+          -7.36
+        ],
+        [
+          43.535,
+          7.04,
+          -7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          -7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          -7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          -7.36
+        ],
+        [
+          37.615,
+          7.04,
+          -7.36
+        ],
+        [
+          36.975,
+          7.04,
+          -7.36
+        ],
+        [
+          36.975,
+          6.0120000000000005,
+          -7.36
+        ],
+        [
+          5.475000000000001,
+          6.0120000000000005,
+          -7.36
+        ]
+      ],
+      "length": 67.57613031117918,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              -7.36
+            ],
+            [
+              43.535,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              -7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ],
+            [
+              37.615,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              -7.36
+            ],
+            [
+              36.975,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:-1:F244",
+      "name": "F2 → Wall fan · axis 4 · B",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F244"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:-1",
+      "color": "#b46a48",
+      "upstreamLength": 58.576130311179185,
+      "homeRun": false,
+      "points": [
+        [
+          14.475000000000001,
+          6.0120000000000005,
+          -7.36
+        ],
+        [
+          14.475000000000001,
+          5.55,
+          -7.36
+        ],
+        [
+          14.475,
+          5.55,
+          -7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:-1:F246",
+      "name": "F2 → Wall fan · axis 6 · B",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F246"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:-1",
+      "color": "#b46a48",
+      "upstreamLength": 49.576130311179185,
+      "homeRun": false,
+      "points": [
+        [
+          23.475,
+          6.0120000000000005,
+          -7.36
+        ],
+        [
+          23.475,
+          5.55,
+          -7.36
+        ],
+        [
+          23.475,
+          5.55,
+          -7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:-1:F248",
+      "name": "F2 → Wall fan · axis 8 · B",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F248"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:-1",
+      "color": "#b46a48",
+      "upstreamLength": 40.576130311179185,
+      "homeRun": false,
+      "points": [
+        [
+          32.475,
+          6.0120000000000005,
+          -7.36
+        ],
+        [
+          32.475,
+          5.55,
+          -7.36
+        ],
+        [
+          32.475,
+          5.55,
+          -7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:-1:F-NAVE-B-2P",
+      "name": "F2 → Wall fan · axis 2′ · B",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F-NAVE-B-2P"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:-1",
+      "color": "#b46a48",
+      "upstreamLength": 67.57613031117918,
+      "homeRun": false,
+      "points": [
+        [
+          5.475000000000001,
+          6.0120000000000005,
+          -7.36
+        ],
+        [
+          5.475000000000001,
+          5.55,
+          -7.36
+        ],
+        [
+          5.475,
+          5.55,
+          -7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:-1:F-NAVE-B-3",
+      "name": "F2 → Wall fan · axis 3 · B",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F-NAVE-B-3"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:-1",
+      "color": "#b46a48",
+      "upstreamLength": 63.076130311179185,
+      "homeRun": false,
+      "points": [
+        [
+          9.975000000000001,
+          6.0120000000000005,
+          -7.36
+        ],
+        [
+          9.975000000000001,
+          5.55,
+          -7.36
+        ],
+        [
+          9.975,
+          5.55,
+          -7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:-1:F-NAVE-B-5",
+      "name": "F2 → Wall fan · axis 5 · B",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F-NAVE-B-5"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:-1",
+      "color": "#b46a48",
+      "upstreamLength": 54.076130311179185,
+      "homeRun": false,
+      "points": [
+        [
+          18.975,
+          6.0120000000000005,
+          -7.36
+        ],
+        [
+          18.975,
+          5.55,
+          -7.36
+        ],
+        [
+          18.975,
+          5.55,
+          -7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:-1:F-NAVE-B-7",
+      "name": "F2 → Wall fan · axis 7 · B",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F-NAVE-B-7"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:-1",
+      "color": "#b46a48",
+      "upstreamLength": 45.076130311179185,
+      "homeRun": false,
+      "points": [
+        [
+          27.975,
+          6.0120000000000005,
+          -7.36
+        ],
+        [
+          27.975,
+          5.55,
+          -7.36
+        ],
+        [
+          27.975,
+          5.55,
+          -7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:-1:F-NAVE-B-9",
+      "name": "F2 → Wall fan · axis 9 · B",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F-NAVE-B-9"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:-1",
+      "color": "#b46a48",
+      "upstreamLength": 36.076130311179185,
+      "homeRun": false,
+      "points": [
+        [
+          36.975,
+          6.0120000000000005,
+          -7.36
+        ],
+        [
+          36.975,
+          5.55,
+          -7.36
+        ],
+        [
+          36.975,
+          5.55,
+          -7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:FC1:F2:fan:1",
+      "name": "F2 · H · circuit trunk",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "trunk",
+      "itemIds": [
+        "F245",
+        "F247",
+        "F249",
+        "F-NAVE-H-2P",
+        "F-NAVE-H-3",
+        "F-NAVE-H-5",
+        "F-NAVE-H-7",
+        "F-NAVE-H-9"
+      ],
+      "color": "#b46a48",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.95,
+          0.4
+        ],
+        [
+          48.735,
+          1.95,
+          0.4
+        ],
+        [
+          48.735,
+          1.95,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          6.0120000000000005,
+          -3.3
+        ],
+        [
+          53.016,
+          6.0120000000000005,
+          7.36
+        ],
+        [
+          44.175,
+          6.0120000000000005,
+          7.36
+        ],
+        [
+          44.175,
+          7.04,
+          7.36
+        ],
+        [
+          43.535,
+          7.04,
+          7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          7.36
+        ],
+        [
+          37.615,
+          7.04,
+          7.36
+        ],
+        [
+          36.975,
+          7.04,
+          7.36
+        ],
+        [
+          36.975,
+          6.0120000000000005,
+          7.36
+        ],
+        [
+          5.475000000000001,
+          6.0120000000000005,
+          7.36
+        ]
+      ],
+      "length": 74.17613031117918,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              7.36
+            ],
+            [
+              43.535,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              7.36
+            ],
+            [
+              37.615,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              7.36
+            ],
+            [
+              36.975,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:1:F245",
+      "name": "F2 → Wall fan · axis 4 · H",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F245"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:1",
+      "color": "#b46a48",
+      "upstreamLength": 65.17613031117918,
+      "homeRun": false,
+      "points": [
+        [
+          14.475000000000001,
+          6.0120000000000005,
+          7.36
+        ],
+        [
+          14.475000000000001,
+          5.55,
+          7.36
+        ],
+        [
+          14.475,
+          5.55,
+          7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:1:F247",
+      "name": "F2 → Wall fan · axis 6 · H",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F247"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:1",
+      "color": "#b46a48",
+      "upstreamLength": 56.176130311179186,
+      "homeRun": false,
+      "points": [
+        [
+          23.475,
+          6.0120000000000005,
+          7.36
+        ],
+        [
+          23.475,
+          5.55,
+          7.36
+        ],
+        [
+          23.475,
+          5.55,
+          7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:1:F249",
+      "name": "F2 → Wall fan · axis 8 · H",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F249"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:1",
+      "color": "#b46a48",
+      "upstreamLength": 47.176130311179186,
+      "homeRun": false,
+      "points": [
+        [
+          32.475,
+          6.0120000000000005,
+          7.36
+        ],
+        [
+          32.475,
+          5.55,
+          7.36
+        ],
+        [
+          32.475,
+          5.55,
+          7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:1:F-NAVE-H-2P",
+      "name": "F2 → Wall fan · axis 2′ · H",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F-NAVE-H-2P"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:1",
+      "color": "#b46a48",
+      "upstreamLength": 74.17613031117918,
+      "homeRun": false,
+      "points": [
+        [
+          5.475000000000001,
+          6.0120000000000005,
+          7.36
+        ],
+        [
+          5.475000000000001,
+          5.55,
+          7.36
+        ],
+        [
+          5.475,
+          5.55,
+          7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:1:F-NAVE-H-3",
+      "name": "F2 → Wall fan · axis 3 · H",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F-NAVE-H-3"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:1",
+      "color": "#b46a48",
+      "upstreamLength": 69.67613031117918,
+      "homeRun": false,
+      "points": [
+        [
+          9.975000000000001,
+          6.0120000000000005,
+          7.36
+        ],
+        [
+          9.975000000000001,
+          5.55,
+          7.36
+        ],
+        [
+          9.975,
+          5.55,
+          7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:1:F-NAVE-H-5",
+      "name": "F2 → Wall fan · axis 5 · H",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F-NAVE-H-5"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:1",
+      "color": "#b46a48",
+      "upstreamLength": 60.676130311179186,
+      "homeRun": false,
+      "points": [
+        [
+          18.975,
+          6.0120000000000005,
+          7.36
+        ],
+        [
+          18.975,
+          5.55,
+          7.36
+        ],
+        [
+          18.975,
+          5.55,
+          7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:1:F-NAVE-H-7",
+      "name": "F2 → Wall fan · axis 7 · H",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F-NAVE-H-7"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:1",
+      "color": "#b46a48",
+      "upstreamLength": 51.676130311179186,
+      "homeRun": false,
+      "points": [
+        [
+          27.975,
+          6.0120000000000005,
+          7.36
+        ],
+        [
+          27.975,
+          5.55,
+          7.36
+        ],
+        [
+          27.975,
+          5.55,
+          7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:FC1:F2:fan:1:F-NAVE-H-9",
+      "name": "F2 → Wall fan · axis 9 · H",
+      "source": "FC1",
+      "board": "DB1",
+      "circuit": "F2",
+      "kind": "fan",
+      "role": "drop",
+      "itemIds": [
+        "F-NAVE-H-9"
+      ],
+      "trunkId": "trunk:FC1:F2:fan:1",
+      "color": "#b46a48",
+      "upstreamLength": 42.676130311179186,
+      "homeRun": false,
+      "points": [
+        [
+          36.975,
+          6.0120000000000005,
+          7.36
+        ],
+        [
+          36.975,
+          5.55,
+          7.36
+        ],
+        [
+          36.975,
+          5.55,
+          7.07
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 0.7520000000000007,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -26944,7 +28108,6 @@
         "S267",
         "S269",
         "S271",
-        "S275",
         "S276"
       ],
       "color": "#3985c2",
@@ -27400,67 +28563,8 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:AV1:A1:audio:-1:S275",
-      "name": "A1 → Wing speaker · B · front block",
-      "source": "AV1",
-      "board": "DB1",
-      "circuit": "A1",
-      "kind": "audio",
-      "role": "drop",
-      "itemIds": [
-        "S275"
-      ],
-      "trunkId": "trunk:AV1:A1:audio:-1",
-      "color": "#3985c2",
-      "upstreamLength": 35.06942622175582,
-      "homeRun": true,
-      "points": [
-        [
-          38.94,
-          7.953150773195872,
-          -7.36
-        ],
-        [
-          38.94,
-          7.953150773195873,
-          -11.6
-        ],
-        [
-          38.94,
-          3,
-          -11.6
-        ]
-      ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              38.94,
-              7.953150773195872,
-              -7.36
-            ],
-            [
-              38.94,
-              7.953150773195873,
-              -11.6
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 9.193150773195871,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
       "id": "drop:AV1:A1:audio:-1:S276",
-      "name": "A1 → Wing speaker · B · rear block",
+      "name": "A1 → Wing speaker · B · toward entrance · held",
       "source": "AV1",
       "board": "DB1",
       "circuit": "A1",
@@ -27471,46 +28575,81 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 30.857863960578303,
+      "upstreamLength": 28.966999999999995,
       "homeRun": true,
       "points": [
         [
-          42.22,
-          7.945096649484534,
+          43.72,
+          7.04,
           -7.36
         ],
         [
-          42.22,
-          7.9450966494845385,
-          -11.6
+          43.72,
+          6.932303102135284,
+          -7.439581081081082
         ],
         [
-          42.22,
-          3,
-          -11.6
+          43.72,
+          6.737637225623414,
+          -8.314972972972974
+        ],
+        [
+          43.72,
+          6.736978092783508,
+          -8.394554054054055
+        ],
+        [
+          43.72,
+          6.736978092783508,
+          -13.249
+        ],
+        [
+          43.72,
+          4.85,
+          -13.249
+        ],
+        [
+          43.72,
+          4.85,
+          -13.06
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
       "coverPaths": [
         {
           "points": [
             [
-              42.22,
-              7.945096649484534,
+              43.72,
+              7.04,
               -7.36
             ],
             [
-              42.22,
-              7.9450966494845385,
-              -11.6
+              43.72,
+              6.932303102135284,
+              -7.439581081081082
+            ],
+            [
+              43.72,
+              6.737637225623414,
+              -8.314972972972974
+            ],
+            [
+              43.72,
+              6.736978092783508,
+              -8.394554054054055
+            ],
+            [
+              43.72,
+              6.736978092783508,
+              -13.249
             ]
           ],
           "finish": "soffit",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 9.185096649484539,
+      "length": 8.040692614226739,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -27532,7 +28671,6 @@
         "S268",
         "S270",
         "S272",
-        "S277",
         "S278"
       ],
       "color": "#3985c2",
@@ -27988,67 +29126,8 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:AV1:A1:audio:1:S277",
-      "name": "A1 → Wing speaker · H · front block",
-      "source": "AV1",
-      "board": "DB1",
-      "circuit": "A1",
-      "kind": "audio",
-      "role": "drop",
-      "itemIds": [
-        "S277"
-      ],
-      "trunkId": "trunk:AV1:A1:audio:1",
-      "color": "#3985c2",
-      "upstreamLength": 41.66942622175582,
-      "homeRun": true,
-      "points": [
-        [
-          38.94,
-          7.953150773195872,
-          7.36
-        ],
-        [
-          38.94,
-          7.953150773195873,
-          11.6
-        ],
-        [
-          38.94,
-          3,
-          11.6
-        ]
-      ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              38.94,
-              7.953150773195872,
-              7.36
-            ],
-            [
-              38.94,
-              7.953150773195873,
-              11.6
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 9.193150773195871,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
       "id": "drop:AV1:A1:audio:1:S278",
-      "name": "A1 → Wing speaker · H · rear block",
+      "name": "A1 → Wing speaker · H · toward entrance · held",
       "source": "AV1",
       "board": "DB1",
       "circuit": "A1",
@@ -28059,46 +29138,81 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 37.4578639605783,
+      "upstreamLength": 35.56699999999999,
       "homeRun": true,
       "points": [
         [
-          42.22,
-          7.945096649484534,
+          43.72,
+          7.04,
           7.36
         ],
         [
-          42.22,
-          7.9450966494845385,
-          11.6
+          43.72,
+          6.932303102135284,
+          7.439581081081082
         ],
         [
-          42.22,
-          3,
-          11.6
+          43.72,
+          6.737637225623414,
+          8.314972972972974
+        ],
+        [
+          43.72,
+          6.736978092783508,
+          8.394554054054055
+        ],
+        [
+          43.72,
+          6.736978092783508,
+          13.249
+        ],
+        [
+          43.72,
+          4.85,
+          13.249
+        ],
+        [
+          43.72,
+          4.85,
+          13.06
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
       "coverPaths": [
         {
           "points": [
             [
-              42.22,
-              7.945096649484534,
+              43.72,
+              7.04,
               7.36
             ],
             [
-              42.22,
-              7.9450966494845385,
-              11.6
+              43.72,
+              6.932303102135284,
+              7.439581081081082
+            ],
+            [
+              43.72,
+              6.737637225623414,
+              8.314972972972974
+            ],
+            [
+              43.72,
+              6.736978092783508,
+              8.394554054054055
+            ],
+            [
+              43.72,
+              6.736978092783508,
+              13.249
             ]
           ],
           "finish": "soffit",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 9.185096649484539,
+      "length": 8.040692614226739,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -30671,6 +31785,1671 @@
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:DB1:P1:power:-1",
+      "name": "P1 · B · circuit trunk",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "P1",
+      "kind": "power",
+      "role": "trunk",
+      "itemIds": [
+        "P-SANCT-B",
+        "P-NAVE-B"
+      ],
+      "color": "#2f9c95",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.75,
+          -1.55
+        ],
+        [
+          48.735,
+          1.75,
+          -1.55
+        ],
+        [
+          48.735,
+          1.75,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          6.1080000000000005,
+          -3.3
+        ],
+        [
+          53.016,
+          6.1080000000000005,
+          -7.36
+        ],
+        [
+          44.175,
+          6.1080000000000005,
+          -7.36
+        ],
+        [
+          44.175,
+          7.04,
+          -7.36
+        ],
+        [
+          43.535,
+          7.04,
+          -7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          -7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          -7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          -7.36
+        ],
+        [
+          37.615,
+          7.04,
+          -7.36
+        ],
+        [
+          36.975,
+          7.04,
+          -7.36
+        ],
+        [
+          36.975,
+          6.1080000000000005,
+          -7.36
+        ],
+        [
+          22.83,
+          6.1080000000000005,
+          -7.36
+        ]
+      ],
+      "length": 48.37513031117919,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              -7.36
+            ],
+            [
+              43.535,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              -7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ],
+            [
+              37.615,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              -7.36
+            ],
+            [
+              36.975,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB1:P1:power:-1:P-SANCT-B",
+      "name": "P1 → Socket · sanctuary side B · axis 10 pier",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "P1",
+      "kind": "power",
+      "role": "drop",
+      "itemIds": [
+        "P-SANCT-B"
+      ],
+      "trunkId": "trunk:DB1:P1:power:-1",
+      "color": "#2f9c95",
+      "upstreamLength": 23.450000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          44.175,
+          6.1080000000000005,
+          -7.36
+        ],
+        [
+          44.175,
+          0.85,
+          -7.36
+        ],
+        [
+          43.89,
+          0.85,
+          -7.36
+        ],
+        [
+          43.89,
+          0.85,
+          -7.25
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 5.652999999999998,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB1:P1:power:-1:P-NAVE-B",
+      "name": "P1 → Socket · mid-nave side B · axis 6",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "P1",
+      "kind": "power",
+      "role": "drop",
+      "itemIds": [
+        "P-NAVE-B"
+      ],
+      "trunkId": "trunk:DB1:P1:power:-1",
+      "color": "#2f9c95",
+      "upstreamLength": 48.37513031117919,
+      "homeRun": false,
+      "points": [
+        [
+          22.83,
+          6.1080000000000005,
+          -7.36
+        ],
+        [
+          22.83,
+          0.45,
+          -7.36
+        ],
+        [
+          22.83,
+          0.45,
+          -7.25
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 5.768000000000001,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:DB2:P3:power:-1",
+      "name": "P3 · B · circuit trunk",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "P3",
+      "kind": "power",
+      "role": "trunk",
+      "itemIds": [
+        "P-TOWER-B"
+      ],
+      "color": "#2f9c95",
+      "method": "underfloor-event",
+      "installation": "Dedicated buried duct from DB-2 below the entrance-hall floor to the tower base; duct, depth, draw pits and water sealing pending.",
+      "points": [
+        [
+          2.73,
+          1.5,
+          -3.3
+        ],
+        [
+          2.73,
+          -0.12,
+          -3.3
+        ],
+        [
+          2.73,
+          -0.12,
+          -7.7
+        ],
+        [
+          0.45,
+          -0.12,
+          -7.7
+        ]
+      ],
+      "length": 8.3,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:P3:power:-1:P-TOWER-B",
+      "name": "P3 → Event power · tower B · inside the porch",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "P3",
+      "kind": "power",
+      "role": "drop",
+      "itemIds": [
+        "P-TOWER-B"
+      ],
+      "trunkId": "trunk:DB2:P3:power:-1",
+      "color": "#2f9c95",
+      "upstreamLength": 8.3,
+      "homeRun": false,
+      "points": [
+        [
+          0.45,
+          -0.12,
+          -7.7
+        ],
+        [
+          0.45,
+          1.3,
+          -7.7
+        ],
+        [
+          0.45,
+          1.3,
+          -7.85
+        ]
+      ],
+      "method": "underfloor-event",
+      "installation": "Buried duct below the entrance-hall floor and tower plinth, rising inside the solid tower pier to the cabinet. Duct size, depth, draw pits, water sealing and separation pending; no chase through the arch mouldings.",
+      "coverPaths": [],
+      "length": 1.5699999999999994,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:DB1:P2:power:1",
+      "name": "P2 · H · circuit trunk",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "P2",
+      "kind": "power",
+      "role": "trunk",
+      "itemIds": [
+        "P-SANCT-H",
+        "P-NAVE-H"
+      ],
+      "color": "#2f9c95",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.75,
+          -1.55
+        ],
+        [
+          48.735,
+          1.75,
+          -1.55
+        ],
+        [
+          48.735,
+          1.75,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          6.1160000000000005,
+          -3.3
+        ],
+        [
+          53.016,
+          6.1160000000000005,
+          7.36
+        ],
+        [
+          44.175,
+          6.1160000000000005,
+          7.36
+        ],
+        [
+          44.175,
+          7.04,
+          7.36
+        ],
+        [
+          43.535,
+          7.04,
+          7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          7.36
+        ],
+        [
+          37.615,
+          7.04,
+          7.36
+        ],
+        [
+          36.975,
+          7.04,
+          7.36
+        ],
+        [
+          36.975,
+          6.1160000000000005,
+          7.36
+        ],
+        [
+          22.83,
+          6.1160000000000005,
+          7.36
+        ]
+      ],
+      "length": 54.96713031117919,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              7.36
+            ],
+            [
+              43.535,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              7.36
+            ],
+            [
+              37.615,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              7.36
+            ],
+            [
+              36.975,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB1:P2:power:1:P-SANCT-H",
+      "name": "P2 → Socket · sanctuary side H · axis 10 pier",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "P2",
+      "kind": "power",
+      "role": "drop",
+      "itemIds": [
+        "P-SANCT-H"
+      ],
+      "trunkId": "trunk:DB1:P2:power:1",
+      "color": "#2f9c95",
+      "upstreamLength": 30.058000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          44.175,
+          6.1160000000000005,
+          7.36
+        ],
+        [
+          44.175,
+          0.85,
+          7.36
+        ],
+        [
+          43.89,
+          0.85,
+          7.36
+        ],
+        [
+          43.89,
+          0.85,
+          7.25
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 5.660999999999998,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB1:P2:power:1:P-NAVE-H",
+      "name": "P2 → Socket · mid-nave side H · axis 6",
+      "source": "DB1",
+      "board": "DB1",
+      "circuit": "P2",
+      "kind": "power",
+      "role": "drop",
+      "itemIds": [
+        "P-NAVE-H"
+      ],
+      "trunkId": "trunk:DB1:P2:power:1",
+      "color": "#2f9c95",
+      "upstreamLength": 54.96713031117919,
+      "homeRun": false,
+      "points": [
+        [
+          22.83,
+          6.1160000000000005,
+          7.36
+        ],
+        [
+          22.83,
+          0.45,
+          7.36
+        ],
+        [
+          22.83,
+          0.45,
+          7.25
+        ]
+      ],
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 5.776000000000001,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:DB2:P4:power:1",
+      "name": "P4 · H · circuit trunk",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "P4",
+      "kind": "power",
+      "role": "trunk",
+      "itemIds": [
+        "P-TOWER-H"
+      ],
+      "color": "#2f9c95",
+      "method": "underfloor-event",
+      "installation": "Dedicated buried duct from DB-2 below the entrance-hall floor to the tower base; duct, depth, draw pits and water sealing pending.",
+      "points": [
+        [
+          2.73,
+          1.5,
+          -3.3
+        ],
+        [
+          2.73,
+          -0.12,
+          -3.3
+        ],
+        [
+          2.73,
+          -0.12,
+          7.7
+        ],
+        [
+          0.45,
+          -0.12,
+          7.7
+        ]
+      ],
+      "length": 14.9,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:P4:power:1:P-TOWER-H",
+      "name": "P4 → Event power · tower H · inside the porch",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "P4",
+      "kind": "power",
+      "role": "drop",
+      "itemIds": [
+        "P-TOWER-H"
+      ],
+      "trunkId": "trunk:DB2:P4:power:1",
+      "color": "#2f9c95",
+      "upstreamLength": 14.9,
+      "homeRun": false,
+      "points": [
+        [
+          0.45,
+          -0.12,
+          7.7
+        ],
+        [
+          0.45,
+          1.3,
+          7.7
+        ],
+        [
+          0.45,
+          1.3,
+          7.85
+        ]
+      ],
+      "method": "underfloor-event",
+      "installation": "Buried duct below the entrance-hall floor and tower plinth, rising inside the solid tower pier to the cabinet. Duct size, depth, draw pits, water sealing and separation pending; no chase through the arch mouldings.",
+      "coverPaths": [],
+      "length": 1.5699999999999994,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:DB2:L10:light:-1",
+      "name": "L10 · B · circuit trunk",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L-STATUE-C-ARCH",
+        "L-STATUE-C-JAMB-1",
+        "L-STATUE-C-CANDLE-1",
+        "L-STATUE-B-ARCH",
+        "L-STATUE-B-JAMB-1",
+        "L-STATUE-B-CANDLE-1",
+        "L-STATUE-B-JAMB-2",
+        "L-STATUE-B-CANDLE-2"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          2.73,
+          1.5,
+          -3.3
+        ],
+        [
+          2.35,
+          1.5,
+          -3.3
+        ],
+        [
+          2.35,
+          7.65,
+          -3.3
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ]
+      ],
+      "length": 12.1,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-C-ARCH",
+      "name": "L10 → Hidden arch light · Assumption of Our Lady",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-C-ARCH"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          0
+        ],
+        [
+          2.35,
+          15.64,
+          0
+        ],
+        [
+          2.13,
+          15.64,
+          0
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 17.08,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-C-JAMB-1",
+      "name": "L10 → Hidden jamb light · Assumption of Our Lady · B side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-C-JAMB-1"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -0.905
+        ],
+        [
+          2.35,
+          13.3,
+          -0.905
+        ],
+        [
+          2.13,
+          13.3,
+          -0.905
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 13.835,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-C-CANDLE-1",
+      "name": "L10 → Statue candle light · Assumption of Our Lady · B side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-C-CANDLE-1"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -0.47
+        ],
+        [
+          2.35,
+          11.8,
+          -0.47
+        ],
+        [
+          2.1,
+          11.8,
+          -0.47
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 12.8,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-B-ARCH",
+      "name": "L10 → Hidden arch light · Saint Peter",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-B-ARCH"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -5.48
+        ],
+        [
+          2.35,
+          12.62,
+          -5.48
+        ],
+        [
+          2.13,
+          12.62,
+          -5.48
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 8.58,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-B-JAMB-1",
+      "name": "L10 → Hidden jamb light · Saint Peter · B side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-B-JAMB-1"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -5.985
+        ],
+        [
+          2.35,
+          11.05,
+          -5.985
+        ],
+        [
+          2.13,
+          11.05,
+          -5.985
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 6.505000000000001,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-B-CANDLE-1",
+      "name": "L10 → Statue candle light · Saint Peter · B side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-B-CANDLE-1"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -5.79
+        ],
+        [
+          2.35,
+          10.08,
+          -5.79
+        ],
+        [
+          2.1,
+          10.08,
+          -5.79
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 5.76,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-B-JAMB-2",
+      "name": "L10 → Hidden jamb light · Saint Peter · H side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-B-JAMB-2"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -4.9750000000000005
+        ],
+        [
+          2.35,
+          11.05,
+          -4.9750000000000005
+        ],
+        [
+          2.13,
+          11.05,
+          -4.9750000000000005
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 7.515000000000001,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:-1:L-STATUE-B-CANDLE-2",
+      "name": "L10 → Statue candle light · Saint Peter · H side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-B-CANDLE-2"
+      ],
+      "trunkId": "trunk:DB2:L10:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 12.1,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -7.36
+        ],
+        [
+          2.35,
+          7.65,
+          -5.170000000000001
+        ],
+        [
+          2.35,
+          10.08,
+          -5.170000000000001
+        ],
+        [
+          2.1,
+          10.08,
+          -5.170000000000001
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 6.379999999999999,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:DB2:L10:light:1",
+      "name": "L10 · H · circuit trunk",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L-STATUE-C-JAMB-2",
+        "L-STATUE-C-CANDLE-2",
+        "L-STATUE-H-ARCH",
+        "L-STATUE-H-JAMB-1",
+        "L-STATUE-H-CANDLE-1",
+        "L-STATUE-H-JAMB-2",
+        "L-STATUE-H-CANDLE-2"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          2.73,
+          1.5,
+          -3.3
+        ],
+        [
+          2.35,
+          1.5,
+          -3.3
+        ],
+        [
+          2.35,
+          7.65,
+          -3.3
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ]
+      ],
+      "length": 18.700000000000003,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-C-JAMB-2",
+      "name": "L10 → Hidden jamb light · Assumption of Our Lady · H side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-C-JAMB-2"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          0.905
+        ],
+        [
+          2.35,
+          13.3,
+          0.905
+        ],
+        [
+          2.13,
+          13.3,
+          0.905
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 13.835,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-C-CANDLE-2",
+      "name": "L10 → Statue candle light · Assumption of Our Lady · H side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-C-CANDLE-2"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          0.47
+        ],
+        [
+          2.35,
+          11.8,
+          0.47
+        ],
+        [
+          2.1,
+          11.8,
+          0.47
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 12.8,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-H-ARCH",
+      "name": "L10 → Hidden arch light · Saint Paul",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-H-ARCH"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          5.48
+        ],
+        [
+          2.35,
+          12.62,
+          5.48
+        ],
+        [
+          2.13,
+          12.62,
+          5.48
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 8.58,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-H-JAMB-1",
+      "name": "L10 → Hidden jamb light · Saint Paul · B side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-H-JAMB-1"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          4.9750000000000005
+        ],
+        [
+          2.35,
+          11.05,
+          4.9750000000000005
+        ],
+        [
+          2.13,
+          11.05,
+          4.9750000000000005
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 7.515000000000001,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-H-CANDLE-1",
+      "name": "L10 → Statue candle light · Saint Paul · B side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-H-CANDLE-1"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          5.170000000000001
+        ],
+        [
+          2.35,
+          10.08,
+          5.170000000000001
+        ],
+        [
+          2.1,
+          10.08,
+          5.170000000000001
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 6.379999999999999,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-H-JAMB-2",
+      "name": "L10 → Hidden jamb light · Saint Paul · H side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-H-JAMB-2"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          5.985
+        ],
+        [
+          2.35,
+          11.05,
+          5.985
+        ],
+        [
+          2.13,
+          11.05,
+          5.985
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 6.505000000000001,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:DB2:L10:light:1:L-STATUE-H-CANDLE-2",
+      "name": "L10 → Statue candle light · Saint Paul · H side",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "L10",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-STATUE-H-CANDLE-2"
+      ],
+      "trunkId": "trunk:DB2:L10:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 18.700000000000003,
+      "homeRun": false,
+      "points": [
+        [
+          2.35,
+          6.140000000000001,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          7.36
+        ],
+        [
+          2.35,
+          7.65,
+          5.79
+        ],
+        [
+          2.35,
+          10.08,
+          5.79
+        ],
+        [
+          2.1,
+          10.08,
+          5.79
+        ]
+      ],
+      "method": "entrance-wall",
+      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "coverPaths": [],
+      "length": 5.76,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     }
   ],
   "components": [
@@ -32227,200 +35006,100 @@
     {
       "id": "L63",
       "name": "Wing light · B · front block · back rows",
-      "type": "projector36",
-      "product": "LED projector · medium 36°",
+      "type": "chandelier6Reading",
+      "product": "Small brass chandelier + reading optic · concept",
       "circuit": "L8",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        0.32999999821186066,
-        0.2217390456199646,
-        0.23999999463558197
+        1.340000033378601,
+        1.2404999719560146,
+        1.1792304515838623
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 31.666666666666668,
-      "specs": "3800 lm · 3000 K · 50° beam",
+      "wattsEstimate": 51,
+      "specs": "5640 lm · 2700 K · 100° beam",
       "hiddenAlternative": false,
       "position": [
-        40.26,
-        4.15,
-        -13.06
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L64",
-      "name": "Wing light · B · front block · front rows",
-      "type": "projector36",
-      "product": "LED projector · medium 36°",
-      "circuit": "L8",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.32999999821186066,
-        0.2217390456199646,
-        0.23999999463558197
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 33.333333333333336,
-      "specs": "4000 lm · 3000 K · 36° beam",
-      "hiddenAlternative": false,
-      "position": [
-        40.26,
-        2.92,
-        -13.06
+        38.94,
+        3.8,
+        -10.15
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "L65",
       "name": "Wing light · B · rear block · back rows",
-      "type": "projector36",
-      "product": "LED projector · medium 36°",
+      "type": "chandelier6Reading",
+      "product": "Small brass chandelier + reading optic · concept",
       "circuit": "L8",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        0.32999999821186066,
-        0.2217390456199646,
-        0.23999999463558197
+        1.340000033378601,
+        1.2404999719560146,
+        1.1792304515838623
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 31.666666666666668,
-      "specs": "3800 lm · 3000 K · 50° beam",
+      "wattsEstimate": 51,
+      "specs": "5640 lm · 2700 K · 100° beam",
       "hiddenAlternative": false,
       "position": [
-        40.86,
-        4.15,
-        -13.06
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L66",
-      "name": "Wing light · B · rear block · front rows",
-      "type": "projector36",
-      "product": "LED projector · medium 36°",
-      "circuit": "L8",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.32999999821186066,
-        0.2217390456199646,
-        0.23999999463558197
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 33.333333333333336,
-      "specs": "4000 lm · 3000 K · 36° beam",
-      "hiddenAlternative": false,
-      "position": [
-        40.86,
-        2.92,
-        -13.06
+        42.22,
+        3.8,
+        -10.15
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "L67",
       "name": "Wing light · H · front block · back rows",
-      "type": "projector36",
-      "product": "LED projector · medium 36°",
+      "type": "chandelier6Reading",
+      "product": "Small brass chandelier + reading optic · concept",
       "circuit": "L8",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        0.32999999821186066,
-        0.2217390456199646,
-        0.23999999463558197
+        1.340000033378601,
+        1.2404999719560146,
+        1.1792304515838623
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 31.666666666666668,
-      "specs": "3800 lm · 3000 K · 50° beam",
+      "wattsEstimate": 51,
+      "specs": "5640 lm · 2700 K · 100° beam",
       "hiddenAlternative": false,
       "position": [
-        40.26,
-        4.15,
-        13.06
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L68",
-      "name": "Wing light · H · front block · front rows",
-      "type": "projector36",
-      "product": "LED projector · medium 36°",
-      "circuit": "L8",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.32999999821186066,
-        0.2217390456199646,
-        0.23999999463558197
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 33.333333333333336,
-      "specs": "4000 lm · 3000 K · 36° beam",
-      "hiddenAlternative": false,
-      "position": [
-        40.26,
-        2.92,
-        13.06
+        38.94,
+        3.8,
+        10.15
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "L69",
       "name": "Wing light · H · rear block · back rows",
-      "type": "projector36",
-      "product": "LED projector · medium 36°",
+      "type": "chandelier6Reading",
+      "product": "Small brass chandelier + reading optic · concept",
       "circuit": "L8",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        0.32999999821186066,
-        0.2217390456199646,
-        0.23999999463558197
+        1.340000033378601,
+        1.2404999719560146,
+        1.1792304515838623
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 31.666666666666668,
-      "specs": "3800 lm · 3000 K · 50° beam",
+      "wattsEstimate": 51,
+      "specs": "5640 lm · 2700 K · 100° beam",
       "hiddenAlternative": false,
       "position": [
-        40.86,
-        4.15,
-        13.06
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L70",
-      "name": "Wing light · H · rear block · front rows",
-      "type": "projector36",
-      "product": "LED projector · medium 36°",
-      "circuit": "L8",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.32999999821186066,
-        0.2217390456199646,
-        0.23999999463558197
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 33.333333333333336,
-      "specs": "4000 lm · 3000 K · 36° beam",
-      "hiddenAlternative": false,
-      "position": [
-        40.86,
-        2.92,
-        13.06
+        42.22,
+        3.8,
+        10.15
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36651,122 +39330,122 @@
     },
     {
       "id": "F240",
-      "name": "Ceiling fan · wing B · front",
-      "type": "fanCeiling",
-      "product": "Ceiling fan · 1.42 m (56\")",
-      "circuit": "F1",
+      "name": "Wall fan · wing B · 1 · held review",
+      "type": "fanWingWall",
+      "product": "Wing wall fan · 45 cm · extended bracket concept",
+      "circuit": "F5",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        1.3225064873695374,
-        0.2550000003539026,
-        1.3905656337738037
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": 1.42,
-      "wattsEstimate": 60,
-      "specs": "1.42 m diameter · 60 W at maximum speed",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        39.3,
-        3.3,
-        -10.15
+        38.05,
+        4.05,
+        -13.06
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "F241",
-      "name": "Ceiling fan · wing B · rear",
-      "type": "fanCeiling",
-      "product": "Ceiling fan · 1.42 m (56\")",
-      "circuit": "F1",
+      "name": "Wall fan · wing B · 2 · held review",
+      "type": "fanWingWall",
+      "product": "Wing wall fan · 45 cm · extended bracket concept",
+      "circuit": "F5",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        1.3225064873695374,
-        0.2550000003539026,
-        1.3905656337738037
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": 1.42,
-      "wattsEstimate": 60,
-      "specs": "1.42 m diameter · 60 W at maximum speed",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        41.85,
-        3.3,
-        -10.15
+        43.1,
+        4.05,
+        -13.06
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "F242",
-      "name": "Ceiling fan · wing H · front",
-      "type": "fanCeiling",
-      "product": "Ceiling fan · 1.42 m (56\")",
-      "circuit": "F1",
+      "name": "Wall fan · wing H · 1 · held review",
+      "type": "fanWingWall",
+      "product": "Wing wall fan · 45 cm · extended bracket concept",
+      "circuit": "F5",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        1.3225064873695374,
-        0.2550000003539026,
-        1.3905656337738037
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": 1.42,
-      "wattsEstimate": 60,
-      "specs": "1.42 m diameter · 60 W at maximum speed",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        39.3,
-        3.3,
-        10.15
+        38.05,
+        4.05,
+        13.06
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "F243",
-      "name": "Ceiling fan · wing H · rear",
-      "type": "fanCeiling",
-      "product": "Ceiling fan · 1.42 m (56\")",
-      "circuit": "F1",
+      "name": "Wall fan · wing H · 2 · held review",
+      "type": "fanWingWall",
+      "product": "Wing wall fan · 45 cm · extended bracket concept",
+      "circuit": "F5",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        1.3225064873695374,
-        0.2550000003539026,
-        1.3905656337738037
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": 1.42,
-      "wattsEstimate": 60,
-      "specs": "1.42 m diameter · 60 W at maximum speed",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        41.85,
-        3.3,
-        10.15
+        43.1,
+        4.05,
+        13.06
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "F244",
       "name": "Wall fan · axis 4 · B",
-      "type": "fanWall",
-      "product": "Wall fan · oscillating 45 cm",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
       "circuit": "F2",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        0.4599999934434891,
+        0.6649999977648258,
         0.49000000953674316,
         0.49000000953674316
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": 0.45,
-      "wattsEstimate": 0,
+      "wattsEstimate": 55,
       "specs": "0.45 m diameter · 55 W at maximum speed",
-      "hiddenAlternative": true,
+      "hiddenAlternative": false,
       "position": [
         14.475,
         5.55,
@@ -36777,21 +39456,21 @@
     {
       "id": "F245",
       "name": "Wall fan · axis 4 · H",
-      "type": "fanWall",
-      "product": "Wall fan · oscillating 45 cm",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
       "circuit": "F2",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        0.4599999934434891,
+        0.6649999977648258,
         0.49000000953674316,
         0.49000000953674316
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": 0.45,
-      "wattsEstimate": 0,
+      "wattsEstimate": 55,
       "specs": "0.45 m diameter · 55 W at maximum speed",
-      "hiddenAlternative": true,
+      "hiddenAlternative": false,
       "position": [
         14.475,
         5.55,
@@ -36802,21 +39481,21 @@
     {
       "id": "F246",
       "name": "Wall fan · axis 6 · B",
-      "type": "fanWall",
-      "product": "Wall fan · oscillating 45 cm",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
       "circuit": "F2",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        0.4599999934434891,
+        0.6649999977648258,
         0.49000000953674316,
         0.49000000953674316
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": 0.45,
-      "wattsEstimate": 0,
+      "wattsEstimate": 55,
       "specs": "0.45 m diameter · 55 W at maximum speed",
-      "hiddenAlternative": true,
+      "hiddenAlternative": false,
       "position": [
         23.475,
         5.55,
@@ -36827,21 +39506,21 @@
     {
       "id": "F247",
       "name": "Wall fan · axis 6 · H",
-      "type": "fanWall",
-      "product": "Wall fan · oscillating 45 cm",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
       "circuit": "F2",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        0.4599999934434891,
+        0.6649999977648258,
         0.49000000953674316,
         0.49000000953674316
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": 0.45,
-      "wattsEstimate": 0,
+      "wattsEstimate": 55,
       "specs": "0.45 m diameter · 55 W at maximum speed",
-      "hiddenAlternative": true,
+      "hiddenAlternative": false,
       "position": [
         23.475,
         5.55,
@@ -36852,21 +39531,21 @@
     {
       "id": "F248",
       "name": "Wall fan · axis 8 · B",
-      "type": "fanWall",
-      "product": "Wall fan · oscillating 45 cm",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
       "circuit": "F2",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        0.4599999934434891,
+        0.6649999977648258,
         0.49000000953674316,
         0.49000000953674316
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": 0.45,
-      "wattsEstimate": 0,
+      "wattsEstimate": 55,
       "specs": "0.45 m diameter · 55 W at maximum speed",
-      "hiddenAlternative": true,
+      "hiddenAlternative": false,
       "position": [
         32.475,
         5.55,
@@ -36877,21 +39556,21 @@
     {
       "id": "F249",
       "name": "Wall fan · axis 8 · H",
-      "type": "fanWall",
-      "product": "Wall fan · oscillating 45 cm",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
       "circuit": "F2",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        0.4599999934434891,
+        0.6649999977648258,
         0.49000000953674316,
         0.49000000953674316
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": 0.45,
-      "wattsEstimate": 0,
+      "wattsEstimate": 55,
       "specs": "0.45 m diameter · 55 W at maximum speed",
-      "hiddenAlternative": true,
+      "hiddenAlternative": false,
       "position": [
         32.475,
         5.55,
@@ -37525,102 +40204,52 @@
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
-      "id": "S275",
-      "name": "Wing speaker · B · front block",
-      "type": "pendantSpeaker",
-      "product": "Pendant loudspeaker · 6\"",
-      "circuit": "A1",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3669999949634075,
-        0.2573535740375519,
-        0.25999999046325684
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 10,
-      "specs": "30 W audio rating · Passive / amplifier output · 25.2 ms delay",
-      "hiddenAlternative": false,
-      "position": [
-        38.94,
-        3,
-        -11.6
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
       "id": "S276",
-      "name": "Wing speaker · B · rear block",
-      "type": "pendantSpeaker",
-      "product": "Pendant loudspeaker · 6\"",
+      "name": "Wing speaker · B · toward entrance · held",
+      "type": "slimColumn",
+      "product": "Slim wall column · 0.6 m, wall colour",
       "circuit": "A1",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        0.3669999949634075,
-        0.2573535740375519,
-        0.25999999046325684
+        0.14600000105798241,
+        0.6000000238418579,
+        0.05999999865889549
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 10,
-      "specs": "30 W audio rating · Passive / amplifier output · 23.7 ms delay",
+      "wattsEstimate": 20,
+      "specs": "60 W audio rating · Passive / amplifier output · 22.9 ms delay",
       "hiddenAlternative": false,
       "position": [
-        42.22,
-        3,
-        -11.6
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "S277",
-      "name": "Wing speaker · H · front block",
-      "type": "pendantSpeaker",
-      "product": "Pendant loudspeaker · 6\"",
-      "circuit": "A1",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3669999949634075,
-        0.2573535740375519,
-        0.25999999046325684
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 10,
-      "specs": "30 W audio rating · Passive / amplifier output · 39.4 ms delay",
-      "hiddenAlternative": false,
-      "position": [
-        38.94,
-        3,
-        11.6
+        43.72,
+        4.85,
+        -13.06
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "S278",
-      "name": "Wing speaker · H · rear block",
-      "type": "pendantSpeaker",
-      "product": "Pendant loudspeaker · 6\"",
+      "name": "Wing speaker · H · toward entrance · held",
+      "type": "slimColumn",
+      "product": "Slim wall column · 0.6 m, wall colour",
       "circuit": "A1",
       "board": "DB1",
       "quantity": 1,
       "modelSize": [
-        0.3669999949634075,
-        0.2573535740375519,
-        0.25999999046325684
+        0.14600000105798241,
+        0.6000000238418579,
+        0.05999999865889549
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 10,
-      "specs": "30 W audio rating · Passive / amplifier output · 38.5 ms delay",
+      "wattsEstimate": 20,
+      "specs": "60 W audio rating · Passive / amplifier output · 37.1 ms delay",
       "hiddenAlternative": false,
       "position": [
-        42.22,
-        3,
-        11.6
+        43.72,
+        4.85,
+        13.06
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -38248,6 +40877,781 @@
         8.85
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "F-NAVE-B-2P",
+      "name": "Wall fan · axis 2′ · B",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
+      "circuit": "F2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
+      "hiddenAlternative": false,
+      "position": [
+        5.475,
+        5.55,
+        -7.07
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "F-NAVE-H-2P",
+      "name": "Wall fan · axis 2′ · H",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
+      "circuit": "F2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
+      "hiddenAlternative": false,
+      "position": [
+        5.475,
+        5.55,
+        7.07
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "F-NAVE-B-3",
+      "name": "Wall fan · axis 3 · B",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
+      "circuit": "F2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
+      "hiddenAlternative": false,
+      "position": [
+        9.975,
+        5.55,
+        -7.07
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "F-NAVE-H-3",
+      "name": "Wall fan · axis 3 · H",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
+      "circuit": "F2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
+      "hiddenAlternative": false,
+      "position": [
+        9.975,
+        5.55,
+        7.07
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "F-NAVE-B-5",
+      "name": "Wall fan · axis 5 · B",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
+      "circuit": "F2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
+      "hiddenAlternative": false,
+      "position": [
+        18.975,
+        5.55,
+        -7.07
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "F-NAVE-H-5",
+      "name": "Wall fan · axis 5 · H",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
+      "circuit": "F2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
+      "hiddenAlternative": false,
+      "position": [
+        18.975,
+        5.55,
+        7.07
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "F-NAVE-B-7",
+      "name": "Wall fan · axis 7 · B",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
+      "circuit": "F2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
+      "hiddenAlternative": false,
+      "position": [
+        27.975,
+        5.55,
+        -7.07
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "F-NAVE-H-7",
+      "name": "Wall fan · axis 7 · H",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
+      "circuit": "F2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
+      "hiddenAlternative": false,
+      "position": [
+        27.975,
+        5.55,
+        7.07
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "F-NAVE-B-9",
+      "name": "Wall fan · axis 9 · B",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
+      "circuit": "F2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
+      "hiddenAlternative": false,
+      "position": [
+        36.975,
+        5.55,
+        -7.07
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "F-NAVE-H-9",
+      "name": "Wall fan · axis 9 · H",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
+      "circuit": "F2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": 0.45,
+      "wattsEstimate": 55,
+      "specs": "0.45 m diameter · 55 W at maximum speed",
+      "hiddenAlternative": false,
+      "position": [
+        36.975,
+        5.55,
+        7.07
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "P-SANCT-B",
+      "name": "Socket · sanctuary side B · axis 10 pier",
+      "type": "socketDouble",
+      "product": "Double socket outlet · 16 A · recessed",
+      "circuit": "P1",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.017999999277293684,
+        0.0860000029206276,
+        0.1459999978542328
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1656,
+      "specs": "2 × 16 A 2P+E shuttered · 16 A circuit · 30 mA RCD (provisional) · IP20 indoor · 1656 W planning allowance, not a product load",
+      "hiddenAlternative": false,
+      "position": [
+        43.89,
+        0.85,
+        -7.25
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "P-NAVE-B",
+      "name": "Socket · mid-nave side B · axis 6",
+      "type": "socketDouble",
+      "product": "Double socket outlet · 16 A · recessed",
+      "circuit": "P1",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.017999999277293684,
+        0.0860000029206276,
+        0.1459999978542328
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1656,
+      "specs": "2 × 16 A 2P+E shuttered · 16 A circuit · 30 mA RCD (provisional) · IP20 indoor · 1656 W planning allowance, not a product load",
+      "hiddenAlternative": false,
+      "position": [
+        22.83,
+        0.45,
+        -7.25
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "P-TOWER-B",
+      "name": "Event power · tower B · inside the porch",
+      "type": "socketEvent",
+      "product": "Event power point · 32 A + 2 × 16 A · lockable",
+      "circuit": "P3",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.22081214174977504,
+        0.6307986080646515,
+        0.4399999976158142
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 6624,
+      "specs": "1 × 32 A 2P+E industrial + 2 × 16 A · 32 A circuit · 30 mA RCD (provisional) · IP66 lockable (provisional) · 6624 W planning allowance, not a product load",
+      "hiddenAlternative": false,
+      "position": [
+        0.45,
+        1.3,
+        -7.85
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "P-SANCT-H",
+      "name": "Socket · sanctuary side H · axis 10 pier",
+      "type": "socketDouble",
+      "product": "Double socket outlet · 16 A · recessed",
+      "circuit": "P2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.017999999277293684,
+        0.0860000029206276,
+        0.1459999978542328
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1656,
+      "specs": "2 × 16 A 2P+E shuttered · 16 A circuit · 30 mA RCD (provisional) · IP20 indoor · 1656 W planning allowance, not a product load",
+      "hiddenAlternative": false,
+      "position": [
+        43.89,
+        0.85,
+        7.25
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "P-NAVE-H",
+      "name": "Socket · mid-nave side H · axis 6",
+      "type": "socketDouble",
+      "product": "Double socket outlet · 16 A · recessed",
+      "circuit": "P2",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.017999999277293684,
+        0.0860000029206276,
+        0.1459999978542328
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1656,
+      "specs": "2 × 16 A 2P+E shuttered · 16 A circuit · 30 mA RCD (provisional) · IP20 indoor · 1656 W planning allowance, not a product load",
+      "hiddenAlternative": false,
+      "position": [
+        22.83,
+        0.45,
+        7.25
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "P-TOWER-H",
+      "name": "Event power · tower H · inside the porch",
+      "type": "socketEvent",
+      "product": "Event power point · 32 A + 2 × 16 A · lockable",
+      "circuit": "P4",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.22081214174977504,
+        0.6307986080646515,
+        0.4399999976158142
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 6624,
+      "specs": "1 × 32 A 2P+E industrial + 2 × 16 A · 32 A circuit · 30 mA RCD (provisional) · IP66 lockable (provisional) · 6624 W planning allowance, not a product load",
+      "hiddenAlternative": false,
+      "position": [
+        0.45,
+        1.3,
+        7.85
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-C-ARCH",
+      "name": "Hidden arch light · Assumption of Our Lady",
+      "type": "nicheArchLine",
+      "product": "Concealed light line · niche arch",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.050000001117587095,
+        0.029999998994171606,
+        0.800000011920929
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 5.5,
+      "specs": "440 lm · 3000 K · 60° beam · 0.8 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        15.64,
+        0
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-C-JAMB-1",
+      "name": "Hidden jamb light · Assumption of Our Lady · B side",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.029999998994171606,
+        2,
+        0.05000000074505806
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 3.611111111111111,
+      "specs": "260 lm · 3000 K · 80° beam · 2 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        13.3,
+        -0.905
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-C-CANDLE-1",
+      "name": "Statue candle light · Assumption of Our Lady · B side",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        2.1,
+        11.8,
+        -0.47
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-C-JAMB-2",
+      "name": "Hidden jamb light · Assumption of Our Lady · H side",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.029999998994171606,
+        2,
+        0.05000000074505806
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 3.611111111111111,
+      "specs": "260 lm · 3000 K · 80° beam · 2 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        13.3,
+        0.905
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-C-CANDLE-2",
+      "name": "Statue candle light · Assumption of Our Lady · H side",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        2.1,
+        11.8,
+        0.47
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-B-ARCH",
+      "name": "Hidden arch light · Saint Peter",
+      "type": "nicheArchLine",
+      "product": "Concealed light line · niche arch",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.050000001117587095,
+        0.029999998994171606,
+        0.5
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 3.75,
+      "specs": "300 lm · 3000 K · 60° beam · 0.5 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        12.62,
+        -5.48
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-B-JAMB-1",
+      "name": "Hidden jamb light · Saint Peter · B side",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.029999998994171606,
+        1.2999999523162842,
+        0.05000000074505806
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1.9444444444444444,
+      "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        11.05,
+        -5.985
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-B-CANDLE-1",
+      "name": "Statue candle light · Saint Peter · B side",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        2.1,
+        10.08,
+        -5.79
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-B-JAMB-2",
+      "name": "Hidden jamb light · Saint Peter · H side",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.029999998994171606,
+        1.2999999523162842,
+        0.05000000074505806
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1.9444444444444444,
+      "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        11.05,
+        -4.9750000000000005
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-B-CANDLE-2",
+      "name": "Statue candle light · Saint Peter · H side",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        2.1,
+        10.08,
+        -5.170000000000001
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-H-ARCH",
+      "name": "Hidden arch light · Saint Paul",
+      "type": "nicheArchLine",
+      "product": "Concealed light line · niche arch",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.050000001117587095,
+        0.029999998994171606,
+        0.5
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 3.75,
+      "specs": "300 lm · 3000 K · 60° beam · 0.5 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        12.62,
+        5.48
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-H-JAMB-1",
+      "name": "Hidden jamb light · Saint Paul · B side",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.029999998994171606,
+        1.2999999523162842,
+        0.05000000074505806
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1.9444444444444444,
+      "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        11.05,
+        4.9750000000000005
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-H-CANDLE-1",
+      "name": "Statue candle light · Saint Paul · B side",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        2.1,
+        10.08,
+        5.170000000000001
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-H-JAMB-2",
+      "name": "Hidden jamb light · Saint Paul · H side",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.029999998994171606,
+        1.2999999523162842,
+        0.05000000074505806
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1.9444444444444444,
+      "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
+      "hiddenAlternative": false,
+      "position": [
+        2.13,
+        11.05,
+        5.985
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-STATUE-H-CANDLE-2",
+      "name": "Statue candle light · Saint Paul · H side",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "L10",
+      "board": "DB2",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        2.1,
+        10.08,
+        5.79
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     }
   ],
   "billOfMaterials": [
@@ -38396,41 +41800,21 @@
     {
       "board": "DB1",
       "circuit": "L8",
-      "type": "projector36",
-      "product": "LED projector · medium 36°",
+      "type": "chandelier6Reading",
+      "product": "Small brass chandelier + reading optic · concept",
       "quantity": 4,
       "modelSize": [
-        0.32999999821186066,
-        0.2217390456199646,
-        0.23999999463558197
+        1.340000033378601,
+        1.2404999719560146,
+        1.1792304515838623
       ],
-      "specs": "3800 lm · 3000 K · 50° beam",
-      "wattsEachEstimate": 31.666666666666668,
+      "specs": "5640 lm · 2700 K · 100° beam",
+      "wattsEachEstimate": 51,
       "itemIds": [
         "L63",
         "L65",
         "L67",
         "L69"
-      ]
-    },
-    {
-      "board": "DB1",
-      "circuit": "L8",
-      "type": "projector36",
-      "product": "LED projector · medium 36°",
-      "quantity": 4,
-      "modelSize": [
-        0.32999999821186066,
-        0.2217390456199646,
-        0.23999999463558197
-      ],
-      "specs": "4000 lm · 3000 K · 36° beam",
-      "wattsEachEstimate": 33.333333333333336,
-      "itemIds": [
-        "L64",
-        "L66",
-        "L68",
-        "L70"
       ]
     },
     {
@@ -39345,7 +42729,7 @@
       "circuit": "F1",
       "type": "fanCeiling",
       "product": "Ceiling fan · 1.42 m (56\")",
-      "quantity": 18,
+      "quantity": 14,
       "modelSize": [
         1.3225064873695374,
         0.2550000003539026,
@@ -39367,11 +42751,59 @@
         "F236",
         "F237",
         "F238",
-        "F239",
+        "F239"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "F5",
+      "type": "fanWingWall",
+      "product": "Wing wall fan · 45 cm · extended bracket concept",
+      "quantity": 4,
+      "modelSize": [
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
+      ],
+      "specs": "0.45 m diameter · 55 W at maximum speed",
+      "wattsEachEstimate": 55,
+      "itemIds": [
         "F240",
         "F241",
         "F242",
         "F243"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "F2",
+      "type": "fanNaveWall",
+      "product": "Nave wall fan · 45 cm · extended bracket concept",
+      "quantity": 16,
+      "modelSize": [
+        0.6649999977648258,
+        0.49000000953674316,
+        0.49000000953674316
+      ],
+      "specs": "0.45 m diameter · 55 W at maximum speed",
+      "wattsEachEstimate": 55,
+      "itemIds": [
+        "F244",
+        "F245",
+        "F246",
+        "F247",
+        "F248",
+        "F249",
+        "F-NAVE-B-2P",
+        "F-NAVE-H-2P",
+        "F-NAVE-B-3",
+        "F-NAVE-H-3",
+        "F-NAVE-B-5",
+        "F-NAVE-H-5",
+        "F-NAVE-B-7",
+        "F-NAVE-H-7",
+        "F-NAVE-B-9",
+        "F-NAVE-H-9"
       ]
     },
     {
@@ -39658,33 +43090,16 @@
     {
       "board": "DB1",
       "circuit": "A1",
-      "type": "pendantSpeaker",
-      "product": "Pendant loudspeaker · 6\"",
+      "type": "slimColumn",
+      "product": "Slim wall column · 0.6 m, wall colour",
       "quantity": 1,
       "modelSize": [
-        0.3669999949634075,
-        0.2573535740375519,
-        0.25999999046325684
+        0.14600000105798241,
+        0.6000000238418579,
+        0.05999999865889549
       ],
-      "specs": "30 W audio rating · Passive / amplifier output · 25.2 ms delay",
-      "wattsEachEstimate": 10,
-      "itemIds": [
-        "S275"
-      ]
-    },
-    {
-      "board": "DB1",
-      "circuit": "A1",
-      "type": "pendantSpeaker",
-      "product": "Pendant loudspeaker · 6\"",
-      "quantity": 1,
-      "modelSize": [
-        0.3669999949634075,
-        0.2573535740375519,
-        0.25999999046325684
-      ],
-      "specs": "30 W audio rating · Passive / amplifier output · 23.7 ms delay",
-      "wattsEachEstimate": 10,
+      "specs": "60 W audio rating · Passive / amplifier output · 22.9 ms delay",
+      "wattsEachEstimate": 20,
       "itemIds": [
         "S276"
       ]
@@ -39692,33 +43107,16 @@
     {
       "board": "DB1",
       "circuit": "A1",
-      "type": "pendantSpeaker",
-      "product": "Pendant loudspeaker · 6\"",
+      "type": "slimColumn",
+      "product": "Slim wall column · 0.6 m, wall colour",
       "quantity": 1,
       "modelSize": [
-        0.3669999949634075,
-        0.2573535740375519,
-        0.25999999046325684
+        0.14600000105798241,
+        0.6000000238418579,
+        0.05999999865889549
       ],
-      "specs": "30 W audio rating · Passive / amplifier output · 39.4 ms delay",
-      "wattsEachEstimate": 10,
-      "itemIds": [
-        "S277"
-      ]
-    },
-    {
-      "board": "DB1",
-      "circuit": "A1",
-      "type": "pendantSpeaker",
-      "product": "Pendant loudspeaker · 6\"",
-      "quantity": 1,
-      "modelSize": [
-        0.3669999949634075,
-        0.2573535740375519,
-        0.25999999046325684
-      ],
-      "specs": "30 W audio rating · Passive / amplifier output · 38.5 ms delay",
-      "wattsEachEstimate": 10,
+      "specs": "60 W audio rating · Passive / amplifier output · 37.1 ms delay",
+      "wattsEachEstimate": 20,
       "itemIds": [
         "S278"
       ]
@@ -39943,6 +43341,171 @@
       "itemIds": [
         "S291",
         "S292"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "P1",
+      "type": "socketDouble",
+      "product": "Double socket outlet · 16 A · recessed",
+      "quantity": 2,
+      "modelSize": [
+        0.017999999277293684,
+        0.0860000029206276,
+        0.1459999978542328
+      ],
+      "specs": "2 × 16 A 2P+E shuttered · 16 A circuit · 30 mA RCD (provisional) · IP20 indoor · 1656 W planning allowance, not a product load",
+      "wattsEachEstimate": 1656,
+      "itemIds": [
+        "P-SANCT-B",
+        "P-NAVE-B"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "P3",
+      "type": "socketEvent",
+      "product": "Event power point · 32 A + 2 × 16 A · lockable",
+      "quantity": 1,
+      "modelSize": [
+        0.22081214174977504,
+        0.6307986080646515,
+        0.4399999976158142
+      ],
+      "specs": "1 × 32 A 2P+E industrial + 2 × 16 A · 32 A circuit · 30 mA RCD (provisional) · IP66 lockable (provisional) · 6624 W planning allowance, not a product load",
+      "wattsEachEstimate": 6624,
+      "itemIds": [
+        "P-TOWER-B"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "P2",
+      "type": "socketDouble",
+      "product": "Double socket outlet · 16 A · recessed",
+      "quantity": 2,
+      "modelSize": [
+        0.017999999277293684,
+        0.0860000029206276,
+        0.1459999978542328
+      ],
+      "specs": "2 × 16 A 2P+E shuttered · 16 A circuit · 30 mA RCD (provisional) · IP20 indoor · 1656 W planning allowance, not a product load",
+      "wattsEachEstimate": 1656,
+      "itemIds": [
+        "P-SANCT-H",
+        "P-NAVE-H"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "P4",
+      "type": "socketEvent",
+      "product": "Event power point · 32 A + 2 × 16 A · lockable",
+      "quantity": 1,
+      "modelSize": [
+        0.22081214174977504,
+        0.6307986080646515,
+        0.4399999976158142
+      ],
+      "specs": "1 × 32 A 2P+E industrial + 2 × 16 A · 32 A circuit · 30 mA RCD (provisional) · IP66 lockable (provisional) · 6624 W planning allowance, not a product load",
+      "wattsEachEstimate": 6624,
+      "itemIds": [
+        "P-TOWER-H"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "L10",
+      "type": "nicheArchLine",
+      "product": "Concealed light line · niche arch",
+      "quantity": 1,
+      "modelSize": [
+        0.050000001117587095,
+        0.029999998994171606,
+        0.800000011920929
+      ],
+      "specs": "440 lm · 3000 K · 60° beam · 0.8 m strand",
+      "wattsEachEstimate": 5.5,
+      "itemIds": [
+        "L-STATUE-C-ARCH"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "L10",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "quantity": 2,
+      "modelSize": [
+        0.029999998994171606,
+        2,
+        0.05000000074505806
+      ],
+      "specs": "260 lm · 3000 K · 80° beam · 2 m strand",
+      "wattsEachEstimate": 3.611111111111111,
+      "itemIds": [
+        "L-STATUE-C-JAMB-1",
+        "L-STATUE-C-JAMB-2"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "L10",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "quantity": 6,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "specs": "40 lm · 2200 K",
+      "wattsEachEstimate": 1,
+      "itemIds": [
+        "L-STATUE-C-CANDLE-1",
+        "L-STATUE-C-CANDLE-2",
+        "L-STATUE-B-CANDLE-1",
+        "L-STATUE-B-CANDLE-2",
+        "L-STATUE-H-CANDLE-1",
+        "L-STATUE-H-CANDLE-2"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "L10",
+      "type": "nicheArchLine",
+      "product": "Concealed light line · niche arch",
+      "quantity": 2,
+      "modelSize": [
+        0.050000001117587095,
+        0.029999998994171606,
+        0.5
+      ],
+      "specs": "300 lm · 3000 K · 60° beam · 0.5 m strand",
+      "wattsEachEstimate": 3.75,
+      "itemIds": [
+        "L-STATUE-B-ARCH",
+        "L-STATUE-H-ARCH"
+      ]
+    },
+    {
+      "board": "DB2",
+      "circuit": "L10",
+      "type": "nicheJambLine",
+      "product": "Concealed light line · niche jamb",
+      "quantity": 4,
+      "modelSize": [
+        0.029999998994171606,
+        1.2999999523162842,
+        0.05000000074505806
+      ],
+      "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
+      "wattsEachEstimate": 1.9444444444444444,
+      "itemIds": [
+        "L-STATUE-B-JAMB-1",
+        "L-STATUE-B-JAMB-2",
+        "L-STATUE-H-JAMB-1",
+        "L-STATUE-H-JAMB-2"
       ]
     }
   ],

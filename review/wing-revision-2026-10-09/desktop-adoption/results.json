@@ -1,0 +1,586 @@
+{
+  "status": "PASS",
+  "generatedAt": "2026-10-09T01:07:54.131Z",
+  "browser": "154.0.8037.98",
+  "headed": true,
+  "desktopViewport": [
+    1600,
+    1000
+  ],
+  "baselinePath": "review/wing-options-2026-10-09/baseline-layout.json",
+  "checks": [
+    {
+      "name": "Untouched intermediate four-chandelier/four-wall-fan layout migrates once to two each and backs up every retired item",
+      "status": {
+        "sourceRevision": "2026-10-09-wing-two-light-art-2",
+        "sides": [
+          {
+            "side": "B",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          },
+          {
+            "side": "H",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Edited intermediate side stays at four each until explicit scoped adoption; removal copy/IDs, complete backup, unrecorded light/fan/custom notes and sliders, Undo/Redo and reload retain exact values",
+      "status": {
+        "sourceRevision": "2026-10-09-wing-two-light-art-2",
+        "sides": [
+          {
+            "side": "B",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          },
+          {
+            "side": "H",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Weekday preserved layout; actual notice/Wiring counts; B/H explicit adoption; full durable backups; light/runtime/custom preservation; Undo/Redo; current-side no-op; exact save/reload",
+      "backupKeys": [
+        "thachbi.simulator.v1.before-wing-adoption.1791508045355",
+        "thachbi.simulator.v1.before-wing-adoption.1791508046596"
+      ],
+      "status": {
+        "sourceRevision": "2026-10-09-wing-two-light-art-2",
+        "sides": [
+          {
+            "side": "B",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          },
+          {
+            "side": "H",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          }
+        ]
+      },
+      "userCustomId": "OWNER-CUSTOM-LIGHT"
+    },
+    {
+      "name": "Controlled backup failure",
+      "completeLayoutAndHistoryUnchanged": true,
+      "failureMessage": "Controlled test: adoption backup storage unavailable"
+    },
+    {
+      "name": "Controlled save failure",
+      "completeLayoutAndHistoryUnchanged": true,
+      "failureMessage": "The updated layout could not be saved; the previous layout is retained."
+    },
+    {
+      "name": "Reserved-ID conflict blocks UI and API while H remains available",
+      "conflictingIds": [
+        "F-WING-B-3"
+      ],
+      "completeOwnerRecordRetained": true
+    }
+  ],
+  "frames": [
+    {
+      "file": "01-retained-wiring-day.png",
+      "side": "B",
+      "lighting": "day",
+      "panelOpen": true,
+      "camera": [
+        40.575,
+        1.3299999999999996,
+        -7.599999999999998
+      ],
+      "target": [
+        40.575,
+        3.55,
+        -13.059999999999999
+      ],
+      "ui": {
+        "mode": "explore",
+        "place": "wing-adoption-evidence",
+        "view": "wing-adoption-evidence",
+        "lighting": "day",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "receiverCount": 368,
+      "status": {
+        "sourceRevision": "2026-10-09-wing-two-light-art-2",
+        "sides": [
+          {
+            "side": "B",
+            "current": false,
+            "mismatchingIds": [
+              "L63",
+              "L65",
+              "F240",
+              "F241"
+            ],
+            "conflictIds": [],
+            "obsoleteIds": [
+              "L64",
+              "L66"
+            ],
+            "counts": {
+              "chandeliers": 0,
+              "wallFans": 0,
+              "roofFans": 2
+            }
+          },
+          {
+            "side": "H",
+            "current": false,
+            "mismatchingIds": [
+              "L67",
+              "L69",
+              "F242",
+              "F243"
+            ],
+            "conflictIds": [],
+            "obsoleteIds": [
+              "L68",
+              "L70"
+            ],
+            "counts": {
+              "chandeliers": 0,
+              "wallFans": 0,
+              "roofFans": 2
+            }
+          }
+        ]
+      },
+      "layoutSha256": "dab02cc182915d678b7de2a777a34401738d4662d2a760e891e04e5dfd5ce88e"
+    },
+    {
+      "file": "02-adopted-wing-B-day.png",
+      "side": "B",
+      "lighting": "day",
+      "panelOpen": false,
+      "camera": [
+        40.575,
+        5.500000000000001,
+        -6.000000000000002
+      ],
+      "target": [
+        40.575,
+        3,
+        -11.000000000000002
+      ],
+      "ui": {
+        "mode": "explore",
+        "place": "wing-adoption-evidence",
+        "view": "wing-adoption-evidence",
+        "lighting": "day",
+        "roof": false,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "receiverCount": 368,
+      "status": {
+        "sourceRevision": "2026-10-09-wing-two-light-art-2",
+        "sides": [
+          {
+            "side": "B",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          },
+          {
+            "side": "H",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          }
+        ]
+      },
+      "layoutSha256": "b783372655609b44880720233349cf5ee7ea8cbc5058d2348668c6420cff2f3f"
+    },
+    {
+      "file": "02-adopted-wing-B-evening.png",
+      "side": "B",
+      "lighting": "evening",
+      "panelOpen": false,
+      "camera": [
+        40.575,
+        5.500000000000001,
+        -6.000000000000002
+      ],
+      "target": [
+        40.575,
+        3,
+        -11.000000000000002
+      ],
+      "ui": {
+        "mode": "explore",
+        "place": "wing-adoption-evidence",
+        "view": "wing-adoption-evidence",
+        "lighting": "evening",
+        "roof": false,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "receiverCount": 368,
+      "status": {
+        "sourceRevision": "2026-10-09-wing-two-light-art-2",
+        "sides": [
+          {
+            "side": "B",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          },
+          {
+            "side": "H",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          }
+        ]
+      },
+      "layoutSha256": "b783372655609b44880720233349cf5ee7ea8cbc5058d2348668c6420cff2f3f"
+    },
+    {
+      "file": "02-adopted-wing-H-day.png",
+      "side": "H",
+      "lighting": "day",
+      "panelOpen": false,
+      "camera": [
+        40.575,
+        5.500000000000001,
+        6.000000000000002
+      ],
+      "target": [
+        40.575,
+        3,
+        11.000000000000002
+      ],
+      "ui": {
+        "mode": "explore",
+        "place": "wing-adoption-evidence",
+        "view": "wing-adoption-evidence",
+        "lighting": "day",
+        "roof": false,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "receiverCount": 368,
+      "status": {
+        "sourceRevision": "2026-10-09-wing-two-light-art-2",
+        "sides": [
+          {
+            "side": "B",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          },
+          {
+            "side": "H",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          }
+        ]
+      },
+      "layoutSha256": "b783372655609b44880720233349cf5ee7ea8cbc5058d2348668c6420cff2f3f"
+    },
+    {
+      "file": "02-adopted-wing-H-evening.png",
+      "side": "H",
+      "lighting": "evening",
+      "panelOpen": false,
+      "camera": [
+        40.575,
+        5.500000000000001,
+        6.000000000000002
+      ],
+      "target": [
+        40.575,
+        3,
+        11.000000000000002
+      ],
+      "ui": {
+        "mode": "explore",
+        "place": "wing-adoption-evidence",
+        "view": "wing-adoption-evidence",
+        "lighting": "evening",
+        "roof": false,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "receiverCount": 368,
+      "status": {
+        "sourceRevision": "2026-10-09-wing-two-light-art-2",
+        "sides": [
+          {
+            "side": "B",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          },
+          {
+            "side": "H",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          }
+        ]
+      },
+      "layoutSha256": "b783372655609b44880720233349cf5ee7ea8cbc5058d2348668c6420cff2f3f"
+    },
+    {
+      "file": "03-adopted-wiring-evening.png",
+      "side": "H",
+      "lighting": "evening",
+      "panelOpen": true,
+      "camera": [
+        40.575,
+        1.3299999999999996,
+        7.599999999999998
+      ],
+      "target": [
+        40.575,
+        3.55,
+        13.059999999999999
+      ],
+      "ui": {
+        "mode": "explore",
+        "place": "wing-adoption-evidence",
+        "view": "wing-adoption-evidence",
+        "lighting": "evening",
+        "roof": true,
+        "grid": false,
+        "warm": true,
+        "references": 21
+      },
+      "drawingBuffer": [
+        1600,
+        1000
+      ],
+      "receiverCount": 368,
+      "status": {
+        "sourceRevision": "2026-10-09-wing-two-light-art-2",
+        "sides": [
+          {
+            "side": "B",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          },
+          {
+            "side": "H",
+            "current": true,
+            "mismatchingIds": [],
+            "conflictIds": [],
+            "obsoleteIds": [],
+            "counts": {
+              "chandeliers": 2,
+              "wallFans": 2,
+              "roofFans": 0
+            }
+          }
+        ]
+      },
+      "layoutSha256": "b783372655609b44880720233349cf5ee7ea8cbc5058d2348668c6420cff2f3f"
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    {
+      "name": "untouched intermediate four-light/four-fan layout",
+      "message": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      "count": 29
+    },
+    {
+      "name": "owner-edited intermediate four-light/four-fan layout",
+      "message": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      "count": 58
+    },
+    {
+      "name": "Weekday preserved layout",
+      "message": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      "count": 58
+    },
+    {
+      "name": "controlled adoption backup failure",
+      "message": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      "count": 29
+    },
+    {
+      "name": "controlled adoption save failure",
+      "message": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      "count": 29
+    },
+    {
+      "name": "reserved-ID conflict",
+      "message": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      "count": 29
+    }
+  ],
+  "sourceSha256": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "67035bc56dac74b154f3c80b5f3a5ec46187df5894c4a8c8230741d4c4f85694",
+    "Thach_Bi_Viewer/simulator/engine.js": "a6ea21ce0d9d54cc26c5d5141082e5dcc19128db07357afbc169bc8413b657fe",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "44e8c4c39b2c3a6833c46642133e4f3a6eafae6c6c2176d5cf3a9a609840ffb1",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "fcbdf178a7a8c23a7ef911bd76576050f3add7867186be94245310e5c2ab7bea",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "Thach_Bi_Viewer/OPEN_CHURCH.html": "3bb537bd636337635017465746e2a4036d01ffd9a40d685b09a9314bc3db53b9",
+    "Thach_Bi_Viewer/simulator/ui.js": "f7de8a8123aa294ea6182209b928e79f516c0a1719af8f6600723a6f0d6077e7",
+    "Thach_Bi_Viewer/simulator/simulator.css": "362b1fd39ed5aeb49b776427bbfd7d2cf75a79a70d456ec47801c3cf184c386f",
+    "Thach_Bi_Viewer/wing-saint-textures.js": "8e5a469232c47bca675d670f33c7fd4daa969b4b17e58292cc4da49b30f8be35",
+    "scripts/build_saint_textures.py": "5dcaf9152169b9e1ce2960ab40c2d99c2f67291e3ef99617f3302d2420f4f26f",
+    "Thach_Bi_Viewer/references/10-wing-saints/saint-peter-concept-v1.png": "71feba6b3d2dd04ee77a2308185f038eceea40ad28a8814a7ffcb2697e9ba2f9",
+    "Thach_Bi_Viewer/references/10-wing-saints/saint-paul-concept-v1.png": "2f3a98e28de43d3e39198b8e6a807fcdfe51f607298f6105d3d5735b527d5db0",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
+    "scripts/verify_wing_review.cjs": "c3e1e982dc6d974f876429cdb2e14f1eb326ac535fabb88d2aadbfd5daee94de",
+    "scripts/verify_wing_adoption_browser.cjs": "3359320c4101cbbe0998a2c3135a25569034c26afc6e82dbc2948d8b7e0f8ff1",
+    "review/wing-options-2026-10-09/baseline-layout.json": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac"
+  },
+  "specialFileAccessFlag": false,
+  "ignoredCalculatedField": "analysis-derived microphone feedbackMargin only; all editable equipment fields/settings/custom scenes are compared.",
+  "limitations": [
+    "Isolated Chrome contexts never access the user profile.",
+    "Screenshots show desktop GPU rendering and UI behavior, not physical concealment or commissioning measurements.",
+    "Lighting/air/noise/speech, support, product data and electrical construction approvals remain on ENGINEERING HOLD. No acceptance threshold is changed."
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "pdf": "output/electrical-review/thach-bi-budget-japan-vi.pdf",
+  "sha256": "d0e4bbcd97f83e8ce7c397a727611f0667a4fbb7eda5c0e6b2db020e820da31e",
+  "previousSha256": "d0e4bbcd97f83e8ce7c397a727611f0667a4fbb7eda5c0e6b2db020e820da31e",
+  "pageCount": 10,
+  "changedTextPages": [],
+  "priorVisualEvidence": "before-installation-note-refreeze/budget/budget-vi-render-index.json"
+}

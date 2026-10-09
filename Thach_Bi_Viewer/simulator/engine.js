@@ -55,7 +55,17 @@
     A4: { label: 'A4 · Choir monitors', cat: 'speaker', board: 'DB1' },
     A5: { label: 'A5 · Rear fill (crowded feasts)', cat: 'speaker', board: 'DB1' },
     MIC: { label: 'Microphones', cat: 'speaker', board: 'DB1' },
-    DECOR: { label: 'Decoration', cat: 'decor' }
+    DECOR: { label: 'Decoration', cat: 'decor' },
+    F5: { label: 'F5 · Wing wall fans · held review', cat: 'fan', board: 'DB1', area: 'Sanctuary wings' },
+    // Socket-outlet circuits, appended so existing trunk heights do not move.
+    // One radial per side serves the sanctuary and mid-nave points on that wall;
+    // each tower event point has its own circuit at DB-2. Ratings are
+    // provisional planning allowances on ENGINEERING HOLD, not a selected device.
+    P1: { label: 'P1 · Sockets · side B (sanctuary + nave)', cat: 'power', board: 'DB1', area: 'Socket outlets', outlet: { ratingA: 16, rcdmA: 30 } },
+    P2: { label: 'P2 · Sockets · side H (sanctuary + nave)', cat: 'power', board: 'DB1', area: 'Socket outlets', outlet: { ratingA: 16, rcdmA: 30 } },
+    P3: { label: 'P3 · Event power · tower B', cat: 'power', board: 'DB2', area: 'Event power', outlet: { ratingA: 32, rcdmA: 30 } },
+    P4: { label: 'P4 · Event power · tower H', cat: 'power', board: 'DB2', area: 'Event power', outlet: { ratingA: 32, rcdmA: 30 } },
+    L10: { label: 'L10 · Façade statues & candles', cat: 'light', board: 'DB2', area: 'Towers & façade' }
   };
   // Two boards. DB-1 in the service room behind the altar feeds everything
   // inside; DB-2, a small sub-board just inside the main doors, is fed by one
@@ -74,12 +84,16 @@
     fast: { points: 4, spots: 6, shadows: 2, label: 'Fast · lighter rendering' }
   };
 
+  // Evening picture exposure. 110 lux suited the earlier, dimmer nave; with about 310 lux on the
+  // book the whole evening view burned out and the sanctuary was hard to read from the entrance
+  // (owner, 9 October 2026). Display only: no lamp, lux value or analysis depends on it.
+  const EVENING_ADAPT_LUX = 160, EVENING_ADAPT_BEFORE = 110, EVENING_EXPOSURE_REVISION = '2026-10-09-evening-160';
   const defaults = () => ({
-    adaptLux: 110, autoExposure: false, quality: 'fast', autoQuality: true, maintenance: 0.8, halos: 1,
+    adaptLux: EVENING_ADAPT_LUX, autoExposure: false, quality: 'fast', autoQuality: true, maintenance: 0.8, halos: 1,
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -645,6 +659,22 @@
       m.name = 'Simulator · ' + key;
       matLib[key] = m;
       SIM.persistentLighting?.bindMaterial(m);
+      // Native local artwork is shared by all frames. Headless calculations
+      // have no browser Image service and do not claim texture verification.
+      if (d.textureUrl && typeof window.Image === 'function') {
+        const picture = new window.Image();
+        picture.onload = () => {
+          const texture = new T.Texture(picture);
+          texture.colorSpace = T.SRGBColorSpace;
+          texture.needsUpdate = true;
+          m.map = texture; m.needsUpdate = true;
+          window.CHURCH_PERFORMANCE?.invalidate();
+        };
+        picture.onerror = () => console.error('Local concept artwork could not load: ' + d.textureUrl);
+        // file: PNG image origins cannot be uploaded in ordinary Chrome.
+        // The generated local script preserves native bytes as data URLs.
+        picture.src = window.CHURCH_WING_SAINT_TEXTURES?.[d.textureUrl]?.imageUrl || d.textureUrl;
+      }
     }
     return matLib[key];
   }
@@ -1084,7 +1114,11 @@
   }
   function refreshSeats() {
     const blocks = ctx.interior.seatingState?.().blocks || window.CHURCH_PLANNING?.state?.().blocks || 4;
-    GEO.seats = GEO.seatsByLayout[blocks] || [];
+    const seats = GEO.seatsByLayout[blocks] || [];
+    // Equal receiver counts can have different positions/audience interception.
+    // Invalidate directional fractions when the actual seating array changes.
+    if (GEO.seats !== seats) audienceCache.clear();
+    GEO.seats = seats;
     GEO.seatingArea = (GEO.seatAreas?.[blocks] || 200) * 1.25;
     roomCache = null;
   }
@@ -1208,7 +1242,7 @@
   let nextId = 1;
   function newId(prefix) {
     let id;
-    do { id = `${prefix}${nextId++}`; } while (state.items.some(i => i.id === id));
+    do { id = `${prefix}${nextId++}`; } while (state.items.some(i => i.id === id) || window.CHURCH_SIM_DESIGN?.wingSoundRetiredIds?.includes(id) || window.CHURCH_SIM_DESIGN?.wingReviewRetiredIds?.includes(id));
     return id;
   }
   function normalizeItem(raw) {
@@ -1217,7 +1251,7 @@
     const num = (v, d) => Number.isFinite(Number(v)) ? Number(v) : d;
     const pos = Array.isArray(raw.pos) && raw.pos.length === 3 ? raw.pos.map(v => num(v, 0)) : null;
     if (!pos) return null;
-    const prefix = { light: 'L', fan: 'F', speaker: 'S', decor: 'D' }[type.cat] || 'X';
+    const prefix = { light: 'L', fan: 'F', speaker: 'S', decor: 'D', power: 'P' }[type.cat] || 'X';
     const params = {};
     for (const [k, p] of Object.entries(type.params || {})) {
       const value = raw.params?.[k] ?? p.value;
@@ -1241,6 +1275,8 @@
     if (type.fan) { it.speed = P.clamp(Math.round(num(raw.speed, 2)), 0, type.fan.speeds.length); it.oscillate = raw.oscillate !== false; }
     if (type.speaker) { it.level = P.clamp(num(raw.level, 0), -30, 12); it.delayMs = P.clamp(num(raw.delayMs, 0), 0, 400); }
     if (it.mount === 'pendant' && it.anchorY === undefined) it.anchorY = structureAbove(pos[0], pos[2], pos[1])?.y ?? pos[1];
+    const numericId = it.id.match(/^[LFSDXP](\d+)$/);
+    if (numericId) nextId = Math.max(nextId, Number(numericId[1]) + 1);
     return it;
   }
   function addItem(raw, { record = true, select: doSelect = false } = {}) {
@@ -1444,6 +1480,216 @@
     lastSnapshot = snapshot();
     emit('history');
   }
+
+  function reviewedWingItems(side) {
+    const D = window.CHURCH_SIM_DESIGN;
+    return D.wingReviewTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+  }
+  function wingReviewStatus() {
+    const fields = ['type', 'circuit', 'mount', 'pos', 'yaw', 'tilt', 'mountYaw', 'anchorY', 'hidden', 'lumens', 'beam', 'cct', 'oscillate', 'shadow', 'params'];
+    const same = (a, b) => typeof a === 'number' && typeof b === 'number' ? Math.abs(a - b) < 1e-9
+      : Array.isArray(a) && Array.isArray(b) ? a.length === b.length && a.every((v, n) => same(v, b[n]))
+      : a && b && typeof a === 'object' && typeof b === 'object' ? Object.keys(a).length === Object.keys(b).length && Object.keys(a).every(k => same(a[k], b[k])) : a === b;
+    const sides = ['B', 'H'].map(side => {
+      const targets = reviewedWingItems(side);
+      const ids = new Set(window.CHURCH_SIM_DESIGN.wingReviewScope(side));
+      const items = state.items.filter(it => ids.has(it.id) && !it.hidden);
+      const obsoleteIds = state.items.filter(it => ids.has(it.id) && window.CHURCH_SIM_DESIGN.wingReviewRetiredIds.includes(it.id)).map(it => it.id);
+      const mismatchingIds = targets.filter(target => {
+        const prior = SIM.item(target.id);
+        return !prior || fields.some(field => !same(prior[field], target[field]));
+      }).map(it => it.id);
+      const conflictIds = window.CHURCH_SIM_DESIGN.wingReviewScope(side).filter(id => id.startsWith('F-WING-') && SIM.item(id) && !new RegExp('^Wall fan · wing ' + side + ' · [34] · held review$').test(SIM.item(id).name));
+      return { side, current: !mismatchingIds.length && !obsoleteIds.length, mismatchingIds, conflictIds, obsoleteIds,
+        counts: { chandeliers: items.filter(it => it.type === 'chandelier6Reading').length,
+          wallFans: items.filter(it => CAT.byId[it.type]?.fan?.kind === 'jet' && it.circuit === 'F5').length,
+          roofFans: items.filter(it => it.type === 'fanCeiling').length } };
+    });
+    return { sourceRevision: window.CHURCH_SIM_DESIGN.wingReviewRevision, sides };
+  }
+  function adoptWingReview(side) {
+    const status = wingReviewStatus().sides.find(row => row.side === side);
+    if (!status) throw new Error('Choose wing B or H.');
+    if (status.conflictIds.length) throw new Error('Reserved IDs belong to renamed/custom equipment: ' + status.conflictIds.join(', ') + '. Export and resolve these records first.');
+    if (status.current) return { backupKey: null, changedIds: [] };
+    const previous = JSON.parse(JSON.stringify(exportLayout()));
+    const history = state.history.slice(), future = state.future.slice(), selectedId = state.selectedId, lastSnapshotBefore = lastSnapshot;
+    const targets = reviewedWingItems(side);
+    const scene = SCENES[state.scene] || {};
+    const replacements = new Map(targets.map(target => {
+      const prior = SIM.item(target.id);
+      if (prior?.note) target.note = prior.note; // entered notes survive explicit adoption
+      if (CAT.byId[target.type].light) {
+        target.on = prior?.on ?? ((scene.L8 ?? 1) > 0);
+        target.dim = prior?.dim ?? Math.min(1, scene.L8 ?? 1);
+      } else {
+        // The reviewed F5 low setting is separate from the old F1 roof-fan
+        // speed. Never inherit a different product's speed index.
+        target.on = (scene.F5 ?? 1) > 0;
+        target.speed = target.on ? 1 : 0;
+      }
+      return [target.id, target];
+    }));
+    const present = new Set(previous.items.map(it => it.id));
+    const retiredIds = window.CHURCH_SIM_DESIGN.wingReviewScope(side).filter(id => window.CHURCH_SIM_DESIGN.wingReviewRetiredIds.includes(id));
+    const items = [...previous.items.filter(it => !retiredIds.includes(it.id)).map(it => replacements.get(it.id) || it), ...targets.filter(it => !present.has(it.id))];
+    let suffix = Date.now(), backupKey;
+    do { backupKey = STORAGE_KEY + '.before-wing-adoption.' + suffix++; } while (localStorage.getItem(backupKey));
+    // A failed durable backup must leave the current layout and history intact.
+    localStorage.setItem(backupKey, JSON.stringify(previous));
+    try {
+      // Capture the actual preceding equipment, including unrecorded slider/batch edits.
+      lastSnapshot = JSON.stringify(previous.items);
+      importLayout({ ...previous, items });
+      state.history[state.history.length - 1].label = 'Use reviewed wing ' + side + ' lights and fans';
+      state.settings.wingReviewRevision = window.CHURCH_SIM_DESIGN.wingReviewRevision;
+      if (!saveNow()) throw new Error('The updated layout could not be saved; the previous layout is retained.');
+    } catch (error) {
+      Object.assign(state.settings, previous.settings);
+      state.customScenes = previous.customScenes;
+      restore(JSON.stringify(previous.items));
+      state.history = history; state.future = future; lastSnapshot = lastSnapshotBefore;
+      select(selectedId); applySettings(); emit('history');
+      throw error;
+    }
+    emit('items', {});
+    return { backupKey, changedIds: targets.map(it => it.id) };
+  }
+  SIM.wingReviewStatus = wingReviewStatus;
+  SIM.adoptWingReview = adoptWingReview;
+
+  function naveFanStatus() {
+    const D = window.CHURCH_SIM_DESIGN;
+    const fields = ['type', 'circuit', 'mount', 'pos', 'yaw', 'tilt', 'mountYaw', 'hidden', 'params', 'oscillate'];
+    return { sourceRevision: D.naveFanRevision, sides: ['B', 'H'].map(side => {
+      const targets = D.naveFanTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+      const mismatchingIds = targets.filter(t => { const p = SIM.item(t.id); return !p || fields.some(k => JSON.stringify(p[k]) !== JSON.stringify(t[k])); }).map(t => t.id);
+      const conflictIds = targets.filter(t => { const p = SIM.item(t.id); return p && (!['fanWall', 'fanNaveWall'].includes(p.type) || p.circuit !== 'F2' || p.name !== t.name); }).map(t => t.id);
+      const items = state.items.filter(it => it.circuit === 'F2' && Math.sign(it.pos[2]) === (side === 'B' ? -1 : 1) && !it.hidden && CAT.byId[it.type]?.fan?.kind === 'jet');
+      return { side, current: !mismatchingIds.length, mismatchingIds, conflictIds, counts: { wallFans: items.length } };
+    }) };
+  }
+  function adoptNaveFans(side) {
+    const status = naveFanStatus().sides.find(s => s.side === side);
+    if (!status) throw new Error('Choose nave side B or H.');
+    if (status.conflictIds.length) throw new Error('Reserved fan IDs belong to renamed/custom equipment: ' + status.conflictIds.join(', '));
+    if (status.current) return { backupKey: null, changedIds: [] };
+    const D = window.CHURCH_SIM_DESIGN, previous = JSON.parse(JSON.stringify(exportLayout()));
+    const targets = D.naveFanTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+    for (const t of targets) {
+      const prior = SIM.item(t.id);
+      if (prior) { t.on = prior.on; t.speed = prior.speed; if (prior.note) t.note = prior.note; }
+      else { t.on = false; t.speed = 1; }
+    }
+    const replacements = new Map(targets.map(t => [t.id, t])), present = new Set(previous.items.map(it => it.id));
+    const items = [...previous.items.map(it => replacements.get(it.id) || it), ...targets.filter(t => !present.has(t.id))];
+    const history = state.history.slice(), future = state.future.slice(), selectedId = state.selectedId, lastSnapshotBefore = lastSnapshot;
+    let suffix = Date.now(), backupKey; do { backupKey = STORAGE_KEY + '.before-nave-fans-adoption.' + suffix++; } while (localStorage.getItem(backupKey));
+    localStorage.setItem(backupKey, JSON.stringify(previous));
+    try {
+      lastSnapshot = JSON.stringify(previous.items);
+      importLayout({ ...previous, items });
+      state.history[state.history.length - 1].label = 'Use eight wall fans on nave side ' + side;
+      state.settings.naveFanRevision = D.naveFanRevision;
+      if (!saveNow()) throw new Error('The updated fans could not be saved; the preceding layout is retained.');
+    } catch (error) {
+      Object.assign(state.settings, previous.settings); state.customScenes = previous.customScenes;
+      restore(JSON.stringify(previous.items)); state.history = history; state.future = future; lastSnapshot = lastSnapshotBefore;
+      select(selectedId); applySettings(); emit('history'); throw error;
+    }
+    emit('items', {}); return { backupKey, changedIds: targets.map(t => t.id) };
+  }
+  SIM.naveFanStatus = naveFanStatus; SIM.adoptNaveFans = adoptNaveFans;
+
+  function wingArtStatus() {
+    const D = window.CHURCH_SIM_DESIGN;
+    const same = (a, b) => Array.isArray(a) && Array.isArray(b) ? a.length === b.length && a.every((v, n) => same(v, b[n])) : typeof a === 'number' && typeof b === 'number' ? Math.abs(a - b) < 1e-9 : a === b;
+    return { sourceRevision: D.wingArtRevision, sides: ['B', 'H'].map(side => {
+      const targets = D.wingArtTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+      const mismatchingIds = targets.filter(t => { const p = SIM.item(t.id); return !p || ['type', 'mount', 'pos', 'yaw', 'mountYaw', 'hidden'].some(k => !same(p[k], t[k])); }).map(t => t.id);
+      const conflictIds = targets.filter(t => { const p = SIM.item(t.id); return p && !['saintPeterPicture', 'saintPaulPicture'].includes(p.type); }).map(t => t.id);
+      return { side, current: !mismatchingIds.length, mismatchingIds, conflictIds, counts: { pictures: targets.filter(t => { const p = SIM.item(t.id); return p && !p.hidden && ['saintPeterPicture', 'saintPaulPicture'].includes(p.type); }).length } };
+    }) };
+  }
+  function adoptWingArt(side) {
+    const status = wingArtStatus().sides.find(s => s.side === side);
+    if (!status) throw new Error('Choose wing B or H.');
+    if (status.conflictIds.length) throw new Error('Reserved saints IDs belong to other equipment: ' + status.conflictIds.join(', '));
+    if (status.current) return { backupKey: null, changedIds: [] };
+    const D = window.CHURCH_SIM_DESIGN, previous = JSON.parse(JSON.stringify(exportLayout()));
+    const targets = D.wingArtTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+    for (const t of targets) if (SIM.item(t.id)?.note) t.note = SIM.item(t.id).note;
+    const replacements = new Map(targets.map(t => [t.id, t])), present = new Set(previous.items.map(it => it.id));
+    const items = [...previous.items.map(it => replacements.get(it.id) || it), ...targets.filter(t => !present.has(t.id))];
+    const history = state.history.slice(), future = state.future.slice(), selectedId = state.selectedId, lastSnapshotBefore = lastSnapshot;
+    let suffix = Date.now(), backupKey; do { backupKey = STORAGE_KEY + '.before-wing-art-adoption.' + suffix++; } while (localStorage.getItem(backupKey));
+    localStorage.setItem(backupKey, JSON.stringify(previous));
+    try {
+      lastSnapshot = JSON.stringify(previous.items);
+      importLayout({ ...previous, items });
+      state.history[state.history.length - 1].label = 'Use reviewed wing ' + side + ' saints';
+      state.settings.wingArtRevision = D.wingArtRevision;
+      if (!saveNow()) throw new Error('The pictures could not be saved; the preceding layout is retained.');
+    } catch (error) {
+      Object.assign(state.settings, previous.settings); state.customScenes = previous.customScenes;
+      restore(JSON.stringify(previous.items)); state.history = history; state.future = future; lastSnapshot = lastSnapshotBefore;
+      select(selectedId); applySettings(); emit('history'); throw error;
+    }
+    emit('items', {}); return { backupKey, changedIds: targets.map(t => t.id) };
+  }
+  SIM.wingArtStatus = wingArtStatus; SIM.adoptWingArt = adoptWingArt;
+
+  function wingSoundStatus() {
+    const D = window.CHURCH_SIM_DESIGN;
+    const fields = ['type', 'circuit', 'mount', 'pos', 'yaw', 'tilt', 'mountYaw', 'anchorY', 'hidden', 'level', 'delayMs'];
+    const same = (a, b) => typeof a === 'number' && typeof b === 'number' ? Math.abs(a - b) < 1e-9 : Array.isArray(a) && Array.isArray(b) ? a.length === b.length && a.every((v, n) => same(v, b[n])) : a === b;
+    return { sourceRevision: D.wingSoundRevision, sides: ['B', 'H'].map(side => {
+      const targets = D.wingSoundTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+      const retiredId = side === 'B' ? 'S275' : 'S277';
+      const obsoleteIds = SIM.item(retiredId) ? [retiredId] : [];
+      const mismatchingIds = targets.filter(t => { const p = SIM.item(t.id); return !p || fields.some(k => !same(p[k], t[k])); }).map(t => t.id);
+      const items = state.items.filter(it => [targets[0].id, retiredId].includes(it.id) && !it.hidden);
+      return { side, current: !obsoleteIds.length && !mismatchingIds.length, mismatchingIds, obsoleteIds,
+        counts: { wallSpeakers: items.filter(it => it.mount === 'wall' && CAT.byId[it.type].speaker).length, pendantSpeakers: items.filter(it => it.mount === 'pendant' && CAT.byId[it.type].speaker).length } };
+    }) };
+  }
+  function adoptWingSound(side) {
+    const status = wingSoundStatus().sides.find(it => it.side === side);
+    if (!status) throw new Error('Choose wing B or H.');
+    if (status.current) return { backupKey: null, changedIds: [], retiredIds: [] };
+    const D = window.CHURCH_SIM_DESIGN, previous = JSON.parse(JSON.stringify(exportLayout()));
+    const targets = D.wingSoundTargets(D.recommended(GEO, SIM), side).map(normalizeItem);
+    const retiredIds = side === 'B' ? ['S275'] : ['S277'];
+    const replacements = new Map(targets.map(it => {
+      const prior = SIM.item(it.id);
+      it.on = prior?.on ?? ((SCENES[state.scene]?.A1 ?? 1) > 0);
+      if (prior?.note) it.note = prior.note;
+      return [it.id, it];
+    }));
+    const present = new Set(previous.items.map(it => it.id));
+    const items = [...previous.items.filter(it => !retiredIds.includes(it.id)).map(it => replacements.get(it.id) || it), ...targets.filter(it => !present.has(it.id))];
+    const history = state.history.slice(), future = state.future.slice(), selectedId = state.selectedId, lastSnapshotBefore = lastSnapshot;
+    let suffix = Date.now(), backupKey;
+    do { backupKey = STORAGE_KEY + '.before-wing-sound-adoption.' + suffix++; } while (localStorage.getItem(backupKey));
+    localStorage.setItem(backupKey, JSON.stringify(previous));
+    try {
+      // Capture the actual preceding equipment, including unrecorded slider/batch edits.
+      lastSnapshot = JSON.stringify(previous.items);
+      importLayout({ ...previous, items });
+      state.history[state.history.length - 1].label = 'Use reviewed wing ' + side + ' speaker';
+      state.settings.wingSoundRevision = D.wingSoundRevision;
+      if (!saveNow()) throw new Error('The updated sound layout could not be saved; the previous layout is retained.');
+    } catch (error) {
+      Object.assign(state.settings, previous.settings); state.customScenes = previous.customScenes;
+      restore(JSON.stringify(previous.items)); state.history = history; state.future = future; lastSnapshot = lastSnapshotBefore;
+      select(selectedId); applySettings(); emit('history'); throw error;
+    }
+    emit('items', {});
+    return { backupKey, changedIds: targets.map(it => it.id), retiredIds: retiredIds.filter(id => present.has(id)) };
+  }
+  SIM.wingSoundStatus = wingSoundStatus;
+  SIM.adoptWingSound = adoptWingSound;
+
   function exportSchedule() {
     const rows = [['ID', 'Name', 'Category', 'Type', 'Circuit', 'Axis', 'X (m)', 'Z (m)', 'Height (m)', 'Aim yaw°', 'Aim tilt°', 'On', 'Dim %', 'Lumens', 'CCT K', 'Beam°', 'Watts', 'Fan speed', 'Speaker level dB', 'Delay ms', 'Notes']];
     for (const it of state.items) {
@@ -1461,6 +1707,9 @@
     const t = CAT.byId[it.type];
     if (!t || it.hidden || (!rated && !it.on)) return 0;
     const dim = P.clamp(Number.isFinite(it.dim) ? it.dim : 1, 0, 1);
+    // A socket has no load of its own. Operating: the test load entered for it.
+    // Rated: this point's share of its circuit rating (a planning allowance).
+    if (t.outlet) return rated ? t.outlet.allowanceW : P.clamp(Number(it.params?.loadW) || 0, 0, t.outlet.ratingA * 230);
     if (t.light?.wattsPerBulb) return t.light.wattsPerBulb * CAT.bulbCount(it.params) * (rated ? 1 : dim);
     // Strings are rated per metre (no lumen rating to scale by).
     if (t.light?.wattsPerMetre) return t.light.wattsPerMetre * Math.max(0, Number.isFinite(it.params?.length) ? it.params.length : 12) * (rated ? 1 : dim);
@@ -1496,7 +1745,12 @@
       c.amps = c.watts / (230 * PF);
       c.ratedAmps = c.rated / (230 * PF);
       c.mcb = MCB.find(a => a * 0.8 >= c.ratedAmps) || 63;
+      // Socket circuits are sized by their own rating, not by an 80 % rule on a
+      // known load: the protective device limits whatever is plugged in.
+      const outlet = CIRCUITS[c.circuit]?.outlet;
+      if (outlet) { c.outlet = true; c.mcb = outlet.ratingA; c.rcdmA = outlet.rcdmA; c.overloaded = c.amps > outlet.ratingA; }
     }
+    const outletRated = Object.values(byCircuit).filter(c => c.outlet).reduce((t, c) => t + c.rated, 0);
     // Cable: each circuit runs from its board to its fittings (plan distance
     // along the walls + 6 m up and down). DB-2 needs one feeder from DB-1.
     const run = (b, c) => { const l = state.items.filter(i => i.circuit === c && !i.hidden); if (!l.length) return 0;
@@ -1506,21 +1760,21 @@
     const feeder = Math.abs(BOARDS.DB1.pos[0] - BOARDS.DB2.pos[0]) + Math.abs(BOARDS.DB1.pos[2] - BOARDS.DB2.pos[2]) + 3;
     const s = state.settings;
     const kWhService = total * s.serviceHours / 1000;
-    return { byCircuit: Object.values(byCircuit).sort((a, b) => a.circuit.localeCompare(b.circuit)), total, rated, amps: total / (230 * PF), ratedAmps: rated / (230 * PF), cable: { feeder, saved }, kWhService, kWhMonth: kWhService * s.servicesPerMonth, costMonth: kWhService * s.servicesPerMonth * s.tariff };
+    return { byCircuit: Object.values(byCircuit).sort((a, b) => a.circuit.localeCompare(b.circuit)), total, rated, amps: total / (230 * PF), ratedAmps: rated / (230 * PF), cable: { feeder, saved }, outletRated, outletRatedAmps: outletRated / (230 * PF), kWhService, kWhMonth: kWhService * s.servicesPerMonth, costMonth: kWhService * s.servicesPerMonth * s.tariff };
   }
 
   /* ---------------------------------------------------------------- scenes */
   const SCENES = {
-    'Full service · evening': { L9: 1, L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 2, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
-    'Weekday Mass': { L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
-    'Prayer & adoration': { L9: 1, L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1 },
-    'Christmas & festivals': { L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 3, F3: 3, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 2, A5: 0, DECOR: 1 },
+    'Full service · evening': { L10: 1, L9: 1, L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1, F5: 1 },
+    'Weekday Mass': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1, F5: 1 },
+    'Prayer & adoration': { L10: 0.6, L9: 1, L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1, F5: 1 },
+    'Christmas & festivals': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 2, A5: 0, DECOR: 1, F5: 1 },
     // Courtyard horns on: for crowds outside. Inside, their sound comes back
     // through the open windows late enough to blur speech, so use only then.
-    'Festival · courtyard overflow': { L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 3, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, A5: 1, DECOR: 1 },
-    'Cleaning': { L9: 0, L8: 1, L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 2, A5: 0, DECOR: 1 },
-    'Night security': { L9: 1, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1 },
-    'All off': { L9: 0, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1 }
+    'Festival · courtyard overflow': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, A5: 1, DECOR: 1, F5: 1 },
+    'Cleaning': { L10: 0, L9: 0, L8: 1, L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 2, A5: 0, DECOR: 1, F5: 1 },
+    'Night security': { L10: 0, L9: 1, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1, F5: 0 },
+    'All off': { L10: 0, L9: 0, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1, F5: 0 }
   };
   SIM.SCENES = SCENES;
   // Reading light each scene is meant to give on the books (lux, maintained).
@@ -1654,7 +1908,8 @@
     const p = camera.position;
     const insideTarget = roofOff || (isCovered([p.x, p.y, p.z]) && p.y < 12.6 && p.y > -0.6) ? 1 : 0;
     cameraInside += (insideTarget - cameraInside) * Math.min(1, dt * 3 || 1);
-    let target = envMode === 'day' ? Math.max(900, s.adaptLux * 11) : s.adaptLux;
+    // The day picture keeps its exposure: 1 210 lux at the default evening setting, as before.
+    let target = envMode === 'day' ? Math.max(900, s.adaptLux * 1210 / EVENING_ADAPT_LUX) : s.adaptLux;
     if (s.autoExposure && envMode === 'evening') {
       const local = SIM.analysis?.sampleLux?.(p.x, p.z);
       target = local ? P.clamp(local * 0.75, 20, 900) : (cameraInside > 0.5 ? s.adaptLux : 30);
@@ -2024,6 +2279,35 @@
       importLayout({ ...previous, items: D.upgradeSanctuary(state.items, D.recommended(GEO, SIM), state.settings.sanctuaryRevision) }, { record: false });
     }
     state.settings.sanctuaryRevision = D.sanctuaryRevision;
+    // New scoped reviews require both a full backup and durable new state.
+    // A failed write restores the preceding in-memory layout and marker.
+    for (const [field, revision, suffix, upgrade] of [
+      ['wingReviewRevision', D.wingReviewRevision, '.before-wing-review', D.upgradeWingReview],
+      ['wingSoundRevision', D.wingSoundRevision, '.before-wing-sound-review', D.upgradeWingSound],
+      ['wingArtRevision', D.wingArtRevision, '.before-wing-art-review', D.upgradeWingArt],
+      ['naveFanRevision', D.naveFanRevision, '.before-nave-fans-review', D.upgradeNaveFans],
+      ['outletRevision', D.outletRevision, '.before-socket-outlets', D.upgradeOutlets],
+      ['facadeStatueRevision', D.facadeStatueRevision, '.before-facade-statues', D.upgradeFacadeStatues]
+    ]) {
+      if (!loaded) { state.settings[field] = revision; continue; }
+      if (state.settings[field] === revision) continue;
+      const previous = JSON.parse(JSON.stringify(exportLayout()));
+      try {
+        localStorage.setItem(STORAGE_KEY + suffix, JSON.stringify(previous));
+        importLayout({ ...previous, items: upgrade(state.items, D.recommended(GEO, SIM)) }, { record: false });
+        state.settings[field] = revision;
+        if (!saveNow()) throw new Error('Updated layout could not be saved.');
+      } catch (error) {
+        importLayout(previous, { record: false });
+        console.warn(field + ' migration skipped; saved layout retained:', error.message);
+      }
+    }
+
+    // A saved evening exposure still at the old default moves once; any other chosen value is kept.
+    if (state.settings.eveningExposureRevision !== EVENING_EXPOSURE_REVISION) {
+      if (loaded && state.settings.adaptLux === EVENING_ADAPT_BEFORE) state.settings.adaptLux = EVENING_ADAPT_LUX;
+      state.settings.eveningExposureRevision = EVENING_EXPOSURE_REVISION;
+    }
     if (state.settings.stableLightingRevision !== '2026-10-06-physical-lighting') {
       state.settings.autoExposure = false;
       state.settings.stableLightingRevision = '2026-10-06-physical-lighting';

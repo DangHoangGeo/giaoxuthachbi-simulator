@@ -1,0 +1,1 @@
+The initial visual harness required bit-exact camera coordinates. OrbitControls returned Y 0.7799999999999994 m for intended Y 0.78 m. The final harness permits 1e-10 m floating-point roundoff and retains the exact intended local-floor eye heights. This is a harness correction; no model input, physics, target or equipment changed.

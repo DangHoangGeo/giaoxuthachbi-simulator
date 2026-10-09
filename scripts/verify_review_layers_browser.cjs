@@ -1,0 +1,33 @@
+/* Actual desktop interaction; isolated file:// storage, no engineering edits. */
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'playwright');const root=path.resolve(__dirname,'..'),out=process.argv[2]||'/tmp/thachbi-review-layers';fs.mkdirSync(out,{recursive:true});
+(async()=>{const browser=await chromium.launch({channel:'chrome',headless:process.env.HEADED!=='1',args:['--allow-file-access-from-files']});try{
+ const p=await browser.newPage({viewport:{width:1600,height:1000}}),errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+ await p.goto('file://'+root+'/Thach_Bi_Viewer/OPEN_CHURCH.html');await p.waitForFunction(()=>window.church?.ready,null,{timeout:180000});
+ await p.evaluate(()=>{church.pause();church.goTo('nave',{instant:true});church.setLighting('day');church.render();});
+ const before=await p.evaluate(()=>JSON.stringify(CHURCH_SIMULATOR.electrical.exportData()));
+ await p.locator('#simulatorButton').click();await p.locator('#simPanel [data-tab=wiring]').click();
+ await p.locator('[data-act=electrical-system][data-system=lighting]').click();await p.locator('[data-act=electrical-mode][data-mode=systems]').click();
+ const snapshots=[];
+ const inspect=async(name)=>{await p.waitForFunction(()=>{const ids=CHURCH_SIMULATOR.electrical.reviewSelection().itemIds;const actual=[...document.querySelectorAll('.electrical-plan [data-id]')].map(e=>e.dataset.id);return JSON.stringify([...ids].sort())===JSON.stringify(actual.sort());});const state=await p.evaluate(()=>{const E=CHURCH_SIMULATOR.electrical;church.render();return{filter:{...E.view},...E.reviewSelection(),visibleItems:[...CHURCH_SIMULATOR.fixtures].filter(([,f])=>f.root.visible).map(([id])=>id),planIds:[...document.querySelectorAll('.electrical-plan [data-id]')].map(e=>e.dataset.id),planSources:[...document.querySelectorAll('.electrical-plan g[data-electrical-id]')].map(e=>e.dataset.electricalId)};});assert.deepEqual([...state.visibleItems].sort(),[...state.itemIds].sort(),name+' matching fixture bodies');assert.deepEqual([...state.planIds].sort(),[...state.itemIds].sort(),name+' matching 2D items');assert.deepEqual([...state.planSources].sort(),[...state.sourceIds].sort(),name+' matching boards');snapshots.push({name,...state});await p.screenshot({path:path.join(out,name+'.png')});return state;};
+ let state=await inspect('01-lighting');assert(state.sourceIds.includes('LC1'));assert(!state.sourceIds.includes('FC1'));assert(!state.sourceIds.includes('AV1'));
+ await p.locator('select[data-act=electrical-review-circuit]').selectOption('L1');state=await inspect('02-circuit-L1');assert.equal(state.filter.circuit,'L1');
+ await p.locator('[data-act=electrical-open-controls][data-circuit=L1]').click();assert.equal(await p.locator('#ctl-tab-DB1').getAttribute('aria-selected'),'true');assert(await p.locator('#ctlPanel [data-act=breaker][data-circuit=L1]').isVisible());
+ assert.equal(await p.evaluate(()=>JSON.stringify(CHURCH_SIMULATOR.electrical.exportData())),before,'opening controls changes no data');await p.screenshot({path:path.join(out,'controls-L1.png')});await p.locator('#ctlPanel [data-act=close]').click();await p.locator('#simulatorButton').click();
+ await p.locator('[data-act=electrical-system][data-system=lighting]').click();await p.locator('[data-act=electrical-filter][data-board=DB2]').click();state=await inspect('03-db2-lighting');assert(state.routeIds.includes('feeder:DB2'));assert(state.sourceIds.includes('DB1')&&state.sourceIds.includes('DB2'));
+ await p.locator('[data-act=electrical-system][data-system=all]').click();state=await inspect('03b-db2-board-only');assert(state.sourceIds.includes('DB1')&&state.sourceIds.includes('DB2'),'board-only filter retains feeder endpoints');
+ await p.locator('[data-act=electrical-review-reset]').click();await p.locator('[data-act=electrical-system][data-system=sound]').click();state=await inspect('04-sound');assert(state.sourceIds.includes('AV1')&&!state.sourceIds.includes('LC1'));
+ await p.locator('[data-act=electrical-system][data-system=air]').click();state=await inspect('05-air');assert(state.sourceIds.includes('FC1')&&!state.sourceIds.includes('AV1'));
+ await p.locator('[data-act=electrical-system][data-system=lighting]').click();await p.locator('[data-act=electrical-isolate-item][data-id=L78]').click();state=await inspect('06-chandelier-trace');assert.deepEqual(state.itemIds,['L78']);assert.equal(state.routeIds.length,3);
+ const lengths=await p.evaluate(()=>{const E=CHURCH_SIMULATOR.electrical;return E.routes.filter(r=>E.reviewSelection().routeIds.includes(r.id)).map(r=>({id:r.id,length:r.length,points:r.points}));});
+ const drop=lengths.find(r=>r.id.startsWith('drop:'));assert(drop,'individual chandelier has a branch route');
+ await p.locator('button[data-act=electrical-select][data-electrical-id="'+drop.id+'"]').last().click();
+ await p.getByText('Route vertices · metres',{exact:true}).click();
+ const rows=await p.locator('details .electrical-table tbody tr').allTextContents();assert.equal(rows.length,drop.points.length,'all route vertices displayed');
+ await p.screenshot({path:path.join(out,'vertices-L78.png')});
+ await p.locator('[data-act=electrical-mode][data-mode=building]').click();await p.evaluate(()=>{church.goTo('nave',{instant:true});church.setLighting('evening');church.render();});await p.screenshot({path:path.join(out,'07-restored-evening.png')});
+ assert(await p.evaluate(()=>[...CHURCH_SIMULATOR.fixtures.values()].every(f=>f.root.visible===CHURCH_SIMULATOR.fixtureVisible(f.item))));
+ assert.equal(await p.evaluate(()=>JSON.stringify(CHURCH_SIMULATOR.electrical.exportData())),before,'filters preserve all route coordinates and equipment specifications');
+ await p.reload();await p.waitForFunction(()=>window.church?.ready,null,{timeout:180000});assert.equal(await p.evaluate(()=>CHURCH_SIMULATOR.electrical.view.system),'all','review state is session-only');assert.equal(await p.evaluate(()=>JSON.stringify(CHURCH_SIMULATOR.electrical.exportData())),before,'reload preserves source design');
+ assert.deepEqual(errors,[]);fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({snapshots,lengths,unchangedExport:true,reload:true,errors},null,2)+'\n');console.log('PASS: seven desktop layer selections, 2D/3D IDs, controls navigation, restoration and reload; no export mutations.');
+}finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1});

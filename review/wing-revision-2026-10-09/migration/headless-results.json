@@ -1,0 +1,3225 @@
+{
+  "status": "PASS",
+  "generatedAt": "2026-10-09T01:08:34.518Z",
+  "node": "v22.22.2",
+  "revision": "2026-10-09-wing-two-light-art-2",
+  "baseline": {
+    "path": "review/wing-options-2026-10-09/baseline-layout.json",
+    "items": 322
+  },
+  "defaultItems": 320,
+  "stableIds": [
+    "L63",
+    "L64",
+    "L65",
+    "L66",
+    "F240",
+    "F241",
+    "L67",
+    "L68",
+    "L69",
+    "L70",
+    "F242",
+    "F243",
+    "F244",
+    "F245",
+    "F246",
+    "F247",
+    "F248",
+    "F249"
+  ],
+  "appendedIds": [
+    "F-WING-B-3",
+    "F-WING-B-4",
+    "F-WING-H-3",
+    "F-WING-H-4"
+  ],
+  "migrationCases": [
+    {
+      "name": "untouched frozen baseline",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [],
+      "sha256": "7d6ab21cf8d014977956aa3e6b8f147d4ef142dcec39cd99643d271e63ca3983"
+    },
+    {
+      "name": "B wing L63 deleted",
+      "inputItems": 321,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e1d655a08acf4834acf8670dd24a8f5d89e5a5b994ebfac2c46d5e94f84bb38f"
+    },
+    {
+      "name": "B wing L63 moved",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6549b81a6e9fb7bdec7aad91751e11f0cb98af390ed1dfd3d1275d2345afa3b3"
+    },
+    {
+      "name": "B wing L63 renamed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0ed9816d10dd7f43722f3db6039224581045c669eece5493f584be911fab6a26"
+    },
+    {
+      "name": "B wing L63 retuned",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7aba5e3749716f2d97141ed3a5b9cf6ec5b9a2ef4ced959108099cfd696d1ff9"
+    },
+    {
+      "name": "B wing L63 hidden",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c92d96bcb03c8a76d679b366805600a89406c9be3a61d5732f39d99511ab92d8"
+    },
+    {
+      "name": "B wing L63 switched",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "56c4f23c38ba295019e875224791e3fbe4d2115c35ee4a49dc15dfc5534656a6"
+    },
+    {
+      "name": "B wing L63 aimed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "94859c673b153f304f255703fbcc990296dc41773d535e3797a58831bdf92402"
+    },
+    {
+      "name": "B wing L63 annotated",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "cfff13d2e7d235210fecf9670e0e941e54ee29264c89e5a5b547d003c4326f9f"
+    },
+    {
+      "name": "B wing L63 recircuited",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4fa71fdad845339212e6944da1a515cd1432be1539b5a2c5186ddede0e195921"
+    },
+    {
+      "name": "B wing L64 deleted",
+      "inputItems": 321,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f4817646971022bbc1bdb32f57792805398e5a17061b2b1b4db4d5380cc9375b"
+    },
+    {
+      "name": "B wing L64 moved",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "bee6ab8fac8ccd979e243fbc8baaf978045f4e119b08f9e47e9fcbdf3badc52d"
+    },
+    {
+      "name": "B wing L64 renamed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "ee13f577ef71bf2487cc20587147078ecb5cfa1489555896e9337d3e5c623d51"
+    },
+    {
+      "name": "B wing L64 retuned",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "3dd50c155f8e46056f90e5934952f8b393371eb63ba961d853bdaf36ac4eb080"
+    },
+    {
+      "name": "B wing L64 hidden",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "3f0ec777d0758f88ed031460ee9d8e4444922364af86aed9a55ff2f94067fe68"
+    },
+    {
+      "name": "B wing L64 switched",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "724c82b28f10289d064bd039bcb20bd3a77baa68fee97c0176f0813d8e4c2d85"
+    },
+    {
+      "name": "B wing L64 aimed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d9b10f124d6070a233e70b2495e6ad6ff3d8b2d2d301e0e9be56d7d3497b02bb"
+    },
+    {
+      "name": "B wing L64 annotated",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "fd504232b45e42273187181e4acde3413d8f66b7ba605fc9454fbe85ad7622aa"
+    },
+    {
+      "name": "B wing L64 recircuited",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c1d9acd0ba968c55a43af645393d6ea845697f85dcf091683c57b69ced149c10"
+    },
+    {
+      "name": "B wing L65 deleted",
+      "inputItems": 321,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "78c214faba3e1956435549a229cc5835885861ce48a1bba9d5a2396d863527f6"
+    },
+    {
+      "name": "B wing L65 moved",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "2bb58e42e51b7440d2081d7aca64f787365359ebc0b0f44d60a94f8aaa632db0"
+    },
+    {
+      "name": "B wing L65 renamed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "5e7774702bd79c6ff2c72981c3662303c0f93addc3146285926ef19d69a64774"
+    },
+    {
+      "name": "B wing L65 retuned",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f7fd1843cc54565e0a8c2c39b31a5959d3f8ee55ab78404fe280db742054b172"
+    },
+    {
+      "name": "B wing L65 hidden",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6abca5758be91fe2fdb2539d029861c5fa1424907f7d8b9bd8e04726e85efa79"
+    },
+    {
+      "name": "B wing L65 switched",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "ffa20490010a432635d6e41f29890b848125d50491bc3e48b23f5aa39df76966"
+    },
+    {
+      "name": "B wing L65 aimed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b94b4e32c2b580bd3bfc7ed2c009fe616a5c813bfd553a2945204f61d5b9e2bd"
+    },
+    {
+      "name": "B wing L65 annotated",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "27320d57bce6a22a6668d57e1c49e417edf733d6ddfb032d9d8928c0f7dc13e4"
+    },
+    {
+      "name": "B wing L65 recircuited",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e120d5b611a3f71ed8cf4d1f3b2079be120c87a24628068bdb93547a4881a073"
+    },
+    {
+      "name": "B wing L66 deleted",
+      "inputItems": 321,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "94022b26f0515c441383a57073d3c74c35c450e8d3393d8359b9ee711bbb9cdd"
+    },
+    {
+      "name": "B wing L66 moved",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c695bc6b4c08fe46f8a1bcd97c8a65f306acdc130e0361b848d2b96d980d7b4f"
+    },
+    {
+      "name": "B wing L66 renamed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6dcee2cb9ede93d5868ae9004669706ed0fc87e81b530059ee28b6eb16455349"
+    },
+    {
+      "name": "B wing L66 retuned",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9c9657c4f2f75dac0462a5870a63d25612eca2e5a213d6840039dd3bc1b9f231"
+    },
+    {
+      "name": "B wing L66 hidden",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6fd17c79592ca9c4e072d1a081424fe6ebee6c338a230dc4cef1d6082d284493"
+    },
+    {
+      "name": "B wing L66 switched",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e61c01e1ed4bf8ffd2b0ae30b31ab6262ea201160ec693bfdda233b813fece47"
+    },
+    {
+      "name": "B wing L66 aimed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "ce97f6696d78dd1c9552299f3b6d73f8998d6a672c909c7cf52f6ff3ff46c84e"
+    },
+    {
+      "name": "B wing L66 annotated",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0f4779c6e93ee3bb75605e590681b45e8750df4c687d704d2eba9fbb848098d9"
+    },
+    {
+      "name": "B wing L66 recircuited",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "90e086525f6e29b392cce4ff9e5b47881b780443bf77204e7a36fb881d07acfa"
+    },
+    {
+      "name": "B wing F240 deleted",
+      "inputItems": 321,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4ec7a0d4fbba04ddc505e423ee75db4c09c0c5a584271b7290db6d1dc254ffc4"
+    },
+    {
+      "name": "B wing F240 moved",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c78d8e95adf3259b5305b82c0dc180a082a5a373e04d61c1c9364e7e1b5acb14"
+    },
+    {
+      "name": "B wing F240 renamed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "fa12ad264b5b434676da651dc20de59ea319da0e4561d6211f0fec7c9c442c29"
+    },
+    {
+      "name": "B wing F240 retuned",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "5061ca4743fb17e515c80d34ded4a584d64b322b76ea340444172416586797a3"
+    },
+    {
+      "name": "B wing F240 hidden",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "621b134b75955452b4ed1b7f7fe500e83d571b1a9b8d8b1f63f503aba6e0dc9a"
+    },
+    {
+      "name": "B wing F240 switched",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "35699fbef850b7d113ea0c845b303fefddcff93f2a34ee2055729b1cd38a3c8f"
+    },
+    {
+      "name": "B wing F240 aimed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "fdc9324635ceb940beabb165fc8a77cbed9ccbebb9ec57a1dd7c54d56bf21c93"
+    },
+    {
+      "name": "B wing F240 annotated",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "a2d6e8d77fa724f94d470308ec4b701fb2e3fad74b782f8bcd0936d57bf2e66c"
+    },
+    {
+      "name": "B wing F240 recircuited",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4d6c07ab9b245b3a8fed61e7fe9b321889c9c14a0336801cba1910547e9e7aed"
+    },
+    {
+      "name": "B wing F241 deleted",
+      "inputItems": 321,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d61844b9cca82decd7b2a48b61f3e41a3d22186c85339922ab1fdeff902a7bff"
+    },
+    {
+      "name": "B wing F241 moved",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b6afee007af1e0486db126e3f1c8c688fbc29b2bc7eae9e33e4a3de300448cbd"
+    },
+    {
+      "name": "B wing F241 renamed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "ec00bf475c4e7cc4cb1b9fd3c93cd8df0dcdde0849b6edd4dc63a4c4d9a742c2"
+    },
+    {
+      "name": "B wing F241 retuned",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "078e5e4f440f6a5f8126159834ea5adefeb16ef018bce32a1ca39317e3e71439"
+    },
+    {
+      "name": "B wing F241 hidden",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "148f402efedad098a7d82347ae5589a28b983f58087516eb52bc4fd7d50289ce"
+    },
+    {
+      "name": "B wing F241 switched",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e4dcc202e7b8fa856a4ee146977c9481c00396d5912cabba3f39d3bd36412fc4"
+    },
+    {
+      "name": "B wing F241 aimed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4078a424f6fb251cdd1a1199e67d32126ca86da262b7e851cc0b693064d694c2"
+    },
+    {
+      "name": "B wing F241 annotated",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0556a3873a9a171ea2b81eea8d2eed7482d14ae6339de3a2f96d8667b29d5a09"
+    },
+    {
+      "name": "B wing F241 recircuited",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "240b52097af06333482a28d2fe0a647c6f8b457c67008755000f216aab7f187b"
+    },
+    {
+      "name": "H wing L67 deleted",
+      "inputItems": 321,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "8877316c1143197ad451b75f45b6451efddbd27db2026a567a70a68550161287"
+    },
+    {
+      "name": "H wing L67 moved",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "1e2180a7a28719c389fa0456f5352f6514732c7245a4becb12c4f59e06bf3255"
+    },
+    {
+      "name": "H wing L67 renamed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d8a4258109b74d62ccfe7a57cb391197ed0d40920915f225f5c37b92659a911c"
+    },
+    {
+      "name": "H wing L67 retuned",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7efb3239c3020da7c5f1ddd7e4c5edbf2be7edd5123dfd3c42df185c5052ac06"
+    },
+    {
+      "name": "H wing L67 hidden",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "8b0fe3bd100d85ed4575b73d991280c6275378ea5d3db1b99977290870da3a31"
+    },
+    {
+      "name": "H wing L67 switched",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7745b8bc4d9515d7693f5a0df1e80a5511174238817b75faa0ff6664b67c7389"
+    },
+    {
+      "name": "H wing L67 aimed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "5ada367df8ff9af5c56fba6a5c4d9e103b2cbd6efcf36d8c2938da758b52173d"
+    },
+    {
+      "name": "H wing L67 annotated",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d8e99e5371f144eeabc591346da4a3fae62d13836e6b6d4b16db2828c0a5d85b"
+    },
+    {
+      "name": "H wing L67 recircuited",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0d1c88a3e754bb1ef32a40bbd2fa6f30f10a7d5c44c2e0245c45e12c5f7f4d64"
+    },
+    {
+      "name": "H wing L68 deleted",
+      "inputItems": 321,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "ff00277465680be614b4bd6d8ad120b44a898a5db95b0ec3a020b8f226d3965b"
+    },
+    {
+      "name": "H wing L68 moved",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "621bf9fc693d0daa3aaa5aebe04bcf38da27b66ce1269b99faecbcff93912b1f"
+    },
+    {
+      "name": "H wing L68 renamed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b8789d7b7129af632ccaac93385fac8830c64ba1e230863d2538871894e93056"
+    },
+    {
+      "name": "H wing L68 retuned",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b5a33f7cd6cac8503e018e9784bcd29cccc94420c5bc8d07ea680e6a97ed34ff"
+    },
+    {
+      "name": "H wing L68 hidden",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c4735d35d32a268d229672582c658008dac4bc3d94d94e421771bf6006d2bb6c"
+    },
+    {
+      "name": "H wing L68 switched",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c727a7ea91ff98d7b6b7e24b3d9ce487b834df5fb79ded3ede7816d4d61e4335"
+    },
+    {
+      "name": "H wing L68 aimed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f23ce6283fc0b317c01f5dcfa9aeb57bc9a0e937d25725dfe7fd6a4205559608"
+    },
+    {
+      "name": "H wing L68 annotated",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "2eff0dc5c53c29e4f3606916bd5cdadb074c6939045f5f94c063f78ecc50bc50"
+    },
+    {
+      "name": "H wing L68 recircuited",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "da8410c58a72e9450c32a3a3754fedd9f6da9b17396fc03bd9a729a46c48f254"
+    },
+    {
+      "name": "H wing L69 deleted",
+      "inputItems": 321,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "175b098f7c9f46ecd12db96a217af8aa1ef68ed9dcd68475609e812456133243"
+    },
+    {
+      "name": "H wing L69 moved",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "34acd076053ab1fcada8e33b0814361b3760a28cbf73ff563c2c8175f7b1181b"
+    },
+    {
+      "name": "H wing L69 renamed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "a067db90d84214b4c58a252ef742c48749384ebb6edba2f46f2cbc679eb3f522"
+    },
+    {
+      "name": "H wing L69 retuned",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "13bfb58e8545d039da0457e40f2b09d80059c0c89582ac02060aa3f725f9f0cb"
+    },
+    {
+      "name": "H wing L69 hidden",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c2cc164f2867b6e72891794e9cc93ab8e991f68d82c8a57cb1b6fdbf27ff34a1"
+    },
+    {
+      "name": "H wing L69 switched",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0ba146f70d7295e24c5941d24ff7dc5112cd68d3763c156a48040d1eae0029a6"
+    },
+    {
+      "name": "H wing L69 aimed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9b0aeee0485a6b96818348456a98beb49de458ffd21e47a878c05de0f5a6045d"
+    },
+    {
+      "name": "H wing L69 annotated",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "512c0e7f3ddc21a2485604dc455d398e6fefb0640d575fa12a388b0b3ed48c1e"
+    },
+    {
+      "name": "H wing L69 recircuited",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b516d4d317d861f30e020266a4d52dd15682de86651469e3465b0af012fe078a"
+    },
+    {
+      "name": "H wing L70 deleted",
+      "inputItems": 321,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c4516d01aecc7d7d61ac52fc170f986b6503e07554533750f6f21ffce85005f9"
+    },
+    {
+      "name": "H wing L70 moved",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "019c3415249badf597be84840609d9df12d300c99777478b77628c718dd290c3"
+    },
+    {
+      "name": "H wing L70 renamed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0611b817ebd35c3959855ced92fe71717bbefd203e4ff1eab270aec18794e87b"
+    },
+    {
+      "name": "H wing L70 retuned",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c284daa4007d0bf4436185c44c68adf34fd6ee7fbb7732fc60b3cdf6910fbf78"
+    },
+    {
+      "name": "H wing L70 hidden",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "1e2d0c6300c383afee5ae488e7ba966d7912bb2cefb5d4e4dbbaf7659e1ac14f"
+    },
+    {
+      "name": "H wing L70 switched",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f38ba2a56feb5d86e63eb99303f70562b6131dd4878ab9f9f70cb171c44fd6c1"
+    },
+    {
+      "name": "H wing L70 aimed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7b52ceea2031639974c5b0310cbb5fcc16c7a0b39063da42587fccb9779b638c"
+    },
+    {
+      "name": "H wing L70 annotated",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7b86ab0e2030c7c24e38b1f3b7fd2a9d48bc644a521d825d492782c6465638a2"
+    },
+    {
+      "name": "H wing L70 recircuited",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f3e91c57219318125a7b2af40b5eb07614fc3e446fdc37555c6dcde563ab8e6d"
+    },
+    {
+      "name": "H wing F242 deleted",
+      "inputItems": 321,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9a33c48693ff32144f38cd2e0a660cbe35062162324633a4981a1cb961ce1212"
+    },
+    {
+      "name": "H wing F242 moved",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "38e6fc2d223a4bdae214ade4d98a944622fff5cb6b9d9dbf9f412398e4bbf829"
+    },
+    {
+      "name": "H wing F242 renamed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "5843ab122cb8d29d8074992ed4abefeff1d16e287f6f703f15e6a93373c7493e"
+    },
+    {
+      "name": "H wing F242 retuned",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d495f2aaeeb0bae94d0d06b2e7eff9f9f365a4ffce1eceb39732a348bdbb24e6"
+    },
+    {
+      "name": "H wing F242 hidden",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0a55b13eef2b2ea77a9c2680e4a12b9f8034371730ce37bf3e01ab426512001b"
+    },
+    {
+      "name": "H wing F242 switched",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "160c192950d42f9f192a6113402a5730425841a8e97fbc3096d8dd42b2c44e07"
+    },
+    {
+      "name": "H wing F242 aimed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b36ff247ccdc7659ee53f549ee03c80735c5182a8ea3a6ef231ae86ba59ae0ae"
+    },
+    {
+      "name": "H wing F242 annotated",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "10fe32c074451235aba851547daa047e2e0d73d88a28e129f523f2ebe609c183"
+    },
+    {
+      "name": "H wing F242 recircuited",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "98860d4c1547421ece86a9c41448c22d93b418c50a23f3492cebcdca2fa4499f"
+    },
+    {
+      "name": "H wing F243 deleted",
+      "inputItems": 321,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "5633be7cb60e1817c2ee94c545ae133467ba448ba17d44ba7768820ba5b85d31"
+    },
+    {
+      "name": "H wing F243 moved",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7f2f277ec9145476be55cc374a1e86998227572143b8417804aad6e2bde9161e"
+    },
+    {
+      "name": "H wing F243 renamed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "1c2465a8afe64ce5481bf0c1e719ed1987de4245fdf3d54dc5239d09b693fa8b"
+    },
+    {
+      "name": "H wing F243 retuned",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c8a502d531398c4601e8ca482c081372939aff543442515536786394e4b83d89"
+    },
+    {
+      "name": "H wing F243 hidden",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "15710b1c25dcf3ffefa1c4f708e5babe04cc0e0fa69aeb33e671b959eb6eb122"
+    },
+    {
+      "name": "H wing F243 switched",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "39fdf299adcf1412f6fa60dcc0b679050b43523fb05eb014ca8c1e4b6dd1eda9"
+    },
+    {
+      "name": "H wing F243 aimed",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4e98875b4151f4fbd3abb0acd5af4bca5c772a2caf5696b85c3e7dd930418f98"
+    },
+    {
+      "name": "H wing F243 annotated",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "fb2142f52f2ff4b76d64a8bcbfaccabd58906af23cca9c9b08c2e7b313b23d0e"
+    },
+    {
+      "name": "H wing F243 recircuited",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "3c1a4d4d7e364da26e19b42454fa8545c5f5c2b400cb2b0227fdeb2833bdb590"
+    },
+    {
+      "name": "optional nave F244 deleted",
+      "inputItems": 321,
+      "outputItems": 317,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "124d424902a514cc0f64f3b37700e044cbffeeb3036050085b6c2abad8d7f1ca"
+    },
+    {
+      "name": "optional nave F244 moved",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "86c3ad075d04741417d609ab4925d91796986f52084bf3e22b6334004d64ceb5"
+    },
+    {
+      "name": "optional nave F244 renamed",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "5b6824b2432c760693f1a6de2eddbdb6a50291fe63343443f4cc7de1415135ac"
+    },
+    {
+      "name": "optional nave F244 retuned",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "a1b0f9fb09784a6b9ddc8e553042244cc7cf0ff0eea795a9aba4786f210eda3c"
+    },
+    {
+      "name": "optional nave F244 hidden",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "6396efd953b031973ac021ba3960c3b3be7d8c6039e3e4f09cbe6332f59047af"
+    },
+    {
+      "name": "optional nave F244 switched",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "2ec75355037b2e9ae15735a416ffaa9238f7ffe965500b454eea3a672f3ff17f"
+    },
+    {
+      "name": "optional nave F244 aimed",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "9feeadfc7fb6047f241a607a25510fef05fb72c836b99d5fd6ff2af266a1d8c3"
+    },
+    {
+      "name": "optional nave F244 annotated",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "d3e093f317670cd9897e530c0dc06856f216593a67e195782d8f5dd7d677df3d"
+    },
+    {
+      "name": "optional nave F244 recircuited",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F244"
+      ],
+      "sha256": "1b681fe33002b7514ec53cc0cda3ac0f07ab19e8842190b3397205407d22584a"
+    },
+    {
+      "name": "optional nave F245 deleted",
+      "inputItems": 321,
+      "outputItems": 317,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "42f0118f46b94a1b0565ded15adfb0fd5ef9f9d15176f77c247aacecbc17ccc3"
+    },
+    {
+      "name": "optional nave F245 moved",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "aa13130fd1c008be9788d7af759fe1523257e0710c0f31f32ff57949f6ca16d5"
+    },
+    {
+      "name": "optional nave F245 renamed",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "68c07157b2814ec2cf73d5b8df8b78f0e7b1814900846afc45d21752ed9da82c"
+    },
+    {
+      "name": "optional nave F245 retuned",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "c067684bd43bdf490268d77860c7982369ffa85c8b4162616c08c1aae253b3bb"
+    },
+    {
+      "name": "optional nave F245 hidden",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "957e6356d90cc1904a6d3bab9eb460737a953d01f1075e6d9e6c3461bcac4137"
+    },
+    {
+      "name": "optional nave F245 switched",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "154ba1a77792501932a68418e387669c5c3a7178b536799de028263de9ce39fc"
+    },
+    {
+      "name": "optional nave F245 aimed",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "05df5e3d6c0c0b69cb00ae2afdcfe3f647a62959317e836d30418e6ec50b02b1"
+    },
+    {
+      "name": "optional nave F245 annotated",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "c1b2b67eb0db302c67f24a223971473e450f6d888a022d53632198a1aef21a06"
+    },
+    {
+      "name": "optional nave F245 recircuited",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F245"
+      ],
+      "sha256": "e2d6bb6ebb21228b9c0370b667544dec267d5a7e9f27b1962b87f4a70141a54f"
+    },
+    {
+      "name": "optional nave F246 deleted",
+      "inputItems": 321,
+      "outputItems": 317,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "ef8a7ba51a297ff4b54bec791ffd75ed00738fced8ee2b588bf7316f62ee81d0"
+    },
+    {
+      "name": "optional nave F246 moved",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "fa7de7269914f0938211bcc47b787e63a56659c08d0f98c60244bcca7893a40a"
+    },
+    {
+      "name": "optional nave F246 renamed",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "2ffcaf1d02df2e071b590922412f0d9e953f59e37814983c53a48ab509d906c2"
+    },
+    {
+      "name": "optional nave F246 retuned",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "ec14246b759ba3b2955c68481073bfe8e226c0d6577ee9b45b8cd1cc7f411e6d"
+    },
+    {
+      "name": "optional nave F246 hidden",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "d2a373e9e6b2d7ef2a574102d4ad6d17b4e4d1e4961ffa35b45b19aea739b6a4"
+    },
+    {
+      "name": "optional nave F246 switched",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "037b205acc1be0020a1bb81a8817058a57574d79f795c13d5ac86a40c9eaafc4"
+    },
+    {
+      "name": "optional nave F246 aimed",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "43bf06dea79f0172495e2f79a480735b6b56954d96b2515af35e74cbf213c41f"
+    },
+    {
+      "name": "optional nave F246 annotated",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "da29a0a0aee9a9842a522c559874a5ee146f92d496e4e0328df572ec5a072c3c"
+    },
+    {
+      "name": "optional nave F246 recircuited",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F246"
+      ],
+      "sha256": "266b53f41eaaff94099d52b1c60b4fb234b06297fa3cfa365413424a01c35dc9"
+    },
+    {
+      "name": "optional nave F247 deleted",
+      "inputItems": 321,
+      "outputItems": 317,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "053886dd731187688d38014c325a12d48fc312b9f92000efb33c0630078f2696"
+    },
+    {
+      "name": "optional nave F247 moved",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "8dd438266ef18069300ac2e205eb366683e4120ee2d7eca2b60d60c7deac037d"
+    },
+    {
+      "name": "optional nave F247 renamed",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "6de8dd21070bf44eb98f544aa2b653e73fddb363288b36eaf51b9365f4056fcf"
+    },
+    {
+      "name": "optional nave F247 retuned",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "fca37ba08ad095d42b85ecc2df67879409e64c86fa67614dce23fc66b9f4e2b5"
+    },
+    {
+      "name": "optional nave F247 hidden",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "533825adaa4e4604a6ed909600d769f536c3f978b12d2864dfd739a5dad79fe9"
+    },
+    {
+      "name": "optional nave F247 switched",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "b58c871e8f3a79475f45268c44c3aac42439bfef2cdd8d6c5f3ca90df7399a70"
+    },
+    {
+      "name": "optional nave F247 aimed",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "cd47f707a7466e9bd27e5334e1b61c2e30e55f679ab511683d363425d81d0052"
+    },
+    {
+      "name": "optional nave F247 annotated",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "c4ba427c03d735f66a240471a60fbbe7cd4495baa2ff5286d3680bd272d550cc"
+    },
+    {
+      "name": "optional nave F247 recircuited",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F247"
+      ],
+      "sha256": "55c409281a6d54c559f15e2d707ce76fde017f47afbcb717561b4b8c521f29bd"
+    },
+    {
+      "name": "optional nave F248 deleted",
+      "inputItems": 321,
+      "outputItems": 317,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "f45319d979af7800ec890ee80b3b5f514cd04d50116f6ae265445ac067745801"
+    },
+    {
+      "name": "optional nave F248 moved",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "4f12239e77af1e2451716413b6196b1a24f36d8126d4bf9995787a210546ec3f"
+    },
+    {
+      "name": "optional nave F248 renamed",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "2dcb570b184e10254ea0cd1b43144ed4ce6e13ffff8669211a0a84c869d3da7e"
+    },
+    {
+      "name": "optional nave F248 retuned",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "2ec4e10faafa965edcd388e5014027bcf6521d45c27a884925e765dcc327a89a"
+    },
+    {
+      "name": "optional nave F248 hidden",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "b99667fb2186cfee05ccb432334b43e12bc04078932c9a837152acd401520f14"
+    },
+    {
+      "name": "optional nave F248 switched",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "592cb0582c1b44b89ecbd58bc03f79c7a1da8583f18ab2e47fde9b91cd74fb3d"
+    },
+    {
+      "name": "optional nave F248 aimed",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "eafa3084491622ac1e68130505486e7149a2fd8973f178ccab496275dd9e2e04"
+    },
+    {
+      "name": "optional nave F248 annotated",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "d0a2702f8056a88efa3c75400aed1c49279f4cfd92d37346881482f6f68939e7"
+    },
+    {
+      "name": "optional nave F248 recircuited",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F248"
+      ],
+      "sha256": "9966ca662b727f54dc39c628b35b7c5192d6183c474928d7a588690646776ec3"
+    },
+    {
+      "name": "optional nave F249 deleted",
+      "inputItems": 321,
+      "outputItems": 317,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "27deae98bceadfa7ee6c0e8f170533ddaa6b1d9702e53103d7099cff3193281b"
+    },
+    {
+      "name": "optional nave F249 moved",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "2394d923ca4ae1ba8d052ed86dc788140820d635322aaf81dc33a50fbf5b98b0"
+    },
+    {
+      "name": "optional nave F249 renamed",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "f658ceb3e2d8d0ed3c199f926667d11516191c2f069e0969f52d87d875a4a41e"
+    },
+    {
+      "name": "optional nave F249 retuned",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "ffa0cfdded5529a6c285acd6d2d77be6871621e44a7af04da34eeedb5d6b94f0"
+    },
+    {
+      "name": "optional nave F249 hidden",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "9f9f0220060f7e1e0aa492fe271eb305ea859a33c4d08fcbdf9e21d6e1a424c4"
+    },
+    {
+      "name": "optional nave F249 switched",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "cd7f6a3a838fd66eff224bc365843e66fa526976c1698021c948dc084a9c0d04"
+    },
+    {
+      "name": "optional nave F249 aimed",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "24c9b97c96c2d19c191916404465946ef1f7487f431593f66973d101e1198ac5"
+    },
+    {
+      "name": "optional nave F249 annotated",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "125ab4ef542a24f280b2ef3a43facb85330b241a161564a36e7b1c4f407fb9d6"
+    },
+    {
+      "name": "optional nave F249 recircuited",
+      "inputItems": 322,
+      "outputItems": 318,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [
+        "F249"
+      ],
+      "sha256": "5456a31eb4b0fb2de0b81ee24371a58e5214952d9227be75ae9d815b2fa791ff"
+    },
+    {
+      "name": "both wings modified",
+      "inputItems": 321,
+      "outputItems": 321,
+      "blockedWings": [
+        "B",
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4adcb498c6c39b3ea9ec192e06aa33d97a2df6029aa8b737989ba10efd19e91c"
+    },
+    {
+      "name": "unrelated edits, custom item, notes and existing appended ID",
+      "inputItems": 324,
+      "outputItems": 322,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "742ef82ad6366c670544f6700bf17d6f98cb57fc894f2556584b2b73f0c9d864"
+    },
+    {
+      "name": "reserved appended-ID collision F-WING-B-3",
+      "inputItems": 323,
+      "outputItems": 321,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "dad570ed3a540425eee6f9aa44932c2d4958990896ddebd18ba8a0be03795422"
+    },
+    {
+      "name": "reserved appended-ID collision F-WING-B-4",
+      "inputItems": 323,
+      "outputItems": 321,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0e9b5e31ce0c1dbe23c7ad7c592df3b63de7e71a71fcd2d89cffcfdcbf128128"
+    },
+    {
+      "name": "reserved appended-ID collision F-WING-H-3",
+      "inputItems": 323,
+      "outputItems": 321,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6079ec869392be0402a5ef9bf37ca923d411d9dccda82f0df340c26b2f1275f5"
+    },
+    {
+      "name": "reserved appended-ID collision F-WING-H-4",
+      "inputItems": 323,
+      "outputItems": 321,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "ca895a0d2854205bc65c9a7fd24ec23f7743d8e35eb17b13d3c9834629b1cb33"
+    },
+    {
+      "name": "incomplete recommended wing template",
+      "inputItems": 322,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "471ebd84c0cd84c2c3c1ca1e55636f591e3d4704d1509ecc4c52575152867da8"
+    },
+    {
+      "name": "untouched intermediate four-light/four-fan review",
+      "inputItems": 324,
+      "outputItems": 316,
+      "blockedWings": [],
+      "preservedEditedNaveIds": [],
+      "sha256": "fd7dd9958947dc7e2f0a9473cc688cba0b5ad703b05380a42e9b2fb245707613"
+    },
+    {
+      "name": "intermediate B/L63/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7ca5ca623ee6a3cc574311ee7e992b48395cc59590727b8e14b1dbd1c8097f2d"
+    },
+    {
+      "name": "intermediate B/L63/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4f8e568c675e2b3d9ee6634a14d87b908e125b6cee93907ec838c981f2c3edd6"
+    },
+    {
+      "name": "intermediate B/L63/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "050a838370a1c130391b055bbf8beaf6383a94f34a38f312f2a72f90ac28e1b0"
+    },
+    {
+      "name": "intermediate B/L63/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7649b741bcfbfc2f9dee383f0c0ad2ce86956fef7c6ee1942d1e93db47bb591f"
+    },
+    {
+      "name": "intermediate B/L63/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c8338fe9804b2e1db7be2cc9a1b9fe6d2c23ffc87025526eb8e084966b5f30ff"
+    },
+    {
+      "name": "intermediate B/L63/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "df46c629d97396e6e9638690428865250f348e69d7844733f072912d11437432"
+    },
+    {
+      "name": "intermediate B/L63/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "affd7293fa8be0bf3c833b50c827ae39ec5a5fcf33cce416145284120c5810ca"
+    },
+    {
+      "name": "intermediate B/L63/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "3754d26e0d7135004396f25fd88eca1121b6893972d525cca834028528f50469"
+    },
+    {
+      "name": "intermediate B/L63/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d61de5745997f6475aa39e94efa4df43e1aa442989458fe6a81f2c97fa408c67"
+    },
+    {
+      "name": "intermediate B/L64/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "dc38df88f76c9950acd6c0b905dfe5633c62b626ec508e173dd54e1b31be0934"
+    },
+    {
+      "name": "intermediate B/L64/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "189872aea00b50f8f9de33b1878829ae578385502ad29a44a11da8f957c4e10a"
+    },
+    {
+      "name": "intermediate B/L64/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "3d6fa7d1197cc33450b0aa2a9fb07db2acfe53d83d1c50e3d25afd3c799b9b52"
+    },
+    {
+      "name": "intermediate B/L64/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "bdccffdb09e619cad10354c0e5d0367bc8a94dd09bdfbadf24baa0ae167e2b86"
+    },
+    {
+      "name": "intermediate B/L64/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "84fdedceb72bf5b2007ee62a0bdfef00699b41b0815f4d3b00d48450212a7f79"
+    },
+    {
+      "name": "intermediate B/L64/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "8a6c84cda88de38bd39e56b9be230f3ea973ac81e97335000321772738814985"
+    },
+    {
+      "name": "intermediate B/L64/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7ceb3c252b683a367c9b51ab0765a95d74294a3a9018416c516ab7ff9f71ec0a"
+    },
+    {
+      "name": "intermediate B/L64/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "ab03483754b70574c61a489030146f474376fe840511d5ea4671087f6dcb8e2c"
+    },
+    {
+      "name": "intermediate B/L64/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7de8180c5619447678126edc18a5366176be31f60ac9ab6e66af8fc1e04002dc"
+    },
+    {
+      "name": "intermediate B/L65/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0fadff39e93a0ee7db2266ff7630eda00b0ebf9413a9fe63dde9cc1c5a370c9a"
+    },
+    {
+      "name": "intermediate B/L65/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e927c8dc1a0639f74cdc0ba6ce330931528964476ebb464dbc59fe509f5c61a3"
+    },
+    {
+      "name": "intermediate B/L65/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "24c645f7c70398c2d2c8b53d9241aaedd7fcb502c340def8b86f1f5017e2106e"
+    },
+    {
+      "name": "intermediate B/L65/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "261c120c1c3b88c591f72a1187100f8e0176c952a4465073f151cbb548045e6d"
+    },
+    {
+      "name": "intermediate B/L65/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c4c3d3e936866e46faaf42720631a2866db2a7b10333abc4cac15af778668004"
+    },
+    {
+      "name": "intermediate B/L65/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "49fe5a5755d6fc61b5751c9e669662ba882626010952fafad00ce3aa8835600b"
+    },
+    {
+      "name": "intermediate B/L65/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "77aa5ad6ad79950adf8e0a23081b99e7b74b40b7e5793708ea79de96955b1e46"
+    },
+    {
+      "name": "intermediate B/L65/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "cc73971d6754c460290316211189f8e8b1135488d30afd9c2c8972367b942b13"
+    },
+    {
+      "name": "intermediate B/L65/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9987ce33a5f1e039a9f65c6ca8bf5b104001710e3e9208e14000806259fac5b7"
+    },
+    {
+      "name": "intermediate B/L66/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "2d733a2353506569ae678e767a0409a103db7ac97e2fcee38ee483abbcc78fb8"
+    },
+    {
+      "name": "intermediate B/L66/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0f966a9e0276f62b951bc43660ed0ccbc1ba66884090214f2d19e5cb972d8b11"
+    },
+    {
+      "name": "intermediate B/L66/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "1189fab551f1ab093adb6276f1f56c11d4d5919d596a1d685b3fe24441ced117"
+    },
+    {
+      "name": "intermediate B/L66/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "45ebbad2fc6267d908ad461f197c5ccdafdb8fcb01f16b621b80886da09b8991"
+    },
+    {
+      "name": "intermediate B/L66/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d00453c0b16900727d552ba47d376495c35f8d9b86a317d83f7423be68d6ef63"
+    },
+    {
+      "name": "intermediate B/L66/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4b7f89efa0360d6444402e2702f742362280f514058334b8ddbc2a1dcd6a4202"
+    },
+    {
+      "name": "intermediate B/L66/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "86181615942f1f0cb422e5e5ec2a72673f974226ae5871f5c3e07340411a56e3"
+    },
+    {
+      "name": "intermediate B/L66/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "96292664aa6a45bc57595bf3d206e2c6fea30fb638931a2961c09f38743a613d"
+    },
+    {
+      "name": "intermediate B/L66/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "30cbcd97b8eae01d95e00f97360c6c47beb4c875174da1182d863e0a1b4413c0"
+    },
+    {
+      "name": "intermediate B/F240/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "858e4454c8aec50360451403ed8d6dcdf82f070232dcd37ab2d86450315b7f3a"
+    },
+    {
+      "name": "intermediate B/F240/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "3e43f1d79ad7a29f6630178c7dfa221eb1a832e6b88bf3d2eb946a7494a72197"
+    },
+    {
+      "name": "intermediate B/F240/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c9a1acdb7464fd7034694e8da87172544c2f38b68e1c4bc8bb4645f7ee49c083"
+    },
+    {
+      "name": "intermediate B/F240/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "fce0c10fe08ebffc8b532c3230f9c9e2418e92da430b9062b232a291c3bc9363"
+    },
+    {
+      "name": "intermediate B/F240/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "978f2521f2827d978fd8e014590994884770a74863b526c11657651d2e975381"
+    },
+    {
+      "name": "intermediate B/F240/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "ca971178e55f31c733a284b15384f512014bb5ef704d561ae3e8c53f2c8d42f0"
+    },
+    {
+      "name": "intermediate B/F240/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "868745db3d499f2bb5ef61329b799957026bc5fe4bf5e2f99e5348dac8978ac7"
+    },
+    {
+      "name": "intermediate B/F240/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "924726fd6cc01f7b8783a73ec46554b06f6c4a146f9f49f59b63408251663e08"
+    },
+    {
+      "name": "intermediate B/F240/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "dd68377e5af727cde0d659333265e1bdd74f91ec8d5ac91ad57878d2318011af"
+    },
+    {
+      "name": "intermediate B/F241/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "fbb1e080c010654530256c11aae53149b128bde0de6e529007f29d59f3b4191b"
+    },
+    {
+      "name": "intermediate B/F241/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6facc8b4812e9dd8f3082adbd54f726ad9d7a83f283452dbfec1599f3fdd321e"
+    },
+    {
+      "name": "intermediate B/F241/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "15c33ab183656f272ba359998fb7e347980677bd01022159d53664ebd0b2d6a7"
+    },
+    {
+      "name": "intermediate B/F241/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b8c6545ab3cdac8a6ba2103305f66cc9a40dd1f509935489f6e1acbcf8059799"
+    },
+    {
+      "name": "intermediate B/F241/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "1f4202b324808e0a25b2bff6bfdfd4794a008b6f0ef6d0520983ef24b839ccbf"
+    },
+    {
+      "name": "intermediate B/F241/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "fdb745b0fbb54e8e269fa479f817d725e3b8d8233545c82e5d89c79fb07dc0c1"
+    },
+    {
+      "name": "intermediate B/F241/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "2b051a9762cfe33e07b3f836a15dc1575b4e44cfc9d9aeb2207c45864ee3e5a1"
+    },
+    {
+      "name": "intermediate B/F241/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "dfc8256bb27bf685109b01822c7c2a85af237899ead38769cb58d7d027eb8334"
+    },
+    {
+      "name": "intermediate B/F241/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7c7dd934f8376e34ab4a2796302a133070d4f0ba5fb3968f926df909342da4c9"
+    },
+    {
+      "name": "intermediate B/F-WING-B-3/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "1ca33806745133b03cadcf0903cd22e42d4598671975da25b4b379098620c9f5"
+    },
+    {
+      "name": "intermediate B/F-WING-B-3/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "5ee7b2d29120e4879f8bf7422b6b25ae8cbcd20d2589c3881e1a1b7b56ad19a0"
+    },
+    {
+      "name": "intermediate B/F-WING-B-3/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "547b0bb4a502a7be24384173edbe8cef725bfb3e4e61f4d3d3c77244233e095d"
+    },
+    {
+      "name": "intermediate B/F-WING-B-3/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "92a9ec319ded444dd3241c623bf4acfe7a00caf6a9c44a289c5f2bc834419e25"
+    },
+    {
+      "name": "intermediate B/F-WING-B-3/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c08606441a150202f6ae111893276c9a4b658895a1e99a7396bf7d7f4436d074"
+    },
+    {
+      "name": "intermediate B/F-WING-B-3/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "c8b925a545cb07dbdceabd7f1059772e5ba5f38721f231847b993a9be85f3711"
+    },
+    {
+      "name": "intermediate B/F-WING-B-3/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "430a2d986d11389c9d0096df12fcfe219918354275710b30df3c177fb79a2477"
+    },
+    {
+      "name": "intermediate B/F-WING-B-3/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "182f3371650ff0e445171f41975a5099bca52d5351acb50eceae6e6dc1b17521"
+    },
+    {
+      "name": "intermediate B/F-WING-B-3/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "19539c039c2fa3fba7b8968a1c76d402ab27fae6cb03572983d45eea96f3782b"
+    },
+    {
+      "name": "intermediate B/F-WING-B-4/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "2004c4c0c1da8eb191388af54bf0ebbcb5171218921e2aa61d79e65b4020830f"
+    },
+    {
+      "name": "intermediate B/F-WING-B-4/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d57d8d31f74f8ea61da6c2c825454b09984d9f5b875abff082827cb8f91f14cd"
+    },
+    {
+      "name": "intermediate B/F-WING-B-4/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "eb9152e31727b29814e3bd94f7dc709045f01a91be824a5932fc0e1198698fae"
+    },
+    {
+      "name": "intermediate B/F-WING-B-4/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "67722f91536e89be83145d112a66751b6d6e128dee192840a90b19477de5ebe6"
+    },
+    {
+      "name": "intermediate B/F-WING-B-4/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7009cf6072f4b04d731251b638ce56c23f785599c7ae27ee38ce59cfe02d3d1a"
+    },
+    {
+      "name": "intermediate B/F-WING-B-4/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9de0c341eb3b3ebcfd50f8b0b150b2ac3e7572dd6b7d94d7c1863b21181643cf"
+    },
+    {
+      "name": "intermediate B/F-WING-B-4/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f95aa87cc575cd4bc495ec5bc30b8cec679318546e12fd82e2ec5617e5edee1c"
+    },
+    {
+      "name": "intermediate B/F-WING-B-4/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9bb62dbcebce306606a3fc558e060faf5085814625ebde913dc10bb2caf639e6"
+    },
+    {
+      "name": "intermediate B/F-WING-B-4/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "B"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "330cc7259e0dbf629b0efa16c3cf8e12a955a37482a6060824d48d0100a31fb0"
+    },
+    {
+      "name": "intermediate H/L67/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "5432ac408dfdb8bda3868a9f5d457262b9cc4522052902ae3a8356c11ac87ec7"
+    },
+    {
+      "name": "intermediate H/L67/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "59562d5f65f7de17b9ecafb8cd927e65f035a9debfbef8483b11a3fafe82dbb3"
+    },
+    {
+      "name": "intermediate H/L67/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4044b307b1d9671311b647efe6290dfdba61a37f0731508ead7c08457534f581"
+    },
+    {
+      "name": "intermediate H/L67/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "7502204db25aafbe1271ec0e048ad3d8c60b1771561dc25598623a8d4ffbc76f"
+    },
+    {
+      "name": "intermediate H/L67/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "348d2c8c2e3d2f99b681b9afb8b612a5d9ee6d3c57694345902a9ea2a1ccda9f"
+    },
+    {
+      "name": "intermediate H/L67/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f3093d85574314b5e8c6f84e93ee1553e910411b7eb5b4a366d2b84aad1c8992"
+    },
+    {
+      "name": "intermediate H/L67/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "8af120d6997369536d170cb819bc44b69d3749d354e147d8eecb1ab99ad86d1d"
+    },
+    {
+      "name": "intermediate H/L67/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0727a9287f373d9c6d6e28386e8eefd58906fb93dfc12d03d768e8d07bb5498d"
+    },
+    {
+      "name": "intermediate H/L67/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "34107cb96dffc3b672018cbc17a16e89c53ffb0c5d41f7ad823fd083d5a2d958"
+    },
+    {
+      "name": "intermediate H/L68/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "be9cef1f13e01215e67b35686f90d2bd4ac0d3afe74bceb35222f8b7ebc287b6"
+    },
+    {
+      "name": "intermediate H/L68/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "6bfd945778d8ea9bafe04be7e15da7f456496e2020957357d5e8cacb47d9f7e6"
+    },
+    {
+      "name": "intermediate H/L68/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "badbd8f7dd87c9738a997d82b04b030c89ea85630f809a4b5cb1bb4cfc8e85dc"
+    },
+    {
+      "name": "intermediate H/L68/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "34b7870516ca9085ca8dfb5940ab85d3e8cf89d183b7b9169065cd8e67817cb1"
+    },
+    {
+      "name": "intermediate H/L68/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "61a7febc6226c32aee2002589bb45518dc808d474854e2392139f0bfb9ec4923"
+    },
+    {
+      "name": "intermediate H/L68/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b15410145a11cc25cbf4b06a268d4d452ffb76dc70011861b3cbda449d1d1480"
+    },
+    {
+      "name": "intermediate H/L68/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "40f842eb64df1a5a16572277204123a8ae9e374e89d61740e4bbd9c47e56c43d"
+    },
+    {
+      "name": "intermediate H/L68/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "dc6054a11f9fe8488e8e08b89468578e0d5f407bf4027662d9fb637de60a0f50"
+    },
+    {
+      "name": "intermediate H/L68/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "617689c2704ab9d5f7fd8c14154c26ed298eeb12af429e5a804869dbbce378f7"
+    },
+    {
+      "name": "intermediate H/L69/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "94646f31027154232090b454a5c23243489af1e4290cd704442b7b6b738e6ad1"
+    },
+    {
+      "name": "intermediate H/L69/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "18971a573320de2eeb4ee5b3e19b497233cf270435b1d98b1cd77ec346da67c8"
+    },
+    {
+      "name": "intermediate H/L69/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f1bcac4feb4ab3c829c45d44a200e4b39a44c74bd146d5b61488fc867a28fcb5"
+    },
+    {
+      "name": "intermediate H/L69/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "083bd3281adde7aac01d23f0ec97900340a40f40f2c66b946fb2291abc46d412"
+    },
+    {
+      "name": "intermediate H/L69/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "daab8711f82a6833b1eca3d8b82ddf045bfb69fd879cd81ba5d36cb8ec685364"
+    },
+    {
+      "name": "intermediate H/L69/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "df0265625b6eb54a882014f1436b2a7e4eec67041bcf7825d82546839a8cc8e1"
+    },
+    {
+      "name": "intermediate H/L69/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b8dee5a6706c9af26ed69919b45dde1e243bf169e41d906ffb7a7f0e8e887c0c"
+    },
+    {
+      "name": "intermediate H/L69/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "51fec0708d7c1880ca364f29b81dc47b2c9577cd080937f1addbe58efaf96e3a"
+    },
+    {
+      "name": "intermediate H/L69/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f3d2ab3ed9e3a51c7e2a4f0f3975857a56e4c30d2f1065b628d4a0f089fb2b98"
+    },
+    {
+      "name": "intermediate H/L70/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "16fbf04e4772277018566c3d32e81ae8007452226f31d0fd8552bc1de63178d2"
+    },
+    {
+      "name": "intermediate H/L70/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "a3fdf90fd659a9f12091838623677f0aa1f5027027b8311990f82d6d630eb74b"
+    },
+    {
+      "name": "intermediate H/L70/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "dac72ca895325067f6b6b06dfbf2495d301008db721817d5a463ca5994313e88"
+    },
+    {
+      "name": "intermediate H/L70/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4b9d58ff69ba199570d8db014ee1dd0f6d8e13ed67799e68fdd0c54e63f98d54"
+    },
+    {
+      "name": "intermediate H/L70/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "97234c1e08bca8f2fb293268674f08ee8ca47b296990f8a8e2d450b45c15ca0b"
+    },
+    {
+      "name": "intermediate H/L70/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "942a54552fb7fe54547864dcd2f5eb4ae8c0b9fc5f05313680750e07a6a86551"
+    },
+    {
+      "name": "intermediate H/L70/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "690f09ed2df7bf1d8b339cb21671ea2669b374b7808846927c49cdccfa9a5fc7"
+    },
+    {
+      "name": "intermediate H/L70/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "11e70a0abc30a0d06e6286684ad12df4f406d777e4fd9c981c96854320e7199b"
+    },
+    {
+      "name": "intermediate H/L70/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0477a547059052b32ba11c4e6dfa78e29b331a31882518579456f7cfd7188172"
+    },
+    {
+      "name": "intermediate H/F242/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d28324ded1c3e70486b6a87598680175949b5339431225486dbbc19bc29408eb"
+    },
+    {
+      "name": "intermediate H/F242/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "bcc4b7b84bb39702dfaef6472aede6fddca52a6865ccb069740205b8280a834c"
+    },
+    {
+      "name": "intermediate H/F242/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "25277904e96b9902c1af7a16306faad1567953301ee6b558c878b80a18f89fe4"
+    },
+    {
+      "name": "intermediate H/F242/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e7e0feea8f7a58daaa389899b9721f7d2cc440caa94b6af2646cc255957b89e1"
+    },
+    {
+      "name": "intermediate H/F242/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "07152c837592a7d1f9110cb4c57af80615ea7a2418956e1e75e3fc991dfc27e5"
+    },
+    {
+      "name": "intermediate H/F242/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "05e2023f02399dbe0cf09b2afc7afba495421c0bf3b92e65c313624491d886df"
+    },
+    {
+      "name": "intermediate H/F242/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "e418fc793845c46e5b716be432cb4cb4340a24925b88bbe2415f52bcd51145f5"
+    },
+    {
+      "name": "intermediate H/F242/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "29223ecce5a3b103c9f9bf6c099f0ba386b27e6d7afdaab57987c3d9a766e156"
+    },
+    {
+      "name": "intermediate H/F242/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4f308959fb318fe835ea9b11fd8ee0516b4534c714615e68d331bacc516da3c7"
+    },
+    {
+      "name": "intermediate H/F243/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "cffb639324ec694a13065f61bc18559748dc682bfcfc2b41e24ea6c43fbb0e92"
+    },
+    {
+      "name": "intermediate H/F243/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "cd37ca1c30d66342ce626034d8ca0bdd1787acd79236f8640512a940e24ceeaf"
+    },
+    {
+      "name": "intermediate H/F243/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "4748dccba6614a3c7359ffb71f07ad87be2fc00cef79f181a8c87e7c8150ec08"
+    },
+    {
+      "name": "intermediate H/F243/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "007244d1651d6c544fa14be20d5b42b3d13da602d2406df6712156369b125fd2"
+    },
+    {
+      "name": "intermediate H/F243/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "3127bc04af6cc937c67e9235ba59dafdbf6083159a4e9706f2d3932012e850a4"
+    },
+    {
+      "name": "intermediate H/F243/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "a626cad8575a3452aedc7ad72dbcc92425ff7f82bc7de9e2b2fe7c3769c5525d"
+    },
+    {
+      "name": "intermediate H/F243/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "3d55d648b81508b95afb6d647cc4ef35f7a9460102b20ce7b859c8d77222c131"
+    },
+    {
+      "name": "intermediate H/F243/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "72be9db2068d72e88e580edd81ac9e28c9f9eb70b4df90f4b8b8776fd1e3f91c"
+    },
+    {
+      "name": "intermediate H/F243/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9c60038c601c5776a6c056843780d7ab5854fe715988efa9c22e557cadb1b209"
+    },
+    {
+      "name": "intermediate H/F-WING-H-3/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "cdb0781a9b29324a730136c652ed6824ad0a6c7abef755351aa97ae5af46345f"
+    },
+    {
+      "name": "intermediate H/F-WING-H-3/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "52ce562f57b89ca6f4442b5df392f65d9d1aa049a81fa0b76d82c4c8f6ba6f62"
+    },
+    {
+      "name": "intermediate H/F-WING-H-3/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f871e344d8d7d36e87657e38e12b57284cfef32db32e7c572ffab61349c3caef"
+    },
+    {
+      "name": "intermediate H/F-WING-H-3/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9069ef355440c2d313b5bd531a8cba56d7de88e33eb64546bbfde3d8c59e00fd"
+    },
+    {
+      "name": "intermediate H/F-WING-H-3/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "b7d970e7938bb1b00fe89c7d24188a75a54bf4c8c0883879e754991a4e812191"
+    },
+    {
+      "name": "intermediate H/F-WING-H-3/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "21711c7cbff058a575d4c17d97498da5f806d9dcf449f182263204f04806f640"
+    },
+    {
+      "name": "intermediate H/F-WING-H-3/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "aaa4fc6aee8de28db8d3a434b93ec3ae79115c7cd180a3c630d03d57c6793fce"
+    },
+    {
+      "name": "intermediate H/F-WING-H-3/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "d0da3f299ecf445cef606b9acec2f4e7dd7966391b5a814103d02051b9c5eb9f"
+    },
+    {
+      "name": "intermediate H/F-WING-H-3/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "0844323b64bb71cf0972a4820ef0b65f42bc64e2f6278ee6de0d6e10c2f4db4d"
+    },
+    {
+      "name": "intermediate H/F-WING-H-4/deleted",
+      "inputItems": 323,
+      "outputItems": 319,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "71f78c6c4330b3f36d3d4272ce1112f8277821d048a2a97b088a5192d1b8bc08"
+    },
+    {
+      "name": "intermediate H/F-WING-H-4/moved",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "1aa56244031ec4c7e61adb36977af931223d0edfb50f8c406574f1974b07bcb2"
+    },
+    {
+      "name": "intermediate H/F-WING-H-4/renamed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "f4508200c42a7046f7dddcf89aeb414ec5f2c069605c5a7b3f19fd0d0a6b85bb"
+    },
+    {
+      "name": "intermediate H/F-WING-H-4/retuned",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "a0a94a7c55bd56c8feceea3620fbe5932f439d6ceb24bf62c499839639ee150a"
+    },
+    {
+      "name": "intermediate H/F-WING-H-4/hidden",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "56d9750da37c74f943755363ead2ec1ea85a5669eaa408ebe642b78a5a7ecd7c"
+    },
+    {
+      "name": "intermediate H/F-WING-H-4/switched",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "9f125d80fa3d2c0129d1dc82554c65246556e6e9d30d9a4655ddbf1f671cd4a4"
+    },
+    {
+      "name": "intermediate H/F-WING-H-4/aimed",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "469b177ef3961a46717eda96b289b429a8ced2e7656c5bfdcfb9431272f57791"
+    },
+    {
+      "name": "intermediate H/F-WING-H-4/annotated",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "21406588dcb5750baca54a386c610417220b1d04102ecbb89a28d709ee748627"
+    },
+    {
+      "name": "intermediate H/F-WING-H-4/recircuited",
+      "inputItems": 324,
+      "outputItems": 320,
+      "blockedWings": [
+        "H"
+      ],
+      "preservedEditedNaveIds": [],
+      "sha256": "38d8938492a5be4dda8fb90c4fa9b5bd04619f57977ef7de707e4d89786bb65a"
+    }
+  ],
+  "checks": [
+    "exact full baseline import",
+    "all deleted/moved/renamed/retuned/hidden/switched/aimed/annotated/recircuited group preservation",
+    "unrelated/custom/note preservation",
+    "append ID collision preservation",
+    "incomplete template skip",
+    "input immutability",
+    "repeat idempotence",
+    "cached fixture type",
+    "electrical route/type presence",
+    "actual import undo redo"
+  ],
+  "sourceSha256": {
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+    "Thach_Bi_Viewer/references.js": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/carving.js": "3ee69a19ceb128da3a3a9927fcf5a3a4151061cebd480e462b63332e0e9791e7",
+    "Thach_Bi_Viewer/sanctuary.js": "3cb84b414b095dec50e26a061db89e4bbccc1c394d6602f6813d6148d6cf6882",
+    "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/catalog.js": "67035bc56dac74b154f3c80b5f3a5ec46187df5894c4a8c8230741d4c4f85694",
+    "Thach_Bi_Viewer/simulator/engine.js": "a6ea21ce0d9d54cc26c5d5141082e5dcc19128db07357afbc169bc8413b657fe",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/design.js": "44e8c4c39b2c3a6833c46642133e4f3a6eafae6c6c2176d5cf3a9a609840ffb1",
+    "Thach_Bi_Viewer/simulator/analysis.js": "87395f4d5da333184f2ca43b02383628de3f5d9ea35aaaecede8c63459f3dd2d",
+    "Thach_Bi_Viewer/simulator/electrical.js": "fcbdf178a7a8c23a7ef911bd76576050f3add7867186be94245310e5c2ab7bea",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
+    "Thach_Bi_Viewer/bundle.js": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b",
+    "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
+    "scripts/verify_wing_review.cjs": "c3e1e982dc6d974f876429cdb2e14f1eb326ac535fabb88d2aadbfd5daee94de",
+    "review/wing-options-2026-10-09/baseline-layout.json": "43d938ca7f8fb8bab04793528cf39b516a7cfa3e6f752cefca7203bfeafa0aac"
+  },
+  "limitations": [
+    "Headless services are stubbed; desktop GPU and startup localStorage checks are separate.",
+    "Passing software preservation does not approve fan concealment, mounting, product performance or construction."
+  ]
+}

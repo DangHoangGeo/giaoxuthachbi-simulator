@@ -1,0 +1,1046 @@
+{
+  "schema": 1,
+  "layoutBlocks": 4,
+  "receivers": [
+    {
+      "x": 38.11,
+      "z": -8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 1",
+      "wing": "B",
+      "receiverId": "R4-60edf75b0b921777"
+    },
+    {
+      "x": 38.660000000000004,
+      "z": -8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 1",
+      "wing": "B",
+      "receiverId": "R4-c21bef2bd94551a0"
+    },
+    {
+      "x": 39.21,
+      "z": -8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 1",
+      "wing": "B",
+      "receiverId": "R4-05478f64ecdc3206"
+    },
+    {
+      "x": 39.760000000000005,
+      "z": -8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 1",
+      "wing": "B",
+      "receiverId": "R4-be85a0d8b3190522"
+    },
+    {
+      "x": 41.39,
+      "z": -8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 1",
+      "wing": "B",
+      "receiverId": "R4-debce57361247f32"
+    },
+    {
+      "x": 41.940000000000005,
+      "z": -8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 1",
+      "wing": "B",
+      "receiverId": "R4-ab51332d465e1ea0"
+    },
+    {
+      "x": 42.49,
+      "z": -8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 1",
+      "wing": "B",
+      "receiverId": "R4-2dafe459be60bbbd"
+    },
+    {
+      "x": 43.040000000000006,
+      "z": -8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 1",
+      "wing": "B",
+      "receiverId": "R4-6c3d4e937511d713"
+    },
+    {
+      "x": 38.11,
+      "z": -9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 2",
+      "wing": "B",
+      "receiverId": "R4-c187598ca9358017"
+    },
+    {
+      "x": 38.660000000000004,
+      "z": -9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 2",
+      "wing": "B",
+      "receiverId": "R4-828fdcb2c36c4dea"
+    },
+    {
+      "x": 39.21,
+      "z": -9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 2",
+      "wing": "B",
+      "receiverId": "R4-e2f1511b256056ae"
+    },
+    {
+      "x": 39.760000000000005,
+      "z": -9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 2",
+      "wing": "B",
+      "receiverId": "R4-9cf06930a73d64b3"
+    },
+    {
+      "x": 41.39,
+      "z": -9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 2",
+      "wing": "B",
+      "receiverId": "R4-a03eb47b6666afba"
+    },
+    {
+      "x": 41.940000000000005,
+      "z": -9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 2",
+      "wing": "B",
+      "receiverId": "R4-80abab74ed277f27"
+    },
+    {
+      "x": 42.49,
+      "z": -9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 2",
+      "wing": "B",
+      "receiverId": "R4-1ca1027ab6ea0ab3"
+    },
+    {
+      "x": 43.040000000000006,
+      "z": -9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 2",
+      "wing": "B",
+      "receiverId": "R4-c78e51a0a3bea1a1"
+    },
+    {
+      "x": 38.11,
+      "z": -10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 3",
+      "wing": "B",
+      "receiverId": "R4-39764b10847523e6"
+    },
+    {
+      "x": 38.660000000000004,
+      "z": -10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 3",
+      "wing": "B",
+      "receiverId": "R4-a079a385237cd24b"
+    },
+    {
+      "x": 39.21,
+      "z": -10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 3",
+      "wing": "B",
+      "receiverId": "R4-317148960bdb4255"
+    },
+    {
+      "x": 39.760000000000005,
+      "z": -10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 3",
+      "wing": "B",
+      "receiverId": "R4-367715ca849ca21e"
+    },
+    {
+      "x": 41.39,
+      "z": -10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 3",
+      "wing": "B",
+      "receiverId": "R4-8c9c675c515f5bf6"
+    },
+    {
+      "x": 41.940000000000005,
+      "z": -10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 3",
+      "wing": "B",
+      "receiverId": "R4-40f6be6d1c24b828"
+    },
+    {
+      "x": 42.49,
+      "z": -10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 3",
+      "wing": "B",
+      "receiverId": "R4-ee5ee5b87c5e5573"
+    },
+    {
+      "x": 43.040000000000006,
+      "z": -10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 3",
+      "wing": "B",
+      "receiverId": "R4-13b06afb24266c9d"
+    },
+    {
+      "x": 38.11,
+      "z": -11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 4",
+      "wing": "B",
+      "receiverId": "R4-3192275053fa8004"
+    },
+    {
+      "x": 38.660000000000004,
+      "z": -11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 4",
+      "wing": "B",
+      "receiverId": "R4-e822932ae4372a22"
+    },
+    {
+      "x": 39.21,
+      "z": -11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 4",
+      "wing": "B",
+      "receiverId": "R4-00d0209a17457bca"
+    },
+    {
+      "x": 39.760000000000005,
+      "z": -11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 4",
+      "wing": "B",
+      "receiverId": "R4-e82c7dc9adce601c"
+    },
+    {
+      "x": 41.39,
+      "z": -11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 4",
+      "wing": "B",
+      "receiverId": "R4-2a0b058c89ab7514"
+    },
+    {
+      "x": 41.940000000000005,
+      "z": -11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 4",
+      "wing": "B",
+      "receiverId": "R4-3122c77e5ed5ecea"
+    },
+    {
+      "x": 42.49,
+      "z": -11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 4",
+      "wing": "B",
+      "receiverId": "R4-e69352e5812cd5b0"
+    },
+    {
+      "x": 43.040000000000006,
+      "z": -11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 4",
+      "wing": "B",
+      "receiverId": "R4-a571195debcbb8c1"
+    },
+    {
+      "x": 38.11,
+      "z": -11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 5",
+      "wing": "B",
+      "receiverId": "R4-73310531f4291c42"
+    },
+    {
+      "x": 38.660000000000004,
+      "z": -11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 5",
+      "wing": "B",
+      "receiverId": "R4-21b410f36926bf88"
+    },
+    {
+      "x": 39.21,
+      "z": -11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 5",
+      "wing": "B",
+      "receiverId": "R4-c287c71b87b7580c"
+    },
+    {
+      "x": 39.760000000000005,
+      "z": -11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 5",
+      "wing": "B",
+      "receiverId": "R4-56cd144cb203d12d"
+    },
+    {
+      "x": 41.39,
+      "z": -11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 5",
+      "wing": "B",
+      "receiverId": "R4-cadde23d9f485692"
+    },
+    {
+      "x": 41.940000000000005,
+      "z": -11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 5",
+      "wing": "B",
+      "receiverId": "R4-9ad646ef283a57b3"
+    },
+    {
+      "x": 42.49,
+      "z": -11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 5",
+      "wing": "B",
+      "receiverId": "R4-00e646a5253c4d5a"
+    },
+    {
+      "x": 43.040000000000006,
+      "z": -11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        0.25
+      ],
+      "block": "wing",
+      "pew": "Ministers bench · wing row 5",
+      "wing": "B",
+      "receiverId": "R4-ce9f2062283c8cf7"
+    },
+    {
+      "x": 38.11,
+      "z": 8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 1",
+      "wing": "H",
+      "receiverId": "R4-0fdb0f35af2220bb"
+    },
+    {
+      "x": 38.660000000000004,
+      "z": 8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 1",
+      "wing": "H",
+      "receiverId": "R4-4e01d0823a4ce8cf"
+    },
+    {
+      "x": 39.21,
+      "z": 8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 1",
+      "wing": "H",
+      "receiverId": "R4-b1719e688875887d"
+    },
+    {
+      "x": 39.760000000000005,
+      "z": 8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 1",
+      "wing": "H",
+      "receiverId": "R4-eed96683788f2a3a"
+    },
+    {
+      "x": 41.39,
+      "z": 8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 1",
+      "wing": "H",
+      "receiverId": "R4-b946a2aca848202c"
+    },
+    {
+      "x": 41.940000000000005,
+      "z": 8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 1",
+      "wing": "H",
+      "receiverId": "R4-0c218ff43c1b28f4"
+    },
+    {
+      "x": 42.49,
+      "z": 8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 1",
+      "wing": "H",
+      "receiverId": "R4-c654f85e998da1ab"
+    },
+    {
+      "x": 43.040000000000006,
+      "z": 8.35,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 1",
+      "wing": "H",
+      "receiverId": "R4-cf31a02ca880f859"
+    },
+    {
+      "x": 38.11,
+      "z": 9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 2",
+      "wing": "H",
+      "receiverId": "R4-fa9d41e9381c3304"
+    },
+    {
+      "x": 38.660000000000004,
+      "z": 9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 2",
+      "wing": "H",
+      "receiverId": "R4-57b48ad0bf2530bb"
+    },
+    {
+      "x": 39.21,
+      "z": 9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 2",
+      "wing": "H",
+      "receiverId": "R4-8e83c6f275a68eeb"
+    },
+    {
+      "x": 39.760000000000005,
+      "z": 9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 2",
+      "wing": "H",
+      "receiverId": "R4-9f1a300afeea0bcd"
+    },
+    {
+      "x": 41.39,
+      "z": 9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 2",
+      "wing": "H",
+      "receiverId": "R4-720fa888c142152e"
+    },
+    {
+      "x": 41.940000000000005,
+      "z": 9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 2",
+      "wing": "H",
+      "receiverId": "R4-f1cde916b3c37bfd"
+    },
+    {
+      "x": 42.49,
+      "z": 9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 2",
+      "wing": "H",
+      "receiverId": "R4-19e16dbbc77c5a9f"
+    },
+    {
+      "x": 43.040000000000006,
+      "z": 9.25,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 2",
+      "wing": "H",
+      "receiverId": "R4-4e5740d30238d523"
+    },
+    {
+      "x": 38.11,
+      "z": 10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 3",
+      "wing": "H",
+      "receiverId": "R4-ca99b9c1a7b917ec"
+    },
+    {
+      "x": 38.660000000000004,
+      "z": 10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 3",
+      "wing": "H",
+      "receiverId": "R4-202ea6e75c2f64ed"
+    },
+    {
+      "x": 39.21,
+      "z": 10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 3",
+      "wing": "H",
+      "receiverId": "R4-ddbfa52249ddd134"
+    },
+    {
+      "x": 39.760000000000005,
+      "z": 10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 3",
+      "wing": "H",
+      "receiverId": "R4-ffcd355d46cc8d54"
+    },
+    {
+      "x": 41.39,
+      "z": 10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 3",
+      "wing": "H",
+      "receiverId": "R4-af842b9ee76dfb3b"
+    },
+    {
+      "x": 41.940000000000005,
+      "z": 10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 3",
+      "wing": "H",
+      "receiverId": "R4-780abf1fe88071ec"
+    },
+    {
+      "x": 42.49,
+      "z": 10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 3",
+      "wing": "H",
+      "receiverId": "R4-b27ca72eb628e796"
+    },
+    {
+      "x": 43.040000000000006,
+      "z": 10.15,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 3",
+      "wing": "H",
+      "receiverId": "R4-55546b8ffe56b26b"
+    },
+    {
+      "x": 38.11,
+      "z": 11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 4",
+      "wing": "H",
+      "receiverId": "R4-ff87173f204186e5"
+    },
+    {
+      "x": 38.660000000000004,
+      "z": 11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 4",
+      "wing": "H",
+      "receiverId": "R4-2840ecd1c5a9127d"
+    },
+    {
+      "x": 39.21,
+      "z": 11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 4",
+      "wing": "H",
+      "receiverId": "R4-e48527d5851e1527"
+    },
+    {
+      "x": 39.760000000000005,
+      "z": 11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 4",
+      "wing": "H",
+      "receiverId": "R4-1759ff4bbe62e978"
+    },
+    {
+      "x": 41.39,
+      "z": 11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 4",
+      "wing": "H",
+      "receiverId": "R4-3d286694be77a384"
+    },
+    {
+      "x": 41.940000000000005,
+      "z": 11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 4",
+      "wing": "H",
+      "receiverId": "R4-7e2eafeaa4a6b1fe"
+    },
+    {
+      "x": 42.49,
+      "z": 11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 4",
+      "wing": "H",
+      "receiverId": "R4-c140cf81026d163d"
+    },
+    {
+      "x": 43.040000000000006,
+      "z": 11.05,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 4",
+      "wing": "H",
+      "receiverId": "R4-680bed39125c3284"
+    },
+    {
+      "x": 38.11,
+      "z": 11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 5",
+      "wing": "H",
+      "receiverId": "R4-c73b8e9db83313b9"
+    },
+    {
+      "x": 38.660000000000004,
+      "z": 11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 5",
+      "wing": "H",
+      "receiverId": "R4-e8fb2f82e90de035"
+    },
+    {
+      "x": 39.21,
+      "z": 11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 5",
+      "wing": "H",
+      "receiverId": "R4-5c547b1d21f4249b"
+    },
+    {
+      "x": 39.760000000000005,
+      "z": 11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 5",
+      "wing": "H",
+      "receiverId": "R4-500983978a70a82d"
+    },
+    {
+      "x": 41.39,
+      "z": 11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 5",
+      "wing": "H",
+      "receiverId": "R4-4a0f0eab4abb2c16"
+    },
+    {
+      "x": 41.940000000000005,
+      "z": 11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 5",
+      "wing": "H",
+      "receiverId": "R4-2042c6967b174ece"
+    },
+    {
+      "x": 42.49,
+      "z": 11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 5",
+      "wing": "H",
+      "receiverId": "R4-bcffd8f64314ad29"
+    },
+    {
+      "x": 43.040000000000006,
+      "z": 11.95,
+      "y": -0.32,
+      "book": [
+        0,
+        -0.25
+      ],
+      "block": "wing",
+      "pew": "Choir bench · wing row 5",
+      "wing": "H",
+      "receiverId": "R4-1890d99a99caf874"
+    }
+  ]
+}

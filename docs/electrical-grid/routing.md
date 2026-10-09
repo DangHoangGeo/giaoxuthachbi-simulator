@@ -69,7 +69,7 @@ The Wiring panel includes a clickable top projection, functional circuit blocks 
 - [Schedule CSV](electrical-schedule.csv): individual component IDs, quantities, circuit/board allocation, model dimensions, category specs, provisional loads, hidden alternatives and route records.
 - [Category Excel registers](categories/README.md): equipment/enclosure IDs, positions/specifications, electrical-line IDs/lengths/specifications and route points in matching files by usage; see the [register workflow](register.md) and [summary report](summary-report.md).
 - [Matching layout JSON](equipment-layout.json): complete simulator item positions/settings for reconciliation and layout import.
-- **Export systems JSON** and **Export board schedule CSV** in the viewer regenerate from the current edited layout. The CSV respects the selected board and cable-type filters for route rows; component rows cover the selected board.
+- **Export systems JSON** and **Export schedule CSV** in the viewer regenerate from the current edited layout. The JSON contains the complete design. The CSV respects all current review filters for route rows; component rows contain all equipment for the selected board, including hidden alternatives. It is a mixed-scope legacy export, not an isolated-layer bill of materials.
 
 Component dimensions describe the procedural model's local envelope, excluding pendant rods. These are not manufacturer dimensions. Passive loudspeaker wattages are audio ratings, not electrical mains demand. Powered decorations with no known electrical rating report their load as pending.
 
@@ -82,3 +82,59 @@ Conductor types and cross-sections, conduit sizes, supply phases, earthing/bondi
 `node scripts/verify_simulator.cjs --electrical` checks unique selection identities, every installed equipment connection, endpoint continuity, connection to shared trunks, physical board ray picking, separate active-speaker power/signal, dynamic rerouting and removal, and reversible architectural isolation. The full simulator checks include these assertions alongside the existing lighting, acoustic, airflow, placement and history checks.
 
 Regenerate the saved layout/systems JSON and CSV in `docs/electrical-grid/` with `node scripts/verify_simulator.cjs --electrical --export-electrical`, then refresh Excel with `node scripts/build_equipment_register.mjs --verify-workflow`. These defaults reflect the recommended design; follow the [register workflow](register.md) for browser-specific saved edits.
+
+## Local engineering review layers · 8 October 2026
+
+In the **local `OPEN_CHURCH.html` viewer**, choose **Simulator → Wiring → Review layers**, then a discipline and **Systems only**. Lights, sound/microphones, fans/ventilation, exit signs, powered decoration and distribution are separate choices. Select a circuit to review its equipment, or choose an equipment row to trace only that item. **Restore building** restores the ordinary equipment visibility; **Clear review filters** restores the complete routing view. These are viewing operations, not switch commands or physical concealment.
+
+The same equipment, route and enclosure IDs drive the 2D plan, 3D bodies, route list and displayed bill of materials. Upstream supplies are retained: DB-2 circuits and the board-only DB-2 view include the DB-1 → DB-2 feeder with both endpoint enclosures; LC-1/FC-1/AV-1 connections include their DB-1 supply. A selected device retains its shared trunk as context without showing all sibling equipment. An active loudspeaker retains both its signal and mains routes. Shared context does not duplicate quantities or imply that a trunk length equals an installed cable quantity.
+
+Select a route to inspect its geometric length, source, circuit, height range and X/Y/Z vertex table. Source coordinates are retained in exports; displayed three-decimal coordinates are not survey accuracy. Audio home-run length remains the branch plus its own upstream path, not the entire group bundle. **Controls · circuit** opens the matching existing simulator controls without switching any load. Physical channels, terminals, protection, final cables and product interfaces remain pending; the schematic boards are not installation drawings.
+
+These filters do not change equipment IDs, positions, on/off settings, analytical samples, route vertices or the complete JSON export. CSV route rows reflect the view as described above. Their state is session-only. Existing category workbooks and generated route schedules remain unchanged. The previous public/private web architectural viewer does not implement these tools and contains stale legacy chandelier geometry; use the local model for this review. See [verification and limitations](../../review/local-engineering-review-2026-10-08/layers.md).
+
+## Connection inspector and review snapshots · 9 October 2026
+
+Selecting an equipment row opens its connection inspector above the layer filters. Each drop/local connection lists its upstream supply feeders, shared trunk context and individual branch with stable route links. Audio and microphone branches are labeled as signals, separately from the AV rack's mains supply (microphone arrows point back toward the rack; geometric route coordinates start at the rack); an active loudspeaker has separate mains and signal entries. Clicking a route promotes its details to the top. Filter changes clear a selected route if it is no longer in view. Physical control channels, cables and protection remain explicitly pending.
+
+**Fit review / Fit connected routes** frames all route vertices in the current review; **Show route** frames the whole selected run instead of one middle vertex. Camera placement uses a sphere containing the route and related source-enclosure bounding box, the smaller camera field of view and reserved space for desktop panels. This is display geometry, not a route redesign, installation clearance or concealment proof. Source coordinates and analysis remain unchanged.
+
+**Export this review** downloads `thach-bi-electrical-review.json`, a separate, labeled design-development snapshot: current filters, selected equipment/route/source IDs, their matching component records, source enclosures and route vertices/specification holds. Shared trunks are included as context without adding sibling equipment. Route length is not installed cable quantity, and no new cable allowance or physical hardware specification is inferred. The full systems JSON and legacy schedule CSV remain available with the scopes described above. Do not import this filtered review as a complete simulator layout or use it to replace the category registers.
+
+[Verification, screenshots and example snapshot](../../review/electrical-review-navigation-2026-10-09/README.md) record the source revision and preservation checks. Existing matched workbook quantities and engineering holds remain unchanged.
+
+## Paper drawings and installation review
+
+See the [reusable Python drawing workflow](print-drawings.md) for scaled A3 plans, height projections and companion route vertices. The local Wiring tab adds a read-only nine-stage 3D walkthrough. It filters existing geometry and keeps electrical settings unchanged. Pending wing changes require fresh calculation, routes and register reconciliation before a new issue.
+
+
+## Historical four-fixture wing route revision · 9 October 2026
+
+The following quantities and arrangement describe the earlier comparison. The two-light/saints-clearance revision below supersedes them in the current model and exports.
+
+The [wing review](../engineering/wing-review.md) retains L63–L70 and replaces their wall-projector routing with pendant feeds to smaller chandelier concepts. F240–F243 change from roof-mounted F1 fans to wall-mounted F5 concepts; four additional F-WING IDs complete the eight-fan comparison. The six previously hidden F2 nave wall-fan concepts are now shown, adding their route context while keeping them OFF in built-in modes. Source enclosures and DB-1/DB-2 feeder topology are unchanged; F5 is supplied through FC-1.
+
+That earlier export had 296 connected components, 343 routes and 2,775 ordered vertices. Four former roof-fan drop paths remain Retired in the registers, with their 12 vertices; stable equipment IDs retain all entered fields. New/changed route lengths are model polylines, not installed cable orders. Fan oscillation, source-product clearances, structural anchors, service access, containment capacity/separation, fire stopping, physical controls and cable/protection sizing remain on hold. The 2D printable and 3D review views do not establish buildability.
+
+## Two-light / saints-clearance wing revision · 9 October 2026
+
+The [current coordinated wing review](../engineering/wing-review.md) supersedes the earlier four-chandelier/four-fan arrangement. L63/L65/L67/L69 connect to L8, F240–F243 (`fanWingWall` extended-bracket proxy) to F5 via FC-1/DB-1, and S276/S278 to A1/AV-1. The two speakers face −X and are raised to Y4.85 for sampled fan/return-wall clearance. Retired light/fan/speaker IDs remain in registers, with no current route endpoints. Four new Peter/Paul pictures are unpowered DECOR records; they have no power or signal routes. The matched export contains 296 wired components, 343 routes and 2,779 ordered vertices (including individual DB-1 → FC-1 → F2 drops for the sixteen [nave wall fans](../engineering/nave-wall-fans.md)); 10 retired equipment IDs and 14 retired routes stay in the registers. Exact source geometry and lengths come from the matched generated schedules; route length still excludes installed allowance. Physical cables, protection, channels, support/maintenance/concealment and supply remain held.
+
+Saved browser layouts may retain earlier equipment. Wiring now displays separate live lights/fans, sound and art comparisons, obsolete IDs and scoped backup/Undo actions. Migration history alone is not current-layout evidence. The all-hidden requirement is still unmet by exposed equipment; route graphics do not certify any installation.
+
+## Socket outlets and façade statue light · 9 October 2026
+
+The [coordinated record](../engineering/outlets-and-facade-statues.md) owns positions, reasons, alternatives, conditional voltage-drop comparisons and holds. The matched export has **317 wired components, 370 routes and 2,928 ordered vertices**; no existing route ID, vertex or equipment position changed.
+
+- **Indoor outlets, P1 (side B) and P2 (side H).** New route kind `power`, drawn teal. Source DB-1 directly, not LC-1 or FC-1. Each trunk uses the existing side-wall band and the covered wing-roof crossing, at its own band height (+6.108 and +6.116 m). The sanctuary outlet on the axis-10 pier connects down that pier line (X 44.175) instead of from the roof crossing beside it; the mid-nave outlet drops in the masonry wall at X 22.830. Method `side-wall`. No chase into a structural pier is implied: box and conduit details are pending.
+- **Tower event points, P3 and P4.** New method `underfloor-event`: from DB-2 down to 0.12 m below the entrance-hall floor and the tower plinth top, along the inside of the façade wall to the tower's inner flank wall line (Z ±7.70), then up inside its solid front pier to the cabinet. 9.870 m to tower B and 16.470 m to tower H. The 0.12 m depth is a routing-study allowance, as for the microphone runs. Duct size, depth, draw pits, water sealing, separation and the passage under the main-door threshold are pending. The route is used only for an outlet on a DB-2 circuit at a tower base; an outlet placed elsewhere takes the ordinary wall routing.
+- **Façade statue light, L10.** Fifteen drops from two DB-2 trunks (12.1 and 18.7 m) by the existing `entrance-wall` method: entrance band at +7.65 m, then inside the wall to the height of the niche and through to the fitting. Home runs are 17.9 to 32.5 m. The passage through the façade wall into each niche, the slots for the hidden light lines, driver positions and weather sealing are not designed. The central shrine rises above the +12.5 m wall of the analysis model; its masonry is assumed solid at the route.
+- **Review layers.** *Socket outlets* is a new system choice in **Wiring → Review layers**. The nine-stage walkthrough is unchanged: outlets appear in its all-system steps.
+
+The three façade statues are unpowered decoration records without routes.
+
+## Exit signs from DB-1 and the walk-round review · 9 October 2026
+
+The [walk-round safety and efficiency review](safety-efficiency-review.md) found the five exit signs routed from LC-1 like ordinary lighting. A life-safety function should not depend on the lighting and scene-control enclosure, so the E1 trunks and drops now start at DB-1 (`trunk:DB1:E1:light:±1`, five `drop:DB1:E1:…`). They follow the same wall bands; the sign positions and the 15 W group are unchanged. Drawn E1 length is 145.936 m (was 147.736 m). The seven earlier route IDs are retired in the exit-signs register. Protection, the emergency supply, its duration and emergency escape lighting remain undesigned (Q14).
+
+The same review measured route sharing from the model centre lines: 632 m of the 720 m of loudspeaker route lies within 0.30 m of a mains route (262 m on the same line), because the loudspeaker trunks follow the wall bands of the lighting trunks and the DB-2 feeder, while the microphone lines keep their own under-floor route (0.46 m of 24.0 m within 0.30 m). About 987 m of mains route lies on timber beam tops, the boarded roof lining or the chamber lining. Compartments, separation, containment and fire performance for these shared and timber routes are open (Q05, Q09, Q48). No route other than E1 was changed.

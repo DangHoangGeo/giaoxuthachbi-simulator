@@ -311,6 +311,189 @@
       return t;
     }
 
-    return { place, TR, SC, RX, RY, RZ, merge, pinnacle, cresting, plate, relief, glow, leaf, stem, scroll, bloom, turned, base, capital, cluster, panel, haunch, cartouche, grain, canvas, texture, rand };
+    /* ------------------------------------------------------------------- corpus
+     * Carved figure of the crucified Christ for the sanctuary cross, after the approved concept:
+     * head bowed towards his right shoulder, arms raised to the nails, knees bent, a gilded cloth
+     * knotted at the hip. Worked in metres about the line of the hand nails: +x out from the face
+     * of the cross, +y up, +z towards his left hand; the result is turned to face the nave (-X).
+     * A generated approximation that reads as a carving from the nave. It is not a scan or a
+     * sculptor's model, and it fixes no size, timber, joint or fixing. */
+    function corpus() {
+      const TAU = Math.PI * 2, sat = v => Math.max(0, Math.min(1, v)), ramp = (a, b, v) => { const t = sat((v - a) / (b - a)); return t * t * (3 - 2 * t); };
+      const bell = (v, c, w) => Math.exp(-(((v - c) / w) ** 2)), levels = (a, b, n) => Array.from({ length: n + 1 }, (_, i) => a + (b - a) * i / n);
+      // Rounded-box section: flatter across the chest and hips than an ellipse.
+      const boxed = (c, s, e) => 1 / Math.pow(Math.pow(Math.abs(c), e) + Math.pow(Math.abs(s), e), 1 / e);
+      let state = 1033;
+      const chance = () => (state = state * 16807 % 2147483647) / 2147483647;
+      const wood = [], dark = [], gilt = [], iron = [];
+      // Smooth values through stations [t, ...values]: cubic Hermite with finite-difference slopes.
+      function through(st) {
+        const n = st.length, slope = (i, k) => { const a = st[Math.max(0, i - 1)], b = st[Math.min(n - 1, i + 1)]; return (b[k] - a[k]) / (b[0] - a[0]); };
+        return t => {
+          let i = 0;
+          while (i < n - 2 && t > st[i + 1][0]) i++;
+          const a = st[i], b = st[i + 1], h = b[0] - a[0], u = sat((t - a[0]) / h), u2 = u * u, u3 = u2 * u;
+          return a.slice(1).map((_, j) => (2 * u3 - 3 * u2 + 1) * a[j + 1] + (u3 - 2 * u2 + u) * h * slope(i, j + 1) + (3 * u2 - 2 * u3) * b[j + 1] + (u3 - u2) * h * slope(i + 1, j + 1));
+        };
+      }
+      // A limb through stations [t, x, y, z, radius across, radius front to back]; `ref` points out of its front.
+      function limb(stations, { ref = [1, 0, 0], steps = 40, n = 16, relief } = {}) {
+        const at = through(stations), t0 = stations[0][0], t1 = stations[stations.length - 1][0], e = (t1 - t0) * .004, front = V(...ref), pos = [], uv = [];
+        for (let i = 0; i <= steps; i++) {
+          const t = t0 + (t1 - t0) * i / steps, [x, y, z, ra, rb] = at(t), p = at(Math.min(t1, t + e)), q = at(Math.max(t0, t - e));
+          const tan = V(p[0] - q[0], p[1] - q[1], p[2] - q[2]).normalize(), out = front.clone().addScaledVector(tan, -front.dot(tan)).normalize(), side = V().crossVectors(tan, out);
+          for (let j = 0; j < n; j++) {
+            const a = j * TAU / n, bump = relief ? relief(Math.atan2(Math.sin(a), Math.cos(a)), t) : 0, c = (rb + bump) * Math.cos(a), s = (ra + bump) * Math.sin(a);
+            pos.push(x + out.x * c + side.x * s, y + out.y * c + side.y * s, z + out.z * c + side.z * s); uv.push(j / n, i / steps);
+          }
+        }
+        return shell(pos, n, uv);
+      }
+      const ball = (p, s, w = 12, h = 8) => [new T.SphereGeometry(1, w, h), place(SC(...s), TR(...p))];
+      // A forged nail head standing out of the wood along +x.
+      const nail = (x, y, z) => [new T.CylinderGeometry(.0065, .014, .018, 4), place(RY(Math.PI / 4), RZ(-Math.PI / 2), TR(x + .008, y, z))];
+
+      /* Trunk and neck: [height, centre x, centre z, half width, half depth]. The hips swing a little
+         towards his left, and the back rests on the upright. */
+      const TRUNK = through([[-1, .125, .018, .09, .07], [-.95, .12, .02, .16, .1], [-.87, .117, .022, .174, .11], [-.78, .116, .022, .164, .102], [-.69, .116, .015, .15, .093],
+        [-.6, .122, .006, .158, .105], [-.5, .13, 0, .178, .12], [-.42, .134, 0, .19, .124], [-.34, .136, 0, .19, .116], [-.295, .14, 0, .172, .098], [-.262, .148, -.004, .105, .074],
+        [-.238, .162, -.01, .062, .06], [-.2, .185, -.02, .054, .056], [-.16, .2, -.03, .05, .052]]);
+      {
+        const pos = [], uv = [], n = 72, rows = 100;
+        for (let i = 0; i <= rows; i++) {
+          const y = -1 + .84 * i / rows, [cx, cz, w, d] = TRUNK(y);
+          for (let j = 0; j < n; j++) {
+            const a = -Math.PI + j * TAU / n, c = Math.cos(a), s = Math.sin(a), side = Math.abs(a), front = ramp(-.2, .5, c), k = boxed(c, s, 2.5);
+            let r = .02 * bell(y, -.4, .058) * bell(side, .6, .4) * front;                                        // chest
+            r -= .007 * bell(y, -.468 + .03 * sat(side - .6), .013) * bell(side, .6, .45) * front;                // fold under the chest
+            r -= .006 * bell(a, 0, .1) * ramp(-.56, -.5, y) * ramp(-.29, -.33, y);                                // breastbone
+            r += .006 * bell(y, -.283 - .016 * sat(side), .011) * bell(side, .62, .5) * front;                    // collar bones
+            r -= .013 * bell(y, -.655, .075) * bell(a, 0, .7);                                                    // belly drawn in under the ribs
+            r += .006 * bell(y, -.575 - .1 * side, .016) * bell(side, .5, .38) * front;                           // edge of the rib cage
+            r += .003 * bell(side, 1.15, .32) * ramp(-.68, -.62, y) * ramp(-.44, -.5, y) * Math.cos(TAU * (y + .05 * side) / .044);   // ribs
+            r += .004 * bell(side, .3, .2) * ramp(-.84, -.8, y) * ramp(-.56, -.6, y) * Math.cos(TAU * (y + .6) / .085);               // belly muscles
+            r -= .004 * bell(a, 0, .06) * ramp(-.88, -.8, y) * ramp(-.54, -.6, y);                                // and their centre line
+            r -= .011 * bell(y, -.748, .011) * bell(a, 0, .055);                                                  // navel
+            r -= .007 * bell(y, -.5, .009) * bell(a, -1, .11);                                                    // wound of the lance in his right side
+            r += .008 * bell(y, -.79, .03) * bell(side, 1.35, .35);                                               // hip bones
+            pos.push(cx + (d * k + r) * c, y, cz + (w * k + r) * s); uv.push(j / n, i / rows);
+          }
+        }
+        wood.push([shell(pos, n, uv)]);
+      }
+
+      /* Arms hang from the nails: a little slack at the shoulder, steeper to the wrist. The palm lies
+         open on the crossarm and the fingers curl forward. */
+      for (const s of [-1, 1]) {
+        wood.push([limb([[0, .135, -.345, s * .12, .05, .05], [.1, .142, -.3, s * .205, .064, .06], [.22, .136, -.262, s * .3, .053, .057], [.42, .116, -.205, s * .43, .04, .043],
+          [.5, .106, -.18, s * .49, .039, .038], [.62, .09, -.135, s * .57, .044, .038], [.85, .055, -.045, s * .715, .029, .023], [.93, .042, -.018, s * .758, .038, .016],
+          [1, .036, .004, s * .8, .043, .014], [1.07, .036, .024, s * .84, .04, .012], [1.09, .037, .03, s * .852, .02, .007]], { steps: 48 })]);
+        // Hand frame: along the hand, towards the thumb, out of the palm.
+        const hand = (a, b, c) => [.038 + c, .004 + .441 * a + .897 * b, s * (.8 + .897 * a - .441 * b)];
+        [.03, .01, -.01, -.03].forEach((b, i) => {
+          const reach = 1 - .12 * Math.abs(i - 1.2);
+          wood.push([stem([hand(.04, b, 0), hand(.04 + .034 * reach, b * 1.05, .01), hand(.04 + .056 * reach, b * 1.08, .032), hand(.04 + .054 * reach, b * 1.08, .056)], .0098, .0072, 8, 6)]);
+        });
+        wood.push([stem([hand(-.03, .03, .002), hand(-.008, .052, .014), hand(.02, .06, .034), hand(.04, .056, .05)], .0125, .0085, 8, 6)]);
+        iron.push(nail(.05, .004, s * .8));
+      }
+
+      /* Legs: knees forward and towards his right, the right foot laid over the left. */
+      const knee = (a, t) => .007 * bell(t, .52, .035) * bell(a, 0, .8) + .009 * bell(t, .71, .08) * (1 - ramp(-.2, .4, Math.cos(a)));
+      for (const s of [-1, 1]) {
+        const q = s < 0 ? 1 : 0;   // the right leg lies in front
+        wood.push([limb([[0, .118, -.84, .02 + s * .09, .088, .092], [.12, .14, -.97, .019 + s * .086, .088, .092], [.3, .205 + .008 * q, -1.16, .004 + s * .073, .077, .084],
+          [.46, .28 + .012 * q, -1.32, -.026 + s * .062, .06, .065], [.52, .298 + .016 * q, -1.39, -.036 + s * .058, .054, .058], [.6, .283 + .02 * q, -1.47, -.038 + s * .054, .05, .054],
+          [.72, .226 + .034 * q, -1.59, -.03 + s * .05 + .004 * q, .054, .06], [.9, .152 + .05 * q, -1.76, -.012 + s * .036 + .014 * q, .034, .04],
+          [1, .128 + .058 * q, -1.835, -.005 + s * .024 + .022 * q, .031, .037]], { steps: 56, relief: knee })]);
+        const x = .128 + .058 * q, z = -.005 + s * .024 + .022 * q, splay = s * .012;
+        wood.push([limb([[0, x, -1.8, z, .029, .035], [.2, x - .004, -1.865, z, .035, .047], [.55, x + .01, -1.935, z + splay * .5, .041, .031], [.82, x + .02, -1.99, z + splay * .8, .047, .022],
+          [1, x + .026, -2.03, z + splay, .044, .013], [1.05, x + .027, -2.04, z + splay, .03, .008]], { steps: 24, n: 14 })]);
+        // Toes, the great toe towards the other foot.
+        for (let i = 0; i < 5; i++) { const r = .0115 - .0011 * i; wood.push(ball([x + .027, -2.04 - .003 * (4 - i), z + splay - s * (.03 - .0165 * i)], [r, r * 1.5, r], 8, 6)); }
+        if (q) iron.push(nail(x + .041, -1.93, z));
+      }
+
+      /* Cloth round the hips, slung from a knot on his right hip; the hem turns under so that it
+         shows a thickness from below. [height, centre x, centre z, half width, half depth]. */
+      const HIPS = through([[-1.22, .2, -.004, .162, .108], [-1.14, .182, .002, .17, .114], [-1.1, .175, .005, .172, .116], [-1.03, .15, .012, .183, .124], [-.95, .127, .018, .19, .127], [-.86, .119, .021, .19, .124],
+        [-.77, .117, .022, .172, .109], [-.72, .117, .02, .15, .096]]);
+      const KNOT = -1.3;
+      const drape = (a, u, turnedUnder) => {
+        const c = Math.cos(a), s = Math.sin(a), top = -.8 - .03 * s, hem = -1.07 - .075 * s + .02 * Math.cos(2 * a), y = top + (hem - top) * u, [cx, cz, w, d] = HIPS(y), k = boxed(c, s, 2.2);
+        // Swags hang from the knot and fall lower the further round they go; small folds cross them.
+        const away = Math.sin((a - KNOT) / 2) ** 2, folds = .7 * Math.sin(TAU * 3 * (.9 * u + .5 * away)) + .3 * Math.abs(Math.sin(5.5 * a - 3 * u + 1.3)) - .15;
+        const off = turnedUnder ? -.004 : u ? .01 + .008 * bell(u, .04, .05) + .011 * ramp(0, .12, u) * folds - .014 * u * bell(a, .05, .3) + .03 * bell(a, KNOT, .2) * bell(u, .07, .08) : -.015;
+        return [cx + (d * k + off) * c, y, cz + (w * k + off) * s];
+      };
+      {
+        const pos = [], uv = [], n = 96, rows = 36, under = 6;
+        for (let i = 0; i <= rows + under; i++) for (let j = 0; j < n; j++) {
+          pos.push(...drape(-Math.PI + j * TAU / n, i > rows ? 1 - .55 * (i - rows) / under : i / rows, i > rows)); uv.push(j / n, i / (rows + under));
+        }
+        gilt.push([shell(pos, n, uv)]);
+        // The gathered end falls from the knot.
+        const [kx, ky, kz] = drape(KNOT, .07, false);
+        gilt.push(ball([kx + .002, ky, kz + .004], [.042, .034, .04], 14, 10));
+        gilt.push([limb([[0, kx, ky + .01, kz, .028, .024], [.2, kx + .012, ky - .08, kz - .014, .04, .03], [.5, kx + .02, ky - .2, kz - .02, .042, .027], [.8, kx + .016, ky - .31, kz - .012, .03, .018],
+          [1, kx + .012, ky - .37, kz - .006, .007, .005]], { steps: 30, n: 24, relief: (a, t) => .011 * ramp(0, .2, t) * ramp(1, .8, t) * (Math.abs(Math.sin(2 * a + 2.5 * t)) - .5) })]);
+      }
+
+      /* Head, in its own units first: ±1 is half its depth (x), height (y) and width (z). */
+      const HEAD = [.1, .119, .085];
+      const faceRelief = (y, z) => {
+        const az = Math.abs(z), tip = sat((.14 - y) / .34);
+        const nose = y > .14 ? .1 * bell(y, .14, .09) : y > -.2 ? .1 + .26 * tip ** 1.5 : .36 * bell(y, -.2, .05);
+        return nose * bell(z, 0, .085 + .05 * tip) - .11 * bell(y, .1, .085) * bell(az, .34, .16) + .05 * bell(y, .09, .04) * bell(az, .34, .1)
+          + .06 * bell(y, .25, .07) * bell(z, 0, .62) + .05 * bell(y, -.12, .17) * bell(az, .43, .2)
+          + .075 * bell(y, -.4, .035) * bell(z, 0, .2) + .065 * bell(y, -.5, .04) * bell(z, 0, .17) - .035 * bell(y, -.45, .013) * bell(z, 0, .21)
+          + .1 * bell(y, -.76, .13) * bell(z, 0, .27);
+      };
+      const skull = (y, a) => {
+        const r = Math.sqrt(Math.max(0, 1 - y * y)), jaw = 1 - .36 * sat(-y) ** 1.5, x = r * Math.cos(a), z = r * Math.sin(a) * jaw;
+        return [x * (1 - .1 * sat(-y) * sat(-x)) + ramp(.1, .7, x) * faceRelief(y, z), y, z];
+      };
+      const headLevels = [-.995, -.96, -.9, ...levels(-.84, .36, 44), .44, .52, .6, .68, .76, .84, .9, .95, .985, .998];
+      const headAngles = Array.from({ length: 72 }, (_, j) => { const u = -Math.PI + j * TAU / 72; return u - .45 * Math.sin(u); });
+      const rings = (ys, point) => {
+        const pos = [], uv = [];
+        ys.forEach((y, i) => headAngles.forEach((a, j) => { const p = point(y, a); pos.push(p[0] * HEAD[0], p[1] * HEAD[1], p[2] * HEAD[2]); uv.push(j / 72, i / (ys.length - 1)); }));
+        return shell(pos, 72, uv);
+      };
+      // Long hair: a shell round the skull, drawn inside it over the face, hanging plumb from the bowed head.
+      const HAIR = { bottom: -1.85, edge: .4, rise: .34, brow: .56, grow: 1.09, spread: .28, wave: .035, lean: .42 };
+      const hair = rings([...levels(HAIR.bottom, -.9, 7), ...headLevels.slice(3)], (y, a) => {
+        const yy = Math.max(y, -.96), p = skull(yy, a), hidden = p[0] > HAIR.edge + HAIR.rise * sat(yy - .3) && y < HAIR.brow;
+        if (hidden) return [p[0] * .9, y * .9, p[2] * .9];
+        const r = Math.sqrt(Math.max(.02, 1 - yy * yy)), below = Math.max(0, -.9 - y), grow = HAIR.grow * (1 + HAIR.wave * Math.sin(9 * a + 6 * y)) * (1 + HAIR.spread * below);
+        return [r * Math.cos(a) * grow + HAIR.lean * below, y, r * Math.sin(a) * grow];
+      });
+      const face = (y, z, lift = 0) => [(Math.sqrt(Math.max(0, 1 - y * y - z * z)) + faceRelief(y, z) + lift) * HEAD[0], y * HEAD[1], z * HEAD[2]];
+      const beard = [ball(face(-.8, 0, -.5), [.05, .058, .056], 16, 12)];
+      // The beard follows the jaw from the ear to the chin; the moustache lies over the lip.
+      for (const s of [-1, 1]) for (const [y, z, r] of [[-.24, .8, .017], [-.4, .73, .02], [-.55, .62, .023], [-.67, .47, .025], [-.76, .3, .026]]) beard.push(ball(face(y, s * z, -.09), [r, r * 1.25, r], 10, 8));
+      for (const s of [-1, 1]) beard.push([stem([face(-.36, s * .04, .01), face(-.4, s * .17, 0), face(-.42, s * .3, -.02)], .0086, .007, 4, 6)]);
+      // Brows and the line of the closed eyelids.
+      for (const s of [-1, 1]) beard.push([stem([face(.25, s * .14, .012), face(.275, s * .34, .014), face(.24, s * .54, -.01)], .0034, .0026, 6, 5)], [stem([face(.1, s * .2, -.02), face(.075, s * .34, -.012), face(.1, s * .48, -.03)], .0026, .002, 6, 5)]);
+      // Crown of thorns: three plaited stems round the brow, with thorns standing out of them.
+      const crown = [], brow = .4 * HEAD[1];
+      for (const phase of [0, 2.1, 4.2]) {
+        const path = Array.from({ length: 48 }, (_, i) => { const a = i * TAU / 48, w = 1.15 * (1 + .045 * Math.sin(6 * a + phase)); return V(.092 * w * Math.cos(a) + .004, brow + .008 * Math.sin(5 * a + 2 * phase), .078 * w * Math.sin(a)); });
+        crown.push([new T.TubeGeometry(new T.CatmullRomCurve3(path, true), 96, .0052, 5, true)]);
+      }
+      for (let i = 0; i < 30; i++) {
+        const a = (i + chance()) * TAU / 30, lean = .3 + 1.1 * chance();
+        crown.push([new T.ConeGeometry(.0034, .03, 4), place(TR(0, .012, 0), RZ(-lean), RY(-a), TR(.105 * Math.cos(a), brow + .014 * (chance() - .5), .089 * Math.sin(a)))]);
+      }
+      // Bowed forward, inclined and turned a little towards his right shoulder.
+      const headAt = place(RZ(-.42), RX(-.25), RY(.16), TR(.23, -.148, -.044)), onHead = parts => parts.map(([g, m]) => [g, m ? place(m, headAt) : headAt]);
+      wood.push([rings(headLevels, skull), headAt]);
+      dark.push([hair, headAt], ...onHead(beard), ...onHead(crown));
+
+      const facing = parts => merge([[merge(parts), SC(-1, 1, 1)]]);
+      return { figure: facing(wood), hair: facing(dark), cloth: facing(gilt), nails: facing(iron), height: 2.06, span: 1.72 };
+    }
+
+    return { place, TR, SC, RX, RY, RZ, merge, corpus, pinnacle, cresting, plate, relief, glow, leaf, stem, scroll, bloom, turned, base, capital, cluster, panel, haunch, cartouche, grain, canvas, texture, rand };
   }
 })();

@@ -65,7 +65,7 @@ assert(nodes.filter(o => o.name === 'Purlin · as drawn spacing ~0.50 m').length
 // The beams carry the lacquer of the columns, with gilded borders, rosettes and bands.
 {
   const named = name => nodes.filter(o => o.isMesh && o.name === name), timber = interior.materials.timber;
-  assert.equal(timber.color.getHexString(), '652016', 'structural timber is lacquered by default');
+  assert.equal(timber.color.getHexString(), '853125', 'structural timber is lacquered by default');
   for (const o of [...ties, ...sideBeams, ...named('Purlin · as drawn spacing ~0.50 m')]) assert.equal(o.material, timber, o.name + ' uses the structural timber finish');
   const tieGilding = [...named('Main tie beam gilded border'), ...named('Main tie beam gilded rosette'), ...named('Main tie beam gilded band')];
   assert.equal(named('Main tie beam gilded border').length, 28, 'two border lines on both faces of each tie beam');
@@ -250,7 +250,12 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   SIM.importLayout(layout, { record: false });
   assert.equal(SIM.state.settings.sanctuaryRevision, D.sanctuaryRevision);
   // Night balance of the sanctuary centre (direct, maintained; "Full service · evening").
-  // The picture is exposed for 110 lux by default: a surface near twice that level still shows
+  // Evening picture exposure: 160 lux by default since 9 October 2026 (the nave is lit to about 310 lux
+  // on the book, and at 110 the whole view burned out). Display only. The limits below were set for
+  // the earlier 110 lux and are kept as they are, so the lamps themselves are not allowed to rise.
+  assert.equal(SIM.state.settings.adaptLux, 160, 'default evening exposure');
+  assert.equal(SIM.state.settings.eveningExposureRevision, '2026-10-09-evening-160', 'evening exposure revision is kept in the saved settings');
+  // At 110 lux a surface near twice that level still shows
   // its colour, while the 560 lux that stood on the blue recess before washed it out.
   const em = SIM.emitters(), occ = SIM.GEO.occluders, mf = SIM.state.settings.maintenance;
   const lux = (p, n) => P.illuminance(p, n, em, occ) * mf, back = [-1, 0, 0];
@@ -274,7 +279,7 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   SIM.setSetting('timberTone', 'dark');
   assert(timber.color.getHexString() === '7c5839' && slats.material.color.getHexString() === '7c5839', 'dark tone applies to beams and slats');
   SIM.setSetting('timberTone', 'reference');
-  assert(timber.color.getHexString() === '652016' && timber.map === null && slats.material.color.getHexString() === 'ab8d6f', 'reference tone is the red lacquer');
+  assert(timber.color.getHexString() === '853125' && timber.map === null && slats.material.color.getHexString() === 'ab8d6f', 'reference tone is the red lacquer');
 }
 // Day/evening: the viewer redraws in the task that switches the mode, before any observer runs.
 // That frame must already use the new mode, or the evening sky levels overwrite the day ones.
@@ -475,6 +480,54 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert.equal(SIM.fixtures.get(palms[0].id).root.visible,false,'Manually hidden palms stay hidden');
   SIM.update(palms[0].id,{hidden:visibility[0]},{record:false});
   SIM.remove(exteriorPalm.id,{record:false});
+}
+// Socket outlets, façade statues and their hidden light (9 October 2026).
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, E = SIM.electrical, byId = id => SIM.item(id), power = SIM.powerSummary();
+  const circuit = c => power.byCircuit.find(x => x.circuit === c);
+  for (const code of ['B', 'H']) {
+    const sanct = byId(`P-SANCT-${code}`), nave = byId(`P-NAVE-${code}`), tower = byId(`P-TOWER-${code}`), side = code === 'B' ? -1 : 1;
+    assert(sanct && nave && tower, 'six socket-outlet points exist: ' + code);
+    assert.equal(sanct.circuit, nave.circuit, 'one indoor socket radial per side');
+    assert.equal(sanct.circuit, code === 'B' ? 'P1' : 'P2'); assert.equal(tower.circuit, code === 'B' ? 'P3' : 'P4');
+    assert(sanct.on && nave.on && !tower.on, 'indoor outlets live, event points isolated by default');
+    assert([sanct, nave, tower].every(it => Math.sign(it.pos[2]) === side && SIM.itemWatts(it) === 0), 'a socket without a test load adds no operating load');
+    const drop = E.routes.find(r => r.role === 'drop' && r.itemIds[0] === tower.id), trunk = E.routes.find(r => r.id === drop.trunkId);
+    assert.equal(drop.method, 'underfloor-event'); assert.equal(trunk.source, 'DB2');
+    // The tower plinth top is in the building model, not in the simplified floor function.
+    const surface = p => { const rc = new T.Raycaster(new T.Vector3(p[0], 1.2, p[2]), new T.Vector3(0, -1, 0), 0, 4); rc.camera = camera; const h = rc.intersectObject(building, true)[0]; return h ? h.point.y : -Infinity; };
+    assert(trunk.points.slice(1).every(p => p[1] < surface(p) - 0.1 && p[1] < 0), 'event power runs below the hall floor and tower plinth, not over the entrance band');
+    assert(drop.length + drop.upstreamLength < 17, 'event power takes the short route from DB-2');
+    for (const it of [sanct, nave]) assert.equal(E.routes.find(r => r.role === 'drop' && r.itemIds[0] === it.id).source, 'DB1', 'indoor sockets come straight from DB-1');
+  }
+  for (const [c, amps] of [['P1', 16], ['P2', 16], ['P3', 32], ['P4', 32]]) assert(circuit(c).outlet && circuit(c).mcb === amps && circuit(c).rcdmA === 30 && circuit(c).watts === 0, c + ' is rated as a socket circuit');
+  assert(Math.abs(power.outletRatedAmps - 96) < 1e-9, 'socket allowance is reported apart from fixed equipment');
+  SIM.update('P-NAVE-B', { params: { loadW: 3300 } }, { record: false }); SIM.update('P-SANCT-B', { params: { loadW: 1500 } }, { record: false });
+  assert(SIM.powerSummary().byCircuit.find(x => x.circuit === 'P1').overloaded, 'a test load above the circuit rating is flagged');
+  SIM.update('P-NAVE-B', { params: { loadW: 0 } }, { record: false }); SIM.update('P-SANCT-B', { params: { loadW: 0 } }, { record: false });
+  // Statues stand in their niches; their light has no visible lamp, only lips and candles.
+  const lights = SIM.state.items.filter(it => it.circuit === 'L10');
+  assert.equal(lights.length, 15, 'three hidden lines and two candles per niche on L10');
+  assert.equal(SIM.CIRCUITS.L10.board, 'DB2');
+  for (const [code, z, half, base, crown] of [['C', 0, 0.925, 11.8, 15.63], ['B', -5.48, 0.525, 10.08, 12.61], ['H', 5.48, 0.525, 10.08, 12.61]]) {
+    const statue = byId(`D-FACADE-${code}`), box = new T.Box3().setFromObject(SIM.fixtures.get(statue.id).root);
+    assert(box.min.y >= base - 0.01 && box.max.y < crown && box.min.z > z - half && box.max.z < z + half && box.max.x < 2.7, `façade statue ${code} stands inside its niche`);
+    for (const part of ['ARCH', 'JAMB-1', 'JAMB-2']) {
+      const fx = SIM.fixtures.get(`L-STATUE-${code}-${part}`), materials = new Set();
+      fx.root.traverse(o => { if (o.isMesh) materials.add(o.material.name); });
+      assert(fx.proto.glows.length === 0 && [...materials].every(n => n === 'Simulator · ivory'), `hidden light ${code} ${part} shows only its finish-matched lip`);
+    }
+    for (const n of [1, 2]) assert(SIM.fixtures.get(`L-STATUE-${code}-CANDLE-${n}`).proto.glows.length === 1 && Math.abs(byId(`L-STATUE-${code}-CANDLE-${n}`).pos[1] - base) < 1e-9, 'candle lights stand on the statue base');
+  }
+  assert(SIM.emitters().filter(e => /^L-STATUE-.*-(ARCH|JAMB)/.test(e.id)).every(e => e.lumens >= 60), 'every hidden line is bright enough to be drawn');
+  for (const name of Object.keys(SIM.SCENES)) assert('L10' in SIM.SCENES[name] && !['P1', 'P2', 'P3', 'P4'].some(c => c in SIM.SCENES[name]), name + ': statues follow scenes, sockets do not');
+  // Saved layouts gain the new records once; a record deleted afterwards stays deleted.
+  const design = D.recommended(SIM.GEO, SIM), old = design.filter(it => !D.outletIds.includes(it.id) && !D.facadeStatueIds.includes(it.id));
+  const upgraded = D.upgradeFacadeStatues(D.upgradeOutlets(old, design), design);
+  assert.equal(upgraded.length, design.length); assert.deepEqual(upgraded.slice(0, old.length), old, 'existing records are untouched');
+  const kept = upgraded.filter(it => it.id !== 'P-NAVE-H' && it.id !== 'L-STATUE-C-CANDLE-1');
+  assert.equal(D.upgradeFacadeStatues(D.upgradeOutlets(kept, design), design).length, design.length, 'the first issue restores a complete set');
+  assert(D.outletIds.length === 6 && D.facadeStatueIds.length === 18 && new Set(design.map(it => it.id)).size === design.length, 'stable unique IDs');
 }
 // Every fixture is fixed to something the model actually has: wall items need a
 // surface right behind them, pendants need structure at their anchor (fans on

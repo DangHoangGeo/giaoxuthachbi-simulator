@@ -1,0 +1,8 @@
+PASS File integrity and source freshness: 5 outputs; 21 source hashes
+PASS CSV reconciliation and independent lengths: 2775 lossless vertices/endpoints; 296 equipment positions
+PASS PDF geometry, identifiers and schedules: 44 A3 pages; exact ID coverage; coordinates and 3D lengths
+PASS Text bounding-box screening: No off-page text or text below 5.5 pt; overlaps remain a visual-screening concern
+PASS Builder stale-data refusal: 9 invalid inputs rejected; delivered files untouched
+PASS Read-only delivered set
+Result: 0 failed checks; 0 layout screening warnings.
+These checks do not replace rendered-page inspection or qualified engineering approval.

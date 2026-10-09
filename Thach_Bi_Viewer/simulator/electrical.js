@@ -15,14 +15,14 @@
     FC1: { label: 'FC-1 · Fan speed controls', where: 'Existing service-room fan enclosure', pos: [48.895, 1.95, 0.4], size: [0.2, 0.7, 0.6], facing: 'x', color: '#b46a48', board: 'DB1' },
     AV1: { label: 'AV-1 · Mixer / amplifier rack', where: 'Existing service-room sound rack', pos: [49.275, 0.95, 1.4], size: [0.8, 1.6, 0.62], facing: 'x', color: '#3985c2', board: 'DB1' }
   };
-  const COLORS = { light: '#dc9e29', fan: '#b46a48', audio: '#3985c2', mic: '#8263b5', feeder: '#c84c52', decor: '#cb7a36' };
-  const view = { visible: false, mode: 'building', board: 'all', kind: 'all', selected: null };
+  const COLORS = { light: '#dc9e29', fan: '#b46a48', audio: '#3985c2', mic: '#8263b5', feeder: '#c84c52', decor: '#cb7a36', power: '#2f9c95' };
+  const view = { visible: false, mode: 'building', board: 'all', kind: 'all', system: 'all', circuit: 'all', item: 'all', selected: null };
   let routes = [], layer, highlight, T, scene, savedVisibility = null, rebuildTimer, soffitMaterial;
   const objects = new Map(), enclosures = new Map(), covers = new Map(), coverBatches = new Map();
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const length = p => p.slice(1).reduce((n, v, i) => n + Math.hypot(...v.map((a, k) => a - p[i][k])), 0);
   const clean = p => p.filter((v, i) => !i || v.some((a, k) => Math.abs(a - p[i - 1][k]) > 0.00001)).map(v => v.slice());
-  const wired = it => { const t = CAT.byId[it.type]; return t.glow !== 'flame' && !!(t.light || t.fan || t.speaker || t.mic); };
+  const wired = it => { const t = CAT.byId[it.type]; return t.glow !== 'flame' && !!(t.light || t.fan || t.speaker || t.mic || t.outlet); };
   const circuitIndex = c => Math.max(0, Object.keys(SIM.CIRCUITS).indexOf(c));
   const height = (c, audio) => (audio ? 5.55 : 5.9) + circuitIndex(c) * 0.008;
   const REAR = 53.016, WALL = 7.36, WING = 13.249, ARCADE = 10.414;
@@ -87,7 +87,14 @@
     const c = window.CHURCH_SANCTUARY?.spec.chamber, p = it.pos;
     return c && p[0] >= c.x0 && p[0] <= c.x1 && Math.abs(p[2]) >= 2.8 && Math.abs(p[2]) <= c.outer && it.mount !== 'pendant';
   }
-  function connectionX(it) { return chamberFixture(it) ? 48.5 : pierX(it); }
+  function connectionX(it) {
+    if (chamberFixture(it)) return 48.5;
+    // A socket on an end pier of the open 9–10 wing drops down that pier line,
+    // not from the wing-roof crossing beside it.
+    if (CAT.byId[it.type].outlet && Math.abs(Math.abs(it.pos[2]) - WALL) < 0.45)
+      for (const x of [36.975, 44.175]) if (Math.abs(it.pos[0] - x) < 0.45) return x;
+    return pierX(it);
+  }
   function riserZ(z) {
     const n = window.CHURCH_SANCTUARY?.spec.niche, clear = n ? n.half + n.shell + 0.2 : 0;
     return Math.abs(z) < clear ? -clear : z;
@@ -118,9 +125,22 @@
   function roofConnection(start, p) {
     return clean([start, ...roofLine(start, [p[0], 0, start[2]]), ...roofLine([p[0], 0, start[2]], p)]);
   }
+  // Event power at a tower base. A high-load circuit should not climb to the
+  // +7.65 m entrance band and back down: it runs 120 mm below the entrance-hall
+  // floor and the tower plinth top, then rises inside the solid front pier of
+  // the tower's inner flank wall. Depth, duct and draw-pit details are pending.
+  const EVENT = { wallZ: 7.70, depth: 0.12 };
+  const eventPoint = it => !!CAT.byId[it.type].outlet && SIM.CIRCUITS[it.circuit]?.board === 'DB2' &&
+    it.pos[0] < 0.85 && Math.abs(it.pos[2]) > 7.56 && Math.abs(it.pos[2]) < 8.1 && it.pos[1] < 3;
+  function eventTrunk(s, endX) {
+    const b = SOURCES.DB2.pos, fy = -EVENT.depth;
+    return clean([b, [b[0], fy, b[2]], [b[0], fy, s * EVENT.wallZ], [endX, fy, s * EVENT.wallZ]]);
+  }
   function branchPath(it, start) {
     const p = it.pos.slice(), s = Math.sign(p[2] || -1), [x, y, z] = start;
     const t = CAT.byId[it.type];
+    if (eventPoint(it)) return proposal([start, [p[0], p[1], s * EVENT.wallZ], p], 'underfloor-event',
+      'Buried duct below the entrance-hall floor and tower plinth, rising inside the solid tower pier to the cabinet. Duct size, depth, draw pits, water sealing and separation pending; no chase through the arch mouldings.');
     if (t.mic) {
       const a=window.CHURCH_SANCTUARY?.spec.amboService;
       // Keep the complete 6 mm cable inside the 28 mm modeled service bore.
@@ -273,8 +293,10 @@
         add({ id: `local:${it.id}`, name: `L3 → ${it.name}`, source: 'LC1', board: 'DB1', circuit: 'L3', kind: 'light', role: 'local', itemIds: [it.id], color: COLORS.light, method: 'service-ceiling', installation: 'Wall riser beside niche; containment above ceiling top +4.27 m; panel cable entry pending structural coordination.' }, servicePanelRoute(it));
         continue;
       }
-      const source = audio ? 'AV1' : SIM.CIRCUITS[it.circuit]?.board === 'DB2' ? 'DB2' : t.fan ? 'FC1' : t.light ? 'LC1' : 'DB1';
-      const kind = t.mic ? 'mic' : audio ? 'audio' : t.fan ? 'fan' : t.cat === 'decor' ? 'decor' : 'light';
+      // Exit signs leave DB-1 on their own way: a life-safety function must not depend on the
+      // lighting and scene-control enclosure (electrical walk-round review, 9 October 2026).
+      const source = audio ? 'AV1' : SIM.CIRCUITS[it.circuit]?.board === 'DB2' ? 'DB2' : it.circuit === 'E1' ? 'DB1' : t.fan ? 'FC1' : t.light ? 'LC1' : 'DB1';
+      const kind = t.mic ? 'mic' : audio ? 'audio' : t.fan ? 'fan' : t.outlet ? 'power' : t.cat === 'decor' ? 'decor' : 'light';
       const feeds = [{ source, kind, audio }];
       if (t.speaker?.active) feeds.push({ source: 'DB1', kind: 'feeder', audio: false });
       for (const f of feeds) {
@@ -292,13 +314,15 @@
       const micPath = x => clean([rack, [rack[0],my,rack[2]], [rack[0],my,mz], [x,my,mz]]);
       // A microphone group can contain edited items on either side of the rack.
       const mx = mic ? g.items.map(it => it.pos[0]) : [];
-      const trunk = mic ? clean([...micPath(Math.min(...mx)), ...(Math.max(...mx)>rack[0] ? [[Math.max(...mx),my,mz]] : [])]) : trunkPath(g.source, g.s, y, endX);
+      // Tower event points share one buried run per side from DB-2.
+      const event = g.kind === 'power' && g.items.every(eventPoint), eventX = event ? Math.min(...g.items.map(it => it.pos[0])) : 0;
+      const trunk = mic ? clean([...micPath(Math.min(...mx)), ...(Math.max(...mx)>rack[0] ? [[Math.max(...mx),my,mz]] : [])]) : event ? eventTrunk(g.s, eventX) : trunkPath(g.source, g.s, y, endX);
       const trunkId = `trunk:${key}`;
       add({ id: trunkId, name: `${g.circuit} · ${g.s < 0 ? 'B' : 'H'} · ${g.audio ? 'audio home-run bundle' : 'circuit trunk'}`, source: g.source, board, circuit: g.circuit,
-        kind: g.kind, role: 'trunk', itemIds: g.items.map(i => i.id), color: COLORS[g.kind], method: mic ? 'underfloor-microphone' : 'wall-roof-trunk',
-        installation: mic ? 'Separate microphone home-run bundle below service-room and sanctuary floors; floor build-up / access pending.' : 'Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.' }, trunk);
+        kind: g.kind, role: 'trunk', itemIds: g.items.map(i => i.id), color: COLORS[g.kind], method: mic ? 'underfloor-microphone' : event ? 'underfloor-event' : 'wall-roof-trunk',
+        installation: mic ? 'Separate microphone home-run bundle below service-room and sanctuary floors; floor build-up / access pending.' : event ? 'Dedicated buried duct from DB-2 below the entrance-hall floor to the tower base; duct, depth, draw pits and water sealing pending.' : 'Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.' }, trunk);
       for (const it of g.items) {
-        const connection = mic ? micPath(it.pos[0]) : trunkPath(g.source, g.s, y, connectionX(it)), start = connection[connection.length - 1];
+        const connection = mic ? micPath(it.pos[0]) : event ? eventTrunk(g.s, it.pos[0]) : trunkPath(g.source, g.s, y, connectionX(it)), start = connection[connection.length - 1];
         const branch = branchPath(it, start);
         add({ id: `drop:${key}:${it.id}`, name: `${g.circuit} → ${it.name}`, source: g.source, board, circuit: g.circuit, kind: g.kind,
           role: 'drop', itemIds: [it.id], trunkId, color: COLORS[g.kind], upstreamLength: length(connection), homeRun: g.audio,
@@ -338,6 +362,7 @@
     const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(positions, 3)); geo.setIndex(indices); geo.computeBoundingSphere(); return geo;
   }
   function rebuild() {
+    reviewCache = null;
     if (!layer) return;
     clearTimeout(rebuildTimer);
     routes = makeRoutes();
@@ -402,12 +427,15 @@
       layer.add(group); enclosures.set(id, group);
     }
     rebuild();
-    SIM.on('items', () => { clearTimeout(rebuildTimer); rebuildTimer = setTimeout(rebuild, 90); });
+    SIM.on('items', () => { reviewCache = null; applyVisibility(); clearTimeout(rebuildTimer); rebuildTimer = setTimeout(rebuild, 90); });
     SIM.on('select', id => { if (id && view.selected) { view.selected = null; updateHighlight(); SIM.emit('electrical'); } });
     SIM.on('frame', () => {
       // Re-apply isolation after the viewer's frame and material switches.
-      if (savedVisibility) for (const [o] of savedVisibility) o.visible = false;
-      if (savedVisibility) for (const fx of SIM.fixtures.values()) fx.root.visible = SIM.fixtureVisible(fx.item) && wired(fx.item);
+      if (savedVisibility) {
+        for (const [o] of savedVisibility) o.visible = false;
+        const ids = new Set(reviewSelection().itemIds);
+        for (const fx of SIM.fixtures.values()) fx.root.visible = SIM.fixtureVisible(fx.item) && ids.has(fx.item.id);
+      }
     });
     const settings = document.getElementById('settingsPanel');
     if (settings) {
@@ -417,12 +445,72 @@
       control.querySelector('input').addEventListener('change', e => { setMode(e.target.checked ? 'systems' : 'building'); if (e.target.checked) SIM.emit('electrical-selection'); });
     }
   }
-  function matches(r) { return (view.board === 'all' || r.board === view.board) && (view.kind === 'all' || (view.kind === 'audio' ? ['audio', 'mic'].includes(r.kind) : !['audio', 'mic'].includes(r.kind))); }
+  function legacyMatches(r) { return (view.board === 'all' || r.board === view.board) && (view.kind === 'all' || (view.kind === 'audio' ? ['audio', 'mic'].includes(r.kind) : !['audio', 'mic'].includes(r.kind))); }
+  let reviewCache = null;
+  const SYSTEMS = { all: 'All systems', lighting: 'Lights', sound: 'Sound & microphones', air: 'Fans & ventilation', power: 'Socket outlets', exit: 'Exit signs', decoration: 'Powered decoration', distribution: 'Distribution only' };
+  function systemOf(it) {
+    const type = CAT.byId[it.type];
+    return it.circuit === 'E1' ? 'exit' : type.speaker || type.mic ? 'sound' : type.fan ? 'air' : type.outlet ? 'power' : type.cat === 'decor' ? 'decoration' : 'lighting';
+  }
+  // Read-only relationship closure. Shared trunks are context, not extra loads;
+  // keeping a parent feeder never pulls sibling equipment into the selection.
+  function reviewSelection() {
+    const key = [view.system, view.circuit, view.item, view.board, view.kind].join('|');
+    if (reviewCache?.key === key) return reviewCache.selection;
+    const scoped = view.system !== 'all' || view.circuit !== 'all' || view.item !== 'all';
+    const items = SIM.state.items.filter(it => wired(it) && !it.hidden &&
+      (view.board === 'all' || SIM.CIRCUITS[it.circuit]?.board === view.board) &&
+      (view.system === 'all' || systemOf(it) === view.system) &&
+      (view.circuit === 'all' || it.circuit === view.circuit) && (view.item === 'all' || it.id === view.item));
+    const itemIds = new Set(items.map(it => it.id));
+    let selected = routes.filter(r => legacyMatches(r) && (!scoped || r.itemIds.some(id => itemIds.has(id))));
+    if (view.system === 'distribution') selected = routes.filter(r => r.role === 'feeder' && (view.board === 'all' || r.board === view.board));
+    const routeIds = new Set(selected.map(r => r.id)), sourceIds = new Set();
+    if (!scoped) {
+      for (const [id, source] of Object.entries(SOURCES)) if (view.board === 'all' || source.board === view.board) sourceIds.add(id);
+      // A board-only view still needs both endpoints of visible feeders.
+      for (const r of selected) {
+        sourceIds.add(r.source);
+        if (r.role === 'feeder' && SOURCES[r.id.slice(7)]) sourceIds.add(r.id.slice(7));
+      }
+      // Preserve the legacy power/audio selector's equipment semantics, while
+      // advanced discipline/circuit filters always follow complete dependencies.
+      for (const id of [...itemIds]) if (!selected.some(r => r.itemIds.includes(id))) itemIds.delete(id);
+    }
+    if (scoped) {
+      for (let index = 0; index < selected.length; index++) {
+        const r = selected[index]; sourceIds.add(r.source);
+        const destination = r.role === 'feeder' && SOURCES[r.id.slice(7)] ? r.id.slice(7) : null;
+        if (destination) sourceIds.add(destination);
+        for (const id of [r.trunkId, r.source !== 'DB1' ? `feeder:${r.source}` : null]) {
+          const parent = routes.find(p => p.id === id);
+          if (parent && !routeIds.has(parent.id)) { routeIds.add(parent.id); selected.push(parent); }
+        }
+      }
+    }
+    const selection = Object.freeze({ itemIds: Object.freeze([...itemIds]), routeIds: Object.freeze([...routeIds]), sourceIds: Object.freeze([...sourceIds]) });
+    reviewCache = {key, selection}; return selection;
+  }
+  function matches(r) { return reviewSelection().routeIds.includes(r.id); }
+  function setReviewFilter(patch) {
+    if (!patch || Object.keys(patch).some(k => !['system','circuit','item','board'].includes(k))) return false;
+    if (patch.system !== undefined && !Object.hasOwn(SYSTEMS, patch.system) ||
+        patch.circuit !== undefined && patch.circuit !== 'all' && !SIM.CIRCUITS[patch.circuit] ||
+        patch.item !== undefined && patch.item !== 'all' && !SIM.state.items.some(i => i.id === patch.item && wired(i) && !i.hidden) ||
+        patch.board !== undefined && !['all','DB1','DB2'].includes(patch.board)) return false;
+    Object.assign(view, patch); view.kind = 'all';
+    if (view.selected && !reviewSelection().routeIds.includes(view.selected) && !reviewSelection().sourceIds.includes(view.selected)) view.selected = null;
+    applyVisibility(); updateHighlight(); SIM.emit('electrical'); return true;
+  }
   function applyVisibility() {
     if (!layer) return;
     layer.visible = view.visible;
-    for (const r of routes) objects.get(r.id).visible = matches(r);
-    const matched = new Set(routes.filter(matches).map(r=>r.id)), matrix = new T.Matrix4();
+    const selection = reviewSelection(), matched = new Set(selection.routeIds), itemIds = new Set(selection.itemIds);
+    if (view.selected && !matched.has(view.selected) && !selection.sourceIds.includes(view.selected)) view.selected = null;
+    for (const r of routes) objects.get(r.id).visible = matched.has(r.id);
+    const matrix = new T.Matrix4();
+    for (const fx of SIM.fixtures.values()) fx.root.visible = SIM.fixtureVisible(fx.item) && (view.mode !== 'systems' || itemIds.has(fx.item.id));
+    if (view.mode === 'systems' && SIM.state.selectedId && !itemIds.has(SIM.state.selectedId)) SIM.select(null);
     for (const mesh of covers.values()) mesh.visible = false;
     // Retain source covers for metadata and reuse, draw only two finish batches.
     // Switching/dimming equipment does not allocate new cover geometry.
@@ -440,7 +528,7 @@
       }
       batch.visible=view.mode==='building' && source.length>0;
     }
-    for (const [id, o] of enclosures) o.visible = view.board === 'all' || SOURCES[id].board === view.board;
+    for (const [id, o] of enclosures) o.visible = selection.sourceIds.includes(id);
     if (highlight) highlight.visible = view.visible && (SOURCES[view.selected] ? enclosures.get(view.selected).visible : !!routes.find(r => r.id === view.selected && matches(r)));
   }
   function setMode(mode) {
@@ -480,7 +568,8 @@
     if (!SOURCES[id] && !routes.some(r => r.id === id)) return;
     SIM.select(null); view.selected = id; view.visible = true;
     const r = routes.find(r => r.id === id), board = SOURCES[id];
-    if (r && !matches(r)) { view.board = r.board; view.kind = ['audio', 'mic'].includes(r.kind) ? 'audio' : 'power'; }
+    if (r && !matches(r)) { view.system = view.circuit = view.item = 'all'; view.board = r.board; view.kind = ['audio', 'mic'].includes(r.kind) ? 'audio' : 'power'; }
+    if (board && !reviewSelection().sourceIds.includes(id)) { view.system = view.circuit = view.item = 'all'; }
     if (board && view.board !== 'all' && board.board !== view.board) view.board = board.board;
     updateHighlight(); SIM.emit('electrical-selection', id);
   }
@@ -504,18 +593,19 @@
     if (type.fan) specs.push(`${type.fan.diameter} m diameter`, `${type.fan.speeds.at(-1).watts} W at maximum speed`);
     if (type.speaker) specs.push(`${type.speaker.ratedW} W audio rating`, type.speaker.active ? 'Active / local mains + signal' : 'Passive / amplifier output', `${it.delayMs ?? 0} ms delay`);
     if (type.mic) specs.push('Microphone signal → mixer input');
+    if (type.outlet) specs.push(type.outlet.outlets, `${type.outlet.ratingA} A circuit · ${type.outlet.rcdmA} mA RCD (provisional)`, type.outlet.protection, `${type.outlet.allowanceW} W planning allowance, not a product load`);
     if (it.params?.length) specs.push(`${it.params.length} m strand`);
     return { id: it.id, name: it.name, type: it.type, product: type.name, circuit: it.circuit, board: SIM.CIRCUITS[it.circuit]?.board || 'DB1',
       quantity: 1, modelSize, modelSizeBasis: 'Local model envelope; excludes pendant rod. Verify product dimensions.',
-      diameter: type.fan?.diameter ?? null, wattsEstimate: type.light || type.fan || type.speaker || type.mic ? SIM.itemWatts(it, true) : null,
+      diameter: type.fan?.diameter ?? null, wattsEstimate: type.light || type.fan || type.speaker || type.mic || type.outlet ? SIM.itemWatts(it, true) : null,
       specs: specs.join(' · ') || 'Electrical load and product specification pending', hiddenAlternative: it.hidden, position: it.pos.slice(), procurementStatus: 'Planning category; manufacturer / model / IP / final rating pending' };
   }
   function schedule(board = view.board) {
     return SIM.state.items.filter(wired).map(component).filter(c => board === 'all' || c.board === board);
   }
-  function billOfMaterials(board = view.board) {
+  function billOfMaterials(board = view.board, ids = null) {
     const groups = new Map();
-    for (const c of schedule(board).filter(c => !c.hiddenAlternative)) {
+    for (const c of schedule(board).filter(c => !c.hiddenAlternative && (!ids || ids.includes(c.id)))) {
       const key = JSON.stringify([c.board, c.circuit, c.type, c.modelSize, c.specs, c.wattsEstimate]);
       if (!groups.has(key)) groups.set(key, { board: c.board, circuit: c.circuit, type: c.type, product: c.product, quantity: 0, modelSize: c.modelSize, specs: c.specs, wattsEachEstimate: c.wattsEstimate, itemIds: [] });
       const g = groups.get(key); g.quantity++; g.itemIds.push(c.id);
@@ -526,6 +616,69 @@
     return { schema: 1, units: 'metres', status: 'Proposed routing study, not installation documentation',
       routingRevision: '2026-10-07-concealed-1', sources: SOURCES, routes: routes.map(r => ({ ...r, drawnDiameter: r.role === 'feeder' ? 0.064 : 0.048, buildingDrawnDiameter: 0.006, drawnDiameterBasis: 'Systems-only exaggeration / building display convention; neither is a specified cable size' })),
       components: schedule('all'), billOfMaterials: billOfMaterials('all'), unresolved: ['Cable type and conductor sizes', 'Conduit sizing and installation method', 'Supply and phase allocation', 'Earthing / bonding and protective devices', 'Amplifier topology and speaker impedance / line voltage', 'Manufacturer product dimensions and enclosure capacities', 'Permanent routing and outlets for movable equipment', 'Removable beam/soffit covers: finish, fixings, access and separation', 'Sanctuary lining service space and microphone furniture/floorbox details', 'Ambo key-light canopy contact with capital: mounting coordination hold'] };
+  }
+  // A review snapshot is deliberately separate from the complete design export.
+  function reviewExport() {
+    const selected = reviewSelection(), full = exportData();
+    return JSON.parse(JSON.stringify({ schema: 1, status: 'Filtered design-development review; not installation or purchase documentation',
+      units: full.units, routingRevision: full.routingRevision, filters: {system:view.system, circuit:view.circuit, item:view.item, board:view.board, kind:view.kind},
+      ...selected, sources: Object.fromEntries(Object.entries(full.sources).filter(([id]) => selected.sourceIds.includes(id))),
+      routes: full.routes.filter(r => selected.routeIds.includes(r.id)), components: full.components.filter(c => selected.itemIds.includes(c.id)),
+      lengthBasis: 'Drawn route geometry; shared trunks are context, not additional installed cable quantities. No slack, terminations or installation allowances included.',
+      unresolved: full.unresolved }));
+  }
+  function connectionTrace(itemId) {
+    if (!SIM.item(itemId) || SIM.item(itemId).hidden) return [];
+    return routes.filter(r => ['drop','local'].includes(r.role) && r.itemIds.includes(itemId)).map(r => {
+      const upstreamIds = [], visited = new Set();
+      let source = r.source;
+      while (source !== 'DB1' && !visited.has(source)) {
+        visited.add(source);
+        const feeder = routes.find(p => p.id === `feeder:${source}`);
+        if (!feeder) break;
+        upstreamIds.unshift(feeder.id); source = feeder.source;
+      }
+      return {branchId:r.id, source:r.source, circuit:r.circuit, kind:r.kind, upstreamIds, trunkId:r.trunkId || null};
+    });
+  }
+  function focusReview(routeId = null) {
+    const chosen = routeId === null ? routes.filter(matches) : routes.filter(r => r.id === routeId);
+    if (!chosen.length || !SIM.church) return false;
+    const box = new T.Box3();
+    for (const r of chosen) {
+      for (const point of r.points) box.expandByPoint(new T.Vector3(...point));
+      // Include the source/destination enclosure envelopes so short feeder views
+      // do not crop the boards even when every route vertex fits.
+      for (const id of [r.source, r.role === 'feeder' ? r.id.slice(7) : null]) {
+        const source = SOURCES[id]; if (!source) continue;
+        for (const sign of [-1, 1]) box.expandByPoint(new T.Vector3(...source.pos.map((v,i)=>v+sign*source.size[i]/2)));
+      }
+    }
+    const target = box.getCenter(new T.Vector3()), radius = Math.max(0.7, box.getSize(new T.Vector3()).length() / 2 + 0.25);
+    // Fit a containing sphere using the smaller field of view. Reserve horizontal
+    // space for the desktop inspector and map; no route coordinates are altered.
+    const camera = SIM.church.camera, aspect = Math.max(0.25, (camera.aspect || 1.6) * 0.55);
+    const halfV = Math.min(camera.fov || 50, 50) * Math.PI / 360;
+    const halfFov = Math.min(halfV, Math.atan(Math.tan(halfV) * aspect));
+    const distance = radius / Math.sin(halfFov) * 1.1;
+    const pos = target.clone().add(new T.Vector3(1, 0.85, -1).normalize().multiplyScalar(distance));
+    SIM.church.places['electrical-focus'] = { title: routeId ? chosen[0].name : 'Current electrical review', note: 'Drawn routes · design development', pos: pos.toArray(), target: target.toArray(), interior: false };
+    SIM.church.goTo('electrical-focus', {mode:'explore', instant:true}); return true;
+  }
+  function connectionInspector(item) {
+    if (!item) return '';
+    const connections = connectionTrace(item.id);
+    return `<div class="sim-card electrical-inspector"><span class="sim-eyebrow">Equipment connection review</span><h3>${esc(item.id)} · ${esc(item.name)}</h3>
+      <p class="sim-hint">${esc(item.circuit)} · ${esc(SIM.CIRCUITS[item.circuit]?.label)} · X / Y / Z: ${item.pos.map(n=>n.toFixed(3)).join(' / ')} m</p>
+      ${connections.map(c => {
+        const branch = routes.find(r=>r.id===c.branchId), signal = ['audio','mic'].includes(c.kind);
+        return `<section class="electrical-connection"><b>${signal ? (c.kind==='mic' ? 'Microphone signal' : 'Loudspeaker audio') : 'Power route'} · ${c.kind === 'mic' ? `${esc(item.id)} → ${esc(c.source)}` : `${esc(c.source)} → ${esc(item.id)}`}</b>
+          <ol>${[...c.upstreamIds, c.trunkId, c.branchId].filter(Boolean).map(id=>{const r=routes.find(r=>r.id===id);return `<li><button data-act="electrical-select" data-electrical-id="${esc(id)}">${esc(r.name)}</button><small>${r.role==='feeder' ? 'Upstream power supply' : r.role==='trunk' ? 'Shared route context' : 'Equipment branch'} · ${r.length.toFixed(2)} m</small></li>`;}).join('')}</ol>
+          ${signal ? `<p class="sim-hint">Rack mains supply and ${c.kind==='mic' ? 'microphone' : 'audio'} signal are separate connections.${c.kind==='mic' ? ' Route coordinates are listed from the rack; microphone signal returns toward it.' : CAT.byId[item.type].speaker?.active ? ' Active-speaker mains has its own branch.' : ' A passive loudspeaker is not a mains load.'}</p>` : ''}
+          ${branch.homeRun ? `<p class="sim-hint">Individual home run: ${(branch.length+branch.upstreamLength).toFixed(2)} m; do not add shared bundle length again.</p>` : ''}</section>`;
+      }).join('')}
+      <p class="electrical-hold">Engineering hold · cable sizes, protection and physical control channels are pending.</p>
+      <div class="electrical-actions"><button data-act="electrical-fit">Fit connected routes</button><button data-act="electrical-open-controls" data-circuit="${esc(item.circuit)}">Controls · ${esc(item.circuit)}</button><button data-act="electrical-review-json">Export this review</button></div></div>`;
   }
   function csv() {
     const rows = [['Board', 'Circuit', 'ID', 'Component', 'Product category', 'Quantity', 'Model envelope X mm', 'Model envelope Y mm', 'Model envelope Z mm', 'Fan diameter mm', 'Load estimate W', 'Category specifications', 'Status']];
@@ -540,46 +693,108 @@
   function flatPlan() {
     const visible = routes.filter(matches), projection = p => [32 + (p[0] + 1) * 8.4, 154 + p[2] * 8.4];
     const route = r => `<polyline data-act="electrical-select" data-electrical-id="${esc(r.id)}" points="${r.points.map(p => projection(p).join(',')).join(' ')}" fill="none" stroke="${r.id === view.selected ? '#00a46d' : r.color}" stroke-width="${r.id === view.selected ? 3.5 : 1.1}" tabindex="0" role="button" aria-label="${esc(r.name)}"><title>${esc(r.name)} · ${r.length.toFixed(1)} m</title></polyline>`;
-    const comps = schedule().filter(c => !c.hiddenAlternative).map(c => { const p = projection(c.position); return `<circle cx="${p[0]}" cy="${p[1]}" r="2.5" fill="#263f39" data-act="electrical-component" data-id="${esc(c.id)}" tabindex="0" role="button" aria-label="${esc(c.name)}"><title>${esc(c.name)}</title></circle>`; }).join('');
-    const boards = Object.entries(SOURCES).filter(([, b]) => view.board === 'all' || b.board === view.board).map(([id, b]) => { const p = projection(b.pos); return `<g data-act="electrical-select" data-electrical-id="${id}" tabindex="0" role="button" aria-label="${esc(b.label)}"><rect x="${p[0] - 4}" y="${p[1] - 4}" width="8" height="8" fill="${b.color}" stroke="#fff"/><title>${esc(b.label)}</title></g>`; }).join('');
+    const selection = reviewSelection();
+    const comps = schedule().filter(c => selection.itemIds.includes(c.id)).map(c => { const p = projection(c.position); return `<circle cx="${p[0]}" cy="${p[1]}" r="2.5" fill="#263f39" data-act="electrical-component" data-id="${esc(c.id)}" tabindex="0" role="button" aria-label="${esc(c.name)}"><title>${esc(c.name)}</title></circle>`; }).join('');
+    const boards = Object.entries(SOURCES).filter(([id]) => selection.sourceIds.includes(id)).map(([id, b]) => { const p = projection(b.pos); return `<g data-act="electrical-select" data-electrical-id="${id}" tabindex="0" role="button" aria-label="${esc(b.label)}"><rect x="${p[0] - 4}" y="${p[1] - 4}" width="8" height="8" fill="${b.color}" stroke="#fff"/><title>${esc(b.label)}</title></g>`; }).join('');
     return `<svg class="electrical-plan" viewBox="0 0 520 302" role="group" aria-label="Flat electrical route plan. Click a wire, board or component."><rect width="520" height="302" fill="#f5f7f4"/><path d="M60 92H352V43H412V92H485V216H412V265H352V216H60Z" fill="none" stroke="#cad3cb" stroke-dasharray="4 3"/><text x="38" y="285" font-size="9" fill="#65746c">Entrance → sanctuary · top projection · heights in selected route</text>${visible.map(route).join('')}${comps}${boards}</svg>`;
   }
+  function naveFansCard() {
+    const status = SIM.naveFanStatus?.();
+    const intro = '<h3>Nave wall fans · ENGINEERING HOLD</h3><p>8 visible wall fans per side, 16 total, on F2. Visibility does not switch fans on; F2 remains OFF in built-in scenes. Installation, airflow, noise and concealment are not approved.</p>';
+    if (!status) return `<div class="sim-card" data-nave-review="fans">${intro}<p class="sim-hint">The current nave-fan comparison is unavailable.</p></div>`;
+    return `<div class="sim-card" data-nave-review="fans">${intro}<dl class="electrical-details"><dt>Source fan review</dt><dd>${esc(status.sourceRevision)}</dd></dl><p class="sim-hint">Counts include visible fans, whether switched on or off. Current status compares geometry and visibility; on/off, speed and user notes do not affect it.</p>${status.sides.map(s => {
+      const mismatches = s.mismatchingIds || [], conflicts = s.conflictIds || [];
+      return `<h3>Nave side ${esc(s.side)} · ${s.current ? 'Current review' : 'Preserved or custom'}</h3><p class="sim-hint">Actual visible wall fans: ${esc(s.counts.wallFans)} · reviewed target: 8.</p>${mismatches.length ? `<p class="sim-hint">Mismatching fan IDs: ${mismatches.map(esc).join(', ')}.</p>` : ''}${conflicts.length ? `<p class="sim-hint">Adoption is blocked because reserved fan IDs conflict with saved equipment: ${conflicts.map(esc).join(', ')}. Review these IDs first.</p>` : ''}<div class="electrical-actions"><button data-act="nave-fans-adopt" data-side="${esc(s.side)}" ${conflicts.length || s.current ? 'disabled' : ''}>Use reviewed nave fans · ${esc(s.side)}</button></div><p class="sim-hint">Updates reviewed nave-fan IDs on side ${esc(s.side)}; preserves existing on/off, speed and user notes. New fans start OFF. Saves a full browser-layout backup; use Undo to restore the preceding layout.</p>`;
+    }).join('')}</div>`;
+  }
+  function wingReviewCard() {
+    const status = SIM.wingReviewStatus?.();
+    const intro = '<h3>Wing review · ENGINEERING HOLD</h3><p>Smaller brass chandeliers and wall fans are concepts for review. Airflow, speech, noise, glare, fixings and concealment are not approved. See docs/engineering/wing-review.md.</p>';
+    if (!status) return `<div class="sim-card">${intro}<p class="sim-hint">The current wing-layout comparison is unavailable.</p></div>`;
+    const marker = SIM.state.settings.wingReviewRevision || 'none';
+    return `<div class="sim-card">${intro}<dl class="electrical-details"><dt>Source review</dt><dd>${esc(status.sourceRevision)}</dd><dt>Saved migration marker</dt><dd>${esc(marker)} · history only</dd></dl><p class="sim-hint">The comparison below checks this browser layout against the source review. Counts include visible equipment, whether switched on or off.</p>${status.sides.map(s => {
+      const conflicts = s.conflictIds || [], mismatches = s.mismatchingIds || [], obsolete = s.obsoleteIds || [];
+      return `<h3>Wing ${esc(s.side)} · ${s.current ? 'Current review' : 'Preserved or custom'}</h3><p class="sim-hint">Actual visible equipment: ${esc(s.counts.chandeliers)} chandeliers · ${esc(s.counts.wallFans)} wall fans · ${esc(s.counts.roofFans)} roof fans.</p>${mismatches.length ? `<p class="sim-hint">Mismatching equipment IDs: ${mismatches.map(esc).join(', ')}.</p>` : ''}${obsolete.length ? `<p class="sim-hint">Legacy equipment IDs to remove: ${obsolete.map(esc).join(', ')}.</p>` : ''}${conflicts.length ? `<p class="sim-hint">Adoption is blocked because reserved wing IDs conflict with saved equipment: ${conflicts.map(esc).join(', ')}. Review these IDs first.</p>` : ''}<div class="electrical-actions"><button data-act="wing-adopt" data-side="${esc(s.side)}" ${conflicts.length || s.current ? 'disabled' : ''}>Use reviewed lights and fans · ${esc(s.side)}</button></div><p class="sim-hint">Replaces wing ${esc(s.side)} light/fan type, circuit, position and fixture settings${obsolete.length ? '; removes ' + obsolete.map(esc).join(', ') : ''}; preserves light on/dim. F5 uses the held low/off mode. Saves a full browser-layout backup; use Undo to restore the preceding layout.</p>`;
+    }).join('')}</div>`;
+  }
+  function wingSoundCard() {
+    const status = SIM.wingSoundStatus?.();
+    const intro = '<h3>Wing sound review · ENGINEERING HOLD</h3><p>One wall speaker per wing is a held comparison. The documented source comparison still misses wing speech clarity targets and worsens microphone feedback. Use Analysis for this layout\'s current estimates. Speaker fixings, product data and commissioning remain held.</p>';
+    if (!status) return `<div class="sim-card" data-wing-review="sound">${intro}<p class="sim-hint">The current wing-speaker comparison is unavailable.</p></div>`;
+    const marker = SIM.state.settings.wingSoundRevision || 'none';
+    return `<div class="sim-card" data-wing-review="sound">${intro}<dl class="electrical-details"><dt>Source sound review</dt><dd>${esc(status.sourceRevision)}</dd><dt>Saved sound migration marker</dt><dd>${esc(marker)} · history only</dd></dl><p class="sim-hint">Counts include visible equipment, whether switched on or off. Current status checks this layout's speaker form, position, aim, gain and delay.</p>${status.sides.map(s => {
+      const mismatches = s.mismatchingIds || [], obsolete = s.obsoleteIds || [];
+      return `<h3>Wing ${esc(s.side)} sound · ${s.current ? 'Current review' : 'Preserved or custom'}</h3><p class="sim-hint">Actual visible equipment: ${esc(s.counts.wallSpeakers)} wall speakers · ${esc(s.counts.pendantSpeakers)} pendant speakers.</p>${mismatches.length ? `<p class="sim-hint">Mismatching speaker IDs: ${mismatches.map(esc).join(', ')}.</p>` : ''}${obsolete.length ? `<p class="sim-hint">Legacy equipment IDs to remove: ${obsolete.map(esc).join(', ')}.</p>` : ''}<div class="electrical-actions"><button data-act="wing-sound-adopt" data-side="${esc(s.side)}" ${s.current ? 'disabled' : ''}>Use reviewed speaker · ${esc(s.side)}</button></div><p class="sim-hint">Replaces wing ${esc(s.side)} speaker type, position, aim, gain, delay and A1 assignment${obsolete.length ? '; removes ' + obsolete.map(esc).join(', ') : ''}. Preserves the retained speaker's on/off and user note. Saves a full browser-layout backup; use Undo to restore the preceding layout.</p>`;
+    }).join('')}</div>`;
+  }
+  function wingArtCard() {
+    const status = SIM.wingArtStatus?.();
+    const intro = '<h3>Wing saints review · CONCEPT / ENGINEERING HOLD</h3><p>Saint Peter and Saint Paul sit between the two windows in each wing. Pictures and frame dimensions are proxies; final artwork, materials and fixings remain pending. These pictures are unpowered.</p>';
+    if (!status) return `<div class="sim-card" data-wing-review="art">${intro}<p class="sim-hint">The current saints-picture comparison is unavailable.</p></div>`;
+    const marker = SIM.state.settings.wingArtRevision || 'none';
+    return `<div class="sim-card" data-wing-review="art">${intro}<dl class="electrical-details"><dt>Source saints review</dt><dd>${esc(status.sourceRevision)}</dd><dt>Saved saints migration marker</dt><dd>${esc(marker)} · history only</dd></dl>${status.sides.map(s => {
+      const mismatches = s.mismatchingIds || [], conflicts = s.conflictIds || [];
+      return `<h3>Wing ${esc(s.side)} saints · ${s.current ? 'Current review' : 'Preserved or custom'}</h3><p class="sim-hint">Actual visible pictures: ${esc(s.counts.pictures)}.</p>${mismatches.length ? `<p class="sim-hint">Mismatching picture IDs: ${mismatches.map(esc).join(', ')}.</p>` : ''}${conflicts.length ? `<p class="sim-hint">Adoption is blocked because reserved picture IDs conflict with saved equipment: ${conflicts.map(esc).join(', ')}. Review these IDs first.</p>` : ''}<div class="electrical-actions"><button data-act="wing-art-adopt" data-side="${esc(s.side)}" ${conflicts.length || s.current ? 'disabled' : ''}>Use reviewed saints · ${esc(s.side)}</button></div><p class="sim-hint">Replaces wing ${esc(s.side)} picture types, positions, orientation and fixture settings. Saves a full browser-layout backup; use Undo to restore the preceding layout.</p>`;
+    }).join('')}</div>`;
+  }
   function renderPanel() {
-    const count = schedule().filter(c => !c.hiddenAlternative).length;
+    const selection = reviewSelection(), count = selection.itemIds.length;
+    const chosen = view.item !== 'all' ? SIM.item(view.item) : null;
     const sel = routes.find(r => r.id === view.selected), board = SOURCES[view.selected];
-    let html = `<div class="sim-card"><h3>Electrical systems</h3><p class="sim-hint">${count} connected components · ${routes.filter(matches).length} selectable runs. Building view shows concealed feeds and finished cable covers. Systems only reveals enlarged, colour-coded routes for inspection.</p>
-      <div class="electrical-actions"><button data-act="electrical-mode" data-mode="systems" class="${view.mode === 'systems' ? 'sim-primary' : ''}">Systems only</button><button data-act="electrical-mode" data-mode="building">Restore building</button><button data-act="electrical-visible">${view.visible ? 'Hide' : 'Show'} wiring</button></div>
+    let html = naveFansCard() + wingReviewCard() + wingSoundCard() + wingArtCard() + (SIM.installationReview?.render() || '');
+    if (sel) html += `<div class="sim-card"><h3>${esc(sel.name)}</h3><dl class="electrical-details"><dt>Run ID</dt><dd>${esc(sel.id)}</dd><dt>Source</dt><dd>${esc(SOURCES[sel.source].label)}</dd><dt>Circuit / role</dt><dd>${sel.circuit} · ${sel.role}</dd><dt>Drawn length</dt><dd>${sel.length.toFixed(2)} m${sel.homeRun ? ` · full home run ${(sel.length + sel.upstreamLength).toFixed(2)} m` : ''}</dd><dt>Height range</dt><dd>${Math.min(...sel.points.map(p => p[1])).toFixed(2)}–${Math.max(...sel.points.map(p => p[1])).toFixed(2)} m</dd><dt>Installation</dt><dd>${esc(sel.installation)}</dd><dt>Specification</dt><dd>${esc(sel.specification)}</dd></dl><details><summary>Route vertices · metres</summary><div class="electrical-table-wrap"><table class="electrical-table"><thead><tr><th>Vertex</th><th>X</th><th>Y</th><th>Z</th></tr></thead><tbody>${sel.points.map((p,index)=>`<tr><td>${index+1}</td>${p.map(n=>`<td>${n.toFixed(3)}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="sim-hint">X increases toward the sanctuary; Y is height above nave floor; negative Z is side B. Three decimals are model display precision, not survey accuracy. Export retains source coordinates.</p></details><div class="electrical-actions"><button data-act="electrical-focus">Show route</button>${sel.itemIds.length === 1 ? `<button data-act="electrical-component" data-id="${esc(sel.itemIds[0])}">Edit component</button>` : ''}</div></div>`;
+    if (board) html += `<div class="sim-card"><h3>${esc(board.label)}</h3><p>${esc(board.where)}</p><p class="sim-hint">Proposed enclosure envelope: ${board.size.map(n => Math.round(n * 1000)).join(' × ')} mm (world X / height / Z). Capacity, product dimensions and internal equipment are pending.</p><button data-act="electrical-focus">Show board</button></div>`;
+    html += connectionInspector(chosen);
+    html += `<div class="sim-card"><h3>Electrical systems</h3><p class="sim-hint">${count} equipment in review · ${routes.filter(matches).length} selectable runs. Building view shows concealed feeds and finished cable covers. Systems only reveals enlarged, colour-coded routes for inspection.</p>
+      <div class="electrical-actions"><button data-act="electrical-mode" data-mode="systems" class="${view.mode === 'systems' ? 'sim-primary' : ''}">Systems only</button><button data-act="electrical-mode" data-mode="building">Restore building</button><button data-act="electrical-fit">Fit review</button><button data-act="electrical-review-json">Export this review</button><button data-act="electrical-visible">${view.visible ? 'Hide' : 'Show'} wiring</button></div>
       <div class="electrical-actions">${Object.entries(SOURCES).map(([id, b]) => `<button data-act="electrical-select" data-electrical-id="${id}">${id}</button>`).join('')}</div>
       <div class="electrical-actions">${['all', 'DB1', 'DB2'].map(b => `<button data-act="electrical-filter" data-board="${b}" aria-pressed="${b === view.board}">${b === 'all' ? 'All boards' : b}</button>`).join('')}</div>
       <div class="electrical-actions">${[['all', 'All cabling'], ['power', 'Power'], ['audio', 'Audio / mic']].map(([k, l]) => `<button data-act="electrical-kind" data-kind="${k}" aria-pressed="${k === view.kind}">${l}</button>`).join('')}</div>
+      <h3>Review layers</h3><div class="electrical-actions">${Object.entries(SYSTEMS).map(([key,label]) => `<button data-act="electrical-system" data-system="${key}" aria-pressed="${view.system === key}">${label}</button>`).join('')}</div>
+      <label class="sim-field">Circuit<select data-act="electrical-review-circuit" aria-label="Review circuit"><option value="all">All circuits</option>${Object.entries(SIM.CIRCUITS).map(([id,c])=>`<option value="${id}" ${view.circuit===id?'selected':''}>${esc(c.label)}</option>`).join('')}</select></label>
+      <p class="sim-hint">${chosen ? `Only ${esc(chosen.id)} · ${esc(chosen.name)}. ` : ''}Systems only hides unrelated equipment. Related upstream supplies and shared trunks stay visible; other loads on shared trunks stay hidden. This changes display only, not switches or calculations.</p>
+      <div class="electrical-actions"><button data-act="electrical-review-reset">Clear review filters</button>${SIM.state.selectedId ? `<button data-act="electrical-isolate-item" data-id="${esc(SIM.state.selectedId)}">Trace selected equipment</button>` : ''}</div>
       <p class="sim-hint">Feeds follow wall bands, beam tops and covered roof paths. Microphones return under the floor through their furniture. A selected green route shows through the building so you can inspect its path. Covers, service spaces and connections are proposals awaiting installation design.</p></div>`;
-    if (sel) html += `<div class="sim-card"><h3>${esc(sel.name)}</h3><dl class="electrical-details"><dt>Run ID</dt><dd>${esc(sel.id)}</dd><dt>Source</dt><dd>${esc(SOURCES[sel.source].label)}</dd><dt>Circuit / role</dt><dd>${sel.circuit} · ${sel.role}</dd><dt>Drawn length</dt><dd>${sel.length.toFixed(2)} m${sel.homeRun ? ` · full home run ${(sel.length + sel.upstreamLength).toFixed(2)} m` : ''}</dd><dt>Height range</dt><dd>${Math.min(...sel.points.map(p => p[1])).toFixed(2)}–${Math.max(...sel.points.map(p => p[1])).toFixed(2)} m</dd><dt>Installation</dt><dd>${esc(sel.installation)}</dd><dt>Specification</dt><dd>${esc(sel.specification)}</dd></dl><div class="electrical-actions"><button data-act="electrical-focus">Show route</button>${sel.itemIds.length === 1 ? `<button data-act="electrical-component" data-id="${esc(sel.itemIds[0])}">Edit component</button>` : ''}</div></div>`;
-    if (board) html += `<div class="sim-card"><h3>${esc(board.label)}</h3><p>${esc(board.where)}</p><p class="sim-hint">Proposed enclosure envelope: ${board.size.map(n => Math.round(n * 1000)).join(' × ')} mm (world X / height / Z). Capacity, product dimensions and internal equipment are pending.</p><button data-act="electrical-focus">Show board</button></div>`;
+    if (view.system !== 'all' || view.circuit !== 'all' || view.item !== 'all') {
+      const members = SIM.state.items.filter(i => selection.itemIds.includes(i.id)), circuits = [...new Set(members.map(i=>i.circuit))];
+      html += `<div class="sim-card"><h3>Equipment → circuit → controls</h3><p class="sim-hint">Shown boards: ${selection.sourceIds.map(esc).join(', ') || 'none'}. Physical terminals, independent channels, final cable sizes and protection are pending. These controls operate the simulator only.</p>
+        <div class="electrical-actions">${circuits.map(c=>`<button data-act="electrical-open-controls" data-circuit="${c}">Controls · ${esc(c)}</button>`).join('')}</div>
+        <div class="electrical-run-list">${members.map(i=>`<button data-act="electrical-isolate-item" data-id="${esc(i.id)}"><span>${esc(i.id)} · ${esc(i.name)}<small>${esc(i.circuit)} · ${esc(SIM.CIRCUITS[i.circuit]?.board)} · ${i.pos.map(n=>n.toFixed(3)).join(' / ')} m</small></span></button>`).join('')}</div></div>`;
+    }
     html += `<div class="sim-card"><h3>Flat route plan</h3>${flatPlan()}<p class="sim-hint">Click a route or component in the plan. Vertical runs overlap in this top view; use the run list to select each individually.</p></div>`;
     for (const b of ['DB1', 'DB2'].filter(b => view.board === 'all' || view.board === b)) {
-      const components = schedule(b), active = components.filter(c => !c.hiddenAlternative), circuits = [...new Set(active.map(c => c.circuit))];
+      const components = schedule(b).filter(c => selection.itemIds.includes(c.id)), active = components.filter(c => !c.hiddenAlternative), circuits = [...new Set(active.map(c => c.circuit))];
       html += `<div class="sim-card"><h3>${esc(SOURCES[b].label)} · flat schedule</h3><p class="sim-hint">${active.length} installed-study components · ${components.length - active.length} hidden alternatives. Circuit blocks below are a functional schedule, not a physical breaker arrangement.</p><div class="electrical-circuit-rail">${circuits.map(c => `<button data-act="electrical-select" data-electrical-id="${esc(routes.find(r => r.board === b && r.circuit === c)?.id || b)}"><b>${c}</b><small>${active.filter(i => i.circuit === c).length} components</small></button>`).join('')}</div>
-        <div class="electrical-table-wrap"><table class="electrical-table"><thead><tr><th>Component / circuit</th><th>Qty</th><th>Size / specs</th></tr></thead><tbody>${billOfMaterials(b).map(c => `<tr><td><button data-act="electrical-component" data-id="${esc(c.itemIds[0])}">${esc(c.product)}</button><small>${c.circuit} · ${c.itemIds.length} individually selectable in run list</small></td><td>${c.quantity}</td><td><small>${c.modelSize.map(n => Math.round(n * 1000)).join(' × ')} mm model envelope</small><small>${esc(c.specs)}</small></td></tr>`).join('')}</tbody></table></div><p class="sim-hint">Dimensions are the model envelope, excluding pendant rods. Specs are representative catalogue values; confirm manufacturer and product before procurement. Passive speaker wattages are audio ratings.</p></div>`;
+        <div class="electrical-table-wrap"><table class="electrical-table"><thead><tr><th>Component / circuit</th><th>Qty</th><th>Size / specs</th></tr></thead><tbody>${billOfMaterials(b, selection.itemIds).map(c => `<tr><td><button data-act="electrical-component" data-id="${esc(c.itemIds[0])}">${esc(c.product)}</button><small>${c.circuit} · ${c.itemIds.length} individually selectable in run list</small></td><td>${c.quantity}</td><td><small>${c.modelSize.map(n => Math.round(n * 1000)).join(' × ')} mm model envelope</small><small>${esc(c.specs)}</small></td></tr>`).join('')}</tbody></table></div><p class="sim-hint">Dimensions are the model envelope, excluding pendant rods. Specs are representative catalogue values; confirm manufacturer and product before procurement. Passive speaker wattages are audio ratings.</p></div>`;
     }
-    html += `<div class="sim-card"><h3>Selectable runs</h3><div class="electrical-run-list">${routes.filter(matches).map(r => `<button data-act="electrical-select" data-electrical-id="${esc(r.id)}" class="${r.id === view.selected ? 'selected' : ''}"><i style="background:${r.color}"></i><span>${esc(r.name)}<small>${r.source} · ${r.role} · ${r.length.toFixed(1)} m</small></span></button>`).join('')}</div><div class="electrical-actions"><button data-act="electrical-json">Export systems JSON</button><button data-act="electrical-csv">Export board schedule CSV</button></div><p class="sim-hint">Lengths are drawn centreline lengths with no spare, terminations or installation allowance. Audio bundles represent individual home runs; do not add bundle lengths to full home-run cable lengths.</p></div>`;
+    html += `<div class="sim-card"><h3>Selectable runs</h3><div class="electrical-run-list">${routes.filter(matches).map(r => `<button data-act="electrical-select" data-electrical-id="${esc(r.id)}" class="${r.id === view.selected ? 'selected' : ''}"><i style="background:${r.color}"></i><span>${esc(r.name)}<small>${r.source} · ${r.role} · ${r.length.toFixed(1)} m</small></span></button>`).join('')}</div><div class="electrical-actions"><button data-act="electrical-json">Export systems JSON</button><button data-act="electrical-csv">Export schedule CSV</button></div><p class="sim-hint">JSON exports the complete design. CSV contains equipment for the selected board and currently filtered routes. Lengths are drawn centreline lengths with no spare, terminations or installation allowance. Audio bundles represent individual home runs; do not add bundle lengths to full home-run cable lengths.</p></div>`;
     return html;
   }
   function action(el) {
     switch (el.dataset.act) {
+      case 'electrical-step': SIM.installationReview?.go(Number(el.dataset.step)); break;
+      case 'electrical-step-stop': SIM.installationReview?.stop(); break;
       case 'electrical-mode': {
         setMode(el.dataset.mode);
         if (el.dataset.mode === 'systems') {
-          SIM.church.places['electrical-overview'] = { title: 'Electrical systems', note: 'Select a board, wire or component', pos: [64, 30, -34], target: [27, 9, 0], interior: false };
-          SIM.church.goTo('electrical-overview', { mode: 'explore', instant: true });
+          focusReview();
         }
         break;
       }
       case 'electrical-visible': view.visible = !view.visible; applyVisibility(); break;
       case 'electrical-filter': view.board = el.dataset.board; applyVisibility(); break;
-      case 'electrical-kind': view.kind = el.dataset.kind; applyVisibility(); break;
+      case 'electrical-system': setReviewFilter({system:el.dataset.system,circuit:'all',item:'all'}); break;
+      case 'electrical-review-circuit': setReviewFilter({system:'all',circuit:el.value,item:'all'}); break;
+      case 'electrical-review-reset': setReviewFilter({system:'all',circuit:'all',item:'all',board:'all'}); break;
+      case 'electrical-isolate-item': setReviewFilter({system:'all',circuit:'all',board:'all',item:el.dataset.id}); setMode('systems'); SIM.focusItem(el.dataset.id); break;
+      case 'electrical-open-controls': SIM.controls?.showCircuit(el.dataset.circuit); break;
+      case 'electrical-kind': view.system = view.circuit = view.item = 'all'; view.kind = el.dataset.kind; applyVisibility(); break;
       case 'electrical-select': select(el.dataset.electricalId); break;
       case 'electrical-component': SIM.select(el.dataset.id); SIM.focusItem(el.dataset.id); break;
+      case 'electrical-fit': focusReview(); break;
+      case 'electrical-review-json': rebuild(); download('thach-bi-electrical-review.json', JSON.stringify(reviewExport(), null, 2), 'application/json'); break;
       case 'electrical-focus': {
+        if (routes.some(r=>r.id===view.selected)) { focusReview(view.selected); break; }
         const r = routes.find(r => r.id === view.selected), p = SOURCES[view.selected]?.pos || r?.points[Math.floor(r.points.length / 2)];
         if (p) { SIM.church.places['electrical-focus'] = { title: r?.name || SOURCES[view.selected].label, note: 'Electrical planning route', pos: [p[0] - 7, p[1] + 5, p[2] - 8], target: p.slice(), interior: false }; SIM.church.goTo('electrical-focus', { mode: 'explore', instant: true }); } break;
       }
@@ -588,6 +803,6 @@
     }
     SIM.emit('electrical');
   }
-  SIM.electrical = { SOURCES, view, get routes() { return routes; }, get layer() { return layer; }, makeRoutes, rebuild, setMode, select, pick, schedule, billOfMaterials, exportData, csv, renderPanel, action };
+  SIM.electrical = { SOURCES, view, get routes() { return routes; }, get layer() { return layer; }, makeRoutes, rebuild, setMode, setReviewFilter, reviewSelection, reviewExport, connectionTrace, focusReview, select, pick, schedule, billOfMaterials, exportData, csv, renderPanel, action };
   SIM.on('ready', init);
 })();

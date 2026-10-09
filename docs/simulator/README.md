@@ -3,6 +3,7 @@
 The simulator supports the project's first priority: optimize the locations and settings of lights, sound equipment and fans, then coordinate their wiring and manual/quick controls.
 
 - [User guide and revision history](guide.md)
+- [Short inspection guide for the priest and local engineer](../electrical-inspection-guide.md) ([tiếng Việt](../electrical-inspection-guide.vi.md))
 - [Viewer performance and memory](performance.md)
 - [Calculation methods and limitations](methods-and-limitations.md)
 - [Coordinated baseline, scenarios and unresolved targets](../engineering/baseline.md)
@@ -30,3 +31,8 @@ The 7 October 2026 review passed geometry, 24 independent estimate checks, the t
 Run `node scripts/verify_estimates.cjs` for calculation changes and `node scripts/verify_simulator.cjs --report --estimates` for a full audit. Run the strict `node scripts/verify_simulator.cjs` before claiming its design targets pass. See [AGENTS.md](../../AGENTS.md) for checks by change type.
 
 Review screenshots and raw audit records remain under `review/`. The viewer's [opening instructions](../../Thach_Bi_Viewer/READ_ME.txt) remain beside the offline application. Older tables in the guide describe previous revisions and are not current acceptance evidence.
+
+
+## Nave fans · 9 October 2026
+
+The [current nave review](../engineering/nave-wall-fans.md) displays eight F2 wall fans per side by default. F2 remains OFF in every built-in mode. Saved edits are retained with a separate per-side adoption workflow; displayed geometry and actual quantity are checked independently of migration history. Extended fan brackets are visualization proxies. The [current evidence](../../review/nave-wall-fans-2026-10-09/README.md) records preservation, geometry, desktop controls and calculations; baseline design failures and physical/electrical approvals remain held.

@@ -1,0 +1,26 @@
+--- review/wing-revision-2026-10-09/exports/tools/compare-registers.mjs
++++ /tmp/thachbi-nave-fan-exports-whie1hp5/tools/compare-registers.mjs
+@@ -50,14 +50,16 @@
+ }
+ const expectedRetired = ['L64','L66','L68','L70','F-WING-B-3','F-WING-B-4','F-WING-H-3','F-WING-H-4','S275','S277'];
+ assert.deepEqual([...result.retiredEquipment].sort(), expectedRetired.sort(), 'Unexpected retired equipment');
+-assert.equal(result.tables.Equipment.current,325);
+-assert.equal(result.tables['Electrical Lines'].current,333);
+-assert.equal(result.newEquipment.length,4);
++assert.equal(result.tables.Equipment.current,335);
++assert.equal(result.tables['Electrical Lines'].current,343);
++assert.equal(result.newEquipment.length,10);
+ for (const row of result.newEquipment) {
+-  assert.equal(row.category,'decoration');
+-  assert.equal(row.board,null);
+-  assert.equal(row.circuit,'DECOR');
+-  assert.equal(row.routes,null);
++  assert.equal(row.category,'air-system');
++  assert(row.id.startsWith('F-NAVE-'), 'New nave fan ID must be explicit');
++  assert.equal(row.board,'DB1');
++  assert.equal(row.circuit,'F2');
++  assert.equal(typeof row.routes,'string');
++  assert(row.routes.length > 0, 'New nave fan has no route');
+   assert.equal(row.recordState,'Current');
+ }
+ result.preservedInputCells=preservedCells;

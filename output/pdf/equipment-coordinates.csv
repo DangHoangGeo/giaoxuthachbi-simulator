@@ -1,0 +1,297 @@
+ID,Circuit,Board,X m,Y m,Z m,Provisional product category
+L1,L3,DB1,50,4.14,0,Service-room LED panel · 600 × 600 mm
+L2,L3,DB1,51.9,4.14,0,Service-room LED panel · 600 × 600 mm
+L3,L1,DB1,9.975,8.584999999999999,-2.6,LED projector · medium 36°
+L4,L1,DB1,9.975,8.584999999999999,-2.6,LED projector · medium 36°
+L5,L1,DB1,9.975,8.584999999999999,2.6,LED projector · medium 36°
+L6,L1,DB1,9.975,8.584999999999999,2.6,LED projector · medium 36°
+L7,L1,DB1,14.475,8.584999999999999,-2.6,LED projector · medium 36°
+L8,L1,DB1,14.475,8.584999999999999,-2.6,LED projector · medium 36°
+L9,L1,DB1,14.475,8.584999999999999,2.6,LED projector · medium 36°
+L10,L1,DB1,14.475,8.584999999999999,2.6,LED projector · medium 36°
+L11,L1,DB1,18.975,8.584999999999999,-2.6,LED projector · medium 36°
+L12,L1,DB1,18.975,8.584999999999999,-2.6,LED projector · medium 36°
+L13,L1,DB1,18.975,8.584999999999999,2.6,LED projector · medium 36°
+L14,L1,DB1,18.975,8.584999999999999,2.6,LED projector · medium 36°
+L15,L1,DB1,23.475,8.584999999999999,-2.6,LED projector · medium 36°
+L16,L1,DB1,23.475,8.584999999999999,-2.6,LED projector · medium 36°
+L17,L1,DB1,23.475,8.584999999999999,2.6,LED projector · medium 36°
+L18,L1,DB1,23.475,8.584999999999999,2.6,LED projector · medium 36°
+L19,L1,DB1,27.975,8.584999999999999,-2.6,LED projector · medium 36°
+L20,L1,DB1,27.975,8.584999999999999,-2.6,LED projector · medium 36°
+L21,L1,DB1,27.975,8.584999999999999,2.6,LED projector · medium 36°
+L22,L1,DB1,27.975,8.584999999999999,2.6,LED projector · medium 36°
+L23,L1,DB1,32.475,8.584999999999999,-2.6,LED projector · medium 36°
+L24,L1,DB1,32.475,8.584999999999999,-2.6,LED projector · medium 36°
+L25,L1,DB1,32.475,8.584999999999999,2.6,LED projector · medium 36°
+L26,L1,DB1,32.475,8.584999999999999,2.6,LED projector · medium 36°
+L27,L1,DB1,36.975,8.584999999999999,-2.6,LED projector · medium 36°
+L28,L1,DB1,36.975,8.584999999999999,-2.6,LED projector · medium 36°
+L29,L1,DB1,36.975,8.584999999999999,2.6,LED projector · medium 36°
+L30,L1,DB1,36.975,8.584999999999999,2.6,LED projector · medium 36°
+L31,L2,DB1,9.975,6.655,-5.6,LED projector · medium 36°
+L32,L2,DB1,9.975,6.655,-5.6,LED projector · medium 36°
+L33,L2,DB1,9.975,6.655,5.6,LED projector · medium 36°
+L34,L2,DB1,9.975,6.655,5.6,LED projector · medium 36°
+L35,L2,DB1,14.475,6.655,-5.6,LED projector · medium 36°
+L36,L2,DB1,14.475,6.655,-5.6,LED projector · medium 36°
+L37,L2,DB1,14.475,6.655,5.6,LED projector · medium 36°
+L38,L2,DB1,14.475,6.655,5.6,LED projector · medium 36°
+L39,L2,DB1,18.975,6.655,-5.6,LED projector · medium 36°
+L40,L2,DB1,18.975,6.655,-5.6,LED projector · medium 36°
+L41,L2,DB1,18.975,6.655,5.6,LED projector · medium 36°
+L42,L2,DB1,18.975,6.655,5.6,LED projector · medium 36°
+L43,L2,DB1,23.475,6.655,-5.6,LED projector · medium 36°
+L44,L2,DB1,23.475,6.655,-5.6,LED projector · medium 36°
+L45,L2,DB1,23.475,6.655,5.6,LED projector · medium 36°
+L46,L2,DB1,23.475,6.655,5.6,LED projector · medium 36°
+L47,L2,DB1,27.975,6.655,-5.6,LED projector · medium 36°
+L48,L2,DB1,27.975,6.655,-5.6,LED projector · medium 36°
+L49,L2,DB1,27.975,6.655,5.6,LED projector · medium 36°
+L50,L2,DB1,27.975,6.655,5.6,LED projector · medium 36°
+L51,L2,DB1,32.475,6.655,-5.6,LED projector · medium 36°
+L52,L2,DB1,32.475,6.655,-5.6,LED projector · medium 36°
+L53,L2,DB1,32.475,6.655,5.6,LED projector · medium 36°
+L54,L2,DB1,32.475,6.655,5.6,LED projector · medium 36°
+L55,L2,DB1,36.975,6.655,-5.6,LED projector · medium 36°
+L56,L2,DB1,36.975,6.655,-5.6,LED projector · medium 36°
+L57,L2,DB1,36.975,6.655,5.6,LED projector · medium 36°
+L58,L2,DB1,36.975,6.655,5.6,LED projector · medium 36°
+L59,L1,DB1,2.65,3.45,-4.2,LED projector · medium 36°
+L60,L1,DB1,2.65,5.95,-4.2,LED projector · medium 36°
+L61,L1,DB1,2.65,3.45,4.2,LED projector · medium 36°
+L62,L1,DB1,2.65,5.95,4.2,LED projector · medium 36°
+L63,L8,DB1,38.94,3.8,-10.15,Small brass chandelier + reading optic · concept
+L65,L8,DB1,42.22,3.8,-10.15,Small brass chandelier + reading optic · concept
+L67,L8,DB1,38.94,3.8,10.15,Small brass chandelier + reading optic · concept
+L69,L8,DB1,42.22,3.8,10.15,Small brass chandelier + reading optic · concept
+L71,LA,DB1,9.975,9.18,0,Roof uplight · wide flood
+L72,LA,DB1,14.475,9.18,0,Roof uplight · wide flood
+L73,LA,DB1,18.975,9.18,0,Roof uplight · wide flood
+L74,LA,DB1,23.475,9.18,0,Roof uplight · wide flood
+L75,LA,DB1,27.975,9.18,0,Roof uplight · wide flood
+L76,LA,DB1,32.475,9.18,0,Roof uplight · wide flood
+L77,LA,DB1,36.975,9.18,0,Roof uplight · wide flood
+L78,LD,DB1,16.725,6.3,0,Brass candle chandelier · 8 lamps
+L79,LD,DB1,25.725,6.3,0,Brass candle chandelier · 8 lamps
+L80,LD,DB1,34.725,6.3,0,Brass candle chandelier · 8 lamps
+L81,LD,DB1,40.575,9.2,0,Grand chandelier · 12 lamps
+L82,LD,DB1,9.975,4.6,-7.07,Brass candle sconce · 2 lamps
+L83,LD,DB1,9.975,4.6,7.07,Brass candle sconce · 2 lamps
+L84,LD,DB1,14.475,4.6,-7.07,Brass candle sconce · 2 lamps
+L85,LD,DB1,14.475,4.6,7.07,Brass candle sconce · 2 lamps
+L86,LD,DB1,18.975,4.6,-7.07,Brass candle sconce · 2 lamps
+L87,LD,DB1,18.975,4.6,7.07,Brass candle sconce · 2 lamps
+L88,LD,DB1,23.475,4.6,-7.07,Brass candle sconce · 2 lamps
+L89,LD,DB1,23.475,4.6,7.07,Brass candle sconce · 2 lamps
+L90,LD,DB1,27.975,4.6,-7.07,Brass candle sconce · 2 lamps
+L91,LD,DB1,27.975,4.6,7.07,Brass candle sconce · 2 lamps
+L92,LD,DB1,32.475,4.6,-7.07,Brass candle sconce · 2 lamps
+L93,LD,DB1,32.475,4.6,7.07,Brass candle sconce · 2 lamps
+L94,LD,DB1,36.975,4.6,-7.07,Brass candle sconce · 2 lamps
+L95,LD,DB1,36.975,4.6,7.07,Brass candle sconce · 2 lamps
+L96,LD,DB1,46.455,4.3,-3.2399999999999998,Brass candle sconce · 2 lamps
+L97,LD,DB1,46.455,4.3,3.2399999999999998,Brass candle sconce · 2 lamps
+L98,L3,DB1,36.975,8.584999999999999,-1.4,LED projector · narrow 24°
+L99,L3,DB1,36.975,8.584999999999999,1.4,LED projector · narrow 24°
+L100,L3,DB1,36.975,8.584999999999999,-3.15,Accent spotlight · 15°
+L101,L3,DB1,36.975,8.584999999999999,-1.9,LED projector · medium 36°
+L102,L3,DB1,36.975,8.584999999999999,1.9,LED projector · medium 36°
+L103,L3,DB1,36.975,8.584999999999999,3,Accent spotlight · 15°
+L104,L3,DB1,36.975,8.584999999999999,-0.6,LED projector · medium 36°
+L105,L3,DB1,36.975,8.584999999999999,0.6,LED projector · medium 36°
+L106,L3,DB1,44.75,7.6,-3.2399999999999998,Accent spotlight · 15°
+L107,L3,DB1,44.75,6.7,-3.2399999999999998,LED projector · medium 36°
+L108,L3,DB1,44.75,5.4,-3.2399999999999998,LED projector · medium 36°
+L109,L3,DB1,45.35,8.42,-2.94,Roof uplight · wide flood
+L110,L3,DB1,44.75,7.6,3.2399999999999998,Accent spotlight · 15°
+L111,L3,DB1,44.75,6.7,3.2399999999999998,LED projector · medium 36°
+L112,L3,DB1,44.75,5.4,3.2399999999999998,LED projector · medium 36°
+L113,L3,DB1,45.35,8.42,2.94,Roof uplight · wide flood
+L114,L3,DB1,44.75,4.9,-3.2399999999999998,Accent spotlight · 15°
+L115,L3,DB1,36.975,6.655,-5.25,Accent spotlight · 15°
+L116,L3,DB1,36.975,6.655,-4.9,LED projector · medium 36°
+L117,L3,DB1,36.975,6.655,5.25,Accent spotlight · 15°
+L118,L3,DB1,36.975,6.655,4.9,LED projector · medium 36°
+L119,L4,DB1,9.975,4.55,-8.85,Pendant lantern · opal
+L120,L4,DB1,14.475,4.55,-8.85,Pendant lantern · opal
+L121,L4,DB1,18.975,4.55,-8.85,Pendant lantern · opal
+L122,L4,DB1,23.475,4.55,-8.85,Pendant lantern · opal
+L123,L4,DB1,27.975,4.55,-8.85,Pendant lantern · opal
+L124,L4,DB1,32.475,4.55,-8.85,Pendant lantern · opal
+L125,L4,DB1,36.975,4.55,-8.85,Pendant lantern · opal
+L126,L4,DB1,44.175,4.55,-8.85,Pendant lantern · opal
+L127,L4,DB1,48.675,4.55,-8.85,Pendant lantern · opal
+L128,L4,DB1,9.975,4.55,8.85,Pendant lantern · opal
+L129,L4,DB1,14.475,4.55,8.85,Pendant lantern · opal
+L130,L4,DB1,18.975,4.55,8.85,Pendant lantern · opal
+L131,L4,DB1,23.475,4.55,8.85,Pendant lantern · opal
+L132,L4,DB1,27.975,4.55,8.85,Pendant lantern · opal
+L133,L4,DB1,32.475,4.55,8.85,Pendant lantern · opal
+L134,L4,DB1,36.975,4.55,8.85,Pendant lantern · opal
+L135,L4,DB1,44.175,4.55,8.85,Pendant lantern · opal
+L136,L4,DB1,48.675,4.55,8.85,Pendant lantern · opal
+L137,L9,DB2,2.2,3,-2.4,Wall lantern
+L138,L9,DB2,2.2,3,2.4,Wall lantern
+L139,L5,DB1,15.3,2.6,-10.55,Wall lantern
+L140,L5,DB1,18.150000000000002,2.6,-10.55,Wall lantern
+L141,L5,DB1,33.300000000000004,2.6,-10.55,Wall lantern
+L142,L5,DB1,36.15,2.6,-10.55,Wall lantern
+L143,L5,DB1,45,2.6,-10.55,Wall lantern
+L144,L5,DB1,47.849999999999994,2.6,-10.55,Wall lantern
+L145,L5,DB1,15.3,2.6,10.55,Wall lantern
+L146,L5,DB1,18.150000000000002,2.6,10.55,Wall lantern
+L147,L5,DB1,33.300000000000004,2.6,10.55,Wall lantern
+L148,L5,DB1,36.15,2.6,10.55,Wall lantern
+L149,L5,DB1,45,2.6,10.55,Wall lantern
+L150,L5,DB1,47.849999999999994,2.6,10.55,Wall lantern
+L151,L3,DB1,52.8,2.3,-4.48,Wall lantern
+L152,L3,DB1,52.8,2.3,-6.48,Wall lantern
+L153,L3,DB1,52.8,2.3,4.48,Wall lantern
+L154,L3,DB1,52.8,2.3,6.48,Wall lantern
+L155,E1,DB1,2.65,6.95,0,Exit sign (maintained)
+L156,E1,DB1,16.725,4.6,-7.245,Exit sign (maintained)
+L157,E1,DB1,16.725,4.6,7.245,Exit sign (maintained)
+L158,E1,DB1,34.725,4.6,-7.245,Exit sign (maintained)
+L159,E1,DB1,34.725,4.6,7.245,Exit sign (maintained)
+L160,L6,DB2,-0.125,8.4,-10.853,Tower floodlight · projecting arm
+L161,L6,DB2,-0.125,8.4,-10.153,Tower floodlight · projecting arm
+L162,L6,DB2,-0.035,15.88,-10.153,Tower floodlight · projecting arm
+L163,L6,DB2,0.065,23.2,-10.153,Tower floodlight · projecting arm
+L164,L6,DB2,0.35,29.26,-10.153,Tower floodlight · projecting arm
+L165,L6,DB2,2.45,23.2,-10.153,Roof uplight · wide flood
+L166,L6,DB2,3.0500000000000003,8.4,-12.738,Tower floodlight · projecting arm
+L167,L6,DB2,2.45,8.4,-12.738,Tower floodlight · projecting arm
+L168,L6,DB2,2.45,15.88,-12.613,Tower floodlight · projecting arm
+L169,L6,DB2,2.45,23.2,-12.513,Tower floodlight · projecting arm
+L170,L6,DB2,-0.0750000000000001,8.4,-7.9,Façade floodlight
+L171,L6,DB2,-0.125,8.4,10.853,Tower floodlight · projecting arm
+L172,L6,DB2,-0.125,8.4,10.153,Tower floodlight · projecting arm
+L173,L6,DB2,-0.035,15.88,10.153,Tower floodlight · projecting arm
+L174,L6,DB2,0.065,23.2,10.153,Tower floodlight · projecting arm
+L175,L6,DB2,0.35,29.26,10.153,Tower floodlight · projecting arm
+L176,L6,DB2,2.45,23.2,10.153,Roof uplight · wide flood
+L177,L6,DB2,3.0500000000000003,8.4,12.738,Tower floodlight · projecting arm
+L178,L6,DB2,2.45,8.4,12.738,Tower floodlight · projecting arm
+L179,L6,DB2,2.45,15.88,12.613,Tower floodlight · projecting arm
+L180,L6,DB2,2.45,23.2,12.513,Tower floodlight · projecting arm
+L181,L6,DB2,-0.0750000000000001,8.4,7.9,Façade floodlight
+L182,L9,DB2,-0.0750000000000001,8.4,-11.853,Façade floodlight
+L183,L9,DB2,-0.0750000000000001,8.4,-8.453000000000001,Façade floodlight
+L184,L5,DB1,14.475,5.9,-10.75,LED projector · medium 36°
+L185,L5,DB1,23.475,5.9,-10.75,LED projector · medium 36°
+L186,L5,DB1,48.675,5.9,-10.75,LED projector · medium 36°
+L187,L5,DB1,40.575,6.2,-13.13,LED projector · medium 36°
+L188,L5,DB1,53.2,5.2,-4.5,LED projector · medium 36°
+L189,L9,DB2,-0.0750000000000001,8.4,8.453000000000001,Façade floodlight
+L190,L9,DB2,-0.0750000000000001,8.4,11.853,Façade floodlight
+L191,L5,DB1,14.475,5.9,10.75,LED projector · medium 36°
+L192,L5,DB1,23.475,5.9,10.75,LED projector · medium 36°
+L193,L5,DB1,48.675,5.9,10.75,LED projector · medium 36°
+L194,L5,DB1,40.575,6.2,13.13,LED projector · medium 36°
+L195,L5,DB1,53.2,5.2,4.5,LED projector · medium 36°
+L196,L7,DB2,29.16,12.69,0,Festival bulb string (outdoor)
+L197,L7,DB2,21.35,7.32,-7.3,Festival bulb string (outdoor)
+L198,L7,DB2,48.4,7.32,-7.3,Festival bulb string (outdoor)
+L199,L7,DB2,21.35,6.47,-10.6,Festival bulb string (outdoor)
+L200,L7,DB2,48.4,6.47,-10.6,Festival bulb string (outdoor)
+L201,L7,DB2,53.45,10,-3.65,Festival bulb string (outdoor)
+L202,L7,DB2,-0.4,4.195,-7.823,Festival bulb string (outdoor)
+L203,L7,DB2,-0.4,4.195,-12.483,Festival bulb string (outdoor)
+L204,L7,DB2,-0.3099999999999997,12.115,-7.948,Festival bulb string (outdoor)
+L205,L7,DB2,-0.3099999999999997,12.115,-12.358,Festival bulb string (outdoor)
+L206,L7,DB2,-0.20999999999999963,19.490000000000002,-8.048,Festival bulb string (outdoor)
+L207,L7,DB2,-0.20999999999999963,19.490000000000002,-12.258000000000001,Festival bulb string (outdoor)
+L208,L7,DB2,21.35,7.32,7.3,Festival bulb string (outdoor)
+L209,L7,DB2,48.4,7.32,7.3,Festival bulb string (outdoor)
+L210,L7,DB2,21.35,6.47,10.6,Festival bulb string (outdoor)
+L211,L7,DB2,48.4,6.47,10.6,Festival bulb string (outdoor)
+L212,L7,DB2,53.45,10,3.65,Festival bulb string (outdoor)
+L213,L7,DB2,-0.4,4.195,7.823,Festival bulb string (outdoor)
+L214,L7,DB2,-0.4,4.195,12.483,Festival bulb string (outdoor)
+L215,L7,DB2,-0.3099999999999997,12.115,7.948,Festival bulb string (outdoor)
+L216,L7,DB2,-0.3099999999999997,12.115,12.358,Festival bulb string (outdoor)
+L217,L7,DB2,-0.20999999999999963,19.490000000000002,8.048,Festival bulb string (outdoor)
+L218,L7,DB2,-0.20999999999999963,19.490000000000002,12.258000000000001,Festival bulb string (outdoor)
+L219,L7,DB2,2.15,8.5,0,Festival bulb string (outdoor)
+L220,L7,DB2,52.6,6.55,-9.8,Façade floodlight
+L221,L7,DB2,52.6,6.55,9.8,Façade floodlight
+L222,L6,DB2,-0.0750000000000001,8.4,-7.75,Façade floodlight
+L223,L6,DB2,-0.035,15.88,-7.9,Façade floodlight
+L224,L6,DB2,-0.0750000000000001,8.4,7.75,Façade floodlight
+L225,L6,DB2,-0.035,15.88,7.9,Façade floodlight
+F226,F1,DB1,7.725,3.9,-4.4,"Ceiling fan · 1.42 m (56"")"
+F227,F1,DB1,7.725,3.9,4.4,"Ceiling fan · 1.42 m (56"")"
+F228,F1,DB1,12.225,3.9,-4.4,"Ceiling fan · 1.42 m (56"")"
+F229,F1,DB1,12.225,3.9,4.4,"Ceiling fan · 1.42 m (56"")"
+F230,F1,DB1,16.725,3.9,-4.4,"Ceiling fan · 1.42 m (56"")"
+F231,F1,DB1,16.725,3.9,4.4,"Ceiling fan · 1.42 m (56"")"
+F232,F1,DB1,21.225,3.9,-4.4,"Ceiling fan · 1.42 m (56"")"
+F233,F1,DB1,21.225,3.9,4.4,"Ceiling fan · 1.42 m (56"")"
+F234,F1,DB1,25.725,3.9,-4.4,"Ceiling fan · 1.42 m (56"")"
+F235,F1,DB1,25.725,3.9,4.4,"Ceiling fan · 1.42 m (56"")"
+F236,F1,DB1,30.225,3.9,-4.4,"Ceiling fan · 1.42 m (56"")"
+F237,F1,DB1,30.225,3.9,4.4,"Ceiling fan · 1.42 m (56"")"
+F238,F1,DB1,34.725,3.9,-4.4,"Ceiling fan · 1.42 m (56"")"
+F239,F1,DB1,34.725,3.9,4.4,"Ceiling fan · 1.42 m (56"")"
+F240,F5,DB1,38.05,4.05,-13.06,Wing wall fan · 45 cm · extended bracket concept
+F241,F5,DB1,43.1,4.05,-13.06,Wing wall fan · 45 cm · extended bracket concept
+F242,F5,DB1,38.05,4.05,13.06,Wing wall fan · 45 cm · extended bracket concept
+F243,F5,DB1,43.1,4.05,13.06,Wing wall fan · 45 cm · extended bracket concept
+F244,F2,DB1,14.475,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F245,F2,DB1,14.475,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F246,F2,DB1,23.475,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F247,F2,DB1,23.475,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F248,F2,DB1,32.475,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F249,F2,DB1,32.475,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F250,F4,DB2,2.655,6,-3.05,Large wall circulator · 90 cm
+F251,F4,DB2,2.655,6,3.05,Large wall circulator · 90 cm
+F252,V1,DB1,5.48,9.4,-2.4,Exhaust (ventilation) fan · 50 cm
+F253,V1,DB1,5.48,9.4,-0.8,Exhaust (ventilation) fan · 50 cm
+F254,V1,DB1,5.48,9.4,0.8,Exhaust (ventilation) fan · 50 cm
+F255,V1,DB1,5.48,9.4,2.4,Exhaust (ventilation) fan · 50 cm
+F256,V1,DB1,39.7,7.6,-13.13,Exhaust (ventilation) fan · 50 cm
+F257,V1,DB1,41.45,7.6,-13.13,Exhaust (ventilation) fan · 50 cm
+F258,V1,DB1,39.7,7.6,13.13,Exhaust (ventilation) fan · 50 cm
+F259,V1,DB1,41.45,7.6,13.13,Exhaust (ventilation) fan · 50 cm
+F260,V1,DB1,53.12,3.3,0,Exhaust (ventilation) fan · 50 cm
+S261,A1,DB1,14.475,3.45,-7.07,"Slim wall column · 0.6 m, wall colour"
+S262,A1,DB1,14.475,3.45,7.07,"Slim wall column · 0.6 m, wall colour"
+S263,A1,DB1,18.975,3.45,-7.07,"Slim wall column · 0.6 m, wall colour"
+S264,A1,DB1,18.975,3.45,7.07,"Slim wall column · 0.6 m, wall colour"
+S265,A1,DB1,23.475,3.45,-7.07,"Slim wall column · 0.6 m, wall colour"
+S266,A1,DB1,23.475,3.45,7.07,"Slim wall column · 0.6 m, wall colour"
+S267,A1,DB1,27.975,3.45,-7.07,"Slim wall column · 0.6 m, wall colour"
+S268,A1,DB1,27.975,3.45,7.07,"Slim wall column · 0.6 m, wall colour"
+S269,A1,DB1,32.475,3.45,-7.07,"Slim wall column · 0.6 m, wall colour"
+S270,A1,DB1,32.475,3.45,7.07,"Slim wall column · 0.6 m, wall colour"
+S271,A1,DB1,36.975,3.45,-7.07,"Slim wall column · 0.6 m, wall colour"
+S272,A1,DB1,36.975,3.45,7.07,"Slim wall column · 0.6 m, wall colour"
+S273,A5,DB1,2.655,3.6,-3.05,"Slim wall column · 0.6 m, wall colour"
+S274,A5,DB1,2.655,3.6,3.05,"Slim wall column · 0.6 m, wall colour"
+S276,A1,DB1,43.72,4.85,-13.06,"Slim wall column · 0.6 m, wall colour"
+S278,A1,DB1,43.72,4.85,13.06,"Slim wall column · 0.6 m, wall colour"
+S279,A2,DB1,12.225,3.9,-8.85,"Pendant loudspeaker · 6"""
+S280,A2,DB1,25.725,3.9,-8.85,"Pendant loudspeaker · 6"""
+S281,A2,DB1,12.225,3.9,8.85,"Pendant loudspeaker · 6"""
+S282,A2,DB1,25.725,3.9,8.85,"Pendant loudspeaker · 6"""
+S283,A3,DB1,-0.14,6.2,-8.3,Outdoor horn · 30 W
+S284,A3,DB1,-0.14,6.2,-11.9,Outdoor horn · 30 W
+S285,A3,DB1,18.975,5.6,-10.75,Outdoor horn · 30 W
+S286,A3,DB1,32.475,5.6,-10.75,Outdoor horn · 30 W
+S287,A3,DB1,-0.14,6.2,8.3,Outdoor horn · 30 W
+S288,A3,DB1,-0.14,6.2,11.9,Outdoor horn · 30 W
+S289,A3,DB1,18.975,5.6,10.75,Outdoor horn · 30 W
+S290,A3,DB1,32.475,5.6,10.75,Outdoor horn · 30 W
+S291,MIC,DB1,41.08,1.9,-2.62,Gooseneck microphone (cardioid)
+S292,MIC,DB1,44.45,1.88,0.45,Gooseneck microphone (cardioid)
+F-NAVE-B-2P,F2,DB1,5.475,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-H-2P,F2,DB1,5.475,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-B-3,F2,DB1,9.975,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-H-3,F2,DB1,9.975,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-B-5,F2,DB1,18.975,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-H-5,F2,DB1,18.975,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-B-7,F2,DB1,27.975,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-H-7,F2,DB1,27.975,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-B-9,F2,DB1,36.975,5.55,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-H-9,F2,DB1,36.975,5.55,7.07,Nave wall fan · 45 cm · extended bracket concept

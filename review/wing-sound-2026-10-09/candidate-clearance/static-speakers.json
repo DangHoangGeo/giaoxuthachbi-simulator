@@ -1,0 +1,33 @@
+{
+  "status": "static geometry screen only; full fan sweep and architecture review pending",
+  "rows": [
+    {
+      "id": "S276",
+      "min": [
+        43.558047276969106,
+        4.168861486704717,
+        -13.059999999329449
+      ],
+      "max": [
+        44.06266909397404,
+        4.6081571790885185,
+        -12.940000000670553
+      ],
+      "windowScreen": "clear; not fixing or service approval"
+    },
+    {
+      "id": "S278",
+      "min": [
+        43.558047276969106,
+        4.168861486704717,
+        12.940000000670553
+      ],
+      "max": [
+        44.06266909397404,
+        4.6081571790885185,
+        13.059999999329449
+      ],
+      "windowScreen": "clear; not fixing or service approval"
+    }
+  ]
+}
