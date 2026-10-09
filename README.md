@@ -2,7 +2,9 @@
 
 A personal project to help my hometown church in Vietnam make better decisions about lighting, sound, fans, electrical routing and construction details. It brings a virtual 3D model, comparative simulations and engineering records together so that the community can review ideas before spending limited resources.
 
-**This is an evolving design study.** The model and simulator produce planning estimates; they are not approved construction drawings or a substitute for checked engineering design and on-site measurements. Experienced engineers, architects, craftspeople and software contributors are welcome to help identify mistakes and improve the work.
+**This is an evolving design study.** The model and simulator produce planning estimates; they are not approved construction drawings or a substitute for checked engineering design and on-site measurements.
+
+**This is an open-source project, and help is welcome.** Experienced engineers, architects, craftspeople and software contributors can review the work, [report a problem](CONTRIBUTING.md#report-a-bug-or-a-review-finding) or [send a pull request](CONTRIBUTING.md#send-a-pull-request). Software is under the [MIT licence](LICENSE); the project's documents, data and images are under CC BY 4.0. Third-party drawings and photographs are excluded: see [NOTICE](NOTICE.md).
 
 ## Why I started
 
@@ -43,7 +45,7 @@ A local desktop web foundation now exists under `web/`: Vietnamese/English previ
 
 See the [7 October church concept gallery](Thach_Bi_Viewer/references/00-overview/2026-10-07/index.html) for sixteen exterior, interior, carved-detail and top-down views, including side-door/window close-ups and the sanctuary-end rear elevation, with native originals and resampled Full HD copies. These use the model and approved art references; they are generated design concepts, not construction-site photographs. [Design notes and provenance](docs/church-view-renderings.md) explain the source hierarchy and limitations.
 
-1. Download or clone the repository. If downloading a ZIP, extract it completely.
+1. Download or clone the repository. If downloading a ZIP, extract it completely. The full history is several hundred megabytes; `git clone --depth 1` is enough to open the model and run the checks.
 2. Open [Thach_Bi_Viewer/OPEN_CHURCH.html](Thach_Bi_Viewer/OPEN_CHURCH.html) in a browser with JavaScript and WebGL 2 support.
 3. Choose **Go inside** to explore, or **Simulator** to work with lighting, sound, fans and equipment. Use **Simulator → Wiring** for electrical routes.
 
@@ -63,7 +65,9 @@ See the [viewer instructions](Thach_Bi_Viewer/READ_ME.txt) and [simulator guide]
 | Review routes, boards and operating modes | [Electrical grid documentation](docs/electrical-grid/README.md) and [control brief](docs/electrical-grid/controls.md) |
 | Inspect equipment, line IDs and positions | [Category Excel registers](docs/electrical-grid/categories/README.md) and [refresh workflow](docs/electrical-grid/register.md) |
 | See total quantities, usage and missing inputs | [Summary report](docs/electrical-grid/summary-report.md) |
-| Contribute code, model changes or documentation | [Project and AI-agent rules](AGENTS.md) |
+| Report a bug, review a calculation or send a pull request | [Contributing guide](CONTRIBUTING.md) |
+| Change code, the model or documents, yourself or with an AI agent | [Project and AI-agent rules](AGENTS.md) |
+| Know what you may reuse, and on what terms | [Licences and third-party material](NOTICE.md) |
 | Implement the future public and protected web app | [Web roadmap and phase plans](plan/README.md) |
 
 ## Where community help would matter most
@@ -84,15 +88,15 @@ The [7 October 2026 review](docs/simulator/README.md) still records low ambo/alt
 
 ## How to contribute
 
-Open an issue to discuss a finding or proposal, or submit a focused pull request. Reviews and explanations are useful even without a code change. For a reproducible finding, include:
+The [contributing guide](CONTRIBUTING.md) has the details. In short:
 
-1. The file, drawing sheet, equipment/route ID or location you reviewed.
-2. The layout revision, scene/settings and steps needed to reproduce the result.
-3. What you observed, what you expected and why the difference matters.
-4. Supporting calculations, product data, measurements or applicable standards, with units, sources and assumptions.
-5. A suggested correction or the information still needed to decide.
+- **Found a bug or a mistake?** [Open an issue](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/issues/new/choose) with one of the two short templates. Say where it is, how to see it, what you expected and what evidence you have. Reviews and explanations are useful even without a code change. English and Vietnamese are both welcome.
+- **Want to change something?** Fork the repository, work on a branch and open a pull request against `main`. `main` is protected: every change is reviewed and merged by the maintainer, [@DangHoangGeo](https://github.com/DangHoangGeo). For larger changes, open an issue first.
+- **Security or privacy problem?** Report it privately as described in [SECURITY.md](SECURITY.md).
 
-Read [AGENTS.md](AGENTS.md) before editing. Every 3D change must check its governing documentation and update affected specifications, plans, registers and reports in the same logical commit. Preserve stable IDs, original source evidence and entered engineering data. Run the relevant checks, then make a small commit for each coherent change. Include the checks/results and remaining limitations in the commit and pull-request description.
+Read [AGENTS.md](AGENTS.md) before editing; it applies to people and to AI agents. Every 3D change must check its governing documentation and update affected specifications, plans, registers and reports in the same logical commit. Preserve stable IDs, original source evidence and entered engineering data. Run the relevant checks, then make a small commit for each coherent change. Include the checks/results and remaining limitations in the commit and pull-request description.
+
+Everything committed is public. Do not add passwords, private contact details, images of private people, or drawings and photographs you do not have the right to share. Be respectful: see the [code of conduct](CODE_OF_CONDUCT.md).
 
 Please distinguish a visual concept, a simulation estimate, a measurement and an engineer-approved design. Changes intended for installation need the responsible designers' review and coordination with the people building and operating the church.
 
@@ -135,9 +139,20 @@ The HTML brief generator requires `marked`. Excel regeneration uses the configur
 | `plan/` | Engineering/web roadmaps, implementation phases and release criteria. |
 | `review/` | Dated review evidence and historical comparisons; earlier results may not describe the current model. |
 | `AGENTS.md` | Shared rules for accuracy, coordinated documentation, testing and small commits. |
+| `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md` | How to report problems, send pull requests and behave in the project. |
+| `LICENSE`, `NOTICE.md` | Licences, attribution and the third-party material they do not cover. |
+| `.github/` | Issue and pull-request templates, code owner and the web checks workflow. |
 
-## Sources and reuse
+## Licence and reuse
 
-A project-wide license has not yet been selected. Source drawings, reference photographs and generated concepts have different origins; their presence here does not establish a common reuse license. Preserve the recorded attribution and provenance in the [reference manifest](Thach_Bi_Viewer/references/manifest.json) and [timber image manifest](docs/beams-roof-connections/image-manifest.json).
+Other parishes and communities are welcome to reuse this work. The project owner chose the licences on 10 October 2026:
+
+- **Software** (viewer, simulator, scripts, web application): [MIT](LICENSE).
+- **The project's own documents, data, registers and model renderings:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Credit the project and say what you changed.
+- **Not covered:** the church's architectural drawings, photographs of other churches, and bundled third-party code and fonts. They keep their owners' terms. Generated concept images are shared only to the extent the project holds rights in them.
+
+[NOTICE.md](NOTICE.md) lists exactly what falls under each heading. Preserve the recorded attribution and provenance in the [reference manifest](Thach_Bi_Viewer/references/manifest.json) and [timber image manifest](docs/beams-roof-connections/image-manifest.json). The licences provide the work as it is, without warranty: a reused model or calculation still needs its own checked engineering design.
+
+The source and history review that precedes making the repository public is recorded in the [publication checklist](docs/open-source/publication-checklist.md).
 
 Thank you for helping a small community ask better questions, find errors earlier and make informed decisions about a building it hopes to use for many years.
