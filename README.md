@@ -91,7 +91,7 @@ The [7 October 2026 review](docs/simulator/README.md) still records low ambo/alt
 The [contributing guide](CONTRIBUTING.md) has the details. In short:
 
 - **Found a bug or a mistake?** [Open an issue](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/issues/new/choose) with one of the two short templates. Say where it is, how to see it, what you expected and what evidence you have. Reviews and explanations are useful even without a code change. English and Vietnamese are both welcome.
-- **Want to change something?** Fork the repository, work on a branch and open a pull request against `main`. `main` is protected: every change is reviewed and merged by the maintainer, [@DangHoangGeo](https://github.com/DangHoangGeo). For larger changes, open an issue first.
+- **Want to change something?** Fork the repository, work on a branch and open a pull request against `dev`. Every change is reviewed and merged by the maintainer, [@DangHoangGeo](https://github.com/DangHoangGeo). `main` holds the reviewed version and receives only what the maintainer promotes from `dev`; both branches are protected. For larger changes, open an issue first.
 - **Security or privacy problem?** Report it privately as described in [SECURITY.md](SECURITY.md).
 
 Read [AGENTS.md](AGENTS.md) before editing; it applies to people and to AI agents. Every 3D change must check its governing documentation and update affected specifications, plans, registers and reports in the same logical commit. Preserve stable IDs, original source evidence and entered engineering data. Run the relevant checks, then make a small commit for each coherent change. Include the checks/results and remaining limitations in the commit and pull-request description.
