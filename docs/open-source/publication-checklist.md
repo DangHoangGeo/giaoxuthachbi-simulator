@@ -26,7 +26,7 @@ Limits: pattern searches miss secrets that do not match a known shape, and text 
 - [x] Licences chosen by the owner: MIT for software, CC BY 4.0 for the project's own documents, data and images. [LICENSE](../../LICENSE), [NOTICE](../../NOTICE.md).
 - [x] Contributor documents: [CONTRIBUTING](../../CONTRIBUTING.md), [code of conduct](../../CODE_OF_CONDUCT.md), [security policy](../../SECURITY.md), issue and pull-request templates, [CODEOWNERS](../../.github/CODEOWNERS).
 - [x] Agent rules for public work and the protected branch: [AGENTS.md](../../AGENTS.md).
-- [x] `main` protection applied on GitHub with [scripts/protect_main_branch.sh](../../scripts/protect_main_branch.sh): a pull request is required, with one approving review from the code owner; a new push discards an earlier approval; conversations must be resolved; force pushes and branch deletion are refused. GitHub reports the branch as protected. Enforcement was not tested by attempting a direct push. Re-run `sh scripts/protect_main_branch.sh --show` after the repository becomes public.
+- [x] `main` protection applied on GitHub with [scripts/protect_main_branch.sh](../../scripts/protect_main_branch.sh): a pull request is required, with one approving review from the code owner; a new push discards an earlier approval; conversations must be resolved; force pushes and branch deletion are refused. GitHub reports the branch as protected. No direct push was attempted; GitHub marks pull request 5 as blocked until it is reviewed, which shows the rule is active. The owner cannot approve their own pull request and merges it through the administrator bypass. Re-run `sh scripts/protect_main_branch.sh --show` after the repository becomes public.
 - [x] Local export folder `exports/` (films and private-review packages) added to `.gitignore`.
 - [x] Ten branches already contained in `main` deleted (section 4).
 
@@ -39,6 +39,7 @@ Limits: pattern searches miss secrets that do not match a known shape, and text 
 | H3 | Unmerged branches `web/00-evidence`, `web/02-homepage`, `web/03-timeline`, `web/04-lightweight-visit`, `web/05-protected-review` | They become public too. `web/05` records the address of the password-protected parish preview. The password is not in Git. | Decide whether the preview address may be public. Merge, keep or delete each branch before publication. |
 | H4 | Generated concept images, including the sanctuary wing saints | Their own record says the public-use review is pending. | Confirm they may be shared as concepts. |
 | H5 | Owner's e-mail address in commit metadata | Public with the history. | Accept, or rewrite history with a private GitHub address before publication. |
+| H6 | A Vercel project is connected to this GitHub repository | Pull request 5 received a Vercel preview build and comment on 10 October 2026, so pushes already trigger builds. Its production branch and its policy for pull requests from forks were not inspected (no Vercel access in this review). A merge to `main` may deploy the website, and a public repository receives pull requests from strangers. | Check the Vercel project's production branch, preview protection and fork-build authorisation before merging to `main` and before publication. |
 
 Removing a file from history rewrites shared history and changes every commit ID after it. It needs the owner's separate instruction, a backup, and a fresh review of every branch. Nothing has been rewritten.
 
@@ -84,4 +85,4 @@ Kept, because each holds commits that are in neither `main` nor `eng/11-outlets-
 4. Confirm protection: `sh scripts/protect_main_branch.sh --show`.
 5. Under **Settings → Advanced Security**, enable private vulnerability reporting, secret scanning and push protection. [SECURITY.md](../../SECURITY.md) relies on the first of these.
 6. Update the statements that the repository is private in [docs/web/deployment.md](../web/deployment.md) and decision D11 in [plan/decisions-and-sources.md](../../plan/decisions-and-sources.md).
-7. Before connecting `main` to automatic deployment, read the warning in [plan/architecture.md](../../plan/architecture.md): a merge must not publish the website by accident.
+7. Close H6. [plan/architecture.md](../../plan/architecture.md) warns that a connected `main` commonly deploys on merge: a merge must not publish the website by accident.
