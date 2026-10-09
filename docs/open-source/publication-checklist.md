@@ -1,6 +1,6 @@
 # Open-source publication checklist
 
-Status: **prepared, not published. PUBLICATION HOLD on the items in section 3.** Reviewed 10 October 2026 at commit `1d4b255` (`eng/11-outlets-facade-statues`) and the tips of all 21 remote branches.
+Status: **published by the owner. The repository was found public on 10 October 2026, with pull request 5 merged into `main` at `cf07b7c`. No decision is recorded for the items in section 3, so they remain open and are now publicly visible.** The review below was made on 10 October 2026 at commit `1d4b255` (`eng/11-outlets-facade-statues`) and the tips of all 21 remote branches, while the repository was still private.
 
 The owner decided on 10 October 2026 to open the project to community review and chose its licences ([NOTICE](../../NOTICE.md)). This record covers the source, history and licence review that [plan phase 07](../../plan/phases/07-release-and-operations.md) and [plan/architecture.md](../../plan/architecture.md) require before the GitHub repository is made public. It is a software and records check carried out by an AI agent. It is not legal advice, and changing the repository's visibility remains the owner's action.
 
@@ -26,11 +26,14 @@ Limits: pattern searches miss secrets that do not match a known shape, and text 
 - [x] Licences chosen by the owner: MIT for software, CC BY 4.0 for the project's own documents, data and images. [LICENSE](../../LICENSE), [NOTICE](../../NOTICE.md).
 - [x] Contributor documents: [CONTRIBUTING](../../CONTRIBUTING.md), [code of conduct](../../CODE_OF_CONDUCT.md), [security policy](../../SECURITY.md), issue and pull-request templates, [CODEOWNERS](../../.github/CODEOWNERS).
 - [x] Agent rules for public work and the protected branch: [AGENTS.md](../../AGENTS.md).
-- [x] `main` protection applied on GitHub with [scripts/protect_main_branch.sh](../../scripts/protect_main_branch.sh): a pull request is required, with one approving review from the code owner; a new push discards an earlier approval; conversations must be resolved; force pushes and branch deletion are refused. GitHub reports the branch as protected. No direct push was attempted; GitHub marks pull request 5 as blocked until it is reviewed, which shows the rule is active. The owner cannot approve their own pull request and merges it through the administrator bypass. Re-run `sh scripts/protect_main_branch.sh --show` after the repository becomes public.
+- [x] Two-branch flow, owner decision of 10 October 2026: contributions go to `dev`, the default branch, created from `main` at `6c2133f`; `main` receives only what the owner promotes from `dev`. This keeps an unreviewed batch away from the branch that the website may deploy from (H6).
+- [x] `dev` and `main` protection applied on GitHub with [scripts/protect_branches.sh](../../scripts/protect_branches.sh): a pull request is required, with one approving review from the code owner; a new push discards an earlier approval; conversations must be resolved; force pushes and branch deletion are refused. GitHub reports the branch as protected. No direct push was attempted; GitHub marks pull request 5 as blocked until it is reviewed, which shows the rule is active. The owner cannot approve their own pull request and merges it through the administrator bypass. Re-run `sh scripts/protect_branches.sh --show` after the repository becomes public.
 - [x] Local export folder `exports/` (films and private-review packages) added to `.gitignore`.
-- [x] Ten branches already contained in `main` deleted (section 4).
+- [x] Ten branches already contained in `main` deleted (section 4). `eng/11-outlets-facade-statues` has since been merged by pull request 5 and can be deleted as well.
 
-## 3. Holds before the repository is made public
+## 3. Open items, now public
+
+These were recorded as holds before publication. The repository has since been made public, so each item is exposed until the owner records a decision. Making the repository private again is the quickest way to pause exposure while deciding; it does not undo copies already made.
 
 | ID | Item | Why it matters | Owner decision needed |
 | --- | --- | --- | --- |
@@ -39,7 +42,7 @@ Limits: pattern searches miss secrets that do not match a known shape, and text 
 | H3 | Unmerged branches `web/00-evidence`, `web/02-homepage`, `web/03-timeline`, `web/04-lightweight-visit`, `web/05-protected-review` | They become public too. `web/05` records the address of the password-protected parish preview. The password is not in Git. | Decide whether the preview address may be public. Merge, keep or delete each branch before publication. |
 | H4 | Generated concept images, including the sanctuary wing saints | Their own record says the public-use review is pending. | Confirm they may be shared as concepts. |
 | H5 | Owner's e-mail address in commit metadata | Public with the history. | Accept, or rewrite history with a private GitHub address before publication. |
-| H6 | A Vercel project is connected to this GitHub repository | Pull request 5 received a Vercel preview build and comment on 10 October 2026, so pushes already trigger builds. Its production branch and its policy for pull requests from forks were not inspected (no Vercel access in this review). A merge to `main` may deploy the website, and a public repository receives pull requests from strangers. | Check the Vercel project's production branch, preview protection and fork-build authorisation before merging to `main` and before publication. |
+| H6 | A Vercel project is connected to this GitHub repository | **Observed 10 October 2026:** every pushed branch gets a Vercel preview build, and merging pull request 5 into `main` created a Vercel *Production* deployment of `cf07b7c` (GitHub deployment record, 2026-10-09T19:57Z). `main` is therefore the production branch: a merge to `main` publishes the website at the address shown on the repository page. The policy for pull requests from forks was not inspected (no Vercel access in this review). | Treat every `dev` → `main` promotion as a website release. In Vercel, confirm that the production branch is `main` and not the repository default branch, and that builds for pull requests from forks need the owner's authorisation. |
 
 Removing a file from history rewrites shared history and changes every commit ID after it. It needs the owner's separate instruction, a backup, and a fresh review of every branch. Nothing has been rewritten.
 
@@ -77,12 +80,12 @@ Kept, because each holds commits that are in neither `main` nor `eng/11-outlets-
 
 `web/02` to `web/05` repeat the same commit subjects under different IDs; `web/05-protected-review` appears to carry the whole line. That has not been verified file by file.
 
-## 5. When the owner publishes
+## 5. After publication
 
-1. Close or accept each hold in section 3 and record the decision here.
-2. Replace the private-review password if there is any doubt about where it has been shown.
-3. Change the visibility under **Settings → General → Danger Zone**.
-4. Confirm protection: `sh scripts/protect_main_branch.sh --show`.
-5. Under **Settings → Advanced Security**, enable private vulnerability reporting, secret scanning and push protection. [SECURITY.md](../../SECURITY.md) relies on the first of these.
-6. Update the statements that the repository is private in [docs/web/deployment.md](../web/deployment.md) and decision D11 in [plan/decisions-and-sources.md](../../plan/decisions-and-sources.md).
-7. Close H6. [plan/architecture.md](../../plan/architecture.md) warns that a connected `main` commonly deploys on merge: a merge must not publish the website by accident.
+- [x] Visibility changed to public by the owner (found 10 October 2026).
+- [x] Protection of both branches confirmed with `sh scripts/protect_branches.sh --show` on the public repository.
+- [x] Statements that the repository is private corrected in [docs/web/deployment.md](../web/deployment.md) and decision D11 in [plan/decisions-and-sources.md](../../plan/decisions-and-sources.md).
+- [ ] Accept or resolve each item in section 3 and record the decision here. H2 first: it shows a private person's name.
+- [ ] Replace the private-review password if there is any doubt about where it has been shown.
+- [ ] Under **Settings → Advanced Security**, enable private vulnerability reporting, secret scanning and push protection. All were off on 10 October 2026. [SECURITY.md](../../SECURITY.md) relies on the first of these.
+- [ ] Close H6. [plan/architecture.md](../../plan/architecture.md) warns that a connected `main` commonly deploys on merge: a merge must not publish the website by accident.

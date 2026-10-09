@@ -1,6 +1,6 @@
 # Delivery configuration and pending cloud setup
 
-This is a local foundation, not a deployment record. Web01 creates no Vercel project, domain, auth tenant, private store or production environment. Public content remains unpublished; the repository stays private. The [development guide](development.md) contains the working local commands and the [data boundary](data-boundary.md) defines allowed build inputs.
+This is a local foundation, not a deployment record. Web01 creates no Vercel project, domain, auth tenant, private store or production environment. Public content remained unpublished and the repository was private when Web01 was recorded. **Update, 10 October 2026:** the owner has made the repository public, and a Vercel project connected to it now deploys `main` as production (see hold H6 in the [publication checklist](../open-source/publication-checklist.md)); the settings table below predates that connection and has not been reconciled with it. The [development guide](development.md) contains the working local commands and the [data boundary](data-boundary.md) defines allowed build inputs.
 
 ## Unprivileged checks
 
