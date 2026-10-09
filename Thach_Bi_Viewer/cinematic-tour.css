@@ -40,3 +40,8 @@ body.cinema > :not(#viewport):not(#cinemaLayer):not(dialog) { opacity:0 !importa
 .cinema-progress { position:absolute; left:0; right:0; bottom:0; height:3px; background:#ffffff1f; pointer-events:none; }
 .cinema-progress i { display:block; height:100%; width:0; background:#d9b96a; }
 @media (prefers-reduced-motion:reduce) { .cinema-card, .cinema-caption { transition:none; } }
+.cinema-card .cinema-second { max-width:min(78vw,980px); font-size:clamp(13px,1.25vw,19px); line-height:1.45; opacity:.92; }
+.cinema-card .cinema-second:empty { display:none; }
+.cinema-layer.recording .cinema-controls button:not([data-cinema=stop]) { display:none; }
+.cinema-layer.recording .cinema-status { background:#7a1f16e6; }
+.place-dock .cinema-entry { display:flex; flex-direction:column; gap:6px; }

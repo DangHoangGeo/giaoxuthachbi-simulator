@@ -6,7 +6,7 @@
 const fs = require('node:fs'), vm = require('node:vm'), path = require('node:path'), assert = require('node:assert/strict');
 const viewer = path.resolve(__dirname, '../Thach_Bi_Viewer');
 const read = file => fs.readFileSync(path.join(viewer, file), 'utf8');
-const sandbox = { window: {}, document: {}, performance, console, setInterval, clearInterval, setTimeout };
+const sandbox = { window: {}, document: { getElementById: () => null }, performance, console, setInterval, clearInterval, setTimeout };
 vm.createContext(sandbox);
 vm.runInContext(read('cinematic-tour.js'), sandbox);
 const film = sandbox.window.CHURCH_CINEMA;
@@ -48,26 +48,30 @@ shots.slice(1).forEach((shot, i) => {
 // Camera path at 30 frames a second: finite, above the courtyard ground,
 // level horizon possible, and no jumps inside a scene.
 const GROUND = -2.08, FRAME = 1 / 30;
-let previous = null, fastest = 0, quickestTurn = 0;
-for (let time = 0; time < film.length; time += FRAME) {
-  const p = film.pose(time);
-  assert([...p.eye, ...p.look, p.lens].every(Number.isFinite), `finite pose at ${time.toFixed(2)} s`);
-  assert(p.eye[1] > GROUND + 1.2, `camera above the ground at ${time.toFixed(2)} s`);
-  assert(p.lens >= 34 && p.lens <= 64, `lens angle at ${time.toFixed(2)} s`);
-  assert(dist(p.eye, p.look) > 2, `a point to look at, at ${time.toFixed(2)} s`);
-  const view = unit(p.look.map((v, i) => v - p.eye[i]));
-  assert(Math.abs(view[0] * p.up[0] + view[1] * p.up[1] + view[2] * p.up[2]) < 0.9995, `view not along the up axis at ${time.toFixed(2)} s`);
-  if (previous && previous.shot === p.shot) {
-    const speed = dist(p.eye, previous.eye) / FRAME;
-    const turn = Math.acos(Math.min(1, view[0] * previous.view[0] + view[1] * previous.view[1] + view[2] * previous.view[2])) * 180 / Math.PI / FRAME;
-    fastest = Math.max(fastest, speed); quickestTurn = Math.max(quickestTurn, turn);
-    assert(speed < 12, `${p.shot.id}: ${speed.toFixed(1)} m/s at ${time.toFixed(2)} s`);
-    assert(turn < 40, `${p.shot.id}: turns ${turn.toFixed(1)} °/s at ${time.toFixed(2)} s`);
-    // Interior scenes travel at an unhurried pace.
-    if (p.shot.chapter === 'inside') assert(speed < 3.2, `${p.shot.id}: ${speed.toFixed(1)} m/s indoors`);
+function checkPath(reel, { indoorLimit }) {
+  let previous = null, fastest = 0, quickestTurn = 0;
+  for (let time = 0; time < reel.length; time += FRAME) {
+    const p = film.pose(time, reel), where = `${reel.id} ${time.toFixed(2)} s`;
+    assert([...p.eye, ...p.look, p.lens].every(Number.isFinite), `finite pose at ${where}`);
+    assert(p.eye[1] > GROUND + 1.2, `camera above the ground at ${where}`);
+    assert(p.lens >= 34 && p.lens <= 64, `lens angle at ${where}`);
+    assert(dist(p.eye, p.look) > 2, `a point to look at, at ${where}`);
+    const view = unit(p.look.map((v, i) => v - p.eye[i]));
+    assert(Math.abs(view[0] * p.up[0] + view[1] * p.up[1] + view[2] * p.up[2]) < 0.9995, `view not along the up axis at ${where}`);
+    if (previous && previous.shot === p.shot) {
+      const speed = dist(p.eye, previous.eye) / FRAME;
+      const turn = Math.acos(Math.min(1, view[0] * previous.view[0] + view[1] * previous.view[1] + view[2] * previous.view[2])) * 180 / Math.PI / FRAME;
+      fastest = Math.max(fastest, speed); quickestTurn = Math.max(quickestTurn, turn);
+      assert(speed < 12, `${p.shot.id}: ${speed.toFixed(1)} m/s at ${where}`);
+      assert(turn < 40, `${p.shot.id}: turns ${turn.toFixed(1)} °/s at ${where}`);
+      // Inside the building the camera travels at an unhurried pace.
+      if (indoorLimit && p.eye[0] > 3 && p.eye[0] < 53 && Math.abs(p.eye[2]) < 10 && p.eye[1] < 9 && p.shot.roof) assert(speed < indoorLimit, `${p.shot.id}: ${speed.toFixed(1)} m/s indoors at ${where}`);
+    }
+    previous = { ...p, view };
   }
-  previous = { ...p, view };
+  return { fastest, quickestTurn };
 }
+const { fastest, quickestTurn } = checkPath(film.films.full, { indoorLimit: 3.2 });
 // Scenes joined by a plain cut that continue the same movement meet exactly.
 for (const [from, to] of [['facade', 'towers'], ['side-b', 'rear'], ['rear', 'return'], ['enter', 'nave'], ['roof-off', 'night-orbit'], ['night-orbit', 'over-nave']]) {
   const a = shots.find(shot => shot.id === from), b = shots.find(shot => shot.id === to);
@@ -125,8 +129,49 @@ assert.equal(at(33), scene('roof-off').start);
 assert.equal(at(37), scene('night-orbit').start);
 assert(score.events.length > 900);
 
-// Figures quoted in the captions are the values held in the model data.
 const bundle = read('bundle.js'), text = JSON.stringify(shots);
+
+// ---------------------------------------------------------------- short film
+// A cut for sharing: within X's 2 min 20 s, bells first, the wiring-only view
+// under black, a request for engineering advice, and the design status.
+const short = film.films.short, cut = short.shots, music = short.score;
+assert(short.length >= 100 && short.length <= 140, `short film of ${short.length} s fits a 2 min 20 s post`);
+assert.equal(cut.reduce((sum, shot) => sum + shot.bars, 0), music.bars, 'short film: shots and score cover the same bars');
+assert.equal(short.length, music.bars * music.bar);
+const shortPath = checkPath(short, { indoorLimit: 5.5 });
+assert(film.black(0, short) > 0.99 && film.black(short.length - 0.01, short) > 0.99, 'short film opens from and closes to black');
+cut.slice(1).forEach((shot, i) => {
+  const before = cut[i];
+  if (shot.light !== before.light || shot.roof !== before.roof || !!shot.systems !== !!before.systems) {
+    assert(film.black(shot.start - 0.001, short) > 0.99 && film.black(shot.start + 0.001, short) > 0.99, `${shot.id}: scene change under black`);
+  }
+});
+assert(cut.some(shot => shot.systems) && cut.filter(shot => shot.systems).every(shot => shot.light === 'evening'), 'wiring-only view appears, at night');
+assert(!film.films.full.shots.some(shot => shot.systems), 'the long film is unchanged: no wiring-only scenes');
+// Bells alone at the start; the organ enters beneath them; bells return to close.
+const bells = music.events.filter(event => event.stops === 'bell'), pipes = music.events.filter(event => event.stops !== 'bell');
+assert(bells[0].time === 0 && pipes[0].time >= 4, 'bells ring alone for the first seconds');
+assert(bells.some(event => event.time > short.length - 6), 'bells ring at the close');
+assert(new Set(bells.map(event => event.note)).size === 2, 'two bells');
+music.events.forEach((event, i) => {
+  if (i) assert(event.time >= music.events[i - 1].time, 'short score in time order');
+  assert(event.time >= 0 && event.time + event.length <= short.length + 0.25 && event.level > 0 && event.level <= 1 && event.note >= 36 && event.note <= 88, 'short score note in range');
+});
+const shortBass = music.events.filter(event => event.voice === 'bass').reduce((sum, event) => sum + event.length, 0);
+assert(shortBass > short.length * 0.85, 'pedal under the organ sections');
+// The request and the design status are on screen at the end and stay there.
+const ask = cut[cut.length - 1], shortText = JSON.stringify(cut);
+assert(ask.end && ask.card.hold && /advise/i.test(ask.card.title) && /not an electrical engineer/.test(ask.card.line), 'closing card asks for advice');
+assert(/not approved for construction/.test(JSON.stringify(ask.card.foot)), 'closing card keeps the design status');
+assert(/Model estimates, not a checked design/.test(shortText) && /Supply and earthing/.test(shortText), 'electrical captions state their status and the open questions');
+// Figures in braces are filled from the open model; every such caption has a plain form.
+for (const shot of cut) if (/\{\w+\}/.test(shot.note?.en || '')) assert(shot.plain && !/\{/.test(shot.plain), `${shot.id}: plain caption for use without the model`);
+assert(shortText.includes('36.9 m') && bundle.includes('crossTop: 36.92') && shortText.includes('53 m') && bundle.includes('12: 53.016,'), 'short film figures follow the model data');
+// Recording: the viewer reports each drawn frame, and the module can make frames one at a time.
+assert(bundle.includes('J?.cinema && window.CHURCH_CINEMA.rendered?.(n.domElement)'), 'render loop reports drawn frames');
+assert(typeof film.still === 'function' && typeof film.play === 'function');
+
+// Figures quoted in the captions are the values held in the model data.
 for (const [quoted, source] of [['+36.920 m', 'crossTop: 36.92'], ['+12.472 m', 'ridge: 12.472'], ['53.016 m', '12: 53.016,'], ['+0.750 m', 'altar: 0.75'],
   ['+8.390, +15.840, +23.140 and +29.090 m', 'tower: [8.39, 15.84, 23.14, 29.09]'], ['3.100 m', 'clearEntranceWidths: [2.15, 3.1, 2.15]']]) {
   assert(text.includes(quoted), `caption quotes ${quoted}`);
@@ -147,6 +192,7 @@ assert(bundle.includes('if (((K = V), J?.cinema)) window.CHURCH_CINEMA.frame(_e)
 assert(bundle.includes('V && window.CHURCH_CINEMA?.stop()'), 'ending the tour stops the film');
 const html = read('OPEN_CHURCH.html');
 assert(/<button id="tourButton"[^>]*>▶ Cinematic tour<\/button>/.test(html), 'tour button in the page');
+assert(/<button id="shortFilmButton"[^>]*>▶ Short film · 2 min<\/button>/.test(html), 'short film button in the page');
 assert(html.indexOf('cinematic-tour.js') > 0 && html.indexOf('cinematic-tour.js') < html.indexOf('startup.js'), 'film module loads before the model starts');
 assert(html.includes('cinematic-tour.css'));
 // Offline and private: the module fetches nothing and stores nothing.
@@ -154,3 +200,5 @@ assert(!/\bfetch\(|XMLHttpRequest|localStorage|sessionStorage|https?:\/\//.test(
 
 console.log(`Cinematic tour: ${shots.length} scenes, ${film.length} s, ${score.bars} bars, ${score.events.length} notes. ` +
   `Fastest ${fastest.toFixed(1)} m/s, quickest turn ${quickestTurn.toFixed(1)} °/s. Path, scene and score checks passed.`);
+console.log(`Short film: ${cut.length} scenes, ${short.length} s, ${music.bars} bars, ${music.events.length} notes, ${bells.length} bell strokes. ` +
+  `Fastest ${shortPath.fastest.toFixed(1)} m/s, quickest turn ${shortPath.quickestTurn.toFixed(1)} °/s. Checks passed.`);

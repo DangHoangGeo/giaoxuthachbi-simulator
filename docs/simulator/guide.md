@@ -478,3 +478,27 @@ Controls: **Space** or a click pauses and continues, **←** and **→** change 
 - Evening scenes show the proposed lighting as the viewer draws it. Screen brightness is not a lux measurement.
 - Some browsers hold sound back until the page is clicked. The film then shows "Click once to switch the organ music on".
 - The route is fixed: centre aisle below 4.3 m, 1.5–2 m beside the centreline at 6.4–7.1 m under the roof, and the side-B aisle at 2–2.4 m. After placing equipment in those zones, run `CHURCH_CINEMA.audit()` in the browser console: it reports the nearest surface to the camera in each scene. `node scripts/verify_cinematic.cjs` checks the shot list, camera path, scene changes and score without a browser. Record: `review/cinematic-tour-2026-10-09/`.
+
+### Short film for sharing · 9 October 2026
+
+**Discover → ▶ Short film · 2 min** plays a second, separate film. The five-minute tour above is unchanged. The short film was made at the owner's request to post on X and Instagram and ask engineers for advice on the electrical design.
+
+| Time | Scenes | Light, roof, view |
+| --- | --- | --- |
+| 0:00–1:00 | Bell towers with the title, the whole church, the red tile roof, in through the door, the timber roof, the sanctuary | Day, roof on |
+| 1:00–1:20 | The lit nave, then the plan from above | Evening; roof hidden for the plan |
+| 1:20–1:40 | The wiring on its own, from outside and from the nave | Evening, **Wiring → Systems only** view |
+| 1:40–2:00 | The main board DB-1 in the service room, then the lit tower front with the request | Evening, roof on |
+
+- **Music:** two synthesised bells a fifth apart ring alone for the first ten seconds, then an original organ toccata on the homeland melody of the long film; the bells return for the close. It quotes no existing piece and is not a recording of the church's bells.
+- **Figures** in the captions (numbers of lamps, fans and loudspeakers; cable routes and their total route length; circuits; connected kW) are read from the model that is open when the film starts, so they follow your layout. They are simulator values: route length is not installed cable length, and connected rating is not operating consumption. The caption says "Model estimates, not a checked design".
+- **The request** on the closing card reads: "Can you advise us? I built this model to help my home parish. I am not an electrical engineer. Electrical, lighting and sound engineers: please reply or send a message." The caption before it lists what needs an engineer: supply and earthing, cable sizes and voltage drop, protection and discrimination, surge and lightning protection, emergency lighting. The card keeps "Design-development model, not approved for construction". Wording is in the `SHORT_SHOTS` list of `Thach_Bi_Viewer/cinematic-tour.js`.
+- The film names the province (Ninh Bình, Việt Nam) and shows where the boards and cable routes are proposed. Check that you are content to publish both before posting.
+- While it plays, the film switches the Wiring view to **Systems only** for two scenes and puts back the view and overlay you had when it ends.
+
+**Saving a video file.** There are two ways:
+
+1. **● Save as video** in the film's control bar (either film) plays the film from the start and records it in the browser: 1920 × 1080, captions and cards drawn into the picture, with the music, as MP4 where the browser can (Chrome can). It records in real time, so the number of frames a second is whatever the computer manages. On the Mac this was built on it reached about 8 frames a second, which is jerky. Keep the window in front until the film ends.
+2. **Frame by frame** with `scripts/film_export/` gives a smooth 30 frames a second on any computer and takes about ten minutes for the short film. Follow `scripts/film_export/README.md`. The file shared on 9 October 2026 was made this way.
+
+`node scripts/verify_cinematic.cjs` checks the short film as well: length within X's 2 min 20 s, bells first, scene changes under black, the request and the design status on the closing card. `CHURCH_CINEMA.audit({ film: 'short' })` gives its camera clearance.

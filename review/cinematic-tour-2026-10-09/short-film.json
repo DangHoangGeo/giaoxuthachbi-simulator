@@ -1,0 +1,52 @@
+{
+  "what": "Short film for sharing (2 min): clearance, sound levels and the exported video",
+  "date": "2026-10-09",
+  "viewer": "http://127.0.0.1:8765/OPEN_CHURCH.html (scratch origin, recommended design, 354 items of which 15 hidden)",
+  "film": { "seconds": 120, "bars": 48, "barSeconds": 2.5, "scenes": 12, "notes": 917, "bellStrokes": 73 },
+  "clearance": {
+    "method": "CHURCH_CINEMA.audit({ film: 'short', step: 0.2, reach: 1.5 }); wiring-only scenes are checked against the building as if it were shown",
+    "units": { "clearance": "m", "fastest": "m/s" },
+    "scenes": [
+      { "id": "bells", "clearance": "> 1.5", "fastest": 5.13 },
+      { "id": "whole", "clearance": "> 1.5", "fastest": 5.86 },
+      { "id": "roof", "clearance": "> 1.5", "fastest": 7.99 },
+      { "id": "enter", "clearance": 1.19, "fastest": 5.14, "nearest": "Open timber door leaf", "at": { "time": 35, "eye": [1.26, 1.44, 0] } },
+      { "id": "timber", "clearance": 1.33, "fastest": 1.75, "nearest": "Square timber post · reference", "at": { "time": 44, "eye": [27.76, 6.87, 1.99] } },
+      { "id": "sanctuary", "clearance": "> 1.5", "fastest": 0.93 },
+      { "id": "evening", "clearance": "> 1.5", "fastest": 2.14 },
+      { "id": "roof-off", "clearance": "> 1.5", "fastest": 10.24 },
+      { "id": "wiring", "clearance": "> 1.5", "fastest": 6.34 },
+      { "id": "wiring-nave", "clearance": "> 1.5", "fastest": 3.14 },
+      { "id": "boards", "clearance": 0.59, "fastest": 0.27, "nearest": "Vestment wardrobe", "at": { "time": 106.2, "eye": [51.65, 1.9, -0.47] } },
+      { "id": "ask", "clearance": "> 1.5", "fastest": 3.68 }
+    ]
+  },
+  "figuresShown": {
+    "source": "read from the open model when the film starts (CHURCH_SIMULATOR.powerSummary(), electrical.routes, visible items by catalogue category)",
+    "values": { "lamps": 236, "fans": 45, "loudspeakers": 30, "cableRoutes": 370, "routeLengthKm": 5.0, "circuits": 29, "connectedRatingKw": 29.6 },
+    "limits": "Simulator values of a design-development model. Route length is the modelled route, not installed cable length. Connected rating is the sum of ratings, not operating consumption (5.6 kW in the scene that was open)."
+  },
+  "musicOutput": {
+    "what": "Digital level of the generated bells and organ after the limiter, largest value in each scene during one real-time run. dBFS, not an acoustic level. Measured before the bells were raised by about 3.7 dB; the organ is unchanged.",
+    "scenes": [
+      { "id": "bells", "rmsDbfs": -21.8, "peakDbfs": -12.3 }, { "id": "whole", "rmsDbfs": -18.3, "peakDbfs": -8.7 },
+      { "id": "roof", "rmsDbfs": -17.9, "peakDbfs": -7.3 }, { "id": "enter", "rmsDbfs": -18.0, "peakDbfs": -7.7 },
+      { "id": "timber", "rmsDbfs": -17.0, "peakDbfs": -6.8 }, { "id": "sanctuary", "rmsDbfs": -17.6, "peakDbfs": -8.1 },
+      { "id": "evening", "rmsDbfs": -23.6, "peakDbfs": -13.7 }, { "id": "roof-off", "rmsDbfs": -22.8, "peakDbfs": -13.7 },
+      { "id": "wiring", "rmsDbfs": -16.3, "peakDbfs": -7.6 }, { "id": "wiring-nave", "rmsDbfs": -15.7, "peakDbfs": -5.5 },
+      { "id": "boards", "rmsDbfs": -16.4, "peakDbfs": -5.5 }, { "id": "ask", "rmsDbfs": -18.1, "peakDbfs": -7.2 }
+    ]
+  },
+  "recordingInViewer": {
+    "what": "Save as video, real time, in the Claude desktop browser pane (Chrome 152) on an Apple-silicon Mac",
+    "result": "MP4, H.264 + AAC, 1920 × 1080, 121.0 s, 47 MB; 956 pictures in 120 s (about 8 a second, 4 to 15 by scene)",
+    "judgement": "Works; too jerky to post from this computer"
+  },
+  "sharedFile": {
+    "path": "exports/sharing/thach-bi-short-film-2026-10-09.mp4 (not in the repository)",
+    "method": "scripts/film_export: 3600 pictures drawn one at a time (406 s), sound from one real-time recording with a 0.06 s lead removed, joined by ffmpeg",
+    "ffprobe": { "video": "h264 high, 1920 × 1080, yuv420p limited range BT.709, 30 frames/s, 3600 frames, 9.5 Mbit/s", "audio": "aac LC, 48 kHz stereo, 192 kbit/s", "seconds": 120.0, "megabytes": 139.1 },
+    "soundCheck": "ffmpeg volumedetect on the first build: mean −20.0 dB, maximum −3.0 dB",
+    "viewed": "One picture from each of the 12 scenes"
+  }
+}

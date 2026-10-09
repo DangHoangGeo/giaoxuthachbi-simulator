@@ -31,9 +31,28 @@ The camera path is unchanged from the first revision, so the clearance audit sta
 
 **Owner review, 9 October 2026:** after watching the second revision the owner said "the text is good now". This covers the captions in both languages and the dedication cards. It is acceptance of wording, not of any dimension, finish or engineering matter the captions mention.
 
+## Third revision, 9 October 2026: a short film for sharing
+
+Owner request: keep the five-minute film; add a version of about two minutes to share on X and Instagram, to find engineers who can advise on the electrical system; a different music style, organ with bells ringing at first.
+
+| Change | Check |
+| --- | --- |
+| Second film, **Short film · 2 min** (12 scenes, 120 s), with its own button. The long film's shots, captions and score are untouched | `verify_cinematic.cjs` checks both films; the long film was started, sought to three scenes and stopped in the viewer after the change: captions, light, roof and restore as before |
+| Two scenes show the wiring alone (**Wiring → Systems only**), entered and left under black; the view and overlay are put back at the end | Viewed on screen; after the film the building is fully visible again (50,220 visible meshes) and the view is "building" |
+| Captions quote live model figures and list what needs an engineer; the closing card asks for advice and keeps the design status | Viewed on screen and in the exported video. Figures and their limits: `short-film.json` |
+| Music: two synthesised bells alone for ten seconds, then an original toccata on the homeland melody, bells again to close | Levels in `short-film.json`; the organ's loudest scene peaks at −5.5 dBFS |
+| **Save as video** records either film in the browser as MP4 | Recorded the short film: valid MP4 with sound, about 8 pictures a second on this computer |
+| `scripts/film_export/`: frame-by-frame export through a local receiver and ffmpeg | Used to make `exports/sharing/thach-bi-short-film-2026-10-09.mp4`: 2 min 0 s, 1920 × 1080, 30 frames a second, 139 MB. One picture from each scene viewed |
+| `bundle.js`: one more hook, reporting each drawn frame to the film | `verify_model.cjs` and `verify_simulator.cjs --estimates` re-run: both exit 0. The design targets already recorded as unmet are unchanged |
+
+Camera clearance of the short film: nearest approach 0.59 m (the vestment wardrobe in the service room). Full list in `short-film.json`.
+
 ## Not verified
 
-- **How the music sounds.** Notes and levels were checked; nobody has listened to the second score in this session. Registration, balance between melody and broken chords, tremulant depth and reverberation may need adjusting by ear.
+- **How the short film sounds.** Nobody has listened to the bells or the toccata; the bell tone is synthesised and may need adjusting by ear. Picture and sound were joined with a measured 0.06 s offset, not checked by eye and ear.
+- **Posting.** The file was not uploaded anywhere. Its format follows the published limits of X and Instagram as understood on 9 October 2026; the platforms were not consulted in this session.
+- **The wording of the request** and the mention of Ninh Bình are the assistant's proposal for the owner to confirm before posting.
+- **How the music sounds.** Notes and levels were checked; nobody has listened to the long film's second score in this session. Registration, balance between melody and broken chords, tremulant depth and reverberation may need adjusting by ear.
 - **Full screen (F)** and **the notice shown when a browser withholds sound** were not exercised with a real key press.
 - **Smoothness on slower computers.** The film was run on one Mac in the desktop app's browser pane. Automatic resolution stays active during the film.
 - Phone layout: outside the current owner scope (desktop only).

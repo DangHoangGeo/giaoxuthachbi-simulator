@@ -40151,7 +40151,8 @@ void main() {
           l.update());
       } else (exploreMove(_e), l.update());
       (Ke(), Et(), window.CHURCH_REALISM.update(S), window.CHURCH_SIMULATOR?.frame(_e, S, b));
-      if (window.CHURCH_PERFORMANCE?.shouldRender(V, b) !== false) n.render(i, b);
+      if (window.CHURCH_PERFORMANCE?.shouldRender(V, b) !== false)
+        (n.render(i, b), J?.cinema && window.CHURCH_CINEMA.rendered?.(n.domElement));
     }
     let vi = {
       ready: !1,
