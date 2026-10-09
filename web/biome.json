@@ -9,7 +9,8 @@
       "!!playwright-report",
       "!!coverage",
       "!!next-env.d.ts",
-      "!!package-lock.json"
+      "!!package-lock.json",
+      "!!public/viewer"
     ]
   },
   "formatter": {

@@ -100,16 +100,13 @@ h2 {
 }
 .visit-stage {
   position: relative;
-  height: min(70vh, 760px);
-  min-height: 420px;
+  height: min(78vh, 860px);
+  min-height: 520px;
   background: #e5e4dc;
   overflow: hidden;
 }
-.visit-stage canvas {
+.visit-stage iframe {
   display: block;
-  width: 100%;
-  height: 100%;
-  touch-action: none;
 }
 .visit-toolbar {
   display: flex;

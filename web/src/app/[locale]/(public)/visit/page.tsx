@@ -4,12 +4,11 @@ import { Visit } from "@/components/visit";
 import { imageChoices } from "@/lib/gallery";
 import { isLocale } from "@/lib/locales";
 import { readPublicContent } from "@/lib/server/public-content";
-import asset from "../../../../../content/visit.json";
 export default async function VisitPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const content = readPublicContent();
-  if (content.state !== "published" || !asset) notFound();
+  if (content.state !== "published") notFound();
   const poster =
     content.release.media.find((m) => m.id === "concept-nave-20261007") ?? content.release.media[0];
   if (!poster) notFound();
@@ -21,11 +20,15 @@ export default async function VisitPage({ params }: { params: Promise<{ locale: 
         </h1>
         <p className="max-w-[48ch] text-sm text-stone-600">
           {locale === "vi"
-            ? "Mô hình thiết kế · ánh sáng minh họa. Mô phỏng kỹ thuật đầy đủ vẫn ở công cụ riêng."
-            : "Design model · illustrative lighting. The full engineering simulator remains a separate tool."}
+            ? "Cùng mô hình thiết kế mà dự án đang dùng, ở chế độ tham quan. Công cụ mô phỏng để chỉnh sửa có trong kho mã nguồn."
+            : "The same design model the project works on, in visit mode. The editing simulator is in the source repository."}
         </p>
       </div>
-      <Visit locale={locale} asset={asset} poster={imageChoices(poster).largest.path} />
+      <Visit
+        locale={locale}
+        poster={imageChoices(poster).largest.path}
+        src="/viewer/OPEN_CHURCH.html"
+      />
     </SiteShell>
   );
 }

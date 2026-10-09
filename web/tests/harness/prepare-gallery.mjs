@@ -29,7 +29,6 @@ const config = path.join(target, "next.config.ts");
 await writeFile(config, (await readFile(config, "utf8")).replace('output: "standalone",', ""));
 await symlink(path.join(web, "node_modules"), path.join(target, "node_modules"), "dir");
 await mkdir(path.join(target, "content"));
-await writeFile(path.join(target, "content/visit.json"), "null\n");
 await mkdir(path.join(target, "public/media"), { recursive: true });
 const media = [];
 for (const [index, category] of [

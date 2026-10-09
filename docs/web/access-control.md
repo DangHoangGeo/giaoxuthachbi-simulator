@@ -1,41 +1,27 @@
-# Shared-password architectural review
+# Access control: retired
 
-**Owner instruction, 8 October 2026:** deploy the full-detail architectural version for Father in Vietnam, under a private route, using **one shared parish password**. This is a scoped exception to the roadmap's proposed individual Clerk accounts. It does not add engineering simulator results, documents, editable layouts, individual identities or roles. The complete engineering-review gate G5 remains open.
+**Retired 10 October 2026 by owner decision (USER CONFIRMED):** “we don't need a private version anymore. everything could be public now.”
 
-## Implemented boundary
+From 8 to 10 October 2026 the website had a password-protected route, `/vi/review` and `/en/review`, that served a full-detail model from private storage after a shared parish password. It has been removed:
 
-`/vi/review` and `/en/review` use standard HTTP Basic authentication over the hosting provider's HTTPS connection. The browser supplies the username `parish` and a maintainer-generated 256-bit password; this is a native browser prompt, not a custom password/session/JWT service. Page interception checks access, and the page and each protected data handler independently check again before reading private model metadata or bytes. No middleware result/header supplied by the caller is trusted as authorization.
+- the routes under `web/src/app/[locale]/review/`, the request proxy `web/src/proxy.ts`, `web/src/lib/server/review/` and `web/src/components/private-review.tsx`;
+- the publishing script `web/scripts/publish-private-model.mjs` and the packaging script `scripts/web/package-private-model.py`;
+- the `@vercel/blob` dependency. The website now needs no runtime credentials.
 
-The current password digest, enabled flag and expiry live in a **private** Blob object, `review/access.json`. Each authorized request reads the current policy from origin with `useCache: false`, validates its strict schema and compares the fixed-length SHA-256 digest in constant time. SHA-256 here verifies an unpredictable 32-random-byte credential, not a human-chosen password. The maintainer script enforces its shape; do not substitute a memorable password. There is no password or digest in Git, public assets, client bundles or logs. Missing/malformed credentials receive 401 before any storage read. Disabled/expired/wrong credentials receive 401; unavailable or invalid policy fails closed with 503. No private information is included in those errors.
+The public [3D visit](viewer.md) now shows the project's own viewer, which is more complete than the retired private model.
 
-All protected responses use private/no-store headers for the browser and both CDN layers, including errors and HEAD. The immutable model is held in private Blob storage, not `web/public`, the deployment bundle or a public/signed model URL. `/review/model` resolves only the private manifest's checked hash path. Caller storage paths/URLs are not accepted. Range and query overrides are rejected after authorization; conditional requests return a fresh authenticated response rather than a cached 304. HEAD authorizes before exposing the permitted size. The full response is streamed; the browser checks compressed and decoded SHA-256 and bounded decoded length before loading the GLB. Partial-download resume is not implemented.
+## What the owner may still want to clean up
 
-The viewer retains all source GLB bytes and adds support for its optional `EXT_materials_bump` texture/factor. Presentation lighting still differs from the offline artistic renderer and is not photometry. This is the [53.23 MB architectural package](private-model-package.md), not the full simulator or construction approval. The public 8.77 MB visit remains separate. Loading a large model may exceed the parish desktop's GPU memory or take several minutes on a weak connection; the public view remains the fallback. The streaming route's configured maximum duration is 300 seconds, so very slow full-model downloads may need a faster connection.
+These exist outside the repository and were not touched:
 
-## Shared access, expiry and revocation
+- the private storage (Vercel Blob) holding the 53 MB model package and the shared-password record;
+- the storage credentials in the Vercel project's environment variables;
+- the local files `.env.private-review-access` and `.env.private-review-handover.txt`, and the package under `exports/private-review/`.
 
-The initial credential expires after 90 days. Every new protected request checks the current policy; rotating its digest or setting `enabled: false` denies old credentials across deployments that use this store, without rebuilding. A policy fetch already in flight can finish against its prior result, and bytes already delivered cannot be revoked. An in-progress model stream is not retroactively erased. The private viewer checks access each visible minute and on resume, closes on denial/outage, and disposes its scene when hidden or leaving. It does not save private model data in localStorage/IndexedDB. Only the existing public atmosphere display preference is retained.
+The shared password was never committed. It can simply be discarded once the storage is deleted.
 
-HTTP Basic has no reliable web-page logout or application-controlled idle timeout: browsers may remember credentials. The page instructs Father to use a private browsing window and close **all** private windows when finished. Close 3D is correctly labeled as a model control, not logout. The absolute policy expiry and administrative password rotation are the server-enforced controls. Shared access cannot identify or revoke one person separately; future individual-account review remains a separate roadmap package. No false individual-session/recovery claim is made.
+## History
 
-The Vercel project's new private-route firewall rule limits requests to 40 per 60-second fixed window per IP, covering both locale prefixes, with 429 on excess. Vercel counts regionally, not as a universal global counter. It counts valid and invalid attempts; several reviewers behind one shared internet connection may share the allowance. This fits the two page/data loads plus one visible-minute access check, and does not throttle the public visit. Existing DDoS protections remain. This uses the existing Hobby plan; no paid plan/add-on was selected.
+The design, tests and deployment evidence of the retired route are in Git history at `23e48f1` (`docs/web/access-control.md`, `docs/web/private-model-package.md`) and in [review/web-private-review-2026-10-08](../../review/web-private-review-2026-10-08/README.md). That evidence describes a route that no longer exists.
 
-## Maintainer operations
-
-The Vercel project is `giaoxuthachbi-simulator`, ID `prj_s3dt2tytShwyS2gBf6MTCER1LHH3`, team `team_HYpWNbpWqLeyocUFNSBngwkb`. Its Git integration is confirmed; production tracks `main`, while this work stays on `web/05-protected-review`. A private store named `thachbi-private-review` in Singapore (`sin1`) is connected for **preview and development only**. Production is not given private storage credentials in this increment. Runtime credentials remain provider-managed; use a read-only store credential when supported. The current provider connection grants broader read/write capability, but this app exposes no write/upload route; only maintainer tooling imports `put`.
-
-1. Reproduce and verify the package using the commands in [private-model-package.md](private-model-package.md).
-2. In `web/`, link only the verified project and pull its development environment into an ignored, mode-600 file outside the build tree. Do not print or commit it. The CLI's generated `.env.local` was moved outside `web/` before building so it cannot enter standalone output.
-3. Run `node --env-file=/absolute/private/runtime.env scripts/publish-private-model.mjs` from `web/`. It checks the local hash, uploads only private objects, reads the complete model back to verify its SHA-256, then publishes the manifest and access policy. It creates the ignored, mode-600 repository-root `.env.private-review-access` on first use, without printing the password. Preserve that file through an appropriate private backup and share the credential directly with Father outside the public site.
-4. The public deployment's normal Vercel account protection is preserved. A bounded preview share link can admit Father through that outer Vercel gate; the application still requires the parish password. A share token alone does not grant model access. Keep the share URL beside the password in the private handover, not in public content or Git. Expiry of either layer blocks entry.
-5. To rotate access, create a new `randomBytes(32).toString("base64url")` password in the local credential file and a reviewed expiry, then rerun the publisher with the same checked package. It preserves decoded model bytes and publishes a new policy after verified upload. For emergency denial, the maintainer sets `enabled: false` in the private access policy. Recheck old password rejection against each deployed hostname. There is no invitation email, self-service reset or ability to revoke one shared-password reader.
-
-## Verification and remaining scope
-
-Unit checks cover credentials, policy schema/expiry/revocation, storage outages, auth-before-read, authenticated GET/HEAD, caller override rejection, size mismatch cancellation and no-store headers. Browser tests exercise anonymous page/RSC/model/HEAD/Range/write denial and public-view independence. Live private-store readback and actual headed full-detail rendering are recorded in [the phase evidence](../../review/web-private-review-2026-10-08/README.md); software success does not establish the parish desktop's performance or engineering acceptance.
-
-G5's individual roles, engineering scenarios/calculation parity, private source documents, object/register mapping and Father/site-user acceptance remain outside this increment. All lighting, feedback, wing speech, air, concealment, route/control and specialist approval holds remain. Equipment/source geometry/registers are unchanged.
-
-References checked 8 October 2026: [Vercel private Blob delivery](https://vercel.com/docs/vercel-blob/private-storage), [streaming large responses](https://vercel.com/kb/guide/how-to-bypass-vercel-body-size-limit-serverless-functions), [Vercel regional WAF rate limits and Hobby allowances](https://vercel.com/docs/vercel-firewall/vercel-waf/rate-limiting), and [HTTP Basic authentication, RFC 7617](https://www.rfc-editor.org/rfc/rfc7617).
-
-The first live model-route check failed closed with 503: Blob's HTTP Brotli encoding removed Content-Length, so the SDK reported size zero for an otherwise valid gzip. The route now requests `Accept-Encoding: identity`, checks the expected metadata size, and verifies streamed length and SHA-256 before successful completion. The browser independently verifies both hashes. Policy JSON is also limited while streaming, so an inaccurate metadata length cannot bypass its 16 KiB limit. This repairs delivery without removing the integrity gate.
+`web/src/lib/server/protected-content.ts`, which denies every protected read, is unchanged. Any future private feature needs a new design and the checks in [plan phase 05](../../plan/phases/05-protected-review.md).

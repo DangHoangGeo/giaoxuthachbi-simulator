@@ -93,10 +93,11 @@ test("published site content and language navigation work without JavaScript", a
   }
 });
 
-test("private and unimplemented routes expose no protected content", async ({ request }) => {
+test("removed and unimplemented routes expose no protected content", async ({ request }) => {
   for (const route of [
     "/vi/review",
     "/en/review/documents",
+    "/en/review/model",
     "/vi/site",
     "/en/sign-in",
     "/vi/unknown",
@@ -104,7 +105,7 @@ test("private and unimplemented routes expose no protected content", async ({ re
     "/docs/electrical-grid/equipment-layout.json",
   ]) {
     const response = await request.get(route);
-    expect(response.status(), route).toBe(route.includes("/review") ? 401 : 404);
+    expect(response.status(), route).toBe(404);
     expect(await response.text()).not.toContain("ENGINEERING_PRIVATE_CANARY");
   }
 });

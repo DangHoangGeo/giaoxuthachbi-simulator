@@ -34,6 +34,7 @@
     btn.setAttribute('aria-label', 'Simulator');
     btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6m-5 3h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3Z"/></svg><span>Simulator</span>';
     actions.prepend(btn);
+    btn.hidden = !!SIM.visitOnly;
     btn.addEventListener('click', () => setOpen(!document.body.classList.contains('sim-open')));
 
     panel = document.createElement('aside');
@@ -138,6 +139,7 @@
   function sessionStorageGet(k) { try { return sessionStorage.getItem(k); } catch { return null; } }
   function sessionStorageSet(k, v) { try { sessionStorage.setItem(k, v); } catch { /* private mode */ } }
   function setOpen(open) {
+    if (SIM.visitOnly) open = false; // Public visit: explore and switch scenes, no design editing.
     panel.hidden = !open;
     document.body.classList.toggle('sim-open', open);
     $('simulatorButton').setAttribute('aria-expanded', String(open));

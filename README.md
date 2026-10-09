@@ -37,9 +37,9 @@ The immediate priority is to coordinate the positions of lights, speakers, micro
 
 ## Planned web app
 
-The [web app roadmap](plan/README.md) proposes Next.js on Vercel: a public church homepage and image gallery, a construction timeline, a lightweight 3D visit with local-time day/night settings, and password-protected, read-only engineering views. A later inspection view will help Father find upcoming work and inspect source-backed object positions, dimensions and specifications.
+The [web app roadmap](plan/README.md) proposes Next.js on Vercel: a public church homepage and image gallery, a construction timeline, a 3D visit and read-only engineering views. A later inspection view will help Father find upcoming work and inspect source-backed object positions, dimensions and specifications.
 
-A local desktop web foundation now exists under `web/`: Vietnamese/English preview pages, strict public-content validation and desktop tests. See the [development guide](docs/web/development.md) and [delivery status](docs/web/deployment.md). Public content remains unpublished, protected reads are disabled, and no cloud service has been configured. The eight-phase roadmap still governs the remaining features and launch gates. The offline viewer below remains the engineering authoring application.
+The website under `web/` has a Vietnamese/English homepage, a gallery of design concepts, a construction timeline and a 3D visit, all marked “In development · Not for construction”. Since 10 October 2026 the 3D visit is the same viewer described below, opened in a visit-only mode without the Simulator editing tools, so the website and the local model cannot drift apart ([how it works](docs/web/viewer.md)). There is no private version. See the [development guide](docs/web/development.md) and [delivery status](docs/web/deployment.md). The eight-phase roadmap still governs the remaining features and launch gates. The offline viewer remains the engineering authoring application.
 
 ## Open the model
 
