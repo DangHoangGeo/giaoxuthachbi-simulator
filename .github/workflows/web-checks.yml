@@ -2,10 +2,10 @@ name: Web checks
 
 on:
   pull_request:
-    paths: ["web/**", "Thach_Bi_Viewer/**", ".github/workflows/web-checks.yml"]
+    paths: ["web/**", "Thach_Bi_Viewer/**", "docs/guides/father-quick-start/**", ".github/workflows/web-checks.yml"]
   push:
     branches: ["main", "web/**"]
-    paths: ["web/**", "Thach_Bi_Viewer/**", ".github/workflows/web-checks.yml"]
+    paths: ["web/**", "Thach_Bi_Viewer/**", "docs/guides/father-quick-start/**", ".github/workflows/web-checks.yml"]
 
 permissions:
   contents: read
@@ -28,10 +28,12 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 1
-          # The website publishes a build-time copy of the viewer for its 3D visit page.
+          # The website publishes build-time copies of the viewer (3D visit page)
+          # and of the quick-start guide; its tests and build read both.
           sparse-checkout: |
             /web/
             /Thach_Bi_Viewer/
+            /docs/guides/father-quick-start/
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
