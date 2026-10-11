@@ -1,0 +1,350 @@
+{
+ "record": "Technical tours: camera clearance and the figures the captions quoted",
+ "date": "2026-10-11",
+ "viewer": "Thach_Bi_Viewer/cinematic-tour.js: lighting, fans and sound at ?v=20261011-tours-7; electrical grid at ?v=20261011-tours-11 (camera routes of the first three unchanged since)",
+ "origin": "http://127.0.0.1:8765 (scratch origin: the recommended design, with no saved engineering layout of the owner loaded)",
+ "browser": "Claude desktop browser pane (Chromium), viewport 1280 x 800",
+ "designVersion": "2026-10-16-tower-board",
+ "items": 354,
+ "scene": "Full service · evening",
+ "audit": {
+  "method": "CHURCH_CINEMA.audit({ film }): rays in 26 directions from the camera every 0.25 s against the architecture and every placed fitting, reach 1.5 m. clearance '> 1.5' means nothing within reach.",
+  "units": "clearance and eye in m, fastest in m/s, at.time in s of the tour",
+  "tours": {
+   "lighting": [
+    {
+     "id": "light-intro",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 1.35
+    },
+    {
+     "id": "light-reading",
+     "clearance": 1.33,
+     "nearest": "Central column 6/E — illustrative diameter",
+     "at": {
+      "time": 24.5,
+      "eye": [
+       23.51,
+       7.04,
+       1.98
+      ]
+     },
+     "fastest": 0.99
+    },
+    {
+     "id": "light-map",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 1.61
+    },
+    {
+     "id": "light-wings",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 2.52
+    },
+    {
+     "id": "light-sanctuary",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 0.59
+    },
+    {
+     "id": "light-warm",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 0.53
+    },
+    {
+     "id": "light-outside",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 1.57
+    }
+   ],
+   "air": [
+    {
+     "id": "air-intro",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 3.31
+    },
+    {
+     "id": "air-ceiling",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 1.48
+    },
+    {
+     "id": "air-map",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 1.61
+    },
+    {
+     "id": "air-wings",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 2.52
+    },
+    {
+     "id": "air-wall",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 1.1
+    },
+    {
+     "id": "air-exhaust",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 0.53
+    },
+    {
+     "id": "air-outside",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 3.42
+    }
+   ],
+   "sound": [
+    {
+     "id": "sound-intro",
+     "clearance": 1.15,
+     "nearest": "Raised panel vertical frame",
+     "at": {
+      "time": 8.5,
+      "eye": [
+       1.34,
+       1.38,
+       0
+      ]
+     },
+     "fastest": 1.35
+    },
+    {
+     "id": "sound-mics",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 0.65
+    },
+    {
+     "id": "sound-columns",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 1.56
+    },
+    {
+     "id": "sound-level",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 1.61
+    },
+    {
+     "id": "sound-clarity",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 1.22
+    },
+    {
+     "id": "sound-open",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 1.07
+    },
+    {
+     "id": "sound-outside",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 2.21
+    }
+   ],
+   "grid": [
+    {
+     "id": "grid-intro",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 2.67
+    },
+    {
+     "id": "grid-boards",
+     "clearance": 0.59,
+     "nearest": "Vestment wardrobe",
+     "at": {
+      "time": 22,
+      "eye": [
+       51.65,
+       1.9,
+       -0.48
+      ]
+     },
+     "fastest": 0.17
+    },
+    {
+     "id": "grid-all",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 4.04
+    },
+    {
+     "id": "grid-lighting",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 2.07
+    },
+    {
+     "id": "grid-fans",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 3.17
+    },
+    {
+     "id": "grid-sound",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 1.94
+    },
+    {
+     "id": "grid-loads",
+     "clearance": "> 1.5",
+     "nearest": "",
+     "at": null,
+     "fastest": 3.8
+    }
+   ]
+  }
+ },
+ "figures": {
+  "note": "CHURCH_CINEMA.figures() in the same session: what the captions quoted. Simulator estimates for the recommended design in the scene above, rounded for reading. They are not measurements, and several lie outside the project's aims (see README).",
+  "units": {
+   "lux": "luxAvg, luxMin, naveLux, wingLux, wingLuxMin",
+   "percent of seats": "luxOk (>= 200 lux), airOk (0.3 to 0.8 m/s), stiOk (>= 0.60)",
+   "m/s": "airAvg, naveAir, wingAir, wingAirMin",
+   "m3/h": "exhaust",
+   "air changes per hour": "ach",
+   "dBA": "noise, ambient, splAvg, talker",
+   "dB": "splSpread (p95 - p05), fbLow, fbHigh",
+   "STI": "stiAvg, stiMin, wingSti",
+   "m": "F1size, F1side, micDistance",
+   "count": "all others",
+   "km of drawn route (not installed cable)": "km",
+   "m of drawn route": "feederM",
+   "kW, modelled (kwFixed excludes socket outlets, includes the amplifier allowance)": "kwNow, kwFixed"
+  },
+  "values": {
+   "lights": "236",
+   "lightCircuits": "13",
+   "L1": "32",
+   "L2": "28",
+   "L3": "27",
+   "LA": "7",
+   "LD": "20",
+   "chandeliers": "4",
+   "sconces": "16",
+   "L6": "26",
+   "L9": "6",
+   "L10": "15",
+   "scenes": "8",
+   "scene": "Full service · evening",
+   "seats": "368",
+   "luxAvg": "312",
+   "luxOk": "89",
+   "luxMin": "122",
+   "naveLux": "340",
+   "wingLux": "214",
+   "wingLuxMin": "122",
+   "fans": "45",
+   "F1": "14",
+   "F1on": "14",
+   "F1size": "1.42",
+   "F1side": "4.4",
+   "F2": "16",
+   "F2idle": "16",
+   "F5": "4",
+   "V1": "9",
+   "V1on": "9",
+   "exhaust": "25,900",
+   "ach": "3.5",
+   "airAvg": "0.33",
+   "airOk": "80",
+   "naveAir": "0.36",
+   "wingAir": "0.22",
+   "wingAirMin": "0.06",
+   "noise": "45",
+   "ambient": "40",
+   "speakers": "28",
+   "mics": "2",
+   "A1": "14",
+   "A2": "4",
+   "A3": "8",
+   "A5": "2",
+   "micDistance": "0.4",
+   "talker": "62",
+   "splAvg": "69",
+   "splSpread": "2.8",
+   "stiAvg": "0.60",
+   "stiOk": "65",
+   "stiMin": "0.42",
+   "wingSti": "0.49",
+   "fbLow": "0.9",
+   "fbHigh": "1.3",
+   "routes": "370",
+   "km": "5.0",
+   "trunks": "49",
+   "drops": "317",
+   "wired": "317",
+   "feederM": "81",
+   "kwNow": "5.6",
+   "kwFixed": "9.7",
+   "fansOn": "27"
+  }
+ },
+ "musicOutput": {
+  "note": "CHURCH_CINEMA.musicOutput() during real playback of the lighting tour after a click. Digital level of the presentation music, not an acoustic level.",
+  "samples": [
+   {
+    "time": 6.1,
+    "rmsDbfs": -29.4,
+    "peakDbfs": -20.1
+   },
+   {
+    "time": 34.1,
+    "rmsDbfs": -27.1,
+    "peakDbfs": -18.1
+   }
+  ]
+ },
+ "otherStates": {
+  "note": "Captions read in the viewer on 11 October 2026 with other states of the recommended design. Simulator estimates.",
+  "All off": "light, air and noise captions use their plain wording (no zeros quoted); 'air-ceiling' says 0 of 14 ceiling fans are running; sound maps use plain wording (no loudspeaker on); wiring tour: about 0.0 kW drawn, 9.7 kW fixed",
+  "Prayer & adoration": "72 lux average, 0 % of seats at 200 lux or more (stated as the aim for a full service); 0.23 m/s average, 15 % of seats within 0.3 to 0.8 m/s; 44 dBA; about 2.5 kW drawn; sound maps use plain wording",
+  "2-block seating, full service": "368 seats in blocks 'long' and 'wing'; 306 lux average, 90 % at 200 lux or more; 0.42 m/s average, 83 % within the aim; STI 0.61 average, 69 % at 0.60 or more; feedback margins 0.8 to 1.3 dB; camera clearances unchanged"
+ },
+ "recording": {
+  "note": "'Save as video' started for the electrical grid tour and stopped after about 4 s: MediaRecorder gave thach-bi-electrical-grid-tour-2026-10-11.mp4, video/mp4, 2.1 MB. A whole tour was not recorded."
+ }
+}

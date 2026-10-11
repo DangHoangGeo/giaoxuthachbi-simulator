@@ -33,10 +33,10 @@ The mode lives in the viewer, so it can be tried locally at `Thach_Bi_Viewer/OPE
 | --- | --- |
 | Simulator button and panel | Hidden, and `setOpen` refuses to open the panel. All scene editing (select, drag, add, delete, duplicate) already requires the open panel, so none of it is reachable. |
 | Saved layouts | The engine uses its own key `thachbi.visit.v1` and clears it on every load. It never reads, migrates or overwrites `thachbi.simulator.v1`. Every visit starts from the recommended design. |
-| Kept | Explore and Walk, Discover places, the map, day and evening, view settings, references, the cinematic tour and short film, the **Controls** dock that switches the modelled lights, fans and sound scenes, and the estimate read-outs. |
+| Kept | Explore and Walk, Discover places, the map, day and evening, view settings, references, the cinematic tour, the four technical tours (lighting, fans and air, sound, electrical grid; since 11 October 2026), the **Controls** dock that switches the modelled lights, fans and sound scenes, and the estimate read-outs. |
 | Notice | “Design in development · Not for construction · Đang phát triển · Không dùng để thi công” stays on screen. |
 
-Nothing in the viewer operates equipment in the church. The estimate read-outs are the simulator's planning estimates with their documented limitations ([methods and limitations](../simulator/methods-and-limitations.md)); showing them publicly does not make them measurements or approvals. The known unmet design targets are unchanged.
+Nothing in the viewer operates equipment in the church. The technical tours show the simulator's analysis maps and its wiring-only view and quote its figures for the recommended design in the scene the visitor has chosen; they switch nothing and each one closes on “Estimates, not measurements” (the wiring tour: “A routing study, not a wiring design”) and the design status. The wiring tour shows publicly where the boards and cable routes are proposed, as the Controls dock and the repository already do. The estimate read-outs are the simulator's planning estimates with their documented limitations ([methods and limitations](../simulator/methods-and-limitations.md)); showing them publicly does not make them measurements or approvals. The known unmet design targets are unchanged.
 
 ## Measurements, 10 October 2026
 

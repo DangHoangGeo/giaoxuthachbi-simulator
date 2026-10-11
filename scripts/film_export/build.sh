@@ -5,13 +5,14 @@
 # settings are accepted by X and Instagram.
 #
 # Usage: scripts/film_export/build.sh <export folder> [film] [output.mp4] [sound lead in seconds]
-#   film         short (default) or full
+#   film         the film's name in the viewer: full (default, the five-minute film),
+#                lighting, air, sound or grid
 #   sound lead   seconds of the sound recording before film time zero; read
 #                from <film>-export.json when it was recorded in the same run
 set -eu
 dir=$1
-film=${2:-short}
-out=${3:-$dir/thach-bi-$film-film.mp4}
+film=${2:-full}
+out=${3:-$dir/thach-bi-$film.mp4}
 info="$dir/$film-export.json"
 read_info() { python3 -c "import json,sys; v=json.load(open(sys.argv[1])).get(sys.argv[2]); print(v if v is not None else '')" "$info" "$1"; }
 fps=$(read_info fps)
