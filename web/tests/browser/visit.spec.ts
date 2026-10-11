@@ -20,7 +20,10 @@ test("Enter waits for hydration on a slow script connection", async ({ page }) =
 });
 
 test("the viewer loads only on entry, in visit-only mode, and closes", async ({ page }) => {
-  test.setTimeout(180000);
+  // Waiting time only: nothing checked below depends on it. A desktop graphics card
+  // starts the viewer in a few seconds; the software renderer used in CI has needed
+  // more than 150 s, which left no time for the checks that follow.
+  test.setTimeout(480000);
   const viewerRequests: string[] = [];
   page.on("request", (r) => {
     if (new URL(r.url()).pathname.startsWith("/viewer/")) viewerRequests.push(r.url());
@@ -47,7 +50,7 @@ test("the viewer loads only on entry, in visit-only mode, and closes", async ({ 
           ?.evaluate(() =>
             Boolean((window as unknown as { church?: { ready?: boolean } }).church?.ready),
           ),
-      { timeout: 150000 },
+      { timeout: 360000 },
     )
     .toBe(true);
   await expect(frame.locator("#simulatorButton")).toBeHidden();
