@@ -18,7 +18,7 @@ Nothing leaves the computer: the page sends its pictures to a small receiver on 
 3. Open the browser console, paste the whole of `driver.js`, then run:
 
    ```js
-   exportFilm('full')   // the five-minute cinematic tour; 'lighting', 'air' or 'sound' for a technical tour (1 min 52 s each)
+   exportFilm('full')   // the five-minute cinematic tour; 'lighting', 'air', 'sound' or 'grid' for a technical tour (1 min 52 s each)
    ```
 
    The film plays once for the sound, then the picture steps through frame by frame. `window.filmExport` shows progress. The only measured run is the former 2 min 15 s short film (removed on 11 October 2026), which took about 12 minutes on the Mac this was written on; the five-minute film has about 2.3 times as many frames and has not been timed. Leave the page alone while it works. A click during the sound pass spoils the recording, and the driver then stops with a message; a click while the picture is stepping is recovered from (`window.filmExport.recoveries` counts them).
@@ -32,7 +32,7 @@ The result is H.264 + AAC at 1920 × 1080, 30 frames a second, which X and Insta
 
 ## What the film shows
 
-It shows the layout that is open in the viewer, with the captions of `Thach_Bi_Viewer/cinematic-tour.js`. A technical tour also shows the simulator's analysis map and quotes figures read from the open model and its scene when each scene starts; they are simulator estimates. The model is a design-development model, and the closing card says the design is not approved for construction.
+It shows the layout that is open in the viewer, with the captions of `Thach_Bi_Viewer/cinematic-tour.js`. A technical tour also shows the simulator's analysis map or its wiring-only view and quotes figures read from the open model and its scene when each scene starts; they are simulator estimates. The model is a design-development model, and the closing card says the design is not approved for construction.
 
 ## Requirements and limits
 

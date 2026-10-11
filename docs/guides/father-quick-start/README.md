@@ -17,7 +17,7 @@ On the website the page is published at `/guide/index.html` and linked from the 
 
 ## What it covers
 
-1. Open the GitHub page. 2. **Code → Download ZIP** (about 500 MB). 3. Extract it to a folder. 4. Open `Thach_Bi_Viewer/OPEN_CHURCH.html`. 5. Explore: orbit, **Go inside** and walking, **Settings** (Day/Evening and 2 or 4 bench blocks, roof on or off), the statistics strip, the **Controls** dock (scenes, DB-1, towers, fans, sound), **Simulator**, the cinematic tour and the three technical tours. Then the suggested art: **References**, and the sixteen-view gallery page. It ends with the not-for-construction notice.
+1. Open the GitHub page. 2. **Code → Download ZIP** (about 500 MB). 3. Extract it to a folder. 4. Open `Thach_Bi_Viewer/OPEN_CHURCH.html`. 5. Explore: orbit, **Go inside** and walking, **Settings** (Day/Evening and 2 or 4 bench blocks, roof on or off), the statistics strip, the **Controls** dock (scenes, DB-1, towers, fans, sound), **Simulator**, the cinematic tour and the four technical tours. Then the suggested art: **References**, and the sixteen-view gallery page. It ends with the not-for-construction notice.
 
 ## Facts it relies on, and where they come from
 
@@ -40,9 +40,9 @@ node scripts/father_guide/build.mjs --frames <dir with orbit/ walk/ tour/>   # t
 
 ## Revision of 11 October 2026: stale pictures and video
 
-On 11 October 2026 the viewer's **Short film** was removed and three **Technical tours** (Lights, Fans, Sound) were added to the Discover menu, at the owner's request. In this guide:
+On 11 October 2026 the viewer's **Short film** was removed and four **Technical tours** (Lights, Fans, Sound, Wiring) were added to the Discover menu, at the owner's request. In this guide:
 
-- **Updated:** the one sentence that named the short film (scene `s5f` in [scenes.js](scenes.js)) now introduces the technical tours, and its narration `audio/s5f.m4a` and its entry in [timings.js](timings.js) were regenerated with `node scripts/father_guide/tts.mjs s5f`. No other narration was touched. The phonetic respelling for “Technical tours” was not listened to critically.
+- **Updated:** the one sentence that named the short film (scene `s5f` in [scenes.js](scenes.js)) now introduces the technical tours (four of them since the wiring tour was added the same day), and its narration `audio/s5f.m4a` and its entry in [timings.js](timings.js) were regenerated with `node scripts/father_guide/tts.mjs s5f`. No other narration was touched. The phonetic respelling for “Technical tours” was not listened to critically.
 - **STALE, not refreshed:** every viewer screenshot that shows the Discover menu (`assets/v-*.jpg`, `assets/orbit.jpg`, `assets/walk.jpg`) and the clips `clips/orbit.mp4` and `clips/walk.mp4` still show the old menu, with the **Short film · 2 min 15** button and without the **Technical tours** row. The highlight box of scene `s5e` was drawn for that old menu. The narrated video `huong-dan-xem-mo-hinh-3d.mp4` (not in Git) still speaks the old sentence.
 - **To refresh:** `node scripts/father_guide/capture.mjs viewer <dir>` and `capture.mjs frames <dir>` (desktop Chrome, 1920 × 1080), replace the pictures and clips, adjust the `s5e` box in `scenes.js`, then `node scripts/father_guide/build.mjs --frames <dir>` for the video.
 

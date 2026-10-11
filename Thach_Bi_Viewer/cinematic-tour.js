@@ -19,12 +19,12 @@
  * sound in this church: see simulator/audio.js for the room-based listening
  * preview.
  *
- * Three shorter technical tours (lighting, fans and air, sound) use the same
- * player. Each shows the equipment where it is placed and one of the
- * simulator's analysis maps at a time, with figures read from the open model.
- * They switch that map on and off like the other display states and put back
- * the one that was showing; they change no fitting, scene or setting of the
- * design.
+ * Four shorter technical tours (lighting, fans and air, sound, electrical
+ * grid) use the same player. Each shows the equipment where it is placed and
+ * one of the simulator's own views at a time: an analysis map, or the wiring
+ * on its own, with figures read from the open model. They switch those views
+ * like the other display states and put back what was showing; they change no
+ * fitting, scene or setting of the design.
  *
  * Works offline: no files are fetched and nothing is stored.
  */
@@ -131,13 +131,17 @@
   ];
 
   /* ------------------------------------------------------ technical tours
-   * Three separate tours of 1 min 52 s each (28 bars): lighting, fans and air,
-   * sound. Each shows the equipment where it is placed, then the simulator's
-   * own map of the result with the roof hidden, then what is still open.
+   * Four separate tours of 1 min 52 s each (28 bars): lighting, fans and air,
+   * sound, electrical grid. Each shows the equipment where it is placed, then
+   * the simulator's own view of it (an analysis map with the roof hidden, or
+   * the wiring with the building hidden), then what is still open.
    * Camera routes are those of the film above, or stay in the same clear zones.
    * A scene may also set
    *   overlay  the simulator's analysis map to show: 'lux', 'air', 'spl', 'sti'
-   *   mark     { circuits, en, vi }: rings on the placed fittings of those circuits
+   *   systems  the simulator's wiring-only view, filtered to one system:
+   *            'all', 'lighting', 'air' or 'sound'
+   *   mark     { circuits, sources, en, vi }: rings on the placed fittings of
+   *            those circuits and on those boards or control enclosures
    * Text in braces is filled from the open model as the scene starts, so the
    * figures follow the layout and the scene that are open. `plain` is the
    * wording used when the simulator has no value for one of them. All of them
@@ -180,8 +184,8 @@
       en: 'The wings on the map', vi: 'Hai cánh trên bản đồ',
       note: { en: 'In the wings the seats average {wingLux} lux and the lowest has {wingLuxMin} lux, against an average of {naveLux} lux in the nave. Seats below 200 lux remain an open item for the lighting designer.',
         vi: 'Ở hai cánh, chỗ ngồi trung bình {wingLux} lux, chỗ thấp nhất {wingLuxMin} lux, so với trung bình {naveLux} lux ở lòng nhà thờ. Những chỗ dưới 200 lux còn để ngỏ cho kỹ sư chiếu sáng.' },
-      plain: { en: 'On the map, blue and teal mean less than 200 lux. Seats below 200 lux remain an open item for the lighting designer.',
-        vi: 'Trên bản đồ, màu xanh lam và xanh ngọc là dưới 200 lux. Những chỗ dưới 200 lux còn để ngỏ cho kỹ sư chiếu sáng.' },
+      plain: { en: 'On the map, blue and teal mean less than 200 lux. Seats below 200 lux in a full service remain an open item for the lighting designer.',
+        vi: 'Trên bản đồ, màu xanh lam và xanh ngọc là dưới 200 lux. Những chỗ dưới 200 lux trong thánh lễ đầy đủ còn để ngỏ cho kỹ sư chiếu sáng.' },
       keys: WING_KEYS },
     { id: 'light-sanctuary', chapter: 'tour', bars: 4, light: 'evening', roof: true, cut: 'dip', ease: [0.2, 0.2],
       en: 'Accent light on the sanctuary', vi: 'Ánh sáng nhấn cho cung thánh',
@@ -225,8 +229,8 @@
       keys: [[9.5, 1.7, 0, 48, 3.5, 0, 56], [19, 2.3, 0, 48.5, 3.8, 0, 54], [28.5, 3.3, 0, 48.8, 4.2, 0, 52]] },
     { id: 'air-map', chapter: 'tour', bars: 4, light: 'day', roof: false, cut: 'fade', ease: [0, 0], up: MAP_UP, overlay: 'air',
       en: 'The simulator’s air-speed map', vi: 'Bản đồ tốc độ gió của mô phỏng',
-      note: { en: 'Estimated air speed at seated height, 0.6 m above the floor, from the fans that are running. The seats average {airAvg} m/s; {airOk} % of them lie within 0.3 to 0.8 m/s, the aim for comfort without lifting pages.',
-        vi: 'Ước tính tốc độ gió ở tầm người ngồi, cao 0,6 m so với nền, do các quạt đang chạy tạo ra. Trung bình tại chỗ ngồi là {airAvg} m/s; {airOk} % chỗ ngồi nằm trong khoảng 0,3 đến 0,8 m/s, mục tiêu để mát mà không lật trang sách.' },
+      note: { en: 'Estimated air speed at seated height, 0.6 m above the floor, from the {fansOn} fans that are running. The seats average {airAvg} m/s; {airOk} % of them lie within 0.3 to 0.8 m/s, the aim for comfort without lifting pages.',
+        vi: 'Ước tính tốc độ gió ở tầm người ngồi, cao 0,6 m so với nền, do {fansOn} quạt đang chạy tạo ra. Trung bình tại chỗ ngồi là {airAvg} m/s; {airOk} % chỗ ngồi nằm trong khoảng 0,3 đến 0,8 m/s, mục tiêu để mát mà không lật trang sách.' },
       plain: { en: 'Estimated air speed at seated height, 0.6 m above the floor, from the fans that are running. The project aims for 0.3 to 0.8 m/s at the seats.',
         vi: 'Ước tính tốc độ gió ở tầm người ngồi, cao 0,6 m so với nền, do các quạt đang chạy tạo ra. Dự án hướng tới 0,3 đến 0,8 m/s tại chỗ ngồi.' },
       keys: PLAN_KEYS },
@@ -256,8 +260,8 @@
       keys: [[40.6, 2.6, 0, 22, 3.8, 0, 56], [39.6, 4.8, 0, 12, 5.2, 0, 58], [38.7, 6.9, 0, 3, 6.4, 0, 60]] },
     { id: 'air-outside', chapter: 'tour', bars: 6, light: 'day', roof: true, cut: 'fade', ease: [0.5, 0.1], end: true,
       en: 'Cooling against quiet', vi: 'Làm mát và giữ yên tĩnh',
-      note: { en: 'With these fans running the simulator estimates {noise} dBA of background noise at the seats, against {ambient} dBA assumed with everything off. More fan speed cools more and makes speech harder to follow, so fans and sound are set together in each scene.',
-        vi: 'Khi các quạt này chạy, mô phỏng ước tính tiếng ồn nền tại chỗ ngồi là {noise} dBA, so với {ambient} dBA giả định khi tắt hết. Quạt chạy nhanh hơn thì mát hơn nhưng khó nghe lời hơn, nên quạt và âm thanh được đặt cùng nhau trong từng chế độ.' },
+      note: { en: 'With {fansOn} fans running the simulator estimates {noise} dBA of background noise at the seats, against {ambient} dBA assumed with everything off. More fan speed cools more and makes speech harder to follow, so fans and sound are set together in each scene.',
+        vi: 'Khi {fansOn} quạt đang chạy, mô phỏng ước tính tiếng ồn nền tại chỗ ngồi là {noise} dBA, so với {ambient} dBA giả định khi tắt hết. Quạt chạy nhanh hơn thì mát hơn nhưng khó nghe lời hơn, nên quạt và âm thanh được đặt cùng nhau trong từng chế độ.' },
       plain: { en: 'More fan speed cools more and makes speech harder to follow, so fans and sound are set together in each scene.',
         vi: 'Quạt chạy nhanh hơn thì mát hơn nhưng khó nghe lời hơn, nên quạt và âm thanh được đặt cùng nhau trong từng chế độ.' },
       card: { at: 15, hold: true, small: 'Fans and air · Quạt và thông gió', ...TOUR_CLOSE,
@@ -321,6 +325,61 @@
       keys: [[-11, 1.4, 19.4, 8, 4.2, 10, 50], [9, 2.1, 18.6, 26, 4.2, 10.5, 50], [29, 3, 18.6, 43, 4.8, 12, 50]] }
   ];
 
+  const GRID_SHOTS = [
+    { id: 'grid-intro', chapter: 'tour', bars: 3, light: 'evening', roof: true, cut: 'fade', ease: [0.5, 0.5],
+      card: { small: `${TOUR.en} · ${TOUR.vi}`, title: 'Electrical grid · Hệ thống điện',
+        line: '{routes} cable routes from two boards to {wired} connected fittings: a routing study', second: '{routes} tuyến cáp từ hai tủ điện đến {wired} thiết bị: một nghiên cứu đi dây', foot: TOUR_SCENE.foot,
+        plain: { line: 'Cable routes from two boards to every connected fitting: a routing study', second: 'Tuyến cáp từ hai tủ điện đến từng thiết bị: một nghiên cứu đi dây', foot: TOUR_SCENE.plain } },
+      keys: [[-60, 25, 37, 9, 12.5, 0, 42], [-50, 20, 30, 8, 12.5, 0, 43], [-40, 15, 22, 6, 13, 0, 44]] },
+    { id: 'grid-boards', chapter: 'tour', bars: 4, light: 'evening', roof: true, cut: 'dip', ease: [0.3, 0.3],
+      en: 'The main board and the controls', vi: 'Tủ điện chính và các tủ điều khiển',
+      note: { en: 'In the service room behind the altar: the main board DB-1, the lighting and scene controls LC-1, the fan controls FC-1 and the sound rack AV-1. One feeder, about {feederM} m of route, runs from here to DB-2 inside the main doors, which serves the towers, the façade and the entrance.',
+        vi: 'Trong phòng kỹ thuật sau bàn thờ: tủ điện chính DB-1, tủ điều khiển đèn và chế độ LC-1, tủ điều khiển quạt FC-1 và tủ âm thanh AV-1. Một tuyến cáp nguồn dài khoảng {feederM} m chạy từ đây đến DB-2 phía trong cửa chính, nơi cấp điện cho tháp, mặt tiền và lối vào.' },
+      plain: { en: 'In the service room behind the altar: the main board DB-1, the lighting and scene controls LC-1, the fan controls FC-1 and the sound rack AV-1. One feeder runs from here to DB-2 inside the main doors.',
+        vi: 'Trong phòng kỹ thuật sau bàn thờ: tủ điện chính DB-1, tủ điều khiển đèn và chế độ LC-1, tủ điều khiển quạt FC-1 và tủ âm thanh AV-1. Một tuyến cáp nguồn chạy từ đây đến DB-2 phía trong cửa chính.' },
+      mark: { sources: ['DB1', 'LC1', 'FC1', 'AV1'], en: 'DB-1, LC-1, FC-1, AV-1', vi: 'Tủ điện và tủ điều khiển' },
+      keys: [[51.9, 1.9, 0.9, 48.9, 1.8, 0, 64], [51.7, 1.9, -0.2, 48.9, 1.8, -0.6, 63], [51.5, 1.9, -1.2, 48.9, 1.8, -1.1, 62]] },
+    { id: 'grid-all', chapter: 'tour', bars: 4, light: 'evening', roof: true, cut: 'fade', ease: [0.3, 0.6], systems: 'all',
+      en: 'The wiring on its own', vi: 'Riêng hệ thống dây',
+      note: { en: 'The simulator hides the building and leaves the boards, the cable routes and the connected fittings: {routes} routes, about {km} km of drawn route, as {trunks} shared trunks and {drops} individual drops. The lines are drawn thick to be seen; they are not cable sizes.',
+        vi: 'Mô phỏng ẩn công trình, chỉ để lại tủ điện, tuyến cáp và thiết bị được nối: {routes} tuyến, khoảng {km} km chiều dài tuyến vẽ, gồm {trunks} tuyến trục dùng chung và {drops} nhánh riêng. Đường dây được vẽ to cho dễ nhìn, không phải tiết diện cáp.' },
+      plain: { en: 'The simulator hides the building and leaves the boards, the cable routes and the connected fittings. The lines are drawn thick to be seen; they are not cable sizes.',
+        vi: 'Mô phỏng ẩn công trình, chỉ để lại tủ điện, tuyến cáp và thiết bị được nối. Đường dây được vẽ to cho dễ nhìn, không phải tiết diện cáp.' },
+      mark: { sources: ['DB1', 'DB2'], en: 'Boards DB-1 and DB-2', vi: 'Tủ điện DB-1 và DB-2' },
+      keys: [[26.5, 38, 42, 26.5, 2.5, 0, 45], [52, 34, 35, 27, 3, 0, 45], [68, 30, 14, 28, 3.5, 0, 45]] },
+    { id: 'grid-lighting', chapter: 'tour', bars: 4, light: 'evening', roof: true, cut: 'dip', ease: [0.4, 0.4], systems: 'lighting',
+      en: 'Lighting circuits', vi: 'Các mạch chiếu sáng',
+      note: { en: 'Each lighting circuit leaves the lighting controls LC-1, or DB-2 at the front, as a shared trunk along the wall bands above the openings, and every fitting has its own drop from it. The exit signs leave DB-1 directly, so that no scene control stands in their way.',
+        vi: 'Mỗi mạch chiếu sáng đi từ tủ điều khiển đèn LC-1, hoặc từ DB-2 ở phía trước, thành một tuyến trục dùng chung dọc dải tường phía trên các ô cửa; mỗi bộ đèn có một nhánh riêng từ tuyến đó. Đèn thoát hiểm đi thẳng từ DB-1, để không chế độ nào chặn chúng.' },
+      plain: { en: 'Each lighting circuit leaves the lighting controls LC-1, or DB-2 at the front, as a shared trunk along the wall bands above the openings, and every fitting has its own drop from it. The exit signs leave DB-1 directly, so that no scene control stands in their way.',
+        vi: 'Mỗi mạch chiếu sáng đi từ tủ điều khiển đèn LC-1, hoặc từ DB-2 ở phía trước, thành một tuyến trục dùng chung dọc dải tường phía trên các ô cửa; mỗi bộ đèn có một nhánh riêng từ tuyến đó. Đèn thoát hiểm đi thẳng từ DB-1, để không chế độ nào chặn chúng.' },
+      keys: [[8, 3, 0, 40, 6.5, 0, 62], [20, 3.4, 0, 46, 6.5, 0, 62], [34, 3.9, 0, 48.6, 6, 0, 60]] },
+    { id: 'grid-fans', chapter: 'tour', bars: 3, light: 'evening', roof: true, cut: 'dip', ease: [0.5, 0.5], systems: 'air',
+      en: 'Fan circuits', vi: 'Các mạch quạt',
+      note: { en: 'The {fans} fans are fed through the fan controls FC-1: ceiling fans, wall fans and exhaust fans on separate circuits, so that each group has its own speed. The two entrance circulators are fed from DB-2.',
+        vi: '{fans} quạt được cấp điện qua tủ điều khiển quạt FC-1: quạt trần, quạt tường và quạt hút đi các mạch riêng, để mỗi nhóm có tốc độ riêng. Hai quạt lớn ở lối vào lấy điện từ DB-2.' },
+      plain: { en: 'The fans are fed through the fan controls FC-1: ceiling fans, wall fans and exhaust fans on separate circuits, so that each group has its own speed.',
+        vi: 'Các quạt được cấp điện qua tủ điều khiển quạt FC-1: quạt trần, quạt tường và quạt hút đi các mạch riêng, để mỗi nhóm có tốc độ riêng.' },
+      keys: [[10, 22, -30, 24, 4, 0, 48], [26, 22, -32, 27, 4, 0, 48], [42, 22, -30, 30, 4, 0, 48]] },
+    { id: 'grid-sound', chapter: 'tour', bars: 4, light: 'evening', roof: true, cut: 'dip', ease: [0.4, 0.3], systems: 'sound',
+      en: 'Sound lines', vi: 'Các đường âm thanh',
+      note: { en: 'The {speakers} loudspeakers and {mics} microphones connect to the sound rack AV-1 by separate audio cable bundles. They carry sound from the amplifiers, not mains power; the microphone lines run below the sanctuary floor. Amplifiers, line type and cable sizes are still to be designed.',
+        vi: '{speakers} loa và {mics} micro nối về tủ âm thanh AV-1 bằng các bó cáp âm thanh riêng. Chúng truyền tín hiệu từ ampli, không phải điện lưới; dây micro đi dưới nền cung thánh. Ampli, kiểu đường dây và tiết diện cáp còn chờ thiết kế.' },
+      plain: { en: 'Loudspeakers and microphones connect to the sound rack AV-1 by separate audio cable bundles. They carry sound from the amplifiers, not mains power. Amplifiers, line type and cable sizes are still to be designed.',
+        vi: 'Loa và micro nối về tủ âm thanh AV-1 bằng các bó cáp âm thanh riêng. Chúng truyền tín hiệu từ ampli, không phải điện lưới. Ampli, kiểu đường dây và tiết diện cáp còn chờ thiết kế.' },
+      mark: { sources: ['AV1'], en: 'Sound rack AV-1', vi: 'Tủ âm thanh AV-1' },
+      keys: [[18, 30, 36, 24, -5, 2, 46], [30, 29, 34, 30, -5, 2, 46], [42, 28, 30, 36, -5, 2, 46]] },
+    { id: 'grid-loads', chapter: 'tour', bars: 6, light: 'evening', roof: true, cut: 'fade', ease: [0.5, 0.1], end: true,
+      en: 'Loads, and what needs an engineer', vi: 'Phụ tải và những việc cần kỹ sư',
+      note: { en: 'In the scene that is open the model draws about {kwNow} kW; all fixed equipment switched on together would be about {kwFixed} kW, with the socket outlets as a separate allowance. Still for the electrical engineer: supply and earthing, cable sizes and voltage drop, protection, surge and lightning protection, emergency lighting.',
+        vi: 'Trong chế độ đang mở, mô hình tiêu thụ khoảng {kwNow} kW; nếu bật hết thiết bị cố định cùng lúc sẽ vào khoảng {kwFixed} kW, còn ổ cắm được tính riêng. Phần còn lại dành cho kỹ sư điện: nguồn cấp và nối đất, tiết diện cáp và sụt áp, bảo vệ, chống sét và xung, chiếu sáng sự cố.' },
+      plain: { en: 'Still for the electrical engineer: supply and earthing, cable sizes and voltage drop, protection, surge and lightning protection, emergency lighting.',
+        vi: 'Phần còn lại dành cho kỹ sư điện: nguồn cấp và nối đất, tiết diện cáp và sụt áp, bảo vệ, chống sét và xung, chiếu sáng sự cố.' },
+      card: { at: 15, hold: true, small: 'Electrical grid · Hệ thống điện', title: 'A routing study, not a wiring design', line: 'Đây là nghiên cứu đi dây, chưa phải thiết kế điện',
+        foot: [TOUR_STATUS, 'Still open: supply, phases and earthing, cable types and sizes, protective devices, containment and fire stopping, board layouts and control hardware', 'Còn để ngỏ: nguồn cấp, số pha và nối đất, loại và tiết diện cáp, thiết bị bảo vệ, máng ống và chống cháy lan, bố trí tủ và thiết bị điều khiển'] },
+      keys: [[59, 27, -33, 27, 2.5, 0, 45], [26.5, 25, -44, 25, 2.5, 0, 46], [-8, 24, -31, 22, 3, 0, 46]] }
+  ];
+
   /* --------------------------------------------------------------- maths */
   const smooth = x => { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -380,7 +439,9 @@
     full: prepare({ id: 'full', name: 'Cinematic tour', file: 'cinematic-tour', bar: BAR, shots: SHOTS, chapters: CHAPTERS }),
     lighting: prepare({ id: 'lighting', name: 'Lighting tour', file: 'lighting-tour', technical: true, bar: BAR, shots: LIGHTING_SHOTS, chapters: { tour: { en: 'Lighting', vi: 'Chiếu sáng' } } }),
     air: prepare({ id: 'air', name: 'Fans and air tour', file: 'fans-and-air-tour', technical: true, bar: BAR, shots: AIR_SHOTS, chapters: { tour: { en: 'Fans and air', vi: 'Quạt và thông gió' } } }),
-    sound: prepare({ id: 'sound', name: 'Sound tour', file: 'sound-tour', technical: true, bar: BAR, shots: SOUND_SHOTS, chapters: { tour: { en: 'Sound', vi: 'Âm thanh' } } })
+    sound: prepare({ id: 'sound', name: 'Sound tour', file: 'sound-tour', technical: true, bar: BAR, shots: SOUND_SHOTS, chapters: { tour: { en: 'Sound', vi: 'Âm thanh' } } }),
+    // `wiring`: the boards and cable routes are part of every picture of this tour.
+    grid: prepare({ id: 'grid', name: 'Electrical grid tour', file: 'electrical-grid-tour', technical: true, wiring: true, bar: BAR, shots: GRID_SHOTS, chapters: { tour: { en: 'Electrical grid', vi: 'Hệ thống điện' } } })
   };
   let reel = FILMS.full;
   const table = (values, x) => {
@@ -643,7 +704,7 @@
   }
 
   FILMS.full.score = score;
-  for (const tour of [FILMS.lighting, FILMS.air, FILMS.sound]) tour.score = composeQuiet(tour.length / BAR);
+  for (const tour of [FILMS.lighting, FILMS.air, FILMS.sound, FILMS.grid]) tour.score = composeQuiet(tour.length / BAR);
 
   const music = { context: null, on: true, epoch: null, next: 0, zero: 0, synced: false, waking: 0, timer: 0, waves: {} };
   // Resuming sound takes a moment: the picture waits for it instead of running ahead.
@@ -794,6 +855,9 @@
     spl: { en: 'Speech level · dBA', vi: 'Mức âm lời nói · dBA', aim: 'Project aim: 68 to 76, even · Mục tiêu dự án: 68 đến 76, đồng đều' },
     sti: { en: 'Speech clarity · STI', vi: 'Độ rõ lời nói · STI', aim: 'Project aim: 0.60 or more · Mục tiêu dự án: từ 0,60 trở lên' }
   };
+  // The wiring-only view as the tour names it. Colours are those of the simulator's routes.
+  const WIRES = { en: 'Cable routes by system', vi: 'Tuyến cáp theo hệ thống', aim: 'Drawn thick to be seen; not cable sizes · Vẽ to cho dễ nhìn; không phải tiết diện cáp',
+    kinds: { feeder: ['Feeder', 'cáp nguồn'], light: ['Light', 'đèn'], fan: ['Fan', 'quạt'], audio: ['Audio', 'loa'], mic: ['Mic', 'micro'], power: ['Socket', 'ổ cắm'], decor: ['Decor', 'trang trí'] } };
   /* Figures quoted in the captions, read from the open model and from the
    * simulator's latest analysis of it. A figure that cannot be read is left
    * out, and a caption that needs it falls back to its plain wording. */
@@ -815,7 +879,9 @@
       if (sim.state.scene) out.scene = sim.state.scene;
       // Wall fans that no built-in scene switches on.
       if (Object.values(sim.SCENES).every(scene => !scene.F2)) put('F2idle', count(item => item.circuit === 'F2'));
-      const fans = sim.fans(), ceiling = fans.filter(fan => fan.item.circuit === 'F1');
+      const fans = sim.fans(), ceiling = fans.filter(fan => fan.item.circuit === 'F1'), fansOn = fans.filter(fan => fan.running).length;
+      // Left out when no fan is running: the air and noise captions then use their plain wording.
+      if (fansOn) put('fansOn', fansOn);
       if (ceiling.length) {
         put('F1on', ceiling.filter(fan => fan.running).length); put('F1size', ceiling[0].diameter, 2);
         // Quoted only while every ceiling fan is clear of the central view.
@@ -827,6 +893,16 @@
         put('V1on', exhaust.length); put('ach', flow / sim.room().V, 1);
         out.exhaust = String(Math.round(flow / 100) * 100).replace(/\B(?=(\d{3})+$)/g, ',');
       }
+      // Wiring: drawn route lengths, not installed cable lengths; modelled loads, not a supply calculation.
+      const routes = sim.electrical?.routes || [];
+      if (routes.length) {
+        const role = name => routes.filter(route => route.role === name).length;
+        put('routes', routes.length); put('km', routes.reduce((sum, route) => sum + route.length, 0) / 1000, 1);
+        put('trunks', role('trunk')); put('drops', role('drop') + role('local')); put('wired', new Set(routes.flatMap(route => (route.role === 'trunk' ? [] : route.itemIds))).size);
+        put('feederM', routes.find(route => route.id === 'feeder:DB2')?.length);
+      }
+      const power = sim.powerSummary();
+      put('kwNow', power.total / 1000, 1); put('kwFixed', (power.rated - power.outletRated) / 1000, 1);
       const settings = sim.state.settings;
       put('ambient', settings.ambientDbA); put('talker', settings.talkerDbA); put('micDistance', settings.micDistance, 1);
       const margins = sim.mics().map(mic => mic.item.feedbackMargin).filter(Number.isFinite).sort((a, b) => a - b);
@@ -836,11 +912,16 @@
         const mean = (list, key) => { const values = list.map(seat => seat[key]).filter(Number.isFinite); return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : NaN; };
         const nave = seats.seats.filter(seat => seat.block !== 'wing'), wing = seats.blocks?.wing;
         put('seats', seats.n);
-        put('luxAvg', seats.lux?.avg); put('luxMin', seats.lux?.min); put('luxOk', seats.luxOk); put('naveLux', mean(nave, 'lux'));
-        put('wingLux', wing?.lux?.avg); put('wingLuxMin', wing?.lux?.min);
-        put('airAvg', seats.air?.avg, 2); put('airOk', seats.airOk); put('naveAir', mean(nave, 'air'), 2);
-        put('wingAir', wing?.air?.avg, 2); put('wingAirMin', wing?.air?.min, 2);
-        put('noise', seats.noise?.avg);
+        // Light and air figures are quoted only while some lamp is lit or some fan is running.
+        if (seats.lux?.avg >= 0.5) {
+          put('luxAvg', seats.lux.avg); put('luxMin', seats.lux.min); put('luxOk', seats.luxOk); put('naveLux', mean(nave, 'lux'));
+          put('wingLux', wing?.lux?.avg); put('wingLuxMin', wing?.lux?.min);
+        }
+        if (fansOn) {
+          put('airAvg', seats.air?.avg, 2); put('airOk', seats.airOk); put('naveAir', mean(nave, 'air'), 2);
+          put('wingAir', wing?.air?.avg, 2); put('wingAirMin', wing?.air?.min, 2);
+          put('noise', seats.noise?.avg);
+        }
         put('splAvg', seats.spl?.avg); put('splSpread', seats.splSpread, 1);
         put('stiAvg', seats.sti?.avg, 2); put('stiMin', seats.sti?.min, 2); put('stiOk', seats.stiOk); put('wingSti', wing?.sti?.avg, 2);
       }
@@ -862,10 +943,19 @@
   }
   // The map and the marked fittings of a scene, with the words that explain them.
   function sceneKey(shot) {
-    const sim = window.CHURCH_SIMULATOR, key = { map: null, mark: null };
+    const sim = window.CHURCH_SIMULATOR, wiring = sim?.electrical, key = { map: null, mark: null };
     const map = shot.overlay && sim?.analysis?.KINDS?.[shot.overlay];
     if (map) key.map = { ...MAPS[shot.overlay], stops: map.stops.map(([value, colour]) => [String(value), colour]) };
-    film.marks = shot.mark && sim ? sim.state.items.filter(item => !item.hidden && shot.mark.circuits.includes(item.circuit)) : [];
+    if (shot.systems && wiring) {
+      // The systems that have a route in this view, each in the colour the simulator draws it.
+      const shown = new Set(wiring.reviewSelection().routeIds), colours = new Map();
+      for (const route of wiring.routes) if (shown.has(route.id) && !colours.has(route.kind)) colours.set(route.kind, route.color);
+      const kinds = Object.keys(WIRES.kinds).filter(kind => colours.has(kind));
+      if (kinds.length) key.map = { en: WIRES.en, vi: `${WIRES.vi}: ${kinds.map(kind => WIRES.kinds[kind][1]).join(' · ')}`, aim: WIRES.aim, stops: kinds.map(kind => [WIRES.kinds[kind][0], colours.get(kind)]) };
+    }
+    const fittings = shot.mark?.circuits && sim ? sim.state.items.filter(item => !item.hidden && shot.mark.circuits.includes(item.circuit)) : [];
+    const boards = (shot.mark?.sources || []).map(id => wiring?.SOURCES[id]).filter(Boolean);
+    film.marks = [...fittings, ...boards];
     if (film.marks.length) key.mark = { en: shot.mark.en, vi: shot.mark.vi };
     return key;
   }
@@ -881,22 +971,41 @@
       point.set(...item.pos).project(camera);
       if (!(Math.abs(point.x) <= 1 && Math.abs(point.y) <= 1 && Math.abs(point.z) <= 1)) continue;
       // Tested from just in front of the fitting, so that the wall or column it is fixed to does not hide it.
+      // With the building hidden nothing stands in the way.
       const reach = dist(eye, item.pos), near = item.pos.map((v, i) => v + (eye[i] - v) * Math.min(0.5, 0.35 / reach));
-      if (solids?.blockedByWall(eye, near) || solids?.blockedByColumn(eye, near)) continue;
+      if (!film.shot?.systems && (solids?.blockedByWall(eye, near) || solids?.blockedByColumn(eye, near))) continue;
       out.push([point.x, point.y]);
     }
     return out;
   }
   function applyScene(shot) {
-    const church = film.church, ui = church.uiState();
+    const church = film.church, ui = church.uiState(), sim = window.CHURCH_SIMULATOR, wiring = sim?.electrical;
+    // The wiring-only view remembers what was visible when it was switched on,
+    // so it is left before the light or the roof changes and entered again after.
+    if (wiring?.view.mode === 'systems' && (!shot.systems || ui.lighting !== shot.light || ui.roof !== shot.roof)) wiring.setMode('building');
     if (ui.lighting !== shot.light) church.setLighting(shot.light);
     if (ui.roof !== shot.roof) church.setRoof(shot.roof);
     // A technical tour shows one analysis map at a time, or none.
-    const sim = window.CHURCH_SIMULATOR;
     if (reel.technical && sim?.setOverlay) {
       const overlay = shot.overlay && sim.analysis?.KINDS?.[shot.overlay] ? shot.overlay : 'none';
       if (sim.state.settings.overlay !== overlay) sim.setOverlay(overlay);
     }
+    // The electrical tour shows the boards and routes throughout, one system at a time in the wiring-only scenes.
+    if (reel.wiring && wiring) {
+      wiring.view.visible = true;
+      wiring.setReviewFilter({ system: shot.systems || 'all', circuit: 'all', item: 'all', board: 'all' });
+      if (shot.systems && wiring.view.mode !== 'systems') wiring.setMode('systems');
+    }
+  }
+  // The wiring view as it was before a film: layer, filters, selection and, last, the wiring-only view.
+  function restoreWiring(wiring, was) {
+    const view = wiring.view;
+    if (['visible', 'system', 'circuit', 'item', 'board', 'kind', 'selected'].some(name => view[name] !== was[name])) {
+      view.visible = was.visible;
+      wiring.setReviewFilter({ system: was.system, circuit: was.circuit, item: was.item, board: was.board });
+      if (view.kind !== was.kind || view.selected !== was.selected) { view.kind = was.kind; view.selected = was.selected; wiring.rebuild(); }
+    }
+    if (view.mode !== was.mode) wiring.setMode(was.mode);
   }
   function showShot(shot) {
     film.shot = shot;
@@ -1011,9 +1120,9 @@
     Object.assign(wanted, { film: 'full', record: false, save: true });
     const ui = church.uiState(), camera = church.orbitCamera, sim = window.CHURCH_SIMULATOR;
     film.before = { lighting: ui.lighting, roof: ui.roof, lens: camera.fov, enabled: church.controls.enabled,
-      wiring: sim?.electrical?.view.mode, overlay: sim?.state.settings.overlay };
+      wiring: sim?.electrical ? { ...sim.electrical.view } : null, overlay: sim?.state.settings.overlay };
     // The film shows the building: the wiring-only view is left while it plays.
-    if (film.before.wiring === 'systems') sim.electrical.setMode('building');
+    if (film.before.wiring?.mode === 'systems') sim.electrical.setMode('building');
     buildLayer().hidden = false;
     document.body.classList.add('cinema');
     church.controls.enabled = false;
@@ -1052,9 +1161,10 @@
     document.body.classList.remove('cinema');
     film.layer.hidden = true;
     film.layer.classList.remove('idle', 'paused', 'recording');
-    // The wiring-only view and the analysis map return to what they were.
-    const sim = window.CHURCH_SIMULATOR;
-    if (sim?.electrical && before.wiring && sim.electrical.view.mode !== before.wiring) sim.electrical.setMode(before.wiring);
+    // A wiring-only scene is left first: it holds what was visible when it was entered.
+    const sim = window.CHURCH_SIMULATOR, wiring = sim?.electrical;
+    if (wiring?.view.mode === 'systems') wiring.setMode('building');
+    // The analysis map returns to what it was.
     if (sim && before.overlay !== undefined && sim.state.settings.overlay !== before.overlay) sim.setOverlay(before.overlay);
     camera.up.set(0, 1, 0);
     camera.fov = before.lens; camera.updateProjectionMatrix();
@@ -1076,6 +1186,8 @@
       notify(`Tour stopped. Explore from here${kept.length ? ` · ${kept.join(', ')} stays on (View settings)` : ''}.`);
       church.render();
     }
+    // The wiring view returns to what it was, after the light and the roof.
+    if (wiring && before.wiring) restoreWiring(wiring, before.wiring);
     if (document.fullscreenElement) void document.exitFullscreen?.();
   }
   function finish() {
@@ -1452,7 +1564,7 @@
   for (const button of document.querySelectorAll?.('[data-film]') || []) button.addEventListener('click', () => play(button.dataset.film));
 
   window.CHURCH_CINEMA = {
-    start, stop, frame, rendered, still, play, pose, black: blackAt, seek, skip, audit, setPaused, setMusic, musicOutput, figures: modelFigures, maps: MAPS,
+    start, stop, frame, rendered, still, play, pose, black: blackAt, seek, skip, audit, setPaused, setMusic, musicOutput, figures: modelFigures, maps: MAPS, wires: WIRES,
     shots: SHOTS, score, films: FILMS,
     get length() { return FILMS.full.length; },
     get video() { return tape.result; },

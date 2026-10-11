@@ -6,7 +6,7 @@
 #
 # Usage: scripts/film_export/build.sh <export folder> [film] [output.mp4] [sound lead in seconds]
 #   film         the film's name in the viewer: full (default, the five-minute film),
-#                lighting, air or sound
+#                lighting, air, sound or grid
 #   sound lead   seconds of the sound recording before film time zero; read
 #                from <film>-export.json when it was recorded in the same run
 set -eu

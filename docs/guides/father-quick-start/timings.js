@@ -244,15 +244,15 @@ window.TIMINGS = {
   ]
  },
  "s5f": {
-  "duration": 14.6,
+  "duration": 16.1,
   "sentences": [
    {
     "start": 0.25,
-    "end": 9.88
+    "end": 11.32
    },
    {
-    "start": 10.28,
-    "end": 14.08
+    "start": 11.72,
+    "end": 15.52
    }
   ]
  },
