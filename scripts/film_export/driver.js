@@ -10,6 +10,7 @@
  * Paste into the browser console of the open viewer after clicking once in
  * the page (sound needs a click), or run it from an automation tool:
  *   exportFilm('full')                     the five-minute film, sound and frames
+ *   exportFilm('lighting')                 a technical tour: 'lighting', 'air' or 'sound'
  *   exportFilm('full', { sound: false })   frames only, keep an earlier sound file
  * Progress: window.filmExport. Nothing leaves this computer.
  */

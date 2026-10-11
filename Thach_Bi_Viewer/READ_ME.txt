@@ -21,7 +21,12 @@ music: a homeland theme outside and the Bach-Gounod Ave Maria inside.
 Space pauses, left/right arrows change scene, M switches the music, F fills
 the screen, Esc stops. The music is presentation music, not an acoustic
 prediction for this church.
-"Save as video" in the film records it as a video file in the browser.
+Technical tours (Discover menu): Lights, Fans and Sound, each under two
+minutes. They show the proposed equipment by circuit and the simulator's maps
+of light, air speed and speech, with figures read from the open model. The
+figures are simulator estimates, not measurements, and nothing in the design
+is changed by watching a tour.
+"Save as video" in a film or tour records it as a video file in the browser.
 
 The original architectural drawings and measurement workbook govern dimensions.
 Finishes, furniture and lighting are visual proposals.

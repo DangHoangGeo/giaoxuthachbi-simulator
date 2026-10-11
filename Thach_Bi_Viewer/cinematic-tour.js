@@ -19,6 +19,13 @@
  * sound in this church: see simulator/audio.js for the room-based listening
  * preview.
  *
+ * Three shorter technical tours (lighting, fans and air, sound) use the same
+ * player. Each shows the equipment where it is placed and one of the
+ * simulator's analysis maps at a time, with figures read from the open model.
+ * They switch that map on and off like the other display states and put back
+ * the one that was showing; they change no fitting, scene or setting of the
+ * design.
+ *
  * Works offline: no files are fetched and nothing is stored.
  */
 (() => {
@@ -123,6 +130,197 @@
       keys: [[-12.5, 1.4, 1.2, 2.4, 9, 0, 54], [-22, 3.4, 5, 2.4, 11, 0, 50], [-36, 8, 12, 4, 13, 0, 46], [-50, 14, 22, 8, 13, 0, 44]] }
   ];
 
+  /* ------------------------------------------------------ technical tours
+   * Three separate tours of 1 min 52 s each (28 bars): lighting, fans and air,
+   * sound. Each shows the equipment where it is placed, then the simulator's
+   * own map of the result with the roof hidden, then what is still open.
+   * Camera routes are those of the film above, or stay in the same clear zones.
+   * A scene may also set
+   *   overlay  the simulator's analysis map to show: 'lux', 'air', 'spl', 'sti'
+   *   mark     { circuits, en, vi }: rings on the placed fittings of those circuits
+   * Text in braces is filled from the open model as the scene starts, so the
+   * figures follow the layout and the scene that are open. `plain` is the
+   * wording used when the simulator has no value for one of them. All of them
+   * are simulator estimates of a design proposal, and the cards say so.
+   */
+  const TOUR = { en: 'Technical tour', vi: 'Tham quan kỹ thuật' };
+  const TOUR_STATUS = 'Design-development model, not a construction-approved design · Mô hình phát triển thiết kế, chưa phải thiết kế được duyệt để thi công';
+  const TOUR_SCENE = { foot: ['Figures are simulator estimates for the scene that is open: “{scene}”', 'Số liệu là ước tính của mô phỏng cho chế độ đang mở: “{scene}”'],
+    plain: ['Figures are simulator estimates', 'Số liệu là ước tính của mô phỏng'] };
+  const TOUR_CLOSE = { title: 'Estimates, not measurements', line: 'Số liệu là ước tính của mô phỏng, chưa phải số đo thực tế' };
+  // The plan from almost straight above with side B at the top, held in the upper part
+  // of the picture so that the caption does not cover it; then down toward the
+  // wings and the sanctuary, still with side B at the top, as on a map.
+  const MAP_UP = [0, 0, -1];
+  const PLAN_KEYS = [[26.5, 84, 10.6, 26.5, 0, 10, 41], [26.5, 74, 10.6, 26.5, 0, 10, 41.5], [26.5, 66, 10.6, 26.5, 0, 10, 42]];
+  const WING_KEYS = [[26.5, 66, 10.6, 26.5, 0, 10, 42], [31, 52, 15, 31, 0, 11, 42], [35, 40, 21, 35, 0, 12, 42]];
+
+  const LIGHTING_SHOTS = [
+    { id: 'light-intro', chapter: 'tour', bars: 3, light: 'evening', roof: true, cut: 'fade', ease: [0.15, 0.4],
+      card: { small: `${TOUR.en} · ${TOUR.vi}`, title: 'Lighting · Chiếu sáng',
+        line: '{lights} light fittings on {lightCircuits} circuits: a design proposal', second: '{lights} bộ đèn trên {lightCircuits} mạch điện: một phương án đề xuất', foot: TOUR_SCENE.foot,
+        plain: { line: 'The proposed lighting, circuit by circuit', second: 'Phương án chiếu sáng, theo từng mạch điện', foot: TOUR_SCENE.plain } },
+      keys: [[5.4, 1.9, 0, 48.8, 3.8, 0, 56], [11.5, 2.2, 0, 48.8, 3.9, 0, 55], [18, 2.6, 0, 48.8, 4.2, 0, 54]] },
+    { id: 'light-reading', chapter: 'tour', bars: 4, light: 'evening', roof: true, cut: 'dip', ease: [0.4, 0.4],
+      en: 'Light for reading', vi: 'Ánh sáng để đọc sách',
+      note: { en: '{L1} LED projectors on circuit L1 light the central pews and {L2} on circuit L2 the outer pews. They are mounted high at the roof frames and aim down at the page. In the model each circuit switches and dims on its own.',
+        vi: '{L1} đèn chiếu LED thuộc mạch L1 chiếu sáng các dãy ghế giữa, {L2} đèn thuộc mạch L2 chiếu các dãy ghế phía ngoài. Đèn gắn trên cao ở các vì kèo và chiếu xuống trang sách. Trong mô hình, mỗi mạch bật tắt và chỉnh độ sáng riêng.' },
+      plain: { en: 'LED projectors on circuits L1 and L2 light the central and outer pews from the roof frames. In the model each circuit switches and dims on its own.',
+        vi: 'Đèn chiếu LED thuộc mạch L1 và L2 chiếu sáng các dãy ghế giữa và phía ngoài từ các vì kèo. Trong mô hình, mỗi mạch bật tắt và chỉnh độ sáng riêng.' },
+      mark: { circuits: ['L1', 'L2'], en: 'Reading projectors · L1, L2', vi: 'Đèn chiếu đọc sách · L1, L2' },
+      keys: [[12.6, 6.8, 1.5, 27, 9.4, -1, 60], [18.6, 7.1, 1.9, 33, 9.5, -1.4, 60], [25.6, 7, 2, 40, 9.2, -1.6, 60]] },
+    { id: 'light-map', chapter: 'tour', bars: 4, light: 'evening', roof: false, cut: 'fade', ease: [0, 0], up: MAP_UP, overlay: 'lux',
+      en: 'The simulator’s light map', vi: 'Bản đồ ánh sáng của mô phỏng',
+      note: { en: 'Estimated light on an open book, 0.8 m above the floor, without daylight. The seats average {luxAvg} lux; {luxOk} % of the {seats} seats have 200 lux or more, the aim for a full service, and the lowest has {luxMin} lux.',
+        vi: 'Ước tính độ rọi trên trang sách mở, cao 0,8 m so với nền, không tính ánh sáng ban ngày. Trung bình tại chỗ ngồi là {luxAvg} lux; {luxOk} % trong {seats} chỗ ngồi đạt từ 200 lux trở lên, mục tiêu cho thánh lễ đầy đủ, và chỗ thấp nhất là {luxMin} lux.' },
+      plain: { en: 'Estimated light on an open book, 0.8 m above the floor, without daylight. The project aims for 200 lux or more at every seat in a full service.',
+        vi: 'Ước tính độ rọi trên trang sách mở, cao 0,8 m so với nền, không tính ánh sáng ban ngày. Dự án hướng tới 200 lux trở lên ở mọi chỗ ngồi trong thánh lễ đầy đủ.' },
+      keys: PLAN_KEYS },
+    { id: 'light-wings', chapter: 'tour', bars: 4, light: 'evening', roof: false, cut: 'cut', ease: [0, 0.2], up: MAP_UP, overlay: 'lux',
+      en: 'The wings on the map', vi: 'Hai cánh trên bản đồ',
+      note: { en: 'In the wings the seats average {wingLux} lux and the lowest has {wingLuxMin} lux, against an average of {naveLux} lux in the nave. Seats below 200 lux remain an open item for the lighting designer.',
+        vi: 'Ở hai cánh, chỗ ngồi trung bình {wingLux} lux, chỗ thấp nhất {wingLuxMin} lux, so với trung bình {naveLux} lux ở lòng nhà thờ. Những chỗ dưới 200 lux còn để ngỏ cho kỹ sư chiếu sáng.' },
+      plain: { en: 'On the map, blue and teal mean less than 200 lux. Seats below 200 lux remain an open item for the lighting designer.',
+        vi: 'Trên bản đồ, màu xanh lam và xanh ngọc là dưới 200 lux. Những chỗ dưới 200 lux còn để ngỏ cho kỹ sư chiếu sáng.' },
+      keys: WING_KEYS },
+    { id: 'light-sanctuary', chapter: 'tour', bars: 4, light: 'evening', roof: true, cut: 'dip', ease: [0.2, 0.2],
+      en: 'Accent light on the sanctuary', vi: 'Ánh sáng nhấn cho cung thánh',
+      note: { en: 'Circuit L3 has {L3} fittings, most of them for the sanctuary: key lights on the altar and the ambo, narrow accents on the crucifix, the tabernacle and the statues. On its own circuit, the sanctuary stays bright while the nave is dimmed.',
+        vi: 'Mạch L3 có {L3} bộ đèn, phần lớn cho cung thánh: đèn chính cho bàn thờ và giảng đài, đèn rọi góc hẹp cho thánh giá, nhà tạm và các tượng. Nhờ có mạch riêng, cung thánh vẫn sáng khi lòng nhà thờ giảm sáng.' },
+      plain: { en: 'Circuit L3 serves the sanctuary: key lights on the altar and the ambo, narrow accents on the crucifix, the tabernacle and the statues.',
+        vi: 'Mạch L3 phục vụ cung thánh: đèn chính cho bàn thờ và giảng đài, đèn rọi góc hẹp cho thánh giá, nhà tạm và các tượng.' },
+      mark: { circuits: ['L3'], en: 'Sanctuary lights · L3', vi: 'Đèn cung thánh · L3' },
+      keys: [[34.6, 2, 0, 48.8, 4.4, 0, 48], [39.2, 2.5, 0, 48.8, 4.7, 0, 43], [41.7, 2.8, 0, 48.8, 5.1, 0, 38]] },
+    { id: 'light-warm', chapter: 'tour', bars: 3, light: 'evening', roof: true, cut: 'dip', ease: [0.25, 0.1],
+      en: 'Chandeliers and candle sconces', vi: 'Đèn chùm và đèn nến gắn tường',
+      note: { en: '{chandeliers} brass chandeliers and {sconces} wall sconces on circuit LD give the warm glow people see, and {LA} uplights on circuit LA wash the roof lining. The light for reading comes from the projectors.',
+        vi: '{chandeliers} đèn chùm đồng và {sconces} đèn nến gắn tường thuộc mạch LD tạo ánh sáng ấm mà mọi người nhìn thấy, còn {LA} đèn hắt thuộc mạch LA chiếu lên lớp ván trần. Ánh sáng để đọc sách đến từ các đèn chiếu.' },
+      plain: { en: 'Brass chandeliers and wall sconces on circuit LD give the warm glow people see. The light for reading comes from the projectors.',
+        vi: 'Đèn chùm đồng và đèn nến gắn tường thuộc mạch LD tạo ánh sáng ấm mà mọi người nhìn thấy. Ánh sáng để đọc sách đến từ các đèn chiếu.' },
+      mark: { circuits: ['LD'], en: 'Chandeliers and sconces · LD', vi: 'Đèn chùm và đèn nến tường · LD' },
+      keys: [[40.6, 2.6, 0, 22, 3.8, 0, 56], [39.6, 4.8, 0, 12, 5.2, 0, 58], [38.7, 6.9, 0, 3, 6.4, 0, 60]] },
+    { id: 'light-outside', chapter: 'tour', bars: 6, light: 'evening', roof: true, cut: 'fade', ease: [0.1, 0], end: true,
+      en: 'Towers, façade and quick scenes', vi: 'Tháp, mặt tiền và các chế độ nhanh',
+      note: { en: 'A second board, DB-2, inside the main doors feeds the tower floodlights (L6), the entrance (L9) and the concealed light at the three statues (L10). {scenes} quick scenes set all the circuits together, from a full service to night security.',
+        vi: 'Tủ điện thứ hai, DB-2, đặt phía trong cửa chính, cấp điện cho đèn pha tháp (L6), lối vào (L9) và đèn giấu quanh ba tượng (L10). {scenes} chế độ nhanh đặt tất cả các mạch cùng lúc, từ thánh lễ đầy đủ đến bảo vệ ban đêm.' },
+      plain: { en: 'A second board, DB-2, inside the main doors feeds the tower floodlights (L6), the entrance (L9) and the concealed light at the three statues (L10). Quick scenes set all the circuits together.',
+        vi: 'Tủ điện thứ hai, DB-2, đặt phía trong cửa chính, cấp điện cho đèn pha tháp (L6), lối vào (L9) và đèn giấu quanh ba tượng (L10). Các chế độ nhanh đặt tất cả các mạch cùng lúc.' },
+      card: { at: 15, hold: true, small: 'Lighting · Chiếu sáng', ...TOUR_CLOSE,
+        foot: [TOUR_STATUS, 'Still open: selected lamps and their photometric files, glare, daylight, emergency lighting, circuits and controls', 'Còn để ngỏ: chọn đèn và tệp trắc quang, độ chói, ánh sáng ban ngày, chiếu sáng sự cố, mạch điện và điều khiển'] },
+      keys: [[-12.5, 1.4, 1.2, 2.4, 9, 0, 54], [-22, 3.4, 5, 2.4, 11, 0, 50], [-36, 8, 12, 4, 13, 0, 46]] }
+  ];
+
+  const AIR_SHOTS = [
+    { id: 'air-intro', chapter: 'tour', bars: 3, light: 'day', roof: true, cut: 'fade', ease: [0.3, 0.6],
+      card: { small: `${TOUR.en} · ${TOUR.vi}`, title: 'Fans and air · Quạt và thông gió',
+        line: 'No air conditioning: open windows, verandas and {fans} modelled fans', second: 'Không dùng điều hòa: cửa mở, hàng hiên và {fans} quạt trong mô hình', foot: TOUR_SCENE.foot,
+        plain: { line: 'No air conditioning: open windows, verandas and fans', second: 'Không dùng điều hòa: cửa mở, hàng hiên và quạt', foot: TOUR_SCENE.plain } },
+      keys: [[-11, 1.4, -19.4, 8, 4.2, -10, 50], [9, 2.1, -18.6, 26, 4.2, -10.5, 50], [22, 2.7, -18.6, 38, 4.6, -11.5, 50]] },
+    { id: 'air-ceiling', chapter: 'tour', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.3],
+      en: 'Ceiling fans over the pews', vi: 'Quạt trần trên các dãy ghế',
+      note: { en: '{F1} ceiling fans, {F1size} m across, hang at least {F1side} m to either side of the centre line, so the view down the nave to the altar stays clear. {F1on} of them are running in this scene.',
+        vi: '{F1} quạt trần đường kính {F1size} m treo cách trục giữa ít nhất {F1side} m về mỗi bên, nên tầm nhìn dọc lòng nhà thờ lên bàn thờ vẫn thông thoáng. Trong chế độ này có {F1on} quạt đang chạy.' },
+      plain: { en: 'Ceiling fans on circuit F1 hang over the pews.', vi: 'Quạt trần thuộc mạch F1 treo phía trên các dãy ghế.' },
+      mark: { circuits: ['F1'], en: 'Ceiling fans · F1', vi: 'Quạt trần · F1' },
+      keys: [[9.5, 1.7, 0, 48, 3.5, 0, 56], [19, 2.3, 0, 48.5, 3.8, 0, 54], [28.5, 3.3, 0, 48.8, 4.2, 0, 52]] },
+    { id: 'air-map', chapter: 'tour', bars: 4, light: 'day', roof: false, cut: 'fade', ease: [0, 0], up: MAP_UP, overlay: 'air',
+      en: 'The simulator’s air-speed map', vi: 'Bản đồ tốc độ gió của mô phỏng',
+      note: { en: 'Estimated air speed at seated height, 0.6 m above the floor, from the fans that are running. The seats average {airAvg} m/s; {airOk} % of them lie within 0.3 to 0.8 m/s, the aim for comfort without lifting pages.',
+        vi: 'Ước tính tốc độ gió ở tầm người ngồi, cao 0,6 m so với nền, do các quạt đang chạy tạo ra. Trung bình tại chỗ ngồi là {airAvg} m/s; {airOk} % chỗ ngồi nằm trong khoảng 0,3 đến 0,8 m/s, mục tiêu để mát mà không lật trang sách.' },
+      plain: { en: 'Estimated air speed at seated height, 0.6 m above the floor, from the fans that are running. The project aims for 0.3 to 0.8 m/s at the seats.',
+        vi: 'Ước tính tốc độ gió ở tầm người ngồi, cao 0,6 m so với nền, do các quạt đang chạy tạo ra. Dự án hướng tới 0,3 đến 0,8 m/s tại chỗ ngồi.' },
+      keys: PLAN_KEYS },
+    { id: 'air-wings', chapter: 'tour', bars: 4, light: 'day', roof: false, cut: 'cut', ease: [0, 0.2], up: MAP_UP, overlay: 'air',
+      en: 'The wings on the map', vi: 'Hai cánh trên bản đồ',
+      note: { en: 'In the wings the seats average {wingAir} m/s and the stillest has {wingAirMin} m/s, against an average of {naveAir} m/s in the nave. {F5} wall fans on circuit F5 serve the wings; their positions and brackets are still under review.',
+        vi: 'Ở hai cánh, chỗ ngồi trung bình {wingAir} m/s, chỗ lặng gió nhất {wingAirMin} m/s, so với trung bình {naveAir} m/s ở lòng nhà thờ. {F5} quạt tường thuộc mạch F5 phục vụ hai cánh; vị trí và giá đỡ còn đang được xem xét.' },
+      plain: { en: 'On the map, grey means almost no air movement from the fans. Wall fans on circuit F5 serve the wings; their positions and brackets are still under review.',
+        vi: 'Trên bản đồ, màu xám là gần như không có gió từ quạt. Quạt tường thuộc mạch F5 phục vụ hai cánh; vị trí và giá đỡ còn đang được xem xét.' },
+      mark: { circuits: ['F5'], en: 'Wing wall fans · F5', vi: 'Quạt tường hai cánh · F5' },
+      keys: WING_KEYS },
+    { id: 'air-wall', chapter: 'tour', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.5, 0.5],
+      en: 'Wall fans held in reserve', vi: 'Quạt tường để dự phòng',
+      note: { en: '{F2idle} small wall fans on circuit F2 line the side walls of the nave. They stay switched off in every built-in scene while their airflow, their noise during speech, the brackets and the maintenance access are reviewed.',
+        vi: '{F2idle} quạt tường nhỏ thuộc mạch F2 gắn dọc hai tường bên của lòng nhà thờ. Chúng được để tắt trong mọi chế độ có sẵn, trong khi lưu lượng gió, tiếng ồn lúc giảng, giá đỡ và lối bảo trì còn được xem xét.' },
+      plain: { en: 'Small wall fans on circuit F2 line the side walls of the nave. Their airflow, their noise during speech, the brackets and the maintenance access are under review.',
+        vi: 'Quạt tường nhỏ thuộc mạch F2 gắn dọc hai tường bên của lòng nhà thờ. Lưu lượng gió, tiếng ồn lúc giảng, giá đỡ và lối bảo trì còn được xem xét.' },
+      mark: { circuits: ['F2'], en: 'Nave wall fans · F2', vi: 'Quạt tường lòng nhà thờ · F2' },
+      keys: [[12, 2.2, 0.8, 22, 4.6, -7.1, 58], [20, 2.4, 0.8, 30, 4.6, -7.1, 58], [27, 2.6, 0.8, 37, 4.6, -7.1, 58]] },
+    { id: 'air-exhaust', chapter: 'tour', bars: 3, light: 'day', roof: true, cut: 'dip', ease: [0.25, 0.1],
+      en: 'Exhaust fans high in the gables', vi: 'Quạt hút trên cao ở các đầu hồi',
+      note: { en: '{V1on} exhaust fans move about {exhaust} m³/h, close to {ach} air changes an hour of the modelled volume. The project aim with people inside is 4 to 6. Air through open doors and windows is not counted.',
+        vi: '{V1on} quạt hút đẩy khoảng {exhaust} m³/h, gần {ach} lần trao đổi không khí mỗi giờ theo thể tích mô hình. Mục tiêu của dự án khi có người là 4 đến 6 lần. Gió tự nhiên qua cửa mở chưa được tính.' },
+      plain: { en: 'Exhaust fans on circuit V1 draw the hot air out high in the building. The project aim with people inside is 4 to 6 air changes an hour; air through open doors and windows is not counted.',
+        vi: 'Quạt hút thuộc mạch V1 đưa khí nóng ra ngoài ở trên cao. Mục tiêu của dự án khi có người là 4 đến 6 lần trao đổi không khí mỗi giờ; gió tự nhiên qua cửa mở chưa được tính.' },
+      mark: { circuits: ['V1'], en: 'Exhaust fans · V1', vi: 'Quạt hút · V1' },
+      keys: [[40.6, 2.6, 0, 22, 3.8, 0, 56], [39.6, 4.8, 0, 12, 5.2, 0, 58], [38.7, 6.9, 0, 3, 6.4, 0, 60]] },
+    { id: 'air-outside', chapter: 'tour', bars: 6, light: 'day', roof: true, cut: 'fade', ease: [0.5, 0.1], end: true,
+      en: 'Cooling against quiet', vi: 'Làm mát và giữ yên tĩnh',
+      note: { en: 'With these fans running the simulator estimates {noise} dBA of background noise at the seats, against {ambient} dBA assumed with everything off. More fan speed cools more and makes speech harder to follow, so fans and sound are set together in each scene.',
+        vi: 'Khi các quạt này chạy, mô phỏng ước tính tiếng ồn nền tại chỗ ngồi là {noise} dBA, so với {ambient} dBA giả định khi tắt hết. Quạt chạy nhanh hơn thì mát hơn nhưng khó nghe lời hơn, nên quạt và âm thanh được đặt cùng nhau trong từng chế độ.' },
+      plain: { en: 'More fan speed cools more and makes speech harder to follow, so fans and sound are set together in each scene.',
+        vi: 'Quạt chạy nhanh hơn thì mát hơn nhưng khó nghe lời hơn, nên quạt và âm thanh được đặt cùng nhau trong từng chế độ.' },
+      card: { at: 15, hold: true, small: 'Fans and air · Quạt và thông gió', ...TOUR_CLOSE,
+        foot: [TOUR_STATUS, 'Still open: selected fans and their data, brackets and fixings, noise during speech, comfort in the hottest season', 'Còn để ngỏ: chọn quạt và thông số, giá đỡ và liên kết, tiếng ồn lúc giảng, tiện nghi vào mùa nóng nhất'] },
+      keys: [[38, 22, 32, 27, 8, 0, 46], [10, 28, 28, 13, 10, 0, 45], [-20, 21, 14, 3, 12, 0, 44]] }
+  ];
+
+  const SOUND_SHOTS = [
+    { id: 'sound-intro', chapter: 'tour', bars: 3, light: 'day', roof: true, cut: 'fade', ease: [0.3, 0.6],
+      card: { small: `${TOUR.en} · ${TOUR.vi}`, title: 'Sound · Âm thanh',
+        line: 'Speech from the ambo and the altar to every seat: {speakers} loudspeakers and {mics} microphones', second: 'Đưa lời từ giảng đài và bàn thờ đến mọi chỗ ngồi: {speakers} loa và {mics} micro', foot: TOUR_SCENE.foot,
+        plain: { line: 'Speech from the ambo and the altar to every seat', second: 'Đưa lời từ giảng đài và bàn thờ đến mọi chỗ ngồi', foot: TOUR_SCENE.plain } },
+      keys: [[-8, 1.2, 0, 14, 3, 0, 52], [-1, 1.25, 0, 26, 3, 0, 54], [4.5, 1.6, 0, 40, 3.2, 0, 56]] },
+    { id: 'sound-mics', chapter: 'tour', bars: 3, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.4],
+      en: 'The microphones', vi: 'Các micro',
+      note: { en: '{mics} gooseneck microphones on the sanctuary pick up the voice. The simulator assumes a speaker {micDistance} m from the microphone, talking at an ordinary level of {talker} dBA at 1 m.',
+        vi: '{mics} micro cổ ngỗng trên cung thánh thu tiếng nói. Mô phỏng giả định người nói cách micro {micDistance} m, nói ở mức bình thường {talker} dBA tại 1 m.' },
+      plain: { en: 'Gooseneck microphones on the sanctuary pick up the voice.', vi: 'Các micro cổ ngỗng trên cung thánh thu tiếng nói.' },
+      mark: { circuits: ['MIC'], en: 'Microphones', vi: 'Micro' },
+      keys: [[39.7, 3, -3, 45.6, 2.7, 0.4, 50], [38.7, 3.1, 0, 45.8, 2.6, 0, 50], [39.7, 3, 3, 45.6, 2.7, -0.4, 50]] },
+    { id: 'sound-columns', chapter: 'tour', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.3],
+      en: 'Slim loudspeakers along the walls', vi: 'Loa cột mảnh dọc theo tường',
+      note: { en: '{A1} slim column loudspeakers in zone A1, painted the wall colour, cover the nave and the wings from the side walls. In the model each one is delayed, so that its sound arrives together with the voice from the front.',
+        vi: '{A1} loa cột mảnh thuộc vùng A1, sơn cùng màu tường, phủ âm cho lòng nhà thờ và hai cánh từ các tường bên. Trong mô hình mỗi loa được làm trễ, để âm thanh đến cùng lúc với tiếng nói từ phía trước.' },
+      plain: { en: 'Slim column loudspeakers in zone A1, painted the wall colour, cover the nave and the wings from the side walls.',
+        vi: 'Loa cột mảnh thuộc vùng A1, sơn cùng màu tường, phủ âm cho lòng nhà thờ và hai cánh từ các tường bên.' },
+      mark: { circuits: ['A1'], en: 'Wall loudspeakers · A1', vi: 'Loa gắn tường · A1' },
+      keys: [[10, 2, 0, 40, 3.2, 0, 58], [20, 2.4, 0, 46, 3.4, 0, 58], [29, 2.8, 0, 48, 3.6, 0, 56]] },
+    { id: 'sound-level', chapter: 'tour', bars: 4, light: 'day', roof: false, cut: 'fade', ease: [0, 0], up: MAP_UP, overlay: 'spl',
+      en: 'The simulator’s speech-level map', vi: 'Bản đồ mức âm lời nói của mô phỏng',
+      note: { en: 'Estimated speech level at ear height, 1.2 m above the floor. The seats average {splAvg} dBA, and nine seats in ten lie within {splSpread} dB of each other: an even level matters more than a loud one.',
+        vi: 'Ước tính mức âm lời nói ở tầm tai, cao 1,2 m so với nền. Trung bình tại chỗ ngồi là {splAvg} dBA, và chín trên mười chỗ ngồi chênh nhau không quá {splSpread} dB: âm đều quan trọng hơn âm to.' },
+      plain: { en: 'Estimated speech level at ear height, 1.2 m above the floor. The project aims for 68 to 76 dBA, even from seat to seat.',
+        vi: 'Ước tính mức âm lời nói ở tầm tai, cao 1,2 m so với nền. Dự án hướng tới 68 đến 76 dBA, đồng đều giữa các chỗ ngồi.' },
+      keys: PLAN_KEYS },
+    { id: 'sound-clarity', chapter: 'tour', bars: 4, light: 'day', roof: false, cut: 'cut', ease: [0, 0.6], up: MAP_UP, overlay: 'sti',
+      en: 'The speech-clarity map', vi: 'Bản đồ độ rõ lời nói',
+      note: { en: 'The speech transmission index, STI, runs from 0 to 1, and 0.60 or more counts as good. {stiOk} % of the seats reach 0.60; the average is {stiAvg}. Reverberation and fan noise are included.',
+        vi: 'Chỉ số truyền đạt lời nói STI chạy từ 0 đến 1; từ 0,60 trở lên được xem là tốt. {stiOk} % chỗ ngồi đạt 0,60; trung bình là {stiAvg}. Đã tính cả độ vang và tiếng ồn của quạt.' },
+      plain: { en: 'The speech transmission index, STI, runs from 0 to 1, and 0.60 or more counts as good. Reverberation and fan noise are included.',
+        vi: 'Chỉ số truyền đạt lời nói STI chạy từ 0 đến 1; từ 0,60 trở lên được xem là tốt. Đã tính cả độ vang và tiếng ồn của quạt.' },
+      keys: [[26.5, 66, 10.6, 26.5, 0, 10, 42], [28.7, 59, 12.5, 28.7, 0, 10.5, 42], [31, 52, 15, 31, 0, 11, 42]] },
+    { id: 'sound-open', chapter: 'tour', bars: 4, light: 'day', roof: false, cut: 'cut', ease: [0.6, 0.2], up: MAP_UP, overlay: 'sti',
+      en: 'The wings and the margin before feedback', vi: 'Hai cánh và độ dự trữ chống hú',
+      note: { en: 'Wing seats average {wingSti} and the lowest seat in the church has {stiMin}. The margin before feedback at the microphones is {fbLow} to {fbHigh} dB; the project aims for 3 dB or more. Open points go to the sound designer and to tests on site.',
+        vi: 'Chỗ ngồi ở hai cánh trung bình {wingSti}, chỗ thấp nhất trong nhà thờ là {stiMin}. Độ dự trữ trước khi hú ở các micro là {fbLow} đến {fbHigh} dB; dự án hướng tới 3 dB trở lên. Các điểm còn để ngỏ dành cho kỹ sư âm thanh và thử nghiệm tại chỗ.' },
+      plain: { en: 'Clarity in the wings and the margin before feedback at the microphones are the points to settle with the sound designer and with tests on site.',
+        vi: 'Độ rõ ở hai cánh và độ dự trữ chống hú ở các micro là những điểm cần giải quyết cùng kỹ sư âm thanh và thử nghiệm tại chỗ.' },
+      mark: { circuits: ['MIC'], en: 'Microphones', vi: 'Micro' },
+      keys: [[31, 52, 15, 31, 0, 11, 42], [33, 46, 18, 33, 0, 11.5, 42], [35, 40, 21, 35, 0, 12, 42]] },
+    { id: 'sound-outside', chapter: 'tour', bars: 6, light: 'day', roof: true, cut: 'fade', ease: [0.3, 0.1], end: true,
+      en: 'Verandas, courtyard and levels', vi: 'Hàng hiên, sân và mức âm',
+      note: { en: '{A2} pendant loudspeakers serve the verandas (zone A2). {A3} courtyard horns (zone A3) are for crowded feasts only, because their sound returns late through the open windows. Each zone has its own level and mute.',
+        vi: '{A2} loa treo phục vụ hàng hiên (vùng A2). {A3} loa nén ngoài sân (vùng A3) chỉ dùng trong các dịp lễ đông người, vì âm thanh dội lại muộn qua các cửa mở. Mỗi vùng có mức âm và nút tắt tiếng riêng.' },
+      plain: { en: 'Pendant loudspeakers serve the verandas (zone A2). Courtyard horns (zone A3) are for crowded feasts only, because their sound returns late through the open windows. Each zone has its own level and mute.',
+        vi: 'Loa treo phục vụ hàng hiên (vùng A2). Loa nén ngoài sân (vùng A3) chỉ dùng trong các dịp lễ đông người, vì âm thanh dội lại muộn qua các cửa mở. Mỗi vùng có mức âm và nút tắt tiếng riêng.' },
+      mark: { circuits: ['A2', 'A3'], en: 'Veranda and courtyard loudspeakers · A2, A3', vi: 'Loa hàng hiên và sân · A2, A3' },
+      card: { at: 15, hold: true, small: 'Sound · Âm thanh', ...TOUR_CLOSE,
+        foot: [TOUR_STATUS, 'Still open: selected loudspeakers and their data, the margin before feedback, clarity in the wings, tuning and measurements on site', 'Còn để ngỏ: chọn loa và thông số, độ dự trữ chống hú, độ rõ ở hai cánh, cân chỉnh và đo tại chỗ',
+          'The background music is not the modelled sound system · Nhạc nền không phải là hệ thống âm thanh trong mô hình'] },
+      keys: [[-11, 1.4, 19.4, 8, 4.2, 10, 50], [9, 2.1, 18.6, 26, 4.2, 10.5, 50], [29, 3, 18.6, 43, 4.8, 12, 50]] }
+  ];
+
   /* --------------------------------------------------------------- maths */
   const smooth = x => { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -155,6 +353,8 @@
     reel.shots.forEach((shot, index) => {
       shot.index = index;
       shot.start = reel.length; shot.duration = shot.bars * reel.bar; reel.length += shot.duration;
+      // A technical caption stays for the whole scene: it is the explanation.
+      shot.stay = !!reel.technical;
       let lens = 48;
       shot.eye = shot.keys.map(k => k.slice(0, 3));
       shot.look = shot.keys.map(k => k.slice(3, 6));
@@ -177,7 +377,10 @@
   }
   // The films by name. `reel` is the one being played.
   const FILMS = {
-    full: prepare({ id: 'full', name: 'Cinematic tour', bar: BAR, shots: SHOTS, chapters: CHAPTERS })
+    full: prepare({ id: 'full', name: 'Cinematic tour', file: 'cinematic-tour', bar: BAR, shots: SHOTS, chapters: CHAPTERS }),
+    lighting: prepare({ id: 'lighting', name: 'Lighting tour', file: 'lighting-tour', technical: true, bar: BAR, shots: LIGHTING_SHOTS, chapters: { tour: { en: 'Lighting', vi: 'Chiếu sáng' } } }),
+    air: prepare({ id: 'air', name: 'Fans and air tour', file: 'fans-and-air-tour', technical: true, bar: BAR, shots: AIR_SHOTS, chapters: { tour: { en: 'Fans and air', vi: 'Quạt và thông gió' } } }),
+    sound: prepare({ id: 'sound', name: 'Sound tour', file: 'sound-tour', technical: true, bar: BAR, shots: SOUND_SHOTS, chapters: { tour: { en: 'Sound', vi: 'Âm thanh' } } })
   };
   let reel = FILMS.full;
   const table = (values, x) => {
@@ -216,7 +419,7 @@
     const timed = shot.card?.at !== undefined;
     const cardFrom = shot.card?.at ?? 1.2, cardTo = shot.card?.hold ? shot.duration + 1 : timed ? shot.duration - 2.4 : 9.5;
     // A caption stays long enough to read, and clears before a title card.
-    const captionTo = timed ? shot.card.at - 1.2 : Math.min(shot.duration - 1.2, 14.5);
+    const captionTo = timed ? shot.card.at - 1.2 : shot.stay ? shot.duration - 1.2 : Math.min(shot.duration - 1.2, 14.5);
     return { card: !!shot.card && local >= cardFrom && local < cardTo, caption: !!shot.en && local > 1 && local < captionTo };
   }
 
@@ -330,7 +533,9 @@
     return notes;
   };
 
-  function compose() {
+  // The voices a score is written with: single notes, held notes that tie, and
+  // a melody whose chords are voiced into inner parts, pedal and quavers.
+  function voices() {
     const events = [];
     const add = (part, voice, time, length, note, stops, level) => {
       const event = { part, voice, time, length, note, stops, level };
@@ -346,16 +551,16 @@
     };
 
     // Melody with chords: inner parts, pedal and flowing quavers are voiced from the chords.
-    function chordal(sections, firstBar) {
+    function chordal(sections, firstBar, part = 'homeland') {
       let bar = firstBar;
       for (const section of sections) {
         for (const [chords, melody] of section.bars) {
           const start = bar * BAR, list = chords.split(' '), share = BAR / list.length;
           const sung = tune(melody, start);
           for (const note of sung) {
-            add('homeland', 'melody', note.time, note.length - 0.05, note.note, section.solo, section.level);
+            add(part, 'melody', note.time, note.length - 0.05, note.note, section.solo, section.level);
             // On full organ the melody is doubled at the octave above.
-            if (section.doubled) add('homeland', 'melody', note.time, note.length - 0.05, note.note + 12, 'song', section.level * 0.7);
+            if (section.doubled) add(part, 'melody', note.time, note.length - 0.05, note.note + 12, 'song', section.level * 0.7);
           }
           let top = 96;
           list.forEach((symbol, k) => {
@@ -364,13 +569,13 @@
             if (above.length) top = Math.min(...above);
             // Inner parts in close position round D4, kept below the melody.
             c.tones.map(pc => place(pc, 62)).map(n => (n > top - 2 ? n - 12 : n))
-              .forEach((note, i) => tie('homeland', 'inner', `inner${i}:${note}`, time, share, note, section.pad, section.level * 0.8));
-            tie('homeland', 'bass', 'bass', time, share, 36 + c.bass, section.pedal || 'softPedal', section.level);
+              .forEach((note, i) => tie(part, 'inner', `inner${i}:${note}`, time, share, note, section.pad, section.level * 0.8));
+            tie(part, 'bass', 'bass', time, share, 36 + c.bass, section.pedal || 'softPedal', section.level);
             if (section.quavers) {
               const ladder = c.tones.map(pc => place(pc, 72)).sort((a, b) => a - b);
               ladder.push(ladder[0] + 12);
               const figure = [0, 1, 2, 3, 2, 1, 2, 1];
-              for (let i = 0; i < share * 2; i++) add('homeland', 'quavers', time + i * 0.5, 0.46, ladder[figure[i % 8] % ladder.length], 'quavers', section.level * (i % 4 ? 0.8 : 1));
+              for (let i = 0; i < share * 2; i++) add(part, 'quavers', time + i * 0.5, 0.46, ladder[figure[i % 8] % ladder.length], 'quavers', section.level * (i % 4 ? 0.8 : 1));
             }
           });
           bar++;
@@ -378,7 +583,11 @@
       }
       return bar;
     }
+    return { events, held, add, tie, chordal };
+  }
 
+  function compose() {
+    const { events, held, add, tie, chordal } = voices();
     let bar = chordal(HOMELAND, 0);
     // Ave Maria.
     const origin = bar * BAR;
@@ -417,7 +626,24 @@
   }
   const score = compose();
 
+  /* Technical tours: the homeland melody once more, quietly on strings and one
+   * flute, so that it stays behind the explanation. Two bars of introduction,
+   * the melody in four-bar phrases, two bars to close. Original; it quotes no
+   * existing piece. */
+  function composeQuiet(bars) {
+    const { events, chordal } = voices();
+    const phrases = [HOME_A.slice(0, 4), HOME_A.slice(4), HOME_B.slice(0, 4), HOME_B.slice(4)];
+    const sections = [{ pad: 'celeste', solo: 'voice', level: 0.36, bars: [['C', ''], ['C', 'r:2 E5:.5 G5:.5 A5:1']] }];
+    for (let i = 0; i < (bars - 4) / 4; i++) sections.push({ pad: 'celeste', solo: 'voice', level: 0.42, bars: phrases[i % 4] });
+    sections.push({ pad: 'celeste', solo: 'voice', level: 0.34, bars: [['C', 'E5:1 G5:1 A5:2'], ['C', 'G5:4']] });
+    const end = chordal(sections, 0, 'quiet');
+    // The last chord stops a second before the end, leaving its echo for the fade.
+    for (const event of events) event.length = Math.min(event.length, end * BAR - 1 - event.time);
+    return { events: events.sort((a, b) => a.time - b.time), bars: end };
+  }
+
   FILMS.full.score = score;
+  for (const tour of [FILMS.lighting, FILMS.air, FILMS.sound]) tour.score = composeQuiet(tour.length / BAR);
 
   const music = { context: null, on: true, epoch: null, next: 0, zero: 0, synced: false, waking: 0, timer: 0, waves: {} };
   // Resuming sound takes a moment: the picture waits for it instead of running ahead.
@@ -511,7 +737,7 @@
   }
 
   /* ---------------------------------------------------------------- film */
-  const film = { running: false, paused: false, time: 0, shot: null, before: null, church: null, layer: null, lastMove: 0, status: '', text: null };
+  const film = { running: false, paused: false, time: 0, shot: null, before: null, church: null, layer: null, lastMove: 0, status: '', text: null, key: null, marks: [], points: [] };
   // What the next start plays: set by the buttons, used once.
   const wanted = { film: 'full', record: false, save: true };
   const byId = id => document.getElementById(id);
@@ -520,10 +746,11 @@
     if (film.layer) return film.layer;
     const layer = film.layer = document.createElement('div');
     layer.id = 'cinemaLayer'; layer.className = 'cinema-layer'; layer.hidden = true;
-    layer.innerHTML = `<div class="cinema-fade"></div>
+    layer.innerHTML = `<div class="cinema-marks"></div><div class="cinema-fade"></div>
 <div class="cinema-bar cinema-bar-top"></div><div class="cinema-bar cinema-bar-bottom"></div>
 <div class="cinema-card"><small></small><h1></h1><p></p><p class="cinema-second"></p><footer></footer></div>
 <div class="cinema-caption" aria-live="polite"><span class="cinema-chapter"></span><strong></strong><em></em><p class="cinema-note"></p><p class="cinema-note cinema-note-vi"></p></div>
+<div class="cinema-key"><div class="cinema-key-map"><strong></strong><em></em><div class="cinema-scale"></div><small></small></div><div class="cinema-key-mark"><i></i><span><b></b><em></em></span></div></div>
 <div class="cinema-status" role="status"></div>
 <div class="cinema-controls" role="toolbar" aria-label="Cinematic tour controls">
 <button data-cinema="previous" title="Previous scene (←)" aria-label="Previous scene">⏮</button>
@@ -557,17 +784,143 @@
   }
   const part = selector => film.layer.querySelector(selector);
 
+  /* ---------------------------------------------- figures, maps and marks
+   * What the technical tours read from the simulator. Nothing here changes it.
+   */
+  // The simulator's maps as the tours name them. Colours and steps are the simulator's own.
+  const MAPS = {
+    lux: { en: 'Light on an open book · lux', vi: 'Độ rọi trên trang sách · lux', aim: 'Project aim: 200 or more · Mục tiêu dự án: từ 200 trở lên' },
+    air: { en: 'Air speed at the seats · m/s', vi: 'Tốc độ gió tại chỗ ngồi · m/s', aim: 'Project aim: 0.3 to 0.8 · Mục tiêu dự án: 0,3 đến 0,8' },
+    spl: { en: 'Speech level · dBA', vi: 'Mức âm lời nói · dBA', aim: 'Project aim: 68 to 76, even · Mục tiêu dự án: 68 đến 76, đồng đều' },
+    sti: { en: 'Speech clarity · STI', vi: 'Độ rõ lời nói · STI', aim: 'Project aim: 0.60 or more · Mục tiêu dự án: từ 0,60 trở lên' }
+  };
+  /* Figures quoted in the captions, read from the open model and from the
+   * simulator's latest analysis of it. A figure that cannot be read is left
+   * out, and a caption that needs it falls back to its plain wording. */
+  function modelFigures() {
+    const sim = window.CHURCH_SIMULATOR, out = {};
+    const put = (key, value, digits = 0) => { if (Number.isFinite(value)) out[key] = value.toFixed(digits); };
+    try {
+      const shown = sim.state.items.filter(item => !item.hidden), kind = item => sim.typeOf(item) || {};
+      const count = test => shown.filter(test).length;
+      for (const circuit of new Set(shown.map(item => item.circuit))) put(circuit, count(item => item.circuit === circuit));
+      put('lights', count(item => kind(item).cat === 'light'));
+      put('lightCircuits', new Set(shown.filter(item => kind(item).cat === 'light').map(item => item.circuit)).size);
+      put('chandeliers', count(item => item.circuit === 'LD' && /^chandelier/.test(item.type)));
+      put('sconces', count(item => item.circuit === 'LD' && /^sconce/.test(item.type)));
+      put('fans', count(item => kind(item).cat === 'fan'));
+      put('speakers', count(item => !!kind(item).speaker));
+      put('mics', count(item => !!kind(item).mic));
+      put('scenes', Object.keys(sim.SCENES).length);
+      if (sim.state.scene) out.scene = sim.state.scene;
+      // Wall fans that no built-in scene switches on.
+      if (Object.values(sim.SCENES).every(scene => !scene.F2)) put('F2idle', count(item => item.circuit === 'F2'));
+      const fans = sim.fans(), ceiling = fans.filter(fan => fan.item.circuit === 'F1');
+      if (ceiling.length) {
+        put('F1on', ceiling.filter(fan => fan.running).length); put('F1size', ceiling[0].diameter, 2);
+        // Quoted only while every ceiling fan is clear of the central view.
+        const side = Math.min(...ceiling.map(fan => Math.abs(fan.pos[2])));
+        if (side >= 2) put('F1side', Math.floor(side * 10) / 10, 1);
+      }
+      const exhaust = fans.filter(fan => fan.kind === 'exhaust' && fan.running), flow = exhaust.reduce((sum, fan) => sum + fan.flow, 0) * 3600;
+      if (exhaust.length) {
+        put('V1on', exhaust.length); put('ach', flow / sim.room().V, 1);
+        out.exhaust = String(Math.round(flow / 100) * 100).replace(/\B(?=(\d{3})+$)/g, ',');
+      }
+      const settings = sim.state.settings;
+      put('ambient', settings.ambientDbA); put('talker', settings.talkerDbA); put('micDistance', settings.micDistance, 1);
+      const margins = sim.mics().map(mic => mic.item.feedbackMargin).filter(Number.isFinite).sort((a, b) => a - b);
+      if (margins.length > 1) { put('fbLow', margins[0], 1); put('fbHigh', margins[margins.length - 1], 1); }
+      const seats = sim.analysis?.results?.seats;
+      if (seats?.n) {
+        const mean = (list, key) => { const values = list.map(seat => seat[key]).filter(Number.isFinite); return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : NaN; };
+        const nave = seats.seats.filter(seat => seat.block !== 'wing'), wing = seats.blocks?.wing;
+        put('seats', seats.n);
+        put('luxAvg', seats.lux?.avg); put('luxMin', seats.lux?.min); put('luxOk', seats.luxOk); put('naveLux', mean(nave, 'lux'));
+        put('wingLux', wing?.lux?.avg); put('wingLuxMin', wing?.lux?.min);
+        put('airAvg', seats.air?.avg, 2); put('airOk', seats.airOk); put('naveAir', mean(nave, 'air'), 2);
+        put('wingAir', wing?.air?.avg, 2); put('wingAirMin', wing?.air?.min, 2);
+        put('noise', seats.noise?.avg);
+        put('splAvg', seats.spl?.avg); put('splSpread', seats.splSpread, 1);
+        put('stiAvg', seats.sti?.avg, 2); put('stiMin', seats.sti?.min, 2); put('stiOk', seats.stiOk); put('wingSti', wing?.sti?.avg, 2);
+      }
+    } catch { /* figures read so far are used; the rest fall back to plain wording */ }
+    return out;
+  }
+  // Vietnamese writes the decimal comma: 0,33 m/s and 25.900 m³/h.
+  const viNumber = value => /^-?[\d.,]+$/.test(value) ? value.replace(/[.,]/g, mark => (mark === '.' ? ',' : '.')) : value;
+  // Text with its figures in place, or the plain wording when one is missing.
+  function say(text, plain, figures, vi) {
+    if (!text || !text.includes('{')) return text || '';
+    let missing = false;
+    const out = text.replace(/\{(\w+)\}/g, (all, key) => {
+      const value = figures?.[key];
+      if (value === undefined) { missing = true; return ''; }
+      return vi ? viNumber(value) : value;
+    });
+    return missing ? plain || '' : out;
+  }
+  // The map and the marked fittings of a scene, with the words that explain them.
+  function sceneKey(shot) {
+    const sim = window.CHURCH_SIMULATOR, key = { map: null, mark: null };
+    const map = shot.overlay && sim?.analysis?.KINDS?.[shot.overlay];
+    if (map) key.map = { ...MAPS[shot.overlay], stops: map.stops.map(([value, colour]) => [String(value), colour]) };
+    film.marks = shot.mark && sim ? sim.state.items.filter(item => !item.hidden && shot.mark.circuits.includes(item.circuit)) : [];
+    if (film.marks.length) key.mark = { en: shot.mark.en, vi: shot.mark.vi };
+    return key;
+  }
+  // Where the marked fittings are in the picture, as [x, y] from −1 to 1:
+  // those in front of the camera, inside the frame and not behind a wall or a
+  // column of the simulator's own geometry.
+  function markPoints(eye) {
+    const sim = window.CHURCH_SIMULATOR, out = [];
+    if (!film.marks.length || !sim?.THREE) return out;
+    const camera = film.church.orbitCamera, solids = sim.GEO?.occluders, point = film.point ||= new sim.THREE.Vector3();
+    camera.updateMatrixWorld();
+    for (const item of film.marks) {
+      point.set(...item.pos).project(camera);
+      if (!(Math.abs(point.x) <= 1 && Math.abs(point.y) <= 1 && Math.abs(point.z) <= 1)) continue;
+      // Tested from just in front of the fitting, so that the wall or column it is fixed to does not hide it.
+      const reach = dist(eye, item.pos), near = item.pos.map((v, i) => v + (eye[i] - v) * Math.min(0.5, 0.35 / reach));
+      if (solids?.blockedByWall(eye, near) || solids?.blockedByColumn(eye, near)) continue;
+      out.push([point.x, point.y]);
+    }
+    return out;
+  }
   function applyScene(shot) {
     const church = film.church, ui = church.uiState();
     if (ui.lighting !== shot.light) church.setLighting(shot.light);
     if (ui.roof !== shot.roof) church.setRoof(shot.roof);
+    // A technical tour shows one analysis map at a time, or none.
+    const sim = window.CHURCH_SIMULATOR;
+    if (reel.technical && sim?.setOverlay) {
+      const overlay = shot.overlay && sim.analysis?.KINDS?.[shot.overlay] ? shot.overlay : 'none';
+      if (sim.state.settings.overlay !== overlay) sim.setOverlay(overlay);
+    }
   }
   function showShot(shot) {
     film.shot = shot;
     applyScene(shot);
-    const chapter = reel.chapters[shot.chapter];
+    const chapter = reel.chapters[shot.chapter], figures = reel.technical ? modelFigures() : null, card = shot.card;
     const text = film.text = { chapter: `${chapter.en} · ${chapter.vi}`, en: shot.en || '', vi: shot.vi || '',
-      note: shot.note?.en || '', noteVi: shot.note?.vi || '', card: shot.card || null };
+      note: say(shot.note?.en, shot.plain?.en, figures), noteVi: say(shot.note?.vi, shot.plain?.vi, figures, true),
+      card: card ? { ...card, line: say(card.line, card.plain?.line, figures), second: say(card.second, card.plain?.second, figures, true),
+        foot: (card.foot || []).map((line, i) => say(line, card.plain?.foot?.[i], figures)) } : null };
+    const key = film.key = sceneKey(shot);
+    part('.cinema-key-map').hidden = !key.map;
+    part('.cinema-key-mark').hidden = !key.mark;
+    if (key.map) {
+      const box = part('.cinema-key-map');
+      box.querySelector('strong').textContent = key.map.en;
+      box.querySelector('em').textContent = key.map.vi;
+      box.querySelector('small').textContent = key.map.aim;
+      part('.cinema-scale').replaceChildren(...key.map.stops.map(([value, colour]) => {
+        const step = document.createElement('span');
+        step.style.background = colour; step.dataset.value = value;
+        return step;
+      }));
+    }
+    if (key.mark) { part('.cinema-key-mark b').textContent = key.mark.en; part('.cinema-key-mark em').textContent = key.mark.vi; }
     tape.fx.caption = tape.fx.card = 0;
     const caption = part('.cinema-caption');
     part('.cinema-chapter').textContent = text.chapter;
@@ -576,13 +929,13 @@
     part('.cinema-note').textContent = text.note;
     part('.cinema-note-vi').textContent = text.noteVi;
     caption.dataset.empty = String(!shot.en);
-    if (shot.card) {
-      const card = part('.cinema-card');
-      card.querySelector('small').textContent = shot.card.small;
-      card.querySelector('h1').textContent = shot.card.title;
-      card.querySelector('p').textContent = shot.card.line;
-      part('.cinema-second').textContent = shot.card.second || '';
-      card.querySelector('footer').replaceChildren(...(shot.card.foot || []).map(line => Object.assign(document.createElement('span'), { textContent: line })));
+    if (text.card) {
+      const box = part('.cinema-card');
+      box.querySelector('small').textContent = text.card.small;
+      box.querySelector('h1').textContent = text.card.title;
+      box.querySelector('p').textContent = text.card.line;
+      part('.cinema-second').textContent = text.card.second || '';
+      box.querySelector('footer').replaceChildren(...text.card.foot.map(line => Object.assign(document.createElement('span'), { textContent: line })));
     }
   }
   function draw() {
@@ -595,10 +948,18 @@
     if (Math.abs(camera.fov - p.lens) > 1e-3) { camera.fov = p.lens; camera.updateProjectionMatrix(); }
     // Kept current so that Explore continues from this exact view when the film stops.
     controls.target.set(...p.look);
-    const on = showing(p.shot, film.time - p.shot.start);
-    layer.querySelector('.cinema-fade').style.opacity = blackAt(film.time).toFixed(3);
+    const on = showing(p.shot, film.time - p.shot.start), black = blackAt(film.time);
+    layer.querySelector('.cinema-fade').style.opacity = black.toFixed(3);
     part('.cinema-card').classList.toggle('visible', on.card);
     part('.cinema-caption').classList.toggle('visible', on.caption);
+    // The map key and the rings belong to the picture: they leave with it and with the closing card.
+    part('.cinema-key').classList.toggle('visible', !!(film.key?.map || film.key?.mark) && black < 0.5 && !on.card);
+    const points = film.points = on.card ? [] : markPoints(p.eye), rings = part('.cinema-marks');
+    while (rings.children.length < points.length) rings.append(document.createElement('i'));
+    [...rings.children].forEach((ring, i) => {
+      ring.hidden = i >= points.length;
+      if (!ring.hidden) { ring.style.left = `${((points[i][0] + 1) * 50).toFixed(2)}%`; ring.style.top = `${((1 - points[i][1]) * 50).toFixed(2)}%`; }
+    });
     part('.cinema-progress i').style.width = `${(100 * film.time / reel.length).toFixed(2)}%`;
     const clock = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
     part('.cinema-clock').textContent = `${clock(film.time)} / ${clock(reel.length)} · scene ${p.shot.index + 1} of ${reel.shots.length}`;
@@ -658,6 +1019,7 @@
     church.controls.enabled = false;
     window.CHURCH_REALISM?.setOpenings('open');
     film.running = true; film.paused = false; film.time = 0; film.shot = null; film.lastMove = performance.now(); film.status = '';
+    film.key = null; film.marks = []; film.points = [];
     // Keys now belong to the film, not to the button that started it.
     document.activeElement?.blur?.();
     if (musicGraph()) {
@@ -686,10 +1048,11 @@
       setTimeout(() => { if (!film.running) { if (music.epoch) { music.epoch.forEach(node => node.disconnect()); music.epoch = null; } void ctx.suspend(); } }, 900);
     }
     tapeStop(); soften();
+    film.marks = []; film.points = [];
     document.body.classList.remove('cinema');
     film.layer.hidden = true;
     film.layer.classList.remove('idle', 'paused', 'recording');
-    // The wiring-only view and the analysis overlay return to what they were.
+    // The wiring-only view and the analysis map return to what they were.
     const sim = window.CHURCH_SIMULATOR;
     if (sim?.electrical && before.wiring && sim.electrical.view.mode !== before.wiring) sim.electrical.setMode(before.wiring);
     if (sim && before.overlay !== undefined && sim.state.settings.overlay !== before.overlay) sim.setOverlay(before.overlay);
@@ -790,7 +1153,7 @@
    * anywhere.
    */
   const VIDEO = { width: 1920, height: 1080, fps: 30, bits: 14e6 };
-  const tape = { on: false, canvas: null, g: null, recorder: null, chunks: [], type: '', ratio: 0, fx: { caption: 0, card: 0 }, last: 0, result: null, save: true, error: '' };
+  const tape = { on: false, canvas: null, g: null, recorder: null, chunks: [], type: '', ratio: 0, fx: { caption: 0, card: 0, key: 0 }, last: 0, result: null, save: true, error: '' };
   const SANS = 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif', SERIF = 'Georgia, "Times New Roman", serif';
   function tapeCanvas() {
     if (!tape.canvas) {
@@ -798,7 +1161,7 @@
       tape.g = tape.canvas.getContext('2d');
     }
     tape.g.fillStyle = '#000'; tape.g.fillRect(0, 0, VIDEO.width, VIDEO.height);
-    tape.fx.caption = tape.fx.card = 0; tape.last = 0;
+    tape.fx.caption = tape.fx.card = tape.fx.key = 0; tape.last = 0;
     return tape.canvas;
   }
   // Enough pixels behind the 16:9 crop for a 1920 × 1080 picture; put back when the film stops.
@@ -834,11 +1197,11 @@
     catch (error) { tape.error = `Recording could not start: ${error.message}`; return false; }
     sharpen();
     tape.chunks = []; tape.type = type.split(';')[0];
-    const reelId = reel.id, length = reel.length, recorder = tape.recorder;
+    const file = reel.file, length = reel.length, recorder = tape.recorder;
     recorder.ondataavailable = event => { if (event.data.size) tape.chunks.push(event.data); };
     recorder.onstop = () => {
       const blob = new Blob(tape.chunks, { type: tape.type });
-      const name = `thach-bi-${reelId === 'full' ? 'cinematic-tour' : reelId}-${new Date().toISOString().slice(0, 10)}.${tape.type === 'video/mp4' ? 'mp4' : 'webm'}`;
+      const name = `thach-bi-${file}-${new Date().toISOString().slice(0, 10)}.${tape.type === 'video/mp4' ? 'mp4' : 'webm'}`;
       // soundLead: seconds of recording before film time zero (the sound takes a moment to start).
       tape.result = { blob, name, type: tape.type, megabytes: +(blob.size / 1048576).toFixed(1), filmSeconds: length, soundLead: tape.lead };
       if (tape.save && blob.size) {
@@ -940,6 +1303,49 @@
     });
     g.restore();
   }
+  // The map key and the meaning of the rings, at the lower right of the recorded picture.
+  function paintKey(g, key, alpha) {
+    const W = VIDEO.width, H = VIDEO.height, width = 600, right = W - 96, left = right - width;
+    const rows = [];
+    const row = (value, font, height, colour) => { g.font = font; for (const line of wrap(g, value, width)) rows.push({ line, font, height, colour }); };
+    if (key.map) {
+      row(key.map.en, `600 27px ${SANS}`, 38, '#f6f2e6'); row(key.map.vi, `italic 400 24px ${SANS}`, 34, '#f6f2e6dd');
+      rows.push({ scale: key.map.stops, height: 74 });
+      row(key.map.aim, `400 22px ${SANS}`, 32, '#e6cf93');
+    }
+    if (key.map && key.mark) rows.push({ height: 14 });
+    if (key.mark) {
+      rows.push({ line: key.mark.en, font: `600 25px ${SANS}`, height: 36, colour: '#f6f2e6', ring: true, inset: 44 });
+      rows.push({ line: key.mark.vi, font: `italic 400 23px ${SANS}`, height: 32, colour: '#f6f2e6dd', inset: 44 });
+    }
+    const height = rows.reduce((sum, r) => sum + r.height, 0), top = H - 84 - height;
+    g.save(); g.globalAlpha = alpha; g.letterSpacing = '0px';
+    g.fillStyle = 'rgba(13,18,16,.74)'; g.fillRect(left - 26, top - 22, width + 52, height + 44);
+    g.textBaseline = 'top'; g.textAlign = 'left';
+    let y = top;
+    for (const r of rows) {
+      if (r.scale) {
+        const step = width / r.scale.length;
+        g.font = `400 20px ${SANS}`; g.textAlign = 'center';
+        r.scale.forEach(([value, colour], i) => {
+          g.fillStyle = colour; g.fillRect(left + i * step, y + 8, step + 0.5, 26);
+          g.fillStyle = '#f6f2e6'; g.fillText(value, left + (i + 0.5) * step, y + 42);
+        });
+        g.textAlign = 'left';
+      } else if (r.line) {
+        g.font = r.font; g.fillStyle = r.colour;
+        g.fillText(r.line, left + (r.inset || 0), y + (r.height - parseInt(r.font.match(/(\d+)px/)[1], 10)) / 2);
+        if (r.ring) ring(g, left + 15, y + r.height / 2, 11);
+      }
+      y += r.height;
+    }
+    g.restore();
+  }
+  function ring(g, x, y, radius) {
+    g.beginPath(); g.arc(x, y, radius, 0, 2 * Math.PI);
+    g.lineWidth = 6; g.strokeStyle = 'rgba(0,0,0,.6)'; g.stroke();
+    g.lineWidth = 3; g.strokeStyle = '#ffd76a'; g.stroke();
+  }
   // The viewer calls this straight after it has drawn a frame of the film.
   function rendered(source) {
     if (tape.on && film.running) paint(source);
@@ -969,8 +1375,15 @@
     const step = film.time < 0.3 ? 1 : Math.min(1, Math.abs(film.time - tape.last) / 0.4); tape.last = film.time;
     tape.fx.caption += ((on.caption ? 1 : 0) - tape.fx.caption) * step;
     tape.fx.card += ((on.card ? 1 : 0) - tape.fx.card) * step;
-    const black = blackAt(film.time);
+    // Rings on the marked fittings, in the cropped picture and under the fades.
+    for (const [x, y] of film.points) {
+      const px = ((x + 1) / 2 * source.width - (source.width - w) / 2) / w * W, py = ((1 - y) / 2 * source.height - (source.height - h) / 2) / h * H;
+      if (px > 0 && px < W && py > 0 && py < H) ring(g, px, py, 15);
+    }
+    const black = blackAt(film.time), keyed = !!(film.key?.map || film.key?.mark) && black < 0.5 && !on.card;
+    tape.fx.key += ((keyed ? 1 : 0) - tape.fx.key) * step;
     if (black > 0.004) { g.globalAlpha = black; g.fillStyle = '#000'; g.fillRect(0, 0, W, H); g.globalAlpha = 1; }
+    if (tape.fx.key > 0.01 && film.key) paintKey(g, film.key, tape.fx.key);
     if (tape.fx.caption > 0.01 && film.text?.en) paintCaption(g, film.text, tape.fx.caption);
     if (tape.fx.card > 0.01 && film.text?.card) paintCard(g, film.text.card, tape.fx.card);
   }
@@ -1035,8 +1448,11 @@
     return { rmsDbfs: dB(Math.sqrt(squares / data.length)), peakDbfs: dB(peak) };
   }
 
+  // The technical tours' buttons in the Discover menu name their film.
+  for (const button of document.querySelectorAll?.('[data-film]') || []) button.addEventListener('click', () => play(button.dataset.film));
+
   window.CHURCH_CINEMA = {
-    start, stop, frame, rendered, still, play, pose, black: blackAt, seek, skip, audit, setPaused, setMusic, musicOutput,
+    start, stop, frame, rendered, still, play, pose, black: blackAt, seek, skip, audit, setPaused, setMusic, musicOutput, figures: modelFigures, maps: MAPS,
     shots: SHOTS, score, films: FILMS,
     get length() { return FILMS.full.length; },
     get video() { return tape.result; },
