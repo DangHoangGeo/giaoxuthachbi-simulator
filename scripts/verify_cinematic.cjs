@@ -72,6 +72,7 @@ function checkPath(reel, { indoorLimit }) {
   return { fastest, quickestTurn };
 }
 const { fastest, quickestTurn } = checkPath(film.films.full, { indoorLimit: 3.2 });
+assert(!shots.some(shot => shot.systems), 'no wiring-only scenes');
 // Scenes joined by a plain cut that continue the same movement meet exactly.
 for (const [from, to] of [['facade', 'towers'], ['side-b', 'rear'], ['rear', 'return'], ['enter', 'nave'], ['roof-off', 'night-orbit'], ['night-orbit', 'over-nave']]) {
   const a = shots.find(shot => shot.id === from), b = shots.find(shot => shot.id === to);
@@ -131,63 +132,12 @@ assert(score.events.length > 900);
 
 const bundle = read('bundle.js'), text = JSON.stringify(shots);
 
-// ---------------------------------------------------------------- short film
-// A cut for sharing: within X's 2 min 20 s, bells first, the wiring-only view
-// under black, a request for engineering advice, and the design status.
-const short = film.films.short, cut = short.shots, music = short.score;
-assert(short.length >= 100 && short.length <= 140, `short film of ${short.length} s fits a 2 min 20 s post`);
-assert.equal(cut.reduce((sum, shot) => sum + shot.bars, 0), music.bars, 'short film: shots and score cover the same bars');
-assert.equal(short.length, music.bars * music.bar);
-const shortPath = checkPath(short, { indoorLimit: 3.5 });
-// A post shows the first frame before it plays: the lit church from outside with its title, not black.
-assert(film.black(0, short) === 0 && cut[0].light === 'evening' && cut[0].roof && !cut[0].systems && cut[0].card.at === 0, 'short film opens on the lit church with its title');
-assert(film.pose(0, short).eye[0] < -20 && film.pose(0, short).eye[1] > 10, 'first frame is taken from outside, above the courtyard');
-assert(film.black(short.length - 0.01, short) > 0.99, 'short film closes to black');
-cut.slice(1).forEach((shot, i) => {
-  const before = cut[i];
-  if (shot.light !== before.light || shot.roof !== before.roof || !!shot.systems !== !!before.systems) {
-    assert(film.black(shot.start - 0.001, short) > 0.99 && film.black(shot.start + 0.001, short) > 0.99, `${shot.id}: scene change under black`);
-  }
-});
-assert(cut.some(shot => shot.systems) && cut.filter(shot => shot.systems).every(shot => shot.light === 'evening'), 'wiring-only view appears, at night');
-assert(!film.films.full.shots.some(shot => shot.systems), 'the long film is unchanged: no wiring-only scenes');
-// Bells alone over the evening scene; they hand over to the organ as daylight comes.
-const bells = music.events.filter(event => event.stops === 'bell'), pipes = music.events.filter(event => event.stops !== 'bell');
-assert(bells[0].time === 0 && pipes[0].time >= 9.9, 'bells ring alone for the first ten seconds');
-// The organ enters quietly beneath the bells and only reaches full strength after they stop.
-const lastOpeningBell = Math.max(...bells.map(event => event.time));
-assert(pipes.filter(event => event.time <= lastOpeningBell).every(event => event.level <= 0.4 && /^(celeste|voice|softPedal)$/.test(event.stops)), 'only soft strings and a flute while the last bells are struck');
-// From daylight the organ grows bar by bar into the toccata, with no sudden jump.
-const swell = [4, 5, 6, 7, 8].map(bar => Math.max(...pipes.filter(event => event.voice === 'melody' && event.time >= bar * music.bar && event.time < (bar + 1) * music.bar).map(event => event.level)));
-assert(swell.every((level, i) => !i || (level > swell[i - 1] && level - swell[i - 1] < 0.2)), `organ grows steadily from daylight: ${swell.map(v => v.toFixed(2)).join(' ')}`);
-assert(bells.every(event => event.level === 1), 'bells at full strength');
-assert(bells.every(event => event.time < cut[1].start + 2.5), 'the last bell is struck within a bar of daylight');
-assert(new Set(bells.map(event => event.note)).size === 2, 'two bells');
-music.events.forEach((event, i) => {
-  if (i) assert(event.time >= music.events[i - 1].time, 'short score in time order');
-  assert(event.time >= 0 && event.time + event.length <= short.length + 0.25 && event.level > 0 && event.level <= 1 && event.note >= 36 && event.note <= 88, 'short score note in range');
-});
-const shortBass = music.events.filter(event => event.voice === 'bass').reduce((sum, event) => sum + event.length, 0);
-assert(shortBass > (short.length - 11) * 0.97, 'pedal under the organ, from its entry to the close');
-// From the door the camera makes one movement: up to the timber, along it, down to the sanctuary.
-for (const [from, to] of [['enter', 'rise'], ['rise', 'timber'], ['timber', 'sanctuary']]) {
-  const a = cut.find(shot => shot.id === from), b = cut.find(shot => shot.id === to);
-  assert.equal(b.index, a.index + 1); assert.equal(b.cut, 'cut');
-  const end = film.pose(b.start - 1e-6, short), begin = film.pose(b.start, short);
-  assert(dist(end.eye, begin.eye) < 0.01 && dist(end.look, begin.look) < 0.01 && Math.abs(end.lens - begin.lens) < 0.01, `short film: ${from} → ${to} continues`);
-}
-assert(!/hard part/i.test(JSON.stringify(cut)), 'evening caption without "the hard part" (owner, 9 October 2026)');
-// The request and the design status are on screen at the end and stay there.
-const ask = cut[cut.length - 1], shortText = JSON.stringify(cut);
-assert(ask.end && ask.card.hold && /advise/i.test(ask.card.title) && /not an electrical engineer/.test(ask.card.line), 'closing card asks for advice');
-assert(/not approved for construction/.test(JSON.stringify(ask.card.foot)), 'closing card keeps the design status');
-assert(/Model estimates, not a checked design/.test(shortText) && /Supply and earthing/.test(shortText), 'electrical captions state their status and the open questions');
-// Figures in braces are filled from the open model; every such caption has a plain form.
-for (const shot of cut) if (/\{\w+\}/.test(shot.note?.en || '')) assert(shot.plain && !/\{/.test(shot.plain), `${shot.id}: plain caption for use without the model`);
-assert(shortText.includes('36.9 m') && bundle.includes('crossTop: 36.92') && shortText.includes('53 m') && bundle.includes('12: 53.016,'), 'short film figures follow the model data');
 // Recording: the viewer reports each drawn frame, and the module can make frames one at a time.
 assert(bundle.includes('J?.cinema && window.CHURCH_CINEMA.rendered?.(n.domElement)'), 'render loop reports drawn frames');
 assert(typeof film.still === 'function' && typeof film.play === 'function');
+// The 2 min 15 s short film was removed on 11 October 2026 (owner's request).
+assert.deepEqual(Object.keys(film.films), ['full'], 'the five-minute film is the only film');
+assert(!/bell|toccata/i.test(JSON.stringify(score.events.map(event => event.stops))), 'no bell strokes in the remaining score');
 
 // Figures quoted in the captions are the values held in the model data.
 for (const [quoted, source] of [['+36.920 m', 'crossTop: 36.92'], ['+12.472 m', 'ridge: 12.472'], ['53.016 m', '12: 53.016,'], ['+0.750 m', 'altar: 0.75'],
@@ -210,7 +160,7 @@ assert(bundle.includes('if (((K = V), J?.cinema)) window.CHURCH_CINEMA.frame(_e)
 assert(bundle.includes('V && window.CHURCH_CINEMA?.stop()'), 'ending the tour stops the film');
 const html = read('OPEN_CHURCH.html');
 assert(/<button id="tourButton"[^>]*>▶ Cinematic tour<\/button>/.test(html), 'tour button in the page');
-assert(/<button id="shortFilmButton"[^>]*>▶ Short film · 2 min 15<\/button>/.test(html), 'short film button in the page');
+assert(!/shortFilmButton|Short film/.test(html), 'no short film button or help text in the page');
 assert(html.indexOf('cinematic-tour.js') > 0 && html.indexOf('cinematic-tour.js') < html.indexOf('startup.js'), 'film module loads before the model starts');
 assert(html.includes('cinematic-tour.css'));
 // Offline and private: the module fetches nothing and stores nothing.
@@ -218,5 +168,3 @@ assert(!/\bfetch\(|XMLHttpRequest|localStorage|sessionStorage|https?:\/\//.test(
 
 console.log(`Cinematic tour: ${shots.length} scenes, ${film.length} s, ${score.bars} bars, ${score.events.length} notes. ` +
   `Fastest ${fastest.toFixed(1)} m/s, quickest turn ${quickestTurn.toFixed(1)} °/s. Path, scene and score checks passed.`);
-console.log(`Short film: ${cut.length} scenes, ${short.length} s, ${music.bars} bars, ${music.events.length} notes, ${bells.length} bell strokes. ` +
-  `Fastest ${shortPath.fastest.toFixed(1)} m/s, quickest turn ${shortPath.quickestTurn.toFixed(1)} °/s. Checks passed.`);

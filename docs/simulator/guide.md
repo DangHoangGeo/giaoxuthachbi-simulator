@@ -479,30 +479,16 @@ Controls: **Space** or a click pauses and continues, **←** and **→** change 
 - Some browsers hold sound back until the page is clicked. The film then shows "Click once to switch the organ music on".
 - The route is fixed: centre aisle below 4.3 m, 1.5–2 m beside the centreline at 6.4–7.1 m under the roof, and the side-B aisle at 2–2.4 m. After placing equipment in those zones, run `CHURCH_CINEMA.audit()` in the browser console: it reports the nearest surface to the camera in each scene. `node scripts/verify_cinematic.cjs` checks the shot list, camera path, scene changes and score without a browser. Record: `review/cinematic-tour-2026-10-09/`.
 
-### Short film for sharing · 9 October 2026
+### Short film removed · 11 October 2026
 
-**Discover → ▶ Short film · 2 min 15** plays a second, separate film of 2 min 15 s (X allows 2 min 20 s). The five-minute tour above is unchanged. The short film was made at the owner's request to post on X and Instagram and ask engineers for advice on the electrical design.
+The separate 2 min 15 s film for sharing (added 9 October 2026: bells and organ, the wiring-only view and a request for engineering advice) was removed from the viewer at the owner's request on 11 October 2026. Its button, shot list, bell and toccata score and its checks are gone; the five-minute tour above is unchanged (same shot list, camera path and score, compared before and after the removal). The code remains in Git history up to commit `e3189c4`. Video files already exported to the ignored `exports/sharing/` folder are not affected.
 
-| Time | Scenes | Light, roof, view |
-| --- | --- | --- |
-| 0:00–0:10 | The lit church from outside, with the title on the first frame (a post shows this frame before it plays, so it is not black) | Evening, roof on |
-| 0:10–1:10 | Around the bell towers, the red tile roof, in through the door, a slow glide down the nave, the timber roof, the sanctuary | Day, roof on |
-| 1:10–1:30 | The lit nave, then the plan from above | Evening; roof hidden for the plan |
-| 1:30–1:50 | The wiring on its own, from outside and from the nave | Evening, **Wiring → Systems only** view |
-| 1:50–2:15 | The main board DB-1 in the service room, then the lit tower front with the request, held for 15 s | Evening, roof on |
+### Saving the film as a video file
 
-- **Music:** two synthesised bells a fifth apart ring alone over the evening scene. As the picture turns to daylight their last strokes ring out over a soft entry of strings and one flute, and the organ grows from there into an original toccata on the homeland melody of the long film. The bells ring only at the opening and the film closes on the organ alone (owner's direction, 9 October 2026). It quotes no existing piece and is not a recording of the church's bells.
-- **Figures** in the captions (numbers of lamps, fans and loudspeakers; cable routes and their total route length; circuits; connected kW) are read from the model that is open when the film starts, so they follow your layout. They are simulator values: route length is not installed cable length, and connected rating is not operating consumption. The caption says "Model estimates, not a checked design".
-- **The request** on the closing card reads: "Can you advise us? I built this model to help my home parish. I am not an electrical engineer. Electrical, lighting and sound engineers: please reply or send a message." The caption before it lists what needs an engineer: supply and earthing, cable sizes and voltage drop, protection and discrimination, surge and lightning protection, emergency lighting. The card keeps "Design-development model, not approved for construction". Wording is in the `SHORT_SHOTS` list of `Thach_Bi_Viewer/cinematic-tour.js`.
-- The film names the province (Ninh Bình, Việt Nam) and shows where the boards and cable routes are proposed. Check that you are content to publish both before posting.
-- While it plays, the film switches the Wiring view to **Systems only** for two scenes and puts back the view and overlay you had when it ends.
+There are two ways:
 
-**Saving a video file.** There are two ways:
-
-1. **● Save as video** in the film's control bar (either film) plays the film from the start and records it in the browser: 1920 × 1080, captions and cards drawn into the picture, with the music, as MP4 where the browser can (Chrome can). It records in real time, so the number of frames a second is whatever the computer manages. On the Mac this was built on it reached about 8 frames a second, which is jerky. Keep the window in front until the film ends.
-2. **Frame by frame** with `scripts/film_export/` gives a smooth 30 frames a second on any computer and takes about twelve minutes for the short film. Follow `scripts/film_export/README.md`. The file shared on 9 October 2026 was made this way.
-
-`node scripts/verify_cinematic.cjs` checks the short film as well: length within X's 2 min 20 s, a first frame that is not black, bells at the opening only, scene changes under black, an unhurried pace indoors, the request and the design status on the closing card. `CHURCH_CINEMA.audit({ film: 'short' })` gives its camera clearance.
+1. **● Save as video** in the film's control bar plays the film from the start and records it in the browser: 1920 × 1080, captions and cards drawn into the picture, with the music, as MP4 where the browser can (Chrome can). It records in real time, so the number of frames a second is whatever the computer manages. On the Mac this was built on it reached about 8 frames a second, which is jerky. Keep the window in front until the film ends.
+2. **Frame by frame** with `scripts/film_export/` gives a smooth 30 frames a second on any computer. Follow `scripts/film_export/README.md`.
 
 ## Blue sky · 9 October 2026
 

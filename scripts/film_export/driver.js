@@ -1,4 +1,4 @@
-/* Frame-by-frame export of a cinematic film, for a smooth video on any computer.
+/* Frame-by-frame export of a film of the viewer, for a smooth video on any computer.
  *
  * The viewer's own "Save as video" records in real time, so its frame rate is
  * whatever the graphics card manages (about 8 frames a second at 1920 × 1080
@@ -9,12 +9,11 @@
  *
  * Paste into the browser console of the open viewer after clicking once in
  * the page (sound needs a click), or run it from an automation tool:
- *   exportFilm('short')            the 2 min 15 s film, sound and frames
- *   exportFilm('full')             five-minute film
- *   exportFilm('short', { sound: false })   frames only, keep an earlier sound file
+ *   exportFilm('full')                     the five-minute film, sound and frames
+ *   exportFilm('full', { sound: false })   frames only, keep an earlier sound file
  * Progress: window.filmExport. Nothing leaves this computer.
  */
-window.exportFilm = async function exportFilm(film = 'short', { base = 'http://127.0.0.1:8799', fps = 30, sound = true, quality = 0.93 } = {}) {
+window.exportFilm = async function exportFilm(film = 'full', { base = 'http://127.0.0.1:8799', fps = 30, sound = true, quality = 0.93 } = {}) {
   const cinema = window.CHURCH_CINEMA, church = window.church;
   const reel = cinema.films[film];
   const state = window.filmExport = { film, fps, phase: 'starting', frames: 0, total: Math.round(reel.length * fps), seconds: 0, soundLead: null, recoveries: 0, errors: [], done: false };

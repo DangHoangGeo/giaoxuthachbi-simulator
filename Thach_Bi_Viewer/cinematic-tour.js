@@ -123,80 +123,6 @@
       keys: [[-12.5, 1.4, 1.2, 2.4, 9, 0, 54], [-22, 3.4, 5, 2.4, 11, 0, 50], [-36, 8, 12, 4, 13, 0, 46], [-50, 14, 22, 8, 13, 0, 44]] }
   ];
 
-  /* ---------------------------------------------------------- short film
-   * A cut of 2 min 15 s for sharing (X allows 2 min 20 s): the lit church at
-   * evening from the first frame, the church by day, then the building systems
-   * at night, the wiring on its own, and a request for
-   * engineering advice. Thirteen scenes at 2.5 s a bar: four bars each, six for
-   * the closing request. Camera
-   * routes are taken from the long film, travelled faster. Text in braces is
-   * filled from the open model when the film starts; `plain` is used without it.
-   */
-  const SHORT_BAR = 2.5;
-  const SHORT_CHAPTERS = {
-    church: { en: 'Nhà thờ Thạch Bi', vi: 'Ninh Bình · Việt Nam' },
-    systems: { en: 'The building systems', vi: 'Hệ thống kỹ thuật' }
-  };
-  const SHORT_SHOTS = [
-    // The first frame is the lit church with its title, not black: posts show it before they play.
-    { id: 'evening-front', chapter: 'church', bars: 4, light: 'evening', roof: true, cut: 'cut', ease: [0.6, 0.6],
-      card: { at: 0, shade: 0.4, small: 'Ninh Bình · Việt Nam', title: 'Nhà thờ Thạch Bi', line: 'A 3D design model of our parish church · Mô hình 3D nhà thờ giáo xứ' },
-      keys: [[-60, 25, 37, 9, 12.5, 0, 42], [-50, 20, 30, 8, 12.5, 0, 43], [-40, 15, 22, 6, 13, 0, 44]] },
-    { id: 'towers', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.5, 0.8],
-      en: 'Twin towers, 36.9 m to the cross', vi: 'Hai tháp chuông, cao 36,9 m',
-      note: { en: 'Modelled from the architect’s drawings: 53 m long under one continuous roof.' },
-      keys: [[-29, 27, -5, 2.4, 26, -0.5, 44], [-15, 33, -21, 2.6, 28.5, -1, 44], [7, 36, -27, 3.5, 28, -1.5, 44]] },
-    { id: 'roof', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [0.7, 0.6],
-      en: 'A roof of red clay tiles', vi: 'Mái ngói đỏ',
-      note: { en: 'Ngói đỏ, the fired-clay roof of Vietnamese villages. A proposed finish.' },
-      keys: [[52, 19, 31, 34, 8, 0, 46], [22, 26, 30, 17, 9.5, 0, 45], [-14, 22, 17, 4, 11.5, 0, 44]] },
-    { id: 'enter', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.9],
-      en: 'Come inside', vi: 'Mời bạn vào',
-      note: { en: 'Up the forecourt steps and through the central door.' },
-      keys: [[-7, 1.2, 0, 16, 3, 0, 52], [-1, 1.25, 0, 26, 3, 0, 54], [3.2, 1.6, 0, 38, 3.2, 0, 56], [9.5, 1.7, 0, 48, 3.5, 0, 56]] },
-    // One movement from the door: up to the timber roof, along it, and down to
-    // the sanctuary. The walk down the nave is kept for the evening scene.
-    { id: 'rise', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [1, 1],
-      en: 'The nave', vi: 'Lòng nhà thờ',
-      note: { en: 'Fourteen timber columns in red lacquer carry the roof above the pews.' },
-      keys: [[9.5, 1.7, 0, 48, 3.5, 0, 56], [13.2, 3.7, 1, 40, 7.5, 0, 58], [17.5, 6.5, 1.9, 33, 10.6, -0.4, 60]] },
-    { id: 'timber', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [1, 1],
-      en: 'Carved and gilded timber', vi: 'Gỗ chạm khắc, thếp vàng',
-      keys: [[17.5, 6.5, 1.9, 33, 10.6, -0.4, 60], [24.5, 7, 2, 39, 10.2, -0.3, 60], [31, 6.6, 1.9, 46, 8.4, 0, 58]] },
-    { id: 'sanctuary', chapter: 'church', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [1, 0.2],
-      en: 'A sanctuary in red and gold', vi: 'Cung thánh sơn son thếp vàng',
-      note: { en: 'An art proposal in the spirit of northern Vietnamese lacquer craft.' },
-      keys: [[31, 6.6, 1.9, 46, 8.4, 0, 58], [35.6, 5.1, 1.9, 48.4, 6.4, 0, 54], [39.2, 3.4, 0.6, 48.8, 5.3, 0, 48], [41.7, 2.8, 0, 48.8, 5.1, 0, 40]] },
-    { id: 'evening', chapter: 'systems', bars: 4, light: 'evening', roof: true, cut: 'fade', ease: [0.2, 0.5],
-      en: 'After dark: light, sound, air, power', vi: 'Khi đêm xuống: ánh sáng, âm thanh, thông gió, điện',
-      note: { en: 'In the evening the church must be lit, heard and kept cool without air conditioning. {lights} lamps, {fans} fans and {speakers} loudspeakers are placed in the model.' },
-      plain: 'In the evening the church must be lit, heard and kept cool without air conditioning. Lamps, fans and loudspeakers are placed in the model.',
-      keys: [[5.4, 1.9, 0, 48.8, 3.8, 0, 56], [14, 2.3, 0, 48.8, 4, 0, 54], [22.5, 2.9, 0, 48.8, 4.4, 0, 52]] },
-    { id: 'roof-off', chapter: 'systems', bars: 4, light: 'evening', roof: false, cut: 'dip', ease: [0.2, 0], up: [0, 0, -1],
-      en: 'The roof lifted away', vi: 'Nhấc mái để nhìn từ trên',
-      note: { en: 'Every fitting in the model has a position and a circuit.' },
-      keys: [[26.5, 96, 0.6, 26.5, 0, 0, 40], [26.5, 70, 7, 26.5, 1, 0, 42], [26.5, 46, 31, 26.5, 2, 0, 44], [26.5, 38, 42, 26.5, 2.5, 0, 45]] },
-    { id: 'wiring', chapter: 'systems', bars: 4, light: 'evening', roof: false, systems: true, cut: 'dip', ease: [0.3, 0.7],
-      en: 'The electrical model', vi: 'Mô hình hệ thống điện',
-      note: { en: '{routes} cable routes, about {km} km · {circuits} circuits · two distribution boards · {kw} kW connected. Model estimates, not a checked design.' },
-      plain: 'Cable routes, circuits and two distribution boards. Model estimates, not a checked design.',
-      keys: [[26.5, 38, 42, 26.5, 2.5, 0, 45], [52, 34, 35, 27, 3, 0, 45], [68, 30, 14, 28, 3.5, 0, 45]] },
-    { id: 'wiring-nave', chapter: 'systems', bars: 4, light: 'evening', roof: false, systems: true, cut: 'cut', ease: [0.6, 0.5],
-      en: 'What needs an engineer', vi: 'Những việc cần kỹ sư',
-      note: { en: 'Supply and earthing · cable sizes and voltage drop · protection and discrimination · surge and lightning protection · emergency lighting.' },
-      keys: [[8, 3, 0, 40, 6.5, 0, 62], [20, 3.4, 0, 46, 6.5, 0, 62], [34, 3.9, 0, 48.6, 6, 0, 60]] },
-    { id: 'boards', chapter: 'systems', bars: 4, light: 'evening', roof: true, cut: 'dip', ease: [0.3, 0.3],
-      en: 'The main board, DB-1', vi: 'Tủ điện chính DB-1',
-      note: { en: 'In the service room behind the sanctuary, with the lighting, fan and sound controls. DB-2 serves the towers and entrance. Nothing here is approved for construction.' },
-      keys: [[51.9, 1.9, 0.9, 48.9, 1.8, 0, 58], [51.7, 1.9, -0.2, 48.9, 1.8, -0.6, 57], [51.5, 1.9, -1.2, 48.9, 1.8, -1.1, 56]] },
-    { id: 'ask', chapter: 'systems', bars: 6, light: 'evening', roof: true, cut: 'dip', ease: [0.2, 0], end: true,
-      card: { at: 0.8, hold: true, small: 'Nhà thờ Thạch Bi · Ninh Bình, Việt Nam', title: 'Can you advise us?',
-        line: 'I built this model to help my home parish. I am not an electrical engineer.',
-        second: 'Electrical, lighting and sound engineers: please reply or send a message.',
-        foot: ['Design-development model, not approved for construction · Bells and organ generated by the viewer', 'Xin cảm ơn · Thank you'] },
-      keys: [[-12.5, 1.4, 1.2, 2.4, 9, 0, 54], [-22, 3.4, 5, 2.4, 11, 0, 50], [-36, 8, 12, 4, 13, 0, 46]] }
-  ];
-
   /* --------------------------------------------------------------- maths */
   const smooth = x => { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -249,10 +175,9 @@
     });
     return reel;
   }
-  // The two films. `reel` is the one being played.
+  // The films by name. `reel` is the one being played.
   const FILMS = {
-    full: prepare({ id: 'full', name: 'Cinematic tour', bar: BAR, shots: SHOTS, chapters: CHAPTERS }),
-    short: prepare({ id: 'short', name: 'Short film', bar: SHORT_BAR, shots: SHORT_SHOTS, chapters: SHORT_CHAPTERS })
+    full: prepare({ id: 'full', name: 'Cinematic tour', bar: BAR, shots: SHOTS, chapters: CHAPTERS })
   };
   let reel = FILMS.full;
   const table = (values, x) => {
@@ -492,87 +417,7 @@
   }
   const score = compose();
 
-  /* Short film: the bells of the two towers over the evening scene, handing
-   * over to the organ as daylight comes, then a toccata on the homeland theme. 4/4 at 96 beats a minute, one
-   * bar for every 2.5 s of film, 54 bars.
-   * Original; it quotes no existing piece. The melody is the homeland melody of
-   * the long film, here on the reeds under running semiquavers. The bells ring
-   * only at the opening. */
-  function composeShort() {
-    const bar = SHORT_BAR, beat = bar / 4, events = [];
-    const add = (voice, time, length, note, stops, level) => { const event = { part: 'short', voice, time, length, note, stops, level }; events.push(event); return event; };
-    const held = new Map();
-    const tie = (voice, key, time, length, note, stops, level) => {
-      const last = held.get(key);
-      if (last && last.note === note && last.stops === stops && Math.abs(last.time + last.length - time) < 1e-6) { last.length += length; return; }
-      held.set(key, add(voice, time, length, note, stops, level));
-    };
-    // Two bells a fifth apart, each swinging at its own pace, as from twin towers.
-    function peal(from, to, level) {
-      for (const [note, period, offset] of [[midi('A3'), 2.3, 0], [midi('E4'), 1.7, 0.9]]) {
-        for (let b = from * 4 + offset; b < to * 4 - 0.2; b += period) add('bell', b * beat, 5, note, 'bell', level);
-      }
-    }
-    function block(first, sections) {
-      let index = first;
-      for (const section of sections) {
-        const opening = index;
-        for (const [chords, melody] of section.bars) {
-          const start = index * bar, list = chords.split(' '), share = bar / list.length;
-          const level = Math.min(1, section.level + (section.swell || 0) * (index - opening));
-          const sung = tune(melody, 0).map(n => ({ note: n.note, time: start + n.time * beat, length: n.length * beat }));
-          for (const n of sung) {
-            add('melody', n.time, n.length - 0.04, n.note, section.solo, level);
-            if (section.doubled && n.note + 12 <= 88) add('melody', n.time, n.length - 0.04, n.note + 12, 'song', level * 0.7);
-          }
-          let top = 96;
-          list.forEach((symbol, k) => {
-            const c = chord(symbol), time = start + k * share;
-            const above = sung.filter(n => n.time < time + share && n.time + n.length > time).map(n => n.note);
-            if (above.length) top = Math.min(...above);
-            c.tones.map(pc => place(pc, 62)).map(n => (n > top - 2 ? n - 12 : n))
-              .forEach((note, i) => tie('inner', `inner${i}:${note}`, time, share, note, section.pad, level * (section.running ? 0.6 : 0.8)));
-            tie('bass', 'bass', time, share, 36 + c.bass, section.pedal || 'softPedal', level);
-            const ladder = c.tones.map(pc => place(pc, 76)).sort((a, b) => a - b);
-            // Running semiquavers: top, middle, bottom, middle of the chord.
-            if (section.running) for (let i = 0; i < Math.round(share / beat * 4); i++) add('running', time + i * beat / 4, beat / 4 - 0.01, ladder[[2, 1, 0, 1][i % 4] % ladder.length], 'sparkle', level * (i % 4 ? 0.78 : 1));
-            // A quiet pulse of quavers on the top of the chord.
-            if (section.pulse) for (let i = 0; i < Math.round(share / beat * 2); i++) add('pulse', time + i * beat / 2, beat / 2 - 0.03, ladder[ladder.length - 1], 'quavers', level * (i % 2 ? 0.7 : 1));
-          });
-          index++;
-        }
-      }
-      return index;
-    }
-    // Bars 1–4, the evening scene: the bells alone. As the picture turns to
-    // daylight (bar 5) the last strokes ring out over a soft entry of strings
-    // and one flute, and the organ grows from there into the toccata.
-    peal(0, 4.7, 1);
-    let next = block(4, [
-      { pad: 'celeste', solo: 'voice', level: 0.3, swell: 0.12, bars: [['Am', 'A4:1 C5:1 E5:2'], ['F', 'F5:1 A5:1 C6:2']] },
-      { pad: 'principals', solo: 'song', pedal: 'pedal', level: 0.56, swell: 0.12, bars: [['Dm', 'D5:1 F5:1 A5:2'], ['G', 'G5:2 B5:1 D6:1']] },
-      // Bars 9–28: toccata on the homeland theme, coming to rest at the sanctuary.
-      { pad: 'principals', solo: 'reed', pedal: 'pedal', level: 0.82, running: true, doubled: true, bars: HOME_A },
-      { pad: 'principals', solo: 'reed', pedal: 'pedal', level: 0.88, running: true, doubled: true, bars: HOME_B },
-      { pad: 'principals', solo: 'reed', pedal: 'pedal', level: 0.8, running: true, doubled: true, bars: HOME_A.slice(4) },
-      // Evening. Strings, a single voice, a quiet pulse.
-      { pad: 'celeste', solo: 'voice', level: 0.52, swell: 0.012, pulse: true, bars: [['Am', 'E5:2 D5:1 C5:1'], ['Am', 'A4:4'], ['F', 'C5:2 A4:1 C5:1'], ['F', 'F5:3 E5:1'],
-        ['Dm', 'D5:2 F5:1 E5:1'], ['Dm', 'D5:4'], ['E', 'B4:2 E5:2'], ['E', 'G#5:3 B5:1']] },
-      // The wiring revealed; the organ gathers.
-      { pad: 'full', solo: 'reed', pedal: 'fullPedal', level: 0.7, swell: 0.08, running: true, bars: [['Am', 'A4:1 C5:1 E5:2'], ['F', 'F5:1 A5:1 C6:2'], ['G', 'D5:1 G5:1 B5:2'], ['G', 'D6:4']] },
-      // The theme on full organ.
-      { pad: 'full', solo: 'reed', pedal: 'fullPedal', level: 1, running: true, doubled: true, bars: HOME_A },
-      // Close: six bars under the request, ending on a held chord before the picture fades.
-      { pad: 'full', solo: 'reed', pedal: 'fullPedal', level: 0.9, bars: [['F', 'A4:1 C5:1 F5:2'], ['G', 'B4:1 D5:1 G5:2'], ['F/C', 'A5:2 C6:2'], ['C', 'C6:8'], ['C', ''], ['C', '']] }
-    ]);
-    // The bells belong to the opening only (owner, 9 October 2026): the close is the organ alone.
-    // The last chord stops a second before the end, leaving its echo for the fade.
-    const end = next * bar - 1;
-    for (const event of events) event.length = Math.min(event.length, end - event.time);
-    return { events: events.sort((a, b) => a.time - b.time), bars: next, bar };
-  }
   FILMS.full.score = score;
-  FILMS.short.score = composeShort();
 
   const music = { context: null, on: true, epoch: null, next: 0, zero: 0, synced: false, waking: 0, timer: 0, waves: {} };
   // Resuming sound takes a moment: the picture waits for it instead of running ahead.
@@ -643,11 +488,6 @@
       const event = events[music.next++];
       const begin = Math.max(ctx.currentTime + 0.01, music.zero + event.time), end = music.zero + event.time + event.length;
       if (end - begin < 0.05) continue;
-      if (event.stops === 'bell') {
-        // A bell is struck once: one already ringing at a seek is not struck again.
-        if (music.zero + event.time > ctx.currentTime - 0.08) strike(ctx, begin, event);
-        continue;
-      }
       const frequency = 440 * Math.pow(2, (event.note - 69) / 12), out = music.epoch[TREMULANT.has(event.stops) ? 1 : 0];
       STOPS[event.stops].forEach(([tone, pitch, level, cents = 0], rank) => {
         const pipe = ctx.createOscillator(), gain = ctx.createGain(), peak = level * event.level * 0.2;
@@ -665,29 +505,13 @@
       });
     }
   }
-  /* A cast bell: hum, prime, minor-third tierce, quint, nominal and upper
-   * partials, each dying away at its own rate. Synthesised; it is not a
-   * recording of the church's bells. */
-  const BELL = [[0.5, 0.45, 3.2], [1, 0.7, 2.4], [1.2, 0.55, 1.8], [1.5, 0.3, 1.2], [2, 0.75, 1.5], [2.5, 0.25, 0.9], [3, 0.3, 0.7], [4.2, 0.18, 0.4], [5.4, 0.1, 0.25]];
-  function strike(ctx, begin, event) {
-    const frequency = 440 * Math.pow(2, (event.note - 69) / 12);
-    for (const [ratio, level, fade] of BELL) {
-      const partial = ctx.createOscillator(), gain = ctx.createGain();
-      partial.frequency.value = frequency * ratio;
-      gain.gain.setValueAtTime(0, begin);
-      gain.gain.linearRampToValueAtTime(level * event.level * 0.18, begin + 0.004);
-      gain.gain.setTargetAtTime(0, begin + 0.004, fade / 3);
-      partial.connect(gain); gain.connect(music.epoch[0]);
-      partial.start(begin); partial.stop(begin + fade * 2.4);
-    }
-  }
   function musicLevel(seconds = 0.25) {
     if (!music.context) return;
     music.master.gain.setTargetAtTime(music.on && film.running ? 0.9 : 0, music.context.currentTime, seconds / 3);
   }
 
   /* ---------------------------------------------------------------- film */
-  const film = { running: false, paused: false, time: 0, shot: null, before: null, church: null, layer: null, lastMove: 0, status: '', stats: null, text: null };
+  const film = { running: false, paused: false, time: 0, shot: null, before: null, church: null, layer: null, lastMove: 0, status: '', text: null };
   // What the next start plays: set by the buttons, used once.
   const wanted = { film: 'full', record: false, save: true };
   const byId = id => document.getElementById(id);
@@ -733,34 +557,17 @@
   }
   const part = selector => film.layer.querySelector(selector);
 
-  // Numbers quoted in the short film come from the model that is open.
-  function modelStats() {
-    const sim = window.CHURCH_SIMULATOR;
-    try {
-      const power = sim.powerSummary(), routes = sim.electrical.routes, count = { light: 0, fan: 0, speaker: 0 };
-      for (const item of sim.state.items) { const cat = sim.typeOf(item)?.cat; if (!item.hidden && cat in count) count[cat]++; }
-      return { lights: count.light, fans: count.fan, speakers: count.speaker, routes: routes.length,
-        km: (routes.reduce((sum, route) => sum + (route.length || 0), 0) / 1000).toFixed(1),
-        circuits: Object.keys(power.byCircuit).length, kw: (power.rated / 1000).toFixed(1) };
-    } catch { return null; }
-  }
-  const fill = (text, plain) => !text || !text.includes('{') ? text || '' : film.stats ? text.replace(/\{(\w+)\}/g, (all, key) => film.stats[key]) : plain || '';
   function applyScene(shot) {
-    const church = film.church, wiring = window.CHURCH_SIMULATOR?.electrical, ui = church.uiState();
-    const change = ui.lighting !== shot.light || ui.roof !== shot.roof;
-    // The wiring-only view remembers what was visible when it was switched on,
-    // so it is left before the light or the roof changes and entered after.
-    if (wiring?.view.mode === 'systems' && (change || !shot.systems)) wiring.setMode('building');
+    const church = film.church, ui = church.uiState();
     if (ui.lighting !== shot.light) church.setLighting(shot.light);
     if (ui.roof !== shot.roof) church.setRoof(shot.roof);
-    if (shot.systems && wiring && wiring.view.mode !== 'systems') wiring.setMode('systems');
   }
   function showShot(shot) {
     film.shot = shot;
     applyScene(shot);
     const chapter = reel.chapters[shot.chapter];
     const text = film.text = { chapter: `${chapter.en} · ${chapter.vi}`, en: shot.en || '', vi: shot.vi || '',
-      note: fill(shot.note?.en, shot.plain), noteVi: shot.note?.vi || '', card: shot.card || null };
+      note: shot.note?.en || '', noteVi: shot.note?.vi || '', card: shot.card || null };
     tape.fx.caption = tape.fx.card = 0;
     const caption = part('.cinema-caption');
     part('.cinema-chapter').textContent = text.chapter;
@@ -844,8 +651,7 @@
     const ui = church.uiState(), camera = church.orbitCamera, sim = window.CHURCH_SIMULATOR;
     film.before = { lighting: ui.lighting, roof: ui.roof, lens: camera.fov, enabled: church.controls.enabled,
       wiring: sim?.electrical?.view.mode, overlay: sim?.state.settings.overlay };
-    film.stats = modelStats();
-    // The films show the building; the wiring-only view is entered scene by scene.
+    // The film shows the building: the wiring-only view is left while it plays.
     if (film.before.wiring === 'systems') sim.electrical.setMode('building');
     buildLayer().hidden = false;
     document.body.classList.add('cinema');
@@ -922,7 +728,7 @@
     clearTimeout(notify.timer);
     notify.timer = setTimeout(() => toast.classList.remove('visible'), milliseconds);
   }
-  // Start a film by name: 'full' or 'short'. With record, it is saved as a video.
+  // Start a film by name. With record, it is saved as a video.
   function play(id = 'full', { record = false, save = true } = {}) {
     const church = film.church || window.church;
     if (!church?.ready || !FILMS[id]) return false;
@@ -1032,7 +838,7 @@
     recorder.ondataavailable = event => { if (event.data.size) tape.chunks.push(event.data); };
     recorder.onstop = () => {
       const blob = new Blob(tape.chunks, { type: tape.type });
-      const name = `thach-bi-${reelId === 'short' ? 'short-film' : 'cinematic-tour'}-${new Date().toISOString().slice(0, 10)}.${tape.type === 'video/mp4' ? 'mp4' : 'webm'}`;
+      const name = `thach-bi-${reelId === 'full' ? 'cinematic-tour' : reelId}-${new Date().toISOString().slice(0, 10)}.${tape.type === 'video/mp4' ? 'mp4' : 'webm'}`;
       // soundLead: seconds of recording before film time zero (the sound takes a moment to start).
       tape.result = { blob, name, type: tape.type, megabytes: +(blob.size / 1048576).toFixed(1), filmSeconds: length, soundLead: tape.lead };
       if (tape.save && blob.size) {
@@ -1103,9 +909,7 @@
     const W = VIDEO.width, H = VIDEO.height, width = W * 0.8;
     g.save(); g.globalAlpha = alpha;
     const shade = g.createRadialGradient(W / 2, H / 2, 60, W / 2, H / 2, W * 0.55);
-    // `shade` below 1 keeps the picture bright behind a card, as on the opening frame of a post.
-    const dark = card.shade ?? 1;
-    shade.addColorStop(0, `rgba(0,0,0,${0.66 * dark})`); shade.addColorStop(0.6, `rgba(0,0,0,${0.36 * dark})`); shade.addColorStop(1, 'rgba(0,0,0,0)');
+    shade.addColorStop(0, 'rgba(0,0,0,.66)'); shade.addColorStop(0.6, 'rgba(0,0,0,.36)'); shade.addColorStop(1, 'rgba(0,0,0,0)');
     g.fillStyle = shade; g.fillRect(0, 0, W, H);
     g.textAlign = 'center'; g.textBaseline = 'top'; g.fillStyle = '#f6f2e6'; g.shadowColor = 'rgba(0,0,0,.85)'; g.shadowBlur = 22;
     const rows = [];
@@ -1230,9 +1034,6 @@
     const dB = v => +(20 * Math.log10(Math.max(v, 1e-6))).toFixed(1);
     return { rmsDbfs: dB(Math.sqrt(squares / data.length)), peakDbfs: dB(peak) };
   }
-
-  // The short film's own button in the Discover menu.
-  byId('shortFilmButton')?.addEventListener('click', () => play('short'));
 
   window.CHURCH_CINEMA = {
     start, stop, frame, rendered, still, play, pose, black: blackAt, seek, skip, audit, setPaused, setMusic, musicOutput,

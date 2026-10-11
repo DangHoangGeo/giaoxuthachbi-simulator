@@ -21,9 +21,7 @@ music: a homeland theme outside and the Bach-Gounod Ave Maria inside.
 Space pauses, left/right arrows change scene, M switches the music, F fills
 the screen, Esc stops. The music is presentation music, not an acoustic
 prediction for this church.
-Short film (Discover menu): a cut of 2 min 15 s for sharing, with bells and
-organ, ending with a request for engineering advice. "Save as video" in
-either film records it as a video file in the browser.
+"Save as video" in the film records it as a video file in the browser.
 
 The original architectural drawings and measurement workbook govern dimensions.
 Finishes, furniture and lighting are visual proposals.
