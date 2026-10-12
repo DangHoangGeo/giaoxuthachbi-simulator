@@ -137,7 +137,7 @@ window.GUIDE = {
 
     { id: 's5f', step: 5, kind: 'clip', clip: 'clips/tour.mp4', poster: 'assets/tour.jpg',
       sentences: [
-        '**Short film** là bản ngắn, hai phút mười lăm giây.',
+        'Bên dưới còn có bốn phần **Technical tours**, mỗi phần chưa đến hai phút, giới thiệu đèn, quạt, âm thanh và hệ thống điện cùng các bản đồ ước tính của mô phỏng.',
         'Nhấn phím cách để tạm dừng, phím Esc để dừng phim.'] },
 
     { id: 's6a', step: 6, kind: 'app', img: 'assets/v-start.jpg',

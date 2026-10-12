@@ -27,6 +27,7 @@ Thay đổi được lưu tự động trong trình duyệt của máy này. Mu�
 | 3 | **Controls → Towers** | Mặt tiền nhà thờ: xem mục 6 |
 | 4 | **Walk** đến một hàng ghế, mở **Simulator → Sound**, bấm **▶ Play** | Nghe loa từ chỗ ngồi đó (nên dùng tai nghe) |
 | 5 | **Simulator → Analysis** | Danh sách **Design checks**: những điểm còn chưa đạt, viết dễ hiểu |
+| 6 | Bảng bên trái **Discover → Technical tours → Lights, Fans, Sound, Wiring** (thêm ngày 11/10/2026) | Bốn đoạn phim ngắn, mỗi đoạn chưa đến hai phút, giải thích từng hệ thống: đèn, quạt, âm thanh và đi dây, kèm bản đồ ước tính và chế độ xem riêng hệ thống dây của mô hình. Bấm **Esc** để dừng |
 
 ## 3. Xem từng hệ thống
 

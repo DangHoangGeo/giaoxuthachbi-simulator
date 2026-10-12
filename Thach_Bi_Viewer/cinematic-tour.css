@@ -45,3 +45,26 @@ body.cinema > :not(#viewport):not(#cinemaLayer):not(dialog) { opacity:0 !importa
 .cinema-layer.recording .cinema-controls button:not([data-cinema=stop]) { display:none; }
 .cinema-layer.recording .cinema-status { background:#7a1f16e6; }
 .place-dock .cinema-entry { display:flex; flex-direction:column; gap:6px; }
+
+/* Technical tours: their buttons, the key of the simulator map and the rings on marked fittings. */
+.place-dock .cinema-entry-label { display:block; margin:4px 0 -2px 6px; font-size:9px; font-weight:700; letter-spacing:.10em; text-transform:uppercase; color:var(--ui-muted,#8c957f); }
+.place-dock .cinema-tours { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:3px; width:100%; }
+.place-dock .cinema-tours button { height:30px; padding:0; font-size:9.5px; letter-spacing:-.01em; }
+.cinema-marks { position:absolute; inset:0; pointer-events:none; }
+.cinema-marks i { position:absolute; width:20px; height:20px; margin:-10px 0 0 -10px; border:2px solid #ffd76a; border-radius:50%; box-shadow:0 0 0 1.5px #0009, inset 0 0 0 1.5px #0006; }
+.cinema-marks i[hidden] { display:none; }
+.cinema-key { position:absolute; right:4.5vw; bottom:calc(9.5vh + 30px); width:min(30vw,400px); padding:12px 16px 13px; border-radius:6px; background:#0d1210bd; opacity:0; transition:opacity .8s ease; pointer-events:none; text-shadow:0 1px 8px #000b; }
+.cinema-key.visible { opacity:1; }
+.cinema-key [hidden] { display:none; }
+.cinema-key strong { display:block; font-weight:600; font-size:clamp(12px,1.05vw,16px); }
+.cinema-key em { display:block; margin-top:1px; font-size:clamp(11px,.95vw,14px); opacity:.88; }
+.cinema-scale { display:flex; margin:8px 0 22px; height:14px; }
+.cinema-scale span { flex:1; position:relative; }
+.cinema-scale span::after { content:attr(data-value); position:absolute; top:17px; left:-6px; right:-6px; text-align:center; font-size:clamp(9px,.78vw,12px); font-variant-numeric:tabular-nums; }
+.cinema-key small { display:block; font-size:clamp(10px,.86vw,13px); color:#e6cf93; }
+.cinema-key-map + .cinema-key-mark:not([hidden]) { margin-top:10px; }
+.cinema-key-mark { display:flex; align-items:center; gap:10px; font-size:clamp(11px,.95vw,14px); }
+.cinema-key-mark b { display:block; font-weight:600; }
+.cinema-key-mark em { margin-top:0; }
+.cinema-key-mark i { flex:none; width:14px; height:14px; border:2px solid #ffd76a; border-radius:50%; box-shadow:0 0 0 1.5px #0009; }
+@media (prefers-reduced-motion:reduce) { .cinema-key { transition:none; } }
