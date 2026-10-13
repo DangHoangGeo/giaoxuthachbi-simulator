@@ -140,9 +140,12 @@ assert.deepEqual(Object.keys(film.films), ['full', 'lighting', 'air', 'sound', '
 assert(!/bell|toccata/i.test(JSON.stringify(score.events.map(event => event.stops))), 'no bell strokes in the remaining score');
 
 // ------------------------------------------------------- technical tours
-// Four separate tours: lighting, fans and air, sound, electrical grid. Each shows
-// equipment, then the simulator's own view of it (an analysis map with the roof
-// hidden, or the wiring with the building hidden), and closes on the design status.
+// Four separate tours: lighting, fans and air, sound, electrical grid. Each
+// explains its system with demonstrations (circuits switched in a rehearsal in
+// memory, the simulator's figures recalculated and shown in a live panel), with
+// the simulator's own views (an analysis map with the roof hidden, or the wiring
+// with the building hidden), and closes on the design status. The demonstrations
+// are played against the real engine in verify_simulator.cjs.
 const engine = read('simulator/engine.js'), analysis = read('simulator/analysis.js'), electrical = read('simulator/electrical.js');
 const braces = text => [...String(text || '').matchAll(/\{(\w+)\}/g)].map(match => match[1]);
 // A stand-in for the simulator, to check that every figure a caption quotes can be read and formatted.
@@ -155,7 +158,7 @@ const stand = { state: { scene: 'Full service · evening', settings: { ambientDb
   electrical: { routes: [{ id: 'feeder:DB2', role: 'feeder', itemIds: [], length: 80.7 }, { id: 't1', role: 'trunk', itemIds: ['a', 'b'], length: 2400 }, { id: 't2', role: 'trunk', itemIds: ['c'], length: 71.3 },
     { id: 'd1', role: 'drop', itemIds: ['a'], length: 1200 }, { id: 'd2', role: 'drop', itemIds: ['b'], length: 1238 }, { id: 'l1', role: 'local', itemIds: ['c'], length: 18 }] },
   powerSummary: () => ({ total: 5586.95, rated: 29573.5, outletRated: 19872 }) };
-for (const [circuit, cat, type, n] of [['L1', 'light', 'projector36', 32], ['L2', 'light', 'projector36', 28], ['L3', 'light', 'spot15', 27], ['LA', 'light', 'uplight', 7], ['LD', 'light', 'chandelier8', 4], ['LD', 'light', 'sconce2', 16],
+for (const [circuit, cat, type, n] of [['L1', 'light', 'projector36', 32], ['L2', 'light', 'projector36', 28], ['L3', 'light', 'spot15', 27], ['L8', 'light', 'spot15', 4], ['LA', 'light', 'uplight', 7], ['LD', 'light', 'chandelier8', 4], ['LD', 'light', 'sconce2', 16],
   ['F1', 'fan', 'fanCeiling', 14], ['F2', 'fan', 'fanNaveWall', 16], ['F5', 'fan', 'fanWingWall', 4], ['V1', 'fan', 'fanExhaust', 9], ['A1', 'speaker', 'slimColumn', 14], ['A2', 'speaker', 'pendantSpeaker', 4], ['A3', 'speaker', 'horn', 8], ['MIC', 'speaker', 'mic', 2]]) {
   for (let i = 0; i < n; i++) stand.state.items.push({ circuit, cat, type, on: circuit !== 'F2', pos: [10 + i, 4, i % 2 ? 4.4 : -4.4] });
 }
@@ -166,18 +169,64 @@ stand.analysis.results.seats = { n: 368, seats: [seat('central', 330, 0.33, 0.64
 sandbox.window.CHURCH_SIMULATOR = stand;
 const figures = plain(film.figures());
 sandbox.window.CHURCH_SIMULATOR = undefined;
-assert.deepEqual([figures.lights, figures.lightCircuits, figures.chandeliers, figures.sconces, figures.fans, figures.speakers, figures.mics], ['114', '5', '4', '16', '43', '26', '2'], 'counts by kind');
+assert.deepEqual([figures.lights, figures.lightCircuits, figures.chandeliers, figures.sconces, figures.fans, figures.speakers, figures.mics], ['118', '6', '4', '16', '43', '26', '2'], 'counts by kind');
 assert.deepEqual([figures.fansOn, figures.F1on, figures.F1size, figures.F1side, figures.F2idle, figures.V1on, figures.exhaust, figures.ach], ['27', '14', '1.42', '4.4', '16', '9', '25,900', '3.5'], 'fan figures');
 // With every lamp and fan off, light, air and noise figures are left out, so those captions use their plain wording.
 sandbox.window.CHURCH_SIMULATOR = { ...stand, fans: () => stand.fans().map(fan => ({ ...fan, running: false, flow: 0 })), analysis: { results: { seats: { ...stand.analysis.results.seats, lux: stats(0, 0), air: stats(0, 0), noise: stats(40, 40) } } } };
 const off = plain(film.figures());
 sandbox.window.CHURCH_SIMULATOR = undefined;
-assert(['luxAvg', 'luxOk', 'wingLux', 'airAvg', 'airOk', 'wingAir', 'noise', 'fansOn', 'V1on', 'ach'].every(key => !(key in off)) && off.F1on === '0' && off.routes === '6' && off.lights === '114', 'nothing is quoted for light or air when nothing is on');
+assert(['luxAvg', 'luxOk', 'wingLux', 'airAvg', 'airOk', 'wingAir', 'noise', 'fansOn', 'V1on', 'ach'].every(key => !(key in off)) && off.F1on === '0' && off.routes === '6' && off.lights === '118', 'nothing is quoted for light or air when nothing is on');
 assert.deepEqual([figures.luxAvg, figures.luxMin, figures.luxOk, figures.naveLux, figures.wingLux, figures.airAvg, figures.wingAirMin, figures.stiAvg, figures.stiMin, figures.splSpread, figures.fbLow, figures.fbHigh],
   ['312', '122', '89', '340', '214', '0.33', '0.06', '0.60', '0.42', '2.8', '0.9', '1.3'], 'seat figures are rounded for reading, not altered');
 assert.deepEqual([figures.routes, figures.km, figures.trunks, figures.drops, figures.wired, figures.feederM, figures.kwNow, figures.kwFixed], ['6', '5.0', '2', '3', '3', '81', '5.6', '9.7'],
   'wiring figures: drawn route length, and loads with the socket allowance kept apart');
 assert.deepEqual(plain(film.figures()), {}, 'no figures without the simulator: captions then use their plain wording');
+
+const circuitIds = [...engine.matchAll(/\n    (\w+): \{ label: '/g)].map(match => match[1]), sceneNames = [...engine.matchAll(/\n    '([^']+)': \{ L10:/g)].map(match => match[1]);
+assert(circuitIds.includes('L1') && circuitIds.includes('MIC') && sceneNames.length >= 7, 'circuits and scenes read from the simulator');
+const settingRanges = engine.match(/mixerDb: \[-60, 24\]/);
+function checkDemo(shot, tour) {
+  const demo = shot.demo, id = shot.id;
+  assert(tour.technical && demo.title?.length === 2 && demo.title.every(Boolean), `${id}: panel title in both languages`);
+  assert(demo.rows.length <= 6 && demo.stats.length >= 1 && demo.stats.length <= 4, `${id}: at most six rows and four figures fit beside the picture`);
+  for (const row of demo.rows) {
+    if (typeof row === 'string') assert(/^@(light|fan|sound)$/.test(row) || circuitIds.includes(row), `${id}: row ${row} is a circuit or a system`);
+    else assert(row.setting === 'mixerDb' && settingRanges && row.en && row.vi && row.unit, `${id}: a setting row names a simulator setting in both languages`);
+  }
+  for (const key of demo.stats) { const spec = film.stats[key]; assert(spec?.en && spec.vi && typeof spec.digits === 'number', `${id}: figure ${key} is described in both languages`); }
+  const steps = demo.steps, caption = shot.card?.at !== undefined ? shot.card.at - 1.2 : shot.duration - 1.2;
+  assert(steps.length >= 1 && steps[0].at === 0, `${id}: the first step is at the start of the scene`);
+  steps.forEach((step, i) => {
+    assert(i === 0 || step.at >= steps[i - 1].at + 7, `${id}@${step.at}: each step stays long enough to read (7 s)`);
+    assert(step.at <= caption - 5, `${id}@${step.at}: the last step stays 5 s before the caption goes`);
+    // Reading pace: a figure counts as one word; at most 32 words, and 4.8 words a second while the step is on screen.
+    if (step.note) {
+      const words = step.note.en.replace(/\{\w+\}/g, 'N').split(/\s+/).length, seconds = Math.min(i + 1 < steps.length ? steps[i + 1].at : Infinity, caption) - step.at;
+      assert(words <= 32 && words / seconds <= 4.8, `${id}@${step.at}: ${words} words in ${seconds} s is too fast to read`);
+    }
+    assert(step.scene || step.set || step.feeder !== undefined || step.setting || i === 0, `${id}@${step.at}: the step changes something`);
+    if (step.scene) assert(sceneNames.includes(step.scene), `${id}@${step.at}: ${step.scene} is a built-in scene`);
+    for (const [circuit, value] of Object.entries(step.set || {})) {
+      assert(circuitIds.includes(circuit) && Number.isFinite(value) && value >= 0 && value <= (/^(F|V)/.test(circuit) ? 3 : 1), `${id}@${step.at}: ${circuit} set to a value the simulator accepts`);
+      if (!/^(L|F|V|E)/.test(circuit)) assert(value === 0 || value === 1, `${id}@${step.at}: ${circuit} is on or off`);
+    }
+    for (const key of Object.keys(step.setting || {})) assert(key === 'mixerDb', `${id}@${step.at}: only the mixer level is a borrowed setting`);
+    assert(step.say?.length === 2 || (step.scene && !step.say), `${id}@${step.at}: the action is named in both languages`);
+    if (step.note) assert(step.note.en && step.note.vi && step.plain?.en && step.plain?.vi, `${id}@${step.at}: explanation and plain wording in both languages`);
+    else assert(shot.note?.en && shot.note?.vi, `${id}@${step.at}: the scene's own note explains it`);
+    assert(!/\b(complies|compliant|certified|guaranteed|approved for construction|ready to purchase)\b/i.test(JSON.stringify(step)), `${id}@${step.at}: no claim of approval or compliance`);
+  });
+  if (demo.breaker) assert(demo.foot?.length === 2 && /planning allowance/.test(demo.foot[0]) && /tạm tính/.test(demo.foot[1]), `${id}: breakers are called a planning allowance, not a protection design`);
+}
+// The aims beside the panel's figures are the simulator's own target ranges.
+for (const [key, target, from, to] of [['luxAvg', 'target: [200, 300]', 200], ['airAvg', 'target: [0.3, 0.8]', 0.3, 0.8], ['splAvg', 'target: [68, 76]', 68, 76], ['stiAvg', 'target: [0.6, 1]', 0.6], ['noise', 'target: [0, 40]', undefined, 40]]) {
+  const spec = film.stats[key];
+  assert(analysis.includes(target), `${key}: ${target} is the simulator's range`);
+  if (from !== undefined) assert(spec.ok(from) && !spec.ok(from - 0.001), `${key}: meets the aim from ${from}`);
+  if (to !== undefined) assert(spec.ok(to) && !spec.ok(to + 0.001), `${key}: meets the aim up to ${to}`);
+}
+assert(film.stats.ach.ok(4) && film.stats.ach.ok(6) && !film.stats.ach.ok(3.9) && analysis.includes('comfort target in a hot climate with people: 4–6'), 'air changes: aim 4 to 6 as in the simulator');
+assert(film.stats.fbLow.ok(3) && !film.stats.fbLow.ok(2.9) && /margin < 3/.test(analysis), 'feedback margin: aim 3 dB as in the simulator');
 
 const tours = ['lighting', 'air', 'sound', 'grid'].map(id => film.films[id]), tourLines = [];
 for (const tour of tours) {
@@ -185,23 +234,28 @@ for (const tour of tours) {
   assert(tour.technical && tour.file && tour.file !== film.films.full.file, `${name}: its own video file name`);
   assert.equal(cut.reduce((sum, shot) => sum + shot.bars, 0), music.bars, `${name}: shots and score cover the same bars`);
   assert.equal(tour.length, music.bars * 4);
-  assert(tour.length >= 90 && tour.length <= 150, `${name}: ${tour.length} s, about two minutes`);
+  assert(tour.length >= 120 && tour.length <= 180, `${name}: ${tour.length} s, between two and three minutes`);
   assert.equal(new Set(cut.map(shot => shot.id)).size, cut.length, `${name}: scene ids are unique`);
   for (const shot of cut) {
     assert(Number.isInteger(shot.bars) && shot.bars >= 3, `${shot.id}: at least twelve seconds`);
     assert(shot.keys.length >= 2 && shot.keys.every(key => key.length >= 6 && key.every(Number.isFinite)), `${shot.id}: keys`);
     assert(['day', 'evening'].includes(shot.light) && typeof shot.roof === 'boolean' && ['fade', 'dip', 'cut'].includes(shot.cut), `${shot.id}: scene state`);
     assert(shot.card || shot.en, `${shot.id}: a card or a caption`);
-    if (shot.en) assert(shot.vi && shot.note?.en && shot.note?.vi && shot.plain?.en && shot.plain?.vi, `${shot.id}: caption, note and plain wording in both languages`);
+    if (shot.en) assert(shot.vi, `${shot.id}: caption in both languages`);
+    if (shot.en && !shot.demo?.steps?.every(step => step.note)) assert(shot.note?.en && shot.note?.vi && (!braces(shot.note.en).length || (shot.plain?.en && shot.plain?.vi)), `${shot.id}: note in both languages, with plain wording where it quotes a figure`);
     // Every figure a text quotes exists, and the text has a plain form for use without it.
     const texts = [[shot.note?.en, shot.plain?.en], [shot.note?.vi, shot.plain?.vi], [shot.card?.line, shot.card?.plain?.line], [shot.card?.second, shot.card?.plain?.second],
       ...(shot.card?.foot || []).map((line, i) => [line, shot.card.plain?.foot?.[i]])];
+    for (const step of shot.demo?.steps || []) if (step.note) texts.push([step.note.en, step.plain?.en], [step.note.vi, step.plain?.vi]);
+    // A figure is one of the model (read when a scene starts) or one of a step: a statistic, its change {d_x} or its earlier value {p_x}, and a few more.
+    const known = key => key in figures || key in film.stats || (/^[dp]_/.test(key) && key.slice(2) in film.stats) || ['splSpread', 'naveAir', 'echo', 'luxAim', 'hours'].includes(key) || /^A_[A-Z0-9]+$/.test(key);
     for (const [text, fallback] of texts) {
-      for (const key of braces(text)) assert(key in figures, `${shot.id}: figure {${key}} is read from the model`);
+      for (const key of braces(text)) assert(known(key), `${shot.id}: figure {${key}} is read from the model`);
       if (braces(text).length) assert(fallback && !braces(fallback).length, `${shot.id}: plain wording for “${String(text).slice(0, 40)}…”`);
     }
     // The same figures in both languages.
     assert.deepEqual(braces(shot.note?.en).sort(), braces(shot.note?.vi).sort(), `${shot.id}: English and Vietnamese quote the same figures`);
+    for (const step of shot.demo?.steps || []) if (step.note) assert.deepEqual(braces(step.note.en).sort(), braces(step.note.vi).sort(), `${shot.id}@${step.at}: English and Vietnamese quote the same figures`);
     if (shot.overlay) {
       assert(film.maps[shot.overlay] && analysis.includes(`${shot.overlay}: { label:`), `${shot.id}: ${shot.overlay} is one of the simulator's maps`);
       assert(!shot.roof && plain(shot.up).join() === '0,0,-1', `${shot.id}: the map is seen from above with the roof hidden, side B at the top`);
@@ -210,6 +264,8 @@ for (const tour of tours) {
       assert(tour.wiring && new RegExp(`[{ ]${shot.systems}: '`).test(electrical.match(/const SYSTEMS = \{[^}]*\}/)[0]), `${shot.id}: ${shot.systems} is one of the simulator's wiring filters`);
       assert(!shot.overlay, `${shot.id}: the wiring-only view has no analysis map`);
     }
+    if (shot.board) assert(['DB1', 'DB2'].includes(shot.board) && shot.systems, `${shot.id}: a board filter belongs to a wiring-only scene`);
+    if (shot.demo) checkDemo(shot, tour);
     if (shot.mark) {
       const circuits = shot.mark.circuits || [], sources = shot.mark.sources || [];
       assert(shot.mark.en && shot.mark.vi && circuits.length + sources.length, `${shot.id}: rings have a key in both languages`);
@@ -217,13 +273,13 @@ for (const tour of tours) {
       for (const source of sources) assert(new RegExp(`\\n    ${source}: \\{ `).test(electrical), `${shot.id}: enclosure ${source} exists in the simulator`);
     }
   }
-  assert(cut.filter(shot => shot.overlay || shot.systems).length >= 2, `${name}: at least two scenes with a simulator view`);
+  assert(cut.filter(shot => shot.demo).length >= 4 && cut.filter(shot => shot.demo?.steps.length >= 3).length >= 3 && cut.filter(shot => shot.overlay || shot.systems).length >= 1, `${name}: at least four demonstrations, three of them with several steps, and a simulator view`);
   assert(!tour.wiring === !cut.some(shot => shot.systems), `${name}: only the electrical tour uses the wiring-only view`);
   const route = checkPath(tour, { indoorLimit: 3.2 });
   assert(film.black(0, tour) > 0.99 && film.black(tour.length - 0.01, tour) > 0.99, `${name}: opens from and closes to black`);
   cut.slice(1).forEach((shot, i) => {
     const before = cut[i];
-    if (shot.light !== before.light || shot.roof !== before.roof || shot.systems !== before.systems) assert(film.black(shot.start - 0.001, tour) > 0.99 && film.black(shot.start + 0.001, tour) > 0.99, `${shot.id}: scene change under black`);
+    if (shot.light !== before.light || shot.roof !== before.roof || shot.systems !== before.systems || shot.board !== before.board || shot.overlay !== before.overlay) assert(film.black(shot.start - 0.001, tour) > 0.99 && film.black(shot.start + 0.001, tour) > 0.99, `${shot.id}: scene change under black`);
     if (shot.cut === 'cut') {
       const end = film.pose(shot.start - 1e-6, tour), begin = film.pose(shot.start, tour);
       assert(dist(end.eye, begin.eye) < 0.01 && dist(end.look, begin.look) < 0.01 && Math.abs(end.lens - begin.lens) < 0.01 && plain(end.up).join() === plain(begin.up).join(), `${before.id} → ${shot.id} continues`);
@@ -259,7 +315,7 @@ assert(/not cable sizes/.test(film.wires.aim) && /không phải tiết diện c�
 const [lighting, air, sound, grid] = tours.map(tour => JSON.stringify(tour.shots));
 assert(/DB-1/.test(grid) && /DB-2/.test(grid) && /LC-1/.test(grid) && /FC-1/.test(grid) && /AV-1/.test(grid), 'electrical tour: both boards and the three control enclosures');
 assert(['all', 'lighting', 'air', 'sound'].every(system => grid.includes(`"systems":"${system}"`)), 'electrical tour: the wiring on its own, then lighting, fans and sound routes');
-assert(/drawn route/.test(grid) && /not cable sizes/.test(grid) && /not mains power/.test(grid) && /separate allowance/.test(grid),
+assert(/as drawn/.test(grid) && /not cable sizes/.test(grid) && /not mains power/.test(grid) && /separate allowance/.test(grid),
   'electrical tour: route length is not cable, audio lines are not mains, socket outlets are kept apart from fixed loads');
 assert(/supply and earthing/.test(grid) && /voltage drop/.test(grid) && /emergency lighting/.test(grid), 'electrical tour: names what the electrical engineer still has to design');
 assert(/L1/.test(lighting) && /L3/.test(lighting) && /DB-2/.test(lighting) && /"overlay":"lux"/.test(lighting), 'lighting tour: circuits, second board and the light map');
@@ -267,12 +323,16 @@ assert(/F1/.test(air) && /F2/.test(air) && /V1/.test(air) && /"overlay":"air"/.t
 assert(/centre line/.test(air) && /stays clear/.test(air), 'fans tour: the clear central view is stated');
 assert(/A1/.test(sound) && /MIC/.test(sound) && /"overlay":"spl"/.test(sound) && /"overlay":"sti"/.test(sound) && /feedback/.test(sound), 'sound tour: microphones, loudspeakers, both speech maps and feedback');
 assert(/not the modelled sound system/.test(sound), 'sound tour: the background music is not the sound system');
-// The films change only the display. Every call they make to the simulator is
-// a reading, the map on show, the wiring view or the simulator's own frame update.
-const calls = [...new Set(read('cinematic-tour.js').match(/(\bsim|\bwiring|CHURCH_SIMULATOR)\??\.[A-Za-z_.?]*\(/g))].sort();
-assert.deepEqual(calls, ['CHURCH_SIMULATOR?.frame(', 'sim.electrical.setMode(', 'sim.fans(', 'sim.mics(', 'sim.powerSummary(', 'sim.room(', 'sim.setOverlay(', 'sim.state.items.filter(', 'sim.typeOf(',
-  'wiring.rebuild(', 'wiring.reviewSelection(', 'wiring.setMode(', 'wiring.setReviewFilter('],
-  'no simulator call that changes fittings, scenes or settings other than the map and the wiring view on show');
+// The films never switch a fitting, a scene or a setting themselves. Every call they
+// make is a reading, the map on show, the wiring view, the simulator's own frame
+// update, or the rehearsal, which lends the switches and gives them back.
+const calls = [...new Set(read('cinematic-tour.js').match(/(\bsim|\bwiring|\brehearsal|CHURCH_SIMULATOR)\??\.[A-Za-z_.?]*\(/g))].sort();
+assert.deepEqual(calls, ['CHURCH_SIMULATOR.rehearsal.end(', 'CHURCH_SIMULATOR?.frame(', 'rehearsal.circuits(', 'rehearsal.feeder(', 'rehearsal.reset(', 'rehearsal.scene(', 'rehearsal.setting(', 'sim.analysis.run(', 'sim.analysis?.run(',
+  'sim.electrical.setMode(', 'sim.fans(', 'sim.mics(', 'sim.powerSummary(', 'sim.rehearsal.end(', 'sim.rehearsal.reset(', 'sim.room(', 'sim.sceneLuxTarget?.(', 'sim.setOverlay(', 'sim.speakers(', 'sim.state.items.filter(',
+  'sim.typeOf(', 'sim?.rehearsal?.begin(', 'wiring.rebuild(', 'wiring.reviewSelection(', 'wiring.setMode(', 'wiring.setReviewFilter('],
+  'no simulator call that changes fittings, scenes or settings except through the rehearsal, the map and the wiring view on show');
+assert(!/(\bsim|\bwiring|CHURCH_SIMULATOR)\??\.(applyScene|update|add|remove|duplicate|mirror|commit|undo|redo|saveNow|saveScene|importLayout|resetDesign|setSetting)\(/.test(read('cinematic-tour.js')), 'no direct edit of the design');
+assert(read('simulator/engine.js').includes('if (rehearsalBase) return false;') && read('simulator/engine.js').includes('if (rehearsalBase) return;'), 'while a rehearsal lasts the simulator stores nothing and records no history');
 
 // Figures quoted in the captions are the values held in the model data.
 for (const [quoted, source] of [['+36.920 m', 'crossTop: 36.92'], ['+12.472 m', 'ridge: 12.472'], ['53.016 m', '12: 53.016,'], ['+0.750 m', 'altar: 0.75'],

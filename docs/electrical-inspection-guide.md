@@ -25,7 +25,7 @@ Your changes are saved automatically in this browser on this computer only. To k
 | 3 | **Controls → Towers** | The front of the church: see section 6 |
 | 4 | **Walk** to a bench, then **Simulator → Sound** and press **▶ Play** | The loudspeakers as heard from that seat (use headphones) |
 | 5 | **Simulator → Analysis** | The list **Design checks**: what is still not good enough, in plain words |
-| 6 | Left menu **Discover → Technical tours → Lights, Fans, Sound, Wiring** (added 11 October 2026) | Four short films of under two minutes each that explain one system at a time, with the model's own maps and its wiring view. **Esc** stops a film |
+| 6 | Left menu **Discover → Technical tours → Lights, Fans, Sound, Wiring** (added 11 October 2026) | Four films of about two and a half minutes that explain one system at a time by switching circuits on and off, dimming them or cutting the DB-2 feeder in the simulator and showing the figures it recalculates (light, air, speech, load and current), with the model's own maps and wiring view. Switching is a rehearsal in memory: your layout returns when the film ends. **Esc** stops a film |
 
 ## 3. Look at one system at a time
 

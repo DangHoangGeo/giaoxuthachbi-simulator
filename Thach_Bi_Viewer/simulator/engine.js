@@ -1417,6 +1417,7 @@
   function snapshot() { return JSON.stringify(state.items); }
   let lastSnapshot = '[]';
   function commit(label) {
+    if (rehearsalBase) return;
     const snap = snapshot();
     if (snap === lastSnapshot) return;
     state.history.push({ label, items: lastSnapshot });
@@ -1455,8 +1456,11 @@
     emit('history');
     return f.label;
   }
-  function scheduleSave() { clearTimeout(saveTimer); saveTimer = setTimeout(saveNow, 700); }
+  function scheduleSave() { if (rehearsalBase) return; savePending = true; clearTimeout(saveTimer); saveTimer = setTimeout(saveNow, 700); }
   function saveNow() {
+    // A rehearsal (a technical tour) borrows the switches; nothing of it is stored.
+    if (rehearsalBase) return false;
+    savePending = false;
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(exportLayout())); return true; } catch { return false; }
   }
   function exportLayout() {
@@ -1786,6 +1790,14 @@
   // Reading light each scene is meant to give on the books (lux, maintained).
   const SCENE_LUX = { 'Full service · evening': 200, 'Weekday Mass': 150, 'Prayer & adoration': 50, 'Christmas & festivals': 200, 'Festival · courtyard overflow': 200, 'Cleaning': 100 };
   SIM.sceneLuxTarget = () => state.scene in SCENE_LUX ? SCENE_LUX[state.scene] : state.scene && !SCENES[state.scene] ? 150 : state.scene ? null : 200;
+  // One item set from a scene value: lights 0–1 (dim), fans 1/2/3 (low/normal/high), anything else on or off.
+  function sceneValue(it, v) {
+    const t = CAT.byId[it.type];
+    // Scene fan levels 1/2/3 = low/normal/high; 5-step (VFD) fans map to 2/4/5.
+    if (t.fan) { it.on = v > 0; if (v > 0) it.speed = t.fan.speeds.length >= 5 ? [0, 2, 4, 5][v] : Math.min(v, t.fan.speeds.length); }
+    else if (t.light || it.circuit === 'X1') { it.on = v > 0; if (v > 0 && t.light) it.dim = Math.min(1, v); }
+    else it.on = v > 0;
+  }
   function applyScene(name, { record = true } = {}) {
     const custom = state.customScenes.find(s => s.name === name);
     if (custom) {
@@ -1802,12 +1814,7 @@
         if (v === undefined) continue;
         // A sub-board without power (feeder off on DB-1) cannot switch anything on.
         if (CIRCUITS[it.circuit]?.board === 'DB2' && state.settings.db2Feed === false) v = 0;
-        const t = CAT.byId[it.type];
-        // Scene fan levels 1/2/3 = low/normal/high; 5-step (VFD) fans map to 2/4/5.
-        if (t.fan) { it.on = v > 0; if (v > 0) it.speed = t.fan.speeds.length >= 5 ? [0, 2, 4, 5][v] : Math.min(v, t.fan.speeds.length); }
-        else if (t.light || it.circuit === 'X1') { it.on = v > 0; if (v > 0 && t.light) it.dim = Math.min(1, v); }
-        else if (t.speaker) it.on = v > 0;
-        else it.on = v > 0;
+        sceneValue(it, v);
         fixtures.get(it.id)?.update();
       }
     }
@@ -1826,6 +1833,82 @@
     state.scene = name;
     scheduleSave();
     emit('scene', name);
+  };
+
+  /* A rehearsal lends the simulator to a demonstration, such as a technical tour:
+   * circuits are switched in memory and the analysis is run again on them, then
+   * `end` puts every switch, the scene name, the DB-2 feeder and any setting
+   * back exactly. Nothing is saved and no history step is made while it lasts,
+   * so the stored layout is untouched even if the page is closed part-way. */
+  let rehearsalBase = null, savePending = false;
+  const rehearsalSwitches = it => ({ on: it.on, dim: it.dim, speed: it.speed, level: it.level });
+  function rehearsalChanged() {
+    for (const it of state.items) fixtures.get(it.id)?.update();
+    markDirty();
+    emit('items', {});
+  }
+  SIM.rehearsal = {
+    get active() { return !!rehearsalBase; },
+    begin() {
+      if (rehearsalBase) return false;
+      // A change made a moment ago and not yet stored is kept before the switches are borrowed.
+      if (savePending) { clearTimeout(saveTimer); saveNow(); }
+      rehearsalBase = { scene: state.scene, feed: state.settings.db2Feed, memory: state.settings.db2Memory, settings: {}, items: new Map(state.items.map(it => [it.id, rehearsalSwitches(it)])) };
+      return true;
+    },
+    // One of the built-in scenes.
+    scene(name) {
+      if (!rehearsalBase || !SCENES[name]) return false;
+      return applyScene(name, { record: false });
+    },
+    // { circuit: value }: lights 0–1, fans 1–3, other equipment 0 or 1; a circuit on the unpowered DB-2 stays off.
+    circuits(values) {
+      if (!rehearsalBase) return false;
+      for (const it of state.items) {
+        let v = values[it.circuit];
+        if (v === undefined) continue;
+        if (CIRCUITS[it.circuit]?.board === 'DB2' && state.settings.db2Feed === false) v = 0;
+        sceneValue(it, v);
+      }
+      rehearsalChanged();
+      return true;
+    },
+    // The feeder from DB-1 to DB-2: off, everything on DB-2 is dead.
+    feeder(on) {
+      if (!rehearsalBase) return false;
+      state.settings.db2Feed = !!on;
+      if (!on) for (const it of state.items) if (CIRCUITS[it.circuit]?.board === 'DB2') it.on = false;
+      rehearsalChanged();
+      return true;
+    },
+    // A setting, such as mixerDb, for the length of the rehearsal.
+    setting(key, value) {
+      if (!rehearsalBase || !(key in state.settings)) return false;
+      if (!(key in rehearsalBase.settings)) rehearsalBase.settings[key] = state.settings[key];
+      state.settings[key] = settingValue(key, value);
+      roomCache = null; lightDirty = true;
+      rehearsalChanged();
+      return true;
+    },
+    // Every switch, the scene name, the feeder and the borrowed settings as they were at `begin`; the rehearsal goes on.
+    reset() {
+      const base = rehearsalBase;
+      if (!base) return false;
+      for (const it of state.items) { const was = base.items.get(it.id); if (was) Object.assign(it, was); }
+      Object.assign(state.settings, base.settings, { db2Feed: base.feed, db2Memory: base.memory });
+      if (base.feed === undefined) delete state.settings.db2Feed;
+      if (base.memory === undefined) delete state.settings.db2Memory;
+      state.scene = base.scene;
+      roomCache = null; lightDirty = true;
+      rehearsalChanged();
+      emit('scene', state.scene);
+      return true;
+    },
+    end() {
+      if (!SIM.rehearsal.reset()) return false;
+      rehearsalBase = null;
+      return true;
+    }
   };
 
   /* ---------------------------------------------------- settings & camera */
