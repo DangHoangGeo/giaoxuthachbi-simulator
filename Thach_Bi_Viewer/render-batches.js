@@ -42,6 +42,11 @@
   }
   function build(THREE, building, displayRoot) {
     const batches = new Map();
+    // Optional construction-layer key (construction.js). Parts are ordered by
+    // layer so each layer is one contiguous index range of the merged buffer;
+    // the site view shows, ghosts or hides a layer through draw groups
+    // without copying geometry. Normal viewing ignores the ranges.
+    const layerOf = window.CHURCH_CONSTRUCTION?.layerOf;
     building.updateMatrixWorld(true);
     for (const source of building.children) {
       const display = new THREE.Group();
@@ -51,10 +56,22 @@
         if (!object.isMesh || Array.isArray(object.material)) return;
         const material = object.material;
         if (!materials.has(material)) materials.set(material, []);
-        materials.get(material).push({ geo: object.geometry, matrix: object.matrixWorld });
+        materials.get(material).push({ geo: object.geometry, matrix: object.matrixWorld, layer: layerOf ? layerOf(object, source) : '' });
       });
-      for (const [material, parts] of materials) {
+      for (const [material, unordered] of materials) {
+        const order = [...new Set(unordered.map(part => part.layer))];
+        const parts = layerOf ? order.flatMap(layer => unordered.filter(part => part.layer === layer)) : unordered;
+        const ranges = [];
+        let start = 0;
+        for (const part of parts) {
+          const count = part.geo.index ? part.geo.index.count : part.geo.attributes.position.count;
+          const last = ranges[ranges.length - 1];
+          if (last && last.layer === part.layer) last.count += count;
+          else ranges.push({ layer: part.layer, start, count });
+          start += count;
+        }
         const mesh = new THREE.Mesh(merge(THREE, parts), material);
+        mesh.userData.layerRanges = ranges;
         mesh.castShadow = mesh.receiveShadow = true;
         // Display architecture is static. Visibility/material switches remain live.
         mesh.matrixAutoUpdate = false;

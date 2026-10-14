@@ -33,6 +33,7 @@ The mode lives in the viewer, so it can be tried locally at `Thach_Bi_Viewer/OPE
 | --- | --- |
 | Simulator button and panel | Hidden, and `setOpen` refuses to open the panel. All scene editing (select, drag, add, delete, duplicate) already requires the open panel, so none of it is reachable. |
 | Saved layouts | The engine uses its own key `thachbi.visit.v1` and clears it on every load. It never reads, migrates or overwrites `thachbi.simulator.v1`. Every visit starts from the recommended design. |
+| Site view (since 14 October 2026) | Available read-only: grid, cuts, layers, phases, inspect, measure and the dimension register. Phase statuses and measured values are disabled and nothing is read from or written to `thachbi.construction.v1`. See [site view](../construction/README.md). |
 | Kept | Explore and Walk, Discover places, the map, day and evening, view settings, references, the cinematic tour, the four technical tours (lighting, fans and air, sound, electrical grid; since 11 October 2026), the **Controls** dock that switches the modelled lights, fans and sound scenes, and the estimate read-outs. |
 | Notice | “Design in development · Not for construction · Đang phát triển · Không dùng để thi công” stays on screen. |
 

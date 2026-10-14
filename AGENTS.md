@@ -38,6 +38,7 @@ Check the working tree and recent changes. Read the relevant sources below and t
 | Electrical grid, route maps and manual/quick controls | `docs/electrical-grid/README.md`, `routing.md`, `controls.md` and JSON/CSV schedules in that directory |
 | Equipment/line registers and total report | `docs/electrical-grid/categories/README.md`, `summary-report.md`, `register.md` and matching `equipment-layout.json` / `electrical-systems.json` |
 | Art and reference status | `docs/church-view-renderings.md`, `Thach_Bi_Viewer/references/manifest.json`, `coverage.json` and relevant source images; approved concepts govern ornament still unfinished in the model |
+| Site view: grid, construction layers, proposed phases, dimension checks | `docs/construction/README.md`, `docs/construction/phases.json`, `Thach_Bi_Viewer/construction.js` |
 | Actual behavior and verification | `Thach_Bi_Viewer/`, `scripts/verify_*.cjs` and relevant records under `review/` |
 | Future public/protected web app | `plan/README.md`, phase dependencies, architecture, data/publication contracts and quality gates |
 | Contribution workflow, licences and publication status | `CONTRIBUTING.md`, `NOTICE.md`, `SECURITY.md`, `docs/open-source/publication-checklist.md`, `scripts/protect_branches.sh` |
@@ -98,6 +99,7 @@ Run checks appropriate to the change from the repository root. These are softwar
 | Simulator, systems, fixtures or shared model changes | `node scripts/verify_simulator.cjs` |
 | Full calculation audit while retaining unmet design targets | `node scripts/verify_simulator.cjs --report --estimates` |
 | Focused electrical routing checks | `node scripts/verify_simulator.cjs --electrical` |
+| Site view, construction layers, phase plan or dimension register data | `node scripts/verify_construction.cjs` (regenerate data with `python3 scripts/build_construction_data.py`) |
 | Equipment/line register refresh and preservation checks | `node scripts/build_equipment_register.mjs --verify-workflow` (bundled artifact runtime) |
 | Timber specification/reference package | `python3 docs/beams-roof-connections/validate.py` |
 
