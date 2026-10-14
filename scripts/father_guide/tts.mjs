@@ -24,7 +24,7 @@ const say = [
   ['2026-10-07', 'hai nghìn không trăm hai mươi sáu, mười, không bảy'],
   ['00-overview', 'không không, âu-vơ-viu'],
   ['Download ZIP', 'đao-lốt zíp'], ['Downloads', 'đao-lốt'], ['Extract All', 'éch-trắc ôn'], ['Extract', 'éch-trắc'],
-  ['Cinematic tour', 'xi-nê-ma-tích tua'], ['Short film', 'soóc phim'], ['Go inside', 'gô in-xai'],
+  ['Cinematic tour', 'xi-nê-ma-tích tua'], ['Technical tours', 'téc-ni-cồ tua'], ['Go inside', 'gô in-xai'],
   ['W, A, S, D', 'đáp-bồ-liu, ây, ét, đi'],
   ['references', 'ré-phơ-rần-xợ'], ['References', 'ré-phơ-rần-xợ'], ['Simulator', 'xim-miu-lây-tơ'],
   ['Sanctuary', 'xăng-chiu-a-ri'], ['Discover', 'đít-cớ-vơ'], ['GitHub', 'git-hấp'], ['Windows', 'uyn-đâu'],

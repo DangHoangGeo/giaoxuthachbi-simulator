@@ -27,6 +27,7 @@ Thay đổi được lưu tự động trong trình duyệt của máy này. Mu�
 | 3 | **Controls → Towers** | Mặt tiền nhà thờ: xem mục 6 |
 | 4 | **Walk** đến một hàng ghế, mở **Simulator → Sound**, bấm **▶ Play** | Nghe loa từ chỗ ngồi đó (nên dùng tai nghe) |
 | 5 | **Simulator → Analysis** | Danh sách **Design checks**: những điểm còn chưa đạt, viết dễ hiểu |
+| 6 | Bảng bên trái **Discover → Technical tours → Lights, Fans, Sound, Wiring** (thêm ngày 11/10/2026) | Bốn đoạn phim, mỗi đoạn khoảng hai phút rưỡi, giải thích từng hệ thống: đèn, quạt, âm thanh và đi dây, bằng cách bật tắt từng mạch, giảm sáng hoặc ngắt tuyến nguồn DB-2 trong mô phỏng và cho xem các số liệu được tính lại (ánh sáng, gió, lời nói, phụ tải và dòng điện), kèm bản đồ ước tính và chế độ xem riêng hệ thống dây của mô hình. Việc bật tắt chỉ diễn ra trong bộ nhớ: bố cục của bạn trở lại như cũ khi phim kết thúc. Bấm **Esc** để dừng |
 
 ## 3. Xem từng hệ thống
 

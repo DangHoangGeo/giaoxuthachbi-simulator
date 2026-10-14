@@ -21,9 +21,24 @@ music: a homeland theme outside and the Bach-Gounod Ave Maria inside.
 Space pauses, left/right arrows change scene, M switches the music, F fills
 the screen, Esc stops. The music is presentation music, not an acoustic
 prediction for this church.
-Short film (Discover menu): a cut of 2 min 15 s for sharing, with bells and
-organ, ending with a request for engineering advice. "Save as video" in
-either film records it as a video file in the browser.
+Technical tours (Discover menu): Lights, Fans, Sound and Wiring, each about
+two and a half minutes. They explain how each system works with the simulator
+itself: circuits are switched on and off, dimmed, or cut from their feeder,
+and a panel lists the circuits and shows the light, air, speech and electrical
+figures the simulator calculates again after every switch, beside its maps
+and the cable routes on their own. The switching is a rehearsal in memory:
+nothing is saved and your layout, scene and settings return when the tour
+ends. The figures are simulator estimates, not measurements; the wiring is a
+routing study, not a wiring design.
+"Save as video" in a film or tour records it as a video file in the browser.
+Site (header button): a construction manager's view. Grid lines on the floors
+with axis bubbles, dimension chains in millimetres and a level staff; plan and
+section cuts; fourteen layers to show, ghost or hide; a proposed twelve-phase
+build sequence with the open questions affecting each phase; Inspect (size,
+levels and grid position of any part) and Measure; and the drawing dimension
+register with a check of the model grid. Vietnamese by default, VI/EN switch.
+The phases are a proposal and SCHEMATIC or CONCEPT shapes must not be measured
+for setting out. See docs/construction/README.md.
 
 The original architectural drawings and measurement workbook govern dimensions.
 Finishes, furniture and lighting are visual proposals.

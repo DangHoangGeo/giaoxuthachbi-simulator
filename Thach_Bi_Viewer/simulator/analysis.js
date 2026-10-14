@@ -163,7 +163,9 @@
   }
 
   /* ------------------------------------------------------------ run grids */
-  function run(kinds) {
+  // { now: true } does all the work before returning, for a caller that needs the
+  // figures for the switches as they are (a technical tour, a frame export).
+  function run(kinds, { now = false } = {}) {
     const id = ++job;
     A.busy = true;
     SIM.emit('analysis-start');
@@ -175,7 +177,7 @@
     let t = 0;
     const step = () => {
       if (id !== job) return;
-      const until = performance.now() + 14;
+      const until = now ? Infinity : performance.now() + 14;
       while (t < tasks.length && performance.now() < until) {
         const done = tasks[t].next();
         if (done) t++;
@@ -188,7 +190,7 @@
         SIM.emit('analysis', latest);
       }
     };
-    setTimeout(step, 0);
+    if (now) step(); else setTimeout(step, 0);
   }
   function gridTask(kind) {
     const K = KINDS[kind];
