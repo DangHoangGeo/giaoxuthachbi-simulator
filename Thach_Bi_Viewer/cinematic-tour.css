@@ -53,7 +53,7 @@ body.cinema > :not(#viewport):not(#cinemaLayer):not(dialog) { opacity:0 !importa
 .cinema-marks { position:absolute; inset:0; pointer-events:none; }
 .cinema-marks i { position:absolute; width:20px; height:20px; margin:-10px 0 0 -10px; border:2px solid #ffd76a; border-radius:50%; box-shadow:0 0 0 1.5px #0009, inset 0 0 0 1.5px #0006; }
 .cinema-marks i[hidden] { display:none; }
-.cinema-key { position:absolute; right:4.5vw; bottom:calc(9.5vh + 30px); width:min(30vw,400px); padding:12px 16px 13px; border-radius:6px; background:#0d1210bd; opacity:0; transition:opacity .8s ease; pointer-events:none; text-shadow:0 1px 8px #000b; }
+.cinema-key { position:absolute; right:4.5vw; bottom:calc(9.5vh + 14px); width:min(30vw,400px); padding:12px 16px 13px; border-radius:6px; background:#0d1210bd; opacity:0; transition:opacity .8s ease; pointer-events:none; text-shadow:0 1px 8px #000b; }
 .cinema-key.visible { opacity:1; }
 .cinema-key [hidden] { display:none; }
 .cinema-key strong { display:block; font-weight:600; font-size:clamp(12px,1.05vw,16px); }
@@ -68,3 +68,36 @@ body.cinema > :not(#viewport):not(#cinemaLayer):not(dialog) { opacity:0 !importa
 .cinema-key-mark em { margin-top:0; }
 .cinema-key-mark i { flex:none; width:14px; height:14px; border:2px solid #ffd76a; border-radius:50%; box-shadow:0 0 0 1.5px #0009; }
 @media (prefers-reduced-motion:reduce) { .cinema-key { transition:none; } }
+
+/* Technical tours: the live panel of a demonstration, at the upper right. */
+.cinema-live { position:absolute; right:4.2vw; top:calc(9.5vh + 8px); width:clamp(360px,33vw,640px); padding:1.1vw 1.15vw 1.15vw 1.3vw; border-left:2px solid #d9b96a; background:#0d1210cc; opacity:0; transition:opacity .8s ease; pointer-events:none; text-shadow:0 1px 6px #000a; }
+.cinema-live.visible { opacity:1; }
+.cinema-live header { display:flex; align-items:baseline; gap:.9vw; white-space:nowrap; overflow:hidden; }
+.cinema-live header b { font-size:clamp(13px,1.4vw,27px); font-weight:600; color:#e6cf93; }
+.cinema-live header em { display:inline; }
+.cinema-live header em, .cinema-live-say em, .cinema-live-row em, .cinema-live-tile em { display:block; font-style:italic; font-size:clamp(10px,1.04vw,20px); opacity:.85; }
+.cinema-live-say { margin:.7vw 0 0; }
+.cinema-live-say b { display:block; font-size:clamp(12px,1.3vw,25px); font-weight:700; color:#ffe9a8; }
+.cinema-live-rows { margin-top:.7vw; padding-top:.3vw; border-top:1px solid #f6f2e633; }
+.cinema-live-row { display:grid; grid-template-columns:minmax(0,1fr) 5.2vw 4.6vw 6.4vw; align-items:start; gap:0 .5vw; padding:.12vw 0; font-size:clamp(11px,1.1vw,21px); }
+.cinema-live-row b { display:block; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.cinema-live-row em { font-size:clamp(9px,.84vw,16px); opacity:.7; }
+.cinema-live-row .s { font-weight:600; color:#f6f2e6a6; }
+.cinema-live-row[data-tone=on] .s { color:#9fdc8f; }
+.cinema-live-row[data-tone=dead] .s { color:#ff8a7a; }
+.cinema-live-row .w, .cinema-live-row .a { text-align:right; font-variant-numeric:tabular-nums; opacity:.92; white-space:nowrap; }
+.cinema-live-row[data-tone=dead] .n { opacity:.6; }
+.cinema-live-tiles { display:flex; flex-direction:column; margin-top:.5vw; border-top:1px solid #f6f2e633; }
+.cinema-live-tile { position:relative; display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-areas:"l n" "l a"; align-items:center; padding:.18vw 0; }
+.cinema-live-tile .l { grid-area:l; display:block; min-width:0; }
+.cinema-live-tile b { display:block; font-size:clamp(11px,1.04vw,20px); font-weight:500; color:#e6cf93; }
+.cinema-live-tile .l em { margin-top:0; font-size:clamp(9px,.84vw,16px); opacity:.75; }
+.cinema-live-tile strong { grid-area:n; font-size:clamp(18px,1.8vw,34px); font-weight:700; font-variant-numeric:tabular-nums; text-align:right; }
+.cinema-live-tile strong i { margin-left:.3em; font-style:normal; font-weight:400; font-size:.55em; opacity:.8; }
+.cinema-live-tile[data-ok=true] strong { color:#9fdc8f; }
+.cinema-live-tile[data-ok=false] strong { color:#f2b869; }
+.cinema-live-tile .d { position:absolute; right:9.5vw; top:.35vw; font-size:clamp(10px,1vw,19px); font-weight:600; color:#ffd76a; font-variant-numeric:tabular-nums; }
+.cinema-live-tile small { grid-area:a; justify-self:end; font-size:clamp(9px,.74vw,14px); color:#e6cf93cc; }
+.cinema-live-foot { margin:.6vw 0 0; font-size:clamp(9px,.84vw,16px); line-height:1.35; color:#e6cf93; }
+.cinema-live[hidden], .cinema-live:empty { display:none; }
+@media (prefers-reduced-motion:reduce) { .cinema-live { transition:none; } }

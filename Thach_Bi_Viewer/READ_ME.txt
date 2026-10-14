@@ -21,12 +21,15 @@ music: a homeland theme outside and the Bach-Gounod Ave Maria inside.
 Space pauses, left/right arrows change scene, M switches the music, F fills
 the screen, Esc stops. The music is presentation music, not an acoustic
 prediction for this church.
-Technical tours (Discover menu): Lights, Fans, Sound and Wiring, each under
-two minutes. They show the proposed equipment by circuit, the simulator's maps
-of light, air speed and speech, and the cable routes on their own, with
-figures read from the open model. The figures are simulator estimates, not
-measurements; the wiring is a routing study, not a wiring design; and nothing
-in the design is changed by watching a tour.
+Technical tours (Discover menu): Lights, Fans, Sound and Wiring, each about
+two and a half minutes. They explain how each system works with the simulator
+itself: circuits are switched on and off, dimmed, or cut from their feeder,
+and a panel lists the circuits and shows the light, air, speech and electrical
+figures the simulator calculates again after every switch, beside its maps
+and the cable routes on their own. The switching is a rehearsal in memory:
+nothing is saved and your layout, scene and settings return when the tour
+ends. The figures are simulator estimates, not measurements; the wiring is a
+routing study, not a wiring design.
 "Save as video" in a film or tour records it as a video file in the browser.
 
 The original architectural drawings and measurement workbook govern dimensions.

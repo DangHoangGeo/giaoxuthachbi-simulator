@@ -25,10 +25,10 @@ const element = () => ({ width: 512, height: 512, style: {}, dataset: {}, classL
 const body = element();
 body.dataset.lighting = 'evening';
 const document = { getElementById() { return null; }, createElement: element, body, querySelector() { return null; }, querySelectorAll() { return []; } };
-const storage = new Map();
+const storage = new Map(), storageWrites = { count: 0 };
 const sandbox = {
   console, document, devicePixelRatio: 2, location: { search: '' }, URLSearchParams, Uint8ClampedArray, performance, setTimeout, clearTimeout,
-  localStorage: { getItem: k => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, String(v)) },
+  localStorage: { getItem: k => storage.get(k) ?? null, setItem: (k, v) => { storageWrites.count++; storage.set(k, String(v)); } },
   MutationObserver: class { observe() {} }, requestAnimationFrame: () => 0
 };
 sandbox.window = sandbox;
@@ -791,6 +791,107 @@ function runSync(kinds) {
   const n = SIM.importLayout(json);
   assert.equal(n, SIM.state.items.length, 'layout round trip');
   assert(SIM.exportSchedule().split('\n').length === SIM.state.items.length + 1, 'schedule CSV rows');
+
+  // --- Rehearsal -------------------------------------------------------------
+  // The technical tours borrow the switches of the simulator, recalculate the
+  // figures and give everything back. Nothing is stored and no history step is made.
+  {
+    const R = SIM.rehearsal, wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+    assert.equal(typeof R?.begin, 'function', 'the simulator offers a rehearsal');
+    SIM.saveNow(); await wait(900);
+    const snap = () => ({ items: JSON.stringify(SIM.state.items), settings: JSON.stringify(SIM.state.settings), scene: SIM.state.scene, history: SIM.state.history.length, future: SIM.state.future.length });
+    const was = snap(), stored = storage.get('thachbi.simulator.v1'), writes = storageWrites.count;
+    assert(!R.active && R.begin() && R.active && !R.begin(), 'a rehearsal begins once');
+    const read = () => { A.run(undefined, { now: true }); return { lux: A.results.seats.lux.avg, kw: SIM.powerSummary().total / 1000, spl: A.results.seats.spl?.avg ?? null }; };
+    const db2 = () => SIM.state.items.filter(item => SIM.CIRCUITS[item.circuit]?.board === 'DB2');
+    R.scene('All off'); assert.equal(read().lux, 0, 'all-off rehearsal: no light');
+    R.circuits({ L1: 1 }); const one = read();
+    R.circuits({ L2: 1 }); const two = read();
+    assert(one.lux > 0 && two.lux > one.lux && two.kw > one.kw, 'each circuit switched on adds light and power');
+    R.circuits({ L1: 0.5, L2: 0.5 }); const half = read();
+    assert(half.lux < two.lux && half.kw < two.kw, 'dimming lowers light and power');
+    R.scene('Full service · evening'); assert(db2().some(item => item.on), 'the scene lights the DB-2 circuits');
+    R.feeder(false); assert(db2().every(item => !item.on) && SIM.powerSummary().byCircuit.filter(c => SIM.CIRCUITS[c.circuit]?.board === 'DB2').every(c => c.watts === 0), 'feeder off: DB-2 draws nothing');
+    R.circuits({ L6: 1 }); assert(db2().every(item => !item.on), 'a circuit behind a dead feeder cannot be switched on');
+    R.feeder(true); R.scene('Full service · evening'); assert(db2().some(item => item.on), 'feeder on: the scene lights DB-2 again');
+    const level = SIM.powerSummary().total; R.setting('mixerDb', 6); assert.equal(SIM.state.settings.mixerDb, 6); assert(SIM.powerSummary().total > level, 'a higher mixer level draws more');
+    SIM.commit('not recorded'); assert.equal(SIM.state.history.length, was.history, 'no history step during a rehearsal');
+    await wait(900); assert.equal(storageWrites.count, writes, 'nothing is stored during a rehearsal');
+    assert(R.end() && !R.active && !R.end(), 'a rehearsal ends once');
+    await wait(900);
+    assert.deepEqual(snap(), was, 'every switch, setting and the scene are back as they were');
+    assert.equal(storage.get('thachbi.simulator.v1'), stored, 'the stored layout is untouched');
+    assert.equal(storageWrites.count, writes, 'a rehearsal writes nothing');
+    console.log(JSON.stringify({ rehearsal: 'passed', lightByCircuit: [0, Math.round(one.lux), Math.round(two.lux)], dimmedHalf: Math.round(half.lux) }));
+
+    // The tours play against the real engine: every step reads every figure it quotes, and says what the numbers do.
+    vm.runInContext(fs.readFileSync(path.join(viewer, 'cinematic-tour.js'), 'utf8'), sandbox, { filename: 'cinematic-tour.js' });
+    const cinema = sandbox.window.CHURCH_CINEMA, tours = {};
+    for (const id of ['lighting', 'air', 'sound', 'grid']) tours[id] = cinema.rehearseAll(id);
+    assert.deepEqual(snap(), was, 'the tours put everything back');
+    assert.equal(storageWrites.count, writes, 'the tours write nothing');
+    const at = (id, shot, index) => { const step = tours[id].find(row => row.shot === shot && row.index === index); assert(step, `${id}/${shot}#${index} exists`); return step; };
+    const v = (id, shot, index, key) => at(id, shot, index).value[key];
+    for (const [id, steps] of Object.entries(tours)) {
+      assert(steps.length >= 12, `${id} tour: demonstration steps ran`);
+      for (const step of steps) {
+        assert.equal(step.missing.length, 0, `${step.shot}#${step.index}: every figure the text quotes is read (missing: ${step.missing.join(', ')})`);
+        assert(step.note && step.noteVi && !/\{|\}/.test(step.note + step.noteVi), `${step.shot}#${step.index}: explanation in both languages, figures filled`);
+        assert(step.say?.[0] && step.say?.[1], `${step.shot}#${step.index}: names the action in both languages`);
+      }
+    }
+    const rise = (id, shot, key, indexes) => indexes.slice(1).forEach((index, i) => assert(v(id, shot, index, key) > v(id, shot, indexes[i], key), `${shot}: ${key} rises from step ${indexes[i]} to ${index}`));
+    const fall = (id, shot, key, indexes) => indexes.slice(1).forEach((index, i) => assert(v(id, shot, index, key) < v(id, shot, indexes[i], key), `${shot}: ${key} falls from step ${indexes[i]} to ${index}`));
+    // Lighting: each circuit lights its own block; LA/LD and L3 add little light for their power; dimming saves less power than light.
+    assert.equal(v('lighting', 'light-build', 0, 'luxAvg'), 0, 'light-build begins in the dark');
+    rise('lighting', 'light-build', 'luxAvg', [0, 1, 2, 3]); rise('lighting', 'light-build', 'kw', [0, 1, 2, 3, 4]);
+    assert(v('lighting', 'light-build', 3, 'luxMin') > v('lighting', 'light-build', 2, 'luxMin') * 2, 'L8 lifts the darkest seat');
+    {
+      // The caption says LA, LD and L3 add little light for their power: against the projectors, a small fraction of the lux per kW.
+      const gain = (a, b) => (v('lighting', 'light-build', b, 'luxAvg') - v('lighting', 'light-build', a, 'luxAvg')) / (v('lighting', 'light-build', b, 'kw') - v('lighting', 'light-build', a, 'kw'));
+      assert(gain(3, 4) < 0.3 * gain(0, 3), `light-build: LA, LD and L3 give ${gain(3, 4).toFixed(0)} lux per kW on the pews against ${gain(0, 3).toFixed(0)} for the projectors`);
+    }
+    fall('lighting', 'light-dim', 'luxAvg', [0, 1, 2]); fall('lighting', 'light-dim', 'kw', [0, 1, 2]);
+    assert((v('lighting', 'light-dim', 0, 'kw') - v('lighting', 'light-dim', 1, 'kw')) / v('lighting', 'light-dim', 0, 'kw') < (v('lighting', 'light-dim', 0, 'luxAvg') - v('lighting', 'light-dim', 1, 'luxAvg')) / v('lighting', 'light-dim', 0, 'luxAvg'), 'dimming saves a smaller share of power than of light');
+    assert(Math.abs(v('lighting', 'light-dim', 3, 'luxAvg') - v('lighting', 'light-dim', 0, 'luxAvg')) < 1e-6, 'back to full output restores the light exactly');
+    fall('lighting', 'light-scenes', 'kw', [0, 1, 2, 3]); assert(v('lighting', 'light-scenes', 3, 'kw') < v('lighting', 'light-scenes', 2, 'kw') / 2 && v('lighting', 'light-scenes', 3, 'luxAvg') < 5, 'night security: little power and almost no light inside');
+    assert.equal(v('lighting', 'light-feeder', 1, 'kwDb2'), 0); assert(v('lighting', 'light-feeder', 1, 'kw') < v('lighting', 'light-feeder', 0, 'kw'), 'feeder off lowers the load');
+    assert(Math.abs(v('lighting', 'light-feeder', 1, 'luxAvg') - v('lighting', 'light-feeder', 0, 'luxAvg')) < 1, 'the nave stays lit with the DB-2 feeder off');
+    assert(at('lighting', 'light-feeder', 1).rows.filter(row => ['L6', 'L9', 'L10'].some(id => row.name[0].startsWith(id))).every(row => row.tone === 'dead'), 'DB-2 circuits show no power');
+    assert(Math.abs(v('lighting', 'light-feeder', 2, 'kwDb2') - v('lighting', 'light-feeder', 0, 'kwDb2')) < 1e-9, 'feeder back on restores DB-2');
+    // Fans: air, noise and power rise with speed; more speed gains little comfort; wings and wall fans; exhaust air changes.
+    assert.equal(v('air', 'air-speeds', 0, 'airAvg'), 0);
+    rise('air', 'air-speeds', 'airAvg', [0, 1, 2, 3]); rise('air', 'air-speeds', 'noise', [1, 2, 3]); rise('air', 'air-speeds', 'kwFan', [0, 1, 2, 3]);
+    assert(v('air', 'air-speeds', 2, 'airOk') > v('air', 'air-speeds', 1, 'airOk') && (v('air', 'air-speeds', 3, 'airOk') - v('air', 'air-speeds', 2, 'airOk')) < (v('air', 'air-speeds', 2, 'airOk') - v('air', 'air-speeds', 1, 'airOk')), 'High adds less comfort than Normal');
+    assert(v('air', 'air-wings', 0, 'wingAir') < 0.5 * v('air', 'air-wings', 0, 'naveAir'), 'with the ceiling fans only, the wings are much stiller than the nave');
+    rise('air', 'air-wings', 'wingAir', [0, 1]); rise('air', 'air-wings', 'noise', [0, 1, 2]);
+    assert(v('air', 'air-wings', 2, 'noise') - v('air', 'air-wings', 1, 'noise') > 3, 'the nave wall fans add several dBA');
+    assert.equal(v('air', 'air-exhaust', 0, 'ach'), 0); rise('air', 'air-exhaust', 'ach', [0, 1, 2]);
+    assert(v('air', 'air-exhaust', 2, 'ach') >= 4 && v('air', 'air-exhaust', 2, 'ach') <= 6, 'exhaust on Normal is inside the aim of 4 to 6 air changes an hour');
+    // Sound: zones, the margin before feedback, the mixer level and fan noise.
+    assert(!Number.isFinite(v('sound', 'sound-zones', 0, 'splAvg')) && !Number.isFinite(v('sound', 'sound-zones', 0, 'stiAvg')), 'no speech level or clarity with nothing on');
+    assert(v('sound', 'sound-zones', 1, 'splAvg') > 60 && Number.isFinite(v('sound', 'sound-zones', 1, 'stiAvg')), 'zone A1 alone gives speech');
+    assert(Number.isFinite(v('sound', 'sound-zones', 2, 'fbLow')), 'a margin is found once the microphones are on');
+    assert(Math.abs(v('sound', 'sound-zones', 3, 'splAvg') - v('sound', 'sound-zones', 1, 'splAvg')) < 1.5, 'the veranda loudspeakers change little inside');
+    assert(v('sound', 'sound-zones', 4, 'stiAvg') < v('sound', 'sound-zones', 3, 'stiAvg') && v('sound', 'sound-zones', 4, 'echo') > 0 && v('sound', 'sound-zones', 4, 'fbLow') < v('sound', 'sound-zones', 3, 'fbLow'), 'the courtyard horns and rear fill blur speech, flag echo and cut the margin');
+    const db = (a, b) => v('sound', 'sound-level', a, 'fbLow') - v('sound', 'sound-level', b, 'fbLow');
+    assert(Math.abs(db(1, 0) - 6) < 0.5 && Math.abs(db(0, 2) - 6) < 0.5, 'each 6 dB of mixer level moves the margin before feedback by 6 dB the other way');
+    assert(v('sound', 'sound-level', 1, 'splAvg') < v('sound', 'sound-level', 0, 'splAvg') && v('sound', 'sound-level', 2, 'splAvg') > v('sound', 'sound-level', 0, 'splAvg'), 'the mixer level moves the speech level');
+    assert(Math.abs(v('sound', 'sound-level', 2, 'stiAvg') - v('sound', 'sound-level', 0, 'stiAvg')) < 0.03 && v('sound', 'sound-level', 2, 'fbLow') < 0, 'louder is not clearer, and the margin goes negative');
+    assert(Math.abs(v('sound', 'sound-level', 3, 'fbLow') - v('sound', 'sound-level', 0, 'fbLow')) < 1e-9, 'back to the nominal level restores the margin');
+    rise('sound', 'sound-fans', 'noise', [0, 1, 2, 3]); fall('sound', 'sound-fans', 'stiAvg', [0, 2, 3]); fall('sound', 'sound-fans', 'stiOk', [0, 2, 3]);
+    // Electrical grid: load by scene, the feeder, currents.
+    rise('grid', 'grid-scenes', 'kw', [0, 1, 2, 3]);
+    for (let index = 0; index < 4; index++) {
+      const s = at('grid', 'grid-scenes', index).value;
+      assert(Math.abs(s.kwDb1 + s.kwDb2 - s.kw) < 0.005, `grid-scenes#${index}: DB-1 and DB-2 add up to the total`);
+      assert(Math.abs(s.amps - s.kw * 1000 / (230 * 0.9)) < 0.1, `grid-scenes#${index}: current is power ÷ (230 V × 0.9)`);
+    }
+    rise('grid', 'grid-fans', 'kwFan', [0, 1, 2]); rise('grid', 'grid-fans', 'ampsFan', [0, 1]);
+    assert(at('grid', 'grid-fans', 0).rows.every(row => row.mcb === undefined || row.mcb >= 6) && at('grid', 'grid-lighting', 0).rows.every(row => row.mcb >= 6 && row.amps <= row.mcb), 'each circuit shown carries less than its breaker');
+    assert.equal(v('grid', 'grid-feeder', 1, 'kwDb2'), 0); assert.equal(v('grid', 'grid-feeder', 1, 'ampsDb2'), 0); assert(v('grid', 'grid-feeder', 0, 'kwDb2') > 0 && Math.abs(v('grid', 'grid-feeder', 2, 'kwDb2') - v('grid', 'grid-feeder', 0, 'kwDb2')) < 1e-9);
+    console.log(JSON.stringify({ tours: 'passed', steps: Object.fromEntries(Object.entries(tours).map(([id, steps]) => [id, steps.length])) }));
+  }
   console.log(JSON.stringify({ checks: 'passed', mode: estimateAudit ? 'calculation audit' : 'calculations and design targets',
     designTargets, allOff: { watts: offPower.total, lux: off, air: offStats.air.avg, noise: offStats.noise.avg, spl: offStats.spl, sti: offStats.sti },
     items: report.items, lux: report.lux, sti: report.sti, air: report.air, noise: report.noise, Tmid: report.room.Tmid }, null, 1));
