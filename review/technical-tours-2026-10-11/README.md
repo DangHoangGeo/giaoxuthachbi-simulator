@@ -1,4 +1,4 @@
-# Technical tours · review record, 11 October 2026
+# Technical tours · review record, 11 and 13 October 2026
 
 **Design in development · Not for construction · Đang phát triển · Không dùng để thi công.**
 
@@ -13,7 +13,37 @@ Three changes were made:
 
 These are display features. They change no dimension, equipment position, circuit, scene, setting, schedule or calculation, so no drawing register, equipment register, route export or summary report was affected. Documents checked for that conclusion: `docs/electrical-grid/controls.md` (circuit and scene names used in the captions), `docs/engineering/nave-wall-fans.md` and `docs/engineering/central-view-constraint.md` (status of the wall fans, clear central view), `docs/systems/lighting.md`, `fans.md`, `sound.md` (aims and open items), `docs/simulator/methods-and-limitations.md`.
 
-## Pictures
+## Third round, 13 October 2026: the tours demonstrate how the systems work
+
+Owner's request, 13 October 2026 (`USER CONFIRMED` intent): "continue to work on the technical tours, I want more direct and specific detail than just moving around like that, including the lights system and how it works rather than the position of objects (simulator turning on and off things then the calculation showing the changing stats)". The first two rounds were fly-throughs that showed where equipment is and quoted figures for the scene that was open. This round replaces most of them with demonstrations: the tour switches circuits on and off, dims them, changes the mixer level or cuts the DB-2 feeder in the simulator, the simulator calculates again, and a live panel lists the circuits and shows the figures that change.
+
+What changed:
+
+- **`CHURCH_SIMULATOR.rehearsal`** (new, `simulator/engine.js`): a tour borrows the switches in memory. `begin / scene / circuits / feeder / setting / reset / end`. While it lasts the simulator saves nothing and records no history step; `end()` restores every switch, the scene name, the feeder and the borrowed settings exactly. `analysis.run(kinds, { now: true })` (new, `simulator/analysis.js`) runs the analysis to the end in one go so that the figures belong to the switches as they are. No calculation, input, threshold or catalogue value was changed.
+- **The tours** (`Thach_Bi_Viewer/cinematic-tour.js`, `.css`): each scene may carry a `demo` (live panel with up to six circuit rows and four figures, and timed steps with a one-line action and an explanation in both languages, 32 words or fewer, steps at least 7 s apart). Lights, Fans and Sound are 2 min 40 s; Wiring is 2 min 56 s. All four were rewritten; the camera routes and music are those of the earlier rounds, with plan views moved so that the panel does not cover them. The five-minute cinematic tour is unchanged (same comparison as before).
+- **Wording and numbers**: every step of every tour is in [demonstrations.json](demonstrations.json) (value of every figure, the rows, the action), taken from `CHURCH_CINEMA.rehearseAll(film)` on the recommended design. Pictures: [demonstrations-1.jpg](demonstrations-1.jpg) (wiring: lighting circuits with current and breaker; fan circuits; sound: fan noise against speech; air: wall fans on the map) and [demonstrations-2.jpg](demonstrations-2.jpg) (lighting: switching on L8 on the light map; the DB-2 feeder cut with the façade dark; sound: circuits of the sound system; wiring: fan current on High). All are frames drawn by the viewer's own recording path (`CHURCH_CINEMA.still`), 1920 × 1080.
+- **Pacing** was a finding of this round: a first version had steps 6 s apart with 45-word notes, which cannot be read. The final version holds each step 7 to 9 s with 32 words or fewer, and `verify_cinematic.cjs` rejects a step that asks for more than 4.8 words a second.
+
+| Check | How | Result |
+| --- | --- | --- |
+| Rehearsal on the real engine | `node scripts/verify_simulator.cjs --estimates` (new section): begin, scene, circuits, dim, feeder, setting, `commit`, a wait for the save timer, `end` | Items, settings, scene, history and the stored layout identical to before; zero storage writes during and after; a circuit behind a dead feeder cannot be switched on |
+| Every step of the four tours on the real engine | same script, `CHURCH_CINEMA.rehearseAll` | 17 + 15 + 14 + 12 steps: every quoted figure is read; the explanations' claims hold (each circuit adds light and power; dimming saves a smaller share of power than of light; High adds little comfort for much noise; 6 dB of mixer level moves the margin 6 dB; the DB-2 feeder off leaves the nave lit; the wings are much stiller than the nave with ceiling fans only; load by scene rises; current is power ÷ 230 V ÷ 0.9; each circuit shown is below its breaker); the tours put everything back and write nothing |
+| Shot lists, panels, steps, reading pace, captions and figures, aims against the simulator's targets, calls the module makes | `node scripts/verify_cinematic.cjs` | Passed: Lights, Fans, Sound 6 / 7 / 6 scenes, 160 s, 40 bars; Wiring 9 scenes, 176 s, 44 bars. The only simulator calls are readings, the map, the wiring view, the frame update and `rehearsal.*` |
+| Five-minute film unchanged | sha256 comparison of its score, shots and sampled poses with the baseline from 11 October (ignoring the internal `stay` flag) | Identical |
+| Camera clearance | `CHURCH_CINEMA.audit({ film })` for the four tours | Nearest 0.59 m (vestment wardrobe, service room, as before); every other scene at least 1.15 m |
+| Run to the end, and stopped part-way | Wiring tour run from the feeder scene to its end; sound tour stopped with `stopTour()` in the middle of a demonstration | Items, settings, scene, history, stored layout, wiring view, light and roof identical to before; `rehearsal.active` false |
+| Public visit mode | `OPEN_CHURCH.html?visit`: sound tour stepped to the fan scene | Works; Simulator panel stays closed; `thachbi.simulator.v1` untouched |
+| Scenes on screen | Live playback in the Browser pane at 1440 × 810 (panel, map key and caption do not overlap after two fixes: a one-line panel heading and the map key moved down) and recorded frames at 1920 × 1080 | As intended |
+| Frame export path | `CHURCH_CINEMA.still(t)` for scenes with a panel | The panel is drawn into the frame and its numbers are those of the step at that time (the analysis is run in one go, so the export does not depend on timing) |
+| Website | `node scripts/prepare-viewer.mjs`, `prepare-guide.mjs`, `npm run check:viewer`, `check:guide`, `npm test`, lint, type check, build, `PLAYWRIGHT_CHANNEL=chrome npx playwright test tests/browser/visit.spec.ts` | 62 viewer files and 43 guide files, exact inventory and hash; 116 of 116 unit tests; lint and types clean; build passes; 4 of 4 visit tests |
+
+Documents checked and changed for this round: `docs/simulator/guide.md` (the technical tours section, rewritten), `docs/web/viewer.md`, `docs/electrical-grid/README.md`, `docs/electrical-inspection-guide.md` and `.vi.md`, `Thach_Bi_Viewer/READ_ME.txt` and the page's help text and button tooltips, `scripts/film_export/README.md` (a tour is now over X's 2 min 20 s limit), and the quick-start guide sentence `s5f` with its narration clip (`docs/guides/father-quick-start/`, regenerated and **not listened to**). `docs/simulator/methods-and-limitations.md`, `docs/electrical-grid/controls.md` and the registers were read and need no change: no equipment, position, specification, circuit, scene or calculation changed.
+
+Not verified in this round: the wording and the Vietnamese, which the owner has not read and no designer or electrical engineer has checked; a whole tour recorded to a video file (frames were drawn and checked, the file was not made); the sound of the new quick-start narration; edited layouts and scenes other than the ones the steps themselves set.
+
+## Pictures from the first two rounds
+
+These four sheets were taken before the demonstrations: fly-through scenes that show where equipment is. They are kept as evidence of the earlier version; the scenes they show were replaced or shortened in the third round.
 
 Four frames of each tour, drawn by the viewer's own frame export (`CHURCH_CINEMA.still`, 1920 × 1080, captions, map key and rings painted into the picture) on the recommended design in the scene "Full service · evening":
 
@@ -24,7 +54,7 @@ Four frames of each tour, drawn by the viewer's own frame export (`CHURCH_CINEMA
 | [sound-tour.jpg](sound-tour.jpg) | wall loudspeakers with rings (30 s) · speech-level map (44 s) · speech-clarity map (60 s) · wings and microphones (76 s) |
 | [electrical-grid-tour.jpg](electrical-grid-tour.jpg) | DB-1, LC-1 and FC-1 in the service room (20 s) · the wiring on its own (36 s) · lighting routes (52 s) · sound lines to AV-1 (84 s) |
 
-The pictures are project-created views of the model (CC BY 4.0, see `NOTICE.md`). They show proposals and simulator estimates.
+The pictures are project-created views of the model (CC BY 4.0, see `NOTICE.md`). They show proposals and simulator estimates. The new pictures of the third round are in the same terms.
 
 ## What was checked
 
