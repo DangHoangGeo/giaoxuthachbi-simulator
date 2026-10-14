@@ -45069,6 +45069,7 @@ void main() {
     renderer: ni, data: ti, sun: xn, fill: Fp, hemisphere: X0
   });
   window.CHURCH_PLANNING.prepare({THREE: Ec, building: nn, interior: Qo, data: ti, renderer: ni});
+  window.CHURCH_CONSTRUCTION?.prepare({THREE: Ec, building: nn, data: ti, grids: Pr, labels: Ir});
   window.CHURCH_SIMULATOR?.prepare({
     THREE: Ec, building: nn, scene: ii, roofs: ei, structure: Rr, interior: Qo,
     data: ti, renderer: ni, sun: xn, fill: Fp, hemisphere: X0, floors: Fn,
@@ -45080,6 +45081,7 @@ void main() {
   var t_ = window.CHURCH_BATCHES.build(Ec, nn, Bp);
   window.CHURCH_REALISM.bindBatches(t_);
   window.CHURCH_PLANNING.bindBatches(t_);
+  window.CHURCH_CONSTRUCTION?.bindBatches(t_);
   window.CHURCH_SIMULATOR?.bindBatches(t_);
   nn.visible = !1;
   ii.matrixAutoUpdate = !1;
@@ -45108,6 +45110,7 @@ void main() {
     interior: Qo,
   });
   window.CHURCH_SIMULATOR?.start(window.church);
+  window.CHURCH_CONSTRUCTION?.start(window.church);
 })();
 /*! Bundled license information:
 

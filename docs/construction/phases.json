@@ -1,0 +1,270 @@
+{
+  "revision": "SITE-PHASES-01",
+  "date": "2026-10-14",
+  "status": "PROPOSED SEQUENCE · NOT AN APPROVED CONSTRUCTION PROGRAMME",
+  "note": "A conventional order for a masonry church with a timber roof, written to organise the 3D model for site checks. The contractor, structural engineer and architect must set the real programme, temporary works and hold points. Gates list the open project records that affect each phase; they are not a complete list of approvals.",
+  "phases": [
+    {
+      "id": "S01",
+      "en": "Set-out: grid, levels and benchmarks",
+      "vi": "Định vị: lưới trục, cao độ, mốc",
+      "layers": [],
+      "check": "Set out axes 1–12 and A–I from the coordinated drawings; record benchmark and finished-floor datum ±0.000. Compare every bay with the dimension register before excavation.",
+      "gates": [
+        "ENG-001",
+        "ENG-012",
+        "ISSUE-P04",
+        "ISSUE-C01",
+        "ISSUE-C03",
+        "ISSUE-C05"
+      ],
+      "check_vi": "Định vị trục 1–12 và A–I theo bản vẽ đã phối hợp; ghi mốc cao độ và cốt sàn hoàn thiện ±0.000. Đối chiếu từng gian với sổ kích thước trước khi đào móng."
+    },
+    {
+      "id": "S02",
+      "en": "Foundations and plinth",
+      "vi": "Móng và nền bệ",
+      "layers": [
+        "plinth"
+      ],
+      "check": "Foundations are not modelled. The plinth in the model is the drawn outline only; footing sizes, depths and reinforcement come from the structural drawings.",
+      "gates": [
+        "RFI-S07",
+        "RFI-S01",
+        "ENG-013",
+        "ENG-001"
+      ],
+      "check_vi": "Móng chưa có trong mô hình. Nền bệ trong mô hình chỉ là đường bao theo bản vẽ; kích thước, chiều sâu và cốt thép móng lấy theo bản vẽ kết cấu."
+    },
+    {
+      "id": "S03",
+      "en": "Columns, piers and floor slabs",
+      "vi": "Cột, trụ và sàn",
+      "layers": [
+        "columns",
+        "floors"
+      ],
+      "check": "Two central timber columns per frame on D and E, concrete outer supports. Column sizes in the model are illustrative. Floor levels: nave ±0.000, verandas −0.320, side sanctuary +0.150, altar +0.750.",
+      "gates": [
+        "RFI-S07",
+        "RFI-S08",
+        "ENG-013"
+      ],
+      "check_vi": "Mỗi khung có hai cột gỗ giữa trên trục D và E, các trụ ngoài bằng bê tông. Tiết diện cột trong mô hình chỉ để minh hoạ. Cao độ sàn: gian chính ±0.000, hiên −0.320, hai bên cung thánh +0.150, bàn thờ +0.750."
+    },
+    {
+      "id": "S04",
+      "en": "Walls, towers and facade body",
+      "vi": "Tường, tháp và thân mặt tiền",
+      "layers": [
+        "walls"
+      ],
+      "check": "Openings and wall planes must be fixed before walls rise. Agree cable containment in walls and cornices now (ENG-010): it cannot be added after plastering.",
+      "gates": [
+        "ISSUE-P02",
+        "ISSUE-P03",
+        "EI01",
+        "EI02",
+        "RFI-S02",
+        "RFI-S04",
+        "RFI-S10",
+        "ISSUE-C04",
+        "ENG-010"
+      ],
+      "check_vi": "Phải chốt các lỗ cửa và mặt tường trước khi xây. Thống nhất ngay đường ống luồn dây trong tường và phào (ENG-010): sau khi trát sẽ không thêm được."
+    },
+    {
+      "id": "S05",
+      "en": "Timber frame and roof structure",
+      "vi": "Khung gỗ và kết cấu mái",
+      "layers": [
+        "frame"
+      ],
+      "check": "Member sections, joints, bearings and bracing are on ENGINEERING HOLD in the timber package. Carving is not evidence of strength.",
+      "gates": [
+        "ENG-013",
+        "RFI-S05",
+        "ENG-009",
+        "ENG-010"
+      ],
+      "check_vi": "Tiết diện cấu kiện, mối nối, gối tựa và giằng đang CHỜ THIẾT KẾ KỸ THUẬT trong hồ sơ khung gỗ. Chạm khắc không chứng minh khả năng chịu lực."
+    },
+    {
+      "id": "S06",
+      "en": "Roof covering and ceilings",
+      "vi": "Lợp mái và trần",
+      "layers": [
+        "roof"
+      ],
+      "check": "Roof pitch, tile thickness and overhangs are not dimensioned on the drawings. Side-wing ridge heights are not given.",
+      "gates": [
+        "ISSUE-P01",
+        "ISSUE-C02",
+        "RFI-S05",
+        "RFI-S08"
+      ],
+      "check_vi": "Độ dốc mái, chiều dày ngói và độ vươn mái chưa ghi kích thước trên bản vẽ. Cao độ nóc mái hai cánh chưa có."
+    },
+    {
+      "id": "S07",
+      "en": "Doors, windows and glass",
+      "vi": "Cửa đi, cửa sổ và kính",
+      "layers": [
+        "openings"
+      ],
+      "check": "Inner and outer openings are different wall planes with different widths and sills; check each opening type against its detail sheet.",
+      "gates": [
+        "RFI-S03",
+        "RFI-S04",
+        "RFI-S10",
+        "ISSUE-C04"
+      ],
+      "check_vi": "Cửa lớp trong và lớp ngoài nằm trên hai mặt tường khác nhau, khác bề rộng và cao độ bậu; kiểm tra từng loại cửa theo tờ chi tiết."
+    },
+    {
+      "id": "S08",
+      "en": "Electrical containment, boards and cable routes",
+      "vi": "Ống luồn, tủ điện và tuyến cáp",
+      "layers": [
+        "routes"
+      ],
+      "check": "Routes are a routing study, not a wiring design. Supply, earthing, cable sizes and protection need the electrical engineer.",
+      "gates": [
+        "ENG-015",
+        "ENG-017",
+        "ENG-025",
+        "ENG-030",
+        "ENG-010"
+      ],
+      "check_vi": "Các tuyến chỉ là nghiên cứu đi dây, chưa phải thiết kế điện. Nguồn cấp, nối đất, tiết diện cáp và thiết bị bảo vệ cần kỹ sư điện."
+    },
+    {
+      "id": "S09",
+      "en": "Mouldings, carving, gilding and floor finishes",
+      "vi": "Phào chỉ, chạm khắc, thếp vàng và lát sàn",
+      "layers": [
+        "ornament",
+        "finishes"
+      ],
+      "check": "Most ornament is CONCEPT: curves, radii and depths are not dimensioned. Keep carving clear of lamp, fan and speaker envelopes.",
+      "gates": [
+        "RFI-S06",
+        "RFI-S08",
+        "ENG-009"
+      ],
+      "check_vi": "Phần lớn trang trí là Ý TƯỞNG: đường cong, bán kính và chiều sâu chưa có kích thước. Giữ phần chạm khắc tránh khoảng lắp đèn, quạt và loa."
+    },
+    {
+      "id": "S10",
+      "en": "Sanctuary: steps, reredos and altar",
+      "vi": "Cung thánh: bậc, bàn thờ, trang trí",
+      "layers": [
+        "sanctuary"
+      ],
+      "check": "Dais levels are drawn; step runs, altar size and liturgical furniture are not dimensioned.",
+      "gates": [
+        "RFI-S09",
+        "ISSUE-P05",
+        "ENG-014",
+        "ENG-013"
+      ],
+      "check_vi": "Cao độ bục đã có trên bản vẽ; bậc lên, kích thước bàn thờ và đồ phụng vụ chưa có kích thước."
+    },
+    {
+      "id": "S11",
+      "en": "Lights, fans, sound and outlets: install and commission",
+      "vi": "Lắp đặt và chạy thử đèn, quạt, âm thanh, ổ cắm",
+      "layers": [
+        "equipment"
+      ],
+      "check": "Positions come from the simulator's recommended design. No product is selected; known unmet targets remain (feedback margins, wing speech clarity, some seats' reading light, air speed).",
+      "gates": [
+        "ENG-002",
+        "ENG-003",
+        "ENG-004",
+        "ENG-005",
+        "ENG-006",
+        "ENG-007",
+        "ENG-011",
+        "ENG-022",
+        "ENG-023",
+        "ENG-026",
+        "ENG-029",
+        "ENG-031"
+      ],
+      "check_vi": "Vị trí lấy theo phương án đề xuất của trình mô phỏng. Chưa chọn sản phẩm; vẫn còn các mục tiêu chưa đạt (biên độ hú micro, độ rõ tiếng ở hai cánh, ánh sáng đọc sách ở vài ghế, tốc độ gió)."
+    },
+    {
+      "id": "S12",
+      "en": "Pews, furniture and landscape",
+      "vi": "Ghế, nội thất và sân vườn",
+      "layers": [
+        "furniture",
+        "site"
+      ],
+      "check": "Seating layouts are concepts, not approved capacity. Check aisles, exits and wheelchair places with a full-scale mock-up.",
+      "gates": [
+        "ENG-014",
+        "ENG-018"
+      ],
+      "check_vi": "Bố trí ghế là ý tưởng, chưa phải sức chứa được duyệt. Kiểm tra lối đi, lối thoát và chỗ xe lăn bằng mô hình thử thực tế."
+    }
+  ],
+  "engineering": {
+    "ENG-001": "Design basis, approving authority and code clauses not yet verified",
+    "ENG-002": "No selected product data: photometry, loudspeaker directivity, fan curves",
+    "ENG-003": "Ambo and altar microphone feedback margins below the 3 dB target",
+    "ENG-004": "Speech clarity in the wings below the test target",
+    "ENG-005": "Four seats below the 200 lux reading-light target",
+    "ENG-006": "Air speed at some seats and exhaust rate below the brief",
+    "ENG-007": "Background noise criteria not agreed",
+    "ENG-009": "Ambo key-light canopy touches the axis-9/D capital",
+    "ENG-010": "Concealed cornice, wall-lining and roof service paths not surveyed",
+    "ENG-011": "Hidden-equipment requirement versus visible concepts",
+    "ENG-012": "Dimension workbook open items and blank confirmation fields",
+    "ENG-013": "Timber frame sections, joints, load path and erection on hold",
+    "ENG-014": "Sightlines, wheelchair places and circulation not approved",
+    "ENG-015": "Supply phases, capacity, earthing and fault level unknown",
+    "ENG-017": "Physical controls and cable specifications not designed",
+    "ENG-018": "Attendance, budget, design life and maintenance basis unknown",
+    "ENG-022": "No exposed fans in the central nave view",
+    "ENG-023": "Wing chandeliers and wall fans rest on concept assumptions",
+    "ENG-025": "Electrical supply and purchase hold",
+    "ENG-026": "Equipment sourcing and budget hold",
+    "ENG-029": "Nave wall fans: quantity, load and mounting hold",
+    "ENG-030": "Socket outlets and event power: ratings and supply open",
+    "ENG-031": "Facade statues and hidden light: fixing, access and products open"
+  },
+  "sources": {
+    "engineering": "docs/engineering/issues.md",
+    "workbook": "docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
+    "timber": "docs/beams-roof-connections/SPECIFICATION.md"
+  },
+  "status_vi": "TRÌNH TỰ ĐỀ XUẤT · CHƯA PHẢI TIẾN ĐỘ THI CÔNG ĐƯỢC DUYỆT",
+  "note_vi": "Thứ tự thông thường cho một nhà thờ tường xây, mái khung gỗ, dùng để sắp xếp mô hình 3D phục vụ kiểm tra tại công trường. Nhà thầu, kỹ sư kết cấu và kiến trúc sư phải lập tiến độ thực tế, biện pháp tạm và các điểm dừng kiểm tra.",
+  "engineering_vi": {
+    "ENG-001": "Chưa xác minh cơ sở thiết kế, cơ quan phê duyệt và điều khoản quy chuẩn",
+    "ENG-002": "Chưa có dữ liệu sản phẩm đã chọn: quang học đèn, hướng loa, đường đặc tính quạt",
+    "ENG-003": "Biên độ chống hú micro ở giảng đài và bàn thờ dưới mục tiêu 3 dB",
+    "ENG-004": "Độ rõ tiếng nói ở hai cánh dưới mục tiêu kiểm tra",
+    "ENG-005": "Bốn ghế dưới mục tiêu 200 lux để đọc sách",
+    "ENG-006": "Tốc độ gió ở một số ghế và lưu lượng hút dưới yêu cầu",
+    "ENG-007": "Chưa thống nhất tiêu chí tiếng ồn nền",
+    "ENG-009": "Chụp đèn chiếu giảng đài chạm đầu cột trục 9/D",
+    "ENG-010": "Chưa khảo sát đường đi dây ẩn trong phào, ốp tường và mái",
+    "ENG-011": "Yêu cầu giấu thiết bị so với các phương án còn lộ",
+    "ENG-012": "Các mục kích thước còn mở và ô xác nhận còn trống trong sổ kích thước",
+    "ENG-013": "Tiết diện, mối nối, đường truyền lực và lắp dựng khung gỗ đang chờ thiết kế",
+    "ENG-014": "Tầm nhìn, chỗ xe lăn và lối đi chưa được duyệt",
+    "ENG-015": "Chưa biết số pha, công suất nguồn, nối đất và dòng ngắn mạch",
+    "ENG-017": "Chưa thiết kế công tắc điều khiển thực tế và quy cách cáp",
+    "ENG-018": "Chưa rõ số người dự lễ, ngân sách, tuổi thọ thiết kế và trách nhiệm bảo trì",
+    "ENG-022": "Không để quạt lộ trong tầm nhìn chính giữa lòng nhà thờ",
+    "ENG-023": "Đèn chùm và quạt tường ở hai cánh dựa trên giả định ý tưởng",
+    "ENG-025": "Tạm dừng mua sắm và nguồn cấp điện",
+    "ENG-026": "Tạm dừng chọn nhà cung cấp và ngân sách thiết bị",
+    "ENG-029": "Quạt tường gian chính: số lượng, tải trọng và cách treo đang chờ",
+    "ENG-030": "Ổ cắm và nguồn cho sự kiện: định mức và nguồn cấp còn mở",
+    "ENG-031": "Tượng mặt tiền và đèn giấu: liên kết, lối bảo trì và sản phẩm còn mở"
+  }
+}

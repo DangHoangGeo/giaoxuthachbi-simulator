@@ -31,6 +31,14 @@ nothing is saved and your layout, scene and settings return when the tour
 ends. The figures are simulator estimates, not measurements; the wiring is a
 routing study, not a wiring design.
 "Save as video" in a film or tour records it as a video file in the browser.
+Site (header button): a construction manager's view. Grid lines on the floors
+with axis bubbles, dimension chains in millimetres and a level staff; plan and
+section cuts; fourteen layers to show, ghost or hide; a proposed twelve-phase
+build sequence with the open questions affecting each phase; Inspect (size,
+levels and grid position of any part) and Measure; and the drawing dimension
+register with a check of the model grid. Vietnamese by default, VI/EN switch.
+The phases are a proposal and SCHEMATIC or CONCEPT shapes must not be measured
+for setting out. See docs/construction/README.md.
 
 The original architectural drawings and measurement workbook govern dimensions.
 Finishes, furniture and lighting are visual proposals.
