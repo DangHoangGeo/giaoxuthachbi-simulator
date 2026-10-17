@@ -25,6 +25,15 @@ The website now serves `Thach_Bi_Viewer/` itself. There is one model, so the web
 - [web/scripts/check-viewer.mjs](../../web/scripts/check-viewer.mjs) runs in every build and fails unless the copy has exactly that file list and those bytes.
 - The site's `X-Frame-Options: DENY` header stays on every page. Only `/viewer/*` is `SAMEORIGIN`, so the viewer can be framed by this site and by no other.
 
+## Language (since 18 October 2026)
+
+- One language on screen at a time: Vietnamese by default, English on the EN switch. The switch sits in the viewer's header (VI | EN) in normal and visit-only mode, and the site view's own VI | EN switch shares the same choice.
+- The choice is stored under `thachbi.lang`. The older site-view key `thachbi.site.lang` is read once, moved and removed.
+- The website passes its locale to the viewer: `/viewer/OPEN_CHURCH.html?visit&lang=vi` (or `lang=en`). `?lang=` wins for that page load only and is not saved.
+- The entry page declares `<html lang="vi">`; `viewer-files.mjs` keeps that value and adds `class="visit-only"`.
+- Code: `Thach_Bi_Viewer/i18n.js` (language state, `t()`, `adopt()`), `i18n-vi.js` (English text → Vietnamese, and `data-i18n` paragraphs). Static markup is translated by exact match; text built in code uses `t()`. Engineering IDs (L1, DB-2, F2), units, catalogue equipment names and register contents stay as they are.
+- Still English: catalogue item names in the simulator (for example "Reading light · axis 3 · B central"), the long engineering prose in the Wiring and installation-review panels, the composed review notices, and the planning brief (`planning/index.html`). The site view's own English and Vietnamese strings are unchanged.
+
 ## Visit-only mode
 
 The mode lives in the viewer, so it can be tried locally at `Thach_Bi_Viewer/OPEN_CHURCH.html?visit`.

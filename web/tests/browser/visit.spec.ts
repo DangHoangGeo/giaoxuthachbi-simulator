@@ -37,16 +37,17 @@ test("the viewer loads only on entry, in visit-only mode, and closes", async ({ 
   expect(viewerRequests).toHaveLength(0);
 
   await page.getByRole("button", { name: "Enter 3D", exact: true }).click();
-  await expect(page.locator("iframe")).toHaveAttribute("src", viewer);
+  await expect(page.locator("iframe")).toHaveAttribute("src", `${viewer}?visit&lang=en`);
   const frame = page.frameLocator("iframe");
   await expect(frame.locator("html")).toHaveClass(/visit-only/);
+  await expect(frame.locator("html")).toHaveAttribute("lang", "en");
   // The viewer starts from its own animation frame; allow for software rendering in CI.
   await expect
     .poll(
       () =>
         page
           .frames()
-          .find((f) => f.url().endsWith(viewer))
+          .find((f) => f.url().includes(viewer))
           ?.evaluate(() =>
             Boolean((window as unknown as { church?: { ready?: boolean } }).church?.ready),
           ),
@@ -55,10 +56,11 @@ test("the viewer loads only on entry, in visit-only mode, and closes", async ({ 
     .toBe(true);
   await expect(frame.locator("#simulatorButton")).toBeHidden();
   await expect(frame.locator("#simPanel")).toBeHidden();
-  await expect(frame.getByText(/Not for construction/)).toBeVisible();
+  // The viewer's own notice; the site view also says "Not for construction" in its (closed) panel.
+  await expect(frame.locator(".visit-note")).toBeVisible();
   const state = await page
     .frames()
-    .find((f) => f.url().endsWith(viewer))
+    .find((f) => f.url().includes(viewer))
     ?.evaluate(() => {
       const sim = (
         window as unknown as {
@@ -82,7 +84,7 @@ test("the viewer may be framed only by this site", async ({ request }) => {
   const entry = await request.get(viewer);
   expect(entry.status()).toBe(200);
   expect(entry.headers()["x-frame-options"]).toBe("SAMEORIGIN");
-  expect(await entry.text()).toContain('<html lang="en" class="visit-only">');
+  expect(await entry.text()).toContain('<html lang="vi" class="visit-only">');
   const page = await request.get("/en/visit");
   expect(page.headers()["x-frame-options"]).toBe("DENY");
   for (const removed of ["/models/", "/en/review", "/vi/review/model"])
