@@ -329,3 +329,10 @@ body[data-lighting] :is(.sim-panel,.ctl-dock,.settings-panel,.place-dock,dialog)
     height:auto; border-radius:var(--ui-radius);
   }
 }
+
+/* Language switch (VI | EN), one language on screen at a time. Vietnamese is the default. */
+.lang-switch { display: flex; padding: 3px; gap: 2px; border: 1px solid #445f3b20; border-radius: 100px; background: #e5ebdf80; }
+.lang-switch button { border: 0; border-radius: 100px; min-width: 34px; height: 29px; padding: 0 9px; background: transparent; color: #71806b; font-size: 11px; font-weight: 700; letter-spacing: .04em; }
+.lang-switch button.active { background: #f8faf5; color: #253c32; box-shadow: 0 1px 6px #28433116; }
+.lang-switch button:focus-visible { outline: 3px solid #8ea77a; outline-offset: 2px; }
+@media (max-width: 760px) { .lang-switch button { min-width: 28px; padding: 0 6px; font-size: 10px; } }
