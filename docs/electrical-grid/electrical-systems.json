@@ -2,7 +2,7 @@
   "schema": 1,
   "units": "metres",
   "status": "Proposed routing study, not installation documentation",
-  "routingRevision": "2026-10-07-concealed-1",
+  "routingRevision": "2026-10-18-concealed-2",
   "sources": {
     "DB1": {
       "label": "DB-1 · Main board",
@@ -28127,36 +28127,36 @@
         [
           48.735,
           0.95,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
-          5.694,
-          -3.3
+          5.55,
+          3.3
         ],
         [
           53.016,
-          5.694,
+          5.55,
           -7.36
         ],
         [
           44.175,
-          5.694,
+          5.55,
           -7.36
         ],
         [
@@ -28196,16 +28196,16 @@
         ],
         [
           36.975,
-          5.694,
+          5.55,
           -7.36
         ],
         [
           14.475000000000001,
-          5.694,
+          5.55,
           -7.36
         ]
       ],
-      "length": 61.27413031117918,
+      "length": 65.21813031117918,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -28323,12 +28323,12 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 61.27413031117918,
+      "upstreamLength": 65.21813031117918,
       "homeRun": true,
       "points": [
         [
           14.475000000000001,
-          5.694,
+          5.55,
           -7.36
         ],
         [
@@ -28345,7 +28345,7 @@
       "method": "side-wall",
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "length": 2.534,
+      "length": 2.3899999999999997,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -28365,12 +28365,12 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 56.77413031117918,
+      "upstreamLength": 60.71813031117919,
       "homeRun": true,
       "points": [
         [
           18.975,
-          5.694,
+          5.55,
           -7.36
         ],
         [
@@ -28387,7 +28387,7 @@
       "method": "side-wall",
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "length": 2.534,
+      "length": 2.3899999999999997,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -28407,12 +28407,12 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 52.27413031117918,
+      "upstreamLength": 56.21813031117919,
       "homeRun": true,
       "points": [
         [
           23.475,
-          5.694,
+          5.55,
           -7.36
         ],
         [
@@ -28429,7 +28429,7 @@
       "method": "side-wall",
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "length": 2.534,
+      "length": 2.3899999999999997,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -28449,12 +28449,12 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 47.77413031117918,
+      "upstreamLength": 51.71813031117919,
       "homeRun": true,
       "points": [
         [
           27.975,
-          5.694,
+          5.55,
           -7.36
         ],
         [
@@ -28471,7 +28471,7 @@
       "method": "side-wall",
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "length": 2.534,
+      "length": 2.3899999999999997,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -28491,12 +28491,12 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 43.27413031117918,
+      "upstreamLength": 47.21813031117919,
       "homeRun": true,
       "points": [
         [
           32.475,
-          5.694,
+          5.55,
           -7.36
         ],
         [
@@ -28513,7 +28513,7 @@
       "method": "side-wall",
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "length": 2.534,
+      "length": 2.3899999999999997,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -28533,12 +28533,12 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 38.77413031117918,
+      "upstreamLength": 42.71813031117919,
       "homeRun": true,
       "points": [
         [
           36.975,
-          5.694,
+          5.55,
           -7.36
         ],
         [
@@ -28555,7 +28555,7 @@
       "method": "side-wall",
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "length": 2.534,
+      "length": 2.3899999999999997,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -28575,7 +28575,7 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 28.966999999999995,
+      "upstreamLength": 32.766999999999996,
       "homeRun": true,
       "points": [
         [
@@ -28690,36 +28690,36 @@
         [
           48.735,
           0.95,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
-          5.694,
-          -3.3
+          5.55,
+          3.3
         ],
         [
           53.016,
-          5.694,
+          5.55,
           7.36
         ],
         [
           44.175,
-          5.694,
+          5.55,
           7.36
         ],
         [
@@ -28759,16 +28759,16 @@
         ],
         [
           36.975,
-          5.694,
+          5.55,
           7.36
         ],
         [
           14.475000000000001,
-          5.694,
+          5.55,
           7.36
         ]
       ],
-      "length": 67.87413031117919,
+      "length": 58.61813031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -28886,12 +28886,12 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 67.87413031117919,
+      "upstreamLength": 58.61813031117919,
       "homeRun": true,
       "points": [
         [
           14.475000000000001,
-          5.694,
+          5.55,
           7.36
         ],
         [
@@ -28908,7 +28908,7 @@
       "method": "side-wall",
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "length": 2.534,
+      "length": 2.3899999999999997,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -28928,12 +28928,12 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 63.37413031117919,
+      "upstreamLength": 54.11813031117919,
       "homeRun": true,
       "points": [
         [
           18.975,
-          5.694,
+          5.55,
           7.36
         ],
         [
@@ -28950,7 +28950,7 @@
       "method": "side-wall",
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "length": 2.534,
+      "length": 2.3899999999999997,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -28970,12 +28970,12 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 58.87413031117919,
+      "upstreamLength": 49.61813031117919,
       "homeRun": true,
       "points": [
         [
           23.475,
-          5.694,
+          5.55,
           7.36
         ],
         [
@@ -28992,7 +28992,7 @@
       "method": "side-wall",
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "length": 2.534,
+      "length": 2.3899999999999997,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -29012,12 +29012,12 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 54.37413031117919,
+      "upstreamLength": 45.11813031117919,
       "homeRun": true,
       "points": [
         [
           27.975,
-          5.694,
+          5.55,
           7.36
         ],
         [
@@ -29034,7 +29034,7 @@
       "method": "side-wall",
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "length": 2.534,
+      "length": 2.3899999999999997,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -29054,12 +29054,12 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 49.87413031117919,
+      "upstreamLength": 40.61813031117919,
       "homeRun": true,
       "points": [
         [
           32.475,
-          5.694,
+          5.55,
           7.36
         ],
         [
@@ -29076,7 +29076,7 @@
       "method": "side-wall",
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "length": 2.534,
+      "length": 2.3899999999999997,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -29096,12 +29096,12 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 45.37413031117919,
+      "upstreamLength": 36.11813031117919,
       "homeRun": true,
       "points": [
         [
           36.975,
-          5.694,
+          5.55,
           7.36
         ],
         [
@@ -29118,7 +29118,7 @@
       "method": "side-wall",
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "length": 2.534,
+      "length": 2.3899999999999997,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -29138,7 +29138,7 @@
       ],
       "trunkId": "trunk:AV1:A1:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 35.56699999999999,
+      "upstreamLength": 26.167,
       "homeRun": true,
       "points": [
         [
@@ -29247,36 +29247,36 @@
         [
           48.735,
           0.95,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
-          5.726,
-          -3.3
+          5.518,
+          3.3
         ],
         [
           53.016,
-          5.726,
+          5.518,
           -7.36
         ],
         [
           44.175,
-          5.726,
+          5.518,
           -7.36
         ],
         [
@@ -29316,21 +29316,21 @@
         ],
         [
           36.975,
-          5.726,
+          5.518,
           -7.36
         ],
         [
           5.475,
-          5.726,
+          5.518,
           -7.36
         ],
         [
           2.655,
-          5.726,
+          5.518,
           -7.36
         ]
       ],
-      "length": 73.06213031117917,
+      "length": 77.07013031117918,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -29448,12 +29448,12 @@
       ],
       "trunkId": "trunk:AV1:A5:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 73.06213031117917,
+      "upstreamLength": 77.07013031117918,
       "homeRun": true,
       "points": [
         [
           2.655,
-          5.726,
+          5.518,
           -7.36
         ],
         [
@@ -29480,7 +29480,7 @@
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 10.613024897171492,
+      "length": 10.818705875926424,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -29515,36 +29515,36 @@
         [
           48.735,
           0.95,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
-          5.726,
-          -3.3
+          5.518,
+          3.3
         ],
         [
           53.016,
-          5.726,
+          5.518,
           7.36
         ],
         [
           44.175,
-          5.726,
+          5.518,
           7.36
         ],
         [
@@ -29584,21 +29584,21 @@
         ],
         [
           36.975,
-          5.726,
+          5.518,
           7.36
         ],
         [
           5.475,
-          5.726,
+          5.518,
           7.36
         ],
         [
           2.655,
-          5.726,
+          5.518,
           7.36
         ]
       ],
-      "length": 79.66213031117918,
+      "length": 70.47013031117918,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -29716,12 +29716,12 @@
       ],
       "trunkId": "trunk:AV1:A5:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 79.66213031117918,
+      "upstreamLength": 70.47013031117918,
       "homeRun": true,
       "points": [
         [
           2.655,
-          5.726,
+          5.518,
           7.36
         ],
         [
@@ -29748,7 +29748,7 @@
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 10.613024897171492,
+      "length": 10.818705875926424,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -29784,36 +29784,36 @@
         [
           48.735,
           0.95,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
-          5.702,
-          -3.3
+          5.542,
+          3.3
         ],
         [
           53.016,
-          5.702,
+          5.542,
           -7.36
         ],
         [
           44.175,
-          5.702,
+          5.542,
           -7.36
         ],
         [
@@ -29853,16 +29853,16 @@
         ],
         [
           36.975,
-          5.702,
+          5.542,
           -7.36
         ],
         [
           13.530000000000001,
-          5.702,
+          5.542,
           -7.36
         ]
       ],
-      "length": 62.21113031117919,
+      "length": 66.17113031117918,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -29980,12 +29980,12 @@
       ],
       "trunkId": "trunk:AV1:A2:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 62.21113031117919,
+      "upstreamLength": 66.17113031117918,
       "homeRun": true,
       "points": [
         [
           13.530000000000001,
-          5.702,
+          5.542,
           -7.36
         ],
         [
@@ -30021,7 +30021,7 @@
           "points": [
             [
               13.530000000000001,
-              5.702,
+              5.542,
               -7.36
             ],
             [
@@ -30049,7 +30049,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 6.940734978599284,
+      "length": 7.100734978599284,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -30069,12 +30069,12 @@
       ],
       "trunkId": "trunk:AV1:A2:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 48.71113031117919,
+      "upstreamLength": 52.67113031117918,
       "homeRun": true,
       "points": [
         [
           27.03,
-          5.702,
+          5.542,
           -7.36
         ],
         [
@@ -30110,7 +30110,7 @@
           "points": [
             [
               27.03,
-              5.702,
+              5.542,
               -7.36
             ],
             [
@@ -30138,7 +30138,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 6.9407349785992825,
+      "length": 7.100734978599283,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -30174,36 +30174,36 @@
         [
           48.735,
           0.95,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
-          5.702,
-          -3.3
+          5.542,
+          3.3
         ],
         [
           53.016,
-          5.702,
+          5.542,
           7.36
         ],
         [
           44.175,
-          5.702,
+          5.542,
           7.36
         ],
         [
@@ -30243,16 +30243,16 @@
         ],
         [
           36.975,
-          5.702,
+          5.542,
           7.36
         ],
         [
           13.530000000000001,
-          5.702,
+          5.542,
           7.36
         ]
       ],
-      "length": 68.8111303111792,
+      "length": 59.57113031117918,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -30370,12 +30370,12 @@
       ],
       "trunkId": "trunk:AV1:A2:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 68.8111303111792,
+      "upstreamLength": 59.57113031117918,
       "homeRun": true,
       "points": [
         [
           13.530000000000001,
-          5.702,
+          5.542,
           7.36
         ],
         [
@@ -30411,7 +30411,7 @@
           "points": [
             [
               13.530000000000001,
-              5.702,
+              5.542,
               7.36
             ],
             [
@@ -30439,7 +30439,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 6.940734978599284,
+      "length": 7.100734978599284,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -30459,12 +30459,12 @@
       ],
       "trunkId": "trunk:AV1:A2:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 55.31113031117919,
+      "upstreamLength": 46.07113031117918,
       "homeRun": true,
       "points": [
         [
           27.03,
-          5.702,
+          5.542,
           7.36
         ],
         [
@@ -30500,7 +30500,7 @@
           "points": [
             [
               27.03,
-              5.702,
+              5.542,
               7.36
             ],
             [
@@ -30528,7 +30528,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 6.9407349785992825,
+      "length": 7.100734978599283,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -30566,36 +30566,36 @@
         [
           48.735,
           0.95,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
-          5.71,
-          -3.3
+          5.534,
+          3.3
         ],
         [
           53.016,
-          5.71,
+          5.534,
           -7.36
         ],
         [
           44.175,
-          5.71,
+          5.534,
           -7.36
         ],
         [
@@ -30635,21 +30635,21 @@
         ],
         [
           36.975,
-          5.71,
+          5.534,
           -7.36
         ],
         [
           5.475,
-          5.71,
+          5.534,
           -7.36
         ],
         [
           2.35,
-          5.71,
+          5.534,
           -7.36
         ]
       ],
-      "length": 73.38313031117919,
+      "length": 77.35913031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -30767,12 +30767,12 @@
       ],
       "trunkId": "trunk:AV1:A3:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 73.38313031117919,
+      "upstreamLength": 77.35913031117919,
       "homeRun": true,
       "points": [
         [
           2.35,
-          5.71,
+          5.534,
           -7.36
         ],
         [
@@ -30815,7 +30815,7 @@
       "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
       "coverPaths": [],
       "reviewRequired": false,
-      "length": 6.820000000000001,
+      "length": 6.996000000000001,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -30835,12 +30835,12 @@
       ],
       "trunkId": "trunk:AV1:A3:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 73.38313031117919,
+      "upstreamLength": 77.35913031117919,
       "homeRun": true,
       "points": [
         [
           2.35,
-          5.71,
+          5.534,
           -7.36
         ],
         [
@@ -30883,7 +30883,7 @@
       "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
       "coverPaths": [],
       "reviewRequired": false,
-      "length": 11.345999999999998,
+      "length": 11.522,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -30903,12 +30903,12 @@
       ],
       "trunkId": "trunk:AV1:A3:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 56.75813031117919,
+      "upstreamLength": 60.734130311179186,
       "homeRun": true,
       "points": [
         [
           18.975,
-          5.71,
+          5.534,
           -7.36
         ],
         [
@@ -30944,7 +30944,7 @@
           "points": [
             [
               18.975,
-              5.71,
+              5.534,
               -7.36
             ],
             [
@@ -30967,7 +30967,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 5.5181723888610765,
+      "length": 5.694172388861077,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -30987,12 +30987,12 @@
       ],
       "trunkId": "trunk:AV1:A3:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 43.25813031117919,
+      "upstreamLength": 47.234130311179186,
       "homeRun": true,
       "points": [
         [
           32.475,
-          5.71,
+          5.534,
           -7.36
         ],
         [
@@ -31028,7 +31028,7 @@
           "points": [
             [
               32.475,
-              5.71,
+              5.534,
               -7.36
             ],
             [
@@ -31051,7 +31051,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 5.5181723888610765,
+      "length": 5.694172388861077,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -31089,36 +31089,36 @@
         [
           48.735,
           0.95,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -2.24
+          2.24
         ],
         [
           48.735,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
           4.33,
-          -3.3
+          3.3
         ],
         [
           53.016,
-          5.71,
-          -3.3
+          5.534,
+          3.3
         ],
         [
           53.016,
-          5.71,
+          5.534,
           7.36
         ],
         [
           44.175,
-          5.71,
+          5.534,
           7.36
         ],
         [
@@ -31158,21 +31158,21 @@
         ],
         [
           36.975,
-          5.71,
+          5.534,
           7.36
         ],
         [
           5.475,
-          5.71,
+          5.534,
           7.36
         ],
         [
           2.35,
-          5.71,
+          5.534,
           7.36
         ]
       ],
-      "length": 79.98313031117918,
+      "length": 70.75913031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -31290,12 +31290,12 @@
       ],
       "trunkId": "trunk:AV1:A3:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 79.98313031117918,
+      "upstreamLength": 70.75913031117919,
       "homeRun": true,
       "points": [
         [
           2.35,
-          5.71,
+          5.534,
           7.36
         ],
         [
@@ -31338,7 +31338,7 @@
       "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
       "coverPaths": [],
       "reviewRequired": false,
-      "length": 6.820000000000001,
+      "length": 6.996000000000001,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -31358,12 +31358,12 @@
       ],
       "trunkId": "trunk:AV1:A3:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 79.98313031117918,
+      "upstreamLength": 70.75913031117919,
       "homeRun": true,
       "points": [
         [
           2.35,
-          5.71,
+          5.534,
           7.36
         ],
         [
@@ -31406,7 +31406,7 @@
       "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
       "coverPaths": [],
       "reviewRequired": false,
-      "length": 11.345999999999998,
+      "length": 11.522,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -31426,12 +31426,12 @@
       ],
       "trunkId": "trunk:AV1:A3:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 63.35813031117918,
+      "upstreamLength": 54.13413031117919,
       "homeRun": true,
       "points": [
         [
           18.975,
-          5.71,
+          5.534,
           7.36
         ],
         [
@@ -31467,7 +31467,7 @@
           "points": [
             [
               18.975,
-              5.71,
+              5.534,
               7.36
             ],
             [
@@ -31490,7 +31490,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 5.5181723888610765,
+      "length": 5.694172388861077,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -31510,12 +31510,12 @@
       ],
       "trunkId": "trunk:AV1:A3:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 49.85813031117918,
+      "upstreamLength": 40.63413031117919,
       "homeRun": true,
       "points": [
         [
           32.475,
-          5.71,
+          5.534,
           7.36
         ],
         [
@@ -31551,7 +31551,7 @@
           "points": [
             [
               32.475,
-              5.71,
+              5.534,
               7.36
             ],
             [
@@ -31574,7 +31574,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 5.5181723888610765,
+      "length": 5.694172388861077,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,

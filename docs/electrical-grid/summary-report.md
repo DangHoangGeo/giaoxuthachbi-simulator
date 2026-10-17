@@ -1,6 +1,6 @@
 # Equipment quantities, usage and quality report
 
-Generated 9 October 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
+Generated 18 October 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
 
 ## Total quantities
 
@@ -37,12 +37,12 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
 | Lighting | 3,046.922 | 3,046.922 | 0.000 | 0.000 |
-| Sound | 744.183 | 0.000 | 1,790.080 | 583.921 |
+| Sound | 723.891 | 0.000 | 1,716.603 | 562.897 |
 | Fans and ventilation | 826.041 | 826.041 | 0.000 | 0.000 |
 | Exit signs | 145.936 | 145.936 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 244.983 | 244.983 | 0.000 | 0.000 |
-| **Total by length basis** | **5,008.066** | **4,263.883** | **1,790.080** | **583.921** |
+| **Total by length basis** | **4,987.773** | **4,263.883** | **1,716.603** | **562.897** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/360 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -66,8 +66,8 @@ The held wing review of 9 October 2026 retains four small brass chandeliers (L63
 
 ## Sources and refresh
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 0a6cf2aa5294b46ad1ca267ef78dada74d793fdb4a83f39e392746594b74ba7c.
-- [Electrical snapshot](electrical-systems.json), SHA-256: e25c59374b1948a67cdb0ee5bed0beb9884da65931cb92b8dc2af738d4ae1e28.
+- [Layout snapshot](equipment-layout.json), SHA-256: 37e3acfbe7b2353ccb6bf951d166ae573b85d990a0e3cb06b573b995c64fefa8.
+- [Electrical snapshot](electrical-systems.json), SHA-256: dbabc0c9ddcd7207edad13de9e8b20f5da0865700167c5f9fe7c34d6d03b22b4.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 

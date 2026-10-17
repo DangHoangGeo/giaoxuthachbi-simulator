@@ -14,7 +14,7 @@ Evidence for the [safety and efficiency review](../../docs/electrical-grid/safet
 | [walk-03-entrance-towers-event-routes.jpg](walk-03-entrance-towers-event-routes.jpg) | Entrance, DB-2 and the towers; the teal lines at the bottom are the two buried event-power routes. |
 | [walk-04-nave-wall-band-shared-corridor.jpg](walk-04-nave-wall-band-shared-corridor.jpg) | Nave wall band: lighting (amber), fan (brown), loudspeaker (blue) trunks and the DB-2 feeder (red) stacked on one line. This is the shared corridor measured by the separation screen. |
 
-The pictures are reduced screen captures of the default layout taken before the exit-sign routes were moved to DB-1; on screen that change only moves the start of the E1 lines from LC-1 to DB-1, 1 m away on the same wall. Line thickness is a display convention, not a cable size.
+Picture 04 predates routing revision `2026-10-18-concealed-2`: the blue loudspeaker trunks now run at least 0.35 m below the mains bands instead of in the stack shown ([routing](../../docs/electrical-grid/routing.md#loudspeaker-separation--routing-revision-2026-10-18-concealed-2--18-october-2026)). The pictures are reduced screen captures of the default layout taken before the exit-sign routes were moved to DB-1; on screen that change only moves the start of the E1 lines from LC-1 to DB-1, 1 m away on the same wall. Line thickness is a display convention, not a cable size.
 
 ## Rebuild and check
 

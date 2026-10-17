@@ -210,7 +210,7 @@ def analyse(loads, facts):
     separation = []
     for r in routes:
         if r['kind'] not in ('mic', 'audio'): continue
-        near = touching = 0.0
+        near = touching = wing = 0.0
         partners = Counter()
         for p, w in samples(r['points'], SAMPLE):
             best, who = SEPARATION, None
@@ -221,10 +221,16 @@ def analyse(loads, facts):
             if who:
                 near += w; partners[who] += w
                 if best < .05: touching += w
+                # The covered soffit raceway over the open 9-10 wing bay, which every wall-band trunk follows.
+                if abs(abs(p[2]) - 7.36) < .05 and 36.9 < p[0] < 44.2 and p[1] > 6.5: wing += w
         separation.append({'route_id': r['id'], 'kind': r['kind'], 'role': r['role'], 'circuit': r['circuit'], 'length_m': r['length'], 'within_0_30_m': near, 'within_0_05_m': touching,
+                           'within_0_30_m_wing_raceway': wing,
                            'closest_mains_routes': [k for k, _ in partners.most_common(3)]})
     sep_total = {k: {'routes': sum(1 for s in separation if s['kind'] == k), 'length_m': sum(s['length_m'] for s in separation if s['kind'] == k),
-                     'within_0_30_m': sum(s['within_0_30_m'] for s in separation if s['kind'] == k), 'within_0_05_m': sum(s['within_0_05_m'] for s in separation if s['kind'] == k)} for k in ('mic', 'audio')}
+                     'within_0_30_m': sum(s['within_0_30_m'] for s in separation if s['kind'] == k), 'within_0_05_m': sum(s['within_0_05_m'] for s in separation if s['kind'] == k),
+                     'within_0_30_m_wing_raceway': sum(s['within_0_30_m_wing_raceway'] for s in separation if s['kind'] == k),
+                     'trunk_within_0_30_m': sum(s['within_0_30_m'] for s in separation if s['kind'] == k and s['role'] == 'trunk'),
+                     'drop_within_0_30_m': sum(s['within_0_30_m'] for s in separation if s['kind'] == k and s['role'] != 'trunk')} for k in ('mic', 'audio')}
 
     methods = defaultdict(float)
     for r in mains: methods[r.get('method') or r['role']] += r['length']

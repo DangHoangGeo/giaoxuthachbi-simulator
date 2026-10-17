@@ -97,9 +97,10 @@ def write_report(r, issue_date):
          f'S1 ampacity screen; the comparison gives {by["P1"]["cases"][0]["comparison_area_mm2"]} mm² (S1) or {by["P1"]["cases"][1]["comparison_area_mm2"]} mm² (S2). '
          f'Only {n(by["P2"]["cases"][0]["loop_allowance_ohm_type_c_at_minimum"], 2)} Ω is left for supply and board before a C16 stops tripping at once at 2.5 mm².',
          'Larger conductors, a lower rating, or one circuit per outlet pair; 30 mA residual-current protection stays essential. Q44.'],
-        ['5', 'Loudspeaker lines beside mains', f'{n(sep["audio"]["within_0_30_m"])} m of the {n(sep["audio"]["length_m"])} m of loudspeaker route lies within 0.30 m of a mains route, '
-         f'{n(sep["audio"]["within_0_05_m"])} m on the same line. Microphone lines are separate ({n(sep["mic"]["within_0_30_m"], 1)} m of {n(sep["mic"]["length_m"], 1)} m).',
-         'Separate compartments or containment, cable insulation suited to the neighbouring voltage, and the amplifier topology: AV designer and electrical engineer.'],
+        ['5', 'Loudspeaker lines beside mains', f'{n(sep["audio"]["within_0_30_m"])} m of the {n(sep["audio"]["length_m"])} m of loudspeaker route lies within 0.30 m of a mains route '
+         f'(632 m before the band change of 18 October 2026), {n(sep["audio"]["within_0_05_m"])} m on the same line. {n(sep["audio"]["within_0_30_m_wing_raceway"])} m of it is the shared covered raceway over the 9–10 wing bay. '
+         f'Microphone lines are separate ({n(sep["mic"]["within_0_30_m"], 1)} m of {n(sep["mic"]["length_m"], 1)} m).',
+         'A segregated compartment in the wing-bay raceway, separation or crossing at right angles where drops pass the band, cable insulation suited to the neighbouring voltage, and the amplifier topology: AV designer and electrical engineer.'],
         ['6', 'Life safety', f'{life["exit_signs"]} exit signs stay on in all {len(life["scene_counts"])} quick modes, including All off. ' + (
          'Their routes now leave DB-1 directly; before this review they left LC-1, the lighting-control enclosure. ' if life['source'] == ['DB1'] else f'They are fed from {", ".join(life["source"])}, not from their own way at DB-1. ')
          + 'No emergency escape luminaire is modelled.',
@@ -221,8 +222,12 @@ def write_report(r, issue_date):
             [[x['label'], x['open_to_weather'], x['covered_exterior'], x['interior'], n(x['highest_point_m'], 2)] for x in r['exterior_circuits']]))
     w('')
     w(f'**Signal lines and mains.** Sampled every 0.25 m along each signal route: loudspeaker routes {n(sep["audio"]["within_0_30_m"])} m of {n(sep["audio"]["length_m"])} m within 0.30 m of a mains route '
-      f'({n(sep["audio"]["within_0_05_m"])} m within 0.05 m); microphone routes {n(sep["mic"]["within_0_30_m"], 2)} m of {n(sep["mic"]["length_m"], 1)} m. The loudspeaker trunks follow the same wall bands as the lighting '
-      'trunks and the DB-2 feeder. The microphone lines keep their own route under the floor.')
+      f'({n(sep["audio"]["within_0_05_m"])} m within 0.05 m); microphone routes {n(sep["mic"]["within_0_30_m"], 2)} m of {n(sep["mic"]["length_m"], 1)} m. '
+      'Since 18 October 2026 the loudspeaker bands step down from +5.55 m while the mains bands step up from +5.90 m, so along the walls they stay at least 0.35 m apart, '
+      'and the loudspeaker home runs rise on the H side of the niche instead of beside the boards\' riser. Before that, 632 m were within 0.30 m and 262 m on the same line. '
+      f'What remains: {n(sep["audio"]["within_0_30_m_wing_raceway"])} m in the covered raceway over the 9–10 wing bay, which every wall-band trunk follows on one line, '
+      f'and {n(sep["audio"]["drop_within_0_30_m"])} m of loudspeaker drops plus {n(sep["audio"]["trunk_within_0_30_m"] - sep["audio"]["within_0_30_m_wing_raceway"])} m of trunk elsewhere, '
+      'mostly where the drops of nearby fittings cross the band or share a pier. The microphone lines keep their own route under the floor.')
     w('')
     w('**Where the mains routes run** (model centre lines):')
     w('')

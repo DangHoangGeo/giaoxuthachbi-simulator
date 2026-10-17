@@ -24,7 +24,12 @@
   const clean = p => p.filter((v, i) => !i || v.some((a, k) => Math.abs(a - p[i - 1][k]) > 0.00001)).map(v => v.slice());
   const wired = it => { const t = CAT.byId[it.type]; return t.glow !== 'flame' && !!(t.light || t.fan || t.speaker || t.mic || t.outlet); };
   const circuitIndex = c => Math.max(0, Object.keys(SIM.CIRCUITS).indexOf(c));
-  const height = (c, audio) => (audio ? 5.55 : 5.9) + circuitIndex(c) * 0.008;
+  // Loudspeaker home-run bands step DOWN from +5.55 m and mains bands step up from +5.90 m, so the
+  // two systems stay at least 0.35 m apart along the walls. (Until 18 October 2026 both stepped up by
+  // the circuit's position in the list, which lifted the loudspeaker bands to 0.17-0.21 m below the
+  // lighting band.) Side-wall openings top out at +4.31 m.
+  const audioIndex = c => Math.max(0, Object.keys(SIM.CIRCUITS).filter(k => SIM.CIRCUITS[k].cat === 'speaker').indexOf(c));
+  const height = (c, audio) => audio ? 5.55 - audioIndex(c) * 0.008 : 5.9 + circuitIndex(c) * 0.008;
   const REAR = 53.016, WALL = 7.36, WING = 13.249, ARCADE = 10.414;
   // These are routing-study clearances, not a selected containment product.
   // Main-roof paths occupy the modeled space ABOVE the ivory lining. Roofs
@@ -95,18 +100,21 @@
       for (const x of [36.975, 44.175]) if (Math.abs(it.pos[0] - x) < 0.45) return x;
     return pierX(it);
   }
-  function riserZ(z) {
+  function riserZ(z, side = -1) {
     const n = window.CHURCH_SANCTUARY?.spec.niche, clear = n ? n.half + n.shell + 0.2 : 0;
-    return Math.abs(z) < clear ? -clear : z;
+    return Math.abs(z) < clear ? side * clear : z;
   }
   function trunkPath(source, s, y, endX) {
-    const p = SOURCES[source].pos, rz = riserZ(p[2]);
+    const p = SOURCES[source].pos;
     if (source === 'DB2') return clean([p, [2.35, p[1], p[2]], [2.35, 7.65, p[2]],
       [2.35, 7.65, s * WALL], [2.35, y, s * WALL], ...takeTo(perimeter(s, y).reverse(), endX)]);
+    // Mains rise on the B side of the niche; loudspeaker home runs from AV-1 rise on the H side and
+    // cross the service-room ceiling and the rear wall on their own line, then cross the mains riser once.
+    const side = source === 'AV1' ? 1 : -1, rz = riserZ(p[2], side), rear = side * 3.3;
     // Ceiling top is +4.27. The old +4.02 route cut through the edge beam.
     return clean([p, [48.735, p[1], p[2]], [48.735, p[1], rz], [48.735, 4.33, rz],
-      [48.735, 4.33, -3.3], [REAR, 4.33, -3.3], [REAR, y, -3.3],
-      ...takeTo([[REAR, y, -3.3], ...perimeter(s, y)], endX)]);
+      [48.735, 4.33, rear], [REAR, 4.33, rear], [REAR, y, rear],
+      ...takeTo([[REAR, y, rear], ...perimeter(s, y)], endX)]);
   }
   function servicePanelRoute(it) {
     const p = SOURCES.LC1.pos, q = it.pos, rz = riserZ(p[2]);
@@ -614,7 +622,7 @@
   }
   function exportData() {
     return { schema: 1, units: 'metres', status: 'Proposed routing study, not installation documentation',
-      routingRevision: '2026-10-07-concealed-1', sources: SOURCES, routes: routes.map(r => ({ ...r, drawnDiameter: r.role === 'feeder' ? 0.064 : 0.048, buildingDrawnDiameter: 0.006, drawnDiameterBasis: 'Systems-only exaggeration / building display convention; neither is a specified cable size' })),
+      routingRevision: '2026-10-18-concealed-2', sources: SOURCES, routes: routes.map(r => ({ ...r, drawnDiameter: r.role === 'feeder' ? 0.064 : 0.048, buildingDrawnDiameter: 0.006, drawnDiameterBasis: 'Systems-only exaggeration / building display convention; neither is a specified cable size' })),
       components: schedule('all'), billOfMaterials: billOfMaterials('all'), unresolved: ['Cable type and conductor sizes', 'Conduit sizing and installation method', 'Supply and phase allocation', 'Earthing / bonding and protective devices', 'Amplifier topology and speaker impedance / line voltage', 'Manufacturer product dimensions and enclosure capacities', 'Permanent routing and outlets for movable equipment', 'Removable beam/soffit covers: finish, fixings, access and separation', 'Sanctuary lining service space and microphone furniture/floorbox details', 'Ambo key-light canopy contact with capital: mounting coordination hold'] };
   }
   // A review snapshot is deliberately separate from the complete design export.
