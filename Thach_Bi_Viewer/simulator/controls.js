@@ -30,6 +30,9 @@
     </aside>
     <button class="ctl-toggle" id="ctlToggle" aria-controls="ctlPanel" aria-expanded="${open}" title="Equipment controls"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/></svg><span>Controls</span><svg class="ctl-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 14 5-5 5 5"/></svg></button>`;
   document.querySelector('.right-rail').append(root);
+  window.THACH_I18N?.adopt(root);
+  // Viewer language (i18n.js): the panel body is rebuilt in the new language.
+  const tx = text => (window.THACH_I18N ? window.THACH_I18N.t(text) : text);
   const body = root.querySelector('#ctlBody'), panel = root.querySelector('#ctlPanel'), toggle = root.querySelector('#ctlToggle');
   document.body.classList.toggle('controls-open', open);
   function revealControls() {
@@ -78,6 +81,7 @@
         </div>`).join('')}</div>`;
     }
     body.innerHTML = `<div class="ctl-section-title"><h2>${TITLES[tab][0]}</h2><p>${TITLES[tab][1]}</p></div>` + html;
+    window.THACH_I18N?.adopt(body);
     body.scrollTop = 0;
     body.setAttribute('aria-labelledby', `ctl-tab-${tab}`);
     root.querySelectorAll('.ctl-tabs button').forEach(b => {
@@ -94,7 +98,7 @@
       const c = b.dataset.circuit, x = byC[c] || {};
       const on = items(c).some(i => i.on);
       b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); b.disabled = blocked(c);
-      b.querySelector('.ctl-state').textContent = on ? 'On' : 'Off';
+      b.querySelector('.ctl-state').textContent = on ? tx('On') : tx('Off');
       b.title = x.outlet ? `${SIM.CIRCUITS[c].label}\n${items(c).length} outlet points · ${x.mcb} A with ${x.rcdmA} mA residual-current protection (provisional) · ${fmt(x.amps || 0, 1)} A test load`
         : `${SIM.CIRCUITS[c].label}\n${items(c).length} fittings · C${x.mcb || 6} breaker · ${fmt(x.amps || 0, 1)} A now`;
     });
@@ -112,7 +116,7 @@
     });
     body.querySelectorAll('[data-regulator]').forEach(reg => {
       const c = reg.dataset.regulator, speeds = items(c).map(i => i.on ? (i.speed ?? 2) : 0), sp = speeds.every(s => s === speeds[0]) ? speeds[0] : null;
-      reg.querySelector('[data-speed-status]').textContent = `· ${sp === null ? 'Mixed speeds' : SPEEDS[sp] === 'Med' ? 'Medium' : SPEEDS[sp]}`;
+      reg.querySelector('[data-speed-status]').textContent = `· ${sp === null ? tx('Mixed speeds') : tx(SPEEDS[sp] === 'Med' ? 'Medium' : SPEEDS[sp])}`;
       reg.querySelectorAll('[data-act=speed]').forEach(b => {
         const active = Number(b.dataset.speed) === sp;
         b.classList.toggle('active', active); b.setAttribute('aria-pressed', String(active)); b.disabled = blocked(c);
@@ -123,8 +127,8 @@
       st.classList.toggle('muted', !on);
       const f = st.querySelector('.ctl-fader'); if (document.activeElement !== f) f.value = Math.round(lvl);
       st.querySelector('.ctl-db').textContent = `${lvl > 0 ? '+' : ''}${Math.round(lvl)} dB`;
-      const m = st.querySelector('.ctl-mute'); m.textContent = on ? 'On' : 'Muted'; m.classList.toggle('on', !on);
-      m.setAttribute('aria-pressed', String(!on)); m.setAttribute('aria-label', `${on ? 'Mute' : 'Unmute'} ${short(c)}`); m.disabled = blocked(c);
+      const m = st.querySelector('.ctl-mute'); m.textContent = on ? tx('On') : tx('Muted'); m.classList.toggle('on', !on);
+      m.setAttribute('aria-pressed', String(!on)); m.setAttribute('aria-label', `${on ? tx('Mute') : tx('Unmute')} ${short(c)}`); m.disabled = blocked(c);
       f.disabled = blocked(c);
     });
   }
@@ -196,6 +200,7 @@
   } };
 
   const refresh = () => { if (!panel.hidden) sync(); };
+  window.THACH_I18N?.onChange(() => { if (!panel.hidden) build(); });
   for (const ev of ['items', 'history', 'scene']) SIM.on(ev, refresh);
   const start = () => { if (SIM.ready) { if (open) { build(); requestAnimationFrame(revealControls); } } else setTimeout(start, 300); };
   start();

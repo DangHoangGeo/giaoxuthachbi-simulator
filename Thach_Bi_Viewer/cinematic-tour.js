@@ -170,6 +170,16 @@
     plain: ['Figures are simulator estimates', 'Số liệu là ước tính của mô phỏng'] };
   const TOUR_VIRTUAL = 'Switching is a rehearsal in memory: nothing is saved, and your layout returns when the tour ends · Việc bật tắt chỉ diễn ra trong bộ nhớ: không lưu gì, bố cục của bạn trở lại như cũ khi tour kết thúc';
   const TOUR_CLOSE = { title: 'Estimates, not measurements', line: 'Số liệu là ước tính của mô phỏng, chưa phải số đo thực tế' };
+  // One language on screen at a time (i18n.js). The data keeps each pair; the screen shows the chosen half.
+  const viewVi = () => window.THACH_I18N?.get() === 'vi';
+  const VI_MARK = /[ăâđêôơưáàảãạắằẳẵặấầẩẫậéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]/i;
+  // A line written as "English · Vietnamese", or a one-language line: the chosen text, or '' when it is the other language.
+  const forView = line => {
+    if (!line) return '';
+    const parts = String(line).split(' · ');
+    if (parts.length === 2 && VI_MARK.test(parts[1]) && !VI_MARK.test(parts[0])) return viewVi() ? parts[1] : parts[0];
+    return VI_MARK.test(line) === viewVi() ? line : '';
+  };
   // The plan from almost straight above with side B at the top, held in the upper part
   // of the picture so that the caption does not cover it, then down toward the
   // wings and the sanctuary, still with side B at the top, as on a map. The look
@@ -1403,7 +1413,7 @@
       tile.append(label, number, el('span', 'd'), el('small', '', aim[0]));
       tiles.append(tile);
     }
-    const foot = el('p', 'cinema-live-foot', demo.foot ? demo.foot.join(' · ') : ''); foot.hidden = !demo.foot;
+    const foot = el('p', 'cinema-live-foot', demo.foot ? demo.foot[viewVi() ? 1 : 0] : ''); foot.hidden = !demo.foot;
     box.replaceChildren(head, action, rows, tiles, foot);
     box.querySelector('.cinema-live-rows').hidden = !live.rows.length;
     box.dataset.legend = demo.breaker ? 'breaker' : '';
@@ -1464,10 +1474,10 @@
     // A demonstration brings the simulator to its step before the figures of the scene are read.
     if (reel.technical) followDemo(shot, Math.max(0, film.time - shot.start));
     const chapter = reel.chapters[shot.chapter], figures = reel.technical ? modelFigures() : null, card = shot.card;
-    const text = film.text = { chapter: `${chapter.en} · ${chapter.vi}`, en: shot.en || '', vi: shot.vi || '',
+    const text = film.text = { chapter: viewVi() ? chapter.vi : chapter.en, en: shot.en || '', vi: shot.vi || '',
       note: reel.technical ? noteFor(shot, stepNow(shot), liveOf(shot), 'en') : shot.note?.en || '', noteVi: reel.technical ? noteFor(shot, stepNow(shot), liveOf(shot), 'vi') : shot.note?.vi || '',
-      card: card ? { ...card, line: say(card.line, card.plain?.line, figures), second: say(card.second, card.plain?.second, figures, true),
-        foot: (card.foot || []).map((line, i) => say(line, card.plain?.foot?.[i], figures)) } : null };
+      card: card ? { ...card, small: forView(card.small), title: forView(card.title), line: say(card.line, card.plain?.line, figures), second: say(card.second, card.plain?.second, figures, true),
+        foot: (card.foot || []).map((line, i) => forView(say(line, card.plain?.foot?.[i], figures))).filter(Boolean) } : null };
     const key = film.key = sceneKey(shot);
     part('.cinema-key-map').hidden = !key.map;
     part('.cinema-key-mark').hidden = !key.mark;
@@ -1820,11 +1830,12 @@
       for (const line of wrap(g, value, width)) rows.push({ line, font, height, colour, spacing });
     };
     row(text.chapter.toUpperCase(), `600 21px ${SANS}`, 38, '#e6cf93', '5px');
-    row(text.en, `400 66px ${SERIF}`, 78, '#f6f2e6');
-    row(text.vi, `italic 400 37px ${SANS}`, 52, '#f6f2e6');
+    const vi = viewVi();
+    row(vi ? '' : text.en, `400 66px ${SERIF}`, 78, '#f6f2e6');
+    row(vi ? text.vi : '', `italic 400 37px ${SANS}`, 52, '#f6f2e6');
     if (text.note) rows.push({ gap: 12 });
-    row(text.note, `400 32px ${SANS}`, 45, '#f6f2e6ee');
-    row(text.noteVi, `400 29px ${SANS}`, 41, '#f6f2e6cc');
+    row(vi ? '' : text.note, `400 32px ${SANS}`, 45, '#f6f2e6ee');
+    row(vi ? text.noteVi : '', `400 29px ${SANS}`, 41, '#f6f2e6cc');
     const height = rows.reduce((sum, r) => sum + (r.gap || r.height), 0), top = H - 84 - height;
     g.save(); g.globalAlpha = alpha;
     const shade = g.createLinearGradient(x - 30, 0, x + width + 150, 0);
@@ -1859,8 +1870,8 @@
     g.letterSpacing = '2px';
     do { g.font = `400 ${size}px ${SERIF}`; size -= 6; } while (g.measureText(card.title).width > width && size > 60);
     rows.push({ line: card.title, font: g.font, height: size * 1.32, spacing: '2px', gap: 14 });
-    row(card.line, `400 40px ${SANS}`, 58, '1px', 22);
-    row(card.second, `400 36px ${SANS}`, 52, '0.5px', 16);
+    row(viewVi() ? '' : card.line, `400 40px ${SANS}`, 58, '1px', 22);
+    row(viewVi() ? card.second : '', `400 36px ${SANS}`, 52, '0.5px', 16);
     let y = (H - rows.reduce((sum, r) => sum + r.height + r.gap, 0)) / 2 - 20;
     for (const r of rows) {
       y += r.gap; g.font = r.font; g.letterSpacing = r.spacing;
@@ -1880,16 +1891,17 @@
   function paintKey(g, key, alpha) {
     const W = VIDEO.width, H = VIDEO.height, width = 600, right = W - 96, left = right - width;
     const rows = [];
-    const row = (value, font, height, colour) => { g.font = font; for (const line of wrap(g, value, width)) rows.push({ line, font, height, colour }); };
+    const vi = viewVi();
+    const row = (value, font, height, colour) => { if (!value) return; g.font = font; for (const line of wrap(g, value, width)) rows.push({ line, font, height, colour }); };
     if (key.map) {
-      row(key.map.en, `600 27px ${SANS}`, 38, '#f6f2e6'); row(key.map.vi, `italic 400 24px ${SANS}`, 34, '#f6f2e6dd');
+      row(vi ? '' : key.map.en, `600 27px ${SANS}`, 38, '#f6f2e6'); row(vi ? key.map.vi : '', `italic 400 24px ${SANS}`, 34, '#f6f2e6dd');
       rows.push({ scale: key.map.stops, height: 74 });
       row(key.map.aim, `400 22px ${SANS}`, 32, '#e6cf93');
     }
     if (key.map && key.mark) rows.push({ height: 14 });
     if (key.mark) {
-      rows.push({ line: key.mark.en, font: `600 25px ${SANS}`, height: 36, colour: '#f6f2e6', ring: true, inset: 44 });
-      rows.push({ line: key.mark.vi, font: `italic 400 23px ${SANS}`, height: 32, colour: '#f6f2e6dd', inset: 44 });
+      if (!vi) rows.push({ line: key.mark.en, font: `600 25px ${SANS}`, height: 36, colour: '#f6f2e6', ring: true, inset: 44 });
+      if (vi) rows.push({ line: key.mark.vi, font: `italic 400 23px ${SANS}`, height: 32, colour: '#f6f2e6dd', inset: 44 });
     }
     const height = rows.reduce((sum, r) => sum + r.height, 0), top = H - 84 - height;
     g.save(); g.globalAlpha = alpha; g.letterSpacing = '0px';
@@ -1918,7 +1930,7 @@
   function paintLive(g, live, alpha) {
     const W = VIDEO.width, width = 640, right = W - 80, left = right - width, demo = live.shot.demo, pad = 22, rowH = 44, tileH = 52;
     const tones = { on: '#9fdc8f', off: '#f6f2e699', dead: '#ff8a7a', system: '#f6f2e6', neutral: '#f6f2e6' };
-    const foot = demo.foot ? (g.font = `400 16px ${SANS}`, wrap(g, demo.foot.join(' · '), width - 2 * pad)) : [];
+    const foot = demo.foot ? (g.font = `400 16px ${SANS}`, wrap(g, demo.foot[viewVi() ? 1 : 0], width - 2 * pad)) : [];
     const height = pad + 40 + (live.say ? 54 : 0) + live.rows.length * rowH + (live.rows.length ? 8 : 0) + demo.stats.length * tileH + (foot.length ? foot.length * 21 + 8 : 0) + pad;
     const top = 126;
     g.save(); g.globalAlpha = alpha; g.textBaseline = 'top'; g.textAlign = 'left'; g.letterSpacing = '0px';
@@ -1936,8 +1948,8 @@
       y += 54;
     }
     for (const row of live.rows) {
-      g.font = `500 21px ${SANS}`; g.fillStyle = '#f6f2e6'; g.fillText(row.name[0], x, y);
-      g.font = `italic 400 16px ${SANS}`; g.fillStyle = '#f6f2e6b3'; g.fillText(row.name[1], x, y + 24);
+      if (!viewVi()) { g.font = `500 21px ${SANS}`; g.fillStyle = '#f6f2e6'; g.fillText(row.name[0], x, y); }
+      else { g.font = `italic 400 16px ${SANS}`; g.fillStyle = '#f6f2e6b3'; g.fillText(row.name[1], x, y); }
       g.font = `600 19px ${SANS}`; g.fillStyle = tones[row.tone] || tones.neutral; g.fillText(row.chip[0], x + 330, y + 2);
       g.textAlign = 'right'; g.font = `400 19px ${SANS}`; g.fillStyle = '#f6f2e6e6';
       if (row.watts !== undefined) g.fillText(wattText(row.watts), x + inner - (demo.breaker ? 112 : 70), y + 2);
@@ -1948,8 +1960,8 @@
     if (live.rows.length) { g.fillStyle = 'rgba(246,242,230,.2)'; g.fillRect(x, y - 4, inner, 1); y += 8; }
     for (const key of demo.stats) {
       const spec = STATS[key], shown = shownStat(live, key), aim = aimOf(spec, live);
-      g.font = `500 20px ${SANS}`; g.fillStyle = '#e6cf93'; g.fillText(spec.en, x, y);
-      g.font = `italic 400 16px ${SANS}`; g.fillStyle = '#f6f2e6b3'; g.fillText(spec.vi, x, y + 25);
+      if (!viewVi()) { g.font = `500 20px ${SANS}`; g.fillStyle = '#e6cf93'; g.fillText(spec.en, x, y); }
+      else { g.font = `italic 400 16px ${SANS}`; g.fillStyle = '#f6f2e6b3'; g.fillText(spec.vi, x, y); }
       g.textAlign = 'right';
       g.font = `700 34px ${SANS}`; g.fillStyle = shown.ok === null ? '#f6f2e6' : shown.ok ? '#9fdc8f' : '#f2b869';
       const unit = spec.unit ? ` ${spec.unit}` : '';
