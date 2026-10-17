@@ -191,6 +191,8 @@
   // A step of a demonstration: when, what is switched, what is said, and the explanation.
   const S = (at, change, say, note, plain) => ({ at, ...change, say, note: note && { en: note[0], vi: note[1] }, plain: plain && { en: plain[0], vi: plain[1] } });
   const FULL = 'Full service · evening';
+  // Exhaust fans by zone: front gable, wing gables, service room.
+  const EXHAUST = ['V1', 'V2', 'V3'], exhaust = value => Object.fromEntries(EXHAUST.map(circuit => [circuit, value]));
   const DB_FOOT = ['Breaker: the smallest standard size that carries the full rated load at 80 % or less. A planning allowance, not a protection design.', 'Cầu dao: cỡ chuẩn nhỏ nhất chịu được toàn tải định mức ở mức không quá 80 %. Chỉ là con số tạm tính, chưa phải thiết kế bảo vệ.'];
 
   const LIGHTING_SHOTS = [
@@ -301,12 +303,12 @@
       keys: [[-11, 1.4, -19.4, 8, 4.2, -10, 50], [9, 2.1, -18.6, 26, 4.2, -10.5, 50], [22, 2.7, -18.6, 38, 4.6, -11.5, 50]] },
     { id: 'air-chain', chapter: 'tour', bars: 5, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.3],
       en: 'Fans in groups, each on its own circuit', vi: 'Quạt theo nhóm, mỗi nhóm một mạch điện',
-      note: { en: '{F1} ceiling fans, {F1size} m across, hang at least {F1side} m to either side of the centre line, so the view to the altar stays clear. Ceiling (F1), wing wall (F5), nave wall (F2) and exhaust fans (V1) each have a circuit and so their own speed: Low, Normal or High.',
-        vi: '{F1} quạt trần đường kính {F1size} m treo cách trục giữa ít nhất {F1side} m về mỗi bên, nên tầm nhìn lên bàn thờ vẫn thông thoáng. Quạt trần (F1), quạt tường hai cánh (F5), quạt tường lòng nhà thờ (F2) và quạt hút (V1) mỗi nhóm có một mạch điện, nên có tốc độ riêng: Thấp, Vừa hoặc Cao.' },
-      plain: { en: 'Ceiling (F1), wing wall (F5), nave wall (F2) and exhaust fans (V1) each have a circuit and so their own speed: Low, Normal or High.',
-        vi: 'Quạt trần (F1), quạt tường hai cánh (F5), quạt tường lòng nhà thờ (F2) và quạt hút (V1) mỗi nhóm có một mạch điện, nên có tốc độ riêng: Thấp, Vừa hoặc Cao.' },
+      note: { en: '{F1} ceiling fans, {F1size} m across, hang at least {F1side} m to either side of the centre line, so the view to the altar stays clear. Ceiling (F1), wing wall (F5) and nave wall fans (F2) each have a circuit, and the exhaust fans one per zone (V1–V3), so each group has its own speed: Low, Normal or High.',
+        vi: '{F1} quạt trần đường kính {F1size} m treo cách trục giữa ít nhất {F1side} m về mỗi bên, nên tầm nhìn lên bàn thờ vẫn thông thoáng. Quạt trần (F1), quạt tường hai cánh (F5) và quạt tường lòng nhà thờ (F2) mỗi nhóm có một mạch điện, quạt hút mỗi khu một mạch (V1–V3), nên mỗi nhóm có tốc độ riêng: Thấp, Vừa hoặc Cao.' },
+      plain: { en: 'Ceiling (F1), wing wall (F5) and nave wall fans (F2) each have a circuit, and the exhaust fans one per zone (V1–V3), so each group has its own speed: Low, Normal or High.',
+        vi: 'Quạt trần (F1), quạt tường hai cánh (F5) và quạt tường lòng nhà thờ (F2) mỗi nhóm có một mạch điện, quạt hút mỗi khu một mạch (V1–V3), nên mỗi nhóm có tốc độ riêng: Thấp, Vừa hoặc Cao.' },
       mark: { circuits: ['F1'], en: 'Ceiling fans · F1', vi: 'Quạt trần · F1' },
-      demo: { title: ['Fan circuits', 'Các mạch quạt'], rows: ['F1', 'F5', 'F2', 'V1', 'F4'], stats: ['airAvg', 'kwFan'], steps: [S(0, { scene: FULL })] },
+      demo: { title: ['Fan circuits', 'Các mạch quạt'], rows: ['F1', 'F5', 'F2', ...EXHAUST], stats: ['airAvg', 'kwFan'], steps: [S(0, { scene: FULL })] },
       keys: CEILING_FANS },
     { id: 'air-speeds', chapter: 'tour', bars: 7, light: 'day', roof: false, cut: 'fade', ease: [0, 0], up: MAP_UP, overlay: 'air',
       en: 'Ceiling fans: speed against comfort', vi: 'Quạt trần: tốc độ và sự dễ chịu',
@@ -347,24 +349,24 @@
       keys: WING_KEYS },
     { id: 'air-exhaust', chapter: 'tour', bars: 6, light: 'day', roof: true, cut: 'dip', ease: [0.25, 0.1],
       en: 'Exhaust fans: air changes', vi: 'Quạt hút: số lần trao đổi không khí',
-      mark: { circuits: ['V1'], en: 'Exhaust fans · V1', vi: 'Quạt hút · V1' },
-      demo: { title: ['Exhaust fans · V1', 'Quạt hút · V1'], rows: ['V1'], stats: ['ach', 'flow', 'kwFan'], steps: [
-        S(0, { scene: FULL, set: { V1: 0 } }, ['Exhaust fans off', 'Tắt quạt hút'],
-          ['The {V1} exhaust fans high in the gables draw hot air out. Off: no mechanical air change; open doors and windows give some, not counted.',
-            '{V1} quạt hút trên cao ở các đầu hồi đưa khí nóng ra ngoài. Khi tắt: không có trao đổi không khí cơ học; cửa mở vẫn cho một ít, không được tính.'],
-          ['The exhaust fans high in the gables draw hot air out. Open doors and windows give some air, not counted.', 'Quạt hút trên cao ở các đầu hồi đưa khí nóng ra ngoài. Cửa mở vẫn cho một ít gió, không được tính.']),
-        S(7, { set: { V1: 1 } }, ['Exhaust on Low', 'Quạt hút ở tốc độ Thấp'],
+      mark: { circuits: EXHAUST, en: 'Exhaust fans · V1–V3', vi: 'Quạt hút · V1–V3' },
+      demo: { title: ['Exhaust fans · V1–V3', 'Quạt hút · V1–V3'], rows: EXHAUST, stats: ['ach', 'flow', 'kwFan'], steps: [
+        S(0, { scene: FULL, set: exhaust(0) }, ['Exhaust fans off', 'Tắt quạt hút'],
+          ['The {exhaustFans} exhaust fans draw hot air out, on three circuits: front gable, wing gables, service room. Off: no mechanical air change; open doors and windows give some, not counted.',
+            '{exhaustFans} quạt hút đưa khí nóng ra ngoài, trên ba mạch: hồi mặt tiền, hồi hai cánh, phòng kỹ thuật. Khi tắt: không có trao đổi không khí cơ học; cửa mở vẫn cho một ít, không được tính.'],
+          ['The exhaust fans draw hot air out, on three circuits: front gable, wing gables, service room. Open doors and windows give some air, not counted.', 'Quạt hút đưa khí nóng ra ngoài, trên ba mạch: hồi mặt tiền, hồi hai cánh, phòng kỹ thuật. Cửa mở vẫn cho một ít gió, không được tính.']),
+        S(7, { set: exhaust(1) }, ['Exhaust on Low', 'Quạt hút ở tốc độ Thấp'],
           ['On Low: about {flow} m³/h, {ach} air changes an hour of the modelled volume.',
             'Ở tốc độ Thấp: khoảng {flow} m³/h, tức {ach} lần trao đổi không khí mỗi giờ theo thể tích mô hình.'],
           ['On Low the fans move part of the air of the building every hour.', 'Ở tốc độ Thấp, các quạt đẩy một phần không khí của công trình mỗi giờ.']),
-        S(14, { set: { V1: 2 } }, ['Exhaust on Normal', 'Quạt hút ở tốc độ Vừa'],
+        S(14, { set: exhaust(2) }, ['Exhaust on Normal', 'Quạt hút ở tốc độ Vừa'],
           ['On Normal: {ach} air changes an hour, within the project aim of 4 to 6 with people inside, for {d_kwFan} kW more.',
             'Ở tốc độ Vừa: {ach} lần trao đổi không khí mỗi giờ, nằm trong mục tiêu 4 đến 6 của dự án khi có người, tốn thêm {d_kwFan} kW.'],
           ['On Normal the air changes an hour approach the project aim of 4 to 6 with people inside.', 'Ở tốc độ Vừa số lần trao đổi không khí mỗi giờ tiến gần mục tiêu 4 đến 6 của dự án khi có người.'])] },
       keys: GABLES },
     { id: 'air-scenes', chapter: 'tour', bars: 7, light: 'day', roof: true, cut: 'dip', ease: [0.5, 0.5],
       en: 'Scenes set every fan together', vi: 'Các chế độ đặt mọi quạt cùng lúc',
-      demo: { title: ['Scene · fan circuits', 'Chế độ · các mạch quạt'], rows: ['F1', 'F5', 'V1'], stats: ['airAvg', 'noise', 'kwFan', 'ach'], steps: [
+      demo: { title: ['Scene · fan circuits', 'Chế độ · các mạch quạt'], rows: ['F1', 'F5', ...EXHAUST], stats: ['airAvg', 'noise', 'kwFan', 'ach'], steps: [
         S(0, { scene: FULL }, null,
           ['Full service: {airAvg} m/s on average at the seats, {airOk} % in the comfort band, {noise} dBA of noise and {kwFan} kW for the fans.',
             'Thánh lễ đầy đủ: trung bình {airAvg} m/s tại chỗ ngồi, {airOk} % trong khoảng dễ chịu, tiếng ồn {noise} dBA và quạt dùng {kwFan} kW.'],
@@ -453,8 +455,8 @@
       keys: PLAN_KEYS },
     { id: 'sound-fans', chapter: 'tour', bars: 9, light: 'day', roof: false, cut: 'fade', ease: [0.2, 0.2], up: MAP_UP, overlay: 'sti',
       en: 'Fan noise against speech', vi: 'Tiếng ồn của quạt và lời nói',
-      demo: { title: ['Fans against speech', 'Quạt và lời nói'], rows: ['F1', 'F5', 'V1', 'F2'], stats: ['noise', 'stiAvg', 'stiOk', 'kwFan'], steps: [
-        S(0, { scene: FULL, set: { F1: 0, F5: 0, V1: 0 } }, ['Fans off', 'Tắt quạt'],
+      demo: { title: ['Fans against speech', 'Quạt và lời nói'], rows: ['F1', 'F5', 'F2', ...EXHAUST], stats: ['noise', 'stiAvg', 'stiOk', 'kwFan'], steps: [
+        S(0, { scene: FULL, set: { F1: 0, F5: 0, ...exhaust(0) } }, ['Fans off', 'Tắt quạt'],
           ['Does fan noise get in the way of speech? Fans off: {noise} dBA at the seats, the ambient level assumed, and clarity {stiAvg}.',
             'Tiếng ồn của quạt có làm khó nghe lời không? Khi tắt quạt: {noise} dBA tại chỗ ngồi, mức nền giả định, và độ rõ {stiAvg}.'],
           ['Does fan noise get in the way of speech? The map shows the clarity of speech at every seat.', 'Tiếng ồn của quạt có làm khó nghe lời không? Bản đồ cho thấy độ rõ của lời nói tại mọi chỗ ngồi.']),
@@ -462,7 +464,7 @@
           ['Fans as the Full service scene sets them: noise {noise} dBA, clarity {stiAvg}.',
             'Quạt theo thiết lập của chế độ Thánh lễ đầy đủ: tiếng ồn {noise} dBA, độ rõ {stiAvg}.'],
           ['With the fans as the Full service scene sets them, the noise rises and the clarity falls a little.', 'Với quạt theo thiết lập của chế độ Thánh lễ đầy đủ, tiếng ồn tăng và độ rõ giảm đôi chút.']),
-        S(18, { set: { F1: 3, F5: 3, V1: 2 } }, ['Ceiling, wing and exhaust fans on High', 'Quạt trần, quạt hai cánh và quạt hút ở tốc độ Cao'],
+        S(18, { set: { F1: 3, F5: 3, ...exhaust(2) } }, ['Ceiling, wing and exhaust fans on High', 'Quạt trần, quạt hai cánh và quạt hút ở tốc độ Cao'],
           ['On High: noise {noise} dBA, and only {stiOk} % of seats keep a clarity of 0.60: speech is harder to follow.',
             'Ở tốc độ Cao: tiếng ồn {noise} dBA, và chỉ {stiOk} % chỗ ngồi giữ được độ rõ 0,60: lời nói khó nghe hơn.'],
           ['On High the noise rises and fewer seats keep a clarity of 0.60: speech is harder to follow.', 'Ở tốc độ Cao tiếng ồn tăng và ít chỗ ngồi giữ được độ rõ 0,60: lời nói khó nghe hơn.']),
@@ -536,16 +538,16 @@
       keys: [[8, 3, 0, 40, 6.5, 0, 62], [20, 3.4, 0, 46, 6.5, 0, 62], [34, 3.9, 0, 48.6, 6, 0, 60]] },
     { id: 'grid-fans', chapter: 'tour', bars: 6, light: 'evening', roof: true, cut: 'dip', ease: [0.5, 0.5], systems: 'air',
       en: 'Fan circuits: current follows speed', vi: 'Các mạch quạt: dòng điện theo tốc độ',
-      demo: { title: ['Fan circuits · current', 'Mạch quạt · dòng điện'], rows: ['F1', 'F5', 'V1'], stats: ['kwFan', 'ampsFan'], breaker: true, foot: DB_FOOT, steps: [
-        S(0, { scene: 'All off', set: { F1: 1, F5: 1, V1: 1 } }, ['All fan circuits on Low', 'Mọi mạch quạt ở tốc độ Thấp'],
+      demo: { title: ['Fan circuits · current', 'Mạch quạt · dòng điện'], rows: ['F1', 'F5', ...EXHAUST], stats: ['kwFan', 'ampsFan'], breaker: true, foot: DB_FOOT, steps: [
+        S(0, { scene: 'All off', set: { F1: 1, F5: 1, ...exhaust(1) } }, ['All fan circuits on Low', 'Mọi mạch quạt ở tốc độ Thấp'],
           ['Ceiling, wing and exhaust fans leave FC-1 on their own circuits, each with its own speed; the entrance fans come from DB-2. On Low: {kwFan} kW, {ampsFan} A.',
             'Quạt trần, quạt hai cánh và quạt hút đi từ FC-1 trên các mạch riêng, mỗi nhóm một tốc độ; quạt lối vào lấy điện từ DB-2. Ở tốc độ Thấp: {kwFan} kW, {ampsFan} A.'],
           ['Ceiling, wing and exhaust fans leave FC-1 on their own circuits, each with its own speed; the entrance fans come from DB-2.', 'Quạt trần, quạt hai cánh và quạt hút đi từ FC-1 trên các mạch riêng, mỗi nhóm một tốc độ; quạt lối vào lấy điện từ DB-2.']),
-        S(8, { set: { F1: 2, F5: 2, V1: 2 } }, ['All on Normal', 'Tất cả ở tốc độ Vừa'],
+        S(8, { set: { F1: 2, F5: 2, ...exhaust(2) } }, ['All on Normal', 'Tất cả ở tốc độ Vừa'],
           ['On Normal: {kwFan} kW, {ampsFan} A. A fan motor draws more as it speeds up.',
             'Ở tốc độ Vừa: {kwFan} kW, {ampsFan} A. Động cơ quạt tốn điện hơn khi quay nhanh hơn.'],
           ['On Normal the same circuits draw more: a fan motor draws more as it speeds up.', 'Ở tốc độ Vừa, các mạch đó dùng nhiều điện hơn: động cơ quạt tốn điện hơn khi quay nhanh hơn.']),
-        S(16, { set: { F1: 3, F5: 3, V1: 2 } }, ['Ceiling and wing fans on High', 'Quạt trần và quạt hai cánh ở tốc độ Cao'],
+        S(16, { set: { F1: 3, F5: 3, ...exhaust(2) } }, ['Ceiling and wing fans on High', 'Quạt trần và quạt hai cánh ở tốc độ Cao'],
           ['On High the ceiling circuit F1 draws {A_F1} A, its most, against its breaker. Motor starting current and fan controls are for the electrical engineer.',
             'Ở tốc độ Cao, mạch quạt trần F1 dùng {A_F1} A, mức cao nhất, so với cầu dao của nó. Dòng khởi động của động cơ và bộ điều khiển quạt là việc của kỹ sư điện.'],
           ['Motor starting current and the fan controls are for the electrical engineer.', 'Dòng khởi động của động cơ và bộ điều khiển quạt là việc của kỹ sư điện.'])] },
@@ -1081,6 +1083,7 @@
       put('chandeliers', count(item => item.circuit === 'LD' && /^chandelier/.test(item.type)));
       put('sconces', count(item => item.circuit === 'LD' && /^sconce/.test(item.type)));
       put('fans', count(item => kind(item).cat === 'fan'));
+      put('exhaustFans', count(item => !!kind(item).fan?.exhaust));
       put('speakers', count(item => !!kind(item).speaker));
       put('mics', count(item => !!kind(item).mic));
       put('scenes', Object.keys(sim.SCENES).length);
@@ -1098,7 +1101,7 @@
       }
       const exhaust = fans.filter(fan => fan.kind === 'exhaust' && fan.running), flow = exhaust.reduce((sum, fan) => sum + fan.flow, 0) * 3600;
       if (exhaust.length) {
-        put('V1on', exhaust.length); put('ach', flow / sim.room().V, 1);
+        put('exhaustOn', exhaust.length); put('ach', flow / sim.room().V, 1);
         out.exhaust = String(Math.round(flow / 100) * 100).replace(/\B(?=(\d{3})+$)/g, ',');
       }
       // Wiring: drawn route lengths, not installed cable lengths; modelled loads, not a supply calculation.
@@ -1196,11 +1199,11 @@
    */
   const CIRCUIT_EN = { L1: 'Central seating', L2: 'Outer seating', L3: 'Sanctuary', L4: 'Circulation', LA: 'Roof uplight', LD: 'Chandeliers', L5: 'Steps and paths', L8: 'Wings',
     L6: 'Façade and towers', L9: 'Entrance', L7: 'Festival exterior', L10: 'Statues and candles', E1: 'Exit signs',
-    F1: 'Ceiling fans', F2: 'Wall fans', F3: 'Portable fans', F4: 'Entrance fans', F5: 'Wing wall fans', V1: 'Exhaust fans',
+    F1: 'Ceiling fans', F2: 'Wall fans', F3: 'Portable fans', F4: 'Entrance fans', F5: 'Wing wall fans', V1: 'Exhaust · front', V2: 'Exhaust · wings', V3: 'Exhaust · service',
     A1: 'Main loudspeakers', A2: 'Veranda', A3: 'Courtyard', A4: 'Choir monitors', A5: 'Rear fill', MIC: 'Microphones' };
   const CIRCUIT_VI = { L1: 'Ghế giữa', L2: 'Ghế ngoài', L3: 'Cung thánh', L4: 'Lối đi và hàng hiên', LA: 'Đèn hắt trần', LD: 'Đèn chùm và đèn nến', L5: 'Bậc và lối đi', L8: 'Hai cánh',
     L6: 'Mặt tiền và tháp', L9: 'Sân khấu trước và cửa chính', L7: 'Đèn lễ hội ngoài trời', L10: 'Tượng và nến mặt tiền', E1: 'Đèn thoát hiểm',
-    F1: 'Quạt trần', F2: 'Quạt tường', F3: 'Quạt di động', F4: 'Quạt lối vào', F5: 'Quạt tường hai cánh', V1: 'Quạt hút',
+    F1: 'Quạt trần', F2: 'Quạt tường', F3: 'Quạt di động', F4: 'Quạt lối vào', F5: 'Quạt tường hai cánh', V1: 'Quạt hút · hồi mặt tiền', V2: 'Quạt hút · hồi hai cánh', V3: 'Quạt hút · phòng kỹ thuật',
     A1: 'Loa chính và loa trễ', A2: 'Loa hàng hiên', A3: 'Loa sân', A4: 'Loa ca đoàn', A5: 'Loa phụ phía sau', MIC: 'Micro' };
   const SCENE_VI = { 'Full service · evening': 'Thánh lễ đầy đủ · buổi tối', 'Weekday Mass': 'Thánh lễ ngày thường', 'Prayer & adoration': 'Cầu nguyện và chầu Thánh Thể', 'Christmas & festivals': 'Giáng sinh và lễ hội',
     'Festival · courtyard overflow': 'Lễ hội · tràn ra sân', 'Cleaning': 'Dọn dẹp', 'Night security': 'An ninh ban đêm', 'All off': 'Tắt tất cả' };

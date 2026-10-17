@@ -8,13 +8,13 @@ Generated 18 October 2026 from the category registers and their matched model sn
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Lighting | 231 | 231 | 0 | 231 | 205 | 254 | 2115 |
 | Sound | 30 | 30 | 0 | 30 | 20 | 40 | 304 |
-| Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 55 | 350 |
+| Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 386 |
 | Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 54 |
 | Decoration and furnishings | 37 | 22 | 15 | 0 | 22 | 0 | 0 |
 | Distribution and controls | 11 | 11 | 0 | 6 | 4 | 14 | 105 |
-| **Total** | 359 | 344 | 15 | 317 | 283 | 370 | 2928 |
+| **Total** | 359 | 344 | 15 | 317 | 283 | 373 | 2964 |
 
-Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **10 equipment, 21 routes**.
+Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **10 equipment, 26 routes**.
 
 ## Usage and energy estimate
 
@@ -24,7 +24,7 @@ Saved scene: **Full service · evening**. Service duration **1.5 h**, **40 servi
 | --- | ---: | ---: | ---: | --- |
 | Lighting | 4,306.5 | 6.460 | 258.39 | L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LD |
 | Sound | 109.4 | 0.164 | 6.57 | A1, A2, A3, A5, MIC |
-| Fans and ventilation | 1,156.0 | 1.734 | 69.36 | F1, F2, F4, F5, V1 |
+| Fans and ventilation | 1,156.0 | 1.734 | 69.36 | F1, F2, F4, F5, V1, V2, V3 |
 | Exit signs | 15.0 | 0.023 | 0.90 | E1 |
 | Decoration and furnishings | 0.0 | 0.000 | 0.00 | DECOR, X1 |
 | Distribution and controls | 0.0 | 0.000 | 0.00 | P1, P2, P3, P4 |
@@ -38,13 +38,13 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 | --- | ---: | ---: | ---: | ---: |
 | Lighting | 3,046.922 | 3,046.922 | 0.000 | 0.000 |
 | Sound | 723.891 | 0.000 | 1,716.603 | 562.897 |
-| Fans and ventilation | 826.041 | 826.041 | 0.000 | 0.000 |
+| Fans and ventilation | 912.595 | 912.595 | 0.000 | 0.000 |
 | Exit signs | 145.936 | 145.936 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 244.983 | 244.983 | 0.000 | 0.000 |
-| **Total by length basis** | **4,987.773** | **4,263.883** | **1,716.603** | **562.897** |
+| **Total by length basis** | **5,074.327** | **4,350.437** | **1,716.603** | **562.897** |
 
-Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/360 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
+Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/363 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
 ## Data quality and engineering completeness
 
@@ -54,11 +54,11 @@ The build verified unique equipment/route IDs, unique ordered vertices, complete
 | --- | ---: | ---: | ---: |
 | Lighting | 0/231 | 0/231 | 0/254 |
 | Sound | 0/30 | 0/30 | 0/40 |
-| Fans and ventilation | 0/45 | 0/45 | 0/55 |
+| Fans and ventilation | 0/45 | 0/45 | 0/58 |
 | Exit signs | 0/5 | 0/5 | 0/7 |
 | Decoration and furnishings | 0/37 | 0/0 | 0/0 |
 | Distribution and controls | 0/11 | 0/6 | 0/14 |
-| **Total** | **0/359** | **0/317** | **0/370** |
+| **Total** | **0/359** | **0/317** | **0/373** |
 
 These counts measure field completeness only; filled fields still require source and engineering review. A 0/0 population is not applicable. Product selection, protection, final cable/containment specifications, actual control channels and commissioning evidence remain pending where fields are blank. No overall quality score is invented.
 
@@ -66,8 +66,8 @@ The held wing review of 9 October 2026 retains four small brass chandeliers (L63
 
 ## Sources and refresh
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 37e3acfbe7b2353ccb6bf951d166ae573b85d990a0e3cb06b573b995c64fefa8.
-- [Electrical snapshot](electrical-systems.json), SHA-256: dbabc0c9ddcd7207edad13de9e8b20f5da0865700167c5f9fe7c34d6d03b22b4.
+- [Layout snapshot](equipment-layout.json), SHA-256: 40c0fb48adb616822d2737a378024e64d46f211fcc43ca75ea298cd2570965f8.
+- [Electrical snapshot](electrical-systems.json), SHA-256: e8507810679907dc3354f9387ce0b6d5f3b3e307d5939a52680f19a914a4cd86.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 

@@ -270,7 +270,7 @@
     html += `<div class="sim-toolbar"><button class="sim-primary" data-act="add" data-cat="${cat}">＋ Add ${cat === 'light' ? 'a light' : cat === 'fan' ? 'a fan' : cat === 'speaker' ? 'a loudspeaker or mic' : cat === 'power' ? 'a socket outlet' : 'a decoration'}</button>
       <span class="sim-count">${items.filter(i => !i.hidden).length} in the model${items.some(i => i.hidden) ? ` · ${items.filter(i => i.hidden).length} hidden alternatives` : ''}</span></div>`;
     if (picking === cat) html += renderPicker(cat);
-    const order = Object.keys(SIM.CIRCUITS);
+    const order = SIM.CIRCUIT_ORDER;
     for (const circuit of [...groups.keys()].sort((a, b) => order.indexOf(a) - order.indexOf(b))) {
       const list = groups.get(circuit);
       const info = SIM.CIRCUITS[circuit] || { label: circuit };

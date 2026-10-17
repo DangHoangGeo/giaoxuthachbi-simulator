@@ -10,7 +10,7 @@
   const fmt = (v, d = 0) => Number.isFinite(v) ? v.toFixed(d) : '–';
   const short = c => SIM.CIRCUITS[c].label.replace(/^\w+ · /, '');
   const items = c => SIM.state.items.filter(i => i.circuit === c && !i.hidden);
-  const present = () => Object.keys(SIM.CIRCUITS).filter(c => items(c).length);
+  const present = () => SIM.CIRCUIT_ORDER.filter(c => items(c).length);
   const fed = () => SIM.state.settings.db2Feed !== false;
   const TOWERS = { off: [], evening: ['L6', 'L9', 'L10'], festival: ['L6', 'L7', 'L9', 'L10'] }, TOWER_CIRCUITS = ['L6', 'L7', 'L9', 'L10'];
   const TABS = [['scenes', 'Scenes'], ['DB1', 'DB-1'], ['DB2', 'Towers'], ['fans', 'Fans'], ['sound', 'Sound']];
@@ -68,7 +68,7 @@
     } else if (tab === 'DB1' || tab === 'DB2') html = boardHtml(tab);
     else if (tab === 'fans') {
       html = `<div class="ctl-reg-row">${present().filter(c => SIM.CIRCUITS[c].cat === 'fan').map(c => `<div class="ctl-regulator" data-regulator="${c}">
-        <div class="ctl-reg-label"><b>${c}</b> ${esc(short(c))}<small>${items(c).length} fans <span data-speed-status="${c}"></span></small></div>
+        <div class="ctl-reg-label"><b>${c}</b> ${esc(short(c))}<small>${items(c).length} fan${items(c).length === 1 ? '' : 's'} <span data-speed-status="${c}"></span></small></div>
         <div class="ctl-speed-options" role="group" aria-label="${esc(short(c))} speed">${SPEEDS.map((label, speed) => `<button data-act="speed" data-circuit="${c}" data-speed="${speed}" aria-label="${esc(short(c))}: ${label === 'Med' ? 'Medium' : label}" aria-pressed="false">${label}</button>`).join('')}</div>
         </div>`).join('')}</div>`;
     } else {

@@ -109,9 +109,12 @@ def write_report(r, issue_date):
          'Containment, fire performance, fixings without drilling structural timber, and no concealed joints: Q05, Q09. Fire designer and structural engineer.'],
         ['8', 'Weather and lightning', f'{open_points} wired points are open to the weather and {covered_points} more are under the veranda roofs. The highest are the dome floods at +{n(highest, 2)} m on the towers.',
          'Product ingress ratings, residual-current and surge protection, and coordination with the lightning-protection design: Q09.'],
-        ['9', 'Exhaust circuit V1', f'{by["V1"]["points"]} fans, {n(by["V1"]["connected_w"])} W and {n(by["V1"]["longest_path_m"], 1)} m on one circuit: {n(by["V1"]["cases"][0]["loading_percent"])} % of a 10 A breaker in S1, '
-         f'and a {by["V1"]["cases"][1]["comparison_breaker_a"]} A breaker with {by["V1"]["cases"][1]["comparison_area_mm2"]} mm² in the hotter, more bunched S2 case.',
-         'Split into front gable, wing gables and service room. This also allows ventilation by zone.'],
+        ['9', 'Exhaust circuits V1–V3', 'Split on 18 October 2026: the nine fans were one circuit of 1,530 W and 86.0 m, at 74 % of a 10 A breaker in S1 and needing 10 mm² in S2. Now '
+         + '; '.join(f'{c} {n(by[c]["points"])} fan{"s" if by[c]["points"] != 1 else ""}, {n(by[c]["connected_w"])} W, {n(by[c]["longest_path_m"], 1)} m' for c in ('V1', 'V2', 'V3')) + '. '
+         + ('Each passes at ' + ' and '.join(sorted({f'{k["comparison_breaker_a"]} A with {k["comparison_area_mm2"]} mm²' for c in ('V1', 'V2', 'V3') for k in by[c]['cases']})) + ' in S1 and S2.'
+            if len({(k['comparison_breaker_a'], k['comparison_area_mm2']) for c in ('V1', 'V2', 'V3') for k in by[c]['cases']}) == 1 else
+            ' '.join(f'{c}: {k["comparison_breaker_a"]} A with {k["comparison_area_mm2"]} mm² in {k["case_id"][:2]}.' for c in ('V1', 'V2', 'V3') for k in by[c]['cases'])),
+         'Done in the model: front gable V1, wing gables V2, service room V3, each with its own speed, so ventilation can run by zone. Breakers, cables and FC-1 channels are comparison screens for the electrical engineer.'],
         ['10', 'Fans over people', f'{len(ceiling)} ceiling fans hang on {n(ceiling[0]["drop_from_anchor_m"], 2)} m rods with the blades {n(min(f["lowest_moving_part_above_floor_m"] for f in ceiling), 2)} m above the floor. '
          f'The lowest wall or exhaust fan is {n(min(f["lowest_moving_part_above_floor_m"] for f in other_fans), 2)} m above its floor.',
          'Blade heights pass the 2.3 m screen. Rod, bracket, anti-sway restraint and secondary retention are a structural hold.'],

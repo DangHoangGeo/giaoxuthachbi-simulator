@@ -158,4 +158,19 @@ Comparison screens with the review's method and case S1 (230 V, PF 0.9, `ΔU ≤
 | --- | --- | --- | --- |
 | P1/P2 socket radials in a floor duct along the inside of each side wall, instead of up to the +6.1 m band and over the wing-bay roof at +9.3 m | DB-1 down to 0.12 m below the floor, east of the microphone risers (X 49.75), across to Z ±7.0, west to each outlet, rise in the wall or the axis-10 pier line. About 36 m (B) and 40 m (H) to the mid-nave outlets, against 54.1 and 60.7 m | Drop at 2.5 mm² with 16 A at the far outlet: about 4.8 % and 5.3 % (now 7.2 % and 8.1 %); still above the 4 % screen, so 4 mm² would still be needed. Loop allowance for a C16 at 2.5 mm²: about 0.6 Ω (now 0.21 Ω). Takes two 16 A circuits out of the bunched wall band and off the timber-lined wing-bay roof | Floor build-up, duct, wet cleaning, passage under the service-room and sanctuary walls: the same holds that led to the wall route on 9 October ([record](../engineering/outlets-and-facade-statues.md)). Q44 |
 | DB-1 → DB-2 feeder in a floor duct along the nave instead of the side-B wall band, the wing-bay raceway and the entrance riser | About 50–56 m against 80.7 m (plan distance 46.2 m plus rises and the turn to DB-2) | All feeder drops fall by about a third: three phases with events at 25 mm², 1.5 % → about 1.0 %. Takes the heaviest cable out of the shared wall band and off the timber-lined raceway | Same floor holds, a draw pit at each end, and separation from the microphone home runs at the sanctuary. Q42 |
-| Split V1 (nine exhaust fans, 86 m) into front gable, wing gables and service room | Circuit change only | V1 is at 74 % of a 10 A comparison breaker in S1 and needs 10 mm² in S2; three circuits would each pass at 2.5 mm² and allow ventilation by zone | New circuit IDs touch the boards, quick modes, controls and registers; recorded in the [review](safety-efficiency-review.md) findings |
+
+The third option first calculated here, splitting V1, was adopted on 18 October 2026: see the next section.
+
+## Exhaust ventilation in three circuits · 18 October 2026
+
+The [safety review](safety-efficiency-review.md) (finding 9) found all nine exhaust fans on V1: 1,530 W connected and an 86.0 m path from FC-1, at 74 % of a 10 A comparison breaker in case S1 and needing 10 mm² in S2. They are now three circuits from FC-1:
+
+| Circuit | Fans | Connected | Longest path | Comparison screen, S1 and S2 |
+| --- | --- | ---: | ---: | --- |
+| V1 · Exhaust · front gable | F252–F255 | 680 W | 86.0 m | 6 A, 2.5 mm² |
+| V2 · Exhaust · wing gables | F256–F259 | 680 W | 45.3 m | 6 A, 2.5 mm² |
+| V3 · Exhaust · service room | F260 | 170 W | 26.7 m | 6 A, 2.5 mm² |
+
+V1 keeps its ID and its two trunks, which keep their paths and now serve only the front gable. V2 and V3 are appended to the circuit list, so no existing band height moves; their bands are at +6.148 and +6.156 m, above the highest earlier mains band (L10, +6.140 m). New routes: `trunk:FC1:V2:fan:-1` (31.714 m), `trunk:FC1:V2:fan:1` (38.314 m) and `trunk:FC1:V3:fan:-1` (16.407 m). The five drops of F256–F260 are re-issued under V2/V3 with the same lengths (F260 10.320 m, was 10.200 m) and their five `drop:FC1:V1:…` IDs are retired in the air-system register. Routes 370 → 373; vertices 2,928 → 2,964; drawn route length 4,987.773 → 5,074.327 m, all of it the fan category (826.041 → 912.595 m): the wing-gable and service-room cables no longer share the V1 trunk, so the drawn length rises by the length of their new trunks. Loudspeaker home runs and shared bundle paths are unchanged.
+
+Equipment positions, speeds and every quick-mode value are unchanged (each mode gives V2 and V3 the value of V1), so no lighting, sound or air result changes. Saved layouts change once through `exhaustSplitRevision`; see [controls](controls.md#exhaust-ventilation-by-zone--18-october-2026). FC-1 channels, speed controls, protection and cables are not designed. The A3 drawings and `output/electrical-review/` remain stale.
