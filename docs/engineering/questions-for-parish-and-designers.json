@@ -387,7 +387,7 @@
       "owner": "Cha xứ / kỹ sư điện / điện lực",
       "question_vi": "Nguồn cấp, số pha và aptomat tổng có đủ cho hai tủ ổ cắm sự kiện 32 A ở hai tháp (P3, P4) cùng lúc với tải nhà thờ không? Có thể cấp ba pha tới DB-2 hoặc lấy nguồn sự kiện gần mặt tiền không?",
       "evidence": "Hợp đồng/biên bản điện lực, công suất và số pha được cấp, sơ đồ một sợi và tính toán phụ tải do kỹ sư điện ký",
-      "blocks": "So sánh có điều kiện: 64 A thêm vào khoảng 13 A tại DB-2 trên cáp DB-1→DB-2 dài 80,683 m cho sụt áp 5,6 % với 25 mm² một pha; chưa chọn được cáp, aptomat hay cách cấp nguồn",
+      "blocks": "So sánh có điều kiện (rà soát 18/10/2026): 64 A thêm vào 16,4 A tại DB-2 trên cáp DB-1→DB-2 dài 80,683 m vượt khả năng tải của mọi tiết diện đến 50 mm² nếu đi một pha (sụt áp 5,8 % với 25 mm²). Ba pha: mỗi mạch một pha giữ nguyên trên một pha (P3 và P4 mỗi mạch 32 A trên một pha), pha nặng nhất 32 A, trung tính 15,6 A; tiết diện so sánh nhỏ nhất 25 mm² (S1) hoặc 35 mm² (S2), sụt áp 1,5 %. Chưa chọn được cáp, aptomat hay cách cấp nguồn",
       "answer": null
     },
     {
@@ -439,7 +439,7 @@
       "id": "Q48",
       "discipline": "Âm thanh / điện",
       "owner": "Thiết kế âm thanh / kỹ sư điện",
-      "question_vi": "Dây loa đi chung dải tường với cáp đèn, quạt và cáp cấp DB-2 (mô hình: 632 m trong 720 m tuyến loa nằm cách tuyến điện lực dưới 0,30 m; 262 m trùng tuyến). Loa dùng đường 100 V hay trở kháng thấp? Dây loa và cáp điện lực được tách ngăn, tách ống hay dùng cáp có cách điện phù hợp điện áp bên cạnh thế nào?",
+      "question_vi": "Dây loa đi chung dải tường với cáp đèn, quạt và cáp cấp DB-2 (mô hình sau khi hạ dải dây loa ngày 18/10/2026: 254 m trong 700 m tuyến loa nằm cách tuyến điện lực dưới 0,30 m, trước đó 632 m; 80 m trong máng che chung qua gian cánh trục 9–10). Loa dùng đường 100 V hay trở kháng thấp? Dây loa và cáp điện lực được tách ngăn, tách ống hay dùng cáp có cách điện phù hợp điện áp bên cạnh thế nào?",
       "evidence": "Sơ đồ khuếch đại và loại đường loa, loại cáp và cấp cách điện, chi tiết máng/ống có vách ngăn, yêu cầu tách tuyến theo tiêu chuẩn áp dụng",
       "blocks": "Chi tiết máng ống ở hai dải tường lòng nhà thờ, hệ số đi chung khi chọn tiết diện cáp, nhiễu và an toàn của tuyến loa",
       "answer": null

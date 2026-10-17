@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-09T06:49:14.923Z",
+  "savedAt": "2026-10-17T21:33:54.811Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -47,6 +47,7 @@
     "naveFanRevision": "2026-10-09-eight-wall-fans-per-side",
     "outletRevision": "2026-10-09-socket-outlets-1",
     "facadeStatueRevision": "2026-10-09-facade-statues-3-concealed-light-candles",
+    "exhaustSplitRevision": "2026-10-18-exhaust-split-1",
     "eveningExposureRevision": "2026-10-09-evening-160"
   },
   "customScenes": [],
@@ -5665,7 +5666,7 @@
       "id": "F256",
       "type": "fanExhaust",
       "name": "Exhaust fan · wing gable B · front",
-      "circuit": "V1",
+      "circuit": "V2",
       "mount": "wall",
       "pos": [
         39.7,
@@ -5686,7 +5687,7 @@
       "id": "F257",
       "type": "fanExhaust",
       "name": "Exhaust fan · wing gable B · rear",
-      "circuit": "V1",
+      "circuit": "V2",
       "mount": "wall",
       "pos": [
         41.45,
@@ -5707,7 +5708,7 @@
       "id": "F258",
       "type": "fanExhaust",
       "name": "Exhaust fan · wing gable H · front",
-      "circuit": "V1",
+      "circuit": "V2",
       "mount": "wall",
       "pos": [
         39.7,
@@ -5728,7 +5729,7 @@
       "id": "F259",
       "type": "fanExhaust",
       "name": "Exhaust fan · wing gable H · rear",
-      "circuit": "V1",
+      "circuit": "V2",
       "mount": "wall",
       "pos": [
         41.45,
@@ -5749,7 +5750,7 @@
       "id": "F260",
       "type": "fanExhaust",
       "name": "Exhaust fan · service room",
-      "circuit": "V1",
+      "circuit": "V3",
       "mount": "wall",
       "pos": [
         53.12,

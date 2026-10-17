@@ -150,8 +150,8 @@ const engine = read('simulator/engine.js'), analysis = read('simulator/analysis.
 const braces = text => [...String(text || '').matchAll(/\{(\w+)\}/g)].map(match => match[1]);
 // A stand-in for the simulator, to check that every figure a caption quotes can be read and formatted.
 const stand = { state: { scene: 'Full service · evening', settings: { ambientDbA: 40, talkerDbA: 62, micDistance: 0.4 }, items: [] }, SCENES: { a: { F2: 0 }, b: { F2: 0 } },
-  typeOf: item => ({ cat: item.cat, speaker: item.cat === 'speaker' && item.circuit !== 'MIC', mic: item.circuit === 'MIC' }),
-  fans: () => stand.state.items.filter(item => item.cat === 'fan').map(item => ({ item, running: !!item.on, kind: item.circuit === 'V1' ? 'exhaust' : 'ceiling', pos: item.pos, diameter: 1.42, flow: item.on ? 0.8 : 0 })),
+  typeOf: item => ({ cat: item.cat, speaker: item.cat === 'speaker' && item.circuit !== 'MIC', mic: item.circuit === 'MIC', fan: item.cat === 'fan' ? { exhaust: item.type === 'fanExhaust' } : undefined }),
+  fans: () => stand.state.items.filter(item => item.cat === 'fan').map(item => ({ item, running: !!item.on, kind: item.type === 'fanExhaust' ? 'exhaust' : 'ceiling', pos: item.pos, diameter: 1.42, flow: item.on ? 0.8 : 0 })),
   mics: () => stand.state.items.filter(item => item.circuit === 'MIC').map((item, i) => ({ item: { feedbackMargin: 0.9 + i * 0.4 } })),
   room: () => ({ V: 7456 }), analysis: { results: {} },
   // 2 trunks, 3 drops and the DB-2 feeder: 5,008 m of drawn route in all.
@@ -159,7 +159,7 @@ const stand = { state: { scene: 'Full service · evening', settings: { ambientDb
     { id: 'd1', role: 'drop', itemIds: ['a'], length: 1200 }, { id: 'd2', role: 'drop', itemIds: ['b'], length: 1238 }, { id: 'l1', role: 'local', itemIds: ['c'], length: 18 }] },
   powerSummary: () => ({ total: 5586.95, rated: 29573.5, outletRated: 19872 }) };
 for (const [circuit, cat, type, n] of [['L1', 'light', 'projector36', 32], ['L2', 'light', 'projector36', 28], ['L3', 'light', 'spot15', 27], ['L8', 'light', 'spot15', 4], ['LA', 'light', 'uplight', 7], ['LD', 'light', 'chandelier8', 4], ['LD', 'light', 'sconce2', 16],
-  ['F1', 'fan', 'fanCeiling', 14], ['F2', 'fan', 'fanNaveWall', 16], ['F5', 'fan', 'fanWingWall', 4], ['V1', 'fan', 'fanExhaust', 9], ['A1', 'speaker', 'slimColumn', 14], ['A2', 'speaker', 'pendantSpeaker', 4], ['A3', 'speaker', 'horn', 8], ['MIC', 'speaker', 'mic', 2]]) {
+  ['F1', 'fan', 'fanCeiling', 14], ['F2', 'fan', 'fanNaveWall', 16], ['F5', 'fan', 'fanWingWall', 4], ['V1', 'fan', 'fanExhaust', 4], ['V2', 'fan', 'fanExhaust', 4], ['V3', 'fan', 'fanExhaust', 1], ['A1', 'speaker', 'slimColumn', 14], ['A2', 'speaker', 'pendantSpeaker', 4], ['A3', 'speaker', 'horn', 8], ['MIC', 'speaker', 'mic', 2]]) {
   for (let i = 0; i < n; i++) stand.state.items.push({ circuit, cat, type, on: circuit !== 'F2', pos: [10 + i, 4, i % 2 ? 4.4 : -4.4] });
 }
 const seat = (block, lux, air, sti) => ({ block, lux, air, sti });
@@ -170,12 +170,12 @@ sandbox.window.CHURCH_SIMULATOR = stand;
 const figures = plain(film.figures());
 sandbox.window.CHURCH_SIMULATOR = undefined;
 assert.deepEqual([figures.lights, figures.lightCircuits, figures.chandeliers, figures.sconces, figures.fans, figures.speakers, figures.mics], ['118', '6', '4', '16', '43', '26', '2'], 'counts by kind');
-assert.deepEqual([figures.fansOn, figures.F1on, figures.F1size, figures.F1side, figures.F2idle, figures.V1on, figures.exhaust, figures.ach], ['27', '14', '1.42', '4.4', '16', '9', '25,900', '3.5'], 'fan figures');
+assert.deepEqual([figures.fansOn, figures.F1on, figures.F1size, figures.F1side, figures.F2idle, figures.exhaustFans, figures.exhaustOn, figures.V1, figures.V2, figures.V3, figures.exhaust, figures.ach], ['27', '14', '1.42', '4.4', '16', '9', '9', '4', '4', '1', '25,900', '3.5'], 'fan figures');
 // With every lamp and fan off, light, air and noise figures are left out, so those captions use their plain wording.
 sandbox.window.CHURCH_SIMULATOR = { ...stand, fans: () => stand.fans().map(fan => ({ ...fan, running: false, flow: 0 })), analysis: { results: { seats: { ...stand.analysis.results.seats, lux: stats(0, 0), air: stats(0, 0), noise: stats(40, 40) } } } };
 const off = plain(film.figures());
 sandbox.window.CHURCH_SIMULATOR = undefined;
-assert(['luxAvg', 'luxOk', 'wingLux', 'airAvg', 'airOk', 'wingAir', 'noise', 'fansOn', 'V1on', 'ach'].every(key => !(key in off)) && off.F1on === '0' && off.routes === '6' && off.lights === '118', 'nothing is quoted for light or air when nothing is on');
+assert(['luxAvg', 'luxOk', 'wingLux', 'airAvg', 'airOk', 'wingAir', 'noise', 'fansOn', 'exhaustOn', 'ach'].every(key => !(key in off)) && off.F1on === '0' && off.routes === '6' && off.lights === '118', 'nothing is quoted for light or air when nothing is on');
 assert.deepEqual([figures.luxAvg, figures.luxMin, figures.luxOk, figures.naveLux, figures.wingLux, figures.airAvg, figures.wingAirMin, figures.stiAvg, figures.stiMin, figures.splSpread, figures.fbLow, figures.fbHigh],
   ['312', '122', '89', '340', '214', '0.33', '0.06', '0.60', '0.42', '2.8', '0.9', '1.3'], 'seat figures are rounded for reading, not altered');
 assert.deepEqual([figures.routes, figures.km, figures.trunks, figures.drops, figures.wired, figures.feederM, figures.kwNow, figures.kwFixed], ['6', '5.0', '2', '3', '3', '81', '5.6', '9.7'],
@@ -319,7 +319,7 @@ assert(/as drawn/.test(grid) && /not cable sizes/.test(grid) && /not mains power
   'electrical tour: route length is not cable, audio lines are not mains, socket outlets are kept apart from fixed loads');
 assert(/supply and earthing/.test(grid) && /voltage drop/.test(grid) && /emergency lighting/.test(grid), 'electrical tour: names what the electrical engineer still has to design');
 assert(/L1/.test(lighting) && /L3/.test(lighting) && /DB-2/.test(lighting) && /"overlay":"lux"/.test(lighting), 'lighting tour: circuits, second board and the light map');
-assert(/F1/.test(air) && /F2/.test(air) && /V1/.test(air) && /"overlay":"air"/.test(air) && /No air conditioning/.test(air), 'fans tour: ceiling, wall and exhaust fans and the air-speed map');
+assert(/F1/.test(air) && /F2/.test(air) && ['V1', 'V2', 'V3'].every(circuit => air.includes(`"${circuit}"`)) && /"overlay":"air"/.test(air) && /No air conditioning/.test(air), 'fans tour: ceiling, wall and exhaust fans and the air-speed map');
 assert(/centre line/.test(air) && /stays clear/.test(air), 'fans tour: the clear central view is stated');
 assert(/A1/.test(sound) && /MIC/.test(sound) && /"overlay":"spl"/.test(sound) && /"overlay":"sti"/.test(sound) && /feedback/.test(sound), 'sound tour: microphones, loudspeakers, both speech maps and feedback');
 assert(/not the modelled sound system/.test(sound), 'sound tour: the background music is not the sound system');

@@ -14,7 +14,7 @@ Evidence for the [safety and efficiency review](../../docs/electrical-grid/safet
 | [walk-03-entrance-towers-event-routes.jpg](walk-03-entrance-towers-event-routes.jpg) | Entrance, DB-2 and the towers; the teal lines at the bottom are the two buried event-power routes. |
 | [walk-04-nave-wall-band-shared-corridor.jpg](walk-04-nave-wall-band-shared-corridor.jpg) | Nave wall band: lighting (amber), fan (brown), loudspeaker (blue) trunks and the DB-2 feeder (red) stacked on one line. This is the shared corridor measured by the separation screen. |
 
-The pictures are reduced screen captures of the default layout taken before the exit-sign routes were moved to DB-1; on screen that change only moves the start of the E1 lines from LC-1 to DB-1, 1 m away on the same wall. Line thickness is a display convention, not a cable size.
+Picture 04 predates routing revision `2026-10-18-concealed-2`: the blue loudspeaker trunks now run at least 0.35 m below the mains bands instead of in the stack shown ([routing](../../docs/electrical-grid/routing.md#loudspeaker-separation--routing-revision-2026-10-18-concealed-2--18-october-2026)). The pictures are reduced screen captures of the default layout taken before the exit-sign routes were moved to DB-1; on screen that change only moves the start of the E1 lines from LC-1 to DB-1, 1 m away on the same wall. Line thickness is a display convention, not a cable size.
 
 ## Rebuild and check
 
@@ -36,9 +36,14 @@ Recomputed by hand from the published inputs, independent of the script:
 | Fixed equipment, S1 planning current | 9,261.5 W × 1.25 ÷ (230 V × 0.9) = 55.93 A | 55.9 A |
 | P2 drop at 2.5 mm², 16 A, 60.743 m | 2 × 16 × (23.7 ÷ 2.5 + 0.08) × 0.060743 = 18.58 V = 8.08 % of 230 V | 8.08 % |
 | L1 far-end fault at 1.5 mm², 85.699 m | loop 2 × 23.7 × 0.085699 ÷ 1.5 = 2.708 Ω; 0.95 × 230 ÷ 2.708 = 80.7 A | 81 A |
-| DB-2 feeder, three phases, 10 mm² | 80.43 A ÷ 3 = 26.81 A; 26.81 × (2.37 + 0.08) × 0.080683 = 5.30 V = 2.30 % | 2.30 % |
+| DB-2 feeder, three phases, 25 mm², with events | P3 and P4 whole on L1 and L2, front fixed load 16.43 A on L3. Neutral \|32∠0° + 32∠−120° + 16.43∠120°\| = 15.57 A; phase L1 \|32∠0° + I<sub>N</sub>\| = 42.01 A; 42.01 × (23.7 ÷ 25 + 0.08) × 0.080683 = 3.48 V = 1.51 % | 1.51 % |
+| L7 from DB-1, three-phase feeder at 25 mm² | without events L3 carries 16.43 A out and back: 2 × 16.43 × 1.028 × 0.080683 = 2.73 V = 1.19 %; plus the L7 circuit 1.31 % = 2.49 % of 3 % | 2.49 % |
 | Interior lighting density | 2,386.6 W ÷ 811.3 m² = 2.94 W/m² | 2.94 W/m² |
 | Exit signs, continuous | 15 W × 8,760 h = 131.4 kWh a year | 131 kWh |
+
+## Revision · 18 October 2026: the three-phase feeder
+
+The issue of 9 October divided the DB-2 load by three ("80.43 A ÷ 3 = 26.81 A per phase") and reported 2.30 % at 10 mm² and 1.47 % at 16 mm² on three phases. That is not possible: P3 and P4 are single-phase 32 A circuits (`socketEvent`: one 32 A 2P+E outlet and two 16 A outlets), so each stays whole on one phase. 26.81 A also exceeded the 23.6 A comparison ampacity of 10 mm². The builder now keeps every circuit whole on a phase, tries all 2,187 allocations of the seven DB-2 circuits for the least worst drop with and without events, includes the neutral current in each phase's drop, marks sizes whose ampacity is exceeded and adds the real feeder share to the drop of each DB-2 circuit from DB-1. Result in case S1: 32.0 / 32.0 / 16.4 A, neutral 15.6 A, smallest comparison feeder 25 mm² (35 mm² in S2). The whole-supply allocation now places the DB-2 circuits first; its per-phase totals change by less than 1 A.
 
 ## Checks run on the final source
 

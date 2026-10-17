@@ -528,6 +528,24 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   const kept = upgraded.filter(it => it.id !== 'P-NAVE-H' && it.id !== 'L-STATUE-C-CANDLE-1');
   assert.equal(D.upgradeFacadeStatues(D.upgradeOutlets(kept, design), design).length, design.length, 'the first issue restores a complete set');
   assert(D.outletIds.length === 6 && D.facadeStatueIds.length === 18 && new Set(design.map(it => it.id)).size === design.length, 'stable unique IDs');
+  // Exhaust ventilation by zone (safety review finding 9): V1 front gable, V2 wing gables, V3 service room.
+  const zone = c => SIM.state.items.filter(it => it.circuit === c && it.type === 'fanExhaust').map(it => it.id), plainCopy = v => JSON.parse(JSON.stringify(v));
+  assert.deepEqual(plainCopy([zone('V1'), zone('V2'), zone('V3')]), [['F252', 'F253', 'F254', 'F255'], ['F256', 'F257', 'F258', 'F259'], ['F260']], 'exhaust fans split by zone, IDs unchanged');
+  assert.deepEqual(Object.keys(SIM.CIRCUITS).slice(-2), ['V2', 'V3'], 'new exhaust circuits are appended, so existing mains band heights do not move');
+  assert.deepEqual(plainCopy(SIM.CIRCUIT_ORDER.slice(SIM.CIRCUIT_ORDER.indexOf('V1'), SIM.CIRCUIT_ORDER.indexOf('V1') + 3)), ['V1', 'V2', 'V3'], 'the web app lists the exhaust zones together');
+  assert.equal(new Set(SIM.CIRCUIT_ORDER).size, Object.keys(SIM.CIRCUITS).length, 'display order lists every circuit once');
+  for (const [name, scene] of Object.entries(SIM.SCENES)) assert(scene.V2 === scene.V1 && scene.V3 === scene.V1, name + ': every exhaust zone takes the value V1 had');
+  // A saved layout from before the split: fans still on V1 move once; the user's own circuit, deletions, positions and states stay.
+  const beforeSplit = design.filter(it => it.id !== 'F257').map(it => it.type === 'fanExhaust' ? { ...it, circuit: 'V1' } : it);
+  Object.assign(beforeSplit.find(it => it.id === 'F258'), { circuit: 'F2' });
+  Object.assign(beforeSplit.find(it => it.id === 'F256'), { pos: [39.5, 7.6, -13.13], speed: 3, on: false });
+  beforeSplit.push({ ...design.find(it => it.id === 'F260'), id: 'F-USER-EXHAUST', circuit: 'V1' });
+  const split = D.upgradeExhaustSplit(beforeSplit, design), circuitOf = id => split.find(it => it.id === id)?.circuit;
+  assert.equal(D.exhaustSplitRevision, SIM.state.settings.exhaustSplitRevision, 'the split revision is stored in the saved settings');
+  assert.deepEqual(['F252', 'F255', 'F256', 'F257', 'F258', 'F259', 'F260', 'F-USER-EXHAUST'].map(circuitOf), ['V1', 'V1', 'V2', undefined, 'F2', 'V2', 'V3', 'V1'], 'split moves only recommended fans still on V1');
+  assert.deepEqual(plainCopy(split.find(it => it.id === 'F256').pos), [39.5, 7.6, -13.13]); assert(split.find(it => it.id === 'F256').speed === 3 && split.find(it => it.id === 'F256').on === false, 'position, speed and switching are kept');
+  assert.equal(split.length, beforeSplit.length, 'nothing is added or restored');
+  assert.deepEqual(plainCopy(D.upgradeExhaustSplit(split, design)), plainCopy(split), 'applying the split again changes nothing');
 }
 // Every fixture is fixed to something the model actually has: wall items need a
 // surface right behind them, pendants need structure at their anchor (fans on

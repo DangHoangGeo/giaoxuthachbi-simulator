@@ -272,14 +272,17 @@
     // decides it.
     for (const s of [-1, 1]) add({ type: 'fanWallLarge', name: `Entrance circulator · ${side(s)}`, circuit: 'F4', mount: 'wall', pos: [facadeX + 0.005, 6.0, s * 3.05], yaw: -s * 8, mountYaw: 0, tilt: -14, speed: 2, on: false });
     // Ventilation: exhaust fans draw out the hot air that collects under the
-    // roof; fresh air comes in through the doors and windows (V1). Four high
-    // in the front gable, two in the end gable of each 9–10 wing, and one over
-    // the service room behind the sanctuary wall. The gable row is evenly
+    // roof; fresh air comes in through the doors and windows. Four high
+    // in the front gable (V1), two in the end gable of each 9–10 wing (V2), and
+    // one over the service room behind the sanctuary wall (V3). Three circuits
+    // since 18 October 2026: one 1,530 W circuit with an 86 m path to the front
+    // gable needed 10 mm² in the review's hotter case; each zone passes at
+    // 2.5 mm². The gable row is evenly
     // spaced about the ridge line on the wall's inner face (x 5.475), 0.70 m
     // above the terrace slab and 0.60 m below the roof lining at its outer corners.
     for (const z of [-2.4, -0.8, 0.8, 2.4]) add({ type: 'fanExhaust', name: `Exhaust fan · front gable · ${side(z)} ${Math.abs(z) > 2 ? 'outer' : 'inner'}`, circuit: 'V1', mount: 'wall', pos: [5.48, 9.4, z], yaw: 0, mountYaw: 0, speed: 1 });
-    for (const s of [-1, 1]) for (const x of [39.7, 41.45]) add({ type: 'fanExhaust', name: `Exhaust fan · wing gable ${side(s)} · ${x < 40.5 ? 'front' : 'rear'}`, circuit: 'V1', mount: 'wall', pos: [x, 7.6, s * 13.13], yaw: -s * 90, mountYaw: -s * 90, speed: 1 });
-    add({ type: 'fanExhaust', name: 'Exhaust fan · service room', circuit: 'V1', mount: 'wall', pos: [53.12, 3.3, 0], yaw: 180, mountYaw: 180, speed: 1 });
+    for (const s of [-1, 1]) for (const x of [39.7, 41.45]) add({ type: 'fanExhaust', name: `Exhaust fan · wing gable ${side(s)} · ${x < 40.5 ? 'front' : 'rear'}`, circuit: 'V2', mount: 'wall', pos: [x, 7.6, s * 13.13], yaw: -s * 90, mountYaw: -s * 90, speed: 1 });
+    add({ type: 'fanExhaust', name: 'Exhaust fan · service room', circuit: 'V3', mount: 'wall', pos: [53.12, 3.3, 0], yaw: 180, mountYaw: 180, speed: 1 });
 
     // Loudspeakers · a discreet distributed system: slim 0.6 m columns painted
     // the wall colour on the side-wall pilasters (axes 4–9), between the Stations
@@ -433,6 +436,16 @@
   const outletIds = ['B', 'H'].flatMap(code => [`P-SANCT-${code}`, `P-NAVE-${code}`, `P-TOWER-${code}`]);
   function upgradeOutlets(items, design) {
     return [...items, ...design.filter(it => outletIds.includes(it.id) && !items.some(have => have.id === it.id)).map(it => ({ ...it }))];
+  }
+
+  // One-time circuit split for saved layouts: the recommended wing-gable and
+  // service-room exhaust fans move from V1 to V2 and V3. Only a fan whose
+  // circuit is still V1 moves; one the user put on another circuit stays there,
+  // a deleted fan stays deleted and positions, speeds and switching are kept.
+  const exhaustSplitRevision = '2026-10-18-exhaust-split-1';
+  function upgradeExhaustSplit(items, design) {
+    const moved = new Map(design.filter(it => it.type === 'fanExhaust' && it.circuit !== 'V1').map(it => [it.id, it.circuit]));
+    return items.map(it => moved.has(it.id) && it.circuit === 'V1' ? { ...it, circuit: moved.get(it.id) } : it);
   }
 
   const naveFanRevision = '2026-10-09-eight-wall-fans-per-side';
@@ -654,5 +667,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();
