@@ -13,7 +13,7 @@ here selects or authorises a cable, a protective device, a product or a purchase
     python3 scripts/build_electrical_safety_review.py --check    # recompute and compare with the saved JSON
 """
 from __future__ import annotations
-import csv, hashlib, json, math, subprocess, sys, tempfile
+import csv, hashlib, itertools, json, math, subprocess, sys, tempfile
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -246,26 +246,67 @@ def analyse(loads, facts):
     for case in cases:
         u, pf = case['voltage_v'], case['power_factor']
         base = current(fixed * RESERVE, u, pf)
-        # Three phases: place the largest circuits first on the lightest phase.
-        phases = [0.0, 0.0, 0.0]
-        placed = {}
-        for c in sorted(circuits, key=lambda c: -(c['socket_rating_a'] or current((c['connected_w'] or 0) * RESERVE, u, pf))):
-            amps = c['socket_rating_a'] or current(c['connected_w'] * RESERVE, u, pf)
-            k = phases.index(min(phases)); phases[k] += amps; placed[c['circuit']] = 'L' + str(k + 1)
+        # Three phases. DB-2 first: its circuits are few, so every allocation is tried and the one with the
+        # least worst phase-to-neutral drop on the long feeder, with and without the event points, is kept
+        # (then the least fullest phase). Each circuit is single phase and stays whole on its phase. The DB-1
+        # circuits then go largest first onto the lightest phase of the whole supply.
+        amps_of = lambda c: c['socket_rating_a'] or current((c['connected_w'] or 0) * RESERVE, u, pf)
+        ph = [complex(math.cos(t), math.sin(t)) for t in (0, -2 * math.pi / 3, 2 * math.pi / 3)]
+        def phase_load(members, choice, with_events):
+            amps = [0.0, 0.0, 0.0]
+            for c, k in zip(members, choice):
+                if with_events or not c['socket_rating_a']: amps[k] += amps_of(c)
+            neutral = sum(i * p for i, p in zip(amps, ph))
+            return amps, abs(neutral), [abs(i * p + neutral) for i, p in zip(amps, ph)]
+        db2_members = sorted((c for c in circuits if c['board'] == 'DB2'), key=lambda c: (-amps_of(c), c['circuit']))
+        def merit(choice):
+            on, off = phase_load(db2_members, choice, True), phase_load(db2_members, choice, False)
+            return (round(max(max(on[2]), max(off[2])), 9), round(max(on[0]), 9), choice)
+        best = min(itertools.product(range(3), repeat=len(db2_members)), key=merit)
+        phases = phase_load(db2_members, best, True)[0]
+        placed = {c['circuit']: 'L' + str(k + 1) for c, k in zip(db2_members, best)}
+        for c in sorted((c for c in circuits if c['board'] != 'DB2'), key=lambda c: (-amps_of(c), c['circuit'])):
+            k = phases.index(min(phases)); phases[k] += amps_of(c); placed[c['circuit']] = 'L' + str(k + 1)
         a, b, c3 = phases
         db2 = current(db2_fixed * RESERVE, u, pf)
+        # Three-phase DB-2 feeder with the allocation above. Phasors at 0 / -120 / +120 degrees with equal power
+        # factors; the phase-to-neutral drop of phase k uses |I_k + I_N|: the neutral carries the unbalance back.
+        ev_amps, ev_neutral, ev_drop_amps = phase_load(db2_members, best, True)
+        fx_amps, fx_neutral, fx_drop_amps = phase_load(db2_members, best, False)
         feeder = []
         for area in (10, 16, 25, 35, 50):
             L = feeder_len['DB2']
-            feeder.append({'area_mm2': area, 'ampacity_a': B2[area] * case['temperature_factor'] * case['grouping_factor'],
+            iz = B2[area] * case['temperature_factor'] * case['grouping_factor']
+            feeder.append({'area_mm2': area, 'ampacity_a': iz,
                            'single_phase_fixed_percent': 100 * vd_bound(db2, L, area) / u, 'single_phase_with_events_percent': 100 * vd_bound(db2 + sockets_ev, L, area) / u,
-                           # Balanced three-phase: no neutral current, so one conductor length instead of two.
-                           'three_phase_with_events_percent': 100 * vd_bound((db2 + sockets_ev) / 3, L, area) / 2 / u})
+                           'single_phase_with_events_ampacity_ok': db2 + sockets_ev <= iz,
+                           # vd_bound counts two conductor lengths; one phase conductor plus the shared neutral is |I_k + I_N| over one length.
+                           'three_phase_with_events_percent': max(100 * vd_bound(i, L, area) / 2 / u for i in ev_drop_amps),
+                           'three_phase_fixed_only_percent': max(100 * vd_bound(i, L, area) / 2 / u for i in fx_drop_amps),
+                           'three_phase_ampacity_ok': max(ev_amps) <= iz})
+            # DB-1 to load for each DB-2 circuit: the feeder drop on its own phase in the worse of the two states
+            # (an event point only in the state with events), plus its own drop at its comparison size, against
+            # the whole budget. The fixed 1 % feeder share of the circuit screens is replaced here by the real share.
+            ci = cases.index(case)
+            through = []
+            for c, k in zip(db2_members, best):
+                states = [ev_drop_amps] if c['socket_rating_a'] else [ev_drop_amps, fx_drop_amps]
+                fd = max(100 * vd_bound(st[k], L, area) / 2 / u for st in states)
+                own = c['cases'][ci]['vdrop_percent_at_area']
+                through.append({'circuit': c['circuit'], 'phase': 'L' + str(k + 1), 'feeder_percent': fd, 'circuit_percent': own,
+                                'total_percent': None if own is None else fd + own, 'budget_percent': BUDGET[c['kind']],
+                                'within_budget': own is not None and fd + own <= BUDGET[c['kind']] + 1e-10})
+            feeder[-1]['three_phase_db1_to_load'] = through
+            feeder[-1]['three_phase_all_within_budget'] = all(t['within_budget'] for t in through)
         supply.append({'case_id': case['id'], 'voltage_v': u, 'power_factor': pf, 'fixed_known_w': fixed, 'fixed_planning_a': base,
                        'indoor_socket_rating_a': sockets_in, 'event_socket_rating_a': sockets_ev,
                        'single_phase_fixed_a': base, 'single_phase_fixed_plus_indoor_a': base + sockets_in, 'single_phase_everything_a': base + sockets_in + sockets_ev,
                        'three_phase_a': phases, 'three_phase_neutral_a': math.sqrt(max(0, a * a + b * b + c3 * c3 - a * b - b * c3 - c3 * a)), 'three_phase_allocation': placed,
-                       'db2_fixed_planning_a': db2, 'db2_with_events_a': db2 + sockets_ev, 'db2_feeder_m': feeder_len['DB2'], 'db2_feeder': feeder})
+                       'db2_fixed_planning_a': db2, 'db2_with_events_a': db2 + sockets_ev, 'db2_feeder_m': feeder_len['DB2'], 'db2_feeder': feeder,
+                       'db2_three_phase_a': ev_amps, 'db2_three_phase_neutral_a': ev_neutral, 'db2_three_phase_fixed_only_a': fx_amps, 'db2_three_phase_fixed_only_neutral_a': fx_neutral,
+                       'db2_three_phase_smallest_mm2': next((f['area_mm2'] for f in feeder if f['three_phase_ampacity_ok']), None),
+                       'db2_three_phase_smallest_within_budget_mm2': next((f['area_mm2'] for f in feeder if f['three_phase_ampacity_ok'] and f['three_phase_all_within_budget']), None),
+                       'db2_single_phase_smallest_mm2': next((f['area_mm2'] for f in feeder if f['single_phase_with_events_ampacity_ok']), None)})
 
     # ------------------------------------------------------------------ energy and efficiency
     s = facts['settings']
