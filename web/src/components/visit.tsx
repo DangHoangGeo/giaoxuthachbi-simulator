@@ -6,6 +6,8 @@ import type { Locale } from "@/lib/locales";
 // visit-only mode. It loads only after the visitor chooses to enter.
 export function Visit({ locale, poster, src }: { locale: Locale; poster: string; src: string }) {
   const vi = locale === "vi";
+  // The page's language is passed to the viewer, which shows that language first.
+  const viewerUrl = `${src}?visit&lang=${locale}`;
   const [hydrated, setHydrated] = useState(false);
   const [entered, setEntered] = useState(false);
   useEffect(() => {
@@ -17,7 +19,7 @@ export function Visit({ locale, poster, src }: { locale: Locale; poster: string;
         {entered ? (
           <iframe
             className="h-full w-full border-0"
-            src={src}
+            src={viewerUrl}
             title={vi ? "Mô hình 3D nhà thờ Thạch Bi" : "Thạch Bi Church 3D model"}
             allow="fullscreen; autoplay"
           />
@@ -49,7 +51,7 @@ export function Visit({ locale, poster, src }: { locale: Locale; poster: string;
       {entered && (
         <>
           <div className="visit-toolbar">
-            <a className="nav-link underline" href={src} target="_blank" rel="noopener">
+            <a className="nav-link underline" href={viewerUrl} target="_blank" rel="noopener">
               {vi ? "Mở toàn màn hình trong thẻ mới" : "Open full size in a new tab"} ↗
             </a>
             <button type="button" onClick={() => setEntered(false)}>

@@ -303,7 +303,9 @@ Fans and ventilation:
   - at low speed: air 0.39 m/s, STI ≥ 0.60 at 66 % of seats
 
   Use them before and after Mass, not during speech.
-- **Exhaust ventilation (V1).** The fans draw out the hot air under the roof;
+- **Exhaust ventilation (V1–V3).** Three circuits by zone: V1 front gable,
+  V2 wing gables, V3 service room; every quick mode sets them alike.
+  The fans draw out the hot air under the roof;
   fresh air enters through the open doors and windows. At low speed they move
   about 26 000 m³/h, roughly 3.5 air changes per hour of the hall. Fan
   positions:

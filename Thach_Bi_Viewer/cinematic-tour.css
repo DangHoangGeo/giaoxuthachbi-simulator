@@ -101,3 +101,9 @@ body.cinema > :not(#viewport):not(#cinemaLayer):not(dialog) { opacity:0 !importa
 .cinema-live-foot { margin:.6vw 0 0; font-size:clamp(9px,.84vw,16px); line-height:1.35; color:#e6cf93; }
 .cinema-live[hidden], .cinema-live:empty { display:none; }
 @media (prefers-reduced-motion:reduce) { .cinema-live { transition:none; } }
+
+/* One language on screen (i18n.js sets <html lang>): hide the other half of each bilingual pair. */
+html[lang="vi"] .cinema-caption strong, html[lang="vi"] .cinema-note, html[lang="vi"] .cinema-key-map strong,
+html[lang="vi"] .cinema-key-mark b, html[lang="vi"] .cinema-card > p:not(.cinema-second), html[lang="vi"] .cinema-live b { display: none !important; }
+html[lang="en"] .cinema-caption em, html[lang="en"] .cinema-note-vi, html[lang="en"] .cinema-key-map em,
+html[lang="en"] .cinema-key-mark em, html[lang="en"] .cinema-second, html[lang="en"] .cinema-live em { display: none !important; }

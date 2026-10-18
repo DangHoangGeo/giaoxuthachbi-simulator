@@ -1,4 +1,6 @@
 (() => {
+  // Start-up messages follow the viewer language (i18n.js); the language is set before this script runs.
+  const tx = text => (window.THACH_I18N ? window.THACH_I18N.t(text) : text);
   const screen = document.getElementById('startupScreen');
   const title = document.getElementById('startupTitle');
   const message = document.getElementById('startupMessage');
@@ -15,8 +17,8 @@
     clearTimeout(timer);
     screen.hidden = false;
     screen.classList.add('has-error');
-    title.textContent = 'The 3D view could not start';
-    message.textContent = text;
+    title.textContent = tx('The 3D view could not start');
+    message.textContent = tx(text);
     errorText.textContent = detail;
     errorText.parentElement.hidden = !detail;
     actions.hidden = false;
@@ -35,16 +37,16 @@
 
   window.addEventListener('error', event => {
     if (!complete && event.message) {
-      fail('The model encountered a startup problem. Try lighter graphics, or use the images below to view the church.', event.message);
+      fail(tx('The model encountered a startup problem. Try lighter graphics, or use the images below to view the church.'), event.message);
     }
   });
   window.addEventListener('unhandledrejection', event => {
-    if (!complete) fail('The viewer could not finish opening. Please retry or try lighter graphics.', String(event.reason?.message || event.reason || 'Startup did not complete.'));
+    if (!complete) fail(tx('The viewer could not finish opening. Please retry or try lighter graphics.'), String(event.reason?.message || event.reason || 'Startup did not complete.'));
   });
 
   function finish() {
     if (!window.church?.ready) {
-      if (!failed) fail('The page loaded, but the 3D model did not finish starting. Try lighter graphics or reopen this page in a full browser.');
+      if (!failed) fail(tx('The page loaded, but the 3D model did not finish starting. Try lighter graphics or reopen this page in a full browser.'));
       return;
     }
     complete = true;
@@ -54,7 +56,7 @@
     window.church.renderer.domElement.addEventListener('webglcontextlost', event => {
       event.preventDefault();
       failed = false;
-      fail('The browser lost its 3D graphics connection. Retry with lighter graphics to reduce graphics-memory use.');
+      fail(tx('The browser lost its 3D graphics connection. Retry with lighter graphics to reduce graphics-memory use.'));
     });
   }
 
@@ -66,18 +68,18 @@
       if (context) context.getExtension('WEBGL_lose_context')?.loseContext();
     } catch {}
     if (!context) {
-      fail('WebGL 2 is unavailable in this browser session. Open this page in a full browser with 3D graphics enabled. The church images below remain available.');
+      fail(tx('WebGL 2 is unavailable in this browser session. Open this page in a full browser with 3D graphics enabled. The church images below remain available.'));
       return;
     }
-    message.textContent = 'Preparing the church model. This may take a few seconds on the first visit.';
+    message.textContent = tx('Preparing the church model. This may take a few seconds on the first visit.');
     const script = document.createElement('script');
-    script.src = 'bundle.js?v=20261014-site-1';
+    script.src = 'bundle.js?v=20261018-language-4';
     script.onload = finish;
-    script.onerror = () => fail('The model file could not be loaded. Retry the page. If you downloaded the viewer, extract the whole ZIP and keep its files together.');
+    script.onerror = () => fail(tx('The model file could not be loaded. Retry the page. If you downloaded the viewer, extract the whole ZIP and keep its files together.'));
     document.body.append(script);
     timer = setTimeout(() => {
       if (!complete && !failed) {
-        message.textContent = 'The model is taking longer to open. Keep this tab open, or try lighter graphics.';
+        message.textContent = tx('The model is taking longer to open. Keep this tab open, or try lighter graphics.');
         actions.hidden = false;
       }
     }, 20000);

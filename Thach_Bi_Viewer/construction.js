@@ -18,19 +18,17 @@
   const DATA = window.CHURCH_CONSTRUCTION_DATA || { phases: { phases: [], engineering: {} }, dimensions: [], issues: [], grid: [] };
   const VISIT = document.documentElement.classList.contains('visit-only');
   const STORE = 'thachbi.construction.v1';
-  // Display language: one at a time, Vietnamese by default. The preference is a
-  // per-viewer convenience (like the preview-resolution setting), so it is read
-  // and written in the public visit too. The storage object is reached by name
-  // so that this file keeps its single site-record access.
-  const LANG_KEY = 'thachbi.site.lang';
-  let LANG = 'vi';
-  try { const v = window['local' + 'Storage'].getItem(LANG_KEY); if (v === 'en' || v === 'vi') LANG = v; } catch { /* storage unavailable */ }
+  // Display language: one at a time, Vietnamese by default. The shared viewer
+  // preference (i18n.js, one switch for the whole viewer) is read here and kept
+  // in step with it, so the site view and the header switch always agree.
+  let LANG = window.THACH_I18N ? window.THACH_I18N.get() : 'vi';
   const tr = (en, vi) => LANG === 'vi' ? vi : en;
   const pickText = text => { const parts = String(text || '').split(' / '); return parts.length > 1 ? (LANG === 'vi' ? parts[0] : parts[parts.length - 1]) : String(text || ''); };
   const pickLines = text => { const lines = String(text || '').split('\n'); return LANG === 'vi' ? lines[0] : lines[lines.length - 1]; };
   const snapName = s => ({ surface: tr('surface', 'bề mặt'), corner: tr('corner', 'góc'), 'grid crossing': tr('grid crossing', 'giao trục'), grid: tr('grid', 'trục') })[s] || s;
   const READY = ['Click a part to inspect it', 'Bấm vào một bộ phận để xem chi tiết'];
-  function setLang(v) { LANG = v === 'en' ? 'en' : 'vi'; try { window['local' + 'Storage'].setItem(LANG_KEY, LANG); } catch { /* storage unavailable */ } chrome(); render(); if (lastInspected) inspectObject(lastInspected.object, lastInspected.point); }
+  function setLang(v) { if (window.THACH_I18N) window.THACH_I18N.set(v === 'en' ? 'en' : 'vi'); else { LANG = v === 'en' ? 'en' : 'vi'; chrome(); render(); } }
+  window.THACH_I18N?.onChange(value => { LANG = value; chrome(); render(); if (lastInspected) inspectObject(lastInspected.object, lastInspected.point); });
   const LAYERS = [
     { id: 'plinth', en: 'Plinth, approach and stairs', vi: 'Nền bệ, bậc, cầu thang', color: '#9a8a6c' },
     { id: 'floors', en: 'Floor slabs and platforms', vi: 'Sàn và bục', color: '#b9ab8f' },

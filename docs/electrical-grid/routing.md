@@ -138,3 +138,39 @@ The three façade statues are unpowered decoration records without routes.
 The [walk-round safety and efficiency review](safety-efficiency-review.md) found the five exit signs routed from LC-1 like ordinary lighting. A life-safety function should not depend on the lighting and scene-control enclosure, so the E1 trunks and drops now start at DB-1 (`trunk:DB1:E1:light:±1`, five `drop:DB1:E1:…`). They follow the same wall bands; the sign positions and the 15 W group are unchanged. Drawn E1 length is 145.936 m (was 147.736 m). The seven earlier route IDs are retired in the exit-signs register. Protection, the emergency supply, its duration and emergency escape lighting remain undesigned (Q14).
 
 The same review measured route sharing from the model centre lines: 632 m of the 720 m of loudspeaker route lies within 0.30 m of a mains route (262 m on the same line), because the loudspeaker trunks follow the wall bands of the lighting trunks and the DB-2 feeder, while the microphone lines keep their own under-floor route (0.46 m of 24.0 m within 0.30 m). About 987 m of mains route lies on timber beam tops, the boarded roof lining or the chamber lining. Compartments, separation, containment and fire performance for these shared and timber routes are open (Q05, Q09, Q48). No route other than E1 was changed.
+
+## Loudspeaker separation · routing revision `2026-10-18-concealed-2` · 18 October 2026
+
+The walk-round review found 632 m of the 720 m of loudspeaker route within 0.30 m of a mains route. Two causes were in the route generator (`Thach_Bi_Viewer/simulator/electrical.js`), not in the design intent:
+
+- **Band heights.** Every band was stepped up by 8 mm per position of its circuit in the circuit list. Loudspeaker circuits come late in that list, so their bands sat at +5.694 to +5.726 m, only 0.17–0.21 m below the lighting bands (+5.900 m and up). Loudspeaker bands now step **down** from +5.550 m (A1 +5.550, A2 +5.542, A3 +5.534, A4 +5.526, A5 +5.518 m); mains bands are unchanged. Along the walls the two systems are now at least 0.35 m apart. The side-wall openings top out at +4.31 m, so the lower bands keep 1.2 m above them.
+- **Service-room riser.** Loudspeaker home runs left AV-1, crossed to the B side of the niche and rose on the same line as the mains risers and the DB-1 → DB-2 feeder (X 48.735, Z −2.24, then the rear wall at Z −3.30). They now rise on the H side (Z +2.24, rear wall at Z +3.30) and cross the mains riser once at the rear wall, at right angles. The niche clearance and the +4.33 m line above the service-room ceiling are unchanged.
+
+Result, sampled every 0.25 m from the exported centre lines by the [safety review](safety-efficiency-review.md): **254 m of 700 m** within 0.30 m of mains (was 632 m of 720 m) and 188 m on the same line (was 262 m). Of the remainder, 80 m is the covered raceway over the open 9–10 wing bay, which every wall-band trunk follows on one line, and most of the rest is where drops of nearby fittings cross the band or share a pier, the courtyard horns on the tower walls and the entrance band. These need a segregated compartment or separate containment and right-angle crossings in the installation design (Q48); the route centre lines cannot show that.
+
+34 routes changed: 8 loudspeaker trunks and 26 loudspeaker drops. No equipment, route ID, circuit or mains route moved; the vertex count stays 2,928. Drawn route length 5,008.066 → 4,987.773 m; complete loudspeaker home runs 1,790.080 → 1,716.603 m; shared bundle paths 583.921 → 562.897 m. Equipment positions and analysis inputs are unchanged, so no lighting, sound or air result changes. The registers were refreshed by the workflow: entered fields and retired IDs are kept. `verify_concealed_routes.cjs` passes on the new paths. The A3 drawings and `output/electrical-review/` were already stale (they predate the socket outlets) and now also predate this revision.
+
+### Options calculated, not adopted
+
+Comparison screens with the review's method and case S1 (230 V, PF 0.9, `ΔU ≤ 2 I (R + X) L`, R = 23.7/S Ω/km, X = 0.08 Ω/km). Each changes building work that is not designed, so each is a decision for the electrical engineer and the parish, not a model change.
+
+| Option | Model basis | Effect | Cost and holds |
+| --- | --- | --- | --- |
+| P1/P2 socket radials in a floor duct along the inside of each side wall, instead of up to the +6.1 m band and over the wing-bay roof at +9.3 m | DB-1 down to 0.12 m below the floor, east of the microphone risers (X 49.75), across to Z ±7.0, west to each outlet, rise in the wall or the axis-10 pier line. About 36 m (B) and 40 m (H) to the mid-nave outlets, against 54.1 and 60.7 m | Drop at 2.5 mm² with 16 A at the far outlet: about 4.8 % and 5.3 % (now 7.2 % and 8.1 %); still above the 4 % screen, so 4 mm² would still be needed. Loop allowance for a C16 at 2.5 mm²: about 0.6 Ω (now 0.21 Ω). Takes two 16 A circuits out of the bunched wall band and off the timber-lined wing-bay roof | Floor build-up, duct, wet cleaning, passage under the service-room and sanctuary walls: the same holds that led to the wall route on 9 October ([record](../engineering/outlets-and-facade-statues.md)). Q44 |
+| DB-1 → DB-2 feeder in a floor duct along the nave instead of the side-B wall band, the wing-bay raceway and the entrance riser | About 50–56 m against 80.7 m (plan distance 46.2 m plus rises and the turn to DB-2) | All feeder drops fall by about a third: three phases with events at 25 mm², 1.5 % → about 1.0 %. Takes the heaviest cable out of the shared wall band and off the timber-lined raceway | Same floor holds, a draw pit at each end, and separation from the microphone home runs at the sanctuary. Q42 |
+
+The third option first calculated here, splitting V1, was adopted on 18 October 2026: see the next section.
+
+## Exhaust ventilation in three circuits · 18 October 2026
+
+The [safety review](safety-efficiency-review.md) (finding 9) found all nine exhaust fans on V1: 1,530 W connected and an 86.0 m path from FC-1, at 74 % of a 10 A comparison breaker in case S1 and needing 10 mm² in S2. They are now three circuits from FC-1:
+
+| Circuit | Fans | Connected | Longest path | Comparison screen, S1 and S2 |
+| --- | --- | ---: | ---: | --- |
+| V1 · Exhaust · front gable | F252–F255 | 680 W | 86.0 m | 6 A, 2.5 mm² |
+| V2 · Exhaust · wing gables | F256–F259 | 680 W | 45.3 m | 6 A, 2.5 mm² |
+| V3 · Exhaust · service room | F260 | 170 W | 26.7 m | 6 A, 2.5 mm² |
+
+V1 keeps its ID and its two trunks, which keep their paths and now serve only the front gable. V2 and V3 are appended to the circuit list, so no existing band height moves; their bands are at +6.148 and +6.156 m, above the highest earlier mains band (L10, +6.140 m). New routes: `trunk:FC1:V2:fan:-1` (31.714 m), `trunk:FC1:V2:fan:1` (38.314 m) and `trunk:FC1:V3:fan:-1` (16.407 m). The five drops of F256–F260 are re-issued under V2/V3 with the same lengths (F260 10.320 m, was 10.200 m) and their five `drop:FC1:V1:…` IDs are retired in the air-system register. Routes 370 → 373; vertices 2,928 → 2,964; drawn route length 4,987.773 → 5,074.327 m, all of it the fan category (826.041 → 912.595 m): the wing-gable and service-room cables no longer share the V1 trunk, so the drawn length rises by the length of their new trunks. Loudspeaker home runs and shared bundle paths are unchanged.
+
+Equipment positions, speeds and every quick-mode value are unchanged (each mode gives V2 and V3 the value of V1), so no lighting, sound or air result changes. Saved layouts change once through `exhaustSplitRevision`; see [controls](controls.md#exhaust-ventilation-by-zone--18-october-2026). FC-1 channels, speed controls, protection and cables are not designed. The A3 drawings and `output/electrical-review/` remain stale.

@@ -1,31 +1,31 @@
 {
  "schema": 1,
  "status": "DERIVED / CONCEPT / ENGINEERING HOLD · comparison screens only",
- "model_git_revision": "7c2fb30cd443c52a5b27c61392466553db3c44cc",
+ "model_git_revision": "cc51e6db05102a427a5e10231f1d8f0e30173b48",
  "source_sha256": {
   "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
-  "Thach_Bi_Viewer/render-batches.js": "8771d353601352c43b71d65fe886f1002a02fa524d6aae547b9f8178cffce23b",
+  "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",
   "Thach_Bi_Viewer/references.js": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
   "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
   "Thach_Bi_Viewer/carving.js": "5624bd11c10c1c75a0c80a4f2b9612652664e6592eceff0d8a6ac6c5c70c1367",
   "Thach_Bi_Viewer/sanctuary.js": "bb3bd18a65f2200d40df0939a37d815db05a99f2d17142a2e13c1489b6b3e2ac",
-  "Thach_Bi_Viewer/realism.js": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4",
+  "Thach_Bi_Viewer/realism.js": "83297a0830de7d8378d0a26b67faeb142321375c004842732ab089e5c3fcd68a",
   "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
   "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
   "Thach_Bi_Viewer/simulator/catalog.js": "c34f71219af9765b1ecbd0b51f0839579119ed3b0e446a3c365bb24688a9cc5b",
-  "Thach_Bi_Viewer/simulator/engine.js": "6d7c431a7d15727afad9871866b5dc4c4f7b2e3f63f55ee95259d41be1a91bb9",
+  "Thach_Bi_Viewer/simulator/engine.js": "404b06d29d63ea533c20075d696b4c70441e2426099f031cac5846c94ccc7856",
   "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
   "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
-  "Thach_Bi_Viewer/simulator/design.js": "d30e2a9daeeae39c96a84030a83a15bb2c15f63a0b9f66cc9d59df5d0d830e1e",
-  "Thach_Bi_Viewer/simulator/analysis.js": "7cdf971de56ece5e017cf4ff88a565675a655fbb835baf975bd4ce251afbd00b",
-  "Thach_Bi_Viewer/simulator/electrical.js": "c1d9e97978e243ca131e70806a66bcf551d3fa9a66a976ff50bf98834585fca5",
+  "Thach_Bi_Viewer/simulator/design.js": "21e342455b257f967928f531408eeae30e671b0b4d1644d457da62412b1c4f7e",
+  "Thach_Bi_Viewer/simulator/analysis.js": "7670036a3be8f9ca423b551bc75261c2272e6c07ba077ea49a394cb9c04af849",
+  "Thach_Bi_Viewer/simulator/electrical.js": "d7b02faf0da4bfd8a365552621e108a5f60744d793164f45c2817f9653323b3e",
   "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
-  "Thach_Bi_Viewer/bundle.js": "11e31c4f1d7da4782d8eb2a1fbcae1462d8f0d004a0b798a40840e7287d1dab4",
+  "Thach_Bi_Viewer/bundle.js": "bf4491f63ffa7182eba7b9d2773046edcfbaab07bace7bdea6cd2faefd42cd7e",
   "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
   "scripts/export_electrical_loads.cjs": "066af5453cb3e782abe4cfaf585b6cd9b04ebafad050e18c73615e7ca6fdca2b",
-  "docs/electrical-grid/electrical-systems.json": "e25c59374b1948a67cdb0ee5bed0beb9884da65931cb92b8dc2af738d4ae1e28",
-  "docs/electrical-grid/equipment-layout.json": "0a6cf2aa5294b46ad1ca267ef78dada74d793fdb4a83f39e392746594b74ba7c",
-  "docs/electrical-grid/categories/manifest.json": "c11d5df9734afb51211e6a1b211e4da5ff6518d1bbc54e0a3f3a29dccb751515"
+  "docs/electrical-grid/electrical-systems.json": "e8507810679907dc3354f9387ce0b6d5f3b3e307d5939a52680f19a914a4cd86",
+  "docs/electrical-grid/equipment-layout.json": "40c0fb48adb616822d2737a378024e64d46f211fcc43ca75ea298cd2570965f8",
+  "docs/electrical-grid/categories/manifest.json": "65d90dd9366b9a926a85b365503ecd78e63a9fe65faccc8246a0439b66cd925a"
  },
  "default_scene": "Full service · evening",
  "assumptions": {
@@ -77,9 +77,9 @@
  "counts": {
   "shown_items": 339,
   "wired_points": 317,
-  "routes": 370,
-  "mains_routes": 326,
-  "mains_circuits": 22
+  "routes": 373,
+  "mains_routes": 329,
+  "mains_circuits": 24
  },
  "zones": [
   {
@@ -288,7 +288,7 @@
     "L4",
     "L5",
     "L7",
-    "V1"
+    "V3"
    ],
    "connected_fixed_w": 1119.0,
    "full_service_w": 753.17942,
@@ -318,7 +318,7 @@
    "circuits": [
     "L6",
     "L7",
-    "V1"
+    "V2"
    ],
    "connected_fixed_w": 1197.555556,
    "full_service_w": 505.555556,
@@ -1823,71 +1823,209 @@
   },
   {
    "circuit": "V1",
-   "label": "V1 · Exhaust ventilation",
+   "label": "V1 · Exhaust · front gable",
    "kind": "fan",
    "source": "FC1",
    "board": "DB1",
-   "points": 9,
+   "points": 4,
    "socket_rating_a": null,
-   "connected_w": 1530,
+   "connected_w": 680,
    "socket_allowance_w": null,
-   "full_service_w": 540,
+   "full_service_w": 240,
    "longest_path_m": 85.978281,
    "farthest_route": "drop:FC1:V1:fan:1:F254",
    "feeder_from_db1_m": 3.41,
-   "route_m": 220.83526,
-   "exterior_points": 5,
-   "open_weather_points": 5,
+   "route_m": 182.742203,
+   "exterior_points": 0,
+   "open_weather_points": 0,
    "reach_points": 0,
    "cases": [
     {
      "case_id": "S1-230-PF09-45C-4",
-     "design_current_a": 7.391304,
-     "planning_current_a": 9.23913,
-     "comparison_breaker_a": 10,
-     "loading_percent": 73.913043,
+     "design_current_a": 3.285024,
+     "planning_current_a": 4.10628,
+     "comparison_breaker_a": 6,
+     "loading_percent": 54.750403,
      "circuit_budget_percent": 4.0,
      "comparison_area_mm2": 2.5,
-     "vdrop_percent_at_area": 2.001252,
-     "vdrop_percent_at_minimum_area": 2.001252,
+     "vdrop_percent_at_area": 1.366498,
+     "vdrop_percent_at_minimum_area": 1.366498,
      "minimum_area_mm2": 2.5,
-     "far_end_bound_percent_at_minimum_area": 6.603587,
+     "far_end_bound_percent_at_minimum_area": 2.934928,
      "minimum_area_ampacity_ok": true,
      "fault_a_at_area": 134.036893,
      "fault_clears_type_c_at_area": true,
      "fault_clears_type_b_at_area": true,
-     "loop_allowance_ohm_type_c_at_area": 0.554852,
+     "loop_allowance_ohm_type_c_at_area": 2.011518,
      "fault_a_at_minimum": 134.036893,
      "fault_clears_type_c_at_minimum": true,
      "fault_clears_type_b_at_minimum": true,
-     "loop_allowance_ohm_type_c_at_minimum": 0.554852
+     "loop_allowance_ohm_type_c_at_minimum": 2.011518
     },
     {
      "case_id": "S2-220-PF08-50C-6",
-     "design_current_a": 8.693182,
-     "planning_current_a": 10.866477,
-     "comparison_breaker_a": 16,
-     "loading_percent": 54.332386,
+     "design_current_a": 3.863636,
+     "planning_current_a": 4.829545,
+     "comparison_breaker_a": 6,
+     "loading_percent": 64.393939,
      "circuit_budget_percent": 4.0,
-     "comparison_area_mm2": 10,
-     "vdrop_percent_at_area": 0.630627,
-     "vdrop_percent_at_minimum_area": 2.460734,
+     "comparison_area_mm2": 2.5,
+     "vdrop_percent_at_area": 1.680242,
+     "vdrop_percent_at_minimum_area": 1.680242,
      "minimum_area_mm2": 2.5,
-     "far_end_bound_percent_at_minimum_area": 8.119752,
-     "minimum_area_ampacity_ok": false,
-     "fault_a_at_area": 512.836808,
+     "far_end_bound_percent_at_minimum_area": 3.608778,
+     "minimum_area_ampacity_ok": true,
+     "fault_a_at_area": 128.209202,
      "fault_clears_type_c_at_area": true,
      "fault_clears_type_b_at_area": true,
-     "loop_allowance_ohm_type_c_at_area": 0.898713,
+     "loop_allowance_ohm_type_c_at_area": 1.853185,
      "fault_a_at_minimum": 128.209202,
-     "fault_clears_type_c_at_minimum": false,
+     "fault_clears_type_c_at_minimum": true,
      "fault_clears_type_b_at_minimum": true,
-     "loop_allowance_ohm_type_c_at_minimum": -0.323898
+     "loop_allowance_ohm_type_c_at_minimum": 1.853185
     }
    ],
    "full_service_loss_w": {
-    "comparison": 2.550888,
-    "minimum": 2.550888
+    "comparison": 0.96823,
+    "minimum": 0.96823
+   }
+  },
+  {
+   "circuit": "V2",
+   "label": "V2 · Exhaust · wing gables",
+   "kind": "fan",
+   "source": "FC1",
+   "board": "DB1",
+   "points": 4,
+   "socket_rating_a": null,
+   "connected_w": 680,
+   "socket_allowance_w": null,
+   "full_service_w": 240,
+   "longest_path_m": 45.286841,
+   "farthest_route": "drop:FC1:V2:fan:1:F258",
+   "feeder_from_db1_m": 3.41,
+   "route_m": 97.92021,
+   "exterior_points": 4,
+   "open_weather_points": 4,
+   "reach_points": 0,
+   "cases": [
+    {
+     "case_id": "S1-230-PF09-45C-4",
+     "design_current_a": 3.285024,
+     "planning_current_a": 4.10628,
+     "comparison_breaker_a": 6,
+     "loading_percent": 54.750403,
+     "circuit_budget_percent": 4.0,
+     "comparison_area_mm2": 2.5,
+     "vdrop_percent_at_area": 0.694263,
+     "vdrop_percent_at_minimum_area": 0.694263,
+     "minimum_area_mm2": 2.5,
+     "far_end_bound_percent_at_minimum_area": 1.545897,
+     "minimum_area_ampacity_ok": true,
+     "fault_a_at_area": 254.472634,
+     "fault_clears_type_c_at_area": true,
+     "fault_clears_type_b_at_area": true,
+     "loop_allowance_ohm_type_c_at_area": 2.783028,
+     "fault_a_at_minimum": 254.472634,
+     "fault_clears_type_c_at_minimum": true,
+     "fault_clears_type_b_at_minimum": true,
+     "loop_allowance_ohm_type_c_at_minimum": 2.783028
+    },
+    {
+     "case_id": "S2-220-PF08-50C-6",
+     "design_current_a": 3.863636,
+     "planning_current_a": 4.829545,
+     "comparison_breaker_a": 6,
+     "loading_percent": 64.393939,
+     "circuit_budget_percent": 4.0,
+     "comparison_area_mm2": 2.5,
+     "vdrop_percent_at_area": 0.853664,
+     "vdrop_percent_at_minimum_area": 0.853664,
+     "minimum_area_mm2": 2.5,
+     "far_end_bound_percent_at_minimum_area": 1.900831,
+     "minimum_area_ampacity_ok": true,
+     "fault_a_at_area": 243.408606,
+     "fault_clears_type_c_at_area": true,
+     "fault_clears_type_b_at_area": true,
+     "loop_allowance_ohm_type_c_at_area": 2.624695,
+     "fault_a_at_minimum": 243.408606,
+     "fault_clears_type_c_at_minimum": true,
+     "fault_clears_type_b_at_minimum": true,
+     "loop_allowance_ohm_type_c_at_minimum": 2.624695
+    }
+   ],
+   "full_service_loss_w": {
+    "comparison": 0.469153,
+    "minimum": 0.469153
+   }
+  },
+  {
+   "circuit": "V3",
+   "label": "V3 · Exhaust · service room",
+   "kind": "fan",
+   "source": "FC1",
+   "board": "DB1",
+   "points": 1,
+   "socket_rating_a": null,
+   "connected_w": 170,
+   "socket_allowance_w": null,
+   "full_service_w": 60,
+   "longest_path_m": 26.727,
+   "farthest_route": "drop:FC1:V3:fan:-1:F260",
+   "feeder_from_db1_m": 3.41,
+   "route_m": 26.727,
+   "exterior_points": 1,
+   "open_weather_points": 1,
+   "reach_points": 0,
+   "cases": [
+    {
+     "case_id": "S1-230-PF09-45C-4",
+     "design_current_a": 0.821256,
+     "planning_current_a": 1.02657,
+     "comparison_breaker_a": 6,
+     "loading_percent": 13.687601,
+     "circuit_budget_percent": 4.0,
+     "comparison_area_mm2": 2.5,
+     "vdrop_percent_at_area": 0.228086,
+     "vdrop_percent_at_minimum_area": 0.228086,
+     "minimum_area_mm2": 2.5,
+     "far_end_bound_percent_at_minimum_area": 0.228086,
+     "minimum_area_ampacity_ok": true,
+     "fault_a_at_area": 431.184256,
+     "fault_clears_type_c_at_area": true,
+     "fault_clears_type_b_at_area": true,
+     "loop_allowance_ohm_type_c_at_area": 3.134923,
+     "fault_a_at_minimum": 431.184256,
+     "fault_clears_type_c_at_minimum": true,
+     "fault_clears_type_b_at_minimum": true,
+     "loop_allowance_ohm_type_c_at_minimum": 3.134923
+    },
+    {
+     "case_id": "S2-220-PF08-50C-6",
+     "design_current_a": 0.965909,
+     "planning_current_a": 1.207386,
+     "comparison_breaker_a": 6,
+     "loading_percent": 16.098485,
+     "circuit_budget_percent": 4.0,
+     "comparison_area_mm2": 2.5,
+     "vdrop_percent_at_area": 0.280454,
+     "vdrop_percent_at_minimum_area": 0.280454,
+     "minimum_area_mm2": 2.5,
+     "far_end_bound_percent_at_minimum_area": 0.280454,
+     "minimum_area_ampacity_ok": true,
+     "fault_a_at_area": 412.437114,
+     "fault_clears_type_c_at_area": true,
+     "fault_clears_type_b_at_area": true,
+     "loop_allowance_ohm_type_c_at_area": 2.976589,
+     "fault_a_at_minimum": 412.437114,
+     "fault_clears_type_c_at_minimum": true,
+     "fault_clears_type_b_at_minimum": true,
+     "loop_allowance_ohm_type_c_at_minimum": 2.976589
+    }
+   ],
+   "full_service_loss_w": {
+    "comparison": 0.042575,
+    "minimum": 0.042575
    }
   }
  ],
@@ -2226,7 +2364,7 @@
    "id": "F256",
    "name": "Exhaust fan · wing gable B · front",
    "type": "fanExhaust",
-   "circuit": "V1",
+   "circuit": "V2",
    "zone": "Roof, eaves and gables",
    "lowest_moving_part_above_floor_m": 9.43,
    "diameter_m": 0.5,
@@ -2237,7 +2375,7 @@
    "id": "F257",
    "name": "Exhaust fan · wing gable B · rear",
    "type": "fanExhaust",
-   "circuit": "V1",
+   "circuit": "V2",
    "zone": "Roof, eaves and gables",
    "lowest_moving_part_above_floor_m": 9.43,
    "diameter_m": 0.5,
@@ -2248,7 +2386,7 @@
    "id": "F258",
    "name": "Exhaust fan · wing gable H · front",
    "type": "fanExhaust",
-   "circuit": "V1",
+   "circuit": "V2",
    "zone": "Roof, eaves and gables",
    "lowest_moving_part_above_floor_m": 9.43,
    "diameter_m": 0.5,
@@ -2259,7 +2397,7 @@
    "id": "F259",
    "name": "Exhaust fan · wing gable H · rear",
    "type": "fanExhaust",
-   "circuit": "V1",
+   "circuit": "V2",
    "zone": "Roof, eaves and gables",
    "lowest_moving_part_above_floor_m": 9.43,
    "diameter_m": 0.5,
@@ -2270,7 +2408,7 @@
    "id": "F260",
    "name": "Exhaust fan · service room",
    "type": "fanExhaust",
-   "circuit": "V1",
+   "circuit": "V3",
    "zone": "Verandas and side paths",
    "lowest_moving_part_above_floor_m": 5.13,
    "diameter_m": 0.5,
@@ -2580,12 +2718,20 @@
    "highest_point_m": 1.3
   },
   {
-   "circuit": "V1",
-   "label": "V1 · Exhaust ventilation",
-   "open_to_weather": 5,
+   "circuit": "V2",
+   "label": "V2 · Exhaust · wing gables",
+   "open_to_weather": 4,
    "covered_exterior": 0,
-   "interior": 4,
-   "highest_point_m": 9.4
+   "interior": 0,
+   "highest_point_m": 7.6
+  },
+  {
+   "circuit": "V3",
+   "label": "V3 · Exhaust · service room",
+   "open_to_weather": 1,
+   "covered_exterior": 0,
+   "interior": 0,
+   "highest_point_m": 3.3
   }
  ],
  "separation": {
@@ -2594,13 +2740,19 @@
     "routes": 4,
     "length_m": 24.039071,
     "within_0_30_m": 0.46,
-    "within_0_05_m": 0.0
+    "within_0_05_m": 0.0,
+    "within_0_30_m_wing_raceway": 0.0,
+    "trunk_within_0_30_m": 0.46,
+    "drop_within_0_30_m": 0.0
    },
    "audio": {
     "routes": 36,
-    "length_m": 720.144107,
-    "within_0_30_m": 632.30671,
-    "within_0_05_m": 262.167777
+    "length_m": 699.851469,
+    "within_0_30_m": 253.618699,
+    "within_0_05_m": 188.125301,
+    "within_0_30_m_wing_raceway": 79.902004,
+    "trunk_within_0_30_m": 158.96459,
+    "drop_within_0_30_m": 94.654109
    }
   },
   "routes": [
@@ -2609,13 +2761,14 @@
     "kind": "audio",
     "role": "trunk",
     "circuit": "A1",
-    "length_m": 61.27413,
-    "within_0_30_m": 57.39394,
-    "within_0_05_m": 21.997668,
+    "length_m": 65.21813,
+    "within_0_30_m": 20.116597,
+    "within_0_05_m": 13.677758,
+    "within_0_30_m_wing_raceway": 9.909464,
     "closest_mains_routes": [
-     "trunk:LC1:L1:light:-1",
      "feeder:DB2",
-     "feeder:AV1"
+     "trunk:LC1:L1:light:-1",
+     "drop:DB1:P1:power:-1:P-NAVE-B"
     ]
    },
    {
@@ -2623,9 +2776,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A1",
-    "length_m": 2.534,
-    "within_0_30_m": 1.496,
-    "within_0_05_m": 1.246667,
+    "length_m": 2.39,
+    "within_0_30_m": 1.166667,
+    "within_0_05_m": 0.933333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:LD:light:-1:L84"
     ]
@@ -2635,9 +2789,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A1",
-    "length_m": 2.534,
-    "within_0_30_m": 1.496,
-    "within_0_05_m": 1.246667,
+    "length_m": 2.39,
+    "within_0_30_m": 1.166667,
+    "within_0_05_m": 0.933333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:LD:light:-1:L86"
     ]
@@ -2647,9 +2802,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A1",
-    "length_m": 2.534,
-    "within_0_30_m": 1.496,
-    "within_0_05_m": 1.246667,
+    "length_m": 2.39,
+    "within_0_30_m": 1.166667,
+    "within_0_05_m": 0.933333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:LD:light:-1:L88"
     ]
@@ -2659,9 +2815,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A1",
-    "length_m": 2.534,
-    "within_0_30_m": 1.496,
-    "within_0_05_m": 1.246667,
+    "length_m": 2.39,
+    "within_0_30_m": 1.166667,
+    "within_0_05_m": 0.933333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:LD:light:-1:L90"
     ]
@@ -2671,9 +2828,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A1",
-    "length_m": 2.534,
-    "within_0_30_m": 1.496,
-    "within_0_05_m": 1.246667,
+    "length_m": 2.39,
+    "within_0_30_m": 1.166667,
+    "within_0_05_m": 0.933333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:LD:light:-1:L92"
     ]
@@ -2683,9 +2841,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A1",
-    "length_m": 2.534,
-    "within_0_30_m": 1.496,
-    "within_0_05_m": 1.246667,
+    "length_m": 2.39,
+    "within_0_30_m": 1.166667,
+    "within_0_05_m": 0.933333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:LD:light:-1:L94"
     ]
@@ -2698,6 +2857,7 @@
     "length_m": 8.040693,
     "within_0_30_m": 0.358103,
     "within_0_05_m": 0.0,
+    "within_0_30_m_wing_raceway": 0.13391,
     "closest_mains_routes": [
      "feeder:DB2"
     ]
@@ -2707,12 +2867,13 @@
     "kind": "audio",
     "role": "trunk",
     "circuit": "A1",
-    "length_m": 67.87413,
-    "within_0_30_m": 63.99394,
-    "within_0_05_m": 22.502566,
+    "length_m": 58.61813,
+    "within_0_30_m": 18.335831,
+    "within_0_05_m": 12.924954,
+    "within_0_30_m_wing_raceway": 9.909464,
     "closest_mains_routes": [
      "trunk:LC1:L1:light:1",
-     "feeder:DB2",
+     "drop:DB1:P2:power:1:P-NAVE-H",
      "feeder:AV1"
     ]
    },
@@ -2721,9 +2882,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A1",
-    "length_m": 2.534,
-    "within_0_30_m": 1.496,
-    "within_0_05_m": 1.246667,
+    "length_m": 2.39,
+    "within_0_30_m": 1.166667,
+    "within_0_05_m": 0.933333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:LD:light:1:L85"
     ]
@@ -2733,9 +2895,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A1",
-    "length_m": 2.534,
-    "within_0_30_m": 1.496,
-    "within_0_05_m": 1.246667,
+    "length_m": 2.39,
+    "within_0_30_m": 1.166667,
+    "within_0_05_m": 0.933333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:LD:light:1:L87"
     ]
@@ -2745,9 +2908,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A1",
-    "length_m": 2.534,
-    "within_0_30_m": 1.496,
-    "within_0_05_m": 1.246667,
+    "length_m": 2.39,
+    "within_0_30_m": 1.166667,
+    "within_0_05_m": 0.933333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:LD:light:1:L89"
     ]
@@ -2757,9 +2921,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A1",
-    "length_m": 2.534,
-    "within_0_30_m": 1.496,
-    "within_0_05_m": 1.246667,
+    "length_m": 2.39,
+    "within_0_30_m": 1.166667,
+    "within_0_05_m": 0.933333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:LD:light:1:L91"
     ]
@@ -2769,9 +2934,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A1",
-    "length_m": 2.534,
-    "within_0_30_m": 1.496,
-    "within_0_05_m": 1.246667,
+    "length_m": 2.39,
+    "within_0_30_m": 1.166667,
+    "within_0_05_m": 0.933333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:LD:light:1:L93"
     ]
@@ -2781,9 +2947,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A1",
-    "length_m": 2.534,
-    "within_0_30_m": 1.496,
-    "within_0_05_m": 1.246667,
+    "length_m": 2.39,
+    "within_0_30_m": 1.166667,
+    "within_0_05_m": 0.933333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:LD:light:1:L95"
     ]
@@ -2796,6 +2963,7 @@
     "length_m": 8.040693,
     "within_0_30_m": 0.358103,
     "within_0_05_m": 0.0,
+    "within_0_30_m_wing_raceway": 0.13391,
     "closest_mains_routes": [
      "trunk:LC1:L1:light:1"
     ]
@@ -2805,12 +2973,13 @@
     "kind": "audio",
     "role": "trunk",
     "circuit": "A5",
-    "length_m": 73.06213,
-    "within_0_30_m": 69.18194,
-    "within_0_05_m": 21.965668,
+    "length_m": 77.07013,
+    "within_0_30_m": 21.415597,
+    "within_0_05_m": 13.741758,
+    "within_0_30_m_wing_raceway": 9.785845,
     "closest_mains_routes": [
-     "trunk:LC1:L1:light:-1",
      "feeder:DB2",
+     "drop:DB1:P1:power:-1:P-NAVE-B",
      "feeder:AV1"
     ]
    },
@@ -2819,9 +2988,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A5",
-    "length_m": 10.613025,
-    "within_0_30_m": 10.460525,
-    "within_0_05_m": 7.682169,
+    "length_m": 10.818706,
+    "within_0_30_m": 10.666206,
+    "within_0_05_m": 7.652752,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "feeder:DB2",
      "drop:DB2:F4:fan:-1:F250",
@@ -2833,12 +3003,13 @@
     "kind": "audio",
     "role": "trunk",
     "circuit": "A5",
-    "length_m": 79.66213,
-    "within_0_30_m": 75.78194,
-    "within_0_05_m": 22.470566,
+    "length_m": 70.47013,
+    "within_0_30_m": 19.634831,
+    "within_0_05_m": 12.988954,
+    "within_0_30_m_wing_raceway": 9.785845,
     "closest_mains_routes": [
      "trunk:LC1:L1:light:1",
-     "feeder:DB2",
+     "drop:DB1:P2:power:1:P-NAVE-H",
      "feeder:AV1"
     ]
    },
@@ -2847,9 +3018,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A5",
-    "length_m": 10.613025,
-    "within_0_30_m": 8.163907,
-    "within_0_05_m": 7.682169,
+    "length_m": 10.818706,
+    "within_0_30_m": 8.369588,
+    "within_0_05_m": 7.652752,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:L1:light:1:L61",
      "drop:DB2:F4:fan:1:F251",
@@ -2861,12 +3033,13 @@
     "kind": "audio",
     "role": "trunk",
     "circuit": "A2",
-    "length_m": 62.21113,
-    "within_0_30_m": 58.33094,
-    "within_0_05_m": 21.739668,
+    "length_m": 66.17113,
+    "within_0_30_m": 20.122651,
+    "within_0_05_m": 13.443758,
+    "within_0_30_m_wing_raceway": 9.914797,
     "closest_mains_routes": [
-     "trunk:LC1:L1:light:-1",
      "feeder:DB2",
+     "trunk:LC1:L1:light:-1",
      "feeder:AV1"
     ]
    },
@@ -2875,12 +3048,14 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A2",
-    "length_m": 6.940735,
-    "within_0_30_m": 3.017025,
-    "within_0_05_m": 2.42,
+    "length_m": 7.100735,
+    "within_0_30_m": 3.177025,
+    "within_0_05_m": 2.553333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:FC1:F1:fan:-1:F228",
-     "trunk:LC1:L1:light:-1"
+     "trunk:LC1:L1:light:-1",
+     "trunk:LC1:L4:light:-1"
     ]
    },
    {
@@ -2888,9 +3063,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A2",
-    "length_m": 6.940735,
-    "within_0_30_m": 3.017025,
-    "within_0_05_m": 2.553015,
+    "length_m": 7.100735,
+    "within_0_30_m": 3.177025,
+    "within_0_05_m": 2.686348,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:FC1:F1:fan:-1:F234",
      "drop:LC1:LD:light:-1:L79",
@@ -2902,13 +3078,14 @@
     "kind": "audio",
     "role": "trunk",
     "circuit": "A2",
-    "length_m": 68.81113,
-    "within_0_30_m": 64.93094,
-    "within_0_05_m": 22.244566,
+    "length_m": 59.57113,
+    "within_0_30_m": 18.341884,
+    "within_0_05_m": 12.690954,
+    "within_0_30_m_wing_raceway": 9.914797,
     "closest_mains_routes": [
      "trunk:LC1:L1:light:1",
-     "feeder:DB2",
-     "feeder:AV1"
+     "feeder:AV1",
+     "drop:LC1:L3:light:1:L154"
     ]
    },
    {
@@ -2916,12 +3093,14 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A2",
-    "length_m": 6.940735,
-    "within_0_30_m": 3.017025,
-    "within_0_05_m": 2.42,
+    "length_m": 7.100735,
+    "within_0_30_m": 3.177025,
+    "within_0_05_m": 2.553333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:FC1:F1:fan:1:F229",
-     "trunk:LC1:L1:light:1"
+     "trunk:LC1:L1:light:1",
+     "trunk:LC1:L4:light:1"
     ]
    },
    {
@@ -2929,12 +3108,14 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A2",
-    "length_m": 6.940735,
-    "within_0_30_m": 3.017025,
-    "within_0_05_m": 2.42,
+    "length_m": 7.100735,
+    "within_0_30_m": 3.177025,
+    "within_0_05_m": 2.553333,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:FC1:F1:fan:1:F235",
-     "trunk:LC1:L1:light:1"
+     "trunk:LC1:L1:light:1",
+     "trunk:LC1:L4:light:1"
     ]
    },
    {
@@ -2942,12 +3123,13 @@
     "kind": "audio",
     "role": "trunk",
     "circuit": "A3",
-    "length_m": 73.38313,
-    "within_0_30_m": 69.50294,
-    "within_0_05_m": 21.981668,
+    "length_m": 77.35913,
+    "within_0_30_m": 21.388982,
+    "within_0_05_m": 13.709758,
+    "within_0_30_m_wing_raceway": 10.206987,
     "closest_mains_routes": [
-     "trunk:LC1:L1:light:-1",
      "feeder:DB2",
+     "drop:DB1:P1:power:-1:P-NAVE-B",
      "feeder:AV1"
     ]
    },
@@ -2956,9 +3138,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A3",
-    "length_m": 6.82,
-    "within_0_30_m": 6.68,
-    "within_0_05_m": 6.0805,
+    "length_m": 6.996,
+    "within_0_30_m": 6.620889,
+    "within_0_05_m": 6.028778,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:DB2:L9:light:-1:L182",
      "drop:DB2:L7:light:-1:L202",
@@ -2970,9 +3153,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A3",
-    "length_m": 11.346,
-    "within_0_30_m": 10.9745,
-    "within_0_05_m": 10.5005,
+    "length_m": 11.522,
+    "within_0_30_m": 10.915389,
+    "within_0_05_m": 10.448778,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:DB2:L9:light:-1:L182",
      "drop:DB2:L7:light:-1:L203",
@@ -2984,9 +3168,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A3",
-    "length_m": 5.518172,
-    "within_0_30_m": 3.104363,
-    "within_0_05_m": 2.869872,
+    "length_m": 5.694172,
+    "within_0_30_m": 3.280363,
+    "within_0_05_m": 3.045872,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:L4:light:-1:L121",
      "drop:LC1:L2:light:-1:L39",
@@ -2998,9 +3183,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A3",
-    "length_m": 5.518172,
-    "within_0_30_m": 3.104363,
-    "within_0_05_m": 2.869872,
+    "length_m": 5.694172,
+    "within_0_30_m": 3.280363,
+    "within_0_05_m": 3.045872,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:L4:light:-1:L124",
      "drop:LC1:L2:light:-1:L51",
@@ -3012,12 +3198,13 @@
     "kind": "audio",
     "role": "trunk",
     "circuit": "A3",
-    "length_m": 79.98313,
-    "within_0_30_m": 76.10294,
-    "within_0_05_m": 22.486566,
+    "length_m": 70.75913,
+    "within_0_30_m": 19.608216,
+    "within_0_05_m": 12.956954,
+    "within_0_30_m_wing_raceway": 10.206987,
     "closest_mains_routes": [
      "trunk:LC1:L1:light:1",
-     "feeder:DB2",
+     "drop:DB1:P2:power:1:P-NAVE-H",
      "feeder:AV1"
     ]
    },
@@ -3026,9 +3213,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A3",
-    "length_m": 6.82,
-    "within_0_30_m": 6.68,
-    "within_0_05_m": 6.0805,
+    "length_m": 6.996,
+    "within_0_30_m": 6.620889,
+    "within_0_05_m": 6.028778,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:DB2:L9:light:1:L189",
      "drop:DB2:L7:light:1:L213",
@@ -3040,13 +3228,14 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A3",
-    "length_m": 11.346,
-    "within_0_30_m": 10.9745,
-    "within_0_05_m": 10.5005,
+    "length_m": 11.522,
+    "within_0_30_m": 10.915389,
+    "within_0_05_m": 10.448778,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:DB2:L9:light:1:L190",
      "drop:DB2:L9:light:1:L189",
-     "trunk:DB2:L9:light:1"
+     "drop:DB2:L7:light:1:L214"
     ]
    },
    {
@@ -3054,9 +3243,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A3",
-    "length_m": 5.518172,
-    "within_0_30_m": 3.104363,
-    "within_0_05_m": 2.869872,
+    "length_m": 5.694172,
+    "within_0_30_m": 3.280363,
+    "within_0_05_m": 3.045872,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:L4:light:1:L130",
      "drop:LC1:L2:light:1:L41",
@@ -3068,9 +3258,10 @@
     "kind": "audio",
     "role": "drop",
     "circuit": "A3",
-    "length_m": 5.518172,
-    "within_0_30_m": 3.104363,
-    "within_0_05_m": 2.869872,
+    "length_m": 5.694172,
+    "within_0_30_m": 3.280363,
+    "within_0_05_m": 3.045872,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "drop:LC1:L4:light:1:L133",
      "drop:LC1:L2:light:1:L53",
@@ -3085,6 +3276,7 @@
     "length_m": 11.915,
     "within_0_30_m": 0.23,
     "within_0_05_m": 0.0,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "feeder:AV1"
     ]
@@ -3097,6 +3289,7 @@
     "length_m": 3.579071,
     "within_0_30_m": 0.0,
     "within_0_05_m": 0.0,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": []
    },
    {
@@ -3107,6 +3300,7 @@
     "length_m": 5.745,
     "within_0_30_m": 0.23,
     "within_0_05_m": 0.0,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": [
      "feeder:AV1"
     ]
@@ -3119,6 +3313,7 @@
     "length_m": 2.8,
     "within_0_30_m": 0.0,
     "within_0_05_m": 0.0,
+    "within_0_30_m_wing_raceway": 0.0,
     "closest_mains_routes": []
    }
   ]
@@ -3130,7 +3325,7 @@
   "entrance-gable": 41.047942,
   "entrance-wall": 231.407825,
   "outer-wall": 209.949495,
-  "rear-wall": 57.824,
+  "rear-wall": 57.944,
   "roof-local": 42.142945,
   "roof-pendant": 331.874042,
   "service-ceiling": 17.95,
@@ -3138,10 +3333,10 @@
   "tower-cornice": 125.701926,
   "tower-wall": 547.522858,
   "underfloor-event": 26.34,
-  "wall-roof-trunk": 1863.453506
+  "wall-roof-trunk": 1949.887658
  },
  "timber_roof_and_lining_mains_m": 986.519947,
- "mains_route_m": 4171.439499,
+ "mains_route_m": 4257.993652,
  "buried_routes": [
   {
    "route_id": "trunk:DB2:P3:power:-1",
@@ -3197,34 +3392,36 @@
    "single_phase_fixed_plus_indoor_a": 87.927039,
    "single_phase_everything_a": 151.927039,
    "three_phase_a": [
-    50.228092,
-    50.91036,
-    50.788587
+    50.681159,
+    50.661776,
+    50.584104
    ],
-   "three_phase_neutral_a": 0.630267,
+   "three_phase_neutral_a": 0.088962,
    "three_phase_allocation": {
     "P3": "L1",
     "P4": "L2",
+    "L6": "L3",
+    "F4": "L3",
+    "L7": "L3",
+    "L9": "L3",
+    "L10": "L3",
     "P1": "L3",
-    "P2": "L3",
-    "V1": "L1",
-    "L6": "L2",
-    "F2": "L3",
+    "P2": "L1",
+    "F2": "L2",
     "F1": "L3",
-    "F4": "L2",
-    "L7": "L1",
     "L1": "L2",
+    "V1": "L3",
+    "V2": "L2",
     "L2": "L3",
-    "L3": "L1",
-    "L4": "L3",
-    "L5": "L2",
-    "LD": "L3",
-    "L9": "L1",
-    "LA": "L2",
-    "F5": "L3",
+    "L3": "L3",
+    "L4": "L2",
+    "L5": "L3",
+    "LD": "L2",
+    "LA": "L1",
+    "F5": "L1",
     "L8": "L2",
-    "L10": "L1",
-    "E1": "L1"
+    "V3": "L3",
+    "E1": "L3"
    },
    "db2_fixed_planning_a": 16.430488,
    "db2_with_events_a": 80.430488,
@@ -3235,37 +3432,397 @@
      "ampacity_a": 23.621,
      "single_phase_fixed_percent": 2.824239,
      "single_phase_with_events_percent": 13.825208,
-     "three_phase_with_events_percent": 2.304201
+     "single_phase_with_events_ampacity_ok": false,
+     "three_phase_with_events_percent": 3.610342,
+     "three_phase_fixed_only_percent": 2.824239,
+     "three_phase_ampacity_ok": false,
+     "three_phase_db1_to_load": [
+      {
+       "circuit": "P3",
+       "phase": "L1",
+       "feeder_percent": 3.610342,
+       "circuit_percent": 0.282333,
+       "total_percent": 3.892675,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "P4",
+       "phase": "L2",
+       "feeder_percent": 3.610342,
+       "circuit_percent": 0.471128,
+       "total_percent": 4.08147,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L6",
+       "phase": "L3",
+       "feeder_percent": 2.824239,
+       "circuit_percent": 0.803957,
+       "total_percent": 3.628196,
+       "budget_percent": 3.0,
+       "within_budget": false
+      },
+      {
+       "circuit": "F4",
+       "phase": "L3",
+       "feeder_percent": 2.824239,
+       "circuit_percent": 0.515666,
+       "total_percent": 3.339905,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L7",
+       "phase": "L3",
+       "feeder_percent": 2.824239,
+       "circuit_percent": 1.309948,
+       "total_percent": 4.134187,
+       "budget_percent": 3.0,
+       "within_budget": false
+      },
+      {
+       "circuit": "L9",
+       "phase": "L3",
+       "feeder_percent": 2.824239,
+       "circuit_percent": 0.295982,
+       "total_percent": 3.120221,
+       "budget_percent": 3.0,
+       "within_budget": false
+      },
+      {
+       "circuit": "L10",
+       "phase": "L3",
+       "feeder_percent": 2.824239,
+       "circuit_percent": 0.02776,
+       "total_percent": 2.851999,
+       "budget_percent": 3.0,
+       "within_budget": true
+      }
+     ],
+     "three_phase_all_within_budget": false
     },
     {
      "area_mm2": 16,
      "ampacity_a": 31.837,
      "single_phase_fixed_percent": 1.799732,
      "single_phase_with_events_percent": 8.810044,
-     "three_phase_with_events_percent": 1.468341
+     "single_phase_with_events_ampacity_ok": false,
+     "three_phase_with_events_percent": 2.300672,
+     "three_phase_fixed_only_percent": 1.799732,
+     "three_phase_ampacity_ok": false,
+     "three_phase_db1_to_load": [
+      {
+       "circuit": "P3",
+       "phase": "L1",
+       "feeder_percent": 2.300672,
+       "circuit_percent": 0.282333,
+       "total_percent": 2.583005,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "P4",
+       "phase": "L2",
+       "feeder_percent": 2.300672,
+       "circuit_percent": 0.471128,
+       "total_percent": 2.7718,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L6",
+       "phase": "L3",
+       "feeder_percent": 1.799732,
+       "circuit_percent": 0.803957,
+       "total_percent": 2.603689,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "F4",
+       "phase": "L3",
+       "feeder_percent": 1.799732,
+       "circuit_percent": 0.515666,
+       "total_percent": 2.315398,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L7",
+       "phase": "L3",
+       "feeder_percent": 1.799732,
+       "circuit_percent": 1.309948,
+       "total_percent": 3.10968,
+       "budget_percent": 3.0,
+       "within_budget": false
+      },
+      {
+       "circuit": "L9",
+       "phase": "L3",
+       "feeder_percent": 1.799732,
+       "circuit_percent": 0.295982,
+       "total_percent": 2.095714,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L10",
+       "phase": "L3",
+       "feeder_percent": 1.799732,
+       "circuit_percent": 0.02776,
+       "total_percent": 1.827492,
+       "budget_percent": 3.0,
+       "within_budget": true
+      }
+     ],
+     "three_phase_all_within_budget": false
     },
     {
      "area_mm2": 25,
      "ampacity_a": 41.08,
      "single_phase_fixed_percent": 1.185028,
      "single_phase_with_events_percent": 5.800945,
-     "three_phase_with_events_percent": 0.966824
+     "single_phase_with_events_ampacity_ok": false,
+     "three_phase_with_events_percent": 1.51487,
+     "three_phase_fixed_only_percent": 1.185028,
+     "three_phase_ampacity_ok": true,
+     "three_phase_db1_to_load": [
+      {
+       "circuit": "P3",
+       "phase": "L1",
+       "feeder_percent": 1.51487,
+       "circuit_percent": 0.282333,
+       "total_percent": 1.797203,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "P4",
+       "phase": "L2",
+       "feeder_percent": 1.51487,
+       "circuit_percent": 0.471128,
+       "total_percent": 1.985998,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L6",
+       "phase": "L3",
+       "feeder_percent": 1.185028,
+       "circuit_percent": 0.803957,
+       "total_percent": 1.988985,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "F4",
+       "phase": "L3",
+       "feeder_percent": 1.185028,
+       "circuit_percent": 0.515666,
+       "total_percent": 1.700693,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L7",
+       "phase": "L3",
+       "feeder_percent": 1.185028,
+       "circuit_percent": 1.309948,
+       "total_percent": 2.494976,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L9",
+       "phase": "L3",
+       "feeder_percent": 1.185028,
+       "circuit_percent": 0.295982,
+       "total_percent": 1.48101,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L10",
+       "phase": "L3",
+       "feeder_percent": 1.185028,
+       "circuit_percent": 0.02776,
+       "total_percent": 1.212788,
+       "budget_percent": 3.0,
+       "within_budget": true
+      }
+     ],
+     "three_phase_all_within_budget": true
     },
     {
      "area_mm2": 35,
      "ampacity_a": 50.8365,
      "single_phase_fixed_percent": 0.872797,
      "single_phase_with_events_percent": 4.272513,
-     "three_phase_with_events_percent": 0.712086
+     "single_phase_with_events_ampacity_ok": false,
+     "three_phase_with_events_percent": 1.115732,
+     "three_phase_fixed_only_percent": 0.872797,
+     "three_phase_ampacity_ok": true,
+     "three_phase_db1_to_load": [
+      {
+       "circuit": "P3",
+       "phase": "L1",
+       "feeder_percent": 1.115732,
+       "circuit_percent": 0.282333,
+       "total_percent": 1.398066,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "P4",
+       "phase": "L2",
+       "feeder_percent": 1.115732,
+       "circuit_percent": 0.471128,
+       "total_percent": 1.58686,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L6",
+       "phase": "L3",
+       "feeder_percent": 0.872797,
+       "circuit_percent": 0.803957,
+       "total_percent": 1.676754,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "F4",
+       "phase": "L3",
+       "feeder_percent": 0.872797,
+       "circuit_percent": 0.515666,
+       "total_percent": 1.388463,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L7",
+       "phase": "L3",
+       "feeder_percent": 0.872797,
+       "circuit_percent": 1.309948,
+       "total_percent": 2.182745,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L9",
+       "phase": "L3",
+       "feeder_percent": 0.872797,
+       "circuit_percent": 0.295982,
+       "total_percent": 1.168779,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L10",
+       "phase": "L3",
+       "feeder_percent": 0.872797,
+       "circuit_percent": 0.02776,
+       "total_percent": 0.900557,
+       "budget_percent": 3.0,
+       "within_budget": true
+      }
+     ],
+     "three_phase_all_within_budget": true
     },
     {
      "area_mm2": 50,
      "ampacity_a": 60.593,
      "single_phase_fixed_percent": 0.638624,
      "single_phase_with_events_percent": 3.12619,
-     "three_phase_with_events_percent": 0.521032
+     "single_phase_with_events_ampacity_ok": false,
+     "three_phase_with_events_percent": 0.816379,
+     "three_phase_fixed_only_percent": 0.638624,
+     "three_phase_ampacity_ok": true,
+     "three_phase_db1_to_load": [
+      {
+       "circuit": "P3",
+       "phase": "L1",
+       "feeder_percent": 0.816379,
+       "circuit_percent": 0.282333,
+       "total_percent": 1.098713,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "P4",
+       "phase": "L2",
+       "feeder_percent": 0.816379,
+       "circuit_percent": 0.471128,
+       "total_percent": 1.287507,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L6",
+       "phase": "L3",
+       "feeder_percent": 0.638624,
+       "circuit_percent": 0.803957,
+       "total_percent": 1.442581,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "F4",
+       "phase": "L3",
+       "feeder_percent": 0.638624,
+       "circuit_percent": 0.515666,
+       "total_percent": 1.15429,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L7",
+       "phase": "L3",
+       "feeder_percent": 0.638624,
+       "circuit_percent": 1.309948,
+       "total_percent": 1.948572,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L9",
+       "phase": "L3",
+       "feeder_percent": 0.638624,
+       "circuit_percent": 0.295982,
+       "total_percent": 0.934606,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L10",
+       "phase": "L3",
+       "feeder_percent": 0.638624,
+       "circuit_percent": 0.02776,
+       "total_percent": 0.666384,
+       "budget_percent": 3.0,
+       "within_budget": true
+      }
+     ],
+     "three_phase_all_within_budget": true
     }
-   ]
+   ],
+   "db2_three_phase_a": [
+    32.0,
+    32.0,
+    16.430488
+   ],
+   "db2_three_phase_neutral_a": 15.569512,
+   "db2_three_phase_fixed_only_a": [
+    0.0,
+    0.0,
+    16.430488
+   ],
+   "db2_three_phase_fixed_only_neutral_a": 16.430488,
+   "db2_three_phase_smallest_mm2": 25,
+   "db2_three_phase_smallest_within_budget_mm2": 25,
+   "db2_single_phase_smallest_mm2": null
   },
   {
    "case_id": "S2-220-PF08-50C-6",
@@ -3279,34 +3836,36 @@
    "single_phase_fixed_plus_indoor_a": 97.777824,
    "single_phase_everything_a": 161.777824,
    "three_phase_a": [
-    53.438722,
-    54.241162,
-    54.097941
+    53.956842,
+    53.961922,
+    53.859059
    ],
-   "three_phase_neutral_a": 0.74128,
+   "three_phase_neutral_a": 0.100419,
    "three_phase_allocation": {
     "P3": "L1",
     "P4": "L2",
+    "L6": "L3",
+    "F4": "L3",
+    "L7": "L3",
+    "L9": "L3",
+    "L10": "L3",
     "P1": "L3",
-    "P2": "L3",
-    "V1": "L1",
-    "L6": "L2",
-    "F2": "L3",
+    "P2": "L1",
+    "F2": "L2",
     "F1": "L3",
-    "F4": "L2",
-    "L7": "L1",
     "L1": "L2",
+    "V1": "L3",
+    "V2": "L2",
     "L2": "L3",
-    "L3": "L1",
-    "L4": "L3",
-    "L5": "L2",
-    "LD": "L3",
-    "L9": "L1",
+    "L3": "L2",
+    "L4": "L1",
+    "L5": "L3",
+    "LD": "L1",
     "LA": "L2",
     "F5": "L3",
-    "L8": "L2",
-    "L10": "L1",
-    "E1": "L1"
+    "L8": "L1",
+    "V3": "L2",
+    "E1": "L2"
    },
    "db2_fixed_planning_a": 19.324495,
    "db2_with_events_a": 83.324495,
@@ -3317,37 +3876,397 @@
      "ampacity_a": 18.6162,
      "single_phase_fixed_percent": 3.472676,
      "single_phase_with_events_percent": 14.97369,
-     "three_phase_with_events_percent": 2.495615
+     "single_phase_with_events_ampacity_ok": false,
+     "three_phase_with_events_percent": 3.583138,
+     "three_phase_fixed_only_percent": 3.472676,
+     "three_phase_ampacity_ok": false,
+     "three_phase_db1_to_load": [
+      {
+       "circuit": "P3",
+       "phase": "L1",
+       "feeder_percent": 3.583138,
+       "circuit_percent": 0.295167,
+       "total_percent": 3.878305,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "P4",
+       "phase": "L2",
+       "feeder_percent": 3.583138,
+       "circuit_percent": 0.492543,
+       "total_percent": 4.075681,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L6",
+       "phase": "L3",
+       "feeder_percent": 3.472676,
+       "circuit_percent": 0.373816,
+       "total_percent": 3.846493,
+       "budget_percent": 3.0,
+       "within_budget": false
+      },
+      {
+       "circuit": "F4",
+       "phase": "L3",
+       "feeder_percent": 3.472676,
+       "circuit_percent": 0.634061,
+       "total_percent": 4.106737,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L7",
+       "phase": "L3",
+       "feeder_percent": 3.472676,
+       "circuit_percent": 1.610709,
+       "total_percent": 5.083385,
+       "budget_percent": 3.0,
+       "within_budget": false
+      },
+      {
+       "circuit": "L9",
+       "phase": "L3",
+       "feeder_percent": 3.472676,
+       "circuit_percent": 0.363939,
+       "total_percent": 3.836615,
+       "budget_percent": 3.0,
+       "within_budget": false
+      },
+      {
+       "circuit": "L10",
+       "phase": "L3",
+       "feeder_percent": 3.472676,
+       "circuit_percent": 0.034134,
+       "total_percent": 3.50681,
+       "budget_percent": 3.0,
+       "within_budget": false
+      }
+     ],
+     "three_phase_all_within_budget": false
     },
     {
      "area_mm2": 16,
      "ampacity_a": 25.0914,
      "single_phase_fixed_percent": 2.212945,
      "single_phase_with_events_percent": 9.541907,
-     "three_phase_with_events_percent": 1.590318
+     "single_phase_with_events_ampacity_ok": false,
+     "three_phase_with_events_percent": 2.283337,
+     "three_phase_fixed_only_percent": 2.212945,
+     "three_phase_ampacity_ok": false,
+     "three_phase_db1_to_load": [
+      {
+       "circuit": "P3",
+       "phase": "L1",
+       "feeder_percent": 2.283337,
+       "circuit_percent": 0.295167,
+       "total_percent": 2.578503,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "P4",
+       "phase": "L2",
+       "feeder_percent": 2.283337,
+       "circuit_percent": 0.492543,
+       "total_percent": 2.775879,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L6",
+       "phase": "L3",
+       "feeder_percent": 2.212945,
+       "circuit_percent": 0.373816,
+       "total_percent": 2.586762,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "F4",
+       "phase": "L3",
+       "feeder_percent": 2.212945,
+       "circuit_percent": 0.634061,
+       "total_percent": 2.847006,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L7",
+       "phase": "L3",
+       "feeder_percent": 2.212945,
+       "circuit_percent": 1.610709,
+       "total_percent": 3.823654,
+       "budget_percent": 3.0,
+       "within_budget": false
+      },
+      {
+       "circuit": "L9",
+       "phase": "L3",
+       "feeder_percent": 2.212945,
+       "circuit_percent": 0.363939,
+       "total_percent": 2.576884,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L10",
+       "phase": "L3",
+       "feeder_percent": 2.212945,
+       "circuit_percent": 0.034134,
+       "total_percent": 2.247079,
+       "budget_percent": 3.0,
+       "within_budget": true
+      }
+     ],
+     "three_phase_all_within_budget": false
     },
     {
      "area_mm2": 25,
      "ampacity_a": 32.376,
      "single_phase_fixed_percent": 1.457107,
      "single_phase_with_events_percent": 6.282838,
-     "three_phase_with_events_percent": 1.04714
+     "single_phase_with_events_ampacity_ok": false,
+     "three_phase_with_events_percent": 1.503456,
+     "three_phase_fixed_only_percent": 1.457107,
+     "three_phase_ampacity_ok": true,
+     "three_phase_db1_to_load": [
+      {
+       "circuit": "P3",
+       "phase": "L1",
+       "feeder_percent": 1.503456,
+       "circuit_percent": 0.295167,
+       "total_percent": 1.798622,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "P4",
+       "phase": "L2",
+       "feeder_percent": 1.503456,
+       "circuit_percent": 0.492543,
+       "total_percent": 1.995998,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L6",
+       "phase": "L3",
+       "feeder_percent": 1.457107,
+       "circuit_percent": 0.373816,
+       "total_percent": 1.830923,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "F4",
+       "phase": "L3",
+       "feeder_percent": 1.457107,
+       "circuit_percent": 0.634061,
+       "total_percent": 2.091168,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L7",
+       "phase": "L3",
+       "feeder_percent": 1.457107,
+       "circuit_percent": 1.610709,
+       "total_percent": 3.067815,
+       "budget_percent": 3.0,
+       "within_budget": false
+      },
+      {
+       "circuit": "L9",
+       "phase": "L3",
+       "feeder_percent": 1.457107,
+       "circuit_percent": 0.363939,
+       "total_percent": 1.821046,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L10",
+       "phase": "L3",
+       "feeder_percent": 1.457107,
+       "circuit_percent": 0.034134,
+       "total_percent": 1.491241,
+       "budget_percent": 3.0,
+       "within_budget": true
+      }
+     ],
+     "three_phase_all_within_budget": false
     },
     {
      "area_mm2": 35,
      "ampacity_a": 40.0653,
      "single_phase_fixed_percent": 1.073189,
      "single_phase_with_events_percent": 4.627438,
-     "three_phase_with_events_percent": 0.77124
+     "single_phase_with_events_ampacity_ok": false,
+     "three_phase_with_events_percent": 1.107326,
+     "three_phase_fixed_only_percent": 1.073189,
+     "three_phase_ampacity_ok": true,
+     "three_phase_db1_to_load": [
+      {
+       "circuit": "P3",
+       "phase": "L1",
+       "feeder_percent": 1.107326,
+       "circuit_percent": 0.295167,
+       "total_percent": 1.402492,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "P4",
+       "phase": "L2",
+       "feeder_percent": 1.107326,
+       "circuit_percent": 0.492543,
+       "total_percent": 1.599868,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L6",
+       "phase": "L3",
+       "feeder_percent": 1.073189,
+       "circuit_percent": 0.373816,
+       "total_percent": 1.447005,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "F4",
+       "phase": "L3",
+       "feeder_percent": 1.073189,
+       "circuit_percent": 0.634061,
+       "total_percent": 1.70725,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L7",
+       "phase": "L3",
+       "feeder_percent": 1.073189,
+       "circuit_percent": 1.610709,
+       "total_percent": 2.683897,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L9",
+       "phase": "L3",
+       "feeder_percent": 1.073189,
+       "circuit_percent": 0.363939,
+       "total_percent": 1.437128,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L10",
+       "phase": "L3",
+       "feeder_percent": 1.073189,
+       "circuit_percent": 0.034134,
+       "total_percent": 1.107323,
+       "budget_percent": 3.0,
+       "within_budget": true
+      }
+     ],
+     "three_phase_all_within_budget": true
     },
     {
      "area_mm2": 50,
      "ampacity_a": 47.7546,
      "single_phase_fixed_percent": 0.78525,
      "single_phase_with_events_percent": 3.385887,
-     "three_phase_with_events_percent": 0.564315
+     "single_phase_with_events_ampacity_ok": false,
+     "three_phase_with_events_percent": 0.810228,
+     "three_phase_fixed_only_percent": 0.78525,
+     "three_phase_ampacity_ok": true,
+     "three_phase_db1_to_load": [
+      {
+       "circuit": "P3",
+       "phase": "L1",
+       "feeder_percent": 0.810228,
+       "circuit_percent": 0.295167,
+       "total_percent": 1.105395,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "P4",
+       "phase": "L2",
+       "feeder_percent": 0.810228,
+       "circuit_percent": 0.492543,
+       "total_percent": 1.302771,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L6",
+       "phase": "L3",
+       "feeder_percent": 0.78525,
+       "circuit_percent": 0.373816,
+       "total_percent": 1.159066,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "F4",
+       "phase": "L3",
+       "feeder_percent": 0.78525,
+       "circuit_percent": 0.634061,
+       "total_percent": 1.419311,
+       "budget_percent": 5.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L7",
+       "phase": "L3",
+       "feeder_percent": 0.78525,
+       "circuit_percent": 1.610709,
+       "total_percent": 2.395959,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L9",
+       "phase": "L3",
+       "feeder_percent": 0.78525,
+       "circuit_percent": 0.363939,
+       "total_percent": 1.149189,
+       "budget_percent": 3.0,
+       "within_budget": true
+      },
+      {
+       "circuit": "L10",
+       "phase": "L3",
+       "feeder_percent": 0.78525,
+       "circuit_percent": 0.034134,
+       "total_percent": 0.819384,
+       "budget_percent": 3.0,
+       "within_budget": true
+      }
+     ],
+     "three_phase_all_within_budget": true
     }
-   ]
+   ],
+   "db2_three_phase_a": [
+    32.0,
+    32.0,
+    19.324495
+   ],
+   "db2_three_phase_neutral_a": 12.675505,
+   "db2_three_phase_fixed_only_a": [
+    0.0,
+    0.0,
+    19.324495
+   ],
+   "db2_three_phase_fixed_only_neutral_a": 19.324495,
+   "db2_three_phase_smallest_mm2": 25,
+   "db2_three_phase_smallest_within_budget_mm2": 35,
+   "db2_single_phase_smallest_mm2": null
   }
  ],
  "energy": {
@@ -3736,10 +4655,10 @@
    }
   ],
   "final_circuit_mains_w_full_service": 5477.517626,
-  "loss_w_comparison_areas": 33.458571,
-  "loss_w_minimum_areas": 33.458571,
-  "loss_percent_comparison_areas": 0.610835,
-  "loss_percent_minimum_areas": 0.610835,
+  "loss_w_comparison_areas": 32.38764,
+  "loss_w_minimum_areas": 32.38764,
+  "loss_percent_comparison_areas": 0.591283,
+  "loss_percent_minimum_areas": 0.591283,
   "circuit_losses": [
    {
     "circuit": "E1",
@@ -3869,9 +4788,21 @@
    },
    {
     "circuit": "V1",
-    "full_service_w": 540,
-    "loss_w_comparison": 2.550888,
-    "loss_w_minimum": 2.550888
+    "full_service_w": 240,
+    "loss_w_comparison": 0.96823,
+    "loss_w_minimum": 0.96823
+   },
+   {
+    "circuit": "V2",
+    "full_service_w": 240,
+    "loss_w_comparison": 0.469153,
+    "loss_w_minimum": 0.469153
+   },
+   {
+    "circuit": "V3",
+    "full_service_w": 60,
+    "loss_w_comparison": 0.042575,
+    "loss_w_minimum": 0.042575
    }
   ],
   "db2_feeder_full_service_a": 6.042941,

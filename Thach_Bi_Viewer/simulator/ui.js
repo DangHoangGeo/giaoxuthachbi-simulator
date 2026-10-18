@@ -5,6 +5,8 @@
  */
 (() => {
   'use strict';
+  // Viewer language (i18n.js): English source, Vietnamese when chosen.
+  const tx = text => (window.THACH_I18N ? window.THACH_I18N.t(text) : text);
   const SIM = window.CHURCH_SIMULATOR;
   const CAT = window.CHURCH_SIM_CATALOG;
   const P = window.CHURCH_SIM_PHYSICS;
@@ -34,6 +36,7 @@
     btn.setAttribute('aria-label', 'Simulator');
     btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6m-5 3h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3Z"/></svg><span>Simulator</span>';
     actions.prepend(btn);
+    window.THACH_I18N?.adopt(btn);
     btn.hidden = !!SIM.visitOnly;
     btn.addEventListener('click', () => setOpen(!document.body.classList.contains('sim-open')));
 
@@ -58,6 +61,7 @@
       <nav class="sim-tabs" role="tablist">${TABS.map(t => `<button role="tab" data-tab="${t.id}" aria-selected="${t.id === tab}">${t.label}</button>`).join('')}</nav>
       <section class="sim-body" id="simBody"></section>`;
     document.body.append(panel);
+    window.THACH_I18N?.adopt(panel);
     body = $('simBody');
     const extras = document.createElement('div');
     extras.innerHTML = `
@@ -81,7 +85,9 @@
       <div id="simHere" class="sim-here" hidden>
         <div class="sim-stats"><div id="simStatsScope" class="sim-stats-scope"></div><div id="simHereValues" class="sim-here-values"></div></div>
       </div>`;
-    document.body.append(...extras.children);
+    const extraNodes = [...extras.children];
+    document.body.append(...extraNodes);
+    for (const node of extraNodes) window.THACH_I18N?.adopt(node);
     noiseSegments = [...$('simNoiseMeter').querySelectorAll('.sim-level-segments i')];
     soundSegments = [...$('simSoundMeter').querySelectorAll('.sim-level-segments i')];
     new ResizeObserver(() => {
@@ -97,7 +103,7 @@
     });
     panel.addEventListener('input', onInput);
     panel.addEventListener('change', onChange);
-    $('simScene').addEventListener('change', e => { if (e.target.value) { SIM.applyScene(e.target.value); toast('Scene: ' + e.target.value); } });
+    $('simScene').addEventListener('change', e => { if (e.target.value) { SIM.applyScene(e.target.value); toast(tx('Scene') + ': ' + e.target.value); } });
 
     SIM.on('items', () => scheduleRender());
     SIM.on('select', id => {
@@ -115,9 +121,9 @@
     SIM.on('placing', t => {
       const el = $('simPlacing');
       el.hidden = !t;
-      if (t) el.querySelector('span').textContent = `Placing: ${t.name}. Click a ${t.mounts.map(m => ({ pendant: 'beam or ceiling', wall: 'wall or column', floor: 'floor' }[m])).join(' / ')}. Shift-click to place several.`;
+      if (t) el.querySelector('span').textContent = `${tx('Placing')}: ${t.name}. ${tx('Click a')} ${t.mounts.map(m => ({ pendant: tx('beam or ceiling'), wall: tx('wall or column'), floor: tx('floor') }[m])).join(' / ')}. ${tx('Shift-click to place several.')}`;
     });
-    SIM.on('placed', it => toast(`Placed ${it.name} at axis ${SIM.axisName(it.pos[0])}`));
+    SIM.on('placed', it => toast(`${tx('Placed')} ${it.name} ${tx('at axis')} ${SIM.axisName(it.pos[0])}`));
     SIM.on('toast', toast);
     SIM.on('readout', r => showReadout(r));
     SIM.on('frame', ({ mode, camera }) => {
@@ -131,6 +137,8 @@
       }
     });
     renderScenes(); renderKpis(); renderBody(); updateUndo(); renderMapMarkers();
+    // Changing the viewer language re-renders the panel text, which is written from code.
+    window.THACH_I18N?.onChange(() => { renderScenes(); renderKpis(); renderBody(); renderLegend(); updateUndo(); renderMapMarkers(); });
     SIM.on('items', () => renderMapMarkers());
     SIM.on('select', () => renderMapMarkers());
     if (sessionStorageGet('simOpen') === '1') setOpen(true);
@@ -152,7 +160,7 @@
   function toast(text) {
     const t = $('toast');
     if (!t) return;
-    t.textContent = text; t.classList.add('visible');
+    t.textContent = tx(text); t.classList.add('visible');
     clearTimeout(toast.timer); toast.timer = setTimeout(() => t.classList.remove('visible'), 2600);
   }
   let renderQueued = false, renderKeepScroll = false;
@@ -169,7 +177,8 @@
   function renderScenes() {
     const sel = $('simScene');
     const names = [...Object.keys(SIM.SCENES), ...SIM.state.customScenes.map(s => s.name)];
-    sel.innerHTML = `<option value="">${SIM.state.scene ? 'Current: ' + esc(SIM.state.scene) : 'Choose a scene…'}</option>` + names.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join('');
+    sel.innerHTML = `<option value="">${SIM.state.scene ? tx('Current') + ': ' + esc(tx(SIM.state.scene)) : tx('Choose a scene…')}</option>` + names.map(n => `<option value="${esc(n)}">${esc(tx(n))}</option>`).join('');
+    window.THACH_I18N?.adopt(sel);
   }
 
   /* ----------------------------------------------------------------- KPIs */
@@ -184,14 +193,16 @@
   function renderKpis() {
     const s = SIM.analysis?.results?.seats;
     const pw = SIM.powerSummary();
-    const k = (kind, icon, value, unit, label) => `<button class="sim-kpi ${kpiClass(kind, value)}" data-overlay="${kind}" title="${esc(label)} — show on the plan"><span>${icon}</span><strong>${value === null ? '–' : esc(fmt(value, kind === 'sti' ? 2 : kind === 'air' ? 2 : 0))}</strong><small>${unit}</small></button>`;
-    $('simKpis').innerHTML = [
+    const k = (kind, icon, value, unit, label) => `<button class="sim-kpi ${kpiClass(kind, value)}" data-overlay="${kind}" title="${esc(tx(label))} — ${tx('show on the plan')}"><span>${icon}</span><strong>${value === null ? '–' : esc(fmt(value, kind === 'sti' ? 2 : kind === 'air' ? 2 : 0))}</strong><small>${unit}</small></button>`;
+    const kpis = $('simKpis');
+    kpis.innerHTML = [
       k('lux', '☀', s?.lux?.avg ?? null, 'lux', 'Average maintained light on books at the seats'),
       k('sti', '◉', s?.sti?.avg ?? null, 'STI', 'Average speech intelligibility at the seats'),
       k('air', '≋', s?.air?.avg ?? null, 'm/s', 'Average seated air speed'),
       k('noise', '♪', s?.noise?.avg ?? null, 'dBA', 'Background noise at the seats (fans + ambient)'),
-      `<button class="sim-kpi" data-tab-jump="analysis" title="Electrical load of everything switched on"><span>⚡</span><strong>${fmt(pw.total / 1000, 1)}</strong><small>kW</small></button>`
+      `<button class="sim-kpi" data-tab-jump="analysis" title="${tx('Electrical load of everything switched on')}"><span>⚡</span><strong>${fmt(pw.total / 1000, 1)}</strong><small>kW</small></button>`
     ].join('');
+    window.THACH_I18N?.adopt(kpis);
   }
 
   /* ----------------------------------------------------------------- body */
@@ -225,6 +236,7 @@
     else if (tab === 'wiring') html = SIM.electrical?.renderPanel() || '';
     else html = renderSettings();
     body.innerHTML = (tab !== 'wiring' ? retainedWingNotice() + retainedWingSoundNotice() + retainedWingArtNotice() : '') + (tab === 'fan' ? retainedNaveFansNotice() : '') + html;
+    window.THACH_I18N?.adopt(body);
     if (renderKeepScroll) body.scrollTop = scroll; else body.scrollTop = 0;
     renderKeepScroll = false;
     if (tab === 'wiring') {
@@ -246,15 +258,15 @@
     const parts = [];
     if (t.light) {
       const lm = it.lumens ?? t.light.lumens;
-      parts.push(t.light.wattsPerBulb ? `${CAT.bulbCount(it.params)} bulbs · lumen data needed` : `${Math.round(lm).toLocaleString('en')} lm`, `${it.cct ?? t.light.cct} K`);
+      parts.push(t.light.wattsPerBulb ? `${CAT.bulbCount(it.params)} ${tx('bulbs')} · ${tx('lumen data needed')}` : `${Math.round(lm).toLocaleString('en')} lm`, `${it.cct ?? t.light.cct} K`);
       if (t.light.beam) parts.push(`${it.beam ?? t.light.beam}°`);
       if (it.on && (it.dim ?? 1) < 1) parts.push(`${Math.round((it.dim ?? 1) * 100)} %`);
     }
-    if (t.fan) parts.push(t.fan.diameter + ' m', it.on && it.speed > 0 ? `speed ${it.speed}/${t.fan.speeds.length}` : 'off');
+    if (t.fan) parts.push(t.fan.diameter + ' m', it.on && it.speed > 0 ? `${tx('speed')} ${it.speed}/${t.fan.speeds.length}` : tx('off'));
     if (t.speaker) parts.push(`${fmt(t.speaker.nominal + (it.level ?? 0) + SIM.state.settings.mixerDb)} dBA @1 m`, `${fmt(it.delayMs, 1)} ms`);
-    if (t.outlet) parts.push(`${t.outlet.ratingA} A circuit`, it.on ? 'live' : 'isolated');
-    if (t.mic && Number.isFinite(it.feedbackMargin)) parts.push(`feedback margin ${fmt(it.feedbackMargin, 1)} dB`);
-    parts.push(`axis ${SIM.axisName(it.pos[0])}`, `${fmt(it.pos[1], 2)} m`);
+    if (t.outlet) parts.push(`${t.outlet.ratingA} A ${tx('circuit')}`, it.on ? tx('live') : tx('isolated'));
+    if (t.mic && Number.isFinite(it.feedbackMargin)) parts.push(`${tx('feedback margin')} ${fmt(it.feedbackMargin, 1)} dB`);
+    parts.push(`${tx('axis')} ${SIM.axisName(it.pos[0])}`, `${fmt(it.pos[1], 2)} m`);
     const w = SIM.itemWatts(it);
     if (w > 0.5) parts.push(`${fmt(w)} W`);
     return parts.join(' · ');
@@ -267,10 +279,10 @@
     let html = '';
     if (sel && CAT.byId[sel.type].cat === cat) html += renderProps(sel);
     if (cat === 'speaker') html += `<div id="simAudio" class="sim-card sim-audio"></div>`;
-    html += `<div class="sim-toolbar"><button class="sim-primary" data-act="add" data-cat="${cat}">＋ Add ${cat === 'light' ? 'a light' : cat === 'fan' ? 'a fan' : cat === 'speaker' ? 'a loudspeaker or mic' : cat === 'power' ? 'a socket outlet' : 'a decoration'}</button>
-      <span class="sim-count">${items.filter(i => !i.hidden).length} in the model${items.some(i => i.hidden) ? ` · ${items.filter(i => i.hidden).length} hidden alternatives` : ''}</span></div>`;
+    html += `<div class="sim-toolbar"><button class="sim-primary" data-act="add" data-cat="${cat}">＋ ${tx('Add')} ${cat === 'light' ? tx('a light') : cat === 'fan' ? tx('a fan') : cat === 'speaker' ? tx('a loudspeaker or mic') : cat === 'power' ? tx('a socket outlet') : tx('a decoration')}</button>
+      <span class="sim-count">${items.filter(i => !i.hidden).length} ${tx('in the model')}${items.some(i => i.hidden) ? ` · ${items.filter(i => i.hidden).length} ${tx('hidden alternatives')}` : ''}</span></div>`;
     if (picking === cat) html += renderPicker(cat);
-    const order = Object.keys(SIM.CIRCUITS);
+    const order = SIM.CIRCUIT_ORDER;
     for (const circuit of [...groups.keys()].sort((a, b) => order.indexOf(a) - order.indexOf(b))) {
       const list = groups.get(circuit);
       const info = SIM.CIRCUITS[circuit] || { label: circuit };
@@ -283,7 +295,7 @@
         <div class="sim-group-head">
           <label class="sim-switch" title="Switch the whole circuit"><input type="checkbox" data-act="circuit" data-circuit="${circuit}" ${anyOn ? 'checked' : ''}><span></span></label>
           <button class="sim-group-title" data-act="collapse" data-key="${cat + circuit}"><strong>${esc(info.label)}</strong><small>${list.length} · ${fmt(watts)} W</small></button>
-          ${dim !== null && cat === 'light' ? `<input type="range" min="0" max="100" value="${dim}" data-act="circuit-dim" data-circuit="${circuit}" aria-label="Dim ${esc(info.label)}" title="Dim level ${dim} %">` : ''}
+          ${dim !== null && cat === 'light' ? `<input type="range" min="0" max="100" value="${dim}" data-act="circuit-dim" data-circuit="${circuit}" aria-label="${tx('Dim')} ${esc(info.label)}" title="${tx('Dim level')} ${dim} %">` : ''}
         </div>
         <div class="sim-rows">${list.map(renderRow).join('')}</div>
       </div>`;
@@ -383,7 +395,7 @@
     const A = SIM.analysis, r = A?.results || {}, s = r.seats;
     const ov = SIM.state.settings.overlay;
     const room = SIM.room();
-    const kinds = [['none', 'Off'], ['lux', 'Light'], ['spl', 'Speech level'], ['sti', 'Clarity (STI)'], ['air', 'Air speed'], ['noise', 'Noise']];
+    const kinds = [['none', tx('Off')], ['lux', tx('Light')], ['spl', tx('Speech level')], ['sti', tx('Clarity (STI)')], ['air', tx('Air speed')], ['noise', tx('Noise')]];
     let html = `<div class="sim-card"><h3>Show on the plan</h3>
       <div class="sim-seg wide">${kinds.map(([k, l]) => `<button data-act="overlay" data-kind="${k}" class="${ov === k ? 'active' : ''}">${l}</button>`).join('')}</div>
       ${ov !== 'none' ? legendHtml(ov) : '<p class="sim-hint">Colour the floor plan with predicted values. Hover it to read a value; in Walk mode the value under you appears at the bottom.</p>'}
@@ -448,7 +460,7 @@
     const ov = SIM.state.settings.overlay, el = $('simLegend');
     if (!el) return;
     el.hidden = ov === 'none' || !SIM.analysis?.KINDS[ov];
-    if (!el.hidden) el.innerHTML = `<strong>${esc(SIM.analysis.KINDS[ov].label)}</strong>${legendHtml(ov)}`;
+    if (!el.hidden) { el.innerHTML = `<strong>${esc(tx(SIM.analysis.KINDS[ov].label))}</strong>${legendHtml(ov)}`; window.THACH_I18N?.adopt(el); }
   }
 
   /* -------------------------------------------------------------- settings */
@@ -499,8 +511,8 @@
     if (act.startsWith('electrical-')) { SIM.electrical?.action(el); return; }
     switch (act) {
       case 'close': setOpen(false); break;
-      case 'undo': { const l = SIM.undo(); if (l) toast('Undo: ' + l); break; }
-      case 'redo': { const l = SIM.redo(); if (l) toast('Redo: ' + l); break; }
+      case 'undo': { const l = SIM.undo(); if (l) toast(tx('Undo') + ': ' + l); break; }
+      case 'redo': { const l = SIM.redo(); if (l) toast(tx('Redo') + ': ' + l); break; }
       case 'wing-sound-review': tab = 'wiring'; picking = null; renderBody(); renderMapMarkers(); break;
       case 'wing-art-review': tab = 'wiring'; picking = null; renderBody(); renderMapMarkers(); break;
       case 'wing-adopt': {
@@ -581,11 +593,11 @@
       case 'place': picking = null; renderBody(); SIM.beginPlacement(el.dataset.type); break;
       case 'duplicate': SIM.duplicate(SIM.state.selectedId); break;
       case 'mirror': SIM.mirror(SIM.state.selectedId); break;
-      case 'repeat': { const made = SIM.repeatBays(SIM.state.selectedId); toast(made.length ? `Added ${made.length} copies on bays 3–9` : 'Every bay already has one'); break; }
+      case 'repeat': { const made = SIM.repeatBays(SIM.state.selectedId); toast(made.length ? `${tx('Added')} ${made.length} ${tx('copies on bays 3–9')}` : tx('Every bay already has one')); break; }
       case 'hide': { const s = SIM.item(SIM.state.selectedId); SIM.update(s.id, { hidden: !s.hidden, on: s.hidden ? true : s.on }); break; }
-      case 'delete': { const s = SIM.item(SIM.state.selectedId); if (s) { SIM.remove(s.id); toast('Deleted ' + s.name + ' (Ctrl+Z to undo)'); } break; }
+      case 'delete': { const s = SIM.item(SIM.state.selectedId); if (s) { SIM.remove(s.id); toast(tx('Deleted') + ' ' + s.name + ' ' + tx('(Ctrl+Z to undo)')); } break; }
       case 'speed': { const s = SIM.item(SIM.state.selectedId); const v = Number(el.dataset.speed); SIM.update(s.id, v === 0 ? { on: false } : { on: true, speed: v }); break; }
-      case 'align': { SIM.alignDelays(); toast('Loudspeakers time-aligned to the talker at the microphone (+12 ms)'); break; }
+      case 'align': { SIM.alignDelays(); toast(tx('Loudspeakers time-aligned to the talker at the microphone (+12 ms)')); break; }
       case 'overlay': SIM.setOverlay(el.dataset.kind); renderBody(); renderLegend(); break;
       case 'plan-view': window.church.setView('overhead'); window.church.setRoof(false); break;
       case 'perspective-view': window.church.setView('cutaway'); break;
@@ -595,8 +607,8 @@
       case 'export-csv': download('thach-bi-fixture-schedule.csv', '﻿' + SIM.exportSchedule(), 'text/csv'); break;
       case 'import-json': body.querySelector('#simImportFile').click(); break;
       case 'screenshot': window.church.exportPNG(); break;
-      case 'reset-design': if (confirm('Replace the current layout with the recommended design? (Undo is available.)')) { SIM.resetDesign(); toast('Recommended design restored'); } break;
-      case 'clear-storage': if (confirm('Forget the saved layout in this browser and reload?')) { try { localStorage.removeItem('thachbi.simulator.v1'); } catch { /* ignore */ } location.reload(); } break;
+      case 'reset-design': if (confirm(tx('Replace the current layout with the recommended design? (Undo is available.)'))) { SIM.resetDesign(); toast(tx('Recommended design restored')); } break;
+      case 'clear-storage': if (confirm(tx('Forget the saved layout in this browser and reload?'))) { try { localStorage.removeItem('thachbi.simulator.v1'); } catch { /* ignore */ } location.reload(); } break;
     }
   }
   function download(name, text, type) {
@@ -686,7 +698,7 @@
     if (!r || r.value === null || r.value === undefined) { el.hidden = true; return; }
     const K = SIM.analysis.KINDS[r.kind];
     const v = r.kind === 'sti' ? `${fmt(r.value, 2)} · ${P.stiRating(r.value)}` : r.kind === 'air' ? `${fmt(r.value, 2)} m/s · feels ≈${fmt(P.coolingEffect(r.value), 1)} °C cooler` : `${fmt(r.value)} ${K.unit}`;
-    el.innerHTML = `<strong>${v}</strong><small>${esc(K.label)} · axis ${esc(SIM.axisName(r.x))}, ${fmt(r.z, 1)} m</small>`;
+    el.innerHTML = `<strong>${v}</strong><small>${esc(tx(K.label))} · ${tx('axis')} ${esc(SIM.axisName(r.x))}, ${fmt(r.z, 1)} m</small>`;
     el.style.left = (r.clientX + 14) + 'px'; el.style.top = (r.clientY + 14) + 'px';
     el.hidden = false;
   }
@@ -704,22 +716,22 @@
     const floorLight = Number.isFinite(v.floorLux);
     const lux = floorLight ? v.floorLux : v.lux;
     const power = SIM.powerSummary();
-    const scope = local ? 'At your position' : 'Church average · seating';
+    const scope = local ? tx('At your position') : tx('Church average · seating');
     const cell = (key, label, value, unit, title, ok) => `<div class="sim-stat${ok === false ? ' bad' : ''}" data-stat="${key}" title="${esc(title)}"><div><b>${value}</b><small>${unit}</small></div><span>${label}</span></div>`;
     el.hidden = false;
     $('simNoise').hidden = false;
     el.dataset.scope = local ? 'position' : 'average';
-    $('simStatsScope').textContent = `${scope} · ${!local && SIM.analysis.busy ? 'updating estimates' : 'estimates'}`;
+    $('simStatsScope').textContent = `${scope} · ${!local && SIM.analysis.busy ? tx('updating estimates') : tx('estimates')}`;
     const values =
-      cell('light', floorLight ? 'Floor light' : 'Book light', fmt(lux), 'lux', `${scope}: maintained modeled light ${floorLight ? 'on the floor' : 'on a book at 0.8 m'}; excludes daylight`, Number.isFinite(lux) ? floorLight ? lux >= 100 : kpiClass('lux', lux) === 'good' : undefined) +
-      cell('sti', 'Clarity', fmt(v.sti, 2), 'STI', `${scope}: speech intelligibility${Number.isFinite(v.sti) ? ' · ' + P.stiRating(v.sti) : ' · no speech source on'}`, Number.isFinite(v.sti) ? v.sti >= 0.6 : undefined) +
-      cell('speech', 'Speech', fmt(v.spl), 'dBA', `${scope}: speech level ${local ? `at your ear height (${fmt(p.y - SIM.floorY(p.x, p.z), 2)} m)` : 'at 1.2 m, averaged by acoustic energy'}`) +
-      cell('air', 'Air', fmt(v.air, 2), 'm/s', `${scope}: fan air speed at 0.6 m; preferred 0.3–0.8 m/s; excludes natural wind`, Number.isFinite(v.air) ? v.air >= 0.3 && v.air <= 0.8 : undefined) +
-      cell('noise', 'Noise', fmt(v.noise), 'dBA', `${scope}: ambient noise plus running fans${local ? '' : ', averaged by acoustic energy'}; preferred ≤ 40 dBA`, Number.isFinite(v.noise) ? v.noise <= 40 : undefined) +
-      cell('power', 'Equipment power', fmt(power.total / 1000, 1), 'kW', 'Estimated current load of modeled equipment, including amplifier allowances; excludes other building loads');
+      cell('light', floorLight ? tx('Floor light') : tx('Book light'), fmt(lux), 'lux', `${scope}: maintained modeled light ${floorLight ? 'on the floor' : 'on a book at 0.8 m'}; excludes daylight`, Number.isFinite(lux) ? floorLight ? lux >= 100 : kpiClass('lux', lux) === 'good' : undefined) +
+      cell('sti', tx('Clarity'), fmt(v.sti, 2), 'STI', `${scope}: speech intelligibility${Number.isFinite(v.sti) ? ' · ' + P.stiRating(v.sti) : ' · no speech source on'}`, Number.isFinite(v.sti) ? v.sti >= 0.6 : undefined) +
+      cell('speech', tx('Speech'), fmt(v.spl), 'dBA', `${scope}: speech level ${local ? `at your ear height (${fmt(p.y - SIM.floorY(p.x, p.z), 2)} m)` : 'at 1.2 m, averaged by acoustic energy'}`) +
+      cell('air', tx('Air'), fmt(v.air, 2), 'm/s', `${scope}: fan air speed at 0.6 m; preferred 0.3–0.8 m/s; excludes natural wind`, Number.isFinite(v.air) ? v.air >= 0.3 && v.air <= 0.8 : undefined) +
+      cell('noise', tx('Noise'), fmt(v.noise), 'dBA', `${scope}: ambient noise plus running fans${local ? '' : ', averaged by acoustic energy'}; preferred ≤ 40 dBA`, Number.isFinite(v.noise) ? v.noise <= 40 : undefined) +
+      cell('power', tx('Equipment power'), fmt(power.total / 1000, 1), 'kW', 'Estimated current load of modeled equipment, including amplifier allowances; excludes other building loads');
     if ($('simHereValues').innerHTML !== values) $('simHereValues').innerHTML = values;
     speechValue = v.spl;
-    const noiseText = Number.isFinite(v.noise) ? `${fmt(v.noise)} dBA` : 'Calculating';
+    const noiseText = Number.isFinite(v.noise) ? `${fmt(v.noise)} dBA` : tx('Calculating');
     $('simNoiseValue').textContent = noiseText;
     $('simNoiseValue').classList.toggle('hot', v.noise > 45);
     $('simNoiseMeter').title = `${scope}: background noise estimate, 25–85 dBA. Red begins above 45 dBA.`;
@@ -754,12 +766,12 @@
     const live = SIM.audio?.outputLevels?.();
     const el = $('simSoundMeter');
     const value = live ? live.rmsDb : speechValue;
-    const text = live ? (Number.isFinite(value) && value > -90 ? `${fmt(value, 1)} dBFS` : 'Silence') : (Number.isFinite(value) ? `${fmt(value)} dBA` : value === undefined ? 'Calculating' : 'No source on');
-    $('simSoundLabel').textContent = live ? 'Audio output' : 'Sound estimate';
+    const text = live ? (Number.isFinite(value) && value > -90 ? `${fmt(value, 1)} dBFS` : tx('Silence')) : (Number.isFinite(value) ? `${fmt(value)} dBA` : value === undefined ? tx('Calculating') : tx('No source on'));
+    $('simSoundLabel').textContent = live ? tx('Audio output') : tx('Sound estimate');
     $('simSoundValue').textContent = text;
     $('simSoundValue').classList.toggle('hot', live ? live.peakDb > -6 : value > 76);
     el.dataset.source = live ? 'output' : 'estimate';
-    el.setAttribute('aria-label', live ? 'Audio output level after headphone volume' : 'Speech level estimate');
+    el.setAttribute('aria-label', live ? tx('Audio output level after headphone volume') : tx('Speech level estimate'));
     el.title = live ? `Actual output: RMS ${text}, peak ${fmt(live.peakDb, 1)} dBFS. Red begins above −6 dBFS.` : 'Estimated speech level, 30–90 dBA. Press Play in Simulator → Sound to measure actual output.';
     setLevelMeter(el, soundSegments, value, live ? -60 : 30, live ? 0 : 90, live ? -6 : 76, text, live?.peakDb);
   }

@@ -84,10 +84,12 @@ def write_report(r, issue_date):
         ['1', 'Supply and phases', f'{n(s1["single_phase_everything_a"])} A on one phase with all sockets at their rating ({n(s2["single_phase_everything_a"])} A at 220 V / PF 0.8); '
          f'about {n(max(s1["three_phase_a"]))} A per phase on three phases. The simulator\'s 63 A main-switch graphic covers neither.',
          'Decide the supply (phases, capacity) and which loads may run together: Q01, Q08, Q42, Q43. Electrical engineer with the utility.'],
-        ['2', 'DB-1 → DB-2 feeder', f'{n(s1["db2_feeder_m"], 1)} m. With both event points on one phase: {n(feeder[25]["single_phase_with_events_percent"], 1)} % drop at 25 mm² and '
-         f'{n(feeder[50]["single_phase_with_events_percent"], 1)} % at 50 mm². On three balanced phases: {n(feeder[10]["three_phase_with_events_percent"], 1)} % at 10 mm², '
-         f'{n(feeder[16]["three_phase_with_events_percent"], 1)} % at 16 mm².',
-         'A three-phase feeder, or a separate event supply at the front. Not designed: Q42.'],
+        ['2', 'DB-1 → DB-2 feeder', f'{n(s1["db2_feeder_m"], 1)} m. With both event points on one phase: {n(s1["db2_with_events_a"], 1)} A, more than the comparison ampacity of every size up to 50 mm², '
+         f'and {n(feeder[50]["single_phase_with_events_percent"], 1)} % drop even at 50 mm². On three phases each event point stays whole on its own phase: the fullest phase carries '
+         f'{n(max(s1["db2_three_phase_a"]), 1)} A and the neutral {n(s1["db2_three_phase_neutral_a"], 1)} A, so {s1["db2_three_phase_smallest_mm2"]} mm² is the smallest comparison size '
+         f'({s2["db2_three_phase_smallest_mm2"]} mm² in S2), with {n(feeder[s1["db2_three_phase_smallest_mm2"]]["three_phase_with_events_percent"], 1)} % drop; '
+         f'every DB-2 circuit then stays within its budget from DB-1 at {s1["db2_three_phase_smallest_within_budget_mm2"]} mm².',
+         'A three-phase feeder, or a separate event supply at the front. A feeder device of the same 32 A as the event circuits would not discriminate. Not designed: Q42.'],
         ['3', 'Older cable report method', 'The route-level engine (`electrical_review.py`) predates the outlets. It adds the socket allowance as a load with the 25 % reserve and gives the '
          'event circuits a lighting-style drop share, which would print about 70 mm² for P3/P4 and "no candidate" for the feeder.',
          'Do not rebuild `output/electrical-review/` for the socket circuits until that method is revised and independently checked. This review sizes sockets by their rating.'],
@@ -95,9 +97,10 @@ def write_report(r, issue_date):
          f'S1 ampacity screen; the comparison gives {by["P1"]["cases"][0]["comparison_area_mm2"]} mm² (S1) or {by["P1"]["cases"][1]["comparison_area_mm2"]} mm² (S2). '
          f'Only {n(by["P2"]["cases"][0]["loop_allowance_ohm_type_c_at_minimum"], 2)} Ω is left for supply and board before a C16 stops tripping at once at 2.5 mm².',
          'Larger conductors, a lower rating, or one circuit per outlet pair; 30 mA residual-current protection stays essential. Q44.'],
-        ['5', 'Loudspeaker lines beside mains', f'{n(sep["audio"]["within_0_30_m"])} m of the {n(sep["audio"]["length_m"])} m of loudspeaker route lies within 0.30 m of a mains route, '
-         f'{n(sep["audio"]["within_0_05_m"])} m on the same line. Microphone lines are separate ({n(sep["mic"]["within_0_30_m"], 1)} m of {n(sep["mic"]["length_m"], 1)} m).',
-         'Separate compartments or containment, cable insulation suited to the neighbouring voltage, and the amplifier topology: AV designer and electrical engineer.'],
+        ['5', 'Loudspeaker lines beside mains', f'{n(sep["audio"]["within_0_30_m"])} m of the {n(sep["audio"]["length_m"])} m of loudspeaker route lies within 0.30 m of a mains route '
+         f'(632 m before the band change of 18 October 2026), {n(sep["audio"]["within_0_05_m"])} m on the same line. {n(sep["audio"]["within_0_30_m_wing_raceway"])} m of it is the shared covered raceway over the 9–10 wing bay. '
+         f'Microphone lines are separate ({n(sep["mic"]["within_0_30_m"], 1)} m of {n(sep["mic"]["length_m"], 1)} m).',
+         'A segregated compartment in the wing-bay raceway, separation or crossing at right angles where drops pass the band, cable insulation suited to the neighbouring voltage, and the amplifier topology: AV designer and electrical engineer.'],
         ['6', 'Life safety', f'{life["exit_signs"]} exit signs stay on in all {len(life["scene_counts"])} quick modes, including All off. ' + (
          'Their routes now leave DB-1 directly; before this review they left LC-1, the lighting-control enclosure. ' if life['source'] == ['DB1'] else f'They are fed from {", ".join(life["source"])}, not from their own way at DB-1. ')
          + 'No emergency escape luminaire is modelled.',
@@ -106,9 +109,12 @@ def write_report(r, issue_date):
          'Containment, fire performance, fixings without drilling structural timber, and no concealed joints: Q05, Q09. Fire designer and structural engineer.'],
         ['8', 'Weather and lightning', f'{open_points} wired points are open to the weather and {covered_points} more are under the veranda roofs. The highest are the dome floods at +{n(highest, 2)} m on the towers.',
          'Product ingress ratings, residual-current and surge protection, and coordination with the lightning-protection design: Q09.'],
-        ['9', 'Exhaust circuit V1', f'{by["V1"]["points"]} fans, {n(by["V1"]["connected_w"])} W and {n(by["V1"]["longest_path_m"], 1)} m on one circuit: {n(by["V1"]["cases"][0]["loading_percent"])} % of a 10 A breaker in S1, '
-         f'and a {by["V1"]["cases"][1]["comparison_breaker_a"]} A breaker with {by["V1"]["cases"][1]["comparison_area_mm2"]} mm² in the hotter, more bunched S2 case.',
-         'Split into front gable, wing gables and service room. This also allows ventilation by zone.'],
+        ['9', 'Exhaust circuits V1–V3', 'Split on 18 October 2026: the nine fans were one circuit of 1,530 W and 86.0 m, at 74 % of a 10 A breaker in S1 and needing 10 mm² in S2. Now '
+         + '; '.join(f'{c} {n(by[c]["points"])} fan{"s" if by[c]["points"] != 1 else ""}, {n(by[c]["connected_w"])} W, {n(by[c]["longest_path_m"], 1)} m' for c in ('V1', 'V2', 'V3')) + '. '
+         + ('Each passes at ' + ' and '.join(sorted({f'{k["comparison_breaker_a"]} A with {k["comparison_area_mm2"]} mm²' for c in ('V1', 'V2', 'V3') for k in by[c]['cases']})) + ' in S1 and S2.'
+            if len({(k['comparison_breaker_a'], k['comparison_area_mm2']) for c in ('V1', 'V2', 'V3') for k in by[c]['cases']}) == 1 else
+            ' '.join(f'{c}: {k["comparison_breaker_a"]} A with {k["comparison_area_mm2"]} mm² in {k["case_id"][:2]}.' for c in ('V1', 'V2', 'V3') for k in by[c]['cases'])),
+         'Done in the model: front gable V1, wing gables V2, service room V3, each with its own speed, so ventilation can run by zone. Breakers, cables and FC-1 channels are comparison screens for the electrical engineer.'],
         ['10', 'Fans over people', f'{len(ceiling)} ceiling fans hang on {n(ceiling[0]["drop_from_anchor_m"], 2)} m rods with the blades {n(min(f["lowest_moving_part_above_floor_m"] for f in ceiling), 2)} m above the floor. '
          f'The lowest wall or exhaust fan is {n(min(f["lowest_moving_part_above_floor_m"] for f in other_fans), 2)} m above its floor.',
          'Blade heights pass the 2.3 m screen. Rod, bracket, anti-sway restraint and secondary retention are a structural hold.'],
@@ -184,11 +190,24 @@ def write_report(r, issue_date):
     w('')
     w(f'DB-2 carries {n(s1["db2_fixed_planning_a"], 1)} A of fixed equipment (with reserve) and {n(s1["event_socket_rating_a"])} A of event rating. Voltage drop on the {n(s1["db2_feeder_m"], 1)} m feeder, case S1:')
     w('')
-    w(table(['Feeder mm²', 'Comparison ampacity (A)', 'One phase, fixed only (%)', 'One phase, with events (%)', 'Three phases, with events (%)'],
-            [[f['area_mm2'], n(f['ampacity_a'], 1), n(f['single_phase_fixed_percent'], 2), n(f['single_phase_with_events_percent'], 2), n(f['three_phase_with_events_percent'], 2)] for f in s1['db2_feeder']]))
+    ok = lambda f, k: '' if f[k] else ' ✗'
+    worst = lambda f: max(f['three_phase_db1_to_load'], key=lambda t: (t['total_percent'] or 0) / t['budget_percent'])
+    w(table(['Feeder mm²', 'Comparison ampacity (A)', 'One phase, fixed only (%)', 'One phase, with events (%)', 'Three phases, fixed only (%)', 'Three phases, with events (%)', 'Three phases: tightest DB-2 circuit, DB-1 to load'],
+            [[f['area_mm2'], n(f['ampacity_a'], 1), n(f['single_phase_fixed_percent'], 2), n(f['single_phase_with_events_percent'], 2) + ok(f, 'single_phase_with_events_ampacity_ok'),
+              n(f['three_phase_fixed_only_percent'], 2), n(f['three_phase_with_events_percent'], 2) + ok(f, 'three_phase_ampacity_ok'),
+              f'{worst(f)["circuit"]}: {n(worst(f)["total_percent"], 2)} of {n(worst(f)["budget_percent"], 0)} %' + ('' if f['three_phase_all_within_budget'] else ' ✗')] for f in s1['db2_feeder']]))
     w('')
-    w(f'On three phases the feeder carries about {n(s1["db2_with_events_a"] / 3, 1)} A per phase if the two event points and the front lighting are spread evenly. '
-      'The ampacity column uses the three-loaded-conductor table, so it applies to that case directly.')
+    w('✗: the current exceeds the comparison ampacity of that size. '
+      f'On three phases the DB-2 circuits keep the phases of the allocation above: {", ".join(f"{c} {s1['three_phase_allocation'][c]}" for c in sorted(s1['three_phase_allocation']) if by[c]['board'] == 'DB2')}. '
+      'Each circuit is single phase and stays whole on its phase, so a 32 A event point is never shared out. With events the phases carry '
+      f'{" / ".join(n(x, 1) for x in s1["db2_three_phase_a"])} A and the neutral {n(s1["db2_three_phase_neutral_a"], 1)} A; without them {" / ".join(n(x, 1) for x in s1["db2_three_phase_fixed_only_a"])} A '
+      f'and {n(s1["db2_three_phase_fixed_only_neutral_a"], 1)} A. The drop of each phase uses its own current plus the neutral current (phasors at equal power factor), over one length. '
+      'The ampacity column uses the three-loaded-conductor table, so it applies to the three-phase case directly; for one phase it is a conservative comparison. '
+      'The circuit screens above keep 1 % of each budget for the feeder; the last column replaces that share with the real feeder drop on the circuit\'s own phase, in the worse of the '
+      'two states (an event point only with events), and adds the circuit\'s own drop at its comparison size. '
+      f'On three phases {s1["db2_three_phase_smallest_within_budget_mm2"]} mm² is the smallest feeder that passes both the ampacity and every DB-2 circuit\'s budget in case S1 '
+      f'({s2["db2_three_phase_smallest_within_budget_mm2"]} mm² in S2). '
+      'The phases were chosen by trying every allocation of the DB-2 circuits for the least worst drop; it is one example for the designer, not a board schedule.')
     w('')
     w('## 5. Safety screens from the model geometry')
     w('')
@@ -206,8 +225,12 @@ def write_report(r, issue_date):
             [[x['label'], x['open_to_weather'], x['covered_exterior'], x['interior'], n(x['highest_point_m'], 2)] for x in r['exterior_circuits']]))
     w('')
     w(f'**Signal lines and mains.** Sampled every 0.25 m along each signal route: loudspeaker routes {n(sep["audio"]["within_0_30_m"])} m of {n(sep["audio"]["length_m"])} m within 0.30 m of a mains route '
-      f'({n(sep["audio"]["within_0_05_m"])} m within 0.05 m); microphone routes {n(sep["mic"]["within_0_30_m"], 2)} m of {n(sep["mic"]["length_m"], 1)} m. The loudspeaker trunks follow the same wall bands as the lighting '
-      'trunks and the DB-2 feeder. The microphone lines keep their own route under the floor.')
+      f'({n(sep["audio"]["within_0_05_m"])} m within 0.05 m); microphone routes {n(sep["mic"]["within_0_30_m"], 2)} m of {n(sep["mic"]["length_m"], 1)} m. '
+      'Since 18 October 2026 the loudspeaker bands step down from +5.55 m while the mains bands step up from +5.90 m, so along the walls they stay at least 0.35 m apart, '
+      'and the loudspeaker home runs rise on the H side of the niche instead of beside the boards\' riser. Before that, 632 m were within 0.30 m and 262 m on the same line. '
+      f'What remains: {n(sep["audio"]["within_0_30_m_wing_raceway"])} m in the covered raceway over the 9–10 wing bay, which every wall-band trunk follows on one line, '
+      f'and {n(sep["audio"]["drop_within_0_30_m"])} m of loudspeaker drops plus {n(sep["audio"]["trunk_within_0_30_m"] - sep["audio"]["within_0_30_m_wing_raceway"])} m of trunk elsewhere, '
+      'mostly where the drops of nearby fittings cross the band or share a pier. The microphone lines keep their own route under the floor.')
     w('')
     w('**Where the mains routes run** (model centre lines):')
     w('')

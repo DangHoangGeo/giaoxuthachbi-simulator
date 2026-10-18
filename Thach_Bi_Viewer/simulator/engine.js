@@ -53,7 +53,7 @@
     F2: { label: 'F2 · Wall fans', cat: 'fan', board: 'DB1' },
     F3: { label: 'F3 · Portable fans', cat: 'fan', board: 'DB1' },
     F4: { label: 'F4 · Entrance circulators (trial)', cat: 'fan', board: 'DB2' },
-    V1: { label: 'V1 · Exhaust ventilation', cat: 'fan', board: 'DB1' },
+    V1: { label: 'V1 · Exhaust · front gable', cat: 'fan', board: 'DB1' },
     A1: { label: 'A1 · Main & delay loudspeakers', cat: 'speaker', board: 'DB1' },
     A2: { label: 'A2 · Veranda fill', cat: 'speaker', board: 'DB1' },
     A3: { label: 'A3 · Courtyard', cat: 'speaker', board: 'DB1' },
@@ -70,8 +70,16 @@
     P2: { label: 'P2 · Sockets · side H (sanctuary + nave)', cat: 'power', board: 'DB1', area: 'Socket outlets', outlet: { ratingA: 16, rcdmA: 30 } },
     P3: { label: 'P3 · Event power · tower B', cat: 'power', board: 'DB2', area: 'Event power', outlet: { ratingA: 32, rcdmA: 30 } },
     P4: { label: 'P4 · Event power · tower H', cat: 'power', board: 'DB2', area: 'Event power', outlet: { ratingA: 32, rcdmA: 30 } },
-    L10: { label: 'L10 · Façade statues & candles', cat: 'light', board: 'DB2', area: 'Towers & façade' }
+    L10: { label: 'L10 · Façade statues & candles', cat: 'light', board: 'DB2', area: 'Towers & façade' },
+    // Exhaust ventilation split from V1 (18 October 2026), appended so existing
+    // trunk heights do not move: V1 keeps the front gable, V2 the two wing
+    // gables, V3 the service room. Each zone can then run on its own.
+    V2: { label: 'V2 · Exhaust · wing gables', cat: 'fan', board: 'DB1', splitFrom: 'V1' },
+    V3: { label: 'V3 · Exhaust · service room', cat: 'fan', board: 'DB1', splitFrom: 'V1' }
   };
+  // Display order: a circuit split from another is listed right after it.
+  const CIRCUIT_ORDER = Object.keys(CIRCUITS).filter(c => !CIRCUITS[c].splitFrom)
+    .flatMap(c => [c, ...Object.keys(CIRCUITS).filter(k => CIRCUITS[k].splitFrom === c)]);
   // Two boards. DB-1 in the service room behind the altar feeds everything
   // inside; DB-2, a small sub-board just inside the main doors, is fed by one
   // cable from DB-1 and switches the circuits at the front of the church, so
@@ -98,7 +106,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -119,7 +127,7 @@
 
   const SIM = window.CHURCH_SIMULATOR = {
     visitOnly: VISIT_ONLY,
-    prepare, bindBatches, start, frame, CIRCUITS, BOARDS, QUALITY, state, fixtures,
+    prepare, bindBatches, start, frame, CIRCUITS, CIRCUIT_ORDER, BOARDS, QUALITY, state, fixtures,
     get ready() { return ready; }, get church() { return church; }, get THREE() { return T; },
     on(evt, fn) { (handlers[evt] ||= new Set()).add(fn); return () => handlers[evt].delete(fn); },
     emit, batch, item: id => state.items.find(i => i.id === id), typeOf: it => CAT.byId[it.type],
@@ -1775,16 +1783,16 @@
 
   /* ---------------------------------------------------------------- scenes */
   const SCENES = {
-    'Full service · evening': { L10: 1, L9: 1, L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1, F5: 1 },
-    'Weekday Mass': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1, F5: 1 },
-    'Prayer & adoration': { L10: 0.6, L9: 1, L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, A5: 0, DECOR: 1, F5: 1 },
-    'Christmas & festivals': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 2, A5: 0, DECOR: 1, F5: 1 },
+    'Full service · evening': { L10: 1, L9: 1, L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1 },
+    'Weekday Mass': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1 },
+    'Prayer & adoration': { L10: 0.6, L9: 1, L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1 },
+    'Christmas & festivals': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1 },
     // Courtyard horns on: for crowds outside. Inside, their sound comes back
     // through the open windows late enough to blur speech, so use only then.
-    'Festival · courtyard overflow': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, A5: 1, DECOR: 1, F5: 1 },
-    'Cleaning': { L10: 0, L9: 0, L8: 1, L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 2, A5: 0, DECOR: 1, F5: 1 },
-    'Night security': { L10: 0, L9: 1, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1, F5: 0 },
-    'All off': { L10: 0, L9: 0, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, A5: 0, DECOR: 1, F5: 0 }
+    'Festival · courtyard overflow': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 1, DECOR: 1, F5: 1 },
+    'Cleaning': { L10: 0, L9: 0, L8: 1, L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1 },
+    'Night security': { L10: 0, L9: 1, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0 },
+    'All off': { L10: 0, L9: 0, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0 }
   };
   SIM.SCENES = SCENES;
   // Reading light each scene is meant to give on the books (lux, maintained).
@@ -2376,7 +2384,8 @@
       ['wingArtRevision', D.wingArtRevision, '.before-wing-art-review', D.upgradeWingArt],
       ['naveFanRevision', D.naveFanRevision, '.before-nave-fans-review', D.upgradeNaveFans],
       ['outletRevision', D.outletRevision, '.before-socket-outlets', D.upgradeOutlets],
-      ['facadeStatueRevision', D.facadeStatueRevision, '.before-facade-statues', D.upgradeFacadeStatues]
+      ['facadeStatueRevision', D.facadeStatueRevision, '.before-facade-statues', D.upgradeFacadeStatues],
+      ['exhaustSplitRevision', D.exhaustSplitRevision, '.before-exhaust-split', D.upgradeExhaustSplit]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;
