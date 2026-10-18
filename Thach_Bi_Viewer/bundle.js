@@ -1,4 +1,7 @@
 (() => {
+  // Display text for the viewer language (i18n.js): English source, Vietnamese when chosen.
+  const uiText = text => (window.THACH_I18N ? window.THACH_I18N.t(text) : text);
+  const uiNumber = (value, digits) => (window.THACH_I18N ? window.THACH_I18N.number(value, digits) : value.toFixed(digits));
   var r_ = Object.defineProperty;
   var o_ = (s, e) => {
     for (var t in e) r_(s, t, { get: e[t], enumerable: !0 });
@@ -39291,8 +39294,8 @@ void main() {
         const twoBlocks = w.seatingState().blocks === 2;
         const inner = key === "seat-central";
         j[key].pos = twoBlocks ? [21.15, 1.15, inner ? -1.7 : -5.55] : [21.225, 1.15, inner ? -2.15 : -5.985];
-        j[key].title = `Seated view · ${inner ? "near centre aisle" : "near side aisle"}`;
-        j[key].note = `${twoBlocks ? "Long bench" : "Short bench"}, 1.15 m seated eye height; source columns retained.`;
+        j[key].title = uiText(inner ? "Seated view · near centre aisle" : "Seated view · near side aisle");
+        j[key].note = uiText(twoBlocks ? "Long bench, 1.15 m seated eye height; source columns retained." : "Short bench, 1.15 m seated eye height; source columns retained.");
         nt(key, {mode:"explore", instant:true});
         x("settingsPanel").hidden = true;
         x("settingsButton").setAttribute("aria-expanded", "false");
@@ -39528,9 +39531,17 @@ void main() {
         r.updateProjectionMatrix(),
         n.render(i, b));
     }
+    // The current caption is kept in English so that it can be shown again in the other language.
+    let viewCaptionSource = null, detailSource = null;
     function Ge(V, _e) {
-      ((x("viewTitle").textContent = V), (x("viewCaption").textContent = _e));
+      viewCaptionSource = [V, _e];
+      ((x("viewTitle").textContent = uiText(V)), (x("viewCaption").textContent = uiText(_e)));
     }
+    window.THACH_I18N?.onChange(() => {
+      if (viewCaptionSource) Ge(...viewCaptionSource);
+      x("modeHint").textContent = uiText(S === "walk" ? "Drag the scene to look around \xB7 W A S D / arrows to walk" : "Drag to orbit \xB7 W A S D / arrows to move \xB7 Q E down / up \xB7 scroll to zoom");
+      if (detailSource && !x("inspector").hidden) be(detailSource, false);
+    });
     function B(V, _e = {}) {
       if (((V = V === "walk" ? "walk" : "explore"), V === S && !_e.force))
         return S;
@@ -39551,8 +39562,8 @@ void main() {
         (x("exitWalk").hidden = S !== "walk"),
         (x("modeHint").textContent =
           S === "walk"
-            ? "Drag the scene to look around \xB7 W A S D / arrows to walk"
-            : "Drag to orbit \xB7 W A S D / arrows to move \xB7 Q E down / up \xB7 scroll to zoom"),
+            ? uiText("Drag the scene to look around \xB7 W A S D / arrows to walk")
+            : uiText("Drag to orbit \xB7 W A S D / arrows to move \xB7 Q E down / up \xB7 scroll to zoom")),
         S === "walk")
       ) {
         if (_e.destination !== !1) {
@@ -39564,7 +39575,7 @@ void main() {
           M(!0),
           Ge(
             j[y]?.walk ? j[y].title : j.nave.title,
-            `Eye height ${O.eyeHeight.toFixed(2)} m \xB7 move along the clear aisles`,
+            `${uiText("Eye height")} ${uiNumber(O.eyeHeight, 2)} m \xB7 ${uiText("move along the clear aisles")}`,
           ));
       } else
         (o.up.set(0, 1, 0),
@@ -39733,11 +39744,12 @@ void main() {
     }
     function be(V, _e = !0) {
       let ge = me[V];
+      ge && (detailSource = V);
       ge &&
-        ((x("detailTitle").textContent = ge.title),
-        (x("detailFact").textContent = ge.fact),
-        (x("detailSource").textContent = ge.source),
-        (x("detailNote").textContent = ge.note),
+        ((x("detailTitle").textContent = uiText(ge.title)),
+        (x("detailFact").textContent = uiText(ge.fact)),
+        (x("detailSource").textContent = uiText(ge.source)),
+        (x("detailNote").textContent = uiText(ge.note)),
         (x("inspector").hidden = !1),
         _e &&
           nt(V === "front" ? "front-detail" : V, {
@@ -39762,16 +39774,16 @@ void main() {
       if (!ge) return;
       let Qe = ge.object;
       (Qe.userData?.source || Qe.userData?.status) &&
-        ((x("detailTitle").textContent = Qe.name || "Architectural part"),
+        ((x("detailTitle").textContent = Qe.name || uiText("Architectural part")),
         (x("detailFact").textContent =
-          Qe.userData?.status || "Schematic profile"),
+          Qe.userData?.status || uiText("Schematic profile")),
         (x("detailSource").textContent =
           Qe.userData?.source ||
           (String(Qe.userData?.status).includes("CONCEPT")
-            ? "Proposed interior fit-out; not specified in the architectural drawings."
-            : "Source hierarchy: supplied architectural PDFs")),
+            ? uiText("Proposed interior fit-out; not specified in the architectural drawings.")
+            : uiText("Source hierarchy: supplied architectural PDFs"))),
         (x("detailNote").textContent =
-          "Detailed curves, thicknesses, or finishes without a source dimension remain illustrative. Open the workbook for the dimension record."),
+          uiText("Detailed curves, thicknesses, or finishes without a source dimension remain illustrative. Open the workbook for the dimension record.")),
         (x("inspector").hidden = !1));
     }
     function he(V, _e) {
@@ -39782,7 +39794,7 @@ void main() {
       return !1;
     }
     function Re(V) {
-      ((x("toast").textContent = V),
+      ((x("toast").textContent = uiText(V)),
         x("toast").classList.add("visible"),
         clearTimeout(Re.timer),
         (Re.timer = setTimeout(
@@ -39805,7 +39817,7 @@ void main() {
           (y = "custom"),
           (C = "cinematic"),
           R(),
-          (x("tourButton").textContent = "\u25A0 Stop cinematic tour"),
+          (x("tourButton").textContent = uiText("\u25A0 Stop cinematic tour")),
           x("tourButton").classList.add("active"),
           !0
         );
@@ -39813,7 +39825,7 @@ void main() {
         nt("courtyard", { mode: "walk", instant: !0 }),
         (O.pitch = 0.15),
         (J = { targetX: 36.5, speed: 1.8 }),
-        (x("tourButton").textContent = "Stop guided walk"),
+        (x("tourButton").textContent = uiText("Stop guided walk")),
         x("tourButton").classList.add("active"),
         Ge(
           "A walk into the church",
@@ -39826,7 +39838,7 @@ void main() {
       let V = J?.cinema;
       ((J = null),
         x("tourButton") &&
-          ((x("tourButton").textContent = "\u25B6 Cinematic tour"),
+          ((x("tourButton").textContent = uiText("\u25B6 Cinematic tour")),
           x("tourButton").classList.remove("active")),
         V && window.CHURCH_CINEMA?.stop());
     }
@@ -39858,7 +39870,7 @@ void main() {
       x("mapPosition").setAttribute("transform", `translate(${V.x} ${V.y}) rotate(${(O.yaw * 180) / Math.PI - 90})`);
       x("mapPosition").style.opacity = S === "walk" ? "1" : ".48";
       const floor = lt(O.x, O.z);
-      x("walkLocation").textContent = `${floor >= 0 ? "+" : ""}${floor.toFixed(2)} m floor · ${O.eyeHeight.toFixed(2)} m eye height`;
+      x("walkLocation").textContent = `${floor >= 0 ? "+" : ""}${uiNumber(floor, 2)} m ${uiText("floor")} · ${uiNumber(O.eyeHeight, 2)} m ${uiText("eye height")}`;
     }
     let ct = x("minimap");
     ct.addEventListener("click", (V) => {
@@ -39893,17 +39905,17 @@ void main() {
         Qe.className = "reference-card";
         let ot = document.createElement("img");
         ((ot.src = ge.url || ge.src),
-          (ot.alt = ge.title || "Church reference"),
+          (ot.alt = uiText(ge.title || "Church reference")),
           (ot.loading = "lazy"));
         let At = document.createElement("strong");
-        At.textContent = ge.title || "Reference";
+        At.textContent = uiText(ge.title || "Reference");
         let on = document.createElement("span");
-        ((on.textContent = ge.type || "Visual proposal"),
+        ((on.textContent = uiText(ge.type || "Visual proposal")),
           Qe.append(ot, At, on),
           Qe.addEventListener("click", () => {
             ((x("referenceLarge").src = ge.url || ge.src),
               (x("referenceLarge").alt = ot.alt),
-              (x("referenceLargeTitle").textContent = ge.title || "Reference"),
+              (x("referenceLargeTitle").textContent = uiText(ge.title || "Reference")),
               x("referenceLightbox").showModal());
           }),
           _e.append(Qe));
@@ -40069,7 +40081,7 @@ void main() {
         x("mapToggle").setAttribute("aria-expanded", "false")));
     for (let V of c.assumptions) {
       let _e = document.createElement("li");
-      ((_e.textContent = V), x("assumptions").append(_e));
+      ((_e.textContent = uiText(V)), x("assumptions").append(_e));
     }
     (x("captureButton").addEventListener("click", Ee),
       x("dataButton").addEventListener("click", He),

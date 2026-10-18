@@ -40,7 +40,8 @@ export async function viewerFiles() {
     if (name === "OPEN_CHURCH.html") {
       // The website always opens the viewer as a visit: no design simulator.
       const html = body.toString("utf8");
-      const marked = html.replace('<html lang="en">', '<html lang="en" class="visit-only">');
+      // The entry page declares its language (Vietnamese by default); keep it and add the class.
+      const marked = html.replace(/<html lang="([a-z-]+)">/, '<html lang="$1" class="visit-only">');
       if (marked === html) throw new Error("Viewer entry page changed");
       body = Buffer.from(marked);
     }

@@ -25,7 +25,7 @@ The source of circuit membership and scene values is [engine.js](../../Thach_Bi_
 
 | Board / panel | Current function and groups | Physical design to develop |
 | --- | --- | --- |
-| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/F5/V1, audio groups A1–A5/MIC, seasonal X1 and indoor socket circuits P1/P2. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
+| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/F5 and exhaust V1–V3, audio groups A1–A5/MIC, seasonal X1 and indoor socket circuits P1/P2. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
 | DB-2, inside main entrance | Sub-board for L6 façade/towers, L7 festival exterior, L9 stage/central door, L10 façade statues and candles, F4 trial entrance circulators and event power P3/P4. Fed from DB-1. | Local manual control for those groups, feeder-availability indication and tower quick-mode buttons. Confirm physical enclosure size and installation details. |
 | LC-1 / lighting operator controls | Lighting groups and scene functions. | Required individual/group on/off and dimming channels; main scene keypad and any agreed local repeat controls. |
 | FC-1 / fan operator controls | Fan/exhaust groups and speed selection. | Compatible controls for the selected motors; independent/group operation and clear Off/Low/Medium/High or product-specific labels. |
@@ -117,3 +117,23 @@ L7 (festival exterior) and the event power circuits P3/P4 are further separate s
 Socket circuits are in **no** quick mode. P1/P2 (indoor, DB-1) stay as they are set, including in All off, so cleaning equipment can be used; P3/P4 (tower event points, DB-2) are OFF by default and are meant to be isolated and locked outside events. Like every DB-2 circuit they cannot be switched on while the DB-1 feeder is off, and the feeder switch restores their previous state when it is turned back on: review that restart rule for event power before any physical design.
 
 Provisional planning ratings: P1/P2 16 A and P3/P4 32 A, each with 30 mA residual-current protection. The simulator shows these ratings on the board graphics in place of its usual load-derived breaker size. They are not selected devices. Physical switch positions, labels, lockable isolation, channels, protection, discrimination with the feeder and the supply itself remain pending; see the [coordinated record](../engineering/outlets-and-facade-statues.md) and questions Q42–Q46. These states are comparison inputs, not an approved operating policy.
+
+## Exhaust ventilation by zone · 18 October 2026
+
+The walk-round [safety review](safety-efficiency-review.md) (finding 9) found all nine exhaust fans on one circuit V1. They are now three circuits through **DB-1 → FC-1**, each with its own switch on **Controls → DB-1 · Fans** and its own speed on **Controls → Fans**:
+
+| Circuit | Operator label | Content |
+| --- | --- | --- |
+| V1 | Exhaust · front gable | F252–F255, four fans high in the front gable |
+| V2 | Exhaust · wing gables | F256–F259, two fans in the end gable of each 9–10 wing |
+| V3 | Exhaust · service room | F260, one fan over the service room |
+
+V1 keeps its ID. V2 and V3 are appended to the circuit list, so the band heights of the other mains circuits do not move; the web app lists them next to V1. Every built-in mode gives the three circuits the value V1 had, so no mode changes what runs:
+
+| Built-in mode | V1 | V2 | V3 |
+| --- | --- | --- | --- |
+| Full service · evening / Weekday Mass / Prayer & adoration | Low (1) | Low (1) | Low (1) |
+| Christmas & festivals / Festival · courtyard overflow / Cleaning | Normal (2) | Normal (2) | Normal (2) |
+| Night security / All off | OFF | OFF | OFF |
+
+A mode that runs only some zones, for example the service room alone outside services, is now possible but is not proposed: it needs the ventilation and heat study (no AC brief) first. Saved layouts change once (`exhaustSplitRevision` `2026-10-18-exhaust-split-1`, backup `thachbi.simulator.v1.before-exhaust-split`): only the recommended wing-gable and service-room fans still on V1 move to V2/V3. A fan the user put on another circuit, a deleted fan and positions, speeds and switching are kept; exhaust fans the user added stay on V1. Custom scenes store each item's own state and are unaffected. The new breaker sizes are the simulator's comparison graphics; FC-1 channels, speed controls, protection and cables remain for the electrical engineer.

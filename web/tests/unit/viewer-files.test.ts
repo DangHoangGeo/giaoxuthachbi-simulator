@@ -22,7 +22,7 @@ describe("published viewer copy", () => {
         expect(file.body.toString("utf8")).toBe(
           source
             .toString("utf8")
-            .replace('<html lang="en">', '<html lang="en" class="visit-only">'),
+            .replace('<html lang="vi">', '<html lang="vi" class="visit-only">'),
         );
         expect(file.body.toString("utf8")).toContain('class="visit-only"');
       } else expect(file.body.equals(source)).toBe(true);
