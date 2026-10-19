@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-19T08:15:40.780Z",
+  "savedAt": "2026-10-19T08:50:48.752Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -49,6 +49,7 @@
     "facadeStatueRevision": "2026-10-09-facade-statues-3-concealed-light-candles",
     "exhaustSplitRevision": "2026-10-18-exhaust-split-1",
     "hiddenFittingsRevision": "2026-10-19-hidden-fittings-1",
+    "beamAccentFinishRevision": "2026-10-19-beam-accent-finish-1",
     "eveningExposureRevision": "2026-10-09-evening-160"
   },
   "customScenes": [],
@@ -2257,7 +2258,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 4500,
       "beam": 24,
       "shadow": true
@@ -2280,7 +2283,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 4500,
       "beam": 24,
       "shadow": true
@@ -2303,7 +2308,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 1900,
       "beam": 15,
       "shadow": true
@@ -2326,7 +2333,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 4000,
       "shadow": false
     },
@@ -2348,7 +2357,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 4000,
       "shadow": false
     },
@@ -2370,7 +2381,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 1400,
       "beam": 15,
       "shadow": false
@@ -2393,7 +2406,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 3500,
       "beam": 50,
       "shadow": false
@@ -2416,7 +2431,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 3500,
       "beam": 50,
       "shadow": false
@@ -2438,7 +2455,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "bronze"
+      },
       "lumens": 700,
       "beam": 24,
       "shadow": false
@@ -2460,7 +2479,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 650,
       "beam": 36,
       "shadow": false
@@ -2482,7 +2503,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 1300,
       "shadow": false
     },
@@ -2524,7 +2547,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "bronze"
+      },
       "lumens": 700,
       "beam": 24,
       "shadow": false
@@ -2546,7 +2571,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 650,
       "beam": 36,
       "shadow": false
@@ -2568,7 +2595,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 1300,
       "shadow": false
     },
@@ -2610,7 +2639,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "bronze"
+      },
       "lumens": 300,
       "beam": 10,
       "shadow": false
@@ -2633,7 +2664,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 220,
       "beam": 12,
       "shadow": false
@@ -2656,7 +2689,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2400,
       "beam": 50,
       "shadow": false
@@ -2679,7 +2714,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 220,
       "beam": 12,
       "shadow": false
@@ -2702,7 +2739,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2400,
       "beam": 50,
       "shadow": false
@@ -4180,7 +4219,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 2500,
       "beam": 50,
       "shadow": false
@@ -4202,7 +4243,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 2500,
       "beam": 50,
       "shadow": false
@@ -4224,7 +4267,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 2500,
       "beam": 50,
       "shadow": false
@@ -4246,7 +4291,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 3000,
       "beam": 55,
       "shadow": false
@@ -4268,7 +4315,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 3000,
       "beam": 55,
       "shadow": false
@@ -4338,7 +4387,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 2500,
       "beam": 50,
       "shadow": false
@@ -4360,7 +4411,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 2500,
       "beam": 50,
       "shadow": false
@@ -4382,7 +4435,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 2500,
       "beam": 50,
       "shadow": false
@@ -4404,7 +4459,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 3000,
       "beam": 55,
       "shadow": false
@@ -4426,7 +4483,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "black"
+      },
       "lumens": 3000,
       "beam": 55,
       "shadow": false

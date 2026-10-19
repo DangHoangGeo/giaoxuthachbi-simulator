@@ -24,6 +24,19 @@ This follows the owner's earlier direction for decorative and statue light (9 Oc
 - **Cable.** The lead runs over the beam as before and drops down the sanctuary face in the finish-matched removable cover to the bracket plate. No drilling or notching of the timber is assumed.
 - The **reference frame** comparison (no low tie beam) shows these heads where the drawn beams would be; they are drawn for the as-drawn frame only.
 
+### 1.1 Sanctuary accent heads on the same beams (follow-up, 19 October 2026)
+
+The twelve L3 accent heads that hang from the axis-9 tie and side beams were left black (projectors) and bronze (spotlights) above, so the last tie showed black heads beside the red reading lights. They now take the same beam lacquer. **Finish only**: type, body, place, aim, beam, output and circuit are unchanged, and the light, sound, air and electrical results are identical (`verify_simulator.cjs --report --estimates` gives the same figures as section 5; only the number of cached fitting prototypes grows by two). This is a proposed follow-up of the owner's 19 October request for the reading lights; the owner has not yet confirmed it for these accent heads.
+
+| Records | Type | Fittings | Finish |
+| --- | --- | --- | --- |
+| L98–L105 | `projector24`, `spot15`, `projector36` | Altar key lights B/H, ambo key light, sanctuary step fills B/H, presider chair light, sanctuary frame washes B/H, under the axis-9 tie | Black / bronze → beam lacquer |
+| L115–L118 | `spot15`, `projector36` | Statue accents and shrine washes B/H, under the axis-9 side beams | Bronze / black → beam lacquer |
+
+- `projector24`, `projector36` and `spot15` gain a **Finish** setting (black or bronze as before, or *Beam timber*); the timber finish draws with the model's own beam material, follows **Settings → Structural timber tone**, and the pendant stem and canopy take the same lacquer. Every other head of these types keeps its metal finish, including the chamber heads behind the frame (crucifix, reredos, tabernacle) and the held wing projectors.
+- Saved layouts: one-time revision `beamAccentFinishRevision = 2026-10-19-beam-accent-finish-1` (backup `.before-beam-accent-finish`). It changes only the finish of these twelve heads where each is still the same type at its default place and aim and still in its metal finish; a moved, re-aimed, re-typed or deleted head stays as the user left it. The pre-review wing comparison treats the new default black finish as untouched.
+- Open, as for the reading heads (Q50): a powder-coat or lacquer match to a real sample, lens glare, and heat on a dark finish at the 22–50 W heads. The bronze roof uplight on top of the tie is unchanged. Evidence: [review/beam-accent-finish-2026-10-19](../../review/beam-accent-finish-2026-10-19/README.md).
+
 ## 2. Tower and façade lights on the cornice ledges
 
 The black floods on 0.5 m arms (18 tower washes) and the black stand floods on the inner tower cornices (10 façade and stage floods) are replaced by fittings in the model's own cornice-moulding finish:

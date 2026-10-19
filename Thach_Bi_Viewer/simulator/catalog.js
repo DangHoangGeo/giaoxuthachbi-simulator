@@ -179,6 +179,10 @@
       candleLamp(k, 0.24, 0.06, side * 0.16, 0.95);
     }
   }
+  // A projector hung from the timber beams may take the beam lacquer instead of its metal
+  // finish (19 October 2026: no black heads beside the red reading lights on the axis-9 tie).
+  // Finish only: the body, optic and emitter are the same.
+  const projectorFinish = (params, metal) => params?.finish === 'timber' ? 'beamTimber' : metal;
   function buildProjector(k, r = 0.075, len = 0.24, finish = 'black', yoke = true, mountUp = false) {
     const sign = mountUp ? 1 : -1;
     k.box(0.14, 0.022, 0.14, finish, { p: [0, sign * 0.011, 0] });
@@ -905,10 +909,12 @@
       light: { lumens: 940, watts: 9, cct: 2700, cri: 90, emitters: [{ kind: 'point', pos: [0.24, 0.2, 0] }] }, build: buildSconce },
     { id: 'projector24', cat: LIGHT, family: 'Task & accent', name: 'LED projector · narrow 24°', mounts: ['pendant', 'wall'], aim: true, defaultTilt: -90, defaultDrop: 0, glow: 'lens', circuit: 'L1',
       desc: '6 000 lm, 3000 K CRI 90, 24° beam, 50 W. Long throws from beams.',
-      light: { lumens: 6000, watts: 50, cct: 3000, cri: 90, beam: 24, field: 40, optics: [15, 24, 36, 50], emitters: [{ kind: 'spot', head: true, pos: [0.17, 0, 0] }] }, build: k => buildProjector(k) },
+      params: { finish: { label: 'Finish', options: { black: 'Black', timber: 'Beam timber (follows the timber tone)' }, value: 'black' } },
+      light: { lumens: 6000, watts: 50, cct: 3000, cri: 90, beam: 24, field: 40, optics: [15, 24, 36, 50], emitters: [{ kind: 'spot', head: true, pos: [0.17, 0, 0] }] }, build: (k, { params } = {}) => buildProjector(k, 0.075, 0.24, projectorFinish(params, 'black')) },
     { id: 'projector36', cat: LIGHT, family: 'Task & accent', name: 'LED projector · medium 36°', mounts: ['pendant', 'wall'], aim: true, defaultTilt: -90, defaultDrop: 0, glow: 'lens', circuit: 'L1',
       desc: '6 000 lm, 3000 K CRI 90, 36° beam, 50 W. Reading light from the tie beams.',
-      light: { lumens: 6000, watts: 50, cct: 3000, cri: 90, beam: 36, field: 58, optics: [15, 24, 36, 50], emitters: [{ kind: 'spot', head: true, pos: [0.17, 0, 0] }] }, build: k => buildProjector(k) },
+      params: { finish: { label: 'Finish', options: { black: 'Black', timber: 'Beam timber (follows the timber tone)' }, value: 'black' } },
+      light: { lumens: 6000, watts: 50, cct: 3000, cri: 90, beam: 36, field: 58, optics: [15, 24, 36, 50], emitters: [{ kind: 'spot', head: true, pos: [0.17, 0, 0] }] }, build: (k, { params } = {}) => buildProjector(k, 0.075, 0.24, projectorFinish(params, 'black')) },
     // Owner, 19 October 2026: reading lights in the colour of the timber, tucked against the beams.
     { id: 'readingProjector', cat: LIGHT, family: 'Task & accent', name: 'Reading projector · side bracket, finish-matched', mounts: ['wall'], aim: true, defaultTilt: -82, glow: 'lens', circuit: 'L1',
       desc: 'Same 6 000 lm / 50 W category as the LED projector, compact head on a short side bracket. Fixed to the sanctuary side of a beam, the body stands beside the beam and only the glare cowl reaches the soffit. Finish: the beam lacquer (follows the timber tone) or the wall plaster. Product, bracket, fixing into the timber, glare and access pending.',
@@ -916,7 +922,8 @@
       light: { lumens: 6000, watts: 50, cct: 3000, cri: 90, beam: 36, field: 58, optics: [15, 24, 28, 36, 44, 50], emitters: [{ kind: 'spot', head: true, pos: [0.12, 0, 0] }] }, build: buildReadingProjector },
     { id: 'spot15', cat: LIGHT, family: 'Task & accent', name: 'Accent spotlight · 15°', mounts: ['pendant', 'wall', 'floor'], aim: true, defaultTilt: -45, defaultDrop: 0, glow: 'lens', circuit: 'L3', shadow: true,
       desc: '2 500 lm, 3000 K CRI 95, 15° beam, 22 W. Altar, ambo, crucifix and statues.',
-      light: { lumens: 2500, watts: 22, cct: 3000, cri: 95, beam: 15, field: 26, optics: [10, 15, 24, 36], emitters: [{ kind: 'spot', head: true, pos: [0.12, 0, 0] }] }, build: k => buildProjector(k, 0.05, 0.17, 'bronze') },
+      params: { finish: { label: 'Finish', options: { bronze: 'Bronze', timber: 'Beam timber (follows the timber tone)' }, value: 'bronze' } },
+      light: { lumens: 2500, watts: 22, cct: 3000, cri: 95, beam: 15, field: 26, optics: [10, 15, 24, 36], emitters: [{ kind: 'spot', head: true, pos: [0.12, 0, 0] }] }, build: (k, { params } = {}) => buildProjector(k, 0.05, 0.17, projectorFinish(params, 'bronze')) },
     { id: 'servicePanel', cat: LIGHT, family: 'Task & accent', name: 'Service-room LED panel · 600 × 600 mm', mounts: ['pendant'], defaultDrop: 0, glow: 'lens', circuit: 'L3',
       desc: 'Existing 600 × 600 × 30 mm panel geometry. 3000 lm / 30 W are provisional category values; confirm product.',
       light: { lumens: 3000, watts: 30, cct: 4000, cri: 80, emitters: [{ kind: 'point', pos: [0, -0.02, 0] }] },

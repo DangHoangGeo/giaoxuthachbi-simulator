@@ -606,6 +606,42 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert.deepEqual(plain(D.upgradeHiddenFittings(up, design, SIM.GEO)), plain(up), 'applying it again changes nothing');
   assert.equal(SIM.state.settings.hiddenFittingsRevision, D.hiddenFittingsRevision, 'the revision is stored in the saved settings');
 }
+// 19 October 2026: the sanctuary accent heads hung from the axis-9 tie and side beams take the
+// beam lacquer like the reading lights beside them. Finish only; a one-time change for saved layouts.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, timber = interior.materials.timber, plain = v => JSON.parse(JSON.stringify(v));
+  const names = ['Altar key light · B', 'Altar key light · H', 'Ambo key light', 'Sanctuary step fill · B', 'Sanctuary step fill · H', 'Presider chair light',
+    'Sanctuary frame wash · B', 'Sanctuary frame wash · H', 'Statue accent · B', 'Statue accent · H', 'Shrine wash · B', 'Shrine wash · H'];
+  const accents = names.map(name => SIM.state.items.find(it => it.name === name));
+  assert(accents.every(Boolean), 'every beam-hung sanctuary accent is in the design');
+  const metal = { projector24: 'black', projector36: 'black', spot15: 'bronze' };
+  for (const it of accents) {
+    assert(it.circuit === 'L3' && it.mount === 'pendant' && Object.hasOwn(metal, it.type) && it.params.finish === 'timber', 'beam lacquer on a beam-hung accent: ' + it.name);
+    const fx = SIM.fixtures.get(it.id);
+    let meshes = 0;
+    fx.root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) { meshes++; assert.equal(m.material, timber, 'the beam lacquer itself, so it follows the timber tone: ' + it.name); } });
+    assert(meshes > 0, 'accent head has a body: ' + it.name);
+  }
+  // The chamber heads behind the frame keep their metal finish; nothing else in the design changed type.
+  for (const it of SIM.state.items.filter(it => Object.hasOwn(metal, it.type) && !names.includes(it.name))) assert.equal(it.params.finish, metal[it.type], 'metal finish kept: ' + it.name);
+  // Migration: an untouched head in its old metal finish (or with no finish, from before the setting
+  // existed) takes the lacquer and keeps everything else; a moved, re-aimed or re-typed head and other equipment stay.
+  const design = D.recommended(SIM.GEO, SIM), raw = name => design.find(it => it.name === name);
+  const old = (name, o = {}) => ({ ...raw(name), params: { finish: metal[raw(name).type] }, ...o });
+  const saved = [old('Altar key light · B', { id: 'a1', on: false, dim: 0.3, lumens: 4000 }), { ...raw('Ambo key light'), id: 'a2', params: {} },
+    old('Statue accent · H', { id: 'a3', pos: [raw('Statue accent · H').pos[0], raw('Statue accent · H').pos[1], 4.1] }), old('Shrine wash · B', { id: 'a4', tilt: -30 }),
+    old('Sanctuary frame wash · H', { id: 'a5', type: 'projector24' }), old('Presider chair light', { id: 'a6', params: { finish: 'timber' } }),
+    { ...SIM.state.items.find(it => it.name === 'Tabernacle accent'), id: 'a7' }];
+  const up = D.upgradeBeamAccentFinish(saved, design), byId = id => up.find(it => it.id === id);
+  assert.equal(up.length, saved.length, 'nothing is added or removed');
+  assert(byId('a1').params.finish === 'timber' && byId('a2').params.finish === 'timber', 'untouched beam heads take the lacquer');
+  const { params: _p1, ...restBefore } = saved[0], { params: _p2, ...restAfter } = byId('a1');
+  assert.deepEqual(plain(restAfter), plain(restBefore), 'only the finish changes: place, aim, output, switch and dimmer kept');
+  for (const id of ['a3', 'a4', 'a5', 'a7']) assert.equal(byId(id), saved.find(it => it.id === id), 'a moved, re-aimed or re-typed head and the chamber heads stay as they were: ' + id);
+  assert.deepEqual(plain(byId('a6')), plain(saved[5]), 'a head already in the lacquer stays');
+  assert.deepEqual(plain(D.upgradeBeamAccentFinish(up, design)), plain(up), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.beamAccentFinishRevision, D.beamAccentFinishRevision, 'the revision is stored in the saved settings');
+}
 // Every fixture is fixed to something the model actually has: wall items need a
 // surface right behind them, pendants need structure at their anchor (fans on
 // steel spreaders and strung decorations carry their own support).

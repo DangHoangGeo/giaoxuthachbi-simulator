@@ -118,10 +118,11 @@
     // 0.32 m behind its centre. The corpus hangs inside the crucifix niche.
     const amboX = 41.3, altar = [43.95, 1.95, 0], ambo = [amboX + 0.32, 2.25, -2.62], crucifix = [sanctuary.niche.backX - 0.5, 5.1, 0];
     // Outside the frame, every head hangs from the axis-9 tie beam or side beams
-    // and points away from the congregation.
+    // and points away from the congregation. They take the beam lacquer like the
+    // reading lights beside them (19 October 2026), so the tie shows no black heads.
     const outside = (name, type, z, y, target, o) => {
       const p = [A['9'], y - 0.005, z], a = aim(p, target);
-      add({ type, name, circuit: 'L3', mount: 'pendant', pos: p, anchorY: y, ...a, mountYaw: a.yaw, ...o });
+      add({ type, name, circuit: 'L3', mount: 'pendant', pos: p, anchorY: y, ...a, mountYaw: a.yaw, params: { finish: 'timber' }, ...o });
     };
     for (const z of [-1.4, 1.4]) outside(`Altar key light · ${side(z)}`, 'projector24', z, beamY, [altar[0], altar[1], z * 0.3], { beam: 24, lumens: 4500, shadow: true });
     outside('Ambo key light', 'spot15', -3.15, beamY, ambo, { beam: 15, lumens: 1900, shadow: true });
@@ -563,6 +564,23 @@
     });
   }
 
+  // One-time finish change for saved layouts, 19 October 2026: the sanctuary accent heads
+  // hung from the axis-9 tie and side beams take the beam lacquer. Only a fitting of the
+  // same type still at its default place and aim and still in its metal finish changes, and
+  // only its finish; a moved, re-aimed, re-typed or deleted one stays as the user left it.
+  const beamAccentFinishRevision = '2026-10-19-beam-accent-finish-1';
+  const beamAccentNames = name => /^(Altar key light · [BH]|Ambo key light|Sanctuary step fill · [BH]|Presider chair light|Sanctuary frame wash · [BH]|Statue accent · [BH]|Shrine wash · [BH])$/.test(name);
+  function upgradeBeamAccentFinish(items, design) {
+    const next = new Map(design.filter(it => beamAccentNames(it.name) && it.params?.finish === 'timber').map(it => [it.name, it]));
+    const turn = (a, b) => Math.abs(((a - b) % 360 + 540) % 360 - 180);
+    return items.map(it => {
+      const raw = next.get(it.name);
+      if (!raw || it.type !== raw.type || !Array.isArray(it.pos) || it.pos.some((v, i) => Math.abs(v - raw.pos[i]) > 0.005) ||
+        turn(it.yaw ?? 0, raw.yaw) > 0.01 || Math.abs((it.tilt ?? 0) - raw.tilt) > 0.01 || ![undefined, 'black', 'bronze'].includes(it.params?.finish)) return it;
+      return { ...it, params: { ...it.params, finish: 'timber' } };
+    });
+  }
+
   const naveFanRevision = '2026-10-09-eight-wall-fans-per-side';
   const naveFanLegacyIds = ['F244', 'F245', 'F246', 'F247', 'F248', 'F249'];
   function naveFanTargets(design, code) {
@@ -717,13 +735,16 @@
       if (a && b && typeof a === 'object' && typeof b === 'object') return [...new Set([...Object.keys(a), ...Object.keys(b)])].every(k => same(a[k], b[k]));
       return a === b;
     };
+    // The pre-review projectors had no finish setting; the default black one added on
+    // 19 October 2026 still counts as untouched.
+    const unfinished = it => it?.params?.finish === 'black' ? { ...it, params: Object.fromEntries(Object.entries(it.params).filter(([k]) => k !== 'finish')) } : it;
     const replacements = new Map(), retired = new Set();
     for (const code of ['B', 'H']) {
       const sign = code === 'B' ? -1 : 1;
       const original = wingBefore.filter(it => Math.sign(it.pos[2]) === sign && (it.circuit === 'L8' || it.type === 'fanCeiling'));
       const intermediate = wingIntermediate.filter(it => Math.sign(it.pos[2]) === sign);
       const hasExtra = items.some(it => it.id.startsWith(`F-WING-${code}-`));
-      const untouched = (!hasExtra && original.every(it => same(it, items.find(raw => raw.id === it.id)))) || intermediate.every(it => same(it, items.find(raw => raw.id === it.id)));
+      const untouched = (!hasExtra && original.every(it => same(it, unfinished(items.find(raw => raw.id === it.id))))) || intermediate.every(it => same(it, items.find(raw => raw.id === it.id)));
       if (!untouched) continue;
       let targets; try { targets = wingReviewTargets(design, code); } catch { continue; }
       targets.forEach(it => replacements.set(it.id, it));
@@ -782,5 +803,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { beamAccentFinishRevision, upgradeBeamAccentFinish, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();
