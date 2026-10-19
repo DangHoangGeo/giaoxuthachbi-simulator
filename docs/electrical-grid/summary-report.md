@@ -8,11 +8,11 @@ Generated 19 October 2026 from the category registers and their matched model sn
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Lighting | 231 | 231 | 0 | 231 | 205 | 254 | 2087 |
 | Sound | 30 | 30 | 0 | 30 | 20 | 40 | 304 |
-| Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 386 |
+| Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 410 |
 | Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 54 |
 | Decoration and furnishings | 37 | 22 | 15 | 0 | 22 | 0 | 0 |
 | Distribution and controls | 11 | 11 | 0 | 6 | 4 | 14 | 105 |
-| **Total** | 359 | 344 | 15 | 317 | 283 | 373 | 2936 |
+| **Total** | 359 | 344 | 15 | 317 | 283 | 373 | 2960 |
 
 Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **10 equipment, 26 routes**.
 
@@ -38,11 +38,11 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 | --- | ---: | ---: | ---: | ---: |
 | Lighting | 3,013.648 | 3,013.648 | 0.000 | 0.000 |
 | Sound | 722.591 | 0.000 | 1,719.603 | 563.757 |
-| Fans and ventilation | 912.595 | 912.595 | 0.000 | 0.000 |
+| Fans and ventilation | 925.206 | 925.206 | 0.000 | 0.000 |
 | Exit signs | 145.936 | 145.936 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 244.983 | 244.983 | 0.000 | 0.000 |
-| **Total by length basis** | **5,039.753** | **4,317.163** | **1,719.603** | **563.757** |
+| **Total by length basis** | **5,052.364** | **4,329.774** | **1,719.603** | **563.757** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/363 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -66,8 +66,8 @@ The held wing review of 9 October 2026 retains four small brass chandeliers (L63
 
 ## Sources and refresh
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 76909d79225afb700a61e3530abc09d363cc6e053b648e6ff87757a6c3bc33f9.
-- [Electrical snapshot](electrical-systems.json), SHA-256: 5c2b7909fdbf3eab73054e0a16a6cfe55decd4f3c81b9a88867863ffd7c0fef1.
+- [Layout snapshot](equipment-layout.json), SHA-256: 5e78147eff2f4a61ae97936ba8b51920b75ba77bd982e40a1cae0206f908332c.
+- [Electrical snapshot](electrical-systems.json), SHA-256: 7a659950a4bf89cc57551f6d9714dbafa89ad76ea9820ddefb4bbc73056b5b2e.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 

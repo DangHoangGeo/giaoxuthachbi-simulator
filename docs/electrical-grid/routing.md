@@ -184,3 +184,7 @@ The [hidden-fittings revision](../engineering/hidden-fittings.md) moves 100 fitt
 - **Loudspeakers (A1).** The wall columns move 0.43 m along the wall to the pier corners; their home runs keep the separated band of 18 October.
 
 Totals after the change: 373 routes, 2 936 vertices; lighting route segments 3 016.6 m (3 046.9 m before), loudspeaker full home runs 1 719.6 m (1 716.6 m). Safety-review screens: L6 at 76 % of its comparison breaker (74 %), fixed equipment 9 285 W (9 262 W) with the brighter dome washes.
+
+## Fan hangers on the column-line beams · 19 October 2026
+
+The 12 side-aisle ceiling fans now hang under the column-line beams ([record](../engineering/fans-on-column-beams.md)). Their F1 leads use the new method `beam-hanger`: over the nave lining to a point 0.95 m from mid-span (clear of the gilded cartouche), down the beam's outer face in the removable finish-matched cover, under the soffit to the hanger and inside the downrod. `verify_concealed_routes.cjs` checks that the run beside and under the beam is covered, that no timber core is crossed and that the lead enters the downrod just under its beam; the safety review counts these routes as cable on timber. Totals: 373 routes, 2 960 vertices, fans and ventilation 925.2 m of route (912.6 m before).

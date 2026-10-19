@@ -395,7 +395,15 @@
       "sectionStatus": "VISUALIZATION_PROXY",
       "engineeringSection": null,
       "bearingDetail": null,
-      "mountsEquipment": false,
+      "mountsEquipment": true,
+      "mountedEquipment": {
+        "recorded": "2026-10-19",
+        "status": "USER CONFIRMED REQUEST · ENGINEERING HOLD",
+        "items": "12 side-aisle ceiling fans (circuit F1, 1.42 m, speed 2 default), one per member B03-D/E-03-04 to 08-09, hung from a hanger under the soffit at mid-span on a 4.53 m downrod with an anti-sway restraint. B03-D/E-09-10 carry nothing.",
+        "staticLoadKg": null,
+        "dynamicAndTorqueLoad": null,
+        "hangerDetail": null
+      },
       "inLightOrSoundAnalysis": false
     },
     "appliedOrnament": {

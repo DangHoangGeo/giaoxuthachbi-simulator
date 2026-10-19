@@ -23843,14 +23843,14 @@
         ],
         [
           7.725,
-          3.9,
+          4.2,
           -4.4
         ]
       ],
       "method": "roof-pendant",
       "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 11.286909264308505,
+      "length": 10.986909264308505,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -23884,30 +23884,67 @@
           -7.36
         ],
         [
-          12.225,
+          13.174999999999999,
           7.04,
           -7.36
         ],
         [
-          12.225,
-          9.18841304347826,
-          -4.4
+          13.174999999999999,
+          9.642047554347826,
+          -3.775
+        ],
+        [
+          13.174999999999999,
+          8.68,
+          -3.775
+        ],
+        [
+          13.174999999999999,
+          8.68,
+          -3.6
         ],
         [
           12.225,
-          9.028413043478261,
-          -4.4
+          8.68,
+          -3.6
         ],
         [
           12.225,
-          3.9,
-          -4.4
+          4.2,
+          -3.6
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [],
-      "length": 11.286909264308505,
+      "method": "beam-hanger",
+      "installation": "Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              13.174999999999999,
+              9.642047554347826,
+              -3.775
+            ],
+            [
+              13.174999999999999,
+              8.68,
+              -3.775
+            ],
+            [
+              13.174999999999999,
+              8.68,
+              -3.6
+            ],
+            [
+              12.225,
+              8.68,
+              -3.6
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 12.387819159643918,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -23941,30 +23978,67 @@
           -7.36
         ],
         [
-          16.725,
+          17.675,
           7.04,
           -7.36
         ],
         [
-          16.725,
-          9.18841304347826,
-          -4.4
+          17.675,
+          9.642047554347826,
+          -3.775
+        ],
+        [
+          17.675,
+          8.68,
+          -3.775
+        ],
+        [
+          17.675,
+          8.68,
+          -3.6
         ],
         [
           16.725,
-          9.028413043478261,
-          -4.4
+          8.68,
+          -3.6
         ],
         [
           16.725,
-          3.9,
-          -4.4
+          4.2,
+          -3.6
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [],
-      "length": 11.2769092643085,
+      "method": "beam-hanger",
+      "installation": "Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              17.675,
+              9.642047554347826,
+              -3.775
+            ],
+            [
+              17.675,
+              8.68,
+              -3.775
+            ],
+            [
+              17.675,
+              8.68,
+              -3.6
+            ],
+            [
+              16.725,
+              8.68,
+              -3.6
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 12.377819159643915,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -23998,30 +24072,67 @@
           -7.36
         ],
         [
-          21.225,
+          22.175,
           7.04,
           -7.36
         ],
         [
-          21.225,
-          9.18841304347826,
-          -4.4
+          22.175,
+          9.642047554347826,
+          -3.775
+        ],
+        [
+          22.175,
+          8.68,
+          -3.775
+        ],
+        [
+          22.175,
+          8.68,
+          -3.6
         ],
         [
           21.225,
-          9.028413043478261,
-          -4.4
+          8.68,
+          -3.6
         ],
         [
           21.225,
-          3.9,
-          -4.4
+          4.2,
+          -3.6
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [],
-      "length": 11.286909264308502,
+      "method": "beam-hanger",
+      "installation": "Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              22.175,
+              9.642047554347826,
+              -3.775
+            ],
+            [
+              22.175,
+              8.68,
+              -3.775
+            ],
+            [
+              22.175,
+              8.68,
+              -3.6
+            ],
+            [
+              21.225,
+              8.68,
+              -3.6
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 12.387819159643916,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -24055,30 +24166,67 @@
           -7.36
         ],
         [
-          25.725,
+          26.675,
           7.04,
           -7.36
         ],
         [
-          25.725,
-          9.18841304347826,
-          -4.4
+          26.675,
+          9.642047554347826,
+          -3.775
+        ],
+        [
+          26.675,
+          8.68,
+          -3.775
+        ],
+        [
+          26.675,
+          8.68,
+          -3.6
         ],
         [
           25.725,
-          9.028413043478261,
-          -4.4
+          8.68,
+          -3.6
         ],
         [
           25.725,
-          3.9,
-          -4.4
+          4.2,
+          -3.6
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [],
-      "length": 11.286909264308502,
+      "method": "beam-hanger",
+      "installation": "Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              26.675,
+              9.642047554347826,
+              -3.775
+            ],
+            [
+              26.675,
+              8.68,
+              -3.775
+            ],
+            [
+              26.675,
+              8.68,
+              -3.6
+            ],
+            [
+              25.725,
+              8.68,
+              -3.6
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 12.387819159643916,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -24112,30 +24260,67 @@
           -7.36
         ],
         [
-          30.225,
+          31.175,
           7.04,
           -7.36
         ],
         [
-          30.225,
-          9.18841304347826,
-          -4.4
+          31.175,
+          9.642047554347826,
+          -3.775
+        ],
+        [
+          31.175,
+          8.68,
+          -3.775
+        ],
+        [
+          31.175,
+          8.68,
+          -3.6
         ],
         [
           30.225,
-          9.028413043478261,
-          -4.4
+          8.68,
+          -3.6
         ],
         [
           30.225,
-          3.9,
-          -4.4
+          4.2,
+          -3.6
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [],
-      "length": 11.286909264308502,
+      "method": "beam-hanger",
+      "installation": "Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              31.175,
+              9.642047554347826,
+              -3.775
+            ],
+            [
+              31.175,
+              8.68,
+              -3.775
+            ],
+            [
+              31.175,
+              8.68,
+              -3.6
+            ],
+            [
+              30.225,
+              8.68,
+              -3.6
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 12.387819159643916,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -24169,30 +24354,67 @@
           -7.36
         ],
         [
-          34.725,
+          35.675000000000004,
           7.04,
           -7.36
         ],
         [
-          34.725,
-          9.18841304347826,
-          -4.4
+          35.675000000000004,
+          9.642047554347826,
+          -3.775
+        ],
+        [
+          35.675000000000004,
+          8.68,
+          -3.775
+        ],
+        [
+          35.675000000000004,
+          8.68,
+          -3.6
         ],
         [
           34.725,
-          9.028413043478261,
-          -4.4
+          8.68,
+          -3.6
         ],
         [
           34.725,
-          3.9,
-          -4.4
+          4.2,
+          -3.6
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [],
-      "length": 11.276909264308504,
+      "method": "beam-hanger",
+      "installation": "Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              35.675000000000004,
+              9.642047554347826,
+              -3.775
+            ],
+            [
+              35.675000000000004,
+              8.68,
+              -3.775
+            ],
+            [
+              35.675000000000004,
+              8.68,
+              -3.6
+            ],
+            [
+              34.725,
+              8.68,
+              -3.6
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 12.377819159643918,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -24459,14 +24681,14 @@
         ],
         [
           7.725,
-          3.9,
+          4.2,
           4.4
         ]
       ],
       "method": "roof-pendant",
       "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 11.286909264308505,
+      "length": 10.986909264308505,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -24500,30 +24722,67 @@
           7.36
         ],
         [
-          12.225,
+          13.174999999999999,
           7.04,
           7.36
         ],
         [
-          12.225,
-          9.18841304347826,
-          4.4
+          13.174999999999999,
+          9.642047554347826,
+          3.775
+        ],
+        [
+          13.174999999999999,
+          8.68,
+          3.775
+        ],
+        [
+          13.174999999999999,
+          8.68,
+          3.6
         ],
         [
           12.225,
-          9.028413043478261,
-          4.4
+          8.68,
+          3.6
         ],
         [
           12.225,
-          3.9,
-          4.4
+          4.2,
+          3.6
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [],
-      "length": 11.286909264308505,
+      "method": "beam-hanger",
+      "installation": "Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              13.174999999999999,
+              9.642047554347826,
+              3.775
+            ],
+            [
+              13.174999999999999,
+              8.68,
+              3.775
+            ],
+            [
+              13.174999999999999,
+              8.68,
+              3.6
+            ],
+            [
+              12.225,
+              8.68,
+              3.6
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 12.387819159643918,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -24557,30 +24816,67 @@
           7.36
         ],
         [
-          16.725,
+          17.675,
           7.04,
           7.36
         ],
         [
-          16.725,
-          9.18841304347826,
-          4.4
+          17.675,
+          9.642047554347826,
+          3.775
+        ],
+        [
+          17.675,
+          8.68,
+          3.775
+        ],
+        [
+          17.675,
+          8.68,
+          3.6
         ],
         [
           16.725,
-          9.028413043478261,
-          4.4
+          8.68,
+          3.6
         ],
         [
           16.725,
-          3.9,
-          4.4
+          4.2,
+          3.6
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [],
-      "length": 11.2769092643085,
+      "method": "beam-hanger",
+      "installation": "Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              17.675,
+              9.642047554347826,
+              3.775
+            ],
+            [
+              17.675,
+              8.68,
+              3.775
+            ],
+            [
+              17.675,
+              8.68,
+              3.6
+            ],
+            [
+              16.725,
+              8.68,
+              3.6
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 12.377819159643915,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -24614,30 +24910,67 @@
           7.36
         ],
         [
-          21.225,
+          22.175,
           7.04,
           7.36
         ],
         [
-          21.225,
-          9.18841304347826,
-          4.4
+          22.175,
+          9.642047554347826,
+          3.775
+        ],
+        [
+          22.175,
+          8.68,
+          3.775
+        ],
+        [
+          22.175,
+          8.68,
+          3.6
         ],
         [
           21.225,
-          9.028413043478261,
-          4.4
+          8.68,
+          3.6
         ],
         [
           21.225,
-          3.9,
-          4.4
+          4.2,
+          3.6
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [],
-      "length": 11.286909264308502,
+      "method": "beam-hanger",
+      "installation": "Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              22.175,
+              9.642047554347826,
+              3.775
+            ],
+            [
+              22.175,
+              8.68,
+              3.775
+            ],
+            [
+              22.175,
+              8.68,
+              3.6
+            ],
+            [
+              21.225,
+              8.68,
+              3.6
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 12.387819159643916,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -24671,30 +25004,67 @@
           7.36
         ],
         [
-          25.725,
+          26.675,
           7.04,
           7.36
         ],
         [
-          25.725,
-          9.18841304347826,
-          4.4
+          26.675,
+          9.642047554347826,
+          3.775
+        ],
+        [
+          26.675,
+          8.68,
+          3.775
+        ],
+        [
+          26.675,
+          8.68,
+          3.6
         ],
         [
           25.725,
-          9.028413043478261,
-          4.4
+          8.68,
+          3.6
         ],
         [
           25.725,
-          3.9,
-          4.4
+          4.2,
+          3.6
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [],
-      "length": 11.286909264308502,
+      "method": "beam-hanger",
+      "installation": "Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              26.675,
+              9.642047554347826,
+              3.775
+            ],
+            [
+              26.675,
+              8.68,
+              3.775
+            ],
+            [
+              26.675,
+              8.68,
+              3.6
+            ],
+            [
+              25.725,
+              8.68,
+              3.6
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 12.387819159643916,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -24728,30 +25098,67 @@
           7.36
         ],
         [
-          30.225,
+          31.175,
           7.04,
           7.36
         ],
         [
-          30.225,
-          9.18841304347826,
-          4.4
+          31.175,
+          9.642047554347826,
+          3.775
+        ],
+        [
+          31.175,
+          8.68,
+          3.775
+        ],
+        [
+          31.175,
+          8.68,
+          3.6
         ],
         [
           30.225,
-          9.028413043478261,
-          4.4
+          8.68,
+          3.6
         ],
         [
           30.225,
-          3.9,
-          4.4
+          4.2,
+          3.6
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [],
-      "length": 11.286909264308502,
+      "method": "beam-hanger",
+      "installation": "Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              31.175,
+              9.642047554347826,
+              3.775
+            ],
+            [
+              31.175,
+              8.68,
+              3.775
+            ],
+            [
+              31.175,
+              8.68,
+              3.6
+            ],
+            [
+              30.225,
+              8.68,
+              3.6
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 12.387819159643916,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -24785,30 +25192,67 @@
           7.36
         ],
         [
-          34.725,
+          35.675000000000004,
           7.04,
           7.36
         ],
         [
-          34.725,
-          9.18841304347826,
-          4.4
+          35.675000000000004,
+          9.642047554347826,
+          3.775
+        ],
+        [
+          35.675000000000004,
+          8.68,
+          3.775
+        ],
+        [
+          35.675000000000004,
+          8.68,
+          3.6
         ],
         [
           34.725,
-          9.028413043478261,
-          4.4
+          8.68,
+          3.6
         ],
         [
           34.725,
-          3.9,
-          4.4
+          4.2,
+          3.6
         ]
       ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [],
-      "length": 11.276909264308504,
+      "method": "beam-hanger",
+      "installation": "Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              35.675000000000004,
+              9.642047554347826,
+              3.775
+            ],
+            [
+              35.675000000000004,
+              8.68,
+              3.775
+            ],
+            [
+              35.675000000000004,
+              8.68,
+              3.6
+            ],
+            [
+              34.725,
+              8.68,
+              3.6
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 12.377819159643918,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33476,7 +33920,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         10.125,
@@ -33526,7 +33970,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         10.125,
@@ -33576,7 +34020,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
@@ -33601,7 +34045,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
@@ -33626,7 +34070,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
@@ -33651,7 +34095,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
@@ -33676,7 +34120,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
@@ -33701,7 +34145,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
@@ -33726,7 +34170,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
@@ -33751,7 +34195,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
@@ -33776,7 +34220,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
@@ -33801,7 +34245,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
@@ -33826,7 +34270,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
@@ -33851,7 +34295,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
@@ -33876,7 +34320,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
@@ -33901,7 +34345,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
@@ -33926,7 +34370,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
@@ -33951,7 +34395,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
@@ -33976,7 +34420,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
@@ -34001,7 +34445,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
@@ -34026,7 +34470,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
@@ -34051,7 +34495,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
@@ -34101,7 +34545,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         37.125,
@@ -34151,7 +34595,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         37.125,
@@ -38955,7 +39399,7 @@
       "hiddenAlternative": false,
       "position": [
         7.725,
-        3.9,
+        4.2,
         -4.4
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -38980,7 +39424,7 @@
       "hiddenAlternative": false,
       "position": [
         7.725,
-        3.9,
+        4.2,
         4.4
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -39005,8 +39449,8 @@
       "hiddenAlternative": false,
       "position": [
         12.225,
-        3.9,
-        -4.4
+        4.2,
+        -3.6
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39030,8 +39474,8 @@
       "hiddenAlternative": false,
       "position": [
         12.225,
-        3.9,
-        4.4
+        4.2,
+        3.6
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39055,8 +39499,8 @@
       "hiddenAlternative": false,
       "position": [
         16.725,
-        3.9,
-        -4.4
+        4.2,
+        -3.6
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39080,8 +39524,8 @@
       "hiddenAlternative": false,
       "position": [
         16.725,
-        3.9,
-        4.4
+        4.2,
+        3.6
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39105,8 +39549,8 @@
       "hiddenAlternative": false,
       "position": [
         21.225,
-        3.9,
-        -4.4
+        4.2,
+        -3.6
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39130,8 +39574,8 @@
       "hiddenAlternative": false,
       "position": [
         21.225,
-        3.9,
-        4.4
+        4.2,
+        3.6
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39155,8 +39599,8 @@
       "hiddenAlternative": false,
       "position": [
         25.725,
-        3.9,
-        -4.4
+        4.2,
+        -3.6
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39180,8 +39624,8 @@
       "hiddenAlternative": false,
       "position": [
         25.725,
-        3.9,
-        4.4
+        4.2,
+        3.6
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39205,8 +39649,8 @@
       "hiddenAlternative": false,
       "position": [
         30.225,
-        3.9,
-        -4.4
+        4.2,
+        -3.6
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39230,8 +39674,8 @@
       "hiddenAlternative": false,
       "position": [
         30.225,
-        3.9,
-        4.4
+        4.2,
+        3.6
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39255,8 +39699,8 @@
       "hiddenAlternative": false,
       "position": [
         34.725,
-        3.9,
-        -4.4
+        4.2,
+        -3.6
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39280,8 +39724,8 @@
       "hiddenAlternative": false,
       "position": [
         34.725,
-        3.9,
-        4.4
+        4.2,
+        3.6
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -41635,19 +42079,17 @@
       "circuit": "L1",
       "type": "readingProjector",
       "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 28,
+      "quantity": 24,
       "modelSize": [
         0.23399999737739563,
         0.17219481006264686,
         0.12600000202655792
       ],
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 24° beam",
       "wattsEachEstimate": 19.166666666666668,
       "itemIds": [
         "L3",
-        "L4",
         "L5",
-        "L6",
         "L7",
         "L8",
         "L9",
@@ -41668,10 +42110,28 @@
         "L24",
         "L25",
         "L26",
-        "L27",
         "L28",
-        "L29",
         "L30"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "L1",
+      "type": "readingProjector",
+      "product": "Reading projector · side bracket, finish-matched",
+      "quantity": 4,
+      "modelSize": [
+        0.23399999737739563,
+        0.17219481006264686,
+        0.12600000202655792
+      ],
+      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEachEstimate": 19.166666666666668,
+      "itemIds": [
+        "L4",
+        "L6",
+        "L27",
+        "L29"
       ]
     },
     {

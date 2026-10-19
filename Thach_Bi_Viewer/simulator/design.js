@@ -67,11 +67,16 @@
       const p = [faceX, soffit + 0.18, z], a = aim([faceX + 0.085, soffit, z], target);
       add({ type: 'readingProjector', name, circuit, mount: 'wall', pos: p, anchorY: soffit, ...a, mountYaw: 0, lumens: 2300, beam, params: { finish: 'timber' } });
     };
+    // Since the side-aisle fans hang from the column-line beams (19 October 2026), a
+    // tie-beam head aimed toward a bay with such a fan tilts 5° along the nave with a
+    // 24° optic (8° and 28° before), which keeps its beam off the blades.
+    const facesBeamFan = (k, dir) => dir > 0 ? +k <= 8 : +k >= 4;
     const reading = (k, s, block) => {
-      const tie = block === 'central', soffit = tie ? beamY : sideBeamY, faceX = A[k] + (tie ? 0.15 : 0.11), along = Math.tan(8 * Math.PI / 180) * (soffit - 0.8);
+      const tie = block === 'central', soffit = tie ? beamY : sideBeamY, faceX = A[k] + (tie ? 0.15 : 0.11);
       for (const [dir, tag] of [[1, ''], [-1, ' · twin']]) {
-        const z = tie ? s * (2.6 - dir * 0.12) : s * (dir > 0 ? 6.09 : 4.84);
-        readingHead(`Reading light · axis ${k} · ${side(s)} ${block}${tag}`, tie ? 'L1' : 'L2', tie ? 28 : 36, faceX, soffit, z, [A[k] + dir * along, 0.8, s * (tie ? 2.6 : 5.6)]);
+        const z = tie ? s * (2.6 - dir * 0.12) : s * (dir > 0 ? 6.09 : 4.84), fan = tie && facesBeamFan(k, dir);
+        const along = Math.tan((fan ? 5 : 8) * Math.PI / 180) * (soffit - 0.8);
+        readingHead(`Reading light · axis ${k} · ${side(s)} ${block}${tag}`, tie ? 'L1' : 'L2', tie ? (fan ? 24 : 28) : 36, faceX, soffit, z, [A[k] + dir * along, 0.8, s * (tie ? 2.6 : 5.6)]);
       }
     };
     for (const k of nave) for (const s of [-1, 1]) reading(k, s, 'central');
@@ -301,13 +306,24 @@
       towerFlood(`Central crown wash · ${side(s)}`, 'L6', [-0.10, 15.84, s * 7.70], -s * 90, [2.2, 18.6, 0], 55, 6000);
     }
 
-    // Fans · 1.42 m ceiling fans mid-bay over the two side aisles (between the
-    // centre and outer blocks): the 30°/40° reading beams miss the blades, and
-    // nothing hangs over the processional aisle.
+    // Fans · 1.42 m ceiling fans mid-bay over the two side aisles, nothing over
+    // the processional aisle. Owner, 19 October 2026: for safety the fans hang
+    // from the column-line beams that join the timber columns (B03, soffit
+    // +8.73 m), mid-span, on the D/E column lines (Z ±3.60, were ±4.40 from purlin
+    // brackets under the lining). The owner then asked for the fans a little higher:
+    // the hub rises 0.30 m to +4.20 m (blades about +4.0 m, below the 4.2 m blade
+    // height where seated air falls off), so the downrod is 4.53 m (5.13 m before).
+    // Bay 2′–3 has no column-line beam, so its two fans keep their purlin brackets
+    // and only rise with the others. B03 is
+    // a visualization proxy: its section, connections and the fan's static,
+    // dynamic and torque loads on it are ENGINEERING HOLD. Trade-offs measured in
+    // docs/engineering/fans-on-column-beams.md: the centre blocks get more air,
+    // the outer blocks less, and the tie-beam reading lights now cross the blades.
     for (const k of ['2′', '3', '4', '5', '6', '7', '8']) for (const s of [-1, 1]) {
-      const x = k === '2′' ? (A['2′'] + A['3']) / 2 : A[k] + 2.25, z = s * 4.4, bay = k === '2′' ? '2′–3' : `${k}–${Number(k) + 1}`;
-      add({ type: 'fanCeiling', name: `Ceiling fan · bay ${bay} · ${side(s)} aisle`, circuit: 'F1', mount: 'pendant', pos: [x, 3.9, z], anchorY: lining(z) - 0.06, yaw: 0, mountYaw: 0, speed: 2,
-        note: 'Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.' });
+      const back = k === '2′', x = back ? (A['2′'] + A['3']) / 2 : A[k] + 2.25, z = s * (back ? 4.4 : 3.6), bay = back ? '2′–3' : `${k}–${Number(k) + 1}`;
+      add({ type: 'fanCeiling', name: `Ceiling fan · bay ${bay} · ${side(s)} aisle`, circuit: 'F1', mount: 'pendant', pos: [x, 4.2, z], anchorY: back ? lining(z) - 0.06 : 8.73, yaw: 0, mountYaw: 0, speed: 2,
+        note: back ? 'Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.'
+          : 'Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.' });
     }
 
     // Held wing wall-fan comparison. Keep the original four item slots so
@@ -596,6 +612,34 @@
     });
   }
 
+  // One-time move for saved layouts, 19 October 2026 (owner: fans onto the beams that
+  // join the columns, and a little higher). A side-aisle ceiling fan still at its old
+  // default place (hub +3.90 m under the purlins at Z ±4.40) takes its new place and
+  // anchor: under the column-line beam in bays 3–4 to 8–9, and 0.30 m higher in every
+  // bay. Its ID, speed, switching and oscillation are kept. A moved or deleted fan
+  // stays as it is.
+  const FAN_HUB_BEFORE_Y = 3.9;
+  const fanBeamRevision = '2026-10-19-fans-on-column-beams-1';
+  function upgradeFanBeams(items, design) {
+    const next = new Map(design.filter(it => /^Ceiling fan · bay [2-8]′?–[3-9] · [BH] aisle$/.test(it.name)).map(it => [it.name, it]));
+    const heads = new Map(design.filter(it => /^Reading light · axis \d · [BH] central/.test(it.name) && it.beam === 24).map(it => [it.name, it]));
+    return items.map(it => {
+      const raw = next.get(it.name);
+      if (!raw || it.type !== 'fanCeiling' || !Array.isArray(it.pos)) return it;
+      const old = [raw.pos[0], FAN_HUB_BEFORE_Y, Math.sign(raw.pos[2]) * 4.4];
+      if (!it.pos.every((v, i) => Math.abs(v - old[i]) <= 0.005)) return it;
+      return { ...it, pos: [...raw.pos], anchorY: raw.anchorY, note: raw.note };
+    }).map(it => {
+      // A tie-beam reading head now aimed 5° / 24° takes that aim and optic if it is
+      // still in its place with the earlier 8° / 28° aim; output and switching stay.
+      const raw = heads.get(it.name);
+      if (!raw || it.type !== raw.type || !Array.isArray(it.pos) || !it.pos.every((v, i) => Math.abs(v - raw.pos[i]) <= 0.005)) return it;
+      const dir = / · twin$/.test(it.name) ? -1 : 1, axisX = raw.pos[0] - 0.15, before = aim([raw.pos[0] + 0.085, 8.59, raw.pos[2]], [axisX + dir * Math.tan(8 * Math.PI / 180) * 7.79, 0.8, Math.sign(raw.pos[2]) * 2.6]);
+      if (Math.abs(((it.yaw - before.yaw) % 360 + 540) % 360 - 180) > 0.01 || Math.abs(it.tilt - before.tilt) > 0.01 || (it.beam ?? 28) !== 28) return it;
+      return { ...it, yaw: raw.yaw, tilt: raw.tilt, beam: raw.beam };
+    });
+  }
+
   const naveFanRevision = '2026-10-09-eight-wall-fans-per-side';
   const naveFanLegacyIds = ['F244', 'F245', 'F246', 'F247', 'F248', 'F249'];
   function naveFanTargets(design, code) {
@@ -818,5 +862,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

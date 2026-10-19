@@ -677,6 +677,39 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert.deepEqual(plain(D.upgradeFinishChandeliers(up, design)), plain(up), 'applying it again changes nothing');
   assert.equal(SIM.state.settings.finishChandelierRevision, D.finishChandelierRevision, 'the revision is stored in the saved settings');
 }
+// Owner, 19 October 2026: side-aisle fans hang from the column-line beams (B03) that join
+// the columns, and 0.30 m higher. Bay 2′–3 has no such beam and keeps its purlin bracket.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, plain = v => JSON.parse(JSON.stringify(v));
+  const fans = SIM.state.items.filter(it => /^Ceiling fan · bay .* aisle$/.test(it.name));
+  assert.equal(fans.length, 14, 'seven bays of side-aisle fans');
+  for (const it of fans) {
+    assert(Math.abs(it.pos[1] - 4.2) < 1e-9, 'hub at +4.20 m: ' + it.name);
+    const back = /2′–3/.test(it.name), beam = SIM.GEO.longBeams.find(b => it.pos[0] > b.x0 && it.pos[0] < b.x1 && Math.abs(b.z - it.pos[2]) < 1e-6);
+    if (back) assert(Math.abs(Math.abs(it.pos[2]) - 4.4) < 1e-9 && !beam, 'bay 2′–3 has no column-line beam; its fans stay on the purlins: ' + it.name);
+    else assert(beam && Math.abs(it.pos[0] - (beam.x0 + beam.x1) / 2) < 1e-6 && Math.abs(it.anchorY - beam.y0) < 1e-6, 'fan hangs at mid-span under its column-line beam: ' + it.name);
+    const t = CAT.byId[it.type], blades = it.pos[1] - t.fan.rotorDrop;
+    assert(blades >= 2.4 && blades < 4.2, 'blades above head height and below the height where seated air falls off: ' + it.name);
+  }
+  const design = D.recommended(SIM.GEO, SIM), pick = name => design.find(it => it.name === name);
+  const old = (name, o = {}) => { const raw = pick(name); return { ...raw, pos: [raw.pos[0], 3.9, Math.sign(raw.pos[2]) * 4.4], anchorY: 9.03, note: 'old', ...o }; };
+  const saved = [old('Ceiling fan · bay 5–6 · B aisle', { id: 'f1', speed: 3, on: false }), old('Ceiling fan · bay 2′–3 · H aisle', { id: 'f2' }), old('Ceiling fan · bay 6–7 · H aisle', { id: 'f3', pos: [25.0, 3.9, 4.4] })];
+  const up = D.upgradeFanBeams(saved, design), byId = id => up.find(it => it.id === id);
+  assert(plain(byId('f1').pos).join() === plain(pick('Ceiling fan · bay 5–6 · B aisle').pos).join() && byId('f1').anchorY === 8.73 && byId('f1').speed === 3 && byId('f1').on === false, 'untouched fan moves under the beam, keeps speed and switch');
+  assert(Math.abs(byId('f2').pos[1] - 4.2) < 1e-9 && Math.abs(byId('f2').pos[2] - 4.4) < 1e-9, 'back-bay fan only rises');
+  assert.deepEqual(plain(byId('f3')), plain(saved[2]), 'a fan the user moved stays');
+  assert.deepEqual(plain(D.upgradeFanBeams(up, design)), plain(up), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.fanBeamRevision, D.fanBeamRevision, 'the revision is stored in the saved settings');
+  // Tie-beam reading heads aimed toward a bay with a beam-hung fan: 5° along the nave, 24° optic.
+  const tie = SIM.state.items.filter(it => /^Reading light · axis \d · [BH] central/.test(it.name));
+  const faces = it => { const k = +it.name.match(/axis (\d)/)[1]; return / · twin$/.test(it.name) ? k >= 4 : k <= 8; };
+  assert.equal(tie.filter(faces).length, 24, 'twenty-four heads face a beam-hung fan');
+  for (const it of tie) assert.equal(it.beam, faces(it) ? 24 : 28, 'optic of ' + it.name);
+  const head = pick('Reading light · axis 5 · H central'), axisX = head.pos[0] - 0.15, before = D.aim([head.pos[0] + 0.085, 8.59, head.pos[2]], [axisX + Math.tan(8 * Math.PI / 180) * 7.79, 0.8, 2.6]);
+  const heads = D.upgradeFanBeams([{ ...head, id: 'h1', yaw: before.yaw, tilt: before.tilt, beam: 28, on: false, lumens: 2000 }, { ...head, id: 'h2', yaw: before.yaw + 5, tilt: before.tilt, beam: 28 }], design);
+  assert(heads[0].yaw === head.yaw && heads[0].tilt === head.tilt && heads[0].beam === 24 && heads[0].on === false && heads[0].lumens === 2000, 'untouched head takes the new aim and optic, keeps switch and output');
+  assert(heads[1].beam === 28, 'a re-aimed head stays as the user set it');
+}
 // Every fixture is fixed to something the model actually has: wall items need a
 // surface right behind them, pendants need structure at their anchor (fans on
 // steel spreaders and strung decorations carry their own support).

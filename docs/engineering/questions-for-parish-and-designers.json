@@ -479,6 +479,15 @@
       "evidence": "Đo trụ và tường tại hiện trường, sản phẩm loa và giá nghiêng được chọn, thử âm tại chỗ (độ rõ lời ở cánh, biên độ hú micro)",
       "blocks": "Tính toán: độ rõ lời lòng nhà thờ không kém hơn trước (84 % ghế đạt 0,60, thấp nhất 0,536), biên độ hú micro bục giảng/bàn thờ 0,9/1,4 dB (vẫn dưới 3 dB), độ rõ thấp nhất ở hai cánh giảm từ 0,422 xuống 0,409",
       "answer": null
+    },
+    {
+      "id": "Q53",
+      "discipline": "Kết cấu / thông gió",
+      "owner": "Kỹ sư kết cấu / thiết kế cơ điện / cha xứ",
+      "question_vi": "12 quạt trần hai lối đi bên được treo dưới dầm dọc nối các cột gỗ (B03, đáy dầm +8,73 m) ở giữa nhịp, cần treo dài 4,53 m. Dầm dọc thật có tiết diện và liên kết ở đầu cột thế nào, có chịu được trọng lượng, mô-men xoắn và rung của quạt không? Móc treo, thanh chống lắc và dây an toàn chọn loại nào? Cha xứ có chấp nhận rằng số ghế có gió dễ chịu giảm từ 80 % xuống 60 % (dãy ghế sát tường ít gió hơn) không?",
+      "evidence": "Khảo sát và tính toán dầm dọc và mối nối, sản phẩm quạt và bộ treo được chọn, thử một quạt tại chỗ đo gió ở ghế sát tường",
+      "blocks": "Dầm dọc B03 trong mô hình chỉ là hình minh họa (0,24 × 0,45 m); vị trí quạt là yêu cầu của chủ đầu tư ngày 19/10/2026, chưa có tải trọng, liên kết hay kết quả đo",
+      "answer": null
     }
   ]
 }

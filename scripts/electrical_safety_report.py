@@ -115,7 +115,7 @@ def write_report(r, issue_date):
             if len({(k['comparison_breaker_a'], k['comparison_area_mm2']) for c in ('V1', 'V2', 'V3') for k in by[c]['cases']}) == 1 else
             ' '.join(f'{c}: {k["comparison_breaker_a"]} A with {k["comparison_area_mm2"]} mm² in {k["case_id"][:2]}.' for c in ('V1', 'V2', 'V3') for k in by[c]['cases'])),
          'Done in the model: front gable V1, wing gables V2, service room V3, each with its own speed, so ventilation can run by zone. Breakers, cables and FC-1 channels are comparison screens for the electrical engineer.'],
-        ['10', 'Fans over people', f'{len(ceiling)} ceiling fans hang on {n(ceiling[0]["drop_from_anchor_m"], 2)} m rods with the blades {n(min(f["lowest_moving_part_above_floor_m"] for f in ceiling), 2)} m above the floor. '
+        ['10', 'Fans over people', f'{len(ceiling)} ceiling fans hang on {n(min(f["drop_from_anchor_m"] for f in ceiling), 2)}–{n(max(f["drop_from_anchor_m"] for f in ceiling), 2)} m rods with the blades {n(min(f["lowest_moving_part_above_floor_m"] for f in ceiling), 2)} m above the floor. '
          f'The lowest wall or exhaust fan is {n(min(f["lowest_moving_part_above_floor_m"] for f in other_fans), 2)} m above its floor.',
          'Blade heights pass the 2.3 m screen. Rod, bracket, anti-sway restraint and secondary retention are a structural hold.'],
     ]
@@ -211,9 +211,9 @@ def write_report(r, issue_date):
     w('')
     w('## 5. Safety screens from the model geometry')
     w('')
-    w(f'**Fans.** {len(ceiling)} ceiling fans: lowest moving part {n(min(f["lowest_moving_part_above_floor_m"] for f in ceiling), 2)} m above the floor, on {n(ceiling[0]["drop_from_anchor_m"], 2)} m rods from the purlins. '
+    w(f'**Fans.** {len(ceiling)} ceiling fans: lowest moving part {n(min(f["lowest_moving_part_above_floor_m"] for f in ceiling), 2)} m above the floor, on {n(min(f["drop_from_anchor_m"] for f in ceiling), 2)}–{n(max(f["drop_from_anchor_m"] for f in ceiling), 2)} m rods: under the column-line beams, or from purlin brackets in the bay that has no such beam (since 19 October 2026). '
       f'{len(other_fans)} wall, circulator and exhaust fans: lowest {n(min(f["lowest_moving_part_above_floor_m"] for f in other_fans), 2)} m. Product instructions for unguarded ceiling fans usually ask for blades above 2.3 m; all are above it. '
-      'The mass and sway of a fan on a five-metre rod over the congregation is the real question, and it is a structural hold.')
+      'The mass and sway of a fan on a rod of four and a half to five metres over the congregation is the real question, and with the column-line beams still a visualization proxy it is a structural hold.')
     w('')
     w(f'**Within reach.** {len(reach)} wired points are less than 2.5 m above the floor they stand on: '
       + ', '.join(f'{v} {k}{"s" if v > 1 and not k.endswith("s") else ""}' for k, v in sorted(reach_kinds.items())) + '. '
@@ -234,7 +234,7 @@ def write_report(r, issue_date):
     w('')
     w('**Where the mains routes run** (model centre lines):')
     w('')
-    names = {'above-main-beam': 'On top of the main beams', 'above-side-beam': 'On top of the side beams', 'roof-pendant': 'Above the roof lining to pendants', 'roof-local': 'Roof route to a roof fitting',
+    names = {'above-main-beam': 'On top of the main beams', 'above-side-beam': 'On top of the side beams', 'roof-pendant': 'Above the roof lining to pendants', 'beam-hanger': 'Down a column-line beam to fan hangers', 'roof-local': 'Roof route to a roof fitting',
              'chamber-lining': 'Behind the timber chamber lining', 'wall-roof-trunk': 'Wall bands above the openings, covered soffit crossing at the wings', 'tower-wall': 'Tower piers and walls',
              'tower-cornice': 'Behind tower cornices', 'entrance-wall': 'Entrance wall band and piers', 'entrance-gable': 'Front gable above the terrace', 'outer-wall': 'Outer arcade and wing-gable walls',
              'side-wall': 'Side-wall and pier drops', 'rear-wall': 'Rear wall band', 'service-ceiling': 'Service-room ceiling', 'underfloor-event': 'Buried duct to the tower event points', 'feeder': 'Board-to-board feeds'}

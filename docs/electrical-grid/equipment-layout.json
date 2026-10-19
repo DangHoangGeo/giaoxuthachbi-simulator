@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-19T11:17:33.830Z",
+  "savedAt": "2026-10-19T13:14:34.808Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -50,6 +50,7 @@
     "exhaustSplitRevision": "2026-10-18-exhaust-split-1",
     "hiddenFittingsRevision": "2026-10-19-hidden-fittings-1",
     "finishChandelierRevision": "2026-10-19-sanctuary-lacquer-chandeliers-1",
+    "fanBeamRevision": "2026-10-19-fans-on-column-beams-1",
     "eveningExposureRevision": "2026-10-09-evening-160"
   },
   "customScenes": [],
@@ -109,8 +110,8 @@
         8.77,
         -2.48
       ],
-      "yaw": -7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": -15.041994761460185,
+      "tilt": -86.60316289929806,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -120,7 +121,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -159,8 +160,8 @@
         8.77,
         2.48
       ],
-      "yaw": 7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": 15.041994761460185,
+      "tilt": -86.60316289929806,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -170,7 +171,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -209,8 +210,8 @@
         8.77,
         -2.48
       ],
-      "yaw": -7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": -15.041994761460185,
+      "tilt": -86.60316289929806,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -220,7 +221,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -234,8 +235,8 @@
         8.77,
         -2.72
       ],
-      "yaw": 174.84369500023269,
-      "tilt": -80.27393729415091,
+      "yaw": 172.54082664918025,
+      "tilt": -83.23294264023096,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -245,7 +246,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -259,8 +260,8 @@
         8.77,
         2.48
       ],
-      "yaw": 7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": 15.041994761460185,
+      "tilt": -86.60316289929806,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -270,7 +271,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -284,8 +285,8 @@
         8.77,
         2.72
       ],
-      "yaw": -174.84369500023269,
-      "tilt": -80.27393729415091,
+      "yaw": -172.54082664918025,
+      "tilt": -83.23294264023096,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -295,7 +296,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -309,8 +310,8 @@
         8.77,
         -2.48
       ],
-      "yaw": -7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": -15.041994761460126,
+      "tilt": -86.60316289929806,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -320,7 +321,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -334,8 +335,8 @@
         8.77,
         -2.72
       ],
-      "yaw": 174.84369500023269,
-      "tilt": -80.27393729415094,
+      "yaw": 172.54082664918022,
+      "tilt": -83.23294264023096,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -345,7 +346,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -359,8 +360,8 @@
         8.77,
         2.48
       ],
-      "yaw": 7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": 15.041994761460126,
+      "tilt": -86.60316289929806,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -370,7 +371,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -384,8 +385,8 @@
         8.77,
         2.72
       ],
-      "yaw": -174.84369500023269,
-      "tilt": -80.27393729415094,
+      "yaw": -172.54082664918022,
+      "tilt": -83.23294264023096,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -395,7 +396,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -409,8 +410,8 @@
         8.77,
         -2.48
       ],
-      "yaw": -7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": -15.041994761460126,
+      "tilt": -86.60316289929806,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -420,7 +421,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -434,8 +435,8 @@
         8.77,
         -2.72
       ],
-      "yaw": 174.84369500023269,
-      "tilt": -80.27393729415094,
+      "yaw": 172.54082664918022,
+      "tilt": -83.23294264023096,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -445,7 +446,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -459,8 +460,8 @@
         8.77,
         2.48
       ],
-      "yaw": 7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": 15.041994761460126,
+      "tilt": -86.60316289929806,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -470,7 +471,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -484,8 +485,8 @@
         8.77,
         2.72
       ],
-      "yaw": -174.84369500023269,
-      "tilt": -80.27393729415094,
+      "yaw": -172.54082664918022,
+      "tilt": -83.23294264023096,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -495,7 +496,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -509,8 +510,8 @@
         8.77,
         -2.48
       ],
-      "yaw": -7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": -15.041994761460126,
+      "tilt": -86.60316289929806,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -520,7 +521,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -534,8 +535,8 @@
         8.77,
         -2.72
       ],
-      "yaw": 174.84369500023269,
-      "tilt": -80.27393729415094,
+      "yaw": 172.54082664918022,
+      "tilt": -83.23294264023096,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -545,7 +546,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -559,8 +560,8 @@
         8.77,
         2.48
       ],
-      "yaw": 7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": 15.041994761460126,
+      "tilt": -86.60316289929806,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -570,7 +571,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -584,8 +585,8 @@
         8.77,
         2.72
       ],
-      "yaw": -174.84369500023269,
-      "tilt": -80.27393729415094,
+      "yaw": -172.54082664918022,
+      "tilt": -83.23294264023096,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -595,7 +596,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -609,8 +610,8 @@
         8.77,
         -2.48
       ],
-      "yaw": -7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": -15.041994761460126,
+      "tilt": -86.60316289929806,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -620,7 +621,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -634,8 +635,8 @@
         8.77,
         -2.72
       ],
-      "yaw": 174.84369500023269,
-      "tilt": -80.27393729415094,
+      "yaw": 172.54082664918022,
+      "tilt": -83.23294264023096,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -645,7 +646,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -659,8 +660,8 @@
         8.77,
         2.48
       ],
-      "yaw": 7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": 15.041994761460126,
+      "tilt": -86.60316289929806,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -670,7 +671,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -684,8 +685,8 @@
         8.77,
         2.72
       ],
-      "yaw": -174.84369500023269,
-      "tilt": -80.27393729415094,
+      "yaw": -172.54082664918022,
+      "tilt": -83.23294264023096,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -695,7 +696,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -734,8 +735,8 @@
         8.77,
         -2.72
       ],
-      "yaw": 174.84369500023269,
-      "tilt": -80.27393729415094,
+      "yaw": 172.54082664918022,
+      "tilt": -83.23294264023096,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -745,7 +746,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -784,8 +785,8 @@
         8.77,
         2.72
       ],
-      "yaw": -174.84369500023269,
-      "tilt": -80.27393729415094,
+      "yaw": -172.54082664918022,
+      "tilt": -83.23294264023096,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -795,7 +796,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 24,
       "shadow": false
     },
     {
@@ -5236,7 +5237,7 @@
       "mount": "pendant",
       "pos": [
         7.725,
-        3.9,
+        4.2,
         -4.4
       ],
       "yaw": 0,
@@ -5259,7 +5260,7 @@
       "mount": "pendant",
       "pos": [
         7.725,
-        3.9,
+        4.2,
         4.4
       ],
       "yaw": 0,
@@ -5282,18 +5283,18 @@
       "mount": "pendant",
       "pos": [
         12.225,
-        3.9,
-        -4.4
+        4.2,
+        -3.6
       ],
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 9.028413043478261,
+      "anchorY": 8.73,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.",
+      "note": "Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.",
       "speed": 2,
       "oscillate": true
     },
@@ -5305,18 +5306,18 @@
       "mount": "pendant",
       "pos": [
         12.225,
-        3.9,
-        4.4
+        4.2,
+        3.6
       ],
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 9.028413043478261,
+      "anchorY": 8.73,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.",
+      "note": "Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.",
       "speed": 2,
       "oscillate": true
     },
@@ -5328,18 +5329,18 @@
       "mount": "pendant",
       "pos": [
         16.725,
-        3.9,
-        -4.4
+        4.2,
+        -3.6
       ],
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 9.028413043478261,
+      "anchorY": 8.73,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.",
+      "note": "Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.",
       "speed": 2,
       "oscillate": true
     },
@@ -5351,18 +5352,18 @@
       "mount": "pendant",
       "pos": [
         16.725,
-        3.9,
-        4.4
+        4.2,
+        3.6
       ],
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 9.028413043478261,
+      "anchorY": 8.73,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.",
+      "note": "Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.",
       "speed": 2,
       "oscillate": true
     },
@@ -5374,18 +5375,18 @@
       "mount": "pendant",
       "pos": [
         21.225,
-        3.9,
-        -4.4
+        4.2,
+        -3.6
       ],
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 9.028413043478261,
+      "anchorY": 8.73,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.",
+      "note": "Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.",
       "speed": 2,
       "oscillate": true
     },
@@ -5397,18 +5398,18 @@
       "mount": "pendant",
       "pos": [
         21.225,
-        3.9,
-        4.4
+        4.2,
+        3.6
       ],
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 9.028413043478261,
+      "anchorY": 8.73,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.",
+      "note": "Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.",
       "speed": 2,
       "oscillate": true
     },
@@ -5420,18 +5421,18 @@
       "mount": "pendant",
       "pos": [
         25.725,
-        3.9,
-        -4.4
+        4.2,
+        -3.6
       ],
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 9.028413043478261,
+      "anchorY": 8.73,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.",
+      "note": "Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.",
       "speed": 2,
       "oscillate": true
     },
@@ -5443,18 +5444,18 @@
       "mount": "pendant",
       "pos": [
         25.725,
-        3.9,
-        4.4
+        4.2,
+        3.6
       ],
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 9.028413043478261,
+      "anchorY": 8.73,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.",
+      "note": "Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.",
       "speed": 2,
       "oscillate": true
     },
@@ -5466,18 +5467,18 @@
       "mount": "pendant",
       "pos": [
         30.225,
-        3.9,
-        -4.4
+        4.2,
+        -3.6
       ],
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 9.028413043478261,
+      "anchorY": 8.73,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.",
+      "note": "Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.",
       "speed": 2,
       "oscillate": true
     },
@@ -5489,18 +5490,18 @@
       "mount": "pendant",
       "pos": [
         30.225,
-        3.9,
-        4.4
+        4.2,
+        3.6
       ],
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 9.028413043478261,
+      "anchorY": 8.73,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.",
+      "note": "Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.",
       "speed": 2,
       "oscillate": true
     },
@@ -5512,18 +5513,18 @@
       "mount": "pendant",
       "pos": [
         34.725,
-        3.9,
-        -4.4
+        4.2,
+        -3.6
       ],
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 9.028413043478261,
+      "anchorY": 8.73,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.",
+      "note": "Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.",
       "speed": 2,
       "oscillate": true
     },
@@ -5535,18 +5536,18 @@
       "mount": "pendant",
       "pos": [
         34.725,
-        3.9,
-        4.4
+        4.2,
+        3.6
       ],
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 9.028413043478261,
+      "anchorY": 8.73,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "Long downrod from a purlin bracket with an anti-sway restraint; structural engineer to verify.",
+      "note": "Downrod from a hanger under the column-line beam B03 at mid-span, with an anti-sway restraint. B03 section, connections and fan loads: structural engineer to verify.",
       "speed": 2,
       "oscillate": true
     },
