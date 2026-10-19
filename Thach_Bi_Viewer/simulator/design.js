@@ -104,7 +104,13 @@
 
     // LD · chandeliers on chains from the ridge over the side-door crossings
     // and bay 6–7, plus a grand chandelier at the crossing.
-    for (const k of ['4', '6', '8']) add({ type: 'chandelier8', name: `Chandelier · bay ${k}–${Number(k) + 1}`, circuit: 'LD', mount: 'pendant', pos: [A[k] + 2.25, 6.3, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
+    // Owner, 19 October 2026: the three nave chandeliers hang 1.0 m higher (the 6.3 m of
+    // 4 October was an initial value with no recorded reason). Candles now at about
+    // +6.85 m and the lowest point about +6.2 m: above the side beams (+6.66 soffit) and
+    // below the tie beams (+8.59 soffit), mid-bay between them. The chain shortens; the
+    // anchor stays. No seat's line to the crucifix or altar crosses them (saved seat plan,
+    // 576 nave seats, eye +1.2 m) at any height from 6.3 to 8.3 m.
+    for (const k of ['4', '6', '8']) add({ type: 'chandelier8', name: `Chandelier · bay ${k}–${Number(k) + 1}`, circuit: 'LD', mount: 'pendant', pos: [A[k] + 2.25, NAVE_CHANDELIER_Y, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
     // Hung high enough that the lobed sanctuary frame and the reredos crown read below it from the nave.
     add({ type: 'chandelier12', name: 'Grand chandelier · crossing 9–10', circuit: 'LD', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.2, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
     // Sconces on the C/G piers, facing the nave, and on the sanctuary piers.
@@ -133,10 +139,12 @@
     // and the same beams carry on to the reredos crown under the vault.
     for (const s of [-1, 1]) outside(`Sanctuary frame wash · ${side(s)}`, 'projector36', s * 0.6, beamY, [sanctuary.frameX - 0.2, 9.8, s * 1.8], { beam: 50, lumens: 3500, shadow: false });
     // Inside the chamber the heads sit on the lacquered side walls directly
-    // behind the front frame, hidden from the nave by the axis-10 columns.
+    // behind the front frame, hidden from the nave by the axis-10 columns. They and
+    // the vault uplights take the chamber's own lacquer (owner, 19 October 2026: all
+    // the sanctuary lights), which stays red whatever the structural timber tone.
     const inside = (name, type, y, s, target, o) => {
       const p = [chamber.lightX, y, s * chamber.face], a = aim(p, target);
-      add({ type, name, circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: -s * 90, shadow: false, ...o });
+      add({ type, name, circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: -s * 90, shadow: false, params: { finish: 'chamber' }, ...o });
     };
     for (const s of [-1, 1]) {
       inside(`Crucifix accent · ${side(s)}`, 'spot15', 7.6, s, crucifix, { beam: 24, lumens: 700 });
@@ -147,7 +155,7 @@
       inside(`Reredos base wash · ${side(s)}`, 'projector36', 5.4, s, [46.9, 2.3, -s * 2.3], { lumens: 1300 });
       // Gilded vault: a flood on the springing cornice, aimed up and back.
       const u = [chamber.lightX + 0.6, 8.42, s * (chamber.face - 0.3)], ua = aim(u, [47.6, 10.4, -s * 0.6]);
-      add({ type: 'uplight', name: `Sanctuary vault uplight · ${side(s)}`, circuit: 'L3', mount: 'floor', pos: u, ...ua, mountYaw: ua.yaw, lumens: 2200 });
+      add({ type: 'uplight', name: `Sanctuary vault uplight · ${side(s)}`, circuit: 'L3', mount: 'floor', pos: u, ...ua, mountYaw: ua.yaw, lumens: 2200, params: { finish: 'chamber' } });
     }
     inside('Tabernacle accent', 'spot15', 4.9, -1, [47.3, 2.05, 0], { beam: 10, lumens: 300 });
     // Our Lady (left) and Saint Joseph (right) in the shrines on the column line:
@@ -564,20 +572,27 @@
     });
   }
 
-  // One-time finish change for saved layouts, 19 October 2026: the sanctuary accent heads
-  // hung from the axis-9 tie and side beams take the beam lacquer. Only a fitting of the
-  // same type still at its default place and aim and still in its metal finish changes, and
-  // only its finish; a moved, re-aimed, re-typed or deleted one stays as the user left it.
-  const beamAccentFinishRevision = '2026-10-19-beam-accent-finish-1';
-  const beamAccentNames = name => /^(Altar key light · [BH]|Ambo key light|Sanctuary step fill · [BH]|Presider chair light|Sanctuary frame wash · [BH]|Statue accent · [BH]|Shrine wash · [BH])$/.test(name);
-  function upgradeBeamAccentFinish(items, design) {
-    const next = new Map(design.filter(it => beamAccentNames(it.name) && it.params?.finish === 'timber').map(it => [it.name, it]));
+  // One-time change for saved layouts, 19 October 2026 (owner: all the sanctuary lights in
+  // the lacquer; nave chandeliers 1.0 m higher). The accent heads hung from the axis-9 tie
+  // and side beams take the beam lacquer, the heads and vault uplights on the chamber walls
+  // the chamber lacquer: only a fitting of the same type still at its default place and
+  // aim and still in its metal finish changes, and only its finish. A nave chandelier still
+  // at its old +6.3 m default place rises to its new height and keeps its ID, chain anchor,
+  // switching and dimmer. A moved, re-aimed, re-typed, refinished or deleted item stays.
+  const NAVE_CHANDELIER_Y = 7.3, NAVE_CHANDELIER_BEFORE_Y = 6.3;
+  const finishChandelierRevision = '2026-10-19-sanctuary-lacquer-chandeliers-1';
+  const lacqueredNames = name => /^(Altar key light · [BH]|Ambo key light|Sanctuary step fill · [BH]|Presider chair light|Sanctuary frame wash · [BH]|Statue accent · [BH]|Shrine wash · [BH]|Crucifix accent · [BH]|Reredos wash · [BH]|Reredos base wash · [BH]|Tabernacle accent|Sanctuary vault uplight · [BH])$/.test(name);
+  const naveChandelier = name => /^Chandelier · bay [468]–[579]$/.test(name);
+  function upgradeFinishChandeliers(items, design) {
+    const next = new Map(design.filter(it => (lacqueredNames(it.name) && ['timber', 'chamber'].includes(it.params?.finish)) || (naveChandelier(it.name) && it.type === 'chandelier8')).map(it => [it.name, it]));
     const turn = (a, b) => Math.abs(((a - b) % 360 + 540) % 360 - 180);
+    const at = (it, pos) => Array.isArray(it.pos) && it.pos.every((v, i) => Math.abs(v - pos[i]) <= 0.005);
     return items.map(it => {
       const raw = next.get(it.name);
-      if (!raw || it.type !== raw.type || !Array.isArray(it.pos) || it.pos.some((v, i) => Math.abs(v - raw.pos[i]) > 0.005) ||
-        turn(it.yaw ?? 0, raw.yaw) > 0.01 || Math.abs((it.tilt ?? 0) - raw.tilt) > 0.01 || ![undefined, 'black', 'bronze'].includes(it.params?.finish)) return it;
-      return { ...it, params: { ...it.params, finish: 'timber' } };
+      if (!raw || it.type !== raw.type) return it;
+      if (naveChandelier(it.name)) return at(it, [raw.pos[0], NAVE_CHANDELIER_BEFORE_Y, raw.pos[2]]) ? { ...it, pos: [it.pos[0], raw.pos[1], it.pos[2]] } : it;
+      if (!at(it, raw.pos) || turn(it.yaw ?? 0, raw.yaw) > 0.01 || Math.abs((it.tilt ?? 0) - raw.tilt) > 0.01 || ![undefined, 'black', 'bronze'].includes(it.params?.finish)) return it;
+      return { ...it, params: { ...it.params, finish: raw.params.finish } };
     });
   }
 
@@ -803,5 +818,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { beamAccentFinishRevision, upgradeBeamAccentFinish, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

@@ -24,18 +24,41 @@ This follows the owner's earlier direction for decorative and statue light (9 Oc
 - **Cable.** The lead runs over the beam as before and drops down the sanctuary face in the finish-matched removable cover to the bracket plate. No drilling or notching of the timber is assumed.
 - The **reference frame** comparison (no low tie beam) shows these heads where the drawn beams would be; they are drawn for the as-drawn frame only.
 
-### 1.1 Sanctuary accent heads on the same beams (follow-up, 19 October 2026)
+### 1.1 Sanctuary lights in the lacquer (owner, 19 October 2026)
 
-The twelve L3 accent heads that hang from the axis-9 tie and side beams were left black (projectors) and bronze (spotlights) above, so the last tie showed black heads beside the red reading lights. They now take the same beam lacquer. **Finish only**: type, body, place, aim, beam, output and circuit are unchanged, and the light, sound, air and electrical results are identical (`verify_simulator.cjs --report --estimates` gives the same figures as section 5; only the number of cached fitting prototypes grows by two). This is a proposed follow-up of the owner's 19 October request for the reading lights; the owner has not yet confirmed it for these accent heads.
+The 21 L3 sanctuary fittings were still black (projectors) or bronze (spotlights, uplights), so the last tie showed black heads beside the red reading lights and the chamber walls carried dark heads against the lacquer. The owner chose **all of them**. **Finish only**: type, body, place, aim, beam, output and circuit are unchanged.
 
 | Records | Type | Fittings | Finish |
 | --- | --- | --- | --- |
 | L98–L105 | `projector24`, `spot15`, `projector36` | Altar key lights B/H, ambo key light, sanctuary step fills B/H, presider chair light, sanctuary frame washes B/H, under the axis-9 tie | Black / bronze → beam lacquer |
 | L115–L118 | `spot15`, `projector36` | Statue accents and shrine washes B/H, under the axis-9 side beams | Bronze / black → beam lacquer |
+| L106–L108, L110–L112, L114 | `spot15`, `projector36` | Crucifix accents B/H, reredos washes B/H, reredos base washes B/H, tabernacle accent, on the chamber side walls behind the frame | Bronze / black → chamber lacquer |
+| L109, L113 | `uplight` | Sanctuary vault uplights B/H on the springing cornice | Bronze → chamber lacquer |
 
-- `projector24`, `projector36` and `spot15` gain a **Finish** setting (black or bronze as before, or *Beam timber*); the timber finish draws with the model's own beam material, follows **Settings → Structural timber tone**, and the pendant stem and canopy take the same lacquer. Every other head of these types keeps its metal finish, including the chamber heads behind the frame (crucifix, reredos, tabernacle) and the held wing projectors.
-- Saved layouts: one-time revision `beamAccentFinishRevision = 2026-10-19-beam-accent-finish-1` (backup `.before-beam-accent-finish`). It changes only the finish of these twelve heads where each is still the same type at its default place and aim and still in its metal finish; a moved, re-aimed, re-typed or deleted head stays as the user left it. The pre-review wing comparison treats the new default black finish as untouched.
-- Open, as for the reading heads (Q50): a powder-coat or lacquer match to a real sample, lens glare, and heat on a dark finish at the 22–50 W heads. The bronze roof uplight on top of the tie is unchanged. Evidence: [review/beam-accent-finish-2026-10-19](../../review/beam-accent-finish-2026-10-19/README.md).
+- `projector24`, `projector36`, `spot15` and `uplight` gain a **Finish** setting: their metal as before, *Beam timber* or *Sanctuary chamber lacquer*. Every other fitting of these types keeps its metal finish (the held wing projectors, the roof uplights on top of the ties).
+- **Two lacquers, one colour.** The beam timber (`interior.materials.timber`) copies only the colour and roughness of the sanctuary lacquer and follows **Settings → Structural timber tone**. The chamber walls are drawn with the sanctuary's own material (`Sanctuary · oxblood lacquer`: clear coat over a faint grain), which stays red in every tone. In the default red tone they look the same; in a natural tone the beams and the 12 beam heads turn brown together while the chamber walls and their 9 fittings stay red. Each group therefore shares the material of the surface it is fixed to. A pendant stem and canopy take the head's lacquer.
+- **Light results unchanged**: `verify_simulator.cjs --report --estimates` gives the same light, sound, air and power figures for the finishes (the material of a fitting does not enter the calculation).
+
+### 1.2 Nave chandeliers 1.0 m higher (owner, 19 October 2026)
+
+| Records | Before | After |
+| --- | --- | --- |
+| L78–L80 · Chandelier · bay 4–5 / 6–7 / 8–9 (`chandelier8`, LD) | Fixture origin +6.3 m (initial value of 4 October 2026, no recorded reason); candles about +5.85 m, lowest point about +5.15 m | **+7.3 m**; candles about +6.85 m, lowest point about +6.15 m. Same X (mid-bay), Z 0 and chain anchor (+12.15 m); the chain is 1.0 m shorter |
+
+The grand chandelier at the 9–10 crossing stays at +9.2 m.
+
+- **Clearances.** Each chandelier (Ø 1.9 m) hangs mid-bay, about 1.1 m clear of the tie-beam faces either side, with its candles just above the side-beam soffit (+6.66 m) and its top well below the tie soffit (+8.59 m). It lies outside the light cone of every one of the 56 reading heads on the tie and side beams (beam half-angle plus 2°, checked in `verify_simulator.cjs`), so no reading head shines through or onto it. The simulator's fan, chandelier and low-chandelier design checks report nothing new.
+- **Sightlines.** With the saved seat plan (`planning/model-plan-data.js`, 576 nave seats, eye +1.2 m), no seat's line to the crucifix or the altar crosses a chandelier at any height from +6.3 to +8.3 m (check by the coordinating session, 19 October 2026). Raising them costs no view.
+- **Seat light.** The chandeliers are decorative (LD) but add a little to the book plane. Full service · evening, against `eng/12-hidden-fittings` (27a2bcd): seats at 200 lux 90.2 % (90.2 %); seat average 304 lux (305); central block 321 lux (322); wing minimum 121.7 lux (121.6). Clarity, feedback, air and the 5 610 W full-service estimate are unchanged.
+- **Cable.** Each pendant drop is 1.0 m shorter (16.28 → 15.28 m): LD route 71.8 → 70.8 m, mains route on timber 951 → 948 m, total route 5 042.8 → 5 039.8 m. Load and protection are unchanged.
+- **Cinematic tour.** The "timber" shot of the five-minute tour flies at +7.0 m along the nave: its nearest object is now the bay 4–5 chandelier at 1.07 m (before: a column at 1.32 m). No contact; the frame is in the evidence below. The film itself is unchanged.
+- Open: chain length and ceiling-hook detail at the ridge (load unchanged), safe access for cleaning and lamp replacement now 1.0 m higher (from a tower or lowering winch, not yet specified).
+
+### 1.3 Saved layouts
+
+One-time revision `finishChandelierRevision = 2026-10-19-sanctuary-lacquer-chandeliers-1` in `simulator/design.js`, applied once by `simulator/engine.js` with a backup under `.before-lacquer-chandeliers`. A sanctuary fitting changes only its finish, and only where it is still the same type at its default place and aim and in its metal finish (or has no finish, from before the setting). A nave chandelier rises only if it still hangs at its old +6.3 m default place; it keeps its ID, chain anchor, switching and dimmer. A moved, re-aimed, re-typed, refinished or deleted item stays as the user left it, and nothing is added. The pre-review wing comparison treats the new default black finish of the old wing projectors as untouched. Checked in `verify_simulator.cjs`.
+
+Open, as for the reading heads (Q50): a powder-coat or lacquer match to real samples of both the beam and the chamber lacquer, lens glare, and heat on a dark finish at the 22–50 W heads. The bronze roof uplights on top of the ties are unchanged. Evidence: [review/beam-accent-finish-2026-10-19](../../review/beam-accent-finish-2026-10-19/README.md) (first step, beam heads only) and [review/sanctuary-lacquer-chandeliers-2026-10-19](../../review/sanctuary-lacquer-chandeliers-2026-10-19/README.md).
 
 ## 2. Tower and façade lights on the cornice ledges
 

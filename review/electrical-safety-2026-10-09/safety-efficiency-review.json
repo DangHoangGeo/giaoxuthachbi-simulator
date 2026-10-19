@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "status": "DERIVED / CONCEPT / ENGINEERING HOLD · comparison screens only",
- "model_git_revision": "27a2bcd42dca9ea11a6d5c223f8eb156a87cd5ba",
+ "model_git_revision": "ec627be4a0d400dc20133b79c77e178aee97d579",
  "source_sha256": {
   "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
   "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",
@@ -12,20 +12,20 @@
   "Thach_Bi_Viewer/realism.js": "83297a0830de7d8378d0a26b67faeb142321375c004842732ab089e5c3fcd68a",
   "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
   "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
-  "Thach_Bi_Viewer/simulator/catalog.js": "31d4e1565d02736daf5623650662b3d2949135c31304d0badcf33216512b4c28",
-  "Thach_Bi_Viewer/simulator/engine.js": "628bf6e7a6465cedd0c1cb68c5c1932b1b71efb16b50e70380bcad603f85b661",
+  "Thach_Bi_Viewer/simulator/catalog.js": "d94df77f66016709a8001fa9be0cc2e05f99ff0393e0efa98f967384e62494a1",
+  "Thach_Bi_Viewer/simulator/engine.js": "5817d0bfa84af4ed133f2e6d597f97610301dd0215643e9a97e3c8ec427e980a",
   "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
   "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
-  "Thach_Bi_Viewer/simulator/design.js": "d50815ee14bf26efdb07aa06636c1deb7f32e84595518212e9213fe46760e172",
+  "Thach_Bi_Viewer/simulator/design.js": "8d458c5c073d12636cd489ae48938c004d790ae9785d8d5923b02f218e2e3982",
   "Thach_Bi_Viewer/simulator/analysis.js": "7670036a3be8f9ca423b551bc75261c2272e6c07ba077ea49a394cb9c04af849",
   "Thach_Bi_Viewer/simulator/electrical.js": "6fdfa46c5b88334081299bfcd9059dce912cce8800383b7d71147bec6765a02c",
   "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
   "Thach_Bi_Viewer/bundle.js": "8a49d327f10910b6024f6dbab8c6deed7f0b5972c1052c1a309fa3947d35bb65",
   "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
   "scripts/export_electrical_loads.cjs": "066af5453cb3e782abe4cfaf585b6cd9b04ebafad050e18c73615e7ca6fdca2b",
-  "docs/electrical-grid/electrical-systems.json": "7407c92e37c8f0d1299afa3b00360d1b00fbe1db0f067d0666f57047093f1960",
-  "docs/electrical-grid/equipment-layout.json": "5f987e29647ab0b5cedad770eae700cb80b204e95ea85d8a400edb95c4d1128d",
-  "docs/electrical-grid/categories/manifest.json": "d0ffcdc2f08490125e5cb9cfd1693fe38740c7c057bca5753e537e8fecc9ffdb"
+  "docs/electrical-grid/electrical-systems.json": "5c2b7909fdbf3eab73054e0a16a6cfe55decd4f3c81b9a88867863ffd7c0fef1",
+  "docs/electrical-grid/equipment-layout.json": "76909d79225afb700a61e3530abc09d363cc6e053b648e6ff87757a6c3bc33f9",
+  "docs/electrical-grid/categories/manifest.json": "642f2514a835db86e0760e96cba34af900c8a016fd4bb40a226630fcadb0a791"
  },
  "default_scene": "Full service · evening",
  "assumptions": {
@@ -1487,10 +1487,10 @@
    "connected_w": 298.723404,
    "socket_allowance_w": null,
    "full_service_w": 298.723404,
-   "longest_path_m": 71.824445,
+   "longest_path_m": 70.824445,
    "farthest_route": "drop:LC1:LD:light:-1:L78",
    "feeder_from_db1_m": 2.56,
-   "route_m": 230.019848,
+   "route_m": 227.019848,
    "exterior_points": 0,
    "open_weather_points": 0,
    "reach_points": 0,
@@ -1503,19 +1503,19 @@
      "loading_percent": 24.051804,
      "circuit_budget_percent": 2.0,
      "comparison_area_mm2": 1.5,
-     "vdrop_percent_at_area": 0.860447,
-     "vdrop_percent_at_minimum_area": 0.860447,
+     "vdrop_percent_at_area": 0.857445,
+     "vdrop_percent_at_minimum_area": 0.857445,
      "minimum_area_mm2": 1.5,
-     "far_end_bound_percent_at_minimum_area": 1.789097,
+     "far_end_bound_percent_at_minimum_area": 1.764188,
      "minimum_area_ampacity_ok": true,
-     "fault_a_at_area": 96.270245,
+     "fault_a_at_area": 97.629525,
      "fault_clears_type_c_at_area": true,
      "fault_clears_type_b_at_area": true,
-     "loop_allowance_ohm_type_c_at_area": 1.372014,
-     "fault_a_at_minimum": 96.270245,
+     "loop_allowance_ohm_type_c_at_area": 1.403614,
+     "fault_a_at_minimum": 97.629525,
      "fault_clears_type_c_at_minimum": true,
      "fault_clears_type_b_at_minimum": true,
-     "loop_allowance_ohm_type_c_at_minimum": 1.372014
+     "loop_allowance_ohm_type_c_at_minimum": 1.403614
     },
     {
      "case_id": "S2-220-PF08-50C-6",
@@ -1525,24 +1525,24 @@
      "loading_percent": 28.288201,
      "circuit_budget_percent": 2.0,
      "comparison_area_mm2": 1.5,
-     "vdrop_percent_at_area": 1.058003,
-     "vdrop_percent_at_minimum_area": 1.058003,
+     "vdrop_percent_at_area": 1.054312,
+     "vdrop_percent_at_minimum_area": 1.054312,
      "minimum_area_mm2": 1.5,
-     "far_end_bound_percent_at_minimum_area": 2.199868,
+     "far_end_bound_percent_at_minimum_area": 2.16924,
      "minimum_area_ampacity_ok": true,
-     "fault_a_at_area": 92.084582,
+     "fault_a_at_area": 93.384763,
      "fault_clears_type_c_at_area": true,
      "fault_clears_type_b_at_area": true,
-     "loop_allowance_ohm_type_c_at_area": 1.213681,
-     "fault_a_at_minimum": 92.084582,
+     "loop_allowance_ohm_type_c_at_area": 1.245281,
+     "fault_a_at_minimum": 93.384763,
      "fault_clears_type_c_at_minimum": true,
      "fault_clears_type_b_at_minimum": true,
-     "loop_allowance_ohm_type_c_at_minimum": 1.213681
+     "loop_allowance_ohm_type_c_at_minimum": 1.245281
     }
    ],
    "full_service_loss_w": {
-    "comparison": 1.662109,
-    "minimum": 1.662109
+    "comparison": 1.659242,
+    "minimum": 1.659242
    }
   },
   {
@@ -3307,7 +3307,7 @@
   "outer-wall": 209.949495,
   "rear-wall": 57.944,
   "roof-local": 42.142945,
-  "roof-pendant": 331.874042,
+  "roof-pendant": 328.874042,
   "service-ceiling": 17.95,
   "side-wall": 63.722,
   "tower-cornice": 125.781926,
@@ -3315,8 +3315,8 @@
   "underfloor-event": 26.34,
   "wall-roof-trunk": 1951.067658
  },
- "timber_roof_and_lining_mains_m": 951.05601,
- "mains_route_m": 4227.7196,
+ "timber_roof_and_lining_mains_m": 948.05601,
+ "mains_route_m": 4224.7196,
  "buried_routes": [
   {
    "route_id": "trunk:DB2:P3:power:-1",
@@ -4388,11 +4388,11 @@
   "lighting_power_density_w_m2": 2.941727,
   "seat_lux": {
    "n": 368,
-   "min": 121.612189,
-   "mean": 304.73235,
-   "max": 461.934121
+   "min": 121.672996,
+   "mean": 304.383236,
+   "max": 461.981427
   },
-  "lux_per_w_m2": 103.58962,
+  "lux_per_w_m2": 103.470944,
   "efficacy": [
    {
     "circuit": "L1",
@@ -4635,10 +4635,10 @@
    }
   ],
   "final_circuit_mains_w_full_service": 5500.85096,
-  "loss_w_comparison_areas": 32.550927,
-  "loss_w_minimum_areas": 32.550927,
-  "loss_percent_comparison_areas": 0.591743,
-  "loss_percent_minimum_areas": 0.591743,
+  "loss_w_comparison_areas": 32.54806,
+  "loss_w_minimum_areas": 32.54806,
+  "loss_percent_comparison_areas": 0.591691,
+  "loss_percent_minimum_areas": 0.591691,
   "circuit_losses": [
    {
     "circuit": "E1",
@@ -4739,8 +4739,8 @@
    {
     "circuit": "LD",
     "full_service_w": 298.723404,
-    "loss_w_comparison": 1.662109,
-    "loss_w_minimum": 1.662109
+    "loss_w_comparison": 1.659242,
+    "loss_w_minimum": 1.659242
    },
    {
     "circuit": "P1",

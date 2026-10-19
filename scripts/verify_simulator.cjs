@@ -606,41 +606,76 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert.deepEqual(plain(D.upgradeHiddenFittings(up, design, SIM.GEO)), plain(up), 'applying it again changes nothing');
   assert.equal(SIM.state.settings.hiddenFittingsRevision, D.hiddenFittingsRevision, 'the revision is stored in the saved settings');
 }
-// 19 October 2026: the sanctuary accent heads hung from the axis-9 tie and side beams take the
-// beam lacquer like the reading lights beside them. Finish only; a one-time change for saved layouts.
+// 19 October 2026 (owner: all the sanctuary lights in the lacquer; nave chandeliers 1.0 m higher).
+// The accent heads hung from the axis-9 tie and side beams take the beam lacquer, the heads and vault
+// uplights on the chamber walls the chamber's own lacquer. Finish only; a one-time change for saved layouts.
 {
-  const D = sandbox.CHURCH_SIM_DESIGN, timber = interior.materials.timber, plain = v => JSON.parse(JSON.stringify(v));
-  const names = ['Altar key light · B', 'Altar key light · H', 'Ambo key light', 'Sanctuary step fill · B', 'Sanctuary step fill · H', 'Presider chair light',
+  const D = sandbox.CHURCH_SIM_DESIGN, timber = interior.materials.timber, chamberWall = sandbox.window.CHURCH_SANCTUARY.materials.wood, plain = v => JSON.parse(JSON.stringify(v));
+  const beamNames = ['Altar key light · B', 'Altar key light · H', 'Ambo key light', 'Sanctuary step fill · B', 'Sanctuary step fill · H', 'Presider chair light',
     'Sanctuary frame wash · B', 'Sanctuary frame wash · H', 'Statue accent · B', 'Statue accent · H', 'Shrine wash · B', 'Shrine wash · H'];
-  const accents = names.map(name => SIM.state.items.find(it => it.name === name));
-  assert(accents.every(Boolean), 'every beam-hung sanctuary accent is in the design');
-  const metal = { projector24: 'black', projector36: 'black', spot15: 'bronze' };
-  for (const it of accents) {
-    assert(it.circuit === 'L3' && it.mount === 'pendant' && Object.hasOwn(metal, it.type) && it.params.finish === 'timber', 'beam lacquer on a beam-hung accent: ' + it.name);
-    const fx = SIM.fixtures.get(it.id);
+  const chamberNames = ['Crucifix accent · B', 'Crucifix accent · H', 'Reredos wash · B', 'Reredos wash · H', 'Reredos base wash · B', 'Reredos base wash · H',
+    'Tabernacle accent', 'Sanctuary vault uplight · B', 'Sanctuary vault uplight · H'];
+  const metal = { projector24: 'black', projector36: 'black', spot15: 'bronze', uplight: 'bronze' };
+  const byName = name => SIM.state.items.find(it => it.name === name);
+  assert([...beamNames, ...chamberNames].every(byName), 'every sanctuary accent and chamber light is in the design');
+  // The chamber side walls carry the sanctuary's own lacquer; the beam timber copies only its colour and
+  // follows the timber tone, so the chamber fittings share the wall material itself.
+  let wallMesh = null; sandbox.window.model.scene.traverse(o => { if (o.isMesh && o.name === 'Chamber side wall · lacquered timber') wallMesh = o; });
+  assert(wallMesh && wallMesh.material === chamberWall, 'the chamber side wall is in the sanctuary lacquer');
+  for (const [names, finish, mat] of [[beamNames, 'timber', timber], [chamberNames, 'chamber', chamberWall]]) for (const name of names) {
+    const it = byName(name);
+    assert(it.circuit === 'L3' && Object.hasOwn(metal, it.type) && it.params.finish === finish, finish + ' finish on ' + name);
     let meshes = 0;
-    fx.root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) { meshes++; assert.equal(m.material, timber, 'the beam lacquer itself, so it follows the timber tone: ' + it.name); } });
-    assert(meshes > 0, 'accent head has a body: ' + it.name);
+    SIM.fixtures.get(it.id).root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) { meshes++; assert.equal(m.material, mat, 'the ' + (finish === 'timber' ? 'beam' : 'chamber wall') + ' lacquer itself: ' + name); } });
+    assert(meshes > 0, 'fitting has a body: ' + name);
   }
-  // The chamber heads behind the frame keep their metal finish; nothing else in the design changed type.
-  for (const it of SIM.state.items.filter(it => Object.hasOwn(metal, it.type) && !names.includes(it.name))) assert.equal(it.params.finish, metal[it.type], 'metal finish kept: ' + it.name);
-  // Migration: an untouched head in its old metal finish (or with no finish, from before the setting
-  // existed) takes the lacquer and keeps everything else; a moved, re-aimed or re-typed head and other equipment stay.
+  // Every other head of these types keeps its metal finish (held wing projectors, roof uplights on the ties).
+  for (const it of SIM.state.items.filter(it => Object.hasOwn(metal, it.type) && ![...beamNames, ...chamberNames].includes(it.name))) assert.equal(it.params.finish, metal[it.type], 'metal finish kept: ' + it.name);
+  // Nave chandeliers: 1.0 m higher, same chain anchor, mid-bay between the ties, clear of the beams and reading heads.
+  const chandeliers = SIM.state.items.filter(it => /^Chandelier · bay [468]–[579]$/.test(it.name));
+  assert.equal(chandeliers.length, 3);
+  for (const it of chandeliers) {
+    assert(it.type === 'chandelier8' && Math.abs(it.pos[1] - 7.3) < 1e-9 && it.pos[2] === 0 && it.anchorY > 9, 'raised to +7.3 m on its ridge chain: ' + it.name);
+    const k = it.name.match(/bay (\d)/)[1], mid = (SIM.GEO.axes[k] + SIM.GEO.axes[String(Number(k) + 1)]) / 2;
+    assert(Math.abs(it.pos[0] - mid) < 1e-6, 'mid-bay: ' + it.name);
+    const head = new T.Box3(); SIM.fixtures.get(it.id).root.traverse(m => { if (m.isMesh && m !== SIM.fixtures.get(it.id).stem && m !== SIM.fixtures.get(it.id).canopy) head.expandByObject(m); });
+    const tieSoffit = Math.min(...SIM.GEO.mainBeams.map(b => b.y0));
+    assert(head.min.y > 6.1 && head.min.y < 6.3 && head.max.y < tieSoffit, 'lowest point about +6.2 m, below the tie soffit: ' + it.name + ' ' + head.min.y.toFixed(2) + '–' + head.max.y.toFixed(2));
+    for (const b of SIM.GEO.mainBeams) assert(head.max.x < b.x - b.w / 2 - 0.5 || head.min.x > b.x + b.w / 2 + 0.5, 'at least 0.5 m clear of tie beam ' + b.x + ': ' + it.name);
+    // Reading heads on the tie faces: their 28° cones (aimed 8° along the nave) do not reach the chandelier.
+    const readingEmitters = SIM.emitters().filter(e => /^Reading light · axis /.test(SIM.item(e.id)?.name || ''));
+    assert.equal(readingEmitters.length, 56, 'every reading head checked');
+    for (const r of readingEmitters) {
+      const half = ((SIM.item(r.id).beam ?? 36) / 2 + 2) * Math.PI / 180;
+      const corners = [];
+      for (const x of [head.min.x, head.max.x]) for (const y of [head.min.y, head.max.y]) for (const z of [head.min.z, head.max.z]) corners.push([x, y, z]);
+      const centre = head.getCenter(new T.Vector3()), radius = head.getSize(new T.Vector3()).length() / 2;
+      const v = new T.Vector3(centre.x - r.pos[0], centre.y - r.pos[1], centre.z - r.pos[2]), dist = v.length(), dir = new T.Vector3(...r.dir).normalize();
+      const angle = Math.acos(Math.max(-1, Math.min(1, v.dot(dir) / dist))) - Math.asin(Math.min(1, radius / dist));
+      assert(angle > half, 'reading cone clear of ' + it.name + ': ' + SIM.item(r.id).name + ' ' + (angle * 180 / Math.PI).toFixed(1) + '°');
+    }
+  }
+  // Migration: an untouched fitting in its old metal finish (or with none, from before the setting) takes the
+  // lacquer and keeps everything else; a chandelier still at +6.3 rises; anything the user changed stays.
   const design = D.recommended(SIM.GEO, SIM), raw = name => design.find(it => it.name === name);
   const old = (name, o = {}) => ({ ...raw(name), params: { finish: metal[raw(name).type] }, ...o });
+  const chOld = (name, o = {}) => ({ ...raw(name), pos: [raw(name).pos[0], D.NAVE_CHANDELIER_BEFORE_Y, 0], ...o });
   const saved = [old('Altar key light · B', { id: 'a1', on: false, dim: 0.3, lumens: 4000 }), { ...raw('Ambo key light'), id: 'a2', params: {} },
     old('Statue accent · H', { id: 'a3', pos: [raw('Statue accent · H').pos[0], raw('Statue accent · H').pos[1], 4.1] }), old('Shrine wash · B', { id: 'a4', tilt: -30 }),
     old('Sanctuary frame wash · H', { id: 'a5', type: 'projector24' }), old('Presider chair light', { id: 'a6', params: { finish: 'timber' } }),
-    { ...SIM.state.items.find(it => it.name === 'Tabernacle accent'), id: 'a7' }];
-  const up = D.upgradeBeamAccentFinish(saved, design), byId = id => up.find(it => it.id === id);
+    old('Reredos wash · H', { id: 'c1', dim: 0.5 }), old('Sanctuary vault uplight · B', { id: 'c2', on: false }), old('Tabernacle accent', { id: 'c3', yaw: 12 }),
+    chOld('Chandelier · bay 4–5', { id: 'h1', on: false, dim: 0.4 }), chOld('Chandelier · bay 6–7', { id: 'h2', pos: [24.0, 6.3, 0.5] }), chOld('Chandelier · bay 8–9', { id: 'h3', pos: [raw('Chandelier · bay 8–9').pos[0], 5.8, 0] }),
+    { ...raw('Grand chandelier · crossing 9–10'), id: 'g' }];
+  const up = D.upgradeFinishChandeliers(saved, design), byId = id => up.find(it => it.id === id), was = id => saved.find(it => it.id === id);
   assert.equal(up.length, saved.length, 'nothing is added or removed');
-  assert(byId('a1').params.finish === 'timber' && byId('a2').params.finish === 'timber', 'untouched beam heads take the lacquer');
-  const { params: _p1, ...restBefore } = saved[0], { params: _p2, ...restAfter } = byId('a1');
-  assert.deepEqual(plain(restAfter), plain(restBefore), 'only the finish changes: place, aim, output, switch and dimmer kept');
-  for (const id of ['a3', 'a4', 'a5', 'a7']) assert.equal(byId(id), saved.find(it => it.id === id), 'a moved, re-aimed or re-typed head and the chamber heads stay as they were: ' + id);
-  assert.deepEqual(plain(byId('a6')), plain(saved[5]), 'a head already in the lacquer stays');
-  assert.deepEqual(plain(D.upgradeBeamAccentFinish(up, design)), plain(up), 'applying it again changes nothing');
-  assert.equal(SIM.state.settings.beamAccentFinishRevision, D.beamAccentFinishRevision, 'the revision is stored in the saved settings');
+  assert(byId('a1').params.finish === 'timber' && byId('a2').params.finish === 'timber', 'untouched beam heads take the beam lacquer');
+  assert(byId('c1').params.finish === 'chamber' && byId('c2').params.finish === 'chamber', 'untouched chamber fittings take the chamber lacquer');
+  for (const id of ['a1', 'c1', 'c2']) { const { params: _a, ...after } = byId(id), { params: _b, ...before } = was(id); assert.deepEqual(plain(after), plain(before), 'only the finish changes: ' + id); }
+  for (const id of ['a3', 'a4', 'a5', 'c3', 'h2', 'h3', 'g']) assert.equal(byId(id), was(id), 'a moved, re-aimed or re-typed item and the grand chandelier stay as they were: ' + id);
+  assert.deepEqual(plain(byId('a6')), plain(was('a6')), 'a head already in the lacquer stays');
+  assert(byId('h1').pos[1] === 7.3 && byId('h1').pos[0] === was('h1').pos[0] && byId('h1').on === false && byId('h1').dim === 0.4 && byId('h1').anchorY === was('h1').anchorY, 'a chandelier at +6.3 rises; switch, dimmer and anchor kept');
+  assert.deepEqual(plain(D.upgradeFinishChandeliers(up, design)), plain(up), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.finishChandelierRevision, D.finishChandelierRevision, 'the revision is stored in the saved settings');
 }
 // Every fixture is fixed to something the model actually has: wall items need a
 // surface right behind them, pendants need structure at their anchor (fans on

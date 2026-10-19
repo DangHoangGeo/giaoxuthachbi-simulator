@@ -28,6 +28,9 @@
     // follows the timber tone setting and the day/evening finishes exactly. The colours here
     // are the fallbacks for headless calculations.
     beamTimber: { color: '#853125', roughness: 0.26, share: 'timber' },
+    // The sanctuary chamber's own lacquer (side walls, cornices): it stays red whatever the
+    // structural timber tone, so fittings on the chamber walls match it in every setting.
+    chamberLacquer: { color: '#853125', roughness: 0.26, share: 'sanctuary' },
     wallPlaster: { color: '#faf3e1', roughness: 0.83, share: 'wall' },
     corniceStone: { color: '#efe2c8', roughness: 0.67, share: 'trim' },
     wood: { color: '#8a6040', roughness: 0.5 },
@@ -180,9 +183,11 @@
     }
   }
   // A projector hung from the timber beams may take the beam lacquer instead of its metal
-  // finish (19 October 2026: no black heads beside the red reading lights on the axis-9 tie).
-  // Finish only: the body, optic and emitter are the same.
-  const projectorFinish = (params, metal) => params?.finish === 'timber' ? 'beamTimber' : metal;
+  // finish (19 October 2026: no black heads beside the red reading lights on the axis-9 tie),
+  // and one on the sanctuary chamber walls the chamber lacquer (owner, 19 October 2026: all
+  // the sanctuary lights). Finish only: the body, optic and emitter are the same.
+  const projectorFinish = (params, metal) => ({ timber: 'beamTimber', chamber: 'chamberLacquer' })[params?.finish] ?? metal;
+  const finishParam = (metal, label) => ({ finish: { label: 'Finish', options: { [metal]: label, timber: 'Beam timber (follows the timber tone)', chamber: 'Sanctuary chamber lacquer' }, value: metal } });
   function buildProjector(k, r = 0.075, len = 0.24, finish = 'black', yoke = true, mountUp = false) {
     const sign = mountUp ? 1 : -1;
     k.box(0.14, 0.022, 0.14, finish, { p: [0, sign * 0.011, 0] });
@@ -200,11 +205,12 @@
       k.glowPoint([len / 2 + 0.05, 0, 0], r * 4);
     });
   }
-  function buildUplight(k) {
-    k.box(0.32, 0.03, 0.16, 'bronze', { p: [0, 0.015, 0] });
+  function buildUplight(k, { params } = {}) {
+    const finish = projectorFinish(params, 'bronze');
+    k.box(0.32, 0.03, 0.16, finish, { p: [0, 0.015, 0] });
     k.pivots.head = [0, 0.09, 0];
     k.in('head', () => {
-      k.box(0.12, 0.22, 0.3, 'bronze', { p: [-0.03, 0, 0] });
+      k.box(0.12, 0.22, 0.3, finish, { p: [-0.03, 0, 0] });
       k.box(0.006, 0.18, 0.26, 'glow', { p: [0.034, 0, 0] });
       k.glowPoint([0.06, 0, 0], 0.4);
     });
@@ -909,11 +915,11 @@
       light: { lumens: 940, watts: 9, cct: 2700, cri: 90, emitters: [{ kind: 'point', pos: [0.24, 0.2, 0] }] }, build: buildSconce },
     { id: 'projector24', cat: LIGHT, family: 'Task & accent', name: 'LED projector · narrow 24°', mounts: ['pendant', 'wall'], aim: true, defaultTilt: -90, defaultDrop: 0, glow: 'lens', circuit: 'L1',
       desc: '6 000 lm, 3000 K CRI 90, 24° beam, 50 W. Long throws from beams.',
-      params: { finish: { label: 'Finish', options: { black: 'Black', timber: 'Beam timber (follows the timber tone)' }, value: 'black' } },
+      params: finishParam('black', 'Black'),
       light: { lumens: 6000, watts: 50, cct: 3000, cri: 90, beam: 24, field: 40, optics: [15, 24, 36, 50], emitters: [{ kind: 'spot', head: true, pos: [0.17, 0, 0] }] }, build: (k, { params } = {}) => buildProjector(k, 0.075, 0.24, projectorFinish(params, 'black')) },
     { id: 'projector36', cat: LIGHT, family: 'Task & accent', name: 'LED projector · medium 36°', mounts: ['pendant', 'wall'], aim: true, defaultTilt: -90, defaultDrop: 0, glow: 'lens', circuit: 'L1',
       desc: '6 000 lm, 3000 K CRI 90, 36° beam, 50 W. Reading light from the tie beams.',
-      params: { finish: { label: 'Finish', options: { black: 'Black', timber: 'Beam timber (follows the timber tone)' }, value: 'black' } },
+      params: finishParam('black', 'Black'),
       light: { lumens: 6000, watts: 50, cct: 3000, cri: 90, beam: 36, field: 58, optics: [15, 24, 36, 50], emitters: [{ kind: 'spot', head: true, pos: [0.17, 0, 0] }] }, build: (k, { params } = {}) => buildProjector(k, 0.075, 0.24, projectorFinish(params, 'black')) },
     // Owner, 19 October 2026: reading lights in the colour of the timber, tucked against the beams.
     { id: 'readingProjector', cat: LIGHT, family: 'Task & accent', name: 'Reading projector · side bracket, finish-matched', mounts: ['wall'], aim: true, defaultTilt: -82, glow: 'lens', circuit: 'L1',
@@ -922,7 +928,7 @@
       light: { lumens: 6000, watts: 50, cct: 3000, cri: 90, beam: 36, field: 58, optics: [15, 24, 28, 36, 44, 50], emitters: [{ kind: 'spot', head: true, pos: [0.12, 0, 0] }] }, build: buildReadingProjector },
     { id: 'spot15', cat: LIGHT, family: 'Task & accent', name: 'Accent spotlight · 15°', mounts: ['pendant', 'wall', 'floor'], aim: true, defaultTilt: -45, defaultDrop: 0, glow: 'lens', circuit: 'L3', shadow: true,
       desc: '2 500 lm, 3000 K CRI 95, 15° beam, 22 W. Altar, ambo, crucifix and statues.',
-      params: { finish: { label: 'Finish', options: { bronze: 'Bronze', timber: 'Beam timber (follows the timber tone)' }, value: 'bronze' } },
+      params: finishParam('bronze', 'Bronze'),
       light: { lumens: 2500, watts: 22, cct: 3000, cri: 95, beam: 15, field: 26, optics: [10, 15, 24, 36], emitters: [{ kind: 'spot', head: true, pos: [0.12, 0, 0] }] }, build: (k, { params } = {}) => buildProjector(k, 0.05, 0.17, projectorFinish(params, 'bronze')) },
     { id: 'servicePanel', cat: LIGHT, family: 'Task & accent', name: 'Service-room LED panel · 600 × 600 mm', mounts: ['pendant'], defaultDrop: 0, glow: 'lens', circuit: 'L3',
       desc: 'Existing 600 × 600 × 30 mm panel geometry. 3000 lm / 30 W are provisional category values; confirm product.',
@@ -933,6 +939,7 @@
       light: { lumens: 12000, watts: 90, cct: 4000, cri: 80, beam: 70, field: 110, emitters: [{ kind: 'spot', head: true, pos: [0.05, 0, 0] }] }, build: buildHighbay },
     { id: 'uplight', cat: LIGHT, family: 'Architectural', name: 'Roof uplight · wide flood', mounts: ['floor', 'wall'], aim: true, defaultTilt: 90, glow: 'lens', circuit: 'LA',
       desc: '4 000 lm, 2700 K, 100° flood, 32 W. Sits on a tie beam and washes the timber roof.',
+      params: finishParam('bronze', 'Bronze'),
       light: { lumens: 4000, watts: 32, cct: 2700, cri: 90, beam: 100, field: 150, emitters: [{ kind: 'spot', head: true, pos: [0.04, 0, 0] }] }, build: buildUplight },
     { id: 'lantern', cat: LIGHT, family: 'Decorative', name: 'Pendant lantern · opal', mounts: ['pendant'], defaultDrop: 1.2, glow: 'warm', circuit: 'L4',
       desc: '1 500 lm, 2700 K, 14 W. Verandas and porches.',

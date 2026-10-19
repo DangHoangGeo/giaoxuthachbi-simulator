@@ -9691,14 +9691,14 @@
         ],
         [
           16.725,
-          6.3,
+          7.3,
           0
         ]
       ],
       "method": "roof-pendant",
       "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 16.276314927469798,
+      "length": 15.276314927469798,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -9743,14 +9743,14 @@
         ],
         [
           25.725,
-          6.3,
+          7.3,
           0
         ]
       ],
       "method": "roof-pendant",
       "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 16.276314927469798,
+      "length": 15.276314927469798,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -9795,14 +9795,14 @@
         ],
         [
           34.725,
-          6.3,
+          7.3,
           0
         ]
       ],
       "method": "roof-pendant",
       "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 16.276314927469798,
+      "length": 15.276314927469798,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -35255,7 +35255,7 @@
       "hiddenAlternative": false,
       "position": [
         16.725,
-        6.3,
+        7.3,
         0
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -35280,7 +35280,7 @@
       "hiddenAlternative": false,
       "position": [
         25.725,
-        6.3,
+        7.3,
         0
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -35305,7 +35305,7 @@
       "hiddenAlternative": false,
       "position": [
         34.725,
-        6.3,
+        7.3,
         0
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"

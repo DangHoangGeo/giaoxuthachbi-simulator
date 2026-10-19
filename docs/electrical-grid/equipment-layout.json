@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-19T08:50:48.752Z",
+  "savedAt": "2026-10-19T11:17:33.830Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -49,7 +49,7 @@
     "facadeStatueRevision": "2026-10-09-facade-statues-3-concealed-light-candles",
     "exhaustSplitRevision": "2026-10-18-exhaust-split-1",
     "hiddenFittingsRevision": "2026-10-19-hidden-fittings-1",
-    "beamAccentFinishRevision": "2026-10-19-beam-accent-finish-1",
+    "finishChandelierRevision": "2026-10-19-sanctuary-lacquer-chandeliers-1",
     "eveningExposureRevision": "2026-10-09-evening-160"
   },
   "customScenes": [],
@@ -1711,7 +1711,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "bronze"
+      },
       "shadow": false
     },
     {
@@ -1731,7 +1733,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "bronze"
+      },
       "shadow": false
     },
     {
@@ -1751,7 +1755,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "bronze"
+      },
       "shadow": false
     },
     {
@@ -1771,7 +1777,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "bronze"
+      },
       "shadow": false
     },
     {
@@ -1791,7 +1799,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "bronze"
+      },
       "shadow": false
     },
     {
@@ -1811,7 +1821,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "bronze"
+      },
       "shadow": false
     },
     {
@@ -1831,7 +1843,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "bronze"
+      },
       "shadow": false
     },
     {
@@ -1842,7 +1856,7 @@
       "mount": "pendant",
       "pos": [
         16.725,
-        6.3,
+        7.3,
         0
       ],
       "yaw": 0,
@@ -1863,7 +1877,7 @@
       "mount": "pendant",
       "pos": [
         25.725,
-        6.3,
+        7.3,
         0
       ],
       "yaw": 0,
@@ -1884,7 +1898,7 @@
       "mount": "pendant",
       "pos": [
         34.725,
-        6.3,
+        7.3,
         0
       ],
       "yaw": 0,
@@ -2456,7 +2470,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "bronze"
+        "finish": "chamber"
       },
       "lumens": 700,
       "beam": 24,
@@ -2480,7 +2494,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "black"
+        "finish": "chamber"
       },
       "lumens": 650,
       "beam": 36,
@@ -2504,7 +2518,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "black"
+        "finish": "chamber"
       },
       "lumens": 1300,
       "shadow": false
@@ -2526,7 +2540,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "chamber"
+      },
       "lumens": 2200,
       "shadow": false
     },
@@ -2548,7 +2564,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "bronze"
+        "finish": "chamber"
       },
       "lumens": 700,
       "beam": 24,
@@ -2572,7 +2588,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "black"
+        "finish": "chamber"
       },
       "lumens": 650,
       "beam": 36,
@@ -2596,7 +2612,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "black"
+        "finish": "chamber"
       },
       "lumens": 1300,
       "shadow": false
@@ -2618,7 +2634,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "chamber"
+      },
       "lumens": 2200,
       "shadow": false
     },
@@ -2640,7 +2658,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "bronze"
+        "finish": "chamber"
       },
       "lumens": 300,
       "beam": 10,
@@ -3749,7 +3767,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "bronze"
+      },
       "lumens": 2500,
       "cct": 2700,
       "shadow": false
@@ -4023,7 +4043,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "bronze"
+      },
       "lumens": 2500,
       "cct": 2700,
       "shadow": false
