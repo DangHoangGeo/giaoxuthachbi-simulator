@@ -106,7 +106,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -666,7 +666,13 @@
   }
 
   /* ----------------------------------------------------------- materials */
+  // A finish-matched fitting draws with the model's own material for that surface: the
+  // beam timber (the timber tone setting changes it), the wall plaster or the cornice
+  // mouldings. Fittings never change these materials, so sharing them is safe.
+  const SHARED = { timber: () => ctx?.interior?.materials?.timber, wall: () => ctx?.mat?.wall, trim: () => ctx?.mat?.trim };
   function material(key) {
+    const shared = SHARED[CAT.MATERIALS[key]?.share]?.();
+    if (shared?.isMaterial) return shared;
     if (!matLib[key]) {
       const d = CAT.MATERIALS[key] || { color: '#888888' };
       const m = new T.MeshStandardMaterial({ color: d.color, metalness: d.metalness ?? 0, roughness: d.roughness ?? 0.6 });
@@ -2385,14 +2391,15 @@
       ['naveFanRevision', D.naveFanRevision, '.before-nave-fans-review', D.upgradeNaveFans],
       ['outletRevision', D.outletRevision, '.before-socket-outlets', D.upgradeOutlets],
       ['facadeStatueRevision', D.facadeStatueRevision, '.before-facade-statues', D.upgradeFacadeStatues],
-      ['exhaustSplitRevision', D.exhaustSplitRevision, '.before-exhaust-split', D.upgradeExhaustSplit]
+      ['exhaustSplitRevision', D.exhaustSplitRevision, '.before-exhaust-split', D.upgradeExhaustSplit],
+      ['hiddenFittingsRevision', D.hiddenFittingsRevision, '.before-hidden-fittings', D.upgradeHiddenFittings]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;
       const previous = JSON.parse(JSON.stringify(exportLayout()));
       try {
         localStorage.setItem(STORAGE_KEY + suffix, JSON.stringify(previous));
-        importLayout({ ...previous, items: upgrade(state.items, D.recommended(GEO, SIM)) }, { record: false });
+        importLayout({ ...previous, items: upgrade(state.items, D.recommended(GEO, SIM), GEO) }, { record: false });
         state.settings[field] = revision;
         if (!saveNow()) throw new Error('Updated layout could not be saved.');
       } catch (error) {

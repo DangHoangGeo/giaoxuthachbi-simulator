@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-17T21:33:54.811Z",
+  "savedAt": "2026-10-19T08:15:40.780Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -48,6 +48,7 @@
     "outletRevision": "2026-10-09-socket-outlets-1",
     "facadeStatueRevision": "2026-10-09-facade-statues-3-concealed-light-candles",
     "exhaustSplitRevision": "2026-10-18-exhaust-split-1",
+    "hiddenFittingsRevision": "2026-10-19-hidden-fittings-1",
     "eveningExposureRevision": "2026-10-09-evening-160"
   },
   "customScenes": [],
@@ -98,1295 +99,1407 @@
     },
     {
       "id": "L3",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 3 · B central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        9.975,
-        8.584999999999999,
-        -2.6
+        10.125,
+        8.77,
+        -2.48
       ],
-      "yaw": 0,
-      "tilt": -81.9949284968973,
+      "yaw": -7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L4",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 3 · B central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        9.975,
-        8.584999999999999,
-        -2.6
+        10.125,
+        8.77,
+        -2.72
       ],
-      "yaw": 180,
-      "tilt": -81.9949284968973,
-      "mountYaw": 180,
+      "yaw": 174.84369500023269,
+      "tilt": -80.27393729415091,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L5",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 3 · H central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        9.975,
-        8.584999999999999,
-        2.6
+        10.125,
+        8.77,
+        2.48
       ],
-      "yaw": 0,
-      "tilt": -81.9949284968973,
+      "yaw": 7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L6",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 3 · H central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        9.975,
-        8.584999999999999,
-        2.6
+        10.125,
+        8.77,
+        2.72
       ],
-      "yaw": 180,
-      "tilt": -81.9949284968973,
-      "mountYaw": 180,
+      "yaw": -174.84369500023269,
+      "tilt": -80.27393729415091,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L7",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 4 · B central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        14.475,
-        8.584999999999999,
-        -2.6
+        14.625,
+        8.77,
+        -2.48
       ],
-      "yaw": 0,
-      "tilt": -81.9949284968973,
+      "yaw": -7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L8",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 4 · B central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        14.475,
-        8.584999999999999,
-        -2.6
+        14.625,
+        8.77,
+        -2.72
       ],
-      "yaw": 180,
-      "tilt": -81.9949284968973,
-      "mountYaw": 180,
+      "yaw": 174.84369500023269,
+      "tilt": -80.27393729415091,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L9",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 4 · H central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        14.475,
-        8.584999999999999,
-        2.6
+        14.625,
+        8.77,
+        2.48
       ],
-      "yaw": 0,
-      "tilt": -81.9949284968973,
+      "yaw": 7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L10",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 4 · H central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        14.475,
-        8.584999999999999,
-        2.6
+        14.625,
+        8.77,
+        2.72
       ],
-      "yaw": 180,
-      "tilt": -81.9949284968973,
-      "mountYaw": 180,
+      "yaw": -174.84369500023269,
+      "tilt": -80.27393729415091,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L11",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 5 · B central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        18.975,
-        8.584999999999999,
-        -2.6
+        19.125,
+        8.77,
+        -2.48
       ],
-      "yaw": 0,
-      "tilt": -81.99492849689732,
+      "yaw": -7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L12",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 5 · B central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        18.975,
-        8.584999999999999,
-        -2.6
+        19.125,
+        8.77,
+        -2.72
       ],
-      "yaw": 180,
-      "tilt": -81.99492849689732,
-      "mountYaw": 180,
+      "yaw": 174.84369500023269,
+      "tilt": -80.27393729415094,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L13",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 5 · H central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        18.975,
-        8.584999999999999,
-        2.6
+        19.125,
+        8.77,
+        2.48
       ],
-      "yaw": 0,
-      "tilt": -81.99492849689732,
+      "yaw": 7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L14",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 5 · H central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        18.975,
-        8.584999999999999,
-        2.6
+        19.125,
+        8.77,
+        2.72
       ],
-      "yaw": 180,
-      "tilt": -81.99492849689732,
-      "mountYaw": 180,
+      "yaw": -174.84369500023269,
+      "tilt": -80.27393729415094,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L15",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 6 · B central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        23.475,
-        8.584999999999999,
-        -2.6
+        23.625,
+        8.77,
+        -2.48
       ],
-      "yaw": 0,
-      "tilt": -81.99492849689732,
+      "yaw": -7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L16",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 6 · B central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        23.475,
-        8.584999999999999,
-        -2.6
+        23.625,
+        8.77,
+        -2.72
       ],
-      "yaw": 180,
-      "tilt": -81.99492849689732,
-      "mountYaw": 180,
+      "yaw": 174.84369500023269,
+      "tilt": -80.27393729415094,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L17",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 6 · H central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        23.475,
-        8.584999999999999,
-        2.6
+        23.625,
+        8.77,
+        2.48
       ],
-      "yaw": 0,
-      "tilt": -81.99492849689732,
+      "yaw": 7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L18",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 6 · H central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        23.475,
-        8.584999999999999,
-        2.6
+        23.625,
+        8.77,
+        2.72
       ],
-      "yaw": 180,
-      "tilt": -81.99492849689732,
-      "mountYaw": 180,
+      "yaw": -174.84369500023269,
+      "tilt": -80.27393729415094,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L19",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 7 · B central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        27.975,
-        8.584999999999999,
-        -2.6
+        28.125,
+        8.77,
+        -2.48
       ],
-      "yaw": 0,
-      "tilt": -81.99492849689732,
+      "yaw": -7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L20",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 7 · B central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        27.975,
-        8.584999999999999,
-        -2.6
+        28.125,
+        8.77,
+        -2.72
       ],
-      "yaw": 180,
-      "tilt": -81.99492849689732,
-      "mountYaw": 180,
+      "yaw": 174.84369500023269,
+      "tilt": -80.27393729415094,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L21",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 7 · H central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        27.975,
-        8.584999999999999,
-        2.6
+        28.125,
+        8.77,
+        2.48
       ],
-      "yaw": 0,
-      "tilt": -81.99492849689732,
+      "yaw": 7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L22",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 7 · H central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        27.975,
-        8.584999999999999,
-        2.6
+        28.125,
+        8.77,
+        2.72
       ],
-      "yaw": 180,
-      "tilt": -81.99492849689732,
-      "mountYaw": 180,
+      "yaw": -174.84369500023269,
+      "tilt": -80.27393729415094,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L23",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 8 · B central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        32.475,
-        8.584999999999999,
-        -2.6
+        32.625,
+        8.77,
+        -2.48
       ],
-      "yaw": 0,
-      "tilt": -81.99492849689732,
+      "yaw": -7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L24",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 8 · B central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        32.475,
-        8.584999999999999,
-        -2.6
+        32.625,
+        8.77,
+        -2.72
       ],
-      "yaw": 180,
-      "tilt": -81.99492849689732,
-      "mountYaw": 180,
+      "yaw": 174.84369500023269,
+      "tilt": -80.27393729415094,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L25",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 8 · H central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        32.475,
-        8.584999999999999,
-        2.6
+        32.625,
+        8.77,
+        2.48
       ],
-      "yaw": 0,
-      "tilt": -81.99492849689732,
+      "yaw": 7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L26",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 8 · H central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        32.475,
-        8.584999999999999,
-        2.6
+        32.625,
+        8.77,
+        2.72
       ],
-      "yaw": 180,
-      "tilt": -81.99492849689732,
-      "mountYaw": 180,
+      "yaw": -174.84369500023269,
+      "tilt": -80.27393729415094,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L27",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 9 · B central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        8.584999999999999,
-        -2.6
+        37.125,
+        8.77,
+        -2.48
       ],
-      "yaw": 0,
-      "tilt": -81.99492849689732,
+      "yaw": -7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L28",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 9 · B central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        8.584999999999999,
-        -2.6
+        37.125,
+        8.77,
+        -2.72
       ],
-      "yaw": 180,
-      "tilt": -81.99492849689732,
-      "mountYaw": 180,
+      "yaw": 174.84369500023269,
+      "tilt": -80.27393729415094,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L29",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 9 · H central",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        8.584999999999999,
-        2.6
+        37.125,
+        8.77,
+        2.48
       ],
-      "yaw": 0,
-      "tilt": -81.99492849689732,
+      "yaw": 7.945176436186331,
+      "tilt": -83.64098388891634,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L30",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 9 · H central · twin",
       "circuit": "L1",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        8.584999999999999,
-        2.6
+        37.125,
+        8.77,
+        2.72
       ],
-      "yaw": 180,
-      "tilt": -81.99492849689732,
-      "mountYaw": 180,
+      "yaw": -174.84369500023269,
+      "tilt": -80.27393729415094,
+      "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 28,
       "shadow": false
     },
     {
       "id": "L31",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 3 · B outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        9.975,
-        6.655,
-        -5.6
+        10.084999999999999,
+        6.84,
+        -6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083218,
+      "yaw": 37.93812956620011,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L32",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 3 · B outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        9.975,
-        6.655,
-        -5.6
+        10.084999999999999,
+        6.84,
+        -4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083218,
-      "mountYaw": 180,
+      "yaw": -143.27173814254706,
+      "tilt": -77.7637396147955,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L33",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 3 · H outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        9.975,
-        6.655,
-        5.6
+        10.084999999999999,
+        6.84,
+        6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083218,
+      "yaw": -37.93812956620011,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L34",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 3 · H outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        9.975,
-        6.655,
-        5.6
+        10.084999999999999,
+        6.84,
+        4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083218,
-      "mountYaw": 180,
+      "yaw": 143.27173814254706,
+      "tilt": -77.7637396147955,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L35",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 4 · B outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        14.475,
-        6.655,
-        -5.6
+        14.584999999999999,
+        6.84,
+        -6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083218,
+      "yaw": 37.93812956620011,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L36",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 4 · B outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        14.475,
-        6.655,
-        -5.6
+        14.584999999999999,
+        6.84,
+        -4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083218,
-      "mountYaw": 180,
+      "yaw": -143.27173814254706,
+      "tilt": -77.7637396147955,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L37",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 4 · H outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        14.475,
-        6.655,
-        5.6
+        14.584999999999999,
+        6.84,
+        6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083218,
+      "yaw": -37.93812956620011,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L38",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 4 · H outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        14.475,
-        6.655,
-        5.6
+        14.584999999999999,
+        6.84,
+        4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083218,
-      "mountYaw": 180,
+      "yaw": 143.27173814254706,
+      "tilt": -77.7637396147955,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L39",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 5 · B outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        18.975,
-        6.655,
-        -5.6
+        19.085,
+        6.84,
+        -6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083216,
+      "yaw": 37.93812956620003,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L40",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 5 · B outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        18.975,
-        6.655,
-        -5.6
+        19.085,
+        6.84,
+        -4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083216,
-      "mountYaw": 180,
+      "yaw": -143.27173814254712,
+      "tilt": -77.76373961479548,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L41",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 5 · H outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        18.975,
-        6.655,
-        5.6
+        19.085,
+        6.84,
+        6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083216,
+      "yaw": -37.93812956620003,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L42",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 5 · H outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        18.975,
-        6.655,
-        5.6
+        19.085,
+        6.84,
+        4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083216,
-      "mountYaw": 180,
+      "yaw": 143.27173814254712,
+      "tilt": -77.76373961479548,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L43",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 6 · B outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        23.475,
-        6.655,
-        -5.6
+        23.585,
+        6.84,
+        -6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083216,
+      "yaw": 37.93812956620003,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L44",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 6 · B outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        23.475,
-        6.655,
-        -5.6
+        23.585,
+        6.84,
+        -4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083216,
-      "mountYaw": 180,
+      "yaw": -143.27173814254712,
+      "tilt": -77.76373961479548,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L45",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 6 · H outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        23.475,
-        6.655,
-        5.6
+        23.585,
+        6.84,
+        6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083216,
+      "yaw": -37.93812956620003,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L46",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 6 · H outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        23.475,
-        6.655,
-        5.6
+        23.585,
+        6.84,
+        4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083216,
-      "mountYaw": 180,
+      "yaw": 143.27173814254712,
+      "tilt": -77.76373961479548,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L47",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 7 · B outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        27.975,
-        6.655,
-        -5.6
+        28.085,
+        6.84,
+        -6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083216,
+      "yaw": 37.93812956620003,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L48",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 7 · B outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        27.975,
-        6.655,
-        -5.6
+        28.085,
+        6.84,
+        -4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083216,
-      "mountYaw": 180,
+      "yaw": -143.27173814254712,
+      "tilt": -77.76373961479548,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L49",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 7 · H outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        27.975,
-        6.655,
-        5.6
+        28.085,
+        6.84,
+        6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083216,
+      "yaw": -37.93812956620003,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L50",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 7 · H outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        27.975,
-        6.655,
-        5.6
+        28.085,
+        6.84,
+        4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083216,
-      "mountYaw": 180,
+      "yaw": 143.27173814254712,
+      "tilt": -77.76373961479548,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L51",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 8 · B outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        32.475,
-        6.655,
-        -5.6
+        32.585,
+        6.84,
+        -6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083216,
+      "yaw": 37.93812956620003,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L52",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 8 · B outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        32.475,
-        6.655,
-        -5.6
+        32.585,
+        6.84,
+        -4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083216,
-      "mountYaw": 180,
+      "yaw": -143.27173814254712,
+      "tilt": -77.76373961479548,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L53",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 8 · H outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        32.475,
-        6.655,
-        5.6
+        32.585,
+        6.84,
+        6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083216,
+      "yaw": -37.93812956620003,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L54",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 8 · H outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        32.475,
-        6.655,
-        5.6
+        32.585,
+        6.84,
+        4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083216,
-      "mountYaw": 180,
+      "yaw": 143.27173814254712,
+      "tilt": -77.76373961479548,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L55",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 9 · B outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        6.655,
-        -5.6
+        37.085,
+        6.84,
+        -6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083216,
+      "yaw": 37.93812956620003,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L56",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 9 · B outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        6.655,
-        -5.6
+        37.085,
+        6.84,
+        -4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083216,
-      "mountYaw": 180,
+      "yaw": -143.27173814254712,
+      "tilt": -77.76373961479548,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L57",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 9 · H outer",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        6.655,
-        5.6
+        37.085,
+        6.84,
+        6.09
       ],
-      "yaw": 0,
-      "tilt": -81.99325679083216,
+      "yaw": -37.93812956620003,
+      "tilt": -82.25496355184669,
       "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L58",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Reading light · axis 9 · H outer · twin",
       "circuit": "L2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        6.655,
-        5.6
+        37.085,
+        6.84,
+        4.84
       ],
-      "yaw": 180,
-      "tilt": -81.99325679083216,
-      "mountYaw": 180,
+      "yaw": 143.27173814254712,
+      "tilt": -77.76373961479548,
+      "mountYaw": 0,
       "anchorY": 6.66,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "timber"
+      },
       "lumens": 2300,
       "beam": 36,
       "shadow": false
     },
     {
       "id": "L59",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Rear rows light · entrance façade · B",
       "circuit": "L1",
       "mount": "wall",
@@ -1401,14 +1514,16 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "wall"
+      },
       "lumens": 6000,
       "beam": 44,
       "shadow": false
     },
     {
       "id": "L60",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Rear centre light · entrance façade · B",
       "circuit": "L1",
       "mount": "wall",
@@ -1423,14 +1538,16 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "wall"
+      },
       "lumens": 3300,
       "beam": 50,
       "shadow": false
     },
     {
       "id": "L61",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Rear rows light · entrance façade · H",
       "circuit": "L1",
       "mount": "wall",
@@ -1445,14 +1562,16 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "wall"
+      },
       "lumens": 6000,
       "beam": 44,
       "shadow": false
     },
     {
       "id": "L62",
-      "type": "projector36",
+      "type": "readingProjector",
       "name": "Rear centre light · entrance façade · H",
       "circuit": "L1",
       "mount": "wall",
@@ -1467,7 +1586,9 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "finish": "wall"
+      },
       "lumens": 3300,
       "beam": 50,
       "shadow": false
@@ -3448,48 +3569,48 @@
     },
     {
       "id": "L160",
-      "type": "corniceFlood",
+      "type": "ledgeFlood",
       "name": "Tower lower front wash · B",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        -0.125,
-        8.4,
-        -10.853
+        -0.34,
+        8.39,
+        -11.453000000000001
       ],
-      "yaw": 63.763287804692716,
-      "tilt": -72.12654937134948,
+      "yaw": 82.11686068327029,
+      "tilt": -58.77615553708832,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "outreach": 0.12
       },
       "lumens": 3500,
-      "cct": 3000,
       "beam": 50,
       "shadow": false
     },
     {
       "id": "L161",
-      "type": "corniceFlood",
+      "type": "ledgeBar",
       "name": "Tower stage 2 flood · B",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        -0.125,
-        8.4,
+        -0.34,
+        8.39,
         -10.153
       ],
       "yaw": 0,
-      "tilt": 84.80016735942135,
+      "tilt": 85.58829356070004,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "length": 2,
+        "outreach": 0.1
       },
       "lumens": 7000,
       "cct": 3000,
@@ -3498,23 +3619,24 @@
     },
     {
       "id": "L162",
-      "type": "corniceFlood",
+      "type": "ledgeBar",
       "name": "Tower stage 3 flood · B",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        -0.035,
-        15.88,
+        -0.24999999999999997,
+        15.84,
         -10.153
       ],
       "yaw": 0,
-      "tilt": 84.22494994345205,
+      "tilt": 85.14063031087433,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "length": 2,
+        "outreach": 0.1
       },
       "lumens": 6000,
       "cct": 3000,
@@ -3523,51 +3645,51 @@
     },
     {
       "id": "L163",
-      "type": "corniceFlood",
+      "type": "ledgeBar",
       "name": "Belfry front wash · B",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        0.065,
-        23.2,
+        -0.15,
+        23.14,
         -10.153
       ],
       "yaw": 0,
-      "tilt": 80.53767779197439,
+      "tilt": 81.88943917970877,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "length": 1.8,
+        "outreach": 0.1
       },
       "lumens": 4500,
       "cct": 3000,
-      "beam": 40,
+      "beam": 30,
       "shadow": false
     },
     {
       "id": "L164",
-      "type": "corniceFlood",
+      "type": "ledgeFlood",
       "name": "Dome front wash · B",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        0.35,
-        29.26,
+        0.14,
+        29.09,
         -10.153
       ],
       "yaw": 0,
-      "tilt": 61.4293014515334,
+      "tilt": 62.93236715620101,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "outreach": 0.12
       },
-      "lumens": 2500,
-      "cct": 3000,
+      "lumens": 4000,
       "beam": 36,
       "shadow": false
     },
@@ -3595,48 +3717,48 @@
     },
     {
       "id": "L166",
-      "type": "corniceFlood",
+      "type": "ledgeFlood",
       "name": "Tower lower side wash · B",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        3.0500000000000003,
-        8.4,
-        -12.738
+        3.75,
+        8.39,
+        -12.943000000000001
       ],
-      "yaw": 149.38861159313254,
-      "tilt": -73.92933782872143,
+      "yaw": 172.11686068327032,
+      "tilt": -58.77615553708834,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "outreach": 0.12
       },
       "lumens": 2500,
-      "cct": 3000,
       "beam": 50,
       "shadow": false
     },
     {
       "id": "L167",
-      "type": "corniceFlood",
+      "type": "ledgeBar",
       "name": "Tower stage 2 side wash · B",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
         2.45,
-        8.4,
-        -12.738
+        8.39,
+        -12.943000000000001
       ],
       "yaw": 90,
-      "tilt": 84.26567207532734,
+      "tilt": 85.19414975379085,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "length": 2,
+        "outreach": 0.1
       },
       "lumens": 5000,
       "cct": 3000,
@@ -3645,23 +3767,24 @@
     },
     {
       "id": "L168",
-      "type": "corniceFlood",
+      "type": "ledgeBar",
       "name": "Tower stage 3 side wash · B",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
         2.45,
-        15.88,
-        -12.613
+        15.84,
+        -12.818000000000001
       ],
       "yaw": 90,
-      "tilt": 84.09608025557331,
+      "tilt": 85.14063031087433,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "length": 2,
+        "outreach": 0.1
       },
       "lumens": 4000,
       "cct": 3000,
@@ -3670,95 +3793,98 @@
     },
     {
       "id": "L169",
-      "type": "corniceFlood",
+      "type": "ledgeBar",
       "name": "Belfry side wash · B",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
         2.45,
-        23.2,
-        -12.513
+        23.14,
+        -12.718
       ],
       "yaw": 90,
-      "tilt": 80.5376777919744,
+      "tilt": 82.02628287199703,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "length": 1.8,
+        "outreach": 0.1
       },
       "lumens": 3000,
       "cct": 3000,
-      "beam": 40,
+      "beam": 30,
       "shadow": false
     },
     {
       "id": "L170",
-      "type": "flood",
+      "type": "ledgeFlood",
       "name": "Façade wash · B",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        -0.0750000000000001,
-        8.4,
-        -7.9
+        -0.15,
+        8.39,
+        -7.4
       ],
-      "yaw": 68.85757921565144,
-      "tilt": -42.19088950849084,
-      "mountYaw": 68.85757921565144,
+      "yaw": 66.08375458238065,
+      "tilt": -43.48055876948856,
+      "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "outreach": 0.15
+      },
       "lumens": 6000,
       "beam": 50,
       "shadow": false
     },
     {
       "id": "L171",
-      "type": "corniceFlood",
+      "type": "ledgeFlood",
       "name": "Tower lower front wash · H",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        -0.125,
-        8.4,
-        10.853
+        -0.34,
+        8.39,
+        11.453000000000001
       ],
-      "yaw": -63.763287804692716,
-      "tilt": -72.12654937134948,
+      "yaw": -82.11686068327029,
+      "tilt": -58.77615553708832,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "outreach": 0.12
       },
       "lumens": 3500,
-      "cct": 3000,
       "beam": 50,
       "shadow": false
     },
     {
       "id": "L172",
-      "type": "corniceFlood",
+      "type": "ledgeBar",
       "name": "Tower stage 2 flood · H",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        -0.125,
-        8.4,
+        -0.34,
+        8.39,
         10.153
       ],
       "yaw": 0,
-      "tilt": 84.80016735942135,
+      "tilt": 85.58829356070004,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "length": 2,
+        "outreach": 0.1
       },
       "lumens": 7000,
       "cct": 3000,
@@ -3767,23 +3893,24 @@
     },
     {
       "id": "L173",
-      "type": "corniceFlood",
+      "type": "ledgeBar",
       "name": "Tower stage 3 flood · H",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        -0.035,
-        15.88,
+        -0.24999999999999997,
+        15.84,
         10.153
       ],
       "yaw": 0,
-      "tilt": 84.22494994345205,
+      "tilt": 85.14063031087433,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "length": 2,
+        "outreach": 0.1
       },
       "lumens": 6000,
       "cct": 3000,
@@ -3792,51 +3919,51 @@
     },
     {
       "id": "L174",
-      "type": "corniceFlood",
+      "type": "ledgeBar",
       "name": "Belfry front wash · H",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        0.065,
-        23.2,
+        -0.15,
+        23.14,
         10.153
       ],
       "yaw": 0,
-      "tilt": 80.53767779197439,
+      "tilt": 81.88943917970877,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "length": 1.8,
+        "outreach": 0.1
       },
       "lumens": 4500,
       "cct": 3000,
-      "beam": 40,
+      "beam": 30,
       "shadow": false
     },
     {
       "id": "L175",
-      "type": "corniceFlood",
+      "type": "ledgeFlood",
       "name": "Dome front wash · H",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        0.35,
-        29.26,
+        0.14,
+        29.09,
         10.153
       ],
       "yaw": 0,
-      "tilt": 61.4293014515334,
+      "tilt": 62.93236715620101,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "outreach": 0.12
       },
-      "lumens": 2500,
-      "cct": 3000,
+      "lumens": 4000,
       "beam": 36,
       "shadow": false
     },
@@ -3864,48 +3991,48 @@
     },
     {
       "id": "L177",
-      "type": "corniceFlood",
+      "type": "ledgeFlood",
       "name": "Tower lower side wash · H",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        3.0500000000000003,
-        8.4,
-        12.738
+        3.75,
+        8.39,
+        12.943000000000001
       ],
-      "yaw": -149.38861159313254,
-      "tilt": -73.92933782872143,
+      "yaw": -172.11686068327032,
+      "tilt": -58.77615553708834,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "outreach": 0.12
       },
       "lumens": 2500,
-      "cct": 3000,
       "beam": 50,
       "shadow": false
     },
     {
       "id": "L178",
-      "type": "corniceFlood",
+      "type": "ledgeBar",
       "name": "Tower stage 2 side wash · H",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
         2.45,
-        8.4,
-        12.738
+        8.39,
+        12.943000000000001
       ],
       "yaw": -90,
-      "tilt": 84.26567207532734,
+      "tilt": 85.19414975379085,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "length": 2,
+        "outreach": 0.1
       },
       "lumens": 5000,
       "cct": 3000,
@@ -3914,23 +4041,24 @@
     },
     {
       "id": "L179",
-      "type": "corniceFlood",
+      "type": "ledgeBar",
       "name": "Tower stage 3 side wash · H",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
         2.45,
-        15.88,
-        12.613
+        15.84,
+        12.818000000000001
       ],
       "yaw": -90,
-      "tilt": 84.09608025557331,
+      "tilt": 85.14063031087433,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "length": 2,
+        "outreach": 0.1
       },
       "lumens": 4000,
       "cct": 3000,
@@ -3939,91 +4067,98 @@
     },
     {
       "id": "L180",
-      "type": "corniceFlood",
+      "type": "ledgeBar",
       "name": "Belfry side wash · H",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
         2.45,
-        23.2,
-        12.513
+        23.14,
+        12.718
       ],
       "yaw": -90,
-      "tilt": 80.5376777919744,
+      "tilt": 82.02628287199703,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "outreach": 0.5
+        "length": 1.8,
+        "outreach": 0.1
       },
       "lumens": 3000,
       "cct": 3000,
-      "beam": 40,
+      "beam": 30,
       "shadow": false
     },
     {
       "id": "L181",
-      "type": "flood",
+      "type": "ledgeFlood",
       "name": "Façade wash · H",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        -0.0750000000000001,
-        8.4,
-        7.9
+        -0.15,
+        8.39,
+        7.4
       ],
-      "yaw": -68.85757921565144,
-      "tilt": -42.19088950849084,
-      "mountYaw": -68.85757921565144,
+      "yaw": -66.08375458238065,
+      "tilt": -43.48055876948856,
+      "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "outreach": 0.15
+      },
       "lumens": 6000,
       "beam": 50,
       "shadow": false
     },
     {
       "id": "L182",
-      "type": "flood",
+      "type": "ledgeFlood",
       "name": "Stage flood · tower B · outer",
       "circuit": "L9",
       "mount": "floor",
       "pos": [
-        -0.0750000000000001,
-        8.4,
+        -0.3,
+        8.39,
         -11.853
       ],
-      "yaw": 136.10989427491543,
-      "tilt": -54.73662627395719,
-      "mountYaw": 136.10989427491543,
+      "yaw": 133.63238454234857,
+      "tilt": -56.08477147098569,
+      "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "outreach": 0.15
+      },
       "lumens": 9000,
       "beam": 45,
       "shadow": false
     },
     {
       "id": "L183",
-      "type": "flood",
+      "type": "ledgeFlood",
       "name": "Stage flood · tower B · inner",
       "circuit": "L9",
       "mount": "floor",
       "pos": [
-        -0.0750000000000001,
-        8.4,
+        -0.3,
+        8.39,
         -8.453000000000001
       ],
-      "yaw": 125.89147878934496,
-      "tilt": -49.0027228283357,
-      "mountYaw": 125.89147878934496,
+      "yaw": 123.57149111621084,
+      "tilt": -50.003435063645014,
+      "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "outreach": 0.15
+      },
       "lumens": 9000,
       "beam": 45,
       "shadow": false
@@ -4140,44 +4275,48 @@
     },
     {
       "id": "L189",
-      "type": "flood",
+      "type": "ledgeFlood",
       "name": "Stage flood · tower H · inner",
       "circuit": "L9",
       "mount": "floor",
       "pos": [
-        -0.0750000000000001,
-        8.4,
+        -0.3,
+        8.39,
         8.453000000000001
       ],
-      "yaw": -125.89147878934496,
-      "tilt": -49.0027228283357,
-      "mountYaw": -125.89147878934496,
+      "yaw": -123.57149111621084,
+      "tilt": -50.003435063645014,
+      "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "outreach": 0.15
+      },
       "lumens": 9000,
       "beam": 45,
       "shadow": false
     },
     {
       "id": "L190",
-      "type": "flood",
+      "type": "ledgeFlood",
       "name": "Stage flood · tower H · outer",
       "circuit": "L9",
       "mount": "floor",
       "pos": [
-        -0.0750000000000001,
-        8.4,
+        -0.3,
+        8.39,
         11.853
       ],
-      "yaw": -136.10989427491543,
-      "tilt": -54.73662627395719,
-      "mountYaw": -136.10989427491543,
+      "yaw": -133.63238454234857,
+      "tilt": -56.08477147098569,
+      "mountYaw": 180,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "outreach": 0.15
+      },
       "lumens": 9000,
       "beam": 45,
       "shadow": false
@@ -4914,88 +5053,96 @@
     },
     {
       "id": "L222",
-      "type": "flood",
+      "type": "ledgeFlood",
       "name": "Central gable flood · B",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        -0.0750000000000001,
-        8.4,
-        -7.75
+        -0.15,
+        8.39,
+        -7.7
       ],
-      "yaw": 75.09986919271344,
-      "tilt": 24.756675995120084,
-      "mountYaw": 75.09986919271344,
+      "yaw": 74.54544378487549,
+      "tilt": 26.176861334664338,
+      "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "outreach": 0
+      },
       "lumens": 6500,
       "beam": 60,
       "shadow": false
     },
     {
       "id": "L223",
-      "type": "flood",
+      "type": "ledgeFlood",
       "name": "Central crown wash · B",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        -0.035,
-        15.88,
-        -7.9
+        -0.1,
+        15.84,
+        -7.7
       ],
-      "yaw": 74.20318743380196,
-      "tilt": 16.294907825298242,
-      "mountYaw": 74.20318743380196,
+      "yaw": 73.36904629327857,
+      "tilt": 18.475219035297076,
+      "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "outreach": 0
+      },
       "lumens": 6000,
       "beam": 55,
       "shadow": false
     },
     {
       "id": "L224",
-      "type": "flood",
+      "type": "ledgeFlood",
       "name": "Central gable flood · H",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        -0.0750000000000001,
-        8.4,
-        7.75
+        -0.15,
+        8.39,
+        7.7
       ],
-      "yaw": -75.09986919271344,
-      "tilt": 24.756675995120084,
-      "mountYaw": -75.09986919271344,
+      "yaw": -74.54544378487549,
+      "tilt": 26.176861334664338,
+      "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "outreach": 0
+      },
       "lumens": 6500,
       "beam": 60,
       "shadow": false
     },
     {
       "id": "L225",
-      "type": "flood",
+      "type": "ledgeFlood",
       "name": "Central crown wash · H",
       "circuit": "L6",
       "mount": "floor",
       "pos": [
-        -0.035,
-        15.88,
-        7.9
+        -0.1,
+        15.84,
+        7.7
       ],
-      "yaw": -74.20318743380196,
-      "tilt": 16.294907825298242,
-      "mountYaw": -74.20318743380196,
+      "yaw": -73.36904629327857,
+      "tilt": 18.475219035297076,
+      "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "outreach": 0
+      },
       "lumens": 6000,
       "beam": 55,
       "shadow": false
@@ -5774,19 +5921,19 @@
       "circuit": "A1",
       "mount": "wall",
       "pos": [
-        14.475,
+        14.045,
         3.45,
-        -7.07
+        -7.25
       ],
       "yaw": 140,
-      "tilt": -18,
+      "tilt": -22,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 85.1
+      "delayMs": 87
     },
     {
       "id": "S262",
@@ -5795,19 +5942,19 @@
       "circuit": "A1",
       "mount": "wall",
       "pos": [
-        14.475,
+        14.045,
         3.45,
-        7.07
+        7.25
       ],
       "yaw": -140,
-      "tilt": -18,
+      "tilt": -22,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 86.2
+      "delayMs": 88.7
     },
     {
       "id": "S263",
@@ -5816,19 +5963,19 @@
       "circuit": "A1",
       "mount": "wall",
       "pos": [
-        18.975,
+        18.545,
         3.45,
-        -7.07
+        -7.25
       ],
       "yaw": 140,
-      "tilt": -18,
+      "tilt": -22,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 72.2
+      "delayMs": 74.1
     },
     {
       "id": "S264",
@@ -5837,19 +5984,19 @@
       "circuit": "A1",
       "mount": "wall",
       "pos": [
-        18.975,
+        18.545,
         3.45,
-        7.07
+        7.25
       ],
       "yaw": -140,
-      "tilt": -18,
+      "tilt": -22,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 73.5
+      "delayMs": 76
     },
     {
       "id": "S265",
@@ -5858,19 +6005,19 @@
       "circuit": "A1",
       "mount": "wall",
       "pos": [
-        23.475,
+        23.045,
         3.45,
-        -7.07
+        -7.25
       ],
       "yaw": 140,
-      "tilt": -18,
+      "tilt": -22,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 59.2
+      "delayMs": 61.2
     },
     {
       "id": "S266",
@@ -5879,19 +6026,19 @@
       "circuit": "A1",
       "mount": "wall",
       "pos": [
-        23.475,
+        23.045,
         3.45,
-        7.07
+        7.25
       ],
       "yaw": -140,
-      "tilt": -18,
+      "tilt": -22,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 60.8
+      "delayMs": 63.5
     },
     {
       "id": "S267",
@@ -5900,34 +6047,13 @@
       "circuit": "A1",
       "mount": "wall",
       "pos": [
-        27.975,
+        27.545,
         3.45,
-        -7.07
+        -7.25
       ],
       "yaw": 140,
-      "tilt": -18,
+      "tilt": -22,
       "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "level": -6,
-      "delayMs": 46.3
-    },
-    {
-      "id": "S268",
-      "type": "slimColumn",
-      "name": "Wall speaker · axis 7 · H",
-      "circuit": "A1",
-      "mount": "wall",
-      "pos": [
-        27.975,
-        3.45,
-        7.07
-      ],
-      "yaw": -140,
-      "tilt": -18,
-      "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -5936,25 +6062,46 @@
       "delayMs": 48.3
     },
     {
+      "id": "S268",
+      "type": "slimColumn",
+      "name": "Wall speaker · axis 7 · H",
+      "circuit": "A1",
+      "mount": "wall",
+      "pos": [
+        27.545,
+        3.45,
+        7.25
+      ],
+      "yaw": -140,
+      "tilt": -22,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "level": -6,
+      "delayMs": 51.2
+    },
+    {
       "id": "S269",
       "type": "slimColumn",
       "name": "Wall speaker · axis 8 · B",
       "circuit": "A1",
       "mount": "wall",
       "pos": [
-        32.475,
+        32.045,
         3.45,
-        -7.07
+        -7.25
       ],
       "yaw": 140,
-      "tilt": -18,
+      "tilt": -22,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 33.5
+      "delayMs": 35.5
     },
     {
       "id": "S270",
@@ -5963,19 +6110,19 @@
       "circuit": "A1",
       "mount": "wall",
       "pos": [
-        32.475,
+        32.045,
         3.45,
-        7.07
+        7.25
       ],
       "yaw": -140,
-      "tilt": -18,
+      "tilt": -22,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 36
+      "delayMs": 39.1
     },
     {
       "id": "S271",
@@ -5984,19 +6131,19 @@
       "circuit": "A1",
       "mount": "wall",
       "pos": [
-        36.975,
+        36.545,
         3.45,
-        -7.07
+        -7.25
       ],
       "yaw": 140,
-      "tilt": -18,
+      "tilt": -22,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 20.6
+      "delayMs": 22.6
     },
     {
       "id": "S272",
@@ -6005,19 +6152,19 @@
       "circuit": "A1",
       "mount": "wall",
       "pos": [
-        36.975,
+        36.545,
         3.45,
-        7.07
+        7.25
       ],
       "yaw": -140,
-      "tilt": -18,
+      "tilt": -22,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 24.1
+      "delayMs": 27.8
     },
     {
       "id": "S273",
@@ -6361,7 +6508,7 @@
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 33.6
+      "delayMs": 33.8
     },
     {
       "id": "S291",

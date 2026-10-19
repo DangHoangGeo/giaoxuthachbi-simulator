@@ -3,8 +3,9 @@
  * Built on the as-drawn timber frame (section sheet 4): every fixture has a
  * structural anchor, and lights never sit above spinning fan blades.
  *  - Reading light: twin-head projectors (28° centre, 36° outer) tilted ±8°
- *    along the nave under the main tie beams and side beams; twin-head
- *    projectors on the entrance wall for the rear rows and the entrance aisle.
+ *    along the nave, on side brackets on the main tie beams and side beams in
+ *    the beam lacquer; twin heads in the wall plaster on the entrance wall for
+ *    the rear rows and the entrance aisle.
  *  - Air: 1.42 m ceiling fans mid-bay over the two side aisles; the reading
  *    beams are narrow enough to miss their blades.
  *  - Festival exterior (L7, off by default): bulb strings on the ridge, eaves,
@@ -13,8 +14,11 @@
  *    brass chandeliers and pier sconces give the evening character.
  *  - Sanctuary: key lights at ~45° for faces, accents for crucifix,
  *    tabernacle and statues.
- *  - Speech: slim wall-coloured columns on the side-wall pilasters (axes 4–9),
- *    time-aligned; veranda pendants for overflow; courtyard horns off.
+ *  - Speech: slim wall-coloured columns in the corners where the side-wall
+ *    piers (axes 4–9) meet the walls, time-aligned; veranda pendants for
+ *    overflow; courtyard horns off.
+ *  - Towers: cornice-coloured light bars and compact floods on the cornice
+ *    ledges, behind the lips where they wash upward.
  * Values are a planning starting point to test, not an engineered design.
  */
 (() => {
@@ -45,27 +49,43 @@
     for (const x of [50.0, 51.9]) add({ type: 'servicePanel', name: `Service-room ceiling panel · ${x.toFixed(1)} m`, circuit: 'L3', mount: 'pendant', pos: [x, 4.14, 0], anchorY: 4.15, note: 'Retains the existing ceiling-panel geometry; product light/output values are provisional.' });
     const nave = ['3', '4', '5', '6', '7', '8', '9'];
 
-    // L1/L2 · reading light: twin-head projectors under the main tie beams
+    // L1/L2 · reading light: twin-head projectors on the main tie beams
     // (central blocks, 28°) and the side beams (outer blocks, 36°), the heads
     // tilted ±8° along the nave so the mid-bay rows are lit as well as the rows
     // under the beams. Narrow optics keep the beams off the side-aisle fan blades.
-    const reading = (k, z, y, circuit, block, beam) => {
+    // Owner, 19 October 2026: the reading lights take the colour of the timber and
+    // should look hidden. Each head is a compact projector on a side bracket fixed
+    // to the sanctuary-facing face of its beam, finished in the beam's own lacquer.
+    // The body stands beside the beam and only its glare cowl reaches the soffit, so
+    // from most seats behind a beam the beam itself screens it. On a tie beam the two
+    // heads flank the gilded band at ±2.60 m, the one aimed toward the sanctuary on the
+    // inner side, away from the side-aisle fan ahead of it; on a side beam they stand
+    // either side of the gilded cartouche (4.96–6.00 m), both aimed at the old point
+    // under the beam.
+    // Fixing into the timber, the bracket and the product are ENGINEERING HOLD.
+    const readingHead = (name, circuit, beam, faceX, soffit, z, target) => {
+      const p = [faceX, soffit + 0.18, z], a = aim([faceX + 0.085, soffit, z], target);
+      add({ type: 'readingProjector', name, circuit, mount: 'wall', pos: p, anchorY: soffit, ...a, mountYaw: 0, lumens: 2300, beam, params: { finish: 'timber' } });
+    };
+    const reading = (k, s, block) => {
+      const tie = block === 'central', soffit = tie ? beamY : sideBeamY, faceX = A[k] + (tie ? 0.15 : 0.11), along = Math.tan(8 * Math.PI / 180) * (soffit - 0.8);
       for (const [dir, tag] of [[1, ''], [-1, ' · twin']]) {
-        const p = [A[k], y - 0.005, z], a = aim(p, [A[k] + dir * Math.tan(8 * Math.PI / 180) * (y - 0.8), 0.8, z]);
-        add({ type: 'projector36', name: `Reading light · axis ${k} · ${side(z)} ${block}${tag}`, circuit, mount: 'pendant', pos: p, anchorY: y, ...a, mountYaw: a.yaw, lumens: 2300, beam });
+        const z = tie ? s * (2.6 - dir * 0.12) : s * (dir > 0 ? 6.09 : 4.84);
+        readingHead(`Reading light · axis ${k} · ${side(s)} ${block}${tag}`, tie ? 'L1' : 'L2', tie ? 28 : 36, faceX, soffit, z, [A[k] + dir * along, 0.8, s * (tie ? 2.6 : 5.6)]);
       }
     };
-    for (const k of nave) for (const z of [-2.6, 2.6]) reading(k, z, beamY, 'L1', 'central', 28);
-    for (const k of nave) for (const z of [-5.6, 5.6]) reading(k, z, sideBeamY, 'L2', 'outer', 36);
+    for (const k of nave) for (const s of [-1, 1]) reading(k, s, 'central');
+    for (const k of nave) for (const s of [-1, 1]) reading(k, s, 'outer');
     // Rear rows · bay 2′–3 has no tie beam, so twin-head brackets on the inner
     // face of the entrance façade light the last rows, the centre seats and the
-    // entrance aisle (solid wall between the main door and the side doors).
+    // entrance aisle (solid wall between the main door and the side doors). The
+    // same compact projector, finished in the wall plaster (19 October 2026).
     for (const z of [-4.2, 4.2]) {
       const s = Math.sign(z);
       const p = [facadeX, 3.45, z], a = aim(p, [8.2, 0.8, s * 5.0]);
-      add({ type: 'projector36', name: `Rear rows light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: p, mountYaw: 0, yaw: a.yaw, tilt: a.tilt, lumens: 6000, beam: 44 });
+      add({ type: 'readingProjector', name: `Rear rows light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: p, mountYaw: 0, yaw: a.yaw, tilt: a.tilt, lumens: 6000, beam: 44, params: { finish: 'wall' } });
       const q = [facadeX, 5.95, z], b = aim(q, [6.2, 0.8, s * 1.2]);
-      add({ type: 'projector36', name: `Rear centre light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: q, mountYaw: 0, yaw: b.yaw, tilt: b.tilt, lumens: 3300, beam: 50 });
+      add({ type: 'readingProjector', name: `Rear centre light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: q, mountYaw: 0, yaw: b.yaw, tilt: b.tilt, lumens: 3300, beam: 50, params: { finish: 'wall' } });
     }
     // L8 · held wing review, 9 October. Smaller brass chandeliers match the
     // owner's intent; a separate downward optic supplies task light. The rear
@@ -165,31 +185,64 @@
     // L5 · steps & paths; L6 · façade. Nothing stands on the courtyard, the
     // platform or the steps where people walk: every exterior light is fixed
     // to the building, on the tower faces and ledges or the terrace.
-    const TX = 2.45, TZ = 10.153, ledge = TX - (4.9 + 0.45) / 2 + 0.15; // front edge of the stage-1 cornice
+    const TX = 2.45, TZ = 10.153;
+    // Festival flood on a veranda roof corner (L7, rear gable).
     const ledgeFlood = (name, circuit, p, target, beam, lumens, on = true) => {
       const a = aim([p[0], p[1] + 0.32, p[2]], target);
       add({ type: 'flood', name, circuit, mount: 'floor', pos: p, yaw: a.yaw, mountYaw: a.yaw, tilt: a.tilt, beam, lumens, on });
     };
-    const towerWash = (name, p, target, mountYaw, beam, lumens) => {
-      const reach = 0.5, r = mountYaw * Math.PI / 180;
-      const a = aim([p[0] + reach * Math.cos(r), p[1] + 0.32, p[2] + reach * Math.sin(r)], target);
-      add({ type: 'corniceFlood', name, circuit: 'L6', mount: 'floor', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw, beam, lumens, cct: 3000, params: { outreach: reach } });
+    // Towers, revised 19 October 2026 (owner: the tower floods should be barely
+    // noticed, not black and not where they were). The black floods on 0.5 m arms
+    // give way to fittings in the colour of the cornice mouldings, about 0.11–0.15 m
+    // tall, lying on the cornice ledges. A light bar washing the stage above lies
+    // along the lip with its optic 0.06 m beyond it, just in front of the engaged
+    // columns, so that their fronts and the louvres are lit as before; its two light
+    // points sit in the bays either side of the central mullion. The washes over the
+    // porch arches are compact floods at the free end of the same lip. Ledge, lip and
+    // wall lines are ray casts on the current tower meshes (MODEL TRANSCRIPTION):
+    //   ledge top   front lip / wall      side lip / wall (|z| − TZ)
+    //   +8.39 m     x −0.38 / −0.05       2.83 / 2.465
+    //   +15.84 m    x −0.29 / +0.05       2.705 / 2.365
+    //   +23.14 m    x −0.19 / +0.335      2.605 / 2.09
+    // Products, optics, fixings, weathering and safe access at height: ENGINEERING HOLD.
+    const lensAt = (p, mountYaw, reach, rise) => {
+      const r = mountYaw * Math.PI / 180;
+      return [p[0] + reach * Math.cos(r), p[1] + rise, p[2] + reach * Math.sin(r)];
     };
+    const towerBar = (name, p, mountYaw, target, beam, lumens, length, reach = 0) => {
+      const a = aim(lensAt(p, mountYaw, reach, 0.055), target);
+      add({ type: 'ledgeBar', name, circuit: 'L6', mount: 'floor', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw, beam, lumens, cct: 3000, params: { length, outreach: reach } });
+    };
+    const towerFlood = (name, circuit, p, mountYaw, target, beam, lumens, reach = 0) => {
+      const a = aim(lensAt(p, mountYaw, reach, 0.075), target);
+      add({ type: 'ledgeFlood', name, circuit, mount: 'floor', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw, beam, lumens, params: { outreach: reach } });
+    };
+    // Bar origin 0.04 m behind the lip, optic 0.06 m beyond it (front x / side |z| − TZ).
+    // The belfry bars take a 30° optic (was 40°): from the lip that keeps the light
+    // on the belfry face rather than the sky above it.
+    const front = lip => lip + 0.04, flank = lip => lip - 0.04;
     for (const s of [-1, 1]) {
-      // Base plates sit on the actual cornices; projecting arms keep the
-      // emitting heads outside the wall thickness, mouldings and pilasters.
-      towerWash(`Tower lower front wash · ${side(s)}`, [-0.125, 8.4, s * (TZ + 0.7)], [-0.28, 6.3, s * TZ], 180, 50, 3500);
-      towerWash(`Tower stage 2 flood · ${side(s)}`, [-0.125, 8.4, s * TZ], [-0.19, 13.5, s * TZ], 180, 40, 7000);
-      towerWash(`Tower stage 3 flood · ${side(s)}`, [-0.035, 15.88, s * TZ], [-0.09, 20.6, s * TZ], 180, 40, 6000);
-      towerWash(`Belfry front wash · ${side(s)}`, [0.065, 23.2, s * TZ], [0.195, 27.3, s * TZ], 180, 40, 4500);
-      towerWash(`Dome front wash · ${side(s)}`, [0.35, 29.26, s * TZ], [0.95, 31.6, s * TZ], 180, 36, 2500);
+      const z = s * TZ, out = d => s * (TZ + d);
+      towerFlood(`Tower lower front wash · ${side(s)}`, 'L6', [-0.34, 8.39, out(1.3)], 180, [-0.28, 6.3, z], 50, 3500, 0.12);
+      towerBar(`Tower stage 2 flood · ${side(s)}`, [front(-0.38), 8.39, z], 180, [-0.05, 13.5, z], 40, 7000, 2.0, 0.10);
+      towerBar(`Tower stage 3 flood · ${side(s)}`, [front(-0.29), 15.84, z], 180, [0.05, 20.6, z], 40, 6000, 2.0, 0.10);
+      towerBar(`Belfry front wash · ${side(s)}`, [front(-0.19), 23.14, z], 180, [0.335, 27.3, z], 30, 4500, 1.8, 0.10);
+      // The dome from the 0.15 m ledge on the top cornice (+29.09 m), in front of the
+      // balcony plinth and no higher than its step, head 0.06 m beyond the lip. Behind
+      // the balustrade the drum leaves no room at the centre, and from the sides the
+      // flood barely reaches the front of the dome (median 0 lux on its visible face).
+      // Lower and closer than the old arm head, it takes 4 000 lm (was 2 500) for a
+      // median about 90 % of before; the balustrade rail shades the lowest band of the
+      // dome from this height (not in the light calculation).
+      towerFlood(`Dome front wash · ${side(s)}`, 'L6', [0.14, 29.09, z], 180, [0.6, 30.3, z], 36, 4000, 0.12);
       add({ type: 'uplight', name: `Belfry glow · ${side(s)}`, circuit: 'L6', mount: 'floor', pos: [TX, 23.2, s * TZ], yaw: 0, mountYaw: 0, tilt: 90, lumens: 2500, cct: 2700 });
-      towerWash(`Tower lower side wash · ${side(s)}`, [TX + 0.6, 8.4, s * (TZ + 2.585)], [TX, 6.3, s * (TZ + 2.73)], s * 90, 50, 2500);
-      towerWash(`Tower stage 2 side wash · ${side(s)}`, [TX, 8.4, s * (TZ + 2.585)], [TX, 13.5, s * (TZ + 2.605)], s * 90, 40, 5000);
-      towerWash(`Tower stage 3 side wash · ${side(s)}`, [TX, 15.88, s * (TZ + 2.46)], [TX, 20.6, s * (TZ + 2.505)], s * 90, 40, 4000);
-      towerWash(`Belfry side wash · ${side(s)}`, [TX, 23.2, s * (TZ + 2.36)], [TX, 27.3, s * (TZ + 2.23)], s * 90, 40, 3000);
-      // The doors and lower façade between the towers, from the inner tower corners.
-      ledgeFlood(`Façade wash · ${side(s)}`, 'L6', [ledge, 8.4, s * 7.9], [2.4, 2.5, s * 1.5], 50, 6000);
+      towerFlood(`Tower lower side wash · ${side(s)}`, 'L6', [TX + 1.3, 8.39, out(2.79)], s * 90, [TX, 6.3, out(2.73)], 50, 2500, 0.12);
+      towerBar(`Tower stage 2 side wash · ${side(s)}`, [TX, 8.39, out(flank(2.83))], s * 90, [TX, 13.5, out(2.465)], 40, 5000, 2.0, 0.10);
+      towerBar(`Tower stage 3 side wash · ${side(s)}`, [TX, 15.84, out(flank(2.705))], s * 90, [TX, 20.6, out(2.365)], 40, 4000, 2.0, 0.10);
+      towerBar(`Belfry side wash · ${side(s)}`, [TX, 23.14, out(flank(2.605))], s * 90, [TX, 27.3, out(2.09)], 30, 3000, 1.8, 0.10);
+      // The doors and lower façade between the towers, from the inner corner of
+      // each tower's first cornice, across its inner lip (|z| 7.32).
+      towerFlood(`Façade wash · ${side(s)}`, 'L6', [-0.15, 8.39, s * 7.40], -s * 90, [2.4, 2.5, s * 1.5], 50, 6000, 0.15);
     }
 
     // L5 · downlights fixed high on the building for the open spaces: the
@@ -200,7 +253,8 @@
       add({ type: mount === 'floor' ? 'flood' : 'projector36', name, circuit: 'L5', mount, pos: p, yaw: a.yaw, mountYaw: mountYaw ?? a.yaw, tilt: a.tilt, beam, lumens });
     };
     for (const s of [-1, 1]) {
-      for (const dz of [-1.7, 1.7]) down(`Stage flood · tower ${side(s)} · ${dz * s < 0 ? 'inner' : 'outer'}`, [ledge, 8.4, s * TZ + dz], [-4.6, -0.48, s * (dz * s < 0 ? 2.2 : 7.5)], 45, 9000);
+      // The front stage from the towers' first cornices, across the front lip.
+      for (const dz of [-1.7, 1.7]) towerFlood(`Stage flood · tower ${side(s)} · ${dz * s < 0 ? 'inner' : 'outer'}`, 'L5', [-0.30, 8.39, s * TZ + dz], 180, [-4.6, -0.48, s * (dz * s < 0 ? 2.2 : 7.5)], 45, 9000, 0.15);
       for (const k of ['4', '6', '11']) down(`Path light · axis ${k} · ${side(s)}`, [A[k], 5.9, s * 10.75], [A[k], -2.08, s * 14.5], 50, 2500, 'wall', s * 90);
       down(`Path light · wing gable ${side(s)}`, [40.575, 6.2, s * 13.13], [40.575, -2.08, s * 17], 55, 3000, 'wall', s * 90);
       down(`Path light · rear · ${side(s)}`, [53.2, 5.2, s * 4.5], [57.5, -2.08, s * 5], 55, 3000, 'wall', 0);
@@ -231,10 +285,11 @@
     }
     // Overlapping lower and upper washes cover the full shrine, including the
     // entablature between the doors and niche and the +21.72 m cross ornament.
-    // Both pairs are mounted on the towers' existing inner front cornices.
+    // Both pairs stand on the towers' inner front cornices, set back behind the
+    // lips beside the corner pilasters (19 October 2026: cornice colour, compact).
     for (const s of [-1, 1]) {
-      ledgeFlood(`Central gable flood · ${side(s)}`, 'L6', [ledge, 8.4, s * 7.75], [2.2, 12.8, -s * 0.8], 60, 6500);
-      ledgeFlood(`Central crown wash · ${side(s)}`, 'L6', [-0.035, 15.88, s * 7.9], [2.2, 18.6, 0], 55, 6000);
+      towerFlood(`Central gable flood · ${side(s)}`, 'L6', [-0.15, 8.39, s * 7.70], -s * 90, [2.2, 12.8, -s * 0.8], 60, 6500);
+      towerFlood(`Central crown wash · ${side(s)}`, 'L6', [-0.10, 15.84, s * 7.70], -s * 90, [2.2, 18.6, 0], 55, 6000);
     }
 
     // Fans · 1.42 m ceiling fans mid-bay over the two side aisles (between the
@@ -285,13 +340,26 @@
     add({ type: 'fanExhaust', name: 'Exhaust fan · service room', circuit: 'V3', mount: 'wall', pos: [53.12, 3.3, 0], yaw: 180, mountYaw: 180, speed: 1 });
 
     // Loudspeakers · a discreet distributed system: slim 0.6 m columns painted
-    // the wall colour on the side-wall pilasters (axes 4–9), between the Stations
-    // of the Cross plaques (2.2–2.9 m) and the sconces (4.6 m), with clear
-    // gaps so each pilaster reads as one ordered column of fittings,
-    // turned 50° toward the back so each covers the rows behind it, and
-    // time-aligned to the talker. Nothing is fixed to the timber columns.
+    // the wall colour beside the side-wall piers (axes 4–9), at 3.45 m between
+    // the heights of the Stations of the Cross plaques (2.2–2.9 m) and the
+    // sconces (4.6 m), turned 50° toward the back so each covers the rows behind
+    // it, and time-aligned to the talker. Nothing is fixed to the timber columns.
+    // Owner, 19 October 2026: off the concrete piers, into the corners where the
+    // piers meet the walls, for a more open look. Each column now stands on the
+    // masonry wall (Z ±7.25) on the entrance side of its pier, within the pier's
+    // 0.18 m projection (the tilted top end stands about 35 mm proud of the pier
+    // face), so the pier face keeps only its Station of the Cross and its sconce.
+    // It still faces the rows behind it; the pier is at its back and does not
+    // shade it. Moved off the pier the columns sit 0.18 m further from the outer
+    // seats, so they tilt 22° down instead of 18°: in the seat calculation that
+    // keeps nave clarity and the microphone margins at least as good as on the
+    // piers (wing clarity is 0.01 lower; see docs/engineering/hidden-fittings.md).
+    // Tilted and turned 50°, the column's lower end swings toward the pier: at
+    // X axis − 0.43 m it clears the pier side by about 20 mm (the 0.58 m shaft is
+    // an illustrative width). Fixing, tilt bracket, cable entry and the final pier
+    // width: ENGINEERING HOLD.
     for (const k of ['4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) {
-      add({ type: 'slimColumn', name: `Wall speaker · axis ${k} · ${side(s)}`, circuit: 'A1', mount: 'wall', pos: [A[k], 3.45, s * 7.07], yaw: -s * 140, mountYaw: -s * 90, tilt: -18, level: -6, delayMs: 0 });
+      add({ type: 'slimColumn', name: `Wall speaker · axis ${k} · ${side(s)}`, circuit: 'A1', mount: 'wall', pos: [A[k] - 0.43, 3.45, s * 7.25], yaw: -s * 140, mountYaw: -s * 90, tilt: -22, level: -6, delayMs: 0 });
     }
     // Back of the church: two slim columns on the inside of the entrance wall,
     // aimed steeply at the entrance hall and the last rows. Each is on the solid
@@ -446,6 +514,53 @@
   function upgradeExhaustSplit(items, design) {
     const moved = new Map(design.filter(it => it.type === 'fanExhaust' && it.circuit !== 'V1').map(it => [it.id, it.circuit]));
     return items.map(it => moved.has(it.id) && it.circuit === 'V1' ? { ...it, circuit: moved.get(it.id) } : it);
+  }
+
+  // One-time move for saved layouts, 19 October 2026: the reading lights onto the
+  // beam faces in the beam lacquer (wall plaster on the entrance wall), the tower
+  // lights onto the cornice ledges in the cornice colour, and the nave wall speakers
+  // into the pier–wall corners. Only a fitting still at its previous default place
+  // and aim moves; it takes the new type, mount, place, aim and finish and keeps
+  // its ID, switching, dimmer, output, beam, level, delay and circuit. A fitting the
+  // user moved, re-aimed or deleted stays as it is.
+  const hiddenFittingsRevision = '2026-10-19-hidden-fittings-1';
+  function hiddenFittingsBefore(GEO) {
+    const A = GEO.axes, TZ = 10.153, before = new Map();
+    const put = (name, type, pos, yaw, tilt) => before.set(name, { type, pos, yaw, tilt });
+    for (const k of ['3', '4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) for (const [tag, yaw] of [['', 0], [' · twin', 180]]) {
+      put(`Reading light · axis ${k} · ${side(s)} central${tag}`, 'projector36', [A[k], 8.585, s * 2.6], yaw, -81.995);
+      put(`Reading light · axis ${k} · ${side(s)} outer${tag}`, 'projector36', [A[k], 6.655, s * 5.6], yaw, -81.993);
+    }
+    for (const s of [-1, 1]) {
+      const B = side(s), z = s * TZ;
+      put(`Rear rows light · entrance façade · ${B}`, 'projector36', [2.65, 3.45, s * 4.2], s * 8.202, -25.295);
+      put(`Rear centre light · entrance façade · ${B}`, 'projector36', [2.65, 5.95, s * 4.2], -s * 40.2, -47.934);
+      for (const [name, pos, yaw, tilt] of [
+        ['Tower lower front wash', [-0.125, 8.4, s * (TZ + 0.7)], -s * 63.763, -72.127], ['Tower stage 2 flood', [-0.125, 8.4, z], 0, 84.8],
+        ['Tower stage 3 flood', [-0.035, 15.88, z], 0, 84.225], ['Belfry front wash', [0.065, 23.2, z], 0, 80.538], ['Dome front wash', [0.35, 29.26, z], 0, 61.429],
+        ['Tower lower side wash', [3.05, 8.4, s * (TZ + 2.585)], -s * 149.389, -73.929], ['Tower stage 2 side wash', [2.45, 8.4, s * (TZ + 2.585)], -s * 90, 84.266],
+        ['Tower stage 3 side wash', [2.45, 15.88, s * (TZ + 2.46)], -s * 90, 84.096], ['Belfry side wash', [2.45, 23.2, s * (TZ + 2.36)], -s * 90, 80.538]])
+        put(`${name} · ${B}`, 'corniceFlood', pos, yaw, tilt);
+      for (const [name, pos, yaw, tilt] of [
+        [`Façade wash · ${B}`, [-0.075, 8.4, s * 7.9], -s * 68.858, -42.191], [`Central gable flood · ${B}`, [-0.075, 8.4, s * 7.75], -s * 75.1, 24.757],
+        [`Central crown wash · ${B}`, [-0.035, 15.88, s * 7.9], -s * 74.203, 16.295],
+        [`Stage flood · tower ${B} · outer`, [-0.075, 8.4, s * (TZ + 1.7)], -s * 136.11, -54.737], [`Stage flood · tower ${B} · inner`, [-0.075, 8.4, s * (TZ - 1.7)], -s * 125.891, -49.003]])
+        put(name, 'flood', pos, yaw, tilt);
+      for (const k of ['4', '5', '6', '7', '8', '9']) put(`Wall speaker · axis ${k} · ${B}`, 'slimColumn', [A[k], 3.45, s * 7.07], -s * 140, -18);
+    }
+    return before;
+  }
+  function upgradeHiddenFittings(items, design, GEO) {
+    const before = hiddenFittingsBefore(GEO), next = new Map(design.map(it => [it.name, it]));
+    const turn = (a, b) => Math.abs(((a - b) % 360 + 540) % 360 - 180);
+    return items.map(it => {
+      const old = before.get(it.name), raw = next.get(it.name);
+      if (!old || !raw || it.type !== old.type || !Array.isArray(it.pos) || it.pos.some((v, i) => Math.abs(v - old.pos[i]) > 0.005) ||
+        turn(it.yaw ?? 0, old.yaw) > 0.01 || Math.abs((it.tilt ?? 0) - old.tilt) > 0.01) return it;
+      const moved = { ...it, type: raw.type, mount: raw.mount, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, params: { ...raw.params } };
+      if (raw.anchorY === undefined) delete moved.anchorY; else moved.anchorY = raw.anchorY;
+      return moved;
+    });
   }
 
   const naveFanRevision = '2026-10-09-eight-wall-fans-per-side';
@@ -667,5 +782,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

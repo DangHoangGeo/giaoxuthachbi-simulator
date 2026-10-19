@@ -23,6 +23,13 @@
     darkWood: { color: '#5a3a22', roughness: 0.55 },
     // Sanctuary furniture: the red lacquer of the columns (owner, 9 October 2026: red and gold).
     lacquerRed: { color: '#702a1f', roughness: 0.4 },
+    // Finishes matched to the surface a fitting is fixed to (owner, 19 October 2026). `share`
+    // names the model's own material, which the engine reuses when it exists, so the fitting
+    // follows the timber tone setting and the day/evening finishes exactly. The colours here
+    // are the fallbacks for headless calculations.
+    beamTimber: { color: '#853125', roughness: 0.26, share: 'timber' },
+    wallPlaster: { color: '#faf3e1', roughness: 0.83, share: 'wall' },
+    corniceStone: { color: '#efe2c8', roughness: 0.67, share: 'trim' },
     wood: { color: '#8a6040', roughness: 0.5 },
     ivory: { color: '#f3ead6', roughness: 0.62 },
     candle: { color: '#f4ecdc', roughness: 0.7 },
@@ -243,6 +250,54 @@
     // The base stays on the ledge; the head clears the projecting masonry.
     k.box(reach, 0.05, 0.08, 'black', { p: [reach / 2, 0.25, 0] });
     k.pivots.head = [reach, 0.32, 0];
+  }
+  // Reading projector on a short side bracket (owner, 19 October 2026: the reading lights
+  // take the colour of the timber and read as part of the beams). Fixed to the side face of a
+  // beam, the body stands beside the face and only the glare cowl reaches the soffit. The
+  // finish is the beam's own lacquer, or the plaster when the bracket is on a wall.
+  function buildReadingProjector(k, { params } = {}) {
+    const finish = params?.finish === 'wall' ? 'wallPlaster' : 'beamTimber';
+    k.box(0.012, 0.12, 0.09, finish, { p: [0.006, 0, 0] });
+    k.box(0.07, 0.02, 0.028, finish, { p: [0.047, -0.05, 0] });
+    for (const z of [-0.059, 0.059]) k.box(0.03, 0.05, 0.008, finish, { p: [0.085, -0.06, z] });
+    k.pivots.head = [0.085, -0.06, 0];
+    k.in('head', () => {
+      k.cyl(0.05, 0.05, 0.17, finish, { p: [-0.015, 0, 0], r: [0, 0, -PI / 2] }, 18);
+      k.cyl(0.053, 0.053, 0.008, finish, { p: [-0.1, 0, 0], r: [0, 0, -PI / 2] }, 18);
+      k.cyl(0.053, 0.05, 0.06, finish, { p: [0.1, 0, 0], r: [0, 0, -PI / 2] }, 18, true);
+      k.cyl(0.04, 0.04, 0.005, 'glow', { p: [0.072, 0, 0], r: [0, 0, -PI / 2] }, 18);
+      k.glowPoint([0.11, 0, 0], 0.18);
+    });
+  }
+  // Tower lighting hidden on the cornice ledges (owner, 19 October 2026: barely noticed, not
+  // black, not on projecting arms). A low bar in the colour of the cornice mouldings lies on
+  // the ledge behind the cornice lip and washes the stage above; its two calculation points
+  // sit in the bays either side of a central mullion, which would shade a single flood. A bar
+  // that washes down rests across the lip, its optic `outreach` metres beyond its base.
+  function buildLedgeBar(k, { params } = {}) {
+    const len = params?.length ?? 2.0, reach = params?.outreach ?? 0;
+    k.box(0.14 + reach, 0.025, len, 'corniceStone', { p: [reach / 2, 0.0125, 0] });
+    for (const z of [-1, 1]) k.box(0.05, 0.05, 0.012, 'corniceStone', { p: [reach, 0.045, z * (len / 2 - 0.006)] });
+    k.pivots.head = [reach, 0.055, 0];
+    k.in('head', () => {
+      k.box(0.07, 0.06, len - 0.03, 'corniceStone', { p: [-0.008, 0, 0] });
+      k.box(0.004, 0.026, len - 0.09, 'glow', { p: [0.028, 0, 0] });
+      for (const z of [-0.6, 0.6]) k.glowPoint([0.04, 0, z], 0.3);
+    });
+  }
+  // Compact flood for the façade and the front stage, in the cornice colour and only about
+  // 0.15 m tall. Set back on a ledge it is hidden by the cornice lip; one that throws light
+  // downward stands at the lip with its head `outreach` metres forward.
+  function buildLedgeFlood(k, { params } = {}) {
+    const reach = params?.outreach ?? 0;
+    k.box(0.16 + reach, 0.02, 0.16, 'corniceStone', { p: [reach / 2, 0.01, 0] });
+    for (const z of [-0.085, 0.085]) k.box(0.05, 0.07, 0.012, 'corniceStone', { p: [reach, 0.05, z] });
+    k.pivots.head = [reach, 0.075, 0];
+    k.in('head', () => {
+      k.box(0.09, 0.1, 0.15, 'corniceStone', { p: [-0.015, 0, 0] });
+      k.box(0.004, 0.075, 0.125, 'glow', { p: [0.031, 0, 0] });
+      k.glowPoint([0.05, 0, 0], 0.35);
+    });
   }
   function buildBollard(k) {
     k.cyl(0.09, 0.1, 0.7, 'bronze', { p: [0, 0.35, 0] }, 16);
@@ -854,6 +909,11 @@
     { id: 'projector36', cat: LIGHT, family: 'Task & accent', name: 'LED projector · medium 36°', mounts: ['pendant', 'wall'], aim: true, defaultTilt: -90, defaultDrop: 0, glow: 'lens', circuit: 'L1',
       desc: '6 000 lm, 3000 K CRI 90, 36° beam, 50 W. Reading light from the tie beams.',
       light: { lumens: 6000, watts: 50, cct: 3000, cri: 90, beam: 36, field: 58, optics: [15, 24, 36, 50], emitters: [{ kind: 'spot', head: true, pos: [0.17, 0, 0] }] }, build: k => buildProjector(k) },
+    // Owner, 19 October 2026: reading lights in the colour of the timber, tucked against the beams.
+    { id: 'readingProjector', cat: LIGHT, family: 'Task & accent', name: 'Reading projector · side bracket, finish-matched', mounts: ['wall'], aim: true, defaultTilt: -82, glow: 'lens', circuit: 'L1',
+      desc: 'Same 6 000 lm / 50 W category as the LED projector, compact head on a short side bracket. Fixed to the sanctuary side of a beam, the body stands beside the beam and only the glare cowl reaches the soffit. Finish: the beam lacquer (follows the timber tone) or the wall plaster. Product, bracket, fixing into the timber, glare and access pending.',
+      params: { finish: { label: 'Finish', options: { timber: 'Beam timber (follows the timber tone)', wall: 'Wall plaster' }, value: 'timber' } },
+      light: { lumens: 6000, watts: 50, cct: 3000, cri: 90, beam: 36, field: 58, optics: [15, 24, 28, 36, 44, 50], emitters: [{ kind: 'spot', head: true, pos: [0.12, 0, 0] }] }, build: buildReadingProjector },
     { id: 'spot15', cat: LIGHT, family: 'Task & accent', name: 'Accent spotlight · 15°', mounts: ['pendant', 'wall', 'floor'], aim: true, defaultTilt: -45, defaultDrop: 0, glow: 'lens', circuit: 'L3', shadow: true,
       desc: '2 500 lm, 3000 K CRI 95, 15° beam, 22 W. Altar, ambo, crucifix and statues.',
       light: { lumens: 2500, watts: 22, cct: 3000, cri: 95, beam: 15, field: 26, optics: [10, 15, 24, 36], emitters: [{ kind: 'spot', head: true, pos: [0.12, 0, 0] }] }, build: k => buildProjector(k, 0.05, 0.17, 'bronze') },
@@ -880,6 +940,15 @@
       desc: 'Adjustable flood on a proposed cornice arm. Base follows the ledge; head projects clear of the tower wall. Product and bracket details pending.',
       params: { outreach: { label: 'Arm outreach (m)', min: 0.25, max: 0.8, step: 0.05, value: 0.5 } },
       light: { lumens: 9000, watts: 70, cct: 3000, cri: 80, beam: 30, field: 50, optics: [15, 30, 50, 70], emitters: [{ kind: 'spot', head: true, pos: [0.05, 0, 0] }] }, build: buildCorniceFlood },
+    // Owner, 19 October 2026: tower lights barely noticed, in the colour of the stone, off the arms.
+    { id: 'ledgeBar', cat: LIGHT, family: 'Exterior', name: 'Tower ledge light bar · cornice colour', mounts: ['floor'], aim: true, defaultTilt: 85, glow: 'lens', circuit: 'L6',
+      desc: 'Low linear flood (about 0.11 m tall) lying on a cornice ledge behind the lip, in the colour of the mouldings. Same 9 000 lm / 70 W category as the façade flood; two calculation points 1.2 m apart. Product, weatherproofing, fixing, glare and safe access at height pending.',
+      params: { length: { label: 'Bar length (m)', min: 1.4, max: 2.4, step: 0.1, value: 2.0 }, outreach: { label: 'Optic beyond the base (m)', min: 0, max: 0.3, step: 0.01, value: 0 } },
+      light: { lumens: 9000, watts: 70, cct: 3000, cri: 80, beam: 40, field: 60, optics: [30, 40, 50, 60], emitters: [{ kind: 'spot', head: true, pos: [0.03, 0, -0.6] }, { kind: 'spot', head: true, pos: [0.03, 0, 0.6] }] }, build: buildLedgeBar },
+    { id: 'ledgeFlood', cat: LIGHT, family: 'Exterior', name: 'Compact ledge floodlight · cornice colour', mounts: ['floor'], aim: true, defaultTilt: 40, glow: 'lens', circuit: 'L6',
+      desc: 'Compact flood about 0.15 m tall in the colour of the cornice mouldings, set on a ledge. Same 9 000 lm / 70 W category as the façade flood. Product, weatherproofing, fixing, glare and safe access at height pending.',
+      params: { outreach: { label: 'Head beyond the base (m)', min: 0, max: 0.3, step: 0.01, value: 0 } },
+      light: { lumens: 9000, watts: 70, cct: 3000, cri: 80, beam: 30, field: 50, optics: [15, 30, 45, 60], emitters: [{ kind: 'spot', head: true, pos: [0.04, 0, 0] }] }, build: buildLedgeFlood },
     // Concealed niche lighting, 9 October 2026 (owner: no visible lamps at the
     // statues; the light is the art). Each line is a linear LED in a slot behind
     // a lip in the finish of the wall. The model shows that lip only: no lens,
