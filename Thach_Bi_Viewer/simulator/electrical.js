@@ -189,7 +189,12 @@
         cp.push(cover(joint));
       } else points=[start,[sx,y,s*WALL],[sx,7.055,s*WALL],[p[0],upper,p[2]]];
       if (p[1] >= b.y1 - 0.01) points.push(p);
-      else {
+      else if (it.mount === 'wall' && Math.abs(Math.abs(p[0] - sx) - b.w / 2) < 0.02) {
+        // Side-bracket fitting on a beam face: the lead drops down that face in the
+        // removable cover straight to the bracket plate.
+        const face = sx + Math.sign(p[0] - sx) * (b.w / 2 + 0.055), tail = [[p[0],upper,p[2]],[face,upper,p[2]],[face,p[1],p[2]],p];
+        points.push(...tail); cp.push(cover(tail));
+      } else {
         const besideCapital = main && Math.abs(Math.abs(p[2])-3.6)<0.48;
         const rear = sx + (besideCapital ? 0.52 : b.w / 2 + 0.055), under = b.y0 - (besideCapital ? 0.11 : 0.05);
         // The existing ambo-light canopy contacts the abacus. Connect to the
@@ -206,6 +211,20 @@
       }
       return proposal(points, main ? 'above-main-beam' : 'above-side-beam',
         'Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.', cp);
+    }
+    // A pendant hung under a column-line beam (side-aisle fans since 19 October 2026):
+    // the lead comes down beside the beam's outer face in the removable cover, 0.95 m
+    // along from mid-span so that it clears the gilded cartouche, runs under the
+    // soffit to the hanger and continues inside the downrod. No timber core is
+    // crossed or drilled.
+    const line = it.mount === 'pendant' && SIM.GEO.longBeams?.find(b => p[0] > b.x0 && p[0] < b.x1 && Math.abs(p[2] - b.z) < b.w / 2 && Math.abs((it.anchorY ?? 0) - b.y0) < 0.03);
+    if (line) {
+      const fz = line.z + Math.sign(line.z) * (line.w / 2 + 0.055), under = line.y0 - 0.05, dx = p[0] + 0.95;
+      const path = roofConnection(start, [dx, 0, fz]), top = path.at(-1);
+      const drop = [top, [dx, under, fz], [dx, under, line.z], [p[0], under, line.z]];
+      return proposal([...path, ...drop.slice(1), p], 'beam-hanger',
+        'Above nave lining, then down the outer face of the column-line beam in a removable finish-matched cover to the hanger; cable continues inside the downrod. Hanger, beam section and access pending.',
+        [cover(drop)]);
     }
     if (it.mount === 'pendant') {
       const path = roofConnection(start, p), top = path.at(-1), entry = Math.min(it.anchorY ?? top[1], top[1]);
@@ -234,9 +253,10 @@
           const fy=base-0.06,last=out.at(-1);
           out.push([last[0],fy,last[2]],[p[0],fy,last[2]],[p[0],fy,p[2]],p);
           cornice=true;
-        } else if(p[1]>29.09) {
+        } else if(p[1]>29.0) {
           // The dome is narrower than the tower wall. Traverse behind the top
           // cornice finish, not across the exposed front of the cap at lamp height.
+          // Since 19 October 2026 the dome wash stands on that cornice (+29.09).
           const fy=29.03;
           out.push([tx,fy,lane(width)],[tx,fy,p[2]],[p[0],fy,p[2]],p);
           cornice=true;

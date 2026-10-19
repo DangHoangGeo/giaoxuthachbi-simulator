@@ -241,7 +241,7 @@ module.exports = function verifyConcealedRoutes({ SIM, T, CAT, building }) {
         }
         assert(approaches>0,`${r.id}: main-beam feed includes a source-roof approach`);summary.mainRoofApproaches++;
       }
-      if(it&&r.method==='tower-cornice'&&it.pos[1]>29.09) {
+      if(it&&r.method==='tower-cornice'&&it.pos[1]>29.0) {
         assert(r.reviewRequired===true&&/^REVIEW REQUIRED/.test(r.coordinationStatus)&&/cornice.*unresolved/i.test(r.installation),
           `${r.id}: tower cap service space retains its engineering hold`);
         const top=cornices.filter(c=>c.max.y>29&&c.max.y<29.2&&Math.sign(c.min.z+c.max.z)===Math.sign(it.pos[2]));
@@ -262,7 +262,12 @@ module.exports = function verifyConcealedRoutes({ SIM, T, CAT, building }) {
         const topContact = terminal && Math.abs(b[1]-core.max[1]) < eps && a[1] > b[1]
           && Math.abs(a[0]-b[0]) < eps && Math.abs(a[2]-b[2]) < eps
           && hit[0] >= 1-(radius+eps)/Math.abs(a[1]-b[1]);
-        assert(topContact, `${r.id}: segment ${i} intersects ${core.name} (including 3 mm cable envelope)`);
+        // Likewise a side-bracket fitting may touch the face of its beam where the
+        // lead enters its plate, approached square to that face.
+        const faceContact = terminal && it.mount === 'wall' && Math.abs(a[1]-b[1]) < eps && Math.abs(a[2]-b[2]) < eps
+          && (Math.abs(b[0]-core.max[0]) < eps && a[0] > b[0] || Math.abs(b[0]-core.min[0]) < eps && a[0] < b[0])
+          && hit[0] >= 1-(radius+eps)/Math.abs(a[0]-b[0]);
+        assert(topContact || faceContact, `${r.id}: segment ${i} intersects ${core.name} (including 3 mm cable envelope)`);
       }
       for(const [i,[a,b]] of segments(r.points).entries()) for(const capital of capitals) {
         if(!interval(a,b,capital,radius))continue;
@@ -288,6 +293,19 @@ module.exports = function verifyConcealedRoutes({ SIM, T, CAT, building }) {
         assert(Math.min(a[1],b[1])>6.8, `${r.id}: no wall-band span over the missing C/G wing wall`);
         sample(a,b,p=>checkRoofPoint(r,p));
         summary.openWingCrossings++;
+      }
+      // Fans hung under a column-line beam: down the beam's outer face in a cover, a run
+      // under the soffit, then inside the downrod (19 October 2026).
+      if (r.method === 'beam-hanger') {
+        const a=r.points.at(-2), p=it.pos, beam=SIM.GEO.longBeams.find(b=>p[0]>b.x0&&p[0]<b.x1&&Math.abs(p[2]-b.z)<b.w/2);
+        assert(beam && Math.abs(a[0]-p[0])<eps && Math.abs(a[2]-p[2])<eps && a[1]<beam.y0-radius, `${r.id}: hanger lead enters the downrod just under its beam`);
+        // From where the lead leaves the roof lining (the first point at or below the
+        // lining above the beam) to the downrod, every point lies in the proposed cover.
+        const covered=r.coverPaths.flatMap(c=>segments(c.points)), start=r.points.findIndex(q=>Math.abs(q[2]-beam.z)<beam.w/2+0.1 && q[1]>beam.y1);
+        assert(start>=0, `${r.id}: the lead reaches the beam from above the lining`);
+        for (const [u,v] of segments(r.points.slice(start)).slice(0,-1))
+          sample(u,v,q=>assert(covered.some(([c,d])=>pointOnSegment(q,c,d)),`${r.id}: the run beside and under the beam is in a proposed cover`));
+        summary.beamHangers=(summary.beamHangers||0)+1;
       }
       if (['roof-pendant','outer-wall','roof-local'].includes(r.method)) {
         summary.roofFeeds++;

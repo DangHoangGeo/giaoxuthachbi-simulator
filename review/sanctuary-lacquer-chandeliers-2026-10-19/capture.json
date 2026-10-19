@@ -1,0 +1,171 @@
+{
+ "date": "2026-10-19",
+ "viewer": "Thach_Bi_Viewer/OPEN_CHURCH.html?visit",
+ "canvas": [
+  1440,
+  810
+ ],
+ "scene": "Full service · evening",
+ "before": {
+  "source": "eng/12-hidden-fittings at 27a2bcd (unchanged)"
+ },
+ "after": {
+  "source": "working tree of this change, design revision 2026-10-19-sanctuary-lacquer-chandeliers-1"
+ },
+ "camera": "orbit camera position and controls target in model metres; vertical field of view in degrees; renderer pixel ratio forced to 1 for the capture",
+ "filmAudit": {
+  "shot": "timber",
+  "before": {
+   "clearance": 1.32,
+   "nearest": "Central column 6/E"
+  },
+  "after": {
+   "clearance": 1.07,
+   "nearest": "Chandelier · bay 4–5",
+   "time": 144.5,
+   "eye": [
+    16.07,
+    7,
+    1.75
+   ]
+  },
+  "reach": 1.5
+ },
+ "pictures": [
+  {
+   "file": "01-tie-day.jpg",
+   "position": [
+    34.2,
+    6.2,
+    -2.6
+   ],
+   "target": [
+    36.975,
+    8.45,
+    -1.2
+   ],
+   "fov": 40,
+   "lighting": "day",
+   "beforeSha256": "26530cba1b27fa7d4da35cad89019ed9af5edd7838b1387ad0b20bd88459cfe5",
+   "afterSha256": "fd12ad9b6d90071e73eeefab5beb4d52c3013b15d31a511d5602eb47e26c2c37",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "02-tie-evening.jpg",
+   "position": [
+    34.2,
+    6.2,
+    -2.6
+   ],
+   "target": [
+    36.975,
+    8.45,
+    -1.2
+   ],
+   "fov": 40,
+   "lighting": "evening",
+   "beforeSha256": "7a2adf35ea98b241c6f8f0cbf0603a8fe2265cab6e19d9d68d1ce41c11f6d5a5",
+   "afterSha256": "5321531e51d70da136bb473fee8e07ad49805ca9783d3318fbad77b9b4cbb4d3",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "03-chamber-day.jpg",
+   "position": [
+    47.4,
+    2.4,
+    1.8
+   ],
+   "target": [
+    44.9,
+    6.8,
+    -3.0
+   ],
+   "fov": 55,
+   "lighting": "day",
+   "beforeSha256": "96d3056d1f5e7f4874d5b0db2d60a52e9093e80f855edfa624b13f31000ab073",
+   "afterSha256": "970e175934ada90ff84e1a9df4f4958cc4c12a9c42a46bc0b19ceb8397faebd1",
+   "composite": "ffmpeg crop 720x405 at 440,80 then scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "04-chamber-evening.jpg",
+   "position": [
+    47.4,
+    2.4,
+    1.8
+   ],
+   "target": [
+    44.9,
+    6.8,
+    -3.0
+   ],
+   "fov": 55,
+   "lighting": "evening",
+   "beforeSha256": "8e8e1c50a9d997c6a39dbd97622546207119426122ffac3c1ea95d8d9267e47f",
+   "afterSha256": "8cc3a5bb5f38e874bb5fe5f9f4c8bf7a8948d9a0f0cea0c85182830a1caacb71",
+   "composite": "ffmpeg crop 720x405 at 440,80 then scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "05-nave-day.jpg",
+   "position": [
+    8.5,
+    1.6,
+    -1.2
+   ],
+   "target": [
+    37.0,
+    6.5,
+    0
+   ],
+   "fov": 55,
+   "lighting": "day",
+   "beforeSha256": "2c26f9b113840d916a86d3628881bf837b48d47002e41bcd6674d13fb80c09d6",
+   "afterSha256": "145e314efe321c46d43ed2ef267fdacb55457f19ff13ca14f7bac1d68237ed89",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "06-nave-evening.jpg",
+   "position": [
+    8.5,
+    1.6,
+    -1.2
+   ],
+   "target": [
+    37.0,
+    6.5,
+    0
+   ],
+   "fov": 55,
+   "lighting": "evening",
+   "beforeSha256": "ad6e827921baac2ee85d1837fe9a831fc0f09503f3397ee26f46c851afca5754",
+   "afterSha256": "aca3006080b705dbe83b4916384fb296911861e15d273166aa85b88bbe0b87a8",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "07-chandelier-evening.jpg",
+   "position": [
+    21.5,
+    3.0,
+    -6.0
+   ],
+   "target": [
+    16.725,
+    7.0,
+    0
+   ],
+   "fov": 50,
+   "lighting": "evening",
+   "beforeSha256": "424975bb31342c1076421c12a458a7cbf3323991d47504081b0282bc7d7ea76c",
+   "afterSha256": "d4ecc05304422dc7b52928602489637074446a4c3b2d87b31bb72dbf149e2301",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "08-film-timber.jpg",
+   "film": "full",
+   "time": 144.5,
+   "note": "CHURCH_CINEMA.play(\"full\"), setPaused(true), still(144.5): the closest point of the timber shot to the raised bay 4–5 chandelier",
+   "beforeSha256": "52f81348e21925382f15bcb1ec67022288b25a2131682d3e7dd5b0809a34d9c9",
+   "afterSha256": "ea210812ab39c0d8784807c3adc606ffe9a34efcab17560a05bbd6ab1b84ab5b",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  }
+ ]
+}

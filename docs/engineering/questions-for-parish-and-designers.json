@@ -448,9 +448,45 @@
       "id": "Q49",
       "discipline": "Vận hành / chiếu sáng",
       "owner": "Cha xứ / thiết kế chiếu sáng / kỹ sư điện",
-      "question_vi": "Đèn ngoài nhà (mặt tiền và tháp L6 919 W, sân khấu và cửa chính L9, tượng mặt tiền L10, hành lang L4, bậc và lối đi L5) bật những giờ nào ngoài giờ lễ? Có dùng công tắc thời gian, giờ tắt muộn và mức giảm sáng ban đêm không?",
+      "question_vi": "Đèn ngoài nhà (mặt tiền và tháp L6 942 W, sân khấu và cửa chính L9, tượng mặt tiền L10, hành lang L4, bậc và lối đi L5) bật những giờ nào ngoài giờ lễ? Có dùng công tắc thời gian, giờ tắt muộn và mức giảm sáng ban đêm không?",
       "evidence": "Lịch vận hành mong muốn theo ngày thường, Chúa nhật và lễ trọng; yêu cầu an ninh ban đêm; thiết bị hẹn giờ/điều khiển được chọn",
-      "blocks": "Ước tính điện năng cả năm (mô hình: riêng L6, L9, L10 bật 4 giờ mỗi đêm khoảng 1.826 kWh/năm), thiết kế điều khiển DB-2 và chế độ nhanh",
+      "blocks": "Ước tính điện năng cả năm (mô hình: riêng L6, L9, L10 bật 4 giờ mỗi đêm khoảng 1.860 kWh/năm), thiết kế điều khiển DB-2 và chế độ nhanh",
+      "answer": null
+    },
+    {
+      "id": "Q50",
+      "discipline": "Kết cấu / chiếu sáng / bảo trì",
+      "owner": "Kỹ sư kết cấu / thiết kế chiếu sáng / nhà thầu",
+      "question_vi": "56 đèn đọc sách được bắt bằng giá đỡ bên hông vào mặt phía cung thánh của xà gỗ (xà ngang +8,59 m, xà phụ +6,66 m) và sơn cùng màu sơn mài đỏ của xà. Có được bắt vít vào xà gỗ chịu lực không, loại vít và chiều sâu nào, tải bao nhiêu? Màu sơn tĩnh điện của đèn có khớp được mẫu sơn mài thật không? Thay bóng và chỉnh hướng ở độ cao này bằng cách nào?",
+      "evidence": "Xác nhận của kỹ sư kết cấu về liên kết vào xà (không khoét, không đục), sản phẩm đèn được chọn và mẫu màu, thử chói tại một gian mẫu, phương án giàn giáo/thang nâng",
+      "blocks": "Vị trí, giá đỡ và màu trong mô hình là ý tưởng (đổi ngày 19/10/2026 theo yêu cầu của chủ đầu tư); đường cáp đi xuống mặt xà trong nắp che cùng màu chưa được duyệt",
+      "answer": null
+    },
+    {
+      "id": "Q51",
+      "discipline": "Chiếu sáng / kết cấu / bảo trì",
+      "owner": "Thiết kế chiếu sáng / kỹ sư kết cấu / nhà thầu",
+      "question_vi": "Đèn tháp đổi sang thanh đèn thấp và đèn chiếu nhỏ cùng màu phào chỉ, đặt trên gờ phào ở +8,39, +15,84, +23,14 và +29,09 m, quang học vượt mép gờ 6–8 cm. Bắt vào gờ thế nào mà không làm hỏng lớp chống thấm, chống gió, thoát nước và chống sét ra sao? Có quang học hắt tường bất đối xứng phù hợp không? Lối lên bảo trì an toàn ở các cao độ này là gì?",
+      "evidence": "Khảo sát gờ phào thật (độ sâu, vật liệu, chống thấm), sản phẩm IP66 được chọn và tài liệu quang trắc, thử ban đêm trên một mặt tháp, phương án tiếp cận an toàn",
+      "blocks": "Vị trí gờ, mép và mặt tường là số đo trên mô hình (MODEL TRANSCRIPTION); lan can vòm sẽ che phần chân mái vòm khỏi đèn mái vòm, phần này không có trong tính toán; đèn mái vòm tăng lên 4000 lm (+12 W mỗi tháp)",
+      "answer": null
+    },
+    {
+      "id": "Q52",
+      "discipline": "Âm thanh / kiến trúc / kết cấu",
+      "owner": "Thiết kế âm thanh / kiến trúc sư / kỹ sư kết cấu",
+      "question_vi": "12 loa cột mảnh được dời khỏi mặt trụ bê tông vào góc giữa trụ và tường (phía cửa chính của mỗi trụ), nghiêng xuống 22°. Bề rộng thật của trụ là bao nhiêu (mô hình 0,58 m chỉ minh họa)? Giá nghiêng cần lùi khỏi tường bao nhiêu để đầu dưới của loa không chạm tường (mô hình cho thấy chạm 17 mm)? Bắt vào tường gạch thế nào và cáp vào loa ở đâu?",
+      "evidence": "Đo trụ và tường tại hiện trường, sản phẩm loa và giá nghiêng được chọn, thử âm tại chỗ (độ rõ lời ở cánh, biên độ hú micro)",
+      "blocks": "Tính toán: độ rõ lời lòng nhà thờ không kém hơn trước (84 % ghế đạt 0,60, thấp nhất 0,536), biên độ hú micro bục giảng/bàn thờ 0,9/1,4 dB (vẫn dưới 3 dB), độ rõ thấp nhất ở hai cánh giảm từ 0,422 xuống 0,409",
+      "answer": null
+    },
+    {
+      "id": "Q53",
+      "discipline": "Kết cấu / thông gió",
+      "owner": "Kỹ sư kết cấu / thiết kế cơ điện / cha xứ",
+      "question_vi": "12 quạt trần hai lối đi bên được treo dưới dầm dọc nối các cột gỗ (B03, đáy dầm +8,73 m) ở giữa nhịp, cần treo dài 4,53 m. Dầm dọc thật có tiết diện và liên kết ở đầu cột thế nào, có chịu được trọng lượng, mô-men xoắn và rung của quạt không? Móc treo, thanh chống lắc và dây an toàn chọn loại nào? Cha xứ có chấp nhận rằng số ghế có gió dễ chịu giảm từ 80 % xuống 60 % (dãy ghế sát tường ít gió hơn) không?",
+      "evidence": "Khảo sát và tính toán dầm dọc và mối nối, sản phẩm quạt và bộ treo được chọn, thử một quạt tại chỗ đo gió ở ghế sát tường",
+      "blocks": "Dầm dọc B03 trong mô hình chỉ là hình minh họa (0,24 × 0,45 m); vị trí quạt là yêu cầu của chủ đầu tư ngày 19/10/2026, chưa có tải trọng, liên kết hay kết quả đo",
       "answer": null
     }
   ]

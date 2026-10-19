@@ -1,0 +1,181 @@
+{
+ "date": "2026-10-19",
+ "viewer": "Thach_Bi_Viewer/OPEN_CHURCH.html?visit",
+ "canvas": [
+  1440,
+  810
+ ],
+ "scene": "Full service · evening",
+ "presentation": true,
+ "before": {
+  "source": "untouched worktree of dev at c08ab66"
+ },
+ "after": {
+  "source": "working tree of this change, design revision 2026-10-19-hidden-fittings-1"
+ },
+ "camera": "orbit camera position and controls target in model metres; vertical field of view in degrees",
+ "pictures": [
+  {
+   "file": "01-tie-beam-sanctuary-side.jpg",
+   "position": [
+    20.2,
+    7.6,
+    -1.9
+   ],
+   "target": [
+    19.15,
+    8.6,
+    -2.6
+   ],
+   "fov": 40,
+   "lighting": "day",
+   "beforeSha256": "445420fa6a5291af5d4d52ffd4719cd21ebc69bfdb2098381a7dfc69a53dda52",
+   "afterSha256": "048d35a2207d8bfdfc9af773dbc87c63de7879e7fb9dd3f66e4dead1612681e4",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "02-tie-beam-entrance-side.jpg",
+   "position": [
+    16.5,
+    6.2,
+    -1.0
+   ],
+   "target": [
+    18.6,
+    8.4,
+    -2.6
+   ],
+   "fov": 40,
+   "lighting": "day",
+   "beforeSha256": "c04f765dd34c824da6734b830f73fa8f6b913915b5367d7420e9c4fdb92073d2",
+   "afterSha256": "4972795eb19fac60572b1950dca3301d8663a833eca272e9fe257c736352b7b0",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "03-side-beam-cartouche.jpg",
+   "position": [
+    20.4,
+    5.6,
+    -4.0
+   ],
+   "target": [
+    19.1,
+    6.75,
+    -5.45
+   ],
+   "fov": 50,
+   "lighting": "day",
+   "beforeSha256": "2578ca1e1044d026e2f11253567bffdcca57785989ec489cbe970c3f42fd91e9",
+   "afterSha256": "9a862676649d7a197b48606e7ab37c5478ac0008e68c579b4e4b254aa0620907",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "04-nave-from-rear-rows.jpg",
+   "position": [
+    8.0,
+    1.65,
+    4.6
+   ],
+   "target": [
+    30,
+    3.6,
+    6.6
+   ],
+   "fov": 55,
+   "lighting": "day",
+   "beforeSha256": "97262cbf332f0ac35429f6b69f2bfe91666d2915671baba818b586629f78970e",
+   "afterSha256": "cff261e7a4509e856ea94110925a223ceb4324756c784554900b9086ddf614c1",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "05-speaker-corner.jpg",
+   "position": [
+    16.0,
+    2.4,
+    3.5
+   ],
+   "target": [
+    19.2,
+    3.3,
+    7.1
+   ],
+   "fov": 50,
+   "lighting": "day",
+   "beforeSha256": "4ccee42f3e400a785514e58fae2dd37f69484eb470bdd285bfee424f4f9e53b0",
+   "afterSha256": "8feb46e411f3ac69c73c4d0cce4f5591e0d911ae1f192480118bc9f680db4a68",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "06-tower-ledge-day.jpg",
+   "position": [
+    -7,
+    5.5,
+    -13.5
+   ],
+   "target": [
+    0,
+    9.2,
+    -10
+   ],
+   "fov": 40,
+   "lighting": "day",
+   "beforeSha256": "3c50c50f24b0c23511f6977da1c5912d3d359d3bf50eb5b5778cf276a7e421b5",
+   "afterSha256": "cd54c49799fa9f1fe68023eb46829a84b7059c80bf8ca699849433c5f6988d3b",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "07-towers-day.jpg",
+   "position": [
+    -26,
+    6,
+    -16
+   ],
+   "target": [
+    1,
+    16,
+    -9
+   ],
+   "fov": 45,
+   "lighting": "day",
+   "beforeSha256": "c2bb582a152badd99f32084af268f88b087daf9a45330f8db15d0c11ff293020",
+   "afterSha256": "6386b2a6dd2ceb4329c5297e1f970fdc1fab810e15c0bb80b06b17ccbf96af5e",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "08-front-evening.jpg",
+   "position": [
+    -30,
+    4,
+    -18
+   ],
+   "target": [
+    1,
+    15,
+    -6
+   ],
+   "fov": 50,
+   "lighting": "evening",
+   "beforeSha256": "fd6c0d464f05e4e3eba787b980ff70c27579bb7943caf5508e0e533628989110",
+   "afterSha256": "68ecbd7573822c494854da99b37bfa9cf4f88bbc7507e527935652e15a44d921",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  },
+  {
+   "file": "09-nave-evening.jpg",
+   "position": [
+    8.0,
+    1.65,
+    1.2
+   ],
+   "target": [
+    30,
+    6.5,
+    -1.0
+   ],
+   "fov": 60,
+   "lighting": "evening",
+   "beforeSha256": "26e72aaa866a348782cc8930efb5d633c708126edba6fc4c4b3e7a81ac3e1f74",
+   "afterSha256": "aae0d667fb0152489095dfadf2b4d967534eb11ca6857f1b3d9227e05b7aa936",
+   "composite": "ffmpeg scale 800x450 each, hstack, q:v 3"
+  }
+ ]
+}
