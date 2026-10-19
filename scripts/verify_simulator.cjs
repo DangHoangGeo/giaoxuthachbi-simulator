@@ -177,8 +177,10 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   assert(front.every(it => near(it.pos[0], 2.2) && near(Math.abs(it.pos[2]), 2.4) && it.circuit === 'L9'), 'central pair outside the front wall on DB2');
   assert(!lights.some(it => /^(Tower lantern|Sconce · main door) ·/.test(it.name)), 'old duplicate door decoration removed');
   assert.equal(lights.filter(it => it.name.startsWith('Service door lantern ·')).length, 4, 'two service doors have balanced pairs');
-  const tower = lights.filter(it => it.type === 'corniceFlood');
+  // Tower washes (owner, 19 October 2026): cornice-coloured fittings on the ledges, no black arm floods.
+  const tower = lights.filter(it => /^(Tower (lower (front|side) wash|stage [23] (flood|side wash))|Belfry (front|side) wash|Dome front wash) ·/.test(it.name));
   assert.equal(tower.length, 18, 'nine architecture washes per tower');
+  assert(tower.every(it => it.type === 'ledgeBar' || it.type === 'ledgeFlood') && !lights.some(it => it.type === 'corniceFlood'), 'tower washes are ledge fittings, no projecting-arm floods remain');
   for (const a of tower.filter(it => it.name.endsWith(' · B'))) {
     const b = tower.find(it => it.name === a.name.replace(/ · B$/, ' · H'));
     assert(b && near(a.pos[0], b.pos[0]) && near(a.pos[1], b.pos[1]) && near(a.pos[2], -b.pos[2]), 'mirrored tower mount: ' + a.name);
@@ -547,6 +549,167 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert.equal(split.length, beforeSplit.length, 'nothing is added or restored');
   assert.deepEqual(plainCopy(D.upgradeExhaustSplit(split, design)), plainCopy(split), 'applying the split again changes nothing');
 }
+// Owner, 19 October 2026: reading lights in the timber colour on the beams, nave speakers off the
+// concrete piers into the pier–wall corners, and a one-time move of untouched saved fittings.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, timber = interior.materials.timber, wall = sandbox.window.model.mat.wall, plain = v => JSON.parse(JSON.stringify(v));
+  const reading = SIM.state.items.filter(it => /^Reading light · axis /.test(it.name));
+  assert.equal(reading.length, 56, 'twin reading heads at axes 3–9 on the tie and side beams');
+  for (const it of reading) {
+    const tie = / central/.test(it.name), beam = (tie ? SIM.GEO.mainBeams : SIM.GEO.sideBeams).find(b => Math.abs(b.x + b.w / 2 - it.pos[0]) < 1e-6 && (tie || b.side === Math.sign(it.pos[2])));
+    assert(it.type === 'readingProjector' && it.mount === 'wall' && it.mountYaw === 0 && it.params.finish === 'timber' && beam, 'side bracket on the sanctuary face of its beam: ' + it.name);
+    assert(Math.abs(it.anchorY - beam.y0) < 1e-6, 'route and records name the beam soffit: ' + it.name);
+    const fx = SIM.fixtures.get(it.id), box = new T.Box3().setFromObject(fx.root), lens = SIM.emitters().find(e => e.id === it.id);
+    assert(box.min.y > beam.y0 - 0.03 && box.max.y < beam.y1, 'body beside the beam, only the cowl at the soffit: ' + it.name);
+    assert(lens && lens.pos[1] <= beam.y0 + 0.005 && lens.dir[1] < -0.97, 'light leaves below the soffit, aimed down: ' + it.name);
+    fx.root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) assert.equal(m.material, timber, 'the beam lacquer itself, so it follows the timber tone: ' + it.name); });
+  }
+  // Tie-beam pairs flank the gilded band at ±2.60 m; side-beam pairs stand either side of the cartouche.
+  assert(reading.filter(it => / central/.test(it.name)).every(it => Math.abs(Math.abs(Math.abs(it.pos[2]) - 2.6) - 0.12) < 1e-6), 'tie pairs flank the gilded band');
+  assert(reading.filter(it => / outer/.test(it.name)).every(it => [4.84, 6.09].some(z => Math.abs(Math.abs(it.pos[2]) - z) < 1e-6)), 'side pairs flank the cartouche');
+  for (const it of SIM.state.items.filter(it => /^Rear (rows|centre) light · entrance façade ·/.test(it.name))) {
+    assert(it.type === 'readingProjector' && it.params.finish === 'wall', 'entrance-wall reading heads in the plaster finish: ' + it.name);
+    SIM.fixtures.get(it.id).root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) assert.equal(m.material, wall, 'wall plaster: ' + it.name); });
+  }
+  // Wall speakers: on the masonry wall, tight against the entrance side of each pier, inside its projection.
+  const speakers = SIM.state.items.filter(it => /^Wall speaker · axis \d · [BH]$/.test(it.name));
+  assert.equal(speakers.length, 12);
+  for (const it of speakers) {
+    const k = it.name.match(/axis (\d)/)[1], s = Math.sign(it.pos[2]), pierFace = SIM.GEO.axes[k] - 0.29, box = new T.Box3().setFromObject(SIM.fixtures.get(it.id).root);
+    assert(Math.abs(Math.abs(it.pos[2]) - 7.25) < 1e-6 && it.mountYaw === -s * 90 && it.yaw === -s * 140, 'on the wall, facing the rows behind: ' + it.name);
+    assert(box.max.x < pierFace && box.max.x > pierFace - 0.03, 'tight against the pier side: ' + it.name + ' ' + (pierFace - box.max.x).toFixed(3));
+    // Tilted 22° down, the top of the column stands at most 40 mm proud of the pier face (0.20 m on the pier before).
+    const proud = 7.07 - Math.min(Math.abs(box.min.z), Math.abs(box.max.z));
+    assert(proud < 0.04, 'within the depth of the pier: ' + it.name + ' ' + proud.toFixed(3) + ' m proud of its face');
+    assert(it.tilt === -22, 'tilted further down for the seats now 0.18 m further away: ' + it.name);
+  }
+  // Migration: an untouched default fitting moves and keeps its switching; a moved or re-aimed one stays.
+  const design = D.recommended(SIM.GEO, SIM), before = D.hiddenFittingsBefore(SIM.GEO);
+  assert.equal(before.size, 100, 'previous defaults of every moved fitting');
+  const old = (name, o = {}) => { const b = before.get(name), raw = design.find(it => it.name === name);
+    return { ...raw, type: b.type, pos: [...b.pos], yaw: b.yaw, tilt: b.tilt, mount: /^Reading/.test(name) ? 'pendant' : b.type === 'corniceFlood' || b.type === 'flood' ? 'floor' : 'wall', params: b.type === 'corniceFlood' ? { outreach: 0.5 } : {}, ...o }; };
+  const saved = [old('Reading light · axis 5 · H central', { id: 'r1', on: false, dim: 0.4, lumens: 2000 }), old('Reading light · axis 6 · B outer · twin', { id: 'r2', pos: [23.2, 6.655, -5.6] }),
+    old('Tower stage 2 flood · B', { id: 't1', dim: 0.5 }), old('Stage flood · tower H · outer', { id: 't2', on: false, circuit: 'L9' }),
+    old('Wall speaker · axis 7 · H', { id: 's1', level: -3, delayMs: 12 }), old('Wall speaker · axis 8 · B', { id: 's2', yaw: 120 }), { id: 'u', name: 'User fan', type: 'fanWall', circuit: 'F2', pos: [20, 3, 7] }];
+  const up = D.upgradeHiddenFittings(saved, design, SIM.GEO), byId = id => up.find(it => it.id === id), target = name => design.find(it => it.name === name);
+  assert.equal(up.length, saved.length, 'nothing is added or restored');
+  for (const [id, name] of [['r1', 'Reading light · axis 5 · H central'], ['t1', 'Tower stage 2 flood · B'], ['t2', 'Stage flood · tower H · outer'], ['s1', 'Wall speaker · axis 7 · H']]) {
+    const it = byId(id), raw = target(name);
+    assert(it.type === raw.type && it.mount === raw.mount && plain(it.pos).join() === plain(raw.pos).join() && it.yaw === raw.yaw && it.tilt === raw.tilt && it.mountYaw === raw.mountYaw, 'untouched fitting takes its new place: ' + name);
+    assert.deepEqual(plain(it.params ?? {}), plain(raw.params ?? {})); assert.equal(it.anchorY, raw.anchorY);
+  }
+  assert(byId('r1').on === false && byId('r1').dim === 0.4 && byId('r1').lumens === 2000, 'switch, dimmer and output kept');
+  assert(byId('t1').dim === 0.5 && byId('t2').on === false && byId('t2').circuit === 'L9' && byId('s1').level === -3 && byId('s1').delayMs === 12, 'dimmer, switch, circuit, level and delay kept');
+  assert.deepEqual(plain(byId('r2')), plain(saved[1]), 'a moved reading light stays where the user put it');
+  assert.deepEqual(plain(byId('s2')), plain(saved[5]), 'a re-aimed speaker stays as the user set it');
+  assert.equal(byId('u'), saved[6], 'unrelated equipment untouched');
+  assert.deepEqual(plain(D.upgradeHiddenFittings(up, design, SIM.GEO)), plain(up), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.hiddenFittingsRevision, D.hiddenFittingsRevision, 'the revision is stored in the saved settings');
+}
+// 19 October 2026 (owner: all the sanctuary lights in the lacquer; nave chandeliers 1.0 m higher).
+// The accent heads hung from the axis-9 tie and side beams take the beam lacquer, the heads and vault
+// uplights on the chamber walls the chamber's own lacquer. Finish only; a one-time change for saved layouts.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, timber = interior.materials.timber, chamberWall = sandbox.window.CHURCH_SANCTUARY.materials.wood, plain = v => JSON.parse(JSON.stringify(v));
+  const beamNames = ['Altar key light · B', 'Altar key light · H', 'Ambo key light', 'Sanctuary step fill · B', 'Sanctuary step fill · H', 'Presider chair light',
+    'Sanctuary frame wash · B', 'Sanctuary frame wash · H', 'Statue accent · B', 'Statue accent · H', 'Shrine wash · B', 'Shrine wash · H'];
+  const chamberNames = ['Crucifix accent · B', 'Crucifix accent · H', 'Reredos wash · B', 'Reredos wash · H', 'Reredos base wash · B', 'Reredos base wash · H',
+    'Tabernacle accent', 'Sanctuary vault uplight · B', 'Sanctuary vault uplight · H'];
+  const metal = { projector24: 'black', projector36: 'black', spot15: 'bronze', uplight: 'bronze' };
+  const byName = name => SIM.state.items.find(it => it.name === name);
+  assert([...beamNames, ...chamberNames].every(byName), 'every sanctuary accent and chamber light is in the design');
+  // The chamber side walls carry the sanctuary's own lacquer; the beam timber copies only its colour and
+  // follows the timber tone, so the chamber fittings share the wall material itself.
+  let wallMesh = null; sandbox.window.model.scene.traverse(o => { if (o.isMesh && o.name === 'Chamber side wall · lacquered timber') wallMesh = o; });
+  assert(wallMesh && wallMesh.material === chamberWall, 'the chamber side wall is in the sanctuary lacquer');
+  for (const [names, finish, mat] of [[beamNames, 'timber', timber], [chamberNames, 'chamber', chamberWall]]) for (const name of names) {
+    const it = byName(name);
+    assert(it.circuit === 'L3' && Object.hasOwn(metal, it.type) && it.params.finish === finish, finish + ' finish on ' + name);
+    let meshes = 0;
+    SIM.fixtures.get(it.id).root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) { meshes++; assert.equal(m.material, mat, 'the ' + (finish === 'timber' ? 'beam' : 'chamber wall') + ' lacquer itself: ' + name); } });
+    assert(meshes > 0, 'fitting has a body: ' + name);
+  }
+  // Every other head of these types keeps its metal finish (held wing projectors, roof uplights on the ties).
+  for (const it of SIM.state.items.filter(it => Object.hasOwn(metal, it.type) && ![...beamNames, ...chamberNames].includes(it.name))) assert.equal(it.params.finish, metal[it.type], 'metal finish kept: ' + it.name);
+  // Nave chandeliers: 1.0 m higher, same chain anchor, mid-bay between the ties, clear of the beams and reading heads.
+  const chandeliers = SIM.state.items.filter(it => /^Chandelier · bay [468]–[579]$/.test(it.name));
+  assert.equal(chandeliers.length, 3);
+  for (const it of chandeliers) {
+    assert(it.type === 'chandelier8' && Math.abs(it.pos[1] - 7.3) < 1e-9 && it.pos[2] === 0 && it.anchorY > 9, 'raised to +7.3 m on its ridge chain: ' + it.name);
+    const k = it.name.match(/bay (\d)/)[1], mid = (SIM.GEO.axes[k] + SIM.GEO.axes[String(Number(k) + 1)]) / 2;
+    assert(Math.abs(it.pos[0] - mid) < 1e-6, 'mid-bay: ' + it.name);
+    const head = new T.Box3(); SIM.fixtures.get(it.id).root.traverse(m => { if (m.isMesh && m !== SIM.fixtures.get(it.id).stem && m !== SIM.fixtures.get(it.id).canopy) head.expandByObject(m); });
+    const tieSoffit = Math.min(...SIM.GEO.mainBeams.map(b => b.y0));
+    assert(head.min.y > 6.1 && head.min.y < 6.3 && head.max.y < tieSoffit, 'lowest point about +6.2 m, below the tie soffit: ' + it.name + ' ' + head.min.y.toFixed(2) + '–' + head.max.y.toFixed(2));
+    for (const b of SIM.GEO.mainBeams) assert(head.max.x < b.x - b.w / 2 - 0.5 || head.min.x > b.x + b.w / 2 + 0.5, 'at least 0.5 m clear of tie beam ' + b.x + ': ' + it.name);
+    // Reading heads on the tie faces: their 28° cones (aimed 8° along the nave) do not reach the chandelier.
+    const readingEmitters = SIM.emitters().filter(e => /^Reading light · axis /.test(SIM.item(e.id)?.name || ''));
+    assert.equal(readingEmitters.length, 56, 'every reading head checked');
+    for (const r of readingEmitters) {
+      const half = ((SIM.item(r.id).beam ?? 36) / 2 + 2) * Math.PI / 180;
+      const corners = [];
+      for (const x of [head.min.x, head.max.x]) for (const y of [head.min.y, head.max.y]) for (const z of [head.min.z, head.max.z]) corners.push([x, y, z]);
+      const centre = head.getCenter(new T.Vector3()), radius = head.getSize(new T.Vector3()).length() / 2;
+      const v = new T.Vector3(centre.x - r.pos[0], centre.y - r.pos[1], centre.z - r.pos[2]), dist = v.length(), dir = new T.Vector3(...r.dir).normalize();
+      const angle = Math.acos(Math.max(-1, Math.min(1, v.dot(dir) / dist))) - Math.asin(Math.min(1, radius / dist));
+      assert(angle > half, 'reading cone clear of ' + it.name + ': ' + SIM.item(r.id).name + ' ' + (angle * 180 / Math.PI).toFixed(1) + '°');
+    }
+  }
+  // Migration: an untouched fitting in its old metal finish (or with none, from before the setting) takes the
+  // lacquer and keeps everything else; a chandelier still at +6.3 rises; anything the user changed stays.
+  const design = D.recommended(SIM.GEO, SIM), raw = name => design.find(it => it.name === name);
+  const old = (name, o = {}) => ({ ...raw(name), params: { finish: metal[raw(name).type] }, ...o });
+  const chOld = (name, o = {}) => ({ ...raw(name), pos: [raw(name).pos[0], D.NAVE_CHANDELIER_BEFORE_Y, 0], ...o });
+  const saved = [old('Altar key light · B', { id: 'a1', on: false, dim: 0.3, lumens: 4000 }), { ...raw('Ambo key light'), id: 'a2', params: {} },
+    old('Statue accent · H', { id: 'a3', pos: [raw('Statue accent · H').pos[0], raw('Statue accent · H').pos[1], 4.1] }), old('Shrine wash · B', { id: 'a4', tilt: -30 }),
+    old('Sanctuary frame wash · H', { id: 'a5', type: 'projector24' }), old('Presider chair light', { id: 'a6', params: { finish: 'timber' } }),
+    old('Reredos wash · H', { id: 'c1', dim: 0.5 }), old('Sanctuary vault uplight · B', { id: 'c2', on: false }), old('Tabernacle accent', { id: 'c3', yaw: 12 }),
+    chOld('Chandelier · bay 4–5', { id: 'h1', on: false, dim: 0.4 }), chOld('Chandelier · bay 6–7', { id: 'h2', pos: [24.0, 6.3, 0.5] }), chOld('Chandelier · bay 8–9', { id: 'h3', pos: [raw('Chandelier · bay 8–9').pos[0], 5.8, 0] }),
+    { ...raw('Grand chandelier · crossing 9–10'), id: 'g' }];
+  const up = D.upgradeFinishChandeliers(saved, design), byId = id => up.find(it => it.id === id), was = id => saved.find(it => it.id === id);
+  assert.equal(up.length, saved.length, 'nothing is added or removed');
+  assert(byId('a1').params.finish === 'timber' && byId('a2').params.finish === 'timber', 'untouched beam heads take the beam lacquer');
+  assert(byId('c1').params.finish === 'chamber' && byId('c2').params.finish === 'chamber', 'untouched chamber fittings take the chamber lacquer');
+  for (const id of ['a1', 'c1', 'c2']) { const { params: _a, ...after } = byId(id), { params: _b, ...before } = was(id); assert.deepEqual(plain(after), plain(before), 'only the finish changes: ' + id); }
+  for (const id of ['a3', 'a4', 'a5', 'c3', 'h2', 'h3', 'g']) assert.equal(byId(id), was(id), 'a moved, re-aimed or re-typed item and the grand chandelier stay as they were: ' + id);
+  assert.deepEqual(plain(byId('a6')), plain(was('a6')), 'a head already in the lacquer stays');
+  assert(byId('h1').pos[1] === 7.3 && byId('h1').pos[0] === was('h1').pos[0] && byId('h1').on === false && byId('h1').dim === 0.4 && byId('h1').anchorY === was('h1').anchorY, 'a chandelier at +6.3 rises; switch, dimmer and anchor kept');
+  assert.deepEqual(plain(D.upgradeFinishChandeliers(up, design)), plain(up), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.finishChandelierRevision, D.finishChandelierRevision, 'the revision is stored in the saved settings');
+}
+// Owner, 19 October 2026: side-aisle fans hang from the column-line beams (B03) that join
+// the columns, and 0.30 m higher. Bay 2′–3 has no such beam and keeps its purlin bracket.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, plain = v => JSON.parse(JSON.stringify(v));
+  const fans = SIM.state.items.filter(it => /^Ceiling fan · bay .* aisle$/.test(it.name));
+  assert.equal(fans.length, 14, 'seven bays of side-aisle fans');
+  for (const it of fans) {
+    assert(Math.abs(it.pos[1] - 4.2) < 1e-9, 'hub at +4.20 m: ' + it.name);
+    const back = /2′–3/.test(it.name), beam = SIM.GEO.longBeams.find(b => it.pos[0] > b.x0 && it.pos[0] < b.x1 && Math.abs(b.z - it.pos[2]) < 1e-6);
+    if (back) assert(Math.abs(Math.abs(it.pos[2]) - 4.4) < 1e-9 && !beam, 'bay 2′–3 has no column-line beam; its fans stay on the purlins: ' + it.name);
+    else assert(beam && Math.abs(it.pos[0] - (beam.x0 + beam.x1) / 2) < 1e-6 && Math.abs(it.anchorY - beam.y0) < 1e-6, 'fan hangs at mid-span under its column-line beam: ' + it.name);
+    const t = CAT.byId[it.type], blades = it.pos[1] - t.fan.rotorDrop;
+    assert(blades >= 2.4 && blades < 4.2, 'blades above head height and below the height where seated air falls off: ' + it.name);
+  }
+  const design = D.recommended(SIM.GEO, SIM), pick = name => design.find(it => it.name === name);
+  const old = (name, o = {}) => { const raw = pick(name); return { ...raw, pos: [raw.pos[0], 3.9, Math.sign(raw.pos[2]) * 4.4], anchorY: 9.03, note: 'old', ...o }; };
+  const saved = [old('Ceiling fan · bay 5–6 · B aisle', { id: 'f1', speed: 3, on: false }), old('Ceiling fan · bay 2′–3 · H aisle', { id: 'f2' }), old('Ceiling fan · bay 6–7 · H aisle', { id: 'f3', pos: [25.0, 3.9, 4.4] })];
+  const up = D.upgradeFanBeams(saved, design), byId = id => up.find(it => it.id === id);
+  assert(plain(byId('f1').pos).join() === plain(pick('Ceiling fan · bay 5–6 · B aisle').pos).join() && byId('f1').anchorY === 8.73 && byId('f1').speed === 3 && byId('f1').on === false, 'untouched fan moves under the beam, keeps speed and switch');
+  assert(Math.abs(byId('f2').pos[1] - 4.2) < 1e-9 && Math.abs(byId('f2').pos[2] - 4.4) < 1e-9, 'back-bay fan only rises');
+  assert.deepEqual(plain(byId('f3')), plain(saved[2]), 'a fan the user moved stays');
+  assert.deepEqual(plain(D.upgradeFanBeams(up, design)), plain(up), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.fanBeamRevision, D.fanBeamRevision, 'the revision is stored in the saved settings');
+  // Tie-beam reading heads aimed toward a bay with a beam-hung fan: 5° along the nave, 24° optic.
+  const tie = SIM.state.items.filter(it => /^Reading light · axis \d · [BH] central/.test(it.name));
+  const faces = it => { const k = +it.name.match(/axis (\d)/)[1]; return / · twin$/.test(it.name) ? k >= 4 : k <= 8; };
+  assert.equal(tie.filter(faces).length, 24, 'twenty-four heads face a beam-hung fan');
+  for (const it of tie) assert.equal(it.beam, faces(it) ? 24 : 28, 'optic of ' + it.name);
+  const head = pick('Reading light · axis 5 · H central'), axisX = head.pos[0] - 0.15, before = D.aim([head.pos[0] + 0.085, 8.59, head.pos[2]], [axisX + Math.tan(8 * Math.PI / 180) * 7.79, 0.8, 2.6]);
+  const heads = D.upgradeFanBeams([{ ...head, id: 'h1', yaw: before.yaw, tilt: before.tilt, beam: 28, on: false, lumens: 2000 }, { ...head, id: 'h2', yaw: before.yaw + 5, tilt: before.tilt, beam: 28 }], design);
+  assert(heads[0].yaw === head.yaw && heads[0].tilt === head.tilt && heads[0].beam === 24 && heads[0].on === false && heads[0].lumens === 2000, 'untouched head takes the new aim and optic, keeps switch and output');
+  assert(heads[1].beam === 28, 'a re-aimed head stays as the user set it');
+}
 // Every fixture is fixed to something the model actually has: wall items need a
 // surface right behind them, pendants need structure at their anchor (fans on
 // steel spreaders and strung decorations carry their own support).
@@ -564,16 +727,27 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
     const a = (it.mountYaw ?? 0) * Math.PI / 180, f = [Math.cos(a), 0, Math.sin(a)];
     assert(hit([it.pos[0] + f[0] * 0.25, it.pos[1], it.pos[2] + f[2] * 0.25], [-f[0], 0, -f[2]], 0.4), 'wall item sits on a surface: ' + it.name);
   }
-  for (const it of SIM.state.items.filter(i => i.type === 'corniceFlood')) {
-    assert(hit([it.pos[0], it.pos[1] + 0.1, it.pos[2]], [0, -1, 0], 0.35), 'tower arm base rests on a cornice: ' + it.name);
-    const fx = SIM.fixtures.get(it.id), head = fx.head.getWorldPosition(new T.Vector3());
-    const a = it.mountYaw * Math.PI / 180, f = [Math.cos(a), 0, Math.sin(a)];
-    assert(Math.abs(head.x - it.pos[0] - f[0] * 0.5) < 0.0001 && Math.abs(head.z - it.pos[2] - f[2] * 0.5) < 0.0001, 'tower head projects outward from the ledge: ' + it.name);
+  // Ledge fittings on the towers and façade (19 October 2026): each rests on a cornice, stays low
+  // (about 0.15 m) and in the cornice colour, has no projecting arm, and its optic clears the masonry.
+  const trim = sandbox.window.model.mat.trim, ledgeFittings = SIM.state.items.filter(i => i.type === 'ledgeBar' || i.type === 'ledgeFlood');
+  assert.equal(ledgeFittings.length, 28, 'eighteen tower washes and ten façade and stage floods on the ledges');
+  for (const it of ledgeFittings) {
+    assert(hit([it.pos[0], it.pos[1] + 0.1, it.pos[2]], [0, -1, 0], 0.35), 'ledge fitting rests on a cornice: ' + it.name);
+    const fx = SIM.fixtures.get(it.id), head = fx.head.getWorldPosition(new T.Vector3()), box = new T.Box3().setFromObject(fx.root);
+    assert(box.max.y - it.pos[1] < 0.17, 'low profile above its ledge: ' + it.name + ' ' + (box.max.y - it.pos[1]).toFixed(3));
+    const a = it.mountYaw * Math.PI / 180, f = [Math.cos(a), 0, Math.sin(a)], reach = (head.x - it.pos[0]) * f[0] + (head.z - it.pos[2]) * f[2];
+    assert(reach <= 0.15 + 1e-6, 'no projecting arm: ' + it.name);
     const h = hit([head.x, head.y, head.z], [-f[0], 0, -f[2]], 0.9);
-    assert(h && h.distance > 0.1, 'tower head clears the masonry: ' + it.name);
+    assert(!h || h.distance > 0.04, 'optic clears the masonry: ' + it.name);
+    fx.root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) assert.equal(m.material, trim, 'cornice colour, the model\'s own moulding finish: ' + it.name); });
   }
-  for (const it of SIM.state.items.filter(i => /^(Façade wash|Central gable flood|Central crown wash) ·/.test(i.name))) {
-    assert(hit([it.pos[0], it.pos[1] + 0.1, it.pos[2]], [0, -1, 0], 0.35), 'facade wash base rests on an existing cornice: ' + it.name);
+  // Up-washes stand at the lip with the optic just beyond it: in front of the engaged columns,
+  // so that their fronts and the louvres are lit, yet only about 0.11 m high.
+  for (const it of ledgeFittings.filter(i => i.type === 'ledgeBar')) {
+    const fx = SIM.fixtures.get(it.id), head = fx.head.getWorldPosition(new T.Vector3()), a = it.mountYaw * Math.PI / 180, f = [Math.cos(a), 0, Math.sin(a)];
+    assert(!hit([head.x, head.y - 0.04, head.z], [0, -1, 0], 0.3), 'bar optic is beyond the cornice lip: ' + it.name);
+    assert(hit([head.x - f[0] * 0.12, it.pos[1] + 0.1, head.z - f[2] * 0.12], [0, -1, 0], 0.35), 'bar base stays on the ledge: ' + it.name);
+    assert(it.tilt > 60, 'bar washes the stage above: ' + it.name);
   }
   const seen = new Set();
   for (const it of SIM.state.items.filter(i => i.mount === 'pendant' && !i.params?.spreader && i.type !== 'bunting')) {

@@ -38,7 +38,7 @@ SEPARATION = 0.30          # m, proximity screen between signal lines and mains 
 SAMPLE = 0.25              # m, sampling step along signal routes
 FLOOR_AREA = (53.0 - 2.3) * 14.5 + 2 * (43.9 - 37.22) * (12.95 - 7.25)   # hall + wings from engine.js floorY()
 MIN_AREA = {'light': 1.5, 'fan': 2.5, 'power': 2.5, 'power32': 6}   # smallest sizes usually pulled for final circuits (32 A sockets: 6 mm²)
-TIMBER_METHODS = {'above-main-beam', 'above-side-beam', 'roof-pendant', 'roof-local', 'chamber-lining'}   # along timber beams, roof lining or the timber chamber lining
+TIMBER_METHODS = {'above-main-beam', 'above-side-beam', 'roof-pendant', 'beam-hanger', 'roof-local', 'chamber-lining'}   # along timber beams, roof lining or the timber chamber lining
 
 ZONES = ['Service room and boards', 'Sanctuary', 'Wing B (ministers)', 'Wing H (choir)', 'Nave', 'Entrance hall and DB-2',
          'Verandas and side paths', 'Roof, eaves and gables', 'Towers, façade and front stage']

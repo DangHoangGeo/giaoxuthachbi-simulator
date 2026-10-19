@@ -1,18 +1,18 @@
 # Equipment quantities, usage and quality report
 
-Generated 18 October 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
+Generated 19 October 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
 
 ## Total quantities
 
 | Usage category | Equipment/enclosures | Shown | Hidden alternatives | Connected components | Shown items commanded on | Routes | Route points |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Lighting | 231 | 231 | 0 | 231 | 205 | 254 | 2115 |
+| Lighting | 231 | 231 | 0 | 231 | 205 | 254 | 2087 |
 | Sound | 30 | 30 | 0 | 30 | 20 | 40 | 304 |
-| Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 386 |
+| Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 410 |
 | Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 54 |
 | Decoration and furnishings | 37 | 22 | 15 | 0 | 22 | 0 | 0 |
 | Distribution and controls | 11 | 11 | 0 | 6 | 4 | 14 | 105 |
-| **Total** | 359 | 344 | 15 | 317 | 283 | 373 | 2964 |
+| **Total** | 359 | 344 | 15 | 317 | 283 | 373 | 2960 |
 
 Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **10 equipment, 26 routes**.
 
@@ -22,13 +22,13 @@ Saved scene: **Full service · evening**. Service duration **1.5 h**, **40 servi
 
 | Usage category | Operating estimate (W) | kWh/service | Service-only kWh/month | Circuits / scope |
 | --- | ---: | ---: | ---: | --- |
-| Lighting | 4,306.5 | 6.460 | 258.39 | L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LD |
+| Lighting | 4,329.9 | 6.495 | 259.79 | L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LD |
 | Sound | 109.4 | 0.164 | 6.57 | A1, A2, A3, A5, MIC |
 | Fans and ventilation | 1,156.0 | 1.734 | 69.36 | F1, F2, F4, F5, V1, V2, V3 |
 | Exit signs | 15.0 | 0.023 | 0.90 | E1 |
 | Decoration and furnishings | 0.0 | 0.000 | 0.00 | DECOR, X1 |
 | Distribution and controls | 0.0 | 0.000 | 0.00 | P1, P2, P3, P4 |
-| **Total modeled usage** | **5,587.0** | **8.380** | **335.22** | Same saved configuration |
+| **Total modeled usage** | **5,610.3** | **8.415** | **336.62** | Same saved configuration |
 
 Calculated by the simulator's itemWatts method, including dimming, fan speed and amplifier allowances. Passive-speaker ratings are not summed as mains watts. The five boards do not add duplicate downstream consumption; their own parasitic/control loads are not separately modeled. A zero is the model's result, not a verified zero product rating. Standby, between-service use, continuous exit-sign operation outside these service hours, other building loads and distribution losses are excluded. These totals cannot size a supply, protective device or cable. See [methods and limitations](../simulator/methods-and-limitations.md).
 
@@ -36,13 +36,13 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,046.922 | 3,046.922 | 0.000 | 0.000 |
-| Sound | 723.891 | 0.000 | 1,716.603 | 562.897 |
-| Fans and ventilation | 912.595 | 912.595 | 0.000 | 0.000 |
+| Lighting | 3,013.648 | 3,013.648 | 0.000 | 0.000 |
+| Sound | 722.591 | 0.000 | 1,719.603 | 563.757 |
+| Fans and ventilation | 925.206 | 925.206 | 0.000 | 0.000 |
 | Exit signs | 145.936 | 145.936 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 244.983 | 244.983 | 0.000 | 0.000 |
-| **Total by length basis** | **5,074.327** | **4,350.437** | **1,716.603** | **562.897** |
+| **Total by length basis** | **5,052.364** | **4,329.774** | **1,719.603** | **563.757** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/363 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -66,8 +66,8 @@ The held wing review of 9 October 2026 retains four small brass chandeliers (L63
 
 ## Sources and refresh
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 40c0fb48adb616822d2737a378024e64d46f211fcc43ca75ea298cd2570965f8.
-- [Electrical snapshot](electrical-systems.json), SHA-256: e8507810679907dc3354f9387ce0b6d5f3b3e307d5939a52680f19a914a4cd86.
+- [Layout snapshot](equipment-layout.json), SHA-256: 5e78147eff2f4a61ae97936ba8b51920b75ba77bd982e40a1cae0206f908332c.
+- [Electrical snapshot](electrical-systems.json), SHA-256: 7a659950a4bf89cc57551f6d9714dbafa89ad76ea9820ddefb4bbc73056b5b2e.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 

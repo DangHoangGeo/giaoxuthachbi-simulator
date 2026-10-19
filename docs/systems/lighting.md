@@ -1,5 +1,9 @@
 # Lighting system · Thạch Bi church
 
+> **Hidden reading and tower lights, 19 October 2026:** at the owner's request the 56 nave reading heads (L1/L2) moved from black pendants under the beams to compact side-bracket projectors on the sanctuary face of the tie and side beams, finished in the beam lacquer itself (they follow the timber tone setting); the four entrance-wall reading heads take the wall plaster. The 18 tower washes and the 10 façade and front-stage floods on the tower cornices are no longer black or on 0.5 m arms: they are low light bars and compact floods in the cornice-moulding finish on the cornice ledges, the up-washes along the lips. Outputs and aims are unchanged except the belfry optics (30°, were 40°) and the dome washes (4 000 lm, were 2 500 lm, +23 W). Seats at 200 lux: 90.2 % (89.1 % before). See the [coordinated record](../engineering/hidden-fittings.md); fixings, colours, weathering and access are on hold (Q50, Q51).
+
+> **Sanctuary lights in the lacquer and nave chandeliers higher, 19 October 2026 (owner request):** all 21 L3 sanctuary fittings keep their place, aim and output and are no longer black or bronze. The 12 heads hung from the axis-9 tie and side beams (L98–L105, L115–L118) take the beam lacquer; the 9 on the chamber walls and springing cornice (crucifix, reredos, tabernacle accents and the vault uplights; L106–L114) take the chamber's own lacquer, which stays red in every timber tone. The three nave chandeliers (L78–L80) hang 1.0 m higher, at +7.3 m (candles about +6.85 m), on the same anchors; the grand chandelier stays at +9.2 m. Seats at 200 lux 90.2 % (unchanged), seat average 304 lux (305). See [sections 1.1–1.3 of the record](../engineering/hidden-fittings.md#11-sanctuary-lights-in-the-lacquer-owner-19-october-2026).
+
 > **Façade statue light, 9 October 2026:** new DB-2 circuit **L10 · Façade statues & candles** lights the Assumption and the two side-niche figures with nine hidden light lines (one under each arch, one behind a lip on each jamb) and six electric candle lights on the pedestal tops: 15 records, 34 W connected. The owner asked for no visible lamps at the statues and for statues, towers (L6) and the open stage (L9) to switch separately. Calculated face levels are 105 lux (Assumption) and 57 lux (side figures) from L10 alone, 131 and 159 lux with the L6 floods; the niche and figure are not in the analysis geometry. Slots, products, drivers, glare and a night mock-up are pending. See the [coordinated record](../engineering/outlets-and-facade-statues.md). L6, L7 and L9 are unchanged.
 
 > **Current held wing review, 9 October 2026:** L63–L70 are eight smaller brass chandelier concepts, four per wing, replacing the eight end-wall projectors in the local review default. Each has six candle lamps plus a separate downward reading optic; this is an unselected 5,640 lm / 51 W concept, not manufacturer photometry. [Wing comparison](../engineering/wing-review.md) records all alternatives, clearance corrections and sensitivity failures. L8 retains its circuit and scene levels. Earlier quantities/results below predate this change; the [matched lighting register](../electrical-grid/categories/lighting/register.xlsx) owns current inventory. Glare, daylight, field-tail/blade interaction, thermal design, support and maintenance remain on hold.
@@ -29,36 +33,38 @@ Both towers have identical mirrored arrangements on L6, controlled at DB-2. Warm
 
 | Position | Per tower | Both towers | Base height | Output each | Beam |
 |---|---:|---:|---|---|---|
-| Lower front face, aimed down at masonry above the portal | 1 | 2 | 8.40 m | 3500 lm | 50° |
-| Lower outer side face, aimed down | 1 | 2 | 8.40 m | 2500 lm | 50° |
-| Stage 2 front face | 1 | 2 | 8.40 m | 7000 lm | 40° |
-| Stage 2 outer side face | 1 | 2 | 8.40 m | 5000 lm | 40° |
-| Stage 3 front face | 1 | 2 | 15.88 m | 6000 lm | 40° |
-| Stage 3 outer side face | 1 | 2 | 15.88 m | 4000 lm | 40° |
-| Belfry front face | 1 | 2 | 23.20 m | 4500 lm | 40° |
-| Belfry outer side face | 1 | 2 | 23.20 m | 3000 lm | 40° |
-| Dome front wash | 1 | 2 | 29.26 m | 2500 lm | 36° |
+| Lower front face, aimed down at masonry above the portal | 1 | 2 | 8.39 m | 3500 lm | 50° |
+| Lower outer side face, aimed down | 1 | 2 | 8.39 m | 2500 lm | 50° |
+| Stage 2 front face | 1 | 2 | 8.39 m | 7000 lm | 40° |
+| Stage 2 outer side face | 1 | 2 | 8.39 m | 5000 lm | 40° |
+| Stage 3 front face | 1 | 2 | 15.84 m | 6000 lm | 40° |
+| Stage 3 outer side face | 1 | 2 | 15.84 m | 4000 lm | 40° |
+| Belfry front face | 1 | 2 | 23.14 m | 4500 lm | 30° |
+| Belfry outer side face | 1 | 2 | 23.14 m | 3000 lm | 30° |
+| Dome front wash | 1 | 2 | 29.09 m | 4000 lm | 36° |
 | Belfry internal glow | 1 | 2 | 23.20 m | 2500 lm | 100° |
 
 Nine floodlights and one internal uplight per tower: **20 architectural tower fittings**. The four front-stage floods are separate on L9. Façade and central-gable washes also remain on L6.
 
-The new cornice fixture has a modeled 500 mm projecting arm, with a local envelope approximately 617 × 535 × 340 mm including arm and head. Its base plate sits on the existing cornice; its head projects outward to clear the wall thickness and mouldings. Earlier stage floodlights placed their heads within the wall envelope. Arm strength, fixing, corrosion resistance, weather rating and actual product photometry remain to be specified.
+Since 19 October 2026 the washes of stages 2, 3 and the belfry are low light bars (`ledgeBar`, about 0.11 m high, 1.8–2.0 m long) lying along the cornice lip below each stage, optic 0.06 m beyond the lip and two light points in the bays either side of the central mullion; the lower washes and the dome wash are compact floods (`ledgeFlood`, about 0.14 m high) at the lip. All take the model's cornice-moulding finish. They replace black floods on 500 mm projecting arms (envelope about 617 × 535 × 340 mm), which the owner asked to make barely noticeable. Calculated wall medians are about as before; the dome needs 4 000 lm from its lower position, and the balustrade rail will shade the lowest band of the dome (not in the calculation). Fixing, weathering, drainage, lightning bonding, optics and safe access remain to be specified: [record](../engineering/hidden-fittings.md), Q51.
 
 ## Center façade
 
-Six mirrored floodlights on DB-2 / L6 provide overlapping 3000 K washes from the towers' inner front cornices. Their base plates remain supported by the modeled ledges. Every fixture and its electrical route is individually selectable.
+Six mirrored floodlights on DB-2 / L6 provide overlapping 3000 K washes from the towers' inner front cornices. Their base plates remain supported by the modeled ledges. Every fixture and its electrical route is individually selectable. Since 19 October 2026 they are compact cornice-coloured floods (`ledgeFlood`) at the inner corners of the cornices (Z ±7.40 and ±7.70), clear of the corner pilaster plinths that two of the earlier floods stood inside.
 
 | Position | Both sides | Base height | Target height | Output each | Beam |
 |---|---:|---|---|---|---|
-| Lower façade and door surrounds | 2 | 8.40 m | 2.50 m | 6000 lm | 50° |
-| Central pedestal, niche and side shrines | 2 | 8.40 m | 12.80 m | 6500 lm | 60° |
-| Upper crown and cross ornament | 2 | 15.88 m | 18.60 m | 6000 lm | 55° |
+| Lower façade and door surrounds | 2 | 8.39 m | 2.50 m | 6000 lm | 50° |
+| Central pedestal, niche and side shrines | 2 | 8.39 m | 12.80 m | 6500 lm | 60° |
+| Upper crown and cross ornament | 2 | 15.84 m | 18.60 m | 6000 lm | 55° |
 
 The earlier downward wash aimed at +2.50 m and the 26° niche beam left a dark band over the doors at the central pedestal. Wider overlapping beams fill that band; the upper pair covers the crown up to the +21.72 m cross. These are architectural washes; the central front door retains its single decorative lantern pair.
 
 Saved layouts receive this façade correction once, with existing selection IDs, switches and dimmers retained. Unrelated fixtures retain their edits. The original layout is kept in the browser under `.before-facade-review`; subsequent removals stay removed.
 
 ## Installed lighting quantities
+
+> **Superseded categories, 19 October 2026:** in the table below, 60 of the "LED projector · medium 36°" records are now "Reading projector · side bracket, finish-matched"; the 18 "Tower floodlight · projecting arm" records and 10 of the 12 "Façade floodlight" records are now 12 "Tower ledge light bar · cornice colour" and 16 "Compact ledge floodlight · cornice colour". The [lighting register](../electrical-grid/categories/lighting/register.xlsx) and [summary](../electrical-grid/summary-report.md) own the current inventory and loads.
 
 The electrical study contains **215 installed lighting fittings/string assemblies**, including exit signs and the off-by-default festival fittings. Literal candles and hidden seasonal alternatives are excluded. A string assembly is one scheduled item; bulb counts depend on its configured length and spacing.
 

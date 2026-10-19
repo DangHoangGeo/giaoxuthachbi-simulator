@@ -1,5 +1,7 @@
 # Sound system · Thạch Bi church
 
+> **Corner loudspeakers, 19 October 2026:** at the owner's request the 12 A1 wall columns (S261–S272) moved off the concrete pier faces into the corners where the piers meet the walls, on the entrance side of each pier (X axis − 0.43 m, Z ±7.25, Y 3.45, tilted 22° down instead of 18°, still turned 50° toward the back). Against unchanged `dev`: nave speech clarity 84.0 % of seats at STI 0.60, minimum 0.536 (83.0 %, 0.522); ambo/altar feedback margins 0.9/1.4 dB (0.9/1.3 dB; both still below the 3 dB target); wing clarity minimum 0.409, average 0.483 (0.422, 0.490). The current margins supersede the 1.2/1.7 dB of 7 October quoted below. See the [coordinated record](../engineering/hidden-fittings.md); real pier width, tilt bracket stand-off and fixing are open (Q52).
+
 > **Current held wing revision,9 October2026:** two wall speakers total, one perwing: S276B/S278H atX43.72,Y4.85,Z±13.06,yaw180° (toward entrance/−X),tilt−50°,gain−6dB,modeled delay22.9/37.1ms. S275/S277 are retired; microphones are unchanged. The earlier23-case acoustic comparison favoredY4.4 minimum clarity but worsened feedback; complete geometry required shifting/raising the pair. The final combined revision recalculates that trade-off with fewer lights/fans and reserved Peter/Paul pictures. See [current wing review](../engineering/wing-review.md) and [comparison evidence](../../review/wing-revision-2026-10-09/README.md). No all-criteria pass or product/commissioning approval is claimed. Compass direction is not surveyed. Use current register/schedules for quantities; the tables below are historical.
 
 > The [8 October baseline](../engineering/baseline.md) and [24-case results](../../review/engineering-baseline-2026-10-08/study-summary.md) supersede older performance tables for current comparisons. Both seating layouts retain speech and feedback failures; overflow and talker-distance sensitivities worsen them. See the [criteria conflicts](../engineering/acceptance-matrix.md) before interpreting a software pass.
@@ -32,7 +34,7 @@
 
 | Circuit | Group | Type | Qty | Axis / position | Height (m) | Level | Delay (ms) | Default |
 |---|---|---|---|---|---|---|---|---|
-| A1 | Wall speaker | Slim wall column · 0.6 m, wall colour | 12 | 4; 5; 6; 7; 8; 9 | 3.45 | -6 dB | 24.2–89.9 | on |
+| A1 | Wall speaker | Slim wall column · 0.6 m, wall colour | 12 | 4; 5; 6; 7; 8; 9 (pier–wall corners since 19 Oct) | 3.45 | -6 dB | 24.2–89.9 | on |
 | A5 | Wall speaker | Slim wall column · 0.6 m, wall colour | 2 | x 2.66 (entrance wall piers, z ±3.05) | 3.6 | -9 dB | 98.6–100.1 | off |
 | A1 | Wing speaker | Pendant loudspeaker · 6" | 4 | x 38.94; x 42.22 | 3 | -10 dB | 23.8–40.4 | on |
 | A2 | Veranda fill | Pendant loudspeaker · 6" | 4 | x 12.22; x 25.73 | 3.9 | -7 dB | 54.4–95.8 | on |
