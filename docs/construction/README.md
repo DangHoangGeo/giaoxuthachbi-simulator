@@ -23,7 +23,7 @@ The viewer's original **Drawing grid** switch (View settings) draws one-pixel li
 | **Grid / Lưới trục** | Display switches; plan cut height (floor plan at +1.20 m, above eaves at +8.00 m, or any height); every axis with its model coordinate and spacing, with **Section** to cut the model on that axis; every level, with a cut 1.20 m above it. |
 | **Layers / Lớp** | Fourteen construction layers, each **Show / Ghost / Hide / Only**. A bar shows how many parts of the layer come from the drawings and how many are schematic or concept shapes. Presets: all, structure only, shell without ornament. |
 | **Phases / Giai đoạn** | A **proposed** twelve-phase sequence (`docs/construction/phases.json`). The slider shows the church up to a phase: earlier phases normal, the chosen phase amber, later phases ghosted or hidden. **Play** runs through the sequence. Each phase lists the open records (workbook issues and ENG holds) that affect it, and can be given a status: not recorded, not started, in progress, built, checked on site. **Next to build** is the first phase not recorded as built. |
-| **Check / Kiểm tra** | The dimension workbook's 463 records, searchable, filterable (grid spacings, levels, unresolved, measured on site). Grid spacings show the model's value beside the drawing value. A record can be shown in the model. Outside the public visit, a measured value and date can be entered per record; with a tolerance set by the engineer, each is shown within or outside it. The workbook's 22 open dimension items are listed. |
+| **Check / Kiểm tra** | The dimension workbook's 463 records, searchable, filterable (grid spacings, levels, unresolved, measured on site). Grid spacings show the model's value beside the drawing value. A record can be shown in the model. Outside the public visit, a measured value and date can be entered per record; with a tolerance set by the engineer, each is shown within or outside it. The workbook's 27 open dimension items are listed (ISSUE-R01 to ISSUE-R05 added 24 October 2026 from the church's CAD file). |
 
 Toolbar: **Inspect** (default), **Measure**, **Clear**; views **Plan**, **Front**, **Side B**, **Side H**, **3D**. Drawing views are fitted into the area beside the panel by offsetting the projection; the camera and orbit target are not moved.
 
@@ -58,7 +58,7 @@ Exports are personal working records. Do not commit them with names, phone numbe
 python3 scripts/build_construction_data.py
 ```
 
-It reads the workbook's *Dimensions*, *Model grid*, *Open items* and *Sources* sheets (cached cell values, standard library only) and `phases.json`, and refuses phases that name unknown gates. `--check` fails when the file is stale. The workbook itself is not changed.
+It reads the workbook's *Dimensions*, *Model grid*, *Open items* and *Sources* sheets (cached cell values, standard library only) and `phases.json`, and refuses phases that name unknown gates. The *DWG …* sheets added from the CAD file of 23 October 2026 are not read; see [`docs/layout_design/dwg-2026-10-23/`](../layout_design/dwg-2026-10-23/README.md). `--check` fails when the file is stale. The workbook itself is not changed.
 
 ## Checks
 

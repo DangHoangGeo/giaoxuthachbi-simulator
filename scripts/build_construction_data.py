@@ -27,8 +27,10 @@ RELNS = '{http://schemas.openxmlformats.org/officeDocument/2006/relationships}'
 
 def sheets(path):
     with zipfile.ZipFile(path) as z:
+        # Writers that store every string inline (openpyxl, for one) omit the shared-strings part.
         shared = [''.join(t.text or '' for t in si.iter(NS + 't'))
-                  for si in ET.fromstring(z.read('xl/sharedStrings.xml')).iter(NS + 'si')]
+                  for si in ET.fromstring(z.read('xl/sharedStrings.xml')).iter(NS + 'si')
+                  ] if 'xl/sharedStrings.xml' in z.namelist() else []
         book = ET.fromstring(z.read('xl/workbook.xml'))
         rels = ET.fromstring(z.read('xl/_rels/workbook.xml.rels'))
         targets = {r.get('Id'): r.get('Target') for r in rels}
