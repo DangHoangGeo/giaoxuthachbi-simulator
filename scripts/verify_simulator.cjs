@@ -710,6 +710,34 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert(heads[0].yaw === head.yaw && heads[0].tilt === head.tilt && heads[0].beam === 24 && heads[0].on === false && heads[0].lumens === 2000, 'untouched head takes the new aim and optic, keeps switch and output');
   assert(heads[1].beam === 28, 'a re-aimed head stays as the user set it');
 }
+// CAD file of 23 Oct 2026: the dais rose from +0.75 to +0.80 m. Fittings standing on it
+// rise with it once; anything placed elsewhere or at another height stays.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, plain = v => JSON.parse(JSON.stringify(v));
+  assert.equal(SIM.floorY(44, 0), 0.8, 'dais floor +0.80 m');
+  assert.equal(SIM.floorY(46, -5), 0.16, 'side floors +0.16 m');
+  assert.equal(SIM.floorY(50, 0), 0.15, 'bay behind the dais keeps +0.15 m');
+  for (const name of ['Flower stand · tabernacle B', 'Palm · sanctuary H', 'Paschal candle']) {
+    const it = SIM.state.items.find(i => i.name === name);
+    assert(it && Math.abs(it.pos[1] - 0.8) < 1e-9, 'stands on the dais: ' + name);
+  }
+  const design = D.recommended(SIM.GEO, SIM), pick = name => design.find(it => it.name === name);
+  const lowered = (name, o = {}) => { const raw = pick(name); return { ...raw, pos: [raw.pos[0], raw.pos[1] - 0.05, raw.pos[2]], ...o }; };
+  const saved = [lowered('Ambo microphone', { id: 'm1', on: false }), lowered('Palm · sanctuary B', { id: 'p1' }),
+    { ...pick('Paschal candle'), id: 'c1', pos: [40.9, 0.75, -1.2] },
+    { ...pick('Altar microphone'), id: 'm2', pos: [44.45, 1.6, 0.45] },
+    { ...pick('Palm · entrance B'), id: 'p2' },
+    { id: 'u1', name: 'Extra flowers', type: 'flowerStand', circuit: 'DECOR', mount: 'floor', pos: [46.0, 0.75, 1.0], yaw: 0, mountYaw: 0 }];
+  const up = D.upgradeDaisLevel(saved, design), byId = id => up.find(it => it.id === id);
+  assert(plain(byId('m1').pos).join() === plain(pick('Ambo microphone').pos).join() && byId('m1').on === false, 'untouched dais microphone rises, keeps its switch');
+  assert(Math.abs(byId('p1').pos[1] - 0.8) < 1e-9, 'untouched palm stands on the new floor');
+  assert(Math.abs(byId('c1').pos[1] - 0.8) < 1e-9 && byId('c1').pos[0] === 40.9, 'a moved item resting on the old floor rises in place');
+  assert.deepEqual(plain(byId('m2')), plain(saved[3]), 'a microphone set to another height stays');
+  assert.deepEqual(plain(byId('p2')), plain(saved[4]), 'items off the dais stay');
+  assert(Math.abs(byId('u1').pos[1] - 0.8) < 1e-9, 'a user item on the old floor rises');
+  assert.deepEqual(plain(D.upgradeDaisLevel(up, design)), plain(up), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.daisLevelRevision, D.daisLevelRevision, 'the revision is stored in the saved settings');
+}
 // Every fixture is fixed to something the model actually has: wall items need a
 // surface right behind them, pendants need structure at their anchor (fans on
 // steel spreaders and strung decorations carry their own support).

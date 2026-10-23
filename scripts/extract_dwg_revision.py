@@ -450,6 +450,22 @@ NEW_ISSUES = [
 ]
 
 
+# Model levels the owner adopted from the DWG (24 Oct 2026). The Model grid sheet records what
+# the model uses; the PDF values stay in Dimensions, and the open item stays open for the church.
+ADOPTED_LEVELS = [
+    ('Sanctuary/altar platform', 800, 'P049 (PDF 750); DWG0378',
+     'CAD sections 25 and 45 draw the dais at +0.800 (800 mm dimension, platform lines). The PDF set and the '
+     'CAD ground-plan label give +0.750 (P049, ISSUE-R04). The model uses +0.800 by owner direction.'),
+    ('Upper rear side room', 160, 'P050 (PDF 150); DWG0373',
+     'CAD section 25 dimensions the side floor 160 mm. The PDF set and the CAD ground-plan labels give +0.150. '
+     'The model uses +0.160 by owner direction.'),
+    ('Lower rear side room', 160, 'P052 (PDF 150); DWG0373',
+     'CAD section 25 dimensions the side floor 160 mm. The PDF set and the CAD ground-plan labels give +0.150. '
+     'The model uses +0.160 by owner direction.'),
+]
+ADOPTED_BASIS = 'Owner direction 24 Oct 2026 · CAD file 23 Oct 2026'
+
+
 def workbook():
     import openpyxl
     from copy import copy
@@ -573,15 +589,26 @@ def workbook():
             formats.add(f'F8:F{last}' if str(cf.sqref).startswith('F8:F') else str(cf.sqref), rule)
     ws.conditional_formatting = formats
 
+    # Model grid: levels adopted from the DWG replace the formula that copied the PDF value.
+    ws = wb['Model grid']
+    replaced = set()
+    for name, value, source_ids, note in ADOPTED_LEVELS:
+        row = next(r for r in range(8, ws.max_row + 1) if ws.cell(r, 1).value == 'Y' and ws.cell(r, 2).value == name)
+        if ws.cell(row, 7).value == ADOPTED_BASIS:
+            continue
+        ws.cell(row, 4).value, ws.cell(row, 5).value = value, value / 1000
+        ws.cell(row, 6).value, ws.cell(row, 7).value, ws.cell(row, 8).value = source_ids, ADOPTED_BASIS, note
+        replaced |= {('Model grid', f'D{row}'), ('Model grid', f'E{row}')}
+
     tmp = WORKBOOK.with_suffix('.tmp.xlsx')
     wb.save(tmp)
-    restore_cached_values(WORKBOOK, tmp)
+    restore_cached_values(WORKBOOK, tmp, replaced)
     tmp.replace(WORKBOOK)
     print(f'updated {WORKBOOK.relative_to(ROOT)}: {len(dims)} DWG dimensions, {len(levels)} levels, '
           f'{len(grid)} grid rows, {len(FINDINGS)} findings, {len(NEW_ISSUES)} revision items')
 
 
-def restore_cached_values(original, rewritten):
+def restore_cached_values(original, rewritten, replaced=frozenset()):
     """openpyxl drops formula results and re-serialises some numbers (8.39 → 8.390000000000001).
 
     Copy each formula cell's cached value back from the original, and put back the original text of
@@ -645,7 +672,7 @@ def restore_cached_values(original, rewritten):
                     return f'<c r="{ref}"{attrs}>{body}</c>'
                 data = cell.sub(fix, data.decode('utf-8')).encode('utf-8')
             z.writestr(info, data)
-    missing = len(cached) - restored
+    missing = len(set(cached) - set(replaced)) - restored
     if missing:
         raise SystemExit(f'{missing} formula cells lost their cached values; workbook not replaced')
     print(f'restored cached values for {restored} formula cells and the original text of {renumbered} numbers')

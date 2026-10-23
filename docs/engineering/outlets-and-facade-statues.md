@@ -8,7 +8,7 @@ Status: **CONCEPT / ENGINEERING HOLD**. Implemented in the local simulator on br
 
 | ID | Position X / Y / Z | Fixed to | Circuit · board | Provisional rating |
 | --- | --- | --- | --- | --- |
-| `P-SANCT-B`, `P-SANCT-H` | 43.890 / 0.850 / ∓7.250 | Nave-facing face of the axis-10 pier shaft; 0.70 m above the side platform (+0.150), 1.17 m above the wing floor (−0.320) | P1 (B), P2 (H) · DB-1 | Double 16 A 2P+E shuttered outlet |
+| `P-SANCT-B`, `P-SANCT-H` | 43.890 / 0.850 / ∓7.250 | Nave-facing face of the axis-10 pier shaft; 0.69 m above the side platform (+0.160 since the CAD file of 23 Oct 2026; 0.70 m above the earlier +0.150), 1.17 m above the wing floor (−0.320) | P1 (B), P2 (H) · DB-1 | Double 16 A 2P+E shuttered outlet |
 | `P-NAVE-B`, `P-NAVE-H` | 22.830 / 0.450 / ∓7.250 | Inner face of the masonry side wall, between the window jamb (X 22.35) and the axis-6 pier base (X 23.06) | P1 (B), P2 (H) · DB-1 | Double 16 A 2P+E shuttered outlet |
 | `P-TOWER-B`, `P-TOWER-H` | 0.450 / 1.300 / ∓7.850 | Inside the tower porch, on the inner face of the solid front pier of the tower's inner flank wall (pier X 0–0.85); 1.30 m above the tower floor ±0.000 | P3 (B), P4 (H) · DB-2 | Lockable weatherproof cabinet: one 32 A 2P+E industrial outlet (IEC 60309 pattern) and two 16 A outlets |
 

@@ -180,3 +180,21 @@ Rendered samples from the entrance (camera at X 4.5, eye 1.65 m, evening lightin
 | Nave floor | 242 / 238 / 232 | 235 / 230 / 220 |
 
 Still pale after the change: the glow in the centre of the recess and the corpus in front of it, both lit to about 244 lux by the accents. If the crucifix should stand out more strongly at night, the next step is a lighting decision (lower accents or a deeper recess centre) for the lighting designer and the owner, with a mock-up on site.
+
+## Sanctuary levels from the church CAD file · 24 October 2026
+
+The parish's CAD file (last saved 23 October 2026, see [`layout_design/dwg-2026-10-23/`](layout_design/dwg-2026-10-23/README.md)) draws the sanctuary higher than the PDF set. On branch `eng/15-dwg-revision-2026-10-23` the owner directed the model to follow the CAD file, and on 24 October 2026 set the dais to +0.80 m.
+
+| Level | PDF set (before) | CAD file (now) | Source in the CAD file |
+| --- | --- | --- | --- |
+| Dais | +0.750 | **+0.800** | Section 25: platform line and 800 mm dimension; section A-A (45): platform line from X 39.345 to 49.565. The ground plan keeps a +0.75 label with no geometry (ISSUE-R04). |
+| Steps up to the dais | five 0.150 m risers | five **0.160 m** risers | Section A-A: 160 mm risers, 290 mm treads |
+| Side floors (C–D, E–G) | +0.150 | **+0.160** | Section 25: 160 mm dimension. The plan keeps +0.15 labels. |
+| Axis-10 column plinth | top +0.950 | +0.800 to **+1.000** | Section 25: 200 mm plinth on the dais |
+| Bay behind the dais (axis 11–12) | +0.150 | +0.150, unchanged | Plan label only; section A-A is not conclusive |
+
+What moved: the platform slab, the steps, both side floors, the walkable floor in the viewer and the simulator, the simulator's floor planes, chamber walls and shrine jambs, the axis-10 plinths (now the drawn 200 mm), the lower edges of the reredos canopies and chamber back lining, and every free-standing furnishing on the dais (altar, ambo, chairs, credence, tabernacle, planters, candles), which `sanctuary.js` lifts by 0.05 m. The cross and corpus stand on their own base in the niche and keep their height. Architecture above the dais keeps its absolute height, as the CAD file does: side-door heads +2.704, side arch crowns +7.563, column tops about +9.40.
+
+Simulator: the ambo and altar microphones (+1.95 / +1.93 m), both tabernacle flower stands, both sanctuary palms and the Paschal candle rise 0.05 m. Saved layouts are lifted once (`daisLevelRevision`, backup under `thachbi.simulator.v1.before-dais-0-80`): a dais fitting still at its old default place, or any floor-standing item still on the old +0.75 surface, rises; anything set to another height, moved off the dais, wall-mounted, hung or deleted stays as it is. Light aim points are unchanged (5 cm is under 0.5° of aim). The two sanctuary sockets stay at +0.85 m, now 0.69 m above the side floor; their heights remain on ENGINEERING HOLD. Sight-line targets in `verify_model.cjs` follow the furniture (altar +1.925, ambo +2.30).
+
+Still open: the CAD plan's +0.75/+0.15 labels (ISSUE-R04), the step run and platform outline in section A-A (risers start at X 37.475 there; the model keeps the PDF plan's run from X 38.2 and dais from 39.75 to 48.65), and the church's confirmation of the revision (ISSUE-R01).

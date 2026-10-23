@@ -5,7 +5,7 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "inputs":{
 "workbook":{
 "path":"docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
-"sha256_16":"e1872f9b8f797de0"
+"sha256_16":"b37d557c5c5feaa0"
 },
 "phases":{
 "path":"docs/construction/phases.json",
@@ -8354,22 +8354,22 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "axis3d":"Y",
 "name":"Sanctuary/altar platform",
 "stepMm":null,
-"mm":750,
-"m":0.75,
-"sourceIds":"P049",
-"basis":"Printed elevation",
-"notes":"",
+"mm":800,
+"m":0.8,
+"sourceIds":"P049 (PDF 750); DWG0378",
+"basis":"Owner direction 24 Oct 2026 · CAD file 23 Oct 2026",
+"notes":"CAD sections 25 and 45 draw the dais at +0.800 (800 mm dimension, platform lines). The PDF set and the CAD ground-plan label give +0.750 (P049, ISSUE-R04). The model uses +0.800 by owner direction.",
 "cell":"Model grid!A38"
 },
 {
 "axis3d":"Y",
 "name":"Upper rear side room",
 "stepMm":null,
-"mm":150,
-"m":0.15,
-"sourceIds":"P050",
-"basis":"Printed elevation",
-"notes":"",
+"mm":160,
+"m":0.16,
+"sourceIds":"P050 (PDF 150); DWG0373",
+"basis":"Owner direction 24 Oct 2026 · CAD file 23 Oct 2026",
+"notes":"CAD section 25 dimensions the side floor 160 mm. The PDF set and the CAD ground-plan labels give +0.150. The model uses +0.160 by owner direction.",
 "cell":"Model grid!A39"
 },
 {
@@ -8387,11 +8387,11 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "axis3d":"Y",
 "name":"Lower rear side room",
 "stepMm":null,
-"mm":150,
-"m":0.15,
-"sourceIds":"P052",
-"basis":"Printed elevation",
-"notes":"",
+"mm":160,
+"m":0.16,
+"sourceIds":"P052 (PDF 150); DWG0373",
+"basis":"Owner direction 24 Oct 2026 · CAD file 23 Oct 2026",
+"notes":"CAD section 25 dimensions the side floor 160 mm. The PDF set and the CAD ground-plan labels give +0.150. The model uses +0.160 by owner direction.",
 "cell":"Model grid!A41"
 },
 {

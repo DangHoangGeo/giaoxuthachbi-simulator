@@ -489,8 +489,9 @@
       box(.9,.18,.9,sign*3.6,9.42,0,mat.trim,sanctuaryFrame,'Sanctuary pier capital');
       box(.96,.9,.96,sign*3.6,.6,0,mat.trim,sanctuaryFrame,'Sanctuary pier base');
     }
-    // Axis-10 timber columns now stand on the dais: a stone collar at +0.75.
-    for(const sign of [-1,1])box(.84,.22,.84,data.longitudinal['10'],.86,sign*3.6,im.whiteStone,structure,'Carved stone column base on the dais');
+    // Axis-10 timber columns stand on the dais: a 200 mm stone plinth from +0.80 to +1.00
+    // (CAD file of 23 Oct 2026, section 25).
+    for(const sign of [-1,1])box(.84,.2,.84,data.longitudinal['10'],.9,sign*3.6,im.whiteStone,structure,'Carved stone column base on the dais');
 
     const fit=new T.Group();fit.name='Sanctuary seating and service room · proposal';building.add(fit);
     // Back wall inside the central lobed arch, behind the reredos (plain).

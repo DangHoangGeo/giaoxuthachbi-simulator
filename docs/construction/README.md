@@ -10,7 +10,7 @@ Owner request, 14 October 2026: the drawing grid could hardly be seen, and Fathe
 
 The viewer's original **Drawing grid** switch (View settings) draws one-pixel lines at Y = −2.04 m, the courtyard level, under the plinth, with labels at −1.70 m at 32 % opacity. Inside the church the floor hides them; outside they are under the ground plane. The switch is unchanged. The site view replaces it while open with:
 
-- **Grid lines on the floors**: 7 cm red bands that follow each floor level (verandas −0.320, nave ±0.000, sanctuary +0.150/+0.750, courtyard −2.080), sampled every 0.25 m with the viewer's own floor-height function. **See grid through walls** draws them on top of everything.
+- **Grid lines on the floors**: 7 cm red bands that follow each floor level (verandas −0.320, nave ±0.000, sanctuary side floors +0.160 and dais +0.800, bay behind the dais +0.150, courtyard −2.080), sampled every 0.25 m with the viewer's own floor-height function. **See grid through walls** draws them on top of everything.
 - **Axis bubbles** at both ends of every axis (1–12 including 2′, A–I). Axes closer than a bubble (2 and 2′, 0.575 m apart) get a staggered bubble with a leader line.
 - **Dimension chains** in millimetres between consecutive axes on side B (4 900 · 575 · 4 500 … 7 200 · 4 500 · 4 341, overall 53 016) and at the altar end (2 835 · 3 054 · 3 760 · 7 200 …), from the model grid.
 - **Crossing tags** painted on the floor at each axis crossing inside the building (for example `5·D`), readable while walking.

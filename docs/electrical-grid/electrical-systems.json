@@ -32059,17 +32059,17 @@
         ],
         [
           41.3,
-          1.81,
+          1.86,
           -2.62
         ],
         [
           41.08,
-          1.7654037921880923,
+          1.8154037921880923,
           -2.62
         ],
         [
           41.08,
-          1.9,
+          1.95,
           -2.62
         ]
       ],
@@ -32085,21 +32085,21 @@
         ],
         [
           41.3,
-          1.81,
+          1.86,
           -2.62
         ],
         [
           41.08,
-          1.7654037921880923,
+          1.8154037921880923,
           -2.62
         ],
         [
           41.08,
-          1.9,
+          1.95,
           -2.62
         ]
       ],
-      "length": 3.579070753698968,
+      "length": 3.6290707536989677,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -32173,14 +32173,14 @@
         ],
         [
           44.45,
-          1.88,
+          1.93,
           0.45
         ]
       ],
       "method": "underfloor-microphone",
       "installation": "Separate AV-1 home run below the floor; proposed furniture cable passage to microphone base. Floorbox, floor build-up and furniture access pending.",
       "coverPaths": [],
-      "length": 2.8,
+      "length": 2.8499999999999996,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -40345,7 +40345,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 20,
-      "specs": "60 W audio rating · Passive / amplifier output · 76 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 76.1 ms delay",
       "hiddenAlternative": false,
       "position": [
         18.545,
@@ -40520,7 +40520,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 20,
-      "specs": "60 W audio rating · Passive / amplifier output · 22.6 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 22.7 ms delay",
       "hiddenAlternative": false,
       "position": [
         36.545,
@@ -40570,7 +40570,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 20,
-      "specs": "60 W audio rating · Passive / amplifier output · 94.9 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 95 ms delay",
       "hiddenAlternative": false,
       "position": [
         2.655,
@@ -40645,7 +40645,7 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 20,
-      "specs": "60 W audio rating · Passive / amplifier output · 37.1 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 37.2 ms delay",
       "hiddenAlternative": false,
       "position": [
         43.72,
@@ -40974,7 +40974,7 @@
       "hiddenAlternative": false,
       "position": [
         41.08,
-        1.9,
+        1.95,
         -2.62
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -40999,7 +40999,7 @@
       "hiddenAlternative": false,
       "position": [
         44.45,
-        1.88,
+        1.93,
         0.45
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -43360,7 +43360,7 @@
         0.6000000238418579,
         0.05999999865889549
       ],
-      "specs": "60 W audio rating · Passive / amplifier output · 76 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 76.1 ms delay",
       "wattsEachEstimate": 20,
       "itemIds": [
         "S264"
@@ -43479,7 +43479,7 @@
         0.6000000238418579,
         0.05999999865889549
       ],
-      "specs": "60 W audio rating · Passive / amplifier output · 22.6 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 22.7 ms delay",
       "wattsEachEstimate": 20,
       "itemIds": [
         "S271"
@@ -43513,7 +43513,7 @@
         0.6000000238418579,
         0.05999999865889549
       ],
-      "specs": "60 W audio rating · Passive / amplifier output · 94.9 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 95 ms delay",
       "wattsEachEstimate": 20,
       "itemIds": [
         "S273"
@@ -43564,7 +43564,7 @@
         0.6000000238418579,
         0.05999999865889549
       ],
-      "specs": "60 W audio rating · Passive / amplifier output · 37.1 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 37.2 ms delay",
       "wattsEachEstimate": 20,
       "itemIds": [
         "S278"

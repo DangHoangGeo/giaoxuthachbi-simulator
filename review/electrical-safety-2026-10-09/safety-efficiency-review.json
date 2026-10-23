@@ -1,31 +1,31 @@
 {
  "schema": 1,
  "status": "DERIVED / CONCEPT / ENGINEERING HOLD · comparison screens only",
- "model_git_revision": "54fd51367f05e7fe59b02affcd915a583ac3e485",
+ "model_git_revision": "bc6b0b8c53db3c2696a2c6874fb620aadf014581",
  "source_sha256": {
   "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
   "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",
   "Thach_Bi_Viewer/references.js": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
   "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
   "Thach_Bi_Viewer/carving.js": "5624bd11c10c1c75a0c80a4f2b9612652664e6592eceff0d8a6ac6c5c70c1367",
-  "Thach_Bi_Viewer/sanctuary.js": "bb3bd18a65f2200d40df0939a37d815db05a99f2d17142a2e13c1489b6b3e2ac",
-  "Thach_Bi_Viewer/realism.js": "83297a0830de7d8378d0a26b67faeb142321375c004842732ab089e5c3fcd68a",
+  "Thach_Bi_Viewer/sanctuary.js": "ecdc36a8fde43b4a09f2d6d0214e03fcf45ae627ff17965824891f7fb9bf0323",
+  "Thach_Bi_Viewer/realism.js": "f12352b89ee0ec43e464ac336ce911a345fc18d020850ff74c59f6e1465f5652",
   "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
   "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
   "Thach_Bi_Viewer/simulator/catalog.js": "d94df77f66016709a8001fa9be0cc2e05f99ff0393e0efa98f967384e62494a1",
-  "Thach_Bi_Viewer/simulator/engine.js": "c52e5ddbc7d2b8b621e5dc29977acc466d8b3662d555a8cd3a7fe43da6e1680b",
+  "Thach_Bi_Viewer/simulator/engine.js": "d17415b07238f55a824ced33777ddec35f0e21b59919b03a9aaa73a74c0a05e7",
   "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
   "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
-  "Thach_Bi_Viewer/simulator/design.js": "6cdcf7799c64cccdab1d52ebd42b8e75f1b3ac56d5a897866be622dad4e9bb61",
+  "Thach_Bi_Viewer/simulator/design.js": "99611f3893dbb05b6da8cbcfa9a5c9c7a4abbdb862cb9873c57bb9cd8b6bb343",
   "Thach_Bi_Viewer/simulator/analysis.js": "7670036a3be8f9ca423b551bc75261c2272e6c07ba077ea49a394cb9c04af849",
   "Thach_Bi_Viewer/simulator/electrical.js": "e8688402fd48426a5f933b880b1f11682d7caa1aa23a1ac2bf0d12c5f1d317db",
   "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
-  "Thach_Bi_Viewer/bundle.js": "8a49d327f10910b6024f6dbab8c6deed7f0b5972c1052c1a309fa3947d35bb65",
+  "Thach_Bi_Viewer/bundle.js": "2d70a78bdeed99c0b625fd78efbd255559c3516461ab08b47b589bd25a030e45",
   "scripts/lib/study_model.cjs": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029",
   "scripts/export_electrical_loads.cjs": "066af5453cb3e782abe4cfaf585b6cd9b04ebafad050e18c73615e7ca6fdca2b",
-  "docs/electrical-grid/electrical-systems.json": "7a659950a4bf89cc57551f6d9714dbafa89ad76ea9820ddefb4bbc73056b5b2e",
-  "docs/electrical-grid/equipment-layout.json": "5e78147eff2f4a61ae97936ba8b51920b75ba77bd982e40a1cae0206f908332c",
-  "docs/electrical-grid/categories/manifest.json": "48430cafa97d719a92577de657b90372c42cb93945354e311555a38a681c13de"
+  "docs/electrical-grid/electrical-systems.json": "ec7eed586921cecf1c820f16f5ebefd971b44f66cd4eae78e00a7540b47ad9d9",
+  "docs/electrical-grid/equipment-layout.json": "19eb3af4e9e190d44f45651a83746b308f3bc351650fff669ae77f5ce0cb3e9d",
+  "docs/electrical-grid/categories/manifest.json": "6fa914f888a8d8d8e5d7b5aed84227b04f8bc1294c168b8b75c464bc4b330ce9"
  },
  "default_scene": "Full service · evening",
  "assumptions": {
@@ -134,7 +134,7 @@
    "lowest": {
     "id": "P-SANCT-B",
     "name": "Socket · sanctuary side B · axis 10 pier",
-    "height_above_floor_m": 0.7
+    "height_above_floor_m": 0.69
    },
    "highest": {
     "id": "L81",
@@ -2569,7 +2569,7 @@
    "category": "socket",
    "circuit": "P1",
    "zone": "Sanctuary",
-   "height_above_floor_m": 0.7,
+   "height_above_floor_m": 0.69,
    "exposure": "interior"
   },
   {
@@ -2578,7 +2578,7 @@
    "category": "socket",
    "circuit": "P2",
    "zone": "Sanctuary",
-   "height_above_floor_m": 0.7,
+   "height_above_floor_m": 0.69,
    "exposure": "interior"
   },
   {
@@ -2738,7 +2738,7 @@
   "totals": {
    "mic": {
     "routes": 4,
-    "length_m": 24.039071,
+    "length_m": 24.139071,
     "within_0_30_m": 0.46,
     "within_0_05_m": 0.0,
     "within_0_30_m_wing_raceway": 0.0,
@@ -3266,7 +3266,7 @@
     "kind": "mic",
     "role": "drop",
     "circuit": "MIC",
-    "length_m": 3.579071,
+    "length_m": 3.629071,
     "within_0_30_m": 0.0,
     "within_0_05_m": 0.0,
     "within_0_30_m_wing_raceway": 0.0,
@@ -3290,7 +3290,7 @@
     "kind": "mic",
     "role": "drop",
     "circuit": "MIC",
-    "length_m": 2.8,
+    "length_m": 2.85,
     "within_0_30_m": 0.0,
     "within_0_05_m": 0.0,
     "within_0_30_m_wing_raceway": 0.0,

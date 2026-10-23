@@ -423,8 +423,9 @@
         add({ type: 'horn', name: `Side courtyard horn · axis ${k} · ${side(s)}`, circuit: 'A3', mount: 'wall', pos: r, yaw: c.yaw, mountYaw: s * 90, tilt: c.tilt, level: -6, on: false });
       }
     }
-    add({ type: 'mic', name: 'Ambo microphone', circuit: 'MIC', mount: 'floor', pos: [amboX - 0.22, 1.9, -2.62], yaw: 0, mountYaw: 0 });
-    add({ type: 'mic', name: 'Altar microphone', circuit: 'MIC', mount: 'floor', pos: [44.45, 1.88, 0.45], yaw: 0, mountYaw: 0 });
+    // Fittings that stand on the dais follow its level (+0.80 since the CAD file of 23 Oct 2026).
+    add({ type: 'mic', name: 'Ambo microphone', circuit: 'MIC', mount: 'floor', pos: [amboX - 0.22, 1.9 + DAIS_RISE, -2.62], yaw: 0, mountYaw: 0 });
+    add({ type: 'mic', name: 'Altar microphone', circuit: 'MIC', mount: 'floor', pos: [44.45, 1.88 + DAIS_RISE, 0.45], yaw: 0, mountYaw: 0 });
 
     // Decoration · statues in the raised shrine niches on the column line, as in the approved concept.
     add({ type: 'statueMary', name: 'Statue · Our Lady', circuit: 'DECOR', mount: 'floor', pos: statues.B, yaw: 180, mountYaw: 180 });
@@ -434,13 +435,13 @@
       // ambo (checked seat by seat), and nothing stands on the way to the shrines:
       // flowers beside the tabernacle and a palm in each front corner of the
       // chamber beside the column, as in the concept. No votive candle stands.
-      add({ type: 'flowerStand', name: `Flower stand · tabernacle ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [47.2, 0.75, s * 1.15], yaw: 180, mountYaw: 180 });
-      add({ type: 'palm', name: `Palm · sanctuary ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [sanctuary.chamber.x0 + 0.66, 0.75, s * 2.9], yaw: 0, mountYaw: 0 });
+      add({ type: 'flowerStand', name: `Flower stand · tabernacle ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [47.2, DAIS_Y, s * 1.15], yaw: 180, mountYaw: 180 });
+      add({ type: 'palm', name: `Palm · sanctuary ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [sanctuary.chamber.x0 + 0.66, DAIS_Y, s * 2.9], yaw: 0, mountYaw: 0 });
       for (const e of [-1, 1]) add({ type: 'floorFlowers', name: `Shrine flowers · ${side(s)} · ${e * s < 0 ? 'inner' : 'outer'}`, circuit: 'DECOR', mount: 'floor', pos: [shrine.x - 0.05, shrine.y, s * shrine.z + e * 0.7], yaw: 180, mountYaw: 180 });
       add({ type: 'palm', name: `Palm · entrance ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [6.3, 0, s * 6.55], yaw: 0, mountYaw: 0 });
       add({ type: 'banner', name: `Banner · axis 9 · ${side(s)}`, circuit: 'DECOR', mount: 'wall', pos: [A['9'] - 0.315, 6.6, s * 3.6], yaw: 180, mountYaw: 180 });
     }
-    add({ type: 'paschal', name: 'Paschal candle', circuit: 'DECOR', mount: 'floor', pos: [amboX - 0.53, 0.75, -1.55], yaw: 180, mountYaw: 180 });
+    add({ type: 'paschal', name: 'Paschal candle', circuit: 'DECOR', mount: 'floor', pos: [amboX - 0.53, DAIS_Y, -1.55], yaw: 180, mountYaw: 180 });
     // Seasonal and festival items, hidden until needed.
     add({ type: 'carpet', name: 'Aisle carpet (weddings & feasts)', circuit: 'DECOR', mount: 'floor', pos: [6.2, 0, 0], yaw: 0, mountYaw: 0, hidden: true, params: { length: 32 } });
     add({ type: 'christmasTree', name: 'Christmas tree · front stage', circuit: 'X1', mount: 'floor', pos: [-4.2, -0.48, -5.6], yaw: 180, mountYaw: 180, hidden: true });
@@ -477,7 +478,7 @@
       const code = side(sign);
       add({ id: `P-SANCT-${code}`, type: 'socketDouble', name: `Socket · sanctuary side ${code} · axis 10 pier`, circuit: sign < 0 ? 'P1' : 'P2', mount: 'wall',
         pos: [43.89, 0.85, sign * 7.25], yaw: 180, mountYaw: 180,
-        note: 'CONCEPT: pier face toward the nave, 0.70 m above the side platform and 1.17 m above the wing floor. Surface or casing box; no chase into the structural pier. ENGINEERING HOLD.' });
+        note: 'CONCEPT: pier face toward the nave, 0.69 m above the side platform (+0.16) and 1.17 m above the wing floor. Surface or casing box; no chase into the structural pier. ENGINEERING HOLD.' });
       add({ id: `P-NAVE-${code}`, type: 'socketDouble', name: `Socket · mid-nave side ${code} · axis 6`, circuit: sign < 0 ? 'P1' : 'P2', mount: 'wall',
         pos: [22.83, 0.45, sign * 7.25], yaw: -sign * 90, mountYaw: -sign * 90,
         note: 'CONCEPT: masonry wall between the window and the axis-6 pier, 0.45 m above the nave floor, reached between the bench rows. Not in the structural pier. ENGINEERING HOLD.' });
@@ -525,6 +526,28 @@
 
   // Additive one-time issue: a saved layout gains the six outlets it does not
   // have. Outlets deleted afterwards stay deleted; nothing else is touched.
+  // Sanctuary dais, CAD file of 23 Oct 2026 (sections 25 and 45), adopted by the owner on
+  // 24 Oct 2026: +0.80 m, 0.05 m above the +0.75 m of the earlier PDF set.
+  const DAIS_Y = 0.8, DAIS_BEFORE_Y = 0.75, DAIS_RISE = DAIS_Y - DAIS_BEFORE_Y;
+  const onDais = (x, z) => x >= 39.75 && x <= 48.65 && Math.abs(z) <= 3.6;
+
+  // One-time lift for saved layouts, 24 October 2026. A dais fitting from the recommended
+  // design that is still at its old default place, and any floor-standing item still
+  // resting on the old +0.75 m dais surface, rise 0.05 m with the floor. ID, aim and
+  // switching are kept. Anything placed at another height, moved off the dais, mounted on
+  // walls or hung from the structure, and any deleted item, stays as it is.
+  const daisLevelRevision = '2026-10-24-dais-0-80-1';
+  function upgradeDaisLevel(items, design) {
+    const next = new Map(design.filter(it => it.mount === 'floor' && Array.isArray(it.pos) && onDais(it.pos[0], it.pos[2])).map(it => [it.name, it]));
+    return items.map(it => {
+      if (!Array.isArray(it.pos) || it.mount !== 'floor' || !onDais(it.pos[0], it.pos[2])) return it;
+      const raw = next.get(it.name);
+      const atOldDefault = raw && raw.type === it.type && [raw.pos[0], raw.pos[1] - DAIS_RISE, raw.pos[2]].every((v, i) => Math.abs(v - it.pos[i]) <= 0.005);
+      const onOldFloor = Math.abs(it.pos[1] - DAIS_BEFORE_Y) <= 0.005;
+      return atOldDefault || onOldFloor ? { ...it, pos: [it.pos[0], it.pos[1] + DAIS_RISE, it.pos[2]] } : it;
+    });
+  }
+
   const outletRevision = '2026-10-09-socket-outlets-1';
   const outletIds = ['B', 'H'].flatMap(code => [`P-SANCT-${code}`, `P-NAVE-${code}`, `P-TOWER-${code}`]);
   function upgradeOutlets(items, design) {
@@ -862,5 +885,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

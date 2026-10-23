@@ -106,7 +106,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -167,11 +167,15 @@
   const LINING_RIDGE = 12.282, LINING_SLOPE = (12.472 - 7.13) / 7.36;
   function liningY(z) { return LINING_RIDGE - LINING_SLOPE * Math.abs(z); }
 
+  // Sanctuary levels from the CAD file of 23 Oct 2026 (sections 25 and 45): dais +0.80 reached
+  // by five 0.16 m risers, side floors +0.16. The bay behind the dais keeps +0.15.
+  const DAIS_Y = 0.8, SIDE_Y = 0.16, RISER = 0.16;
   function floorY(x, z) {
     const az = Math.abs(z);
-    if (x >= 39.75 && x <= 48.65 && az <= 3.6) return 0.75;
-    if (x >= 38.2 && x < 39.75 && az <= 3.6) return Math.min(0.75, (Math.floor((x - 38.2) / 0.32) + 1) * 0.15);
-    if ((az > 3.6 && az <= 7.25 && x >= 40.33 && x <= 52.63) || (az <= 3.6 && x > 48.65 && x <= 52.85)) return 0.15;
+    if (x >= 39.75 && x <= 48.65 && az <= 3.6) return DAIS_Y;
+    if (x >= 38.2 && x < 39.75 && az <= 3.6) return Math.min(DAIS_Y, (Math.floor((x - 38.2) / 0.32) + 1) * RISER);
+    if (az > 3.6 && az <= 7.25 && x >= 40.33 && x <= 52.63) return SIDE_Y;
+    if (az <= 3.6 && x > 48.65 && x <= 52.85) return 0.15;
     if (x >= 2.3 && x <= 53 && az <= 7.25) return 0;
     if (x >= 37.22 && x <= 43.9 && az <= 12.95) return -0.32;
     if (x >= 5.2 && x <= 52.9 && az <= 10.45) return -0.32;
@@ -232,8 +236,8 @@
     if (sx) {
       const { chamber: ch, centralArch: ca, sideArch: sa, wingX: wx, wingZ: wz } = sx;
       for (const s of [-1, 1]) {
-        GEO.sanctuary.walls.push({ z: s * (ch.face + ch.outer) / 2, x0: ch.x0, x1: ch.x1, y0: 0.15, y1: ch.top, openings: [] });
-        for (const e of [-1, 1]) GEO.sanctuary.boxes.push({ min: [wx - 0.31, 0.15, s * wz + e * 1.03 - 0.32], max: [wx + 1.01, 2.55, s * wz + e * 1.03 + 0.32] });
+        GEO.sanctuary.walls.push({ z: s * (ch.face + ch.outer) / 2, x0: ch.x0, x1: ch.x1, y0: SIDE_Y, y1: ch.top, openings: [] });
+        for (const e of [-1, 1]) GEO.sanctuary.boxes.push({ min: [wx - 0.31, SIDE_Y, s * wz + e * 1.03 - 0.32], max: [wx + 1.01, 2.55, s * wz + e * 1.03 + 0.32] });
         // Shelf, and the lacquered wall that closes the bay behind the shrine up to the roof.
         GEO.sanctuary.boxes.push({ min: [wx - 0.35, 2.55, s * wz - 1.38], max: [wx + 1.01, 2.85, s * wz + 1.38] },
           { min: [wx + 0.42, 2.85, s * wz - 1.75], max: [wx + 0.55, 9.5, s * wz + 1.75] });
@@ -445,7 +449,7 @@
     // Posts take the sanctuary finish, like the round shafts of the drawn frame.
     const lacquer = window.CHURCH_SANCTUARY?.materials?.wood || timber, gilt = window.CHURCH_SANCTUARY?.materials?.gold || timber;
     axes.forEach((k, i) => {
-      const x = xs[i], floor = k === '10' ? 0.75 : 0, top = liningY(3.6) - 0.08;
+      const x = xs[i], floor = k === '10' ? DAIS_Y : 0, top = liningY(3.6) - 0.08;
       for (const s of [-1, 1]) {
         const z = s * 3.6;
         // Carved stone plinth (1.1 m) with panels on all four faces.
@@ -620,9 +624,9 @@
       m.userData = { kind: 'wall', normal }; proxyGroup.add(m); return m;
     };
     plane(50.9, 14.5, 27.65, 0, 0, 'floor');
-    plane(8.9, 7.2, 44.2, 0.75, 0, 'floor');
+    plane(8.9, 7.2, 44.2, DAIS_Y, 0, 'floor');
     for (const s of [-1, 1]) {
-      plane(12.3, 3.65, 46.48, 0.15, s * 5.425, 'floor');
+      plane(12.3, 3.65, 46.48, SIDE_Y, s * 5.425, 'floor');
       plane(47.7, 3.2, 29.05, -0.32, s * 8.85, 'floor');
       plane(6.68, 2.5, 40.56, -0.32, s * 11.7, 'floor');
       wall(31.75, 7.13, 21.35, 3.565, s * 7.25, [0, 0, -s]);
@@ -2396,7 +2400,8 @@
       ['exhaustSplitRevision', D.exhaustSplitRevision, '.before-exhaust-split', D.upgradeExhaustSplit],
       ['hiddenFittingsRevision', D.hiddenFittingsRevision, '.before-hidden-fittings', D.upgradeHiddenFittings],
       ['finishChandelierRevision', D.finishChandelierRevision, '.before-lacquer-chandeliers', D.upgradeFinishChandeliers],
-      ['fanBeamRevision', D.fanBeamRevision, '.before-fans-on-beams', D.upgradeFanBeams]
+      ['fanBeamRevision', D.fanBeamRevision, '.before-fans-on-beams', D.upgradeFanBeams],
+      ['daisLevelRevision', D.daisLevelRevision, '.before-dais-0-80', D.upgradeDaisLevel]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;

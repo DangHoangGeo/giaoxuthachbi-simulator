@@ -144,7 +144,8 @@ for(const layout of [2,4]){
 building.updateMatrixWorld(true);
 const blockers=nodes.filter(o=>o.isMesh && /^(Central column |Column base \+0.600|Carved stone pedestal cap|Timber shaft foot|Sanctuary plaster pier)/.test(o.name));
 // Targets follow the furniture: the ambo 2.3 m in front of the altar, the corpus in its niche.
-const targets={altar:[44.24,1.875,0],ambo:[41.3,2.25,-2.62],crucifix:[48.5,5.2,0]};
+// Altar and ambo stand on the dais, which rose from +0.75 to +0.80 (CAD file of 23 Oct 2026).
+const targets={altar:[44.24,1.925,0],ambo:[41.3,2.3,-2.62],crucifix:[48.5,5.2,0]};
 const pewNodes=nodes.filter(o=>o.name.startsWith('Proposed pew ')&&o.isGroup);
 const planPews=pewNodes.map((o,index)=>{
   const p=o.getWorldPosition(new T.Vector3()),length=o.userData.proposedLengthM;
@@ -395,6 +396,22 @@ const amboFoot=nodes.find(o=>o.name==='Proposed ambo foot'),altarFoot=nodes.find
 near(bounds(amboFoot).getCenter(new T.Vector3()).x,41.3,'Ambo position');
 assert(bounds(altarFoot).min.x-bounds(amboFoot).max.x>=2,'At least 2 m between the ambo and the altar');
 assert(bounds(amboFoot).min.x-39.75>=1,'Ambo stays 1 m back from the edge of the dais');
+// Dais and side floors at the levels of the CAD file of 23 Oct 2026 (sections 25 and 45),
+// with the free-standing furniture on the dais floor and the cross still on its niche base.
+{
+  const near=(a,b,t=.002)=>Math.abs(a-b)<=t;
+  const platform=nodes.find(o=>o.name==='Sanctuary central platform +0.800');
+  assert(platform&&near(bounds(platform).max.y,.8),'dais top at +0.80 m');
+  const sides=nodes.filter(o=>o.name==='Sanctuary side platform +0.160');
+  assert(sides.length===2&&sides.every(o=>near(bounds(o).max.y,.16)),'side floors at +0.16 m');
+  const steps=nodes.filter(o=>o.name.startsWith('Sanctuary step profile')).map(o=>bounds(o).max.y).sort((a,b)=>a-b);
+  assert(steps.length===5&&steps.every((y,i)=>near(y,.16*(i+1))),'five 0.16 m risers up to the dais');
+  for(const foot of [amboFoot,altarFoot])assert(near(bounds(foot).min.y,.8),'furniture stands on the dais: '+foot.name);
+  const plinths=nodes.filter(o=>o.name==='Carved stone column base on the dais');
+  assert(plinths.length===2&&plinths.every(o=>near(bounds(o).min.y,.8)&&near(bounds(o).max.y,1)),'axis-10 plinths +0.80 to +1.00 m');
+  const upright=nodes.find(o=>o.name==='Proposed sanctuary crucifix upright');
+  assert(upright&&near(bounds(upright).min.y,3.4,.005),'the cross keeps its height on the niche base');
+}
 assert(!nodes.some(o=>o.name==='Statue plinth'),'Old low statue bases removed');
 // Walking: the service entrances and the dais stay open, the lined walls are solid.
 for(const sign of [-1,1]){

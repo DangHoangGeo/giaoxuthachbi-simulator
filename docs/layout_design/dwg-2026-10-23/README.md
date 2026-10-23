@@ -86,6 +86,10 @@ Not in the file: the roof plan (register file 5, printed sheet 11) and the site 
 - **Ground plan: fewer dimensions.** The DWG plan carries 22 dimension objects; the opening chains and overall widths of PDF sheet 6 are not among them.
 - New evidence for existing open items (EI02, RFI-S01 to S03, ISSUE-C01 to C03, C05, P05) is listed on the workbook's *DWG findings* sheet. Their statuses are left for the owner.
 
+## Levels adopted by the owner
+
+On 24 October 2026 the owner directed the model to follow this file. The workbook's *Model grid* now records the levels the model uses, with both sources named: sanctuary dais +0.800 (P049 750 in the PDF set; DWG0378), side floors +0.160 (P050/P052 150; DWG0373). The PDF values stay unchanged on *Dimensions*, and ISSUE-R04 stays open for the church. `extract_dwg_revision.py workbook` applies these rows once (`ADOPTED_LEVELS`). See [sanctuary-model.md](../../sanctuary-model.md) for what moved in the model.
+
 ## Limits
 
 - Only DIMENSION objects and level labels are read as numbers; every other text is a title, axis label or material note. The DWG carries fewer dimensions than the PDF set, so a value printed on a PDF but absent here is not dimensioned in this file. E02, EW and ET have no dimension objects, and E02, ET and P33 have no title.
