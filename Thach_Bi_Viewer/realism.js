@@ -749,6 +749,7 @@
     building.userData.refinement=data.refinement;
     building.userData.assumptions=data.assumptions;
     window.CHURCH_SANCTUARY?.prepare(ctx);
+    window.CHURCH_DECORATION?.prepare(ctx);
     applyGlass();
     finish(true);
   }

@@ -9,7 +9,7 @@
    artwork: CONCEPT. Fixing into the plastered wall is not designed. */
 (() => {
   const spec = {
-    revision: '2026-10-25-stations-1',
+    revision: '2026-10-25-stations-2',
     bays: [['2′', '3'], ['3', '4'], ['4', '5'], ['5', '6'], ['6', '7'], ['7', '8'], ['8', '9']],
     face: 7.25, // nave face of the C/G wall
     panel: { half: 0.40, bottom: 5.0, top: 6.05, apex: 6.42, depth: 0.05 },
@@ -33,7 +33,7 @@
     building.traverse(o => { if (/^Proposed Stations of the Cross placements/.test(o.name)) old.push(o); });
     old.forEach(o => o.removeFromParent());
     const K = window.CHURCH_CARVING.create(T);
-    const { TR, RY, place, merge } = K;
+    const { TR, RY, RZ, place, merge } = K;
     const mat = (name, color, metalness = 0, roughness = .5) => { const m = new T.MeshStandardMaterial({ color, metalness, roughness }); m.name = name; return m; };
     const gold = mat('Stations · gilded frame', '#c7983f', .7, .32), ground = mat('Stations · red lacquer ground', '#7d2c22', 0, .45), relief = mat('Stations · ivory relief', '#efe6d2', 0, .6), dark = mat('Stations · numeral plaque', '#3b2a22', 0, .5);
     const root = new T.Group();
@@ -73,6 +73,19 @@
       const at = m => m.clone().premultiply(frame);
       add('Station of the Cross gilded frame', gold, ext(outline(.07), .035), at(TR(0, 0, 0)));
       add('Station of the Cross lacquered ground', ground, ext(outline(0), .02), at(TR(0, 0, .035)));
+      // Raised inner moulding and paired foliate sprigs, in the existing frame
+      // envelope. Ornament follows the project's parcel-gilt timber vocabulary;
+      // the narrative relief remains explicitly uncommissioned placeholder art.
+      const moulding = outline(.035);
+      moulding.holes.push(new T.Path(outline(-.018).getPoints(24)));
+      add('Station of the Cross raised inner moulding', gold, ext(moulding, .012), at(TR(0, 0, .056)));
+      for (const side of [-1, 1]) {
+        for (const [dx, dy, angle] of [[0, 0, -.45], [.015, .12, .35]]) {
+          const leaf = K.leaf({ len: .15, wid: .06, thick: .009, curl: .45, lobes: 3, seg: 6 });
+          add('Station of the Cross foliate carving', gold, leaf,
+            at(place(RZ(side * angle), TR(side * (.26 + dx), P.bottom + .16 + dy, .06))));
+        }
+      }
       // Placeholder relief: the cross with a small mound, for the commissioned artwork.
       const cy = (P.bottom + P.top) / 2 + .05;
       for (const [g, m] of [box(.07, .62, .03, 0, cy, .07), box(.36, .07, .03, 0, cy + .14, .07), box(.30, .06, .03, 0, P.bottom + .12, .07)]) add('Station of the Cross relief placeholder', relief, g, at(m));

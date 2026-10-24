@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','decoration.js','sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -32,6 +32,21 @@ const nodes=[];building.traverse(o=>nodes.push(o));
 const near=(actual,expected,msg)=>assert(Math.abs(actual-expected)<.002,`${msg}: ${actual} != ${expected}`);
 const bounds=o=>new T.Box3().setFromObject(o);
 const dimensions=o=>bounds(o).getSize(new T.Vector3());
+// Decoration remains within the old station envelope and leaves physical data alone.
+{
+  assert(sandbox.window.CHURCH_DECORATION.stats.materials>10,'Decoration finishes are applied');
+  const outer=bounds(nodes.find(o=>o.name==='Station of the Cross gilded frame'));
+  for(const name of ['Station of the Cross raised inner moulding','Station of the Cross foliate carving']) {
+    const part=bounds(nodes.find(o=>o.name===name));
+    assert(part.min.x>=outer.min.x-.001&&part.max.x<=outer.max.x+.001&&part.min.y>=outer.min.y&&part.max.y<=outer.max.y,'Carving stays inside station outline: '+name);
+    assert(Math.max(Math.abs(part.min.z),Math.abs(part.max.z))<=7.251,'Carving stays on nave face of wall');
+    assert(Math.min(Math.abs(part.min.z),Math.abs(part.max.z))>=7.165-.001,'Carving remains within existing 85 mm relief projection');
+  }
+  for(const o of nodes.filter(o=>o.isMesh&&/^Sanctuary · gilded (relief|scrollwork)/.test(o.material.name)))assert(o.material.bumpScale<=.003,'Relief shading does not exaggerate relief depth');
+  const finishMap=mat.wall.bumpMap;
+  realism.finish(false);assert.equal(mat.wall.bumpMap,null,'Neutral display removes plaster bump');
+  realism.finish(true);assert.equal(mat.wall.bumpMap,finishMap,'Reference display restores new plaster bump');
+}
 near(dimensions(nodes.find(o=>o.name.startsWith('Main plinth below'))).z,22.489,'Main plan width');
 const wings=nodes.filter(o=>o.name.startsWith('Side projection plinth'));
 near(Math.max(...wings.map(o=>bounds(o).max.z))-Math.min(...wings.map(o=>bounds(o).min.z)),28.158,'Wing plan width');

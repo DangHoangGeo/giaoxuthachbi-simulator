@@ -1,5 +1,9 @@
 # Church view renderings
 
+## Viewer finish development · 25 October 2026
+
+The [decoration revision](decoration-finishes.md) refines mineral plaster, honed stone, terracotta, red lacquer and gilding across the actual viewer, and adds shallow foliate station surrounds. [Desktop review captures](../review/decoration-2026-10-25/README.md) are actual model screenshots, separate from the generated artwork below. Existing concepts, reference selections and provenance stay intact. This is an appearance study in the approved northern Vietnamese Catholic direction; commissioned station narratives, fine statue carving and engineering holds remain unresolved.
+
 ## Updated model views · 24 October 2026
 
 The owner requested new presentation images from the updated 3D model, with freedom to refine decorative detail. The [six-view gallery](../Thach_Bi_Viewer/references/00-overview/2026-10-24/index.html) delivers front daylight, front/long-side daylight, opposite-corner evening, central façade detail, nave daylight and sanctuary evening images. All six were edited with the built-in `image_gen.imagegen` from [actual desktop viewer captures](../review/church-views-2026-10-24/model-inputs/capture.json). The capture run used visit-only mode and reported no browser errors. Each artwork includes **CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công**.
