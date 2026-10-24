@@ -34,7 +34,7 @@ const sandbox = {
 sandbox.window = sandbox;
 sandbox.addEventListener = (e, f) => { (listeners[e] ||= []).push(f); };
 vm.createContext(sandbox);
-for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'facade.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
+for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'facade.js', 'porches.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
   vm.runInContext(fs.readFileSync(path.join(viewer, file), 'utf8'), sandbox, { filename: file });
 
 let src = fs.readFileSync(path.join(viewer, 'bundle.js'), 'utf8');
@@ -165,13 +165,16 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
 {
   const lights = SIM.state.items, near = (a, b) => Math.abs(a - b) < 0.0001;
   const side = lights.filter(it => it.name.startsWith('Side door lantern ·'));
-  assert.equal(side.length, 12, 'six exterior side doors have twelve lanterns');
-  for (const s of [-1, 1]) for (const x of [16.725, 34.725, 46.425]) {
-    const pair = side.filter(it => near(it.pos[2], s * 10.55) && Math.abs(it.pos[0] - x) < 1.5);
-    assert.equal(pair.length, 2, 'two lanterns beside each exterior side door');
+  // Since 25 Oct 2026 the porches are open arcades and bay 10–11 has a window (porches.js):
+  // the four side doors keep their pairs on the porch face of the inner C/G wall.
+  assert.equal(side.length, 8, 'four side doors have eight lanterns');
+  for (const s of [-1, 1]) for (const x of [16.725, 34.725]) {
+    const pair = side.filter(it => near(it.pos[2], s * 7.52) && Math.abs(it.pos[0] - x) < 1.5);
+    assert.equal(pair.length, 2, 'two lanterns beside each side door');
     assert(near((pair[0].pos[0] + pair[1].pos[0]) / 2, x), 'lantern pair centres on the door');
-    assert(pair.every(it => near(it.pos[1], 2.6) && it.mountYaw === s * 90), 'equal height and outward orientation');
+    assert(pair.every(it => near(it.pos[1], 2.6) && it.mountYaw === s * 90), 'equal height, facing the porch');
   }
+  assert(!side.some(it => Math.abs(it.pos[0] - 46.425) < 1.5), 'no lanterns at the bay 10–11 window');
   const front = lights.filter(it => it.name.startsWith('Central front door lantern ·'));
   assert.equal(front.length, 2, 'only one front-door decorative pair');
   assert(front.every(it => near(it.pos[0], 2.2) && near(Math.abs(it.pos[2]), 2.4) && it.circuit === 'L9'), 'central pair outside the front wall on DB2');
@@ -918,7 +921,7 @@ for (const [position, target] of [[[0, 20, 90], [25, 5, 0]], [[-95, 30, 0], [2.4
   SIM.setSetting('quality', 'fast'); SIM.frame(0.05, 'explore', camera);
   verifyPersistentCoverage();
 }
-const remote = SIM.state.items.find(it => it.name === 'Side door lantern · B · 46.425 · rear');
+const remote = SIM.state.items.find(it => it.name === 'Side door lantern · B · 34.725 · rear');
 const originalDim = remote.dim;
 SIM.update(remote.id, { dim: 0.3 }, { record: false });
 SIM.setSetting('quality', 'fast'); SIM.frame(0.05, 'explore', camera);

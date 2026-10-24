@@ -44169,7 +44169,9 @@ void main() {
       ["10", "11"],
       ["11", "12"],
     ],
-    b1 = new Set(["4", "8", "10"]);
+    // Doorways in bays 4–5 and 8–9. Bay 10–11 beside the sanctuary has a window: the parish
+    // priest (25 Oct 2026) wants no door from the sanctuary sides to the porches.
+    b1 = new Set(["4", "8"]);
   for (let s of [-1, 1]) {
     for (let [e, t] of S1) {
       let n = ti.longitudinal[e],
@@ -44252,13 +44254,34 @@ void main() {
       for (let u of [-r / 2, r / 2]) jo(h, u, -0.32, 6.15, 0.12, 0.25);
       if ((a || ss(-r / 2, 6.325, 0.02, 1.7, h, 0.55), !a)) {
         let u = Dp(o, s * 7.36, s),
-          f = {
-            u: 0,
-            w: 2.25,
-            spring: 3.171,
-            rise: 1.14,
-            bottom: l ? 0 : 0.65,
-          };
+          // Parish priest, 25 Oct 2026: the porches have no outer wall, and the windows and
+          // doors of the outer elevation (DWG sheet 26: two 1.0 m arched windows, sill +0.85,
+          // 1.03 m pier, rosette above) stand in this inner wall. Doorways keep 2.25 m.
+          f = l
+            ? [{ u: 0, w: 2.25, spring: 3.171, rise: 1.14, bottom: 0 }]
+            : [
+                { u: -1.015, w: 1, spring: 3.101, rise: 0.507, bottom: 0.85 },
+                { u: 1.015, w: 1, spring: 3.101, rise: 0.507, bottom: 0.85 },
+              ];
+        od(
+          u,
+          `Inner wall ${s > 0 ? "G" : "C"} ${e}\u2013${t}`,
+          "SOURCE GRID / DETAIL OPENINGS",
+          "Files 8,9; DWG sheets 26, 28",
+        );
+        for (let q of f)
+          $o(u, q.u, q.bottom, q.w, q.spring, q.rise, 0.23, {
+            infill: !1,
+            surround: 0.09,
+          });
+        if (!l) {
+          for (let q of f) {
+            We(q.w - 0.04, 0.68, 0.1, q.u, 0.43, 0.12, ce.trim, u, "Window low parapet");
+            for (let p = -2; p <= 2; p++)
+              We(0.025, 0.5, 0.06, q.u + p * 0.14, 0.47, 0.18, ce.darkTrim, u, "Schematic parapet flute");
+          }
+          Ac(u, 0, 4.7, 0.15, 0.4185);
+        }
         if (
           (Ko(
             [
@@ -44271,12 +44294,8 @@ void main() {
             ce.wall,
             u,
             "Inner C/G wall with opening",
-            [sd(0, f.bottom, 2.25, 3.171, 1.14)],
+            f.map((q) => sd(q.u, q.bottom, q.w, q.spring, q.rise)),
           ),
-          $o(u, 0, f.bottom, 2.25, 3.171, 1.14, 0.23, {
-            infill: l ? !1 : "glass",
-            surround: 0.09,
-          }),
           l)
         ) {
           (Y0(

@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "status": "DERIVED / CONCEPT / ENGINEERING HOLD · comparison screens only",
- "model_git_revision": "015f9a824bd3fbb653c04d9a3894626c5cd5896f",
+ "model_git_revision": "1293e875d03c62bc8a9739eedbf99e994d107cac",
  "source_sha256": {
   "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
   "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",
@@ -10,23 +10,24 @@
   "Thach_Bi_Viewer/carving.js": "5624bd11c10c1c75a0c80a4f2b9612652664e6592eceff0d8a6ac6c5c70c1367",
   "Thach_Bi_Viewer/sanctuary.js": "6246336d85bc926654674c91ef81e6e5003f2f1aaa3b818116c50d028b2c9452",
   "Thach_Bi_Viewer/facade.js": "089158cb3e0a2f797266be6d3b42c36ccbdf600044d6ceb0c7b67c45a3b4566e",
-  "Thach_Bi_Viewer/realism.js": "19d020f64093c92fc46704b7fc4a3d4fdd9fe3e40f057fec5b68d1b140677cf7",
+  "Thach_Bi_Viewer/porches.js": "cf1279c2694bea830f0e7a301a4077f950113abbd1604b271151a2a5b2d4f9c3",
+  "Thach_Bi_Viewer/realism.js": "e7b3df3b00a792b029312f147f602f3876b645b16cb9fab9ab071ee21371263b",
   "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
   "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
   "Thach_Bi_Viewer/simulator/catalog.js": "d94df77f66016709a8001fa9be0cc2e05f99ff0393e0efa98f967384e62494a1",
-  "Thach_Bi_Viewer/simulator/engine.js": "f69a65a5d01464ebfa37640ce88972b956bd99e649e65c13cbcd2b6367fa6647",
+  "Thach_Bi_Viewer/simulator/engine.js": "416513d91754e41eb1eec83f29958aec6fdc7cb0f1ec84ee207601a0c98a35cd",
   "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
   "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
-  "Thach_Bi_Viewer/simulator/design.js": "ab1c6bec7e9e81d879791c1eab8a930876adb667c9bbf981c011a7f691d91097",
+  "Thach_Bi_Viewer/simulator/design.js": "573ee5e49437beabbfba52c12cc83e897d87f4c451a979d699a38f9d187d9da7",
   "Thach_Bi_Viewer/simulator/analysis.js": "7670036a3be8f9ca423b551bc75261c2272e6c07ba077ea49a394cb9c04af849",
   "Thach_Bi_Viewer/simulator/electrical.js": "e8688402fd48426a5f933b880b1f11682d7caa1aa23a1ac2bf0d12c5f1d317db",
   "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
-  "Thach_Bi_Viewer/bundle.js": "6f73cca1fba826b3d7930d21401176de2835bc8956cba38f7067d443cb4879a0",
-  "scripts/lib/study_model.cjs": "5746fd2a6d597a3313a7791a8465bb7a688ca9cdf1fa0739e75a0f1db298a7fb",
+  "Thach_Bi_Viewer/bundle.js": "74818d3bbe1aea78576f9fe1907faaa2e52e3aa96c5cfad2a2f37c2b72b710d3",
+  "scripts/lib/study_model.cjs": "52321231221e34d2334a9635dc359d357a4dd3618132aded8bc00eaf433a7d82",
   "scripts/export_electrical_loads.cjs": "066af5453cb3e782abe4cfaf585b6cd9b04ebafad050e18c73615e7ca6fdca2b",
-  "docs/electrical-grid/electrical-systems.json": "b17314130617491f3e73a772bab5720c8ffe36baa24ed5a5cc2512f8640338ef",
-  "docs/electrical-grid/equipment-layout.json": "5426ce45cb04f814d5dd0210f8e96b572936a920fad8790c50d7c5cfa6b6676e",
-  "docs/electrical-grid/categories/manifest.json": "ef632c34442365e7fa72cb63ed52faaa8786fc4c90730dec9b57199c6ce4175b"
+  "docs/electrical-grid/electrical-systems.json": "10d6d18e117107f62a3d3e48f08d9f8d9df9954b8ce3c3d85d06553452833a75",
+  "docs/electrical-grid/equipment-layout.json": "c5d56493e89032b01436ecaed120866a09d5872d997065e2e10f3c09d0d21e41",
+  "docs/electrical-grid/categories/manifest.json": "68b0880094a13eb05a0269ad4b42f942c6cc7ec7dfc45e946ad85ff5be489b59"
  },
  "default_scene": "Full service · evening",
  "assumptions": {
@@ -76,10 +77,10 @@
   ]
  },
  "counts": {
-  "shown_items": 339,
-  "wired_points": 317,
-  "routes": 373,
-  "mains_routes": 329,
+  "shown_items": 335,
+  "wired_points": 313,
+  "routes": 369,
+  "mains_routes": 325,
   "mains_circuits": 24
  },
  "zones": [
@@ -276,8 +277,8 @@
   },
   {
    "zone": "Verandas and side paths",
-   "wired_points": 55,
-   "light": 46,
+   "wired_points": 51,
+   "light": 42,
    "fan": 1,
    "loudspeaker": 8,
    "microphone": 0,
@@ -291,11 +292,11 @@
     "L7",
     "V3"
    ],
-   "connected_fixed_w": 1119.0,
-   "full_service_w": 753.17942,
+   "connected_fixed_w": 1083.0,
+   "full_service_w": 717.17942,
    "within_reach": 0,
    "open_to_weather": 19,
-   "covered_exterior": 36,
+   "covered_exterior": 32,
    "lowest": {
     "id": "L139",
     "name": "Side door lantern · B · 16.725 · front",
@@ -1059,8 +1060,8 @@
     }
    ],
    "full_service_loss_w": {
-    "comparison": 1.617297,
-    "minimum": 1.617297
+    "comparison": 1.61668,
+    "minimum": 1.61668
    }
   },
   {
@@ -1069,67 +1070,67 @@
    "kind": "light",
    "source": "LC1",
    "board": "DB1",
-   "points": 22,
+   "points": 18,
    "socket_rating_a": null,
-   "connected_w": 333.0,
+   "connected_w": 297.0,
    "socket_allowance_w": null,
-   "full_service_w": 333.0,
-   "longest_path_m": 71.645303,
-   "farthest_route": "drop:LC1:L5:light:1:L145",
+   "full_service_w": 297.0,
+   "longest_path_m": 69.370303,
+   "farthest_route": "drop:LC1:L5:light:1:L191",
    "feeder_from_db1_m": 2.56,
-   "route_m": 274.763364,
-   "exterior_points": 22,
+   "route_m": 205.865295,
+   "exterior_points": 18,
    "open_weather_points": 10,
    "reach_points": 0,
    "cases": [
     {
      "case_id": "S1-230-PF09-45C-4",
-     "design_current_a": 1.608696,
-     "planning_current_a": 2.01087,
+     "design_current_a": 1.434783,
+     "planning_current_a": 1.793478,
      "comparison_breaker_a": 6,
-     "loading_percent": 26.811594,
+     "loading_percent": 23.913043,
      "circuit_budget_percent": 2.0,
      "comparison_area_mm2": 1.5,
-     "vdrop_percent_at_area": 0.586275,
-     "vdrop_percent_at_minimum_area": 0.586275,
+     "vdrop_percent_at_area": 0.543438,
+     "vdrop_percent_at_minimum_area": 0.543438,
      "minimum_area_mm2": 1.5,
-     "far_end_bound_percent_at_minimum_area": 1.98941,
+     "far_end_bound_percent_at_minimum_area": 1.717997,
      "minimum_area_ampacity_ok": true,
-     "fault_a_at_area": 96.51096,
+     "fault_a_at_area": 99.676038,
      "fault_clears_type_c_at_area": true,
      "fault_clears_type_b_at_area": true,
-     "loop_allowance_ohm_type_c_at_area": 1.377675,
-     "fault_a_at_minimum": 96.51096,
+     "loop_allowance_ohm_type_c_at_area": 1.449565,
+     "fault_a_at_minimum": 99.676038,
      "fault_clears_type_c_at_minimum": true,
      "fault_clears_type_b_at_minimum": true,
-     "loop_allowance_ohm_type_c_at_minimum": 1.377675
+     "loop_allowance_ohm_type_c_at_minimum": 1.449565
     },
     {
      "case_id": "S2-220-PF08-50C-6",
-     "design_current_a": 1.892045,
-     "planning_current_a": 2.365057,
+     "design_current_a": 1.6875,
+     "planning_current_a": 2.109375,
      "comparison_breaker_a": 6,
-     "loading_percent": 31.534091,
+     "loading_percent": 28.125,
      "circuit_budget_percent": 2.0,
      "comparison_area_mm2": 1.5,
-     "vdrop_percent_at_area": 0.720883,
-     "vdrop_percent_at_minimum_area": 0.720883,
+     "vdrop_percent_at_area": 0.66821,
+     "vdrop_percent_at_minimum_area": 0.66821,
      "minimum_area_mm2": 1.5,
-     "far_end_bound_percent_at_minimum_area": 2.446173,
+     "far_end_bound_percent_at_minimum_area": 2.112444,
      "minimum_area_ampacity_ok": true,
-     "fault_a_at_area": 92.314832,
+     "fault_a_at_area": 95.342298,
      "fault_clears_type_c_at_area": true,
      "fault_clears_type_b_at_area": true,
-     "loop_allowance_ohm_type_c_at_area": 1.219342,
-     "fault_a_at_minimum": 92.314832,
+     "loop_allowance_ohm_type_c_at_area": 1.291232,
+     "fault_a_at_minimum": 95.342298,
      "fault_clears_type_c_at_minimum": true,
      "fault_clears_type_b_at_minimum": true,
-     "loop_allowance_ohm_type_c_at_minimum": 1.219342
+     "loop_allowance_ohm_type_c_at_minimum": 1.291232
     }
    ],
    "full_service_loss_w": {
-    "comparison": 1.231443,
-    "minimum": 1.231443
+    "comparison": 1.027825,
+    "minimum": 1.027825
    }
   },
   {
@@ -2674,7 +2675,7 @@
    "circuit": "L5",
    "label": "L5 · Steps & paths",
    "open_to_weather": 10,
-   "covered_exterior": 12,
+   "covered_exterior": 8,
    "interior": 0,
    "highest_point_m": 6.2
   },
@@ -2749,10 +2750,10 @@
    "audio": {
     "routes": 36,
     "length_m": 698.551469,
-    "within_0_30_m": 240.498255,
-    "within_0_05_m": 172.945301,
+    "within_0_30_m": 260.471335,
+    "within_0_05_m": 176.939917,
     "within_0_30_m_wing_raceway": 79.902004,
-    "trunk_within_0_30_m": 158.938721,
+    "trunk_within_0_30_m": 178.911801,
     "drop_within_0_30_m": 81.559534
    }
   },
@@ -2763,8 +2764,8 @@
     "role": "trunk",
     "circuit": "A1",
     "length_m": 65.64813,
-    "within_0_30_m": 20.103663,
-    "within_0_05_m": 13.427758,
+    "within_0_30_m": 22.596054,
+    "within_0_05_m": 13.926236,
     "within_0_30_m_wing_raceway": 9.909464,
     "closest_mains_routes": [
      "feeder:DB2",
@@ -2859,13 +2860,13 @@
     "role": "trunk",
     "circuit": "A1",
     "length_m": 59.04813,
-    "within_0_30_m": 18.322897,
-    "within_0_05_m": 12.674954,
+    "within_0_30_m": 20.815288,
+    "within_0_05_m": 13.173432,
     "within_0_30_m_wing_raceway": 9.909464,
     "closest_mains_routes": [
      "trunk:LC1:L1:light:1",
      "feeder:AV1",
-     "drop:LC1:L3:light:1:L154"
+     "drop:LC1:L5:light:1:L148"
     ]
    },
    {
@@ -2955,13 +2956,13 @@
     "role": "trunk",
     "circuit": "A5",
     "length_m": 77.07013,
-    "within_0_30_m": 21.415597,
-    "within_0_05_m": 13.741758,
+    "within_0_30_m": 23.915597,
+    "within_0_05_m": 14.241758,
     "within_0_30_m_wing_raceway": 9.785845,
     "closest_mains_routes": [
      "feeder:DB2",
-     "drop:DB1:P1:power:-1:P-NAVE-B",
-     "feeder:AV1"
+     "drop:LC1:L5:light:-1:L142",
+     "drop:LC1:L5:light:-1:L141"
     ]
    },
    {
@@ -2985,13 +2986,13 @@
     "role": "trunk",
     "circuit": "A5",
     "length_m": 70.47013,
-    "within_0_30_m": 19.634831,
-    "within_0_05_m": 12.988954,
+    "within_0_30_m": 22.134831,
+    "within_0_05_m": 13.488954,
     "within_0_30_m_wing_raceway": 9.785845,
     "closest_mains_routes": [
      "trunk:LC1:L1:light:1",
-     "drop:DB1:P2:power:1:P-NAVE-H",
-     "feeder:AV1"
+     "drop:LC1:L5:light:1:L148",
+     "drop:LC1:L5:light:1:L147"
     ]
    },
    {
@@ -3015,8 +3016,8 @@
     "role": "trunk",
     "circuit": "A2",
     "length_m": 66.17113,
-    "within_0_30_m": 20.122651,
-    "within_0_05_m": 13.443758,
+    "within_0_30_m": 22.616799,
+    "within_0_05_m": 13.942588,
     "within_0_30_m_wing_raceway": 9.914797,
     "closest_mains_routes": [
      "feeder:DB2",
@@ -3060,13 +3061,13 @@
     "role": "trunk",
     "circuit": "A2",
     "length_m": 59.57113,
-    "within_0_30_m": 18.341884,
-    "within_0_05_m": 12.690954,
+    "within_0_30_m": 20.836033,
+    "within_0_05_m": 13.189784,
     "within_0_30_m_wing_raceway": 9.914797,
     "closest_mains_routes": [
      "trunk:LC1:L1:light:1",
      "feeder:AV1",
-     "drop:LC1:L3:light:1:L154"
+     "drop:LC1:L5:light:1:L148"
     ]
    },
    {
@@ -3105,13 +3106,13 @@
     "role": "trunk",
     "circuit": "A3",
     "length_m": 77.35913,
-    "within_0_30_m": 21.388982,
-    "within_0_05_m": 13.709758,
+    "within_0_30_m": 23.888982,
+    "within_0_05_m": 14.209758,
     "within_0_30_m_wing_raceway": 10.206987,
     "closest_mains_routes": [
      "feeder:DB2",
-     "drop:DB1:P1:power:-1:P-NAVE-B",
-     "feeder:AV1"
+     "drop:LC1:L5:light:-1:L142",
+     "drop:LC1:L5:light:-1:L141"
     ]
    },
    {
@@ -3180,13 +3181,13 @@
     "role": "trunk",
     "circuit": "A3",
     "length_m": 70.75913,
-    "within_0_30_m": 19.608216,
-    "within_0_05_m": 12.956954,
+    "within_0_30_m": 22.108216,
+    "within_0_05_m": 13.456954,
     "within_0_30_m_wing_raceway": 10.206987,
     "closest_mains_routes": [
      "trunk:LC1:L1:light:1",
-     "drop:DB1:P2:power:1:P-NAVE-H",
-     "feeder:AV1"
+     "drop:LC1:L5:light:1:L148",
+     "drop:LC1:L5:light:1:L147"
     ]
    },
    {
@@ -3306,19 +3307,19 @@
   "chamber-lining": 97.832,
   "entrance-gable": 41.047942,
   "entrance-wall": 300.365574,
-  "outer-wall": 209.949495,
+  "outer-wall": 112.987426,
   "rear-wall": 57.944,
   "roof-local": 58.392176,
   "roof-pendant": 192.871131,
   "service-ceiling": 17.95,
-  "side-wall": 63.722,
+  "side-wall": 91.786,
   "tower-cornice": 125.781926,
   "tower-wall": 541.520743,
   "underfloor-event": 26.34,
   "wall-roof-trunk": 1954.467658
  },
  "timber_roof_and_lining_mains_m": 959.94016,
- "mains_route_m": 4299.029499,
+ "mains_route_m": 4230.131431,
  "buried_routes": [
   {
    "route_id": "trunk:DB2:P3:power:-1",
@@ -3366,19 +3367,19 @@
    "case_id": "S1-230-PF09-45C-4",
    "voltage_v": 230,
    "power_factor": 0.9,
-   "fixed_known_w": 9273.88296,
-   "fixed_planning_a": 56.001709,
+   "fixed_known_w": 9237.88296,
+   "fixed_planning_a": 55.784317,
    "indoor_socket_rating_a": 32,
    "event_socket_rating_a": 64,
-   "single_phase_fixed_a": 56.001709,
-   "single_phase_fixed_plus_indoor_a": 88.001709,
-   "single_phase_everything_a": 152.001709,
+   "single_phase_fixed_a": 55.784317,
+   "single_phase_fixed_plus_indoor_a": 87.784317,
+   "single_phase_everything_a": 151.784317,
    "three_phase_a": [
-    50.681159,
-    50.661776,
-    50.658773
+    50.584541,
+    50.536634,
+    50.663142
    ],
-   "three_phase_neutral_a": 0.021046,
+   "three_phase_neutral_a": 0.110628,
    "three_phase_allocation": {
     "P3": "L1",
     "P4": "L2",
@@ -3397,13 +3398,13 @@
     "L2": "L3",
     "L3": "L3",
     "L4": "L2",
-    "L5": "L3",
-    "LD": "L2",
+    "LD": "L3",
+    "L5": "L2",
     "LA": "L1",
-    "F5": "L1",
-    "L8": "L2",
-    "V3": "L3",
-    "E1": "L3"
+    "F5": "L3",
+    "L8": "L1",
+    "V3": "L2",
+    "E1": "L2"
    },
    "db2_fixed_planning_a": 16.57139,
    "db2_with_events_a": 80.57139,
@@ -3810,19 +3811,19 @@
    "case_id": "S2-220-PF08-50C-6",
    "voltage_v": 220,
    "power_factor": 0.8,
-   "fixed_known_w": 9273.88296,
-   "fixed_planning_a": 65.865646,
+   "fixed_known_w": 9237.88296,
+   "fixed_planning_a": 65.609964,
    "indoor_socket_rating_a": 32,
    "event_socket_rating_a": 64,
-   "single_phase_fixed_a": 65.865646,
-   "single_phase_fixed_plus_indoor_a": 97.865646,
-   "single_phase_everything_a": 161.865646,
+   "single_phase_fixed_a": 65.609964,
+   "single_phase_fixed_plus_indoor_a": 97.609964,
+   "single_phase_everything_a": 161.609964,
    "three_phase_a": [
-    53.956842,
+    53.944602,
     53.884025,
-    54.024779
+    53.781337
    ],
-   "three_phase_neutral_a": 0.121921,
+   "three_phase_neutral_a": 0.142951,
    "three_phase_allocation": {
     "P3": "L1",
     "P4": "L2",
@@ -3841,8 +3842,8 @@
     "L2": "L3",
     "L3": "L2",
     "L4": "L1",
-    "L5": "L3",
-    "LD": "L1",
+    "LD": "L3",
+    "L5": "L1",
     "LA": "L2",
     "F5": "L3",
     "L8": "L1",
@@ -4258,14 +4259,14 @@
   "scenes": [
    {
     "scene": "Full service · evening",
-    "watts": 5599.315348,
-    "kwh_per_service": 8.398973,
-    "kwh_per_month": 335.958921,
-    "cost_per_month_at_model_tariff": 739109.625983,
+    "watts": 5563.315348,
+    "kwh_per_service": 8.344973,
+    "kwh_per_month": 333.798921,
+    "cost_per_month_at_model_tariff": 734357.625983,
     "interior_lumens": 277990,
-    "exterior_lumens": 234960,
+    "exterior_lumens": 231360,
     "by_category_w": {
-     "light": 4333.88296,
+     "light": 4297.88296,
      "fan": 1156,
      "sound": 0,
      "decor": 0,
@@ -4274,14 +4275,14 @@
    },
    {
     "scene": "Weekday Mass",
-    "watts": 3732.21182,
-    "kwh_per_service": 5.598318,
-    "kwh_per_month": 223.932709,
-    "cost_per_month_at_model_tariff": 492651.960285,
+    "watts": 3696.21182,
+    "kwh_per_service": 5.544318,
+    "kwh_per_month": 221.772709,
+    "cost_per_month_at_model_tariff": 487899.960285,
     "interior_lumens": 186794,
-    "exterior_lumens": 95016,
+    "exterior_lumens": 91416,
     "by_category_w": {
-     "light": 2490.958852,
+     "light": 2454.958852,
      "fan": 1156,
      "sound": 0,
      "decor": 0,
@@ -4290,14 +4291,14 @@
    },
    {
     "scene": "Prayer & adoration",
-    "watts": 2501.217803,
-    "kwh_per_service": 3.751827,
-    "kwh_per_month": 150.073068,
-    "cost_per_month_at_model_tariff": 330160.749986,
+    "watts": 2465.217803,
+    "kwh_per_service": 3.697827,
+    "kwh_per_month": 147.913068,
+    "cost_per_month_at_model_tariff": 325408.749986,
     "interior_lumens": 82013.5,
-    "exterior_lumens": 86016,
+    "exterior_lumens": 82416,
     "by_category_w": {
-     "light": 1569.217803,
+     "light": 1533.217803,
      "fan": 932,
      "sound": 0,
      "decor": 0,
@@ -4306,14 +4307,14 @@
    },
    {
     "scene": "Christmas & festivals",
-    "watts": 6759.315348,
-    "kwh_per_service": 10.138973,
-    "kwh_per_month": 405.558921,
-    "cost_per_month_at_model_tariff": 892229.625983,
+    "watts": 6723.315348,
+    "kwh_per_service": 10.084973,
+    "kwh_per_month": 403.398921,
+    "cost_per_month_at_model_tariff": 887477.625983,
     "interior_lumens": 277990,
-    "exterior_lumens": 252960,
+    "exterior_lumens": 249360,
     "by_category_w": {
-     "light": 5043.88296,
+     "light": 5007.88296,
      "fan": 1606,
      "sound": 0,
      "decor": 0,
@@ -4322,14 +4323,14 @@
    },
    {
     "scene": "Festival · courtyard overflow",
-    "watts": 6819.868841,
-    "kwh_per_service": 10.229803,
-    "kwh_per_month": 409.19213,
-    "cost_per_month_at_model_tariff": 900222.687053,
+    "watts": 6783.868841,
+    "kwh_per_service": 10.175803,
+    "kwh_per_month": 407.03213,
+    "cost_per_month_at_model_tariff": 895470.687053,
     "interior_lumens": 277990,
-    "exterior_lumens": 252960,
+    "exterior_lumens": 249360,
     "by_category_w": {
-     "light": 5043.88296,
+     "light": 5007.88296,
      "fan": 1606,
      "sound": 0,
      "decor": 0,
@@ -4354,14 +4355,14 @@
    },
    {
     "scene": "Night security",
-    "watts": 760.912,
-    "kwh_per_service": 1.141368,
-    "kwh_per_month": 45.65472,
-    "cost_per_month_at_model_tariff": 100440.384,
+    "watts": 724.912,
+    "kwh_per_service": 1.087368,
+    "kwh_per_month": 43.49472,
+    "cost_per_month_at_model_tariff": 95688.384,
     "interior_lumens": 0,
-    "exterior_lumens": 86400,
+    "exterior_lumens": 82800,
     "by_category_w": {
-     "light": 760.912,
+     "light": 724.912,
      "fan": 0,
      "sound": 0,
      "decor": 0,
@@ -4390,11 +4391,11 @@
   "lighting_power_density_w_m2": 2.928208,
   "seat_lux": {
    "n": 368,
-   "min": 116.552971,
-   "mean": 317.145396,
-   "max": 501.87528
+   "min": 101.986819,
+   "mean": 314.437868,
+   "max": 501.975638
   },
-  "lux_per_w_m2": 108.307003,
+  "lux_per_w_m2": 107.382366,
   "efficacy": [
    {
     "circuit": "L1",
@@ -4439,10 +4440,10 @@
    {
     "circuit": "L5",
     "label": "L5 · Steps & paths",
-    "fittings": 22,
-    "lumens": 37800,
-    "watts": 333.0,
-    "lm_per_w": 113.513514
+    "fittings": 18,
+    "lumens": 34200,
+    "watts": 297.0,
+    "lm_per_w": 115.151515
    },
    {
     "circuit": "L6",
@@ -4493,7 +4494,7 @@
     "lm_per_w": 104.444444
    }
   ],
-  "overall_lm_per_w": 119.076909,
+  "overall_lm_per_w": 119.232185,
   "fans": [
    {
     "type": "fanCeiling",
@@ -4636,11 +4637,11 @@
     ]
    }
   ],
-  "final_circuit_mains_w_full_service": 5489.88296,
-  "loss_w_comparison_areas": 32.384598,
-  "loss_w_minimum_areas": 32.384598,
-  "loss_percent_comparison_areas": 0.589896,
-  "loss_percent_minimum_areas": 0.589896,
+  "final_circuit_mains_w_full_service": 5453.88296,
+  "loss_w_comparison_areas": 32.180363,
+  "loss_w_minimum_areas": 32.180363,
+  "loss_percent_comparison_areas": 0.590045,
+  "loss_percent_minimum_areas": 0.590045,
   "circuit_losses": [
    {
     "circuit": "E1",
@@ -4699,14 +4700,14 @@
    {
     "circuit": "L4",
     "full_service_w": 336.0,
-    "loss_w_comparison": 1.617297,
-    "loss_w_minimum": 1.617297
+    "loss_w_comparison": 1.61668,
+    "loss_w_minimum": 1.61668
    },
    {
     "circuit": "L5",
-    "full_service_w": 333.0,
-    "loss_w_comparison": 1.231443,
-    "loss_w_minimum": 1.231443
+    "full_service_w": 297.0,
+    "loss_w_comparison": 1.027825,
+    "loss_w_minimum": 1.027825
    },
    {
     "circuit": "L6",
@@ -4811,7 +4812,7 @@
    }
   ],
   "annual_service_hours": 720.0,
-  "annual_service_kwh_full_scene": 4031.507051,
+  "annual_service_kwh_full_scene": 4005.587051,
   "exit_sign_w": 15,
   "exit_sign_kwh_per_year_continuous": 131.4,
   "facade_w_full_service": 1274.222222,

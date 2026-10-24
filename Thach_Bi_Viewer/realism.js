@@ -65,6 +65,10 @@
     // Shrine jambs on the axis-11 line (sanctuary.js); keep the central 1.44 m entrance open.
     const wx=window.CHURCH_SANCTUARY?.spec.wingX ?? 48.93;
     if(x>=wx-.425 && x<=wx+1.125 && az>=3.7 && az<=7.25 && Math.abs(az-5.5)>=.7)return false;
+    // Parish priest, 25 Oct 2026 (porches.js): no doorway in the C/G wall of bay 10–11, and the
+    // 9–10 side bays are closed to the porches on axes 9 and 10.
+    if(Math.abs(x-46.425)<=1.2 && az>=7.0 && az<=7.75)return false;
+    if([36.975,44.175].some(e=>Math.abs(x-e)<=.2) && az>=7.3 && az<=10.6)return false;
     // Lacquered chamber walls on the D/E lines, from the axis-10 columns back to axis 11.
     if(x>=44.4 && x<=48.6 && az>=3.2 && az<=3.85)return false;
     // Sanctuary fit-out: the open service room is bounded by the C/G walls and the
@@ -317,8 +321,12 @@
     // Outer openings share one joinery plane. The C/G inner doorways remain
     // open circulation; no duplicate leaves across the veranda.
     for(const leaf of all.filter(o=>o.name.startsWith('Open side door leaf')))leaf.parent.removeFromParent();
-    const sideBays=all.filter(o=>o.name.startsWith('Outer veranda'));
-    function pane(shape,parent,material,name){const m=mesh(new T.ShapeGeometry(shape,24),material,parent,name);m.position.z=.10;return m;}
+    // Since 25 Oct 2026 the porches are open arcades (porches.js): the windows and doors of the
+    // outer elevation stand in the inner C/G wall, whose groups are named 'Inner wall …'. Only the
+    // 9–10 side-bay gables keep windows on the outer line.
+    const sideBays=all.filter(o=>(o.name.startsWith('Outer veranda')&&o.name.endsWith(' 9–10'))||o.name.startsWith('Inner wall '));
+    let paneZ=.10;
+    function pane(shape,parent,material,name){const m=mesh(new T.ShapeGeometry(shape,24),material,parent,name);m.position.z=paneZ;return m;}
     // A pane whose UVs run 0–1 across the opening, for the artwork.
     let fanIndex=0;
     function fanPane(shape,parent,material,name,x,bottom,width,height){
@@ -368,34 +376,34 @@
       panels(carving,leaf.geometry.parameters.width,leaf.geometry.parameters.height);
     }
     for(const bay of sideBays) {
-      const door=/ (4–5|8–9|10–11)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
+      const inner=bay.name.startsWith('Inner wall '),door=inner&&/ (4–5|8–9)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
+      // Joinery planes: the inner wall is 0.22 m thick (porch face at +0.11), the outer 0.30 m.
+      paneZ=inner?0:.10;const jz=inner?.07:.13,hz=inner?.07:.10;
       if(door) {
-        fanPane(arch(0,3.04,2.25,3.101,1.14),bay,fanMaterial(fanIndex++,{width:2.25,bottom:3.04,spring:3.101,rise:1.14,sectors:8}),'Outer door fixed fanlight',0,3.04,2.25,1.201);
-        box(2.25,.11,.16,0,3.04,.13,mat.wood,bay,'Outer doorway timber transom');
-        for(let k=1;k<8;k++){const a=k*Math.PI/8;rod([0,3.08,.13],[Math.cos(a)*1.06,3.101+Math.sin(a)*1.07,.13],.022,mat.metal,bay,'Fanlight radial bronze bar');}
+        // Inner doorway: its fixed fanlight is the bundle's (coloured above); leaves open to the porch.
         for(const state of ['closed','open']) {
           const frame=new T.Group();frame.position.copy(bay.position);frame.rotation.copy(bay.rotation);doorGroups[state].add(frame);
           for(const sign of [-1,1]) {
-            const hinge=new T.Group();hinge.position.set(sign*1.125,-.32,.10);hinge.rotation.y=state==='closed'?0:sign*1.45;frame.add(hinge);
+            const hinge=new T.Group();hinge.position.set(sign*1.125,0,hz);hinge.rotation.y=state==='closed'?0:sign*1.45;frame.add(hinge);
             const leaf=new T.Group();leaf.position.x=-sign*.551;hinge.add(leaf);
-            box(1.102,3.305,.095,0,1.6525,0,mat.wood,leaf,'Exterior timber door leaf');panels(leaf,1.102,3.305);
-            rod([-sign*.40,1.3,.12],[-sign*.40,1.65,.12],.025,mat.metal,leaf,'Bronze door pull');
+            box(1.102,2.951,.095,0,1.4755,0,mat.wood,leaf,'Exterior timber door leaf');panels(leaf,1.102,2.951);
+            rod([-sign*.40,1.1,.12],[-sign*.40,1.45,.12],.025,mat.metal,leaf,'Bronze door pull');
           }
         }
       } else {
         // Half-round glazed fanlight over a timber transom, like the doors;
         // the shutter pair below swings out with the doors.
-        for(const x of wing?[-2.4,2.4]:[-1,1]) {
+        for(const x of wing?[-2.4,2.4]:inner?[-1.015,1.015]:[-1,1]) {
           const body=new T.Shape();body.moveTo(x-.5,.85);body.lineTo(x+.5,.85);body.lineTo(x+.5,3.0);body.lineTo(x-.5,3.0);body.closePath();
-          const clearPane=pane(body,bay,mat.glass,'Outer window clear glass body');clearPane.castShadow=false;
+          const clearPane=pane(body,bay,mat.glass,inner?'Inner window clear glass body':'Outer window clear glass body');clearPane.castShadow=false;
           fanPane(arch(x,3.0,1,3.101,.507),bay,fanMaterial(fanIndex++,{width:1,bottom:3.0,spring:3.101,rise:.507,sectors:6}),'Window stained-glass fanlight',x,3.0,1,.608);
-          box(1,.085,.15,x,3.0,.13,mat.wood,bay,'Window timber transom');
-          for(let k=1;k<6;k++){const a=k*Math.PI/6;rod([x,3.04,.13],[x+Math.cos(a)*.47,3.101+Math.sin(a)*.475,.13],.016,mat.metal,bay,'Fanlight radial bronze bar');}
-          rod([x-.49,3.101,.13],[x+.49,3.101,.13],.012,mat.metal,bay,'Fanlight spring bar');
+          box(1,.085,.15,x,3.0,jz,mat.wood,bay,'Window timber transom');
+          for(let k=1;k<6;k++){const a=k*Math.PI/6;rod([x,3.04,jz],[x+Math.cos(a)*.47,3.101+Math.sin(a)*.475,jz],.016,mat.metal,bay,'Fanlight radial bronze bar');}
+          rod([x-.49,3.101,jz],[x+.49,3.101,jz],.012,mat.metal,bay,'Fanlight spring bar');
           for(const state of ['closed','open']) {
             const frame=new T.Group();frame.position.copy(bay.position);frame.rotation.copy(bay.rotation);doorGroups[state].add(frame);
             for(const sign of [-1,1]) {
-              const hinge=new T.Group();hinge.position.set(x+sign*.5,.85,.10);hinge.rotation.y=state==='closed'?0:sign*1.5;frame.add(hinge);
+              const hinge=new T.Group();hinge.position.set(x+sign*.5,.85,hz);hinge.rotation.y=state==='closed'?0:sign*1.5;frame.add(hinge);
               const leaf=new T.Group();leaf.position.x=-sign*.25;hinge.add(leaf);
               box(.49,2.1,.06,0,1.05,0,mat.wood,leaf,'Window timber shutter leaf');
               for(const face of [-1,1]){
@@ -651,6 +659,8 @@
     }
     // The central facade above the cornice follows the CAD file of 23 Oct 2026 (facade.js).
     window.CHURCH_FACADE?.prepare(ctx);
+    // Open side porches of the parish priest's decision, 25 Oct 2026 (porches.js).
+    window.CHURCH_PORCHES?.prepare(ctx);
     // Project maps in metres before the legacy renderer merges material batches.
     const p=new T.Vector3(),normal=new T.Vector3(),normalMatrix=new T.Matrix3();
     building.updateMatrixWorld(true);scene.updateMatrixWorld(true);

@@ -21,7 +21,7 @@ Reviewed on 5 October 2026 against the current 3D geometry. Base design version 
 | Adjacent front entrances | 2 | 0 | 0 | — | — | — |
 | Service-room entrances, B and H | 2 | 2 | 4 | DB-1 / L3 | 2.05 m | 400 lm / 2700 K / about 4 W |
 
-Exterior side-door centres are X = 16.725, 34.725 and 46.425 m on both sides. Each pair sits ±1.425 m from its door centre, on the outer wall at Z = ±10.550 m. The central front pair sits at X = 2.200 m, Z = ±2.400 m. Service-door pairs sit ±0.650 m from X = 49.600 m, on Z = ±3.700 m.
+Exterior side-door centres are X = 16.725 and 34.725 m on both sides. Each pair sits ±1.425 m from its door centre, on the porch face of the inner C/G wall at Z = ±7.520 m. (Before 25 October 2026 the pairs sat on the outer porch wall at Z = ±10.550 m and a third pair served a door at X = 46.425 m; the parish priest's meeting removed the outer wall and that door, see [parish meeting](../engineering/parish-meeting-2026-10-25.md).) The central front pair sits at X = 2.200 m, Z = ±2.400 m. Service-door pairs sit ±0.650 m from X = 49.600 m, on Z = ±3.700 m.
 
 The front pair replaces the former internal main-door sconces. The four old tower-portal lanterns are removed so the middle front door alone has a decorative pair. The 18 veranda pendants and path/stage lights remain functional lighting.
 

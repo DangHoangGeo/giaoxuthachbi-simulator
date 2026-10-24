@@ -13533,6 +13533,11 @@
         ],
         [
           9.975,
+          4.717598931983812,
+          -8.85
+        ],
+        [
+          9.975,
           4.55,
           -8.85
         ]
@@ -13567,7 +13572,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -13612,6 +13617,11 @@
         ],
         [
           14.475,
+          4.717598931983812,
+          -8.85
+        ],
+        [
+          14.475,
           4.55,
           -8.85
         ]
@@ -13646,7 +13656,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -13691,6 +13701,11 @@
         ],
         [
           18.975,
+          4.717598931983812,
+          -8.85
+        ],
+        [
+          18.975,
           4.55,
           -8.85
         ]
@@ -13725,7 +13740,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -13770,6 +13785,11 @@
         ],
         [
           23.475,
+          4.717598931983812,
+          -8.85
+        ],
+        [
+          23.475,
           4.55,
           -8.85
         ]
@@ -13804,7 +13824,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -13849,6 +13869,11 @@
         ],
         [
           27.975,
+          4.717598931983812,
+          -8.85
+        ],
+        [
+          27.975,
           4.55,
           -8.85
         ]
@@ -13883,7 +13908,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -13928,6 +13953,11 @@
         ],
         [
           32.475,
+          4.717598931983812,
+          -8.85
+        ],
+        [
+          32.475,
           4.55,
           -8.85
         ]
@@ -13962,7 +13992,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -13982,31 +14012,31 @@
       ],
       "trunkId": "trunk:LC1:L4:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 35.31413031117919,
+      "upstreamLength": 35.91413031117919,
       "homeRun": false,
       "points": [
         [
-          36.975,
+          36.375,
           5.924,
           -7.36
         ],
         [
-          36.975,
+          36.375,
           7.04,
           -7.36
         ],
         [
-          36.975,
+          36.375,
           6.932561064262868,
           -7.438421052631579
         ],
         [
-          36.975,
+          36.375,
           6.618660220994475,
           -8.85
         ],
         [
-          36.975,
+          36.375,
           4.55,
           -8.85
         ]
@@ -14017,22 +14047,22 @@
         {
           "points": [
             [
-              36.975,
+              36.375,
               5.924,
               -7.36
             ],
             [
-              36.975,
+              36.375,
               7.04,
               -7.36
             ],
             [
-              36.975,
+              36.375,
               6.932561064262868,
               -7.438421052631579
             ],
             [
-              36.975,
+              36.375,
               6.618660220994475,
               -8.85
             ]
@@ -14061,31 +14091,31 @@
       ],
       "trunkId": "trunk:LC1:L4:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 24.166000000000004,
+      "upstreamLength": 23.566000000000003,
       "homeRun": false,
       "points": [
         [
-          44.175,
+          44.775,
           5.924,
           -7.36
         ],
         [
-          44.175,
+          44.775,
           7.04,
           -7.36
         ],
         [
-          44.175,
+          44.775,
           6.932561064262868,
           -7.438421052631579
         ],
         [
-          44.175,
+          44.775,
           6.618660220994475,
           -8.85
         ],
         [
-          44.175,
+          44.775,
           4.55,
           -8.85
         ]
@@ -14096,22 +14126,22 @@
         {
           "points": [
             [
-              44.175,
+              44.775,
               5.924,
               -7.36
             ],
             [
-              44.175,
+              44.775,
               7.04,
               -7.36
             ],
             [
-              44.175,
+              44.775,
               6.932561064262868,
               -7.438421052631579
             ],
             [
-              44.175,
+              44.775,
               6.618660220994475,
               -8.85
             ]
@@ -14165,6 +14195,11 @@
         ],
         [
           48.675,
+          4.717598931983812,
+          -8.85
+        ],
+        [
+          48.675,
           4.55,
           -8.85
         ]
@@ -14199,7 +14234,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -14463,6 +14498,11 @@
         ],
         [
           9.975,
+          4.717598931983812,
+          8.85
+        ],
+        [
+          9.975,
           4.55,
           8.85
         ]
@@ -14497,7 +14537,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -14542,6 +14582,11 @@
         ],
         [
           14.475,
+          4.717598931983812,
+          8.85
+        ],
+        [
+          14.475,
           4.55,
           8.85
         ]
@@ -14576,7 +14621,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -14621,6 +14666,11 @@
         ],
         [
           18.975,
+          4.717598931983812,
+          8.85
+        ],
+        [
+          18.975,
           4.55,
           8.85
         ]
@@ -14655,7 +14705,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -14700,6 +14750,11 @@
         ],
         [
           23.475,
+          4.717598931983812,
+          8.85
+        ],
+        [
+          23.475,
           4.55,
           8.85
         ]
@@ -14734,7 +14789,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -14779,6 +14834,11 @@
         ],
         [
           27.975,
+          4.717598931983812,
+          8.85
+        ],
+        [
+          27.975,
           4.55,
           8.85
         ]
@@ -14813,7 +14873,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -14858,6 +14918,11 @@
         ],
         [
           32.475,
+          4.717598931983812,
+          8.85
+        ],
+        [
+          32.475,
           4.55,
           8.85
         ]
@@ -14892,7 +14957,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -14912,31 +14977,31 @@
       ],
       "trunkId": "trunk:LC1:L4:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 41.91413031117919,
+      "upstreamLength": 42.514130311179194,
       "homeRun": false,
       "points": [
         [
-          36.975,
+          36.375,
           5.924,
           7.36
         ],
         [
-          36.975,
+          36.375,
           7.04,
           7.36
         ],
         [
-          36.975,
+          36.375,
           6.932561064262868,
           7.438421052631579
         ],
         [
-          36.975,
+          36.375,
           6.618660220994475,
           8.85
         ],
         [
-          36.975,
+          36.375,
           4.55,
           8.85
         ]
@@ -14947,22 +15012,22 @@
         {
           "points": [
             [
-              36.975,
+              36.375,
               5.924,
               7.36
             ],
             [
-              36.975,
+              36.375,
               7.04,
               7.36
             ],
             [
-              36.975,
+              36.375,
               6.932561064262868,
               7.438421052631579
             ],
             [
-              36.975,
+              36.375,
               6.618660220994475,
               8.85
             ]
@@ -14991,31 +15056,31 @@
       ],
       "trunkId": "trunk:LC1:L4:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 30.766000000000005,
+      "upstreamLength": 30.166000000000004,
       "homeRun": false,
       "points": [
         [
-          44.175,
+          44.775,
           5.924,
           7.36
         ],
         [
-          44.175,
+          44.775,
           7.04,
           7.36
         ],
         [
-          44.175,
+          44.775,
           6.932561064262868,
           7.438421052631579
         ],
         [
-          44.175,
+          44.775,
           6.618660220994475,
           8.85
         ],
         [
-          44.175,
+          44.775,
           4.55,
           8.85
         ]
@@ -15026,22 +15091,22 @@
         {
           "points": [
             [
-              44.175,
+              44.775,
               5.924,
               7.36
             ],
             [
-              44.175,
+              44.775,
               7.04,
               7.36
             ],
             [
-              44.175,
+              44.775,
               6.932561064262868,
               7.438421052631579
             ],
             [
-              44.175,
+              44.775,
               6.618660220994475,
               8.85
             ]
@@ -15095,6 +15160,11 @@
         ],
         [
           48.675,
+          4.717598931983812,
+          8.85
+        ],
+        [
+          48.675,
           4.55,
           8.85
         ]
@@ -15129,7 +15199,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.763734978599281,
+      "length": 4.763734978599282,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -15687,8 +15757,6 @@
         "L140",
         "L141",
         "L142",
-        "L143",
-        "L144",
         "L184",
         "L185",
         "L186",
@@ -15918,61 +15986,19 @@
         ],
         [
           15.3,
-          7.04,
+          2.6,
           -7.36
         ],
         [
           15.3,
-          6.932586272843179,
-          -7.438307692307693
-        ],
-        [
-          15.3,
-          6.270864640883978,
-          -10.414
-        ],
-        [
-          15.3,
           2.6,
-          -10.414
-        ],
-        [
-          15.3,
-          2.6,
-          -10.55
+          -7.52
         ]
       ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              15.3,
-              5.948,
-              -7.36
-            ],
-            [
-              15.3,
-              7.04,
-              -7.36
-            ],
-            [
-              15.3,
-              6.932586272843179,
-              -7.438307692307693
-            ],
-            [
-              15.3,
-              6.270864640883978,
-              -10.414
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 8.080172388861076,
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 3.5079999999999996,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -16002,61 +16028,19 @@
         ],
         [
           18.150000000000002,
-          7.04,
+          2.6,
           -7.36
         ],
         [
           18.150000000000002,
-          6.932586272843179,
-          -7.438307692307693
-        ],
-        [
-          18.150000000000002,
-          6.270864640883978,
-          -10.414
-        ],
-        [
-          18.150000000000002,
           2.6,
-          -10.414
-        ],
-        [
-          18.150000000000002,
-          2.6,
-          -10.55
+          -7.52
         ]
       ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              18.150000000000002,
-              5.948,
-              -7.36
-            ],
-            [
-              18.150000000000002,
-              7.04,
-              -7.36
-            ],
-            [
-              18.150000000000002,
-              6.932586272843179,
-              -7.438307692307693
-            ],
-            [
-              18.150000000000002,
-              6.270864640883978,
-              -10.414
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 8.080172388861076,
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 3.5079999999999996,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -16086,61 +16070,19 @@
         ],
         [
           33.300000000000004,
-          7.04,
+          2.6,
           -7.36
         ],
         [
           33.300000000000004,
-          6.932586272843179,
-          -7.438307692307693
-        ],
-        [
-          33.300000000000004,
-          6.270864640883978,
-          -10.414
-        ],
-        [
-          33.300000000000004,
           2.6,
-          -10.414
-        ],
-        [
-          33.300000000000004,
-          2.6,
-          -10.55
+          -7.52
         ]
       ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              33.300000000000004,
-              5.948,
-              -7.36
-            ],
-            [
-              33.300000000000004,
-              7.04,
-              -7.36
-            ],
-            [
-              33.300000000000004,
-              6.932586272843179,
-              -7.438307692307693
-            ],
-            [
-              33.300000000000004,
-              6.270864640883978,
-              -10.414
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 8.080172388861076,
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 3.5079999999999996,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -16170,229 +16112,19 @@
         ],
         [
           36.15,
-          7.04,
+          2.6,
           -7.36
         ],
         [
           36.15,
-          6.932586272843179,
-          -7.438307692307693
-        ],
-        [
-          36.15,
-          6.270864640883978,
-          -10.414
-        ],
-        [
-          36.15,
           2.6,
-          -10.414
-        ],
-        [
-          36.15,
-          2.6,
-          -10.55
+          -7.52
         ]
       ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              36.15,
-              5.948,
-              -7.36
-            ],
-            [
-              36.15,
-              7.04,
-              -7.36
-            ],
-            [
-              36.15,
-              6.932586272843179,
-              -7.438307692307693
-            ],
-            [
-              36.15,
-              6.270864640883978,
-              -10.414
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 8.080172388861076,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L5:light:-1:L143",
-      "name": "L5 → Side door lantern · B · 46.425 · front",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L5",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L143"
-      ],
-      "trunkId": "trunk:LC1:L5:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 23.365000000000002,
-      "homeRun": false,
-      "points": [
-        [
-          45,
-          5.948,
-          -7.36
-        ],
-        [
-          45,
-          7.04,
-          -7.36
-        ],
-        [
-          45,
-          6.932586272843179,
-          -7.438307692307693
-        ],
-        [
-          45,
-          6.270864640883978,
-          -10.414
-        ],
-        [
-          45,
-          2.6,
-          -10.414
-        ],
-        [
-          45,
-          2.6,
-          -10.55
-        ]
-      ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              45,
-              5.948,
-              -7.36
-            ],
-            [
-              45,
-              7.04,
-              -7.36
-            ],
-            [
-              45,
-              6.932586272843179,
-              -7.438307692307693
-            ],
-            [
-              45,
-              6.270864640883978,
-              -10.414
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 8.080172388861076,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L5:light:-1:L144",
-      "name": "L5 → Side door lantern · B · 46.425 · rear",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L5",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L144"
-      ],
-      "trunkId": "trunk:LC1:L5:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 20.515000000000008,
-      "homeRun": false,
-      "points": [
-        [
-          47.849999999999994,
-          5.948,
-          -7.36
-        ],
-        [
-          47.849999999999994,
-          7.04,
-          -7.36
-        ],
-        [
-          47.849999999999994,
-          6.932586272843179,
-          -7.438307692307693
-        ],
-        [
-          47.849999999999994,
-          6.270864640883978,
-          -10.414
-        ],
-        [
-          47.849999999999994,
-          2.6,
-          -10.414
-        ],
-        [
-          47.849999999999994,
-          2.6,
-          -10.55
-        ]
-      ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              47.849999999999994,
-              5.948,
-              -7.36
-            ],
-            [
-              47.849999999999994,
-              7.04,
-              -7.36
-            ],
-            [
-              47.849999999999994,
-              6.932586272843179,
-              -7.438307692307693
-            ],
-            [
-              47.849999999999994,
-              6.270864640883978,
-              -10.414
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 8.080172388861076,
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 3.5079999999999996,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -16775,8 +16507,6 @@
         "L146",
         "L147",
         "L148",
-        "L149",
-        "L150",
         "L191",
         "L192",
         "L193",
@@ -17006,61 +16736,19 @@
         ],
         [
           15.3,
-          7.04,
+          2.6,
           7.36
         ],
         [
           15.3,
-          6.932586272843179,
-          7.438307692307693
-        ],
-        [
-          15.3,
-          6.270864640883978,
-          10.414
-        ],
-        [
-          15.3,
           2.6,
-          10.414
-        ],
-        [
-          15.3,
-          2.6,
-          10.55
+          7.52
         ]
       ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              15.3,
-              5.948,
-              7.36
-            ],
-            [
-              15.3,
-              7.04,
-              7.36
-            ],
-            [
-              15.3,
-              6.932586272843179,
-              7.438307692307693
-            ],
-            [
-              15.3,
-              6.270864640883978,
-              10.414
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 8.080172388861076,
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 3.5079999999999996,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -17090,61 +16778,19 @@
         ],
         [
           18.150000000000002,
-          7.04,
+          2.6,
           7.36
         ],
         [
           18.150000000000002,
-          6.932586272843179,
-          7.438307692307693
-        ],
-        [
-          18.150000000000002,
-          6.270864640883978,
-          10.414
-        ],
-        [
-          18.150000000000002,
           2.6,
-          10.414
-        ],
-        [
-          18.150000000000002,
-          2.6,
-          10.55
+          7.52
         ]
       ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              18.150000000000002,
-              5.948,
-              7.36
-            ],
-            [
-              18.150000000000002,
-              7.04,
-              7.36
-            ],
-            [
-              18.150000000000002,
-              6.932586272843179,
-              7.438307692307693
-            ],
-            [
-              18.150000000000002,
-              6.270864640883978,
-              10.414
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 8.080172388861076,
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 3.5079999999999996,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -17174,61 +16820,19 @@
         ],
         [
           33.300000000000004,
-          7.04,
+          2.6,
           7.36
         ],
         [
           33.300000000000004,
-          6.932586272843179,
-          7.438307692307693
-        ],
-        [
-          33.300000000000004,
-          6.270864640883978,
-          10.414
-        ],
-        [
-          33.300000000000004,
           2.6,
-          10.414
-        ],
-        [
-          33.300000000000004,
-          2.6,
-          10.55
+          7.52
         ]
       ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              33.300000000000004,
-              5.948,
-              7.36
-            ],
-            [
-              33.300000000000004,
-              7.04,
-              7.36
-            ],
-            [
-              33.300000000000004,
-              6.932586272843179,
-              7.438307692307693
-            ],
-            [
-              33.300000000000004,
-              6.270864640883978,
-              10.414
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 8.080172388861076,
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 3.5079999999999996,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -17258,229 +16862,19 @@
         ],
         [
           36.15,
-          7.04,
+          2.6,
           7.36
         ],
         [
           36.15,
-          6.932586272843179,
-          7.438307692307693
-        ],
-        [
-          36.15,
-          6.270864640883978,
-          10.414
-        ],
-        [
-          36.15,
           2.6,
-          10.414
-        ],
-        [
-          36.15,
-          2.6,
-          10.55
+          7.52
         ]
       ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              36.15,
-              5.948,
-              7.36
-            ],
-            [
-              36.15,
-              7.04,
-              7.36
-            ],
-            [
-              36.15,
-              6.932586272843179,
-              7.438307692307693
-            ],
-            [
-              36.15,
-              6.270864640883978,
-              10.414
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 8.080172388861076,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L5:light:1:L149",
-      "name": "L5 → Side door lantern · H · 46.425 · front",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L5",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L149"
-      ],
-      "trunkId": "trunk:LC1:L5:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 29.965000000000003,
-      "homeRun": false,
-      "points": [
-        [
-          45,
-          5.948,
-          7.36
-        ],
-        [
-          45,
-          7.04,
-          7.36
-        ],
-        [
-          45,
-          6.932586272843179,
-          7.438307692307693
-        ],
-        [
-          45,
-          6.270864640883978,
-          10.414
-        ],
-        [
-          45,
-          2.6,
-          10.414
-        ],
-        [
-          45,
-          2.6,
-          10.55
-        ]
-      ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              45,
-              5.948,
-              7.36
-            ],
-            [
-              45,
-              7.04,
-              7.36
-            ],
-            [
-              45,
-              6.932586272843179,
-              7.438307692307693
-            ],
-            [
-              45,
-              6.270864640883978,
-              10.414
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 8.080172388861076,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L5:light:1:L150",
-      "name": "L5 → Side door lantern · H · 46.425 · rear",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L5",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L150"
-      ],
-      "trunkId": "trunk:LC1:L5:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 27.11500000000001,
-      "homeRun": false,
-      "points": [
-        [
-          47.849999999999994,
-          5.948,
-          7.36
-        ],
-        [
-          47.849999999999994,
-          7.04,
-          7.36
-        ],
-        [
-          47.849999999999994,
-          6.932586272843179,
-          7.438307692307693
-        ],
-        [
-          47.849999999999994,
-          6.270864640883978,
-          10.414
-        ],
-        [
-          47.849999999999994,
-          2.6,
-          10.414
-        ],
-        [
-          47.849999999999994,
-          2.6,
-          10.55
-        ]
-      ],
-      "method": "outer-wall",
-      "installation": "Covered roof-soffit crossing into outer arcade / wing-gable wall, then concealed pier drop. No exposed crossing at equipment height.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              47.849999999999994,
-              5.948,
-              7.36
-            ],
-            [
-              47.849999999999994,
-              7.04,
-              7.36
-            ],
-            [
-              47.849999999999994,
-              6.932586272843179,
-              7.438307692307693
-            ],
-            [
-              47.849999999999994,
-              6.270864640883978,
-              10.414
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 8.080172388861076,
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "coverPaths": [],
+      "length": 3.5079999999999996,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36695,7 +36089,7 @@
       "specs": "2000 lm · 2700 K",
       "hiddenAlternative": false,
       "position": [
-        36.975,
+        36.375,
         4.55,
         -8.85
       ],
@@ -36720,7 +36114,7 @@
       "specs": "2000 lm · 2700 K",
       "hiddenAlternative": false,
       "position": [
-        44.175,
+        44.775,
         4.55,
         -8.85
       ],
@@ -36920,7 +36314,7 @@
       "specs": "2000 lm · 2700 K",
       "hiddenAlternative": false,
       "position": [
-        36.975,
+        36.375,
         4.55,
         8.85
       ],
@@ -36945,7 +36339,7 @@
       "specs": "2000 lm · 2700 K",
       "hiddenAlternative": false,
       "position": [
-        44.175,
+        44.775,
         4.55,
         8.85
       ],
@@ -37047,7 +36441,7 @@
       "position": [
         15.3,
         2.6,
-        -10.55
+        -7.52
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -37072,7 +36466,7 @@
       "position": [
         18.150000000000002,
         2.6,
-        -10.55
+        -7.52
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -37097,7 +36491,7 @@
       "position": [
         33.300000000000004,
         2.6,
-        -10.55
+        -7.52
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -37122,57 +36516,7 @@
       "position": [
         36.15,
         2.6,
-        -10.55
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L143",
-      "name": "Side door lantern · B · 46.425 · front",
-      "type": "wallLantern",
-      "product": "Wall lantern",
-      "circuit": "L5",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.4039230343326926,
-        0.4400000125169754,
-        0.23999999463558197
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "900 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        45,
-        2.6,
-        -10.55
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L144",
-      "name": "Side door lantern · B · 46.425 · rear",
-      "type": "wallLantern",
-      "product": "Wall lantern",
-      "circuit": "L5",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.4039230343326926,
-        0.4400000125169754,
-        0.23999999463558197
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "900 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        47.849999999999994,
-        2.6,
-        -10.55
+        -7.52
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -37197,7 +36541,7 @@
       "position": [
         15.3,
         2.6,
-        10.55
+        7.52
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -37222,7 +36566,7 @@
       "position": [
         18.150000000000002,
         2.6,
-        10.55
+        7.52
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -37247,7 +36591,7 @@
       "position": [
         33.300000000000004,
         2.6,
-        10.55
+        7.52
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -37272,57 +36616,7 @@
       "position": [
         36.15,
         2.6,
-        10.55
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L149",
-      "name": "Side door lantern · H · 46.425 · front",
-      "type": "wallLantern",
-      "product": "Wall lantern",
-      "circuit": "L5",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.4039230343326926,
-        0.4400000125169754,
-        0.23999999463558197
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "900 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        45,
-        2.6,
-        10.55
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L150",
-      "name": "Side door lantern · H · 46.425 · rear",
-      "type": "wallLantern",
-      "product": "Wall lantern",
-      "circuit": "L5",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.4039230343326926,
-        0.4400000125169754,
-        0.23999999463558197
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "900 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        47.849999999999994,
-        2.6,
-        10.55
+        7.52
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -42433,7 +41727,7 @@
       "circuit": "L5",
       "type": "wallLantern",
       "product": "Wall lantern",
-      "quantity": 12,
+      "quantity": 8,
       "modelSize": [
         0.4039230343326926,
         0.4400000125169754,
@@ -42446,14 +41740,10 @@
         "L140",
         "L141",
         "L142",
-        "L143",
-        "L144",
         "L145",
         "L146",
         "L147",
-        "L148",
-        "L149",
-        "L150"
+        "L148"
       ]
     },
     {

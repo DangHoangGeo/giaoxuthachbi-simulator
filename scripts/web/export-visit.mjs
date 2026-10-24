@@ -26,6 +26,7 @@ const files = [
 	"carving.js",
 	"sanctuary.js",
 	"facade.js",
+	"porches.js",
 	"realism.js",
 	"planning.js",
 	"bundle.js",

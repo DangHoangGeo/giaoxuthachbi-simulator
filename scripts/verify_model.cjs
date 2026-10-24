@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','sanctuary.js', 'facade.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','sanctuary.js', 'facade.js', 'porches.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -45,20 +45,42 @@ const bays=nodes.filter(o=>o.name.startsWith('Outer veranda'));
 assert.equal(bays.length,20);
 for(const sign of [-1,1]) {
   const row=bays.filter(b=>Math.sign(b.position.z)===sign).sort((a,b)=>a.position.x-b.position.x);
-  assert.equal(row.map(b=>b.name.endsWith(' 9–10')?'P':/ (4–5|8–9|10–11)$/.test(b.name)?'D':'W').join(','),'W,W,D,W,W,W,D,P,D,W');
+  assert.equal(row.map(b=>b.name.endsWith(' 9–10')?'P':/ (4–5|8–9)$/.test(b.name)?'D':'W').join(','),'W,W,D,W,W,W,D,P,W,W');
+}
+// Open porches, parish priest 25 Oct 2026 (porches.js): no outer wall below the cornice outside
+// the 9–10 side bays, a column on every B/H axis of each porch run, a pointed arch in every bay,
+// a guard except where the outside stairs land, a cast slab with RC beams, and the side bays
+// closed to the porches.
+{
+  const P=sandbox.window.CHURCH_PORCHES,st=P.stats;
+  for(const b of bays.filter(b=>!b.name.endsWith(' 9–10')))b.traverse(o=>{if(o.isMesh)assert(bounds(o).min.y>=P.spec.entablature-.01,'Nothing of the outer porch wall stays below the cornice: '+o.name);});
+  assert.equal(st.columns,22,'11 porch columns per side (axes 2′–9 and 10–12)');assert.equal(st.arches,18,'9 porch arches per side');
+  assert.equal(st.openBays,6,'stair landings 4–5, 8–9 and 10–11 stay open');assert.equal(st.guardedBays,12,'guard in the other bays');
+  assert.equal(st.beams,14,'cross arch C–B / G–H on axes 3–8 and 11 each side');
+  const cross=bounds(nodes.find(o=>o.name.startsWith('Porch cross arch')));assert(cross.max.y<P.tileY(7.47)&&Math.abs(cross.min.z)>=7.6&&Math.abs(cross.max.z)<=10.25,'cross arches span from the C/G wall column to the arcade column');
+  for(const n of ['C','G'])assert.equal(nodes.filter(o=>o.name.startsWith(`Inner wall ${n} `)).length,9,'inner wall bays named '+n);
+  const guard=nodes.filter(o=>o.name==='Porch guard top rail');assert(guard.length===1&&near(bounds(guard[0]).max.y-P.spec.floor,1.08,'Guard 1.08 m above the porch floor')!==false);
+  const slab=nodes.find(o=>o.name.startsWith('Porch roof slab'));const sb=bounds(slab);
+  assert(sb.max.y<P.tileY(7.47)-.02&&sb.min.y>P.tileY(10.25)-.2,'Slab sits just under the porch tiles');
+  const ends=nodes.find(o=>o.name.startsWith('Side-bay end wall to the porch'));const eb=bounds(ends);
+  near(eb.min.x,data.longitudinal['9']-.16,'End wall on axis 9');near(eb.max.x,data.longitudinal['10']+.16,'End wall on axis 10');
+  assert(eb.min.y<=-.319&&Math.abs(eb.max.z)>10.2,'End walls close the side bays from floor to slab and out to the arcade');
+  const rib=bounds(nodes.find(o=>o.name.startsWith('Side-bay arch rib')));
+  assert(rib.max.y>8.5&&rib.max.y<8.85&&Math.abs(rib.max.z)<7.6,'Detail-47 arch on the C/G axes of the side bays');
+  for(const sign of [-1,1]){assert.equal(realism.walkAllowed(46.425,sign*7.36),false,'No doorway in bay 10–11');for(const x of [36.975,44.175])assert.equal(realism.walkAllowed(x,sign*8.8),false,'Side bay closed to the porch');}
 }
 assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
-assert.equal(nodes.filter(o=>o.name==='Outer door fixed fanlight').length,6);
+assert.equal(nodes.filter(o=>o.name==='Outer door fixed fanlight').length,0,'No outer porch doors (open arcade)');
 const clearBodies=nodes.filter(o=>/^(Inner|Outer) window clear glass body$/.test(o.name));
-assert.equal(clearBodies.filter(o=>o.name.startsWith('Inner')).length,12);
-assert.equal(clearBodies.filter(o=>o.name.startsWith('Outer')).length,28);
+assert.equal(clearBodies.filter(o=>o.name.startsWith('Inner')).length,28,'Paired windows in the inner wall of seven bays per side, incl. bay 10–11 (25 Oct 2026)');
+assert.equal(clearBodies.filter(o=>o.name.startsWith('Outer')).length,4,'Outer windows only in the 9–10 gables');
 assert(!nodes.some(o=>/^Proposed coloured glazing|^Stained-glass window/.test(o.name)),'Full-height decorative glazing must be removed');
 const innerHeads=nodes.filter(o=>o.name==='Inner window coloured oval');
-assert.equal(innerHeads.length,12);
-assert.equal(nodes.filter(o=>o.name==='Inner doorway coloured oval').length,6);
+assert.equal(innerHeads.length,0,'the single 2.25 m inner windows are replaced by paired windows');
+assert.equal(nodes.filter(o=>o.name==='Inner doorway coloured oval').length,4);
 assert.equal(nodes.filter(o=>o.name==='Entrance door coloured oval').length,3);
 const colouredHeads=nodes.filter(o=>/coloured oval$|fixed fanlight$|stained-glass fanlight$|rose-window infill$/.test(o.name));
-assert.equal(colouredHeads.length,102);
+assert.equal(colouredHeads.length,88);
 for(const o of innerHeads){o.geometry.computeBoundingBox();near(o.geometry.boundingBox.min.y,3.171,'Inner oval spring');near(o.geometry.boundingBox.max.y,4.311,'Inner oval crown');}
 for(const o of clearBodies){
   assert.equal(o.material,mat.glass);assert.equal(o.material.map,null);

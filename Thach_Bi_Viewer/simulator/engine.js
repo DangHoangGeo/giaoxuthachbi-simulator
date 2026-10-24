@@ -204,8 +204,13 @@
     if (x >= 5.2 && x <= 52.95 && az <= 7.25) return { y: liningY(z), kind: 'roof' };
     // 9–10 wings: gabled roof, underside 9.39 m at its ridge (x 40.56), falling ≈0.79 m per m.
     if (x >= 37.22 && x <= 43.9 && az <= 12.95) return { y: Math.max(6.8, 9.39 - 0.787 * Math.abs(x - 40.56)), kind: 'roof' };
-    // Verandas: tiled lean-to roof, ≈7.15 m at the inner wall falling to ≈6.45 m at the arcade.
-    if (x >= 5.2 && x <= 52.9 && az <= 10.45) return { y: 6.988 - 0.2225 * (az - 8.0), kind: 'roof' };
+    // Porches (porches.js, 25 Oct 2026): cast slab under the tiles, a cross arch C–B / G–H on
+    // every inner axis.
+    if (x >= 5.2 && x <= 52.9 && az <= 10.45) {
+      const P = window.CHURCH_PORCHES?.spec, slab = P ? P.slabUnderside(az) : 6.988 - 0.2225 * (az - 8.0);
+      const arch = P?.crossSoffit && P.beamAxes.some(k => Math.abs(x - (GEO.axes?.[k] ?? -99)) <= P.beam.width / 2 + 0.05);
+      return arch ? { y: P.crossSoffit(az), kind: 'beam' } : { y: slab, kind: 'roof' };
+    }
     return null;
   }
 
@@ -217,7 +222,8 @@
     for (const k of GEO.columnAxes) for (const s of [-1, 1]) GEO.columns.push({ key: k, x: AX[k], z: s * 3.6, r: 0.31, y0: 0, y1: 9.4 });
     // Inner C/G walls at the 14.500 m clear faces, with each bay's arched opening.
     const bays = [['2′', '3'], ['3', '4'], ['4', '5'], ['5', '6'], ['6', '7'], ['7', '8'], ['8', '9'], ['10', '11'], ['11', '12']];
-    const doorBays = new Set(['4–5', '8–9', '10–11']);
+    // Bay 10–11 has a window since 25 Oct 2026 (parish priest: no door from the sanctuary sides to the porches).
+    const doorBays = new Set(['4–5', '8–9']);
     for (const s of [-1, 1]) for (const [x0, x1] of [[5.475, 37.22], [43.9, 52.85]]) {
       const openings = bays.map(([a, b]) => {
         const c = (AX[a] + AX[b]) / 2, door = doorBays.has(`${a}–${b}`);
@@ -225,6 +231,8 @@
       }).filter(o => o.x1 > x0 && o.x0 < x1);
       GEO.walls.push({ z: s * 7.25, x0, x1, y0: -0.4, y1: 7.13, openings });
     }
+    // The 9–10 side bays are closed to the porches on axes 9 and 10 (porches.js, 25 Oct 2026).
+    for (const s of [-1, 1]) for (const x of [AX['9'], AX['10']]) GEO.walls.push({ x, z0: Math.min(s * 7.47, s * 10.234), z1: Math.max(s * 7.47, s * 10.234), y0: -0.4, y1: 7.1, openings: [] });
     // Entrance façade (plane inside the wall, inner face at x 2.65): solid apart from the main door and
     // the two side doors, all open in the model's default state.
     GEO.walls.push({ x: 2.35, z0: -7.25, z1: 7.25, y0: -0.4, y1: 12.5, openings: [
@@ -633,9 +641,8 @@
       plane(6.68, 2.5, 40.56, -0.32, s * 11.7, 'floor');
       wall(31.75, 7.13, 21.35, 3.565, s * 7.25, [0, 0, -s]);
       wall(8.95, 7.13, 48.37, 3.565, s * 7.25, [0, 0, -s]);
-      wall(47.7, 6.3, 29.05, 2.83, s * 10.3, [0, 0, -s]);
-      wall(47.7, 8.4, 29.05, 2.1, s * 10.55, [0, 0, s]);
-      plane(47.7, 3.05, 29.05, 6.0, s * 8.82, 'ceiling');
+      // The porch arcade has no wall since 25 Oct 2026: things fix to its columns and to the slab.
+      plane(47.7, 3.05, 29.05, 6.55, s * 8.82, 'ceiling');
     }
     // Inner faces of the lacquered sanctuary chamber walls.
     for (const w of GEO.sanctuary?.walls.filter(w => w.z) ?? []) {
