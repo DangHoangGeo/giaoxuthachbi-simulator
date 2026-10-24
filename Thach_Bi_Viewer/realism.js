@@ -661,6 +661,8 @@
     window.CHURCH_FACADE?.prepare(ctx);
     // Open side porches of the parish priest's decision, 25 Oct 2026 (porches.js).
     window.CHURCH_PORCHES?.prepare(ctx);
+    // Fourteen Stations of the Cross between the columns (stations.js, 25 Oct 2026).
+    window.CHURCH_STATIONS?.prepare(ctx);
     // Project maps in metres before the legacy renderer merges material batches.
     const p=new T.Vector3(),normal=new T.Vector3(),normalMatrix=new T.Matrix3();
     building.updateMatrixWorld(true);scene.updateMatrixWorld(true);

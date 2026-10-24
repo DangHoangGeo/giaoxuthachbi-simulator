@@ -160,9 +160,10 @@
     for (const k of ['4', '6', '8']) add({ type: 'chandelier8', name: `Chandelier · bay ${k}–${Number(k) + 1}`, circuit: 'LD', mount: 'pendant', pos: [A[k] + 2.25, NAVE_CHANDELIER_Y, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
     // Hung high enough that the lobed sanctuary frame and the reredos crown read below it from the nave.
     add({ type: 'chandelier12', name: 'Grand chandelier · crossing 9–10', circuit: 'LD', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.2, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
-    // Sconces on the C/G piers, facing the nave, and on the sanctuary piers.
+    // Sconces on the C/G piers, facing the nave, and on the sanctuary piers. Since 25 Oct 2026
+    // they sit at +5.00 m (was +4.60) to leave room for the lowered wall fans below them.
     for (const k of ['3', '4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) {
-      add({ type: 'sconce2', name: `Sconce · axis ${k} · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A[k], 4.6, s * 7.07], yaw: -s * 90, mountYaw: -s * 90 });
+      add({ type: 'sconce2', name: `Sconce · axis ${k} · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A[k], 5.0, s * 7.07], yaw: -s * 90, mountYaw: -s * 90 });
     }
     for (const s of [-1, 1]) add({ type: 'sconce2', name: `Sconce · sanctuary pier · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [chamber.sconceX, 4.3, s * chamber.face], yaw: -s * 90, mountYaw: -s * 90, lumens: 560 });
 
@@ -387,10 +388,13 @@
         note: 'ENGINEERING HOLD: two fans per wing above window openings, clear of central saints strip. Same catalog flow/power/noise; extended bracket proxy unverified. Air, noise, speech, mounting, concealment and maintenance remain held.' };
     };
     for (const sign of [-1, 1]) for (const index of [0, 1]) add(wingFan(sign, index));
+    // Parish priest, 25 Oct 2026: the nave wall fans hang lower, +4.10 m (was +5.55 m), just
+    // under the column sconces (+4.39 m) and above the wall speakers (+3.51 m).
+    const NAVE_FAN_Y = 4.10;
     // Preserve the original six numeric slots; append ten named IDs below.
     // Display visibility is separate from operation: full service keeps F2 off.
     for (const k of ['4', '6', '8']) for (const sign of [-1, 1]) {
-      add({ type: 'fanNaveWall', name: `Wall fan · axis ${k} · ${side(sign)}`, circuit: 'F2', mount: 'wall', pos: [A[k], 5.55, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
+      add({ type: 'fanNaveWall', name: `Wall fan · axis ${k} · ${side(sign)}`, circuit: 'F2', mount: 'wall', pos: [A[k], NAVE_FAN_Y, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
     }
     // Trial: two large circulators on the inside of the entrance wall, blowing
     // down the nave (F4, off). Compare the air map with them on and off. Each is
@@ -517,7 +521,7 @@
     }
     for (const k of ['2′', '3', '5', '7', '9']) for (const sign of [-1, 1]) {
       add({ id: `F-NAVE-${side(sign)}-${k === '2′' ? '2P' : k}`, type: 'fanNaveWall', name: `Wall fan · axis ${k} · ${side(sign)}`, circuit: 'F2', mount: 'wall',
-        pos: [A[k], 5.55, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
+        pos: [A[k], NAVE_FAN_Y, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
     }
     // Socket outlets, 9 October 2026 (owner request). One 16 A radial per side
     // from DB-1 serves that side's sanctuary and mid-nave points along the wall
@@ -550,6 +554,15 @@
     // one in the aedicule at +16.683. Subjects of the side figures, sizes, sculptor,
     // weights, fixings, slots, lamps and drivers are proposals: CONCEPT / ENGINEERING HOLD.
     for (const row of facadeNiches) nicheFittings(row).forEach(add);
+    // Parish priest, 25 Oct 2026: a candle light pair below each of the fourteen Stations of the
+    // Cross (stations.js), on the nave face of the C/G wall, on their own circuit LS. In the two
+    // door bays per side the exit sign stays centred between them.
+    const ST = window.CHURCH_STATIONS?.spec;
+    if (ST) for (let n = 1; n <= 14; n++) {
+      const { s, x } = ST.place(n, A);
+      for (const e of [-1, 1]) add({ id: `L-STATION-${n}-${e < 0 ? 'A' : 'B'}`, type: 'stationCandle', name: `Station candle · ${['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV'][n - 1]} · ${e < 0 ? 'front' : 'rear'}`,
+        circuit: 'LS', mount: 'wall', pos: [x + e * ST.candles.dx, ST.candles.y, s * (ST.face - 0.02)], yaw: -s * 90, mountYaw: -s * 90, on: true });
+    }
     return items.filter(it => ![...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id) && !parishRetiredNames.test(it.name));
   }
 
@@ -591,12 +604,26 @@
   // its ID, switching, dimmer, visibility and note; a retired one that is still untouched is
   // removed. An item the user moved, re-aimed or re-circuited stays as it is, a deleted item
   // stays deleted, and each new ID is added once. The revision changes each time the table grows.
-  const parishMeetingRevision = '2026-10-25-parish-meeting-2';
+  const parishMeetingRevision = '2026-10-25-parish-meeting-3';
   // Recommended items the meeting retires (their add() calls stay so later IDs keep their numbers).
   const parishRetiredNames = /^Side door lantern · [BH] · 46\.425 · /;
   // BEGIN parish-meeting table · generated by scripts/build_parish_migration.mjs from
   // docs/electrical-grid/equipment-layout.json at 015f9a8 and the current export. Do not edit by hand.
   const parishMeetingBefore = {
+    "L82": {"type":"sconce2","name":"Sconce · axis 3 · B","pos":[9.975,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L83": {"type":"sconce2","name":"Sconce · axis 3 · H","pos":[9.975,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L84": {"type":"sconce2","name":"Sconce · axis 4 · B","pos":[14.475,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L85": {"type":"sconce2","name":"Sconce · axis 4 · H","pos":[14.475,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L86": {"type":"sconce2","name":"Sconce · axis 5 · B","pos":[18.975,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L87": {"type":"sconce2","name":"Sconce · axis 5 · H","pos":[18.975,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L88": {"type":"sconce2","name":"Sconce · axis 6 · B","pos":[23.475,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L89": {"type":"sconce2","name":"Sconce · axis 6 · H","pos":[23.475,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L90": {"type":"sconce2","name":"Sconce · axis 7 · B","pos":[27.975,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L91": {"type":"sconce2","name":"Sconce · axis 7 · H","pos":[27.975,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L92": {"type":"sconce2","name":"Sconce · axis 8 · B","pos":[32.475,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L93": {"type":"sconce2","name":"Sconce · axis 8 · H","pos":[32.475,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L94": {"type":"sconce2","name":"Sconce · axis 9 · B","pos":[36.975,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L95": {"type":"sconce2","name":"Sconce · axis 9 · H","pos":[36.975,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
     "L115": {"type":"spot15","name":"Statue accent · B","pos":[36.975,6.655,-5.25],"yaw":-1.9614,"tilt":-19.2796,"mount":"pendant","circuit":"L3"},
     "L116": {"type":"projector36","name":"Shrine wash · B","pos":[36.975,6.655,-4.9],"yaw":-4.8304,"tilt":-19.0112,"mount":"pendant","circuit":"L3"},
     "L117": {"type":"spot15","name":"Statue accent · H","pos":[36.975,6.655,5.25],"yaw":1.9614,"tilt":-19.2796,"mount":"pendant","circuit":"L3"},
@@ -631,6 +658,12 @@
     "L148": {"type":"wallLantern","name":"Side door lantern · H · 34.725 · rear","pos":[36.15,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
     "L149": {"type":"wallLantern","name":"Side door lantern · H · 46.425 · front","pos":[45,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
     "L150": {"type":"wallLantern","name":"Side door lantern · H · 46.425 · rear","pos":[47.85,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "F244": {"type":"fanNaveWall","name":"Wall fan · axis 4 · B","pos":[14.475,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F245": {"type":"fanNaveWall","name":"Wall fan · axis 4 · H","pos":[14.475,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F246": {"type":"fanNaveWall","name":"Wall fan · axis 6 · B","pos":[23.475,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F247": {"type":"fanNaveWall","name":"Wall fan · axis 6 · H","pos":[23.475,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F248": {"type":"fanNaveWall","name":"Wall fan · axis 8 · B","pos":[32.475,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F249": {"type":"fanNaveWall","name":"Wall fan · axis 8 · H","pos":[32.475,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
     "S279": {"type":"pendantSpeaker","name":"Veranda fill · B · 12.2","pos":[12.225,3.9,-8.85],"yaw":0,"tilt":-90,"mount":"pendant","circuit":"A2"},
     "S280": {"type":"pendantSpeaker","name":"Veranda fill · B · 25.7","pos":[25.725,3.9,-8.85],"yaw":0,"tilt":-90,"mount":"pendant","circuit":"A2"},
     "S281": {"type":"pendantSpeaker","name":"Veranda fill · H · 12.2","pos":[12.225,3.9,8.85],"yaw":0,"tilt":-90,"mount":"pendant","circuit":"A2"},
@@ -649,8 +682,18 @@
     "D317": {"type":"lanternString","name":"Red lanterns · veranda H · bay 7–8","pos":[30.225,5.6,8.85],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1"},
     "D318": {"type":"lanternString","name":"Red lanterns · veranda B · bay 8–9","pos":[34.725,5.6,-8.85],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1"},
     "D319": {"type":"lanternString","name":"Red lanterns · veranda H · bay 8–9","pos":[34.725,5.6,8.85],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1"},
+    "F-NAVE-B-2P": {"type":"fanNaveWall","name":"Wall fan · axis 2′ · B","pos":[5.475,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-H-2P": {"type":"fanNaveWall","name":"Wall fan · axis 2′ · H","pos":[5.475,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-B-3": {"type":"fanNaveWall","name":"Wall fan · axis 3 · B","pos":[9.975,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-H-3": {"type":"fanNaveWall","name":"Wall fan · axis 3 · H","pos":[9.975,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-B-5": {"type":"fanNaveWall","name":"Wall fan · axis 5 · B","pos":[18.975,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-H-5": {"type":"fanNaveWall","name":"Wall fan · axis 5 · H","pos":[18.975,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-B-7": {"type":"fanNaveWall","name":"Wall fan · axis 7 · B","pos":[27.975,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-H-7": {"type":"fanNaveWall","name":"Wall fan · axis 7 · H","pos":[27.975,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-B-9": {"type":"fanNaveWall","name":"Wall fan · axis 9 · B","pos":[36.975,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-H-9": {"type":"fanNaveWall","name":"Wall fan · axis 9 · H","pos":[36.975,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
   };
-  const parishMeetingAdded = [];
+  const parishMeetingAdded = ["L-STATION-1-A","L-STATION-1-B","L-STATION-2-A","L-STATION-2-B","L-STATION-3-A","L-STATION-3-B","L-STATION-4-A","L-STATION-4-B","L-STATION-5-A","L-STATION-5-B","L-STATION-6-A","L-STATION-6-B","L-STATION-7-A","L-STATION-7-B","L-STATION-8-A","L-STATION-8-B","L-STATION-9-A","L-STATION-9-B","L-STATION-10-A","L-STATION-10-B","L-STATION-11-A","L-STATION-11-B","L-STATION-12-A","L-STATION-12-B","L-STATION-13-A","L-STATION-13-B","L-STATION-14-A","L-STATION-14-B"];
   // END parish-meeting table
   const untouched = (it, old) => it.type === old.type && (it.mount ?? '') === (old.mount ?? '') && (it.circuit ?? '') === (old.circuit ?? '')
     && near(it.pos, old.pos, 0.005) && Math.abs((it.yaw ?? 0) - (old.yaw ?? 0)) < 0.01 && Math.abs((it.tilt ?? 0) - (old.tilt ?? 0)) < 0.01;

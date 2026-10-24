@@ -726,6 +726,7 @@
     'P3 · Event power · tower B': 'P3 · Nguồn sự kiện · tháp B',
     'P4 · Event power · tower H': 'P4 · Nguồn sự kiện · tháp H',
     'L10 · Façade statues & candles': 'L10 · Tượng và nến mặt tiền',
+    'LS · Stations of the Cross candles': 'LS · Nến Đàng Thánh Giá',
     'V2 · Exhaust · wing gables': 'V2 · Quạt hút · đầu hồi cánh',
     'V3 · Exhaust · service room': 'V3 · Quạt hút · phòng áo',
     'DB-1 · Main board': 'DB-1 · Tủ điện chính',

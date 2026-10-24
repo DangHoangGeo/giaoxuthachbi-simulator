@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','sanctuary.js', 'facade.js', 'porches.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','sanctuary.js', 'facade.js', 'porches.js', 'stations.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -70,6 +70,16 @@ for(const sign of [-1,1]) {
   for(const sign of [-1,1]){assert.equal(realism.walkAllowed(46.425,sign*7.36),false,'No doorway in bay 10–11');for(const x of [36.975,44.175])assert.equal(realism.walkAllowed(x,sign*8.8),false,'Side bay closed to the porch');}
 }
 assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
+// Stations of the Cross, parish priest 25 Oct 2026 (stations.js): fourteen, one per nave bay
+// between the columns, above the openings, on the nave face of the C/G wall; old placeholders gone.
+{
+  const ST=sandbox.window.CHURCH_STATIONS;assert.equal(ST.stats.stations,14,'fourteen stations');
+  assert(!nodes.some(o=>/^Proposed Stations of the Cross placements/.test(o.name)),'pier-face placeholders removed');
+  const seen=new Set();for(let n=1;n<=14;n++){const p=ST.spec.place(n,data.longitudinal);seen.add(p.s+':'+p.bay);}
+  assert.equal(seen.size,14,'one station per bay and side');
+  const frame=bounds(nodes.find(o=>o.name==='Station of the Cross gilded frame'));
+  assert(frame.min.y>4.311+.5&&frame.max.y<6.66&&Math.abs(frame.max.z)<=7.26&&Math.abs(frame.min.z)>=7.1,'stations above the door crowns, under the side beams, on the wall face');
+}
 assert.equal(nodes.filter(o=>o.name==='Outer door fixed fanlight').length,0,'No outer porch doors (open arcade)');
 const clearBodies=nodes.filter(o=>/^(Inner|Outer) window clear glass body$/.test(o.name));
 assert.equal(clearBodies.filter(o=>o.name.startsWith('Inner')).length,28,'Paired windows in the inner wall of seven bays per side, incl. bay 10–11 (25 Oct 2026)');

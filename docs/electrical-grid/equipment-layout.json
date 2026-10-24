@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-24T16:44:17.712Z",
+  "savedAt": "2026-10-24T17:01:56.972Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -53,7 +53,7 @@
     "fanBeamRevision": "2026-10-19-fans-on-column-beams-1",
     "daisLevelRevision": "2026-10-24-dais-0-80-1",
     "facadeCadRevision": "2026-10-24-cad-facade-1",
-    "parishMeetingRevision": "2026-10-25-parish-meeting-2",
+    "parishMeetingRevision": "2026-10-25-parish-meeting-3",
     "eveningExposureRevision": "2026-10-09-evening-160"
   },
   "customScenes": [],
@@ -1944,7 +1944,7 @@
       "mount": "wall",
       "pos": [
         9.975,
-        4.6,
+        5,
         -7.07
       ],
       "yaw": 90,
@@ -1964,7 +1964,7 @@
       "mount": "wall",
       "pos": [
         9.975,
-        4.6,
+        5,
         7.07
       ],
       "yaw": -90,
@@ -1984,7 +1984,7 @@
       "mount": "wall",
       "pos": [
         14.475,
-        4.6,
+        5,
         -7.07
       ],
       "yaw": 90,
@@ -2004,7 +2004,7 @@
       "mount": "wall",
       "pos": [
         14.475,
-        4.6,
+        5,
         7.07
       ],
       "yaw": -90,
@@ -2024,7 +2024,7 @@
       "mount": "wall",
       "pos": [
         18.975,
-        4.6,
+        5,
         -7.07
       ],
       "yaw": 90,
@@ -2044,7 +2044,7 @@
       "mount": "wall",
       "pos": [
         18.975,
-        4.6,
+        5,
         7.07
       ],
       "yaw": -90,
@@ -2064,7 +2064,7 @@
       "mount": "wall",
       "pos": [
         23.475,
-        4.6,
+        5,
         -7.07
       ],
       "yaw": 90,
@@ -2084,7 +2084,7 @@
       "mount": "wall",
       "pos": [
         23.475,
-        4.6,
+        5,
         7.07
       ],
       "yaw": -90,
@@ -2104,7 +2104,7 @@
       "mount": "wall",
       "pos": [
         27.975,
-        4.6,
+        5,
         -7.07
       ],
       "yaw": 90,
@@ -2124,7 +2124,7 @@
       "mount": "wall",
       "pos": [
         27.975,
-        4.6,
+        5,
         7.07
       ],
       "yaw": -90,
@@ -2144,7 +2144,7 @@
       "mount": "wall",
       "pos": [
         32.475,
-        4.6,
+        5,
         -7.07
       ],
       "yaw": 90,
@@ -2164,7 +2164,7 @@
       "mount": "wall",
       "pos": [
         32.475,
-        4.6,
+        5,
         7.07
       ],
       "yaw": -90,
@@ -2184,7 +2184,7 @@
       "mount": "wall",
       "pos": [
         36.975,
-        4.6,
+        5,
         -7.07
       ],
       "yaw": 90,
@@ -2204,7 +2204,7 @@
       "mount": "wall",
       "pos": [
         36.975,
-        4.6,
+        5,
         7.07
       ],
       "yaw": -90,
@@ -5566,7 +5566,7 @@
       "mount": "wall",
       "pos": [
         14.475,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -5587,7 +5587,7 @@
       "mount": "wall",
       "pos": [
         14.475,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -5608,7 +5608,7 @@
       "mount": "wall",
       "pos": [
         23.475,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -5629,7 +5629,7 @@
       "mount": "wall",
       "pos": [
         23.475,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -5650,7 +5650,7 @@
       "mount": "wall",
       "pos": [
         32.475,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -5671,7 +5671,7 @@
       "mount": "wall",
       "pos": [
         32.475,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -7259,7 +7259,7 @@
       "mount": "wall",
       "pos": [
         5.475,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -7280,7 +7280,7 @@
       "mount": "wall",
       "pos": [
         5.475,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -7301,7 +7301,7 @@
       "mount": "wall",
       "pos": [
         9.975,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -7322,7 +7322,7 @@
       "mount": "wall",
       "pos": [
         9.975,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -7343,7 +7343,7 @@
       "mount": "wall",
       "pos": [
         18.975,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -7364,7 +7364,7 @@
       "mount": "wall",
       "pos": [
         18.975,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -7385,7 +7385,7 @@
       "mount": "wall",
       "pos": [
         27.975,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -7406,7 +7406,7 @@
       "mount": "wall",
       "pos": [
         27.975,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -7427,7 +7427,7 @@
       "mount": "wall",
       "pos": [
         36.975,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -7448,7 +7448,7 @@
       "mount": "wall",
       "pos": [
         36.975,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -8002,6 +8002,566 @@
       "dim": 1,
       "params": {},
       "note": "USER CONFIRMED: two candle lights on the base of each statue. CONCEPT electric candle; product, weather protection, fixing and lamp access pending.",
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-1-A",
+      "type": "stationCandle",
+      "name": "Station candle · I · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        34.405,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-1-B",
+      "type": "stationCandle",
+      "name": "Station candle · I · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        35.045,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-2-A",
+      "type": "stationCandle",
+      "name": "Station candle · II · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        29.905,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-2-B",
+      "type": "stationCandle",
+      "name": "Station candle · II · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        30.545,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-3-A",
+      "type": "stationCandle",
+      "name": "Station candle · III · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        25.405,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-3-B",
+      "type": "stationCandle",
+      "name": "Station candle · III · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        26.045,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-4-A",
+      "type": "stationCandle",
+      "name": "Station candle · IV · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        20.905,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-4-B",
+      "type": "stationCandle",
+      "name": "Station candle · IV · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        21.545,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-5-A",
+      "type": "stationCandle",
+      "name": "Station candle · V · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        16.405,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-5-B",
+      "type": "stationCandle",
+      "name": "Station candle · V · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        17.045,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-6-A",
+      "type": "stationCandle",
+      "name": "Station candle · VI · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        11.905,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-6-B",
+      "type": "stationCandle",
+      "name": "Station candle · VI · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        12.545,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-7-A",
+      "type": "stationCandle",
+      "name": "Station candle · VII · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        7.404999999999999,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-7-B",
+      "type": "stationCandle",
+      "name": "Station candle · VII · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        8.045,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-8-A",
+      "type": "stationCandle",
+      "name": "Station candle · VIII · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        7.404999999999999,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-8-B",
+      "type": "stationCandle",
+      "name": "Station candle · VIII · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        8.045,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-9-A",
+      "type": "stationCandle",
+      "name": "Station candle · IX · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        11.905,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-9-B",
+      "type": "stationCandle",
+      "name": "Station candle · IX · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        12.545,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-10-A",
+      "type": "stationCandle",
+      "name": "Station candle · X · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        16.405,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-10-B",
+      "type": "stationCandle",
+      "name": "Station candle · X · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        17.045,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-11-A",
+      "type": "stationCandle",
+      "name": "Station candle · XI · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        20.905,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-11-B",
+      "type": "stationCandle",
+      "name": "Station candle · XI · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        21.545,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-12-A",
+      "type": "stationCandle",
+      "name": "Station candle · XII · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        25.405,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-12-B",
+      "type": "stationCandle",
+      "name": "Station candle · XII · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        26.045,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-13-A",
+      "type": "stationCandle",
+      "name": "Station candle · XIII · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        29.905,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-13-B",
+      "type": "stationCandle",
+      "name": "Station candle · XIII · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        30.545,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-14-A",
+      "type": "stationCandle",
+      "name": "Station candle · XIV · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        34.405,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-14-B",
+      "type": "stationCandle",
+      "name": "Station candle · XIV · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        35.045,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
       "shadow": false
     }
   ]

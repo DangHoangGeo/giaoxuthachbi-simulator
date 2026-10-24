@@ -977,6 +977,18 @@
       desc: 'Short linear LED hidden behind a matching lip under the head of a niche arch. Nominal 400 lm, 3000 K CRI 90, 5 W, weatherproof. Slot, lip, driver place and access pending.',
       light: { lumens: 400, watts: 5, cct: 3000, cri: 90, beam: 60, field: 100, optics: [36, 60, 90], emitters: [{ kind: 'spot', pos: [0.02, -0.03, 0] }] },
       build: (k, item) => k.box(0.05, 0.03, item.params?.length || 0.6, 'ivory', { p: [0.025, -0.015, 0] }) },
+    // Parish priest, 25 October 2026: a candle light pair below each Station of the Cross.
+    { id: 'stationCandle', cat: LIGHT, family: 'Decorative', name: 'Station candle light · wall', mounts: ['wall'], glow: 'warm', flicker: true, circuit: 'LS',
+      desc: 'Electric candle on a small brass wall bracket below a Station of the Cross: warm flickering flame, about 60 lm and 1.5 W. Product, fixing and lamp access pending.',
+      light: { lumens: 60, watts: 1.5, cct: 2200, emitters: [{ kind: 'point', pos: [0.12, 0.25, 0] }] },
+      build: k => {
+        k.box(0.02, 0.16, 0.08, 'brass', { p: [0.01, 0, 0] });
+        k.tube([[0.02, -0.03, 0], [0.08, -0.02, 0], [0.12, 0.02, 0]], 0.01, 'brass', {}, 10, 6);
+        k.cyl(0.045, 0.03, 0.02, 'brass', { p: [0.12, 0.03, 0] }, 14);
+        k.cyl(0.02, 0.02, 0.17, 'candle', { p: [0.12, 0.125, 0] }, 10);
+        k.sph(0.022, 'glow', { p: [0.12, 0.235, 0], s: [1, 1.8, 1] }, 10, 8);
+        k.glowPoint([0.12, 0.235, 0], 0.14);
+      } },
     // Owner request, 9 October 2026: two candle lights on the base of each façade
     // statue. A devotional object that is meant to be seen, unlike the hidden lines.
     { id: 'nicheCandle', cat: LIGHT, family: 'Exterior', name: 'Statue candle light · electric flame', mounts: ['floor'], glow: 'warm', flicker: true, circuit: 'L10',

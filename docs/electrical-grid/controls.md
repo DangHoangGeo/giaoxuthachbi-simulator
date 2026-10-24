@@ -25,7 +25,7 @@ The source of circuit membership and scene values is [engine.js](../../Thach_Bi_
 
 | Board / panel | Current function and groups | Physical design to develop |
 | --- | --- | --- |
-| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/F5 and exhaust V1–V3, audio groups A1–A5/MIC, seasonal X1 and indoor socket circuits P1/P2. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
+| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, Stations candles LS, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/F5 and exhaust V1–V3, audio groups A1–A5/MIC, seasonal X1 and indoor socket circuits P1/P2. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
 | DB-2, inside main entrance | Sub-board for L6 façade/towers, L7 festival exterior, L9 stage/central door, L10 façade statues and candles, F4 trial entrance circulators and event power P3/P4. Fed from DB-1. | Local manual control for those groups, feeder-availability indication and tower quick-mode buttons. Confirm physical enclosure size and installation details. |
 | LC-1 / lighting operator controls | Lighting groups and scene functions. | Required individual/group on/off and dimming channels; main scene keypad and any agreed local repeat controls. |
 | FC-1 / fan operator controls | Fan/exhaust groups and speed selection. | Compatible controls for the selected motors; independent/group operation and clear Off/Low/Medium/High or product-specific labels. |
@@ -103,6 +103,7 @@ Owner requirement (`USER CONFIRMED`, 9 October 2026): the light on the statues, 
 | Circuit | Operator label | Content |
 | --- | --- | --- |
 | L10 | Façade statues & candles | Nine hidden light lines and six candle lights in the three façade niches |
+| LS (DB-1) | Stations of the Cross candles | 28 candle lights, a pair below each of the fourteen stations (parish priest, 25 October 2026) |
 | L6 | Façade & towers | Tower and façade floods |
 | L9 | Front stage & central door | The open space in front of the church and the central door |
 
