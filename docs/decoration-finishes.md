@@ -36,6 +36,6 @@ The [central-view constraint](engineering/central-view-constraint.md), [public v
 
 ## Outstanding review
 
-ENG-027, the possible drawing/model left-right mirror, remains open: the owner's wording “mirror things” was queried separately. This finish revision applies no global reflection and changes no saint, tower-board, stair or station side assignment. A coordinate reflection needs its own coordinated geometry, winding, navigation, equipment, route and register migration.
+**USER CONFIRMED, 25 October 2026:** “mirror things” means **minor visual details** in this decoration request. It is not a request to reflect the model. ENG-027, the separate possible drawing/model left-right mirror, remains open. This finish revision applies no global reflection and changes no saint, tower-board, stair or station side assignment. A coordinate reflection needs its own coordinated geometry, winding, navigation, equipment, route and register migration.
 
 Parish/artist review is still required for the station narratives, statue sculpture, precise regional motifs and final finish samples. Structural support, fixing, fire behaviour, service access, humidity durability and cleaning methods require the relevant designers. The present textures provide no product performance or purchasing approval.
