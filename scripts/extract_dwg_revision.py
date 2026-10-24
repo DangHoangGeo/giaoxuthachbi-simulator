@@ -9,6 +9,8 @@ committed, derived data next to them:
   dimensions.csv   every DIMENSION object in model space, with its measuring points in model axes
   levels.csv       every printed level label checked against its marker geometry
   grid-check.csv   drawn grid centrelines against the register's Model grid
+  facade.csv       (hand-entered) the central facade the model follows; `facade` checks every
+                   traced row against the drawing's lines, arcs and dimensions
 
 Only DIMENSION objects and level labels are read as numbers; every other text in the drawings is a
 title, axis label or material note. The DWG carries fewer dimensions than the PDF set: a value printed
@@ -19,6 +21,7 @@ scripts/requirements-dwg.txt.
 
   python3 scripts/extract_dwg_revision.py extract            # data only
   python3 scripts/extract_dwg_revision.py extract --render   # data and sheet images
+  python3 scripts/extract_dwg_revision.py facade             # check facade.csv against the DWG
   python3 scripts/extract_dwg_revision.py workbook           # add DWG sheets to the register
 """
 import argparse
@@ -405,7 +408,8 @@ FINDINGS = [
     ('ISSUE-P05', 'Sanctuary section 25 shows a 1,900 mm wide stepped element centred on the axis (Z −949 to +951) rising to the +800 platform.',
      '1,900 at Y +800', '1,900 × 870 unlabeled', None, 'Supports reading the rectangle as the central steps, not an altar table.'),
     ('ISSUE-R02', 'Central facade between the towers is a different design from PDF sheet 1.', 'DWG sheet 1 (A and B)', 'PDF sheet 1',
-     None, 'The model follows the PDF; see ISSUE-R02.'),
+     None, 'Owner direction 24 Oct 2026: the model follows the DWG above +8.45 m (facade.csv, docs/facade-model.md). '
+     'ISSUE-R02 stays open for the church.'),
     ('ISSUE-R03', 'Sanctuary section heights differ from PDF sheet 5.', '160/2544/466/4392; 6231; 8525; 3171',
      '150/2554/396/4462; 6301; 8452; 2951', 70, 'See ISSUE-R03.'),
     ('ISSUE-R04', 'Sanctuary platform dimensioned 800 mm in section 25; DWG plan and PDFs show +0.75 m.', '800', '750', 50, 'See ISSUE-R04.'),
@@ -473,7 +477,7 @@ def workbook():
 
     manifest = json.loads((OUT / 'sheets.json').read_text(encoding='utf-8'))
     read = lambda name: list(csv.DictReader((OUT / name).open(encoding='utf-8')))
-    dims, levels, grid = read('dimensions.csv'), read('levels.csv'), read('grid-check.csv')
+    dims, levels, grid, facade = read('dimensions.csv'), read('levels.csv'), read('grid-check.csv'), read('facade.csv')
     wb = openpyxl.load_workbook(WORKBOOK)
     tpl = wb['Dimensions']
     style = {k: tpl[c] for k, c in (('title', 'A2'), ('sub', 'A4'), ('head', 'A7'), ('text', 'B8'), ('num', 'G8'))}
@@ -554,6 +558,18 @@ def workbook():
            ('Sổ đăng ký / Register or PDF', 30, 'text'), ('Chênh (mm) / Δ', 12, 'num'), ('Hệ quả / Implication', 60, 'text')],
           [(a, b, c, d, '' if e is None else float(e), f) for a, b, c, d, e, f in FINDINGS])
 
+    sheet('DWG facade', 'DwgFacade', 'MẶT GIỮA HAI THÁP THEO FILE CAD / CENTRAL FACADE FROM THE CAD FILE',
+          'Mô hình theo file CAD từ +8,45 m (chủ đầu tư, 24/10/2026). p1–p4: đường, cung hoặc kích thước được kiểm '
+          'bằng `extract_dwg_revision.py facade`. / The model follows the CAD file above +8.45 m (owner, 2026-10-24). '
+          'p1–p4 give the line, arc or dimension checked by `extract_dwg_revision.py facade`; elevation u = Z, v = Y; '
+          'plans u = Z, v = X (mm).',
+          [('Mã / ID', 8, 'text'), ('Bộ phận / Element', 46, 'text'), ('Bản vẽ / Drawing', 11, 'text'),
+           ('Loại / Kind', 8, 'text'), ('p1', 11, 'num'), ('p2', 11, 'num'), ('p3', 11, 'num'), ('p4', 11, 'num'),
+           ('Giá trị (mm) / Value', 14, 'num'), ('Mô hình / Model (m)', 30, 'text'), ('Cơ sở / Basis', 22, 'text'),
+           ('Ghi chú / Note', 70, 'text')],
+          [(r['id'], r['element'], r['drawing'], r['kind'], r['p1'], r['p2'], r['p3'], r['p4'], r['value_mm'],
+            r['model_m'], r['basis'], r['note']) for r in facade])
+
     # Sources: add the DWG as file 10 once, keeping a blank row before the conventions block.
     ws = wb['Sources']
     table = ws.tables['DrawingSources']
@@ -605,7 +621,7 @@ def workbook():
     restore_cached_values(WORKBOOK, tmp, replaced)
     tmp.replace(WORKBOOK)
     print(f'updated {WORKBOOK.relative_to(ROOT)}: {len(dims)} DWG dimensions, {len(levels)} levels, '
-          f'{len(grid)} grid rows, {len(FINDINGS)} findings, {len(NEW_ISSUES)} revision items')
+          f'{len(grid)} grid rows, {len(facade)} facade rows, {len(FINDINGS)} findings, {len(NEW_ISSUES)} revision items')
 
 
 def restore_cached_values(original, rewritten, replaced=frozenset()):
@@ -678,12 +694,90 @@ def restore_cached_values(original, rewritten, replaced=frozenset()):
     print(f'restored cached values for {restored} formula cells and the original text of {renumbered} numbers')
 
 
+# Tower-end plans are drawn without a model origin; their axis 1 (X 0) and the D/E midpoint
+# (Z 0) are read from the drawn centrelines (layer “duong tim”). Z grows toward H, which is
+# drawn to the left, as in the elevations.
+PLAN_AXES = {'PT10': (-609567.5, 1599381.7), 'PT15': (-585726.6, 1640451.6)}
+
+
+def facade_check():
+    """Check every traced row of facade.csv against the geometry of its drawing, within 1.5 mm."""
+    from ezdxf import bbox, path as dxfpath
+    doc = convert()
+    rows = list(csv.DictReader((OUT / 'facade.csv').open(encoding='utf-8')))
+    frames = {d['id']: d for d in DRAWINGS if d['id'] in {r['drawing'] for r in rows}}
+    def uv(name, x, y):
+        if name in PLAN_AXES:
+            axis1, mid = PLAN_AXES[name]
+            return mid - x, y - axis1
+        return to_model(frames[name], x, y)
+    shapes = defaultdict(list)  # drawing → [(kind, data)]
+    def take(e):
+        t = e.dxftype()
+        if t not in ('LINE', 'ARC', 'CIRCLE', 'LWPOLYLINE', 'POLYLINE'):
+            return
+        try:
+            pts = list(dxfpath.make_path(e).flattening(5))
+        except Exception:
+            return
+        name = next((n for n, d in frames.items() if pts and d['frame'][0] <= pts[0].x <= d['frame'][2]
+                     and d['frame'][1] <= pts[0].y <= d['frame'][3]), None)
+        if not name:
+            return
+        if t == 'ARC':
+            c = e.dxf.center
+            shapes[name].append(('arc', (*uv(name, c.x, c.y), e.dxf.radius)))
+        shapes[name].append(('poly', [uv(name, p.x, p.y) for p in pts]))
+    lo = (min(d['frame'][0] for d in frames.values()), min(d['frame'][1] for d in frames.values()))
+    hi = (max(d['frame'][2] for d in frames.values()), max(d['frame'][3] for d in frames.values()))
+    for e in doc.modelspace():
+        try:
+            b = bbox.extents([e], fast=True)
+        except Exception:
+            continue
+        if not b.has_data or b.extmax.x < lo[0] or b.extmin.x > hi[0] or b.extmax.y < lo[1] or b.extmin.y > hi[1]:
+            continue
+        for v in (e.virtual_entities() if e.dxftype() == 'INSERT' else [e]):
+            take(v)
+    dims = {(r['drawing'], float(r['measured_mm'])) for r in csv.DictReader((OUT / 'dimensions.csv').open(encoding='utf-8'))}
+    tol, failed = 1.5, []
+    for r in rows:
+        if r['basis'] != 'TRACED':
+            continue
+        name, kind = r['drawing'], r['kind']
+        p = [float(r[k]) if r[k] else None for k in ('p1', 'p2', 'p3', 'p4')]
+        segs = [(a, b) for k, pts in shapes[name] if k == 'poly' for a, b in zip(pts, pts[1:])]
+        if kind == 'arc':
+            ok = any(k == 'arc' and abs(d[0] - p[0]) <= tol and abs(d[1] - p[1]) <= tol and abs(d[2] - p[2]) <= tol for k, d in shapes[name])
+        elif kind == 'h':
+            ok = any(abs(a[1] - p[0]) <= tol and abs(b[1] - p[0]) <= tol and min(a[0], b[0]) <= min(p[1], p[2]) + tol
+                     and max(a[0], b[0]) >= max(p[1], p[2]) - tol for a, b in segs)
+        elif kind == 'v':
+            ok = any(abs(a[0] - p[0]) <= tol and abs(b[0] - p[0]) <= tol and min(a[1], b[1]) <= min(p[1], p[2]) + tol
+                     and max(a[1], b[1]) >= max(p[1], p[2]) - tol for a, b in segs)
+        elif kind == 'seg':
+            ok = any(all(abs(m - n) <= tol for m, n in zip((*a, *b), q)) for a, b in segs for q in (p, (p[2], p[3], p[0], p[1])))
+        elif kind == 'ymax':
+            top = max(pt[1] for k, pts in shapes[name] if k == 'poly' and all(p[0] <= q[0] <= p[1] for q in pts) for pt in pts)
+            ok = abs(top - float(r['value_mm'])) <= tol
+        elif kind == 'dim':
+            ok = (name, p[0]) in dims
+        else:
+            ok = False
+        print(f"{r['id']:4} {'ok ' if ok else 'MISSING'} {r['element']}")
+        if not ok:
+            failed.append(r['id'])
+    if failed:
+        raise SystemExit(f'not found in the drawing: {failed}')
+    print(f'facade.csv: {sum(r["basis"] == "TRACED" for r in rows)} traced rows found in the DWG')
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('command', choices=('extract', 'workbook'))
+    ap.add_argument('command', choices=('extract', 'facade', 'workbook'))
     ap.add_argument('--render', action='store_true', help='also render every drawing to images/ (not committed)')
     a = ap.parse_args()
-    extract(a.render) if a.command == 'extract' else workbook()
+    extract(a.render) if a.command == 'extract' else facade_check() if a.command == 'facade' else workbook()
 
 
 if __name__ == '__main__':

@@ -1,0 +1,36 @@
+id,element,drawing,kind,p1,p2,p3,p4,value_mm,model_m,basis,note
+F01,Ground-storey cornice top over the side bays,E01B,h,8390,-7703,-3469,,8390,8.390,TRACED,Kept from the bundle's traced facade; also the +8.390 level label
+F02,Central cornice corona underside,E01B,h,8605,-3499,0,,8605,8.605,TRACED,Dentils 8.42–8.52 and corona 8.605–8.773 over the main door
+F03,Central cornice Greek-key frieze top / plinth base,E01B,h,9115,-7128,0,,9115,9.115,TRACED,Runs across the three bays
+F04,Upper-storey plinth top (terrace),E01B,h,9741,-7128,0,,9741,9.741,TRACED,Floor of the side niches and of the room behind the triple window
+F05,Upper entablature underside,E01B,h,15333,-7763,0,,15333,15.333,TRACED,
+F06,Upper entablature top,E01B,h,15840,-7128,0,,15840,15.840,TRACED,Also the +15.840 level label and plan PT15
+F07,Central piers: chain across the D–E bay,E01B,dim,5958.8,,,,5958.8,"±2.979 (centres), shafts ±2.544 to ±3.414",TRACED,621 / 5958.8 / 621 dimension chain
+F08,Central great arch extrados,E01B,arc,0,12677,2270,,2270,"r 2.270 about +12.677",TRACED,Rings at r 2.070 and 2.200 drawn between
+F09,Central great arch intrados,E01B,arc,0,12677,1960,,1960,r 1.960,TRACED,Tympanum face inside it
+F10,Triple window outer lights,E01B,arc,-1190,12241,430,,430,"centres ±1.190, r 0.430 about +12.241",TRACED,Glazing r 0.375; rings to r 0.650
+F11,Triple window centre light,E01B,arc,0,12241,430,,430,"centre 0, r 0.430 about +12.241",TRACED,
+F12,Triple window glazing edge and sill,E01B,v,-1605,9984,12101,,9984,sill +9.984,TRACED,Lights 0.830 m wide between colonnettes
+F13,Side great arch extrados,E01B,arc,-5350,12960,1936,,1936,"centre ±5.350, r 1.936 about +12.960",TRACED,
+F14,Side great arch intrados,E01B,arc,-5350,12960,1626,,1626,r 1.626,TRACED,Legs run down to the plinth
+F15,Side niche (intrados),E01B,arc,-5350,12308,599,,599,"r 0.599 about +12.308; crown +12.907",TRACED,Pedestal top +10.391; statue of the owner on it
+F16,Side aedicule arch extrados,E01B,arc,-5350,12308,986,,986,r 0.986,TRACED,Carved crest above to about +14.35
+F17,Central niche (intrados),E01B,arc,0,18893,711,,711,"r 0.711 about +18.893; crown +19.604",TRACED,Pedestal 15.997–16.683
+F18,Central aedicule arch extrados,E01B,arc,0,18893,1112,,1112,r 1.112,TRACED,
+F19,Pediment raking cornice (lower edge),E01B,seg,-1316.4,20420.7,-361.5,21068.7,,"(±1.316, +20.421) to (±0.362, +21.069)",TRACED,
+F20,Scroll spur from the pier pinnacle to the aedicule pier,E01B,arc,-3404,18866,1317,,1317,"centre ±3.404, +18.866; r 1.317–1.417",TRACED,
+F21,Disc under the cross,E01B,arc,0,22921,213,,213,"r 0.213 about +22.921",TRACED,
+F22,Cross top,E01B,ymax,-800,800,,,24648,24.648,TRACED,Highest point of the central facade
+F23,Central pier front at the plinth,PT10,h,1562,-3472,-2484,,1562,X 1.562,TRACED,Plan at +10.128 m; X from axis 1
+F24,Central bay wall face,PT10,h,2936,-2544,-2270,,2936,X 2.936,TRACED,
+F25,Triple window plane,PT10,h,3556,-1620,-760,,3556,X 3.556 (louvres),TRACED,Room behind from X 3.666 to 4.716
+F26,Side bay wall face,PT10,h,4017,-4364,-3724,,4017,X 4.017,TRACED,
+F27,Side bay wall back,PT10,h,4936,-6975,-3724,,4936,X 4.936,TRACED,
+F28,Pinnacle pedestal front,PT15,h,2096,-3414,-2544,,2096,X 2.096,TRACED,Plan at +15.840 m
+F29,Aedicule pier front,PT15,h,3805,-1885,-1439,,3805,X 3.805,TRACED,
+F30,Central niche column front,PT15,h,3915,-1112,-906,,3915,X 3.915,TRACED,
+F31,Central niche (plan),PT15,arc,0,4225,711,,711,"centre X 4.225, r 0.711",TRACED,Niche back X 4.936; aedicule back X 5.046
+F32,Cresting balustrade front,PT15,h,3376,-7086,-3614,,3376,X 3.376,TRACED,Fleur-de-lis posts at 617 mm spacing
+D01,Side bays meet the towers,model,—,,,,,7128,±7.500,MODEL ADJUSTMENT,"The drawing stops the side bays at ±7.128 against the tower pilasters; the model's towers stand back at about ±7.5, so the side-bay wall, plinth and entablature run on to meet them"
+D02,Moulding profiles and carving,model,—,,,,,,,ILLUSTRATIVE,"Profiles, relief depths, capitals, cresting and crests are generated shapes that follow the drawing's outlines, not construction details"
+D03,Statues in the niches,model,—,,,,,,,USER CONFIRMED / CONCEPT,The drawing shows empty niches with pedestals; the owner's three statues (9 Oct 2026) stand on the drawn pedestals
