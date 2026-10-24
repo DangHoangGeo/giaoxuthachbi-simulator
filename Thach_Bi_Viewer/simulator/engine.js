@@ -254,7 +254,8 @@
     if (sx) {
       const { chamber: ch, centralArch: ca, sideArch: sa, wingX: wx, wingZ: wz } = sx;
       for (const s of [-1, 1]) {
-        GEO.sanctuary.walls.push({ z: s * (ch.face + ch.outer) / 2, x0: ch.x0, x1: ch.x1, y0: SIDE_Y, y1: ch.top, openings: [] });
+        // Open below the lintel since 25 Oct 2026 (parish priest).
+        GEO.sanctuary.walls.push({ z: s * (ch.face + ch.outer) / 2, x0: ch.x0, x1: ch.x1, y0: ch.lintel ?? SIDE_Y, y1: ch.top, openings: [] });
         for (const e of [-1, 1]) GEO.sanctuary.boxes.push({ min: [wx - 0.31, SIDE_Y, s * wz + e * 1.03 - 0.32], max: [wx + 1.01, 2.55, s * wz + e * 1.03 + 0.32] });
         // Shelf, and the lacquered wall that closes the bay behind the shrine up to the roof.
         GEO.sanctuary.boxes.push({ min: [wx - 0.35, 2.55, s * wz - 1.38], max: [wx + 1.01, 2.85, s * wz + 1.38] },
@@ -655,7 +656,7 @@
     // Inner faces of the lacquered sanctuary chamber walls.
     for (const w of GEO.sanctuary?.walls.filter(w => w.z) ?? []) {
       const s = Math.sign(w.z), face = window.CHURCH_SANCTUARY.spec.chamber.face;
-      wall(w.x1 - w.x0, 7.5, (w.x0 + w.x1) / 2, 4.5, s * (face - 0.01), [0, 0, -s]);
+      wall(w.x1 - w.x0, w.y1 - w.y0, (w.x0 + w.x1) / 2, (w.y0 + w.y1) / 2, s * (face - 0.01), [0, 0, -s]);
     }
     plane(4.18, 3.6, 50.76, 0.15, 0, 'floor');
     plane(9.1, 26.7, -3.55, -0.48, 0, 'floor');

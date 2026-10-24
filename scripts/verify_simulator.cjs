@@ -243,8 +243,8 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
     assert(retuned[0] === unrelated && r('mary-moved') === at6[5], 'the night retune leaves other equipment and a moved statue untouched');
     assert(r('acc-h').lumens === 700 && r('acc-h').on === false && r('acc-h').dim === 0.5, 'crucifix accent output lowered; switch and dimmer kept');
     assert(r('key-b').lumens === 4500 && near(r('key-b').pos[2], -1.1), 'a moved altar key keeps its place');
-    assert(r('wash-b').beam === 36 && r('wash-b').lumens === 650 && near(r('wash-b').yaw, washB.yaw) && near(r('wash-b').tilt, washB.tilt), 'a reredos wash in place takes the tighter beam and its new aim');
-    assert(r('wash-h').lumens === 650 && r('wash-h').yaw === -10 && near(r('wash-h').pos[0], 45.5), 'a moved reredos wash keeps its place and aim');
+    assert(r('wash-b').beam === 36 && r('wash-b').lumens === washB.lumens && near(r('wash-b').yaw, washB.yaw) && near(r('wash-b').tilt, washB.tilt), 'a reredos wash in place takes the tighter beam and its new aim');
+    assert(r('wash-h').lumens === washB.lumens && r('wash-h').yaw === -10 && near(r('wash-h').pos[0], 45.5), 'a moved reredos wash keeps its place and aim');
   }
   // The revision travels with the saved settings. (It was not stored before, so the review was
   // re-applied at every load and reset any sanctuary fitting moved by hand.)
@@ -633,7 +633,7 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert([...beamNames, ...chamberNames].every(byName), 'every sanctuary accent and chamber light is in the design');
   // The chamber side walls carry the sanctuary's own lacquer; the beam timber copies only its colour and
   // follows the timber tone, so the chamber fittings share the wall material itself.
-  let wallMesh = null; sandbox.window.model.scene.traverse(o => { if (o.isMesh && o.name === 'Chamber side wall · lacquered timber') wallMesh = o; });
+  let wallMesh = null; sandbox.window.model.scene.traverse(o => { if (o.isMesh && o.name === 'Chamber side lintel · lacquered timber') wallMesh = o; });
   assert(wallMesh && wallMesh.material === chamberWall, 'the chamber side wall is in the sanctuary lacquer');
   for (const [names, finish, mat] of [[beamNames, 'timber', timber], [chamberNames, 'chamber', chamberWall]]) for (const name of names) {
     const it = byName(name);

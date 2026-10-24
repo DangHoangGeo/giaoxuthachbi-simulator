@@ -1,6 +1,6 @@
 zone,wired_points,lights,fans,loudspeakers,microphones,sockets,exit_signs,circuits,connected_fixed_w,full_service_w,within_reach,covered_exterior,open_to_weather
 Service room and boards,6,6,0,0,0,0,0,L3,76,76,4,0,0
-Sanctuary,20,16,0,0,2,2,0,L3 LD MIC P1 P2,180.287404,180.287404,2,0,0
+Sanctuary,18,14,0,0,2,2,0,L3 MIC P1 P2,178.177333,178.177333,2,0,0
 Wing B (ministers),5,2,2,1,0,0,0,A1 F5 L8,212,178.089498,0,0,0
 Wing H (choir),5,2,2,1,0,0,0,A1 F5 L8,212,178.089498,0,0,0
 Nave,159,113,28,12,0,2,4,A1 E1 F1 F2 L1 L2 L3 LA LD LS P1 P2,3316.373333,2255.447306,2,0,0

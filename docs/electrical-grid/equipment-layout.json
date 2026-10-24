@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-24T18:15:14.532Z",
+  "savedAt": "2026-10-24T22:22:25.930Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -53,7 +53,7 @@
     "fanBeamRevision": "2026-10-19-fans-on-column-beams-1",
     "daisLevelRevision": "2026-10-24-dais-0-80-1",
     "facadeCadRevision": "2026-10-24-cad-facade-1",
-    "parishMeetingRevision": "2026-10-25-parish-meeting-5",
+    "parishMeetingRevision": "2026-10-25-parish-meeting-6",
     "eveningExposureRevision": "2026-10-09-evening-160"
   },
   "customScenes": [],
@@ -2154,48 +2154,6 @@
       "shadow": false
     },
     {
-      "id": "L96",
-      "type": "sconce2",
-      "name": "Sconce · sanctuary pier · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        46.455,
-        4.3,
-        -3.2399999999999998
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "lumens": 560,
-      "shadow": false
-    },
-    {
-      "id": "L97",
-      "type": "sconce2",
-      "name": "Sconce · sanctuary pier · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        46.455,
-        4.3,
-        3.2399999999999998
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "lumens": 560,
-      "shadow": false
-    },
-    {
       "id": "L98",
       "type": "projector24",
       "name": "Altar key light · B",
@@ -2425,11 +2383,11 @@
       "mount": "wall",
       "pos": [
         44.75,
-        6.7,
+        7.25,
         -3.2399999999999998
       ],
       "yaw": 9.727578551401601,
-      "tilt": -28.00954417031813,
+      "tilt": -35.14615446872573,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
@@ -2437,7 +2395,7 @@
       "params": {
         "finish": "chamber"
       },
-      "lumens": 650,
+      "lumens": 850,
       "beam": 36,
       "shadow": false
     },
@@ -2448,12 +2406,12 @@
       "circuit": "L3",
       "mount": "wall",
       "pos": [
-        44.75,
-        5.4,
+        45.2,
+        7.25,
         -3.2399999999999998
       ],
-      "yaw": 68.78943229559124,
-      "tilt": -27.549252343078525,
+      "yaw": 72.94088618074167,
+      "tilt": -40.50362289000834,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
@@ -2519,11 +2477,11 @@
       "mount": "wall",
       "pos": [
         44.75,
-        6.7,
+        7.25,
         3.2399999999999998
       ],
       "yaw": -9.727578551401601,
-      "tilt": -28.00954417031813,
+      "tilt": -35.14615446872573,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
@@ -2531,7 +2489,7 @@
       "params": {
         "finish": "chamber"
       },
-      "lumens": 650,
+      "lumens": 850,
       "beam": 36,
       "shadow": false
     },
@@ -2542,12 +2500,12 @@
       "circuit": "L3",
       "mount": "wall",
       "pos": [
-        44.75,
-        5.4,
+        45.2,
+        7.25,
         3.2399999999999998
       ],
-      "yaw": -68.78943229559124,
-      "tilt": -27.549252343078525,
+      "yaw": -72.94088618074167,
+      "tilt": -40.50362289000834,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
@@ -2588,12 +2546,12 @@
       "circuit": "L3",
       "mount": "wall",
       "pos": [
-        44.75,
-        4.9,
+        45.65,
+        7.25,
         -3.2399999999999998
       ],
-      "yaw": 51.79594401601898,
-      "tilt": -34.65317804874206,
+      "yaw": 63.012109418251534,
+      "tilt": -55.0379731303053,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
@@ -2601,7 +2559,7 @@
       "params": {
         "finish": "chamber"
       },
-      "lumens": 300,
+      "lumens": 900,
       "beam": 10,
       "shadow": false
     },

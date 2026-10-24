@@ -173,8 +173,10 @@
         'Solid-pier descent, proposed underfloor containment and local equipment lead; floor construction / outlet details pending.');
     }
     if (chamberFixture(it)) {
-      const c = window.CHURCH_SANCTUARY.spec.chamber, cz = s * (c.face + c.outer) / 2;
-      return proposal([start, [48.5, y, cz], [p[0], y, cz], [p[0], p[1], cz], p], 'chamber-lining',
+      // Since 25 Oct 2026 the chamber lining is a lintel from +7.0 m: the run rises behind the back
+      // wall to the lintel void before it turns along the chamber.
+      const c = window.CHURCH_SANCTUARY.spec.chamber, cz = s * (c.face + c.outer) / 2, cy = Math.max(y, (c.lintel ?? 0) + 0.25);
+      return proposal([start, [48.5, y, cz], [48.5, cy, cz], [p[0], cy, cz], [p[0], p[1], cz], p], 'chamber-lining',
         'Back-wall band to service space behind chamber lining; local termination behind the fitting / cornice. Removable lining and cable-entry detail pending.');
     }
     const main = SIM.GEO.mainBeams.find(b => Math.abs(p[0]-b.x)<0.19 && Math.abs(p[2]) <= b.zHalf &&

@@ -371,8 +371,13 @@ for(const name of ['Our Lady shrine · axis 11','Saint Joseph shrine · axis 11'
   assert(Math.min(Math.abs(b.min.z),Math.abs(b.max.z))>=3.749&&Math.max(Math.abs(b.min.z),Math.abs(b.max.z))<=7.251,'Shrine and its returns fit between the chamber wall and the C/G wall');
   for(const base of wing.children.filter(o=>o.name==='Stone doorway base')){const c=bounds(base);assert(Math.min(Math.abs(c.min.z),Math.abs(c.max.z))>4.02&&Math.max(Math.abs(c.min.z),Math.abs(c.max.z))<6.94,'Shrine bases clear the D/E column base and the C/G pier base');}
 }
-const walls=nodes.filter(o=>o.name==='Chamber side wall · lacquered timber');
-assert.equal(walls.length,2,'Chamber has two lined side walls');
+const walls=nodes.filter(o=>o.name==='Chamber side lintel · lacquered timber');
+assert.equal(walls.length,2,'Chamber keeps two lacquered side lintels');
+// Parish priest, 25 Oct 2026: open between the axis-10 and axis-11 columns below the lintel, and
+// red lacquer and gilding over the two shrines in the axis-11 side arches.
+for(const o of walls)assert(bounds(o).min.y>=S.chamber.lintel-.001,'no lacquered wall below the lintel between columns 10 and 11');
+assert(!nodes.some(o=>/^(Chamber cornice|Chamber pilaster relief)$/.test(o.name)),'no low lacquered panels left between the columns');
+const over11=nodes.filter(o=>o.name==='Axis-11 side spandrel · lacquer and gilding');assert(over11.length===2&&over11.every(o=>{const b=bounds(o);return b.max.y>8.5&&Math.abs(b.min.x-(S.arch11.x-.16))<.01&&b.min.y>=S.arch11.spring-.01;}),'lacquered and gilded spandrels over both shrines: '+over11.map(o=>JSON.stringify(bounds(o))).join(' '));
 for(const o of walls){const b=bounds(o);assert(b.min.x>=frameX+.31&&b.max.x<=data.longitudinal['11'],'Chamber wall runs from the axis-10 column back to axis 11');assert(Math.min(Math.abs(b.min.z),Math.abs(b.max.z))>=3.299,'Chamber keeps the 6.6 m clear width of the arch');}
 const vault=nodes.find(o=>o.name==='Chamber vault · gilded boarding'),lining=nodes.find(o=>o.name==='Chamber back lining · lacquered timber');
 assert(vault&&lining,'Chamber vault and back lining');
@@ -425,7 +430,7 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
     const m=finish(name);assert(m&&m.map&&m.bumpMap&&m.metalnessMap&&m.roughnessMap===m.metalnessMap,`${name} is a relief finish with gilded metal and lacquered ground`);
     assert(m.map.repeat.x>=1&&m.map.repeat.x<=3,`${name} repeats at a carved scale`);
   }
-  for(const [name,count,material] of [['Central pilaster relief',12,'Sanctuary · gilded relief'],['Chamber pilaster relief',8,'Sanctuary · gilded relief'],['Wing pilaster relief',4,'Sanctuary · gilded relief'],['Shrine jamb relief',4,'Sanctuary · gilded relief'],['Shrine shelf frieze',2,'Sanctuary · gilded relief'],['Reredos frieze relief',2,'Sanctuary · gilded relief'],['Carved panel relief',11,'Sanctuary · gilded scrollwork on lacquer'],['Reredos carved ground',1,'Sanctuary · gilded scrollwork on lacquer'],['Shrine bay relief ground',2,'Sanctuary · gilded scrollwork on lacquer']]){
+  for(const [name,count,material] of [['Central pilaster relief',12,'Sanctuary · gilded relief'],['Wing pilaster relief',4,'Sanctuary · gilded relief'],['Shrine jamb relief',4,'Sanctuary · gilded relief'],['Shrine shelf frieze',2,'Sanctuary · gilded relief'],['Reredos frieze relief',2,'Sanctuary · gilded relief'],['Carved panel relief',11,'Sanctuary · gilded scrollwork on lacquer'],['Reredos carved ground',1,'Sanctuary · gilded scrollwork on lacquer'],['Shrine bay relief ground',2,'Sanctuary · gilded scrollwork on lacquer']]){
     const list=part(name);assert.equal(list.length,count,name);
     for(const o of list){
       assert.equal(o.material.name,material,`${name} finish`);
@@ -439,7 +444,7 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
   assert.equal(part('Wing blue niche').length,2);
   assert.equal(part('Carved pinnacle').length,8,'Four spires on the reredos pilasters and four on the gradine');
   assert.equal(part('Wing pinnacle').length,4);
-  assert(part('Gilded leaf cresting').length>=10&&part('Gilded arch cresting').length===5,'Leaf crestings on the canopy arcs and on the three front arches and two shrine heads');
+  assert(part('Gilded leaf cresting').length>=10&&part('Gilded arch cresting').length===7,'Leaf crestings on the canopy arcs, the three front arches, the two shrine heads and the two axis-11 side arches over the shrines');
   for(const o of nodes.filter(o=>o.isMesh&&/^Illustrative corpus /.test(o.name)))assert.equal(o.material.name,'Sanctuary · carved figure, natural wood');
   const dome=part('Tabernacle dome')[0],enclosure=part('Proposed tabernacle enclosure')[0];
   assert(dome&&enclosure&&dome.material===enclosure.material&&dome.material.name==='Sanctuary · carved gilding','Tabernacle is gilded under a dome');

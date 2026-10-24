@@ -10418,8 +10418,13 @@
           -3.525
         ],
         [
+          48.5,
+          7.25,
+          -3.525
+        ],
+        [
           44.75,
-          5.916,
+          7.25,
           -3.525
         ],
         [
@@ -10470,25 +10475,25 @@
           -3.525
         ],
         [
-          44.75,
-          5.916,
+          48.5,
+          7.25,
           -3.525
         ],
         [
           44.75,
-          6.7,
+          7.25,
           -3.525
         ],
         [
           44.75,
-          6.7,
+          7.25,
           -3.2399999999999998
         ]
       ],
       "method": "chamber-lining",
       "installation": "Back-wall band to service space behind chamber lining; local termination behind the fitting / cornice. Removable lining and cable-entry detail pending.",
       "coverPaths": [],
-      "length": 8.654,
+      "length": 9.204,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -10522,25 +10527,25 @@
           -3.525
         ],
         [
-          44.75,
-          5.916,
+          48.5,
+          7.25,
           -3.525
         ],
         [
-          44.75,
-          5.4,
+          45.2,
+          7.25,
           -3.525
         ],
         [
-          44.75,
-          5.4,
+          45.2,
+          7.25,
           -3.2399999999999998
         ]
       ],
       "method": "chamber-lining",
       "installation": "Back-wall band to service space behind chamber lining; local termination behind the fitting / cornice. Removable lining and cable-entry detail pending.",
       "coverPaths": [],
-      "length": 8.386000000000001,
+      "length": 8.753999999999998,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -10574,8 +10579,13 @@
           -3.525
         ],
         [
+          48.5,
+          7.25,
+          -3.525
+        ],
+        [
           45.35,
-          5.916,
+          7.25,
           -3.525
         ],
         [
@@ -10626,25 +10636,25 @@
           -3.525
         ],
         [
-          44.75,
-          5.916,
+          48.5,
+          7.25,
           -3.525
         ],
         [
-          44.75,
-          4.9,
+          45.65,
+          7.25,
           -3.525
         ],
         [
-          44.75,
-          4.9,
+          45.65,
+          7.25,
           -3.2399999999999998
         ]
       ],
       "method": "chamber-lining",
       "installation": "Back-wall band to service space behind chamber lining; local termination behind the fitting / cornice. Removable lining and cable-entry detail pending.",
       "coverPaths": [],
-      "length": 8.886000000000001,
+      "length": 8.304000000000002,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -10864,8 +10874,7 @@
         "L88",
         "L90",
         "L92",
-        "L94",
-        "L96"
+        "L94"
       ],
       "color": "#dc9e29",
       "method": "wall-roof-trunk",
@@ -11362,58 +11371,6 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:LD:light:-1:L96",
-      "name": "LD → Sconce · sanctuary pier · B",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L96"
-      ],
-      "trunkId": "trunk:LC1:LD:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 19.857,
-      "homeRun": false,
-      "points": [
-        [
-          48.5,
-          5.94,
-          -7.36
-        ],
-        [
-          48.5,
-          5.94,
-          -3.525
-        ],
-        [
-          46.455,
-          5.94,
-          -3.525
-        ],
-        [
-          46.455,
-          4.3,
-          -3.525
-        ],
-        [
-          46.455,
-          4.3,
-          -3.2399999999999998
-        ]
-      ],
-      "method": "chamber-lining",
-      "installation": "Back-wall band to service space behind chamber lining; local termination behind the fitting / cornice. Removable lining and cable-entry detail pending.",
-      "coverPaths": [],
-      "length": 7.805000000000003,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
       "id": "trunk:LC1:LD:light:1",
       "name": "LD · H · circuit trunk",
       "source": "LC1",
@@ -11428,8 +11385,7 @@
         "L89",
         "L91",
         "L93",
-        "L95",
-        "L97"
+        "L95"
       ],
       "color": "#dc9e29",
       "method": "wall-roof-trunk",
@@ -11919,58 +11875,6 @@
       "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
       "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:1:L97",
-      "name": "LD → Sconce · sanctuary pier · H",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L97"
-      ],
-      "trunkId": "trunk:LC1:LD:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 26.457,
-      "homeRun": false,
-      "points": [
-        [
-          48.5,
-          5.94,
-          7.36
-        ],
-        [
-          48.5,
-          5.94,
-          3.525
-        ],
-        [
-          46.455,
-          5.94,
-          3.525
-        ],
-        [
-          46.455,
-          4.3,
-          3.525
-        ],
-        [
-          46.455,
-          4.3,
-          3.2399999999999998
-        ]
-      ],
-      "method": "chamber-lining",
-      "installation": "Back-wall band to service space behind chamber lining; local termination behind the fitting / cornice. Removable lining and cable-entry detail pending.",
-      "coverPaths": [],
-      "length": 7.805000000000003,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -12796,8 +12700,13 @@
           3.525
         ],
         [
+          48.5,
+          7.25,
+          3.525
+        ],
+        [
           44.75,
-          5.916,
+          7.25,
           3.525
         ],
         [
@@ -12848,25 +12757,25 @@
           3.525
         ],
         [
-          44.75,
-          5.916,
+          48.5,
+          7.25,
           3.525
         ],
         [
           44.75,
-          6.7,
+          7.25,
           3.525
         ],
         [
           44.75,
-          6.7,
+          7.25,
           3.2399999999999998
         ]
       ],
       "method": "chamber-lining",
       "installation": "Back-wall band to service space behind chamber lining; local termination behind the fitting / cornice. Removable lining and cable-entry detail pending.",
       "coverPaths": [],
-      "length": 8.654,
+      "length": 9.204,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -12900,25 +12809,25 @@
           3.525
         ],
         [
-          44.75,
-          5.916,
+          48.5,
+          7.25,
           3.525
         ],
         [
-          44.75,
-          5.4,
+          45.2,
+          7.25,
           3.525
         ],
         [
-          44.75,
-          5.4,
+          45.2,
+          7.25,
           3.2399999999999998
         ]
       ],
       "method": "chamber-lining",
       "installation": "Back-wall band to service space behind chamber lining; local termination behind the fitting / cornice. Removable lining and cable-entry detail pending.",
       "coverPaths": [],
-      "length": 8.386000000000001,
+      "length": 8.753999999999998,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -12952,8 +12861,13 @@
           3.525
         ],
         [
+          48.5,
+          7.25,
+          3.525
+        ],
+        [
           45.35,
-          5.916,
+          7.25,
           3.525
         ],
         [
@@ -36794,56 +36708,6 @@
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
-      "id": "L96",
-      "name": "Sconce · sanctuary pier · B",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 5.361702127659575,
-      "specs": "560 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        46.455,
-        4.3,
-        -3.2399999999999998
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L97",
-      "name": "Sconce · sanctuary pier · H",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 5.361702127659575,
-      "specs": "560 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        46.455,
-        4.3,
-        3.2399999999999998
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
       "id": "L98",
       "name": "Altar key light · B",
       "type": "projector24",
@@ -37083,12 +36947,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 5.416666666666667,
-      "specs": "650 lm · 3000 K · 36° beam",
+      "wattsEstimate": 7.083333333333333,
+      "specs": "850 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         44.75,
-        6.7,
+        7.25,
         -3.2399999999999998
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -37112,8 +36976,8 @@
       "specs": "1300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
-        44.75,
-        5.4,
+        45.2,
+        7.25,
         -3.2399999999999998
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -37183,12 +37047,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 5.416666666666667,
-      "specs": "650 lm · 3000 K · 36° beam",
+      "wattsEstimate": 7.083333333333333,
+      "specs": "850 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         44.75,
-        6.7,
+        7.25,
         3.2399999999999998
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -37212,8 +37076,8 @@
       "specs": "1300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
-        44.75,
-        5.4,
+        45.2,
+        7.25,
         3.2399999999999998
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -37258,12 +37122,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 2.64,
-      "specs": "300 lm · 3000 K · 10° beam",
+      "wattsEstimate": 7.92,
+      "specs": "900 lm · 3000 K · 10° beam",
       "hiddenAlternative": false,
       "position": [
-        44.75,
-        4.9,
+        45.65,
+        7.25,
         -3.2399999999999998
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -43618,24 +43482,6 @@
     },
     {
       "board": "DB1",
-      "circuit": "LD",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "quantity": 2,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "specs": "560 lm · 2700 K",
-      "wattsEachEstimate": 5.361702127659575,
-      "itemIds": [
-        "L96",
-        "L97"
-      ]
-    },
-    {
-      "board": "DB1",
       "circuit": "L3",
       "type": "projector24",
       "product": "LED projector · narrow 24°",
@@ -43751,8 +43597,8 @@
         0.2217390456199646,
         0.23999999463558197
       ],
-      "specs": "650 lm · 3000 K · 36° beam",
-      "wattsEachEstimate": 5.416666666666667,
+      "specs": "850 lm · 3000 K · 36° beam",
+      "wattsEachEstimate": 7.083333333333333,
       "itemIds": [
         "L107",
         "L111"
@@ -43805,8 +43651,8 @@
         0.1971188479065895,
         0.1899999976158142
       ],
-      "specs": "300 lm · 3000 K · 10° beam",
-      "wattsEachEstimate": 2.64,
+      "specs": "900 lm · 3000 K · 10° beam",
+      "wattsEachEstimate": 7.92,
       "itemIds": [
         "L114"
       ]
