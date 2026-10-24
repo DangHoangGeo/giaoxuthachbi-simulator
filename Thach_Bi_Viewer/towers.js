@@ -91,7 +91,7 @@
   }
 
 
-  function prepare({ THREE: T, exterior, mat, data }) {
+  function prepare({ THREE: T, exterior, building, mat, data }) {
     if (!exterior) return;
     exterior.updateMatrixWorld(true);
     const K = window.CHURCH_CARVING.create(T);
@@ -121,6 +121,21 @@
     towers.forEach(t => t.traverse(o => { if (o !== t && o.type === 'Group' && !o.children.length) empty.push(o); }));
     empty.forEach(o => o.removeFromParent());
 
+    // The grey stone plinth under each tower is widened so that the corner piers stand on it
+    // all the way down to the courtyard (owner, 25 Oct 2026: there was a gap under the piers
+    // where they overhang the old 5.8 × 6.65 m plinth). New extent: X −1.2 to 5.4, |Z| 6.75 to
+    // 13.62 (the outer face of the side projection plinth), −2.08 to 0.
+    const footing = { x: [-1.2, 5.4], z: [6.75, 13.62], y: [-2.08, 0] };
+    spec.footing = footing;
+    (building || exterior).traverse(o => {
+      if (!o.isMesh || o.name !== 'Tower plinth') return;
+      const s = Math.sign(o.getWorldPosition(new T.Vector3()).z) || 1;
+      o.geometry.dispose();
+      o.geometry = new T.BoxGeometry(footing.x[1] - footing.x[0], footing.y[1] - footing.y[0], footing.z[1] - footing.z[0]);
+      const local = o.parent.worldToLocal(new T.Vector3((footing.x[0] + footing.x[1]) / 2, (footing.y[0] + footing.y[1]) / 2, s * (footing.z[0] + footing.z[1]) / 2));
+      o.position.copy(local); o.scale.set(1, 1, 1);
+      o.userData.status = 'SOURCE GRID / PLINTH WIDENED UNDER THE CAD CORNER PIERS';
+    });
     const root = new T.Group();
     root.name = 'Tower bases and tops — CAD file 23 Oct 2026';
     root.userData = { status: DRAWN, source: SOURCE, revision: spec.revision };

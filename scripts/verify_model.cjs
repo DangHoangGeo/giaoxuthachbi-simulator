@@ -81,6 +81,11 @@ assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
   const front=nodes.find(o=>o.name.startsWith('Tower base wall · closed front'));assert(front&&!front.geometry.attributes.position.array.some((v,i)=>i%3===1&&v>8.40),'closed front up to +8.39');
   const cornice=nodes.filter(o=>o.name==='Tower base cornice').map(bounds);near(Math.max(...cornice.map(b=>b.max.y)),8.39,'tower cornice top at +8.39');
   for(const sign of [-1,1])for(const x of [-.5,1,2.45,4]) assert.equal(realism.walkAllowed(x,sign*10.15),false,'no passage through the tower base');
+  // The grey plinth reaches under every corner pier, down to the courtyard (owner, 25 Oct 2026).
+  for(const p of nodes.filter(o=>o.name==='Tower plinth').map(bounds))assert(p.min.y<=-2.079&&p.max.y>=-.001,'tower plinth from the courtyard to +0.00');
+  const plinths=nodes.filter(o=>o.name==='Tower plinth').map(bounds), piers=bounds(nodes.find(o=>o.name==='Tower corner pier plinth'));
+  for(const p of plinths){const inside=(v,a,b)=>v>=a-.001&&v<=b+.001;assert(inside(piers.min.x,p.min.x,p.max.x)&&inside(piers.max.x,p.min.x,p.max.x),'tower plinth covers the piers front to back');}
+  assert(plinths.every(p=>Math.max(Math.abs(p.min.z),Math.abs(p.max.z))>=13.47&&Math.min(Math.abs(p.min.z),Math.abs(p.max.z))<=6.83),'tower plinth covers the inner and outer piers');
 }
 // Roofline after the CAD file, 25 Oct 2026 (roofline.js): porch parapets with axis pinnacles,
 // stepped 9–10 side gables and the stepped rear gable, each with a crowning cross.
