@@ -1,35 +1,31 @@
 # Church image references
 
-The latest sixteen church images are now physically stored in their matching church-part folders, under **full-hd/** with **2026-10-07-** filenames. The [reference library](index.html), dated gallery and offline viewer use these same files.
+**CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.**
 
-The [complete dated gallery](00-overview/2026-10-07/index.html) remains intact; native originals stay in [its masters folder](00-overview/2026-10-07/masters/). [current-images.json](current-images.json) maps each moved export to its former location, preserved original, hash and generation job.
+The viewer and [reference library](index.html) show four updated front/side/detail views from **24 October 2026** first. They replace the 7 October front, corner, evening and entrance-detail selections, retaining stable reference IDs. [Façade folder guide](03-facade/README.md).
 
-## Browse the updated folders
+The selected native PNGs live in `03-facade/native/`: **1672 × 941, no resampling**. Dated masters, source captures and prompts remain in the [new six-view gallery](00-overview/2026-10-24/index.html). The new nave and sanctuary images are available there; the viewer's older interior selections remain in place.
 
-| Church part | Latest images |
+Other selections retain their earlier files and provenance, including the owner-preferred side shutters, rear elevations, timber, sanctuary and overhead studies. Earlier `full-hd/` exports are 1920 × 1080 resampled copies. [Earlier 16-view gallery](00-overview/2026-10-07/index.html) · [Current image register](current-images.json).
+
+## Browse the folders
+
+| Church part | Current views |
 | --- | --- |
-| [Whole church](00-overview/README.md) | 16, 05, 07 |
-| [Timber frame and beams](01-timber-frame/README.md) | 09 |
-| [Sanctuary](02-sanctuary/README.md) | 06, 08 |
-| [Facade and towers](03-facade/README.md) | 13, 14, 01, 02, 04 |
-| [Doors](04-doors/README.md) | 10, 11, 03 |
-| [Windows and glazing](05-windows/README.md) | 12 |
-| [Roof](06-roof/README.md) | 15 |
-| [Stairs and balustrades](07-stairs/README.md) | Related views linked in the folder guide; dedicated detail images pending |
-| [Lighting and equipment](08-lighting/README.md) | Related views linked in the folder guide; dedicated detail images pending |
-| [Pews and furniture](09-furniture/README.md) | Related views linked in the folder guide; dedicated detail images pending |
-| [Floors and wall finishes](10-floors-walls/README.md) | Related views linked in the folder guide; dedicated detail images pending |
+| [Whole church](00-overview/README.md) | Overhead cutaway, nave and side aisle |
+| [Timber frame and beams](01-timber-frame/README.md) | Carved connection |
+| [Sanctuary](02-sanctuary/README.md) | Overview and carving detail |
+| [Facade and towers](03-facade/README.md) | Four updated front/side/detail views; two retained rear views |
+| [Doors](04-doors/README.md) | Side entrance exterior and interior |
+| [Windows and glazing](05-windows/README.md) | Side-window detail |
+| [Roof](06-roof/README.md) | Roof/site overhead |
+| [Stairs and balustrades](07-stairs/README.md) | Retained stair input; measured details pending |
+| [Lighting and equipment](08-lighting/README.md) | Appearance studies; engineering pending |
+| [Pews and furniture](09-furniture/README.md) | Detail set pending |
+| [Floors and wall finishes](10-floors-walls/README.md) | Detail set pending |
 
-## Removed old images and required sources
+## Preserve sources and provenance
 
-Superseded door, facade, roof and lighting thumbnails are removed from these numbered folders. The sixteen new church views are the active gallery and viewer references.
+The earlier dated artwork and native originals remain intact. Never overwrite a source photograph or approved input concept with generated output. The [engineering package](../../docs/beams-roof-connections/README.md) preserves timber studies and their source photographs. Approved sanctuary direction, the original sanctuary photograph and retained stair input keep their supporting roles. `00-overview/05-interior-day.png` is retained as the simulator reference-frame source, outside the active gallery.
 
-Older timber study illustrations and original timber photographs are actively used in the [engineering package](../../docs/beams-roof-connections/README.md). Duplicate copies here were removed; their native masters now live with that package. Two older facade images remain exact generation inputs in [the review source folder](../../review/church-views-2026-10-07/source-inputs/), outside this reference library.
-
-Only the approved sanctuary concept, original sanctuary photograph and retained stair-detail input remain as supporting gallery images. `00-overview/05-interior-day.png` remains solely because the simulator’s reference-frame variant cites it; it is excluded from the current gallery. Unused older images are recoverable from Git without retaining extra archives here.
-
-The latest side-window shutters follow interior view **11**; exterior views **10, 12 and 14** match that intent. The overhead cutaway **16** illustrates proposed lengthwise column-row beams. See the [design notes](../../docs/church-view-renderings.md) and [cleanup record](../../review/reference-folder-update-2026-10-07.json).
-
-## Maintain the set
-
-When an image selection changes, update its discipline export, **current-images.json**, **manifest.json**, **references.js**, the folder guide and the main library together. Keep stable image IDs and preserve the dated provenance set and native originals. Never overwrite a source photo or approved input concept with generated output.
+Update **current-images.json**, **manifest.json**, **references.js**, coverage, folder guides and the main library together when a selection changes. The web viewer export includes images named by `references.js`; standalone gallery pages and Markdown are separate local material. Generated appearances do not establish dimensions, equipment performance, compliance or construction approval. See [design notes](../../docs/church-view-renderings.md).

@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "headedDesktopChrome": true,
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "results": [
+    {
+      "mode": "offline",
+      "images": [
+        {
+          "src": "references/03-facade/native/2026-10-24-01-front-day.png",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "references/03-facade/native/2026-10-24-02-front-corner-day.png",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "references/03-facade/native/2026-10-24-03-opposite-corner-evening.png",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "references/03-facade/native/2026-10-24-04-facade-detail-day.png",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "eveningSelectionUnchanged": true,
+      "startupExterior": "references/03-facade/native/2026-10-24-02-front-corner-day.png",
+      "errors": [],
+      "visitEngineeringStorageUntouched": null
+    },
+    {
+      "mode": "web-visit",
+      "images": [
+        {
+          "src": "references/03-facade/native/2026-10-24-01-front-day.png",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "references/03-facade/native/2026-10-24-02-front-corner-day.png",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "references/03-facade/native/2026-10-24-03-opposite-corner-evening.png",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "references/03-facade/native/2026-10-24-04-facade-detail-day.png",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "eveningSelectionUnchanged": true,
+      "startupExterior": "references/03-facade/native/2026-10-24-02-front-corner-day.png",
+      "errors": [],
+      "visitEngineeringStorageUntouched": true
+    }
+  ]
+}

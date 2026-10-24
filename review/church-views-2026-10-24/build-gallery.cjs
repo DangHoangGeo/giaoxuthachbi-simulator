@@ -38,8 +38,8 @@ const manifest = {
     'Visible fans and hangers are omitted in the nave artwork to illustrate all-hidden intent. Physical concealment, airflow, noise, support and service access remain unresolved; the model and equipment remain unchanged.',
     'Exit signs are shown in the final nave concept; their pictured symbols/placement do not establish code compliance.',
     'Existing facade, structure, drainage, maintenance, statue fit, ventilation discharge, lighting and sound engineering holds remain open.',
-    'Local image delivery only; no website content selection or deployment change.',
-  ], assets,
+    'Four exterior/detail images selected for local and web viewer References on 24 October 2026. Separate website editorial gallery and deployment remain unchanged.',
+  ], viewerSelection: { date: '2026-10-24', selectedAssetIds: ['01-front-day', '02-front-corner-day', '03-opposite-corner-evening', '04-facade-detail-day'], location: 'references/03-facade/native/', stableReferenceIdsPreserved: true }, assets,
 };
 fs.writeFileSync(path.join(gallery, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
 const esc = s => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
