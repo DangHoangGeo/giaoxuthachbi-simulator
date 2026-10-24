@@ -52,7 +52,8 @@ def in_wing(x, y, z):
 def zone(item):
     x, y, z = item['position']
     az = abs(z)
-    if x < 2.3: return ZONES[8]
+    # The upper façade between the towers (CAD file of 23 Oct 2026) stands back to the nave gable above +8.39 m.
+    if x < 2.3 or (x < 5.17 and y > 8.39 and az < 7.6): return ZONES[8]
     if in_wing(x, y, z): return ZONES[2] if z < 0 else ZONES[3]
     if not item['interior'] and y >= 7.0: return ZONES[7]
     if az > 7.3 or x > 53.0: return ZONES[6]

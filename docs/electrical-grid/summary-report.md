@@ -6,13 +6,13 @@ Generated 24 October 2026 from the category registers and their matched model sn
 
 | Usage category | Equipment/enclosures | Shown | Hidden alternatives | Connected components | Shown items commanded on | Routes | Route points |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Lighting | 231 | 231 | 0 | 231 | 205 | 254 | 2087 |
+| Lighting | 231 | 231 | 0 | 231 | 205 | 254 | 2089 |
 | Sound | 30 | 30 | 0 | 30 | 20 | 40 | 304 |
 | Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 410 |
 | Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 54 |
 | Decoration and furnishings | 37 | 22 | 15 | 0 | 22 | 0 | 0 |
 | Distribution and controls | 11 | 11 | 0 | 6 | 4 | 14 | 105 |
-| **Total** | 359 | 344 | 15 | 317 | 283 | 373 | 2960 |
+| **Total** | 359 | 344 | 15 | 317 | 283 | 373 | 2962 |
 
 Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **10 equipment, 26 routes**.
 
@@ -36,13 +36,13 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,013.648 | 3,013.648 | 0.000 | 0.000 |
+| Lighting | 3,076.074 | 3,076.074 | 0.000 | 0.000 |
 | Sound | 722.691 | 0.000 | 1,719.703 | 563.757 |
 | Fans and ventilation | 925.206 | 925.206 | 0.000 | 0.000 |
 | Exit signs | 145.936 | 145.936 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 244.983 | 244.983 | 0.000 | 0.000 |
-| **Total by length basis** | **5,052.464** | **4,329.774** | **1,719.703** | **563.757** |
+| **Total by length basis** | **5,114.890** | **4,392.199** | **1,719.703** | **563.757** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/363 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -66,8 +66,8 @@ The held wing review of 9 October 2026 retains four small brass chandeliers (L63
 
 ## Sources and refresh
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 19eb3af4e9e190d44f45651a83746b308f3bc351650fff669ae77f5ce0cb3e9d.
-- [Electrical snapshot](electrical-systems.json), SHA-256: ec7eed586921cecf1c820f16f5ebefd971b44f66cd4eae78e00a7540b47ad9d9.
+- [Layout snapshot](equipment-layout.json), SHA-256: 146da28a773b5232adb7a991941b4c52312ffa1c721c3656a3930b7eeac1bb23.
+- [Electrical snapshot](electrical-systems.json), SHA-256: c2461516b6454aa96dec6678dad1bc8b977620d5c08160037ef8b86f7f230532.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 

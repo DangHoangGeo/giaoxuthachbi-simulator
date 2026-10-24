@@ -34,7 +34,7 @@ const sandbox = {
 sandbox.window = sandbox;
 sandbox.addEventListener = (e, f) => { (listeners[e] ||= []).push(f); };
 vm.createContext(sandbox);
-for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
+for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'facade.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
   vm.runInContext(fs.readFileSync(path.join(viewer, file), 'utf8'), sandbox, { filename: file });
 
 let src = fs.readFileSync(path.join(viewer, 'bundle.js'), 'utf8');
@@ -511,9 +511,11 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   const lights = SIM.state.items.filter(it => it.circuit === 'L10');
   assert.equal(lights.length, 15, 'three hidden lines and two candles per niche on L10');
   assert.equal(SIM.CIRCUITS.L10.board, 'DB2');
-  for (const [code, z, half, base, crown] of [['C', 0, 0.925, 11.8, 15.63], ['B', -5.48, 0.525, 10.08, 12.61], ['H', 5.48, 0.525, 10.08, 12.61]]) {
+  // Niches of the CAD file of 23 Oct 2026 (facade.js): width, pedestal and crown, and the back of the niche hood.
+  for (const [code, , , z, base, crown, , half] of D.facadeNiches) {
     const statue = byId(`D-FACADE-${code}`), box = new T.Box3().setFromObject(SIM.fixtures.get(statue.id).root);
-    assert(box.min.y >= base - 0.01 && box.max.y < crown && box.min.z > z - half && box.max.z < z + half && box.max.x < 2.7, `façade statue ${code} stands inside its niche`);
+    const back = code === 'C' ? 4.225 + 0.711 : 4.117 + 0.599;
+    assert(box.min.y >= base - 0.01 && box.max.y < crown && box.min.z > z - half && box.max.z < z + half && box.max.x < back, `façade statue ${code} stands inside its niche`);
     for (const part of ['ARCH', 'JAMB-1', 'JAMB-2']) {
       const fx = SIM.fixtures.get(`L-STATUE-${code}-${part}`), materials = new Set();
       fx.root.traverse(o => { if (o.isMesh) materials.add(o.material.name); });
@@ -738,6 +740,33 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert.deepEqual(plain(D.upgradeDaisLevel(up, design)), plain(up), 'applying it again changes nothing');
   assert.equal(SIM.state.settings.daisLevelRevision, D.daisLevelRevision, 'the revision is stored in the saved settings');
 }
+// CAD facade of 23 Oct 2026: the niches moved back and up, so the statues, their hidden lines and
+// candles follow once from their previous places, and the upper washes re-aim at the aedicule.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, plain = v => JSON.parse(JSON.stringify(v));
+  const design = D.recommended(SIM.GEO, SIM), byIdIn = (list, id) => list.find(it => it.id === id);
+  const now = new Map(design.map(it => [it.id, it]));
+  // The previous layout, rebuilt from the replaced niches.
+  for (const it of design.filter(i => D.facadeStatueIds.includes(i.id))) assert(it.pos[0] > 3.6, 'recommended statue fittings stand in the CAD niches: ' + it.id);
+  // Simulate a saved layout at the old places, with one statue moved and one candle deleted by the user.
+  const C = D.facadeNichesBefore.find(r => r[0] === 'B');
+  const oldStatue = { ...now.get('D-FACADE-B'), pos: [C[10], C[4], C[3]] };
+  const oldCandle = { ...now.get('L-STATUE-B-CANDLE-2'), pos: [C[10] - 0.19, C[4], C[3] + 0.31] };
+  const moved = { ...now.get('D-FACADE-H'), pos: [3.0, 10.08, 5.48] };
+  const crown = design.filter(it => /^Central crown wash · /.test(it.name)).map(it => ({ ...it }));
+  const reaimed = { ...crown[1], yaw: crown[1].yaw + 5 };
+  const was = D.aim([crown[0].pos[0], crown[0].pos[1] + 0.075, crown[0].pos[2]], [2.2, 18.6, 0]);
+  const saved = [oldStatue, oldCandle, moved, reaimed, { ...crown[0], yaw: was.yaw, tilt: was.tilt }];
+  const up = D.upgradeFacadeCad(saved, design);
+  assert.deepEqual(plain(up[0].pos), plain(now.get('D-FACADE-B').pos), 'a statue at its old place moves to the CAD niche');
+  assert.deepEqual(plain(up[1].pos), plain(now.get('L-STATUE-B-CANDLE-2').pos), 'its candle moves with it');
+  assert.deepEqual(plain(up[2]), plain(moved), 'a statue the user moved stays');
+  assert.deepEqual(plain(up[3]), plain(reaimed), 'a wash the user re-aimed stays');
+  assert(Math.abs(up[4].yaw - crown[0].yaw) < 1e-9 && Math.abs(up[4].tilt - crown[0].tilt) < 1e-9, 'an untouched upper wash re-aims at the aedicule');
+  assert.equal(up.length, saved.length, 'nothing is added or deleted');
+  assert.deepEqual(plain(D.upgradeFacadeCad(up, design)), plain(up), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.facadeCadRevision, D.facadeCadRevision, 'the revision is stored in the saved settings');
+}
 // Every fixture is fixed to something the model actually has: wall items need a
 // surface right behind them, pendants need structure at their anchor (fans on
 // steel spreaders and strung decorations carry their own support).
@@ -822,20 +851,23 @@ for (const quality of ['high', 'balanced', 'fast']) {
   SIM.setSetting('quality', quality);
   assert.equal(sandbox.window.model.renderer.pixelRatio, 1.5, 'quality retains original screen sharpness: ' + quality);
 }
-// Sample the front-facing plaster: the former gap was at +8.4–11 m, with
-// the side shrines and top crown also outside the narrow central beams.
+// Sample the front-facing plaster: the former gap was at +8.4–11 m. Since the CAD
+// facade of 23 Oct 2026 the faces step back as they rise (facade.js): the cornice
+// and plinth at x ≈ 2.0, the central piers at 2.30, the tympanum at 3.23, the
+// side-bay walls at 4.02 and the niche aedicule at 3.81–3.92, up to the cross.
 const facadeIds = new Set(SIM.state.items.filter(it => /^(Façade wash|Central gable flood|Central crown wash) ·/.test(it.name)).map(it => it.id));
 const facadeSources = SIM.emitters().filter(e => facadeIds.has(e.id));
 const facadeSamples = [];
-for (const y of [7.5, 8.5, 9.5, 10.25, 11, 13, 15, 17, 19, 21.5]) {
+const faceX = (y, z) => y < 9.75 ? 2.0 : y <= 15.84 ? (Math.abs(z) > 2.5 ? 2.29 : 3.22) : 3.80;
+for (const y of [7.5, 8.5, 9.5, 10.25, 11, 13, 15, 17, 19, 21.5, 23.5]) {
   for (const z of (y <= 15 ? [-3, 0, 3] : [0])) {
-    const lux = P.illuminance([1.9, y, z], [-1, 0, 0], facadeSources);
+    const lux = P.illuminance([faceX(y, z), y, z], [-1, 0, 0], facadeSources);
     facadeSamples.push({y,z,lux:+lux.toFixed(1)});
     assert(lux >= 5, 'continuous center facade coverage at y=' + y + ', z=' + z + ': ' + lux);
   }
 }
-for (const z of [-5.48, 5.48]) for (const y of [9.5, 11.5, 14, 16]) {
-  assert(P.illuminance([1.9, y, z], [-1, 0, 0], facadeSources) >= 5, 'side shrine is covered: ' + y + '/' + z);
+for (const z of [-5.35, 5.35]) for (const [x, y] of [[2.0, 9.5], [4.0, 11.5], [4.0, 14], [3.37, 16]]) {
+  assert(P.illuminance([x, y, z], [-1, 0, 0], facadeSources) >= 5, 'side bay is covered: ' + y + '/' + z);
 }
 console.log(JSON.stringify({ facadeCoverage: 'passed', samples: facadeSamples }));
 for (const s of [-1, 1]) {

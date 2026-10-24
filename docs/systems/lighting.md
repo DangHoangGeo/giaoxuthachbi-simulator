@@ -55,10 +55,10 @@ Six mirrored floodlights on DB-2 / L6 provide overlapping 3000 K washes from the
 | Position | Both sides | Base height | Target height | Output each | Beam |
 |---|---:|---|---|---|---|
 | Lower façade and door surrounds | 2 | 8.39 m | 2.50 m | 6000 lm | 50° |
-| Central pedestal, niche and side shrines | 2 | 8.39 m | 12.80 m | 6500 lm | 60° |
-| Upper crown and cross ornament | 2 | 15.84 m | 18.60 m | 6000 lm | 55° |
+| Upper storey: triple window, rose and side niches | 2 | 8.39 m | 12.80 m | 6500 lm | 60° |
+| Niche aedicule and cross (aimed at X 3.85, Z 0) | 2 | 15.84 m | 19.60 m | 6000 lm | 55° |
 
-The earlier downward wash aimed at +2.50 m and the 26° niche beam left a dark band over the doors at the central pedestal. Wider overlapping beams fill that band; the upper pair covers the crown up to the +21.72 m cross. These are architectural washes; the central front door retains its single decorative lantern pair.
+The earlier downward wash aimed at +2.50 m and the 26° niche beam left a dark band over the doors at the central pedestal. Wider overlapping beams fill that band; the upper pair covers the crown up to the cross. Since 24 October 2026 the central facade follows the church's CAD file ([facade model](../facade-model.md)): the upper pair is re-aimed at its niche aedicule, which stands 1.6 m further back, with the cross at +24.648 m (was +21.72 m). These are architectural washes; the central front door retains its single decorative lantern pair.
 
 Saved layouts receive this façade correction once, with existing selection IDs, switches and dimmers retained. Unrelated fixtures retain their edits. The original layout is kept in the browser under `.before-facade-review`; subsequent removals stay removed.
 

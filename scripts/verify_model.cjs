@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','sanctuary.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','sanctuary.js', 'facade.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -431,3 +431,28 @@ for(const sign of [-1,1]){
   assert.equal(realism.walkAllowed(52.9,sign*5.5),false,'Rear gable bounds the service room');
 }
 console.log('Sanctuary: sheet-5 frame, shrine line, chamber lining, lacquered roof timbers, door headroom, routes, open service room passed');
+
+// Central facade between the towers, CAD file of 23 Oct 2026 (facade.js): the traced gables are gone
+// above the cut, and the upper storey stands on the drawing's faces and levels.
+{
+  const F=sandbox.window.CHURCH_FACADE.spec;
+  const upper=nodes.find(o=>o.name==='Tower-end upper facade — CAD file 23 Oct 2026');
+  assert(upper&&upper.children.length>100,'CAD upper facade built');
+  const lower=nodes.find(o=>o.name.startsWith('Tower-end central facade'));
+  lower.traverse(o=>{if(o.isMesh)assert(bounds(o).min.y<F.cut,'no traced-gable part above the cut: '+o.name);});
+  assert(!nodes.some(o=>/empty shrine with curved crown|Broad central shrine entablature|Detached central ornamental pier/.test(o.name)),'PDF gables and shrines removed');
+  const of=name=>{const list=upper.children.filter(o=>o.name===name);assert(list.length,name);const b=new T.Box3();list.forEach(o=>b.union(bounds(o)));return b;};
+  near(of('Upper storey terrace slab and plinth top').max.y,9.741,'Plinth top +9.741 (E01B)');
+  near(of('Upper entablature crown').max.y,15.84,'Upper entablature +15.840 (E01B level)');
+  near(of('Central bay upper wall').min.x,2.936,'Central bay face (plan +10.128)');
+  near(of('Side bay upper wall').min.x,4.017,'Side bay face (plan +10.128)');
+  near(of('Central aedicule wall').min.x,3.915,'Aedicule face (plan +15.840)');
+  near(of('Side bay niche').max.y,12.308+.599,'Side niche crown: springing +12.308, r 0.599');
+  near(of('Central aedicule niche').max.y,18.893+.711,'Central niche crown: springing +18.893, r 0.711');
+  near(of('Central bay great arch moulding').max.y,12.677+2.27,'Great arch extrados: centre +12.677, r 2.27');
+  const cross=of('Central cross trefoil end').union(of('Central cross'));near(cross.max.y,24.648,'Cross top +24.648');
+  const piers=of('Central bay pier shaft');near(piers.max.z,2.979+.435,'Central piers: 621 / 5,958.8 / 621 chain');near(piers.min.z,-2.979-.435,'Central piers symmetric');
+  const all=bounds(upper);assert(all.min.x>1.5&&all.max.x<5.6&&all.max.z<=7.5+1e-6&&all.min.z>=-7.5-1e-6,'upper facade stays between the towers, in front of axis 2′');
+  let tris=0;upper.traverse(o=>{if(o.isMesh)tris+=o.geometry.index.count/3;});assert(tris<150000,'facade triangle budget: '+tris);
+  console.log(JSON.stringify({facade:'passed',meshes:upper.children.length,triangles:tris,removedBundleMeshes:upper.userData.removedBundleMeshes}));
+}

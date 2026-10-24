@@ -195,7 +195,7 @@
     'Entrance courtyard': 'Sân vào nhà thờ',
     'At eye level, looking toward the twin towers.': 'Ngang tầm mắt, nhìn về phía hai tháp chuông.',
     'Between the towers': 'Giữa hai tháp',
-    'The central facade follows a tracing of the supplied elevation.': 'Mặt tiền giữa bám theo nét vẽ của mặt đứng đã cung cấp.',
+    'Above the doors, the central facade follows the church’s CAD file of 23 October 2026.': 'Phần mặt tiền giữa phía trên các cửa theo file CAD của nhà thờ ngày 23/10/2026.',
     'Inside the nave': 'Bên trong lòng nhà thờ',
     'Walk along the central aisle toward the sanctuary.': 'Đi dọc lối đi giữa về phía cung thánh.',
     'Middle of the nave': 'Giữa lòng nhà thờ',

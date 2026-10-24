@@ -106,7 +106,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -187,7 +187,9 @@
   }
   function inWing(x, z) { return x > 37.2 && x < 43.95 && Math.abs(z) > 7.25 && Math.abs(z) < 12.98; }
   // Inside the church: the nave and sanctuary, plus the two 9–10 wings under their own roof.
-  function isInterior(p) { return p[0] > 2.3 && p[0] < 53.1 && p[1] < 12.5 && (Math.abs(p[2]) < 7.3 || (inWing(p[0], p[2]) && p[1] < 9.6)); }
+  // Above the entrance hall (+8.39 m) and in front of the nave gable on axis 2′ (front face x 5.17)
+  // stands the upper façade of the CAD file of 23 Oct 2026, with its niches: outside.
+  function isInterior(p) { return p[0] > 2.3 && p[0] < 53.1 && p[1] < 12.5 && !(p[0] < 5.17 && p[1] > 8.39) && (Math.abs(p[2]) < 7.3 || (inWing(p[0], p[2]) && p[1] < 9.6)); }
   function isCovered(p) { return p[0] > 2.3 && p[0] < 53.1 && (Math.abs(p[2]) < 10.6 || (p[0] > 37 && p[0] < 44 && Math.abs(p[2]) < 13)); }
   // Shared planning approximation for sound received from the enclosed room.
   // A veranda is partly coupled; an open courtyard has no enclosed reverberant field.
@@ -2401,7 +2403,8 @@
       ['hiddenFittingsRevision', D.hiddenFittingsRevision, '.before-hidden-fittings', D.upgradeHiddenFittings],
       ['finishChandelierRevision', D.finishChandelierRevision, '.before-lacquer-chandeliers', D.upgradeFinishChandeliers],
       ['fanBeamRevision', D.fanBeamRevision, '.before-fans-on-beams', D.upgradeFanBeams],
-      ['daisLevelRevision', D.daisLevelRevision, '.before-dais-0-80', D.upgradeDaisLevel]
+      ['daisLevelRevision', D.daisLevelRevision, '.before-dais-0-80', D.upgradeDaisLevel],
+      ['facadeCadRevision', D.facadeCadRevision, '.before-cad-facade', D.upgradeFacadeCad]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;

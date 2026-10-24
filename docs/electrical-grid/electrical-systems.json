@@ -33007,9 +33007,14 @@
           2.35,
           6.140000000000001,
           -7.36
+        ],
+        [
+          4.05,
+          6.140000000000001,
+          -7.36
         ]
       ],
-      "length": 12.1,
+      "length": 13.799999999999999,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -33030,11 +33035,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.1,
+      "upstreamLength": 13.7,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          3.95,
           6.140000000000001,
           -7.36
         ],
@@ -33050,19 +33055,19 @@
         ],
         [
           2.35,
-          15.64,
+          19.614,
           0
         ],
         [
-          2.13,
-          15.64,
+          3.95,
+          19.614,
           0
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 17.08,
+      "length": 23.124022727155335,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33082,11 +33087,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.1,
+      "upstreamLength": 13.7,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          3.95,
           6.140000000000001,
           -7.36
         ],
@@ -33098,23 +33103,23 @@
         [
           2.35,
           7.65,
-          -0.905
+          -0.691
         ],
         [
           2.35,
-          13.3,
-          -0.905
+          17.79,
+          -0.691
         ],
         [
-          2.13,
-          13.3,
-          -0.905
+          3.95,
+          17.79,
+          -0.691
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 13.835,
+      "length": 20.609022727155335,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33134,11 +33139,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.1,
+      "upstreamLength": 13.469999999999999,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          3.72,
           6.140000000000001,
           -7.36
         ],
@@ -33150,23 +33155,23 @@
         [
           2.35,
           7.65,
-          -0.47
+          -0.3
         ],
         [
           2.35,
-          11.8,
-          -0.47
+          16.683,
+          -0.3
         ],
         [
-          2.1,
-          11.8,
-          -0.47
+          3.72,
+          16.683,
+          -0.3
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 12.8,
+      "length": 19.50187223729198,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33186,11 +33191,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.1,
+      "upstreamLength": 13.799999999999999,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          4.05,
           6.140000000000001,
           -7.36
         ],
@@ -33202,23 +33207,23 @@
         [
           2.35,
           7.65,
-          -5.48
+          -5.35
         ],
         [
           2.35,
-          12.62,
-          -5.48
+          12.917,
+          -5.35
         ],
         [
-          2.13,
-          12.62,
-          -5.48
+          4.05,
+          12.917,
+          -5.35
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 8.58,
+      "length": 11.250785390048936,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33238,11 +33243,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.1,
+      "upstreamLength": 13.799999999999999,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          4.05,
           6.140000000000001,
           -7.36
         ],
@@ -33254,23 +33259,23 @@
         [
           2.35,
           7.65,
-          -5.985
+          -5.928999999999999
         ],
         [
           2.35,
-          11.05,
-          -5.985
+          11.35,
+          -5.928999999999999
         ],
         [
-          2.13,
-          11.05,
-          -5.985
+          4.05,
+          11.35,
+          -5.928999999999999
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 6.505000000000001,
+      "length": 9.104785390048937,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33290,11 +33295,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.1,
+      "upstreamLength": 13.71,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          3.960000000000001,
           6.140000000000001,
           -7.36
         ],
@@ -33306,23 +33311,23 @@
         [
           2.35,
           7.65,
-          -5.79
+          -5.659999999999999
         ],
         [
           2.35,
-          10.08,
-          -5.79
+          10.391,
+          -5.659999999999999
         ],
         [
-          2.1,
-          10.08,
-          -5.79
+          3.9600000000000004,
+          10.391,
+          -5.659999999999999
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 5.76,
+      "length": 8.258306050369999,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33342,11 +33347,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.1,
+      "upstreamLength": 13.799999999999999,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          4.05,
           6.140000000000001,
           -7.36
         ],
@@ -33358,23 +33363,23 @@
         [
           2.35,
           7.65,
-          -4.9750000000000005
+          -4.771
         ],
         [
           2.35,
-          11.05,
-          -4.9750000000000005
+          11.35,
+          -4.771
         ],
         [
-          2.13,
-          11.05,
-          -4.9750000000000005
+          4.05,
+          11.35,
+          -4.771
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 7.515000000000001,
+      "length": 10.262785390048936,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33394,11 +33399,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.1,
+      "upstreamLength": 13.71,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          3.960000000000001,
           6.140000000000001,
           -7.36
         ],
@@ -33410,23 +33415,23 @@
         [
           2.35,
           7.65,
-          -5.170000000000001
+          -5.04
         ],
         [
           2.35,
-          10.08,
-          -5.170000000000001
+          10.391,
+          -5.04
         ],
         [
-          2.1,
-          10.08,
-          -5.170000000000001
+          3.9600000000000004,
+          10.391,
+          -5.04
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 6.379999999999999,
+      "length": 8.87830605037,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33478,9 +33483,14 @@
           2.35,
           6.140000000000001,
           7.36
+        ],
+        [
+          4.05,
+          6.140000000000001,
+          7.36
         ]
       ],
-      "length": 18.700000000000003,
+      "length": 20.400000000000002,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -33501,11 +33511,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.700000000000003,
+      "upstreamLength": 20.300000000000004,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          3.95,
           6.140000000000001,
           7.36
         ],
@@ -33517,23 +33527,23 @@
         [
           2.35,
           7.65,
-          0.905
+          0.691
         ],
         [
           2.35,
-          13.3,
-          0.905
+          17.79,
+          0.691
         ],
         [
-          2.13,
-          13.3,
-          0.905
+          3.95,
+          17.79,
+          0.691
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 13.835,
+      "length": 20.609022727155335,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33553,11 +33563,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.700000000000003,
+      "upstreamLength": 20.070000000000004,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          3.72,
           6.140000000000001,
           7.36
         ],
@@ -33569,23 +33579,23 @@
         [
           2.35,
           7.65,
-          0.47
+          0.3
         ],
         [
           2.35,
-          11.8,
-          0.47
+          16.683,
+          0.3
         ],
         [
-          2.1,
-          11.8,
-          0.47
+          3.72,
+          16.683,
+          0.3
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 12.8,
+      "length": 19.50187223729198,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33605,11 +33615,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.700000000000003,
+      "upstreamLength": 20.400000000000002,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          4.05,
           6.140000000000001,
           7.36
         ],
@@ -33621,23 +33631,23 @@
         [
           2.35,
           7.65,
-          5.48
+          5.35
         ],
         [
           2.35,
-          12.62,
-          5.48
+          12.917,
+          5.35
         ],
         [
-          2.13,
-          12.62,
-          5.48
+          4.05,
+          12.917,
+          5.35
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 8.58,
+      "length": 11.250785390048936,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33657,11 +33667,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.700000000000003,
+      "upstreamLength": 20.400000000000002,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          4.05,
           6.140000000000001,
           7.36
         ],
@@ -33673,23 +33683,23 @@
         [
           2.35,
           7.65,
-          4.9750000000000005
+          4.771
         ],
         [
           2.35,
-          11.05,
-          4.9750000000000005
+          11.35,
+          4.771
         ],
         [
-          2.13,
-          11.05,
-          4.9750000000000005
+          4.05,
+          11.35,
+          4.771
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 7.515000000000001,
+      "length": 10.262785390048936,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33709,11 +33719,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.700000000000003,
+      "upstreamLength": 20.310000000000002,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          3.960000000000001,
           6.140000000000001,
           7.36
         ],
@@ -33725,23 +33735,23 @@
         [
           2.35,
           7.65,
-          5.170000000000001
+          5.04
         ],
         [
           2.35,
-          10.08,
-          5.170000000000001
+          10.391,
+          5.04
         ],
         [
-          2.1,
-          10.08,
-          5.170000000000001
+          3.9600000000000004,
+          10.391,
+          5.04
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 6.379999999999999,
+      "length": 8.87830605037,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33761,11 +33771,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.700000000000003,
+      "upstreamLength": 20.400000000000002,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          4.05,
           6.140000000000001,
           7.36
         ],
@@ -33777,23 +33787,23 @@
         [
           2.35,
           7.65,
-          5.985
+          5.928999999999999
         ],
         [
           2.35,
-          11.05,
-          5.985
+          11.35,
+          5.928999999999999
         ],
         [
-          2.13,
-          11.05,
-          5.985
+          4.05,
+          11.35,
+          5.928999999999999
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 6.505000000000001,
+      "length": 9.104785390048937,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -33813,11 +33823,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.700000000000003,
+      "upstreamLength": 20.310000000000002,
       "homeRun": false,
       "points": [
         [
-          2.35,
+          3.960000000000001,
           6.140000000000001,
           7.36
         ],
@@ -33829,23 +33839,23 @@
         [
           2.35,
           7.65,
-          5.79
+          5.659999999999999
         ],
         [
           2.35,
-          10.08,
-          5.79
+          10.391,
+          5.659999999999999
         ],
         [
-          2.1,
-          10.08,
-          5.79
+          3.9600000000000004,
+          10.391,
+          5.659999999999999
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 5.76,
+      "length": 8.258306050369999,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -41698,8 +41708,8 @@
       "specs": "440 lm · 3000 K · 60° beam · 0.8 m strand",
       "hiddenAlternative": false,
       "position": [
-        2.13,
-        15.64,
+        3.95,
+        19.614,
         0
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -41723,9 +41733,9 @@
       "specs": "260 lm · 3000 K · 80° beam · 2 m strand",
       "hiddenAlternative": false,
       "position": [
-        2.13,
-        13.3,
-        -0.905
+        3.95,
+        17.79,
+        -0.691
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -41748,9 +41758,9 @@
       "specs": "40 lm · 2200 K",
       "hiddenAlternative": false,
       "position": [
-        2.1,
-        11.8,
-        -0.47
+        3.72,
+        16.683,
+        -0.3
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -41773,9 +41783,9 @@
       "specs": "260 lm · 3000 K · 80° beam · 2 m strand",
       "hiddenAlternative": false,
       "position": [
-        2.13,
-        13.3,
-        0.905
+        3.95,
+        17.79,
+        0.691
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -41798,9 +41808,9 @@
       "specs": "40 lm · 2200 K",
       "hiddenAlternative": false,
       "position": [
-        2.1,
-        11.8,
-        0.47
+        3.72,
+        16.683,
+        0.3
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -41823,9 +41833,9 @@
       "specs": "300 lm · 3000 K · 60° beam · 0.5 m strand",
       "hiddenAlternative": false,
       "position": [
-        2.13,
-        12.62,
-        -5.48
+        4.05,
+        12.917,
+        -5.35
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -41848,9 +41858,9 @@
       "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
       "hiddenAlternative": false,
       "position": [
-        2.13,
-        11.05,
-        -5.985
+        4.05,
+        11.35,
+        -5.928999999999999
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -41873,9 +41883,9 @@
       "specs": "40 lm · 2200 K",
       "hiddenAlternative": false,
       "position": [
-        2.1,
-        10.08,
-        -5.79
+        3.9600000000000004,
+        10.391,
+        -5.659999999999999
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -41898,9 +41908,9 @@
       "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
       "hiddenAlternative": false,
       "position": [
-        2.13,
-        11.05,
-        -4.9750000000000005
+        4.05,
+        11.35,
+        -4.771
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -41923,9 +41933,9 @@
       "specs": "40 lm · 2200 K",
       "hiddenAlternative": false,
       "position": [
-        2.1,
-        10.08,
-        -5.170000000000001
+        3.9600000000000004,
+        10.391,
+        -5.04
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -41948,9 +41958,9 @@
       "specs": "300 lm · 3000 K · 60° beam · 0.5 m strand",
       "hiddenAlternative": false,
       "position": [
-        2.13,
-        12.62,
-        5.48
+        4.05,
+        12.917,
+        5.35
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -41973,9 +41983,9 @@
       "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
       "hiddenAlternative": false,
       "position": [
-        2.13,
-        11.05,
-        4.9750000000000005
+        4.05,
+        11.35,
+        4.771
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -41998,9 +42008,9 @@
       "specs": "40 lm · 2200 K",
       "hiddenAlternative": false,
       "position": [
-        2.1,
-        10.08,
-        5.170000000000001
+        3.9600000000000004,
+        10.391,
+        5.04
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -42023,9 +42033,9 @@
       "specs": "140 lm · 3000 K · 80° beam · 1.3 m strand",
       "hiddenAlternative": false,
       "position": [
-        2.13,
-        11.05,
-        5.985
+        4.05,
+        11.35,
+        5.928999999999999
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -42048,9 +42058,9 @@
       "specs": "40 lm · 2200 K",
       "hiddenAlternative": false,
       "position": [
-        2.1,
-        10.08,
-        5.79
+        3.9600000000000004,
+        10.391,
+        5.659999999999999
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     }

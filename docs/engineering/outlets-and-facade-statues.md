@@ -57,11 +57,11 @@ A socket has no load of its own. The operating estimate uses the **test load** e
 
 | ID | Subject | Base position X / Y / Z | Modelled size | Status |
 | --- | --- | --- | --- | --- |
-| `D-FACADE-C` | Assumption of Our Lady | 2.290 / 11.800 / 0 | 2.20 m figure on a 0.26 m cloud, 2.75 m to the fingertips; 0.72 m deep, 1.42 m wide | Subject and place `USER CONFIRMED`; form `CONCEPT` |
-| `D-FACADE-B` | Saint Peter (keys, book) | 2.290 / 10.080 / −5.480 | 1.78 m figure; 0.61 m deep, 0.64 m wide | Subject **proposed, not confirmed** |
-| `D-FACADE-H` | Saint Paul (sword, book) | 2.290 / 10.080 / +5.480 | 1.78 m figure; 0.61 m deep, 0.64 m wide | Subject **proposed, not confirmed** |
+| `D-FACADE-C` | Assumption of Our Lady | 4.080 / 16.683 / 0 | 2.20 m figure on a 0.26 m cloud, 2.75 m to the fingertips; 0.72 m deep, 1.42 m wide | Subject and place `USER CONFIRMED`; form `CONCEPT` |
+| `D-FACADE-B` | Saint Peter (keys, book) | 4.150 / 10.391 / −5.350 | 1.78 m figure; 0.61 m deep, 0.64 m wide | Subject **proposed, not confirmed** |
+| `D-FACADE-H` | Saint Paul (sword, book) | 4.150 / 10.391 / +5.350 | 1.78 m figure; 0.61 m deep, 0.64 m wide | Subject **proposed, not confirmed** |
 
-The figures stand on the pedestal tops of the niches already traced from elevation sheet 1 (`FACADE-DRAWING-02`: central base +11.00, side bases +9.43; pedestals 0.80 and 0.65 m high). That sheet shows **empty niches with pedestals**. The statues are therefore removable simulator decoration records, not a change to the traced façade: hide them in **Simulator → Décor** to see the façade as drawn. Niche depths in the model are illustrative, so the fit in depth (central figure back at X 2.68 against a niche back at X 2.70) is not a measured clearance.
+**Since 24 October 2026** the niches are those of the church's CAD file (DWG sheet 1, E01B; [facade model](../facade-model.md)): side pedestal tops +10.391, niches 1.198 m wide springing at +12.308; central pedestal top +16.683 in the aedicule, niche 1.422 m wide springing at +18.893. The statues and their lights moved with them once (saved layouts: `facadeCadRevision`). Until then they stood in the niches traced from PDF sheet 1 (`FACADE-DRAWING-02`: central base +11.00 → statue base +11.80, side +9.43 → +10.08), at X 2.29. Both drawings show **empty niches with pedestals**. The statues are therefore removable simulator decoration records, not a change to the traced façade: hide them in **Simulator → Décor** to see the façade as drawn. Niche depths come from the CAD plans at +10.128 and +15.840 m, but the figures are generated, so the fits are not measured clearances: the Assumption is 1.42 m across the raised hands in a 1.422 m niche (back of figure X 4.47, niche back X 4.94); the side figures are 0.64 m wide in 1.198 m niches.
 
 Peter and Paul are a proposal: the owner asked for “two saints” without naming them. They follow the pair already chosen for the wings. Changing a subject means changing the figure type of that record; position, light and circuit stay.
 
@@ -73,13 +73,13 @@ Circuit **L10 · Façade statues & candles**, DB-2, 15 records, 34 W connected.
 
 | Per niche | Type | Where | Output in the model |
 | --- | --- | --- | --- |
-| 1 hidden arch line (`L-STATUE-*-ARCH`) | Linear LED in a slot behind a matching lip under the arch crown, aimed at the face | Central X 2.130 / Y 15.640; sides Y 12.620 | 440 lm central, 300 lm sides, 60° |
+| 1 hidden arch line (`L-STATUE-*-ARCH`) | Linear LED in a slot behind a matching lip under the arch crown, aimed at the face | Central X 3.950 / Y 19.614; sides X 4.050 / Y 12.917 | 440 lm central, 300 lm sides, 60° |
 | 2 hidden jamb lines (`L-STATUE-*-JAMB-1/2`) | Upright linear LED behind a matching lip at the front edge of each jamb, aimed across and back | 20 mm inside each jamb face; 2.0 m long central, 1.3 m sides | 260 lm central, 140 lm sides, 80° |
-| 2 candle lights (`L-STATUE-*-CANDLE-1/2`) | Electric candle in a brass holder, 0.46 m tall, on the pedestal top at the statue's feet | Central Z ±0.47; sides ±0.31 from the niche centre | about 40 lm, 1 W each |
+| 2 candle lights (`L-STATUE-*-CANDLE-1/2`) | Electric candle in a brass holder, 0.46 m tall, on the pedestal top at the statue's feet | Central: front corners of the 0.93 m pedestal, X 3.72, Z ±0.30 (were beside the feet, Z ±0.47); sides ±0.31 from the niche centre | about 40 lm, 1 W each |
 
 Intent: the niche glows and the figure stands in soft relief; from the forecourt only the light and the candles are seen. The model draws each hidden line as its finish-matched lip, without lens or lamp body. An earlier version of this revision used visible spotlights at the feet and head; the owner rejected them and they were removed before issue.
 
-Direct maintained illuminance from the simulator's photometry, scene Full service · evening, no occlusion by the niche or the figure (the façade is not in the analysis geometry):
+Direct maintained illuminance from the simulator's photometry, scene Full service · evening, no occlusion by the niche or the figure (the façade is not in the analysis geometry). **Figures of 9 October 2026, before the niches moved; stale until recalculated for the CAD niches:**
 
 | Point | L10 alone (lux) | With the L6 façade floods (lux) |
 | --- | ---: | ---: |

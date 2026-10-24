@@ -648,6 +648,8 @@
       }
       const curb=mesh(new T.TorusGeometry(.72,.07,6,24),mat.trim,landscape,'Tree bed stone edging');curb.rotation.x=Math.PI/2;curb.position.set(x,-2.045,z);
     }
+    // The central facade above the cornice follows the CAD file of 23 Oct 2026 (facade.js).
+    window.CHURCH_FACADE?.prepare(ctx);
     // Project maps in metres before the legacy renderer merges material batches.
     const p=new T.Vector3(),normal=new T.Vector3(),normalMatrix=new T.Matrix3();
     building.updateMatrixWorld(true);scene.updateMatrixWorld(true);

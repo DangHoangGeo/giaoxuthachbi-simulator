@@ -14,8 +14,10 @@ The drawings belong to the church's designers and are under publication hold H1 
 | `dimensions.csv` | All 726 DIMENSION objects in the drawings, measured value, displayed value, both measuring points in model axes, same-value register IDs | Yes |
 | `levels.csv` | All 79 level labels, checked against the apex of the level marker drawn under each | Yes |
 | `grid-check.csv` | Grid centrelines drawn in each plan, section and elevation against the workbook's *Model grid* | Yes |
+| `facade.csv` | The central facade the model follows: 32 traced levels, arcs, faces and the pier chain, checked against the DWG, and three model departures | Yes |
+| `facade-plan.md` | The work plan written before the facade was built (24 Oct 2026) | Yes |
 
-The same data is in the dimension workbook `../Thach_Bi_Church_Dimensions.xlsx` on the sheets *DWG sheets*, *DWG dimensions*, *DWG levels*, *DWG grid check* and *DWG findings*. The DWG is source file 10 on *Sources*, and five new rows ISSUE-R01 to ISSUE-R05 are on *Open items*. No existing workbook entry, value or status was changed.
+The same data is in the dimension workbook `../Thach_Bi_Church_Dimensions.xlsx` on the sheets *DWG sheets*, *DWG dimensions*, *DWG levels*, *DWG grid check*, *DWG findings* and *DWG facade*. The DWG is source file 10 on *Sources*, and five new rows ISSUE-R01 to ISSUE-R05 are on *Open items*. No existing workbook entry, value or status was changed.
 
 ## Reproduce
 
@@ -31,6 +33,10 @@ python3 -m pip install -r scripts/requirements-dwg.txt
 
 ```bash
 python3 scripts/extract_dwg_revision.py extract --render
+```
+
+```bash
+python3 scripts/extract_dwg_revision.py facade
 ```
 
 ```bash
@@ -81,7 +87,7 @@ Not in the file: the roof plan (register file 5, printed sheet 11) and the site 
 
 - **Grid: unchanged.** Every axis drawn in P05, P14, E01A/B, E02, E03, S24, S25 and S45 is within 0.1 mm of the *Model grid*.
 - **Levels: unchanged except the ridge.** Of the 79 level labels, 21 are plan labels or have no marker; 56 of the other 58 sit on their markers within 1 mm, including all tower levels (+8.390 to +36.920 m) and the side-wing levels +6.324, +9.830 and +15.187 m. The two exceptions are the “+12,472M” labels in sections S24 and S25, whose markers are at +12.396 m. The side elevation also draws its 45 m ridge line at +12.396 m, while section A-A draws the ridge at +12.472 m (ISSUE-R05, RFI-S01).
-- **Central facade: a different design** (ISSUE-R02). DWG sheet 1 has one pedimented arched niche with a cross between crested parapets; PDF sheet 1, which the model follows, has three pinnacled gables.
+- **Central facade: a different design** (ISSUE-R02). DWG sheet 1 has one pedimented arched niche with a cross between crested parapets; PDF sheet 1 has three pinnacled gables. Since 24 October 2026 the model follows the DWG (below).
 - **Sanctuary section: a different revision** (ISSUE-R03, ISSUE-R04). Platform 800 mm (PDF 750); side-opening chain 160 / 2,544 / 466 / 4,392 (PDF 150 / 2,554 / 396 / 4,462); inner heights 6,231 and 8,525 (PDF 6,301 and 8,452).
 - **Ground plan: fewer dimensions.** The DWG plan carries 22 dimension objects; the opening chains and overall widths of PDF sheet 6 are not among them.
 - New evidence for existing open items (EI02, RFI-S01 to S03, ISSUE-C01 to C03, C05, P05) is listed on the workbook's *DWG findings* sheet. Their statuses are left for the owner.
@@ -89,6 +95,10 @@ Not in the file: the roof plan (register file 5, printed sheet 11) and the site 
 ## Levels adopted by the owner
 
 On 24 October 2026 the owner directed the model to follow this file. The workbook's *Model grid* now records the levels the model uses, with both sources named: sanctuary dais +0.800 (P049 750 in the PDF set; DWG0378), side floors +0.160 (P050/P052 150; DWG0373). The PDF values stay unchanged on *Dimensions*, and ISSUE-R04 stays open for the church. `extract_dwg_revision.py workbook` applies these rows once (`ADOPTED_LEVELS`). See [sanctuary-model.md](../../sanctuary-model.md) for what moved in the model.
+
+## Central facade adopted by the owner
+
+On 24 October 2026 the owner directed the model to follow this file's central facade as well. Above +8.45 m, `Thach_Bi_Viewer/facade.js` builds the upper storey, niches, cresting, pinnacles and the aedicule with its cross (+24.648 m) from drawing E01B and the tower-end plans at +10.128 and +15.840 m. `facade.csv` holds the values, and `extract_dwg_revision.py facade` finds each one in the DWG within 1.5 mm. The doors and ground storey were already in agreement and are kept. See [facade-model.md](../../facade-model.md). ISSUE-R02 stays open for the church; overlay checks are kept, not committed, under `images/05-facade-check/`.
 
 ## Limits
 

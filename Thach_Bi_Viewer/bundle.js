@@ -39137,7 +39137,7 @@ void main() {
         },
         entrance: {
           title: "Between the towers",
-          note: "The central facade follows a tracing of the supplied elevation.",
+          note: "Above the doors, the central facade follows the church\u2019s CAD file of 23 October 2026.",
           pos: [-25, 11, 0],
           target: [2.43, 10.6, 0],
           walk: [-5.3, 0, 0, 0.16],
