@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "status": "DERIVED / CONCEPT / ENGINEERING HOLD · comparison screens only",
- "model_git_revision": "661d079dbc5784941c45b9bb3f0573896130a525",
+ "model_git_revision": "a55544bfd8a29dfba742428ce86b2da4e56f842f",
  "source_sha256": {
   "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
   "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",
@@ -21,7 +21,7 @@
   "Thach_Bi_Viewer/simulator/engine.js": "507e310fee3e3cb100e92bc5deff44ba62a6edb831f8d75f561ab3ce1844142f",
   "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
   "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
-  "Thach_Bi_Viewer/simulator/design.js": "e4b78175b4eac1fa9d885f352013a8ea2e867e56cb2dc97fe0227d1fa5fd7aa1",
+  "Thach_Bi_Viewer/simulator/design.js": "ffb0536c2b0183f78abf79f3a8a6f8c54fa31fc7bfe037323b11c2683ea0289b",
   "Thach_Bi_Viewer/simulator/analysis.js": "7670036a3be8f9ca423b551bc75261c2272e6c07ba077ea49a394cb9c04af849",
   "Thach_Bi_Viewer/simulator/electrical.js": "c8cab616658b445b4eba8157afcc581d471381370ce8e034a415557e303ad181",
   "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
@@ -29,8 +29,8 @@
   "scripts/lib/study_model.cjs": "419dbdfb2da2a03b6afdf578d5d56c5fbb759f1b0b6f62549a66a7d43cb8b10b",
   "scripts/export_electrical_loads.cjs": "066af5453cb3e782abe4cfaf585b6cd9b04ebafad050e18c73615e7ca6fdca2b",
   "docs/electrical-grid/electrical-systems.json": "d50c68edff009ac84589ad37b15985dac299e304fb4daa2752ebe808d92740fd",
-  "docs/electrical-grid/equipment-layout.json": "5385d4f4cf361a2e56db9b88d4a9952e6d93bf5f83f0834cb083bcdd6684e517",
-  "docs/electrical-grid/categories/manifest.json": "09a59757d89b229b3f40117b11b63efeeab26dfc96ec87bfa7d2b80e15206ada"
+  "docs/electrical-grid/equipment-layout.json": "944ecbe81a903e81a65ffa487f20c3a417603b0749843148bbf77414d42d60b4",
+  "docs/electrical-grid/categories/manifest.json": "fde19879255a4c9dcb4acb2b146755f6a3c4e378481f842c9c129efe26df0e7f"
  },
  "default_scene": "Full service · evening",
  "assumptions": {

@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-24T18:07:55.978Z",
+  "savedAt": "2026-10-24T18:15:14.532Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -53,7 +53,7 @@
     "fanBeamRevision": "2026-10-19-fans-on-column-beams-1",
     "daisLevelRevision": "2026-10-24-dais-0-80-1",
     "facadeCadRevision": "2026-10-24-cad-facade-1",
-    "parishMeetingRevision": "2026-10-25-parish-meeting-4",
+    "parishMeetingRevision": "2026-10-25-parish-meeting-5",
     "eveningExposureRevision": "2026-10-09-evening-160"
   },
   "customScenes": [],

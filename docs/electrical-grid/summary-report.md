@@ -66,7 +66,7 @@ The held wing review of 9 October 2026 retains four small brass chandeliers (L63
 
 ## Sources and refresh
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 5385d4f4cf361a2e56db9b88d4a9952e6d93bf5f83f0834cb083bcdd6684e517.
+- [Layout snapshot](equipment-layout.json), SHA-256: 944ecbe81a903e81a65ffa487f20c3a417603b0749843148bbf77414d42d60b4.
 - [Electrical snapshot](electrical-systems.json), SHA-256: d50c68edff009ac84589ad37b15985dac299e304fb4daa2752ebe808d92740fd.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
