@@ -59,6 +59,16 @@ At the owner's direction after the parish priest's meeting (point 5: closed towe
 
 **Departure kept on purpose:** plan sheet 5 draws the stage-1 front wall about 0.5 m further forward than the model's (X −0.5 against X 0). The model keeps its wall plane, so the stages above and the fittings on the +8.39 m cornice keep their places; the piers and entablature project in front of it as drawn. Each tower now has a door from the rear corner of the nave (inner side, X 3.4–4.4 m, 2.3 m high) into its ground-floor room; the walking map blocks the old passage. The old onion cap, cone, urns and cap rosettes are removed. The festival strands on the tower corners move onto the pier fronts. An overlay of E01B on the model after the change is kept, uncommitted, as `layout_design/dwg-2026-10-23/images/05-facade-check/E01B-overlay_towers-after_2026-10-25.png`. Structure, reinforcement and the real pier sections remain on engineering hold.
 
+## Roofline, 25 October 2026
+
+The parish priest asked that the roof and its heights follow the new drawings (point 4); the owner then directed the side elevation. The roof planes already matched sections 24/25 (ridge +12.472, main eaves +7.13, porch eaves +6.325) and are unchanged. `Thach_Bi_Viewer/roofline.js` adds what the elevations draw on the roofline:
+
+- **Porch parapets (E02):** a balustrade +6.35 to +7.05 on the porch cornice of both runs (2′–9, 10–12), with a pedestal and a fleur-de-lis pinnacle to +8.0 on every axis. It replaces the small eave crest and hides most of the tiled porch roof from below.
+- **9–10 side gables (E02):** wall raised to the CAD silhouette; outer piers with pinnacles to +10.75; inner piers with pinnacles to +12.9; stepped raking cornices with Greek key, dentils and leaf crest; a rose at +7.55; a crowning niche aedicule with volutes, ball and trefoil cross to +15.2. The old schematic gable is removed.
+- **Rear gable on axis 12 (E03):** gable wall raised to the CAD silhouette; corner, C/G and D/E piers with pinnacles (+10.2, +11.5, +14.65); crested parapets over the porch ends; a band between the D/E piers at +7.6 to +8.55; lower and upper raking cornices with leaf crests; a rose at +10.0; a crowning aedicule with its cross at +17.829. The ground storey of the end wall is kept.
+
+The festival strands on the porch eaves move to the cornice lip in front of the balustrade, and the rear-gable strand follows the new lower rake. Overlay of E03 on the model: `layout_design/dwg-2026-10-23/images/05-facade-check/E03-overlay_rear-gable-after_2026-10-25.png` (uncommitted). ISSUE-R05 (ridge label +12.472 against the drawn +12.396) stays open; the model keeps +12.472.
+
 ## Open questions
 
 - **ISSUE-R01 / ISSUE-R02** (church and designer): which set governs, and whether this central facade is the one to be built.

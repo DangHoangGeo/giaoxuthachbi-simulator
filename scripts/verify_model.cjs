@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -82,6 +82,15 @@ assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
   const cornice=nodes.filter(o=>o.name==='Tower base cornice').map(bounds);near(Math.max(...cornice.map(b=>b.max.y)),8.39,'tower cornice top at +8.39');
   for(const sign of [-1,1])for(const x of [-.5,1,2.45,4]) assert.equal(realism.walkAllowed(x,sign*10.15),false,'no passage through the tower base');
 }
+// Roofline after the CAD file, 25 Oct 2026 (roofline.js): porch parapets with axis pinnacles,
+// stepped 9–10 side gables and the stepped rear gable, each with a crowning cross.
+{
+  const R=sandbox.window.CHURCH_ROOFLINE.stats;assert.equal(R.crosses,3,'two side gables and the rear gable carry a cross');
+  assert(R.balusters>250&&R.pinnacles>=40,'porch parapets with balusters and pinnacles');
+  const crossTop=n=>Math.max(...nodes.filter(o=>/^Gable cross/.test(o.name)).map(o=>bounds(o).max.y));assert(Math.abs(crossTop()-17.829)<.01,'rear gable cross top +17.829 (E03)');
+  assert(!nodes.some(o=>o.name==='Schematic side ornamental gable'||o.name==='Schematic decorative eave crest'),'old side gables and eave crest removed');
+  const rail=bounds(nodes.find(o=>o.name==='Porch parapet top rail'));near(rail.max.y,7.05,'parapet top +7.05 (E02)');
+}
 // Stations of the Cross, parish priest 25 Oct 2026 (stations.js): fourteen, one per nave bay
 // between the columns, above the openings, on the nave face of the C/G wall; old placeholders gone.
 {
@@ -102,7 +111,7 @@ assert.equal(innerHeads.length,0,'the single 2.25 m inner windows are replaced b
 assert.equal(nodes.filter(o=>o.name==='Inner doorway coloured oval').length,4);
 assert.equal(nodes.filter(o=>o.name==='Entrance door coloured oval').length,3);
 const colouredHeads=nodes.filter(o=>/coloured oval$|fixed fanlight$|stained-glass fanlight$|rose-window infill$/.test(o.name));
-assert.equal(colouredHeads.length,80,'tower dome rosette glass removed with the old caps (towers.js)');
+assert.equal(colouredHeads.length,77,'glass of the tower cap rosettes (towers.js) and of the old side- and rear-gable roses (roofline.js) removed');
 for(const o of innerHeads){o.geometry.computeBoundingBox();near(o.geometry.boundingBox.min.y,3.171,'Inner oval spring');near(o.geometry.boundingBox.max.y,4.311,'Inner oval crown');}
 for(const o of clearBodies){
   assert.equal(o.material,mat.glass);assert.equal(o.material.map,null);

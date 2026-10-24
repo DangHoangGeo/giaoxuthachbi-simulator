@@ -668,6 +668,8 @@
     window.CHURCH_STATIONS?.prepare(ctx);
     // Tower bases (closed fronts, corner piers) and tower tops after the CAD file (towers.js, 25 Oct 2026).
     window.CHURCH_TOWERS?.prepare(ctx);
+    // Porch parapets, the 9–10 side gables and the rear gable after the CAD file (roofline.js, 25 Oct 2026).
+    window.CHURCH_ROOFLINE?.prepare(ctx);
     // Project maps in metres before the legacy renderer merges material batches.
     const p=new T.Vector3(),normal=new T.Vector3(),normalMatrix=new T.Matrix3();
     building.updateMatrixWorld(true);scene.updateMatrixWorld(true);

@@ -36,13 +36,13 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,145.417 | 3,145.417 | 0.000 | 0.000 |
+| Lighting | 3,140.924 | 3,140.924 | 0.000 | 0.000 |
 | Sound | 722.691 | 0.000 | 1,719.703 | 563.757 |
 | Fans and ventilation | 955.646 | 955.646 | 0.000 | 0.000 |
 | Exit signs | 145.936 | 145.936 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 263.923 | 263.923 | 0.000 | 0.000 |
-| **Total by length basis** | **5,233.613** | **4,510.922** | **1,719.703** | **563.757** |
+| **Total by length basis** | **5,229.120** | **4,506.430** | **1,719.703** | **563.757** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/387 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -66,8 +66,8 @@ The held wing review of 9 October 2026 retains four small brass chandeliers (L63
 
 ## Sources and refresh
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 88062f7a6e23d78621ee2f69e0c94047babf12437db78098dd47d3bedd6e18e8.
-- [Electrical snapshot](electrical-systems.json), SHA-256: fb798ccf47bd62d17275121a5ca1021b3ed9a80358d236bd57d75a7be070b894.
+- [Layout snapshot](equipment-layout.json), SHA-256: 5385d4f4cf361a2e56db9b88d4a9952e6d93bf5f83f0834cb083bcdd6684e517.
+- [Electrical snapshot](electrical-systems.json), SHA-256: d50c68edff009ac84589ad37b15985dac299e304fb4daa2752ebe808d92740fd.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 

@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-24T17:49:59.196Z",
+  "savedAt": "2026-10-24T18:07:55.978Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -4449,8 +4449,8 @@
       "mount": "floor",
       "pos": [
         21.35,
-        6.47,
-        -10.6
+        6.4,
+        -10.78
       ],
       "yaw": 90,
       "tilt": 0,
@@ -4473,8 +4473,8 @@
       "mount": "floor",
       "pos": [
         48.4,
-        6.47,
-        -10.6
+        6.4,
+        -10.78
       ],
       "yaw": 90,
       "tilt": 0,
@@ -4496,9 +4496,9 @@
       "circuit": "L7",
       "mount": "floor",
       "pos": [
-        53.45,
-        10,
-        -3.65
+        53.72,
+        9,
+        -5.475
       ],
       "yaw": 0,
       "tilt": 0,
@@ -4507,8 +4507,8 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "length": 9.07,
-        "slope": 36.4,
+        "length": 4.05,
+        "slope": 41,
         "spacing": 0.6
       },
       "shadow": false
@@ -4713,8 +4713,8 @@
       "mount": "floor",
       "pos": [
         21.35,
-        6.47,
-        10.6
+        6.4,
+        10.78
       ],
       "yaw": 90,
       "tilt": 0,
@@ -4737,8 +4737,8 @@
       "mount": "floor",
       "pos": [
         48.4,
-        6.47,
-        10.6
+        6.4,
+        10.78
       ],
       "yaw": 90,
       "tilt": 0,
@@ -4760,9 +4760,9 @@
       "circuit": "L7",
       "mount": "floor",
       "pos": [
-        53.45,
-        10,
-        3.65
+        53.72,
+        9,
+        5.475
       ],
       "yaw": 0,
       "tilt": 0,
@@ -4771,8 +4771,8 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "length": 9.07,
-        "slope": -36.4,
+        "length": 4.05,
+        "slope": -41,
         "spacing": 0.6
       },
       "shadow": false

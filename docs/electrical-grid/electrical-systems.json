@@ -20794,18 +20794,18 @@
         ],
         [
           21.35,
-          6.932426896644658,
-          -7.439024390243903
+          6.932313375305153,
+          -7.43953488372093
         ],
         [
           21.35,
-          6.22950276243094,
-          -10.6
+          6.189475138121547,
+          -10.78
         ],
         [
           21.35,
-          6.47,
-          -10.6
+          6.4,
+          -10.78
         ]
       ],
       "method": "roof-local",
@@ -20825,20 +20825,20 @@
             ],
             [
               21.35,
-              6.932426896644658,
-              -7.439024390243903
+              6.932313375305153,
+              -7.43953488372093
             ],
             [
               21.35,
-              6.22950276243094,
-              -10.6
+              6.189475138121547,
+              -10.78
             ]
           ],
           "finish": "soffit",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.672166101158713,
+      "length": 4.826461805692566,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -20873,18 +20873,18 @@
         ],
         [
           48.4,
-          6.932426896644658,
-          -7.439024390243903
+          6.932313375305153,
+          -7.43953488372093
         ],
         [
           48.4,
-          6.22950276243094,
-          -10.6
+          6.189475138121547,
+          -10.78
         ],
         [
           48.4,
-          6.47,
-          -10.6
+          6.4,
+          -10.78
         ]
       ],
       "method": "roof-local",
@@ -20904,20 +20904,20 @@
             ],
             [
               48.4,
-              6.932426896644658,
-              -7.439024390243903
+              6.932313375305153,
+              -7.43953488372093
             ],
             [
               48.4,
-              6.22950276243094,
-              -10.6
+              6.189475138121547,
+              -10.78
             ]
           ],
           "finish": "soffit",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.672166101158713,
+      "length": 4.826461805692566,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -20948,23 +20948,23 @@
         [
           53.016,
           5.98,
-          -3.65
+          -5.475
         ],
         [
           53.016,
-          10,
-          -3.65
+          9,
+          -5.475
         ],
         [
-          53.45,
-          10,
-          -3.65
+          53.72,
+          9,
+          -5.475
         ]
       ],
       "method": "rear-wall",
       "installation": "Rear-wall band and local termination; gable / weatherproof entry details pending.",
       "coverPaths": [],
-      "length": 8.164000000000005,
+      "length": 5.609000000000001,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -21934,18 +21934,18 @@
         ],
         [
           21.35,
-          6.932426896644658,
-          7.439024390243903
+          6.932313375305153,
+          7.43953488372093
         ],
         [
           21.35,
-          6.22950276243094,
-          10.6
+          6.189475138121547,
+          10.78
         ],
         [
           21.35,
-          6.47,
-          10.6
+          6.4,
+          10.78
         ]
       ],
       "method": "roof-local",
@@ -21965,20 +21965,20 @@
             ],
             [
               21.35,
-              6.932426896644658,
-              7.439024390243903
+              6.932313375305153,
+              7.43953488372093
             ],
             [
               21.35,
-              6.22950276243094,
-              10.6
+              6.189475138121547,
+              10.78
             ]
           ],
           "finish": "soffit",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.672166101158713,
+      "length": 4.826461805692566,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -22013,18 +22013,18 @@
         ],
         [
           48.4,
-          6.932426896644658,
-          7.439024390243903
+          6.932313375305153,
+          7.43953488372093
         ],
         [
           48.4,
-          6.22950276243094,
-          10.6
+          6.189475138121547,
+          10.78
         ],
         [
           48.4,
-          6.47,
-          10.6
+          6.4,
+          10.78
         ]
       ],
       "method": "roof-local",
@@ -22044,20 +22044,20 @@
             ],
             [
               48.4,
-              6.932426896644658,
-              7.439024390243903
+              6.932313375305153,
+              7.43953488372093
             ],
             [
               48.4,
-              6.22950276243094,
-              10.6
+              6.189475138121547,
+              10.78
             ]
           ],
           "finish": "soffit",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.672166101158713,
+      "length": 4.826461805692566,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -22088,23 +22088,23 @@
         [
           53.016,
           5.98,
-          3.65
+          5.475
         ],
         [
           53.016,
-          10,
-          3.65
+          9,
+          5.475
         ],
         [
-          53.45,
-          10,
-          3.65
+          53.72,
+          9,
+          5.475
         ]
       ],
       "method": "rear-wall",
       "installation": "Rear-wall band and local termination; gable / weatherproof entry details pending.",
       "coverPaths": [],
-      "length": 8.164000000000005,
+      "length": 5.609000000000001,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -39288,8 +39288,8 @@
       "hiddenAlternative": false,
       "position": [
         21.35,
-        6.47,
-        -10.6
+        6.4,
+        -10.78
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39313,8 +39313,8 @@
       "hiddenAlternative": false,
       "position": [
         48.4,
-        6.47,
-        -10.6
+        6.4,
+        -10.78
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39328,18 +39328,18 @@
       "quantity": 1,
       "modelSize": [
         0.10000000149011612,
-        5.482309341430664,
-        7.386989116668701
+        2.7570390701293945,
+        3.143176317214966
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 16,
-      "specs": "16 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 9.07 m strand",
+      "wattsEstimate": 8,
+      "specs": "8 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 4.05 m strand",
       "hiddenAlternative": false,
       "position": [
-        53.45,
-        10,
-        -3.65
+        53.72,
+        9,
+        -5.475
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39563,8 +39563,8 @@
       "hiddenAlternative": false,
       "position": [
         21.35,
-        6.47,
-        10.6
+        6.4,
+        10.78
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39588,8 +39588,8 @@
       "hiddenAlternative": false,
       "position": [
         48.4,
-        6.47,
-        10.6
+        6.4,
+        10.78
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39603,18 +39603,18 @@
       "quantity": 1,
       "modelSize": [
         0.10000000149011612,
-        5.482309341430664,
-        7.386989116668701
+        2.7570390701293945,
+        3.143176317214966
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 16,
-      "specs": "16 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 9.07 m strand",
+      "wattsEstimate": 8,
+      "specs": "8 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 4.05 m strand",
       "hiddenAlternative": false,
       "position": [
-        53.45,
-        10,
-        3.65
+        53.72,
+        9,
+        5.475
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -44289,11 +44289,11 @@
       "quantity": 2,
       "modelSize": [
         0.10000000149011612,
-        5.482309341430664,
-        7.386989116668701
+        2.7570390701293945,
+        3.143176317214966
       ],
-      "specs": "16 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 9.07 m strand",
-      "wattsEachEstimate": 16,
+      "specs": "8 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 4.05 m strand",
+      "wattsEachEstimate": 8,
       "itemIds": [
         "L201",
         "L212"

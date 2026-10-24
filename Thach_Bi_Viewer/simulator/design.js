@@ -334,9 +334,11 @@
     for (const s of [-1, 1]) {
       strand(`main eave ${side(s)} · nave`, [21.35, 7.32, s * 7.3], 90, 31.7);
       strand(`main eave ${side(s)} · sanctuary`, [48.4, 7.32, s * 7.3], 90, 8.9);
-      strand(`veranda eave ${side(s)} · nave`, [21.35, 6.47, s * 10.6], 90, 31.7);
-      strand(`veranda eave ${side(s)} · sanctuary`, [48.4, 6.47, s * 10.6], 90, 8.9);
-      strand(`rear gable ${side(s)}`, [53.45, 10.0, s * 3.65], 0, 9.07, -s * 36.4);
+      // Since 25 Oct 2026 the porch eaves carry a balustrade (roofline.js): the strands run along
+      // the cornice lip in front of it, and the rear-gable strand along the CAD lower rake.
+      strand(`veranda eave ${side(s)} · nave`, [21.35, 6.4, s * 10.78], 90, 31.7);
+      strand(`veranda eave ${side(s)} · sanctuary`, [48.4, 6.4, s * 10.78], 90, 8.9);
+      strand(`rear gable ${side(s)}`, [53.72, 9.0, s * 5.475], 0, 4.05, -s * 41.0);
       // Up the corner pilasters of the first three tower stages, which step in as they rise.
       // Since 25 Oct 2026 (towers.js) they run up the front of the CAD corner piers.
       const TW = window.CHURCH_TOWERS?.spec;
@@ -707,12 +709,18 @@
     "L148": {"type":"wallLantern","name":"Side door lantern · H · 34.725 · rear","pos":[36.15,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
     "L149": {"type":"wallLantern","name":"Side door lantern · H · 46.425 · front","pos":[45,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
     "L150": {"type":"wallLantern","name":"Side door lantern · H · 46.425 · rear","pos":[47.85,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L199": {"type":"bulbString","name":"Festival lights · veranda eave B · nave","pos":[21.35,6.47,-10.6],"yaw":90,"tilt":0,"mount":"floor","circuit":"L7"},
+    "L200": {"type":"bulbString","name":"Festival lights · veranda eave B · sanctuary","pos":[48.4,6.47,-10.6],"yaw":90,"tilt":0,"mount":"floor","circuit":"L7"},
+    "L201": {"type":"bulbString","name":"Festival lights · rear gable B","pos":[53.45,10,-3.65],"yaw":0,"tilt":0,"mount":"floor","circuit":"L7"},
     "L202": {"type":"bulbString","name":"Festival lights · tower B · stage 1 · inner corner","pos":[-0.4,4.195,-7.823],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
     "L203": {"type":"bulbString","name":"Festival lights · tower B · stage 1 · outer corner","pos":[-0.4,4.195,-12.483],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
     "L204": {"type":"bulbString","name":"Festival lights · tower B · stage 2 · inner corner","pos":[-0.31,12.115,-7.948],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
     "L205": {"type":"bulbString","name":"Festival lights · tower B · stage 2 · outer corner","pos":[-0.31,12.115,-12.358],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
     "L206": {"type":"bulbString","name":"Festival lights · tower B · stage 3 · inner corner","pos":[-0.21,19.49,-8.048],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
     "L207": {"type":"bulbString","name":"Festival lights · tower B · stage 3 · outer corner","pos":[-0.21,19.49,-12.258],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L210": {"type":"bulbString","name":"Festival lights · veranda eave H · nave","pos":[21.35,6.47,10.6],"yaw":90,"tilt":0,"mount":"floor","circuit":"L7"},
+    "L211": {"type":"bulbString","name":"Festival lights · veranda eave H · sanctuary","pos":[48.4,6.47,10.6],"yaw":90,"tilt":0,"mount":"floor","circuit":"L7"},
+    "L212": {"type":"bulbString","name":"Festival lights · rear gable H","pos":[53.45,10,3.65],"yaw":0,"tilt":0,"mount":"floor","circuit":"L7"},
     "L213": {"type":"bulbString","name":"Festival lights · tower H · stage 1 · inner corner","pos":[-0.4,4.195,7.823],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
     "L214": {"type":"bulbString","name":"Festival lights · tower H · stage 1 · outer corner","pos":[-0.4,4.195,12.483],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
     "L215": {"type":"bulbString","name":"Festival lights · tower H · stage 2 · inner corner","pos":[-0.31,12.115,7.948],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},

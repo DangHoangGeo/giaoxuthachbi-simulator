@@ -38,7 +38,7 @@ const document = {
 };
 const sandbox = { console, document, location: { search: '' }, URLSearchParams, Uint8ClampedArray, window: {} };
 vm.createContext(sandbox);
-for (const file of ['construction-data.js', 'construction.js', 'texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'realism.js', 'planning.js'])
+for (const file of ['construction-data.js', 'construction.js', 'texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js'])
   vm.runInContext(fs.readFileSync(viewer(file), 'utf8'), sandbox);
 let src = fs.readFileSync(viewer('bundle.js'), 'utf8');
 const begin = src.indexOf('    Us = document.getElementById("viewport"),');
