@@ -109,7 +109,7 @@ def analyse(loads, facts):
     circuits_meta = facts['circuits']
     full = facts['scenes'][facts['defaultScene']]
     feeders = {r['board'] if r['id'] == 'feeder:DB2' else r['id'].split(':')[1]: r for r in routes if r['role'] == 'feeder'}
-    feeder_len = {'DB1': 0.0, 'DB2': feeders['DB2']['length'], 'LC1': feeders['LC1']['length'], 'FC1': feeders['FC1']['length'], 'AV1': feeders['AV1']['length']}
+    feeder_len = {'DB1': 0.0, 'DB2': feeders['DB2']['length'], 'EB1': feeders['DB2']['length'] + feeders['EB1']['length'], 'LC1': feeders['LC1']['length'], 'FC1': feeders['FC1']['length'], 'AV1': feeders['AV1']['length']}
     mains = [r for r in routes if r['kind'] in ('light', 'fan', 'power')]
 
     # ------------------------------------------------------------------ circuits

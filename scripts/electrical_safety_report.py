@@ -143,7 +143,7 @@ def write_report(r, issue_date):
     w(f'4. **Nave** ({circuits_of("Nave")}). The busiest zone: {zmap["Nave"]["wired_points"]} wired points. Lighting, fan and loudspeaker trunks, the DB-2 feeder and the socket circuits share the two '
       'wall bands above the openings, then rise to the beams. This shared band is where separation, bunching (derating) and access for maintenance must be designed. '
       f'Ceiling-fan blades are {n(min(f["lowest_moving_part_above_floor_m"] for f in ceiling), 2)} m above the floor.')
-    w(f'5. **Entrance hall and DB-2** ({circuits_of("Entrance hall and DB-2")}). DB-2 stands inside the main doors on side B at the end of the {n(s1["db2_feeder_m"], 1)} m feeder. '
+    w(f'5. **Entrance hall and DB-2** ({circuits_of("Entrance hall and DB-2")}). DB-2 stands in the ground-floor room of the H-side tower (since 25 October 2026; left on site), at the end of the {n(s1["db2_feeder_m"], 1)} m feeder, with the festival and stage event board EB-1 beside it. '
       'The four front-gable exhaust fans and the two trial circulators are here; the circulators are off in every quick mode.')
     w(f'6. **Verandas and side paths** ({circuits_of("Verandas and side paths")}). {zmap["Verandas and side paths"]["covered_exterior"]} points are under the veranda roofs and '
       f'{zmap["Verandas and side paths"]["open_to_weather"]} are open to the weather (steps, paths, courtyard horns). The lowest lantern is {n(zmap["Verandas and side paths"]["lowest"]["height_above_floor_m"], 2)} m above the paving.')

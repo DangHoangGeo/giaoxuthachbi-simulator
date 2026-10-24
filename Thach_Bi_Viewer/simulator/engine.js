@@ -91,7 +91,10 @@
   // those long circuit runs back to the altar end are not needed.
   const BOARDS = {
     DB1: { label: 'DB-1 · Main board', where: 'Service room behind the altar · existing back-wall enclosure', pos: [48.895, 1.75, -1.55] },
-    DB2: { label: 'DB-2 · Towers & entrance', where: 'Inside the main doors, left of the main door', pos: [2.73, 1.5, -3.3] }
+    // Parish priest, 25 Oct 2026: the towers' board stands in the left tower (left on site and in
+    // the drawings: the H-side tower, ENG-027), on the inside of its closed front wall. Until then it
+    // stood inside the main doors at [2.73, 1.5, −3.3].
+    DB2: { label: 'DB-2 · Towers & entrance', where: 'Ground-floor room of the H-side tower (left on site), inside the closed front wall', pos: [0.24, 1.5, 9.25] }
   };
   const QUALITY = {
     // Both paths use the same physical shading. The texture path skips spots

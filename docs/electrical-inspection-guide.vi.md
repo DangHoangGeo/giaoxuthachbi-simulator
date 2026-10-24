@@ -54,7 +54,7 @@ Mỗi thẻ liệt kê thiết bị theo mạch. Bấm vào một dòng để ch
 7. **Start 3D walkthrough** đi qua chín bước xem xét lắp đặt, mỗi bước kèm câu hỏi còn mở.
 8. **Export systems JSON**, **Export schedule CSV**, **Export this review** lưu phần đang xem.
 
-Các tủ: **DB-1** tủ chính, **LC-1** điều khiển đèn, **FC-1** điều khiển quạt, **AV-1** tủ âm thanh, đều ở phòng phục vụ sau bàn thờ; **DB-2** ở bên trong cửa chính, cấp cho tháp, mặt tiền và sân trước. Một cáp cấp nguồn nối DB-1 với DB-2.
+Các tủ: **DB-1** tủ chính, **LC-1** điều khiển đèn, **FC-1** điều khiển quạt, **AV-1** tủ âm thanh, đều ở phòng phục vụ sau bàn thờ; **DB-2** ở phòng tầng trệt của tháp bên trái (nhìn từ ngoài vào, theo bản vẽ; tháp phía H), cho tháp, mặt tiền và sân khấu trước, cạnh đó là tủ **EB-1** cho các dịp hoan ca ở sân khấu (từ ngày 25/10/2026). Một cáp cấp nguồn nối DB-1 với DB-2.
 
 Màu chỉ hệ thống, không phải màu vỏ dây: vàng hổ phách là đèn, nâu là quạt, xanh dương là âm thanh, tím là micro, xanh ngọc là ổ cắm, đỏ là cáp cấp nguồn. Độ dày dây trên màn hình được phóng to để dễ nhìn, không phải tiết diện cáp. Chiều dài tuyến đo theo tim tuyến, chưa tính dự phòng và đầu nối.
 
@@ -64,7 +64,7 @@ Màu chỉ hệ thống, không phải màu vỏ dây: vàng hổ phách là đ�
 | --- | --- | --- | --- |
 | P-SANCT-B, P-SANCT-H | Hai bên cung thánh, trên trụ trục 10, cao 0,70 m so với bục bên | P1 (bên B), P2 (bên H) · DB-1 | ổ đôi 16 A trên mạch 16 A |
 | P-NAVE-B, P-NAVE-H | Giữa nhà thờ, tường hai bên cạnh trụ trục 6, cao 0,45 m so với sàn | P1 (bên B), P2 (bên H) · DB-1 | ổ đôi 16 A trên mạch 16 A |
-| P-TOWER-B, P-TOWER-H | Bên trong hiên mỗi tháp, trên trụ phía trước, cao 1,3 m so với sàn tháp | P3, P4 · DB-2 | tủ ngoài trời có khóa: một ổ 32 A và hai ổ 16 A, mạch riêng 32 A |
+| P-TOWER-B, P-TOWER-H | Bên trong phòng chân mỗi tháp, trên trụ phía trước, cao 1,3 m so với sàn tháp | P3, P4 · EB-1 (cạnh DB-2) | tủ ngoài trời có khóa: một ổ 32 A và hai ổ 16 A, mạch riêng 32 A |
 
 - Chọn một ổ cắm và kéo **Plugged-in load to test (W)** để thử một thiết bị, ví dụ 1 500 W cho máy lau sàn. **Test load now** cho biết số ampe của mạch và chuyển màu đỏ nếu mạch quá tải.
 - Hai tủ ở tháp dùng cho sự kiện ngoài trời (âm thanh sân khấu, ánh sáng, gian hàng). Trong mô hình chúng **mặc định tắt**; ngoài lúc có sự kiện nên cắt điện và khóa lại.

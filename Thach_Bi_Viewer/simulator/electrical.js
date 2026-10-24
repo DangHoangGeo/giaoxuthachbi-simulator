@@ -11,6 +11,10 @@
   const SOURCES = {
     DB1: { ...SIM.BOARDS.DB1, size: [0.2, 1.1, 0.8], facing: 'x', color: '#c96440', board: 'DB1' },
     DB2: { ...SIM.BOARDS.DB2, size: [0.16, 0.62, 0.46], facing: 'x', color: '#dc9e29', board: 'DB2' },
+    // Parish priest, 25 Oct 2026: beside the towers' board, a board for festival occasions on the
+    // stage. Fed from DB-2 and under its feeder, it carries the event power points and the festival
+    // exterior lights. Enclosure, devices and supply arrangement are proposals.
+    EB1: { label: 'EB-1 · Festival & stage event board', where: 'Ground-floor room of the H-side tower, beside DB-2', pos: [0.24, 1.5, 10.75], size: [0.16, 0.62, 0.46], facing: 'x', color: '#d97a2b', board: 'DB2' },
     LC1: { label: 'LC-1 · Lighting & scene controls', where: 'Existing service-room lighting enclosure', pos: [48.895, 1.85, -0.55], size: [0.2, 0.9, 0.8], facing: 'x', color: '#dc9e29', board: 'DB1' },
     FC1: { label: 'FC-1 · Fan speed controls', where: 'Existing service-room fan enclosure', pos: [48.895, 1.95, 0.4], size: [0.2, 0.7, 0.6], facing: 'x', color: '#b46a48', board: 'DB1' },
     AV1: { label: 'AV-1 · Mixer / amplifier rack', where: 'Existing service-room sound rack', pos: [49.275, 0.95, 1.4], size: [0.8, 1.6, 0.62], facing: 'x', color: '#3985c2', board: 'DB1' }
@@ -22,6 +26,7 @@
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const length = p => p.slice(1).reduce((n, v, i) => n + Math.hypot(...v.map((a, k) => a - p[i][k])), 0);
   const clean = p => p.filter((v, i) => !i || v.some((a, k) => Math.abs(a - p[i - 1][k]) > 0.00001)).map(v => v.slice());
+  const EVENT_BOARD = new Set(['P3', 'P4', 'L7']);
   const wired = it => { const t = CAT.byId[it.type]; return t.glow !== 'flame' && !!(t.light || t.fan || t.speaker || t.mic || t.outlet); };
   const circuitIndex = c => Math.max(0, Object.keys(SIM.CIRCUITS).indexOf(c));
   // Loudspeaker home-run bands step DOWN from +5.55 m and mains bands step up from +5.90 m, so the
@@ -106,7 +111,7 @@
   }
   function trunkPath(source, s, y, endX) {
     const p = SOURCES[source].pos;
-    if (source === 'DB2') return clean([p, [2.35, p[1], p[2]], [2.35, 7.65, p[2]],
+    if (source === 'DB2' || source === 'EB1') return clean([p, [2.35, p[1], p[2]], [2.35, 7.65, p[2]],
       [2.35, 7.65, s * WALL], [2.35, y, s * WALL], ...takeTo(perimeter(s, y).reverse(), endX)]);
     // Mains rise on the B side of the niche; loudspeaker home runs from AV-1 rise on the H side and
     // cross the service-room ceiling and the rear wall on their own line, then cross the mains riser once.
@@ -141,7 +146,7 @@
   const eventPoint = it => !!CAT.byId[it.type].outlet && SIM.CIRCUITS[it.circuit]?.board === 'DB2' &&
     it.pos[0] < 0.85 && Math.abs(it.pos[2]) > 7.56 && Math.abs(it.pos[2]) < 8.1 && it.pos[1] < 3;
   function eventTrunk(s, endX) {
-    const b = SOURCES.DB2.pos, fy = -EVENT.depth;
+    const b = SOURCES.EB1.pos, fy = -EVENT.depth;
     return clean([b, [b[0], fy, b[2]], [b[0], fy, s * EVENT.wallZ], [endX, fy, s * EVENT.wallZ]]);
   }
   function branchPath(it, start) {
@@ -310,6 +315,11 @@
     const feeder = trunkPath('DB1', -1, 6.26, 2.35);
     add({ id: 'feeder:DB2', name: 'DB-1 → DB-2 feeder', source: 'DB1', board: 'DB2', circuit: 'DB2-FEED', kind: 'feeder', role: 'feeder', itemIds: [], color: COLORS.feeder, installation: 'Wall bands, covered wing-roof crossing, entrance wall riser' },
       [...feeder, [2.35, 7.65, -7.36], [2.35, 7.65, b2[2]], [2.35, b2[1], b2[2]], b2]);
+    {
+      const e = SOURCES.EB1.pos;
+      add({ id: 'feeder:EB1', name: 'DB-2 → EB-1 event board supply', source: 'DB2', board: 'DB2', circuit: 'EB1-SUPPLY', kind: 'feeder', role: 'feeder', itemIds: [], color: COLORS.feeder, installation: 'Short tray between the two boards on the tower front wall' },
+        [b2, [b2[0], 2.1, b2[2]], [b2[0], 2.1, e[2]], e]);
+    }
     for (const id of ['AV1', 'LC1', 'FC1']) {
       const p = SOURCES[id].pos;
       add({ id: `feeder:${id}`, name: `DB-1 → ${id} equipment supply`, source: 'DB1', board: 'DB1', circuit: `${id}-SUPPLY`, kind: 'feeder', role: 'feeder', itemIds: [], color: COLORS.feeder, installation: 'Existing service-room wall tray / local equipment connection' },
@@ -323,7 +333,7 @@
       }
       // Exit signs leave DB-1 on their own way: a life-safety function must not depend on the
       // lighting and scene-control enclosure (electrical walk-round review, 9 October 2026).
-      const source = audio ? 'AV1' : SIM.CIRCUITS[it.circuit]?.board === 'DB2' ? 'DB2' : it.circuit === 'E1' ? 'DB1' : t.fan ? 'FC1' : t.light ? 'LC1' : 'DB1';
+      const source = audio ? 'AV1' : SIM.CIRCUITS[it.circuit]?.board === 'DB2' ? (EVENT_BOARD.has(it.circuit) ? 'EB1' : 'DB2') : it.circuit === 'E1' ? 'DB1' : t.fan ? 'FC1' : t.light ? 'LC1' : 'DB1';
       const kind = t.mic ? 'mic' : audio ? 'audio' : t.fan ? 'fan' : t.outlet ? 'power' : t.cat === 'decor' ? 'decor' : 'light';
       const feeds = [{ source, kind, audio }];
       if (t.speaker?.active) feeds.push({ source: 'DB1', kind: 'feeder', audio: false });
@@ -336,7 +346,7 @@
     for (const [key, g] of groups) {
       const y = height(g.circuit, g.audio), board = SOURCES[g.source].board;
       const xs = g.items.map(connectionX);
-      const endX = g.source === 'DB2' ? Math.max(...xs) : Math.min(...xs);
+      const endX = g.source === 'DB2' || g.source === 'EB1' ? Math.max(...xs) : Math.min(...xs);
       const mic = g.kind === 'mic', rack = SOURCES.AV1.pos, mz = g.s * 1.4;
       const my = mic ? Math.min(...g.items.map(it => buriedY([rack, [rack[0],0,mz], [it.pos[0],0,mz], it.pos]))) : 0;
       const micPath = x => clean([rack, [rack[0],my,rack[2]], [rack[0],my,mz], [x,my,mz]]);
@@ -348,7 +358,7 @@
       const trunkId = `trunk:${key}`;
       add({ id: trunkId, name: `${g.circuit} · ${g.s < 0 ? 'B' : 'H'} · ${g.audio ? 'audio home-run bundle' : 'circuit trunk'}`, source: g.source, board, circuit: g.circuit,
         kind: g.kind, role: 'trunk', itemIds: g.items.map(i => i.id), color: COLORS[g.kind], method: mic ? 'underfloor-microphone' : event ? 'underfloor-event' : 'wall-roof-trunk',
-        installation: mic ? 'Separate microphone home-run bundle below service-room and sanctuary floors; floor build-up / access pending.' : event ? 'Dedicated buried duct from DB-2 below the entrance-hall floor to the tower base; duct, depth, draw pits and water sealing pending.' : 'Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.' }, trunk);
+        installation: mic ? 'Separate microphone home-run bundle below service-room and sanctuary floors; floor build-up / access pending.' : event ? 'Dedicated buried duct from EB-1 (beside DB-2) below the entrance-hall floor to the tower base; duct, depth, draw pits and water sealing pending.' : 'Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.' }, trunk);
       for (const it of g.items) {
         const connection = mic ? micPath(it.pos[0]) : event ? eventTrunk(g.s, it.pos[0]) : trunkPath(g.source, g.s, y, connectionX(it)), start = connection[connection.length - 1];
         const branch = branchPath(it, start);

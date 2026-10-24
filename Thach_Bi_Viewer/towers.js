@@ -28,6 +28,11 @@
     dome: { y0: 29.6, wall: 30.6, top: 32.75, r: 1.7, rosette: 31.8 },
     lantern: { plinth: [32.75, 32.95, 0.8], step: [32.95, 33.05, 0.72], base: [33.05, 33.2, 0.55], body: [33.2, 33.8, 0.48], beads: [33.8, 33.95, 0.58], crown: [33.95, 35.0, 1.2], ball: 35.3, cross: [35.5, 36.92], arm: 36.42 },
     pinnacle: { at: 2.02, y: 30.25, h: 1.05 },
+    // Parish priest, 25 Oct 2026: a stair inside the right tower (right on site and in the
+    // drawings: the B-side tower, ENG-027), up to a floor at +8.39 m. Concept: a square stair round
+    // the room walls, 0.9 m flights, corner landings, 44 risers. Headroom, riser/going limits,
+    // guarding, fire separation and the floor structure are on engineering hold.
+    stair: { side: -1, width: 0.9, risers: 44, going: 0.28 },
     // Corner piers of the upper stages (E01B): pedestal block, fluted pilaster, foliate capital
     // band, dentils and cornice, the cornice top at the stage level. `u` is the model's stage
     // depth (X); the piers stand 0.45 m in front of and behind it.
@@ -219,6 +224,43 @@
       for (let x = P.front[1] + .06; x <= P.back[0] - .05; x += .12) entab('Tower base dentil', S, [x, x + .06], E.dentils, [C + spec.wall, C + spec.wall + .16]);
       add('Tower base Greek-key frieze', S, meanderGeo(P.back[0] - P.front[1], E.frieze[1] - E.frieze[0]), place(RY(s > 0 ? 0 : Math.PI), TR(s > 0 ? P.front[1] : P.back[0], E.frieze[0], Z(C + spec.wall + .1))), CARVED);
 
+      // ---- Floor at +8.39 in each tower room; the stair in the B-side tower ----
+      {
+        const r0 = [spec.wall, 2 * C - spec.wall], q0 = [-C + spec.wall, C - spec.wall], ST = spec.stair, wd = ST.width;
+        const floorAt = (xs, ts) => block('Tower room floor +8.39 · concept', W, xs, [spec.top - .2, spec.top - .02], ts, 'CONCEPT · ENGINEERING HOLD');
+        if (s !== ST.side) floorAt(r0, q0);
+        else {
+          floorAt(r0, [q0[0], q0[0] + wd]); floorAt(r0, [q0[1] - wd, q0[1]]);
+          floorAt([r0[0], r0[0] + wd], [q0[0] + wd, q0[1] - wd]); floorAt([r0[1] - wd, r0[1]], [q0[0] + wd, q0[1] - wd]);
+          // Round the walls: front wall (inner → outer), outer wall (front → back), back wall
+          // (outer → inner), inner wall (back → front), arriving over the start.
+          const rise = (spec.top - .02) / ST.risers, len = r0[1] - r0[0] - 2 * wd;
+          let k = 0;
+          const tread = (xs, ts, y) => block('Tower stair tread · concept', S, xs, [y - .05, y], ts, 'CONCEPT · ENGINEERING HOLD');
+          // Flight f, tread i of m: its extent along the wall it climbs.
+          const flights = [
+            (i, g) => [[r0[0], r0[0] + wd], [q0[0] + wd + i * g, q0[0] + wd + (i + 1) * g]],
+            (i, g) => [[r0[0] + wd + i * g, r0[0] + wd + (i + 1) * g], [q0[1] - wd, q0[1]]],
+            (i, g) => [[r0[1] - wd, r0[1]], [q0[1] - wd - (i + 1) * g, q0[1] - wd - i * g]],
+            (i, g) => [[r0[1] - wd - (i + 1) * g, r0[1] - wd - i * g], [q0[0], q0[0] + wd]],
+          ];
+          const landings = [[[r0[0], r0[0] + wd], [q0[1] - wd, q0[1]]], [[r0[1] - wd, r0[1]], [q0[1] - wd, q0[1]]], [[r0[1] - wd, r0[1]], [q0[0], q0[0] + wd]]];
+          const per = (ST.risers - 4) / 4;
+          for (let f = 0; f < 4; f++) {
+            const m = Math.round(per * (f + 1)) - Math.round(per * f);
+            for (let i = 0; i < m; i++) { k++; const [xs, ts] = flights[f](i, len / m); tread(xs, ts, k * rise); }
+            if (f < 3) { k++; const [xs, ts] = landings[f]; block('Tower stair landing · concept', S, xs, [k * rise - .12, k * rise], ts, 'CONCEPT · ENGINEERING HOLD'); }
+          }
+          // Handrail along the open well.
+          const well = [[r0[0] + wd, q0[0] + wd], [r0[0] + wd, q0[1] - wd], [r0[1] - wd, q0[1] - wd], [r0[1] - wd, q0[0] + wd]];
+          for (let f = 0; f < 4; f++) {
+            const [a, b] = [well[f], well[(f + 1) % 4]], y0 = (f * (per + 1) + 1) * rise + .95, y1 = ((f + 1) * (per + 1)) * rise + .9;
+            add('Tower stair handrail · concept', S, K.stem([[a[0], y0, Z(a[1])], [b[0], Math.min(y1, spec.top + .95), Z(b[1])]], .03, .03, 2, 6));
+          }
+          stats.stairRisers = k + 1;
+        }
+      }
+
       // ---- Corner piers of the upper stages ----
       for (const g of spec.stages) {
         const [y0, y1] = g.y, front = [2.45 - g.u / 2 - .45, 2.45 - g.u / 2 + 1.1], back = [2.45 + g.u / 2 - 1.1, 2.45 + g.u / 2 + .45];
@@ -337,7 +379,7 @@
       const [c0, c1] = LN.cross;
       add('Tower cross', crossMaterial, new T.BoxGeometry(.1, c1 - c0 - .1, .1), TR(xc, (c0 + c1 - .1) / 2, zc));
       add('Tower cross arm', crossMaterial, new T.BoxGeometry(.1, .1, 1.0), TR(xc, LN.arm, zc));
-      for (const [y, dz] of [[c1 - .09, 0], [LN.arm, -.52], [LN.arm, .52]]) for (const [u, v] of [[0, .05], [-.06, -.01], [.06, -.01]]) {
+      for (const [y, dz] of [[c1 - .105, 0], [LN.arm, -.52], [LN.arm, .52]]) for (const [u, v] of [[0, .05], [-.06, -.01], [.06, -.01]]) {
         const up = dz === 0, dy = up ? v : u, ddz = up ? u : Math.sign(dz) * v;
         add('Tower cross trefoil end', crossMaterial, new T.SphereGeometry(.055, 10, 8), TR(xc, y + dy, zc + dz + ddz));
       }

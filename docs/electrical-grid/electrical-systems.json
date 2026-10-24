@@ -23,11 +23,11 @@
     },
     "DB2": {
       "label": "DB-2 · Towers & entrance",
-      "where": "Inside the main doors, left of the main door",
+      "where": "Ground-floor room of the H-side tower (left on site), inside the closed front wall",
       "pos": [
-        2.73,
+        0.24,
         1.5,
-        -3.3
+        9.25
       ],
       "size": [
         0.16,
@@ -36,6 +36,23 @@
       ],
       "facing": "x",
       "color": "#dc9e29",
+      "board": "DB2"
+    },
+    "EB1": {
+      "label": "EB-1 · Festival & stage event board",
+      "where": "Ground-floor room of the H-side tower, beside DB-2",
+      "pos": [
+        0.24,
+        1.5,
+        10.75
+      ],
+      "size": [
+        0.16,
+        0.62,
+        0.46
+      ],
+      "facing": "x",
+      "color": "#d97a2b",
       "board": "DB2"
     },
     "LC1": {
@@ -206,20 +223,20 @@
         [
           2.35,
           7.65,
-          -3.3
+          9.25
         ],
         [
           2.35,
           1.5,
-          -3.3
+          9.25
         ],
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          9.25
         ]
       ],
-      "length": 80.6831303111792,
+      "length": 94.9631303111792,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -320,6 +337,47 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
+      "drawnDiameter": 0.064,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "feeder:EB1",
+      "name": "DB-2 → EB-1 event board supply",
+      "source": "DB2",
+      "board": "DB2",
+      "circuit": "EB1-SUPPLY",
+      "kind": "feeder",
+      "role": "feeder",
+      "itemIds": [],
+      "color": "#c84c52",
+      "installation": "Short tray between the two boards on the tower front wall",
+      "points": [
+        [
+          0.24,
+          1.5,
+          9.25
+        ],
+        [
+          0.24,
+          2.1,
+          9.25
+        ],
+        [
+          0.24,
+          2.1,
+          10.75
+        ],
+        [
+          0.24,
+          1.5,
+          10.75
+        ]
+      ],
+      "length": 2.7,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [],
       "drawnDiameter": 0.064,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -15065,19 +15123,19 @@
       "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
       "points": [
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           7.65,
-          -3.3
+          9.25
         ],
         [
           2.35,
@@ -15090,7 +15148,7 @@
           -7.36
         ]
       ],
-      "length": 12.268,
+      "length": 26.548000000000002,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -15111,7 +15169,7 @@
       ],
       "trunkId": "trunk:DB2:L9:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.268,
+      "upstreamLength": 26.548000000000002,
       "homeRun": false,
       "points": [
         [
@@ -15163,7 +15221,7 @@
       ],
       "trunkId": "trunk:DB2:L9:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.268,
+      "upstreamLength": 26.548000000000002,
       "homeRun": false,
       "points": [
         [
@@ -15246,7 +15304,7 @@
       ],
       "trunkId": "trunk:DB2:L9:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.268,
+      "upstreamLength": 26.548000000000002,
       "homeRun": false,
       "points": [
         [
@@ -15334,19 +15392,19 @@
       "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
       "points": [
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           7.65,
-          -3.3
+          9.25
         ],
         [
           2.35,
@@ -15359,7 +15417,7 @@
           7.36
         ]
       ],
-      "length": 18.868000000000002,
+      "length": 11.828000000000003,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -15380,7 +15438,7 @@
       ],
       "trunkId": "trunk:DB2:L9:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.868000000000002,
+      "upstreamLength": 11.828000000000003,
       "homeRun": false,
       "points": [
         [
@@ -15432,7 +15490,7 @@
       ],
       "trunkId": "trunk:DB2:L9:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.868000000000002,
+      "upstreamLength": 11.828000000000003,
       "homeRun": false,
       "points": [
         [
@@ -15515,7 +15573,7 @@
       ],
       "trunkId": "trunk:DB2:L9:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.868000000000002,
+      "upstreamLength": 11.828000000000003,
       "homeRun": false,
       "points": [
         [
@@ -17763,19 +17821,19 @@
       "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
       "points": [
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           7.65,
-          -3.3
+          9.25
         ],
         [
           2.35,
@@ -17793,7 +17851,7 @@
           -7.36
         ]
       ],
-      "length": 13.676,
+      "length": 27.956,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -17814,7 +17872,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.276,
+      "upstreamLength": 26.556,
       "homeRun": false,
       "points": [
         [
@@ -17897,7 +17955,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.276,
+      "upstreamLength": 26.556,
       "homeRun": false,
       "points": [
         [
@@ -17980,7 +18038,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.276,
+      "upstreamLength": 26.556,
       "homeRun": false,
       "points": [
         [
@@ -18078,7 +18136,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.276,
+      "upstreamLength": 26.556,
       "homeRun": false,
       "points": [
         [
@@ -18191,7 +18249,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.276,
+      "upstreamLength": 26.556,
       "homeRun": false,
       "points": [
         [
@@ -18309,7 +18367,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.376,
+      "upstreamLength": 26.656000000000002,
       "homeRun": false,
       "points": [
         [
@@ -18427,7 +18485,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 13.676,
+      "upstreamLength": 27.956,
       "homeRun": false,
       "points": [
         [
@@ -18515,7 +18573,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.376,
+      "upstreamLength": 26.656000000000002,
       "homeRun": false,
       "points": [
         [
@@ -18603,7 +18661,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.376,
+      "upstreamLength": 26.656000000000002,
       "homeRun": false,
       "points": [
         [
@@ -18706,7 +18764,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.376,
+      "upstreamLength": 26.656000000000002,
       "homeRun": false,
       "points": [
         [
@@ -18824,7 +18882,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.276,
+      "upstreamLength": 26.556,
       "homeRun": false,
       "points": [
         [
@@ -18876,7 +18934,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.276,
+      "upstreamLength": 26.556,
       "homeRun": false,
       "points": [
         [
@@ -18959,7 +19017,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.276,
+      "upstreamLength": 26.556,
       "homeRun": false,
       "points": [
         [
@@ -19072,19 +19130,19 @@
       "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
       "points": [
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           7.65,
-          -3.3
+          9.25
         ],
         [
           2.35,
@@ -19102,7 +19160,7 @@
           7.36
         ]
       ],
-      "length": 20.276,
+      "length": 13.236000000000002,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -19123,7 +19181,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.876,
+      "upstreamLength": 11.836000000000002,
       "homeRun": false,
       "points": [
         [
@@ -19206,7 +19264,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.876,
+      "upstreamLength": 11.836000000000002,
       "homeRun": false,
       "points": [
         [
@@ -19289,7 +19347,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.876,
+      "upstreamLength": 11.836000000000002,
       "homeRun": false,
       "points": [
         [
@@ -19387,7 +19445,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.876,
+      "upstreamLength": 11.836000000000002,
       "homeRun": false,
       "points": [
         [
@@ -19500,7 +19558,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.876,
+      "upstreamLength": 11.836000000000002,
       "homeRun": false,
       "points": [
         [
@@ -19618,7 +19676,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.976000000000003,
+      "upstreamLength": 11.936000000000002,
       "homeRun": false,
       "points": [
         [
@@ -19736,7 +19794,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 20.276,
+      "upstreamLength": 13.236000000000002,
       "homeRun": false,
       "points": [
         [
@@ -19824,7 +19882,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.976000000000003,
+      "upstreamLength": 11.936000000000002,
       "homeRun": false,
       "points": [
         [
@@ -19912,7 +19970,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.976000000000003,
+      "upstreamLength": 11.936000000000002,
       "homeRun": false,
       "points": [
         [
@@ -20015,7 +20073,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.976000000000003,
+      "upstreamLength": 11.936000000000002,
       "homeRun": false,
       "points": [
         [
@@ -20133,7 +20191,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.876,
+      "upstreamLength": 11.836000000000002,
       "homeRun": false,
       "points": [
         [
@@ -20185,7 +20243,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.876,
+      "upstreamLength": 11.836000000000002,
       "homeRun": false,
       "points": [
         [
@@ -20268,7 +20326,7 @@
       ],
       "trunkId": "trunk:DB2:L6:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.876,
+      "upstreamLength": 11.836000000000002,
       "homeRun": false,
       "points": [
         [
@@ -20354,9 +20412,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "trunk:DB2:L7:light:-1",
+      "id": "trunk:EB1:L7:light:-1",
       "name": "L7 · B · circuit trunk",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -20382,19 +20440,19 @@
       "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
       "points": [
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          10.75
         ],
         [
           2.35,
           1.5,
-          -3.3
+          10.75
         ],
         [
           2.35,
           7.65,
-          -3.3
+          10.75
         ],
         [
           2.35,
@@ -20462,7 +20520,7 @@
           -7.36
         ]
       ],
-      "length": 66.76213031117919,
+      "length": 82.54213031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -20568,9 +20626,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L196",
+      "id": "drop:EB1:L7:light:-1:L196",
       "name": "L7 → Festival lights · roof ridge",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -20578,9 +20636,9 @@
       "itemIds": [
         "L196"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 39.07,
+      "upstreamLength": 54.85,
       "homeRun": false,
       "points": [
         [
@@ -20615,9 +20673,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L197",
+      "id": "drop:EB1:L7:light:-1:L197",
       "name": "L7 → Festival lights · main eave B · nave",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -20625,9 +20683,9 @@
       "itemIds": [
         "L197"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 31.26,
+      "upstreamLength": 47.04,
       "homeRun": false,
       "points": [
         [
@@ -20662,9 +20720,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L198",
+      "id": "drop:EB1:L7:light:-1:L198",
       "name": "L7 → Festival lights · main eave B · sanctuary",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -20672,9 +20730,9 @@
       "itemIds": [
         "L198"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 62.14613031117919,
+      "upstreamLength": 77.92613031117918,
       "homeRun": false,
       "points": [
         [
@@ -20709,9 +20767,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L199",
+      "id": "drop:EB1:L7:light:-1:L199",
       "name": "L7 → Festival lights · veranda eave B · nave",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -20719,9 +20777,9 @@
       "itemIds": [
         "L199"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 31.26,
+      "upstreamLength": 47.04,
       "homeRun": false,
       "points": [
         [
@@ -20788,9 +20846,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L200",
+      "id": "drop:EB1:L7:light:-1:L200",
       "name": "L7 → Festival lights · veranda eave B · sanctuary",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -20798,9 +20856,9 @@
       "itemIds": [
         "L200"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 62.14613031117919,
+      "upstreamLength": 77.92613031117918,
       "homeRun": false,
       "points": [
         [
@@ -20867,9 +20925,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L201",
+      "id": "drop:EB1:L7:light:-1:L201",
       "name": "L7 → Festival lights · rear gable B",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -20877,9 +20935,9 @@
       "itemIds": [
         "L201"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 66.76213031117919,
+      "upstreamLength": 82.54213031117919,
       "homeRun": false,
       "points": [
         [
@@ -20914,9 +20972,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L202",
+      "id": "drop:EB1:L7:light:-1:L202",
       "name": "L7 → Festival lights · tower B · stage 1 · inner corner",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -20924,9 +20982,9 @@
       "itemIds": [
         "L202"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.26,
+      "upstreamLength": 28.04,
       "homeRun": false,
       "points": [
         [
@@ -20982,9 +21040,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L203",
+      "id": "drop:EB1:L7:light:-1:L203",
       "name": "L7 → Festival lights · tower B · stage 1 · outer corner",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -20992,9 +21050,9 @@
       "itemIds": [
         "L203"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.26,
+      "upstreamLength": 28.04,
       "homeRun": false,
       "points": [
         [
@@ -21050,9 +21108,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L204",
+      "id": "drop:EB1:L7:light:-1:L204",
       "name": "L7 → Festival lights · tower B · stage 2 · inner corner",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -21060,9 +21118,9 @@
       "itemIds": [
         "L204"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.26,
+      "upstreamLength": 28.04,
       "homeRun": false,
       "points": [
         [
@@ -21133,9 +21191,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L205",
+      "id": "drop:EB1:L7:light:-1:L205",
       "name": "L7 → Festival lights · tower B · stage 2 · outer corner",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -21143,9 +21201,9 @@
       "itemIds": [
         "L205"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.26,
+      "upstreamLength": 28.04,
       "homeRun": false,
       "points": [
         [
@@ -21216,9 +21274,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L206",
+      "id": "drop:EB1:L7:light:-1:L206",
       "name": "L7 → Festival lights · tower B · stage 3 · inner corner",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -21226,9 +21284,9 @@
       "itemIds": [
         "L206"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.26,
+      "upstreamLength": 28.04,
       "homeRun": false,
       "points": [
         [
@@ -21314,9 +21372,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L207",
+      "id": "drop:EB1:L7:light:-1:L207",
       "name": "L7 → Festival lights · tower B · stage 3 · outer corner",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -21324,9 +21382,9 @@
       "itemIds": [
         "L207"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.26,
+      "upstreamLength": 28.04,
       "homeRun": false,
       "points": [
         [
@@ -21412,9 +21470,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L219",
+      "id": "drop:EB1:L7:light:-1:L219",
       "name": "L7 → Festival lights · front terrace between the towers",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -21422,9 +21480,9 @@
       "itemIds": [
         "L219"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 12.26,
+      "upstreamLength": 28.04,
       "homeRun": false,
       "points": [
         [
@@ -21464,9 +21522,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:-1:L220",
+      "id": "drop:EB1:L7:light:-1:L220",
       "name": "L7 → Festival flood · rear gable B",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -21474,9 +21532,9 @@
       "itemIds": [
         "L220"
       ],
-      "trunkId": "trunk:DB2:L7:light:-1",
+      "trunkId": "trunk:EB1:L7:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 66.3461303111792,
+      "upstreamLength": 82.1261303111792,
       "homeRun": false,
       "points": [
         [
@@ -21543,9 +21601,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "trunk:DB2:L7:light:1",
+      "id": "trunk:EB1:L7:light:1",
       "name": "L7 · H · circuit trunk",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -21569,19 +21627,19 @@
       "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
       "points": [
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          10.75
         ],
         [
           2.35,
           1.5,
-          -3.3
+          10.75
         ],
         [
           2.35,
           7.65,
-          -3.3
+          10.75
         ],
         [
           2.35,
@@ -21649,7 +21707,7 @@
           7.36
         ]
       ],
-      "length": 73.36213031117919,
+      "length": 67.8221303111792,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -21755,9 +21813,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:1:L208",
+      "id": "drop:EB1:L7:light:1:L208",
       "name": "L7 → Festival lights · main eave H · nave",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -21765,9 +21823,9 @@
       "itemIds": [
         "L208"
       ],
-      "trunkId": "trunk:DB2:L7:light:1",
+      "trunkId": "trunk:EB1:L7:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 37.86,
+      "upstreamLength": 32.32,
       "homeRun": false,
       "points": [
         [
@@ -21802,9 +21860,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:1:L209",
+      "id": "drop:EB1:L7:light:1:L209",
       "name": "L7 → Festival lights · main eave H · sanctuary",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -21812,9 +21870,9 @@
       "itemIds": [
         "L209"
       ],
-      "trunkId": "trunk:DB2:L7:light:1",
+      "trunkId": "trunk:EB1:L7:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 68.7461303111792,
+      "upstreamLength": 63.206130311179194,
       "homeRun": false,
       "points": [
         [
@@ -21849,9 +21907,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:1:L210",
+      "id": "drop:EB1:L7:light:1:L210",
       "name": "L7 → Festival lights · veranda eave H · nave",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -21859,9 +21917,9 @@
       "itemIds": [
         "L210"
       ],
-      "trunkId": "trunk:DB2:L7:light:1",
+      "trunkId": "trunk:EB1:L7:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 37.86,
+      "upstreamLength": 32.32,
       "homeRun": false,
       "points": [
         [
@@ -21928,9 +21986,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:1:L211",
+      "id": "drop:EB1:L7:light:1:L211",
       "name": "L7 → Festival lights · veranda eave H · sanctuary",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -21938,9 +21996,9 @@
       "itemIds": [
         "L211"
       ],
-      "trunkId": "trunk:DB2:L7:light:1",
+      "trunkId": "trunk:EB1:L7:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 68.7461303111792,
+      "upstreamLength": 63.206130311179194,
       "homeRun": false,
       "points": [
         [
@@ -22007,9 +22065,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:1:L212",
+      "id": "drop:EB1:L7:light:1:L212",
       "name": "L7 → Festival lights · rear gable H",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -22017,9 +22075,9 @@
       "itemIds": [
         "L212"
       ],
-      "trunkId": "trunk:DB2:L7:light:1",
+      "trunkId": "trunk:EB1:L7:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 73.36213031117919,
+      "upstreamLength": 67.8221303111792,
       "homeRun": false,
       "points": [
         [
@@ -22054,9 +22112,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:1:L213",
+      "id": "drop:EB1:L7:light:1:L213",
       "name": "L7 → Festival lights · tower H · stage 1 · inner corner",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -22064,9 +22122,9 @@
       "itemIds": [
         "L213"
       ],
-      "trunkId": "trunk:DB2:L7:light:1",
+      "trunkId": "trunk:EB1:L7:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.86,
+      "upstreamLength": 13.320000000000002,
       "homeRun": false,
       "points": [
         [
@@ -22122,9 +22180,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:1:L214",
+      "id": "drop:EB1:L7:light:1:L214",
       "name": "L7 → Festival lights · tower H · stage 1 · outer corner",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -22132,9 +22190,9 @@
       "itemIds": [
         "L214"
       ],
-      "trunkId": "trunk:DB2:L7:light:1",
+      "trunkId": "trunk:EB1:L7:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.86,
+      "upstreamLength": 13.320000000000002,
       "homeRun": false,
       "points": [
         [
@@ -22190,9 +22248,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:1:L215",
+      "id": "drop:EB1:L7:light:1:L215",
       "name": "L7 → Festival lights · tower H · stage 2 · inner corner",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -22200,9 +22258,9 @@
       "itemIds": [
         "L215"
       ],
-      "trunkId": "trunk:DB2:L7:light:1",
+      "trunkId": "trunk:EB1:L7:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.86,
+      "upstreamLength": 13.320000000000002,
       "homeRun": false,
       "points": [
         [
@@ -22273,9 +22331,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:1:L216",
+      "id": "drop:EB1:L7:light:1:L216",
       "name": "L7 → Festival lights · tower H · stage 2 · outer corner",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -22283,9 +22341,9 @@
       "itemIds": [
         "L216"
       ],
-      "trunkId": "trunk:DB2:L7:light:1",
+      "trunkId": "trunk:EB1:L7:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.86,
+      "upstreamLength": 13.320000000000002,
       "homeRun": false,
       "points": [
         [
@@ -22356,9 +22414,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:1:L217",
+      "id": "drop:EB1:L7:light:1:L217",
       "name": "L7 → Festival lights · tower H · stage 3 · inner corner",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -22366,9 +22424,9 @@
       "itemIds": [
         "L217"
       ],
-      "trunkId": "trunk:DB2:L7:light:1",
+      "trunkId": "trunk:EB1:L7:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.86,
+      "upstreamLength": 13.320000000000002,
       "homeRun": false,
       "points": [
         [
@@ -22454,9 +22512,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:1:L218",
+      "id": "drop:EB1:L7:light:1:L218",
       "name": "L7 → Festival lights · tower H · stage 3 · outer corner",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -22464,9 +22522,9 @@
       "itemIds": [
         "L218"
       ],
-      "trunkId": "trunk:DB2:L7:light:1",
+      "trunkId": "trunk:EB1:L7:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 18.86,
+      "upstreamLength": 13.320000000000002,
       "homeRun": false,
       "points": [
         [
@@ -22552,9 +22610,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:L7:light:1:L221",
+      "id": "drop:EB1:L7:light:1:L221",
       "name": "L7 → Festival flood · rear gable H",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "L7",
       "kind": "light",
@@ -22562,9 +22620,9 @@
       "itemIds": [
         "L221"
       ],
-      "trunkId": "trunk:DB2:L7:light:1",
+      "trunkId": "trunk:EB1:L7:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 72.94613031117919,
+      "upstreamLength": 67.4061303111792,
       "homeRun": false,
       "points": [
         [
@@ -26006,19 +26064,19 @@
       "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
       "points": [
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           7.65,
-          -3.3
+          9.25
         ],
         [
           2.35,
@@ -26036,7 +26094,7 @@
           -7.36
         ]
       ],
-      "length": 12.517,
+      "length": 26.797,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -26057,7 +26115,7 @@
       ],
       "trunkId": "trunk:DB2:F4:fan:-1",
       "color": "#b46a48",
-      "upstreamLength": 12.517,
+      "upstreamLength": 26.797,
       "homeRun": false,
       "points": [
         [
@@ -26112,19 +26170,19 @@
       "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
       "points": [
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           7.65,
-          -3.3
+          9.25
         ],
         [
           2.35,
@@ -26142,7 +26200,7 @@
           7.36
         ]
       ],
-      "length": 19.117,
+      "length": 12.077000000000002,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -26163,7 +26221,7 @@
       ],
       "trunkId": "trunk:DB2:F4:fan:1",
       "color": "#b46a48",
-      "upstreamLength": 19.117,
+      "upstreamLength": 12.077000000000002,
       "homeRun": false,
       "points": [
         [
@@ -31536,9 +31594,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "trunk:DB2:P3:power:-1",
+      "id": "trunk:EB1:P3:power:-1",
       "name": "P3 · B · circuit trunk",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "P3",
       "kind": "power",
@@ -31548,20 +31606,20 @@
       ],
       "color": "#2f9c95",
       "method": "underfloor-event",
-      "installation": "Dedicated buried duct from DB-2 below the entrance-hall floor to the tower base; duct, depth, draw pits and water sealing pending.",
+      "installation": "Dedicated buried duct from EB-1 (beside DB-2) below the entrance-hall floor to the tower base; duct, depth, draw pits and water sealing pending.",
       "points": [
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          10.75
         ],
         [
-          2.73,
+          0.24,
           -0.12,
-          -3.3
+          10.75
         ],
         [
-          2.73,
+          0.24,
           -0.12,
           -7.7
         ],
@@ -31571,7 +31629,7 @@
           -7.7
         ]
       ],
-      "length": 8.3,
+      "length": 20.28,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -31580,9 +31638,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:P3:power:-1:P-TOWER-B",
+      "id": "drop:EB1:P3:power:-1:P-TOWER-B",
       "name": "P3 → Event power · tower B · inside the porch",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "P3",
       "kind": "power",
@@ -31590,9 +31648,9 @@
       "itemIds": [
         "P-TOWER-B"
       ],
-      "trunkId": "trunk:DB2:P3:power:-1",
+      "trunkId": "trunk:EB1:P3:power:-1",
       "color": "#2f9c95",
-      "upstreamLength": 8.3,
+      "upstreamLength": 20.28,
       "homeRun": false,
       "points": [
         [
@@ -31923,9 +31981,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "trunk:DB2:P4:power:1",
+      "id": "trunk:EB1:P4:power:1",
       "name": "P4 · H · circuit trunk",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "P4",
       "kind": "power",
@@ -31935,20 +31993,20 @@
       ],
       "color": "#2f9c95",
       "method": "underfloor-event",
-      "installation": "Dedicated buried duct from DB-2 below the entrance-hall floor to the tower base; duct, depth, draw pits and water sealing pending.",
+      "installation": "Dedicated buried duct from EB-1 (beside DB-2) below the entrance-hall floor to the tower base; duct, depth, draw pits and water sealing pending.",
       "points": [
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          10.75
         ],
         [
-          2.73,
+          0.24,
           -0.12,
-          -3.3
+          10.75
         ],
         [
-          2.73,
+          0.24,
           -0.12,
           7.7
         ],
@@ -31958,7 +32016,7 @@
           7.7
         ]
       ],
-      "length": 14.9,
+      "length": 4.88,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -31967,9 +32025,9 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:DB2:P4:power:1:P-TOWER-H",
+      "id": "drop:EB1:P4:power:1:P-TOWER-H",
       "name": "P4 → Event power · tower H · inside the porch",
-      "source": "DB2",
+      "source": "EB1",
       "board": "DB2",
       "circuit": "P4",
       "kind": "power",
@@ -31977,9 +32035,9 @@
       "itemIds": [
         "P-TOWER-H"
       ],
-      "trunkId": "trunk:DB2:P4:power:1",
+      "trunkId": "trunk:EB1:P4:power:1",
       "color": "#2f9c95",
-      "upstreamLength": 14.9,
+      "upstreamLength": 4.88,
       "homeRun": false,
       "points": [
         [
@@ -32031,19 +32089,19 @@
       "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
       "points": [
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           7.65,
-          -3.3
+          9.25
         ],
         [
           2.35,
@@ -32061,7 +32119,7 @@
           -7.36
         ]
       ],
-      "length": 13.799999999999999,
+      "length": 28.080000000000002,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -32082,7 +32140,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 13.7,
+      "upstreamLength": 27.980000000000004,
       "homeRun": false,
       "points": [
         [
@@ -32134,7 +32192,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 13.7,
+      "upstreamLength": 27.980000000000004,
       "homeRun": false,
       "points": [
         [
@@ -32186,7 +32244,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 13.469999999999999,
+      "upstreamLength": 27.750000000000004,
       "homeRun": false,
       "points": [
         [
@@ -32238,7 +32296,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 13.799999999999999,
+      "upstreamLength": 28.080000000000002,
       "homeRun": false,
       "points": [
         [
@@ -32290,7 +32348,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 13.799999999999999,
+      "upstreamLength": 28.080000000000002,
       "homeRun": false,
       "points": [
         [
@@ -32342,7 +32400,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 13.71,
+      "upstreamLength": 27.990000000000002,
       "homeRun": false,
       "points": [
         [
@@ -32394,7 +32452,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 13.799999999999999,
+      "upstreamLength": 28.080000000000002,
       "homeRun": false,
       "points": [
         [
@@ -32446,7 +32504,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 13.71,
+      "upstreamLength": 27.990000000000002,
       "homeRun": false,
       "points": [
         [
@@ -32507,19 +32565,19 @@
       "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
       "points": [
         [
-          2.73,
+          0.24,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           1.5,
-          -3.3
+          9.25
         ],
         [
           2.35,
           7.65,
-          -3.3
+          9.25
         ],
         [
           2.35,
@@ -32537,7 +32595,7 @@
           7.36
         ]
       ],
-      "length": 20.400000000000002,
+      "length": 13.360000000000001,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -32558,7 +32616,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 20.300000000000004,
+      "upstreamLength": 13.260000000000002,
       "homeRun": false,
       "points": [
         [
@@ -32610,7 +32668,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 20.070000000000004,
+      "upstreamLength": 13.030000000000001,
       "homeRun": false,
       "points": [
         [
@@ -32662,7 +32720,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 20.400000000000002,
+      "upstreamLength": 13.360000000000001,
       "homeRun": false,
       "points": [
         [
@@ -32714,7 +32772,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 20.400000000000002,
+      "upstreamLength": 13.360000000000001,
       "homeRun": false,
       "points": [
         [
@@ -32766,7 +32824,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 20.310000000000002,
+      "upstreamLength": 13.270000000000003,
       "homeRun": false,
       "points": [
         [
@@ -32818,7 +32876,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 20.400000000000002,
+      "upstreamLength": 13.360000000000001,
       "homeRun": false,
       "points": [
         [
@@ -32870,7 +32928,7 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 20.310000000000002,
+      "upstreamLength": 13.270000000000003,
       "homeRun": false,
       "points": [
         [

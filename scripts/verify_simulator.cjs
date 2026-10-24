@@ -305,7 +305,13 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   require('./verify_concealed_routes.cjs')({ SIM, T, CAT, building });
   const data = E.exportData(), runs = E.routes;
   assert.equal(new Set(runs.map(r => r.id)).size, runs.length, 'each run has a unique selection identity');
-  assert.equal(runs.filter(r => r.role === 'feeder' && r.board === 'DB2').length, 1, 'one continuous DB2 feeder');
+  assert.equal(runs.filter(r => r.role === 'feeder' && r.board === 'DB2' && r.source === 'DB1').length, 1, 'one continuous DB2 feeder');
+  // Parish priest, 25 Oct 2026: DB-2 and the event board EB-1 stand in the H-side tower room;
+  // EB-1 is fed from DB-2 and carries the event points and the festival exterior lights.
+  const eb = runs.find(r => r.id === 'feeder:EB1');
+  assert(eb && eb.source === 'DB2' && eb.length < 3, 'EB-1 is fed from DB-2 beside it');
+  for (const id of ['DB2', 'EB1']) { const p = E.SOURCES[id].pos; assert(p[0] > 0.14 && p[0] < 0.5 && p[2] > 7.84 && p[2] < 12.46 && p[1] > 1 && p[1] < 2, id + ' inside the H-side tower room'); }
+  assert(runs.filter(r => ['P3', 'P4', 'L7'].includes(r.circuit) && r.role !== 'feeder').every(r => r.source === 'EB1'), 'event power and festival lights run from EB-1');
   const near = (a, b) => Math.hypot(...a.map((n, k) => n - b[k])) < 0.0001;
   const onPath = (p, path) => path.slice(1).some((b, i) => {
     const a = path[i], d = new T.Vector3(...b).sub(new T.Vector3(...a)), v = new T.Vector3(...p).sub(new T.Vector3(...a));
@@ -498,11 +504,13 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
     assert(sanct.on && nave.on && !tower.on, 'indoor outlets live, event points isolated by default');
     assert([sanct, nave, tower].every(it => Math.sign(it.pos[2]) === side && SIM.itemWatts(it) === 0), 'a socket without a test load adds no operating load');
     const drop = E.routes.find(r => r.role === 'drop' && r.itemIds[0] === tower.id), trunk = E.routes.find(r => r.id === drop.trunkId);
-    assert.equal(drop.method, 'underfloor-event'); assert.equal(trunk.source, 'DB2');
+    assert.equal(drop.method, 'underfloor-event'); assert.equal(trunk.source, 'EB1');
     // The tower plinth top is in the building model, not in the simplified floor function.
     const surface = p => { const rc = new T.Raycaster(new T.Vector3(p[0], 1.2, p[2]), new T.Vector3(0, -1, 0), 0, 4); rc.camera = camera; const h = rc.intersectObject(building, true)[0]; return h ? h.point.y : -Infinity; };
     assert(trunk.points.slice(1).every(p => p[1] < surface(p) - 0.1 && p[1] < 0), 'event power runs below the hall floor and tower plinth, not over the entrance band');
-    assert(drop.length + drop.upstreamLength < 17, 'event power takes the short route from DB-2');
+    // Since 25 Oct 2026 the event board EB-1 is in the H-side tower, so the B-side point is about
+    // 19 m away below the entrance (it was under 17 m from DB-2 inside the main doors).
+    assert(drop.length + drop.upstreamLength < (code === 'B' ? 22 : 8), 'event power takes the short buried route from EB-1: ' + (drop.length + drop.upstreamLength).toFixed(2));
     for (const it of [sanct, nave]) assert.equal(E.routes.find(r => r.role === 'drop' && r.itemIds[0] === it.id).source, 'DB1', 'indoor sockets come straight from DB-1');
   }
   for (const [c, amps] of [['P1', 16], ['P2', 16], ['P3', 32], ['P4', 32]]) assert(circuit(c).outlet && circuit(c).mcb === amps && circuit(c).rcdmA === 30 && circuit(c).watts === 0, c + ' is rated as a socket circuit');

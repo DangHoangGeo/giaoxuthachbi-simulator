@@ -70,6 +70,18 @@ for(const sign of [-1,1]) {
   for(const sign of [-1,1]){assert.equal(realism.walkAllowed(46.425,sign*7.36),false,'No doorway in bay 10–11');for(const x of [36.975,44.175])assert.equal(realism.walkAllowed(x,sign*8.8),false,'Side bay closed to the porch');}
 }
 assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
+// Towers after the CAD file, owner 25 Oct 2026 (towers.js): closed fronts, corner piers on every
+// stage, CAD tops, a stair in the B-side tower and no passage through the bases.
+{
+  const TW=sandbox.window.CHURCH_TOWERS, st=TW.stats;
+  assert.equal(st.piers,32,'four corner piers on each of four stages, both towers');assert.equal(st.blindArches,2);assert.equal(st.stairRisers,44,'stair to +8.39 in the B tower');
+  assert(!nodes.some(o=>/^(Tower cap profile|Cap pedestal|Urn body|Tower stage 1 wall)/.test(o.name)),'old caps, urns and open stage-1 walls removed');
+  const top=Math.max(...nodes.filter(o=>/^Tower cross/.test(o.name)).map(o=>bounds(o).max.y));assert(Math.abs(top-36.92)<.01,'Tower cross top +36.92 (E01B): '+top);
+  const dome=bounds(nodes.find(o=>o.name==='Tower dome · CAD profile'));assert(Math.abs(dome.max.y-32.75)<.01,'Dome top +32.75');
+  const front=nodes.find(o=>o.name.startsWith('Tower base wall · closed front'));assert(front&&!front.geometry.attributes.position.array.some((v,i)=>i%3===1&&v>8.40),'closed front up to +8.39');
+  const cornice=nodes.filter(o=>o.name==='Tower base cornice').map(bounds);near(Math.max(...cornice.map(b=>b.max.y)),8.39,'tower cornice top at +8.39');
+  for(const sign of [-1,1])for(const x of [-.5,1,2.45,4]) assert.equal(realism.walkAllowed(x,sign*10.15),false,'no passage through the tower base');
+}
 // Stations of the Cross, parish priest 25 Oct 2026 (stations.js): fourteen, one per nave bay
 // between the columns, above the openings, on the nave face of the C/G wall; old placeholders gone.
 {
