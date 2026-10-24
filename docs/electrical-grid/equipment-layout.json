@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-24T00:39:01.684Z",
+  "savedAt": "2026-10-24T16:03:51.012Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -53,6 +53,7 @@
     "fanBeamRevision": "2026-10-19-fans-on-column-beams-1",
     "daisLevelRevision": "2026-10-24-dais-0-80-1",
     "facadeCadRevision": "2026-10-24-cad-facade-1",
+    "parishMeetingRevision": "2026-10-25-parish-meeting-1",
     "eveningExposureRevision": "2026-10-09-evening-160"
   },
   "customScenes": [],
@@ -2672,23 +2673,22 @@
       "type": "spot15",
       "name": "Statue accent · B",
       "circuit": "L3",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        6.655,
-        -5.25
+        44.419999999999995,
+        7.75,
+        -4.75
       ],
-      "yaw": -1.961417667770341,
-      "tilt": -19.279578439249807,
-      "mountYaw": -1.961417667770341,
-      "anchorY": 6.66,
+      "yaw": -9.651833466804238,
+      "tilt": -39.21267771222643,
+      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "timber"
       },
-      "lumens": 220,
+      "lumens": 165,
       "beam": 12,
       "shadow": false
     },
@@ -2697,23 +2697,22 @@
       "type": "projector36",
       "name": "Shrine wash · B",
       "circuit": "L3",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        6.655,
-        -4.9
+        44.419999999999995,
+        7.75,
+        -6.25
       ],
-      "yaw": -4.830419958289942,
-      "tilt": -19.011214152750114,
-      "mountYaw": -4.830419958289942,
-      "anchorY": 6.66,
+      "yaw": 10.101118347708251,
+      "tilt": -39.69810503390403,
+      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "timber"
       },
-      "lumens": 2400,
+      "lumens": 1800,
       "beam": 50,
       "shadow": false
     },
@@ -2722,23 +2721,22 @@
       "type": "spot15",
       "name": "Statue accent · H",
       "circuit": "L3",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        6.655,
-        5.25
+        44.419999999999995,
+        7.75,
+        4.75
       ],
-      "yaw": 1.961417667770341,
-      "tilt": -19.279578439249807,
-      "mountYaw": 1.961417667770341,
-      "anchorY": 6.66,
+      "yaw": 9.651833466804238,
+      "tilt": -39.21267771222643,
+      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "timber"
       },
-      "lumens": 220,
+      "lumens": 165,
       "beam": 12,
       "shadow": false
     },
@@ -2747,23 +2745,22 @@
       "type": "projector36",
       "name": "Shrine wash · H",
       "circuit": "L3",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        6.655,
-        4.9
+        44.419999999999995,
+        7.75,
+        6.25
       ],
-      "yaw": 4.830419958289942,
-      "tilt": -19.011214152750114,
-      "mountYaw": 4.830419958289942,
-      "anchorY": 6.66,
+      "yaw": -10.101118347708251,
+      "tilt": -39.69810503390403,
+      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "timber"
       },
-      "lumens": 2400,
+      "lumens": 1800,
       "beam": 50,
       "shadow": false
     },
@@ -6639,7 +6636,7 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        44.275,
+        48.83,
         2.85,
         -5.5
       ],
@@ -6658,7 +6655,7 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        44.275,
+        48.83,
         2.85,
         5.5
       ],
@@ -6715,7 +6712,7 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        44.225,
+        48.78,
         2.85,
         -6.2
       ],
@@ -6734,7 +6731,7 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        44.225,
+        48.78,
         2.85,
         -4.8
       ],
@@ -6831,7 +6828,7 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        44.225,
+        48.78,
         2.85,
         4.8
       ],
@@ -6850,7 +6847,7 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        44.225,
+        48.78,
         2.85,
         6.2
       ],

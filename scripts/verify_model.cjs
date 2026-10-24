@@ -219,7 +219,9 @@ console.log(JSON.stringify({checks:'passed',batchCount,triangles,displayBytes,ex
 assert(data.sanctuary, 'Reference sanctuary loaded');
 const S=data.sanctuary, frameX=data.longitudinal['10'];
 near(S.frameX,frameX,'Front frame stands on axis 10');
-near(S.wingX-frameX,.2,'Shrines stand on the column line');
+const shrineAxisX=data.longitudinal[S.shrineAxis];
+assert.equal(S.shrineAxis,'11','Shrines stand on axis 11 (parish priest, 25 Oct 2026)');
+near(S.wingX-.1,S.niche.backX-.17,'Statues stand level with the crucifix');
 assert(!nodes.some(o=>o.name==='Schematic transverse tie'&&Math.abs(bounds(o).getCenter(new T.Vector3()).x-frameX)<.05),'Sheet 5: no tie beam under the lobed frame');
 for(const o of nodes.filter(o=>/^Front frame (central|side) spandrel$/.test(o.name))){
   const b=bounds(o);near((b.min.x+b.max.x)/2,frameX,'Frame spandrel centred on the columns');
@@ -291,20 +293,20 @@ assert.equal(roofLining.name,'Proposed warm-ivory timber roof lining finish');as
 realism.finish(false);realism.finish(true);
 assert(timber.color.equals(lacquer.color)&&timber.map===null,'Reference palette keeps the lacquered roof timber');
 assert(sandbox.window.CHURCH_SANCTUARY.naturalTimber.map,'Natural timber grain kept for the simulator tone setting');
-for(const name of ['Our Lady forward wing','Saint Joseph forward wing']) {
+for(const name of ['Our Lady shrine · axis 11','Saint Joseph shrine · axis 11']) {
   const wing=nodes.find(o=>o.name===name);assert(wing,name);
   const shelf=wing.children.find(o=>o.name==='Raised statue shelf above entrance');
   near(bounds(shelf).min.y,2.55,'Shelf clears service door head at 2.35 m');
   const b=bounds(wing),z=Math.abs(wing.position.z);
-  assert(b.min.x<frameX&&b.max.x>frameX,'Shrine stands in the frame plane');
-  // Every part of the shrine inside the frame's thickness passes under the side arch.
+  assert(b.min.x>shrineAxisX-.2&&b.min.x<shrineAxisX&&b.max.x<shrineAxisX+1.4,'Shrine stands in the axis-11 side arch');
+  // The axis-10 frame's side arch in front of the shrine is left open.
   const side=nodes.filter(o=>o.name==='Front frame side spandrel').find(o=>Math.sign(bounds(o).getCenter(new T.Vector3()).z)===Math.sign(wing.position.z));
-  assert(Math.max(...wing.children.filter(o=>o.name==='Wing pinnacle').map(o=>bounds(o).max.y))<=S.sideArch.spring+.5,'Shrine pinnacles pass under the side arch');
+  assert(!nodes.some(o=>o.isMesh&&o.visible!==false&&/^(Raised statue shelf|Service entrance jamb|Shrine bay fill)/.test(o.name)&&bounds(o).min.x<frameX+.5),'Nothing of the shrine is left in the axis-10 frame');
   // The bay behind the shrine is closed in lacquered timber above the shelf, wall to wall and up to the roof lining.
   const fill=wing.children.find(o=>o.name==='Shrine bay fill · lacquered timber');assert(fill,'Shrine bay fill');
   const f=bounds(fill);near(f.min.y,2.85,'Bay fill stands on the shelf');
   near(Math.min(Math.abs(f.min.z),Math.abs(f.max.z)),3.75,'Bay fill meets the chamber wall');near(Math.max(Math.abs(f.min.z),Math.abs(f.max.z)),7.25,'Bay fill meets the C/G wall');
-  assert(f.max.y>9.3&&f.max.y<9.6&&f.min.x>frameX+.16,'Bay fill rises to the roof lining behind the frame');
+  assert(f.max.y>9.3&&f.max.y<9.6&&f.min.x>shrineAxisX+.25,'Bay fill rises to the roof lining behind the axis-11 arch');
   assert.equal(fill.material.name,'Sanctuary · oxblood lacquer');
   assert(bounds(side).min.y<=S.sideArch.spring+.001,'Side arch springs above the shrine shelf');
   near(z,S.wingZ,'Shrine centred in the C–D / E–G bay');
@@ -416,8 +418,8 @@ assert(!nodes.some(o=>o.name==='Statue plinth'),'Old low statue bases removed');
 // Walking: the service entrances and the dais stay open, the lined walls are solid.
 for(const sign of [-1,1]){
   // walkAllowed: false blocks, null leaves the decision to the base colliders.
-  for(const x of [43.6,44.2,44.9,45.6,46.8])assert(realism.walkAllowed(x,sign*S.wingZ)!==false,`Service entrance route open at x ${x}`);
-  assert.equal(realism.walkAllowed(44.6,sign*(S.wingZ+1.05)),false,'Shrine jamb is solid');
+  for(const x of [43.6,44.2,44.9,45.6,46.8,48.2,48.9,49.6,50.4])assert(realism.walkAllowed(x,sign*S.wingZ)!==false,`Side passage and service entrance route open at x ${x}`);
+  assert.equal(realism.walkAllowed(S.wingX+.2,sign*(S.wingZ+1.05)),false,'Shrine jamb is solid');
   assert.equal(realism.walkAllowed(46.4,sign*3.5),false,'Chamber wall is solid');
   assert(realism.walkAllowed(46.4,sign*2.9)!==false&&realism.walkAllowed(46.4,sign*4.4)!==false,'Chamber and rear passage stay walkable');
 }

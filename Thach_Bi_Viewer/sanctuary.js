@@ -2,7 +2,10 @@
 (() => {
   // The three-lobed frame of section sheet 5 stands on the axis-10 timber columns, in lacquered
   // timber. Behind it a timber-lined chamber runs back to the reredos on axis 11.
-  const spec = { revision:'2026-10-07-sanctuary-7-carved', serviceRevision:'2026-10-07-concealed-1', frameAxis:'10', frameX:44.175, centerX:48.12, wingX:44.375, wingZ:5.5, doorHeight:2.2, nicheBase:2.85,
+  // Parish priest, 25 October 2026: the Our Lady and Saint Joseph shrines stand back on the
+  // axis-11 line, level with the crucifix, in the side arches of the axis-11 frame (wingX is
+  // the shrine group's origin; the statues stand 0.10 m in front of it, on the crucifix's x).
+  const spec = { revision:'2026-10-07-sanctuary-7-carved', serviceRevision:'2026-10-07-concealed-1', frameAxis:'10', frameX:44.175, centerX:48.12, shrineAxis:'11', wingX:48.93, wingZ:5.5, doorHeight:2.2, nicheBase:2.85,
     centralArch:{half:3.3,spring:8.25,shoulder:9.38,crown:10.83}, sideArch:{half:1.575,spring:6.15,shoulder:6.75,crown:7.46},
     chamber:{x0:44.49,x1:48.42,face:3.3,outer:3.75,top:9.45,serviceLining:0.04},
     // Crucifix niche: opens through the reredos and the back wall, 1.0 m deep, its blue wall and
@@ -20,7 +23,7 @@
   const SATIN_TONE=.84;
   window.CHURCH_SANCTUARY = { spec, prepare, roofY };
   function prepare({THREE:T,building,interior,data,mat,palettes}) {
-    spec.frameX=data.longitudinal[spec.frameAxis];spec.wingX=spec.frameX+.2;
+    spec.frameX=data.longitudinal[spec.frameAxis];spec.wingX=data.longitudinal[spec.shrineAxis]+.255;
     const remove=[];
     building.updateMatrixWorld(true);
     const centre=o=>new T.Box3().setFromObject(o).getCenter(new T.Vector3());
@@ -351,16 +354,18 @@
       for(let u=-length/2+.25;u<length/2;u+=.49)flower(g,u,A.spring-.05,face+.16,.075);
     }
 
-    // Shrines stand in the side arches on the column line; no solid panel across the doorway.
+    // Shrines stand in the side arches of axis 11, level with the crucifix (parish priest,
+    // 25 October 2026); the side arches of the axis-10 frame in front of them stay open.
+    // No solid panel across the doorway.
     const wingGlow=K.glow('#d3e7f6','#7fb2e0','#4d8dca'),wingSpire=K.pinnacle({w:.2,h:1});
     for(const sign of [-1,1]){
-      const g=group(sign<0?'Our Lady forward wing':'Saint Joseph forward wing',spec.wingX,sign*spec.wingZ);
+      const g=group(sign<0?'Our Lady shrine · axis 11':'Saint Joseph shrine · axis 11',spec.wingX,sign*spec.wingZ);
       for(const e of [-1,1]){box(g,.57,2.75-SIDE,1.25,e*1.03,(2.75+SIDE)/2,-.35,wood,'Service entrance jamb');box(g,.63,.8-SIDE,1.32,e*1.03,(.8+SIDE)/2,-.35,stone,'Stone doorway base');plate(g,.5,1.9,e*1.03,1.78,.279,gilded,'Shrine jamb relief',true);vine(g,e*1.03,.85,1.85,.31);}
       box(g,2.7,.3,1.35,0,2.7,-.33,wood,'Raised statue shelf above entrance');plate(g,2.66,.2,0,2.7,.349,gilded,'Shrine shelf frieze');
       for(const y of [2.55,2.84])box(g,2.75,.05,1.4,0,y,-.32,gold,'Shelf gilded moulding');
       // A lacquered wall behind the shrine closes the whole bay above the shelf, from the
-      // chamber wall to the C/G wall and up to the roof lining, so nothing shows through the
-      // side arch above the shrine. Gilded band, blooms and rosette fill the head of the arch.
+      // pier line to the C/G wall and up to the roof lining, so the service room behind does
+      // not show through the side arch above the shrine. Gilded band, blooms and rosette fill the head of the arch.
       const bay=new T.Shape(),zc=sign*spec.wingZ,edge=1.75;
       bay.moveTo(-edge,2.85);bay.lineTo(edge,2.85);bay.lineTo(edge,roofY(zc+edge));bay.lineTo(-edge,roofY(zc-edge));bay.closePath();
       slab(g,bay,-.55,-.42,wood,'Shrine bay fill · lacquered timber');plate(g,3.3,4.2,0,5.0,-.416,scrollwork,'Shrine bay relief ground');
@@ -373,11 +378,11 @@
       for(const e of [-1,1]){box(g,.22,2.67,.43,e*1.14,4.2,-.1,wood,'Wing carved pilaster');plate(g,.2,2.55,e*1.14,4.2,.119,gilded,'Wing pilaster relief',true);vine(g,e*1.14,2.96,2.5,.16);mesh(wingSpire,gold,g,'Wing pinnacle',e*1.14,5.535,.03);}
       // Lacquered returns close the slits beside the D/E column and the C/G pier.
       for(const e of [-1,1]){box(g,.4,S.spring-SIDE,.12,e*1.55,(S.spring+SIDE)/2,-.2,wood,'Shrine return panel');box(g,.03,S.spring-.6,.03,e*1.55,(S.spring+SIDE)/2,-.13,gold,'Panel gold border');}
-      // Open paired leaves, folded back behind the frontage; the passage behind links the
-      // veranda door and, through the side arch on axis 11, the open service room.
+      // Open paired leaves, folded back behind the frontage: the doorway under the shrine
+      // links the side passage behind the frame with the open service room.
       for(const e of [-1,1]){const hinge=new T.Group();hinge.position.set(e*.72,SIDE,-.28);hinge.rotation.y=-e*1.5;g.add(hinge);panel(hinge,-e*.35,1.1,.7,2.2,0);box(hinge,.035,.27,.08,-e*.58,1.06,.14,gold,'Service door handle');}
     }
     data.sanctuary={...spec,crossShift,reference:'references/02-sanctuary/concepts/09-sanctuary-approved-concept.png',materials:['oxblood lacquer','oxblood lacquer, satin (cross, niche boards, furniture)','carved lacquered timber','gilded carved relief','gilded scrollwork on lacquer','gilded relief','gilded vault boarding','blue niche','shrine niche blue','carved figure, natural wood','carved figure, darker tone','crimson upholstery','forged iron nail','pale stone','dark marble inset'],roofTimber:'oxblood lacquer with gilded soffit lines; natural tones remain a simulator setting',status:'Image-led concept; ornamental profiles, relief textures and sculpture are generated approximations'};
-    data.assumptions.push('Sanctuary revised from the approved concept and section sheet 5: the three-lobed frame stands on the axis-10 columns in lacquered timber, without a tie beam, and the Marian and Joseph shrines stand in its side arches on the same line, with 2.2 m service entrances below raised niches. A timber-lined chamber with a gilded boarded vault runs from the frame back to the reredos on axis 11, where the crucifix stands in a niche 1.0 m deep that opens through the back wall onto a base over the service room. The bay behind each shrine is closed in lacquered timber above the shelf, and every round column on the D/E lines is lacquered: the nave columns have turned bases on panelled stone pedestals, carved capitals, junction blocks and dies with gilded lotus panels, and the two frame columns keep gilded bands and capitals. The tie beams, side beams, rafters, purlins, ridge and braces take the same lacquer, with gilded lines and bosses on the nave rafters and ridge; the boarded roof lining stays ivory. The reredos, chamber, shrines and front frame carry generated gilded relief, crocketed pinnacles and leaf crestings after the 7 October interior views; the niches are blue with a soft glow, the corpus is carved wood with a gilded cloth and the tabernacle is gilded under a dome. Member sizes, the roof thrust on axis 10 and the relief are proposals within the retained building grids.');
+    data.assumptions.push('Sanctuary revised from the approved concept and section sheet 5: the three-lobed frame stands on the axis-10 columns in lacquered timber, without a tie beam, and its side arches open into passages, and the Marian and Joseph shrines stand at the back of those passages in the side arches of axis 11, level with the crucifix (parish priest, 25 October 2026), with 2.2 m service entrances below raised niches. A timber-lined chamber with a gilded boarded vault runs from the frame back to the reredos on axis 11, where the crucifix stands in a niche 1.0 m deep that opens through the back wall onto a base over the service room. The bay behind each shrine is closed in lacquered timber above the shelf, and every round column on the D/E lines is lacquered: the nave columns have turned bases on panelled stone pedestals, carved capitals, junction blocks and dies with gilded lotus panels, and the two frame columns keep gilded bands and capitals. The tie beams, side beams, rafters, purlins, ridge and braces take the same lacquer, with gilded lines and bosses on the nave rafters and ridge; the boarded roof lining stays ivory. The reredos, chamber, shrines and front frame carry generated gilded relief, crocketed pinnacles and leaf crestings after the 7 October interior views; the niches are blue with a soft glow, the corpus is carved wood with a gilded cloth and the tabernacle is gilded under a dome. Member sizes, the roof thrust on axis 10 and the relief are proposals within the retained building grids.');
   }
 })();

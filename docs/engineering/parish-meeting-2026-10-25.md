@@ -1,0 +1,33 @@
+# Parish priest's meeting decisions, 25 October 2026
+
+**Status: owner direction (`USER CONFIRMED`), design development only. Not for construction / Không dùng để thi công.** The owner passed on notes from a meeting with the parish priest (Cha xứ) who manages the church. Each point below gives the note as written, how the model reads it, what changed and what stays open. Branch `eng/15-dwg-revision-2026-10-23`, which follows the church's CAD file of 23 October 2026 ([DWG record](../layout_design/dwg-2026-10-23/README.md)).
+
+These are the parish's wishes for appearance, use and control. They do not approve structure, capacity, products or compliance; the engineering holds in [issues.md](issues.md) stay open.
+
+## The six points
+
+| # | Note (Vietnamese, as received) | Reading in the model |
+| --- | --- | --- |
+| 1 | Phần cung thánh, phần tượng Đức Mẹ và thánh Giuse lùi lại phía sau ngang bằng với tượng Chúa Giêsu. | The Our Lady and Saint Joseph shrines move back from the axis-10 frame to the axis-11 line of the crucifix niche. |
+| 2 | Hai phần hiên thoáng hai bên không có tường ở ngoài, chỉ có cột bê tông. Phần cửa và cửa sổ là ở bức tường phía bên trong. Giữa các cột có đổ vòm cuốn như hình cái vó, kiểu nhà thờ Gothic. Phần hai bên gian thánh không có cửa thông với hai bên hiên. Phần mái của hiên là đổ bê tông, không phải gỗ giống như phần mái chính của nhà thờ. | The open side porches (*hiên thoáng*, grid B–C and G–H on plan sheet 5) have no outer wall, only concrete columns on axes B and H with pointed (Gothic) arches cast between them. Doors and windows stay in the inner C/G wall. The sanctuary side bays have no door to the porches. The porch roof is a cast concrete slab (section sheets 24/25: *bê tông cốt thép đổ dày 13 cm*, clay tiles over), not timber. |
+| 3 | 14 tượng ảnh Đàng Thánh Giá đặt ở giữa hai cột bên trên cửa sổ hoặc cửa đi lại, bên dưới là đèn nến. Quạt treo tường hạ thấp xuống. | Fourteen Stations of the Cross, one in each nave bay of the inner C/G wall (axes 2′–9, seven per side), above the window or door, each with a candle light below. The nave wall fans are lowered. |
+| 4 | Phần mái nhà thờ và độ cao của mái phải được thiết kế lại theo bản vẽ mới. | Roof form and heights follow the CAD file. |
+| 5 | Phần tháp bên trái sẽ có tủ điện chính cho điều khiển điện của tháp và tủ điện cho các dịp hoan ca ở phần sân khấu. Phần tháp bên phải phía bên trong sẽ có cầu thang đi lên. Mặt trước của tháp không có khoảng trống mà chỉ có tường kín và vòm trang trí trên tường theo bản vẽ. Phần chân tháp, đỉnh tháp và các hoạ tiết trang trí phải được điều chỉnh lại cho đúng với bản thiết kế mới. | The left tower houses the board for the tower power and the board for festival (*hoan ca*) events on the stage. The right tower has a stair inside. The tower fronts are closed walls with a decorative (blind) arch, as drawn. Tower base, top and ornament follow the CAD file. |
+| 6 | Phần điện chiếu sáng điều khiển sẽ chia theo các gian: gian thánh, 3 gian đầu và 4 gian cuối; thánh lễ thường có thể không dùng hoặc giảm điện năng ở các gian phía cuối; điện hắt trần riêng. Chỉ giữ một đèn trùm treo ở gian thánh. Bỏ đèn trùm ở lòng nhà thờ. | Lighting control is split by area: the sanctuary, the three front nave bays and the four rear nave bays, so ordinary Masses can leave the rear bays off or dimmed; the ceiling uplight (*hắt trần*) has its own control. One chandelier remains, in the sanctuary; the nave chandeliers are removed. |
+
+## Left and right, and a mirror question (open)
+
+The CAD drawings place the H side on the left of a person facing the front (elevation sheet 1, and plan sheet 5 drawn with H above the axis line, entrance on the left). The model takes Z positive toward H, which three.js renders on the **right** of a person facing the front. The model therefore appears to be a mirror image of the drawings. This was not noticed before because the church is almost symmetrical. Until the owner decides, “left tower” is read as the tower on the left **in the drawings and on site**, the H-side tower (grid G–I), which the current viewer shows on the right. Recorded as ENG-027.
+
+## What changed and what stays open
+
+Status per point is kept up to date below as the work lands; commit hashes are in the Git history of this file.
+
+| # | Status | Model change | Open |
+| --- | --- | --- | --- |
+| 1 | done in the model | `sanctuary.js`: shrines (shelf, niche, doors, bay fill) move from the axis-10 frame to the side arches of axis 11; statues at x 48.83 m like the crucifix. `design.js`: statue accents and shrine washes (L115–L118) move behind the axis-10 frame spandrel, hidden from the nave, outputs cut by a quarter (165 / 1 800 lm) so the statues (181 lux) stay below the crucifix (238 lux). Saved layouts move once (`parishMeetingRevision`). | The shrine wash on the axis-9 beam used to spill into the wings: the worst wing book point drops from 121.7 to 116.6 lux (target 200, already failing, ENG-023). Statue size, shelf and niche depth remain concept. |
+| 2 | pending | | |
+| 3 | pending | | |
+| 4 | pending | | |
+| 5 | pending | | |
+| 6 | pending | | |

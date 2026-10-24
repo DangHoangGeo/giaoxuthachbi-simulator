@@ -82,10 +82,11 @@
     const beamY = 8.59, sideBeamY = 6.66;
     const facadeX = 2.65; // inner face of the entrance façade; the nave is open to it
     const above = (x, z, y) => SIM.structureAbove(x, z, y)?.y ?? y;
-    // Sanctuary geometry from sanctuary.js: shrine niches on the column line and
+    // Sanctuary geometry from sanctuary.js: shrine niches on the axis-11 line and
     // the timber-lined chamber between axes 10 and 11.
-    const sanctuary = window.CHURCH_SANCTUARY?.spec ?? { frameX: 44.175, wingX: 44.375, wingZ: 5.5, nicheBase: 2.85, chamber: { x0: 44.49, x1: 48.42, face: 3.3 }, niche: { backX: 49 } };
+    const sanctuary = window.CHURCH_SANCTUARY?.spec ?? { frameX: 44.175, wingX: 48.93, wingZ: 5.5, nicheBase: 2.85, chamber: { x0: 44.49, x1: 48.42, face: 3.3 }, niche: { backX: 49 } };
     const shrine = { x: sanctuary.wingX - 0.1, y: sanctuary.nicheBase, z: sanctuary.wingZ };
+    const SHRINE_LIGHT_X = sanctuary.frameX + 0.245, SHRINE_LIGHT_Y = 7.75;
     const chamber = { face: sanctuary.chamber.face - 0.06, lightX: sanctuary.chamber.x0 + 0.26, sconceX: (sanctuary.chamber.x0 + sanctuary.chamber.x1) / 2 };
     for (const x of [50.0, 51.9]) add({ type: 'servicePanel', name: `Service-room ceiling panel · ${x.toFixed(1)} m`, circuit: 'L3', mount: 'pendant', pos: [x, 4.14, 0], anchorY: 4.15, note: 'Retains the existing ceiling-panel geometry; product light/output values are provisional.' });
     const nave = ['3', '4', '5', '6', '7', '8', '9'];
@@ -204,13 +205,21 @@
       add({ type: 'uplight', name: `Sanctuary vault uplight · ${side(s)}`, circuit: 'L3', mount: 'floor', pos: u, ...ua, mountYaw: ua.yaw, lumens: 2200, params: { finish: 'chamber' } });
     }
     inside('Tabernacle accent', 'spot15', 4.9, -1, [47.3, 2.05, 0], { beam: 10, lumens: 300 });
-    // Our Lady (left) and Saint Joseph (right) in the shrines on the column line:
-    // a soft wash for the whole carved front and a narrow accent for the figure.
+    // Our Lady (B) and Saint Joseph (H) in the shrines on the axis-11 line, level with the
+    // crucifix (parish priest, 25 October 2026): a soft wash for the carved front and a narrow
+    // accent for the figure. Both heads sit on the back face of the axis-10 frame, above its
+    // side arch, so the spandrel hides them from the nave; they light the shrine 4.6 m behind.
+    // At that shorter throw both outputs drop by a quarter (220/2400 lm before), so the statues
+    // stay a little below the crucifix.
     const statues = { B: [shrine.x, shrine.y, -shrine.z], H: [shrine.x, shrine.y, shrine.z] };
     for (const [k, base] of Object.entries(statues)) {
       const s = Math.sign(base[2]);
-      outside(`Statue accent · ${k}`, 'spot15', s * (shrine.z - 0.25), sideBeamY, [base[0], shrine.y + 1.25, base[2]], { beam: 12, lumens: 220, shadow: false });
-      outside(`Shrine wash · ${k}`, 'projector36', s * (shrine.z - 0.6), sideBeamY, [base[0] - 0.2, 4.2, base[2]], { beam: 50, lumens: 2400, shadow: false });
+      const behindFrame = (name, type, dz, target, o) => {
+        const p = [SHRINE_LIGHT_X, SHRINE_LIGHT_Y, s * (shrine.z + dz)], a = aim(p, target);
+        add({ type, name, circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: 0, shadow: false, params: { finish: 'timber' }, ...o });
+      };
+      behindFrame(`Statue accent · ${k}`, 'spot15', -0.75, [base[0], shrine.y + 1.25, base[2]], { beam: 12, lumens: 165 });
+      behindFrame(`Shrine wash · ${k}`, 'projector36', 0.75, [base[0] - 0.2, 4.2, base[2]], { beam: 50, lumens: 1800 });
     }
 
     // L4 · a veranda lantern at every pier (axes 3–11), the rhythm of the
@@ -465,7 +474,7 @@
     add({ type: 'mic', name: 'Ambo microphone', circuit: 'MIC', mount: 'floor', pos: [amboX - 0.22, 1.9 + DAIS_RISE, -2.62], yaw: 0, mountYaw: 0 });
     add({ type: 'mic', name: 'Altar microphone', circuit: 'MIC', mount: 'floor', pos: [44.45, 1.88 + DAIS_RISE, 0.45], yaw: 0, mountYaw: 0 });
 
-    // Decoration · statues in the raised shrine niches on the column line, as in the approved concept.
+    // Decoration · statues in the raised shrine niches on the axis-11 line, level with the crucifix.
     add({ type: 'statueMary', name: 'Statue · Our Lady', circuit: 'DECOR', mount: 'floor', pos: statues.B, yaw: 180, mountYaw: 180 });
     add({ type: 'statueJoseph', name: 'Statue · Saint Joseph', circuit: 'DECOR', mount: 'floor', pos: statues.H, yaw: 180, mountYaw: 180 });
     for (const s of [-1, 1]) {
@@ -569,6 +578,45 @@
       }
       return it;
     });
+  }
+
+  // Parish priest's decisions of 25 October 2026 (docs/engineering/parish-meeting-2026-10-25.md).
+  // For each recommended item that changed, the table below holds its values before the
+  // meeting. A saved item still at those values (type, mount, circuit, place within 5 mm and
+  // aim within 0.01°) takes the new recommended place, aim, mount, circuit and output, and keeps
+  // its ID, switching, dimmer, visibility and note; a retired one that is still untouched is
+  // removed. An item the user moved, re-aimed or re-circuited stays as it is, a deleted item
+  // stays deleted, and each new ID is added once. The revision changes each time the table grows.
+  const parishMeetingRevision = '2026-10-25-parish-meeting-1';
+  // BEGIN parish-meeting table · generated by scripts/build_parish_migration.mjs from
+  // docs/electrical-grid/equipment-layout.json at 015f9a8 and the current export. Do not edit by hand.
+  const parishMeetingBefore = {
+    "L115": {"type":"spot15","name":"Statue accent · B","pos":[36.975,6.655,-5.25],"yaw":-1.9614,"tilt":-19.2796,"mount":"pendant","circuit":"L3"},
+    "L116": {"type":"projector36","name":"Shrine wash · B","pos":[36.975,6.655,-4.9],"yaw":-4.8304,"tilt":-19.0112,"mount":"pendant","circuit":"L3"},
+    "L117": {"type":"spot15","name":"Statue accent · H","pos":[36.975,6.655,5.25],"yaw":1.9614,"tilt":-19.2796,"mount":"pendant","circuit":"L3"},
+    "L118": {"type":"projector36","name":"Shrine wash · H","pos":[36.975,6.655,4.9],"yaw":4.8304,"tilt":-19.0112,"mount":"pendant","circuit":"L3"},
+    "D293": {"type":"statueMary","name":"Statue · Our Lady","pos":[44.275,2.85,-5.5],"yaw":180,"tilt":0,"mount":"floor","circuit":"DECOR"},
+    "D294": {"type":"statueJoseph","name":"Statue · Saint Joseph","pos":[44.275,2.85,5.5],"yaw":180,"tilt":0,"mount":"floor","circuit":"DECOR"},
+    "D297": {"type":"floorFlowers","name":"Shrine flowers · B · outer","pos":[44.225,2.85,-6.2],"yaw":180,"tilt":0,"mount":"floor","circuit":"DECOR"},
+    "D298": {"type":"floorFlowers","name":"Shrine flowers · B · inner","pos":[44.225,2.85,-4.8],"yaw":180,"tilt":0,"mount":"floor","circuit":"DECOR"},
+    "D303": {"type":"floorFlowers","name":"Shrine flowers · H · inner","pos":[44.225,2.85,4.8],"yaw":180,"tilt":0,"mount":"floor","circuit":"DECOR"},
+    "D304": {"type":"floorFlowers","name":"Shrine flowers · H · outer","pos":[44.225,2.85,6.2],"yaw":180,"tilt":0,"mount":"floor","circuit":"DECOR"},
+  };
+  const parishMeetingAdded = [];
+  // END parish-meeting table
+  const untouched = (it, old) => it.type === old.type && (it.mount ?? '') === (old.mount ?? '') && (it.circuit ?? '') === (old.circuit ?? '')
+    && near(it.pos, old.pos, 0.005) && Math.abs((it.yaw ?? 0) - (old.yaw ?? 0)) < 0.01 && Math.abs((it.tilt ?? 0) - (old.tilt ?? 0)) < 0.01;
+  function upgradeParishMeeting(items, design) {
+    const next = new Map(design.map(it => [it.id, it]));
+    const kept = items.flatMap(it => {
+      const old = parishMeetingBefore[it.id];
+      if (!old || !untouched(it, old)) return [it];
+      const raw = next.get(it.id);
+      if (!raw) return [];
+      return [{ ...raw, on: it.on ?? raw.on, dim: it.dim ?? raw.dim, hidden: it.hidden ?? raw.hidden, note: it.note || raw.note }];
+    });
+    const have = new Set(items.map(it => it.id));
+    return [...kept, ...design.filter(it => parishMeetingAdded.includes(it.id) && !have.has(it.id)).map(it => ({ ...it }))];
   }
 
   // Additive one-time issue: a saved layout gains the six outlets it does not
@@ -932,5 +980,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

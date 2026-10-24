@@ -11893,81 +11893,34 @@
       ],
       "trunkId": "trunk:LC1:L3:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 35.322130311179194,
+      "upstreamLength": 23.913000000000007,
       "homeRun": false,
       "points": [
         [
-          36.975,
+          44.419999999999995,
           5.916,
           -7.36
         ],
         [
-          36.975,
-          7.055,
+          44.419999999999995,
+          7.04,
           -7.36
         ],
         [
-          36.975,
-          7.055,
-          -5.25
+          44.419999999999995,
+          8.934377717391303,
+          -4.75
         ],
         [
-          37.14,
-          7.055,
-          -5.25
-        ],
-        [
-          37.14,
-          6.61,
-          -5.25
-        ],
-        [
-          36.975,
-          6.61,
-          -5.25
-        ],
-        [
-          36.975,
-          6.655,
-          -5.25
+          44.419999999999995,
+          7.75,
+          -4.75
         ]
       ],
-      "method": "above-side-beam",
-      "installation": "Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              36.975,
-              7.055,
-              -5.25
-            ],
-            [
-              37.14,
-              7.055,
-              -5.25
-            ],
-            [
-              37.14,
-              6.61,
-              -5.25
-            ],
-            [
-              36.975,
-              6.61,
-              -5.25
-            ],
-            [
-              36.975,
-              6.655,
-              -5.25
-            ]
-          ],
-          "finish": "timber",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 4.068999999999997,
+      "method": "roof-local",
+      "installation": "Above lining to a local roof fitting; roof entry / weatherproof termination pending.",
+      "coverPaths": [],
+      "length": 5.533399722920674,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -11987,81 +11940,34 @@
       ],
       "trunkId": "trunk:LC1:L3:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 35.322130311179194,
+      "upstreamLength": 23.913000000000007,
       "homeRun": false,
       "points": [
         [
-          36.975,
+          44.419999999999995,
           5.916,
           -7.36
         ],
         [
-          36.975,
-          7.055,
+          44.419999999999995,
+          7.04,
           -7.36
         ],
         [
-          36.975,
-          7.055,
-          -4.9
+          44.419999999999995,
+          7.845654891304348,
+          -6.25
         ],
         [
-          37.14,
-          7.055,
-          -4.9
-        ],
-        [
-          37.14,
-          6.61,
-          -4.9
-        ],
-        [
-          36.975,
-          6.61,
-          -4.9
-        ],
-        [
-          36.975,
-          6.655,
-          -4.9
+          44.419999999999995,
+          7.75,
+          -6.25
         ]
       ],
-      "method": "above-side-beam",
-      "installation": "Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              36.975,
-              7.055,
-              -4.9
-            ],
-            [
-              37.14,
-              7.055,
-              -4.9
-            ],
-            [
-              37.14,
-              6.61,
-              -4.9
-            ],
-            [
-              36.975,
-              6.61,
-              -4.9
-            ],
-            [
-              36.975,
-              6.655,
-              -4.9
-            ]
-          ],
-          "finish": "timber",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 4.418999999999997,
+      "method": "roof-local",
+      "installation": "Above lining to a local roof fitting; roof entry / weatherproof termination pending.",
+      "coverPaths": [],
+      "length": 2.5912159741156904,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -13185,81 +13091,34 @@
       ],
       "trunkId": "trunk:LC1:L3:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 41.922130311179195,
+      "upstreamLength": 30.513000000000005,
       "homeRun": false,
       "points": [
         [
-          36.975,
+          44.419999999999995,
           5.916,
           7.36
         ],
         [
-          36.975,
-          7.055,
+          44.419999999999995,
+          7.04,
           7.36
         ],
         [
-          36.975,
-          7.055,
-          5.25
+          44.419999999999995,
+          8.934377717391303,
+          4.75
         ],
         [
-          37.14,
-          7.055,
-          5.25
-        ],
-        [
-          37.14,
-          6.61,
-          5.25
-        ],
-        [
-          36.975,
-          6.61,
-          5.25
-        ],
-        [
-          36.975,
-          6.655,
-          5.25
+          44.419999999999995,
+          7.75,
+          4.75
         ]
       ],
-      "method": "above-side-beam",
-      "installation": "Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              36.975,
-              7.055,
-              5.25
-            ],
-            [
-              37.14,
-              7.055,
-              5.25
-            ],
-            [
-              37.14,
-              6.61,
-              5.25
-            ],
-            [
-              36.975,
-              6.61,
-              5.25
-            ],
-            [
-              36.975,
-              6.655,
-              5.25
-            ]
-          ],
-          "finish": "timber",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 4.068999999999997,
+      "method": "roof-local",
+      "installation": "Above lining to a local roof fitting; roof entry / weatherproof termination pending.",
+      "coverPaths": [],
+      "length": 5.533399722920674,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -13279,81 +13138,34 @@
       ],
       "trunkId": "trunk:LC1:L3:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 41.922130311179195,
+      "upstreamLength": 30.513000000000005,
       "homeRun": false,
       "points": [
         [
-          36.975,
+          44.419999999999995,
           5.916,
           7.36
         ],
         [
-          36.975,
-          7.055,
+          44.419999999999995,
+          7.04,
           7.36
         ],
         [
-          36.975,
-          7.055,
-          4.9
+          44.419999999999995,
+          7.845654891304348,
+          6.25
         ],
         [
-          37.14,
-          7.055,
-          4.9
-        ],
-        [
-          37.14,
-          6.61,
-          4.9
-        ],
-        [
-          36.975,
-          6.61,
-          4.9
-        ],
-        [
-          36.975,
-          6.655,
-          4.9
+          44.419999999999995,
+          7.75,
+          6.25
         ]
       ],
-      "method": "above-side-beam",
-      "installation": "Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              36.975,
-              7.055,
-              4.9
-            ],
-            [
-              37.14,
-              7.055,
-              4.9
-            ],
-            [
-              37.14,
-              6.61,
-              4.9
-            ],
-            [
-              36.975,
-              6.61,
-              4.9
-            ],
-            [
-              36.975,
-              6.655,
-              4.9
-            ]
-          ],
-          "finish": "timber",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 4.418999999999997,
+      "method": "roof-local",
+      "installation": "Above lining to a local roof fitting; roof entry / weatherproof termination pending.",
+      "coverPaths": [],
+      "length": 2.5912159741156904,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36629,13 +36441,13 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 1.936,
-      "specs": "220 lm · 3000 K · 12° beam",
+      "wattsEstimate": 1.452,
+      "specs": "165 lm · 3000 K · 12° beam",
       "hiddenAlternative": false,
       "position": [
-        36.975,
-        6.655,
-        -5.25
+        44.419999999999995,
+        7.75,
+        -4.75
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36654,13 +36466,13 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 20,
-      "specs": "2400 lm · 3000 K · 50° beam",
+      "wattsEstimate": 15,
+      "specs": "1800 lm · 3000 K · 50° beam",
       "hiddenAlternative": false,
       "position": [
-        36.975,
-        6.655,
-        -4.9
+        44.419999999999995,
+        7.75,
+        -6.25
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36679,13 +36491,13 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 1.936,
-      "specs": "220 lm · 3000 K · 12° beam",
+      "wattsEstimate": 1.452,
+      "specs": "165 lm · 3000 K · 12° beam",
       "hiddenAlternative": false,
       "position": [
-        36.975,
-        6.655,
-        5.25
+        44.419999999999995,
+        7.75,
+        4.75
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36704,13 +36516,13 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 20,
-      "specs": "2400 lm · 3000 K · 50° beam",
+      "wattsEstimate": 15,
+      "specs": "1800 lm · 3000 K · 50° beam",
       "hiddenAlternative": false,
       "position": [
-        36.975,
-        6.655,
-        4.9
+        44.419999999999995,
+        7.75,
+        6.25
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -42539,8 +42351,8 @@
         0.1971188479065895,
         0.1899999976158142
       ],
-      "specs": "220 lm · 3000 K · 12° beam",
-      "wattsEachEstimate": 1.936,
+      "specs": "165 lm · 3000 K · 12° beam",
+      "wattsEachEstimate": 1.452,
       "itemIds": [
         "L115",
         "L117"
@@ -42557,8 +42369,8 @@
         0.2217390456199646,
         0.23999999463558197
       ],
-      "specs": "2400 lm · 3000 K · 50° beam",
-      "wattsEachEstimate": 20,
+      "specs": "1800 lm · 3000 K · 50° beam",
+      "wattsEachEstimate": 15,
       "itemIds": [
         "L116",
         "L118"

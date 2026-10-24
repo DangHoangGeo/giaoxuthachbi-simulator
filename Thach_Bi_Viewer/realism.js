@@ -62,8 +62,9 @@
   }
   function walkAllowed(x,z) {
     const az=Math.abs(z);
-    // Shrine jambs on the column line; keep the central 1.44 m entrance open.
-    if(x>=43.95 && x<=45.5 && az>=3.7 && az<=7.25 && Math.abs(az-5.5)>=.7)return false;
+    // Shrine jambs on the axis-11 line (sanctuary.js); keep the central 1.44 m entrance open.
+    const wx=window.CHURCH_SANCTUARY?.spec.wingX ?? 48.93;
+    if(x>=wx-.425 && x<=wx+1.125 && az>=3.7 && az<=7.25 && Math.abs(az-5.5)>=.7)return false;
     // Lacquered chamber walls on the D/E lines, from the axis-10 columns back to axis 11.
     if(x>=44.4 && x<=48.6 && az>=3.2 && az<=3.85)return false;
     // Sanctuary fit-out: the open service room is bounded by the C/G walls and the

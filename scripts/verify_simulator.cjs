@@ -263,7 +263,7 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   const lux = (p, n) => P.illuminance(p, n, em, occ) * mf, back = [-1, 0, 0];
   const Eind = P.indirectIlluminance(em.reduce((sum, e) => sum + (e.interior ? e.lumens : 0), 0), SIM.room().light) * mf;
   const chest = lux([48.45, 5.3, 0], back), blue = lux([48.98, 4.2, 0.6], back), blueSide = lux([48.98, 3.6, 1.3], back);
-  const gilding = lux([47.6, 4.6, 2.4], back), mensa = lux([44.24, 1.89, 0], [0, 1, 0]), statue = lux([44.15, 4.25, 5.5], back), tabernacle = lux([47.2, 2.05, 0], back);
+  const gilding = lux([47.6, 4.6, 2.4], back), mensa = lux([44.24, 1.89, 0], [0, 1, 0]), statue = lux([spec.wingX - 0.225, 4.25, spec.wingZ], back), tabernacle = lux([47.2, 2.05, 0], back);
   assert(blue + Eind < 2.2 * 110 && blueSide < blue, `blue recess stays within about twice the exposure level, darker towards its edges: ${blue.toFixed(0)} / ${blueSide.toFixed(0)} + ${Eind.toFixed(0)} lux`);
   assert(chest > 1.3 * blue && chest > 200 && chest < 320, `corpus stands out from the recess without glare: ${chest.toFixed(0)} lux`);
   assert(gilding > 120 && gilding < 220, `reredos lacquer and gilding at a level that keeps the red: ${gilding.toFixed(0)} lux`);
@@ -766,6 +766,32 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert.equal(up.length, saved.length, 'nothing is added or deleted');
   assert.deepEqual(plain(D.upgradeFacadeCad(up, design)), plain(up), 'applying it again changes nothing');
   assert.equal(SIM.state.settings.facadeCadRevision, D.facadeCadRevision, 'the revision is stored in the saved settings');
+}
+// Parish priest's decisions of 25 Oct 2026: a saved layout still at the pre-meeting values takes
+// the new places, circuits and outputs once; user changes and deletions are kept, retired items
+// that are still untouched go, and new items are added once.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, plain = v => JSON.parse(JSON.stringify(v));
+  const design = D.recommended(SIM.GEO, SIM), now = new Map(design.map(it => [it.id, it]));
+  const before = D.parishMeetingBefore, ids = Object.keys(before);
+  assert(ids.length > 0, 'the parish-meeting table lists the changed items');
+  const old = id => ({ ...(now.get(id) ?? {}), id, ...before[id], on: false, dim: 0.4, note: 'kept note' });
+  const keptIds = ids.filter(id => now.has(id)), retiredIds = ids.filter(id => !now.has(id));
+  const [movedId, deletedId] = [keptIds[0], keptIds[1]];
+  const userMoved = { ...old(movedId), pos: [before[movedId].pos[0] + 0.5, before[movedId].pos[1], before[movedId].pos[2]] };
+  const saved = [...ids.filter(id => id !== deletedId && id !== movedId).map(old), userMoved, { ...design.find(it => !before[it.id] && !D.parishMeetingAdded.includes(it.id)) }];
+  const up = D.upgradeParishMeeting(saved, design), get = id => up.find(it => it.id === id);
+  for (const id of keptIds.filter(id => id !== movedId && id !== deletedId)) {
+    const it = get(id), raw = now.get(id);
+    assert(it && plain(it.pos).every((v, i) => Math.abs(v - raw.pos[i]) < 1e-9) && it.circuit === raw.circuit && it.type === raw.type, 'an untouched item takes its new place and circuit: ' + id);
+    assert(it.on === false && it.dim === 0.4 && it.note === 'kept note', 'switching, dimmer and note are kept: ' + id);
+  }
+  assert.deepEqual(plain(get(movedId)), plain(userMoved), 'an item the user moved stays where it is');
+  assert(!get(deletedId), 'an item the user deleted stays deleted');
+  for (const id of retiredIds) assert(!get(id), 'an untouched retired item is removed: ' + id);
+  for (const id of D.parishMeetingAdded) assert.equal(up.filter(it => it.id === id).length, 1, 'a new item is added once: ' + id);
+  assert.deepEqual(plain(D.upgradeParishMeeting(up, design)), plain(up), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.parishMeetingRevision, D.parishMeetingRevision, 'the revision is stored in the saved settings');
 }
 // Every fixture is fixed to something the model actually has: wall items need a
 // surface right behind them, pendants need structure at their anchor (fans on
