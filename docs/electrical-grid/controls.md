@@ -43,6 +43,21 @@ Keep protective devices, routine operator controls and control logic distinct in
 - Required emergency functions and ventilation constraints take precedence over discretionary scenes. The simulator's **All off** keeps E1 exit signs on, and since 9 October 2026 the E1 routes leave DB-1 directly instead of the LC-1 lighting-control enclosure, so that no scene control stands between the main board and the signs. This does not establish a compliant emergency supply or duration. Define the real life-safety design separately.
 - Local operation must remain available without internet. Define controller/network failure behavior, safe manual recovery, authorized access and any actual-state feedback. Do not display a command as measured confirmation.
 
+## Lighting areas (parish priest, 25 October 2026)
+
+Interior lighting is switched by area ([meeting record](../engineering/parish-meeting-2026-10-25.md), point 6). “Đầu nhà thờ” is the sanctuary end and “cuối” the entrance end, as in the drawing titles.
+
+| Circuit | Area | Contents |
+| --- | --- | --- |
+| L3 | Sanctuary | Altar, ambo, chamber, shrine and service-room lights, and the one remaining chandelier at the 9–10 crossing |
+| L1 | Nave · 3 front bays (6–9) | Reading heads lighting bays 6–7, 7–8, 8–9 and the front of the dais |
+| L2 | Nave · 4 rear bays (2′–6) | Reading heads lighting bays 2′–3 to 5–6 and the four entrance-wall lights; can stay off or dimmed at ordinary Masses |
+| LA | Ceiling uplight (*hắt trần*) | Seven roof uplights on the tie beams, on their own switch |
+| LD | Wall sconces | Column and sanctuary-pier sconces (the three nave chandeliers are removed) |
+| LS | Stations of the Cross | 28 candles |
+
+Each reading head on an axis beam belongs to the bay it lights: the head aimed toward the sanctuary to the bay after the beam, its twin to the bay before. So the axis-6 heads are split between L1 and L2. The physical board channels for these areas are still to be designed (ENG-017).
+
 ## Quick modes
 
 Use these existing web-app names as the starting operator vocabulary. Final setpoints and physical button locations are a coordinated design decision. Exact simulator values remain in `SCENES` in `engine.js`; validate them against current performance rather than copying historical tables.
@@ -51,6 +66,7 @@ Use these existing web-app names as the starting operator vocabulary. Final setp
 | --- | --- |
 | Full service · evening | Full congregation lighting, normal speech and quiet fan/ventilation operation. |
 | Weekday Mass | Reduced occupied zones while retaining required sanctuary, circulation and air provision. |
+| Ordinary Mass · rear bays off | Parish priest, 25 October 2026: as Weekday Mass, with the four rear nave bays (L2, bays 2′–6) off. Simulated: front-bay seats 221 lux average / 137 minimum, rear bays about 40 lux, 3.21 kW against 3.64 kW for Weekday Mass. |
 | Prayer & adoration | Quiet, subdued lighting with the agreed reading and ventilation needs. |
 | Christmas & festivals | Indoor festival service and decorative lighting; courtyard horns remain off in the current preset. |
 | Festival · courtyard overflow | Explicit outdoor overflow operation, including courtyard horns; review its effect on indoor speech. |

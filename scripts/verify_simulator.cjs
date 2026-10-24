@@ -637,8 +637,10 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   // Every other head of these types keeps its metal finish (held wing projectors, roof uplights on the ties).
   for (const it of SIM.state.items.filter(it => Object.hasOwn(metal, it.type) && ![...beamNames, ...chamberNames].includes(it.name))) assert.equal(it.params.finish, metal[it.type], 'metal finish kept: ' + it.name);
   // Nave chandeliers: 1.0 m higher, same chain anchor, mid-bay between the ties, clear of the beams and reading heads.
+  // Retired by the parish priest's meeting of 25 Oct 2026: only the crossing chandelier remains, on L3.
   const chandeliers = SIM.state.items.filter(it => /^Chandelier · bay [468]–[579]$/.test(it.name));
-  assert.equal(chandeliers.length, 3);
+  assert.equal(chandeliers.length, 0, 'no chandeliers over the nave');
+  assert.deepEqual(JSON.parse(JSON.stringify(SIM.state.items.filter(it => ['chandelier8', 'chandelier12'].includes(it.type)).map(it => [it.name, it.circuit]))), [['Grand chandelier · crossing 9–10', 'L3']], 'one chandelier (the wings keep their small ones), over the sanctuary, switched with it');
   for (const it of chandeliers) {
     assert(it.type === 'chandelier8' && Math.abs(it.pos[1] - 7.3) < 1e-9 && it.pos[2] === 0 && it.anchorY > 9, 'raised to +7.3 m on its ridge chain: ' + it.name);
     const k = it.name.match(/bay (\d)/)[1], mid = (SIM.GEO.axes[k] + SIM.GEO.axes[String(Number(k) + 1)]) / 2;
@@ -664,12 +666,14 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   // lacquer and keeps everything else; a chandelier still at +6.3 rises; anything the user changed stays.
   const design = D.recommended(SIM.GEO, SIM), raw = name => design.find(it => it.name === name);
   const old = (name, o = {}) => ({ ...raw(name), params: { finish: metal[raw(name).type] }, ...o });
-  const chOld = (name, o = {}) => ({ ...raw(name), pos: [raw(name).pos[0], D.NAVE_CHANDELIER_BEFORE_Y, 0], ...o });
+  // The nave chandeliers are no longer in the design (25 Oct 2026); rebuild them as saved before.
+  const chX = { 'Chandelier · bay 4–5': SIM.GEO.axes['4'] + 2.25, 'Chandelier · bay 6–7': SIM.GEO.axes['6'] + 2.25, 'Chandelier · bay 8–9': SIM.GEO.axes['8'] + 2.25 };
+  const chOld = (name, o = {}) => ({ ...raw('Grand chandelier · crossing 9–10'), type: 'chandelier8', name, circuit: 'LD', pos: [chX[name], D.NAVE_CHANDELIER_BEFORE_Y, 0], ...o });
   const saved = [old('Altar key light · B', { id: 'a1', on: false, dim: 0.3, lumens: 4000 }), { ...raw('Ambo key light'), id: 'a2', params: {} },
     old('Statue accent · H', { id: 'a3', pos: [raw('Statue accent · H').pos[0], raw('Statue accent · H').pos[1], 4.1] }), old('Shrine wash · B', { id: 'a4', tilt: -30 }),
     old('Sanctuary frame wash · H', { id: 'a5', type: 'projector24' }), old('Presider chair light', { id: 'a6', params: { finish: 'timber' } }),
     old('Reredos wash · H', { id: 'c1', dim: 0.5 }), old('Sanctuary vault uplight · B', { id: 'c2', on: false }), old('Tabernacle accent', { id: 'c3', yaw: 12 }),
-    chOld('Chandelier · bay 4–5', { id: 'h1', on: false, dim: 0.4 }), chOld('Chandelier · bay 6–7', { id: 'h2', pos: [24.0, 6.3, 0.5] }), chOld('Chandelier · bay 8–9', { id: 'h3', pos: [raw('Chandelier · bay 8–9').pos[0], 5.8, 0] }),
+    chOld('Chandelier · bay 4–5', { id: 'h1', on: false, dim: 0.4 }), chOld('Chandelier · bay 6–7', { id: 'h2', pos: [24.0, 6.3, 0.5] }), chOld('Chandelier · bay 8–9', { id: 'h3', pos: [chX['Chandelier · bay 8–9'], 5.8, 0] }),
     { ...raw('Grand chandelier · crossing 9–10'), id: 'g' }];
   const up = D.upgradeFinishChandeliers(saved, design), byId = id => up.find(it => it.id === id), was = id => saved.find(it => it.id === id);
   assert.equal(up.length, saved.length, 'nothing is added or removed');

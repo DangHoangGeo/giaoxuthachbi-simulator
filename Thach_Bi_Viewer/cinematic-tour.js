@@ -239,9 +239,9 @@
           ['L8 is only {L8} fittings, but they serve the wings, the darkest seats: the lowest seat in the church rises from {p_luxMin} to {luxMin} lux.',
             'Mạch L8 chỉ có {L8} bộ đèn, nhưng phục vụ hai cánh, nơi tối nhất: chỗ thấp nhất trong nhà thờ tăng từ {p_luxMin} lên {luxMin} lux.'],
           ['L8 is only a few fittings, but they serve the wings, the darkest seats.', 'Mạch L8 chỉ có vài bộ đèn, nhưng phục vụ hai cánh, nơi tối nhất.']),
-        S(32, { set: { LA: 1, LD: 1, L3: 1 } }, ['Switch on LA, LD and L3 · roof, chandeliers, sanctuary', 'Bật LA, LD và L3 · trần, đèn chùm, cung thánh'],
-          ['LA and LD (roof uplights, chandeliers) and L3 (altar light) add only {d_luxAvg} lux on the pews but {d_kw} kW more: atmosphere and focus. The projectors give the reading light.',
-            'LA và LD (đèn hắt trần, đèn chùm) và L3 (đèn bàn thờ) chỉ thêm {d_luxAvg} lux trên các dãy ghế nhưng tốn thêm {d_kw} kW: tạo không khí và điểm nhấn. Ánh sáng đọc sách đến từ các đèn chiếu.'],
+        S(32, { set: { LA: 1, LD: 1, L3: 1 } }, ['Switch on LA, LD and L3 · roof, sconces, sanctuary', 'Bật LA, LD và L3 · trần, đèn tường, cung thánh'],
+          ['LA and LD (roof uplights, wall sconces) and L3 (sanctuary, chandelier) add only {d_luxAvg} lux on the pews but {d_kw} kW more: atmosphere and focus. The projectors give the reading light.',
+            'LA và LD (đèn hắt trần, đèn tường) và L3 (cung thánh và đèn chùm) chỉ thêm {d_luxAvg} lux trên các dãy ghế nhưng tốn thêm {d_kw} kW: tạo không khí và điểm nhấn. Ánh sáng đọc sách đến từ các đèn chiếu.'],
           ['LA, LD and L3 give atmosphere and focus; the projectors give the reading light.', 'LA, LD và L3 tạo không khí và điểm nhấn; ánh sáng đọc sách đến từ các đèn chiếu.'])] },
       keys: PLAN_KEYS },
     { id: 'light-dim', chapter: 'tour', bars: 7, light: 'evening', roof: true, cut: 'fade', ease: [0.2, 0.3],
@@ -1207,11 +1207,11 @@
    * applied from the base state when the scene starts or the film is moved
    * back, and one after another while the film plays.
    */
-  const CIRCUIT_EN = { L1: 'Central seating', L2: 'Outer seating', L3: 'Sanctuary', L4: 'Circulation', LA: 'Roof uplight', LD: 'Chandeliers', L5: 'Steps and paths', L8: 'Wings',
+  const CIRCUIT_EN = { L1: 'Front three bays', L2: 'Rear four bays', L3: 'Sanctuary', L4: 'Circulation', LA: 'Roof uplight', LD: 'Wall sconces', L5: 'Steps and paths', L8: 'Wings',
     L6: 'Façade and towers', L9: 'Entrance', L7: 'Festival exterior', L10: 'Statues and candles', E1: 'Exit signs',
     F1: 'Ceiling fans', F2: 'Wall fans', F3: 'Portable fans', F4: 'Entrance fans', F5: 'Wing wall fans', V1: 'Exhaust · front', V2: 'Exhaust · wings', V3: 'Exhaust · service',
     A1: 'Main loudspeakers', A2: 'Veranda', A3: 'Courtyard', A4: 'Choir monitors', A5: 'Rear fill', MIC: 'Microphones' };
-  const CIRCUIT_VI = { L1: 'Ghế giữa', L2: 'Ghế ngoài', L3: 'Cung thánh', L4: 'Lối đi và hàng hiên', LA: 'Đèn hắt trần', LD: 'Đèn chùm và đèn nến', L5: 'Bậc và lối đi', L8: 'Hai cánh',
+  const CIRCUIT_VI = { L1: 'Ba gian đầu', L2: 'Bốn gian cuối', L3: 'Cung thánh', L4: 'Lối đi và hàng hiên', LA: 'Đèn hắt trần', LD: 'Đèn tường', L5: 'Bậc và lối đi', L8: 'Hai cánh',
     L6: 'Mặt tiền và tháp', L9: 'Sân khấu trước và cửa chính', L7: 'Đèn lễ hội ngoài trời', L10: 'Tượng và nến mặt tiền', E1: 'Đèn thoát hiểm',
     F1: 'Quạt trần', F2: 'Quạt tường', F3: 'Quạt di động', F4: 'Quạt lối vào', F5: 'Quạt tường hai cánh', V1: 'Quạt hút · hồi mặt tiền', V2: 'Quạt hút · hồi hai cánh', V3: 'Quạt hút · phòng kỹ thuật',
     A1: 'Loa chính và loa trễ', A2: 'Loa hàng hiên', A3: 'Loa sân', A4: 'Loa ca đoàn', A5: 'Loa phụ phía sau', MIC: 'Micro' };

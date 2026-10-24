@@ -697,6 +697,10 @@
   Object.assign(window.THACH_VI, {
     'L1 · Central seating': 'L1 · Ghế ngồi giữa',
     'L2 · Outer seating': 'L2 · Ghế ngồi cạnh',
+    'L1 · Nave · 3 front bays (6–9)': 'L1 · Lòng nhà thờ · 3 gian đầu (6–9)',
+    'L2 · Nave · 4 rear bays (2′–6)': 'L2 · Lòng nhà thờ · 4 gian cuối (2′–6)',
+    'LD · Wall sconces': 'LD · Đèn tường',
+    'Ordinary Mass · rear bays off': 'Thánh lễ thường · tắt 4 gian cuối',
     'L3 · Sanctuary': 'L3 · Cung thánh',
     'L4 · Circulation & verandas': 'L4 · Lối đi & hiên',
     'LA · Roof uplight': 'LA · Đèn hắt mái',

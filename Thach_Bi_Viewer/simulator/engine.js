@@ -36,12 +36,15 @@
   let envMode = 'day', cameraInside = 0, ambientNow = 0, adaptNow = 160, timeNow = 0;
 
   const CIRCUITS = {
-    L1: { label: 'L1 · Central seating', cat: 'light', board: 'DB1', area: 'Nave' },
-    L2: { label: 'L2 · Outer seating', cat: 'light', board: 'DB1', area: 'Nave' },
+    // Parish priest, 25 Oct 2026: nave lighting is switched by area. L1 = the three bays nearest
+    // the sanctuary (6–9, “3 gian đầu”), L2 = the four bays at the entrance end (2′–6, “4 gian
+    // cuối”), which ordinary Masses may leave off or dimmed; LA (ceiling uplight) stays separate.
+    L1: { label: 'L1 · Nave · 3 front bays (6–9)', cat: 'light', board: 'DB1', area: 'Nave' },
+    L2: { label: 'L2 · Nave · 4 rear bays (2′–6)', cat: 'light', board: 'DB1', area: 'Nave' },
     L3: { label: 'L3 · Sanctuary', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' },
     L4: { label: 'L4 · Circulation & verandas', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
     LA: { label: 'LA · Roof uplight', cat: 'light', board: 'DB1', area: 'Nave' },
-    LD: { label: 'LD · Chandeliers & sconces', cat: 'light', board: 'DB1', area: 'Nave' },
+    LD: { label: 'LD · Wall sconces', cat: 'light', board: 'DB1', area: 'Nave' },
     L5: { label: 'L5 · Steps & paths', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
     L8: { label: 'L8 · Wings · choir & ministers', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' },
     L6: { label: 'L6 · Façade & towers', cat: 'light', board: 'DB2', area: 'Towers & façade' },
@@ -1808,6 +1811,8 @@
   const SCENES = {
     'Full service · evening': { L10: 1, L9: 1, L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 1 },
     'Weekday Mass': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6 },
+    // Parish priest, 25 Oct 2026: an ordinary Mass can leave the four rear bays dark.
+    'Ordinary Mass · rear bays off': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6 },
     'Prayer & adoration': { L10: 0.6, L9: 1, L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.8 },
     'Christmas & festivals': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1, LS: 1 },
     // Courtyard horns on: for crowds outside. Inside, their sound comes back

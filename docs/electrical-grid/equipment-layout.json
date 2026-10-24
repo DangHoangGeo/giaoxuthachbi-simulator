@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-24T17:01:56.972Z",
+  "savedAt": "2026-10-24T17:09:33.226Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -53,7 +53,7 @@
     "fanBeamRevision": "2026-10-19-fans-on-column-beams-1",
     "daisLevelRevision": "2026-10-24-dais-0-80-1",
     "facadeCadRevision": "2026-10-24-cad-facade-1",
-    "parishMeetingRevision": "2026-10-25-parish-meeting-3",
+    "parishMeetingRevision": "2026-10-25-parish-meeting-4",
     "eveningExposureRevision": "2026-10-09-evening-160"
   },
   "customScenes": [],
@@ -106,7 +106,7 @@
       "id": "L3",
       "type": "readingProjector",
       "name": "Reading light · axis 3 · B central",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         10.125,
@@ -131,7 +131,7 @@
       "id": "L4",
       "type": "readingProjector",
       "name": "Reading light · axis 3 · B central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         10.125,
@@ -156,7 +156,7 @@
       "id": "L5",
       "type": "readingProjector",
       "name": "Reading light · axis 3 · H central",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         10.125,
@@ -181,7 +181,7 @@
       "id": "L6",
       "type": "readingProjector",
       "name": "Reading light · axis 3 · H central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         10.125,
@@ -206,7 +206,7 @@
       "id": "L7",
       "type": "readingProjector",
       "name": "Reading light · axis 4 · B central",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         14.625,
@@ -231,7 +231,7 @@
       "id": "L8",
       "type": "readingProjector",
       "name": "Reading light · axis 4 · B central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         14.625,
@@ -256,7 +256,7 @@
       "id": "L9",
       "type": "readingProjector",
       "name": "Reading light · axis 4 · H central",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         14.625,
@@ -281,7 +281,7 @@
       "id": "L10",
       "type": "readingProjector",
       "name": "Reading light · axis 4 · H central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         14.625,
@@ -306,7 +306,7 @@
       "id": "L11",
       "type": "readingProjector",
       "name": "Reading light · axis 5 · B central",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         19.125,
@@ -331,7 +331,7 @@
       "id": "L12",
       "type": "readingProjector",
       "name": "Reading light · axis 5 · B central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         19.125,
@@ -356,7 +356,7 @@
       "id": "L13",
       "type": "readingProjector",
       "name": "Reading light · axis 5 · H central",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         19.125,
@@ -381,7 +381,7 @@
       "id": "L14",
       "type": "readingProjector",
       "name": "Reading light · axis 5 · H central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         19.125,
@@ -431,7 +431,7 @@
       "id": "L16",
       "type": "readingProjector",
       "name": "Reading light · axis 6 · B central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         23.625,
@@ -481,7 +481,7 @@
       "id": "L18",
       "type": "readingProjector",
       "name": "Reading light · axis 6 · H central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         23.625,
@@ -1106,7 +1106,7 @@
       "id": "L43",
       "type": "readingProjector",
       "name": "Reading light · axis 6 · B outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         23.585,
@@ -1156,7 +1156,7 @@
       "id": "L45",
       "type": "readingProjector",
       "name": "Reading light · axis 6 · H outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         23.585,
@@ -1206,7 +1206,7 @@
       "id": "L47",
       "type": "readingProjector",
       "name": "Reading light · axis 7 · B outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         28.085,
@@ -1231,7 +1231,7 @@
       "id": "L48",
       "type": "readingProjector",
       "name": "Reading light · axis 7 · B outer · twin",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         28.085,
@@ -1256,7 +1256,7 @@
       "id": "L49",
       "type": "readingProjector",
       "name": "Reading light · axis 7 · H outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         28.085,
@@ -1281,7 +1281,7 @@
       "id": "L50",
       "type": "readingProjector",
       "name": "Reading light · axis 7 · H outer · twin",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         28.085,
@@ -1306,7 +1306,7 @@
       "id": "L51",
       "type": "readingProjector",
       "name": "Reading light · axis 8 · B outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         32.585,
@@ -1331,7 +1331,7 @@
       "id": "L52",
       "type": "readingProjector",
       "name": "Reading light · axis 8 · B outer · twin",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         32.585,
@@ -1356,7 +1356,7 @@
       "id": "L53",
       "type": "readingProjector",
       "name": "Reading light · axis 8 · H outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         32.585,
@@ -1381,7 +1381,7 @@
       "id": "L54",
       "type": "readingProjector",
       "name": "Reading light · axis 8 · H outer · twin",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         32.585,
@@ -1406,7 +1406,7 @@
       "id": "L55",
       "type": "readingProjector",
       "name": "Reading light · axis 9 · B outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         37.085,
@@ -1431,7 +1431,7 @@
       "id": "L56",
       "type": "readingProjector",
       "name": "Reading light · axis 9 · B outer · twin",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         37.085,
@@ -1456,7 +1456,7 @@
       "id": "L57",
       "type": "readingProjector",
       "name": "Reading light · axis 9 · H outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         37.085,
@@ -1481,7 +1481,7 @@
       "id": "L58",
       "type": "readingProjector",
       "name": "Reading light · axis 9 · H outer · twin",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         37.085,
@@ -1506,7 +1506,7 @@
       "id": "L59",
       "type": "readingProjector",
       "name": "Rear rows light · entrance façade · B",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         2.65,
@@ -1530,7 +1530,7 @@
       "id": "L60",
       "type": "readingProjector",
       "name": "Rear centre light · entrance façade · B",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         2.65,
@@ -1554,7 +1554,7 @@
       "id": "L61",
       "type": "readingProjector",
       "name": "Rear rows light · entrance façade · H",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         2.65,
@@ -1578,7 +1578,7 @@
       "id": "L62",
       "type": "readingProjector",
       "name": "Rear centre light · entrance façade · H",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         2.65,
@@ -1853,73 +1853,10 @@
       "shadow": false
     },
     {
-      "id": "L78",
-      "type": "chandelier8",
-      "name": "Chandelier · bay 4–5",
-      "circuit": "LD",
-      "mount": "pendant",
-      "pos": [
-        16.725,
-        7.3,
-        0
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 12.152,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L79",
-      "type": "chandelier8",
-      "name": "Chandelier · bay 6–7",
-      "circuit": "LD",
-      "mount": "pendant",
-      "pos": [
-        25.725,
-        7.3,
-        0
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 12.152,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L80",
-      "type": "chandelier8",
-      "name": "Chandelier · bay 8–9",
-      "circuit": "LD",
-      "mount": "pendant",
-      "pos": [
-        34.725,
-        7.3,
-        0
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 12.152,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
       "id": "L81",
       "type": "chandelier12",
       "name": "Grand chandelier · crossing 9–10",
-      "circuit": "LD",
+      "circuit": "L3",
       "mount": "pendant",
       "pos": [
         40.575,
