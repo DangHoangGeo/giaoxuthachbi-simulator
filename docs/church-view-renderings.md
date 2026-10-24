@@ -1,4 +1,16 @@
-# Church view renderings · 7 October 2026
+# Church view renderings
+
+## Updated model views · 24 October 2026
+
+The owner requested new presentation images from the updated 3D model, with freedom to refine decorative detail. The [six-view gallery](../Thach_Bi_Viewer/references/00-overview/2026-10-24/index.html) delivers front daylight, front/long-side daylight, opposite-corner evening, central façade detail, nave daylight and sanctuary evening images. All six were edited with the built-in `image_gen.imagegen` from [actual desktop viewer captures](../review/church-views-2026-10-24/model-inputs/capture.json). The capture run used visit-only mode and reported no browser errors. Each artwork includes **CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công**.
+
+The captures describe HEAD `fd6c7bb` **plus the owner's uncommitted working model**, including façade revision `2026-10-24-cad-facade-1`; HEAD alone cannot reproduce them. The capture manifest freezes source-file SHA-256 hashes and camera/lighting settings. The [asset manifest](../Thach_Bi_Viewer/references/00-overview/2026-10-24/manifest.json) records the selected generator files, native dimensions, hashes and source associations. [Exact prompts and correction history](../review/church-views-2026-10-24/README.md) remain with the captures. Native outputs are **1672 × 941**, saved without resampling; these are not native Full HD images.
+
+The new images follow the [updated central façade](facade-model.md): broad triple-window arch, side niches, cresting and one upper pedimented Assumption niche between the unchanged towers. They replace the **older front-façade appearance for presentation discussions**; the 7 October door/shutter, rear and structural studies remain separate references. Surface relief, saint sculpture, plaster grain, stone joints, roof tiles and gilding are artistic refinements. Some mouldings, apparent proportions and details vary between generated angles. Generic distant vegetation/landscape and evening tree lighting are invented context, not surveyed surroundings or selected lighting equipment. Do not measure these pictures or use them to resolve ISSUE-R01/R02.
+
+The nave image omits the source capture's visible fans and hangers to illustrate the owner's [all-hidden appearance intent](engineering/central-view-constraint.md). This is **not a solved concealment installation**. Exit signs are retained in the final nave artwork. No actual equipment is moved, removed, concealed or switched by this delivery. No model geometry, electrical lines, quantities, Excel registers or simulator inputs change, so no register regeneration is required. Façade drainage/structure/access, statue/niche fit, front-gable discharge obstruction and the established lighting, sound and ventilation holds remain open. These images are presentation concepts, not site photographs or a coordinated multi-view fabrication set. They are saved locally; the website's editorial gallery and deployment are unchanged.
+
+## Earlier set · 7 October 2026
 
 Status: **CONCEPT — visually reviewed artwork**, not construction approval. The [dated gallery](../Thach_Bi_Viewer/references/00-overview/2026-10-07/index.html) contains sixteen views: the original nine exterior/interior/connection concepts, five additional side-entrance, window/wall and rear views, and two overhead views with and without the roof. Daylight and evening appearances are included. Each selected image has a preserved native original and a 1920 × 1080 export.
 
