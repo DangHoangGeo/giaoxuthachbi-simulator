@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "status": "DERIVED / CONCEPT / ENGINEERING HOLD · comparison screens only",
- "model_git_revision": "5c74d1b1f0968df3bb1171ad11f5cb166d369c2e",
+ "model_git_revision": "a017c28f2c010ff8e01ad2e67907b2e9baa3ca7f",
  "source_sha256": {
   "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
   "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",
@@ -12,23 +12,24 @@
   "Thach_Bi_Viewer/facade.js": "089158cb3e0a2f797266be6d3b42c36ccbdf600044d6ceb0c7b67c45a3b4566e",
   "Thach_Bi_Viewer/porches.js": "cf1279c2694bea830f0e7a301a4077f950113abbd1604b271151a2a5b2d4f9c3",
   "Thach_Bi_Viewer/stations.js": "e36a19cf92b56d0d36982845fbe2ec4a0ccd17783bc0004551dfd1e933a6a341",
-  "Thach_Bi_Viewer/realism.js": "c8d1d091cd4ea1edc984edd7056ddcb81ed69cc2003261238d13962ee1f7763b",
+  "Thach_Bi_Viewer/towers.js": "7ae6dc82fd9c23f08957e9a6f994bc157386a6f20bbc13993f8dbab652bb441e",
+  "Thach_Bi_Viewer/realism.js": "f8d09ca409d4224cc5769a69ccfae8426cf562db20bc93c9c6b8ccfaf92f67ba",
   "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
   "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
   "Thach_Bi_Viewer/simulator/catalog.js": "03de07d427d0a57dbfecb947dc404a05e3dafc2706fadf758dd82ea2be17da82",
   "Thach_Bi_Viewer/simulator/engine.js": "9a6f67a6d7ad82780f0baf2b71a1968d6575d71ce80a4fa8633ae49870654472",
   "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
   "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
-  "Thach_Bi_Viewer/simulator/design.js": "9c93b0f3fff502e4afa80f079e336e76eef86bf6a39b94e8f6640119033e20b3",
+  "Thach_Bi_Viewer/simulator/design.js": "8928fc03f874d06a632fbb3ece6efcb179264e16d7ba9423067acfe2ad09023c",
   "Thach_Bi_Viewer/simulator/analysis.js": "7670036a3be8f9ca423b551bc75261c2272e6c07ba077ea49a394cb9c04af849",
   "Thach_Bi_Viewer/simulator/electrical.js": "e8688402fd48426a5f933b880b1f11682d7caa1aa23a1ac2bf0d12c5f1d317db",
   "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
   "Thach_Bi_Viewer/bundle.js": "74818d3bbe1aea78576f9fe1907faaa2e52e3aa96c5cfad2a2f37c2b72b710d3",
-  "scripts/lib/study_model.cjs": "a429381999a05e16faf793ac9854c4749ff575193d8435f2ac61b427c9e60ab6",
+  "scripts/lib/study_model.cjs": "a0d83e319f623f16900847464d8172cfe5983378f40dcd527e5f41a5c660ab5b",
   "scripts/export_electrical_loads.cjs": "066af5453cb3e782abe4cfaf585b6cd9b04ebafad050e18c73615e7ca6fdca2b",
-  "docs/electrical-grid/electrical-systems.json": "760fbab99b5e7a6f8a94c497e4a9254bf06be7fb81bd104e0e2b4126c9fde701",
-  "docs/electrical-grid/equipment-layout.json": "8494709266c989cc26ec0f16481a494804ce05b0210fea7ddf78e6004c0e1614",
-  "docs/electrical-grid/categories/manifest.json": "3e1605f80061371a476e9836fbec0c2556bfad494c4727eb667abbae4741e8c4"
+  "docs/electrical-grid/electrical-systems.json": "1c162288ea3d9215a1f3a3feb59b009079a72c6a8a777f9f9044923d3b18ad31",
+  "docs/electrical-grid/equipment-layout.json": "94f37cc477b452b68afd0631937580a0b9412b859965e9046c49f59c64746a3f",
+  "docs/electrical-grid/categories/manifest.json": "0063b5668983883d267adfb866f3f0e43c4cb2277a34c50458be999132e8ca19"
  },
  "default_scene": "Full service · evening",
  "assumptions": {
@@ -1218,7 +1219,7 @@
    "longest_path_m": 81.52613,
    "farthest_route": "drop:DB2:L7:light:1:L212",
    "feeder_from_db1_m": 80.68313,
-   "route_m": 378.231205,
+   "route_m": 383.771205,
    "exterior_points": 26,
    "open_weather_points": 24,
    "reach_points": 0,
@@ -3385,12 +3386,12 @@
   "service-ceiling": 17.95,
   "side-wall": 153.458,
   "tower-cornice": 125.781926,
-  "tower-wall": 541.520743,
+  "tower-wall": 547.060743,
   "underfloor-event": 26.34,
   "wall-roof-trunk": 2063.355919
  },
  "timber_roof_and_lining_mains_m": 914.079216,
- "mains_route_m": 4354.799209,
+ "mains_route_m": 4360.339209,
  "buried_routes": [
   {
    "route_id": "trunk:DB2:P3:power:-1",

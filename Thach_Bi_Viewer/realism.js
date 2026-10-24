@@ -65,6 +65,9 @@
     // Shrine jambs on the axis-11 line (sanctuary.js); keep the central 1.44 m entrance open.
     const wx=window.CHURCH_SANCTUARY?.spec.wingX ?? 48.93;
     if(x>=wx-.425 && x<=wx+1.125 && az>=3.7 && az<=7.25 && Math.abs(az-5.5)>=.7)return false;
+    // Tower bases are closed since 25 Oct 2026 (towers.js): no passage through them, and the
+    // corner piers stand forward of the old front.
+    if(x>=-1.0 && x<=5.15 && az>=6.85 && az<=13.45)return false;
     // Parish priest, 25 Oct 2026 (porches.js): no doorway in the C/G wall of bay 10–11, and the
     // 9–10 side bays are closed to the porches on axes 9 and 10.
     if(Math.abs(x-46.425)<=1.2 && az>=7.0 && az<=7.75)return false;
@@ -663,6 +666,8 @@
     window.CHURCH_PORCHES?.prepare(ctx);
     // Fourteen Stations of the Cross between the columns (stations.js, 25 Oct 2026).
     window.CHURCH_STATIONS?.prepare(ctx);
+    // Tower bases (closed fronts, corner piers) and tower tops after the CAD file (towers.js, 25 Oct 2026).
+    window.CHURCH_TOWERS?.prepare(ctx);
     // Project maps in metres before the legacy renderer merges material batches.
     const p=new T.Vector3(),normal=new T.Vector3(),normalMatrix=new T.Matrix3();
     building.updateMatrixWorld(true);scene.updateMatrixWorld(true);

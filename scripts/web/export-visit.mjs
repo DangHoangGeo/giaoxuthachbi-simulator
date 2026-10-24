@@ -28,6 +28,7 @@ const files = [
 	"facade.js",
 	"porches.js",
 	"stations.js",
+	"towers.js",
 	"realism.js",
 	"planning.js",
 	"bundle.js",

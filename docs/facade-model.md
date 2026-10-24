@@ -43,6 +43,22 @@ The overlay of the DWG linework on a straight-on render of the model matches wit
 - **Electrical:** the L10 runs are longer (the niches are higher and further back). Exports, the six category registers, the summary and the safety review were regenerated from the model.
 - **Film:** the five-minute film's facade shots keep their camera path. The caption ("three doors, with Our Lady of the Assumption between them") still holds. The facade itself looks different in those shots.
 
+## Towers, 25 October 2026
+
+At the owner's direction after the parish priest's meeting (point 5: closed tower fronts with a decorative arch; base, top and ornament as in the new drawings), `Thach_Bi_Viewer/towers.js` rebuilds both towers' ground storey, adds the corner piers of every stage and replaces the tops, from E01B traced in model axes and plan sheet 5:
+
+| Part | CAD (H tower, model Z) | Model |
+| --- | --- | --- |
+| Corner piers, stage 1 | Z 7.0–8.2 and 12.1–13.4; pedestals to +1.85; fluted shafts to +7.4; foliate capital band to +7.85; cornice to +8.39 | t = ±1.95 to ±3.2 from the tower centre (Z 10.153), X −0.72 to 1.0 (front) and 3.9 to 5.1 (back), with plinth, pedestal die and cap, three flutes on each exposed face |
+| Closed front | Archivolt springing +4.0, radius 1.95; inner blind arch on colonnettes springing +2.85, radius 0.8–1.15; cartouche; spandrel sprays | As drawn; the inner arch is a 0.2 m blind recess, the wall behind it is closed |
+| Entablature | Architrave, dentils +7.15–7.35, Greek-key frieze +7.42–7.78, cornice +7.85–8.39 | As drawn; between the piers the cornice keeps the old 0.38 m lip so the tower floods stand where they were |
+| Upper stages | Corner piers ±1.8–3.05 (stages 2, 3), ±1.75–2.6 (belfry), pedestal blocks, capital bands, dentilled cornices | Same, 0.45 m in front of and behind the model's stage walls |
+| Dome | Ribbed dome +30.05 to +32.75, half-width 1.7, rosette at +31.8 | Lathe profile on the CAD outline, eight ribs, four rosettes |
+| Lantern and cross | Plinth +32.75–33.05, lantern +33.05–33.95, open acanthus crown to +35.0, ball, trefoil cross to +36.92 | As drawn; the crown's leaves are illustrative carving |
+| Corner pinnacles | Fleur-de-lis pinnacles on the balustrade corners to about +31.6 | Crocketed pinnacles with fleur-de-lis finials on the existing corner pedestals |
+
+**Departure kept on purpose:** plan sheet 5 draws the stage-1 front wall about 0.5 m further forward than the model's (X −0.5 against X 0). The model keeps its wall plane, so the stages above and the fittings on the +8.39 m cornice keep their places; the piers and entablature project in front of it as drawn. Each tower now has a door from the rear corner of the nave (inner side, X 3.4–4.4 m, 2.3 m high) into its ground-floor room; the walking map blocks the old passage. The old onion cap, cone, urns and cap rosettes are removed. The festival strands on the tower corners move onto the pier fronts. An overlay of E01B on the model after the change is kept, uncommitted, as `layout_design/dwg-2026-10-23/images/05-facade-check/E01B-overlay_towers-after_2026-10-25.png`. Structure, reinforcement and the real pier sections remain on engineering hold.
+
 ## Open questions
 
 - **ISSUE-R01 / ISSUE-R02** (church and designer): which set governs, and whether this central facade is the one to be built.

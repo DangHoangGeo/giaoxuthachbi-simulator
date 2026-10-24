@@ -338,8 +338,10 @@
       strand(`veranda eave ${side(s)} · sanctuary`, [48.4, 6.47, s * 10.6], 90, 8.9);
       strand(`rear gable ${side(s)}`, [53.45, 10.0, s * 3.65], 0, 9.07, -s * 36.4);
       // Up the corner pilasters of the first three tower stages, which step in as they rise.
+      // Since 25 Oct 2026 (towers.js) they run up the front of the CAD corner piers.
+      const TW = window.CHURCH_TOWERS?.spec;
       [[0, 8.39, 4.9, 4.9], [8.39, 15.84, 4.65, 4.72], [15.84, 23.14, 4.45, 4.52]].forEach(([y0, y1, d, u], i) => {
-        for (const e of [-1, 1]) strand(`tower ${side(s)} · stage ${i + 1} · ${e < 0 ? 'inner' : 'outer'} corner`, [2.45 - u / 2 - 0.4, (y0 + y1) / 2, s * (10.153 + e * (d / 2 - 0.12))], 0, y1 - y0 - 0.6, 90, 'wall', 180);
+        for (const e of [-1, 1]) strand(`tower ${side(s)} · stage ${i + 1} · ${e < 0 ? 'inner' : 'outer'} corner`, TW ? [TW.pierFront[i] - 0.06, (y0 + y1) / 2, s * (10.153 + e * TW.pierCentre[i])] : [2.45 - u / 2 - 0.4, (y0 + y1) / 2, s * (10.153 + e * (d / 2 - 0.12))], 0, y1 - y0 - 0.6, 90, 'wall', 180);
       });
       // Belfry and dome lit from the +23.14 m ledge of each tower.
     }
@@ -705,6 +707,18 @@
     "L148": {"type":"wallLantern","name":"Side door lantern · H · 34.725 · rear","pos":[36.15,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
     "L149": {"type":"wallLantern","name":"Side door lantern · H · 46.425 · front","pos":[45,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
     "L150": {"type":"wallLantern","name":"Side door lantern · H · 46.425 · rear","pos":[47.85,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L202": {"type":"bulbString","name":"Festival lights · tower B · stage 1 · inner corner","pos":[-0.4,4.195,-7.823],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L203": {"type":"bulbString","name":"Festival lights · tower B · stage 1 · outer corner","pos":[-0.4,4.195,-12.483],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L204": {"type":"bulbString","name":"Festival lights · tower B · stage 2 · inner corner","pos":[-0.31,12.115,-7.948],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L205": {"type":"bulbString","name":"Festival lights · tower B · stage 2 · outer corner","pos":[-0.31,12.115,-12.358],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L206": {"type":"bulbString","name":"Festival lights · tower B · stage 3 · inner corner","pos":[-0.21,19.49,-8.048],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L207": {"type":"bulbString","name":"Festival lights · tower B · stage 3 · outer corner","pos":[-0.21,19.49,-12.258],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L213": {"type":"bulbString","name":"Festival lights · tower H · stage 1 · inner corner","pos":[-0.4,4.195,7.823],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L214": {"type":"bulbString","name":"Festival lights · tower H · stage 1 · outer corner","pos":[-0.4,4.195,12.483],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L215": {"type":"bulbString","name":"Festival lights · tower H · stage 2 · inner corner","pos":[-0.31,12.115,7.948],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L216": {"type":"bulbString","name":"Festival lights · tower H · stage 2 · outer corner","pos":[-0.31,12.115,12.358],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L217": {"type":"bulbString","name":"Festival lights · tower H · stage 3 · inner corner","pos":[-0.21,19.49,8.048],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L218": {"type":"bulbString","name":"Festival lights · tower H · stage 3 · outer corner","pos":[-0.21,19.49,12.258],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
     "F244": {"type":"fanNaveWall","name":"Wall fan · axis 4 · B","pos":[14.475,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
     "F245": {"type":"fanNaveWall","name":"Wall fan · axis 4 · H","pos":[14.475,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
     "F246": {"type":"fanNaveWall","name":"Wall fan · axis 6 · B","pos":[23.475,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
