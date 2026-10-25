@@ -2433,7 +2433,8 @@
       ['daisLevelRevision', D.daisLevelRevision, '.before-dais-0-80', D.upgradeDaisLevel],
       ['facadeCadRevision', D.facadeCadRevision, '.before-cad-facade', D.upgradeFacadeCad],
       ['parishMeetingRevision', D.parishMeetingRevision, '.before-parish-meeting', D.upgradeParishMeeting],
-      ['verandaReviewRevision', window.CHURCH_VERANDA_REVIEW.revision, '.before-open-porch-light-sound', window.CHURCH_VERANDA_REVIEW.upgrade]
+      ['verandaReviewRevision', window.CHURCH_VERANDA_REVIEW.revision, '.before-open-porch-light-sound', window.CHURCH_VERANDA_REVIEW.upgrade],
+      ['doorheadReviewRevision', window.CHURCH_DOORHEAD_REVIEW.revision, '.before-doorheads-no-sconces', window.CHURCH_DOORHEAD_REVIEW.upgrade]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;

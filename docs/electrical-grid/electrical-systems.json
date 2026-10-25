@@ -10860,1028 +10860,6 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "trunk:LC1:LD:light:-1",
-      "name": "LD · B · circuit trunk",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "trunk",
-      "itemIds": [
-        "L82",
-        "L84",
-        "L86",
-        "L88",
-        "L90",
-        "L92",
-        "L94"
-      ],
-      "color": "#dc9e29",
-      "method": "wall-roof-trunk",
-      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
-      "points": [
-        [
-          48.895,
-          1.85,
-          -0.55
-        ],
-        [
-          48.735,
-          1.85,
-          -0.55
-        ],
-        [
-          48.735,
-          1.85,
-          -2.24
-        ],
-        [
-          48.735,
-          4.33,
-          -2.24
-        ],
-        [
-          48.735,
-          4.33,
-          -3.3
-        ],
-        [
-          53.016,
-          4.33,
-          -3.3
-        ],
-        [
-          53.016,
-          5.94,
-          -3.3
-        ],
-        [
-          53.016,
-          5.94,
-          -7.36
-        ],
-        [
-          44.175,
-          5.94,
-          -7.36
-        ],
-        [
-          44.175,
-          7.04,
-          -7.36
-        ],
-        [
-          43.535,
-          7.04,
-          -7.36
-        ],
-        [
-          43.455,
-          6.950412371134024,
-          -7.36
-        ],
-        [
-          40.574999999999996,
-          9.269999999999994,
-          -7.36
-        ],
-        [
-          37.695,
-          6.950412371134018,
-          -7.36
-        ],
-        [
-          37.615,
-          7.04,
-          -7.36
-        ],
-        [
-          36.975,
-          7.04,
-          -7.36
-        ],
-        [
-          36.975,
-          5.94,
-          -7.36
-        ],
-        [
-          9.975000000000001,
-          5.94,
-          -7.36
-        ]
-      ],
-      "length": 62.29813031117919,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              44.175,
-              7.04,
-              -7.36
-            ],
-            [
-              43.535,
-              7.04,
-              -7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              43.535,
-              7.04,
-              -7.36
-            ],
-            [
-              43.455,
-              6.950412371134024,
-              -7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              43.455,
-              6.950412371134024,
-              -7.36
-            ],
-            [
-              40.574999999999996,
-              9.269999999999994,
-              -7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              40.574999999999996,
-              9.269999999999994,
-              -7.36
-            ],
-            [
-              37.695,
-              6.950412371134018,
-              -7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              37.695,
-              6.950412371134018,
-              -7.36
-            ],
-            [
-              37.615,
-              7.04,
-              -7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              37.615,
-              7.04,
-              -7.36
-            ],
-            [
-              36.975,
-              7.04,
-              -7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:-1:L82",
-      "name": "LD → Sconce · axis 3 · B",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L82"
-      ],
-      "trunkId": "trunk:LC1:LD:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 62.29813031117919,
-      "homeRun": false,
-      "points": [
-        [
-          9.975000000000001,
-          5.94,
-          -7.36
-        ],
-        [
-          9.975000000000001,
-          5,
-          -7.36
-        ],
-        [
-          9.975,
-          5,
-          -7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:-1:L84",
-      "name": "LD → Sconce · axis 4 · B",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L84"
-      ],
-      "trunkId": "trunk:LC1:LD:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 57.79813031117919,
-      "homeRun": false,
-      "points": [
-        [
-          14.475000000000001,
-          5.94,
-          -7.36
-        ],
-        [
-          14.475000000000001,
-          5,
-          -7.36
-        ],
-        [
-          14.475,
-          5,
-          -7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:-1:L86",
-      "name": "LD → Sconce · axis 5 · B",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L86"
-      ],
-      "trunkId": "trunk:LC1:LD:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 53.29813031117919,
-      "homeRun": false,
-      "points": [
-        [
-          18.975,
-          5.94,
-          -7.36
-        ],
-        [
-          18.975,
-          5,
-          -7.36
-        ],
-        [
-          18.975,
-          5,
-          -7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:-1:L88",
-      "name": "LD → Sconce · axis 6 · B",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L88"
-      ],
-      "trunkId": "trunk:LC1:LD:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 48.79813031117919,
-      "homeRun": false,
-      "points": [
-        [
-          23.475,
-          5.94,
-          -7.36
-        ],
-        [
-          23.475,
-          5,
-          -7.36
-        ],
-        [
-          23.475,
-          5,
-          -7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:-1:L90",
-      "name": "LD → Sconce · axis 7 · B",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L90"
-      ],
-      "trunkId": "trunk:LC1:LD:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 44.29813031117919,
-      "homeRun": false,
-      "points": [
-        [
-          27.975,
-          5.94,
-          -7.36
-        ],
-        [
-          27.975,
-          5,
-          -7.36
-        ],
-        [
-          27.975,
-          5,
-          -7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:-1:L92",
-      "name": "LD → Sconce · axis 8 · B",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L92"
-      ],
-      "trunkId": "trunk:LC1:LD:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 39.79813031117919,
-      "homeRun": false,
-      "points": [
-        [
-          32.475,
-          5.94,
-          -7.36
-        ],
-        [
-          32.475,
-          5,
-          -7.36
-        ],
-        [
-          32.475,
-          5,
-          -7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:-1:L94",
-      "name": "LD → Sconce · axis 9 · B",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L94"
-      ],
-      "trunkId": "trunk:LC1:LD:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 35.29813031117919,
-      "homeRun": false,
-      "points": [
-        [
-          36.975,
-          5.94,
-          -7.36
-        ],
-        [
-          36.975,
-          5,
-          -7.36
-        ],
-        [
-          36.975,
-          5,
-          -7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "trunk:LC1:LD:light:1",
-      "name": "LD · H · circuit trunk",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "trunk",
-      "itemIds": [
-        "L83",
-        "L85",
-        "L87",
-        "L89",
-        "L91",
-        "L93",
-        "L95"
-      ],
-      "color": "#dc9e29",
-      "method": "wall-roof-trunk",
-      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
-      "points": [
-        [
-          48.895,
-          1.85,
-          -0.55
-        ],
-        [
-          48.735,
-          1.85,
-          -0.55
-        ],
-        [
-          48.735,
-          1.85,
-          -2.24
-        ],
-        [
-          48.735,
-          4.33,
-          -2.24
-        ],
-        [
-          48.735,
-          4.33,
-          -3.3
-        ],
-        [
-          53.016,
-          4.33,
-          -3.3
-        ],
-        [
-          53.016,
-          5.94,
-          -3.3
-        ],
-        [
-          53.016,
-          5.94,
-          7.36
-        ],
-        [
-          44.175,
-          5.94,
-          7.36
-        ],
-        [
-          44.175,
-          7.04,
-          7.36
-        ],
-        [
-          43.535,
-          7.04,
-          7.36
-        ],
-        [
-          43.455,
-          6.950412371134024,
-          7.36
-        ],
-        [
-          40.574999999999996,
-          9.269999999999994,
-          7.36
-        ],
-        [
-          37.695,
-          6.950412371134018,
-          7.36
-        ],
-        [
-          37.615,
-          7.04,
-          7.36
-        ],
-        [
-          36.975,
-          7.04,
-          7.36
-        ],
-        [
-          36.975,
-          5.94,
-          7.36
-        ],
-        [
-          9.975000000000001,
-          5.94,
-          7.36
-        ]
-      ],
-      "length": 68.89813031117919,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              44.175,
-              7.04,
-              7.36
-            ],
-            [
-              43.535,
-              7.04,
-              7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              43.535,
-              7.04,
-              7.36
-            ],
-            [
-              43.455,
-              6.950412371134024,
-              7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              43.455,
-              6.950412371134024,
-              7.36
-            ],
-            [
-              40.574999999999996,
-              9.269999999999994,
-              7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              40.574999999999996,
-              9.269999999999994,
-              7.36
-            ],
-            [
-              37.695,
-              6.950412371134018,
-              7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              37.695,
-              6.950412371134018,
-              7.36
-            ],
-            [
-              37.615,
-              7.04,
-              7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              37.615,
-              7.04,
-              7.36
-            ],
-            [
-              36.975,
-              7.04,
-              7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:1:L83",
-      "name": "LD → Sconce · axis 3 · H",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L83"
-      ],
-      "trunkId": "trunk:LC1:LD:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 68.89813031117919,
-      "homeRun": false,
-      "points": [
-        [
-          9.975000000000001,
-          5.94,
-          7.36
-        ],
-        [
-          9.975000000000001,
-          5,
-          7.36
-        ],
-        [
-          9.975,
-          5,
-          7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:1:L85",
-      "name": "LD → Sconce · axis 4 · H",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L85"
-      ],
-      "trunkId": "trunk:LC1:LD:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 64.39813031117919,
-      "homeRun": false,
-      "points": [
-        [
-          14.475000000000001,
-          5.94,
-          7.36
-        ],
-        [
-          14.475000000000001,
-          5,
-          7.36
-        ],
-        [
-          14.475,
-          5,
-          7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:1:L87",
-      "name": "LD → Sconce · axis 5 · H",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L87"
-      ],
-      "trunkId": "trunk:LC1:LD:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 59.898130311179195,
-      "homeRun": false,
-      "points": [
-        [
-          18.975,
-          5.94,
-          7.36
-        ],
-        [
-          18.975,
-          5,
-          7.36
-        ],
-        [
-          18.975,
-          5,
-          7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:1:L89",
-      "name": "LD → Sconce · axis 6 · H",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L89"
-      ],
-      "trunkId": "trunk:LC1:LD:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 55.398130311179195,
-      "homeRun": false,
-      "points": [
-        [
-          23.475,
-          5.94,
-          7.36
-        ],
-        [
-          23.475,
-          5,
-          7.36
-        ],
-        [
-          23.475,
-          5,
-          7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:1:L91",
-      "name": "LD → Sconce · axis 7 · H",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L91"
-      ],
-      "trunkId": "trunk:LC1:LD:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 50.898130311179195,
-      "homeRun": false,
-      "points": [
-        [
-          27.975,
-          5.94,
-          7.36
-        ],
-        [
-          27.975,
-          5,
-          7.36
-        ],
-        [
-          27.975,
-          5,
-          7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:1:L93",
-      "name": "LD → Sconce · axis 8 · H",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L93"
-      ],
-      "trunkId": "trunk:LC1:LD:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 46.398130311179195,
-      "homeRun": false,
-      "points": [
-        [
-          32.475,
-          5.94,
-          7.36
-        ],
-        [
-          32.475,
-          5,
-          7.36
-        ],
-        [
-          32.475,
-          5,
-          7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:LD:light:1:L95",
-      "name": "LD → Sconce · axis 9 · H",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "LD",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L95"
-      ],
-      "trunkId": "trunk:LC1:LD:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 41.898130311179195,
-      "homeRun": false,
-      "points": [
-        [
-          36.975,
-          5.94,
-          7.36
-        ],
-        [
-          36.975,
-          5,
-          7.36
-        ],
-        [
-          36.975,
-          5,
-          7.07
-        ]
-      ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
-      "coverPaths": [],
-      "length": 1.2300000000000004,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
       "id": "trunk:LC1:L3:light:1",
       "name": "L3 · H · circuit trunk",
       "source": "LC1",
@@ -19505,12 +18483,12 @@
           -7.36
         ],
         [
-          2.65,
+          2.6800000008940703,
           5.988,
           -7.36
         ]
       ],
-      "length": 68.67513031117919,
+      "length": 68.64513031028511,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -19628,39 +18606,49 @@
       ],
       "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 68.67513031117919,
+      "upstreamLength": 68.64513031028511,
       "homeRun": false,
       "points": [
         [
-          2.65,
+          2.6800000008940703,
           5.988,
           -7.36
         ],
         [
-          2.35,
-          7.65,
+          2.5920000008940702,
+          5.988,
           -7.36
         ],
         [
-          2.35,
-          7.65,
+          2.5920000008940702,
+          5.988,
+          1.699999952316284
+        ],
+        [
+          2.5920000008940702,
+          4.9,
+          1.699999952316284
+        ],
+        [
+          2.5920000008940702,
+          4.9,
           0
         ],
         [
-          2.35,
-          6.95,
+          2.6800000008940703,
+          4.9,
           0
         ],
         [
-          2.65,
-          6.95,
+          2.6800000008940703,
+          4.762499999552966,
           0
         ]
       ],
-      "method": "entrance-wall",
-      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "method": "door-head",
+      "installation": "Entrance wall band to solid jamb outside coloured fanlight, fixed transom and local inside-face sign clip. Removable frame cover, fixing and emergency design pending.",
       "coverPaths": [],
-      "length": 10.048858786281436,
+      "length": 12.161499905079602,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -19680,29 +18668,44 @@
       ],
       "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 54.60013031117919,
+      "upstreamLength": 53.3051303111792,
       "homeRun": false,
       "points": [
         [
-          16.725,
+          18.02,
           5.988,
           -7.36
         ],
         [
-          16.725,
-          4.6,
+          15.450000000000001,
+          5.988,
           -7.36
         ],
         [
+          15.450000000000001,
+          3.061,
+          -7.36
+        ],
+        [
+          15.450000000000001,
+          3.061,
+          -7.5
+        ],
+        [
           16.725,
-          4.6,
-          -7.245
+          3.061,
+          -7.5
+        ],
+        [
+          16.725,
+          3.061,
+          -7.4400000013411045
         ]
       ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "method": "door-head",
+      "installation": "Wall band to solid jamb beside coloured fanlight, fixed 220 mm door-head band and local sign lead. Frame containment, fixing and emergency design pending.",
       "coverPaths": [],
-      "length": 1.503000000000001,
+      "length": 6.9719999986588945,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -19722,29 +18725,44 @@
       ],
       "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 36.60013031117919,
+      "upstreamLength": 35.30513031117919,
       "homeRun": false,
       "points": [
         [
-          34.725,
+          36.02,
           5.988,
           -7.36
         ],
         [
-          34.725,
-          4.6,
+          33.45,
+          5.988,
           -7.36
         ],
         [
+          33.45,
+          3.061,
+          -7.36
+        ],
+        [
+          33.45,
+          3.061,
+          -7.5
+        ],
+        [
           34.725,
-          4.6,
-          -7.245
+          3.061,
+          -7.5
+        ],
+        [
+          34.725,
+          3.061,
+          -7.4400000013411045
         ]
       ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "method": "door-head",
+      "installation": "Wall band to solid jamb beside coloured fanlight, fixed 220 mm door-head band and local sign lead. Frame containment, fixing and emergency design pending.",
       "coverPaths": [],
-      "length": 1.503000000000001,
+      "length": 6.9719999986588945,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -19853,12 +18871,12 @@
           7.36
         ],
         [
-          16.725,
+          18.02,
           5.988,
           7.36
         ]
       ],
-      "length": 61.20013031117919,
+      "length": 59.90513031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -19976,29 +18994,44 @@
       ],
       "trunkId": "trunk:DB1:E1:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 61.20013031117919,
+      "upstreamLength": 59.90513031117919,
       "homeRun": false,
       "points": [
         [
-          16.725,
+          18.02,
           5.988,
           7.36
         ],
         [
-          16.725,
-          4.6,
+          15.450000000000001,
+          5.988,
           7.36
         ],
         [
+          15.450000000000001,
+          3.061,
+          7.36
+        ],
+        [
+          15.450000000000001,
+          3.061,
+          7.5
+        ],
+        [
           16.725,
-          4.6,
-          7.245
+          3.061,
+          7.5
+        ],
+        [
+          16.725,
+          3.061,
+          7.4400000013411045
         ]
       ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "method": "door-head",
+      "installation": "Wall band to solid jamb beside coloured fanlight, fixed 220 mm door-head band and local sign lead. Frame containment, fixing and emergency design pending.",
       "coverPaths": [],
-      "length": 1.503000000000001,
+      "length": 6.9719999986588945,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -20018,29 +19051,44 @@
       ],
       "trunkId": "trunk:DB1:E1:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 43.20013031117919,
+      "upstreamLength": 41.905130311179185,
       "homeRun": false,
       "points": [
         [
-          34.725,
+          36.02,
           5.988,
           7.36
         ],
         [
-          34.725,
-          4.6,
+          33.45,
+          5.988,
           7.36
         ],
         [
+          33.45,
+          3.061,
+          7.36
+        ],
+        [
+          33.45,
+          3.061,
+          7.5
+        ],
+        [
           34.725,
-          4.6,
-          7.245
+          3.061,
+          7.5
+        ],
+        [
+          34.725,
+          3.061,
+          7.4400000013411045
         ]
       ],
-      "method": "side-wall",
-      "installation": "Concealed solid-pier / wall drop and local termination.",
+      "method": "door-head",
+      "installation": "Wall band to solid jamb beside coloured fanlight, fixed 220 mm door-head band and local sign lead. Frame containment, fixing and emergency design pending.",
       "coverPaths": [],
-      "length": 1.503000000000001,
+      "length": 6.9719999986588945,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -39112,356 +38160,6 @@
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
-      "id": "L82",
-      "name": "Sconce · axis 3 · B",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        9.975,
-        5,
-        -7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L83",
-      "name": "Sconce · axis 3 · H",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        9.975,
-        5,
-        7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L84",
-      "name": "Sconce · axis 4 · B",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        14.475,
-        5,
-        -7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L85",
-      "name": "Sconce · axis 4 · H",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        14.475,
-        5,
-        7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L86",
-      "name": "Sconce · axis 5 · B",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        18.975,
-        5,
-        -7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L87",
-      "name": "Sconce · axis 5 · H",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        18.975,
-        5,
-        7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L88",
-      "name": "Sconce · axis 6 · B",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        23.475,
-        5,
-        -7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L89",
-      "name": "Sconce · axis 6 · H",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        23.475,
-        5,
-        7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L90",
-      "name": "Sconce · axis 7 · B",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        27.975,
-        5,
-        -7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L91",
-      "name": "Sconce · axis 7 · H",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        27.975,
-        5,
-        7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L92",
-      "name": "Sconce · axis 8 · B",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        32.475,
-        5,
-        -7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L93",
-      "name": "Sconce · axis 8 · H",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        32.475,
-        5,
-        7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L94",
-      "name": "Sconce · axis 9 · B",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        36.975,
-        5,
-        -7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L95",
-      "name": "Sconce · axis 9 · H",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "circuit": "LD",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 9,
-      "specs": "940 lm · 2700 K",
-      "hiddenAlternative": false,
-      "position": [
-        36.975,
-        5,
-        7.07
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
       "id": "L98",
       "name": "Altar key light · B",
       "type": "projector24",
@@ -40805,8 +39503,8 @@
       "specs": "20 lm · 6500 K",
       "hiddenAlternative": false,
       "position": [
-        2.65,
-        6.95,
+        2.6800000008940703,
+        4.762499999552966,
         0
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -40831,8 +39529,8 @@
       "hiddenAlternative": false,
       "position": [
         16.725,
-        4.6,
-        -7.245
+        3.061,
+        -7.4400000013411045
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -40856,8 +39554,8 @@
       "hiddenAlternative": false,
       "position": [
         16.725,
-        4.6,
-        7.245
+        3.061,
+        7.4400000013411045
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -40881,8 +39579,8 @@
       "hiddenAlternative": false,
       "position": [
         34.725,
-        4.6,
-        -7.245
+        3.061,
+        -7.4400000013411045
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -40906,8 +39604,8 @@
       "hiddenAlternative": false,
       "position": [
         34.725,
-        4.6,
-        7.245
+        3.061,
+        7.4400000013411045
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -47452,36 +46150,6 @@
       "wattsEachEstimate": 54,
       "itemIds": [
         "L81"
-      ]
-    },
-    {
-      "board": "DB1",
-      "circuit": "LD",
-      "type": "sconce2",
-      "product": "Brass candle sconce · 2 lamps",
-      "quantity": 14,
-      "modelSize": [
-        0.3064999875053763,
-        0.5162399858236313,
-        0.453000009059906
-      ],
-      "specs": "940 lm · 2700 K",
-      "wattsEachEstimate": 9,
-      "itemIds": [
-        "L82",
-        "L83",
-        "L84",
-        "L85",
-        "L86",
-        "L87",
-        "L88",
-        "L89",
-        "L90",
-        "L91",
-        "L92",
-        "L93",
-        "L94",
-        "L95"
       ]
     },
     {

@@ -34,7 +34,7 @@ const sandbox = {
 sandbox.window = sandbox;
 sandbox.addEventListener = (e, f) => { (listeners[e] ||= []).push(f); };
 vm.createContext(sandbox);
-for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'decoration.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/veranda-review.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
+for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'decoration.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/veranda-review.js', 'simulator/doorhead-review.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
   vm.runInContext(fs.readFileSync(path.join(viewer, file), 'utf8'), sandbox, { filename: file });
 
 let src = fs.readFileSync(path.join(viewer, 'bundle.js'), 'utf8');

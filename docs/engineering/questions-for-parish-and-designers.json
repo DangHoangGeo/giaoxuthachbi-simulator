@@ -131,6 +131,7 @@
     },
     {
       "id": "Q14",
+      "revision_note_vi": "Ngày 25/10/2026 chủ đầu tư yêu cầu biển thoát nạn ở ngay đầu cửa, dưới kính màu: giữ 5 biển E1, 15 W, cấp trực tiếp từ DB-1; biển bên tâm +3,061 m, biển chính tâm +4,7625 m treo dưới thanh ngang. Phải kiểm tra tầm nhìn/che khuất, ký hiệu, độ sáng, nguồn và thời gian dự phòng, liên kết giá đỡ và vận hành thực tế; xem doorheads-and-sconces.md. Đây là vị trí mô hình, chưa duyệt an toàn cháy.",
       "discipline": "An toàn",
       "owner": "Thiết kế PCCC / kỹ sư điện",
       "question_vi": "Chiếu sáng sự cố, biển thoát nạn, thời gian dự phòng và nguồn ưu tiên nào được yêu cầu?",

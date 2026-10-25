@@ -1,13 +1,13 @@
 {
   "schema": 1,
-  "generatedAt": "2026-10-25T11:44:37.510Z",
-  "layoutHash": "8794d15eced755667fbb94a78904d0b24ab39e7c75d28fc3bbe150bece4e8ceb",
-  "systemsHash": "fa54e193a88aab1a463c7e9a9d929aac8295554193f697131ae924624c8c3635",
+  "generatedAt": "2026-10-25T12:32:42.398Z",
+  "layoutHash": "6638c6d858c0c15d03f1b8c7f8d4371e61b16cbc58edb9c36dd4e72b917f5303",
+  "systemsHash": "8efd0e5d2f1745401819248f5cd349c1ca2995df2b2938bff0ddd27c9679b4c8",
   "categories": [
     {
       "id": "lighting",
       "file": "lighting/register.xlsx",
-      "sha256": "ebf206fb1b350f41a4579fc1ba866e435225f71d5189c2d5c4214ecbabd23179",
+      "sha256": "0fd1ba0510247a72d0aa8037ef12fefb42a4b38241f637acdc3629c45aacb7e3",
       "equipment": 299,
       "routes": 385,
       "vertices": 2880
@@ -15,7 +15,7 @@
     {
       "id": "sound",
       "file": "sound/register.xlsx",
-      "sha256": "5deda77bbf5e596628b2825f2fc574189c0d4115e56a34b14890655fcee055f9",
+      "sha256": "5550922d24e275e00bfa5ffcf9dd0dedf44a687299aa2d46ab28c8429c4c405c",
       "equipment": 46,
       "routes": 56,
       "vertices": 340
@@ -23,7 +23,7 @@
     {
       "id": "air-system",
       "file": "air-system/register.xlsx",
-      "sha256": "724dc484d4c714d4eba84e9425a7ba90de12b931edfcff1ac714411cddb924ba",
+      "sha256": "99d4fb6ddf60b06506210c9d611f90e54b17df6c1a081d4ad8f856bbb053c618",
       "equipment": 49,
       "routes": 71,
       "vertices": 458
@@ -31,15 +31,15 @@
     {
       "id": "exit-signs",
       "file": "exit-signs/register.xlsx",
-      "sha256": "6ecb0137694d717a57bbbdecc4b32d320a8819190905b6aae3420dc943c1e9d9",
+      "sha256": "dc99acf6a8af237ebda70f41d33fa1b7a1c9ea115d1b0714f3250ab7fbd38311",
       "equipment": 5,
       "routes": 14,
-      "vertices": 108
+      "vertices": 122
     },
     {
       "id": "decoration",
       "file": "decoration/register.xlsx",
-      "sha256": "3b4732dad2e5616ddf4c01d21febf7137a78e0978c75218280662d43bf9f7c28",
+      "sha256": "ccee9881a3b3585b5d5effe8fb2f12c9e3f0e8ec316832cd442ad97c30bc6792",
       "equipment": 37,
       "routes": 0,
       "vertices": 0
@@ -47,33 +47,33 @@
     {
       "id": "distribution-controls",
       "file": "distribution-controls/register.xlsx",
-      "sha256": "c57bbcbd710a6486c2a16ba83bfbeefaa148a0b2151611045661100eb1fc85b4",
+      "sha256": "35812bb4aefc0bcc1b8435bc97054977c544a64e9670fad8567dac73147da4bf",
       "equipment": 12,
       "routes": 19,
       "vertices": 123
     }
   ],
   "totals": {
-    "equipment": 429,
-    "shown": 414,
+    "equipment": 415,
+    "shown": 400,
     "hidden": 15,
-    "connected": 386,
-    "commandedOn": 352,
-    "retiredEquipment": 19,
-    "retiredRoutes": 100,
-    "routes": 445,
-    "vertices": 3221,
-    "routeMetres": 5529.734063313686,
+    "connected": 372,
+    "commandedOn": 338,
+    "retiredEquipment": 33,
+    "retiredRoutes": 116,
+    "routes": 429,
+    "vertices": 3157,
+    "routeMetres": 5403.981443803868,
     "homeRunMetres": 2365.6312484919,
     "bundleMetres": 571.7270424894334,
-    "segmentMetres": 4760.740463534803,
-    "watts": 5675.127501612034,
-    "kWhService": 8.512691252418053,
-    "kWhMonth": 340.50765009672205,
+    "segmentMetres": 4634.987844024985,
+    "watts": 5549.127501612034,
+    "kWhService": 8.323691252418051,
+    "kWhMonth": 332.94765009672204,
     "specsDocumented": 0,
     "controlsDocumented": 0,
     "cableDocumented": 0,
     "allowancesEntered": 0,
-    "allowancePopulation": 435
+    "allowancePopulation": 419
   }
 }

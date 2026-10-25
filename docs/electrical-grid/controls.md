@@ -1,5 +1,7 @@
 # Main/sub-board manual controls and quick modes
 
+> **Door-head/sign and sconce follow-up, 25 October 2026:** L82–L95 are retired from the default, so LD has no default connected equipment. Keep its stable circuit/control identifier for customized saved layouts; existing scene values on an empty LD group add no load. All five E1 signs remain directly fed by DB-1 and ON in All off, with the same 15 W estimate. Their new positions do not establish emergency supply, sign visibility or compliance. See [record](../engineering/doorheads-and-sconces.md).
+
 > **Open porches, 25 October 2026:** L4 now includes 18 wall path floods and 36 arch floods; A2 has 18 wall fills. A1's twelve nave columns and A5's two entrance fills use a 2.5 m reference height. Existing L4/A1/A2/A5 controls, quick-mode values and board ownership remain; arch/path lighting shares L4. Actual terminals, outdoor isolation, dimmer/driver compatibility and amplifier capacity remain unassigned. See the [coordinated issue](../engineering/open-porch-light-sound.md). This is implemented simulator behavior, not installed hardware. Public visit mode cannot operate these engineering controls.
 
 Owner's priority, recorded 7 October 2026. **Design brief:** optimize equipment placement, coordinate wiring in 2D/3D, and provide understandable physical manual controls and quick modes with the same intended behavior as the web app. Hardware selection and installation approval remain pending.

@@ -1,5 +1,7 @@
 # Electrical routing study
 
+> **25 October door-head/sign follow-up:** removal of the fourteen nave sconces retires fourteen LD drops and two trunks. Five E1 sign drops keep their IDs and now follow jambs and fixed door heads below coloured glazing (`door-head` method), rather than dropping across a fanlight. Connected components 386 → 372; routes 445 → 429. Frame containment, fixings and life-safety design remain held. [Coordinated record](../engineering/doorheads-and-sconces.md).
+
 See the [electrical grid index](README.md) for the current work priority and [manual boards and quick modes](controls.md) for the control-design brief. This document describes the implemented routing study; physical installation design remains pending.
 
 Open `Thach_Bi_Viewer/OPEN_CHURCH.html` and choose **Simulator → Wiring → Systems only**. The building, roof, furnishings and grounds disappear; boards, wiring and connected equipment remain. **Restore building** restores the architectural visibility, including the previous roof state. **View settings → Electrical systems only** offers the same isolation switch.

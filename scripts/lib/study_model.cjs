@@ -7,7 +7,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '../..');
-const modules = ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'decoration.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/veranda-review.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js', 'simulator/installation-review.js'];
+const modules = ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'decoration.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/veranda-review.js', 'simulator/doorhead-review.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js', 'simulator/installation-review.js'];
 function loadStudyModel({ storageEntries = [], rejectStorage = () => false } = {}) {
   const timers = new Set();
   const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
@@ -37,7 +37,7 @@ function loadStudyModel({ storageEntries = [], rejectStorage = () => false } = {
   const camera = new T.PerspectiveCamera(50, 1.6, .05, 500); camera.position.set(20, 1.6, 0);
   SIM.start({ scene: model.scene, renderer: model.renderer, colliders: [], walkCamera: { aspect: 1.6, fov: 68, updateProjectionMatrix() {} }, walk: { eyeHeight: 1.65, speed: 2.05 }, places: {}, goTo() {}, setMode() {}, uiState: () => ({ roof: true }), camera, controls: { target: new T.Vector3(), update() {} } });
   assert(SIM.ready, 'simulator failed to initialise');
-  return { SIM, model, storage, P: sandbox.CHURCH_SIM_PHYSICS, CAT: sandbox.CHURCH_SIM_CATALOG, verandaReview: sandbox.CHURCH_VERANDA_REVIEW, planning: sandbox.CHURCH_PLANNING,
+  return { SIM, model, storage, P: sandbox.CHURCH_SIM_PHYSICS, CAT: sandbox.CHURCH_SIM_CATALOG, verandaReview: sandbox.CHURCH_VERANDA_REVIEW, doorheadReview: sandbox.CHURCH_DOORHEAD_REVIEW, planning: sandbox.CHURCH_PLANNING,
     dispose() { for (const timer of timers) clearTimeout(timer); timers.clear(); },
     analyse() { return new Promise((resolve, reject) => {
       const timeout = later(() => { off(); reject(new Error('Seat analysis exceeded 180 seconds')); }, 180000);

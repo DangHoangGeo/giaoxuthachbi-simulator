@@ -336,10 +336,16 @@
       k.box(.004,.225,.17,'grilleWhite',{p:[.087,0,0]});
     });
   }
-  function buildExitSign(k) {
+  function buildExitSign(k,params={}) {
     k.box(0.05, 0.17, 0.38, 'white', { p: [0.025, 0, 0] });
     k.box(0.006, 0.13, 0.33, 'glow', { p: [0.052, 0, 0] });
     k.glowPoint([0.07, 0, 0], 0.4);
+    // Optional inside-face transom clip. Geometry proxy only; no fixing design.
+    const reach=params.backReach||0,rise=params.clipRise||0;
+    if(reach>0)for(const z of [-.13,.13]){
+      k.rod([.01,.07,z],[.01,rise,z],.006,'white',8);
+      k.rod([.01,rise,z],[-reach,rise,z],.006,'white',8);
+    }
   }
 
   function fanBlades(k, n, rIn, rOut, width, mat, pitch = deg(12), thick = 0.012) {
@@ -1095,6 +1101,7 @@
       light: { lumens: 600, watts: 8, cct: 3000, cri: 80, emitters: [{ kind: 'point', pos: [0, 0.76, 0] }] }, build: buildBollard },
     { id: 'exitSign', cat: LIGHT, family: 'Emergency', name: 'Exit sign (maintained)', mounts: ['wall', 'pendant'], defaultHeight: 2.4, glow: 'green', circuit: 'E1',
       desc: '3 W self-contained exit sign. Shown for location only; emergency lighting needs its own design.',
+      params: { backReach: { label: 'Transom clip reach (m)',min:0,max:.4,step:.005,value:0 },clipRise: { label: 'Transom clip rise (m)',min:0,max:.3,step:.005,value:0 } },
       light: { lumens: 20, watts: 3, cct: 6500, emitters: [] }, build: buildExitSign },
 
     { id: 'fanCeiling', cat: FAN, family: 'Ceiling', name: 'Ceiling fan · 1.42 m (56")', mounts: ['pendant'], defaultDrop: 3.0, circuit: 'F1',

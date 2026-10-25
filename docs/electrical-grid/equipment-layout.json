@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-25T11:43:35.202Z",
+  "savedAt": "2026-10-25T12:31:42.928Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -55,7 +55,8 @@
     "facadeCadRevision": "2026-10-24-cad-facade-1",
     "parishMeetingRevision": "2026-10-25-parish-meeting-6",
     "eveningExposureRevision": "2026-10-09-evening-160",
-    "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1"
+    "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
+    "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
   },
   "customScenes": [],
   "items": [
@@ -1875,286 +1876,6 @@
       "shadow": false
     },
     {
-      "id": "L82",
-      "type": "sconce2",
-      "name": "Sconce · axis 3 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        9.975,
-        5,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L83",
-      "type": "sconce2",
-      "name": "Sconce · axis 3 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        9.975,
-        5,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L84",
-      "type": "sconce2",
-      "name": "Sconce · axis 4 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        14.475,
-        5,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L85",
-      "type": "sconce2",
-      "name": "Sconce · axis 4 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        14.475,
-        5,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L86",
-      "type": "sconce2",
-      "name": "Sconce · axis 5 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        18.975,
-        5,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L87",
-      "type": "sconce2",
-      "name": "Sconce · axis 5 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        18.975,
-        5,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L88",
-      "type": "sconce2",
-      "name": "Sconce · axis 6 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        23.475,
-        5,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L89",
-      "type": "sconce2",
-      "name": "Sconce · axis 6 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        23.475,
-        5,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L90",
-      "type": "sconce2",
-      "name": "Sconce · axis 7 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        27.975,
-        5,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L91",
-      "type": "sconce2",
-      "name": "Sconce · axis 7 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        27.975,
-        5,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L92",
-      "type": "sconce2",
-      "name": "Sconce · axis 8 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        32.475,
-        5,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L93",
-      "type": "sconce2",
-      "name": "Sconce · axis 8 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        32.475,
-        5,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L94",
-      "type": "sconce2",
-      "name": "Sconce · axis 9 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        36.975,
-        5,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L95",
-      "type": "sconce2",
-      "name": "Sconce · axis 9 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        36.975,
-        5,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
       "id": "L98",
       "type": "projector24",
       "name": "Altar key light · B",
@@ -3383,8 +3104,8 @@
       "circuit": "E1",
       "mount": "wall",
       "pos": [
-        2.65,
-        6.95,
+        2.6800000008940703,
+        4.762499999552966,
         0
       ],
       "yaw": 0,
@@ -3393,7 +3114,11 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "backReach": 0.08,
+        "clipRise": 0.1375000004470346
+      },
+      "note": "CONCEPT: inside-face transom clip, case below the coloured fanlight. Lowest edge about 4.68 m; support/door clearance and sign visibility need fire/architectural review. E1 remains maintained from DB-",
       "shadow": false
     },
     {
@@ -3404,8 +3129,8 @@
       "mount": "wall",
       "pos": [
         16.725,
-        4.6,
-        -7.245
+        3.061,
+        -7.4400000013411045
       ],
       "yaw": 90,
       "tilt": 0,
@@ -3413,7 +3138,11 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "backReach": 0,
+        "clipRise": 0
+      },
+      "note": "CONCEPT: mounted on the 220 mm fixed head band above the door leaves and below the coloured fanlight. E1 remains maintained from DB-1. Product, fixing, visibility and emergency operation require revie",
       "shadow": false
     },
     {
@@ -3424,8 +3153,8 @@
       "mount": "wall",
       "pos": [
         16.725,
-        4.6,
-        7.245
+        3.061,
+        7.4400000013411045
       ],
       "yaw": -90,
       "tilt": 0,
@@ -3433,7 +3162,11 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "backReach": 0,
+        "clipRise": 0
+      },
+      "note": "CONCEPT: mounted on the 220 mm fixed head band above the door leaves and below the coloured fanlight. E1 remains maintained from DB-1. Product, fixing, visibility and emergency operation require revie",
       "shadow": false
     },
     {
@@ -3444,8 +3177,8 @@
       "mount": "wall",
       "pos": [
         34.725,
-        4.6,
-        -7.245
+        3.061,
+        -7.4400000013411045
       ],
       "yaw": 90,
       "tilt": 0,
@@ -3453,7 +3186,11 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "backReach": 0,
+        "clipRise": 0
+      },
+      "note": "CONCEPT: mounted on the 220 mm fixed head band above the door leaves and below the coloured fanlight. E1 remains maintained from DB-1. Product, fixing, visibility and emergency operation require revie",
       "shadow": false
     },
     {
@@ -3464,8 +3201,8 @@
       "mount": "wall",
       "pos": [
         34.725,
-        4.6,
-        7.245
+        3.061,
+        7.4400000013411045
       ],
       "yaw": -90,
       "tilt": 0,
@@ -3473,7 +3210,11 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "backReach": 0,
+        "clipRise": 0
+      },
+      "note": "CONCEPT: mounted on the 220 mm fixed head band above the door leaves and below the coloured fanlight. E1 remains maintained from DB-1. Product, fixing, visibility and emergency operation require revie",
       "shadow": false
     },
     {

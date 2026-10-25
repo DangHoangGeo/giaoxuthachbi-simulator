@@ -239,6 +239,22 @@
         'Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.',
         Math.abs(p[2]) > WALL || Math.abs(p[0]-40.575)<3.88 ? [cover(path, 'soffit')] : []);
     }
+    // Door-head signs: descend the jamb beside the fanlight, then the fixed
+    // header and the local clip. Never draw a drop through the coloured glass.
+    if(it.type==='exitSign'&&window.CHURCH_DOORHEAD_REVIEW){
+      const g=window.CHURCH_DOORHEAD_REVIEW.geometry(SIM);
+      if(it.name==='Exit sign · main doors'&&g.main&&Math.abs(p[0]-g.main.max.x-.08)<.01&&Math.abs(p[1]-g.main.min.y+.095)<.02&&Math.abs(p[2])<.01){
+        const jz=g.main.max.z+.15,fy=(g.main.min.y+g.main.max.y)/2,px=g.main.max.x-.008;
+        return proposal([start,[px,y,z],[px,y,jz],[px,fy,jz],[px,fy,0],[p[0],fy,0],p],'door-head',
+          'Entrance wall band to solid jamb outside coloured fanlight, fixed transom and local inside-face sign clip. Removable frame cover, fixing and emergency design pending.');
+      }
+      const b=g.bands.find(b=>Math.abs((b.min.x+b.max.x)/2-p[0])<.01&&Math.sign(b.min.z+b.max.z)===s);
+      if(b&&Math.abs(p[1]-(b.min.y+b.max.y)/2)<.02&&Math.abs(p[2]-(s<0?b.max.z:b.min.z))<.01){
+        const jx=b.min.x-.15,fz=(b.min.z+b.max.z)/2;
+        return proposal([start,[jx,y,z],[jx,p[1],z],[jx,p[1],fz],[p[0],p[1],fz],p],'door-head',
+          'Wall band to solid jamb beside coloured fanlight, fixed 220 mm door-head band and local sign lead. Frame containment, fixing and emergency design pending.');
+      }
+    }
     // Façade and tower routes stay on their existing wall/ledge system.
     if (p[0] < 5.475) {
       if (Math.abs(p[2]) > 7.4) {

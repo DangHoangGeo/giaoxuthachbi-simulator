@@ -584,6 +584,7 @@
         circuit: 'LS', mount: 'wall', pos: [x + e * ST.candles.dx, ST.candles.y, s * (ST.face - 0.02)], yaw: -s * 90, mountYaw: -s * 90, on: true });
     }
     window.CHURCH_VERANDA_REVIEW?.apply(items,GEO);
+    window.CHURCH_DOORHEAD_REVIEW?.apply(items,GEO,SIM);
     return items.filter(it => ![...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id) && !parishRetiredNames.test(it.name));
   }
 
