@@ -46,6 +46,14 @@ const dimensions=o=>bounds(o).getSize(new T.Vector3());
   const finishMap=mat.wall.bumpMap;
   realism.finish(false);assert.equal(mat.wall.bumpMap,null,'Neutral display removes plaster bump');
   realism.finish(true);assert.equal(mat.wall.bumpMap,finishMap,'Reference display restores new plaster bump');
+  const altar=nodes.find(o=>o.name==='Proposed altar front panel'),relief=nodes.find(o=>o.name==='Altar floral stone relief');
+  altar.geometry.computeBoundingBox();
+  const panel=altar.geometry.boundingBox.clone().applyMatrix4(altar.matrixWorld),carving=bounds(relief),cross=bounds(nodes.find(o=>o.name==='Altar cross stem'));
+  assert(carving.min.y>=panel.min.y&&carving.max.y<=panel.max.y&&carving.min.z>=panel.min.z&&carving.max.z<=panel.max.z,'Altar carving stays inside the existing front panel');
+  assert(carving.min.x>=cross.min.x&&carving.max.x<panel.min.x+.002,'Altar carving remains behind the existing cross face, against the panel: '+JSON.stringify({panel:panel.min.x,carving:[carving.min.x,carving.max.x],cross:cross.min.x}));
+  assert.equal(relief.parent,altar,'Altar ornament moves with its existing panel');
+  const point=new T.Vector3(),positions=relief.geometry.attributes.position;
+  for(let i=0;i<positions.count;i++){point.fromBufferAttribute(positions,i).applyMatrix4(relief.matrixWorld);assert(Math.abs(point.z)>.33,'Altar cross keeps a clear central field');}
 }
 near(dimensions(nodes.find(o=>o.name.startsWith('Main plinth below'))).z,22.489,'Main plan width');
 const wings=nodes.filter(o=>o.name.startsWith('Side projection plinth'));

@@ -69,6 +69,8 @@ All figures in the model are generated shapes. Sculptor, material, real size, we
 
 ## 3. Light on the statues: hidden sources and candles
 
+**Sculpture detail follow-up, 25 October 2026 — source implementation, desktop review pending:** the [detail record](../../review/sculpture-detail-2026-10-25/README.md) adds ivory carved eyelids, tapered beards and recessed book pages/covers to the existing catalogue figures. The Assumption stays ivory with raised arms and its existing halo; Peter keeps keys/book and Paul keeps sword/book, with their subjects still proposed. Generated min/max envelopes, record positions, attribute anchors, candle/light settings and routes remain unchanged. This does not resolve the tight central-niche fit, approve a sculpture or update the stale photometry table below. Geometry/finite-buffer and niche tests are separate from the blocked desktop appearance review.
+
 Circuit **L10 · Façade statues & candles**, DB-2, 15 records, 34 W connected.
 
 | Per niche | Type | Where | Output in the model |

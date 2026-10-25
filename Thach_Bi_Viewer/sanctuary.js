@@ -381,6 +381,28 @@
       // links the side passage behind the frame with the open service room.
       for(const e of [-1,1]){const hinge=new T.Group();hinge.position.set(e*.72,SIDE,-.28);hinge.rotation.y=-e*1.5;g.add(hinge);panel(hinge,-e*.35,1.1,.7,2.2,0);box(hinge,.035,.27,.08,-e*.58,1.06,.14,gold,'Service door handle');}
     }
+    // Shallow stone foliate carving, following the pale carved altar in the
+    // approved sanctuary concept. The centre cross stays clear. All parts lie
+    // inside the panel outline and behind the existing cross's front plane.
+    const altarFront=building.getObjectByName('Proposed altar front panel');
+    if(altarFront){
+      const pieces=[];
+      for(const sign of [-1,1]){
+        pieces.push([K.bloom({r:.065,petals:8,rings:2,seg:4}),K.place(K.SC(1,1,.4),K.TR(sign*.77,0,0))]);
+        for(const [u,y,angle] of [[.47,-.19,-.65],[.57,-.1,-.9],[.87,-.19,.55],[.98,.045,.8]]){
+          pieces.push([K.leaf({len:.14,wid:.065,thick:.004,curl:.25,lobes:3,seg:8}),K.place(K.RZ(sign*angle),K.TR(sign*u,y,0))]);
+        }
+        pieces.push([K.stem([[sign*.4,-.2,0],[sign*.59,-.16,.001],[sign*.72,-.06,.001],[sign*.94,.02,0]],.005,.002,20,6),null]);
+      }
+      const finish=altarFront.material.clone();finish.name='Sanctuary · shallow altar stone carving';
+      finish.map=finish.bumpMap=null;finish.roughness=.62;
+      palettes?.set(finish,{color:finish.color.clone(),map:null,bump:null});
+      const relief=new T.Mesh(K.merge(pieces),finish);relief.name='Altar floral stone relief';
+      relief.rotation.y=-Math.PI/2;relief.position.x=-altarFront.geometry.parameters.width/2-.0045;
+      relief.castShadow=relief.receiveShadow=true;
+      relief.userData={status:'CONCEPT · applied shallow carving; artist, stone and fixing pending',source:'Approved sanctuary concept; docs/decoration-finishes.md',revision:'2026-10-25-sculpture-detail-1'};
+      altarFront.add(relief);
+    }
     // Parish priest, 25 Oct 2026: above Our Lady and Saint Joseph the axis-11 side arches take the
     // red lacquer and gilding of the front frame: a lacquered spandrel with gilded relief, mouldings
     // and cresting from the lobed arch up to the roof lining, just in front of the plaster arch.
