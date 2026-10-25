@@ -43,6 +43,8 @@ DWG = OUT / 'source/thach-bi-church-2026-10-23.dwg'
 DXF = OUT / 'source/converted.dxf'
 WORKBOOK = ROOT / 'docs/layout_design/Thach_Bi_Church_Dimensions.xlsx'
 ORIGINAL_NAME = 'MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI.dwg A.dwg'
+CURRENT_NAME = 'MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI.dwg'
+PROJECT_BASIS = 'USER CONFIRMED 2026-10-26: this DWG governs project design; internal conflicts and construction engineering holds remain open.'
 SOURCE_FILE = '10'  # Sources row added for this DWG
 
 # Drawing inventory. Frames are DWG model-space millimetres (the file's own units).
@@ -298,7 +300,7 @@ def extract(render):
         source=dict(original_name=ORIGINAL_NAME, local_copy=str(DWG.relative_to(ROOT)),
                     sha256=hashlib.sha256(DWG.read_bytes()).hexdigest(), format='AutoCAD 2007 DWG (AC1021)',
                     created='2011-10-27', last_saved='2026-10-23', units='millimetres (INSUNITS unset; dimensions read in mm)',
-                    received='2026-10-24'),
+                    received='2026-10-24', current_filename=CURRENT_NAME, project_design_basis=PROJECT_BASIS),
         tools=dict(converter='LibreDWG dwg2dxf 0.14', reader='ezdxf ' + __import__('ezdxf').__version__),
         conventions='Model axes follow the register: X from axis 1 toward the sanctuary, Y up from nave floor ±0.000, '
                     'Z from the D/E midpoint, positive toward H/I. Local drawings use u/v from the frame corner '
@@ -519,10 +521,9 @@ def workbook():
 
     by_id = {d['id']: d for d in manifest['drawings']}
     src = manifest['source']
-    note = (f"Nguồn: file CAD nhận 24/10/2026 ({src['original_name']}, lưu lần cuối {src['last_saved']}). "
-            'Chỉ đọc đối tượng DIMENSION và nhãn cao độ. / '
-            'Source: CAD file received 2026-10-24. Only DIMENSION objects and level labels are read; the DWG carries '
-            'fewer dimensions than the PDF set. Not for construction.')
+    note = ('Owner confirmed 26 October 2026: DWG saved 23 October 2026 governs project design. '
+            f'Current filename: {CURRENT_NAME}; byte-identical to source file 10. '
+            '726 dimension objects; 79 level labels. Older PDF witnesses and all unresolved engineering conflicts are retained. Not for construction.')
     sheet('DWG sheets', 'DwgSheets', 'BẢN VẼ CAD 23/10/2026 / CAD DRAWINGS 2026-10-23', note,
           [('Mã / ID', 12, 'text'), ('Tờ DWG / DWG sheet', 14, 'text'), ('Nhóm / Category', 16, 'text'),
            ('Tiêu đề / Title (VI)', 60, 'text'), ('Title (EN)', 52, 'text'), ('Trục mô hình / Model axes', 18, 'text'),

@@ -8,7 +8,9 @@
   "created": "2011-10-27",
   "last_saved": "2026-10-23",
   "units": "millimetres (INSUNITS unset; dimensions read in mm)",
-  "received": "2026-10-24"
+  "received": "2026-10-24",
+  "current_filename": "MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI.dwg",
+  "project_design_basis": "USER CONFIRMED 2026-10-26: this DWG governs project design; internal conflicts and construction engineering holds remain open."
  },
  "tools": {
   "converter": "LibreDWG dwg2dxf 0.14",

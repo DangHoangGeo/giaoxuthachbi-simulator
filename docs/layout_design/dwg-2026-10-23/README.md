@@ -2,6 +2,39 @@
 
 The parish sent the AutoCAD file behind the drawing set on 24 October 2026: `MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI.dwg A.dwg`, AutoCAD 2007 format, created 27 October 2011, last saved 23 October 2026. This folder holds what was extracted from it. **Not survey data and not for construction.**
 
+**USER CONFIRMED, 26 October 2026:** the owner selected `MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI.dwg` as the project design standard. The copy directly in this directory is byte-identical to the source copy (SHA-256 `2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae`). The different filename is an alias, not a later revision. Older PDF witnesses remain intact; internal DWG conflicts and construction engineering holds remain open. ISSUE-R01 now distinguishes the confirmed project basis from the responsible designer's construction issue.
+
+## PDF views and key dimensions, 26 October 2026
+
+The local, Git-ignored package is in `exports/dwg-review-2026-10-26/` from the repository root:
+
+| Output | Contents |
+| --- | --- |
+| `01_All_Drawing_Views.pdf` | 27 vector drawing views on A2 sheets, plus an index; 28 pages |
+| `02_Enlarged_Details.pdf` | 37 enlarged vector crops on A3 sheets, plus a guide; 38 pages |
+| `03_Key_Dimensions_and_Guide.pdf` | 79 selected measurements/levels/positions, 21 grid coordinates, references and limitations; 12 pages |
+| `04_Key_Dimensions.xlsx` | Copy of [Thach_Bi_Key_Dimensions.xlsx](Thach_Bi_Key_Dimensions.xlsx): key witnesses, grid positions and drawing index |
+| `views/` and `details/` | An individual PDF for each of the 27 full views and 37 detail crops |
+| `export-manifest.json` | Exact DWG crop boundaries and PDF paths, source hash and audit counts |
+| `Thach_Bi_CAD_Review.zip` | The combined PDFs, individual PDFs, workbooks, source tables and manifest for local sharing/review |
+
+PDF paths remain vectors; no raster image is embedded in either drawing volume. They are **fit-to-page, not calibrated plotting scales**. Use the recorded dimensions and endpoints rather than scaling a print. The original DIMENSION graphics are retained. Fonts/line styles can differ from a native AutoCAD plot; native-CAD comparison remains unverified. The source contains 2D plans, elevations, sections and details; no new 3D perspective is inferred.
+
+[key-dimensions.csv](key-dimensions.csv) is generated from the curated [selection](key-dimension-selection.json), the existing source tables and the workbook's model grid. DIMENSION rows retain their two endpoints and CAD handles. Facade rows reference `facade.csv`, including its separate Z/X mapping for tower-end plans. Level rows distinguish printed levels from marker checks. The original complete workbook retains all 726 DIMENSION witnesses and the older PDF entries.
+
+Reproduce with LibreDWG and the dependencies in `scripts/requirements-dwg.txt`, then use the bundled artifact runtime for Excel:
+
+```bash
+python3 scripts/export_dwg_review.py
+node scripts/build_dwg_review_register.mjs
+python3 scripts/apply_dwg_workbook_review.py
+python3 scripts/build_construction_data.py
+python3 scripts/build_dwg_dimension_report.py
+python3 scripts/package_dwg_review.py
+```
+
+The exporter reuses existing `_raw/*.pdf` files in its local export directory. **For a different DWG hash or changed renderer/inventory, use a fresh export directory or remove only those generated raw PDFs before running.** This dated workflow is for the hash recorded above. `--audit-only` checks the source hash and all 726 dimensions/endpoints without rendering. `--package-only` recreates the full/crop PDFs from the existing raw vector pages. See the [review record](../../../review/dwg-review-2026-10-26/README.md) for checks and preservation details. The ZIP is a local delivery artifact; it does not grant publication permission.
+
 ## What is committed and what is not
 
 The drawings belong to the church's designers and are under publication hold H1 ([checklist](../../open-source/publication-checklist.md)). So:
@@ -16,8 +49,9 @@ The drawings belong to the church's designers and are under publication hold H1 
 | `grid-check.csv` | Grid centrelines drawn in each plan, section and elevation against the workbook's *Model grid* | Yes |
 | `facade.csv` | The central facade the model follows: 32 traced levels, arcs, faces and the pier chain, checked against the DWG, and three model departures | Yes |
 | `facade-plan.md` | The work plan written before the facade was built (24 Oct 2026) | Yes |
+| `key-dimension-selection.json`, `key-dimensions.csv`, `Thach_Bi_Key_Dimensions.xlsx` | Curated important measurements and positions, with source references; 26 Oct review | Yes |
 
-The same data is in the dimension workbook `../Thach_Bi_Church_Dimensions.xlsx` on the sheets *DWG sheets*, *DWG dimensions*, *DWG levels*, *DWG grid check*, *DWG findings* and *DWG facade*. The DWG is source file 10 on *Sources*, and five new rows ISSUE-R01 to ISSUE-R05 are on *Open items*. No existing workbook entry, value or status was changed.
+The same data is in the dimension workbook `../Thach_Bi_Church_Dimensions.xlsx` on the sheets *DWG sheets*, *DWG dimensions*, *DWG levels*, *DWG grid check*, *DWG findings* and *DWG facade*. The DWG is source file 10 on *Sources*, and five new rows ISSUE-R01 to ISSUE-R05 are on *Open items*. The initial extraction preserved existing entries. The 26 October review changes only five text cells and two row heights: ISSUE-R01's basis/status/reference, ISSUE-R02's outdated model-history wording and the DWG sheet caption. All dimensional values, formulas, caches and engineering-input cells are preserved.
 
 ## Reproduce
 

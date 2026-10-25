@@ -5,7 +5,7 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "inputs":{
 "workbook":{
 "path":"docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
-"sha256_16":"821cd12972e19b78"
+"sha256_16":"75d7d79ca60d3e1d"
 },
 "phases":{
 "path":"docs/construction/phases.json",
@@ -7965,16 +7965,16 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "evidence":"The CAD file received 24 Oct 2026 (AutoCAD 2007 DWG, created 2011, last saved 23 Oct 2026) numbers its sheets 1–47 and adds a longitudinal section, a +6.324/+8.390 m plan, tower plans, side-wing end elevations, arch-frame details and a tower elevation. Its grid and tower levels agree with the PDFs, but its central facade, sanctuary section and plan dimensioning differ. It has no roof plan.",
 "sourceIds":"Source file 10; Files 1–9",
 "differenceMm":null,
-"status":"Chưa xác nhận / Open",
-"required":"Nhà thờ/kiến trúc sư xác nhận bộ nào hiện hành và các PDF in từ thời điểm nào của file. / Church and designer to confirm which set is current and when the PDFs were plotted from this file.",
+"status":"USER CONFIRMED - project design basis; construction issue remains ENGINEERING HOLD",
+"required":"Owner direction, 26 October 2026: use the DWG saved 23 October 2026 as the project design standard. Retain older PDF evidence and unresolved internal conflicts. Responsible designer to issue coordinated construction drawings.",
 "confirmedMm":null,
-"newReference":""
+"newReference":"Owner instruction in project chat, 2026-10-26; same DWG SHA-256 as source file 10 (sheets.json)."
 },
 {
 "id":"ISSUE-R02",
 "cell":"Open items!A31",
 "issue":"Mặt giữa hai tháp / Central facade between the towers",
-"evidence":"DWG sheet 1 (variant A cut through the nave roof, variant B full elevation) shows one pedimented arched niche with a cross, flanked by crested parapets with fleur-de-lis cresting, two smaller arched niches and a triple-arched window under a rose above the main door. PDF sheet 1 shows a taller screen of three pinnacled gables, which the current model follows. Tower geometry and the central 7,200 mm bay are the same.",
+"evidence":"DWG sheet 1 (variant A cut through the nave roof, variant B full elevation) shows one pedimented arched niche with a cross, flanked by crested parapets with fleur-de-lis cresting, two smaller arched niches and a triple-arched window under a rose above the main door. PDF sheet 1 shows a taller screen of three pinnacled gables, which the model followed before the DWG facade adoption on 24 October 2026. Tower geometry and the central 7,200 mm bay are the same.",
 "sourceIds":"File 1; source file 10 sheet 1",
 "differenceMm":null,
 "status":"Chưa xác nhận / Open",
