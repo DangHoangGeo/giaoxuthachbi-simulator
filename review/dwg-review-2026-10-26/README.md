@@ -46,3 +46,7 @@ See the [CAD package README](../../docs/layout_design/dwg-2026-10-23/README.md).
 Generated full drawings, raw vector intermediates, contact sheets, register previews, the original workbook backup and detailed logs are in `exports/dwg-review-2026-10-26/`. Source selection, derived CSV/workbook, tooling, updated main register and this evidence are committed together; publication-held PDFs remain local. Next responsible discipline: architect/designer to reconcile the conflicting witnesses and issue coordinated construction drawings; structural and building-services designers to check their respective details.
 
 Working-tree boundary: existing viewer/electrical edits were present on entry. During this session some older PDF/PNG sources were also moved to an untracked `docs/layout_design/old/` directory by another actor. Those moves and other unrelated edits are not included in this review's commit; nothing was restored, removed or restaged on their behalf.
+
+## Follow-up audit and replacement reading package
+
+The later [23102026 audit](../dwg-vietnamese-23102026/README.md) supersedes the unit interpretation and displayed-number extraction in this historical record: native DWG/DXF `INSUNITS=1`, 23 displayed values corrected from cached CAD text, ISSUE-R06 added. The original exports remain local historical outputs. Use the audited Vietnamese vector package in `exports/23102026_vector/` for current review; original raw vector pages are retained as its graphics source. Construction confirmation remains outstanding.

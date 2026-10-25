@@ -6,8 +6,8 @@ so they stay in the git-ignored folders `source/` and `images/` of OUT. This scr
 committed, derived data next to them:
 
   sheets.json      drawing inventory, model-coordinate mapping and PDF counterparts
-  dimensions.csv   every DIMENSION object in model space, with its measuring points in model axes
-  levels.csv       every printed level label checked against its marker geometry
+  dimensions.csv   DIMENSION objects within the 27 registered frames, measuring points in model axes
+  levels.csv       printed level labels; follow-up audit resolves actual marker vertices separately
   grid-check.csv   drawn grid centrelines against the register's Model grid
   facade.csv       (hand-entered) the central facade the model follows; `facade` checks every
                    traced row against the drawing's lines, arcs and dimensions
@@ -47,7 +47,8 @@ CURRENT_NAME = 'MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI.dwg'
 PROJECT_BASIS = 'USER CONFIRMED 2026-10-26: this DWG governs project design; internal conflicts and construction engineering holds remain open.'
 SOURCE_FILE = '10'  # Sources row added for this DWG
 
-# Drawing inventory. Frames are DWG model-space millimetres (the file's own units).
+# Drawing inventory. Model-space units are interpreted as millimetres from chains/level labels;
+# INSUNITS=1 is a separate, unresolved insertion-unit setting (ISSUE-R06).
 # view: plan (X, Z), transverse (Z, Y), longitudinal (X, Y) or local (u, v from frame corner).
 # Origins come from the drawn centrelines: axis 1, the D/E midpoint, and the ±0.000 marker apex.
 # zsign is -1 where the drawing is seen from the twin-tower end (H on the left).
@@ -146,6 +147,23 @@ def printed(v):
     return int(Decimal(str(v)).quantize(Decimal('1'), ROUND_HALF_UP))
 
 
+def stored_dimension_number(doc, entity):
+    """Read the actual cached CAD label, rather than rounding a binary float.
+
+At a nominal x.5 the DWG geometry may be x.49999998 while its stored text is
+x+1. Geometry and displayed text are separate evidence and must stay separate.
+"""
+    block = entity.dxf.get('geometry')
+    texts = []
+    if block and block in doc.blocks:
+        for text in doc.blocks[block].query('TEXT MTEXT'):
+            texts.append(text.plain_text() if text.dxftype() == 'MTEXT' else text.dxf.text)
+    if len(texts) != 1 or not re.fullmatch(r'[+\-]?\d+(?:[.,]\d+)?', texts[0].strip()):
+        raise ValueError(f'Unresolved stored dimension text {entity.dxf.handle}: {texts!r}')
+    value = Decimal(texts[0].strip().replace(',', '.'))
+    return int(value) if value == value.to_integral_value() else float(value)
+
+
 def to_model(d, x, y):
     """DWG point → the drawing's two model axes (mm), or local axes from the frame corner."""
     if d['view'] == 'plan':
@@ -212,7 +230,7 @@ def extract(render):
         ang = round(float(e.dxf.get('angle', 0) or 0)) % 180
         kind = 'aligned' if e.dimtype == 1 else ('horizontal' if ang == 0 else 'vertical' if ang == 90 else f'rotated {ang}°')
         override = (e.dxf.get('text', '') or '').strip()
-        p = printed(m)
+        p = stored_dimension_number(doc, e)
         cand = [i for i, v in reg_dims.get(d['pdf'], []) if abs(v - p) <= 1] if d['pdf'] else []
         rows.append(dict(drawing=d['id'], handle=e.dxf.handle, kind=kind, measured_mm=mm(m), printed_mm=p,
                          text_override=override if override not in ('', '<>') else '',
@@ -299,7 +317,10 @@ def extract(render):
                'The DWG and sheet images are under publication hold H1 and are not committed.',
         source=dict(original_name=ORIGINAL_NAME, local_copy=str(DWG.relative_to(ROOT)),
                     sha256=hashlib.sha256(DWG.read_bytes()).hexdigest(), format='AutoCAD 2007 DWG (AC1021)',
-                    created='2011-10-27', last_saved='2026-10-23', units='millimetres (INSUNITS unset; dimensions read in mm)',
+                    created='2011-10-27', last_saved='2026-10-23',
+                    units='Geometry interpreted as mm from dimension chains and metre level labels; '
+                          'DWG/DXF INSUNITS=1 (inches for insertion). Designer confirmation required; no automatic rescaling.',
+                    insunits=int(header.get('$INSUNITS', 0)),
                     received='2026-10-24', current_filename=CURRENT_NAME, project_design_basis=PROJECT_BASIS),
         tools=dict(converter='LibreDWG dwg2dxf 0.14', reader='ezdxf ' + __import__('ezdxf').__version__),
         conventions='Model axes follow the register: X from axis 1 toward the sanctuary, Y up from nave floor ±0.000, '
@@ -453,6 +474,12 @@ NEW_ISSUES = [
      'Explains RFI-S01; the 76 mm may be a ridge cap.',
      'E049, S001, S006; source file 10 sheets 24, 25, 45', 76, 'Chưa xác nhận / Open',
      'Xác nhận +12,472 là đỉnh ngói nóc hay đỉnh vì kèo. / Confirm whether +12.472 m is the ridge-cap top or the roof apex.'),
+    ('ISSUE-R06', 'Đơn vị hình học và đơn vị chèn trong DWG',
+     'DWG gốc và DXF mới đều có INSUNITS=1 (inch, đơn vị chèn). Chuỗi trục 4500/7200 và các nhãn cao độ theo m phù hợp '
+     'cách hiểu hình học mm của mô hình; đây là diễn giải từ bản vẽ, chưa phải xác nhận đơn vị của người thiết kế. '
+     'Không tự nhân hoặc chia tọa độ theo 25,4.',
+     'Tệp CAD nguồn 10; 726 đối tượng kích thước; 137 mốc trục', None, 'Chưa xác nhận / ENGINEERING HOLD',
+     'Người thiết kế mở DWG trong AutoCAD/ODA, xác nhận đơn vị hình học, tỷ lệ chèn, đơn vị ghi kích thước và phát hành hồ sơ thi công thống nhất.'),
 ]
 
 
@@ -521,9 +548,9 @@ def workbook():
 
     by_id = {d['id']: d for d in manifest['drawings']}
     src = manifest['source']
-    note = ('Owner confirmed 26 October 2026: DWG saved 23 October 2026 governs project design. '
-            f'Current filename: {CURRENT_NAME}; byte-identical to source file 10. '
-            '726 dimension objects; 79 level labels. Older PDF witnesses and all unresolved engineering conflicts are retained. Not for construction.')
+    note = ('Phiên bản 23102026. 726 kích thước thuộc 27 bản vẽ. Đơn vị mm suy từ chuỗi kích thước và nhãn m; '
+            'INSUNITS gốc = 1 (inch, đơn vị chèn). Cần người thiết kế xác nhận đơn vị. '
+            'Số ghi lấy trực tiếp từ chữ số lưu trong CAD. Không dùng để thi công.')
     sheet('DWG sheets', 'DwgSheets', 'BẢN VẼ CAD 23/10/2026 / CAD DRAWINGS 2026-10-23', note,
           [('Mã / ID', 12, 'text'), ('Tờ DWG / DWG sheet', 14, 'text'), ('Nhóm / Category', 16, 'text'),
            ('Tiêu đề / Title (VI)', 60, 'text'), ('Title (EN)', 52, 'text'), ('Trục mô hình / Model axes', 18, 'text'),

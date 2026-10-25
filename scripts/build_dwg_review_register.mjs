@@ -40,7 +40,7 @@ function table(name, headers, values, widths, note) {
   sheet.getRange('A2').format.font={ size:14, bold:true };
   sheet.getRange('A4').values=[[note]];
   sheet.getRange('A4').format.font={ italic:true, size:10 };
-  sheet.getRange('A5').values=[['In development / Đang phát triển - Not for construction / Không dùng để thi công']];
+  sheet.getRange('A5').values=[['Phiên bản 23102026 - Không dùng để thi công']];
   sheet.getRange('A5').format.font={ color:'#9C3D25', bold:true };
   sheet.getRange(`A6:${last}6`).values=[headers];
   sheet.getRange(`A7:${last}${end}`).values=values;
@@ -56,7 +56,7 @@ function table(name, headers, values, widths, note) {
   sheet.tabColor=name==='Key dimensions'?'#263F53':'#7893A3';
   return sheet;
 }
-const source='Source: DWG saved 2026-10-23, source file 10; SHA-256 in sheets.json. Millimetres inferred; owner-selected project basis 2026-10-26.';
+const source='Nguồn: DWG lưu 23/10/2026. Đơn vị mm suy từ chuỗi kích thước và nhãn m; INSUNITS=1 (inch, đơn vị chèn). Chờ người thiết kế xác nhận; không tự đổi tỷ lệ.';
 const keys=table('Key dimensions',data.headers,data.keys,[24,54,18,17,16,12,59,23,12,16,16,16,16,110], source);
 keys.getRange(`D7:D${6+data.keys.length}`).setNumberFormat('#,##0.0');
 keys.getRange(`E7:E${6+data.keys.length}`).setNumberFormat('#,##0.0000');

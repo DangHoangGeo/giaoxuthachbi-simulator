@@ -80,9 +80,9 @@ def prepare_register(dest):
         ['Open items', 'I30', 'Owner instruction in project chat, 2026-10-26; same DWG SHA-256 as source file 10 (sheets.json).'],
         ['Open items', 'C31', original['Open items']['C31'].value.replace('which the current model follows',
             'which the model followed before the DWG facade adoption on 24 October 2026')],
-        ['DWG sheets', 'A4', 'Owner confirmed 26 October 2026: DWG saved 23 October 2026 governs project design. '
-         'Current filename: MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI.dwg; byte-identical to source file 10. '
-         '726 dimension objects; 79 level labels. Older PDF witnesses and all unresolved engineering conflicts are retained. Not for construction.'],
+        ['DWG sheets', 'A4', 'Phiên bản 23102026. 726 kích thước thuộc 27 bản vẽ. Đơn vị mm suy từ chuỗi kích thước và nhãn m; '
+         'INSUNITS gốc = 1 (inch, đơn vị chèn). Cần người thiết kế xác nhận đơn vị. '
+         'Số ghi lấy trực tiếp từ chữ số lưu trong CAD. Không dùng để thi công.'],
     ]
     payload = {'status': selection['status'], 'headers': headers, 'keys': keys, 'grid': grid,
                'drawings': json.loads((OUT/'sheets.json').read_text())['drawings'], 'patches': patches}
@@ -121,7 +121,8 @@ def audit(doc):
         assert len([r for r in list(book[sheet].values)[7:] if r[0]]) == count
     return {'source_sha256': source['sha256'], 'dimension_objects_checked': len(dims),
             'workbook_dimensions_match': True, 'levels': 79, 'grid_checks': 137,
-            'drawing_views': len(DRAWINGS), 'units': 'mm inferred from dimensions; INSUNITS unset',
+            'drawing_views': len(DRAWINGS), 'units': 'mm inferred from dimension chains and m level labels; '
+            'INSUNITS=1 (inches for insertion), designer confirmation required; no rescaling',
             'status': 'DRAWING SHOWN / DERIVED; not survey data; not for construction'}
 
 

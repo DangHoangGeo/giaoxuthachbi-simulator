@@ -5,7 +5,7 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "inputs":{
 "workbook":{
 "path":"docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
-"sha256_16":"75d7d79ca60d3e1d"
+"sha256_16":"d1abfa3bf12ec1e1"
 },
 "phases":{
 "path":"docs/construction/phases.json",
@@ -8017,6 +8017,18 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "required":"Xác nhận +12,472 là đỉnh ngói nóc hay đỉnh vì kèo. / Confirm whether +12.472 m is the ridge-cap top or the roof apex.",
 "confirmedMm":null,
 "newReference":""
+},
+{
+"id":"ISSUE-R06",
+"cell":"Open items!A35",
+"issue":"Đơn vị hình học và đơn vị chèn trong DWG",
+"evidence":"DWG gốc và DXF mới đều có INSUNITS=1 (inch, đơn vị chèn). Chuỗi trục 4500/7200 và các nhãn cao độ theo m phù hợp cách hiểu hình học mm của mô hình; đây là diễn giải từ bản vẽ, chưa phải xác nhận đơn vị của người thiết kế. Không tự nhân hoặc chia tọa độ theo 25,4.",
+"sourceIds":"Tệp CAD nguồn 10; 726 đối tượng kích thước; 137 mốc trục",
+"differenceMm":null,
+"status":"Chưa xác nhận / ENGINEERING HOLD",
+"required":"Người thiết kế mở DWG trong AutoCAD/ODA, xác nhận đơn vị hình học, tỷ lệ chèn, đơn vị ghi kích thước và phát hành hồ sơ thi công thống nhất.",
+"confirmedMm":null,
+"newReference":"Kiểm tra trực tiếp 26/10/2026; Autodesk INSUNITS; review/dwg-vietnamese-23102026/kiem-tra-so-lieu.json"
 }
 ],
 "grid":[

@@ -4,6 +4,32 @@ The parish sent the AutoCAD file behind the drawing set on 24 October 2026: `M�
 
 **USER CONFIRMED, 26 October 2026:** the owner selected `MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI.dwg` as the project design standard. The copy directly in this directory is byte-identical to the source copy (SHA-256 `2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae`). The different filename is an alias, not a later revision. Older PDF witnesses remain intact; internal DWG conflicts and construction engineering holds remain open. ISSUE-R01 now distinguishes the confirmed project basis from the responsible designer's construction issue.
 
+## Bộ PDF nét vector bằng tiếng Việt - Phiên bản 23102026
+
+Theo yêu cầu tiếp theo của chủ đầu tư ngày 26/10/2026, bộ cuối nằm tại `exports/23102026_vector/` từ thư mục gốc dự án. Mỗi trang ghi **Phiên bản 23102026**, có chú thích kích thước bằng tiếng Việt và không dùng dòng “Đang phát triển”. Đây là nhãn phiên bản theo ngày lưu tệp CAD, không phải ngày xác nhận kỹ thuật.
+
+- `00_Tong_quan_23102026.pdf`: tổng quan và hướng dẫn chọn tập.
+- Các tập `01` đến `09`: mặt bằng/lưới trục; mặt tiền giữa hai tháp; hai tháp chuông; lòng nhà/cột/mái; cung thánh/phòng phụ; hai cánh ngang; cửa sổ; cửa đi; khung vòm cánh ngang.
+- Mỗi tập có bảng kích thước chính, mã nguồn và ghi chú cạnh hình. Đủ 27 bản vẽ và 79 mã kích thước của bộ trước; tập mặt bằng có thêm 21 tọa độ tim trục. Có 49 PDF một trang trong `tung_trang/`.
+- Giữ nét vector, không chuyển hình sang ảnh hữu hạn điểm ảnh. Chỉ tối ưu các đoạn nét đứt thẳng lặp lại thành mẫu nét đứt PDF; kiểm tra từng đầu đoạn trong 0,0003 điểm PDF và so ảnh từng trang với nguồn. Các đường cong giữ điểm điều khiển. Đây là dung sai tái hiện đồ họa trên trang, không phải độ chính xác khảo sát hoặc dung sai thi công. Bản gốc không đổi.
+- Danh mục ở tập tổng quan liên kết đến từng tập bộ phận. Cuối mỗi trang có liên kết trở về tổng quan; giữ các PDF trong cùng thư mục khi dùng các liên kết này.
+- Tập `10_Kiem_tra_du_lieu_DWG_23102026.pdf` ghi kết quả kiểm tra trực tiếp DWG, 23 ô số ghi đã sửa và các mốc chờ xác nhận.
+- `Nha_tho_Thach_Bi_23102026.zip` chứa 11 tập theo nhóm và hướng dẫn; `Tung_trang_23102026.zip` chứa 49 trang riêng và tập tổng quan. Không kèm các tài liệu tiếng Anh cũ.
+
+Tạo lại theo thứ tự `python3 scripts/optimize_dwg_pdf_vectors.py` rồi `python3 scripts/build_dwg_vietnamese_23102026.py`, dùng các PDF nét gốc trong `exports/dwg-review-2026-10-26/_raw/` và dữ liệu đã kiểm tra. Nội dung tiếng Việt, nhóm bản vẽ và ghi chú nằm trong [pdf-vietnamese-23102026.json](pdf-vietnamese-23102026.json). Quy trình đọc lại DWG, sửa sổ và bằng chứng: [review/dwg-vietnamese-23102026](../../../review/dwg-vietnamese-23102026/README.md).
+
+Các chỗ mâu thuẫn về nền cung thánh, đỉnh mái, phào, chiều dài tổng và đơn vị vẫn được ghi rõ. Dòng “Không dùng để thi công” được giữ bằng tiếng Việt. Bản vẽ nguồn và các PDF xuất từ đó tiếp tục thuộc phạm vi giữ cục bộ theo H1. Không thay đổi hình học hoặc số đo hình học. Bảng tính đã sửa 23 số ghi theo chữ số CAD và thêm ISSUE-R06 về đơn vị; mọi dữ liệu khác và công thức được giữ nguyên. Bộ ảnh nét trước đó trong `exports/23102026/` đã bị thay thế bởi bộ vector này.
+
+## Kiểm tra số liệu trực tiếp từ DWG gốc
+
+Đã đọc lại DWG bằng `dwgread` thành JSON và chuyển mới bằng `dwg2dxf`; đối chiếu 726 đối tượng kích thước bằng handle, hai đầu đo, phép tính độc lập từ tọa độ, số đo lưu trong DWG, DXF, CSV và Excel. 137 bản ghi trục khớp với đường LINE gốc; 79 nhãn cao độ được đọc lại, 58 đỉnh ký hiệu được đo trực tiếp bằng đỉnh hình học, xác nhận hai mốc mái còn khác nhãn khoảng 75,6 mm. 32 hàng mặt tiền được kiểm lại trên DXF mới trong 1,5 mm theo phương pháp nét vẽ của bảng mặt tiền, không phải dung sai thi công.
+
+23 ô `printed_mm` trước đây bị làm tròn xuống 1 mm từ số thực nhị phân gần x,5. Đã sửa theo chữ số lưu trong khối kích thước CAD; số đo hình học 0,1 mm và các đầu đo không đổi. `stored_dimension_number()` trong trình trích xuất ngăn lặp lại lỗi này. Bảng trước/sau, các số đo và giới hạn được lưu trong bản ghi kiểm tra nêu trên.
+
+**ISSUE-R06:** DWG gốc và DXF đều có `INSUNITS=1`, nghĩa là inch cho việc chèn tự động theo [Autodesk](https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-Core/files/GUID-A58A87BB-482B-4042-A00A-EEF55A2B4FD8.htm). Cách hiểu hình học mm/m đang suy từ chuỗi kích thước và nhãn cao độ. Câu cũ “INSUNITS unset” là sai và đã được sửa. Không đổi tỷ lệ theo 25,4; người thiết kế phải xác nhận đơn vị trong phần mềm CAD gốc trước khi dùng ngoài công trường.
+
+Hai nhánh đọc vẫn dùng chung LibreDWG, chưa phải xác nhận bằng hai phần mềm CAD độc lập. Bộ chuyển đổi có 3 lỗi báo ở bảng sắp xếp/bản xem trước và 4 933 cảnh báo; DXF sau đọc không có lỗi sửa chữa, nhưng điều đó không xóa cảnh báo nguồn hoặc cấp phép thi công. Không có INSERT trong không gian mô hình; 1 915 đối tượng kích thước còn lại thuộc định nghĩa khối không được chèn, ba đối tượng khác ở ngoài 27 khung.
+
 ## PDF views and key dimensions, 26 October 2026
 
 The local, Git-ignored package is in `exports/dwg-review-2026-10-26/` from the repository root:
@@ -45,13 +71,13 @@ The drawings belong to the church's designers and are under publication hold H1 
 | `images/` | One PNG per drawing, sorted into `01-plans`, `02-elevations`, `03-sections`, `04-details`, plus `00-overview_all-drawings.png` | No (ignored) |
 | `sheets.json` | Drawing inventory: DWG sheet number, title, frame, model-axis mapping, PDF counterpart, image path | Yes |
 | `dimensions.csv` | All 726 DIMENSION objects in the drawings, measured value, displayed value, both measuring points in model axes, same-value register IDs | Yes |
-| `levels.csv` | All 79 level labels, checked against the apex of the level marker drawn under each | Yes |
+| `levels.csv` | All 79 level labels; the follow-up audit checks 58 marker apexes from actual geometric vertices, with two roof conflicts | Yes |
 | `grid-check.csv` | Grid centrelines drawn in each plan, section and elevation against the workbook's *Model grid* | Yes |
 | `facade.csv` | The central facade the model follows: 32 traced levels, arcs, faces and the pier chain, checked against the DWG, and three model departures | Yes |
 | `facade-plan.md` | The work plan written before the facade was built (24 Oct 2026) | Yes |
 | `key-dimension-selection.json`, `key-dimensions.csv`, `Thach_Bi_Key_Dimensions.xlsx` | Curated important measurements and positions, with source references; 26 Oct review | Yes |
 
-The same data is in the dimension workbook `../Thach_Bi_Church_Dimensions.xlsx` on the sheets *DWG sheets*, *DWG dimensions*, *DWG levels*, *DWG grid check*, *DWG findings* and *DWG facade*. The DWG is source file 10 on *Sources*, and five new rows ISSUE-R01 to ISSUE-R05 are on *Open items*. The initial extraction preserved existing entries. The 26 October review changes only five text cells and two row heights: ISSUE-R01's basis/status/reference, ISSUE-R02's outdated model-history wording and the DWG sheet caption. All dimensional values, formulas, caches and engineering-input cells are preserved.
+The same data is in the dimension workbook `../Thach_Bi_Church_Dimensions.xlsx` on the sheets *DWG sheets*, *DWG dimensions*, *DWG levels*, *DWG grid check*, *DWG findings* and *DWG facade*. The DWG is source file 10 on *Sources*. The initial extraction added ISSUE-R01 to ISSUE-R05 and preserved existing entries. The first 26 October review changed five text cells and two row heights: ISSUE-R01's basis/status/reference, ISSUE-R02's outdated model-history wording and the DWG sheet caption. The follow-up audit documented above corrects 23 displayed-number cells from native CAD text, updates unit captions and adds ISSUE-R06. Measured geometry, endpoints, unrelated values, formulas and formula caches remain unchanged.
 
 ## Reproduce
 
@@ -137,7 +163,7 @@ On 24 October 2026 the owner directed the model to follow this file's central fa
 ## Limits
 
 - Only DIMENSION objects and level labels are read as numbers; every other text is a title, axis label or material note. The DWG carries fewer dimensions than the PDF set, so a value printed on a PDF but absent here is not dimensioned in this file. E02, EW and ET have no dimension objects, and E02, ET and P33 have no title.
-- The file sets no drawing units. Millimetres are inferred from the dimensions, which agree with the printed values.
+- The DWG and DXF set `INSUNITS=1` (inches for automatic insertion). Geometry is interpreted as millimetres from the dimension chains and metre level labels; designer confirmation is required (ISSUE-R06). The previous claim that INSUNITS was unset was incorrect. No automatic rescaling was applied.
 - LibreDWG reads AutoCAD 2007 files with known gaps. The model space converted completely (148,675 entities; 22,529 block references and other content sit in unused block definitions), but a check in AutoCAD or ODA software is still advisable before the data governs construction.
 - “Same-value register IDs” are matches by value on the corresponding PDF sheet only. They are candidates, not confirmed witnesses.
 - Level markers are read by geometry: the marker apex lies 0.4837 × text height below the marker's top line on every marker size in the file.
