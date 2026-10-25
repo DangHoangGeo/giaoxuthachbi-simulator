@@ -34,7 +34,7 @@ const sandbox = {
 sandbox.window = sandbox;
 sandbox.addEventListener = (e, f) => { (listeners[e] ||= []).push(f); };
 vm.createContext(sandbox);
-for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'decoration.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
+for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'decoration.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/veranda-review.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
   vm.runInContext(fs.readFileSync(path.join(viewer, file), 'utf8'), sandbox, { filename: file });
 
 let src = fs.readFileSync(path.join(viewer, 'bundle.js'), 'utf8');
@@ -590,11 +590,11 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   for (const it of speakers) {
     const k = it.name.match(/axis (\d)/)[1], s = Math.sign(it.pos[2]), pierFace = SIM.GEO.axes[k] - 0.29, box = new T.Box3().setFromObject(SIM.fixtures.get(it.id).root);
     assert(Math.abs(Math.abs(it.pos[2]) - 7.25) < 1e-6 && it.mountYaw === -s * 90 && it.yaw === -s * 140, 'on the wall, facing the rows behind: ' + it.name);
-    assert(box.max.x < pierFace && box.max.x > pierFace - 0.03, 'tight against the pier side: ' + it.name + ' ' + (pierFace - box.max.x).toFixed(3));
-    // Tilted 22° down, the top of the column stands at most 40 mm proud of the pier face (0.20 m on the pier before).
+    assert(Math.abs(it.pos[0]-(SIM.GEO.axes[k]-.43))<1e-6&&box.max.x<pierFace,'Retained corner anchor and clear of the pier at the lower tilt: '+it.name);
+    // At 2.5 m and 14° down the cabinet stays within the pier's depth.
     const proud = 7.07 - Math.min(Math.abs(box.min.z), Math.abs(box.max.z));
     assert(proud < 0.04, 'within the depth of the pier: ' + it.name + ' ' + proud.toFixed(3) + ' m proud of its face');
-    assert(it.tilt === -22, 'tilted further down for the seats now 0.18 m further away: ' + it.name);
+    assert(it.tilt === -14&&it.pos[1]===2.5,'Nave speaker acoustic centre 2.5 m, 14° down: '+it.name);
   }
   // Migration: an untouched default fitting moves and keeps its switching; a moved or re-aimed one stays.
   const design = D.recommended(SIM.GEO, SIM), before = D.hiddenFittingsBefore(SIM.GEO);
@@ -1091,6 +1091,9 @@ function runSync(kinds) {
   {
     const R = SIM.rehearsal, wait = ms => new Promise(resolve => setTimeout(resolve, ms));
     assert.equal(typeof R?.begin, 'function', 'the simulator offers a rehearsal');
+    // Complete the post-import analysis before taking the exact state snapshot.
+    // A larger design can still be calculating after a fixed 900 ms delay.
+    A.run(undefined, { now: true });
     SIM.saveNow(); await wait(900);
     const snap = () => ({ items: JSON.stringify(SIM.state.items), settings: JSON.stringify(SIM.state.settings), scene: SIM.state.scene, history: SIM.state.history.length, future: SIM.state.future.length });
     const was = snap(), stored = storage.get('thachbi.simulator.v1'), writes = storageWrites.count;

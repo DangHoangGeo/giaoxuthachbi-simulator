@@ -6,13 +6,13 @@ Generated 25 October 2026 from the category registers and their matched model sn
 
 | Usage category | Equipment/enclosures | Shown | Hidden alternatives | Connected components | Shown items commanded on | Routes | Route points |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Lighting | 250 | 250 | 0 | 250 | 224 | 275 | 2142 |
-| Sound | 30 | 30 | 0 | 30 | 20 | 40 | 304 |
+| Lighting | 286 | 286 | 0 | 286 | 260 | 311 | 2314 |
+| Sound | 44 | 44 | 0 | 44 | 34 | 54 | 334 |
 | Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 410 |
 | Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 54 |
 | Decoration and furnishings | 37 | 22 | 15 | 0 | 22 | 0 | 0 |
 | Distribution and controls | 12 | 12 | 0 | 6 | 4 | 15 | 109 |
-| **Total** | 379 | 364 | 15 | 336 | 302 | 395 | 3019 |
+| **Total** | 429 | 414 | 15 | 386 | 352 | 445 | 3221 |
 
 Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **19 equipment, 100 routes**.
 
@@ -22,13 +22,13 @@ Saved scene: **Full service · evening**. Service duration **1.5 h**, **40 servi
 
 | Usage category | Operating estimate (W) | kWh/service | Service-only kWh/month | Circuits / scope |
 | --- | ---: | ---: | ---: | --- |
-| Lighting | 4,214.8 | 6.322 | 252.89 | L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LD, LS |
-| Sound | 109.4 | 0.164 | 6.57 | A1, A2, A3, A5, MIC |
+| Lighting | 4,310.8 | 6.466 | 258.65 | L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LD, LS |
+| Sound | 193.4 | 0.290 | 11.60 | A1, A2, A3, A5, MIC |
 | Fans and ventilation | 1,156.0 | 1.734 | 69.36 | F1, F2, F4, F5, V1, V2, V3 |
 | Exit signs | 15.0 | 0.023 | 0.90 | E1 |
 | Decoration and furnishings | 0.0 | 0.000 | 0.00 | DECOR, X1 |
 | Distribution and controls | 0.0 | 0.000 | 0.00 | P1, P2, P3, P4 |
-| **Total modeled usage** | **5,495.2** | **8.243** | **329.71** | Same saved configuration |
+| **Total modeled usage** | **5,675.1** | **8.513** | **340.51** | Same saved configuration |
 
 Calculated by the simulator's itemWatts method, including dimming, fan speed and amplifier allowances. Passive-speaker ratings are not summed as mains watts. The five boards do not add duplicate downstream consumption; their own parasitic/control loads are not separately modeled. A zero is the model's result, not a verified zero product rating. Standby, between-service use, continuous exit-sign operation outside these service hours, other building loads and distribution losses are excluded. These totals cannot size a supply, protective device or cable. See [methods and limitations](../simulator/methods-and-limitations.md).
 
@@ -36,15 +36,15 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,126.568 | 3,126.568 | 0.000 | 0.000 |
-| Sound | 722.691 | 0.000 | 1,719.703 | 563.757 |
+| Lighting | 3,395.235 | 3,395.235 | 0.000 | 0.000 |
+| Sound | 768.994 | 0.000 | 2,365.631 | 571.727 |
 | Fans and ventilation | 955.646 | 955.646 | 0.000 | 0.000 |
 | Exit signs | 145.936 | 145.936 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 263.923 | 263.923 | 0.000 | 0.000 |
-| **Total by length basis** | **5,214.764** | **4,492.074** | **1,719.703** | **563.757** |
+| **Total by length basis** | **5,529.734** | **4,760.740** | **2,365.631** | **571.727** |
 
-Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/385 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
+Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/435 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
 ## Data quality and engineering completeness
 
@@ -52,13 +52,13 @@ The build verified unique equipment/route IDs, unique ordered vertices, complete
 
 | Usage category | Specification + source fields filled / equipment | Physical control mapping filled / connected components | Cable designation + approval reference filled / routes |
 | --- | ---: | ---: | ---: |
-| Lighting | 0/250 | 0/250 | 0/275 |
-| Sound | 0/30 | 0/30 | 0/40 |
+| Lighting | 0/286 | 0/286 | 0/311 |
+| Sound | 0/44 | 0/44 | 0/54 |
 | Fans and ventilation | 0/45 | 0/45 | 0/58 |
 | Exit signs | 0/5 | 0/5 | 0/7 |
 | Decoration and furnishings | 0/37 | 0/0 | 0/0 |
 | Distribution and controls | 0/12 | 0/6 | 0/15 |
-| **Total** | **0/379** | **0/336** | **0/395** |
+| **Total** | **0/429** | **0/386** | **0/445** |
 
 These counts measure field completeness only; filled fields still require source and engineering review. A 0/0 population is not applicable. Product selection, protection, final cable/containment specifications, actual control channels and commissioning evidence remain pending where fields are blank. No overall quality score is invented.
 
@@ -66,8 +66,11 @@ The held wing review of 9 October 2026 retains four small brass chandeliers (L63
 
 ## Sources and refresh
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 325f8ef8696abef155a85a11a511a71ee5bbd155d28b2e0bfd11928b39ade4e3.
-- [Electrical snapshot](electrical-systems.json), SHA-256: 75fa53533f9758516132ea54608152663cd0f407a24b0e6a3e030bc743a6ab27.
+The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
+
+
+- [Layout snapshot](equipment-layout.json), SHA-256: 8794d15eced755667fbb94a78904d0b24ab39e7c75d28fc3bbe150bece4e8ceb.
+- [Electrical snapshot](electrical-systems.json), SHA-256: fa54e193a88aab1a463c7e9a9d929aac8295554193f697131ae924624c8c3635.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 

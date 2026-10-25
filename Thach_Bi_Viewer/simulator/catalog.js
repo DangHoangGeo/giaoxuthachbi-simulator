@@ -315,6 +315,27 @@
     k.cyl(0.11, 0.09, 0.06, 'bronze', { p: [0, 0.85, 0] }, 16);
     k.glowPoint([0, 0.76, 0], 0.4);
   }
+  // Small wall fittings for the open porches. Sections, weather protection,
+  // mounting and selected-product data remain CONCEPT / ENGINEERING HOLD.
+  function buildPorchFlood(k) {
+    k.box(.016,.14,.09,'corniceStone',{p:[.008,0,0]});
+    k.rod([.016,0,0],[.14,.03,0],.012,'corniceStone',8);
+    k.pivots.head=[.15,.035,0];
+    k.in('head',()=>{
+      k.box(.075,.09,.12,'corniceStone',{p:[-.012,0,0]});
+      k.box(.004,.065,.095,'glow',{p:[.028,0,0]});
+      k.glowPoint([.032,0,0],.24);
+    });
+  }
+  function buildPorchSpeaker(k) {
+    k.box(.018,.15,.1,'wallPlaster',{p:[.009,0,0]});
+    k.rod([.018,0,0],[.12,0,0],.014,'wallPlaster',8);
+    k.pivots.head=[.14,0,0];
+    k.in('head',()=>{
+      k.box(.14,.26,.20,'wallPlaster',{p:[.015,0,0]});
+      k.box(.004,.225,.17,'grilleWhite',{p:[.087,0,0]});
+    });
+  }
   function buildExitSign(k) {
     k.box(0.05, 0.17, 0.38, 'white', { p: [0.025, 0, 0] });
     k.box(0.006, 0.13, 0.33, 'glow', { p: [0.052, 0, 0] });
@@ -1011,6 +1032,9 @@
     { id: 'wallLantern', cat: LIGHT, family: 'Decorative', name: 'Wall lantern', mounts: ['wall'], defaultHeight: 2.6, glow: 'warm', circuit: 'L4',
       desc: '900 lm, 2700 K, 9 W. Veranda piers and side doors.',
       light: { lumens: 900, watts: 9, cct: 2700, cri: 90, emitters: [{ kind: 'point', pos: [0.3, -0.2, 0] }] }, build: buildWallLantern },
+    { id: 'porchFlood', cat: LIGHT, family: 'Exterior', name: 'Open-porch wall flood · concept', mounts: ['wall'], aim: true, defaultTilt: 40, glow: 'lens', circuit: 'L4',
+      desc: 'Compact finish-matched wall flood concept: 900 lm / 9 W, 3000 K, adjustable beam. Generic planning data; photometry, glare shielding, weather protection, driver access and fixing pending.',
+      light: { lumens:900,watts:9,cct:3000,cri:90,beam:65,field:90,optics:[45,65,90],emitters:[{kind:'spot',head:true,pos:[.032,0,0]}] },build:buildPorchFlood },
     { id: 'flood', cat: LIGHT, family: 'Exterior', name: 'Façade floodlight', mounts: ['floor'], aim: true, defaultTilt: 50, glow: 'lens', circuit: 'L6',
       desc: '9 000 lm, 3000 K, 30° beam, 70 W, IP66. Towers and façade.',
       light: { lumens: 9000, watts: 70, cct: 3000, cri: 80, beam: 30, field: 50, optics: [15, 30, 50, 70], emitters: [{ kind: 'spot', head: true, pos: [0.05, 0, 0] }] }, build: buildFlood },
@@ -1116,6 +1140,9 @@
       desc: '90° × 60°, 92 dB 1 W/1 m, 200 W. Compact fill or monitor.',
       speaker: { hb: [360, 240, 140, 100, 90, 85, 80], vb: [360, 200, 120, 80, 60, 55, 50], rear: [4, 7, 11, 14, 17, 19, 21], sensitivity: 92, ratedW: 200, response: [-6, -1, 0, 0, 0, 0, -2], nominal: 84 },
       build: buildPointSpeaker },
+    { id: 'porchWallSpeaker', cat: SPK, family: 'Distributed', name: 'Open-porch wall fill · 6" · concept', mounts: ['wall'], aim: true, defaultHeight: 2.7, defaultTilt: -33, circuit: 'A2',
+      desc: 'Wall-mounted porch fill concept using the former 6-inch pendant acoustic category (110-degree cone, 89 dB 1 W/1 m, 30 W passive). Enclosure, weather protection, real directivity and fixing are not selected.',
+      speaker: { hb:[360,300,180,120,110,100,90],vb:[360,300,180,120,110,100,90],rear:[3,5,8,12,15,17,18],sensitivity:89,ratedW:30,response:[-12,-4,0,0,0,-1,-4],nominal:80 },build:buildPorchSpeaker },
     { id: 'pendantSpeaker', cat: SPK, family: 'Distributed', name: 'Pendant loudspeaker · 6"', mounts: ['pendant'], aim: true, defaultDrop: 2.5, defaultTilt: -90, circuit: 'A2',
       desc: '110° cone, 89 dB 1 W/1 m, 30 W (100 V line). Verandas and overflow areas.',
       speaker: { hb: [360, 300, 180, 120, 110, 100, 90], vb: [360, 300, 180, 120, 110, 100, 90], rear: [3, 5, 8, 12, 15, 17, 18], sensitivity: 89, ratedW: 30, response: [-12, -4, 0, 0, 0, -1, -4], nominal: 80 },

@@ -583,6 +583,7 @@
       for (const e of [-1, 1]) add({ id: `L-STATION-${n}-${e < 0 ? 'A' : 'B'}`, type: 'stationCandle', name: `Station candle · ${['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV'][n - 1]} · ${e < 0 ? 'front' : 'rear'}`,
         circuit: 'LS', mount: 'wall', pos: [x + e * ST.candles.dx, ST.candles.y, s * (ST.face - 0.02)], yaw: -s * 90, mountYaw: -s * 90, on: true });
     }
+    window.CHURCH_VERANDA_REVIEW?.apply(items,GEO);
     return items.filter(it => ![...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id) && !parishRetiredNames.test(it.name));
   }
 

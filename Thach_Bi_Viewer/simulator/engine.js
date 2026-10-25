@@ -1052,7 +1052,8 @@
   }
   /* Time-align every loudspeaker to the talker (first microphone) so the
      voice is heard first and the system follows ~12 ms later (precedence). */
-  function alignDelays({ record = true, haasMs = 12 } = {}) {
+  function alignDelays({ record = true, haasMs = 12, onlyIds = null } = {}) {
+    const selected = onlyIds ? new Set(onlyIds) : null;
     const mic = micSources().find(m => m.on) || micSources()[0];
     const ref = mic ? [mic.pos[0] + mic.dir[0] * 0.45, mic.pos[1] + 0.05, mic.pos[2] + mic.dir[2] * 0.45] : [44.6, 2.3, 0];
     const c = roomModel().c;
@@ -1060,8 +1061,9 @@
     const all = speakerSources(), outside = [];
     for (const sp of all) {
       const it = sp.item;
-      if (it.circuit === 'A4') { it.delayMs = 0; continue; }
+      if (it.circuit === 'A4') { if (!selected || selected.has(it.id)) it.delayMs = 0; continue; }
       if (!isInterior(sp.src.pos)) { outside.push(sp); continue; }
+      if (selected && !selected.has(it.id)) continue;
       const { pos, f } = sp.src;
       const plane = floorY(pos[0] + f[0] * 6, pos[2] + f[2] * 6) + 1.2;
       let t = f[1] < -0.02 ? (pos[1] - plane) / -f[1] : 12;
@@ -1081,6 +1083,7 @@
     const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
     for (const sp of outside) {
       const it = sp.item, pos = sp.src.pos, s = Math.sign(pos[2]) || 1;
+      if (selected && !selected.has(it.id)) continue;
       const meet = pos[0] < 2.65 ? [3.0, 1.2, P.clamp(pos[2], -2.4, 2.4)]
         : pos[0] > 52.85 ? [52.4, 1.2, P.clamp(pos[2], -3, 3)]
         : inWing(pos[0], P.clamp(pos[2], -12.9, 12.9)) && Math.abs(pos[2]) > 12.9 ? [pos[0], 1.2, s * 12.5]
@@ -1893,7 +1896,8 @@
       if (rehearsalBase) return false;
       // A change made a moment ago and not yet stored is kept before the switches are borrowed.
       if (savePending) { clearTimeout(saveTimer); saveNow(); }
-      rehearsalBase = { scene: state.scene, feed: state.settings.db2Feed, memory: state.settings.db2Memory, settings: {}, items: new Map(state.items.map(it => [it.id, rehearsalSwitches(it)])) };
+      rehearsalBase = { scene: state.scene, feed: state.settings.db2Feed, memory: state.settings.db2Memory, settings: {}, items: new Map(state.items.map(it => [it.id, rehearsalSwitches(it)])),
+        feedback: new Map(state.items.filter(it => Object.hasOwn(it, 'feedbackMargin')).map(it => [it.id, it.feedbackMargin])) };
       return true;
     },
     // One of the built-in scenes.
@@ -1934,7 +1938,12 @@
     reset() {
       const base = rehearsalBase;
       if (!base) return false;
-      for (const it of state.items) { const was = base.items.get(it.id); if (was) Object.assign(it, was); }
+      for (const it of state.items) {
+        const was = base.items.get(it.id); if (was) Object.assign(it, was);
+        // Analysis writes this derived readout during a tour. Restore absence too.
+        if (base.feedback.has(it.id)) it.feedbackMargin = base.feedback.get(it.id);
+        else delete it.feedbackMargin;
+      }
       Object.assign(state.settings, base.settings, { db2Feed: base.feed, db2Memory: base.memory });
       if (base.feed === undefined) delete state.settings.db2Feed;
       if (base.memory === undefined) delete state.settings.db2Memory;
@@ -2423,7 +2432,8 @@
       ['fanBeamRevision', D.fanBeamRevision, '.before-fans-on-beams', D.upgradeFanBeams],
       ['daisLevelRevision', D.daisLevelRevision, '.before-dais-0-80', D.upgradeDaisLevel],
       ['facadeCadRevision', D.facadeCadRevision, '.before-cad-facade', D.upgradeFacadeCad],
-      ['parishMeetingRevision', D.parishMeetingRevision, '.before-parish-meeting', D.upgradeParishMeeting]
+      ['parishMeetingRevision', D.parishMeetingRevision, '.before-parish-meeting', D.upgradeParishMeeting],
+      ['verandaReviewRevision', window.CHURCH_VERANDA_REVIEW.revision, '.before-open-porch-light-sound', window.CHURCH_VERANDA_REVIEW.upgrade]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;
@@ -2431,10 +2441,18 @@
       try {
         localStorage.setItem(STORAGE_KEY + suffix, JSON.stringify(previous));
         importLayout({ ...previous, items: upgrade(state.items, D.recommended(GEO, SIM), GEO) }, { record: false });
+        if (field === 'verandaReviewRevision') {
+          const old = new Map(previous.items.map(it => [it.id, it]));
+          const moved = state.items.filter(it => CAT.byId[it.type]?.speaker && (!old.has(it.id) ||
+            JSON.stringify([it.type,it.pos,it.yaw,it.tilt,it.delayMs]) !== JSON.stringify([old.get(it.id).type,old.get(it.id).pos,old.get(it.id).yaw,old.get(it.id).tilt,old.get(it.id).delayMs]))).map(it => it.id);
+          alignDelays({ record: false, onlyIds: moved });
+        }
         state.settings[field] = revision;
         if (!saveNow()) throw new Error('Updated layout could not be saved.');
       } catch (error) {
         importLayout(previous, { record: false });
+        if (previous.settings[field] === undefined) delete state.settings[field];
+        else state.settings[field] = previous.settings[field];
         console.warn(field + ' migration skipped; saved layout retained:', error.message);
       }
     }

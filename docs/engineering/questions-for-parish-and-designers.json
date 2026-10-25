@@ -473,6 +473,7 @@
     },
     {
       "id": "Q52",
+      "revision_note_vi": "Ngày 25/10/2026, theo yêu cầu chủ đầu tư, 12 loa lòng nhà thờ hạ tâm mô hình xuống +2,50 m, nghiêng −14°; mép dưới vỏ mô hình khoảng +2,197 m. Vẫn phải đo trụ, chọn loa/giá đỡ, kiểm tra va chạm, liên kết và thử âm/hú. Xem open-porch-light-sound.md; số liệu 22° bên dưới là lịch sử.",
       "discipline": "Âm thanh / kiến trúc / kết cấu",
       "owner": "Thiết kế âm thanh / kiến trúc sư / kỹ sư kết cấu",
       "question_vi": "12 loa cột mảnh được dời khỏi mặt trụ bê tông vào góc giữa trụ và tường (phía cửa chính của mỗi trụ), nghiêng xuống 22°. Bề rộng thật của trụ là bao nhiêu (mô hình 0,58 m chỉ minh họa)? Giá nghiêng cần lùi khỏi tường bao nhiêu để đầu dưới của loa không chạm tường (mô hình cho thấy chạm 17 mm)? Bắt vào tường gạch thế nào và cáp vào loa ở đâu?",
@@ -487,6 +488,15 @@
       "question_vi": "12 quạt trần hai lối đi bên được treo dưới dầm dọc nối các cột gỗ (B03, đáy dầm +8,73 m) ở giữa nhịp, cần treo dài 4,53 m. Dầm dọc thật có tiết diện và liên kết ở đầu cột thế nào, có chịu được trọng lượng, mô-men xoắn và rung của quạt không? Móc treo, thanh chống lắc và dây an toàn chọn loại nào? Cha xứ có chấp nhận rằng số ghế có gió dễ chịu giảm từ 80 % xuống 60 % (dãy ghế sát tường ít gió hơn) không?",
       "evidence": "Khảo sát và tính toán dầm dọc và mối nối, sản phẩm quạt và bộ treo được chọn, thử một quạt tại chỗ đo gió ở ghế sát tường",
       "blocks": "Dầm dọc B03 trong mô hình chỉ là hình minh họa (0,24 × 0,45 m); vị trí quạt là yêu cầu của chủ đầu tư ngày 19/10/2026, chưa có tải trọng, liên kết hay kết quả đo",
+      "answer": null
+    },
+    {
+      "id": "Q54",
+      "discipline": "Chiếu sáng / âm thanh / điện / kết cấu",
+      "owner": "Thiết kế chiếu sáng và âm thanh / kỹ sư điện và kết cấu / cha xứ",
+      "question_vi": "Hành lang mở hai bên: chọn đèn chiếu vòm ngoài cột, đèn lối đi và loa gắn tường nào? Cần quang trắc, chống chói/hắt ra ngoài, chống mưa ẩm, giá đỡ và lối bảo trì ra sao? Có tách điều khiển đèn vòm khỏi L4 không? Công suất bộ khuếch đại và tuyến loa có đủ khi tăng lên 18 loa A2 không?",
+      "evidence": "Hồ sơ sản phẩm, IES/LDT, dữ liệu hướng tính loa, khảo sát cột/tường, chi tiết nối kín nước và tách tuyến điện/âm thanh, thử ban đêm và thử lời nói khi micro hoạt động; open-porch-light-sound.md",
+      "blocks": "CONCEPT ngày 25/10/2026: 18 đèn lối đi, 36 đèn vòm, 18 loa A2; độ rọi trực tiếp lối đi 11,54–38,38 lx chưa đạt mục tiêu thử 100 lx; biên độ hú và độ rõ ở cánh vẫn không đạt. Chưa có sản phẩm, liên kết, kênh điều khiển hay duyệt thi công.",
       "answer": null
     }
   ]
