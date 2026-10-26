@@ -1,0 +1,17 @@
+{
+  "normal_reload_started_utc": "2026-10-26T15:06:42.068Z",
+  "fresh_normal_warnings_errors": [],
+  "prior_iframe_teardown_messages": [
+    {
+      "level": "error",
+      "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+      "timestamp": "2026-10-26T14:35:56.674Z"
+    },
+    {
+      "level": "error",
+      "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+      "timestamp": "2026-10-26T14:40:17.808Z"
+    }
+  ],
+  "limits": "Bounded desktop observation; prior iframe teardown messages retained, not attributed to fresh direct load."
+}

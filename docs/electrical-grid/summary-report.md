@@ -78,3 +78,8 @@ The 25 October [open-porch review](../engineering/open-porch-light-sound.md) rep
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 
 Run `node scripts/build_equipment_register.mjs --verify-workflow` to preserve category inputs and refresh all six files and this report. Re-export matched model snapshots first when geometry changes.
+
+
+## Lan can tháp theo DWG — đối chiếu ngày 26/10/2026
+
+Hình học lan can mới có 17 ô thủng bậc mỗi mặt, thay con tiện cũ; không đổi thiết bị, ID, tuyến, hướng, công suất hoặc các sổ Excel theo danh mục. [ENG-041](../engineering/issues.md#lan-can-tháp-và-che-chùm-đèn-chỏm--eng-041) giữ việc phối hợp L164/L175: tia tim từ đầu đèn cố định đi qua ô giữa, nhưng 30/49 hướng thử trong nón hình học 36° gặp phần lan can. Đây là tập tia không có trọng số, **không phải tỷ lệ quang thông bị mất hoặc kết quả IES/LDT**. Phép tính lux hiện hành chưa tính che bởi tường/lan can tháp, nên không lấy các số đó làm nghiệm thu chỏm. Người thiết kế chiếu sáng/kiến trúc cần phối hợp tiết diện, quang học, gá, bảo trì và thử ban đêm; không tự dời đèn hoặc sửa số tính để che xung đột. Các tổng số điện và dữ liệu nhập có trước trong báo cáo được giữ nguyên.

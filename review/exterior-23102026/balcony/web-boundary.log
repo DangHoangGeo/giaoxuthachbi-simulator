@@ -1,0 +1,24 @@
+
+> thach-bi-web@0.1.0 check:boundary
+> node scripts/check-build-boundary.mjs
+
+{
+  "schemaVersion": 1,
+  "buildId": "2kr-HZYsjDtdIBlECZSH0",
+  "inspectedEntries": 2412,
+  "inspectedBytes": 153841911,
+  "traceReferences": 4203,
+  "forbiddenMarkers": [
+    "synthetic-private-canary",
+    "synthetic-private-path",
+    "synthetic-unpublished-title",
+    "legacy-viewer-directory",
+    "engineering-source-directory",
+    "dimension-source-directory",
+    "synthetic-gallery-build",
+    "synthetic-gallery-credit",
+    "private-test-fixture"
+  ],
+  "failures": [],
+  "limits": "Exact byte/path canaries and trace containment only; not a universal secret detector or authorization test."
+}

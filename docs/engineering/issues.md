@@ -95,3 +95,12 @@ Owner, 25 October 2026: confirmed removal of the fourteen wall sconces above the
 ## Mặt trong/sau tháp và hoa hồng ET · ENG-040
 
 Đối chiếu ngày 26/10/2026 theo phản hồi chủ đầu tư: E02 xác nhận các cung/cửa/hoa hồng mặt ngoài tầng trên, và mặt ngoài trệt có vòm nhỏ cao hơn trước 200,5 mm cùng cửa sổ 1 m. PT15A/PT23/PT29 cho bao gần vuông; ET không có tiêu đề/hướng, xác nhận cung cửa nhưng hoa hồng tầng 2 ở +13,187964 m, thấp hơn E02/E01B 90 mm, và không có bộ vòm trang trí lớn. Mô hình thay 12 mặt trong/sau cũ bằng mô-típ lặp **DERIVED**, giữ +13,277964 m của mô-típ ngoài, không gán đó là số đo mặt sau đã duyệt. Kiến trúc sư/người thiết kế cần nhận dạng ET, xác nhận mặt trong/sau, mức hoa hồng và ban công có ô thủng trước khi hoàn tất mô hình đúng bản vẽ; không tự lấy trung bình hoặc đổi đơn vị. [Chứng cứ theo handle và trạng thái từng mặt](../exterior-23102026/towers.md). Chưa phê duyệt kính, cửa mở, thông gió, cấu tạo, gối/neo hay thi công.
+
+
+## Lan can tháp và che chùm đèn chỏm · ENG-041
+
+Ngày 26/10/2026: mô hình bỏ con tiện bình, dựng lan can 17 ô bậc theo E01B/E02, thanh đỉnh +30,080962 m và đỉnh hoa +31,551771 m. [Chứng cứ](../exterior-23102026/tower-balcony-witnesses.json) xác nhận 487 đối tượng nguồn. PT29 cho hai dải cách 60 mm; mô hình dùng khoảng này như chiều sâu lớp đồ họa, **chiều dày chịu lực vẫn null/chưa thiết kế**. Khép góc, phần phía khuất và tiết diện thanh đỉnh còn DERIVED; phần cong đỡ phào mới chỉ nội suy tuyến tính giữa các hàng nét. Bao phào theo mặt đứng rộng 5,634336 m, khác bao PT29 khoảng 4,3 mm; tim mặt đứng lệch tim trục khoảng 11,4–11,5 mm. Giữ các chứng cứ và câu hỏi phối hợp, không lấy trung bình.
+
+Phần trụ khuất của vỏ chỏm được nối từ sàn hiển thị +29,089970 m thay vì để treo ở +29,600 m; đây là nối hình DERIVED, không xác nhận gối/kết cấu, trường `bearingLevel` còn null.
+
+Không đổi L164/L175: chân [0,14;29,09;±10,153] m, đầu [0,02;29,165;±10,153] m, mục tiêu [0,6;30,3;±10,153] m, nón mô hình 36°. Tia tim qua ô, nhưng 30 trong 49 hướng mẫu gặp lan can. Số hướng không có trọng số, không là phần quang thông mất; các vật liệu/photometry thực chưa được chọn và engine lux không xét đầy đủ vật cản này. Phép kiểm phần mềm về gối đỡ/khoảng cách vẫn đạt nhưng không xóa giữ chờ chiếu sáng. Người thiết kế chiếu sáng/kiến trúc cần xác nhận tiết diện, bảo vệ chống ngã, thoát nước, khe bảo trì, gá/neo và IES/LDT rồi thử mẫu ban đêm. Không tự dời đèn, thêm gối hoặc tăng công suất. Các giữ chờ khác còn nguyên.

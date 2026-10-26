@@ -17,7 +17,7 @@
   const DRAWN = 'TRACED CAD ELEVATION / SCHEMATIC DEPTH';
   const CARVED = 'TRACED CAD ELEVATION / ILLUSTRATIVE CARVING';
   const spec = {
-    revision: '2026-10-26-cad-towers-3',
+    revision: '2026-10-26-cad-towers-4',
     centre: 10.153, core: 2.45, wall: 0.14, // tower centre |Z|; core half-width; half wall thickness
     top: 8.39,
     pier: { t: [1.95, 3.2], front: [-0.72, 1.0], back: [3.9, 5.1], pedestal: 1.85, shaft: 7.4, capital: 7.85 },
@@ -34,7 +34,7 @@
     door: { x: [3.4, 4.4], h: 2.3 }, // into each tower from the rear corner of the nave (inner side)
     // E01B C4568C/C45696: circular offset-centre shoulders, not an ellipse.
     // Continuation under the balcony and revolution about X=2.45 are visualization proxies.
-    dome: { y0: 29.6, wall: 30.512922701, top: 32.790456676, r: 1.979175671,
+    dome: { y0: 29.089970309, bearingLevel: null, wall: 30.512922701, top: 32.790456676, r: 1.979175671,
       arc: { radius: 2.628673654, offset: 0.649346024, y: 30.541187117, start: -0.010752556, end: 1.026838484 },
       rosette: 31.699583764, frontRoseOffset: -0.011541068, roseRings: [0.414212786, 0.444212786], roseInner: 0.345399464 },
     lantern: { plinth: [32.790456676, 32.983342187, 0.756816784], step: [32.983342187, 33.111064968, 0.584190638], base: [33.111064968, 33.231658402, 0.557768729], body: [33.231658402, 33.731658402, 0.557768729], beads: [33.731658402, 33.861658402, 0.582768729], crown: [33.861658402, 35.0, 1.2], ball: 35.212763, ballRadius: 0.210895, cross: [35.409300742, 36.919970309], arm: 36.346670309, crossLobe: 0.0819 },
@@ -47,7 +47,421 @@
     ],
     // E02 independent side coordinates (X/Y), see tower-other-faces-witnesses.json.
     upperSide: [{"stage":2,"centreX":2.4500446699580642,"windowCentresX":[1.5546877321228385,3.345401094648987],"roseX":2.4500446881728712},{"stage":3,"centreX":2.450044413367985,"windowCentresX":[1.555044629918877,3.3450446299018806],"roseX":2.4500446881519164},{"stage":4,"centreX":2.438569023472024,"windowCentresX":[1.754222392366035,3.1229156545789447],"roseX":2.4385692107288635}],
-    pinnacle: { at: 2.02, y: 30.25, h: 1.05 },
+    // Native E01B/E02 parapet profiles. Band separation is a display proxy, not structural wall thickness.
+    balcony: {
+      "front": {
+        "drawing": "E01B",
+        "centre": 10.141458745,
+        "field": [
+          [
+            8.173758453,
+            29.089970309
+          ],
+          [
+            12.109159036,
+            29.089970309
+          ],
+          [
+            12.109159036,
+            29.980046364
+          ],
+          [
+            8.173758453,
+            29.980046364
+          ]
+        ],
+        "posts": [
+          [
+            [
+              7.619158453,
+              29.089970309
+            ],
+            [
+              8.173758453,
+              29.089970309
+            ],
+            [
+              8.173758453,
+              29.980046364
+            ],
+            [
+              7.619158453,
+              29.980046364
+            ]
+          ],
+          [
+            [
+              12.109159036,
+              29.089970309
+            ],
+            [
+              12.663759036,
+              29.089970309
+            ],
+            [
+              12.663759036,
+              29.980046364
+            ],
+            [
+              12.109159036,
+              29.980046364
+            ]
+          ]
+        ],
+        "insets": [
+          [
+            [
+              7.816458453,
+              29.169970309
+            ],
+            [
+              8.106458453,
+              29.169970309
+            ],
+            [
+              8.106458453,
+              29.900046364
+            ],
+            [
+              7.816458453,
+              29.900046364
+            ]
+          ],
+          [
+            [
+              12.176459036,
+              29.169970309
+            ],
+            [
+              12.466459036,
+              29.169970309
+            ],
+            [
+              12.466459036,
+              29.900046364
+            ],
+            [
+              12.176459036,
+              29.900046364
+            ]
+          ]
+        ],
+        "holeCentres": [
+          8.381458745,
+          8.601458745,
+          8.821458745000001,
+          9.041458745,
+          9.261458745,
+          9.481458745,
+          9.701458745,
+          9.921458744999999,
+          10.141458745,
+          10.361458745,
+          10.581458744999999,
+          10.801458745,
+          11.021458745,
+          11.241458745,
+          11.461458745,
+          11.681458745,
+          11.901458745
+        ],
+        "cornice": [
+          {
+            "y": 29.089970309,
+            "u": [
+              7.324290683,
+              12.958626807
+            ]
+          },
+          {
+            "y": 28.993970309,
+            "u": [
+              7.324290683,
+              12.958626807
+            ]
+          },
+          {
+            "y": 28.945970309,
+            "u": [
+              7.375487769,
+              12.907429721
+            ]
+          },
+          {
+            "y": 28.825970309,
+            "u": [
+              7.475598101,
+              12.807319388
+            ]
+          },
+          {
+            "y": 28.778266564,
+            "u": [
+              7.475598101,
+              12.807319388
+            ]
+          }
+        ],
+        "rail": [
+          {
+            "y": 30.080961566,
+            "u": [
+              7.538958453,
+              12.743959036
+            ]
+          },
+          {
+            "y": 30.017889564,
+            "u": [
+              7.538958453,
+              12.743959036
+            ]
+          },
+          {
+            "y": 29.980046364,
+            "u": [
+              7.575051835,
+              12.707865654
+            ]
+          }
+        ]
+      },
+      "side": {
+        "drawing": "E02",
+        "centre": 2.4385690234685313,
+        "field": [
+          [
+            0.47086873146853137,
+            29.089970309
+          ],
+          [
+            4.406269314468531,
+            29.089970309
+          ],
+          [
+            4.406269314468531,
+            29.980046364
+          ],
+          [
+            0.47086873146853137,
+            29.980046364
+          ]
+        ],
+        "posts": [
+          [
+            [
+              -0.0837312685314684,
+              29.089970309
+            ],
+            [
+              0.47086873146853137,
+              29.089970309
+            ],
+            [
+              0.47086873146853137,
+              29.980046364
+            ],
+            [
+              -0.0837312685314684,
+              29.980046364
+            ]
+          ],
+          [
+            [
+              4.406269314468531,
+              29.089970309
+            ],
+            [
+              4.960869314468532,
+              29.089970309
+            ],
+            [
+              4.960869314468532,
+              29.980046364
+            ],
+            [
+              4.406269314468531,
+              29.980046364
+            ]
+          ]
+        ],
+        "insets": [
+          [
+            [
+              0.11356873146853186,
+              29.169970309
+            ],
+            [
+              0.4035687314685319,
+              29.169970309
+            ],
+            [
+              0.4035687314685319,
+              29.900046364
+            ],
+            [
+              0.11356873146853186,
+              29.900046364
+            ]
+          ],
+          [
+            [
+              4.4735693144685325,
+              29.169970309
+            ],
+            [
+              4.763569314468532,
+              29.169970309
+            ],
+            [
+              4.763569314468532,
+              29.900046364
+            ],
+            [
+              4.4735693144685325,
+              29.900046364
+            ]
+          ]
+        ],
+        "holeCentres": [
+          0.6785690234689974,
+          0.8985690234685317,
+          1.118569023468066,
+          1.338569023468066,
+          1.558569023468066,
+          1.778569023468066,
+          1.998569023468066,
+          2.218569023468066,
+          2.438569023468066,
+          2.6585690234680657,
+          2.8785690234680663,
+          3.098569023468066,
+          3.318569023468066,
+          3.538569023468066,
+          3.758569023468066,
+          3.978569023468066,
+          4.198569023468066
+        ],
+        "cornice": [
+          {
+            "y": 29.089970309354698,
+            "u": [
+              -0.3785990383590106,
+              5.255737085295841
+            ]
+          },
+          {
+            "y": 28.993970309354395,
+            "u": [
+              -0.3785990383590106,
+              5.255737085295841
+            ]
+          },
+          {
+            "y": 28.94597030935438,
+            "u": [
+              -0.3274019524629693,
+              5.204539999400964
+            ]
+          },
+          {
+            "y": 28.82597030935349,
+            "u": [
+              -0.2272916199050378,
+              5.104429666843033
+            ]
+          },
+          {
+            "y": 28.77826656370994,
+            "u": [
+              -0.2272916199050378,
+              5.104429666843033
+            ]
+          }
+        ],
+        "rail": [
+          {
+            "y": 30.080961565534658,
+            "u": [
+              -0.16393126797606236,
+              5.041069314911962
+            ]
+          },
+          {
+            "y": 30.017889564282015,
+            "u": [
+              -0.16393126797606236,
+              5.0410693149128925
+            ]
+          },
+          {
+            "y": 29.980046363530175,
+            "u": [
+              -0.12783788575208746,
+              5.0049759326870555
+            ]
+          }
+        ]
+      },
+      "hole": [
+        [
+          0.054999999999999716,
+          29.234970307
+        ],
+        [
+          0.02999999999999936,
+          29.234970307
+        ],
+        [
+          0.02999999999999936,
+          29.209970307
+        ],
+        [
+          -0.02999999999999936,
+          29.209970307
+        ],
+        [
+          -0.02999999999999936,
+          29.234970307
+        ],
+        [
+          -0.054999999999999716,
+          29.234970307
+        ],
+        [
+          -0.054999999999999716,
+          29.905046364
+        ],
+        [
+          -0.02999999999999936,
+          29.905046364
+        ],
+        [
+          -0.02999999999999936,
+          29.930046364
+        ],
+        [
+          0.02999999999999936,
+          29.930046364
+        ],
+        [
+          0.02999999999999936,
+          29.905046364
+        ],
+        [
+          0.054999999999999716,
+          29.905046364
+        ]
+      ],
+      "frontX": 0.19500543898530304,
+      "rearX": 4.704994144713739,
+      "bandSeparation": 0.06,
+      "structuralThickness": null,
+      "finialTop": 31.551770883003535,
+      "finialOffset": 2.19
+    },
+    pinnacle: { at: 2.19, y: 30.080961566, top: 31.551770883, h: 1.470809317,
+      status: 'NATIVE APEX OFFSET AND HEIGHT / CARVING AND HIDDEN PLAN PROXY' },
     // Parish priest, 25 Oct 2026: a stair inside the right tower (right on site and in the
     // drawings: the B-side tower, ENG-027), up to a floor at +8.39 m. Concept: a square stair round
     // the room walls, 0.9 m flights, corner landings, 44 risers. Headroom, riser/going limits,
@@ -123,6 +537,7 @@
     // ---- Superseded bundle parts ----
     let crossMaterial = mat.metal;
     const remove = [], upperFronts = [], upperOtherFaces = [], box3 = new T.Box3();
+    const oldBalcony = new Set(['Balcony corbel','Balcony cornice moulding','Balcony plinth','Balustrade rail','Baluster base','Baluster belly','Baluster neck','Balustrade corner pedestal','Pedestal cap']);
     const capNames = /^(Tower cap profile|Schematic cap rib|Cap pedestal|Continuous cap cross support|Cross — apex is source height|Cross transverse arm|Urn (foot|body|shoulder|finial)|Dome drum|Schematic rose-window infill|Schematic rosette (ring|ray))/;
     for (const tower of towers) {
       // The four stage-1 wall groups (front, sides, back); realism.js has already rebuilt the rear one.
@@ -154,6 +569,7 @@
       }
       tower.traverse(o => {
         if (!o.isMesh) return;
+        if (oldBalcony.has(o.name)) remove.push(o);
         if (o.name === 'Cross — apex is source height') crossMaterial = o.material;
         box3.setFromObject(o);
         if (o.name === 'Tower continuous cornice' && box3.max.y < 8.6) remove.push(o);
@@ -514,6 +930,67 @@
         }
       }
 
+      // ---- Pierced parapet: 17 native twelve-edge openings per face, not vase balusters ----
+      {
+        const B = spec.balcony, label = `Tower ${s > 0 ? 'H' : 'B'} parapet · `;
+        const status = 'E01B/E02 PROFILE TRANSCRIPTION / DERIVED 3D CLOSURE; GUARD STRUCTURE NOT DESIGNED';
+        const depth = B.bandSeparation, halfPlane = 2.45-B.frontX;
+        const profileShape = (points,origin) => {
+          const sh=new T.Shape();points.forEach(([u,y],i)=>i?sh.lineTo(u-origin,y):sh.moveTo(u-origin,y));sh.closePath();return sh;
+        };
+        const bounds2 = points => [Math.min(...points.map(p=>p[0])),Math.max(...points.map(p=>p[0]))];
+        const xPosts=B.side.posts.map(bounds2), zPosts=B.front.posts.map(p=>bounds2(p).map(v=>s*v).sort((a,b)=>a-b));
+        for(const xs of xPosts)for(const zs of zPosts){
+          const ys=[B.front.field[0][1],B.front.field[2][1]];
+          add(label+'corner posts',W,new T.BoxGeometry(xs[1]-xs[0],ys[1]-ys[0],zs[1]-zs[0]),TR((xs[0]+xs[1])/2,(ys[0]+ys[1])/2,(zs[0]+zs[1])/2),status);
+        }
+        const frames = [
+          {name:'front',profile:B.front,origin:spec.centre,matrix:place(SC(s,1,1),RY(-Math.PI/2),TR(B.frontX,0,zc)),postMatrix:place(SC(s,1,1),RY(-Math.PI/2),TR(xPosts[0][0],0,zc))},
+          {name:'rear',profile:B.front,origin:spec.centre,matrix:place(SC(-s,1,1),RY(Math.PI/2),TR(B.rearX,0,zc)),postMatrix:place(SC(-s,1,1),RY(Math.PI/2),TR(xPosts[1][1],0,zc))},
+          {name:'outer',profile:B.side,origin:2.45,matrix:place(SC(s,1,1),RY(s>0?0:Math.PI),TR(2.45,0,zc+s*halfPlane)),postMatrix:place(SC(s,1,1),RY(s>0?0:Math.PI),TR(2.45,0,s>0?zPosts[1][1]:zPosts[1][0]))},
+          {name:'inner',profile:B.side,origin:2.45,matrix:place(SC(-s,1,1),RY(s>0?Math.PI:0),TR(2.45,0,zc-s*halfPlane)),postMatrix:place(SC(-s,1,1),RY(s>0?Math.PI:0),TR(2.45,0,s>0?zPosts[0][0]:zPosts[0][1]))},
+        ];
+        for(const F of frames){
+          const P=F.profile,sh=profileShape(P.field,F.origin);
+          for(const centre of P.holeCentres){
+            const hole=new T.Path();B.hole.forEach(([u,y],i)=>i?hole.lineTo(centre+u-F.origin,y):hole.moveTo(centre+u-F.origin,y));hole.closePath();sh.holes.push(hole);
+          }
+          const g=new T.ExtrudeGeometry(sh,{depth,bevelEnabled:false});
+          add(label+F.name+' pierced panel',W,g,F.matrix.clone().multiply(TR(0,0,-depth)),F.name==='front'||F.name==='outer'?status:status+' / REPEATED FACE DERIVED');
+          // The two rectangles are decoration on solid corner posts, never extra through holes.
+          for(const points of P.insets){
+            const outer=profileShape(points,F.origin),a=bounds2(points),y0=points[0][1],y1=points[2][1];
+            const hole=new T.Path();hole.moveTo(a[0]-F.origin+.01,y0+.01);hole.lineTo(a[1]-F.origin-.01,y0+.01);hole.lineTo(a[1]-F.origin-.01,y1-.01);hole.lineTo(a[0]-F.origin+.01,y1-.01);hole.closePath();outer.holes.push(hole);
+            add(label+F.name+' post inset outline',D,new T.ExtrudeGeometry(outer,{depth:.003,bevelEnabled:false}),F.postMatrix,'DRAWING SHOWN RECTANGLE / CONCEPT 10 MM RELIEF BORDER; SOLID POST');
+          }
+        }
+        // Loft a square profile from both native elevations. Internal closure is derived,
+        // not a member section: it joins the retained ledges, posts and display band planes.
+        const loft=(frontRows,sideRows,inner=null)=>{
+          const fr=[...frontRows].sort((a,b)=>a.y-b.y),sr=[...sideRows].sort((a,b)=>a.y-b.y),v=[];
+          const quad=(a,b,c,d)=>v.push(...a,...b,...c,...a,...c,...d);
+          const corners=(xs,zs,y)=>[[xs[0],y,zs[0]],[xs[1],y,zs[0]],[xs[1],y,zs[1]],[xs[0],y,zs[1]]];
+          const outer=fr.map((r,i)=>corners(sr[i].u,[s*r.u[0],s*r.u[1]].sort((a,b)=>a-b),r.y));
+          const inside=inner?fr.map(r=>corners(inner.x,inner.z,r.y)):null;
+          for(let j=0;j<outer.length-1;j++)for(let i=0;i<4;i++){
+            const n=(i+1)%4;quad(outer[j][n],outer[j][i],outer[j+1][i],outer[j+1][n]);
+            if(inside)quad(inside[j][i],inside[j][n],inside[j+1][n],inside[j+1][i]);
+          }
+          for(const j of [0,outer.length-1]){
+            if(inside)for(let i=0;i<4;i++){
+              const n=(i+1)%4,points=[outer[j][i],inside[j][i],inside[j][n],outer[j][n]];
+              quad(...(j===0?points.reverse():points));
+            }
+            else quad(...(j===0?outer[j]:[...outer[j]].reverse()));
+          }
+          const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.computeVertexNormals();return g;
+        };
+        add(label+'lower cornice profile',S,loft(B.front.cornice,B.side.cornice),null,status+' / LINEAR INTERPOLATION; CURVED CORBELS UNVERIFIED');
+        add(label+'top rail profile',S,loft(B.front.rail,B.side.rail,{x:[B.frontX+depth,B.rearX-depth],z:[zc-halfPlane+depth,zc+halfPlane-depth]}),null,status+' / INTERNAL CLOSURE DERIVED');
+        stats.balconyFaces=(stats.balconyFaces||0)+4;
+        stats.balconyPiercedHoles=(stats.balconyPiercedHoles||0)+4*B.front.holeCentres.length;
+      }
+
       // ---- Top: dome, lantern, crown, cross; pinnacles on the balustrade corners ----
       const DM = spec.dome, LN = spec.lantern, xc = 2.45;
       const profile = [], DA = DM.arc;
@@ -523,7 +1000,8 @@
         profile.push(new T.Vector2(DA.radius * Math.cos(a) - DA.offset, DA.y + DA.radius * Math.sin(a)));
       }
       profile.push(new T.Vector2(0.001, DM.top));
-      add('Tower dome · CAD profile', CAP, new T.LatheGeometry(profile, 48), TR(xc, 0, zc));
+      add('Tower dome · CAD profile', CAP, new T.LatheGeometry(profile, 48), TR(xc, 0, zc),
+        'NATIVE EXPOSED PROFILE / DERIVED HIDDEN DRUM TO PLATFORM; STRUCTURAL BEARING UNCONFIRMED');
       const rDome = y => y <= DM.wall ? DM.r : Math.sqrt(Math.max(0, DA.radius ** 2 - (y - DA.y) ** 2)) - DA.offset;
       for (let k = 0; k < 8; k++) {
         const a = k * Math.PI / 4 + Math.PI / 8;
@@ -580,12 +1058,16 @@
       cross.absarc(5 * h, lo, h, 0, Math.PI, true);
       cross.lineTo(h, lo); cross.lineTo(h, c0); cross.lineTo(-h, c0); cross.closePath();
       add('Tower cross', crossMaterial, new T.ExtrudeGeometry(cross, { depth: .1, bevelEnabled: false, curveSegments: 24 }), place(RY(-Math.PI / 2), TR(xc + .05, 0, zc)), 'TRACED CAD CROSS OUTLINE / SCHEMATIC DEPTH');
-      // Pinnacles with fleur-de-lis on the four corner pedestals of the balustrade.
-      const pin = K.pinnacle({ w: .3, h: spec.pinnacle.h * .8 }), fl = fleur(.32);
-      for (const ex of [-1, 1]) for (const ez of [-1, 1]) {
-        const px = xc + ex * spec.pinnacle.at, pz = zc + ez * spec.pinnacle.at;
-        add('Tower corner pinnacle', S, pin, TR(px, spec.pinnacle.y, pz), CARVED);
-        add('Tower corner pinnacle fleur-de-lis', S, fl, place(RY(Math.atan2(ex, ez)), TR(px, spec.pinnacle.y + spec.pinnacle.h * .8 + .02, pz)), CARVED);
+      // The existing carving stays a proxy; native base/apex and corner offsets replace old bounds.
+      const BP=spec.balcony,pin=K.pinnacle({w:.3,h:.84}),fl=fleur(.32);
+      pin.computeBoundingBox();fl.computeBoundingBox();
+      const py=-pin.boundingBox.min.y,fy=pin.boundingBox.max.y+py-fl.boundingBox.min.y;
+      const total=fy+fl.boundingBox.max.y,base=BP.front.rail[0].y,sy=(BP.finialTop-base)/total;
+      for(const ex of [-1,1])for(const ez of [-1,1]){
+        const px=BP.side.centre+ex*BP.finialOffset,pz=s*(BP.front.centre+ez*BP.finialOffset);
+        const norm=place(SC(1,sy,1),TR(px,base,pz));
+        add('Tower corner pinnacle',S,pin,norm.clone().multiply(TR(0,py,0)),CARVED+' / NATIVE BASE/APEX; CORNER PLAN POSITION DERIVED');
+        add('Tower corner pinnacle fleur-de-lis',S,fl,norm.clone().multiply(place(RY(Math.atan2(ex,s*ez)),TR(0,fy,0))),CARVED+' / NATIVE APEX; CARVING PROXY');
       }
     });
 
@@ -616,6 +1098,6 @@
     Object.assign(stats, { meshes, triangles: Math.round(triangles) });
     root.userData.stats = stats;
     window.CHURCH_TOWERS.stats = stats;
-    data?.assumptions?.push('Tower bases and tops follow the church’s CAD file of 23 October 2026 (E01B, plan sheet 5) at the owner’s direction of 25 October 2026. The 26 October native-entity audit corrects the six upper-front assemblies and the six outer-side assemblies to native arch/window/rose coordinates; twelve inner/rear assemblies repeat that coordinated profile as DERIVED pending elevation confirmation, the ground front arch radii, offset-circle dome shoulders to +32.790457, adjoining lantern levels and the trefoil cross outline to +36.919970. Existing coloured rose finish, wall X planes and all equipment positions are retained. The E02 outer ground face has its distinct +3.100470 blind arch and 1 m opening; rear/inner elevation identity, the ET stage-2 rose discrepancy, balcony, relief depth, hidden dome continuation, revolution, blade angles, glazing and construction sections remain unverified. The stage-1 wall plane stays at X 0; ISSUE-R06 unit confirmation stays open.');
+    data?.assumptions?.push('Tower bases and tops follow the church’s CAD file of 23 October 2026 (E01B, plan sheet 5) at the owner’s direction of 25 October 2026. The 26 October native-entity audit corrects the six upper-front assemblies and the six outer-side assemblies to native arch/window/rose coordinates; twelve inner/rear assemblies repeat that coordinated profile as DERIVED pending elevation confirmation, the ground front arch radii, offset-circle dome shoulders to +32.790457, adjoining lantern levels and the trefoil cross outline to +36.919970. The parapet now has 17 native stepped openings per face, source rail/cornice profile rows and finials to +31.551771; 60 mm plan-band separation is only a display-depth proxy with structural thickness null. Existing coloured rose finish, wall X planes and all equipment positions are retained. The E02 outer ground face has its distinct +3.100470 blind arch and 1 m opening; rear/inner elevation identity, the ET stage-2 rose discrepancy, parapet structural section and corner/depth interpretation, relief depth, hidden dome continuation, revolution, blade angles, glazing and construction sections remain unverified. The stage-1 wall plane stays at X 0; ISSUE-R06 unit confirmation stays open.');
   }
 })();

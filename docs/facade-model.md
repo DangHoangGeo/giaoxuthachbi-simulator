@@ -4,7 +4,7 @@
 
 ## Kiểm tra ngoại thất ngày 26/10/2026
 
-Lượt [đối chiếu phiên bản 23102026](exterior-23102026/README.md) sửa các mặt cửa tháp, đường chỏm/đèn lồng, vòng hoa hồng, phào/vòm đầu hồi và cửa sổ theo đối tượng CAD có handle. Phần kéo dài mặt tiền D01 đến |Z|7,500 m được bỏ, trở về |Z|7,128 m; trụ tháp hiện có phủ mối nối. Các phần dưới ghi lịch sử lượt dựng ngày 24–25/10; mốc chính xác và những phần còn giữ chờ của mô hình hiện hành nằm trong hồ sơ mới. Đơn vị ISSUE-R06, hướng gương ENG-027 và xung đột dải cửa/biển thoát hiểm ENG-039 và nhận dạng ET/hoa hồng mặt sau tháp ENG-040 vẫn mở. Cả 18 mặt bên/trong/sau tầng trên cũ đã được thay; mặt ngoài theo E02, mặt trong/sau lặp DERIVED chờ xác nhận.
+Lượt [đối chiếu phiên bản 23102026](exterior-23102026/README.md) sửa các mặt cửa tháp, đường chỏm/đèn lồng, vòng hoa hồng, phào/vòm đầu hồi và cửa sổ theo đối tượng CAD có handle. Phần kéo dài mặt tiền D01 đến |Z|7,500 m được bỏ, trở về |Z|7,128 m; trụ tháp hiện có phủ mối nối. Các phần dưới ghi lịch sử lượt dựng ngày 24–25/10; mốc chính xác và những phần còn giữ chờ của mô hình hiện hành nằm trong hồ sơ mới. Đơn vị ISSUE-R06, hướng gương ENG-027 và xung đột dải cửa/biển thoát hiểm ENG-039 và nhận dạng ET/hoa hồng mặt sau tháp ENG-040 vẫn mở. Cả 18 mặt bên/trong/sau tầng trên cũ đã được thay; mặt ngoài theo E02, mặt trong/sau lặp DERIVED chờ xác nhận. [Lan can tháp](exterior-23102026/tower-balcony.md) đã đổi sang 17 ô bậc/mặt; ENG-041 ghi chiều sâu/tiết diện và che chùm đèn chỏm.
 
 ## What changed
 

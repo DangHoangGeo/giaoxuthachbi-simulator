@@ -58,6 +58,6 @@ Các giá trị dưới đây làm tròn để đọc; tọa độ đầy đủ 
 
 Đã kiểm tra cú pháp JavaScript và nạp bộ dựng hình thực bằng môi trường headless của dự án. Bản ghi kiểm tra kết hợp, ảnh desktop ban ngày/buổi tối, các kiểm tra mô hình/mô phỏng và đối chiếu mesh theo handle được tác giả tích hợp giữ ở bản bàn giao chung của đợt này. Không đưa ảnh CAD gốc/ảnh chồng CAD vào Git vì H1; chúng chỉ được giữ trong thư mục xuất cục bộ. Chưa có xác nhận kết cấu, lắp đặt hoặc hồ sơ thi công của người thiết kế.
 
-## Phần ban công còn giữ chờ
+## Lan can đã hiệu chỉnh tiếp theo
 
-E01B LINE `C4406E`/`C441E0` có đoạn ngang khoảng |Z| = 7,538958–12,743959 m tại Y = 30,080962 m. Các thanh ban công cũ còn hẹp hơn; chưa suy được đầy đủ mặt phẳng/chiều sâu từ PT29 nên không kéo giãn cả cụm theo giả định vuông. Ban công chưa được tính là đã chép chính xác; mười hai mặt trong/sau mới vẫn là lặp DERIVED. Các phào ngang phía trước trên đầu tầng cũ được giữ lại khi thay các nhóm cửa: giữ nguyên matrix, cao độ và mép đỡ đèn chỏm +29,09 m; không dời đèn hoặc thêm gối mới.
+Sau phản hồi chủ đầu tư và commit `10d84e7`, [hồ sơ lan can](tower-balcony.md) thay toàn bộ con tiện dạng bình bằng 17 ô bậc/mặt, thân đặc ở hai đầu, hàng phào/thanh đỉnh theo E01B/E02 và đỉnh hoa +31,551771 m. Mô-típ hai mặt được xác nhận bằng 487 đối tượng; mặt trong/sau lặp DERIVED. Không còn giữ các thanh lan can cũ chỉ vì chưa giải được PT29; phần đã rõ được dựng, còn chiều sâu/tiết diện/cấu tạo/khép góc và che chùm đèn được giữ chờ riêng ENG-041. Phào đỡ đèn và thiết bị giữ nguyên. Ảnh trong lượt đầu là lịch sử trước hiệu chỉnh lan can; bản kiểm mới được liên kết trong hồ sơ đó.

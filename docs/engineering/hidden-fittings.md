@@ -146,3 +146,8 @@ Unmet design targets are the ones `dev` already misses (feedback margins below 3
 ## 7. Open items
 
 Questions **Q50–Q52** in the [question register](questions-for-parish-and-designers.json) and ENG-034 in [issues](issues.md): fixing brackets into the lacquered beams without notching, lacquer and plaster colour samples, glare from the cowls; fixing, weathering, drainage and lightning bonding of the ledge fittings, asymmetric wall-wash optics, balustrade shading of the dome and safe access at +8.4 to +29.1 m; real pier width, speaker tilt bracket stand-off, masonry fixing and an on-site speech and feedback test. A night mock-up of one tower face and one nave bay should precede any purchase.
+
+
+## Đối chiếu lan can CAD ngày 26/10/2026
+
+[ENG-041](issues.md#lan-can-tháp-và-che-chùm-đèn-chỏm--eng-041): lan can tháp đã đổi sang 17 ô bậc mỗi mặt. Gối/đèn L164/L175 giữ nguyên, tia tim qua ô, nhưng 30/49 hướng mẫu của nón 36° bị hình học lan can chặn; đây không phải tỷ lệ quang thông. Bảng lux cũ chưa có che khuất này. Cần phối hợp quang học thực, chi tiết và thử ban đêm trước khi xác nhận mức sáng của chỏm; không tăng số tính hoặc dịch thiết bị trong lượt dựng này.

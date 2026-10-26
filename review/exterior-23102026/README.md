@@ -1,5 +1,7 @@
 # Bản ghi đối chiếu ngoại thất — phiên bản 23102026
 
+**Bản ghi lượt đầu, commit `10d84e7`, trước hiệu chỉnh lan can.** Xem [lượt lan can tiếp theo](balcony/README.md) cho mô hình mới hơn; các ảnh/kết quả bên dưới giữ làm lịch sử có phiên bản.
+
 Ngày 26/10/2026. Phạm vi và các mốc theo nguồn nằm ở [hồ sơ ngoại thất](../../docs/exterior-23102026/README.md). DWG gốc giữ nguyên, SHA-256 `2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae`. Đây là kiểm tra chép hình học và phần mềm, không phải xác nhận khảo sát, kết cấu hoặc thi công.
 
 ## Hình học và dữ liệu
