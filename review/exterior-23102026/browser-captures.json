@@ -1,0 +1,200 @@
+[
+  {
+    "file": "after-tower-B-front-day.png",
+    "state": "Sau · Tháp B: trước/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-tower-H-front-day.png",
+    "state": "Sau · Tháp H: trước/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-tower-B-rear-day.png",
+    "state": "Sau · Tháp B: sau/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-tower-H-rear-day.png",
+    "state": "Sau · Tháp H: sau/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-side-B-day.png",
+    "state": "Sau · Bên B · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-side-H-day.png",
+    "state": "Sau · Bên H · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-rear-perspective-day.png",
+    "state": "Sau · Đầu cung thánh · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-front-day.png",
+    "state": "Sau · Mặt tiền · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-tower-B-front-evening.png",
+    "state": "Sau · Tháp B: trước/bên · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-tower-B-rear-evening.png",
+    "state": "Sau · Tháp B: sau/bên · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-tower-H-front-evening.png",
+    "state": "Sau · Tháp H: trước/bên · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-rear-perspective-evening.png",
+    "state": "Sau · Đầu cung thánh · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-side-B-evening.png",
+    "state": "Sau · Bên B · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "after-side-H-evening.png",
+    "state": "Sau · Bên H · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "before-tower-B-front-day.png",
+    "state": "Trước · Tháp B: trước/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "before-tower-H-front-day.png",
+    "state": "Trước · Tháp H: trước/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "before-tower-B-rear-day.png",
+    "state": "Trước · Tháp B: sau/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "before-tower-H-rear-day.png",
+    "state": "Trước · Tháp H: sau/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "before-side-B-day.png",
+    "state": "Trước · Bên B · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "before-side-H-day.png",
+    "state": "Trước · Bên H · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "before-rear-perspective-day.png",
+    "state": "Trước · Đầu cung thánh · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  },
+  {
+    "file": "before-front-day.png",
+    "state": "Trước · Mặt tiền · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 1362,
+      "width": 1971
+    }
+  }
+]

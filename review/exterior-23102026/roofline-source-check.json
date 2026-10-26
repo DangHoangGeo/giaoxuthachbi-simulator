@@ -1,0 +1,15 @@
+{
+  "verified_source_entities": 85,
+  "largest_native_coordinate_difference_cad_unit": 0,
+  "native_extrema_m": {
+    "rear_cross_top": 17.82918752984039,
+    "wing_cross_top": 15.1868945789485,
+    "rear_DE_pinnacle_top": 14.89539766472188,
+    "rear_CG_pinnacle_top": 11.525039803132183,
+    "rear_corner_pinnacle_top": 10.240526943414181,
+    "wing_outer_pinnacle_top": 10.693644281890244,
+    "wing_inner_pinnacle_top": 12.893104713806359,
+    "porch_pinnacle_top": 8.02632657662622
+  },
+  "limits": "Coordinate transcription check; inferred mm/m, schematic depth and construction holds remain."
+}

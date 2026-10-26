@@ -1,6 +1,10 @@
 # Central facade between the towers
 
-**Revision 24 October 2026 (`2026-10-24-cad-facade-1`).** Above the ground-storey cornice, the central facade between the twin towers now follows the church's CAD file of 23 October 2026. The owner directed on 24 October 2026 that this branch follows that file. The church has not yet confirmed which drawing set governs, so ISSUE-R01 and ISSUE-R02 stay open in the [dimension register](layout_design/Thach_Bi_Church_Dimensions.xlsx). **Not for construction.**
+**Revision 24 October 2026 (`2026-10-24-cad-facade-1`).** Above the ground-storey cornice, the central facade between the twin towers now follows the church's CAD file of 23 October 2026. The owner directed on 24 October 2026 that this branch follows that file. The owner confirmed this DWG as the project design basis on 26 October 2026; designer-issued construction coordination remains held in ISSUE-R01 and ISSUE-R02 in the [dimension register](layout_design/Thach_Bi_Church_Dimensions.xlsx). **Not for construction.**
+
+## Kiểm tra ngoại thất ngày 26/10/2026
+
+Lượt [đối chiếu phiên bản 23102026](exterior-23102026/README.md) sửa các mặt cửa tháp, đường chỏm/đèn lồng, vòng hoa hồng, phào/vòm đầu hồi và cửa sổ theo đối tượng CAD có handle. Phần kéo dài mặt tiền D01 đến |Z|7,500 m được bỏ, trở về |Z|7,128 m; trụ tháp hiện có phủ mối nối. Các phần dưới ghi lịch sử lượt dựng ngày 24–25/10; mốc chính xác và những phần còn giữ chờ của mô hình hiện hành nằm trong hồ sơ mới. Đơn vị ISSUE-R06, hướng gương ENG-027 và xung đột dải cửa/biển thoát hiểm ENG-039 và nhận dạng ET/hoa hồng mặt sau tháp ENG-040 vẫn mở. Cả 18 mặt bên/trong/sau tầng trên cũ đã được thay; mặt ngoài theo E02, mặt trong/sau lặp DERIVED chờ xác nhận.
 
 ## What changed
 
@@ -29,7 +33,7 @@ The overlay of the DWG linework on a straight-on render of the model matches wit
 | --- | --- |
 | Levels, arch centres and radii, widths, faces in plan | `DRAWING SHOWN`, traced (facade.csv F01–F32) |
 | Moulding profiles, relief depths, capitals, cresting, carved crests, fleurs-de-lis | Illustrative shapes following the drawn outlines (`TRACED CAD ELEVATION / ILLUSTRATIVE CARVING`) |
-| Side bays continued from ±7.128 to ±7.5 m to meet the model's towers | Model adjustment (D01). The drawing's tower pilasters stand at ±7.13; the model's towers are narrower. |
+| Side bays end at ±7.128 m (corrected 26 October 2026) | Former D01 extension to ±7.5 removed; the rebuilt tower inner rear pier begins at ±7.103, giving 25 mm model overlap. |
 | Room behind the triple window (X 3.67–4.72) | Shown in plan; the model draws a dark closed backing behind the louvres, not the room |
 | Statues in the three niches | The drawing shows empty niches with pedestals. The owner's statues (9 October 2026) stand on the drawn pedestals (D03). |
 | Structure, materials, fixings, drainage of the terraces at +9.741 and +15.840, access for maintenance | Not designed: `ENGINEERING HOLD` |
@@ -71,7 +75,7 @@ The festival strands on the porch eaves move to the cornice lip in front of the 
 
 ## Open questions
 
-- **ISSUE-R01 / ISSUE-R02** (church and designer): which set governs, and whether this central facade is the one to be built.
+- **ISSUE-R01 / ISSUE-R02** (designer): the owner selected the DWG project basis on 26 October 2026; a coordinated construction issue is still required.
 - **Front-gable exhaust fans, ENG-036** (mechanical engineer): the four V1 exhaust fans (F252–F255, +9.1 to +9.7 m) discharge through the nave gable on axis 2′. The CAD upper storey now stands 0.1–0.2 m in front of that gable, so the fans blow into a narrow slot. The calculation does not model this obstruction. The designer must route the discharge, for example into the room behind the triple window and out through its louvres, or move the fans. See [engineering issues](engineering/issues.md).
 - **Statue size in the central niche:** the Assumption (1.42 m across the raised hands) just fits the 1.422 m niche. A real figure must be sized to the niche, or the niche to the figure (sculptor, architect).
 - **Simulator occlusion:** the analysis geometry has no facade or tower walls, so exterior façade lights reach the front seats in the calculation (on average 0.6 lux, at most 3.8 lux). This limitation existed before this change (ENG-008).

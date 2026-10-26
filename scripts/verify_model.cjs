@@ -100,7 +100,8 @@ assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
   assert.equal(st.piers,32,'four corner piers on each of four stages, both towers');assert.equal(st.blindArches,2);assert.equal(st.stairRisers,44,'stair to +8.39 in the B tower');
   assert(!nodes.some(o=>/^(Tower cap profile|Cap pedestal|Urn body|Tower stage 1 wall)/.test(o.name)),'old caps, urns and open stage-1 walls removed');
   const top=Math.max(...nodes.filter(o=>/^Tower cross/.test(o.name)).map(o=>bounds(o).max.y));assert(Math.abs(top-36.92)<.01,'Tower cross top +36.92 (E01B): '+top);
-  const dome=bounds(nodes.find(o=>o.name==='Tower dome · CAD profile'));assert(Math.abs(dome.max.y-32.75)<.01,'Dome top +32.75');
+  // E01B offset-centre shoulder arcs C4568C/C45696 meet the lantern at this level.
+  const dome=bounds(nodes.find(o=>o.name==='Tower dome · CAD profile'));near(dome.max.y,32.790456676,'Native dome/lantern contact +32.790457');
   const front=nodes.find(o=>o.name.startsWith('Tower base wall · closed front'));assert(front&&!front.geometry.attributes.position.array.some((v,i)=>i%3===1&&v>8.40),'closed front up to +8.39');
   const cornice=nodes.filter(o=>o.name==='Tower base cornice').map(bounds);near(Math.max(...cornice.map(b=>b.max.y)),8.39,'tower cornice top at +8.39');
   for(const sign of [-1,1])for(const x of [-.5,1,2.45,4]) assert.equal(realism.walkAllowed(x,sign*10.15),false,'no passage through the tower base');
@@ -117,7 +118,7 @@ assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
   assert(R.balusters>250&&R.pinnacles>=40,'porch parapets with balusters and pinnacles');
   const crossTop=n=>Math.max(...nodes.filter(o=>/^Gable cross/.test(o.name)).map(o=>bounds(o).max.y));assert(Math.abs(crossTop()-17.829)<.01,'rear gable cross top +17.829 (E03)');
   assert(!nodes.some(o=>o.name==='Schematic side ornamental gable'||o.name==='Schematic decorative eave crest'),'old side gables and eave crest removed');
-  const rail=bounds(nodes.find(o=>o.name==='Porch parapet top rail'));near(rail.max.y,7.05,'parapet top +7.05 (E02)');
+  const rail=bounds(nodes.find(o=>o.name==='Porch parapet top rail'));near(rail.max.y,7.073919332,'Native parapet top (E02 LINE D99C62)');
 }
 // Stations of the Cross, parish priest 25 Oct 2026 (stations.js): fourteen, one per nave bay
 // between the columns, above the openings, on the nave face of the C/G wall; old placeholders gone.

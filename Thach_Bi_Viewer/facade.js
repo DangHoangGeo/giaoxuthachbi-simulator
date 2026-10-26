@@ -15,23 +15,26 @@
   // World axes: X from axis 1 toward the sanctuary (the street side is smaller X), Y up from the
   // nave floor, Z from the D/E midpoint, positive toward H. The facade is symmetric about Z 0.
   const spec = {
-    revision: '2026-10-24-cad-facade-1',
+    revision: '2026-10-26-cad-facade-2',
     cut: 8.45, // bundle meshes wholly above this level are superseded
     cornice: { dentil: [8.42, 8.52], fillet: [8.52, 8.605], corona: [8.605, 8.773], frieze: [8.773, 9.073], band: [9.073, 9.115] },
-    // The drawing stops the side bays at ±7.128 against the tower pilasters; the model's towers
-    // stand back at about ±7.5, so the side-bay wall, plinth and entablature run on to meet them.
-    plinth: { body: [9.115, 9.424], cap: [9.424, 9.626], top: [9.626, 9.741], half: 7.5 },
+    // E01B stops at ±7.128. The rebuilt tower inner piers start at ±7.103 here,
+    // so the former extension to ±7.5 is unnecessary (25 mm overlap remains).
+    plinth: { body: [9.115, 9.424], cap: [9.424, 9.626], top: [9.626, 9.741], half: 7.128 },
     storey: [9.741, 15.333], entablature: [15.333, 15.84],
     // Piers on the D/E side of the central bay: 621 mm each side of the 5,958.8 mm chain (E01B).
     pier: { z: 2.979, half: 0.435, front: 2.30, back: 5.466 },
     central: {
       half: 2.544, face: 2.936, tympanum: [3.226, 3.556], room: [3.666, 4.716], back: 5.046,
       arch: { y: 12.677, r: [1.96, 2.07, 2.27] },
-      lights: { z: [-1.19, 0, 1.19], half: 0.415, sill: 9.984, spring: 12.241, rings: [0.43, 0.54, 0.65] },
-      rose: { y: 13.70, r: 0.52 },
+      lights: { z: [-1.19, 0, 1.19], half: 0.415, sill: 9.983731258, spring: 12.240985225,
+        rings: [0.43, 0.54, 0.65], inner: 0.374997839, mullion: 0.08, stile: 0.04,
+        // C49A51–C49A85: eight rectangular fields, 77.782 mm rails; top rail 80 mm.
+        rail: 0.077781746, pitch: 0.277781746, rows: 8, topRail: 12.160985225 },
+      rose: { y: 13.709352439, r: 0.54, rings: [[0.45, 0.54], [0.394742245, 0.418742245]] },
     },
     side: {
-      z: 5.35, inner: 3.614, outer: 7.5, face: 4.017, back: 4.936,
+      z: 5.35, inner: 3.614, outer: 7.128, face: 4.017, back: 4.936,
       arch: { y: 12.96, r: [1.626, 1.736, 1.936] },
       niche: { half: 0.599, spring: 12.308, x: 4.117, rings: [0.709, 0.986] },
       pedestal: [9.741, 10.391],
@@ -112,6 +115,11 @@
       s.moveTo(zc + r1, y0); s.lineTo(zc + r1, yc); s.absarc(zc, yc, r1, 0, Math.PI, false); s.lineTo(zc - r1, y0);
       s.lineTo(zc - r0, y0); s.lineTo(zc - r0, yc); s.absarc(zc, yc, r0, Math.PI, 0, true); s.lineTo(zc + r0, y0);
       return s;
+    };
+    const annulus = (zc, yc, r0, r1) => {
+      const s = new T.Shape(); s.absarc(zc, yc, r1, 0, Math.PI * 2, false);
+      const hole = new T.Path(); hole.absarc(zc, yc, r0, 0, Math.PI * 2, true);
+      s.holes.push(hole); return s;
     };
     const both = fn => { for (const s of [-1, 1]) fn(s); };
     const W = mat.wall, S = mat.trim, D = mat.darkTrim;
@@ -264,13 +272,21 @@
         slab('Triple window arch moulding', S, band(z, LT.spring, LT.rings[1], LT.rings[2]), [3.12, CB.tympanum[0]]);
         slab('Triple window arch moulding', S, band(z, LT.spring, LT.rings[0], LT.rings[1]), [3.17, CB.tympanum[0]]);
         block('Triple window sill', S, [3.12, CB.tympanum[1]], [LT.sill - .05, LT.sill], [z - LT.half - .05, z + LT.half + .05]);
-        // Louvred timber leaves in the opening, as the tower belfry windows; the room behind is dark.
+        // E01B shows eight rectangular fields and an 80 mm centre stile, rather than
+        // the former uniformly spaced slats. Timber finish and unseen depth stay illustrative.
         const leaf = new T.Shape(); outline(leaf, z, LT.half, LT.sill, LT.spring);
         slab('Triple window louvre backing', D, leaf, [3.70, 3.72]);
-        block('Triple window louvre frame', mat.wood, [3.56, 3.64], [LT.sill, LT.spring + .02], [z - .03, z + .03]);
-        for (const e of [-1, 1]) block('Triple window louvre frame', mat.wood, [3.56, 3.64], [LT.sill, LT.spring], [z + e * LT.half - .04, z + e * LT.half + .04].sort((a, b) => a - b));
-        for (let y = LT.sill + .12; y < LT.spring; y += .16)
-          add('Triple window louvre slat', mat.wood, new T.BoxGeometry(.09, .018, LT.half * 2 - .04), place(RZ(-.7), TR(3.60, y, z)));
+        block('Triple window centre stile · CAD', mat.wood, [3.556, 3.64], [LT.sill, LT.spring + LT.inner], [z - LT.mullion / 2, z + LT.mullion / 2]);
+        for (const e of [-1, 1]) {
+          const edge = z + e * LT.half;
+          block('Triple window side stile · CAD', mat.wood, [3.556, 3.64], [LT.sill, LT.spring], [edge, edge - e * LT.stile].sort((a, b) => a - b));
+        }
+        for (let i = 0; i < LT.rows; i++) {
+          const y = LT.sill + i * LT.pitch;
+          block('Triple window horizontal rail · CAD', mat.wood, [3.556, 3.64], [y, y + LT.rail], [z - LT.half, z + LT.half]);
+        }
+        block('Triple window spring rail · CAD', mat.wood, [3.556, 3.64], [LT.topRail, LT.spring], [z - LT.half, z + LT.half]);
+        slab('Triple window arched timber frame · CAD', mat.wood, band(z, LT.spring, LT.inner, LT.rings[0]), [3.556, 3.64]);
       }
       // Engaged colonnettes between and beside the lights.
       for (const [z, r] of [[-1.73, .1], [-.595, .11], [.595, .11], [1.73, .1]]) column('Triple window colonnette', CB.tympanum[0], z, r, [Y0, LT.spring], .46);
@@ -278,9 +294,10 @@
       block('Central bay back wall', W, [CB.room[1], CB.back], [Y0, Y1], [-CB.half, CB.half]);
       // Rose in the tympanum.
       const R = CB.rose;
-      add('Central rose moulding', S, new T.TorusGeometry(R.r, .035, 8, 40), place(RY(Math.PI / 2), TR(CB.tympanum[0] - .03, R.y, 0)));
-      add('Central rose moulding', S, new T.TorusGeometry(R.r - .07, .025, 8, 40), place(RY(Math.PI / 2), TR(CB.tympanum[0] - .02, R.y, 0)));
-      add('Central rose rosette', S, new T.CylinderGeometry(R.r - .09, R.r - .09, .03, 32), place(RZ(Math.PI / 2), TR(CB.tympanum[0] - .015, R.y, 0)));
+      // C49973–C49976 define four circles. Their projected radii replace the
+      // oversized torus envelopes; extrusion/relief depth is still schematic.
+      for (const [r0, r1] of R.rings) slab('Central rose moulding', S, annulus(0, R.y, r0, r1), [CB.tympanum[0] - .055, CB.tympanum[0] - .015]);
+      add('Central rose rosette', S, new T.CylinderGeometry(R.rings[1][0], R.rings[1][0], .03, 48), place(RZ(Math.PI / 2), TR(CB.tympanum[0] - .015, R.y, 0)));
       add('Central rose carved rosette', S, K.bloom({ r: .3, petals: 12, rings: 2, seg: 4 }), facing(CB.tympanum[0] - .03, R.y, 0), CARVED);
     }
     // Dentils under the upper entablature across the three bays.

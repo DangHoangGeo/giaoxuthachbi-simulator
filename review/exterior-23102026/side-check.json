@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "drawing": "D47",
+  "arcs": [
+    "DA5B35",
+    "DA5B34",
+    "DA5B43",
+    "DA5B44"
+  ],
+  "clearColumnSpanM": 6.606,
+  "springM": 5.474154929,
+  "shoulderM": 7.147419557,
+  "crownM": 8.503190063,
+  "maximumChordSagittaMm": 0.16653020316305361,
+  "nativeWindowBays": 14,
+  "nativeWindowFanlights": 28,
+  "source": "2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae",
+  "limits": "Geometric transcription and display bounds only. Unit/datum confirmation, outer band, extrusion and structural design remain held."
+}

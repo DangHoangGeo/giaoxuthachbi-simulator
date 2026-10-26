@@ -1,41 +1,57 @@
-/* Roofline ornament after the church's CAD file, metres.
-   Parish priest's meeting of 25 October 2026, point 4 (the roof and its heights follow the new
-   drawings); owner, the same day: follow the side elevation. Sources, traced in model axes:
-   - DWG side elevation E02: over the porch cornice a balustrade +6.35 to +7.05 with a pedestal and
-     a fleur-de-lis pinnacle to +8.0 on every axis; the 9–10 side gables with outer piers
-     (pinnacles to +10.75), inner piers (pinnacles to +12.9), stepped raking cornices, a rose at
-     +7.55 and a crowning niche aedicule with volutes, ball and cross to +15.2.
-   - DWG gabled-end elevation E03 (axis 12): corner piers (pinnacles to +10.2), C/G piers (+11.5),
-     D/E piers (+14.65), crested parapets over the porch ends, a lower and an upper raking
-     cornice with leaf crests, a band between the D/E piers at +7.6 to +8.55, a rose at +10.0 and a
-     crowning aedicule with its cross at +17.829.
-   The roof planes, ridge (+12.472) and eaves already follow sections 24/25 and are kept.
-   Depths, moulding profiles and carving are illustrative; nothing here implies a structure. */
+/* Exterior roofline, metres, audited against DWG version 23102026 on 26 October 2026.
+   Source handles and coordinate transforms: docs/exterior-23102026/roofline-witnesses.json.
+   E02 porch parapets; EW outside side-wing gables; E03 sanctuary-end gable. Circular niche
+   arches, rose ring boundaries, trefoil cross outlines and mitred cornice boundaries use CAD
+   geometry. Relief depth, capitals, tracery, scrollwork and pinnacles' carving remain proxies.
+   Existing roof planes remain at the adopted ridge +12.472 while E02/S24/S25 also draw
+   +12.3964 (ISSUE-R05). INSUNITS=1 versus inferred mm/m remains ISSUE-R06; no rescaling or
+   construction confirmation is implied. */
 (() => {
   const SOURCE = 'CAD file 23 Oct 2026 · side elevation E02, gabled-end elevation E03; owner 25 Oct 2026';
   const DRAWN = 'TRACED CAD ELEVATION / SCHEMATIC DEPTH';
   const CARVED = 'TRACED CAD ELEVATION / ILLUSTRATIVE CARVING';
+  // Circular arc centres/radii come directly from the DWG handles recorded in
+  // docs/exterior-23102026/roofline-witnesses.json, not from fitting a screenshot.
+  const archProfiles = {"rear":{"inner":[{"c":[0.284145374,14.61770302],"r":0.23585353,"a":[0.0,87.86369654799267],"handle":"D9016B"},{"c":[-1.096e-06,14.852882856],"r":0.2929388,"a":[0.09970567773280142,179.9002943189322],"handle":"D90172"},{"c":[-0.284147566,14.61770302],"r":0.23585353,"a":[92.13630345200733,180.0],"handle":"D90178"}],"outer":[{"c":[0.284145374,14.61770302],"r":0.31585353,"a":[0.0,74.91446718982118],"handle":"D9016A"},{"c":[-1.096e-06,14.852882856],"r":0.3729388,"a":[10.78547138934081,169.2145286106592],"handle":"D90171"},{"c":[-0.284147566,14.61770302],"r":0.31585353,"a":[105.0855328101788,180.0],"handle":"D90170"}],"envelope":{"c":[-1.096e-06,14.852882856],"r":0.7089388,"a":[26.26471907744193,153.7352809225581],"handle":"D90176"}},"side":{"inner":[{"c":[0.284159941,11.975410069],"r":0.23585353,"a":[0.0,87.8636965446606],"handle":"DAB425"},{"c":[1.3471e-05,12.210589905],"r":0.2929388,"a":[0.09970568106790674,179.9002943222671],"handle":"DAB41F"},{"c":[-0.284132999,11.975410069],"r":0.23585353,"a":[92.13630345533939,180.0],"handle":"DAB418"}],"outer":[{"c":[0.284159941,11.975410069],"r":0.31585353,"a":[0.0,74.91446718985961],"handle":"DAB41D"},{"c":[1.3471e-05,12.210589905],"r":0.3729388,"a":[10.78547138816362,169.2145286118364],"handle":"DAB41E"},{"c":[-0.284132999,11.975410069],"r":0.31585353,"a":[105.0855328101404,180.0],"handle":"DAB417"}],"envelope":{"c":[1.3471e-05,12.210589905],"r":0.7089388,"a":[26.26471907895724,153.7352809210427],"handle":"DAB423"}}};
   const spec = {
-    revision: '2026-10-25-cad-roofline-1',
-    parapet: { z: 10.6, y: [6.35, 7.05], half: 0.12, pedestal: 0.25, pinnacle: 0.95, runs: [['2′', '9'], ['10', '12']] },
+    revision: '2026-10-26-cad-roofline-23102026',
+    // E02 LINE D99258 / D99C5F..D99C62; axis pinnacle ARC D9B1A6.
+    parapet: { z: 10.6, y: [6.323919332, 7.073919332], plinth: .05, rail: .15,
+      half: 0.12, pedestal: 0.25, pinnacle: .952407245, runs: [['2′', '9'], ['10', '12']] },
     side: {
       x: 40.575, face: 13.56, wall: [13.18, 13.56],
-      outline: [[-3.57, 6.2], [3.57, 6.2], [3.57, 7.35], [2.73, 8.6], [2.08, 8.95], [1.3, 9.75], [-1.3, 9.75], [-2.08, 8.95], [-2.73, 8.6], [-3.57, 7.35]],
-      outer: { u: [3.57, 4.37], shaft: [6.3, 7.9], capital: [7.9, 8.15], pedestal: [8.15, 8.6], top: 10.75 },
-      inner: { u: [2.08, 2.73], shaft: [6.3, 9.3], capital: [9.3, 9.55], pedestal: [9.55, 11.1], top: 12.9 },
-      rakes: [[[3.57, 7.15], [2.73, 8.5]], [[2.08, 8.85], [1.3, 9.62]]], band: [9.3, 9.75],
-      rose: [0, 7.55, 0.8],
-      aedicule: { base: 9.75, niche: 0.62, pier: [0.62, 1.1], spring: 11.9, crown: 12.6, pierTop: 12.1, pinnacle: 13.4, volute: [1.1, 1.9, 11.75], ball: 13.4, cross: [13.65, 15.2], arm: 14.6 },
+      // EW outside view: wall ends under the actual bottom cornice edges.
+      outline: [[-3.59, 6.2], [3.59, 6.2], [3.59, 7.469364], [2.725, 8.117760], [2.055, 8.619986], [1.228493, 9.239529], [-1.228493, 9.239529], [-2.055, 8.619986], [-2.725, 8.117760], [-3.59, 7.469364]],
+      outer: { u: [3.59, 4.26], base: [6.323919, 6.329040], shaft: [6.329040, 7.862396], capital: [7.862396, 8.207396], pedestal: [8.207396, 8.519100], top: 10.693644282 },
+      inner: { u: [2.055, 2.725], base: [6.323919, 6.863919], shaft: [6.863919, 9.138182], capital: [9.138182, 9.483182], pedestal: [9.483182, 11.190700], top: 12.893104714 },
+      // Four actual mitred corners per rake, outer bottom -> inner bottom -> inner top -> outer top.
+      rakes: [[[3.59, 7.469364], [2.725, 8.117760]], [[2.055, 8.619986], [1.228493, 9.239529]]],
+      rakePolygons: [[[3.59,7.469364],[2.725,8.117760],[2.734248,8.848184],[3.54,8.244199]], [[2.055,8.619986],[1.228493,9.239529],[1.425073352,9.829528705],[1.986087952,9.408997303]]],
+      band: [9.239528705, 9.829528705], bandHalf: 1.425073352,
+      rose: [0, 7.571528705, .81], roseRings: [.81, .675, .628113367, .592113367],
+      aedicule: { base: 9.829528705, niche: .519986529, pier: [.732, 1.052], pierBase: 9.992729,
+        spring: 11.975410069, crown: 12.503528705, pierTop: 11.851679, pinnacle: 13.500277835,
+        volute: [1.1, 1.9, 11.957707], ball: 13.597816386, ballRadius: .240521246013,
+        cross: [13.838337632, 15.186894579], crossRadius: .071735279616, crossCentre: .00009139012,
+        arm: 14.684747622, arch: archProfiles.side },
     },
     rear: {
+      // Existing projection retained: P14 wall face is X53.18097; this X53.24 plane and
+      // relief depth remain a documented coordination departure, not a CAD depth claim.
       face: 53.24,
-      corner: { u: [10.2, 10.95], shaft: [6.3, 7.5], capital: [7.5, 7.8], pedestal: [7.8, 8.6], top: 10.2 },
-      cg: { u: [7.05, 7.7], shaft: [6.3, 9.1], capital: [9.1, 9.35], pedestal: [9.35, 9.85], top: 11.5 },
-      de: { u: [3.25, 3.95], shaft: [6.3, 11.7], capital: [11.7, 12.0], pedestal: [12.0, 13.2], top: 14.65 },
-      crest: { u: [7.7, 10.2], band: [6.8, 7.05], top: 7.6 },
-      rakes: [[[7.0, 7.4], [3.95, 10.1]], [[3.2, 10.4], [1.25, 12.45]]], band: [12.0, 12.5], mid: [7.6, 8.55],
-      rose: [0, 10.0, 0.8],
-      aedicule: { base: 12.5, niche: 0.62, pier: [0.62, 1.1], spring: 14.4, crown: 15.15, pierTop: 14.6, pinnacle: 16.0, volute: [1.1, 1.9, 14.6], ball: 16.05, cross: [16.35, 17.829], arm: 17.25 },
+      corner: { u: [10.239012, 10.909012], shaft: [6.323919, 7.409277], capital: [7.409277, 7.754277], pedestal: [7.754277, 8.065981], top: 10.240526943 },
+      cg: { u: [7.080012, 7.640012], base: [6.323919, 6.369744], shaft: [6.369744, 8.875933], capital: [8.875933, 9.300933], pedestal: [9.300933, 9.822633], top: 11.525039803 },
+      de: { u: [3.265012, 3.935012], shaft: [9.115368, 11.485477], capital: [11.485477, 11.875477], pedestal: [11.875477, 13.192991], top: 14.895397665, base: [8.575368, 9.115368] },
+      crest: { u: [7.640012, 10.239845], band: [6.875776, 7.055776], top: 7.6 },
+      rakes: [[[7.080012, 7.495586], [3.935012, 9.853050]], [[3.265012, 10.355266], [1.228505, 11.881822]]],
+      rakePolygons: [[[7.080012,7.495586],[3.935012,9.853050],[3.935012,10.590403],[7.080012,8.232939]], [[3.265012,10.355266],[1.228505,11.881822],[1.425085727,12.471821656],[3.265012,11.092633]]],
+      band: [11.881821656, 12.471821656], bandHalf: 1.425085727, mid: [7.873663, 8.575368],
+      rose: [0, 9.988500640, .81], roseRings: [.81, .675, .628113367, .592113367],
+      aedicule: { base: 12.471821656, niche: .519986529, pier: [.732012, 1.052012], pierBase: 12.635022,
+        spring: 14.617703020, crown: 15.145821656, pierTop: 14.493972, pinnacle: 16.142570786,
+        volute: [1.1, 1.9, 14.600000], ball: 16.240109336, ballRadius: .240521246013,
+        cross: [16.480630582, 17.829187530], crossRadius: .071735279616, crossCentre: -.000079015232,
+        arm: 17.327040573, arch: archProfiles.rear },
     },
   };
   window.CHURCH_ROOFLINE = { spec, prepare };
@@ -78,6 +94,16 @@
     };
     const W = mat.wall, S = mat.trim, D = mat.darkTrim;
     const stats = { pinnacles: 0, crosses: 0, balusters: 0, removedBundleMeshes: remove.length + sideGroups.length };
+    // Shared carving generators have a nominal height; fit their actual vertex bounds
+    // to the source envelope so the last leaf does not stop short of the CAD top.
+    const fitHeight = (geometry, height) => {
+      geometry.computeBoundingBox();
+      const { min, max } = geometry.boundingBox;
+      const base = min.y, extent = max.y - base;
+      geometry.translate(0, -base, 0);
+      geometry.scale(1, height / extent, 1);
+      return geometry;
+    };
 
     // A face frame: world = origin + u·U + v·Y + w·N (N out of the face). Shapes and parts are
     // built in (u, v) with +z out of the face.
@@ -87,9 +113,22 @@
       const blk = (name, m, [u0, u1], [v0, v1], [w0, w1], st) => add(name, m, new T.BoxGeometry(u1 - u0, v1 - v0, w1 - w0), at((u0 + u1) / 2, (v0 + v1) / 2, (w0 + w1) / 2), st);
       const slab = (name, m, shape, w0, w1, st, seg = 20) => add(name, m, new T.ExtrudeGeometry(shape, { depth: w1 - w0, bevelEnabled: false, curveSegments: seg }), at(0, 0, w0), st);
       const poly = pts => new T.Shape(pts.map(([u, v]) => new T.Vector2(u, v)));
+      // Display tessellation only: <=0.5 mm chord error against each source circle.
+      // This is not a survey/construction accuracy claim (ISSUE-R06 remains open).
+      const arcPoints = ({ c, r, a }) => {
+        const span = (a[1] - a[0]) * Math.PI / 180;
+        const step = 2 * Math.acos(Math.max(-1, 1 - .0005 / r));
+        const n = Math.max(2, Math.ceil(Math.abs(span) / step));
+        return Array.from({ length: n + 1 }, (_, i) => {
+          const angle = a[0] * Math.PI / 180 + span * i / n;
+          return [c[0] + r * Math.cos(angle), c[1] + r * Math.sin(angle)];
+        });
+      };
+      const profilePoints = profile => profile.flatMap(arcPoints);
       // Pier: fluted shaft, foliate capital band, cornice cap, pedestal, pinnacle with fleur-de-lis.
       const pier = (P, d = .38) => {
         const [u0, u1] = P.u, um = (u0 + u1) / 2, half = (u1 - u0) / 2;
+        if (P.base) blk('Gable pier base below upper shaft', W, [u0, u1], P.base, [0, d]);
         blk('Gable pier shaft', W, [u0, u1], P.shaft, [0, d]);
         for (const k of [-1, 0, 1]) blk('Gable pier flute', D, [um + k * half * .4 - .02, um + k * half * .4 + .02], [P.shaft[0] + .2, P.shaft[1] - .15], [d, d + .012]);
         blk('Gable pier capital band', S, [u0 - .04, u1 + .04], P.capital, [-.02, d + .04]);
@@ -101,15 +140,16 @@
       };
       const pinnacle = (u, v0, v1, w, wc) => {
         const h = v1 - v0, fl = Math.min(.42, h * .25);
-        add('Gable pinnacle', S, K.pinnacle({ w, h: h - fl }), at(u, v0, wc), CARVED);
-        add('Gable pinnacle fleur-de-lis', S, fleur(fl), at(u, v1 - fl, wc), CARVED);
+        add('Gable pinnacle', S, fitHeight(K.pinnacle({ w, h: h - fl }), h - fl), at(u, v0, wc), CARVED);
+        add('Gable pinnacle fleur-de-lis', S, fitHeight(fleur(fl), fl), at(u, v1 - fl, wc), CARVED);
         stats.pinnacles++;
       };
       // Raking cornice between two points (u0 < u1 in |u|), mirrored to both sides: a band with a
       // Greek-key face, hanging dentils and a leaf crest standing on it.
-      const rake = ([a, b], thick = .45, d = .42, crest = true) => {
+      const rake = ([a, b], thick = .45, d = .42, crest = true, traced = null) => {
         for (const e of [-1, 1]) {
-          const p = [[e * a[0], a[1]], [e * b[0], b[1]], [e * b[0], b[1] + thick], [e * a[0], a[1] + thick]];
+          const outline = traced || [a, b, [b[0], b[1] + thick], [a[0], a[1] + thick]];
+          const p = outline.map(([u, v]) => [e * u, v]);
           slab('Gable raking cornice', S, poly(e > 0 ? p : p.slice().reverse()), 0, d);
           // The frieze runs from the left end of the rake so that it stays upright on both sides.
           const [p0, p1] = e > 0 ? [b, a] : [[-a[0], a[1]], [-b[0], b[1]]], u0 = e > 0 ? p0[0] : p0[0];
@@ -118,27 +158,32 @@
           const n = Math.floor(len / .13);
           for (let i = 0; i < n; i++) { const t = (i + .5) / n, u = e * (a[0] + (b[0] - a[0]) * t), v = a[1] + (b[1] - a[1]) * t; blk('Gable raking dentil', S, [u - .03, u + .03], [v - .16, v], [.02, d - .06]); }
           if (crest) for (let t = .18; t < .96; t += .22) {
-            const u = e * (a[0] + (b[0] - a[0]) * t), v = a[1] + (b[1] - a[1]) * t + thick;
+            const topA = outline[3], topB = outline[2];
+            const u = e * (topA[0] + (topB[0] - topA[0]) * t), v = topA[1] + (topB[1] - topA[1]) * t;
             add('Gable raking leaf crest', S, fleur(.42), at(u, v, d / 2), CARVED);
           }
         }
       };
-      const rose = ([u, v, r], w = .4) => {
-        add('Gable rose ring', S, new T.TorusGeometry(r, .05, 8, 40), at(u, v, w));
-        add('Gable rose ring', S, new T.TorusGeometry(r * .82, .035, 8, 40), at(u, v, w));
-        add('Gable rose tracery', S, K.bloom({ r: r * .7, petals: 12, rings: 2, seg: 3 }), at(u, v, w - .02), CARVED);
+      const rose = ([u, v, r], rings = [r + .05, r - .05, r * .82 + .035, r * .82 - .035], w = .4) => {
+        // The source circles bound each ring: TorusGeometry's radius is its centreline,
+        // so using the outer source radius directly would make the ring too large.
+        for (let i = 0; i < rings.length; i += 2)
+          add('Gable rose ring', S, new T.TorusGeometry((rings[i] + rings[i + 1]) / 2, (rings[i] - rings[i + 1]) / 2, 10, 96), at(u, v, w));
+        add('Gable rose tracery', S, K.bloom({ r: rings.at(-1) * .95, petals: 12, rings: 2, seg: 3 }), at(u, v, w - .02), CARVED);
       };
       // Crowning aedicule: lobed niche between two piers with pinnacles, volutes, ball and cross.
       const aedicule = (E, d = .42) => {
-        const lobe = (half, spring, crown) => { const p = new T.Path(); p.moveTo(-half, spring); p.quadraticCurveTo(-half, spring + (crown - spring) * .6, -half * .55, spring + (crown - spring) * .55); p.quadraticCurveTo(0, crown + .08, half * .55, spring + (crown - spring) * .55); p.quadraticCurveTo(half, spring + (crown - spring) * .6, half, spring); return p.getPoints(12); };
-        const outline = [[-E.pier[1], E.base], [E.pier[1], E.base], [E.pier[1], E.pierTop], ...lobe(E.pier[1] - .05, E.pierTop, E.crown + .25).reverse().map(p => [p.x, p.y]), [-E.pier[1], E.pierTop]];
-        slab('Gable aedicule back wall', W, poly(outline), -.2, .12);
-        const niche = poly([[-E.niche, E.base + .1], [E.niche, E.base + .1], [E.niche, E.spring], ...lobe(E.niche, E.spring, E.crown).reverse().map(p => [p.x, p.y]), [-E.niche, E.spring]]);
+        const inner = profilePoints(E.arch.inner), outer = profilePoints(E.arch.outer);
+        const envelope = arcPoints(E.arch.envelope);
+        const outline = [[-E.pier[1], E.base], [E.pier[1], E.base], [E.pier[1], E.pierTop], ...envelope, [-E.pier[1], E.pierTop]];
+        slab('Gable aedicule back wall', W, poly(outline), -.2, .12, 'CAD ARC ENVELOPE / SCHEMATIC BACKING DEPTH');
+        const niche = poly([[inner.at(-1)[0], E.base], [inner[0][0], E.base], ...inner]);
         slab('Gable aedicule niche', D, niche, .12, .13);
         blk('Gable aedicule pedestal', S, [-.42, .42], [E.base + .1, E.base + .55], [.13, .45]);
         for (const e of [-1, 1]) {
           const [p0, p1] = e > 0 ? E.pier : [-E.pier[1], -E.pier[0]];
-          blk('Gable aedicule pier', W, [p0, p1], [E.base, E.pierTop], [0, d]);
+          blk('Gable aedicule pier base', S, [p0 - .05, p1 + .05], [E.base, E.pierBase], [0, d]);
+          blk('Gable aedicule pier', W, [p0, p1], [E.pierBase, E.pierTop], [0, d]);
           blk('Gable aedicule pier cap', S, [p0 - .05, p1 + .05], [E.pierTop, E.pierTop + .12], [-.03, d + .05]);
           pinnacle((p0 + p1) / 2, E.pierTop + .12, E.pinnacle, .3, d / 2);
           // S-scroll volute on the outer side, from the base up to the pier.
@@ -148,14 +193,22 @@
           add('Gable aedicule volute scroll', S, K.stem(K.scroll(0, 0, .14, 1.3, 0, s), .045, .02, 12, 5), at(s * v1, E.base + .25, d / 2), CARVED);
         }
         // Arch moulding over the niche, crest, ball and trefoil cross.
-        const arc = lobe(E.niche + .12, E.spring, E.crown + .12).map(p => { const v = new T.Vector3(p.x, p.y, d * .6).applyMatrix4(F); return [v.x, v.y, v.z]; });
-        add('Gable aedicule arch moulding', S, K.stem(arc, .06, .06, 24, 6));
+        slab('Gable aedicule arch moulding', S, poly([...outer, ...inner.slice().reverse()]), .13, .30);
+        blk('Gable aedicule jamb moulding', S, [inner[0][0], outer[0][0]], [E.base, E.spring], [.13, .30]);
+        blk('Gable aedicule jamb moulding', S, [outer.at(-1)[0], inner.at(-1)[0]], [E.base, E.spring], [.13, .30]);
         add('Gable aedicule crest', S, K.cartouche({ len: 1.1, r: .14 }), at(0, E.crown + .32, d * .5), CARVED);
-        add('Gable aedicule ball', S, new T.SphereGeometry(.25, 16, 12), at(0, E.ball, d * .5));
+        add('Gable aedicule ball', S, new T.SphereGeometry(E.ballRadius, 24, 16), at(0, E.ball, d * .5));
         const [c0, c1] = E.cross;
-        blk('Gable cross', crossMaterial, [-.05, .05], [c0, c1 - .1], [d * .5 - .05, d * .5 + .05]);
-        blk('Gable cross arm', crossMaterial, [-.5, .5], [E.arm - .05, E.arm + .05], [d * .5 - .05, d * .5 + .05]);
-        for (const [u, v] of [[0, c1 - .055], [-.5, E.arm], [.5, E.arm]]) add('Gable cross trefoil end', crossMaterial, new T.SphereGeometry(.055, 10, 8), at(u, v, d * .5));
+        const r = E.crossRadius, xc = E.crossCentre, arm = E.arm, top = c1 - r;
+        const ca = (u, v, a, b) => arcPoints({ c: [u, v], r, a: [a, b] });
+        const cross = [[xc - r, c0], [xc - r, arm - r], [xc - 4 * r, arm - r],
+          ...ca(xc - 5 * r, arm - r, 0, -180), ...ca(xc - 6 * r, arm, -90, -270),
+          ...ca(xc - 5 * r, arm + r, 180, 0), [xc - r, arm + r], [xc - r, top - 2 * r],
+          ...ca(xc - r, top - r, -90, -270), ...ca(xc, top, 180, 0),
+          ...ca(xc + r, top - r, 90, -90), [xc + r, arm + r], [xc + 4 * r, arm + r],
+          ...ca(xc + 5 * r, arm + r, 180, 0), ...ca(xc + 6 * r, arm, 90, -90),
+          ...ca(xc + 5 * r, arm - r, 0, -180), [xc + r, arm - r], [xc + r, c0]];
+        slab('Gable cross', crossMaterial, poly(cross), d * .5 - .05, d * .5 + .05);
         stats.crosses++;
       };
       return { at, blk, slab, poly, pier, pinnacle, rake, rose, aedicule };
@@ -173,15 +226,15 @@
           const x = A[keys[i]], P = PP.pedestal;
           blk('Porch parapet pedestal', W, [x - P, x + P], PP.y, zr(P));
           blk('Porch parapet pedestal cap', S, [x - P - .04, x + P + .04], [PP.y[1] - .07, PP.y[1]], zr(P + .04));
-          add('Porch parapet pinnacle', S, K.pinnacle({ w: .26, h: PP.pinnacle - .3 }), TR(x, PP.y[1], zc), CARVED);
-          add('Porch parapet pinnacle fleur-de-lis', S, fleur(.3), place(RY(s < 0 ? Math.PI : 0), TR(x, PP.y[1] + PP.pinnacle - .3, zc)), CARVED);
+          add('Porch parapet pinnacle', S, fitHeight(K.pinnacle({ w: .26, h: PP.pinnacle - .3 }), PP.pinnacle - .3), TR(x, PP.y[1], zc), CARVED);
+          add('Porch parapet pinnacle fleur-de-lis', S, fitHeight(fleur(.3), .3), place(RY(s < 0 ? Math.PI : 0), TR(x, PP.y[1] + PP.pinnacle - .3, zc)), CARVED);
           stats.pinnacles++;
           if (i === keys.length - 1) continue;
           const x0 = x + P, x1 = A[keys[i + 1]] - P;
-          blk('Porch parapet plinth', S, [x0, x1], [PP.y[0], PP.y[0] + .12], zr(PP.half + .03));
-          blk('Porch parapet top rail', S, [x0, x1], [PP.y[1] - .1, PP.y[1]], zr(PP.half + .02));
+          blk('Porch parapet plinth', S, [x0, x1], [PP.y[0], PP.y[0] + PP.plinth], zr(PP.half + .03));
+          blk('Porch parapet top rail', S, [x0, x1], [PP.y[1] - PP.rail, PP.y[1]], zr(PP.half + .02));
           const n = Math.max(2, Math.round((x1 - x0) / .21));
-          for (let k = 1; k < n; k++) { add('Porch parapet baluster', S, new T.CylinderGeometry(.05, .07, PP.y[1] - PP.y[0] - .22, 10), TR(x0 + (x1 - x0) * k / n, (PP.y[0] + .12 + PP.y[1] - .1) / 2, zc)); stats.balusters++; }
+          for (let k = 1; k < n; k++) { add('Porch parapet baluster', S, new T.CylinderGeometry(.05, .07, PP.y[1] - PP.y[0] - PP.plinth - PP.rail, 10), TR(x0 + (x1 - x0) * k / n, (PP.y[0] + PP.plinth + PP.y[1] - PP.rail) / 2, zc)); stats.balusters++; }
         }
       }
     }
@@ -196,10 +249,12 @@
       for (const e of [-1, 1]) {
         for (const P of [SG.outer, SG.inner]) f.pier({ ...P, u: e > 0 ? P.u : [-P.u[1], -P.u[0]] });
       }
-      f.rake(SG.rakes[0]); f.rake(SG.rakes[1], .45, .42, false);
-      f.blk('Side gable top band', S, [-1.3, 1.3], SG.band, [0, .42]);
-      add('Side gable Greek-key frieze', S, meanderGeo(2.6, .22), f.at(-1.3, SG.band[0] + .1, .42), CARVED);
-      f.rose(SG.rose);
+      f.rake(SG.rakes[0], .737353, .42, true, SG.rakePolygons[0]);
+      f.rake(SG.rakes[1], .59, .42, false, SG.rakePolygons[1]);
+      const sh = SG.rakes[1][1][0];
+      f.slab('Side gable top band', S, f.poly([[-sh, SG.band[0]], [sh, SG.band[0]], [SG.bandHalf, SG.band[1]], [-SG.bandHalf, SG.band[1]]]), 0, .42);
+      add('Side gable Greek-key frieze', S, meanderGeo(2 * sh, .22), f.at(-sh, SG.band[0] + .1, .42), CARVED);
+      f.rose(SG.rose, SG.roseRings);
       f.aedicule(SG.aedicule);
     }
 
@@ -222,9 +277,11 @@
       f.blk('Rear gable mid band', S, [-RG.de.u[0], RG.de.u[0]], RG.mid, [0, .36]);
       add('Rear gable mid Greek-key frieze', S, meanderGeo(2 * RG.de.u[0], .2), f.at(-RG.de.u[0], RG.mid[0] + .45, .36), CARVED);
       for (let u = -RG.de.u[0] + .06; u < RG.de.u[0]; u += .13) f.blk('Rear gable mid dentil', S, [u, u + .06], [RG.mid[0], RG.mid[0] + .15], [.02, .3]);
-      f.rake(RG.rakes[0]); f.rake(RG.rakes[1]);
-      f.blk('Rear gable top band', S, [-RG.rakes[1][1][0], RG.rakes[1][1][0]], RG.band, [0, .42]);
-      f.rose(RG.rose);
+      f.rake(RG.rakes[0], .737353, .42, true, RG.rakePolygons[0]);
+      f.rake(RG.rakes[1], .59, .42, true, RG.rakePolygons[1]);
+      const rh = RG.rakes[1][1][0];
+      f.slab('Rear gable top band', S, f.poly([[-rh, RG.band[0]], [rh, RG.band[0]], [RG.bandHalf, RG.band[1]], [-RG.bandHalf, RG.band[1]]]), 0, .42);
+      f.rose(RG.rose, RG.roseRings);
       f.aedicule(RG.aedicule);
     }
 
@@ -255,6 +312,6 @@
     Object.assign(stats, { meshes, triangles: Math.round(triangles) });
     root.userData.stats = stats;
     window.CHURCH_ROOFLINE.stats = stats;
-    data?.assumptions?.push('The roofline follows the church’s CAD file of 23 October 2026 (E02, E03) at the owner’s direction of 25 October 2026: a balustrade with axis pinnacles over the porch cornices, the stepped 9–10 side gables with a crowning niche and cross, and the stepped rear gable with its crowning niche and cross at +17.829. Roof planes and ridge are unchanged (sections 24/25).');
+    data?.assumptions?.push('Exterior roofline audited against DWG version 23102026: E02 parapet top +7.073919; EW outside wing rose +7.571529 and cross +15.186895; E03 rear rose +9.988501 and cross +17.829188. Source circular niche arches, rose boundaries, mitred cornices and cross silhouettes are transcribed; depths, capital/pinnacle carving, tracery and scrolls remain visualization proxies. Existing roof planes and fixture positions are unchanged. ISSUE-R05 ridge and ISSUE-R06 units remain open; not for construction.');
   }
 })();

@@ -378,8 +378,44 @@
       const carving=new T.Group();carving.position.set(leaf.position.x,0,leaf.position.z);hinge.add(carving);
       panels(carving,leaf.geometry.parameters.width,leaf.geometry.parameters.height);
     }
+    // The owner moved the outside window type into the C/G wall. Read its native semicircles
+    // and head band from the shared side specification; the CAD inside type differs. Side doors
+    // retain the previous model while the native 150 mm band / 170 mm exit-case conflict is held.
+    const sideCAD=window.CHURCH_PORCHES?.spec.openings;
+    function sideArchBand(x,spring,r0,r1){
+      const shape=new T.Shape();shape.moveTo(x+r0,spring);shape.absarc(x,spring,r0,0,Math.PI,false);
+      shape.lineTo(x-r1,spring);shape.absarc(x,spring,r1,Math.PI,0,true);shape.closePath();return shape;
+    }
+    function rebuildSideOpening(bay,profile,centres){
+      const wall=bay.children.find(o=>o.name==='Inner C/G wall with opening');
+      if(!wall)return;
+      const old=wall.geometry,parameters=old.parameters,depth=parameters.options.depth;
+      old.computeBoundingBox();const b=old.boundingBox;
+      const shape=new T.Shape();shape.moveTo(b.min.x,b.min.y);shape.lineTo(b.max.x,b.min.y);
+      shape.lineTo(b.max.x,b.max.y);shape.lineTo(b.min.x,b.max.y);shape.closePath();
+      for(const x of centres){
+        const hole=new T.Path();hole.moveTo(x-profile.width/2,profile.bottom);
+        hole.lineTo(x+profile.width/2,profile.bottom);hole.lineTo(x+profile.width/2,profile.spring);
+        hole.absarc(x,profile.spring,profile.radius,0,Math.PI,false);hole.lineTo(x-profile.width/2,profile.bottom);hole.closePath();
+        shape.holes.push(hole);
+      }
+      wall.geometry=new T.ExtrudeGeometry(shape,{depth,bevelEnabled:false,curveSegments:48});old.dispose();
+      wall.userData={...wall.userData,status:'OWNER-ADOPTED OUTSIDE TYPE / NATIVE CAD SEMICIRCLE',source:'DWG E26/D29; 26 Oct 2026 audit'};
+      // Remove both segmented proxy archivolts and their generic jamb columns; continuous
+      // concentric mouldings now use the native radii. Relief depth/materials stay illustrative.
+      for(const m of bay.children.slice())if(['Schematic arch moulding','Schematic round profile','Column base','Capital'].includes(m.name))m.removeFromParent();
+      for(const x of centres)for(let i=0;i<profile.radii.length-1;i++){
+        const a=profile.radii[i],b=profile.radii[i+1],z0=sideCAD.reliefDepth[0],z1=sideCAD.reliefDepth[1]-i*.008;
+        const material=i===2||i===4?mat.darkTrim:mat.trim;
+        const ring=mesh(new T.ExtrudeGeometry(sideArchBand(x,profile.spring,a,b),{depth:z1-z0,bevelEnabled:false,curveSegments:48}),material,bay,'Side CAD opening archivolt moulding');
+        ring.position.z=z0;ring.userData={status:'NATIVE CAD RADII / CONCEPT RELIEF DEPTH',source:'DWG E26/D29'};
+        for(const s of [-1,1])box(b-a,profile.spring-profile.bottom,z1-z0,x+s*(a+b)/2,(profile.spring+profile.bottom)/2,(z0+z1)/2,material,bay,'Side CAD opening jamb moulding');
+      }
+    }
     for(const bay of sideBays) {
       const inner=bay.name.startsWith('Inner wall '),door=inner&&/ (4–5|8–9)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
+      const profile=inner&&!door&&sideCAD?sideCAD.window:null;
+      if(profile)rebuildSideOpening(bay,profile,profile.centres);
       // Joinery planes: the inner wall is 0.22 m thick (porch face at +0.11), the outer 0.30 m.
       paneZ=inner?0:.10;const jz=inner?.07:.13,hz=inner?.07:.10;
       if(door) {
@@ -396,22 +432,25 @@
       } else {
         // Half-round glazed fanlight over a timber transom, like the doors;
         // the shutter pair below swings out with the doors.
-        for(const x of wing?[-2.4,2.4]:inner?[-1.015,1.015]:[-1,1]) {
-          const body=new T.Shape();body.moveTo(x-.5,.85);body.lineTo(x+.5,.85);body.lineTo(x+.5,3.0);body.lineTo(x-.5,3.0);body.closePath();
+        const spring=profile?.spring??3.101,radius=profile?.radius??.507,leafTop=profile?.leafTop??3.0;
+        for(const x of wing?[-2.4,2.4]:profile?profile.centres:inner?[-1.015,1.015]:[-1,1]) {
+          const body=new T.Shape();body.moveTo(x-.5,.85);body.lineTo(x+.5,.85);body.lineTo(x+.5,leafTop);body.lineTo(x-.5,leafTop);body.closePath();
           const clearPane=pane(body,bay,mat.glass,inner?'Inner window clear glass body':'Outer window clear glass body');clearPane.castShadow=false;
-          fanPane(arch(x,3.0,1,3.101,.507),bay,fanMaterial(fanIndex++,{width:1,bottom:3.0,spring:3.101,rise:.507,sectors:6}),'Window stained-glass fanlight',x,3.0,1,.608);
-          box(1,.085,.15,x,3.0,jz,mat.wood,bay,'Window timber transom');
-          for(let k=1;k<6;k++){const a=k*Math.PI/6;rod([x,3.04,jz],[x+Math.cos(a)*.47,3.101+Math.sin(a)*.475,jz],.016,mat.metal,bay,'Fanlight radial bronze bar');}
-          rod([x-.49,3.101,jz],[x+.49,3.101,jz],.012,mat.metal,bay,'Fanlight spring bar');
+          const headBottom=profile?spring:3.0,headHeight=spring+radius-headBottom;
+          fanPane(arch(x,headBottom,1,spring,radius),bay,fanMaterial(fanIndex++,{width:1,bottom:headBottom,spring,rise:radius,sectors:6}),'Window stained-glass fanlight',x,headBottom,1,headHeight);
+          box(1,profile?spring-leafTop:.085,.15,x,profile?(spring+leafTop)/2:3.0,jz,mat.wood,bay,'Window timber transom');
+          for(let k=1;k<6;k++){const a=k*Math.PI/6;rod([x,profile?spring:3.04,jz],[x+Math.cos(a)*.47,spring+Math.sin(a)*.475,jz],.016,mat.metal,bay,'Fanlight radial bronze bar');}
+          rod([x-.49,spring,jz],[x+.49,spring,jz],.012,mat.metal,bay,'Fanlight spring bar');
           for(const state of ['closed','open']) {
             const frame=new T.Group();frame.position.copy(bay.position);frame.rotation.copy(bay.rotation);doorGroups[state].add(frame);
             for(const sign of [-1,1]) {
               const hinge=new T.Group();hinge.position.set(x+sign*.5,.85,hz);hinge.rotation.y=state==='closed'?0:sign*1.5;frame.add(hinge);
               const leaf=new T.Group();leaf.position.x=-sign*.25;hinge.add(leaf);
-              box(.49,2.1,.06,0,1.05,0,mat.wood,leaf,'Window timber shutter leaf');
+              const shutterHeight=profile?leafTop-.85:2.1;
+              box(.49,shutterHeight,.06,0,shutterHeight/2,0,mat.wood,leaf,'Window timber shutter leaf');
               for(const face of [-1,1]){
-                for(const sx of [-1,1])box(.04,2.1,.03,sx*.225,1.05,face*.04,mat.wood,leaf,'Shutter stile');
-                for(const y of [.04,.72,1.38,2.06])box(.49,.05,.03,0,y,face*.04,mat.wood,leaf,'Shutter rail');
+                for(const sx of [-1,1])box(.04,shutterHeight,.03,sx*.225,shutterHeight/2,face*.04,mat.wood,leaf,'Shutter stile');
+                for(const y of [.04,.72,1.38,shutterHeight-.04])box(.49,.05,.03,0,y,face*.04,mat.wood,leaf,'Shutter rail');
                 for(const y of [.38,1.05,1.72])box(.33,.5,.012,0,y,face*.033,im.woodInset,leaf,'Shutter inset panel');
               }
             }

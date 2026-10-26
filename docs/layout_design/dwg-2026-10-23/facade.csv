@@ -31,6 +31,6 @@ F29,Aedicule pier front,PT15,h,3805,-1885,-1439,,3805,X 3.805,TRACED,
 F30,Central niche column front,PT15,h,3915,-1112,-906,,3915,X 3.915,TRACED,
 F31,Central niche (plan),PT15,arc,0,4225,711,,711,"centre X 4.225, r 0.711",TRACED,Niche back X 4.936; aedicule back X 5.046
 F32,Cresting balustrade front,PT15,h,3376,-7086,-3614,,3376,X 3.376,TRACED,Fleur-de-lis posts at 617 mm spacing
-D01,Side bays meet the towers,model,—,,,,,7128,±7.500,MODEL ADJUSTMENT,"The drawing stops the side bays at ±7.128 against the tower pilasters; the model's towers stand back at about ±7.5, so the side-bay wall, plinth and entablature run on to meet them"
+D01,Side bays meet the towers,model,—,,,,,7128,±7.128,MODEL TRANSCRIPTION / COORDINATED,"26 Oct 2026: removed the former model extension to ±7.500 m. CAD stops at ±7.128 m; rebuilt tower rear piers start at ±7.103 m, giving 25 mm overlap. Source dimensions unchanged; structure/detail remain held."
 D02,Moulding profiles and carving,model,—,,,,,,,ILLUSTRATIVE,"Profiles, relief depths, capitals, cresting and crests are generated shapes that follow the drawing's outlines, not construction details"
 D03,Statues in the niches,model,—,,,,,,,USER CONFIRMED / CONCEPT,The drawing shows empty niches with pedestals; the owner's three statues (9 Oct 2026) stand on the drawn pedestals

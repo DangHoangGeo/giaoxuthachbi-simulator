@@ -2,31 +2,51 @@
    Owner, 25 October 2026, after the parish priest's meeting (point 5): the tower fronts have no
    opening, only a closed wall with a decorative arch; the tower base, the top and the ornament
    follow the church's CAD file of 23 October 2026. Sources: DWG sheet 1, drawing E01B (front
-   elevation, traced in model axes: corner piers Z 7.0–8.2 and 12.1–13.4 on the H tower, pedestals
-   to +1.85, fluted shafts to +7.4, foliate capital band and Greek-key frieze +7.4 to +7.85,
-   cornice to +8.39; big archivolt springing +4.0 with radius 1.95; inner blind arch on colonnettes
-   springing +2.85 with radius 0.8 to 1.15; dome +30.05 to +32.75 with a rosette at +31.8;
-   lantern +33.05 to +33.95, open acanthus crown to +35.0, ball, trefoil cross to +36.92), and
-   plan sheet 5 (stepped corner piers about 2.0 × 1.45 m).
+   elevation; native ARC/CIRCLE/LINE witnesses rechecked 26 Oct 2026 in
+   docs/exterior-23102026/tower-witnesses.json) and plan sheet 5. The ground-storey front stays
+   closed. Upper-front paired openings, great arches and roses use their own source centres
+   and radii instead of fractions of storey height. Offset circular shoulders carry the dome
+   to +32.790457; adjoining lantern levels and the trefoil cross outline are traced directly.
+   The model keeps the existing rose colour/material choice; CAD outlines do not approve glazing.
    Departure kept on purpose: the stage-1 wall plane stays at X 0 (the plan draws it 0.5 m
    further forward) so the stages above and the fittings on the +8.39 cornice keep their places;
    the piers and the entablature project in front of it as drawn. Moulding profiles, carving and
    depths are illustrative; nothing here implies a structure, a fixing or a construction detail. */
 (() => {
-  const SOURCE = 'CAD file 23 Oct 2026 · DWG sheet 1 (E01B), plan sheet 5; owner 25 Oct 2026';
+  const SOURCE = 'CAD file 23 Oct 2026 · E01B/E02, P05/PT15A/PT23/PT29; rear/inner repeated profiles DERIVED; owner 25/26 Oct 2026';
   const DRAWN = 'TRACED CAD ELEVATION / SCHEMATIC DEPTH';
   const CARVED = 'TRACED CAD ELEVATION / ILLUSTRATIVE CARVING';
   const spec = {
-    revision: '2026-10-25-cad-towers-1',
+    revision: '2026-10-26-cad-towers-3',
     centre: 10.153, core: 2.45, wall: 0.14, // tower centre |Z|; core half-width; half wall thickness
     top: 8.39,
     pier: { t: [1.95, 3.2], front: [-0.72, 1.0], back: [3.9, 5.1], pedestal: 1.85, shaft: 7.4, capital: 7.85 },
-    arch: { spring: 4.0, r: [1.58, 1.95], impost: [1.55, 1.95] },
-    blind: { spring: 2.85, r: [0.8, 1.15], colonnette: 1.02, recess: 0.2 },
+    arch: { spring: 3.984770309, r: [1.385, 1.955], rings: [1.385, 1.555, 1.585, 1.725, 1.755, 1.855, 1.885, 1.955], impost: [1.555, 1.955] },
+    blind: { spring: 2.899970309, r: [0.824478702, 1.139478702], rings: [0.824478702, 0.974478702, 1.139478702], colonnette: 1.02, recess: 0.2 },
+    // E02 D8DBF9..D8DC00 / D8DF45..D8DF47: the side blind arch is 200.5 mm
+    // higher than the street-facing one. It is not a rotated copy of the front base.
+    sideBase: { centreX: 2.450044195, greatSpring: 3.984770309,
+      greatRings: [1.385, 1.555, 1.585, 1.725, 1.755, 1.855, 1.885, 1.955],
+      blindSpring: 3.100470309, blindRings: [0.824478702, 0.974478702, 1.139478702],
+      window: { half: .5, sill: .849970309, leafTop: 2.950470309, spring: 3.100470309 },
+      pilaster: { radii: [1.385000208, 1.725000208], shaftY: [.443270309, 3.484270309] } },
     entablature: { architrave: [6.95, 7.1], dentils: [7.15, 7.35], frieze: [7.42, 7.78], cornice: [7.85, 8.39] },
     door: { x: [3.4, 4.4], h: 2.3 }, // into each tower from the rear corner of the nave (inner side)
-    dome: { y0: 29.6, wall: 30.6, top: 32.75, r: 1.7, rosette: 31.8 },
-    lantern: { plinth: [32.75, 32.95, 0.8], step: [32.95, 33.05, 0.72], base: [33.05, 33.2, 0.55], body: [33.2, 33.8, 0.48], beads: [33.8, 33.95, 0.58], crown: [33.95, 35.0, 1.2], ball: 35.3, cross: [35.5, 36.92], arm: 36.42 },
+    // E01B C4568C/C45696: circular offset-centre shoulders, not an ellipse.
+    // Continuation under the balcony and revolution about X=2.45 are visualization proxies.
+    dome: { y0: 29.6, wall: 30.512922701, top: 32.790456676, r: 1.979175671,
+      arc: { radius: 2.628673654, offset: 0.649346024, y: 30.541187117, start: -0.010752556, end: 1.026838484 },
+      rosette: 31.699583764, frontRoseOffset: -0.011541068, roseRings: [0.414212786, 0.444212786], roseInner: 0.345399464 },
+    lantern: { plinth: [32.790456676, 32.983342187, 0.756816784], step: [32.983342187, 33.111064968, 0.584190638], base: [33.111064968, 33.231658402, 0.557768729], body: [33.231658402, 33.731658402, 0.557768729], beads: [33.731658402, 33.861658402, 0.582768729], crown: [33.861658402, 35.0, 1.2], ball: 35.212763, ballRadius: 0.210895, cross: [35.409300742, 36.919970309], arm: 36.346670309, crossLobe: 0.0819 },
+    // E01B front faces. Centres/radii/levels come from native ARC/CIRCLE/LINE;
+    // existing wall depths stay fixed. E02 governs outer sides; repeated inner/rear profiles are DERIVED.
+    upperFront: [
+      { stage: 2, centre: 10.152934409, sill: 9.049969, great: { y: 12.846612750, rings: [1.615338638, 1.725338638, 1.755338638, 1.855338638, 1.885338638, 1.955338638] }, windows: { centres: [9.257577091, 11.048290635], spring: 11.867964351, rings: [0.499643024, 0.609643024, 0.719643024] }, rose: { y: 13.277964351, rings: [0.45, 0.54], inner: 0.394742245 }, slats: { first: 9.132928638, pitch: 0.277781746, height: 0.2 } },
+      { stage: 3, centre: 10.152934409, sill: 16.499969, great: { y: 19.973454138, rings: [1.615, 1.725, 1.75, 1.84, 1.865, 1.925] }, windows: { centres: [9.257934, 11.047934], spring: 19.317964331, rings: [0.5, 0.609643024, 0.719643024] }, rose: { y: 20.612391717, rings: [0.45, 0.54], inner: 0.394742245 }, slats: { first: 16.582928617, pitch: 0.277781746, height: 0.2 } },
+      { stage: 4, centre: 10.141458932, sill: 23.799970191, great: { y: 26.610771934, rings: [1.303693158, 1.328693158, 1.418693366, 1.443693366, 1.493693366] }, windows: { centres: [9.457112297, 10.825805559], spring: 26.149595658, rings: [0.399346631, 0.509346631, 0.619346631] }, rose: { y: 27.191525170, rings: [0.414212786, 0.444212786], inner: 0.345399464 }, slats: { first: 23.88293, pitch: 0.27778, height: 0.2, status: 'ILLUSTRATIVE LOUVRE BLADES; HEIGHT/ANGLE NOT SPECIFIED' } },
+    ],
+    // E02 independent side coordinates (X/Y), see tower-other-faces-witnesses.json.
+    upperSide: [{"stage":2,"centreX":2.4500446699580642,"windowCentresX":[1.5546877321228385,3.345401094648987],"roseX":2.4500446881728712},{"stage":3,"centreX":2.450044413367985,"windowCentresX":[1.555044629918877,3.3450446299018806],"roseX":2.4500446881519164},{"stage":4,"centreX":2.438569023472024,"windowCentresX":[1.754222392366035,3.1229156545789447],"roseX":2.4385692107288635}],
     pinnacle: { at: 2.02, y: 30.25, h: 1.05 },
     // Parish priest, 25 Oct 2026: a stair inside the right tower (right on site and in the
     // drawings: the B-side tower, ENG-027), up to a floor at +8.39 m. Concept: a square stair round
@@ -102,11 +122,36 @@
 
     // ---- Superseded bundle parts ----
     let crossMaterial = mat.metal;
-    const remove = [], box3 = new T.Box3();
+    const remove = [], upperFronts = [], upperOtherFaces = [], box3 = new T.Box3();
     const capNames = /^(Tower cap profile|Schematic cap rib|Cap pedestal|Continuous cap cross support|Cross — apex is source height|Cross transverse arm|Urn (foot|body|shoulder|finial)|Dome drum|Schematic rose-window infill|Schematic rosette (ring|ray))/;
     for (const tower of towers) {
       // The four stage-1 wall groups (front, sides, back); realism.js has already rebuilt the rear one.
       for (const g of tower.children) if (g.children.some(m => m.name === 'Tower stage 1 wall')) remove.push(g);
+      // The old upper fronts used fractions of the storey height for arches and roses.
+      // Keep actual wall planes/footprints; replace each face assembly and preserve its cornice.
+      for (const g of tower.children) {
+        const wall = g.children.find(m => /^Tower stage [2-4] wall$/.test(m.name));
+        if (!wall) continue;
+        const b = new T.Box3().setFromObject(wall);
+        let roseMaterial;
+        g.traverse(o => { if (o.isMesh && o.name === 'Schematic rose-window infill') roseMaterial = o.material; });
+        if (g.position.x < 0) {
+          upperFronts.push({ side: Math.sign(tower.position.z), stage: Number(wall.name.match(/stage (\d)/)[1]),
+            x: [b.min.x, b.max.x], y: [b.min.y, b.max.y], half: (b.max.z - b.min.z) / 2, roseMaterial });
+        } else {
+          wall.geometry.computeBoundingBox();
+          upperOtherFaces.push({ side: Math.sign(tower.position.z), stage: Number(wall.name.match(/stage (\d)/)[1]),
+            kind: g.position.x > 0 ? 'rear' : Math.sign(g.position.z) === Math.sign(tower.position.z) ? 'outer' : 'inner',
+            half: wall.geometry.boundingBox.max.x, y: [b.min.y, b.max.y], matrix: g.matrixWorld.clone(), roseMaterial });
+        }
+        // The face group also owns the continuous top cornice and its corbels.
+        // They are not part of the generic window/arch replacement: retain their
+        // world transforms and existing light-bearing lip, especially the +29.09 ledge.
+        const cornice = [];
+        g.traverse(o => { if (o.isMesh && new T.Box3().setFromObject(o).min.y >= b.max.y - .75) cornice.push(o); });
+        cornice.forEach(o => tower.attach(o));
+        remove.push(g);
+      }
       tower.traverse(o => {
         if (!o.isMesh) return;
         if (o.name === 'Cross — apex is source height') crossMaterial = o.material;
@@ -147,7 +192,7 @@
       bins.get(key).parts.push([geometry, matrix]);
     };
     const W = mat.wall, S = mat.trim, D = mat.darkTrim, CAP = mat.cap || mat.wall;
-    const stats = { piers: 0, blindArches: 0, removedBundleMeshes: remove.length };
+    const stats = { piers: 0, blindArches: 0, upperFronts: 0, removedBundleMeshes: remove.length };
 
     // ---- Shared carving (also used by roofline.js) ----
     const { fleur, pilasterCapital, meanderGeo, spray } = ornament(T, K);
@@ -187,7 +232,11 @@
 
       // ---- Stage-1 walls: closed front and outer side, a door in the inner side ----
       block('Tower base wall · closed front (owner 25 Oct 2026)', W, [-spec.wall, spec.wall], [0, spec.top], [-C - spec.wall, C + spec.wall]);
-      block('Tower base wall · outer side', W, [-spec.wall, 2 * C + spec.wall], [0, spec.top], [C - spec.wall, C + spec.wall]);
+      {
+        const SB = spec.sideBase, side = rect(-C - spec.wall, C + spec.wall, 0, spec.top);
+        side.holes.push(archHole(SB.centreX - C, SB.window.half, SB.window.sill, SB.window.spring));
+        slab('Tower base wall · outer side', W, 'outer', side, -2 * spec.wall, 0);
+      }
       {
         const [d0, d1] = spec.door.x, wall = rect(-spec.wall, 2 * C + spec.wall, 0, spec.top);
         const hole = new T.Path(); hole.moveTo(d0, 0); hole.lineTo(d0, spec.door.h); hole.lineTo(d1, spec.door.h); hole.lineTo(d1, 0); hole.lineTo(d0, 0);
@@ -285,6 +334,98 @@
         }
       }
 
+      // ---- Upper front elevations: native E01B arcs, window sills and rose circles ----
+      for (const U of spec.upperFront) {
+        const F = upperFronts.find(f => f.side === s && f.stage === U.stage);
+        if (!F) continue;
+        const label = `Tower ${s > 0 ? 'H' : 'B'} stage ${U.stage} · `, xf = F.x[0], xb = F.x[1];
+        const cg = U.centre - spec.centre, WI = U.windows;
+        const uslab = (name, material, shape, front, back, status = DRAWN) => {
+          const geometry = new T.ExtrudeGeometry(shape, { depth: back - front, bevelEnabled: false, curveSegments: 48 });
+          add(label + name, material, geometry, place(SC(s, 1, 1), RY(-Math.PI / 2), TR(back, 0, zc)), status);
+        };
+        const face = rect(-F.half, F.half, F.y[0], F.y[1]);
+        for (const centre of WI.centres) face.holes.push(archHole(centre - spec.centre, WI.rings[0], U.sill, WI.spring));
+        uslab('wall with paired louvre apertures', W, face, xf, xb);
+        // All radial boundaries are source arcs; only relief depths are illustrative.
+        for (let i = 0; i < U.great.rings.length - 1; i++)
+          uslab('great arch ring', i % 2 ? W : S, ring(cg, U.great.y, U.great.rings[i], U.great.rings[i + 1]), xf - .10 - .012 * i, xf + .01);
+        for (const e of [-1, 1]) {
+          const r0 = U.great.rings[0], r1 = U.great.rings[1];
+          block(label + 'great arch pilaster', S, [xf - .10, xf + .01], [U.sill, U.great.y - .46], [cg + e * r0, cg + e * r1].sort((a, b) => a - b));
+          block(label + 'great arch capital', S, [xf - .15, xf + .01], [U.great.y - .46, U.great.y], [Math.min(cg + e * r0, cg + e * r1) - .06, Math.max(cg + e * r0, cg + e * r1) + .06]);
+          add(label + 'great arch capital foliage', S, pilasterCapital(.3, .42), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(xf - .16, U.great.y - .44, Z(cg + e * (r0 + r1) / 2))), CARVED);
+        }
+        for (const centre of WI.centres) {
+          const u = centre - spec.centre, r = WI.rings[0];
+          for (let i = 0; i < WI.rings.length - 1; i++)
+            uslab('paired louvre archivolt', S, ring(u, WI.spring, WI.rings[i], WI.rings[i + 1]), xf - .13 - .025 * i, xf + .01);
+          for (const e of [-1, 1]) block(label + 'paired louvre jamb', S, [xf - .11, xf + .01], [U.sill, WI.spring], [u + e * r, u + e * WI.rings[2]].sort((a, b) => a - b));
+          const leaf = new T.Shape(); leaf.moveTo(u - r, U.sill); leaf.lineTo(u + r, U.sill);
+          leaf.lineTo(u + r, WI.spring); leaf.absarc(u, WI.spring, r, 0, Math.PI, false); leaf.lineTo(u - r, U.sill); leaf.closePath();
+          uslab('paired louvre backing', D, leaf, xf + .16, xf + .18, 'TRACED CAD APERTURE / SCHEMATIC CLOSED SHUTTER DEPTH');
+          const clear = r * 2 - .03, stop = WI.spring - .14;
+          block(label + 'paired louvre timber frame', mat.wood, [xf + .07, xf + .14], [U.sill, stop], [u - r, u - r + .015]);
+          block(label + 'paired louvre timber frame', mat.wood, [xf + .07, xf + .14], [U.sill, stop], [u + r - .015, u + r]);
+          for (let y = U.slats.first; y < stop - .001; y += U.slats.pitch)
+            block(label + 'paired louvre blade', mat.wood, [xf + .075, xf + .13], [y, Math.min(y + U.slats.height, stop)], [u - clear / 2, u + clear / 2], U.slats.status || 'TRACED CAD BLADE FACE / SCHEMATIC DEPTH AND ANGLE');
+          block(label + 'paired louvre sill', S, [xf - .12, xb], [U.sill - .05, U.sill], [u - WI.rings[2], u + WI.rings[2]]);
+        }
+        const RO = U.rose, major = (RO.rings[0] + RO.rings[1]) / 2, minor = (RO.rings[1] - RO.rings[0]) / 2;
+        const roseMatrix = place(RY(-Math.PI / 2), TR(xf - .055, RO.y, Z(cg)));
+        add(label + 'rose ring', S, new T.TorusGeometry(major, minor, 10, 64), roseMatrix);
+        add(label + 'rose-window infill', F.roseMaterial || mat.glass, new T.CircleGeometry(RO.inner, 64), place(RY(-Math.PI / 2), TR(xf - .012, RO.y, Z(cg))), 'TRACED CAD CIRCLE / EXISTING CHOSEN COLOURED FINISH; GLAZING AND OPENING UNCONFIRMED');
+        add(label + 'rose carving', S, K.bloom({ r: RO.inner, petals: 12, rings: 2, seg: 3 }), roseMatrix, CARVED);
+        stats.upperFronts++;
+      }
+
+      // ---- Remaining upper faces: native E02 sides, coordinated repeated rear/inner profiles ----
+      for (const F of upperOtherFaces.filter(f => f.side === s)) {
+        const U = spec.upperFront.find(u => u.stage === F.stage), WI = U.windows;
+        const SP = spec.upperSide.find(u => u.stage === F.stage);
+        const cg = F.kind === 'rear' ? U.centre - spec.centre : SP.centreX - C;
+        const centres = F.kind === 'rear' ? WI.centres.map(c => cg + c - U.centre) : SP.windowCentresX.map(c => c - C);
+        const roseU = F.kind === 'rear' ? cg : SP.roseX - C;
+        const status = F.kind === 'outer' ? DRAWN : 'DERIVED REPEATED E01B/E02 PROFILE / REAR-AND-INNER ELEVATION CONFIRMATION PENDING';
+        const label = `Tower ${s > 0 ? 'H' : 'B'} stage ${U.stage} ${F.kind} · `;
+        const horizontalSign = F.kind === 'rear' ? 1 : F.kind === 'outer' ? s : -s;
+        const fm = (u, v, w) => F.matrix.clone().multiply(SC(horizontalSign,1,1)).multiply(TR(u, v, w));
+        const fb = (name, material, xs, ys, ws, state = status) => add(label + name, material,
+          new T.BoxGeometry(xs[1]-xs[0], ys[1]-ys[0], ws[1]-ws[0]),
+          fm((xs[0]+xs[1])/2, (ys[0]+ys[1])/2, (ws[0]+ws[1])/2), state);
+        const fs = (name, material, shape, w0, w1, state = status) => add(label + name, material,
+          new T.ExtrudeGeometry(shape, { depth: w1-w0, bevelEnabled: false, curveSegments: 48 }), fm(0,0,w0), state);
+        const face = rect(-F.half, F.half, F.y[0], F.y[1]);
+        centres.forEach(c => face.holes.push(archHole(c, WI.rings[0], U.sill, WI.spring)));
+        fs('wall with paired louvre apertures', W, face, -.14, .14);
+        for (let i=0; i<U.great.rings.length-1; i++)
+          fs('great arch ring', i%2 ? W:S, ring(cg,U.great.y,U.great.rings[i],U.great.rings[i+1]), .13,.24+.012*i);
+        for (const e of [-1,1]) {
+          const r0=U.great.rings[0], r1=U.great.rings[1], xs=[cg+e*r0,cg+e*r1].sort((a,b)=>a-b);
+          fb('great arch pilaster',S,xs,[U.sill,U.great.y-.46],[.13,.24]);
+          fb('great arch capital',S,[xs[0]-.06,xs[1]+.06],[U.great.y-.46,U.great.y],[.13,.29]);
+          add(label+'great arch capital foliage',S,pilasterCapital(.3,.42),fm(cg+e*(r0+r1)/2,U.great.y-.44,.30),status+' / ILLUSTRATIVE CARVING');
+        }
+        for (const u of centres) {
+          const r=WI.rings[0];
+          for(let i=0;i<WI.rings.length-1;i++) fs('paired louvre archivolt',S,ring(u,WI.spring,WI.rings[i],WI.rings[i+1]),.13,.27+.025*i);
+          for(const e of [-1,1]) fb('paired louvre jamb',S,[u+e*r,u+e*WI.rings[2]].sort((a,b)=>a-b),[U.sill,WI.spring],[.13,.25]);
+          const leaf=new T.Shape();leaf.moveTo(u-r,U.sill);leaf.lineTo(u+r,U.sill);leaf.lineTo(u+r,WI.spring);
+          leaf.absarc(u,WI.spring,r,0,Math.PI,false);leaf.lineTo(u-r,U.sill);leaf.closePath();
+          fs('paired louvre backing',D,leaf,-.04,-.02,status+' / CLOSED SHUTTER DEPTH PROXY');
+          const stop=WI.spring-.14,clear=2*r-.03;
+          for(const xs of [[u-r,u-r+.015],[u+r-.015,u+r]]) fb('paired louvre timber frame',mat.wood,xs,[U.sill,stop],[0,.07]);
+          for(let y=U.slats.first;y<stop-.001;y+=U.slats.pitch)
+            fb('paired louvre blade',mat.wood,[u-clear/2,u+clear/2],[y,Math.min(y+U.slats.height,stop)],[.01,.065],status+' / BLADE ANGLE AND DEPTH PROXY');
+          fb('paired louvre sill',S,[u-WI.rings[2],u+WI.rings[2]],[U.sill-.05,U.sill],[-.14,.26]);
+        }
+        const RO=U.rose,rm=fm(roseU,RO.y,.195);
+        add(label+'rose ring',S,new T.TorusGeometry((RO.rings[0]+RO.rings[1])/2,(RO.rings[1]-RO.rings[0])/2,10,64),rm,status);
+        add(label+'rose-window infill',F.roseMaterial||mat.glass,new T.CircleGeometry(RO.inner,64),fm(roseU,RO.y,.152),status+' / EXISTING COLOURED FINISH; GLAZING AND OPENING UNCONFIRMED');
+        add(label+'rose carving',S,K.bloom({r:RO.inner,petals:12,rings:2,seg:3}),rm,status+' / ILLUSTRATIVE CARVING');
+        stats.upperOtherFaces=(stats.upperOtherFaces||0)+1;
+      }
+
       // ---- Corner piers of the upper stages ----
       for (const g of spec.stages) {
         const [y0, y1] = g.y, front = [2.45 - g.u / 2 - .45, 2.45 - g.u / 2 + 1.1], back = [2.45 + g.u / 2 - 1.1, 2.45 + g.u / 2 + .45];
@@ -326,10 +467,9 @@
         add('Tower front spandrel spray', S, spray(1.1), place(SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .02, 5.55, Z(e * 1.45))), CARVED);
       }
       // Archivolt: three rings, the outer one proud.
-      slab('Tower front archivolt', S, 'front', ring(0, A.spring, A.r[0] + .12, A.r[1], 0), 0, .16, DRAWN, 32);
-      slab('Tower front archivolt inner ring', S, 'front', ring(0, A.spring, A.r[0], A.r[0] + .12, 0), 0, .1, DRAWN, 32);
+      for (let i = 0; i < A.rings.length - 1; i++) slab(i ? 'Tower front archivolt' : 'Tower front archivolt inner ring', i % 2 ? W : S, 'front', ring(0, A.spring, A.rings[i], A.rings[i + 1], 0), 0, .1 + i * .01, DRAWN, 48);
       // Blind arch: its archivolt, then a recessed panel (the wall stays closed behind it).
-      slab('Tower blind-arch archivolt', S, 'front', ring(0, B.spring, B.r[0], B.r[1], 0), 0, .14, DRAWN, 28);
+      for (let i = 0; i < B.rings.length - 1; i++) slab('Tower blind-arch archivolt', S, 'front', ring(0, B.spring, B.rings[i], B.rings[i + 1], 0), 0, .1 + i * .04, DRAWN, 48);
       {
         const sh = new T.Shape(); sh.moveTo(-B.r[0], .3); sh.lineTo(B.r[0], .3); sh.lineTo(B.r[0], B.spring); sh.absarc(0, B.spring, B.r[0], 0, Math.PI, false); sh.lineTo(-B.r[0], .3);
         slab('Tower blind-arch recessed panel', D, 'front', sh, 0, .015, DRAWN, 24);
@@ -340,27 +480,51 @@
       // Cartouche in the tympanum between the two arches, and the moulded sill of the big arch.
       add('Tower front cartouche', S, K.cartouche({ len: 1.25, r: .13 }), place(RY(-Math.PI / 2), TR(wallFace - .04, 4.72, Z(0))), CARVED);
       block('Tower front arch sill band', S, [wallFace - .12, wallFace], [A.spring - .08, A.spring], [-A.r[0], A.r[0]]);
-      // ---- Outer side: a smaller blind arch between the piers ----
+      // ---- Outer ground face: E02 has its own great arch and higher blind arch ----
       {
-        const xm = (P.front[1] + P.back[0]) / 2, half = (P.back[0] - P.front[1]) / 2 - .3, spring = 3.4;
-        const sideRing = ring(0, spring, half - .25, half, spring - .3);
-        add('Tower side archivolt', S, new T.ExtrudeGeometry(sideRing, { depth: .14, bevelEnabled: false, curveSegments: 28 }), place(RY(s > 0 ? 0 : Math.PI), TR(xm, 0, Z(C + spec.wall))));
-        const border = ring(0, spring, half - .32, half - .25, spring - .5);
-        add('Tower side blind-arch border', D, new T.ExtrudeGeometry(border, { depth: .02, bevelEnabled: false, curveSegments: 24 }), place(RY(s > 0 ? 0 : Math.PI), TR(xm, 0, Z(C + spec.wall))));
-        const panel = new T.Shape(); panel.moveTo(-half + .25, .5); panel.lineTo(half - .25, .5); panel.lineTo(half - .25, spring); panel.absarc(0, spring, half - .25, 0, Math.PI, false); panel.lineTo(-half + .25, .5);
-        add('Tower side blind-arch panel', W, new T.ExtrudeGeometry(panel, { depth: .015, bevelEnabled: false, curveSegments: 24 }), place(RY(s > 0 ? 0 : Math.PI), TR(xm, 0, Z(C + spec.wall))));
-        for (const e of [-1, 1]) block('Tower side impost', S, [xm + e * half - .14, xm + e * half + .14], [0, spring - .3], [C + spec.wall, C + spec.wall + .12]);
+        const SB = spec.sideBase, u = SB.centreX - C;
+        for (let i = 0; i < SB.greatRings.length - 1; i++)
+          slab('Tower side great archivolt · E02', i % 2 ? W : S, 'outer', ring(u, SB.greatSpring, SB.greatRings[i], SB.greatRings[i + 1]), 0, .10 + i * .01, DRAWN, 48);
+        for (let i = 0; i < SB.blindRings.length - 1; i++)
+          slab('Tower side blind archivolt · E02', S, 'outer', ring(u, SB.blindSpring, SB.blindRings[i], SB.blindRings[i + 1]), 0, .10 + i * .04, DRAWN, 48);
+        const r = SB.blindRings[0], panel = new T.Shape();
+        panel.moveTo(u - r, .3); panel.lineTo(u + r, .3); panel.lineTo(u + r, SB.blindSpring);
+        panel.absarc(u, SB.blindSpring, r, 0, Math.PI, false); panel.lineTo(u - r, .3); panel.closePath();
+        panel.holes.push(archHole(u, SB.window.half, SB.window.sill, SB.window.spring));
+        slab('Tower side blind recessed panel · E02', D, 'outer', panel, 0, .015, DRAWN, 48);
+        const inner = new T.Shape(); inner.moveTo(u - r + .12, .45); inner.lineTo(u + r - .12, .45);
+        inner.lineTo(u + r - .12, SB.blindSpring); inner.absarc(u, SB.blindSpring, r - .12, 0, Math.PI, false);
+        inner.lineTo(u - r + .12, .45); inner.closePath();
+        inner.holes.push(archHole(u, SB.window.half, SB.window.sill, SB.window.spring));
+        slab('Tower side blind panel · E02', W, 'outer', inner, .015, .035, DRAWN, 48);
+        const SW = SB.window, infill = new T.Shape();
+        infill.moveTo(u-SW.half,SW.sill);infill.lineTo(u+SW.half,SW.sill);infill.lineTo(u+SW.half,SW.spring);
+        infill.absarc(u,SW.spring,SW.half,0,Math.PI,false);infill.lineTo(u-SW.half,SW.sill);infill.closePath();
+        slab('Tower side window closed infill · E02', D, 'outer', infill, -.13, -.11,
+          'TRACED CAD APERTURE / CLOSED INFILL VISUALIZATION; MATERIAL AND OPERABILITY UNCONFIRMED', 48);
+        // Vertical returns/relief are coordinated visualization proxies; source circles fix the crowns.
+        for (const e of [-1, 1]) {
+          const x0 = SB.centreX + e * SB.pilaster.radii[0], x1 = SB.centreX + e * SB.pilaster.radii[1];
+          const xs = [x0, x1].sort((a,b)=>a-b);
+          block('Tower side great impost · E02', W, xs, SB.pilaster.shaftY, [C + spec.wall, C + spec.wall + .1]);
+          block('Tower side great capital · E02', S, xs, [SB.pilaster.shaftY[1], SB.greatSpring], [C + spec.wall, C + spec.wall + .14]);
+          const x = SB.centreX + e * B.colonnette;
+          add('Tower side blind colonnette · E02', S, new T.CylinderGeometry(.085, .095, SB.blindSpring - .65, 14), TR(x, .3 + (SB.blindSpring - .65) / 2, Z(C + spec.wall + .14)));
+          block('Tower side blind capital · E02', S, [x - .16, x + .16], [SB.blindSpring - .35, SB.blindSpring], [C + spec.wall, C + spec.wall + .27]);
+        }
       }
 
       // ---- Top: dome, lantern, crown, cross; pinnacles on the balustrade corners ----
       const DM = spec.dome, LN = spec.lantern, xc = 2.45;
-      const profile = [];
-      profile.push(new T.Vector2(DM.r, DM.y0), new T.Vector2(DM.r, DM.wall));
-      const b = (DM.top - DM.wall) / Math.sqrt(1 - (0.94 / DM.r) ** 2);
-      for (let i = 1; i <= 24; i++) { const y = DM.wall + (DM.top - DM.wall) * i / 24; profile.push(new T.Vector2(DM.r * Math.sqrt(Math.max(0, 1 - ((y - DM.wall) / b) ** 2)), y)); }
+      const profile = [], DA = DM.arc;
+      profile.push(new T.Vector2(DM.r, DM.y0));
+      for (let i = 0; i <= 64; i++) {
+        const a = DA.start + (DA.end - DA.start) * i / 64;
+        profile.push(new T.Vector2(DA.radius * Math.cos(a) - DA.offset, DA.y + DA.radius * Math.sin(a)));
+      }
       profile.push(new T.Vector2(0.001, DM.top));
       add('Tower dome · CAD profile', CAP, new T.LatheGeometry(profile, 48), TR(xc, 0, zc));
-      const rDome = y => y <= DM.wall ? DM.r : DM.r * Math.sqrt(Math.max(0, 1 - ((y - DM.wall) / b) ** 2));
+      const rDome = y => y <= DM.wall ? DM.r : Math.sqrt(Math.max(0, DA.radius ** 2 - (y - DA.y) ** 2)) - DA.offset;
       for (let k = 0; k < 8; k++) {
         const a = k * Math.PI / 4 + Math.PI / 8;
         const pts = Array.from({ length: 16 }, (_, i) => { const y = DM.wall + (DM.top - .05 - DM.wall) * i / 15, r = rDome(y) + .03; return [xc + Math.cos(a) * r, y, zc + Math.sin(a) * r]; });
@@ -370,9 +534,10 @@
       // Rosettes on the four faces, as the drawn rosette at +31.8.
       for (let k = 0; k < 4; k++) {
         const a = k * Math.PI / 2, r = rDome(DM.rosette) + .02, n = new T.Vector3(Math.cos(a), 0, Math.sin(a));
+        const dz = k === 2 ? s * DM.frontRoseOffset : 0;
         const rot = new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 0, 1), n));
-        add('Tower dome rosette', S, K.bloom({ r: .32, petals: 12, rings: 2, seg: 3 }), place(rot, TR(xc + n.x * r, DM.rosette, zc + n.z * r)), CARVED);
-        add('Tower dome rosette ring', S, new T.TorusGeometry(.42, .04, 6, 32), place(rot, TR(xc + n.x * (r - .02), DM.rosette, zc + n.z * (r - .02))));
+        add('Tower dome rosette', S, K.bloom({ r: DM.roseInner, petals: 12, rings: 2, seg: 3 }), place(rot, TR(xc + n.x * r, DM.rosette, zc + n.z * r + dz)), CARVED);
+        add('Tower dome rosette ring', S, new T.TorusGeometry((DM.roseRings[0] + DM.roseRings[1]) / 2, (DM.roseRings[1] - DM.roseRings[0]) / 2, 8, 64), place(rot, TR(xc + n.x * (r - .02), DM.rosette, zc + n.z * (r - .02) + dz)));
       }
       const sq = (name, m_, [y0, y1, h]) => add(name, m_, new T.BoxGeometry(2 * h, y1 - y0, 2 * h), TR(xc, (y0 + y1) / 2, zc));
       sq('Tower lantern plinth', S, LN.plinth); sq('Tower lantern plinth step', S, LN.step); sq('Tower lantern base', S, LN.base); sq('Tower lantern body', W, LN.body);
@@ -398,15 +563,23 @@
       }
       add('Tower lantern crown core', S, new T.CylinderGeometry(.12, .3, .7, 16), TR(xc, LN.crown[0] + .35, zc));
       add('Tower lantern crown neck', S, new T.CylinderGeometry(.09, .12, LN.ball - LN.crown[0] - .7, 12), TR(xc, (LN.crown[0] + .7 + LN.ball) / 2, zc));
-      add('Tower lantern ball', S, new T.SphereGeometry(.2, 18, 14), TR(xc, LN.ball, zc));
-      // Trefoil cross, in the old cross's material.
-      const [c0, c1] = LN.cross;
-      add('Tower cross', crossMaterial, new T.BoxGeometry(.1, c1 - c0 - .1, .1), TR(xc, (c0 + c1 - .1) / 2, zc));
-      add('Tower cross arm', crossMaterial, new T.BoxGeometry(.1, .1, 1.0), TR(xc, LN.arm, zc));
-      for (const [y, dz] of [[c1 - .105, 0], [LN.arm, -.52], [LN.arm, .52]]) for (const [u, v] of [[0, .05], [-.06, -.01], [.06, -.01]]) {
-        const up = dz === 0, dy = up ? v : u, ddz = up ? u : Math.sign(dz) * v;
-        add('Tower cross trefoil end', crossMaterial, new T.SphereGeometry(.055, 10, 8), TR(xc, y + dy, zc + dz + ddz));
-      }
+      add('Tower lantern ball', S, new T.SphereGeometry(LN.ballRadius, 24, 18), TR(xc, LN.ball, zc));
+      // E01B C44709..C4471C: actual 2D trefoil outline, with a proxy 100 mm depth.
+      const [c0, c1] = LN.cross, h = LN.crossLobe, ac = LN.arm, lo = ac - h, hi = ac + h;
+      const cross = new T.Shape(); cross.moveTo(-h, c0); cross.lineTo(-h, lo); cross.lineTo(-4 * h, lo);
+      cross.absarc(-5 * h, lo, h, 0, Math.PI, true);
+      cross.absarc(-6 * h, ac, h, -Math.PI / 2, Math.PI / 2, true);
+      cross.absarc(-5 * h, hi, h, Math.PI, 0, true);
+      cross.lineTo(-h, hi); cross.lineTo(-h, c1 - 3 * h);
+      cross.absarc(-h, c1 - 2 * h, h, -Math.PI / 2, Math.PI / 2, true);
+      cross.absarc(0, c1 - h, h, Math.PI, 0, true);
+      cross.absarc(h, c1 - 2 * h, h, Math.PI / 2, -Math.PI / 2, true);
+      cross.lineTo(h, hi); cross.lineTo(4 * h, hi);
+      cross.absarc(5 * h, hi, h, Math.PI, 0, true);
+      cross.absarc(6 * h, ac, h, Math.PI / 2, -Math.PI / 2, true);
+      cross.absarc(5 * h, lo, h, 0, Math.PI, true);
+      cross.lineTo(h, lo); cross.lineTo(h, c0); cross.lineTo(-h, c0); cross.closePath();
+      add('Tower cross', crossMaterial, new T.ExtrudeGeometry(cross, { depth: .1, bevelEnabled: false, curveSegments: 24 }), place(RY(-Math.PI / 2), TR(xc + .05, 0, zc)), 'TRACED CAD CROSS OUTLINE / SCHEMATIC DEPTH');
       // Pinnacles with fleur-de-lis on the four corner pedestals of the balustrade.
       const pin = K.pinnacle({ w: .3, h: spec.pinnacle.h * .8 }), fl = fleur(.32);
       for (const ex of [-1, 1]) for (const ez of [-1, 1]) {
@@ -443,6 +616,6 @@
     Object.assign(stats, { meshes, triangles: Math.round(triangles) });
     root.userData.stats = stats;
     window.CHURCH_TOWERS.stats = stats;
-    data?.assumptions?.push('Tower bases and tops follow the church’s CAD file of 23 October 2026 (E01B, plan sheet 5) at the owner’s direction of 25 October 2026: closed fronts with a blind arch inside an archivolt, massive fluted corner piers on pedestals, a Greek-key entablature to the +8.39 cornice, a door from the nave into each tower room, and a ribbed dome with rosettes, lantern, acanthus crown, ball and trefoil cross to +36.92, with fleur-de-lis pinnacles on the balustrade corners. The stage-1 wall plane stays at X 0.');
+    data?.assumptions?.push('Tower bases and tops follow the church’s CAD file of 23 October 2026 (E01B, plan sheet 5) at the owner’s direction of 25 October 2026. The 26 October native-entity audit corrects the six upper-front assemblies and the six outer-side assemblies to native arch/window/rose coordinates; twelve inner/rear assemblies repeat that coordinated profile as DERIVED pending elevation confirmation, the ground front arch radii, offset-circle dome shoulders to +32.790457, adjoining lantern levels and the trefoil cross outline to +36.919970. Existing coloured rose finish, wall X planes and all equipment positions are retained. The E02 outer ground face has its distinct +3.100470 blind arch and 1 m opening; rear/inner elevation identity, the ET stage-2 rose discrepancy, balcony, relief depth, hidden dome continuation, revolution, blade angles, glazing and construction sections remain unverified. The stage-1 wall plane stays at X 0; ISSUE-R06 unit confirmation stays open.');
   }
 })();

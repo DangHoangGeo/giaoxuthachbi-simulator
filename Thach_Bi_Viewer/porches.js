@@ -5,7 +5,8 @@
    have no opening to the porches; the porch roof is a cast concrete slab, not timber.
    Sources: plan sheet 5 (porches 2′–9 and 10–12, columns on the B/H axes), sections 24/25
    (“bê tông cốt thép đổ dày 13 cm”, clay tiles over; RC beams), detail 47 (the shouldered
-   pointed arch on the C/G axes of the 9–10 bay: spring +5.474, shoulder +7.147, crown +8.503).
+   circular-arc intrados on the C/G axes of the 9–10 bay: spring +5.474155, shoulder +7.147420,
+   crown +8.503190; four native ARC entities and two short impost shelves).
    The porch arcade and the cross arches C–B / G–H are true two-centred pointed (Gothic) arches,
    as the owner asked; the 9–10 side-bay arch keeps the drawn shouldered outline of detail 47. Column and arch sizes, the guard balustrade and the beam sizes are
    proposals: no structural design, reinforcement, guard height or code check is implied. */
@@ -14,7 +15,7 @@
   const DRAWN = 'USER CONFIRMED LAYOUT / SOURCE GRID / SCHEMATIC SECTION';
   const CONCEPT = 'CONCEPT · ENGINEERING HOLD';
   const spec = {
-    revision: '2026-10-25-open-porches-1',
+    revision: '2026-10-26-d47-intrados-2',
     lineZ: 10.414, // axes B/H
     innerFace: 7.47, // porch face of the C/G wall
     floor: -0.32,
@@ -36,12 +37,52 @@
     beamAxes: ['3', '4', '5', '6', '7', '8', '11'],
     cross: { from: 7.65, spring: 3.0, rise: 1.75 },
     wingEnds: [36.975, 44.175], wingWall: 0.32,
-    wingArch: { half: 3.303, spring: 5.474, shoulder: 7.147, crown: 8.503, band: 0.25, depth: 0.30, z: 7.36 },
+    // Outside opening types of E26/D29 and E31/D34, relocated to C/G by the owner.
+    // The CAD's different single inside opening is NOT silently treated as the same type.
+    openings: {
+      window: { width: 1, bottom: .85, leafTop: 2.9505, spring: 3.1005, radius: .5,
+        centres: [-1.015, 1.015], radii: [.5, .610, .688, .708, .778, .793, .828] },
+      // Candidate only: the current 170 mm exit-sign case does not fit its 150 mm head band.
+      // Keep the previous door model until a coordinated sign/mounting revision is checked.
+      doorCandidate: { status: 'ENGINEERING HOLD · NOT APPLIED', width: 2.25, bottom: 0, leafTop: 2.9505, spring: 3.1005, radius: 1.125,
+        radii: [1.125, 1.290, 1.407, 1.445, 1.550, 1.572, 1.625] },
+      reliefDepth: [.21, .30], // retained visual relief projection: CONCEPT, not verified CAD depth
+    },
+    wingArch: {
+      half: 3.303, spring: 5.474154929, shoulder: 7.147419557, crown: 8.503190063,
+      band: 0.25, depth: 0.30, z: 7.36, // band/depth remain CONCEPT, not D47 dimensions
+      // Native CAD arcs, mapped by the 9–10 midpoint and the foot datum of DIMENSION DA5CEE.
+      // All are traversed clockwise, from each stored end angle back to its start angle.
+      // The curve begins 99.996392 mm inside each clear column face; the short shelf is drawn.
+      arcs: [
+        { handle: 'DA5B35', centre: [-1.476627726, 5.488819943], radius: 1.72643816757638, angles: [106.1150944769076, 180.4866976874492] },
+        { handle: 'DA5B34', centre: [0, 6.414566025], radius: 2.088624038705893, angles: [90, 159.4589347943677] },
+        { handle: 'DA5B43', centre: [0, 6.414566025], radius: 2.088624038705893, angles: [20.5410652086613, 90] },
+        { handle: 'DA5B44', centre: [1.476627726, 5.488819943], radius: 1.72643816757638, angles: [359.5133023125509, 73.88490553350736] },
+      ],
+    },
   };
   // Clay tiles of the porch roof (bundle): +7.13 at the C/G line falling to +6.325 at |z| 10.98.
   const tileY = az => 7.13 - (7.13 - 6.325) * (az - 7.36) / (10.98 - 7.36);
   spec.slabUnderside = az => tileY(az) - spec.slab.below - spec.slab.thick;
-  window.CHURCH_PORCHES = { spec, prepare, tileY };
+  // Sample the native intrados at a maximum angular step of about 1.55 degrees (48 per arc).
+  // This gives <0.20 mm chord sagitta on these radii; it is a rendering bound, not site accuracy.
+  function wingIntrados(segments = 48) {
+    const A = spec.wingArch, points = [[-A.half, A.spring]];
+    for (const arc of A.arcs) {
+      const end = arc.angles[1] * Math.PI / 180;
+      let start = arc.angles[0] * Math.PI / 180;
+      if (start > end) start -= Math.PI * 2;
+      for (let i = 0; i <= segments; i++) {
+        const angle = end + (start - end) * i / segments;
+        const point = [arc.centre[0] + arc.radius * Math.cos(angle), arc.centre[1] + arc.radius * Math.sin(angle)];
+        if (Math.hypot(point[0] - points.at(-1)[0], point[1] - points.at(-1)[1]) > 1e-8) points.push(point);
+      }
+    }
+    points.push([A.half, A.spring]);
+    return points;
+  }
+  window.CHURCH_PORCHES = { spec, prepare, tileY, wingIntrados };
 
   function prepare({ THREE: T, exterior, mat, data }) {
     if (!exterior) return;
@@ -74,16 +115,6 @@
     // Shapes in the X–Y plane, extruded across z0..z1.
     const slabXY = (name, material, shape, [z0, z1], status, segments = 24) =>
       add(name, material, new T.ExtrudeGeometry(shape, { depth: z1 - z0, bevelEnabled: false, curveSegments: segments }), TR(0, 0, z0), status);
-    // Shouldered pointed arch, the outline of detail 47 (and of the sanctuary arches).
-    const lobedPoints = (cx, half, a, n = 14) => {
-      const s = new T.Path();
-      s.moveTo(cx - half, a.spring);
-      s.quadraticCurveTo(cx - half, a.shoulder - .05, cx - half * .58, a.shoulder);
-      s.bezierCurveTo(cx - half * .5, a.crown, cx - half * .15, a.crown + .04, cx, a.crown + .04);
-      s.bezierCurveTo(cx + half * .15, a.crown + .04, cx + half * .5, a.crown, cx + half * .58, a.shoulder);
-      s.quadraticCurveTo(cx + half, a.shoulder - .05, cx + half, a.spring);
-      return s.getPoints(n);
-    };
     // Two-centred pointed arch from (cx − half, spring) over the apex (cx, spring + rise).
     const pointedPoints = (cx, half, a, n = 14) => {
       const c = (a.rise * a.rise - half * half) / (2 * half), r = half + c, pts = [];
@@ -94,11 +125,6 @@
     };
     const pointedBand = (cx, half, a, w) => {
       const outer = pointedPoints(cx, half + w, { spring: a.spring, rise: a.rise + w * 1.3 }), inner = pointedPoints(cx, half, a).reverse();
-      return new T.Shape([...outer, ...inner]);
-    };
-    const grown = (a, w) => ({ spring: a.spring, shoulder: a.shoulder + w * .7, crown: a.crown + w });
-    const band = (cx, half, a, w) => {
-      const outer = lobedPoints(cx, half + w, grown(a, w)), inner = lobedPoints(cx, half, a).reverse();
       return new T.Shape([...outer, ...inner]);
     };
     // Prism over x0..x1 and z0..z1 whose top and bottom follow functions of |z| (sloped slab,
@@ -184,7 +210,14 @@
       // Detail 47: the shouldered pointed RC arch on the C/G axis of the 9–10 bay, open to the
       // timber roof above, between the side bay and the nave.
       const WA = spec.wingArch, cxw = (A['9'] + A['10']) / 2, zw = s * WA.z;
-      slabXY('Side-bay arch rib · reinforced concrete (detail 47)', W, band(cxw, WA.half, WA, WA.band), [zw - WA.depth / 2, zw + WA.depth / 2], DRAWN, 16);
+      const inner = wingIntrados().map(([x, y]) => new T.Vector2(cxw + x, y));
+      // Only the intrados is transcribed from D47. The retained display band and its extrusion
+      // are provisional: this does not model the complete raked concrete frame in the drawing.
+      const outer = inner.map(p => new T.Vector2(cxw + (p.x - cxw) * (WA.half + WA.band) / WA.half,
+        WA.spring + (p.y - WA.spring) * (WA.crown - WA.spring + WA.band) / (WA.crown - WA.spring)));
+      slabXY('Side-bay arch rib · reinforced concrete (detail 47)', W,
+        new T.Shape([...outer, ...inner.slice().reverse()]), [zw - WA.depth / 2, zw + WA.depth / 2],
+        'DRAWING SHOWN INTRADOS / CONCEPT BAND AND DEPTH · ENGINEERING HOLD', 16);
       for (const e of [-1, 1]) block('Side-bay arch impost', S, [cxw + e * WA.half - .2, cxw + e * WA.half + .2].sort((a, b) => a - b), [WA.spring - .16, WA.spring], [zw - .2, zw + .2]);
     }
 
@@ -216,6 +249,6 @@
     }
     root.userData.stats = { ...stats, meshes, triangles, removedBundleMeshes: remove.length };
     window.CHURCH_PORCHES.stats = root.userData.stats;
-    data?.assumptions?.push('The side porches follow the parish priest’s decision of 25 October 2026: no outer wall, concrete columns on the B/H axes with shouldered pointed arches (the outline of CAD detail 47) between them, a guard balustrade between the columns except where the outside stairs land, doors and windows only in the inner C/G wall, a cast concrete roof slab under the tiles with an RC beam on each axis, and plain walls closing the 9–10 side bays from the porches. Column, arch, guard and beam sizes are proposals on engineering hold.');
+    data?.assumptions?.push('The side porches follow the parish priest’s decision of 25 October 2026: no outer wall, concrete columns on the B/H axes with two-centred pointed arcade and cross arches, a guard except where the outside stairs land, doors and windows only in the inner C/G wall, a cast roof slab under the tiles and plain walls closing the 9–10 side bays from the porches. The 9–10 C/G arch intrados uses four native circular arcs and the short impost shelves from CAD detail 47 (26 October audit); its display band/depth and the porch column, arch, guard and beam sizes remain proposals on engineering hold.');
   }
 })();
