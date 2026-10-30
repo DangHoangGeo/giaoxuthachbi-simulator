@@ -14,7 +14,7 @@
   // docs/exterior-23102026/roofline-witnesses.json, not from fitting a screenshot.
   const archProfiles = {"rear":{"inner":[{"c":[0.284145374,14.61770302],"r":0.23585353,"a":[0.0,87.86369654799267],"handle":"D9016B"},{"c":[-1.096e-06,14.852882856],"r":0.2929388,"a":[0.09970567773280142,179.9002943189322],"handle":"D90172"},{"c":[-0.284147566,14.61770302],"r":0.23585353,"a":[92.13630345200733,180.0],"handle":"D90178"}],"outer":[{"c":[0.284145374,14.61770302],"r":0.31585353,"a":[0.0,74.91446718982118],"handle":"D9016A"},{"c":[-1.096e-06,14.852882856],"r":0.3729388,"a":[10.78547138934081,169.2145286106592],"handle":"D90171"},{"c":[-0.284147566,14.61770302],"r":0.31585353,"a":[105.0855328101788,180.0],"handle":"D90170"}],"envelope":{"c":[-1.096e-06,14.852882856],"r":0.7089388,"a":[26.26471907744193,153.7352809225581],"handle":"D90176"}},"side":{"inner":[{"c":[0.284159941,11.975410069],"r":0.23585353,"a":[0.0,87.8636965446606],"handle":"DAB425"},{"c":[1.3471e-05,12.210589905],"r":0.2929388,"a":[0.09970568106790674,179.9002943222671],"handle":"DAB41F"},{"c":[-0.284132999,11.975410069],"r":0.23585353,"a":[92.13630345533939,180.0],"handle":"DAB418"}],"outer":[{"c":[0.284159941,11.975410069],"r":0.31585353,"a":[0.0,74.91446718985961],"handle":"DAB41D"},{"c":[1.3471e-05,12.210589905],"r":0.3729388,"a":[10.78547138816362,169.2145286118364],"handle":"DAB41E"},{"c":[-0.284132999,11.975410069],"r":0.31585353,"a":[105.0855328101404,180.0],"handle":"DAB417"}],"envelope":{"c":[1.3471e-05,12.210589905],"r":0.7089388,"a":[26.26471907895724,153.7352809210427],"handle":"DAB423"}}};
   const spec = {
-    revision: '2026-10-26-cad-roofline-23102026',
+    revision: '2026-10-30-cad-lower-pilasters-1',
     // E02 LINE D99258 / D99C5F..D99C62; axis pinnacle ARC D9B1A6.
     parapet: { z: 10.6, y: [6.323919332, 7.073919332], plinth: .05, rail: .15,
       half: 0.12, pedestal: 0.25, pinnacle: .952407245, runs: [['2′', '9'], ['10', '12']] },
@@ -111,6 +111,22 @@
     remove.forEach(o => o.removeFromParent());
     sideGroups.forEach(g => g.removeFromParent());
 
+    // Replace only the eight legacy lower pilasters at the two wing ends and
+    // the outer/crossing pairs on E03. The bundle's square placeholders are
+    // narrower than the CAD faces and the wing pair is centred on the grid,
+    // rather than beneath the outer gable piers. Keep the separate D/E pair.
+    const legacyLower = [];
+    const legacyNames = /^(Schematic pilaster|Pilaster plinth|Pilaster base cap|Pilaster capital)$/;
+    const centre = new T.Vector3();
+    exterior.traverse(o => {
+      if (!o.isMesh || !legacyNames.test(o.name)) return;
+      box3.setFromObject(o).getCenter(centre);
+      const wing = [36.975, 44.175].some(x => Math.abs(centre.x - x) < .02) && Math.abs(Math.abs(centre.z) - 13.365) < .08;
+      const rear = Math.abs(centre.x - 53.32) < .09 && [7.36, 10.414].some(z => Math.abs(Math.abs(centre.z) - z) < .02);
+      if (wing || rear) legacyLower.push(o);
+    });
+    legacyLower.forEach(o => o.removeFromParent());
+
     const root = new T.Group();
     root.name = 'Roofline ornament — CAD file 23 Oct 2026';
     root.userData = { status: DRAWN, source: SOURCE, revision: spec.revision };
@@ -122,7 +138,7 @@
       bins.get(key).parts.push([geometry, matrix]);
     };
     const W = mat.wall, S = mat.trim, D = mat.darkTrim;
-    const stats = { pinnacles: 0, crosses: 0, balusters: 0, removedBundleMeshes: remove.length + sideGroups.length };
+    const stats = { pinnacles: 0, crosses: 0, balusters: 0, removedBundleMeshes: remove.length + sideGroups.length, removedLegacyLower: legacyLower.length };
     // Shared carving generators have a nominal height; fit their actual vertex bounds
     // to the source envelope so the last leaf does not stop short of the CAD top.
     const fitHeight = (geometry, height) => {
@@ -243,6 +259,25 @@
       return { at, blk, slab, poly, pier, pinnacle, rake, rose, aedicule };
     };
 
+    // EW/E03 lower shaft edges: y +1.529970 to +5.622216. The slender
+    // flute lines are drawn from +1.654970 to +5.497216. Relief depth,
+    // pedestal and capital profiles are illustrative, not structural design.
+    const lowerPilasters = (f, ranges, label, front) => {
+      for (const [lo, hi] of ranges) for (const sign of [-1, 1]) {
+        const [u0, u1] = sign > 0 ? [lo, hi] : [-hi, -lo], mid = (u0 + u1) / 2;
+        const st = 'CAD SHAFT OUTLINE / CONCEPT DEPTH · ENGINEERING HOLD';
+        const concept = 'CONCEPT PEDESTAL AND MOULDING / ENGINEERING HOLD';
+        // Extend the display pedestal down to the existing plinth top (−0.4).
+        // Its unsourced shape and attachment remain concept work.
+        f.blk(`${label} lower pilaster pedestal`, W, [u0, u1], [-.4, 1.529970], [front, front + .18], concept);
+        f.blk(`${label} lower pilaster shaft`, W, [u0, u1], [1.529970, 5.622216], [front, front + .18], st);
+        f.blk(`${label} lower pilaster base moulding`, S, [u0 - .04, u1 + .04], [1.37, 1.529970], [front, front + .22], concept);
+        f.blk(`${label} lower pilaster capital`, S, [u0 - .04, u1 + .04], [5.622216, 6.323919], [front, front + .22], concept);
+        for (const offset of [-.12, 0, .12])
+          f.blk(`${label} lower pilaster flute`, D, [mid + offset - .012, mid + offset + .012], [1.654970, 5.497216], [front + .18, front + .192], CARVED);
+      }
+    };
+
     // ---- Porch parapets: balustrade on the porch cornice, pedestal and pinnacle on every axis ----
     const PP = spec.parapet;
     for (const s of [-1, 1]) {
@@ -273,6 +308,7 @@
     for (const s of [-1, 1]) {
       const F = frame([SG.x, 0, s * SG.face], [s, 0, 0], [0, 0, s]);
       const f = face(F);
+      lowerPilasters(f, [[3.59, 4.26]], 'Wing', 0);
       // The gable wall itself, to the CAD silhouette, across the existing wall thickness.
       f.slab('Side gable wall · CAD silhouette', W, f.poly(SG.outline), -(SG.wall[1] - SG.wall[0]), 0);
       for (const e of [-1, 1]) {
@@ -292,6 +328,7 @@
     {
       const F = frame([RG.face, 0, 0], [0, 0, 1], [1, 0, 0]);
       const f = face(F);
+      lowerPilasters(f, [[7.025012, 7.695012], [10.239012, 10.909012]], 'Rear', 0);
       // Gable wall raised to the CAD silhouette under the rakes (the old end wall stops lower).
       const [[l0, l1], [h0, h1]] = RG.rakes;
       f.slab('Rear gable wall · CAD silhouette', W, f.poly([[-l0[0], 7.0], [l0[0], 7.0], [l0[0], l0[1]], [l1[0], l1[1]], [h0[0], h0[1]], [h1[0], h1[1]], [-h1[0], h1[1]], [-h0[0], h0[1]], [-l1[0], l1[1]], [-l0[0], l0[1]]]), -.44, 0);
@@ -341,6 +378,7 @@
     Object.assign(stats, { meshes, triangles: Math.round(triangles) });
     root.userData.stats = stats;
     window.CHURCH_ROOFLINE.stats = stats;
-    data?.assumptions?.push('Exterior roofline audited against DWG version 23102026: E02 parapet top +7.073919; EW outside wing rose +7.571529 and cross +15.186895; E03 rear rose +9.988501 and cross +17.829188. Source circular niche arches, rose boundaries, mitred cornices and cross silhouettes are transcribed; depths, capital/pinnacle carving, tracery and scrolls remain visualization proxies. Existing roof planes and fixture positions are unchanged. ISSUE-R05 ridge and ISSUE-R06 units remain open; not for construction.');
+    data?.assumptions?.push('Exterior roofline audited against DWG version 23102026: E02 parapet top +7.073919; EW outside wing rose +7.571529 and cross +15.186895; E03 rear rose +9.988501 and cross +17.829188. Source circular niche arches, rose boundaries, mitred cornices and cross silhouettes are transcribed; depths, capital/pinnacle carving, tracery and scrolls remain visualization proxies. Roof elevations and fixture positions remain; display roof ends are trimmed to the current gable face planes. ISSUE-R05 ridge and ISSUE-R06 units remain open; not for construction.');
+    data?.assumptions?.push('Lower pilasters at both wing ends and the sanctuary end follow the EW/E03 source shaft widths and heights; their projected depths, bases, capitals, fluting and connection to the existing plinth are concepts, not a structural design. Existing equipment and routes remain in place; access, weatherproofing and engineering holds remain open.');
   }
 })();
