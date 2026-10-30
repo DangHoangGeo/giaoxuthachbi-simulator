@@ -132,9 +132,26 @@
           const grad = g.createLinearGradient(x, 0, x + 42, 0);
           if (dataMap) { grad.addColorStop(0, '#545454'); grad.addColorStop(.42, '#c5c5c5'); grad.addColorStop(1, '#787878'); }
           else { grad.addColorStop(0, `rgb(${112+tone},${49+tone*.6},${29+tone*.35})`); grad.addColorStop(.42, `rgb(${183+tone},${83+tone*.7},${47+tone*.3})`); grad.addColorStop(1, `rgb(${143+tone},${60+tone*.6},${34+tone*.3})`); }
-          g.fillStyle = grad; g.fillRect(x + 1.1, y + 2, 40.7, 60);
-          g.fillStyle = dataMap ? '#e5e5e5' : 'rgba(240,161,96,.35)'; g.fillRect(x+2,y+59,39,2);
+          // A softly rounded exposed tile end and a narrow overlap shadow keep the
+          // clay legible at close range. The same silhouette is used for relief.
+          g.fillStyle = grad; g.beginPath(); g.moveTo(x+1.1,y+2);
+          g.lineTo(x+41.8,y+2); g.lineTo(x+41.8,y+57);
+          g.quadraticCurveTo(x+41.8,y+61,x+37.8,y+61);
+          g.lineTo(x+5.1,y+61); g.quadraticCurveTo(x+1.1,y+61,x+1.1,y+57);
+          g.closePath(); g.fill();
+          g.strokeStyle = dataMap ? 'rgba(235,235,235,.6)' : 'rgba(244,169,112,.24)';
+          g.lineWidth = 1.4; g.beginPath(); g.moveTo(x+4,y+58);
+          g.quadraticCurveTo(x+21.5,y+60,x+39,y+58); g.stroke();
           g.fillStyle = dataMap ? '#333' : 'rgba(54,23,13,.45)'; g.fillRect(x,y+62,43,2);
+          if (!dataMap) {
+            // Fine firing variation, deterministic per tile; not a weather or
+            // condition survey. No extra random calls alter the other finishes.
+            g.strokeStyle = 'rgba(75,31,17,.09)'; g.lineWidth = .7;
+            for (let n=0;n<3;n++) {
+              const sx=x+7+((tone*3+n*11)%28);
+              g.beginPath(); g.moveTo(sx,y+7); g.lineTo(sx+1.5,y+51); g.stroke();
+            }
+          }
         }
       } else if (kind === 'ashlar') {
         // Periodic jittered cells make irregular rubble with recessed mortar.

@@ -46,6 +46,12 @@ The [new review record](../review/sculpture-detail-2026-10-25/README.md) freezes
 
 The browser tool denied both the local preview origin and the user-opened file URL despite the user's attempts to enable access. Desktop appearance checks and fresh screenshots remain pending. **USER CONFIRMED verification exception, 25 October 2026:** after being told the remaining check was blocked, the owner answered **“Authorize this pass and commit”** to source/headless verification only and a local commit. This exception applies to this pass; it does not mark the shapes visually approved or waive later desktop review. Previously captured images document the earlier finish pass, not these new shapes.
 
+## Roof surface follow-up · 30 October 2026
+
+The existing locally generated terracotta tile map in `realism.js` now gives the exposed ends a shallow rounded outline, a fine lip and restrained firing variation. The colour and bump maps use the same tile outline; the existing roof geometry, UV scale, material settings and random sequence for other finishes are retained. This is an illustrative surface treatment informed by the project's [appearance references](church-view-renderings.md), not a surveyed tile profile, selected product or evidence of age or condition. Tile dimensions, thickness, roof assembly, drainage, loads and fixing remain for the responsible designers; see the [roof specification](beams-roof-connections/SPECIFICATION.md).
+
+The texture changes no equipment, electrical line or position, collision, analysis input, plan geometry or drawing dimension, so the electrical registers, schedules and plan export need no refresh. Existing engineering holds, including the [central-view constraint](engineering/central-view-constraint.md), remain open. The viewer was inspected on desktop in visit-only mode in daylight and evening; the roof is dark in the existing evening scene. This is a visual review, not measured illumination or construction approval. The [website viewer contract](web/viewer.md) remains applicable.
+
 ## Outstanding review
 
 **USER CONFIRMED, 25 October 2026:** “mirror things” means **minor visual details** in this decoration request. It is not a request to reflect the model. ENG-027, the separate possible drawing/model left-right mirror, remains open. This finish revision applies no global reflection and changes no saint, tower-board, stair or station side assignment. A coordinate reflection needs its own coordinated geometry, winding, navigation, equipment, route and register migration.
