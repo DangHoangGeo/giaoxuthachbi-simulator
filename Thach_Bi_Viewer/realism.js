@@ -693,6 +693,28 @@
     const landscape=new T.Group();landscape.name='Two rows of courtyard trees';building.add(landscape);
     const bark=new T.MeshStandardMaterial({color:'#66513a',roughness:1});
     const foliage=['#344a26','#496230','#627846'].map(color=>new T.MeshStandardMaterial({color,roughness:1,side:T.DoubleSide}));
+    // Presentation-only landscape: the site has not been surveyed. Keep the
+    // existing stair approaches and forecourt on their original surface.
+    const grassCanvas=document.createElement('canvas');grassCanvas.width=grassCanvas.height=256;
+    const grassContext=grassCanvas.getContext('2d');grassContext.fillStyle='#7c8d65';grassContext.fillRect(0,0,256,256);
+    let grassSeed=30102026;const grassRand=()=>{grassSeed=(Math.imul(grassSeed,1664525)+1013904223)>>>0;return grassSeed/4294967296;};
+    for(let i=0;i<4500;i++){
+      const x=grassRand()*256,y=grassRand()*256,light=grassRand()>.5;
+      grassContext.fillStyle=light?'rgba(194,204,155,.13)':'rgba(45,67,34,.13)';
+      grassContext.fillRect(x,y,1+grassRand()*2,1+grassRand()*3);
+    }
+    const grassMap=window.CHURCH_TEXTURES?.create(T,grassCanvas)||new T.CanvasTexture(grassCanvas);
+    grassMap.colorSpace=T.SRGBColorSpace;grassMap.wrapS=grassMap.wrapT=T.RepeatWrapping;grassMap.repeat.set(.18,.18);grassMap.anisotropy=anisotropy;
+    const grass=new T.MeshStandardMaterial({name:'Proposed grass · presentation only',map:grassMap,roughness:1,side:T.DoubleSide});
+    const soil=new T.MeshStandardMaterial({name:'Proposed tree-bed soil',color:'#5e4b35',roughness:1});
+    const bedGeo=new T.CircleGeometry(.66,32);
+    for(const sign of [-1,1]) {
+      const edge=[[-244,22.4],[-12,22.4],[3,22.35],[16,22.5],[30,22.35],[44,22.5],[58,22.4],[284,22.4]];
+      const outline=edge.concat([[284,177],[-244,177]]).map(([x,z])=>new T.Vector2(x,-sign*z));
+      const lawn=mesh(new T.ShapeGeometry(new T.Shape(outline)),grass,landscape,'Proposed lawn beyond courtyard');
+      lawn.rotation.x=-Math.PI/2;lawn.position.y=-2.025;lawn.castShadow=false;
+      lawn.userData={status:'CONCEPT / UNSURVEYED LANDSCAPE',source:'Illustrative site context; final grading and access pending'};
+    }
     const crownGeo=new T.IcosahedronGeometry(1,1);
     const leafShape=new T.Shape();leafShape.moveTo(0,-.5);leafShape.quadraticCurveTo(.35,0,0,.5);leafShape.quadraticCurveTo(-.35,0,0,-.5);
     const leafGeo=new T.ShapeGeometry(leafShape,3);
@@ -714,6 +736,8 @@
           blade.scale.set(.7,.7,.7);blade.rotation.set(rand()*6,rand()*6,rand()*6);
         }
       }
+      const bed=mesh(bedGeo,soil,landscape,'Tree bed soil · presentation concept');bed.rotation.x=-Math.PI/2;bed.position.set(x,-1.99,z);bed.castShadow=false;
+      bed.userData={status:'CONCEPT / UNSURVEYED LANDSCAPE',source:'Existing proposed tree rows; final planting and drainage pending'};
       const curb=mesh(new T.TorusGeometry(.72,.07,6,24),mat.trim,landscape,'Tree bed stone edging');curb.rotation.x=Math.PI/2;curb.position.set(x,-2.045,z);
     }
     // The central facade above the cornice follows the CAD file of 23 Oct 2026 (facade.js).
@@ -798,7 +822,7 @@
     data.assumptions.push('Exterior side doors now occupy the same outer wall plane as the windows, following the latest user correction. Doors open in Walk mode. Tower front arches remain open with the existing rear wall plane visible beyond.');
     data.assumptions.push('The sanctuary frame uses the three-lobed central and side arch silhouettes from section sheet 5. Curvature, relief depth and placement at axis 10 remain visual reconstructions pending a detailed longitudinal section.');
     data.assumptions.push('Side access follows the plan and the corrected side reference: paired flights at the first doorway, single flights flanking the projecting bay. Stair count, tread run, balustrade profiles and exact landing edges are proposed.');
-    data.assumptions.push('Ivory plaster, stone trim, terracotta tiles, rubble plinth and timber shafts follow the selected images. All maps are generated locally at physical scale; these are proposed finishes. Two rows of eight trees are landscaping proposals.');
+    data.assumptions.push('Ivory plaster, stone trim, terracotta tiles, rubble plinth and timber shafts follow the selected images. The finishes are proposed. Two rows of eight trees, lawn and tree-bed soil are unsurveyed presentation concepts; grading, planting, drainage and circulation require site design.');
     ctx.palettes=new Map();for(const m of materialScale.keys())ctx.palettes.set(m,{color:m.color.clone(),map:m.map,bump:m.bumpMap});
     api.stats={sideFlights:8,sideLandings:6,texturedMaterials:materialScale.size,lightGraphics};
     api.measurements=data.refinement;

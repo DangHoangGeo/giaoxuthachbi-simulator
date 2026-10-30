@@ -27,6 +27,8 @@ The website now serves `Thach_Bi_Viewer/` itself. There is one model, so the web
 
 ## Language (since 18 October 2026)
 
+**Landscape context, 30 October 2026:** the viewer's existing tree switch is now labelled **Show landscaping / Hiện cảnh quan** and hides the proposed lawn and tree-bed surfaces with the trees. This is unsurveyed visual context, not a site plan; see the [finish record](../decoration-finishes.md#surrounding-landscape--30-october-2026). Script version URLs were refreshed for the roofline and landscape updates so a returning browser requests the revised files.
+
 **Reference images, 24 October 2026:** the References panel and startup/failure front/exterior links use four new native updated-model façade images, selected through `references.js` and the current reference manifest. The PNGs in `references/03-facade/native/` are 1672 × 941 byte-identical copies of the dated generated masters, labelled as concepts. They replace the old front/side/detail selections while preserving stable IDs and dated provenance. `prepare-viewer.mjs` includes these images through the existing referenced-image scan. The standalone dated gallery, manifests and Markdown sources are still excluded from the web copy; no website editorial release or deployment is implied. See [the rendering record](../church-view-renderings.md).
 
 - One language on screen at a time: Vietnamese by default, English on the EN switch. The switch sits in the viewer's header (VI | EN) in normal and visit-only mode, and the site view's own VI | EN switch shares the same choice.

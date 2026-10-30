@@ -2,6 +2,8 @@
 
 **CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.**
 
+**Evidence caution, later 30 October:** a later check found that this browser could reuse a cached `realism.js` when the script URL did not change. These original captures cannot establish that the revised tile texture was loaded, despite the source hashes below. A [later daylight roof detail](../grounds-2026-10-30/roof-detail.jpg) uses a fresh origin and versioned script URL; the historical images remain rather than being represented as definitive after-change evidence.
+
 Desktop visit-only viewer, standard graphics, showing the local procedural tile finish in [daylight](day.jpg), [a closer daylight view](detail.jpg) and [evening](evening.jpg). The roof is much darker at night under the existing lighting; these images are visual checks, not illumination measurements. The image follows the project's concept appearance, not a selected tile or surveyed condition. No private reference drawing is included.
 
 The screenshots and checks used `c88fc6d` plus the existing uncommitted working tree and this roof finish change; the commit alone does not reproduce the complete scenes. In particular, the entrance wall, simulator and electrical changes were already in progress and are outside this roof pass. At capture the SHA-256 hashes were:

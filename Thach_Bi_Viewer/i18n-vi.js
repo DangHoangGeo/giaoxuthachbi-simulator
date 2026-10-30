@@ -45,7 +45,7 @@
     'Show roof': 'Hiện mái',
     'Reference materials': 'Vật liệu tham khảo',
     'Drawing grid': 'Lưới bản vẽ',
-    'Show trees': 'Hiện cây',
+    'Show landscaping': 'Hiện cảnh quan',
     'Doors & windows': 'Cửa đi & cửa sổ',
     'Open when walking': 'Mở khi đi bộ',
     'Open': 'Mở',
