@@ -56,13 +56,42 @@
   };
   window.CHURCH_ROOFLINE = { spec, prepare };
 
-  function prepare({ THREE: T, exterior, mat, data }) {
+  function prepare({ THREE: T, exterior, roofs, mat, data }) {
     if (!exterior || !window.CHURCH_TOWERS?.ornament) return;
     exterior.updateMatrixWorld(true);
     const K = window.CHURCH_CARVING.create(T);
     const { TR, RY, RZ, SC, place, merge } = K;
     const { fleur, pilasterCapital, meanderGeo } = window.CHURCH_TOWERS.ornament(T, K);
     const A = data.longitudinal;
+
+    // The bundle's roof planes used to run past the new gable face planes:
+    // 53.40 versus 53.24 at the sanctuary end and |Z| 13.62 versus 13.56 at
+    // the wings. Clip only those overhangs, including the ridge/eaves trim,
+    // before texture projection and batching. This is a display junction,
+    // not a designed flashing, drainage detail or a change to roof heights.
+    const roofEnds = /^(Continuous principal roof, valley clipped|Veranda roof beyond side projection|Planar side-gable roof meeting main valley|Main eaves trim|Veranda eaves trim|Longitudinal ridge cap|Terracotta half-round ridge cap)$/;
+    if (roofs) {
+      roofs.updateWorldMatrix(true, true);
+      const point = new T.Vector3(), bounds = new T.Box3(), removeRoof = [];
+      roofs.traverse(o => {
+        if (!o.isMesh || !roofEnds.test(o.name)) return;
+        bounds.setFromObject(o);
+        const wing = o.name === 'Planar side-gable roof meeting main valley';
+        const limit = wing ? spec.side.face : spec.rear.face;
+        if (wing ? Math.max(Math.abs(bounds.min.z), Math.abs(bounds.max.z)) <= limit : bounds.max.x <= limit) return;
+        if (!wing && bounds.min.x >= limit) { removeRoof.push(o); return; }
+        const inverse = o.matrixWorld.clone().invert(), geometry = o.geometry.clone(), positions = geometry.attributes.position;
+        for (let i = 0; i < positions.count; i++) {
+          point.fromBufferAttribute(positions, i).applyMatrix4(o.matrixWorld);
+          if (wing) point.z = Math.max(-limit, Math.min(limit, point.z));
+          else point.x = Math.min(limit, point.x);
+          point.applyMatrix4(inverse); positions.setXYZ(i, point.x, point.y, point.z);
+        }
+        positions.needsUpdate = true; geometry.computeBoundingBox(); geometry.computeBoundingSphere();
+        o.geometry = geometry;
+      });
+      removeRoof.forEach(o => o.removeFromParent());
+    }
 
     // ---- Superseded bundle parts ----
     const remove = [], box3 = new T.Box3();

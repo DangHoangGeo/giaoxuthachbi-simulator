@@ -50,6 +50,12 @@ Các vòng hoa hồng hiện dùng biên vòng đúng: 810/675 mm và 628,113/59
 - Mái thân nhà vẫn giữ mốc mô hình đã chọn +12,472 m. Hình học E02/S24/S25 còn đỉnh khoảng +12,3964 m. Không ép các đường mái về trung bình hoặc đổi mái chỉ để khớp trang trí. ISSUE-R05 còn mở.
 - Không thay đổi vị trí đèn, quạt, loa, tủ điện, tuyến cáp hoặc ID bố trí. Các thay đổi đắp nổi vẫn cần kiểm va chạm/độ che khuất tại bước phối hợp chung. Giới hạn hình học che sáng/âm của bộ mô phỏng không được coi là đã giải quyết.
 
+## Mối nối mái với đầu hồi · 30/10/2026
+
+Khi xem hai cánh và đầu cung thánh, các tấm mái cũ nhô quá mặt đầu hồi đang dùng trong mô hình: mái cánh đến `|Z| 13,620 m` trong khi mặt trang trí cánh ở `|Z| 13,560 m`; mái chính và mái hiên đến `X 53,400 m` trong khi mặt đầu hồi cung thánh ở `X 53,240 m`. `roofline.js` cắt phần nhô này cùng đỉnh ngói và diềm mái liên quan về đúng các mặt mô hình hiện có, trước khi chiếu kết cấu và gộp mesh. Cao độ, độ dốc, các thung mái, hình mặt đứng, lưới trục và vị trí thiết bị giữ nguyên. Bài kiểm [roof end faces](../../scripts/verify_roof_end_faces.cjs) kiểm mesh dựng thật ở cả hai phía và các mốc mái giữ lại.
+
+Đây là **MODEL TRANSCRIPTION / CONCEPT junction**, không phải xác nhận chiều dài mái hay cấu tạo mép mái; 59 mm sai khác P14, ISSUE-R05, ISSUE-R06, kết cấu, chống thấm và thoát nước vẫn mở. Một phần mái đỏ vẫn nhìn thấy *phía sau* lan can đầu nhà theo góc nhìn: không tuyên bố mọi chồng hình đã được giải quyết. Mặt dưới đầu hồi và chạm ở cả hai cánh còn đơn giản so với EW/E03; hình hiện tại không phải bản chạm hoàn chỉnh. Không thêm/đổi thiết bị, dây, phân tích hoặc dữ liệu mặt bằng; `verify_model.cjs --plan` tạo lại mà không đổi dữ liệu. Các sổ điện đang sửa dở được giữ nguyên. Kiểm tra nhìn ngày/tối và tình trạng cây làm việc được ghi trong [hồ sơ kiểm tra](../../review/exterior-roof-ends-2026-10-30/README.md).
+
 ## Thực hiện và kiểm tra
 
 `Thach_Bi_Viewer/roofline.js` giữ nhóm và tên bộ phận phục vụ phân lớp. Cung CAD được chia đoạn với sai số dây cung tối đa **0,5 mm trong mô hình**; đây là sai số hiển thị so với cung nguồn, không phải dung sai thi công. Đường tròn vòng hoa hồng được chia 96 đoạn; độ võng dây cung của vòng ngoài khoảng 0,43 mm. Thánh giá là hình đùn từ biên mặt đứng; bề dày 100 mm vẫn là giả định hiển thị.
