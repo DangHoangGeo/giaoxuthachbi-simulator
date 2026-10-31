@@ -1,0 +1,769 @@
+{
+ "phien_ban": "23102026",
+ "tep": "11_Chi_tiet_trang_tri_thap_23102026.pdf",
+ "ten": "Chi tiết trang trí hai tháp",
+ "mo_ta": "Các phần trang trí nhỏ của tháp chuông được phóng lớn từ cùng nét vector CAD: thánh giá, đèn lồng, chỏm, hoa góc, lan can ô bậc, hoa hồng, cửa chớp, đầu cột, phào, diềm hoa văn và hoa văn góc vòm. Mặt trước lấy E01B (tháp phía H; tháp B đối xứng trong khoảng 0,1 mm, riêng tầng trên cùng lệch khoảng 11,5 mm). Mặt bên lấy E02.",
+ "nguon_so_lieu": "Số đo cạnh hình là tọa độ đọc trên nét CAD (TRACED) theo handle trong docs/exterior-23102026, hoặc nhãn cao độ/kích thước ghi trong DWG. DWG không ghi kích thước, vật liệu, chiều sâu chạm khắc hay cấu tạo của các chi tiết trang trí.",
+ "bien_doi": {
+  "E01B": "Z = -(x - 1666600.3)/1000; Y = (y + 515946.8)/1000",
+  "E02": "X = (x - 1404501.3)/1000; Y = (y + 518026.8)/1000"
+ },
+ "chi_tiet": [
+  {
+   "id": "T01",
+   "slug": "cross-lantern",
+   "ban_ve": "E01B",
+   "ten": "Thánh giá, quả cầu và đèn lồng đỉnh tháp",
+   "en": "Tower cross, orb and lantern",
+   "khung_cat_cad_mm": [
+    1655200,
+    -483347,
+    1657700,
+    -478847
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     8.9,
+     11.4
+    ],
+    "Y_m": [
+     32.6,
+     37.1
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Đỉnh thánh giá",
+     "cao_do": [
+      "E01B",
+      36920
+     ]
+    },
+    {
+     "nhan": "Tâm tay ngang thánh giá",
+     "ref": "tower-witnesses.json#cross-inner-end",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính đầu múi thánh giá",
+     "ref": "tower-witnesses.json#cross-top",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Tâm quả cầu",
+     "ref": "tower-witnesses.json#lantern-ball",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính quả cầu",
+     "ref": "tower-witnesses.json#lantern-ball",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Đỉnh mũ đèn lồng",
+     "ref": "tower-witnesses.json#lantern-cap-top",
+     "truong": "y_dau"
+    },
+    {
+     "nhan": "Chân bệ đèn lồng (đỉnh chỏm)",
+     "ref": "tower-witnesses.json#lantern-plinth-bottom",
+     "truong": "y_dau"
+    }
+   ]
+  },
+  {
+   "id": "T02",
+   "slug": "dome",
+   "ban_ve": "E01B",
+   "ten": "Chỏm tháp, hoa hồng chỏm và hoa góc",
+   "en": "Tower dome, dome rose and corner finials",
+   "khung_cat_cad_mm": [
+    1653700,
+    -486047,
+    1659200,
+    -482547
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     7.4,
+     12.9
+    ],
+    "Y_m": [
+     29.9,
+     33.4
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Bán kính cung vai chỏm",
+     "ref": "tower-witnesses.json#dome-shoulder-outer-side",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Tâm hoa hồng chỏm",
+     "ref": "tower-witnesses.json#dome-rose-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài hoa hồng chỏm",
+     "ref": "tower-witnesses.json#dome-rose-outer",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Bán kính trong hoa hồng chỏm",
+     "ref": "tower-witnesses.json#dome-rose-inner",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Đỉnh hoa góc",
+     "ref": "tower-balcony-witnesses.json#cornerPinnacleEnvelopesE01B.0.topWitness",
+     "truong": "y"
+    },
+    {
+     "nhan": "Đỉnh chỏm (chân bệ đèn lồng)",
+     "ref": "tower-witnesses.json#lantern-plinth-bottom",
+     "truong": "y_dau"
+    }
+   ]
+  },
+  {
+   "id": "T03",
+   "slug": "parapet",
+   "ban_ve": "E01B",
+   "ten": "Lan can ô bậc và hoa góc, một góc tháp",
+   "en": "Stepped pierced parapet and corner finial, one corner",
+   "khung_cat_cad_mm": [
+    1653700,
+    -487347,
+    1656700,
+    -484247
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     9.9,
+     12.9
+    ],
+    "Y_m": [
+     28.6,
+     31.7
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Mặt sàn chân lan can",
+     "cao_do": [
+      "E01B",
+      29090
+     ]
+    },
+    {
+     "nhan": "Số ô thủng mỗi mặt",
+     "ref": "tower-balcony-witnesses.json#holePattern",
+     "truong": "countPerSourceFace",
+     "don_vi": "ô"
+    },
+    {
+     "nhan": "Nhịp tim ô",
+     "ref": "tower-balcony-witnesses.json#holePattern",
+     "truong": "centrePitchM",
+     "don_vi": "mm"
+    },
+    {
+     "nhan": "Bề rộng thân ô",
+     "ref": "tower-balcony-witnesses.json#holePattern",
+     "truong": "bodyWidthM",
+     "don_vi": "mm"
+    },
+    {
+     "nhan": "Bề rộng cổ ô",
+     "ref": "tower-balcony-witnesses.json#holePattern",
+     "truong": "neckWidthM",
+     "don_vi": "mm"
+    },
+    {
+     "nhan": "Đáy ô",
+     "ref": "tower-balcony-witnesses.json#holePattern",
+     "truong": "bottomY"
+    },
+    {
+     "nhan": "Đỉnh ô",
+     "ref": "tower-balcony-witnesses.json#holePattern",
+     "truong": "topY"
+    }
+   ]
+  },
+  {
+   "id": "T04",
+   "slug": "stage-4",
+   "ban_ve": "E01B",
+   "ten": "Tầng tháp thứ tư: vòm, cửa chớp đôi và hoa hồng",
+   "en": "Fourth tower stage: arch, paired louvres and rose",
+   "khung_cat_cad_mm": [
+    1653700,
+    -492947,
+    1659200,
+    -486747
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     7.4,
+     12.9
+    ],
+    "Y_m": [
+     23.0,
+     29.2
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Chân tầng",
+     "cao_do": [
+      "E01B",
+      23140
+     ]
+    },
+    {
+     "nhan": "Tâm vòm lớn",
+     "ref": "tower-witnesses.json#upper-4-great-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài vòm lớn",
+     "ref": "tower-witnesses.json#upper-4-great-outer",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Tâm cung cửa chớp",
+     "ref": "tower-witnesses.json#upper-4-louvre-outer-H",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính cung cửa chớp",
+     "ref": "tower-witnesses.json#upper-4-louvre-outer-H",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Đáy ô cửa chớp",
+     "ref": "tower-witnesses.json#upper-4-sill",
+     "truong": "y_cuoi"
+    },
+    {
+     "nhan": "Tâm hoa hồng",
+     "ref": "tower-witnesses.json#upper-4-rose-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài hoa hồng",
+     "ref": "tower-witnesses.json#upper-4-rose-outer",
+     "truong": "ban_kinh"
+    }
+   ]
+  },
+  {
+   "id": "T05",
+   "slug": "capital-23140",
+   "ban_ve": "E01B",
+   "ten": "Đầu cột góc và phào tại +23,140 m",
+   "en": "Corner capital and cornice at +23.140 m",
+   "khung_cat_cad_mm": [
+    1653700,
+    -494347,
+    1655600,
+    -491947
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     11.0,
+     12.9
+    ],
+    "Y_m": [
+     21.6,
+     24.0
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Nhãn cao độ phào",
+     "cao_do": [
+      "E01B",
+      23140
+     ]
+    }
+   ]
+  },
+  {
+   "id": "T06",
+   "slug": "stage-3",
+   "ban_ve": "E01B",
+   "ten": "Tầng tháp thứ ba: vòm, cửa chớp đôi và hoa hồng",
+   "en": "Third tower stage: arch, paired louvres and rose",
+   "khung_cat_cad_mm": [
+    1653700,
+    -500247,
+    1659200,
+    -492647
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     7.4,
+     12.9
+    ],
+    "Y_m": [
+     15.7,
+     23.3
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Chân tầng",
+     "cao_do": [
+      "E01B",
+      15840
+     ]
+    },
+    {
+     "nhan": "Tâm vòm lớn",
+     "ref": "tower-witnesses.json#upper-3-great-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài vòm lớn",
+     "ref": "tower-witnesses.json#upper-3-great-outer",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Bán kính trong vòm lớn",
+     "ref": "tower-witnesses.json#upper-3-great-inner",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Tâm cung cửa chớp",
+     "ref": "tower-witnesses.json#upper-3-louvre-outer-H",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Đáy ô cửa chớp",
+     "ref": "tower-witnesses.json#upper-3-sill",
+     "truong": "y_cuoi"
+    },
+    {
+     "nhan": "Tâm hoa hồng",
+     "ref": "tower-witnesses.json#upper-3-rose-outer",
+     "truong": "tam_y"
+    }
+   ]
+  },
+  {
+   "id": "T07",
+   "slug": "rose-and-louvre-heads",
+   "ban_ve": "E01B",
+   "ten": "Hoa hồng và đầu vòm cửa chớp có thánh giá nhỏ, tầng ba",
+   "en": "Rose and cross-topped louvre heads, third stage",
+   "khung_cat_cad_mm": [
+    1654800,
+    -497347,
+    1658100,
+    -494547
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     8.5,
+     11.8
+    ],
+    "Y_m": [
+     18.6,
+     21.4
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Tâm hoa hồng",
+     "ref": "tower-witnesses.json#upper-3-rose-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài hoa hồng",
+     "ref": "tower-witnesses.json#upper-3-rose-outer",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Bán kính trong hoa hồng",
+     "ref": "tower-witnesses.json#upper-3-rose-inner",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Tim ô cửa chớp phía trong",
+     "ref": "tower-witnesses.json#upper-3-louvre-inner-H",
+     "truong": "tam_z"
+    },
+    {
+     "nhan": "Tim ô cửa chớp phía ngoài",
+     "ref": "tower-witnesses.json#upper-3-louvre-outer-H",
+     "truong": "tam_z"
+    },
+    {
+     "nhan": "Bán kính cung cửa chớp",
+     "ref": "tower-witnesses.json#upper-3-louvre-outer-H",
+     "truong": "ban_kinh"
+    }
+   ]
+  },
+  {
+   "id": "T08",
+   "slug": "capital-15840",
+   "ban_ve": "E01B",
+   "ten": "Đầu cột góc và phào tại +15,840 m",
+   "en": "Corner capital and cornice at +15.840 m",
+   "khung_cat_cad_mm": [
+    1653700,
+    -501647,
+    1655600,
+    -499147
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     11.0,
+     12.9
+    ],
+    "Y_m": [
+     14.3,
+     16.8
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Nhãn cao độ phào",
+     "cao_do": [
+      "E01B",
+      15840
+     ]
+    }
+   ]
+  },
+  {
+   "id": "T09",
+   "slug": "stage-2",
+   "ban_ve": "E01B",
+   "ten": "Tầng tháp thứ hai: vòm, cửa chớp đôi và hoa hồng",
+   "en": "Second tower stage: arch, paired louvres and rose",
+   "khung_cat_cad_mm": [
+    1653700,
+    -507647,
+    1659200,
+    -500047
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     7.4,
+     12.9
+    ],
+    "Y_m": [
+     8.3,
+     15.9
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Chân tầng",
+     "cao_do": [
+      "E01B",
+      8390
+     ]
+    },
+    {
+     "nhan": "Tâm vòm lớn",
+     "ref": "tower-witnesses.json#upper-2-great-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài vòm lớn",
+     "ref": "tower-witnesses.json#upper-2-great-outer",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Bán kính trong vòm lớn",
+     "ref": "tower-witnesses.json#upper-2-great-inner",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Tâm hoa hồng",
+     "ref": "tower-witnesses.json#upper-2-rose-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài hoa hồng",
+     "ref": "tower-witnesses.json#upper-2-rose-outer",
+     "truong": "ban_kinh"
+    }
+   ]
+  },
+  {
+   "id": "T10",
+   "slug": "louvres-stage-2",
+   "ban_ve": "E01B",
+   "ten": "Cửa chớp đôi tầng hai: lá chớp, bậu và đầu vòm",
+   "en": "Second-stage paired louvres: blades, sill and heads",
+   "khung_cat_cad_mm": [
+    1654900,
+    -507097,
+    1658000,
+    -503447
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     8.6,
+     11.7
+    ],
+    "Y_m": [
+     8.85,
+     12.5
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Tim ô phía trong",
+     "ref": "tower-witnesses.json#upper-2-louvre-inner-H",
+     "truong": "tam_z"
+    },
+    {
+     "nhan": "Tim ô phía ngoài",
+     "ref": "tower-witnesses.json#upper-2-louvre-outer-H",
+     "truong": "tam_z"
+    },
+    {
+     "nhan": "Tâm cung cửa chớp",
+     "ref": "tower-witnesses.json#upper-2-louvre-outer-H",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính cung cửa chớp",
+     "ref": "tower-witnesses.json#upper-2-louvre-outer-H",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Đáy ô cửa chớp",
+     "ref": "tower-witnesses.json#upper-2-sill",
+     "truong": "y_cuoi"
+    }
+   ]
+  },
+  {
+   "id": "T11",
+   "slug": "cornice-8390",
+   "ban_ve": "E01B",
+   "ten": "Phào +8,390 m, diềm hoa văn chữ triện và đầu cột tầng trệt",
+   "en": "Cornice at +8.390 m, key-pattern frieze and ground capitals",
+   "khung_cat_cad_mm": [
+    1653700,
+    -508747,
+    1657200,
+    -506647
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     9.4,
+     12.9
+    ],
+    "Y_m": [
+     7.2,
+     9.3
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Nhãn cao độ phào",
+     "cao_do": [
+      "E01B",
+      8390
+     ]
+    }
+   ]
+  },
+  {
+   "id": "T12",
+   "slug": "spandrels",
+   "ban_ve": "E01B",
+   "ten": "Hoa văn góc trên vòm tầng trệt",
+   "en": "Ground-stage spandrel ornaments",
+   "khung_cat_cad_mm": [
+    1653900,
+    -510547,
+    1659000,
+    -508347
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     7.6,
+     12.7
+    ],
+    "Y_m": [
+     5.4,
+     7.6
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Tâm vòm lớn tầng trệt",
+     "ref": "tower-witnesses.json#ground-great-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài vòm lớn",
+     "ref": "tower-witnesses.json#ground-great-outer",
+     "truong": "ban_kinh"
+    }
+   ]
+  },
+  {
+   "id": "T13",
+   "slug": "ground-arch",
+   "ban_ve": "E01B",
+   "ten": "Vòm trang trí tầng trệt và đầu cột",
+   "en": "Ground-stage decorative arch and capitals",
+   "khung_cat_cad_mm": [
+    1653700,
+    -515147,
+    1659200,
+    -508547
+   ],
+   "khung_mo_hinh_m": {
+    "Z_m": [
+     7.4,
+     12.9
+    ],
+    "Y_m": [
+     0.8,
+     7.4
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Tâm vòm lớn",
+     "ref": "tower-witnesses.json#ground-great-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài vòm lớn",
+     "ref": "tower-witnesses.json#ground-great-outer",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Bán kính trong vòm lớn",
+     "ref": "tower-witnesses.json#ground-great-inner",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Tâm vòm kín nhỏ",
+     "ref": "tower-witnesses.json#ground-blind-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài vòm kín",
+     "ref": "tower-witnesses.json#ground-blind-outer",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Bán kính trong vòm kín",
+     "ref": "tower-witnesses.json#ground-blind-inner",
+     "truong": "ban_kinh"
+    }
+   ]
+  },
+  {
+   "id": "T14",
+   "slug": "side-ground",
+   "ban_ve": "E02",
+   "ten": "Mặt bên tháp tầng trệt: cửa sổ giữa và vòm",
+   "en": "Tower outer side, ground stage: central window and arch",
+   "khung_cat_cad_mm": [
+    1404201,
+    -518027,
+    1409701,
+    -510427
+   ],
+   "khung_mo_hinh_m": {
+    "X_m": [
+     -0.3,
+     5.2
+    ],
+    "Y_m": [
+     0.0,
+     7.6
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Bậu cửa sổ giữa",
+     "ref": "tower-other-faces-witnesses.json#groundOuterSide.centralWindow",
+     "truong": "sillY"
+    },
+    {
+     "nhan": "Đầu thân cửa sổ",
+     "ref": "tower-other-faces-witnesses.json#groundOuterSide.centralWindow",
+     "truong": "jambTopY"
+    },
+    {
+     "nhan": "Bán kính vòm cửa sổ",
+     "ref": "tower-other-faces-witnesses.json#groundOuterSide.centralWindow",
+     "truong": "archRadiusM"
+    },
+    {
+     "nhan": "Chân cung vòm kín mặt bên",
+     "ref": "tower-other-faces-witnesses.json#groundOuterSide",
+     "truong": "blindSpringY"
+    },
+    {
+     "nhan": "Cao hơn chân cung mặt trước",
+     "ref": "tower-other-faces-witnesses.json#groundOuterSide",
+     "truong": "differenceFromFrontBlindY",
+     "don_vi": "mm"
+    }
+   ]
+  },
+  {
+   "id": "T15",
+   "slug": "plan-15840-corner",
+   "ban_ve": "PT15A",
+   "ten": "Mặt bằng góc trụ bậc tháp tại +15,840 m",
+   "en": "Stepped corner pier plan at +15.840 m",
+   "khung_cat_cad_mm": [
+    1625526,
+    -614089,
+    1629806,
+    -610490
+   ],
+   "so_do": [
+    {
+     "nhan": "Bề ngang ngoài mặt bằng",
+     "kich_thuoc": "DWG0043"
+    },
+    {
+     "nhan": "Lòng trong giữa hai mặt",
+     "kich_thuoc": "DWG0044"
+    }
+   ]
+  },
+  {
+   "id": "T16",
+   "slug": "plan-29090-corner",
+   "ban_ve": "PT29",
+   "ten": "Mặt bằng góc chân lan can tại +29,090 m",
+   "en": "Parapet base corner plan at +29.090 m",
+   "khung_cat_cad_mm": [
+    1653037,
+    -613585,
+    1657318,
+    -609986
+   ],
+   "so_do": [
+    {
+     "nhan": "Cao độ mặt bằng",
+     "cao_do": [
+      "E01B",
+      29090
+     ]
+    }
+   ]
+  }
+ ]
+}

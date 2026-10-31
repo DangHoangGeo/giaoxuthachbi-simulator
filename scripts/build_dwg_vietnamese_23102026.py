@@ -182,7 +182,8 @@ def grid_page(doc):
 def guide_page(doc):
     page=new_page(doc,'CHỌN TẬP THEO BỘ PHẬN NHÀ THỜ','Mỗi tập đều có bảng kích thước chính và ghi chú ngay bên cạnh hình')
     y=104
-    for group in SPEC['nhom'][1:]:
+    tower=json.loads((OUT/'tower-details-23102026.json').read_text())
+    for group in SPEC['nhom'][1:]+[{'ma':'11','ten':tower['ten'],'tep':tower['tep']}]:
         put(page,36,y,group['ma']+'  '+group['ten'],13,True)
         put(page,540,y,group['tep'],10)
         page.insert_link({'kind':fitz.LINK_GOTOR,'from':fitz.Rect(30,y-17,W-30,y+7),
@@ -200,8 +201,7 @@ def guide_page(doc):
 SOURCE_DOCS={}
 
 
-def vector_source(drawing_id,crop_name):
-    normalized=(0,0,1,1) if crop_name=='toan_bo' else dict(ZOOMS[drawing_id])[crop_name]
+def vector_doc(drawing_id):
     raw_path=OLD/'_raw'/f'{drawing_id}.pdf'
     optimized=DEST/'_vector_raw'/f'{drawing_id}.pdf'
     verification=DEST/'_vector_raw/verification.json'
@@ -214,7 +214,12 @@ def vector_source(drawing_id,crop_name):
         raw_path=optimized
     if drawing_id not in SOURCE_DOCS:
         SOURCE_DOCS[drawing_id]=fitz.open(raw_path)
-    raw=SOURCE_DOCS[drawing_id]
+    return SOURCE_DOCS[drawing_id]
+
+
+def vector_source(drawing_id,crop_name):
+    normalized=(0,0,1,1) if crop_name=='toan_bo' else dict(ZOOMS[drawing_id])[crop_name]
+    raw=vector_doc(drawing_id)
     r=raw[0].rect
     a,b,c,d=normalized
     clip=fitz.Rect(r.width*a,r.height*(1-d),r.width*c,r.height*(1-b))
@@ -418,12 +423,22 @@ def build():
         contact_sheets(target)
         print(f"{group['tep']}: {pages} trang, {target.stat().st_size/1e6:.2f} MB",flush=True)
     result['tep'].append(audit_volume())
+    from build_dwg_tower_details_23102026 import tower_volume
+    tower_volume(result)
+    write_package(result)
+    for source_doc in SOURCE_DOCS.values():
+        source_doc.close()
+
+
+def write_package(result):
+    """Write the guide text, QA record and both ZIPs from the volume list."""
     (DEST/'_qa/kiem-tra.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     instructions=['NHÀ THỜ GIÁO XỨ THẠCH BI - PHIÊN BẢN 23102026','',
         'Bắt đầu bằng tập 00. Các tập 01-09 được chia theo bộ phận nhà thờ. Tập 10 ghi kết quả kiểm tra dữ liệu.',
+        'Tập 11 phóng lớn các chi tiết trang trí nhỏ của hai tháp chuông.',
         'Mỗi tập có bảng kích thước chính và ghi chú cạnh hình. Giữ nguyên mã đo để đối chiếu nguồn.',
         'Bản vẽ giữ nguyên nét vector; phóng lớn vẫn sắc. Ghi chú tiếng Việt vẫn là văn bản.',
-        'Có 49 PDF từng trang trong thư mục tung_trang, ngoài các tập theo nhóm.',
+        f"Có {len(result['tung_trang'])} PDF từng trang trong thư mục tung_trang, ngoài các tập theo nhóm.",
         'Đơn vị mm suy từ bản vẽ; INSUNITS=1 (inch, đơn vị chèn). Người thiết kế phải xác nhận trước thi công.',
         'Không đo tỷ lệ trên trang PDF. Các số đo còn mâu thuẫn vẫn được ghi rõ. Không dùng để thi công.',
         'Bản vẽ của đơn vị thiết kế; quyền công bố chưa được giải quyết. Bộ này chỉ xuất cục bộ.','']
@@ -446,8 +461,6 @@ def build():
     with zipfile.ZipFile(singles_zip) as archive:
         assert archive.testzip() is None
     print(f"Từng trang: {len(result['tung_trang'])} tệp, {singles_zip.stat().st_size/1e6:.2f} MB",flush=True)
-    for source_doc in SOURCE_DOCS.values():
-        source_doc.close()
 
 
 if __name__=='__main__':
