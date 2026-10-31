@@ -9429,12 +9429,12 @@ window.CHURCH_PLAN_DATA = {
   "targets": {
     "altar": [
       44.24,
-      1.875,
+      1.925,
       0
     ],
     "ambo": [
       41.3,
-      2.25,
+      2.3,
       -2.62
     ],
     "crucifix": [

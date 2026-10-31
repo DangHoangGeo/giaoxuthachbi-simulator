@@ -335,7 +335,7 @@ assert(!/(\bsim|\bwiring|CHURCH_SIMULATOR)\??\.(applyScene|update|add|remove|dup
 assert(read('simulator/engine.js').includes('if (rehearsalBase) return false;') && read('simulator/engine.js').includes('if (rehearsalBase) return;'), 'while a rehearsal lasts the simulator stores nothing and records no history');
 
 // Figures quoted in the captions are the values held in the model data.
-for (const [quoted, source] of [['+36.920 m', 'crossTop: 36.92'], ['+12.472 m', 'ridge: 12.472'], ['53.016 m', '12: 53.016,'], ['+0.750 m', 'altar: 0.75'],
+for (const [quoted, source] of [['+36.920 m', 'crossTop: 36.92'], ['+12.472 m', 'ridge: 12.472'], ['53.016 m', '12: 53.016,'], ['+0.800 m', 'altar: 0.8'],
   ['+8.390, +15.840, +23.140 and +29.090 m', 'tower: [8.39, 15.84, 23.14, 29.09]'], ['3.100 m', 'clearEntranceWidths: [2.15, 3.1, 2.15]']]) {
   assert(text.includes(quoted), `caption quotes ${quoted}`);
   assert(bundle.includes(source), `model data holds ${source}`);

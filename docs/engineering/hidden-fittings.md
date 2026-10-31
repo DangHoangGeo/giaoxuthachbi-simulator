@@ -31,7 +31,7 @@ The 21 L3 sanctuary fittings were still black (projectors) or bronze (spotlights
 | Records | Type | Fittings | Finish |
 | --- | --- | --- | --- |
 | L98–L105 | `projector24`, `spot15`, `projector36` | Altar key lights B/H, ambo key light, sanctuary step fills B/H, presider chair light, sanctuary frame washes B/H, under the axis-9 tie | Black / bronze → beam lacquer |
-| L115–L118 | `spot15`, `projector36` | Statue accents and shrine washes B/H, under the axis-9 side beams | Bronze / black → beam lacquer |
+| L115–L118 | `spot15`, `projector36` | Statue accents and shrine washes B/H, under the axis-9 side beams (since 25 Oct 2026 on the back face of the axis-10 frame above its side arches, hidden by the spandrel; see the [parish meeting](parish-meeting-2026-10-25.md)) | Bronze / black → beam lacquer |
 | L106–L108, L110–L112, L114 | `spot15`, `projector36` | Crucifix accents B/H, reredos washes B/H, reredos base washes B/H, tabernacle accent, on the chamber side walls behind the frame | Bronze / black → chamber lacquer |
 | L109, L113 | `uplight` | Sanctuary vault uplights B/H on the springing cornice | Bronze → chamber lacquer |
 
@@ -146,3 +146,8 @@ Unmet design targets are the ones `dev` already misses (feedback margins below 3
 ## 7. Open items
 
 Questions **Q50–Q52** in the [question register](questions-for-parish-and-designers.json) and ENG-034 in [issues](issues.md): fixing brackets into the lacquered beams without notching, lacquer and plaster colour samples, glare from the cowls; fixing, weathering, drainage and lightning bonding of the ledge fittings, asymmetric wall-wash optics, balustrade shading of the dome and safe access at +8.4 to +29.1 m; real pier width, speaker tilt bracket stand-off, masonry fixing and an on-site speech and feedback test. A night mock-up of one tower face and one nave bay should precede any purchase.
+
+
+## Đối chiếu lan can CAD ngày 26/10/2026
+
+[ENG-041](issues.md#lan-can-tháp-và-che-chùm-đèn-chỏm--eng-041): lan can tháp đã đổi sang 17 ô bậc mỗi mặt. Gối/đèn L164/L175 giữ nguyên, tia tim qua ô, nhưng 30/49 hướng mẫu của nón 36° bị hình học lan can chặn; đây không phải tỷ lệ quang thông. Bảng lux cũ chưa có che khuất này. Cần phối hợp quang học thực, chi tiết và thử ban đêm trước khi xác nhận mức sáng của chỏm; không tăng số tính hoặc dịch thiết bị trong lượt dựng này.

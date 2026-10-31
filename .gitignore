@@ -36,6 +36,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Church CAD revision received 2026-10-24: the DWG, its DXF conversion and the sheet images are
+# the designers' drawings under publication hold H1. Keep them local; commit only the extracted data.
+/docs/layout_design/dwg-2026-10-23/source/
+/docs/layout_design/dwg-2026-10-23/images/
+/docs/layout_design/dwg-2026-10-23/*.dwg
+
 # Local exports: rendered films and private-review packages. Never publish from here.
 /exports/
 

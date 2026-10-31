@@ -39137,7 +39137,7 @@ void main() {
         },
         entrance: {
           title: "Between the towers",
-          note: "The central facade follows a tracing of the supplied elevation.",
+          note: "Above the doors, the central facade follows the church\u2019s CAD file of 23 October 2026.",
           pos: [-25, 11, 0],
           target: [2.43, 10.6, 0],
           walk: [-5.3, 0, 0, 0.16],
@@ -39161,7 +39161,7 @@ void main() {
         },
         sanctuary: {
           title: "Sanctuary approach",
-          note: "The +0.750 m platform is sourced; its furnishings are a proposal.",
+          note: "The +0.800 m platform is sourced; its furnishings are a proposal.",
           pos: [35.5, 2.7, -0.3],
           target: [47, 3.5, 0],
           walk: [36, 0, 0, 0.04],
@@ -39170,7 +39170,7 @@ void main() {
         },
         dais: {
           title: "On the sanctuary platform",
-          note: "The floor steps up to the source level of +0.750 m.",
+          note: "The floor steps up to the source level of +0.800 m.",
           pos: [41.2, 3.2, -2.3],
           target: [47.8, 3.6, 0],
           walk: [41.5, 0, 0, 0.07],
@@ -39266,8 +39266,8 @@ void main() {
         sanctuary: {
           title: "Sanctuary",
           source:
-            "Floor plan: file 4 / sheet 6. Sanctuary section: file 7 / sheet 5.",
-          fact: "Main sanctuary platform +0.750 m. Adjacent lower platform +0.150 m. Nave finished floor \xB10.000 m.",
+            "Floor plan: file 4 / sheet 6. Sanctuary levels: CAD file of 23 Oct 2026, sections 25 and 45.",
+          fact: "Main sanctuary platform +0.800 m. Adjacent side platforms +0.160 m. Nave finished floor \xB10.000 m.",
           note: "Altar, crucifix, seating, flowers, chandeliers, and their finishes are proposed design elements, not equipment or construction specifications.",
         },
         roof: {
@@ -39375,13 +39375,14 @@ void main() {
                 : ge > 7.2
                   ? -0.32
                   : ge <= 3.6 && V >= 38.2 && V < 39.8
-                    ? Math.min(0.75, (Math.floor((V - 38.2) / 0.32) + 1) * 0.15)
+                    ? Math.min(0.8, (Math.floor((V - 38.2) / 0.32) + 1) * 0.16)
                     : ge <= 3.6 && V >= 39.75 && V <= 48.65
-                      ? 0.75
-                      : (ge > 3.6 && V >= 40.33 && V <= 52.63) ||
-                          (ge <= 3.6 && V >= 48.675)
-                        ? 0.15
-                        : 0;
+                      ? 0.8
+                      : ge > 3.6 && V >= 40.33 && V <= 52.63
+                        ? 0.16
+                        : ge <= 3.6 && V >= 48.675
+                          ? 0.15
+                          : 0;
     }
     function de(V, _e, ge = 0.2) {
       for (let Qe = 0; Qe < 8; Qe++) {
@@ -43105,7 +43106,7 @@ void main() {
         "Interior fit-out is a concept proposal: pews, kneelers, altar furniture, reredos, devotional artwork, glazing colour, chandeliers and sconces are not specified by the supplied architectural PDFs.",
         "Main clear nave width 14.500 m, structural grids, source column heights and the continuous timber-supported roof topology are retained. Added timber lining and member profiles are illustrative; no Gothic vault or new ceiling volume is introduced.",
         "The centre aisle and side aisle routes remain clear between the seating blocks. Cross aisles are kept at the principal side-door bays. This is not an occupancy, accessible-route or egress certification.",
-        "The existing source-derived sanctuary floor is +0.750 m. Furnishings are positioned on that level; the altar, ambo and reredos dimensions are visual design choices requiring parish and architect approval.",
+        "The existing source-derived sanctuary floor is +0.800 m. Furnishings are positioned on that level; the altar, ambo and reredos dimensions are visual design choices requiring parish and architect approval.",
         "The reredos is a proposed furnishing in front of the existing separation at axis 11. It does not establish the missing architectural elevation or room-wall height.",
         "The five dynamic lights provide a responsive day/evening visualization. Their intensities are uncalibrated image settings; no lighting performance, electrical load, equipment quantity or installation detail is inferred.",
         "Stained-glazing patterns and Stations of the Cross frames show proposed decorative locations. Artwork and sculpture are visual placeholders for a later commissioned design.",
@@ -43141,14 +43142,14 @@ void main() {
           position: [36.5, 1.65, 0],
           target: [47.7, 3.5, 0],
           description:
-            "The +0.750 m dais and proposed altar, crucifix and decoration.",
+            "The +0.800 m dais and proposed altar, crucifix and decoration.",
         },
         {
           key: "dais",
           title: "On the sanctuary dais",
-          position: [41, 2.4, 0],
+          position: [41, 2.45, 0],
           target: [47.6, 3.8, 0],
-          description: "Eye level follows the +0.750 m floor.",
+          description: "Eye level follows the +0.800 m floor.",
         },
         {
           key: "interior-reverse",
@@ -43182,7 +43183,7 @@ void main() {
           maxX: 48.65,
           minZ: -3.6,
           maxZ: 3.6,
-          y: 0.75,
+          y: 0.8,
         },
         {
           label: "Sanctuary side B",
@@ -43190,7 +43191,7 @@ void main() {
           maxX: 52.63,
           minZ: -7.25,
           maxZ: -3.6,
-          y: 0.15,
+          y: 0.16,
         },
         {
           label: "Sanctuary side H",
@@ -43198,7 +43199,7 @@ void main() {
           maxX: 52.63,
           minZ: 3.6,
           maxZ: 7.25,
-          y: 0.15,
+          y: 0.16,
         },
       ],
       q = 0,
@@ -43455,8 +43456,8 @@ void main() {
         forecourt: -0.48,
         veranda: -0.32,
         floor: 0,
-        sideSanctuary: 0.15,
-        altar: 0.75,
+        sideSanctuary: 0.16,
+        altar: 0.8,
         verandaEave: 6.325,
         mainEave: 7.13,
         ridge: 12.472,
@@ -44168,7 +44169,9 @@ void main() {
       ["10", "11"],
       ["11", "12"],
     ],
-    b1 = new Set(["4", "8", "10"]);
+    // Doorways in bays 4–5 and 8–9. Bay 10–11 beside the sanctuary has a window: the parish
+    // priest (25 Oct 2026) wants no door from the sanctuary sides to the porches.
+    b1 = new Set(["4", "8"]);
   for (let s of [-1, 1]) {
     for (let [e, t] of S1) {
       let n = ti.longitudinal[e],
@@ -44251,13 +44254,34 @@ void main() {
       for (let u of [-r / 2, r / 2]) jo(h, u, -0.32, 6.15, 0.12, 0.25);
       if ((a || ss(-r / 2, 6.325, 0.02, 1.7, h, 0.55), !a)) {
         let u = Dp(o, s * 7.36, s),
-          f = {
-            u: 0,
-            w: 2.25,
-            spring: 3.171,
-            rise: 1.14,
-            bottom: l ? 0 : 0.65,
-          };
+          // Parish priest, 25 Oct 2026: the porches have no outer wall, and the windows and
+          // doors of the outer elevation (DWG sheet 26: two 1.0 m arched windows, sill +0.85,
+          // 1.03 m pier, rosette above) stand in this inner wall. Doorways keep 2.25 m.
+          f = l
+            ? [{ u: 0, w: 2.25, spring: 3.171, rise: 1.14, bottom: 0 }]
+            : [
+                { u: -1.015, w: 1, spring: 3.101, rise: 0.507, bottom: 0.85 },
+                { u: 1.015, w: 1, spring: 3.101, rise: 0.507, bottom: 0.85 },
+              ];
+        od(
+          u,
+          `Inner wall ${s > 0 ? "G" : "C"} ${e}\u2013${t}`,
+          "SOURCE GRID / DETAIL OPENINGS",
+          "Files 8,9; DWG sheets 26, 28",
+        );
+        for (let q of f)
+          $o(u, q.u, q.bottom, q.w, q.spring, q.rise, 0.23, {
+            infill: !1,
+            surround: 0.09,
+          });
+        if (!l) {
+          for (let q of f) {
+            We(q.w - 0.04, 0.68, 0.1, q.u, 0.43, 0.12, ce.trim, u, "Window low parapet");
+            for (let p = -2; p <= 2; p++)
+              We(0.025, 0.5, 0.06, q.u + p * 0.14, 0.47, 0.18, ce.darkTrim, u, "Schematic parapet flute");
+          }
+          Ac(u, 0, 4.7, 0.15, 0.4185);
+        }
         if (
           (Ko(
             [
@@ -44270,12 +44294,8 @@ void main() {
             ce.wall,
             u,
             "Inner C/G wall with opening",
-            [sd(0, f.bottom, 2.25, 3.171, 1.14)],
+            f.map((q) => sd(q.u, q.bottom, q.w, q.spring, q.rise)),
           ),
-          $o(u, 0, f.bottom, 2.25, 3.171, 1.14, 0.23, {
-            infill: l ? !1 : "glass",
-            surround: 0.09,
-          }),
           l)
         ) {
           (Y0(
@@ -44901,29 +44921,29 @@ void main() {
   K0(tn, 0, 12.55, 1.9, 3.18, 17.829);
   We(
     8.9,
-    0.75,
+    0.8,
     7.2,
     44.2,
-    0.375,
+    0.4,
     0,
     ce.floor,
     Fn,
-    "Sanctuary central platform +0.750",
-    "SOURCE LEVEL / SCHEMATIC EDGES",
-    "Plan file 4",
+    "Sanctuary central platform +0.800",
+    "SOURCE LEVEL (DWG 2026-10-23 sections 25, 45) / SCHEMATIC EDGES",
+    "Plan file 4; level DWG sheets 25 and 45",
   );
   for (let s of [-1, 1])
     We(
       12.3,
-      0.15,
+      0.16,
       3.48,
       46.48,
-      0.075,
+      0.08,
       s * 5.37,
       ce.floor,
       Fn,
-      "Sanctuary side platform +0.150",
-      "EXPLICIT LEVEL",
+      "Sanctuary side platform +0.160",
+      "EXPLICIT LEVEL (DWG 2026-10-23 section 25)",
     );
   We(
     4.341,
@@ -44940,10 +44960,10 @@ void main() {
   for (let s = 0; s < 5; s++)
     We(
       1.6 - s * 0.3,
-      (s + 1) * 0.15,
+      (s + 1) * 0.16,
       7.2,
       39 + s * 0.15,
-      (s + 1) * 0.075,
+      (s + 1) * 0.08,
       0,
       ce.floor,
       Fn,
@@ -44972,7 +44992,7 @@ void main() {
       Fn,
       "Illustrative sanctuary side-door upper threshold",
       "SOURCE FLOOR DATUMS / PROPOSED TREAD RUN",
-      "Plan +0.150 / \u22120.320; exact step detail is unconfirmed",
+      "Side floor +0.160 (DWG section 25) / veranda \u22120.320; exact step detail is unconfirmed",
     ),
       We(
         2.25,
@@ -44988,7 +45008,7 @@ void main() {
         "Source doorway center 46.425 m; step geometry is illustrative",
       ));
   ti.assumptions.push(
-    "Two side sanctuary doorways connect +0.150 m to the \u22120.320 m veranda using visible illustrative threshold treads. Floor datums and doorway positions are sourced; tread runs and counts require an architectural detail.",
+    "Two side sanctuary doorways connect +0.160 m to the \u22120.320 m veranda using visible illustrative threshold treads. Floor datums and doorway positions are sourced; tread runs and counts require an architectural detail.",
   );
   function Op(s, e = "#476c64") {
     let t = document.createElement("canvas");

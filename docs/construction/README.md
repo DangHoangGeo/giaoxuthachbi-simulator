@@ -10,7 +10,7 @@ Owner request, 14 October 2026: the drawing grid could hardly be seen, and Fathe
 
 The viewer's original **Drawing grid** switch (View settings) draws one-pixel lines at Y = −2.04 m, the courtyard level, under the plinth, with labels at −1.70 m at 32 % opacity. Inside the church the floor hides them; outside they are under the ground plane. The switch is unchanged. The site view replaces it while open with:
 
-- **Grid lines on the floors**: 7 cm red bands that follow each floor level (verandas −0.320, nave ±0.000, sanctuary +0.150/+0.750, courtyard −2.080), sampled every 0.25 m with the viewer's own floor-height function. **See grid through walls** draws them on top of everything.
+- **Grid lines on the floors**: 7 cm red bands that follow each floor level (verandas −0.320, nave ±0.000, sanctuary side floors +0.160 and dais +0.800, bay behind the dais +0.150, courtyard −2.080), sampled every 0.25 m with the viewer's own floor-height function. **See grid through walls** draws them on top of everything.
 - **Axis bubbles** at both ends of every axis (1–12 including 2′, A–I). Axes closer than a bubble (2 and 2′, 0.575 m apart) get a staggered bubble with a leader line.
 - **Dimension chains** in millimetres between consecutive axes on side B (4 900 · 575 · 4 500 … 7 200 · 4 500 · 4 341, overall 53 016) and at the altar end (2 835 · 3 054 · 3 760 · 7 200 …), from the model grid.
 - **Crossing tags** painted on the floor at each axis crossing inside the building (for example `5·D`), readable while walking.
@@ -23,7 +23,7 @@ The viewer's original **Drawing grid** switch (View settings) draws one-pixel li
 | **Grid / Lưới trục** | Display switches; plan cut height (floor plan at +1.20 m, above eaves at +8.00 m, or any height); every axis with its model coordinate and spacing, with **Section** to cut the model on that axis; every level, with a cut 1.20 m above it. |
 | **Layers / Lớp** | Fourteen construction layers, each **Show / Ghost / Hide / Only**. A bar shows how many parts of the layer come from the drawings and how many are schematic or concept shapes. Presets: all, structure only, shell without ornament. |
 | **Phases / Giai đoạn** | A **proposed** twelve-phase sequence (`docs/construction/phases.json`). The slider shows the church up to a phase: earlier phases normal, the chosen phase amber, later phases ghosted or hidden. **Play** runs through the sequence. Each phase lists the open records (workbook issues and ENG holds) that affect it, and can be given a status: not recorded, not started, in progress, built, checked on site. **Next to build** is the first phase not recorded as built. |
-| **Check / Kiểm tra** | The dimension workbook's 463 records, searchable, filterable (grid spacings, levels, unresolved, measured on site). Grid spacings show the model's value beside the drawing value. A record can be shown in the model. Outside the public visit, a measured value and date can be entered per record; with a tolerance set by the engineer, each is shown within or outside it. The workbook's 22 open dimension items are listed. |
+| **Check / Kiểm tra** | The dimension workbook's 463 records, searchable, filterable (grid spacings, levels, unresolved, measured on site). Grid spacings show the model's value beside the drawing value. A record can be shown in the model. Outside the public visit, a measured value and date can be entered per record; with a tolerance set by the engineer, each is shown within or outside it. The workbook's 27 open dimension items are listed (ISSUE-R01 to ISSUE-R05 added 24 October 2026 from the church's CAD file). |
 
 Toolbar: **Inspect** (default), **Measure**, **Clear**; views **Plan**, **Front**, **Side B**, **Side H**, **3D**. Drawing views are fitted into the area beside the panel by offsetting the projection; the camera and orbit target are not moved.
 
@@ -58,7 +58,7 @@ Exports are personal working records. Do not commit them with names, phone numbe
 python3 scripts/build_construction_data.py
 ```
 
-It reads the workbook's *Dimensions*, *Model grid*, *Open items* and *Sources* sheets (cached cell values, standard library only) and `phases.json`, and refuses phases that name unknown gates. `--check` fails when the file is stale. The workbook itself is not changed.
+It reads the workbook's *Dimensions*, *Model grid*, *Open items* and *Sources* sheets (cached cell values, standard library only) and `phases.json`, and refuses phases that name unknown gates. The *DWG …* sheets added from the CAD file of 23 October 2026 are not read; see [`docs/layout_design/dwg-2026-10-23/`](../layout_design/dwg-2026-10-23/README.md). `--check` fails when the file is stale. The workbook itself is not changed.
 
 ## Checks
 

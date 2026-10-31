@@ -1,0 +1,719 @@
+{
+  "status": "passed",
+  "sourceSha256": "2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae",
+  "checkedBounds": 118,
+  "largestBoundResidualMm": 0.0018114980449013274,
+  "actualWallApertureChecks": 50,
+  "otherTowerFaces": 18,
+  "checks": [
+    {
+      "label": "Tower H stage 2 · native arch crown",
+      "actual": 14.80195140838623,
+      "source": 14.801951388250716,
+      "residual_mm": 0.000020135514589014747
+    },
+    {
+      "label": "Tower H stage 2 · rose bottom",
+      "actual": 12.737964630126953,
+      "source": 12.737964350999999,
+      "residual_mm": 0.0002791269544388797
+    },
+    {
+      "label": "Tower H stage 2 · rose top",
+      "actual": 13.817964553833008,
+      "source": 13.817964351,
+      "residual_mm": 0.00020283300727896858
+    },
+    {
+      "label": "Tower H stage 2 · rose centre Z",
+      "actual": 10.152934074401855,
+      "source": 10.152934409,
+      "residual_mm": -0.00033459814474667837
+    },
+    {
+      "label": "Tower H stage 2 · louvre sill",
+      "actual": 9.049968719482422,
+      "source": 9.049968734,
+      "residual_mm": -0.000014517578250661245
+    },
+    {
+      "label": "Tower H stage 3 · native arch crown",
+      "actual": 21.898454666137695,
+      "source": 21.898453836367903,
+      "residual_mm": 0.0008297697924319891
+    },
+    {
+      "label": "Tower H stage 3 · rose bottom",
+      "actual": 20.072391510009766,
+      "source": 20.072391717000002,
+      "residual_mm": -0.00020699023650649906
+    },
+    {
+      "label": "Tower H stage 3 · rose top",
+      "actual": 21.15239143371582,
+      "source": 21.152391717,
+      "residual_mm": -0.0002832841801136965
+    },
+    {
+      "label": "Tower H stage 3 · rose centre Z",
+      "actual": 10.152934074401855,
+      "source": 10.152934409,
+      "residual_mm": -0.00033459814474667837
+    },
+    {
+      "label": "Tower H stage 3 · louvre sill",
+      "actual": 16.499969482421875,
+      "source": 16.499968713,
+      "residual_mm": 0.0007694218737697156
+    },
+    {
+      "label": "Tower H stage 4 · native arch crown",
+      "actual": 28.10446548461914,
+      "source": 28.104465300395255,
+      "residual_mm": 0.0001842238859239842
+    },
+    {
+      "label": "Tower H stage 4 · rose bottom",
+      "actual": 26.747312545776367,
+      "source": 26.747312383669097,
+      "residual_mm": 0.0001621072698299031
+    },
+    {
+      "label": "Tower H stage 4 · rose top",
+      "actual": 27.635738372802734,
+      "source": 27.6357379563309,
+      "residual_mm": 0.00041647183479653904
+    },
+    {
+      "label": "Tower H stage 4 · rose centre Z",
+      "actual": 10.141458988189697,
+      "source": 10.141458932,
+      "residual_mm": 0.00005618969645126981
+    },
+    {
+      "label": "Tower H stage 4 · louvre sill",
+      "actual": 23.799970626831055,
+      "source": 23.799970191,
+      "residual_mm": 0.0004358310548013833
+    },
+    {
+      "label": "Tower B stage 2 · native arch crown",
+      "actual": 14.80195140838623,
+      "source": 14.801951388250716,
+      "residual_mm": 0.000020135514589014747
+    },
+    {
+      "label": "Tower B stage 2 · rose bottom",
+      "actual": 12.737964630126953,
+      "source": 12.737964350999999,
+      "residual_mm": 0.0002791269544388797
+    },
+    {
+      "label": "Tower B stage 2 · rose top",
+      "actual": 13.817964553833008,
+      "source": 13.817964351,
+      "residual_mm": 0.00020283300727896858
+    },
+    {
+      "label": "Tower B stage 2 · rose centre Z",
+      "actual": -10.152934074401855,
+      "source": -10.152934409,
+      "residual_mm": 0.00033459814474667837
+    },
+    {
+      "label": "Tower B stage 2 · louvre sill",
+      "actual": 9.049968719482422,
+      "source": 9.049968734,
+      "residual_mm": -0.000014517578250661245
+    },
+    {
+      "label": "Tower B stage 3 · native arch crown",
+      "actual": 21.898454666137695,
+      "source": 21.898453836367903,
+      "residual_mm": 0.0008297697924319891
+    },
+    {
+      "label": "Tower B stage 3 · rose bottom",
+      "actual": 20.072391510009766,
+      "source": 20.072391717000002,
+      "residual_mm": -0.00020699023650649906
+    },
+    {
+      "label": "Tower B stage 3 · rose top",
+      "actual": 21.15239143371582,
+      "source": 21.152391717,
+      "residual_mm": -0.0002832841801136965
+    },
+    {
+      "label": "Tower B stage 3 · rose centre Z",
+      "actual": -10.152934074401855,
+      "source": -10.152934409,
+      "residual_mm": 0.00033459814474667837
+    },
+    {
+      "label": "Tower B stage 3 · louvre sill",
+      "actual": 16.499969482421875,
+      "source": 16.499968713,
+      "residual_mm": 0.0007694218737697156
+    },
+    {
+      "label": "Tower B stage 4 · native arch crown",
+      "actual": 28.10446548461914,
+      "source": 28.104465300395255,
+      "residual_mm": 0.0001842238859239842
+    },
+    {
+      "label": "Tower B stage 4 · rose bottom",
+      "actual": 26.747312545776367,
+      "source": 26.747312383669097,
+      "residual_mm": 0.0001621072698299031
+    },
+    {
+      "label": "Tower B stage 4 · rose top",
+      "actual": 27.635738372802734,
+      "source": 27.6357379563309,
+      "residual_mm": 0.00041647183479653904
+    },
+    {
+      "label": "Tower B stage 4 · rose centre Z",
+      "actual": -10.141458988189697,
+      "source": -10.141458932,
+      "residual_mm": -0.00005618969645126981
+    },
+    {
+      "label": "Tower B stage 4 · louvre sill",
+      "actual": 23.799970626831055,
+      "source": 23.799970191,
+      "residual_mm": 0.0004358310548013833
+    },
+    {
+      "label": "Tower H stage 2 outer · arch crown",
+      "actual": 14.80195140838623,
+      "source": 14.801951388356276,
+      "residual_mm": 0.000020029954583833387
+    },
+    {
+      "label": "Tower H stage 2 outer · rose top",
+      "actual": 13.817964553833008,
+      "source": 13.817964351362374,
+      "residual_mm": 0.0002024706340364446
+    },
+    {
+      "label": "Tower H stage 2 outer · sill",
+      "actual": 9.049968719482422,
+      "source": 9.04996873349609,
+      "residual_mm": -0.00001401366844788754
+    },
+    {
+      "label": "Tower H stage 2 outer · native X centre",
+      "actual": 2.450044631958008,
+      "source": 2.4500446881728712,
+      "residual_mm": -0.000056214863430881223
+    },
+    {
+      "label": "Tower H stage 2 inner · arch crown",
+      "actual": 14.80195140838623,
+      "source": 14.801951388356276,
+      "residual_mm": 0.000020029954583833387
+    },
+    {
+      "label": "Tower H stage 2 inner · rose top",
+      "actual": 13.817964553833008,
+      "source": 13.817964351362374,
+      "residual_mm": 0.0002024706340364446
+    },
+    {
+      "label": "Tower H stage 2 inner · sill",
+      "actual": 9.049968719482422,
+      "source": 9.04996873349609,
+      "residual_mm": -0.00001401366844788754
+    },
+    {
+      "label": "Tower H stage 2 inner · native X centre",
+      "actual": 2.450044631958008,
+      "source": 2.4500446881728712,
+      "residual_mm": -0.000056214863430881223
+    },
+    {
+      "label": "Tower H stage 2 rear · arch crown",
+      "actual": 14.80195140838623,
+      "source": 14.801951388356276,
+      "residual_mm": 0.000020029954583833387
+    },
+    {
+      "label": "Tower H stage 2 rear · rose top",
+      "actual": 13.817964553833008,
+      "source": 13.817964351362374,
+      "residual_mm": 0.0002024706340364446
+    },
+    {
+      "label": "Tower H stage 2 rear · sill",
+      "actual": 9.049968719482422,
+      "source": 9.04996873349609,
+      "residual_mm": -0.00001401366844788754
+    },
+    {
+      "label": "Tower H stage 3 outer · arch crown",
+      "actual": 21.898454666137695,
+      "source": 21.898453836603615,
+      "residual_mm": 0.0008295340805375417
+    },
+    {
+      "label": "Tower H stage 3 outer · rose top",
+      "actual": 21.15239143371582,
+      "source": 21.152391717345804,
+      "residual_mm": -0.00028362998349962254
+    },
+    {
+      "label": "Tower H stage 3 outer · sill",
+      "actual": 16.499969482421875,
+      "source": 16.499968712688307,
+      "residual_mm": 0.0007697335675516115
+    },
+    {
+      "label": "Tower H stage 3 outer · native X centre",
+      "actual": 2.450044631958008,
+      "source": 2.4500446881519164,
+      "residual_mm": -0.00005619390863742524
+    },
+    {
+      "label": "Tower H stage 3 inner · arch crown",
+      "actual": 21.898454666137695,
+      "source": 21.898453836603615,
+      "residual_mm": 0.0008295340805375417
+    },
+    {
+      "label": "Tower H stage 3 inner · rose top",
+      "actual": 21.15239143371582,
+      "source": 21.152391717345804,
+      "residual_mm": -0.00028362998349962254
+    },
+    {
+      "label": "Tower H stage 3 inner · sill",
+      "actual": 16.499969482421875,
+      "source": 16.499968712688307,
+      "residual_mm": 0.0007697335675516115
+    },
+    {
+      "label": "Tower H stage 3 inner · native X centre",
+      "actual": 2.450044631958008,
+      "source": 2.4500446881519164,
+      "residual_mm": -0.00005619390863742524
+    },
+    {
+      "label": "Tower H stage 3 rear · arch crown",
+      "actual": 21.898454666137695,
+      "source": 21.898453836603615,
+      "residual_mm": 0.0008295340805375417
+    },
+    {
+      "label": "Tower H stage 3 rear · rose top",
+      "actual": 21.15239143371582,
+      "source": 21.152391717345804,
+      "residual_mm": -0.00028362998349962254
+    },
+    {
+      "label": "Tower H stage 3 rear · sill",
+      "actual": 16.499969482421875,
+      "source": 16.499968712688307,
+      "residual_mm": 0.0007697335675516115
+    },
+    {
+      "label": "Tower H stage 4 outer · arch crown",
+      "actual": 28.10446548461914,
+      "source": 28.10446530053532,
+      "residual_mm": 0.0001840838201871975
+    },
+    {
+      "label": "Tower H stage 4 outer · rose top",
+      "actual": 27.635738372802734,
+      "source": 27.635737956064407,
+      "residual_mm": 0.00041673832740229955
+    },
+    {
+      "label": "Tower H stage 4 outer · sill",
+      "actual": 23.799970626831055,
+      "source": 23.799970190694612,
+      "residual_mm": 0.0004361364425164993
+    },
+    {
+      "label": "Tower H stage 4 outer · native X centre",
+      "actual": 2.438569188117981,
+      "source": 2.4385692107288635,
+      "residual_mm": -0.00002261088249966292
+    },
+    {
+      "label": "Tower H stage 4 inner · arch crown",
+      "actual": 28.10446548461914,
+      "source": 28.10446530053532,
+      "residual_mm": 0.0001840838201871975
+    },
+    {
+      "label": "Tower H stage 4 inner · rose top",
+      "actual": 27.635738372802734,
+      "source": 27.635737956064407,
+      "residual_mm": 0.00041673832740229955
+    },
+    {
+      "label": "Tower H stage 4 inner · sill",
+      "actual": 23.799970626831055,
+      "source": 23.799970190694612,
+      "residual_mm": 0.0004361364425164993
+    },
+    {
+      "label": "Tower H stage 4 inner · native X centre",
+      "actual": 2.438569188117981,
+      "source": 2.4385692107288635,
+      "residual_mm": -0.00002261088249966292
+    },
+    {
+      "label": "Tower H stage 4 rear · arch crown",
+      "actual": 28.10446548461914,
+      "source": 28.10446530053532,
+      "residual_mm": 0.0001840838201871975
+    },
+    {
+      "label": "Tower H stage 4 rear · rose top",
+      "actual": 27.635738372802734,
+      "source": 27.635737956064407,
+      "residual_mm": 0.00041673832740229955
+    },
+    {
+      "label": "Tower H stage 4 rear · sill",
+      "actual": 23.799970626831055,
+      "source": 23.799970190694612,
+      "residual_mm": 0.0004361364425164993
+    },
+    {
+      "label": "Tower B stage 2 outer · arch crown",
+      "actual": 14.80195140838623,
+      "source": 14.801951388356276,
+      "residual_mm": 0.000020029954583833387
+    },
+    {
+      "label": "Tower B stage 2 outer · rose top",
+      "actual": 13.817964553833008,
+      "source": 13.817964351362374,
+      "residual_mm": 0.0002024706340364446
+    },
+    {
+      "label": "Tower B stage 2 outer · sill",
+      "actual": 9.049968719482422,
+      "source": 9.04996873349609,
+      "residual_mm": -0.00001401366844788754
+    },
+    {
+      "label": "Tower B stage 2 outer · native X centre",
+      "actual": 2.450044631958008,
+      "source": 2.4500446881728712,
+      "residual_mm": -0.000056214863430881223
+    },
+    {
+      "label": "Tower B stage 2 inner · arch crown",
+      "actual": 14.80195140838623,
+      "source": 14.801951388356276,
+      "residual_mm": 0.000020029954583833387
+    },
+    {
+      "label": "Tower B stage 2 inner · rose top",
+      "actual": 13.817964553833008,
+      "source": 13.817964351362374,
+      "residual_mm": 0.0002024706340364446
+    },
+    {
+      "label": "Tower B stage 2 inner · sill",
+      "actual": 9.049968719482422,
+      "source": 9.04996873349609,
+      "residual_mm": -0.00001401366844788754
+    },
+    {
+      "label": "Tower B stage 2 inner · native X centre",
+      "actual": 2.450044631958008,
+      "source": 2.4500446881728712,
+      "residual_mm": -0.000056214863430881223
+    },
+    {
+      "label": "Tower B stage 2 rear · arch crown",
+      "actual": 14.80195140838623,
+      "source": 14.801951388356276,
+      "residual_mm": 0.000020029954583833387
+    },
+    {
+      "label": "Tower B stage 2 rear · rose top",
+      "actual": 13.817964553833008,
+      "source": 13.817964351362374,
+      "residual_mm": 0.0002024706340364446
+    },
+    {
+      "label": "Tower B stage 2 rear · sill",
+      "actual": 9.049968719482422,
+      "source": 9.04996873349609,
+      "residual_mm": -0.00001401366844788754
+    },
+    {
+      "label": "Tower B stage 3 outer · arch crown",
+      "actual": 21.898454666137695,
+      "source": 21.898453836603615,
+      "residual_mm": 0.0008295340805375417
+    },
+    {
+      "label": "Tower B stage 3 outer · rose top",
+      "actual": 21.15239143371582,
+      "source": 21.152391717345804,
+      "residual_mm": -0.00028362998349962254
+    },
+    {
+      "label": "Tower B stage 3 outer · sill",
+      "actual": 16.499969482421875,
+      "source": 16.499968712688307,
+      "residual_mm": 0.0007697335675516115
+    },
+    {
+      "label": "Tower B stage 3 outer · native X centre",
+      "actual": 2.450044631958008,
+      "source": 2.4500446881519164,
+      "residual_mm": -0.00005619390863742524
+    },
+    {
+      "label": "Tower B stage 3 inner · arch crown",
+      "actual": 21.898454666137695,
+      "source": 21.898453836603615,
+      "residual_mm": 0.0008295340805375417
+    },
+    {
+      "label": "Tower B stage 3 inner · rose top",
+      "actual": 21.15239143371582,
+      "source": 21.152391717345804,
+      "residual_mm": -0.00028362998349962254
+    },
+    {
+      "label": "Tower B stage 3 inner · sill",
+      "actual": 16.499969482421875,
+      "source": 16.499968712688307,
+      "residual_mm": 0.0007697335675516115
+    },
+    {
+      "label": "Tower B stage 3 inner · native X centre",
+      "actual": 2.450044631958008,
+      "source": 2.4500446881519164,
+      "residual_mm": -0.00005619390863742524
+    },
+    {
+      "label": "Tower B stage 3 rear · arch crown",
+      "actual": 21.898454666137695,
+      "source": 21.898453836603615,
+      "residual_mm": 0.0008295340805375417
+    },
+    {
+      "label": "Tower B stage 3 rear · rose top",
+      "actual": 21.15239143371582,
+      "source": 21.152391717345804,
+      "residual_mm": -0.00028362998349962254
+    },
+    {
+      "label": "Tower B stage 3 rear · sill",
+      "actual": 16.499969482421875,
+      "source": 16.499968712688307,
+      "residual_mm": 0.0007697335675516115
+    },
+    {
+      "label": "Tower B stage 4 outer · arch crown",
+      "actual": 28.10446548461914,
+      "source": 28.10446530053532,
+      "residual_mm": 0.0001840838201871975
+    },
+    {
+      "label": "Tower B stage 4 outer · rose top",
+      "actual": 27.635738372802734,
+      "source": 27.635737956064407,
+      "residual_mm": 0.00041673832740229955
+    },
+    {
+      "label": "Tower B stage 4 outer · sill",
+      "actual": 23.799970626831055,
+      "source": 23.799970190694612,
+      "residual_mm": 0.0004361364425164993
+    },
+    {
+      "label": "Tower B stage 4 outer · native X centre",
+      "actual": 2.438569188117981,
+      "source": 2.4385692107288635,
+      "residual_mm": -0.00002261088249966292
+    },
+    {
+      "label": "Tower B stage 4 inner · arch crown",
+      "actual": 28.10446548461914,
+      "source": 28.10446530053532,
+      "residual_mm": 0.0001840838201871975
+    },
+    {
+      "label": "Tower B stage 4 inner · rose top",
+      "actual": 27.635738372802734,
+      "source": 27.635737956064407,
+      "residual_mm": 0.00041673832740229955
+    },
+    {
+      "label": "Tower B stage 4 inner · sill",
+      "actual": 23.799970626831055,
+      "source": 23.799970190694612,
+      "residual_mm": 0.0004361364425164993
+    },
+    {
+      "label": "Tower B stage 4 inner · native X centre",
+      "actual": 2.438569188117981,
+      "source": 2.4385692107288635,
+      "residual_mm": -0.00002261088249966292
+    },
+    {
+      "label": "Tower B stage 4 rear · arch crown",
+      "actual": 28.10446548461914,
+      "source": 28.10446530053532,
+      "residual_mm": 0.0001840838201871975
+    },
+    {
+      "label": "Tower B stage 4 rear · rose top",
+      "actual": 27.635738372802734,
+      "source": 27.635737956064407,
+      "residual_mm": 0.00041673832740229955
+    },
+    {
+      "label": "Tower B stage 4 rear · sill",
+      "actual": 23.799970626831055,
+      "source": 23.799970190694612,
+      "residual_mm": 0.0004361364425164993
+    },
+    {
+      "label": "Ground outer great arch source crown",
+      "actual": 5.939770221710205,
+      "source": 5.939770309,
+      "residual_mm": -0.00008728979494776468
+    },
+    {
+      "label": "Ground outer blind arch source crown (200.5 mm above front)",
+      "actual": 4.2399492263793945,
+      "source": 4.239949011,
+      "residual_mm": 0.00021537939431937048
+    },
+    {
+      "label": "Ground side window source sill",
+      "actual": 0.849970281124115,
+      "source": 0.849970309,
+      "residual_mm": -0.00002787588504471472
+    },
+    {
+      "label": "Dome meets source lantern base",
+      "actual": 32.79045486450195,
+      "source": 32.790456676,
+      "residual_mm": -0.0018114980449013274
+    },
+    {
+      "label": "Tower trefoil actual apex",
+      "actual": 36.91997146606445,
+      "source": 36.91997030900005,
+      "residual_mm": 0.0011570644034009092
+    },
+    {
+      "label": "Central facade native rose bottom",
+      "actual": 13.169352531433105,
+      "source": 13.169352439373965,
+      "residual_mm": 0.00009205914075494093
+    },
+    {
+      "label": "Central facade native rose top",
+      "actual": 14.24935245513916,
+      "source": 14.249352439373965,
+      "residual_mm": 0.000015765195371386653
+    },
+    {
+      "label": "Central facade native rose outside radius",
+      "actual": 2.1457672083613488e-8,
+      "source": 0,
+      "residual_mm": 0.000021457672083613488
+    },
+    {
+      "label": "Triple-window native sill",
+      "actual": 9.983731269836426,
+      "source": 9.9837312575432,
+      "residual_mm": 0.00001229322599272109
+    },
+    {
+      "label": "Triple-window native top regular rail",
+      "actual": 12.005985260009766,
+      "source": 12.005985224988777,
+      "residual_mm": 0.00003502098877561366
+    },
+    {
+      "label": "Triple-window centre stile at source inner arch",
+      "actual": 12.615983009338379,
+      "source": 12.615983061128063,
+      "residual_mm": -0.0000517896836527143
+    },
+    {
+      "label": "Obsolete D01 extension removed at source side-bay edge",
+      "actual": 7.127999782562256,
+      "source": 7.128,
+      "residual_mm": -0.00021743774425431184
+    },
+    {
+      "label": "Plinth ends at source side-bay edge",
+      "actual": -7.127999782562256,
+      "source": -7.128,
+      "residual_mm": 0.00021743774425431184
+    },
+    {
+      "label": "rear native rose bottom",
+      "actual": 9.178500175476074,
+      "source": 9.17850064,
+      "residual_mm": -0.00046452392510332174
+    },
+    {
+      "label": "rear native rose top",
+      "actual": 10.798501014709473,
+      "source": 10.79850064,
+      "residual_mm": 0.0003747094723394184
+    },
+    {
+      "label": "rear native cross apex",
+      "actual": 17.829187393188477,
+      "source": 17.829187529616043,
+      "residual_mm": -0.00013642756613307938
+    },
+    {
+      "label": "wings native rose bottom",
+      "actual": 6.761528491973877,
+      "source": 6.761528705,
+      "residual_mm": -0.00021302612296381085
+    },
+    {
+      "label": "wings native rose top",
+      "actual": 8.381528854370117,
+      "source": 8.381528705000001,
+      "residual_mm": 0.00014937011627580432
+    },
+    {
+      "label": "wings native cross apex",
+      "actual": 15.186894416809082,
+      "source": 15.186894578616041,
+      "residual_mm": -0.00016180695894263408
+    },
+    {
+      "label": "E02 parapet top",
+      "actual": 7.073919296264648,
+      "source": 7.073919332,
+      "residual_mm": -0.00003573535156675689
+    },
+    {
+      "label": "E03 native mitred cornice upper end",
+      "actual": 12.471821784973145,
+      "source": 12.471821785,
+      "residual_mm": -2.6854962698052987e-8
+    },
+    {
+      "label": "EW native mitred cornice upper end",
+      "actual": 9.82952880859375,
+      "source": 9.829528809,
+      "residual_mm": -4.062492564571585e-7
+    }
+  ],
+  "limits": "Source-coordinate software checks. Unseen depth, held door heads, units, orientation and construction confirmation remain open."
+}

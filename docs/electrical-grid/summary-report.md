@@ -1,20 +1,20 @@
 # Equipment quantities, usage and quality report
 
-Generated 19 October 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
+Generated 1 November 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
 
 ## Total quantities
 
 | Usage category | Equipment/enclosures | Shown | Hidden alternatives | Connected components | Shown items commanded on | Routes | Route points |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Lighting | 231 | 231 | 0 | 231 | 205 | 254 | 2087 |
-| Sound | 30 | 30 | 0 | 30 | 20 | 40 | 304 |
+| Lighting | 272 | 272 | 0 | 272 | 246 | 295 | 2236 |
+| Sound | 44 | 44 | 0 | 44 | 34 | 54 | 334 |
 | Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 410 |
-| Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 54 |
+| Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 68 |
 | Decoration and furnishings | 37 | 22 | 15 | 0 | 22 | 0 | 0 |
-| Distribution and controls | 11 | 11 | 0 | 6 | 4 | 14 | 105 |
-| **Total** | 359 | 344 | 15 | 317 | 283 | 373 | 2960 |
+| Distribution and controls | 12 | 12 | 0 | 6 | 4 | 15 | 109 |
+| **Total** | 415 | 400 | 15 | 372 | 338 | 429 | 3157 |
 
-Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **10 equipment, 26 routes**.
+Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **33 equipment, 116 routes**.
 
 ## Usage and energy estimate
 
@@ -22,13 +22,13 @@ Saved scene: **Full service · evening**. Service duration **1.5 h**, **40 servi
 
 | Usage category | Operating estimate (W) | kWh/service | Service-only kWh/month | Circuits / scope |
 | --- | ---: | ---: | ---: | --- |
-| Lighting | 4,329.9 | 6.495 | 259.79 | L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LD |
-| Sound | 109.4 | 0.164 | 6.57 | A1, A2, A3, A5, MIC |
+| Lighting | 4,184.8 | 6.277 | 251.09 | L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LS |
+| Sound | 193.4 | 0.290 | 11.60 | A1, A2, A3, A5, MIC |
 | Fans and ventilation | 1,156.0 | 1.734 | 69.36 | F1, F2, F4, F5, V1, V2, V3 |
 | Exit signs | 15.0 | 0.023 | 0.90 | E1 |
 | Decoration and furnishings | 0.0 | 0.000 | 0.00 | DECOR, X1 |
 | Distribution and controls | 0.0 | 0.000 | 0.00 | P1, P2, P3, P4 |
-| **Total modeled usage** | **5,610.3** | **8.415** | **336.62** | Same saved configuration |
+| **Total modeled usage** | **5,549.1** | **8.324** | **332.95** | Same saved configuration |
 
 Calculated by the simulator's itemWatts method, including dimming, fan speed and amplifier allowances. Passive-speaker ratings are not summed as mains watts. The five boards do not add duplicate downstream consumption; their own parasitic/control loads are not separately modeled. A zero is the model's result, not a verified zero product rating. Standby, between-service use, continuous exit-sign operation outside these service hours, other building loads and distribution losses are excluded. These totals cannot size a supply, protective device or cable. See [methods and limitations](../simulator/methods-and-limitations.md).
 
@@ -36,15 +36,15 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,013.648 | 3,013.648 | 0.000 | 0.000 |
-| Sound | 722.591 | 0.000 | 1,719.603 | 563.757 |
-| Fans and ventilation | 925.206 | 925.206 | 0.000 | 0.000 |
-| Exit signs | 145.936 | 145.936 | 0.000 | 0.000 |
+| Lighting | 3,248.859 | 3,248.859 | 0.000 | 0.000 |
+| Sound | 768.994 | 0.000 | 2,365.631 | 571.727 |
+| Fans and ventilation | 955.646 | 955.646 | 0.000 | 0.000 |
+| Exit signs | 168.600 | 168.600 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
-| Distribution and controls | 244.983 | 244.983 | 0.000 | 0.000 |
-| **Total by length basis** | **5,052.364** | **4,329.774** | **1,719.603** | **563.757** |
+| Distribution and controls | 263.923 | 263.923 | 0.000 | 0.000 |
+| **Total by length basis** | **5,406.021** | **4,637.028** | **2,365.631** | **571.727** |
 
-Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/363 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
+Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/419 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
 ## Data quality and engineering completeness
 
@@ -52,13 +52,13 @@ The build verified unique equipment/route IDs, unique ordered vertices, complete
 
 | Usage category | Specification + source fields filled / equipment | Physical control mapping filled / connected components | Cable designation + approval reference filled / routes |
 | --- | ---: | ---: | ---: |
-| Lighting | 0/231 | 0/231 | 0/254 |
-| Sound | 0/30 | 0/30 | 0/40 |
+| Lighting | 0/272 | 0/272 | 0/295 |
+| Sound | 0/44 | 0/44 | 0/54 |
 | Fans and ventilation | 0/45 | 0/45 | 0/58 |
 | Exit signs | 0/5 | 0/5 | 0/7 |
 | Decoration and furnishings | 0/37 | 0/0 | 0/0 |
-| Distribution and controls | 0/11 | 0/6 | 0/14 |
-| **Total** | **0/359** | **0/317** | **0/373** |
+| Distribution and controls | 0/12 | 0/6 | 0/15 |
+| **Total** | **0/415** | **0/372** | **0/429** |
 
 These counts measure field completeness only; filled fields still require source and engineering review. A 0/0 population is not applicable. Product selection, protection, final cable/containment specifications, actual control channels and commissioning evidence remain pending where fields are blank. No overall quality score is invented.
 
@@ -66,9 +66,27 @@ The held wing review of 9 October 2026 retains four small brass chandeliers (L63
 
 ## Sources and refresh
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 5e78147eff2f4a61ae97936ba8b51920b75ba77bd982e40a1cae0206f908332c.
-- [Electrical snapshot](electrical-systems.json), SHA-256: 7a659950a4bf89cc57551f6d9714dbafa89ad76ea9820ddefb4bbc73056b5b2e.
+The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-and-sconces.md) retires fourteen nave wall sconces and their sixteen routes, while retaining all five E1 signs on DB-1 at 15 W. Sign cases sit below coloured glass on fixed door heads; leads follow jambs and headers. Original sign IDs, life-safety holds and retired-input records are preserved.
+
+
+The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
+
+
+- [Layout snapshot](equipment-layout.json), SHA-256: 3cdbadaba0ffc908418f454ec3a56c6c112739ccae548d5038c524ed0fb572ae.
+- [Electrical snapshot](electrical-systems.json), SHA-256: 19f49808ff7b94351ad8e2bad9b30d5c978e8d5e96c5f164a91146ca0afcd5ac.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 
 Run `node scripts/build_equipment_register.mjs --verify-workflow` to preserve category inputs and refresh all six files and this report. Re-export matched model snapshots first when geometry changes.
+
+## Lan can tháp theo DWG — đối chiếu ngày 26/10/2026
+
+Hình học lan can mới có 17 ô thủng bậc mỗi mặt, thay con tiện cũ; không đổi thiết bị, ID, tuyến, hướng, công suất hoặc các sổ Excel theo danh mục. [ENG-041](../engineering/issues.md#lan-can-tháp-và-che-chùm-đèn-chỏm--eng-041) giữ việc phối hợp L164/L175: tia tim từ đầu đèn cố định đi qua ô giữa, nhưng 30/49 hướng thử trong nón hình học 36° gặp phần lan can. Đây là tập tia không có trọng số, **không phải tỷ lệ quang thông bị mất hoặc kết quả IES/LDT**. Phép tính lux hiện hành chưa tính che bởi tường/lan can tháp, nên không lấy các số đó làm nghiệm thu chỏm. Người thiết kế chiếu sáng/kiến trúc cần phối hợp tiết diện, quang học, gá, bảo trì và thử ban đêm; không tự dời đèn hoặc sửa số tính để che xung đột. Các tổng số điện và dữ liệu nhập có trước trong báo cáo được giữ nguyên.
+
+## Trụ góc tháp theo E01B/E02 — 31/10/2026
+
+Theo [ENG-043](../engineering/issues.md), các trụ góc tháp lấy đúng bề rộng và chiều sâu trên bản vẽ. Mười hai dây đèn lễ trên mặt trụ tầng 1–3 (L202–L207, L213–L218) dời theo, vẫn cách mặt trụ 60 mm. Không đổi ID, mạch, công suất hay chiều dài dây. Tổng chiều dài tuyến chiếu sáng tăng 1,840 m, từ 3 246,819 lên 3 248,659 m, vì tuyến tới các dây này theo mặt trụ mới. Bố trí đã lưu trong trình duyệt được chuyển một lần (`towerPierRevision`): chỉ dây còn ở chỗ đề xuất cũ mới dời theo.
+
+## Trụ tầng trệt mặt tiền giữa — 31/10/2026
+
+Hai trụ hai bên cửa chính được dựng lại theo E01B/P05: cùng tim với trụ tầng trên (±2,979 m) và chân bệ bậc như trụ tháp. Hai đèn lồng cửa chính L137/L138 dời 0,10 m về phía cửa (|Z| 2,40 → 2,30 m), để khỏi chạm trụ mới. Không đổi ID, mạch hay công suất. Bố trí đã lưu được chuyển một lần, cùng revision `towerPierRevision` (`2026-10-31-tower-pier-depth-2`).

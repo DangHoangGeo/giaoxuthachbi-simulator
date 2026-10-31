@@ -1,0 +1,14 @@
+{
+  "path": "docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
+  "sheet": "DWG facade",
+  "changed_cells": {
+    "J40": "±7.128",
+    "K40": "MODEL TRANSCRIPTION / COORDINATED",
+    "L40": "26 Oct 2026: removed the former model extension to ±7.500 m. CAD stops at ±7.128 m; rebuilt tower rear piers start at ±7.103 m, giving 25 mm overlap. Source dimensions unchanged; structure/detail remain held."
+  },
+  "before_sha256": "d1abfa3bf12ec1e185a4e7d0df588fe2b04ee14c5deb4a095fc62e4826a8a6eb",
+  "after_sha256": "42ebf05e86194953787e0ca1f165274155873e846e6a928389937831b64fc78a",
+  "unrelated_zip_parts_identical": true,
+  "unrelated_cell_values_and_formulas_preserved": true,
+  "author": "Bundled Artifact Tool; guarded literal-cell XML application"
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "01-front-day",
+    "prompt": "Edit only the ivory statue in the single upper central niche between the towers: it is Our Lady of the Assumption, face tilted upward, both forearms raised outward with open palms at shoulder-to-head height, flowing robe and small cloud pedestal. Do not show hands down, joined prayer hands or a crucifix. Keep her entire figure inside the existing niche without widening it. Preserve every other pixel composition, all tower heights, existing facade architecture, stairs, three doors, trees, paving, sky, colors, illumination and bilingual CONCEPT footer. One targeted statue-pose correction only.",
+    "inputGenerationFile": "exec-0728bb06-74d2-4a6f-a712-2bb7e64dfd1b.png"
+  },
+  {
+    "id": "02-front-corner-day",
+    "prompt": "Edit only the ivory statue in the single upper central niche between the towers: it is Our Lady of the Assumption, face tilted upward, both forearms raised outward with open palms at shoulder-to-head height, flowing robe and small cloud pedestal. Do not show hands down or joined prayer hands. Keep her entire figure inside the existing niche without widening it. Preserve every other aspect of this front three-quarter composition, tower heights, facade architecture, roof, stairs, doors, trees, paving, sky, materials, lighting and bilingual CONCEPT footer. One targeted statue-pose correction only.",
+    "inputGenerationFile": "exec-d638ae52-d39d-4979-84e1-c260be9075f5.png"
+  },
+  {
+    "id": "03-opposite-corner-evening",
+    "prompt": "Precise local correction to this image only: remove the invented white statue standing in the ground-floor open arch at the base of the nearer tower, immediately left of the main three-door facade. That arch is an empty ground-floor tower passage, with an empty plaster reveal and visible stone floor. Keep the arch and all surrounding geometry exactly. Keep the saints in the actual elevated facade niches. In the single uppermost central niche, show Our Lady of the Assumption with face lifted and both forearms raised outward, open palms near shoulder height and a cloud base. Preserve the complete camera, building architecture, stairs, doors, triple window, trees, sky, all evening lighting and the exact bilingual CONCEPT footer. No other edits, no new objects.",
+    "inputGenerationFile": "exec-9e79d9a5-875c-4f9f-ba60-8a880f1320dc.png"
+  },
+  {
+    "id": "05-nave-day",
+    "prompt": "Precise local correction to this image only: remove the TWO invented tall arched stained-glass windows high on the near upper side walls, one at the top-left and one at top-right above the large colored semicircular door fanlights. Replace those two high windows with continuous plain warm ivory plaster wall. The supplied 3D model has no clerestory openings there. Keep every existing lower semicircular fanlight and timber door, all existing columns, beams, capitals, brackets, longitudinal beams, ivory boarded roof, pews, chandeliers, sanctuary, paving and camera angle unchanged. Keep the warm daylight atmosphere and existing floor reflections. Keep the exact bilingual CONCEPT footer. No new windows, objects, fans or equipment.",
+    "inputGenerationFile": "exec-8369a1cc-15ed-41b1-b7b8-fae62e22fc27.png"
+  }
+]

@@ -1,0 +1,167 @@
+{
+  "date": "2026-10-24",
+  "title": "Updated model presentation views",
+  "tool": "Built-in image_gen.imagegen",
+  "mode": "edit",
+  "status": "CONCEPT — In development / Đang phát triển — Not for construction / Không dùng để thi công",
+  "sourceCommit": "fd6c7bb53a93aa789492a0de4a4fd4ea5d421544",
+  "sourceStatus": "Owner working tree, including uncommitted CAD façade revision 2026-10-24-cad-facade-1; HEAD alone does not reproduce these images.",
+  "captureManifest": "../../../../review/church-views-2026-10-24/model-inputs/capture.json",
+  "prompts": "../../../../review/church-views-2026-10-24/prompts.json",
+  "corrections": [
+    "../../../../review/church-views-2026-10-24/corrections.json",
+    "../../../../review/church-views-2026-10-24/evening-correction.json",
+    "../../../../review/church-views-2026-10-24/nave-exit-sign-correction.json"
+  ],
+  "author": "Thạch Bi Church design simulator project; AI-assisted image editing",
+  "source": "Project-created 3D viewer captures only; no third-party drawings or photographs supplied to the generator.",
+  "license": "CC BY 4.0 to the extent the project holds rights; see NOTICE.md. Generated-image copyright varies by jurisdiction.",
+  "credit": "Thạch Bi Church design simulator project, https://github.com/DangHoangGeo/giaoxuthachbi-simulator, CC BY 4.0; AI-generated presentation concept.",
+  "limitations": [
+    "Independent generated views are not dimensionally consistent survey, as-built photography or fabrication drawings. Geometry, sculpture and relief may drift.",
+    "Landscape, stone paving pattern, finish detail and evening illumination are proposed atmosphere. No surveyed site context or photometric performance is established.",
+    "Visible fans and hangers are omitted in the nave artwork to illustrate all-hidden intent. Physical concealment, airflow, noise, support and service access remain unresolved; the model and equipment remain unchanged.",
+    "Exit signs are shown in the final nave concept; their pictured symbols/placement do not establish code compliance.",
+    "Existing facade, structure, drainage, maintenance, statue fit, ventilation discharge, lighting and sound engineering holds remain open.",
+    "Four exterior/detail images selected for local and web viewer References on 24 October 2026. Separate website editorial gallery and deployment remain unchanged."
+  ],
+  "viewerSelection": {
+    "date": "2026-10-24",
+    "selectedAssetIds": [
+      "01-front-day",
+      "02-front-corner-day",
+      "03-opposite-corner-evening",
+      "04-facade-detail-day"
+    ],
+    "location": "references/03-facade/native/",
+    "stableReferenceIdsPreserved": true
+  },
+  "assets": [
+    {
+      "id": "01-front-day",
+      "master": "masters/01-front-day.png",
+      "modelCapture": "review/church-views-2026-10-24/model-inputs/01-front-day.png",
+      "generatorFile": "exec-06d63a55-d5c3-416a-ad4b-d5c2abcfc6c2.png",
+      "initialGeneratorFile": "exec-0728bb06-74d2-4a6f-a712-2bb7e64dfd1b.png",
+      "corrected": true,
+      "title": "Front façade · daylight",
+      "titleVi": "Mặt tiền · Ban ngày",
+      "description": "Updated central shrine, triple window and twin towers, viewed from the forecourt.",
+      "status": "CONCEPT",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "resampled": false,
+      "sha256": "07ce5f1e033a5cbc1e6971343d9dd6774dd7f3f76084036eac9b251e85e4e844",
+      "bytes": 2317188,
+      "sourceCaptureSha256": "37a67df4b92a2c21acbeb4544b36eb479bfcffffe0d5b63a9184cba31d0fa187",
+      "visualReview": "Reviewed against the associated source for major composition, new facade arrangement, obvious generation defects and iconography; generated details remain approximate."
+    },
+    {
+      "id": "02-front-corner-day",
+      "master": "masters/02-front-corner-day.png",
+      "modelCapture": "review/church-views-2026-10-24/model-inputs/02-front-corner-day.png",
+      "generatorFile": "exec-94ab5239-c7ce-4b96-ad2e-6267b31b8c5e.png",
+      "initialGeneratorFile": "exec-d638ae52-d39d-4979-84e1-c260be9075f5.png",
+      "corrected": true,
+      "title": "Front and long side · daylight",
+      "titleVi": "Góc trước và bên hông · Ban ngày",
+      "description": "Front three-quarter view with the long terracotta nave roof and side wing.",
+      "status": "CONCEPT",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "resampled": false,
+      "sha256": "f4724d4b5b493df593a5ef6fcf74902b31c723c58fa1cbf452f7caa09805aa6f",
+      "bytes": 2463319,
+      "sourceCaptureSha256": "eae7820218f9a4662fa31fd2ef985233b030cd580fe3b67deb8ebbc2ccc3e68e",
+      "visualReview": "Reviewed against the associated source for major composition, new facade arrangement, obvious generation defects and iconography; generated details remain approximate."
+    },
+    {
+      "id": "03-opposite-corner-evening",
+      "master": "masters/03-opposite-corner-evening.png",
+      "modelCapture": "review/church-views-2026-10-24/model-inputs/03-opposite-corner-evening.png",
+      "generatorFile": "exec-3bfd76d6-f540-40cf-9e81-64e0511bb449.png",
+      "initialGeneratorFile": "exec-9e79d9a5-875c-4f9f-ba60-8a880f1320dc.png",
+      "corrected": true,
+      "title": "Opposite front corner · evening",
+      "titleVi": "Góc trước đối diện · Chiều tối",
+      "description": "Opposite front corner with an illustrative warm evening lighting treatment.",
+      "status": "CONCEPT",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "resampled": false,
+      "sha256": "93f53934ac5889a775013686380616502fcb6ad1a274a6b3ba6c807205ef8760",
+      "bytes": 2120423,
+      "sourceCaptureSha256": "c3af473c39b747f01cc722cc4c5f7a80379bef724a6f05e3ad2399b85c1a2910",
+      "visualReview": "Reviewed against the associated source for major composition, new facade arrangement, obvious generation defects and iconography; generated details remain approximate."
+    },
+    {
+      "id": "04-facade-detail-day",
+      "master": "masters/04-facade-detail-day.png",
+      "modelCapture": "review/church-views-2026-10-24/model-inputs/04-facade-detail-day.png",
+      "generatorFile": "exec-d736e600-88b4-4827-96fa-b7fa48bceb1c.png",
+      "initialGeneratorFile": "exec-d736e600-88b4-4827-96fa-b7fa48bceb1c.png",
+      "corrected": false,
+      "title": "Central façade and shrines · daylight",
+      "titleVi": "Chi tiết mặt tiền · Ban ngày",
+      "description": "Central Assumption shrine, side saints, triple louvers, cresting and carved doors.",
+      "status": "CONCEPT",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "resampled": false,
+      "sha256": "d4c3395bb9f407335096e37e98dde49da11809a7b1b1a308ec3e13121d22c343",
+      "bytes": 2688697,
+      "sourceCaptureSha256": "b8cce54168af6018b49712b9271a9e2200d848beec262d9c457a59cc62ae872e",
+      "visualReview": "Reviewed against the associated source for major composition, new facade arrangement, obvious generation defects and iconography; generated details remain approximate."
+    },
+    {
+      "id": "05-nave-day",
+      "master": "masters/05-nave-day.png",
+      "modelCapture": "review/church-views-2026-10-24/model-inputs/05-nave-day.png",
+      "generatorFile": "exec-fb454f68-1598-42b6-bba0-2e3963ebd2d4.png",
+      "initialGeneratorFile": "exec-8369a1cc-15ed-41b1-b7b8-fae62e22fc27.png",
+      "corrected": true,
+      "title": "Nave toward sanctuary · daylight",
+      "titleVi": "Lòng nhà thờ · Ban ngày",
+      "description": "Red lacquer timber columns, gilded carvings and the clear processional view toward the altar. Fan concealment is illustrative only.",
+      "status": "CONCEPT",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "resampled": false,
+      "sha256": "7daebdd4ef1b0e1479208f3c45f45cdde72dafb7bd4ce108703cc58adc6a7bf8",
+      "bytes": 2204325,
+      "sourceCaptureSha256": "21a38097c259b85efdaf23c71cc7e92f236c6129f2e5bac2bcbb22181ac763c2",
+      "visualReview": "Reviewed against the associated source for major composition, new facade arrangement, obvious generation defects and iconography; generated details remain approximate."
+    },
+    {
+      "id": "06-sanctuary-evening",
+      "master": "masters/06-sanctuary-evening.png",
+      "modelCapture": "review/church-views-2026-10-24/model-inputs/06-sanctuary-evening.png",
+      "generatorFile": "exec-d266b536-97bc-4a51-bfd3-5034f7994b01.png",
+      "initialGeneratorFile": "exec-d266b536-97bc-4a51-bfd3-5034f7994b01.png",
+      "corrected": false,
+      "title": "Sanctuary · evening",
+      "titleVi": "Cung thánh · Buổi tối",
+      "description": "Red-and-gold sanctuary with the central Crucifix, Our Lady and Saint Joseph with the infant Jesus.",
+      "status": "CONCEPT",
+      "nativePixels": [
+        1672,
+        941
+      ],
+      "resampled": false,
+      "sha256": "4fffb3d0ac20350cbe17e700fd9252bf55382c418601b0a9654f661673611917",
+      "bytes": 2696458,
+      "sourceCaptureSha256": "4afb66ba22edbde390b5a9e2642c7054b8aea30320b4777f4cc214a822454a33",
+      "visualReview": "Reviewed against the associated source for major composition, new facade arrangement, obvious generation defects and iconography; generated details remain approximate."
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "inputGenerationFile": "exec-e08762a9-b862-45af-8190-de1ffeabcbea.png",
+  "reason": "Preserve source model's visible life-safety signs; earlier generation omitted them.",
+  "prompt": "Make one small local correction to this architectural visualization. Restore the two compact green illuminated exit signs present in the original 3D model: one on the left foreground ivory wall directly above the large semicircular colored fanlight, and one at the matching height on the right foreground ivory wall directly above the corresponding large semicircular colored fanlight. Each is a small horizontal green rectangle with a simple white running-person/exit pictogram, mounted flat against the plaster, realistically modest size. Keep the upper walls otherwise completely plain ivory without any clerestory windows. Preserve every column, truss, beam, pew, door, fanlight, chandelier, sanctuary, daylight, camera and footer exactly. Do not add fans or any other objects. The two exit signs are the only additions."
+}

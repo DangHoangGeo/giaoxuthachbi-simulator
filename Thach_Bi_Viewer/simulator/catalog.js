@@ -315,10 +315,37 @@
     k.cyl(0.11, 0.09, 0.06, 'bronze', { p: [0, 0.85, 0] }, 16);
     k.glowPoint([0, 0.76, 0], 0.4);
   }
-  function buildExitSign(k) {
+  // Small wall fittings for the open porches. Sections, weather protection,
+  // mounting and selected-product data remain CONCEPT / ENGINEERING HOLD.
+  function buildPorchFlood(k) {
+    k.box(.016,.14,.09,'corniceStone',{p:[.008,0,0]});
+    k.rod([.016,0,0],[.14,.03,0],.012,'corniceStone',8);
+    k.pivots.head=[.15,.035,0];
+    k.in('head',()=>{
+      k.box(.075,.09,.12,'corniceStone',{p:[-.012,0,0]});
+      k.box(.004,.065,.095,'glow',{p:[.028,0,0]});
+      k.glowPoint([.032,0,0],.24);
+    });
+  }
+  function buildPorchSpeaker(k) {
+    k.box(.018,.15,.1,'wallPlaster',{p:[.009,0,0]});
+    k.rod([.018,0,0],[.12,0,0],.014,'wallPlaster',8);
+    k.pivots.head=[.14,0,0];
+    k.in('head',()=>{
+      k.box(.14,.26,.20,'wallPlaster',{p:[.015,0,0]});
+      k.box(.004,.225,.17,'grilleWhite',{p:[.087,0,0]});
+    });
+  }
+  function buildExitSign(k,params={}) {
     k.box(0.05, 0.17, 0.38, 'white', { p: [0.025, 0, 0] });
     k.box(0.006, 0.13, 0.33, 'glow', { p: [0.052, 0, 0] });
     k.glowPoint([0.07, 0, 0], 0.4);
+    // Optional inside-face transom clip. Geometry proxy only; no fixing design.
+    const reach=params.backReach||0,rise=params.clipRise||0;
+    if(reach>0)for(const z of [-.13,.13]){
+      k.rod([.01,.07,z],[.01,rise,z],.006,'white',8);
+      k.rod([.01,rise,z],[-reach,rise,z],.006,'white',8);
+    }
   }
 
   function fanBlades(k, n, rIn, rOut, width, mat, pitch = deg(12), thick = 0.012) {
@@ -559,6 +586,22 @@
         });
       })));
     }
+    // Fine parcel-gilt edging follows the actual front opening of the mantle.
+    // Keep it inside the existing silhouette; this is proposed painted/gilded
+    // sculpture, not a new robe, fixing detail or regional iconographic claim.
+    function mantleEdging(k, o, at) {
+      for (const sign of [-1, 1]) {
+        const points = levels(o.y0 + .02, o.y1 - .025, 24).map(y => {
+          const [rx, rz, cx] = section(Math.min(y, .83)), t = sat((o.y1 - y) / (o.y1 - o.y0));
+          const a = sign * (o.open0 + (o.open1 - o.open0) * Math.sqrt(t) + .042);
+          const amp = .02 + .085 * t, off = (o.base || .012) + (o.flow || .02) * t;
+          const d = 1 + amp * folds(a, y, 3, 4.5, 1.3);
+          const arms = (o.arms || 0) * bell(y, .68, .11) * Math.abs(Math.sin(a)) ** 3;
+          return [cx + (rx + off) * d * Math.cos(a), y, (rz + off + arms) * d * Math.sin(a)];
+        });
+        k.tube(points, .0018, 'gold', at, 32, 6);
+      }
+    }
     // Head in its own units: ±1 is half its height (y), width (z) and depth (x).
     const faceRelief = (y, z) => {
       const az = Math.abs(z), tip = sat((0.14 - y) / 0.34);
@@ -577,6 +620,14 @@
     const HEAD = [0.056, 0.066, 0.047]; // half depth, height, width as fractions of the figure
     const scaled = p => [p[0] * HEAD[0], p[1] * HEAD[1], p[2] * HEAD[2]];
     function head(T) { return memo('head', () => surface(T, headLevels.map(y => headAngles.map(a => scaled(skull(y, a)))))); }
+    function beard(T) {
+      // Tapered jaw and chin instead of an overlapping ball covering the lips.
+      const profile = [[-.37, .57, .19, .58], [-.55, .63, .25, .78], [-.78, .65, .28, .77], [-1.02, .56, .23, .59], [-1.24, .43, .15, .34], [-1.37, .35, .04, .025]];
+      return memo('beard-detail-2', () => surface(T, profile.map(([y, x, depth, width]) => Array.from({length:48}, (_, j) => {
+        const a = j * TAU / 48, groove = .012 * Math.cos(14 * a + 3 * y);
+        return scaled([x + (depth + groove) * Math.cos(a), y, width * Math.sin(a)]);
+      }))));
+    }
     // Veil or hair: a shell round the skull, drawn inside it over the face.
     function hood(T, o) {
       return memo('hood' + JSON.stringify(o), () => surface(T, [...levels(o.bottom, -0.9, 6), ...headLevels.slice(3)].map(y => headAngles.map(a => {
@@ -612,24 +663,42 @@
       keys: z => ({ arm: [[0, 0.79, z * 0.108], [0.04, 0.63, z * 0.14], z < 0 ? [0.115, 0.71, -0.04] : [0.11, 0.6, 0.095]], dir: z < 0 ? [0.5, 0.8, 0.3] : [0.9, 0, -0.4], palm: [0.6, 0, -z * 0.8], reach: 0.02 }),
       sword: z => ({ arm: [[0, 0.79, z * 0.108], [0.04, 0.63, z * 0.14], z < 0 ? [0.125, 0.585, -0.015] : [0.105, 0.72, 0.07]], dir: z < 0 ? [0.7, -0.6, 0.3] : [0.5, 0.75, -0.4], palm: [0.4, 0.2, -z * 0.9], reach: 0.02 })
     };
-    function hand(k, mat, at, dir, palm, H, y0, ox, oz) {
+    function hand(k, mat, at, dir, palm, H, y0, ox, oz, retainContour = false) {
       const T = k.T, f = new T.Vector3(...dir).normalize(), n = new T.Vector3(...palm);
       n.sub(f.clone().multiplyScalar(n.dot(f))).normalize();
       const s = new T.Vector3().crossVectors(f, n), q = new T.Quaternion().setFromRotationMatrix(new T.Matrix4().makeBasis(f, n, s));
       const P = (a, b, c) => [ox + (at[0] + f.x * a + n.x * b + s.x * c) * H, y0 + (at[1] + f.y * a + n.y * b + s.y * c) * H, oz + (at[2] + f.z * a + n.z * b + s.z * c) * H];
       k.sph(1, mat, { p: P(0.024, 0, 0), q, s: [0.027 * H, 0.0085 * H, 0.021 * H] }, 12, 8);
-      [-0.0155, -0.0052, 0.0052, 0.0155].forEach((c, i) => k.rod(P(0.04, 0, c), P(0.086 - 0.006 * Math.abs(i - 1.3), 0.002, c * 1.08), 0.0052 * H, mat, 6));
-      k.rod(P(0.012, 0.002, 0.02), P(0.045, 0.012, 0.034), 0.0058 * H, mat, 6);
+      // Retain the existing outer finger contour at raised niche extremities
+      // and the open/sword poses; their tight envelopes remain coordinated.
+      if (retainContour) {
+        [-.0155, -.0052, .0052, .0155].forEach((c, i) => k.rod(P(.04, 0, c), P(.086 - .006 * Math.abs(i - 1.3), .002, c * 1.08), .0052 * H, mat, 6));
+        k.rod(P(.012, .002, .02), P(.045, .012, .034), .0058 * H, mat, 6);
+        return;
+      }
+      [-0.0155, -0.0052, 0.0052, 0.0155].forEach((c, i) => {
+        const end = .086 - .006 * Math.abs(i - 1.3), tip = P(end - .004, .002, c * 1.08);
+        k.tube([P(.036, 0, c), P(.053, .001, c * 1.025), P(end - .013, .003, c * 1.065), tip], .0047 * H, mat, {}, 10, 6);
+        k.sph(.0047 * H, mat, {p:tip}, 8, 6);
+      });
+      const thumb = P(.042, .012, .033);
+      k.tube([P(.012, .002, .02), P(.027, .01, .027), thumb], .0052 * H, mat, {}, 8, 6);
+      k.sph(.0052 * H, mat, {p:thumb}, 8, 6);
     }
     /* o: { H, y0, robe, mantle, veil, sleeve, skin, hair, beard, sash, pose, look,
-     *      female, painted, cloak: mantle shape, x, z: offset }. Returns the two hand positions. */
+     *      female, child, painted, edging, cloak: mantle shape, x, z: offset }.
+     * Returns unchanged hand anchors, used by the Child, keys and sword. */
     function figure(k, o) {
       const T = k.T, H = o.H, y0 = o.y0 || 0, ox = o.x || 0, oz = o.z || 0, at = { p: [ox, y0, oz], s: H }, skin = o.skin || 'skin';
       k.add(robe(T, !!o.female), o.robe, at);
-      if (o.mantle) k.add(mantle(T, { y0: 0.03, y1: 0.842, open0: 0.3, open1: 0.78, arms: 0.05, ...o.cloak }), o.mantle, at);
+      const cloak = { y0: .03, y1: .842, open0: .3, open1: .78, arms: .05, ...o.cloak };
+      if (o.mantle) { k.add(mantle(T, cloak), o.mantle, at); if (o.edging) mantleEdging(k, cloak, at); }
       if (o.sash) k.add(memo('sash', () => surface(T, levels(0.572, 0.6, 3).map(y => { const [rx, rz, cx] = section(y); return Array.from({ length: 40 }, (_, j) => [cx + (rx + 0.007) * Math.cos(j * TAU / 40), y, (rz + 0.007) * Math.sin(j * TAU / 40)]); }))), o.sash, at);
       // Head and neck pivot at the base of the skull so the face can turn up.
-      const look = o.look || 0, neck = [ox - 0.002 * H, y0 + 0.872 * H, oz], headAt = { p: [neck[0] + Math.sin(-look) * 0.062 * H, neck[1] + Math.cos(look) * 0.062 * H, oz], r: [0, 0, look], s: H };
+      const look = o.look || 0, headSize = o.child ? 1.45 : 1, F = H * headSize;
+      // A fuller infant head, with the same crown height and carrying-hand anchor.
+      const neck = [ox - .002 * H, y0 + (.872 - .128 * (headSize - 1)) * H, oz];
+      const headAt = { p: [neck[0] + Math.sin(-look) * .062 * F, neck[1] + Math.cos(look) * .062 * F, oz], r: [0, 0, look], s: F };
       k.add(head(T), skin, headAt);
       if (o.veil) {
         k.add(hood(T, { bottom: -1.5, edge: 0.34, rise: 0.25, brow: 0.6, grow: 1.13, spread: 0.55 }), o.veil, headAt);
@@ -638,23 +707,34 @@
       if (o.hair) k.add(hood(T, { bottom: o.female ? -2 : -1.35, edge: 0.3, rise: 0.4, brow: 0.56, grow: 1.08, spread: 0.3, wave: 0.03 }), o.hair, headAt);
       const face = (y, z, lift = 0) => { // a point on the modelled face, in figure units
         const x = Math.sqrt(Math.max(0, 1 - y * y - z * z)) + faceRelief(y, z) + lift, c = Math.cos(look), s = Math.sin(look), px = x * HEAD[0], py = y * HEAD[1];
-        return [headAt.p[0] + (px * c - py * s) * H, headAt.p[1] + (px * s + py * c) * H, oz + z * HEAD[2] * H];
+        return [headAt.p[0] + (px * c - py * s) * F, headAt.p[1] + (px * s + py * c) * F, oz + z * HEAD[2] * F];
       };
       if (o.beard) {
-        k.sph(1, o.hair, { p: face(-0.78, 0, -0.5), r: [0, 0, look], s: [0.034 * H, 0.04 * H, 0.04 * H] }, 16, 12);
-        for (const z of [-1, 1]) { k.sph(1, o.hair, { p: face(-0.42, z * 0.56, -0.12), r: [0, 0, look], s: [0.02 * H, 0.034 * H, 0.012 * H] }, 10, 8); k.rod(face(-0.36, z * 0.04, 0.01), face(-0.42, z * 0.3, -0.02), 0.0048 * H, o.hair, 6); }
+        k.add(beard(T), o.hair, headAt);
+        for (const z of [-1, 1]) k.tube([face(-.36, z * .04, .005), face(-.38, z * .18, .005), face(-.42, z * .30, -.02)], .0025 * F, o.hair, {}, 10, 6);
       }
-      if (o.painted) for (const z of [-1, 1]) {
-        k.sph(0.0052 * H, 'statueEye', { p: face(0.09, z * 0.34, -0.035), s: [0.5, 0.75, 1] }, 8, 6);
-        k.rod(face(0.268, z * 0.15, 0.008), face(0.268, z * 0.5, -0.012), 0.0015 * H, o.hair || 'hair', 5);
-        k.sph(1, 'statueLip', { p: face(-0.45, z * 0.07, -0.02), r: [0, 0, look], s: [0.004 * H, 0.0042 * H, 0.0085 * H] }, 8, 6);
+      for (const z of [-1, 1]) {
+        if (o.painted) {
+          k.sph(1, 'ivory', {p:face(.09, z * .34, -.035), r:[0,0,look], s:[.0024 * F, .0024 * F, .0065 * F]}, 12, 8);
+          k.sph(.0026 * F, 'statueEye', {p:face(.09, z * .34, -.002), r:[0,0,look], s:[.45,1,1]}, 10, 8);
+        }
+        // Carved lids also give the ivory exterior figures a quiet expression,
+        // without adding painted eyes or changing their monochrome finish.
+        for (const side of [-1, 1]) {
+          const lid = Array.from({length:9}, (_, i) => { const t = i / 8; return face(.09 + side * .052 * Math.sin(t * PI), z * (.20 + .28 * t), .006); });
+          k.tube(lid, .0009 * F, skin, {}, 12, 5);
+        }
+        if (o.painted) {
+          k.tube([face(.235, z * .17, .005), face(.272, z * .33, .002), face(.245, z * .51, -.015)], .0011 * F, o.hair || 'hair', {}, 10, 5);
+          k.sph(1, 'statueLip', { p: face(-.45, z * .07, -.02), r: [0, 0, look], s: [.0025 * F, .0031 * F, .0085 * F] }, 10, 8);
+        }
       }
       const hands = {};
       for (const z of [-1, 1]) {
         const pose = POSES[o.pose || 'prayer'](z), wrist = pose.arm[2];
         k.add(limb(T, pose.arm, [0.04, 0.036, 0.033, 0.034, 0.044], (o.pose || 'prayer') + z), o.sleeve || o.robe, at);
         const f = new T.Vector3(...pose.dir).normalize(), start = [wrist[0] - f.x * 0.004, wrist[1] - f.y * 0.004, wrist[2] - f.z * 0.004];
-        hand(k, skin, start, pose.dir, pose.palm, H, y0, ox, oz);
+        hand(k, skin, start, pose.dir, pose.palm, H, y0, ox, oz, ['open', 'raised', 'sword'].includes(o.pose));
         hands[z < 0 ? 'right' : 'left'] = [ox + (wrist[0] + f.x * 0.045) * H, y0 + (wrist[1] + f.y * 0.045) * H, oz + (wrist[2] + f.z * 0.045) * H];
       }
       // Toes of the forward foot under the hem.
@@ -670,15 +750,15 @@
   function buildMary(k) {
     pedestal(k, 1.0, 0.5);
     k.sph(0.25, 'robeWhite', { p: [0, 1.03, 0], s: [1, 0.3, 1] }, 18, 8);
-    SCULPT.figure(k, { H: 1.62, y0: 1.06, robe: 'robeWhite', mantle: 'robeBlue', veil: 'robeWhite', sash: 'robeBlue', pose: 'prayer', female: true, painted: true, hair: 'hair', look: -0.06 });
+    SCULPT.figure(k, { H: 1.62, y0: 1.06, robe: 'robeWhite', mantle: 'robeBlue', veil: 'robeWhite', sash: 'robeBlue', pose: 'prayer', female: true, painted: true, edging: true, hair: 'hair', look: -0.06 });
     starHalo(k, [-0.02, 2.62, 0], 0.17, 0.2);
   }
   function buildJoseph(k) {
     pedestal(k, 1.0, 0.5);
-    const hands = SCULPT.figure(k, { H: 1.66, y0: 1.0, robe: 'robeGreen', mantle: 'robeOchre', sash: 'robeBrown', hair: 'hair', beard: true, pose: 'hold', painted: true, feet: 'robeBrown', cloak: { open0: 0.45, open1: 0.95 } });
+    const hands = SCULPT.figure(k, { H: 1.66, y0: 1.0, robe: 'robeGreen', mantle: 'robeOchre', sash: 'robeBrown', hair: 'hair', beard: true, pose: 'hold', painted: true, edging: true, feet: 'robeBrown', cloak: { open0: 0.45, open1: 0.95 } });
     // The Child Jesus sits on Joseph's left arm, following the approved concept.
     const c = hands.left;
-    SCULPT.figure(k, { H: 0.5, y0: c[1] - 0.27, x: c[0] + 0.03, z: c[2] + 0.09, robe: 'robeWhite', hair: 'hair', pose: 'open', painted: true });
+    SCULPT.figure(k, { H: 0.5, y0: c[1] - 0.27, x: c[0] + 0.03, z: c[2] + 0.09, robe: 'robeWhite', hair: 'hair', pose: 'open', painted: true, child: true });
   }
   function buildSacredHeart(k) {
     pedestal(k, 1.0, 0.5);
@@ -706,7 +786,7 @@
       k.tor(0.03, 0.008, 'gold', { p: [x, y + 0.06, z - tilt * 0.03], r: [0, PI / 2, 0] }, 2 * PI, 6, 16);
       k.box(0.012, 0.04, 0.045, 'gold', { p: [x, y - 0.2, z + tilt * 0.22 + 0.022] });
     }
-    k.box(0.05, 0.24, 0.17, 'statueIvoryShade', { p: [h.left[0] + 0.01, h.left[1] + 0.05, h.left[2] + 0.02], r: [0, 0.2, -0.15] });
+    sculptureBook(k, [h.left[0] + .01, h.left[1] + .05, h.left[2] + .02], [0, .2, -.15]);
   }
   function buildPaul(k) {
     const h = SCULPT.figure(k, { ...IVORY, H: 1.78, y0: 0.03, beard: true, pose: 'sword', cloak: { open0: 0.5, open1: 0.9 } });
@@ -717,7 +797,18 @@
     k.box(0.03, 0.03, 0.24, 'gold', { p: [x + 0.01, y - 0.04, z] });
     k.rod([x + 0.01, y - 0.04, z], [x + 0.01, y + 0.13, z], 0.016, 'gold', 8);
     k.sph(0.026, 'gold', { p: [x + 0.01, y + 0.14, z] }, 8, 6);
-    k.box(0.05, 0.24, 0.17, 'statueIvoryShade', { p: [h.left[0] + 0.01, h.left[1] + 0.03, h.left[2] + 0.03], r: [0, -0.2, -0.1] });
+    sculptureBook(k, [h.left[0] + .01, h.left[1] + .03, h.left[2] + .03], [0, -.2, -.1]);
+  }
+  function sculptureBook(k, p, r) {
+    // Covers retain the former block's exact outer corners and transform.
+    // Recessed leaves and spine bands make the attribute legible up close.
+    const T = k.T, q = new T.Quaternion().setFromEuler(new T.Euler(...r));
+    const at = (x, y, z) => ({p:new T.Vector3(x, y, z).applyQuaternion(q).add(new T.Vector3(...p)).toArray(), q});
+    for (const sign of [-1, 1]) k.box(.006, .24, .17, 'statueIvoryShade', at(sign * .022, 0, 0));
+    k.box(.038, .214, .146, 'statueIvory', at(0, 0, .003));
+    k.box(.044, .24, .012, 'statueIvoryShade', at(0, 0, -.079));
+    for (const y of [-.075, 0, .075]) k.box(.046, .008, .014, 'statueIvoryShade', at(0, y, -.078));
+    for (const y of [-.065, -.03, .012, .052, .085]) k.box(.034, .001, .001, 'statueIvoryShade', at(0, y, .0765));
   }
   function bouquet(k, x, y, z, s = 1, colors = ['flowerWhite', 'flowerCream']) {
     for (let i = 0; i < 18; i++) {
@@ -947,6 +1038,9 @@
     { id: 'wallLantern', cat: LIGHT, family: 'Decorative', name: 'Wall lantern', mounts: ['wall'], defaultHeight: 2.6, glow: 'warm', circuit: 'L4',
       desc: '900 lm, 2700 K, 9 W. Veranda piers and side doors.',
       light: { lumens: 900, watts: 9, cct: 2700, cri: 90, emitters: [{ kind: 'point', pos: [0.3, -0.2, 0] }] }, build: buildWallLantern },
+    { id: 'porchFlood', cat: LIGHT, family: 'Exterior', name: 'Open-porch wall flood · concept', mounts: ['wall'], aim: true, defaultTilt: 40, glow: 'lens', circuit: 'L4',
+      desc: 'Compact finish-matched wall flood concept: 900 lm / 9 W, 3000 K, adjustable beam. Generic planning data; photometry, glare shielding, weather protection, driver access and fixing pending.',
+      light: { lumens:900,watts:9,cct:3000,cri:90,beam:65,field:90,optics:[45,65,90],emitters:[{kind:'spot',head:true,pos:[.032,0,0]}] },build:buildPorchFlood },
     { id: 'flood', cat: LIGHT, family: 'Exterior', name: 'Façade floodlight', mounts: ['floor'], aim: true, defaultTilt: 50, glow: 'lens', circuit: 'L6',
       desc: '9 000 lm, 3000 K, 30° beam, 70 W, IP66. Towers and façade.',
       light: { lumens: 9000, watts: 70, cct: 3000, cri: 80, beam: 30, field: 50, optics: [15, 30, 50, 70], emitters: [{ kind: 'spot', head: true, pos: [0.05, 0, 0] }] }, build: buildFlood },
@@ -977,6 +1071,18 @@
       desc: 'Short linear LED hidden behind a matching lip under the head of a niche arch. Nominal 400 lm, 3000 K CRI 90, 5 W, weatherproof. Slot, lip, driver place and access pending.',
       light: { lumens: 400, watts: 5, cct: 3000, cri: 90, beam: 60, field: 100, optics: [36, 60, 90], emitters: [{ kind: 'spot', pos: [0.02, -0.03, 0] }] },
       build: (k, item) => k.box(0.05, 0.03, item.params?.length || 0.6, 'ivory', { p: [0.025, -0.015, 0] }) },
+    // Parish priest, 25 October 2026: a candle light pair below each Station of the Cross.
+    { id: 'stationCandle', cat: LIGHT, family: 'Decorative', name: 'Station candle light · wall', mounts: ['wall'], glow: 'warm', flicker: true, circuit: 'LS',
+      desc: 'Electric candle on a small brass wall bracket below a Station of the Cross: warm flickering flame, about 60 lm and 1.5 W. Product, fixing and lamp access pending.',
+      light: { lumens: 60, watts: 1.5, cct: 2200, emitters: [{ kind: 'point', pos: [0.12, 0.25, 0] }] },
+      build: k => {
+        k.box(0.02, 0.16, 0.08, 'brass', { p: [0.01, 0, 0] });
+        k.tube([[0.02, -0.03, 0], [0.08, -0.02, 0], [0.12, 0.02, 0]], 0.01, 'brass', {}, 10, 6);
+        k.cyl(0.045, 0.03, 0.02, 'brass', { p: [0.12, 0.03, 0] }, 14);
+        k.cyl(0.02, 0.02, 0.17, 'candle', { p: [0.12, 0.125, 0] }, 10);
+        k.sph(0.022, 'glow', { p: [0.12, 0.235, 0], s: [1, 1.8, 1] }, 10, 8);
+        k.glowPoint([0.12, 0.235, 0], 0.14);
+      } },
     // Owner request, 9 October 2026: two candle lights on the base of each façade
     // statue. A devotional object that is meant to be seen, unlike the hidden lines.
     { id: 'nicheCandle', cat: LIGHT, family: 'Exterior', name: 'Statue candle light · electric flame', mounts: ['floor'], glow: 'warm', flicker: true, circuit: 'L10',
@@ -995,6 +1101,7 @@
       light: { lumens: 600, watts: 8, cct: 3000, cri: 80, emitters: [{ kind: 'point', pos: [0, 0.76, 0] }] }, build: buildBollard },
     { id: 'exitSign', cat: LIGHT, family: 'Emergency', name: 'Exit sign (maintained)', mounts: ['wall', 'pendant'], defaultHeight: 2.4, glow: 'green', circuit: 'E1',
       desc: '3 W self-contained exit sign. Shown for location only; emergency lighting needs its own design.',
+      params: { backReach: { label: 'Transom clip reach (m)',min:0,max:.4,step:.005,value:0 },clipRise: { label: 'Transom clip rise (m)',min:0,max:.3,step:.005,value:0 } },
       light: { lumens: 20, watts: 3, cct: 6500, emitters: [] }, build: buildExitSign },
 
     { id: 'fanCeiling', cat: FAN, family: 'Ceiling', name: 'Ceiling fan · 1.42 m (56")', mounts: ['pendant'], defaultDrop: 3.0, circuit: 'F1',
@@ -1040,6 +1147,9 @@
       desc: '90° × 60°, 92 dB 1 W/1 m, 200 W. Compact fill or monitor.',
       speaker: { hb: [360, 240, 140, 100, 90, 85, 80], vb: [360, 200, 120, 80, 60, 55, 50], rear: [4, 7, 11, 14, 17, 19, 21], sensitivity: 92, ratedW: 200, response: [-6, -1, 0, 0, 0, 0, -2], nominal: 84 },
       build: buildPointSpeaker },
+    { id: 'porchWallSpeaker', cat: SPK, family: 'Distributed', name: 'Open-porch wall fill · 6" · concept', mounts: ['wall'], aim: true, defaultHeight: 2.7, defaultTilt: -33, circuit: 'A2',
+      desc: 'Wall-mounted porch fill concept using the former 6-inch pendant acoustic category (110-degree cone, 89 dB 1 W/1 m, 30 W passive). Enclosure, weather protection, real directivity and fixing are not selected.',
+      speaker: { hb:[360,300,180,120,110,100,90],vb:[360,300,180,120,110,100,90],rear:[3,5,8,12,15,17,18],sensitivity:89,ratedW:30,response:[-12,-4,0,0,0,-1,-4],nominal:80 },build:buildPorchSpeaker },
     { id: 'pendantSpeaker', cat: SPK, family: 'Distributed', name: 'Pendant loudspeaker · 6"', mounts: ['pendant'], aim: true, defaultDrop: 2.5, defaultTilt: -90, circuit: 'A2',
       desc: '110° cone, 89 dB 1 W/1 m, 30 W (100 V line). Verandas and overflow areas.',
       speaker: { hb: [360, 300, 180, 120, 110, 100, 90], vb: [360, 300, 180, 120, 110, 100, 90], rear: [3, 5, 8, 12, 15, 17, 18], sensitivity: 89, ratedW: 30, response: [-12, -4, 0, 0, 0, -1, -4], nominal: 80 },

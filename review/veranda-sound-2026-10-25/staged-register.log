@@ -1,0 +1,26 @@
+Workflow checks passed: retained keyed inputs, retired records, complete XYZ draft and invalid-proposal rejection.
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Previous workbook backed up to <temporary-workbook-backup>
+Inspect result written to file: <staged-workspace>/docs/electrical-grid/categories/lighting/register.xlsx.tmp.xlsx.inspect.ndjson
+{"workbook":"<staged-workspace>/docs/electrical-grid/categories/lighting/register.xlsx","equipment":299,"routes":385,"vertices":2880}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Previous workbook backed up to <temporary-workbook-backup>
+Inspect result written to file: <staged-workspace>/docs/electrical-grid/categories/sound/register.xlsx.tmp.xlsx.inspect.ndjson
+{"workbook":"<staged-workspace>/docs/electrical-grid/categories/sound/register.xlsx","equipment":46,"routes":56,"vertices":340}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Previous workbook backed up to <temporary-workbook-backup>
+Inspect result written to file: <staged-workspace>/docs/electrical-grid/categories/air-system/register.xlsx.tmp.xlsx.inspect.ndjson
+{"workbook":"<staged-workspace>/docs/electrical-grid/categories/air-system/register.xlsx","equipment":49,"routes":71,"vertices":458}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Previous workbook backed up to <temporary-workbook-backup>
+Inspect result written to file: <staged-workspace>/docs/electrical-grid/categories/exit-signs/register.xlsx.tmp.xlsx.inspect.ndjson
+{"workbook":"<staged-workspace>/docs/electrical-grid/categories/exit-signs/register.xlsx","equipment":5,"routes":14,"vertices":108}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Previous workbook backed up to <temporary-workbook-backup>
+Inspect result written to file: <staged-workspace>/docs/electrical-grid/categories/decoration/register.xlsx.tmp.xlsx.inspect.ndjson
+{"workbook":"<staged-workspace>/docs/electrical-grid/categories/decoration/register.xlsx","equipment":37,"routes":0,"vertices":0}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Previous workbook backed up to <temporary-workbook-backup>
+Inspect result written to file: <staged-workspace>/docs/electrical-grid/categories/distribution-controls/register.xlsx.tmp.xlsx.inspect.ndjson
+{"workbook":"<staged-workspace>/docs/electrical-grid/categories/distribution-controls/register.xlsx","equipment":12,"routes":19,"vertices":123}
+{"categories":6,"report":"<staged-workspace>/docs/electrical-grid/summary-report.md","totals":{"equipment":429,"shown":414,"hidden":15,"connected":386,"commandedOn":352,"retiredEquipment":19,"retiredRoutes":100,"routes":445,"vertices":3221,"routeMetres":5529.734063313686,"homeRunMetres":2365.6312484919,"bundleMetres":571.7270424894334,"segmentMetres":4760.740463534803,"watts":5675.127501612034,"kWhService":8.512691252418053,"kWhMonth":340.50765009672205,"specsDocumented":0,"controlsDocumented":0,"cableDocumented":0,"allowancesEntered":0,"allowancePopulation":435}}

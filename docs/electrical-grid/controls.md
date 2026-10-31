@@ -1,5 +1,9 @@
 # Main/sub-board manual controls and quick modes
 
+> **Door-head/sign and sconce follow-up, 25 October 2026:** L82–L95 are retired from the default, so LD has no default connected equipment. Keep its stable circuit/control identifier for customized saved layouts; existing scene values on an empty LD group add no load. All five E1 signs remain directly fed by DB-1 and ON in All off, with the same 15 W estimate. Their new positions do not establish emergency supply, sign visibility or compliance. See [record](../engineering/doorheads-and-sconces.md).
+
+> **Open porches, 25 October 2026:** L4 now includes 18 wall path floods and 36 arch floods; A2 has 18 wall fills. A1's twelve nave columns and A5's two entrance fills use a 2.5 m reference height. Existing L4/A1/A2/A5 controls, quick-mode values and board ownership remain; arch/path lighting shares L4. Actual terminals, outdoor isolation, dimmer/driver compatibility and amplifier capacity remain unassigned. See the [coordinated issue](../engineering/open-porch-light-sound.md). This is implemented simulator behavior, not installed hardware. Public visit mode cannot operate these engineering controls.
+
 Owner's priority, recorded 7 October 2026. **Design brief:** optimize equipment placement, coordinate wiring in 2D/3D, and provide understandable physical manual controls and quick modes with the same intended behavior as the web app. Hardware selection and installation approval remain pending.
 
 ## Shared equipment and control map
@@ -25,8 +29,9 @@ The source of circuit membership and scene values is [engine.js](../../Thach_Bi_
 
 | Board / panel | Current function and groups | Physical design to develop |
 | --- | --- | --- |
-| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/F5 and exhaust V1–V3, audio groups A1–A5/MIC, seasonal X1 and indoor socket circuits P1/P2. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
-| DB-2, inside main entrance | Sub-board for L6 façade/towers, L7 festival exterior, L9 stage/central door, L10 façade statues and candles, F4 trial entrance circulators and event power P3/P4. Fed from DB-1. | Local manual control for those groups, feeder-availability indication and tower quick-mode buttons. Confirm physical enclosure size and installation details. |
+| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, Stations candles LS, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/F5 and exhaust V1–V3, audio groups A1–A5/MIC, seasonal X1 and indoor socket circuits P1/P2. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
+| DB-2, ground-floor room of the H-side tower (left on site; inside the main doors until 25 Oct 2026) | Sub-board for L6 façade/towers, L7 festival exterior, L9 stage/central door, L10 façade statues and candles, F4 trial entrance circulators and event power P3/P4. Fed from DB-1. | Local manual control for those groups, feeder-availability indication and tower quick-mode buttons. Confirm physical enclosure size and installation details. |
+| EB-1, beside DB-2 in the same tower room | Festival & stage event board (parish priest, 25 October 2026): event power P3/P4 and festival exterior lights L7, fed from DB-2 and so from the DB-1 feeder. | Enclosure, devices and whether EB-1 needs its own incomer and isolation are for the electrical designer. |
 | LC-1 / lighting operator controls | Lighting groups and scene functions. | Required individual/group on/off and dimming channels; main scene keypad and any agreed local repeat controls. |
 | FC-1 / fan operator controls | Fan/exhaust groups and speed selection. | Compatible controls for the selected motors; independent/group operation and clear Off/Low/Medium/High or product-specific labels. |
 | AV-1 / audio operator controls | Signal routing reference, speaker zones and microphones. | Zone level/mute, agreed microphone access and rack power sequencing. Audio zones and passive-speaker lines are not separate mains circuits merely because the web app lists them as “circuits.” |
@@ -43,6 +48,21 @@ Keep protective devices, routine operator controls and control logic distinct in
 - Required emergency functions and ventilation constraints take precedence over discretionary scenes. The simulator's **All off** keeps E1 exit signs on, and since 9 October 2026 the E1 routes leave DB-1 directly instead of the LC-1 lighting-control enclosure, so that no scene control stands between the main board and the signs. This does not establish a compliant emergency supply or duration. Define the real life-safety design separately.
 - Local operation must remain available without internet. Define controller/network failure behavior, safe manual recovery, authorized access and any actual-state feedback. Do not display a command as measured confirmation.
 
+## Lighting areas (parish priest, 25 October 2026)
+
+Interior lighting is switched by area ([meeting record](../engineering/parish-meeting-2026-10-25.md), point 6). “Đầu nhà thờ” is the sanctuary end and “cuối” the entrance end, as in the drawing titles.
+
+| Circuit | Area | Contents |
+| --- | --- | --- |
+| L3 | Sanctuary | Altar, ambo, chamber, shrine and service-room lights, and the one remaining chandelier at the 9–10 crossing |
+| L1 | Nave · 3 front bays (6–9) | Reading heads lighting bays 6–7, 7–8, 8–9 and the front of the dais |
+| L2 | Nave · 4 rear bays (2′–6) | Reading heads lighting bays 2′–3 to 5–6 and the four entrance-wall lights; can stay off or dimmed at ordinary Masses |
+| LA | Ceiling uplight (*hắt trần*) | Seven roof uplights on the tie beams, on their own switch |
+| LD | Wall sconces | Column and sanctuary-pier sconces (the three nave chandeliers are removed) |
+| LS | Stations of the Cross | 28 candles |
+
+Each reading head on an axis beam belongs to the bay it lights: the head aimed toward the sanctuary to the bay after the beam, its twin to the bay before. So the axis-6 heads are split between L1 and L2. The physical board channels for these areas are still to be designed (ENG-017).
+
 ## Quick modes
 
 Use these existing web-app names as the starting operator vocabulary. Final setpoints and physical button locations are a coordinated design decision. Exact simulator values remain in `SCENES` in `engine.js`; validate them against current performance rather than copying historical tables.
@@ -51,6 +71,7 @@ Use these existing web-app names as the starting operator vocabulary. Final setp
 | --- | --- |
 | Full service · evening | Full congregation lighting, normal speech and quiet fan/ventilation operation. |
 | Weekday Mass | Reduced occupied zones while retaining required sanctuary, circulation and air provision. |
+| Ordinary Mass · rear bays off | Parish priest, 25 October 2026: as Weekday Mass, with the four rear nave bays (L2, bays 2′–6) off. Simulated: front-bay seats 221 lux average / 137 minimum, rear bays about 40 lux, 3.21 kW against 3.64 kW for Weekday Mass. |
 | Prayer & adoration | Quiet, subdued lighting with the agreed reading and ventilation needs. |
 | Christmas & festivals | Indoor festival service and decorative lighting; courtyard horns remain off in the current preset. |
 | Festival · courtyard overflow | Explicit outdoor overflow operation, including courtyard horns; review its effect on indoor speech. |
@@ -103,6 +124,7 @@ Owner requirement (`USER CONFIRMED`, 9 October 2026): the light on the statues, 
 | Circuit | Operator label | Content |
 | --- | --- | --- |
 | L10 | Façade statues & candles | Nine hidden light lines and six candle lights in the three façade niches |
+| LS (DB-1) | Stations of the Cross candles | 28 candle lights, a pair below each of the fourteen stations (parish priest, 25 October 2026) |
 | L6 | Façade & towers | Tower and façade floods |
 | L9 | Front stage & central door | The open space in front of the church and the central door |
 

@@ -1,0 +1,20 @@
+{
+  "checkedOn": "2026-10-25",
+  "electricalSystemsByteIdentical": true,
+  "scheduleByteIdentical": true,
+  "layoutRecordsIdenticalExcluding": [
+    "savedAt"
+  ],
+  "layoutRecordsMatch": true,
+  "systemsSha256": "35e15028a76dfd1c2144fddf8f8a9d7f7669c21c7f9dd675880e3fda2250a12b",
+  "scheduleSha256": "be92682bdb38f2ea6b84cfb9f1908496bef97df8062fb594990feba515e7eddc",
+  "categoryWorkbooksPreservedSha256": {
+    "categories/air-system/register.xlsx": "f6857df6635ee3ca92a4eda0ee9792087d7b0347b11de6611a8e452d8cb49242",
+    "categories/decoration/register.xlsx": "642c7b142ac5abb6b09616ac902d088d2cdc2c4ce2332b492007ee018556c01d",
+    "categories/distribution-controls/register.xlsx": "6ee308a17990a22949b2a30054aefdd63dae1e920d554779141e9522a8e6bf4f",
+    "categories/exit-signs/register.xlsx": "93efff211b3647ce165be7fba09a349e38051a9042130238c6013fb6f8303e1c",
+    "categories/lighting/register.xlsx": "4bc2605dd012e8adf3aab04eea78e503b7ef6bc12a70155f3ed9bc66636f7ca3",
+    "categories/sound/register.xlsx": "4d8d4a9ea1b15602c76861564f7763a31281126f6cfeff7bb43c378018a80e41"
+  },
+  "conclusion": "No equipment, circuit, route, vertex, model-envelope or specification field changes. Owning exports/register inputs left intact."
+}

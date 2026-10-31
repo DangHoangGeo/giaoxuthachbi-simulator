@@ -1,0 +1,48 @@
+{
+  "status": "CONCEPT / ENGINEERING HOLD; desktop review unavailable; owner authorized headless verification and local commit",
+  "baseCommit": "040f36f3637a037e171d95022492a72d6217048e",
+  "workingSha256": {
+    "Thach_Bi_Viewer/OPEN_CHURCH.html": "baf13fb1d8127c1d806a416513a5f131679f332fdfc1981ae68143cd5225b8b5",
+    "Thach_Bi_Viewer/simulator/catalog.js": "caebb7133d3199cadd78fd09cc25660e5d622a4ed2b083988c654b2ed1d0e6fe",
+    "Thach_Bi_Viewer/simulator/veranda-review.js": "cda63e962a9dc9a3ec8f18ed267752a0e32f4872d3e69a54ef344f3a5fc5c622",
+    "Thach_Bi_Viewer/simulator/design.js": "78acd07e7edc588e65969eecfbe2a581452835e0d4cabc356452796cbb39aa55",
+    "Thach_Bi_Viewer/simulator/engine.js": "e59e60663ca4dd6b75836e00375b236ca5def264a429f4fc5b4fb18f9f7374c0",
+    "Thach_Bi_Viewer/porches.js": "cf1279c2694bea830f0e7a301a4077f950113abbd1604b271151a2a5b2d4f9c3",
+    "Thach_Bi_Viewer/facade.js": "a0fd83359d266050971eff70537152953d1a19f8acc9e2454351106151d36d3f",
+    "Thach_Bi_Viewer/realism.js": "9d194becf95bd5abde6661a34b18ec4d50c1b512c21dfb7856e8a134fcab05a9",
+    "scripts/lib/study_model.cjs": "e00b1983aba50ff1eccd21a58d4cb6fef933a7f062b4686b1b7f2b89a803222a",
+    "scripts/verify_simulator.cjs": "34a48d50c5c19ab87c7e5b587fe0eea5bf6d302f0502e04a11be63da05dccfd1",
+    "scripts/verify_open_porches.cjs": "19d8479b52cd04f706b64632c9429d862b2ce42f1273a8781b3b8781d7ef2f9f",
+    "scripts/verify_porch_reload.cjs": "f4f1e0efd104883a58c13743a0dba47e7ac333d9f080caf063c8df8d47b061e4",
+    "scripts/review_open_porches.cjs": "23dc1e7a5f3bad93e172ee6dbd31303aa10c29b77754ebaa3c3b317f2c5f9b59",
+    "scripts/usage_registers.mjs": "6f60f7506335c7a092081cf02cbbbb978b6b8124d0c3ece8a1a7ca3c82143e52",
+    "docs/electrical-grid/equipment-layout.json": "5603cdb5b24774824e4d903df4e58102c245a0442c43f9d8758b05a61c4b086f",
+    "docs/electrical-grid/electrical-systems.json": "48d4f70e7fff8284d6bae3757c8e5c6d9df61d42285a7c3be7192d7b19831706",
+    "docs/electrical-grid/categories/manifest.json": "59825a72d6cfd2b10013b7bab6ef9a5ef832c7023b468fdc56290b729ab306fa"
+  },
+  "stagedSha256": {
+    "Thach_Bi_Viewer/OPEN_CHURCH.html": "8ed008db40aba663a9d530edae2ac385a252f8c9ec08d6b373d567c8a0fffea7",
+    "Thach_Bi_Viewer/simulator/catalog.js": "caebb7133d3199cadd78fd09cc25660e5d622a4ed2b083988c654b2ed1d0e6fe",
+    "Thach_Bi_Viewer/simulator/veranda-review.js": "cda63e962a9dc9a3ec8f18ed267752a0e32f4872d3e69a54ef344f3a5fc5c622",
+    "Thach_Bi_Viewer/simulator/design.js": "b73889aeb399c82f3e5ec4aa273fdbff8f39d49cfac664a2b2a8f6d1ad979d29",
+    "Thach_Bi_Viewer/simulator/engine.js": "0e398f83b52203bdd0aaf739f2e3f759980bed6598aee324c022caff19612b9f",
+    "Thach_Bi_Viewer/porches.js": "cf1279c2694bea830f0e7a301a4077f950113abbd1604b271151a2a5b2d4f9c3",
+    "Thach_Bi_Viewer/facade.js": "089158cb3e0a2f797266be6d3b42c36ccbdf600044d6ceb0c7b67c45a3b4566e",
+    "Thach_Bi_Viewer/realism.js": "3c76d58277f53360f892326f555b9d2e49ea38737784d78ad713e63f60d213de",
+    "scripts/lib/study_model.cjs": "e00b1983aba50ff1eccd21a58d4cb6fef933a7f062b4686b1b7f2b89a803222a",
+    "scripts/verify_simulator.cjs": "34a48d50c5c19ab87c7e5b587fe0eea5bf6d302f0502e04a11be63da05dccfd1",
+    "scripts/verify_open_porches.cjs": "19d8479b52cd04f706b64632c9429d862b2ce42f1273a8781b3b8781d7ef2f9f",
+    "scripts/verify_porch_reload.cjs": "f4f1e0efd104883a58c13743a0dba47e7ac333d9f080caf063c8df8d47b061e4",
+    "scripts/review_open_porches.cjs": "23dc1e7a5f3bad93e172ee6dbd31303aa10c29b77754ebaa3c3b317f2c5f9b59",
+    "scripts/usage_registers.mjs": "6f60f7506335c7a092081cf02cbbbb978b6b8124d0c3ece8a1a7ca3c82143e52",
+    "docs/electrical-grid/equipment-layout.json": "8794d15eced755667fbb94a78904d0b24ab39e7c75d28fc3bbe150bece4e8ceb",
+    "docs/electrical-grid/electrical-systems.json": "fa54e193a88aab1a463c7e9a9d929aac8295554193f697131ae924624c8c3635",
+    "docs/electrical-grid/categories/manifest.json": "6b37a493c82cf67b2297dc96017a55b9f6e91e215cb1e6727dc0569ad5e9735f"
+  },
+  "desktopReviewException": {
+    "date": "2026-10-25",
+    "scope": "This open-porch lighting, sound and lower nave-speaker equipment pass",
+    "authorization": "Authorize headless verification and local commit",
+    "unverified": "Desktop day/evening appearance, controls, GPU lighting, console and audio listening"
+  }
+}

@@ -1,0 +1,657 @@
+{
+ "status": "Derived from the church CAD file received 24 October 2026. Not survey data, not for construction. The DWG and sheet images are under publication hold H1 and are not committed.",
+ "source": {
+  "original_name": "MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI.dwg A.dwg",
+  "local_copy": "docs/layout_design/dwg-2026-10-23/source/thach-bi-church-2026-10-23.dwg",
+  "sha256": "2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae",
+  "format": "AutoCAD 2007 DWG (AC1021)",
+  "created": "2011-10-27",
+  "last_saved": "2026-10-23",
+  "units": "Geometry interpreted as mm from dimension chains and metre level labels; DWG/DXF INSUNITS=1 (inches for insertion). Designer confirmation required; no automatic rescaling.",
+  "insunits": 1,
+  "received": "2026-10-24",
+  "current_filename": "MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI.dwg",
+  "project_design_basis": "USER CONFIRMED 2026-10-26: this DWG governs project design; internal conflicts and construction engineering holds remain open."
+ },
+ "tools": {
+  "converter": "LibreDWG dwg2dxf 0.14",
+  "reader": "ezdxf 1.4.5"
+ },
+ "conventions": "Model axes follow the register: X from axis 1 toward the sanctuary, Y up from nave floor ±0.000, Z from the D/E midpoint, positive toward H/I. Local drawings use u/v from the frame corner (v from the floor line where one is given).",
+ "drawings": [
+  {
+   "id": "P05",
+   "dwg_sheet": "5",
+   "category": "01-plans",
+   "title_vi": "MẶT BẰNG +00 NHÀ THỜ GIÁO XỨ THẠCH BI",
+   "title_en": "Ground-floor plan +0.00",
+   "frame_dwg_mm": [
+    1413824,
+    -627178,
+    1490875,
+    -574990
+   ],
+   "view": "plan",
+   "axes": [
+    "X",
+    "Z"
+   ],
+   "origin": {
+    "ox": 1431380.0,
+    "oy": -600741.4
+   },
+   "register_pdf_file": "4",
+   "dimension_objects": 22,
+   "image": "images/01-plans/P05_ground-floor-plan-0-00.png"
+  },
+  {
+   "id": "P14",
+   "dwg_sheet": "14",
+   "category": "01-plans",
+   "title_vi": "MẶT BẰNG +6,324m THÂN VÀ +8,390m CUỐI - CÂY THÁP NHÀ THỜ",
+   "title_en": "Plan at +6.324 m (body) and +8.390 m (tower end)",
+   "frame_dwg_mm": [
+    1498532,
+    -627136,
+    1575584,
+    -574947
+   ],
+   "view": "plan",
+   "axes": [
+    "X",
+    "Z"
+   ],
+   "origin": {
+    "ox": 1516088.4,
+    "oy": -600698.6
+   },
+   "register_pdf_file": null,
+   "dimension_objects": 16,
+   "image": "images/01-plans/P14_plan-at-6-324-m-body-and-8-390-m-tower-end.png"
+  },
+  {
+   "id": "PT08",
+   "dwg_sheet": null,
+   "category": "01-plans",
+   "title_vi": "MẶT BẰNG KIẾN TRÚC +8,390M ĐỐT MỘT CÂY THÁP",
+   "title_en": "Tower plan at +8.390 m (first tower stage)",
+   "frame_dwg_mm": [
+    1581791,
+    -595187,
+    1616942,
+    -574941
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": null,
+   "dimension_objects": 4,
+   "image": "images/01-plans/PT08_tower-plan-at-8-390-m-first-tower-stage.png"
+  },
+  {
+   "id": "PT10",
+   "dwg_sheet": null,
+   "category": "01-plans",
+   "title_vi": "MẶT BẰNG KIẾN TRÚC CUỐI NHÀ THỜ +10,128M",
+   "title_en": "Tower-end plan at +10.128 m",
+   "frame_dwg_mm": [
+    1581789,
+    -619079,
+    1616940,
+    -598834
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": null,
+   "dimension_objects": 0,
+   "image": "images/01-plans/PT10_tower-end-plan-at-10-128-m.png"
+  },
+  {
+   "id": "PT15",
+   "dwg_sheet": null,
+   "category": "01-plans",
+   "title_vi": "MẶT BẰNG KIẾN TRÚC CUỐI NHÀ THỜ +15,840M",
+   "title_en": "Tower-end plan at +15.840 m",
+   "frame_dwg_mm": [
+    1622859,
+    -595238,
+    1658010,
+    -574993
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": null,
+   "dimension_objects": 0,
+   "image": "images/01-plans/PT15_tower-end-plan-at-15-840-m.png"
+  },
+  {
+   "id": "PT15A",
+   "dwg_sheet": null,
+   "category": "01-plans",
+   "title_vi": "MẶT BẰNG +15,84M NHÀ THỜ GX THẠCH BI",
+   "title_en": "Single-tower plan at +15.84 m",
+   "frame_dwg_mm": [
+    1623080,
+    -615632,
+    1635310,
+    -605348
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": null,
+   "dimension_objects": 2,
+   "image": "images/01-plans/PT15A_single-tower-plan-at-15-84-m.png"
+  },
+  {
+   "id": "PT23",
+   "dwg_sheet": null,
+   "category": "01-plans",
+   "title_vi": "MẶT BẰNG +23,14M NHÀ THỜ GX THẠCH BI",
+   "title_en": "Single-tower plan at +23.14 m",
+   "frame_dwg_mm": [
+    1637025,
+    -615632,
+    1649256,
+    -605348
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": null,
+   "dimension_objects": 0,
+   "image": "images/01-plans/PT23_single-tower-plan-at-23-14-m.png"
+  },
+  {
+   "id": "PT29",
+   "dwg_sheet": null,
+   "category": "01-plans",
+   "title_vi": "MẶT BẰNG +29,09M NHÀ THỜ GX THẠCH BI",
+   "title_en": "Single-tower plan at +29.09 m",
+   "frame_dwg_mm": [
+    1650591,
+    -615642,
+    1662822,
+    -605358
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": null,
+   "dimension_objects": 0,
+   "image": "images/01-plans/PT29_single-tower-plan-at-29-09-m.png"
+  },
+  {
+   "id": "P28",
+   "dwg_sheet": "28",
+   "category": "01-plans",
+   "title_vi": "MẶT BẰNG MỘT GIAN CỬA SỔ",
+   "title_en": "Plan of one window bay",
+   "frame_dwg_mm": [
+    1496865,
+    -543712,
+    1506475,
+    -536227
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": "8",
+   "dimension_objects": 74,
+   "image": "images/01-plans/P28_plan-of-one-window-bay.png"
+  },
+  {
+   "id": "P33",
+   "dwg_sheet": "33",
+   "category": "01-plans",
+   "title_vi": "(không có tiêu đề) Mặt bằng một gian trục 4–5, cửa đi",
+   "title_en": "Plan of one doorway bay, axes 4–5 (no title)",
+   "frame_dwg_mm": [
+    1496810,
+    -556896,
+    1506420,
+    -549412
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": "9",
+   "dimension_objects": 53,
+   "image": "images/01-plans/P33_plan-of-one-doorway-bay-axes-4-5-no-title.png"
+  },
+  {
+   "id": "E01A",
+   "dwg_sheet": "1",
+   "category": "02-elevations",
+   "title_vi": "MẶT ĐỨNG CUỐI NHÀ THỜ GIÁO XỨ THẠCH BI (bản A, cắt qua mái thân)",
+   "title_en": "Twin-tower end elevation, variant A (cut through the nave roof)",
+   "frame_dwg_mm": [
+    1606865,
+    -523572,
+    1644976,
+    -476956
+   ],
+   "view": "transverse",
+   "axes": [
+    "Z",
+    "Y"
+   ],
+   "origin": {
+    "ox": 1626591.7,
+    "floor": -515946.8,
+    "zsign": -1
+   },
+   "register_pdf_file": "1",
+   "dimension_objects": 23,
+   "image": "images/02-elevations/E01A_twin-tower-end-elevation-variant-a-cut-through-the-nave-roof.png"
+  },
+  {
+   "id": "E01B",
+   "dwg_sheet": "1",
+   "category": "02-elevations",
+   "title_vi": "MẶT ĐỨNG CUỐI NHÀ THỜ GIÁO XỨ THẠCH BI (bản B, mặt đứng đầy đủ)",
+   "title_en": "Twin-tower end elevation, variant B (full elevation)",
+   "frame_dwg_mm": [
+    1646874,
+    -523572,
+    1684984,
+    -476956
+   ],
+   "view": "transverse",
+   "axes": [
+    "Z",
+    "Y"
+   ],
+   "origin": {
+    "ox": 1666600.3,
+    "floor": -515946.8,
+    "zsign": -1
+   },
+   "register_pdf_file": "1",
+   "dimension_objects": 36,
+   "image": "images/02-elevations/E01B_twin-tower-end-elevation-variant-b-full-elevation.png"
+  },
+  {
+   "id": "E02",
+   "dwg_sheet": null,
+   "category": "02-elevations",
+   "title_vi": "(không có tiêu đề) Mặt đứng bên nhà thờ",
+   "title_en": "Side elevation (no title)",
+   "frame_dwg_mm": [
+    1386905,
+    -528109,
+    1461784,
+    -478625
+   ],
+   "view": "longitudinal",
+   "axes": [
+    "X",
+    "Y"
+   ],
+   "origin": {
+    "ox": 1404501.3,
+    "floor": -518026.8
+   },
+   "register_pdf_file": "2",
+   "dimension_objects": 0,
+   "image": "images/02-elevations/E02_side-elevation-no-title.png"
+  },
+  {
+   "id": "E03",
+   "dwg_sheet": "3",
+   "category": "02-elevations",
+   "title_vi": "MẶT ĐỨNG ĐẦU NHÀ THỜ GX THẠCH BI",
+   "title_en": "Gabled-end elevation",
+   "frame_dwg_mm": [
+    1571038,
+    -524212,
+    1602192,
+    -499265
+   ],
+   "view": "transverse",
+   "axes": [
+    "Z",
+    "Y"
+   ],
+   "origin": {
+    "ox": 1587256.3,
+    "floor": -518026.8,
+    "zsign": 1
+   },
+   "register_pdf_file": "3",
+   "dimension_objects": 9,
+   "image": "images/02-elevations/E03_gabled-end-elevation.png"
+  },
+  {
+   "id": "EW",
+   "dwg_sheet": null,
+   "category": "02-elevations",
+   "title_vi": "MẶT ĐỨNG ĐẦU BÊN NGOÀI / BÊN TRONG CÁNH T G NHÀ THỜ GX TB",
+   "title_en": "Side-wing end elevations, outside and inside",
+   "frame_dwg_mm": [
+    1535493,
+    -523213,
+    1564083,
+    -501588
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {
+    "floor": -518026.8
+   },
+   "register_pdf_file": null,
+   "dimension_objects": 0,
+   "image": "images/02-elevations/EW_side-wing-end-elevations-outside-and-inside.png"
+  },
+  {
+   "id": "ET",
+   "dwg_sheet": null,
+   "category": "02-elevations",
+   "title_vi": "(không khung, không tiêu đề) Mặt đứng một tháp",
+   "title_en": "Single tower elevation (no frame or title)",
+   "frame_dwg_mm": [
+    1696316,
+    -519027,
+    1705183,
+    -480107
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {
+    "floor": -518026.8
+   },
+   "register_pdf_file": null,
+   "dimension_objects": 0,
+   "image": "images/02-elevations/ET_single-tower-elevation-no-frame-or-title.png"
+  },
+  {
+   "id": "E26",
+   "dwg_sheet": "26",
+   "category": "02-elevations",
+   "title_vi": "MẶT ĐỨNG TƯỜNG THÂN BÊN NGOÀI / BÊN TRONG MỘT GIAN CỬA SỔ",
+   "title_en": "Window-bay wall elevations, outside and inside",
+   "frame_dwg_mm": [
+    1465861,
+    -543172,
+    1479533,
+    -532264
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": "8",
+   "dimension_objects": 35,
+   "image": "images/02-elevations/E26_window-bay-wall-elevations-outside-and-inside.png"
+  },
+  {
+   "id": "E31",
+   "dwg_sheet": "31",
+   "category": "02-elevations",
+   "title_vi": "MẶT ĐỨNG TƯỜNG THÂN BÊN NGOÀI / BÊN TRONG MỘT GIAN CỬA ĐI",
+   "title_en": "Doorway-bay wall elevations, outside and inside",
+   "frame_dwg_mm": [
+    1465788,
+    -556829,
+    1479461,
+    -545921
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": "9",
+   "dimension_objects": 30,
+   "image": "images/02-elevations/E31_doorway-bay-wall-elevations-outside-and-inside.png"
+  },
+  {
+   "id": "S24",
+   "dwg_sheet": "24",
+   "category": "03-sections",
+   "title_vi": "MẶT ĐỨNG MỘT VÌ THÂN NHÀ THỜ GX THẠCH BI",
+   "title_en": "Nave transverse section",
+   "frame_dwg_mm": [
+    1462926,
+    -524212,
+    1494080,
+    -499265
+   ],
+   "view": "transverse",
+   "axes": [
+    "Z",
+    "Y"
+   ],
+   "origin": {
+    "ox": 1479434.7,
+    "floor": -518026.8,
+    "zsign": 1
+   },
+   "register_pdf_file": "6",
+   "dimension_objects": 38,
+   "image": "images/03-sections/S24_nave-transverse-section.png"
+  },
+  {
+   "id": "S25",
+   "dwg_sheet": "25",
+   "category": "03-sections",
+   "title_vi": "MẶT ĐỨNG MỘT VÌ GIAN CUNG THÁNH NHÀ THỜ GX THẠCH BI",
+   "title_en": "Sanctuary transverse section",
+   "frame_dwg_mm": [
+    1496854,
+    -524212,
+    1528008,
+    -499265
+   ],
+   "view": "transverse",
+   "axes": [
+    "Z",
+    "Y"
+   ],
+   "origin": {
+    "ox": 1513362.7,
+    "floor": -518026.8,
+    "zsign": 1
+   },
+   "register_pdf_file": "7",
+   "dimension_objects": 42,
+   "image": "images/03-sections/S25_sanctuary-transverse-section.png"
+  },
+  {
+   "id": "S45",
+   "dwg_sheet": "45",
+   "category": "03-sections",
+   "title_vi": "MẶT CẮT A-A NHÀ THỜ GIÁO XỨ THẠCH BI",
+   "title_en": "Longitudinal section A-A",
+   "frame_dwg_mm": [
+    1716767,
+    -526060,
+    1791645,
+    -476577
+   ],
+   "view": "longitudinal",
+   "axes": [
+    "X",
+    "Y"
+   ],
+   "origin": {
+    "ox": 1734363.0,
+    "floor": -515946.8
+   },
+   "register_pdf_file": null,
+   "dimension_objects": 24,
+   "image": "images/03-sections/S45_longitudinal-section-a-a.png"
+  },
+  {
+   "id": "S27",
+   "dwg_sheet": "27",
+   "category": "03-sections",
+   "title_vi": "CẮT A-A CỬA SỔ",
+   "title_en": "Window-bay section A-A",
+   "frame_dwg_mm": [
+    1480631,
+    -542323,
+    1490905,
+    -532406
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": "8",
+   "dimension_objects": 64,
+   "image": "images/03-sections/S27_window-bay-section-a-a.png"
+  },
+  {
+   "id": "S32",
+   "dwg_sheet": "32",
+   "category": "03-sections",
+   "title_vi": "CẮT A-A CỬA ĐI",
+   "title_en": "Doorway-bay section A-A",
+   "frame_dwg_mm": [
+    1480649,
+    -555980,
+    1490924,
+    -546063
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": "9",
+   "dimension_objects": 57,
+   "image": "images/03-sections/S32_doorway-bay-section-a-a.png"
+  },
+  {
+   "id": "D29",
+   "dwg_sheet": "29",
+   "category": "04-details",
+   "title_vi": "CHI TIẾT CỬA SỔ KHÔNG CÁNH HAI BÊN",
+   "title_en": "Window detail without leaves, both sides (no frame)",
+   "frame_dwg_mm": [
+    1507300,
+    -545400,
+    1516300,
+    -535600
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": "8",
+   "dimension_objects": 62,
+   "image": "images/04-details/D29_window-detail-without-leaves-both-sides-no-frame.png"
+  },
+  {
+   "id": "D34",
+   "dwg_sheet": "34",
+   "category": "04-details",
+   "title_vi": "CHI TIẾT CỬA ĐI KHÔNG CÁNH HAI BÊN",
+   "title_en": "Doorway detail without leaves, both sides (no frame)",
+   "frame_dwg_mm": [
+    1507600,
+    -557300,
+    1516300,
+    -547000
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": "9",
+   "dimension_objects": 90,
+   "image": "images/04-details/D34_doorway-detail-without-leaves-both-sides-no-frame.png"
+  },
+  {
+   "id": "D46",
+   "dwg_sheet": "46",
+   "category": "04-details",
+   "title_vi": "CHI TIẾT MẶT ĐỨNG KHUNG SẮT VÌ CUỐN HAI BÊN CÁNH TG TRỤC C-C, G-G",
+   "title_en": "Steel arch-frame elevation, side wings on axes C and G",
+   "frame_dwg_mm": [
+    1519649,
+    -545286,
+    1533292,
+    -533004
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": null,
+   "dimension_objects": 30,
+   "image": "images/04-details/D46_steel-arch-frame-elevation-side-wings-on-axes-c-and-g.png"
+  },
+  {
+   "id": "D47",
+   "dwg_sheet": "47",
+   "category": "04-details",
+   "title_vi": "CHI TIẾT MẶT VÌ CUỐN BT CT HAI BÊN CÁNH TG TRỤC C-C, G-G",
+   "title_en": "Reinforced-concrete arch frame, side wings on axes C and G",
+   "frame_dwg_mm": [
+    1534596,
+    -545286,
+    1548239,
+    -533004
+   ],
+   "view": "local",
+   "axes": [
+    "u",
+    "v"
+   ],
+   "origin": {},
+   "register_pdf_file": null,
+   "dimension_objects": 15,
+   "image": "images/04-details/D47_reinforced-concrete-arch-frame-side-wings-on-axes-c-and-g.png"
+  }
+ ],
+ "not_in_dwg": [
+  "Roof plan (register File 5, printed sheet 11)",
+  "Site plan geometry (only its 23-item legend text is present)"
+ ]
+}

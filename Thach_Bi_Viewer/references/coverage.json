@@ -36,15 +36,15 @@
     {
       "folder": "03-facade",
       "title": "Facade and towers",
-      "status": "Front, corner and new sanctuary-end rear views available. Fabrication sections and exact relief/crest details remain pending.",
-      "currentImageCount": 5,
+      "status": "Four native updated-model front/side/detail views selected 24 October 2026, with older rear views retained. Fabrication details remain pending.",
+      "currentImageCount": 6,
       "currentGuide": "03-facade/README.md"
     },
     {
       "folder": "04-doors",
       "title": "Doors",
-      "status": "Main-door reference plus exterior/interior side-door close-ups available. Exact hardware, thresholds and door-leaf fabrication details pending.",
-      "currentImageCount": 3,
+      "status": "Side-door exterior/interior details retained. Central facade detail is now in 03-facade; door fabrication details remain pending.",
+      "currentImageCount": 2,
       "currentGuide": "04-doors/README.md"
     },
     {
@@ -99,5 +99,6 @@
   ],
   "materialRule": "Two central timber columns per transverse frame; outer left/right columns concrete. Side and longitudinal beams remain timber.",
   "currentImageRegister": "current-images.json",
-  "categoryCopyPolicy": "Full HD exports moved byte-for-byte into the discipline folders; dated gallery and viewer use those same files. Preserve native masters and required sources."
+  "categoryCopyPolicy": "Full HD exports moved byte-for-byte into the discipline folders; dated gallery and viewer use those same files. Preserve native masters and required sources.",
+  "updated": "2026-10-24"
 }

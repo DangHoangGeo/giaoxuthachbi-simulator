@@ -6,7 +6,8 @@
 | --- | --- | --- |
 | Side entrance · exterior close view | [2026-10-07-10-side-door-exterior-day.png](full-hd/2026-10-07-10-side-door-exterior-day.png) | [Preserved original](../00-overview/2026-10-07/masters/10-side-door-exterior-day.png) |
 | Side entrance · interior wall detail | [2026-10-07-11-side-wall-interior-day.png](full-hd/2026-10-07-11-side-wall-interior-day.png) | [Preserved original](../00-overview/2026-10-07/masters/11-side-wall-interior-day.png) |
-| Main entrance · close view | [2026-10-07-03-entrance-detail-day.png](full-hd/2026-10-07-03-entrance-detail-day.png) | [Preserved original](../00-overview/2026-10-07/masters/03-entrance-detail-day.png) |
+
+The current front-door/façade detail is now [the 24 October central façade view](../03-facade/native/2026-10-24-04-facade-detail-day.png), registered under façade and towers. The older entrance view remains in the dated history.
 
 ## Required sources
 

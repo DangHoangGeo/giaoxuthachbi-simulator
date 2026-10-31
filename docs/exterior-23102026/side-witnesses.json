@@ -1,0 +1,666 @@
+{
+  "source_sha256": "2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae",
+  "drawing": "D47",
+  "printed_sheet": "47",
+  "axes": "u=X-(X9+X10)/2; y=CAD_y-floor; model m = interpreted CAD mm/1000",
+  "source_origin_cad": [
+    1541390.5513934754,
+    -543485.4084000699
+  ],
+  "mapped_to_model": {
+    "midpoint_x": 40.575,
+    "z": [
+      -7.36,
+      7.36
+    ]
+  },
+  "unit_hold": "ISSUE-R06: INSUNITS=1; geometric mm/m interpretation awaits designer confirmation",
+  "arcs": [
+    {
+      "handle": "DA5B35",
+      "centre_m": [
+        -1.476627726,
+        5.488819943
+      ],
+      "radius_m": 1.72643816757638,
+      "start_angle_deg": 106.1150944769076,
+      "end_angle_deg": 180.4866976874492,
+      "start_m": [
+        -1.9558313,
+        7.147419557
+      ],
+      "end_m": [
+        -3.203003608,
+        5.474154929
+      ]
+    },
+    {
+      "handle": "DA5B34",
+      "centre_m": [
+        -0.0,
+        6.414566025
+      ],
+      "radius_m": 2.088624038705893,
+      "start_angle_deg": 90.0,
+      "end_angle_deg": 159.4589347943677,
+      "start_m": [
+        -0.0,
+        8.503190063
+      ],
+      "end_m": [
+        -1.9558313,
+        7.147419557
+      ]
+    },
+    {
+      "handle": "DA5B43",
+      "centre_m": [
+        0.0,
+        6.414566025
+      ],
+      "radius_m": 2.088624038705893,
+      "start_angle_deg": 20.5410652086613,
+      "end_angle_deg": 90.0,
+      "start_m": [
+        1.9558313,
+        7.147419557
+      ],
+      "end_m": [
+        0.0,
+        8.503190063
+      ]
+    },
+    {
+      "handle": "DA5B44",
+      "centre_m": [
+        1.476627726,
+        5.488819943
+      ],
+      "radius_m": 1.72643816757638,
+      "start_angle_deg": 359.5133023125509,
+      "end_angle_deg": 73.88490553350736,
+      "start_m": [
+        3.203003608,
+        5.474154929
+      ],
+      "end_m": [
+        1.9558313,
+        7.147419557
+      ]
+    }
+  ],
+  "straight_spring_connections": [
+    {
+      "handle": "DA5B36",
+      "a_m": [
+        -3.203003608,
+        5.474154929
+      ],
+      "b_m": [
+        -3.303,
+        5.474154929
+      ]
+    },
+    {
+      "handle": "DA5B45",
+      "a_m": [
+        3.203003608,
+        5.474154929
+      ],
+      "b_m": [
+        3.303,
+        5.474154929
+      ]
+    }
+  ],
+  "dimension_handles": {
+    "DA5CE2": {
+      "measurement": 7199.999999998836,
+      "a_m": [
+        -3.6,
+        -0.853074507
+      ],
+      "b_m": [
+        3.6,
+        -0.853074507
+      ]
+    },
+    "DA5CDC": {
+      "measurement": 6605.999999983003,
+      "a_m": [
+        -3.303,
+        0.779452312
+      ],
+      "b_m": [
+        3.303,
+        1.304388074
+      ]
+    },
+    "DA5CEE": {
+      "measurement": 5474.154929446173,
+      "a_m": [
+        3.6,
+        0.0
+      ],
+      "b_m": [
+        3.303,
+        5.474154929
+      ]
+    },
+    "DA5CF1": {
+      "measurement": 1673.264627742814,
+      "a_m": [
+        3.303,
+        5.474154929
+      ],
+      "b_m": [
+        1.9558313,
+        7.147419557
+      ]
+    },
+    "DA5CF4": {
+      "measurement": 1355.7705061106244,
+      "a_m": [
+        1.9558313,
+        7.147419557
+      ],
+      "b_m": [
+        -0.0,
+        8.503190063
+      ]
+    }
+  },
+  "datum_status": "D47 column-foot dimension datum is mapped to nave Y=0 in the model; MODEL TRANSCRIPTION, no surveyed datum or construction-level approval.",
+  "retained_visual_proxies": {
+    "outer_band_m": 0.25,
+    "extrusion_depth_m": 0.3,
+    "source_status": "Neither is a D47 dimension; the complete raked concrete frame is not modeled by this narrow display rib."
+  },
+  "long_side_design_departures": [
+    {
+      "part": "Open porch arcade",
+      "basis": "USER CONFIRMED 25 October 2026, parish meeting point 2",
+      "retained": "No B/H outer walls; columns and true pointed arcade/cross arches; paired window/door types moved into C/G walls; no sanctuary-porch doors."
+    },
+    {
+      "part": "Inside window elevation",
+      "sources": [
+        "DWG0243 / E26 / DA35E1 = 1760 mm single opening",
+        "DWG0091 / P28 / DAD57F = 2250 mm single opening",
+        "P28 paired outer openings DWG0080/82 = 1000 mm each; pier DWG0081 = 1030 mm",
+        "E26 paired outer openings DWG0244/46 = 1000 mm each; pier DWG0247 = 1000 mm"
+      ],
+      "retained": "Owner-selected paired 1000 mm windows in C/G wall with 1030 mm pier; inside/outside mapping and 30 mm pier conflict need designer confirmation."
+    }
+  ],
+  "opening_profiles": {
+    "window": {
+      "drawing": "E26",
+      "arcs": [
+        {
+          "handle": "DA3D3D",
+          "layer": "01",
+          "c": [
+            2864.531012,
+            5329.68676
+          ],
+          "r": 500.0,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            3364.531012,
+            5329.68676
+          ],
+          "p1": [
+            2364.531012,
+            5329.68676
+          ]
+        },
+        {
+          "handle": "DA3D3E",
+          "layer": "01",
+          "c": [
+            2864.531012,
+            5329.68676
+          ],
+          "r": 610.0,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            3474.531012,
+            5329.68676
+          ],
+          "p1": [
+            2254.531012,
+            5329.68676
+          ]
+        },
+        {
+          "handle": "DA3D3F",
+          "layer": "01",
+          "c": [
+            2864.531012,
+            5329.68676
+          ],
+          "r": 688.0,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            3552.531012,
+            5329.68676
+          ],
+          "p1": [
+            2176.531012,
+            5329.68676
+          ]
+        },
+        {
+          "handle": "DA3D40",
+          "layer": "01",
+          "c": [
+            2864.531012,
+            5329.68676
+          ],
+          "r": 708.0,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            3572.531012,
+            5329.68676
+          ],
+          "p1": [
+            2156.531012,
+            5329.68676
+          ]
+        },
+        {
+          "handle": "DA3D41",
+          "layer": "01",
+          "c": [
+            2864.531012,
+            5329.68676
+          ],
+          "r": 778.0,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            3642.531012,
+            5329.68676
+          ],
+          "p1": [
+            2086.531012,
+            5329.68676
+          ]
+        },
+        {
+          "handle": "DA3D42",
+          "layer": "01",
+          "c": [
+            2864.531012,
+            5329.68676
+          ],
+          "r": 793.0,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            3657.531012,
+            5329.68676
+          ],
+          "p1": [
+            2071.531012,
+            5329.68676
+          ]
+        },
+        {
+          "handle": "DA3D43",
+          "layer": "01",
+          "c": [
+            2864.531012,
+            5329.68676
+          ],
+          "r": 828.0,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            3692.531012,
+            5329.68676
+          ],
+          "p1": [
+            2036.531012,
+            5329.68676
+          ]
+        },
+        {
+          "handle": "DA3D44",
+          "layer": "01",
+          "c": [
+            4864.531012,
+            5329.68676
+          ],
+          "r": 500.0,
+          "a": 359.9999999991662,
+          "b": 179.9999999991662,
+          "p0": [
+            5364.531012,
+            5329.68676
+          ],
+          "p1": [
+            4364.531012,
+            5329.68676
+          ]
+        }
+      ],
+      "dimensions": [
+        {
+          "id": "DWG0244",
+          "drawing": "E26",
+          "handle": "DA3D26",
+          "measured_mm": "1000.0",
+          "printed_mm": "1000",
+          "a1": "2364.5",
+          "a2": "3079.2",
+          "b1": "3364.5",
+          "b2": "3222.4"
+        },
+        {
+          "id": "DWG0251",
+          "drawing": "E26",
+          "handle": "DA3D38",
+          "measured_mm": "2100.5",
+          "printed_mm": "2101",
+          "a1": "2864.5",
+          "a2": "3079.2",
+          "b1": "2864.5",
+          "b2": "5179.7"
+        },
+        {
+          "id": "DWG0252",
+          "drawing": "E26",
+          "handle": "DA3D51",
+          "measured_mm": "150.0",
+          "printed_mm": "150",
+          "a1": "2864.5",
+          "a2": "5329.7",
+          "b1": "2864.5",
+          "b2": "5179.7"
+        },
+        {
+          "id": "DWG0253",
+          "drawing": "E26",
+          "handle": "DA3D4E",
+          "measured_mm": "500.0",
+          "printed_mm": "500",
+          "a1": "2864.5",
+          "a2": "5829.7",
+          "b1": "2864.5",
+          "b2": "5329.7"
+        },
+        {
+          "id": "DWG0255",
+          "drawing": "E26",
+          "handle": "DA3D35",
+          "measured_mm": "850.0",
+          "printed_mm": "850",
+          "a1": "2865.9",
+          "a2": "2229.2",
+          "b1": "2864.5",
+          "b2": "3079.2"
+        }
+      ],
+      "radius_chain_m": [
+        0.5,
+        0.61,
+        0.688,
+        0.708,
+        0.778,
+        0.793,
+        0.828
+      ],
+      "status": "CAD outside type relocated to inner C/G wall by owner instruction; relief depths/materials remain CONCEPT",
+      "derived_m": {
+        "width": 1.0,
+        "bottom": 0.85,
+        "leafTop": 2.9505,
+        "spring": 3.1005,
+        "radius": 0.5,
+        "crown": 3.6005,
+        "head_band": 0.15,
+        "method": "DWG0255 + DWG0251 + DWG0252; native R500 ARC; native paired outer type selected by owner."
+      }
+    },
+    "door": {
+      "drawing": "D34",
+      "arcs": [
+        {
+          "handle": "DAD2CC",
+          "layer": "01",
+          "c": [
+            3349.515879,
+            4606.995768
+          ],
+          "r": 1124.999999999534,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            4474.515879,
+            4606.995768
+          ],
+          "p1": [
+            2224.515879,
+            4606.995768
+          ]
+        },
+        {
+          "handle": "DAD2CD",
+          "layer": "01",
+          "c": [
+            3349.515879,
+            4606.995768
+          ],
+          "r": 1289.999999999534,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            4639.515879,
+            4606.995768
+          ],
+          "p1": [
+            2059.515879,
+            4606.995768
+          ]
+        },
+        {
+          "handle": "DAD2CE",
+          "layer": "01",
+          "c": [
+            3349.515879,
+            4606.995768
+          ],
+          "r": 1406.999999999534,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            4756.515879,
+            4606.995768
+          ],
+          "p1": [
+            1942.515879,
+            4606.995768
+          ]
+        },
+        {
+          "handle": "DAD2CF",
+          "layer": "01",
+          "c": [
+            3349.515879,
+            4606.995768
+          ],
+          "r": 1444.999999999534,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            4794.515879,
+            4606.995768
+          ],
+          "p1": [
+            1904.515879,
+            4606.995768
+          ]
+        },
+        {
+          "handle": "DAD2D0",
+          "layer": "01",
+          "c": [
+            3349.515879,
+            4606.995768
+          ],
+          "r": 1549.999999999534,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            4899.515879,
+            4606.995768
+          ],
+          "p1": [
+            1799.515879,
+            4606.995768
+          ]
+        },
+        {
+          "handle": "DAD2D1",
+          "layer": "01",
+          "c": [
+            3349.515879,
+            4606.995768
+          ],
+          "r": 1624.999999999534,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            4974.515879,
+            4606.995768
+          ],
+          "p1": [
+            1724.515879,
+            4606.995768
+          ]
+        },
+        {
+          "handle": "DAD2D2",
+          "layer": "01",
+          "c": [
+            3349.515879,
+            4606.995768
+          ],
+          "r": 1571.999999999534,
+          "a": 0.0,
+          "b": 180.0,
+          "p0": [
+            4921.515879,
+            4606.995768
+          ],
+          "p1": [
+            1777.515879,
+            4606.995768
+          ]
+        }
+      ],
+      "dimensions": [
+        {
+          "id": "DWG0281",
+          "drawing": "E31",
+          "handle": "DA2E91",
+          "measured_mm": "2250.0",
+          "printed_mm": "2250",
+          "a1": "2739.8",
+          "a2": "2434.2",
+          "b1": "4989.8",
+          "b2": "2434.2"
+        },
+        {
+          "id": "DWG0288",
+          "drawing": "E31",
+          "handle": "DA309D",
+          "measured_mm": "2950.5",
+          "printed_mm": "2951",
+          "a1": "4301.2",
+          "a2": "2229.1",
+          "b1": "4989.8",
+          "b2": "5179.6"
+        },
+        {
+          "id": "DWG0290",
+          "drawing": "E31",
+          "handle": "DA30A0",
+          "measured_mm": "1125.0",
+          "printed_mm": "1125",
+          "a1": "4989.8",
+          "a2": "5329.6",
+          "b1": "3864.8",
+          "b2": "6454.6"
+        },
+        {
+          "id": "DWG0636",
+          "drawing": "D34",
+          "handle": "DAD75B",
+          "measured_mm": "3100.5",
+          "printed_mm": "3101",
+          "a1": "3349.5",
+          "a2": "4607.0",
+          "b1": "3349.5",
+          "b2": "1506.5"
+        }
+      ],
+      "radius_chain_m": [
+        1.125,
+        1.29,
+        1.407,
+        1.445,
+        1.55,
+        1.572,
+        1.625
+      ],
+      "status": "ENGINEERING HOLD - NOT APPLIED: current 170 mm exit case cannot fit 150 mm native head band.",
+      "derived_m": {
+        "width": 2.25,
+        "bottom": 0.0,
+        "leafTop": 2.9505,
+        "spring": 3.1005,
+        "radius": 1.125,
+        "crown": 4.2255,
+        "head_band": 0.15,
+        "method": "DWG0636 gives spring 3100.5; DWG0288 leaf-top 2950.5; native DAD2CC R1125. Geometry retained independently of integer display labels."
+      },
+      "retained_model_m": {
+        "width": 2.25,
+        "leafTop": 2.951,
+        "spring": 3.171,
+        "rise": 1.14,
+        "crown": 4.311,
+        "head_band": 0.22
+      },
+      "sign_fit_conflict": {
+        "ids": [
+          "L156",
+          "L157",
+          "L158",
+          "L159"
+        ],
+        "case_height_m": 0.17,
+        "retained_centre_y": 3.061,
+        "retained_case_y": [
+          2.976,
+          3.146
+        ],
+        "native_band_y": [
+          2.9505,
+          3.1005
+        ],
+        "native_band_centre_y": 3.0255,
+        "overlap_with_glass_if_centred_m": 0.01,
+        "overlap_with_glass_if_position_preserved_m": 0.0455,
+        "check": "verify_doorhead_signs.cjs fails on L156 with native candidate; passes with existing door retained. No fixture positions/IDs/products/routes changed."
+      }
+    }
+  }
+}
