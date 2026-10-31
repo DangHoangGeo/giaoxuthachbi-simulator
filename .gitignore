@@ -56,3 +56,8 @@ review/*/exports/registers/
 
 # Narrated quick-start video; only its small HTML guide, images, narration and clips are tracked.
 /docs/guides/father-quick-start/*.mp4
+
+# Local church CAD sources and derivatives remain under publication hold H1.
+/docs/layout_design/dwg-2026-10-23/source/
+/docs/layout_design/dwg-2026-10-23/images/
+/docs/layout_design/dwg-2026-10-23/*.dwg

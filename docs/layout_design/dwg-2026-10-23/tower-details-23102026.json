@@ -1,0 +1,258 @@
+{
+  "provenance": "Review crops derived from the 23 October 2026 church DWG; source drawing remains under publication hold H1. Subset of tower-details-23102026.json on eng/15-dwg-revision-2026-10-23 and web/08-local-dwg-workspace.",
+  "chi_tiet": [
+    {
+      "id": "T01",
+      "ban_ve": "E01B",
+      "en": "Tower cross, orb and lantern",
+      "khung_cat_cad_mm": [
+        1655200,
+        -483347,
+        1657700,
+        -478847
+      ]
+    },
+    {
+      "id": "T02",
+      "ban_ve": "E01B",
+      "en": "Tower dome, dome rose and corner finials",
+      "khung_cat_cad_mm": [
+        1653700,
+        -486047,
+        1659200,
+        -482547
+      ]
+    },
+    {
+      "id": "T03",
+      "ban_ve": "E01B",
+      "en": "Stepped pierced parapet and corner finial, one corner",
+      "khung_cat_cad_mm": [
+        1653700,
+        -487347,
+        1656700,
+        -484247
+      ]
+    },
+    {
+      "id": "T04",
+      "ban_ve": "E01B",
+      "en": "Fourth tower stage: arch, paired louvres and rose",
+      "khung_cat_cad_mm": [
+        1653700,
+        -492947,
+        1659200,
+        -486747
+      ]
+    },
+    {
+      "id": "T05",
+      "ban_ve": "E01B",
+      "en": "Corner capital and cornice at +23.140 m",
+      "khung_cat_cad_mm": [
+        1653700,
+        -494347,
+        1655600,
+        -491947
+      ]
+    },
+    {
+      "id": "T06",
+      "ban_ve": "E01B",
+      "en": "Third tower stage: arch, paired louvres and rose",
+      "khung_cat_cad_mm": [
+        1653700,
+        -500247,
+        1659200,
+        -492647
+      ]
+    },
+    {
+      "id": "T07",
+      "ban_ve": "E01B",
+      "en": "Rose and cross-topped louvre heads, third stage",
+      "khung_cat_cad_mm": [
+        1654800,
+        -497347,
+        1658100,
+        -494547
+      ]
+    },
+    {
+      "id": "T08",
+      "ban_ve": "E01B",
+      "en": "Corner capital and cornice at +15.840 m",
+      "khung_cat_cad_mm": [
+        1653700,
+        -501647,
+        1655600,
+        -499147
+      ]
+    },
+    {
+      "id": "T09",
+      "ban_ve": "E01B",
+      "en": "Second tower stage: arch, paired louvres and rose",
+      "khung_cat_cad_mm": [
+        1653700,
+        -507647,
+        1659200,
+        -500047
+      ]
+    },
+    {
+      "id": "T10",
+      "ban_ve": "E01B",
+      "en": "Second-stage paired louvres: blades, sill and heads",
+      "khung_cat_cad_mm": [
+        1654900,
+        -507097,
+        1658000,
+        -503447
+      ]
+    },
+    {
+      "id": "T11",
+      "ban_ve": "E01B",
+      "en": "Cornice at +8.390 m, key-pattern frieze and ground capitals",
+      "khung_cat_cad_mm": [
+        1653700,
+        -508747,
+        1657200,
+        -506647
+      ]
+    },
+    {
+      "id": "T12",
+      "ban_ve": "E01B",
+      "en": "Ground-stage spandrel ornaments",
+      "khung_cat_cad_mm": [
+        1653900,
+        -510547,
+        1659000,
+        -508347
+      ]
+    },
+    {
+      "id": "T13",
+      "ban_ve": "E01B",
+      "en": "Ground-stage decorative arch and capitals",
+      "khung_cat_cad_mm": [
+        1653700,
+        -515147,
+        1659200,
+        -508547
+      ]
+    },
+    {
+      "id": "T14",
+      "ban_ve": "E02",
+      "en": "Tower outer side, ground stage: central window and arch",
+      "khung_cat_cad_mm": [
+        1404201,
+        -518027,
+        1409701,
+        -510427
+      ]
+    },
+    {
+      "id": "T15",
+      "ban_ve": "PT15A",
+      "en": "Stepped corner pier plan at +15.840 m",
+      "khung_cat_cad_mm": [
+        1625526,
+        -614089,
+        1629806,
+        -610490
+      ]
+    },
+    {
+      "id": "T16",
+      "ban_ve": "PT29",
+      "en": "Parapet base corner plan at +29.090 m",
+      "khung_cat_cad_mm": [
+        1653037,
+        -613585,
+        1657318,
+        -609986
+      ]
+    },
+    {
+      "id": "T17",
+      "ban_ve": "E02",
+      "en": "Tower outer side: dome, parapet, lantern and cross",
+      "khung_cat_cad_mm": [
+        1404051,
+        -489427,
+        1409851,
+        -480827
+      ]
+    },
+    {
+      "id": "T18",
+      "ban_ve": "E02",
+      "en": "Tower outer side, stage 4",
+      "khung_cat_cad_mm": [
+        1404051,
+        -495027,
+        1409851,
+        -488827
+      ]
+    },
+    {
+      "id": "T19",
+      "ban_ve": "E02",
+      "en": "Tower outer side, stage 3",
+      "khung_cat_cad_mm": [
+        1404051,
+        -502327,
+        1409851,
+        -494727
+      ]
+    },
+    {
+      "id": "T20",
+      "ban_ve": "E02",
+      "en": "Tower outer side, stage 2",
+      "khung_cat_cad_mm": [
+        1404051,
+        -509727,
+        1409851,
+        -502127
+      ]
+    },
+    {
+      "id": "T21",
+      "ban_ve": "ET",
+      "en": "Cut through a tower, upper part: dome and stage 4",
+      "khung_cat_cad_mm": [
+        1696316,
+        -495427,
+        1705183,
+        -480727
+      ]
+    },
+    {
+      "id": "T22",
+      "ban_ve": "ET",
+      "en": "Cut through a tower, middle part: stages 2 and 3",
+      "khung_cat_cad_mm": [
+        1696316,
+        -510127,
+        1705183,
+        -494627
+      ]
+    },
+    {
+      "id": "T23",
+      "ban_ve": "ET",
+      "en": "Cut through a tower, lower part: ground stage",
+      "khung_cat_cad_mm": [
+        1696316,
+        -519027,
+        1705183,
+        -509227
+      ]
+    }
+  ]
+}
