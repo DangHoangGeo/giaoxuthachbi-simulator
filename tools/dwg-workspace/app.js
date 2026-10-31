@@ -12,7 +12,7 @@ let state = {
 };
 const message = (text) => ($("message").textContent = text);
 function buttons(loaded) {
-  for (const id of ["fit", "clear", "export-sheet"]) $(id).disabled = !loaded;
+  for (const id of ["fit", "clear", "export-sheet", "zoom-in", "zoom-out", "center", "pan-up", "pan-down", "pan-left", "pan-right"]) $(id).disabled = !loaded;
   $("export-selection").disabled = !loaded || !state.selected.size;
 }
 function selection() {
@@ -142,6 +142,31 @@ fetch("/project-available")
   .catch(() => {});
 
 $("fit").onclick = fit;
+function zoom(scale, point) {
+  if (!state.svg) return;
+  const [x, y, width, height] = state.box;
+  const targetWidth = Math.max(state.original[2] / 100, Math.min(state.original[2] * 10, width * scale));
+  scale = targetWidth / width;
+  const anchor = point || { x: x + width / 2, y: y + height / 2 };
+  state.box = [anchor.x - (anchor.x - x) * scale, anchor.y - (anchor.y - y) * scale, width * scale, height * scale];
+  applyBox();
+}
+$("zoom-in").onclick = () => zoom(1 / 1.1);
+$("zoom-out").onclick = () => zoom(1.1);
+$("center").onclick = () => {
+  if (!state.svg) return;
+  state.box[0] = state.original[0] + (state.original[2] - state.box[2]) / 2;
+  state.box[1] = state.original[1] + (state.original[3] - state.box[3]) / 2;
+  applyBox();
+};
+for (const [id, dx, dy] of [["pan-left", -1, 0], ["pan-right", 1, 0], ["pan-up", 0, -1], ["pan-down", 0, 1]]) {
+  $(id).onclick = () => {
+    if (!state.svg) return;
+    state.box[0] += dx * state.box[2] * 0.1;
+    state.box[1] += dy * state.box[3] * 0.1;
+    applyBox();
+  };
+}
 $("clear").onclick = () => {
   state.selected.clear();
   selection();
@@ -157,16 +182,11 @@ $("drawing").addEventListener(
   (e) => {
     if (!state.svg) return;
     e.preventDefault();
-    const p = drawingPoint(e.clientX, e.clientY),
-      v = state.svg.viewBox.baseVal,
-      scale = Math.exp(Math.sign(e.deltaY) * 0.18);
-    state.box = [
-      p.x - (p.x - v.x) * scale,
-      p.y - (p.y - v.y) * scale,
-      v.width * scale,
-      v.height * scale,
-    ];
-    applyBox();
+    // Wheel events may report pixels, lines, or pages; cap each event so a
+    // high-resolution trackpad or mouse wheel cannot jump across the drawing.
+    const pixels = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 400 : 1);
+    const amount = Math.max(-0.06, Math.min(0.06, pixels * 0.0006));
+    zoom(Math.exp(amount), drawingPoint(e.clientX, e.clientY));
   },
   { passive: false },
 );

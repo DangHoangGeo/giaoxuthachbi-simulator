@@ -82,6 +82,19 @@
             <p>Open a DWG or DXF to view and select its geometry.</p>
           </div>
           <div id="drawing"></div>
+          <div class="navigation" role="group" aria-label="Drawing navigation">
+            <div class="zoom-controls">
+              <button id="zoom-in" aria-label="Zoom in" title="Zoom in" disabled>+</button>
+              <button id="zoom-out" aria-label="Zoom out" title="Zoom out" disabled>−</button>
+              <button id="center" title="Center drawing at the current zoom" disabled>Center</button>
+            </div>
+            <div class="pan-controls" role="group" aria-label="Pan drawing">
+              <button id="pan-up" aria-label="Pan up" title="Pan up" disabled>↑</button>
+              <button id="pan-left" aria-label="Pan left" title="Pan left" disabled>←</button>
+              <button id="pan-down" aria-label="Pan down" title="Pan down" disabled>↓</button>
+              <button id="pan-right" aria-label="Pan right" title="Pan right" disabled>→</button>
+            </div>
+          </div>
           <div class="canvas-hint" id="hint" hidden>
             Scroll to zoom · Drag to pan · Click to select · Shift-click to add
           </div>

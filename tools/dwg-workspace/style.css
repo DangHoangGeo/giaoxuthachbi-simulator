@@ -296,3 +296,23 @@ footer {
 
 .sheet { white-space: normal; overflow-wrap: anywhere; }
 .sheet div { min-width: 0; }
+
+.navigation {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  display: grid;
+  gap: 6px;
+}
+.zoom-controls, .pan-controls {
+  display: flex;
+  gap: 4px;
+}
+.navigation button {
+  min-width: 38px;
+  min-height: 38px;
+  padding: 8px;
+  font-size: 15px;
+}
+.navigation #center { font-size: 11px; }
+button:focus-visible { outline: 2px solid #365e49; outline-offset: 2px; }
