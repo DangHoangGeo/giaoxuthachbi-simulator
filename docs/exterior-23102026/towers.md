@@ -61,3 +61,13 @@ Các giá trị dưới đây làm tròn để đọc; tọa độ đầy đủ 
 ## Lan can đã hiệu chỉnh tiếp theo
 
 Sau phản hồi chủ đầu tư và commit `10d84e7`, [hồ sơ lan can](tower-balcony.md) thay toàn bộ con tiện dạng bình bằng 17 ô bậc/mặt, thân đặc ở hai đầu, hàng phào/thanh đỉnh theo E01B/E02 và đỉnh hoa +31,551771 m. Mô-típ hai mặt được xác nhận bằng 487 đối tượng; mặt trong/sau lặp DERIVED. Không còn giữ các thanh lan can cũ chỉ vì chưa giải được PT29; phần đã rõ được dựng, còn chiều sâu/tiết diện/cấu tạo/khép góc và che chùm đèn được giữ chờ riêng ENG-041. Phào đỡ đèn và thiết bị giữ nguyên. Ảnh trong lượt đầu là lịch sử trước hiệu chỉnh lan can; bản kiểm mới được liên kết trong hồ sơ đó.
+
+## Dữ liệu kích thước trang trí trong DWG — rà soát 31/10/2026
+
+Đọc lại DXF của cùng DWG (SHA-256 như trên) trong khung các hình E01A, E01B, E02, ET, PT08, PT10, PT15, PT15A, PT23 và PT29:
+
+- **Có ghi kích thước (DIMENSION/nhãn cao độ):** cao độ −2,080 / ±0,000 / +8,390 / +15,840 / +23,140 / +29,090 / +36,920 m (khớp ký hiệu trong 1 mm), tổng chiều cao 39 000 mm, bề rộng một tháp 4 900 mm (Z 7,703–12,603 m), mặt bằng tháp tại +15,84 m 5 830 × 4 130 mm (PT15A), và tại +8,39 m các đoạn 2 120 / 440 / 680 mm (PT08). E01A/E01B còn ghi chân vòm tầng trệt 3 985 / 3 756 mm.
+- **Chỉ có nét vẽ, không có kích thước:** tâm, bán kính, bậu, chân cung của vòm lớn, cửa chớp đôi, hoa hồng, chỏm, đèn lồng, thánh giá và lan can. Các số trong bảng phía trên là đo trên nét vẽ CAD (TRACED), không phải kích thước người thiết kế ghi. E02, ET, PT10, PT23, PT29 không có đối tượng kích thước nào.
+- **Không có trong DWG:** chữ ghi kích thước, vật liệu, chiều sâu phào/chạm khắc, bề dày tường tháp, cốt thép, và bất kỳ thông tin điện nào. Không gian mô hình chỉ có chữ trục và tiêu đề; các lớp `LIGHT-FAN` / `thiet bi dien` không có đối tượng; khối thiết bị chỉ là thư viện không được chèn.
+
+Vì vậy vị trí ống điện trên tháp phải lấy từ mô hình phối hợp, và tờ TW-01 của [bộ bản vẽ điện](../electrical-grid/print-drawings.md) chỉ là đối chiếu với đường bao vòm đã truy. Phát hiện khoảng hở 0,06 m ở tầng 3 được ghi ở ENG-042.
