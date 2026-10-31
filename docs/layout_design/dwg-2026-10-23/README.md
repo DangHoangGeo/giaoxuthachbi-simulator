@@ -168,3 +168,7 @@ On 24 October 2026 the owner directed the model to follow this file's central fa
 - LibreDWG reads AutoCAD 2007 files with known gaps. The model space converted completely (148,675 entities; 22,529 block references and other content sit in unused block definitions), but a check in AutoCAD or ODA software is still advisable before the data governs construction.
 - “Same-value register IDs” are matches by value on the corresponding PDF sheet only. They are candidates, not confirmed witnesses.
 - The initial `levels.csv` apex estimates use the fitted 0.4837 × text-height offset. The follow-up audit separately finds 58 actual V-marker vertices; use `review/dwg-vietnamese-23102026/doi-chieu-cao-do.csv` for that geometric cross-check. The other 21 labels are not claimed to have independently verified marker geometry.
+
+## Local drawing workspace
+
+A desktop browser workspace can open local DWG/DXF files, navigate the inventoried frames and the 16 tower-detail crops (T01–T16, same JSON as volume 11) and export selected entities or a sheet to a vector PDF. See [local workspace instructions](../../../tools/dwg-workspace/README.md). It is separate from the public website; drawing sources and derivatives remain under publication hold H1. Conversion fidelity and the unit conflict remain unresolved.
