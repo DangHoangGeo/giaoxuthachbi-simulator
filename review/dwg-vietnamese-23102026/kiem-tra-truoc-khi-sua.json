@@ -1,0 +1,259 @@
+{
+  "sha256_dwg": "2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae",
+  "insunits_dwg": 1,
+  "insunits_dxf": 1,
+  "so_kich_thuoc_toan_tap_tin": 2644,
+  "so_kich_thuoc_khong_gian_mo_hinh": 729,
+  "so_doi_chieu": 726,
+  "so_khong_khop": 0,
+  "ma_khong_khop": [],
+  "sai_so_dwg_dxf_lon_nhat": 0.0,
+  "sai_so_tinh_lai_lon_nhat": 1e-09,
+  "doi_chieu_chu_so_goc": [
+    {
+      "id": "DWG0251",
+      "drawing": "E26",
+      "old_printed_mm": "2100",
+      "stored_text": [
+        "2101"
+      ],
+      "measured": 2100.499999984
+    },
+    {
+      "id": "DWG0272",
+      "drawing": "E26",
+      "old_printed_mm": "2130",
+      "stored_text": [
+        "2131"
+      ],
+      "measured": 2130.499999984
+    },
+    {
+      "id": "DWG0288",
+      "drawing": "E31",
+      "old_printed_mm": "2950",
+      "stored_text": [
+        "2951"
+      ],
+      "measured": 2950.499999987
+    },
+    {
+      "id": "DWG0289",
+      "drawing": "E31",
+      "old_printed_mm": "2980",
+      "stored_text": [
+        "2981"
+      ],
+      "measured": 2980.499999988
+    },
+    {
+      "id": "DWG0303",
+      "drawing": "E31",
+      "old_printed_mm": "2860",
+      "stored_text": [
+        "2861"
+      ],
+      "measured": 2860.499999984
+    },
+    {
+      "id": "DWG0319",
+      "drawing": "S24",
+      "old_printed_mm": "2950",
+      "stored_text": [
+        "2951"
+      ],
+      "measured": 2950.499999936
+    },
+    {
+      "id": "DWG0330",
+      "drawing": "S24",
+      "old_printed_mm": "2300",
+      "stored_text": [
+        "2301"
+      ],
+      "measured": 2300.499999987
+    },
+    {
+      "id": "DWG0364",
+      "drawing": "S25",
+      "old_printed_mm": "3100",
+      "stored_text": [
+        "3101"
+      ],
+      "measured": 3100.499999989
+    },
+    {
+      "id": "DWG0365",
+      "drawing": "S25",
+      "old_printed_mm": "2950",
+      "stored_text": [
+        "2951"
+      ],
+      "measured": 2950.499999987
+    },
+    {
+      "id": "DWG0368",
+      "drawing": "S25",
+      "old_printed_mm": "2300",
+      "stored_text": [
+        "2301"
+      ],
+      "measured": 2300.499999987
+    },
+    {
+      "id": "DWG0381",
+      "drawing": "S25",
+      "old_printed_mm": "3170",
+      "stored_text": [
+        "3171"
+      ],
+      "measured": 3170.499999989
+    },
+    {
+      "id": "DWG0430",
+      "drawing": "S27",
+      "old_printed_mm": "2130",
+      "stored_text": [
+        "2131"
+      ],
+      "measured": 2130.499999982
+    },
+    {
+      "id": "DWG0465",
+      "drawing": "S27",
+      "old_printed_mm": "2950",
+      "stored_text": [
+        "2951"
+      ],
+      "measured": 2950.499999983
+    },
+    {
+      "id": "DWG0466",
+      "drawing": "S27",
+      "old_printed_mm": "2950",
+      "stored_text": [
+        "2951"
+      ],
+      "measured": 2950.499999983
+    },
+    {
+      "id": "DWG0493",
+      "drawing": "S32",
+      "old_printed_mm": "2860",
+      "stored_text": [
+        "2861"
+      ],
+      "measured": 2860.499999983
+    },
+    {
+      "id": "DWG0522",
+      "drawing": "S32",
+      "old_printed_mm": "2950",
+      "stored_text": [
+        "2951"
+      ],
+      "measured": 2950.499999983
+    },
+    {
+      "id": "DWG0523",
+      "drawing": "S32",
+      "old_printed_mm": "2950",
+      "stored_text": [
+        "2951"
+      ],
+      "measured": 2950.499999983
+    },
+    {
+      "id": "DWG0562",
+      "drawing": "D29",
+      "old_printed_mm": "2440",
+      "stored_text": [
+        "2441"
+      ],
+      "measured": 2440.499999991
+    },
+    {
+      "id": "DWG0571",
+      "drawing": "D29",
+      "old_printed_mm": "2100",
+      "stored_text": [
+        "2101"
+      ],
+      "measured": 2100.499999977
+    },
+    {
+      "id": "DWG0581",
+      "drawing": "D29",
+      "old_printed_mm": "2440",
+      "stored_text": [
+        "2441"
+      ],
+      "measured": 2440.499999988
+    },
+    {
+      "id": "DWG0633",
+      "drawing": "D34",
+      "old_printed_mm": "2110",
+      "stored_text": [
+        "2111"
+      ],
+      "measured": 2110.499999993
+    },
+    {
+      "id": "DWG0663",
+      "drawing": "D34",
+      "old_printed_mm": "2950",
+      "stored_text": [
+        "2951"
+      ],
+      "measured": 2950.499999993
+    },
+    {
+      "id": "DWG0673",
+      "drawing": "D34",
+      "old_printed_mm": "75",
+      "stored_text": [
+        "76"
+      ],
+      "measured": 75.5
+    }
+  ],
+  "ma_co_chu_thay_the_hoac_he_so_khac_1": [],
+  "kich_thuoc_ngoai_khung": [
+    {
+      "handle": "26AE0A",
+      "diem_chu": [
+        -3190309.334996919,
+        -394503.5565591826
+      ],
+      "so_do": 100.0,
+      "ly_do": "Ngoài 27 khung bản vẽ đã đăng ký"
+    },
+    {
+      "handle": "916EA3",
+      "diem_chu": [
+        2269080.198359214,
+        758525.9999999998
+      ],
+      "so_do": 281.0,
+      "ly_do": "Ngoài 27 khung bản vẽ đã đăng ký"
+    },
+    {
+      "handle": "916EEA",
+      "diem_chu": [
+        2286329.198359214,
+        758733.5
+      ],
+      "so_do": 390.0,
+      "ly_do": "Ngoài 27 khung bản vẽ đã đăng ký"
+    }
+  ],
+  "so_duong_truc_doi_chieu": 137,
+  "canh_bao_chuyen_doi": {
+    "ERROR": 3,
+    "Warning": 4933
+  },
+  "loi_kiem_tra_dxf": 0,
+  "sua_tu_dong_dxf": 0,
+  "gioi_han": "Hai nhánh đọc dùng chung LibreDWG; chưa đối chiếu bằng AutoCAD/ODA hoặc người thiết kế. Đơn vị hình học mm đang suy từ chuỗi kích thước và nhãn m, khác mã INSUNITS=1 (inch, đơn vị chèn). Chưa dùng làm xác nhận thi công."
+}

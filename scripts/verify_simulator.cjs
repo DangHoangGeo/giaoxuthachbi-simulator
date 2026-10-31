@@ -34,7 +34,7 @@ const sandbox = {
 sandbox.window = sandbox;
 sandbox.addEventListener = (e, f) => { (listeners[e] ||= []).push(f); };
 vm.createContext(sandbox);
-for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
+for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'decoration.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/veranda-review.js', 'simulator/doorhead-review.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
   vm.runInContext(fs.readFileSync(path.join(viewer, file), 'utf8'), sandbox, { filename: file });
 
 let src = fs.readFileSync(path.join(viewer, 'bundle.js'), 'utf8');
@@ -165,16 +165,19 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
 {
   const lights = SIM.state.items, near = (a, b) => Math.abs(a - b) < 0.0001;
   const side = lights.filter(it => it.name.startsWith('Side door lantern ·'));
-  assert.equal(side.length, 12, 'six exterior side doors have twelve lanterns');
-  for (const s of [-1, 1]) for (const x of [16.725, 34.725, 46.425]) {
-    const pair = side.filter(it => near(it.pos[2], s * 10.55) && Math.abs(it.pos[0] - x) < 1.5);
-    assert.equal(pair.length, 2, 'two lanterns beside each exterior side door');
+  // Since 25 Oct 2026 the porches are open arcades and bay 10–11 has a window (porches.js):
+  // the four side doors keep their pairs on the porch face of the inner C/G wall.
+  assert.equal(side.length, 8, 'four side doors have eight lanterns');
+  for (const s of [-1, 1]) for (const x of [16.725, 34.725]) {
+    const pair = side.filter(it => near(it.pos[2], s * 7.52) && Math.abs(it.pos[0] - x) < 1.5);
+    assert.equal(pair.length, 2, 'two lanterns beside each side door');
     assert(near((pair[0].pos[0] + pair[1].pos[0]) / 2, x), 'lantern pair centres on the door');
-    assert(pair.every(it => near(it.pos[1], 2.6) && it.mountYaw === s * 90), 'equal height and outward orientation');
+    assert(pair.every(it => near(it.pos[1], 2.6) && it.mountYaw === s * 90), 'equal height, facing the porch');
   }
+  assert(!side.some(it => Math.abs(it.pos[0] - 46.425) < 1.5), 'no lanterns at the bay 10–11 window');
   const front = lights.filter(it => it.name.startsWith('Central front door lantern ·'));
   assert.equal(front.length, 2, 'only one front-door decorative pair');
-  assert(front.every(it => near(it.pos[0], 2.2) && near(Math.abs(it.pos[2]), 2.4) && it.circuit === 'L9'), 'central pair outside the front wall on DB2');
+  assert(front.every(it => near(it.pos[0], 2.2) && near(Math.abs(it.pos[2]), 2.3) && it.circuit === 'L9'), 'central pair outside the front wall on DB2'); // |Z| 2.3 beside the CAD ground piers since 31 Oct 2026
   assert(!lights.some(it => /^(Tower lantern|Sconce · main door) ·/.test(it.name)), 'old duplicate door decoration removed');
   assert.equal(lights.filter(it => it.name.startsWith('Service door lantern ·')).length, 4, 'two service doors have balanced pairs');
   // Tower washes (owner, 19 October 2026): cornice-coloured fittings on the ledges, no black arm floods.
@@ -240,8 +243,8 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
     assert(retuned[0] === unrelated && r('mary-moved') === at6[5], 'the night retune leaves other equipment and a moved statue untouched');
     assert(r('acc-h').lumens === 700 && r('acc-h').on === false && r('acc-h').dim === 0.5, 'crucifix accent output lowered; switch and dimmer kept');
     assert(r('key-b').lumens === 4500 && near(r('key-b').pos[2], -1.1), 'a moved altar key keeps its place');
-    assert(r('wash-b').beam === 36 && r('wash-b').lumens === 650 && near(r('wash-b').yaw, washB.yaw) && near(r('wash-b').tilt, washB.tilt), 'a reredos wash in place takes the tighter beam and its new aim');
-    assert(r('wash-h').lumens === 650 && r('wash-h').yaw === -10 && near(r('wash-h').pos[0], 45.5), 'a moved reredos wash keeps its place and aim');
+    assert(r('wash-b').beam === 36 && r('wash-b').lumens === washB.lumens && near(r('wash-b').yaw, washB.yaw) && near(r('wash-b').tilt, washB.tilt), 'a reredos wash in place takes the tighter beam and its new aim');
+    assert(r('wash-h').lumens === washB.lumens && r('wash-h').yaw === -10 && near(r('wash-h').pos[0], 45.5), 'a moved reredos wash keeps its place and aim');
   }
   // The revision travels with the saved settings. (It was not stored before, so the review was
   // re-applied at every load and reset any sanctuary fitting moved by hand.)
@@ -263,7 +266,7 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   const lux = (p, n) => P.illuminance(p, n, em, occ) * mf, back = [-1, 0, 0];
   const Eind = P.indirectIlluminance(em.reduce((sum, e) => sum + (e.interior ? e.lumens : 0), 0), SIM.room().light) * mf;
   const chest = lux([48.45, 5.3, 0], back), blue = lux([48.98, 4.2, 0.6], back), blueSide = lux([48.98, 3.6, 1.3], back);
-  const gilding = lux([47.6, 4.6, 2.4], back), mensa = lux([44.24, 1.89, 0], [0, 1, 0]), statue = lux([44.15, 4.25, 5.5], back), tabernacle = lux([47.2, 2.05, 0], back);
+  const gilding = lux([47.6, 4.6, 2.4], back), mensa = lux([44.24, 1.89, 0], [0, 1, 0]), statue = lux([spec.wingX - 0.225, 4.25, spec.wingZ], back), tabernacle = lux([47.2, 2.05, 0], back);
   assert(blue + Eind < 2.2 * 110 && blueSide < blue, `blue recess stays within about twice the exposure level, darker towards its edges: ${blue.toFixed(0)} / ${blueSide.toFixed(0)} + ${Eind.toFixed(0)} lux`);
   assert(chest > 1.3 * blue && chest > 200 && chest < 320, `corpus stands out from the recess without glare: ${chest.toFixed(0)} lux`);
   assert(gilding > 120 && gilding < 220, `reredos lacquer and gilding at a level that keeps the red: ${gilding.toFixed(0)} lux`);
@@ -302,7 +305,13 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   require('./verify_concealed_routes.cjs')({ SIM, T, CAT, building });
   const data = E.exportData(), runs = E.routes;
   assert.equal(new Set(runs.map(r => r.id)).size, runs.length, 'each run has a unique selection identity');
-  assert.equal(runs.filter(r => r.role === 'feeder' && r.board === 'DB2').length, 1, 'one continuous DB2 feeder');
+  assert.equal(runs.filter(r => r.role === 'feeder' && r.board === 'DB2' && r.source === 'DB1').length, 1, 'one continuous DB2 feeder');
+  // Parish priest, 25 Oct 2026: DB-2 and the event board EB-1 stand in the H-side tower room;
+  // EB-1 is fed from DB-2 and carries the event points and the festival exterior lights.
+  const eb = runs.find(r => r.id === 'feeder:EB1');
+  assert(eb && eb.source === 'DB2' && eb.length < 3, 'EB-1 is fed from DB-2 beside it');
+  for (const id of ['DB2', 'EB1']) { const p = E.SOURCES[id].pos; assert(p[0] > 0.14 && p[0] < 0.5 && p[2] > 7.84 && p[2] < 12.46 && p[1] > 1 && p[1] < 2, id + ' inside the H-side tower room'); }
+  assert(runs.filter(r => ['P3', 'P4', 'L7'].includes(r.circuit) && r.role !== 'feeder').every(r => r.source === 'EB1'), 'event power and festival lights run from EB-1');
   const near = (a, b) => Math.hypot(...a.map((n, k) => n - b[k])) < 0.0001;
   const onPath = (p, path) => path.slice(1).some((b, i) => {
     const a = path[i], d = new T.Vector3(...b).sub(new T.Vector3(...a)), v = new T.Vector3(...p).sub(new T.Vector3(...a));
@@ -495,11 +504,13 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
     assert(sanct.on && nave.on && !tower.on, 'indoor outlets live, event points isolated by default');
     assert([sanct, nave, tower].every(it => Math.sign(it.pos[2]) === side && SIM.itemWatts(it) === 0), 'a socket without a test load adds no operating load');
     const drop = E.routes.find(r => r.role === 'drop' && r.itemIds[0] === tower.id), trunk = E.routes.find(r => r.id === drop.trunkId);
-    assert.equal(drop.method, 'underfloor-event'); assert.equal(trunk.source, 'DB2');
+    assert.equal(drop.method, 'underfloor-event'); assert.equal(trunk.source, 'EB1');
     // The tower plinth top is in the building model, not in the simplified floor function.
     const surface = p => { const rc = new T.Raycaster(new T.Vector3(p[0], 1.2, p[2]), new T.Vector3(0, -1, 0), 0, 4); rc.camera = camera; const h = rc.intersectObject(building, true)[0]; return h ? h.point.y : -Infinity; };
     assert(trunk.points.slice(1).every(p => p[1] < surface(p) - 0.1 && p[1] < 0), 'event power runs below the hall floor and tower plinth, not over the entrance band');
-    assert(drop.length + drop.upstreamLength < 17, 'event power takes the short route from DB-2');
+    // Since 25 Oct 2026 the event board EB-1 is in the H-side tower, so the B-side point is about
+    // 19 m away below the entrance (it was under 17 m from DB-2 inside the main doors).
+    assert(drop.length + drop.upstreamLength < (code === 'B' ? 22 : 8), 'event power takes the short buried route from EB-1: ' + (drop.length + drop.upstreamLength).toFixed(2));
     for (const it of [sanct, nave]) assert.equal(E.routes.find(r => r.role === 'drop' && r.itemIds[0] === it.id).source, 'DB1', 'indoor sockets come straight from DB-1');
   }
   for (const [c, amps] of [['P1', 16], ['P2', 16], ['P3', 32], ['P4', 32]]) assert(circuit(c).outlet && circuit(c).mcb === amps && circuit(c).rcdmA === 30 && circuit(c).watts === 0, c + ' is rated as a socket circuit');
@@ -511,9 +522,11 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   const lights = SIM.state.items.filter(it => it.circuit === 'L10');
   assert.equal(lights.length, 15, 'three hidden lines and two candles per niche on L10');
   assert.equal(SIM.CIRCUITS.L10.board, 'DB2');
-  for (const [code, z, half, base, crown] of [['C', 0, 0.925, 11.8, 15.63], ['B', -5.48, 0.525, 10.08, 12.61], ['H', 5.48, 0.525, 10.08, 12.61]]) {
+  // Niches of the CAD file of 23 Oct 2026 (facade.js): width, pedestal and crown, and the back of the niche hood.
+  for (const [code, , , z, base, crown, , half] of D.facadeNiches) {
     const statue = byId(`D-FACADE-${code}`), box = new T.Box3().setFromObject(SIM.fixtures.get(statue.id).root);
-    assert(box.min.y >= base - 0.01 && box.max.y < crown && box.min.z > z - half && box.max.z < z + half && box.max.x < 2.7, `façade statue ${code} stands inside its niche`);
+    const back = code === 'C' ? 4.225 + 0.711 : 4.117 + 0.599;
+    assert(box.min.y >= base - 0.01 && box.max.y < crown && box.min.z > z - half && box.max.z < z + half && box.max.x < back, `façade statue ${code} stands inside its niche`);
     for (const part of ['ARCH', 'JAMB-1', 'JAMB-2']) {
       const fx = SIM.fixtures.get(`L-STATUE-${code}-${part}`), materials = new Set();
       fx.root.traverse(o => { if (o.isMesh) materials.add(o.material.name); });
@@ -533,7 +546,7 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   // Exhaust ventilation by zone (safety review finding 9): V1 front gable, V2 wing gables, V3 service room.
   const zone = c => SIM.state.items.filter(it => it.circuit === c && it.type === 'fanExhaust').map(it => it.id), plainCopy = v => JSON.parse(JSON.stringify(v));
   assert.deepEqual(plainCopy([zone('V1'), zone('V2'), zone('V3')]), [['F252', 'F253', 'F254', 'F255'], ['F256', 'F257', 'F258', 'F259'], ['F260']], 'exhaust fans split by zone, IDs unchanged');
-  assert.deepEqual(Object.keys(SIM.CIRCUITS).slice(-2), ['V2', 'V3'], 'new exhaust circuits are appended, so existing mains band heights do not move');
+  assert.deepEqual(Object.keys(SIM.CIRCUITS).slice(-3), ['V2', 'V3', 'LS'], 'new circuits (exhaust zones, then the Stations candles of 25 Oct 2026) are appended, so existing mains band heights do not move');
   assert.deepEqual(plainCopy(SIM.CIRCUIT_ORDER.slice(SIM.CIRCUIT_ORDER.indexOf('V1'), SIM.CIRCUIT_ORDER.indexOf('V1') + 3)), ['V1', 'V2', 'V3'], 'the web app lists the exhaust zones together');
   assert.equal(new Set(SIM.CIRCUIT_ORDER).size, Object.keys(SIM.CIRCUITS).length, 'display order lists every circuit once');
   for (const [name, scene] of Object.entries(SIM.SCENES)) assert(scene.V2 === scene.V1 && scene.V3 === scene.V1, name + ': every exhaust zone takes the value V1 had');
@@ -577,11 +590,11 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   for (const it of speakers) {
     const k = it.name.match(/axis (\d)/)[1], s = Math.sign(it.pos[2]), pierFace = SIM.GEO.axes[k] - 0.29, box = new T.Box3().setFromObject(SIM.fixtures.get(it.id).root);
     assert(Math.abs(Math.abs(it.pos[2]) - 7.25) < 1e-6 && it.mountYaw === -s * 90 && it.yaw === -s * 140, 'on the wall, facing the rows behind: ' + it.name);
-    assert(box.max.x < pierFace && box.max.x > pierFace - 0.03, 'tight against the pier side: ' + it.name + ' ' + (pierFace - box.max.x).toFixed(3));
-    // Tilted 22° down, the top of the column stands at most 40 mm proud of the pier face (0.20 m on the pier before).
+    assert(Math.abs(it.pos[0]-(SIM.GEO.axes[k]-.43))<1e-6&&box.max.x<pierFace,'Retained corner anchor and clear of the pier at the lower tilt: '+it.name);
+    // At 2.5 m and 14° down the cabinet stays within the pier's depth.
     const proud = 7.07 - Math.min(Math.abs(box.min.z), Math.abs(box.max.z));
     assert(proud < 0.04, 'within the depth of the pier: ' + it.name + ' ' + proud.toFixed(3) + ' m proud of its face');
-    assert(it.tilt === -22, 'tilted further down for the seats now 0.18 m further away: ' + it.name);
+    assert(it.tilt === -14&&it.pos[1]===2.5,'Nave speaker acoustic centre 2.5 m, 14° down: '+it.name);
   }
   // Migration: an untouched default fitting moves and keeps its switching; a moved or re-aimed one stays.
   const design = D.recommended(SIM.GEO, SIM), before = D.hiddenFittingsBefore(SIM.GEO);
@@ -620,7 +633,7 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert([...beamNames, ...chamberNames].every(byName), 'every sanctuary accent and chamber light is in the design');
   // The chamber side walls carry the sanctuary's own lacquer; the beam timber copies only its colour and
   // follows the timber tone, so the chamber fittings share the wall material itself.
-  let wallMesh = null; sandbox.window.model.scene.traverse(o => { if (o.isMesh && o.name === 'Chamber side wall · lacquered timber') wallMesh = o; });
+  let wallMesh = null; sandbox.window.model.scene.traverse(o => { if (o.isMesh && o.name === 'Chamber side lintel · lacquered timber') wallMesh = o; });
   assert(wallMesh && wallMesh.material === chamberWall, 'the chamber side wall is in the sanctuary lacquer');
   for (const [names, finish, mat] of [[beamNames, 'timber', timber], [chamberNames, 'chamber', chamberWall]]) for (const name of names) {
     const it = byName(name);
@@ -632,8 +645,10 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   // Every other head of these types keeps its metal finish (held wing projectors, roof uplights on the ties).
   for (const it of SIM.state.items.filter(it => Object.hasOwn(metal, it.type) && ![...beamNames, ...chamberNames].includes(it.name))) assert.equal(it.params.finish, metal[it.type], 'metal finish kept: ' + it.name);
   // Nave chandeliers: 1.0 m higher, same chain anchor, mid-bay between the ties, clear of the beams and reading heads.
+  // Retired by the parish priest's meeting of 25 Oct 2026: only the crossing chandelier remains, on L3.
   const chandeliers = SIM.state.items.filter(it => /^Chandelier · bay [468]–[579]$/.test(it.name));
-  assert.equal(chandeliers.length, 3);
+  assert.equal(chandeliers.length, 0, 'no chandeliers over the nave');
+  assert.deepEqual(JSON.parse(JSON.stringify(SIM.state.items.filter(it => ['chandelier8', 'chandelier12'].includes(it.type)).map(it => [it.name, it.circuit]))), [['Grand chandelier · crossing 9–10', 'L3']], 'one chandelier (the wings keep their small ones), over the sanctuary, switched with it');
   for (const it of chandeliers) {
     assert(it.type === 'chandelier8' && Math.abs(it.pos[1] - 7.3) < 1e-9 && it.pos[2] === 0 && it.anchorY > 9, 'raised to +7.3 m on its ridge chain: ' + it.name);
     const k = it.name.match(/bay (\d)/)[1], mid = (SIM.GEO.axes[k] + SIM.GEO.axes[String(Number(k) + 1)]) / 2;
@@ -659,12 +674,14 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   // lacquer and keeps everything else; a chandelier still at +6.3 rises; anything the user changed stays.
   const design = D.recommended(SIM.GEO, SIM), raw = name => design.find(it => it.name === name);
   const old = (name, o = {}) => ({ ...raw(name), params: { finish: metal[raw(name).type] }, ...o });
-  const chOld = (name, o = {}) => ({ ...raw(name), pos: [raw(name).pos[0], D.NAVE_CHANDELIER_BEFORE_Y, 0], ...o });
+  // The nave chandeliers are no longer in the design (25 Oct 2026); rebuild them as saved before.
+  const chX = { 'Chandelier · bay 4–5': SIM.GEO.axes['4'] + 2.25, 'Chandelier · bay 6–7': SIM.GEO.axes['6'] + 2.25, 'Chandelier · bay 8–9': SIM.GEO.axes['8'] + 2.25 };
+  const chOld = (name, o = {}) => ({ ...raw('Grand chandelier · crossing 9–10'), type: 'chandelier8', name, circuit: 'LD', pos: [chX[name], D.NAVE_CHANDELIER_BEFORE_Y, 0], ...o });
   const saved = [old('Altar key light · B', { id: 'a1', on: false, dim: 0.3, lumens: 4000 }), { ...raw('Ambo key light'), id: 'a2', params: {} },
     old('Statue accent · H', { id: 'a3', pos: [raw('Statue accent · H').pos[0], raw('Statue accent · H').pos[1], 4.1] }), old('Shrine wash · B', { id: 'a4', tilt: -30 }),
     old('Sanctuary frame wash · H', { id: 'a5', type: 'projector24' }), old('Presider chair light', { id: 'a6', params: { finish: 'timber' } }),
     old('Reredos wash · H', { id: 'c1', dim: 0.5 }), old('Sanctuary vault uplight · B', { id: 'c2', on: false }), old('Tabernacle accent', { id: 'c3', yaw: 12 }),
-    chOld('Chandelier · bay 4–5', { id: 'h1', on: false, dim: 0.4 }), chOld('Chandelier · bay 6–7', { id: 'h2', pos: [24.0, 6.3, 0.5] }), chOld('Chandelier · bay 8–9', { id: 'h3', pos: [raw('Chandelier · bay 8–9').pos[0], 5.8, 0] }),
+    chOld('Chandelier · bay 4–5', { id: 'h1', on: false, dim: 0.4 }), chOld('Chandelier · bay 6–7', { id: 'h2', pos: [24.0, 6.3, 0.5] }), chOld('Chandelier · bay 8–9', { id: 'h3', pos: [chX['Chandelier · bay 8–9'], 5.8, 0] }),
     { ...raw('Grand chandelier · crossing 9–10'), id: 'g' }];
   const up = D.upgradeFinishChandeliers(saved, design), byId = id => up.find(it => it.id === id), was = id => saved.find(it => it.id === id);
   assert.equal(up.length, saved.length, 'nothing is added or removed');
@@ -709,6 +726,87 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   const heads = D.upgradeFanBeams([{ ...head, id: 'h1', yaw: before.yaw, tilt: before.tilt, beam: 28, on: false, lumens: 2000 }, { ...head, id: 'h2', yaw: before.yaw + 5, tilt: before.tilt, beam: 28 }], design);
   assert(heads[0].yaw === head.yaw && heads[0].tilt === head.tilt && heads[0].beam === 24 && heads[0].on === false && heads[0].lumens === 2000, 'untouched head takes the new aim and optic, keeps switch and output');
   assert(heads[1].beam === 28, 'a re-aimed head stays as the user set it');
+}
+// CAD file of 23 Oct 2026: the dais rose from +0.75 to +0.80 m. Fittings standing on it
+// rise with it once; anything placed elsewhere or at another height stays.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, plain = v => JSON.parse(JSON.stringify(v));
+  assert.equal(SIM.floorY(44, 0), 0.8, 'dais floor +0.80 m');
+  assert.equal(SIM.floorY(46, -5), 0.16, 'side floors +0.16 m');
+  assert.equal(SIM.floorY(50, 0), 0.15, 'bay behind the dais keeps +0.15 m');
+  for (const name of ['Flower stand · tabernacle B', 'Palm · sanctuary H', 'Paschal candle']) {
+    const it = SIM.state.items.find(i => i.name === name);
+    assert(it && Math.abs(it.pos[1] - 0.8) < 1e-9, 'stands on the dais: ' + name);
+  }
+  const design = D.recommended(SIM.GEO, SIM), pick = name => design.find(it => it.name === name);
+  const lowered = (name, o = {}) => { const raw = pick(name); return { ...raw, pos: [raw.pos[0], raw.pos[1] - 0.05, raw.pos[2]], ...o }; };
+  const saved = [lowered('Ambo microphone', { id: 'm1', on: false }), lowered('Palm · sanctuary B', { id: 'p1' }),
+    { ...pick('Paschal candle'), id: 'c1', pos: [40.9, 0.75, -1.2] },
+    { ...pick('Altar microphone'), id: 'm2', pos: [44.45, 1.6, 0.45] },
+    { ...pick('Palm · entrance B'), id: 'p2' },
+    { id: 'u1', name: 'Extra flowers', type: 'flowerStand', circuit: 'DECOR', mount: 'floor', pos: [46.0, 0.75, 1.0], yaw: 0, mountYaw: 0 }];
+  const up = D.upgradeDaisLevel(saved, design), byId = id => up.find(it => it.id === id);
+  assert(plain(byId('m1').pos).join() === plain(pick('Ambo microphone').pos).join() && byId('m1').on === false, 'untouched dais microphone rises, keeps its switch');
+  assert(Math.abs(byId('p1').pos[1] - 0.8) < 1e-9, 'untouched palm stands on the new floor');
+  assert(Math.abs(byId('c1').pos[1] - 0.8) < 1e-9 && byId('c1').pos[0] === 40.9, 'a moved item resting on the old floor rises in place');
+  assert.deepEqual(plain(byId('m2')), plain(saved[3]), 'a microphone set to another height stays');
+  assert.deepEqual(plain(byId('p2')), plain(saved[4]), 'items off the dais stay');
+  assert(Math.abs(byId('u1').pos[1] - 0.8) < 1e-9, 'a user item on the old floor rises');
+  assert.deepEqual(plain(D.upgradeDaisLevel(up, design)), plain(up), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.daisLevelRevision, D.daisLevelRevision, 'the revision is stored in the saved settings');
+}
+// CAD facade of 23 Oct 2026: the niches moved back and up, so the statues, their hidden lines and
+// candles follow once from their previous places, and the upper washes re-aim at the aedicule.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, plain = v => JSON.parse(JSON.stringify(v));
+  const design = D.recommended(SIM.GEO, SIM), byIdIn = (list, id) => list.find(it => it.id === id);
+  const now = new Map(design.map(it => [it.id, it]));
+  // The previous layout, rebuilt from the replaced niches.
+  for (const it of design.filter(i => D.facadeStatueIds.includes(i.id))) assert(it.pos[0] > 3.6, 'recommended statue fittings stand in the CAD niches: ' + it.id);
+  // Simulate a saved layout at the old places, with one statue moved and one candle deleted by the user.
+  const C = D.facadeNichesBefore.find(r => r[0] === 'B');
+  const oldStatue = { ...now.get('D-FACADE-B'), pos: [C[10], C[4], C[3]] };
+  const oldCandle = { ...now.get('L-STATUE-B-CANDLE-2'), pos: [C[10] - 0.19, C[4], C[3] + 0.31] };
+  const moved = { ...now.get('D-FACADE-H'), pos: [3.0, 10.08, 5.48] };
+  const crown = design.filter(it => /^Central crown wash · /.test(it.name)).map(it => ({ ...it }));
+  const reaimed = { ...crown[1], yaw: crown[1].yaw + 5 };
+  const was = D.aim([crown[0].pos[0], crown[0].pos[1] + 0.075, crown[0].pos[2]], [2.2, 18.6, 0]);
+  const saved = [oldStatue, oldCandle, moved, reaimed, { ...crown[0], yaw: was.yaw, tilt: was.tilt }];
+  const up = D.upgradeFacadeCad(saved, design);
+  assert.deepEqual(plain(up[0].pos), plain(now.get('D-FACADE-B').pos), 'a statue at its old place moves to the CAD niche');
+  assert.deepEqual(plain(up[1].pos), plain(now.get('L-STATUE-B-CANDLE-2').pos), 'its candle moves with it');
+  assert.deepEqual(plain(up[2]), plain(moved), 'a statue the user moved stays');
+  assert.deepEqual(plain(up[3]), plain(reaimed), 'a wash the user re-aimed stays');
+  assert(Math.abs(up[4].yaw - crown[0].yaw) < 1e-9 && Math.abs(up[4].tilt - crown[0].tilt) < 1e-9, 'an untouched upper wash re-aims at the aedicule');
+  assert.equal(up.length, saved.length, 'nothing is added or deleted');
+  assert.deepEqual(plain(D.upgradeFacadeCad(up, design)), plain(up), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.facadeCadRevision, D.facadeCadRevision, 'the revision is stored in the saved settings');
+}
+// Parish priest's decisions of 25 Oct 2026: a saved layout still at the pre-meeting values takes
+// the new places, circuits and outputs once; user changes and deletions are kept, retired items
+// that are still untouched go, and new items are added once.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, plain = v => JSON.parse(JSON.stringify(v));
+  const design = D.recommended(SIM.GEO, SIM), now = new Map(design.map(it => [it.id, it]));
+  const before = D.parishMeetingBefore, ids = Object.keys(before);
+  assert(ids.length > 0, 'the parish-meeting table lists the changed items');
+  const old = id => ({ ...(now.get(id) ?? {}), id, ...before[id], on: false, dim: 0.4, note: 'kept note' });
+  const keptIds = ids.filter(id => now.has(id)), retiredIds = ids.filter(id => !now.has(id));
+  const [movedId, deletedId] = [keptIds[0], keptIds[1]];
+  const userMoved = { ...old(movedId), pos: [before[movedId].pos[0] + 0.5, before[movedId].pos[1], before[movedId].pos[2]] };
+  const saved = [...ids.filter(id => id !== deletedId && id !== movedId).map(old), userMoved, { ...design.find(it => !before[it.id] && !D.parishMeetingAdded.includes(it.id)) }];
+  const up = D.upgradeParishMeeting(saved, design), get = id => up.find(it => it.id === id);
+  for (const id of keptIds.filter(id => id !== movedId && id !== deletedId)) {
+    const it = get(id), raw = now.get(id);
+    assert(it && plain(it.pos).every((v, i) => Math.abs(v - raw.pos[i]) < 1e-9) && it.circuit === raw.circuit && it.type === raw.type, 'an untouched item takes its new place and circuit: ' + id);
+    assert(it.on === false && it.dim === 0.4 && it.note === 'kept note', 'switching, dimmer and note are kept: ' + id);
+  }
+  assert.deepEqual(plain(get(movedId)), plain(userMoved), 'an item the user moved stays where it is');
+  assert(!get(deletedId), 'an item the user deleted stays deleted');
+  for (const id of retiredIds) assert(!get(id), 'an untouched retired item is removed: ' + id);
+  for (const id of D.parishMeetingAdded) assert.equal(up.filter(it => it.id === id).length, 1, 'a new item is added once: ' + id);
+  assert.deepEqual(plain(D.upgradeParishMeeting(up, design)), plain(up), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.parishMeetingRevision, D.parishMeetingRevision, 'the revision is stored in the saved settings');
 }
 // Every fixture is fixed to something the model actually has: wall items need a
 // surface right behind them, pendants need structure at their anchor (fans on
@@ -794,20 +892,23 @@ for (const quality of ['high', 'balanced', 'fast']) {
   SIM.setSetting('quality', quality);
   assert.equal(sandbox.window.model.renderer.pixelRatio, 1.5, 'quality retains original screen sharpness: ' + quality);
 }
-// Sample the front-facing plaster: the former gap was at +8.4–11 m, with
-// the side shrines and top crown also outside the narrow central beams.
+// Sample the front-facing plaster: the former gap was at +8.4–11 m. Since the CAD
+// facade of 23 Oct 2026 the faces step back as they rise (facade.js): the cornice
+// and plinth at x ≈ 2.0, the central piers at 2.30, the tympanum at 3.23, the
+// side-bay walls at 4.02 and the niche aedicule at 3.81–3.92, up to the cross.
 const facadeIds = new Set(SIM.state.items.filter(it => /^(Façade wash|Central gable flood|Central crown wash) ·/.test(it.name)).map(it => it.id));
 const facadeSources = SIM.emitters().filter(e => facadeIds.has(e.id));
 const facadeSamples = [];
-for (const y of [7.5, 8.5, 9.5, 10.25, 11, 13, 15, 17, 19, 21.5]) {
+const faceX = (y, z) => y < 9.75 ? 2.0 : y <= 15.84 ? (Math.abs(z) > 2.5 ? 2.29 : 3.22) : 3.80;
+for (const y of [7.5, 8.5, 9.5, 10.25, 11, 13, 15, 17, 19, 21.5, 23.5]) {
   for (const z of (y <= 15 ? [-3, 0, 3] : [0])) {
-    const lux = P.illuminance([1.9, y, z], [-1, 0, 0], facadeSources);
+    const lux = P.illuminance([faceX(y, z), y, z], [-1, 0, 0], facadeSources);
     facadeSamples.push({y,z,lux:+lux.toFixed(1)});
     assert(lux >= 5, 'continuous center facade coverage at y=' + y + ', z=' + z + ': ' + lux);
   }
 }
-for (const z of [-5.48, 5.48]) for (const y of [9.5, 11.5, 14, 16]) {
-  assert(P.illuminance([1.9, y, z], [-1, 0, 0], facadeSources) >= 5, 'side shrine is covered: ' + y + '/' + z);
+for (const z of [-5.35, 5.35]) for (const [x, y] of [[2.0, 9.5], [4.0, 11.5], [4.0, 14], [3.37, 16]]) {
+  assert(P.illuminance([x, y, z], [-1, 0, 0], facadeSources) >= 5, 'side bay is covered: ' + y + '/' + z);
 }
 console.log(JSON.stringify({ facadeCoverage: 'passed', samples: facadeSamples }));
 for (const s of [-1, 1]) {
@@ -832,7 +933,7 @@ for (const [position, target] of [[[0, 20, 90], [25, 5, 0]], [[-95, 30, 0], [2.4
   SIM.setSetting('quality', 'fast'); SIM.frame(0.05, 'explore', camera);
   verifyPersistentCoverage();
 }
-const remote = SIM.state.items.find(it => it.name === 'Side door lantern · B · 46.425 · rear');
+const remote = SIM.state.items.find(it => it.name === 'Side door lantern · B · 34.725 · rear');
 const originalDim = remote.dim;
 SIM.update(remote.id, { dim: 0.3 }, { record: false });
 SIM.setSetting('quality', 'fast'); SIM.frame(0.05, 'explore', camera);
@@ -990,6 +1091,9 @@ function runSync(kinds) {
   {
     const R = SIM.rehearsal, wait = ms => new Promise(resolve => setTimeout(resolve, ms));
     assert.equal(typeof R?.begin, 'function', 'the simulator offers a rehearsal');
+    // Complete the post-import analysis before taking the exact state snapshot.
+    // A larger design can still be calculating after a fixed 900 ms delay.
+    A.run(undefined, { now: true });
     SIM.saveNow(); await wait(900);
     const snap = () => ({ items: JSON.stringify(SIM.state.items), settings: JSON.stringify(SIM.state.settings), scene: SIM.state.scene, history: SIM.state.history.length, future: SIM.state.future.length });
     const was = snap(), stored = storage.get('thachbi.simulator.v1'), writes = storageWrites.count;

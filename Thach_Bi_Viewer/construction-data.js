@@ -5,7 +5,7 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "inputs":{
 "workbook":{
 "path":"docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
-"sha256_16":"95fe13afe5d2b458"
+"sha256_16":"e5185da22a730ec0"
 },
 "phases":{
 "path":"docs/construction/phases.json",
@@ -7957,6 +7957,78 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "required":"Xác nhận mốc tường, phào và biên mái. / Confirm wall, molding and roof witnesses.",
 "confirmedMm":null,
 "newReference":""
+},
+{
+"id":"ISSUE-R01",
+"cell":"Open items!A30",
+"issue":"Bộ bản vẽ hiện hành / Which drawing revision governs",
+"evidence":"The CAD file received 24 Oct 2026 (AutoCAD 2007 DWG, created 2011, last saved 23 Oct 2026) numbers its sheets 1–47 and adds a longitudinal section, a +6.324/+8.390 m plan, tower plans, side-wing end elevations, arch-frame details and a tower elevation. Its grid and tower levels agree with the PDFs, but its central facade, sanctuary section and plan dimensioning differ. It has no roof plan.",
+"sourceIds":"Source file 10; Files 1–9",
+"differenceMm":null,
+"status":"USER CONFIRMED - project design basis; construction issue remains ENGINEERING HOLD",
+"required":"Owner direction, 26 October 2026: use the DWG saved 23 October 2026 as the project design standard. Retain older PDF evidence and unresolved internal conflicts. Responsible designer to issue coordinated construction drawings.",
+"confirmedMm":null,
+"newReference":"Owner instruction in project chat, 2026-10-26; same DWG SHA-256 as source file 10 (sheets.json)."
+},
+{
+"id":"ISSUE-R02",
+"cell":"Open items!A31",
+"issue":"Mặt giữa hai tháp / Central facade between the towers",
+"evidence":"DWG sheet 1 (variant A cut through the nave roof, variant B full elevation) shows one pedimented arched niche with a cross, flanked by crested parapets with fleur-de-lis cresting, two smaller arched niches and a triple-arched window under a rose above the main door. PDF sheet 1 shows a taller screen of three pinnacled gables, which the model followed before the DWG facade adoption on 24 October 2026. Tower geometry and the central 7,200 mm bay are the same.",
+"sourceIds":"File 1; source file 10 sheet 1",
+"differenceMm":null,
+"status":"Chưa xác nhận / Open",
+"required":"Xác nhận mặt giữa sẽ xây và cung cấp cao độ các tầng trang trí. / Confirm which central facade is to be built and provide its heights.",
+"confirmedMm":null,
+"newReference":""
+},
+{
+"id":"ISSUE-R03",
+"cell":"Open items!A32",
+"issue":"Chiều cao mặt cắt cung thánh / Sanctuary section heights",
+"evidence":"DWG sheet 25 against PDF sheet 5: side-aisle opening chain 160 / 2,544 / 466 / 4,392 against 150 / 2,554 / 396 / 4,462 (both 7,562); inner heights 6,231 and 8,525 against 6,301 and 8,452; right-side opening reference 3,171 (3,170.5) against 2,951.",
+"sourceIds":"S074, S075, S076; source file 10 sheet 25",
+"differenceMm":70,
+"status":"Chưa xác nhận / Open",
+"required":"Xác nhận bản mặt cắt cung thánh hiện hành. / Confirm the current sanctuary section.",
+"confirmedMm":null,
+"newReference":""
+},
+{
+"id":"ISSUE-R04",
+"cell":"Open items!A33",
+"issue":"Cao độ bục cung thánh / Sanctuary platform level",
+"evidence":"DWG section 25 dimensions the sanctuary platform 800 mm above the nave floor, with column bases 200 mm above it. The DWG ground plan still labels +0.75 m, as do the PDF plan and section.",
+"sourceIds":"P049; source file 10 sheets 5 and 25",
+"differenceMm":50,
+"status":"Chưa xác nhận / Open",
+"required":"Xác nhận +0,75 hay +0,80 m. / Confirm +0.75 m or +0.80 m.",
+"confirmedMm":null,
+"newReference":""
+},
+{
+"id":"ISSUE-R05",
+"cell":"Open items!A34",
+"issue":"Nóc mái vẽ và ghi khác nhau / Drawn and labelled ridge differ",
+"evidence":"The main ridge line is drawn at +12.396 m in DWG sections 24/25 and the side elevation, while every label reads +12.472 m and section A-A draws its ridge at +12.472 m. The 14,476 overall on the sections equals 2,080 + 12,396. Explains RFI-S01; the 76 mm may be a ridge cap.",
+"sourceIds":"E049, S001, S006; source file 10 sheets 24, 25, 45",
+"differenceMm":76,
+"status":"Chưa xác nhận / Open",
+"required":"Xác nhận +12,472 là đỉnh ngói nóc hay đỉnh vì kèo. / Confirm whether +12.472 m is the ridge-cap top or the roof apex.",
+"confirmedMm":null,
+"newReference":""
+},
+{
+"id":"ISSUE-R06",
+"cell":"Open items!A35",
+"issue":"Đơn vị hình học và đơn vị chèn trong DWG",
+"evidence":"DWG gốc và DXF mới đều có INSUNITS=1 (inch, đơn vị chèn). Chuỗi trục 4500/7200 và các nhãn cao độ theo m phù hợp cách hiểu hình học mm của mô hình; đây là diễn giải từ bản vẽ, chưa phải xác nhận đơn vị của người thiết kế. Không tự nhân hoặc chia tọa độ theo 25,4.",
+"sourceIds":"Tệp CAD nguồn 10; 726 đối tượng kích thước; 137 mốc trục",
+"differenceMm":null,
+"status":"Chưa xác nhận / ENGINEERING HOLD",
+"required":"Người thiết kế mở DWG trong AutoCAD/ODA, xác nhận đơn vị hình học, tỷ lệ chèn, đơn vị ghi kích thước và phát hành hồ sơ thi công thống nhất.",
+"confirmedMm":null,
+"newReference":"Kiểm tra trực tiếp 26/10/2026; Autodesk INSUNITS; review/dwg-vietnamese-23102026/kiem-tra-so-lieu.json"
 }
 ],
 "grid":[
@@ -8294,22 +8366,22 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "axis3d":"Y",
 "name":"Sanctuary/altar platform",
 "stepMm":null,
-"mm":750,
-"m":0.75,
-"sourceIds":"P049",
-"basis":"Printed elevation",
-"notes":"",
+"mm":800,
+"m":0.8,
+"sourceIds":"P049 (PDF 750); DWG0378",
+"basis":"Owner direction 24 Oct 2026 · CAD file 23 Oct 2026",
+"notes":"CAD sections 25 and 45 draw the dais at +0.800 (800 mm dimension, platform lines). The PDF set and the CAD ground-plan label give +0.750 (P049, ISSUE-R04). The model uses +0.800 by owner direction.",
 "cell":"Model grid!A38"
 },
 {
 "axis3d":"Y",
 "name":"Upper rear side room",
 "stepMm":null,
-"mm":150,
-"m":0.15,
-"sourceIds":"P050",
-"basis":"Printed elevation",
-"notes":"",
+"mm":160,
+"m":0.16,
+"sourceIds":"P050 (PDF 150); DWG0373",
+"basis":"Owner direction 24 Oct 2026 · CAD file 23 Oct 2026",
+"notes":"CAD section 25 dimensions the side floor 160 mm. The PDF set and the CAD ground-plan labels give +0.150. The model uses +0.160 by owner direction.",
 "cell":"Model grid!A39"
 },
 {
@@ -8327,11 +8399,11 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "axis3d":"Y",
 "name":"Lower rear side room",
 "stepMm":null,
-"mm":150,
-"m":0.15,
-"sourceIds":"P052",
-"basis":"Printed elevation",
-"notes":"",
+"mm":160,
+"m":0.16,
+"sourceIds":"P052 (PDF 150); DWG0373",
+"basis":"Owner direction 24 Oct 2026 · CAD file 23 Oct 2026",
+"notes":"CAD section 25 dimensions the side floor 160 mm. The PDF set and the CAD ground-plan labels give +0.150. The model uses +0.160 by owner direction.",
 "cell":"Model grid!A41"
 },
 {
@@ -8576,6 +8648,12 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "sheet":"13",
 "drawing":"Chi tiết cửa đi\nDoorway bay details",
 "filename":"MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI-Model.pdf 9.pdf"
+},
+{
+"file":"10",
+"sheet":"1, 3, 5, 14, 24–34, 45–47",
+"drawing":"Bộ bản vẽ CAD (DWG), lưu 23/10/2026\nCAD drawing set (DWG), saved 2026-10-23",
+"filename":"MẶT BẰNG NHÀ THỜ GIÁO XỨ THẠCH BI.dwg A.dwg"
 }
 ]
 };

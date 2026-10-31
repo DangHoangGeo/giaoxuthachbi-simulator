@@ -1,0 +1,44 @@
+[
+  {
+    "workbook": "docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
+    "changed_cells": [
+      "DWG dimensions!F258",
+      "DWG dimensions!F279",
+      "DWG dimensions!F295",
+      "DWG dimensions!F296",
+      "DWG dimensions!F310",
+      "DWG dimensions!F326",
+      "DWG dimensions!F337",
+      "DWG dimensions!F371",
+      "DWG dimensions!F372",
+      "DWG dimensions!F375",
+      "DWG dimensions!F388",
+      "DWG dimensions!F437",
+      "DWG dimensions!F472",
+      "DWG dimensions!F473",
+      "DWG dimensions!F500",
+      "DWG dimensions!F529",
+      "DWG dimensions!F530",
+      "DWG dimensions!F569",
+      "DWG dimensions!F578",
+      "DWG dimensions!F588",
+      "DWG dimensions!F640",
+      "DWG dimensions!F670",
+      "DWG dimensions!F680",
+      "DWG sheets!A4"
+    ],
+    "new_issue": "ISSUE-R06",
+    "unchanged_zip_parts_identical": true,
+    "unrelated_cell_values_preserved": true
+  },
+  {
+    "workbook": "docs/layout_design/dwg-2026-10-23/Thach_Bi_Key_Dimensions.xlsx",
+    "changed_cells": [
+      "Key dimensions!A4",
+      "Key dimensions!A5"
+    ],
+    "new_issue": null,
+    "unchanged_zip_parts_identical": true,
+    "unrelated_cell_values_preserved": true
+  }
+]

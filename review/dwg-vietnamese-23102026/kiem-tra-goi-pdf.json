@@ -1,0 +1,383 @@
+{
+  "so_tap": 11,
+  "so_pdf_mot_trang": 49,
+  "so_trang_trong_11_tap": 74,
+  "so_lien_ket_da_kiem_tra": 132,
+  "anh_raster": 0,
+  "tep_pdf": [
+    {
+      "tep": "00_Tong_quan_23102026.pdf",
+      "so_trang": 8,
+      "byte": 6277325,
+      "sha256": "1bc9907b52e18ab9ca7dd4970ede3bcd6607b39c4cbe8f7ae276741367b98813"
+    },
+    {
+      "tep": "01_Mat_bang_va_luoi_truc_23102026.pdf",
+      "so_trang": 6,
+      "byte": 3386158,
+      "sha256": "aacf99533b0d53b08e29cba16117913b4525e54f48fc89a1d76974c1487de64c"
+    },
+    {
+      "tep": "02_Mat_tien_trung_tam_23102026.pdf",
+      "so_trang": 8,
+      "byte": 2512616,
+      "sha256": "830b15aba01054fb12b0dc947e0f9373f863494040b53601c21c907a93f44043"
+    },
+    {
+      "tep": "03_Hai_thap_chuong_23102026.pdf",
+      "so_trang": 9,
+      "byte": 4256105,
+      "sha256": "1c7b229b8566ea2da4001c19cd1a0737e8046566ac22e273088156c76208973d"
+    },
+    {
+      "tep": "04_Long_nha_cot_va_mai_23102026.pdf",
+      "so_trang": 7,
+      "byte": 3986333,
+      "sha256": "af514223d92575d811a2b5809c726a0a1e2666a51432a67f233cb7f16a43a0ad"
+    },
+    {
+      "tep": "05_Cung_thanh_va_phong_phu_23102026.pdf",
+      "so_trang": 8,
+      "byte": 6216746,
+      "sha256": "ee246d7c78482583ab0e82d6076b411a9966e466a15338a71210d1732e3aa4d3"
+    },
+    {
+      "tep": "06_Hai_canh_ngang_23102026.pdf",
+      "so_trang": 4,
+      "byte": 407215,
+      "sha256": "aaf81692286a03b5e24a1bc991f67d5a3da46b3baf3ad008c1ed51ae03b4db8b"
+    },
+    {
+      "tep": "07_Cua_so_23102026.pdf",
+      "so_trang": 7,
+      "byte": 683221,
+      "sha256": "6c27a61aae25a79df2ddbb250584a7901b699780731a55f6eebddbcf60c58281"
+    },
+    {
+      "tep": "08_Cua_di_23102026.pdf",
+      "so_trang": 7,
+      "byte": 661149,
+      "sha256": "e9ee294f3a7a34ca4e7bfdb5336a7ec18b2b856a76138e4ef25e8b2cfae51178"
+    },
+    {
+      "tep": "09_Khung_vom_canh_ngang_23102026.pdf",
+      "so_trang": 7,
+      "byte": 215565,
+      "sha256": "1c0151d26a848da2f1f38856931fe68978960bae065df171970047f1e3fbc76f"
+    },
+    {
+      "tep": "10_Kiem_tra_du_lieu_DWG_23102026.pdf",
+      "so_trang": 3,
+      "byte": 85186,
+      "sha256": "b1ca8e22afd9fde057529e171c4f1d3895cf009e4bfd5c348579b201c6bbf6f0"
+    },
+    {
+      "tep": "tung_trang/P05_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 1639279,
+      "sha256": "5a393368c803d7ea931b5da7bd9d2484c6c8699bf88a47acca0782210e8d5185"
+    },
+    {
+      "tep": "tung_trang/P05_khu_thap_va_loi_vao_23102026.pdf",
+      "so_trang": 1,
+      "byte": 1639344,
+      "sha256": "7257f737585b63cb4922d6eccad6ebebf5ff45fb8b653b059d6dbd83228cfd9c"
+    },
+    {
+      "tep": "tung_trang/P05_cac_gian_long_nha_23102026.pdf",
+      "so_trang": 1,
+      "byte": 1639340,
+      "sha256": "ca984e1da0662a5d9e37d2a72bd55a7ca48e6392f434ff38386c1858e13a2ebc"
+    },
+    {
+      "tep": "tung_trang/P14_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 1770776,
+      "sha256": "d417c9da72a3267663f98b7a6a49819a5c3fdf1bfd43b89b5990f0c845798fc4"
+    },
+    {
+      "tep": "tung_trang/E01B_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 2344870,
+      "sha256": "e5870368ce7f9517e7f5826321c9317fab61c084cfd4e058d87c85ab893bbe8e"
+    },
+    {
+      "tep": "tung_trang/E01B_phan_giua_hai_thap_23102026.pdf",
+      "so_trang": 1,
+      "byte": 2345599,
+      "sha256": "2dc3df34e5573e1b5e9cf71c15baaa68a97b10cf8f04b34edbfcb515051620e6"
+    },
+    {
+      "tep": "tung_trang/E01B_cua_vao_va_chan_tru_23102026.pdf",
+      "so_trang": 1,
+      "byte": 2344772,
+      "sha256": "df50ba64596107ab7f7ec70cd4c4c543f24a1ea5edaacfa077060c7e9ee800ee"
+    },
+    {
+      "tep": "tung_trang/PT10_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 134080,
+      "sha256": "d3671cd4c38e54fe8cdedb402fec2917868c2154d0c1cdbf9aa707075b125067"
+    },
+    {
+      "tep": "tung_trang/PT15_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 94432,
+      "sha256": "afec2c683babfe234dfc1153afa5c73c0076342439aff897bab0fb0581da5cdc"
+    },
+    {
+      "tep": "tung_trang/E01A_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 1715729,
+      "sha256": "a7ee2acfc0d4bbe091a15073faa25fdb0e531886b4a36fffff60985965c06b5e"
+    },
+    {
+      "tep": "tung_trang/ET_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 106280,
+      "sha256": "d1feff212c8432cb56053e93184cb8567161b3815e656305b7e3fa3c65a01b32"
+    },
+    {
+      "tep": "tung_trang/E01B_chom_thap_va_thanh_gia_23102026.pdf",
+      "so_trang": 1,
+      "byte": 2344879,
+      "sha256": "00be595f7bdc5448513953fc67e860c8211656426eb45a7a6e27cac4d154cc5d"
+    },
+    {
+      "tep": "tung_trang/PT08_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 144344,
+      "sha256": "0e86803e90cc58e61a23e675ab4413cd2723317e7e304b9cab777ac9752f4bea"
+    },
+    {
+      "tep": "tung_trang/PT15A_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 86170,
+      "sha256": "9c68d2a66faf255257f6d0db500c23b01d63eb803a915d3fdddaff16f5980fe8"
+    },
+    {
+      "tep": "tung_trang/PT23_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 75574,
+      "sha256": "eddfed41ed35abcf77b022ef453081bd623f01f83596d6a2aa33064d112f1070"
+    },
+    {
+      "tep": "tung_trang/PT29_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 69606,
+      "sha256": "50e4678a02b8def4aef1a6d9c342e610a9d4c46184b09040be4eb13ba05c91b3"
+    },
+    {
+      "tep": "tung_trang/E02_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 1586729,
+      "sha256": "0fd62d71a601aeda758736b23b8bb4360745afbcd6eb49af8507573a10e93aef"
+    },
+    {
+      "tep": "tung_trang/S24_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 274117,
+      "sha256": "0a4fc11f1fc7bdca447fcd2c4b4b3858d63c3c3245a9efdf1fa948b242a4e292"
+    },
+    {
+      "tep": "tung_trang/S24_mai_va_cac_diem_tiep_giap_23102026.pdf",
+      "so_trang": 1,
+      "byte": 272383,
+      "sha256": "75fe4ecc49ac1bec237c842bb73180d2ce31e015be826e61d0ed707cb17493b9"
+    },
+    {
+      "tep": "tung_trang/S24_cot_va_chan_cot_23102026.pdf",
+      "so_trang": 1,
+      "byte": 274149,
+      "sha256": "1bb1a686ac8e1a4a290e5ae1d581be1f593092965041e0d98c6d93fa14e66c2d"
+    },
+    {
+      "tep": "tung_trang/S45_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 2204385,
+      "sha256": "a15251d60ff0b6c4ea2864843e5bb978e73b8380937e18550a076421e6d283d6"
+    },
+    {
+      "tep": "tung_trang/S45_mai_doc_long_nha_23102026.pdf",
+      "so_trang": 1,
+      "byte": 2208941,
+      "sha256": "702417f99e75828ec9fa0ab11161a5415928cfcc0bba501fbf4855f9316352ca"
+    },
+    {
+      "tep": "tung_trang/P05_cung_thanh_va_phong_ben_23102026.pdf",
+      "so_trang": 1,
+      "byte": 1641392,
+      "sha256": "2da31437c8d3374353cac724880c61b483a830910f49873404bae5c586c98b4c"
+    },
+    {
+      "tep": "tung_trang/P14_phia_cung_thanh_23102026.pdf",
+      "so_trang": 1,
+      "byte": 1771572,
+      "sha256": "062ca7bea52ccdca1d271f8900b1f042f5ca175debfe5dcc764002525f7039b2"
+    },
+    {
+      "tep": "tung_trang/S25_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 281327,
+      "sha256": "153bc65d896360ffa7a3943116d487d5f7a84394bd36d2de5f7425f1613980a3"
+    },
+    {
+      "tep": "tung_trang/S25_nen_cung_thanh_va_chan_cot_23102026.pdf",
+      "so_trang": 1,
+      "byte": 281427,
+      "sha256": "f40b3718e6ea19e471d5e67fd0d33624c521d91f07f39d0912db6d6645d0a32c"
+    },
+    {
+      "tep": "tung_trang/S45_mat_cat_phia_cung_thanh_23102026.pdf",
+      "so_trang": 1,
+      "byte": 2208458,
+      "sha256": "da085dc6eef807960e7238d37dfe019c545f33fbd7f5e522ff1c57597840037c"
+    },
+    {
+      "tep": "tung_trang/E03_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 511781,
+      "sha256": "f3745b8658de8d41fe9efba8634a5810278a3dabdfb2b1190ee93c802c010034"
+    },
+    {
+      "tep": "tung_trang/EW_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 396647,
+      "sha256": "7d704c98caf96048343ae4b1e268c94d2b9a3a278db618989b63d235e3298de0"
+    },
+    {
+      "tep": "tung_trang/EW_mat_dung_phia_ngoai_23102026.pdf",
+      "so_trang": 1,
+      "byte": 396663,
+      "sha256": "429c24a394a59c6a9c502457fbf86a1534ed32edc6fdcefb88cf429ff2dd2acf"
+    },
+    {
+      "tep": "tung_trang/EW_mat_dung_phia_trong_23102026.pdf",
+      "so_trang": 1,
+      "byte": 396664,
+      "sha256": "d9bf7b1c318c852c1fc706cf3eec561709d4c8c985be96f9c5319a1d36f42f32"
+    },
+    {
+      "tep": "tung_trang/P28_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 249309,
+      "sha256": "906ff56af6db4d2bb7f6021e831f9078aa2ea084ad38f14c446dd20fa2496c6d"
+    },
+    {
+      "tep": "tung_trang/E26_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 232328,
+      "sha256": "6400ee258fa63ccfb2f03f3d1b25b317ac7cbc73972dee0c1bdee017f9bac483"
+    },
+    {
+      "tep": "tung_trang/S27_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 201368,
+      "sha256": "db275ac84d062cb0159ba005d9386a19296aa310a14d4501ca816299b3bf3383"
+    },
+    {
+      "tep": "tung_trang/D29_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 147851,
+      "sha256": "efcdd4ba550912a1bb70eb90751ac7989fd303ed3e23f711826dcbd12ce871a6"
+    },
+    {
+      "tep": "tung_trang/D29_dau_vom_cua_so_23102026.pdf",
+      "so_trang": 1,
+      "byte": 147893,
+      "sha256": "f648153a464a1906637be219a315991681aa5f2a18902075b1682307bfb2f704"
+    },
+    {
+      "tep": "tung_trang/D29_bau_va_chan_cua_so_23102026.pdf",
+      "so_trang": 1,
+      "byte": 147978,
+      "sha256": "d8fadfda5a32d32c2b93fac883f283a281ebadc8c35732dd38982d4738b37c32"
+    },
+    {
+      "tep": "tung_trang/P33_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 225317,
+      "sha256": "e9cd8b0dd63f394b0e35d54a9b8eebdb8b8d84881fb0b4319bf4e3e90ea89de3"
+    },
+    {
+      "tep": "tung_trang/E31_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 211600,
+      "sha256": "ef65622a3553ddc3f1b6fc6e35cfb06d5410d5f0c29cc4b8bd25a65e8ffde92a"
+    },
+    {
+      "tep": "tung_trang/S32_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 186305,
+      "sha256": "bb233629f080c3dc2f14ac15a1e06e45c3deb33b3d270d24310a3c54b8585f02"
+    },
+    {
+      "tep": "tung_trang/D34_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 183122,
+      "sha256": "57d756bc3c3ef2ec80014bc24e21708a7248152b50bc4af7c27b2ab56abf551e"
+    },
+    {
+      "tep": "tung_trang/D34_dau_vom_cua_di_23102026.pdf",
+      "so_trang": 1,
+      "byte": 183171,
+      "sha256": "d093d3531fdffee856f237b36d359036f1a0c4e1d813c4479ae01c40069c78b6"
+    },
+    {
+      "tep": "tung_trang/D34_chan_cua_di_23102026.pdf",
+      "so_trang": 1,
+      "byte": 183111,
+      "sha256": "65a286ede091336ce11d5e399c01c97ff5cfcc2df238838f5629e63017f031e2"
+    },
+    {
+      "tep": "tung_trang/D46_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 128264,
+      "sha256": "9903098bcbaf7d325e9c26eecb11b9b3dba4dfc265567151cd0d89a15606974a"
+    },
+    {
+      "tep": "tung_trang/D46_dinh_khung_vom_thep_23102026.pdf",
+      "so_trang": 1,
+      "byte": 127268,
+      "sha256": "d07501744fdf049ea9d441632e7f7e10166c10dc5164088817678d0cfebbad5d"
+    },
+    {
+      "tep": "tung_trang/D46_chan_va_goi_khung_thep_23102026.pdf",
+      "so_trang": 1,
+      "byte": 126444,
+      "sha256": "0b93e3e504f57edfba02339e689685d8e1d0b55c7fb482a2b3e9688247bc0870"
+    },
+    {
+      "tep": "tung_trang/D47_toan_bo_ban_ve_23102026.pdf",
+      "so_trang": 1,
+      "byte": 120250,
+      "sha256": "4e5b684d6f5e0ad0ca1388076c17542a8a06435eb0d3644dbb7a8c9355f06c1c"
+    },
+    {
+      "tep": "tung_trang/D47_dinh_khung_vom_be_tong_23102026.pdf",
+      "so_trang": 1,
+      "byte": 119577,
+      "sha256": "b8df3ff96bee367614cac5ab5a6d61df0805a2f4f4d34c7c7b920bcd275f2142"
+    },
+    {
+      "tep": "tung_trang/D47_chan_va_goi_khung_be_tong_23102026.pdf",
+      "so_trang": 1,
+      "byte": 118233,
+      "sha256": "0de0b50c14662dac63e1b7d6e8fec33692dc895401b18c4d8a6dc40f8dfa18b7"
+    }
+  ],
+  "goi_zip": [
+    {
+      "tep": "Nha_tho_Thach_Bi_23102026.zip",
+      "byte": 28402531,
+      "sha256": "43772ff096a21a640a5a522acbc938bc429cb24253a1498af042b0c7499d7e0e",
+      "so_tep": 12
+    },
+    {
+      "tep": "Tung_trang_23102026.zip",
+      "byte": 42202244,
+      "sha256": "e545032630c5b31825efecbdf7e3dd8d0e909250ba44fa3aa69f60624f94c97f",
+      "so_tep": 51
+    }
+  ]
+}

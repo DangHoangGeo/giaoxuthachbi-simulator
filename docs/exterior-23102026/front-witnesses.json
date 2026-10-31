@@ -1,0 +1,168 @@
+{
+  "version": "23102026",
+  "source_sha256": "2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae",
+  "drawing": "E01B",
+  "sheet": "1",
+  "axes": "Z/Y; mm interpreted from dimension chains, ISSUE-R06 pending",
+  "source_objects": [
+    {
+      "handle": "C4988F",
+      "kind": "ARC",
+      "z_mm": -0.05072571383789182,
+      "y_mm": 12240.985224988777,
+      "r_mm": 429.9978391621262,
+      "layer": "01",
+      "start": 0.0,
+      "end": 180.0000493721292
+    },
+    {
+      "handle": "C49890",
+      "kind": "ARC",
+      "z_mm": -0.05072571383789182,
+      "y_mm": 12240.985224988777,
+      "r_mm": 374.9978391621262,
+      "layer": "01",
+      "start": 0.0,
+      "end": 83.8767656988236
+    },
+    {
+      "handle": "C49879",
+      "kind": "LINE",
+      "points_mm": [
+        [
+          -415.05072571290657,
+          12100.985224988079
+        ],
+        [
+          -415.05072571290657,
+          9983.731257542968
+        ]
+      ],
+      "layer": "01"
+    },
+    {
+      "handle": "C49886",
+      "kind": "LINE",
+      "points_mm": [
+        [
+          414.94711344805546,
+          12100.985258294968
+        ],
+        [
+          414.948876446113,
+          9983.7312575432
+        ]
+      ],
+      "layer": "01"
+    },
+    {
+      "handle": "C49A51",
+      "kind": "LINE",
+      "points_mm": [
+        [
+          414.94725731993094,
+          11928.20347905811
+        ],
+        [
+          39.949222311144695,
+          11928.203479057876
+        ]
+      ],
+      "layer": "01"
+    },
+    {
+      "handle": "C49A53",
+      "kind": "LINE",
+      "points_mm": [
+        [
+          414.94719255296513,
+          12005.985224988777
+        ],
+        [
+          39.949228188954294,
+          12005.985224988312
+        ]
+      ],
+      "layer": "01"
+    },
+    {
+      "handle": "C49A71",
+      "kind": "LINE",
+      "points_mm": [
+        [
+          414.9488764470443,
+          9983.7312575432
+        ],
+        [
+          -415.05072571197525,
+          9983.731257542677
+        ]
+      ],
+      "layer": "01"
+    },
+    {
+      "handle": "C49A7C",
+      "kind": "LINE",
+      "points_mm": [
+        [
+          39.94924594811164,
+          12240.985224988603
+        ],
+        [
+          39.94927428616211,
+          12615.983061128063
+        ]
+      ],
+      "layer": "01"
+    },
+    {
+      "handle": "C49A85",
+      "kind": "LINE",
+      "points_mm": [
+        [
+          -40.05075405188836,
+          12240.985224988603
+        ],
+        [
+          -40.05072571383789,
+          12615.983067173802
+        ]
+      ],
+      "layer": "01"
+    },
+    {
+      "handle": "C49973",
+      "kind": "CIRCLE",
+      "z_mm": -0.04968484793789685,
+      "y_mm": 13709.352439373964,
+      "r_mm": 450.0,
+      "layer": "01"
+    },
+    {
+      "handle": "C49974",
+      "kind": "CIRCLE",
+      "z_mm": -0.04968484793789685,
+      "y_mm": 13709.352439373964,
+      "r_mm": 540.0,
+      "layer": "01"
+    },
+    {
+      "handle": "C49975",
+      "kind": "CIRCLE",
+      "z_mm": -0.04968484793789685,
+      "y_mm": 13709.352439373673,
+      "r_mm": 418.7422448943057,
+      "layer": "01"
+    },
+    {
+      "handle": "C49976",
+      "kind": "CIRCLE",
+      "z_mm": -0.04968484793789685,
+      "y_mm": 13709.352439373673,
+      "r_mm": 394.7422448943057,
+      "layer": "01"
+    }
+  ],
+  "seam_source": "facade.csv F03/F04/F06: end |Z|=7128 mm; current tower inner rear pier starts at |Z|=7103 mm",
+  "limits": "Projected curves and frame pattern only. Unseen depths, timber choice, relief, glazing/ventilation, fixings and engineering design remain unverified. Model uses symmetric rounded centres; native near-zero offsets are numerical, not surveyed asymmetry."
+}

@@ -1,0 +1,4276 @@
+{
+  "revision": "23102026-tower-other-faces-source-audit-2026-10-26",
+  "sourceDwgSha256": "2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae",
+  "scope": "Native E02/ET/plan witnesses; outer faces transcribed; repeated rear/inner faces DERIVED, ET orientation and 90 mm rose discrepancy pending.",
+  "transforms": {
+    "E02": {
+      "frameDwg": [
+        1386905,
+        -528109,
+        1461784,
+        -478625
+      ],
+      "formula": {
+        "horizontalAxis": "X",
+        "horizontal": "(x-1404501.3)/1000",
+        "Y": "(y+518026.8)/1000"
+      }
+    },
+    "ET": {
+      "frameDwg": [
+        1696316,
+        -519027,
+        1705183,
+        -480107
+      ],
+      "formula": {
+        "horizontalAxis": "u-local",
+        "horizontal": "(x-1696316)/1000",
+        "Y": "(y+518026.8)/1000"
+      }
+    },
+    "PT08": {
+      "frameDwg": [
+        1581791,
+        -595187,
+        1616942,
+        -574941
+      ],
+      "formula": "Native plan coordinates; use axis1/axis2 and local centre below, no H/B absolute Z assignment"
+    },
+    "PT15A": {
+      "frameDwg": [
+        1623080,
+        -615632,
+        1635310,
+        -605348
+      ],
+      "formula": "Native plan coordinates; use axis1/axis2 and local centre below, no H/B absolute Z assignment"
+    },
+    "PT23": {
+      "frameDwg": [
+        1637025,
+        -615632,
+        1649256,
+        -605348
+      ],
+      "formula": "Native plan coordinates; use axis1/axis2 and local centre below, no H/B absolute Z assignment"
+    },
+    "PT29": {
+      "frameDwg": [
+        1650591,
+        -615642,
+        1662822,
+        -605358
+      ],
+      "formula": "Native plan coordinates; use axis1/axis2 and local centre below, no H/B absolute Z assignment"
+    }
+  },
+  "upperOuterSideProfiles": [
+    {
+      "stage": 2,
+      "basis": "DRAWING SHOWN: E02 outer tower side elevation",
+      "horizontalCentreX": 2.4500446699580642,
+      "greatSpringY": 12.84661275010556,
+      "greatRingsM": [
+        1.615338638250716,
+        1.725338638250716,
+        1.7553386382507161,
+        1.855338638250716,
+        1.885338638250716,
+        1.955338638250716
+      ],
+      "windowCentresX": [
+        1.5546877321228385,
+        3.345401094648987
+      ],
+      "windowSpringY": 11.867964351365169,
+      "windowInnerR": 0.4996430235598236,
+      "sillY": 9.04996873349609,
+      "roseY": 13.277964351362375,
+      "roseOuterR": 0.54,
+      "roseX": 2.4500446881728712
+    },
+    {
+      "stage": 3,
+      "basis": "DRAWING SHOWN: E02 outer tower side elevation",
+      "horizontalCentreX": 2.450044413367985,
+      "greatSpringY": 19.973454138235713,
+      "greatRingsM": [
+        1.615,
+        1.7250000000009311,
+        1.750000000000931,
+        1.839999698367901,
+        1.864999698367901,
+        1.924999698367901
+      ],
+      "windowCentresX": [
+        1.555044629918877,
+        3.3450446299018806
+      ],
+      "windowSpringY": 19.317964330539166,
+      "windowInnerR": 0.5000000000093132,
+      "sillY": 16.499968712688307,
+      "roseY": 20.612391717345805,
+      "roseOuterR": 0.54,
+      "roseX": 2.4500446881519164
+    },
+    {
+      "stage": 4,
+      "basis": "DRAWING SHOWN: E02 outer tower side elevation",
+      "horizontalCentreX": 2.438569023472024,
+      "greatSpringY": 26.610771934140065,
+      "greatRingsM": [
+        1.303693158040754,
+        1.328693158040754,
+        1.418693366395257,
+        1.4436933663952571,
+        1.493693366395257
+      ],
+      "windowCentresX": [
+        1.754222392366035,
+        3.1229156545789447
+      ],
+      "windowSpringY": 26.14959565846226,
+      "windowInnerR": 0.3993466311120428,
+      "sillY": 23.799970190694612,
+      "roseY": 27.191525169733506,
+      "roseOuterR": 0.44421278633089967,
+      "roseX": 2.4385692107288635
+    }
+  ],
+  "groundOuterSide": {
+    "centreX": 2.450044195,
+    "greatSpringY": 3.984770309,
+    "greatRingsM": [
+      1.385000208,
+      1.555000208,
+      1.585000208,
+      1.725000208,
+      1.755000208,
+      1.855,
+      1.885,
+      1.955
+    ],
+    "blindSpringY": 3.100470309,
+    "blindRingsM": [
+      0.824478702,
+      0.974478702,
+      1.139478702
+    ],
+    "differenceFromFrontBlindY": 0.2005,
+    "blindUprightBottomY": -2.9691e-05,
+    "centralWindow": {
+      "leftX": 1.950044195,
+      "rightX": 2.950044195,
+      "sillY": 0.849970309,
+      "jambTopY": 2.950470309,
+      "archCentreY": 3.100470309,
+      "archRadiusM": 0.5,
+      "materialAndActualOperation": "unconfirmed"
+    },
+    "greatPilasterShaftY": [
+      0.443270309,
+      3.484270309
+    ],
+    "greatPilasterXSlices": [
+      [
+        0.725043987,
+        0.895043987,
+        1.065043987
+      ],
+      [
+        3.835044403,
+        4.005044403,
+        4.175044403
+      ]
+    ]
+  },
+  "planDatums": {
+    "PT15A": {
+      "axis1Y": -612643.7050977063,
+      "axis2Y": -607743.7055140383,
+      "horizontalCentreRawX": 1629229.50126872,
+      "centreXFromAxesM": 2.449999791834,
+      "clearInnerRectangleM": [
+        4.129999584,
+        4.129999583
+      ]
+    },
+    "PT23": {
+      "axis1Y": -612643.7050977063,
+      "axis2Y": -607743.7055140383,
+      "horizontalCentreRawX": 1643175.2578214684,
+      "centreXFromAxesM": 2.449999791834
+    },
+    "PT29": {
+      "axis1Y": -612654.1523778068,
+      "axis2Y": -607754.1527941389,
+      "horizontalCentreRawX": 1656740.70088902,
+      "centreRawY": -610204.1525859573,
+      "centreXFromAxesM": 2.4499997918495,
+      "outerOutlineSpanM": [
+        5.630000582876,
+        5.629984337476
+      ],
+      "frontBandXFromAxis1M": 0.19500543898530304,
+      "nextFrontBandXFromAxis1M": 0.25500543898530303,
+      "rearBandXFromAxis1M": 4.704994144713739,
+      "frontBandTransverseHalfSpanM": 1.97770111156,
+      "notes": "These are visible outline/band positions, not approved structural wall thicknesses. PT29 horizontal plane is+29.090 at the base of the parapet, not its upper rail."
+    }
+  },
+  "features": [
+    {
+      "id": "E02-ground-great-r1",
+      "drawing": "E02",
+      "handle": "D8DBF9",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DBF9",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344195026,
+          -514042.0296906541
+        ],
+        "radius": 1385.000208165031,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500441950259266,
+        3.984770309345913
+      ],
+      "radiusM": 1.385000208165031,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.8350444031909574,
+          3.984770309345913
+        ],
+        [
+          1.0650439868608956,
+          3.984770309345913
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-r2",
+      "drawing": "E02",
+      "handle": "D8DBFA",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DBFA",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344195026,
+          -514042.0296906541
+        ],
+        "radius": 1555.000208165031,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500441950259266,
+        3.984770309345913
+      ],
+      "radiusM": 1.555000208165031,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.005044403190958,
+          3.984770309345913
+        ],
+        [
+          0.8950439868608955,
+          3.984770309345913
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-r3",
+      "drawing": "E02",
+      "handle": "D8DBFB",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DBFB",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344195026,
+          -514042.0296906541
+        ],
+        "radius": 1585.000208165031,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500441950259266,
+        3.984770309345913
+      ],
+      "radiusM": 1.585000208165031,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.035044403190957,
+          3.984770309345913
+        ],
+        [
+          0.8650439868608956,
+          3.984770309345913
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-r4",
+      "drawing": "E02",
+      "handle": "D8DBFC",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DBFC",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344195026,
+          -514042.0296906541
+        ],
+        "radius": 1725.000208165031,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500441950259266,
+        3.984770309345913
+      ],
+      "radiusM": 1.7250002081650309,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.175044403190958,
+          3.984770309345913
+        ],
+        [
+          0.7250439868608956,
+          3.984770309345913
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-r5",
+      "drawing": "E02",
+      "handle": "D8DBFD",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DBFD",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344195026,
+          -514042.0296906541
+        ],
+        "radius": 1755.000208165031,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500441950259266,
+        3.984770309345913
+      ],
+      "radiusM": 1.7550002081650309,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.205044403190957,
+          3.984770309345913
+        ],
+        [
+          0.6950439868608955,
+          3.984770309345913
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-r6",
+      "drawing": "E02",
+      "handle": "D8DC00",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DC00",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344195026,
+          -514042.0296906541
+        ],
+        "radius": 1854.999999997206,
+        "angles": [
+          359.9999770281528,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500441950259266,
+        3.984770309345913
+      ],
+      "radiusM": 1.854999999997206,
+      "anglesDegrees": [
+        359.9999770281528,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.3050441950229,
+          3.98476956561266
+        ],
+        [
+          0.5950441950287204,
+          3.984770309345913
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-r7",
+      "drawing": "E02",
+      "handle": "D8DBFF",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DBFF",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344195026,
+          -514042.0296906541
+        ],
+        "radius": 1884.999999997206,
+        "angles": [
+          359.9999770281528,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500441950259266,
+        3.984770309345913
+      ],
+      "radiusM": 1.884999999997206,
+      "anglesDegrees": [
+        359.9999770281528,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.3350441950229,
+          3.984769553584629
+        ],
+        [
+          0.5650441950287204,
+          3.984770309345913
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-r8",
+      "drawing": "E02",
+      "handle": "D8DBFE",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DBFE",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344195026,
+          -514042.0296906541
+        ],
+        "radius": 1954.999999997206,
+        "angles": [
+          359.9999770281528,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500441950259266,
+        3.984770309345913
+      ],
+      "radiusM": 1.954999999997206,
+      "anglesDegrees": [
+        359.9999770281528,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.405044195022899,
+          3.984769525519223
+        ],
+        [
+          0.49504419502872044,
+          3.984770309345913
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-blind-r1",
+      "drawing": "E02",
+      "handle": "D8DF45",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DF45",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344195025,
+          -514926.3296906822
+        ],
+        "radius": 824.4787018196657,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.450044195024995,
+        3.1004703093178105
+      ],
+      "radiusM": 0.8244787018196658,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.274522896844661,
+          3.1004703093178105
+        ],
+        [
+          1.6255654932053294,
+          3.1004703093178105
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-blind-r2",
+      "drawing": "E02",
+      "handle": "D8DF46",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DF46",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344195025,
+          -514926.3296906822
+        ],
+        "radius": 974.4787018196657,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.450044195024995,
+        3.1004703093178105
+      ],
+      "radiusM": 0.9744787018196658,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.424522896844661,
+          3.1004703093178105
+        ],
+        [
+          1.4755654932053295,
+          3.1004703093178105
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-blind-r3",
+      "drawing": "E02",
+      "handle": "D8DF47",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DF47",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344195025,
+          -514926.3296906822
+        ],
+        "radius": 1139.478701819666,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.450044195024995,
+        3.1004703093178105
+      ],
+      "radiusM": 1.139478701819666,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.589522896844661,
+          3.1004703093178105
+        ],
+        [
+          1.3105654932053294,
+          3.1004703093178105
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-inner-window-arch",
+      "drawing": "E02",
+      "handle": "DB18C3",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB18C3",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344195025,
+          -514926.3296906822
+        ],
+        "radius": 500.0,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.450044195024995,
+        3.1004703093178105
+      ],
+      "radiusM": 0.5,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          2.950044195024995,
+          3.1004703093178105
+        ],
+        [
+          1.9500441950249952,
+          3.1004703093178105
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-inner-window-left-jamb",
+      "drawing": "E02",
+      "handle": "DB188A",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB188A",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1406451.344195025,
+            -517176.8296906661
+          ],
+          [
+            1406451.344195025,
+            -515076.3296906822
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          1.9500441950249952,
+          0.8499703093338757
+        ],
+        [
+          1.9500441950249952,
+          2.9504703093178106
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-inner-window-right-jamb",
+      "drawing": "E02",
+      "handle": "DB188F",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB188F",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1407451.344195025,
+            -517176.8296906652
+          ],
+          [
+            1407451.344195025,
+            -515076.3296906822
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          2.950044195024995,
+          0.8499703093348071
+        ],
+        [
+          2.950044195024995,
+          2.9504703093178106
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-inner-window-sill",
+      "drawing": "E02",
+      "handle": "DB1892",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB1892",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1407451.344195022,
+            -517176.8296906652
+          ],
+          [
+            1406451.344195022,
+            -517176.8296906662
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          2.9500441950219685,
+          0.8499703093348071
+        ],
+        [
+          1.9500441950219682,
+          0.8499703093337594
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-blind-left-upright",
+      "drawing": "E02",
+      "handle": "D8DF31",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DF31",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1406126.865493204,
+            -518026.8296906507
+          ],
+          [
+            1406126.865493206,
+            -514926.3296906844
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          1.6255654932039325,
+          -2.969065069919452e-05
+        ],
+        [
+          1.625565493206028,
+          3.1004703093155985
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-blind-right-upright",
+      "drawing": "E02",
+      "handle": "D8DECC",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DECC",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1407775.822896841,
+            -518026.8296906519
+          ],
+          [
+            1407775.822896843,
+            -514926.3296906831
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          3.2745228968409354,
+          -2.96906519215554e-05
+        ],
+        [
+          3.274522896843031,
+          3.1004703093168793
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-pilaster-left-inner",
+      "drawing": "E02",
+      "handle": "D8DC03",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DC03",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1405566.343986862,
+            -514542.5296906555
+          ],
+          [
+            1405566.343986866,
+            -517583.5296906576
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          1.0650439868620596,
+          3.484270309344516
+        ],
+        [
+          1.0650439868660178,
+          0.44327030934236245
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-pilaster-left-middle",
+      "drawing": "E02",
+      "handle": "D8DC02",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DC02",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1405396.343986862,
+            -514542.5296906558
+          ],
+          [
+            1405396.343986866,
+            -517583.5296906579
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          0.8950439868620597,
+          3.4842703093441667
+        ],
+        [
+          0.8950439868660178,
+          0.4432703093420714
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-pilaster-left-outer",
+      "drawing": "E02",
+      "handle": "D8DC01",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DC01",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1405226.343986861,
+            -514542.529690656
+          ],
+          [
+            1405226.343986866,
+            -517583.5296906581
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          0.7250439868608956,
+          3.484270309343992
+        ],
+        [
+          0.7250439868660178,
+          0.4432703093418968
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-pilaster-right-inner",
+      "drawing": "E02",
+      "handle": "D8DDD3",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DDD3",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1408336.344403192,
+            -514542.5296906516
+          ],
+          [
+            1408336.344403194,
+            -517583.5296906534
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          3.8350444031918887,
+          3.484270309348416
+        ],
+        [
+          3.8350444031939843,
+          0.4432703093466116
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-pilaster-right-middle",
+      "drawing": "E02",
+      "handle": "D8DDD2",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DDD2",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1408506.344403192,
+            -514542.5296906513
+          ],
+          [
+            1408506.344403193,
+            -517583.5296906534
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          4.005044403191889,
+          3.484270309348707
+        ],
+        [
+          4.005044403193053,
+          0.4432703093466116
+        ]
+      ]
+    },
+    {
+      "id": "E02-ground-great-pilaster-right-outer",
+      "drawing": "E02",
+      "handle": "D8DDD1",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DDD1",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1408676.344403192,
+            -514542.5296906513
+          ],
+          [
+            1408676.344403194,
+            -517583.5296906532
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          4.1750444031918885,
+          3.484270309348707
+        ],
+        [
+          4.175044403193985,
+          0.44327030934678624
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-great-r1",
+      "drawing": "E02",
+      "handle": "D8F439",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8F439",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344669958,
+          -505180.1872498944
+        ],
+        "radius": 1615.338638250716,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500446699580642,
+        12.84661275010556
+      ],
+      "radiusM": 1.615338638250716,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.06538330820878,
+          12.84661275010556
+        ],
+        [
+          0.8347060317073483,
+          12.84661275010556
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-great-r2",
+      "drawing": "E02",
+      "handle": "D8F43A",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8F43A",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344669958,
+          -505180.1872498944
+        ],
+        "radius": 1725.338638250716,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500446699580642,
+        12.84661275010556
+      ],
+      "radiusM": 1.725338638250716,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.17538330820878,
+          12.84661275010556
+        ],
+        [
+          0.7247060317073483,
+          12.84661275010556
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-great-r3",
+      "drawing": "E02",
+      "handle": "D8F43B",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8F43B",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344669958,
+          -505180.1872498944
+        ],
+        "radius": 1755.338638250716,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500446699580642,
+        12.84661275010556
+      ],
+      "radiusM": 1.7553386382507161,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.205383308208781,
+          12.84661275010556
+        ],
+        [
+          0.6947060317073483,
+          12.84661275010556
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-great-r4",
+      "drawing": "E02",
+      "handle": "D8F43E",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8F43E",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344669958,
+          -505180.1872498944
+        ],
+        "radius": 1855.338638250716,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500446699580642,
+        12.84661275010556
+      ],
+      "radiusM": 1.855338638250716,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.30538330820878,
+          12.84661275010556
+        ],
+        [
+          0.5947060317073483,
+          12.84661275010556
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-great-r5",
+      "drawing": "E02",
+      "handle": "D8F43D",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8F43D",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344669958,
+          -505180.1872498944
+        ],
+        "radius": 1885.338638250716,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500446699580642,
+        12.84661275010556
+      ],
+      "radiusM": 1.885338638250716,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.3353833082087805,
+          12.84661275010556
+        ],
+        [
+          0.5647060317073483,
+          12.84661275010556
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-great-r6",
+      "drawing": "E02",
+      "handle": "D8F43C",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8F43C",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344669958,
+          -505180.1872498944
+        ],
+        "radius": 1955.338638250716,
+        "angles": [
+          358.9336311419099,
+          181.0663367426425
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500446699580642,
+        12.84661275010556
+      ],
+      "radiusM": 1.955338638250716,
+      "anglesDegrees": [
+        358.9336311419099,
+        181.0663367426425
+      ],
+      "endpointsM": [
+        [
+          4.4050446597584525,
+          12.810222777363087
+        ],
+        [
+          0.4950446597605478,
+          12.810223873180279
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-window-left-r1",
+      "drawing": "E02",
+      "handle": "D8DDC6",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DDC6",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406055.987732123,
+          -506158.8356486348
+        ],
+        "radius": 499.6430235598236,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        1.5546877321228385,
+        11.867964351365169
+      ],
+      "radiusM": 0.4996430235598236,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          2.054330755682662,
+          11.867964351365169
+        ],
+        [
+          1.0550447085630148,
+          11.867964351365169
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-window-left-r2",
+      "drawing": "E02",
+      "handle": "D8DDC7",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DDC7",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406056.344708562,
+          -506158.8356486351
+        ],
+        "radius": 609.2866170825437,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        1.5550447085618506,
+        11.867964351364877
+      ],
+      "radiusM": 0.6092866170825437,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          2.1643313256443943,
+          11.867964351364877
+        ],
+        [
+          0.945758091479307,
+          11.867964351364877
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-window-left-r3",
+      "drawing": "E02",
+      "handle": "D8DDC8",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DDC8",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406055.987732123,
+          -506158.8356486348
+        ],
+        "radius": 719.6433187369257,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        1.5546877321228385,
+        11.867964351365169
+      ],
+      "radiusM": 0.7196433187369258,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          2.274331050859764,
+          11.867964351365169
+        ],
+        [
+          0.8350444133859127,
+          11.867964351365169
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-window-right-r1",
+      "drawing": "E02",
+      "handle": "D8DD83",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DD83",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1407846.701094649,
+          -506158.8356486344
+        ],
+        "radius": 499.6430235598236,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        3.345401094648987,
+        11.867964351365575
+      ],
+      "radiusM": 0.4996430235598236,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.845044118208811,
+          11.867964351365575
+        ],
+        [
+          2.8457580710891635,
+          11.867964351365575
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-window-right-r2",
+      "drawing": "E02",
+      "handle": "D8DD84",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DD84",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1407847.058071089,
+          -506158.8356486346
+        ],
+        "radius": 609.2866170825437,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        3.3457580710889308,
+        11.867964351365401
+      ],
+      "radiusM": 0.6092866170825437,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.9550446881714745,
+          11.867964351365401
+        ],
+        [
+          2.736471454006387,
+          11.867964351365401
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-window-right-r3",
+      "drawing": "E02",
+      "handle": "D8DD85",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DD85",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1407846.701094649,
+          -506158.8356486344
+        ],
+        "radius": 719.6433187369257,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        3.345401094648987,
+        11.867964351365575
+      ],
+      "radiusM": 0.7196433187369258,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.0650444133859125,
+          11.867964351365575
+        ],
+        [
+          2.6257577759120614,
+          11.867964351365575
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-rose-inner",
+      "drawing": "E02",
+      "handle": "D8F350",
+      "type": "CIRCLE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8F350",
+        "type": "CIRCLE",
+        "layer": "01",
+        "center": [
+          1406951.344688173,
+          -504748.8356486376
+        ],
+        "radius": 450.0
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500446881728712,
+        13.277964351362375
+      ],
+      "radiusM": 0.45
+    },
+    {
+      "id": "E02-upper-2-rose-outer",
+      "drawing": "E02",
+      "handle": "D8F351",
+      "type": "CIRCLE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8F351",
+        "type": "CIRCLE",
+        "layer": "01",
+        "center": [
+          1406951.344688173,
+          -504748.8356486376
+        ],
+        "radius": 540.0
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500446881728712,
+        13.277964351362375
+      ],
+      "radiusM": 0.54
+    },
+    {
+      "id": "E02-upper-2-sill-left",
+      "drawing": "E02",
+      "handle": "D8DAA7",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DAA7",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1405556.344688172,
+            -506618.8356486351
+          ],
+          [
+            1405556.344688172,
+            -508976.8312665039
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          1.05504468817194,
+          11.407964351364877
+        ],
+        [
+          1.05504468817194,
+          9.04996873349609
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-2-sill-right",
+      "drawing": "E02",
+      "handle": "D8DACA",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8DACA",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1408346.344688172,
+            -506618.8356486344
+          ],
+          [
+            1408346.344688171,
+            -508976.8301049139
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          3.84504468817194,
+          11.407964351365576
+        ],
+        [
+          3.8450446881710088,
+          9.049969895086077
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-great-r1",
+      "drawing": "E02",
+      "handle": "D8EB9D",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EB9D",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344413368,
+          -498053.3458617643
+        ],
+        "radius": 1615.0,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.450044413367985,
+        19.973454138235713
+      ],
+      "radiusM": 1.615,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.065044413367985,
+          19.973454138235713
+        ],
+        [
+          0.8350444133679849,
+          19.973454138235713
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-great-r2",
+      "drawing": "E02",
+      "handle": "D8EBA1",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBA1",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344413368,
+          -498053.3458617643
+        ],
+        "radius": 1725.000000000931,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.450044413367985,
+        19.973454138235713
+      ],
+      "radiusM": 1.7250000000009311,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.175044413368916,
+          19.973454138235713
+        ],
+        [
+          0.7250444133670535,
+          19.973454138235713
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-great-r3",
+      "drawing": "E02",
+      "handle": "D8EBA2",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBA2",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344413368,
+          -498053.3458617643
+        ],
+        "radius": 1750.000000000931,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.450044413367985,
+        19.973454138235713
+      ],
+      "radiusM": 1.750000000000931,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.200044413368916,
+          19.973454138235713
+        ],
+        [
+          0.7000444133670535,
+          19.973454138235713
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-great-r4",
+      "drawing": "E02",
+      "handle": "D8EBA0",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBA0",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344413368,
+          -498053.3458617643
+        ],
+        "radius": 1839.999698367901,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.450044413367985,
+        19.973454138235713
+      ],
+      "radiusM": 1.839999698367901,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.290044111735886,
+          19.973454138235713
+        ],
+        [
+          0.6100447150000836,
+          19.973454138235713
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-great-r5",
+      "drawing": "E02",
+      "handle": "D8EB9F",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EB9F",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344413368,
+          -498053.3458617643
+        ],
+        "radius": 1864.999698367901,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.450044413367985,
+        19.973454138235713
+      ],
+      "radiusM": 1.864999698367901,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.315044111735886,
+          19.973454138235713
+        ],
+        [
+          0.5850447150000837,
+          19.973454138235713
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-great-r6",
+      "drawing": "E02",
+      "handle": "D8EB9E",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EB9E",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406951.344413368,
+          -498053.3458617643
+        ],
+        "radius": 1924.999698367901,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.450044413367985,
+        19.973454138235713
+      ],
+      "radiusM": 1.924999698367901,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.375044111735886,
+          19.973454138235713
+        ],
+        [
+          0.5250447150000837,
+          19.973454138235713
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-window-left-r1",
+      "drawing": "E02",
+      "handle": "D8EBA3",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBA3",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406056.344629919,
+          -498708.8356694608
+        ],
+        "radius": 500.0000000093132,
+        "angles": [
+          359.9995090801534,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        1.555044629918877,
+        19.317964330539166
+      ],
+      "radiusM": 0.5000000000093132,
+      "anglesDegrees": [
+        359.9995090801534,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          2.055044629909797,
+          19.317960046455322
+        ],
+        [
+          1.0550446299095637,
+          19.317964330539166
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-window-left-r2",
+      "drawing": "E02",
+      "handle": "D8EBA4",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBA4",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406055.987653471,
+          -498708.8356694606
+        ],
+        "radius": 609.6430235602893,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        1.5546876534710172,
+        19.317964330539397
+      ],
+      "radiusM": 0.6096430235602893,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          2.1643306770313067,
+          19.317964330539397
+        ],
+        [
+          0.945044629910728,
+          19.317964330539397
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-window-left-r3",
+      "drawing": "E02",
+      "handle": "D8EBA5",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBA5",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406055.987653471,
+          -498708.8356694608
+        ],
+        "radius": 719.6427866271697,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        1.5546876534710172,
+        19.317964330539166
+      ],
+      "radiusM": 0.7196427866271697,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          2.2743304400981867,
+          19.317964330539166
+        ],
+        [
+          0.8350448668438476,
+          19.317964330539166
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-window-right-r1",
+      "drawing": "E02",
+      "handle": "D8EB9A",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EB9A",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1407846.344629902,
+          -498708.8356694585
+        ],
+        "radius": 500.0000000093132,
+        "angles": [
+          0.0,
+          180.0004909198466
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        3.3450446299018806,
+        19.317964330541493
+      ],
+      "radiusM": 0.5000000000093132,
+      "anglesDegrees": [
+        0.0,
+        180.0004909198466
+      ],
+      "endpointsM": [
+        [
+          3.8450446299111936,
+          19.317964330541493
+        ],
+        [
+          2.845044629910961,
+          19.31796004645765
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-window-right-r2",
+      "drawing": "E02",
+      "handle": "D8EB9B",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EB9B",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1407846.70160635,
+          -498708.8356694583
+        ],
+        "radius": 609.6430235602893,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        3.345401606349973,
+        19.317964330541667
+      ],
+      "radiusM": 0.6096430235602893,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.955044629910262,
+          19.317964330541667
+        ],
+        [
+          2.7357585827896838,
+          19.317964330541667
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-window-right-r3",
+      "drawing": "E02",
+      "handle": "D8EB9C",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EB9C",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1407846.70160635,
+          -498708.8356694585
+        ],
+        "radius": 719.6427866271697,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        3.345401606349973,
+        19.317964330541493
+      ],
+      "radiusM": 0.7196427866271697,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.065044392977143,
+          19.317964330541493
+        ],
+        [
+          2.6257588197228032,
+          19.317964330541493
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-rose-inner",
+      "drawing": "E02",
+      "handle": "D8E35A",
+      "type": "CIRCLE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8E35A",
+        "type": "CIRCLE",
+        "layer": "01",
+        "center": [
+          1406951.344688152,
+          -497414.4082826542
+        ],
+        "radius": 450.0
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500446881519164,
+        20.612391717345805
+      ],
+      "radiusM": 0.45
+    },
+    {
+      "id": "E02-upper-3-rose-outer",
+      "drawing": "E02",
+      "handle": "D8E35B",
+      "type": "CIRCLE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8E35B",
+        "type": "CIRCLE",
+        "layer": "01",
+        "center": [
+          1406951.344688152,
+          -497414.4082826542
+        ],
+        "radius": 540.0
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4500446881519164,
+        20.612391717345805
+      ],
+      "radiusM": 0.54
+    },
+    {
+      "id": "E02-upper-3-sill-left",
+      "drawing": "E02",
+      "handle": "D8E32B",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8E32B",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1405556.344176436,
+            -499168.8356694427
+          ],
+          [
+            1405556.344176439,
+            -501526.8312873117
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          1.0550441764360294,
+          18.85796433055727
+        ],
+        [
+          1.0550441764390561,
+          16.499968712688307
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-3-sill-right",
+      "drawing": "E02",
+      "handle": "D8E3B6",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8E3B6",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1408346.344629911,
+            -499168.8356694396
+          ],
+          [
+            1408346.344629914,
+            -501526.8312873087
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          3.845044629910961,
+          18.85796433056041
+        ],
+        [
+          3.8450446299139878,
+          16.499968712691278
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-great-r1",
+      "drawing": "E02",
+      "handle": "D8EBE7",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBE7",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406939.869023472,
+          -491416.0280658599
+        ],
+        "radius": 1303.693158040754,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.438569023472024,
+        26.610771934140065
+      ],
+      "radiusM": 1.303693158040754,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.742262181512779,
+          26.610771934140065
+        ],
+        [
+          1.1348758654312696,
+          26.610771934140065
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-great-r2",
+      "drawing": "E02",
+      "handle": "D8EBE8",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBE8",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406939.869023472,
+          -491416.0280658599
+        ],
+        "radius": 1328.693158040754,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.438569023472024,
+        26.610771934140065
+      ],
+      "radiusM": 1.328693158040754,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.7672621815127787,
+          26.610771934140065
+        ],
+        [
+          1.1098758654312697,
+          26.610771934140065
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-great-r3",
+      "drawing": "E02",
+      "handle": "D8EBEB",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBEB",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406939.869023472,
+          -491416.0280658599
+        ],
+        "radius": 1418.693366395257,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.438569023472024,
+        26.610771934140065
+      ],
+      "radiusM": 1.418693366395257,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.8572623898673335,
+          26.610771934140065
+        ],
+        [
+          1.0198756570767145,
+          26.610771934140065
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-great-r4",
+      "drawing": "E02",
+      "handle": "D8EBEA",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBEA",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406939.869023472,
+          -491416.0280658599
+        ],
+        "radius": 1443.693366395257,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.438569023472024,
+        26.610771934140065
+      ],
+      "radiusM": 1.4436933663952571,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.882262389867334,
+          26.610771934140065
+        ],
+        [
+          0.9948756570767145,
+          26.610771934140065
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-great-r5",
+      "drawing": "E02",
+      "handle": "D8EBE9",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBE9",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406939.869023472,
+          -491416.0280658599
+        ],
+        "radius": 1493.693366395257,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.438569023472024,
+        26.610771934140065
+      ],
+      "radiusM": 1.493693366395257,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.9322623898673337,
+          26.610771934140065
+        ],
+        [
+          0.9448756570767146,
+          26.610771934140065
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-window-left-r1",
+      "drawing": "E02",
+      "handle": "D8EC2A",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EC2A",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406255.522392366,
+          -491877.2043415377
+        ],
+        "radius": 399.3466311120428,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        1.754222392366035,
+        26.14959565846226
+      ],
+      "radiusM": 0.3993466311120428,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          2.1535690234780778,
+          26.14959565846226
+        ],
+        [
+          1.3548757612539921,
+          26.14959565846226
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-window-left-r2",
+      "drawing": "E02",
+      "handle": "D8EC2B",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EC2B",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406255.522392366,
+          -491877.2043415377
+        ],
+        "radius": 509.3466311115772,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        1.754222392366035,
+        26.14959565846226
+      ],
+      "radiusM": 0.5093466311115772,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          2.2635690234776122,
+          26.14959565846226
+        ],
+        [
+          1.2448757612544576,
+          26.14959565846226
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-window-left-r3",
+      "drawing": "E02",
+      "handle": "D8EC2C",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EC2C",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1406255.522392366,
+          -491877.2043415377
+        ],
+        "radius": 619.3466311115772,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        1.754222392366035,
+        26.14959565846226
+      ],
+      "radiusM": 0.6193466311115772,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          2.373569023477612,
+          26.14959565846226
+        ],
+        [
+          1.1348757612544578,
+          26.14959565846226
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-window-right-r1",
+      "drawing": "E02",
+      "handle": "D8EBEC",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBEC",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1407624.215654579,
+          -491877.2043415358
+        ],
+        "radius": 399.3466311120428,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        3.1229156545789447,
+        26.149595658464182
+      ],
+      "radiusM": 0.3993466311120428,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.5222622856909873,
+          26.149595658464182
+        ],
+        [
+          2.7235690234669017,
+          26.149595658464182
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-window-right-r2",
+      "drawing": "E02",
+      "handle": "D8EBED",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBED",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1407624.215654579,
+          -491877.2043415358
+        ],
+        "radius": 509.3466311115772,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        3.1229156545789447,
+        26.149595658464182
+      ],
+      "radiusM": 0.5093466311115772,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.632262285690522,
+          26.149595658464182
+        ],
+        [
+          2.6135690234673676,
+          26.149595658464182
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-window-right-r3",
+      "drawing": "E02",
+      "handle": "D8EBEE",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8EBEE",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1407624.215654579,
+          -491877.2043415358
+        ],
+        "radius": 619.3466311115772,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        3.1229156545789447,
+        26.149595658464182
+      ],
+      "radiusM": 0.6193466311115772,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          3.7422622856905217,
+          26.149595658464182
+        ],
+        [
+          2.5035690234673673,
+          26.149595658464182
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-rose-inner",
+      "drawing": "E02",
+      "handle": "D8E9B4",
+      "type": "CIRCLE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8E9B4",
+        "type": "CIRCLE",
+        "layer": "01",
+        "center": [
+          1406939.869210729,
+          -490835.2748302665
+        ],
+        "radius": 414.2127863308997
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4385692107288635,
+        27.191525169733506
+      ],
+      "radiusM": 0.4142127863308997
+    },
+    {
+      "id": "E02-upper-4-rose-outer",
+      "drawing": "E02",
+      "handle": "D8E9B5",
+      "type": "CIRCLE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8E9B5",
+        "type": "CIRCLE",
+        "layer": "01",
+        "center": [
+          1406939.869210729,
+          -490835.2748302665
+        ],
+        "radius": 444.2127863308997
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "centreM": [
+        2.4385692107288635,
+        27.191525169733506
+      ],
+      "radiusM": 0.44421278633089967
+    },
+    {
+      "id": "E02-upper-4-sill-left",
+      "drawing": "E02",
+      "handle": "D8E82A",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8E82A",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1405856.175761254,
+            -492017.2043415381
+          ],
+          [
+            1405856.175761257,
+            -494226.8298093054
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          1.3548757612539921,
+          26.00959565846191
+        ],
+        [
+          1.3548757612570188,
+          23.799970190694612
+        ]
+      ]
+    },
+    {
+      "id": "E02-upper-4-sill-right",
+      "drawing": "E02",
+      "handle": "D8E680",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "D8E680",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1408023.562285691,
+            -492017.2043415356
+          ],
+          [
+            1408023.562285694,
+            -494226.8298093028
+          ]
+        ]
+      },
+      "axes": [
+        "X",
+        "Y"
+      ],
+      "pointsM": [
+        [
+          3.5222622856909873,
+          26.009595658464416
+        ],
+        [
+          3.5222622856940142,
+          23.799970190697174
+        ]
+      ]
+    },
+    {
+      "id": "ET-unlabelled-upper-2-window-left",
+      "drawing": "ET",
+      "handle": "DB11A9",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB11A9",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1699854.110566389,
+          -506158.8356498528
+        ],
+        "radius": 499.6430235598236,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "u-local",
+        "Y"
+      ],
+      "centreM": [
+        3.5381105663890486,
+        11.867964350147172
+      ],
+      "radiusM": 0.4996430235598236,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.037753589948872,
+          11.867964350147172
+        ],
+        [
+          3.038467542829225,
+          11.867964350147172
+        ]
+      ]
+    },
+    {
+      "id": "ET-unlabelled-upper-2-window-right",
+      "drawing": "ET",
+      "handle": "DB11AB",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB11AB",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1701644.823928915,
+          -506158.8356498528
+        ],
+        "radius": 499.6430235598236,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "u-local",
+        "Y"
+      ],
+      "centreM": [
+        5.328823928914964,
+        11.867964350147172
+      ],
+      "radiusM": 0.4996430235598236,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          5.828466952474788,
+          11.867964350147172
+        ],
+        [
+          4.82918090535514,
+          11.867964350147172
+        ]
+      ]
+    },
+    {
+      "id": "ET-unlabelled-upper-2-rose-conflict",
+      "drawing": "ET",
+      "handle": "DB11B0",
+      "type": "CIRCLE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB11B0",
+        "type": "CIRCLE",
+        "layer": "01",
+        "center": [
+          1700749.466972867,
+          -504838.835649853
+        ],
+        "radius": 418.7422448943057
+      },
+      "axes": [
+        "u-local",
+        "Y"
+      ],
+      "centreM": [
+        4.433466972867027,
+        13.187964350146999
+      ],
+      "radiusM": 0.4187422448943057
+    },
+    {
+      "id": "ET-unlabelled-upper-3-window-left",
+      "drawing": "ET",
+      "handle": "DB11BE",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB11BE",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1699854.472148907,
+          -498708.8358995367
+        ],
+        "radius": 500.0000000093132,
+        "angles": [
+          359.9995090751509,
+          179.9999999983325
+        ]
+      },
+      "axes": [
+        "u-local",
+        "Y"
+      ],
+      "centreM": [
+        3.538472148906905,
+        19.317964100463318
+      ],
+      "radiusM": 0.5000000000093132,
+      "anglesDegrees": [
+        359.9995090751509,
+        179.9999999983325
+      ],
+      "endpointsM": [
+        [
+          4.038472148897825,
+          19.31795981633582
+        ],
+        [
+          3.038472148897592,
+          19.31796410047787
+        ]
+      ]
+    },
+    {
+      "id": "ET-unlabelled-upper-3-window-right",
+      "drawing": "ET",
+      "handle": "DB11C5",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB11C5",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1701644.461796178,
+          -498708.8358994418
+        ],
+        "radius": 500.0000000093132,
+        "angles": [
+          8.337633264175721e-09,
+          180.0004909315193
+        ]
+      },
+      "axes": [
+        "u-local",
+        "Y"
+      ],
+      "centreM": [
+        5.328461796178017,
+        19.317964100558193
+      ],
+      "radiusM": 0.5000000000093132,
+      "anglesDegrees": [
+        8.337633264175721e-09,
+        180.0004909315193
+      ],
+      "endpointsM": [
+        [
+          5.82846179618733,
+          19.317964100630952
+        ],
+        [
+          4.8284617961870975,
+          19.317959816372486
+        ]
+      ]
+    },
+    {
+      "id": "ET-unlabelled-upper-3-rose",
+      "drawing": "ET",
+      "handle": "DB0E3E",
+      "type": "CIRCLE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0E3E",
+        "type": "CIRCLE",
+        "layer": "01",
+        "center": [
+          1700749.471045045,
+          -497414.4082798373
+        ],
+        "radius": 418.7422448943057
+      },
+      "axes": [
+        "u-local",
+        "Y"
+      ],
+      "centreM": [
+        4.433471045044949,
+        20.612391720162705
+      ],
+      "radiusM": 0.4187422448943057
+    },
+    {
+      "id": "ET-unlabelled-upper-4-window-left",
+      "drawing": "ET",
+      "handle": "DB1233",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB1233",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1700065.120528278,
+          -491877.2043427663
+        ],
+        "radius": 399.3466311120428,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "u-local",
+        "Y"
+      ],
+      "centreM": [
+        3.749120528277941,
+        26.14959565723367
+      ],
+      "radiusM": 0.3993466311120428,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.148467159389984,
+          26.14959565723367
+        ],
+        [
+          3.3497738971658984,
+          26.14959565723367
+        ]
+      ]
+    },
+    {
+      "id": "ET-unlabelled-upper-4-window-right",
+      "drawing": "ET",
+      "handle": "DB1561",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB1561",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1701433.813416085,
+          -491877.2043426939
+        ],
+        "radius": 399.3466311120428,
+        "angles": [
+          6.670106611340577e-09,
+          180.0000000066701
+        ]
+      },
+      "axes": [
+        "u-local",
+        "Y"
+      ],
+      "centreM": [
+        5.1178134160849735,
+        26.149595657306083
+      ],
+      "radiusM": 0.3993466311120428,
+      "anglesDegrees": [
+        6.670106611340577e-09,
+        180.0000000066701
+      ],
+      "endpointsM": [
+        [
+          5.517160047197016,
+          26.14959565735259
+        ],
+        [
+          4.7184667849729305,
+          26.149595657259574
+        ]
+      ]
+    },
+    {
+      "id": "ET-unlabelled-upper-4-rose",
+      "drawing": "ET",
+      "handle": "DB1234",
+      "type": "CIRCLE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB1234",
+        "type": "CIRCLE",
+        "layer": "01",
+        "center": [
+          1700749.466972126,
+          -490835.2748314964
+        ],
+        "radius": 366.3994642825175
+      },
+      "axes": [
+        "u-local",
+        "Y"
+      ],
+      "centreM": [
+        4.4334669721259266,
+        27.191525168503578
+      ],
+      "radiusM": 0.3663994642825175
+    },
+    {
+      "id": "ET-unlabelled-ground-central-window",
+      "drawing": "ET",
+      "handle": "DB18CE",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB18CE",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1700749.466973115,
+          -514926.3296906212
+        ],
+        "radius": 500.0,
+        "angles": [
+          0.0,
+          180.0
+        ]
+      },
+      "axes": [
+        "u-local",
+        "Y"
+      ],
+      "centreM": [
+        4.433466973114991,
+        3.100470309378812
+      ],
+      "radiusM": 0.5,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ],
+      "endpointsM": [
+        [
+          4.933466973114991,
+          3.100470309378812
+        ],
+        [
+          3.9334669731149914,
+          3.100470309378812
+        ]
+      ]
+    },
+    {
+      "id": "ET-unlabelled-ground-offset-door",
+      "drawing": "ET",
+      "handle": "DB1844",
+      "type": "ARC",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB1844",
+        "type": "ARC",
+        "layer": "01",
+        "center": [
+          1701954.462408649,
+          -515272.3509928451
+        ],
+        "radius": 750.0000000002328,
+        "angles": [
+          6.976264504797662e-05,
+          180.0000000066701
+        ]
+      },
+      "axes": [
+        "u-local",
+        "Y"
+      ],
+      "centreM": [
+        5.638462408649037,
+        2.754449007154908
+      ],
+      "radiusM": 0.7500000000002328,
+      "anglesDegrees": [
+        6.976264504797662e-05,
+        180.0000000066701
+      ],
+      "endpointsM": [
+        [
+          6.388462408648804,
+          2.754449920345796
+        ],
+        [
+          4.888462408648804,
+          2.7544490070675964
+        ]
+      ]
+    },
+    {
+      "id": "PT15A-axis-1",
+      "drawing": "PT15A",
+      "handle": "DB091A",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB091A",
+        "type": "LINE",
+        "layer": "duong tim",
+        "points": [
+          [
+            1633980.642425598,
+            -612643.7050977063
+          ],
+          [
+            1624478.303457187,
+            -612643.7050975158
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT15A-axis-2",
+      "drawing": "PT15A",
+      "handle": "DB0918",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0918",
+        "type": "LINE",
+        "layer": "duong tim",
+        "points": [
+          [
+            1633980.642425697,
+            -607743.7055140383
+          ],
+          [
+            1624478.303457088,
+            -607743.7055138478
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT15A-left-inner-rectangle",
+      "drawing": "PT15A",
+      "handle": "DB091B",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB091B",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1627164.501476829,
+            -612258.7050975853
+          ],
+          [
+            1627164.501476939,
+            -608128.7055141273
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT15A-right-inner-rectangle",
+      "drawing": "PT15A",
+      "handle": "DB091D",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB091D",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1631294.501060496,
+            -612258.7050975756
+          ],
+          [
+            1631294.501060608,
+            -608128.7055140248
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT15A-front-inner-rectangle",
+      "drawing": "PT15A",
+      "handle": "DB091E",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB091E",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1627164.501476829,
+            -612258.7050975867
+          ],
+          [
+            1631294.501060504,
+            -612258.7050976966
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT15A-rear-inner-rectangle",
+      "drawing": "PT15A",
+      "handle": "DB09AF",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB09AF",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1627164.501476829,
+            -608128.7055141267
+          ],
+          [
+            1631294.501060504,
+            -608128.7055140168
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT15A-left-outline",
+      "drawing": "PT15A",
+      "handle": "DB092E",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB092E",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1626004.47913263,
+            -612148.7052993921
+          ],
+          [
+            1626004.479132627,
+            -613018.7052994012
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT15A-right-outline",
+      "drawing": "PT15A",
+      "handle": "DB0966",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0966",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1632454.501060488,
+            -612148.7052993912
+          ],
+          [
+            1632454.501060491,
+            -613018.7052994003
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT15A-front-outline",
+      "drawing": "PT15A",
+      "handle": "DB0937",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0937",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1627274.478930833,
+            -613418.7050976849
+          ],
+          [
+            1626404.478930869,
+            -613418.7050976264
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT15A-rear-outline",
+      "drawing": "PT15A",
+      "handle": "DB09C6",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB09C6",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1627274.478930833,
+            -606968.7055140284
+          ],
+          [
+            1626404.478930869,
+            -606968.705514087
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT23-axis-1",
+      "drawing": "PT23",
+      "handle": "DB0A25",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0A25",
+        "type": "LINE",
+        "layer": "duong tim",
+        "points": [
+          [
+            1647926.398978242,
+            -612643.7050977063
+          ],
+          [
+            1638424.026180313,
+            -612643.7050975158
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT23-axis-2",
+      "drawing": "PT23",
+      "handle": "DB0A23",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0A23",
+        "type": "LINE",
+        "layer": "duong tim",
+        "points": [
+          [
+            1647926.39897834,
+            -607743.7055140383
+          ],
+          [
+            1638424.026180215,
+            -607743.7055138478
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT23-left-outline",
+      "drawing": "PT23",
+      "handle": "DB0A5C",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0A5C",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1640060.246940638,
+            -612953.6827535704
+          ],
+          [
+            1640060.246940639,
+            -612098.6938423412
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT23-right-outline",
+      "drawing": "PT23",
+      "handle": "DB0A98",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0A98",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1646290.246357766,
+            -612953.6827535692
+          ],
+          [
+            1646290.246357765,
+            -612098.69384234
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT23-front-outline",
+      "drawing": "PT23",
+      "handle": "DB0A63",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0A63",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1640415.258029539,
+            -613308.6938423023
+          ],
+          [
+            1641270.246940639,
+            -613308.6938423023
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT23-rear-outline",
+      "drawing": "PT23",
+      "handle": "DB0ADB",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0ADB",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1640415.258029539,
+            -607078.7167694111
+          ],
+          [
+            1641270.246940639,
+            -607078.716769411
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT23-left-inner-rectangle",
+      "drawing": "PT23",
+      "handle": "DB0A58",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0A58",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1641290.256485149,
+            -611277.4068603162
+          ],
+          [
+            1641290.261717697,
+            -612478.7002719003
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT23-right-inner-rectangle",
+      "drawing": "PT23",
+      "handle": "DB0A94",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0A94",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1645060.236813255,
+            -611277.4068603155
+          ],
+          [
+            1645060.231580707,
+            -612478.7002718996
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT23-front-inner-rectangle",
+      "drawing": "PT23",
+      "handle": "DB0A45",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0A45",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1642091.553386984,
+            -612078.7002719217
+          ],
+          [
+            1640890.259975388,
+            -612078.7002718896
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT23-rear-inner-rectangle",
+      "drawing": "PT23",
+      "handle": "DB0ABD",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0ABD",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1642091.553386984,
+            -608308.7103397917
+          ],
+          [
+            1640890.259975388,
+            -608308.7103398237
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-axis-1",
+      "drawing": "PT29",
+      "handle": "DB0B20",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B20",
+        "type": "LINE",
+        "layer": "duong tim",
+        "points": [
+          [
+            1661491.85321806,
+            -612654.1523778068
+          ],
+          [
+            1651989.54855998,
+            -612654.1523776164
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-axis-2",
+      "drawing": "PT29",
+      "handle": "DB0B1E",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B1E",
+        "type": "LINE",
+        "layer": "duong tim",
+        "points": [
+          [
+            1661491.853218159,
+            -607754.1527941389
+          ],
+          [
+            1651989.548559882,
+            -607754.1527939482
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-left-outline",
+      "drawing": "PT29",
+      "handle": "DB0B2B",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B2B",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1653925.700597583,
+            -612839.1429308064
+          ],
+          [
+            1653925.700597584,
+            -611989.1413785564
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-right-outline",
+      "drawing": "PT29",
+      "handle": "DB0B58",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B58",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1659555.701180458,
+            -612839.1429308051
+          ],
+          [
+            1659555.701180456,
+            -611989.141378555
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-front-outline",
+      "drawing": "PT29",
+      "handle": "DB0B28",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B28",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1654955.699774323,
+            -613019.1447546958
+          ],
+          [
+            1654105.699780614,
+            -613019.144754696
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-rear-outline",
+      "drawing": "PT29",
+      "handle": "DB0B82",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B82",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1654955.699774323,
+            -607389.1604172188
+          ],
+          [
+            1654105.699780613,
+            -607389.1604172187
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-front-band",
+      "drawing": "PT29",
+      "handle": "DB0B51",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B51",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1654762.99977746,
+            -612459.1469388215
+          ],
+          [
+            1656740.700889021,
+            -612459.1469388215
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-front-band-next-line",
+      "drawing": "PT29",
+      "handle": "DB0B52",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B52",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1654762.99977746,
+            -612399.1469388215
+          ],
+          [
+            1656740.700889021,
+            -612399.1469388215
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-rear-band",
+      "drawing": "PT29",
+      "handle": "DB0BAB",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0BAB",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1654762.999777459,
+            -607949.1582330931
+          ],
+          [
+            1656740.70088902,
+            -607949.158233093
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-left-band",
+      "drawing": "PT29",
+      "handle": "DB0B53",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B53",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1654485.699669766,
+            -612181.8454971919
+          ],
+          [
+            1654485.709183356,
+            -610204.1443856535
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-right-band",
+      "drawing": "PT29",
+      "handle": "DB0B80",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B80",
+        "type": "LINE",
+        "layer": "01",
+        "points": [
+          [
+            1658995.702108275,
+            -612181.845497191
+          ],
+          [
+            1658995.692594684,
+            -610204.1443856526
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-corner-front-left-diagonal",
+      "drawing": "PT29",
+      "handle": "DB0B42",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B42",
+        "type": "LINE",
+        "layer": "duong tim",
+        "points": [
+          [
+            1654772.70088902,
+            -612172.1525859573
+          ],
+          [
+            1656740.70088902,
+            -610204.1525859573
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-corner-front-right-diagonal",
+      "drawing": "PT29",
+      "handle": "DB0B6F",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B6F",
+        "type": "LINE",
+        "layer": "duong tim",
+        "points": [
+          [
+            1658708.700889021,
+            -612172.1525859564
+          ],
+          [
+            1656740.70088902,
+            -610204.1525859573
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-corner-rear-left-diagonal",
+      "drawing": "PT29",
+      "handle": "DB0B9C",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0B9C",
+        "type": "LINE",
+        "layer": "duong tim",
+        "points": [
+          [
+            1654772.70088902,
+            -608236.1525859574
+          ],
+          [
+            1656740.70088902,
+            -610204.1525859572
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PT29-corner-rear-right-diagonal",
+      "drawing": "PT29",
+      "handle": "DB0BC9",
+      "type": "LINE",
+      "nativeUnits": "CAD units, interpreted mm under ISSUE-R06",
+      "native": {
+        "handle": "DB0BC9",
+        "type": "LINE",
+        "layer": "duong tim",
+        "points": [
+          [
+            1658708.70088902,
+            -608236.152585958
+          ],
+          [
+            1656740.70088902,
+            -610204.1525859572
+          ]
+        ]
+      }
+    }
+  ],
+  "findings": [
+    "Outer upper sides E02 repeat E01B primary arch radii, louvre springs, sill levels and rose levels to CAD-copy precision; use E02 X coordinates, not Z values rotated without an axis transform.",
+    "Ground outer side inner/blind-arch spring is+3.100470m; front is+2.899970m. Difference200.5mm is real source data, not a copy artefact.",
+    "E02 ground side shows an inner1m arched window with+0.849970m sill inside the decorative blind arch; do not silently substitute the closed front panel or approve glass/material/airflow.",
+    "ET has no title/orientation. It corroborates upper window radii/springs but omits the exterior great-arch ornament. Stage2 rose centre is+13.187964m,90mm lower than E02/E01B+13.277964m. Treat ET face identification and this difference as unresolved.",
+    "Plans show near-square footprints and bilateral repeated corner/edge contours; cuts at storey boundaries do not prove rear rose level or every rear applied ornament. Rear/inner repeated exterior completion must be labelled DERIVED rather than exact DRAWING SHOWN.",
+    "The old balcony vase balusters do not follow E01B: source shows a pierced parapet with squared stepped openings; the plan proves a near-square outer+29.09 outline about5.63m across. E01B top rail at+30.080962 spans5.205m, which is a different height/reference from the plan base outline.",
+    "Do not assign the60mm difference between adjacent PT29 band lines as an engineered wall/guard thickness. Preserve attachment, drainage, guarding and structural holds."
+  ],
+  "limits": [
+    "INSUNITS=1 unit mismatch remains ISSUE-R06; no coordinate rescaling applied.",
+    "Source reader uses LibreDWG->DXF->ezdxf; native CAD/designer confirmation still pending.",
+    "All H/B symmetry claims apply to the registered elevations/plans and model conventions; no site survey or construction certification.",
+    "E02 is one registered side elevation, not two independently labelled B/H tower side elevations. Applying its profile to the opposite outer tower face uses the documented project mirror symmetry; rear/inner faces remain a separately labelled derived completion."
+  ]
+}

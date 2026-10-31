@@ -28,6 +28,47 @@
     return { yaw: Math.atan2(dz, dx) * 180 / Math.PI, tilt: Math.atan2(dy, Math.hypot(dx, dz)) * 180 / Math.PI };
   };
   const side = z => z < 0 ? 'B' : 'H';
+  // Where a ledge fitting's optic sits: `reach` beyond its base along mountYaw, `rise` above it.
+  const lensAt = (p, mountYaw, reach, rise) => {
+    const r = mountYaw * Math.PI / 180;
+    return [p[0] + reach * Math.cos(r), p[1] + rise, p[2] + reach * Math.sin(r)];
+  };
+  // Façade niches of the church's CAD file of 23 Oct 2026 (DWG sheet 1, E01B), adopted by the
+  // owner on 24 Oct 2026; built in facade.js. Each row: code, statue type, name, Z, pedestal top,
+  // niche crown, face height, niche half-width, jamb mid-height, jamb light length, statue X,
+  // lip X. Side niches: 1,198 mm wide, springing +12.308; central niche: 1,422 mm wide,
+  // springing +18.893, on the aedicule over the upper storey.
+  const facadeNiches = [
+    ['C', 'statueAssumption', 'Assumption of Our Lady', 0, 16.683, 19.604, 18.98, 0.711, 17.79, 2.0, 4.08, 3.95],
+    ['B', 'statuePeter', 'Saint Peter', -5.35, 10.391, 12.907, 12.03, 0.599, 11.35, 1.3, 4.15, 4.05],
+    ['H', 'statuePaul', 'Saint Paul', 5.35, 10.391, 12.907, 12.03, 0.599, 11.35, 1.3, 4.15, 4.05]];
+  // The niches of the traced PDF facade (three gables) these replaced, for the one-time move.
+  const facadeNichesBefore = [
+    ['C', 'statueAssumption', 'Assumption of Our Lady', 0, 11.8, 15.63, 14.1, 0.925, 13.3, 2.0, 2.29, 2.13],
+    ['B', 'statuePeter', 'Saint Peter', -5.48, 10.08, 12.61, 11.72, 0.525, 11.05, 1.3, 2.29, 2.13],
+    ['H', 'statuePaul', 'Saint Paul', 5.48, 10.08, 12.61, 11.72, 0.525, 11.05, 1.3, 2.29, 2.13]];
+  // Statue, three hidden lines and two candles per niche, as placed for a row above.
+  function nicheFittings([code, type, name, z, base, crown, face, half, mid, length, nicheX, lipX]) {
+    const out = [{ id: `D-FACADE-${code}`, type, name: `Façade statue · ${name}`, circuit: 'DECOR', mount: 'floor', pos: [nicheX, base, z], yaw: 180, mountYaw: 180,
+      note: `${code === 'C' ? 'USER CONFIRMED subject and place.' : 'PROPOSED subject; owner to confirm the two saints.'} Generated figure on the drawn niche pedestal. Sculptor, size, material, weight and fixing pending.` }];
+    const top = [lipX, crown + 0.01, z], down = aim(top, [nicheX - 0.09, face, z]);
+    out.push({ id: `L-STATUE-${code}-ARCH`, type: 'nicheArchLine', name: `Hidden arch light · ${name}`, circuit: 'L10', mount: 'wall', pos: top, yaw: down.yaw, tilt: down.tilt, mountYaw: 180, lumens: code === 'C' ? 440 : 300, beam: 60, shadow: false, params: { length: code === 'C' ? 0.8 : 0.5 },
+      note: 'CONCEPT: light line in a slot behind a matching lip under the arch; no lamp is seen. Slot, weatherproof product, driver place and access pending.' });
+    for (const e of [-1, 1]) {
+      const p = [lipX, mid, z + e * (half - 0.02)], a = aim(p, [nicheX + 0.16, mid, z]);
+      out.push({ id: `L-STATUE-${code}-JAMB-${e < 0 ? '1' : '2'}`, type: 'nicheJambLine', name: `Hidden jamb light · ${name} · ${e < 0 ? 'B' : 'H'} side`, circuit: 'L10', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: -e * 90, lumens: code === 'C' ? 260 : 140, beam: 80, shadow: false, params: { length },
+        note: 'CONCEPT: light line in a slot behind a matching lip at the front edge of the jamb; no lamp is seen. Slot, weatherproof product, driver place and access pending.' });
+      // The central pedestal of the CAD drawing is 0.93 m wide, so its candles stand at the
+      // front corners, ahead of the cloud plinth; the side candles stand beside the feet.
+      const candle = code === 'C' && nicheX > 3 ? [nicheX - 0.36, base, z + e * 0.30] : [nicheX - 0.19, base, z + e * (code === 'C' ? 0.47 : 0.31)];
+      out.push({ id: `L-STATUE-${code}-CANDLE-${e < 0 ? '1' : '2'}`, type: 'nicheCandle', name: `Statue candle light · ${name} · ${e < 0 ? 'B' : 'H'} side`, circuit: 'L10', mount: 'floor', pos: candle, yaw: 180, mountYaw: 180,
+        note: 'USER CONFIRMED: two candle lights on the base of each statue. CONCEPT electric candle; product, weather protection, fixing and lamp access pending.' });
+    }
+    return out;
+  }
+  // Upper façade washes from the towers' +15.84 m cornices: aimed at the face of the CAD file's
+  // niche aedicule (front +3.805 m), which stands 1.6 m behind the gables they lit before.
+  const CROWN_WASH_TARGET = [3.85, 19.6, 0], CROWN_WASH_TARGET_BEFORE = [2.2, 18.6, 0];
 
   function recommended(GEO, SIM) {
     const A = GEO.axes, items = [];
@@ -41,10 +82,12 @@
     const beamY = 8.59, sideBeamY = 6.66;
     const facadeX = 2.65; // inner face of the entrance façade; the nave is open to it
     const above = (x, z, y) => SIM.structureAbove(x, z, y)?.y ?? y;
-    // Sanctuary geometry from sanctuary.js: shrine niches on the column line and
+    // Sanctuary geometry from sanctuary.js: shrine niches on the axis-11 line and
     // the timber-lined chamber between axes 10 and 11.
-    const sanctuary = window.CHURCH_SANCTUARY?.spec ?? { frameX: 44.175, wingX: 44.375, wingZ: 5.5, nicheBase: 2.85, chamber: { x0: 44.49, x1: 48.42, face: 3.3 }, niche: { backX: 49 } };
+    const sanctuary = window.CHURCH_SANCTUARY?.spec ?? { frameX: 44.175, wingX: 48.93, wingZ: 5.5, nicheBase: 2.85, chamber: { x0: 44.49, x1: 48.42, face: 3.3 }, niche: { backX: 49 } };
     const shrine = { x: sanctuary.wingX - 0.1, y: sanctuary.nicheBase, z: sanctuary.wingZ };
+    const SHRINE_LIGHT_X = sanctuary.frameX + 0.245, SHRINE_LIGHT_Y = 7.75;
+    const CHAMBER_LINTEL = sanctuary.chamber.lintel ?? 7.0;
     const chamber = { face: sanctuary.chamber.face - 0.06, lightX: sanctuary.chamber.x0 + 0.26, sconceX: (sanctuary.chamber.x0 + sanctuary.chamber.x1) / 2 };
     for (const x of [50.0, 51.9]) add({ type: 'servicePanel', name: `Service-room ceiling panel · ${x.toFixed(1)} m`, circuit: 'L3', mount: 'pendant', pos: [x, 4.14, 0], anchorY: 4.15, note: 'Retains the existing ceiling-panel geometry; product light/output values are provisional.' });
     const nave = ['3', '4', '5', '6', '7', '8', '9'];
@@ -118,9 +161,10 @@
     for (const k of ['4', '6', '8']) add({ type: 'chandelier8', name: `Chandelier · bay ${k}–${Number(k) + 1}`, circuit: 'LD', mount: 'pendant', pos: [A[k] + 2.25, NAVE_CHANDELIER_Y, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
     // Hung high enough that the lobed sanctuary frame and the reredos crown read below it from the nave.
     add({ type: 'chandelier12', name: 'Grand chandelier · crossing 9–10', circuit: 'LD', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.2, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
-    // Sconces on the C/G piers, facing the nave, and on the sanctuary piers.
+    // Sconces on the C/G piers, facing the nave, and on the sanctuary piers. Since 25 Oct 2026
+    // they sit at +5.00 m (was +4.60) to leave room for the lowered wall fans below them.
     for (const k of ['3', '4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) {
-      add({ type: 'sconce2', name: `Sconce · axis ${k} · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A[k], 4.6, s * 7.07], yaw: -s * 90, mountYaw: -s * 90 });
+      add({ type: 'sconce2', name: `Sconce · axis ${k} · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [A[k], 5.0, s * 7.07], yaw: -s * 90, mountYaw: -s * 90 });
     }
     for (const s of [-1, 1]) add({ type: 'sconce2', name: `Sconce · sanctuary pier · ${side(s)}`, circuit: 'LD', mount: 'wall', pos: [chamber.sconceX, 4.3, s * chamber.face], yaw: -s * 90, mountYaw: -s * 90, lumens: 560 });
 
@@ -147,8 +191,10 @@
     // behind the front frame, hidden from the nave by the axis-10 columns. They and
     // the vault uplights take the chamber's own lacquer (owner, 19 October 2026: all
     // the sanctuary lights), which stays red whatever the structural timber tone.
-    const inside = (name, type, y, s, target, o) => {
-      const p = [chamber.lightX, y, s * chamber.face], a = aim(p, target);
+    // Since 25 Oct 2026 the chamber is open below its lintel (+7.0 m, sanctuary.js): heads below it
+    // move up onto the lintel face, stepped back along it (dx) so they do not touch.
+    const inside = (name, type, y, s, target, o, dx = 0) => {
+      const p = [chamber.lightX + dx, Math.max(y, CHAMBER_LINTEL + 0.25), s * chamber.face], a = aim(p, target);
       add({ type, name, circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: -s * 90, shadow: false, params: { finish: 'chamber' }, ...o });
     };
     for (const s of [-1, 1]) {
@@ -156,34 +202,49 @@
       // Each wash covers the gilded side of the reredos on its own wall, aimed outside
       // the niche so that little of it reaches the blue recess; the lower pair crosses
       // the chamber to the base panels and the presider's chair.
-      inside(`Reredos wash · ${side(s)}`, 'projector36', 6.7, s, [47.9, 5.0, s * 2.7], { beam: 36, lumens: 650 });
-      inside(`Reredos base wash · ${side(s)}`, 'projector36', 5.4, s, [46.9, 2.3, -s * 2.3], { lumens: 1300 });
+      // From the lintel (+7.25 since 25 Oct 2026) the washes need 850 lm (650 from +6.7 m) to keep the gilding at about 140 lux.
+      inside(`Reredos wash · ${side(s)}`, 'projector36', 6.7, s, [47.9, 5.0, s * 2.7], { beam: 36, lumens: 850 });
+      inside(`Reredos base wash · ${side(s)}`, 'projector36', 5.4, s, [46.9, 2.3, -s * 2.3], { lumens: 1300 }, 0.45);
       // Gilded vault: a flood on the springing cornice, aimed up and back.
       const u = [chamber.lightX + 0.6, 8.42, s * (chamber.face - 0.3)], ua = aim(u, [47.6, 10.4, -s * 0.6]);
       add({ type: 'uplight', name: `Sanctuary vault uplight · ${side(s)}`, circuit: 'L3', mount: 'floor', pos: u, ...ua, mountYaw: ua.yaw, lumens: 2200, params: { finish: 'chamber' } });
     }
-    inside('Tabernacle accent', 'spot15', 4.9, -1, [47.3, 2.05, 0], { beam: 10, lumens: 300 });
-    // Our Lady (left) and Saint Joseph (right) in the shrines on the column line:
-    // a soft wash for the whole carved front and a narrow accent for the figure.
+    // From the lintel the tabernacle accent needs 900 lm (300 from +4.9 m) to stay brighter than the mensa.
+    inside('Tabernacle accent', 'spot15', 4.9, -1, [47.3, 2.05, 0], { beam: 10, lumens: 900 }, 0.9);
+    // Our Lady (B) and Saint Joseph (H) in the shrines on the axis-11 line, level with the
+    // crucifix (parish priest, 25 October 2026): a soft wash for the carved front and a narrow
+    // accent for the figure. Both heads sit on the back face of the axis-10 frame, above its
+    // side arch, so the spandrel hides them from the nave; they light the shrine 4.6 m behind.
+    // At that shorter throw both outputs drop by a quarter (220/2400 lm before), so the statues
+    // stay a little below the crucifix.
     const statues = { B: [shrine.x, shrine.y, -shrine.z], H: [shrine.x, shrine.y, shrine.z] };
     for (const [k, base] of Object.entries(statues)) {
       const s = Math.sign(base[2]);
-      outside(`Statue accent · ${k}`, 'spot15', s * (shrine.z - 0.25), sideBeamY, [base[0], shrine.y + 1.25, base[2]], { beam: 12, lumens: 220, shadow: false });
-      outside(`Shrine wash · ${k}`, 'projector36', s * (shrine.z - 0.6), sideBeamY, [base[0] - 0.2, 4.2, base[2]], { beam: 50, lumens: 2400, shadow: false });
+      const behindFrame = (name, type, dz, target, o) => {
+        const p = [SHRINE_LIGHT_X, SHRINE_LIGHT_Y, s * (shrine.z + dz)], a = aim(p, target);
+        add({ type, name, circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: 0, shadow: false, params: { finish: 'timber' }, ...o });
+      };
+      behindFrame(`Statue accent · ${k}`, 'spot15', -0.75, [base[0], shrine.y + 1.25, base[2]], { beam: 12, lumens: 165 });
+      behindFrame(`Shrine wash · ${k}`, 'projector36', 0.75, [base[0] - 0.2, 4.2, base[2]], { beam: 50, lumens: 1800 });
     }
 
     // L4 · a veranda lantern at every pier (axes 3–11), the rhythm of the
     // reference night view; the veranda loudspeakers hang mid-bay between them.
+    // Since 25 Oct 2026 walls close the 9–10 side bays on axes 9 and 10 (porches.js), so the
+    // lanterns of those two axes hang 0.6 m inside the porch, clear of the wall.
     for (const s of [-1, 1]) for (const k of ['3', '4', '5', '6', '7', '8', '9', '10', '11']) {
-      const x = A[k];
+      const x = A[k] + (k === '9' ? -0.6 : k === '10' ? 0.6 : 0);
       add({ type: 'lantern', name: `Veranda lantern · ${side(s)} · axis ${k}`, circuit: 'L4', mount: 'pendant', pos: [x, 4.55, s * 8.85], anchorY: above(x, s * 8.85, 4.55), yaw: 0, mountYaw: 0, lumens: 2000 });
     }
     // Only the middle of the three front doors receives decorative lanterns.
-    for (const s of [-1, 1]) add({ type: 'wallLantern', name: `Central front door lantern · ${side(s)}`, circuit: 'L9', mount: 'wall', pos: [2.2, 3.0, s * 2.4], yaw: 180, mountYaw: 180 });
-    // Matching pairs on all six exterior side doors, on solid wall beside the
-    // arch, outside the leaf swing and stair landing. B/H share exact offsets.
+    // |Z| 2.30 (2.4 until 31 Oct 2026): clear of the CAD ground piers at ±2.489–3.469 (facade.js) and the door colonnettes.
+    for (const s of [-1, 1]) add({ type: 'wallLantern', name: `Central front door lantern · ${side(s)}`, circuit: 'L9', mount: 'wall', pos: [2.2, 3.0, s * 2.3], yaw: 180, mountYaw: 180 });
+    // Matching pairs beside the side doors, outside the leaf swing. Since 25 Oct 2026 the porch
+    // has no outer wall (porches.js), so they stand on the porch face of the inner C/G wall
+    // beside the doorway; bay 10–11 has a window instead of a door and its pair is retired
+    // (kept in the list so later IDs do not shift). B/H share exact offsets.
     for (const s of [-1, 1]) for (const x of [16.725, 34.725, 46.425]) for (const e of [-1, 1]) {
-      add({ type: 'wallLantern', name: `Side door lantern · ${side(s)} · ${x.toFixed(3)} · ${e < 0 ? 'front' : 'rear'}`, circuit: 'L5', mount: 'wall', pos: [x + e * 1.425, 2.6, s * 10.55], yaw: s * 90, mountYaw: s * 90 });
+      add({ type: 'wallLantern', name: `Side door lantern · ${side(s)} · ${x.toFixed(3)} · ${e < 0 ? 'front' : 'rear'}`, circuit: 'L5', mount: 'wall', pos: [x + e * 1.425, 2.6, s * 7.52], yaw: s * 90, mountYaw: s * 90 });
     }
     // The open service room behind the sanctuary has a door to the outside in the
     // rear gable of each side bay; each receives a lower-output pair on the wall
@@ -219,10 +280,6 @@
     //   +15.84 m    x −0.29 / +0.05       2.705 / 2.365
     //   +23.14 m    x −0.19 / +0.335      2.605 / 2.09
     // Products, optics, fixings, weathering and safe access at height: ENGINEERING HOLD.
-    const lensAt = (p, mountYaw, reach, rise) => {
-      const r = mountYaw * Math.PI / 180;
-      return [p[0] + reach * Math.cos(r), p[1] + rise, p[2] + reach * Math.sin(r)];
-    };
     const towerBar = (name, p, mountYaw, target, beam, lumens, length, reach = 0) => {
       const a = aim(lensAt(p, mountYaw, reach, 0.055), target);
       add({ type: 'ledgeBar', name, circuit: 'L6', mount: 'floor', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw, beam, lumens, cct: 3000, params: { length, outreach: reach } });
@@ -283,12 +340,16 @@
     for (const s of [-1, 1]) {
       strand(`main eave ${side(s)} · nave`, [21.35, 7.32, s * 7.3], 90, 31.7);
       strand(`main eave ${side(s)} · sanctuary`, [48.4, 7.32, s * 7.3], 90, 8.9);
-      strand(`veranda eave ${side(s)} · nave`, [21.35, 6.47, s * 10.6], 90, 31.7);
-      strand(`veranda eave ${side(s)} · sanctuary`, [48.4, 6.47, s * 10.6], 90, 8.9);
-      strand(`rear gable ${side(s)}`, [53.45, 10.0, s * 3.65], 0, 9.07, -s * 36.4);
+      // Since 25 Oct 2026 the porch eaves carry a balustrade (roofline.js): the strands run along
+      // the cornice lip in front of it, and the rear-gable strand along the CAD lower rake.
+      strand(`veranda eave ${side(s)} · nave`, [21.35, 6.4, s * 10.78], 90, 31.7);
+      strand(`veranda eave ${side(s)} · sanctuary`, [48.4, 6.4, s * 10.78], 90, 8.9);
+      strand(`rear gable ${side(s)}`, [53.72, 9.0, s * 5.475], 0, 4.05, -s * 41.0);
       // Up the corner pilasters of the first three tower stages, which step in as they rise.
+      // Since 25 Oct 2026 (towers.js) they run up the front of the CAD corner piers.
+      const TW = window.CHURCH_TOWERS?.spec;
       [[0, 8.39, 4.9, 4.9], [8.39, 15.84, 4.65, 4.72], [15.84, 23.14, 4.45, 4.52]].forEach(([y0, y1, d, u], i) => {
-        for (const e of [-1, 1]) strand(`tower ${side(s)} · stage ${i + 1} · ${e < 0 ? 'inner' : 'outer'} corner`, [2.45 - u / 2 - 0.4, (y0 + y1) / 2, s * (10.153 + e * (d / 2 - 0.12))], 0, y1 - y0 - 0.6, 90, 'wall', 180);
+        for (const e of [-1, 1]) strand(`tower ${side(s)} · stage ${i + 1} · ${e < 0 ? 'inner' : 'outer'} corner`, TW ? [TW.pierFront[i] - 0.06, (y0 + y1) / 2, s * (10.153 + e * TW.pierCentre[i])] : [2.45 - u / 2 - 0.4, (y0 + y1) / 2, s * (10.153 + e * (d / 2 - 0.12))], 0, y1 - y0 - 0.6, 90, 'wall', 180);
       });
       // Belfry and dome lit from the +23.14 m ledge of each tower.
     }
@@ -297,13 +358,14 @@
       // Rear gable from the rear corners of the veranda roofs.
       ledgeFlood(`Festival flood · rear gable ${side(s)}`, 'L7', [52.6, 6.55, s * 9.8], [53.3, 12.5, s * 1.5], 40, 9000, false);
     }
-    // Overlapping lower and upper washes cover the full shrine, including the
-    // entablature between the doors and niche and the +21.72 m cross ornament.
+    // Overlapping lower and upper washes cover the central facade: the lower pair the
+    // upper storey over the doors, the upper pair the CAD file's niche aedicule and its
+    // cross (+24.65 m; until 24 October 2026 the traced gables and the +21.72 m cross).
     // Both pairs stand on the towers' inner front cornices, set back behind the
     // lips beside the corner pilasters (19 October 2026: cornice colour, compact).
     for (const s of [-1, 1]) {
       towerFlood(`Central gable flood · ${side(s)}`, 'L6', [-0.15, 8.39, s * 7.70], -s * 90, [2.2, 12.8, -s * 0.8], 60, 6500);
-      towerFlood(`Central crown wash · ${side(s)}`, 'L6', [-0.10, 15.84, s * 7.70], -s * 90, [2.2, 18.6, 0], 55, 6000);
+      towerFlood(`Central crown wash · ${side(s)}`, 'L6', [-0.10, 15.84, s * 7.70], -s * 90, CROWN_WASH_TARGET, 55, 6000);
     }
 
     // Fans · 1.42 m ceiling fans mid-bay over the two side aisles, nothing over
@@ -336,10 +398,13 @@
         note: 'ENGINEERING HOLD: two fans per wing above window openings, clear of central saints strip. Same catalog flow/power/noise; extended bracket proxy unverified. Air, noise, speech, mounting, concealment and maintenance remain held.' };
     };
     for (const sign of [-1, 1]) for (const index of [0, 1]) add(wingFan(sign, index));
+    // Parish priest, 25 Oct 2026: the nave wall fans hang lower, +4.10 m (was +5.55 m), just
+    // under the column sconces (+4.39 m) and above the wall speakers (+3.51 m).
+    const NAVE_FAN_Y = 4.10;
     // Preserve the original six numeric slots; append ten named IDs below.
     // Display visibility is separate from operation: full service keeps F2 off.
     for (const k of ['4', '6', '8']) for (const sign of [-1, 1]) {
-      add({ type: 'fanNaveWall', name: `Wall fan · axis ${k} · ${side(sign)}`, circuit: 'F2', mount: 'wall', pos: [A[k], 5.55, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
+      add({ type: 'fanNaveWall', name: `Wall fan · axis ${k} · ${side(sign)}`, circuit: 'F2', mount: 'wall', pos: [A[k], NAVE_FAN_Y, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
     }
     // Trial: two large circulators on the inside of the entrance wall, blowing
     // down the nave (F4, off). Compare the air map with them on and off. Each is
@@ -423,10 +488,11 @@
         add({ type: 'horn', name: `Side courtyard horn · axis ${k} · ${side(s)}`, circuit: 'A3', mount: 'wall', pos: r, yaw: c.yaw, mountYaw: s * 90, tilt: c.tilt, level: -6, on: false });
       }
     }
-    add({ type: 'mic', name: 'Ambo microphone', circuit: 'MIC', mount: 'floor', pos: [amboX - 0.22, 1.9, -2.62], yaw: 0, mountYaw: 0 });
-    add({ type: 'mic', name: 'Altar microphone', circuit: 'MIC', mount: 'floor', pos: [44.45, 1.88, 0.45], yaw: 0, mountYaw: 0 });
+    // Fittings that stand on the dais follow its level (+0.80 since the CAD file of 23 Oct 2026).
+    add({ type: 'mic', name: 'Ambo microphone', circuit: 'MIC', mount: 'floor', pos: [amboX - 0.22, 1.9 + DAIS_RISE, -2.62], yaw: 0, mountYaw: 0 });
+    add({ type: 'mic', name: 'Altar microphone', circuit: 'MIC', mount: 'floor', pos: [44.45, 1.88 + DAIS_RISE, 0.45], yaw: 0, mountYaw: 0 });
 
-    // Decoration · statues in the raised shrine niches on the column line, as in the approved concept.
+    // Decoration · statues in the raised shrine niches on the axis-11 line, level with the crucifix.
     add({ type: 'statueMary', name: 'Statue · Our Lady', circuit: 'DECOR', mount: 'floor', pos: statues.B, yaw: 180, mountYaw: 180 });
     add({ type: 'statueJoseph', name: 'Statue · Saint Joseph', circuit: 'DECOR', mount: 'floor', pos: statues.H, yaw: 180, mountYaw: 180 });
     for (const s of [-1, 1]) {
@@ -434,13 +500,13 @@
       // ambo (checked seat by seat), and nothing stands on the way to the shrines:
       // flowers beside the tabernacle and a palm in each front corner of the
       // chamber beside the column, as in the concept. No votive candle stands.
-      add({ type: 'flowerStand', name: `Flower stand · tabernacle ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [47.2, 0.75, s * 1.15], yaw: 180, mountYaw: 180 });
-      add({ type: 'palm', name: `Palm · sanctuary ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [sanctuary.chamber.x0 + 0.66, 0.75, s * 2.9], yaw: 0, mountYaw: 0 });
+      add({ type: 'flowerStand', name: `Flower stand · tabernacle ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [47.2, DAIS_Y, s * 1.15], yaw: 180, mountYaw: 180 });
+      add({ type: 'palm', name: `Palm · sanctuary ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [sanctuary.chamber.x0 + 0.66, DAIS_Y, s * 2.9], yaw: 0, mountYaw: 0 });
       for (const e of [-1, 1]) add({ type: 'floorFlowers', name: `Shrine flowers · ${side(s)} · ${e * s < 0 ? 'inner' : 'outer'}`, circuit: 'DECOR', mount: 'floor', pos: [shrine.x - 0.05, shrine.y, s * shrine.z + e * 0.7], yaw: 180, mountYaw: 180 });
       add({ type: 'palm', name: `Palm · entrance ${side(s)}`, circuit: 'DECOR', mount: 'floor', pos: [6.3, 0, s * 6.55], yaw: 0, mountYaw: 0 });
       add({ type: 'banner', name: `Banner · axis 9 · ${side(s)}`, circuit: 'DECOR', mount: 'wall', pos: [A['9'] - 0.315, 6.6, s * 3.6], yaw: 180, mountYaw: 180 });
     }
-    add({ type: 'paschal', name: 'Paschal candle', circuit: 'DECOR', mount: 'floor', pos: [amboX - 0.53, 0.75, -1.55], yaw: 180, mountYaw: 180 });
+    add({ type: 'paschal', name: 'Paschal candle', circuit: 'DECOR', mount: 'floor', pos: [amboX - 0.53, DAIS_Y, -1.55], yaw: 180, mountYaw: 180 });
     // Seasonal and festival items, hidden until needed.
     add({ type: 'carpet', name: 'Aisle carpet (weddings & feasts)', circuit: 'DECOR', mount: 'floor', pos: [6.2, 0, 0], yaw: 0, mountYaw: 0, hidden: true, params: { length: 32 } });
     add({ type: 'christmasTree', name: 'Christmas tree · front stage', circuit: 'X1', mount: 'floor', pos: [-4.2, -0.48, -5.6], yaw: 180, mountYaw: 180, hidden: true });
@@ -465,7 +531,7 @@
     }
     for (const k of ['2′', '3', '5', '7', '9']) for (const sign of [-1, 1]) {
       add({ id: `F-NAVE-${side(sign)}-${k === '2′' ? '2P' : k}`, type: 'fanNaveWall', name: `Wall fan · axis ${k} · ${side(sign)}`, circuit: 'F2', mount: 'wall',
-        pos: [A[k], 5.55, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
+        pos: [A[k], NAVE_FAN_Y, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
     }
     // Socket outlets, 9 October 2026 (owner request). One 16 A radial per side
     // from DB-1 serves that side's sanctuary and mid-nave points along the wall
@@ -477,7 +543,7 @@
       const code = side(sign);
       add({ id: `P-SANCT-${code}`, type: 'socketDouble', name: `Socket · sanctuary side ${code} · axis 10 pier`, circuit: sign < 0 ? 'P1' : 'P2', mount: 'wall',
         pos: [43.89, 0.85, sign * 7.25], yaw: 180, mountYaw: 180,
-        note: 'CONCEPT: pier face toward the nave, 0.70 m above the side platform and 1.17 m above the wing floor. Surface or casing box; no chase into the structural pier. ENGINEERING HOLD.' });
+        note: 'CONCEPT: pier face toward the nave, 0.69 m above the side platform (+0.16) and 1.17 m above the wing floor. Surface or casing box; no chase into the structural pier. ENGINEERING HOLD.' });
       add({ id: `P-NAVE-${code}`, type: 'socketDouble', name: `Socket · mid-nave side ${code} · axis 6`, circuit: sign < 0 ? 'P1' : 'P2', mount: 'wall',
         pos: [22.83, 0.45, sign * 7.25], yaw: -sign * 90, mountYaw: -sign * 90,
         note: 'CONCEPT: masonry wall between the window and the axis-6 pier, 0.45 m above the nave floor, reached between the bench rows. Not in the structural pier. ENGINEERING HOLD.' });
@@ -486,34 +552,41 @@
         note: 'CONCEPT: inside the tower porch on the front pier, hidden from the front view, 1.3 m above the tower floor. Own 32 A circuit at DB-2, isolated outside events. Supply and feeder size on ENGINEERING HOLD.' });
     }
     // Façade niche statues, 9 October 2026 (owner request). The Assumption stands
-    // on the modelled pedestal of the central niche between the towers, with
-    // Saint Peter (B) and Saint Paul (H) in the side niches. Owner direction the
-    // same day: no visible lamps at the statues, and two candle lights on each
-    // base. Each niche is lit by three concealed lines on circuit L10 at DB-2:
-    // one under the arch for the face and one behind a lip on each jamb, so the
-    // niche glows and the figure stands in soft relief. The electric candles
-    // stand on the pedestal top at the feet and share L10. Statues (L10), towers
-    // and façade (L6) and the open front stage (L9) switch separately. Subjects of the side figures, sizes, sculptor, weights,
-    // fixings, slots, lamps and drivers are proposals: CONCEPT / ENGINEERING HOLD.
-    const nicheX = 2.29, lipX = 2.13;
-    for (const [code, type, name, z, base, crown, face, half, mid, length] of [
-      ['C', 'statueAssumption', 'Assumption of Our Lady', 0, 11.8, 15.63, 14.1, 0.925, 13.3, 2.0],
-      ['B', 'statuePeter', 'Saint Peter', -5.48, 10.08, 12.61, 11.72, 0.525, 11.05, 1.3],
-      ['H', 'statuePaul', 'Saint Paul', 5.48, 10.08, 12.61, 11.72, 0.525, 11.05, 1.3]]) {
-      add({ id: `D-FACADE-${code}`, type, name: `Façade statue · ${name}`, circuit: 'DECOR', mount: 'floor', pos: [nicheX, base, z], yaw: 180, mountYaw: 180,
-        note: `${code === 'C' ? 'USER CONFIRMED subject and place.' : 'PROPOSED subject; owner to confirm the two saints.'} Generated figure on the drawn niche pedestal. Sculptor, size, material, weight and fixing pending.` });
-      const top = [lipX, crown + 0.01, z], down = aim(top, [nicheX - 0.09, face, z]);
-      add({ id: `L-STATUE-${code}-ARCH`, type: 'nicheArchLine', name: `Hidden arch light · ${name}`, circuit: 'L10', mount: 'wall', pos: top, yaw: down.yaw, tilt: down.tilt, mountYaw: 180, lumens: code === 'C' ? 440 : 300, beam: 60, shadow: false, params: { length: code === 'C' ? 0.8 : 0.5 },
-        note: 'CONCEPT: light line in a slot behind a matching lip under the arch; no lamp is seen. Slot, weatherproof product, driver place and access pending.' });
-      for (const e of [-1, 1]) {
-        const p = [lipX, mid, z + e * (half - 0.02)], a = aim(p, [nicheX + 0.16, mid, z]);
-        add({ id: `L-STATUE-${code}-JAMB-${e < 0 ? '1' : '2'}`, type: 'nicheJambLine', name: `Hidden jamb light · ${name} · ${e < 0 ? 'B' : 'H'} side`, circuit: 'L10', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: -e * 90, lumens: code === 'C' ? 260 : 140, beam: 80, shadow: false, params: { length },
-          note: 'CONCEPT: light line in a slot behind a matching lip at the front edge of the jamb; no lamp is seen. Slot, weatherproof product, driver place and access pending.' });
-        add({ id: `L-STATUE-${code}-CANDLE-${e < 0 ? '1' : '2'}`, type: 'nicheCandle', name: `Statue candle light · ${name} · ${e < 0 ? 'B' : 'H'} side`, circuit: 'L10', mount: 'floor', pos: [nicheX - 0.19, base, z + e * (code === 'C' ? 0.47 : 0.31)], yaw: 180, mountYaw: 180,
-          note: 'USER CONFIRMED: two candle lights on the base of each statue. CONCEPT electric candle; product, weather protection, fixing and lamp access pending.' });
-      }
+    // on the pedestal of the central niche between the towers, with Saint Peter (B)
+    // and Saint Paul (H) in the side niches. Owner direction the same day: no visible
+    // lamps at the statues, and two candle lights on each base. Each niche is lit by
+    // three concealed lines on circuit L10 at DB-2: one under the arch for the face and
+    // one behind a lip on each jamb, so the niche glows and the figure stands in soft
+    // relief. The electric candles stand on the pedestal top at the feet and share L10.
+    // Statues (L10), towers and façade (L6) and the open front stage (L9) switch
+    // separately. Since 24 October 2026 the niches are those of the church's CAD file
+    // (facadeNiches above): the side niches on the upper storey at +10.391, the central
+    // one in the aedicule at +16.683. Subjects of the side figures, sizes, sculptor,
+    // weights, fixings, slots, lamps and drivers are proposals: CONCEPT / ENGINEERING HOLD.
+    for (const row of facadeNiches) nicheFittings(row).forEach(add);
+    // Parish priest, 25 Oct 2026: nave lighting by area. Each reading head goes to the circuit of
+    // the bay it lights (heads aimed toward the sanctuary light the bay after their beam, the
+    // twins the bay before): L1 the three front bays 6–9, L2 the four rear bays 2′–6 with the
+    // entrance-wall lights. One chandelier stays, over the sanctuary at the crossing, on L3;
+    // the nave chandeliers are retired (parishRetiredNames).
+    for (const it of items) {
+      if (it.circuit !== 'L1' && it.circuit !== 'L2') continue;
+      const forward = Math.cos((it.yaw ?? 0) * Math.PI / 180) > 0, lit = it.pos[0] + (forward ? 2.25 : -2.25);
+      it.circuit = lit > A['6'] ? 'L1' : 'L2';
     }
-    return items.filter(it => ![...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id));
+    for (const it of items) if (it.name === 'Grand chandelier · crossing 9–10') it.circuit = 'L3';
+    // Parish priest, 25 Oct 2026: a candle light pair below each of the fourteen Stations of the
+    // Cross (stations.js), on the nave face of the C/G wall, on their own circuit LS. In the two
+    // door bays per side the exit sign stays centred between them.
+    const ST = window.CHURCH_STATIONS?.spec;
+    if (ST) for (let n = 1; n <= 14; n++) {
+      const { s, x } = ST.place(n, A);
+      for (const e of [-1, 1]) add({ id: `L-STATION-${n}-${e < 0 ? 'A' : 'B'}`, type: 'stationCandle', name: `Station candle · ${['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV'][n - 1]} · ${e < 0 ? 'front' : 'rear'}`,
+        circuit: 'LS', mount: 'wall', pos: [x + e * ST.candles.dx, ST.candles.y, s * (ST.face - 0.02)], yaw: -s * 90, mountYaw: -s * 90, on: true });
+    }
+    window.CHURCH_VERANDA_REVIEW?.apply(items,GEO);
+    window.CHURCH_DOORHEAD_REVIEW?.apply(items,GEO,SIM);
+    return items.filter(it => ![...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id) && !parishRetiredNames.test(it.name));
   }
 
   // Additive one-time issue for saved layouts, as for the outlets below.
@@ -523,8 +596,259 @@
     return [...items, ...design.filter(it => facadeStatueIds.includes(it.id) && !items.some(have => have.id === it.id)).map(it => ({ ...it }))];
   }
 
+  // Central façade of the CAD file of 23 Oct 2026, adopted by the owner on 24 Oct 2026: the
+  // niches move back and up (facade.js), so the statues, their hidden lines and candles move
+  // with them, and the two upper washes re-aim at the new aedicule. Only a fitting still at its
+  // previous recommended place (and aim) moves; one the user moved or re-aimed stays as it is,
+  // a deleted one stays deleted, and switching, dimming and circuits are kept.
+  const facadeCadRevision = '2026-10-24-cad-facade-1';
+  const near = (a, b, tol) => Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((v, i) => Math.abs(v - b[i]) <= tol);
+  function upgradeFacadeCad(items, design) {
+    const before = new Map(facadeNichesBefore.flatMap(nicheFittings).map(it => [it.id, it]));
+    const next = new Map(design.map(it => [it.id, it])), byName = new Map(design.map(it => [it.name, it]));
+    return items.map(it => {
+      const old = before.get(it.id), raw = next.get(it.id);
+      if (old && raw && it.type === raw.type && near(it.pos, old.pos, 0.005) && (it.mount === 'floor' || (Math.abs(it.yaw - old.yaw) < 0.01 && Math.abs((it.tilt ?? 0) - (old.tilt ?? 0)) < 0.01)))
+        return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw };
+      if (/^Central crown wash · [BH]$/.test(it.name)) {
+        const want = byName.get(it.name);
+        if (!want || !near(it.pos, want.pos, 0.005)) return it;
+        const was = aim(lensAt(it.pos, it.mountYaw, it.params?.outreach ?? 0, 0.075), CROWN_WASH_TARGET_BEFORE);
+        if (Math.abs(it.yaw - was.yaw) < 0.01 && Math.abs(it.tilt - was.tilt) < 0.01) return { ...it, yaw: want.yaw, tilt: want.tilt };
+      }
+      return it;
+    });
+  }
+
+  // ENG-043, 31 Oct 2026: the tower corner piers take their CAD depth and width (towers.js), so the
+  // festival strands up their fronts move with them; the two main-door lanterns step 0.10 m toward
+  // the door, clear of the new CAD ground piers of the central facade (facade.js). A saved strand still at its previous
+  // recommended place and aim (5 mm, 0.01°) moves to the new one and keeps its ID, switching,
+  // dimmer, visibility and note; a moved or deleted strand stays as it is.
+  const towerPierRevision = '2026-10-31-tower-pier-depth-2';
+  const towerPierBefore = {
+    "L137": {"type":"wallLantern","pos":[2.2, 3, -2.4],"yaw":180,"tilt":0,"mount":"wall","circuit":"L9"},
+    "L138": {"type":"wallLantern","pos":[2.2, 3, 2.4],"yaw":180,"tilt":0,"mount":"wall","circuit":"L9"},
+    "L202": {"type":"bulbString","pos":[-0.78, 4.195, -7.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L203": {"type":"bulbString","pos":[-0.78, 4.195, -12.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L204": {"type":"bulbString","pos":[-0.42, 12.115, -7.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L205": {"type":"bulbString","pos":[-0.42, 12.115, -12.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L206": {"type":"bulbString","pos":[-0.32, 19.49, -7.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L207": {"type":"bulbString","pos":[-0.32, 19.49, -12.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L213": {"type":"bulbString","pos":[-0.78, 4.195, 7.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L214": {"type":"bulbString","pos":[-0.78, 4.195, 12.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L215": {"type":"bulbString","pos":[-0.42, 12.115, 7.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L216": {"type":"bulbString","pos":[-0.42, 12.115, 12.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L217": {"type":"bulbString","pos":[-0.32, 19.49, 7.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L218": {"type":"bulbString","pos":[-0.32, 19.49, 12.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+  };
+  function upgradeTowerPiers(items, design) {
+    const next = new Map(design.map(it => [it.id, it]));
+    return items.map(it => {
+      const old = towerPierBefore[it.id], raw = next.get(it.id);
+      if (!old || !raw || !untouched(it, old)) return it;
+      return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, ...(raw.params?.length ? { params: { ...it.params, length: raw.params.length } } : {}) };
+    });
+  }
+
+  // Parish priest's decisions of 25 October 2026 (docs/engineering/parish-meeting-2026-10-25.md).
+  // For each recommended item that changed, the table below holds its values before the
+  // meeting. A saved item still at those values (type, mount, circuit, place within 5 mm and
+  // aim within 0.01°) takes the new recommended place, aim, mount, circuit and output, and keeps
+  // its ID, switching, dimmer, visibility and note; a retired one that is still untouched is
+  // removed. An item the user moved, re-aimed or re-circuited stays as it is, a deleted item
+  // stays deleted, and each new ID is added once. The revision changes each time the table grows.
+  const parishMeetingRevision = '2026-10-25-parish-meeting-6';
+  // Recommended items the meeting retires (their add() calls stay so later IDs keep their numbers).
+  const parishRetiredNames = /^(Side door lantern · [BH] · 46\.425 · |Chandelier · bay [468]–|Sconce · sanctuary pier · )/;
+  // BEGIN parish-meeting table · generated by scripts/build_parish_migration.mjs from
+  // docs/electrical-grid/equipment-layout.json at 015f9a8 and the current export. Do not edit by hand.
+  const parishMeetingBefore = {
+    "L3": {"type":"readingProjector","name":"Reading light · axis 3 · B central","pos":[10.125,8.77,-2.48],"yaw":-15.042,"tilt":-86.6032,"mount":"wall","circuit":"L1"},
+    "L4": {"type":"readingProjector","name":"Reading light · axis 3 · B central · twin","pos":[10.125,8.77,-2.72],"yaw":174.8437,"tilt":-80.2739,"mount":"wall","circuit":"L1"},
+    "L5": {"type":"readingProjector","name":"Reading light · axis 3 · H central","pos":[10.125,8.77,2.48],"yaw":15.042,"tilt":-86.6032,"mount":"wall","circuit":"L1"},
+    "L6": {"type":"readingProjector","name":"Reading light · axis 3 · H central · twin","pos":[10.125,8.77,2.72],"yaw":-174.8437,"tilt":-80.2739,"mount":"wall","circuit":"L1"},
+    "L7": {"type":"readingProjector","name":"Reading light · axis 4 · B central","pos":[14.625,8.77,-2.48],"yaw":-15.042,"tilt":-86.6032,"mount":"wall","circuit":"L1"},
+    "L8": {"type":"readingProjector","name":"Reading light · axis 4 · B central · twin","pos":[14.625,8.77,-2.72],"yaw":172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L1"},
+    "L9": {"type":"readingProjector","name":"Reading light · axis 4 · H central","pos":[14.625,8.77,2.48],"yaw":15.042,"tilt":-86.6032,"mount":"wall","circuit":"L1"},
+    "L10": {"type":"readingProjector","name":"Reading light · axis 4 · H central · twin","pos":[14.625,8.77,2.72],"yaw":-172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L1"},
+    "L11": {"type":"readingProjector","name":"Reading light · axis 5 · B central","pos":[19.125,8.77,-2.48],"yaw":-15.042,"tilt":-86.6032,"mount":"wall","circuit":"L1"},
+    "L12": {"type":"readingProjector","name":"Reading light · axis 5 · B central · twin","pos":[19.125,8.77,-2.72],"yaw":172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L1"},
+    "L13": {"type":"readingProjector","name":"Reading light · axis 5 · H central","pos":[19.125,8.77,2.48],"yaw":15.042,"tilt":-86.6032,"mount":"wall","circuit":"L1"},
+    "L14": {"type":"readingProjector","name":"Reading light · axis 5 · H central · twin","pos":[19.125,8.77,2.72],"yaw":-172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L1"},
+    "L16": {"type":"readingProjector","name":"Reading light · axis 6 · B central · twin","pos":[23.625,8.77,-2.72],"yaw":172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L1"},
+    "L18": {"type":"readingProjector","name":"Reading light · axis 6 · H central · twin","pos":[23.625,8.77,2.72],"yaw":-172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L1"},
+    "L43": {"type":"readingProjector","name":"Reading light · axis 6 · B outer","pos":[23.585,6.84,-6.09],"yaw":37.9381,"tilt":-82.255,"mount":"wall","circuit":"L2"},
+    "L45": {"type":"readingProjector","name":"Reading light · axis 6 · H outer","pos":[23.585,6.84,6.09],"yaw":-37.9381,"tilt":-82.255,"mount":"wall","circuit":"L2"},
+    "L47": {"type":"readingProjector","name":"Reading light · axis 7 · B outer","pos":[28.085,6.84,-6.09],"yaw":37.9381,"tilt":-82.255,"mount":"wall","circuit":"L2"},
+    "L48": {"type":"readingProjector","name":"Reading light · axis 7 · B outer · twin","pos":[28.085,6.84,-4.84],"yaw":-143.2717,"tilt":-77.7637,"mount":"wall","circuit":"L2"},
+    "L49": {"type":"readingProjector","name":"Reading light · axis 7 · H outer","pos":[28.085,6.84,6.09],"yaw":-37.9381,"tilt":-82.255,"mount":"wall","circuit":"L2"},
+    "L50": {"type":"readingProjector","name":"Reading light · axis 7 · H outer · twin","pos":[28.085,6.84,4.84],"yaw":143.2717,"tilt":-77.7637,"mount":"wall","circuit":"L2"},
+    "L51": {"type":"readingProjector","name":"Reading light · axis 8 · B outer","pos":[32.585,6.84,-6.09],"yaw":37.9381,"tilt":-82.255,"mount":"wall","circuit":"L2"},
+    "L52": {"type":"readingProjector","name":"Reading light · axis 8 · B outer · twin","pos":[32.585,6.84,-4.84],"yaw":-143.2717,"tilt":-77.7637,"mount":"wall","circuit":"L2"},
+    "L53": {"type":"readingProjector","name":"Reading light · axis 8 · H outer","pos":[32.585,6.84,6.09],"yaw":-37.9381,"tilt":-82.255,"mount":"wall","circuit":"L2"},
+    "L54": {"type":"readingProjector","name":"Reading light · axis 8 · H outer · twin","pos":[32.585,6.84,4.84],"yaw":143.2717,"tilt":-77.7637,"mount":"wall","circuit":"L2"},
+    "L55": {"type":"readingProjector","name":"Reading light · axis 9 · B outer","pos":[37.085,6.84,-6.09],"yaw":37.9381,"tilt":-82.255,"mount":"wall","circuit":"L2"},
+    "L56": {"type":"readingProjector","name":"Reading light · axis 9 · B outer · twin","pos":[37.085,6.84,-4.84],"yaw":-143.2717,"tilt":-77.7637,"mount":"wall","circuit":"L2"},
+    "L57": {"type":"readingProjector","name":"Reading light · axis 9 · H outer","pos":[37.085,6.84,6.09],"yaw":-37.9381,"tilt":-82.255,"mount":"wall","circuit":"L2"},
+    "L58": {"type":"readingProjector","name":"Reading light · axis 9 · H outer · twin","pos":[37.085,6.84,4.84],"yaw":143.2717,"tilt":-77.7637,"mount":"wall","circuit":"L2"},
+    "L59": {"type":"readingProjector","name":"Rear rows light · entrance façade · B","pos":[2.65,3.45,-4.2],"yaw":-8.2024,"tilt":-25.2951,"mount":"wall","circuit":"L1"},
+    "L60": {"type":"readingProjector","name":"Rear centre light · entrance façade · B","pos":[2.65,5.95,-4.2],"yaw":40.2002,"tilt":-47.9339,"mount":"wall","circuit":"L1"},
+    "L61": {"type":"readingProjector","name":"Rear rows light · entrance façade · H","pos":[2.65,3.45,4.2],"yaw":8.2024,"tilt":-25.2951,"mount":"wall","circuit":"L1"},
+    "L62": {"type":"readingProjector","name":"Rear centre light · entrance façade · H","pos":[2.65,5.95,4.2],"yaw":-40.2002,"tilt":-47.9339,"mount":"wall","circuit":"L1"},
+    "L78": {"type":"chandelier8","name":"Chandelier · bay 4–5","pos":[16.725,7.3,0],"yaw":0,"tilt":0,"mount":"pendant","circuit":"LD"},
+    "L79": {"type":"chandelier8","name":"Chandelier · bay 6–7","pos":[25.725,7.3,0],"yaw":0,"tilt":0,"mount":"pendant","circuit":"LD"},
+    "L80": {"type":"chandelier8","name":"Chandelier · bay 8–9","pos":[34.725,7.3,0],"yaw":0,"tilt":0,"mount":"pendant","circuit":"LD"},
+    "L81": {"type":"chandelier12","name":"Grand chandelier · crossing 9–10","pos":[40.575,9.2,0],"yaw":0,"tilt":0,"mount":"pendant","circuit":"LD"},
+    "L82": {"type":"sconce2","name":"Sconce · axis 3 · B","pos":[9.975,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L83": {"type":"sconce2","name":"Sconce · axis 3 · H","pos":[9.975,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L84": {"type":"sconce2","name":"Sconce · axis 4 · B","pos":[14.475,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L85": {"type":"sconce2","name":"Sconce · axis 4 · H","pos":[14.475,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L86": {"type":"sconce2","name":"Sconce · axis 5 · B","pos":[18.975,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L87": {"type":"sconce2","name":"Sconce · axis 5 · H","pos":[18.975,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L88": {"type":"sconce2","name":"Sconce · axis 6 · B","pos":[23.475,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L89": {"type":"sconce2","name":"Sconce · axis 6 · H","pos":[23.475,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L90": {"type":"sconce2","name":"Sconce · axis 7 · B","pos":[27.975,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L91": {"type":"sconce2","name":"Sconce · axis 7 · H","pos":[27.975,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L92": {"type":"sconce2","name":"Sconce · axis 8 · B","pos":[32.475,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L93": {"type":"sconce2","name":"Sconce · axis 8 · H","pos":[32.475,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L94": {"type":"sconce2","name":"Sconce · axis 9 · B","pos":[36.975,4.6,-7.07],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L95": {"type":"sconce2","name":"Sconce · axis 9 · H","pos":[36.975,4.6,7.07],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L96": {"type":"sconce2","name":"Sconce · sanctuary pier · B","pos":[46.455,4.3,-3.24],"yaw":90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L97": {"type":"sconce2","name":"Sconce · sanctuary pier · H","pos":[46.455,4.3,3.24],"yaw":-90,"tilt":0,"mount":"wall","circuit":"LD"},
+    "L107": {"type":"projector36","name":"Reredos wash · B","pos":[44.75,6.7,-3.24],"yaw":9.7276,"tilt":-28.0095,"mount":"wall","circuit":"L3"},
+    "L108": {"type":"projector36","name":"Reredos base wash · B","pos":[44.75,5.4,-3.24],"yaw":68.7894,"tilt":-27.5493,"mount":"wall","circuit":"L3"},
+    "L111": {"type":"projector36","name":"Reredos wash · H","pos":[44.75,6.7,3.24],"yaw":-9.7276,"tilt":-28.0095,"mount":"wall","circuit":"L3"},
+    "L112": {"type":"projector36","name":"Reredos base wash · H","pos":[44.75,5.4,3.24],"yaw":-68.7894,"tilt":-27.5493,"mount":"wall","circuit":"L3"},
+    "L114": {"type":"spot15","name":"Tabernacle accent","pos":[44.75,4.9,-3.24],"yaw":51.7959,"tilt":-34.6532,"mount":"wall","circuit":"L3"},
+    "L115": {"type":"spot15","name":"Statue accent · B","pos":[36.975,6.655,-5.25],"yaw":-1.9614,"tilt":-19.2796,"mount":"pendant","circuit":"L3"},
+    "L116": {"type":"projector36","name":"Shrine wash · B","pos":[36.975,6.655,-4.9],"yaw":-4.8304,"tilt":-19.0112,"mount":"pendant","circuit":"L3"},
+    "L117": {"type":"spot15","name":"Statue accent · H","pos":[36.975,6.655,5.25],"yaw":1.9614,"tilt":-19.2796,"mount":"pendant","circuit":"L3"},
+    "L118": {"type":"projector36","name":"Shrine wash · H","pos":[36.975,6.655,4.9],"yaw":4.8304,"tilt":-19.0112,"mount":"pendant","circuit":"L3"},
+    "L119": {"type":"lantern","name":"Veranda lantern · B · axis 3","pos":[9.975,4.55,-8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L120": {"type":"lantern","name":"Veranda lantern · B · axis 4","pos":[14.475,4.55,-8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L121": {"type":"lantern","name":"Veranda lantern · B · axis 5","pos":[18.975,4.55,-8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L122": {"type":"lantern","name":"Veranda lantern · B · axis 6","pos":[23.475,4.55,-8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L123": {"type":"lantern","name":"Veranda lantern · B · axis 7","pos":[27.975,4.55,-8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L124": {"type":"lantern","name":"Veranda lantern · B · axis 8","pos":[32.475,4.55,-8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L125": {"type":"lantern","name":"Veranda lantern · B · axis 9","pos":[36.975,4.55,-8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L126": {"type":"lantern","name":"Veranda lantern · B · axis 10","pos":[44.175,4.55,-8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L127": {"type":"lantern","name":"Veranda lantern · B · axis 11","pos":[48.675,4.55,-8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L128": {"type":"lantern","name":"Veranda lantern · H · axis 3","pos":[9.975,4.55,8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L129": {"type":"lantern","name":"Veranda lantern · H · axis 4","pos":[14.475,4.55,8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L130": {"type":"lantern","name":"Veranda lantern · H · axis 5","pos":[18.975,4.55,8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L131": {"type":"lantern","name":"Veranda lantern · H · axis 6","pos":[23.475,4.55,8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L132": {"type":"lantern","name":"Veranda lantern · H · axis 7","pos":[27.975,4.55,8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L133": {"type":"lantern","name":"Veranda lantern · H · axis 8","pos":[32.475,4.55,8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L134": {"type":"lantern","name":"Veranda lantern · H · axis 9","pos":[36.975,4.55,8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L135": {"type":"lantern","name":"Veranda lantern · H · axis 10","pos":[44.175,4.55,8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L136": {"type":"lantern","name":"Veranda lantern · H · axis 11","pos":[48.675,4.55,8.85],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L4"},
+    "L139": {"type":"wallLantern","name":"Side door lantern · B · 16.725 · front","pos":[15.3,2.6,-10.55],"yaw":-90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L140": {"type":"wallLantern","name":"Side door lantern · B · 16.725 · rear","pos":[18.15,2.6,-10.55],"yaw":-90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L141": {"type":"wallLantern","name":"Side door lantern · B · 34.725 · front","pos":[33.3,2.6,-10.55],"yaw":-90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L142": {"type":"wallLantern","name":"Side door lantern · B · 34.725 · rear","pos":[36.15,2.6,-10.55],"yaw":-90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L143": {"type":"wallLantern","name":"Side door lantern · B · 46.425 · front","pos":[45,2.6,-10.55],"yaw":-90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L144": {"type":"wallLantern","name":"Side door lantern · B · 46.425 · rear","pos":[47.85,2.6,-10.55],"yaw":-90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L145": {"type":"wallLantern","name":"Side door lantern · H · 16.725 · front","pos":[15.3,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L146": {"type":"wallLantern","name":"Side door lantern · H · 16.725 · rear","pos":[18.15,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L147": {"type":"wallLantern","name":"Side door lantern · H · 34.725 · front","pos":[33.3,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L148": {"type":"wallLantern","name":"Side door lantern · H · 34.725 · rear","pos":[36.15,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L149": {"type":"wallLantern","name":"Side door lantern · H · 46.425 · front","pos":[45,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L150": {"type":"wallLantern","name":"Side door lantern · H · 46.425 · rear","pos":[47.85,2.6,10.55],"yaw":90,"tilt":0,"mount":"wall","circuit":"L5"},
+    "L199": {"type":"bulbString","name":"Festival lights · veranda eave B · nave","pos":[21.35,6.47,-10.6],"yaw":90,"tilt":0,"mount":"floor","circuit":"L7"},
+    "L200": {"type":"bulbString","name":"Festival lights · veranda eave B · sanctuary","pos":[48.4,6.47,-10.6],"yaw":90,"tilt":0,"mount":"floor","circuit":"L7"},
+    "L201": {"type":"bulbString","name":"Festival lights · rear gable B","pos":[53.45,10,-3.65],"yaw":0,"tilt":0,"mount":"floor","circuit":"L7"},
+    "L202": {"type":"bulbString","name":"Festival lights · tower B · stage 1 · inner corner","pos":[-0.4,4.195,-7.823],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L203": {"type":"bulbString","name":"Festival lights · tower B · stage 1 · outer corner","pos":[-0.4,4.195,-12.483],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L204": {"type":"bulbString","name":"Festival lights · tower B · stage 2 · inner corner","pos":[-0.31,12.115,-7.948],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L205": {"type":"bulbString","name":"Festival lights · tower B · stage 2 · outer corner","pos":[-0.31,12.115,-12.358],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L206": {"type":"bulbString","name":"Festival lights · tower B · stage 3 · inner corner","pos":[-0.21,19.49,-8.048],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L207": {"type":"bulbString","name":"Festival lights · tower B · stage 3 · outer corner","pos":[-0.21,19.49,-12.258],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L210": {"type":"bulbString","name":"Festival lights · veranda eave H · nave","pos":[21.35,6.47,10.6],"yaw":90,"tilt":0,"mount":"floor","circuit":"L7"},
+    "L211": {"type":"bulbString","name":"Festival lights · veranda eave H · sanctuary","pos":[48.4,6.47,10.6],"yaw":90,"tilt":0,"mount":"floor","circuit":"L7"},
+    "L212": {"type":"bulbString","name":"Festival lights · rear gable H","pos":[53.45,10,3.65],"yaw":0,"tilt":0,"mount":"floor","circuit":"L7"},
+    "L213": {"type":"bulbString","name":"Festival lights · tower H · stage 1 · inner corner","pos":[-0.4,4.195,7.823],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L214": {"type":"bulbString","name":"Festival lights · tower H · stage 1 · outer corner","pos":[-0.4,4.195,12.483],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L215": {"type":"bulbString","name":"Festival lights · tower H · stage 2 · inner corner","pos":[-0.31,12.115,7.948],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L216": {"type":"bulbString","name":"Festival lights · tower H · stage 2 · outer corner","pos":[-0.31,12.115,12.358],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L217": {"type":"bulbString","name":"Festival lights · tower H · stage 3 · inner corner","pos":[-0.21,19.49,8.048],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L218": {"type":"bulbString","name":"Festival lights · tower H · stage 3 · outer corner","pos":[-0.21,19.49,12.258],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "F244": {"type":"fanNaveWall","name":"Wall fan · axis 4 · B","pos":[14.475,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F245": {"type":"fanNaveWall","name":"Wall fan · axis 4 · H","pos":[14.475,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F246": {"type":"fanNaveWall","name":"Wall fan · axis 6 · B","pos":[23.475,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F247": {"type":"fanNaveWall","name":"Wall fan · axis 6 · H","pos":[23.475,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F248": {"type":"fanNaveWall","name":"Wall fan · axis 8 · B","pos":[32.475,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F249": {"type":"fanNaveWall","name":"Wall fan · axis 8 · H","pos":[32.475,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "S279": {"type":"pendantSpeaker","name":"Veranda fill · B · 12.2","pos":[12.225,3.9,-8.85],"yaw":0,"tilt":-90,"mount":"pendant","circuit":"A2"},
+    "S280": {"type":"pendantSpeaker","name":"Veranda fill · B · 25.7","pos":[25.725,3.9,-8.85],"yaw":0,"tilt":-90,"mount":"pendant","circuit":"A2"},
+    "S281": {"type":"pendantSpeaker","name":"Veranda fill · H · 12.2","pos":[12.225,3.9,8.85],"yaw":0,"tilt":-90,"mount":"pendant","circuit":"A2"},
+    "S282": {"type":"pendantSpeaker","name":"Veranda fill · H · 25.7","pos":[25.725,3.9,8.85],"yaw":0,"tilt":-90,"mount":"pendant","circuit":"A2"},
+    "D293": {"type":"statueMary","name":"Statue · Our Lady","pos":[44.275,2.85,-5.5],"yaw":180,"tilt":0,"mount":"floor","circuit":"DECOR"},
+    "D294": {"type":"statueJoseph","name":"Statue · Saint Joseph","pos":[44.275,2.85,5.5],"yaw":180,"tilt":0,"mount":"floor","circuit":"DECOR"},
+    "D297": {"type":"floorFlowers","name":"Shrine flowers · B · outer","pos":[44.225,2.85,-6.2],"yaw":180,"tilt":0,"mount":"floor","circuit":"DECOR"},
+    "D298": {"type":"floorFlowers","name":"Shrine flowers · B · inner","pos":[44.225,2.85,-4.8],"yaw":180,"tilt":0,"mount":"floor","circuit":"DECOR"},
+    "D303": {"type":"floorFlowers","name":"Shrine flowers · H · inner","pos":[44.225,2.85,4.8],"yaw":180,"tilt":0,"mount":"floor","circuit":"DECOR"},
+    "D304": {"type":"floorFlowers","name":"Shrine flowers · H · outer","pos":[44.225,2.85,6.2],"yaw":180,"tilt":0,"mount":"floor","circuit":"DECOR"},
+    "D312": {"type":"lanternString","name":"Red lanterns · veranda B · bay 4–5","pos":[16.725,5.6,-8.85],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1"},
+    "D313": {"type":"lanternString","name":"Red lanterns · veranda H · bay 4–5","pos":[16.725,5.6,8.85],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1"},
+    "D314": {"type":"lanternString","name":"Red lanterns · veranda B · bay 5–6","pos":[21.225,5.6,-8.85],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1"},
+    "D315": {"type":"lanternString","name":"Red lanterns · veranda H · bay 5–6","pos":[21.225,5.6,8.85],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1"},
+    "D316": {"type":"lanternString","name":"Red lanterns · veranda B · bay 7–8","pos":[30.225,5.6,-8.85],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1"},
+    "D317": {"type":"lanternString","name":"Red lanterns · veranda H · bay 7–8","pos":[30.225,5.6,8.85],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1"},
+    "D318": {"type":"lanternString","name":"Red lanterns · veranda B · bay 8–9","pos":[34.725,5.6,-8.85],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1"},
+    "D319": {"type":"lanternString","name":"Red lanterns · veranda H · bay 8–9","pos":[34.725,5.6,8.85],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1"},
+    "F-NAVE-B-2P": {"type":"fanNaveWall","name":"Wall fan · axis 2′ · B","pos":[5.475,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-H-2P": {"type":"fanNaveWall","name":"Wall fan · axis 2′ · H","pos":[5.475,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-B-3": {"type":"fanNaveWall","name":"Wall fan · axis 3 · B","pos":[9.975,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-H-3": {"type":"fanNaveWall","name":"Wall fan · axis 3 · H","pos":[9.975,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-B-5": {"type":"fanNaveWall","name":"Wall fan · axis 5 · B","pos":[18.975,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-H-5": {"type":"fanNaveWall","name":"Wall fan · axis 5 · H","pos":[18.975,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-B-7": {"type":"fanNaveWall","name":"Wall fan · axis 7 · B","pos":[27.975,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-H-7": {"type":"fanNaveWall","name":"Wall fan · axis 7 · H","pos":[27.975,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-B-9": {"type":"fanNaveWall","name":"Wall fan · axis 9 · B","pos":[36.975,5.55,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-H-9": {"type":"fanNaveWall","name":"Wall fan · axis 9 · H","pos":[36.975,5.55,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+  };
+  const parishMeetingAdded = ["L-STATION-1-A","L-STATION-1-B","L-STATION-2-A","L-STATION-2-B","L-STATION-3-A","L-STATION-3-B","L-STATION-4-A","L-STATION-4-B","L-STATION-5-A","L-STATION-5-B","L-STATION-6-A","L-STATION-6-B","L-STATION-7-A","L-STATION-7-B","L-STATION-8-A","L-STATION-8-B","L-STATION-9-A","L-STATION-9-B","L-STATION-10-A","L-STATION-10-B","L-STATION-11-A","L-STATION-11-B","L-STATION-12-A","L-STATION-12-B","L-STATION-13-A","L-STATION-13-B","L-STATION-14-A","L-STATION-14-B"];
+  // END parish-meeting table
+  const untouched = (it, old) => it.type === old.type && (it.mount ?? '') === (old.mount ?? '') && (it.circuit ?? '') === (old.circuit ?? '')
+    && near(it.pos, old.pos, 0.005) && Math.abs((it.yaw ?? 0) - (old.yaw ?? 0)) < 0.01 && Math.abs((it.tilt ?? 0) - (old.tilt ?? 0)) < 0.01;
+  function upgradeParishMeeting(items, design) {
+    const next = new Map(design.map(it => [it.id, it]));
+    const kept = items.flatMap(it => {
+      const old = parishMeetingBefore[it.id];
+      if (!old || !untouched(it, old)) return [it];
+      const raw = next.get(it.id);
+      if (!raw) return [];
+      return [{ ...raw, on: it.on ?? raw.on, dim: it.dim ?? raw.dim, hidden: it.hidden ?? raw.hidden, note: it.note || raw.note }];
+    });
+    const have = new Set(items.map(it => it.id));
+    return [...kept, ...design.filter(it => parishMeetingAdded.includes(it.id) && !have.has(it.id)).map(it => ({ ...it }))];
+  }
+
   // Additive one-time issue: a saved layout gains the six outlets it does not
   // have. Outlets deleted afterwards stay deleted; nothing else is touched.
+  // Sanctuary dais, CAD file of 23 Oct 2026 (sections 25 and 45), adopted by the owner on
+  // 24 Oct 2026: +0.80 m, 0.05 m above the +0.75 m of the earlier PDF set.
+  const DAIS_Y = 0.8, DAIS_BEFORE_Y = 0.75, DAIS_RISE = DAIS_Y - DAIS_BEFORE_Y;
+  const onDais = (x, z) => x >= 39.75 && x <= 48.65 && Math.abs(z) <= 3.6;
+
+  // One-time lift for saved layouts, 24 October 2026. A dais fitting from the recommended
+  // design that is still at its old default place, and any floor-standing item still
+  // resting on the old +0.75 m dais surface, rise 0.05 m with the floor. ID, aim and
+  // switching are kept. Anything placed at another height, moved off the dais, mounted on
+  // walls or hung from the structure, and any deleted item, stays as it is.
+  const daisLevelRevision = '2026-10-24-dais-0-80-1';
+  function upgradeDaisLevel(items, design) {
+    const next = new Map(design.filter(it => it.mount === 'floor' && Array.isArray(it.pos) && onDais(it.pos[0], it.pos[2])).map(it => [it.name, it]));
+    return items.map(it => {
+      if (!Array.isArray(it.pos) || it.mount !== 'floor' || !onDais(it.pos[0], it.pos[2])) return it;
+      const raw = next.get(it.name);
+      const atOldDefault = raw && raw.type === it.type && [raw.pos[0], raw.pos[1] - DAIS_RISE, raw.pos[2]].every((v, i) => Math.abs(v - it.pos[i]) <= 0.005);
+      const onOldFloor = Math.abs(it.pos[1] - DAIS_BEFORE_Y) <= 0.005;
+      return atOldDefault || onOldFloor ? { ...it, pos: [it.pos[0], it.pos[1] + DAIS_RISE, it.pos[2]] } : it;
+    });
+  }
+
   const outletRevision = '2026-10-09-socket-outlets-1';
   const outletIds = ['B', 'H'].flatMap(code => [`P-SANCT-${code}`, `P-NAVE-${code}`, `P-TOWER-${code}`]);
   function upgradeOutlets(items, design) {
@@ -604,9 +928,11 @@
     const turn = (a, b) => Math.abs(((a - b) % 360 + 540) % 360 - 180);
     const at = (it, pos) => Array.isArray(it.pos) && it.pos.every((v, i) => Math.abs(v - pos[i]) <= 0.005);
     return items.map(it => {
+      // The nave chandeliers left the recommended design on 25 Oct 2026 (parish meeting), so this
+      // step raises an untouched one from its own recorded heights; the parish step removes it.
+      if (naveChandelier(it.name) && it.type === 'chandelier8') return Array.isArray(it.pos) && Math.abs(it.pos[1] - NAVE_CHANDELIER_BEFORE_Y) <= 0.005 && Math.abs(it.pos[2]) <= 0.005 ? { ...it, pos: [it.pos[0], NAVE_CHANDELIER_Y, it.pos[2]] } : it;
       const raw = next.get(it.name);
       if (!raw || it.type !== raw.type) return it;
-      if (naveChandelier(it.name)) return at(it, [raw.pos[0], NAVE_CHANDELIER_BEFORE_Y, raw.pos[2]]) ? { ...it, pos: [it.pos[0], raw.pos[1], it.pos[2]] } : it;
       if (!at(it, raw.pos) || turn(it.yaw ?? 0, raw.yaw) > 0.01 || Math.abs((it.tilt ?? 0) - raw.tilt) > 0.01 || ![undefined, 'black', 'bronze'].includes(it.params?.finish)) return it;
       return { ...it, params: { ...it.params, finish: raw.params.finish } };
     });
@@ -862,5 +1188,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

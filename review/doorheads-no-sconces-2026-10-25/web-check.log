@@ -1,0 +1,6 @@
+{"viewerFiles":75,"bytes":71244060}
+
+> thach-bi-web@0.1.0 check:viewer
+> node scripts/check-viewer.mjs
+
+{"viewerFiles":75,"bytes":71244060,"checks":"exact inventory, bytes, hash"}

@@ -1,5 +1,9 @@
 # Lighting system · Thạch Bi church
 
+> **Nave sconces removed and exit signs lowered, 25 October 2026:** the owner confirmed removal of the fourteen wall sconces above the nave wall fans (L82–L95), not the ceiling fixtures. Those equipment IDs and sixteen LD routes are retired. E1 retains all five signs, their stable IDs, DB-1 supply and 15 W; cases move below the coloured fanlights to fixed door heads (side centres +3.061 m; main +4.7625 m on a clip). Full-service four-block seat coverage at 200 lux falls from 89.13% to 86.96%, with minimum 97.14 lux; no output is raised to conceal that loss. The 126 W reduction is a model estimate. See [coordinated record](../engineering/doorheads-and-sconces.md) for clearance/routing checks, other seating results and unchanged emergency/visibility holds. Earlier sconce and exit-sign positions below are historical.
+
+> **Open-porch revision, 25 October 2026:** the 18 former veranda pendants L119–L136 become inner-wall path floods at Y 3.10; **36 exterior arch floods** (two per open bay) are appended on the outer pilaster faces at Y 2.60. Both sides include bays 2′–9 and 10–12. L4 retains its existing control and scene values. Each path head is a provisional 900 lm/90° concept; each arch head 750 lm/45°, 3000 K. Fixed direct-light probes improve from 3.93–12.57 to 11.54–38.38 lx on each porch walking plane; arches receive 9.59–73.23 lx. The 100-lux trial veranda target remains unmet in this direct-light comparison. Selected IES/LDT, glare/spill, weathering, supports, drivers, containment and night mock-up are pending. See [coordinated issue and evidence](../engineering/open-porch-light-sound.md). Older pendant quantities below are superseded.
+
 > **Hidden reading and tower lights, 19 October 2026:** at the owner's request the 56 nave reading heads (L1/L2) moved from black pendants under the beams to compact side-bracket projectors on the sanctuary face of the tie and side beams, finished in the beam lacquer itself (they follow the timber tone setting); the four entrance-wall reading heads take the wall plaster. The 18 tower washes and the 10 façade and front-stage floods on the tower cornices are no longer black or on 0.5 m arms: they are low light bars and compact floods in the cornice-moulding finish on the cornice ledges, the up-washes along the lips. Outputs and aims are unchanged except the belfry optics (30°, were 40°) and the dome washes (4 000 lm, were 2 500 lm, +23 W). Seats at 200 lux: 90.2 % (89.1 % before). See the [coordinated record](../engineering/hidden-fittings.md); fixings, colours, weathering and access are on hold (Q50, Q51).
 
 > **Sanctuary lights in the lacquer and nave chandeliers higher, 19 October 2026 (owner request):** all 21 L3 sanctuary fittings keep their place, aim and output and are no longer black or bronze. The 12 heads hung from the axis-9 tie and side beams (L98–L105, L115–L118) take the beam lacquer; the 9 on the chamber walls and springing cornice (crucifix, reredos, tabernacle accents and the vault uplights; L106–L114) take the chamber's own lacquer, which stays red in every timber tone. The three nave chandeliers (L78–L80) hang 1.0 m higher, at +7.3 m (candles about +6.85 m), on the same anchors; the grand chandelier stays at +9.2 m. Seats at 200 lux 90.2 % (unchanged), seat average 304 lux (305). See [sections 1.1–1.3 of the record](../engineering/hidden-fittings.md#11-sanctuary-lights-in-the-lacquer-owner-19-october-2026).
@@ -21,9 +25,9 @@ Reviewed on 5 October 2026 against the current 3D geometry. Base design version 
 | Adjacent front entrances | 2 | 0 | 0 | — | — | — |
 | Service-room entrances, B and H | 2 | 2 | 4 | DB-1 / L3 | 2.05 m | 400 lm / 2700 K / about 4 W |
 
-Exterior side-door centres are X = 16.725, 34.725 and 46.425 m on both sides. Each pair sits ±1.425 m from its door centre, on the outer wall at Z = ±10.550 m. The central front pair sits at X = 2.200 m, Z = ±2.400 m. Service-door pairs sit ±0.650 m from X = 49.600 m, on Z = ±3.700 m.
+Exterior side-door centres are X = 16.725 and 34.725 m on both sides. Each pair sits ±1.425 m from its door centre, on the porch face of the inner C/G wall at Z = ±7.520 m. (Before 25 October 2026 the pairs sat on the outer porch wall at Z = ±10.550 m and a third pair served a door at X = 46.425 m; the parish priest's meeting removed the outer wall and that door, see [parish meeting](../engineering/parish-meeting-2026-10-25.md).) The central front pair sits at X = 2.200 m, Z = ±2.400 m. Service-door pairs sit ±0.650 m from X = 49.600 m, on Z = ±3.700 m.
 
-The front pair replaces the former internal main-door sconces. The four old tower-portal lanterns are removed so the middle front door alone has a decorative pair. The 18 veranda pendants and path/stage lights remain functional lighting.
+The front pair replaces the former internal main-door sconces. The four old tower-portal lanterns are removed so the middle front door alone has a decorative pair. Since 25 October the 18 veranda pendants are replaced by wall path floods, with 36 separate arch floods; path/stage lights retain their other groups.
 
 The wall-lantern procedural envelope is approximately 404 × 440 × 240 mm, including its bracket. Sizes and ratings are planning categories, not selected manufacturer products. Service-room pairs use the same model at reduced output.
 
@@ -55,10 +59,10 @@ Six mirrored floodlights on DB-2 / L6 provide overlapping 3000 K washes from the
 | Position | Both sides | Base height | Target height | Output each | Beam |
 |---|---:|---|---|---|---|
 | Lower façade and door surrounds | 2 | 8.39 m | 2.50 m | 6000 lm | 50° |
-| Central pedestal, niche and side shrines | 2 | 8.39 m | 12.80 m | 6500 lm | 60° |
-| Upper crown and cross ornament | 2 | 15.84 m | 18.60 m | 6000 lm | 55° |
+| Upper storey: triple window, rose and side niches | 2 | 8.39 m | 12.80 m | 6500 lm | 60° |
+| Niche aedicule and cross (aimed at X 3.85, Z 0) | 2 | 15.84 m | 19.60 m | 6000 lm | 55° |
 
-The earlier downward wash aimed at +2.50 m and the 26° niche beam left a dark band over the doors at the central pedestal. Wider overlapping beams fill that band; the upper pair covers the crown up to the +21.72 m cross. These are architectural washes; the central front door retains its single decorative lantern pair.
+The earlier downward wash aimed at +2.50 m and the 26° niche beam left a dark band over the doors at the central pedestal. Wider overlapping beams fill that band; the upper pair covers the crown up to the cross. Since 24 October 2026 the central facade follows the church's CAD file ([facade model](../facade-model.md)): the upper pair is re-aimed at its niche aedicule, which stands 1.6 m further back, with the cross at +24.648 m (was +21.72 m). These are architectural washes; the central front door retains its single decorative lantern pair.
 
 Saved layouts receive this façade correction once, with existing selection IDs, switches and dimmers retained. Unrelated fixtures retain their edits. The original layout is kept in the browser under `.before-facade-review`; subsequent removals stay removed.
 

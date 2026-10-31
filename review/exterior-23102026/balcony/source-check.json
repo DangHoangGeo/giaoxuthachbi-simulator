@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "source_sha256": "2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae",
+  "unique_native_entities": 487,
+  "native_dwg_and_dxf_entities_compared": 487,
+  "closed_holes_per_elevation": 17,
+  "edges_per_hole": 12,
+  "verified_elevations": [
+    "E01B",
+    "E02"
+  ],
+  "largest_profile_transcription_difference_m": 4.801457009762089e-10,
+  "largest_native_dwg_dxf_difference_m": 4.656612873077393e-13,
+  "reader_limit": "Direct DWG JSON and DXF both use LibreDWG; independent native CAD/designer confirmation pending.",
+  "limits": "mm/m interpretation, closures, structural thickness, guarding and hidden depth remain unapproved."
+}

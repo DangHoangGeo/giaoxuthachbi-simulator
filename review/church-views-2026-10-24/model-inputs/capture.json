@@ -1,0 +1,168 @@
+{
+  "capturedAt": "2026-10-24T00:46:50.842Z",
+  "sourceCommit": "fd6c7bb53a93aa789492a0de4a4fd4ea5d421544",
+  "sourceStatus": "Owner working tree, including uncommitted CAD façade revision 2026-10-24-cad-facade-1; HEAD alone does not reproduce these images.",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "mode": "visit-only",
+  "projection": "perspective",
+  "roof": true,
+  "grid": false,
+  "notes": "Actual WebGL canvas captures; no artwork, drawing overlay or engineering-layout import/export. Cameras and display lighting only. No physical equipment change.",
+  "sourceSha256": {
+    "Thach_Bi_Viewer/facade.js": "089158cb3e0a2f797266be6d3b42c36ccbdf600044d6ceb0c7b67c45a3b4566e",
+    "Thach_Bi_Viewer/OPEN_CHURCH.html": "7dc8380067a43f9e9a10791fe6abb8b01e84d946f04560523580d8f4a913d163",
+    "Thach_Bi_Viewer/bundle.js": "6f73cca1fba826b3d7930d21401176de2835bc8956cba38f7067d443cb4879a0",
+    "Thach_Bi_Viewer/carving.js": "5624bd11c10c1c75a0c80a4f2b9612652664e6592eceff0d8a6ac6c5c70c1367",
+    "Thach_Bi_Viewer/cinematic-tour.css": "ba08658381f7a44a4e86286b8fab5280c04b8dffa6fcac0707b50ef5f9aa06a0",
+    "Thach_Bi_Viewer/cinematic-tour.js": "3cb1d56d0df9645146ab2c237430f3a56e1a4551ced84aa60aa4b039fc1b1ca7",
+    "Thach_Bi_Viewer/construction-data.js": "02bd2dee18c2e649be20d8cf4e119658a43f7278e40f581566163ad812d70c62",
+    "Thach_Bi_Viewer/construction.css": "a757f2e519807eceb3299746059698beebc329a20e25a59f1b77916190e5a386",
+    "Thach_Bi_Viewer/construction.js": "0dbf77f587a830d83a5d6110166d8f2b2bab770b75afe0ee7086caa81ce2237d",
+    "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
+    "Thach_Bi_Viewer/i18n-vi.js": "710028c598ffc17d9720c2576e92410d35a03b9285eac66ea1b478131266fb7c",
+    "Thach_Bi_Viewer/i18n.js": "90caff45df344851d75eecd2a37abfc0b44145638cbcc628a13e1b4f283e3a1e",
+    "Thach_Bi_Viewer/navigation.js": "829bedaeb24a98aea41769520546d7ac39f5953ba91a7205c2f5759f4ed11f16",
+    "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
+    "Thach_Bi_Viewer/planning/brief.html": "d2d04ddc99363137260a71ec86ca0fc8729dd82e8607f94a49e120dc187ce5cc",
+    "Thach_Bi_Viewer/planning/index.html": "3fe2df569b47baccc61a866a12adcd2c01368036a5f41798fd9ee955b67dc939",
+    "Thach_Bi_Viewer/planning/model-plan-data.js": "8ebb783952325576ceac4af41843ed6345e36aae4c08a9b2209a9a427761b351",
+    "Thach_Bi_Viewer/planning/plan.css": "4e4813e8e0b57c63fee3fbb39d5cfbfe503df651e142e5b080a42acf06466f36",
+    "Thach_Bi_Viewer/planning/plan.js": "6f4ccce9caed6f4a9f065d6ff2d590492a8a2f1ce10cde6343ec1a687dac5774",
+    "Thach_Bi_Viewer/realism.js": "2c0863c1ab12b9c1560358b8ff439dd458e7ae0cff4ee4db1501df4d86b9740b",
+    "Thach_Bi_Viewer/references.js": "f220c13ae9a9cf02f6118bb62529c107e68959e356e5b6fca9445f2f505967d5",
+    "Thach_Bi_Viewer/references/00-overview/2026-10-07/index.html": "83592348aaaa66218c3f98f5a663f14375d24e35735c1df65a7a38b8a0b058fd",
+    "Thach_Bi_Viewer/references/index.html": "d8b2d451f31b7e018991c5a113506688e1606fbd5c145f48d9514ffabb0caf9b",
+    "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",
+    "Thach_Bi_Viewer/sanctuary.js": "ecdc36a8fde43b4a09f2d6d0214e03fcf45ae627ff17965824891f7fb9bf0323",
+    "Thach_Bi_Viewer/simulator/analysis.js": "7670036a3be8f9ca423b551bc75261c2272e6c07ba077ea49a394cb9c04af849",
+    "Thach_Bi_Viewer/simulator/audio-synthesis.js": "0ac8dba169e165579126a678bcd91e8d330ac85a6956e70749c9ebf12e1aee23",
+    "Thach_Bi_Viewer/simulator/audio.js": "b5d5140c527c80e1c86e043292172505ee5cc6ed032a1392c8cf4664ee763cad",
+    "Thach_Bi_Viewer/simulator/catalog.js": "d94df77f66016709a8001fa9be0cc2e05f99ff0393e0efa98f967384e62494a1",
+    "Thach_Bi_Viewer/simulator/controls.js": "52df339ba144d28bd0b93e5276a33f5bd00909fe8c1bc3cb0bb5139117c5ce42",
+    "Thach_Bi_Viewer/simulator/design.js": "e04025704ad85d2797880b8abbac6401701da449635be786565ac3bd39f5cf48",
+    "Thach_Bi_Viewer/simulator/electrical.js": "e8688402fd48426a5f933b880b1f11682d7caa1aa23a1ac2bf0d12c5f1d317db",
+    "Thach_Bi_Viewer/simulator/engine.js": "9f149933d3a970075cfe064a24b881fed09d36c3085f757ae8c9ff1bf6d543e5",
+    "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
+    "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
+    "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
+    "Thach_Bi_Viewer/simulator/samples.js": "d249a101c740bfff5a4154ec2fcc7343e314505332191f435dcad609e83d85d3",
+    "Thach_Bi_Viewer/simulator/simulator.css": "939710fd82972aca48294132dbdc0efce9af00945eef304b3cbfb8894e58dd58",
+    "Thach_Bi_Viewer/simulator/ui.js": "38dcf29aa8a2c53792db49f647519afb0d37096b6e2e7d8c5df2162896ad8d5b",
+    "Thach_Bi_Viewer/startup.css": "7d34a7d343178a203c4594b85dd9e494cb0403da178f5b80d7959ad81fe8a0c0",
+    "Thach_Bi_Viewer/startup.js": "25ab91212d4d21a8309b9fac3500b8e71dfa17429d4e3aeb481a7ff15799e407",
+    "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
+    "Thach_Bi_Viewer/ui-cards.css": "8b459dfbc994a1882a5e4a98990bd05a00adffe45f0c207e7f6154ab23e9b094",
+    "Thach_Bi_Viewer/viewer-performance.js": "f45fee8c12aa37f9e6a7e4bcbe75b8a679b79c5241f199ccd5349edc204b60d8",
+    "Thach_Bi_Viewer/viewer.css": "dc4069318c051e6aed4c1f028659df6165ebb3aba27a222e8167c6fb6b8fa414",
+    "Thach_Bi_Viewer/wing-saint-textures.js": "8e5a469232c47bca675d670f33c7fd4daa969b4b17e58292cc4da49b30f8be35"
+  },
+  "shots": [
+    {
+      "id": "01-front-day",
+      "title": "Front façade · daylight",
+      "pos": [
+        -92,
+        8,
+        0
+      ],
+      "target": [
+        1,
+        16,
+        0
+      ],
+      "fov": 29,
+      "light": "day",
+      "sha256": "37a67df4b92a2c21acbeb4544b36eb479bfcffffe0d5b63a9184cba31d0fa187"
+    },
+    {
+      "id": "02-front-corner-day",
+      "title": "Front and long side · daylight",
+      "pos": [
+        -47,
+        19,
+        58
+      ],
+      "target": [
+        20,
+        13,
+        0
+      ],
+      "fov": 43,
+      "light": "day",
+      "sha256": "eae7820218f9a4662fa31fd2ef985233b030cd580fe3b67deb8ebbc2ccc3e68e"
+    },
+    {
+      "id": "03-opposite-corner-evening",
+      "title": "Opposite front corner · evening",
+      "pos": [
+        -47,
+        19,
+        -58
+      ],
+      "target": [
+        20,
+        13,
+        0
+      ],
+      "fov": 43,
+      "light": "evening",
+      "sha256": "c3af473c39b747f01cc722cc4c5f7a80379bef724a6f05e3ad2399b85c1a2910"
+    },
+    {
+      "id": "04-facade-detail-day",
+      "title": "Central façade and shrines · daylight",
+      "pos": [
+        -28,
+        13,
+        0
+      ],
+      "target": [
+        3,
+        13,
+        0
+      ],
+      "fov": 43,
+      "light": "day",
+      "sha256": "b8cce54168af6018b49712b9271a9e2200d848beec262d9c457a59cc62ae872e"
+    },
+    {
+      "id": "05-nave-day",
+      "title": "Nave toward sanctuary · daylight",
+      "pos": [
+        8,
+        1.7,
+        0
+      ],
+      "target": [
+        46,
+        5,
+        0
+      ],
+      "fov": 54,
+      "light": "day",
+      "sha256": "21a38097c259b85efdaf23c71cc7e92f236c6129f2e5bac2bcbb22181ac763c2"
+    },
+    {
+      "id": "06-sanctuary-evening",
+      "title": "Sanctuary · evening",
+      "pos": [
+        32.3,
+        2.5,
+        0
+      ],
+      "target": [
+        47.5,
+        5.7,
+        0
+      ],
+      "fov": 53,
+      "light": "evening",
+      "sha256": "4afb66ba22edbde390b5a9e2642c7054b8aea30320b4777f4cc214a822454a33"
+    }
+  ],
+  "errors": []
+}

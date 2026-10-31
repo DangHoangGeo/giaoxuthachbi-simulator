@@ -1,0 +1,1272 @@
+{
+  "revision": "23102026-exterior-towers-2026-10-26",
+  "status": "DRAWING SHOWN / MODEL TRANSCRIPTION; NOT FOR CONSTRUCTION",
+  "sourceSha256": "2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae",
+  "sourceDrawing": "DWG sheet 1, drawing E01B (variant B full elevation)",
+  "sourceTransform": {
+    "Z_m": "-(x_DWG_mm - 1666600.3) / 1000",
+    "Y_m": "(y_DWG_mm + 515946.8) / 1000"
+  },
+  "unitsHold": "ISSUE-R06: INSUNITS=1; mm/m interpretation from dimension chains and m labels, designer confirmation pending",
+  "softwareComparisonToleranceM": 0.002,
+  "softwareToleranceIsNotConstructionTolerance": true,
+  "features": [
+    {
+      "id": "ground-great-inner",
+      "drawing": "E01B",
+      "handle": "C449B6",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152933916,
+        3.984770309
+      ],
+      "radiusM": 1.385000208165031,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "ground-great-outer",
+      "drawing": "E01B",
+      "handle": "C449BD",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152933916,
+        3.984770309
+      ],
+      "radiusM": 1.954999999997206,
+      "anglesDegrees": [
+        0.0,
+        180.0000229718472
+      ]
+    },
+    {
+      "id": "ground-blind-inner",
+      "drawing": "E01B",
+      "handle": "C45764",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152933916,
+        2.899970309
+      ],
+      "radiusM": 0.8244787018196658,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "ground-blind-middle",
+      "drawing": "E01B",
+      "handle": "C45765",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152933916,
+        2.899970309
+      ],
+      "radiusM": 0.9744787018196658,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "ground-blind-outer",
+      "drawing": "E01B",
+      "handle": "C45766",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152933916,
+        2.899970309
+      ],
+      "radiusM": 1.139478701819666,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "upper-2-great-inner",
+      "drawing": "E01B",
+      "handle": "C44BEF",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152934391,
+        12.84661275
+      ],
+      "radiusM": 1.615338638250716,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "upper-2-great-outer",
+      "drawing": "E01B",
+      "handle": "C44BF2",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152934391,
+        12.84661275
+      ],
+      "radiusM": 1.955338638250716,
+      "anglesDegrees": [
+        358.9336632573694,
+        181.0663688578798
+      ]
+    },
+    {
+      "id": "upper-2-louvre-inner-H",
+      "drawing": "E01B",
+      "handle": "C44C38",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        9.257577453,
+        11.867964351
+      ],
+      "radiusM": 0.4996430235598236,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "upper-2-louvre-outer-H",
+      "drawing": "E01B",
+      "handle": "C44BF5",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        11.048290816,
+        11.867964351
+      ],
+      "radiusM": 0.4996430235598236,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "upper-2-sill",
+      "drawing": "E01B",
+      "handle": "C43808",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          8.757934409,
+          11.407964351
+        ],
+        [
+          8.757934409,
+          9.049968734
+        ]
+      ]
+    },
+    {
+      "id": "upper-2-rose-inner",
+      "drawing": "E01B",
+      "handle": "C4384B",
+      "type": "CIRCLE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152934409,
+        13.277964351
+      ],
+      "radiusM": 0.45
+    },
+    {
+      "id": "upper-2-rose-outer",
+      "drawing": "E01B",
+      "handle": "C4384C",
+      "type": "CIRCLE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152934409,
+        13.277964351
+      ],
+      "radiusM": 0.54
+    },
+    {
+      "id": "upper-3-great-inner",
+      "drawing": "E01B",
+      "handle": "C44C3F",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152934135,
+        19.973454138
+      ],
+      "radiusM": 1.615,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "upper-3-great-outer",
+      "drawing": "E01B",
+      "handle": "C44C40",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152934135,
+        19.973454138
+      ],
+      "radiusM": 1.924999698367901,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "upper-3-louvre-inner-H",
+      "drawing": "E01B",
+      "handle": "C44C45",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        9.257934351,
+        19.317964331
+      ],
+      "radiusM": 0.5000000000093132,
+      "anglesDegrees": [
+        0.0,
+        180.0004909198466
+      ]
+    },
+    {
+      "id": "upper-3-louvre-outer-H",
+      "drawing": "E01B",
+      "handle": "C44C3C",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        11.047934351,
+        19.317964331
+      ],
+      "radiusM": 0.5000000000093132,
+      "anglesDegrees": [
+        359.9995090801534,
+        180.0
+      ]
+    },
+    {
+      "id": "upper-3-sill",
+      "drawing": "E01B",
+      "handle": "C4386F",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          8.757933898,
+          18.857964331
+        ],
+        [
+          8.757933898,
+          16.499968713
+        ]
+      ]
+    },
+    {
+      "id": "upper-3-rose-inner",
+      "drawing": "E01B",
+      "handle": "C4389E",
+      "type": "CIRCLE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152934409,
+        20.612391717
+      ],
+      "radiusM": 0.45
+    },
+    {
+      "id": "upper-3-rose-outer",
+      "drawing": "E01B",
+      "handle": "C4389F",
+      "type": "CIRCLE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152934409,
+        20.612391717
+      ],
+      "radiusM": 0.54
+    },
+    {
+      "id": "upper-4-great-inner",
+      "drawing": "E01B",
+      "handle": "C44C8A",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.141458745,
+        26.610771934
+      ],
+      "radiusM": 1.303693158040754,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "upper-4-great-outer",
+      "drawing": "E01B",
+      "handle": "C44C8C",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.141458745,
+        26.610771934
+      ],
+      "radiusM": 1.493693366395257,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "upper-4-louvre-inner-H",
+      "drawing": "E01B",
+      "handle": "C44CCD",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        9.457112114,
+        26.149595658
+      ],
+      "radiusM": 0.3993466311120428,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "upper-4-louvre-outer-H",
+      "drawing": "E01B",
+      "handle": "C44C8F",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.825805376,
+        26.149595658
+      ],
+      "radiusM": 0.3993466311120428,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "upper-4-sill",
+      "drawing": "E01B",
+      "handle": "C4427E",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          9.057765482,
+          26.009595658
+        ],
+        [
+          9.057765482,
+          23.799970191
+        ]
+      ]
+    },
+    {
+      "id": "upper-4-rose-inner",
+      "drawing": "E01B",
+      "handle": "C44408",
+      "type": "CIRCLE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.141458932,
+        27.19152517
+      ],
+      "radiusM": 0.4142127863308997
+    },
+    {
+      "id": "upper-4-rose-outer",
+      "drawing": "E01B",
+      "handle": "C44409",
+      "type": "CIRCLE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.141458932,
+        27.19152517
+      ],
+      "radiusM": 0.44421278633089967
+    },
+    {
+      "id": "dome-shoulder-inner-side",
+      "drawing": "E01B",
+      "handle": "C4568C",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.8022792,
+        30.541187117
+      ],
+      "radiusM": 2.628673654028965,
+      "anglesDegrees": [
+        359.3839239284731,
+        58.8335113075518
+      ]
+    },
+    {
+      "id": "dome-shoulder-outer-side",
+      "drawing": "E01B",
+      "handle": "C45696",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        9.503587151,
+        30.541187117
+      ],
+      "radiusM": 2.628673654028965,
+      "anglesDegrees": [
+        121.1664886924482,
+        180.6160760715269
+      ]
+    },
+    {
+      "id": "dome-rose-inner",
+      "drawing": "E01B",
+      "handle": "C44293",
+      "type": "CIRCLE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.141458932,
+        31.699583764
+      ],
+      "radiusM": 0.4142127863308997
+    },
+    {
+      "id": "dome-rose-outer",
+      "drawing": "E01B",
+      "handle": "C44294",
+      "type": "CIRCLE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.141458932,
+        31.699583764
+      ],
+      "radiusM": 0.44421278633089967
+    },
+    {
+      "id": "lantern-plinth-bottom",
+      "drawing": "E01B",
+      "handle": "C44745",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          9.396116391,
+          32.790456676
+        ],
+        [
+          10.152933176,
+          32.790456676
+        ]
+      ]
+    },
+    {
+      "id": "lantern-plinth-top",
+      "drawing": "E01B",
+      "handle": "C44746",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          9.396116391,
+          32.983342187
+        ],
+        [
+          10.152933176,
+          32.983342187
+        ]
+      ]
+    },
+    {
+      "id": "lantern-step-top",
+      "drawing": "E01B",
+      "handle": "C44747",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          9.568742537,
+          33.111064968
+        ],
+        [
+          10.152933176,
+          33.111064968
+        ]
+      ]
+    },
+    {
+      "id": "lantern-base-top",
+      "drawing": "E01B",
+      "handle": "C46980",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          10.710701905,
+          33.231658402
+        ],
+        [
+          9.595164446,
+          33.231658402
+        ]
+      ]
+    },
+    {
+      "id": "lantern-body-top",
+      "drawing": "E01B",
+      "handle": "C46993",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          10.710701905,
+          33.731658402
+        ],
+        [
+          10.152932968,
+          33.731658402
+        ]
+      ]
+    },
+    {
+      "id": "lantern-cap-top",
+      "drawing": "E01B",
+      "handle": "C46998",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          10.735701905,
+          33.861658402
+        ],
+        [
+          10.152932968,
+          33.861658402
+        ]
+      ]
+    },
+    {
+      "id": "lantern-ball",
+      "drawing": "E01B",
+      "handle": "C44743",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152932968,
+        35.212762558
+      ],
+      "radiusM": 0.21089475134379648,
+      "anglesDegrees": [
+        299.0453743951401,
+        225.4094857427339
+      ]
+    },
+    {
+      "id": "cross-stem-inner",
+      "drawing": "E01B",
+      "handle": "C44709",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          10.071033868,
+          35.409300742
+        ],
+        [
+          10.071033868,
+          36.674270309
+        ]
+      ]
+    },
+    {
+      "id": "cross-stem-outer",
+      "drawing": "E01B",
+      "handle": "C44714",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          10.234833868,
+          35.409300742
+        ],
+        [
+          10.234833868,
+          36.674270309
+        ]
+      ]
+    },
+    {
+      "id": "cross-arm-bottom",
+      "drawing": "E01B",
+      "handle": "C4470D",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          10.071033868,
+          36.264770309
+        ],
+        [
+          9.825333868,
+          36.264770309
+        ]
+      ]
+    },
+    {
+      "id": "cross-arm-top",
+      "drawing": "E01B",
+      "handle": "C4470E",
+      "type": "LINE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "pointsZY": [
+        [
+          10.071033868,
+          36.428570309
+        ],
+        [
+          9.825333868,
+          36.428570309
+        ]
+      ]
+    },
+    {
+      "id": "cross-top",
+      "drawing": "E01B",
+      "handle": "C4470A",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.152933868,
+        36.838070309
+      ],
+      "radiusM": 0.08190000000004767,
+      "anglesDegrees": [
+        0.0,
+        90.0
+      ]
+    },
+    {
+      "id": "cross-upper-inner-lobe",
+      "drawing": "E01B",
+      "handle": "C4470B",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.071033868,
+        36.756170309
+      ],
+      "radiusM": 0.08189999999991657,
+      "anglesDegrees": [
+        270.0,
+        90.0
+      ]
+    },
+    {
+      "id": "cross-inner-end",
+      "drawing": "E01B",
+      "handle": "C4470F",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        9.661533868,
+        36.346670309
+      ],
+      "radiusM": 0.08190000000004767,
+      "anglesDegrees": [
+        270.0,
+        90.0
+      ]
+    },
+    {
+      "id": "cross-inner-upper-lobe",
+      "drawing": "E01B",
+      "handle": "C44710",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        9.743433868,
+        36.428570309
+      ],
+      "radiusM": 0.08189999999996424,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "cross-inner-lower-lobe",
+      "drawing": "E01B",
+      "handle": "C44711",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        9.743433868,
+        36.264770309
+      ],
+      "radiusM": 0.08189999999991657,
+      "anglesDegrees": [
+        180.0,
+        0.0
+      ]
+    },
+    {
+      "id": "cross-outer-end",
+      "drawing": "E01B",
+      "handle": "C4471A",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.644333868,
+        36.346670309
+      ],
+      "radiusM": 0.08190000000004767,
+      "anglesDegrees": [
+        90.0,
+        270.0
+      ]
+    },
+    {
+      "id": "cross-outer-upper-lobe",
+      "drawing": "E01B",
+      "handle": "C4471B",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.562433868,
+        36.428570309
+      ],
+      "radiusM": 0.08189999999996424,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "cross-outer-lower-lobe",
+      "drawing": "E01B",
+      "handle": "C4471C",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        10.562433868,
+        36.264770309
+      ],
+      "radiusM": 0.08189999999991657,
+      "anglesDegrees": [
+        180.0,
+        0.0
+      ]
+    },
+    {
+      "id": "B-upper-2-great-inner",
+      "drawing": "E01B",
+      "handle": "C4A5B0",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -10.153033761,
+        12.84661275
+      ],
+      "radiusM": 1.615338638250716,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "B-upper-2-great-outer",
+      "drawing": "E01B",
+      "handle": "C4A5B3",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -10.153033761,
+        12.84661275
+      ],
+      "radiusM": 1.955338638250716,
+      "anglesDegrees": [
+        358.9336311421202,
+        181.0663367426306
+      ]
+    },
+    {
+      "id": "B-upper-2-louvre-outer",
+      "drawing": "E01B",
+      "handle": "C453DD",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -11.048390186,
+        11.867964351
+      ],
+      "radiusM": 0.4996430235598236,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "B-upper-2-louvre-inner",
+      "drawing": "E01B",
+      "handle": "C45420",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -9.257676823,
+        11.867964351
+      ],
+      "radiusM": 0.4996430235598236,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "B-upper-2-rose-outer",
+      "drawing": "E01B",
+      "handle": "C4A4C8",
+      "type": "CIRCLE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -10.153033779,
+        13.277964351
+      ],
+      "radiusM": 0.54
+    },
+    {
+      "id": "B-upper-3-great-inner",
+      "drawing": "E01B",
+      "handle": "C479D5",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -10.153033504,
+        19.973454138
+      ],
+      "radiusM": 1.615,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "B-upper-3-great-outer",
+      "drawing": "E01B",
+      "handle": "C479D6",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -10.153033504,
+        19.973454138
+      ],
+      "radiusM": 1.924999698367901,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "B-upper-3-louvre-outer",
+      "drawing": "E01B",
+      "handle": "C479D2",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -11.048033721,
+        19.317964331
+      ],
+      "radiusM": 0.5000000000093132,
+      "anglesDegrees": [
+        0.0,
+        180.0004909198466
+      ]
+    },
+    {
+      "id": "B-upper-3-louvre-inner",
+      "drawing": "E01B",
+      "handle": "C479DB",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -9.258033721,
+        19.317964331
+      ],
+      "radiusM": 0.5000000000093132,
+      "anglesDegrees": [
+        359.9995090801534,
+        180.0
+      ]
+    },
+    {
+      "id": "B-upper-3-rose-outer",
+      "drawing": "E01B",
+      "handle": "C46C8E",
+      "type": "CIRCLE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -10.153033779,
+        20.612391717
+      ],
+      "radiusM": 0.54
+    },
+    {
+      "id": "B-upper-4-great-inner",
+      "drawing": "E01B",
+      "handle": "C47A1F",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -10.141558114,
+        26.610771934
+      ],
+      "radiusM": 1.303693158040754,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "B-upper-4-great-outer",
+      "drawing": "E01B",
+      "handle": "C47A21",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -10.141558114,
+        26.610771934
+      ],
+      "radiusM": 1.493693366395257,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "B-upper-4-louvre-outer",
+      "drawing": "E01B",
+      "handle": "C47A24",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -10.825904745,
+        26.149595658
+      ],
+      "radiusM": 0.3993466311120428,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "B-upper-4-louvre-inner",
+      "drawing": "E01B",
+      "handle": "C47A62",
+      "type": "ARC",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -9.457211483,
+        26.149595658
+      ],
+      "radiusM": 0.3993466311120428,
+      "anglesDegrees": [
+        0.0,
+        180.0
+      ]
+    },
+    {
+      "id": "B-upper-4-rose-outer",
+      "drawing": "E01B",
+      "handle": "C47687",
+      "type": "CIRCLE",
+      "units": "m",
+      "axes": [
+        "Z",
+        "Y"
+      ],
+      "centreZY": [
+        -10.141558302,
+        27.19152517
+      ],
+      "radiusM": 0.44421278633089967
+    }
+  ],
+  "modelLimitations": [
+    "Upper front faces only: lateral and rear upper-stage assemblies still use the preceding illustrative geometry.",
+    "Existing upper wall X planes and whole wall footprint retained; no equipment or electrical route moved.",
+    "The B front uses the mirrored H geometry; measured CAD-copy residuals about 0.1 mm are below the 2 mm software comparison tolerance.",
+    "The dome shoulder is continued by revolution about the existing axis X=2.45; this is not a verified 3D construction section. Hidden continuation below the railing is a proxy.",
+    "Moulding relief depths, carving, shutters, blade angles, glazing and cross depth remain unconfirmed. Existing rose finish is preserved.",
+    "The INSUNITS mismatch and construction engineering holds remain unresolved."
+  ]
+}

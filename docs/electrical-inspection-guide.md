@@ -52,7 +52,7 @@ Each tab lists its equipment by circuit. Click a row to select the item; the **�
 7. **Start 3D walkthrough** goes through the installation review in nine steps, each with its open questions.
 8. **Export systems JSON**, **Export schedule CSV** and **Export this review** save what you are looking at.
 
-The boards are: **DB-1** main board, **LC-1** lighting controls, **FC-1** fan controls and **AV-1** sound rack, all in the service room behind the altar; and **DB-2** inside the main doors for the towers, façade and front stage. One feeder cable joins DB-1 to DB-2.
+The boards are: **DB-1** main board, **LC-1** lighting controls, **FC-1** fan controls and **AV-1** sound rack, all in the service room behind the altar; and **DB-2** in the ground-floor room of the left tower (on site; the H-side tower) for the towers, façade and front stage, with the festival and stage event board **EB-1** beside it (since 25 October 2026). One feeder cable joins DB-1 to DB-2.
 
 Colours show the system, not the wire insulation: amber lights, brown fans, blue sound, violet microphones, teal socket outlets, red feeders. Cable thickness on screen is enlarged for viewing; it is not a cable size. A route length is measured along the centre of the route and has no allowance for slack or terminations.
 
@@ -62,7 +62,7 @@ Colours show the system, not the wire insulation: amber lights, brown fans, blue
 | --- | --- | --- | --- |
 | P-SANCT-B, P-SANCT-H | Each side of the sanctuary, on the axis-10 pier, 0.70 m above the side platform | P1 (side B), P2 (side H) · DB-1 | double 16 A outlet on a 16 A circuit |
 | P-NAVE-B, P-NAVE-H | Middle of the church, each side wall beside the axis-6 pier, 0.45 m above the floor | P1 (side B), P2 (side H) · DB-1 | double 16 A outlet on a 16 A circuit |
-| P-TOWER-B, P-TOWER-H | Inside each tower porch, on the front pier, 1.3 m above the tower floor | P3, P4 · DB-2 | lockable outdoor cabinet: one 32 A and two 16 A outlets on its own 32 A circuit |
+| P-TOWER-B, P-TOWER-H | Inside each tower room (the tower bases are closed since 25 October 2026), on the front pier, 1.3 m above the tower floor | P3, P4 · EB-1 (beside DB-2) | lockable outdoor cabinet: one 32 A and two 16 A outlets on its own 32 A circuit |
 
 - Select an outlet and move **Plugged-in load to test (W)** to try an appliance, for example 1 500 W for a cleaning machine. **Test load now** shows the amperes on that circuit and turns red if the circuit would be overloaded.
 - The two tower points are for outdoor events (stage sound, lighting, stalls). They are **switched off in the model by default** and should be kept isolated and locked outside events.

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Drawing review | Thạch Bi</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script defer src="/app.js"></script>
+  </head>
+  <body>
+    <header>
+      <div>
+        <span class="mark">TB</span>
+        <div>
+          <strong>Drawing review</strong
+          ><small>THẠCH BI · LOCAL WORKSPACE</small>
+        </div>
+      </div>
+      <div class="status">
+        IN DEVELOPMENT / ĐANG PHÁT TRIỂN <b>·</b> NOT FOR CONSTRUCTION / KHÔNG
+        DÙNG ĐỂ THI CÔNG
+      </div>
+    </header>
+    <main>
+      <aside>
+        <div class="section">
+          <p class="eyebrow">01 / SOURCE</p>
+          <h1>Open a drawing</h1>
+          <p>
+            Choose a DWG or DXF from your computer. Processing stays on this
+            machine.
+          </p>
+          <label class="open" for="file">Choose drawing <span>↗</span></label
+          ><input id="file" type="file" accept=".dwg,.dxf" /><button
+            id="project"
+            class="project"
+            hidden
+          >
+            Open local project DWG
+          </button>
+          <div id="filename" class="filename">No drawing selected</div>
+          <div id="message" role="status" aria-live="polite"></div>
+        </div>
+        <div class="section sheets">
+          <p class="eyebrow">02 / VIEWS</p>
+          <div class="row">
+            <h2>Drawing sheets</h2>
+            <span id="sheet-count">—</span>
+          </div>
+          <p id="sheet-help">Open a drawing to explore its model space.</p>
+          <div id="sheet-list"></div>
+        </div>
+        <div class="section note">
+          <p class="eyebrow">READ BEFORE USE</p>
+          <p>
+            Conversion is an approximation. Unsupported objects, XREFs, images,
+            fonts and line styles may be missing or substituted. Compare with
+            native CAD. PDF is fit to page, not a calibrated plot.
+          </p>
+          <p id="units"></p>
+        </div>
+      </aside>
+      <section class="workspace">
+        <div class="toolbar">
+          <div>
+            <p class="eyebrow">DRAWING SPACE</p>
+            <h2 id="view-title">Your drawing appears here</h2>
+          </div>
+          <div class="actions">
+            <button id="fit" disabled>Fit view</button
+            ><button id="clear" disabled>Clear selection</button
+            ><button id="export-sheet" disabled>Export sheet PDF</button
+            ><button id="export-selection" class="primary" disabled>
+              Export selection PDF
+            </button>
+          </div>
+        </div>
+        <div class="canvas" id="canvas">
+          <div class="empty" id="empty">
+            <div class="cross">+</div>
+            <strong>Start with a local drawing</strong>
+            <p>Open a DWG or DXF to view and select its geometry.</p>
+          </div>
+          <div id="drawing"></div>
+          <div class="canvas-hint" id="hint" hidden>
+            Scroll to zoom · Drag to pan · Click to select · Shift-click to add
+          </div>
+        </div>
+        <footer>
+          <span id="selection">No objects selected</span
+          ><span id="detail"
+            >Local review · no file uploaded to a cloud service</span
+          >
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>

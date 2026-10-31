@@ -1,0 +1,53 @@
+{
+  "tool": "Built-in image_gen.imagegen",
+  "entries": [
+    {
+      "id": "01-front-day",
+      "master": "masters/01-front-day.png",
+      "modelCapture": "review/church-views-2026-10-24/model-inputs/01-front-day.png",
+      "generatorFile": "exec-06d63a55-d5c3-416a-ad4b-d5c2abcfc6c2.png",
+      "initialGeneratorFile": "exec-0728bb06-74d2-4a6f-a712-2bb7e64dfd1b.png",
+      "corrected": true
+    },
+    {
+      "id": "02-front-corner-day",
+      "master": "masters/02-front-corner-day.png",
+      "modelCapture": "review/church-views-2026-10-24/model-inputs/02-front-corner-day.png",
+      "generatorFile": "exec-94ab5239-c7ce-4b96-ad2e-6267b31b8c5e.png",
+      "initialGeneratorFile": "exec-d638ae52-d39d-4979-84e1-c260be9075f5.png",
+      "corrected": true
+    },
+    {
+      "id": "03-opposite-corner-evening",
+      "master": "masters/03-opposite-corner-evening.png",
+      "modelCapture": "review/church-views-2026-10-24/model-inputs/03-opposite-corner-evening.png",
+      "generatorFile": "exec-3bfd76d6-f540-40cf-9e81-64e0511bb449.png",
+      "initialGeneratorFile": "exec-9e79d9a5-875c-4f9f-ba60-8a880f1320dc.png",
+      "corrected": true
+    },
+    {
+      "id": "04-facade-detail-day",
+      "master": "masters/04-facade-detail-day.png",
+      "modelCapture": "review/church-views-2026-10-24/model-inputs/04-facade-detail-day.png",
+      "generatorFile": "exec-d736e600-88b4-4827-96fa-b7fa48bceb1c.png",
+      "initialGeneratorFile": "exec-d736e600-88b4-4827-96fa-b7fa48bceb1c.png",
+      "corrected": false
+    },
+    {
+      "id": "05-nave-day",
+      "master": "masters/05-nave-day.png",
+      "modelCapture": "review/church-views-2026-10-24/model-inputs/05-nave-day.png",
+      "generatorFile": "exec-fb454f68-1598-42b6-bba0-2e3963ebd2d4.png",
+      "initialGeneratorFile": "exec-8369a1cc-15ed-41b1-b7b8-fae62e22fc27.png",
+      "corrected": true
+    },
+    {
+      "id": "06-sanctuary-evening",
+      "master": "masters/06-sanctuary-evening.png",
+      "modelCapture": "review/church-views-2026-10-24/model-inputs/06-sanctuary-evening.png",
+      "generatorFile": "exec-d266b536-97bc-4a51-bfd3-5034f7994b01.png",
+      "initialGeneratorFile": "exec-d266b536-97bc-4a51-bfd3-5034f7994b01.png",
+      "corrected": false
+    }
+  ]
+}

@@ -58,7 +58,7 @@ module.exports = function verifyConcealedRoutes({ SIM, T, CAT, building }) {
       const box=new T.Box3().setFromObject(o);
       rafters.push({name:o.name,min:box.min.toArray(),max:box.max.toArray(),triangles:worldTriangles(o)});
     }
-    if (o.name === 'Chamber side wall · lacquered timber') {
+    if (o.name === 'Chamber side lintel · lacquered timber') {
       const box=new T.Box3().setFromObject(o), v=o.userData.serviceVoid, sign=Math.sign(box.min.z+box.max.z);
       assert(o.userData.engineeringApproved===false && /^CONCEPT/.test(o.userData.status)
         && /pending/i.test(o.userData.source),'chamber lining remains a documented, unapproved construction proposal');

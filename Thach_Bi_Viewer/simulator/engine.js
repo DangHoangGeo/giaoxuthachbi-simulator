@@ -36,12 +36,15 @@
   let envMode = 'day', cameraInside = 0, ambientNow = 0, adaptNow = 160, timeNow = 0;
 
   const CIRCUITS = {
-    L1: { label: 'L1 · Central seating', cat: 'light', board: 'DB1', area: 'Nave' },
-    L2: { label: 'L2 · Outer seating', cat: 'light', board: 'DB1', area: 'Nave' },
+    // Parish priest, 25 Oct 2026: nave lighting is switched by area. L1 = the three bays nearest
+    // the sanctuary (6–9, “3 gian đầu”), L2 = the four bays at the entrance end (2′–6, “4 gian
+    // cuối”), which ordinary Masses may leave off or dimmed; LA (ceiling uplight) stays separate.
+    L1: { label: 'L1 · Nave · 3 front bays (6–9)', cat: 'light', board: 'DB1', area: 'Nave' },
+    L2: { label: 'L2 · Nave · 4 rear bays (2′–6)', cat: 'light', board: 'DB1', area: 'Nave' },
     L3: { label: 'L3 · Sanctuary', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' },
     L4: { label: 'L4 · Circulation & verandas', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
     LA: { label: 'LA · Roof uplight', cat: 'light', board: 'DB1', area: 'Nave' },
-    LD: { label: 'LD · Chandeliers & sconces', cat: 'light', board: 'DB1', area: 'Nave' },
+    LD: { label: 'LD · Wall sconces', cat: 'light', board: 'DB1', area: 'Nave' },
     L5: { label: 'L5 · Steps & paths', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
     L8: { label: 'L8 · Wings · choir & ministers', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' },
     L6: { label: 'L6 · Façade & towers', cat: 'light', board: 'DB2', area: 'Towers & façade' },
@@ -75,7 +78,9 @@
     // trunk heights do not move: V1 keeps the front gable, V2 the two wing
     // gables, V3 the service room. Each zone can then run on its own.
     V2: { label: 'V2 · Exhaust · wing gables', cat: 'fan', board: 'DB1', splitFrom: 'V1' },
-    V3: { label: 'V3 · Exhaust · service room', cat: 'fan', board: 'DB1', splitFrom: 'V1' }
+    V3: { label: 'V3 · Exhaust · service room', cat: 'fan', board: 'DB1', splitFrom: 'V1' },
+    // Candles below the fourteen Stations of the Cross (parish priest, 25 Oct 2026), appended.
+    LS: { label: 'LS · Stations of the Cross candles', cat: 'light', board: 'DB1', area: 'Nave' }
   };
   // Display order: a circuit split from another is listed right after it.
   const CIRCUIT_ORDER = Object.keys(CIRCUITS).filter(c => !CIRCUITS[c].splitFrom)
@@ -86,7 +91,10 @@
   // those long circuit runs back to the altar end are not needed.
   const BOARDS = {
     DB1: { label: 'DB-1 · Main board', where: 'Service room behind the altar · existing back-wall enclosure', pos: [48.895, 1.75, -1.55] },
-    DB2: { label: 'DB-2 · Towers & entrance', where: 'Inside the main doors, left of the main door', pos: [2.73, 1.5, -3.3] }
+    // Parish priest, 25 Oct 2026: the towers' board stands in the left tower (left on site and in
+    // the drawings: the H-side tower, ENG-027), on the inside of its closed front wall. Until then it
+    // stood inside the main doors at [2.73, 1.5, −3.3].
+    DB2: { label: 'DB-2 · Towers & entrance', where: 'Ground-floor room of the H-side tower (left on site), inside the closed front wall', pos: [0.24, 1.5, 9.25] }
   };
   const QUALITY = {
     // Both paths use the same physical shading. The texture path skips spots
@@ -106,7 +114,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -167,11 +175,15 @@
   const LINING_RIDGE = 12.282, LINING_SLOPE = (12.472 - 7.13) / 7.36;
   function liningY(z) { return LINING_RIDGE - LINING_SLOPE * Math.abs(z); }
 
+  // Sanctuary levels from the CAD file of 23 Oct 2026 (plan P05, sections 25 and 45): dais +0.80
+  // on a +0.16 low platform, reached by a 1.90 m flight recessed into its front, side floors
+  // +0.16 (sanctuary.js floorY). The bay behind the dais keeps +0.15.
+  const DAIS_Y = 0.8, SIDE_Y = 0.16;
   function floorY(x, z) {
     const az = Math.abs(z);
-    if (x >= 39.75 && x <= 48.65 && az <= 3.6) return 0.75;
-    if (x >= 38.2 && x < 39.75 && az <= 3.6) return Math.min(0.75, (Math.floor((x - 38.2) / 0.32) + 1) * 0.15);
-    if ((az > 3.6 && az <= 7.25 && x >= 40.33 && x <= 52.63) || (az <= 3.6 && x > 48.65 && x <= 52.85)) return 0.15;
+    const sanctuary = window.CHURCH_SANCTUARY.floorY(x, z);
+    if (sanctuary !== null) return sanctuary;
+    if (az <= 3.6 && x > 48.65 && x <= 52.85) return 0.15;
     if (x >= 2.3 && x <= 53 && az <= 7.25) return 0;
     if (x >= 37.22 && x <= 43.9 && az <= 12.95) return -0.32;
     if (x >= 5.2 && x <= 52.9 && az <= 10.45) return -0.32;
@@ -183,7 +195,9 @@
   }
   function inWing(x, z) { return x > 37.2 && x < 43.95 && Math.abs(z) > 7.25 && Math.abs(z) < 12.98; }
   // Inside the church: the nave and sanctuary, plus the two 9–10 wings under their own roof.
-  function isInterior(p) { return p[0] > 2.3 && p[0] < 53.1 && p[1] < 12.5 && (Math.abs(p[2]) < 7.3 || (inWing(p[0], p[2]) && p[1] < 9.6)); }
+  // Above the entrance hall (+8.39 m) and in front of the nave gable on axis 2′ (front face x 5.17)
+  // stands the upper façade of the CAD file of 23 Oct 2026, with its niches: outside.
+  function isInterior(p) { return p[0] > 2.3 && p[0] < 53.1 && p[1] < 12.5 && !(p[0] < 5.17 && p[1] > 8.39) && (Math.abs(p[2]) < 7.3 || (inWing(p[0], p[2]) && p[1] < 9.6)); }
   function isCovered(p) { return p[0] > 2.3 && p[0] < 53.1 && (Math.abs(p[2]) < 10.6 || (p[0] > 37 && p[0] < 44 && Math.abs(p[2]) < 13)); }
   // Shared planning approximation for sound received from the enclosed room.
   // A veranda is partly coupled; an open courtyard has no enclosed reverberant field.
@@ -198,8 +212,13 @@
     if (x >= 5.2 && x <= 52.95 && az <= 7.25) return { y: liningY(z), kind: 'roof' };
     // 9–10 wings: gabled roof, underside 9.39 m at its ridge (x 40.56), falling ≈0.79 m per m.
     if (x >= 37.22 && x <= 43.9 && az <= 12.95) return { y: Math.max(6.8, 9.39 - 0.787 * Math.abs(x - 40.56)), kind: 'roof' };
-    // Verandas: tiled lean-to roof, ≈7.15 m at the inner wall falling to ≈6.45 m at the arcade.
-    if (x >= 5.2 && x <= 52.9 && az <= 10.45) return { y: 6.988 - 0.2225 * (az - 8.0), kind: 'roof' };
+    // Porches (porches.js, 25 Oct 2026): cast slab under the tiles, a cross arch C–B / G–H on
+    // every inner axis.
+    if (x >= 5.2 && x <= 52.9 && az <= 10.45) {
+      const P = window.CHURCH_PORCHES?.spec, slab = P ? P.slabUnderside(az) : 6.988 - 0.2225 * (az - 8.0);
+      const arch = P?.crossSoffit && P.beamAxes.some(k => Math.abs(x - (GEO.axes?.[k] ?? -99)) <= P.beam.width / 2 + 0.05);
+      return arch ? { y: P.crossSoffit(az), kind: 'beam' } : { y: slab, kind: 'roof' };
+    }
     return null;
   }
 
@@ -211,7 +230,8 @@
     for (const k of GEO.columnAxes) for (const s of [-1, 1]) GEO.columns.push({ key: k, x: AX[k], z: s * 3.6, r: 0.31, y0: 0, y1: 9.4 });
     // Inner C/G walls at the 14.500 m clear faces, with each bay's arched opening.
     const bays = [['2′', '3'], ['3', '4'], ['4', '5'], ['5', '6'], ['6', '7'], ['7', '8'], ['8', '9'], ['10', '11'], ['11', '12']];
-    const doorBays = new Set(['4–5', '8–9', '10–11']);
+    // Bay 10–11 has a window since 25 Oct 2026 (parish priest: no door from the sanctuary sides to the porches).
+    const doorBays = new Set(['4–5', '8–9']);
     for (const s of [-1, 1]) for (const [x0, x1] of [[5.475, 37.22], [43.9, 52.85]]) {
       const openings = bays.map(([a, b]) => {
         const c = (AX[a] + AX[b]) / 2, door = doorBays.has(`${a}–${b}`);
@@ -219,6 +239,8 @@
       }).filter(o => o.x1 > x0 && o.x0 < x1);
       GEO.walls.push({ z: s * 7.25, x0, x1, y0: -0.4, y1: 7.13, openings });
     }
+    // The 9–10 side bays are closed to the porches on axes 9 and 10 (porches.js, 25 Oct 2026).
+    for (const s of [-1, 1]) for (const x of [AX['9'], AX['10']]) GEO.walls.push({ x, z0: Math.min(s * 7.47, s * 10.234), z1: Math.max(s * 7.47, s * 10.234), y0: -0.4, y1: 7.1, openings: [] });
     // Entrance façade (plane inside the wall, inner face at x 2.65): solid apart from the main door and
     // the two side doors, all open in the model's default state.
     GEO.walls.push({ x: 2.35, z0: -7.25, z1: 7.25, y0: -0.4, y1: 12.5, openings: [
@@ -232,8 +254,9 @@
     if (sx) {
       const { chamber: ch, centralArch: ca, sideArch: sa, wingX: wx, wingZ: wz } = sx;
       for (const s of [-1, 1]) {
-        GEO.sanctuary.walls.push({ z: s * (ch.face + ch.outer) / 2, x0: ch.x0, x1: ch.x1, y0: 0.15, y1: ch.top, openings: [] });
-        for (const e of [-1, 1]) GEO.sanctuary.boxes.push({ min: [wx - 0.31, 0.15, s * wz + e * 1.03 - 0.32], max: [wx + 1.01, 2.55, s * wz + e * 1.03 + 0.32] });
+        // Open below the lintel since 25 Oct 2026 (parish priest).
+        GEO.sanctuary.walls.push({ z: s * (ch.face + ch.outer) / 2, x0: ch.x0, x1: ch.x1, y0: ch.lintel ?? SIDE_Y, y1: ch.top, openings: [] });
+        for (const e of [-1, 1]) GEO.sanctuary.boxes.push({ min: [wx - 0.31, SIDE_Y, s * wz + e * 1.03 - 0.32], max: [wx + 1.01, 2.55, s * wz + e * 1.03 + 0.32] });
         // Shelf, and the lacquered wall that closes the bay behind the shrine up to the roof.
         GEO.sanctuary.boxes.push({ min: [wx - 0.35, 2.55, s * wz - 1.38], max: [wx + 1.01, 2.85, s * wz + 1.38] },
           { min: [wx + 0.42, 2.85, s * wz - 1.75], max: [wx + 0.55, 9.5, s * wz + 1.75] });
@@ -445,7 +468,7 @@
     // Posts take the sanctuary finish, like the round shafts of the drawn frame.
     const lacquer = window.CHURCH_SANCTUARY?.materials?.wood || timber, gilt = window.CHURCH_SANCTUARY?.materials?.gold || timber;
     axes.forEach((k, i) => {
-      const x = xs[i], floor = k === '10' ? 0.75 : 0, top = liningY(3.6) - 0.08;
+      const x = xs[i], floor = k === '10' ? DAIS_Y : 0, top = liningY(3.6) - 0.08;
       for (const s of [-1, 1]) {
         const z = s * 3.6;
         // Carved stone plinth (1.1 m) with panels on all four faces.
@@ -620,21 +643,24 @@
       m.userData = { kind: 'wall', normal }; proxyGroup.add(m); return m;
     };
     plane(50.9, 14.5, 27.65, 0, 0, 'floor');
-    plane(8.9, 7.2, 44.2, 0.75, 0, 'floor');
+    // Dais, low platform and side floors as rectangles (the recessed steps and the rounded
+    // corners are left out); the low platform lies under the dais.
+    const FL = window.CHURCH_SANCTUARY.spec.floor;
+    plane(FL.dais.back - FL.dais.front, 2 * FL.dais.half + 1, (FL.dais.front + FL.dais.back) / 2, DAIS_Y, 0, 'floor');
+    plane(FL.apron.back - FL.apron.front, 2 * FL.apron.half + 1, (FL.apron.front + FL.apron.back) / 2, SIDE_Y, 0, 'floor');
     for (const s of [-1, 1]) {
-      plane(12.3, 3.65, 46.48, 0.15, s * 5.425, 'floor');
+      plane(FL.side.x1 - FL.side.x0, 3.65, (FL.side.x0 + FL.side.x1) / 2, SIDE_Y, s * 5.425, 'floor');
       plane(47.7, 3.2, 29.05, -0.32, s * 8.85, 'floor');
       plane(6.68, 2.5, 40.56, -0.32, s * 11.7, 'floor');
       wall(31.75, 7.13, 21.35, 3.565, s * 7.25, [0, 0, -s]);
       wall(8.95, 7.13, 48.37, 3.565, s * 7.25, [0, 0, -s]);
-      wall(47.7, 6.3, 29.05, 2.83, s * 10.3, [0, 0, -s]);
-      wall(47.7, 8.4, 29.05, 2.1, s * 10.55, [0, 0, s]);
-      plane(47.7, 3.05, 29.05, 6.0, s * 8.82, 'ceiling');
+      // The porch arcade has no wall since 25 Oct 2026: things fix to its columns and to the slab.
+      plane(47.7, 3.05, 29.05, 6.55, s * 8.82, 'ceiling');
     }
     // Inner faces of the lacquered sanctuary chamber walls.
     for (const w of GEO.sanctuary?.walls.filter(w => w.z) ?? []) {
       const s = Math.sign(w.z), face = window.CHURCH_SANCTUARY.spec.chamber.face;
-      wall(w.x1 - w.x0, 7.5, (w.x0 + w.x1) / 2, 4.5, s * (face - 0.01), [0, 0, -s]);
+      wall(w.x1 - w.x0, w.y1 - w.y0, (w.x0 + w.x1) / 2, (w.y0 + w.y1) / 2, s * (face - 0.01), [0, 0, -s]);
     }
     plane(4.18, 3.6, 50.76, 0.15, 0, 'floor');
     plane(9.1, 26.7, -3.55, -0.48, 0, 'floor');
@@ -1030,7 +1056,8 @@
   }
   /* Time-align every loudspeaker to the talker (first microphone) so the
      voice is heard first and the system follows ~12 ms later (precedence). */
-  function alignDelays({ record = true, haasMs = 12 } = {}) {
+  function alignDelays({ record = true, haasMs = 12, onlyIds = null } = {}) {
+    const selected = onlyIds ? new Set(onlyIds) : null;
     const mic = micSources().find(m => m.on) || micSources()[0];
     const ref = mic ? [mic.pos[0] + mic.dir[0] * 0.45, mic.pos[1] + 0.05, mic.pos[2] + mic.dir[2] * 0.45] : [44.6, 2.3, 0];
     const c = roomModel().c;
@@ -1038,8 +1065,9 @@
     const all = speakerSources(), outside = [];
     for (const sp of all) {
       const it = sp.item;
-      if (it.circuit === 'A4') { it.delayMs = 0; continue; }
+      if (it.circuit === 'A4') { if (!selected || selected.has(it.id)) it.delayMs = 0; continue; }
       if (!isInterior(sp.src.pos)) { outside.push(sp); continue; }
+      if (selected && !selected.has(it.id)) continue;
       const { pos, f } = sp.src;
       const plane = floorY(pos[0] + f[0] * 6, pos[2] + f[2] * 6) + 1.2;
       let t = f[1] < -0.02 ? (pos[1] - plane) / -f[1] : 12;
@@ -1059,6 +1087,7 @@
     const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
     for (const sp of outside) {
       const it = sp.item, pos = sp.src.pos, s = Math.sign(pos[2]) || 1;
+      if (selected && !selected.has(it.id)) continue;
       const meet = pos[0] < 2.65 ? [3.0, 1.2, P.clamp(pos[2], -2.4, 2.4)]
         : pos[0] > 52.85 ? [52.4, 1.2, P.clamp(pos[2], -3, 3)]
         : inWing(pos[0], P.clamp(pos[2], -12.9, 12.9)) && Math.abs(pos[2]) > 12.9 ? [pos[0], 1.2, s * 12.5]
@@ -1791,16 +1820,18 @@
 
   /* ---------------------------------------------------------------- scenes */
   const SCENES = {
-    'Full service · evening': { L10: 1, L9: 1, L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1 },
-    'Weekday Mass': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1 },
-    'Prayer & adoration': { L10: 0.6, L9: 1, L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1 },
-    'Christmas & festivals': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1 },
+    'Full service · evening': { L10: 1, L9: 1, L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 1 },
+    'Weekday Mass': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6 },
+    // Parish priest, 25 Oct 2026: an ordinary Mass can leave the four rear bays dark.
+    'Ordinary Mass · rear bays off': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6 },
+    'Prayer & adoration': { L10: 0.6, L9: 1, L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.8 },
+    'Christmas & festivals': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1, LS: 1 },
     // Courtyard horns on: for crowds outside. Inside, their sound comes back
     // through the open windows late enough to blur speech, so use only then.
-    'Festival · courtyard overflow': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 1, DECOR: 1, F5: 1 },
-    'Cleaning': { L10: 0, L9: 0, L8: 1, L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1 },
-    'Night security': { L10: 0, L9: 1, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0 },
-    'All off': { L10: 0, L9: 0, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0 }
+    'Festival · courtyard overflow': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 1, DECOR: 1, F5: 1, LS: 1 },
+    'Cleaning': { L10: 0, L9: 0, L8: 1, L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1, LS: 0 },
+    'Night security': { L10: 0, L9: 1, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0, LS: 0 },
+    'All off': { L10: 0, L9: 0, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0, LS: 0 }
   };
   SIM.SCENES = SCENES;
   // Reading light each scene is meant to give on the books (lux, maintained).
@@ -1869,7 +1900,8 @@
       if (rehearsalBase) return false;
       // A change made a moment ago and not yet stored is kept before the switches are borrowed.
       if (savePending) { clearTimeout(saveTimer); saveNow(); }
-      rehearsalBase = { scene: state.scene, feed: state.settings.db2Feed, memory: state.settings.db2Memory, settings: {}, items: new Map(state.items.map(it => [it.id, rehearsalSwitches(it)])) };
+      rehearsalBase = { scene: state.scene, feed: state.settings.db2Feed, memory: state.settings.db2Memory, settings: {}, items: new Map(state.items.map(it => [it.id, rehearsalSwitches(it)])),
+        feedback: new Map(state.items.filter(it => Object.hasOwn(it, 'feedbackMargin')).map(it => [it.id, it.feedbackMargin])) };
       return true;
     },
     // One of the built-in scenes.
@@ -1910,7 +1942,12 @@
     reset() {
       const base = rehearsalBase;
       if (!base) return false;
-      for (const it of state.items) { const was = base.items.get(it.id); if (was) Object.assign(it, was); }
+      for (const it of state.items) {
+        const was = base.items.get(it.id); if (was) Object.assign(it, was);
+        // Analysis writes this derived readout during a tour. Restore absence too.
+        if (base.feedback.has(it.id)) it.feedbackMargin = base.feedback.get(it.id);
+        else delete it.feedbackMargin;
+      }
       Object.assign(state.settings, base.settings, { db2Feed: base.feed, db2Memory: base.memory });
       if (base.feed === undefined) delete state.settings.db2Feed;
       if (base.memory === undefined) delete state.settings.db2Memory;
@@ -2396,7 +2433,13 @@
       ['exhaustSplitRevision', D.exhaustSplitRevision, '.before-exhaust-split', D.upgradeExhaustSplit],
       ['hiddenFittingsRevision', D.hiddenFittingsRevision, '.before-hidden-fittings', D.upgradeHiddenFittings],
       ['finishChandelierRevision', D.finishChandelierRevision, '.before-lacquer-chandeliers', D.upgradeFinishChandeliers],
-      ['fanBeamRevision', D.fanBeamRevision, '.before-fans-on-beams', D.upgradeFanBeams]
+      ['fanBeamRevision', D.fanBeamRevision, '.before-fans-on-beams', D.upgradeFanBeams],
+      ['daisLevelRevision', D.daisLevelRevision, '.before-dais-0-80', D.upgradeDaisLevel],
+      ['facadeCadRevision', D.facadeCadRevision, '.before-cad-facade', D.upgradeFacadeCad],
+      ['parishMeetingRevision', D.parishMeetingRevision, '.before-parish-meeting', D.upgradeParishMeeting],
+      ['towerPierRevision', D.towerPierRevision, '.before-tower-pier-depth', D.upgradeTowerPiers],
+      ['verandaReviewRevision', window.CHURCH_VERANDA_REVIEW.revision, '.before-open-porch-light-sound', window.CHURCH_VERANDA_REVIEW.upgrade],
+      ['doorheadReviewRevision', window.CHURCH_DOORHEAD_REVIEW.revision, '.before-doorheads-no-sconces', window.CHURCH_DOORHEAD_REVIEW.upgrade]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;
@@ -2404,10 +2447,18 @@
       try {
         localStorage.setItem(STORAGE_KEY + suffix, JSON.stringify(previous));
         importLayout({ ...previous, items: upgrade(state.items, D.recommended(GEO, SIM), GEO) }, { record: false });
+        if (field === 'verandaReviewRevision') {
+          const old = new Map(previous.items.map(it => [it.id, it]));
+          const moved = state.items.filter(it => CAT.byId[it.type]?.speaker && (!old.has(it.id) ||
+            JSON.stringify([it.type,it.pos,it.yaw,it.tilt,it.delayMs]) !== JSON.stringify([old.get(it.id).type,old.get(it.id).pos,old.get(it.id).yaw,old.get(it.id).tilt,old.get(it.id).delayMs]))).map(it => it.id);
+          alignDelays({ record: false, onlyIds: moved });
+        }
         state.settings[field] = revision;
         if (!saveNow()) throw new Error('Updated layout could not be saved.');
       } catch (error) {
         importLayout(previous, { record: false });
+        if (previous.settings[field] === undefined) delete state.settings[field];
+        else state.settings[field] = previous.settings[field];
         console.warn(field + ' migration skipped; saved layout retained:', error.message);
       }
     }
