@@ -175,14 +175,14 @@
   const LINING_RIDGE = 12.282, LINING_SLOPE = (12.472 - 7.13) / 7.36;
   function liningY(z) { return LINING_RIDGE - LINING_SLOPE * Math.abs(z); }
 
-  // Sanctuary levels from the CAD file of 23 Oct 2026 (sections 25 and 45): dais +0.80 reached
-  // by five 0.16 m risers, side floors +0.16. The bay behind the dais keeps +0.15.
-  const DAIS_Y = 0.8, SIDE_Y = 0.16, RISER = 0.16;
+  // Sanctuary levels from the CAD file of 23 Oct 2026 (plan P05, sections 25 and 45): dais +0.80
+  // on a +0.16 low platform, reached by a 1.90 m flight recessed into its front, side floors
+  // +0.16 (sanctuary.js floorY). The bay behind the dais keeps +0.15.
+  const DAIS_Y = 0.8, SIDE_Y = 0.16;
   function floorY(x, z) {
     const az = Math.abs(z);
-    if (x >= 39.75 && x <= 48.65 && az <= 3.6) return DAIS_Y;
-    if (x >= 38.2 && x < 39.75 && az <= 3.6) return Math.min(DAIS_Y, (Math.floor((x - 38.2) / 0.32) + 1) * RISER);
-    if (az > 3.6 && az <= 7.25 && x >= 40.33 && x <= 52.63) return SIDE_Y;
+    const sanctuary = window.CHURCH_SANCTUARY.floorY(x, z);
+    if (sanctuary !== null) return sanctuary;
     if (az <= 3.6 && x > 48.65 && x <= 52.85) return 0.15;
     if (x >= 2.3 && x <= 53 && az <= 7.25) return 0;
     if (x >= 37.22 && x <= 43.9 && az <= 12.95) return -0.32;
@@ -643,9 +643,13 @@
       m.userData = { kind: 'wall', normal }; proxyGroup.add(m); return m;
     };
     plane(50.9, 14.5, 27.65, 0, 0, 'floor');
-    plane(8.9, 7.2, 44.2, DAIS_Y, 0, 'floor');
+    // Dais, low platform and side floors as rectangles (the recessed steps and the rounded
+    // corners are left out); the low platform lies under the dais.
+    const FL = window.CHURCH_SANCTUARY.spec.floor;
+    plane(FL.dais.back - FL.dais.front, 2 * FL.dais.half + 1, (FL.dais.front + FL.dais.back) / 2, DAIS_Y, 0, 'floor');
+    plane(FL.apron.back - FL.apron.front, 2 * FL.apron.half + 1, (FL.apron.front + FL.apron.back) / 2, SIDE_Y, 0, 'floor');
     for (const s of [-1, 1]) {
-      plane(12.3, 3.65, 46.48, SIDE_Y, s * 5.425, 'floor');
+      plane(FL.side.x1 - FL.side.x0, 3.65, (FL.side.x0 + FL.side.x1) / 2, SIDE_Y, s * 5.425, 'floor');
       plane(47.7, 3.2, 29.05, -0.32, s * 8.85, 'floor');
       plane(6.68, 2.5, 40.56, -0.32, s * 11.7, 'floor');
       wall(31.75, 7.13, 21.35, 3.565, s * 7.25, [0, 0, -s]);

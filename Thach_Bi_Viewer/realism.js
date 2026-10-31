@@ -47,6 +47,9 @@
     context.renderer.shadowMap.needsUpdate = true;
   }
   function floorHeight(x, z) {
+    // Dais, recessed steps, low platform and side floors of the sanctuary (sanctuary.js).
+    const sanctuary = window.CHURCH_SANCTUARY?.floorY(x, z);
+    if (sanctuary !== null && sanctuary !== undefined) return sanctuary;
     if (x >= -13.219 && x <= 0.99 && Math.abs(z) <= 13.35) {
       if (x < -8.099) return -2.08 + Math.min(16, Math.max(1, Math.floor((x + 13.219) / .32) + 1)) * .1;
       return -.48;

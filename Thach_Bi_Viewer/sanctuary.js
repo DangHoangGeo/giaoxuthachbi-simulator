@@ -13,17 +13,59 @@
     // Crucifix niche: opens through the reredos and the back wall, 1.0 m deep, its blue wall and
     // the cross standing back on a base over the service room. `shell` is the plaster casing
     // seen from the service room; `endX` its rear face.
-    niche:{half:1.9,spring:5.85,rise:1.55,floor:2.6,mouthX:47.99,backX:49,lining:.05,shell:.14,endX:49.23} };
+    niche:{half:1.9,spring:5.85,rise:1.55,floor:2.6,mouthX:47.99,backX:49,lining:.05,shell:.14,endX:49.23},
+    // Floor outline of the sanctuary front from the CAD file of 23 Oct 2026, ground plan P05
+    // (handles D7BF11–D7BF2B) and section A-A S45 (D7E205–D7E211), checked with the owner on
+    // 1 Nov 2026. A low platform at +0.16 runs round the dais; the dais rises 0.64 m from it to
+    // +0.80; the only steps are a flight 1.90 m wide recessed into the dais front on the axis.
+    // `front`/`half`: front edge and its half-width; each front corner steps back 0.10 m into a
+    // 0.40 m quarter round, so the sides stand at half + 0.50. The dais keeps its back edge at the
+    // chamber (48.65); the plan line runs to 48.565. Side floors continue from the platform's
+    // back edge at the axis-10 piers to the bay behind the shrines.
+    floor:{revision:'2026-11-01-sanctuary-floor-cad-1',
+      apron:{front:37.475,half:5,back:44.065},dais:{front:38.475,half:4,back:48.65},
+      stair:{x0:38.475,x1:39.345,half:.95,tread:.29},side:{x0:44.065,x1:52.63,inner:3.63,outer:7.11}} };
   // Floor levels from the church's CAD file of 23 October 2026 (sections 25 and 45), adopted
   // by the owner on 24 October 2026: dais +0.80 (the PDF set had +0.75) and side floors +0.16
   // (+0.15). The bundle still places its furnishings on +0.75, so prepare() lifts that group.
-  const DAIS=.8,SIDE=.16,BUNDLE_DAIS=.75;
+  // Section A-A draws the low platform at +0.16 and four 0.16 m risers above it (the plan label
+  // reads +0,15; the owner described 150 + 650 mm). Treads 0.29 m.
+  const DAIS=.8,SIDE=.16,BUNDLE_DAIS=.75,RISER=.16;
+  // Inside a platform outline, in plan; az is |z|.
+  const inside=(o,x,az)=>{
+    if(x<o.front||x>o.back||az>o.half+.5)return false;
+    if(az<=o.half||x>=o.front+.5)return true;
+    return x>=o.front+.1&&(x-o.front-.5)**2+(az-o.half)**2<=.16;
+  };
+  const onDais=(x,z)=>inside(spec.floor.dais,x,Math.abs(z));
+  // Finished floor of the sanctuary front, or null where the rest of the church decides.
+  function floorY(x,z){
+    const F=spec.floor,S=F.stair,az=Math.abs(z);
+    if(inside(F.dais,x,az))return x<S.x1&&az<=S.half?Math.min(DAIS,SIDE+RISER*(1+Math.floor((x-S.x0)/S.tread))):DAIS;
+    if(inside(F.apron,x,az))return SIDE;
+    if(x>=F.side.x0&&x<=F.side.x1&&az>3.6&&az<=7.25)return SIDE;
+    // Round the low platform, up to the axis-10 piers, the floor stays at nave level.
+    if(x>=F.apron.front&&x<F.side.x0&&az<=7.2)return 0;
+    return null;
+  }
+  // Plan outline (x, z) of a platform, with the stepped quarter-round front corners and an
+  // optional recess in the middle of its front edge.
+  function planOutline(o,recess){
+    const pts=[[o.back,-o.half-.5],[o.front+.5,-o.half-.5]];
+    for(let i=0;i<=8;i++){const a=-Math.PI/2-i*Math.PI/16;pts.push([o.front+.5+.4*Math.cos(a),-o.half+.4*Math.sin(a)]);}
+    pts.push([o.front,-o.half]);
+    if(recess)pts.push([o.front,-recess.half],[recess.x1,-recess.half],[recess.x1,recess.half],[o.front,recess.half]);
+    pts.push([o.front,o.half]);
+    for(let i=0;i<=8;i++){const a=Math.PI+i*Math.PI/16;pts.push([o.front+.5+.4*Math.cos(a),o.half-.4*Math.sin(a)]);}
+    pts.push([o.front+.5,o.half+.5],[o.back,o.half+.5]);
+    return pts;
+  }
   // Underside of the boarded roof lining, as in the simulator.
   const roofY=u=>12.282-.7258*Math.abs(u)-.1;
   // Owner-selected brighter red, 8 October 2026. Display finish, not measured reflectance.
   const LACQUER='#853125';
   const SATIN_TONE=.84;
-  window.CHURCH_SANCTUARY = { spec, prepare, roofY };
+  window.CHURCH_SANCTUARY = { spec, prepare, roofY, floorY, onDais };
   function prepare({THREE:T,building,interior,data,mat,palettes}) {
     spec.frameX=data.longitudinal[spec.frameAxis];spec.wingX=data.longitudinal[spec.shrineAxis]+.255;
     const remove=[];
@@ -42,6 +84,7 @@
     const lift=DAIS-BUNDLE_DAIS;
     building.traverse(o=>{if(o.name.startsWith('Proposed sanctuary furnishings'))o.position.y+=lift;});
     building.traverse(o=>{if(o.name.startsWith('Proposed sanctuary crucifix') || o.name.startsWith('Illustrative bronze corpus'))o.position.y-=lift;});
+    rebuildFloor();
     building.updateMatrixWorld(true);
     const root=new T.Group();root.name='Reference sanctuary · red lacquer and gilded relief';building.add(root);
     const tabernacle=[];
@@ -408,6 +451,24 @@
     // and cresting from the lobed arch up to the roof lining, just in front of the plaster arch.
     const rear11=group('Axis-11 side arches · red lacquer and gilding',spec.arch11.x,0);
     for(const sign of [-1,1])lobedFrame(rear11,sign*spec.arch11.z,spec.arch11.half,spec.arch11,'Axis-11 side spandrel · lacquer and gilding',14);
+    // The bundle's dais ran the full 7.20 m between the column lines and was reached by five
+    // full-width steps from x 38.2. It is replaced by the CAD outline (spec.floor).
+    function rebuildFloor(){
+      const old=[];
+      building.traverse(o=>{if(/^(Sanctuary central platform|Sanctuary side platform|Sanctuary step profile)/.test(o.name))old.push(o);});
+      const first=old.find(o=>o.name.startsWith('Sanctuary central platform'));
+      if(!first)return;
+      const parent=first.parent,floorMat=first.material;
+      for(const o of old){o.removeFromParent();o.geometry.dispose();}
+      const F=spec.floor,S=F.stair,status='SOURCE OUTLINE AND LEVELS (DWG 2026-10-23 P05, S45, S25) / FINISH SCHEMATIC';
+      const add=(geometry,y,name,source)=>{const o=new T.Mesh(geometry,floorMat);o.name=name;o.userData={status,source};o.position.y=y;o.castShadow=o.receiveShadow=true;parent.add(o);return o;};
+      // Extruded downwards from the top: the shape's (x, z) map to model x and z.
+      const slab=(pts,top,name,source)=>{const g=new T.ExtrudeGeometry(new T.Shape(pts.map(([x,z])=>new T.Vector2(x,z))),{depth:top,bevelEnabled:false});g.rotateX(Math.PI/2);return add(g,top,name,source);};
+      slab(planOutline(F.dais,S),DAIS,'Sanctuary central platform +0.800','Plan P05 outline (D7BF11, D7BF14, D7BF18, D7BF21, D7BF24, D7BF27); level S25 800 mm, S45 platform line');
+      slab(planOutline(F.apron),SIDE,'Sanctuary low platform +0.160','Plan P05 outline (D7BF13, D7BF16, D7BF1B, D7BF23, D7BF26, D7BF2A); S45 riser D7E205 and top D7E20F');
+      for(const sign of [-1,1]){const b=F.side,w=b.outer-b.inner;add(new T.BoxGeometry(b.x1-b.x0,SIDE,w),SIDE/2,'Sanctuary side platform +0.160','Section 25 level; plan P05 edge D7BF17/D7BF2B at the axis-10 piers').position.set((b.x0+b.x1)/2,SIDE/2,sign*(b.inner+w/2));}
+      for(let k=1;k<=3;k++){const x0=S.x0+(k-1)*S.tread,top=SIDE+k*RISER;add(new T.BoxGeometry(S.x1-x0,top-SIDE,2*S.half),0,`Sanctuary recessed step +${top.toFixed(3)}`,'Plan P05 D7BF1C–D7BF20 (1.90 m wide); S45 D7E206–D7E20C, 160 mm risers, 290 mm treads').position.set((x0+S.x1)/2,(SIDE+top)/2,0);}
+    }
     data.sanctuary={...spec,crossShift,reference:'references/02-sanctuary/concepts/09-sanctuary-approved-concept.png',materials:['oxblood lacquer','oxblood lacquer, satin (cross, niche boards, furniture)','carved lacquered timber','gilded carved relief','gilded scrollwork on lacquer','gilded relief','gilded vault boarding','blue niche','shrine niche blue','carved figure, natural wood','carved figure, darker tone','crimson upholstery','forged iron nail','pale stone','dark marble inset'],roofTimber:'oxblood lacquer with gilded soffit lines; natural tones remain a simulator setting',status:'Image-led concept; ornamental profiles, relief textures and sculpture are generated approximations'};
     data.assumptions.push('Sanctuary revised from the approved concept and section sheet 5: the three-lobed frame stands on the axis-10 columns in lacquered timber, without a tie beam, and its side arches open into passages, and the Marian and Joseph shrines stand at the back of those passages in the side arches of axis 11, level with the crucifix (parish priest, 25 October 2026), with 2.2 m service entrances below raised niches. A timber-lined chamber with a gilded boarded vault runs from the frame back to the reredos on axis 11, where the crucifix stands in a niche 1.0 m deep that opens through the back wall onto a base over the service room. The bay behind each shrine is closed in lacquered timber above the shelf, and every round column on the D/E lines is lacquered: the nave columns have turned bases on panelled stone pedestals, carved capitals, junction blocks and dies with gilded lotus panels, and the two frame columns keep gilded bands and capitals. The tie beams, side beams, rafters, purlins, ridge and braces take the same lacquer, with gilded lines and bosses on the nave rafters and ridge; the boarded roof lining stays ivory. The reredos, chamber, shrines and front frame carry generated gilded relief, crocketed pinnacles and leaf crestings after the 7 October interior views; the niches are blue with a soft glow, the corpus is carved wood with a gilded cloth and the tabernacle is gilded under a dome. Member sizes, the roof thrust on axis 10 and the relief are proposals within the retained building grids.');
   }

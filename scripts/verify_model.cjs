@@ -248,8 +248,9 @@ const seats=planPews.flatMap(pew=>Array.from({length:Math.floor((pew.length-.075
 }));
 assert.equal(seats.filter(s=>s.layout===4).length,288);
 assert.equal(seats.filter(s=>s.layout===2).length,288);
-// The row in front of the bay 8–9 crossing is removed: at least 3.9 m stays open before the sanctuary steps (x 38.2).
+// The row in front of the bay 8–9 crossing is removed: at least 3.1 m stays open before the sanctuary's low platform (x 37.475).
 assert(Math.max(...pewNodes.map(o=>bounds(o).max.x))<=34.3,'No bench stands in front of the bay 8–9 crossing');
+assert(37.475-Math.max(...pewNodes.map(o=>bounds(o).max.x))>=3.1,'At least 3.1 m clear between the front benches and the sanctuary platform');
 assert.equal(seats.filter(s=>s.block==='central'&&s.blocked.altar).length,0);
 assert(seats.some(s=>s.block==='outer'&&s.blocked.altar));
 const sightlineSummary=Object.fromEntries([2,4].map(blocks=>{
@@ -488,7 +489,7 @@ for(const o of ceilings)assert(!bounds(o).intersectsBox(casing),'Ceiling slab do
 const amboFoot=nodes.find(o=>o.name==='Proposed ambo foot'),altarFoot=nodes.find(o=>o.name==='Proposed altar foot');
 near(bounds(amboFoot).getCenter(new T.Vector3()).x,41.3,'Ambo position');
 assert(bounds(altarFoot).min.x-bounds(amboFoot).max.x>=2,'At least 2 m between the ambo and the altar');
-assert(bounds(amboFoot).min.x-39.75>=1,'Ambo stays 1 m back from the edge of the dais');
+assert(bounds(amboFoot).min.x-39.345>=1,'Ambo stays 1 m back from the head of the sanctuary steps');
 // Dais and side floors at the levels of the CAD file of 23 Oct 2026 (sections 25 and 45),
 // with the free-standing furniture on the dais floor and the cross still on its niche base.
 {
@@ -496,9 +497,18 @@ assert(bounds(amboFoot).min.x-39.75>=1,'Ambo stays 1 m back from the edge of the
   const platform=nodes.find(o=>o.name==='Sanctuary central platform +0.800');
   assert(platform&&near(bounds(platform).max.y,.8),'dais top at +0.80 m');
   const sides=nodes.filter(o=>o.name==='Sanctuary side platform +0.160');
-  assert(sides.length===2&&sides.every(o=>near(bounds(o).max.y,.16)),'side floors at +0.16 m');
-  const steps=nodes.filter(o=>o.name.startsWith('Sanctuary step profile')).map(o=>bounds(o).max.y).sort((a,b)=>a-b);
-  assert(steps.length===5&&steps.every((y,i)=>near(y,.16*(i+1))),'five 0.16 m risers up to the dais');
+  assert(sides.length===2&&sides.every(o=>near(bounds(o).max.y,.16)&&near(bounds(o).min.x,44.065)),'side floors at +0.16 m from the axis-10 piers');
+  // Plan P05 and section A-A of the CAD file (owner check, 1 Nov 2026): a +0.16 low platform
+  // round the dais and one flight 1.90 m wide recessed into the dais front; no full-width steps.
+  assert(!nodes.some(o=>o.name.startsWith('Sanctuary step profile')),'old full-width steps removed');
+  const pb=bounds(platform),low=nodes.find(o=>o.name==='Sanctuary low platform +0.160'),lb=low&&bounds(low);
+  assert(near(pb.min.x,38.475)&&near(pb.max.x,48.65)&&near(pb.max.z,4.5)&&near(pb.min.z,-4.5),'dais outline x 38.475–48.65, z ±4.50');
+  assert(lb&&near(lb.max.y,.16)&&near(lb.min.x,37.475)&&near(lb.max.x,44.065)&&near(lb.max.z,5.5)&&near(lb.min.z,-5.5),'low platform +0.16, x 37.475–44.065, z ±5.50');
+  const flight=nodes.filter(o=>o.name.startsWith('Sanctuary recessed step')).map(bounds).sort((a,b)=>a.max.y-b.max.y);
+  assert(flight.length===3&&flight.every((b,i)=>near(b.max.y,.32+.16*i)&&near(b.min.x,38.475+.29*i)&&near(b.max.x,39.345)&&near(b.max.z-b.min.z,1.9)),'three recessed steps, 1.90 m wide, 0.16 m risers, 0.29 m treads');
+  const fy=(x,z)=>realism.floorHeight(x,z);
+  for(const [x,z,y,what] of [[37.3,0,null,'nave in front of the platform (left to the nave rules)'],[37.6,4.9,.16,'low platform corner'],[37.6,5.3,0,'outside the rounded corner'],[38.6,0,.32,'first step'],[38.9,.9,.48,'second step'],[39.2,-.9,.64,'third step'],[39.4,0,.8,'head of the steps'],[38.6,2,.8,'dais front beside the steps'],[42,4.4,.8,'dais beside the axis-10 columns'],[42,5.2,.16,'low platform beside the dais'],[42,6.5,0,'wing crossing floor'],[46,6.5,.16,'side floor behind axis 10']])
+    assert(y===null?fy(x,z)===null:fy(x,z)!==null&&near(fy(x,z),y),`${what}: floor ${fy(x,z)} at x ${x}, z ${z}, expected ${y}`);
   for(const foot of [amboFoot,altarFoot])assert(near(bounds(foot).min.y,.8),'furniture stands on the dais: '+foot.name);
   const plinths=nodes.filter(o=>o.name==='Carved stone column base on the dais');
   assert(plinths.length===2&&plinths.every(o=>near(bounds(o).min.y,.8)&&near(bounds(o).max.y,1)),'axis-10 plinths +0.80 to +1.00 m');
