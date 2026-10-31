@@ -1,0 +1,18 @@
+
+> thach-bi-web@0.1.0 test
+> vitest run viewer-files
+
+
+ RUN  v5.0.3 <workspace>/web
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  20:38:29
+   Duration  268ms (tests 74%, transform 16%, import 9%, worker 2%)
+
+npm notice
+npm notice New major version of npm available! 10.9.7 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

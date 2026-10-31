@@ -1,0 +1,80 @@
+ID,Part / witness,Parameter,Value (mm),Value (m),Drawing,Source,Basis,Axes,a1 (mm),a2 (mm),b1 (mm),b2 (mm),Limits / interpretation
+DWG0001,Overall ground-plan extent,Length,67063.6,67.0636,P05,DIMENSION handle D7C2D8,DRAWING SHOWN,X/Z,-13218.6,-14822.8,53845.0,-14822.8,"Plan witness X -13.2186 to +53.8450 m; differs from longitudinal section, ISSUE-C01."
+DWG0385,Overall longitudinal-section extent,Length,67149.4,67.1494,S45,DIMENSION handle D7DBF5,DRAWING SHOWN,X/Y,-13194.3,-3493.7,53955.1,-3493.7,"Section witness X -13.1943 to +53.9551 m; retain both extents, ISSUE-C01."
+DWG0004,Typical nave bay (axes 5-6),Grid spacing,4500.0,4.5,P05,DIMENSION handle D7C476,DRAWING SHOWN,X/Z,18975.0,15327.6,23475.0,15327.6,"4.500 m typical bay; a grid distance, not a clear opening."
+DWG0003,Sanctuary bay (axes 9-10),Grid spacing,7200.0,7.2,P05,DIMENSION handle D7C47E,DRAWING SHOWN,X/Z,36975.0,15184.9,44175.0,15327.6,7.200 m grid distance.
+DWG0347,Central transverse bay D-E,Grid spacing,7200.0,7.2,S25,DIMENSION handle DA19A3,DRAWING SHOWN,Z/Y,-3600.0,-2800.8,3600.0,-2800.8,Z -3.600 to +3.600 m; not the clear width between column faces.
+DWG0346,Transverse bay C-D,Grid spacing,3760.0,3.76,S25,DIMENSION handle DA19A2,DRAWING SHOWN,Z/Y,-7360.0,-2800.8,-3600.0,-2800.8,Z -7.360 to -3.600 m.
+DWG0345,Transverse bay B-C,Grid spacing,3054.0,3.054,S25,DIMENSION handle DA199F,DRAWING SHOWN,Z/Y,-10414.0,-2800.8,-7360.0,-2800.8,Z -10.414 to -7.360 m.
+DWG0009,Transverse bay H-I,Grid spacing,2835.0,2.835,P05,DIMENSION handle D7C492,DRAWING SHOWN,X/Z,-14997.6,13249.0,-14997.6,10414.0,Z +10.414 to +13.249 m.
+DWG0311,Nave section overall witness,Width,22388.0,22.388,S24,DIMENSION handle D9E27C,DRAWING SHOWN,Z/Y,-11194.0,-2080.0,11194.0,-2080.0,"Z +/-11.194 m; a section envelope, distinct from the plan/facade widths."
+DWG0196,Twin-tower elevation overall witness,Width,27254.2,27.2542,E01B,DIMENSION handle C4566D,DRAWING SHOWN,Z/Y,13627.1,-3820.6,-13627.2,-3820.6,27.2542 m between the elevation witnesses; not the nave section width.
+DWG0210,Negative-Z tower base witness,Width,4900.0,4.9,E01B,DIMENSION handle C45673,DRAWING SHOWN,Z/Y,-12603.0,-2080.0,-7703.0,-2080.0,4.900 m dimension at courtyard level; confirm selected construction surfaces.
+DWG0222,Tower courtyard-to-cross top,Height,39000.0,39.0,E01B,DIMENSION handle C45681,DRAWING SHOWN,Z/Y,-15358.7,-2080.0,-15358.7,36920.0,39.000 m = +36.920 minus courtyard -2.080 m.
+DWG0223,Nave floor above courtyard,Height,2080.0,2.08,E01B,DIMENSION handle C45677,DRAWING SHOWN,Z/Y,-14753.6,-2080.0,-14552.0,0.0,2.080 m datum difference.
+DWG0224,First tower stage,Height,8390.0,8.39,E01B,DIMENSION handle C45678,DRAWING SHOWN,Z/Y,-14552.0,0.0,-14331.3,8390.0,0.000 to +8.390 m.
+DWG0225,Second tower-stage rise,Height,7450.0,7.45,E01B,DIMENSION handle C45679,DRAWING SHOWN,Z/Y,-14331.3,8390.0,-14191.3,15840.0,+8.390 to +15.840 m.
+DWG0195,Central facade pier chain,Width,5958.8,5.9588,E01B,DIMENSION handle C45670,DRAWING SHOWN,Z/Y,2979.4,-4522.4,-2979.4,-4522.4,"5.9588 m between witnesses, flanked by 0.6206 m each side. Rounded labels need not close to 1 mm."
+DWG0212,Central door half-width witness,Half width,2979.4,2.9794,E01B,DIMENSION handle D7FF61,DRAWING SHOWN,Z/Y,2979.4,0.0,0.0,0.0,2.9794 m from centreline to witness; do not assume a door-leaf fabrication width.
+DWG0228,Central door vertical witness,Height,4900.0,4.9,E01B,DIMENSION handle C4567A,DRAWING SHOWN,Z/Y,-696.4,0.0,-696.4,4900.0,4.900 m floor-to-head witness.
+DWG0226,Side door vertical witness,Height,3756.0,3.756,E01B,DIMENSION handle C4567D,DRAWING SHOWN,Z/Y,-5569.6,0.0,-5569.6,3756.0,3.756 m floor-to-head witness.
+DWG0312,Nave timber-column section witness,Width,594.0,0.594,S24,DIMENSION handle D9E253,DRAWING SHOWN,Z/Y,-3897.0,3138.3,-3303.0,3138.3,594 mm at the shown level; residual carved section and structural capacity unverified.
+DWG0338,Nave column-base rise,Height,600.0,0.6,S24,DIMENSION handle D9E239,DRAWING SHOWN,Z/Y,3006.8,0.0,3325.0,600.0,600 mm floor-to-base witness.
+DWG0339,Nave timber-column vertical witness,Height,8801.5,8.8015,S24,DIMENSION handle D9E242,DRAWING SHOWN,Z/Y,3020.3,600.0,3644.8,9401.5,"8801.5 mm between the dimension endpoints, not an inferred bearing length."
+DWG0342,Nave courtyard-to-ridge drawn witness,Height,14476.4,14.4764,S24,DIMENSION handle D9E021,DRAWING SHOWN,Z/Y,12485.4,-2080.0,181.5,12396.4,"Ends at Y +12.3964 m; labels +12.472 m, ISSUE-R05 / RFI-S01."
+DWG0383,Sanctuary side cornice witness,Height,6325.0,6.325,S25,DIMENSION handle DA1C4D,DRAWING SHOWN,Z/Y,11306.8,0.0,11220.3,6325.0,"6325 mm in section; elevations give 6324 mm, RFI-S02."
+DWG0378,Sanctuary platform rise,Height,800.0,0.8,S25,DIMENSION handle DA1C41,DRAWING SHOWN,Z/Y,2567.6,0.0,2567.6,800.0,"800 mm used by owner direction; ground-plan label still 750 mm, ISSUE-R04."
+DWG0373,Sanctuary side floor rise,Height,160.0,0.16,S25,DIMENSION handle DA1C03,DRAWING SHOWN,Z/Y,-4986.3,0.0,-4990.4,160.0,160 mm used by owner direction; older PDF and plan label 150 mm.
+DWG0380,Sanctuary column base above dais,Height,200.0,0.2,S25,DIMENSION handle DA1C4A,DRAWING SHOWN,Z/Y,3321.0,1000.0,2879.8,800.0,"200 mm, endpoints Y +0.800 to +1.000 m."
+DWG0357,Sanctuary central stepped element,Width,1900.0,1.9,S25,DIMENSION handle DA1C44,DRAWING SHOWN,Z/Y,-949.0,800.0,951.0,800.0,"1900 mm at Y +0.800 m, Z -0.949 to +0.951 m. Steps, not a confirmed altar table."
+DWG0372,Sanctuary opening lower chain,Height,2544.2,2.5442,S25,DIMENSION handle DA1C06,DRAWING SHOWN,Z/Y,-4990.4,160.0,-4878.4,2704.2,2544.2 mm between Y +0.160 and +2.7042 m; ISSUE-R03.
+DWG0376,Sanctuary opening intermediate chain,Height,466.3,0.4663,S25,DIMENSION handle DA1C09,DRAWING SHOWN,Z/Y,-4878.4,2704.2,-4886.8,3170.5,466.3 mm between Y +2.7042 and +3.1705 m; ISSUE-R03.
+DWG0375,Sanctuary opening upper chain,Height,4392.2,4.3922,S25,DIMENSION handle DA1C0C,DRAWING SHOWN,Z/Y,-4886.8,3170.5,-5462.0,7562.7,4392.2 mm between Y +3.1705 and +7.5627 m; ISSUE-R03.
+DWG0377,Sanctuary inner vertical witness A,Height,6231.0,6.231,S25,DIMENSION handle DA1C0F,DRAWING SHOWN,Z/Y,-2911.2,3170.5,-3600.0,9401.5,"6231 mm; older PDF 6301 mm, ISSUE-R03."
+DWG0379,Sanctuary inner vertical witness B,Height,8524.6,8.5246,S25,DIMENSION handle DA1C47,DRAWING SHOWN,Z/Y,3303.0,9524.5,3321.0,1000.0,"8524.6 mm, approximately 8525; older PDF 8452 mm, ISSUE-R03."
+DWG0381,Sanctuary side opening reference,Height,3170.5,3.1705,S25,DIMENSION handle DA1C32,DRAWING SHOWN,Z/Y,6379.1,0.0,6379.1,3170.5,"3170.5 mm rounded measurement; retain source precision and CAD label, ISSUE-R03."
+DWG0240,Window-bay elevation module,Grid spacing,4500.0,4.5,E26,DIMENSION handle DA3D32,DRAWING SHOWN,u/v,1614.5,1597.3,6114.5,1597.3,4500 mm. Local u/v endpoints are not global XYZ.
+DWG0251,Window-bay lower opening witness,Height,2100.5,2.1005,E26,DIMENSION handle DA3D38,DRAWING SHOWN,u/v,2864.5,3079.2,2864.5,5179.7,2100.5 mm between dimension endpoints; not a complete window fabrication schedule.
+DWG0562,Window detail outer vertical witness,Height,2440.5,2.4405,D29,DIMENSION handle DAD681,DRAWING SHOWN,u/v,2854.6,3046.5,2763.9,5487.0,2440.5 mm in D29; verify the shown edges before procurement.
+DWG0281,Doorway-bay outer opening witness,Width,2250.0,2.25,E31,DIMENSION handle DA2E91,DRAWING SHOWN,u/v,2739.8,2434.2,4989.8,2434.2,2250 mm in E31; distinct from the 1845 mm inner witness.
+DWG0279,Doorway-bay inner opening witness,Width,1845.0,1.845,E31,DIMENSION handle DA30D4,DRAWING SHOWN,u/v,9078.2,2229.1,10923.2,2229.1,1845 mm in E31; verify finishes and leaves separately.
+DWG0288,Doorway-bay vertical witness,Height,2950.5,2.9505,E31,DIMENSION handle DA309D,DRAWING SHOWN,u/v,4301.2,2229.1,4989.8,5179.6,2950.5 mm in E31.
+DWG0597,Door detail outer opening witness,Width,2250.0,2.25,D34,DIMENSION handle DAD767,DRAWING SHOWN,u/v,2224.5,2088.9,4474.5,1973.1,2250 mm in D34; local axes only.
+DWG0636,Door detail overall vertical witness,Height,3100.5,3.1005,D34,DIMENSION handle DAD75B,DRAWING SHOWN,u/v,3349.5,4607.0,3349.5,1506.5,3100.5 mm between the shown edges.
+DWG0686,Steel arch-frame grid span,Grid spacing,7200.0,7.2,D46,DIMENSION handle DA5CD6,DRAWING SHOWN,u/v,3194.6,1034.3,10394.6,1034.3,"7200 mm in D46; load path, steel sections and connections remain ENGINEERING HOLD."
+DWG0691,Steel arch-frame inner span witness,Width,6606.0,6.606,D46,DIMENSION handle DA5CCD,DRAWING SHOWN,u/v,3491.6,2527.0,10097.6,2519.0,6606 mm; local u/v endpoints only.
+DWG0682,Steel arch inclined outer witness,Inclined length,4278.2,4.2782,D46,DIMENSION handle DA5C91,DRAWING SHOWN,u/v,3254.6,8729.6,6794.6,11131.9,4278.2 mm; no member capacity inferred.
+DWG0715,Concrete arch-frame grid span,Grid spacing,7200.0,7.2,D47,DIMENSION handle DA5CE2,DRAWING SHOWN,u/v,3194.6,947.5,10394.6,947.5,7200 mm in D47; reinforcement and connection design remain ENGINEERING HOLD.
+DWG0717,Concrete arch-frame inner span witness,Width,6606.0,6.606,D47,DIMENSION handle DA5CDC,DRAWING SHOWN,u/v,3491.6,2580.0,10097.6,3105.0,6606 mm; local u/v endpoints only.
+DWG0712,Concrete arch inclined outer witness,Inclined length,4779.5,4.7795,D47,DIMENSION handle DA5D00,DRAWING SHOWN,u/v,2839.7,8871.1,6794.6,11554.9,4779.5 mm; no member capacity inferred.
+F01,Ground-storey cornice top over the side bays,Y level,8390.0,8.39,E01B,facade.csv F01 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/Y,,,,,8.390; Kept from the bundle's traced facade; also the +8.390 level label
+F04,Upper-storey plinth top (terrace),Y level,9741.0,9.741,E01B,facade.csv F04 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/Y,,,,,9.741; Floor of the side niches and of the room behind the triple window
+F06,Upper entablature top,Y level,15840.0,15.84,E01B,facade.csv F06 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/Y,,,,,15.840; Also the +15.840 level label and plan PT15
+F08,Central great arch extrados,Radius,2270.0,2.27,E01B,facade.csv F08 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/Y,,,,,"r 2.270 about +12.677; Rings at r 2.070 and 2.200 drawn between; arc centre (0, 12677) mm, radius 2270 mm"
+F09,Central great arch intrados,Radius,1960.0,1.96,E01B,facade.csv F09 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/Y,,,,,"r 1.960; Tympanum face inside it; arc centre (0, 12677) mm, radius 1960 mm"
+F10,Triple window outer lights,Radius,430.0,0.43,E01B,facade.csv F10 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/Y,,,,,"centres ±1.190, r 0.430 about +12.241; Glazing r 0.375; rings to r 0.650; arc centre (-1190, 12241) mm, radius 430 mm"
+F12,Triple window glazing edge and sill,Y level,9984.0,9.984,E01B,facade.csv F12 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/Y,,,,,sill +9.984; Lights 0.830 m wide between colonnettes
+F15,Side niche (intrados),Radius,599.0,0.599,E01B,facade.csv F15 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/Y,,,,,"r 0.599 about +12.308; crown +12.907; pedestal top +10.391 m; statue placement is CONCEPT; arc centre (-5350, 12308) mm, radius 599 mm"
+F17,Central niche (intrados),Radius,711.0,0.711,E01B,facade.csv F17 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/Y,,,,,"r 0.711 about +18.893; crown +19.604; Pedestal 15.997–16.683; arc centre (0, 18893) mm, radius 711 mm"
+F18,Central aedicule arch extrados,Radius,1112.0,1.112,E01B,facade.csv F18 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/Y,,,,,"r 1.112; arc centre (0, 18893) mm, radius 1112 mm"
+F22,Cross top,Y level,24648.0,24.648,E01B,facade.csv F22 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/Y,,,,,24.648; Highest point of the central facade
+F23,Central pier front at the plinth,X position,1562.0,1.562,PT10,facade.csv F23 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/X,,,,,X 1.562; Plan at +10.128 m; X from axis 1
+F24,Central bay wall face,X position,2936.0,2.936,PT10,facade.csv F24 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/X,,,,,X 2.936
+F25,Triple window plane,X position,3556.0,3.556,PT10,facade.csv F25 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/X,,,,,X 3.556 (louvres); Room behind from X 3.666 to 4.716
+F26,Side bay wall face,X position,4017.0,4.017,PT10,facade.csv F26 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/X,,,,,X 4.017
+F27,Side bay wall back,X position,4936.0,4.936,PT10,facade.csv F27 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/X,,,,,X 4.936
+F28,Pinnacle pedestal front,X position,2096.0,2.096,PT15,facade.csv F28 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/X,,,,,X 2.096; Plan at +15.840 m
+F29,Aedicule pier front,X position,3805.0,3.805,PT15,facade.csv F29 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/X,,,,,X 3.805
+F30,Central niche column front,X position,3915.0,3.915,PT15,facade.csv F30 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/X,,,,,X 3.915
+F31,Central niche (plan),Radius,711.0,0.711,PT15,facade.csv F31 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/X,,,,,"centre X 4.225, r 0.711; Niche back X 4.936; aedicule back X 5.046; arc centre (0, 4225) mm, radius 711 mm"
+F32,Cresting balustrade front,X position,3376.0,3.376,PT15,facade.csv F32 (geometry checked within 1.5 mm),DERIVED / TRACED,Z/X,,,,,X 3.376; Fleur-de-lis posts at 617 mm spacing
+LEVEL-E01B--2080,Courtyard datum,Y level,-2080,-2.08,E01B,"levels.csv E01B: - 2,08M",DRAWING SHOWN,Y,,,,,"Label - 2,08M; marker -2080.0 mm; matches."
+LEVEL-E01B-0,Nave floor datum,Y level,0,0.0,E01B,levels.csv E01B: +00M,DRAWING SHOWN,Y,,,,,Label +00M; marker 0.0 mm; matches.
+LEVEL-E01B-8390,Tower lower-stage level,Y level,8390,8.39,E01B,"levels.csv E01B: + 8,390M",DRAWING SHOWN,Y,,,,,"Label + 8,390M; marker 8390.0 mm; matches."
+LEVEL-E01B-15840,Tower upper-stage level,Y level,15840,15.84,E01B,"levels.csv E01B: + 15,840M",DRAWING SHOWN,Y,,,,,"Label + 15,840M; marker 15840.0 mm; matches."
+LEVEL-E01B-23140,Tower intermediate level,Y level,23140,23.14,E01B,"levels.csv E01B: + 23,140M",DRAWING SHOWN,Y,,,,,"Label + 23,140M; marker 23140.0 mm; matches."
+LEVEL-E01B-29090,Tower cap base level,Y level,29090,29.09,E01B,"levels.csv E01B: + 29,09M",DRAWING SHOWN,Y,,,,,"Label + 29,09M; marker 29090.0 mm; matches."
+LEVEL-E01B-36920,Tower cross top above nave floor,Y level,36920,36.92,E01B,"levels.csv E01B: + 36,920M",DRAWING SHOWN,Y,,,,,"Label + 36,920M; marker 36920.0 mm; matches."
+LEVEL-EW-6324,Wing cornice label,Y level,6324,6.324,EW,"levels.csv EW: + 6,324M",DRAWING SHOWN,Y,,,,,"Label + 6,324M; marker 6323.9 mm; matches. Section 6325 mm differs by 1 mm; RFI-S02."
+LEVEL-EW-9830,Wing roof reference label,Y level,9830,9.83,EW,"levels.csv EW: + 9,830M",DRAWING SHOWN,Y,,,,,"Label + 9,830M; marker 9829.6 mm; matches. Exact roof surface remains to be confirmed, ISSUE-C02."
+LEVEL-EW-15187,Wing cross-top label,Y level,15187,15.187,EW,"levels.csv EW: + 15,187M",DRAWING SHOWN,Y,,,,,"Label + 15,187M; marker 15186.9 mm; matches."

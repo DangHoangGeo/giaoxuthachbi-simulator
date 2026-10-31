@@ -176,6 +176,25 @@ def csv_checks(output, equipment, routes):
     return lengths, len(vertices)
 
 
+def grid_offset(value, axes):
+    """Independent restatement of the printed set-out: nearest axis (lower value on a tie) and offset."""
+    best = sorted(axes.items(), key=lambda kv: (round(abs(value - kv[1]), 6), kv[1]))[0]
+    delta = round(value - best[1], 2)
+    return best[0] + ("-" if delta < 0 else "+") + format(abs(delta), ".2f")
+
+
+def vertex_tokens(points, grid):
+    tokens = []
+    for n, p in enumerate(points):
+        h = "h" + ("-" if round(p[1], 2) < 0 else "+") + format(abs(p[1]), ".2f")
+        q = points[n - 1] if n else None
+        if q is not None and math.hypot(p[0] - q[0], p[2] - q[2]) < .005:
+            tokens.append(h)
+        else:
+            tokens.append(grid_offset(p[0], grid["longitudinal"]) + "/" + grid_offset(p[2], grid["transverse"]) + " " + h)
+    return tokens
+
+
 def fragments(page):
     """Use the PDF's independent text operators; each table cell is a text run."""
     result = []
@@ -212,6 +231,65 @@ def table_rows(runs, header):
     return body
 
 
+def coordinate_ids(runs, sheet, data, equipment, tr, language):
+    """Circuit-sheet coordinate table: printed X/Y/Z and grid set-out against the snapshot."""
+    rows = baseline_rows(runs)
+    headers = [row for row in rows if [r["text"] for r in row[:4]] == [tr("ID"), "X", "Y", "Z"]]
+    require(len(headers) == 1, f"Coordinate headings missing on {sheet}")
+    positions = [r["x"] for r in headers[0][:4]]
+    ids = []
+    for row in rows:
+        cells = [r for r in row if r["x"] >= positions[0] - .1]
+        if not cells or cells[0]["text"] not in equipment:
+            continue
+        require(len(cells) >= 4 and all(abs(cells[d]["x"] - positions[d]) < .1 for d in range(4)),
+                f"Equipment coordinate columns do not align: {cells[0]['text']}")
+        item_id = cells[0]["text"]
+        for actual, expected in zip(cells[1:4], equipment[item_id]["position"]):
+            require(abs(float(actual["text"]) - expected) <= .0005001,
+                    f"Printed equipment coordinate differs: {item_id}")
+        pos = equipment[item_id]["position"]
+        expected_setout = printable(grid_offset(pos[0], data["grid"]["longitudinal"]) + "/" +
+                                    grid_offset(pos[2], data["grid"]["transverse"]), language)
+        require(len(cells) >= 5 and cells[4]["text"] == expected_setout,
+                f"Printed grid set-out differs: {item_id}")
+        ids.append(item_id)
+    return ids
+
+
+def route_setout_rows(runs, sheet, tr):
+    """RS sheet rows as [ref, note code, length, joined vertex chain]."""
+    rows = baseline_rows(runs)
+    heads = [n for n, row in enumerate(rows) if row[0]["text"] == tr("Ref") and abs(row[0]["x"] - 14 * MM) < .5]
+    require(len(heads) == 1, f"Route set-out header missing on {sheet}")
+    result = []
+    for row in rows[heads[0] + 1:]:
+        if not 20 * MM < row[0]["y"] < 250 * MM:
+            continue
+        chain = " ".join(r["text"] for r in row if r["x"] >= 100 * MM - .5)
+        if abs(row[0]["x"] - 14 * MM) < .5 and re.fullmatch(r"R\d{3,}", row[0]["text"]):
+            require(len(row) >= 5, f"Route set-out row is incomplete: {row[0]['text']}")
+            result.append([row[0]["text"], row[2]["text"], row[3]["text"], chain])
+        else:
+            require(result and chain, f"Orphan route set-out line on {sheet}")
+            result[-1][3] += " " + chain
+    return result
+
+
+def check_setout_rows(setout_rows, routes, expected_ids, lengths, data, language):
+    """Each expected route once, with the global reference, note code, length and recomputed vertices."""
+    refs = {route_id: f"R{n:03}" for n, route_id in enumerate(routes, 1)}
+    codes = {note: f"I{n:02}" for n, note in enumerate(sorted({r["installation"] for r in routes.values()}), 1)}
+    by_ref = {refs[route_id]: route_id for route_id in expected_ids}
+    require(Counter(r[0] for r in setout_rows) == Counter(list(by_ref)), "Route set-out schedule repeats or omits a route")
+    for ref, code, length, chain in setout_rows:
+        route = routes[by_ref[ref]]
+        require(code == codes[route["installation"]], f"Route set-out installation code differs: {ref}")
+        require(abs(float(length) - lengths[route["id"]]) <= .0050001, f"Route set-out length differs: {ref}")
+        expected = " > ".join(printable(t, language) for t in vertex_tokens(route["points"], data["grid"]))
+        require(" ".join(chain.split()) == expected, f"Route set-out vertices differ: {ref}")
+
+
 def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks, language):
     reader = PdfReader(str(output / pdf_name(language)))
     def tr(value, **fields):
@@ -225,7 +303,7 @@ def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks
     for key, expected in [("equipment", len(equipment)), ("routes", len(routes)),
                           ("vertices", sum(len(r["points"]) for r in routes.values()))]:
         require(manifest["counts"][key] == expected, f"Manifest {key} count differs")
-    pages, all_runs = [], []
+    pages, all_runs, setout_rows = [], [], []
     for number, (page, entry) in enumerate(zip(reader.pages, index), 1):
         require(abs(float(page.mediabox.width) - 420 * MM) < .1 and
                 abs(float(page.mediabox.height) - 297 * MM) < .1,
@@ -255,21 +333,9 @@ def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks
         elif re.fullmatch(r"E-\d{3}(?:-\d+)?", entry["sheet"]) and entry["sheet"] != "E-000":
             # Right-hand coordinate table: use its printed ID/X/Y/Z headings,
             # rather than accidentally counting a label elsewhere in the plan.
-            rows = baseline_rows(runs)
-            headers = [row for row in rows if [r["text"] for r in row[:4]] == [tr("ID"), "X", "Y", "Z"]]
-            require(len(headers) == 1, f"Coordinate headings missing on {entry['sheet']}")
-            positions = [r["x"] for r in headers[0][:4]]
-            for row in rows:
-                cells = [r for r in row if r["x"] >= positions[0] - .1]
-                if not cells or cells[0]["text"] not in equipment:
-                    continue
-                require(len(cells) >= 4 and all(abs(cells[d]["x"] - positions[d]) < .1 for d in range(4)),
-                        f"Equipment coordinate columns do not align: {cells[0]['text']}")
-                item_id = cells[0]["text"]
-                for actual, expected in zip(cells[1:4], equipment[item_id]["position"]):
-                    require(abs(float(actual["text"]) - expected) <= .0005001,
-                            f"Printed equipment coordinate differs: {item_id}")
-                plan_ids.append(item_id)
+            plan_ids += coordinate_ids(runs, entry["sheet"], data, equipment, tr, language)
+        elif entry["sheet"].startswith("RS-"):
+            setout_rows += route_setout_rows(runs, entry["sheet"], tr)
     compare_ids([r[0]["text"] for r in eq_rows], equipment, "PDF equipment schedule IDs")
     require(Counter(r[0]["text"] for r in eq_rows) == Counter({key: 1 for key in equipment}),
             "PDF equipment schedule repeats or omits an installed item")
@@ -302,6 +368,9 @@ def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks
                     f"Printed audio home-run length differs: {route_id}")
         else:
             require(values[6] == "-", f"Non-home-run has an audio cable quantity: {route_id}")
+    check_setout_rows(setout_rows, routes, list(routes), lengths, data, language)
+    tower = [page for page, entry in zip(pages, index) if entry["sheet"] == "TW-01"]
+    require(len(tower) == 1 and tr("RISERS IN THE TOWER FRONT WALL") in tower[0], "Tower riser sheet missing")
     require(len({s["id"] for s in data["sheets"]}) == len(data["sheets"]), "Drawing scopes repeat")
     expected_circuits = {item["circuit"] for item in equipment.values()}
     require({s["id"] for s in data["sheets"]} == expected_circuits | {"distribution"},
@@ -324,13 +393,13 @@ def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks
                 embedded.add(str(font["/BaseFont"]))
         require(len(embedded) == 2, "Vietnamese regular/bold fonts are not both embedded")
         require(all("\ufffd" not in page for page in pages), "PDF text contains replacement glyphs")
-    return f"{len(reader.pages)} A3 pages; exact ID coverage; coordinates and 3D lengths"
+    return f"{len(reader.pages)} A3 pages; exact ID coverage; coordinates, grid set-out, {len(setout_rows)} route vertex chains and 3D lengths"
 
 
-def layout_checks(output, checks, language):
+def layout_checks(output, checks, language, path=None):
     tiny = Counter()
     collisions, offpage = [], []
-    with pdfplumber.open(output / pdf_name(language)) as pdf:
+    with pdfplumber.open(path or output / pdf_name(language)) as pdf:
         for number, page in enumerate(pdf.pages, 1):
             for char in page.chars:
                 if not char["text"].strip():
@@ -442,6 +511,69 @@ def refusal_checks(output, data, language):
     return f"{len(rejected)} invalid inputs rejected; delivered files untouched"
 
 
+def package_checks(output, data, equipment, routes, lengths, checks):
+    """Vietnamese system packages: exact circuit split, IDs, set-out and plain-language guide pages."""
+    import system_packages_vi as packages
+    folder = output / packages.FOLDER
+    manifest = json.loads((folder / "manifest.json").read_text())
+    require(manifest["language"] == "vi" and "not for construction" in manifest["status"].lower(), "Package manifest status/language")
+    require(manifest["snapshot"] == digest(output / "model-snapshot.json") and manifest["gitRevision"] == data["gitRevision"],
+            "Packages were not built from this snapshot")
+    expected_files = {p["key"] + ".pdf" for p in packages.PACKAGES}
+    compare_ids(manifest["files"], expected_files, "Package files")
+    for name, checksum in manifest["files"].items():
+        require(digest(folder / name) == checksum, f"Stale or altered package: {name}")
+    owners = Counter(c for p in packages.PACKAGES for c in p["circuits"])
+    require(owners == Counter({s["id"]: 1 for s in data["sheets"]}), "Each circuit must be in exactly one package")
+    sheets = {s["id"]: s for s in data["sheets"]}
+    tr = lambda value, **fields: printable(translated_text(value, "vi", **fields), "vi")
+    grid = data["grid"]
+    total_pages = 0
+    for package, listed in zip(packages.PACKAGES, manifest["packages"]):
+        name = package["key"] + ".pdf"
+        require(listed["file"] == name and listed["circuits"] == package["circuits"], f"Package manifest order differs: {name}")
+        items = set().union(*(sheets[c]["itemIds"] for c in package["circuits"]))
+        scope = set().union(*(sheets[c]["routeIds"] for c in package["circuits"]))
+        sources = set().union(*(sheets[c]["sources"] for c in package["circuits"]))
+        require(set(listed["equipment"]) == items and set(listed["routes"]) == scope and set(listed["sources"]) == sources,
+                f"Package scope differs from its circuits: {name}")
+        reader = PdfReader(str(folder / name))
+        require(len(reader.pages) == listed["pages"] == len(listed["index"]), f"Package page count differs: {name}")
+        runs = [fragments(page) for page in reader.pages]
+        texts = [" ".join(" ".join(r["text"] for r in page).split()) for page in runs]
+        plan_ids, ds_rows, setout_rows = [], [], []
+        for number, (entry, page_runs, text) in enumerate(zip(listed["index"], runs, texts), 1):
+            for label in [entry["sheet"], tr("NOT FOR CONSTRUCTION"), tr("A3 / sheet {page:02}", page=number), data["gitRevision"][:10]]:
+                require(label in text, f"{name} page {number} omits {label}")
+            if re.fullmatch(r"E-\d{3}(?:-\d+)?", entry["sheet"]):
+                plan_ids += coordinate_ids(page_runs, entry["sheet"], data, equipment, tr, "vi")
+            elif entry["sheet"].startswith("RS-"):
+                setout_rows += route_setout_rows(page_runs, entry["sheet"], tr)
+            elif entry["sheet"].startswith("DS-"):
+                ds_rows += table_rows(page_runs, ["STT", "Mã", "Tên thiết bị / tủ điện", "Mạch", "Tủ", "Trục dọc",
+                                                  "Trục ngang", "Cao h", "Cách lắp", "Vẽ ở tờ"])
+        guide = " ".join(texts[:2])
+        for line in package["stop"] + packages.STOP_COMMON + [package["purpose"]]:
+            require(" ".join(printable(line, "vi").split()) in guide, f"{name} guide omits: {line[:40]}")
+        require([r["sheet"] for r in listed["index"][:2]] == ["HD-01", "HD-02"], f"{name} does not open with its guide")
+        require(Counter(plan_ids) == Counter({i: 1 for i in items}), f"{name} plan tables repeat or omit equipment")
+        require(Counter(r[1]["text"] for r in ds_rows) == Counter({i: 1 for i in items | sources}),
+                f"{name} device list repeats or omits an item or board")
+        for row in ds_rows:
+            ident = row[1]["text"]
+            pos = equipment[ident]["position"] if ident in equipment else data["full"]["sources"][ident]["pos"]
+            h = "h" + ("-" if round(pos[1], 2) < 0 else "+") + format(abs(pos[1]), ".2f")
+            expected = [grid_offset(pos[0], grid["longitudinal"]), grid_offset(pos[2], grid["transverse"]), h]
+            require([printable(row[n]["text"], "vi") for n in (5, 6, 7)] == [printable(v, "vi") for v in expected],
+                    f"{name} device list set-out differs: {ident}")
+            if ident in equipment:
+                require(row[3]["text"] == equipment[ident]["circuit"], f"{name} device circuit differs: {ident}")
+        check_setout_rows(setout_rows, routes, [r for r in routes if r in scope], lengths, data, "vi")
+        total_pages += len(reader.pages)
+        layout_checks(folder, checks, "vi", folder / name)
+    return f"{len(packages.PACKAGES)} packages, {total_pages} pages; every circuit once; device lists, plan tables and route vertices recomputed"
+
+
 def language_equivalence(output, other_output, index, data, manifest):
     other_manifest = json.loads((other_output / 'manifest.json').read_text())
     other_index = json.loads((other_output / 'drawing-index.json').read_text())
@@ -491,6 +623,9 @@ def main():
         checks.run("PDF geometry, identifiers and schedules", lambda: pdf_checks(
             output, data, manifest, index, equipment, routes, csv_result["lengths"], checks, args.language))
     checks.run("Text bounding-box screening", lambda: layout_checks(output, checks, args.language))
+    if args.language == "vi" and "lengths" in csv_result:
+        checks.run("Vietnamese system packages", lambda: package_checks(
+            output, data, equipment, routes, csv_result["lengths"], checks))
     checks.run("Builder stale-data refusal", lambda: refusal_checks(output, data, args.language))
     if args.compare_language:
         checks.run("Language source/geometry equivalence", lambda: language_equivalence(

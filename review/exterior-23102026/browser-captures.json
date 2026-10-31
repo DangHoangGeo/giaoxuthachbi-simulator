@@ -1,0 +1,244 @@
+[
+  {
+    "file": "after-tower-B-front-day.png",
+    "state": "Sau · Tháp B: trước/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-tower-H-front-day.png",
+    "state": "Sau · Tháp H: trước/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-tower-B-rear-day.png",
+    "state": "Sau · Tháp B: sau/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-tower-H-rear-day.png",
+    "state": "Sau · Tháp H: sau/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-side-B-day.png",
+    "state": "Sau · Bên B · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-side-H-day.png",
+    "state": "Sau · Bên H · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-rear-perspective-day.png",
+    "state": "Sau · Đầu cung thánh · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-front-day.png",
+    "state": "Sau · Mặt tiền · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-tower-B-front-evening.png",
+    "state": "Sau · Tháp B: trước/bên · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-tower-B-rear-evening.png",
+    "state": "Sau · Tháp B: sau/bên · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-tower-H-front-evening.png",
+    "state": "Sau · Tháp H: trước/bên · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-rear-perspective-evening.png",
+    "state": "Sau · Đầu cung thánh · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-side-B-evening.png",
+    "state": "Sau · Bên B · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "after-side-H-evening.png",
+    "state": "Sau · Bên H · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "10d84e7 frozen tower module",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "before-tower-B-front-day.png",
+    "state": "Trước · Tháp B: trước/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "session entry geometry baseline",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "before-tower-H-front-day.png",
+    "state": "Trước · Tháp H: trước/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "session entry geometry baseline",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "before-tower-B-rear-day.png",
+    "state": "Trước · Tháp B: sau/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "session entry geometry baseline",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "before-tower-H-rear-day.png",
+    "state": "Trước · Tháp H: sau/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "session entry geometry baseline",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "before-side-B-day.png",
+    "state": "Trước · Bên B · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "session entry geometry baseline",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "before-side-H-day.png",
+    "state": "Trước · Bên H · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "session entry geometry baseline",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "before-rear-perspective-day.png",
+    "state": "Trước · Đầu cung thánh · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "session entry geometry baseline",
+    "method": "native AX settled, native screenshot"
+  },
+  {
+    "file": "before-front-day.png",
+    "state": "Trước · Mặt tiền · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "revision": "session entry geometry baseline",
+    "method": "native AX settled, native screenshot"
+  }
+]

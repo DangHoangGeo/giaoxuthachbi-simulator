@@ -60,8 +60,8 @@
     if (!SIM.isInterior(p)) return SIM.roomCouplingAt(p) > 0 ? 'veranda' : 'outside';
     if (SIM.inWing(x, z)) return 'wing';
     if (az > 7.25) return 'veranda';
-    if (x >= 39.75 && x <= 48.65 && az <= 3.6) return 'sanctuary';
-    if (x > 38.2) return 'sanctuary-side';
+    if (window.CHURCH_SANCTUARY.onDais(x, z)) return 'sanctuary';
+    if (x >= window.CHURCH_SANCTUARY.spec.floor.apron.front) return 'sanctuary-side';
     const seated = SIM.GEO.seats.some(s => Math.abs(s.x - x) < 0.6 && Math.abs(s.z - z) < 0.6);
     if (seated) return az > 4 ? 'outer' : 'central';
     return 'aisle';

@@ -1,0 +1,16 @@
+{
+  "unchanged_from_entry": true,
+  "sha256": {
+    "docs/electrical-grid/categories/decoration/register.xlsx": "8567f1698c836ea7d0697090c2eb5d59c04962bfe1fcac0e35599f4d3c920523",
+    "docs/electrical-grid/categories/exit-signs/register.xlsx": "54b7fba6dcf818af6f6b2686f14f29e3668aa2e56be07cb1d3861f36b13a8a62",
+    "docs/electrical-grid/categories/air-system/register.xlsx": "6f363769300e153239e30bc2d2a3beb04d8eb8d1758d284f7824d9b342dc3943",
+    "docs/electrical-grid/categories/distribution-controls/register.xlsx": "5202b4b51f809681204cc298ad92e692d569d7ae37bf2a565760bcd46c073144",
+    "docs/electrical-grid/categories/lighting/register.xlsx": "980830211103e7e042393bd3cc7b0e5ac60314db0b00d2010cd78dd80a91cecd",
+    "docs/electrical-grid/categories/sound/register.xlsx": "8b4bd09c7dd7170bc75ccc0b2787dd49d4128fb6e255dd44312f6ecb02a96333",
+    "docs/electrical-grid/equipment-layout.json": "7c1a6ae032dbd01386904860712420f709c0fb9e882f21073752052bd7cf4cf8",
+    "docs/electrical-grid/electrical-systems.json": "087848f4829e68939c554cae738f985aa50a0201ffa810ec1a2fe55b9c30c71b",
+    "docs/electrical-grid/electrical-schedule.csv": "6bf7bb4bce67c61c14f014bb6eb9baf523d2c6e02d0f53b99d0df57fcf52ce6f",
+    "docs/electrical-grid/summary-report.md": "48dc87303aefa24814f4baabf813fe886a455c92c5fbcabfbfc5373c8f064058"
+  },
+  "scope": "No equipment/route input or category workbook overwritten by this exterior revision."
+}

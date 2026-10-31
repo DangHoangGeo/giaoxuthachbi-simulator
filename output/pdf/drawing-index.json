@@ -17,12 +17,12 @@
   {
     "page": 4,
     "sheet": "E-003",
-    "title": "L1 \u00b7 Central seating"
+    "title": "L2 \u00b7 Nave \u00b7 4 rear bays (2\u2032\u20136)"
   },
   {
     "page": 5,
     "sheet": "E-004",
-    "title": "L2 \u00b7 Outer seating"
+    "title": "L1 \u00b7 Nave \u00b7 3 front bays (6\u20139)"
   },
   {
     "page": 6,
@@ -36,186 +36,306 @@
   },
   {
     "page": 8,
-    "sheet": "E-007",
-    "title": "LD \u00b7 Chandeliers & sconces"
+    "sheet": "E-007-1",
+    "title": "L4 \u00b7 Circulation & verandas"
   },
   {
     "page": 9,
-    "sheet": "E-008",
+    "sheet": "E-007-2",
     "title": "L4 \u00b7 Circulation & verandas"
   },
   {
     "page": 10,
-    "sheet": "E-009",
+    "sheet": "E-008",
     "title": "L9 \u00b7 Front stage & central door"
   },
   {
     "page": 11,
-    "sheet": "E-010",
+    "sheet": "E-009",
     "title": "L5 \u00b7 Steps & paths"
   },
   {
     "page": 12,
-    "sheet": "E-011",
+    "sheet": "E-010",
     "title": "E1 \u00b7 Exit signs"
   },
   {
     "page": 13,
-    "sheet": "E-012",
+    "sheet": "E-011",
     "title": "L6 \u00b7 Fa\u00e7ade & towers"
   },
   {
     "page": 14,
-    "sheet": "E-013",
+    "sheet": "E-012",
     "title": "L7 \u00b7 Festival exterior (strings & tower floods)"
   },
   {
     "page": 15,
-    "sheet": "E-014",
+    "sheet": "E-013",
     "title": "F1 \u00b7 Ceiling fans"
   },
   {
     "page": 16,
-    "sheet": "E-015",
+    "sheet": "E-014",
     "title": "F5 \u00b7 Wing wall fans \u00b7 held review"
   },
   {
     "page": 17,
-    "sheet": "E-016",
+    "sheet": "E-015",
     "title": "F2 \u00b7 Wall fans"
   },
   {
     "page": 18,
-    "sheet": "E-017",
+    "sheet": "E-016",
     "title": "F4 \u00b7 Entrance circulators (trial)"
   },
   {
     "page": 19,
-    "sheet": "E-018",
-    "title": "V1 \u00b7 Exhaust ventilation"
+    "sheet": "E-017",
+    "title": "V1 \u00b7 Exhaust \u00b7 front gable"
   },
   {
     "page": 20,
-    "sheet": "E-019",
-    "title": "A1 \u00b7 Main & delay loudspeakers"
+    "sheet": "E-018",
+    "title": "V2 \u00b7 Exhaust \u00b7 wing gables"
   },
   {
     "page": 21,
-    "sheet": "E-020",
-    "title": "A5 \u00b7 Rear fill (crowded feasts)"
+    "sheet": "E-019",
+    "title": "V3 \u00b7 Exhaust \u00b7 service room"
   },
   {
     "page": 22,
-    "sheet": "E-021",
-    "title": "A2 \u00b7 Veranda fill"
+    "sheet": "E-020",
+    "title": "A1 \u00b7 Main & delay loudspeakers"
   },
   {
     "page": 23,
-    "sheet": "E-022",
-    "title": "A3 \u00b7 Courtyard"
+    "sheet": "E-021",
+    "title": "A5 \u00b7 Rear fill (crowded feasts)"
   },
   {
     "page": 24,
-    "sheet": "E-023",
-    "title": "Microphones"
+    "sheet": "E-022",
+    "title": "A2 \u00b7 Veranda fill"
   },
   {
     "page": 25,
+    "sheet": "E-023",
+    "title": "A3 \u00b7 Courtyard"
+  },
+  {
+    "page": 26,
+    "sheet": "E-024",
+    "title": "Microphones"
+  },
+  {
+    "page": 27,
+    "sheet": "E-025",
+    "title": "P1 \u00b7 Sockets \u00b7 side B (sanctuary + nave)"
+  },
+  {
+    "page": 28,
+    "sheet": "E-026",
+    "title": "P3 \u00b7 Event power \u00b7 tower B"
+  },
+  {
+    "page": 29,
+    "sheet": "E-027",
+    "title": "P2 \u00b7 Sockets \u00b7 side H (sanctuary + nave)"
+  },
+  {
+    "page": 30,
+    "sheet": "E-028",
+    "title": "P4 \u00b7 Event power \u00b7 tower H"
+  },
+  {
+    "page": 31,
+    "sheet": "E-029",
+    "title": "L10 \u00b7 Fa\u00e7ade statues & candles"
+  },
+  {
+    "page": 32,
+    "sheet": "E-030",
+    "title": "LS \u00b7 Stations of the Cross candles"
+  },
+  {
+    "page": 33,
+    "sheet": "TW-01",
+    "title": "Tower fronts / conduit risers and decoration clearances"
+  },
+  {
+    "page": 34,
     "sheet": "EQ-01",
     "title": "Equipment naming schedule"
   },
   {
-    "page": 26,
+    "page": 35,
     "sheet": "EQ-02",
     "title": "Equipment naming schedule"
   },
   {
-    "page": 27,
+    "page": 36,
     "sheet": "EQ-03",
     "title": "Equipment naming schedule"
   },
   {
-    "page": 28,
+    "page": 37,
     "sheet": "EQ-04",
     "title": "Equipment naming schedule"
   },
   {
-    "page": 29,
+    "page": 38,
     "sheet": "EQ-05",
     "title": "Equipment naming schedule"
   },
   {
-    "page": 30,
+    "page": 39,
     "sheet": "EQ-06",
     "title": "Equipment naming schedule"
   },
   {
-    "page": 31,
+    "page": 40,
     "sheet": "EQ-07",
     "title": "Equipment naming schedule"
   },
   {
-    "page": 32,
+    "page": 41,
     "sheet": "EQ-08",
     "title": "Equipment naming schedule"
   },
   {
-    "page": 33,
+    "page": 42,
+    "sheet": "EQ-09",
+    "title": "Equipment naming schedule"
+  },
+  {
+    "page": 43,
+    "sheet": "EQ-10",
+    "title": "Equipment naming schedule"
+  },
+  {
+    "page": 44,
     "sheet": "RI-01",
     "title": "Unique route index"
   },
   {
-    "page": 34,
+    "page": 45,
     "sheet": "RI-02",
     "title": "Unique route index"
   },
   {
-    "page": 35,
+    "page": 46,
     "sheet": "RI-03",
     "title": "Unique route index"
   },
   {
-    "page": 36,
+    "page": 47,
     "sheet": "RI-04",
     "title": "Unique route index"
   },
   {
-    "page": 37,
+    "page": 48,
     "sheet": "RI-05",
     "title": "Unique route index"
   },
   {
-    "page": 38,
+    "page": 49,
     "sheet": "RI-06",
     "title": "Unique route index"
   },
   {
-    "page": 39,
+    "page": 50,
     "sheet": "RI-07",
     "title": "Unique route index"
   },
   {
-    "page": 40,
+    "page": 51,
     "sheet": "RI-08",
     "title": "Unique route index"
   },
   {
-    "page": 41,
+    "page": 52,
     "sheet": "RI-09",
     "title": "Unique route index"
   },
   {
-    "page": 42,
+    "page": 53,
+    "sheet": "RI-10",
+    "title": "Unique route index"
+  },
+  {
+    "page": 54,
+    "sheet": "RI-11",
+    "title": "Unique route index"
+  },
+  {
+    "page": 55,
+    "sheet": "IM-01",
+    "title": "Installation note key"
+  },
+  {
+    "page": 56,
+    "sheet": "RS-01",
+    "title": "Route set-out schedule"
+  },
+  {
+    "page": 57,
+    "sheet": "RS-02",
+    "title": "Route set-out schedule"
+  },
+  {
+    "page": 58,
+    "sheet": "RS-03",
+    "title": "Route set-out schedule"
+  },
+  {
+    "page": 59,
+    "sheet": "RS-04",
+    "title": "Route set-out schedule"
+  },
+  {
+    "page": 60,
+    "sheet": "RS-05",
+    "title": "Route set-out schedule"
+  },
+  {
+    "page": 61,
+    "sheet": "RS-06",
+    "title": "Route set-out schedule"
+  },
+  {
+    "page": 62,
+    "sheet": "RS-07",
+    "title": "Route set-out schedule"
+  },
+  {
+    "page": 63,
+    "sheet": "RS-08",
+    "title": "Route set-out schedule"
+  },
+  {
+    "page": 64,
+    "sheet": "RS-09",
+    "title": "Route set-out schedule"
+  },
+  {
+    "page": 65,
+    "sheet": "RS-10",
+    "title": "Route set-out schedule"
+  },
+  {
+    "page": 66,
     "sheet": "SQ-01",
     "title": "3D installation planning sequence"
   },
   {
-    "page": 43,
+    "page": 67,
     "sheet": "SQ-02",
     "title": "3D installation planning sequence"
   },
   {
-    "page": 44,
+    "page": 68,
     "sheet": "SQ-03",
     "title": "3D installation planning sequence"
   }

@@ -1,0 +1,134 @@
+[
+  {
+    "file": "after-B-front-day.png",
+    "state": "Sau · Tháp B: trước/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "method": "native AX settled, native screenshot",
+    "towers_sha256": "cc67945acfb1f2dea02406145248c52cec8df3f8ed4df33d17b25c852e5579c4"
+  },
+  {
+    "file": "after-H-front-day.png",
+    "state": "Sau · Tháp H: trước/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "method": "native AX settled, native screenshot",
+    "towers_sha256": "cc67945acfb1f2dea02406145248c52cec8df3f8ed4df33d17b25c852e5579c4"
+  },
+  {
+    "file": "after-B-rear-day.png",
+    "state": "Sau · Tháp B: sau/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "method": "native AX settled, native screenshot",
+    "towers_sha256": "cc67945acfb1f2dea02406145248c52cec8df3f8ed4df33d17b25c852e5579c4"
+  },
+  {
+    "file": "after-H-rear-day.png",
+    "state": "Sau · Tháp H: sau/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "method": "native AX settled, native screenshot",
+    "towers_sha256": "cc67945acfb1f2dea02406145248c52cec8df3f8ed4df33d17b25c852e5579c4"
+  },
+  {
+    "file": "after-B-front-evening.png",
+    "state": "Sau · Tháp B: trước/bên · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "method": "native AX settled, native screenshot",
+    "towers_sha256": "cc67945acfb1f2dea02406145248c52cec8df3f8ed4df33d17b25c852e5579c4"
+  },
+  {
+    "file": "after-B-rear-evening.png",
+    "state": "Sau · Tháp B: sau/bên · Buổi tối",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "method": "native AX settled, native screenshot",
+    "towers_sha256": "cc67945acfb1f2dea02406145248c52cec8df3f8ed4df33d17b25c852e5579c4"
+  },
+  {
+    "file": "before-B-front-day.png",
+    "state": "Trước · Tháp B: trước/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "method": "native AX settled, native screenshot",
+    "towers_sha256": "5ef15603a9196085429ab4123a70e4d5789700ba3d44e7618f00fd4f8658a5df"
+  },
+  {
+    "file": "before-H-front-day.png",
+    "state": "Trước · Tháp H: trước/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "method": "native AX settled, native screenshot",
+    "towers_sha256": "5ef15603a9196085429ab4123a70e4d5789700ba3d44e7618f00fd4f8658a5df"
+  },
+  {
+    "file": "before-B-rear-day.png",
+    "state": "Trước · Tháp B: sau/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "method": "native AX settled, native screenshot",
+    "towers_sha256": "5ef15603a9196085429ab4123a70e4d5789700ba3d44e7618f00fd4f8658a5df"
+  },
+  {
+    "file": "before-H-rear-day.png",
+    "state": "Trước · Tháp H: sau/bên · Ban ngày",
+    "image": {
+      "complete": true,
+      "height": 960,
+      "width": 1920
+    },
+    "method": "native AX settled, native screenshot",
+    "towers_sha256": "5ef15603a9196085429ab4123a70e4d5789700ba3d44e7618f00fd4f8658a5df"
+  },
+  {
+    "file": "overall-front-day.png",
+    "state": "Sau · Tháp H: trước/bên · Ban ngày",
+    "method": "native AX settled, native screenshot",
+    "towers_sha256": "cc67945acfb1f2dea02406145248c52cec8df3f8ed4df33d17b25c852e5579c4",
+    "image": {
+      "complete": true,
+      "width": 1920,
+      "height": 960
+    }
+  },
+  {
+    "file": "overall-rear-day.png",
+    "state": "Sau · Đầu cung thánh · Ban ngày",
+    "method": "native AX settled, native screenshot",
+    "towers_sha256": "cc67945acfb1f2dea02406145248c52cec8df3f8ed4df33d17b25c852e5579c4",
+    "image": {
+      "complete": true,
+      "width": 1920,
+      "height": 960
+    }
+  }
+]

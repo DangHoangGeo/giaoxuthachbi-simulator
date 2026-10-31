@@ -3,6 +3,9 @@
  * spinning rotor through every blade angle. This is geometry evidence, not
  * approved product, anchor, service, sightline or ventilation design. */
 'use strict';
+// Mounting height of the nave wall fans: +5.55 m until 25 Oct 2026, when the parish priest
+// asked for them lower (design.js NAVE_FAN_Y).
+const FAN_Y = 4.10;
 const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
@@ -33,7 +36,7 @@ try {
       if (existing.some(it => it.pos[0] === model.data.longitudinal[axis] && Math.sign(it.pos[2]) === sign)) continue;
       layout.items.push({ ...existing.find(it => Math.sign(it.pos[2]) === sign), type: 'fanWingWall',
         id: `F-PROBE-${axis}-${sign < 0 ? 'B' : 'H'}`, name: `Nave geometry probe · ${axis} · ${sign < 0 ? 'B' : 'H'}`,
-        pos: [model.data.longitudinal[axis], 5.55, sign * 7.07] });
+        pos: [model.data.longitudinal[axis], FAN_Y, sign * 7.07] });
     }
     SIM.importLayout(layout, { record: false });
   }
@@ -58,8 +61,13 @@ try {
     'Thach_Bi_Viewer/simulator/design.js', 'Thach_Bi_Viewer/simulator/engine.js', 'scripts/lib/study_model.cjs',
     'scripts/verify_nave_fan_clearance.cjs', 'docs/layout_design/Thach_Bi_Church_Dimensions.xlsx'];
   const buildingBoxes = [];
+  // The porch arcade (porches.js) and the Stations of the Cross (stations.js) are merged into
+  // meshes that run the length of each side, so their boxes say nothing about one fan. Both lie
+  // on or beyond the C/G wall face (|z| ≥ 7.13), behind the column face that bounds every fan
+  // envelope (|z| ≤ 7.07, asserted below).
+  const merged = o => { for (let p = o; p; p = p.parent) if (/^(Open side porches|Stations of the Cross)/.test(p.name)) return true; return false; };
   model.building.traverse(o => {
-    if (o.isMesh && !o.isInstancedMesh) buildingBoxes.push({ name: o.name, box: new T.Box3().setFromObject(o) });
+    if (o.isMesh && !o.isInstancedMesh && !merged(o)) buildingBoxes.push({ name: o.name, box: new T.Box3().setFromObject(o) });
   });
   const fixedFixtures = [...SIM.fixtures.values()].filter(f => f.item.circuit !== 'F2').map(f => ({ f, box: box(f) }));
   const records = [], movingBounds = new Map();
@@ -71,7 +79,7 @@ try {
   for (const f of fans) {
     const it = f.item, sign = Math.sign(it.pos[2]);
     assert.equal(it.type, shortBracket ? 'fanWall' : surrogate ? 'fanWingWall' : 'fanNaveWall', 'bracket model required');
-    assert.equal(it.pos[1], 5.55); assert.equal(it.pos[2], sign * 7.07);
+    assert.equal(it.pos[1], FAN_Y); assert.equal(it.pos[2], sign * 7.07);
     assert.equal(it.mount, 'wall'); assert.equal(it.mountYaw, -sign * 90);
     assert.equal(it.yaw, -sign * 90); assert.equal(it.tilt, -38);
     assert.equal(it.hidden, false, 'default-visible fan'); assert.equal(it.on, false, 'visible is separate from operation');
@@ -123,14 +131,17 @@ try {
     assert([...conservative.min.toArray(), ...conservative.max.toArray()].every(Number.isFinite));
     const maxOutwardZ = sign > 0 ? conservative.max.z : -conservative.min.z;
     if (!shortBracket) assert(maxOutwardZ <= 7.07 + 1e-6, it.id + ': body passes through modeled side-column face');
-    assert(conservative.min.y > 4.311, it.id + ': fan envelope overlaps nave window/door crown');
+    // Since the fans came down to +4.10 m (25 Oct 2026) the envelope reaches below the door crown
+    // band; it must still keep clear of every C/G window and door opening on its side, in plan and height.
+    const openings = SIM.GEO.walls.filter(w => w.z && Math.sign(w.z) === sign && Math.abs(Math.abs(w.z) - 7.25) < 0.01).flatMap(w => w.openings);
+    assert(!openings.some(o => conservative.max.x > o.x0 && conservative.min.x < o.x1 && conservative.min.y < o.y1), it.id + ': fan envelope overlaps a nave window or door opening');
     assert(conservative.max.y < 6.24, it.id + ': fan envelope enters lowest side-beam carved bracket band');
     assert(conservative.min.y >= 2.4, it.id + ': envelope below existing project floor clearance');
     const collisions = buildingBoxes.filter(o => penetrates(conservative, o.box));
     if (!shortBracket) assert.equal(collisions.length, 0, it.id + ': intersects modeled structure: ' + collisions.map(o => o.name).join(', '));
     const fixtureChecks = fixedFixtures.map(o => ({ id: o.f.item.id, name: o.f.item.name, hidden: o.f.item.hidden,
       clearanceM: round(gap(conservative, o.box)), intersection: penetrates(conservative, o.box) })).filter(o => o.clearanceM < 1.25);
-    assert(!fixtureChecks.some(o => o.intersection), it.id + ': intersects another fixture');
+    assert(!fixtureChecks.some(o => o.intersection), it.id + ': intersects another fixture: ' + fixtureChecks.filter(o => o.intersection).map(o => o.name).join(', '));
     movingBounds.set(it.id, conservative);
     records.push({ id: it.id, axis: axes.find(axis => model.data.longitudinal[axis] === it.pos[0]), side: sign < 0 ? 'B' : 'H',
       type: it.type, mountingPositionM: it.pos, yawDegrees: it.yaw, tiltDegrees: it.tilt, hidden: it.hidden, on: it.on,

@@ -148,6 +148,10 @@ The held wing review of 9 October 2026 retains four small brass chandeliers (L63
 
 ## Sources and refresh
 
+${layout.settings.doorheadReviewRevision ? 'The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-and-sconces.md) retires fourteen nave wall sconces and their sixteen routes, while retaining all five E1 signs on DB-1 at 15 W. Sign cases sit below coloured glass on fixed door heads; leads follow jambs and headers. Original sign IDs, life-safety holds and retired-input records are preserved.\n' : ''}
+
+${layout.items.some(it => it.type === 'porchFlood') ? 'The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.\n' : ''}
+
 - [Layout snapshot](equipment-layout.json), SHA-256: ${hashes.layout}.
 - [Electrical snapshot](electrical-systems.json), SHA-256: ${hashes.systems}.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).

@@ -2,21 +2,72 @@
 (() => {
   // The three-lobed frame of section sheet 5 stands on the axis-10 timber columns, in lacquered
   // timber. Behind it a timber-lined chamber runs back to the reredos on axis 11.
-  const spec = { revision:'2026-10-07-sanctuary-7-carved', serviceRevision:'2026-10-07-concealed-1', frameAxis:'10', frameX:44.175, centerX:48.12, wingX:44.375, wingZ:5.5, doorHeight:2.2, nicheBase:2.85,
+  // Parish priest, 25 October 2026: the Our Lady and Saint Joseph shrines stand back on the
+  // axis-11 line, level with the crucifix, in the side arches of the axis-11 frame (wingX is
+  // the shrine group's origin; the statues stand 0.10 m in front of it, on the crucifix's x).
+  const spec = { revision:'2026-10-07-sanctuary-7-carved', serviceRevision:'2026-10-07-concealed-1', frameAxis:'10', frameX:44.175, centerX:48.12, shrineAxis:'11', wingX:48.93, wingZ:5.5, doorHeight:2.2, nicheBase:2.85,
     centralArch:{half:3.3,spring:8.25,shoulder:9.38,crown:10.83}, sideArch:{half:1.575,spring:6.15,shoulder:6.75,crown:7.46},
-    chamber:{x0:44.49,x1:48.42,face:3.3,outer:3.75,top:9.45,serviceLining:0.04},
+    // Side arches of axis 11 round the shrines (bundle plaster arch, Z 3.85–7.11, spring +5.55).
+    arch11:{x:48.34,z:5.48,half:1.55,spring:5.55,shoulder:6.3,crown:6.85},
+    chamber:{x0:44.49,x1:48.42,face:3.3,outer:3.75,top:9.45,lintel:7.0,serviceLining:0.04},
     // Crucifix niche: opens through the reredos and the back wall, 1.0 m deep, its blue wall and
     // the cross standing back on a base over the service room. `shell` is the plaster casing
     // seen from the service room; `endX` its rear face.
-    niche:{half:1.9,spring:5.85,rise:1.55,floor:2.6,mouthX:47.99,backX:49,lining:.05,shell:.14,endX:49.23} };
+    niche:{half:1.9,spring:5.85,rise:1.55,floor:2.6,mouthX:47.99,backX:49,lining:.05,shell:.14,endX:49.23},
+    // Floor outline of the sanctuary front from the CAD file of 23 Oct 2026, ground plan P05
+    // (handles D7BF11–D7BF2B) and section A-A S45 (D7E205–D7E211), checked with the owner on
+    // 1 Nov 2026. A low platform at +0.16 runs round the dais; the dais rises 0.64 m from it to
+    // +0.80; the only steps are a flight 1.90 m wide recessed into the dais front on the axis.
+    // `front`/`half`: front edge and its half-width; each front corner steps back 0.10 m into a
+    // 0.40 m quarter round, so the sides stand at half + 0.50. The dais keeps its back edge at the
+    // chamber (48.65); the plan line runs to 48.565. Side floors continue from the platform's
+    // back edge at the axis-10 piers to the bay behind the shrines.
+    floor:{revision:'2026-11-01-sanctuary-floor-cad-1',
+      apron:{front:37.475,half:5,back:44.065},dais:{front:38.475,half:4,back:48.65},
+      stair:{x0:38.475,x1:39.345,half:.95,tread:.29},side:{x0:44.065,x1:52.63,inner:3.63,outer:7.11}} };
+  // Floor levels from the church's CAD file of 23 October 2026 (sections 25 and 45), adopted
+  // by the owner on 24 October 2026: dais +0.80 (the PDF set had +0.75) and side floors +0.16
+  // (+0.15). The bundle still places its furnishings on +0.75, so prepare() lifts that group.
+  // Section A-A draws the low platform at +0.16 and four 0.16 m risers above it (the plan label
+  // reads +0,15; the owner kept the drawn 160 mm on 1 Nov 2026). Treads 0.29 m.
+  const DAIS=.8,SIDE=.16,BUNDLE_DAIS=.75,RISER=.16;
+  // Inside a platform outline, in plan; az is |z|.
+  const inside=(o,x,az)=>{
+    if(x<o.front||x>o.back||az>o.half+.5)return false;
+    if(az<=o.half||x>=o.front+.5)return true;
+    return x>=o.front+.1&&(x-o.front-.5)**2+(az-o.half)**2<=.16;
+  };
+  const onDais=(x,z)=>inside(spec.floor.dais,x,Math.abs(z));
+  // Finished floor of the sanctuary front, or null where the rest of the church decides.
+  function floorY(x,z){
+    const F=spec.floor,S=F.stair,az=Math.abs(z);
+    if(inside(F.dais,x,az))return x<S.x1&&az<=S.half?Math.min(DAIS,SIDE+RISER*(1+Math.floor((x-S.x0)/S.tread))):DAIS;
+    if(inside(F.apron,x,az))return SIDE;
+    if(x>=F.side.x0&&x<=F.side.x1&&az>3.6&&az<=7.25)return SIDE;
+    // Round the low platform, up to the axis-10 piers, the floor stays at nave level.
+    if(x>=F.apron.front&&x<F.side.x0&&az<=7.2)return 0;
+    return null;
+  }
+  // Plan outline (x, z) of a platform, with the stepped quarter-round front corners and an
+  // optional recess in the middle of its front edge.
+  function planOutline(o,recess){
+    const pts=[[o.back,-o.half-.5],[o.front+.5,-o.half-.5]];
+    for(let i=0;i<=8;i++){const a=-Math.PI/2-i*Math.PI/16;pts.push([o.front+.5+.4*Math.cos(a),-o.half+.4*Math.sin(a)]);}
+    pts.push([o.front,-o.half]);
+    if(recess)pts.push([o.front,-recess.half],[recess.x1,-recess.half],[recess.x1,recess.half],[o.front,recess.half]);
+    pts.push([o.front,o.half]);
+    for(let i=0;i<=8;i++){const a=Math.PI+i*Math.PI/16;pts.push([o.front+.5+.4*Math.cos(a),o.half-.4*Math.sin(a)]);}
+    pts.push([o.front+.5,o.half+.5],[o.back,o.half+.5]);
+    return pts;
+  }
   // Underside of the boarded roof lining, as in the simulator.
   const roofY=u=>12.282-.7258*Math.abs(u)-.1;
   // Owner-selected brighter red, 8 October 2026. Display finish, not measured reflectance.
   const LACQUER='#853125';
   const SATIN_TONE=.84;
-  window.CHURCH_SANCTUARY = { spec, prepare, roofY };
+  window.CHURCH_SANCTUARY = { spec, prepare, roofY, floorY, onDais };
   function prepare({THREE:T,building,interior,data,mat,palettes}) {
-    spec.frameX=data.longitudinal[spec.frameAxis];spec.wingX=spec.frameX+.2;
+    spec.frameX=data.longitudinal[spec.frameAxis];spec.wingX=data.longitudinal[spec.shrineAxis]+.255;
     const remove=[];
     building.updateMatrixWorld(true);
     const centre=o=>new T.Box3().setFromObject(o).getCenter(new T.Vector3());
@@ -28,6 +79,13 @@
     // (the bundle places the upright at x 48.04).
     const crossShift=spec.niche.backX-.17-48.04;
     building.traverse(o=>{if(o.name.startsWith('Proposed sanctuary crucifix') || o.name.startsWith('Illustrative bronze corpus'))o.position.x+=crossShift;});
+    // Free-standing furnishings stand on the dais and rise with it; the cross and corpus stand
+    // on their own base in the niche, so they keep their height.
+    const lift=DAIS-BUNDLE_DAIS;
+    building.traverse(o=>{if(o.name.startsWith('Proposed sanctuary furnishings'))o.position.y+=lift;});
+    building.traverse(o=>{if(o.name.startsWith('Proposed sanctuary crucifix') || o.name.startsWith('Illustrative bronze corpus'))o.position.y-=lift;});
+    rebuildFloor();
+    building.updateMatrixWorld(true);
     const root=new T.Group();root.name='Reference sanctuary · red lacquer and gilded relief';building.add(root);
     const tabernacle=[];
     const material=(name,color,metalness=0,roughness=.42)=>{const m=new T.MeshStandardMaterial({color,metalness,roughness});m.name=name;return m;};
@@ -79,7 +137,7 @@
     const desk=building.getObjectByName('Proposed sloped ambo desk'),pedestal=building.getObjectByName('Proposed ambo pedestal');
     if(desk && pedestal) {
       const c=centre(desk),pedTop=new T.Box3().setFromObject(pedestal).max.y;
-      const socket=[c.x-.22,1.9,c.z];
+      const socket=[c.x-.22,1.9+DAIS-BUNDLE_DAIS,c.z];  // the ambo microphone, on the +0.80 dais
       spec.amboService={x:c.x,z:c.z,deskY:c.y,deskSlope:desk.rotation.z,socket,socketRadius:.07,
         status:'CONCEPT · removable furniture passage; section and fixing design pending'};
       const sleeve=(name,x,z,bottom,top,r,finish)=>{
@@ -194,10 +252,10 @@
     const N=spec.niche,outline=(grow=0)=>archShape(N.half+grow,N.spring,N.rise+grow,N.floor-grow),opening=grow=>new T.Path(outline(grow).getPoints(18).reverse());
     const casing=(outer,inner)=>{const s=outline(outer);s.holes.push(opening(inner));return s;};
     const center=group('Central gilded reredos',spec.centerX,0);
-    arch(center,3.26,8.05,2.3,.75,-.23,satin,'Outer carved canopy',opening(N.lining));
+    arch(center,3.26,8.05,2.3,DAIS,-.23,satin,'Outer carved canopy',opening(N.lining));
     for(let j=0;j<3;j++)crown(center,3.05+j*.075,7.75+j*.23,1.95+j*.09,.03+j*.04);
     for(const e of [-1,1])vine(center,e*3.13,2.65,5.25,.07);
-    arch(center,3.14,6.6,2.35,.75,0,satin,'Central carved timber silhouette',opening(N.lining));
+    arch(center,3.14,6.6,2.35,DAIS,0,satin,'Central carved timber silhouette',opening(N.lining));
     // Deep crucifix niche. Local v runs towards the nave: mouth at the reredos face, blue wall
     // 1.0 m behind it. A lacquered reveal lines it; a plaster casing shows in the service room,
     // boxed out above the boards and standing through the notched ceiling slab.
@@ -296,7 +354,7 @@
       const p=vaultPath.getPoint(t);box(front,.09,.09,-depth-.2,p.x,p.y-.03,(depth-.16)/2,wood,'Chamber vault longitudinal rib');
       for(const v of [-1,-1.85,-2.7,-3.55])mesh(leafGeometry,gold,front,'Gilded vault boss',p.x,p.y-.07,v).scale.setScalar(.12);
     }
-    const back=lobed(0,A.half,A);back.lineTo(A.half,.75);back.lineTo(-A.half,.75);back.closePath();back.holes.push(opening(N.lining));
+    const back=lobed(0,A.half,A);back.lineTo(A.half,DAIS);back.lineTo(-A.half,DAIS);back.closePath();back.holes.push(opening(N.lining));
     mesh(new T.ExtrudeGeometry(back,{depth:.1,bevelEnabled:false,curveSegments:32}),wood,front,'Chamber back lining · lacquered timber',0,0,spec.frameX-48.5);
     // The plaster back wall on axis 11 opens for the niche in the same outline.
     building.traverse(o=>{
@@ -312,45 +370,44 @@
       // timber slab. Reserve an explicit service void between removable skins
       // without changing either visible face or the acoustic/light boundary.
       // Skin section, backing, access panels and terminations require design.
-      const skin=C.serviceLining,height=C.top-.15,parts=[];
+      // Parish priest, 25 Oct 2026: the lacquered and gilded walls between the axis-10 and
+      // axis-11 columns are removed. What stays is a lacquered lintel from +7.0 m (spec.chamber.lintel)
+      // to the vault top: it carries the gilded vault on each side and keeps the cable void.
+      const skin=C.serviceLining,y0=C.lintel,height=C.top-y0,parts=[];
       for(const e of [-1,1]) {
         parts.push([new T.BoxGeometry(length,height,skin),K.TR(0,0,e*(thick-skin)/2)]);
         parts.push([new T.BoxGeometry(skin,height,thick-2*skin),K.TR(e*(length-skin)/2,0,0)]);
         parts.push([new T.BoxGeometry(length-2*skin,skin,thick-2*skin),K.TR(0,e*(height-skin)/2,0)]);
       }
-      const shell=mesh(K.merge(parts),wood,g,'Chamber side wall · lacquered timber',0,(C.top+.15)/2,0);
+      const shell=mesh(K.merge(parts),wood,g,'Chamber side lintel · lacquered timber',0,(C.top+y0)/2,0);
       shell.userData={status:'CONCEPT · removable lining with reserved service void',engineeringApproved:false,
-        serviceVoid:{x0:C.x0+skin,x1:C.x1-skin,y0:.15+skin,y1:C.top-skin,zInner:C.face+skin,zOuter:C.outer-skin},
-        source:'docs/electrical-grid/routing.md · concealed-routing review; skin/backing/fire/access specification pending'};
-      // Reredos cornice lines carried round the chamber.
-      for(const y of [.86,1.18,2.25,2.5]){box(g,length,.14,.1,0,y,face+.04,wood,'Chamber cornice');box(g,length,.035,.12,0,y+.075,face+.045,gold,'Gilded cornice edge');}
-      for(let i=0;i<4;i++){const u=-length/2+length*(i+.5)/4;border(g,u,1.72,.74,.76,face+.02);flower(g,u,1.72,face+.03,.15);}
+        serviceVoid:{x0:C.x0+skin,x1:C.x1-skin,y0:y0+skin,y1:C.top-skin,zInner:C.face+skin,zOuter:C.outer-skin},
+        source:'docs/electrical-grid/routing.md · concealed-routing review; lintel span, skin/backing/fire/access specification pending'};
+      // Gilded soffit moulding under the lintel, both faces, and short pilasters on the lintel face.
+      for(const e of [-1,1]){box(g,length,.12,.06,0,y0+.06,e*(face+.03),wood,'Chamber lintel soffit moulding');box(g,length,.03,.08,0,y0+.13,e*(face+.04),gold,'Gilded cornice edge');}
       const pitch=(length-.44)/3;
       for(let i=0;i<4;i++){
         const u=-length/2+.22+i*pitch;
-        box(g,.26,5.4,.12,u,5.3,face+.05,wood,'Chamber wall pilaster');plate(g,.24,5.2,u,5.3,face+.114,gilded,'Chamber pilaster relief',true);vine(g,u,2.75,5.0,face+.13);
-        for(const y of [2.66,7.94])box(g,.36,.13,.2,u,y,face+.06,gold,'Gilded pilaster capital');
+        box(g,.26,A.spring-y0-.2,.12,u,(y0+A.spring)/2-.1,face+.05,wood,'Chamber wall pilaster');
+        for(const y of [y0+.2,7.94])box(g,.36,.13,.2,u,y,face+.06,gold,'Gilded pilaster capital');
       }
-      for(let i=0;i<3;i++){
-        const u=-length/2+.22+(i+.5)*pitch;
-        lattice(g,u,2.95,pitch-.42,4.3,face+.03);flower(g,u,7.62,face+.03,.17);
-        // Plain framed panels on the passage side.
-        border(g,u,1.3,pitch-.3,2.0,-face-.02);border(g,u,5.4,pitch-.3,5.6,-face-.02);
-      }
+      for(let i=0;i<3;i++){const u=-length/2+.22+(i+.5)*pitch;flower(g,u,7.62,face+.03,.17);border(g,u,(y0+A.spring)/2,pitch-.3,A.spring-y0-.35,-face-.02);}
       box(g,length,.2,.18,0,A.spring-.05,face+.06,wood,'Vault springing cornice');box(g,length,.04,.2,0,A.spring+.06,face+.07,gold,'Gilded cornice edge');
       for(let u=-length/2+.25;u<length/2;u+=.49)flower(g,u,A.spring-.05,face+.16,.075);
     }
 
-    // Shrines stand in the side arches on the column line; no solid panel across the doorway.
+    // Shrines stand in the side arches of axis 11, level with the crucifix (parish priest,
+    // 25 October 2026); the side arches of the axis-10 frame in front of them stay open.
+    // No solid panel across the doorway.
     const wingGlow=K.glow('#d3e7f6','#7fb2e0','#4d8dca'),wingSpire=K.pinnacle({w:.2,h:1});
     for(const sign of [-1,1]){
-      const g=group(sign<0?'Our Lady forward wing':'Saint Joseph forward wing',spec.wingX,sign*spec.wingZ);
-      for(const e of [-1,1]){box(g,.57,2.6,1.25,e*1.03,1.45,-.35,wood,'Service entrance jamb');box(g,.63,.65,1.32,e*1.03,.475,-.35,stone,'Stone doorway base');plate(g,.5,1.9,e*1.03,1.78,.279,gilded,'Shrine jamb relief',true);vine(g,e*1.03,.85,1.85,.31);}
+      const g=group(sign<0?'Our Lady shrine · axis 11':'Saint Joseph shrine · axis 11',spec.wingX,sign*spec.wingZ);
+      for(const e of [-1,1]){box(g,.57,2.75-SIDE,1.25,e*1.03,(2.75+SIDE)/2,-.35,wood,'Service entrance jamb');box(g,.63,.8-SIDE,1.32,e*1.03,(.8+SIDE)/2,-.35,stone,'Stone doorway base');plate(g,.5,1.9,e*1.03,1.78,.279,gilded,'Shrine jamb relief',true);vine(g,e*1.03,.85,1.85,.31);}
       box(g,2.7,.3,1.35,0,2.7,-.33,wood,'Raised statue shelf above entrance');plate(g,2.66,.2,0,2.7,.349,gilded,'Shrine shelf frieze');
       for(const y of [2.55,2.84])box(g,2.75,.05,1.4,0,y,-.32,gold,'Shelf gilded moulding');
       // A lacquered wall behind the shrine closes the whole bay above the shelf, from the
-      // chamber wall to the C/G wall and up to the roof lining, so nothing shows through the
-      // side arch above the shrine. Gilded band, blooms and rosette fill the head of the arch.
+      // pier line to the C/G wall and up to the roof lining, so the service room behind does
+      // not show through the side arch above the shrine. Gilded band, blooms and rosette fill the head of the arch.
       const bay=new T.Shape(),zc=sign*spec.wingZ,edge=1.75;
       bay.moveTo(-edge,2.85);bay.lineTo(edge,2.85);bay.lineTo(edge,roofY(zc+edge));bay.lineTo(-edge,roofY(zc-edge));bay.closePath();
       slab(g,bay,-.55,-.42,wood,'Shrine bay fill · lacquered timber');plate(g,3.3,4.2,0,5.0,-.416,scrollwork,'Shrine bay relief ground');
@@ -362,12 +419,57 @@
       for(let j=0;j<2;j++)crown(g,1.04+j*.23,5.27+j*.23,1.05+j*.12,.06);
       for(const e of [-1,1]){box(g,.22,2.67,.43,e*1.14,4.2,-.1,wood,'Wing carved pilaster');plate(g,.2,2.55,e*1.14,4.2,.119,gilded,'Wing pilaster relief',true);vine(g,e*1.14,2.96,2.5,.16);mesh(wingSpire,gold,g,'Wing pinnacle',e*1.14,5.535,.03);}
       // Lacquered returns close the slits beside the D/E column and the C/G pier.
-      for(const e of [-1,1]){box(g,.4,S.spring-.15,.12,e*1.55,(S.spring+.15)/2,-.2,wood,'Shrine return panel');box(g,.03,S.spring-.6,.03,e*1.55,(S.spring+.15)/2,-.13,gold,'Panel gold border');}
-      // Open paired leaves, folded back behind the frontage; the passage behind links the
-      // veranda door and, through the side arch on axis 11, the open service room.
-      for(const e of [-1,1]){const hinge=new T.Group();hinge.position.set(e*.72,.15,-.28);hinge.rotation.y=-e*1.5;g.add(hinge);panel(hinge,-e*.35,1.1,.7,2.2,0);box(hinge,.035,.27,.08,-e*.58,1.06,.14,gold,'Service door handle');}
+      for(const e of [-1,1]){box(g,.4,S.spring-SIDE,.12,e*1.55,(S.spring+SIDE)/2,-.2,wood,'Shrine return panel');box(g,.03,S.spring-.6,.03,e*1.55,(S.spring+SIDE)/2,-.13,gold,'Panel gold border');}
+      // Open paired leaves, folded back behind the frontage: the doorway under the shrine
+      // links the side passage behind the frame with the open service room.
+      for(const e of [-1,1]){const hinge=new T.Group();hinge.position.set(e*.72,SIDE,-.28);hinge.rotation.y=-e*1.5;g.add(hinge);panel(hinge,-e*.35,1.1,.7,2.2,0);box(hinge,.035,.27,.08,-e*.58,1.06,.14,gold,'Service door handle');}
+    }
+    // Shallow stone foliate carving, following the pale carved altar in the
+    // approved sanctuary concept. The centre cross stays clear. All parts lie
+    // inside the panel outline and behind the existing cross's front plane.
+    const altarFront=building.getObjectByName('Proposed altar front panel');
+    if(altarFront){
+      const pieces=[];
+      for(const sign of [-1,1]){
+        pieces.push([K.bloom({r:.065,petals:8,rings:2,seg:4}),K.place(K.SC(1,1,.4),K.TR(sign*.77,0,0))]);
+        for(const [u,y,angle] of [[.47,-.19,-.65],[.57,-.1,-.9],[.87,-.19,.55],[.98,.045,.8]]){
+          pieces.push([K.leaf({len:.14,wid:.065,thick:.004,curl:.25,lobes:3,seg:8}),K.place(K.RZ(sign*angle),K.TR(sign*u,y,0))]);
+        }
+        pieces.push([K.stem([[sign*.4,-.2,0],[sign*.59,-.16,.001],[sign*.72,-.06,.001],[sign*.94,.02,0]],.005,.002,20,6),null]);
+      }
+      const finish=altarFront.material.clone();finish.name='Sanctuary · shallow altar stone carving';
+      finish.map=finish.bumpMap=null;finish.roughness=.62;
+      palettes?.set(finish,{color:finish.color.clone(),map:null,bump:null});
+      const relief=new T.Mesh(K.merge(pieces),finish);relief.name='Altar floral stone relief';
+      relief.rotation.y=-Math.PI/2;relief.position.x=-altarFront.geometry.parameters.width/2-.0045;
+      relief.castShadow=relief.receiveShadow=true;
+      relief.userData={status:'CONCEPT · applied shallow carving; artist, stone and fixing pending',source:'Approved sanctuary concept; docs/decoration-finishes.md',revision:'2026-10-25-sculpture-detail-1'};
+      altarFront.add(relief);
+    }
+    // Parish priest, 25 Oct 2026: above Our Lady and Saint Joseph the axis-11 side arches take the
+    // red lacquer and gilding of the front frame: a lacquered spandrel with gilded relief, mouldings
+    // and cresting from the lobed arch up to the roof lining, just in front of the plaster arch.
+    const rear11=group('Axis-11 side arches · red lacquer and gilding',spec.arch11.x,0);
+    for(const sign of [-1,1])lobedFrame(rear11,sign*spec.arch11.z,spec.arch11.half,spec.arch11,'Axis-11 side spandrel · lacquer and gilding',14);
+    // The bundle's dais ran the full 7.20 m between the column lines and was reached by five
+    // full-width steps from x 38.2. It is replaced by the CAD outline (spec.floor).
+    function rebuildFloor(){
+      const old=[];
+      building.traverse(o=>{if(/^(Sanctuary central platform|Sanctuary side platform|Sanctuary step profile)/.test(o.name))old.push(o);});
+      const first=old.find(o=>o.name.startsWith('Sanctuary central platform'));
+      if(!first)return;
+      const parent=first.parent,floorMat=first.material;
+      for(const o of old){o.removeFromParent();o.geometry.dispose();}
+      const F=spec.floor,S=F.stair,status='SOURCE OUTLINE AND LEVELS (DWG 2026-10-23 P05, S45, S25) / FINISH SCHEMATIC';
+      const add=(geometry,y,name,source)=>{const o=new T.Mesh(geometry,floorMat);o.name=name;o.userData={status,source};o.position.y=y;o.castShadow=o.receiveShadow=true;parent.add(o);return o;};
+      // Extruded downwards from the top: the shape's (x, z) map to model x and z.
+      const slab=(pts,top,name,source)=>{const g=new T.ExtrudeGeometry(new T.Shape(pts.map(([x,z])=>new T.Vector2(x,z))),{depth:top,bevelEnabled:false});g.rotateX(Math.PI/2);return add(g,top,name,source);};
+      slab(planOutline(F.dais,S),DAIS,'Sanctuary central platform +0.800','Plan P05 outline (D7BF11, D7BF14, D7BF18, D7BF21, D7BF24, D7BF27); level S25 800 mm, S45 platform line');
+      slab(planOutline(F.apron),SIDE,'Sanctuary low platform +0.160','Plan P05 outline (D7BF13, D7BF16, D7BF1B, D7BF23, D7BF26, D7BF2A); S45 riser D7E205 and top D7E20F');
+      for(const sign of [-1,1]){const b=F.side,w=b.outer-b.inner;add(new T.BoxGeometry(b.x1-b.x0,SIDE,w),SIDE/2,'Sanctuary side platform +0.160','Section 25 level; plan P05 edge D7BF17/D7BF2B at the axis-10 piers').position.set((b.x0+b.x1)/2,SIDE/2,sign*(b.inner+w/2));}
+      for(let k=1;k<=3;k++){const x0=S.x0+(k-1)*S.tread,top=SIDE+k*RISER;add(new T.BoxGeometry(S.x1-x0,top-SIDE,2*S.half),0,`Sanctuary recessed step +${top.toFixed(3)}`,'Plan P05 D7BF1C–D7BF20 (1.90 m wide); S45 D7E206–D7E20C, 160 mm risers, 290 mm treads').position.set((x0+S.x1)/2,(SIDE+top)/2,0);}
     }
     data.sanctuary={...spec,crossShift,reference:'references/02-sanctuary/concepts/09-sanctuary-approved-concept.png',materials:['oxblood lacquer','oxblood lacquer, satin (cross, niche boards, furniture)','carved lacquered timber','gilded carved relief','gilded scrollwork on lacquer','gilded relief','gilded vault boarding','blue niche','shrine niche blue','carved figure, natural wood','carved figure, darker tone','crimson upholstery','forged iron nail','pale stone','dark marble inset'],roofTimber:'oxblood lacquer with gilded soffit lines; natural tones remain a simulator setting',status:'Image-led concept; ornamental profiles, relief textures and sculpture are generated approximations'};
-    data.assumptions.push('Sanctuary revised from the approved concept and section sheet 5: the three-lobed frame stands on the axis-10 columns in lacquered timber, without a tie beam, and the Marian and Joseph shrines stand in its side arches on the same line, with 2.2 m service entrances below raised niches. A timber-lined chamber with a gilded boarded vault runs from the frame back to the reredos on axis 11, where the crucifix stands in a niche 1.0 m deep that opens through the back wall onto a base over the service room. The bay behind each shrine is closed in lacquered timber above the shelf, and every round column on the D/E lines is lacquered: the nave columns have turned bases on panelled stone pedestals, carved capitals, junction blocks and dies with gilded lotus panels, and the two frame columns keep gilded bands and capitals. The tie beams, side beams, rafters, purlins, ridge and braces take the same lacquer, with gilded lines and bosses on the nave rafters and ridge; the boarded roof lining stays ivory. The reredos, chamber, shrines and front frame carry generated gilded relief, crocketed pinnacles and leaf crestings after the 7 October interior views; the niches are blue with a soft glow, the corpus is carved wood with a gilded cloth and the tabernacle is gilded under a dome. Member sizes, the roof thrust on axis 10 and the relief are proposals within the retained building grids.');
+    data.assumptions.push('Sanctuary revised from the approved concept and section sheet 5: the three-lobed frame stands on the axis-10 columns in lacquered timber, without a tie beam, and its side arches open into passages, and the Marian and Joseph shrines stand at the back of those passages in the side arches of axis 11, level with the crucifix (parish priest, 25 October 2026), with 2.2 m service entrances below raised niches. A timber-lined chamber with a gilded boarded vault runs from the frame back to the reredos on axis 11, where the crucifix stands in a niche 1.0 m deep that opens through the back wall onto a base over the service room. The bay behind each shrine is closed in lacquered timber above the shelf, and every round column on the D/E lines is lacquered: the nave columns have turned bases on panelled stone pedestals, carved capitals, junction blocks and dies with gilded lotus panels, and the two frame columns keep gilded bands and capitals. The tie beams, side beams, rafters, purlins, ridge and braces take the same lacquer, with gilded lines and bosses on the nave rafters and ridge; the boarded roof lining stays ivory. The reredos, chamber, shrines and front frame carry generated gilded relief, crocketed pinnacles and leaf crestings after the 7 October interior views; the niches are blue with a soft glow, the corpus is carved wood with a gilded cloth and the tabernacle is gilded under a dome. Member sizes, the roof thrust on axis 10 and the relief are proposals within the retained building grids.');
   }
 })();

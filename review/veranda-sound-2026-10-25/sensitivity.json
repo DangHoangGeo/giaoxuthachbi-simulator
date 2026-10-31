@@ -1,0 +1,173 @@
+{
+  "status": "CONCEPT estimates; existing criteria and receiver grids retained",
+  "results": [
+    {
+      "layout": 4,
+      "scene": "Full service · evening",
+      "nave": {
+        "count": 288,
+        "minSTI": 0.5699386156765418,
+        "meanSTI": 0.6596498528798559,
+        "goodPct": 94.79166666666667,
+        "minLux": 203.88707714049636
+      },
+      "wing": {
+        "count": 80,
+        "minSTI": 0.4108870649920576,
+        "meanSTI": 0.4856757527060488,
+        "goodPct": 0,
+        "minLux": 99.74533490970116
+      },
+      "mics": [
+        {
+          "id": "S291",
+          "margin": 0.9363320649803697
+        },
+        {
+          "id": "S292",
+          "margin": 1.4284516518795982
+        }
+      ]
+    },
+    {
+      "layout": 4,
+      "scene": "Weekday Mass",
+      "nave": {
+        "count": 288,
+        "minSTI": 0.5724185040892034,
+        "meanSTI": 0.6617334600890626,
+        "goodPct": 95.48611111111111,
+        "minLux": 126.8600751569381
+      },
+      "wing": {
+        "count": 80,
+        "minSTI": 0.41149055078364827,
+        "meanSTI": 0.48682235271194674,
+        "goodPct": 0,
+        "minLux": 71.7188779638745
+      },
+      "mics": [
+        {
+          "id": "S291",
+          "margin": 1.1253806499001513
+        },
+        {
+          "id": "S292",
+          "margin": 1.6142292900329736
+        }
+      ]
+    },
+    {
+      "layout": 4,
+      "scene": "Festival · courtyard overflow",
+      "nave": {
+        "count": 288,
+        "minSTI": 0.5159357858544342,
+        "meanSTI": 0.6093094313386062,
+        "goodPct": 65.97222222222223,
+        "minLux": 203.88707714049636
+      },
+      "wing": {
+        "count": 80,
+        "minSTI": 0.372660117772741,
+        "meanSTI": 0.466992943022068,
+        "goodPct": 0,
+        "minLux": 99.74533490970116
+      },
+      "mics": [
+        {
+          "id": "S291",
+          "margin": -0.629885624850985
+        },
+        {
+          "id": "S292",
+          "margin": -0.12258374324105148
+        }
+      ]
+    },
+    {
+      "layout": 2,
+      "scene": "Full service · evening",
+      "nave": {
+        "count": 288,
+        "minSTI": 0.574986706844383,
+        "meanSTI": 0.6667137857045001,
+        "goodPct": 96.875,
+        "minLux": 159.26165481486908
+      },
+      "wing": {
+        "count": 80,
+        "minSTI": 0.40965880305656055,
+        "meanSTI": 0.4845600409627311,
+        "goodPct": 0,
+        "minLux": 99.85200701147517
+      },
+      "mics": [
+        {
+          "id": "S291",
+          "margin": 0.81957916844285
+        },
+        {
+          "id": "S292",
+          "margin": 1.3075649458994718
+        }
+      ]
+    },
+    {
+      "layout": 2,
+      "scene": "Weekday Mass",
+      "nave": {
+        "count": 288,
+        "minSTI": 0.5775916227660752,
+        "meanSTI": 0.6692345815807353,
+        "goodPct": 97.56944444444444,
+        "minLux": 99.2534390885181
+      },
+      "wing": {
+        "count": 80,
+        "minSTI": 0.41028904804303284,
+        "meanSTI": 0.4857680979018236,
+        "goodPct": 0,
+        "minLux": 71.79025248308439
+      },
+      "mics": [
+        {
+          "id": "S291",
+          "margin": 1.00747932563727
+        },
+        {
+          "id": "S292",
+          "margin": 1.4922430786134484
+        }
+      ]
+    },
+    {
+      "layout": 2,
+      "scene": "Festival · courtyard overflow",
+      "nave": {
+        "count": 288,
+        "minSTI": 0.5207095669720351,
+        "meanSTI": 0.6189346846579619,
+        "goodPct": 73.95833333333333,
+        "minLux": 159.26165481486908
+      },
+      "wing": {
+        "count": 80,
+        "minSTI": 0.3718712551247963,
+        "meanSTI": 0.46629852819508466,
+        "goodPct": 0,
+        "minLux": 99.85200701147517
+      },
+      "mics": [
+        {
+          "id": "S291",
+          "margin": -0.7181870018916712
+        },
+        {
+          "id": "S292",
+          "margin": -0.21482919698401304
+        }
+      ]
+    }
+  ]
+}

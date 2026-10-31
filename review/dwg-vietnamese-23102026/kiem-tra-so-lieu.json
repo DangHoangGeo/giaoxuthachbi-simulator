@@ -1,0 +1,97 @@
+{
+  "sha256_dwg": "2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae",
+  "insunits_dwg": 1,
+  "insunits_dxf": 1,
+  "so_kich_thuoc_toan_tap_tin": 2644,
+  "so_kich_thuoc_khong_gian_mo_hinh": 729,
+  "so_doi_tuong_model_dwg": 148677,
+  "so_doi_tuong_model_dxf": 148675,
+  "dau_cuoi_khoi_model_khong_phai_hinh_hoc": {
+    "20": "BLOCK",
+    "21": "ENDBLK"
+  },
+  "model_handle_thieu": [],
+  "model_handle_them": [],
+  "so_block_chen_trong_model": 0,
+  "so_doi_chieu": 726,
+  "so_khong_khop": 0,
+  "ma_khong_khop": [],
+  "sai_so_dwg_dxf_lon_nhat": 0.0,
+  "sai_so_tinh_lai_lon_nhat": 1e-09,
+  "doi_chieu_chu_so_goc": [],
+  "ma_co_chu_thay_the_hoac_he_so_khac_1": [],
+  "so_o_so_in_da_sua": 23,
+  "so_nhan_cao_do_doc_truc_tiep": 79,
+  "so_dinh_ky_hieu_cao_do_do_bang_dinh_hinh_hoc": 58,
+  "cao_do_khac_so_ghi": [
+    {
+      "ban_ve": "S24",
+      "handle": "D9E006",
+      "nhan": "+ 12,472M",
+      "so_ghi": 12472,
+      "chieu_cao_chu": 250.0,
+      "dinh_ky_hieu": -505630.4271271715,
+      "floor": -518026.8,
+      "cao_do_tu_dinh_ky_hieu": 12396.402563,
+      "chenh_voi_so_ghi": -75.597437
+    },
+    {
+      "ban_ve": "S25",
+      "handle": "DA1981",
+      "nhan": "+ 12,472M",
+      "so_ghi": 12472,
+      "chieu_cao_chu": 250.0,
+      "dinh_ky_hieu": -505630.4271271724,
+      "floor": -518026.8,
+      "cao_do_tu_dinh_ky_hieu": 12396.402563,
+      "chenh_voi_so_ghi": -75.597437
+    }
+  ],
+  "kich_thuoc_ngoai_khung": [
+    {
+      "handle": "26AE0A",
+      "diem_chu": [
+        -3190309.334996919,
+        -394503.5565591826
+      ],
+      "so_do": 100.0,
+      "ly_do": "Ngoài 27 khung bản vẽ đã đăng ký"
+    },
+    {
+      "handle": "916EA3",
+      "diem_chu": [
+        2269080.198359214,
+        758525.9999999998
+      ],
+      "so_do": 281.0,
+      "ly_do": "Ngoài 27 khung bản vẽ đã đăng ký"
+    },
+    {
+      "handle": "916EEA",
+      "diem_chu": [
+        2286329.198359214,
+        758733.5
+      ],
+      "so_do": 390.0,
+      "ly_do": "Ngoài 27 khung bản vẽ đã đăng ký"
+    }
+  ],
+  "so_duong_truc_doi_chieu": 137,
+  "canh_bao_chuyen_doi": {
+    "ERROR": 3,
+    "Warning": 4933
+  },
+  "loi_kiem_tra_dxf": 0,
+  "sua_tu_dong_dxf": 0,
+  "gioi_han": "Hai nhánh đọc dùng chung LibreDWG; chưa đối chiếu bằng AutoCAD/ODA hoặc người thiết kế. Đơn vị hình học mm đang suy từ chuỗi kích thước và nhãn m, khác mã INSUNITS=1 (inch, đơn vị chèn). Chưa dùng làm xác nhận thi công.",
+  "dau_vao_sha256": {
+    "docs/layout_design/dwg-2026-10-23/dimensions.csv": "9e1ddccc67fca91a88b592d8bfc7cf4d009c8aa3cb747cdd9f6563658f3d2b44",
+    "docs/layout_design/dwg-2026-10-23/grid-check.csv": "c7b3cbfebde181a60080f1ebf2c28983133f8e1c3052ae256cc63edede22aa42",
+    "docs/layout_design/dwg-2026-10-23/levels.csv": "0f7b7dda27fed7b0769a47fa6030d4c05896edfcb51ad787d9bdc831565916f1",
+    "docs/layout_design/dwg-2026-10-23/facade.csv": "47cb669efd8e67b1354928e74e5b82666c76234a8c3af0590f09bf48757f2261",
+    "docs/layout_design/dwg-2026-10-23/key-dimensions.csv": "32e3a5b1d2a75d36e562b3baa8fe2fd85d830faf4423394187ff4d39e30f3c66",
+    "docs/layout_design/dwg-2026-10-23/Thach_Bi_Key_Dimensions.xlsx": "665634c23131d68842838038f97b927a305fe459932e71863e7c03d6948e770e",
+    "docs/layout_design/dwg-2026-10-23/sheets.json": "8e1fc862daf33758459645e213bbbd655d775da286d319446cac1f93c2780333",
+    "docs/layout_design/Thach_Bi_Church_Dimensions.xlsx": "e5185da22a730ec043efbfa4d028275344e2e4a823e26d11acbd8a91944ed6f1"
+  }
+}

@@ -1,5 +1,7 @@
 # Electrical routing study
 
+> **25 October door-head/sign follow-up:** removal of the fourteen nave sconces retires fourteen LD drops and two trunks. Five E1 sign drops keep their IDs and now follow jambs and fixed door heads below coloured glazing (`door-head` method), rather than dropping across a fanlight. Connected components 386 → 372; routes 445 → 429. Frame containment, fixings and life-safety design remain held. [Coordinated record](../engineering/doorheads-and-sconces.md).
+
 See the [electrical grid index](README.md) for the current work priority and [manual boards and quick modes](controls.md) for the control-design brief. This document describes the implemented routing study; physical installation design remains pending.
 
 Open `Thach_Bi_Viewer/OPEN_CHURCH.html` and choose **Simulator → Wiring → Systems only**. The building, roof, furnishings and grounds disappear; boards, wiring and connected equipment remain. **Restore building** restores the architectural visibility, including the previous roof state. **View settings → Electrical systems only** offers the same isolation switch.
@@ -188,3 +190,7 @@ Totals after the change: 373 routes, 2 936 vertices; lighting route segments 3 0
 ## Fan hangers on the column-line beams · 19 October 2026
 
 The 12 side-aisle ceiling fans now hang under the column-line beams ([record](../engineering/fans-on-column-beams.md)). Their F1 leads use the new method `beam-hanger`: over the nave lining to a point 0.95 m from mid-span (clear of the gilded cartouche), down the beam's outer face in the removable finish-matched cover, under the soffit to the hanger and inside the downrod. `verify_concealed_routes.cjs` checks that the run beside and under the beam is covered, that no timber core is crossed and that the lead enters the downrod just under its beam; the safety review counts these routes as cable on timber. Totals: 373 routes, 2 960 vertices, fans and ventilation 925.2 m of route (912.6 m before).
+
+## Open-porch issue · 25 October 2026
+
+The [coordinated review](../engineering/open-porch-light-sound.md) adds 36 L4 arch floods and 14 A2 fills, replaces 18 L4 pendant geometries with wall path heads, replaces four A2 pendants with wall fills and lowers fourteen nave/entrance speakers. Stable existing IDs, boards and circuits remain. Default connected components increase 336 → 386; routes 395 → 445. Inner-wall drops use existing separated wall bands. Exterior arch leads follow the outer-column route above the porch roof lining and down the column line to their wall plates; no new ground crossings are proposed. These are routing proxies. Weatherproof entries, segregated mains/audio containment, covers, structural chases, access and installation approval remain held. The category registers and JSON/CSV exports own the current lengths. Earlier A3 drawings and `output/electrical-review/` remain stale.

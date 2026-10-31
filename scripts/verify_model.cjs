@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','sanctuary.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','decoration.js','sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -32,6 +32,29 @@ const nodes=[];building.traverse(o=>nodes.push(o));
 const near=(actual,expected,msg)=>assert(Math.abs(actual-expected)<.002,`${msg}: ${actual} != ${expected}`);
 const bounds=o=>new T.Box3().setFromObject(o);
 const dimensions=o=>bounds(o).getSize(new T.Vector3());
+// Decoration remains within the old station envelope and leaves physical data alone.
+{
+  assert(sandbox.window.CHURCH_DECORATION.stats.materials>10,'Decoration finishes are applied');
+  const outer=bounds(nodes.find(o=>o.name==='Station of the Cross gilded frame'));
+  for(const name of ['Station of the Cross raised inner moulding','Station of the Cross foliate carving']) {
+    const part=bounds(nodes.find(o=>o.name===name));
+    assert(part.min.x>=outer.min.x-.001&&part.max.x<=outer.max.x+.001&&part.min.y>=outer.min.y&&part.max.y<=outer.max.y,'Carving stays inside station outline: '+name);
+    assert(Math.max(Math.abs(part.min.z),Math.abs(part.max.z))<=7.251,'Carving stays on nave face of wall');
+    assert(Math.min(Math.abs(part.min.z),Math.abs(part.max.z))>=7.165-.001,'Carving remains within existing 85 mm relief projection');
+  }
+  for(const o of nodes.filter(o=>o.isMesh&&/^Sanctuary · gilded (relief|scrollwork)/.test(o.material.name)))assert(o.material.bumpScale<=.003,'Relief shading does not exaggerate relief depth');
+  const finishMap=mat.wall.bumpMap;
+  realism.finish(false);assert.equal(mat.wall.bumpMap,null,'Neutral display removes plaster bump');
+  realism.finish(true);assert.equal(mat.wall.bumpMap,finishMap,'Reference display restores new plaster bump');
+  const altar=nodes.find(o=>o.name==='Proposed altar front panel'),relief=nodes.find(o=>o.name==='Altar floral stone relief');
+  altar.geometry.computeBoundingBox();
+  const panel=altar.geometry.boundingBox.clone().applyMatrix4(altar.matrixWorld),carving=bounds(relief),cross=bounds(nodes.find(o=>o.name==='Altar cross stem'));
+  assert(carving.min.y>=panel.min.y&&carving.max.y<=panel.max.y&&carving.min.z>=panel.min.z&&carving.max.z<=panel.max.z,'Altar carving stays inside the existing front panel');
+  assert(carving.min.x>=cross.min.x&&carving.max.x<panel.min.x+.002,'Altar carving remains behind the existing cross face, against the panel: '+JSON.stringify({panel:panel.min.x,carving:[carving.min.x,carving.max.x],cross:cross.min.x}));
+  assert.equal(relief.parent,altar,'Altar ornament moves with its existing panel');
+  const point=new T.Vector3(),positions=relief.geometry.attributes.position;
+  for(let i=0;i<positions.count;i++){point.fromBufferAttribute(positions,i).applyMatrix4(relief.matrixWorld);assert(Math.abs(point.z)>.33,'Altar cross keeps a clear central field');}
+}
 near(dimensions(nodes.find(o=>o.name.startsWith('Main plinth below'))).z,22.489,'Main plan width');
 const wings=nodes.filter(o=>o.name.startsWith('Side projection plinth'));
 near(Math.max(...wings.map(o=>bounds(o).max.z))-Math.min(...wings.map(o=>bounds(o).min.z)),28.158,'Wing plan width');
@@ -45,20 +68,83 @@ const bays=nodes.filter(o=>o.name.startsWith('Outer veranda'));
 assert.equal(bays.length,20);
 for(const sign of [-1,1]) {
   const row=bays.filter(b=>Math.sign(b.position.z)===sign).sort((a,b)=>a.position.x-b.position.x);
-  assert.equal(row.map(b=>b.name.endsWith(' 9–10')?'P':/ (4–5|8–9|10–11)$/.test(b.name)?'D':'W').join(','),'W,W,D,W,W,W,D,P,D,W');
+  assert.equal(row.map(b=>b.name.endsWith(' 9–10')?'P':/ (4–5|8–9)$/.test(b.name)?'D':'W').join(','),'W,W,D,W,W,W,D,P,W,W');
+}
+// Open porches, parish priest 25 Oct 2026 (porches.js): no outer wall below the cornice outside
+// the 9–10 side bays, a column on every B/H axis of each porch run, a pointed arch in every bay,
+// a guard except where the outside stairs land, a cast slab with RC beams, and the side bays
+// closed to the porches.
+{
+  const P=sandbox.window.CHURCH_PORCHES,st=P.stats;
+  for(const b of bays.filter(b=>!b.name.endsWith(' 9–10')))b.traverse(o=>{if(o.isMesh)assert(bounds(o).min.y>=P.spec.entablature-.01,'Nothing of the outer porch wall stays below the cornice: '+o.name);});
+  assert.equal(st.columns,22,'11 porch columns per side (axes 2′–9 and 10–12)');assert.equal(st.arches,18,'9 porch arches per side');
+  assert.equal(st.openBays,6,'stair landings 4–5, 8–9 and 10–11 stay open');assert.equal(st.guardedBays,12,'guard in the other bays');
+  assert.equal(st.beams,14,'cross arch C–B / G–H on axes 3–8 and 11 each side');
+  const cross=bounds(nodes.find(o=>o.name.startsWith('Porch cross arch')));assert(cross.max.y<P.tileY(7.47)&&Math.abs(cross.min.z)>=7.6&&Math.abs(cross.max.z)<=10.25,'cross arches span from the C/G wall column to the arcade column');
+  for(const n of ['C','G'])assert.equal(nodes.filter(o=>o.name.startsWith(`Inner wall ${n} `)).length,9,'inner wall bays named '+n);
+  const guard=nodes.filter(o=>o.name==='Porch guard top rail');assert(guard.length===1&&near(bounds(guard[0]).max.y-P.spec.floor,1.08,'Guard 1.08 m above the porch floor')!==false);
+  const slab=nodes.find(o=>o.name.startsWith('Porch roof slab'));const sb=bounds(slab);
+  assert(sb.max.y<P.tileY(7.47)-.02&&sb.min.y>P.tileY(10.25)-.2,'Slab sits just under the porch tiles');
+  const ends=nodes.find(o=>o.name.startsWith('Side-bay end wall to the porch'));const eb=bounds(ends);
+  near(eb.min.x,data.longitudinal['9']-.16,'End wall on axis 9');near(eb.max.x,data.longitudinal['10']+.16,'End wall on axis 10');
+  assert(eb.min.y<=-.319&&Math.abs(eb.max.z)>10.2,'End walls close the side bays from floor to slab and out to the arcade');
+  const rib=bounds(nodes.find(o=>o.name.startsWith('Side-bay arch rib')));
+  assert(rib.max.y>8.5&&rib.max.y<8.85&&Math.abs(rib.max.z)<7.6,'Detail-47 arch on the C/G axes of the side bays');
+  for(const sign of [-1,1]){assert.equal(realism.walkAllowed(46.425,sign*7.36),false,'No doorway in bay 10–11');for(const x of [36.975,44.175])assert.equal(realism.walkAllowed(x,sign*8.8),false,'Side bay closed to the porch');}
 }
 assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
-assert.equal(nodes.filter(o=>o.name==='Outer door fixed fanlight').length,6);
+// Towers after the CAD file, owner 25 Oct 2026 (towers.js): closed fronts, corner piers on every
+// stage, CAD tops, a stair in the B-side tower and no passage through the bases.
+{
+  const TW=sandbox.window.CHURCH_TOWERS, st=TW.stats;
+  assert.equal(st.piers,32,'four corner piers on each of four stages, both towers');assert.equal(st.blindArches,2);assert.equal(st.stairRisers,44,'stair to +8.39 in the B tower');
+  assert(!nodes.some(o=>/^(Tower cap profile|Cap pedestal|Urn body|Tower stage 1 wall)/.test(o.name)),'old caps, urns and open stage-1 walls removed');
+  const top=Math.max(...nodes.filter(o=>/^Tower cross/.test(o.name)).map(o=>bounds(o).max.y));assert(Math.abs(top-36.92)<.01,'Tower cross top +36.92 (E01B): '+top);
+  // E01B offset-centre shoulder arcs C4568C/C45696 meet the lantern at this level.
+  const dome=bounds(nodes.find(o=>o.name==='Tower dome · CAD profile'));near(dome.max.y,32.790456676,'Native dome/lantern contact +32.790457');
+  const front=nodes.find(o=>o.name.startsWith('Tower base wall · closed front'));assert(front&&!front.geometry.attributes.position.array.some((v,i)=>i%3===1&&v>8.40),'closed front up to +8.39');
+  const cornice=nodes.filter(o=>o.name==='Tower base cornice').map(bounds);near(Math.max(...cornice.map(b=>b.max.y)),8.39,'tower cornice top at +8.39');
+  for(const sign of [-1,1])for(const x of [-.5,1,2.45,4]) assert.equal(realism.walkAllowed(x,sign*10.15),false,'no passage through the tower base');
+  // The grey plinth reaches under every corner pier, down to the courtyard (owner, 25 Oct 2026).
+  for(const p of nodes.filter(o=>o.name==='Tower plinth').map(bounds))assert(p.min.y<=-2.079&&p.max.y>=-.001,'tower plinth from the courtyard to +0.00');
+  const plinths=nodes.filter(o=>o.name==='Tower plinth').map(bounds), piers=bounds(nodes.find(o=>o.name==='Tower corner pier plinth'));
+  // ENG-043 (31 Oct 2026): behind X 5.4 the outer rear pier stands on a plinth extension.
+  const rear=nodes.filter(o=>o.name.startsWith('Tower plinth · under the rear pier')).map(bounds);assert(rear.length,'plinth extension under the rear piers');
+  for(const r of rear)assert(r.min.y<=-2.079&&r.max.y>=-.001,'rear plinth extension from the courtyard to +0.00');
+  const reach=Math.max(...plinths.map(p=>p.max.x),...rear.map(r=>r.max.x));
+  for(const p of plinths){const inside=(v,a,b)=>v>=a-.001&&v<=b+.001;assert(inside(piers.min.x,p.min.x,p.max.x)&&inside(piers.max.x,p.min.x,reach),'tower plinth covers the piers front to back');}
+  assert(plinths.every(p=>Math.max(Math.abs(p.min.z),Math.abs(p.max.z))>=13.47&&Math.min(Math.abs(p.min.z),Math.abs(p.max.z))<=6.83),'tower plinth covers the inner and outer piers');
+}
+// Roofline after the CAD file, 25 Oct 2026 (roofline.js): porch parapets with axis pinnacles,
+// stepped 9–10 side gables and the stepped rear gable, each with a crowning cross.
+{
+  const R=sandbox.window.CHURCH_ROOFLINE.stats;assert.equal(R.crosses,3,'two side gables and the rear gable carry a cross');
+  assert(R.balusters>250&&R.pinnacles>=40,'porch parapets with balusters and pinnacles');
+  const crossTop=n=>Math.max(...nodes.filter(o=>/^Gable cross/.test(o.name)).map(o=>bounds(o).max.y));assert(Math.abs(crossTop()-17.829)<.01,'rear gable cross top +17.829 (E03)');
+  assert(!nodes.some(o=>o.name==='Schematic side ornamental gable'||o.name==='Schematic decorative eave crest'),'old side gables and eave crest removed');
+  const rail=bounds(nodes.find(o=>o.name==='Porch parapet top rail'));near(rail.max.y,7.073919332,'Native parapet top (E02 LINE D99C62)');
+}
+// Stations of the Cross, parish priest 25 Oct 2026 (stations.js): fourteen, one per nave bay
+// between the columns, above the openings, on the nave face of the C/G wall; old placeholders gone.
+{
+  const ST=sandbox.window.CHURCH_STATIONS;assert.equal(ST.stats.stations,14,'fourteen stations');
+  assert(!nodes.some(o=>/^Proposed Stations of the Cross placements/.test(o.name)),'pier-face placeholders removed');
+  const seen=new Set();for(let n=1;n<=14;n++){const p=ST.spec.place(n,data.longitudinal);seen.add(p.s+':'+p.bay);}
+  assert.equal(seen.size,14,'one station per bay and side');
+  const frame=bounds(nodes.find(o=>o.name==='Station of the Cross gilded frame'));
+  assert(frame.min.y>4.311+.5&&frame.max.y<6.66&&Math.abs(frame.max.z)<=7.26&&Math.abs(frame.min.z)>=7.1,'stations above the door crowns, under the side beams, on the wall face');
+}
+assert.equal(nodes.filter(o=>o.name==='Outer door fixed fanlight').length,0,'No outer porch doors (open arcade)');
 const clearBodies=nodes.filter(o=>/^(Inner|Outer) window clear glass body$/.test(o.name));
-assert.equal(clearBodies.filter(o=>o.name.startsWith('Inner')).length,12);
-assert.equal(clearBodies.filter(o=>o.name.startsWith('Outer')).length,28);
+assert.equal(clearBodies.filter(o=>o.name.startsWith('Inner')).length,28,'Paired windows in the inner wall of seven bays per side, incl. bay 10–11 (25 Oct 2026)');
+assert.equal(clearBodies.filter(o=>o.name.startsWith('Outer')).length,4,'Outer windows only in the 9–10 gables');
 assert(!nodes.some(o=>/^Proposed coloured glazing|^Stained-glass window/.test(o.name)),'Full-height decorative glazing must be removed');
 const innerHeads=nodes.filter(o=>o.name==='Inner window coloured oval');
-assert.equal(innerHeads.length,12);
-assert.equal(nodes.filter(o=>o.name==='Inner doorway coloured oval').length,6);
+assert.equal(innerHeads.length,0,'the single 2.25 m inner windows are replaced by paired windows');
+assert.equal(nodes.filter(o=>o.name==='Inner doorway coloured oval').length,4);
 assert.equal(nodes.filter(o=>o.name==='Entrance door coloured oval').length,3);
 const colouredHeads=nodes.filter(o=>/coloured oval$|fixed fanlight$|stained-glass fanlight$|rose-window infill$/.test(o.name));
-assert.equal(colouredHeads.length,102);
+assert.equal(colouredHeads.length,77,'glass of the tower cap rosettes (towers.js) and of the old side- and rear-gable roses (roofline.js) removed');
 for(const o of innerHeads){o.geometry.computeBoundingBox();near(o.geometry.boundingBox.min.y,3.171,'Inner oval spring');near(o.geometry.boundingBox.max.y,4.311,'Inner oval crown');}
 for(const o of clearBodies){
   assert.equal(o.material,mat.glass);assert.equal(o.material.map,null);
@@ -144,7 +230,8 @@ for(const layout of [2,4]){
 building.updateMatrixWorld(true);
 const blockers=nodes.filter(o=>o.isMesh && /^(Central column |Column base \+0.600|Carved stone pedestal cap|Timber shaft foot|Sanctuary plaster pier)/.test(o.name));
 // Targets follow the furniture: the ambo 2.3 m in front of the altar, the corpus in its niche.
-const targets={altar:[44.24,1.875,0],ambo:[41.3,2.25,-2.62],crucifix:[48.5,5.2,0]};
+// Altar and ambo stand on the dais, which rose from +0.75 to +0.80 (CAD file of 23 Oct 2026).
+const targets={altar:[44.24,1.925,0],ambo:[41.3,2.3,-2.62],crucifix:[48.5,5.2,0]};
 const pewNodes=nodes.filter(o=>o.name.startsWith('Proposed pew ')&&o.isGroup);
 const planPews=pewNodes.map((o,index)=>{
   const p=o.getWorldPosition(new T.Vector3()),length=o.userData.proposedLengthM;
@@ -161,8 +248,9 @@ const seats=planPews.flatMap(pew=>Array.from({length:Math.floor((pew.length-.075
 }));
 assert.equal(seats.filter(s=>s.layout===4).length,288);
 assert.equal(seats.filter(s=>s.layout===2).length,288);
-// The row in front of the bay 8–9 crossing is removed: at least 3.9 m stays open before the sanctuary steps (x 38.2).
+// The row in front of the bay 8–9 crossing is removed: at least 3.1 m stays open before the sanctuary's low platform (x 37.475).
 assert(Math.max(...pewNodes.map(o=>bounds(o).max.x))<=34.3,'No bench stands in front of the bay 8–9 crossing');
+assert(37.475-Math.max(...pewNodes.map(o=>bounds(o).max.x))>=3.1,'At least 3.1 m clear between the front benches and the sanctuary platform');
 assert.equal(seats.filter(s=>s.block==='central'&&s.blocked.altar).length,0);
 assert(seats.some(s=>s.block==='outer'&&s.blocked.altar));
 const sightlineSummary=Object.fromEntries([2,4].map(blocks=>{
@@ -218,7 +306,9 @@ console.log(JSON.stringify({checks:'passed',batchCount,triangles,displayBytes,ex
 assert(data.sanctuary, 'Reference sanctuary loaded');
 const S=data.sanctuary, frameX=data.longitudinal['10'];
 near(S.frameX,frameX,'Front frame stands on axis 10');
-near(S.wingX-frameX,.2,'Shrines stand on the column line');
+const shrineAxisX=data.longitudinal[S.shrineAxis];
+assert.equal(S.shrineAxis,'11','Shrines stand on axis 11 (parish priest, 25 Oct 2026)');
+near(S.wingX-.1,S.niche.backX-.17,'Statues stand level with the crucifix');
 assert(!nodes.some(o=>o.name==='Schematic transverse tie'&&Math.abs(bounds(o).getCenter(new T.Vector3()).x-frameX)<.05),'Sheet 5: no tie beam under the lobed frame');
 for(const o of nodes.filter(o=>/^Front frame (central|side) spandrel$/.test(o.name))){
   const b=bounds(o);near((b.min.x+b.max.x)/2,frameX,'Frame spandrel centred on the columns');
@@ -290,28 +380,33 @@ assert.equal(roofLining.name,'Proposed warm-ivory timber roof lining finish');as
 realism.finish(false);realism.finish(true);
 assert(timber.color.equals(lacquer.color)&&timber.map===null,'Reference palette keeps the lacquered roof timber');
 assert(sandbox.window.CHURCH_SANCTUARY.naturalTimber.map,'Natural timber grain kept for the simulator tone setting');
-for(const name of ['Our Lady forward wing','Saint Joseph forward wing']) {
+for(const name of ['Our Lady shrine · axis 11','Saint Joseph shrine · axis 11']) {
   const wing=nodes.find(o=>o.name===name);assert(wing,name);
   const shelf=wing.children.find(o=>o.name==='Raised statue shelf above entrance');
   near(bounds(shelf).min.y,2.55,'Shelf clears service door head at 2.35 m');
   const b=bounds(wing),z=Math.abs(wing.position.z);
-  assert(b.min.x<frameX&&b.max.x>frameX,'Shrine stands in the frame plane');
-  // Every part of the shrine inside the frame's thickness passes under the side arch.
+  assert(b.min.x>shrineAxisX-.2&&b.min.x<shrineAxisX&&b.max.x<shrineAxisX+1.4,'Shrine stands in the axis-11 side arch');
+  // The axis-10 frame's side arch in front of the shrine is left open.
   const side=nodes.filter(o=>o.name==='Front frame side spandrel').find(o=>Math.sign(bounds(o).getCenter(new T.Vector3()).z)===Math.sign(wing.position.z));
-  assert(Math.max(...wing.children.filter(o=>o.name==='Wing pinnacle').map(o=>bounds(o).max.y))<=S.sideArch.spring+.5,'Shrine pinnacles pass under the side arch');
+  assert(!nodes.some(o=>o.isMesh&&o.visible!==false&&/^(Raised statue shelf|Service entrance jamb|Shrine bay fill)/.test(o.name)&&bounds(o).min.x<frameX+.5),'Nothing of the shrine is left in the axis-10 frame');
   // The bay behind the shrine is closed in lacquered timber above the shelf, wall to wall and up to the roof lining.
   const fill=wing.children.find(o=>o.name==='Shrine bay fill · lacquered timber');assert(fill,'Shrine bay fill');
   const f=bounds(fill);near(f.min.y,2.85,'Bay fill stands on the shelf');
   near(Math.min(Math.abs(f.min.z),Math.abs(f.max.z)),3.75,'Bay fill meets the chamber wall');near(Math.max(Math.abs(f.min.z),Math.abs(f.max.z)),7.25,'Bay fill meets the C/G wall');
-  assert(f.max.y>9.3&&f.max.y<9.6&&f.min.x>frameX+.16,'Bay fill rises to the roof lining behind the frame');
+  assert(f.max.y>9.3&&f.max.y<9.6&&f.min.x>shrineAxisX+.25,'Bay fill rises to the roof lining behind the axis-11 arch');
   assert.equal(fill.material.name,'Sanctuary · oxblood lacquer');
   assert(bounds(side).min.y<=S.sideArch.spring+.001,'Side arch springs above the shrine shelf');
   near(z,S.wingZ,'Shrine centred in the C–D / E–G bay');
   assert(Math.min(Math.abs(b.min.z),Math.abs(b.max.z))>=3.749&&Math.max(Math.abs(b.min.z),Math.abs(b.max.z))<=7.251,'Shrine and its returns fit between the chamber wall and the C/G wall');
   for(const base of wing.children.filter(o=>o.name==='Stone doorway base')){const c=bounds(base);assert(Math.min(Math.abs(c.min.z),Math.abs(c.max.z))>4.02&&Math.max(Math.abs(c.min.z),Math.abs(c.max.z))<6.94,'Shrine bases clear the D/E column base and the C/G pier base');}
 }
-const walls=nodes.filter(o=>o.name==='Chamber side wall · lacquered timber');
-assert.equal(walls.length,2,'Chamber has two lined side walls');
+const walls=nodes.filter(o=>o.name==='Chamber side lintel · lacquered timber');
+assert.equal(walls.length,2,'Chamber keeps two lacquered side lintels');
+// Parish priest, 25 Oct 2026: open between the axis-10 and axis-11 columns below the lintel, and
+// red lacquer and gilding over the two shrines in the axis-11 side arches.
+for(const o of walls)assert(bounds(o).min.y>=S.chamber.lintel-.001,'no lacquered wall below the lintel between columns 10 and 11');
+assert(!nodes.some(o=>/^(Chamber cornice|Chamber pilaster relief)$/.test(o.name)),'no low lacquered panels left between the columns');
+const over11=nodes.filter(o=>o.name==='Axis-11 side spandrel · lacquer and gilding');assert(over11.length===2&&over11.every(o=>{const b=bounds(o);return b.max.y>8.5&&Math.abs(b.min.x-(S.arch11.x-.16))<.01&&b.min.y>=S.arch11.spring-.01;}),'lacquered and gilded spandrels over both shrines: '+over11.map(o=>JSON.stringify(bounds(o))).join(' '));
 for(const o of walls){const b=bounds(o);assert(b.min.x>=frameX+.31&&b.max.x<=data.longitudinal['11'],'Chamber wall runs from the axis-10 column back to axis 11');assert(Math.min(Math.abs(b.min.z),Math.abs(b.max.z))>=3.299,'Chamber keeps the 6.6 m clear width of the arch');}
 const vault=nodes.find(o=>o.name==='Chamber vault · gilded boarding'),lining=nodes.find(o=>o.name==='Chamber back lining · lacquered timber');
 assert(vault&&lining,'Chamber vault and back lining');
@@ -364,7 +459,7 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
     const m=finish(name);assert(m&&m.map&&m.bumpMap&&m.metalnessMap&&m.roughnessMap===m.metalnessMap,`${name} is a relief finish with gilded metal and lacquered ground`);
     assert(m.map.repeat.x>=1&&m.map.repeat.x<=3,`${name} repeats at a carved scale`);
   }
-  for(const [name,count,material] of [['Central pilaster relief',12,'Sanctuary · gilded relief'],['Chamber pilaster relief',8,'Sanctuary · gilded relief'],['Wing pilaster relief',4,'Sanctuary · gilded relief'],['Shrine jamb relief',4,'Sanctuary · gilded relief'],['Shrine shelf frieze',2,'Sanctuary · gilded relief'],['Reredos frieze relief',2,'Sanctuary · gilded relief'],['Carved panel relief',11,'Sanctuary · gilded scrollwork on lacquer'],['Reredos carved ground',1,'Sanctuary · gilded scrollwork on lacquer'],['Shrine bay relief ground',2,'Sanctuary · gilded scrollwork on lacquer']]){
+  for(const [name,count,material] of [['Central pilaster relief',12,'Sanctuary · gilded relief'],['Wing pilaster relief',4,'Sanctuary · gilded relief'],['Shrine jamb relief',4,'Sanctuary · gilded relief'],['Shrine shelf frieze',2,'Sanctuary · gilded relief'],['Reredos frieze relief',2,'Sanctuary · gilded relief'],['Carved panel relief',11,'Sanctuary · gilded scrollwork on lacquer'],['Reredos carved ground',1,'Sanctuary · gilded scrollwork on lacquer'],['Shrine bay relief ground',2,'Sanctuary · gilded scrollwork on lacquer']]){
     const list=part(name);assert.equal(list.length,count,name);
     for(const o of list){
       assert.equal(o.material.name,material,`${name} finish`);
@@ -378,7 +473,7 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
   assert.equal(part('Wing blue niche').length,2);
   assert.equal(part('Carved pinnacle').length,8,'Four spires on the reredos pilasters and four on the gradine');
   assert.equal(part('Wing pinnacle').length,4);
-  assert(part('Gilded leaf cresting').length>=10&&part('Gilded arch cresting').length===5,'Leaf crestings on the canopy arcs and on the three front arches and two shrine heads');
+  assert(part('Gilded leaf cresting').length>=10&&part('Gilded arch cresting').length===7,'Leaf crestings on the canopy arcs, the three front arches, the two shrine heads and the two axis-11 side arches over the shrines');
   for(const o of nodes.filter(o=>o.isMesh&&/^Illustrative corpus /.test(o.name)))assert.equal(o.material.name,'Sanctuary · carved figure, natural wood');
   const dome=part('Tabernacle dome')[0],enclosure=part('Proposed tabernacle enclosure')[0];
   assert(dome&&enclosure&&dome.material===enclosure.material&&dome.material.name==='Sanctuary · carved gilding','Tabernacle is gilded under a dome');
@@ -394,13 +489,38 @@ for(const o of ceilings)assert(!bounds(o).intersectsBox(casing),'Ceiling slab do
 const amboFoot=nodes.find(o=>o.name==='Proposed ambo foot'),altarFoot=nodes.find(o=>o.name==='Proposed altar foot');
 near(bounds(amboFoot).getCenter(new T.Vector3()).x,41.3,'Ambo position');
 assert(bounds(altarFoot).min.x-bounds(amboFoot).max.x>=2,'At least 2 m between the ambo and the altar');
-assert(bounds(amboFoot).min.x-39.75>=1,'Ambo stays 1 m back from the edge of the dais');
+assert(bounds(amboFoot).min.x-39.345>=1,'Ambo stays 1 m back from the head of the sanctuary steps');
+// Dais and side floors at the levels of the CAD file of 23 Oct 2026 (sections 25 and 45),
+// with the free-standing furniture on the dais floor and the cross still on its niche base.
+{
+  const near=(a,b,t=.002)=>Math.abs(a-b)<=t;
+  const platform=nodes.find(o=>o.name==='Sanctuary central platform +0.800');
+  assert(platform&&near(bounds(platform).max.y,.8),'dais top at +0.80 m');
+  const sides=nodes.filter(o=>o.name==='Sanctuary side platform +0.160');
+  assert(sides.length===2&&sides.every(o=>near(bounds(o).max.y,.16)&&near(bounds(o).min.x,44.065)),'side floors at +0.16 m from the axis-10 piers');
+  // Plan P05 and section A-A of the CAD file (owner check, 1 Nov 2026): a +0.16 low platform
+  // round the dais and one flight 1.90 m wide recessed into the dais front; no full-width steps.
+  assert(!nodes.some(o=>o.name.startsWith('Sanctuary step profile')),'old full-width steps removed');
+  const pb=bounds(platform),low=nodes.find(o=>o.name==='Sanctuary low platform +0.160'),lb=low&&bounds(low);
+  assert(near(pb.min.x,38.475)&&near(pb.max.x,48.65)&&near(pb.max.z,4.5)&&near(pb.min.z,-4.5),'dais outline x 38.475–48.65, z ±4.50');
+  assert(lb&&near(lb.max.y,.16)&&near(lb.min.x,37.475)&&near(lb.max.x,44.065)&&near(lb.max.z,5.5)&&near(lb.min.z,-5.5),'low platform +0.16, x 37.475–44.065, z ±5.50');
+  const flight=nodes.filter(o=>o.name.startsWith('Sanctuary recessed step')).map(bounds).sort((a,b)=>a.max.y-b.max.y);
+  assert(flight.length===3&&flight.every((b,i)=>near(b.max.y,.32+.16*i)&&near(b.min.x,38.475+.29*i)&&near(b.max.x,39.345)&&near(b.max.z-b.min.z,1.9)),'three recessed steps, 1.90 m wide, 0.16 m risers, 0.29 m treads');
+  const fy=(x,z)=>realism.floorHeight(x,z);
+  for(const [x,z,y,what] of [[37.3,0,null,'nave in front of the platform (left to the nave rules)'],[37.6,4.9,.16,'low platform corner'],[37.6,5.3,0,'outside the rounded corner'],[38.6,0,.32,'first step'],[38.9,.9,.48,'second step'],[39.2,-.9,.64,'third step'],[39.4,0,.8,'head of the steps'],[38.6,2,.8,'dais front beside the steps'],[42,4.4,.8,'dais beside the axis-10 columns'],[42,5.2,.16,'low platform beside the dais'],[42,6.5,0,'wing crossing floor'],[46,6.5,.16,'side floor behind axis 10']])
+    assert(y===null?fy(x,z)===null:fy(x,z)!==null&&near(fy(x,z),y),`${what}: floor ${fy(x,z)} at x ${x}, z ${z}, expected ${y}`);
+  for(const foot of [amboFoot,altarFoot])assert(near(bounds(foot).min.y,.8),'furniture stands on the dais: '+foot.name);
+  const plinths=nodes.filter(o=>o.name==='Carved stone column base on the dais');
+  assert(plinths.length===2&&plinths.every(o=>near(bounds(o).min.y,.8)&&near(bounds(o).max.y,1)),'axis-10 plinths +0.80 to +1.00 m');
+  const upright=nodes.find(o=>o.name==='Proposed sanctuary crucifix upright');
+  assert(upright&&near(bounds(upright).min.y,3.4,.005),'the cross keeps its height on the niche base');
+}
 assert(!nodes.some(o=>o.name==='Statue plinth'),'Old low statue bases removed');
 // Walking: the service entrances and the dais stay open, the lined walls are solid.
 for(const sign of [-1,1]){
   // walkAllowed: false blocks, null leaves the decision to the base colliders.
-  for(const x of [43.6,44.2,44.9,45.6,46.8])assert(realism.walkAllowed(x,sign*S.wingZ)!==false,`Service entrance route open at x ${x}`);
-  assert.equal(realism.walkAllowed(44.6,sign*(S.wingZ+1.05)),false,'Shrine jamb is solid');
+  for(const x of [43.6,44.2,44.9,45.6,46.8,48.2,48.9,49.6,50.4])assert(realism.walkAllowed(x,sign*S.wingZ)!==false,`Side passage and service entrance route open at x ${x}`);
+  assert.equal(realism.walkAllowed(S.wingX+.2,sign*(S.wingZ+1.05)),false,'Shrine jamb is solid');
   assert.equal(realism.walkAllowed(46.4,sign*3.5),false,'Chamber wall is solid');
   assert(realism.walkAllowed(46.4,sign*2.9)!==false&&realism.walkAllowed(46.4,sign*4.4)!==false,'Chamber and rear passage stay walkable');
 }
@@ -414,3 +534,29 @@ for(const sign of [-1,1]){
   assert.equal(realism.walkAllowed(52.9,sign*5.5),false,'Rear gable bounds the service room');
 }
 console.log('Sanctuary: sheet-5 frame, shrine line, chamber lining, lacquered roof timbers, door headroom, routes, open service room passed');
+
+// Central facade between the towers, CAD file of 23 Oct 2026 (facade.js): the traced gables are gone
+// above the cut, and the upper storey stands on the drawing's faces and levels.
+{
+  const F=sandbox.window.CHURCH_FACADE.spec;
+  const upper=nodes.find(o=>o.name==='Tower-end upper facade — CAD file 23 Oct 2026');
+  assert(upper&&upper.children.length>100,'CAD upper facade built');
+  const lower=nodes.find(o=>o.name.startsWith('Tower-end central facade'));
+  lower.traverse(o=>{if(o.isMesh)assert(bounds(o).min.y<F.cut,'no traced-gable part above the cut: '+o.name);});
+  assert(!nodes.some(o=>/empty shrine with curved crown|Broad central shrine entablature|Detached central ornamental pier/.test(o.name)),'PDF gables and shrines removed');
+  const of=name=>{const list=upper.children.filter(o=>o.name===name);assert(list.length,name);const b=new T.Box3();list.forEach(o=>b.union(bounds(o)));return b;};
+  near(of('Upper storey terrace slab and plinth top').max.y,9.741,'Plinth top +9.741 (E01B)');
+  near(of('Upper entablature crown').max.y,15.84,'Upper entablature +15.840 (E01B level)');
+  near(of('Central bay upper wall').min.x,2.936,'Central bay face (plan +10.128)');
+  near(of('Side bay upper wall').min.x,4.017,'Side bay face (plan +10.128)');
+  near(of('Central aedicule wall').min.x,3.915,'Aedicule face (plan +15.840)');
+  near(of('Side bay niche').max.y,12.308+.599,'Side niche crown: springing +12.308, r 0.599');
+  near(of('Central aedicule niche').max.y,18.893+.711,'Central niche crown: springing +18.893, r 0.711');
+  near(of('Central bay great arch moulding').max.y,12.677+2.27,'Great arch extrados: centre +12.677, r 2.27');
+  const cross=of('Central cross trefoil end').union(of('Central cross'));near(cross.max.y,24.648,'Cross top +24.648');
+  const piers=of('Central bay pier shaft');near(piers.max.z,2.979+.435,'Central piers: 621 / 5,958.8 / 621 chain');near(piers.min.z,-2.979-.435,'Central piers symmetric');
+  // Since 31 Oct 2026 the group also holds the CAD ground piers, whose plinth stands at X 1.292.
+  const all=bounds(upper);assert(all.min.x>1.25&&all.max.x<5.6&&all.max.z<=7.5+1e-6&&all.min.z>=-7.5-1e-6,'upper facade stays between the towers, in front of axis 2′');
+  let tris=0;upper.traverse(o=>{if(o.isMesh)tris+=o.geometry.index.count/3;});assert(tris<150000,'facade triangle budget: '+tris);
+  console.log(JSON.stringify({facade:'passed',meshes:upper.children.length,triangles:tris,removedBundleMeshes:upper.userData.removedBundleMeshes}));
+}

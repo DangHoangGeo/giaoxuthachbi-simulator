@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-19T13:14:34.808Z",
+  "savedAt": "2026-10-31T16:19:36.678Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -51,7 +51,13 @@
     "hiddenFittingsRevision": "2026-10-19-hidden-fittings-1",
     "finishChandelierRevision": "2026-10-19-sanctuary-lacquer-chandeliers-1",
     "fanBeamRevision": "2026-10-19-fans-on-column-beams-1",
-    "eveningExposureRevision": "2026-10-09-evening-160"
+    "daisLevelRevision": "2026-10-24-dais-0-80-1",
+    "facadeCadRevision": "2026-10-24-cad-facade-1",
+    "parishMeetingRevision": "2026-10-25-parish-meeting-6",
+    "towerPierRevision": "2026-10-31-tower-pier-depth-2",
+    "eveningExposureRevision": "2026-10-09-evening-160",
+    "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
+    "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
   },
   "customScenes": [],
   "items": [
@@ -103,7 +109,7 @@
       "id": "L3",
       "type": "readingProjector",
       "name": "Reading light · axis 3 · B central",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         10.125,
@@ -128,7 +134,7 @@
       "id": "L4",
       "type": "readingProjector",
       "name": "Reading light · axis 3 · B central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         10.125,
@@ -153,7 +159,7 @@
       "id": "L5",
       "type": "readingProjector",
       "name": "Reading light · axis 3 · H central",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         10.125,
@@ -178,7 +184,7 @@
       "id": "L6",
       "type": "readingProjector",
       "name": "Reading light · axis 3 · H central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         10.125,
@@ -203,7 +209,7 @@
       "id": "L7",
       "type": "readingProjector",
       "name": "Reading light · axis 4 · B central",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         14.625,
@@ -228,7 +234,7 @@
       "id": "L8",
       "type": "readingProjector",
       "name": "Reading light · axis 4 · B central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         14.625,
@@ -253,7 +259,7 @@
       "id": "L9",
       "type": "readingProjector",
       "name": "Reading light · axis 4 · H central",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         14.625,
@@ -278,7 +284,7 @@
       "id": "L10",
       "type": "readingProjector",
       "name": "Reading light · axis 4 · H central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         14.625,
@@ -303,7 +309,7 @@
       "id": "L11",
       "type": "readingProjector",
       "name": "Reading light · axis 5 · B central",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         19.125,
@@ -328,7 +334,7 @@
       "id": "L12",
       "type": "readingProjector",
       "name": "Reading light · axis 5 · B central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         19.125,
@@ -353,7 +359,7 @@
       "id": "L13",
       "type": "readingProjector",
       "name": "Reading light · axis 5 · H central",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         19.125,
@@ -378,7 +384,7 @@
       "id": "L14",
       "type": "readingProjector",
       "name": "Reading light · axis 5 · H central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         19.125,
@@ -428,7 +434,7 @@
       "id": "L16",
       "type": "readingProjector",
       "name": "Reading light · axis 6 · B central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         23.625,
@@ -478,7 +484,7 @@
       "id": "L18",
       "type": "readingProjector",
       "name": "Reading light · axis 6 · H central · twin",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         23.625,
@@ -1103,7 +1109,7 @@
       "id": "L43",
       "type": "readingProjector",
       "name": "Reading light · axis 6 · B outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         23.585,
@@ -1153,7 +1159,7 @@
       "id": "L45",
       "type": "readingProjector",
       "name": "Reading light · axis 6 · H outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         23.585,
@@ -1203,7 +1209,7 @@
       "id": "L47",
       "type": "readingProjector",
       "name": "Reading light · axis 7 · B outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         28.085,
@@ -1228,7 +1234,7 @@
       "id": "L48",
       "type": "readingProjector",
       "name": "Reading light · axis 7 · B outer · twin",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         28.085,
@@ -1253,7 +1259,7 @@
       "id": "L49",
       "type": "readingProjector",
       "name": "Reading light · axis 7 · H outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         28.085,
@@ -1278,7 +1284,7 @@
       "id": "L50",
       "type": "readingProjector",
       "name": "Reading light · axis 7 · H outer · twin",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         28.085,
@@ -1303,7 +1309,7 @@
       "id": "L51",
       "type": "readingProjector",
       "name": "Reading light · axis 8 · B outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         32.585,
@@ -1328,7 +1334,7 @@
       "id": "L52",
       "type": "readingProjector",
       "name": "Reading light · axis 8 · B outer · twin",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         32.585,
@@ -1353,7 +1359,7 @@
       "id": "L53",
       "type": "readingProjector",
       "name": "Reading light · axis 8 · H outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         32.585,
@@ -1378,7 +1384,7 @@
       "id": "L54",
       "type": "readingProjector",
       "name": "Reading light · axis 8 · H outer · twin",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         32.585,
@@ -1403,7 +1409,7 @@
       "id": "L55",
       "type": "readingProjector",
       "name": "Reading light · axis 9 · B outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         37.085,
@@ -1428,7 +1434,7 @@
       "id": "L56",
       "type": "readingProjector",
       "name": "Reading light · axis 9 · B outer · twin",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         37.085,
@@ -1453,7 +1459,7 @@
       "id": "L57",
       "type": "readingProjector",
       "name": "Reading light · axis 9 · H outer",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         37.085,
@@ -1478,7 +1484,7 @@
       "id": "L58",
       "type": "readingProjector",
       "name": "Reading light · axis 9 · H outer · twin",
-      "circuit": "L2",
+      "circuit": "L1",
       "mount": "wall",
       "pos": [
         37.085,
@@ -1503,7 +1509,7 @@
       "id": "L59",
       "type": "readingProjector",
       "name": "Rear rows light · entrance façade · B",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         2.65,
@@ -1527,7 +1533,7 @@
       "id": "L60",
       "type": "readingProjector",
       "name": "Rear centre light · entrance façade · B",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         2.65,
@@ -1551,7 +1557,7 @@
       "id": "L61",
       "type": "readingProjector",
       "name": "Rear rows light · entrance façade · H",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         2.65,
@@ -1575,7 +1581,7 @@
       "id": "L62",
       "type": "readingProjector",
       "name": "Rear centre light · entrance façade · H",
-      "circuit": "L1",
+      "circuit": "L2",
       "mount": "wall",
       "pos": [
         2.65,
@@ -1850,73 +1856,10 @@
       "shadow": false
     },
     {
-      "id": "L78",
-      "type": "chandelier8",
-      "name": "Chandelier · bay 4–5",
-      "circuit": "LD",
-      "mount": "pendant",
-      "pos": [
-        16.725,
-        7.3,
-        0
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 12.152,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L79",
-      "type": "chandelier8",
-      "name": "Chandelier · bay 6–7",
-      "circuit": "LD",
-      "mount": "pendant",
-      "pos": [
-        25.725,
-        7.3,
-        0
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 12.152,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L80",
-      "type": "chandelier8",
-      "name": "Chandelier · bay 8–9",
-      "circuit": "LD",
-      "mount": "pendant",
-      "pos": [
-        34.725,
-        7.3,
-        0
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 12.152,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
       "id": "L81",
       "type": "chandelier12",
       "name": "Grand chandelier · crossing 9–10",
-      "circuit": "LD",
+      "circuit": "L3",
       "mount": "pendant",
       "pos": [
         40.575,
@@ -1931,328 +1874,6 @@
       "hidden": false,
       "dim": 1,
       "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L82",
-      "type": "sconce2",
-      "name": "Sconce · axis 3 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        9.975,
-        4.6,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L83",
-      "type": "sconce2",
-      "name": "Sconce · axis 3 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        9.975,
-        4.6,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L84",
-      "type": "sconce2",
-      "name": "Sconce · axis 4 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        14.475,
-        4.6,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L85",
-      "type": "sconce2",
-      "name": "Sconce · axis 4 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        14.475,
-        4.6,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L86",
-      "type": "sconce2",
-      "name": "Sconce · axis 5 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        18.975,
-        4.6,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L87",
-      "type": "sconce2",
-      "name": "Sconce · axis 5 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        18.975,
-        4.6,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L88",
-      "type": "sconce2",
-      "name": "Sconce · axis 6 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        23.475,
-        4.6,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L89",
-      "type": "sconce2",
-      "name": "Sconce · axis 6 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        23.475,
-        4.6,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L90",
-      "type": "sconce2",
-      "name": "Sconce · axis 7 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        27.975,
-        4.6,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L91",
-      "type": "sconce2",
-      "name": "Sconce · axis 7 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        27.975,
-        4.6,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L92",
-      "type": "sconce2",
-      "name": "Sconce · axis 8 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        32.475,
-        4.6,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L93",
-      "type": "sconce2",
-      "name": "Sconce · axis 8 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        32.475,
-        4.6,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L94",
-      "type": "sconce2",
-      "name": "Sconce · axis 9 · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        36.975,
-        4.6,
-        -7.07
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L95",
-      "type": "sconce2",
-      "name": "Sconce · axis 9 · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        36.975,
-        4.6,
-        7.07
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L96",
-      "type": "sconce2",
-      "name": "Sconce · sanctuary pier · B",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        46.455,
-        4.3,
-        -3.2399999999999998
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "lumens": 560,
-      "shadow": false
-    },
-    {
-      "id": "L97",
-      "type": "sconce2",
-      "name": "Sconce · sanctuary pier · H",
-      "circuit": "LD",
-      "mount": "wall",
-      "pos": [
-        46.455,
-        4.3,
-        3.2399999999999998
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "lumens": 560,
       "shadow": false
     },
     {
@@ -2485,11 +2106,11 @@
       "mount": "wall",
       "pos": [
         44.75,
-        6.7,
+        7.25,
         -3.2399999999999998
       ],
       "yaw": 9.727578551401601,
-      "tilt": -28.00954417031813,
+      "tilt": -35.14615446872573,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
@@ -2497,7 +2118,7 @@
       "params": {
         "finish": "chamber"
       },
-      "lumens": 650,
+      "lumens": 850,
       "beam": 36,
       "shadow": false
     },
@@ -2508,12 +2129,12 @@
       "circuit": "L3",
       "mount": "wall",
       "pos": [
-        44.75,
-        5.4,
+        45.2,
+        7.25,
         -3.2399999999999998
       ],
-      "yaw": 68.78943229559124,
-      "tilt": -27.549252343078525,
+      "yaw": 72.94088618074167,
+      "tilt": -40.50362289000834,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
@@ -2579,11 +2200,11 @@
       "mount": "wall",
       "pos": [
         44.75,
-        6.7,
+        7.25,
         3.2399999999999998
       ],
       "yaw": -9.727578551401601,
-      "tilt": -28.00954417031813,
+      "tilt": -35.14615446872573,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
@@ -2591,7 +2212,7 @@
       "params": {
         "finish": "chamber"
       },
-      "lumens": 650,
+      "lumens": 850,
       "beam": 36,
       "shadow": false
     },
@@ -2602,12 +2223,12 @@
       "circuit": "L3",
       "mount": "wall",
       "pos": [
-        44.75,
-        5.4,
+        45.2,
+        7.25,
         3.2399999999999998
       ],
-      "yaw": -68.78943229559124,
-      "tilt": -27.549252343078525,
+      "yaw": -72.94088618074167,
+      "tilt": -40.50362289000834,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
@@ -2648,12 +2269,12 @@
       "circuit": "L3",
       "mount": "wall",
       "pos": [
-        44.75,
-        4.9,
+        45.65,
+        7.25,
         -3.2399999999999998
       ],
-      "yaw": 51.79594401601898,
-      "tilt": -34.65317804874206,
+      "yaw": 63.012109418251534,
+      "tilt": -55.0379731303053,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
@@ -2661,7 +2282,7 @@
       "params": {
         "finish": "chamber"
       },
-      "lumens": 300,
+      "lumens": 900,
       "beam": 10,
       "shadow": false
     },
@@ -2670,23 +2291,22 @@
       "type": "spot15",
       "name": "Statue accent · B",
       "circuit": "L3",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        6.655,
-        -5.25
+        44.419999999999995,
+        7.75,
+        -4.75
       ],
-      "yaw": -1.961417667770341,
-      "tilt": -19.279578439249807,
-      "mountYaw": -1.961417667770341,
-      "anchorY": 6.66,
+      "yaw": -9.651833466804238,
+      "tilt": -39.21267771222643,
+      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "timber"
       },
-      "lumens": 220,
+      "lumens": 165,
       "beam": 12,
       "shadow": false
     },
@@ -2695,23 +2315,22 @@
       "type": "projector36",
       "name": "Shrine wash · B",
       "circuit": "L3",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        6.655,
-        -4.9
+        44.419999999999995,
+        7.75,
+        -6.25
       ],
-      "yaw": -4.830419958289942,
-      "tilt": -19.011214152750114,
-      "mountYaw": -4.830419958289942,
-      "anchorY": 6.66,
+      "yaw": 10.101118347708251,
+      "tilt": -39.69810503390403,
+      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "timber"
       },
-      "lumens": 2400,
+      "lumens": 1800,
       "beam": 50,
       "shadow": false
     },
@@ -2720,23 +2339,22 @@
       "type": "spot15",
       "name": "Statue accent · H",
       "circuit": "L3",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        6.655,
-        5.25
+        44.419999999999995,
+        7.75,
+        4.75
       ],
-      "yaw": 1.961417667770341,
-      "tilt": -19.279578439249807,
-      "mountYaw": 1.961417667770341,
-      "anchorY": 6.66,
+      "yaw": 9.651833466804238,
+      "tilt": -39.21267771222643,
+      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "timber"
       },
-      "lumens": 220,
+      "lumens": 165,
       "beam": 12,
       "shadow": false
     },
@@ -2745,420 +2363,455 @@
       "type": "projector36",
       "name": "Shrine wash · H",
       "circuit": "L3",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        6.655,
-        4.9
+        44.419999999999995,
+        7.75,
+        6.25
       ],
-      "yaw": 4.830419958289942,
-      "tilt": -19.011214152750114,
-      "mountYaw": 4.830419958289942,
-      "anchorY": 6.66,
+      "yaw": -10.101118347708251,
+      "tilt": -39.69810503390403,
+      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "timber"
       },
-      "lumens": 2400,
+      "lumens": 1800,
       "beam": 50,
       "shadow": false
     },
     {
       "id": "L119",
-      "type": "lantern",
-      "name": "Veranda lantern · B · axis 3",
+      "type": "porchFlood",
+      "name": "Porch path light · B · bay 2′–3",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        9.975,
-        4.55,
-        -8.85
+        9.545,
+        3.1,
+        -7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": -145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": -90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L120",
-      "type": "lantern",
-      "name": "Veranda lantern · B · axis 4",
+      "type": "porchFlood",
+      "name": "Porch path light · B · bay 3–4",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        14.475,
-        4.55,
-        -8.85
+        14.045,
+        3.1,
+        -7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": -145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": -90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L121",
-      "type": "lantern",
-      "name": "Veranda lantern · B · axis 5",
+      "type": "porchFlood",
+      "name": "Porch path light · B · bay 4–5",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        18.975,
-        4.55,
-        -8.85
+        18.545,
+        3.1,
+        -7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": -145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": -90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L122",
-      "type": "lantern",
-      "name": "Veranda lantern · B · axis 6",
+      "type": "porchFlood",
+      "name": "Porch path light · B · bay 5–6",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        23.475,
-        4.55,
-        -8.85
+        23.045,
+        3.1,
+        -7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": -145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": -90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L123",
-      "type": "lantern",
-      "name": "Veranda lantern · B · axis 7",
+      "type": "porchFlood",
+      "name": "Porch path light · B · bay 6–7",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        27.975,
-        4.55,
-        -8.85
+        27.545,
+        3.1,
+        -7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": -145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": -90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L124",
-      "type": "lantern",
-      "name": "Veranda lantern · B · axis 8",
+      "type": "porchFlood",
+      "name": "Porch path light · B · bay 7–8",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        32.475,
-        4.55,
-        -8.85
+        32.045,
+        3.1,
+        -7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": -145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": -90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L125",
-      "type": "lantern",
-      "name": "Veranda lantern · B · axis 9",
+      "type": "porchFlood",
+      "name": "Porch path light · B · bay 8–9",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        4.55,
-        -8.85
+        36.545,
+        3.1,
+        -7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": -145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": -90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L126",
-      "type": "lantern",
-      "name": "Veranda lantern · B · axis 10",
+      "type": "porchFlood",
+      "name": "Porch path light · B · bay 10–11",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        44.175,
-        4.55,
-        -8.85
+        48.245,
+        3.1,
+        -7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": -145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": -90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L127",
-      "type": "lantern",
-      "name": "Veranda lantern · B · axis 11",
+      "type": "porchFlood",
+      "name": "Porch path light · B · bay 11–12",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        48.675,
-        4.55,
-        -8.85
+        52.586,
+        3.1,
+        -7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": -144.75140037827725,
+      "tilt": -58.18237704400355,
+      "mountYaw": -90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L128",
-      "type": "lantern",
-      "name": "Veranda lantern · H · axis 3",
+      "type": "porchFlood",
+      "name": "Porch path light · H · bay 2′–3",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        9.975,
-        4.55,
-        8.85
+        9.545,
+        3.1,
+        7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": 145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": 90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L129",
-      "type": "lantern",
-      "name": "Veranda lantern · H · axis 4",
+      "type": "porchFlood",
+      "name": "Porch path light · H · bay 3–4",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        14.475,
-        4.55,
-        8.85
+        14.045,
+        3.1,
+        7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": 145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": 90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L130",
-      "type": "lantern",
-      "name": "Veranda lantern · H · axis 5",
+      "type": "porchFlood",
+      "name": "Porch path light · H · bay 4–5",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        18.975,
-        4.55,
-        8.85
+        18.545,
+        3.1,
+        7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": 145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": 90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L131",
-      "type": "lantern",
-      "name": "Veranda lantern · H · axis 6",
+      "type": "porchFlood",
+      "name": "Porch path light · H · bay 5–6",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        23.475,
-        4.55,
-        8.85
+        23.045,
+        3.1,
+        7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": 145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": 90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L132",
-      "type": "lantern",
-      "name": "Veranda lantern · H · axis 7",
+      "type": "porchFlood",
+      "name": "Porch path light · H · bay 6–7",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        27.975,
-        4.55,
-        8.85
+        27.545,
+        3.1,
+        7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": 145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": 90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L133",
-      "type": "lantern",
-      "name": "Veranda lantern · H · axis 8",
+      "type": "porchFlood",
+      "name": "Porch path light · H · bay 7–8",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        32.475,
-        4.55,
-        8.85
+        32.045,
+        3.1,
+        7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": 145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": 90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L134",
-      "type": "lantern",
-      "name": "Veranda lantern · H · axis 9",
+      "type": "porchFlood",
+      "name": "Porch path light · H · bay 8–9",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        36.975,
-        4.55,
-        8.85
+        36.545,
+        3.1,
+        7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": 145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": 90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L135",
-      "type": "lantern",
-      "name": "Veranda lantern · H · axis 10",
+      "type": "porchFlood",
+      "name": "Porch path light · H · bay 10–11",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        44.175,
-        4.55,
-        8.85
+        48.245,
+        3.1,
+        7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": 145.94822149962073,
+      "tilt": -57.40139216738132,
+      "mountYaw": 90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
       "id": "L136",
-      "type": "lantern",
-      "name": "Veranda lantern · H · axis 11",
+      "type": "porchFlood",
+      "name": "Porch path light · H · bay 11–12",
       "circuit": "L4",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        48.675,
-        4.55,
-        8.85
+        52.586,
+        3.1,
+        7.47
       ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": 144.75140037827725,
+      "tilt": -58.18237704400355,
+      "mountYaw": 90,
+      "anchorY": 3.1,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "lumens": 2000,
+      "note": "CONCEPT: compact wall flood for the open porch walking surface, on the inner masonry beside its pier. Product photometry, shielding, weather protection, driver access and fixing pending.",
+      "lumens": 900,
+      "beam": 90,
       "shadow": false
     },
     {
@@ -3170,7 +2823,7 @@
       "pos": [
         2.2,
         3,
-        -2.4
+        -2.3
       ],
       "yaw": 180,
       "tilt": 0,
@@ -3190,7 +2843,7 @@
       "pos": [
         2.2,
         3,
-        2.4
+        2.3
       ],
       "yaw": 180,
       "tilt": 0,
@@ -3210,7 +2863,7 @@
       "pos": [
         15.3,
         2.6,
-        -10.55
+        -7.52
       ],
       "yaw": -90,
       "tilt": 0,
@@ -3230,7 +2883,7 @@
       "pos": [
         18.150000000000002,
         2.6,
-        -10.55
+        -7.52
       ],
       "yaw": -90,
       "tilt": 0,
@@ -3250,7 +2903,7 @@
       "pos": [
         33.300000000000004,
         2.6,
-        -10.55
+        -7.52
       ],
       "yaw": -90,
       "tilt": 0,
@@ -3270,47 +2923,7 @@
       "pos": [
         36.15,
         2.6,
-        -10.55
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L143",
-      "type": "wallLantern",
-      "name": "Side door lantern · B · 46.425 · front",
-      "circuit": "L5",
-      "mount": "wall",
-      "pos": [
-        45,
-        2.6,
-        -10.55
-      ],
-      "yaw": -90,
-      "tilt": 0,
-      "mountYaw": -90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L144",
-      "type": "wallLantern",
-      "name": "Side door lantern · B · 46.425 · rear",
-      "circuit": "L5",
-      "mount": "wall",
-      "pos": [
-        47.849999999999994,
-        2.6,
-        -10.55
+        -7.52
       ],
       "yaw": -90,
       "tilt": 0,
@@ -3330,7 +2943,7 @@
       "pos": [
         15.3,
         2.6,
-        10.55
+        7.52
       ],
       "yaw": 90,
       "tilt": 0,
@@ -3350,7 +2963,7 @@
       "pos": [
         18.150000000000002,
         2.6,
-        10.55
+        7.52
       ],
       "yaw": 90,
       "tilt": 0,
@@ -3370,7 +2983,7 @@
       "pos": [
         33.300000000000004,
         2.6,
-        10.55
+        7.52
       ],
       "yaw": 90,
       "tilt": 0,
@@ -3390,47 +3003,7 @@
       "pos": [
         36.15,
         2.6,
-        10.55
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L149",
-      "type": "wallLantern",
-      "name": "Side door lantern · H · 46.425 · front",
-      "circuit": "L5",
-      "mount": "wall",
-      "pos": [
-        45,
-        2.6,
-        10.55
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "shadow": false
-    },
-    {
-      "id": "L150",
-      "type": "wallLantern",
-      "name": "Side door lantern · H · 46.425 · rear",
-      "circuit": "L5",
-      "mount": "wall",
-      "pos": [
-        47.849999999999994,
-        2.6,
-        10.55
+        7.52
       ],
       "yaw": 90,
       "tilt": 0,
@@ -3532,8 +3105,8 @@
       "circuit": "E1",
       "mount": "wall",
       "pos": [
-        2.65,
-        6.95,
+        2.6800000008940703,
+        4.762499999552966,
         0
       ],
       "yaw": 0,
@@ -3542,7 +3115,11 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "backReach": 0.08,
+        "clipRise": 0.1375000004470346
+      },
+      "note": "CONCEPT: inside-face transom clip, case below the coloured fanlight. Lowest edge about 4.68 m; support/door clearance and sign visibility need fire/architectural review. E1 remains maintained from DB-",
       "shadow": false
     },
     {
@@ -3553,8 +3130,8 @@
       "mount": "wall",
       "pos": [
         16.725,
-        4.6,
-        -7.245
+        3.061,
+        -7.4400000013411045
       ],
       "yaw": 90,
       "tilt": 0,
@@ -3562,7 +3139,11 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "backReach": 0,
+        "clipRise": 0
+      },
+      "note": "CONCEPT: mounted on the 220 mm fixed head band above the door leaves and below the coloured fanlight. E1 remains maintained from DB-1. Product, fixing, visibility and emergency operation require revie",
       "shadow": false
     },
     {
@@ -3573,8 +3154,8 @@
       "mount": "wall",
       "pos": [
         16.725,
-        4.6,
-        7.245
+        3.061,
+        7.4400000013411045
       ],
       "yaw": -90,
       "tilt": 0,
@@ -3582,7 +3163,11 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "backReach": 0,
+        "clipRise": 0
+      },
+      "note": "CONCEPT: mounted on the 220 mm fixed head band above the door leaves and below the coloured fanlight. E1 remains maintained from DB-1. Product, fixing, visibility and emergency operation require revie",
       "shadow": false
     },
     {
@@ -3593,8 +3178,8 @@
       "mount": "wall",
       "pos": [
         34.725,
-        4.6,
-        -7.245
+        3.061,
+        -7.4400000013411045
       ],
       "yaw": 90,
       "tilt": 0,
@@ -3602,7 +3187,11 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "backReach": 0,
+        "clipRise": 0
+      },
+      "note": "CONCEPT: mounted on the 220 mm fixed head band above the door leaves and below the coloured fanlight. E1 remains maintained from DB-1. Product, fixing, visibility and emergency operation require revie",
       "shadow": false
     },
     {
@@ -3613,8 +3202,8 @@
       "mount": "wall",
       "pos": [
         34.725,
-        4.6,
-        7.245
+        3.061,
+        7.4400000013411045
       ],
       "yaw": -90,
       "tilt": 0,
@@ -3622,7 +3211,11 @@
       "on": true,
       "hidden": false,
       "dim": 1,
-      "params": {},
+      "params": {
+        "backReach": 0,
+        "clipRise": 0
+      },
+      "note": "CONCEPT: mounted on the 220 mm fixed head band above the door leaves and below the coloured fanlight. E1 remains maintained from DB-1. Product, fixing, visibility and emergency operation require revie",
       "shadow": false
     },
     {
@@ -4593,8 +4186,8 @@
       "mount": "floor",
       "pos": [
         21.35,
-        6.47,
-        -10.6
+        6.4,
+        -10.78
       ],
       "yaw": 90,
       "tilt": 0,
@@ -4617,8 +4210,8 @@
       "mount": "floor",
       "pos": [
         48.4,
-        6.47,
-        -10.6
+        6.4,
+        -10.78
       ],
       "yaw": 90,
       "tilt": 0,
@@ -4640,9 +4233,9 @@
       "circuit": "L7",
       "mount": "floor",
       "pos": [
-        53.45,
-        10,
-        -3.65
+        53.72,
+        9,
+        -5.475
       ],
       "yaw": 0,
       "tilt": 0,
@@ -4651,8 +4244,8 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "length": 9.07,
-        "slope": 36.4,
+        "length": 4.05,
+        "slope": 41,
         "spacing": 0.6
       },
       "shadow": false
@@ -4664,9 +4257,9 @@
       "circuit": "L7",
       "mount": "wall",
       "pos": [
-        -0.4,
+        -0.7749999999999999,
         4.195,
-        -7.823
+        -7.593
       ],
       "yaw": 0,
       "tilt": 0,
@@ -4688,9 +4281,9 @@
       "circuit": "L7",
       "mount": "wall",
       "pos": [
-        -0.4,
+        -0.7749999999999999,
         4.195,
-        -12.483
+        -12.713000000000001
       ],
       "yaw": 0,
       "tilt": 0,
@@ -4712,9 +4305,9 @@
       "circuit": "L7",
       "mount": "wall",
       "pos": [
-        -0.3099999999999997,
+        -0.635,
         12.115,
-        -7.948
+        -7.663
       ],
       "yaw": 0,
       "tilt": 0,
@@ -4736,9 +4329,9 @@
       "circuit": "L7",
       "mount": "wall",
       "pos": [
-        -0.3099999999999997,
+        -0.635,
         12.115,
-        -12.358
+        -12.643
       ],
       "yaw": 0,
       "tilt": 0,
@@ -4760,9 +4353,9 @@
       "circuit": "L7",
       "mount": "wall",
       "pos": [
-        -0.20999999999999963,
+        -0.525,
         19.490000000000002,
-        -8.048
+        -7.7330000000000005
       ],
       "yaw": 0,
       "tilt": 0,
@@ -4784,9 +4377,9 @@
       "circuit": "L7",
       "mount": "wall",
       "pos": [
-        -0.20999999999999963,
+        -0.525,
         19.490000000000002,
-        -12.258000000000001
+        -12.573
       ],
       "yaw": 0,
       "tilt": 0,
@@ -4857,8 +4450,8 @@
       "mount": "floor",
       "pos": [
         21.35,
-        6.47,
-        10.6
+        6.4,
+        10.78
       ],
       "yaw": 90,
       "tilt": 0,
@@ -4881,8 +4474,8 @@
       "mount": "floor",
       "pos": [
         48.4,
-        6.47,
-        10.6
+        6.4,
+        10.78
       ],
       "yaw": 90,
       "tilt": 0,
@@ -4904,9 +4497,9 @@
       "circuit": "L7",
       "mount": "floor",
       "pos": [
-        53.45,
-        10,
-        3.65
+        53.72,
+        9,
+        5.475
       ],
       "yaw": 0,
       "tilt": 0,
@@ -4915,8 +4508,8 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "length": 9.07,
-        "slope": -36.4,
+        "length": 4.05,
+        "slope": -41,
         "spacing": 0.6
       },
       "shadow": false
@@ -4928,9 +4521,9 @@
       "circuit": "L7",
       "mount": "wall",
       "pos": [
-        -0.4,
+        -0.7749999999999999,
         4.195,
-        7.823
+        7.593
       ],
       "yaw": 0,
       "tilt": 0,
@@ -4952,9 +4545,9 @@
       "circuit": "L7",
       "mount": "wall",
       "pos": [
-        -0.4,
+        -0.7749999999999999,
         4.195,
-        12.483
+        12.713000000000001
       ],
       "yaw": 0,
       "tilt": 0,
@@ -4976,9 +4569,9 @@
       "circuit": "L7",
       "mount": "wall",
       "pos": [
-        -0.3099999999999997,
+        -0.635,
         12.115,
-        7.948
+        7.663
       ],
       "yaw": 0,
       "tilt": 0,
@@ -5000,9 +4593,9 @@
       "circuit": "L7",
       "mount": "wall",
       "pos": [
-        -0.3099999999999997,
+        -0.635,
         12.115,
-        12.358
+        12.643
       ],
       "yaw": 0,
       "tilt": 0,
@@ -5024,9 +4617,9 @@
       "circuit": "L7",
       "mount": "wall",
       "pos": [
-        -0.20999999999999963,
+        -0.525,
         19.490000000000002,
-        8.048
+        7.7330000000000005
       ],
       "yaw": 0,
       "tilt": 0,
@@ -5048,9 +4641,9 @@
       "circuit": "L7",
       "mount": "wall",
       "pos": [
-        -0.20999999999999963,
+        -0.525,
         19.490000000000002,
-        12.258000000000001
+        12.573
       ],
       "yaw": 0,
       "tilt": 0,
@@ -5168,8 +4761,8 @@
         15.84,
         -7.7
       ],
-      "yaw": 73.36904629327857,
-      "tilt": 18.475219035297076,
+      "yaw": 62.84276547079299,
+      "tilt": 23.064907415506,
       "mountYaw": 90,
       "on": true,
       "hidden": false,
@@ -5216,8 +4809,8 @@
         15.84,
         7.7
       ],
-      "yaw": -73.36904629327857,
-      "tilt": 18.475219035297076,
+      "yaw": -62.84276547079299,
+      "tilt": 23.064907415506,
       "mountYaw": -90,
       "on": true,
       "hidden": false,
@@ -5647,7 +5240,7 @@
       "mount": "wall",
       "pos": [
         14.475,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -5668,7 +5261,7 @@
       "mount": "wall",
       "pos": [
         14.475,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -5689,7 +5282,7 @@
       "mount": "wall",
       "pos": [
         23.475,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -5710,7 +5303,7 @@
       "mount": "wall",
       "pos": [
         23.475,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -5731,7 +5324,7 @@
       "mount": "wall",
       "pos": [
         32.475,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -5752,7 +5345,7 @@
       "mount": "wall",
       "pos": [
         32.475,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -6004,18 +5597,19 @@
       "mount": "wall",
       "pos": [
         14.045,
-        3.45,
+        2.5,
         -7.25
       ],
       "yaw": 140,
-      "tilt": -22,
+      "tilt": -14,
       "mountYaw": 90,
+      "anchorY": 2.5,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 87
+      "delayMs": 88.1
     },
     {
       "id": "S262",
@@ -6025,18 +5619,19 @@
       "mount": "wall",
       "pos": [
         14.045,
-        3.45,
+        2.5,
         7.25
       ],
       "yaw": -140,
-      "tilt": -22,
+      "tilt": -14,
       "mountYaw": -90,
+      "anchorY": 2.5,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 88.7
+      "delayMs": 89.9
     },
     {
       "id": "S263",
@@ -6046,18 +5641,19 @@
       "mount": "wall",
       "pos": [
         18.545,
-        3.45,
+        2.5,
         -7.25
       ],
       "yaw": 140,
-      "tilt": -22,
+      "tilt": -14,
       "mountYaw": 90,
+      "anchorY": 2.5,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 74.1
+      "delayMs": 75.2
     },
     {
       "id": "S264",
@@ -6067,18 +5663,19 @@
       "mount": "wall",
       "pos": [
         18.545,
-        3.45,
+        2.5,
         7.25
       ],
       "yaw": -140,
-      "tilt": -22,
+      "tilt": -14,
       "mountYaw": -90,
+      "anchorY": 2.5,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 76
+      "delayMs": 77.3
     },
     {
       "id": "S265",
@@ -6088,18 +5685,19 @@
       "mount": "wall",
       "pos": [
         23.045,
-        3.45,
+        2.5,
         -7.25
       ],
       "yaw": 140,
-      "tilt": -22,
+      "tilt": -14,
       "mountYaw": 90,
+      "anchorY": 2.5,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 61.2
+      "delayMs": 62.3
     },
     {
       "id": "S266",
@@ -6109,18 +5707,19 @@
       "mount": "wall",
       "pos": [
         23.045,
-        3.45,
+        2.5,
         7.25
       ],
       "yaw": -140,
-      "tilt": -22,
+      "tilt": -14,
       "mountYaw": -90,
+      "anchorY": 2.5,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 63.5
+      "delayMs": 64.8
     },
     {
       "id": "S267",
@@ -6130,18 +5729,19 @@
       "mount": "wall",
       "pos": [
         27.545,
-        3.45,
+        2.5,
         -7.25
       ],
       "yaw": 140,
-      "tilt": -22,
+      "tilt": -14,
       "mountYaw": 90,
+      "anchorY": 2.5,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 48.3
+      "delayMs": 49.4
     },
     {
       "id": "S268",
@@ -6151,18 +5751,19 @@
       "mount": "wall",
       "pos": [
         27.545,
-        3.45,
+        2.5,
         7.25
       ],
       "yaw": -140,
-      "tilt": -22,
+      "tilt": -14,
       "mountYaw": -90,
+      "anchorY": 2.5,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 51.2
+      "delayMs": 52.5
     },
     {
       "id": "S269",
@@ -6172,18 +5773,19 @@
       "mount": "wall",
       "pos": [
         32.045,
-        3.45,
+        2.5,
         -7.25
       ],
       "yaw": 140,
-      "tilt": -22,
+      "tilt": -14,
       "mountYaw": 90,
+      "anchorY": 2.5,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 35.5
+      "delayMs": 36.6
     },
     {
       "id": "S270",
@@ -6193,18 +5795,19 @@
       "mount": "wall",
       "pos": [
         32.045,
-        3.45,
+        2.5,
         7.25
       ],
       "yaw": -140,
-      "tilt": -22,
+      "tilt": -14,
       "mountYaw": -90,
+      "anchorY": 2.5,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 39.1
+      "delayMs": 40.5
     },
     {
       "id": "S271",
@@ -6214,18 +5817,19 @@
       "mount": "wall",
       "pos": [
         36.545,
-        3.45,
+        2.5,
         -7.25
       ],
       "yaw": 140,
-      "tilt": -22,
+      "tilt": -14,
       "mountYaw": 90,
+      "anchorY": 2.5,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 22.6
+      "delayMs": 23.8
     },
     {
       "id": "S272",
@@ -6235,18 +5839,19 @@
       "mount": "wall",
       "pos": [
         36.545,
-        3.45,
+        2.5,
         7.25
       ],
       "yaw": -140,
-      "tilt": -22,
+      "tilt": -14,
       "mountYaw": -90,
+      "anchorY": 2.5,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -6,
-      "delayMs": 27.8
+      "delayMs": 29.3
     },
     {
       "id": "S273",
@@ -6256,18 +5861,19 @@
       "mount": "wall",
       "pos": [
         2.655,
-        3.6,
+        2.5,
         -3.05
       ],
       "yaw": -6.476440087185079,
-      "tilt": -26.206172946093037,
+      "tilt": -14.928147075735074,
       "mountYaw": 0,
+      "anchorY": 2.5,
       "on": false,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -9,
-      "delayMs": 94.9
+      "delayMs": 96.1
     },
     {
       "id": "S274",
@@ -6277,18 +5883,19 @@
       "mount": "wall",
       "pos": [
         2.655,
-        3.6,
+        2.5,
         3.05
       ],
       "yaw": 6.476440087185079,
-      "tilt": -26.206172946093037,
+      "tilt": -14.928147075735074,
       "mountYaw": 0,
+      "anchorY": 2.5,
       "on": false,
       "hidden": false,
       "dim": 1,
       "params": {},
       "level": -9,
-      "delayMs": 96.5
+      "delayMs": 97.6
     },
     {
       "id": "S276",
@@ -6334,95 +5941,99 @@
       "params": {},
       "note": "ENGINEERING HOLD: two total wall speakers toward entrance (-X), raised for full fan/return-wall envelope clearance. Speech and feedback still require coordinated validation; product, concealment, fixi",
       "level": -6,
-      "delayMs": 37.1
+      "delayMs": 37.2
     },
     {
       "id": "S279",
-      "type": "pendantSpeaker",
-      "name": "Veranda fill · B · 12.2",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · B · bay 3–4",
       "circuit": "A2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        12.225,
-        3.9,
-        -8.85
+        14.045,
+        2.7,
+        -7.47
       ],
-      "yaw": 0,
-      "tilt": -90,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": -145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": -90,
+      "anchorY": 2.7,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "level": -7,
-      "delayMs": 88.8
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 88.3
     },
     {
       "id": "S280",
-      "type": "pendantSpeaker",
-      "name": "Veranda fill · B · 25.7",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · B · bay 6–7",
       "circuit": "A2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        25.725,
-        3.9,
-        -8.85
+        27.545,
+        2.7,
+        -7.47
       ],
-      "yaw": 0,
-      "tilt": -90,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": -145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": -90,
+      "anchorY": 2.7,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "level": -7,
-      "delayMs": 50.9
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 50.5
     },
     {
       "id": "S281",
-      "type": "pendantSpeaker",
-      "name": "Veranda fill · H · 12.2",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · H · bay 3–4",
       "circuit": "A2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        12.225,
-        3.9,
-        8.85
+        14.045,
+        2.7,
+        7.47
       ],
-      "yaw": 0,
-      "tilt": -90,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": 145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": 90,
+      "anchorY": 2.7,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "level": -7,
-      "delayMs": 92.3
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 92
     },
     {
       "id": "S282",
-      "type": "pendantSpeaker",
-      "name": "Veranda fill · H · 25.7",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · H · bay 6–7",
       "circuit": "A2",
-      "mount": "pendant",
+      "mount": "wall",
       "pos": [
-        25.725,
-        3.9,
-        8.85
+        27.545,
+        2.7,
+        7.47
       ],
-      "yaw": 0,
-      "tilt": -90,
-      "mountYaw": 0,
-      "anchorY": 6.798875000000001,
+      "yaw": 145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": 90,
+      "anchorY": 2.7,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {},
-      "level": -7,
-      "delayMs": 56.8
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 57.1
     },
     {
       "id": "S283",
@@ -6600,7 +6211,7 @@
       "mount": "floor",
       "pos": [
         41.08,
-        1.9,
+        1.95,
         -2.62
       ],
       "yaw": 0,
@@ -6619,7 +6230,7 @@
       "mount": "floor",
       "pos": [
         44.45,
-        1.88,
+        1.93,
         0.45
       ],
       "yaw": 0,
@@ -6637,7 +6248,7 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        44.275,
+        48.83,
         2.85,
         -5.5
       ],
@@ -6656,7 +6267,7 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        44.275,
+        48.83,
         2.85,
         5.5
       ],
@@ -6676,7 +6287,7 @@
       "mount": "floor",
       "pos": [
         47.2,
-        0.75,
+        0.8,
         -1.15
       ],
       "yaw": 180,
@@ -6695,7 +6306,7 @@
       "mount": "floor",
       "pos": [
         45.15,
-        0.75,
+        0.8,
         -2.9
       ],
       "yaw": 0,
@@ -6713,7 +6324,7 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        44.225,
+        48.78,
         2.85,
         -6.2
       ],
@@ -6732,7 +6343,7 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        44.225,
+        48.78,
         2.85,
         -4.8
       ],
@@ -6792,7 +6403,7 @@
       "mount": "floor",
       "pos": [
         47.2,
-        0.75,
+        0.8,
         1.15
       ],
       "yaw": 180,
@@ -6811,7 +6422,7 @@
       "mount": "floor",
       "pos": [
         45.15,
-        0.75,
+        0.8,
         2.9
       ],
       "yaw": 0,
@@ -6829,7 +6440,7 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        44.225,
+        48.78,
         2.85,
         4.8
       ],
@@ -6848,7 +6459,7 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        44.225,
+        48.78,
         2.85,
         6.2
       ],
@@ -6908,7 +6519,7 @@
       "mount": "floor",
       "pos": [
         40.769999999999996,
-        0.75,
+        0.8,
         -1.55
       ],
       "yaw": 180,
@@ -7016,7 +6627,7 @@
       "yaw": 90,
       "tilt": 0,
       "mountYaw": 90,
-      "anchorY": 6.798875000000001,
+      "anchorY": 6.638660220994475,
       "on": false,
       "hidden": true,
       "dim": 1,
@@ -7039,7 +6650,7 @@
       "yaw": 90,
       "tilt": 0,
       "mountYaw": 90,
-      "anchorY": 6.798875000000001,
+      "anchorY": 6.638660220994475,
       "on": false,
       "hidden": true,
       "dim": 1,
@@ -7062,7 +6673,7 @@
       "yaw": 90,
       "tilt": 0,
       "mountYaw": 90,
-      "anchorY": 6.798875000000001,
+      "anchorY": 6.638660220994475,
       "on": false,
       "hidden": true,
       "dim": 1,
@@ -7085,7 +6696,7 @@
       "yaw": 90,
       "tilt": 0,
       "mountYaw": 90,
-      "anchorY": 6.798875000000001,
+      "anchorY": 6.638660220994475,
       "on": false,
       "hidden": true,
       "dim": 1,
@@ -7108,7 +6719,7 @@
       "yaw": 90,
       "tilt": 0,
       "mountYaw": 90,
-      "anchorY": 6.798875000000001,
+      "anchorY": 6.638660220994475,
       "on": false,
       "hidden": true,
       "dim": 1,
@@ -7131,7 +6742,7 @@
       "yaw": 90,
       "tilt": 0,
       "mountYaw": 90,
-      "anchorY": 6.798875000000001,
+      "anchorY": 6.638660220994475,
       "on": false,
       "hidden": true,
       "dim": 1,
@@ -7154,7 +6765,7 @@
       "yaw": 90,
       "tilt": 0,
       "mountYaw": 90,
-      "anchorY": 6.798875000000001,
+      "anchorY": 6.638660220994475,
       "on": false,
       "hidden": true,
       "dim": 1,
@@ -7177,7 +6788,7 @@
       "yaw": 90,
       "tilt": 0,
       "mountYaw": 90,
-      "anchorY": 6.798875000000001,
+      "anchorY": 6.638660220994475,
       "on": false,
       "hidden": true,
       "dim": 1,
@@ -7340,7 +6951,7 @@
       "mount": "wall",
       "pos": [
         5.475,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -7361,7 +6972,7 @@
       "mount": "wall",
       "pos": [
         5.475,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -7382,7 +6993,7 @@
       "mount": "wall",
       "pos": [
         9.975,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -7403,7 +7014,7 @@
       "mount": "wall",
       "pos": [
         9.975,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -7424,7 +7035,7 @@
       "mount": "wall",
       "pos": [
         18.975,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -7445,7 +7056,7 @@
       "mount": "wall",
       "pos": [
         18.975,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -7466,7 +7077,7 @@
       "mount": "wall",
       "pos": [
         27.975,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -7487,7 +7098,7 @@
       "mount": "wall",
       "pos": [
         27.975,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -7508,7 +7119,7 @@
       "mount": "wall",
       "pos": [
         36.975,
-        5.55,
+        4.1,
         -7.07
       ],
       "yaw": 90,
@@ -7529,7 +7140,7 @@
       "mount": "wall",
       "pos": [
         36.975,
-        5.55,
+        4.1,
         7.07
       ],
       "yaw": -90,
@@ -7562,7 +7173,7 @@
       "params": {
         "loadW": 0
       },
-      "note": "CONCEPT: pier face toward the nave, 0.70 m above the side platform and 1.17 m above the wing floor. Surface or casing box; no chase into the structural pier. ENGINEERING HOLD."
+      "note": "CONCEPT: pier face toward the nave, 0.69 m above the side platform (+0.16) and 1.17 m above the wing floor. Surface or casing box; no chase into the structural pier. ENGINEERING HOLD."
     },
     {
       "id": "P-NAVE-B",
@@ -7628,7 +7239,7 @@
       "params": {
         "loadW": 0
       },
-      "note": "CONCEPT: pier face toward the nave, 0.70 m above the side platform and 1.17 m above the wing floor. Surface or casing box; no chase into the structural pier. ENGINEERING HOLD."
+      "note": "CONCEPT: pier face toward the nave, 0.69 m above the side platform (+0.16) and 1.17 m above the wing floor. Surface or casing box; no chase into the structural pier. ENGINEERING HOLD."
     },
     {
       "id": "P-NAVE-H",
@@ -7681,8 +7292,8 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        2.29,
-        11.8,
+        4.08,
+        16.683,
         0
       ],
       "yaw": 180,
@@ -7701,12 +7312,12 @@
       "circuit": "L10",
       "mount": "wall",
       "pos": [
-        2.13,
-        15.64,
+        3.95,
+        19.614,
         0
       ],
       "yaw": 0,
-      "tilt": -87.39743779750019,
+      "tilt": -86.3899092780562,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
@@ -7726,11 +7337,11 @@
       "circuit": "L10",
       "mount": "wall",
       "pos": [
-        2.13,
-        13.3,
-        -0.905
+        3.95,
+        17.79,
+        -0.691
       ],
-      "yaw": 70.52685579699832,
+      "yaw": 67.23310247717708,
       "tilt": 0,
       "mountYaw": 90,
       "on": true,
@@ -7751,9 +7362,9 @@
       "circuit": "L10",
       "mount": "floor",
       "pos": [
-        2.1,
-        11.8,
-        -0.47
+        3.72,
+        16.683,
+        -0.3
       ],
       "yaw": 180,
       "tilt": 0,
@@ -7772,11 +7383,11 @@
       "circuit": "L10",
       "mount": "wall",
       "pos": [
-        2.13,
-        13.3,
-        0.905
+        3.95,
+        17.79,
+        0.691
       ],
-      "yaw": -70.52685579699832,
+      "yaw": -67.23310247717708,
       "tilt": 0,
       "mountYaw": -90,
       "on": true,
@@ -7797,9 +7408,9 @@
       "circuit": "L10",
       "mount": "floor",
       "pos": [
-        2.1,
-        11.8,
-        0.47
+        3.72,
+        16.683,
+        0.3
       ],
       "yaw": 180,
       "tilt": 0,
@@ -7818,9 +7429,9 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        2.29,
-        10.08,
-        -5.48
+        4.15,
+        10.391,
+        -5.35
       ],
       "yaw": 180,
       "tilt": 0,
@@ -7838,12 +7449,12 @@
       "circuit": "L10",
       "mount": "wall",
       "pos": [
-        2.13,
-        12.62,
-        -5.48
+        4.05,
+        12.917,
+        -5.35
       ],
       "yaw": 0,
-      "tilt": -85.55261514990949,
+      "tilt": -89.3540772015028,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
@@ -7863,11 +7474,11 @@
       "circuit": "L10",
       "mount": "wall",
       "pos": [
-        2.13,
-        11.05,
-        -5.985
+        4.05,
+        11.35,
+        -5.928999999999999
       ],
-      "yaw": 57.63906244063007,
+      "yaw": 65.8175315098801,
       "tilt": 0,
       "mountYaw": 90,
       "on": true,
@@ -7888,9 +7499,9 @@
       "circuit": "L10",
       "mount": "floor",
       "pos": [
-        2.1,
-        10.08,
-        -5.79
+        3.9600000000000004,
+        10.391,
+        -5.659999999999999
       ],
       "yaw": 180,
       "tilt": 0,
@@ -7909,11 +7520,11 @@
       "circuit": "L10",
       "mount": "wall",
       "pos": [
-        2.13,
-        11.05,
-        -4.9750000000000005
+        4.05,
+        11.35,
+        -4.771
       ],
-      "yaw": -57.63906244063007,
+      "yaw": -65.8175315098801,
       "tilt": 0,
       "mountYaw": -90,
       "on": true,
@@ -7934,9 +7545,9 @@
       "circuit": "L10",
       "mount": "floor",
       "pos": [
-        2.1,
-        10.08,
-        -5.170000000000001
+        3.9600000000000004,
+        10.391,
+        -5.04
       ],
       "yaw": 180,
       "tilt": 0,
@@ -7955,9 +7566,9 @@
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        2.29,
-        10.08,
-        5.48
+        4.15,
+        10.391,
+        5.35
       ],
       "yaw": 180,
       "tilt": 0,
@@ -7975,12 +7586,12 @@
       "circuit": "L10",
       "mount": "wall",
       "pos": [
-        2.13,
-        12.62,
-        5.48
+        4.05,
+        12.917,
+        5.35
       ],
       "yaw": 0,
-      "tilt": -85.55261514990949,
+      "tilt": -89.3540772015028,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
@@ -8000,11 +7611,11 @@
       "circuit": "L10",
       "mount": "wall",
       "pos": [
-        2.13,
-        11.05,
-        4.9750000000000005
+        4.05,
+        11.35,
+        4.771
       ],
-      "yaw": 57.63906244063007,
+      "yaw": 65.8175315098801,
       "tilt": 0,
       "mountYaw": 90,
       "on": true,
@@ -8025,9 +7636,9 @@
       "circuit": "L10",
       "mount": "floor",
       "pos": [
-        2.1,
-        10.08,
-        5.170000000000001
+        3.9600000000000004,
+        10.391,
+        5.04
       ],
       "yaw": 180,
       "tilt": 0,
@@ -8046,11 +7657,11 @@
       "circuit": "L10",
       "mount": "wall",
       "pos": [
-        2.13,
-        11.05,
-        5.985
+        4.05,
+        11.35,
+        5.928999999999999
       ],
-      "yaw": -57.63906244063007,
+      "yaw": -65.8175315098801,
       "tilt": 0,
       "mountYaw": -90,
       "on": true,
@@ -8071,9 +7682,9 @@
       "circuit": "L10",
       "mount": "floor",
       "pos": [
-        2.1,
-        10.08,
-        5.79
+        3.9600000000000004,
+        10.391,
+        5.659999999999999
       ],
       "yaw": 180,
       "tilt": 0,
@@ -8084,6 +7695,1752 @@
       "params": {},
       "note": "USER CONFIRMED: two candle lights on the base of each statue. CONCEPT electric candle; product, weather protection, fixing and lamp access pending.",
       "shadow": false
+    },
+    {
+      "id": "L-STATION-1-A",
+      "type": "stationCandle",
+      "name": "Station candle · I · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        34.405,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-1-B",
+      "type": "stationCandle",
+      "name": "Station candle · I · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        35.045,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-2-A",
+      "type": "stationCandle",
+      "name": "Station candle · II · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        29.905,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-2-B",
+      "type": "stationCandle",
+      "name": "Station candle · II · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        30.545,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-3-A",
+      "type": "stationCandle",
+      "name": "Station candle · III · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        25.405,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-3-B",
+      "type": "stationCandle",
+      "name": "Station candle · III · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        26.045,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-4-A",
+      "type": "stationCandle",
+      "name": "Station candle · IV · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        20.905,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-4-B",
+      "type": "stationCandle",
+      "name": "Station candle · IV · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        21.545,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-5-A",
+      "type": "stationCandle",
+      "name": "Station candle · V · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        16.405,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-5-B",
+      "type": "stationCandle",
+      "name": "Station candle · V · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        17.045,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-6-A",
+      "type": "stationCandle",
+      "name": "Station candle · VI · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        11.905,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-6-B",
+      "type": "stationCandle",
+      "name": "Station candle · VI · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        12.545,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-7-A",
+      "type": "stationCandle",
+      "name": "Station candle · VII · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        7.404999999999999,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-7-B",
+      "type": "stationCandle",
+      "name": "Station candle · VII · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        8.045,
+        4.72,
+        7.23
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-8-A",
+      "type": "stationCandle",
+      "name": "Station candle · VIII · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        7.404999999999999,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-8-B",
+      "type": "stationCandle",
+      "name": "Station candle · VIII · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        8.045,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-9-A",
+      "type": "stationCandle",
+      "name": "Station candle · IX · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        11.905,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-9-B",
+      "type": "stationCandle",
+      "name": "Station candle · IX · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        12.545,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-10-A",
+      "type": "stationCandle",
+      "name": "Station candle · X · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        16.405,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-10-B",
+      "type": "stationCandle",
+      "name": "Station candle · X · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        17.045,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-11-A",
+      "type": "stationCandle",
+      "name": "Station candle · XI · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        20.905,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-11-B",
+      "type": "stationCandle",
+      "name": "Station candle · XI · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        21.545,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-12-A",
+      "type": "stationCandle",
+      "name": "Station candle · XII · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        25.405,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-12-B",
+      "type": "stationCandle",
+      "name": "Station candle · XII · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        26.045,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-13-A",
+      "type": "stationCandle",
+      "name": "Station candle · XIII · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        29.905,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-13-B",
+      "type": "stationCandle",
+      "name": "Station candle · XIII · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        30.545,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-14-A",
+      "type": "stationCandle",
+      "name": "Station candle · XIV · front",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        34.405,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-STATION-14-B",
+      "type": "stationCandle",
+      "name": "Station candle · XIV · rear",
+      "circuit": "LS",
+      "mount": "wall",
+      "pos": [
+        35.045,
+        4.72,
+        -7.23
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-B-2P-3-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 2′–3 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        5.55,
+        2.6,
+        -10.654
+      ],
+      "yaw": 5.29922901468893,
+      "tilt": 57.45860896531414,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-B-2P-3-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 2′–3 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        9.9,
+        2.6,
+        -10.654
+      ],
+      "yaw": 174.70077098531107,
+      "tilt": 57.45860896531411,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-B-2P-3",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · B · bay 2′–3",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        9.545,
+        2.7,
+        -7.47
+      ],
+      "yaw": -145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": -90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 101.1
+    },
+    {
+      "id": "L-ARCH-B-3-4-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 3–4 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        10.049999999999999,
+        2.6,
+        -10.654
+      ],
+      "yaw": 5.299229014688923,
+      "tilt": 57.45860896531411,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-B-3-4-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 3–4 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        14.4,
+        2.6,
+        -10.654
+      ],
+      "yaw": 174.70077098531107,
+      "tilt": 57.45860896531411,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-B-4-5-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 4–5 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        14.549999999999999,
+        2.6,
+        -10.654
+      ],
+      "yaw": 5.299229014688918,
+      "tilt": 57.45860896531409,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-B-4-5-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 4–5 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        18.900000000000002,
+        2.6,
+        -10.654
+      ],
+      "yaw": 174.70077098531107,
+      "tilt": 57.45860896531411,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-B-4-5",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · B · bay 4–5",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        18.545,
+        2.7,
+        -7.47
+      ],
+      "yaw": -145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": -90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 75.6
+    },
+    {
+      "id": "L-ARCH-B-5-6-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 5–6 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        19.05,
+        2.6,
+        -10.654
+      ],
+      "yaw": 5.299229014688923,
+      "tilt": 57.45860896531411,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-B-5-6-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 5–6 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        23.400000000000002,
+        2.6,
+        -10.654
+      ],
+      "yaw": 174.70077098531107,
+      "tilt": 57.45860896531411,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-B-5-6",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · B · bay 5–6",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        23.045,
+        2.7,
+        -7.47
+      ],
+      "yaw": -145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": -90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 63
+    },
+    {
+      "id": "L-ARCH-B-6-7-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 6–7 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        23.55,
+        2.6,
+        -10.654
+      ],
+      "yaw": 5.299229014688923,
+      "tilt": 57.45860896531411,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-B-6-7-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 6–7 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        27.900000000000002,
+        2.6,
+        -10.654
+      ],
+      "yaw": 174.70077098531107,
+      "tilt": 57.45860896531411,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-B-7-8-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 7–8 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        28.05,
+        2.6,
+        -10.654
+      ],
+      "yaw": 5.299229014688923,
+      "tilt": 57.45860896531411,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-B-7-8-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 7–8 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        32.4,
+        2.6,
+        -10.654
+      ],
+      "yaw": 174.70077098531107,
+      "tilt": 57.45860896531417,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-B-7-8",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · B · bay 7–8",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        32.045,
+        2.7,
+        -7.47
+      ],
+      "yaw": -145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": -90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 38.5
+    },
+    {
+      "id": "L-ARCH-B-8-9-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 8–9 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        32.550000000000004,
+        2.6,
+        -10.654
+      ],
+      "yaw": 5.2992290146889465,
+      "tilt": 57.45860896531421,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-B-8-9-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 8–9 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        36.9,
+        2.6,
+        -10.654
+      ],
+      "yaw": 174.70077098531107,
+      "tilt": 57.45860896531421,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-B-8-9",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · B · bay 8–9",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        36.545,
+        2.7,
+        -7.47
+      ],
+      "yaw": -145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": -90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 27.5
+    },
+    {
+      "id": "L-ARCH-B-10-11-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 10–11 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        44.25,
+        2.6,
+        -10.654
+      ],
+      "yaw": 5.2992290146889465,
+      "tilt": 57.45860896531421,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-B-10-11-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 10–11 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        48.599999999999994,
+        2.6,
+        -10.654
+      ],
+      "yaw": 174.70077098531107,
+      "tilt": 57.45860896531421,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-B-10-11",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · B · bay 10–11",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        48.245,
+        2.7,
+        -7.47
+      ],
+      "yaw": -145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": -90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 29.9
+    },
+    {
+      "id": "L-ARCH-B-11-12-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 11–12 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        48.75,
+        2.6,
+        -10.654
+      ],
+      "yaw": 5.553689649623197,
+      "tilt": 58.66127172059477,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-B-11-12-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · B · bay 11–12 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        52.940999999999995,
+        2.6,
+        -10.654
+      ],
+      "yaw": 174.44631035037676,
+      "tilt": 58.66127172059488,
+      "mountYaw": -90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-B-11-12",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · B · bay 11–12",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        52.586,
+        2.7,
+        -7.47
+      ],
+      "yaw": -144.53244783129273,
+      "tilt": -40.419218012418234,
+      "mountYaw": -90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 40.9
+    },
+    {
+      "id": "L-ARCH-H-2P-3-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 2′–3 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        5.55,
+        2.6,
+        10.654
+      ],
+      "yaw": -5.29922901468893,
+      "tilt": 57.45860896531414,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-H-2P-3-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 2′–3 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        9.9,
+        2.6,
+        10.654
+      ],
+      "yaw": -174.70077098531107,
+      "tilt": 57.45860896531411,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-H-2P-3",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · H · bay 2′–3",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        9.545,
+        2.7,
+        7.47
+      ],
+      "yaw": 145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": 90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 104.3
+    },
+    {
+      "id": "L-ARCH-H-3-4-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 3–4 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        10.049999999999999,
+        2.6,
+        10.654
+      ],
+      "yaw": -5.299229014688923,
+      "tilt": 57.45860896531411,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-H-3-4-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 3–4 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        14.4,
+        2.6,
+        10.654
+      ],
+      "yaw": -174.70077098531107,
+      "tilt": 57.45860896531411,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-H-4-5-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 4–5 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        14.549999999999999,
+        2.6,
+        10.654
+      ],
+      "yaw": -5.299229014688918,
+      "tilt": 57.45860896531409,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-H-4-5-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 4–5 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        18.900000000000002,
+        2.6,
+        10.654
+      ],
+      "yaw": -174.70077098531107,
+      "tilt": 57.45860896531411,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-H-4-5",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · H · bay 4–5",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        18.545,
+        2.7,
+        7.47
+      ],
+      "yaw": 145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": 90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 79.9
+    },
+    {
+      "id": "L-ARCH-H-5-6-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 5–6 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        19.05,
+        2.6,
+        10.654
+      ],
+      "yaw": -5.299229014688923,
+      "tilt": 57.45860896531411,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-H-5-6-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 5–6 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        23.400000000000002,
+        2.6,
+        10.654
+      ],
+      "yaw": -174.70077098531107,
+      "tilt": 57.45860896531411,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-H-5-6",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · H · bay 5–6",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        23.045,
+        2.7,
+        7.47
+      ],
+      "yaw": 145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": 90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 68.2
+    },
+    {
+      "id": "L-ARCH-H-6-7-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 6–7 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        23.55,
+        2.6,
+        10.654
+      ],
+      "yaw": -5.299229014688923,
+      "tilt": 57.45860896531411,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-H-6-7-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 6–7 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        27.900000000000002,
+        2.6,
+        10.654
+      ],
+      "yaw": -174.70077098531107,
+      "tilt": 57.45860896531411,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-H-7-8-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 7–8 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        28.05,
+        2.6,
+        10.654
+      ],
+      "yaw": -5.299229014688923,
+      "tilt": 57.45860896531411,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-H-7-8-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 7–8 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        32.4,
+        2.6,
+        10.654
+      ],
+      "yaw": -174.70077098531107,
+      "tilt": 57.45860896531417,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-H-7-8",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · H · bay 7–8",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        32.045,
+        2.7,
+        7.47
+      ],
+      "yaw": 145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": 90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 47
+    },
+    {
+      "id": "L-ARCH-H-8-9-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 8–9 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        32.550000000000004,
+        2.6,
+        10.654
+      ],
+      "yaw": -5.2992290146889465,
+      "tilt": 57.45860896531421,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-H-8-9-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 8–9 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        36.9,
+        2.6,
+        10.654
+      ],
+      "yaw": -174.70077098531107,
+      "tilt": 57.45860896531421,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-H-8-9",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · H · bay 8–9",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        36.545,
+        2.7,
+        7.47
+      ],
+      "yaw": 145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": 90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 39.2
+    },
+    {
+      "id": "L-ARCH-H-10-11-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 10–11 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        44.25,
+        2.6,
+        10.654
+      ],
+      "yaw": -5.2992290146889465,
+      "tilt": 57.45860896531421,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-H-10-11-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 10–11 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        48.599999999999994,
+        2.6,
+        10.654
+      ],
+      "yaw": -174.70077098531107,
+      "tilt": 57.45860896531421,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-H-10-11",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · H · bay 10–11",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        48.245,
+        2.7,
+        7.47
+      ],
+      "yaw": 145.73266455665578,
+      "tilt": -39.57098865473301,
+      "mountYaw": 90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 40.7
+    },
+    {
+      "id": "L-ARCH-H-11-12-A",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 11–12 · A",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        48.75,
+        2.6,
+        10.654
+      ],
+      "yaw": -5.553689649623197,
+      "tilt": 58.66127172059477,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "L-ARCH-H-11-12-B",
+      "type": "porchFlood",
+      "name": "Porch arch wash · H · bay 11–12 · B",
+      "circuit": "L4",
+      "mount": "wall",
+      "pos": [
+        52.940999999999995,
+        2.6,
+        10.654
+      ],
+      "yaw": -174.44631035037676,
+      "tilt": 58.66127172059488,
+      "mountYaw": 90,
+      "anchorY": 2.6,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: outside face of the arcade column, cross-aimed upward onto its pointed arch. Not a ground obstruction. Final beam, shielding/spill, weather protection, fixing and safe access require review.",
+      "lumens": 750,
+      "beam": 45,
+      "shadow": false
+    },
+    {
+      "id": "S-PORCH-H-11-12",
+      "type": "porchWallSpeaker",
+      "name": "Porch fill · H · bay 11–12",
+      "circuit": "A2",
+      "mount": "wall",
+      "pos": [
+        52.586,
+        2.7,
+        7.47
+      ],
+      "yaw": 144.53244783129273,
+      "tilt": -40.419218012418234,
+      "mountYaw": 90,
+      "anchorY": 2.7,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT: low-level wall fill, one per open porch bay including 10–12. Passive speaker rating is not mains demand. Outdoor enclosure/directivity, fixings, delay, spill and commissioning pending.",
+      "level": -16,
+      "delayMs": 48.9
     }
   ]
 }

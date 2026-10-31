@@ -1,0 +1,2 @@
+Thach_Bi_Viewer/construction-data.js is current
+Site view checks passed: 41345 meshes in 12 layers (plinth 722, floors 20, columns 156, walls 731, frame 136, roof 141, openings 5767, ornament 11656, finishes 18, sanctuary 2456, furniture 2790, site 16752); 117 display batches, 4835505 indices, geometry unchanged; 102 grid spacings agree with the model; 463 dimension records, 28 open items, 12 phases.

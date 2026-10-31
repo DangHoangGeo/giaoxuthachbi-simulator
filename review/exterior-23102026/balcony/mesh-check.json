@@ -1,0 +1,144 @@
+{
+  "status": "passed",
+  "sourceSha256": "2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae",
+  "faces": 8,
+  "holes": 136,
+  "voidRays": 408,
+  "solidRays": 272,
+  "verifiedContourVertices": 1632,
+  "worstContourResidualMm": 0.0005694280453272104,
+  "checks": [
+    {
+      "label": "Tower H parapet · cornice top",
+      "actual": 29.089969635009766,
+      "source": 29.089970309,
+      "residual_mm": -0.0006739902360664018
+    },
+    {
+      "label": "Tower H parapet · rail top",
+      "actual": 30.080961227416992,
+      "source": 30.080961566,
+      "residual_mm": -0.0003385830069646545
+    },
+    {
+      "label": "Tower H parapet · rail X minimum",
+      "actual": -0.16393126547336578,
+      "source": -0.16393126797606236,
+      "residual_mm": 0.000002502696577755259
+    },
+    {
+      "label": "Tower H parapet · rail X maximum",
+      "actual": 5.041069507598877,
+      "source": 5.041069314911962,
+      "residual_mm": 0.00019268691531237891
+    },
+    {
+      "label": "Tower H parapet · rail Z minimum",
+      "actual": 7.538958549499512,
+      "source": 7.538958453,
+      "residual_mm": 0.00009649951149270919
+    },
+    {
+      "label": "Tower H parapet · rail Z maximum",
+      "actual": 12.743959426879883,
+      "source": 12.743959036,
+      "residual_mm": 0.0003908798831275817
+    },
+    {
+      "label": "Tower B parapet · cornice top",
+      "actual": 29.089969635009766,
+      "source": 29.089970309,
+      "residual_mm": -0.0006739902360664018
+    },
+    {
+      "label": "Tower B parapet · rail top",
+      "actual": 30.080961227416992,
+      "source": 30.080961566,
+      "residual_mm": -0.0003385830069646545
+    },
+    {
+      "label": "Tower B parapet · rail X minimum",
+      "actual": -0.16393126547336578,
+      "source": -0.16393126797606236,
+      "residual_mm": 0.000002502696577755259
+    },
+    {
+      "label": "Tower B parapet · rail X maximum",
+      "actual": 5.041069507598877,
+      "source": 5.041069314911962,
+      "residual_mm": 0.00019268691531237891
+    },
+    {
+      "label": "Tower B parapet · rail Z minimum",
+      "actual": -12.743959426879883,
+      "source": -12.743959036,
+      "residual_mm": -0.0003908798831275817
+    },
+    {
+      "label": "Tower B parapet · rail Z maximum",
+      "actual": -7.538958549499512,
+      "source": -7.538958453,
+      "residual_mm": -0.00009649951149270919
+    },
+    {
+      "label": "Derived hidden drum contacts the source platform level (not a bearing design)",
+      "actual": 29.089969635009766,
+      "source": 29.089970309,
+      "residual_mm": -0.0006739902360664018
+    },
+    {
+      "label": "Corner ornament rests on native top rail",
+      "actual": 30.080961227416992,
+      "source": 30.080961566,
+      "residual_mm": -0.0003385830069646545
+    },
+    {
+      "label": "Native finial actual apex",
+      "actual": 31.55177116394043,
+      "source": 31.551770883003535,
+      "residual_mm": 0.00028093689508068564
+    }
+  ],
+  "unchangedDomeLightSamples": [
+    {
+      "id": "L164",
+      "name": "Dome front wash · B",
+      "head": [
+        0.020000000000000018,
+        29.165,
+        -10.153
+      ],
+      "catalogue_emitter_origin": [
+        0.03820167765557812,
+        29.200618800239795,
+        -10.153
+      ],
+      "beam_full_angle_degrees": 36,
+      "sampled_directions": 49,
+      "blocked_by_guard": 30,
+      "centreline_clear": true,
+      "status": "COORDINATION HOLD: unweighted geometrical cone directions, not blocked luminous-flux fraction"
+    },
+    {
+      "id": "L175",
+      "name": "Dome front wash · H",
+      "head": [
+        0.020000000000000018,
+        29.165,
+        10.153
+      ],
+      "catalogue_emitter_origin": [
+        0.03820167765557812,
+        29.200618800239795,
+        10.153
+      ],
+      "beam_full_angle_degrees": 36,
+      "sampled_directions": 49,
+      "blocked_by_guard": 30,
+      "centreline_clear": true,
+      "status": "COORDINATION HOLD: unweighted geometrical cone directions, not blocked luminous-flux fraction"
+    }
+  ],
+  "registered_layout_sha256": "7c1a6ae032dbd01386904860712420f709c0fb9e882f21073752052bd7cf4cf8",
+  "limits": "Projection/profile checks only. Depth/corner closure is derived; unit, guard structure, light photometry, maintenance and construction approval remain held."
+}

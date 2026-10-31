@@ -25,7 +25,7 @@ Use the original plans and dimension workbook for the envelope. Use the consolid
 | Main shaft diameter | 0.58–0.64 m taper in the model; section sheet 4 measures ≈0.60 m. **Confirm on site** |
 | Column bases | 0.82 m square in the model; section sheet 4 measures ≈0.84 m wide, 0.60 m high. **Confirm on site** |
 | Wider section at axes 9–10 | Both sides project; retained in both layouts |
-| Sanctuary floor | +0.750 m relative to nave ±0.000 m |
+| Sanctuary floor | +0.800 m relative to nave ±0.000 m (church CAD file of 23 Oct 2026, sections 25 and 45; the earlier PDF set shows +0.750); side floors +0.160 m |
 | Roof ridge / main eave | +12.472 / +7.130 m |
 | Seating row pitch | 1.13 m, an existing furnishing proposal |
 

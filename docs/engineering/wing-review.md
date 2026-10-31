@@ -2,6 +2,8 @@
 
 **CONCEPT / ENGINEERING HOLD.** Current default: **two smaller brass chandeliers, two wall fans, one wall speaker and a Saint Peter–Saint Paul pair in each wing**. None of the tested alternatives meets every lighting, speech, feedback, air, noise and concealment target. This is a held visual/engineering review, not an accepted optimum, construction issue or purchase schedule. Phase E2 remains unmerged.
 
+**Update, 25 October 2026:** the parish priest's meeting closes the 9–10 side bays from the porches with plain walls on axes 9 and 10 and adds the detail-47 arch on their C/G axes ([meeting record](parish-meeting-2026-10-25.md)). The porch lanterns no longer spill into the bays: the worst wing book point falls to 102.0 lux. The figures below are the 9 October review and are kept as recorded.
+
 ## Owner intent and dimensional basis
 
 `USER CONFIRMED`: smaller brass chandeliers matching the nave; fewer than four per wing; wall fans instead of the two large roof fans; two speakers total, one per wing, facing toward the entrance in Father's viewing direction; and **Peter plus Paul between the two windows in each wing** (four pictures total). The [sixteen nave wall fans](nave-wall-fans.md), eight per side, are visible by default but remain OFF in built-in modes; this supersedes the preceding six-fan inventory. These directions do not approve product capacity, exposed equipment, bracket strength or installation.

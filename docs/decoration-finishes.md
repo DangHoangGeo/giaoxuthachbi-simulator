@@ -1,0 +1,65 @@
+# Decoration and finish development · 25 October 2026
+
+**CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.**
+
+Owner brief: improve exterior, interior and sanctuary decoration and visual realism in the northern Vietnamese Catholic tradition. This revision refines the existing approved composition rather than treating newly invented ornament as historic evidence. The drawing-controlled envelope, liturgical arrangement and parish meeting decisions remain the basis.
+
+## Sources and cultural direction
+
+- [Project appearance hierarchy](church-view-renderings.md): ivory mineral plaster, terracotta roofs, stone paving, carved red lacquer and parcel gilding. The selected [sanctuary concept](../Thach_Bi_Viewer/references/02-sanctuary/concepts/09-sanctuary-approved-concept.png) governs the blue crucifix and saint recesses, layered gilding and lacquer. These remain concepts, not measured finishes.
+- [Sanctuary model](sanctuary-model.md), section sheet 5 and the [25 October meeting](engineering/parish-meeting-2026-10-25.md) govern the sanctuary's arrangement. [Façade model](facade-model.md) and CAD E01B govern exterior geometry; this revision changes no dimensions or roof silhouettes.
+- [Timber specification](beams-roof-connections/SPECIFICATION.md) and its approved concept references govern existing foliate carving. The station sprigs repeat that project's leaf vocabulary. No claim is made that every individual leaf pattern is a documented regional motif.
+- Cultural corroboration: the [Archdiocese of Hanoi's cathedral account](https://www.tonggiaophanhanoi.org/giao-xu-chinh-toa-ha-noi/), consulted 25 October 2026, describes carved timber screens and red lacquer/gilding in the sanctuary and side altars. This supports the finish direction; it does not approve a Thạch Bi ornament or prescribe all northern churches' appearance. No third-party photograph or artwork is copied into the viewer.
+
+## Implemented in the viewer
+
+`Thach_Bi_Viewer/decoration.js`, revision `2026-10-25-decoration-1`, runs after the sanctuary builder, before display batching. Four shared 256 × 256 procedural data maps use a separate fixed seed, local canvas generation and the existing texture-memory policy. No network asset or external library is required. Colour textures are unchanged; new roughness/height textures use linear data colour space.
+
+| Surface | Display change | Limit |
+| --- | --- | --- |
+| Exterior plaster, mouldings and ivory roof lining | Fine mineral grain and periodic trowel clouds; subdued highlights | Proposed finish; no moisture staining, damage or construction mix inferred |
+| Nave floor and sanctuary pale stone | Shallower bump shading and honed roughness | Existing tile/vein artwork retained; no slip-resistance or selected stone claim |
+| Terracotta roofs | Softer specular highlights | Roof geometry and tile artwork retained |
+| Sanctuary and station gilding | Fine roughness variation and faint leaf-overlap seams | Proposed gold-leaf appearance; no gold grade, foil size, cost or application specification |
+| Red lacquer, column carving and roof timbers | Softer clear coat and satin highlights; roof timbers keep the same reference lacquer roughness as columns | Owner-selected red retained; natural timber tone colour/grain palette remains available |
+| Sanctuary scrollwork and relief plates | Bump factor reduced from 0.4 to 0.003 to avoid inflated surface shading | Shader parameter only, not an actual measured carving depth; existing relief meshes retained |
+
+`stations.js`, revision `2026-10-25-stations-2`, adds raised inner pointed mouldings and four small gilded leaf sprigs per station. These remain inside the existing panel outline and relief projection, above the openings and clear of candles and exit signs. The fourteen positions, I–XIV numbering, finial crosses and plaques stay as recorded in the meeting. **The identical cross motifs are still placeholders for fourteen commissioned narrative artworks.** The new surround does not make the art complete or approved. It adds two batched meshes, not fourteen independently rendered assemblies.
+
+## Coordination and registers
+
+No equipment record, equipment position/aim, light output, circuit, route endpoint, route vertex or physical control changes in this revision. No acoustic material input, analytical boundary, ventilation setting, collision shape, structure, walking route or seating arrangement changes. The shallow frame ornament stays inside the previous station envelope. The electrical/decoration register has no new or retired item or specification to export. Its existing category workbooks and summary were inspected and left intact; concurrent equipment/register edits belong to their own work session. No Excel coordinate proposal is made.
+
+The model plan and electrical schedules do not encode these finish maps or frame surface details, so no changed plan/schedule export is required for this finish revision. Existing generated concept galleries are earlier artwork, not renders of this revision; their sources and selections are preserved. Desktop screenshots in the [review record](../review/decoration-2026-10-25/README.md) document this viewer revision instead.
+
+The [central-view constraint](engineering/central-view-constraint.md), [public viewer boundary](web/viewer.md) and [publication permission](web/publication-permission.md) were checked. No fan is hidden as a decorative fix. Existing visible equipment and unresolved light, feedback, speech, airflow, access and concealment issues remain open. Appearance parameters are not measured optical data and cannot establish lux or glare compliance.
+
+## Statue and altar detail follow-up
+
+**25 October 2026 · CONCEPT · automated checks passed; desktop review pending under an owner-authorized exception.** The owner explicitly requested continued minor visual improvements, especially the sanctuary and statues. The existing approved sanctuary concept and current façade figures remain the appearance basis; no new subject, devotional symbol or regional motif is introduced.
+
+- `simulator/catalog.js`: more restrained painted eyes with sculpted lids; tapered beards with shallow grooves instead of overlapping spheres; curved fingers for prayer, holding and key poses; a fuller Child Jesus head while retaining the crown height and Joseph's carrying anchor. Raised/open/sword hand contours remain as before to preserve the coordinated silhouettes. Exterior figures gain unpainted lids and keep their ivory finish. Peter and Paul gain separate book covers, recessed page blocks and spine bands inside their previous book envelopes. Their existing keys/sword and proposed subject status are retained.
+- Fine gilded edging follows the actual mantle openings on the painted Marian and Joseph figures. Existing white/blue and green/ochre paint, prayer/carrying poses, haloes and bases remain. These details follow the project's polychrome/parcel-gilt appearance; they do not establish a historical pattern, selected pigment, gilding grade or sculptor's design.
+- `sanctuary.js`: two pale floral medallions with foliate sprigs and stems flank the existing altar cross. The relief stays within the front panel, behind the cross's existing forward projection, and outside a clear central field. It is a shallow applied-carving concept, not a structural cut into the altar stone, product specification or mounting design. The approved concept's pale carved altar supplies the direction; its ornamental geometry remains generated interpretation.
+
+The [new review record](../review/sculpture-detail-2026-10-25/README.md) freezes before/after catalogue envelopes and the check results. All six statue envelopes are retained to within a 0.000001 m **software comparison tolerance**, not survey or fabrication accuracy. The current electrical systems JSON and schedule match a freshly generated study export exactly; the layout differs only in its export timestamp. Thus there is no changed equipment/route/register field to refresh, and existing concurrent workbook inputs remain intact. No new equipment, line, vertex, receiver, analytical material, light output or circuit is introduced. Plan coordinates and electrical exports remain current for these details.
+
+The browser tool denied both the local preview origin and the user-opened file URL despite the user's attempts to enable access. Desktop appearance checks and fresh screenshots remain pending. **USER CONFIRMED verification exception, 25 October 2026:** after being told the remaining check was blocked, the owner answered **“Authorize this pass and commit”** to source/headless verification only and a local commit. This exception applies to this pass; it does not mark the shapes visually approved or waive later desktop review. Previously captured images document the earlier finish pass, not these new shapes.
+
+## Roof surface follow-up · 30 October 2026
+
+The existing locally generated terracotta tile map in `realism.js` now gives the exposed ends a shallow rounded outline, a fine lip and restrained firing variation. The colour and bump maps use the same tile outline; the existing roof geometry, UV scale, material settings and random sequence for other finishes are retained. This is an illustrative surface treatment informed by the project's [appearance references](church-view-renderings.md), not a surveyed tile profile, selected product or evidence of age or condition. Tile dimensions, thickness, roof assembly, drainage, loads and fixing remain for the responsible designers; see the [roof specification](beams-roof-connections/SPECIFICATION.md).
+
+The texture changes no equipment, electrical line or position, collision, analysis input, plan geometry or drawing dimension, so the electrical registers, schedules and plan export need no refresh. Existing engineering holds, including the [central-view constraint](engineering/central-view-constraint.md), remain open. The initial desktop images may have used a cached script and do not prove the revised texture appeared; see the [evidence caution](../review/roof-finish-2026-10-30/README.md). The roof is dark in the existing evening scene. Visual review is not measured illumination or construction approval. The [website viewer contract](web/viewer.md) remains applicable.
+
+## Surrounding landscape · 30 October 2026
+
+The existing two rows of eight proposed trees now stand in soil within their existing stone rings, with a locally generated grass surface beyond the courtyard on both sides. The grass starts beyond `|Z| 22.3 m`; the existing model's side-stair approach envelope reaches `|Z| 21 m`. The forecourt and approaches keep the existing paving, and tree positions do not move. The grass is raised slightly above the presentation ground to avoid display depth conflicts; this is a rendering offset, not a site level. **CONCEPT / UNSURVEYED:** neither the grass edge nor the trees, grades, drainage, planting, accessible routes or actual site boundaries are surveyed or approved. A site designer and the parish must resolve them together.
+
+The existing tree visibility switch is now named **Show landscaping / Hiện cảnh quan** because it hides the grass and tree beds as well as the trees. `treesToggle` remains the same control ID. No equipment, electrical line, calculated boundary, walk collision or building dimension changes; plan and electrical exports do not encode the presentation planting. The existing category registers and their concurrent edits are untouched. See the [desktop review](../review/grounds-2026-10-30/README.md). The [web viewer contract](web/viewer.md), [central-view constraint](engineering/central-view-constraint.md), [roof specification](beams-roof-connections/SPECIFICATION.md) and [appearance references](church-view-renderings.md) were checked; no engineering hold is closed.
+
+## Outstanding review
+
+**USER CONFIRMED, 25 October 2026:** “mirror things” means **minor visual details** in this decoration request. It is not a request to reflect the model. ENG-027, the separate possible drawing/model left-right mirror, remains open. This finish revision applies no global reflection and changes no saint, tower-board, stair or station side assignment. A coordinate reflection needs its own coordinated geometry, winding, navigation, equipment, route and register migration.
+
+Parish/artist review is still required for the station narratives, statue sculpture, precise regional motifs and final finish samples. Structural support, fixing, fire behaviour, service access, humidity durability and cleaning methods require the relevant designers. The present textures provide no product performance or purchasing approval.

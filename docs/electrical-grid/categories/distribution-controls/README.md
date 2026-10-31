@@ -9,7 +9,7 @@ DB1, DB2, LC1, FC1 and AV1 enclosures, their shared supply feeders, and the sock
 
 ## Current scope
 
-11 equipment/enclosures, 14 routes, 105 route vertices. 0 hidden alternatives; 6 shown connected components. Circuits: P1, P2, P3, P4.
+12 equipment/enclosures, 15 routes, 109 route vertices. 0 hidden alternatives; 6 shown connected components. Circuits: P1, P2, P3, P4.
 
 ## Editing and coordination
 

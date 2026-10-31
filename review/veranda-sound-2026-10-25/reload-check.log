@@ -1,0 +1,3 @@
+verandaReviewRevision migration skipped; saved layout retained: Synthetic storage failure
+verandaReviewRevision migration skipped; saved layout retained: Updated layout could not be saved.
+{"reload":"passed","backup":"full prior layout","durableMarker":true,"deletedRetained":true,"backupAndSaveFailure":"rolled back"}

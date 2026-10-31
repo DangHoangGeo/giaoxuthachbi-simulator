@@ -399,7 +399,7 @@ Still to do:
   - Sanctuary & wings: L3, L8
   - Verandas & paths: L4, L5, E1
   - Fans, ventilation and the sound amplifier rack
-- **DB-2 · Towers & entrance**, a small sub-board inside the main doors on the entrance wall, left of the main door. It is fed by one cable from DB-1 and switches the tower and façade floods (L6), the festival exterior lights (L7) and the entrance circulators (F4). It has three buttons: *Towers off*, *Towers · evening* (L6) and *Towers · festival* (L6 + L7).
+- **DB-2 · Towers & entrance**, a small sub-board in the ground-floor room of the H-side tower (left on site; inside the main doors until 25 October 2026), with the event board **EB-1** beside it for event power and festival lights. It is fed by one cable from DB-1 and switches the tower and façade floods (L6), the festival exterior lights (L7) and the entrance circulators (F4). It has three buttons: *Towers off*, *Towers · evening* (L6) and *Towers · festival* (L6 + L7).
 - **Cable saving:** short circuit runs from the front of the church replace long ones to the altar end. The Controls tab shows the estimated saving in metres.
 - **Breakers:** each one shows its rating (C-curve, sized for the full load at ≤ 80 %), its current now and a plain-language name.
 - **Board hierarchy:** DB-1 carries a **DB-2 feeder breaker** (C32) that cuts power to the whole of DB-2. While it is off:

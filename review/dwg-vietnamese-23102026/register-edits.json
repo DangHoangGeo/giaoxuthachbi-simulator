@@ -1,0 +1,155 @@
+{
+  "files": {
+    "master": "docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
+    "key": "docs/layout_design/dwg-2026-10-23/Thach_Bi_Key_Dimensions.xlsx"
+  },
+  "hashes": {
+    "master": "75d7d79ca60d3e1d381f4ab6dec2d8b13e9778c6cada8b82f15d4ccda15a7c38",
+    "key": "581939faa52f13e045bef56c1150cb5960a485da5e760b90dffdea8807f34406"
+  },
+  "master_edits": [
+    [
+      "DWG dimensions",
+      "F258",
+      2101
+    ],
+    [
+      "DWG dimensions",
+      "F279",
+      2131
+    ],
+    [
+      "DWG dimensions",
+      "F295",
+      2951
+    ],
+    [
+      "DWG dimensions",
+      "F296",
+      2981
+    ],
+    [
+      "DWG dimensions",
+      "F310",
+      2861
+    ],
+    [
+      "DWG dimensions",
+      "F326",
+      2951
+    ],
+    [
+      "DWG dimensions",
+      "F337",
+      2301
+    ],
+    [
+      "DWG dimensions",
+      "F371",
+      3101
+    ],
+    [
+      "DWG dimensions",
+      "F372",
+      2951
+    ],
+    [
+      "DWG dimensions",
+      "F375",
+      2301
+    ],
+    [
+      "DWG dimensions",
+      "F388",
+      3171
+    ],
+    [
+      "DWG dimensions",
+      "F437",
+      2131
+    ],
+    [
+      "DWG dimensions",
+      "F472",
+      2951
+    ],
+    [
+      "DWG dimensions",
+      "F473",
+      2951
+    ],
+    [
+      "DWG dimensions",
+      "F500",
+      2861
+    ],
+    [
+      "DWG dimensions",
+      "F529",
+      2951
+    ],
+    [
+      "DWG dimensions",
+      "F530",
+      2951
+    ],
+    [
+      "DWG dimensions",
+      "F569",
+      2441
+    ],
+    [
+      "DWG dimensions",
+      "F578",
+      2101
+    ],
+    [
+      "DWG dimensions",
+      "F588",
+      2441
+    ],
+    [
+      "DWG dimensions",
+      "F640",
+      2111
+    ],
+    [
+      "DWG dimensions",
+      "F670",
+      2951
+    ],
+    [
+      "DWG dimensions",
+      "F680",
+      76
+    ],
+    [
+      "DWG sheets",
+      "A4",
+      "Phiên bản 23102026. 726 kích thước thuộc 27 bản vẽ. Đơn vị mm suy từ chuỗi kích thước và nhãn m; INSUNITS gốc = 1 (inch, đơn vị chèn). Cần người thiết kế xác nhận đơn vị. Số ghi lấy trực tiếp từ chữ số lưu trong CAD. Không dùng để thi công."
+    ]
+  ],
+  "key_edits": [
+    [
+      "Key dimensions",
+      "A4",
+      "Nguồn: DWG lưu 23/10/2026. Đơn vị mm suy từ chuỗi kích thước và nhãn m; INSUNITS=1 (inch, đơn vị chèn). Chờ người thiết kế xác nhận; không tự đổi tỷ lệ."
+    ],
+    [
+      "Key dimensions",
+      "A5",
+      "Phiên bản 23102026 - Không dùng để thi công"
+    ]
+  ],
+  "new_issue": [
+    "ISSUE-R06",
+    "Đơn vị hình học và đơn vị chèn trong DWG",
+    "DWG gốc và DXF mới đều có INSUNITS=1 (inch, đơn vị chèn). Chuỗi trục 4500/7200 và các nhãn cao độ theo m phù hợp cách hiểu hình học mm của mô hình; đây là diễn giải từ bản vẽ, chưa phải xác nhận đơn vị của người thiết kế. Không tự nhân hoặc chia tọa độ theo 25,4.",
+    "Tệp CAD nguồn 10; 726 đối tượng kích thước; 137 mốc trục",
+    null,
+    "Chưa xác nhận / ENGINEERING HOLD",
+    "Người thiết kế mở DWG trong AutoCAD/ODA, xác nhận đơn vị hình học, tỷ lệ chèn, đơn vị ghi kích thước và phát hành hồ sơ thi công thống nhất.",
+    null,
+    "Kiểm tra trực tiếp 26/10/2026; Autodesk INSUNITS; review/dwg-vietnamese-23102026/kiem-tra-so-lieu.json"
+  ]
+}
