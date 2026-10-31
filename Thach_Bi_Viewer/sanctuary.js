@@ -29,7 +29,7 @@
   // by the owner on 24 October 2026: dais +0.80 (the PDF set had +0.75) and side floors +0.16
   // (+0.15). The bundle still places its furnishings on +0.75, so prepare() lifts that group.
   // Section A-A draws the low platform at +0.16 and four 0.16 m risers above it (the plan label
-  // reads +0,15; the owner described 150 + 650 mm). Treads 0.29 m.
+  // reads +0,15; the owner kept the drawn 160 mm on 1 Nov 2026). Treads 0.29 m.
   const DAIS=.8,SIDE=.16,BUNDLE_DAIS=.75,RISER=.16;
   // Inside a platform outline, in plan; az is |z|.
   const inside=(o,x,az)=>{
