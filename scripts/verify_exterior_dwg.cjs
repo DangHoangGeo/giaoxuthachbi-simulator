@@ -107,6 +107,10 @@ near(subset('Tower corner pier shaft',H).max.x,.495,'E02 front pier shaft back f
 const cart=subset('Tower front cartouche frame',p=>p.z>0);
 near(cart.max.z-10.153,.9086,'Tower cartouche half-width',.025);near(cart.min.y,4.0353,'Tower cartouche bottom',.025);near(cart.max.y,4.9998,'Tower cartouche top',.025);
 near(subset('Tower lantern acanthus crown',p=>p.z>0).max.z-10.153,.948,'Lantern crown leaf reach',.03);
+// Central ground piers (owner review, 31 Oct 2026): E01B shaft Z 2.489–3.469, P05 front X 1.561, pedestal top +1.848.
+{const sh=subset('Central ground pier shaft',p=>p.z>0);near(sh.min.z,2.489,'Central ground pier inner face');near(sh.max.z,3.469,'Central ground pier outer face');near(sh.min.x,1.561,'Central ground pier front (P05)');
+ near(subset('Central ground pier pedestal',p=>p.z>0).min.x,1.561-.269,'Central ground pier plinth projection');
+ const up=subset('Central bay pier shaft',p=>p.z>0);near((up.min.z+up.max.z)/2,(sh.min.z+sh.max.z)/2,'Ground and upper central piers share their axis');}
 // ENG-043: square corner piers, E01B (t) and E02 (X) shaft faces per stage.
 near(subset('Tower corner pier shaft',p=>p.z>11&&p.x>2).max.x,5.615,'E02 rear pier shaft back face (behind axis 2)');
 near(subset('Tower corner pier shaft',p=>p.z>11&&p.x>2).min.x,4.405,'E02 rear pier shaft front face');

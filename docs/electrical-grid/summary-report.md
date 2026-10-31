@@ -36,13 +36,13 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,248.659 | 3,248.659 | 0.000 | 0.000 |
+| Lighting | 3,248.859 | 3,248.859 | 0.000 | 0.000 |
 | Sound | 768.994 | 0.000 | 2,365.631 | 571.727 |
 | Fans and ventilation | 955.646 | 955.646 | 0.000 | 0.000 |
 | Exit signs | 168.600 | 168.600 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 263.923 | 263.923 | 0.000 | 0.000 |
-| **Total by length basis** | **5,405.821** | **4,636.828** | **2,365.631** | **571.727** |
+| **Total by length basis** | **5,406.021** | **4,637.028** | **2,365.631** | **571.727** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/419 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -72,8 +72,8 @@ The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-an
 The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
 
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 7958b4809b6199a78823ea47abdd37329f78f9de03404b0f973483495d74be9e.
-- [Electrical snapshot](electrical-systems.json), SHA-256: de942b6ea94208f140cd0ec1bb6d7282f467a001cb150dd4c584a870ba9c4c2b.
+- [Layout snapshot](equipment-layout.json), SHA-256: 3cdbadaba0ffc908418f454ec3a56c6c112739ccae548d5038c524ed0fb572ae.
+- [Electrical snapshot](electrical-systems.json), SHA-256: 19f49808ff7b94351ad8e2bad9b30d5c978e8d5e96c5f164a91146ca0afcd5ac.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 
@@ -86,3 +86,7 @@ Hình học lan can mới có 17 ô thủng bậc mỗi mặt, thay con tiện c
 ## Trụ góc tháp theo E01B/E02 — 31/10/2026
 
 Theo [ENG-043](../engineering/issues.md), các trụ góc tháp lấy đúng bề rộng và chiều sâu trên bản vẽ. Mười hai dây đèn lễ trên mặt trụ tầng 1–3 (L202–L207, L213–L218) dời theo, vẫn cách mặt trụ 60 mm. Không đổi ID, mạch, công suất hay chiều dài dây. Tổng chiều dài tuyến chiếu sáng tăng 1,840 m, từ 3 246,819 lên 3 248,659 m, vì tuyến tới các dây này theo mặt trụ mới. Bố trí đã lưu trong trình duyệt được chuyển một lần (`towerPierRevision`): chỉ dây còn ở chỗ đề xuất cũ mới dời theo.
+
+## Trụ tầng trệt mặt tiền giữa — 31/10/2026
+
+Hai trụ hai bên cửa chính được dựng lại theo E01B/P05: cùng tim với trụ tầng trên (±2,979 m) và chân bệ bậc như trụ tháp. Hai đèn lồng cửa chính L137/L138 dời 0,10 m về phía cửa (|Z| 2,40 → 2,30 m), để khỏi chạm trụ mới. Không đổi ID, mạch hay công suất. Bố trí đã lưu được chuyển một lần, cùng revision `towerPierRevision` (`2026-10-31-tower-pier-depth-2`).

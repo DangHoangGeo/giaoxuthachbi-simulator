@@ -545,7 +545,8 @@ console.log('Sanctuary: sheet-5 frame, shrine line, chamber lining, lacquered ro
   near(of('Central bay great arch moulding').max.y,12.677+2.27,'Great arch extrados: centre +12.677, r 2.27');
   const cross=of('Central cross trefoil end').union(of('Central cross'));near(cross.max.y,24.648,'Cross top +24.648');
   const piers=of('Central bay pier shaft');near(piers.max.z,2.979+.435,'Central piers: 621 / 5,958.8 / 621 chain');near(piers.min.z,-2.979-.435,'Central piers symmetric');
-  const all=bounds(upper);assert(all.min.x>1.5&&all.max.x<5.6&&all.max.z<=7.5+1e-6&&all.min.z>=-7.5-1e-6,'upper facade stays between the towers, in front of axis 2′');
+  // Since 31 Oct 2026 the group also holds the CAD ground piers, whose plinth stands at X 1.292.
+  const all=bounds(upper);assert(all.min.x>1.25&&all.max.x<5.6&&all.max.z<=7.5+1e-6&&all.min.z>=-7.5-1e-6,'upper facade stays between the towers, in front of axis 2′');
   let tris=0;upper.traverse(o=>{if(o.isMesh)tris+=o.geometry.index.count/3;});assert(tris<150000,'facade triangle budget: '+tris);
   console.log(JSON.stringify({facade:'passed',meshes:upper.children.length,triangles:tris,removedBundleMeshes:upper.userData.removedBundleMeshes}));
 }

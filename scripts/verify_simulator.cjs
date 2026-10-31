@@ -177,7 +177,7 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   assert(!side.some(it => Math.abs(it.pos[0] - 46.425) < 1.5), 'no lanterns at the bay 10–11 window');
   const front = lights.filter(it => it.name.startsWith('Central front door lantern ·'));
   assert.equal(front.length, 2, 'only one front-door decorative pair');
-  assert(front.every(it => near(it.pos[0], 2.2) && near(Math.abs(it.pos[2]), 2.4) && it.circuit === 'L9'), 'central pair outside the front wall on DB2');
+  assert(front.every(it => near(it.pos[0], 2.2) && near(Math.abs(it.pos[2]), 2.3) && it.circuit === 'L9'), 'central pair outside the front wall on DB2'); // |Z| 2.3 beside the CAD ground piers since 31 Oct 2026
   assert(!lights.some(it => /^(Tower lantern|Sconce · main door) ·/.test(it.name)), 'old duplicate door decoration removed');
   assert.equal(lights.filter(it => it.name.startsWith('Service door lantern ·')).length, 4, 'two service doors have balanced pairs');
   // Tower washes (owner, 19 October 2026): cornice-coloured fittings on the ledges, no black arm floods.

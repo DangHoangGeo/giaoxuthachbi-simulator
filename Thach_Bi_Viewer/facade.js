@@ -15,7 +15,7 @@
   // World axes: X from axis 1 toward the sanctuary (the street side is smaller X), Y up from the
   // nave floor, Z from the D/E midpoint, positive toward H. The facade is symmetric about Z 0.
   const spec = {
-    revision: '2026-10-26-cad-facade-2',
+    revision: '2026-10-31-cad-facade-3',
     cut: 8.45, // bundle meshes wholly above this level are superseded
     cornice: { dentil: [8.42, 8.52], fillet: [8.52, 8.605], corona: [8.605, 8.773], frieze: [8.773, 9.073], band: [9.073, 9.115] },
     // E01B stops at ±7.128. The rebuilt tower inner piers start at ±7.103 here,
@@ -24,6 +24,15 @@
     storey: [9.741, 15.333], entablature: [15.333, 15.84],
     // Piers on the D/E side of the central bay: 621 mm each side of the 5,958.8 mm chain (E01B).
     pier: { z: 2.979, half: 0.435, front: 2.30, back: 5.466 },
+    // Ground-storey central piers, owner review 31 Oct 2026: the same pier as above (±2.979), traced on
+    // E01B (shaft Z ±2.489–3.469; flutes 2.844–3.114) and P05 (front face X 1.561, wall 2.225). The
+    // pedestal steps out as the tower piers do, to the same +1.848 top; only its four lowest band levels
+    // differ. [y0, y1, projection beyond the shaft face, material]; the cyma bands are one mean step.
+    ground: { half: 0.49, front: 1.561, back: 2.6, top: 8.39, flutes: [2.05, 8.2], fluteStep: 0.11,
+      panel: { y: [0.54, 0.9], half: 0.204 },
+      bands: [[0, .18, .269, 'S'], [.18, .24, .207, 'S'], [.24, .348, .15, 'S'], [.348, .408, .096, 'S'], [.408, 1.032, .066, 'W'],
+        [1.032, 1.092, .096, 'S'], [1.092, 1.188, .144, 'S'], [1.188, 1.284, .096, 'S'], [1.284, 1.368, .048, 'S'], [1.368, 1.668, 0, 'W'],
+        [1.668, 1.716, .03, 'S'], [1.716, 1.788, .066, 'S'], [1.788, 1.848, .03, 'S']] },
     central: {
       half: 2.544, face: 2.936, tympanum: [3.226, 3.556], room: [3.666, 4.716], back: 5.046,
       arch: { y: 12.677, r: [1.96, 2.07, 2.27] },
@@ -66,7 +75,10 @@
       if (o.name === 'Central cross') crossMaterial = o.material;
       box3.setFromObject(o);
       const centralCornice = corbel.test(o.name) && Math.abs((box3.min.z + box3.max.z) / 2) < 3.5 && box3.max.y > 8.2;
-      if (box3.min.y >= spec.cut || centralCornice) remove.push(o);
+      // The old ground pilasters at |Z| 3.6 stood 0.62 m outboard of the piers above them.
+      const oldPilaster = /^(Paneled facade pilaster|Pilaster )/.test(o.name) && Math.abs((box3.min.z + box3.max.z) / 2) > 3.2
+        && Math.abs((box3.min.z + box3.max.z) / 2) < 4.0 && box3.max.y < 8.5 && box3.max.x < 2.5;
+      if (box3.min.y >= spec.cut || centralCornice || oldPilaster) remove.push(o);
     });
     remove.forEach(o => o.removeFromParent());
     // The shrine groups are left empty.
@@ -215,10 +227,20 @@
     block('Central cornice frieze', S, [2.19, 2.6], C.frieze, [-2.49, 2.49]);
     meander('Central cornice Greek-key frieze', [-2.48, 2.48], C.frieze, 2.16);
     block('Central cornice crown band', S, [2.05, 2.6], C.band, [-3.53, 3.53]);
+    // 0. Ground-storey central piers (E01B / P05), under the frieze blocks and capitals below.
+    const G = spec.ground;
     both(s => {
       const zc = s * P.z;
-      block('Central pier frieze block', W, [2.12, 2.6], [8.39, C.corona[0]], [zc - .5, zc + .5]);
-      capital('Central pier capital · cornice', zc, .5, C.frieze, 2.08, .5);
+      for (const [y0, y1, d, m] of G.bands) block('Central ground pier pedestal', m === 'W' ? W : S, [G.front - d, G.back], [y0, y1], [zc - G.half - d, zc + G.half + d]);
+      const pf = G.front - .066, [p0, p1] = G.panel.y, ph = G.panel.half;
+      for (const [z0, z1, y0, y1] of [[-ph, ph, p0, p0 + .04], [-ph, ph, p1 - .04, p1], [-ph, -ph + .04, p0, p1], [ph - .04, ph, p0, p1]])
+        block('Central ground pier pedestal panel', S, [pf - .025, pf], [y0, y1], [zc + z0, zc + z1]);
+      add('Central ground pier pedestal rosette', S, K.bloom({ r: .1, petals: 8, rings: 1, seg: 3 }), facing(pf - .01, (p0 + p1) / 2, zc), CARVED);
+      block('Central ground pier shaft', W, [G.front, G.back], [1.848, G.top], [zc - G.half, zc + G.half]);
+      flutes('Central ground pier flute', zc, G.fluteStep, G.flutes, G.front);
+      // Frieze block and capital break forward with the pier (until 31 Oct 2026 set back at 2.12/2.08).
+      block('Central pier frieze block', W, [G.front - .02, 2.6], [8.39, C.corona[0]], [zc - .5, zc + .5]);
+      capital('Central pier capital · cornice', zc, .5, C.frieze, G.front - .05, .5);
     });
 
     // 2. Upper-storey plinth across the three bays (+9.115 to +9.741), the terrace slab behind

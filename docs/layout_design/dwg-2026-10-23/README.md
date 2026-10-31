@@ -161,7 +161,7 @@ On 24 October 2026 the owner directed the model to follow this file. The workboo
 
 ## Central facade adopted by the owner
 
-On 24 October 2026 the owner directed the model to follow this file's central facade as well. Above +8.45 m, `Thach_Bi_Viewer/facade.js` builds the upper storey, niches, cresting, pinnacles and the aedicule with its cross (+24.648 m) from drawing E01B and the tower-end plans at +10.128 and +15.840 m. `facade.csv` holds the values, and `extract_dwg_revision.py facade` finds each one in the DWG within 1.5 mm. The doors and ground storey were already in agreement and are kept. See [facade-model.md](../../facade-model.md). ISSUE-R02 stays open for the church; overlay checks are kept, not committed, under `images/05-facade-check/`.
+On 24 October 2026 the owner directed the model to follow this file's central facade as well. Above +8.45 m, `Thach_Bi_Viewer/facade.js` builds the upper storey, niches, cresting, pinnacles and the aedicule with its cross (+24.648 m) from drawing E01B and the tower-end plans at +10.128 and +15.840 m. `facade.csv` holds the values, and `extract_dwg_revision.py facade` finds each one in the DWG within 1.5 mm. The doors and ground storey were already in agreement and are kept, except the two ground-storey central piers, rebuilt from E01B/P05 on 31 October 2026 (see facade-model.md). See [facade-model.md](../../facade-model.md). ISSUE-R02 stays open for the church; overlay checks are kept, not committed, under `images/05-facade-check/`.
 
 ## Limits
 

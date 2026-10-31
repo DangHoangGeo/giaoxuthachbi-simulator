@@ -16417,23 +16417,23 @@
         [
           2.35,
           7.65,
-          -2.4
+          -2.3
         ],
         [
           2.35,
           3,
-          -2.4
+          -2.3
         ],
         [
           2.2,
           3,
-          -2.4
+          -2.3
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 11.438,
+      "length": 11.538000000000002,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -16686,23 +16686,23 @@
         [
           2.35,
           7.65,
-          2.4
+          2.3
         ],
         [
           2.35,
           3,
-          2.4
+          2.3
         ],
         [
           2.2,
           3,
-          2.4
+          2.3
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 11.438,
+      "length": 11.538000000000002,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -39155,7 +39155,7 @@
       "position": [
         2.2,
         3,
-        -2.4
+        -2.3
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39180,7 +39180,7 @@
       "position": [
         2.2,
         3,
-        2.4
+        2.3
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },

@@ -237,7 +237,8 @@
       add({ type: 'lantern', name: `Veranda lantern · ${side(s)} · axis ${k}`, circuit: 'L4', mount: 'pendant', pos: [x, 4.55, s * 8.85], anchorY: above(x, s * 8.85, 4.55), yaw: 0, mountYaw: 0, lumens: 2000 });
     }
     // Only the middle of the three front doors receives decorative lanterns.
-    for (const s of [-1, 1]) add({ type: 'wallLantern', name: `Central front door lantern · ${side(s)}`, circuit: 'L9', mount: 'wall', pos: [2.2, 3.0, s * 2.4], yaw: 180, mountYaw: 180 });
+    // |Z| 2.30 (2.4 until 31 Oct 2026): clear of the CAD ground piers at ±2.489–3.469 (facade.js) and the door colonnettes.
+    for (const s of [-1, 1]) add({ type: 'wallLantern', name: `Central front door lantern · ${side(s)}`, circuit: 'L9', mount: 'wall', pos: [2.2, 3.0, s * 2.3], yaw: 180, mountYaw: 180 });
     // Matching pairs beside the side doors, outside the leaf swing. Since 25 Oct 2026 the porch
     // has no outer wall (porches.js), so they stand on the porch face of the inner C/G wall
     // beside the doorway; bay 10–11 has a window instead of a door and its pair is retired
@@ -620,11 +621,14 @@
   }
 
   // ENG-043, 31 Oct 2026: the tower corner piers take their CAD depth and width (towers.js), so the
-  // festival strands up their fronts move with them. A saved strand still at its previous
+  // festival strands up their fronts move with them; the two main-door lanterns step 0.10 m toward
+  // the door, clear of the new CAD ground piers of the central facade (facade.js). A saved strand still at its previous
   // recommended place and aim (5 mm, 0.01°) moves to the new one and keeps its ID, switching,
   // dimmer, visibility and note; a moved or deleted strand stays as it is.
-  const towerPierRevision = '2026-10-31-tower-pier-depth-1';
+  const towerPierRevision = '2026-10-31-tower-pier-depth-2';
   const towerPierBefore = {
+    "L137": {"type":"wallLantern","pos":[2.2, 3, -2.4],"yaw":180,"tilt":0,"mount":"wall","circuit":"L9"},
+    "L138": {"type":"wallLantern","pos":[2.2, 3, 2.4],"yaw":180,"tilt":0,"mount":"wall","circuit":"L9"},
     "L202": {"type":"bulbString","pos":[-0.78, 4.195, -7.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
     "L203": {"type":"bulbString","pos":[-0.78, 4.195, -12.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
     "L204": {"type":"bulbString","pos":[-0.42, 12.115, -7.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
@@ -643,7 +647,7 @@
     return items.map(it => {
       const old = towerPierBefore[it.id], raw = next.get(it.id);
       if (!old || !raw || !untouched(it, old)) return it;
-      return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, params: { ...it.params, length: raw.params.length } };
+      return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, ...(raw.params?.length ? { params: { ...it.params, length: raw.params.length } } : {}) };
     });
   }
 
