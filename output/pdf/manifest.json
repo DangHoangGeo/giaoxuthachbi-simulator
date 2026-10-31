@@ -3,7 +3,7 @@
   "language": "en",
   "status": "Design development - not for construction",
   "basis": "Fresh default model, not saved browser layout",
-  "gitRevision": "cf7018c89906c5ebc273e1b749d6b32fb44442bc",
+  "gitRevision": "464f5d9946f7f505ab05f6aba9f9abec93f962b5",
   "sourceFiles": {
     "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
     "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",
@@ -32,7 +32,7 @@
     "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
     "Thach_Bi_Viewer/bundle.js": "74818d3bbe1aea78576f9fe1907faaa2e52e3aa96c5cfad2a2f37c2b72b710d3",
     "scripts/lib/study_model.cjs": "d89088c7dd1ab4a58be906775e7ef93188d146b98d23ba543b1f71b33bd06f70",
-    "scripts/build_review_drawings.py": "16773ba2a20d9aa2496205c9f1f37f6aac0e11f724107fcd6633f628c5b3e1ef",
+    "scripts/build_review_drawings.py": "78dfac791e582bb5b88023973642c076044233667246d67ac30122f96c5ec944",
     "scripts/export_print_model.cjs": "231f89424ff29b177ef4e1e0a2e7648eff0c1c553cd2b72186fbe06f35335ae3",
     "scripts/review_drawings_i18n.py": "d2eb9ab39fded9b52096d412e9f055c456475f9013fdf3b7c96b9358942ef72a"
   },
@@ -53,8 +53,8 @@
   "files": {
     "drawing-index.json": "c858250d83b3f582a19895c6f016641a0e5ba203afaebf874fa5f1e36db4925b",
     "equipment-coordinates.csv": "8bda25ec62b15c3e516fc22c374adf9b3d5a344053f0e09d7478209d9dc2e0d3",
-    "model-snapshot.json": "2bfd6fe7967aa5101547d1fbef71b8e6fe9faabe63058fbf00e27279e616bf96",
+    "model-snapshot.json": "3dac21c143fb53498e9eacd7ef6e7ac0a65c85be50bee9a9d24e7ff3cc5e5e9c",
     "route-vertices.csv": "7db2cb21c77d3563a7d0d4c527f59a6dbf2d7c30f8be272212a62dafdcb0ee39",
-    "thach-bi-electrical-review-A3.pdf": "d61e242538e76f08e05f03af385494edfdcbc3da446af6e2fb5c48957745ff80"
+    "thach-bi-electrical-review-A3.pdf": "3dde8d554f6dd3d05dc4b5ce578691a5d15ed411055acd28f99c7998f8694ab0"
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "basis": "Fresh default model, not saved browser layout",
-  "gitRevision": "cf7018c89906c5ebc273e1b749d6b32fb44442bc",
+  "gitRevision": "464f5d9946f7f505ab05f6aba9f9abec93f962b5",
   "sourceFiles": {
     "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
     "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",

@@ -2,6 +2,8 @@
 """Rebuild A3 review drawings from the actual default church model.
 
 Usage: python3 scripts/build_review_drawings.py [--language en|vi] [--output folder]
+The Vietnamese build also writes one plain-language PDF per system (sound, fans,
+interior lights...) to <output>/theo-he-thong/, from the same snapshot.
 Requires Node.js and reportlab. No equipment, register or browser data is edited.
 Fails before publication when model/JSON/register geometry disagrees.
 """
@@ -9,15 +11,19 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import io
 import json
 import math
 import os
+import re
 from pathlib import Path
 import subprocess
 import tempfile
 from review_drawings_i18n import (
     FONT_FILES, equipment_name, pdf_name, printable, product, register_fonts, text,
 )
+
+import system_packages_vi as packages
 
 ROOT = Path(__file__).resolve().parents[1]
 try:
@@ -131,7 +137,7 @@ class Drawings:
     def __init__(self, path, data, language='en'):
         self.language = language
         self.font, self.bold_font = register_fonts(language)
-        self.c = canvas.Canvas(str(path), pagesize=(W, H), pageCompression=1, invariant=1)
+        self.c = canvas.Canvas(path if hasattr(path, 'write') else str(path), pagesize=(W, H), pageCompression=1, invariant=1)
         self.c.setTitle(self.t('Thach Bi Church - Electrical review drawings'))
         self.c.setAuthor(self.t('Thach Bi Church design-development model'))
         if language == 'vi':self.c.setSubject('language=vi')
@@ -152,6 +158,11 @@ class Drawings:
         # Installation notes are repeated per route in the model; print each once and cite its code.
         self.install_ref = {text: f'I{i+1:02}' for i, text in enumerate(sorted({r['installation'] for r in self.routes.values()}))}
         self.forms = set()
+        # The full set covers everything; a system package narrows these scopes.
+        self.sheets = [(i+1, s) for i, s in enumerate(data['sheets'])]
+        self.scope_routes = self.routes
+        self.scope_equipment = self.equipment
+        self.scope_sources = data['full']['sources']
 
     def t(self, value, **fields):
         return text(value, self.language, **fields)
@@ -349,11 +360,10 @@ class Drawings:
             self.text(21,88,self.t('HEIGHT PROJECTION / X-Y / all Z superimposed'),8,bold=True)
             self.plot(sheet,22,24,(0,1),self.section_scale)
             self.scale_bar(22,21,self.section_scale)
-            yy=self.wrap(182,86,self.t('PLAN CONTEXT: grey lines are a cut through the model walls, piers and columns at +1.00 m, for orientation. They are not a measured survey; support capacity and openings are not certified here. Lines crossing in projection do not establish a connection.'),108,7.5,3.7)
-            yy=self.wrap(182,yy-2.5,self.t('Triangle: vertical run (riser or drop) in a wall, pier or column. Its heights are in the route set-out sheets (RS).'),108,7.5,3.7)
-            yy=self.wrap(182,yy-2.5,self.t('Trace: equipment ID > branch in route index > shared trunk > feeder. Select that ID in Simulator / Wiring for vertices, height and related controls. Final terminals and control channels: pending.'),108,7.5,3.7)
             codes=sorted({self.install_ref[r['installation']] for r in sheet['routes']})
-            self.wrap(182,yy-2.5,self.t('Installation notes on this sheet: {codes} (key on sheet IM-01).', codes=', '.join(codes)),108,7.5,3.7)
+            left,right=self.sheet_notes(sheet,codes)
+            yy=88.5
+            for note in left:yy=self.wrap(182,yy-2.5,note,108,7.5,3.7)
             self.text(310,248,self.t('COORDINATES / X, Y, Z (m)'),9,bold=True)
             y=239
             items=[c['id'] for c in components]+list(sheet['sources'])
@@ -377,11 +387,19 @@ class Drawings:
             for sid,source in sheet['sources'].items():
                 y-=5
                 row(y,sid,source['pos'])
-            y-=10
-            y=self.wrap(310,y,self.t('{equipment} equipment / {routes} routes including upstream context. Coordinates describe model reference points, not anchor or terminal locations.', equipment=len(sheet['components']), routes=len(sheet['routes'])),92,7.5,3.7)
-            y=self.wrap(310,y-2.5,self.t('Grid set-out: nearest axis and offset in metres. 5+1.20 = 1.20 m past axis 5 toward the sanctuary; D-0.35 = 0.35 m from axis D toward B. Height h is above nave floor +0.000.'),92,7.5,3.7)
-            self.wrap(310,y-2.5,self.t('POWER / SIGNAL: solid / dashed / dotted. Circle: equipment. Square: enclosure. At overlaps, use the coordinate table and the CSV vertices, not a ruler.'),92,7.5,3.7)
+            y-=7.5
+            for note in right:y=self.wrap(310,y-2.5,note,92,7.5,3.7)
             self.end()
+
+    def sheet_notes(self, sheet, codes):
+        """Notes beside the plan (left) and under the coordinate table (right)."""
+        return ([self.t('PLAN CONTEXT: grey lines are a cut through the model walls, piers and columns at +1.00 m, for orientation. They are not a measured survey; support capacity and openings are not certified here. Lines crossing in projection do not establish a connection.'),
+                 self.t('Triangle: vertical run (riser or drop) in a wall, pier or column. Its heights are in the route set-out sheets (RS).'),
+                 self.t('Trace: equipment ID > branch in route index > shared trunk > feeder. Select that ID in Simulator / Wiring for vertices, height and related controls. Final terminals and control channels: pending.'),
+                 self.t('Installation notes on this sheet: {codes} (key on sheet IM-01).', codes=', '.join(codes))],
+                [self.t('{equipment} equipment / {routes} routes including upstream context. Coordinates describe model reference points, not anchor or terminal locations.', equipment=len(sheet['components']), routes=len(sheet['routes'])),
+                 self.t('Grid set-out: nearest axis and offset in metres. 5+1.20 = 1.20 m past axis 5 toward the sanctuary; D-0.35 = 0.35 m from axis D toward B. Height h is above nave floor +0.000.'),
+                 self.t('POWER / SIGNAL: solid / dashed / dotted. Circle: equipment. Square: enclosure. At overlaps, use the coordinate table and the CSV vertices, not a ruler.')])
 
     def fit(self, x, y, s, width, size):
         """Single-line cell: shrink to the 5.5 pt floor, never overflow into the next column."""
@@ -424,9 +442,9 @@ class Drawings:
         """Tower fronts at the conduit plane with the tower routes projected on Z-Y."""
         spec=self.data['towers']; cut=self.data['sections']['towerFront']
         scale=150; y0,y1=-0.6,30.4; half=3.6
-        tower_routes=[r for r in self.routes.values() if any(p[0]<5.3 and abs(p[2])>6.3 for p in r['points'])]
-        tower_items=[c for c in self.equipment.values() if c['position'][0]<5.3 and abs(c['position'][2])>6.3]
-        sources={k:s for k,s in self.data['full']['sources'].items() if s['pos'][0]<5.3 and abs(s['pos'][2])>6.3}
+        tower_routes=self.tower_routes()
+        tower_items=[c for c in self.scope_equipment.values() if c['position'][0]<5.3 and abs(c['position'][2])>6.3]
+        sources={k:s for k,s in self.scope_sources.items() if s['pos'][0]<5.3 and abs(s['pos'][2])>6.3}
         self.start('TW-01',self.t('Tower fronts / conduit risers and decoration clearances'),self.t('Front cut at X = +{plane} m (conduit plane) 1:{scale} at A3 / tower routes projected on Z-Y / metres', plane=f"{cut['plane']:.2f}", scale=scale))
         self.c.saveState()
         for n,(side,sign) in enumerate([('B',-1),('H',1)]):
@@ -488,6 +506,9 @@ class Drawings:
             y=self.wrap(x0,y,self.t(note),255,7.5,3.7)-2.5
         self.end()
 
+    def tower_routes(self):
+        return [r for r in self.scope_routes.values() if any(p[0]<5.3 and abs(p[2])>6.3 for p in r['points'])]
+
     def place_label(self, p, label, occupied, size):
         px,py=p
         width=pdfmetrics.stringWidth(self.clean(label),self.font,size)+2
@@ -500,8 +521,9 @@ class Drawings:
         self.text(box[0]/mm,(box[1]+1)/mm,label,size)
 
     def install_key(self):
-        rows=sorted(self.install_ref.items(),key=lambda kv:kv[1])
-        count={code:sum(r['installation']==text for r in self.routes.values()) for text,code in rows}
+        used={r['installation'] for r in self.scope_routes.values()}
+        rows=sorted([kv for kv in self.install_ref.items() if kv[0] in used],key=lambda kv:kv[1])
+        count={code:sum(r['installation']==text for r in self.scope_routes.values()) for text,code in rows}
         self.start('IM-01',self.t('Installation note key'),self.t('One note per distinct model installation method / proposals, not approved installation details'))
         y=247
         self.text(14,y,self.t('Code'),8,bold=True);self.text(30,y,self.t('Routes'),8,bold=True);self.text(48,y,self.t('Model installation note'),8,bold=True)
@@ -518,7 +540,7 @@ class Drawings:
         """Every route once, in route-index order, with each vertex as grid set-out and height."""
         cols=[14,28,68,80,104]; chain_w=406-cols[4]; size=6.5; lead=3.4
         lines=[]
-        for r in self.routes.values():
+        for r in self.scope_routes.values():
             what=','.join(r['itemIds']) if r['role'] in ['drop','local'] else self.t('Shared context')+' '+r['circuit']
             tokens=setout_chain(r['points'],self.grid); rows=[]; line=''
             for t in tokens:
@@ -561,8 +583,230 @@ class Drawings:
 
     def build(self):
         self.cover()
-        for i,sheet in enumerate(self.data['sheets']):self.sheet(sheet,i+1)
+        for number,sheet in self.sheets:self.sheet(sheet,number)
         self.tower_sheet();self.schedules();self.install_key();self.setout_pages();self.sequence();self.c.save()
+
+
+class SystemPackage(Drawings):
+    """One system (sound, fans, interior lights...) in plain Vietnamese, from the same snapshot as the full set."""
+    def __init__(self, path, data, package, contents=None):
+        super().__init__(path, data, 'vi')
+        self.package = package
+        self.contents = contents
+        self.c.setTitle(self.clean('Nhà thờ Thạch Bi - '+package['title']))
+        wanted = set(package['circuits'])
+        self.sheets = [(n, s) for n, s in self.sheets if s['id'] in wanted]
+        if len(self.sheets) != len(wanted):
+            raise ValueError(f"Package {package['key']} names a circuit with no drawing scope")
+        route_ids = set().union(*(s['routeIds'] for _, s in self.sheets))
+        item_ids = set().union(*(s['itemIds'] for _, s in self.sheets))
+        source_ids = set().union(*(s['sources'] for _, s in self.sheets))
+        self.scope_routes = {k: r for k, r in self.routes.items() if k in route_ids}
+        self.scope_equipment = {k: c for k, c in self.equipment.items() if k in item_ids}
+        self.scope_sources = {k: v for k, v in data['full']['sources'].items() if k in source_ids}
+        # Sheet code that draws each item, matching the chunking in Drawings.sheet.
+        self.drawn_on = {}
+        for number, sheet in self.sheets:
+            chunks = [sheet['components'][i:i+32] for i in range(0, len(sheet['components']), 32)] or [[]]
+            for part, components in enumerate(chunks):
+                for c in components:
+                    self.drawn_on[c['id']] = f'E-{number:03}'+(f'-{part+1}' if len(chunks) > 1 else '')
+
+    def sheet_notes(self, sheet, codes):
+        name = packages.CIRCUITS[sheet['id']]+'.'
+        left = [name if sheet['id'] == 'distribution' else 'Mạch '+sheet['id']+': '+name] + packages.CIRCUIT_SHEET_NOTES
+        left.append('Cách lắp đặt trên tờ này: mã '+', '.join(codes)+'. Giải thích ở tờ IM-01. Độ cao từng đoạn ống ở các tờ RS.')
+        right = [f"Tờ này có {len(sheet['components'])} thiết bị."] + packages.TABLE_NOTES
+        return left, right
+
+    def heading(self, x, y, s, size=11.5):
+        self.text(x, y, s, size, bold=True)
+        return y-6.5
+
+    def bullets(self, x, y, items, width, size=9, leading=4.4, color=INK):
+        for item in items:
+            self.text(x, y, '•', size, color)
+            y = self.wrap(x+4, y, item, width-4, size, leading)-1.8
+        return y
+
+    def guide(self):
+        """HD-01: purpose, contents, symbols and stop rules for readers without electrical training."""
+        p = self.package
+        self.start('HD-01', p['title'], 'Tài liệu riêng cho hệ thống này, viết cho người không chuyên về điện / đọc hai trang hướng dẫn HD-01 và HD-02 trước')
+        y = self.heading(15, 246, '1. Tài liệu này dùng để làm gì', 12.5)
+        y = self.wrap(15, y, p['purpose'], 188, 10, 5)-5
+        y = self.heading(15, y, '2. Trong hệ thống có những gì', 12.5)
+        for number, sheet in self.sheets:
+            items = [self.equipment[i] for i in sheet['itemIds']]
+            boards = sorted({c['board'] for c in items}) or sorted(sheet['sources'])
+            count = f'{len(items)} thiết bị' if items else f"{len(sheet['routeIds'])} đường cáp"
+            self.text(15, y, '-' if sheet['id'] == 'distribution' else sheet['id'], 9.5, bold=True)
+            self.fit(31, y, packages.CIRCUITS[sheet['id']], 120, 9.5)
+            self.text(153, y, count, 9.5)
+            self.fit(176, y, f'{len(boards)} tủ' if sheet['id'] == 'distribution' else ', '.join(boards), 28, 9.5)
+            y -= 5.2
+        y = self.wrap(15, y-1.5, f'Tổng cộng: {len(self.scope_equipment)} thiết bị, {len(self.scope_routes)} đường ống dây (kể cả đoạn cáp chung từ tủ điện). Mã thiết bị và mã đường giống hệt bộ bản vẽ đầy đủ và mô hình 3D.', 188, 9, 4.4)-5
+        y = self.heading(15, y, '3. Cách đọc ký hiệu trên bản vẽ', 12.5)
+        kinds = {r['kind'] for r in self.scope_routes.values()}
+        legend = [('line', [], 'Nét liền: dây điện (màu theo mạch).')]
+        if 'audio' in kinds:legend.append(('line', [3, 2], 'Nét đứt: dây loa.'))
+        if 'mic' in kinds:legend.append(('line', [1, 2], 'Nét chấm: dây micro.'))
+        legend += [('circle', None, 'Hình tròn: thiết bị (đèn, quạt, loa, micro, ổ cắm). Mã ghi bên cạnh.'),
+                   ('square', None, 'Hình vuông: tủ điện hoặc tủ điều khiển.'),
+                   ('triangle', None, 'Hình tam giác: ống đi thẳng đứng trong tường, trụ hoặc cột.'),
+                   ('cut', None, 'Đường xám: tường, trụ, cột của nhà thờ (cắt ở độ cao 1 m).'),
+                   ('grid', None, 'Đường chấm nhạt: trục lưới, ghi số (1, 2, 3...) và chữ (A, B, C...).'),
+                   ('R012', None, 'Mã đường ống dây. Tra từng điểm gấp khúc ở các tờ RS.'),
+                   ('I05', None, 'Mã cách lắp đặt. Giải thích ở tờ IM-01.')]
+        for kind, dash, label in legend:
+            mid = (y+1.2)*mm
+            self.c.saveState()
+            if kind == 'line':
+                self.c.setStrokeColor(INK); self.c.setLineWidth(.8); self.c.setDash(dash)
+                self.c.line(17*mm, mid, 31*mm, mid)
+            elif kind in ('cut', 'grid'):
+                self.c.setStrokeColor(CUT if kind == 'cut' else GREY); self.c.setLineWidth(.6 if kind == 'cut' else .4)
+                self.c.setDash([] if kind == 'cut' else [1, 2]); self.c.line(17*mm, mid, 31*mm, mid)
+            elif kind == 'circle':self.symbol((24*mm, mid))
+            elif kind == 'square':self.symbol((24*mm, mid), True)
+            elif kind == 'triangle':self.riser_mark((24*mm, mid), '#c96440')
+            else:self.text(17, y, kind, 8.5, bold=True)
+            self.c.restoreState()
+            self.text(36, y, label, 9.5)
+            y -= 5.6
+        if y < 24:raise ValueError('Guide page HD-01 overflows on the left; shorten the package text')
+        y = self.heading(220, 246, '4. Phải dừng lại và hỏi người phụ trách khi', 12.5)
+        y = self.bullets(220, y, p['stop'], 186, 9.5, 4.6, RED)
+        y = self.bullets(220, y, packages.STOP_COMMON, 186, 9.5, 4.6)-3
+        y = self.heading(220, y, '5. Các tờ trong tài liệu', 12.5)
+        for row in self.contents or []:
+            self.text(220, y, f"Trang {row['page']}", 8.5)
+            self.text(240, y, row['sheet'], 8.5, bold=True)
+            self.fit(262, y, row['title'], 144, 8.5)
+            y -= 4.3
+        y = self.wrap(220, y-3, 'In khổ A3 nằm ngang, đúng 100%, không chọn "vừa trang" (fit to page). Đoạn thẳng dưới đây phải dài đúng 100 mm; nếu không, bản in sai tỷ lệ và không được đo trên giấy.', 186, 9, 4.4)
+        if y < 40:raise ValueError('Guide page HD-01 overflows on the right; shorten the package text')
+        self.c.setStrokeColor(INK); self.c.setLineWidth(.8)
+        self.c.line(220*mm, 31*mm, 320*mm, 31*mm); self.c.line(220*mm, 29*mm, 220*mm, 33*mm); self.c.line(320*mm, 29*mm, 320*mm, 33*mm)
+        self.text(220, 25, 'Đoạn kiểm tra bản in: 100 mm', 8)
+        self.end()
+
+    def explain(self, value, axes, ahead, behind):
+        """Plain words for one grid set-out such as 5+1.20: which axis, how far and which way."""
+        label, sign, distance = re.fullmatch(r'(.+)([+-])(\d+\.\d\d)', setout(value, axes)).groups()
+        if float(distance) == 0:
+            return f'ngay trên trục {label}'
+        return f'đo {distance} m từ trục {label} {ahead if sign == "+" else behind}'
+
+    def locate(self):
+        """HD-02: how to find a point on site from the grid, with a drawn example and local floor levels."""
+        grid = self.grid
+        self.start('HD-02', 'Cách tìm đúng vị trí ngoài công trình', 'Mọi vị trí trong tài liệu được đo từ trục lưới của nhà thờ / đơn vị mét')
+        # Plan diagram, 18 mm to the metre: axes 5 and 6, D and C, a point at 5+1.20/D-0.35.
+        k = 18; x5 = 40; x6 = x5+4.5*k; yd = 222; yc = yd-3.76*k
+        px, py = x5+1.2*k, yd-.35*k
+        self.heading(15, 246, 'Nhìn từ trên xuống', 11)
+        self.c.saveState()
+        self.c.setStrokeColor(GREY); self.c.setLineWidth(.5); self.c.setDash([1.5, 2])
+        for x in (x5, x6):self.c.line(x*mm, (yc-12)*mm, x*mm, (yd+5)*mm)
+        for yy in (yd, yc):self.c.line((x5-14)*mm, yy*mm, (x6+14)*mm, yy*mm)
+        self.c.setDash([]); self.c.setStrokeColor(RED); self.c.setLineWidth(.6)
+        self.c.line(x5*mm, py*mm, px*mm, py*mm); self.c.line(px*mm, yd*mm, px*mm, py*mm)
+        self.c.restoreState()
+        self.symbol((px*mm, py*mm))
+        for x, label in ((x5, 'trục 5'), (x6, 'trục 6')):self.text(x-4, yc-17, label, 9, bold=True)
+        for yy, label in ((yd, 'trục D'), (yc, 'trục C')):self.text(x6+16, yy-1.2, label, 9, bold=True)
+        self.text(x5+3, py-6, '1.20 m', 9, RED, True)
+        self.text(px+2, py+1.6, '0.35 m', 9, RED, True)
+        self.text(px+3, py-6, '5+1.20/D-0.35', 9, bold=True)
+        self.text(x5, yd+9, 'phía cửa chính  <-------->  phía cung thánh', 8.5, GREY)
+        self.text(x6+16, yc+12, 'phía H ở trên, phía B ở dưới', 8.5, GREY)
+        # Height diagram: nave floor and a point at h+2.40.
+        self.heading(15, 126, 'Nhìn ngang: độ cao', 11)
+        floor = 74; hx = 60
+        self.c.setStrokeColor(INK); self.c.setLineWidth(1); self.c.line(25*mm, floor*mm, 150*mm, floor*mm)
+        self.c.setStrokeColor(RED); self.c.setLineWidth(.6); self.c.line(hx*mm, floor*mm, hx*mm, (floor+2.4*k)*mm)
+        self.symbol((hx*mm, (floor+2.4*k)*mm))
+        self.text(hx+3, floor+1.2*k, 'h+2.40 = cao 2.40 m', 9, RED, True)
+        self.text(25, floor-5, 'Mặt sàn lòng nhà thờ, cao độ 0.00', 9)
+        y = self.heading(15, 59, 'Cao độ mặt sàn và mặt sân (so với sàn lòng nhà thờ)', 10.5)
+        for key, label in packages.LEVELS:
+            self.text(15, y, label, 9); self.text(110, y, f"{grid['levels'][key]:+.2f} m", 9, bold=True); y -= 4.6
+        # Explanation, the B/H naming rule and a real example from this package.
+        y = self.heading(205, 246, 'Đọc một vị trí, ví dụ 5+1.20/D-0.35 h+2.40', 12.5)
+        y = self.bullets(205, y, [
+            '5+1.20: tìm trục số 5, đo 1.20 m về phía cung thánh (dấu +). Dấu - là đo về phía cửa chính.',
+            'D-0.35: tìm trục chữ D, đo 0.35 m về phía B (dấu -). Dấu + là đo về phía H.',
+            'h+2.40: cao 2.40 m tính từ mặt sàn lòng nhà thờ (cao độ 0.00).',
+            'Trục gần nhất luôn được chọn, nên khoảng đo thường ngắn. Đo vuông góc với trục.'], 200, 9.5, 4.6)-3
+        y = self.heading(205, y, 'Các trục lưới', 11)
+        y = self.wrap(205, y, 'Trục số chạy ngang nhà thờ, đánh số 1, 2, 2′, 3 ... 12 từ mặt tiền vào cung thánh. Trục chữ chạy dọc nhà thờ: A, B, C, D ở phía B và E, G, H, I ở phía H. Tim nhà thờ nằm giữa trục D và trục E.', 200, 9.5, 4.6)-4
+        y = self.heading(205, y, 'Phía B và phía H', 11)
+        y = self.wrap(205, y, 'Luôn gọi theo chữ B hoặc H, không gọi "bên trái" hay "bên phải". Theo ghi nhận hiện nay, đứng ở sân nhìn vào nhà thờ thì tháp H ở bên trái (hồ sơ ENG-027 còn mở; kiểm tra lại tên trục tại công trình). Hình mặt tháp ở tờ TW-01 vẽ theo mô hình máy tính nên tháp B nằm bên trái hình; luôn đọc theo chữ B, H ghi trên hình.', 200, 9.5, 4.6)-4
+        y = self.heading(205, y, 'Đo độ cao từ mặt sàn tại chỗ', 11)
+        veranda = grid['levels']['veranda']
+        y = self.wrap(205, y, f'Chiều cao tính từ mặt sàn tại chỗ = số h trừ cao độ sàn tại chỗ (bảng bên trái). Ví dụ: sàn hiên ở cao độ {veranda:+.2f}, nên thiết bị ghi h+3.10 ở hiên thì đo {3.10-veranda:.2f} m từ mặt sàn hiên.', 200, 9.5, 4.6)-4
+        if self.scope_equipment:
+            item = next(iter(self.scope_equipment.values()))
+            ident, name, pos = item['id'], equipment_name(item['name'], 'vi'), item['position']
+        else:
+            ident, source = next(iter(self.scope_sources.items()))
+            name, pos = packages.BOARDS[ident], source['pos']
+        y = self.heading(205, y, 'Ví dụ trong tài liệu này', 11)
+        where = f"{setout(pos[0], grid['longitudinal'])}/{setout(pos[2], grid['transverse'])} {height(pos[1])}"
+        y = self.wrap(205, y, f"{ident} ({name}) ghi {where}: "
+                      f"{self.explain(pos[0], grid['longitudinal'], 'về phía cung thánh', 'về phía cửa chính')}; "
+                      f"{self.explain(pos[2], grid['transverse'], 'về phía H', 'về phía B')}; "
+                      f"cao {pos[1]:.2f} m so với sàn lòng nhà thờ.", 200, 9.5, 4.6)-4
+        y = self.wrap(205, y, 'Số trên bản vẽ lấy từ mô hình máy tính. Kiểm tra trục thật tại công trình trước, rồi mới đánh dấu.', 200, 9.5, 4.6, )
+        if y < 22:raise ValueError('Guide page HD-02 overflows; shorten the text')
+        self.end()
+
+    def device_list(self):
+        rows = []
+        order = {circuit: n for n, circuit in enumerate(self.package['circuits'])}
+        for n, c in enumerate(sorted(self.scope_equipment.values(), key=lambda c: order[c['circuit']]), 1):
+            pos = c['position']
+            codes = sorted({self.install_ref[r['installation']] for r in self.scope_routes.values() if r['role'] in ('drop', 'local') and c['id'] in r['itemIds']})
+            rows.append([str(n), c['id'], equipment_name(c['name'], 'vi'), c['circuit'], c['board'], setout(pos[0], self.grid['longitudinal']),
+                         setout(pos[2], self.grid['transverse']), height(pos[1]), ','.join(codes), self.drawn_on[c['id']]])
+        for sid, source in self.scope_sources.items():
+            pos = source['pos']
+            rows.append(['-', sid, packages.BOARDS[sid], 'Tủ', source['board'], setout(pos[0], self.grid['longitudinal']),
+                         setout(pos[2], self.grid['transverse']), height(pos[1]), '-', '-'])
+        self.table_pages('DS', 'Danh sách thiết bị và tủ điện',
+                         ['STT', 'Mã', 'Tên thiết bị / tủ điện', 'Mạch', 'Tủ', 'Trục dọc', 'Trục ngang', 'Cao h', 'Cách lắp', 'Vẽ ở tờ'],
+                         [12, 38, 188, 14, 14, 22, 22, 20, 30, 26], rows,
+                         'Vị trí đo từ trục gần nhất (cách đọc ở tờ HD-02) / cao h tính từ sàn lòng nhà thờ / mã cách lắp giải thích ở tờ IM-01')
+
+    def build(self):
+        self.guide(); self.locate()
+        for number, sheet in self.sheets:self.sheet(sheet, number)
+        # TW-01 only when this system has equipment or a riser in the tower front walls.
+        tower_items=any(c['position'][0]<5.3 and abs(c['position'][2])>6.3 for c in self.scope_equipment.values())
+        if tower_items or any(rx<1.0 and abs(rz)>6.3 for r in self.tower_routes() for rx,rz,_,_ in risers(r['points'])):self.tower_sheet()
+        self.device_list(); self.install_key(); self.setout_pages(); self.c.save()
+
+
+def build_packages(folder, data):
+    """Write every system package, numbering contents from a first layout pass."""
+    folder.mkdir()
+    owner = {}
+    for package in packages.PACKAGES:
+        for circuit in package['circuits']:
+            if circuit in owner:raise ValueError(f'Circuit {circuit} is in two packages')
+            owner[circuit] = package['key']
+    missing = {s['id'] for s in data['sheets']} - set(owner)
+    if missing:raise ValueError(f'Circuits without a Vietnamese system package: {sorted(missing)}')
+    listed = []
+    for package in packages.PACKAGES:
+        draft = SystemPackage(io.BytesIO(), data, package); draft.build()
+        path = folder/(package['key']+'.pdf')
+        book = SystemPackage(path, data, package, draft.index); book.build()
+        if book.index != draft.index:raise ValueError('Package page numbering changed between layout passes: '+package['key'])
+        listed.append({'file': path.name, 'title': package['title'], 'circuits': package['circuits'], 'pages': book.page,
+                       'equipment': list(book.scope_equipment), 'routes': list(book.scope_routes), 'sources': list(book.scope_sources), 'index': book.index})
+    return listed
 
 
 def generate(output, language='en'):
@@ -594,10 +838,24 @@ def generate(output, language='en'):
         if language == 'vi':dependencies += ['scripts/fonts/'+name for name in FONT_FILES]
         manifest={'schema':1,'language':language,'status':'Design development - not for construction','basis':data['basis'],'gitRevision':data['gitRevision'],'sourceFiles':{**data['sourceFiles'],**{p:sha(ROOT/p) for p in dependencies}},'systemsHash':data['registerSystemsHash'],'counts':{'equipment':len(book.equipment),'routes':len(book.routes),'vertices':sum(len(r['points']) for r in book.routes.values()),'pages':book.page,'planSectionSegments':len(data['sections']['plan']['segments']),'towerSectionSegments':len(data['sections']['towerFront']['segments'])},'sectionBasis':data['sections']['basis'],'scales':{'plan':book.plan_scale,'height':book.section_scale},'files':{p.name:sha(p) for p in sorted(stage.iterdir())}}
         (stage/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+        if language == 'vi':
+            folder=stage/packages.FOLDER
+            listed=build_packages(folder,data)
+            files={p.name:sha(p) for p in sorted(folder.iterdir())}
+            (folder/'manifest.json').write_text(json.dumps({'schema':1,'language':'vi','status':'Design development - not for construction','basis':'Plain-language system packages split from the full set; same snapshot','gitRevision':data['gitRevision'],'snapshot':sha(snapshot),'packages':listed,'files':files},indent=2,ensure_ascii=False)+'\n')
         for p in stage.iterdir():
+            if p.is_dir():continue
             # Replace only this builder's named outputs; keep unrelated user files.
             target=output/p.name
             pending=output/(p.name+'.tmp');pending.write_bytes(p.read_bytes());os.replace(pending,target)
+        if language == 'vi':
+            target=output/packages.FOLDER; target.mkdir(exist_ok=True)
+            old=target/'manifest.json'
+            # Remove only package files that this builder wrote before and no longer produces.
+            stale=set(json.loads(old.read_text())['files']) if old.exists() else set()
+            for p in folder.iterdir():
+                pending=target/(p.name+'.tmp');pending.write_bytes(p.read_bytes());os.replace(pending,target/p.name)
+            for name in stale-{p.name for p in folder.iterdir()}:(target/name).unlink(missing_ok=True)
     print(f'Created {book.page} A3 pages: {output / pdf.name}')
 
 

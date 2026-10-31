@@ -56,6 +56,25 @@ The sheets now carry what a worker needs to mark conduit positions on site, all 
 
 Current tower finding: the risers from +15.85 m pass 0.06 m from the stage 3 arch envelope, the stage 2 risers 0.13 m and the stage 4 risers 0.22 m (ENG-042). The verifier recomputes the grid set-out of every equipment row and every vertex of all route chains independently.
 
+### Tài liệu riêng theo hệ thống, tiếng Việt (31 October 2026)
+
+The Vietnamese build also splits the set into eight smaller PDFs in [output/pdf-vi/theo-he-thong/](../../output/pdf-vi/theo-he-thong/), one per purpose, written for parish members and installers without electrical training. They come from the same snapshot as the full Vietnamese set, so IDs, route references (`R…`), installation codes (`I…`) and sheet codes (`E-…`) match it.
+
+| File | Content | Circuits |
+| --- | --- | --- |
+| `01-am-thanh.pdf` | Sound: loudspeakers, microphones | A1, A5, A2, A3, MIC |
+| `02-quat-va-thong-gio.pdf` | Fans and exhaust | F1, F2, F4, F5, V1, V2, V3 |
+| `03-den-trong-nha-tho.pdf` | Interior lights, roof uplight, Stations of the Cross | L1, L2, L3, L8, LA, LS |
+| `04-den-ngoai-troi.pdf` | Veranda, path, step and side-door lights (DB-1) | L4, L5 |
+| `05-den-mat-tien-thap-va-le-hoi.pdf` | Façade, towers, statues, festival lights (DB-2/EB-1), with TW-01 | L6, L9, L10, L7 |
+| `06-den-thoat-hiem.pdf` | Exit signs | E1 |
+| `07-o-cam-va-nguon-su-kien.pdf` | Sockets and tower event power | P1, P2, P3, P4 |
+| `08-tu-dien-va-duong-cap.pdf` | Boards and feeders between boards | distribution |
+
+Each PDF opens with two plain-language guide pages. **HD-01** says what the system is for, lists its circuits in everyday words, explains every drawing symbol and lists when to stop and ask (system-specific holds first, then the common ones). **HD-02** shows how to find a point on site from the grid, with a drawn example, the B/H naming rule (ENG-027), the local floor levels and a worked example from that package. Then follow its circuit sheets with plain notes, TW-01 when the system has equipment or risers in the tower fronts, a device and board list (**DS**) sorted by circuit with grid set-out, height, installation code and sheet, the installation codes it uses (**IM-01**) and its route set-out schedule (**RS**). Shared feeders and trunks appear in every package that uses them, as context.
+
+The package texts are in [system_packages_vi.py](../../scripts/system_packages_vi.py). Every circuit must belong to exactly one package; a new circuit stops the Vietnamese build until it is added there. The Vietnamese verifier checks the split, each device list and plan table against the snapshot, every route vertex chain, the guide texts and text layout. The packages carry the same `KHÔNG DÙNG ĐỂ THI CÔNG` status and holds as the full set; their plain wording adds no engineering approval or product choice.
+
 ## Step-by-step 3D review
 
 Open [OPEN_CHURCH.html](../../Thach_Bi_Viewer/OPEN_CHURCH.html), then **Simulator → Wiring → Start 3D walkthrough**. Previous/Next review step changes the selected system and camera. Reset stage view restores the current stage after exploring an individual circuit. End walkthrough restores the prior electrical filters, mode and architectural visibility; camera position is left at the last review view.
@@ -66,7 +85,7 @@ This is a **proposed coordination sequence**. It does not mark work complete, re
 
 ## Status and verification
 
-Each current language set has 68 A3 landscape sheets, 372 connected items, 429 current routes and 3,157 current route vertices, built on 31 October 2026 from commit `cf7018c` (30 circuit/zone scopes, TW-01, EQ, RI, IM-01, RS and SQ). The 9 October set had 44 sheets, 286 items, 333 routes and 2,749 vertices; the four-light/four-fan wing review before it had 296/343/2,775. Hidden alternatives and non-electrical objects in the category registers stay outside the print scope. The unpowered pictures have no electrical routes. The printing/walkthrough tools themselves change no positions, physics, operating states, route geometry or registers. All lighting, feedback, wing-clarity, air/noise, concealment, supply/product, mounting/access and life-safety holds remain in [issues](../engineering/issues.md).
+Each current language set has 68 A3 landscape sheets, 372 connected items, 429 current routes and 3,157 current route vertices, built on 31 October 2026 from commit `464f5d9` (30 circuit/zone scopes, TW-01, EQ, RI, IM-01, RS and SQ). The Vietnamese system packages from the same build have 89 sheets in eight files. The 9 October set had 44 sheets, 286 items, 333 routes and 2,749 vertices; the four-light/four-fan wing review before it had 296/343/2,775. Hidden alternatives and non-electrical objects in the category registers stay outside the print scope. The unpowered pictures have no electrical routes. The printing/walkthrough tools themselves change no positions, physics, operating states, route geometry or registers. All lighting, feedback, wing-clarity, air/noise, concealment, supply/product, mounting/access and life-safety holds remain in [issues](../engineering/issues.md).
 
 The lighting walkthrough stage and its translated paper sheet direct reviewers to the matching current per-seat calculation report; the stale four-seat baseline sentence has been removed. The [current wing review](../engineering/wing-review.md) reports 40 of 368 reading points below 200 lux in its full-service case, including 36 of 80 wing points, with a wing minimum of 121.599 lux. The previous four-light comparison's nominal whole-church minimum of 203.70 lux is superseded for the current two-light layout. Other scenes and light-output sensitivity also need review. Neither language set establishes that the lighting design is accepted.
 
