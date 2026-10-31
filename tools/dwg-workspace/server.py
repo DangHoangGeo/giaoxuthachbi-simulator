@@ -23,8 +23,7 @@ from ezdxf.addons.drawing.svg import SVGBackend, SVGRenderBackend
 from ezdxf.math import BoundingBox2d
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / 'scripts'))
-from extract_dwg_revision import DRAWINGS
+from drawing_inventory import DRAWINGS
 
 HERE = Path(__file__).resolve().parent
 LIMIT = 64 * 1024 * 1024
