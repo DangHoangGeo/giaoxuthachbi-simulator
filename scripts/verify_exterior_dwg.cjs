@@ -96,6 +96,17 @@ for(const [part,predicate,handle] of [['rear',p=>p.x>50,'D902FD'],['wings',p=>Ma
 near(box(named('Porch parapet top rail')).max.y,Math.max(...roof('D99C62').elevation_m.map(p=>p[1])),'E02 parapet top');
 near(subset('Gable raking cornice',p=>p.x>50).max.y,12.471821785,'E03 native mitred cornice upper end');
 near(subset('Gable raking cornice',p=>Math.abs(p.z)>13).max.y,9.829528809,'EW native mitred cornice upper end');
+// Review of 31 Oct 2026: front corner pier pedestal (E01B C45432..C45487, facade.csv F33–F35),
+// the traced cartouche frame (C449B8, C45767..C4577C) and the lantern crown silhouette.
+const H=p=>p.z>11&&p.x<2;
+near(subset('Tower corner pier top band',H).max.y,1.848,'Tower pier pedestal top (F33)');
+near(subset('Tower corner pier pedestal',H).min.y,.443,'Tower pier pedestal die bottom (F35)');
+near(subset('Tower corner pier upper die',H).min.y,1.368,'Tower pier upper die bottom (F34)');
+near(subset('Tower corner pier plinth',H).max.z-subset('Tower corner pier shaft',H).max.z,.269,'Tower pier plinth projection 13.587−13.318');
+near(subset('Tower corner pier shaft',H).max.x,.495,'E02 front pier shaft back face');
+const cart=subset('Tower front cartouche frame',p=>p.z>0);
+near(cart.max.z-10.153,.9086,'Tower cartouche half-width',.025);near(cart.min.y,4.0353,'Tower cartouche bottom',.025);near(cart.max.y,4.9998,'Tower cartouche top',.025);
+near(subset('Tower lantern acanthus crown',p=>p.z>0).max.z-10.153,.948,'Lantern crown leaf reach',.03);
 console.log(JSON.stringify({status:'passed',sourceSha256:tw.sourceSha256,checkedBounds:checks.length,
   largestBoundResidualMm:Math.max(...checks.map(r=>Math.abs(r.residual_mm))),actualWallApertureChecks:12+otherWallChecks, otherTowerFaces:18,
   checks,limits:'Source-coordinate software checks. Unseen depth, held door heads, units, orientation and construction confirmation remain open.'},null,2));

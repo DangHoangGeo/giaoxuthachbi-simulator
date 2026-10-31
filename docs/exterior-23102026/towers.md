@@ -71,3 +71,28 @@ Sau phản hồi chủ đầu tư và commit `10d84e7`, [hồ sơ lan can](tower
 - **Không có trong DWG:** chữ ghi kích thước, vật liệu, chiều sâu phào/chạm khắc, bề dày tường tháp, cốt thép, và bất kỳ thông tin điện nào. Không gian mô hình chỉ có chữ trục và tiêu đề; các lớp `LIGHT-FAN` / `thiet bi dien` không có đối tượng; khối thiết bị chỉ là thư viện không được chèn.
 
 Vì vậy vị trí ống điện trên tháp phải lấy từ mô hình phối hợp, và tờ TW-01 của [bộ bản vẽ điện](../electrical-grid/print-drawings.md) chỉ là đối chiếu với đường bao vòm đã truy. Phát hiện khoảng hở 0,06 m ở tầng 3 được ghi ở ENG-042.
+
+## Rà soát chân trụ và trang trí — 31/10/2026
+
+Phương pháp: chồng cạnh của mô hình thật (nạp bằng `scripts/lib/exterior_model.cjs`) lên toàn bộ nét CAD của E01B (mặt trước, Z/Y) và E02 (mặt bên, X/Y), từ sân đến thánh giá; đối chiếu thêm mặt bằng P05. Ảnh chồng là dẫn xuất từ bản vẽ (H1), chỉ giữ ở máy, không commit.
+
+**Khớp, không đổi:** vòm lớn và vòm kín tầng trệt, chân vòm, đầu cột, cột nhỏ, diềm chữ triện, hàng răng cưa, phào +8,39; vòm, cửa chớp đôi, hoa hồng tầng 2–4 ở cả hai mặt; lan can, cột góc hoa huệ; mặt bằng đèn lồng, thân, hạt chuỗi, quả cầu (+35,212763, R 0,210895) và thánh giá (tay ngang +36,346670, đầu tay ±0,573 m, đỉnh +36,919970). Lá chớp tầng 4 vẫn là nhịp minh họa như đã ghi.
+
+**Đã sửa (`towers.js` revision `2026-10-31-cad-towers-5`):**
+
+| Bộ phận | Trước | Theo CAD |
+| --- | --- | --- |
+| Chân trụ góc tầng trệt | 4 khối: 0–0,35 / 0,35–1,55 / 1,55–1,70 / 1,70–1,85 m | 13 dải theo nét E01B C45432..C45487: bệ 0–0,215 (nhô 0,269 m so với thân), phào chân tới 0,443, thân bệ 0,443–1,032, mũ bệ 1,032–1,368 (nhô tối đa 0,144 m ở 1,092–1,188), thân trên 1,368–1,668 phẳng với thân trụ, dải đỉnh 1,668–**1,848** m. Hai phào cong (0,275–0,383; 1,188–1,284) dựng bằng một bậc trung bình. Cùng cao độ với facade.csv F33–F35 |
+| Mặt sau thân trụ trước, nhìn mặt bên | X +1,0 m, che chân vòm lớn E02 | X +0,495 m theo E02 |
+| Khung bảng (cartouche) giữa hai vòm trệt | Dải hoa lá minh họa ở +4,55–4,92 m | Đường viền dựng lại từ 22 nét gốc C449B8, C45767..C4577C: rộng ±0,909 m, +4,035 đến +5,000 m; gờ nổi bán kính 22 mm |
+| Cụm lá ở góc trên mỗi ô vòm | Một cụm nằm dọc vòm, thấp | Hai cụm hình chữ L, đúng vị trí CAD vẽ (t 0,55–1,85 m, +5,35 đến +6,6 m). Hình lá vẫn minh họa |
+| Khung trong vòm kín (mặt trước và mặt bên) | Có khung phẳng trắng viền 0,12 m | Bỏ, vì CAD không vẽ |
+| Vương miện đèn lồng | Lá vươn 1,17 m, lõi mảnh 0,3 m, cổ trơn | Lá vươn **0,948 m** ở +34,16 m (đo trên nét); hai tầng lá; lõi bầu tới +34,84; vòng sáu núm bán kính 0,24 m dưới quả cầu |
+
+**Còn khác, chưa sửa (ENG-043):**
+
+- **Chiều sâu trụ (X):** trụ góc mọi tầng chưa khớp E02. Trụ sau tầng trệt ở X 3,9–5,1 m, trong khi E02 vẽ 4,405–5,615 m và P05 vẽ tới 5,65 m, sau trục 2. Tầng 2–4: mặt trước trụ nằm sâu hơn CAD 0,18–0,22 m. Không dời được mà không dời dây đèn trên trụ.
+- **Bề rộng trụ mặt trước tầng trệt:** thân trụ trong mô hình ở t 1,95–3,20 m, CAD ở 1,955–3,165 m; mép ngoài lệch 35 mm. Giữ nguyên vì `pierCentre` cũng dùng để đặt dây đèn.
+- **Mặt bên tầng trệt:** CAD có cụm lá ở góc ô vòm; mô hình chưa thêm, chờ dời trụ sau.
+
+**Kiểm tra:** `verify_exterior_dwg.cjs` có thêm 9 phép so (cao độ dải 1,848 / 0,443 / 1,368; độ nhô bệ 0,269; mặt sau trụ 0,495; khung bảng; độ vươn lá vương miện). Đã chạy `verify_model.cjs`, `verify_construction.cjs` và `verify_tower_balcony.cjs`: đều đạt. `verify_simulator.cjs` dừng ở các mục tiêu thiết kế chưa đạt sẵn có: biên chống hú micro giảng đài 0,9 dB và bàn thờ 1,4 dB, 13 % ghế dưới 200 lux. Kết quả giống hệt khi chạy lại với `towers.js` trước sửa, nên không do lần sửa này. Đã xem trong trình xem trên máy tính, ban ngày, buổi tối và chế độ `?visit`; không có lỗi console. Các bộ bản vẽ trong `output/pdf/` và `output/pdf-vi/` vẫn ghi revision tháp cũ `2026-10-26-cad-towers-4`, nên **đã cũ** cho phần tháp cho tới khi dựng lại. Không đổi thiết bị, tuyến điện hay sổ Excel. Không phải hồ sơ thi công.
