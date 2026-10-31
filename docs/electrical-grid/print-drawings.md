@@ -35,13 +35,26 @@ The register command needs the artifact runtime described in the [preservation w
 
 ## Read and print
 
-Print **A3 landscape, 100%, no fit-to-page** and measure the 100 mm calibration bar on the cover. The current full-model plan is 1:200 and the height projection 1:500. Scales are computed from source bounds and may increase for a larger future model; each sheet states its actual scale. A resized A4 print has a different scale.
+Print **A3 landscape, 100%, no fit-to-page** and measure the 100 mm calibration bar on the cover. The current full-model plan is 1:250 (the tower and courtyard equipment widened the bounds), the height projection 1:500 and the tower sheet 1:150. Scales are computed from source bounds and may increase for a larger future model; each sheet states its actual scale. A resized A4 print has a different scale.
 
 Each populated circuit/zone gets a sheet, plus a distribution sheet. Long equipment lists continue onto additional sheets. Top views show X/Z and height views show X/Y with all Z superimposed. These are **grid-based electrical projections**, not complete architectural floor plans or structural support drawings. Original drawing/workbook dimensions and outstanding survey conflicts remain governed by `docs/layout_design/`; the snapshot retains the model grid's source, revision, assumptions and unresolved records.
 
 Equipment labels, source enclosures and trunk/feeder references link to the coordinate table and unique route index. Branch references beside each equipment coordinate identify its route-index entry. `R001` style references are local to that issue; the full route and equipment IDs are the stable identities. Circles mark equipment, squares mark enclosures; power is solid, audio dashed and microphones dotted. Crossing/overlapping projections do not establish junctions. Use ordered CSV vertices and the 3D inspector to disambiguate height and connectivity.
 
 Coordinates are model reference points, not terminal/anchor set-out points. Three decimals are display precision, not surveyed accuracy. Drawn lengths exclude spares, terminations and installation allowance. Shared context repeats across sheets but the route index owns every route once. Full audio home runs already include their own upstream path; adding shared bundle lengths again would double-count. No conductor size, protective rating, cable quantity or terminal is invented.
+
+### Set-out aids for installers (31 October 2026)
+
+The sheets now carry what a worker needs to mark conduit positions on site, all derived from the same default model and checked by the verifier:
+
+- **Building context on every plan.** Grey lines are a horizontal cut through the actual viewer meshes (walls, piers, columns, sanctuary and tower fabric) at +1.00 m, made by [export_print_model.cjs](../../scripts/export_print_model.cjs). Furniture, trees, glass and joinery leaves are left out. It is a MODEL TRANSCRIPTION for orientation, not a measured plan.
+- **Riser triangles.** Each vertical run of 0.25 m or more is marked on the plan in its route colour, so the walls, piers and columns that need a chase or vertical conduit are visible.
+- **Grid set-out.** The coordinate table adds the nearest grid axis and offset for each item, for example `5+1.20/D-0.35` = 1.20 m past axis 5 toward the sanctuary and 0.35 m from axis D toward B. Height `h` is above nave floor +0.000; on the dais (+0.80) or side floors (+0.16) subtract the local floor level. A point exactly halfway between two axes is given from the lower axis.
+- **TW-01, tower fronts.** A vertical cut of the model at X = +0.05 m (the conduit plane of the tower routes) for towers B and H at 1:150, with tower routes, equipment, DB-2/EB-1 and the CAD storey levels. Its table groups every riser in the tower front wall once, with the horizontal clearance to the traced CAD arch envelopes (ground and stage arches, which contain the louvres, roses and paired openings). Board risers in the H-tower room are marked as room-face runs. The model is mirrored against the CAD sheets (ENG-027): the sheet names towers by grid letter only.
+- **IM-01, installation note key.** Each distinct model installation note is printed once with a code `I01`…; circuit sheets and the set-out schedule cite the codes.
+- **RS, route set-out schedule.** Every route once, in route-index order, with each vertex from the source end as grid set-out and height. A vertical step repeats only its new height (`h+7.65`).
+
+Current tower finding: the risers from +15.85 m pass 0.06 m from the stage 3 arch envelope, the stage 2 risers 0.13 m and the stage 4 risers 0.22 m (ENG-042). The verifier recomputes the grid set-out of every equipment row and every vertex of all route chains independently.
 
 ## Step-by-step 3D review
 
@@ -53,7 +66,7 @@ This is a **proposed coordination sequence**. It does not mark work complete, re
 
 ## Status and verification
 
-Each current language set has 44 A3 landscape sheets, 286 connected items, 333 current routes and 2,749 current route vertices; 325 current equipment/enclosure register records include hidden alternatives and non-electrical objects outside the print scope. The previous four-light/four-fan wing review had 296/343/2,775 with 331 records. The current set follows the two-light/two-fan/one-speaker and Peter/Paul pair in each wing. The unpowered pictures have no electrical routes. The printing/walkthrough tools themselves change no positions, physics, operating states, route geometry or registers; the separate wing design revision supplies the changed source data. All lighting, feedback, wing-clarity, air/noise, concealment, supply/product, mounting/access and life-safety holds remain in [issues](../engineering/issues.md).
+Each current language set has 68 A3 landscape sheets, 372 connected items, 429 current routes and 3,157 current route vertices, built on 31 October 2026 from commit `cf7018c` (30 circuit/zone scopes, TW-01, EQ, RI, IM-01, RS and SQ). The 9 October set had 44 sheets, 286 items, 333 routes and 2,749 vertices; the four-light/four-fan wing review before it had 296/343/2,775. Hidden alternatives and non-electrical objects in the category registers stay outside the print scope. The unpowered pictures have no electrical routes. The printing/walkthrough tools themselves change no positions, physics, operating states, route geometry or registers. All lighting, feedback, wing-clarity, air/noise, concealment, supply/product, mounting/access and life-safety holds remain in [issues](../engineering/issues.md).
 
 The lighting walkthrough stage and its translated paper sheet direct reviewers to the matching current per-seat calculation report; the stale four-seat baseline sentence has been removed. The [current wing review](../engineering/wing-review.md) reports 40 of 368 reading points below 200 lux in its full-service case, including 36 of 80 wing points, with a wing minimum of 121.599 lux. The previous four-light comparison's nominal whole-church minimum of 203.70 lux is superseded for the current two-light layout. Other scenes and light-output sensitivity also need review. Neither language set establishes that the lighting design is accepted.
 

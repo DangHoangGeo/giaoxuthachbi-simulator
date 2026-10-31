@@ -37,7 +37,7 @@ function loadStudyModel({ storageEntries = [], rejectStorage = () => false } = {
   const camera = new T.PerspectiveCamera(50, 1.6, .05, 500); camera.position.set(20, 1.6, 0);
   SIM.start({ scene: model.scene, renderer: model.renderer, colliders: [], walkCamera: { aspect: 1.6, fov: 68, updateProjectionMatrix() {} }, walk: { eyeHeight: 1.65, speed: 2.05 }, places: {}, goTo() {}, setMode() {}, uiState: () => ({ roof: true }), camera, controls: { target: new T.Vector3(), update() {} } });
   assert(SIM.ready, 'simulator failed to initialise');
-  return { SIM, model, storage, P: sandbox.CHURCH_SIM_PHYSICS, CAT: sandbox.CHURCH_SIM_CATALOG, verandaReview: sandbox.CHURCH_VERANDA_REVIEW, doorheadReview: sandbox.CHURCH_DOORHEAD_REVIEW, planning: sandbox.CHURCH_PLANNING,
+  return { SIM, model, storage, towers: sandbox.CHURCH_TOWERS, P: sandbox.CHURCH_SIM_PHYSICS, CAT: sandbox.CHURCH_SIM_CATALOG, verandaReview: sandbox.CHURCH_VERANDA_REVIEW, doorheadReview: sandbox.CHURCH_DOORHEAD_REVIEW, planning: sandbox.CHURCH_PLANNING,
     dispose() { for (const timer of timers) clearTimeout(timer); timers.clear(); },
     analyse() { return new Promise((resolve, reject) => {
       const timeout = later(() => { off(); reject(new Error('Seat analysis exceeded 180 seconds')); }, 180000);
