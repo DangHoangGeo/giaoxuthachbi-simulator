@@ -619,6 +619,34 @@
     });
   }
 
+  // ENG-043, 31 Oct 2026: the tower corner piers take their CAD depth and width (towers.js), so the
+  // festival strands up their fronts move with them. A saved strand still at its previous
+  // recommended place and aim (5 mm, 0.01°) moves to the new one and keeps its ID, switching,
+  // dimmer, visibility and note; a moved or deleted strand stays as it is.
+  const towerPierRevision = '2026-10-31-tower-pier-depth-1';
+  const towerPierBefore = {
+    "L202": {"type":"bulbString","pos":[-0.78, 4.195, -7.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L203": {"type":"bulbString","pos":[-0.78, 4.195, -12.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L204": {"type":"bulbString","pos":[-0.42, 12.115, -7.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L205": {"type":"bulbString","pos":[-0.42, 12.115, -12.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L206": {"type":"bulbString","pos":[-0.32, 19.49, -7.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L207": {"type":"bulbString","pos":[-0.32, 19.49, -12.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L213": {"type":"bulbString","pos":[-0.78, 4.195, 7.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L214": {"type":"bulbString","pos":[-0.78, 4.195, 12.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L215": {"type":"bulbString","pos":[-0.42, 12.115, 7.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L216": {"type":"bulbString","pos":[-0.42, 12.115, 12.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L217": {"type":"bulbString","pos":[-0.32, 19.49, 7.728],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+    "L218": {"type":"bulbString","pos":[-0.32, 19.49, 12.578],"yaw":0,"tilt":0,"mount":"wall","circuit":"L7"},
+  };
+  function upgradeTowerPiers(items, design) {
+    const next = new Map(design.map(it => [it.id, it]));
+    return items.map(it => {
+      const old = towerPierBefore[it.id], raw = next.get(it.id);
+      if (!old || !raw || !untouched(it, old)) return it;
+      return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, params: { ...it.params, length: raw.params.length } };
+    });
+  }
+
   // Parish priest's decisions of 25 October 2026 (docs/engineering/parish-meeting-2026-10-25.md).
   // For each recommended item that changed, the table below holds its values before the
   // meeting. A saved item still at those values (type, mount, circuit, place within 5 mm and
@@ -1156,5 +1184,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

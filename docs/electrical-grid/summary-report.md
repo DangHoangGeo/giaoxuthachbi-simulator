@@ -1,6 +1,6 @@
 # Equipment quantities, usage and quality report
 
-Generated 25 October 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
+Generated 1 November 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
 
 ## Total quantities
 
@@ -36,13 +36,13 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,246.819 | 3,246.819 | 0.000 | 0.000 |
+| Lighting | 3,248.659 | 3,248.659 | 0.000 | 0.000 |
 | Sound | 768.994 | 0.000 | 2,365.631 | 571.727 |
 | Fans and ventilation | 955.646 | 955.646 | 0.000 | 0.000 |
 | Exit signs | 168.600 | 168.600 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 263.923 | 263.923 | 0.000 | 0.000 |
-| **Total by length basis** | **5,403.981** | **4,634.988** | **2,365.631** | **571.727** |
+| **Total by length basis** | **5,405.821** | **4,636.828** | **2,365.631** | **571.727** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/419 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -72,14 +72,17 @@ The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-an
 The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
 
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 6638c6d858c0c15d03f1b8c7f8d4371e61b16cbc58edb9c36dd4e72b917f5303.
-- [Electrical snapshot](electrical-systems.json), SHA-256: 8efd0e5d2f1745401819248f5cd349c1ca2995df2b2938bff0ddd27c9679b4c8.
+- [Layout snapshot](equipment-layout.json), SHA-256: 7958b4809b6199a78823ea47abdd37329f78f9de03404b0f973483495d74be9e.
+- [Electrical snapshot](electrical-systems.json), SHA-256: de942b6ea94208f140cd0ec1bb6d7282f467a001cb150dd4c584a870ba9c4c2b.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 
 Run `node scripts/build_equipment_register.mjs --verify-workflow` to preserve category inputs and refresh all six files and this report. Re-export matched model snapshots first when geometry changes.
 
-
 ## Lan can tháp theo DWG — đối chiếu ngày 26/10/2026
 
 Hình học lan can mới có 17 ô thủng bậc mỗi mặt, thay con tiện cũ; không đổi thiết bị, ID, tuyến, hướng, công suất hoặc các sổ Excel theo danh mục. [ENG-041](../engineering/issues.md#lan-can-tháp-và-che-chùm-đèn-chỏm--eng-041) giữ việc phối hợp L164/L175: tia tim từ đầu đèn cố định đi qua ô giữa, nhưng 30/49 hướng thử trong nón hình học 36° gặp phần lan can. Đây là tập tia không có trọng số, **không phải tỷ lệ quang thông bị mất hoặc kết quả IES/LDT**. Phép tính lux hiện hành chưa tính che bởi tường/lan can tháp, nên không lấy các số đó làm nghiệm thu chỏm. Người thiết kế chiếu sáng/kiến trúc cần phối hợp tiết diện, quang học, gá, bảo trì và thử ban đêm; không tự dời đèn hoặc sửa số tính để che xung đột. Các tổng số điện và dữ liệu nhập có trước trong báo cáo được giữ nguyên.
+
+## Trụ góc tháp theo E01B/E02 — 31/10/2026
+
+Theo [ENG-043](../engineering/issues.md), các trụ góc tháp lấy đúng bề rộng và chiều sâu trên bản vẽ. Mười hai dây đèn lễ trên mặt trụ tầng 1–3 (L202–L207, L213–L218) dời theo, vẫn cách mặt trụ 60 mm. Không đổi ID, mạch, công suất hay chiều dài dây. Tổng chiều dài tuyến chiếu sáng tăng 1,840 m, từ 3 246,819 lên 3 248,659 m, vì tuyến tới các dây này theo mặt trụ mới. Bố trí đã lưu trong trình duyệt được chuyển một lần (`towerPierRevision`): chỉ dây còn ở chỗ đề xuất cũ mới dời theo.

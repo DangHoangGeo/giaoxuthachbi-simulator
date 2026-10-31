@@ -108,7 +108,11 @@ assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
   // The grey plinth reaches under every corner pier, down to the courtyard (owner, 25 Oct 2026).
   for(const p of nodes.filter(o=>o.name==='Tower plinth').map(bounds))assert(p.min.y<=-2.079&&p.max.y>=-.001,'tower plinth from the courtyard to +0.00');
   const plinths=nodes.filter(o=>o.name==='Tower plinth').map(bounds), piers=bounds(nodes.find(o=>o.name==='Tower corner pier plinth'));
-  for(const p of plinths){const inside=(v,a,b)=>v>=a-.001&&v<=b+.001;assert(inside(piers.min.x,p.min.x,p.max.x)&&inside(piers.max.x,p.min.x,p.max.x),'tower plinth covers the piers front to back');}
+  // ENG-043 (31 Oct 2026): behind X 5.4 the outer rear pier stands on a plinth extension.
+  const rear=nodes.filter(o=>o.name.startsWith('Tower plinth · under the rear pier')).map(bounds);assert(rear.length,'plinth extension under the rear piers');
+  for(const r of rear)assert(r.min.y<=-2.079&&r.max.y>=-.001,'rear plinth extension from the courtyard to +0.00');
+  const reach=Math.max(...plinths.map(p=>p.max.x),...rear.map(r=>r.max.x));
+  for(const p of plinths){const inside=(v,a,b)=>v>=a-.001&&v<=b+.001;assert(inside(piers.min.x,p.min.x,p.max.x)&&inside(piers.max.x,p.min.x,reach),'tower plinth covers the piers front to back');}
   assert(plinths.every(p=>Math.max(Math.abs(p.min.z),Math.abs(p.max.z))>=13.47&&Math.min(Math.abs(p.min.z),Math.abs(p.max.z))<=6.83),'tower plinth covers the inner and outer piers');
 }
 // Roofline after the CAD file, 25 Oct 2026 (roofline.js): porch parapets with axis pinnacles,

@@ -107,6 +107,15 @@ near(subset('Tower corner pier shaft',H).max.x,.495,'E02 front pier shaft back f
 const cart=subset('Tower front cartouche frame',p=>p.z>0);
 near(cart.max.z-10.153,.9086,'Tower cartouche half-width',.025);near(cart.min.y,4.0353,'Tower cartouche bottom',.025);near(cart.max.y,4.9998,'Tower cartouche top',.025);
 near(subset('Tower lantern acanthus crown',p=>p.z>0).max.z-10.153,.948,'Lantern crown leaf reach',.03);
+// ENG-043: square corner piers, E01B (t) and E02 (X) shaft faces per stage.
+near(subset('Tower corner pier shaft',p=>p.z>11&&p.x>2).max.x,5.615,'E02 rear pier shaft back face (behind axis 2)');
+near(subset('Tower corner pier shaft',p=>p.z>11&&p.x>2).min.x,4.405,'E02 rear pier shaft front face');
+near(subset('Tower corner pier shaft',p=>p.z>0&&p.z<9&&p.x>2).max.x,5.04,'Inner rear pier stops at the tower rear wall (DERIVED)');
+near(subset('Tower corner pier shaft',p=>p.z>11).max.z,13.318,'E01B ground pier outer face');
+for(const [y,front,back,outer,y0,y1] of [[12,-.575,5.475,13.178,8.39,15.84],[19,-.465,5.365,13.068,15.84,23.14],[25,-.153,5.054,12.756,23.14,29.09]]){
+ const sh=subset('Tower stage pier shaft',p=>p.z>11&&p.y>y0&&p.y<y1);
+ near(sh.min.x,front,`E02 stage pier front face at +${y}`);near(sh.max.x,back,`E02 stage pier back face at +${y}`);near(sh.max.z,outer,`E01B stage pier outer face at +${y}`);
+}
 console.log(JSON.stringify({status:'passed',sourceSha256:tw.sourceSha256,checkedBounds:checks.length,
   largestBoundResidualMm:Math.max(...checks.map(r=>Math.abs(r.residual_mm))),actualWallApertureChecks:12+otherWallChecks, otherTowerFaces:18,
   checks,limits:'Source-coordinate software checks. Unseen depth, held door heads, units, orientation and construction confirmation remain open.'},null,2));

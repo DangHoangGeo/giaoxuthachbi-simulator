@@ -114,7 +114,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -2433,6 +2433,7 @@
       ['daisLevelRevision', D.daisLevelRevision, '.before-dais-0-80', D.upgradeDaisLevel],
       ['facadeCadRevision', D.facadeCadRevision, '.before-cad-facade', D.upgradeFacadeCad],
       ['parishMeetingRevision', D.parishMeetingRevision, '.before-parish-meeting', D.upgradeParishMeeting],
+      ['towerPierRevision', D.towerPierRevision, '.before-tower-pier-depth', D.upgradeTowerPiers],
       ['verandaReviewRevision', window.CHURCH_VERANDA_REVIEW.revision, '.before-open-porch-light-sound', window.CHURCH_VERANDA_REVIEW.upgrade],
       ['doorheadReviewRevision', window.CHURCH_DOORHEAD_REVIEW.revision, '.before-doorheads-no-sconces', window.CHURCH_DOORHEAD_REVIEW.upgrade]
     ]) {

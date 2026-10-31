@@ -17,12 +17,16 @@
   const DRAWN = 'TRACED CAD ELEVATION / SCHEMATIC DEPTH';
   const CARVED = 'TRACED CAD ELEVATION / ILLUSTRATIVE CARVING';
   const spec = {
-    revision: '2026-10-31-cad-towers-5',
+    revision: '2026-10-31-cad-towers-6',
     centre: 10.153, core: 2.45, wall: 0.14, // tower centre |Z|; core half-width; half wall thickness
     top: 8.39,
-    // E02 shaft of the front pier ends at X 0.495; the old 1.0 covered the side great-arch impost.
-    // Back pier X and the upper-stage pier depths still differ from E01B/E02/P05 (ENG-043).
-    pier: { t: [1.95, 3.2], front: [-0.72, 0.495], back: [3.9, 5.1], pedestal: 1.848, shaft: 7.4, capital: 7.85,
+    // ENG-043 (31 Oct 2026): every corner pier is square, as E01B and E02 draw it. Ground shaft
+    // 1.21 m wide, centred 2.56 m from the tower centre both across (t, E01B 12.108–13.318) and
+    // in depth (X, E02 −0.715–0.495 and 4.405–5.615). The rear pier stands behind axis 2 as P05
+    // draws it. The inner rear pier stops at the tower rear wall (X 5.04): P05 squeezes it against
+    // the axis-2′ colonnade column, and a full square would bury that column and its wall fan
+    // (F-NAVE-[BH]-2P). DERIVED, confirmation pending (ENG-043).
+    pier: { t: [1.955, 3.165], front: [-0.715, 0.495], back: [4.405, 5.615], backInner: [4.405, 5.04], pedestal: 1.848, shaft: 7.4, capital: 7.85,
       // E01B C45432..C45487 pedestal bands up to the +1.848 top (facade.csv F33–F35), same on E02:
       // [y0, y1, projection beyond the shaft face, material, name]; the two cyma mouldings
       // (0.275–0.383, 1.188–1.284) are drawn as one mean step.
@@ -486,13 +490,14 @@
     // band, dentils and cornice, the cornice top at the stage level. `u` is the model's stage
     // depth (X); the piers stand 0.45 m in front of and behind it.
     stages: [
-      { y: [8.39, 15.84], t: [1.8, 3.05], u: 4.72, cap: [15.0, 15.3] },
-      { y: [15.84, 23.14], t: [1.8, 3.05], u: 4.52, cap: [22.35, 22.65] },
-      { y: [23.14, 29.09], t: [1.75, 2.6], u: 3.95, cap: [28.4, 28.75] },
+      // Pier shafts traced on E01B (t) and E02 (front/back X) at mid-stage (ENG-043, 31 Oct 2026).
+      { y: [8.39, 15.84], t: [1.955, 3.025], front: [-0.575, 0.495], back: [4.405, 5.475], seam: .025, u: 4.72, cap: [15.0, 15.3] },
+      { y: [15.84, 23.14], t: [1.925, 2.915], front: [-0.465, 0.525], back: [4.375, 5.365], u: 4.52, cap: [22.35, 22.65] },
+      { y: [23.14, 29.09], t: [1.793, 2.603], front: [-0.153, 0.657], back: [4.244, 5.054], u: 3.95, cap: [28.4, 28.75] },
     ],
   };
   // Front face of the corner piers of each stage (stage 1 first) and the pier centre, for fittings.
-  spec.pierFront = [spec.pier.front[0], ...spec.stages.map(g => 2.45 - g.u / 2 - 0.45)];
+  spec.pierFront = [spec.pier.front[0], ...spec.stages.map(g => g.front[0])];
   spec.pierCentre = [(spec.pier.t[0] + spec.pier.t[1]) / 2, ...spec.stages.map(g => (g.t[0] + g.t[1]) / 2)];
   window.CHURCH_TOWERS = { spec, prepare, ornament };
 
@@ -600,9 +605,12 @@
     // The grey stone plinth under each tower is widened so that the corner piers stand on it
     // all the way down to the courtyard (owner, 25 Oct 2026: there was a gap under the piers
     // where they overhang the old 5.8 × 6.65 m plinth). New extent: X −1.2 to 5.4, |Z| 6.75 to
-    // 13.62 (the outer face of the side projection plinth), −2.08 to 0.
-    const footing = { x: [-1.2, 5.4], z: [6.75, 13.62], y: [-2.08, 0] };
+    // 13.62 (the outer face of the side projection plinth), −2.08 to 0. ENG-043: behind it, under
+    // the outer rear pier only (|Z| from 11.6, clear of the veranda floor at −0.32), it runs on to
+    // X 5.9.
+    const footing = { x: [-1.2, 5.4], z: [6.75, 13.62], y: [-2.08, 0], rear: { x: [5.4, 5.9], z: [11.6, 13.62] } };
     spec.footing = footing;
+    let footingMaterial = null;
     (building || exterior).traverse(o => {
       if (!o.isMesh || o.name !== 'Tower plinth') return;
       const s = Math.sign(o.getWorldPosition(new T.Vector3()).z) || 1;
@@ -611,6 +619,7 @@
       const local = o.parent.worldToLocal(new T.Vector3((footing.x[0] + footing.x[1]) / 2, (footing.y[0] + footing.y[1]) / 2, s * (footing.z[0] + footing.z[1]) / 2));
       o.position.copy(local); o.scale.set(1, 1, 1);
       o.userData.status = 'SOURCE GRID / PLINTH WIDENED UNDER THE CAD CORNER PIERS';
+      footingMaterial = o.material;
     });
     const root = new T.Group();
     root.name = 'Tower bases and tops — CAD file 23 Oct 2026';
@@ -678,7 +687,12 @@
         block('Tower room door leaf · timber, closed', mat.wood || D, [d0 + .02, d1 - .02], [0, spec.door.h - .02], [-C - .02, -C + .03]);
       }
       // ---- Corner piers: pedestal, fluted shaft, foliate capital band, cornice ----
-      const piers = [[P.front, 1], [P.front, -1], [P.back, 1], [P.back, -1]];
+      const piers = [[P.front, 1], [P.front, -1], [P.back, 1], [P.backInner, -1]];
+      {
+        const R = footing.rear, fy = footing.y;
+        add('Tower plinth · under the rear pier (ENG-043)', footingMaterial || S, new T.BoxGeometry(R.x[1] - R.x[0], fy[1] - fy[0], R.z[1] - R.z[0]),
+          TR((R.x[0] + R.x[1]) / 2, (fy[0] + fy[1]) / 2, s * (R.z[0] + R.z[1]) / 2), 'SOURCE GRID / PLINTH EXTENDED UNDER THE CAD REAR PIER');
+      }
       for (const [[x0, x1], side] of piers) {
         const [t0, t1] = side > 0 ? P.t : [-P.t[1], -P.t[0]];
         const grow = (a, d) => [a[0] - d, a[1] + d];
@@ -856,9 +870,12 @@
 
       // ---- Corner piers of the upper stages ----
       for (const g of spec.stages) {
-        const [y0, y1] = g.y, front = [2.45 - g.u / 2 - .45, 2.45 - g.u / 2 + 1.1], back = [2.45 + g.u / 2 - 1.1, 2.45 + g.u / 2 + .45];
+        const [y0, y1] = g.y, front = g.front, back = g.back;
         for (const [xs, side] of [[front, 1], [front, -1], [back, 1], [back, -1]]) {
-          const ts = side > 0 ? g.t : [-g.t[1], -g.t[0]], grow = (a, d) => [a[0] - d, a[1] + d];
+          // The inner rear pier of stage 2 laps 25 mm into the side bay of the central facade,
+          // which ends at |Z| 7.128 where the CAD pier begins (facade.csv D01); hidden in the bay.
+          const lap = side < 0 && xs === back ? g.seam || 0 : 0;
+          const ts = side > 0 ? g.t : [-g.t[1] - lap, -g.t[0]], grow = (a, d) => [a[0] - d, a[1] + d];
           block('Tower stage pier pedestal', S, grow(xs, .1), [y0, y0 + .6], grow(ts, .08));
           block('Tower stage pier shaft', W, xs, [y0 + .6, g.cap[0]], ts);
           const tm = (ts[0] + ts[1]) / 2, isFront = xs === front, outer = side > 0;

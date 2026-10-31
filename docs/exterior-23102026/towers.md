@@ -89,10 +89,21 @@ Phương pháp: chồng cạnh của mô hình thật (nạp bằng `scripts/lib
 | Khung trong vòm kín (mặt trước và mặt bên) | Có khung phẳng trắng viền 0,12 m | Bỏ, vì CAD không vẽ |
 | Vương miện đèn lồng | Lá vươn 1,17 m, lõi mảnh 0,3 m, cổ trơn | Lá vươn **0,948 m** ở +34,16 m (đo trên nét); hai tầng lá; lõi bầu tới +34,84; vòng sáu núm bán kính 0,24 m dưới quả cầu |
 
-**Còn khác, chưa sửa (ENG-043):**
+**Chiều sâu trụ góc — sửa theo ENG-043 (revision `2026-10-31-cad-towers-6`):** trụ góc mọi tầng vuông như E01B/E02 vẽ. Mặt thân trụ đo ở giữa mỗi tầng:
 
-- **Chiều sâu trụ (X):** trụ góc mọi tầng chưa khớp E02. Trụ sau tầng trệt ở X 3,9–5,1 m, trong khi E02 vẽ 4,405–5,615 m và P05 vẽ tới 5,65 m, sau trục 2. Tầng 2–4: mặt trước trụ nằm sâu hơn CAD 0,18–0,22 m. Không dời được mà không dời dây đèn trên trụ.
-- **Bề rộng trụ mặt trước tầng trệt:** thân trụ trong mô hình ở t 1,95–3,20 m, CAD ở 1,955–3,165 m; mép ngoài lệch 35 mm. Giữ nguyên vì `pierCentre` cũng dùng để đặt dây đèn.
-- **Mặt bên tầng trệt:** CAD có cụm lá ở góc ô vòm; mô hình chưa thêm, chờ dời trụ sau.
+| Tầng | t trên E01B (từ tim tháp 10,153) | Trụ trước, X (E02) | Trụ sau, X (E02) | Trước khi sửa |
+| --- | --- | --- | --- | --- |
+| Trệt | 1,955–3,165 | −0,715 đến +0,495 | 4,405–5,615 (sau trục 2, như P05) | t 1,95–3,20; X −0,72…1,0 và 3,9…5,1 |
+| 2 | 1,955–3,025 | −0,575 đến +0,495 | 4,405–5,475 | t 1,8–3,05; X −0,36…1,19 và 3,71…5,26 |
+| 3 | 1,925–2,915 | −0,465 đến +0,525 | 4,375–5,365 | t 1,8–3,05; X −0,26…1,29 và 3,61…5,16 |
+| 4 | 1,793–2,603 | −0,153 đến +0,657 | 4,244–5,054 | t 1,75–2,6; X 0,025…1,575 và 3,325…4,875 |
 
-**Kiểm tra:** `verify_exterior_dwg.cjs` có thêm 9 phép so (cao độ dải 1,848 / 0,443 / 1,368; độ nhô bệ 0,269; mặt sau trụ 0,495; khung bảng; độ vươn lá vương miện). Đã chạy `verify_model.cjs`, `verify_construction.cjs` và `verify_tower_balcony.cjs`: đều đạt. `verify_simulator.cjs` dừng ở các mục tiêu thiết kế chưa đạt sẵn có: biên chống hú micro giảng đài 0,9 dB và bàn thờ 1,4 dB, 13 % ghế dưới 200 lux. Kết quả giống hệt khi chạy lại với `towers.js` trước sửa, nên không do lần sửa này. Đã xem trong trình xem trên máy tính, ban ngày, buổi tối và chế độ `?visit`; không có lỗi console. Các bộ bản vẽ trong `output/pdf/` và `output/pdf-vi/` vẫn ghi revision tháp cũ `2026-10-26-cad-towers-4`, nên **đã cũ** cho phần tháp cho tới khi dựng lại. Không đổi thiết bị, tuyến điện hay sổ Excel. Không phải hồ sơ thi công.
+- **Chỗ lệch có chủ ý (DERIVED):**
+  - Trụ sau phía trong tầng trệt dừng ở tường sau tháp (X 5,04 m). P05 ép trụ này sát cột hàng trục 2′; trụ vuông đủ sẽ trùm lên cột và quạt tường F-NAVE-B/H-2P.
+  - Trụ sau phía trong tầng 2 chồm 25 mm vào ô bên của mặt tiền giữa (facade.csv D01), khuất trong ô.
+  - Móng xám có thêm một đoạn từ X 5,4 tới 5,9 m, chỉ dưới trụ sau phía ngoài (|Z| ≥ 11,6 m), để trụ đứng trên đó. Không kéo cả móng ra, vì như vậy móng sẽ nhô 0,32 m trên nền hiên.
+- **Thiết bị:** mười hai dây đèn lễ trên mặt trụ tầng 1–3 dời theo, vẫn cách mặt trụ 60 mm. Bố trí đã lưu được chuyển một lần. Lịch điện, sổ Excel, báo cáo tổng và rà soát an toàn đã xuất lại.
+- **Ống đứng:** ống đứng của tuyến tháp nay sát mép trong trụ hơn, xem cập nhật trong ENG-042.
+- **Còn giữ chờ:** bề rộng mép ngoài trụ tầng trệt nay đúng CAD (13,318). Cụm lá ở góc ô vòm mặt bên chưa thêm. Chiều sâu thật của tháp, hành lang sau tháp, kết cấu và móng chờ kiến trúc sư và kỹ sư.
+
+**Kiểm tra:** `verify_exterior_dwg.cjs` có thêm 9 phép so (và 13 phép so mặt trụ theo ENG-043) (cao độ dải 1,848 / 0,443 / 1,368; độ nhô bệ 0,269; mặt sau trụ 0,495; khung bảng; độ vươn lá vương miện). Đã chạy `verify_model.cjs`, `verify_construction.cjs` và `verify_tower_balcony.cjs`: đều đạt. `verify_simulator.cjs` dừng ở các mục tiêu thiết kế chưa đạt sẵn có: biên chống hú micro giảng đài 0,9 dB và bàn thờ 1,4 dB, 13 % ghế dưới 200 lux. Kết quả giống hệt khi chạy lại với `towers.js` trước sửa, nên không do lần sửa này. Đã xem trong trình xem trên máy tính, ban ngày, buổi tối và chế độ `?visit`; không có lỗi console. Các bộ bản vẽ trong `output/pdf/` và `output/pdf-vi/` vẫn ghi revision tháp cũ `2026-10-26-cad-towers-4`, nên **đã cũ** cho phần tháp cho tới khi dựng lại. Không đổi thiết bị, tuyến điện hay sổ Excel. Không phải hồ sơ thi công.
