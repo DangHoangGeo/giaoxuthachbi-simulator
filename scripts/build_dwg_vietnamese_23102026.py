@@ -50,7 +50,7 @@ TITLE_VI={
     'P28':'Mặt bằng một gian cửa sổ', 'P33':'Mặt bằng một gian cửa đi, trục 4-5',
     'E01A':'Mặt đứng hai tháp, có phần cắt qua mái lòng nhà', 'E01B':'Mặt đứng đầy đủ phía hai tháp',
     'E02':'Mặt đứng bên nhà thờ', 'E03':'Mặt đứng đầu nhà phía đối diện hai tháp',
-    'EW':'Mặt đứng đầu cánh ngang, ngoài và trong', 'ET':'Mặt đứng một tháp',
+    'EW':'Mặt đứng đầu cánh ngang, ngoài và trong', 'ET':'Hình một tháp không tiêu đề, có thể là hình cắt',
     'E26':'Mặt đứng gian cửa sổ, ngoài và trong', 'E31':'Mặt đứng gian cửa đi, ngoài và trong',
     'S24':'Mặt cắt ngang lòng nhà', 'S25':'Mặt cắt ngang cung thánh', 'S45':'Mặt cắt dọc A-A',
     'S27':'Mặt cắt A-A cửa sổ', 'S32':'Mặt cắt A-A cửa đi',
@@ -91,6 +91,8 @@ def num(value,places=1):
 
 
 def label_values(row):
+    if row[2]=='Radius':
+        return 'R '+num(row[3])+' mm',num(row[4],4)+' m'
     if row[2] in ('Y level','X position'):
         return ('+' if row[4]>0 else '±' if row[4]==0 else '')+f'{row[4]:.3f}'.replace('.',',')+' m',num(row[3])+' mm'
     return num(row[3])+' mm',num(row[4],4)+' m'
@@ -183,12 +185,13 @@ def guide_page(doc):
     page=new_page(doc,'CHỌN TẬP THEO BỘ PHẬN NHÀ THỜ','Mỗi tập đều có bảng kích thước chính và ghi chú ngay bên cạnh hình')
     y=104
     tower=json.loads((OUT/'tower-details-23102026.json').read_text())
-    for group in SPEC['nhom'][1:]+[{'ma':'11','ten':tower['ten'],'tep':tower['tep']}]:
+    for group in SPEC['nhom'][1:]+[{'ma':'10','ten':'Kiểm tra dữ liệu DWG gốc','tep':'10_Kiem_tra_du_lieu_DWG_23102026.pdf'},
+                                   {'ma':'11','ten':tower['ten'],'tep':tower['tep']}]:
         put(page,36,y,group['ma']+'  '+group['ten'],13,True)
         put(page,540,y,group['tep'],10)
         page.insert_link({'kind':fitz.LINK_GOTOR,'from':fitz.Rect(30,y-17,W-30,y+7),
                           'file':group['tep'],'page':0})
-        y+=39
+        y+=35
     for title,body in [
         ('Cách đọc số đo','Cao độ Y tính từ sàn lòng nhà ±0,000 m. X là vị trí dọc nhà, Z là vị trí ngang nhà; u/v là tọa độ riêng của chi tiết. DWG khai báo INSUNITS=1 (inch, đơn vị chèn), còn mm/m trong bộ này suy từ chuỗi kích thước và nhãn cao độ; cần người thiết kế xác nhận, không tự đổi tỷ lệ.'),
         ('Các chỗ cần đối chiếu','Mặt bằng dài 67 063,6 mm; mặt cắt dọc dài 67 149,4 mm theo các mốc khác nhau. Nền cung thánh ghi 750 mm trên mặt bằng và 800 mm trên mặt cắt. Đỉnh mái vẽ +12,3964 m nhưng có nhãn +12,472 m. Phào 6 324/6 325 mm còn khác nhau.'),
@@ -226,37 +229,317 @@ def vector_source(drawing_id,crop_name):
     return raw,clip,normalized
 
 
+MARK=(.80,.11,.09)
+DIM_ROWS=None
+FACADE_ROWS=None
+# Tower-end plans map facade (Z, X) back to DWG: x = mid - Z, y = X + axis1 (extract_dwg_revision.PLAN_AXES).
+PLAN_AXES={'PT10':(-609567.5,1599381.7),'PT15':(-585726.6,1640451.6)}
+
+
+def csv_rows(name):
+    with (OUT/name).open(encoding='utf-8',newline='') as stream:
+        return {r['id']:r for r in csv.DictReader(stream)}
+
+
+def to_dwg(drawing_id,u,v):
+    """Inverse of extract_dwg_revision.to_model: the drawing's model axes (mm) to DWG coordinates."""
+    d=DRAW[drawing_id]
+    if d['view']=='plan':
+        return u+d['ox'],v+d['oy']
+    if d['view']=='transverse':
+        return d['ox']+d['zsign']*u,v+d['floor']
+    if d['view']=='longitudinal':
+        return u+d['ox'],v+d['floor']
+    return u+d['frame'][0],v+(d['floor'] if d.get('floor') is not None else d['frame'][1])
+
+
+def key_marks(key,drawing_id):
+    """Overlay primitives in DWG mm for one key witness, on the drawing being shown."""
+    global DIM_ROWS,FACADE_ROWS
+    DIM_ROWS=DIM_ROWS or csv_rows('dimensions.csv')
+    FACADE_ROWS=FACADE_ROWS or csv_rows('facade.csv')
+    row=KEYS.get(key)
+    if key.startswith('DWG'):
+        r=DIM_ROWS[key]
+        if r['drawing']!=drawing_id:
+            return []
+        a=to_dwg(drawing_id,float(r['a1']),float(r['a2']))
+        b=to_dwg(drawing_id,float(r['b1']),float(r['b2']))
+        return [{'type':'dim','a':a,'b':b,'kind':r['kind']}]
+    if key.startswith('LEVEL'):
+        if drawing_id not in ('E01B','E01A','E02','E03','EW','S24','S25','S45','ET'):
+            return []
+        return [{'type':'level','y':to_dwg(drawing_id,0,row[3])[1],'text':label_values(row)[0]}]
+    r=FACADE_ROWS[key]
+    if r['drawing']!=drawing_id:
+        return []
+    p=[float(v) if v else None for v in (r['p1'],r['p2'],r['p3'],r['p4'])]
+    if drawing_id in PLAN_AXES:
+        axis1,mid=PLAN_AXES[drawing_id]
+        pt=lambda z,x:(mid-z,x+axis1)
+        if r['kind']=='h':
+            return [{'type':'seg','a':pt(p[1],p[0]),'b':pt(p[2],p[0])}]
+        if r['kind']=='arc':
+            return [{'type':'radius','c':pt(p[0],p[1]),'r':p[2]}]
+        return []
+    pt=lambda z,y:to_dwg(drawing_id,z,y)
+    kind=r['kind']
+    if kind=='h':
+        return [{'type':'seg','a':pt(p[1],p[0]),'b':pt(p[2],p[0])}]
+    if kind=='arc':
+        return [{'type':'radius','c':pt(p[0],p[1]),'r':p[2]}]
+    if kind=='v':
+        return [{'type':'dim','a':pt(p[0],p[1]),'b':pt(p[0],p[2]),'kind':'vertical'}]
+    if kind=='seg':
+        return [{'type':'seg','a':pt(p[0],p[1]),'b':pt(p[2],p[3])}]
+    if kind=='ymax':
+        return [{'type':'seg','a':pt(p[0],float(r['value_mm'])),'b':pt(p[1],float(r['value_mm']))}]
+    return []
+
+
+def local_items(drawing_id,box,limit):
+    """The page's own CAD dimensions and level labels inside the crop, largest first."""
+    global DIM_ROWS
+    DIM_ROWS=DIM_ROWS or csv_rows('dimensions.csv')
+    x0,y0,x1,y1=box
+    inside=lambda pt:x0<=pt[0]<=x1 and y0<=pt[1]<=y1
+    items,seen=[],set()
+    kinds={'horizontal':'Kích thước ngang','vertical':'Kích thước đứng','aligned':'Kích thước xiên','rotated':'Kích thước xiên'}
+    rows=sorted((r for r in DIM_ROWS.values() if r['drawing']==drawing_id),key=lambda r:-float(r['measured_mm']))
+    for r in rows:
+        a=to_dwg(drawing_id,float(r['a1']),float(r['a2']))
+        b=to_dwg(drawing_id,float(r['b1']),float(r['b2']))
+        key=(r['printed_mm'],r['kind'])
+        if not (inside(a) and inside(b)) or key in seen or float(r['measured_mm'])<50:
+            continue
+        seen.add(key)
+        items.append({'id':r['id'],'measured':r['measured_mm'],'value':num(r['measured_mm'])+' mm','label':kinds.get(r['kind'],'Kích thước')+' ghi trên hình',
+                      'note':f"Số ghi trên hình {r['printed_mm']}. Đối tượng kích thước CAD {r['id']}, handle {r['handle']}.",
+                      'marks':[{'type':'dim','a':a,'b':b,'kind':r['kind']}]})
+        if len(items)>=min(limit,4):
+            break
+    with (OUT/'levels.csv').open(encoding='utf-8',newline='') as stream:
+        levels=[r for r in csv.DictReader(stream) if r['drawing']==drawing_id and r['marker_mm']]
+    if DRAW[drawing_id]['view'] in ('transverse','longitudinal') or drawing_id in ('EW','ET'):
+        for r in sorted(levels,key=lambda r:-float(r['printed_mm'])):
+            y=to_dwg(drawing_id,0,float(r['printed_mm']))[1]
+            if len(items)>=limit or r['printed_mm'] in seen or not y0<=y<=y1:
+                continue
+            seen.add(r['printed_mm'])
+            v=float(r['printed_mm'])/1000
+            text=('+' if v>0 else '±' if v==0 else '')+f'{v:.3f}'.replace('.',',')+' m'
+            items.append({'id':'LEVEL '+r['label'].strip(),'level_mm':float(r['printed_mm']),'value':text,'label':'Cao độ ghi trên hình',
+                          'note':f"Nhãn {r['label'].strip()}; đỉnh ký hiệu đo được {num(r['marker_mm'])} mm.",
+                          'marks':[{'type':'level','y':y,'text':text}]})
+    return items
+
+
+def mapper(drawing_id,clip,area,scale):
+    """DWG mm to page points for a crop shown with show_pdf_page."""
+    x0,y0,x1,y1=DRAW[drawing_id]['frame']
+    raw=vector_doc(drawing_id)[0].rect
+    def f(x,y):
+        rx=raw.width*(x-x0)/(x1-x0)
+        ry=raw.height*(1-(y-y0)/(y1-y0))
+        return area.x0+(rx-clip.x0)*scale,area.y0+(ry-clip.y0)*scale
+    return f
+
+
+def clip_line(a,b,rect):
+    """Liang-Barsky clip of segment a-b to rect; None when outside."""
+    (xa,ya),(xb,yb)=a,b
+    dx,dy=xb-xa,yb-ya
+    t0,t1=0.0,1.0
+    for pp,q in ((-dx,xa-rect.x0),(dx,rect.x1-xa),(-dy,ya-rect.y0),(dy,rect.y1-ya)):
+        if pp==0:
+            if q<0:
+                return None
+            continue
+        t=q/pp
+        if pp<0:
+            t0=max(t0,t)
+        else:
+            t1=min(t1,t)
+        if t0>t1:
+            return None
+    return (xa+t0*dx,ya+t0*dy),(xa+t1*dx,ya+t1*dy)
+
+
+def draw_marks(page,f,area,numbered,labels=None):
+    """Draw numbered red overlays; returns the numbers that are visible in the crop.
+
+    Pass the same labels list to later calls on one page so tags never overlap."""
+    shown=set()
+    labels=[] if labels is None else labels
+    inner=fitz.Rect(area.x0+2,area.y0+2,area.x1-2,area.y1-2)
+
+    def line(a,b,width=1.1,dashes=None):
+        c=clip_line(a,b,inner)
+        if c:
+            page.draw_line(c[0],c[1],color=MARK,width=width,dashes=dashes)
+        return c
+
+    def tick(pnt,horizontal):
+        if inner.contains(fitz.Point(pnt)):
+            d=(0,4) if horizontal else (4,0)
+            page.draw_line((pnt[0]-d[0],pnt[1]-d[1]),(pnt[0]+d[0],pnt[1]+d[1]),color=MARK,width=1.1)
+
+    def dot(pnt):
+        if inner.contains(fitz.Point(pnt)):
+            page.draw_circle(pnt,2.2,color=MARK,fill=MARK)
+
+    def label(n,pnt):
+        x=min(max(pnt[0],inner.x0+8),inner.x1-8)
+        y=min(max(pnt[1],inner.y0+8),inner.y1-8)
+        while any(abs(x-u)<15 and abs(y-v)<15 for u,v in labels):
+            y+=15
+        labels.append((x,y))
+        page.draw_circle((x,y),6.6,color=MARK,fill=(1,1,1),width=1)
+        text=str(n)
+        w=FONT.text_length(text,fontsize=8)
+        put(page,x-w/2,y+2.8,text,8,True,MARK)
+        shown.add(n)
+
+    for n,marks in numbered:
+        for m in marks:
+            t=m['type']
+            if t=='dim':
+                a,b=f(*m['a']),f(*m['b'])
+                # Draw nothing unless the measuring line itself is visible in the crop.
+                if m['kind']=='horizontal':
+                    y=min(a[1],b[1])-10
+                    ends=((a[0],y),(b[0],y))
+                elif m['kind']=='vertical':
+                    x=max(a[0],b[0])+10
+                    ends=((x,a[1]),(x,b[1]))
+                else:
+                    ends=(a,b)
+                if not clip_line(ends[0],ends[1],inner):
+                    continue
+                c=line(*ends)
+                if ends!=(a,b):
+                    line(a,ends[0],.5,'[2 2] 0'); line(b,ends[1],.5,'[2 2] 0')
+                    tick(ends[0],m['kind']=='horizontal'); tick(ends[1],m['kind']=='horizontal')
+                dot(a); dot(b)
+                label(n,((c[0][0]+c[1][0])/2,(c[0][1]+c[1][1])/2))
+            elif t=='seg':
+                a,b=f(*m['a']),f(*m['b'])
+                c=line(a,b,1.6)
+                if c:
+                    label(n,(c[1][0]+9,c[1][1]))
+            elif t=='level':
+                _,py=f(0,m['y'])
+                if inner.y0<py<inner.y1:
+                    page.draw_line((inner.x0,py),(inner.x1,py),color=MARK,width=.7,dashes='[5 3] 0')
+                    if m.get('text'):
+                        # Right end: CAD level labels usually sit at the left edge.
+                        put(page,inner.x1-FONT.text_length(m['text'],fontsize=7.5)-6,py-3,m['text'],7.5,True,MARK)
+                    label(n,(inner.x0+9,py))
+            elif t=='radius':
+                cx,cy=m['c']
+                a=f(cx,cy)
+                import math
+                b=f(cx+m['r']*math.cos(math.radians(m.get('angle',40))),cy+m['r']*math.sin(math.radians(m.get('angle',40))))
+                c=line(a,b)
+                if inner.contains(fitz.Point(a)):
+                    page.draw_line((a[0]-4,a[1]),(a[0]+4,a[1]),color=MARK,width=.8)
+                    page.draw_line((a[0],a[1]-4),(a[0],a[1]+4),color=MARK,width=.8)
+                dot(b)
+                if c:
+                    label(n,(c[1][0]+8,c[1][1]-6))
+            elif t=='point':
+                pnt=f(*m['p'])
+                if inner.contains(fitz.Point(pnt)):
+                    page.draw_line((pnt[0]-5,pnt[1]),(pnt[0]+5,pnt[1]),color=MARK,width=.9)
+                    page.draw_line((pnt[0],pnt[1]-5),(pnt[0],pnt[1]+5),color=MARK,width=.9)
+                    label(n,(pnt[0]+9,pnt[1]-8))
+    return shown
+
+
+def panel_heading(page,y,text):
+    put(page,830,y,text,10,True,BLUE)
+    return y+15
+
+
+def number_tag(page,x,y,n):
+    page.draw_circle((x+6,y-3.5),6,color=MARK,fill=(1,1,1),width=1)
+    w=FONT.text_length(str(n),fontsize=7.5)
+    put(page,x+6-w/2,y-1,str(n),7.5,True,MARK)
+
+
 def drawing_page(doc,group,ident,crop_name):
     drawing=DRAW[ident]
     title=TITLE_VI[ident]
+    note=SPEC['trang'][f'{ident}|{crop_name}']
     page=new_page(doc,title.upper(),f"Bản vẽ {ident} | Tờ CAD {drawing['sheet'] or 'không đánh số'} | {CROPS_VI[crop_name]}")
     source,clip,crop=vector_source(ident,crop_name)
-    page.show_pdf_page(fitz.Rect(28,80,853,792),source,0,clip=clip)
-    page.draw_line((874,82),(874,790),color=(.72,.78,.8),width=.6)
-    put(page,894,99,'KÍCH THƯỚC CHÍNH',12,True)
+    target=fitz.Rect(28,80,800,792)
+    page.show_pdf_page(target,source,0,clip=clip)
+    scale=min(target.width/clip.width,target.height/clip.height)
+    area=fitz.Rect(target.x0+(target.width-clip.width*scale)/2,target.y0+(target.height-clip.height*scale)/2,0,0)
+    area.x1,area.y1=area.x0+clip.width*scale,area.y0+clip.height*scale
     match=[k for k in VIEW_KEYS.get((ident,crop_name),[]) if k in group['so_do']]
     if not match:
         match=[k for k in group['so_do'] if KEYS[k][5]==ident]
-    fallback=not match or any(KEYS[k][5]!=ident for k in match)
     match=(match or group['so_do'])[:4]
-    if fallback:
-        paragraph(page,894,120,'Tham chiếu cùng bộ phận; xem mã bản vẽ của từng số đo.',260,9,13,max_y=150)
-    y=166 if fallback else 128
-    for k in match:
-        row=KEYS[k]
-        label,note=SPEC['kich_thuoc'][k]
-        main,_=label_values(row)
-        y=paragraph(page,894,y,label,260,10,14,True,max_y=735)
-        put(page,894,y+4,main,14,True)
-        y+=26
-        y=paragraph(page,894,y,note,260,9,13,max_y=735)
-        put(page,894,y+2,k+' / '+row[5],8)
-        y+=26
-    paragraph(page,894,756,'Số ghi được giữ nguyên. Các chỗ khác nhau giữa bản vẽ phải được xác nhận trước khi thi công.',260,9,12,max_y=790)
     x0,y0,x1,y1=drawing['frame']
     a,b,c,d=crop
-    return {'ban_ve':ident,'loai':CROPS_VI[crop_name],'ma_ghi_chu':match,'dang_net':'vector, giữ nguyên đường nét PDF nguồn',
+    box=(x0+a*(x1-x0),y0+b*(y1-y0),x0+c*(x1-x0),y0+d*(y1-y0))
+    numbered=[(n,key_marks(k,ident)) for n,k in enumerate(match,1)]
+    f=mapper(ident,clip,area,scale)
+    tags=[]
+    shown=draw_marks(page,f,area,numbered,tags)
+    local=[]
+    if len(shown)<2:
+        taken={KEYS[k][3] for k in match if k.startswith('LEVEL')}
+        same={DIM_ROWS[k]['measured_mm'] for k in match if k in DIM_ROWS}
+        local=[i for i in local_items(ident,box,6-len(match)) if i.get('level_mm') not in taken
+               and i['id'] not in match and i.get('measured') not in same]
+        shown|=draw_marks(page,f,area,[(len(match)+n,item['marks']) for n,item in enumerate(local,1)],tags)
+    page.draw_line((815,82),(815,790),color=(.72,.78,.8),width=.6)
+    x,width=830,W-28-830
+    y=panel_heading(page,92,'ĐÂY LÀ GÌ')
+    y=paragraph(page,x,y,note['la_gi'],width,9,12,max_y=700)+5
+    y=panel_heading(page,y,'DÙNG KHI NÀO')
+    y=paragraph(page,x,y,note['dung'],width,9,12,max_y=700)+5
+    y=panel_heading(page,y,'KÍCH THƯỚC CHÍNH')
+    if shown:
+        y=paragraph(page,x,y,'Số trong vòng đỏ chỉ đúng chỗ đo trên hình (nét đỏ do bộ này vẽ thêm, không phải nét CAD).',width,7.5,9.5,max_y=700)+3
+    for n,k in enumerate(match,1):
+        row=KEYS[k]
+        label,dim_note=SPEC['kich_thuoc'][k]
+        main,_=label_values(row)
+        if n in shown:
+            number_tag(page,x,y+1,n)
+        put(page,x+17,y+1,main,10.5,True)
+        y=paragraph(page,x+112,y,label,width-112,8.5,11,True,max_y=760)
+        y=paragraph(page,x+17,y,dim_note+(' ' if n in shown else ' Ngoài khung hình này. ')+k+' / '+row[5],width-17,7.5,9.5,max_y=764)+4
+    if local:
+        y=panel_heading(page,y+3,'ĐO TRÊN CHÍNH HÌNH NÀY')
+        for n,item in enumerate(local,len(match)+1):
+            if n in shown:
+                number_tag(page,x,y+1,n)
+            put(page,x+17,y+1,item['value'],10.5,True)
+            y=paragraph(page,x+112,y,item['label'],width-112,8.5,11,True,max_y=760)
+            y=paragraph(page,x+17,y,item['note'],width-17,7.5,9.5,max_y=764)+4
+    y=panel_heading(page,y+3,'CẦN HỎI TRƯỚC KHI LÀM')
+    for question in note['hoi']:
+        y=paragraph(page,x,y,'• '+question,width,8.5,11,max_y=778)+1
+    paragraph(page,x,max(y+4,780),'Không đo trên giấy in. Chưa phải bản vẽ thi công.',width,7.5,9,max_y=792)
+    return {'ban_ve':ident,'loai':CROPS_VI[crop_name],'ma_ghi_chu':match,'ve_len_hinh':sorted(match[n-1] for n in shown if n<=len(match)),
+            'do_tren_hinh':[i['id'] for i in local],
+            'dang_net':'vector, giữ nguyên đường nét PDF nguồn; nét đỏ đánh số là chú thích thêm',
             'khung_cat_cad_mm':[round(x0+a*(x1-x0),1),round(y0+b*(y1-y0),1),round(x0+c*(x1-x0),1),round(y0+d*(y1-y0),1)]}
+
+
+def worker_page(doc):
+    page=new_page(doc,'CÁCH DÙNG BỘ BẢN VẼ CHO NGƯỜI THI CÔNG','Đọc trang này trước khi dùng các tập 01-11')
+    y=104
+    for n,text in enumerate(SPEC['nguoi_lam'],1):
+        put(page,36,y,str(n),14,True,BLUE)
+        y=paragraph(page,64,y,text,1080,12,18,max_y=740)+16
+    number_tag(page,64,y+6,1)
+    paragraph(page,84,y+6,'Vòng đỏ có số trên hình: chỉ đúng chỗ đo của dòng cùng số ở cột bên phải. Nét đỏ là chú thích bộ này vẽ thêm từ tọa độ CAD, không phải nét gốc của người thiết kế.',1060,11,16,max_y=790)
 
 
 def contact_sheets(path):
@@ -368,6 +651,7 @@ def build():
         measurement_pages(doc,group)
         if group['ma']=='00':
             guide_page(doc)
+            worker_page(doc)
         if group.get('luoi_truc'):
             grid_page(doc)
         toc=[[1,'Kích thước chính',1]]
@@ -437,6 +721,8 @@ def write_package(result):
         'Bắt đầu bằng tập 00. Các tập 01-09 được chia theo bộ phận nhà thờ. Tập 10 ghi kết quả kiểm tra dữ liệu.',
         'Tập 11 phóng lớn các chi tiết trang trí nhỏ của hai tháp chuông.',
         'Mỗi tập có bảng kích thước chính và ghi chú cạnh hình. Giữ nguyên mã đo để đối chiếu nguồn.',
+        'Đọc trang 3 của tập 00 trước: cách dùng cho người thi công. Mỗi trang hình ghi đây là gì, dùng khi nào và cần hỏi gì trước khi làm.',
+        'Vòng đỏ có số trên hình chỉ đúng chỗ đo của dòng cùng số bên phải; nét đỏ là chú thích thêm, không phải nét CAD gốc.',
         'Bản vẽ giữ nguyên nét vector; phóng lớn vẫn sắc. Ghi chú tiếng Việt vẫn là văn bản.',
         f"Có {len(result['tung_trang'])} PDF từng trang trong thư mục tung_trang, ngoài các tập theo nhóm.",
         'Đơn vị mm suy từ bản vẽ; INSUNITS=1 (inch, đơn vị chèn). Người thiết kế phải xác nhận trước thi công.',

@@ -241,6 +241,92 @@ def derive(item, detail):
     return main, source
 
 
+FLOOR = {'E01B': -515946.8, 'E02': -518026.8, 'ET': -518026.8}
+
+
+def dwg_point(drawing, h, y):
+    """Tower-drawing metres (horizontal, Y) to DWG mm, using the transforms recorded in the witness files."""
+    x = {'E01B': lambda: 1666600.3-h*1000, 'E02': lambda: h*1000+1404501.3, 'ET': lambda: h*1000+1696316}[drawing]()
+    return x, y*1000+FLOOR[drawing]
+
+
+def feature_drawing(ref):
+    feature, _ = witness(ref)
+    return feature.get('drawing', 'E01B') if isinstance(feature, dict) else None
+
+
+def item_marks(item, detail):
+    """Overlay primitives for one side-panel reading or derived value; [] when it cannot be placed honestly."""
+    drawing = detail['ban_ve']
+    if 'cao_do' in item:
+        return [{'type': 'level', 'y': item['cao_do'][1]+FLOOR[drawing]}] if drawing in FLOOR else []
+    if 'kich_thuoc' in item:
+        return vi.key_marks(item['kich_thuoc'], drawing)
+    if drawing not in FLOOR:
+        return []
+    if 'suy_ra' in item:
+        kind = item['suy_ra']
+        if kind in ('dinh_vom', 'rong_vom', 'cach_tim', 'tren_san', 'hieu_y'):
+            if feature_drawing(item['ref']) != drawing:
+                return []
+            feature, _ = witness(item['ref'])
+            centre, points = geometry(feature)
+            h, y = centre if centre else points[-1 if item.get('truong') == 'y_cuoi' else 0]
+            r = feature.get('radiusM', 0)
+            if kind == 'dinh_vom':
+                return [{'type': 'point', 'p': dwg_point(drawing, h, y+r)}]
+            if kind == 'rong_vom':
+                return [{'type': 'dim', 'a': dwg_point(drawing, h-r, y), 'b': dwg_point(drawing, h+r, y), 'kind': 'horizontal'}]
+            if kind == 'cach_tim':
+                return [{'type': 'dim', 'a': dwg_point(drawing, detail['tim_thap_z'], y), 'b': dwg_point(drawing, h, y), 'kind': 'horizontal'}]
+            if kind == 'tren_san':
+                value, _ = value_of(item['ref'], item['truong'])
+                return [{'type': 'dim', 'a': dwg_point(drawing, h, item['san']), 'b': dwg_point(drawing, h, value), 'kind': 'vertical'}]
+            return [{'type': 'dim', 'a': dwg_point(drawing, h, y), 'b': dwg_point(drawing, h, item['a']), 'kind': 'vertical'}]
+        if kind == 'hieu_so':
+            return [{'type': 'dim', 'a': dwg_point(drawing, detail['tim_thap_z'], item['b']),
+                     'b': dwg_point(drawing, detail['tim_thap_z'], item['a']), 'kind': 'vertical'}]
+        if kind == 'hieu_z':
+            a, _ = witness(item['refs'][0])
+            b, _ = witness(item['refs'][1])
+            pa, pb = geometry(a)[1][0], geometry(b)[1][0]
+            return [{'type': 'dim', 'a': dwg_point(drawing, pa[0], pa[1]), 'b': dwg_point(drawing, pb[0], pa[1]), 'kind': 'horizontal'}]
+        if kind == 'hieu_path':
+            # Only the window block knows where to draw: widths at the sill, heights at the left jamb.
+            parent_ref = item['a'].rsplit('.', 1)[0]
+            parent, _ = witness(parent_ref)
+            fa, fb = item['a'].rsplit('.', 1)[1], item['b'].rsplit('.', 1)[1]
+            if 'leftX' not in parent or item['b'].rsplit('.', 1)[0] != parent_ref:
+                return []
+            if fa.endswith('X'):
+                return [{'type': 'dim', 'a': dwg_point(drawing, parent[fb], parent['sillY']), 'b': dwg_point(drawing, parent[fa], parent['sillY']), 'kind': 'horizontal'}]
+            return [{'type': 'dim', 'a': dwg_point(drawing, parent['leftX'], parent[fb]), 'b': dwg_point(drawing, parent['leftX'], parent[fa]), 'kind': 'vertical'}]
+        if kind == 'hieu_ref':
+            if feature_drawing(item['a']) != drawing or feature_drawing(item['b']) != drawing:
+                return []
+            a, _ = witness(item['a'])
+            h = geometry(a)[0][0]
+            va, _ = value_of(item['a'], item['fa'])
+            vb, _ = value_of(item['b'], item['fb'])
+            return [{'type': 'dim', 'a': dwg_point(drawing, h, vb), 'b': dwg_point(drawing, h, va), 'kind': 'vertical'}]
+        return []
+    feature, _ = witness(item['ref'])
+    centre, points = geometry(feature)
+    if centre or points:
+        if feature_drawing(item['ref']) != drawing:
+            return []
+        if item['truong'] == 'ban_kinh':
+            h, y = centre
+            return [{'type': 'radius', 'c': dwg_point(drawing, h, y), 'r': feature['radiusM']*1000}]
+        h, y = centre if item['truong'] in ('tam_y', 'tam_z') else points[-1 if item['truong'] == 'y_cuoi' else 0]
+        return [{'type': 'point', 'p': dwg_point(drawing, h, y)}]
+    value = feature[item['truong']] if isinstance(feature, dict) else feature
+    field = item['truong']
+    if item.get('don_vi') in ('ô', 'mm') or not field.endswith('Y'):
+        return []
+    return [{'type': 'level', 'y': value*1000+FLOOR[drawing]}]
+
+
 def heading(page, y, text):
     vi.put(page, 830, y, text, 10, True, vi.BLUE)
     return y+15
@@ -255,32 +341,40 @@ def detail_page(doc, detail):
     target = fitz.Rect(28, 80, 800, 792)
     page.show_pdf_page(target, source, 0, clip=clip)
     area, scale = fitted(target, clip)
+    entries = [('suy_ra', i) for i in detail.get('suy_ra', [])]+[('so_do', i) for i in detail['so_do']]
+    f = vi.mapper(detail['ban_ve'], clip, area, scale)
+    shown = vi.draw_marks(page, f, area, [(n, item_marks(i, detail)) for n, (_, i) in enumerate(entries, 1)])
     page.draw_line((815, 82), (815, 790), color=(.72, .78, .8), width=.6)
     x, width = 830, W-28-830
     y = heading(page, 92, 'ĐÂY LÀ GÌ')
     y = vi.paragraph(page, x, y, detail['la_gi'], width, 9, 12, max_y=760)+5
     y = heading(page, y, 'LẶP LẠI Ở ĐÂU')
     y = vi.paragraph(page, x, y, detail['so_luong'], width, 9, 12, max_y=760)+5
-    derived = []
-    if detail.get('suy_ra'):
-        y = heading(page, y, 'SỐ DÙNG KHI ĐỐI CHIẾU (SUY RA)')
-        for item in detail['suy_ra']:
-            main, src = derive(item, detail)
-            derived.append({'nhan': item['nhan'], 'gia_tri': main, 'nguon': src})
-            vi.put(page, x, y, main, 11, True)
-            y = vi.paragraph(page, x+92, y, item['nhan'], width-92, 8.5, 11, max_y=760)
-            y = vi.paragraph(page, x+92, y-1, src, width-92, 6.5, 8, max_y=764)+3
+    if shown:
+        y = vi.paragraph(page, x, y, 'Số trong vòng đỏ chỉ đúng chỗ đo trên hình; nét đỏ do bộ này vẽ thêm, không phải nét CAD.', width, 7.5, 9.5, max_y=760)+4
+    derived, resolved = [], []
+    n = 0
+    for section, title in (('suy_ra', 'SỐ DÙNG KHI ĐỐI CHIẾU (SUY RA)'), ('so_do', 'MỐC ĐỌC TRÊN BẢN VẼ')):
+        items = [i for s_, i in entries if s_ == section]
+        if not items:
+            continue
+        y = heading(page, y, title)
+        for item in items:
+            n += 1
+            if section == 'suy_ra':
+                main, src = derive(item, detail)
+                derived.append({'nhan': item['nhan'], 'gia_tri': main, 'nguon': src, 've_len_hinh': n in shown})
+            else:
+                main, second, src, check = resolve(item)
+                assert inside(detail, check), ('Witness outside its crop', detail['id'], item)
+                resolved.append({'nhan': item['nhan'], 'gia_tri': main, 'phu': second, 'nguon': src, 've_len_hinh': n in shown})
+            if n in shown:
+                vi.number_tag(page, x, y+1, n)
+            vi.put(page, x+17, y+1, main, 10 if section == 'suy_ra' else 9.5, True)
+            y = vi.paragraph(page, x+112, y, item['nhan'], width-112, 8.5, 11, max_y=760)
+            y = vi.paragraph(page, x+112, y-1, src, width-112, 6.5, 8, max_y=764)+2
         y += 3
-    y = heading(page, y, 'MỐC ĐỌC TRÊN BẢN VẼ')
-    resolved = []
-    for item in detail['so_do']:
-        main, second, src, check = resolve(item)
-        assert inside(detail, check), ('Witness outside its crop', detail['id'], item)
-        resolved.append({'nhan': item['nhan'], 'gia_tri': main, 'phu': second, 'nguon': src})
-        vi.put(page, x, y, main, 9.5, True)
-        y = vi.paragraph(page, x+92, y, item['nhan'], width-92, 8.5, 11, max_y=760)
-        y = vi.paragraph(page, x+92, y-1, src, width-92, 6.5, 8, max_y=764)+2
-    y = heading(page, y+4, 'CẦN HỎI TRƯỚC KHI LÀM')
+    y = heading(page, y+2, 'CẦN HỎI TRƯỚC KHI LÀM')
     for question in detail['hoi']:
         y = vi.paragraph(page, x, y, '• '+question, width, 8.5, 11, max_y=772)+1
     vi.paragraph(page, x, max(y+4, 778), 'Không đo trên giấy in. Chưa phải bản vẽ chế tạo; cần kiến trúc sư xác nhận.', width, 7.5, 9, max_y=790)

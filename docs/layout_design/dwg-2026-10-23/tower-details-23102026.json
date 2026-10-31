@@ -1017,7 +1017,8 @@
    "hoi": [
     "Cửa sổ: kính hay chớp, có mở được không, khung và vật liệu.",
     "Mép hoàn thiện thực tế trước khi đặt hàng cửa."
-   ]
+   ],
+   "tim_thap_z": 2.450045
   },
   {
    "id": "T15",
@@ -1127,7 +1128,8 @@
    "hoi": [
     "Chiều dày thánh giá theo phương nhìn bên (mô hình tạm 100 mm, chưa phải quy cách).",
     "Vỏ chỏm: vật liệu, chiều dày, chống thấm."
-   ]
+   ],
+   "tim_thap_z": 2.450045
   },
   {
    "id": "T18",
