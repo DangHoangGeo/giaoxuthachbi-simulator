@@ -71,6 +71,9 @@
     "F30": ["Vị trí mặt trước cột hốc giữa", "X = +3,915 m từ trục 1."],
     "F31": ["Bán kính hốc giữa trên mặt bằng", "Tâm tại Z = 0, X = +4,225 m; lưng hốc X = +4,936 m."],
     "F32": ["Vị trí mặt trước lan can trang trí", "X = +3,376 m; khoảng cách các trụ hoa huệ 617 mm theo nét vẽ."],
+    "F33": ["Chiều cao chân cột mặt trước tháp", "Từ sàn ±0,000 đến đỉnh chân cột, nơi thân cột có rãnh bắt đầu: 1 848 mm. CAD không ghi kích thước này; đọc trên nét vẽ, cần kiến trúc sư xác nhận. Cùng cao độ ở cả 4 cột mặt trước hai tháp."],
+    "F34": ["Đỉnh nhóm phào giữa chân cột", "Cao độ +1,368 m; nhóm phào từ +1,032 đến +1,368 m."],
+    "F35": ["Đỉnh khối bệ dưới cùng chân cột", "Cao độ +0,443 m; các phào nhỏ bắt đầu từ +0,215 m."],
     "LEVEL-E01B--2080": ["Cao độ sân", "Thấp hơn sàn lòng nhà 2,080 m."],
     "LEVEL-E01B-0": ["Cao độ chuẩn sàn lòng nhà", "Mốc Y = ±0,000 m dùng để đọc các cao độ khác."],
     "LEVEL-E01B-8390": ["Cao độ tầng dưới tháp", "Nhãn cao độ khớp ký hiệu mốc trên mặt đứng."],
@@ -99,7 +102,7 @@
       "ma": "02", "tep": "02_Mat_tien_trung_tam_23102026.pdf", "ten": "Mặt tiền giữa hai tháp",
       "mo_ta": "Cửa chính, cụm ba cửa tầng trên, hốc tượng, phào, lan can và thánh giá giữa. Các cao độ Y và vị trí X khác với kích thước bề rộng hoặc chiều dày.",
       "ban_ve": [["E01B", "toan_bo"], ["E01B", "central-facade"], ["E01B", "entrance-and-bases"], ["PT10", "toan_bo"], ["PT15", "toan_bo"]],
-      "so_do": ["DWG0195", "DWG0212", "DWG0228", "DWG0226", "F01", "F04", "F06", "F08", "F09", "F10", "F12", "F15", "F17", "F18", "F22", "F23", "F24", "F25", "F26", "F27", "F28", "F29", "F30", "F31", "F32"]
+      "so_do": ["DWG0195", "DWG0212", "DWG0228", "DWG0226", "F01", "F04", "F06", "F08", "F09", "F10", "F12", "F15", "F17", "F18", "F22", "F23", "F24", "F25", "F26", "F27", "F28", "F29", "F30", "F31", "F32", "F33", "F34", "F35"]
     },
     {
       "ma": "03", "tep": "03_Hai_thap_chuong_23102026.pdf", "ten": "Hai tháp chuông",

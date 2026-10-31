@@ -22,6 +22,12 @@ DEST=ROOT/'exports/23102026_vector'
 SPEC=json.loads((OUT/'pdf-vietnamese-23102026.json').read_text())
 DATA=json.loads((OLD/'register-data.json').read_text())
 KEYS={r[0]:r for r in DATA['keys']}
+# Traced facade rows outside the curated register (e.g. tower column bases), in the register's row format.
+for r in csv.DictReader((OUT/'facade.csv').open(encoding='utf-8')):
+    if r['basis']=='TRACED' and r['id'] in SPEC['kich_thuoc'] and r['id'] not in KEYS:
+        v=float(r['value_mm'])
+        KEYS[r['id']]=[r['id'],r['element'],'Radius' if r['kind']=='arc' else 'Y level',v,round(v/1000,4),r['drawing'],
+                       'facade.csv '+r['id']+' (geometry checked within 1.5 mm)','DERIVED / TRACED','Z/Y',None,None,None,None,r['note']]
 DRAW={d['id']:d for d in DRAWINGS}
 W,H=1190.55,841.89
 FONT=fitz.Font(fontfile=fm.findfont('DejaVu Sans'))
@@ -62,7 +68,7 @@ TITLE_VI={
 # the first dimensions of its parent drawing. Other-source witnesses are named.
 VIEW_KEYS={
     ('E01B','central-facade'):['F22','F06','F17','F08'],
-    ('E01B','entrance-and-bases'):['DWG0228','DWG0226','DWG0195','DWG0212'],
+    ('E01B','entrance-and-bases'):['DWG0228','DWG0226','F33','F34','F35'],
     ('E01B','tower-crown'):['LEVEL-E01B-36920','LEVEL-E01B-29090','LEVEL-E01B-23140','DWG0222'],
     ('S24','roof-and-joints'):['DWG0342','DWG0311'],
     ('S24','columns-and-base'):['DWG0312','DWG0338','DWG0339','DWG0311'],
@@ -426,7 +432,8 @@ def draw_marks(page,f,area,numbered,labels=None):
                 a,b=f(*m['a']),f(*m['b'])
                 c=line(a,b,1.6)
                 if c:
-                    label(n,(c[1][0]+9,c[1][1]))
+                    # Past the end the line points to, so the tag never covers it.
+                    label(n,(c[1][0]+(9 if c[1][0]>=c[0][0] else -9),c[1][1]))
             elif t=='level':
                 _,py=f(0,m['y'])
                 if inner.y0<py<inner.y1:
@@ -481,7 +488,7 @@ def drawing_page(doc,group,ident,crop_name):
     match=[k for k in VIEW_KEYS.get((ident,crop_name),[]) if k in group['so_do']]
     if not match:
         match=[k for k in group['so_do'] if KEYS[k][5]==ident]
-    match=(match or group['so_do'])[:4]
+    match=(match or group['so_do'])[:max(4,len(VIEW_KEYS.get((ident,crop_name),[])))]
     x0,y0,x1,y1=drawing['frame']
     a,b,c,d=crop
     box=(x0+a*(x1-x0),y0+b*(y1-y0),x0+c*(x1-x0),y0+d*(y1-y0))

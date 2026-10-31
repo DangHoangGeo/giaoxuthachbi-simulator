@@ -5,7 +5,7 @@ window.CHURCH_CONSTRUCTION_DATA = {
 "inputs":{
 "workbook":{
 "path":"docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
-"sha256_16":"42ebf05e86194953"
+"sha256_16":"e5185da22a730ec0"
 },
 "phases":{
 "path":"docs/construction/phases.json",

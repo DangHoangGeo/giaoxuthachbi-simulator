@@ -31,6 +31,9 @@ F29,Aedicule pier front,PT15,h,3805,-1885,-1439,,3805,X 3.805,TRACED,
 F30,Central niche column front,PT15,h,3915,-1112,-906,,3915,X 3.915,TRACED,
 F31,Central niche (plan),PT15,arc,0,4225,711,,711,"centre X 4.225, r 0.711",TRACED,Niche back X 4.936; aedicule back X 5.046
 F32,Cresting balustrade front,PT15,h,3376,-7086,-3614,,3376,X 3.376,TRACED,Fleur-de-lis posts at 617 mm spacing
+F33,Tower front column base: height from the nave floor to the top of the base,E01B,v,12603,0,1848,,1848,1.848,TRACED,"Column axis line at Z 12.603 checked from +0.000 to +1.848; top band line at +1.848 (Z 12.078–13.348) where the fluted shaft starts. The same +1.848 line is drawn on all four tower front columns (Z ±6.958–8.228 and ±12.078–13.348). Not a CAD dimension: read from the drawn lines"
+F34,Tower front column base: top of the middle mouldings,E01B,h,1368,12603,13366,,1368,1.368,TRACED,Moulding top line; the moulded band runs from +1.032 to +1.368
+F35,Tower front column base: top of the lowest block,E01B,h,443,12603,13414,,443,0.443,TRACED,Top of the plinth block; mouldings from +0.215 below it
 D01,Side bays meet the towers,model,—,,,,,7128,±7.128,MODEL TRANSCRIPTION / COORDINATED,"26 Oct 2026: removed the former model extension to ±7.500 m. CAD stops at ±7.128 m; rebuilt tower rear piers start at ±7.103 m, giving 25 mm overlap. Source dimensions unchanged; structure/detail remain held."
 D02,Moulding profiles and carving,model,—,,,,,,,ILLUSTRATIVE,"Profiles, relief depths, capitals, cresting and crests are generated shapes that follow the drawing's outlines, not construction details"
 D03,Statues in the niches,model,—,,,,,,,USER CONFIRMED / CONCEPT,The drawing shows empty niches with pedestals; the owner's three statues (9 Oct 2026) stand on the drawn pedestals

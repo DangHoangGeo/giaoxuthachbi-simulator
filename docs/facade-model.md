@@ -24,14 +24,14 @@ The overlay of the DWG linework on a straight-on render of the model matches wit
 
 - **Elevation:** DWG sheet 1, drawing E01B (variant B, full elevation). Model axes: Z = −(x − 1,666,600.3), Y = y + 515,946.8 (DWG mm), as in [`sheets.json`](layout_design/dwg-2026-10-23/sheets.json).
 - **Depths:** tower-end plans at +10.128 m (PT10) and +15.840 m (PT15). They have no model origin. Axis 1 and the D/E midpoint are read from their drawn centrelines (`PLAN_AXES` in `scripts/extract_dwg_revision.py`).
-- **Facade table:** [`facade.csv`](layout_design/dwg-2026-10-23/facade.csv) lists 32 traced values: levels, arc centres and radii, faces and the 621 / 5,958.8 / 621 pier chain. `python3 scripts/extract_dwg_revision.py facade` finds every one of them in the DWG geometry within 1.5 mm. The same table is on the workbook sheet *DWG facade*. Three further rows record where the model departs from the drawing or adds to it (D01–D03).
+- **Facade table:** [`facade.csv`](layout_design/dwg-2026-10-23/facade.csv) lists 35 traced values: levels, arc centres and radii, faces, the 621 / 5,958.8 / 621 pier chain and, since 31 October 2026, the tower front column bases (F33–F35). `python3 scripts/extract_dwg_revision.py facade` finds every one of them in the DWG geometry within 1.5 mm. The same table is on the workbook sheet *DWG facade*. Three further rows record where the model departs from the drawing or adds to it (D01–D03).
 - **Model:** `Thach_Bi_Viewer/facade.js` (`CHURCH_FACADE.spec` holds the values). It runs inside `realism.prepare`, before the plaster maps are projected. It removes the bundle's facade parts that lie wholly above +8.45 m, and the central cornice, then builds the new storey from boxes, extruded arch outlines and the shared `carving.js` generators.
 
 ## Status of each part
 
 | Part | Status |
 | --- | --- |
-| Levels, arch centres and radii, widths, faces in plan | `DRAWING SHOWN`, traced (facade.csv F01–F32) |
+| Levels, arch centres and radii, widths, faces in plan | `DRAWING SHOWN`, traced (facade.csv F01–F35) |
 | Moulding profiles, relief depths, capitals, cresting, carved crests, fleurs-de-lis | Illustrative shapes following the drawn outlines (`TRACED CAD ELEVATION / ILLUSTRATIVE CARVING`) |
 | Side bays end at ±7.128 m (corrected 26 October 2026) | Former D01 extension to ±7.5 removed; the rebuilt tower inner rear pier begins at ±7.103, giving 25 mm model overlap. |
 | Room behind the triple window (X 3.67–4.72) | Shown in plan; the model draws a dark closed backing behind the louvres, not the room |
