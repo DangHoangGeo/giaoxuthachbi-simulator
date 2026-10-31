@@ -48,7 +48,14 @@ def witness(ref):
         feature = data
         for part in path.split('.'):
             feature = feature[int(part)] if isinstance(feature, list) else feature[part]
-    return feature, feature.get('handle')
+    return feature, (feature.get('handle') if isinstance(feature, dict) else None)
+
+
+def geometry(feature):
+    """(centre, points) in (horizontal, Y) metres; E01B uses ZY keys, E02/ET use M keys."""
+    if not isinstance(feature, dict):
+        return None, None
+    return feature.get('centreZY') or feature.get('centreM'), feature.get('pointsZY') or feature.get('pointsM')
 
 
 def resolve(item):
@@ -65,18 +72,16 @@ def resolve(item):
             f"Kích thước ghi {row['id']}, handle {row['handle']}", None
     feature, handle = witness(item['ref'])
     field = item['truong']
-    if 'centreZY' in feature or 'pointsZY' in feature:
-        points = feature.get('pointsZY')
-        value = {'tam_y': lambda: feature['centreZY'][1], 'tam_z': lambda: feature['centreZY'][0],
-                 'ban_kinh': lambda: feature['radiusM'], 'y_dau': lambda: points[0][1],
-                 'y_cuoi': lambda: points[-1][1]}[field]()
-        point = (feature['centreZY'] if 'centreZY' in feature else points[-1 if field == 'y_cuoi' else 0])
+    centre, points = geometry(feature)
+    if centre or points:
+        value, _ = value_of(item['ref'], field)
+        point = centre or points[-1 if field == 'y_cuoi' else 0]
         check = ('ZY', point, feature.get('radiusM', 0))
     else:
         value = feature[field]
         check = ('Y', value) if (field in LEVEL_FIELDS or field.endswith('Y')) and item.get('don_vi') != 'mm' else None
         field = 'y' if check else field
-    source = 'TRACED trên nét CAD'+(f', handle {handle}' if handle else '')+' | '+item['ref'].split('#')[0]
+    source = 'ĐỌC TRÊN CAD'+(f', handle {handle}' if handle else '')+' | '+item['ref'].split('#')[0]
     unit = item.get('don_vi')
     if unit == 'ô':
         return f'{value} ô', 'đếm trên E01B/E02', source, None
@@ -97,7 +102,7 @@ def inside(detail, check):
     if check[0] == 'Y':
         return box['Y_m'][0]-tol <= check[1] <= box['Y_m'][1]+tol
     (h, y), r = check[1], check[2]
-    h0, h1 = box.get('Z_m') or box.get('X_m')
+    h0, h1 = box.get('Z_m') or box.get('X_m') or box.get('u_m')
     y0, y1 = box['Y_m']
     # A circle or arc is visible if its bounding square overlaps the crop.
     return h+r >= h0-tol and h-r <= h1+tol and y+r >= y0-tol and y-r <= y1+tol
@@ -134,13 +139,14 @@ def intro_page(doc):
         vi.put(page, 90, y, detail['ten'], 11)
         vi.put(page, 720, y, detail['ban_ve'], 11)
         vi.put(page, 800, y, str(n+3), 11)
-        links.append(fitz.Rect(30, y-13, 860, y+5))
-        y += 24
+        links.append(fitz.Rect(30, y-13, 860, y+4))
+        y += 21
     assert y < 790
-    vi.paragraph(page, 890, y-24*len(SPEC['chi_tiet']), 'Bấm vào một dòng để mở trang chi tiết. Trang 2 đánh dấu vị trí từng khung cắt trên tháp.\n\n'
-                 'TRACED: tọa độ đọc trực tiếp trên nét CAD theo handle, không phải kích thước người thiết kế ghi. '
-                 'Chất liệu, chiều sâu phào và chạm khắc, bề dày tường, cách gắn và cấu tạo không có trong DWG.',
-                 260, 10, 14, max_y=780)
+    gy = y-21*len(SPEC['chi_tiet'])
+    vi.put(page, 890, gy, 'CÁCH DÙNG CHO NGƯỜI THI CÔNG', 11, True, vi.BLUE)
+    gy += 18
+    for line in SPEC['huong_dan_nguoi_lam']:
+        gy = vi.paragraph(page, 890, gy, line, 270, 8.5, 11.5, max_y=790)+6
     return links
 
 
@@ -149,18 +155,21 @@ W, H = vi.W, vi.H
 
 def key_page(doc):
     """Mark every elevation crop on the tower, so each enlargement can be located."""
-    page = vi.new_page(doc, 'VỊ TRÍ CÁC CHI TIẾT TRÊN THÁP', 'Mặt trước E01B (tháp phía H) và mặt bên E02; khung đỏ là phạm vi từng trang phóng lớn')
-    views = [('E01B', 7.25, 13.05, 0.0, 37.3, fitz.Rect(40, 78, 470, 795)),
-             ('E02', -0.45, 5.35, 0.0, 37.3, fitz.Rect(500, 78, 860, 795))]
+    page = vi.new_page(doc, 'VỊ TRÍ CÁC CHI TIẾT TRÊN THÁP', 'Mặt trước E01B (tháp phía H), mặt bên E02 và hình cắt ET; khung đỏ là phạm vi từng trang phóng lớn')
+    views = [('E01B', 7.25, 13.05, 0.0, 37.3, fitz.Rect(60, 78, 330, 795)),
+             ('E02', -0.45, 5.35, 0.0, 37.3, fitz.Rect(360, 78, 610, 795)),
+             ('ET', 0, 8.867, -1.0, 38.92, fitz.Rect(650, 78, 850, 795))]
     for drawing, h0, h1, y0, y1, target in views:
         if drawing == 'E01B':
             box = [1666600.3-h1*1000, y0*1000-515946.8, 1666600.3-h0*1000, y1*1000-515946.8]
-        else:
+        elif drawing == 'E02':
             box = [h0*1000+1404501.3, y0*1000-518026.8, h1*1000+1404501.3, y1*1000-518026.8]
+        else:
+            box = vi.DRAW['ET']['frame']
         source, clip = clip_for(drawing, box)
         area, scale = fitted(target, clip)
         page.show_pdf_page(target, source, 0, clip=clip)
-        vi.put(page, area.x0, area.y1+12 if area.y1 < 780 else 790, drawing, 9, True)
+        vi.put(page, area.x0, 790, {'E01B': 'E01B mặt trước', 'E02': 'E02 mặt bên', 'ET': 'ET hình cắt'}[drawing], 9, True)
         used = []
         for detail in SPEC['chi_tiet']:
             if detail['ban_ve'] != drawing:
@@ -175,45 +184,109 @@ def key_page(doc):
             while any(abs(label_y-u) < 11 for u in used):
                 label_y += 11
             used.append(label_y)
-            x = area.x0-30 if drawing == 'E01B' else area.x1+4
+            x = area.x0-30 if drawing == 'E01B' else min(area.x1+4, 852)
             vi.put(page, x, label_y, detail['id'], 8, True, RED)
             if abs(label_y-rect.y0-9) > 1:
                 page.draw_line((x+22, label_y-3), (rect.x0, rect.y0+6), color=RED, width=.4)
     vi.paragraph(page, 890, 100, 'Các chi tiết mặt trước lấy tháp phía H trên E01B. Tháp phía B là bản sao gần đối xứng (sai dư khoảng 0,1 mm), '
                  'riêng tầng trên cùng và hoa hồng chỏm lệch ngang khoảng 11,5 mm theo nguồn.\n\n'
-                 'Mặt bên tầng trệt E02 khác mặt trước: có cửa sổ giữa và chân cung vòm kín cao hơn 200,5 mm.\n\n'
-                 'Hai trang mặt bằng T15 và T16 lấy góc PT15A và PT29.\n\n'
-                 'Hình ET (một tháp, không tiêu đề) chưa dùng vì hoa hồng tầng hai thấp hơn E01B/E02 90 mm và thiếu bộ vòm lớn; chờ kiến trúc sư xác nhận ENG-040.',
+                 'Mặt bên E02 (T14, T17-T20) nhìn từ hông nhà thờ. Các tầng trên trùng cao độ và bán kính chính với mặt trước; tầng trệt khác: có cửa sổ giữa và chân cung vòm kín cao hơn 200,5 mm.\n\n'
+                 'Hình ET (T21-T23) không có tiêu đề; phào vẽ dạng tiết diện và ô cửa không có hoa văn ngoài, nên nhiều khả năng là hình cắt nhìn vào mặt trong tường tháp. Hướng cắt chưa ghi, hoa hồng tầng hai thấp hơn E01B/E02 90 mm: chỉ dùng để hiểu cấu tạo bên trong, chờ kiến trúc sư xác nhận ENG-040.\n\n'
+                 'Hai trang mặt bằng T15 và T16 lấy góc PT15A và PT29.',
                  260, 10, 14, max_y=600)
+
+
+def value_of(ref, field):
+    """One numeric reading from a witness: feature fields or a dotted path."""
+    feature, handle = witness(ref)
+    centre, points = geometry(feature)
+    if centre or points:
+        return {'tam_y': lambda: centre[1], 'tam_z': lambda: centre[0],
+                'ban_kinh': lambda: feature['radiusM'], 'y_dau': lambda: points[0][1],
+                'y_cuoi': lambda: points[-1][1], 'z_dau': lambda: points[0][0]}[field](), handle
+    return (feature if field is None else feature[field]), handle
+
+
+def derive(item, detail):
+    """Site-usable numbers computed from the traced readings; always labelled SUY RA."""
+    kind = item['suy_ra']
+    handles = []
+
+    def get(ref, field):
+        value, handle = value_of(ref, field)
+        if handle:
+            handles.append(handle)
+        return value
+    if kind == 'dinh_vom':
+        value, level = get(item['ref'], 'tam_y')+get(item['ref'], 'ban_kinh'), True
+    elif kind == 'rong_vom':
+        value, level = 2*get(item['ref'], 'ban_kinh'), False
+    elif kind == 'cach_tim':
+        value, level = abs(get(item['ref'], 'tam_z')-detail['tim_thap_z']), False
+    elif kind == 'tren_san':
+        value, level = get(item['ref'], item['truong'])-item['san'], False
+    elif kind == 'hieu_z':
+        value, level = abs(get(item['refs'][0], 'z_dau')-get(item['refs'][1], 'z_dau')), False
+    elif kind == 'hieu_y':
+        value, level = item['a']-get(item['ref'], 'y_dau'), False
+    elif kind == 'hieu_so':
+        value, level = item['a']-item['b'], False
+    elif kind == 'hieu_path':
+        value, level = get(item['a'], None)-get(item['b'], None), False
+    else:
+        value, level = get(item['a'], item['fa'])-get(item['b'], item['fb']), False
+    assert value > 0, ('Derived value must be positive', detail['id'], item)
+    main = ('+'+f'{value:.3f}'.replace('.', ',')+' m') if level else vi.num(value*1000)+' mm'
+    source = 'SUY RA'+(' từ handle '+', '.join(dict.fromkeys(handles)) if handles else ' từ tệp chứng cứ')
+    return main, source
+
+
+def heading(page, y, text):
+    vi.put(page, 830, y, text, 10, True, vi.BLUE)
+    return y+15
 
 
 def detail_page(doc, detail):
     drawing = vi.DRAW[detail['ban_ve']]
+    title = {'ET': 'Hình ET không tiêu đề (sổ bản vẽ ghi: mặt đứng một tháp)'}.get(detail['ban_ve'], vi.TITLE_VI[detail['ban_ve']])
     page = vi.new_page(doc, (detail['id']+'  '+detail['ten']).upper(),
-                       f"Bản vẽ {detail['ban_ve']} | Tờ CAD {drawing['sheet'] or 'không đánh số'} | {vi.TITLE_VI[detail['ban_ve']]} | Phóng lớn")
+                       f"Bản vẽ {detail['ban_ve']} | Tờ CAD {drawing['sheet'] or 'không đánh số'} | {title} | Phóng lớn")
     source, clip = clip_for(detail['ban_ve'], detail['khung_cat_cad_mm'])
-    target = fitz.Rect(28, 80, 853, 792)
+    target = fitz.Rect(28, 80, 800, 792)
     page.show_pdf_page(target, source, 0, clip=clip)
     area, scale = fitted(target, clip)
-    page.draw_line((874, 82), (874, 790), color=(.72, .78, .8), width=.6)
-    vi.put(page, 894, 99, 'MỐC ĐỌC TRÊN BẢN VẼ', 12, True)
-    y = 128
+    page.draw_line((815, 82), (815, 790), color=(.72, .78, .8), width=.6)
+    x, width = 830, W-28-830
+    y = heading(page, 92, 'ĐÂY LÀ GÌ')
+    y = vi.paragraph(page, x, y, detail['la_gi'], width, 9, 12, max_y=760)+5
+    y = heading(page, y, 'LẶP LẠI Ở ĐÂU')
+    y = vi.paragraph(page, x, y, detail['so_luong'], width, 9, 12, max_y=760)+5
+    derived = []
+    if detail.get('suy_ra'):
+        y = heading(page, y, 'SỐ DÙNG KHI ĐỐI CHIẾU (SUY RA)')
+        for item in detail['suy_ra']:
+            main, src = derive(item, detail)
+            derived.append({'nhan': item['nhan'], 'gia_tri': main, 'nguon': src})
+            vi.put(page, x, y, main, 11, True)
+            y = vi.paragraph(page, x+92, y, item['nhan'], width-92, 8.5, 11, max_y=760)
+            y = vi.paragraph(page, x+92, y-1, src, width-92, 6.5, 8, max_y=764)+3
+        y += 3
+    y = heading(page, y, 'MỐC ĐỌC TRÊN BẢN VẼ')
     resolved = []
     for item in detail['so_do']:
         main, second, src, check = resolve(item)
         assert inside(detail, check), ('Witness outside its crop', detail['id'], item)
         resolved.append({'nhan': item['nhan'], 'gia_tri': main, 'phu': second, 'nguon': src})
-        y = vi.paragraph(page, 894, y, item['nhan'], 260, 10, 13, True, max_y=700)
-        vi.put(page, 894, y+3, main, 13, True)
-        vi.put(page, 1040, y+3, second, 8)
-        y = vi.paragraph(page, 894, y+17, src, 260, 7.5, 10, max_y=712)+9
-    vi.paragraph(page, 894, y+6, 'Ngoài các mốc trên, hoa văn trong khung chỉ có nét vẽ: DWG không ghi kích thước, chiều sâu chạm khắc, '
-                 'vật liệu hay cấu tạo. Không đo trên trang in để lấy số chế tạo.', 260, 9, 13, max_y=740)
-    vi.paragraph(page, 894, 744, 'Số đo TRACED là tọa độ nét vẽ, chưa phải kích thước thiết kế. Phải được kiến trúc sư xác nhận trước khi chế tạo.',
-                 260, 8.5, 11, max_y=790)
+        vi.put(page, x, y, main, 9.5, True)
+        y = vi.paragraph(page, x+92, y, item['nhan'], width-92, 8.5, 11, max_y=760)
+        y = vi.paragraph(page, x+92, y-1, src, width-92, 6.5, 8, max_y=764)+2
+    y = heading(page, y+4, 'CẦN HỎI TRƯỚC KHI LÀM')
+    for question in detail['hoi']:
+        y = vi.paragraph(page, x, y, '• '+question, width, 8.5, 11, max_y=772)+1
+    vi.paragraph(page, x, max(y+4, 778), 'Không đo trên giấy in. Chưa phải bản vẽ chế tạo; cần kiến trúc sư xác nhận.', width, 7.5, 9, max_y=790)
     return {'id': detail['id'], 'ban_ve': detail['ban_ve'], 'ten': detail['ten'], 'trang': len(doc),
             'khung_cat_cad_mm': detail['khung_cat_cad_mm'], 'ty_le_phong_so_voi_trang_goc': round(scale, 2),
-            'dang_net': 'vector, giữ nguyên đường nét PDF nguồn', 'so_do': resolved}
+            'dang_net': 'vector, giữ nguyên đường nét PDF nguồn', 'so_do': resolved, 'suy_ra': derived}
 
 
 def single_name(detail):
@@ -256,7 +329,7 @@ def tower_volume(result):
             assert not page.get_images(), 'Unexpected raster image in the vector edition'
         for view in views:
             text = checked[view['trang']-1].get_text()
-            assert view['id'] in text and all(s['gia_tri'] in text for s in view['so_do']), view['id']
+            assert view['id'] in text and all(s['gia_tri'] in text for s in view['so_do']+view['suy_ra']), view['id']
     result['tep'] = [e for e in result['tep'] if e['tep'] != SPEC['tep']]
     result['tung_trang'] = [e for e in result['tung_trang'] if e.get('tap_goc') != SPEC['tep']]
     result['tep'].append({'tep': target.name, 'ten': SPEC['ten'], 'so_trang': len(views)+2,

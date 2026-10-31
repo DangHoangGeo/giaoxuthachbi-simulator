@@ -2,7 +2,7 @@
  "phien_ban": "23102026",
  "tep": "11_Chi_tiet_trang_tri_thap_23102026.pdf",
  "ten": "Chi tiết trang trí hai tháp",
- "mo_ta": "Các phần trang trí nhỏ của tháp chuông được phóng lớn từ cùng nét vector CAD: thánh giá, đèn lồng, chỏm, hoa góc, lan can ô bậc, hoa hồng, cửa chớp, đầu cột, phào, diềm hoa văn và hoa văn góc vòm. Mặt trước lấy E01B (tháp phía H; tháp B đối xứng trong khoảng 0,1 mm, riêng tầng trên cùng lệch khoảng 11,5 mm). Mặt bên lấy E02.",
+ "mo_ta": "Các phần trang trí nhỏ của tháp chuông được phóng lớn từ cùng nét vector CAD, nhìn từ ba phía: mặt trước (E01B, tháp phía H; tháp B đối xứng trong khoảng 0,1 mm, riêng tầng trên cùng lệch khoảng 11,5 mm), mặt bên phía hông nhà thờ (E02) và hình cắt qua tháp (ET, chưa có tiêu đề). Kèm hai góc mặt bằng.",
  "nguon_so_lieu": "Số đo cạnh hình là tọa độ đọc trên nét CAD (TRACED) theo handle trong docs/exterior-23102026, hoặc nhãn cao độ/kích thước ghi trong DWG. DWG không ghi kích thước, vật liệu, chiều sâu chạm khắc hay cấu tạo của các chi tiết trang trí.",
  "bien_doi": {
   "E01B": "Z = -(x - 1666600.3)/1000; Y = (y + 515946.8)/1000",
@@ -69,7 +69,31 @@
      "ref": "tower-witnesses.json#lantern-plinth-bottom",
      "truong": "y_dau"
     }
-   ]
+   ],
+   "la_gi": "Thánh giá trên đỉnh, quả cầu và đèn lồng đỡ thánh giá. Nhìn thẳng mặt trước tháp.",
+   "so_luong": "2 bộ, mỗi tháp một bộ trên đỉnh chỏm.",
+   "suy_ra": [
+    {
+     "nhan": "Bề rộng thân thánh giá",
+     "suy_ra": "hieu_z",
+     "refs": [
+      "tower-witnesses.json#cross-stem-inner",
+      "tower-witnesses.json#cross-stem-outer"
+     ]
+    },
+    {
+     "nhan": "Chiều cao từ đỉnh chỏm đến đỉnh thánh giá",
+     "suy_ra": "hieu_y",
+     "a": 36.92,
+     "ref": "tower-witnesses.json#lantern-plinth-bottom"
+    }
+   ],
+   "hoi": [
+    "Vật liệu thánh giá và quả cầu (thép, đồng, bê tông) và chiều dày; mô hình đang tạm dùng 100 mm, chưa phải quy cách.",
+    "Neo vào đèn lồng, tải gió và nối chống sét.",
+    "Cách lên đỉnh và lắp đặt an toàn."
+   ],
+   "tim_thap_z": 10.152934
   },
   {
    "id": "T02",
@@ -124,7 +148,24 @@
      "ref": "tower-witnesses.json#lantern-plinth-bottom",
      "truong": "y_dau"
     }
-   ]
+   ],
+   "la_gi": "Chỏm tròn trên lan can, hoa hồng giữa chỏm và hai hoa góc nhọn. Nhìn thẳng mặt trước tháp.",
+   "so_luong": "2 chỏm. Hoa góc ở 4 góc mỗi tháp, 8 cái trên hai tháp (theo 4 trụ góc trên mặt bằng PT29).",
+   "suy_ra": [
+    {
+     "nhan": "Đỉnh chỏm cao hơn mặt sàn +29,090 m",
+     "suy_ra": "tren_san",
+     "ref": "tower-witnesses.json#lantern-plinth-bottom",
+     "truong": "y_dau",
+     "san": 29.09
+    }
+   ],
+   "hoi": [
+    "Vật liệu và chiều dày vỏ chỏm, lớp chống thấm, thoát nước.",
+    "Hoa hồng chỏm là kính hay đắp nổi.",
+    "Mẫu hoa góc 1:1 và cách neo."
+   ],
+   "tim_thap_z": 10.152934
   },
   {
    "id": "T03",
@@ -190,7 +231,23 @@
      "ref": "tower-balcony-witnesses.json#holePattern",
      "truong": "topY"
     }
-   ]
+   ],
+   "la_gi": "Lan can quanh chân chỏm: 17 ô bậc mỗi mặt, trụ đặc ở góc, hoa góc phía trên. Nhìn thẳng mặt trước, chỉ một nửa mặt (nửa kia đối xứng).",
+   "so_luong": "8 mặt (2 tháp × 4 mặt), tổng 136 ô.",
+   "suy_ra": [
+    {
+     "nhan": "Chiều cao ô",
+     "suy_ra": "hieu_path",
+     "a": "tower-balcony-witnesses.json#holePattern.topY",
+     "b": "tower-balcony-witnesses.json#holePattern.bottomY"
+    }
+   ],
+   "hoi": [
+    "Ô là lỗ thủng thật hay chỉ đắp nổi; chiều dày, cốt thép.",
+    "Chiều cao bảo vệ người và tải lan can (kỹ sư kết cấu).",
+    "Thoát nước sàn +29,090 m; đèn L164/L175 trên phào phía dưới (ENG-041)."
+   ],
+   "tim_thap_z": 10.152934
   },
   {
    "id": "T04",
@@ -257,7 +314,39 @@
      "ref": "tower-witnesses.json#upper-4-rose-outer",
      "truong": "ban_kinh"
     }
-   ]
+   ],
+   "la_gi": "Tầng tháp thứ tư (+23,140 đến +29,090 m): vòm lớn, hai ô cửa chớp có thánh giá nhỏ trên đầu và hoa hồng. Nhìn thẳng mặt trước tháp.",
+   "so_luong": "8 mặt ở tầng này (2 tháp × 4 mặt). Mặt trước theo E01B, mặt ngoài theo E02; 4 mặt trong/sau không có bản vẽ riêng, đang giả định lặp lại cùng mẫu.",
+   "suy_ra": [
+    {
+     "nhan": "Đỉnh ngoài vòm lớn",
+     "suy_ra": "dinh_vom",
+     "ref": "tower-witnesses.json#upper-4-great-outer"
+    },
+    {
+     "nhan": "Bề rộng ngoài vòm lớn",
+     "suy_ra": "rong_vom",
+     "ref": "tower-witnesses.json#upper-4-great-outer"
+    },
+    {
+     "nhan": "Tim mỗi ô cửa chớp cách tim tháp",
+     "suy_ra": "cach_tim",
+     "ref": "tower-witnesses.json#upper-4-louvre-outer-H"
+    },
+    {
+     "nhan": "Đáy ô chớp cao hơn sàn tầng",
+     "suy_ra": "tren_san",
+     "ref": "tower-witnesses.json#upper-4-sill",
+     "truong": "y_cuoi",
+     "san": 23.14
+    }
+   ],
+   "hoi": [
+    "Lá chớp: vật liệu, chiều dày, góc nghiêng, khoảng cách lá, cách chống mưa hắt và lưới chống chim.",
+    "Hoa hồng là kính màu, ô thủng hay đắp nổi trên tường đặc?",
+    "Độ sâu các lớp vòm/phào và mẫu cho 4 mặt trong/sau."
+   ],
+   "tim_thap_z": 10.141459
   },
   {
    "id": "T05",
@@ -289,7 +378,15 @@
       23140
      ]
     }
-   ]
+   ],
+   "la_gi": "Đầu cột góc (lá hoa) và các lớp phào ở cao độ +23,140 m. Nhìn thẳng mặt trước, góc ngoài của tháp.",
+   "so_luong": "Lặp ở các góc tháp tại +23,140 m; phào chạy vòng quanh tháp. Đếm số đầu cột theo mặt bằng PT23.",
+   "hoi": [
+    "Mẫu hoa văn tỉ lệ 1:1 hoặc khuôn đúc từ kiến trúc sư.",
+    "Vật liệu (đắp vữa tại chỗ, đúc sẵn, đá) và độ nổi của hoa văn.",
+    "Độ vươn của phào và cách neo/giá đỡ phần vươn ra ngoài tường."
+   ],
+   "tim_thap_z": 10.152934
   },
   {
    "id": "T06",
@@ -351,7 +448,39 @@
      "ref": "tower-witnesses.json#upper-3-rose-outer",
      "truong": "tam_y"
     }
-   ]
+   ],
+   "la_gi": "Tầng tháp thứ ba (+15,840 đến +23,140 m): vòm lớn, hai ô cửa chớp và hoa hồng. Nhìn thẳng mặt trước tháp.",
+   "so_luong": "8 mặt ở tầng này (2 tháp × 4 mặt). Mặt trước theo E01B, mặt ngoài theo E02; 4 mặt trong/sau không có bản vẽ riêng, đang giả định lặp lại cùng mẫu.",
+   "suy_ra": [
+    {
+     "nhan": "Đỉnh ngoài vòm lớn",
+     "suy_ra": "dinh_vom",
+     "ref": "tower-witnesses.json#upper-3-great-outer"
+    },
+    {
+     "nhan": "Bề rộng ngoài vòm lớn",
+     "suy_ra": "rong_vom",
+     "ref": "tower-witnesses.json#upper-3-great-outer"
+    },
+    {
+     "nhan": "Tim mỗi ô cửa chớp cách tim tháp",
+     "suy_ra": "cach_tim",
+     "ref": "tower-witnesses.json#upper-3-louvre-outer-H"
+    },
+    {
+     "nhan": "Đáy ô chớp cao hơn sàn tầng",
+     "suy_ra": "tren_san",
+     "ref": "tower-witnesses.json#upper-3-sill",
+     "truong": "y_cuoi",
+     "san": 15.84
+    }
+   ],
+   "hoi": [
+    "Lá chớp: vật liệu, chiều dày, góc nghiêng, khoảng cách lá, cách chống mưa hắt và lưới chống chim.",
+    "Hoa hồng là kính màu, ô thủng hay đắp nổi trên tường đặc?",
+    "Độ sâu các lớp vòm/phào và mẫu cho 4 mặt trong/sau."
+   ],
+   "tim_thap_z": 10.152934
   },
   {
    "id": "T07",
@@ -406,7 +535,31 @@
      "ref": "tower-witnesses.json#upper-3-louvre-outer-H",
      "truong": "ban_kinh"
     }
-   ]
+   ],
+   "la_gi": "Phóng lớn hoa hồng và đầu vòm hai ô cửa chớp có thánh giá nhỏ, tầng ba. Tầng hai giống mẫu này.",
+   "so_luong": "Mỗi mặt tầng 2 và 3 có 1 hoa hồng và 2 đầu vòm như hình.",
+   "suy_ra": [
+    {
+     "nhan": "Tim mỗi ô cửa chớp cách tim tháp",
+     "suy_ra": "cach_tim",
+     "ref": "tower-witnesses.json#upper-3-louvre-outer-H"
+    },
+    {
+     "nhan": "Đường kính ngoài hoa hồng",
+     "suy_ra": "rong_vom",
+     "ref": "tower-witnesses.json#upper-3-rose-outer"
+    },
+    {
+     "nhan": "Đỉnh cung đầu ô chớp",
+     "suy_ra": "dinh_vom",
+     "ref": "tower-witnesses.json#upper-3-louvre-outer-H"
+    }
+   ],
+   "hoi": [
+    "Thánh giá nhỏ đầu vòm là ô thủng hay đắp nổi.",
+    "Mẫu cánh hoa hồng 1:1, độ sâu và vật liệu."
+   ],
+   "tim_thap_z": 10.152934
   },
   {
    "id": "T08",
@@ -438,7 +591,15 @@
       15840
      ]
     }
-   ]
+   ],
+   "la_gi": "Đầu cột góc và các lớp phào ở cao độ +15,840 m. Nhìn thẳng mặt trước, góc ngoài của tháp.",
+   "so_luong": "Lặp ở các góc tháp tại +15,840 m; phào chạy vòng quanh tháp. Đếm số đầu cột theo mặt bằng PT15A.",
+   "hoi": [
+    "Mẫu hoa văn tỉ lệ 1:1 hoặc khuôn đúc từ kiến trúc sư.",
+    "Vật liệu (đắp vữa tại chỗ, đúc sẵn, đá) và độ nổi của hoa văn.",
+    "Độ vươn của phào và cách neo/giá đỡ phần vươn ra ngoài tường."
+   ],
+   "tim_thap_z": 10.152934
   },
   {
    "id": "T09",
@@ -495,7 +656,39 @@
      "ref": "tower-witnesses.json#upper-2-rose-outer",
      "truong": "ban_kinh"
     }
-   ]
+   ],
+   "la_gi": "Tầng tháp thứ hai (+8,390 đến +15,840 m): vòm lớn, hai ô cửa chớp và hoa hồng. Nhìn thẳng mặt trước tháp.",
+   "so_luong": "8 mặt ở tầng này (2 tháp × 4 mặt). Mặt trước theo E01B, mặt ngoài theo E02; 4 mặt trong/sau không có bản vẽ riêng, đang giả định lặp lại cùng mẫu.",
+   "suy_ra": [
+    {
+     "nhan": "Đỉnh ngoài vòm lớn",
+     "suy_ra": "dinh_vom",
+     "ref": "tower-witnesses.json#upper-2-great-outer"
+    },
+    {
+     "nhan": "Bề rộng ngoài vòm lớn",
+     "suy_ra": "rong_vom",
+     "ref": "tower-witnesses.json#upper-2-great-outer"
+    },
+    {
+     "nhan": "Tim mỗi ô cửa chớp cách tim tháp",
+     "suy_ra": "cach_tim",
+     "ref": "tower-witnesses.json#upper-2-louvre-outer-H"
+    },
+    {
+     "nhan": "Tâm hoa hồng cao hơn sàn tầng",
+     "suy_ra": "tren_san",
+     "ref": "tower-witnesses.json#upper-2-rose-outer",
+     "truong": "tam_y",
+     "san": 8.39
+    }
+   ],
+   "hoi": [
+    "Lá chớp: vật liệu, chiều dày, góc nghiêng, khoảng cách lá, cách chống mưa hắt và lưới chống chim.",
+    "Hoa hồng là kính màu, ô thủng hay đắp nổi trên tường đặc?",
+    "Độ sâu các lớp vòm/phào và mẫu cho 4 mặt trong/sau."
+   ],
+   "tim_thap_z": 10.152934
   },
   {
    "id": "T10",
@@ -545,7 +738,41 @@
      "ref": "tower-witnesses.json#upper-2-sill",
      "truong": "y_cuoi"
     }
-   ]
+   ],
+   "la_gi": "Hai ô cửa chớp tầng hai: khung, lá chớp, bậu và đầu vòm. Các nét ngang là lá chớp theo CAD.",
+   "so_luong": "2 ô mỗi mặt; cùng mẫu ở tầng 3 (tầng 4 nhỏ hơn, xem T04).",
+   "suy_ra": [
+    {
+     "nhan": "Tim mỗi ô cách tim tháp",
+     "suy_ra": "cach_tim",
+     "ref": "tower-witnesses.json#upper-2-louvre-outer-H"
+    },
+    {
+     "nhan": "Bề rộng lọt vòng cung đầu ô",
+     "suy_ra": "rong_vom",
+     "ref": "tower-witnesses.json#upper-2-louvre-outer-H"
+    },
+    {
+     "nhan": "Đáy ô cao hơn sàn tầng +8,390 m",
+     "suy_ra": "tren_san",
+     "ref": "tower-witnesses.json#upper-2-sill",
+     "truong": "y_cuoi",
+     "san": 8.39
+    },
+    {
+     "nhan": "Chiều cao từ đáy ô đến tâm cung",
+     "suy_ra": "hieu_ref",
+     "a": "tower-witnesses.json#upper-2-louvre-outer-H",
+     "fa": "tam_y",
+     "b": "tower-witnesses.json#upper-2-sill",
+     "fb": "y_cuoi"
+    }
+   ],
+   "hoi": [
+    "Lá chớp: vật liệu, chiều dày, góc nghiêng, khoảng cách lá, cách chống mưa hắt và lưới chống chim.",
+    "Bậu: độ dốc thoát nước và vật liệu."
+   ],
+   "tim_thap_z": 10.152934
   },
   {
    "id": "T11",
@@ -577,7 +804,16 @@
       8390
      ]
     }
-   ]
+   ],
+   "la_gi": "Phào +8,390 m, diềm hoa văn chữ triện chạy ngang và đầu cột phía dưới. Nhìn thẳng mặt trước, góc ngoài tháp.",
+   "so_luong": "Phào và diềm chạy quanh tháp ở +8,390 m; mẫu chữ triện lặp đều.",
+   "hoi": [
+    "Mẫu hoa văn tỉ lệ 1:1 hoặc khuôn đúc từ kiến trúc sư.",
+    "Vật liệu (đắp vữa tại chỗ, đúc sẵn, đá) và độ nổi của hoa văn.",
+    "Độ vươn của phào và cách neo/giá đỡ phần vươn ra ngoài tường.",
+    "Nhịp lặp và chiều sâu của mẫu chữ triện."
+   ],
+   "tim_thap_z": 10.152934
   },
   {
    "id": "T12",
@@ -612,7 +848,21 @@
      "ref": "tower-witnesses.json#ground-great-outer",
      "truong": "ban_kinh"
     }
-   ]
+   ],
+   "la_gi": "Hai hoa văn góc phía trên vòm tầng trệt, đối xứng trái/phải. Nhìn thẳng mặt trước tháp.",
+   "so_luong": "2 hoa văn trên mỗi mặt có vòm tầng trệt; mặt bên E02 cũng có (xem T14).",
+   "suy_ra": [
+    {
+     "nhan": "Đỉnh ngoài vòm lớn (chân hoa văn)",
+     "suy_ra": "dinh_vom",
+     "ref": "tower-witnesses.json#ground-great-outer"
+    }
+   ],
+   "hoi": [
+    "Mẫu hoa văn tỉ lệ 1:1 hoặc khuôn đúc từ kiến trúc sư.",
+    "Vật liệu (đắp vữa tại chỗ, đúc sẵn, đá) và độ nổi của hoa văn."
+   ],
+   "tim_thap_z": 10.152934
   },
   {
    "id": "T13",
@@ -667,7 +917,36 @@
      "ref": "tower-witnesses.json#ground-blind-inner",
      "truong": "ban_kinh"
     }
-   ]
+   ],
+   "la_gi": "Mặt trước tháp tầng trệt: vòm lớn nhiều lớp, vòm kín nhỏ bên trong, đầu cột. Mặt trước giữ kín theo chủ đầu tư 25/10/2026.",
+   "so_luong": "2 mặt trước (mỗi tháp một mặt).",
+   "suy_ra": [
+    {
+     "nhan": "Đỉnh ngoài vòm lớn",
+     "suy_ra": "dinh_vom",
+     "ref": "tower-witnesses.json#ground-great-outer"
+    },
+    {
+     "nhan": "Bề rộng ngoài vòm lớn",
+     "suy_ra": "rong_vom",
+     "ref": "tower-witnesses.json#ground-great-outer"
+    },
+    {
+     "nhan": "Đỉnh ngoài vòm kín nhỏ",
+     "suy_ra": "dinh_vom",
+     "ref": "tower-witnesses.json#ground-blind-outer"
+    },
+    {
+     "nhan": "Bề rộng ngoài vòm kín nhỏ",
+     "suy_ra": "rong_vom",
+     "ref": "tower-witnesses.json#ground-blind-outer"
+    }
+   ],
+   "hoi": [
+    "Độ sâu từng lớp vòm và mặt tường đặc phía sau.",
+    "Mẫu đầu cột 1:1 và vật liệu."
+   ],
+   "tim_thap_z": 10.152934
   },
   {
    "id": "T14",
@@ -718,6 +997,26 @@
      "truong": "differenceFromFrontBlindY",
      "don_vi": "mm"
     }
+   ],
+   "la_gi": "Mặt ngoài bên của tháp tầng trệt (nhìn từ hông nhà thờ): vòm lớn, cửa sổ giữa có vòm, đầu cột.",
+   "so_luong": "2 mặt ngoài (mỗi tháp một mặt). Khác mặt trước: không lấy kích thước T13 thay cho mặt này.",
+   "suy_ra": [
+    {
+     "nhan": "Bề rộng cửa sổ giữa",
+     "suy_ra": "hieu_path",
+     "a": "tower-other-faces-witnesses.json#groundOuterSide.centralWindow.rightX",
+     "b": "tower-other-faces-witnesses.json#groundOuterSide.centralWindow.leftX"
+    },
+    {
+     "nhan": "Chiều cao thân cửa sổ (bậu đến đầu thân)",
+     "suy_ra": "hieu_path",
+     "a": "tower-other-faces-witnesses.json#groundOuterSide.centralWindow.jambTopY",
+     "b": "tower-other-faces-witnesses.json#groundOuterSide.centralWindow.sillY"
+    }
+   ],
+   "hoi": [
+    "Cửa sổ: kính hay chớp, có mở được không, khung và vật liệu.",
+    "Mép hoàn thiện thực tế trước khi đặt hàng cửa."
    ]
   },
   {
@@ -741,6 +1040,12 @@
      "nhan": "Lòng trong giữa hai mặt",
      "kich_thuoc": "DWG0044"
     }
+   ],
+   "la_gi": "Một góc mặt bằng tháp tại +15,840 m, nhìn từ trên xuống: trụ góc nhiều bậc, ô tô đen ở góc (CAD không ghi là gì, có thể là cột), hai đường trục 1 và 2.",
+   "so_luong": "4 góc mỗi tháp; mặt bằng đối xứng.",
+   "hoi": [
+    "Ô đen là cột bê tông cốt thép? Tiết diện và cốt thép do kỹ sư kết cấu cho.",
+    "Bề dày tường và kích thước từng bậc trụ (CAD không ghi)."
    ]
   },
   {
@@ -763,7 +1068,477 @@
       29090
      ]
     }
+   ],
+   "la_gi": "Một góc mặt bằng tháp tại +29,090 m (chân lan can và chỏm), nhìn từ trên xuống. Hình thoi đen ở góc trong.",
+   "so_luong": "4 góc mỗi tháp; mặt bằng đối xứng.",
+   "hoi": [
+    "Hình thoi đen là gì (cột, thép chờ) và kích thước.",
+    "Bề dày lan can/vỏ chỏm và vị trí gối đỡ chỏm (chưa thiết kế)."
    ]
+  },
+  {
+   "id": "T17",
+   "slug": "side-crown",
+   "ban_ve": "E02",
+   "ten": "Mặt bên tháp: chỏm, lan can, đèn lồng và thánh giá",
+   "en": "Tower outer side: dome, parapet, lantern and cross",
+   "khung_cat_cad_mm": [
+    1404051,
+    -489427,
+    1409851,
+    -480827
+   ],
+   "khung_mo_hinh_m": {
+    "X_m": [
+     -0.45,
+     5.35
+    ],
+    "Y_m": [
+     28.6,
+     37.2
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Mặt sàn chân lan can",
+     "cao_do": [
+      "E02",
+      29090
+     ]
+    },
+    {
+     "nhan": "Đỉnh thánh giá",
+     "cao_do": [
+      "E02",
+      36920
+     ]
+    }
+   ],
+   "la_gi": "Mặt ngoài bên của tháp, nhìn từ hông nhà thờ (E02). Phần trên cùng: lan can ô bậc, hoa góc, chỏm, đèn lồng, quả cầu và thánh giá. Thánh giá nhìn từ bên thấy cạnh mỏng.",
+   "so_luong": "2 bộ (mỗi tháp một). Lan can 4 mặt mỗi tháp.",
+   "suy_ra": [
+    {
+     "nhan": "Chiều cao từ sàn lan can đến đỉnh thánh giá",
+     "suy_ra": "hieu_so",
+     "a": 36.92,
+     "b": 29.09
+    }
+   ],
+   "hoi": [
+    "Chiều dày thánh giá theo phương nhìn bên (mô hình tạm 100 mm, chưa phải quy cách).",
+    "Vỏ chỏm: vật liệu, chiều dày, chống thấm."
+   ]
+  },
+  {
+   "id": "T18",
+   "slug": "side-stage-4",
+   "ban_ve": "E02",
+   "ten": "Mặt bên tháp, tầng thứ tư",
+   "en": "Tower outer side, stage 4",
+   "khung_cat_cad_mm": [
+    1404051,
+    -495027,
+    1409851,
+    -488827
+   ],
+   "khung_mo_hinh_m": {
+    "X_m": [
+     -0.45,
+     5.35
+    ],
+    "Y_m": [
+     23.0,
+     29.2
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Chân tầng",
+     "cao_do": [
+      "E02",
+      23140
+     ]
+    },
+    {
+     "nhan": "Tâm vòm lớn",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-4-great-r5",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài vòm lớn",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-4-great-r5",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Tâm hoa hồng",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-4-rose-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Đáy ô cửa chớp",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-4-sill-left",
+     "truong": "y_cuoi"
+    }
+   ],
+   "la_gi": "Mặt ngoài bên của tháp, nhìn từ hông nhà thờ (E02). Tầng 4: vòm lớn, hai ô cửa chớp, hoa hồng, cột góc. So sánh với T04 (mặt trước).",
+   "so_luong": "2 mặt ngoài (mỗi tháp một mặt, phía hông nhà thờ). Mặt trong/sau không có bản vẽ riêng.",
+   "suy_ra": [
+    {
+     "nhan": "Đỉnh ngoài vòm lớn",
+     "suy_ra": "dinh_vom",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-4-great-r5"
+    },
+    {
+     "nhan": "Bề rộng ngoài vòm lớn",
+     "suy_ra": "rong_vom",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-4-great-r5"
+    },
+    {
+     "nhan": "Tim ô cửa chớp trái cách tim mặt tháp",
+     "suy_ra": "cach_tim",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-4-window-left-r1"
+    },
+    {
+     "nhan": "Đáy ô chớp cao hơn sàn tầng",
+     "suy_ra": "tren_san",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-4-sill-left",
+     "truong": "y_cuoi",
+     "san": 23.14
+    }
+   ],
+   "hoi": [
+    "So với mặt trước: các bán kính và cao độ chính trùng E01B; dùng đúng tọa độ của mặt bên, không xoay số mặt trước.",
+    "Lá chớp, hoa hồng, độ sâu vòm/phào: như các câu hỏi ở trang mặt trước cùng tầng."
+   ],
+   "tim_thap_z": 2.438569
+  },
+  {
+   "id": "T19",
+   "slug": "side-stage-3",
+   "ban_ve": "E02",
+   "ten": "Mặt bên tháp, tầng thứ ba",
+   "en": "Tower outer side, stage 3",
+   "khung_cat_cad_mm": [
+    1404051,
+    -502327,
+    1409851,
+    -494727
+   ],
+   "khung_mo_hinh_m": {
+    "X_m": [
+     -0.45,
+     5.35
+    ],
+    "Y_m": [
+     15.7,
+     23.3
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Chân tầng",
+     "cao_do": [
+      "E02",
+      15840
+     ]
+    },
+    {
+     "nhan": "Tâm vòm lớn",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-3-great-r6",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài vòm lớn",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-3-great-r6",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Tâm hoa hồng",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-3-rose-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Đáy ô cửa chớp",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-3-sill-left",
+     "truong": "y_cuoi"
+    }
+   ],
+   "la_gi": "Mặt ngoài bên của tháp, nhìn từ hông nhà thờ (E02). Tầng 3: vòm lớn, hai ô cửa chớp, hoa hồng, cột góc. So sánh với T06 (mặt trước).",
+   "so_luong": "2 mặt ngoài (mỗi tháp một mặt, phía hông nhà thờ). Mặt trong/sau không có bản vẽ riêng.",
+   "suy_ra": [
+    {
+     "nhan": "Đỉnh ngoài vòm lớn",
+     "suy_ra": "dinh_vom",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-3-great-r6"
+    },
+    {
+     "nhan": "Bề rộng ngoài vòm lớn",
+     "suy_ra": "rong_vom",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-3-great-r6"
+    },
+    {
+     "nhan": "Tim ô cửa chớp trái cách tim mặt tháp",
+     "suy_ra": "cach_tim",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-3-window-left-r1"
+    },
+    {
+     "nhan": "Đáy ô chớp cao hơn sàn tầng",
+     "suy_ra": "tren_san",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-3-sill-left",
+     "truong": "y_cuoi",
+     "san": 15.84
+    }
+   ],
+   "hoi": [
+    "So với mặt trước: các bán kính và cao độ chính trùng E01B; dùng đúng tọa độ của mặt bên, không xoay số mặt trước.",
+    "Lá chớp, hoa hồng, độ sâu vòm/phào: như các câu hỏi ở trang mặt trước cùng tầng."
+   ],
+   "tim_thap_z": 2.450045
+  },
+  {
+   "id": "T20",
+   "slug": "side-stage-2",
+   "ban_ve": "E02",
+   "ten": "Mặt bên tháp, tầng thứ hai",
+   "en": "Tower outer side, stage 2",
+   "khung_cat_cad_mm": [
+    1404051,
+    -509727,
+    1409851,
+    -502127
+   ],
+   "khung_mo_hinh_m": {
+    "X_m": [
+     -0.45,
+     5.35
+    ],
+    "Y_m": [
+     8.3,
+     15.9
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Chân tầng",
+     "cao_do": [
+      "E02",
+      8390
+     ]
+    },
+    {
+     "nhan": "Tâm vòm lớn",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-2-great-r6",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính ngoài vòm lớn",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-2-great-r6",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Tâm hoa hồng",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-2-rose-outer",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Đáy ô cửa chớp",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-2-sill-left",
+     "truong": "y_cuoi"
+    }
+   ],
+   "la_gi": "Mặt ngoài bên của tháp, nhìn từ hông nhà thờ (E02). Tầng 2: vòm lớn, hai ô cửa chớp, hoa hồng, cột góc. So sánh với T09 (mặt trước).",
+   "so_luong": "2 mặt ngoài (mỗi tháp một mặt, phía hông nhà thờ). Mặt trong/sau không có bản vẽ riêng.",
+   "suy_ra": [
+    {
+     "nhan": "Đỉnh ngoài vòm lớn",
+     "suy_ra": "dinh_vom",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-2-great-r6"
+    },
+    {
+     "nhan": "Bề rộng ngoài vòm lớn",
+     "suy_ra": "rong_vom",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-2-great-r6"
+    },
+    {
+     "nhan": "Tim ô cửa chớp trái cách tim mặt tháp",
+     "suy_ra": "cach_tim",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-2-window-left-r1"
+    },
+    {
+     "nhan": "Đáy ô chớp cao hơn sàn tầng",
+     "suy_ra": "tren_san",
+     "ref": "tower-other-faces-witnesses.json#E02-upper-2-sill-left",
+     "truong": "y_cuoi",
+     "san": 8.39
+    }
+   ],
+   "hoi": [
+    "So với mặt trước: các bán kính và cao độ chính trùng E01B; dùng đúng tọa độ của mặt bên, không xoay số mặt trước.",
+    "Lá chớp, hoa hồng, độ sâu vòm/phào: như các câu hỏi ở trang mặt trước cùng tầng."
+   ],
+   "tim_thap_z": 2.450045
+  },
+  {
+   "id": "T21",
+   "slug": "cut-upper",
+   "ban_ve": "ET",
+   "ten": "Hình cắt qua tháp, phần trên: chỏm và tầng thứ tư",
+   "en": "Cut through a tower, upper part: dome and stage 4",
+   "khung_cat_cad_mm": [
+    1696316,
+    -495427,
+    1705183,
+    -480727
+   ],
+   "khung_mo_hinh_m": {
+    "u_m": [
+     0,
+     8.867
+    ],
+    "Y_m": [
+     22.6,
+     37.3
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Tâm hoa hồng tầng 4",
+     "ref": "tower-other-faces-witnesses.json#ET-unlabelled-upper-4-rose",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Tâm cung cửa tầng 4",
+     "ref": "tower-other-faces-witnesses.json#ET-unlabelled-upper-4-window-left",
+     "truong": "tam_y"
+    }
+   ],
+   "la_gi": "ET không có tiêu đề. Phào hai bên vẽ dạng tiết diện và các ô cửa không có hoa văn ngoài, nên nhiều khả năng đây là hình cắt nhìn vào mặt trong tường tháp; hướng cắt chưa được ghi. Phần trên: sàn +29,090 m, chỏm rỗng bên trong, đèn lồng, tầng 4 với hai ô cửa nhìn từ phía trong.",
+   "so_luong": "Mỗi tháp một; hình này không cho biết là tháp nào.",
+   "hoi": [
+    "ET không có tiêu đề và hướng nhìn: kiến trúc sư phải xác nhận đây là hình cắt qua tháp nào, theo phương nào (ENG-040).",
+    "Bề dày tường, sàn, dầm và cốt thép tại các tầng: kỹ sư kết cấu phải cho; hình vẽ không thể hiện đủ.",
+    "Cầu thang/thang leo, lỗ lên xuống và lối bảo trì giữa các tầng."
+   ],
+   "tim_thap_z": 4.433467
+  },
+  {
+   "id": "T22",
+   "slug": "cut-middle",
+   "ban_ve": "ET",
+   "ten": "Hình cắt qua tháp, phần giữa: tầng thứ hai và thứ ba",
+   "en": "Cut through a tower, middle part: stages 2 and 3",
+   "khung_cat_cad_mm": [
+    1696316,
+    -510127,
+    1705183,
+    -494627
+   ],
+   "khung_mo_hinh_m": {
+    "u_m": [
+     0,
+     8.867
+    ],
+    "Y_m": [
+     7.9,
+     23.4
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Tâm hoa hồng tầng 3",
+     "ref": "tower-other-faces-witnesses.json#ET-unlabelled-upper-3-rose",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Tâm cung cửa tầng 3",
+     "ref": "tower-other-faces-witnesses.json#ET-unlabelled-upper-3-window-left",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính cung cửa tầng 3",
+     "ref": "tower-other-faces-witnesses.json#ET-unlabelled-upper-3-window-left",
+     "truong": "ban_kinh"
+    },
+    {
+     "nhan": "Tâm hoa hồng tầng 2 (khác E01B/E02 90 mm)",
+     "ref": "tower-other-faces-witnesses.json#ET-unlabelled-upper-2-rose-conflict",
+     "truong": "tam_y"
+    }
+   ],
+   "la_gi": "ET không có tiêu đề. Phào hai bên vẽ dạng tiết diện và các ô cửa không có hoa văn ngoài, nên nhiều khả năng đây là hình cắt nhìn vào mặt trong tường tháp; hướng cắt chưa được ghi. Phần giữa: các đường sàn ở +15,840 và +23,140 m, các ô cửa và hoa hồng nhìn từ phía trong.",
+   "so_luong": "Mỗi tháp một; hình này không cho biết là tháp nào.",
+   "suy_ra": [
+    {
+     "nhan": "Hoa hồng tầng 2 trên ET thấp hơn E01B/E02",
+     "suy_ra": "hieu_ref",
+     "a": "tower-witnesses.json#upper-2-rose-outer",
+     "fa": "tam_y",
+     "b": "tower-other-faces-witnesses.json#ET-unlabelled-upper-2-rose-conflict",
+     "fb": "tam_y"
+    }
+   ],
+   "hoi": [
+    "ET không có tiêu đề và hướng nhìn: kiến trúc sư phải xác nhận đây là hình cắt qua tháp nào, theo phương nào (ENG-040).",
+    "Bề dày tường, sàn, dầm và cốt thép tại các tầng: kỹ sư kết cấu phải cho; hình vẽ không thể hiện đủ.",
+    "Cầu thang/thang leo, lỗ lên xuống và lối bảo trì giữa các tầng."
+   ],
+   "tim_thap_z": 4.433467
+  },
+  {
+   "id": "T23",
+   "slug": "cut-lower",
+   "ban_ve": "ET",
+   "ten": "Hình cắt qua tháp, phần dưới: tầng trệt",
+   "en": "Cut through a tower, lower part: ground stage",
+   "khung_cat_cad_mm": [
+    1696316,
+    -519027,
+    1705183,
+    -509227
+   ],
+   "khung_mo_hinh_m": {
+    "u_m": [
+     0,
+     8.867
+    ],
+    "Y_m": [
+     -1.0,
+     8.8
+    ]
+   },
+   "so_do": [
+    {
+     "nhan": "Tâm cung cửa sổ tầng trệt",
+     "ref": "tower-other-faces-witnesses.json#ET-unlabelled-ground-central-window",
+     "truong": "tam_y"
+    },
+    {
+     "nhan": "Bán kính cung cửa sổ",
+     "ref": "tower-other-faces-witnesses.json#ET-unlabelled-ground-central-window",
+     "truong": "ban_kinh"
+    }
+   ],
+   "la_gi": "ET không có tiêu đề. Phào hai bên vẽ dạng tiết diện và các ô cửa không có hoa văn ngoài, nên nhiều khả năng đây là hình cắt nhìn vào mặt trong tường tháp; hướng cắt chưa được ghi. Phần dưới: từ sân đến sàn +8,390 m; cửa sổ tầng trệt, cửa vào, hai ô tô đen ở hai bên (CAD không ghi là gì).",
+   "so_luong": "Mỗi tháp một; hình này không cho biết là tháp nào.",
+   "suy_ra": [
+    {
+     "nhan": "Đỉnh cung cửa sổ tầng trệt",
+     "suy_ra": "dinh_vom",
+     "ref": "tower-other-faces-witnesses.json#ET-unlabelled-ground-central-window"
+    }
+   ],
+   "hoi": [
+    "ET không có tiêu đề và hướng nhìn: kiến trúc sư phải xác nhận đây là hình cắt qua tháp nào, theo phương nào (ENG-040).",
+    "Bề dày tường, sàn, dầm và cốt thép tại các tầng: kỹ sư kết cấu phải cho; hình vẽ không thể hiện đủ.",
+    "Cầu thang/thang leo, lỗ lên xuống và lối bảo trì giữa các tầng."
+   ],
+   "tim_thap_z": 4.433467
   }
+ ],
+ "huong_dan_nguoi_lam": [
+  "Tập này giúp nhận đúng hình dáng, vị trí và cao độ của từng chi tiết trang trí, để đối chiếu khi làm khuôn, đắp hoặc kiểm tra. Tập này KHÔNG đủ để chế tạo: DWG không có vật liệu, chiều sâu hoa văn, độ vươn phào, cách neo và kết cấu.",
+  "Bước 1: tìm chi tiết trên trang 2 (khung đỏ). Bước 2: đọc mục \"Đây là gì\" và \"Lặp lại ở đâu\". Bước 3: dùng các cao độ và khoảng cách ghi bên phải, không đo trên giấy in. Bước 4: hỏi kiến trúc sư các mục \"Cần hỏi trước khi làm\" và xin mẫu 1:1 trước khi làm.",
+  "Cao độ ghi \"+\" tính từ sàn lòng nhà ±0,000 m. Sân thấp hơn 2,080 m: chiều cao tính từ sân = cao độ + 2,080 m. \"Cách tim tháp\" là khoảng cách ngang tới đường tim đứng giữa mặt tháp.",
+  "ĐỌC TRÊN CAD: tọa độ đọc trực tiếp trên nét vẽ. SUY RA: tính từ các số đọc đó (ví dụ đỉnh vòm = tâm + bán kính). NHÃN/KÍCH THƯỚC: chữ số người vẽ ghi trong DWG. Tất cả đều phải được kiến trúc sư xác nhận."
  ]
 }

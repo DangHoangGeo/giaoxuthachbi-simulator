@@ -95,7 +95,7 @@ async function loadFile(file, project = false) {
     $("filename").textContent = data.name;
     $("sheet-count").textContent = data.sheets.length;
     $("sheet-help").textContent = data.church
-      ? "27 inventoried views, 16 enlarged tower details (T01–T16) and model space."
+      ? "27 inventoried views, 23 enlarged tower details (T01–T23: front, side and cut) and model space."
       : "Model space · sheet inventory is available for the matching church DWG.";
     $("units").textContent = data.church
       ? "Unit hold ISSUE-R06: INSUNITS=1 indicates inches for insertion; drawing chains suggest millimetres. No rescaling. Designer confirmation required."
