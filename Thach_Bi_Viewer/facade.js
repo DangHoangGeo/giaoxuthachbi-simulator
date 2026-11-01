@@ -59,9 +59,13 @@
     // X 5.035–5.475 (jamb faces D7BF88/D7C117 at 5.035, rebates to 5.145, inner face D7BF80/D7C10F on
     // axis 2′). It rises to the hall ceiling (+8.39) and takes the leaves, fanlights and transoms back
     // from the front arches, which become an open entrance porch. The openings follow the moved
-    // fanlights: main |Z| ≤ 1.55 (P05: 1.55, D7BF85/D7C114), sides |Z| 4.41–6.55 (P05: 4.275–6.425,
-    // so 0.135 m further out; noted in docs/facade-model.md).
-    entrance: { wall: [5.035, 5.475], top: 8.39, front: 2.6, half: 7.5 }, // ends meet the towers' rear piers
+    // fanlights: main |Z| ≤ 1.55 (P05: 1.55, D7BF85/D7C114); the side doorways move 0.135 m toward
+    // the axis to the drawn |Z| 4.275–6.425 (owner, 1 Nov 2026).
+    entrance: { wall: [5.035, 5.475], top: 8.39, front: 2.6, half: 7.5, sideShift: 0.135, // ends meet the towers' rear piers
+      // The axis-2′ wall fans stand 0.62 m along the wall (design.js ENTRANCE_FAN_X, X 6.095), away from the
+      // side column whose face (|z| 7.07) carries the other nave wall fans; a plastered backing pad brings the
+      // wall out to that face. Proposal: fixing and backing on ENGINEERING HOLD.
+      fanPad: { x: 6.095, half: 0.2, y: [3.82, 4.38], z: [7.07, 7.25] } },
     aedicule: {
       pier: { z: 1.68, half: 0.30 }, front: 3.805, wall: 3.915, back: 5.046,
       niche: { half: 0.711, floor: 15.997, spring: 18.893, x: 4.225, rings: [0.799, 1.112] },
@@ -521,6 +525,12 @@
 
     // ---- Entrance steps between the towers (spec.ground.steps, 1 Nov 2026) ----
     if (building) {
+      const FP = spec.entrance.fanPad;
+      for (const s of [-1, 1]) {
+        const pad = new T.Mesh(new T.BoxGeometry(2 * FP.half, FP.y[1] - FP.y[0], FP.z[1] - FP.z[0]), W);
+        pad.name = 'Wall fan backing pad · axis 2′ · proposal'; pad.userData = { status: 'PROPOSAL / ENGINEERING HOLD', source: 'Owner review 1 Nov 2026; fan moved clear of the axis-2 door wall' };
+        pad.position.set(FP.x, (FP.y[0] + FP.y[1]) / 2, s * (FP.z[0] + FP.z[1]) / 2); pad.castShadow = pad.receiveShadow = true; building.add(pad);
+      }
       const ST = spec.ground.steps, old = [];
       building.traverse(o => { if (o.isMesh && o.name.startsWith('Entrance threshold step')) old.push(o); });
       const parent = old[0]?.parent, floorMat = old[0]?.material;
@@ -541,7 +551,11 @@
       facade.traverse(o => { if (o.isMesh && /^(Entrance door coloured oval|Entrance transom|Fanlight radial bar|Fanlight spring bar)$/.test(o.name)) moved.push(o); });
       facade.traverse(o => { if (o.isMesh && o.name === 'Entrance door coloured oval') fans.push(new T.Box3().setFromObject(o)); });
       building.traverse(o => { if (/^Entrance joinery · /.test(o.name)) for (const c of o.children) { const p = c.getWorldPosition(new T.Vector3()); if (p.x < 3.2 && Math.abs(p.z) < 7.2) moved.push(c); } });
-      for (const o of moved) { const p = o.getWorldPosition(new T.Vector3()); p.x += dx; o.parent.worldToLocal(p); o.position.copy(p); }
+      // The side doorways also shift 0.135 m toward the axis to the P05 jambs (|Z| 4.275–6.425;
+      // the front arches had them at 4.41–6.55). EN.sideShift is that inward move.
+      const dz = z => Math.abs(z) > 3 ? -Math.sign(z) * EN.sideShift : 0;
+      for (const o of moved) { const p = o.getWorldPosition(new T.Vector3()); p.x += dx; p.z += dz(p.z); o.parent.worldToLocal(p); o.position.copy(p); }
+      for (const b of fans) { const s = dz((b.min.z + b.max.z) / 2); b.min.z += s; b.max.z += s; }
       // The door wall, with an opening under each fanlight (straight jambs to the spring, then the
       // arch). Built as solid piers between the doorways and a head piece over each arch, without
       // holes, so the triangulation cannot drop a doorway.

@@ -3,7 +3,7 @@
   "language": "en",
   "status": "Design development - not for construction",
   "basis": "Fresh default model, not saved browser layout",
-  "gitRevision": "464f5d9946f7f505ab05f6aba9f9abec93f962b5",
+  "gitRevision": "3739e90f92640e0f6ba5924b55968d677c3a36bd",
   "sourceFiles": {
     "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
     "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",
@@ -11,39 +11,39 @@
     "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
     "Thach_Bi_Viewer/carving.js": "5624bd11c10c1c75a0c80a4f2b9612652664e6592eceff0d8a6ac6c5c70c1367",
     "Thach_Bi_Viewer/decoration.js": "c11e58c36f2c63bd6cedad32f9dfebd775f38069e816705d82eedc29d9ba8d0e",
-    "Thach_Bi_Viewer/sanctuary.js": "16dbcd53bb822dcfb85dea1ca47545b0300b4df0146efca735a9d2d9abdbfc52",
-    "Thach_Bi_Viewer/facade.js": "f2bac6f683966b0ac246e2787c4075b50c4be4ad60adcc8f377452094f56df7c",
+    "Thach_Bi_Viewer/sanctuary.js": "b047c69441930adab871aa3be103200603b025bf443cc41659047db431561ea9",
+    "Thach_Bi_Viewer/facade.js": "881a374d24d78cbb1c440ee68eddb3b69505c862876f0e1074e190c17e6ab1c2",
     "Thach_Bi_Viewer/porches.js": "04f9fb1f18942fd7c3bb40e2c07dd2b37230c262f91304b4b11691b254d51c67",
     "Thach_Bi_Viewer/stations.js": "17979bbe379cc9b5286e5ec4f090708bdf75e20e544dc44f6c777251a35bb625",
-    "Thach_Bi_Viewer/towers.js": "cc67945acfb1f2dea02406145248c52cec8df3f8ed4df33d17b25c852e5579c4",
+    "Thach_Bi_Viewer/towers.js": "6c30e50eeb1a9edd37e1b1f3eb83da449ad7e7575304faa6ded4fab52bf14da9",
     "Thach_Bi_Viewer/roofline.js": "d2490e1b48aea21508a3e7aa411d2dea728c0eca1ff94561c0f1dc2a7132c551",
-    "Thach_Bi_Viewer/realism.js": "e0a769a978e0335af534fa2c794b1c49471ab30e2b32c1f6eb68412701c768dd",
+    "Thach_Bi_Viewer/realism.js": "1d6494c733672769548e9c7582716d5b885eb8c4dc80045db251638b89fdfb70",
     "Thach_Bi_Viewer/planning.js": "8ea59e689dd1a1585b7ab9b31e6693e374398cd1ed981f9cda3a4df6b3da75cf",
     "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
     "Thach_Bi_Viewer/simulator/catalog.js": "226d27e399b6a294eb49f24186279b23b3735909d75f4b5318cd26fe205a8869",
     "Thach_Bi_Viewer/simulator/veranda-review.js": "cda63e962a9dc9a3ec8f18ed267752a0e32f4872d3e69a54ef344f3a5fc5c622",
     "Thach_Bi_Viewer/simulator/doorhead-review.js": "29e8d3900e6ad358e5066b31d5b071c41b52befe8fc53ce5a9197e8f7bfd8b3f",
-    "Thach_Bi_Viewer/simulator/engine.js": "50115167bfa23259285a6a0814359ca023a890cbbda666497a48291477f70b5f",
+    "Thach_Bi_Viewer/simulator/engine.js": "935895ed68a0ed29727bf0ad62a6010ac43b9dde4886387fc75a9ccd18978011",
     "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
     "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
-    "Thach_Bi_Viewer/simulator/design.js": "482b3569fae0be23a3104c7907d06100c6cc314af04dc8617cc49e3618de0a24",
-    "Thach_Bi_Viewer/simulator/analysis.js": "7670036a3be8f9ca423b551bc75261c2272e6c07ba077ea49a394cb9c04af849",
-    "Thach_Bi_Viewer/simulator/electrical.js": "7e9d0024c4c454048458ae3626923d9926c3953be563fc7ddbfe2706e49a98ae",
+    "Thach_Bi_Viewer/simulator/design.js": "eaba4033bfabe54f54165b99d82409fbd67352921c0c551498f11eb833f1811e",
+    "Thach_Bi_Viewer/simulator/analysis.js": "5245fad1537146093b03cf4aff74c62673f766134b082de59e796d5f8d3e17db",
+    "Thach_Bi_Viewer/simulator/electrical.js": "62d01a8c2161279b1f8b6d933c9328783744ce4c9a6acb5c545c3fe1c6b5a815",
     "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
     "Thach_Bi_Viewer/bundle.js": "74818d3bbe1aea78576f9fe1907faaa2e52e3aa96c5cfad2a2f37c2b72b710d3",
     "scripts/lib/study_model.cjs": "d89088c7dd1ab4a58be906775e7ef93188d146b98d23ba543b1f71b33bd06f70",
     "scripts/build_review_drawings.py": "78dfac791e582bb5b88023973642c076044233667246d67ac30122f96c5ec944",
     "scripts/export_print_model.cjs": "231f89424ff29b177ef4e1e0a2e7648eff0c1c553cd2b72186fbe06f35335ae3",
-    "scripts/review_drawings_i18n.py": "d2eb9ab39fded9b52096d412e9f055c456475f9013fdf3b7c96b9358942ef72a"
+    "scripts/review_drawings_i18n.py": "24a767b5999928d4723c1359fe63b55e41d0f0cb2c29bc2c767a69341d0e2c94"
   },
-  "systemsHash": "8efd0e5d2f1745401819248f5cd349c1ca2995df2b2938bff0ddd27c9679b4c8",
+  "systemsHash": "3528cddf441e8def668fabf4636168c97ff59d1f471073796508ded4c272da0a",
   "counts": {
-    "equipment": 372,
-    "routes": 429,
-    "vertices": 3157,
-    "pages": 68,
-    "planSectionSegments": 9976,
-    "towerSectionSegments": 10442
+    "equipment": 376,
+    "routes": 433,
+    "vertices": 3163,
+    "pages": 69,
+    "planSectionSegments": 9972,
+    "towerSectionSegments": 10905
   },
   "sectionBasis": "Plane cuts through the default viewer meshes (walls, piers, columns, sanctuary and tower fabric). MODEL TRANSCRIPTION / DERIVED; not a measured survey.",
   "scales": {
@@ -51,10 +51,10 @@
     "height": 500
   },
   "files": {
-    "drawing-index.json": "c858250d83b3f582a19895c6f016641a0e5ba203afaebf874fa5f1e36db4925b",
-    "equipment-coordinates.csv": "8bda25ec62b15c3e516fc22c374adf9b3d5a344053f0e09d7478209d9dc2e0d3",
-    "model-snapshot.json": "3dac21c143fb53498e9eacd7ef6e7ac0a65c85be50bee9a9d24e7ff3cc5e5e9c",
-    "route-vertices.csv": "7db2cb21c77d3563a7d0d4c527f59a6dbf2d7c30f8be272212a62dafdcb0ee39",
-    "thach-bi-electrical-review-A3.pdf": "3dde8d554f6dd3d05dc4b5ce578691a5d15ed411055acd28f99c7998f8694ab0"
+    "drawing-index.json": "acc8518fa970f75fce623f0b8b5167742d156ea57f133c45bc1351e95a089693",
+    "equipment-coordinates.csv": "c995dabcac6cb60e18bf23b822620914bf20e6c9cd3222358f9d26030088fa81",
+    "model-snapshot.json": "9555a70beb654818fe0fdaa0af1cc29b605082253503fb895c6dfb1f324de57e",
+    "route-vertices.csv": "80ebf6d3e310dd8a324571b3e389a994aa61080b27552c14300a3dfadd31cdcc",
+    "thach-bi-electrical-review-A3.pdf": "24fb34301b2cc66b99d6d330efa8ab296b1de9ed2888867e9b0b443ff6d21596"
   }
 }

@@ -9,13 +9,14 @@
     centralArch:{half:3.3,spring:8.25,shoulder:9.38,crown:10.83}, sideArch:{half:1.575,spring:6.15,shoulder:6.75,crown:7.46},
     // Side arches of axis 11 round the shrines (bundle plaster arch, Z 3.85–7.11, spring +5.55).
     arch11:{x:48.34,z:5.48,half:1.55,spring:5.55,shoulder:6.3,crown:6.85},
-    // Gilded boarded vaults over the two side passages (owner, 1 Nov 2026): the vault of the chamber
-    // continues to both sides, on the outline of the axis-10 side arch at the front (x0 profile
+    // Gilded boarded vaults over the two side passages (owner, 1 Nov 2026, USER CONFIRMED): the vault of the
+    // chamber continues to both sides, on the outline of the axis-10 side arch at the front (x0 profile
     // interpolated from spec.sideArch) and the axis-11 side arch at the back (x1, spec.arch11).
-    // x0 leaves 1.0 m behind the frame's back face clear for the shrine lights hung there
-    // (L115–L118, x 44.25–44.63, y 7.43–7.76, aimed 39° down at the shrines); x1 butts the lacquered spandrel of axis 11.
+    // x0 is the back face of the axis-10 frame (frameX + 0.16): the vault meets the lacquered spandrel with
+    // no gap. The four shrine lights (L115–L118) hang from its soffit instead of from the frame (design.js).
+    // x1 butts the lacquered spandrel of axis 11.
     // CONCEPT visual proxy: it is not an occluder in the simulator, like the chamber vault.
-    sideVault:{x0:45.3,x1:48.16,thick:.09,status:'CONCEPT · gilded boarded vault over each side passage; boarding, ribs, springing beams and fixings pending'},
+    sideVault:{x0:44.335,x1:48.16,thick:.09,status:'CONCEPT · gilded boarded vault over each side passage; boarding, ribs, springing beams and fixings pending'},
     chamber:{x0:44.49,x1:48.42,face:3.3,outer:3.75,top:9.45,lintel:7.0,serviceLining:0.04},
     // Crucifix niche: opens through the reredos and the back wall, 1.0 m deep, its blue wall and
     // the cross standing back on a base over the service room. `shell` is the plaster casing
@@ -514,7 +515,7 @@
     {
       const V=spec.sideVault,g=new T.Group();g.name='Side vaults · gilded boarding over the shrine passages';root.add(g);
       const profile=x=>{
-        const t=(x-spec.frameX)/(spec.arch11.x-spec.frameX),L=k=>S[k]+(spec.arch11[k]-S[k])*t,a={spring:L('spring'),shoulder:L('shoulder'),crown:L('crown')},cx=spec.wingZ+(spec.arch11.z-spec.wingZ)*t,half=L('half');
+        const t=(x-V.x0)/(spec.arch11.x-V.x0),L=k=>S[k]+(spec.arch11[k]-S[k])*t,a={spring:L('spring'),shoulder:L('shoulder'),crown:L('crown')},cx=spec.wingZ+(spec.arch11.z-spec.wingZ)*t,half=L('half');
         return {inner:lobed(cx,half,a).getPoints(12),outer:lobed(cx,half+.08,{spring:a.spring,shoulder:a.shoulder+V.thick,crown:a.crown+V.thick}).getPoints(12)};
       };
       const steps=8,xs=Array.from({length:steps+1},(_,i)=>V.x0+(V.x1-V.x0)*i/steps),rows=xs.map(profile);

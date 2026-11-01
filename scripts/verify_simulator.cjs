@@ -157,18 +157,40 @@ assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.i
   }
   const unexpected = [...contacts.keys()].filter(k => !known.has(k));
   assert.deepEqual(unexpected, [], 'carved ornament inside a fitting envelope: ' + unexpected.join('; '));
-  // The gilded side vaults (owner, 1 Nov 2026) start behind the shrine lights hung on the back face of the
-  // axis-10 frame (L115–L118): the axis of each beam, aimed as in design.js, runs under the boarding to its shrine.
+  // The gilded side vaults (owner, 1 Nov 2026, USER CONFIRMED) meet the back face of the axis-10 frame, so the shrine
+  // lights L115–L118 hang from the inner longitudinal rib of each vault, with the frame's inner jamb screening them
+  // from the centre of the nave: each canopy sits on the actual rib, the axis of each beam, aimed as in design.js,
+  // runs under the boarding, ribs, bosses and frame to its shrine, and no centre-line sight line reaches a head.
   {
-    const sx = sandbox.CHURCH_SANCTUARY.spec, boards = nodes.filter(o => o.isMesh && o.name === 'Side vault · gilded boarding'), ray = new T.Raycaster();
+    const sx = sandbox.CHURCH_SANCTUARY.spec, ray = new T.Raycaster(), boards = nodes.filter(o => o.isMesh && o.name === 'Side vault · gilded boarding');
     assert.equal(boards.length, 2);
+    building.updateMatrixWorld(true);
+    const vaultParts = nodes.filter(o => o.isMesh && /^(Side vault|Gilded vault boss|Front frame|Chamber side lintel|Axis-11 side)/.test(o.name));
+    const ribs = nodes.filter(o => o.isMesh && o.name === 'Side vault longitudinal rib');
     const lights = SIM.state.items.filter(it => /^(Statue accent|Shrine wash) · [BH]$/.test(it.name));
-    assert.equal(lights.length, 4, 'four shrine lights behind the axis-10 frame');
+    assert.equal(lights.length, 4, 'four shrine lights under the side vaults');
+    const emitters = SIM.emitters(), meshes = nodes.filter(o => o.isMesh);
     for (const it of lights) {
-      const s = Math.sign(it.pos[2]), wash = it.name.startsWith('Shrine wash'), target = new T.Vector3(sx.wingX - 0.1 - (wash ? 0.2 : 0), wash ? 4.2 : sx.nicheBase + 1.25, s * sx.wingZ), from = new T.Vector3(...it.pos);
-      ray.set(from, target.clone().sub(from).normalize());
-      assert.equal(ray.intersectObjects(boards, false).length, 0, `${it.name}: beam axis clear of the side vault`);
-      assert(from.x < sx.sideVault.x0 - 0.5, `${it.name} hangs in front of the vault`);
+      const s = Math.sign(it.pos[2]), wash = it.name.startsWith('Shrine wash'), target = new T.Vector3(sx.wingX - 0.1 - (wash ? 0.2 : 0), wash ? 4.2 : sx.nicheBase + 1.25, s * sx.wingZ);
+      const e = emitters.find(m => m.id === it.id), from = new T.Vector3(...e.pos), dir = target.clone().sub(from), dist = dir.length();
+      assert.equal(it.mount, 'pendant', `${it.name} hangs from the vault`);
+      assert(it.pos[0] > sx.sideVault.x0 + 0.2 && it.pos[0] < sx.sideVault.x0 + 1.5 && Math.abs(it.pos[2]) > 3.9 && Math.abs(it.pos[2]) < 4.5, `${it.name} hangs under the front of the vault, by the chamber`);
+      // The canopy sits on the underside of the rib: no gap above it and no rib vertex inside the canopy (the contact check above).
+      ray.set(new T.Vector3(it.pos[0], it.pos[1] - 0.5, it.pos[2]), new T.Vector3(0, 1, 0));
+      const up = ray.intersectObjects(ribs, false);
+      assert(up.length && Math.abs(up[0].point.y - it.anchorY) < 0.02, `${it.name} canopy on the vault rib: anchor ${it.anchorY} vs rib ${up[0]?.point.y}`);
+      assert(it.pos[1] < it.anchorY - 0.05 && it.pos[1] > it.anchorY - 0.1, `${it.name} stem length`);
+      ray.set(from, dir.clone().normalize()); ray.far = dist - 0.4;
+      const hits = ray.intersectObjects(vaultParts, false);
+      assert.equal(hits.length, 0, `${it.name}: beam axis clear of the side vault, frame and lintel: ${hits.slice(0, 2).map(h => h.object.name + ' ' + h.distance.toFixed(2))}`);
+      ray.far = Infinity;
+      // Centre-line eyes (z 0, 1.6 m, nave axes 3 to 8) cannot see the head: the frame's jamb is in the way.
+      for (const x of [12, 20, 28, 32]) {
+        const eye = new T.Vector3(x, 1.6, 0), d = from.clone().sub(eye), len = d.length();
+        ray.set(eye, d.normalize()); ray.far = len - 0.12;
+        assert(ray.intersectObjects(meshes, false).length > 0, `${it.name} is screened from the nave centre line at x ${x}`);
+        ray.far = Infinity;
+      }
     }
   }
 }
@@ -640,9 +662,10 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
 {
   const D = sandbox.CHURCH_SIM_DESIGN, timber = interior.materials.timber, chamberWall = sandbox.window.CHURCH_SANCTUARY.materials.wood, plain = v => JSON.parse(JSON.stringify(v));
   const beamNames = ['Altar key light · B', 'Altar key light · H', 'Ambo key light', 'Sanctuary step fill · B', 'Sanctuary step fill · H', 'Presider chair light',
-    'Sanctuary frame wash · B', 'Sanctuary frame wash · H', 'Statue accent · B', 'Statue accent · H', 'Shrine wash · B', 'Shrine wash · H'];
+    'Sanctuary frame wash · B', 'Sanctuary frame wash · H'];
+  // Since 1 Nov 2026 the statue accents and shrine washes hang from the gilded side vaults (chamber lacquer).
   const chamberNames = ['Crucifix accent · B', 'Crucifix accent · H', 'Reredos wash · B', 'Reredos wash · H', 'Reredos base wash · B', 'Reredos base wash · H',
-    'Tabernacle accent', 'Sanctuary vault uplight · B', 'Sanctuary vault uplight · H'];
+    'Tabernacle accent', 'Sanctuary vault uplight · B', 'Sanctuary vault uplight · H', 'Statue accent · B', 'Statue accent · H', 'Shrine wash · B', 'Shrine wash · H'];
   const metal = { projector24: 'black', projector36: 'black', spot15: 'bronze', uplight: 'bronze' };
   const byName = name => SIM.state.items.find(it => it.name === name);
   assert([...beamNames, ...chamberNames].every(byName), 'every sanctuary accent and chamber light is in the design');

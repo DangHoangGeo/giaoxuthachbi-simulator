@@ -28,6 +28,13 @@
     return { yaw: Math.atan2(dz, dx) * 180 / Math.PI, tilt: Math.atan2(dy, Math.hypot(dx, dz)) * 180 / Math.PI };
   };
   const side = z => z < 0 ? 'B' : 'H';
+  // Shrine lights under the gilded side vaults (1 Nov 2026, owner): X, |Z|, the rib underside (anchorY)
+  // under the canopy and the output of each head. MODEL TRANSCRIPTION of the vault in sanctuary.js.
+  const SIDE_VAULT_DROP = 0.06;
+  const SIDE_VAULT_LIGHTS = {
+    accent: { x: 44.68, z: 4.14, anchorY: 6.484, lumens: 105 },
+    wash: { x: 45.25, z: 4.14, anchorY: 6.416, lumens: 1140 }
+  };
   // Wing downlights, 1 Nov 2026: bench-block centres (X), the two rows (|Z|), output and optic.
   const WING_DOWNLIGHT = { x: [38.94, 42.22], z: [8.8, 11.4], lumens: 2100, beam: 24 };
   // Where a ledge fitting's optic sits: `reach` beyond its base along mountYaw, `rise` above it.
@@ -96,7 +103,6 @@
     // the timber-lined chamber between axes 10 and 11.
     const sanctuary = window.CHURCH_SANCTUARY?.spec ?? { frameX: 44.175, wingX: 48.93, wingZ: 5.5, nicheBase: 2.85, chamber: { x0: 44.49, x1: 48.42, face: 3.3 }, niche: { backX: 49 } };
     const shrine = { x: sanctuary.wingX - 0.1, y: sanctuary.nicheBase, z: sanctuary.wingZ };
-    const SHRINE_LIGHT_X = sanctuary.frameX + 0.245, SHRINE_LIGHT_Y = 7.75;
     const CHAMBER_LINTEL = sanctuary.chamber.lintel ?? 7.0;
     const chamber = { face: sanctuary.chamber.face - 0.06, lightX: sanctuary.chamber.x0 + 0.26, sconceX: (sanctuary.chamber.x0 + sanctuary.chamber.x1) / 2 };
     for (const x of [50.0, 51.9]) add({ type: 'servicePanel', name: `Service-room ceiling panel · ${x.toFixed(1)} m`, circuit: 'L3', mount: 'pendant', pos: [x, 4.14, 0], anchorY: 4.15, note: 'Retains the existing ceiling-panel geometry; product light/output values are provisional.' });
@@ -185,7 +191,11 @@
     // 576 nave seats, eye +1.2 m) at any height from 6.3 to 8.3 m.
     for (const k of ['4', '6', '8']) add({ type: 'chandelier8', name: `Chandelier · bay ${k}–${Number(k) + 1}`, circuit: 'LD', mount: 'pendant', pos: [A[k] + 2.25, NAVE_CHANDELIER_Y, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
     // Hung high enough that the lobed sanctuary frame and the reredos crown read below it from the nave.
-    add({ type: 'chandelier12', name: 'Grand chandelier · crossing 9–10', circuit: 'LD', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.2, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
+    // The crossing chandelier and star hang from the soffit of the underside ridge member (top +12.23,
+    // deepened to 0.28 m on 1 Nov 2026, sanctuary.js spec.roofTimber); lining(0) − 0.13 put the canopy
+    // inside the ridge timber.
+    const RIDGE_SOFFIT = +(12.23 - (window.CHURCH_SANCTUARY?.spec.roofTimber?.ridge.d ?? 0.16)).toFixed(3);
+    add({ type: 'chandelier12', name: 'Grand chandelier · crossing 9–10', circuit: 'LD', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.2, 0], anchorY: RIDGE_SOFFIT, yaw: 0, mountYaw: 0 });
     // Sconces on the C/G piers, facing the nave, and on the sanctuary piers. Since 25 Oct 2026
     // they sit at +5.00 m (was +4.60) to leave room for the lowered wall fans below them.
     for (const k of ['3', '4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) {
@@ -238,19 +248,25 @@
     inside('Tabernacle accent', 'spot15', 4.9, -1, [47.3, 2.05, 0], { beam: 10, lumens: 900 }, 0.9);
     // Our Lady (B) and Saint Joseph (H) in the shrines on the axis-11 line, level with the
     // crucifix (parish priest, 25 October 2026): a soft wash for the carved front and a narrow
-    // accent for the figure. Both heads sit on the back face of the axis-10 frame, above its
-    // side arch, so the spandrel hides them from the nave; they light the shrine 4.6 m behind.
-    // At that shorter throw both outputs drop by a quarter (220/2400 lm before), so the statues
-    // stay a little below the crucifix.
+    // accent for the figure. Since 1 November 2026 (owner, USER CONFIRMED) the gilded vault over each
+    // side passage meets the back face of the axis-10 frame with no gap, so the four heads no longer
+    // hang on that face: they hang from the lacquered longitudinal rib of the vault nearest the
+    // chamber (the inner rib, |Z| 4.14), in the lacquer of the chamber, and light the shrine 3.9 to
+    // 4.6 m behind. The frame's inner jamb screens them from most of the nave. Positions and
+    // anchors are MODEL TRANSCRIPTIONS of the vault in sanctuary.js (rib underside at the canopy);
+    // verify_simulator.cjs checks each canopy against the actual rib. The shorter, lower throw
+    // would raise the statues from about 174 to 280 lux, so the outputs fall to 105 / 1 140 lm
+    // (165 / 1 800 lm before) and the statues stay a little below the crucifix.
     const statues = { B: [shrine.x, shrine.y, -shrine.z], H: [shrine.x, shrine.y, shrine.z] };
     for (const [k, base] of Object.entries(statues)) {
       const s = Math.sign(base[2]);
-      const behindFrame = (name, type, dz, target, o) => {
-        const p = [SHRINE_LIGHT_X, SHRINE_LIGHT_Y, s * (shrine.z + dz)], a = aim(p, target);
-        add({ type, name, circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: 0, shadow: false, params: { finish: 'timber' }, ...o });
+      const underVault = (name, type, v, target, o) => {
+        // Body plate 0.06 m under the rib; the head hangs 0.14 m below the plate.
+        const p = [v.x, v.anchorY - SIDE_VAULT_DROP, s * v.z], a = aim([p[0], p[1] - 0.14, p[2]], target);
+        add({ type, name, circuit: 'L3', mount: 'pendant', pos: p, anchorY: v.anchorY, yaw: a.yaw, tilt: a.tilt, mountYaw: 0, shadow: false, params: { finish: 'chamber' }, ...o });
       };
-      behindFrame(`Statue accent · ${k}`, 'spot15', -0.75, [base[0], shrine.y + 1.25, base[2]], { beam: 12, lumens: 165 });
-      behindFrame(`Shrine wash · ${k}`, 'projector36', 0.75, [base[0] - 0.2, 4.2, base[2]], { beam: 50, lumens: 1800 });
+      underVault(`Statue accent · ${k}`, 'spot15', SIDE_VAULT_LIGHTS.accent, [base[0], shrine.y + 1.25, base[2]], { beam: 12, lumens: SIDE_VAULT_LIGHTS.accent.lumens });
+      underVault(`Shrine wash · ${k}`, 'projector36', SIDE_VAULT_LIGHTS.wash, [base[0] - 0.2, 4.2, base[2]], { beam: 50, lumens: SIDE_VAULT_LIGHTS.wash.lumens });
     }
 
     // L4 · a veranda lantern at every pier (axes 3–11), the rhythm of the
@@ -536,7 +552,7 @@
     add({ type: 'carpet', name: 'Aisle carpet (weddings & feasts)', circuit: 'DECOR', mount: 'floor', pos: [6.2, 0, 0], yaw: 0, mountYaw: 0, hidden: true, params: { length: 32 } });
     add({ type: 'christmasTree', name: 'Christmas tree · front stage', circuit: 'X1', mount: 'floor', pos: [-4.2, -0.48, -5.6], yaw: 180, mountYaw: 180, hidden: true });
     add({ type: 'grotto', name: 'Nativity grotto (hang đá) · front stage', circuit: 'X1', mount: 'floor', pos: [-4.2, -0.48, 5.6], yaw: 180, mountYaw: 180, hidden: true });
-    add({ type: 'star', name: 'Star over the crossing', circuit: 'X1', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.4, 0], anchorY: lining(0) - 0.13, yaw: 90, mountYaw: 90, hidden: true });
+    add({ type: 'star', name: 'Star over the crossing', circuit: 'X1', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.4, 0], anchorY: RIDGE_SOFFIT, yaw: 90, mountYaw: 90, hidden: true });
     // Festival lantern strings mid-bay, clear of the pier lanterns and of the loudspeaker bays (3–4, 6–7).
     for (const k of ['4', '5', '7', '8']) for (const s of [-1, 1]) {
       const x = A[k] + 2.25;
@@ -554,9 +570,12 @@
         pos: [x, 2.2, sign * 13.095], yaw: -sign * 90, mountYaw: -sign * 90, on: true, hidden: false,
         note: 'USER CONFIRMED subjects/location: Peter and Paul between windows in each wing. CONCEPT 1.12 ×1.62 m frame proxy, Y2.20 centre. Actual size, height, substrate, frame, artwork and fixings pending. Unpowered.' });
     }
+    // With the doors on the axis-2 line (1 Nov 2026) the door wall and the towers' inner rear piers
+    // fill the axis-2′ corner, so the two axis-2′ wall fans stand further along the wall.
+    const ENTRANCE_FAN_X = +(A['2′'] + 0.62).toFixed(3);
     for (const k of ['2′', '3', '5', '7', '9']) for (const sign of [-1, 1]) {
       add({ id: `F-NAVE-${side(sign)}-${k === '2′' ? '2P' : k}`, type: 'fanNaveWall', name: `Wall fan · axis ${k} · ${side(sign)}`, circuit: 'F2', mount: 'wall',
-        pos: [A[k], NAVE_FAN_Y, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
+        pos: [k === '2′' ? ENTRANCE_FAN_X : A[k], NAVE_FAN_Y, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
     }
     // Socket outlets, 9 October 2026 (owner request). One 16 A radial per side
     // from DB-1 serves that side's sanctuary and mid-nave points along the wall
@@ -690,6 +709,28 @@
     });
   }
 
+  // Owner, 1 November 2026, open items of the review: the two axis-2′ wall fans stand 0.62 m along the
+  // wall (the axis-2 door wall and the towers' inner rear piers fill that corner), and the crossing
+  // chandelier and star hang from the soffit of the deeper ridge member. A saved item still at its
+  // previous place and aim moves (keeping ID, switching, dimming, visibility and note); a moved or
+  // deleted one stays as the user left it.
+  const entranceFitRevision = '2026-11-01-entrance-fit-1';
+  const entranceFitBefore = {
+    "F-NAVE-B-2P": {"type":"fanNaveWall","pos":[5.475,4.1,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-H-2P": {"type":"fanNaveWall","pos":[5.475,4.1,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "L81": {"type":"chandelier12","pos":[40.575,9.2,0],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L3","anchorY":12.152},
+    "D311": {"type":"star","pos":[40.575,9.4,0],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1","anchorY":12.152},
+  };
+  function upgradeEntranceFit(items, design) {
+    const next = new Map(design.map(it => [it.id, it]));
+    return items.map(it => {
+      const old = entranceFitBefore[it.id], raw = next.get(it.id);
+      if (!old || !raw || !untouched(it, old)) return it;
+      if (old.anchorY !== undefined && Math.abs((it.anchorY ?? old.anchorY) - old.anchorY) > 0.005) return it;
+      return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, ...(raw.anchorY !== undefined ? { anchorY: raw.anchorY } : {}) };
+    });
+  }
+
   // Owner, 1 November 2026: (2) the centre of the nave looked dark and (3) the wings use downlights
   // from above, not two chandeliers a side. The 28 tie-beam reading heads of the nave move and
   // re-aim (naveCentreBefore holds their previous place, aim, circuit, output and optic) and the
@@ -764,6 +805,33 @@
       }
     }
     return [...out.filter(it => !gone.has(it.id)), ...added];
+  }
+
+  // Shrine lights under the side vaults, 1 November 2026 (owner, USER CONFIRMED: the gilded vault over each
+  // side passage meets the back face of the axis-10 frame). The four heads L115-L118 (statue accents and
+  // shrine washes) hung on that face; they now hang from the inner longitudinal rib of the vault, with lower
+  // outputs (the throw is shorter). A saved head still at its 25 October place, aim, mount, circuit, output
+  // and optic takes the new place, aim, output and finish once, and keeps its ID, switching, dimmer,
+  // visibility and note. A head the user moved, re-aimed, retuned, re-circuited or deleted stays as left, and
+  // a deleted head is never added again (the IDs exist in every saved layout since 25 October).
+  const sideVaultLightsRevision = '2026-11-01-side-vault-lights-1';
+  // BEGIN sideVaultLights table · values before the move, from docs/electrical-grid/equipment-layout.json at 3f162a3.
+  const sideVaultLightsBefore = {
+    "L115": {"type":"spot15","name":"Statue accent · B","pos":[44.419999999999995,7.75,-4.75],"yaw":-9.651833466804238,"tilt":-39.21267771222643,"mount":"wall","circuit":"L3","lumens":165,"beam":12,"finish":"timber"},
+    "L116": {"type":"projector36","name":"Shrine wash · B","pos":[44.419999999999995,7.75,-6.25],"yaw":10.101118347708251,"tilt":-39.69810503390403,"mount":"wall","circuit":"L3","lumens":1800,"beam":50,"finish":"timber"},
+    "L117": {"type":"spot15","name":"Statue accent · H","pos":[44.419999999999995,7.75,4.75],"yaw":9.651833466804238,"tilt":-39.21267771222643,"mount":"wall","circuit":"L3","lumens":165,"beam":12,"finish":"timber"},
+    "L118": {"type":"projector36","name":"Shrine wash · H","pos":[44.419999999999995,7.75,6.25],"yaw":-10.101118347708251,"tilt":-39.69810503390403,"mount":"wall","circuit":"L3","lumens":1800,"beam":50,"finish":"timber"},
+  };
+  // END sideVaultLights table
+  function upgradeSideVaultLights(items, design) {
+    const next = new Map(design.map(it => [it.id, it]));
+    return items.map(it => {
+      const old = sideVaultLightsBefore[it.id], raw = next.get(it.id);
+      if (!old || !raw || !untouched(it, old)) return it;
+      if (Math.abs((it.lumens ?? NaN) - old.lumens) >= 0.5 || Math.abs((it.beam ?? NaN) - old.beam) >= 0.5) return it;
+      const params = it.params?.finish === old.finish ? { ...it.params, finish: raw.params.finish } : it.params;
+      return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mount: raw.mount, mountYaw: raw.mountYaw, anchorY: raw.anchorY, lumens: raw.lumens, beam: raw.beam, params };
+    });
   }
 
   // Parish priest's decisions of 25 October 2026 (docs/engineering/parish-meeting-2026-10-25.md).
@@ -1311,5 +1379,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

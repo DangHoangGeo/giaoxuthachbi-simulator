@@ -1,34 +1,34 @@
 ID,Circuit,Board,X m,Y m,Z m,Provisional product category
 L1,L3,DB1,50,4.14,0,Service-room LED panel · 600 × 600 mm
 L2,L3,DB1,51.9,4.14,0,Service-room LED panel · 600 × 600 mm
-L3,L2,DB1,10.125,8.77,-2.48,"Reading projector · side bracket, finish-matched"
-L4,L2,DB1,10.125,8.77,-2.72,"Reading projector · side bracket, finish-matched"
-L5,L2,DB1,10.125,8.77,2.48,"Reading projector · side bracket, finish-matched"
-L6,L2,DB1,10.125,8.77,2.72,"Reading projector · side bracket, finish-matched"
-L7,L2,DB1,14.625,8.77,-2.48,"Reading projector · side bracket, finish-matched"
-L8,L2,DB1,14.625,8.77,-2.72,"Reading projector · side bracket, finish-matched"
-L9,L2,DB1,14.625,8.77,2.48,"Reading projector · side bracket, finish-matched"
-L10,L2,DB1,14.625,8.77,2.72,"Reading projector · side bracket, finish-matched"
-L11,L2,DB1,19.125,8.77,-2.48,"Reading projector · side bracket, finish-matched"
-L12,L2,DB1,19.125,8.77,-2.72,"Reading projector · side bracket, finish-matched"
-L13,L2,DB1,19.125,8.77,2.48,"Reading projector · side bracket, finish-matched"
-L14,L2,DB1,19.125,8.77,2.72,"Reading projector · side bracket, finish-matched"
-L15,L1,DB1,23.625,8.77,-2.48,"Reading projector · side bracket, finish-matched"
-L16,L2,DB1,23.625,8.77,-2.72,"Reading projector · side bracket, finish-matched"
-L17,L1,DB1,23.625,8.77,2.48,"Reading projector · side bracket, finish-matched"
-L18,L2,DB1,23.625,8.77,2.72,"Reading projector · side bracket, finish-matched"
-L19,L1,DB1,28.125,8.77,-2.48,"Reading projector · side bracket, finish-matched"
-L20,L1,DB1,28.125,8.77,-2.72,"Reading projector · side bracket, finish-matched"
-L21,L1,DB1,28.125,8.77,2.48,"Reading projector · side bracket, finish-matched"
-L22,L1,DB1,28.125,8.77,2.72,"Reading projector · side bracket, finish-matched"
-L23,L1,DB1,32.625,8.77,-2.48,"Reading projector · side bracket, finish-matched"
-L24,L1,DB1,32.625,8.77,-2.72,"Reading projector · side bracket, finish-matched"
-L25,L1,DB1,32.625,8.77,2.48,"Reading projector · side bracket, finish-matched"
-L26,L1,DB1,32.625,8.77,2.72,"Reading projector · side bracket, finish-matched"
-L27,L1,DB1,37.125,8.77,-2.48,"Reading projector · side bracket, finish-matched"
-L28,L1,DB1,37.125,8.77,-2.72,"Reading projector · side bracket, finish-matched"
-L29,L1,DB1,37.125,8.77,2.48,"Reading projector · side bracket, finish-matched"
-L30,L1,DB1,37.125,8.77,2.72,"Reading projector · side bracket, finish-matched"
+L3,L2,DB1,10.125,8.77,-0.9,"Reading projector · side bracket, finish-matched"
+L4,L2,DB1,10.125,8.77,-2.48,"Reading projector · side bracket, finish-matched"
+L5,L2,DB1,10.125,8.77,0.9,"Reading projector · side bracket, finish-matched"
+L6,L2,DB1,10.125,8.77,2.48,"Reading projector · side bracket, finish-matched"
+L7,L2,DB1,14.625,8.77,-0.9,"Reading projector · side bracket, finish-matched"
+L8,L2,DB1,14.625,8.77,-2.48,"Reading projector · side bracket, finish-matched"
+L9,L2,DB1,14.625,8.77,0.9,"Reading projector · side bracket, finish-matched"
+L10,L2,DB1,14.625,8.77,2.48,"Reading projector · side bracket, finish-matched"
+L11,L2,DB1,19.125,8.77,-0.9,"Reading projector · side bracket, finish-matched"
+L12,L2,DB1,19.125,8.77,-2.48,"Reading projector · side bracket, finish-matched"
+L13,L2,DB1,19.125,8.77,0.9,"Reading projector · side bracket, finish-matched"
+L14,L2,DB1,19.125,8.77,2.48,"Reading projector · side bracket, finish-matched"
+L15,L1,DB1,23.625,8.77,-0.9,"Reading projector · side bracket, finish-matched"
+L16,L2,DB1,23.625,8.77,-2.48,"Reading projector · side bracket, finish-matched"
+L17,L1,DB1,23.625,8.77,0.9,"Reading projector · side bracket, finish-matched"
+L18,L2,DB1,23.625,8.77,2.48,"Reading projector · side bracket, finish-matched"
+L19,L1,DB1,28.125,8.77,-0.9,"Reading projector · side bracket, finish-matched"
+L20,L1,DB1,28.125,8.77,-2.48,"Reading projector · side bracket, finish-matched"
+L21,L1,DB1,28.125,8.77,0.9,"Reading projector · side bracket, finish-matched"
+L22,L1,DB1,28.125,8.77,2.48,"Reading projector · side bracket, finish-matched"
+L23,L1,DB1,32.625,8.77,-0.9,"Reading projector · side bracket, finish-matched"
+L24,L1,DB1,32.625,8.77,-2.48,"Reading projector · side bracket, finish-matched"
+L25,L1,DB1,32.625,8.77,0.9,"Reading projector · side bracket, finish-matched"
+L26,L1,DB1,32.625,8.77,2.48,"Reading projector · side bracket, finish-matched"
+L27,L1,DB1,37.125,8.77,-0.9,"Reading projector · side bracket, finish-matched"
+L28,L1,DB1,37.125,8.77,-2.48,"Reading projector · side bracket, finish-matched"
+L29,L1,DB1,37.125,8.77,0.9,"Reading projector · side bracket, finish-matched"
+L30,L1,DB1,37.125,8.77,2.48,"Reading projector · side bracket, finish-matched"
 L31,L2,DB1,10.084999999999999,6.84,-6.09,"Reading projector · side bracket, finish-matched"
 L32,L2,DB1,10.084999999999999,6.84,-4.84,"Reading projector · side bracket, finish-matched"
 L33,L2,DB1,10.084999999999999,6.84,6.09,"Reading projector · side bracket, finish-matched"
@@ -57,14 +57,10 @@ L55,L1,DB1,37.085,6.84,-6.09,"Reading projector · side bracket, finish-matched"
 L56,L1,DB1,37.085,6.84,-4.84,"Reading projector · side bracket, finish-matched"
 L57,L1,DB1,37.085,6.84,6.09,"Reading projector · side bracket, finish-matched"
 L58,L1,DB1,37.085,6.84,4.84,"Reading projector · side bracket, finish-matched"
-L59,L2,DB1,2.65,3.45,-4.2,"Reading projector · side bracket, finish-matched"
-L60,L2,DB1,2.65,5.95,-4.2,"Reading projector · side bracket, finish-matched"
-L61,L2,DB1,2.65,3.45,4.2,"Reading projector · side bracket, finish-matched"
-L62,L2,DB1,2.65,5.95,4.2,"Reading projector · side bracket, finish-matched"
-L63,L8,DB1,38.94,3.8,-10.15,Small brass chandelier + reading optic · concept
-L65,L8,DB1,42.22,3.8,-10.15,Small brass chandelier + reading optic · concept
-L67,L8,DB1,38.94,3.8,10.15,Small brass chandelier + reading optic · concept
-L69,L8,DB1,42.22,3.8,10.15,Small brass chandelier + reading optic · concept
+L59,L2,DB1,5.475,3.45,-4.2,"Reading projector · side bracket, finish-matched"
+L60,L2,DB1,5.475,3.9,-4.2,"Reading projector · side bracket, finish-matched"
+L61,L2,DB1,5.475,3.45,4.2,"Reading projector · side bracket, finish-matched"
+L62,L2,DB1,5.475,3.9,4.2,"Reading projector · side bracket, finish-matched"
 L71,LA,DB1,9.975,9.18,0,Roof uplight · wide flood
 L72,LA,DB1,14.475,9.18,0,Roof uplight · wide flood
 L73,LA,DB1,18.975,9.18,0,Roof uplight · wide flood
@@ -90,10 +86,10 @@ L111,L3,DB1,44.75,7.25,3.2399999999999998,LED projector · medium 36°
 L112,L3,DB1,45.2,7.25,3.2399999999999998,LED projector · medium 36°
 L113,L3,DB1,45.35,8.42,2.94,Roof uplight · wide flood
 L114,L3,DB1,45.65,7.25,-3.2399999999999998,Accent spotlight · 15°
-L115,L3,DB1,44.419999999999995,7.75,-4.75,Accent spotlight · 15°
-L116,L3,DB1,44.419999999999995,7.75,-6.25,LED projector · medium 36°
-L117,L3,DB1,44.419999999999995,7.75,4.75,Accent spotlight · 15°
-L118,L3,DB1,44.419999999999995,7.75,6.25,LED projector · medium 36°
+L115,L3,DB1,44.68,6.424,-4.14,Accent spotlight · 15°
+L116,L3,DB1,45.25,6.356000000000001,-4.14,LED projector · medium 36°
+L117,L3,DB1,44.68,6.424,4.14,Accent spotlight · 15°
+L118,L3,DB1,45.25,6.356000000000001,4.14,LED projector · medium 36°
 L119,L4,DB1,9.545,3.1,-7.47,Open-porch wall flood · concept
 L120,L4,DB1,14.045,3.1,-7.47,Open-porch wall flood · concept
 L121,L4,DB1,18.545,3.1,-7.47,Open-porch wall flood · concept
@@ -112,8 +108,8 @@ L133,L4,DB1,32.045,3.1,7.47,Open-porch wall flood · concept
 L134,L4,DB1,36.545,3.1,7.47,Open-porch wall flood · concept
 L135,L4,DB1,48.245,3.1,7.47,Open-porch wall flood · concept
 L136,L4,DB1,52.586,3.1,7.47,Open-porch wall flood · concept
-L137,L9,DB2,2.2,3,-2.4,Wall lantern
-L138,L9,DB2,2.2,3,2.4,Wall lantern
+L137,L9,DB2,2.2,3,-2.3,Wall lantern
+L138,L9,DB2,2.2,3,2.3,Wall lantern
 L139,L5,DB1,15.3,2.6,-7.52,Wall lantern
 L140,L5,DB1,18.150000000000002,2.6,-7.52,Wall lantern
 L141,L5,DB1,33.300000000000004,2.6,-7.52,Wall lantern
@@ -126,7 +122,7 @@ L151,L3,DB1,52.8,2.3,-4.48,Wall lantern
 L152,L3,DB1,52.8,2.3,-6.48,Wall lantern
 L153,L3,DB1,52.8,2.3,4.48,Wall lantern
 L154,L3,DB1,52.8,2.3,6.48,Wall lantern
-L155,E1,DB1,2.6800000008940703,4.762499999552966,0,Exit sign (maintained)
+L155,E1,DB1,5.313000000894069,4.762499999552966,0,Exit sign (maintained)
 L156,E1,DB1,16.725,3.061,-7.4400000013411045,Exit sign (maintained)
 L157,E1,DB1,16.725,3.061,7.4400000013411045,Exit sign (maintained)
 L158,E1,DB1,34.725,3.061,-7.4400000013411045,Exit sign (maintained)
@@ -173,23 +169,23 @@ L198,L7,DB2,48.4,7.32,-7.3,Festival bulb string (outdoor)
 L199,L7,DB2,21.35,6.4,-10.78,Festival bulb string (outdoor)
 L200,L7,DB2,48.4,6.4,-10.78,Festival bulb string (outdoor)
 L201,L7,DB2,53.72,9,-5.475,Festival bulb string (outdoor)
-L202,L7,DB2,-0.78,4.195,-7.578,Festival bulb string (outdoor)
-L203,L7,DB2,-0.78,4.195,-12.728000000000002,Festival bulb string (outdoor)
-L204,L7,DB2,-0.4199999999999997,12.115,-7.728000000000001,Festival bulb string (outdoor)
-L205,L7,DB2,-0.4199999999999997,12.115,-12.578,Festival bulb string (outdoor)
-L206,L7,DB2,-0.3199999999999996,19.490000000000002,-7.728000000000001,Festival bulb string (outdoor)
-L207,L7,DB2,-0.3199999999999996,19.490000000000002,-12.578,Festival bulb string (outdoor)
+L202,L7,DB2,-0.7749999999999999,4.195,-7.593,Festival bulb string (outdoor)
+L203,L7,DB2,-0.7749999999999999,4.195,-12.713000000000001,Festival bulb string (outdoor)
+L204,L7,DB2,-0.635,12.115,-7.663,Festival bulb string (outdoor)
+L205,L7,DB2,-0.635,12.115,-12.643,Festival bulb string (outdoor)
+L206,L7,DB2,-0.525,19.490000000000002,-7.7330000000000005,Festival bulb string (outdoor)
+L207,L7,DB2,-0.525,19.490000000000002,-12.573,Festival bulb string (outdoor)
 L208,L7,DB2,21.35,7.32,7.3,Festival bulb string (outdoor)
 L209,L7,DB2,48.4,7.32,7.3,Festival bulb string (outdoor)
 L210,L7,DB2,21.35,6.4,10.78,Festival bulb string (outdoor)
 L211,L7,DB2,48.4,6.4,10.78,Festival bulb string (outdoor)
 L212,L7,DB2,53.72,9,5.475,Festival bulb string (outdoor)
-L213,L7,DB2,-0.78,4.195,7.578,Festival bulb string (outdoor)
-L214,L7,DB2,-0.78,4.195,12.728000000000002,Festival bulb string (outdoor)
-L215,L7,DB2,-0.4199999999999997,12.115,7.728000000000001,Festival bulb string (outdoor)
-L216,L7,DB2,-0.4199999999999997,12.115,12.578,Festival bulb string (outdoor)
-L217,L7,DB2,-0.3199999999999996,19.490000000000002,7.728000000000001,Festival bulb string (outdoor)
-L218,L7,DB2,-0.3199999999999996,19.490000000000002,12.578,Festival bulb string (outdoor)
+L213,L7,DB2,-0.7749999999999999,4.195,7.593,Festival bulb string (outdoor)
+L214,L7,DB2,-0.7749999999999999,4.195,12.713000000000001,Festival bulb string (outdoor)
+L215,L7,DB2,-0.635,12.115,7.663,Festival bulb string (outdoor)
+L216,L7,DB2,-0.635,12.115,12.643,Festival bulb string (outdoor)
+L217,L7,DB2,-0.525,19.490000000000002,7.7330000000000005,Festival bulb string (outdoor)
+L218,L7,DB2,-0.525,19.490000000000002,12.573,Festival bulb string (outdoor)
 L219,L7,DB2,2.15,8.5,0,Festival bulb string (outdoor)
 L220,L7,DB2,52.6,6.55,-9.8,Façade floodlight
 L221,L7,DB2,52.6,6.55,9.8,Façade floodlight
@@ -221,8 +217,8 @@ F246,F2,DB1,23.475,4.1,-7.07,Nave wall fan · 45 cm · extended bracket concept
 F247,F2,DB1,23.475,4.1,7.07,Nave wall fan · 45 cm · extended bracket concept
 F248,F2,DB1,32.475,4.1,-7.07,Nave wall fan · 45 cm · extended bracket concept
 F249,F2,DB1,32.475,4.1,7.07,Nave wall fan · 45 cm · extended bracket concept
-F250,F4,DB2,2.655,6,-3.05,Large wall circulator · 90 cm
-F251,F4,DB2,2.655,6,3.05,Large wall circulator · 90 cm
+F250,F4,DB2,5.4799999999999995,6,-3.05,Large wall circulator · 90 cm
+F251,F4,DB2,5.4799999999999995,6,3.05,Large wall circulator · 90 cm
 F252,V1,DB1,5.48,9.4,-2.4,Exhaust (ventilation) fan · 50 cm
 F253,V1,DB1,5.48,9.4,-0.8,Exhaust (ventilation) fan · 50 cm
 F254,V1,DB1,5.48,9.4,0.8,Exhaust (ventilation) fan · 50 cm
@@ -244,8 +240,8 @@ S269,A1,DB1,32.045,2.5,-7.25,"Slim wall column · 0.6 m, wall colour"
 S270,A1,DB1,32.045,2.5,7.25,"Slim wall column · 0.6 m, wall colour"
 S271,A1,DB1,36.545,2.5,-7.25,"Slim wall column · 0.6 m, wall colour"
 S272,A1,DB1,36.545,2.5,7.25,"Slim wall column · 0.6 m, wall colour"
-S273,A5,DB1,2.655,2.5,-3.05,"Slim wall column · 0.6 m, wall colour"
-S274,A5,DB1,2.655,2.5,3.05,"Slim wall column · 0.6 m, wall colour"
+S273,A5,DB1,5.4799999999999995,2.5,-3.05,"Slim wall column · 0.6 m, wall colour"
+S274,A5,DB1,5.4799999999999995,2.5,3.05,"Slim wall column · 0.6 m, wall colour"
 S276,A1,DB1,43.72,4.85,-13.06,"Slim wall column · 0.6 m, wall colour"
 S278,A1,DB1,43.72,4.85,13.06,"Slim wall column · 0.6 m, wall colour"
 S279,A2,DB1,14.045,2.7,-7.47,"Open-porch wall fill · 6"" · concept"
@@ -262,8 +258,8 @@ S289,A3,DB1,18.975,5.6,10.75,Outdoor horn · 30 W
 S290,A3,DB1,32.475,5.6,10.75,Outdoor horn · 30 W
 S291,MIC,DB1,41.08,1.95,-2.62,Gooseneck microphone (cardioid)
 S292,MIC,DB1,44.45,1.93,0.45,Gooseneck microphone (cardioid)
-F-NAVE-B-2P,F2,DB1,5.475,4.1,-7.07,Nave wall fan · 45 cm · extended bracket concept
-F-NAVE-H-2P,F2,DB1,5.475,4.1,7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-B-2P,F2,DB1,6.095,4.1,-7.07,Nave wall fan · 45 cm · extended bracket concept
+F-NAVE-H-2P,F2,DB1,6.095,4.1,7.07,Nave wall fan · 45 cm · extended bracket concept
 F-NAVE-B-3,F2,DB1,9.975,4.1,-7.07,Nave wall fan · 45 cm · extended bracket concept
 F-NAVE-H-3,F2,DB1,9.975,4.1,7.07,Nave wall fan · 45 cm · extended bracket concept
 F-NAVE-B-5,F2,DB1,18.975,4.1,-7.07,Nave wall fan · 45 cm · extended bracket concept
@@ -321,6 +317,14 @@ L-STATION-13-A,LS,DB1,29.905,4.72,-7.23,Station candle light · wall
 L-STATION-13-B,LS,DB1,30.545,4.72,-7.23,Station candle light · wall
 L-STATION-14-A,LS,DB1,34.405,4.72,-7.23,Station candle light · wall
 L-STATION-14-B,LS,DB1,35.045,4.72,-7.23,Station candle light · wall
+L-WING-B-FI,L8,DB1,38.94,8.095059999999997,-8.8,LED projector · narrow 24°
+L-WING-B-FO,L8,DB1,38.94,8.095059999999997,-11.4,LED projector · narrow 24°
+L-WING-B-RI,L8,DB1,42.22,8.063580000000004,-8.8,LED projector · narrow 24°
+L-WING-B-RO,L8,DB1,42.22,8.063580000000004,-11.4,LED projector · narrow 24°
+L-WING-H-FI,L8,DB1,38.94,8.095059999999997,8.8,LED projector · narrow 24°
+L-WING-H-FO,L8,DB1,38.94,8.095059999999997,11.4,LED projector · narrow 24°
+L-WING-H-RI,L8,DB1,42.22,8.063580000000004,8.8,LED projector · narrow 24°
+L-WING-H-RO,L8,DB1,42.22,8.063580000000004,11.4,LED projector · narrow 24°
 L-ARCH-B-2P-3-A,L4,DB1,5.55,2.6,-10.654,Open-porch wall flood · concept
 L-ARCH-B-2P-3-B,L4,DB1,9.9,2.6,-10.654,Open-porch wall flood · concept
 S-PORCH-B-2P-3,A2,DB1,9.545,2.7,-7.47,"Open-porch wall fill · 6"" · concept"

@@ -28,6 +28,7 @@ def register_fonts(language='en'):
 
 
 VI = {
+    'Proposed underfloor return; this location needs a concealed local riser / connection design.': 'Đề xuất tuyến trở về dưới sàn; vị trí này cần thiết kế ống đứng và đấu nối âm cục bộ.',
     'Thach Bi Church - Electrical review drawings': 'Nhà thờ Thạch Bi - Bản vẽ rà soát hệ thống điện',
     'Thach Bi Church design-development model': 'Mô hình phát triển thiết kế nhà thờ Thạch Bi',
     'THACH BI CHURCH': 'NHÀ THỜ THẠCH BI',
@@ -291,6 +292,9 @@ NAME_PARTS = {
     'Rear rows light': 'Đèn hàng ghế sau',
     'Rear centre light': 'Đèn giữa phía sau',
     'Wing light': 'Đèn cánh ngang',
+    'Wing downlight': 'Đèn chiếu xuống cánh ngang',
+    'inner row': 'hàng trong',
+    'outer row': 'hàng ngoài',
     'Roof uplight': 'Đèn hắt lên mái',
     'Chandelier': 'Đèn chùm',
     'Grand chandelier': 'Đèn chùm lớn',

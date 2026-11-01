@@ -47,7 +47,7 @@ The owner's review of 1 November 2026: the main door belongs to the body of the 
 | --- | --- | --- | --- |
 | Door wall | doors in the front arches at X ≈ 2.5 | a wall at **X 5.035–5.475** up to the hall ceiling (+8.39), with the three doorways; leaves, fanlights and transoms moved back 2.63 m; the front arches are an open entrance porch | Plan P05: jamb faces D7BF88/D7C117 at X 5.035, rebates to 5.145, inner face D7BF80/D7C10F on axis 2′ (5.475) |
 | Main doorway | Z ±1.55 | Z ±1.55, as drawn | P05 D7BF85/D7C114 |
-| Side doorways | \|Z\| 4.41–6.55 | unchanged width (2.14 m), 0.135 m further out than drawn | P05: \|Z\| 4.275–6.425 (left open; the leaves keep the front-arch sizes) |
+| Side doorways | \|Z\| 4.41–6.55 | **\|Z\| 4.275–6.415** (leaves, fanlights and transoms shifted 0.135 m toward the axis; 2.14 m wide) | P05: \|Z\| 4.275–6.425 |
 | Entrance steps | four 0.12 m risers from X 0.99 | **three 0.16 m risers at X 1.321, 1.551, 1.781**, from the −0.48 forecourt to ±0 | Section A-A D7E712–D7E716 |
 | Central pier bases | stood at ±0 over the lower treads, with a gap beneath | a plinth course under each pedestal down to the −0.48 forecourt | Section A-A D7E717–D7E71B: the base runs down through the steps |
 | Tower front plinth | 0.22 m ledge in front of the corner piers (front X −1.2) | front face flush with the corner-pier plinth (X −0.984), so the pier bases run straight down to −0.48 | Elevation E01B: pier bases continue below ±0 to the forecourt |
