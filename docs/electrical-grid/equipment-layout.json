@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-11-01T09:56:13.555Z",
+  "savedAt": "2026-11-01T11:19:17.310Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -59,6 +59,8 @@
     "entranceFitRevision": "2026-11-01-entrance-fit-1",
     "sideVaultLightsRevision": "2026-11-01-side-vault-lights-1",
     "wingRoofLightingRevision": "2026-11-01-wing-roof-lighting-1",
+    "columnWashRevision": "2026-11-01-column-up-down-1",
+    "centreReadingRevision": "2026-11-01-centre-reading-balance-1",
     "eveningExposureRevision": "2026-10-09-evening-160",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
@@ -130,7 +132,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -155,7 +157,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -180,7 +182,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -205,7 +207,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -230,7 +232,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -255,7 +257,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -280,7 +282,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -305,7 +307,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -330,7 +332,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -355,7 +357,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -380,7 +382,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -405,7 +407,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -430,7 +432,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -455,7 +457,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -480,7 +482,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -505,7 +507,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -530,7 +532,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -555,7 +557,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -580,7 +582,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -605,7 +607,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -630,7 +632,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -655,7 +657,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -680,7 +682,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -705,7 +707,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -730,7 +732,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -755,7 +757,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -780,7 +782,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -805,7 +807,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -8378,6 +8380,342 @@
       "lumens": 3000,
       "cct": 2700,
       "beam": 24,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-3-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 3 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        9.975,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-3-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 3 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        9.975,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-4-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 4 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        14.475,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-4-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 4 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        14.475,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-5-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 5 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        18.975,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-5-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 5 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        18.975,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-6-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 6 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        23.475,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-6-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 6 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        23.475,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-7-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 7 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        27.975,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-7-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 7 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        27.975,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-8-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 8 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        32.475,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-8-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 8 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        32.475,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-9-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 9 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        36.975,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-9-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 9 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        36.975,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
       "shadow": false
     },
     {

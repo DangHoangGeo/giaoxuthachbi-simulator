@@ -325,6 +325,20 @@ L-WING-H-FI,L8,DB1,38.94,7.635531887066677,8.8,LED projector · narrow 24°
 L-WING-H-FO,L8,DB1,38.94,7.635531887066677,11.4,LED projector · narrow 24°
 L-WING-H-RI,L8,DB1,42.21,7.635531887066683,8.8,LED projector · narrow 24°
 L-WING-H-RO,L8,DB1,42.21,7.635531887066683,11.4,LED projector · narrow 24°
+L-COLUMN-3-B,LD,DB1,9.975,5.5,-3.29,Column up/down light · concept
+L-COLUMN-3-H,LD,DB1,9.975,5.5,3.29,Column up/down light · concept
+L-COLUMN-4-B,LD,DB1,14.475,5.5,-3.29,Column up/down light · concept
+L-COLUMN-4-H,LD,DB1,14.475,5.5,3.29,Column up/down light · concept
+L-COLUMN-5-B,LD,DB1,18.975,5.5,-3.29,Column up/down light · concept
+L-COLUMN-5-H,LD,DB1,18.975,5.5,3.29,Column up/down light · concept
+L-COLUMN-6-B,LD,DB1,23.475,5.5,-3.29,Column up/down light · concept
+L-COLUMN-6-H,LD,DB1,23.475,5.5,3.29,Column up/down light · concept
+L-COLUMN-7-B,LD,DB1,27.975,5.5,-3.29,Column up/down light · concept
+L-COLUMN-7-H,LD,DB1,27.975,5.5,3.29,Column up/down light · concept
+L-COLUMN-8-B,LD,DB1,32.475,5.5,-3.29,Column up/down light · concept
+L-COLUMN-8-H,LD,DB1,32.475,5.5,3.29,Column up/down light · concept
+L-COLUMN-9-B,LD,DB1,36.975,5.5,-3.29,Column up/down light · concept
+L-COLUMN-9-H,LD,DB1,36.975,5.5,3.29,Column up/down light · concept
 L-ARCH-B-2P-3-A,L4,DB1,5.55,2.6,-10.654,Open-porch wall flood · concept
 L-ARCH-B-2P-3-B,L4,DB1,9.9,2.6,-10.654,Open-porch wall flood · concept
 S-PORCH-B-2P-3,A2,DB1,9.545,2.7,-7.47,"Open-porch wall fill · 6"" · concept"

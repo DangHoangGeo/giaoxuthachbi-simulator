@@ -1,5 +1,7 @@
 # Sanctuary wings: coordinated review, 9 October 2026
 
+> **Superseded interior geometry, 1 November 2026:** The historical wing-lining seam description and images in this record predate the owner clarification to continue the main nave lining and visible timber across the wing junction. See the [current timber specification](../beams-roof-connections/SPECIFICATION.md); support, transition and valley details remain on engineering hold.
+
 > **Superseded check, 1 November 2026:** `scripts/verify_wing_review.cjs` freezes the default inventory of 9 October 2026 (exact equality with `review/wing-options-2026-10-09/baseline-layout.json` for every unrelated item and the held L8 chandeliers). Every later approved revision changes that inventory, so it has failed since 9 October and cannot pass by design; on 1 November 2026 the owner also retired the wing chandeliers it asserts. It is kept unchanged as historical evidence of the 9 October migration. The current wing lighting and its saved-layout migration are checked by `node scripts/verify_simulator.cjs` and `node scripts/verify_nave_wing_lighting_reload.cjs`.
 
 **CONCEPT / ENGINEERING HOLD.** Current default: **two smaller brass chandeliers, two wall fans, one wall speaker and a Saint Peter–Saint Paul pair in each wing**. None of the tested alternatives meets every lighting, speech, feedback, air, noise and concealment target. This is a held visual/engineering review, not an accepted optimum, construction issue or purchase schedule. Phase E2 remains unmerged.

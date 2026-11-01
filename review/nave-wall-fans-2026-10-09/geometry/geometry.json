@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "Thach_Bi_Viewer/bundle.js",
-      "sha256": "99bd27e5df78d40656a8d0e744a0977076681e7b5ab144b575974d9466b8ab92"
+      "sha256": "1d688eef376fd9dd5b877f139db2b63639c1edc67142f5a4eeb14da6a956c731"
     },
     {
       "path": "Thach_Bi_Viewer/realism.js",
@@ -14,15 +14,15 @@
     },
     {
       "path": "Thach_Bi_Viewer/simulator/catalog.js",
-      "sha256": "226d27e399b6a294eb49f24186279b23b3735909d75f4b5318cd26fe205a8869"
+      "sha256": "852fc6dcf849facd543707a1d9a50ffd638618f5f039f7fb0a4234e5727347ec"
     },
     {
       "path": "Thach_Bi_Viewer/simulator/design.js",
-      "sha256": "6cee565de3636cda20861565cd284c32939b842f02e4841431cf0501b4d07dab"
+      "sha256": "b5f42ad4452cd6568218389a44a7ed2b48e8aca229bcaff015d36cb8c2f5a9be"
     },
     {
       "path": "Thach_Bi_Viewer/simulator/engine.js",
-      "sha256": "889483fb0ef5cf839d289863caee75fedb3694ee5f658bb21dd34899331f0071"
+      "sha256": "4c998a294953b46465440fe2ede43cc05b62413e563bcd9c15a2b2072860b9e4"
     },
     {
       "path": "scripts/lib/study_model.cjs",

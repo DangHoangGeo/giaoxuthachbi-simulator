@@ -379,7 +379,7 @@ for(const o of part('Column base +0.600').filter(o=>bounds(o).getCenter(new T.Ve
 const named=name=>nodes.filter(o=>o.isMesh&&o.name===name),timber=named('Proposed underside ridge member')[0].material,lacquer=shafts[0].material;
 assert.equal(timber.name,'Proposed exposed roof timber colour');
 assert(timber.color.equals(lacquer.color)&&timber.map===null&&timber.bumpMap===null&&timber.roughness===lacquer.roughness,'Roof timber material has the column lacquer');
-for(const [name,count] of [['Schematic transverse tie',7],['Schematic rafter; no structural design',18],['Proposed visible principal rafter below roof lining',18],['Proposed longitudinal roof purlin',6],['Proposed truss king post',7],['Proposed roof truss diagonal',14],['Timber knee brace · proposed section',36]]){
+for(const [name,count] of [['Schematic transverse tie',7],['Schematic rafter; no structural design',18],['Proposed visible principal rafter below roof lining',18],['Proposed longitudinal roof purlin',10],['Proposed truss king post',7],['Proposed roof truss diagonal',14],['Timber knee brace · proposed section',36]]){
   const list=named(name);assert.equal(list.length,count,name);
   for(const o of list)assert.equal(o.material,timber,`${name} is lacquered`);
 }

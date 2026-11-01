@@ -102,6 +102,8 @@ VI = {
     'L1 · Central seating': 'L1 / Ghế ngồi giữa',
     'L1 · Nave · 3 front bays (6–9)': 'L1 / Lòng nhà thờ · 3 gian đầu (6–9)',
     'L2 · Nave · 4 rear bays (2′–6)': 'L2 / Lòng nhà thờ · 4 gian cuối (2′–6)',
+    'LD · Column up/down lights': 'LD / Đèn hắt hai chiều trên cột',
+    'Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.': 'Đề xuất đi dưới sàn và dùng máng tháo được trên mặt cột. Vị trí qua chân cột, liên kết vào gỗ, thẩm mỹ, ranh giới chống cháy và lối bảo trì cần thiết kế phối hợp; không mặc định đục rãnh âm.',
     'LD · Wall sconces': 'LD / Đèn gắn tường',
     'L2 · Outer seating': 'L2 / Ghế ngồi biên',
     'L8 · Wings · choir & ministers': 'L8 / Cánh ngang / ca đoàn và người phục vụ',
@@ -220,6 +222,7 @@ VI = {
 }
 
 PRODUCTS = {
+    'Column up/down light · concept': 'Đèn hắt hai chiều trên cột / ý tưởng',
     'Concealed light line · niche arch': 'Dải đèn ẩn / vòm hốc',
     'Concealed light line · niche jamb': 'Dải đèn ẩn / má hốc',
     'Double socket outlet · 16 A · recessed': 'Ổ cắm đôi / 16 A / lắp âm',
@@ -292,6 +295,7 @@ NAME_PARTS = {
     'Rear rows light': 'Đèn hàng ghế sau',
     'Rear centre light': 'Đèn giữa phía sau',
     'Wing light': 'Đèn cánh ngang',
+    'Column up/down light': 'Đèn hắt hai chiều trên cột',
     'Wing downlight': 'Đèn chiếu xuống cánh ngang',
     'inner row': 'hàng trong',
     'outer row': 'hàng ngoài',

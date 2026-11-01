@@ -1,5 +1,7 @@
 # Wing roof and lighting review · 1 November 2026
 
+> **Historical interior geometry:** The owner subsequently clarified that the main interior lining and visible timber must continue across the wing junction. The seam and images in this record document the prior model; see the [current specification](../../docs/beams-roof-connections/SPECIFICATION.md). Construction details remain on engineering hold.
+
 **Design development / not for construction.** The owner requested lining and roof timbers in both wings and stronger lighting. The source is the existing model roof planes, reconciled with the 23 October 2026 CAD-derived roofline record; timber sections and junctions are visualization proxies, not checked structural design. See the [roof specification](../../docs/beams-roof-connections/SPECIFICATION.md#wing-roof-visualization-proxies--1-november-2026) and [lighting review](../../docs/systems/lighting.md#wing-roof-and-brighter-downlights--1-november-2026-second-review).
 
 The seam screen verifies the actual concave wing meshes, matching nave vertices and analytical ceiling: the plane intersection is X 40.575 ± 2.781 m, |Z| 7.250 m, Y +7.020 m. The fitting AABB screen compares 38 member proxies against 14 relevant static fittings, with 266 same-wing comparisons, and separately checks that all eight canopy anchors meet modeled purlin soffits; the separate fan sweep screen samples movement and checks the downlight main beams. Neither screen proves product, maintenance or installation clearances.

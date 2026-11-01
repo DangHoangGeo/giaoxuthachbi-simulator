@@ -3,8 +3,8 @@
   "language": "vi",
   "status": "Design development - not for construction",
   "basis": "Plain-language system packages split from the full set; same snapshot",
-  "gitRevision": "e1136ea06a006cd91e1208a93c65a9a9cca92076",
-  "snapshot": "66829ef4c007b4e6423cc0d9f19a22a14851a7be5194051726e2f416b0dd2da9",
+  "gitRevision": "e68ed296b5cdce42af3b0ac51779a78db5f90d57",
+  "snapshot": "635c8de2b98a47ad1f2ac71c15a8569f294a33214579cd6260e6fd793ffea066",
   "packages": [
     {
       "file": "01-am-thanh.pdf",
@@ -401,9 +401,10 @@
         "L3",
         "L8",
         "LA",
+        "LD",
         "LS"
       ],
-      "pages": 17,
+      "pages": 18,
       "equipment": [
         "L1",
         "L2",
@@ -535,7 +536,21 @@
         "L-WING-H-FI",
         "L-WING-H-FO",
         "L-WING-H-RI",
-        "L-WING-H-RO"
+        "L-WING-H-RO",
+        "L-COLUMN-3-B",
+        "L-COLUMN-3-H",
+        "L-COLUMN-4-B",
+        "L-COLUMN-4-H",
+        "L-COLUMN-5-B",
+        "L-COLUMN-5-H",
+        "L-COLUMN-6-B",
+        "L-COLUMN-6-H",
+        "L-COLUMN-7-B",
+        "L-COLUMN-7-H",
+        "L-COLUMN-8-B",
+        "L-COLUMN-8-H",
+        "L-COLUMN-9-B",
+        "L-COLUMN-9-H"
       ],
       "routes": [
         "feeder:LC1",
@@ -680,7 +695,23 @@
         "drop:LC1:L8:light:1:L-WING-H-FI",
         "drop:LC1:L8:light:1:L-WING-H-FO",
         "drop:LC1:L8:light:1:L-WING-H-RI",
-        "drop:LC1:L8:light:1:L-WING-H-RO"
+        "drop:LC1:L8:light:1:L-WING-H-RO",
+        "trunk:LC1:LD:light:-1",
+        "drop:LC1:LD:light:-1:L-COLUMN-3-B",
+        "drop:LC1:LD:light:-1:L-COLUMN-4-B",
+        "drop:LC1:LD:light:-1:L-COLUMN-5-B",
+        "drop:LC1:LD:light:-1:L-COLUMN-6-B",
+        "drop:LC1:LD:light:-1:L-COLUMN-7-B",
+        "drop:LC1:LD:light:-1:L-COLUMN-8-B",
+        "drop:LC1:LD:light:-1:L-COLUMN-9-B",
+        "trunk:LC1:LD:light:1",
+        "drop:LC1:LD:light:1:L-COLUMN-3-H",
+        "drop:LC1:LD:light:1:L-COLUMN-4-H",
+        "drop:LC1:LD:light:1:L-COLUMN-5-H",
+        "drop:LC1:LD:light:1:L-COLUMN-6-H",
+        "drop:LC1:LD:light:1:L-COLUMN-7-H",
+        "drop:LC1:LD:light:1:L-COLUMN-8-H",
+        "drop:LC1:LD:light:1:L-COLUMN-9-H"
       ],
       "sources": [
         "DB1",
@@ -729,46 +760,51 @@
         },
         {
           "page": 9,
+          "sheet": "E-031",
+          "title": "LD / Đèn hắt hai chiều trên cột"
+        },
+        {
+          "page": 10,
           "sheet": "DS-01",
           "title": "Danh sách thiết bị và tủ điện"
         },
         {
-          "page": 10,
+          "page": 11,
           "sheet": "DS-02",
           "title": "Danh sách thiết bị và tủ điện"
         },
         {
-          "page": 11,
+          "page": 12,
           "sheet": "DS-03",
           "title": "Danh sách thiết bị và tủ điện"
         },
         {
-          "page": 12,
+          "page": 13,
           "sheet": "DS-04",
           "title": "Danh sách thiết bị và tủ điện"
         },
         {
-          "page": 13,
+          "page": 14,
           "sheet": "IM-01",
           "title": "Bảng mã ghi chú lắp đặt"
         },
         {
-          "page": 14,
+          "page": 15,
           "sheet": "RS-01",
           "title": "Bảng định vị tuyến"
         },
         {
-          "page": 15,
+          "page": 16,
           "sheet": "RS-02",
           "title": "Bảng định vị tuyến"
         },
         {
-          "page": 16,
+          "page": 17,
           "sheet": "RS-03",
           "title": "Bảng định vị tuyến"
         },
         {
-          "page": 17,
+          "page": 18,
           "sheet": "RS-04",
           "title": "Bảng định vị tuyến"
         }
@@ -1442,13 +1478,13 @@
     }
   ],
   "files": {
-    "01-am-thanh.pdf": "db1b160f7b25963cf110e34e42f084b979788f2b5bff3fa9af2dc42fe2bb313d",
-    "02-quat-va-thong-gio.pdf": "d848cc3cb981fd2f2fbaa7053eda73a4b5629b3b44f6f7d80108376c8fda4eec",
-    "03-den-trong-nha-tho.pdf": "f1caca140117008769983b66e3b63fd4634eaa69bebbd656778a0958028ee969",
-    "04-den-ngoai-troi.pdf": "0116a3cd5be62177fcbc382a4ca882714d947311202bd6240188ac4a78b64bb5",
-    "05-den-mat-tien-thap-va-le-hoi.pdf": "8cf44480b083892cd19e3fab600b41c23f700aabbfbaf372a377a6d41de40390",
-    "06-den-thoat-hiem.pdf": "1c520a80536e97930d5af5c52b353e1621aa5b6cad15a18c09e9864056280cd7",
-    "07-o-cam-va-nguon-su-kien.pdf": "456222d0920199114e24e24c894dfaa58560e7666c332f05f2975f224c4c278d",
-    "08-tu-dien-va-duong-cap.pdf": "ca56bf3350e22b31f810d1bb74f206516cd346f5182847ca053531ce6fe03f41"
+    "01-am-thanh.pdf": "d6b031c51f62e7b2265791033befb4fa224d67691389d4b7996475cf557e5f63",
+    "02-quat-va-thong-gio.pdf": "3f0297f147d2164a0f90358f1e3c77a95fdd4a90e27cc3acc8df31f7b52a6b85",
+    "03-den-trong-nha-tho.pdf": "581c1cd8f7ebe143d704d747a7a7002581ae120045e83c0fabdd588835d9f826",
+    "04-den-ngoai-troi.pdf": "8daa78a6a4917ca7319d0b168c32c7244c53ac28b0d38ef3d24b137c72aa880e",
+    "05-den-mat-tien-thap-va-le-hoi.pdf": "80482b4904f9d7c1c858a8e7515ba49bd8f70fceaf9b9078ca4ef0ba1872a04d",
+    "06-den-thoat-hiem.pdf": "bb1965e848f44dcc9356e2aaa4467391754b1c7f0886712d0de7bbbf75fe3826",
+    "07-o-cam-va-nguon-su-kien.pdf": "2b8d0683d1e0e4d8edb0e026def018adbab95fe4cfbed8904cfc2661ec5622a6",
+    "08-tu-dien-va-duong-cap.pdf": "d76e39f8c41fa033c77943e28e0b72c74792d7f2faea6f7020f8e8466fb5dafa"
   }
 }

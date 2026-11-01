@@ -152,6 +152,11 @@
   function branchPath(it, start) {
     const p = it.pos.slice(), s = Math.sign(p[2] || -1), [x, y, z] = start;
     const t = CAT.byId[it.type];
+    if (it.type === 'columnUpDown') {
+      const fy = buriedY([start, [p[0], 0, z], p]);
+      return { ...proposal([start, [x, fy, z], [p[0], fy, z], [p[0], fy, p[2]], p], 'review-local',
+        'Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.'), reviewRequired: true };
+    }
     if (eventPoint(it)) return proposal([start, [p[0], p[1], s * EVENT.wallZ], p], 'underfloor-event',
       'Buried duct below the entrance-hall floor and tower plinth, rising inside the solid tower pier to the cabinet. Duct size, depth, draw pits, water sealing and separation pending; no chase through the arch mouldings.');
     if (t.mic) {

@@ -36564,6 +36564,1112 @@
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:LC1:LD:light:-1",
+      "name": "LD · B · circuit trunk",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L-COLUMN-3-B",
+        "L-COLUMN-4-B",
+        "L-COLUMN-5-B",
+        "L-COLUMN-6-B",
+        "L-COLUMN-7-B",
+        "L-COLUMN-8-B",
+        "L-COLUMN-9-B"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          5.94,
+          -3.3
+        ],
+        [
+          53.016,
+          5.94,
+          -7.36
+        ],
+        [
+          44.175,
+          5.94,
+          -7.36
+        ],
+        [
+          44.175,
+          7.04,
+          -7.36
+        ],
+        [
+          43.535,
+          7.04,
+          -7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          -7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          -7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          -7.36
+        ],
+        [
+          37.615,
+          7.04,
+          -7.36
+        ],
+        [
+          36.975,
+          7.04,
+          -7.36
+        ],
+        [
+          36.975,
+          5.94,
+          -7.36
+        ],
+        [
+          9.975000000000001,
+          5.94,
+          -7.36
+        ]
+      ],
+      "length": 62.29813031117919,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              -7.36
+            ],
+            [
+              43.535,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              -7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ],
+            [
+              37.615,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              -7.36
+            ],
+            [
+              36.975,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-3-B",
+      "name": "LD → Column up/down light · axis 3 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-3-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 62.29813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          9.975000000000001,
+          5.94,
+          -7.36
+        ],
+        [
+          9.975000000000001,
+          -0.44,
+          -7.36
+        ],
+        [
+          9.975,
+          -0.44,
+          -3.29
+        ],
+        [
+          9.975,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-4-B",
+      "name": "LD → Column up/down light · axis 4 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-4-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 57.79813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          14.475000000000001,
+          5.94,
+          -7.36
+        ],
+        [
+          14.475000000000001,
+          -0.44,
+          -7.36
+        ],
+        [
+          14.475,
+          -0.44,
+          -3.29
+        ],
+        [
+          14.475,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-5-B",
+      "name": "LD → Column up/down light · axis 5 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-5-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 53.29813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          18.975,
+          5.94,
+          -7.36
+        ],
+        [
+          18.975,
+          -0.44,
+          -7.36
+        ],
+        [
+          18.975,
+          -0.44,
+          -3.29
+        ],
+        [
+          18.975,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-6-B",
+      "name": "LD → Column up/down light · axis 6 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-6-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 48.79813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          23.475,
+          5.94,
+          -7.36
+        ],
+        [
+          23.475,
+          -0.44,
+          -7.36
+        ],
+        [
+          23.475,
+          -0.44,
+          -3.29
+        ],
+        [
+          23.475,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-7-B",
+      "name": "LD → Column up/down light · axis 7 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-7-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 44.29813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          27.975,
+          5.94,
+          -7.36
+        ],
+        [
+          27.975,
+          -0.44,
+          -7.36
+        ],
+        [
+          27.975,
+          -0.44,
+          -3.29
+        ],
+        [
+          27.975,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-8-B",
+      "name": "LD → Column up/down light · axis 8 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-8-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 39.79813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          32.475,
+          5.94,
+          -7.36
+        ],
+        [
+          32.475,
+          -0.44,
+          -7.36
+        ],
+        [
+          32.475,
+          -0.44,
+          -3.29
+        ],
+        [
+          32.475,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-9-B",
+      "name": "LD → Column up/down light · axis 9 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-9-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 35.29813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          36.975,
+          5.94,
+          -7.36
+        ],
+        [
+          36.975,
+          -0.44,
+          -7.36
+        ],
+        [
+          36.975,
+          -0.44,
+          -3.29
+        ],
+        [
+          36.975,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:LC1:LD:light:1",
+      "name": "LD · H · circuit trunk",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L-COLUMN-3-H",
+        "L-COLUMN-4-H",
+        "L-COLUMN-5-H",
+        "L-COLUMN-6-H",
+        "L-COLUMN-7-H",
+        "L-COLUMN-8-H",
+        "L-COLUMN-9-H"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          5.94,
+          -3.3
+        ],
+        [
+          53.016,
+          5.94,
+          7.36
+        ],
+        [
+          44.175,
+          5.94,
+          7.36
+        ],
+        [
+          44.175,
+          7.04,
+          7.36
+        ],
+        [
+          43.535,
+          7.04,
+          7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          7.36
+        ],
+        [
+          37.615,
+          7.04,
+          7.36
+        ],
+        [
+          36.975,
+          7.04,
+          7.36
+        ],
+        [
+          36.975,
+          5.94,
+          7.36
+        ],
+        [
+          9.975000000000001,
+          5.94,
+          7.36
+        ]
+      ],
+      "length": 68.89813031117919,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              7.36
+            ],
+            [
+              43.535,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              7.36
+            ],
+            [
+              37.615,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              7.36
+            ],
+            [
+              36.975,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-3-H",
+      "name": "LD → Column up/down light · axis 3 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-3-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 68.89813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          9.975000000000001,
+          5.94,
+          7.36
+        ],
+        [
+          9.975000000000001,
+          -0.44,
+          7.36
+        ],
+        [
+          9.975,
+          -0.44,
+          3.29
+        ],
+        [
+          9.975,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-4-H",
+      "name": "LD → Column up/down light · axis 4 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-4-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 64.39813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          14.475000000000001,
+          5.94,
+          7.36
+        ],
+        [
+          14.475000000000001,
+          -0.44,
+          7.36
+        ],
+        [
+          14.475,
+          -0.44,
+          3.29
+        ],
+        [
+          14.475,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-5-H",
+      "name": "LD → Column up/down light · axis 5 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-5-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 59.898130311179195,
+      "homeRun": false,
+      "points": [
+        [
+          18.975,
+          5.94,
+          7.36
+        ],
+        [
+          18.975,
+          -0.44,
+          7.36
+        ],
+        [
+          18.975,
+          -0.44,
+          3.29
+        ],
+        [
+          18.975,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-6-H",
+      "name": "LD → Column up/down light · axis 6 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-6-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 55.398130311179195,
+      "homeRun": false,
+      "points": [
+        [
+          23.475,
+          5.94,
+          7.36
+        ],
+        [
+          23.475,
+          -0.44,
+          7.36
+        ],
+        [
+          23.475,
+          -0.44,
+          3.29
+        ],
+        [
+          23.475,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-7-H",
+      "name": "LD → Column up/down light · axis 7 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-7-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 50.898130311179195,
+      "homeRun": false,
+      "points": [
+        [
+          27.975,
+          5.94,
+          7.36
+        ],
+        [
+          27.975,
+          -0.44,
+          7.36
+        ],
+        [
+          27.975,
+          -0.44,
+          3.29
+        ],
+        [
+          27.975,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-8-H",
+      "name": "LD → Column up/down light · axis 8 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-8-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 46.398130311179195,
+      "homeRun": false,
+      "points": [
+        [
+          32.475,
+          5.94,
+          7.36
+        ],
+        [
+          32.475,
+          -0.44,
+          7.36
+        ],
+        [
+          32.475,
+          -0.44,
+          3.29
+        ],
+        [
+          32.475,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-9-H",
+      "name": "LD → Column up/down light · axis 9 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-9-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 41.898130311179195,
+      "homeRun": false,
+      "points": [
+        [
+          36.975,
+          5.94,
+          7.36
+        ],
+        [
+          36.975,
+          -0.44,
+          7.36
+        ],
+        [
+          36.975,
+          -0.44,
+          3.29
+        ],
+        [
+          36.975,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     }
   ],
   "components": [
@@ -36632,8 +37738,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         10.125,
@@ -36657,8 +37763,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         10.125,
@@ -36682,8 +37788,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         10.125,
@@ -36707,8 +37813,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         10.125,
@@ -36732,8 +37838,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
@@ -36757,8 +37863,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
@@ -36782,8 +37888,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
@@ -36807,8 +37913,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
@@ -36832,8 +37938,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
@@ -36857,8 +37963,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
@@ -36882,8 +37988,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
@@ -36907,8 +38013,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
@@ -36932,8 +38038,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
@@ -36957,8 +38063,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
@@ -36982,8 +38088,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
@@ -37007,8 +38113,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
@@ -37032,8 +38138,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
@@ -37057,8 +38163,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
@@ -37082,8 +38188,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
@@ -37107,8 +38213,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
@@ -37132,8 +38238,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
@@ -37157,8 +38263,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
@@ -37182,8 +38288,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
@@ -37207,8 +38313,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
@@ -37232,8 +38338,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         37.125,
@@ -37257,8 +38363,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         37.125,
@@ -37282,8 +38388,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         37.125,
@@ -37307,8 +38413,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         37.125,
@@ -44993,6 +46099,356 @@
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
+      "id": "L-COLUMN-3-B",
+      "name": "Column up/down light · axis 3 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        9.975,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-3-H",
+      "name": "Column up/down light · axis 3 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        9.975,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-4-B",
+      "name": "Column up/down light · axis 4 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        14.475,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-4-H",
+      "name": "Column up/down light · axis 4 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        14.475,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-5-B",
+      "name": "Column up/down light · axis 5 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        18.975,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-5-H",
+      "name": "Column up/down light · axis 5 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        18.975,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-6-B",
+      "name": "Column up/down light · axis 6 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        23.475,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-6-H",
+      "name": "Column up/down light · axis 6 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        23.475,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-7-B",
+      "name": "Column up/down light · axis 7 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        27.975,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-7-H",
+      "name": "Column up/down light · axis 7 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        27.975,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-8-B",
+      "name": "Column up/down light · axis 8 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        32.475,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-8-H",
+      "name": "Column up/down light · axis 8 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        32.475,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-9-B",
+      "name": "Column up/down light · axis 9 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        36.975,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-9-H",
+      "name": "Column up/down light · axis 9 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        36.975,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
       "id": "L-ARCH-B-2P-3-A",
       "name": "Porch arch wash · B · bay 2′–3 · A",
       "type": "porchFlood",
@@ -46267,7 +47723,99 @@
       "circuit": "L2",
       "type": "readingProjector",
       "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 20,
+      "quantity": 6,
+      "modelSize": [
+        0.23399999737739563,
+        0.17219481006264686,
+        0.12600000202655792
+      ],
+      "specs": "2800 lm · 3000 K · 36° beam",
+      "wattsEachEstimate": 23.333333333333332,
+      "itemIds": [
+        "L3",
+        "L5",
+        "L7",
+        "L9",
+        "L11",
+        "L13"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "L2",
+      "type": "readingProjector",
+      "product": "Reading projector · side bracket, finish-matched",
+      "quantity": 8,
+      "modelSize": [
+        0.23399999737739563,
+        0.17219481006264686,
+        0.12600000202655792
+      ],
+      "specs": "1500 lm · 3000 K · 28° beam",
+      "wattsEachEstimate": 12.5,
+      "itemIds": [
+        "L4",
+        "L6",
+        "L8",
+        "L10",
+        "L12",
+        "L14",
+        "L16",
+        "L18"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "L1",
+      "type": "readingProjector",
+      "product": "Reading projector · side bracket, finish-matched",
+      "quantity": 8,
+      "modelSize": [
+        0.23399999737739563,
+        0.17219481006264686,
+        0.12600000202655792
+      ],
+      "specs": "2800 lm · 3000 K · 36° beam",
+      "wattsEachEstimate": 23.333333333333332,
+      "itemIds": [
+        "L15",
+        "L17",
+        "L19",
+        "L21",
+        "L23",
+        "L25",
+        "L27",
+        "L29"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "L1",
+      "type": "readingProjector",
+      "product": "Reading projector · side bracket, finish-matched",
+      "quantity": 6,
+      "modelSize": [
+        0.23399999737739563,
+        0.17219481006264686,
+        0.12600000202655792
+      ],
+      "specs": "1500 lm · 3000 K · 28° beam",
+      "wattsEachEstimate": 12.5,
+      "itemIds": [
+        "L20",
+        "L22",
+        "L24",
+        "L26",
+        "L28",
+        "L30"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "L2",
+      "type": "readingProjector",
+      "product": "Reading projector · side bracket, finish-matched",
+      "quantity": 14,
       "modelSize": [
         0.23399999737739563,
         0.17219481006264686,
@@ -46276,12 +47824,6 @@
       "specs": "2300 lm · 3000 K · 36° beam",
       "wattsEachEstimate": 19.166666666666668,
       "itemIds": [
-        "L3",
-        "L5",
-        "L7",
-        "L9",
-        "L11",
-        "L13",
         "L31",
         "L32",
         "L33",
@@ -46300,34 +47842,10 @@
     },
     {
       "board": "DB1",
-      "circuit": "L2",
-      "type": "readingProjector",
-      "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 8,
-      "modelSize": [
-        0.23399999737739563,
-        0.17219481006264686,
-        0.12600000202655792
-      ],
-      "specs": "2300 lm · 3000 K · 28° beam",
-      "wattsEachEstimate": 19.166666666666668,
-      "itemIds": [
-        "L4",
-        "L6",
-        "L8",
-        "L10",
-        "L12",
-        "L14",
-        "L16",
-        "L18"
-      ]
-    },
-    {
-      "board": "DB1",
       "circuit": "L1",
       "type": "readingProjector",
       "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 22,
+      "quantity": 14,
       "modelSize": [
         0.23399999737739563,
         0.17219481006264686,
@@ -46336,14 +47854,6 @@
       "specs": "2300 lm · 3000 K · 36° beam",
       "wattsEachEstimate": 19.166666666666668,
       "itemIds": [
-        "L15",
-        "L17",
-        "L19",
-        "L21",
-        "L23",
-        "L25",
-        "L27",
-        "L29",
         "L43",
         "L45",
         "L47",
@@ -46358,28 +47868,6 @@
         "L56",
         "L57",
         "L58"
-      ]
-    },
-    {
-      "board": "DB1",
-      "circuit": "L1",
-      "type": "readingProjector",
-      "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 6,
-      "modelSize": [
-        0.23399999737739563,
-        0.17219481006264686,
-        0.12600000202655792
-      ],
-      "specs": "2300 lm · 3000 K · 28° beam",
-      "wattsEachEstimate": 19.166666666666668,
-      "itemIds": [
-        "L20",
-        "L22",
-        "L24",
-        "L26",
-        "L28",
-        "L30"
       ]
     },
     {
@@ -48136,6 +49624,36 @@
         "L-WING-H-FO",
         "L-WING-H-RI",
         "L-WING-H-RO"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "LD",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "quantity": 14,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "specs": "800 lm · 2700 K · 30° beam",
+      "wattsEachEstimate": 8,
+      "itemIds": [
+        "L-COLUMN-3-B",
+        "L-COLUMN-3-H",
+        "L-COLUMN-4-B",
+        "L-COLUMN-4-H",
+        "L-COLUMN-5-B",
+        "L-COLUMN-5-H",
+        "L-COLUMN-6-B",
+        "L-COLUMN-6-H",
+        "L-COLUMN-7-B",
+        "L-COLUMN-7-H",
+        "L-COLUMN-8-B",
+        "L-COLUMN-8-H",
+        "L-COLUMN-9-B",
+        "L-COLUMN-9-H"
       ]
     },
     {

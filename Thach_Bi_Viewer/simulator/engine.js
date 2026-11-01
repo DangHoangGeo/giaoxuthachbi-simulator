@@ -44,7 +44,7 @@
     L3: { label: 'L3 · Sanctuary', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' },
     L4: { label: 'L4 · Circulation & verandas', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
     LA: { label: 'LA · Roof uplight', cat: 'light', board: 'DB1', area: 'Nave' },
-    LD: { label: 'LD · Wall sconces', cat: 'light', board: 'DB1', area: 'Nave' },
+    LD: { label: 'LD · Column up/down lights', cat: 'light', board: 'DB1', area: 'Nave' },
     L5: { label: 'L5 · Steps & paths', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
     L8: { label: 'L8 · Wings · choir & ministers', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' },
     L6: { label: 'L6 · Façade & towers', cat: 'light', board: 'DB2', area: 'Towers & façade' },
@@ -114,7 +114,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', columnWashRevision: '', centreReadingRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -412,16 +412,16 @@
         haunch(carving.longHaunch, xb, 8.73, z, Math.PI, 'Longitudinal column-line beam carved haunch');
       }
     }
-    // Purlins every ~0.50 m across the slope, split at the 9–10 roof valleys.
+    // Continuous interior purlin proxies across the crossing; real valley supports remain on hold.
     const L = 40.575, U = 9.45, Pr = 3.88, N = (U - 6.325) / Pr;
     const X = (12.472 - U) / LINING_SLOPE, O = (U - 7.13) / N;
     const PURLIN = window.CHURCH_SANCTUARY?.spec.roofTimber?.purlin || { w: 0.14, d: 0.22 }, PURLIN_TILT = Math.atan(LINING_SLOPE);
     for (const s of [-1, 1]) for (let i = 0; i < 14; i++) {
       const z = 0.58 + i * 0.5, y = liningY(z) - 0.075;
-      const spans = z < X ? [[5.475, 52.85]] : (() => { const e = (z - X) / ((7.36 - X) / O); return [[5.475, L - e - 0.1], [L + e + 0.1, 52.85]]; })();
+      const spans = [[5.475, 52.85]];
       for (const [a, b] of spans) {
         // 1 Nov 2026 (owner: the roof timbers looked flimsy): 0.14 m wide, 0.22 m deep, square to the
-        // lining and hung from it. The spacing, ends and valley splits are unchanged; the top face is
+        // lining and hung from it. The visual run continues through the crossing; the top face is
         // 4 mm under the lining and the section grows downward only. Visualization proxy, ENGINEERING HOLD.
         const m = member(b - a, PURLIN.d, PURLIN.w, (a + b) / 2, y, s * z, 'Purlin · as drawn spacing ~0.50 m');
         m.rotation.x = s * PURLIN_TILT;
@@ -450,13 +450,13 @@
     const S = W.slope, N = Math.sqrt(1 + S * S), theta = Math.atan(S), Kt = W.ridgeX;
     const status = 'CONCEPT PROXY · wing roof of the owner feedback of 1 Nov 2026 · no wing roof section is drawn · ENGINEERING HOLD';
     // Lining: one piece per wing side (s) and slope (t). Edges: the ridge, the gable face, the wall faces and the
-    // nave lining's V cut, which it meets on the nave plane (its end on the eave line takes the nave's own level).
+    // nave edge. The main lining continues across the crossing; the wing lining starts outside it.
     const group = new T.Group();
     group.name = 'Wing roof lining and timber · both wings';
     group.userData = { status, revision: W.revision, source: 'sanctuary.js spec.wingRoof', engineeringApproved: false };
     for (const s of [-1, 1]) for (const t of [-1, 1]) {
       const ry = W.liningY(Kt), wy = W.liningY(Kt + t * W.half);
-      const v = [[Kt, ry, s * W.apexZ], [Kt + t * W.valleyEnd.dx, liningY(W.valleyEnd.z), s * W.valleyEnd.z], [Kt + t * W.half, wy, s * W.valleyEnd.z], [Kt + t * W.half, wy, s * W.gableFace], [Kt, ry, s * W.gableFace]];
+      const v = [[Kt, ry, s * W.valleyEnd.z], [Kt + t * W.half, wy, s * W.valleyEnd.z], [Kt + t * W.half, wy, s * W.gableFace], [Kt, ry, s * W.gableFace]];
       const g = new T.BufferGeometry();
       g.setAttribute('position', new T.Float32BufferAttribute(v.flat(), 3));
       g.setAttribute('uv', new T.Float32BufferAttribute(v.flatMap(p => [p[0] / 4, p[2] / 2]), 2));
@@ -493,7 +493,7 @@
       }
     });
     // Ridge: along Z at the wing ridge, from the nave lining's apex to the gable face; top face under the lining.
-    const rz0 = W.apexZ + 0.35, rz1 = W.gableFace - 0.01, ry = W.liningY(Kt) - 0.004 - G.d / 2;
+    const rz0 = W.valleyEnd.z + 0.05, rz1 = W.gableFace - 0.01, ry = W.liningY(Kt) - 0.004 - G.d / 2;
     for (const s of [-1, 1]) {
       mesh(new T.BoxGeometry(G.w, G.d, rz1 - rz0), timber, 'Wing ridge · proposed 0.30 × 0.28 m', [Kt, ry, s * (rz0 + rz1) / 2], 0, { memberId: `WR-RIDGE-${wingId(s)}`, role: 'wing ridge member', proxySection: `${G.w} × ${G.d} m (the nave ridge proxy)` });
       if (!gilt) continue;
@@ -505,7 +505,7 @@
     // A line whose soffit falls under the nave wall top (+7.13) starts beyond the nave wall instead.
     for (const s of [-1, 1]) for (const dx of W.purlinDx) for (const t of [-1, 1]) {
       const drop = W.purlinDrop(P.d), soffit = W.liningY(Kt + t * dx) - drop;
-      let z0 = W.valleyZ(dx) + 0.1; if (soffit < 7.2) z0 = Math.max(z0, 7.4);
+      let z0 = Math.max(W.valleyEnd.z + 0.1, W.valleyZ(dx) + 0.1); if (soffit < 7.2) z0 = Math.max(z0, 7.4);
       const z1 = W.gableFace - 0.01, [cx, cy] = hang(t, dx, P.d);
       const m = mesh(new T.BoxGeometry(P.w, P.d, z1 - z0), timber, 'Wing purlin · proposed 0.14 × 0.22 m', [cx, cy, s * (z0 + z1) / 2], -t * theta,
         { memberId: `WR-PUR-${wingId(s)}-${t < 0 ? 'L' : 'R'}-${Math.round(dx * 1000)}`, role: 'wing purlin', proxySection: `${P.w} × ${P.d} m (the nave purlin proxy)` });
@@ -1021,7 +1021,7 @@
         if (e.kind === 'spot') {
           const beam = it.beam ?? L.beam, field = (L.field || L.beam * 1.6) * beam / L.beam;
           const cone = P.spotCone(beam, field);
-          list.push({ kind: 'spot', pos, dir: worldFrame(it).f, cd: P.peakCandela(lm, cone), cosOuter: cone.cosOuter, cosInner: cone.cosInner,
+          list.push({ kind: 'spot', pos, dir: worldFrame(it, e.tiltOffset ?? 0).f, cd: P.peakCandela(lm, cone), cosOuter: cone.cosOuter, cosInner: cone.cosInner,
             angle: cone.angle, penumbra: cone.penumbra, lumens: lm, color, id: it.id, shadow: !!it.shadow, interior: isInterior(pos), flicker: fx.type.flicker });
         } else {
           const pair = /^(Side|Service) door lantern ·/.test(it.name) ? it.name.replace(/ · (front|rear)$/, '') : it.name.startsWith('Central front door lantern ·') ? 'Central front door lantern' : null;
@@ -2547,6 +2547,8 @@
       ['entranceFitRevision', D.entranceFitRevision, '.before-entrance-fit', D.upgradeEntranceFit],
       ['sideVaultLightsRevision', D.sideVaultLightsRevision, '.before-side-vault-lights', D.upgradeSideVaultLights],
       ['wingRoofLightingRevision', D.wingRoofLightingRevision, '.before-wing-roof-lighting', D.upgradeWingRoofLighting],
+      ['columnWashRevision', D.columnWashRevision, '.before-column-up-down', D.upgradeColumnWash],
+      ['centreReadingRevision', D.centreReadingRevision, '.before-centre-reading-balance', D.upgradeCentreReading],
       ['verandaReviewRevision', window.CHURCH_VERANDA_REVIEW.revision, '.before-open-porch-light-sound', window.CHURCH_VERANDA_REVIEW.upgrade],
       ['doorheadReviewRevision', window.CHURCH_DOORHEAD_REVIEW.revision, '.before-doorheads-no-sconces', window.CHURCH_DOORHEAD_REVIEW.upgrade]
     ]) {
@@ -2555,7 +2557,7 @@
       const previous = JSON.parse(JSON.stringify(exportLayout()));
       try {
         localStorage.setItem(STORAGE_KEY + suffix, JSON.stringify(previous));
-        importLayout({ ...previous, items: upgrade(state.items, D.recommended(GEO, SIM), GEO) }, { record: false });
+        importLayout({ ...previous, items: upgrade(state.items, D.recommended(GEO, SIM), GEO, SCENES[state.scene] || {}) }, { record: false });
         if (field === 'verandaReviewRevision') {
           const old = new Map(previous.items.map(it => [it.id, it]));
           const moved = state.items.filter(it => CAT.byId[it.type]?.speaker && (!old.has(it.id) ||

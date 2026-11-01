@@ -1,5 +1,7 @@
 # Beam and roof connection specification
 
+> **Owner clarification, 1 November 2026 — interior crossing:** The main nave lining and visible longitudinal timber proxies continue through the junction of the two wings. Wing lining begins at the main nave edge so the two ceiling surfaces do not intersect in plan. This supersedes the earlier visible interior valley cutout, not the exterior roof geometry. These are visual concepts, not a claim of an uninterrupted structural member: the roof transition and void, valley weathering, fire separation, ventilation, support, bearing, joints, loads, tolerances, maintenance access and coordination with lighting and cable routes remain **ENGINEERING HOLD** for the architect and structural and electrical designers. Verify original drawings and survey before detailing.
+
 Revision 2 · 7 October 2026 · Design development reference
 
 The church frame must read as a connected assembly across the nave, into both side aisles, and along the church length at column-head and roof levels. Only the two central columns in each typical transverse frame are timber. The two outer side supports are concrete. Carving develops the visible architecture; it must not be mistaken for evidence of structural capacity.

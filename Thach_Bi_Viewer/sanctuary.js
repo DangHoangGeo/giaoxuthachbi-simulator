@@ -86,9 +86,9 @@
     // Vertical drop from the lining to the soffit of a purlin at the same X (depth d square to the slope, 4 mm gap).
     W.purlinDrop=d=>(d+.004)*Math.sqrt(1+W.slope*W.slope);
     // True inside the triangular opening of the nave lining that looks into a wing, and over the wing itself.
+    // Continuous main-nave lining owns the crossing; the wing lining starts beyond its edge.
     W.covers=(x,z)=>{const dx=Math.abs(x-W.ridgeX),az=Math.abs(z);
-      if(az>=W.valleyEnd.z)return dx<=W.half&&az<=W.gableFace;
-      return az>W.apexZ&&dx<(az-W.apexZ)*W.valleyEnd.dx/(W.valleyEnd.z-W.apexZ);};
+      return az>W.valleyEnd.z&&dx<=W.half&&az<=W.gableFace;};
   }
   // Floor levels from the church's CAD file of 23 October 2026 (sections 25 and 45), adopted
   // by the owner on 24 October 2026: dais +0.80 (the PDF set had +0.75) and side floors +0.16

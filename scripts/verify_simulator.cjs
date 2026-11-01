@@ -792,12 +792,12 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   }
   assert.equal(SIM.itemWatts(lights[0], true), 25, 'planning rating 3 000 lm at 120 lm/W');
   assert(Math.abs(SIM.powerSummary().byCircuit.find(c => c.circuit === 'L8').watts - 200) < 1e-6, 'L8 draws eight 25 W downlights, 200 W (140 W in the previous downlight design)');
-  // The 28 tie-beam heads keep their IDs, circuits and 2 300 lm; only their place, aim and optic changed.
+  // The 28 tie-beam heads keep their IDs and circuits, with balanced output across the tie beam.
   const tieIds = Object.keys(D.naveCentreBefore);
   assert.equal(tieIds.length, 28);
   for (const id of tieIds) {
     const was = D.naveCentreBefore[id], now = SIM.item(id);
-    assert(now && now.name === was.name && now.circuit === was.circuit && now.lumens === was.lumens && now.type === was.type, 'same fitting, circuit and output: ' + id);
+    assert(now && now.name === was.name && now.circuit === was.circuit && now.lumens === (/ twin$/.test(now.name) ? 1500 : 2800) && now.type === was.type, 'same fitting and circuit, balanced output: ' + id);
     assert(Math.abs(Math.abs(now.pos[2]) - (/ twin$/.test(now.name) ? 2.48 : 0.9)) < 1e-9 && Math.abs(now.pos[2]) !== Math.abs(was.pos[2]) && now.pos[0] === was.pos[0] && now.pos[1] === was.pos[1], 'moved across the beam only: ' + id);
   }
   // One-time move of a saved layout. Names the previous values from the tables of the design before this step.

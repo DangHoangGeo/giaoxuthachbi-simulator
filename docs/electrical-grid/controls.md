@@ -1,6 +1,6 @@
 # Main/sub-board manual controls and quick modes
 
-> **Door-head/sign and sconce follow-up, 25 October 2026:** L82–L95 are retired from the default, so LD has no default connected equipment. Keep its stable circuit/control identifier for customized saved layouts; existing scene values on an empty LD group add no load. All five E1 signs remain directly fed by DB-1 and ON in All off, with the same 15 W estimate. Their new positions do not establish emergency supply, sign visibility or compliance. See [record](../engineering/doorheads-and-sconces.md).
+> **Historical door-head/sign and sconce follow-up, 25 October 2026 (LD is repopulated by column lights on 1 November):** L82–L95 are retired from the default, so LD has no default connected equipment. Keep its stable circuit/control identifier for customized saved layouts; existing scene values on an empty LD group add no load. All five E1 signs remain directly fed by DB-1 and ON in All off, with the same 15 W estimate. Their new positions do not establish emergency supply, sign visibility or compliance. See [record](../engineering/doorheads-and-sconces.md).
 
 > **Open porches, 25 October 2026:** L4 now includes 18 wall path floods and 36 arch floods; A2 has 18 wall fills. A1's twelve nave columns and A5's two entrance fills use a 2.5 m reference height. Existing L4/A1/A2/A5 controls, quick-mode values and board ownership remain; arch/path lighting shares L4. Actual terminals, outdoor isolation, dimmer/driver compatibility and amplifier capacity remain unassigned. See the [coordinated issue](../engineering/open-porch-light-sound.md). This is implemented simulator behavior, not installed hardware. Public visit mode cannot operate these engineering controls.
 
@@ -59,7 +59,7 @@ Interior lighting is switched by area ([meeting record](../engineering/parish-me
 | L2 | Nave · 4 rear bays (2′–6) | Reading heads lighting bays 2′–3 to 5–6 and the four entrance-wall lights; can stay off or dimmed at ordinary Masses |
 | LA | Ceiling uplight (*hắt trần*) | Seven roof uplights on the tie beams, on their own switch |
 | L8 | Wings · choir & ministers | Eight roof downlights over the wing benches, four per side (`L-WING-…`; the wing chandeliers L63/L65/L67/L69 were retired on 1 November 2026). 3,000 lm / 25 W assumed per head, 200 W L8; switch and scene levels unchanged |
-| LD | Wall sconces | Column and sanctuary-pier sconces (the three nave chandeliers are removed) |
+| LD | Column up/down lights | Fourteen concept fixtures on the inward faces of the main timber columns; 112 W connected. Existing scene levels and proposed local manual control apply. Physical channels, protection and wiring remain on engineering hold. |
 | LS | Stations of the Cross | 28 candles |
 
 Each reading head on an axis beam belongs to the bay it lights: the head aimed toward the sanctuary to the bay after the beam, its twin to the bay before. So the axis-6 heads are split between L1 and L2. The physical board channels for these areas are still to be designed (ENG-017).

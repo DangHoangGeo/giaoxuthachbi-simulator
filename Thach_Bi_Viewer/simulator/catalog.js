@@ -215,6 +215,15 @@
       k.glowPoint([0.06, 0, 0], 0.4);
     });
   }
+  // One compact body and two opposed optics; dimensions and output are planning proxies.
+  function buildColumnUpDown(k) {
+    k.box(0.035, 0.18, 0.12, 'beamTimber', { p: [0.0175, 0, 0] });
+    k.cyl(0.055, 0.055, 0.24, 'beamTimber', { p: [0.085, 0, 0] }, 16);
+    for (const s of [-1, 1]) {
+      k.cyl(0.043, 0.043, 0.006, 'glow', { p: [0.085, s * 0.122, 0] }, 16);
+      k.glowPoint([0.085, s * 0.13, 0], 0.17);
+    }
+  }
   function buildHighbay(k) {
     k.cyl(0.03, 0.03, 0.2, 'white', { p: [0, -0.1, 0] }, 10);
     k.pivots.head = [0, -0.24, 0];
@@ -1004,6 +1013,9 @@
     { id: 'sconce2', cat: LIGHT, family: 'Decorative', name: 'Brass candle sconce · 2 lamps', mounts: ['wall'], defaultHeight: 3.6, glow: 'warm', circuit: 'LD',
       desc: '2 × 470 lm candle LEDs, 2700 K. Wall rhythm and evening atmosphere.',
       light: { lumens: 940, watts: 9, cct: 2700, cri: 90, emitters: [{ kind: 'point', pos: [0.24, 0.2, 0] }] }, build: buildSconce },
+    { id: 'columnUpDown', cat: LIGHT, family: 'Architectural', name: 'Column up/down light · concept', mounts: ['wall'], defaultHeight: 5.5, glow: 'warm', circuit: 'LD',
+      desc: 'Concept two-way column wash; 1 600 lm total, 16 W, 2700 K, 30° per optic. Selected photometry, fixing, glare and maintenance remain pending.',
+      light: { lumens: 1600, watts: 16, cct: 2700, cri: 90, beam: 30, field: 50, emitters: [{ kind: 'spot', pos: [0.085, 0.13, 0], tiltOffset: 90 }, { kind: 'spot', pos: [0.085, -0.13, 0], tiltOffset: -90 }] }, build: buildColumnUpDown },
     { id: 'projector24', cat: LIGHT, family: 'Task & accent', name: 'LED projector · narrow 24°', mounts: ['pendant', 'wall'], aim: true, defaultTilt: -90, defaultDrop: 0, glow: 'lens', circuit: 'L1',
       desc: '6 000 lm, 3000 K CRI 90, 24° beam, 50 W. Long throws from beams.',
       params: finishParam('black', 'Black'),

@@ -125,9 +125,9 @@
     // at ±2.48/±2.72 m). On a side beam they stand either side of the gilded cartouche
     // (4.96–6.00 m), both aimed at the old point under the beam.
     // Fixing into the timber, the bracket and the product are ENGINEERING HOLD.
-    const readingHead = (name, circuit, beam, faceX, soffit, z, target) => {
+    const readingHead = (name, circuit, beam, faceX, soffit, z, target, lumens = 2300) => {
       const p = [faceX, soffit + 0.18, z], a = aim([faceX + 0.085, soffit, z], target);
-      add({ type: 'readingProjector', name, circuit, mount: 'wall', pos: p, anchorY: soffit, ...a, mountYaw: 0, lumens: 2300, beam, params: { finish: 'timber' } });
+      add({ type: 'readingProjector', name, circuit, mount: 'wall', pos: p, anchorY: soffit, ...a, mountYaw: 0, lumens, beam, params: { finish: 'timber' } });
     };
     // Since the side-aisle fans hang from the column-line beams (19 October 2026), a
     // tie-beam head aimed toward a bay with such a fan tilts 5° along the nave with a
@@ -138,7 +138,8 @@
     // the indirect light alone (about 62 lux). The head aimed toward the sanctuary now stands
     // at +-0.90 m with a 36 degree optic and the entrance-facing head at +-2.48 m (28 degree),
     // so the four lines are spread across the nave and the aisle is lit as well as the seats.
-    // Flux per head (2 300 lm) is unchanged; no head throws light through a side-aisle fan.
+    // Owner, 1 November: rebalance the central beams after comparing the aisle and seat planes.
+    // Each central head is a 2,800 lm concept; the companion heads are 1,500 lm.
     const TIE_Z = { fwd: 0.9, twin: 2.48 }, TIE_AIM_Z = { fwd: 1.0, twin: 2.4 }, TIE_BEAM = { fwd: 36, twin: 28 };
     const reading = (k, s, block) => {
       const tie = block === 'central', soffit = tie ? beamY : sideBeamY, faceX = A[k] + (tie ? 0.15 : 0.11);
@@ -146,7 +147,7 @@
         const which = dir > 0 ? 'fwd' : 'twin';
         const z = tie ? s * TIE_Z[which] : s * (dir > 0 ? 6.09 : 4.84), fan = tie && facesBeamFan(k, dir);
         const along = Math.tan((fan ? 5 : 8) * Math.PI / 180) * (soffit - 0.8);
-        readingHead(`Reading light · axis ${k} · ${side(s)} ${block}${tag}`, tie ? 'L1' : 'L2', tie ? TIE_BEAM[which] : 36, faceX, soffit, z, [A[k] + dir * along, 0.8, s * (tie ? TIE_AIM_Z[which] : 5.6)]);
+        readingHead(`Reading light · axis ${k} · ${side(s)} ${block}${tag}`, tie ? 'L1' : 'L2', tie ? TIE_BEAM[which] : 36, faceX, soffit, z, [A[k] + dir * along, 0.8, s * (tie ? TIE_AIM_Z[which] : 5.6)], tie ? (which === 'fwd' ? 2800 : 1500) : 2300);
       }
     };
     for (const k of nave) for (const s of [-1, 1]) reading(k, s, 'central');
@@ -644,9 +645,36 @@
         pos: [x, roof - 0.02, z], anchorY: roof, yaw: 0, mountYaw: 0, tilt: -90, lumens: WING_DOWNLIGHT.lumens, beam: WING_DOWNLIGHT.beam, cct: 2700, shadow: false, params: { finish: 'timber' },
         note: 'CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/lighting.md.' });
     }
+    // Two-way column wash: one finish-matched fixture on the nave-facing side of each timber column.
+    // Concept only; the attachment, actual photometry and cable route through timber are not approved.
+    for (const k of nave) for (const sign of [-1, 1]) add({
+      id: `L-COLUMN-${k}-${side(sign)}`, type: 'columnUpDown', name: `Column up/down light · axis ${k} · ${side(sign)}`,
+      circuit: 'LD', mount: 'wall', pos: [A[k], 5.5, sign * 3.29], yaw: -sign * 90, mountYaw: -sign * 90, tilt: 0,
+      lumens: 800, beam: 30, cct: 2700, shadow: false,
+      note: 'CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.'
+    });
     window.CHURCH_VERANDA_REVIEW?.apply(items,GEO);
     window.CHURCH_DOORHEAD_REVIEW?.apply(items,GEO,SIM);
     return items.filter(it => ![...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id) && !parishRetiredNames.test(it.name));
+  }
+
+  const columnWashRevision = '2026-11-01-column-up-down-1';
+  const columnWashIds = ['3', '4', '5', '6', '7', '8', '9'].flatMap(k => ['B', 'H'].map(side => `L-COLUMN-${k}-${side}`));
+  function upgradeColumnWash(items, design, _geo, scene = {}) {
+    const have = new Set(items.map(it => it.id)), dim = Math.max(0, Math.min(1, scene.LD ?? 0));
+    return [...items, ...design.filter(it => columnWashIds.includes(it.id) && !have.has(it.id))
+      .map(it => ({ ...it, on: dim > 0, dim }))];
+  }
+
+  // Rebalance only untouched tie-beam heads; preserve moved, retuned, switched or deleted equipment.
+  const centreReadingRevision = '2026-11-01-centre-reading-balance-1';
+  function upgradeCentreReading(items, design) {
+    const target = new Map(design.filter(it => it.type === 'readingProjector' && / · [BH] central(?: · twin)?$/.test(it.name) && [0.9, 2.48].some(z => Math.abs(Math.abs(it.pos[2]) - z) < 0.001)).map(it => [it.id, it]));
+    return items.map(it => {
+      const raw = target.get(it.id);
+      if (!raw || !untouched(it, raw) || Math.abs((it.lumens ?? NaN) - 2300) >= 0.5 || Math.abs((it.beam ?? NaN) - raw.beam) >= 0.5) return it;
+      return { ...it, lumens: raw.lumens };
+    });
   }
 
   // Additive one-time issue for saved layouts, as for the outlets below.
@@ -812,7 +840,7 @@
     let out = items.map(it => {
       const old = naveCentreBefore[it.id], raw = next.get(it.id);
       if (!old || !raw || !asBefore(it, old)) return it;
-      return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, anchorY: raw.anchorY, lumens: raw.lumens, beam: raw.beam };
+      return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, anchorY: raw.anchorY, lumens: old.lumens, beam: raw.beam };
     });
     const have = new Set(out.map(it => it.id)), gone = new Set(), added = [];
     for (const code of ['B', 'H']) {
@@ -1401,5 +1429,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();
