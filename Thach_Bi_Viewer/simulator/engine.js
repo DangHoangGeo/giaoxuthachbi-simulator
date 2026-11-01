@@ -406,10 +406,20 @@
     // Purlins every ~0.50 m across the slope, split at the 9–10 roof valleys.
     const L = 40.575, U = 9.45, Pr = 3.88, N = (U - 6.325) / Pr;
     const X = (12.472 - U) / LINING_SLOPE, O = (U - 7.13) / N;
+    const PURLIN = window.CHURCH_SANCTUARY?.spec.roofTimber?.purlin || { w: 0.14, d: 0.22 }, PURLIN_TILT = Math.atan(LINING_SLOPE);
     for (const s of [-1, 1]) for (let i = 0; i < 14; i++) {
       const z = 0.58 + i * 0.5, y = liningY(z) - 0.075;
       const spans = z < X ? [[5.475, 52.85]] : (() => { const e = (z - X) / ((7.36 - X) / O); return [[5.475, L - e - 0.1], [L + e + 0.1, 52.85]]; })();
-      for (const [a, b] of spans) member(b - a, 0.12, 0.09, (a + b) / 2, y, s * z, 'Purlin · as drawn spacing ~0.50 m');
+      for (const [a, b] of spans) {
+        // 1 Nov 2026 (owner: the roof timbers looked flimsy): 0.14 m wide, 0.22 m deep, square to the
+        // lining and hung from it. The spacing, ends and valley splits are unchanged; the top face is
+        // 4 mm under the lining and the section grows downward only. Visualization proxy, ENGINEERING HOLD.
+        const m = member(b - a, PURLIN.d, PURLIN.w, (a + b) / 2, y, s * z, 'Purlin · as drawn spacing ~0.50 m');
+        m.rotation.x = s * PURLIN_TILT;
+        m.position.y = liningY(z) - 0.004 - Math.cos(PURLIN_TILT) * PURLIN.d / 2;
+        m.position.z = s * (z - Math.sin(PURLIN_TILT) * PURLIN.d / 2);
+        m.userData.proxySection = `${PURLIN.w} × ${PURLIN.d} m (was 0.09 × 0.12 m)`;
+      }
     }
     GEO.trussMoved = moving.length;
     buildFrameVariants(asDrawn);
@@ -464,7 +474,9 @@
       const m = new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts.map(p => new T.Vector3(...p))), 24, r, 6, false), timber);
       m.name = name; m.castShadow = m.receiveShadow = true; referenceFrame.add(m); return m;
     };
-    const P = REF.post, collarHalf = (LINING_RIDGE - REF.collarY - 0.14) / LINING_SLOPE, upperHalf = (LINING_RIDGE - REF.upperY - 0.1) / LINING_SLOPE;
+    // 1 Nov 2026: heavier reference-variant timbers (spec.roofTimber.referenceFrame), visualization proxies on ENGINEERING HOLD.
+    const RF = window.CHURCH_SANCTUARY?.spec.roofTimber?.referenceFrame || { queenPost: 0.24, collar: { w: 0.34, d: 0.42 }, upperCollar: { w: 0.30, d: 0.30 }, kingStrut: 0.24, archBraceR: 0.14, plateBracketR: 0.10 };
+    const P = REF.post, collarHalf = (LINING_RIDGE - REF.collarY - 0.14 - (RF.collar.d - 0.34) / 2) / LINING_SLOPE, upperHalf = (LINING_RIDGE - REF.upperY - 0.1 - (RF.upperCollar.d - 0.24) / 2) / LINING_SLOPE;
     // Posts take the sanctuary finish, like the round shafts of the drawn frame.
     const lacquer = window.CHURCH_SANCTUARY?.materials?.wood || timber, gilt = window.CHURCH_SANCTUARY?.materials?.gold || timber;
     axes.forEach((k, i) => {
@@ -487,16 +499,16 @@
         // Curved arch brace from the post to the collar, both faces of the truss.
         const arc = [];
         for (let k = 0; k <= 12; k++) { const t = k / 12 * Math.PI / 2; arc.push([x, ARCH.y0 + (ARCH.y1 - ARCH.y0) * Math.sin(t), s * (ARCH.z0 + (ARCH.z1 - ARCH.z0) * Math.cos(t))]); }
-        tube(arc, 0.11, 'Curved arch brace · reference');
+        tube(arc, RF.archBraceR, 'Curved arch brace · reference');
         // Queen post from the collar to the rafter, and an upper strut.
-        box(0.18, liningY(collarHalf * 0.55) - REF.collarY - 0.1, 0.18, x, (liningY(collarHalf * 0.55) + REF.collarY) / 2, s * collarHalf * 0.55, timber, 'Queen post · reference');
+        box(RF.queenPost, liningY(collarHalf * 0.55) - REF.collarY - 0.1, RF.queenPost, x, (liningY(collarHalf * 0.55) + REF.collarY) / 2, s * collarHalf * 0.55, timber, 'Queen post · reference');
       }
-      box(0.26, 0.34, collarHalf * 2, x, REF.collarY, 0, timber, 'Collar beam · reference');
-      box(0.22, 0.24, upperHalf * 2, x, REF.upperY, 0, timber, 'Upper collar · reference');
-      box(0.18, REF.upperY - REF.collarY - 0.25, 0.18, x, (REF.upperY + REF.collarY) / 2, 0, timber, 'King strut · reference');
+      box(RF.collar.w, RF.collar.d, collarHalf * 2, x, REF.collarY, 0, timber, 'Collar beam · reference');
+      box(RF.upperCollar.w, RF.upperCollar.d, upperHalf * 2, x, REF.upperY, 0, timber, 'Upper collar · reference');
+      box(RF.kingStrut, REF.upperY - REF.collarY - 0.25, RF.kingStrut, x, (REF.upperY + REF.collarY) / 2, 0, timber, 'King strut · reference');
       // Longitudinal brackets from each post to the plate.
       for (const s of [-1, 1]) for (const d of [-1, 1]) if (!(k === '3' && d < 0) && !(k === '10' && d > 0))
-        tube([[x + d * 0.3, 8.55, s * 3.6], [x + d * 0.55, 9.3, s * 3.6], [x + d * 1.15, 9.62, s * 3.6]], 0.08, 'Curved plate bracket · reference');
+        tube([[x + d * 0.3, 8.55, s * 3.6], [x + d * 0.55, 9.3, s * 3.6], [x + d * 1.15, 9.62, s * 3.6]], RF.plateBracketR, 'Curved plate bracket · reference');
     });
     // Longitudinal plates along the post heads (axes 3–10).
     const plateEnd = data().longitudinal['10'];
@@ -1206,7 +1218,7 @@
     createPool(state.settings.quality);
     createHalos();
     c.data.simulator = { status: 'Interactive planning layer; analysis values are estimates', asDrawnFrame: { mainTie: '0.30 × 0.59 m at +8.59…+9.18 m', sideBeams: '0.22 × 0.34 m at +6.66…+7.00 m', purlinSpacing: '~0.50 m' }, conceptMembers: { longitudinalBeams: GEO.longBeams.map(b => b.id), section: '0.24 × 0.45 m at +8.73…+9.18 m · visualization proxy · ENGINEERING HOLD', source: 'docs/beams-roof-connections/SPECIFICATION.md · B03' }, movedProposedMembers: GEO.trussMoved };
-    c.data.assumptions.push('Timber frame now follows section sheet 4 as measured on the vector PDF: main tie beam +8.59…+9.18 m (0.59 m deep), side beams +6.66…+7.00 m from the C/G piers to the D/E shafts, purlins about 0.50 m apart. The earlier king posts, diagonal braces and knee braces were not on the drawing and are now an optional "proposed bracing" layer.');
+    c.data.assumptions.push('Timber frame now follows section sheet 4 as measured on the vector PDF: main tie beam +8.59…+9.18 m (0.59 m deep), side beams +6.66…+7.00 m from the C/G piers to the D/E shafts, purlins about 0.50 m apart (shown as 0.14 × 0.22 m proxy sections since 1 November 2026, with rafters 0.26 × 0.34 m and the ridge member 0.30 × 0.28 m: heavier visualization proxies on engineering hold, not checked sections). The earlier king posts, diagonal braces and knee braces were not on the drawing and are now an optional "proposed bracing" layer.');
     c.data.assumptions.push('Lengthwise beams on the D and E column lines (axes 3 to 10, 14 members, IDs B03-D-03-04 to B03-E-09-10) follow the owner-confirmed arrangement of the beam specification. Their 0.24 × 0.45 m section at +8.73…+9.18 m is a visualization proxy on engineering hold; no equipment is mounted on them. Carved haunches, cartouches and beam ends are applied ornament from the approved concept art and carry nothing. No haunch stands under the axis-9 tie beam, where the ambo key light and the presider light hang close to the columns.');
   }
   function bindBatches(batches) {

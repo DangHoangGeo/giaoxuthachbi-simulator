@@ -37,7 +37,9 @@ Use metres in the model, with +Y upward, +X from the entrance toward the sanctua
 | Main roof pitch from those datums | 35.973° | DERIVED: atan((12.472 − 7.130) / 7.360); finish thickness and actual structural offsets remain separate |
 | Existing model main tie | 0.300 m longitudinal thickness × 0.590 m vertical depth; Y = 8.590–9.180 m | MODEL TRANSCRIPTION from the section interpretation; not an approved structural section |
 | Existing model side beam | 0.220 m longitudinal thickness × 0.340 m vertical depth; Y = 6.660–7.000 m | MODEL TRANSCRIPTION; not an approved structural section |
-| Existing model purlins | 0.090 m transverse width × 0.120 m vertical depth | Software geometry only; no verified section schedule |
+| Model purlins (drawn frame) | **0.140 m wide along the slope × 0.220 m deep square to the lining** from 1 November 2026 (earlier proxy 0.090 m × 0.120 m vertical box) | VISUALIZATION PROXY, ENGINEERING HOLD; no verified section schedule. Top face 4 mm under the lining, growth downward only |
+| Model principal rafters on axes 3–9 (visible below the lining) | **0.260 m wide × 0.340 m deep** from 1 November 2026 (earlier proxy 0.170 × 0.200 m); the upper face stays on the lining. The 4 rafters on axes 10–11 keep 0.17 × 0.20 m | VISUALIZATION PROXY, ENGINEERING HOLD; not a rafter design and not a verified bearing |
+| Model underside ridge member | **0.300 m wide × 0.280 m deep**, top face +12.230 m, soffit +11.950 m from 1 November 2026 (earlier proxy 0.210 × 0.160 m, soffit +12.070 m) | VISUALIZATION PROXY, ENGINEERING HOLD; structural role of the ridge line is still open (R03) |
 | Existing modeled purlin row increment | 0.500 m horizontally across Z | Software placement, approximately 0.618 m along the idealized slope; do not describe it as verified 0.500 m slope spacing |
 
 The typical model grid X positions are 3: 9.975, 4: 14.475, 5: 18.975, 6: 23.475, 7: 27.975, 8: 32.475, 9: 36.975, 10: 44.175, 11: 48.675 m. Sanctuary frames and roof valleys need their own geometry; do not duplicate a typical nave bay through them.
@@ -141,6 +143,20 @@ Open coordination items from this model step:
 | Pier brackets | Limited to 0.42 m deep: the wall fans on the piers at axes 4, 6 and 8 reach +5.90 m, leaving about 0.34 m. Confirm the oscillation envelope. | Mechanical designer |
 | Lengthwise beams | Section, level, bearing at each column, splices and their role in longitudinal stability (S01, J04, J07). | Structural engineer |
 
+## Heavier roof timbers · 1 November 2026
+
+**Owner request, 1 November 2026:** the timbers up in the roof of the church looked flimsy; use thicker, larger members. The model now shows the following **visualization proxy sections**. They are display geometry chosen for proportion with the 4.5 m frame spacing, not a structural design, and every member stays on `ENGINEERING HOLD` with no checked section, bearing, splice or fixing.
+
+| Member (model name) | Before | After | How it grows |
+| --- | --- | --- | --- |
+| Principal rafter on axes 3–9, `Proposed visible principal rafter below roof lining` (14 of 18) | 0.17 × 0.20 m | 0.26 × 0.34 m | Down from the lining; the upper face keeps its place. The four on axes 10 and 11 (behind the nave, hidden by the lobed frame and vault; shrine washes sit against the lining there) are unchanged |
+| Underside ridge member, `Proposed underside ridge member` | 0.21 wide × 0.16 deep | 0.30 wide × 0.28 deep | Downward; top face +12.230 m, soffit +11.950 m (was +12.070 m) |
+| Drawn purlins, `Purlin · as drawn spacing ~0.50 m` (14 rows each side, split at the valleys) | 0.09 × 0.12 m vertical box | 0.14 × 0.22 m, tilted square to the lining | Down from the lining; spacing, ends and valley splits unchanged |
+| Earlier-proposal purlins, king posts, truss diagonals and knee braces (shown only with *Show truss*) | purlin 0.11 × 0.095, king post 0.11 × 0.14, diagonal 0.11 × 0.13, brace 0.15 × 0.17, brace rod r 0.075 | purlin 0.14 × 0.17, king post 0.18 × 0.22, diagonal 0.17 × 0.20, brace 0.22 × 0.26, brace rod r 0.105 | About the same centre lines |
+| Reference-interior variant (frame style *Reference*) | queen post 0.18, collar 0.26 × 0.34, upper collar 0.22 × 0.24, king strut 0.18, arch brace r 0.11, plate bracket r 0.08 | 0.24, 0.34 × 0.42, 0.30 × 0.30, 0.24, r 0.14, r 0.10 | Collar ends shortened to keep clear of the lining |
+
+Unchanged on purpose: the boarded roof lining and the roof, the measured *as drawn* tie beams (0.30 × 0.59 m, +8.59…+9.18 m) and side beams (0.22 × 0.34 m), and the 0.24 × 0.45 m column-line beams (B03). Their soffits carry the hung reading lights, fans and cable routes, and the first two are read from section sheet 4. Thickening them would need the mounted fittings and routes re-coordinated, so it is **not done**; whether the owner wants them heavier too is an open question for the structural engineer and the owner. The gilded soffit lines and bosses on the rafters and ridge follow the new soffits. No equipment, route length or calculated result changed. The sections live in `spec.roofTimber` of `Thach_Bi_Viewer/sanctuary.js` (rafters, ridge and truss proposals) and are read by `simulator/engine.js` (purlins and the reference variant); `scripts/verify_model.cjs` asserts the minimum sections and that no member rises through the lining.
+
 ## Acceptance and handoff
 
 For the virtual model, verify four support positions per typical frame; two timber inner columns and two concrete outer supports; both side beams; longitudinal continuity at support and roof levels; bearing contacts at both ends; no unexplained collisions or unsupported trimmed ends; correct source elevations; separate handling of the wider bay; and preservation of status/provenance through export. Compare front, side, roof-open oblique and underside views. These are geometry checks, not strength checks.
@@ -174,3 +190,4 @@ The five other-church photos in `sources/` establish visible timber craftsmanshi
 | --- | --- | --- | --- |
 | 1 | 2026-10-07 | Codex, from owner instructions and repository evidence | Initial coordinated specification and image package. Design development only; engineering approval pending. |
 | 2 | 2026-10-07 | Claude, from owner instructions and the 7 October interior views | Virtual model record added: lengthwise beam proxies and concept ornament now in the viewer, with open coordination items. No requirement, connection or engineering input changed. Design development only; engineering approval pending. |
+| 3 | 2026-11-01 | Claude, from the owner's request of 1 November 2026 | Heavier roof timber proxies (rafters, ridge, purlins, truss proposals, reference variant) added to the virtual model; see *Heavier roof timbers*. No requirement or connection changed; every section remains a visualization proxy on engineering hold. |
