@@ -35919,7 +35919,12 @@
         ],
         [
           38.94,
-          8.095059999999997,
+          7.655531887066677,
+          -8.8
+        ],
+        [
+          38.94,
+          7.635531887066677,
           -8.8
         ]
       ],
@@ -35943,7 +35948,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 1.5819092268041244,
+      "length": 1.7576188861291957,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -35978,7 +35983,12 @@
         ],
         [
           38.94,
-          8.095059999999997,
+          7.655531887066677,
+          -11.4
+        ],
+        [
+          38.94,
+          7.635531887066677,
           -11.4
         ]
       ],
@@ -36002,7 +36012,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.181909226804124,
+      "length": 4.357618886129195,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36022,22 +36032,27 @@
       ],
       "trunkId": "trunk:LC1:L8:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 27.627863960578313,
+      "upstreamLength": 27.640704089423362,
       "homeRun": false,
       "points": [
         [
-          42.22,
-          7.945096649484534,
+          42.21,
+          7.953150773195873,
           -7.36
         ],
         [
-          42.22,
-          7.9450966494845385,
+          42.21,
+          7.953150773195878,
           -8.8
         ],
         [
-          42.22,
-          8.063580000000004,
+          42.21,
+          7.655531887066682,
+          -8.8
+        ],
+        [
+          42.21,
+          7.635531887066683,
           -8.8
         ]
       ],
@@ -36047,13 +36062,13 @@
         {
           "points": [
             [
-              42.22,
-              7.945096649484534,
+              42.21,
+              7.953150773195873,
               -7.36
             ],
             [
-              42.22,
-              7.9450966494845385,
+              42.21,
+              7.953150773195878,
               -8.8
             ]
           ],
@@ -36061,7 +36076,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 1.5584833505154654,
+      "length": 1.7576188861291957,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36081,22 +36096,27 @@
       ],
       "trunkId": "trunk:LC1:L8:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 27.627863960578313,
+      "upstreamLength": 27.640704089423362,
       "homeRun": false,
       "points": [
         [
-          42.22,
-          7.945096649484534,
+          42.21,
+          7.953150773195873,
           -7.36
         ],
         [
-          42.22,
-          7.9450966494845385,
+          42.21,
+          7.953150773195878,
           -11.4
         ],
         [
-          42.22,
-          8.063580000000004,
+          42.21,
+          7.655531887066682,
+          -11.4
+        ],
+        [
+          42.21,
+          7.635531887066683,
           -11.4
         ]
       ],
@@ -36106,13 +36126,13 @@
         {
           "points": [
             [
-              42.22,
-              7.945096649484534,
+              42.21,
+              7.953150773195873,
               -7.36
             ],
             [
-              42.22,
-              7.9450966494845385,
+              42.21,
+              7.953150773195878,
               -11.4
             ]
           ],
@@ -36120,7 +36140,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.158483350515465,
+      "length": 4.357618886129195,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36317,7 +36337,12 @@
         ],
         [
           38.94,
-          8.095059999999997,
+          7.655531887066677,
+          8.8
+        ],
+        [
+          38.94,
+          7.635531887066677,
           8.8
         ]
       ],
@@ -36341,7 +36366,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 1.5819092268041244,
+      "length": 1.7576188861291957,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36376,7 +36401,12 @@
         ],
         [
           38.94,
-          8.095059999999997,
+          7.655531887066677,
+          11.4
+        ],
+        [
+          38.94,
+          7.635531887066677,
           11.4
         ]
       ],
@@ -36400,7 +36430,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.181909226804124,
+      "length": 4.357618886129195,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36420,22 +36450,27 @@
       ],
       "trunkId": "trunk:LC1:L8:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 34.22786396057831,
+      "upstreamLength": 34.24070408942336,
       "homeRun": false,
       "points": [
         [
-          42.22,
-          7.945096649484534,
+          42.21,
+          7.953150773195873,
           7.36
         ],
         [
-          42.22,
-          7.9450966494845385,
+          42.21,
+          7.953150773195878,
           8.8
         ],
         [
-          42.22,
-          8.063580000000004,
+          42.21,
+          7.655531887066682,
+          8.8
+        ],
+        [
+          42.21,
+          7.635531887066683,
           8.8
         ]
       ],
@@ -36445,13 +36480,13 @@
         {
           "points": [
             [
-              42.22,
-              7.945096649484534,
+              42.21,
+              7.953150773195873,
               7.36
             ],
             [
-              42.22,
-              7.9450966494845385,
+              42.21,
+              7.953150773195878,
               8.8
             ]
           ],
@@ -36459,7 +36494,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 1.5584833505154654,
+      "length": 1.7576188861291957,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36479,22 +36514,27 @@
       ],
       "trunkId": "trunk:LC1:L8:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 34.22786396057831,
+      "upstreamLength": 34.24070408942336,
       "homeRun": false,
       "points": [
         [
-          42.22,
-          7.945096649484534,
+          42.21,
+          7.953150773195873,
           7.36
         ],
         [
-          42.22,
-          7.9450966494845385,
+          42.21,
+          7.953150773195878,
           11.4
         ],
         [
-          42.22,
-          8.063580000000004,
+          42.21,
+          7.655531887066682,
+          11.4
+        ],
+        [
+          42.21,
+          7.635531887066683,
           11.4
         ]
       ],
@@ -36504,13 +36544,13 @@
         {
           "points": [
             [
-              42.22,
-              7.945096649484534,
+              42.21,
+              7.953150773195873,
               7.36
             ],
             [
-              42.22,
-              7.9450966494845385,
+              42.21,
+              7.953150773195878,
               11.4
             ]
           ],
@@ -36518,7 +36558,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.158483350515465,
+      "length": 4.357618886129195,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -44767,12 +44807,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         -8.8
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44792,12 +44832,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         -11.4
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44817,12 +44857,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         -8.8
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44842,12 +44882,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         -11.4
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44867,12 +44907,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         8.8
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44892,12 +44932,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         11.4
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44917,12 +44957,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         8.8
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44942,12 +44982,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         11.4
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -48085,8 +48125,8 @@
         0.2217390456199646,
         0.23999999463558197
       ],
-      "specs": "2100 lm · 2700 K · 24° beam",
-      "wattsEachEstimate": 17.5,
+      "specs": "3000 lm · 2700 K · 24° beam",
+      "wattsEachEstimate": 25,
       "itemIds": [
         "L-WING-B-FI",
         "L-WING-B-FO",

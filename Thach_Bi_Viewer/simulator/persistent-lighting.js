@@ -56,9 +56,12 @@
           float roofY = 12.282 - 0.7258 * abs(p.z);
           float nave = alongNave * (1.0 - smoothstep(7.2, 7.45, abs(p.z)))
             * (1.0 - smoothstep(roofY + 0.02, roofY + 0.22, p.y));
-          float wingRoofY = 9.39 - 0.787 * abs(p.x - 40.56);
-          float wing = smoothstep(37.1, 37.35, p.x) * (1.0 - smoothstep(43.8, 44.05, p.x))
-            * (1.0 - smoothstep(12.85, 13.1, abs(p.z)))
+          float wingRoofY = 9.26 - 0.8054 * abs(p.x - 40.575);
+          // Fade over the wing return-wall thickness, retaining bounce on the inner faces.
+          float wing = smoothstep(36.815, 37.135, p.x) * (1.0 - smoothstep(44.015, 44.335, p.x))
+            // Gable wall inner face is |Z| 13.099; fade across its modeled 0.30 m thickness,
+            // so the inside face receives room bounce while the outside face does not.
+            * (1.0 - smoothstep(13.10, 13.399, abs(p.z)))
             * (1.0 - smoothstep(wingRoofY + 0.02, wingRoofY + 0.22, p.y));
           return max(nave, wing) * smoothstep(-0.5, -0.3, p.y);
         }

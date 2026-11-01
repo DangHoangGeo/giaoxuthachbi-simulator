@@ -12,16 +12,16 @@ try {
  const speakers=[...SIM.fixtures.values()].filter(f=>/^Wing speaker/.test(f.item.name));
  const fans=[...SIM.fixtures.values()].filter(f=>f.item.circuit==='F5');
  const legacy=process.argv.includes('--legacy-four');
- assert.equal(lights.length,legacy?8:4);assert.equal(speakers.length,legacy?4:2);assert.equal(fans.length,legacy?8:4);
+ assert.equal(lights.length,8);assert.equal(speakers.length,legacy?4:2);assert.equal(fans.length,legacy?8:4);
  const box=f=>{const b=new T.Box3().setFromObject(f.root);assert([...b.min.toArray(),...b.max.toArray()].every(Number.isFinite),'non-finite fixture envelope '+f.item.id);return b;},bounds=b=>({minimum:b.min.toArray(),maximum:b.max.toArray()});
  const gap=(a,b)=>Math.hypot(...['x','y','z'].map(k=>Math.max(a.min[k]-b.max[k],b.min[k]-a.max[k],0)));
- const records=[],swept=new Map();
- for(const f of fans){const old=f.osc.rotation.y,union=new T.Box3();let beamMinAngle=180;
+ const records=[],swept=new Map(), emitters=SIM.emitters();
+ for(const f of fans){const old=f.osc.rotation.y,union=new T.Box3();let beamMinAngle=180, beamMargin=180;
   for(let degrees=-40;degrees<=40;degrees+=5){f.osc.rotation.y=-((f.item.yaw-f.item.mountYaw)+degrees)*Math.PI/180;f.root.updateMatrixWorld(true);union.union(box(f));
    // Full visible fan mesh vertices, including guard; the blade is within it.
    f.root.traverse(m=>{const p=m.geometry?.attributes?.position;if(!m.isMesh||!p)return;const v=new T.Vector3();
     for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(m.matrixWorld);
-     for(const l of lights.filter(l=>Math.sign(l.item.pos[2])===Math.sign(f.item.pos[2]))){const emitter=new T.Vector3(0,-1.245,0).applyMatrix4(l.root.matrixWorld),d=v.clone().sub(emitter);const a=Math.acos(Math.max(-1,Math.min(1,-d.y/d.length())))*180/Math.PI;beamMinAngle=Math.min(beamMinAngle,a);}
+     for(const l of lights.filter(l=>Math.sign(l.item.pos[2])===Math.sign(f.item.pos[2]))){const source=emitters.find(e=>e.id===l.item.id&&e.kind==='spot');assert(source,'missing light emitter '+l.item.id);const d=v.clone().sub(new T.Vector3(...source.pos));const a=Math.acos(Math.max(-1,Math.min(1,d.normalize().dot(new T.Vector3(...source.dir)))))*180/Math.PI;beamMinAngle=Math.min(beamMinAngle,a);beamMargin=Math.min(beamMargin,a-l.item.beam/2);}
     }
    });
   }
@@ -33,8 +33,8 @@ try {
    assert(Math.max(Math.abs(union.min.z),Math.abs(union.max.z))<=13.099,'sampled fan body penetrates modeled gable inner face');
   }
   const floor=-.32;assert(union.min.y-floor>=2.4,'sampled visible fan envelope below existing 2.4 m project screen');
-  assert(beamMinAngle>50,'sampled fan envelope enters main 100 degree task beam');
-  records.push({id:f.item.id,sweptEnvelope:bounds(union),minimumAboveWingFloorM:union.min.y-floor,minimumAngleFromAnyWingReadingOpticDegrees:beamMinAngle});
+  assert(beamMargin>0,'sampled fan envelope enters a wing light main beam');
+  records.push({id:f.item.id,sweptEnvelope:bounds(union),minimumAboveWingFloorM:union.min.y-floor,minimumAngleFromAnyWingReadingOpticDegrees:beamMinAngle,minimumMarginOutsideMainBeamDegrees:beamMargin});
  }
  const pairs=[];
  for(const l of lights)for(const other of [...speakers,...fans,...lights]){
@@ -63,7 +63,7 @@ try {
  const pictures=[...SIM.fixtures.values()].filter(f=>/^D-WING-/.test(f.item.id));
  if(!legacy){assert.equal(pictures.length,4);for(const p of pictures){const b=box(p);assert(b.min.x>38.675&&b.max.x<42.475,'concept frame outside reserved strip');for(const f of fans)if(Math.sign(f.item.pos[2])===Math.sign(p.item.pos[2]))assert(!b.intersectsBox(swept.get(f.item.id)),'concept frame intersects sampled fan sweep');}}
  const report={speakerChecks,pictureEnvelopes:pictures.map(f=>({id:f.item.id,...bounds(box(f))})),status:'Software geometry screen passed; physical design remains ENGINEERING HOLD',lightEnvelopes:lights.map(f=>({id:f.item.id,...bounds(box(f))})),fans:records,fixturePairs:pairs,fanPairs,
-  limits:['17 yaw samples do not prove the continuous swept envelope or installation tolerances','Full AABB separation is conservative geometry evidence, not an approved service clearance','Task beam half-angle is 50 degrees; wider field tails and decorative point light can reach fan blades, so flicker remains unverified','Roof projection supplies visualization anchor only; substrate capacity, cable/driver access and load restraint are unknown','No complete architecture, inclusive sightline or concealment approval']};
+  limits:['17 yaw samples do not prove the continuous swept envelope or installation tolerances','Full AABB separation is conservative geometry evidence, not an approved service clearance','Main-beam checks use each simulated emitter and its configured half-angle; wider field tails may reach blades, so flicker remains unverified','Roof projection supplies visualization anchor only; substrate capacity, cable/driver access and load restraint are unknown','No complete architecture, inclusive sightline or concealment approval']};
  fs.writeFileSync(path.join(out,'geometry.json'),JSON.stringify(report,null,2)+'\n');
- console.log(JSON.stringify({wingGeometryScreen:'passed',chandeliers:lights.length,wallFans:fans.length,wingSpeakers:speakers.length,minLightSpeakerEnvelopeGapM:Math.min(...pairs.filter(p=>p.b.startsWith('S')).map(p=>p.axisAlignedEnvelopeGapM)),minFanEnvelopeGapM:Math.min(...fanPairs.map(p=>p.axisAlignedEnvelopeGapM)),constructionApproved:false}));
+ console.log(JSON.stringify({wingGeometryScreen:'passed',wingLights:lights.length,wallFans:fans.length,wingSpeakers:speakers.length,minLightSpeakerEnvelopeGapM:Math.min(...pairs.filter(p=>p.b.startsWith('S')).map(p=>p.axisAlignedEnvelopeGapM)),minFanEnvelopeGapM:Math.min(...fanPairs.map(p=>p.axisAlignedEnvelopeGapM)),constructionApproved:false}));
 }finally{study.dispose();}

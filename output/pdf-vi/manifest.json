@@ -3,7 +3,7 @@
   "language": "vi",
   "status": "Design development - not for construction",
   "basis": "Fresh default model, not saved browser layout",
-  "gitRevision": "3739e90f92640e0f6ba5924b55968d677c3a36bd",
+  "gitRevision": "e1136ea06a006cd91e1208a93c65a9a9cca92076",
   "sourceFiles": {
     "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
     "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",
@@ -11,7 +11,7 @@
     "Thach_Bi_Viewer/glass-art.js": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a",
     "Thach_Bi_Viewer/carving.js": "5624bd11c10c1c75a0c80a4f2b9612652664e6592eceff0d8a6ac6c5c70c1367",
     "Thach_Bi_Viewer/decoration.js": "c11e58c36f2c63bd6cedad32f9dfebd775f38069e816705d82eedc29d9ba8d0e",
-    "Thach_Bi_Viewer/sanctuary.js": "b047c69441930adab871aa3be103200603b025bf443cc41659047db431561ea9",
+    "Thach_Bi_Viewer/sanctuary.js": "1899780998eeca451c3f1afea7fdb1ad565953c8de8d4117d0a56e540315cf4b",
     "Thach_Bi_Viewer/facade.js": "881a374d24d78cbb1c440ee68eddb3b69505c862876f0e1074e190c17e6ab1c2",
     "Thach_Bi_Viewer/porches.js": "04f9fb1f18942fd7c3bb40e2c07dd2b37230c262f91304b4b11691b254d51c67",
     "Thach_Bi_Viewer/stations.js": "17979bbe379cc9b5286e5ec4f090708bdf75e20e544dc44f6c777251a35bb625",
@@ -23,14 +23,14 @@
     "Thach_Bi_Viewer/simulator/catalog.js": "226d27e399b6a294eb49f24186279b23b3735909d75f4b5318cd26fe205a8869",
     "Thach_Bi_Viewer/simulator/veranda-review.js": "cda63e962a9dc9a3ec8f18ed267752a0e32f4872d3e69a54ef344f3a5fc5c622",
     "Thach_Bi_Viewer/simulator/doorhead-review.js": "29e8d3900e6ad358e5066b31d5b071c41b52befe8fc53ce5a9197e8f7bfd8b3f",
-    "Thach_Bi_Viewer/simulator/engine.js": "935895ed68a0ed29727bf0ad62a6010ac43b9dde4886387fc75a9ccd18978011",
+    "Thach_Bi_Viewer/simulator/engine.js": "889483fb0ef5cf839d289863caee75fedb3694ee5f658bb21dd34899331f0071",
     "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
-    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "5d794e8788764e2218f1e14387e4b7e758dae85b5777a751445c15ad7bd6bef1",
-    "Thach_Bi_Viewer/simulator/design.js": "eaba4033bfabe54f54165b99d82409fbd67352921c0c551498f11eb833f1811e",
+    "Thach_Bi_Viewer/simulator/persistent-lighting.js": "a467c13e4f993d8f6352c4a58fb2c3f366df2db955ac99ffe54401299f57bfe7",
+    "Thach_Bi_Viewer/simulator/design.js": "6cee565de3636cda20861565cd284c32939b842f02e4841431cf0501b4d07dab",
     "Thach_Bi_Viewer/simulator/analysis.js": "5245fad1537146093b03cf4aff74c62673f766134b082de59e796d5f8d3e17db",
     "Thach_Bi_Viewer/simulator/electrical.js": "62d01a8c2161279b1f8b6d933c9328783744ce4c9a6acb5c545c3fe1c6b5a815",
     "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
-    "Thach_Bi_Viewer/bundle.js": "74818d3bbe1aea78576f9fe1907faaa2e52e3aa96c5cfad2a2f37c2b72b710d3",
+    "Thach_Bi_Viewer/bundle.js": "99bd27e5df78d40656a8d0e744a0977076681e7b5ab144b575974d9466b8ab92",
     "scripts/lib/study_model.cjs": "d89088c7dd1ab4a58be906775e7ef93188d146b98d23ba543b1f71b33bd06f70",
     "scripts/build_review_drawings.py": "78dfac791e582bb5b88023973642c076044233667246d67ac30122f96c5ec944",
     "scripts/export_print_model.cjs": "231f89424ff29b177ef4e1e0a2e7648eff0c1c553cd2b72186fbe06f35335ae3",
@@ -40,11 +40,11 @@
     "scripts/fonts/OFL.txt": "231dfd281eb8f5101e897083691cc4071432352458b9bab58f767b0bb7753b60",
     "scripts/fonts/README.md": "00f89d81570614cb4b271adcae3f0b9bdfbffc76c7b773fe6eaa4e695e3a8ffb"
   },
-  "systemsHash": "3528cddf441e8def668fabf4636168c97ff59d1f471073796508ded4c272da0a",
+  "systemsHash": "abd7652f16c59ea888bb9609ed55531ca1192086bb3e7f613aaeb67d27b6bf86",
   "counts": {
     "equipment": 376,
     "routes": 433,
-    "vertices": 3163,
+    "vertices": 3171,
     "pages": 69,
     "planSectionSegments": 9972,
     "towerSectionSegments": 10905
@@ -56,9 +56,9 @@
   },
   "files": {
     "drawing-index.json": "02c0335a536aafdb21291fffa0f778f8fdb17dc2acc15e4af82a2a1057792a30",
-    "equipment-coordinates.csv": "c995dabcac6cb60e18bf23b822620914bf20e6c9cd3222358f9d26030088fa81",
-    "model-snapshot.json": "9555a70beb654818fe0fdaa0af1cc29b605082253503fb895c6dfb1f324de57e",
-    "route-vertices.csv": "80ebf6d3e310dd8a324571b3e389a994aa61080b27552c14300a3dfadd31cdcc",
-    "thach-bi-electrical-review-A3-vi.pdf": "c5813bde2fcbf95cb9a07c85171730b02d78e290c18afd894470c68391eefa26"
+    "equipment-coordinates.csv": "0b3977ac036d902b91b185f722e43e8ccfcdd05b3598605f6ac5d6e2f1f45173",
+    "model-snapshot.json": "66829ef4c007b4e6423cc0d9f19a22a14851a7be5194051726e2f416b0dd2da9",
+    "route-vertices.csv": "726cfe2ebe38218ea2781440e5e51130da7ac951655f42756589bd7887ad2f1e",
+    "thach-bi-electrical-review-A3-vi.pdf": "92b24d43af9f433bd7a311313aa0efc089d25e6b1848c04c61d8b1c305346275"
   }
 }

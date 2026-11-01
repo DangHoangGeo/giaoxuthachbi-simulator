@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-11-01T05:29:20.874Z",
+  "savedAt": "2026-11-01T09:56:13.555Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -58,6 +58,7 @@
     "naveWingLightingRevision": "2026-11-01-nave-wing-lighting-1",
     "entranceFitRevision": "2026-11-01-entrance-fit-1",
     "sideVaultLightsRevision": "2026-11-01-side-vault-lights-1",
+    "wingRoofLightingRevision": "2026-11-01-wing-roof-lighting-1",
     "eveningExposureRevision": "2026-10-09-evening-160",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
@@ -8171,13 +8172,13 @@
       "mount": "pendant",
       "pos": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         -8.8
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.115059999999996,
+      "anchorY": 7.655531887066677,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8185,7 +8186,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8198,13 +8199,13 @@
       "mount": "pendant",
       "pos": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         -11.4
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.115059999999996,
+      "anchorY": 7.655531887066677,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8212,7 +8213,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8224,14 +8225,14 @@
       "circuit": "L8",
       "mount": "pendant",
       "pos": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         -8.8
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.083580000000003,
+      "anchorY": 7.655531887066682,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8239,7 +8240,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8251,14 +8252,14 @@
       "circuit": "L8",
       "mount": "pendant",
       "pos": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         -11.4
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.083580000000003,
+      "anchorY": 7.655531887066682,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8266,7 +8267,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8279,13 +8280,13 @@
       "mount": "pendant",
       "pos": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         8.8
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.115059999999996,
+      "anchorY": 7.655531887066677,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8293,7 +8294,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8306,13 +8307,13 @@
       "mount": "pendant",
       "pos": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         11.4
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.115059999999996,
+      "anchorY": 7.655531887066677,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8320,7 +8321,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8332,14 +8333,14 @@
       "circuit": "L8",
       "mount": "pendant",
       "pos": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         8.8
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.083580000000003,
+      "anchorY": 7.655531887066682,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8347,7 +8348,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8359,14 +8360,14 @@
       "circuit": "L8",
       "mount": "pendant",
       "pos": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         11.4
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.083580000000003,
+      "anchorY": 7.655531887066682,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8374,7 +8375,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false

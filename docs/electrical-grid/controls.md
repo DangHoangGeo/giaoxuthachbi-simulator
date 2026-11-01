@@ -58,7 +58,7 @@ Interior lighting is switched by area ([meeting record](../engineering/parish-me
 | L1 | Nave · 3 front bays (6–9) | Reading heads lighting bays 6–7, 7–8, 8–9 and the front of the dais |
 | L2 | Nave · 4 rear bays (2′–6) | Reading heads lighting bays 2′–3 to 5–6 and the four entrance-wall lights; can stay off or dimmed at ordinary Masses |
 | LA | Ceiling uplight (*hắt trần*) | Seven roof uplights on the tie beams, on their own switch |
-| L8 | Wings · choir & ministers | Eight roof downlights over the wing benches, four per side (`L-WING-…`; the wing chandeliers L63/L65/L67/L69 were retired on 1 November 2026). Switch and scene levels unchanged |
+| L8 | Wings · choir & ministers | Eight roof downlights over the wing benches, four per side (`L-WING-…`; the wing chandeliers L63/L65/L67/L69 were retired on 1 November 2026). 3,000 lm / 25 W assumed per head, 200 W L8; switch and scene levels unchanged |
 | LD | Wall sconces | Column and sanctuary-pier sconces (the three nave chandeliers are removed) |
 | LS | Stations of the Cross | 28 candles |
 
@@ -101,7 +101,7 @@ The 9 October connection inspector shows feeder/trunk/branch relationships above
 
 ## Held wing control group · 9 October 2026
 
-The [wing review](../engineering/wing-review.md) introduces logical **F5 · Wing wall fans · held review** for four small wall fans through **DB-1 → FC-1 → F5**. The 14 remaining nave ceiling fans stay on F1. The sixteen nave wall fans on F2 (eight per side) are shown by default but OFF in every built-in mode; their visibility does not enable them. Manual simulator operation remains available for comparison. L63/L65/L67/L69 remain four chandelier items on L8; four former light IDs and four appended fan IDs are retired. S276/S278 are the two wing wall speakers on A1, facing −X toward the entrance; S275/S277 are retired. Microphones and DB-1/DB-2 feeder logic are unchanged. Four unpowered Peter/Paul pictures are decoration records without circuits to energize or electrical routes.
+The [wing review](../engineering/wing-review.md) introduces logical **F5 · Wing wall fans · held review** for four small wall fans through **DB-1 → FC-1 → F5**. The 14 remaining nave ceiling fans stay on F1. The sixteen nave wall fans on F2 (eight per side) are shown by default but OFF in every built-in mode; their visibility does not enable them. Manual simulator operation remains available for comparison. The original L63/L65/L67/L69 chandeliers are retired; since 1 November L8 contains eight wing downlights. Four earlier light IDs and four appended fan IDs also remain retired. S276/S278 are the two wing wall speakers on A1, facing −X toward the entrance; S275/S277 are retired. Microphones and DB-1/DB-2 feeder logic are unchanged. Four unpowered Peter/Paul pictures are decoration records without circuits to energize or electrical routes.
 
 | Built-in review mode | L8 dim | F5 | F2 |
 | --- | --- | --- | --- |

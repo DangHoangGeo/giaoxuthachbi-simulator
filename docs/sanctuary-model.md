@@ -265,3 +265,8 @@ Checks: `node scripts/verify_model.cjs` asserts two vaults (one per side), the r
 ## Heavier roof timbers · 1 November 2026
 
 Owner request: the timbers up in the church roof looked flimsy. The nave rafters on axes 3–9 (now 0.26 × 0.34 m, were 0.17 × 0.20 m; the four behind the nave keep their section), the underside ridge member (0.30 × 0.28 m, were 0.21 × 0.16 m) and the drawn purlins (0.14 × 0.22 m square to the lining, were 0.09 × 0.12 m) are heavier, and so are the truss proposals shown with *Show truss* and the reference-interior variant. They grow downward from the boarded lining, which does not move, so the tie and column-line beam soffits, the fittings hung from them and the cable routes are unchanged; the gilded soffit lines and bosses on the rafters and ridge follow the new soffits. The measured tie beams, the side beams and the column-line beams keep their sections. All sections are **visualization proxies on engineering hold**, not structurally checked; see the table in the [beam specification](beams-roof-connections/SPECIFICATION.md#heavier-roof-timbers--1-november-2026).
+
+
+## Transept wing roof lining · 1 November 2026
+
+Both 9–10 wings have proposed ivory roof lining and lacquer/gilt timber proxies, matching the nave's appearance. The nave and wing lining planes meet at their modeled valley; the external roof is unchanged. Geometry, equipment coordination and engineering holds are recorded in the [roof specification](beams-roof-connections/SPECIFICATION.md#wing-roof-visualization-proxies--1-november-2026) and [lighting review](systems/lighting.md#wing-roof-and-brighter-downlights--1-november-2026-second-review). They are design-development proxies, not approved structure or construction details.

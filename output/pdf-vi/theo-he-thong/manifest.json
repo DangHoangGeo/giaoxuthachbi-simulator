@@ -3,8 +3,8 @@
   "language": "vi",
   "status": "Design development - not for construction",
   "basis": "Plain-language system packages split from the full set; same snapshot",
-  "gitRevision": "3739e90f92640e0f6ba5924b55968d677c3a36bd",
-  "snapshot": "9555a70beb654818fe0fdaa0af1cc29b605082253503fb895c6dfb1f324de57e",
+  "gitRevision": "e1136ea06a006cd91e1208a93c65a9a9cca92076",
+  "snapshot": "66829ef4c007b4e6423cc0d9f19a22a14851a7be5194051726e2f416b0dd2da9",
   "packages": [
     {
       "file": "01-am-thanh.pdf",
@@ -1442,13 +1442,13 @@
     }
   ],
   "files": {
-    "01-am-thanh.pdf": "04b4189ff9c47904fa7b0583d99eac438147617e165e5614e8b8dc43699baac1",
-    "02-quat-va-thong-gio.pdf": "fada53cdf79674709074bc06198b8290f78dd439f566cb8b7315d882a30cf9cf",
-    "03-den-trong-nha-tho.pdf": "4189adbe1c7d7fce8eacb884b27650208397c44a49be5e8ae4f2285480638214",
-    "04-den-ngoai-troi.pdf": "a03daf61fe4af08d805a4fc5c63ef72d99a6c34c3bb700ccfa40ae75c78f57a0",
-    "05-den-mat-tien-thap-va-le-hoi.pdf": "077b8694242000ca2f8413e26d175ce2eae3d710bc385ed365731709980d535a",
-    "06-den-thoat-hiem.pdf": "d72f6a1a9c7dbc29a607489cd5e642117d9cfde173e77589bdf8a48ddfd22211",
-    "07-o-cam-va-nguon-su-kien.pdf": "07c88ace3fbc09acc5717261d0ac935ca27155c661819c2c0865a22f389e94a3",
-    "08-tu-dien-va-duong-cap.pdf": "c767d3324ec69ab00285f261388124cc80e00d6e932eabf1fd7f60ec731d45a1"
+    "01-am-thanh.pdf": "db1b160f7b25963cf110e34e42f084b979788f2b5bff3fa9af2dc42fe2bb313d",
+    "02-quat-va-thong-gio.pdf": "d848cc3cb981fd2f2fbaa7053eda73a4b5629b3b44f6f7d80108376c8fda4eec",
+    "03-den-trong-nha-tho.pdf": "f1caca140117008769983b66e3b63fd4634eaa69bebbd656778a0958028ee969",
+    "04-den-ngoai-troi.pdf": "0116a3cd5be62177fcbc382a4ca882714d947311202bd6240188ac4a78b64bb5",
+    "05-den-mat-tien-thap-va-le-hoi.pdf": "8cf44480b083892cd19e3fab600b41c23f700aabbfbaf372a377a6d41de40390",
+    "06-den-thoat-hiem.pdf": "1c520a80536e97930d5af5c52b353e1621aa5b6cad15a18c09e9864056280cd7",
+    "07-o-cam-va-nguon-su-kien.pdf": "456222d0920199114e24e24c894dfaa58560e7666c332f05f2975f224c4c278d",
+    "08-tu-dien-va-duong-cap.pdf": "ca56bf3350e22b31f810d1bb74f206516cd346f5182847ca053531ce6fe03f41"
   }
 }

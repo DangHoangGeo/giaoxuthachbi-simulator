@@ -36,7 +36,9 @@
     wash: { x: 45.25, z: 4.14, anchorY: 6.416, lumens: 1140 }
   };
   // Wing downlights, 1 Nov 2026: bench-block centres (X), the two rows (|Z|), output and optic.
-  const WING_DOWNLIGHT = { x: [38.94, 42.22], z: [8.8, 11.4], lumens: 2100, beam: 24 };
+  // Wing roof of 1 Nov 2026 (second round): the heads hang from the 0.22 m purlins with soffits at 1.635 m either side of the wing
+  // ridge (X 38.94 and 42.21) and put out 3 000 lm (2 100 lm / 17.5 W at the first issue, X 38.94 / 42.22).
+  const WING_DOWNLIGHT = { x: [38.94, 42.21], z: [8.8, 11.4], lumens: 3000, beam: 24, purlinDepth: 0.22 };
   // Where a ledge fitting's optic sits: `reach` beyond its base along mountYaw, `rise` above it.
   const lensAt = (p, mountYaw, reach, rise) => {
     const r = mountYaw * Math.PI / 180;
@@ -630,14 +632,14 @@
     }
     // L8 · wing downlights, owner request of 1 November 2026: the two chandeliers on each side
     // are replaced by four narrow (24 degree) downlights from the wing roof, two over each
-    // bench block (rows at Z 8.80 and 11.40, the block centres at X 38.94 and 42.22), aimed
-    // straight down onto the benches. Each is a finish-matched projector hung tight to the
-    // roof timber (the lacquer follows the timber tone), 2 100 lm / 17.5 W. Simulated wing seats:
-    // 97-301 lux (average 196, half below 200) before, 226-332 lux (average 260) after; see
-    // docs/systems/lighting.md.
+    // bench block (rows at Z 8.80 and 11.40, X 38.94 and 42.21), aimed straight down.
+    // Each finish-matched projector hangs tight to the purlin, 3 000 lm / 25 W assumed.
+    // The first 2 100 lm issue estimated 226 lux minimum / 260 average; this issue estimates
+    // 319 / 380 lux. These are unvalidated estimates; see docs/systems/lighting.md.
     // Photometry, glare, fixing into the roof timber and maintenance access remain ENGINEERING HOLD.
     for (const sign of [-1, 1]) for (const [x, blk] of [[WING_DOWNLIGHT.x[0], 'front'], [WING_DOWNLIGHT.x[1], 'rear']]) for (const [az, row] of [[WING_DOWNLIGHT.z[0], 'inner'], [WING_DOWNLIGHT.z[1], 'outer']]) {
-      const z = sign * az, roof = above(x, z, 3.0);
+      // The canopy sits on the soffit of the lacquered purlin that carries the head (sanctuary.js spec.wingRoof).
+      const WR = window.CHURCH_SANCTUARY?.spec.wingRoof, z = sign * az, roof = above(x, z, 3.0) - (WR ? WR.purlinDrop(WING_DOWNLIGHT.purlinDepth) : 0);
       add({ id: `L-WING-${sign < 0 ? 'B' : 'H'}-${blk === 'front' ? 'F' : 'R'}${row === 'inner' ? 'I' : 'O'}`, type: 'projector24', name: `Wing downlight · ${side(sign)} · ${blk} block · ${row} row`, circuit: 'L8', mount: 'pendant',
         pos: [x, roof - 0.02, z], anchorY: roof, yaw: 0, mountYaw: 0, tilt: -90, lumens: WING_DOWNLIGHT.lumens, beam: WING_DOWNLIGHT.beam, cct: 2700, shadow: false, params: { finish: 'timber' },
         note: 'CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/lighting.md.' });
@@ -728,6 +730,26 @@
       if (!old || !raw || !untouched(it, old)) return it;
       if (old.anchorY !== undefined && Math.abs((it.anchorY ?? old.anchorY) - old.anchorY) > 0.005) return it;
       return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, ...(raw.anchorY !== undefined ? { anchorY: raw.anchorY } : {}) };
+    });
+  }
+
+  // Upgrade only unchanged first-issue downlights. Missing or user-modified items stay as saved.
+  const wingRoofLightingRevision = '2026-11-01-wing-roof-lighting-1';
+  const wingRoofLightingBefore = Object.fromEntries(['B', 'H'].flatMap(code =>
+    [['F', 38.94], ['R', 42.22]].flatMap(([block, x]) =>
+      [['I', 8.8], ['O', 11.4]].map(([row, z]) => {
+        const anchorY = 9.39 - 0.787 * Math.abs(x - 40.56);
+        return [`L-WING-${code}-${block}${row}`, { type: 'projector24', mount: 'pendant', circuit: 'L8',
+          pos: [x, anchorY - 0.02, code === 'B' ? -z : z], anchorY, yaw: 0, tilt: -90, mountYaw: 0, lumens: 2100, beam: 24, cct: 2700, finish: 'timber', shadow: false }];
+      }))));
+  function upgradeWingRoofLighting(items, design) {
+    const next = new Map(design.map(it => [it.id, it]));
+    return items.map(it => {
+      const old = wingRoofLightingBefore[it.id], raw = next.get(it.id);
+      if (!old || !raw || !untouched(it, old) || !(Math.abs(it.anchorY - old.anchorY) < 0.005) ||
+          Math.abs((it.mountYaw ?? 0) - old.mountYaw) > 0.01 || it.lumens !== old.lumens || it.beam !== old.beam || it.cct !== old.cct ||
+          it.params?.finish !== old.finish || it.shadow !== old.shadow) return it;
+      return { ...it, pos: [...raw.pos], anchorY: raw.anchorY, lumens: raw.lumens };
     });
   }
 
@@ -1379,5 +1401,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

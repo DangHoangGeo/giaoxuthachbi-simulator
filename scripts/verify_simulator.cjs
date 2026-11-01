@@ -783,15 +783,15 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert(lights.every(Boolean), 'four downlights per wing side');
   assert.deepEqual(plain(lights.map(it => it.name)).slice(0, 4), ['Wing downlight · B · front block · inner row', 'Wing downlight · B · front block · outer row', 'Wing downlight · B · rear block · inner row', 'Wing downlight · B · rear block · outer row']);
   for (const it of lights) {
-    assert(it.type === 'projector24' && it.circuit === 'L8' && it.mount === 'pendant' && it.tilt === -90 && it.lumens === 2100 && it.beam === 24 && it.params.finish === 'timber' && !it.hidden && it.on, 'concealed (roof timber finish) downlight on circuit L8: ' + it.id);
-    assert([38.94, 42.22].includes(it.pos[0]) && [8.8, 11.4].includes(Math.abs(it.pos[2])), 'over a bench block row: ' + it.id);
+    assert(it.type === 'projector24' && it.circuit === 'L8' && it.mount === 'pendant' && it.tilt === -90 && it.lumens === 3000 && it.beam === 24 && it.params.finish === 'timber' && !it.hidden && it.on, 'finish-matched downlight on circuit L8: ' + it.id);
+    assert([38.94, 42.21].includes(it.pos[0]) && [8.8, 11.4].includes(Math.abs(it.pos[2])), 'over a bench block row: ' + it.id);
     assert(Math.abs(it.anchorY - it.pos[1] - 0.02) < 1e-9 && it.anchorY > 7 && it.anchorY < 9.5, 'tight to the roof timber, not a chandelier on a chain: ' + it.id);
     const lens = SIM.emitters().find(e => e.id === it.id);
     assert(lens && lens.dir[1] < -0.999, 'aimed straight down from above: ' + it.id);
     SIM.fixtures.get(it.id).root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) assert.equal(m.material, interior.materials.timber, 'the roof timber lacquer itself: ' + it.id); });
   }
-  assert.equal(SIM.itemWatts(lights[0], true), 17.5, 'planning rating 2 100 lm at 120 lm/W');
-  assert(Math.abs(SIM.powerSummary().byCircuit.find(c => c.circuit === 'L8').watts - 140) < 1e-6, 'L8 draws eight 17.5 W downlights, 140 W (204 W for the four chandeliers before)');
+  assert.equal(SIM.itemWatts(lights[0], true), 25, 'planning rating 3 000 lm at 120 lm/W');
+  assert(Math.abs(SIM.powerSummary().byCircuit.find(c => c.circuit === 'L8').watts - 200) < 1e-6, 'L8 draws eight 25 W downlights, 200 W (140 W in the previous downlight design)');
   // The 28 tie-beam heads keep their IDs, circuits and 2 300 lm; only their place, aim and optic changed.
   const tieIds = Object.keys(D.naveCentreBefore);
   assert.equal(tieIds.length, 28);
