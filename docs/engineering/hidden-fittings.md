@@ -1,5 +1,7 @@
 # Hidden reading lights, tower lights and corner loudspeakers · 19 October 2026
 
+> Historical record: L59–L62 were moved to the axis-3 side walls on 2 November 2026. Their former entrance-wall positions below are superseded; see [current lighting record](../systems/lighting.md).
+
 Status: **CONCEPT / ENGINEERING HOLD**. Implemented in the local simulator; nothing here is approved to buy or build. Coordinates are metres in the shared model axes: X from axis 1 toward the sanctuary, Y up from the nave floor ±0.000, Z negative toward B and positive toward H. Positions taken from the model are ray casts on the current meshes (`MODEL TRANSCRIPTION`); pier widths, cornice depths and moulding profiles are themselves illustrative transcriptions, not survey.
 
 **Owner requests, 19 October 2026 (`USER CONFIRMED` intent):**

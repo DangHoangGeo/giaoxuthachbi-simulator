@@ -355,6 +355,7 @@ NAME_PARTS = {
     'back rows': 'hàng sau',
     'front rows': 'hàng trước',
     'entrance façade': 'mặt đứng cửa vào',
+    'axis 3 side wall': 'tường bên trục 3',
     'sanctuary pier': 'trụ cung thánh',
     'front': 'phía trước',
     'rear': 'phía sau',

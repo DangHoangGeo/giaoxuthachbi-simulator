@@ -1,5 +1,7 @@
 # Equipment and electrical-line Excel registers
 
+**2 November 2026:** L59–L62 retain their IDs and L2 circuit but move to paired axis-3 side-wall locations. Their routes and all six category registers were refreshed from the model while preserving entered fields. The resulting snapshot has 431 equipment/enclosures, 449 routes and 3,258 route points. See the [summary](summary-report.md) and [lighting review](../../review/rear-side-lights-2026-11-02/README.md); product, wiring and support remain unapproved.
+
 **Entrance follow-up, 1 November 2026:** D299/D305 are retired, never reassigned; E1 sign L155 and its lead are updated. The refreshed register retains keyed inputs and records 431 equipment/enclosures, 449 routes and 3,262 route vertices. Existing entrance luminaires and speakers keep IDs and circuits; the supported sign clip and real emergency supply remain ENGINEERING HOLD.
 
 **1 November 2026, column and centre-beam lighting:** Fourteen new `L-COLUMN-{3–9}-{B,H}` fixtures belong to lighting and circuit LD, with proposed routes and 112 W total connected rating. Existing L3–L30 keep their IDs and circuits but their outputs are rebalanced; no fixture ratings or routes are approved for construction. The six workbooks were regenerated with keyed input preservation. This issue has 433 equipment/enclosure records, 449 active routes and 3,263 route vertices; see the [summary](summary-report.md) and [lighting study](../systems/lighting.md). Earlier counts below are historical.

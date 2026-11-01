@@ -58,7 +58,7 @@ Interior lighting is switched by area ([meeting record](../engineering/parish-me
 | --- | --- | --- |
 | L3 | Sanctuary | Altar, ambo, chamber, shrine and service-room lights, and the one remaining chandelier at the 9–10 crossing |
 | L1 | Nave · 3 front bays (6–9) | Reading heads lighting bays 6–7, 7–8, 8–9 and the front of the dais |
-| L2 | Nave · 4 rear bays (2′–6) | Reading heads lighting bays 2′–3 to 5–6 and the four entrance-wall lights; can stay off or dimmed at ordinary Masses |
+| L2 | Nave · 4 rear bays (2′–6) | Reading heads lighting bays 2′–3 to 5–6 and the four rear side-wall lights; can stay off or dimmed at ordinary Masses |
 | LA | Ceiling uplight (*hắt trần*) | Seven roof uplights on the tie beams, on their own switch |
 | L8 | Wings · choir & ministers | Eight roof downlights over the wing benches, four per side (`L-WING-…`; the wing chandeliers L63/L65/L67/L69 were retired on 1 November 2026). 3,000 lm / 25 W assumed per head, 200 W L8; switch and scene levels unchanged |
 | LD | Column up/down lights | Fourteen concept fixtures on the inward faces of the main timber columns; 112 W connected. Existing scene levels and proposed local manual control apply. Physical channels, protection and wiring remain on engineering hold. |

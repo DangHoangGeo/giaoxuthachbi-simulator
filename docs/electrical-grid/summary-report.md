@@ -1,20 +1,22 @@
 # Equipment quantities, usage and quality report
 
+> **Rear side-wall lighting, 2 November 2026:** L59–L62 remain on L2 and move from the entrance wall to paired side-wall positions near axis 3. The revised model uses 6,000 lm / 36° for the centre heads; the 50 W category allowance remains provisional. Main exit sign L155 remains unchanged. See the [lighting review](../../review/rear-side-lights-2026-11-02/README.md); prior position narratives below are historical.
+
 > **Entrance follow-up, 1 November 2026:** Entrance palms D299/D305 are retired, main E1 sign L155 moves to the nave face, and the rear pew row is removed in both layouts. See the [facade record](../facade-model.md) and [interior plan](../interior-systems-plan.md); the physical sign, clip and routes are unapproved. The fourteen column up/down lights remain on LD at 112 W connected; L3–L30 retain their rebalanced outputs. Earlier wing and lighting narratives below are historical.
 
-Generated 1 November 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
+Generated 2 November 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
 
 ## Total quantities
 
 | Usage category | Equipment/enclosures | Shown | Hidden alternatives | Connected components | Shown items commanded on | Routes | Route points |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Lighting | 290 | 290 | 0 | 290 | 264 | 315 | 2346 |
+| Lighting | 290 | 290 | 0 | 290 | 264 | 315 | 2342 |
 | Sound | 44 | 44 | 0 | 44 | 34 | 54 | 330 |
 | Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 410 |
 | Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 67 |
 | Decoration and furnishings | 35 | 20 | 15 | 0 | 20 | 0 | 0 |
 | Distribution and controls | 12 | 12 | 0 | 6 | 4 | 15 | 109 |
-| **Total** | 431 | 416 | 15 | 390 | 354 | 449 | 3262 |
+| **Total** | 431 | 416 | 15 | 390 | 354 | 449 | 3258 |
 
 Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **39 equipment, 118 routes**.
 
@@ -24,13 +26,13 @@ Saved scene: **Full service · evening**. Service duration **1.5 h**, **40 servi
 
 | Usage category | Operating estimate (W) | kWh/service | Service-only kWh/month | Circuits / scope |
 | --- | ---: | ---: | ---: | --- |
-| Lighting | 4,245.7 | 6.369 | 254.74 | L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LD, LS |
+| Lighting | 4,290.7 | 6.436 | 257.44 | L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LD, LS |
 | Sound | 193.4 | 0.290 | 11.60 | A1, A2, A3, A5, MIC |
 | Fans and ventilation | 1,156.0 | 1.734 | 69.36 | F1, F2, F4, F5, V1, V2, V3 |
 | Exit signs | 15.0 | 0.023 | 0.90 | E1 |
 | Decoration and furnishings | 0.0 | 0.000 | 0.00 | DECOR, X1 |
 | Distribution and controls | 0.0 | 0.000 | 0.00 | P1, P2, P3, P4 |
-| **Total modeled usage** | **5,610.1** | **8.415** | **336.60** | Same saved configuration |
+| **Total modeled usage** | **5,655.1** | **8.483** | **339.30** | Same saved configuration |
 
 Calculated by the simulator's itemWatts method, including dimming, fan speed and amplifier allowances. Passive-speaker ratings are not summed as mains watts. The five boards do not add duplicate downstream consumption; their own parasitic/control loads are not separately modeled. A zero is the model's result, not a verified zero product rating. Standby, between-service use, continuous exit-sign operation outside these service hours, other building loads and distribution losses are excluded. These totals cannot size a supply, protective device or cable. See [methods and limitations](../simulator/methods-and-limitations.md).
 
@@ -38,13 +40,13 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,663.489 | 3,663.489 | 0.000 | 0.000 |
+| Lighting | 3,610.919 | 3,610.919 | 0.000 | 0.000 |
 | Sound | 765.922 | 0.000 | 2,362.560 | 566.077 |
 | Fans and ventilation | 978.661 | 978.661 | 0.000 | 0.000 |
 | Exit signs | 166.209 | 166.209 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 263.923 | 263.923 | 0.000 | 0.000 |
-| **Total by length basis** | **5,838.204** | **5,072.282** | **2,362.560** | **566.077** |
+| **Total by length basis** | **5,785.634** | **5,019.712** | **2,362.560** | **566.077** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/439 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -74,8 +76,8 @@ The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-an
 The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
 
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 1afaf6bac2691823fcfbd4c95b8d1c48f8f2a89c73932cab481097d564a76a22.
-- [Electrical snapshot](electrical-systems.json), SHA-256: 8e1e972ba7e4a5616af2538620f7be62b40030ad891eba3c767434630886d092.
+- [Layout snapshot](equipment-layout.json), SHA-256: 1947904e8a48ec728a9d82509e8a92241601c0c7b43360d18b655257729b81e0.
+- [Electrical snapshot](electrical-systems.json), SHA-256: 50d4b9583049f9c39c3676a63930c63402b3dcb2ca41210391b8abc40f1c8e73.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 

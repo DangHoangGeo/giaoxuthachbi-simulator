@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "basis": "Fresh default model, not saved browser layout",
-  "gitRevision": "10e5ce1806c518d9da84e164c7e00dcec31ba416",
+  "gitRevision": "7e3547d9af017f8a0214c68b0ccf672bb825d83d",
   "sourceFiles": {
     "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
     "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",
@@ -21,10 +21,10 @@
     "Thach_Bi_Viewer/simulator/catalog.js": "852fc6dcf849facd543707a1d9a50ffd638618f5f039f7fb0a4234e5727347ec",
     "Thach_Bi_Viewer/simulator/veranda-review.js": "cda63e962a9dc9a3ec8f18ed267752a0e32f4872d3e69a54ef344f3a5fc5c622",
     "Thach_Bi_Viewer/simulator/doorhead-review.js": "42fdf1337d1c976303cb87d5427e1c15f1f11abeb096fb40cb343f4df06dfaf8",
-    "Thach_Bi_Viewer/simulator/engine.js": "f22ce99983267e0bc14ad0e540f8e6bff0dcb9e6849df704b78b51cc93b71361",
+    "Thach_Bi_Viewer/simulator/engine.js": "b323cb09332d636709f64637a071a86c96b1956538027360991cbcd2c114bef5",
     "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
     "Thach_Bi_Viewer/simulator/persistent-lighting.js": "a467c13e4f993d8f6352c4a58fb2c3f366df2db955ac99ffe54401299f57bfe7",
-    "Thach_Bi_Viewer/simulator/design.js": "803ef8d288b01c6a630292f200b38775fb847145ebe96106009e1a8e7a9caaad",
+    "Thach_Bi_Viewer/simulator/design.js": "f2ba42110d59dc77e86569cf4414d14ffdef11ec5062c284c9c9834ae9f6e4d3",
     "Thach_Bi_Viewer/simulator/analysis.js": "5245fad1537146093b03cf4aff74c62673f766134b082de59e796d5f8d3e17db",
     "Thach_Bi_Viewer/simulator/electrical.js": "59c9d0c211fb79537fd0d5b64b5c940e58847c3c7d746fd7b3be1dfa9f793d0c",
     "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
@@ -1187,12 +1187,12 @@
             -7.36
           ],
           [
-            5.475000000000001,
+            9.25,
             5.908,
             -7.36
           ]
         ],
-        "length": 66.83013031117919,
+        "length": 63.05513031117919,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "coverPaths": [
@@ -2867,7 +2867,7 @@
       },
       {
         "id": "drop:LC1:L2:light:-1:L59",
-        "name": "L2 → Rear rows light · entrance façade · B",
+        "name": "L2 → Rear rows light · axis 3 side wall · B",
         "source": "LC1",
         "board": "DB1",
         "circuit": "L2",
@@ -2878,44 +2878,38 @@
         ],
         "trunkId": "trunk:LC1:L2:light:-1",
         "color": "#dc9e29",
-        "upstreamLength": 66.83013031117919,
+        "upstreamLength": 63.05513031117919,
         "homeRun": false,
         "points": [
           [
-            5.475000000000001,
+            9.25,
             5.908,
             -7.36
           ],
           [
-            5.475000000000001,
-            -0.44,
+            9.25,
+            3.65,
             -7.36
           ],
           [
-            5.475,
-            -0.44,
-            -4.2
-          ],
-          [
-            5.475,
-            3.45,
-            -4.2
+            9.25,
+            3.65,
+            -7.25
           ]
         ],
-        "method": "review-local",
-        "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
         "coverPaths": [],
-        "reviewRequired": true,
-        "length": 13.398000000000001,
+        "length": 2.3680000000000008,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
         "buildingDrawnDiameter": 0.006,
         "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
       },
       {
         "id": "drop:LC1:L2:light:-1:L60",
-        "name": "L2 → Rear centre light · entrance façade · B",
+        "name": "L2 → Rear centre light · axis 3 side wall · B",
         "source": "LC1",
         "board": "DB1",
         "circuit": "L2",
@@ -2926,37 +2920,31 @@
         ],
         "trunkId": "trunk:LC1:L2:light:-1",
         "color": "#dc9e29",
-        "upstreamLength": 66.83013031117919,
+        "upstreamLength": 62.70513031117919,
         "homeRun": false,
         "points": [
           [
-            5.475000000000001,
+            9.600000000000001,
             5.908,
             -7.36
           ],
           [
-            5.475000000000001,
-            -0.44,
+            9.600000000000001,
+            3.65,
             -7.36
           ],
           [
-            5.475,
-            -0.44,
-            -4.2
-          ],
-          [
-            5.475,
-            3.9,
-            -4.2
+            9.6,
+            3.65,
+            -7.25
           ]
         ],
-        "method": "review-local",
-        "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
         "coverPaths": [],
-        "reviewRequired": true,
-        "length": 13.848,
+        "length": 2.3680000000000008,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
         "buildingDrawnDiameter": 0.006,
         "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -3077,12 +3065,12 @@
             7.36
           ],
           [
-            5.475000000000001,
+            9.25,
             5.908,
             7.36
           ]
         ],
-        "length": 73.4301303111792,
+        "length": 69.65513031117919,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
         "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "coverPaths": [
@@ -4757,7 +4745,7 @@
       },
       {
         "id": "drop:LC1:L2:light:1:L61",
-        "name": "L2 → Rear rows light · entrance façade · H",
+        "name": "L2 → Rear rows light · axis 3 side wall · H",
         "source": "LC1",
         "board": "DB1",
         "circuit": "L2",
@@ -4768,44 +4756,38 @@
         ],
         "trunkId": "trunk:LC1:L2:light:1",
         "color": "#dc9e29",
-        "upstreamLength": 73.4301303111792,
+        "upstreamLength": 69.65513031117919,
         "homeRun": false,
         "points": [
           [
-            5.475000000000001,
+            9.25,
             5.908,
             7.36
           ],
           [
-            5.475000000000001,
-            -0.44,
+            9.25,
+            3.65,
             7.36
           ],
           [
-            5.475,
-            -0.44,
-            4.2
-          ],
-          [
-            5.475,
-            3.45,
-            4.2
+            9.25,
+            3.65,
+            7.25
           ]
         ],
-        "method": "review-local",
-        "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
         "coverPaths": [],
-        "reviewRequired": true,
-        "length": 13.398000000000001,
+        "length": 2.3680000000000008,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
         "buildingDrawnDiameter": 0.006,
         "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
       },
       {
         "id": "drop:LC1:L2:light:1:L62",
-        "name": "L2 → Rear centre light · entrance façade · H",
+        "name": "L2 → Rear centre light · axis 3 side wall · H",
         "source": "LC1",
         "board": "DB1",
         "circuit": "L2",
@@ -4816,37 +4798,31 @@
         ],
         "trunkId": "trunk:LC1:L2:light:1",
         "color": "#dc9e29",
-        "upstreamLength": 73.4301303111792,
+        "upstreamLength": 69.3051303111792,
         "homeRun": false,
         "points": [
           [
-            5.475000000000001,
+            9.600000000000001,
             5.908,
             7.36
           ],
           [
-            5.475000000000001,
-            -0.44,
+            9.600000000000001,
+            3.65,
             7.36
           ],
           [
-            5.475,
-            -0.44,
-            4.2
-          ],
-          [
-            5.475,
-            3.9,
-            4.2
+            9.6,
+            3.65,
+            7.25
           ]
         ],
-        "method": "review-local",
-        "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
+        "method": "side-wall",
+        "installation": "Concealed solid-pier / wall drop and local termination.",
         "coverPaths": [],
-        "reviewRequired": true,
-        "length": 13.848,
+        "length": 2.3680000000000008,
         "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-        "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+        "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
         "drawnDiameter": 0.048,
         "buildingDrawnDiameter": 0.006,
         "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -39538,7 +39514,7 @@
       },
       {
         "id": "L59",
-        "name": "Rear rows light · entrance façade · B",
+        "name": "Rear rows light · axis 3 side wall · B",
         "type": "readingProjector",
         "product": "Reading projector · side bracket, finish-matched",
         "circuit": "L2",
@@ -39555,15 +39531,15 @@
         "specs": "6000 lm · 3000 K · 44° beam",
         "hiddenAlternative": false,
         "position": [
-          5.475,
-          3.45,
-          -4.2
+          9.25,
+          3.65,
+          -7.25
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       },
       {
         "id": "L60",
-        "name": "Rear centre light · entrance façade · B",
+        "name": "Rear centre light · axis 3 side wall · B",
         "type": "readingProjector",
         "product": "Reading projector · side bracket, finish-matched",
         "circuit": "L2",
@@ -39576,19 +39552,19 @@
         ],
         "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
         "diameter": null,
-        "wattsEstimate": 27.5,
-        "specs": "3300 lm · 3000 K · 50° beam",
+        "wattsEstimate": 50,
+        "specs": "6000 lm · 3000 K · 36° beam",
         "hiddenAlternative": false,
         "position": [
-          5.475,
-          3.9,
-          -4.2
+          9.6,
+          3.65,
+          -7.25
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       },
       {
         "id": "L61",
-        "name": "Rear rows light · entrance façade · H",
+        "name": "Rear rows light · axis 3 side wall · H",
         "type": "readingProjector",
         "product": "Reading projector · side bracket, finish-matched",
         "circuit": "L2",
@@ -39605,15 +39581,15 @@
         "specs": "6000 lm · 3000 K · 44° beam",
         "hiddenAlternative": false,
         "position": [
-          5.475,
-          3.45,
-          4.2
+          9.25,
+          3.65,
+          7.25
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       },
       {
         "id": "L62",
-        "name": "Rear centre light · entrance façade · H",
+        "name": "Rear centre light · axis 3 side wall · H",
         "type": "readingProjector",
         "product": "Reading projector · side bracket, finish-matched",
         "circuit": "L2",
@@ -39626,13 +39602,13 @@
         ],
         "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
         "diameter": null,
-        "wattsEstimate": 27.5,
-        "specs": "3300 lm · 3000 K · 50° beam",
+        "wattsEstimate": 50,
+        "specs": "6000 lm · 3000 K · 36° beam",
         "hiddenAlternative": false,
         "position": [
-          5.475,
-          3.9,
-          4.2
+          9.6,
+          3.65,
+          7.25
         ],
         "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
       },
@@ -48312,8 +48288,8 @@
           0.17219481006264686,
           0.12600000202655792
         ],
-        "specs": "3300 lm · 3000 K · 50° beam",
-        "wattsEachEstimate": 27.5,
+        "specs": "6000 lm · 3000 K · 36° beam",
+        "wattsEachEstimate": 50,
         "itemIds": [
           "L60",
           "L62"
@@ -54847,12 +54823,12 @@
               -7.36
             ],
             [
-              5.475000000000001,
+              9.25,
               5.908,
               -7.36
             ]
           ],
-          "length": 66.83013031117919,
+          "length": 63.05513031117919,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "coverPaths": [
@@ -56527,7 +56503,7 @@
         },
         {
           "id": "drop:LC1:L2:light:-1:L59",
-          "name": "L2 → Rear rows light · entrance façade · B",
+          "name": "L2 → Rear rows light · axis 3 side wall · B",
           "source": "LC1",
           "board": "DB1",
           "circuit": "L2",
@@ -56538,44 +56514,38 @@
           ],
           "trunkId": "trunk:LC1:L2:light:-1",
           "color": "#dc9e29",
-          "upstreamLength": 66.83013031117919,
+          "upstreamLength": 63.05513031117919,
           "homeRun": false,
           "points": [
             [
-              5.475000000000001,
+              9.25,
               5.908,
               -7.36
             ],
             [
-              5.475000000000001,
-              -0.44,
+              9.25,
+              3.65,
               -7.36
             ],
             [
-              5.475,
-              -0.44,
-              -4.2
-            ],
-            [
-              5.475,
-              3.45,
-              -4.2
+              9.25,
+              3.65,
+              -7.25
             ]
           ],
-          "method": "review-local",
-          "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
           "coverPaths": [],
-          "reviewRequired": true,
-          "length": 13.398000000000001,
+          "length": 2.3680000000000008,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
           "buildingDrawnDiameter": 0.006,
           "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
         },
         {
           "id": "drop:LC1:L2:light:-1:L60",
-          "name": "L2 → Rear centre light · entrance façade · B",
+          "name": "L2 → Rear centre light · axis 3 side wall · B",
           "source": "LC1",
           "board": "DB1",
           "circuit": "L2",
@@ -56586,37 +56556,31 @@
           ],
           "trunkId": "trunk:LC1:L2:light:-1",
           "color": "#dc9e29",
-          "upstreamLength": 66.83013031117919,
+          "upstreamLength": 62.70513031117919,
           "homeRun": false,
           "points": [
             [
-              5.475000000000001,
+              9.600000000000001,
               5.908,
               -7.36
             ],
             [
-              5.475000000000001,
-              -0.44,
+              9.600000000000001,
+              3.65,
               -7.36
             ],
             [
-              5.475,
-              -0.44,
-              -4.2
-            ],
-            [
-              5.475,
-              3.9,
-              -4.2
+              9.6,
+              3.65,
+              -7.25
             ]
           ],
-          "method": "review-local",
-          "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
           "coverPaths": [],
-          "reviewRequired": true,
-          "length": 13.848,
+          "length": 2.3680000000000008,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
           "buildingDrawnDiameter": 0.006,
           "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -56737,12 +56701,12 @@
               7.36
             ],
             [
-              5.475000000000001,
+              9.25,
               5.908,
               7.36
             ]
           ],
-          "length": 73.4301303111792,
+          "length": 69.65513031117919,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
           "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "coverPaths": [
@@ -58417,7 +58381,7 @@
         },
         {
           "id": "drop:LC1:L2:light:1:L61",
-          "name": "L2 → Rear rows light · entrance façade · H",
+          "name": "L2 → Rear rows light · axis 3 side wall · H",
           "source": "LC1",
           "board": "DB1",
           "circuit": "L2",
@@ -58428,44 +58392,38 @@
           ],
           "trunkId": "trunk:LC1:L2:light:1",
           "color": "#dc9e29",
-          "upstreamLength": 73.4301303111792,
+          "upstreamLength": 69.65513031117919,
           "homeRun": false,
           "points": [
             [
-              5.475000000000001,
+              9.25,
               5.908,
               7.36
             ],
             [
-              5.475000000000001,
-              -0.44,
+              9.25,
+              3.65,
               7.36
             ],
             [
-              5.475,
-              -0.44,
-              4.2
-            ],
-            [
-              5.475,
-              3.45,
-              4.2
+              9.25,
+              3.65,
+              7.25
             ]
           ],
-          "method": "review-local",
-          "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
           "coverPaths": [],
-          "reviewRequired": true,
-          "length": 13.398000000000001,
+          "length": 2.3680000000000008,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
           "buildingDrawnDiameter": 0.006,
           "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
         },
         {
           "id": "drop:LC1:L2:light:1:L62",
-          "name": "L2 → Rear centre light · entrance façade · H",
+          "name": "L2 → Rear centre light · axis 3 side wall · H",
           "source": "LC1",
           "board": "DB1",
           "circuit": "L2",
@@ -58476,37 +58434,31 @@
           ],
           "trunkId": "trunk:LC1:L2:light:1",
           "color": "#dc9e29",
-          "upstreamLength": 73.4301303111792,
+          "upstreamLength": 69.3051303111792,
           "homeRun": false,
           "points": [
             [
-              5.475000000000001,
+              9.600000000000001,
               5.908,
               7.36
             ],
             [
-              5.475000000000001,
-              -0.44,
+              9.600000000000001,
+              3.65,
               7.36
             ],
             [
-              5.475,
-              -0.44,
-              4.2
-            ],
-            [
-              5.475,
-              3.9,
-              4.2
+              9.6,
+              3.65,
+              7.25
             ]
           ],
-          "method": "review-local",
-          "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
+          "method": "side-wall",
+          "installation": "Concealed solid-pier / wall drop and local termination.",
           "coverPaths": [],
-          "reviewRequired": true,
-          "length": 13.848,
+          "length": 2.3680000000000008,
           "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-          "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+          "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
           "drawnDiameter": 0.048,
           "buildingDrawnDiameter": 0.006,
           "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -59215,7 +59167,7 @@
         },
         {
           "id": "L59",
-          "name": "Rear rows light · entrance façade · B",
+          "name": "Rear rows light · axis 3 side wall · B",
           "type": "readingProjector",
           "product": "Reading projector · side bracket, finish-matched",
           "circuit": "L2",
@@ -59232,15 +59184,15 @@
           "specs": "6000 lm · 3000 K · 44° beam",
           "hiddenAlternative": false,
           "position": [
-            5.475,
-            3.45,
-            -4.2
+            9.25,
+            3.65,
+            -7.25
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
         },
         {
           "id": "L60",
-          "name": "Rear centre light · entrance façade · B",
+          "name": "Rear centre light · axis 3 side wall · B",
           "type": "readingProjector",
           "product": "Reading projector · side bracket, finish-matched",
           "circuit": "L2",
@@ -59253,19 +59205,19 @@
           ],
           "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
           "diameter": null,
-          "wattsEstimate": 27.5,
-          "specs": "3300 lm · 3000 K · 50° beam",
+          "wattsEstimate": 50,
+          "specs": "6000 lm · 3000 K · 36° beam",
           "hiddenAlternative": false,
           "position": [
-            5.475,
-            3.9,
-            -4.2
+            9.6,
+            3.65,
+            -7.25
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
         },
         {
           "id": "L61",
-          "name": "Rear rows light · entrance façade · H",
+          "name": "Rear rows light · axis 3 side wall · H",
           "type": "readingProjector",
           "product": "Reading projector · side bracket, finish-matched",
           "circuit": "L2",
@@ -59282,15 +59234,15 @@
           "specs": "6000 lm · 3000 K · 44° beam",
           "hiddenAlternative": false,
           "position": [
-            5.475,
-            3.45,
-            4.2
+            9.25,
+            3.65,
+            7.25
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
         },
         {
           "id": "L62",
-          "name": "Rear centre light · entrance façade · H",
+          "name": "Rear centre light · axis 3 side wall · H",
           "type": "readingProjector",
           "product": "Reading projector · side bracket, finish-matched",
           "circuit": "L2",
@@ -59303,13 +59255,13 @@
           ],
           "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
           "diameter": null,
-          "wattsEstimate": 27.5,
-          "specs": "3300 lm · 3000 K · 50° beam",
+          "wattsEstimate": 50,
+          "specs": "6000 lm · 3000 K · 36° beam",
           "hiddenAlternative": false,
           "position": [
-            5.475,
-            3.9,
-            4.2
+            9.6,
+            3.65,
+            7.25
           ],
           "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
         }
@@ -103826,7 +103778,7 @@
       "hold": "No commissioning or construction approval is recorded here. Progress through these review steps does not release a hold or mark any work installed."
     }
   ],
-  "registerSystemsHash": "8e1e972ba7e4a5616af2538620f7be62b40030ad891eba3c767434630886d092",
+  "registerSystemsHash": "50d4b9583049f9c39c3676a63930c63402b3dcb2ca41210391b8abc40f1c8e73",
   "sections": {
     "basis": "Plane cuts through the default viewer meshes (walls, piers, columns, sanctuary and tower fabric). MODEL TRANSCRIPTION / DERIVED; not a measured survey.",
     "plan": {

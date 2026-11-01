@@ -1,5 +1,7 @@
 # Coordinated engineering issues and requests
 
+> **Rear side-wall lights, 2 November 2026:** Fixture attachment at axis 3, clearance, glare, cable entry and maintenance remain open. The modeled 21 mm pier clearance and uncalibrated book-plane results are not construction evidence. Lighting and electrical designers must review the [relocation record](../../review/rear-side-lights-2026-11-02/README.md).
+
 > **Entrance follow-up, 1 November 2026:** The inside-face main exit sign and its longer transom clip, entrance electronics and revised last row require architectural, electrical and fire review for leaf movement, route visibility, accessibility, support and emergency power. The visible clip and cabling are concept proxies; do not construct from the model.
 
 Status at the 8 October 2026 baseline: **open unless explicitly marked resolved**. The baseline documentation gate can close while these design gates remain open. Owners below name responsible disciplines; no person or approval is invented. Existing workbook/structural RFIs retain their original IDs and authority. This index links them rather than replacing them.

@@ -620,8 +620,10 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   // entrance-facing twins at ±2.48 m, on the inner side of the gilded band at ±2.60 m; side-beam pairs flank the cartouche.
   assert(reading.filter(it => / central/.test(it.name)).every(it => Math.abs(Math.abs(it.pos[2]) - (/ twin$/.test(it.name) ? 2.48 : 0.9)) < 1e-6), 'tie heads spread across the nave, twins beside the gilded band');
   assert(reading.filter(it => / outer/.test(it.name)).every(it => [4.84, 6.09].some(z => Math.abs(Math.abs(it.pos[2]) - z) < 1e-6)), 'side pairs flank the cartouche');
-  for (const it of SIM.state.items.filter(it => /^Rear (rows|centre) light · entrance façade ·/.test(it.name))) {
-    assert(it.type === 'readingProjector' && it.params.finish === 'wall', 'entrance-wall reading heads in the plaster finish: ' + it.name);
+  for (const it of SIM.state.items.filter(it => /^Rear (rows|centre) light · axis 3 side wall ·/.test(it.name))) {
+    assert(it.type === 'readingProjector' && it.params.finish === 'wall', 'side-wall reading heads in the plaster finish: ' + it.name);
+    const box = new T.Box3().setFromObject(SIM.fixtures.get(it.id).root);
+    assert(Math.abs(Math.abs(it.pos[2])-7.25)<1e-6 && box.max.x < SIM.GEO.axes['3']-0.29, 'side-wall head clears axis 3 pier: ' + it.name);
     SIM.fixtures.get(it.id).root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) assert.equal(m.material, wall, 'wall plaster: ' + it.name); });
   }
   // Wall speakers: on the masonry wall, tight against the entrance side of each pier, inside its projection.
