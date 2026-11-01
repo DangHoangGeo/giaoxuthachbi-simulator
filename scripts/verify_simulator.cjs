@@ -137,7 +137,7 @@ assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.i
 // axis-9/D column axis and its canopy meets the abacus, as it met the plain capital before.
 {
   const known = new Set(['Ambo key light|Column carving · capital bell']), contacts = new Map(), v = new T.Vector3();
-  const carved = nodes.filter(o => o.isMesh && /^(Column carving|Gilded column capital|Main tie beam|Side beam|Longitudinal column-line beam)/.test(o.name) && !/as drawn$|concept proxy$/.test(o.name));
+  const carved = nodes.filter(o => o.isMesh && /^(Column carving|Gilded column capital|Main tie beam|Side beam|Longitudinal column-line beam|Side vault)/.test(o.name) && !/as drawn$|concept proxy$/.test(o.name));
   building.updateMatrixWorld(true);
   const boxes = carved.map(o => new T.Box3().setFromObject(o));
   for (const fx of SIM.fixtures.values()) {
@@ -157,6 +157,20 @@ assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.i
   }
   const unexpected = [...contacts.keys()].filter(k => !known.has(k));
   assert.deepEqual(unexpected, [], 'carved ornament inside a fitting envelope: ' + unexpected.join('; '));
+  // The gilded side vaults (owner, 1 Nov 2026) start behind the shrine lights hung on the back face of the
+  // axis-10 frame (L115–L118): the axis of each beam, aimed as in design.js, runs under the boarding to its shrine.
+  {
+    const sx = sandbox.CHURCH_SANCTUARY.spec, boards = nodes.filter(o => o.isMesh && o.name === 'Side vault · gilded boarding'), ray = new T.Raycaster();
+    assert.equal(boards.length, 2);
+    const lights = SIM.state.items.filter(it => /^(Statue accent|Shrine wash) · [BH]$/.test(it.name));
+    assert.equal(lights.length, 4, 'four shrine lights behind the axis-10 frame');
+    for (const it of lights) {
+      const s = Math.sign(it.pos[2]), wash = it.name.startsWith('Shrine wash'), target = new T.Vector3(sx.wingX - 0.1 - (wash ? 0.2 : 0), wash ? 4.2 : sx.nicheBase + 1.25, s * sx.wingZ), from = new T.Vector3(...it.pos);
+      ray.set(from, target.clone().sub(from).normalize());
+      assert.equal(ray.intersectObjects(boards, false).length, 0, `${it.name}: beam axis clear of the side vault`);
+      assert(from.x < sx.sideVault.x0 - 0.5, `${it.name} hangs in front of the vault`);
+    }
+  }
 }
 assert.equal(church.walk.speed, 1.4, 'realistic walking speed');
 assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + church.walkCamera.fov.toFixed(1));

@@ -411,6 +411,30 @@ for(const o of walls){const b=bounds(o);assert(b.min.x>=frameX+.31&&b.max.x<=dat
 const vault=nodes.find(o=>o.name==='Chamber vault · gilded boarding'),lining=nodes.find(o=>o.name==='Chamber back lining · lacquered timber');
 assert(vault&&lining,'Chamber vault and back lining');
 assert(bounds(vault).min.y>=S.centralArch.spring-.001&&bounds(vault).max.y<12.1,'Vault springs at the arch and stays under the roof');
+// Owner, 1 Nov 2026: the gilded boarded vault continues over both side passages, from the axis-10 side arch back to the
+// axis-11 side arch above each shrine, on the outlines of those arches, under the roof lining and clear of every route.
+{
+  const V=S.sideVault,boards=nodes.filter(o=>o.isMesh&&o.name==='Side vault · gilded boarding'),roofY=sandbox.window.CHURCH_SANCTUARY.roofY;
+  assert.equal(boards.length,2,'One side vault over each passage');
+  assert.deepEqual(boards.map(o=>Math.sign(bounds(o).getCenter(new T.Vector3()).z)).sort(),[-1,1],'Side vaults on both sides');
+  assert.equal(nodes.filter(o=>o.name==='Side vault springing beam · lacquered timber').length,4,'A lacquered springing beam along each vault edge');
+  assert.equal(nodes.filter(o=>o.name==='Side vault rib · lacquered timber').length,8,'Four lacquered transverse ribs per vault');
+  assert.equal(nodes.filter(o=>o.name==='Side vault longitudinal rib').length,10,'Five lacquered longitudinal ribs per vault, as in the chamber vault');
+  assert(V.x0>=frameX+.3&&V.x0<=frameX+1.3,'Vault starts behind the frame, clear of the shrine lights hung on its back face');
+  assert(V.x1<=S.arch11.x-.15&&V.x1>S.arch11.x-.3,'Vault ends against the axis-11 side spandrel');
+  for(const o of boards){
+    const b=bounds(o),p=o.geometry.attributes.position,v=new T.Vector3();
+    assert.equal(o.material,vault.material,'Side vault boarding is the same gilded boarding as the chamber vault');
+    near(b.min.x,V.x0,'Side vault front edge');near(b.max.x,V.x1,'Side vault back edge');
+    assert(Math.min(Math.abs(b.min.z),Math.abs(b.max.z))>=3.75&&Math.max(Math.abs(b.min.z),Math.abs(b.max.z))<=7.25,'Side vault stays between the chamber lintel and the C/G wall');
+    assert(b.min.y>=S.arch11.spring-.1&&b.min.y>2.85+2.2,'Side vault springs high above the shrine shelf, the 2.2 m service doorways and every walking route');
+    let clear=1e9;for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i);clear=Math.min(clear,roofY(v.z)-v.y);}
+    assert(clear>=.4,'Side vault keeps 0.4 m under the roof lining: '+clear.toFixed(3));
+    // The crown follows the outline of the side arch at the front and of the axis-11 arch at the back.
+    const z=Math.sign(b.min.z+b.max.z)*S.wingZ,ray=new T.Raycaster(),crownAt=x=>{ray.set(new T.Vector3(x,3,z),new T.Vector3(0,1,0));const h=ray.intersectObject(o,false);return h.length?h[0].point.y:NaN;};
+    for(const x of [V.x0+.01,V.x1-.01]){const t=(x-frameX)/(S.arch11.x-frameX),want=S.sideArch.crown+(S.arch11.crown-S.sideArch.crown)*t+.04;assert(Math.abs(crownAt(x)-want)<.03,`Side vault soffit follows the arch outlines at x ${x.toFixed(2)}: ${crownAt(x)} vs ${want}`);}
+  }
+}
 const backWall=nodes.find(o=>o.name==='Sanctuary back wall behind the reredos');
 assert(bounds(lining).max.x<=bounds(backWall).min.x+.001,'Timber lining covers the plaster back wall');
 const cross=nodes.find(o=>o.name==='Proposed sanctuary crucifix upright');

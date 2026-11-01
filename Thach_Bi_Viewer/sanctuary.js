@@ -9,6 +9,13 @@
     centralArch:{half:3.3,spring:8.25,shoulder:9.38,crown:10.83}, sideArch:{half:1.575,spring:6.15,shoulder:6.75,crown:7.46},
     // Side arches of axis 11 round the shrines (bundle plaster arch, Z 3.85–7.11, spring +5.55).
     arch11:{x:48.34,z:5.48,half:1.55,spring:5.55,shoulder:6.3,crown:6.85},
+    // Gilded boarded vaults over the two side passages (owner, 1 Nov 2026): the vault of the chamber
+    // continues to both sides, on the outline of the axis-10 side arch at the front (x0 profile
+    // interpolated from spec.sideArch) and the axis-11 side arch at the back (x1, spec.arch11).
+    // x0 leaves 1.0 m behind the frame's back face clear for the shrine lights hung there
+    // (L115–L118, x 44.25–44.63, y 7.43–7.76, aimed 39° down at the shrines); x1 butts the lacquered spandrel of axis 11.
+    // CONCEPT visual proxy: it is not an occluder in the simulator, like the chamber vault.
+    sideVault:{x0:45.3,x1:48.16,thick:.09,status:'CONCEPT · gilded boarded vault over each side passage; boarding, ribs, springing beams and fixings pending'},
     chamber:{x0:44.49,x1:48.42,face:3.3,outer:3.75,top:9.45,lintel:7.0,serviceLining:0.04},
     // Crucifix niche: opens through the reredos and the back wall, 1.0 m deep, its blue wall and
     // the cross standing back on a base over the service room. `shell` is the plaster casing
@@ -451,6 +458,54 @@
     // and cresting from the lobed arch up to the roof lining, just in front of the plaster arch.
     const rear11=group('Axis-11 side arches · red lacquer and gilding',spec.arch11.x,0);
     for(const sign of [-1,1])lobedFrame(rear11,sign*spec.arch11.z,spec.arch11.half,spec.arch11,'Axis-11 side spandrel · lacquer and gilding',14);
+    // Gilded boarded vaults over the side passages (owner, 1 Nov 2026): the vault of the chamber
+    // continues out to Our Lady and Saint Joseph. Each is lofted between the outline of the axis-10
+    // side arch and that of the axis-11 side arch above the shrine, so its outline follows both
+    // arches, with the same boarding, lacquered ribs and gilded bosses as the chamber vault.
+    // Display proxy, world axes (not the rotated frame group).
+    {
+      const V=spec.sideVault,g=new T.Group();g.name='Side vaults · gilded boarding over the shrine passages';root.add(g);
+      const profile=x=>{
+        const t=(x-spec.frameX)/(spec.arch11.x-spec.frameX),L=k=>S[k]+(spec.arch11[k]-S[k])*t,a={spring:L('spring'),shoulder:L('shoulder'),crown:L('crown')},cx=spec.wingZ+(spec.arch11.z-spec.wingZ)*t,half=L('half');
+        return {inner:lobed(cx,half,a).getPoints(12),outer:lobed(cx,half+.08,{spring:a.spring,shoulder:a.shoulder+V.thick,crown:a.crown+V.thick}).getPoints(12)};
+      };
+      const steps=8,xs=Array.from({length:steps+1},(_,i)=>V.x0+(V.x1-V.x0)*i/steps),rows=xs.map(profile);
+      for(const sign of [-1,1]){
+        const P=(x,p,dy=0)=>new T.Vector3(x,p.y+dy,sign*p.x),positions=[];
+        // A quad a-b-c-d, wound so that its face looks along `want` (the shell's own outside).
+        const quad=(a,b,c,d,want)=>{
+          const n=new T.Vector3().subVectors(c,a).cross(new T.Vector3().subVectors(d,b)),m=a.clone().add(c).multiplyScalar(.5);
+          if(n.dot(want(m))<0)[b,d]=[d,b];
+          positions.push(a,b,c,a,c,d);
+        };
+        const below=m=>new T.Vector3(0,3,sign*spec.wingZ).sub(m),above=m=>below(m).negate(),down=()=>new T.Vector3(0,-1,0);
+        for(let i=0;i<steps;i++){
+          const A0=rows[i],A1=rows[i+1],x0=xs[i],x1=xs[i+1],m=A0.inner.length;
+          for(let k=0;k<m-1;k++){
+            quad(P(x0,A0.inner[k]),P(x1,A1.inner[k]),P(x1,A1.inner[k+1]),P(x0,A0.inner[k+1]),below);
+            quad(P(x0,A0.outer[k]),P(x1,A1.outer[k]),P(x1,A1.outer[k+1]),P(x0,A0.outer[k+1]),above);
+          }
+          for(const k of [0,m-1])quad(P(x0,A0.inner[k]),P(x1,A1.inner[k]),P(x1,A1.outer[k]),P(x0,A0.outer[k]),down);
+        }
+        for(const [i,dir] of [[0,-1],[steps,1]]){
+          const R=rows[i],x=xs[i];
+          for(let k=0;k<R.inner.length-1;k++)quad(P(x,R.inner[k]),P(x,R.inner[k+1]),P(x,R.outer[k+1]),P(x,R.outer[k]),()=>new T.Vector3(dir,0,0));
+        }
+        const geometry=new T.BufferGeometry().setFromPoints(positions);geometry.computeVertexNormals();
+        const board=mesh(geometry,leafGold,g,'Side vault · gilded boarding');
+        board.userData={status:V.status,engineeringApproved:false,source:'Owner request 1 Nov 2026; docs/sanctuary-model.md'};
+        // Springing beams along both edges, where the vault would rest on the corbels of the two arches.
+        for(const e of [0,rows[0].inner.length-1])line(g,xs.map((x,i)=>{const p=rows[i].inner[e];return [x,p.y-.05,sign*p.x];}),.07,wood,'Side vault springing beam · lacquered timber');
+        // Transverse ribs at both ends and at two stations between, and longitudinal ribs on the
+        // same fractions of the profile as the chamber vault, with a gilded boss at each crossing.
+        const stations=[0,3,5,steps],paths=rows.map(R=>new T.CatmullRomCurve3(R.inner.map(p=>new T.Vector3(p.x,p.y,0))));
+        for(const i of stations)line(g,rows[i].inner.map(p=>[xs[i],p.y-.02,sign*p.x]),.065,wood,'Side vault rib · lacquered timber');
+        for(const t of [.14,.32,.5,.68,.86]){
+          line(g,paths.map((c,i)=>{const p=c.getPoint(t);return [xs[i],p.y-.03,sign*p.x];}),.045,wood,'Side vault longitudinal rib');
+          for(const i of stations){const p=paths[i].getPoint(t);mesh(leafGeometry,gold,g,'Gilded vault boss',xs[i],p.y-.07,sign*p.x).scale.setScalar(.12);}
+        }
+      }
+    }
     // The bundle's dais ran the full 7.20 m between the column lines and was reached by five
     // full-width steps from x 38.2. It is replaced by the CAD outline (spec.floor).
     function rebuildFloor(){
