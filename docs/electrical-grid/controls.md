@@ -58,6 +58,7 @@ Interior lighting is switched by area ([meeting record](../engineering/parish-me
 | L1 | Nave · 3 front bays (6–9) | Reading heads lighting bays 6–7, 7–8, 8–9 and the front of the dais |
 | L2 | Nave · 4 rear bays (2′–6) | Reading heads lighting bays 2′–3 to 5–6 and the four entrance-wall lights; can stay off or dimmed at ordinary Masses |
 | LA | Ceiling uplight (*hắt trần*) | Seven roof uplights on the tie beams, on their own switch |
+| L8 | Wings · choir & ministers | Eight roof downlights over the wing benches, four per side (`L-WING-…`; the wing chandeliers L63/L65/L67/L69 were retired on 1 November 2026). Switch and scene levels unchanged |
 | LD | Wall sconces | Column and sanctuary-pier sconces (the three nave chandeliers are removed) |
 | LS | Stations of the Cross | 28 candles |
 

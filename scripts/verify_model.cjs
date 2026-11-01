@@ -267,7 +267,29 @@ for(const b of batches.values())for(const m of b.children){batchCount++;triangle
 const ray=new T.Raycaster(new T.Vector3(-10,2,.5),new T.Vector3(1,0,0));
 const hits=ray.intersectObjects(nodes.filter(o=>o.isMesh),false);
 assert(!hits.some(h=>h.object.name==='Source-width centre entry facade'),'Facade must not fill the main door opening');
-assert(hits.some(h=>h.object.name==='Open timber door leaf'&&h.point.x<3),'Closed main door must be in the entry opening');
+// Parish priest, 25 Oct 2026: the doors stand on the towers' rear pier line (facade.js).
+{
+  const EN=sandbox.window.CHURCH_FACADE.spec.entrance;
+  assert(hits.some(h=>h.object.name==='Open timber door leaf'&&h.point.x>EN.wall[0]-.1&&h.point.x<EN.wall[1]+.1),'Closed main door stands in the door wall on the rear pier line');
+  assert(!hits.some(h=>h.object.name==='Open timber door leaf'&&h.point.x<3),'No door leaf left in the front arch');
+  assert(nodes.some(o=>o.name==='Entrance door wall · rear pier line')&&EN.openings.length===3&&EN.moved>=9,'door wall with three doorways; leaves, fanlights and transoms moved');
+  for(const o of nodes.filter(o=>o.name==='Entrance door coloured oval'))assert(bounds(o).min.x>EN.wall[0]-.1,'fanlight moved with its door');
+  const doorWall=nodes.filter(o=>o.name==='Entrance door wall · rear pier line');
+  for(const o of EN.openings)for(const y of [.5,2]){const r=new T.Raycaster(new T.Vector3(3,y,(o.z0+o.z1)/2),new T.Vector3(1,0,0),0,3);assert(!r.intersectObjects(doorWall,false).length,'doorway open through the door wall at z '+((o.z0+o.z1)/2).toFixed(2));}
+  assert(realism.walkAllowed((EN.wall[0]+EN.wall[1])/2,0)===true&&realism.walkAllowed((EN.wall[0]+EN.wall[1])/2,3)===false,'walk through the doorways only');
+  // Owner, 1 Nov 2026: the doors on the axis-2 line (plan P05 X 5.035–5.475), and the front steps and
+  // pier bases of section A-A with no gap between them.
+  assert(Math.abs(EN.wall[0]-5.035)<1e-6&&Math.abs(EN.wall[1]-5.475)<1e-6,'door wall on the axis-2 line, X 5.035–5.475');
+  const ST=sandbox.window.CHURCH_FACADE.spec.ground.steps;
+  const steps=nodes.filter(o=>o.name==='Entrance step · CAD section A-A').map(bounds).sort((a,b)=>a.max.y-b.max.y);
+  assert(!nodes.some(o=>o.name.startsWith('Entrance threshold step')),'old 0.12 m entrance steps removed');
+  assert(steps.length===3&&steps.every((b,i)=>Math.abs(b.max.y-(-.32+.16*i))<.002&&Math.abs(b.min.x-ST.risers[i])<.002),'three 0.16 m entrance risers at X 1.321, 1.551, 1.781');
+  for(const [x,y] of [[1.2,-.48],[1.4,-.32],[1.6,-.16],[1.9,0]])assert(Math.abs(realism.floorHeight(x,0)-y)<.002,`entrance floor ${y} at x ${x}`);
+  const plinths=nodes.filter(o=>o.name==='Central ground pier plinth course').map(bounds);
+  assert(plinths.length&&plinths.every(b=>Math.abs(b.min.y+.48)<.002&&b.max.y>-.002),'central pier bases run down to the −0.48 forecourt');
+  const footing=nodes.filter(o=>o.name==='Tower plinth').map(bounds);
+  assert(footing.length===2&&footing.every(b=>Math.abs(b.min.x+.984)<.002),'tower plinth flush with the corner-pier plinth at X −0.984');
+}
 for(const sign of [-1,1]) {
   const sideRay=new T.Raycaster(new T.Vector3(16.725,1.8,sign*18),new T.Vector3(0,0,-sign));
   assert(!sideRay.intersectObjects(bays.flatMap(g=>g.children).filter(o=>o.isMesh&&o.name==='Outer arcade wall with arched openings'),false).some(h=>Math.abs(h.point.z)>10),'Outer wall must leave side doorway clear');
@@ -367,8 +389,35 @@ assert.equal(rafterLines.length,14,'Gilded line under each nave rafter (axes 3�
 for(const line of rafterLines){
   const c=bounds(line).getCenter(new T.Vector3()),rafter=rafters.find(o=>Math.abs(o.position.x-c.x)<.01&&Math.sign(o.position.z)===Math.sign(c.z));
   assert(rafter&&c.x<frameX-.5,'Rafter line belongs to a nave rafter');
-  // 0.104 m from the rafter centre line along the soffit normal: lower, and towards the nave axis.
-  near(c.distanceTo(rafter.position),.104,'Rafter line lies on the soffit');assert(c.y<rafter.position.y&&Math.abs(c.z)<Math.abs(rafter.position.z),'Rafter line is on the underside');
+  // Half the rafter depth plus 4 mm from the rafter centre line along the soffit normal: lower, and towards the nave axis.
+  near(c.distanceTo(rafter.position),rafter.geometry.parameters.depth/2+.004,'Rafter line lies on the soffit');assert(c.y<rafter.position.y&&Math.abs(c.z)<Math.abs(rafter.position.z),'Rafter line is on the underside');
+}
+// Owner request, 1 November 2026: heavier roof timbers. Visualization-proxy sections (ENGINEERING HOLD); they grow downward
+// from the unmoved lining, never through it. The sections are the minimum the model must keep.
+{
+  const RT=sandbox.window.CHURCH_SANCTUARY.spec.roofTimber,lining=z=>12.282-.7258*Math.abs(z);
+  assert(RT&&RT.revision,'Roof timber sections are declared in the sanctuary spec');
+  assert(RT.rafter.w>=.25&&RT.rafter.d>=.32&&RT.rafter.w>=1.4*RT.rafter.before.w&&RT.rafter.d>=1.6*RT.rafter.before.d,'Principal rafters are visibly heavier than 0.17 × 0.20 m');
+  assert.equal(rafters.filter(o=>o.position.x<frameX-.5).length,14,'Fourteen nave rafters (axes 3–9, both slopes)');
+  for(const o of rafters.filter(o=>o.position.x>=frameX-.5)){const p=o.geometry.parameters;assert(Math.abs(p.width-.17)<1e-9&&Math.abs(p.depth-.20)<1e-9,'Rafters behind the nave (axes 10–11) keep 0.17 × 0.20 m');}
+  for(const o of rafters.filter(o=>o.position.x<frameX-.5)){
+    const p=o.geometry.parameters;assert(p.width>=.25&&p.depth>=.32,`Rafter section ${p.width} × ${p.depth} m at x ${o.position.x}`);
+    assert(o.userData.proxyBefore&&Math.abs(o.userData.proxyBefore.parameters.depth-.20)<1e-9,'Rafter keeps its earlier section on record');
+    // Upper face centre stays on the lining (earlier proxy: 0.0235 m above it, vertically); the growth is below.
+    const down=new T.Vector3(0,0,Math.sign(o.rotation.x)).applyQuaternion(o.quaternion),top=o.position.clone().addScaledVector(down,-p.depth/2);
+    const rise=top.y-lining(top.z);assert(rise>0&&rise<.03,`Rafter upper face stays at the lining (${rise.toFixed(4)} m) at x ${o.position.x}`);
+  }
+  const ridgeMember=named('Proposed underside ridge member')[0],rb=bounds(ridgeMember);
+  assert(rb.max.y-rb.min.y>=.27&&rb.max.z-rb.min.z>=.29,`Ridge member ${(rb.max.z-rb.min.z).toFixed(3)} wide × ${(rb.max.y-rb.min.y).toFixed(3)} deep`);
+  assert(Math.abs(rb.max.y-12.23)<.002&&rb.max.y<lining(0),'Ridge member grows downward from its earlier top face and stays under the lining');
+  for(const [name,count,w,d] of [['Proposed truss king post',7,.17,.21],['Proposed roof truss diagonal',14,.16,.19],['Proposed timber knee brace',14,.21,.25]]){
+    const list=named(name);assert.equal(list.length,count,name);for(const o of list){const p=o.geometry.parameters;assert(p.width>=w&&p.depth>=d,`${name} section ${p.width} × ${p.depth} m`);}
+  }
+  for(const name of ['Proposed longitudinal roof purlin','Proposed purlin before roof valley','Proposed purlin beyond roof valley'])for(const o of named(name)){
+    const p=o.geometry.parameters;assert(p.width>=.16&&p.depth>=.13,`${name} section ${p.width} × ${p.depth} m`);
+    const ob=bounds(o);assert(ob.max.y<lining(o.position.z)+.001,`${name} stays under the lining`);
+  }
+  for(const o of named('Timber knee brace · proposed section'))assert(o.geometry.parameters.radiusTop>=.1,'Knee brace rod radius');
 }
 const ridgeLine=named('Gilded ridge soffit line')[0],ridgeBox=bounds(named('Proposed underside ridge member')[0]);
 assert(ridgeLine,'Gilded ridge line');
@@ -411,6 +460,30 @@ for(const o of walls){const b=bounds(o);assert(b.min.x>=frameX+.31&&b.max.x<=dat
 const vault=nodes.find(o=>o.name==='Chamber vault · gilded boarding'),lining=nodes.find(o=>o.name==='Chamber back lining · lacquered timber');
 assert(vault&&lining,'Chamber vault and back lining');
 assert(bounds(vault).min.y>=S.centralArch.spring-.001&&bounds(vault).max.y<12.1,'Vault springs at the arch and stays under the roof');
+// Owner, 1 Nov 2026: the gilded boarded vault continues over both side passages, from the axis-10 side arch back to the
+// axis-11 side arch above each shrine, on the outlines of those arches, under the roof lining and clear of every route.
+{
+  const V=S.sideVault,boards=nodes.filter(o=>o.isMesh&&o.name==='Side vault · gilded boarding'),roofY=sandbox.window.CHURCH_SANCTUARY.roofY;
+  assert.equal(boards.length,2,'One side vault over each passage');
+  assert.deepEqual(boards.map(o=>Math.sign(bounds(o).getCenter(new T.Vector3()).z)).sort(),[-1,1],'Side vaults on both sides');
+  assert.equal(nodes.filter(o=>o.name==='Side vault springing beam · lacquered timber').length,4,'A lacquered springing beam along each vault edge');
+  assert.equal(nodes.filter(o=>o.name==='Side vault rib · lacquered timber').length,8,'Four lacquered transverse ribs per vault');
+  assert.equal(nodes.filter(o=>o.name==='Side vault longitudinal rib').length,10,'Five lacquered longitudinal ribs per vault, as in the chamber vault');
+  assert(V.x0>=frameX+.3&&V.x0<=frameX+1.3,'Vault starts behind the frame, clear of the shrine lights hung on its back face');
+  assert(V.x1<=S.arch11.x-.15&&V.x1>S.arch11.x-.3,'Vault ends against the axis-11 side spandrel');
+  for(const o of boards){
+    const b=bounds(o),p=o.geometry.attributes.position,v=new T.Vector3();
+    assert.equal(o.material,vault.material,'Side vault boarding is the same gilded boarding as the chamber vault');
+    near(b.min.x,V.x0,'Side vault front edge');near(b.max.x,V.x1,'Side vault back edge');
+    assert(Math.min(Math.abs(b.min.z),Math.abs(b.max.z))>=3.75&&Math.max(Math.abs(b.min.z),Math.abs(b.max.z))<=7.25,'Side vault stays between the chamber lintel and the C/G wall');
+    assert(b.min.y>=S.arch11.spring-.1&&b.min.y>2.85+2.2,'Side vault springs high above the shrine shelf, the 2.2 m service doorways and every walking route');
+    let clear=1e9;for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i);clear=Math.min(clear,roofY(v.z)-v.y);}
+    assert(clear>=.4,'Side vault keeps 0.4 m under the roof lining: '+clear.toFixed(3));
+    // The crown follows the outline of the side arch at the front and of the axis-11 arch at the back.
+    const z=Math.sign(b.min.z+b.max.z)*S.wingZ,ray=new T.Raycaster(),crownAt=x=>{ray.set(new T.Vector3(x,3,z),new T.Vector3(0,1,0));const h=ray.intersectObject(o,false);return h.length?h[0].point.y:NaN;};
+    for(const x of [V.x0+.01,V.x1-.01]){const t=(x-frameX)/(S.arch11.x-frameX),want=S.sideArch.crown+(S.arch11.crown-S.sideArch.crown)*t+.04;assert(Math.abs(crownAt(x)-want)<.03,`Side vault soffit follows the arch outlines at x ${x.toFixed(2)}: ${crownAt(x)} vs ${want}`);}
+  }
+}
 const backWall=nodes.find(o=>o.name==='Sanctuary back wall behind the reredos');
 assert(bounds(lining).max.x<=bounds(backWall).min.x+.001,'Timber lining covers the plaster back wall');
 const cross=nodes.find(o=>o.name==='Proposed sanctuary crucifix upright');

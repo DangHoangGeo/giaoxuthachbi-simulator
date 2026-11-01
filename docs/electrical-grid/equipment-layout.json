@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-10-31T16:19:36.678Z",
+  "savedAt": "2026-11-01T02:48:13.779Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -53,8 +53,9 @@
     "fanBeamRevision": "2026-10-19-fans-on-column-beams-1",
     "daisLevelRevision": "2026-10-24-dais-0-80-1",
     "facadeCadRevision": "2026-10-24-cad-facade-1",
-    "parishMeetingRevision": "2026-10-25-parish-meeting-6",
+    "parishMeetingRevision": "2026-10-25-parish-meeting-7",
     "towerPierRevision": "2026-10-31-tower-pier-depth-2",
+    "naveWingLightingRevision": "2026-11-01-nave-wing-lighting-1",
     "eveningExposureRevision": "2026-10-09-evening-160",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
@@ -114,10 +115,10 @@
       "pos": [
         10.125,
         8.77,
-        -2.48
+        -0.9
       ],
-      "yaw": -15.041994761460185,
-      "tilt": -86.60316289929806,
+      "yaw": -12.622877829714296,
+      "tilt": -86.6382178499512,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -127,7 +128,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -139,10 +140,10 @@
       "pos": [
         10.125,
         8.77,
-        -2.72
+        -2.48
       ],
-      "yaw": 174.84369500023269,
-      "tilt": -80.27393729415091,
+      "yaw": 176.5573020938274,
+      "tilt": -80.29536789218335,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -164,10 +165,10 @@
       "pos": [
         10.125,
         8.77,
-        2.48
+        0.9
       ],
-      "yaw": 15.041994761460185,
-      "tilt": -86.60316289929806,
+      "yaw": 12.622877829714296,
+      "tilt": -86.6382178499512,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -177,7 +178,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -189,10 +190,10 @@
       "pos": [
         10.125,
         8.77,
-        2.72
+        2.48
       ],
-      "yaw": -174.84369500023269,
-      "tilt": -80.27393729415091,
+      "yaw": -176.5573020938274,
+      "tilt": -80.29536789218335,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -214,10 +215,10 @@
       "pos": [
         14.625,
         8.77,
-        -2.48
+        -0.9
       ],
-      "yaw": -15.041994761460185,
-      "tilt": -86.60316289929806,
+      "yaw": -12.622877829714296,
+      "tilt": -86.6382178499512,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -227,7 +228,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -239,10 +240,10 @@
       "pos": [
         14.625,
         8.77,
-        -2.72
+        -2.48
       ],
-      "yaw": 172.54082664918025,
-      "tilt": -83.23294264023096,
+      "yaw": 175.01157472464428,
+      "tilt": -83.26440422811943,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -252,7 +253,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 28,
       "shadow": false
     },
     {
@@ -264,10 +265,10 @@
       "pos": [
         14.625,
         8.77,
-        2.48
+        0.9
       ],
-      "yaw": 15.041994761460185,
-      "tilt": -86.60316289929806,
+      "yaw": 12.622877829714296,
+      "tilt": -86.6382178499512,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -277,7 +278,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -289,10 +290,10 @@
       "pos": [
         14.625,
         8.77,
-        2.72
+        2.48
       ],
-      "yaw": -172.54082664918025,
-      "tilt": -83.23294264023096,
+      "yaw": -175.01157472464428,
+      "tilt": -83.26440422811943,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -302,7 +303,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 28,
       "shadow": false
     },
     {
@@ -314,10 +315,10 @@
       "pos": [
         19.125,
         8.77,
-        -2.48
+        -0.9
       ],
-      "yaw": -15.041994761460126,
-      "tilt": -86.60316289929806,
+      "yaw": -12.622877829714248,
+      "tilt": -86.63821784995119,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -327,7 +328,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -339,10 +340,10 @@
       "pos": [
         19.125,
         8.77,
-        -2.72
+        -2.48
       ],
-      "yaw": 172.54082664918022,
-      "tilt": -83.23294264023096,
+      "yaw": 175.01157472464428,
+      "tilt": -83.26440422811943,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -352,7 +353,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 28,
       "shadow": false
     },
     {
@@ -364,10 +365,10 @@
       "pos": [
         19.125,
         8.77,
-        2.48
+        0.9
       ],
-      "yaw": 15.041994761460126,
-      "tilt": -86.60316289929806,
+      "yaw": 12.622877829714248,
+      "tilt": -86.63821784995119,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -377,7 +378,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -389,10 +390,10 @@
       "pos": [
         19.125,
         8.77,
-        2.72
+        2.48
       ],
-      "yaw": -172.54082664918022,
-      "tilt": -83.23294264023096,
+      "yaw": -175.01157472464428,
+      "tilt": -83.26440422811943,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -402,7 +403,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 28,
       "shadow": false
     },
     {
@@ -414,10 +415,10 @@
       "pos": [
         23.625,
         8.77,
-        -2.48
+        -0.9
       ],
-      "yaw": -15.041994761460126,
-      "tilt": -86.60316289929806,
+      "yaw": -12.622877829714248,
+      "tilt": -86.63821784995119,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -427,7 +428,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -439,10 +440,10 @@
       "pos": [
         23.625,
         8.77,
-        -2.72
+        -2.48
       ],
-      "yaw": 172.54082664918022,
-      "tilt": -83.23294264023096,
+      "yaw": 175.01157472464428,
+      "tilt": -83.26440422811943,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -452,7 +453,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 28,
       "shadow": false
     },
     {
@@ -464,10 +465,10 @@
       "pos": [
         23.625,
         8.77,
-        2.48
+        0.9
       ],
-      "yaw": 15.041994761460126,
-      "tilt": -86.60316289929806,
+      "yaw": 12.622877829714248,
+      "tilt": -86.63821784995119,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -477,7 +478,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -489,10 +490,10 @@
       "pos": [
         23.625,
         8.77,
-        2.72
+        2.48
       ],
-      "yaw": -172.54082664918022,
-      "tilt": -83.23294264023096,
+      "yaw": -175.01157472464428,
+      "tilt": -83.26440422811943,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -502,7 +503,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 28,
       "shadow": false
     },
     {
@@ -514,10 +515,10 @@
       "pos": [
         28.125,
         8.77,
-        -2.48
+        -0.9
       ],
-      "yaw": -15.041994761460126,
-      "tilt": -86.60316289929806,
+      "yaw": -12.622877829714248,
+      "tilt": -86.63821784995119,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -527,7 +528,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -539,10 +540,10 @@
       "pos": [
         28.125,
         8.77,
-        -2.72
+        -2.48
       ],
-      "yaw": 172.54082664918022,
-      "tilt": -83.23294264023096,
+      "yaw": 175.01157472464428,
+      "tilt": -83.26440422811943,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -552,7 +553,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 28,
       "shadow": false
     },
     {
@@ -564,10 +565,10 @@
       "pos": [
         28.125,
         8.77,
-        2.48
+        0.9
       ],
-      "yaw": 15.041994761460126,
-      "tilt": -86.60316289929806,
+      "yaw": 12.622877829714248,
+      "tilt": -86.63821784995119,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -577,7 +578,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -589,10 +590,10 @@
       "pos": [
         28.125,
         8.77,
-        2.72
+        2.48
       ],
-      "yaw": -172.54082664918022,
-      "tilt": -83.23294264023096,
+      "yaw": -175.01157472464428,
+      "tilt": -83.26440422811943,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -602,7 +603,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 28,
       "shadow": false
     },
     {
@@ -614,10 +615,10 @@
       "pos": [
         32.625,
         8.77,
-        -2.48
+        -0.9
       ],
-      "yaw": -15.041994761460126,
-      "tilt": -86.60316289929806,
+      "yaw": -12.622877829714248,
+      "tilt": -86.63821784995119,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -627,7 +628,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -639,10 +640,10 @@
       "pos": [
         32.625,
         8.77,
-        -2.72
+        -2.48
       ],
-      "yaw": 172.54082664918022,
-      "tilt": -83.23294264023096,
+      "yaw": 175.01157472464428,
+      "tilt": -83.26440422811943,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -652,7 +653,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 28,
       "shadow": false
     },
     {
@@ -664,10 +665,10 @@
       "pos": [
         32.625,
         8.77,
-        2.48
+        0.9
       ],
-      "yaw": 15.041994761460126,
-      "tilt": -86.60316289929806,
+      "yaw": 12.622877829714248,
+      "tilt": -86.63821784995119,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -677,7 +678,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -689,10 +690,10 @@
       "pos": [
         32.625,
         8.77,
-        2.72
+        2.48
       ],
-      "yaw": -172.54082664918022,
-      "tilt": -83.23294264023096,
+      "yaw": -175.01157472464428,
+      "tilt": -83.26440422811943,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -702,7 +703,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 28,
       "shadow": false
     },
     {
@@ -714,10 +715,10 @@
       "pos": [
         37.125,
         8.77,
-        -2.48
+        -0.9
       ],
-      "yaw": -7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": -6.633943476428958,
+      "tilt": -83.65942151447896,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -727,7 +728,7 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 28,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -739,35 +740,10 @@
       "pos": [
         37.125,
         8.77,
-        -2.72
+        -2.48
       ],
-      "yaw": 172.54082664918022,
-      "tilt": -83.23294264023096,
-      "mountYaw": 0,
-      "anchorY": 8.59,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "finish": "timber"
-      },
-      "lumens": 2300,
-      "beam": 24,
-      "shadow": false
-    },
-    {
-      "id": "L29",
-      "type": "readingProjector",
-      "name": "Reading light · axis 9 · H central",
-      "circuit": "L1",
-      "mount": "wall",
-      "pos": [
-        37.125,
-        8.77,
-        2.48
-      ],
-      "yaw": 7.945176436186331,
-      "tilt": -83.64098388891634,
+      "yaw": 175.01157472464428,
+      "tilt": -83.26440422811943,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -781,18 +757,18 @@
       "shadow": false
     },
     {
-      "id": "L30",
+      "id": "L29",
       "type": "readingProjector",
-      "name": "Reading light · axis 9 · H central · twin",
+      "name": "Reading light · axis 9 · H central",
       "circuit": "L1",
       "mount": "wall",
       "pos": [
         37.125,
         8.77,
-        2.72
+        0.9
       ],
-      "yaw": -172.54082664918022,
-      "tilt": -83.23294264023096,
+      "yaw": 6.633943476428958,
+      "tilt": -83.65942151447896,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -802,7 +778,32 @@
         "finish": "timber"
       },
       "lumens": 2300,
-      "beam": 24,
+      "beam": 36,
+      "shadow": false
+    },
+    {
+      "id": "L30",
+      "type": "readingProjector",
+      "name": "Reading light · axis 9 · H central · twin",
+      "circuit": "L1",
+      "mount": "wall",
+      "pos": [
+        37.125,
+        8.77,
+        2.48
+      ],
+      "yaw": -175.01157472464428,
+      "tilt": -83.26440422811943,
+      "mountYaw": 0,
+      "anchorY": 8.59,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "finish": "timber"
+      },
+      "lumens": 2300,
+      "beam": 28,
       "shadow": false
     },
     {
@@ -1512,12 +1513,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        2.65,
+        5.475,
         3.45,
         -4.2
       ],
-      "yaw": -8.202354244625583,
-      "tilt": -25.295093017219816,
+      "yaw": -39.73230287195575,
+      "tilt": -46.6326316163316,
       "mountYaw": 0,
       "on": true,
       "hidden": false,
@@ -1536,12 +1537,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        2.65,
-        5.95,
+        5.475,
+        3.9,
         -4.2
       ],
-      "yaw": 40.200163886095304,
-      "tilt": -47.93390762227523,
+      "yaw": 35.14554549970607,
+      "tilt": -39.0472654521878,
       "mountYaw": 0,
       "on": true,
       "hidden": false,
@@ -1560,12 +1561,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        2.65,
+        5.475,
         3.45,
         4.2
       ],
-      "yaw": 8.202354244625583,
-      "tilt": -25.295093017219816,
+      "yaw": 39.73230287195575,
+      "tilt": -46.6326316163316,
       "mountYaw": 0,
       "on": true,
       "hidden": false,
@@ -1584,12 +1585,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        2.65,
-        5.95,
+        5.475,
+        3.9,
         4.2
       ],
-      "yaw": -40.200163886095304,
-      "tilt": -47.93390762227523,
+      "yaw": -35.14554549970607,
+      "tilt": -39.0472654521878,
       "mountYaw": 0,
       "on": true,
       "hidden": false,
@@ -1599,106 +1600,6 @@
       },
       "lumens": 3300,
       "beam": 50,
-      "shadow": false
-    },
-    {
-      "id": "L63",
-      "type": "chandelier6Reading",
-      "name": "Wing light · B · front block · back rows",
-      "circuit": "L8",
-      "mount": "pendant",
-      "pos": [
-        38.94,
-        3.8,
-        -10.15
-      ],
-      "yaw": 0,
-      "tilt": -90,
-      "mountYaw": 0,
-      "anchorY": 8.115059999999996,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "note": "HELD two-light wing concept: unchanged 5640 lm/51 W assembly. Some wing book points remain below200 lux. Photometry, glare, thermal design, support and maintenance pending. See docs/engineering/wing-r",
-      "lumens": 5640,
-      "cct": 2700,
-      "beam": 100,
-      "shadow": false
-    },
-    {
-      "id": "L65",
-      "type": "chandelier6Reading",
-      "name": "Wing light · B · rear block · back rows",
-      "circuit": "L8",
-      "mount": "pendant",
-      "pos": [
-        42.22,
-        3.8,
-        -10.15
-      ],
-      "yaw": 0,
-      "tilt": -90,
-      "mountYaw": 0,
-      "anchorY": 8.083580000000003,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "note": "HELD two-light wing concept: unchanged 5640 lm/51 W assembly. Some wing book points remain below200 lux. Photometry, glare, thermal design, support and maintenance pending. See docs/engineering/wing-r",
-      "lumens": 5640,
-      "cct": 2700,
-      "beam": 100,
-      "shadow": false
-    },
-    {
-      "id": "L67",
-      "type": "chandelier6Reading",
-      "name": "Wing light · H · front block · back rows",
-      "circuit": "L8",
-      "mount": "pendant",
-      "pos": [
-        38.94,
-        3.8,
-        10.15
-      ],
-      "yaw": 0,
-      "tilt": -90,
-      "mountYaw": 0,
-      "anchorY": 8.115059999999996,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "note": "HELD two-light wing concept: unchanged 5640 lm/51 W assembly. Some wing book points remain below200 lux. Photometry, glare, thermal design, support and maintenance pending. See docs/engineering/wing-r",
-      "lumens": 5640,
-      "cct": 2700,
-      "beam": 100,
-      "shadow": false
-    },
-    {
-      "id": "L69",
-      "type": "chandelier6Reading",
-      "name": "Wing light · H · rear block · back rows",
-      "circuit": "L8",
-      "mount": "pendant",
-      "pos": [
-        42.22,
-        3.8,
-        10.15
-      ],
-      "yaw": 0,
-      "tilt": -90,
-      "mountYaw": 0,
-      "anchorY": 8.083580000000003,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {},
-      "note": "HELD two-light wing concept: unchanged 5640 lm/51 W assembly. Some wing book points remain below200 lux. Photometry, glare, thermal design, support and maintenance pending. See docs/engineering/wing-r",
-      "lumens": 5640,
-      "cct": 2700,
-      "beam": 100,
       "shadow": false
     },
     {
@@ -3105,7 +3006,7 @@
       "circuit": "E1",
       "mount": "wall",
       "pos": [
-        2.6800000008940703,
+        5.313000000894069,
         4.762499999552966,
         0
       ],
@@ -5365,7 +5266,7 @@
       "circuit": "F4",
       "mount": "wall",
       "pos": [
-        2.655,
+        5.4799999999999995,
         6,
         -3.05
       ],
@@ -5386,7 +5287,7 @@
       "circuit": "F4",
       "mount": "wall",
       "pos": [
-        2.655,
+        5.4799999999999995,
         6,
         3.05
       ],
@@ -5860,12 +5761,12 @@
       "circuit": "A5",
       "mount": "wall",
       "pos": [
-        2.655,
+        5.4799999999999995,
         2.5,
         -3.05
       ],
-      "yaw": -6.476440087185079,
-      "tilt": -14.928147075735074,
+      "yaw": -15.231115445344694,
+      "tilt": -31.83856467744374,
       "mountYaw": 0,
       "anchorY": 2.5,
       "on": false,
@@ -5873,7 +5774,7 @@
       "dim": 1,
       "params": {},
       "level": -9,
-      "delayMs": 96.1
+      "delayMs": 100.4
     },
     {
       "id": "S274",
@@ -5882,12 +5783,12 @@
       "circuit": "A5",
       "mount": "wall",
       "pos": [
-        2.655,
+        5.4799999999999995,
         2.5,
         3.05
       ],
-      "yaw": 6.476440087185079,
-      "tilt": -14.928147075735074,
+      "yaw": 15.231115445344694,
+      "tilt": -31.83856467744374,
       "mountYaw": 0,
       "anchorY": 2.5,
       "on": false,
@@ -5895,7 +5796,7 @@
       "dim": 1,
       "params": {},
       "level": -9,
-      "delayMs": 97.6
+      "delayMs": 102.1
     },
     {
       "id": "S276",
@@ -8254,6 +8155,222 @@
       "hidden": false,
       "dim": 1,
       "params": {},
+      "shadow": false
+    },
+    {
+      "id": "L-WING-B-FI",
+      "type": "projector24",
+      "name": "Wing downlight · B · front block · inner row",
+      "circuit": "L8",
+      "mount": "pendant",
+      "pos": [
+        38.94,
+        8.095059999999997,
+        -8.8
+      ],
+      "yaw": 0,
+      "tilt": -90,
+      "mountYaw": 0,
+      "anchorY": 8.115059999999996,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "finish": "timber"
+      },
+      "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
+      "lumens": 2100,
+      "cct": 2700,
+      "beam": 24,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-B-FO",
+      "type": "projector24",
+      "name": "Wing downlight · B · front block · outer row",
+      "circuit": "L8",
+      "mount": "pendant",
+      "pos": [
+        38.94,
+        8.095059999999997,
+        -11.4
+      ],
+      "yaw": 0,
+      "tilt": -90,
+      "mountYaw": 0,
+      "anchorY": 8.115059999999996,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "finish": "timber"
+      },
+      "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
+      "lumens": 2100,
+      "cct": 2700,
+      "beam": 24,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-B-RI",
+      "type": "projector24",
+      "name": "Wing downlight · B · rear block · inner row",
+      "circuit": "L8",
+      "mount": "pendant",
+      "pos": [
+        42.22,
+        8.063580000000004,
+        -8.8
+      ],
+      "yaw": 0,
+      "tilt": -90,
+      "mountYaw": 0,
+      "anchorY": 8.083580000000003,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "finish": "timber"
+      },
+      "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
+      "lumens": 2100,
+      "cct": 2700,
+      "beam": 24,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-B-RO",
+      "type": "projector24",
+      "name": "Wing downlight · B · rear block · outer row",
+      "circuit": "L8",
+      "mount": "pendant",
+      "pos": [
+        42.22,
+        8.063580000000004,
+        -11.4
+      ],
+      "yaw": 0,
+      "tilt": -90,
+      "mountYaw": 0,
+      "anchorY": 8.083580000000003,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "finish": "timber"
+      },
+      "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
+      "lumens": 2100,
+      "cct": 2700,
+      "beam": 24,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-H-FI",
+      "type": "projector24",
+      "name": "Wing downlight · H · front block · inner row",
+      "circuit": "L8",
+      "mount": "pendant",
+      "pos": [
+        38.94,
+        8.095059999999997,
+        8.8
+      ],
+      "yaw": 0,
+      "tilt": -90,
+      "mountYaw": 0,
+      "anchorY": 8.115059999999996,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "finish": "timber"
+      },
+      "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
+      "lumens": 2100,
+      "cct": 2700,
+      "beam": 24,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-H-FO",
+      "type": "projector24",
+      "name": "Wing downlight · H · front block · outer row",
+      "circuit": "L8",
+      "mount": "pendant",
+      "pos": [
+        38.94,
+        8.095059999999997,
+        11.4
+      ],
+      "yaw": 0,
+      "tilt": -90,
+      "mountYaw": 0,
+      "anchorY": 8.115059999999996,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "finish": "timber"
+      },
+      "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
+      "lumens": 2100,
+      "cct": 2700,
+      "beam": 24,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-H-RI",
+      "type": "projector24",
+      "name": "Wing downlight · H · rear block · inner row",
+      "circuit": "L8",
+      "mount": "pendant",
+      "pos": [
+        42.22,
+        8.063580000000004,
+        8.8
+      ],
+      "yaw": 0,
+      "tilt": -90,
+      "mountYaw": 0,
+      "anchorY": 8.083580000000003,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "finish": "timber"
+      },
+      "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
+      "lumens": 2100,
+      "cct": 2700,
+      "beam": 24,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-H-RO",
+      "type": "projector24",
+      "name": "Wing downlight · H · rear block · outer row",
+      "circuit": "L8",
+      "mount": "pendant",
+      "pos": [
+        42.22,
+        8.063580000000004,
+        11.4
+      ],
+      "yaw": 0,
+      "tilt": -90,
+      "mountYaw": 0,
+      "anchorY": 8.083580000000003,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "finish": "timber"
+      },
+      "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
+      "lumens": 2100,
+      "cct": 2700,
+      "beam": 24,
       "shadow": false
     },
     {

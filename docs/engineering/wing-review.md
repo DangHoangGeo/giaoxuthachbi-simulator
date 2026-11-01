@@ -2,6 +2,8 @@
 
 **CONCEPT / ENGINEERING HOLD.** Current default: **two smaller brass chandeliers, two wall fans, one wall speaker and a Saint Peter–Saint Paul pair in each wing**. None of the tested alternatives meets every lighting, speech, feedback, air, noise and concealment target. This is a held visual/engineering review, not an accepted optimum, construction issue or purchase schedule. Phase E2 remains unmerged.
 
+**Update, 1 November 2026 (owner request):** the wing chandeliers L63/L65/L67/L69 are **retired** and replaced by four roof downlights per wing, `L-WING-{B,H}-{F,R}{I,O}` on circuit L8 (2 100 lm, 24°, 17.5 W each, finish-matched to the roof timber). Wing benches then reach 225.7 lux minimum and 260.4 lux average (100 % at 200 lux, was 97.1 / 196.2 and 50 %). The chandelier rows, lux tables and "Two chandeliers per wing" entry below are the 9 October review as recorded and are historical; the fan, speaker and picture entries are unchanged. See [lighting.md](../systems/lighting.md#nave-centre-and-wing-lighting--1-november-2026).
+
 **Update, 25 October 2026:** the parish priest's meeting closes the 9–10 side bays from the porches with plain walls on axes 9 and 10 and adds the detail-47 arch on their C/G axes ([meeting record](parish-meeting-2026-10-25.md)). The porch lanterns no longer spill into the bays: the worst wing book point falls to 102.0 lux. The figures below are the 9 October review and are kept as recorded.
 
 ## Owner intent and dimensional basis

@@ -39,6 +39,21 @@ The overlay of the DWG linework on a straight-on render of the model matches wit
 | Statues in the three niches | The drawing shows empty niches with pedestals. The owner's statues (9 October 2026) stand on the drawn pedestals (D03). |
 | Structure, materials, fixings, drainage of the terraces at +9.741 and +15.840, access for maintenance | Not designed: `ENGINEERING HOLD` |
 
+## Entrance on the axis-2 line and the front steps · 1 November 2026
+
+The owner's review of 1 November 2026: the main door belongs to the body of the church, on the axis-2 line, not between axes 1 and 2; and between the towers the pier bases stood clear of the steps below them. This also completes the parish priest's wish of 25 October 2026 (doors on the towers' rear pier line).
+
+| Part | Before | Now | Source in the CAD file (model metres) |
+| --- | --- | --- | --- |
+| Door wall | doors in the front arches at X ≈ 2.5 | a wall at **X 5.035–5.475** up to the hall ceiling (+8.39), with the three doorways; leaves, fanlights and transoms moved back 2.63 m; the front arches are an open entrance porch | Plan P05: jamb faces D7BF88/D7C117 at X 5.035, rebates to 5.145, inner face D7BF80/D7C10F on axis 2′ (5.475) |
+| Main doorway | Z ±1.55 | Z ±1.55, as drawn | P05 D7BF85/D7C114 |
+| Side doorways | \|Z\| 4.41–6.55 | unchanged width (2.14 m), 0.135 m further out than drawn | P05: \|Z\| 4.275–6.425 (left open; the leaves keep the front-arch sizes) |
+| Entrance steps | four 0.12 m risers from X 0.99 | **three 0.16 m risers at X 1.321, 1.551, 1.781**, from the −0.48 forecourt to ±0 | Section A-A D7E712–D7E716 |
+| Central pier bases | stood at ±0 over the lower treads, with a gap beneath | a plinth course under each pedestal down to the −0.48 forecourt | Section A-A D7E717–D7E71B: the base runs down through the steps |
+| Tower front plinth | 0.22 m ledge in front of the corner piers (front X −1.2) | front face flush with the corner-pier plinth (X −0.984), so the pier bases run straight down to −0.48 | Elevation E01B: pier bases continue below ±0 to the forecourt |
+
+Coordinated: walking heights (`realism.js`: the steps and the door wall, passage through the doorways only), the simulator's entrance wall and interior boundary (`engine.js`), and the fittings on the inner face of the entrance wall (rear-rows and rear-centre reading lights, exit sign, entrance circulators and speakers), which move with the wall in `design.js`; saved layouts move them once through the parish-meeting table (revision 7). Not for construction: door, wall and step construction, thresholds, drainage and accessible entry (a 0.48 m rise without a ramp here) remain open.
+
 ## Coordinated changes
 
 - **Statues and their lights** (simulator, circuit L10): the three statues, six hidden jamb lines, three hidden arch lines and six candles moved back and up with their niches. The side niches have their pedestal tops at +10.391 m, statues at X 4.15, Z ±5.35. The central niche has its pedestal top at +16.683 m, statue at X 4.08. The central pedestal is narrower than the old one, so its candles moved from beside the feet to the front corners. The positions are in `facadeNiches` in `simulator/design.js`. See [outlets and façade statues](engineering/outlets-and-facade-statues.md).

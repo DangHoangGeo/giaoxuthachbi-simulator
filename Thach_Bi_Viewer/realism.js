@@ -50,6 +50,12 @@
     // Dais, recessed steps, low platform and side floors of the sanctuary (sanctuary.js).
     const sanctuary = window.CHURCH_SANCTUARY?.floorY(x, z);
     if (sanctuary !== null && sanctuary !== undefined) return sanctuary;
+    // Entrance steps between the towers (facade.js spec.ground.steps): three 0.16 m risers.
+    const ST = window.CHURCH_FACADE?.spec.ground.steps;
+    if (ST && x > 0.99 && x < 2.3 && Math.abs(z) < 7.3) {
+      const n = ST.risers.filter(r => x >= r).length;
+      return n === ST.risers.length ? 0 : ST.landing + ST.rise * n;
+    }
     if (x >= -13.219 && x <= 0.99 && Math.abs(z) <= 13.35) {
       if (x < -8.099) return -2.08 + Math.min(16, Math.max(1, Math.floor((x + 13.219) / .32) + 1)) * .1;
       return -.48;
@@ -68,6 +74,9 @@
     // Shrine jambs on the axis-11 line (sanctuary.js); keep the central 1.44 m entrance open.
     const wx=window.CHURCH_SANCTUARY?.spec.wingX ?? 48.93;
     if(x>=wx-.425 && x<=wx+1.125 && az>=3.7 && az<=7.25 && Math.abs(az-5.5)>=.7)return false;
+    // Door wall on the towers' rear pier line (facade.js, 25 Oct 2026): through the three doorways only.
+    const EN=window.CHURCH_FACADE?.spec.entrance;
+    if(EN?.openings && x>=EN.wall[0]-.1 && x<=EN.wall[1]+.1 && az<7.6)return EN.openings.some(o=>z>o.z0+.25&&z<o.z1-.25);
     // Tower bases are closed since 25 Oct 2026 (towers.js): no passage through them, and the
     // corner piers stand forward of the old front.
     if(x>=-1.0 && x<=5.15 && az>=6.85 && az<=13.45)return false;

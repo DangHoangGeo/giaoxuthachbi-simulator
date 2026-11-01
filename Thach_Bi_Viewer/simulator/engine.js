@@ -114,7 +114,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -197,7 +197,8 @@
   // Inside the church: the nave and sanctuary, plus the two 9–10 wings under their own roof.
   // Above the entrance hall (+8.39 m) and in front of the nave gable on axis 2′ (front face x 5.17)
   // stands the upper façade of the CAD file of 23 Oct 2026, with its niches: outside.
-  function isInterior(p) { return p[0] > 2.3 && p[0] < 53.1 && p[1] < 12.5 && !(p[0] < 5.17 && p[1] > 8.39) && (Math.abs(p[2]) < 7.3 || (inWing(p[0], p[2]) && p[1] < 9.6)); }
+  // Since 25 Oct 2026 the doors stand at X 5.2 (facade.js) and the arches in front are an open porch.
+  function isInterior(p) { return p[0] > 5.1 && p[0] < 53.1 && p[1] < 12.5 && !(p[0] < 5.17 && p[1] > 8.39) && (Math.abs(p[2]) < 7.3 || (inWing(p[0], p[2]) && p[1] < 9.6)); }
   function isCovered(p) { return p[0] > 2.3 && p[0] < 53.1 && (Math.abs(p[2]) < 10.6 || (p[0] > 37 && p[0] < 44 && Math.abs(p[2]) < 13)); }
   // Shared planning approximation for sound received from the enclosed room.
   // A veranda is partly coupled; an open courtyard has no enclosed reverberant field.
@@ -243,6 +244,9 @@
     for (const s of [-1, 1]) for (const x of [AX['9'], AX['10']]) GEO.walls.push({ x, z0: Math.min(s * 7.47, s * 10.234), z1: Math.max(s * 7.47, s * 10.234), y0: -0.4, y1: 7.1, openings: [] });
     // Entrance façade (plane inside the wall, inner face at x 2.65): solid apart from the main door and
     // the two side doors, all open in the model's default state.
+    // Door wall on the towers' rear pier line (facade.js, 25 Oct 2026), doors open by default.
+    const EN = window.CHURCH_FACADE?.spec.entrance;
+    if (EN?.openings) GEO.walls.push({ x: (EN.wall[0] + EN.wall[1]) / 2, z0: -7.25, z1: 7.25, y0: -0.4, y1: EN.top, openings: EN.openings.map(o => ({ z0: o.z0, z1: o.z1, y0: -0.4, y1: o.y1 })) });
     GEO.walls.push({ x: 2.35, z0: -7.25, z1: 7.25, y0: -0.4, y1: 12.5, openings: [
       { z0: -1.25, z1: 1.25, y0: -0.4, y1: 4.6 }, { z0: -6.1, z1: -4.9, y0: -0.4, y1: 3.6 }, { z0: 4.9, z1: 6.1, y0: -0.4, y1: 3.6 }] });
     // Sanctuary (sanctuary.js): the lobed timber frame on the column line, the
@@ -406,10 +410,20 @@
     // Purlins every ~0.50 m across the slope, split at the 9–10 roof valleys.
     const L = 40.575, U = 9.45, Pr = 3.88, N = (U - 6.325) / Pr;
     const X = (12.472 - U) / LINING_SLOPE, O = (U - 7.13) / N;
+    const PURLIN = window.CHURCH_SANCTUARY?.spec.roofTimber?.purlin || { w: 0.14, d: 0.22 }, PURLIN_TILT = Math.atan(LINING_SLOPE);
     for (const s of [-1, 1]) for (let i = 0; i < 14; i++) {
       const z = 0.58 + i * 0.5, y = liningY(z) - 0.075;
       const spans = z < X ? [[5.475, 52.85]] : (() => { const e = (z - X) / ((7.36 - X) / O); return [[5.475, L - e - 0.1], [L + e + 0.1, 52.85]]; })();
-      for (const [a, b] of spans) member(b - a, 0.12, 0.09, (a + b) / 2, y, s * z, 'Purlin · as drawn spacing ~0.50 m');
+      for (const [a, b] of spans) {
+        // 1 Nov 2026 (owner: the roof timbers looked flimsy): 0.14 m wide, 0.22 m deep, square to the
+        // lining and hung from it. The spacing, ends and valley splits are unchanged; the top face is
+        // 4 mm under the lining and the section grows downward only. Visualization proxy, ENGINEERING HOLD.
+        const m = member(b - a, PURLIN.d, PURLIN.w, (a + b) / 2, y, s * z, 'Purlin · as drawn spacing ~0.50 m');
+        m.rotation.x = s * PURLIN_TILT;
+        m.position.y = liningY(z) - 0.004 - Math.cos(PURLIN_TILT) * PURLIN.d / 2;
+        m.position.z = s * (z - Math.sin(PURLIN_TILT) * PURLIN.d / 2);
+        m.userData.proxySection = `${PURLIN.w} × ${PURLIN.d} m (was 0.09 × 0.12 m)`;
+      }
     }
     GEO.trussMoved = moving.length;
     buildFrameVariants(asDrawn);
@@ -464,7 +478,9 @@
       const m = new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts.map(p => new T.Vector3(...p))), 24, r, 6, false), timber);
       m.name = name; m.castShadow = m.receiveShadow = true; referenceFrame.add(m); return m;
     };
-    const P = REF.post, collarHalf = (LINING_RIDGE - REF.collarY - 0.14) / LINING_SLOPE, upperHalf = (LINING_RIDGE - REF.upperY - 0.1) / LINING_SLOPE;
+    // 1 Nov 2026: heavier reference-variant timbers (spec.roofTimber.referenceFrame), visualization proxies on ENGINEERING HOLD.
+    const RF = window.CHURCH_SANCTUARY?.spec.roofTimber?.referenceFrame || { queenPost: 0.24, collar: { w: 0.34, d: 0.42 }, upperCollar: { w: 0.30, d: 0.30 }, kingStrut: 0.24, archBraceR: 0.14, plateBracketR: 0.10 };
+    const P = REF.post, collarHalf = (LINING_RIDGE - REF.collarY - 0.14 - (RF.collar.d - 0.34) / 2) / LINING_SLOPE, upperHalf = (LINING_RIDGE - REF.upperY - 0.1 - (RF.upperCollar.d - 0.24) / 2) / LINING_SLOPE;
     // Posts take the sanctuary finish, like the round shafts of the drawn frame.
     const lacquer = window.CHURCH_SANCTUARY?.materials?.wood || timber, gilt = window.CHURCH_SANCTUARY?.materials?.gold || timber;
     axes.forEach((k, i) => {
@@ -487,16 +503,16 @@
         // Curved arch brace from the post to the collar, both faces of the truss.
         const arc = [];
         for (let k = 0; k <= 12; k++) { const t = k / 12 * Math.PI / 2; arc.push([x, ARCH.y0 + (ARCH.y1 - ARCH.y0) * Math.sin(t), s * (ARCH.z0 + (ARCH.z1 - ARCH.z0) * Math.cos(t))]); }
-        tube(arc, 0.11, 'Curved arch brace · reference');
+        tube(arc, RF.archBraceR, 'Curved arch brace · reference');
         // Queen post from the collar to the rafter, and an upper strut.
-        box(0.18, liningY(collarHalf * 0.55) - REF.collarY - 0.1, 0.18, x, (liningY(collarHalf * 0.55) + REF.collarY) / 2, s * collarHalf * 0.55, timber, 'Queen post · reference');
+        box(RF.queenPost, liningY(collarHalf * 0.55) - REF.collarY - 0.1, RF.queenPost, x, (liningY(collarHalf * 0.55) + REF.collarY) / 2, s * collarHalf * 0.55, timber, 'Queen post · reference');
       }
-      box(0.26, 0.34, collarHalf * 2, x, REF.collarY, 0, timber, 'Collar beam · reference');
-      box(0.22, 0.24, upperHalf * 2, x, REF.upperY, 0, timber, 'Upper collar · reference');
-      box(0.18, REF.upperY - REF.collarY - 0.25, 0.18, x, (REF.upperY + REF.collarY) / 2, 0, timber, 'King strut · reference');
+      box(RF.collar.w, RF.collar.d, collarHalf * 2, x, REF.collarY, 0, timber, 'Collar beam · reference');
+      box(RF.upperCollar.w, RF.upperCollar.d, upperHalf * 2, x, REF.upperY, 0, timber, 'Upper collar · reference');
+      box(RF.kingStrut, REF.upperY - REF.collarY - 0.25, RF.kingStrut, x, (REF.upperY + REF.collarY) / 2, 0, timber, 'King strut · reference');
       // Longitudinal brackets from each post to the plate.
       for (const s of [-1, 1]) for (const d of [-1, 1]) if (!(k === '3' && d < 0) && !(k === '10' && d > 0))
-        tube([[x + d * 0.3, 8.55, s * 3.6], [x + d * 0.55, 9.3, s * 3.6], [x + d * 1.15, 9.62, s * 3.6]], 0.08, 'Curved plate bracket · reference');
+        tube([[x + d * 0.3, 8.55, s * 3.6], [x + d * 0.55, 9.3, s * 3.6], [x + d * 1.15, 9.62, s * 3.6]], RF.plateBracketR, 'Curved plate bracket · reference');
     });
     // Longitudinal plates along the post heads (axes 3–10).
     const plateEnd = data().longitudinal['10'];
@@ -1206,7 +1222,7 @@
     createPool(state.settings.quality);
     createHalos();
     c.data.simulator = { status: 'Interactive planning layer; analysis values are estimates', asDrawnFrame: { mainTie: '0.30 × 0.59 m at +8.59…+9.18 m', sideBeams: '0.22 × 0.34 m at +6.66…+7.00 m', purlinSpacing: '~0.50 m' }, conceptMembers: { longitudinalBeams: GEO.longBeams.map(b => b.id), section: '0.24 × 0.45 m at +8.73…+9.18 m · visualization proxy · ENGINEERING HOLD', source: 'docs/beams-roof-connections/SPECIFICATION.md · B03' }, movedProposedMembers: GEO.trussMoved };
-    c.data.assumptions.push('Timber frame now follows section sheet 4 as measured on the vector PDF: main tie beam +8.59…+9.18 m (0.59 m deep), side beams +6.66…+7.00 m from the C/G piers to the D/E shafts, purlins about 0.50 m apart. The earlier king posts, diagonal braces and knee braces were not on the drawing and are now an optional "proposed bracing" layer.');
+    c.data.assumptions.push('Timber frame now follows section sheet 4 as measured on the vector PDF: main tie beam +8.59…+9.18 m (0.59 m deep), side beams +6.66…+7.00 m from the C/G piers to the D/E shafts, purlins about 0.50 m apart (shown as 0.14 × 0.22 m proxy sections since 1 November 2026, with rafters 0.26 × 0.34 m and the ridge member 0.30 × 0.28 m: heavier visualization proxies on engineering hold, not checked sections). The earlier king posts, diagonal braces and knee braces were not on the drawing and are now an optional "proposed bracing" layer.');
     c.data.assumptions.push('Lengthwise beams on the D and E column lines (axes 3 to 10, 14 members, IDs B03-D-03-04 to B03-E-09-10) follow the owner-confirmed arrangement of the beam specification. Their 0.24 × 0.45 m section at +8.73…+9.18 m is a visualization proxy on engineering hold; no equipment is mounted on them. Carved haunches, cartouches and beam ends are applied ornament from the approved concept art and carry nothing. No haunch stands under the axis-9 tie beam, where the ambo key light and the presider light hang close to the columns.');
   }
   function bindBatches(batches) {
@@ -1556,7 +1572,7 @@
       }).map(it => it.id);
       const conflictIds = window.CHURCH_SIM_DESIGN.wingReviewScope(side).filter(id => id.startsWith('F-WING-') && SIM.item(id) && !new RegExp('^Wall fan · wing ' + side + ' · [34] · held review$').test(SIM.item(id).name));
       return { side, current: !mismatchingIds.length && !obsoleteIds.length, mismatchingIds, conflictIds, obsoleteIds,
-        counts: { chandeliers: items.filter(it => it.type === 'chandelier6Reading').length,
+        counts: { chandeliers: items.filter(it => it.type === 'chandelier6Reading').length, downlights: items.filter(it => /^L-WING-/.test(it.id)).length,
           wallFans: items.filter(it => CAT.byId[it.type]?.fan?.kind === 'jet' && it.circuit === 'F5').length,
           roofFans: items.filter(it => it.type === 'fanCeiling').length } };
     });
@@ -2438,6 +2454,7 @@
       ['facadeCadRevision', D.facadeCadRevision, '.before-cad-facade', D.upgradeFacadeCad],
       ['parishMeetingRevision', D.parishMeetingRevision, '.before-parish-meeting', D.upgradeParishMeeting],
       ['towerPierRevision', D.towerPierRevision, '.before-tower-pier-depth', D.upgradeTowerPiers],
+      ['naveWingLightingRevision', D.naveWingLightingRevision, '.before-nave-wing-lighting', D.upgradeNaveWingLighting],
       ['verandaReviewRevision', window.CHURCH_VERANDA_REVIEW.revision, '.before-open-porch-light-sound', window.CHURCH_VERANDA_REVIEW.upgrade],
       ['doorheadReviewRevision', window.CHURCH_DOORHEAD_REVIEW.revision, '.before-doorheads-no-sconces', window.CHURCH_DOORHEAD_REVIEW.upgrade]
     ]) {

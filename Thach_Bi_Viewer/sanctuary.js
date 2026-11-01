@@ -9,6 +9,13 @@
     centralArch:{half:3.3,spring:8.25,shoulder:9.38,crown:10.83}, sideArch:{half:1.575,spring:6.15,shoulder:6.75,crown:7.46},
     // Side arches of axis 11 round the shrines (bundle plaster arch, Z 3.85–7.11, spring +5.55).
     arch11:{x:48.34,z:5.48,half:1.55,spring:5.55,shoulder:6.3,crown:6.85},
+    // Gilded boarded vaults over the two side passages (owner, 1 Nov 2026): the vault of the chamber
+    // continues to both sides, on the outline of the axis-10 side arch at the front (x0 profile
+    // interpolated from spec.sideArch) and the axis-11 side arch at the back (x1, spec.arch11).
+    // x0 leaves 1.0 m behind the frame's back face clear for the shrine lights hung there
+    // (L115–L118, x 44.25–44.63, y 7.43–7.76, aimed 39° down at the shrines); x1 butts the lacquered spandrel of axis 11.
+    // CONCEPT visual proxy: it is not an occluder in the simulator, like the chamber vault.
+    sideVault:{x0:45.3,x1:48.16,thick:.09,status:'CONCEPT · gilded boarded vault over each side passage; boarding, ribs, springing beams and fixings pending'},
     chamber:{x0:44.49,x1:48.42,face:3.3,outer:3.75,top:9.45,lintel:7.0,serviceLining:0.04},
     // Crucifix niche: opens through the reredos and the back wall, 1.0 m deep, its blue wall and
     // the cross standing back on a base over the service room. `shell` is the plaster casing
@@ -25,6 +32,24 @@
     floor:{revision:'2026-11-01-sanctuary-floor-cad-1',
       apron:{front:37.475,half:5,back:44.065},dais:{front:38.475,half:4,back:48.65},
       stair:{x0:38.475,x1:39.345,half:.95,tread:.29},side:{x0:44.065,x1:52.63,inner:3.63,outer:7.11}} };
+  // Owner request, 1 November 2026: the roof timbers looked flimsy. These are VISUALIZATION PROXY sections
+  // (metres) for the exposed roof members; none is a structural design (ENGINEERING HOLD). Every member
+  // grows downward or inward from the unmoved boarded lining and never through it, so the tie and
+  // column-line beam soffits, the fittings hung from them and the cable routes are untouched. The measured
+  // 'as drawn' tie and side beams and the 0.24 x 0.45 m column-line beams keep their sections.
+  // `before` is the earlier proxy section; `w` is across the member's width and `d` its depth.
+  spec.roofTimber = {
+    revision:'2026-11-01-roof-timbers-1',
+    rafter:{before:{w:.17,d:.20},w:.26,d:.34},          // nave principal rafters (axes 3-9) below the lining; d perpendicular to the slope, lining face kept; axes 10-11 unchanged
+    ridge:{before:{w:.21,d:.16},w:.30,d:.28},           // underside ridge member; w across, d vertical, top face kept
+    purlin:{before:{w:.09,d:.12},w:.14,d:.22},          // drawn purlins: w along the slope, d perpendicular to it (now square to the lining)
+    proposedPurlin:{before:{w:.11,d:.095},w:.14,d:.17}, // earlier visual proposal, shown only with 'Show truss'
+    kingPost:{before:{w:.11,d:.14},w:.18,d:.22},
+    diagonal:{before:{w:.11,d:.13},w:.17,d:.20},
+    kneeBrace:{before:{w:.15,d:.17},w:.22,d:.26},
+    kneeBraceRod:{before:{r:.075},r:.105},
+    referenceFrame:{queenPost:.24,collar:{w:.34,d:.42},upperCollar:{w:.30,d:.30},kingStrut:.24,archBraceR:.14,plateBracketR:.10}
+  };
   // Floor levels from the church's CAD file of 23 October 2026 (sections 25 and 45), adopted
   // by the owner on 24 October 2026: dais +0.80 (the PDF set had +0.75) and side floors +0.16
   // (+0.15). The bundle still places its furnishings on +0.75, so prepare() lifts that group.
@@ -187,6 +212,36 @@
     window.CHURCH_SANCTUARY.naturalTimber={color:timber.color.clone(),map:timber.map,bumpMap:timber.bumpMap,roughness:timber.roughness};
     timber.color.copy(wood.color);timber.map=timber.bumpMap=null;timber.roughness=wood.roughness;timber.needsUpdate=true;
     const reference=palettes?.get(timber);if(reference){reference.color.copy(timber.color);reference.map=reference.bump=null;}
+    // Heavier roof timbers (spec.roofTimber). Only the geometry is replaced: names, positions, member
+    // order and the lining stay, so the soffit lines and bosses below, the simulator and the schedules
+    // follow the new sections. The earlier box is kept on userData.proxyBefore for the record.
+    {
+      const RT=spec.roofTimber,reshape=(o,geometry,key)=>{o.userData.proxyBefore=o.userData.proxyBefore||{section:key,parameters:{...o.geometry.parameters}};o.geometry.dispose();o.geometry=geometry;o.userData.roofTimberRevision=RT.revision;};
+      building.traverse(o=>{
+        if(!o.isMesh||o.geometry.type!=='BoxGeometry'&&o.geometry.type!=='CylinderGeometry')return;
+        const p=o.geometry.parameters;
+        switch(o.name){
+          case 'Proposed visible principal rafter below roof lining':{
+            // Deeper and wider; the upper face stays on the lining and the extra depth hangs below it.
+            // The two pairs behind the nave (axes 10 and 11) keep their section: sheet 5 gives that line a lobed
+            // arch instead of a truss, the vault hides them, and the shrine washes sit against the lining there.
+            if(o.position.x>=spec.frameX-.5)break;
+            const R=RT.rafter;reshape(o,new T.BoxGeometry(R.w,p.height,R.d),'rafter');
+            o.translateZ(Math.sign(o.rotation.x)*(R.d-p.depth)/2);break;}
+          case 'Proposed underside ridge member':{
+            // Rotated about Z: width is vertical here. Top face stays put, the extra depth hangs below.
+            const R=RT.ridge;reshape(o,new T.BoxGeometry(R.d,p.height,R.w),'ridge');
+            o.position.y-=(R.d-p.width)/2;break;}
+          case 'Proposed longitudinal roof purlin':case 'Proposed purlin before roof valley':case 'Proposed purlin beyond roof valley':{
+            const R=RT.proposedPurlin;reshape(o,new T.BoxGeometry(R.d,p.height,R.w),'proposedPurlin');break;}
+          case 'Proposed truss king post':reshape(o,new T.BoxGeometry(RT.kingPost.w,p.height,RT.kingPost.d),'kingPost');break;
+          case 'Proposed roof truss diagonal':reshape(o,new T.BoxGeometry(RT.diagonal.w,p.height,RT.diagonal.d),'diagonal');break;
+          case 'Proposed timber knee brace':reshape(o,new T.BoxGeometry(RT.kneeBrace.w,p.height,RT.kneeBrace.d),'kneeBrace');break;
+          case 'Timber knee brace · proposed section':reshape(o,new T.CylinderGeometry(RT.kneeBraceRod.r,RT.kneeBraceRod.r,p.height,p.radialSegments,p.heightSegments,p.openEnded),'kneeBraceRod');break;
+          default:
+        }
+      });
+    }
     const rafters=[];
     building.traverse(o=>{
       if(!o.isMesh)return;
@@ -451,6 +506,54 @@
     // and cresting from the lobed arch up to the roof lining, just in front of the plaster arch.
     const rear11=group('Axis-11 side arches · red lacquer and gilding',spec.arch11.x,0);
     for(const sign of [-1,1])lobedFrame(rear11,sign*spec.arch11.z,spec.arch11.half,spec.arch11,'Axis-11 side spandrel · lacquer and gilding',14);
+    // Gilded boarded vaults over the side passages (owner, 1 Nov 2026): the vault of the chamber
+    // continues out to Our Lady and Saint Joseph. Each is lofted between the outline of the axis-10
+    // side arch and that of the axis-11 side arch above the shrine, so its outline follows both
+    // arches, with the same boarding, lacquered ribs and gilded bosses as the chamber vault.
+    // Display proxy, world axes (not the rotated frame group).
+    {
+      const V=spec.sideVault,g=new T.Group();g.name='Side vaults · gilded boarding over the shrine passages';root.add(g);
+      const profile=x=>{
+        const t=(x-spec.frameX)/(spec.arch11.x-spec.frameX),L=k=>S[k]+(spec.arch11[k]-S[k])*t,a={spring:L('spring'),shoulder:L('shoulder'),crown:L('crown')},cx=spec.wingZ+(spec.arch11.z-spec.wingZ)*t,half=L('half');
+        return {inner:lobed(cx,half,a).getPoints(12),outer:lobed(cx,half+.08,{spring:a.spring,shoulder:a.shoulder+V.thick,crown:a.crown+V.thick}).getPoints(12)};
+      };
+      const steps=8,xs=Array.from({length:steps+1},(_,i)=>V.x0+(V.x1-V.x0)*i/steps),rows=xs.map(profile);
+      for(const sign of [-1,1]){
+        const P=(x,p,dy=0)=>new T.Vector3(x,p.y+dy,sign*p.x),positions=[];
+        // A quad a-b-c-d, wound so that its face looks along `want` (the shell's own outside).
+        const quad=(a,b,c,d,want)=>{
+          const n=new T.Vector3().subVectors(c,a).cross(new T.Vector3().subVectors(d,b)),m=a.clone().add(c).multiplyScalar(.5);
+          if(n.dot(want(m))<0)[b,d]=[d,b];
+          positions.push(a,b,c,a,c,d);
+        };
+        const below=m=>new T.Vector3(0,3,sign*spec.wingZ).sub(m),above=m=>below(m).negate(),down=()=>new T.Vector3(0,-1,0);
+        for(let i=0;i<steps;i++){
+          const A0=rows[i],A1=rows[i+1],x0=xs[i],x1=xs[i+1],m=A0.inner.length;
+          for(let k=0;k<m-1;k++){
+            quad(P(x0,A0.inner[k]),P(x1,A1.inner[k]),P(x1,A1.inner[k+1]),P(x0,A0.inner[k+1]),below);
+            quad(P(x0,A0.outer[k]),P(x1,A1.outer[k]),P(x1,A1.outer[k+1]),P(x0,A0.outer[k+1]),above);
+          }
+          for(const k of [0,m-1])quad(P(x0,A0.inner[k]),P(x1,A1.inner[k]),P(x1,A1.outer[k]),P(x0,A0.outer[k]),down);
+        }
+        for(const [i,dir] of [[0,-1],[steps,1]]){
+          const R=rows[i],x=xs[i];
+          for(let k=0;k<R.inner.length-1;k++)quad(P(x,R.inner[k]),P(x,R.inner[k+1]),P(x,R.outer[k+1]),P(x,R.outer[k]),()=>new T.Vector3(dir,0,0));
+        }
+        const geometry=new T.BufferGeometry().setFromPoints(positions);geometry.computeVertexNormals();
+        const board=mesh(geometry,leafGold,g,'Side vault · gilded boarding');
+        board.userData={status:V.status,engineeringApproved:false,source:'Owner request 1 Nov 2026; docs/sanctuary-model.md'};
+        // Springing beams along both edges, where the vault would rest on the corbels of the two arches.
+        for(const e of [0,rows[0].inner.length-1])line(g,xs.map((x,i)=>{const p=rows[i].inner[e];return [x,p.y-.05,sign*p.x];}),.07,wood,'Side vault springing beam · lacquered timber');
+        // Transverse ribs at both ends and at two stations between, and longitudinal ribs on the
+        // same fractions of the profile as the chamber vault, with a gilded boss at each crossing.
+        const stations=[0,3,5,steps],paths=rows.map(R=>new T.CatmullRomCurve3(R.inner.map(p=>new T.Vector3(p.x,p.y,0))));
+        for(const i of stations)line(g,rows[i].inner.map(p=>[xs[i],p.y-.02,sign*p.x]),.065,wood,'Side vault rib · lacquered timber');
+        for(const t of [.14,.32,.5,.68,.86]){
+          line(g,paths.map((c,i)=>{const p=c.getPoint(t);return [xs[i],p.y-.03,sign*p.x];}),.045,wood,'Side vault longitudinal rib');
+          for(const i of stations){const p=paths[i].getPoint(t);mesh(leafGeometry,gold,g,'Gilded vault boss',xs[i],p.y-.07,sign*p.x).scale.setScalar(.12);}
+        }
+      }
+    }
     // The bundle's dais ran the full 7.20 m between the column lines and was reached by five
     // full-width steps from x 38.2. It is replaced by the CAD outline (spec.floor).
     function rebuildFloor(){
