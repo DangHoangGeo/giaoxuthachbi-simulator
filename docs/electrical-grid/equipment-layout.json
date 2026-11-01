@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-11-01T02:48:13.779Z",
+  "savedAt": "2026-11-01T04:49:00.145Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -56,6 +56,7 @@
     "parishMeetingRevision": "2026-10-25-parish-meeting-7",
     "towerPierRevision": "2026-10-31-tower-pier-depth-2",
     "naveWingLightingRevision": "2026-11-01-nave-wing-lighting-1",
+    "sideVaultLightsRevision": "2026-11-01-side-vault-lights-1",
     "eveningExposureRevision": "2026-10-09-evening-160",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
@@ -2192,22 +2193,23 @@
       "type": "spot15",
       "name": "Statue accent · B",
       "circuit": "L3",
-      "mount": "wall",
+      "mount": "pendant",
       "pos": [
-        44.419999999999995,
-        7.75,
-        -4.75
+        44.68,
+        6.424,
+        -4.14
       ],
-      "yaw": -9.651833466804238,
-      "tilt": -39.21267771222643,
+      "yaw": -18.144530993963553,
+      "tilt": -26.569451090024266,
       "mountYaw": 0,
+      "anchorY": 6.484,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "timber"
+        "finish": "chamber"
       },
-      "lumens": 165,
+      "lumens": 105,
       "beam": 12,
       "shadow": false
     },
@@ -2216,22 +2218,23 @@
       "type": "projector36",
       "name": "Shrine wash · B",
       "circuit": "L3",
-      "mount": "wall",
+      "mount": "pendant",
       "pos": [
-        44.419999999999995,
-        7.75,
-        -6.25
+        45.25,
+        6.356000000000001,
+        -4.14
       ],
-      "yaw": 10.101118347708251,
-      "tilt": -39.69810503390403,
+      "yaw": -21.918220291919713,
+      "tilt": -28.95737340516594,
       "mountYaw": 0,
+      "anchorY": 6.416,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "timber"
+        "finish": "chamber"
       },
-      "lumens": 1800,
+      "lumens": 1140,
       "beam": 50,
       "shadow": false
     },
@@ -2240,22 +2243,23 @@
       "type": "spot15",
       "name": "Statue accent · H",
       "circuit": "L3",
-      "mount": "wall",
+      "mount": "pendant",
       "pos": [
-        44.419999999999995,
-        7.75,
-        4.75
+        44.68,
+        6.424,
+        4.14
       ],
-      "yaw": 9.651833466804238,
-      "tilt": -39.21267771222643,
+      "yaw": 18.144530993963553,
+      "tilt": -26.569451090024266,
       "mountYaw": 0,
+      "anchorY": 6.484,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "timber"
+        "finish": "chamber"
       },
-      "lumens": 165,
+      "lumens": 105,
       "beam": 12,
       "shadow": false
     },
@@ -2264,22 +2268,23 @@
       "type": "projector36",
       "name": "Shrine wash · H",
       "circuit": "L3",
-      "mount": "wall",
+      "mount": "pendant",
       "pos": [
-        44.419999999999995,
-        7.75,
-        6.25
+        45.25,
+        6.356000000000001,
+        4.14
       ],
-      "yaw": -10.101118347708251,
-      "tilt": -39.69810503390403,
+      "yaw": 21.918220291919713,
+      "tilt": -28.95737340516594,
       "mountYaw": 0,
+      "anchorY": 6.416,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "timber"
+        "finish": "chamber"
       },
-      "lumens": 1800,
+      "lumens": 1140,
       "beam": 50,
       "shadow": false
     },
