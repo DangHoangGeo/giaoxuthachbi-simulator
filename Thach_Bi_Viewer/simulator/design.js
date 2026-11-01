@@ -28,6 +28,8 @@
     return { yaw: Math.atan2(dz, dx) * 180 / Math.PI, tilt: Math.atan2(dy, Math.hypot(dx, dz)) * 180 / Math.PI };
   };
   const side = z => z < 0 ? 'B' : 'H';
+  // Wing downlights, 1 Nov 2026: bench-block centres (X), the two rows (|Z|), output and optic.
+  const WING_DOWNLIGHT = { x: [38.94, 42.22], z: [8.8, 11.4], lumens: 2100, beam: 24 };
   // Where a ledge fitting's optic sits: `reach` beyond its base along mountYaw, `rise` above it.
   const lensAt = (p, mountYaw, reach, rise) => {
     const r = mountYaw * Math.PI / 180;
@@ -86,7 +88,9 @@
     // From the door wall, 2.55 m nearer the pews than the old façade face, the rear-rows heads aim at
     // (7.4, 0.8, ±5.8) instead of (8.2, 0.8, ±5.0) so that the rear outer corner keeps its reading light;
     // they stay at +3.45, below the bay 2′–3 fan blades (checked seat by seat, 26 Oct 2026).
-    const REAR_ROWS_Y = 3.45, REAR_CENTRE_Y = 5.95, REAR_ROWS_AIM = [7.4, 0.8, 5.8];
+    // The rear centre heads drop from +5.95 to +3.90 (1 Nov 2026): re-aimed at the last rows, from +5.95 their
+    // beams crossed the bay 2′–3 aisle fans (hub +4.20).
+    const REAR_ROWS_Y = 3.45, REAR_CENTRE_Y = 3.9, REAR_ROWS_AIM = [7.4, 0.8, 5.8];
     const above = (x, z, y) => SIM.structureAbove(x, z, y)?.y ?? y;
     // Sanctuary geometry from sanctuary.js: shrine niches on the axis-11 line and
     // the timber-lined chamber between axes 10 and 11.
@@ -106,11 +110,12 @@
     // should look hidden. Each head is a compact projector on a side bracket fixed
     // to the sanctuary-facing face of its beam, finished in the beam's own lacquer.
     // The body stands beside the beam and only its glare cowl reaches the soffit, so
-    // from most seats behind a beam the beam itself screens it. On a tie beam the two
-    // heads flank the gilded band at ±2.60 m, the one aimed toward the sanctuary on the
-    // inner side, away from the side-aisle fan ahead of it; on a side beam they stand
-    // either side of the gilded cartouche (4.96–6.00 m), both aimed at the old point
-    // under the beam.
+    // from most seats behind a beam the beam itself screens it. On a tie beam the heads
+    // aimed toward the sanctuary stand at ±0.90 m and light the centre aisle and the
+    // inner seat row; the entrance-facing heads stay on the inner side of the gilded band
+    // at ±2.60 m (z ±2.48), away from the side-aisle fans (before 1 Nov 2026 both stood
+    // at ±2.48/±2.72 m). On a side beam they stand either side of the gilded cartouche
+    // (4.96–6.00 m), both aimed at the old point under the beam.
     // Fixing into the timber, the bracket and the product are ENGINEERING HOLD.
     const readingHead = (name, circuit, beam, faceX, soffit, z, target) => {
       const p = [faceX, soffit + 0.18, z], a = aim([faceX + 0.085, soffit, z], target);
@@ -120,12 +125,20 @@
     // tie-beam head aimed toward a bay with such a fan tilts 5° along the nave with a
     // 24° optic (8° and 28° before), which keeps its beam off the blades.
     const facesBeamFan = (k, dir) => dir > 0 ? +k <= 8 : +k >= 4;
+    // Owner, 1 November 2026: the centre of the nave looked dark. The four tie-beam heads sat in
+    // two pairs 0.24 m apart at +-2.6 m and lit only the seats, leaving the 2 m centre aisle on
+    // the indirect light alone (about 62 lux). The head aimed toward the sanctuary now stands
+    // at +-0.90 m with a 36 degree optic and the entrance-facing head at +-2.48 m (28 degree),
+    // so the four lines are spread across the nave and the aisle is lit as well as the seats.
+    // Flux per head (2 300 lm) is unchanged; no head throws light through a side-aisle fan.
+    const TIE_Z = { fwd: 0.9, twin: 2.48 }, TIE_AIM_Z = { fwd: 1.0, twin: 2.4 }, TIE_BEAM = { fwd: 36, twin: 28 };
     const reading = (k, s, block) => {
       const tie = block === 'central', soffit = tie ? beamY : sideBeamY, faceX = A[k] + (tie ? 0.15 : 0.11);
       for (const [dir, tag] of [[1, ''], [-1, ' · twin']]) {
-        const z = tie ? s * (2.6 - dir * 0.12) : s * (dir > 0 ? 6.09 : 4.84), fan = tie && facesBeamFan(k, dir);
+        const which = dir > 0 ? 'fwd' : 'twin';
+        const z = tie ? s * TIE_Z[which] : s * (dir > 0 ? 6.09 : 4.84), fan = tie && facesBeamFan(k, dir);
         const along = Math.tan((fan ? 5 : 8) * Math.PI / 180) * (soffit - 0.8);
-        readingHead(`Reading light · axis ${k} · ${side(s)} ${block}${tag}`, tie ? 'L1' : 'L2', tie ? (fan ? 24 : 28) : 36, faceX, soffit, z, [A[k] + dir * along, 0.8, s * (tie ? 2.6 : 5.6)]);
+        readingHead(`Reading light · axis ${k} · ${side(s)} ${block}${tag}`, tie ? 'L1' : 'L2', tie ? TIE_BEAM[which] : 36, faceX, soffit, z, [A[k] + dir * along, 0.8, s * (tie ? TIE_AIM_Z[which] : 5.6)]);
       }
     };
     for (const k of nave) for (const s of [-1, 1]) reading(k, s, 'central');
@@ -138,13 +151,19 @@
       const s = Math.sign(z);
       const p = [facadeX, REAR_ROWS_Y, z], a = aim(p, [REAR_ROWS_AIM[0], REAR_ROWS_AIM[1], s * REAR_ROWS_AIM[2]]);
       add({ type: 'readingProjector', name: `Rear rows light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: p, mountYaw: 0, yaw: a.yaw, tilt: a.tilt, lumens: 6000, beam: 44, params: { finish: 'wall' } });
-      const q = [facadeX, REAR_CENTRE_Y, z], b = aim(q, [6.2, 0.8, s * 1.2]);
+      // From the axis-2 door wall (1 Nov 2026) the rear centre heads aim between the last two central rows
+      // (x 6.54 and 11.05); aimed at the old (6.2, 0.8, ±1.2) they left the x 11.05 row at 171 lux.
+      const q = [facadeX, REAR_CENTRE_Y, z], b = aim(q, [8.6, 0.8, s * 2.0]);
       add({ type: 'readingProjector', name: `Rear centre light · entrance façade · ${side(z)}`, circuit: 'L1', mount: 'wall', pos: q, mountYaw: 0, yaw: b.yaw, tilt: b.tilt, lumens: 3300, beam: 50, params: { finish: 'wall' } });
     }
     // L8 · held wing review, 9 October. Smaller brass chandeliers match the
     // owner's intent; a separate downward optic supplies task light. The rear
     // row stays inward of the existing speaker/support envelope. No selected
     // photometry, mounting design, glare or concealment approval exists.
+    // Owner, 1 November 2026: no chandeliers in the wings; downlights from above instead.
+    // L63, L65, L67 and L69 (and the L64/L66/L68/L70 of the earlier review) are retired
+    // (wingReviewRetiredIds); these calls stay so that every later ID keeps its number. The
+    // wing downlights are appended below the Stations (explicit IDs L-WING-...).
     for (const sign of [-1, 1]) for (const x of [38.94, 42.22]) {
       for (const [z, rows] of [[10.6, 'back'], [8.8, 'front']]) {
         add({ type: 'chandelier6Reading', name: `Wing light · ${side(sign)} · ${x < 40.5 ? 'front' : 'rear'} block · ${rows} rows`, circuit: 'L8', mount: 'pendant',
@@ -590,6 +609,20 @@
       for (const e of [-1, 1]) add({ id: `L-STATION-${n}-${e < 0 ? 'A' : 'B'}`, type: 'stationCandle', name: `Station candle · ${['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV'][n - 1]} · ${e < 0 ? 'front' : 'rear'}`,
         circuit: 'LS', mount: 'wall', pos: [x + e * ST.candles.dx, ST.candles.y, s * (ST.face - 0.02)], yaw: -s * 90, mountYaw: -s * 90, on: true });
     }
+    // L8 · wing downlights, owner request of 1 November 2026: the two chandeliers on each side
+    // are replaced by four narrow (24 degree) downlights from the wing roof, two over each
+    // bench block (rows at Z 8.80 and 11.40, the block centres at X 38.94 and 42.22), aimed
+    // straight down onto the benches. Each is a finish-matched projector hung tight to the
+    // roof timber (the lacquer follows the timber tone), 2 100 lm / 17.5 W. Simulated wing seats:
+    // 97-301 lux (average 196, half below 200) before, 226-332 lux (average 260) after; see
+    // docs/systems/lighting.md.
+    // Photometry, glare, fixing into the roof timber and maintenance access remain ENGINEERING HOLD.
+    for (const sign of [-1, 1]) for (const [x, blk] of [[WING_DOWNLIGHT.x[0], 'front'], [WING_DOWNLIGHT.x[1], 'rear']]) for (const [az, row] of [[WING_DOWNLIGHT.z[0], 'inner'], [WING_DOWNLIGHT.z[1], 'outer']]) {
+      const z = sign * az, roof = above(x, z, 3.0);
+      add({ id: `L-WING-${sign < 0 ? 'B' : 'H'}-${blk === 'front' ? 'F' : 'R'}${row === 'inner' ? 'I' : 'O'}`, type: 'projector24', name: `Wing downlight · ${side(sign)} · ${blk} block · ${row} row`, circuit: 'L8', mount: 'pendant',
+        pos: [x, roof - 0.02, z], anchorY: roof, yaw: 0, mountYaw: 0, tilt: -90, lumens: WING_DOWNLIGHT.lumens, beam: WING_DOWNLIGHT.beam, cct: 2700, shadow: false, params: { finish: 'timber' },
+        note: 'CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/lighting.md.' });
+    }
     window.CHURCH_VERANDA_REVIEW?.apply(items,GEO);
     window.CHURCH_DOORHEAD_REVIEW?.apply(items,GEO,SIM);
     return items.filter(it => ![...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id) && !parishRetiredNames.test(it.name));
@@ -655,6 +688,82 @@
       if (!old || !raw || !untouched(it, old)) return it;
       return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, ...(raw.params?.length ? { params: { ...it.params, length: raw.params.length } } : {}) };
     });
+  }
+
+  // Owner, 1 November 2026: (2) the centre of the nave looked dark and (3) the wings use downlights
+  // from above, not two chandeliers a side. The 28 tie-beam reading heads of the nave move and
+  // re-aim (naveCentreBefore holds their previous place, aim, circuit, output and optic) and the
+  // four wing chandeliers L63/L65/L67/L69 (wingChandelierBefore) are retired for four downlights
+  // per wing (naveWingLightIds), with new stable IDs. A saved head still at its previous values
+  // (5 mm, 0.01 degree, same output and optic) takes the new place and aim and keeps its ID,
+  // switching, dimming, visibility and note. One the user moved, re-aimed, retuned or re-circuited
+  // stays as the user left it. On each wing side the chandeliers are replaced only if none of that
+  // side's chandeliers was changed by the user: the untouched ones are removed, the downlights are
+  // added once (a side the user changed, or a downlight deleted later, is never touched again) and
+  // each downlight takes the switching, dimming and visibility of the chandelier of its block.
+  const naveWingLightingRevision = '2026-11-01-nave-wing-lighting-1';
+  // BEGIN naveWingLighting table · exported from the recommended design at 05ccc17.
+  const naveCentreBefore = {
+    "L3": {"type":"readingProjector","name":"Reading light · axis 3 · B central","pos":[10.125,8.77,-2.48],"yaw":-15.042,"tilt":-86.6032,"mount":"wall","circuit":"L2","lumens":2300,"beam":24,"anchorY":8.59},
+    "L4": {"type":"readingProjector","name":"Reading light · axis 3 · B central · twin","pos":[10.125,8.77,-2.72],"yaw":174.8437,"tilt":-80.2739,"mount":"wall","circuit":"L2","lumens":2300,"beam":28,"anchorY":8.59},
+    "L5": {"type":"readingProjector","name":"Reading light · axis 3 · H central","pos":[10.125,8.77,2.48],"yaw":15.042,"tilt":-86.6032,"mount":"wall","circuit":"L2","lumens":2300,"beam":24,"anchorY":8.59},
+    "L6": {"type":"readingProjector","name":"Reading light · axis 3 · H central · twin","pos":[10.125,8.77,2.72],"yaw":-174.8437,"tilt":-80.2739,"mount":"wall","circuit":"L2","lumens":2300,"beam":28,"anchorY":8.59},
+    "L7": {"type":"readingProjector","name":"Reading light · axis 4 · B central","pos":[14.625,8.77,-2.48],"yaw":-15.042,"tilt":-86.6032,"mount":"wall","circuit":"L2","lumens":2300,"beam":24,"anchorY":8.59},
+    "L8": {"type":"readingProjector","name":"Reading light · axis 4 · B central · twin","pos":[14.625,8.77,-2.72],"yaw":172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L2","lumens":2300,"beam":24,"anchorY":8.59},
+    "L9": {"type":"readingProjector","name":"Reading light · axis 4 · H central","pos":[14.625,8.77,2.48],"yaw":15.042,"tilt":-86.6032,"mount":"wall","circuit":"L2","lumens":2300,"beam":24,"anchorY":8.59},
+    "L10": {"type":"readingProjector","name":"Reading light · axis 4 · H central · twin","pos":[14.625,8.77,2.72],"yaw":-172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L2","lumens":2300,"beam":24,"anchorY":8.59},
+    "L11": {"type":"readingProjector","name":"Reading light · axis 5 · B central","pos":[19.125,8.77,-2.48],"yaw":-15.042,"tilt":-86.6032,"mount":"wall","circuit":"L2","lumens":2300,"beam":24,"anchorY":8.59},
+    "L12": {"type":"readingProjector","name":"Reading light · axis 5 · B central · twin","pos":[19.125,8.77,-2.72],"yaw":172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L2","lumens":2300,"beam":24,"anchorY":8.59},
+    "L13": {"type":"readingProjector","name":"Reading light · axis 5 · H central","pos":[19.125,8.77,2.48],"yaw":15.042,"tilt":-86.6032,"mount":"wall","circuit":"L2","lumens":2300,"beam":24,"anchorY":8.59},
+    "L14": {"type":"readingProjector","name":"Reading light · axis 5 · H central · twin","pos":[19.125,8.77,2.72],"yaw":-172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L2","lumens":2300,"beam":24,"anchorY":8.59},
+    "L15": {"type":"readingProjector","name":"Reading light · axis 6 · B central","pos":[23.625,8.77,-2.48],"yaw":-15.042,"tilt":-86.6032,"mount":"wall","circuit":"L1","lumens":2300,"beam":24,"anchorY":8.59},
+    "L16": {"type":"readingProjector","name":"Reading light · axis 6 · B central · twin","pos":[23.625,8.77,-2.72],"yaw":172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L2","lumens":2300,"beam":24,"anchorY":8.59},
+    "L17": {"type":"readingProjector","name":"Reading light · axis 6 · H central","pos":[23.625,8.77,2.48],"yaw":15.042,"tilt":-86.6032,"mount":"wall","circuit":"L1","lumens":2300,"beam":24,"anchorY":8.59},
+    "L18": {"type":"readingProjector","name":"Reading light · axis 6 · H central · twin","pos":[23.625,8.77,2.72],"yaw":-172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L2","lumens":2300,"beam":24,"anchorY":8.59},
+    "L19": {"type":"readingProjector","name":"Reading light · axis 7 · B central","pos":[28.125,8.77,-2.48],"yaw":-15.042,"tilt":-86.6032,"mount":"wall","circuit":"L1","lumens":2300,"beam":24,"anchorY":8.59},
+    "L20": {"type":"readingProjector","name":"Reading light · axis 7 · B central · twin","pos":[28.125,8.77,-2.72],"yaw":172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L1","lumens":2300,"beam":24,"anchorY":8.59},
+    "L21": {"type":"readingProjector","name":"Reading light · axis 7 · H central","pos":[28.125,8.77,2.48],"yaw":15.042,"tilt":-86.6032,"mount":"wall","circuit":"L1","lumens":2300,"beam":24,"anchorY":8.59},
+    "L22": {"type":"readingProjector","name":"Reading light · axis 7 · H central · twin","pos":[28.125,8.77,2.72],"yaw":-172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L1","lumens":2300,"beam":24,"anchorY":8.59},
+    "L23": {"type":"readingProjector","name":"Reading light · axis 8 · B central","pos":[32.625,8.77,-2.48],"yaw":-15.042,"tilt":-86.6032,"mount":"wall","circuit":"L1","lumens":2300,"beam":24,"anchorY":8.59},
+    "L24": {"type":"readingProjector","name":"Reading light · axis 8 · B central · twin","pos":[32.625,8.77,-2.72],"yaw":172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L1","lumens":2300,"beam":24,"anchorY":8.59},
+    "L25": {"type":"readingProjector","name":"Reading light · axis 8 · H central","pos":[32.625,8.77,2.48],"yaw":15.042,"tilt":-86.6032,"mount":"wall","circuit":"L1","lumens":2300,"beam":24,"anchorY":8.59},
+    "L26": {"type":"readingProjector","name":"Reading light · axis 8 · H central · twin","pos":[32.625,8.77,2.72],"yaw":-172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L1","lumens":2300,"beam":24,"anchorY":8.59},
+    "L27": {"type":"readingProjector","name":"Reading light · axis 9 · B central","pos":[37.125,8.77,-2.48],"yaw":-7.9452,"tilt":-83.641,"mount":"wall","circuit":"L1","lumens":2300,"beam":28,"anchorY":8.59},
+    "L28": {"type":"readingProjector","name":"Reading light · axis 9 · B central · twin","pos":[37.125,8.77,-2.72],"yaw":172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L1","lumens":2300,"beam":24,"anchorY":8.59},
+    "L29": {"type":"readingProjector","name":"Reading light · axis 9 · H central","pos":[37.125,8.77,2.48],"yaw":7.9452,"tilt":-83.641,"mount":"wall","circuit":"L1","lumens":2300,"beam":28,"anchorY":8.59},
+    "L30": {"type":"readingProjector","name":"Reading light · axis 9 · H central · twin","pos":[37.125,8.77,2.72],"yaw":-172.5408,"tilt":-83.2329,"mount":"wall","circuit":"L1","lumens":2300,"beam":24,"anchorY":8.59},
+  };
+  const wingChandelierBefore = {
+    "L63": {"type":"chandelier6Reading","name":"Wing light · B · front block · back rows","pos":[38.94,3.8,-10.15],"yaw":0,"tilt":-90,"mount":"pendant","circuit":"L8","lumens":5640,"beam":100,"anchorY":8.1151},
+    "L65": {"type":"chandelier6Reading","name":"Wing light · B · rear block · back rows","pos":[42.22,3.8,-10.15],"yaw":0,"tilt":-90,"mount":"pendant","circuit":"L8","lumens":5640,"beam":100,"anchorY":8.0836},
+    "L67": {"type":"chandelier6Reading","name":"Wing light · H · front block · back rows","pos":[38.94,3.8,10.15],"yaw":0,"tilt":-90,"mount":"pendant","circuit":"L8","lumens":5640,"beam":100,"anchorY":8.1151},
+    "L69": {"type":"chandelier6Reading","name":"Wing light · H · rear block · back rows","pos":[42.22,3.8,10.15],"yaw":0,"tilt":-90,"mount":"pendant","circuit":"L8","lumens":5640,"beam":100,"anchorY":8.0836},
+  };
+  // END naveWingLighting table
+  const naveWingChandelierIds = { B: [['L63', 'F'], ['L65', 'R']], H: [['L67', 'F'], ['L69', 'R']] };
+  const naveWingLightIds = code => ['F', 'R'].flatMap(b => ['I', 'O'].map(r => `L-WING-${code}-${b}${r}`));
+  function upgradeNaveWingLighting(items, design) {
+    const next = new Map(design.map(it => [it.id, it]));
+    const sameOutput = (it, old) => Math.abs((it.lumens ?? NaN) - old.lumens) < 0.5 && Math.abs((it.beam ?? NaN) - old.beam) < 0.5;
+    const asBefore = (it, old) => untouched(it, old) && sameOutput(it, old);
+    let out = items.map(it => {
+      const old = naveCentreBefore[it.id], raw = next.get(it.id);
+      if (!old || !raw || !asBefore(it, old)) return it;
+      return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, anchorY: raw.anchorY, lumens: raw.lumens, beam: raw.beam };
+    });
+    const have = new Set(out.map(it => it.id)), gone = new Set(), added = [];
+    for (const code of ['B', 'H']) {
+      const present = naveWingChandelierIds[code].map(([id, block]) => ({ block, it: out.find(it => it.id === id) })).filter(row => row.it);
+      if (present.some(row => !asBefore(row.it, wingChandelierBefore[row.it.id]))) continue; // the user changed this side
+      present.forEach(row => gone.add(row.it.id));
+      for (const id of naveWingLightIds(code)) {
+        const raw = next.get(id);
+        if (!raw || have.has(id)) continue;
+        const old = present.find(row => row.block === id.split('-')[3][0])?.it;
+        added.push({ ...raw, ...(old ? { on: old.on, dim: old.dim, hidden: old.hidden } : {}) });
+      }
+    }
+    return [...out.filter(it => !gone.has(it.id)), ...added];
   }
 
   // Parish priest's decisions of 25 October 2026 (docs/engineering/parish-meeting-2026-10-25.md).
@@ -959,7 +1068,9 @@
   const fanBeamRevision = '2026-10-19-fans-on-column-beams-1';
   function upgradeFanBeams(items, design) {
     const next = new Map(design.filter(it => /^Ceiling fan · bay [2-8]′?–[3-9] · [BH] aisle$/.test(it.name)).map(it => [it.name, it]));
-    const heads = new Map(design.filter(it => /^Reading light · axis \d · [BH] central/.test(it.name) && it.beam === 24).map(it => [it.name, it]));
+    // The 5 degree / 24 degree heads of this step are those of the design before 1 Nov 2026 (naveCentreBefore);
+    // the nave-and-wing lighting step then moves them on.
+    const heads = new Map(Object.values(naveCentreBefore).filter(row => row.beam === 24).map(row => [row.name, row]));
     return items.map(it => {
       const raw = next.get(it.name);
       if (!raw || it.type !== 'fanCeiling' || !Array.isArray(it.pos)) return it;
@@ -1086,7 +1197,8 @@
   // Deleted, moved, renamed, hidden or retuned items block that wing's update.
   // The exact pre-review default records are retained for audit and comparison.
   const wingReviewRevision = '2026-10-09-wing-two-light-art-2';
-  const wingReviewRetiredIds = ['L64', 'L66', 'L68', 'L70', 'F-WING-B-3', 'F-WING-B-4', 'F-WING-H-3', 'F-WING-H-4'];
+  // L63/L65/L67/L69 joined the list on 1 Nov 2026 (wing chandeliers replaced by L-WING-... downlights).
+  const wingReviewRetiredIds = ['L63', 'L64', 'L65', 'L66', 'L67', 'L68', 'L69', 'L70', 'F-WING-B-3', 'F-WING-B-4', 'F-WING-H-3', 'F-WING-H-4'];
   const wingBefore = [
     {"id":"L63","type":"projector36","name":"Wing light · B · front block · back rows","circuit":"L8","mount":"wall","pos":[40.26,4.15,-13.06],"yaw":123.95905981967627,"tilt":-57.22322254475144,"mountYaw":90,"on":true,"hidden":false,"dim":1,"params":{},"lumens":3800,"beam":50,"shadow":false},
     {"id":"L64","type":"projector36","name":"Wing light · B · front block · front rows","circuit":"L8","mount":"wall","pos":[40.26,2.92,-13.06],"yaw":106.84380855172743,"tilt":-28.17456054434298,"mountYaw":90,"on":true,"hidden":false,"dim":1,"params":{},"lumens":4000,"beam":36,"shadow":false},
@@ -1114,7 +1226,7 @@
     if (!['B', 'H'].includes(code)) throw new Error('Choose wing B or H.');
     const sign = code === 'B' ? -1 : 1;
     const ids = wingBefore.filter(it => Math.sign(it.pos[2]) === sign && (it.circuit === 'L8' || it.type === 'fanCeiling') && !wingReviewRetiredIds.includes(it.id)).map(it => it.id);
-    return ids.map(id => {
+    return [...ids, ...naveWingLightIds(code)].map(id => {
       const raw = design.find(it => it.id === id);
       if (!raw) throw new Error('Incomplete wing review template: ' + id);
       return { ...raw };
@@ -1123,7 +1235,7 @@
   function wingReviewScope(code) {
     if (!['B', 'H'].includes(code)) throw new Error('Choose wing B or H.');
     const sign = code === 'B' ? -1 : 1;
-    return wingIntermediate.filter(it => Math.sign(it.pos[2]) === sign).map(it => it.id);
+    return [...wingIntermediate.filter(it => Math.sign(it.pos[2]) === sign).map(it => it.id), ...naveWingLightIds(code)];
   }
   function upgradeWingReview(items, design) {
     const same = (a, b) => {
@@ -1199,5 +1311,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

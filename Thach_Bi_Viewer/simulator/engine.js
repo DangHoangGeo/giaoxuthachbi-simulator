@@ -114,7 +114,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -1572,7 +1572,7 @@
       }).map(it => it.id);
       const conflictIds = window.CHURCH_SIM_DESIGN.wingReviewScope(side).filter(id => id.startsWith('F-WING-') && SIM.item(id) && !new RegExp('^Wall fan · wing ' + side + ' · [34] · held review$').test(SIM.item(id).name));
       return { side, current: !mismatchingIds.length && !obsoleteIds.length, mismatchingIds, conflictIds, obsoleteIds,
-        counts: { chandeliers: items.filter(it => it.type === 'chandelier6Reading').length,
+        counts: { chandeliers: items.filter(it => it.type === 'chandelier6Reading').length, downlights: items.filter(it => /^L-WING-/.test(it.id)).length,
           wallFans: items.filter(it => CAT.byId[it.type]?.fan?.kind === 'jet' && it.circuit === 'F5').length,
           roofFans: items.filter(it => it.type === 'fanCeiling').length } };
     });
@@ -2454,6 +2454,7 @@
       ['facadeCadRevision', D.facadeCadRevision, '.before-cad-facade', D.upgradeFacadeCad],
       ['parishMeetingRevision', D.parishMeetingRevision, '.before-parish-meeting', D.upgradeParishMeeting],
       ['towerPierRevision', D.towerPierRevision, '.before-tower-pier-depth', D.upgradeTowerPiers],
+      ['naveWingLightingRevision', D.naveWingLightingRevision, '.before-nave-wing-lighting', D.upgradeNaveWingLighting],
       ['verandaReviewRevision', window.CHURCH_VERANDA_REVIEW.revision, '.before-open-porch-light-sound', window.CHURCH_VERANDA_REVIEW.upgrade],
       ['doorheadReviewRevision', window.CHURCH_DOORHEAD_REVIEW.revision, '.before-doorheads-no-sconces', window.CHURCH_DOORHEAD_REVIEW.upgrade]
     ]) {
