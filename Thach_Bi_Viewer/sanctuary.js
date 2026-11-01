@@ -32,6 +32,24 @@
     floor:{revision:'2026-11-01-sanctuary-floor-cad-1',
       apron:{front:37.475,half:5,back:44.065},dais:{front:38.475,half:4,back:48.65},
       stair:{x0:38.475,x1:39.345,half:.95,tread:.29},side:{x0:44.065,x1:52.63,inner:3.63,outer:7.11}} };
+  // Owner request, 1 November 2026: the roof timbers looked flimsy. These are VISUALIZATION PROXY sections
+  // (metres) for the exposed roof members; none is a structural design (ENGINEERING HOLD). Every member
+  // grows downward or inward from the unmoved boarded lining and never through it, so the tie and
+  // column-line beam soffits, the fittings hung from them and the cable routes are untouched. The measured
+  // 'as drawn' tie and side beams and the 0.24 x 0.45 m column-line beams keep their sections.
+  // `before` is the earlier proxy section; `w` is across the member's width and `d` its depth.
+  spec.roofTimber = {
+    revision:'2026-11-01-roof-timbers-1',
+    rafter:{before:{w:.17,d:.20},w:.26,d:.34},          // nave principal rafters (axes 3-9) below the lining; d perpendicular to the slope, lining face kept; axes 10-11 unchanged
+    ridge:{before:{w:.21,d:.16},w:.30,d:.28},           // underside ridge member; w across, d vertical, top face kept
+    purlin:{before:{w:.09,d:.12},w:.14,d:.22},          // drawn purlins: w along the slope, d perpendicular to it (now square to the lining)
+    proposedPurlin:{before:{w:.11,d:.095},w:.14,d:.17}, // earlier visual proposal, shown only with 'Show truss'
+    kingPost:{before:{w:.11,d:.14},w:.18,d:.22},
+    diagonal:{before:{w:.11,d:.13},w:.17,d:.20},
+    kneeBrace:{before:{w:.15,d:.17},w:.22,d:.26},
+    kneeBraceRod:{before:{r:.075},r:.105},
+    referenceFrame:{queenPost:.24,collar:{w:.34,d:.42},upperCollar:{w:.30,d:.30},kingStrut:.24,archBraceR:.14,plateBracketR:.10}
+  };
   // Floor levels from the church's CAD file of 23 October 2026 (sections 25 and 45), adopted
   // by the owner on 24 October 2026: dais +0.80 (the PDF set had +0.75) and side floors +0.16
   // (+0.15). The bundle still places its furnishings on +0.75, so prepare() lifts that group.
@@ -194,6 +212,36 @@
     window.CHURCH_SANCTUARY.naturalTimber={color:timber.color.clone(),map:timber.map,bumpMap:timber.bumpMap,roughness:timber.roughness};
     timber.color.copy(wood.color);timber.map=timber.bumpMap=null;timber.roughness=wood.roughness;timber.needsUpdate=true;
     const reference=palettes?.get(timber);if(reference){reference.color.copy(timber.color);reference.map=reference.bump=null;}
+    // Heavier roof timbers (spec.roofTimber). Only the geometry is replaced: names, positions, member
+    // order and the lining stay, so the soffit lines and bosses below, the simulator and the schedules
+    // follow the new sections. The earlier box is kept on userData.proxyBefore for the record.
+    {
+      const RT=spec.roofTimber,reshape=(o,geometry,key)=>{o.userData.proxyBefore=o.userData.proxyBefore||{section:key,parameters:{...o.geometry.parameters}};o.geometry.dispose();o.geometry=geometry;o.userData.roofTimberRevision=RT.revision;};
+      building.traverse(o=>{
+        if(!o.isMesh||o.geometry.type!=='BoxGeometry'&&o.geometry.type!=='CylinderGeometry')return;
+        const p=o.geometry.parameters;
+        switch(o.name){
+          case 'Proposed visible principal rafter below roof lining':{
+            // Deeper and wider; the upper face stays on the lining and the extra depth hangs below it.
+            // The two pairs behind the nave (axes 10 and 11) keep their section: sheet 5 gives that line a lobed
+            // arch instead of a truss, the vault hides them, and the shrine washes sit against the lining there.
+            if(o.position.x>=spec.frameX-.5)break;
+            const R=RT.rafter;reshape(o,new T.BoxGeometry(R.w,p.height,R.d),'rafter');
+            o.translateZ(Math.sign(o.rotation.x)*(R.d-p.depth)/2);break;}
+          case 'Proposed underside ridge member':{
+            // Rotated about Z: width is vertical here. Top face stays put, the extra depth hangs below.
+            const R=RT.ridge;reshape(o,new T.BoxGeometry(R.d,p.height,R.w),'ridge');
+            o.position.y-=(R.d-p.width)/2;break;}
+          case 'Proposed longitudinal roof purlin':case 'Proposed purlin before roof valley':case 'Proposed purlin beyond roof valley':{
+            const R=RT.proposedPurlin;reshape(o,new T.BoxGeometry(R.d,p.height,R.w),'proposedPurlin');break;}
+          case 'Proposed truss king post':reshape(o,new T.BoxGeometry(RT.kingPost.w,p.height,RT.kingPost.d),'kingPost');break;
+          case 'Proposed roof truss diagonal':reshape(o,new T.BoxGeometry(RT.diagonal.w,p.height,RT.diagonal.d),'diagonal');break;
+          case 'Proposed timber knee brace':reshape(o,new T.BoxGeometry(RT.kneeBrace.w,p.height,RT.kneeBrace.d),'kneeBrace');break;
+          case 'Timber knee brace · proposed section':reshape(o,new T.CylinderGeometry(RT.kneeBraceRod.r,RT.kneeBraceRod.r,p.height,p.radialSegments,p.heightSegments,p.openEnded),'kneeBraceRod');break;
+          default:
+        }
+      });
+    }
     const rafters=[];
     building.traverse(o=>{
       if(!o.isMesh)return;

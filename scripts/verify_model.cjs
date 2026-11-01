@@ -389,8 +389,35 @@ assert.equal(rafterLines.length,14,'Gilded line under each nave rafter (axes 3�
 for(const line of rafterLines){
   const c=bounds(line).getCenter(new T.Vector3()),rafter=rafters.find(o=>Math.abs(o.position.x-c.x)<.01&&Math.sign(o.position.z)===Math.sign(c.z));
   assert(rafter&&c.x<frameX-.5,'Rafter line belongs to a nave rafter');
-  // 0.104 m from the rafter centre line along the soffit normal: lower, and towards the nave axis.
-  near(c.distanceTo(rafter.position),.104,'Rafter line lies on the soffit');assert(c.y<rafter.position.y&&Math.abs(c.z)<Math.abs(rafter.position.z),'Rafter line is on the underside');
+  // Half the rafter depth plus 4 mm from the rafter centre line along the soffit normal: lower, and towards the nave axis.
+  near(c.distanceTo(rafter.position),rafter.geometry.parameters.depth/2+.004,'Rafter line lies on the soffit');assert(c.y<rafter.position.y&&Math.abs(c.z)<Math.abs(rafter.position.z),'Rafter line is on the underside');
+}
+// Owner request, 1 November 2026: heavier roof timbers. Visualization-proxy sections (ENGINEERING HOLD); they grow downward
+// from the unmoved lining, never through it. The sections are the minimum the model must keep.
+{
+  const RT=sandbox.window.CHURCH_SANCTUARY.spec.roofTimber,lining=z=>12.282-.7258*Math.abs(z);
+  assert(RT&&RT.revision,'Roof timber sections are declared in the sanctuary spec');
+  assert(RT.rafter.w>=.25&&RT.rafter.d>=.32&&RT.rafter.w>=1.4*RT.rafter.before.w&&RT.rafter.d>=1.6*RT.rafter.before.d,'Principal rafters are visibly heavier than 0.17 × 0.20 m');
+  assert.equal(rafters.filter(o=>o.position.x<frameX-.5).length,14,'Fourteen nave rafters (axes 3–9, both slopes)');
+  for(const o of rafters.filter(o=>o.position.x>=frameX-.5)){const p=o.geometry.parameters;assert(Math.abs(p.width-.17)<1e-9&&Math.abs(p.depth-.20)<1e-9,'Rafters behind the nave (axes 10–11) keep 0.17 × 0.20 m');}
+  for(const o of rafters.filter(o=>o.position.x<frameX-.5)){
+    const p=o.geometry.parameters;assert(p.width>=.25&&p.depth>=.32,`Rafter section ${p.width} × ${p.depth} m at x ${o.position.x}`);
+    assert(o.userData.proxyBefore&&Math.abs(o.userData.proxyBefore.parameters.depth-.20)<1e-9,'Rafter keeps its earlier section on record');
+    // Upper face centre stays on the lining (earlier proxy: 0.0235 m above it, vertically); the growth is below.
+    const down=new T.Vector3(0,0,Math.sign(o.rotation.x)).applyQuaternion(o.quaternion),top=o.position.clone().addScaledVector(down,-p.depth/2);
+    const rise=top.y-lining(top.z);assert(rise>0&&rise<.03,`Rafter upper face stays at the lining (${rise.toFixed(4)} m) at x ${o.position.x}`);
+  }
+  const ridgeMember=named('Proposed underside ridge member')[0],rb=bounds(ridgeMember);
+  assert(rb.max.y-rb.min.y>=.27&&rb.max.z-rb.min.z>=.29,`Ridge member ${(rb.max.z-rb.min.z).toFixed(3)} wide × ${(rb.max.y-rb.min.y).toFixed(3)} deep`);
+  assert(Math.abs(rb.max.y-12.23)<.002&&rb.max.y<lining(0),'Ridge member grows downward from its earlier top face and stays under the lining');
+  for(const [name,count,w,d] of [['Proposed truss king post',7,.17,.21],['Proposed roof truss diagonal',14,.16,.19],['Proposed timber knee brace',14,.21,.25]]){
+    const list=named(name);assert.equal(list.length,count,name);for(const o of list){const p=o.geometry.parameters;assert(p.width>=w&&p.depth>=d,`${name} section ${p.width} × ${p.depth} m`);}
+  }
+  for(const name of ['Proposed longitudinal roof purlin','Proposed purlin before roof valley','Proposed purlin beyond roof valley'])for(const o of named(name)){
+    const p=o.geometry.parameters;assert(p.width>=.16&&p.depth>=.13,`${name} section ${p.width} × ${p.depth} m`);
+    const ob=bounds(o);assert(ob.max.y<lining(o.position.z)+.001,`${name} stays under the lining`);
+  }
+  for(const o of named('Timber knee brace · proposed section'))assert(o.geometry.parameters.radiusTop>=.1,'Knee brace rod radius');
 }
 const ridgeLine=named('Gilded ridge soffit line')[0],ridgeBox=bounds(named('Proposed underside ridge member')[0]);
 assert(ridgeLine,'Gilded ridge line');
