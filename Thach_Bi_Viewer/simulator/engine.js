@@ -197,7 +197,8 @@
   // Inside the church: the nave and sanctuary, plus the two 9–10 wings under their own roof.
   // Above the entrance hall (+8.39 m) and in front of the nave gable on axis 2′ (front face x 5.17)
   // stands the upper façade of the CAD file of 23 Oct 2026, with its niches: outside.
-  function isInterior(p) { return p[0] > 2.3 && p[0] < 53.1 && p[1] < 12.5 && !(p[0] < 5.17 && p[1] > 8.39) && (Math.abs(p[2]) < 7.3 || (inWing(p[0], p[2]) && p[1] < 9.6)); }
+  // Since 25 Oct 2026 the doors stand at X 5.2 (facade.js) and the arches in front are an open porch.
+  function isInterior(p) { return p[0] > 5.1 && p[0] < 53.1 && p[1] < 12.5 && !(p[0] < 5.17 && p[1] > 8.39) && (Math.abs(p[2]) < 7.3 || (inWing(p[0], p[2]) && p[1] < 9.6)); }
   function isCovered(p) { return p[0] > 2.3 && p[0] < 53.1 && (Math.abs(p[2]) < 10.6 || (p[0] > 37 && p[0] < 44 && Math.abs(p[2]) < 13)); }
   // Shared planning approximation for sound received from the enclosed room.
   // A veranda is partly coupled; an open courtyard has no enclosed reverberant field.
@@ -243,6 +244,9 @@
     for (const s of [-1, 1]) for (const x of [AX['9'], AX['10']]) GEO.walls.push({ x, z0: Math.min(s * 7.47, s * 10.234), z1: Math.max(s * 7.47, s * 10.234), y0: -0.4, y1: 7.1, openings: [] });
     // Entrance façade (plane inside the wall, inner face at x 2.65): solid apart from the main door and
     // the two side doors, all open in the model's default state.
+    // Door wall on the towers' rear pier line (facade.js, 25 Oct 2026), doors open by default.
+    const EN = window.CHURCH_FACADE?.spec.entrance;
+    if (EN?.openings) GEO.walls.push({ x: (EN.wall[0] + EN.wall[1]) / 2, z0: -7.25, z1: 7.25, y0: -0.4, y1: EN.top, openings: EN.openings.map(o => ({ z0: o.z0, z1: o.z1, y0: -0.4, y1: o.y1 })) });
     GEO.walls.push({ x: 2.35, z0: -7.25, z1: 7.25, y0: -0.4, y1: 12.5, openings: [
       { z0: -1.25, z1: 1.25, y0: -0.4, y1: 4.6 }, { z0: -6.1, z1: -4.9, y0: -0.4, y1: 3.6 }, { z0: 4.9, z1: 6.1, y0: -0.4, y1: 3.6 }] });
     // Sanctuary (sanctuary.js): the lobed timber frame on the column line, the

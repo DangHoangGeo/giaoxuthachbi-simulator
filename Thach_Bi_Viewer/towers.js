@@ -608,7 +608,9 @@
     // 13.62 (the outer face of the side projection plinth), −2.08 to 0. ENG-043: behind it, under
     // the outer rear pier only (|Z| from 11.6, clear of the veranda floor at −0.32), it runs on to
     // X 5.9.
-    const footing = { x: [-1.2, 5.4], z: [6.75, 13.62], y: [-2.08, 0], rear: { x: [5.4, 5.9], z: [11.6, 13.62] } };
+    // Owner, 1 Nov 2026: its front face is flush with the front piers' plinth (X −0.984), as elevation
+    // E01B draws the pier bases running straight down to the −0.48 forecourt, with no ledge in front.
+    const footing = { x: [spec.pier.front[0] - spec.pier.bands[0][2], 5.4], z: [6.75, 13.62], y: [-2.08, 0], rear: { x: [5.4, 5.9], z: [11.6, 13.62] } };
     spec.footing = footing;
     let footingMaterial = null;
     (building || exterior).traverse(o => {

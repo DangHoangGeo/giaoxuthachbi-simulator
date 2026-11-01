@@ -6,13 +6,13 @@ Generated 1 November 2026 from the category registers and their matched model sn
 
 | Usage category | Equipment/enclosures | Shown | Hidden alternatives | Connected components | Shown items commanded on | Routes | Route points |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Lighting | 272 | 272 | 0 | 272 | 246 | 295 | 2236 |
-| Sound | 44 | 44 | 0 | 44 | 34 | 54 | 334 |
+| Lighting | 272 | 272 | 0 | 272 | 246 | 295 | 2230 |
+| Sound | 44 | 44 | 0 | 44 | 34 | 54 | 330 |
 | Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 410 |
 | Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 68 |
 | Decoration and furnishings | 37 | 22 | 15 | 0 | 22 | 0 | 0 |
 | Distribution and controls | 12 | 12 | 0 | 6 | 4 | 15 | 109 |
-| **Total** | 415 | 400 | 15 | 372 | 338 | 429 | 3157 |
+| **Total** | 415 | 400 | 15 | 372 | 338 | 429 | 3147 |
 
 Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **33 equipment, 116 routes**.
 
@@ -36,13 +36,13 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,248.859 | 3,248.859 | 0.000 | 0.000 |
-| Sound | 768.994 | 0.000 | 2,365.631 | 571.727 |
-| Fans and ventilation | 955.646 | 955.646 | 0.000 | 0.000 |
-| Exit signs | 168.600 | 168.600 | 0.000 | 0.000 |
+| Lighting | 3,269.090 | 3,269.090 | 0.000 | 0.000 |
+| Sound | 765.922 | 0.000 | 2,362.560 | 566.077 |
+| Fans and ventilation | 979.901 | 979.901 | 0.000 | 0.000 |
+| Exit signs | 165.967 | 165.967 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 263.923 | 263.923 | 0.000 | 0.000 |
-| **Total by length basis** | **5,406.021** | **4,637.028** | **2,365.631** | **571.727** |
+| **Total by length basis** | **5,444.804** | **4,678.881** | **2,362.560** | **566.077** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/419 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -72,8 +72,8 @@ The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-an
 The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
 
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 3cdbadaba0ffc908418f454ec3a56c6c112739ccae548d5038c524ed0fb572ae.
-- [Electrical snapshot](electrical-systems.json), SHA-256: 19f49808ff7b94351ad8e2bad9b30d5c978e8d5e96c5f164a91146ca0afcd5ac.
+- [Layout snapshot](equipment-layout.json), SHA-256: b59c831ec1c00c49183c1e83c86ee8d801e0152690935057f3be6f551a8b788b.
+- [Electrical snapshot](electrical-systems.json), SHA-256: 2a343075b78e07a39b50033e252aeaec71194df376aa048789dba03e95d6e972.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 
@@ -90,3 +90,7 @@ Theo [ENG-043](../engineering/issues.md), các trụ góc tháp lấy đúng b�
 ## Trụ tầng trệt mặt tiền giữa — 31/10/2026
 
 Hai trụ hai bên cửa chính được dựng lại theo E01B/P05: cùng tim với trụ tầng trên (±2,979 m) và chân bệ bậc như trụ tháp. Hai đèn lồng cửa chính L137/L138 dời 0,10 m về phía cửa (|Z| 2,40 → 2,30 m), để khỏi chạm trụ mới. Không đổi ID, mạch hay công suất. Bố trí đã lưu được chuyển một lần, cùng revision `towerPierRevision` (`2026-10-31-tower-pier-depth-2`).
+
+## Cửa chính trên trục 2 — 01/11/2026
+
+Theo ý chủ đầu tư ngày 01/11/2026 (và cha xứ ngày 25/10/2026), tường cửa chính nằm trên trục 2 (X 5,035–5,475; [facade-model.md](../facade-model.md)). Các thiết bị gắn mặt trong tường cửa dời theo tường: hai đèn đọc hàng ghế cuối, hai đèn giữa hàng cuối, biển thoát hiểm cửa chính (L155), hai quạt đối lưu lối vào (F250/F251) và hai loa tường sảnh (S273/S274). Không đổi ID, mạch, công suất hay chế độ. Tổng chiều dài tuyến đổi từ 5 406,021 lên 5 444,804 m (chiếu sáng +20,231; quạt +24,255; âm thanh −3,072; thoát hiểm −2,633), vì các tuyến đi tới tường mới. Bố trí đã lưu trong trình duyệt chuyển một lần qua bảng họp giáo xứ (bản 7): chỉ thiết bị còn ở chỗ cũ mới dời theo.

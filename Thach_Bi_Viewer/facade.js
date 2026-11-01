@@ -29,6 +29,10 @@
     // pedestal steps out as the tower piers do, to the same +1.848 top; only its four lowest band levels
     // differ. [y0, y1, projection beyond the shaft face, material]; the cyma bands are one mean step.
     ground: { half: 0.49, front: 1.561, back: 2.6, top: 8.39, flutes: [2.05, 8.2], fluteStep: 0.11,
+      // Entrance steps between the towers, section A-A D7E712–D7E716 and plan P05: three 0.16 m risers
+      // at X 1.321, 1.551 and 1.781 from the −0.48 forecourt up to ±0 (the bundle had four 0.12 m
+      // risers from X 0.99, which left the pier bases standing above the treads).
+      steps: { landing: -0.48, risers: [1.321, 1.551, 1.781], rise: 0.16, half: 7.25, back: 2.6 },
       panel: { y: [0.54, 0.9], half: 0.204 },
       bands: [[0, .18, .269, 'S'], [.18, .24, .207, 'S'], [.24, .348, .15, 'S'], [.348, .408, .096, 'S'], [.408, 1.032, .066, 'W'],
         [1.032, 1.092, .096, 'S'], [1.092, 1.188, .144, 'S'], [1.188, 1.284, .096, 'S'], [1.284, 1.368, .048, 'S'], [1.368, 1.668, 0, 'W'],
@@ -50,6 +54,14 @@
     },
     crest: { from: 3.614, to: 7.086, front: 3.376, back: 3.706, posts: [3.79, 4.407, 5.024, 5.641, 6.258, 6.875], finial: 17.4 },
     pinnacle: { front: [2.096, 3.40], back: [4.60, 5.42], top: 20.55 },
+    // Parish priest, 25 Oct 2026, and owner, 1 Nov 2026: the main and side doors belong to the body of
+    // the church, on the axis-2 line, not between axes 1 and 2. Plan P05 draws that door wall at
+    // X 5.035–5.475 (jamb faces D7BF88/D7C117 at 5.035, rebates to 5.145, inner face D7BF80/D7C10F on
+    // axis 2′). It rises to the hall ceiling (+8.39) and takes the leaves, fanlights and transoms back
+    // from the front arches, which become an open entrance porch. The openings follow the moved
+    // fanlights: main |Z| ≤ 1.55 (P05: 1.55, D7BF85/D7C114), sides |Z| 4.41–6.55 (P05: 4.275–6.425,
+    // so 0.135 m further out; noted in docs/facade-model.md).
+    entrance: { wall: [5.035, 5.475], top: 8.39, front: 2.6, half: 7.5 }, // ends meet the towers' rear piers
     aedicule: {
       pier: { z: 1.68, half: 0.30 }, front: 3.805, wall: 3.915, back: 5.046,
       niche: { half: 0.711, floor: 15.997, spring: 18.893, x: 4.225, rings: [0.799, 1.112] },
@@ -58,7 +70,7 @@
   };
   window.CHURCH_FACADE = { spec, prepare };
 
-  function prepare({ THREE: T, exterior, mat, data }) {
+  function prepare({ THREE: T, exterior, building, mat, data }) {
     if (!exterior) return;
     const facade = exterior.getObjectByName('Tower-end central facade — traced from supplied elevation');
     if (!facade) return;
@@ -232,6 +244,11 @@
     both(s => {
       const zc = s * P.z;
       for (const [y0, y1, d, m] of G.bands) block('Central ground pier pedestal', m === 'W' ? W : S, [G.front - d, G.back], [y0, y1], [zc - G.half - d, zc + G.half + d]);
+      // Owner, 1 Nov 2026: no gap between the pier bases and the entrance steps. Section A-A draws the
+      // base running down through the steps (D7E717–D7E71B to −0.32 at X 1.36–1.48); the plinth
+      // course goes down to the −0.48 forecourt under the lowest band's footprint.
+      const [, , d0] = G.bands[0];
+      block('Central ground pier plinth course', S, [G.front - d0, G.back], [G.steps.landing, 0], [zc - G.half - d0, zc + G.half + d0]);
       const pf = G.front - .066, [p0, p1] = G.panel.y, ph = G.panel.half;
       for (const [z0, z1, y0, y1] of [[-ph, ph, p0, p0 + .04], [-ph, ph, p1 - .04, p1], [-ph, -ph + .04, p0, p1], [ph - .04, ph, p0, p1]])
         block('Central ground pier pedestal panel', S, [pf - .025, pf], [y0, y1], [zc + z0, zc + z1]);
@@ -500,6 +517,55 @@
         add('Central aedicule scroll spur moulding', S, K.stem(Array.from({ length: 7 }, (_, i) => { const z = 2.55 - (2.55 - 2.02) * i / 6, dz = 3.404 - z; return [4.26, cy - Math.sqrt(Math.max(0, rr * rr - dz * dz)) + .03, s * z]; }), .05, .04, 12, 6), null, CARVED);
         add('Central aedicule scroll spur volute', S, K.stem(K.scroll(0, 0, .14, 1.2, 0, 1), .04, .015, 10, 5), facing(4.25, 17.86, s * 2.50, SC(-s, 1, 1)), CARVED);
       });
+    }
+
+    // ---- Entrance steps between the towers (spec.ground.steps, 1 Nov 2026) ----
+    if (building) {
+      const ST = spec.ground.steps, old = [];
+      building.traverse(o => { if (o.isMesh && o.name.startsWith('Entrance threshold step')) old.push(o); });
+      const parent = old[0]?.parent, floorMat = old[0]?.material;
+      for (const o of old) { o.removeFromParent(); o.geometry.dispose(); }
+      if (parent) ST.risers.forEach((x, i) => {
+        const top = ST.landing + ST.rise * (i + 1), step = new T.Mesh(new T.BoxGeometry(ST.back - x, top - ST.landing, 2 * ST.half), floorMat);
+        step.name = 'Entrance step · CAD section A-A'; step.userData = { status: DRAWN, source: 'Section A-A D7E712–D7E716; plan P05' };
+        step.position.set((x + ST.back) / 2, (ST.landing + top) / 2, 0); step.castShadow = step.receiveShadow = true; parent.add(step);
+      });
+    }
+
+    // ---- Doors on the rear pier line (25 Oct 2026) ----
+    if (building) {
+      const EN = spec.entrance, dx = EN.wall[0] + (EN.wall[1] - EN.wall[0]) * .45 - EN.front;
+      building.updateMatrixWorld(true);
+      const moved = [], fans = [];
+      // Fanlights, transoms and radial bars of the three doorways, and the leaves of both joinery states.
+      facade.traverse(o => { if (o.isMesh && /^(Entrance door coloured oval|Entrance transom|Fanlight radial bar|Fanlight spring bar)$/.test(o.name)) moved.push(o); });
+      facade.traverse(o => { if (o.isMesh && o.name === 'Entrance door coloured oval') fans.push(new T.Box3().setFromObject(o)); });
+      building.traverse(o => { if (/^Entrance joinery · /.test(o.name)) for (const c of o.children) { const p = c.getWorldPosition(new T.Vector3()); if (p.x < 3.2 && Math.abs(p.z) < 7.2) moved.push(c); } });
+      for (const o of moved) { const p = o.getWorldPosition(new T.Vector3()); p.x += dx; o.parent.worldToLocal(p); o.position.copy(p); }
+      // The door wall, with an opening under each fanlight (straight jambs to the spring, then the
+      // arch). Built as solid piers between the doorways and a head piece over each arch, without
+      // holes, so the triangulation cannot drop a doorway.
+      const openings = fans.map(b => { const zc = (b.min.z + b.max.z) / 2, half = (b.max.z - b.min.z) / 2, spring = b.min.y, rise = b.max.y - b.min.y; return { zc, half, spring, rise }; }).sort((a, b) => a.zc - b.zc);
+      const rectZ = (z0, z1, y0, y1) => new T.Shape([new T.Vector2(z0, y0), new T.Vector2(z1, y0), new T.Vector2(z1, y1), new T.Vector2(z0, y1)]);
+      let z = -EN.half;
+      for (const o of openings) { slab('Entrance door wall · rear pier line', W, rectZ(z, o.zc - o.half, -.1, EN.top), EN.wall, DRAWN); z = o.zc + o.half; }
+      slab('Entrance door wall · rear pier line', W, rectZ(z, EN.half, -.1, EN.top), EN.wall, DRAWN);
+      for (const o of openings) {
+        const head = new T.Shape(); head.moveTo(o.zc - o.half, o.spring);
+        for (let i = 0; i <= 16; i++) { const a = Math.PI - Math.PI * i / 16; head.lineTo(o.zc + Math.cos(a) * o.half, o.spring + Math.sin(a) * o.rise); }
+        head.lineTo(o.zc + o.half, EN.top); head.lineTo(o.zc - o.half, EN.top); head.lineTo(o.zc - o.half, o.spring);
+        slab('Entrance door wall · rear pier line', W, head, EN.wall, DRAWN);
+      }
+      for (const o of openings) {
+        const ring = new T.Shape(), r = .12, pts = [];
+        for (let i = 0; i <= 16; i++) { const a = Math.PI - Math.PI * i / 16; pts.push([o.zc + Math.cos(a) * (o.half + r), o.spring + Math.sin(a) * (o.rise + r)]); }
+        ring.moveTo(pts[0][0], pts[0][1]); pts.slice(1).forEach(([u, v]) => ring.lineTo(u, v));
+        for (let i = 16; i >= 0; i--) { const a = Math.PI - Math.PI * i / 16; ring.lineTo(o.zc + Math.cos(a) * o.half, o.spring + Math.sin(a) * o.rise); }
+        slab('Entrance door wall arch moulding', S, ring, [EN.wall[0] - .05, EN.wall[0]], DRAWN);
+        for (const e of [-1, 1]) block('Entrance door wall jamb moulding', S, [EN.wall[0] - .05, EN.wall[0]], [0, o.spring], [o.zc + e * (o.half + .06) - .06, o.zc + e * (o.half + .06) + .06]);
+      }
+      spec.entrance.openings = openings.map(o => ({ z0: o.zc - o.half, z1: o.zc + o.half, y1: o.spring + o.rise }));
+      spec.entrance.moved = moved.length;
     }
 
     // ---- Meshes ----

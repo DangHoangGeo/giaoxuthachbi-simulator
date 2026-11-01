@@ -769,17 +769,12 @@
           -7.36
         ],
         [
-          5.475,
-          5.908,
-          -7.36
-        ],
-        [
-          2.65,
+          5.475000000000001,
           5.908,
           -7.36
         ]
       ],
-      "length": 69.65513031117919,
+      "length": 66.83013031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -2465,41 +2460,37 @@
       ],
       "trunkId": "trunk:LC1:L2:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 69.65513031117919,
+      "upstreamLength": 66.83013031117919,
       "homeRun": false,
       "points": [
         [
-          2.65,
+          5.475000000000001,
           5.908,
           -7.36
         ],
         [
-          2.35,
-          7.65,
+          5.475000000000001,
+          -0.44,
           -7.36
         ],
         [
-          2.35,
-          7.65,
+          5.475,
+          -0.44,
           -4.2
         ],
         [
-          2.35,
-          3.45,
-          -4.2
-        ],
-        [
-          2.65,
+          5.475,
           3.45,
           -4.2
         ]
       ],
-      "method": "entrance-wall",
-      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "method": "review-local",
+      "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
       "coverPaths": [],
-      "length": 9.427643629242048,
+      "reviewRequired": true,
+      "length": 13.398000000000001,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -2517,41 +2508,37 @@
       ],
       "trunkId": "trunk:LC1:L2:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 69.65513031117919,
+      "upstreamLength": 66.83013031117919,
       "homeRun": false,
       "points": [
         [
-          2.65,
+          5.475000000000001,
           5.908,
           -7.36
         ],
         [
-          2.35,
-          7.65,
+          5.475000000000001,
+          -0.44,
           -7.36
         ],
         [
-          2.35,
-          7.65,
+          5.475,
+          -0.44,
           -4.2
         ],
         [
-          2.35,
-          5.95,
-          -4.2
-        ],
-        [
-          2.65,
+          5.475,
           5.95,
           -4.2
         ]
       ],
-      "method": "entrance-wall",
-      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "method": "review-local",
+      "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
       "coverPaths": [],
-      "length": 6.9276436292420485,
+      "reviewRequired": true,
+      "length": 15.898000000000001,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -2672,17 +2659,12 @@
           7.36
         ],
         [
-          5.475,
-          5.908,
-          7.36
-        ],
-        [
-          2.65,
+          5.475000000000001,
           5.908,
           7.36
         ]
       ],
-      "length": 76.2551303111792,
+      "length": 73.4301303111792,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -4368,41 +4350,37 @@
       ],
       "trunkId": "trunk:LC1:L2:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 76.2551303111792,
+      "upstreamLength": 73.4301303111792,
       "homeRun": false,
       "points": [
         [
-          2.65,
+          5.475000000000001,
           5.908,
           7.36
         ],
         [
-          2.35,
-          7.65,
+          5.475000000000001,
+          -0.44,
           7.36
         ],
         [
-          2.35,
-          7.65,
+          5.475,
+          -0.44,
           4.2
         ],
         [
-          2.35,
-          3.45,
-          4.2
-        ],
-        [
-          2.65,
+          5.475,
           3.45,
           4.2
         ]
       ],
-      "method": "entrance-wall",
-      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "method": "review-local",
+      "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
       "coverPaths": [],
-      "length": 9.427643629242048,
+      "reviewRequired": true,
+      "length": 13.398000000000001,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -4420,41 +4398,37 @@
       ],
       "trunkId": "trunk:LC1:L2:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 76.2551303111792,
+      "upstreamLength": 73.4301303111792,
       "homeRun": false,
       "points": [
         [
-          2.65,
+          5.475000000000001,
           5.908,
           7.36
         ],
         [
-          2.35,
-          7.65,
+          5.475000000000001,
+          -0.44,
           7.36
         ],
         [
-          2.35,
-          7.65,
+          5.475,
+          -0.44,
           4.2
         ],
         [
-          2.35,
-          5.95,
-          4.2
-        ],
-        [
-          2.65,
+          5.475,
           5.95,
           4.2
         ]
       ],
-      "method": "entrance-wall",
-      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "method": "review-local",
+      "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
       "coverPaths": [],
-      "length": 6.9276436292420485,
+      "reviewRequired": true,
+      "length": 15.898000000000001,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -18483,12 +18457,12 @@
           -7.36
         ],
         [
-          2.6800000008940703,
+          5.313000000894069,
           5.988,
           -7.36
         ]
       ],
-      "length": 68.64513031028511,
+      "length": 66.01213031028512,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -18606,41 +18580,41 @@
       ],
       "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 68.64513031028511,
+      "upstreamLength": 66.01213031028512,
       "homeRun": false,
       "points": [
         [
-          2.6800000008940703,
+          5.313000000894069,
           5.988,
           -7.36
         ],
         [
-          2.5920000008940702,
+          5.225000000894069,
           5.988,
           -7.36
         ],
         [
-          2.5920000008940702,
+          5.225000000894069,
           5.988,
           1.699999952316284
         ],
         [
-          2.5920000008940702,
+          5.225000000894069,
           4.9,
           1.699999952316284
         ],
         [
-          2.5920000008940702,
+          5.225000000894069,
           4.9,
           0
         ],
         [
-          2.6800000008940703,
+          5.313000000894069,
           4.9,
           0
         ],
         [
-          2.6800000008940703,
+          5.313000000894069,
           4.762499999552966,
           0
         ]
@@ -27391,12 +27365,17 @@
           -7.36
         ],
         [
-          2.655,
+          5.475,
+          6.0280000000000005,
+          -7.36
+        ],
+        [
+          5.4799999999999995,
           6.0280000000000005,
           -7.36
         ]
       ],
-      "length": 26.797,
+      "length": 29.622,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -27417,41 +27396,37 @@
       ],
       "trunkId": "trunk:DB2:F4:fan:-1",
       "color": "#b46a48",
-      "upstreamLength": 26.797,
+      "upstreamLength": 29.622,
       "homeRun": false,
       "points": [
         [
-          2.655,
+          5.4799999999999995,
           6.0280000000000005,
           -7.36
         ],
         [
-          2.35,
-          7.65,
+          5.4799999999999995,
+          -0.44,
           -7.36
         ],
         [
-          2.35,
-          7.65,
+          5.4799999999999995,
+          -0.44,
           -3.05
         ],
         [
-          2.35,
-          6,
-          -3.05
-        ],
-        [
-          2.655,
+          5.4799999999999995,
           6,
           -3.05
         ]
       ],
-      "method": "entrance-wall",
-      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "method": "review-local",
+      "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
       "coverPaths": [],
-      "length": 7.91542691446789,
+      "reviewRequired": true,
+      "length": 17.218000000000004,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -27497,12 +27472,17 @@
           7.36
         ],
         [
-          2.655,
+          5.475,
+          6.0280000000000005,
+          7.36
+        ],
+        [
+          5.4799999999999995,
           6.0280000000000005,
           7.36
         ]
       ],
-      "length": 12.077000000000002,
+      "length": 14.902000000000001,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [],
@@ -27523,41 +27503,37 @@
       ],
       "trunkId": "trunk:DB2:F4:fan:1",
       "color": "#b46a48",
-      "upstreamLength": 12.077000000000002,
+      "upstreamLength": 14.902000000000001,
       "homeRun": false,
       "points": [
         [
-          2.655,
+          5.4799999999999995,
           6.0280000000000005,
           7.36
         ],
         [
-          2.35,
-          7.65,
+          5.4799999999999995,
+          -0.44,
           7.36
         ],
         [
-          2.35,
-          7.65,
+          5.4799999999999995,
+          -0.44,
           3.05
         ],
         [
-          2.35,
-          6,
-          3.05
-        ],
-        [
-          2.655,
+          5.4799999999999995,
           6,
           3.05
         ]
       ],
-      "method": "entrance-wall",
-      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "method": "review-local",
+      "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
       "coverPaths": [],
-      "length": 7.91542691446789,
+      "reviewRequired": true,
+      "length": 17.218000000000004,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -30128,17 +30104,12 @@
           -7.36
         ],
         [
-          5.475,
-          5.518,
-          -7.36
-        ],
-        [
-          2.655,
+          5.48,
           5.518,
           -7.36
         ]
       ],
-      "length": 77.07013031117918,
+      "length": 74.24513031117918,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -30256,41 +30227,37 @@
       ],
       "trunkId": "trunk:AV1:A5:audio:-1",
       "color": "#3985c2",
-      "upstreamLength": 77.07013031117918,
+      "upstreamLength": 74.24513031117918,
       "homeRun": true,
       "points": [
         [
-          2.655,
+          5.48,
           5.518,
           -7.36
         ],
         [
-          2.35,
-          7.65,
+          5.48,
+          -0.44,
           -7.36
         ],
         [
-          2.35,
-          7.65,
+          5.4799999999999995,
+          -0.44,
           -3.05
         ],
         [
-          2.35,
-          2.5,
-          -3.05
-        ],
-        [
-          2.655,
+          5.4799999999999995,
           2.5,
           -3.05
         ]
       ],
-      "method": "entrance-wall",
-      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "method": "review-local",
+      "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
       "coverPaths": [],
-      "length": 11.918705875926424,
+      "reviewRequired": true,
+      "length": 13.208,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -30396,17 +30363,12 @@
           7.36
         ],
         [
-          5.475,
-          5.518,
-          7.36
-        ],
-        [
-          2.655,
+          5.48,
           5.518,
           7.36
         ]
       ],
-      "length": 70.47013031117918,
+      "length": 67.64513031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -30524,41 +30486,37 @@
       ],
       "trunkId": "trunk:AV1:A5:audio:1",
       "color": "#3985c2",
-      "upstreamLength": 70.47013031117918,
+      "upstreamLength": 67.64513031117919,
       "homeRun": true,
       "points": [
         [
-          2.655,
+          5.48,
           5.518,
           7.36
         ],
         [
-          2.35,
-          7.65,
+          5.48,
+          -0.44,
           7.36
         ],
         [
-          2.35,
-          7.65,
+          5.4799999999999995,
+          -0.44,
           3.05
         ],
         [
-          2.35,
-          2.5,
-          3.05
-        ],
-        [
-          2.655,
+          5.4799999999999995,
           2.5,
           3.05
         ]
       ],
-      "method": "entrance-wall",
-      "installation": "Concealed entrance wall band, solid pier and local termination.",
+      "method": "review-local",
+      "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
       "coverPaths": [],
-      "length": 11.918705875926424,
+      "reviewRequired": true,
+      "length": 13.208,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -37778,7 +37736,7 @@
       "specs": "6000 lm · 3000 K · 44° beam",
       "hiddenAlternative": false,
       "position": [
-        2.65,
+        5.475,
         3.45,
         -4.2
       ],
@@ -37803,7 +37761,7 @@
       "specs": "3300 lm · 3000 K · 50° beam",
       "hiddenAlternative": false,
       "position": [
-        2.65,
+        5.475,
         5.95,
         -4.2
       ],
@@ -37828,7 +37786,7 @@
       "specs": "6000 lm · 3000 K · 44° beam",
       "hiddenAlternative": false,
       "position": [
-        2.65,
+        5.475,
         3.45,
         4.2
       ],
@@ -37853,7 +37811,7 @@
       "specs": "3300 lm · 3000 K · 50° beam",
       "hiddenAlternative": false,
       "position": [
-        2.65,
+        5.475,
         5.95,
         4.2
       ],
@@ -39503,7 +39461,7 @@
       "specs": "20 lm · 6500 K",
       "hiddenAlternative": false,
       "position": [
-        2.6800000008940703,
+        5.313000000894069,
         4.762499999552966,
         0
       ],
@@ -41878,7 +41836,7 @@
       "specs": "0.9 m diameter · 380 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        2.655,
+        5.4799999999999995,
         6,
         -3.05
       ],
@@ -41903,7 +41861,7 @@
       "specs": "0.9 m diameter · 380 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        2.655,
+        5.4799999999999995,
         6,
         3.05
       ],
@@ -42450,10 +42408,10 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 20,
-      "specs": "60 W audio rating · Passive / amplifier output · 96.1 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 100.4 ms delay",
       "hiddenAlternative": false,
       "position": [
-        2.655,
+        5.4799999999999995,
         2.5,
         -3.05
       ],
@@ -42475,10 +42433,10 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 20,
-      "specs": "60 W audio rating · Passive / amplifier output · 97.6 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 102.1 ms delay",
       "hiddenAlternative": false,
       "position": [
-        2.655,
+        5.4799999999999995,
         2.5,
         3.05
       ],
@@ -47320,7 +47278,7 @@
         0.6000000238418579,
         0.05999999865889549
       ],
-      "specs": "60 W audio rating · Passive / amplifier output · 96.1 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 100.4 ms delay",
       "wattsEachEstimate": 20,
       "itemIds": [
         "S273"
@@ -47337,7 +47295,7 @@
         0.6000000238418579,
         0.05999999865889549
       ],
-      "specs": "60 W audio rating · Passive / amplifier output · 97.6 ms delay",
+      "specs": "60 W audio rating · Passive / amplifier output · 102.1 ms delay",
       "wattsEachEstimate": 20,
       "itemIds": [
         "S274"

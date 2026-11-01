@@ -267,7 +267,29 @@ for(const b of batches.values())for(const m of b.children){batchCount++;triangle
 const ray=new T.Raycaster(new T.Vector3(-10,2,.5),new T.Vector3(1,0,0));
 const hits=ray.intersectObjects(nodes.filter(o=>o.isMesh),false);
 assert(!hits.some(h=>h.object.name==='Source-width centre entry facade'),'Facade must not fill the main door opening');
-assert(hits.some(h=>h.object.name==='Open timber door leaf'&&h.point.x<3),'Closed main door must be in the entry opening');
+// Parish priest, 25 Oct 2026: the doors stand on the towers' rear pier line (facade.js).
+{
+  const EN=sandbox.window.CHURCH_FACADE.spec.entrance;
+  assert(hits.some(h=>h.object.name==='Open timber door leaf'&&h.point.x>EN.wall[0]-.1&&h.point.x<EN.wall[1]+.1),'Closed main door stands in the door wall on the rear pier line');
+  assert(!hits.some(h=>h.object.name==='Open timber door leaf'&&h.point.x<3),'No door leaf left in the front arch');
+  assert(nodes.some(o=>o.name==='Entrance door wall · rear pier line')&&EN.openings.length===3&&EN.moved>=9,'door wall with three doorways; leaves, fanlights and transoms moved');
+  for(const o of nodes.filter(o=>o.name==='Entrance door coloured oval'))assert(bounds(o).min.x>EN.wall[0]-.1,'fanlight moved with its door');
+  const doorWall=nodes.filter(o=>o.name==='Entrance door wall · rear pier line');
+  for(const o of EN.openings)for(const y of [.5,2]){const r=new T.Raycaster(new T.Vector3(3,y,(o.z0+o.z1)/2),new T.Vector3(1,0,0),0,3);assert(!r.intersectObjects(doorWall,false).length,'doorway open through the door wall at z '+((o.z0+o.z1)/2).toFixed(2));}
+  assert(realism.walkAllowed((EN.wall[0]+EN.wall[1])/2,0)===true&&realism.walkAllowed((EN.wall[0]+EN.wall[1])/2,3)===false,'walk through the doorways only');
+  // Owner, 1 Nov 2026: the doors on the axis-2 line (plan P05 X 5.035–5.475), and the front steps and
+  // pier bases of section A-A with no gap between them.
+  assert(Math.abs(EN.wall[0]-5.035)<1e-6&&Math.abs(EN.wall[1]-5.475)<1e-6,'door wall on the axis-2 line, X 5.035–5.475');
+  const ST=sandbox.window.CHURCH_FACADE.spec.ground.steps;
+  const steps=nodes.filter(o=>o.name==='Entrance step · CAD section A-A').map(bounds).sort((a,b)=>a.max.y-b.max.y);
+  assert(!nodes.some(o=>o.name.startsWith('Entrance threshold step')),'old 0.12 m entrance steps removed');
+  assert(steps.length===3&&steps.every((b,i)=>Math.abs(b.max.y-(-.32+.16*i))<.002&&Math.abs(b.min.x-ST.risers[i])<.002),'three 0.16 m entrance risers at X 1.321, 1.551, 1.781');
+  for(const [x,y] of [[1.2,-.48],[1.4,-.32],[1.6,-.16],[1.9,0]])assert(Math.abs(realism.floorHeight(x,0)-y)<.002,`entrance floor ${y} at x ${x}`);
+  const plinths=nodes.filter(o=>o.name==='Central ground pier plinth course').map(bounds);
+  assert(plinths.length&&plinths.every(b=>Math.abs(b.min.y+.48)<.002&&b.max.y>-.002),'central pier bases run down to the −0.48 forecourt');
+  const footing=nodes.filter(o=>o.name==='Tower plinth').map(bounds);
+  assert(footing.length===2&&footing.every(b=>Math.abs(b.min.x+.984)<.002),'tower plinth flush with the corner-pier plinth at X −0.984');
+}
 for(const sign of [-1,1]) {
   const sideRay=new T.Raycaster(new T.Vector3(16.725,1.8,sign*18),new T.Vector3(0,0,-sign));
   assert(!sideRay.intersectObjects(bays.flatMap(g=>g.children).filter(o=>o.isMesh&&o.name==='Outer arcade wall with arched openings'),false).some(h=>Math.abs(h.point.z)>10),'Outer wall must leave side doorway clear');
