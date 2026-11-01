@@ -469,7 +469,10 @@ assert(bounds(vault).min.y>=S.centralArch.spring-.001&&bounds(vault).max.y<12.1,
   assert.equal(nodes.filter(o=>o.name==='Side vault springing beam · lacquered timber').length,4,'A lacquered springing beam along each vault edge');
   assert.equal(nodes.filter(o=>o.name==='Side vault rib · lacquered timber').length,8,'Four lacquered transverse ribs per vault');
   assert.equal(nodes.filter(o=>o.name==='Side vault longitudinal rib').length,10,'Five lacquered longitudinal ribs per vault, as in the chamber vault');
-  assert(V.x0>=frameX+.3&&V.x0<=frameX+1.3,'Vault starts behind the frame, clear of the shrine lights hung on its back face');
+  // USER CONFIRMED 1 Nov 2026: the vaults meet the frame with no gap, so the front edge is the back face of the axis-10 side spandrels.
+  const spandrels=nodes.filter(o=>o.isMesh&&o.name==='Front frame side spandrel');
+  assert.equal(spandrels.length,2,'Two side spandrels in the axis-10 frame');
+  for(const sp of spandrels)near(bounds(sp).max.x,V.x0,'Side vault front edge meets the back face of the axis-10 frame');
   assert(V.x1<=S.arch11.x-.15&&V.x1>S.arch11.x-.3,'Vault ends against the axis-11 side spandrel');
   for(const o of boards){
     const b=bounds(o),p=o.geometry.attributes.position,v=new T.Vector3();
@@ -477,11 +480,14 @@ assert(bounds(vault).min.y>=S.centralArch.spring-.001&&bounds(vault).max.y<12.1,
     near(b.min.x,V.x0,'Side vault front edge');near(b.max.x,V.x1,'Side vault back edge');
     assert(Math.min(Math.abs(b.min.z),Math.abs(b.max.z))>=3.75&&Math.max(Math.abs(b.min.z),Math.abs(b.max.z))<=7.25,'Side vault stays between the chamber lintel and the C/G wall');
     assert(b.min.y>=S.arch11.spring-.1&&b.min.y>2.85+2.2,'Side vault springs high above the shrine shelf, the 2.2 m service doorways and every walking route');
-    let clear=1e9;for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i);clear=Math.min(clear,roofY(v.z)-v.y);}
-    assert(clear>=.4,'Side vault keeps 0.4 m under the roof lining: '+clear.toFixed(3));
+    // Against the frame (1 Nov 2026) the outer shoulders of the outline stand 0.32 m under the lining, which falls towards
+    // the C/G wall: the front 0.5 m keeps at least 0.3 m (documented hold: access above the vault), the rest at least 0.4 m.
+    let clear=1e9,clearBehind=1e9;for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i);const c=roofY(v.z)-v.y;clear=Math.min(clear,c);if(v.x>V.x0+.5)clearBehind=Math.min(clearBehind,c);}
+    assert(clear>=.3,'Side vault keeps 0.3 m under the roof lining at the frame: '+clear.toFixed(3));
+    assert(clearBehind>=.4,'Side vault keeps 0.4 m under the roof lining behind its front 0.5 m: '+clearBehind.toFixed(3));
     // The crown follows the outline of the side arch at the front and of the axis-11 arch at the back.
     const z=Math.sign(b.min.z+b.max.z)*S.wingZ,ray=new T.Raycaster(),crownAt=x=>{ray.set(new T.Vector3(x,3,z),new T.Vector3(0,1,0));const h=ray.intersectObject(o,false);return h.length?h[0].point.y:NaN;};
-    for(const x of [V.x0+.01,V.x1-.01]){const t=(x-frameX)/(S.arch11.x-frameX),want=S.sideArch.crown+(S.arch11.crown-S.sideArch.crown)*t+.04;assert(Math.abs(crownAt(x)-want)<.03,`Side vault soffit follows the arch outlines at x ${x.toFixed(2)}: ${crownAt(x)} vs ${want}`);}
+    for(const x of [V.x0+.01,V.x1-.01]){const t=(x-V.x0)/(S.arch11.x-V.x0),want=S.sideArch.crown+(S.arch11.crown-S.sideArch.crown)*t+.04;assert(Math.abs(crownAt(x)-want)<.03,`Side vault soffit follows the arch outlines at x ${x.toFixed(2)}: ${crownAt(x)} vs ${want}`);}
   }
 }
 const backWall=nodes.find(o=>o.name==='Sanctuary back wall behind the reredos');

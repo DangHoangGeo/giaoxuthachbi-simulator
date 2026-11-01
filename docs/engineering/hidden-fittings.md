@@ -31,7 +31,7 @@ The 21 L3 sanctuary fittings were still black (projectors) or bronze (spotlights
 | Records | Type | Fittings | Finish |
 | --- | --- | --- | --- |
 | L98–L105 | `projector24`, `spot15`, `projector36` | Altar key lights B/H, ambo key light, sanctuary step fills B/H, presider chair light, sanctuary frame washes B/H, under the axis-9 tie | Black / bronze → beam lacquer |
-| L115–L118 | `spot15`, `projector36` | Statue accents and shrine washes B/H, under the axis-9 side beams (since 25 Oct 2026 on the back face of the axis-10 frame above its side arches, hidden by the spandrel; see the [parish meeting](parish-meeting-2026-10-25.md)) | Bronze / black → beam lacquer |
+| L115–L118 | `spot15`, `projector36` | Statue accents and shrine washes B/H, under the axis-9 side beams (from 25 Oct 2026 on the back face of the axis-10 frame above its side arches, hidden by the spandrel, see the [parish meeting](parish-meeting-2026-10-25.md); since 1 Nov 2026 hung from the inner rib of the gilded side vaults, in the chamber lacquer, screened by the frame's inner jamb from the centre of the nave but visible from the aisle on their own side, see [sanctuary-model.md](../sanctuary-model.md#gilded-vaults-over-the-side-passages--1-november-2026)) | Bronze / black → beam lacquer (chamber lacquer since 1 Nov 2026) |
 | L106–L108, L110–L112, L114 | `spot15`, `projector36` | Crucifix accents B/H, reredos washes B/H, reredos base washes B/H, tabernacle accent, on the chamber side walls behind the frame | Bronze / black → chamber lacquer |
 | L109, L113 | `uplight` | Sanctuary vault uplights B/H on the springing cornice | Bronze → chamber lacquer |
 

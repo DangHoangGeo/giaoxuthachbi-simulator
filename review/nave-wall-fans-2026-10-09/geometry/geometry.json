@@ -18,11 +18,11 @@
     },
     {
       "path": "Thach_Bi_Viewer/simulator/design.js",
-      "sha256": "9be3916830ea739255111facee2ddab7c978639445f470d067dddaf4ba0e64c0"
+      "sha256": "eaba4033bfabe54f54165b99d82409fbd67352921c0c551498f11eb833f1811e"
     },
     {
       "path": "Thach_Bi_Viewer/simulator/engine.js",
-      "sha256": "6e0bd6ba64e25d50dbdb84996447173a1703fb8ef325bdd11d147b0488ffccfd"
+      "sha256": "935895ed68a0ed29727bf0ad62a6010ac43b9dde4886387fc75a9ccd18978011"
     },
     {
       "path": "scripts/lib/study_model.cjs",
