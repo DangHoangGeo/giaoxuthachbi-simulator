@@ -6,35 +6,35 @@
   "sources": [
     {
       "path": "Thach_Bi_Viewer/bundle.js",
-      "sha256": "3032c30df6cc57e7a54daf67158cc617748e6fb07c2499d5b60def789242b38b"
+      "sha256": "74818d3bbe1aea78576f9fe1907faaa2e52e3aa96c5cfad2a2f37c2b72b710d3"
     },
     {
       "path": "Thach_Bi_Viewer/realism.js",
-      "sha256": "355d96dc3bac68873f9f1640ccfc293e3614c2f2b57d9e8c6479c91709d39eb4"
+      "sha256": "1d6494c733672769548e9c7582716d5b885eb8c4dc80045db251638b89fdfb70"
     },
     {
       "path": "Thach_Bi_Viewer/simulator/catalog.js",
-      "sha256": "702b103b0006ddd7a0fd5ec0b3cb6210142bd3bc59e86410065247e2b6c23c57"
+      "sha256": "226d27e399b6a294eb49f24186279b23b3735909d75f4b5318cd26fe205a8869"
     },
     {
       "path": "Thach_Bi_Viewer/simulator/design.js",
-      "sha256": "32e8ae7cf594ab7792f51d50cb4911a965eb0b070cd8cbbb0413faac481a0372"
+      "sha256": "9be3916830ea739255111facee2ddab7c978639445f470d067dddaf4ba0e64c0"
     },
     {
       "path": "Thach_Bi_Viewer/simulator/engine.js",
-      "sha256": "9bdd3aae58b7dc49a40566b2dac33a3658e9cc4e2993e0f585693a0829e1c3f9"
+      "sha256": "6e0bd6ba64e25d50dbdb84996447173a1703fb8ef325bdd11d147b0488ffccfd"
     },
     {
       "path": "scripts/lib/study_model.cjs",
-      "sha256": "ab14fef67acdea1aeaebd5bdd89da49b9e1762fd34e6265233e68eace3c98029"
+      "sha256": "d89088c7dd1ab4a58be906775e7ef93188d146b98d23ba543b1f71b33bd06f70"
     },
     {
       "path": "scripts/verify_nave_fan_clearance.cjs",
-      "sha256": "c81054f3c0be53263cd6227b6f3ee8559fb1c7eeabbdbddf94c4be543bc49392"
+      "sha256": "1c9509455f44a0896f5e59457fb19980078a5ab7d6e73e44be90754d9e3ab14a"
     },
     {
       "path": "docs/layout_design/Thach_Bi_Church_Dimensions.xlsx",
-      "sha256": "95fe13afe5d2b4589eea1bae8225ab4cc99ae4b64640cf67f694d530e320e01b"
+      "sha256": "e5185da22a730ec043efbfa4d028275344e2e4a823e26d11acbd8a91944ed6f1"
     }
   ],
   "dimensionBasis": {
@@ -51,12 +51,11 @@
   "fans": [
     {
       "id": "F-NAVE-B-2P",
-      "axis": "2′",
       "side": "B",
       "type": "fanNaveWall",
       "mountingPositionM": [
-        5.475,
-        5.55,
+        6.095,
+        4.1,
         -7.07
       ],
       "yawDegrees": 90,
@@ -71,44 +70,52 @@
       "rotorAllAngleSphereRadiusM": 0.221310869,
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
-          5.139825677,
-          5.25227491,
+          5.759825677,
+          3.80227491,
           -7.07
         ],
         "maximum": [
-          5.810174323,
-          5.735260032,
+          6.430174323,
+          4.285260032,
           -6.309888055
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
-          5.047958329,
-          5.23072676,
+          5.667958329,
+          3.78072676,
           -7.07
         ],
         "maximum": [
-          5.902041671,
-          5.900056312,
+          6.522041671,
+          4.450056312,
           -6.224438532
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
-          5.047958329,
-          5.23072676,
+          5.667958329,
+          3.78072676,
           -7.07
         ],
         "maximum": [
-          5.902041671,
-          5.900056312,
+          6.522041671,
+          4.450056312,
           -6.224438532
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
-      "nearbyFixtures": []
+      "nearbyFixtures": [
+        {
+          "id": "L-STATION-8-A",
+          "name": "Station candle · VIII · front",
+          "hidden": false,
+          "clearanceM": 0.859216366,
+          "intersection": false
+        }
+      ]
     },
     {
       "id": "F-NAVE-B-3",
@@ -117,7 +124,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         9.975,
-        5.55,
+        4.1,
         -7.07
       ],
       "yawDegrees": 90,
@@ -133,62 +140,55 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           9.639825677,
-          5.25227491,
+          3.80227491,
           -7.07
         ],
         "maximum": [
           10.310174323,
-          5.735260032,
+          4.285260032,
           -6.309888055
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           9.547958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           10.402041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           9.547958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           10.402041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L31",
-          "name": "Reading light · axis 3 · B outer",
+          "id": "L119",
+          "name": "Porch path light · B · bay 2′–3",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L32",
-          "name": "Reading light · axis 3 · B outer · twin",
+          "id": "S-PORCH-B-2P-3",
+          "name": "Porch fill · B · bay 2′–3",
           "hidden": false,
-          "clearanceM": 0.653470805,
-          "intersection": false
-        },
-        {
-          "id": "L82",
-          "name": "Sconce · axis 3 · B",
-          "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -200,7 +200,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         14.475,
-        5.55,
+        4.1,
         -7.07
       ],
       "yawDegrees": 90,
@@ -216,62 +216,69 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           14.139825677,
-          5.25227491,
+          3.80227491,
           -7.07
         ],
         "maximum": [
           14.810174323,
-          5.735260032,
+          4.285260032,
           -6.309888055
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           14.047958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           14.902041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           14.047958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           14.902041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L35",
-          "name": "Reading light · axis 4 · B outer",
+          "id": "L120",
+          "name": "Porch path light · B · bay 3–4",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L36",
-          "name": "Reading light · axis 4 · B outer · twin",
+          "id": "L139",
+          "name": "Side door lantern · B · 16.725 · front",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 1.194243121,
           "intersection": false
         },
         {
-          "id": "L84",
-          "name": "Sconce · axis 4 · B",
+          "id": "S261",
+          "name": "Wall speaker · axis 4 · B",
           "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 0.984799593,
+          "intersection": false
+        },
+        {
+          "id": "S279",
+          "name": "Porch fill · B · bay 3–4",
+          "hidden": false,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -283,7 +290,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         18.975,
-        5.55,
+        4.1,
         -7.07
       ],
       "yawDegrees": 90,
@@ -299,62 +306,69 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           18.639825677,
-          5.25227491,
+          3.80227491,
           -7.07
         ],
         "maximum": [
           19.310174323,
-          5.735260032,
+          4.285260032,
           -6.309888055
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           18.547958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           19.402041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           18.547958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           19.402041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L39",
-          "name": "Reading light · axis 5 · B outer",
+          "id": "L121",
+          "name": "Porch path light · B · bay 4–5",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L40",
-          "name": "Reading light · axis 5 · B outer · twin",
+          "id": "L140",
+          "name": "Side door lantern · B · 16.725 · rear",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 1.194243121,
           "intersection": false
         },
         {
-          "id": "L86",
-          "name": "Sconce · axis 5 · B",
+          "id": "S263",
+          "name": "Wall speaker · axis 5 · B",
           "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 0.984799593,
+          "intersection": false
+        },
+        {
+          "id": "S-PORCH-B-4-5",
+          "name": "Porch fill · B · bay 4–5",
+          "hidden": false,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -366,7 +380,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         23.475,
-        5.55,
+        4.1,
         -7.07
       ],
       "yawDegrees": 90,
@@ -382,62 +396,62 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           23.139825677,
-          5.25227491,
+          3.80227491,
           -7.07
         ],
         "maximum": [
           23.810174323,
-          5.735260032,
+          4.285260032,
           -6.309888055
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           23.047958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           23.902041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           23.047958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           23.902041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L43",
-          "name": "Reading light · axis 6 · B outer",
+          "id": "L122",
+          "name": "Porch path light · B · bay 5–6",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L44",
-          "name": "Reading light · axis 6 · B outer · twin",
+          "id": "S265",
+          "name": "Wall speaker · axis 6 · B",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.984799593,
           "intersection": false
         },
         {
-          "id": "L88",
-          "name": "Sconce · axis 6 · B",
+          "id": "S-PORCH-B-5-6",
+          "name": "Porch fill · B · bay 5–6",
           "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -449,7 +463,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         27.975,
-        5.55,
+        4.1,
         -7.07
       ],
       "yawDegrees": 90,
@@ -465,62 +479,62 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           27.639825677,
-          5.25227491,
+          3.80227491,
           -7.07
         ],
         "maximum": [
           28.310174323,
-          5.735260032,
+          4.285260032,
           -6.309888055
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           27.547958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           28.402041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           27.547958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           28.402041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L47",
-          "name": "Reading light · axis 7 · B outer",
+          "id": "L123",
+          "name": "Porch path light · B · bay 6–7",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L48",
-          "name": "Reading light · axis 7 · B outer · twin",
+          "id": "S267",
+          "name": "Wall speaker · axis 7 · B",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.984799593,
           "intersection": false
         },
         {
-          "id": "L90",
-          "name": "Sconce · axis 7 · B",
+          "id": "S280",
+          "name": "Porch fill · B · bay 6–7",
           "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -532,7 +546,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         32.475,
-        5.55,
+        4.1,
         -7.07
       ],
       "yawDegrees": 90,
@@ -548,62 +562,69 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           32.139825677,
-          5.25227491,
+          3.80227491,
           -7.07
         ],
         "maximum": [
           32.810174323,
-          5.735260032,
+          4.285260032,
           -6.309888055
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           32.047958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           32.902041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           32.047958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           32.902041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L51",
-          "name": "Reading light · axis 8 · B outer",
+          "id": "L124",
+          "name": "Porch path light · B · bay 7–8",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L52",
-          "name": "Reading light · axis 8 · B outer · twin",
+          "id": "L141",
+          "name": "Side door lantern · B · 34.725 · front",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 1.194243121,
           "intersection": false
         },
         {
-          "id": "L92",
-          "name": "Sconce · axis 8 · B",
+          "id": "S269",
+          "name": "Wall speaker · axis 8 · B",
           "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 0.984799593,
+          "intersection": false
+        },
+        {
+          "id": "S-PORCH-B-7-8",
+          "name": "Porch fill · B · bay 7–8",
+          "hidden": false,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -615,7 +636,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         36.975,
-        5.55,
+        4.1,
         -7.07
       ],
       "yawDegrees": 90,
@@ -631,81 +652,80 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           36.639825677,
-          5.25227491,
+          3.80227491,
           -7.07
         ],
         "maximum": [
           37.310174323,
-          5.735260032,
+          4.285260032,
           -6.309888055
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           36.547958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           37.402041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           36.547958329,
-          5.23072676,
+          3.78072676,
           -7.07
         ],
         "maximum": [
           37.402041671,
-          5.900056312,
+          4.450056312,
           -6.224438532
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L55",
-          "name": "Reading light · axis 9 · B outer",
+          "id": "L125",
+          "name": "Porch path light · B · bay 8–9",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L56",
-          "name": "Reading light · axis 9 · B outer · twin",
+          "id": "L142",
+          "name": "Side door lantern · B · 34.725 · rear",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 1.194243121,
           "intersection": false
         },
         {
-          "id": "L94",
-          "name": "Sconce · axis 9 · B",
+          "id": "S271",
+          "name": "Wall speaker · axis 9 · B",
           "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 0.984799593,
           "intersection": false
         },
         {
-          "id": "L115",
-          "name": "Statue accent · B",
+          "id": "S-PORCH-B-8-9",
+          "name": "Porch fill · B · bay 8–9",
           "hidden": false,
-          "clearanceM": 1.014519138,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
     },
     {
       "id": "F-NAVE-H-2P",
-      "axis": "2′",
       "side": "H",
       "type": "fanNaveWall",
       "mountingPositionM": [
-        5.475,
-        5.55,
+        6.095,
+        4.1,
         7.07
       ],
       "yawDegrees": -90,
@@ -720,44 +740,52 @@
       "rotorAllAngleSphereRadiusM": 0.221310869,
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
-          5.139825677,
-          5.25227491,
+          5.759825677,
+          3.80227491,
           6.309888055
         ],
         "maximum": [
-          5.810174323,
-          5.735260032,
+          6.430174323,
+          4.285260032,
           7.07
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
-          5.047958329,
-          5.23072676,
+          5.667958329,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
-          5.902041671,
-          5.900056312,
+          6.522041671,
+          4.450056312,
           7.07
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
-          5.047958329,
-          5.23072676,
+          5.667958329,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
-          5.902041671,
-          5.900056312,
+          6.522041671,
+          4.450056312,
           7.07
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
-      "nearbyFixtures": []
+      "nearbyFixtures": [
+        {
+          "id": "L-STATION-7-A",
+          "name": "Station candle · VII · front",
+          "hidden": false,
+          "clearanceM": 0.859216366,
+          "intersection": false
+        }
+      ]
     },
     {
       "id": "F-NAVE-H-3",
@@ -766,7 +794,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         9.975,
-        5.55,
+        4.1,
         7.07
       ],
       "yawDegrees": -90,
@@ -782,62 +810,55 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           9.639825677,
-          5.25227491,
+          3.80227491,
           6.309888055
         ],
         "maximum": [
           10.310174323,
-          5.735260032,
+          4.285260032,
           7.07
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           9.547958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           10.402041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           9.547958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           10.402041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L33",
-          "name": "Reading light · axis 3 · H outer",
+          "id": "L128",
+          "name": "Porch path light · H · bay 2′–3",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L34",
-          "name": "Reading light · axis 3 · H outer · twin",
+          "id": "S-PORCH-H-2P-3",
+          "name": "Porch fill · H · bay 2′–3",
           "hidden": false,
-          "clearanceM": 0.653470805,
-          "intersection": false
-        },
-        {
-          "id": "L83",
-          "name": "Sconce · axis 3 · H",
-          "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -849,7 +870,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         14.475,
-        5.55,
+        4.1,
         7.07
       ],
       "yawDegrees": -90,
@@ -865,62 +886,69 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           14.139825677,
-          5.25227491,
+          3.80227491,
           6.309888055
         ],
         "maximum": [
           14.810174323,
-          5.735260032,
+          4.285260032,
           7.07
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           14.047958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           14.902041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           14.047958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           14.902041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L37",
-          "name": "Reading light · axis 4 · H outer",
+          "id": "L129",
+          "name": "Porch path light · H · bay 3–4",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L38",
-          "name": "Reading light · axis 4 · H outer · twin",
+          "id": "L145",
+          "name": "Side door lantern · H · 16.725 · front",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 1.194243121,
           "intersection": false
         },
         {
-          "id": "L85",
-          "name": "Sconce · axis 4 · H",
+          "id": "S262",
+          "name": "Wall speaker · axis 4 · H",
           "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 0.984799593,
+          "intersection": false
+        },
+        {
+          "id": "S281",
+          "name": "Porch fill · H · bay 3–4",
+          "hidden": false,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -932,7 +960,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         18.975,
-        5.55,
+        4.1,
         7.07
       ],
       "yawDegrees": -90,
@@ -948,62 +976,69 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           18.639825677,
-          5.25227491,
+          3.80227491,
           6.309888055
         ],
         "maximum": [
           19.310174323,
-          5.735260032,
+          4.285260032,
           7.07
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           18.547958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           19.402041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           18.547958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           19.402041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L41",
-          "name": "Reading light · axis 5 · H outer",
+          "id": "L130",
+          "name": "Porch path light · H · bay 4–5",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L42",
-          "name": "Reading light · axis 5 · H outer · twin",
+          "id": "L146",
+          "name": "Side door lantern · H · 16.725 · rear",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 1.194243121,
           "intersection": false
         },
         {
-          "id": "L87",
-          "name": "Sconce · axis 5 · H",
+          "id": "S264",
+          "name": "Wall speaker · axis 5 · H",
           "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 0.984799593,
+          "intersection": false
+        },
+        {
+          "id": "S-PORCH-H-4-5",
+          "name": "Porch fill · H · bay 4–5",
+          "hidden": false,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -1015,7 +1050,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         23.475,
-        5.55,
+        4.1,
         7.07
       ],
       "yawDegrees": -90,
@@ -1031,62 +1066,62 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           23.139825677,
-          5.25227491,
+          3.80227491,
           6.309888055
         ],
         "maximum": [
           23.810174323,
-          5.735260032,
+          4.285260032,
           7.07
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           23.047958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           23.902041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           23.047958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           23.902041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L45",
-          "name": "Reading light · axis 6 · H outer",
+          "id": "L131",
+          "name": "Porch path light · H · bay 5–6",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L46",
-          "name": "Reading light · axis 6 · H outer · twin",
+          "id": "S266",
+          "name": "Wall speaker · axis 6 · H",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.984799593,
           "intersection": false
         },
         {
-          "id": "L89",
-          "name": "Sconce · axis 6 · H",
+          "id": "S-PORCH-H-5-6",
+          "name": "Porch fill · H · bay 5–6",
           "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -1098,7 +1133,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         27.975,
-        5.55,
+        4.1,
         7.07
       ],
       "yawDegrees": -90,
@@ -1114,62 +1149,62 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           27.639825677,
-          5.25227491,
+          3.80227491,
           6.309888055
         ],
         "maximum": [
           28.310174323,
-          5.735260032,
+          4.285260032,
           7.07
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           27.547958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           28.402041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           27.547958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           28.402041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L49",
-          "name": "Reading light · axis 7 · H outer",
+          "id": "L132",
+          "name": "Porch path light · H · bay 6–7",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L50",
-          "name": "Reading light · axis 7 · H outer · twin",
+          "id": "S268",
+          "name": "Wall speaker · axis 7 · H",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.984799593,
           "intersection": false
         },
         {
-          "id": "L91",
-          "name": "Sconce · axis 7 · H",
+          "id": "S282",
+          "name": "Porch fill · H · bay 6–7",
           "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -1181,7 +1216,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         32.475,
-        5.55,
+        4.1,
         7.07
       ],
       "yawDegrees": -90,
@@ -1197,62 +1232,69 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           32.139825677,
-          5.25227491,
+          3.80227491,
           6.309888055
         ],
         "maximum": [
           32.810174323,
-          5.735260032,
+          4.285260032,
           7.07
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           32.047958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           32.902041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           32.047958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           32.902041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L53",
-          "name": "Reading light · axis 8 · H outer",
+          "id": "L133",
+          "name": "Porch path light · H · bay 7–8",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L54",
-          "name": "Reading light · axis 8 · H outer · twin",
+          "id": "L147",
+          "name": "Side door lantern · H · 34.725 · front",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 1.194243121,
           "intersection": false
         },
         {
-          "id": "L93",
-          "name": "Sconce · axis 8 · H",
+          "id": "S270",
+          "name": "Wall speaker · axis 8 · H",
           "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 0.984799593,
+          "intersection": false
+        },
+        {
+          "id": "S-PORCH-H-7-8",
+          "name": "Porch fill · H · bay 7–8",
+          "hidden": false,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -1264,7 +1306,7 @@
       "type": "fanNaveWall",
       "mountingPositionM": [
         36.975,
-        5.55,
+        4.1,
         7.07
       ],
       "yawDegrees": -90,
@@ -1280,69 +1322,69 @@
       "continuousVertexAndRotorEnvelope": {
         "minimum": [
           36.639825677,
-          5.25227491,
+          3.80227491,
           6.309888055
         ],
         "maximum": [
           37.310174323,
-          5.735260032,
+          4.285260032,
           7.07
         ]
       },
       "sampled17YawFullMeshAABB": {
         "minimum": [
           36.547958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           37.402041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
       "conservativeEnvelope": {
         "minimum": [
           36.547958329,
-          5.23072676,
+          3.78072676,
           6.224438532
         ],
         "maximum": [
           37.402041671,
-          5.900056312,
+          4.450056312,
           7.07
         ]
       },
-      "modeledWindowCrownGapM": 0.91972676,
-      "minimumAboveNaveFloorM": 5.23072676,
+      "modeledWindowCrownGapM": -0.53027324,
+      "minimumAboveNaveFloorM": 3.78072676,
       "modeledSideColumnFaceMaximumPenetrationM": 0,
       "nearbyFixtures": [
         {
-          "id": "L57",
-          "name": "Reading light · axis 9 · H outer",
+          "id": "L134",
+          "name": "Porch path light · H · bay 8–9",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 0.704376287,
           "intersection": false
         },
         {
-          "id": "L58",
-          "name": "Reading light · axis 9 · H outer · twin",
+          "id": "L148",
+          "name": "Side door lantern · H · 34.725 · rear",
           "hidden": false,
-          "clearanceM": 0.653470805,
+          "clearanceM": 1.194243121,
           "intersection": false
         },
         {
-          "id": "L95",
-          "name": "Sconce · axis 9 · H",
+          "id": "S272",
+          "name": "Wall speaker · axis 9 · H",
           "hidden": false,
-          "clearanceM": 0.324486768,
+          "clearanceM": 0.984799593,
           "intersection": false
         },
         {
-          "id": "L117",
-          "name": "Statue accent · H",
+          "id": "S-PORCH-H-8-9",
+          "name": "Porch fill · H · bay 8–9",
           "hidden": false,
-          "clearanceM": 1.014519138,
+          "clearanceM": 1.021564332,
           "intersection": false
         }
       ]
@@ -1362,7 +1404,7 @@
     {
       "a": "F244",
       "b": "F-NAVE-B-2P",
-      "clearanceM": 8.145916657
+      "clearanceM": 7.525916657
     },
     {
       "a": "F244",
@@ -1397,7 +1439,7 @@
     {
       "a": "F245",
       "b": "F-NAVE-H-2P",
-      "clearanceM": 8.145916657
+      "clearanceM": 7.525916657
     },
     {
       "a": "F245",
@@ -1427,7 +1469,7 @@
     {
       "a": "F246",
       "b": "F-NAVE-B-2P",
-      "clearanceM": 17.145916657
+      "clearanceM": 16.525916657
     },
     {
       "a": "F246",
@@ -1457,7 +1499,7 @@
     {
       "a": "F247",
       "b": "F-NAVE-H-2P",
-      "clearanceM": 17.145916657
+      "clearanceM": 16.525916657
     },
     {
       "a": "F247",
@@ -1482,7 +1524,7 @@
     {
       "a": "F248",
       "b": "F-NAVE-B-2P",
-      "clearanceM": 26.145916657
+      "clearanceM": 25.525916657
     },
     {
       "a": "F248",
@@ -1507,7 +1549,7 @@
     {
       "a": "F249",
       "b": "F-NAVE-H-2P",
-      "clearanceM": 26.145916657
+      "clearanceM": 25.525916657
     },
     {
       "a": "F249",
@@ -1532,42 +1574,42 @@
     {
       "a": "F-NAVE-B-2P",
       "b": "F-NAVE-B-3",
-      "clearanceM": 3.645916657
+      "clearanceM": 3.025916657
     },
     {
       "a": "F-NAVE-B-2P",
       "b": "F-NAVE-B-5",
-      "clearanceM": 12.645916657
+      "clearanceM": 12.025916657
     },
     {
       "a": "F-NAVE-B-2P",
       "b": "F-NAVE-B-7",
-      "clearanceM": 21.645916657
+      "clearanceM": 21.025916657
     },
     {
       "a": "F-NAVE-B-2P",
       "b": "F-NAVE-B-9",
-      "clearanceM": 30.645916657
+      "clearanceM": 30.025916657
     },
     {
       "a": "F-NAVE-H-2P",
       "b": "F-NAVE-H-3",
-      "clearanceM": 3.645916657
+      "clearanceM": 3.025916657
     },
     {
       "a": "F-NAVE-H-2P",
       "b": "F-NAVE-H-5",
-      "clearanceM": 12.645916657
+      "clearanceM": 12.025916657
     },
     {
       "a": "F-NAVE-H-2P",
       "b": "F-NAVE-H-7",
-      "clearanceM": 21.645916657
+      "clearanceM": 21.025916657
     },
     {
       "a": "F-NAVE-H-2P",
       "b": "F-NAVE-H-9",
-      "clearanceM": 30.645916657
+      "clearanceM": 30.025916657
     },
     {
       "a": "F-NAVE-B-3",

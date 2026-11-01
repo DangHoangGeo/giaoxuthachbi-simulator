@@ -185,7 +185,11 @@
     // 576 nave seats, eye +1.2 m) at any height from 6.3 to 8.3 m.
     for (const k of ['4', '6', '8']) add({ type: 'chandelier8', name: `Chandelier · bay ${k}–${Number(k) + 1}`, circuit: 'LD', mount: 'pendant', pos: [A[k] + 2.25, NAVE_CHANDELIER_Y, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
     // Hung high enough that the lobed sanctuary frame and the reredos crown read below it from the nave.
-    add({ type: 'chandelier12', name: 'Grand chandelier · crossing 9–10', circuit: 'LD', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.2, 0], anchorY: lining(0) - 0.13, yaw: 0, mountYaw: 0 });
+    // The crossing chandelier and star hang from the soffit of the underside ridge member (top +12.23,
+    // deepened to 0.28 m on 1 Nov 2026, sanctuary.js spec.roofTimber); lining(0) − 0.13 put the canopy
+    // inside the ridge timber.
+    const RIDGE_SOFFIT = +(12.23 - (window.CHURCH_SANCTUARY?.spec.roofTimber?.ridge.d ?? 0.16)).toFixed(3);
+    add({ type: 'chandelier12', name: 'Grand chandelier · crossing 9–10', circuit: 'LD', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.2, 0], anchorY: RIDGE_SOFFIT, yaw: 0, mountYaw: 0 });
     // Sconces on the C/G piers, facing the nave, and on the sanctuary piers. Since 25 Oct 2026
     // they sit at +5.00 m (was +4.60) to leave room for the lowered wall fans below them.
     for (const k of ['3', '4', '5', '6', '7', '8', '9']) for (const s of [-1, 1]) {
@@ -536,7 +540,7 @@
     add({ type: 'carpet', name: 'Aisle carpet (weddings & feasts)', circuit: 'DECOR', mount: 'floor', pos: [6.2, 0, 0], yaw: 0, mountYaw: 0, hidden: true, params: { length: 32 } });
     add({ type: 'christmasTree', name: 'Christmas tree · front stage', circuit: 'X1', mount: 'floor', pos: [-4.2, -0.48, -5.6], yaw: 180, mountYaw: 180, hidden: true });
     add({ type: 'grotto', name: 'Nativity grotto (hang đá) · front stage', circuit: 'X1', mount: 'floor', pos: [-4.2, -0.48, 5.6], yaw: 180, mountYaw: 180, hidden: true });
-    add({ type: 'star', name: 'Star over the crossing', circuit: 'X1', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.4, 0], anchorY: lining(0) - 0.13, yaw: 90, mountYaw: 90, hidden: true });
+    add({ type: 'star', name: 'Star over the crossing', circuit: 'X1', mount: 'pendant', pos: [(A['9'] + A['10']) / 2, 9.4, 0], anchorY: RIDGE_SOFFIT, yaw: 90, mountYaw: 90, hidden: true });
     // Festival lantern strings mid-bay, clear of the pier lanterns and of the loudspeaker bays (3–4, 6–7).
     for (const k of ['4', '5', '7', '8']) for (const s of [-1, 1]) {
       const x = A[k] + 2.25;
@@ -554,9 +558,12 @@
         pos: [x, 2.2, sign * 13.095], yaw: -sign * 90, mountYaw: -sign * 90, on: true, hidden: false,
         note: 'USER CONFIRMED subjects/location: Peter and Paul between windows in each wing. CONCEPT 1.12 ×1.62 m frame proxy, Y2.20 centre. Actual size, height, substrate, frame, artwork and fixings pending. Unpowered.' });
     }
+    // With the doors on the axis-2 line (1 Nov 2026) the door wall and the towers' inner rear piers
+    // fill the axis-2′ corner, so the two axis-2′ wall fans stand further along the wall.
+    const ENTRANCE_FAN_X = +(A['2′'] + 0.62).toFixed(3);
     for (const k of ['2′', '3', '5', '7', '9']) for (const sign of [-1, 1]) {
       add({ id: `F-NAVE-${side(sign)}-${k === '2′' ? '2P' : k}`, type: 'fanNaveWall', name: `Wall fan · axis ${k} · ${side(sign)}`, circuit: 'F2', mount: 'wall',
-        pos: [A[k], NAVE_FAN_Y, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
+        pos: [k === '2′' ? ENTRANCE_FAN_X : A[k], NAVE_FAN_Y, sign * 7.07], yaw: -sign * 90, mountYaw: -sign * 90, tilt: -38, speed: 1, hidden: false, on: false });
     }
     // Socket outlets, 9 October 2026 (owner request). One 16 A radial per side
     // from DB-1 serves that side's sanctuary and mid-nave points along the wall
@@ -687,6 +694,28 @@
       const old = towerPierBefore[it.id], raw = next.get(it.id);
       if (!old || !raw || !untouched(it, old)) return it;
       return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, ...(raw.params?.length ? { params: { ...it.params, length: raw.params.length } } : {}) };
+    });
+  }
+
+  // Owner, 1 November 2026, open items of the review: the two axis-2′ wall fans stand 0.62 m along the
+  // wall (the axis-2 door wall and the towers' inner rear piers fill that corner), and the crossing
+  // chandelier and star hang from the soffit of the deeper ridge member. A saved item still at its
+  // previous place and aim moves (keeping ID, switching, dimming, visibility and note); a moved or
+  // deleted one stays as the user left it.
+  const entranceFitRevision = '2026-11-01-entrance-fit-1';
+  const entranceFitBefore = {
+    "F-NAVE-B-2P": {"type":"fanNaveWall","pos":[5.475,4.1,-7.07],"yaw":90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "F-NAVE-H-2P": {"type":"fanNaveWall","pos":[5.475,4.1,7.07],"yaw":-90,"tilt":-38,"mount":"wall","circuit":"F2"},
+    "L81": {"type":"chandelier12","pos":[40.575,9.2,0],"yaw":0,"tilt":0,"mount":"pendant","circuit":"L3","anchorY":12.152},
+    "D311": {"type":"star","pos":[40.575,9.4,0],"yaw":90,"tilt":0,"mount":"pendant","circuit":"X1","anchorY":12.152},
+  };
+  function upgradeEntranceFit(items, design) {
+    const next = new Map(design.map(it => [it.id, it]));
+    return items.map(it => {
+      const old = entranceFitBefore[it.id], raw = next.get(it.id);
+      if (!old || !raw || !untouched(it, old)) return it;
+      if (old.anchorY !== undefined && Math.abs((it.anchorY ?? old.anchorY) - old.anchorY) > 0.005) return it;
+      return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw, ...(raw.anchorY !== undefined ? { anchorY: raw.anchorY } : {}) };
     });
   }
 
@@ -1311,5 +1340,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { entranceFitRevision, entranceFitBefore, upgradeEntranceFit, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();
