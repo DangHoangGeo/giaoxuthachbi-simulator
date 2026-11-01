@@ -8,7 +8,7 @@ The simulator turns the existing 3D model into a working test bench. You can pla
 
 All values are transparent engineering estimates for comparing options. They are not certified lighting, acoustic, airflow or electrical calculations. Confirm the final choices with the professional tools and site measurements listed at the end.
 
-**Revision context, 7 October 2026:** the [6 October calculation audit](../../review/stats-audit-2026-10-06/README.md) records the earlier 380-seat model. The current sanctuary revision samples 368 seats; see [sanctuary results and limits](../sanctuary-model.md). Earlier tables and revision notes below retain historical results. Read [methods and limitations](methods-and-limitations.md) before using any estimate or claiming a design target has passed.
+**Revision context, 7 October 2026:** the [6 October calculation audit](../../review/stats-audit-2026-10-06/README.md) records the earlier 380-seat model. The earlier sanctuary revision sampled 368 seats; the 1 November entrance-row removal changes the two layouts and their receiver counts. See the [current seating plan](../interior-systems-plan.md) and [methods and limitations](methods-and-limitations.md). Earlier tables and revision notes below retain historical results. Read [methods and limitations](methods-and-limitations.md) before using any estimate or claiming a design target has passed.
 
 ---
 

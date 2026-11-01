@@ -507,8 +507,10 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
 // Seating-dependent palms preserve manual visibility and remove walk obstacles.
 {
   const planning=sandbox.CHURCH_PLANNING,allPalms=SIM.state.items.filter(it=>it.type==='palm');
-  const palms=allPalms.filter(it=>it.name.startsWith('Palm · entrance')),sanctuaryPalms=allPalms.filter(it=>it.name.startsWith('Palm · sanctuary'));
-  assert.equal(palms.length,2);assert.equal(sanctuaryPalms.length,2);assert.equal(allPalms.length,4);
+  const sanctuaryPalms=allPalms.filter(it=>it.name.startsWith('Palm · sanctuary'));
+  assert.equal(allPalms.filter(it=>it.name.startsWith('Palm · entrance')).length,0,'Default entrance palms removed');
+  assert.equal(sanctuaryPalms.length,2);assert.equal(allPalms.length,2);
+  const palms=[-1,1].map(s=>SIM.add({type:'palm',name:`Palm · entrance synthetic ${s}`,mount:'floor',pos:[6.3,0,s*6.55]}, {record:false}));
   const exteriorPalm=SIM.add({type:'palm',name:'Test courtyard palm',mount:'floor',pos:[-10,-.48,5]}, {record:false});
   const visibility=palms.map(it=>it.hidden);
   for(const layout of [2,4,2,4]){
@@ -526,6 +528,7 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   planning.setLayout(2);planning.setLayout(4);
   assert.equal(SIM.fixtures.get(palms[0].id).root.visible,false,'Manually hidden palms stay hidden');
   SIM.update(palms[0].id,{hidden:visibility[0]},{record:false});
+  for(const it of palms)SIM.remove(it.id,{record:false});
   SIM.remove(exteriorPalm.id,{record:false});
 }
 // Socket outlets, façade statues and their hidden light (9 October 2026).
@@ -845,7 +848,7 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   const saved = [lowered('Ambo microphone', { id: 'm1', on: false }), lowered('Palm · sanctuary B', { id: 'p1' }),
     { ...pick('Paschal candle'), id: 'c1', pos: [40.9, 0.75, -1.2] },
     { ...pick('Altar microphone'), id: 'm2', pos: [44.45, 1.6, 0.45] },
-    { ...pick('Palm · entrance B'), id: 'p2' },
+    { id: 'p2', name: 'Palm · entrance B', type: 'palm', circuit: 'DECOR', mount: 'floor', pos: [6.3, 0, -6.55], yaw: 0 },
     { id: 'u1', name: 'Extra flowers', type: 'flowerStand', circuit: 'DECOR', mount: 'floor', pos: [46.0, 0.75, 1.0], yaw: 0, mountYaw: 0 }];
   const up = D.upgradeDaisLevel(saved, design), byId = id => up.find(it => it.id === id);
   assert(plain(byId('m1').pos).join() === plain(pick('Ambo microphone').pos).join() && byId('m1').on === false, 'untouched dais microphone rises, keeps its switch');

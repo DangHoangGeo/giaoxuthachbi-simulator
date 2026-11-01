@@ -17916,17 +17916,12 @@
           -7.36
         ],
         [
-          5.475,
-          5.988,
-          -7.36
-        ],
-        [
-          5.313000000894069,
+          5.555,
           5.988,
           -7.36
         ]
       ],
-      "length": 66.01213031028512,
+      "length": 65.7701303111792,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -18044,11 +18039,11 @@
       ],
       "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 66.01213031028512,
+      "upstreamLength": 65.7701303111792,
       "homeRun": false,
       "points": [
         [
-          5.313000000894069,
+          5.555,
           5.988,
           -7.36
         ],
@@ -18073,12 +18068,12 @@
           0
         ],
         [
-          5.313000000894069,
+          5.555,
           4.9,
           0
         ],
         [
-          5.313000000894069,
+          5.555,
           4.762499999552966,
           0
         ]
@@ -18086,7 +18081,7 @@
       "method": "door-head",
       "installation": "Entrance wall band to solid jamb outside coloured fanlight, fixed transom and local inside-face sign clip. Removable frame cover, fixing and emergency design pending.",
       "coverPaths": [],
-      "length": 12.161499905079602,
+      "length": 12.645499903291466,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -40767,7 +40762,7 @@
       "specs": "20 lm · 6500 K",
       "hiddenAlternative": false,
       "position": [
-        5.313000000894069,
+        5.555,
         4.762499999552966,
         0
       ],

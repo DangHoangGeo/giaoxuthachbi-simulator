@@ -655,7 +655,7 @@
     });
     window.CHURCH_VERANDA_REVIEW?.apply(items,GEO);
     window.CHURCH_DOORHEAD_REVIEW?.apply(items,GEO,SIM);
-    return items.filter(it => ![...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id) && !parishRetiredNames.test(it.name));
+    return items.filter(it => !['D299','D305',...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id) && !parishRetiredNames.test(it.name));
   }
 
   const columnWashRevision = '2026-11-01-column-up-down-1';
@@ -674,6 +674,26 @@
       const raw = target.get(it.id);
       if (!raw || !untouched(it, raw) || Math.abs((it.lumens ?? NaN) - 2300) >= 0.5 || Math.abs((it.beam ?? NaN) - raw.beam) >= 0.5) return it;
       return { ...it, lumens: raw.lumens };
+    });
+  }
+
+  // Repair known pre-axis-2 entrance positions without overwriting independent edits.
+  const entranceInteriorRevision = '2026-11-01-entrance-interior-1';
+  function upgradeEntranceInterior(items, design) {
+    const next=new Map(design.map(it=>[it.id,it]));
+    const ids=new Set(['L59','L60','L61','L62','S273','S274','F250','F251']);
+    return items.flatMap(it=>{
+      if (['D299','D305'].includes(it.id) && it.type==='palm' && /^Palm · entrance [BH]$/.test(it.name) && Math.abs(it.pos[0]-6.3)<.005 && Math.abs(it.pos[1])<.005 && Math.abs(Math.abs(it.pos[2])-6.55)<.005) return [];
+      const raw=next.get(it.id);
+      if (!raw || raw.type!==it.type || raw.name!==it.name) return [it];
+      if(it.id==='L155' && it.circuit==='E1' && it.mount==='wall' && Math.abs(it.pos[2])<.005 &&
+        ((Math.abs(it.pos[0]-5.313)<.01 && Math.abs(it.pos[1]-raw.pos[1])<.01) || ([2.65,5.2].some(x=>Math.abs(it.pos[0]-x)<.01) && Math.abs(it.pos[1]-6.95)<.01)))
+        return [{...it,pos:[...raw.pos],params:{...it.params,...raw.params},note:it.note && !it.note.startsWith('CONCEPT: inside-face transom clip') ? it.note : raw.note}];
+      const priorY=it.id==='L59'||it.id==='L61'?[3.45]:it.id==='L60'||it.id==='L62'?[3.9,5.95]:it.id==='S273'||it.id==='S274'?[2.5,3.6]:[6];
+      if(ids.has(it.id) && it.mount==='wall' && priorY.some(y=>Math.abs(it.pos[1]-y)<.005) && Math.abs(it.pos[2]-raw.pos[2])<.005 &&
+        [2.65,2.655,5.2,5.205].some(x=>Math.abs(it.pos[0]-x)<.005))
+        return [{...it,pos:[raw.pos[0],it.pos[1],it.pos[2]]}];
+      return [it];
     });
   }
 
@@ -1429,5 +1449,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { entranceInteriorRevision, upgradeEntranceInterior, centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

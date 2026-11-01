@@ -185,8 +185,8 @@ const seatingGroups = [...batches.keys()].filter(g=>g.userData.seatingOption);
 assert.equal(seatingGroups.length,2);
 for(const layout of [2,4,2,4]) {
   const status=planning.setLayout(layout);
-  assert.equal(status.pewCount,layout===2?36:96);
-  assert.equal(status.pewRows,layout===2?18:24);
+  assert.equal(status.pewCount,layout===2?34:92);
+  assert.equal(status.pewRows,layout===2?17:23);
   assert.equal(sandbox.window.model.interior.colliders.filter(c=>c.kind==='pew'&&c.active!==false).length,status.pewCount);
   for(const group of seatingGroups){
     assert.equal(batches.get(group).visible,group.userData.seatingOption===layout);
@@ -246,8 +246,9 @@ const seats=planPews.flatMap(pew=>Array.from({length:Math.floor((pew.length-.075
   }
   return {id:`${pew.id}-${index+1}`,pewId:pew.id,x:origin.x,z:origin.z,block:pew.block,layout:pew.layout,blocked};
 }));
-assert.equal(seats.filter(s=>s.layout===4).length,288);
-assert.equal(seats.filter(s=>s.layout===2).length,288);
+assert.equal(seats.filter(s=>s.layout===4).length,276);
+assert.equal(seats.filter(s=>s.layout===2).length,272);
+assert(pewNodes.every(o=>o.position.x>6.49),'Entrance-end row removed from both layouts');
 // The row in front of the bay 8–9 crossing is removed: at least 3.1 m stays open before the sanctuary's low platform (x 37.475).
 assert(Math.max(...pewNodes.map(o=>bounds(o).max.x))<=34.3,'No bench stands in front of the bay 8–9 crossing');
 assert(37.475-Math.max(...pewNodes.map(o=>bounds(o).max.x))>=3.1,'At least 3.1 m clear between the front benches and the sanctuary platform');
@@ -259,7 +260,7 @@ const sightlineSummary=Object.fromEntries([2,4].map(blocks=>{
 }));
 if(process.argv.includes('--plan')){
   const planningDir=path.join(root,'Thach_Bi_Viewer/planning');fs.mkdirSync(planningDir,{recursive:true});
-  const payload={revision:'2026-10-05',site:{address:'756G+GFV, Nam Đồng, Ninh Bình, Vietnam',front:'East (user confirmed; exact azimuth unmeasured)',airConditioning:false},axes:data.longitudinal,transverse:data.transverse,sideAccess:nodes.filter(o=>o.name==='Side landing at −0.320 m'||o.name==='Stone tread with projecting nosing').map(o=>{const b=bounds(o);return {kind:o.name.startsWith('Side landing')?'landing':'tread',x:b.min.x,z:b.min.z,width:b.max.x-b.min.x,depth:b.max.z-b.min.z};}),pews:planPews,seats,targets,sightlineSummary,seatingStudy:data.seatingStudy,columns:nodes.filter(o=>o.name.startsWith('Central column ')).map(o=>({name:o.name,x:o.position.x,z:o.position.z,radius:.32,baseWidth:.82})),method:'Actual THREE.Raycaster intersections against 18 main shafts, their bases/collars and sanctuary piers. One point per target, seated eye 1.15 m; excludes people and other obstructions. Positions at 0.55 m spacing within bench length minus 0.075 m end thickness: 8 per long bench or 3 per short bench. Not legal capacity.'};
+  const payload={revision:'2026-11-01-entrance-row',site:{address:'756G+GFV, Nam Đồng, Ninh Bình, Vietnam',front:'East (user confirmed; exact azimuth unmeasured)',airConditioning:false},axes:data.longitudinal,transverse:data.transverse,sideAccess:nodes.filter(o=>o.name==='Side landing at −0.320 m'||o.name==='Stone tread with projecting nosing').map(o=>{const b=bounds(o);return {kind:o.name.startsWith('Side landing')?'landing':'tread',x:b.min.x,z:b.min.z,width:b.max.x-b.min.x,depth:b.max.z-b.min.z};}),pews:planPews,seats,targets,sightlineSummary,seatingStudy:data.seatingStudy,columns:nodes.filter(o=>o.name.startsWith('Central column ')).map(o=>({name:o.name,x:o.position.x,z:o.position.z,radius:.32,baseWidth:.82})),method:'Actual THREE.Raycaster intersections against 18 main shafts, their bases/collars and sanctuary piers. One point per target, seated eye 1.15 m; excludes people and other obstructions. Positions at 0.55 m spacing within bench length minus 0.075 m end thickness: 8 per long bench or 3 per short bench. Not legal capacity.'};
   fs.writeFileSync(path.join(planningDir,'model-plan-data.js'),'window.CHURCH_PLAN_DATA = '+JSON.stringify(payload,null,2)+';\n');
 }
 let batchCount=0,triangles=0;

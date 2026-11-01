@@ -1,5 +1,7 @@
 # Central facade between the towers
 
+> **Entrance equipment follow-up, 1 November 2026:** The main exit sign is now on the nave side of the X 5.475 m inner wall face, with a conceptual clip back to the fixed transom. Entrance reading lights and loudspeakers use the inside wall; a backed-up scoped saved-layout migration repairs known obsolete wall positions while preserving independent edits. The rearmost pew row and the two entrance palms are removed. Clip, visibility, door clearance, emergency power and electrical containment remain ENGINEERING HOLD.
+
 **Revision 24 October 2026 (`2026-10-24-cad-facade-1`).** Above the ground-storey cornice, the central facade between the twin towers now follows the church's CAD file of 23 October 2026. The owner directed on 24 October 2026 that this branch follows that file. The owner confirmed this DWG as the project design basis on 26 October 2026; designer-issued construction coordination remains held in ISSUE-R01 and ISSUE-R02 in the [dimension register](layout_design/Thach_Bi_Church_Dimensions.xlsx). **Not for construction.**
 
 ## Kiểm tra ngoại thất ngày 26/10/2026

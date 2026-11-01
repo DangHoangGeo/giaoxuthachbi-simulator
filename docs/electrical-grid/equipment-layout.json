@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-11-01T11:19:17.310Z",
+  "savedAt": "2026-11-01T11:42:02.646Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -61,6 +61,7 @@
     "wingRoofLightingRevision": "2026-11-01-wing-roof-lighting-1",
     "columnWashRevision": "2026-11-01-column-up-down-1",
     "centreReadingRevision": "2026-11-01-centre-reading-balance-1",
+    "entranceInteriorRevision": "2026-11-01-entrance-interior-1",
     "eveningExposureRevision": "2026-10-09-evening-160",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
@@ -3015,7 +3016,7 @@
       "circuit": "E1",
       "mount": "wall",
       "pos": [
-        5.313000000894069,
+        5.555,
         4.762499999552966,
         0
       ],
@@ -3026,7 +3027,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "backReach": 0.08,
+        "backReach": 0.32199999910593036,
         "clipRise": 0.1375000004470346
       },
       "note": "CONCEPT: inside-face transom clip, case below the coloured fanlight. Lowest edge about 4.68 m; support/door clearance and sign visibility need fire/architectural review. E1 remains maintained from DB-",
@@ -6266,25 +6267,6 @@
       "params": {}
     },
     {
-      "id": "D299",
-      "type": "palm",
-      "name": "Palm · entrance B",
-      "circuit": "DECOR",
-      "mount": "floor",
-      "pos": [
-        6.3,
-        0,
-        -6.55
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {}
-    },
-    {
       "id": "D300",
       "type": "banner",
       "name": "Banner · axis 9 · B",
@@ -6376,25 +6358,6 @@
       "yaw": 180,
       "tilt": 0,
       "mountYaw": 180,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {}
-    },
-    {
-      "id": "D305",
-      "type": "palm",
-      "name": "Palm · entrance H",
-      "circuit": "DECOR",
-      "mount": "floor",
-      "pos": [
-        6.3,
-        0,
-        6.55
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,

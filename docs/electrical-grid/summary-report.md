@@ -1,6 +1,6 @@
 # Equipment quantities, usage and quality report
 
-> **1 November 2026, current lighting issue:** Fourteen concept column up/down fixtures on LD add 112 W connected; L3–L30 retain their IDs while centre and companion reading heads are rebalanced. See the [lighting study](../systems/lighting.md) for the simulated aisle/seat comparison and outstanding photometry, glare and installation review. The 9 October wing description later in this generated report is historical; its chandeliers were retired in the subsequent wing-lighting revision.
+> **Entrance follow-up, 1 November 2026:** Entrance palms D299/D305 are retired, main E1 sign L155 moves to the nave face, and the rear pew row is removed in both layouts. See the [facade record](../facade-model.md) and [interior plan](../interior-systems-plan.md); the physical sign, clip and routes are unapproved. The fourteen column up/down lights remain on LD at 112 W connected; L3–L30 retain their rebalanced outputs. Earlier wing and lighting narratives below are historical.
 
 Generated 1 November 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
 
@@ -11,12 +11,12 @@ Generated 1 November 2026 from the category registers and their matched model sn
 | Lighting | 290 | 290 | 0 | 290 | 264 | 315 | 2346 |
 | Sound | 44 | 44 | 0 | 44 | 34 | 54 | 330 |
 | Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 410 |
-| Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 68 |
-| Decoration and furnishings | 37 | 22 | 15 | 0 | 22 | 0 | 0 |
+| Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 67 |
+| Decoration and furnishings | 35 | 20 | 15 | 0 | 20 | 0 | 0 |
 | Distribution and controls | 12 | 12 | 0 | 6 | 4 | 15 | 109 |
-| **Total** | 433 | 418 | 15 | 390 | 356 | 449 | 3263 |
+| **Total** | 431 | 416 | 15 | 390 | 354 | 449 | 3262 |
 
-Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **37 equipment, 118 routes**.
+Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **39 equipment, 118 routes**.
 
 ## Usage and energy estimate
 
@@ -41,10 +41,10 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 | Lighting | 3,663.489 | 3,663.489 | 0.000 | 0.000 |
 | Sound | 765.922 | 0.000 | 2,362.560 | 566.077 |
 | Fans and ventilation | 978.661 | 978.661 | 0.000 | 0.000 |
-| Exit signs | 165.967 | 165.967 | 0.000 | 0.000 |
+| Exit signs | 166.209 | 166.209 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 263.923 | 263.923 | 0.000 | 0.000 |
-| **Total by length basis** | **5,837.962** | **5,072.040** | **2,362.560** | **566.077** |
+| **Total by length basis** | **5,838.204** | **5,072.282** | **2,362.560** | **566.077** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/439 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -58,9 +58,9 @@ The build verified unique equipment/route IDs, unique ordered vertices, complete
 | Sound | 0/44 | 0/44 | 0/54 |
 | Fans and ventilation | 0/45 | 0/45 | 0/58 |
 | Exit signs | 0/5 | 0/5 | 0/7 |
-| Decoration and furnishings | 0/37 | 0/0 | 0/0 |
+| Decoration and furnishings | 0/35 | 0/0 | 0/0 |
 | Distribution and controls | 0/12 | 0/6 | 0/15 |
-| **Total** | **0/433** | **0/390** | **0/449** |
+| **Total** | **0/431** | **0/390** | **0/449** |
 
 These counts measure field completeness only; filled fields still require source and engineering review. A 0/0 population is not applicable. Product selection, protection, final cable/containment specifications, actual control channels and commissioning evidence remain pending where fields are blank. No overall quality score is invented.
 
@@ -74,8 +74,8 @@ The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-an
 The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
 
 
-- [Layout snapshot](equipment-layout.json), SHA-256: c1f87a8d259d2db59b6024f8bc37f7130fbb92ce7a676e5a74cf21c7b6e14e93.
-- [Electrical snapshot](electrical-systems.json), SHA-256: 915dd90275a0034696113f82860b1279f27e49d0a4fb007df4e82bd491f77812.
+- [Layout snapshot](equipment-layout.json), SHA-256: 1afaf6bac2691823fcfbd4c95b8d1c48f8f2a89c73932cab481097d564a76a22.
+- [Electrical snapshot](electrical-systems.json), SHA-256: 8e1e972ba7e4a5616af2538620f7be62b40030ad891eba3c767434630886d092.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 
