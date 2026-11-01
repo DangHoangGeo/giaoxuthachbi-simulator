@@ -938,22 +938,22 @@
         [
           10.125,
           9.235,
-          -2.48
+          -0.9
         ],
         [
           10.18,
           9.235,
-          -2.48
+          -0.9
         ],
         [
           10.18,
           8.77,
-          -2.48
+          -0.9
         ],
         [
           10.125,
           8.77,
-          -2.48
+          -0.9
         ]
       ],
       "method": "above-main-beam",
@@ -990,29 +990,29 @@
             [
               10.125,
               9.235,
-              -2.48
+              -0.9
             ],
             [
               10.18,
               9.235,
-              -2.48
+              -0.9
             ],
             [
               10.18,
               8.77,
-              -2.48
+              -0.9
             ],
             [
               10.125,
               8.77,
-              -2.48
+              -0.9
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 8.135621170805727,
+      "length": 9.699769132839066,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -1073,22 +1073,22 @@
         [
           10.125,
           9.235,
-          -2.72
+          -2.48
         ],
         [
           10.18,
           9.235,
-          -2.72
+          -2.48
         ],
         [
           10.18,
           8.77,
-          -2.72
+          -2.48
         ],
         [
           10.125,
           8.77,
-          -2.72
+          -2.48
         ]
       ],
       "method": "above-main-beam",
@@ -1125,29 +1125,29 @@
             [
               10.125,
               9.235,
-              -2.72
+              -2.48
             ],
             [
               10.18,
               9.235,
-              -2.72
+              -2.48
             ],
             [
               10.18,
               8.77,
-              -2.72
+              -2.48
             ],
             [
               10.125,
               8.77,
-              -2.72
+              -2.48
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 7.912066409181707,
+      "length": 8.135621170805727,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -1164,6 +1164,141 @@
       "role": "drop",
       "itemIds": [
         "L7"
+      ],
+      "trunkId": "trunk:LC1:L2:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 57.68013031117919,
+      "homeRun": false,
+      "points": [
+        [
+          14.625,
+          5.908,
+          -7.36
+        ],
+        [
+          14.82,
+          5.908,
+          -7.36
+        ],
+        [
+          14.82,
+          7.04,
+          -7.36
+        ],
+        [
+          14.82,
+          9.442448369565216,
+          -4.050000000000001
+        ],
+        [
+          14.82,
+          9.235,
+          -4.05
+        ],
+        [
+          14.82,
+          9.235,
+          -3
+        ],
+        [
+          14.475,
+          9.235,
+          -3
+        ],
+        [
+          14.625,
+          9.235,
+          -0.9
+        ],
+        [
+          14.68,
+          9.235,
+          -0.9
+        ],
+        [
+          14.68,
+          8.77,
+          -0.9
+        ],
+        [
+          14.625,
+          8.77,
+          -0.9
+        ]
+      ],
+      "method": "above-main-beam",
+      "installation": "Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              14.82,
+              9.442448369565216,
+              -4.050000000000001
+            ],
+            [
+              14.82,
+              9.235,
+              -4.05
+            ],
+            [
+              14.82,
+              9.235,
+              -3
+            ],
+            [
+              14.475,
+              9.235,
+              -3
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              14.625,
+              9.235,
+              -0.9
+            ],
+            [
+              14.68,
+              9.235,
+              -0.9
+            ],
+            [
+              14.68,
+              8.77,
+              -0.9
+            ],
+            [
+              14.625,
+              8.77,
+              -0.9
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 9.699769132839066,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:L2:light:-1:L8",
+      "name": "L2 → Reading light · axis 4 · B central · twin",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L2",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L8"
       ],
       "trunkId": "trunk:LC1:L2:light:-1",
       "color": "#dc9e29",
@@ -1290,75 +1425,75 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:L2:light:-1:L8",
-      "name": "L2 → Reading light · axis 4 · B central · twin",
+      "id": "drop:LC1:L2:light:-1:L11",
+      "name": "L2 → Reading light · axis 5 · B central",
       "source": "LC1",
       "board": "DB1",
       "circuit": "L2",
       "kind": "light",
       "role": "drop",
       "itemIds": [
-        "L8"
+        "L11"
       ],
       "trunkId": "trunk:LC1:L2:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 57.68013031117919,
+      "upstreamLength": 53.18013031117919,
       "homeRun": false,
       "points": [
         [
-          14.625,
+          19.125,
           5.908,
           -7.36
         ],
         [
-          14.82,
+          19.32,
           5.908,
           -7.36
         ],
         [
-          14.82,
+          19.32,
           7.04,
           -7.36
         ],
         [
-          14.82,
+          19.32,
           9.442448369565216,
           -4.050000000000001
         ],
         [
-          14.82,
+          19.32,
           9.235,
           -4.05
         ],
         [
-          14.82,
+          19.32,
           9.235,
           -3
         ],
         [
-          14.475,
+          18.975,
           9.235,
           -3
         ],
         [
-          14.625,
+          19.125,
           9.235,
-          -2.72
+          -0.9
         ],
         [
-          14.68,
+          19.18,
           9.235,
-          -2.72
+          -0.9
         ],
         [
-          14.68,
+          19.18,
           8.77,
-          -2.72
+          -0.9
         ],
         [
-          14.625,
+          19.125,
           8.77,
-          -2.72
+          -0.9
         ]
       ],
       "method": "above-main-beam",
@@ -1367,22 +1502,22 @@
         {
           "points": [
             [
-              14.82,
+              19.32,
               9.442448369565216,
               -4.050000000000001
             ],
             [
-              14.82,
+              19.32,
               9.235,
               -4.05
             ],
             [
-              14.82,
+              19.32,
               9.235,
               -3
             ],
             [
-              14.475,
+              18.975,
               9.235,
               -3
             ]
@@ -1393,31 +1528,31 @@
         {
           "points": [
             [
-              14.625,
+              19.125,
               9.235,
-              -2.72
+              -0.9
             ],
             [
-              14.68,
+              19.18,
               9.235,
-              -2.72
+              -0.9
             ],
             [
-              14.68,
+              19.18,
               8.77,
-              -2.72
+              -0.9
             ],
             [
-              14.625,
+              19.125,
               8.77,
-              -2.72
+              -0.9
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 7.912066409181707,
+      "length": 9.699769132839062,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -1425,15 +1560,15 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:L2:light:-1:L11",
-      "name": "L2 → Reading light · axis 5 · B central",
+      "id": "drop:LC1:L2:light:-1:L12",
+      "name": "L2 → Reading light · axis 5 · B central · twin",
       "source": "LC1",
       "board": "DB1",
       "circuit": "L2",
       "kind": "light",
       "role": "drop",
       "itemIds": [
-        "L11"
+        "L12"
       ],
       "trunkId": "trunk:LC1:L2:light:-1",
       "color": "#dc9e29",
@@ -1560,141 +1695,6 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:L2:light:-1:L12",
-      "name": "L2 → Reading light · axis 5 · B central · twin",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L2",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L12"
-      ],
-      "trunkId": "trunk:LC1:L2:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 53.18013031117919,
-      "homeRun": false,
-      "points": [
-        [
-          19.125,
-          5.908,
-          -7.36
-        ],
-        [
-          19.32,
-          5.908,
-          -7.36
-        ],
-        [
-          19.32,
-          7.04,
-          -7.36
-        ],
-        [
-          19.32,
-          9.442448369565216,
-          -4.050000000000001
-        ],
-        [
-          19.32,
-          9.235,
-          -4.05
-        ],
-        [
-          19.32,
-          9.235,
-          -3
-        ],
-        [
-          18.975,
-          9.235,
-          -3
-        ],
-        [
-          19.125,
-          9.235,
-          -2.72
-        ],
-        [
-          19.18,
-          9.235,
-          -2.72
-        ],
-        [
-          19.18,
-          8.77,
-          -2.72
-        ],
-        [
-          19.125,
-          8.77,
-          -2.72
-        ]
-      ],
-      "method": "above-main-beam",
-      "installation": "Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              19.32,
-              9.442448369565216,
-              -4.050000000000001
-            ],
-            [
-              19.32,
-              9.235,
-              -4.05
-            ],
-            [
-              19.32,
-              9.235,
-              -3
-            ],
-            [
-              18.975,
-              9.235,
-              -3
-            ]
-          ],
-          "finish": "timber",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              19.125,
-              9.235,
-              -2.72
-            ],
-            [
-              19.18,
-              9.235,
-              -2.72
-            ],
-            [
-              19.18,
-              8.77,
-              -2.72
-            ],
-            [
-              19.125,
-              8.77,
-              -2.72
-            ]
-          ],
-          "finish": "timber",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 7.912066409181704,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
       "id": "drop:LC1:L2:light:-1:L16",
       "name": "L2 → Reading light · axis 6 · B central · twin",
       "source": "LC1",
@@ -1748,22 +1748,22 @@
         [
           23.625,
           9.235,
-          -2.72
+          -2.48
         ],
         [
           23.68,
           9.235,
-          -2.72
+          -2.48
         ],
         [
           23.68,
           8.77,
-          -2.72
+          -2.48
         ],
         [
           23.625,
           8.77,
-          -2.72
+          -2.48
         ]
       ],
       "method": "above-main-beam",
@@ -1800,29 +1800,29 @@
             [
               23.625,
               9.235,
-              -2.72
+              -2.48
             ],
             [
               23.68,
               9.235,
-              -2.72
+              -2.48
             ],
             [
               23.68,
               8.77,
-              -2.72
+              -2.48
             ],
             [
               23.625,
               8.77,
-              -2.72
+              -2.48
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 7.912066409181704,
+      "length": 8.135621170805724,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -2841,22 +2841,22 @@
         [
           10.125,
           9.235,
-          2.48
+          0.9
         ],
         [
           10.18,
           9.235,
-          2.48
+          0.9
         ],
         [
           10.18,
           8.77,
-          2.48
+          0.9
         ],
         [
           10.125,
           8.77,
-          2.48
+          0.9
         ]
       ],
       "method": "above-main-beam",
@@ -2893,29 +2893,29 @@
             [
               10.125,
               9.235,
-              2.48
+              0.9
             ],
             [
               10.18,
               9.235,
-              2.48
+              0.9
             ],
             [
               10.18,
               8.77,
-              2.48
+              0.9
             ],
             [
               10.125,
               8.77,
-              2.48
+              0.9
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 8.135621170805727,
+      "length": 9.699769132839066,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -2976,22 +2976,22 @@
         [
           10.125,
           9.235,
-          2.72
+          2.48
         ],
         [
           10.18,
           9.235,
-          2.72
+          2.48
         ],
         [
           10.18,
           8.77,
-          2.72
+          2.48
         ],
         [
           10.125,
           8.77,
-          2.72
+          2.48
         ]
       ],
       "method": "above-main-beam",
@@ -3028,29 +3028,29 @@
             [
               10.125,
               9.235,
-              2.72
+              2.48
             ],
             [
               10.18,
               9.235,
-              2.72
+              2.48
             ],
             [
               10.18,
               8.77,
-              2.72
+              2.48
             ],
             [
               10.125,
               8.77,
-              2.72
+              2.48
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 7.912066409181707,
+      "length": 8.135621170805727,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -3067,6 +3067,141 @@
       "role": "drop",
       "itemIds": [
         "L9"
+      ],
+      "trunkId": "trunk:LC1:L2:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 64.28013031117919,
+      "homeRun": false,
+      "points": [
+        [
+          14.625,
+          5.908,
+          7.36
+        ],
+        [
+          14.82,
+          5.908,
+          7.36
+        ],
+        [
+          14.82,
+          7.04,
+          7.36
+        ],
+        [
+          14.82,
+          9.442448369565216,
+          4.050000000000001
+        ],
+        [
+          14.82,
+          9.235,
+          4.05
+        ],
+        [
+          14.82,
+          9.235,
+          3
+        ],
+        [
+          14.475,
+          9.235,
+          3
+        ],
+        [
+          14.625,
+          9.235,
+          0.9
+        ],
+        [
+          14.68,
+          9.235,
+          0.9
+        ],
+        [
+          14.68,
+          8.77,
+          0.9
+        ],
+        [
+          14.625,
+          8.77,
+          0.9
+        ]
+      ],
+      "method": "above-main-beam",
+      "installation": "Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              14.82,
+              9.442448369565216,
+              4.050000000000001
+            ],
+            [
+              14.82,
+              9.235,
+              4.05
+            ],
+            [
+              14.82,
+              9.235,
+              3
+            ],
+            [
+              14.475,
+              9.235,
+              3
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              14.625,
+              9.235,
+              0.9
+            ],
+            [
+              14.68,
+              9.235,
+              0.9
+            ],
+            [
+              14.68,
+              8.77,
+              0.9
+            ],
+            [
+              14.625,
+              8.77,
+              0.9
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 9.699769132839066,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:L2:light:1:L10",
+      "name": "L2 → Reading light · axis 4 · H central · twin",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L2",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L10"
       ],
       "trunkId": "trunk:LC1:L2:light:1",
       "color": "#dc9e29",
@@ -3193,75 +3328,75 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:L2:light:1:L10",
-      "name": "L2 → Reading light · axis 4 · H central · twin",
+      "id": "drop:LC1:L2:light:1:L13",
+      "name": "L2 → Reading light · axis 5 · H central",
       "source": "LC1",
       "board": "DB1",
       "circuit": "L2",
       "kind": "light",
       "role": "drop",
       "itemIds": [
-        "L10"
+        "L13"
       ],
       "trunkId": "trunk:LC1:L2:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 64.28013031117919,
+      "upstreamLength": 59.78013031117919,
       "homeRun": false,
       "points": [
         [
-          14.625,
+          19.125,
           5.908,
           7.36
         ],
         [
-          14.82,
+          19.32,
           5.908,
           7.36
         ],
         [
-          14.82,
+          19.32,
           7.04,
           7.36
         ],
         [
-          14.82,
+          19.32,
           9.442448369565216,
           4.050000000000001
         ],
         [
-          14.82,
+          19.32,
           9.235,
           4.05
         ],
         [
-          14.82,
+          19.32,
           9.235,
           3
         ],
         [
-          14.475,
+          18.975,
           9.235,
           3
         ],
         [
-          14.625,
+          19.125,
           9.235,
-          2.72
+          0.9
         ],
         [
-          14.68,
+          19.18,
           9.235,
-          2.72
+          0.9
         ],
         [
-          14.68,
+          19.18,
           8.77,
-          2.72
+          0.9
         ],
         [
-          14.625,
+          19.125,
           8.77,
-          2.72
+          0.9
         ]
       ],
       "method": "above-main-beam",
@@ -3270,22 +3405,22 @@
         {
           "points": [
             [
-              14.82,
+              19.32,
               9.442448369565216,
               4.050000000000001
             ],
             [
-              14.82,
+              19.32,
               9.235,
               4.05
             ],
             [
-              14.82,
+              19.32,
               9.235,
               3
             ],
             [
-              14.475,
+              18.975,
               9.235,
               3
             ]
@@ -3296,31 +3431,31 @@
         {
           "points": [
             [
-              14.625,
+              19.125,
               9.235,
-              2.72
+              0.9
             ],
             [
-              14.68,
+              19.18,
               9.235,
-              2.72
+              0.9
             ],
             [
-              14.68,
+              19.18,
               8.77,
-              2.72
+              0.9
             ],
             [
-              14.625,
+              19.125,
               8.77,
-              2.72
+              0.9
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 7.912066409181707,
+      "length": 9.699769132839062,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -3328,15 +3463,15 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:L2:light:1:L13",
-      "name": "L2 → Reading light · axis 5 · H central",
+      "id": "drop:LC1:L2:light:1:L14",
+      "name": "L2 → Reading light · axis 5 · H central · twin",
       "source": "LC1",
       "board": "DB1",
       "circuit": "L2",
       "kind": "light",
       "role": "drop",
       "itemIds": [
-        "L13"
+        "L14"
       ],
       "trunkId": "trunk:LC1:L2:light:1",
       "color": "#dc9e29",
@@ -3463,141 +3598,6 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:L2:light:1:L14",
-      "name": "L2 → Reading light · axis 5 · H central · twin",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L2",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L14"
-      ],
-      "trunkId": "trunk:LC1:L2:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 59.78013031117919,
-      "homeRun": false,
-      "points": [
-        [
-          19.125,
-          5.908,
-          7.36
-        ],
-        [
-          19.32,
-          5.908,
-          7.36
-        ],
-        [
-          19.32,
-          7.04,
-          7.36
-        ],
-        [
-          19.32,
-          9.442448369565216,
-          4.050000000000001
-        ],
-        [
-          19.32,
-          9.235,
-          4.05
-        ],
-        [
-          19.32,
-          9.235,
-          3
-        ],
-        [
-          18.975,
-          9.235,
-          3
-        ],
-        [
-          19.125,
-          9.235,
-          2.72
-        ],
-        [
-          19.18,
-          9.235,
-          2.72
-        ],
-        [
-          19.18,
-          8.77,
-          2.72
-        ],
-        [
-          19.125,
-          8.77,
-          2.72
-        ]
-      ],
-      "method": "above-main-beam",
-      "installation": "Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              19.32,
-              9.442448369565216,
-              4.050000000000001
-            ],
-            [
-              19.32,
-              9.235,
-              4.05
-            ],
-            [
-              19.32,
-              9.235,
-              3
-            ],
-            [
-              18.975,
-              9.235,
-              3
-            ]
-          ],
-          "finish": "timber",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              19.125,
-              9.235,
-              2.72
-            ],
-            [
-              19.18,
-              9.235,
-              2.72
-            ],
-            [
-              19.18,
-              8.77,
-              2.72
-            ],
-            [
-              19.125,
-              8.77,
-              2.72
-            ]
-          ],
-          "finish": "timber",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 7.912066409181704,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
       "id": "drop:LC1:L2:light:1:L18",
       "name": "L2 → Reading light · axis 6 · H central · twin",
       "source": "LC1",
@@ -3651,22 +3651,22 @@
         [
           23.625,
           9.235,
-          2.72
+          2.48
         ],
         [
           23.68,
           9.235,
-          2.72
+          2.48
         ],
         [
           23.68,
           8.77,
-          2.72
+          2.48
         ],
         [
           23.625,
           8.77,
-          2.72
+          2.48
         ]
       ],
       "method": "above-main-beam",
@@ -3703,29 +3703,29 @@
             [
               23.625,
               9.235,
-              2.72
+              2.48
             ],
             [
               23.68,
               9.235,
-              2.72
+              2.48
             ],
             [
               23.68,
               8.77,
-              2.72
+              2.48
             ],
             [
               23.625,
               8.77,
-              2.72
+              2.48
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 7.912066409181704,
+      "length": 8.135621170805724,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -4737,22 +4737,22 @@
         [
           23.625,
           9.235,
-          -2.48
+          -0.9
         ],
         [
           23.68,
           9.235,
-          -2.48
+          -0.9
         ],
         [
           23.68,
           8.77,
-          -2.48
+          -0.9
         ],
         [
           23.625,
           8.77,
-          -2.48
+          -0.9
         ]
       ],
       "method": "above-main-beam",
@@ -4789,29 +4789,29 @@
             [
               23.625,
               9.235,
-              -2.48
+              -0.9
             ],
             [
               23.68,
               9.235,
-              -2.48
+              -0.9
             ],
             [
               23.68,
               8.77,
-              -2.48
+              -0.9
             ],
             [
               23.625,
               8.77,
-              -2.48
+              -0.9
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 8.143621170805725,
+      "length": 9.707769132839063,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -4872,22 +4872,22 @@
         [
           28.125,
           9.235,
-          -2.48
+          -0.9
         ],
         [
           28.18,
           9.235,
-          -2.48
+          -0.9
         ],
         [
           28.18,
           8.77,
-          -2.48
+          -0.9
         ],
         [
           28.125,
           8.77,
-          -2.48
+          -0.9
         ]
       ],
       "method": "above-main-beam",
@@ -4924,29 +4924,29 @@
             [
               28.125,
               9.235,
-              -2.48
+              -0.9
             ],
             [
               28.18,
               9.235,
-              -2.48
+              -0.9
             ],
             [
               28.18,
               8.77,
-              -2.48
+              -0.9
             ],
             [
               28.125,
               8.77,
-              -2.48
+              -0.9
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 8.143621170805725,
+      "length": 9.707769132839063,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -5007,22 +5007,22 @@
         [
           28.125,
           9.235,
-          -2.72
+          -2.48
         ],
         [
           28.18,
           9.235,
-          -2.72
+          -2.48
         ],
         [
           28.18,
           8.77,
-          -2.72
+          -2.48
         ],
         [
           28.125,
           8.77,
-          -2.72
+          -2.48
         ]
       ],
       "method": "above-main-beam",
@@ -5059,29 +5059,29 @@
             [
               28.125,
               9.235,
-              -2.72
+              -2.48
             ],
             [
               28.18,
               9.235,
-              -2.72
+              -2.48
             ],
             [
               28.18,
               8.77,
-              -2.72
+              -2.48
             ],
             [
               28.125,
               8.77,
-              -2.72
+              -2.48
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 7.920066409181704,
+      "length": 8.143621170805725,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -5098,6 +5098,141 @@
       "role": "drop",
       "itemIds": [
         "L23"
+      ],
+      "trunkId": "trunk:LC1:L1:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 39.688130311179194,
+      "homeRun": false,
+      "points": [
+        [
+          32.625,
+          5.9,
+          -7.36
+        ],
+        [
+          32.82,
+          5.9,
+          -7.36
+        ],
+        [
+          32.82,
+          7.04,
+          -7.36
+        ],
+        [
+          32.82,
+          9.442448369565216,
+          -4.050000000000001
+        ],
+        [
+          32.82,
+          9.235,
+          -4.05
+        ],
+        [
+          32.82,
+          9.235,
+          -3
+        ],
+        [
+          32.475,
+          9.235,
+          -3
+        ],
+        [
+          32.625,
+          9.235,
+          -0.9
+        ],
+        [
+          32.68,
+          9.235,
+          -0.9
+        ],
+        [
+          32.68,
+          8.77,
+          -0.9
+        ],
+        [
+          32.625,
+          8.77,
+          -0.9
+        ]
+      ],
+      "method": "above-main-beam",
+      "installation": "Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              32.82,
+              9.442448369565216,
+              -4.050000000000001
+            ],
+            [
+              32.82,
+              9.235,
+              -4.05
+            ],
+            [
+              32.82,
+              9.235,
+              -3
+            ],
+            [
+              32.475,
+              9.235,
+              -3
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              32.625,
+              9.235,
+              -0.9
+            ],
+            [
+              32.68,
+              9.235,
+              -0.9
+            ],
+            [
+              32.68,
+              8.77,
+              -0.9
+            ],
+            [
+              32.625,
+              8.77,
+              -0.9
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 9.707769132839063,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:L1:light:-1:L24",
+      "name": "L1 → Reading light · axis 8 · B central · twin",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L1",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L24"
       ],
       "trunkId": "trunk:LC1:L1:light:-1",
       "color": "#dc9e29",
@@ -5224,75 +5359,70 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:L1:light:-1:L24",
-      "name": "L1 → Reading light · axis 8 · B central · twin",
+      "id": "drop:LC1:L1:light:-1:L27",
+      "name": "L1 → Reading light · axis 9 · B central",
       "source": "LC1",
       "board": "DB1",
       "circuit": "L1",
       "kind": "light",
       "role": "drop",
       "itemIds": [
-        "L24"
+        "L27"
       ],
       "trunkId": "trunk:LC1:L1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 39.688130311179194,
+      "upstreamLength": 34.04813031117919,
       "homeRun": false,
       "points": [
         [
-          32.625,
-          5.9,
-          -7.36
-        ],
-        [
-          32.82,
-          5.9,
-          -7.36
-        ],
-        [
-          32.82,
+          37.125,
           7.04,
           -7.36
         ],
         [
-          32.82,
+          37.32,
+          7.04,
+          -7.36
+        ],
+        [
+          37.32,
           9.442448369565216,
           -4.050000000000001
         ],
         [
-          32.82,
+          37.32,
           9.235,
           -4.05
         ],
         [
-          32.82,
+          37.32,
           9.235,
           -3
         ],
         [
-          32.475,
+          36.975,
           9.235,
           -3
         ],
         [
-          32.625,
+          37.125,
           9.235,
-          -2.72
+          -0.9
         ],
         [
-          32.68,
+          37.18,
           9.235,
-          -2.72
+          -0.9
         ],
         [
-          32.68,
+          37.18,
           8.77,
-          -2.72
+          -0.9
         ],
         [
-          32.625,
+          37.125,
           8.77,
-          -2.72
+          -0.9
         ]
       ],
       "method": "above-main-beam",
@@ -5301,22 +5431,22 @@
         {
           "points": [
             [
-              32.82,
+              37.32,
               9.442448369565216,
               -4.050000000000001
             ],
             [
-              32.82,
+              37.32,
               9.235,
               -4.05
             ],
             [
-              32.82,
+              37.32,
               9.235,
               -3
             ],
             [
-              32.475,
+              36.975,
               9.235,
               -3
             ]
@@ -5327,31 +5457,31 @@
         {
           "points": [
             [
-              32.625,
+              37.125,
               9.235,
-              -2.72
+              -0.9
             ],
             [
-              32.68,
+              37.18,
               9.235,
-              -2.72
+              -0.9
             ],
             [
-              32.68,
+              37.18,
               8.77,
-              -2.72
+              -0.9
             ],
             [
-              32.625,
+              37.125,
               8.77,
-              -2.72
+              -0.9
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 7.920066409181704,
+      "length": 8.567769132839064,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -5359,15 +5489,15 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:L1:light:-1:L27",
-      "name": "L1 → Reading light · axis 9 · B central",
+      "id": "drop:LC1:L1:light:-1:L28",
+      "name": "L1 → Reading light · axis 9 · B central · twin",
       "source": "LC1",
       "board": "DB1",
       "circuit": "L1",
       "kind": "light",
       "role": "drop",
       "itemIds": [
-        "L27"
+        "L28"
       ],
       "trunkId": "trunk:LC1:L1:light:-1",
       "color": "#dc9e29",
@@ -5482,136 +5612,6 @@
         }
       ],
       "length": 7.003621170805725,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L1:light:-1:L28",
-      "name": "L1 → Reading light · axis 9 · B central · twin",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L1",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L28"
-      ],
-      "trunkId": "trunk:LC1:L1:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 34.04813031117919,
-      "homeRun": false,
-      "points": [
-        [
-          37.125,
-          7.04,
-          -7.36
-        ],
-        [
-          37.32,
-          7.04,
-          -7.36
-        ],
-        [
-          37.32,
-          9.442448369565216,
-          -4.050000000000001
-        ],
-        [
-          37.32,
-          9.235,
-          -4.05
-        ],
-        [
-          37.32,
-          9.235,
-          -3
-        ],
-        [
-          36.975,
-          9.235,
-          -3
-        ],
-        [
-          37.125,
-          9.235,
-          -2.72
-        ],
-        [
-          37.18,
-          9.235,
-          -2.72
-        ],
-        [
-          37.18,
-          8.77,
-          -2.72
-        ],
-        [
-          37.125,
-          8.77,
-          -2.72
-        ]
-      ],
-      "method": "above-main-beam",
-      "installation": "Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              37.32,
-              9.442448369565216,
-              -4.050000000000001
-            ],
-            [
-              37.32,
-              9.235,
-              -4.05
-            ],
-            [
-              37.32,
-              9.235,
-              -3
-            ],
-            [
-              36.975,
-              9.235,
-              -3
-            ]
-          ],
-          "finish": "timber",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              37.125,
-              9.235,
-              -2.72
-            ],
-            [
-              37.18,
-              9.235,
-              -2.72
-            ],
-            [
-              37.18,
-              8.77,
-              -2.72
-            ],
-            [
-              37.125,
-              8.77,
-              -2.72
-            ]
-          ],
-          "finish": "timber",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 6.780066409181704,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -6519,22 +6519,22 @@
         [
           23.625,
           9.235,
-          2.48
+          0.9
         ],
         [
           23.68,
           9.235,
-          2.48
+          0.9
         ],
         [
           23.68,
           8.77,
-          2.48
+          0.9
         ],
         [
           23.625,
           8.77,
-          2.48
+          0.9
         ]
       ],
       "method": "above-main-beam",
@@ -6571,29 +6571,29 @@
             [
               23.625,
               9.235,
-              2.48
+              0.9
             ],
             [
               23.68,
               9.235,
-              2.48
+              0.9
             ],
             [
               23.68,
               8.77,
-              2.48
+              0.9
             ],
             [
               23.625,
               8.77,
-              2.48
+              0.9
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 8.143621170805725,
+      "length": 9.707769132839063,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -6654,22 +6654,22 @@
         [
           28.125,
           9.235,
-          2.48
+          0.9
         ],
         [
           28.18,
           9.235,
-          2.48
+          0.9
         ],
         [
           28.18,
           8.77,
-          2.48
+          0.9
         ],
         [
           28.125,
           8.77,
-          2.48
+          0.9
         ]
       ],
       "method": "above-main-beam",
@@ -6706,29 +6706,29 @@
             [
               28.125,
               9.235,
-              2.48
+              0.9
             ],
             [
               28.18,
               9.235,
-              2.48
+              0.9
             ],
             [
               28.18,
               8.77,
-              2.48
+              0.9
             ],
             [
               28.125,
               8.77,
-              2.48
+              0.9
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 8.143621170805725,
+      "length": 9.707769132839063,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -6789,22 +6789,22 @@
         [
           28.125,
           9.235,
-          2.72
+          2.48
         ],
         [
           28.18,
           9.235,
-          2.72
+          2.48
         ],
         [
           28.18,
           8.77,
-          2.72
+          2.48
         ],
         [
           28.125,
           8.77,
-          2.72
+          2.48
         ]
       ],
       "method": "above-main-beam",
@@ -6841,29 +6841,29 @@
             [
               28.125,
               9.235,
-              2.72
+              2.48
             ],
             [
               28.18,
               9.235,
-              2.72
+              2.48
             ],
             [
               28.18,
               8.77,
-              2.72
+              2.48
             ],
             [
               28.125,
               8.77,
-              2.72
+              2.48
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 7.920066409181704,
+      "length": 8.143621170805725,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -6880,6 +6880,141 @@
       "role": "drop",
       "itemIds": [
         "L25"
+      ],
+      "trunkId": "trunk:LC1:L1:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 46.288130311179195,
+      "homeRun": false,
+      "points": [
+        [
+          32.625,
+          5.9,
+          7.36
+        ],
+        [
+          32.82,
+          5.9,
+          7.36
+        ],
+        [
+          32.82,
+          7.04,
+          7.36
+        ],
+        [
+          32.82,
+          9.442448369565216,
+          4.050000000000001
+        ],
+        [
+          32.82,
+          9.235,
+          4.05
+        ],
+        [
+          32.82,
+          9.235,
+          3
+        ],
+        [
+          32.475,
+          9.235,
+          3
+        ],
+        [
+          32.625,
+          9.235,
+          0.9
+        ],
+        [
+          32.68,
+          9.235,
+          0.9
+        ],
+        [
+          32.68,
+          8.77,
+          0.9
+        ],
+        [
+          32.625,
+          8.77,
+          0.9
+        ]
+      ],
+      "method": "above-main-beam",
+      "installation": "Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              32.82,
+              9.442448369565216,
+              4.050000000000001
+            ],
+            [
+              32.82,
+              9.235,
+              4.05
+            ],
+            [
+              32.82,
+              9.235,
+              3
+            ],
+            [
+              32.475,
+              9.235,
+              3
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              32.625,
+              9.235,
+              0.9
+            ],
+            [
+              32.68,
+              9.235,
+              0.9
+            ],
+            [
+              32.68,
+              8.77,
+              0.9
+            ],
+            [
+              32.625,
+              8.77,
+              0.9
+            ]
+          ],
+          "finish": "timber",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 9.707769132839063,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:L1:light:1:L26",
+      "name": "L1 → Reading light · axis 8 · H central · twin",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L1",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L26"
       ],
       "trunkId": "trunk:LC1:L1:light:1",
       "color": "#dc9e29",
@@ -7006,75 +7141,70 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:L1:light:1:L26",
-      "name": "L1 → Reading light · axis 8 · H central · twin",
+      "id": "drop:LC1:L1:light:1:L29",
+      "name": "L1 → Reading light · axis 9 · H central",
       "source": "LC1",
       "board": "DB1",
       "circuit": "L1",
       "kind": "light",
       "role": "drop",
       "itemIds": [
-        "L26"
+        "L29"
       ],
       "trunkId": "trunk:LC1:L1:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 46.288130311179195,
+      "upstreamLength": 40.648130311179195,
       "homeRun": false,
       "points": [
         [
-          32.625,
-          5.9,
-          7.36
-        ],
-        [
-          32.82,
-          5.9,
-          7.36
-        ],
-        [
-          32.82,
+          37.125,
           7.04,
           7.36
         ],
         [
-          32.82,
+          37.32,
+          7.04,
+          7.36
+        ],
+        [
+          37.32,
           9.442448369565216,
           4.050000000000001
         ],
         [
-          32.82,
+          37.32,
           9.235,
           4.05
         ],
         [
-          32.82,
+          37.32,
           9.235,
           3
         ],
         [
-          32.475,
+          36.975,
           9.235,
           3
         ],
         [
-          32.625,
+          37.125,
           9.235,
-          2.72
+          0.9
         ],
         [
-          32.68,
+          37.18,
           9.235,
-          2.72
+          0.9
         ],
         [
-          32.68,
+          37.18,
           8.77,
-          2.72
+          0.9
         ],
         [
-          32.625,
+          37.125,
           8.77,
-          2.72
+          0.9
         ]
       ],
       "method": "above-main-beam",
@@ -7083,22 +7213,22 @@
         {
           "points": [
             [
-              32.82,
+              37.32,
               9.442448369565216,
               4.050000000000001
             ],
             [
-              32.82,
+              37.32,
               9.235,
               4.05
             ],
             [
-              32.82,
+              37.32,
               9.235,
               3
             ],
             [
-              32.475,
+              36.975,
               9.235,
               3
             ]
@@ -7109,31 +7239,31 @@
         {
           "points": [
             [
-              32.625,
+              37.125,
               9.235,
-              2.72
+              0.9
             ],
             [
-              32.68,
+              37.18,
               9.235,
-              2.72
+              0.9
             ],
             [
-              32.68,
+              37.18,
               8.77,
-              2.72
+              0.9
             ],
             [
-              32.625,
+              37.125,
               8.77,
-              2.72
+              0.9
             ]
           ],
           "finish": "timber",
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 7.920066409181704,
+      "length": 8.567769132839064,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -7141,15 +7271,15 @@
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
-      "id": "drop:LC1:L1:light:1:L29",
-      "name": "L1 → Reading light · axis 9 · H central",
+      "id": "drop:LC1:L1:light:1:L30",
+      "name": "L1 → Reading light · axis 9 · H central · twin",
       "source": "LC1",
       "board": "DB1",
       "circuit": "L1",
       "kind": "light",
       "role": "drop",
       "itemIds": [
-        "L29"
+        "L30"
       ],
       "trunkId": "trunk:LC1:L1:light:1",
       "color": "#dc9e29",
@@ -7264,136 +7394,6 @@
         }
       ],
       "length": 7.003621170805725,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L1:light:1:L30",
-      "name": "L1 → Reading light · axis 9 · H central · twin",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L1",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L30"
-      ],
-      "trunkId": "trunk:LC1:L1:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 40.648130311179195,
-      "homeRun": false,
-      "points": [
-        [
-          37.125,
-          7.04,
-          7.36
-        ],
-        [
-          37.32,
-          7.04,
-          7.36
-        ],
-        [
-          37.32,
-          9.442448369565216,
-          4.050000000000001
-        ],
-        [
-          37.32,
-          9.235,
-          4.05
-        ],
-        [
-          37.32,
-          9.235,
-          3
-        ],
-        [
-          36.975,
-          9.235,
-          3
-        ],
-        [
-          37.125,
-          9.235,
-          2.72
-        ],
-        [
-          37.18,
-          9.235,
-          2.72
-        ],
-        [
-          37.18,
-          8.77,
-          2.72
-        ],
-        [
-          37.125,
-          8.77,
-          2.72
-        ]
-      ],
-      "method": "above-main-beam",
-      "installation": "Above lining / beam tops, short covered joint and rear-face return to fitting. Roof access, rafter/tie interface and removable cover details pending; no timber drilling / notching.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              37.32,
-              9.442448369565216,
-              4.050000000000001
-            ],
-            [
-              37.32,
-              9.235,
-              4.05
-            ],
-            [
-              37.32,
-              9.235,
-              3
-            ],
-            [
-              36.975,
-              9.235,
-              3
-            ]
-          ],
-          "finish": "timber",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              37.125,
-              9.235,
-              2.72
-            ],
-            [
-              37.18,
-              9.235,
-              2.72
-            ],
-            [
-              37.18,
-              8.77,
-              2.72
-            ],
-            [
-              37.125,
-              8.77,
-              2.72
-            ]
-          ],
-          "finish": "timber",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 6.780066409181704,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -8017,562 +8017,6 @@
         }
       ],
       "length": 2.9723996511258863,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "trunk:LC1:L8:light:-1",
-      "name": "L8 · B · circuit trunk",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L8",
-      "kind": "light",
-      "role": "trunk",
-      "itemIds": [
-        "L63",
-        "L65"
-      ],
-      "color": "#dc9e29",
-      "method": "wall-roof-trunk",
-      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
-      "points": [
-        [
-          48.895,
-          1.85,
-          -0.55
-        ],
-        [
-          48.735,
-          1.85,
-          -0.55
-        ],
-        [
-          48.735,
-          1.85,
-          -2.24
-        ],
-        [
-          48.735,
-          4.33,
-          -2.24
-        ],
-        [
-          48.735,
-          4.33,
-          -3.3
-        ],
-        [
-          53.016,
-          4.33,
-          -3.3
-        ],
-        [
-          53.016,
-          5.956,
-          -3.3
-        ],
-        [
-          53.016,
-          5.956,
-          -7.36
-        ],
-        [
-          44.175,
-          5.956,
-          -7.36
-        ],
-        [
-          44.175,
-          7.04,
-          -7.36
-        ],
-        [
-          43.535,
-          7.04,
-          -7.36
-        ],
-        [
-          43.455,
-          6.950412371134024,
-          -7.36
-        ],
-        [
-          40.574999999999996,
-          9.269999999999994,
-          -7.36
-        ],
-        [
-          38.94,
-          7.953150773195872,
-          -7.36
-        ]
-      ],
-      "length": 31.83942622175583,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              44.175,
-              7.04,
-              -7.36
-            ],
-            [
-              43.535,
-              7.04,
-              -7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              43.535,
-              7.04,
-              -7.36
-            ],
-            [
-              43.455,
-              6.950412371134024,
-              -7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              43.455,
-              6.950412371134024,
-              -7.36
-            ],
-            [
-              40.574999999999996,
-              9.269999999999994,
-              -7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              40.574999999999996,
-              9.269999999999994,
-              -7.36
-            ],
-            [
-              38.94,
-              7.953150773195872,
-              -7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L8:light:-1:L63",
-      "name": "L8 → Wing light · B · front block · back rows",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L8",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L63"
-      ],
-      "trunkId": "trunk:LC1:L8:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 31.83942622175583,
-      "homeRun": false,
-      "points": [
-        [
-          38.94,
-          7.953150773195872,
-          -7.36
-        ],
-        [
-          38.94,
-          7.953150773195873,
-          -10.15
-        ],
-        [
-          38.94,
-          3.8,
-          -10.15
-        ]
-      ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              38.94,
-              7.953150773195872,
-              -7.36
-            ],
-            [
-              38.94,
-              7.953150773195873,
-              -10.15
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 6.943150773195873,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L8:light:-1:L65",
-      "name": "L8 → Wing light · B · rear block · back rows",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L8",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L65"
-      ],
-      "trunkId": "trunk:LC1:L8:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 27.627863960578313,
-      "homeRun": false,
-      "points": [
-        [
-          42.22,
-          7.945096649484534,
-          -7.36
-        ],
-        [
-          42.22,
-          7.9450966494845385,
-          -10.15
-        ],
-        [
-          42.22,
-          3.8,
-          -10.15
-        ]
-      ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              42.22,
-              7.945096649484534,
-              -7.36
-            ],
-            [
-              42.22,
-              7.9450966494845385,
-              -10.15
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 6.935096649484539,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "trunk:LC1:L8:light:1",
-      "name": "L8 · H · circuit trunk",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L8",
-      "kind": "light",
-      "role": "trunk",
-      "itemIds": [
-        "L67",
-        "L69"
-      ],
-      "color": "#dc9e29",
-      "method": "wall-roof-trunk",
-      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
-      "points": [
-        [
-          48.895,
-          1.85,
-          -0.55
-        ],
-        [
-          48.735,
-          1.85,
-          -0.55
-        ],
-        [
-          48.735,
-          1.85,
-          -2.24
-        ],
-        [
-          48.735,
-          4.33,
-          -2.24
-        ],
-        [
-          48.735,
-          4.33,
-          -3.3
-        ],
-        [
-          53.016,
-          4.33,
-          -3.3
-        ],
-        [
-          53.016,
-          5.956,
-          -3.3
-        ],
-        [
-          53.016,
-          5.956,
-          7.36
-        ],
-        [
-          44.175,
-          5.956,
-          7.36
-        ],
-        [
-          44.175,
-          7.04,
-          7.36
-        ],
-        [
-          43.535,
-          7.04,
-          7.36
-        ],
-        [
-          43.455,
-          6.950412371134024,
-          7.36
-        ],
-        [
-          40.574999999999996,
-          9.269999999999994,
-          7.36
-        ],
-        [
-          38.94,
-          7.953150773195872,
-          7.36
-        ]
-      ],
-      "length": 38.43942622175583,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              44.175,
-              7.04,
-              7.36
-            ],
-            [
-              43.535,
-              7.04,
-              7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              43.535,
-              7.04,
-              7.36
-            ],
-            [
-              43.455,
-              6.950412371134024,
-              7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              43.455,
-              6.950412371134024,
-              7.36
-            ],
-            [
-              40.574999999999996,
-              9.269999999999994,
-              7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        },
-        {
-          "points": [
-            [
-              40.574999999999996,
-              9.269999999999994,
-              7.36
-            ],
-            [
-              38.94,
-              7.953150773195872,
-              7.36
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L8:light:1:L67",
-      "name": "L8 → Wing light · H · front block · back rows",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L8",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L67"
-      ],
-      "trunkId": "trunk:LC1:L8:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 38.43942622175583,
-      "homeRun": false,
-      "points": [
-        [
-          38.94,
-          7.953150773195872,
-          7.36
-        ],
-        [
-          38.94,
-          7.953150773195873,
-          10.15
-        ],
-        [
-          38.94,
-          3.8,
-          10.15
-        ]
-      ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              38.94,
-              7.953150773195872,
-              7.36
-            ],
-            [
-              38.94,
-              7.953150773195873,
-              10.15
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 6.943150773195873,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:LC1:L8:light:1:L69",
-      "name": "L8 → Wing light · H · rear block · back rows",
-      "source": "LC1",
-      "board": "DB1",
-      "circuit": "L8",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L69"
-      ],
-      "trunkId": "trunk:LC1:L8:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 34.22786396057831,
-      "homeRun": false,
-      "points": [
-        [
-          42.22,
-          7.945096649484534,
-          7.36
-        ],
-        [
-          42.22,
-          7.9450966494845385,
-          10.15
-        ],
-        [
-          42.22,
-          3.8,
-          10.15
-        ]
-      ],
-      "method": "roof-pendant",
-      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              42.22,
-              7.945096649484534,
-              7.36
-            ],
-            [
-              42.22,
-              7.9450966494845385,
-              10.15
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 6.935096649484539,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36306,6 +35750,802 @@
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:LC1:L8:light:-1",
+      "name": "L8 · B · circuit trunk",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L8",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L-WING-B-FI",
+        "L-WING-B-FO",
+        "L-WING-B-RI",
+        "L-WING-B-RO"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          5.956,
+          -3.3
+        ],
+        [
+          53.016,
+          5.956,
+          -7.36
+        ],
+        [
+          44.175,
+          5.956,
+          -7.36
+        ],
+        [
+          44.175,
+          7.04,
+          -7.36
+        ],
+        [
+          43.535,
+          7.04,
+          -7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          -7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          -7.36
+        ],
+        [
+          38.94,
+          7.953150773195872,
+          -7.36
+        ]
+      ],
+      "length": 31.83942622175583,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              -7.36
+            ],
+            [
+              43.535,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              -7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ],
+            [
+              38.94,
+              7.953150773195872,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:L8:light:-1:L-WING-B-FI",
+      "name": "L8 → Wing downlight · B · front block · inner row",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L8",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-B-FI"
+      ],
+      "trunkId": "trunk:LC1:L8:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 31.83942622175583,
+      "homeRun": false,
+      "points": [
+        [
+          38.94,
+          7.953150773195872,
+          -7.36
+        ],
+        [
+          38.94,
+          7.953150773195873,
+          -8.8
+        ],
+        [
+          38.94,
+          8.095059999999997,
+          -8.8
+        ]
+      ],
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              38.94,
+              7.953150773195872,
+              -7.36
+            ],
+            [
+              38.94,
+              7.953150773195873,
+              -8.8
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 1.5819092268041244,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:L8:light:-1:L-WING-B-FO",
+      "name": "L8 → Wing downlight · B · front block · outer row",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L8",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-B-FO"
+      ],
+      "trunkId": "trunk:LC1:L8:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 31.83942622175583,
+      "homeRun": false,
+      "points": [
+        [
+          38.94,
+          7.953150773195872,
+          -7.36
+        ],
+        [
+          38.94,
+          7.953150773195873,
+          -11.4
+        ],
+        [
+          38.94,
+          8.095059999999997,
+          -11.4
+        ]
+      ],
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              38.94,
+              7.953150773195872,
+              -7.36
+            ],
+            [
+              38.94,
+              7.953150773195873,
+              -11.4
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 4.181909226804124,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:L8:light:-1:L-WING-B-RI",
+      "name": "L8 → Wing downlight · B · rear block · inner row",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L8",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-B-RI"
+      ],
+      "trunkId": "trunk:LC1:L8:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 27.627863960578313,
+      "homeRun": false,
+      "points": [
+        [
+          42.22,
+          7.945096649484534,
+          -7.36
+        ],
+        [
+          42.22,
+          7.9450966494845385,
+          -8.8
+        ],
+        [
+          42.22,
+          8.063580000000004,
+          -8.8
+        ]
+      ],
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              42.22,
+              7.945096649484534,
+              -7.36
+            ],
+            [
+              42.22,
+              7.9450966494845385,
+              -8.8
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 1.5584833505154654,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:L8:light:-1:L-WING-B-RO",
+      "name": "L8 → Wing downlight · B · rear block · outer row",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L8",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-B-RO"
+      ],
+      "trunkId": "trunk:LC1:L8:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 27.627863960578313,
+      "homeRun": false,
+      "points": [
+        [
+          42.22,
+          7.945096649484534,
+          -7.36
+        ],
+        [
+          42.22,
+          7.9450966494845385,
+          -11.4
+        ],
+        [
+          42.22,
+          8.063580000000004,
+          -11.4
+        ]
+      ],
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              42.22,
+              7.945096649484534,
+              -7.36
+            ],
+            [
+              42.22,
+              7.9450966494845385,
+              -11.4
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 4.158483350515465,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:LC1:L8:light:1",
+      "name": "L8 · H · circuit trunk",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L8",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L-WING-H-FI",
+        "L-WING-H-FO",
+        "L-WING-H-RI",
+        "L-WING-H-RO"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          5.956,
+          -3.3
+        ],
+        [
+          53.016,
+          5.956,
+          7.36
+        ],
+        [
+          44.175,
+          5.956,
+          7.36
+        ],
+        [
+          44.175,
+          7.04,
+          7.36
+        ],
+        [
+          43.535,
+          7.04,
+          7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          7.36
+        ],
+        [
+          38.94,
+          7.953150773195872,
+          7.36
+        ]
+      ],
+      "length": 38.43942622175583,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              7.36
+            ],
+            [
+              43.535,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ],
+            [
+              38.94,
+              7.953150773195872,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:L8:light:1:L-WING-H-FI",
+      "name": "L8 → Wing downlight · H · front block · inner row",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L8",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-H-FI"
+      ],
+      "trunkId": "trunk:LC1:L8:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 38.43942622175583,
+      "homeRun": false,
+      "points": [
+        [
+          38.94,
+          7.953150773195872,
+          7.36
+        ],
+        [
+          38.94,
+          7.953150773195873,
+          8.8
+        ],
+        [
+          38.94,
+          8.095059999999997,
+          8.8
+        ]
+      ],
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              38.94,
+              7.953150773195872,
+              7.36
+            ],
+            [
+              38.94,
+              7.953150773195873,
+              8.8
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 1.5819092268041244,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:L8:light:1:L-WING-H-FO",
+      "name": "L8 → Wing downlight · H · front block · outer row",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L8",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-H-FO"
+      ],
+      "trunkId": "trunk:LC1:L8:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 38.43942622175583,
+      "homeRun": false,
+      "points": [
+        [
+          38.94,
+          7.953150773195872,
+          7.36
+        ],
+        [
+          38.94,
+          7.953150773195873,
+          11.4
+        ],
+        [
+          38.94,
+          8.095059999999997,
+          11.4
+        ]
+      ],
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              38.94,
+              7.953150773195872,
+              7.36
+            ],
+            [
+              38.94,
+              7.953150773195873,
+              11.4
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 4.181909226804124,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:L8:light:1:L-WING-H-RI",
+      "name": "L8 → Wing downlight · H · rear block · inner row",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L8",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-H-RI"
+      ],
+      "trunkId": "trunk:LC1:L8:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 34.22786396057831,
+      "homeRun": false,
+      "points": [
+        [
+          42.22,
+          7.945096649484534,
+          7.36
+        ],
+        [
+          42.22,
+          7.9450966494845385,
+          8.8
+        ],
+        [
+          42.22,
+          8.063580000000004,
+          8.8
+        ]
+      ],
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              42.22,
+              7.945096649484534,
+              7.36
+            ],
+            [
+              42.22,
+              7.9450966494845385,
+              8.8
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 1.5584833505154654,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:L8:light:1:L-WING-H-RO",
+      "name": "L8 → Wing downlight · H · rear block · outer row",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "L8",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-H-RO"
+      ],
+      "trunkId": "trunk:LC1:L8:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 34.22786396057831,
+      "homeRun": false,
+      "points": [
+        [
+          42.22,
+          7.945096649484534,
+          7.36
+        ],
+        [
+          42.22,
+          7.9450966494845385,
+          11.4
+        ],
+        [
+          42.22,
+          8.063580000000004,
+          11.4
+        ]
+      ],
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              42.22,
+              7.945096649484534,
+              7.36
+            ],
+            [
+              42.22,
+              7.9450966494845385,
+              11.4
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 4.158483350515465,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     }
   ],
   "components": [
@@ -36375,12 +36615,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         10.125,
         8.77,
-        -2.48
+        -0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36405,7 +36645,7 @@
       "position": [
         10.125,
         8.77,
-        -2.72
+        -2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36425,12 +36665,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         10.125,
         8.77,
-        2.48
+        0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36455,7 +36695,7 @@
       "position": [
         10.125,
         8.77,
-        2.72
+        2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36475,12 +36715,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
         8.77,
-        -2.48
+        -0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36500,12 +36740,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
         8.77,
-        -2.72
+        -2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36525,12 +36765,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
         8.77,
-        2.48
+        0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36550,12 +36790,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
         8.77,
-        2.72
+        2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36575,12 +36815,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
         8.77,
-        -2.48
+        -0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36600,12 +36840,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
         8.77,
-        -2.72
+        -2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36625,12 +36865,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
         8.77,
-        2.48
+        0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36650,12 +36890,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
         8.77,
-        2.72
+        2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36675,12 +36915,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
         8.77,
-        -2.48
+        -0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36700,12 +36940,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
         8.77,
-        -2.72
+        -2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36725,12 +36965,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
         8.77,
-        2.48
+        0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36750,12 +36990,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
         8.77,
-        2.72
+        2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36775,12 +37015,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
         8.77,
-        -2.48
+        -0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36800,12 +37040,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
         8.77,
-        -2.72
+        -2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36825,12 +37065,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
         8.77,
-        2.48
+        0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36850,12 +37090,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
         8.77,
-        2.72
+        2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36875,12 +37115,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
         8.77,
-        -2.48
+        -0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36900,12 +37140,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
         8.77,
-        -2.72
+        -2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36925,12 +37165,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
         8.77,
-        2.48
+        0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -36950,18 +37190,43 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
         8.77,
-        2.72
+        2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "L27",
       "name": "Reading light · axis 9 · B central",
+      "type": "readingProjector",
+      "product": "Reading projector · side bracket, finish-matched",
+      "circuit": "L1",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.23399999737739563,
+        0.17219481006264686,
+        0.12600000202655792
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 19.166666666666668,
+      "specs": "2300 lm · 3000 K · 36° beam",
+      "hiddenAlternative": false,
+      "position": [
+        37.125,
+        8.77,
+        -0.9
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L28",
+      "name": "Reading light · axis 9 · B central · twin",
       "type": "readingProjector",
       "product": "Reading projector · side bracket, finish-matched",
       "circuit": "L1",
@@ -36985,31 +37250,6 @@
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
-      "id": "L28",
-      "name": "Reading light · axis 9 · B central · twin",
-      "type": "readingProjector",
-      "product": "Reading projector · side bracket, finish-matched",
-      "circuit": "L1",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.23399999737739563,
-        0.17219481006264686,
-        0.12600000202655792
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
-      "hiddenAlternative": false,
-      "position": [
-        37.125,
-        8.77,
-        -2.72
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
       "id": "L29",
       "name": "Reading light · axis 9 · H central",
       "type": "readingProjector",
@@ -37025,12 +37265,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "specs": "2300 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         37.125,
         8.77,
-        2.48
+        0.9
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -37050,12 +37290,12 @@
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
       "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 24° beam",
+      "specs": "2300 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         37.125,
         8.77,
-        2.72
+        2.48
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -37856,106 +38096,6 @@
         2.65,
         5.95,
         4.2
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L63",
-      "name": "Wing light · B · front block · back rows",
-      "type": "chandelier6Reading",
-      "product": "Small brass chandelier + reading optic · concept",
-      "circuit": "L8",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        1.340000033378601,
-        1.2404999719560146,
-        1.1792304515838623
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 51,
-      "specs": "5640 lm · 2700 K · 100° beam",
-      "hiddenAlternative": false,
-      "position": [
-        38.94,
-        3.8,
-        -10.15
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L65",
-      "name": "Wing light · B · rear block · back rows",
-      "type": "chandelier6Reading",
-      "product": "Small brass chandelier + reading optic · concept",
-      "circuit": "L8",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        1.340000033378601,
-        1.2404999719560146,
-        1.1792304515838623
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 51,
-      "specs": "5640 lm · 2700 K · 100° beam",
-      "hiddenAlternative": false,
-      "position": [
-        42.22,
-        3.8,
-        -10.15
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L67",
-      "name": "Wing light · H · front block · back rows",
-      "type": "chandelier6Reading",
-      "product": "Small brass chandelier + reading optic · concept",
-      "circuit": "L8",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        1.340000033378601,
-        1.2404999719560146,
-        1.1792304515838623
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 51,
-      "specs": "5640 lm · 2700 K · 100° beam",
-      "hiddenAlternative": false,
-      "position": [
-        38.94,
-        3.8,
-        10.15
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L69",
-      "name": "Wing light · H · rear block · back rows",
-      "type": "chandelier6Reading",
-      "product": "Small brass chandelier + reading optic · concept",
-      "circuit": "L8",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        1.340000033378601,
-        1.2404999719560146,
-        1.1792304515838623
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 51,
-      "specs": "5640 lm · 2700 K · 100° beam",
-      "hiddenAlternative": false,
-      "position": [
-        42.22,
-        3.8,
-        10.15
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -44635,6 +44775,206 @@
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
+      "id": "L-WING-B-FI",
+      "name": "Wing downlight · B · front block · inner row",
+      "type": "projector24",
+      "product": "LED projector · narrow 24°",
+      "circuit": "L8",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.32999999821186066,
+        0.2217390456199646,
+        0.23999999463558197
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 17.5,
+      "specs": "2100 lm · 2700 K · 24° beam",
+      "hiddenAlternative": false,
+      "position": [
+        38.94,
+        8.095059999999997,
+        -8.8
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-B-FO",
+      "name": "Wing downlight · B · front block · outer row",
+      "type": "projector24",
+      "product": "LED projector · narrow 24°",
+      "circuit": "L8",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.32999999821186066,
+        0.2217390456199646,
+        0.23999999463558197
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 17.5,
+      "specs": "2100 lm · 2700 K · 24° beam",
+      "hiddenAlternative": false,
+      "position": [
+        38.94,
+        8.095059999999997,
+        -11.4
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-B-RI",
+      "name": "Wing downlight · B · rear block · inner row",
+      "type": "projector24",
+      "product": "LED projector · narrow 24°",
+      "circuit": "L8",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.32999999821186066,
+        0.2217390456199646,
+        0.23999999463558197
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 17.5,
+      "specs": "2100 lm · 2700 K · 24° beam",
+      "hiddenAlternative": false,
+      "position": [
+        42.22,
+        8.063580000000004,
+        -8.8
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-B-RO",
+      "name": "Wing downlight · B · rear block · outer row",
+      "type": "projector24",
+      "product": "LED projector · narrow 24°",
+      "circuit": "L8",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.32999999821186066,
+        0.2217390456199646,
+        0.23999999463558197
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 17.5,
+      "specs": "2100 lm · 2700 K · 24° beam",
+      "hiddenAlternative": false,
+      "position": [
+        42.22,
+        8.063580000000004,
+        -11.4
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-H-FI",
+      "name": "Wing downlight · H · front block · inner row",
+      "type": "projector24",
+      "product": "LED projector · narrow 24°",
+      "circuit": "L8",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.32999999821186066,
+        0.2217390456199646,
+        0.23999999463558197
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 17.5,
+      "specs": "2100 lm · 2700 K · 24° beam",
+      "hiddenAlternative": false,
+      "position": [
+        38.94,
+        8.095059999999997,
+        8.8
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-H-FO",
+      "name": "Wing downlight · H · front block · outer row",
+      "type": "projector24",
+      "product": "LED projector · narrow 24°",
+      "circuit": "L8",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.32999999821186066,
+        0.2217390456199646,
+        0.23999999463558197
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 17.5,
+      "specs": "2100 lm · 2700 K · 24° beam",
+      "hiddenAlternative": false,
+      "position": [
+        38.94,
+        8.095059999999997,
+        11.4
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-H-RI",
+      "name": "Wing downlight · H · rear block · inner row",
+      "type": "projector24",
+      "product": "LED projector · narrow 24°",
+      "circuit": "L8",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.32999999821186066,
+        0.2217390456199646,
+        0.23999999463558197
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 17.5,
+      "specs": "2100 lm · 2700 K · 24° beam",
+      "hiddenAlternative": false,
+      "position": [
+        42.22,
+        8.063580000000004,
+        8.8
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-H-RO",
+      "name": "Wing downlight · H · rear block · outer row",
+      "type": "projector24",
+      "product": "LED projector · narrow 24°",
+      "circuit": "L8",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.32999999821186066,
+        0.2217390456199646,
+        0.23999999463558197
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 17.5,
+      "specs": "2100 lm · 2700 K · 24° beam",
+      "hiddenAlternative": false,
+      "position": [
+        42.22,
+        8.063580000000004,
+        11.4
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
       "id": "L-ARCH-B-2P-3-A",
       "name": "Porch arch wash · B · bay 2′–3 · A",
       "type": "porchFlood",
@@ -45909,99 +46249,7 @@
       "circuit": "L2",
       "type": "readingProjector",
       "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 12,
-      "modelSize": [
-        0.23399999737739563,
-        0.17219481006264686,
-        0.12600000202655792
-      ],
-      "specs": "2300 lm · 3000 K · 24° beam",
-      "wattsEachEstimate": 19.166666666666668,
-      "itemIds": [
-        "L3",
-        "L5",
-        "L7",
-        "L8",
-        "L9",
-        "L10",
-        "L11",
-        "L12",
-        "L13",
-        "L14",
-        "L16",
-        "L18"
-      ]
-    },
-    {
-      "board": "DB1",
-      "circuit": "L2",
-      "type": "readingProjector",
-      "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 2,
-      "modelSize": [
-        0.23399999737739563,
-        0.17219481006264686,
-        0.12600000202655792
-      ],
-      "specs": "2300 lm · 3000 K · 28° beam",
-      "wattsEachEstimate": 19.166666666666668,
-      "itemIds": [
-        "L4",
-        "L6"
-      ]
-    },
-    {
-      "board": "DB1",
-      "circuit": "L1",
-      "type": "readingProjector",
-      "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 12,
-      "modelSize": [
-        0.23399999737739563,
-        0.17219481006264686,
-        0.12600000202655792
-      ],
-      "specs": "2300 lm · 3000 K · 24° beam",
-      "wattsEachEstimate": 19.166666666666668,
-      "itemIds": [
-        "L15",
-        "L17",
-        "L19",
-        "L20",
-        "L21",
-        "L22",
-        "L23",
-        "L24",
-        "L25",
-        "L26",
-        "L28",
-        "L30"
-      ]
-    },
-    {
-      "board": "DB1",
-      "circuit": "L1",
-      "type": "readingProjector",
-      "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 2,
-      "modelSize": [
-        0.23399999737739563,
-        0.17219481006264686,
-        0.12600000202655792
-      ],
-      "specs": "2300 lm · 3000 K · 28° beam",
-      "wattsEachEstimate": 19.166666666666668,
-      "itemIds": [
-        "L27",
-        "L29"
-      ]
-    },
-    {
-      "board": "DB1",
-      "circuit": "L2",
-      "type": "readingProjector",
-      "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 14,
+      "quantity": 20,
       "modelSize": [
         0.23399999737739563,
         0.17219481006264686,
@@ -46010,6 +46258,12 @@
       "specs": "2300 lm · 3000 K · 36° beam",
       "wattsEachEstimate": 19.166666666666668,
       "itemIds": [
+        "L3",
+        "L5",
+        "L7",
+        "L9",
+        "L11",
+        "L13",
         "L31",
         "L32",
         "L33",
@@ -46028,10 +46282,34 @@
     },
     {
       "board": "DB1",
+      "circuit": "L2",
+      "type": "readingProjector",
+      "product": "Reading projector · side bracket, finish-matched",
+      "quantity": 8,
+      "modelSize": [
+        0.23399999737739563,
+        0.17219481006264686,
+        0.12600000202655792
+      ],
+      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEachEstimate": 19.166666666666668,
+      "itemIds": [
+        "L4",
+        "L6",
+        "L8",
+        "L10",
+        "L12",
+        "L14",
+        "L16",
+        "L18"
+      ]
+    },
+    {
+      "board": "DB1",
       "circuit": "L1",
       "type": "readingProjector",
       "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 14,
+      "quantity": 22,
       "modelSize": [
         0.23399999737739563,
         0.17219481006264686,
@@ -46040,6 +46318,14 @@
       "specs": "2300 lm · 3000 K · 36° beam",
       "wattsEachEstimate": 19.166666666666668,
       "itemIds": [
+        "L15",
+        "L17",
+        "L19",
+        "L21",
+        "L23",
+        "L25",
+        "L27",
+        "L29",
         "L43",
         "L45",
         "L47",
@@ -46054,6 +46340,28 @@
         "L56",
         "L57",
         "L58"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "L1",
+      "type": "readingProjector",
+      "product": "Reading projector · side bracket, finish-matched",
+      "quantity": 6,
+      "modelSize": [
+        0.23399999737739563,
+        0.17219481006264686,
+        0.12600000202655792
+      ],
+      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEachEstimate": 19.166666666666668,
+      "itemIds": [
+        "L20",
+        "L22",
+        "L24",
+        "L26",
+        "L28",
+        "L30"
       ]
     },
     {
@@ -46090,26 +46398,6 @@
       "itemIds": [
         "L60",
         "L62"
-      ]
-    },
-    {
-      "board": "DB1",
-      "circuit": "L8",
-      "type": "chandelier6Reading",
-      "product": "Small brass chandelier + reading optic · concept",
-      "quantity": 4,
-      "modelSize": [
-        1.340000033378601,
-        1.2404999719560146,
-        1.1792304515838623
-      ],
-      "specs": "5640 lm · 2700 K · 100° beam",
-      "wattsEachEstimate": 51,
-      "itemIds": [
-        "L63",
-        "L65",
-        "L67",
-        "L69"
       ]
     },
     {
@@ -47806,6 +48094,30 @@
         "L-STATION-13-B",
         "L-STATION-14-A",
         "L-STATION-14-B"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "L8",
+      "type": "projector24",
+      "product": "LED projector · narrow 24°",
+      "quantity": 8,
+      "modelSize": [
+        0.32999999821186066,
+        0.2217390456199646,
+        0.23999999463558197
+      ],
+      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEachEstimate": 17.5,
+      "itemIds": [
+        "L-WING-B-FI",
+        "L-WING-B-FO",
+        "L-WING-B-RI",
+        "L-WING-B-RO",
+        "L-WING-H-FI",
+        "L-WING-H-FO",
+        "L-WING-H-RI",
+        "L-WING-H-RO"
       ]
     },
     {

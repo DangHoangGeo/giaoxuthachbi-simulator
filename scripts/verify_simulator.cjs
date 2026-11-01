@@ -577,8 +577,9 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
     assert(lens && lens.pos[1] <= beam.y0 + 0.005 && lens.dir[1] < -0.97, 'light leaves below the soffit, aimed down: ' + it.name);
     fx.root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) assert.equal(m.material, timber, 'the beam lacquer itself, so it follows the timber tone: ' + it.name); });
   }
-  // Tie-beam pairs flank the gilded band at ±2.60 m; side-beam pairs stand either side of the cartouche.
-  assert(reading.filter(it => / central/.test(it.name)).every(it => Math.abs(Math.abs(Math.abs(it.pos[2]) - 2.6) - 0.12) < 1e-6), 'tie pairs flank the gilded band');
+  // Since 1 Nov 2026 the tie-beam heads aimed toward the sanctuary stand at ±0.90 m (they light the centre aisle) and the
+  // entrance-facing twins at ±2.48 m, on the inner side of the gilded band at ±2.60 m; side-beam pairs flank the cartouche.
+  assert(reading.filter(it => / central/.test(it.name)).every(it => Math.abs(Math.abs(it.pos[2]) - (/ twin$/.test(it.name) ? 2.48 : 0.9)) < 1e-6), 'tie heads spread across the nave, twins beside the gilded band');
   assert(reading.filter(it => / outer/.test(it.name)).every(it => [4.84, 6.09].some(z => Math.abs(Math.abs(it.pos[2]) - z) < 1e-6)), 'side pairs flank the cartouche');
   for (const it of SIM.state.items.filter(it => /^Rear (rows|centre) light · entrance façade ·/.test(it.name))) {
     assert(it.type === 'readingProjector' && it.params.finish === 'wall', 'entrance-wall reading heads in the plaster finish: ' + it.name);
@@ -642,8 +643,9 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
     SIM.fixtures.get(it.id).root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) { meshes++; assert.equal(m.material, mat, 'the ' + (finish === 'timber' ? 'beam' : 'chamber wall') + ' lacquer itself: ' + name); } });
     assert(meshes > 0, 'fitting has a body: ' + name);
   }
-  // Every other head of these types keeps its metal finish (held wing projectors, roof uplights on the ties).
-  for (const it of SIM.state.items.filter(it => Object.hasOwn(metal, it.type) && ![...beamNames, ...chamberNames].includes(it.name))) assert.equal(it.params.finish, metal[it.type], 'metal finish kept: ' + it.name);
+  // Every other head of these types keeps its metal finish (roof uplights on the ties). The wing downlights of
+  // 1 Nov 2026 hang tight to the roof timber and take its lacquer (asserted with the wing block below).
+  for (const it of SIM.state.items.filter(it => Object.hasOwn(metal, it.type) && ![...beamNames, ...chamberNames].includes(it.name) && !/^L-WING-/.test(it.id))) assert.equal(it.params.finish, metal[it.type], 'metal finish kept: ' + it.name);
   // Nave chandeliers: 1.0 m higher, same chain anchor, mid-bay between the ties, clear of the beams and reading heads.
   // Retired by the parish priest's meeting of 25 Oct 2026: only the crossing chandelier remains, on L3.
   const chandeliers = SIM.state.items.filter(it => /^Chandelier · bay [468]–[579]$/.test(it.name));
@@ -717,15 +719,78 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert.deepEqual(plain(byId('f3')), plain(saved[2]), 'a fan the user moved stays');
   assert.deepEqual(plain(D.upgradeFanBeams(up, design)), plain(up), 'applying it again changes nothing');
   assert.equal(SIM.state.settings.fanBeamRevision, D.fanBeamRevision, 'the revision is stored in the saved settings');
-  // Tie-beam reading heads aimed toward a bay with a beam-hung fan: 5° along the nave, 24° optic.
+  // Tie-beam reading heads aimed toward a bay with a beam-hung fan: 5° along the nave (8° otherwise). Since
+  // 1 Nov 2026 the sanctuary-facing heads use a 36° optic at ±0.90 m and the twins 28° at ±2.48 m; no head
+  // throws light through a fan (the check list has no fan-blade warning, asserted with the 1 Nov block below).
   const tie = SIM.state.items.filter(it => /^Reading light · axis \d · [BH] central/.test(it.name));
   const faces = it => { const k = +it.name.match(/axis (\d)/)[1]; return / · twin$/.test(it.name) ? k >= 4 : k <= 8; };
   assert.equal(tie.filter(faces).length, 24, 'twenty-four heads face a beam-hung fan');
-  for (const it of tie) assert.equal(it.beam, faces(it) ? 24 : 28, 'optic of ' + it.name);
-  const head = pick('Reading light · axis 5 · H central'), axisX = head.pos[0] - 0.15, before = D.aim([head.pos[0] + 0.085, 8.59, head.pos[2]], [axisX + Math.tan(8 * Math.PI / 180) * 7.79, 0.8, 2.6]);
-  const heads = D.upgradeFanBeams([{ ...head, id: 'h1', yaw: before.yaw, tilt: before.tilt, beam: 28, on: false, lumens: 2000 }, { ...head, id: 'h2', yaw: before.yaw + 5, tilt: before.tilt, beam: 28 }], design);
-  assert(heads[0].yaw === head.yaw && heads[0].tilt === head.tilt && heads[0].beam === 24 && heads[0].on === false && heads[0].lumens === 2000, 'untouched head takes the new aim and optic, keeps switch and output');
+  for (const it of tie) assert.equal(it.beam, / · twin$/.test(it.name) ? 28 : 36, 'optic of ' + it.name);
+  // The earlier step (19 Oct 2026) still migrates an old 8° / 28° head to the 5° / 24° aim of the design before 1 Nov 2026.
+  const prev = Object.values(D.naveCentreBefore).find(row => row.name === 'Reading light · axis 5 · H central'), head = pick('Reading light · axis 5 · H central');
+  const axisX = prev.pos[0] - 0.15, before = D.aim([prev.pos[0] + 0.085, 8.59, prev.pos[2]], [axisX + Math.tan(8 * Math.PI / 180) * 7.79, 0.8, 2.6]);
+  const heads = D.upgradeFanBeams([{ ...head, id: 'h1', pos: [...prev.pos], yaw: before.yaw, tilt: before.tilt, beam: 28, on: false, lumens: 2000 }, { ...head, id: 'h2', pos: [...prev.pos], yaw: before.yaw + 5, tilt: before.tilt, beam: 28 }], design);
+  assert(heads[0].yaw === prev.yaw && heads[0].tilt === prev.tilt && heads[0].beam === 24 && heads[0].on === false && heads[0].lumens === 2000, 'untouched head takes the 5° aim and 24° optic of that step, keeps switch and output');
   assert(heads[1].beam === 28, 'a re-aimed head stays as the user set it');
+}
+// Owner, 1 November 2026: the centre of the nave looked dark (tie-beam heads spread across the nave) and the
+// wings use downlights from the roof, not two chandeliers a side. Chandeliers L63/L65/L67/L69 are retired.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, plain = v => JSON.parse(JSON.stringify(v));
+  const items = SIM.state.items, design = D.recommended(SIM.GEO, SIM);
+  assert.equal(items.filter(it => it.type === 'chandelier6Reading' || it.circuit === 'L8' && /chandelier/.test(it.type)).length, 0, 'no wing chandeliers');
+  for (const id of ['L63', 'L64', 'L65', 'L66', 'L67', 'L68', 'L69', 'L70']) assert(!SIM.item(id) && D.wingReviewRetiredIds.includes(id), 'chandelier ID retired, never reused: ' + id);
+  const ids = ['B', 'H'].flatMap(code => D.naveWingLightIds(code));
+  assert.equal(ids.length, 8);
+  const lights = ids.map(id => SIM.item(id));
+  assert(lights.every(Boolean), 'four downlights per wing side');
+  assert.deepEqual(plain(lights.map(it => it.name)).slice(0, 4), ['Wing downlight · B · front block · inner row', 'Wing downlight · B · front block · outer row', 'Wing downlight · B · rear block · inner row', 'Wing downlight · B · rear block · outer row']);
+  for (const it of lights) {
+    assert(it.type === 'projector24' && it.circuit === 'L8' && it.mount === 'pendant' && it.tilt === -90 && it.lumens === 2100 && it.beam === 24 && it.params.finish === 'timber' && !it.hidden && it.on, 'concealed (roof timber finish) downlight on circuit L8: ' + it.id);
+    assert([38.94, 42.22].includes(it.pos[0]) && [8.8, 11.4].includes(Math.abs(it.pos[2])), 'over a bench block row: ' + it.id);
+    assert(Math.abs(it.anchorY - it.pos[1] - 0.02) < 1e-9 && it.anchorY > 7 && it.anchorY < 9.5, 'tight to the roof timber, not a chandelier on a chain: ' + it.id);
+    const lens = SIM.emitters().find(e => e.id === it.id);
+    assert(lens && lens.dir[1] < -0.999, 'aimed straight down from above: ' + it.id);
+    SIM.fixtures.get(it.id).root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) assert.equal(m.material, interior.materials.timber, 'the roof timber lacquer itself: ' + it.id); });
+  }
+  assert.equal(SIM.itemWatts(lights[0], true), 17.5, 'planning rating 2 100 lm at 120 lm/W');
+  assert(Math.abs(SIM.powerSummary().byCircuit.find(c => c.circuit === 'L8').watts - 140) < 1e-6, 'L8 draws eight 17.5 W downlights, 140 W (204 W for the four chandeliers before)');
+  // The 28 tie-beam heads keep their IDs, circuits and 2 300 lm; only their place, aim and optic changed.
+  const tieIds = Object.keys(D.naveCentreBefore);
+  assert.equal(tieIds.length, 28);
+  for (const id of tieIds) {
+    const was = D.naveCentreBefore[id], now = SIM.item(id);
+    assert(now && now.name === was.name && now.circuit === was.circuit && now.lumens === was.lumens && now.type === was.type, 'same fitting, circuit and output: ' + id);
+    assert(Math.abs(Math.abs(now.pos[2]) - (/ twin$/.test(now.name) ? 2.48 : 0.9)) < 1e-9 && Math.abs(now.pos[2]) !== Math.abs(was.pos[2]) && now.pos[0] === was.pos[0] && now.pos[1] === was.pos[1], 'moved across the beam only: ' + id);
+  }
+  // One-time move of a saved layout. Names the previous values from the tables of the design before this step.
+  const prevItem = (id, raw = {}) => { const was = D.naveCentreBefore[id] || D.wingChandelierBefore[id], now = design.find(it => it.id === id) || {};
+    return { id, name: was.name, type: was.type, mount: was.mount, circuit: was.circuit, pos: [...was.pos], yaw: was.yaw, tilt: was.tilt, mountYaw: now.mountYaw ?? 0, anchorY: was.anchorY, lumens: was.lumens, beam: was.beam, on: true, dim: 1, hidden: false, params: now.params ?? {}, ...raw }; };
+  const chand = { L63: 'Wing light · B · front block · back rows', L65: 'Wing light · B · rear block · back rows', L67: 'Wing light · H · front block · back rows', L69: 'Wing light · H · rear block · back rows' };
+  const keep = design.filter(it => !tieIds.includes(it.id) && !ids.includes(it.id));
+  const saved = () => [...keep.map(it => plain(it)), ...tieIds.map(id => prevItem(id)), ...Object.entries(chand).map(([id, name]) => prevItem(id, { name }))];
+  const run = list => D.upgradeNaveWingLighting(list, design), at = (list, id) => list.find(it => it.id === id);
+  let all = run(saved());
+  assert.equal(all.length, saved().length - 4 + 8, 'four chandeliers out, eight downlights in');
+  for (const id of ['L63', 'L65', 'L67', 'L69']) assert(!at(all, id), 'untouched chandelier retired: ' + id);
+  for (const id of tieIds) { const it = at(all, id), raw = design.find(r => r.id === id); assert(plain(it.pos).join() === plain(raw.pos).join() && it.yaw === raw.yaw && it.tilt === raw.tilt && it.beam === raw.beam && it.anchorY === raw.anchorY && it.circuit === raw.circuit, 'untouched head takes its new place and aim: ' + id); }
+  for (const id of ids) { const it = at(all, id); assert.deepEqual(plain(it), plain({ ...design.find(r => r.id === id), on: it.on, dim: it.dim, hidden: it.hidden }), 'downlight as designed: ' + id); assert(it.on === true && it.dim === 1 && it.hidden === false, 'untouched chandelier was on: ' + id); }
+  assert.deepEqual(plain(run(all)), plain(all), 'applying it again changes nothing');
+  // The user's own changes stay. A moved head, a re-aimed head, a retuned head and a re-circuited head are left alone;
+  // switch, dimmer and visibility of an untouched head are kept; a deleted head stays deleted.
+  const list = saved(), edit = (id, o) => Object.assign(at(list, id), o);
+  edit('L5', { on: false, dim: 0.4, hidden: true }); edit('L13', { pos: [19.125, 8.77, 2.3] }); edit('L21', { yaw: 20 }); edit('L25', { lumens: 1800 }); edit('L9', { circuit: 'L4' });
+  list.splice(list.findIndex(it => it.id === 'L30'), 1);
+  edit('L63', { pos: [38.5, 3.8, -10.15] }); edit('L67', { on: false, dim: 0.5 }); list.splice(list.findIndex(it => it.id === 'L69'), 1);
+  const up = run(list);
+  const L5 = at(up, 'L5'), raw5 = design.find(r => r.id === 'L5');
+  assert(L5.on === false && L5.dim === 0.4 && L5.hidden === true && plain(L5.pos).join() === plain(raw5.pos).join(), 'untouched head moves and keeps its switch, dimmer and visibility');
+  for (const id of ['L13', 'L21', 'L25', 'L9']) assert.deepEqual(plain(at(up, id)), plain(at(list, id)), 'a head the user changed stays as left: ' + id);
+  assert(!at(up, 'L30'), 'a deleted head stays deleted');
+  assert(at(up, 'L63') && at(up, 'L65') && ids.slice(0, 4).every(id => !at(up, id)), 'a wing side with a changed chandelier keeps both chandeliers and gets no downlights');
+  assert(!at(up, 'L67') && !at(up, 'L69') && ids.slice(4).every(id => at(up, id)), 'the other side is replaced (a deleted chandelier stays deleted)');
+  assert(at(up, 'L-WING-H-FI').on === false && at(up, 'L-WING-H-FO').dim === 0.5 && at(up, 'L-WING-H-RI').on !== false, 'downlights take the switching of the chandelier of their block');
+  assert.equal(SIM.state.settings.naveWingLightingRevision, D.naveWingLightingRevision, 'the revision is stored in the saved settings');
 }
 // CAD file of 23 Oct 2026: the dais rose from +0.75 to +0.80 m. Fittings standing on it
 // rise with it once; anything placed elsewhere or at another height stays.
@@ -1051,6 +1116,13 @@ function runSync(kinds) {
   assert(s.sti.avg > 0.4 && s.sti.avg < 0.85, 'seat STI plausible: ' + s.sti.avg);
   assert(s.air.avg > 0.15 && s.air.avg < 1.5, 'seat air speed plausible: ' + s.air.avg);
   assert(!A.checks.some(c => c.level === 'error'), 'recommended design has no errors: ' + A.checks.filter(c => c.level === 'error').map(c => c.title + ' ' + c.detail).join('; '));
+  // Owner, 1 Nov 2026: the centre of the nave and the wing benches. These hold whatever the open design targets below do.
+  assert(!A.checks.some(c => c.title === 'Light shines through fan blades'), 'no tie-beam head throws light through a side-aisle fan');
+  const central = s.blocks.central.lux, aisleLux = [];
+  for (const k of ['3', '4', '5', '6', '7', '8']) for (const dx of [0, 2.25]) aisleLux.push(A.pointValues(SIM.GEO.axes[k] + dx, 0, 1.2).lux);
+  assert(central.min >= 200 && central.avg >= 200 && central.avg <= 300, `central-block seats within 200–300 lux on average, none below 200: ${central.avg.toFixed(0)} avg, ${central.min.toFixed(0)} min`);
+  assert(Math.min(...aisleLux) >= 200, 'the centre aisle (Z 0) reaches 200 lux under every beam and mid-bay (it was about 62 lux): ' + Math.min(...aisleLux).toFixed(0));
+  assert(s.blocks.wing.lux.min >= 200, 'every wing seat reaches 200 lux with the downlights: ' + s.blocks.wing.lux.min.toFixed(0));
   // The recommended design also meets its own checks and the main brief targets.
   target(!A.checks.some(c => c.level === 'warn'), 'No design warnings', A.checks.filter(c => c.level === 'warn').map(c => c.title + ' ' + c.detail).join('; '));
   target(s.luxOk >= 95, 'At least 95% of seats reach 200 lux', `${s.luxOk.toFixed(1)}%`);

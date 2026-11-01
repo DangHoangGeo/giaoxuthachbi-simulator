@@ -14,7 +14,7 @@ This follows the owner's earlier direction for decorative and statue light (9 Oc
 
 | Records | Type | Where | Finish |
 | --- | --- | --- | --- |
-| L3–L30 (L1, central blocks) | `readingProjector`, side bracket | Sanctuary-facing face of each tie beam, axes 3–9: X axis + 0.15, bracket centre Y +8.77, Z ±2.48 and ±2.72 (either side of the gilded band at ±2.60) | Beam lacquer |
+| L3–L30 (L1, central blocks) | `readingProjector`, side bracket | Sanctuary-facing face of each tie beam, axes 3–9: X axis + 0.15, bracket centre Y +8.77, Z ±0.90 (heads aimed toward the sanctuary) and ±2.48 (entrance-facing twins, beside the gilded band at ±2.60); before 1 Nov 2026 ±2.48 and ±2.72, see [lighting.md](../systems/lighting.md#nave-centre-and-wing-lighting--1-november-2026) | Beam lacquer |
 | L31–L58 (L2, outer blocks) | `readingProjector`, side bracket | Sanctuary-facing face of each side beam: X axis + 0.11, Y +6.84, Z ±4.84 and ±6.09 (either side of the gilded cartouche, about ±4.96–6.00) | Beam lacquer |
 | L59–L62 (L1, rear rows) | `readingProjector`, side bracket | Unchanged places on the inside of the entrance wall | Wall plaster |
 
