@@ -132,7 +132,10 @@
     // E03 detail pass (3 Nov 2026): the bundle D/E pilasters, porch-end beam, eave ornaments and corner
     // finial blocks give way to the drawn piers, entablature and mid band built below.
     const rearOld = /^(Schematic pilaster|Pilaster plinth|Pilaster base cap|Schematic beam|Schematic block|Schematic end eave ornament)$/;
-    rearGroup?.traverse(m => { if (m.isMesh && m.name !== 'Ornate opposite-end gable' && (rearOld.test(m.name) || box3.setFromObject(m).min.y > 7.55)) remove.push(m); });
+    // The bundle centre arch (an elliptical 0.13 m moulding from +4.3) and its two columns at |Z| 2.5 give
+    // way to the E03 archivolt and coupled columns; the window surrounds of the same names stay.
+    const rearArch = (m, b) => m.name === 'Schematic arch moulding' ? b.max.y > 4 : /^(Schematic round profile|Column base|Capital)$/.test(m.name) && Math.abs(Math.abs((b.min.z + b.max.z) / 2) - 2.5) < .1;
+    rearGroup?.traverse(m => { if (m.isMesh && m.name !== 'Ornate opposite-end gable' && (rearOld.test(m.name) || rearArch(m, box3.setFromObject(m)) || box3.min.y > 7.55)) remove.push(m); });
     remove.forEach(o => o.removeFromParent());
     sideGroups.forEach(g => g.removeFromParent());
 
@@ -499,6 +502,30 @@
         add('Rear gable lunette · E03', S, e03('rearLunette', .012, true), f.at(0, 0, .042, m), E03C);
         add('Rear centre-arch spandrel leaf · E03', S, e03('rearArchLeaf', .012, true), f.at(0, 0, .012, m), E03C);
         add('Rear bay corner leaf · E03', S, e03('rearBayLeaves', .01), f.at(0, 0, .012, m), E03C);
+        // E03 centre arch (ARCs D917ED–D917F3 about u 0, +4.6642): stepped archivolt between the drawn
+        // radii, the intrados carried to the floor as a reveal strip (LINE at u 1.6875), and a coupled
+        // pair of columns on one impost (u 1.7925–2.5556, +4.5517–4.6642). The front column axis is
+        // u 2.2572, the second is drawn 0.1661 nearer the arch; E03 is an elevation, so setting the
+        // second one back is a CONCEPT reading. Plinth +0–0.225 (half 0.2863), base mouldings to
+        // +0.6975, shaft r 0.145 to +3.8767, necking to +3.99, traced capital to the abacus +4.4842–4.5517.
+        // Steps and projections are DERIVED.
+        const AC = 4.664203;
+        f.blk('Rear centre-arch reveal', S, e > 0 ? [1.6875, 1.7925] : [-1.7925, -1.6875], [0, 4.5517], [0, .1], EWD);
+        f.blk('Rear centre-arch impost', S, e > 0 ? [1.7925, 2.5556] : [-2.5556, -1.7925], [4.5517, 4.664203], [0, .7], EWD);
+        for (const [c, wc] of [[2.0911, .16], [2.2572, .42]]) {
+          const u = e * c;
+          f.blk('Rear centre-arch column plinth', S, [u - .2863, u + .2863], [0, .225], [wc - .2863, wc + .2863], EWD);
+          add('Rear centre-arch column base', S, K.turned([[.26, 0], [.26, .06], [.2, .1], [.165, .2], [.18, .3], [.2, .35], [.2019, .405], [.2019, .4725], [.145, .4725]], 20), f.at(u, .225, wc), EWD);
+          add('Rear centre-arch column shaft', W, new T.CylinderGeometry(.145, .145, 3.8767 - .6975, 20), f.at(u, (.6975 + 3.8767) / 2, wc), EWD);
+          add('Rear centre-arch column necking', S, new T.CylinderGeometry(.19, .17, .1133, 20), f.at(u, 3.9334, wc), EWD);
+          add('Rear centre-arch column bell', S, new T.CylinderGeometry(.25, .15, 4.4842 - 3.99, 20), f.at(u, (3.99 + 4.4842) / 2, wc), EWD);
+          f.blk('Rear centre-arch column abacus', S, [u - .2951, u + .2951], [4.4842, 4.5517], [wc - .2951, wc + .2951], EWD);
+        }
+        add('Rear centre-arch capitals · E03', S, e03('rearArchCapital', .01), f.at(0, 0, .42 + .26, m), E03C);
+        if (e > 0) for (const [r0, r1, w] of [[1.6875, 1.9355, .1], [1.9355, 2.1115, .14], [2.1115, 2.1465, .18], [2.1465, 2.3325, .12], [2.3325, 2.3675, .16], [2.3675, 2.4375, .2]]) {
+          const ring = new T.Shape(); ring.absarc(0, AC, r1, 0, Math.PI, false); ring.absarc(0, AC, r0, Math.PI, 0, true);
+          f.slab('Rear centre-arch archivolt · E03', S, ring, 0, w, EWD, 48);
+        }
       }
       f.rake(RG.rakes[0], .737353, .42, false, RG.rakePolygons[0]);
       f.rake(RG.rakes[1], .59, .42, false, RG.rakePolygons[1]);

@@ -116,3 +116,12 @@ Gỡ khỏi nhóm bundle đầu nhà: hai trụ giả hình D/E (cả đoạn tr
 | `rearBayLeaves` | Bốn lá góc dưới diềm trệt ở hai gian cửa sổ | u 3,94–10,235; v 4,25–5,38 | 300 | Chưa có |
 
 Dải lan can đầu hiên dùng ba mức vẽ +6,875776 / 6,935776 / 7,015776 / 7,055776 (LINE `D90C8E`–`D90C92`). Quạt có tấm nền một phần tư đĩa dày 30 mm (DERIVED). Nét vẽ được thể hiện bằng ống đường viền (độ nổi CONCEPT); tam giác thêm khoảng 84 nghìn. Lá góc gian cửa sổ phía trong nằm ngay quanh đèn lối đi `L188`/`L195` (Z ±4,50; Y 5,20): đèn không đổi, cần bên chiếu sáng quyết định đèn ẩn hoặc dời trong bước phối hợp.
+
+**Vòm giữa (E03 ARC `D917ED`–`D917F3`, tâm u 0 / +4,664203):** thay vòm elip giả hình (khởi từ +4,3, nhô 0,13 m) và hai cột |Z| 2,5 của bundle bằng sáu bậc vòm giữa các bán kính vẽ 1,6875 / 1,9355 / 2,1115 / 2,1465 / 2,3325 / 2,3675 / 2,4375 m, dải má vòm u 1,6875–1,7925 xuống sàn, và mỗi bên một đôi cột trên chung một đế vòm (u 1,7925–2,5556; +4,5517–4,664203). E03 vẽ cột trước tại u 2,2572 và cột thứ hai lệch 0,1661 m về phía vòm; vì đây là mặt đứng, việc đặt cột thứ hai lùi vào sau là cách hiểu **CONCEPT**. Cao độ chân (+0–0,225, nửa rộng 0,2863), gờ chân tới +0,6975, thân r 0,145 tới +3,8767, cổ cột tới +3,99, đầu cột (nét vẽ `rearArchCapital`, 95 dòng) tới bàn đầu cột +4,4842–4,5517 lấy theo E03; hình tiện chân và độ nhô các bậc vòm là DERIVED. Cửa sổ giữa của bundle giữ nguyên.
+
+**Còn mở sau lượt E03:**
+
+- Năm cửa sổ tầng trệt vẫn là cửa của bundle: E03 vẽ tâm cửa ngoài tại ±8,967 (mô hình ±8,887), vòm khởi +3,2005 (mô hình +3,02), lòng cửa rộng 1,0 m (mô hình 1,3 m), cột nhỏ hai bên cùng đầu cột như EW (`windowCapital`, dịch 3,0344 m) và ô panô dưới cửa (hoa thị ở gian D/E–C/G và giữa, bốn rãnh dọc ở gian ngoài). Sửa cửa cần dựng lại lỗ tường và khung cửa (bundle/`realism.js`), ảnh hưởng nội thất phòng đồ lễ; chưa làm trong lượt này.
+- Đầu hồi phía cung thánh vẫn dùng mặt phẳng X 53,24 (P14 53,181) như đã ghi; độ nhô các trụ, diềm và cột đôi là DERIVED/CONCEPT.
+- Pha răng cưa dưới hai mái dốc lệch khoảng 3 mm so với E03; chưa chỉnh để không đổi hàm `rake()` dùng chung.
+- Việc công bố các nét E03 thuộc **PUBLICATION HOLD H1**.
