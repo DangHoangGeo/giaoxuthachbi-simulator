@@ -43,6 +43,8 @@ The overlay of the DWG linework on a straight-on render of the model matches wit
 
 ## Entrance on the axis-2 line and the front steps · 1 November 2026
 
+**2 November 2026 follow-up:** The broad forecourt stair now returns along both sides, and an H-side ramp footprint is shown as a partial concept. The proposed ramp reaches the forecourt from the lower courtyard but does not yet provide a continuous accessible route into the church; the inferred 160 mm risers and existing 230 mm entrance treads require accessibility review. See [entrance approach](exterior-23102026/entrance-approach.md).
+
 The owner's review of 1 November 2026: the main door belongs to the body of the church, on the axis-2 line, not between axes 1 and 2; and between the towers the pier bases stood clear of the steps below them. This also completes the parish priest's wish of 25 October 2026 (doors on the towers' rear pier line).
 
 | Part | Before | Now | Source in the CAD file (model metres) |
@@ -54,7 +56,7 @@ The owner's review of 1 November 2026: the main door belongs to the body of the 
 | Central pier bases | stood at ±0 over the lower treads, with a gap beneath | a plinth course under each pedestal down to the −0.48 forecourt | Section A-A D7E717–D7E71B: the base runs down through the steps |
 | Tower front plinth | 0.22 m ledge in front of the corner piers (front X −1.2) | front face flush with the corner-pier plinth (X −0.984), so the pier bases run straight down to −0.48 | Elevation E01B: pier bases continue below ±0 to the forecourt |
 
-Coordinated: walking heights (`realism.js`: the steps and the door wall, passage through the doorways only), the simulator's entrance wall and interior boundary (`engine.js`), and the fittings on the inner face of the entrance wall (exit sign, entrance circulators and speakers; the four rear reading lights were subsequently moved to the side walls on 2 November 2026), which move with the wall in `design.js`; saved layouts move them once through the parish-meeting table (revision 7). Not for construction: door, wall and step construction, thresholds, drainage and accessible entry (a 0.48 m rise without a ramp here) remain open.
+Coordinated: walking heights (`realism.js`: the steps and the door wall, passage through the doorways only), the simulator's entrance wall and interior boundary (`engine.js`), and the fittings on the inner face of the entrance wall (exit sign, entrance circulators and speakers; the four rear reading lights were subsequently moved to the side walls on 2 November 2026), which move with the wall in `design.js`; saved layouts move them once through the parish-meeting table (revision 7). Not for construction: door, wall and step construction, thresholds, drainage and accessible entry remain open; the subsequent H-side concept and its incomplete church-floor connection are described above.
 
 ## Coordinated changes
 

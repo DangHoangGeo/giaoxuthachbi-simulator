@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','decoration.js','sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','entrance-approach.js','decoration.js','sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -58,7 +58,7 @@ const dimensions=o=>bounds(o).getSize(new T.Vector3());
 near(dimensions(nodes.find(o=>o.name.startsWith('Main plinth below'))).z,22.489,'Main plan width');
 const wings=nodes.filter(o=>o.name.startsWith('Side projection plinth'));
 near(Math.max(...wings.map(o=>bounds(o).max.z))-Math.min(...wings.map(o=>bounds(o).min.z)),28.158,'Wing plan width');
-near(dimensions(nodes.find(o=>o.name.startsWith('Entrance forecourt plinth'))).z,27.254,'Front platform width');
+near(dimensions(nodes.find(o=>o.name==='Entrance forecourt plinth · P05')).z,20.784,'P05 inner forecourt width');
 near(data.levels.forecourt-data.levels.courtyard,1.6,'Front stage rise');
 near(data.longitudinal['10']-data.longitudinal['9'],7.2,'Wing axis length');
 assert.equal(nodes.filter(o=>o.name==='Side landing at −0.320 m').length,6);

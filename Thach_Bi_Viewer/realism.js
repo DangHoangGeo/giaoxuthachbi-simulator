@@ -56,10 +56,9 @@
       const n = ST.risers.filter(r => x >= r).length;
       return n === ST.risers.length ? 0 : ST.landing + ST.rise * n;
     }
-    if (x >= -13.219 && x <= 0.99 && Math.abs(z) <= 13.35) {
-      if (x < -8.099) return -2.08 + Math.min(16, Math.max(1, Math.floor((x + 13.219) / .32) + 1)) * .1;
-      return -.48;
-    }
+    const approach = window.CHURCH_ENTRANCE_APPROACH?.floorHeight(x, z);
+    if (approach !== null && approach !== undefined) return approach;
+    if (x >= -9.219 && x <= 0.99 && Math.abs(z) <= 10.392) return -.48;
     const height = stairHeight(x, z);
     if (height !== null) return height;
     for (const zone of stairs) {
@@ -93,7 +92,8 @@
     if (x >= 37.7 && x <= 43.45 && Math.abs(x - 40.575) > .42 && [8.35,9.25,10.15,11.05,11.95].some(r => Math.abs(az - r) < .33)) return false;
     if (x >= 52.1 && x <= 53.1 && az < 3.1) return false;
     if (x >= 48.7 && x <= 49.8 && z >= 1.0 && z <= 1.8) return false;
-    if (x >= -13.219 && x <= -.38 && Math.abs(z) <= 13.05) return true;
+    if (window.CHURCH_ENTRANCE_APPROACH?.floorHeight(x,z) != null) return true;
+    if (x >= -9.219 && x <= -.38 && Math.abs(z) <= 10.392) return true;
     if (stairAllowed(x,z)) return true;
     return null;
   }
@@ -509,14 +509,11 @@
       // A closed end on each single-flight landing, matching the new side view.
       if(dir.length===1)rail([x+dir[0]*1.25,-.32,sign*minZ],[x+dir[0]*1.25,-.32,sign*maxZ],stairGroup);
     }
-    // Replace the old thin approach railing with continuous stone balustrades.
+    // Superseded approach balustrades would block the P05 stair returns. Their
+    // final replacement and handrails remain an access/engineering hold.
     const removals=[];
     plinth.traverse(o=>{if(/Schematic approach handrail|Schematic baluster/.test(o.name))removals.push(o);});
     removals.forEach(o=>o.removeFromParent());
-    for(const sign of [-1,1]) {
-      rail([-13.219,-2.08,sign*13.38],[-8.099,-.48,sign*13.38],plinth);
-      rail([-8.099,-.48,sign*13.38],[-.55,-.48,sign*13.38],plinth);
-    }
     // Reference timber shafts on the existing column grids, no grid changes.
     structure.traverse(o=>{
       if(!o.isMesh)return;
@@ -762,6 +759,7 @@
     window.CHURCH_TOWERS?.prepare(ctx);
     // Porch parapets, the 9–10 side gables and the rear gable after the CAD file (roofline.js, 25 Oct 2026).
     window.CHURCH_ROOFLINE?.prepare(ctx);
+    window.CHURCH_ENTRANCE_APPROACH?.prepare(ctx);
     // Project maps in metres before the legacy renderer merges material batches.
     const p=new T.Vector3(),normal=new T.Vector3(),normalMatrix=new T.Matrix3();
     building.updateMatrixWorld(true);scene.updateMatrixWorld(true);
@@ -828,9 +826,9 @@
     const centralWash=new T.SpotLight('#ffd49e',0,65,.85,.85,1.5);
     centralWash.position.set(-12,2,0);centralWash.target.position.set(2.4,9,0);scene.add(centralWash,centralWash.target);ctx.facadeLights.push(centralWash);
     data.revision='REFERENCE-REALISM-2026-10-05';
-    data.refinement={date:'2026-10-05',mainOuterPlinthWidth:22.489,wingOuterPlinthWidth:28.158,frontPlatformWidth:27.254,frontPlatformRise:1.6,sideLandings:6,sideFlights:8,rearStairs:0,sideDoorPlane:10.414,stairRisersPerFlight:12,stairRiserHeight:1.76/12,treeRows:2,treeCount:16,stairCountStatus:'Proposed; measured floor levels retained',references:window.CHURCH_REFERENCES.map(r=>r.url)};
+    data.refinement={date:'2026-10-05',mainOuterPlinthWidth:22.489,wingOuterPlinthWidth:28.158,frontPlatformWidth:27.084,frontPlatformRise:1.6,sideLandings:6,sideFlights:8,rearStairs:0,sideDoorPlane:10.414,stairRisersPerFlight:12,stairRiserHeight:1.76/12,treeRows:2,treeCount:16,stairCountStatus:'Proposed; measured floor levels retained',references:window.CHURCH_REFERENCES.map(r=>r.url)};
     data.assumptions=data.assumptions.filter(s=>!s.startsWith('The broad supporting plinth')&&!s.startsWith('Neutral and warm colors'));
-    data.assumptions.push('Main plinth 22.489 m and projecting wing plinth 28.158 m use the plan overall witnesses. Structural axes and the 2.835 m projection per side remain fixed. Front stage stays within 27.254 m tower facade width and 1.600 m above courtyard. Detailed face offsets remain provisional.');
+    data.assumptions.push('Main plinth 22.489 m and projecting wing plinth 28.158 m use the plan overall witnesses. Structural axes and the 2.835 m projection per side remain fixed. P05 entrance steps return around the forecourt on both sides; the widest drawn nosing is approximately 27.084 m and the forecourt is 1.600 m above the courtyard. Heights and construction are not approved.');
     data.assumptions.push('Exterior side doors now occupy the same outer wall plane as the windows, following the latest user correction. Doors open in Walk mode. Tower front arches remain open with the existing rear wall plane visible beyond.');
     data.assumptions.push('The sanctuary frame uses the three-lobed central and side arch silhouettes from section sheet 5. Curvature, relief depth and placement at axis 10 remain visual reconstructions pending a detailed longitudinal section.');
     data.assumptions.push('Side access follows the plan and the corrected side reference: paired flights at the first doorway, single flights flanking the projecting bay. Stair count, tread run, balustrade profiles and exact landing edges are proposed.');
