@@ -15,7 +15,7 @@
   // World axes: X from axis 1 toward the sanctuary (the street side is smaller X), Y up from the
   // nave floor, Z from the D/E midpoint, positive toward H. The facade is symmetric about Z 0.
   const spec = {
-    revision: '2026-11-02-cad-facade-entablature-2',
+    revision: '2026-11-02-cad-facade-entablature-4',
     cut: 8.45, // bundle meshes wholly above this level are superseded
     // Ground-storey arch spandrels, owner 2 Nov 2026: E01B draws the tower T12 leaf (75 entities) at full
     // size over the central portal and both side-bay arches; the bundle's flat sprays are replaced.
@@ -224,13 +224,20 @@
     // ===================================================================================
     // 1. Central cornice over the main door (+8.42 to +9.115) and pier capitals
     const C = spec.cornice, P = spec.pier;
-    block('Central cornice bed moulding', S, [2.24, 2.6], C.bed, [-2.49, 2.49]);
-    block('Central cornice dentil band', S, [2.30, 2.6], C.dentil, [-2.49, 2.49]);
+    // Owner, 2 Nov 2026: above the centre door it reads like the side bays and the towers: the same
+    // profile about a frieze face at X 2.19 (dentils 0.16 m proud, key on the frieze face), with the
+    // drawn fillets at +8.605 / 8.653 / 8.725 / 8.773 in place of the former 0.54 m deep corona.
+    block('Central cornice bed moulding', S, [2.13, 2.6], C.bed, [-2.49, 2.49]);
+    block('Central cornice dentil band', S, [2.29, 2.6], C.dentil, [-2.49, 2.49]);
     for (let z = 0; z <= 2.49 - C.dentilWidth / 2 + 1e-6; z += C.dentilPitch)
-      for (const e of z ? [-1, 1] : [1]) block('Central cornice dentil', S, [2.20, 2.30], C.dentil, [e * z - C.dentilWidth / 2, e * z + C.dentilWidth / 2]);
-    block('Central cornice corona', S, [2.06, 2.6], C.corona, [-3.535, 3.535]);
-    block('Central cornice frieze', S, [2.19, 2.6], C.frieze, [-2.49, 2.49]);
-    add('Central cornice Greek-key frieze', S, meanderGeo(4.96, C.key[1] - C.key[0]), place(RY(-Math.PI / 2), TR(2.18, C.key[0], -2.48)), CARVED);
+      for (const e of z ? [-1, 1] : [1]) block('Central cornice dentil', S, [2.13, 2.29], C.dentil, [e * z - C.dentilWidth / 2, e * z + C.dentilWidth / 2]);
+    block('Central cornice fillet', S, [2.16, 2.6], [C.corona[0], 8.653], [-2.49, 2.49]);
+    block('Central cornice fillet band', W, [2.19, 2.6], [8.653, 8.725], [-2.49, 2.49]);
+    block('Central cornice fillet', S, [2.16, 2.6], [8.725, C.corona[1]], [-2.49, 2.49]);
+    block('Central cornice frieze', W, [2.19, 2.6], C.frieze, [-2.49, 2.49]);
+    // The key fills the frieze as on the towers and side bays: meanderGeo's fixed 35 mm bars collapse
+    // at the drawn 0.192 m key height (C.key), so the band height follows the sides (owner, 2 Nov 2026).
+    add('Central cornice Greek-key frieze', S, meanderGeo(4.96, C.frieze[1] - C.frieze[0]), place(RY(-Math.PI / 2), TR(2.19, C.frieze[0], -2.48)), CARVED);
     block('Central cornice crown band', S, [2.05, 2.6], C.band, [-3.53, 3.53]);
     // 1b. Side bays: the tower-base entablature continued (architrave, dentils, Greek key, cornice).
     {
