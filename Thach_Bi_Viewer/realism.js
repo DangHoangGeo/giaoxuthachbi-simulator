@@ -415,7 +415,7 @@
       const shape=new T.Shape();shape.moveTo(x+r0,spring);shape.absarc(x,spring,r0,0,Math.PI,false);
       shape.lineTo(x-r1,spring);shape.absarc(x,spring,r1,Math.PI,0,true);shape.closePath();return shape;
     }
-    function rebuildSideOpening(bay,profile,centres){
+    function rebuildSideOpening(bay,profile,centres,colonnettes=false){
       const wall=bay.children.find(o=>o.name==='Inner C/G wall with opening'||o.name==='Outer arcade wall with arched openings');
       if(!wall)return;
       const old=wall.geometry,parameters=old.parameters,depth=parameters.options.depth;
@@ -438,14 +438,52 @@
         const material=i===2||i===4?mat.darkTrim:mat.trim;
         const ring=mesh(new T.ExtrudeGeometry(sideArchBand(x,profile.spring,a,b),{depth:z1-z0,bevelEnabled:false,curveSegments:48}),material,bay,'Side CAD opening archivolt moulding');
         ring.position.z=z0;ring.userData={status:'NATIVE CAD RADII / CONCEPT RELIEF DEPTH',source:'DWG E26/D29'};
-        for(const s of [-1,1])box(b-a,profile.spring-profile.bottom,z1-z0,x+s*(a+b)/2,(profile.spring+profile.bottom)/2,(z0+z1)/2,material,bay,'Side CAD opening jamb moulding');
+        // Where E02's colonnette stands (the side toward the bay centre) it replaces the flat jamb.
+        for(const s of [-1,1])if(!colonnettes||s!==-Math.sign(x))box(b-a,profile.spring-profile.bottom,z1-z0,x+s*(a+b)/2,(profile.spring+profile.bottom)/2,(z0+z1)/2,material,bay,'Side CAD opening jamb moulding');
       }
+    }
+    // E02 window dressing on the inner C/G wall (owner, 3 Nov 2026), bay-local metres: x from the bay
+    // centre, y world level, z out from the C/G axis (porch face +0.11). Window-axis offsets from E02
+    // lines D9A2AF–D9A2B9, D9A249–D9A27C (colonnette), D9A4AC–D9A4DE (panels); traced capital and
+    // roundel from detail-sides-profile.js. Relief depths are DERIVED; the outer colonnette of each
+    // window is held because the porch path light and fill speaker sit on that jamb (sides.md).
+    const sideDetail=window.CHURCH_DETAIL_PROFILE_SIDES,sideK=window.CHURCH_CARVING?.create(T);
+    const sideOrn=sideK&&window.CHURCH_EXTERIOR_ORNAMENT?.create(T,sideK);
+    let sideCapital=null,sideRoundel=null;
+    function dressInnerWindowBay(bay,profile){
+      if(!sideDetail||!sideOrn)return;
+      const {TR,SC,place,merge}=sideK,face=.11,wc=face+.075,trim=[],carved=[];
+      sideCapital??=sideOrn.towerSpandrel(sideDetail.sideWindowCapital,.006,.003,3);
+      sideRoundel??=sideOrn.towerSpandrel(sideDetail.sideRoundel,.008,.003,3);
+      for(const m of bay.children.slice())if(/^(Window low parapet|Schematic parapet flute|Schematic rose-window infill|Schematic rosette ring|Schematic rosette ray)$/.test(m.name)){m.removeFromParent();m.geometry.dispose();}
+      const blk=(x0,x1,y0,y1,z0,z1)=>trim.push([new T.BoxGeometry(Math.abs(x1-x0),y1-y0,z1-z0),TR((x0+x1)/2,(y0+y1)/2,(z0+z1)/2)]);
+      const cyl=(r,y0,y1,x)=>trim.push([new T.CylinderGeometry(r,r,y1-y0,12),TR(x,(y0+y1)/2,wc)]);
+      for(const x of profile.centres){
+        // Panel under the window: sill bands +0.75–0.79–0.85 and four notched panels +0.075–0.675.
+        blk(x-.5,x+.5,.75,.79,face,face+.02);blk(x-.5,x+.5,.79,.85,face,face+.035);
+        for(const u of [-.33,-.11,.11,.33]){blk(x+u-.055,x+u+.055,.1,.65,face,face+.015);for(const [a,b] of [[.075,.1],[.65,.675]])blk(x+u-.03,x+u+.03,a,b,face,face+.015);}
+        // Colonnette on the side toward the bay centre: shaft r 0.065 at 0.7532 from the window axis,
+        // respond strip 0.61–0.6882, base 0–0.31, necking, traced capital +2.8005–3.0205, abacus, impost.
+        const k=-Math.sign(x),at=u=>x+k*u,uc=at(.7532);
+        blk(at(.61),at(.6882),.31,2.7505,face,face+.04);cyl(.065,.31,2.7505,uc);
+        blk(at(.5521),at(.8805),-.32,.06,face,wc+.1);blk(at(.5521),at(.8805),.06,.1,face,wc+.095);
+        cyl(.13,.1,.23,uc);cyl(.09,.23,.31,uc);cyl(.08,2.7505,2.8005,uc);
+        blk(uc-.08,uc+.08,2.8005,3.0205,face,wc+.06);
+        carved.push([sideCapital,place(SC(k,1,1),TR(uc,0,wc+.075))]);
+        blk(at(.5482),at(.8867),3.0205,3.0505,face,wc+.11);blk(at(.5467),at(.8859),3.0505,3.1005,face,wc+.12);
+      }
+      // Roundel over the window pair, as E02 draws it in each window bay (centre +4.645).
+      carved.push([sideRoundel,TR(0,0,face+.01)]);
+      const status={status:'E02 TRACED OUTLINE / DERIVED RELIEF DEPTH · CONCEPT',source:'DWG E02 side elevation, 23 Oct 2026; owner 3 Nov 2026'};
+      mesh(merge(trim),mat.trim,bay,'Inner window E02 colonnette and panel mouldings').userData=status;
+      mesh(merge(carved),mat.trim,bay,'Inner window carving · E02 capitals and roundel').userData=status;
     }
     for(const bay of sideBays) {
       const inner=bay.name.startsWith('Inner wall '),door=inner&&/ (4–5|8–9)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
       // Owner, 3 Nov 2026: the wing-end windows follow EW too, at the drawn centres ±2.45 (were ±2.4).
       const profile=(inner&&!door||wing)&&sideCAD?sideCAD.window:null,centres=wing?[-2.45,2.45]:profile?.centres;
-      if(profile)rebuildSideOpening(bay,profile,centres);
+      if(profile)rebuildSideOpening(bay,profile,centres,!wing);
+      if(profile&&!wing)dressInnerWindowBay(bay,profile);
       // Joinery planes: the inner wall is 0.22 m thick (porch face at +0.11), the outer 0.30 m.
       paneZ=inner?0:.10;const jz=inner?.07:.13,hz=inner?.07:.10;
       if(door) {

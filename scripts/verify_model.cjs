@@ -126,7 +126,7 @@ assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
 // stepped 9–10 side gables and the stepped rear gable, each with a crowning cross.
 {
   const R=sandbox.window.CHURCH_ROOFLINE.stats;assert.equal(R.crosses,3,'two side gables and the rear gable carry a cross');
-  assert(R.balusters>250&&R.pinnacles>=40,'porch parapets with balusters and pinnacles');
+  assert(R.balusters===250&&R.pinnacles>=40,'porch parapets with the E02 flat-cut balusters (0.25 m pitch, 0.625 m from each axis) and pinnacles');
   const crossTop=n=>Math.max(...nodes.filter(o=>/^Gable cross/.test(o.name)).map(o=>bounds(o).max.y));assert(Math.abs(crossTop()-17.829)<.01,'rear gable cross top +17.829 (E03)');
   assert(!nodes.some(o=>o.name==='Schematic side ornamental gable'||o.name==='Schematic decorative eave crest'),'old side gables and eave crest removed');
   const rail=bounds(nodes.find(o=>o.name==='Porch parapet top rail'));near(rail.max.y,7.073919332,'Native parapet top (E02 LINE D99C62)');
@@ -151,7 +151,9 @@ assert.equal(innerHeads.length,0,'the single 2.25 m inner windows are replaced b
 assert.equal(nodes.filter(o=>o.name==='Inner doorway coloured oval').length,4);
 assert.equal(nodes.filter(o=>o.name==='Entrance door coloured oval').length,3);
 const colouredHeads=nodes.filter(o=>/coloured oval$|fixed fanlight$|stained-glass fanlight$|rose-window infill$/.test(o.name));
-assert.equal(colouredHeads.length,77,'glass of the tower cap rosettes (towers.js) and of the old side- and rear-gable roses (roofline.js) removed');
+assert.equal(colouredHeads.length,63,'glass of the tower cap rosettes (towers.js), of the old side- and rear-gable roses (roofline.js) and of the 14 inner C/G wall roses (realism.js, E02 roundel since 3 Nov 2026) removed');
+assert(!nodes.some(o=>o.name==='Schematic rose-window infill'&&/^Inner wall /.test(o.parent?.name||'')),'no schematic glass rose on the inner C/G wall');
+assert.equal(nodes.filter(o=>o.name==='Inner window carving · E02 capitals and roundel').length,14,'E02 roundel and colonnette capitals in each of the 14 inner window bays');
 for(const o of innerHeads){o.geometry.computeBoundingBox();near(o.geometry.boundingBox.min.y,3.171,'Inner oval spring');near(o.geometry.boundingBox.max.y,4.311,'Inner oval crown');}
 for(const o of clearBodies){
   assert.equal(o.material,mat.glass);assert.equal(o.material.map,null);
