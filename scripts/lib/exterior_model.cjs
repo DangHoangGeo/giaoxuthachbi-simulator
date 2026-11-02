@@ -13,7 +13,7 @@ function loadExteriorModel({baselineDir} = {}) {
   const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
   const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
   vm.createContext(sandbox);
-  const files=['texture-memory.js','render-batches.js','references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','entrance-approach.js','decoration.js','sanctuary.js','facade.js','porches.js','stations.js','towers.js','roofline.js','realism.js','planning.js'];
+  const files=['texture-memory.js','render-batches.js','references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','entrance-approach.js','decoration.js','sanctuary.js','facade.js','porches.js','stations.js','towers.js','roofline.js','realism.js','planning.js'];
   for (const file of files) {
     const candidate=baselineDir&&path.join(baselineDir,file);
     const source=candidate&&fs.existsSync(candidate)?candidate:path.join(root,'Thach_Bi_Viewer',file);

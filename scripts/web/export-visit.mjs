@@ -25,7 +25,7 @@ const files = [
 	"glass-art.js",
 	"carving.js",
 	"exterior-ornament.js",
-	"tower-spandrel-profile.js",
+	"tower-spandrel-profile.js","facade-crest-profile.js",
 	"entrance-approach.js",
 	"sanctuary.js",
 	"facade.js",

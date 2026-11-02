@@ -15,7 +15,7 @@
   // World axes: X from axis 1 toward the sanctuary (the street side is smaller X), Y up from the
   // nave floor, Z from the D/E midpoint, positive toward H. The facade is symmetric about Z 0.
   const spec = {
-    revision: '2026-11-02-cad-facade-leaves-1',
+    revision: '2026-11-02-cad-facade-crests-1',
     cut: 8.45, // bundle meshes wholly above this level are superseded
     // Ground-storey arch spandrels, owner 2 Nov 2026: E01B draws the tower T12 leaf (75 entities) at full
     // size over the central portal and both side-bay arches; the bundle's flat sprays are replaced.
@@ -165,6 +165,14 @@
     // Shared exterior carving geometry; placements and materials remain local.
     const { fleur, pilasterCapital } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     const tallFleur = fleur(0.85), smallFleur = fleur(0.42), crownFleur = fleur(0.58);
+    // ---- Niche crests: E01B outlines over the side and central aedicules (owner permission
+    // 2 Nov 2026), drawn with the T12 contour tube; relief CONCEPT. They replace the procedural
+    // crown and arch leaf cresting.
+    const crestStroke = window.CHURCH_TOWERS.spec, crestGeo = {};
+    for (const k of ['side', 'central'])
+      crestGeo[k] = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K).towerSpandrel(window.CHURCH_FACADE_CREST_PROFILE[k], crestStroke.leafStroke, crestStroke.leafSagitta);
+    const nicheCrest = (g, face, zc) => add('Facade niche crest · E01B', S, g, facing(face - crestStroke.leafStroke - .002, 0, zc),
+      'E01B TRACED NICHE CREST / RELIEF CONCEPT');
     // ---- Ground arch spandrels: the tower T12 leaf, at the E01B positions ----
     {
       const { towerSpandrel } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K), L = spec.leaves;
@@ -197,25 +205,6 @@
         bar(x + .4 * u, x + .62 * u, .66 * h - t, .66 * h);
       }
       add(name, S, merge(parts), facing(xFront, y0, z0), CARVED);
-    };
-    // Leaf cresting along an arch's extrados from angle a0 down to a1, facing −X.
-    const archCrest = (name, zc, yc, r, xFront, size, count, a0 = Math.PI * .9, a1 = Math.PI * .1) => {
-      const pts = Array.from({ length: 9 }, (_, i) => { const a = a0 + (a1 - a0) * i / 8; return [Math.cos(a) * r, Math.sin(a) * r]; });
-      add(name, S, K.cresting(pts, { size, count, out: 1 }), facing(xFront, yc, zc), CARVED);
-    };
-    // Carved crest over an arch: an upright leaf between two scrolling sprays and a boss.
-    const crown = (name, zc, y0, h, xFront) => {
-      const parts = [[K.leaf({ len: h * .72, wid: h * .2, thick: .04, curl: .25, lobes: 2, seg: 6, fine: false }), TR(0, h * .2, 0)]];
-      const spray = K.stem([[0, h * .1, 0], [h * .22, h * .32, 0], [h * .42, h * .3, 0], [h * .5, h * .12, 0], [h * .42, h * .04, 0]], .035, .012, 14, 5);
-      const curl = K.stem(K.scroll(h * .3, h * .5, h * .12, 1.2, 0, 1), .028, .01, 10, 5);
-      const blade = K.leaf({ len: h * .3, wid: h * .16, thick: .025, curl: 1.4, lobes: 3, seg: 5, fine: false });
-      for (const e of [-1, 1]) {
-        const m = SC(e, 1, 1);
-        parts.push([spray, m], [curl, m], [blade, place(RZ(-.9), TR(h * .26, h * .38, 0), m)], [blade, place(RZ(-2.2), TR(h * .46, h * .2, 0), m)]);
-      }
-      const c = K.cluster({ a: h * .12, b: h * .12, c: .06, leaves: 8, blooms: 1, size: h * .12 });
-      parts.push([c.body, TR(0, h * .12, 0)], [c.accent, TR(0, h * .12, 0)]);
-      add(name, S, merge(parts), facing(xFront, y0, zc), CARVED);
     };
     // Niche hood: the back half of a cylinder and a quarter sphere over it.
     const hood = (name, zc, half, [y0, spring], x) => {
@@ -371,8 +360,8 @@
       }
       slab('Side aedicule arch moulding', S, band(zc, N.spring, N.rings[0], N.rings[1]), [3.797, SB.face]);
       slab('Side aedicule arch moulding', S, band(zc, N.spring, N.half, N.rings[0]), [3.95, SB.face]);
-      archCrest('Side aedicule leaf cresting', zc, N.spring, N.rings[1] + .04, 3.80, .2, 10);
-      crown('Side aedicule carved crest', zc, 12.95, 1.4, 3.80);
+      // E01B C48E1C–C48EE8 (H) / C48EEA–C48FB6 (B, the same outline translated): traced crest.
+      nicheCrest(crestGeo.side, SB.face, zc);
       // Empty-niche pedestal of the drawing; the owner's statue stands on it (simulator item).
       const [p0, p1] = SB.pedestal;
       block('Side niche statue pedestal base', S, [3.84, 4.46], [p0, p0 + .11], [zc - .6, zc + .6]);
@@ -459,8 +448,7 @@
       block('Central aedicule niche back', W, [AN.x + AN.half, AE.back + .05], [AN.floor, AN.spring + AN.half], [-AN.half, AN.half]);
       slab('Central aedicule arch moulding', S, band(0, AN.spring, AN.rings[0], AN.rings[1]), [3.88, AE.wall]);
       slab('Central aedicule arch moulding', S, band(0, AN.spring, AN.half, AN.rings[0]), [3.95, AE.wall + .1]);
-      archCrest('Central aedicule leaf cresting', 0, AN.spring, AN.rings[1] + .04, 3.86, .22, 12);
-      crown('Central aedicule carved crest', 0, 19.86, 1.1, 3.86);
+      nicheCrest(crestGeo.central, AE.wall, 0); // E01B C49BF8–C49CC4
       for (const e of [-1, 1]) column('Central aedicule niche column', 4.015, e * 1.009, .1, [AN.floor, AN.spring], .3);
       // Pedestal of the drawing: 930 mm wide at its mouldings, 686 mm high.
       const [p0, p1] = AE.pedestal;

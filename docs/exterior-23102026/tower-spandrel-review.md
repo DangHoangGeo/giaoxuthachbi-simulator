@@ -35,3 +35,15 @@ The owner asked for the leaf to be bolder and used wherever the new design draws
 | Side-bay arches, tower side | E01B, C44B84 / C45374 | Z ±5.276, outward | C44A87, C44AA0, C44AA8 | same |
 
 The B side mirrors H within 0.1 mm. These placements reuse the already-permitted T12 coordinates; no other detail is reproduced. They replace the bundle's flat sprays (`Spandrel foliate branch`, `Spandrel hanging foliage` and their fleur tufts), which `facade.js` now removes over the three ground arches. The contour radius is 18 mm (was 8 mm) and arcs use a 1 mm chord tolerance; both are display choices, not carving dimensions. The wall face behind the façade leaves is taken as X 1.975 from the removed sprays (DERIVED). Depth, material, fixing and fabrication remain open, as above.
+
+## Niche crests · 2 November 2026
+
+On the owner's confirmation that the parish and designer permit the upper-front details ([H1](../open-source/publication-checklist.md)), the crests over the three upper niches are transcribed from E01B into `Thach_Bi_Viewer/facade-crest-profile.js`, in the same row format as T12 (u from the niche axis, v = world Y).
+
+| Crest | Source objects | Model |
+| --- | --- | --- |
+| Side-bay aedicule, H | 205 ARC/LINE, C48E1C–C48EE8, niche axis Z 5.35 | `Facade niche crest · E01B` |
+| Side-bay aedicule, B | C48EEA–C48FB6: the same outline translated to Z −5.35 (not mirrored; within 0.1 mm) | same, profile repeated |
+| Central aedicule | 183 ARC/LINE, C49BF8–C49CC4, axis Z 0 | same |
+
+Selection: entities outside the niche's outer moulding ring (R 0.986 side, 1.112 central), excluding the concentric niche and great-arch rings, the pier capitals and the pediment lines. Plots of the selection were checked against the raw E01B vector sheet. The outline is not symmetric about its axis, which is why the B copy is a translation. `verify_facade_crest_source.py` checks every row against the DXF (H and central exact to 5×10⁻¹⁰; B copy 0.1 mm). The crests replace the procedural `crown` and arch `leaf cresting`. They use the T12 contour tube (18 mm, 1 mm chord), set on the wall face behind (side X 4.017, central 3.915). Relief, material, fixing and fabrication are **CONCEPT**. The façade triangle guard in `verify_model.cjs` rises from 150,000 to 200,000 for these traced details (180,640 now).
