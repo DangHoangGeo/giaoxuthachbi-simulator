@@ -40,12 +40,23 @@
       // relief depth remain a documented coordination departure, not a CAD depth claim.
       face: 53.24,
       corner: { u: [10.239012, 10.909012], shaft: [6.323919, 7.409277], capital: [7.409277, 7.754277], pedestal: [7.754277, 8.065981], top: 10.240526943 },
-      cg: { u: [7.080012, 7.640012], base: [6.323919, 6.369744], shaft: [6.369744, 8.875933], capital: [8.875933, 9.300933], pedestal: [9.300933, 9.822633], top: 11.525039803 },
-      de: { u: [3.265012, 3.935012], shaft: [9.115368, 11.485477], capital: [11.485477, 11.875477], pedestal: [11.875477, 13.192991], top: 14.895397665, base: [8.575368, 9.115368] },
+      // 3 Nov 2026, E03 detail check: C/G has no capital (bands, plaque die, second die, cornice);
+      // D/E repeats the ground-pier base, the EW ground capital (raised 5.863261) and cornice, then a
+      // gablet die with a sunk panel and the cornice. Rows: E03 horizontals (0.1 mm), centred on the pier.
+      cg: { u: [7.080012, 7.640012], shaft: [6.323919, 8.875933], pedestal: [9.300933, 9.822633], top: 11.525039803,
+        rows: [[8.875933, 8.915929, .305, 'S'], [8.915929, 8.975929, .335, 'S'], [8.975929, 9.015929, .305, 'S'], [9.015929, 9.265929, .28, 'W'], [9.115929, 9.165929, .07, 'P'],
+          [9.265929, 9.300929, .30, 'S'], [9.300929, 9.360929, .33, 'S'], [9.360929, 9.510929, .28, 'W'], [9.510929, 9.558633, .33, 'S'], [9.558633, 9.678633, .38, 'C'],
+          [9.678633, 9.726633, .43, 'S'], [9.726633, 9.822633, .481, 'S']] },
+      de: { u: [3.265012, 3.935012], shaft: [9.115367, 11.485477], pedestal: [12.18718, 13.192991], top: 14.895397665, foliage: 5.863261,
+        rows: [[8.575367, 8.725367, .375, 'S'], [8.725367, 8.975367, .335, 'W'], [8.975367, 9.015367, .36, 'S'], [9.015367, 9.075367, .39, 'S'], [9.075367, 9.115367, .36, 'S'],
+          [11.485477, 11.525477, .36, 'S'], [11.525477, 11.585477, .39, 'S'], [11.585477, 11.625477, .36, 'S'], [11.625477, 11.875477, .3, 'B'],
+          [11.875477, 11.92318, .385, 'S'], [11.92318, 12.04318, .435, 'C'], [12.04318, 12.09118, .485, 'S'], [12.09118, 12.18718, .537, 'S'],
+          [12.18718, 12.881287, .28, 'W'], [12.18718, 12.44018, .342, 'G'], [12.3144, 12.881287, .17, 'P'],
+          [12.881287, 12.92899, .33, 'S'], [12.92899, 13.04899, .38, 'C'], [13.04899, 13.09699, .43, 'S'], [13.09699, 13.192991, .481, 'S']] },
       crest: { u: [7.640012, 10.239845], band: [6.875776, 7.055776], top: 7.6 },
       rakes: [[[7.080012, 7.495586], [3.935012, 9.853050]], [[3.265012, 10.355266], [1.228505, 11.881822]]],
       rakePolygons: [[[7.080012,7.495586],[3.935012,9.853050],[3.935012,10.590403],[7.080012,8.232939]], [[3.265012,10.355266],[1.228505,11.881822],[1.425085727,12.471821656],[3.265012,11.092633]]],
-      band: [11.881821656, 12.471821656], bandHalf: 1.425085727, mid: [7.873663, 8.575368],
+      band: [11.881821656, 12.471821656], bandHalf: 1.425085727, lift: 2.251448,
       rose: [0, 9.988500640, .81], roseRings: [.81, .675, .628113367, .592113367],
       aedicule: { base: 12.471821656, niche: .519986529, pier: [.732012, 1.052012], pierBase: 12.635022,
         spring: 14.617703020, crown: 15.145821656, pierTop: 14.493972, pinnacle: 16.142570786,
@@ -61,11 +72,15 @@
     exterior.updateMatrixWorld(true);
     const K = window.CHURCH_CARVING.create(T);
     const { TR, RY, RZ, SC, place, merge } = K;
-    const { fleur, pilasterCapital, meanderGeo, pinnacleCrown, flutedField, drawnPier, drawnEntablature, traced } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const { fleur, pilasterCapital, meanderGeo, pinnacleCrown, flutedField, drawnPier, drawnEntablature, traced, towerSpandrel } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     // Owner, 3 Nov 2026: the wing gables follow the EW decoration; traced outlines are drawn with the
     // T12 contour tube (relief CONCEPT), drawn levels and widths as below, depths DERIVED.
     const EW = 'EW TRACED CARVING / RELIEF CONCEPT', EWD = 'EW DRAWN OUTLINE AND LEVELS / DERIVED DEPTH';
     // Large single pieces (crest, console, corner leaf, rose) keep the full tube; capitals use the light one.
+    // E03 outlines (detail-rear-profile.js): the lunette and arch leaves keep the full tube, the repeated
+    // crests and bay leaves the light one.
+    const rearGeo = {}, e03 = (key, stroke, big = false) => rearGeo[key] ||= towerSpandrel(window.CHURCH_DETAIL_PROFILE_REAR[key], stroke, big ? .001 : .003, big ? 6 : 3);
+    const E03C = 'E03 TRACED CARVING / RELIEF CONCEPT';
     const ewGeo = {}, ew = (key, stroke = .012) => ewGeo[key + stroke] ||= traced(key, stroke, !/^wing(Crest|Volute|Spandrel|Rose)$/.test(key));
     // Owner, 2 Nov 2026: every pier pinnacle takes the shared E01B crown, scaled uniformly to its envelope.
     const crown = pinnacleCrown(), crownScale = h => h / crown.boundingBox.max.y;
@@ -114,7 +129,13 @@
     });
     sideGroups.forEach(g => g.traverse(m => { if (m.isMesh && /cross/i.test(m.name)) crossMaterial = m.material; }));
     // Rear gable: the end wall and the ground storey stay; ornament above +7.55 goes.
-    rearGroup?.traverse(m => { if (m.isMesh && m.name !== 'Ornate opposite-end gable' && box3.setFromObject(m).min.y > 7.55) remove.push(m); });
+    // E03 detail pass (3 Nov 2026): the bundle D/E pilasters, porch-end beam, eave ornaments and corner
+    // finial blocks give way to the drawn piers, entablature and mid band built below.
+    const rearOld = /^(Schematic pilaster|Pilaster plinth|Pilaster base cap|Schematic beam|Schematic block|Schematic end eave ornament)$/;
+    // The bundle centre arch (an elliptical 0.13 m moulding from +4.3) and its two columns at |Z| 2.5 give
+    // way to the E03 archivolt and coupled columns; the window surrounds of the same names stay.
+    const rearArch = (m, b) => m.name === 'Schematic arch moulding' ? b.max.y > 4 : /^(Schematic round profile|Column base|Capital)$/.test(m.name) && Math.abs(Math.abs((b.min.z + b.max.z) / 2) - 2.5) < .1;
+    rearGroup?.traverse(m => { if (m.isMesh && m.name !== 'Ornate opposite-end gable' && (rearOld.test(m.name) || rearArch(m, box3.setFromObject(m)) || box3.min.y > 7.55)) remove.push(m); });
     remove.forEach(o => o.removeFromParent());
     sideGroups.forEach(g => g.removeFromParent());
 
@@ -190,11 +211,33 @@
         // (owner, 2 Nov 2026: every pier), narrowed to the pier: DERIVED.
         const fh = Math.min(.235, half - .06), F2 = flutedField({ half: fh, y: [P.shaft[0] + .1, P.shaft[1] - .05], flutes: [P.shaft[0] + .2, P.shaft[1] - .15], step: Math.min(.11, fh - .045) });
         add('Gable pier fluted field', W, F2.field, at(um, 0, d)); add('Gable pier fluted field bed', S, F2.bed, at(um, 0, d));
+        // E03 piers carry their own drawn rows [v0, v1, half, kind] (absolute levels and half-widths
+        // from the E03 horizontals); each row projects (half − shaft half) beyond the shaft face.
+        // kind: S moulding, C cyma (drawn as a square band at its mean half-width), W die, B capital bell (+ the traced EW ground capital moved to P.foliage),
+        // P plaque on the die face, G gablet at the foot of the die. Depths are DERIVED.
         if (Math.abs(P.shaft[0] - 6.3239) < .06) {
           // EW 6.324–6.577: gablet on the foot of the pier, between two side blocks (±0.335–0.426).
           const g0 = P.shaft[0], g = poly([[-.342 * sx, 0], [.342 * sx, 0], [0, .253]]);
           add('Gable pier foot gablet', S, new T.ExtrudeGeometry(g, { depth: .04, bevelEnabled: false }), at(um, g0, d), EWD);
           for (const e of [-1, 1]) blk('Gable pier foot block', S, [um + e * .335 * sx, um + e * .426 * sx].sort((p, q) => p - q), [g0, g0 + .253], [0, d + .04], EWD);
+        }
+        // E03 piers carry their own drawn rows [v0, v1, half, kind] (absolute levels and half-widths
+        // from the E03 horizontals); each row projects (half − shaft half) beyond the shaft face.
+        // kind: S moulding, C cyma (drawn as a square band at its mean half-width), W die, B capital bell (with the traced EW ground capital raised by
+        // P.foliage), P plaque on the die face, G gablet at the foot of the die. Depths are DERIVED.
+        if (P.rows) {
+          for (const [v0, v1, h, kind] of P.rows) {
+            const p = d + h - half;
+            if (kind === 'S' || kind === 'C') blk('Gable pier moulding · E03', S, [um - h, um + h], [v0, v1], [-.03, p], EWD);
+            else if (kind === 'W') blk('Gable pier die · E03', W, [um - h, um + h], [v0, v1], [0, d - .04], EWD);
+            else if (kind === 'B') {
+              blk('Gable pier capital bell', S, [um - h, um + h], [v0, v1], [0, d]);
+              add('Gable pier capital foliage · EW', S, ew('pierCapitalEW', .01), at(um, P.foliage, d + .012), EW);
+            } else if (kind === 'P') blk('Gable pier die plaque · E03', S, [um - h, um + h], [v0, v1], [0, d - .025], EWD);
+            else if (kind === 'G') add('Gable pier pedestal gablet', S, new T.ExtrudeGeometry(poly([[-h, 0], [h, 0], [0, v1 - v0]]), { depth: .05, bevelEnabled: false }), at(um, v0, d - .04), EWD);
+          }
+          pinnacle(um, P.pedestal[1], P.top, Math.min(.36, u1 - u0 - .12), d / 2);
+          return;
         }
         const c0 = P.capital[0], c1 = P.capital[1], capBase = capKey === 'wingCapInner' ? 9.138182 : 7.862396;
         blk('Gable pier capital bell', S, [um - half * .9, um + half * .9], P.capital, [0, d]);
@@ -312,8 +355,19 @@
     // Lower piers at the wing ends (EW) and the sanctuary end (E03): the shared EW/E02 drawn pier
     // (exterior-ornament.js drawnPier), centred on the CAD shaft (EW/E03 shaft ±0.335, +1.53–5.622).
     // `back` reaches the wall behind; mouldings and depths are DERIVED, not structural design.
-    const lowerPiers = (f, ranges, label, back) => {
-      const parts = drawnPier({ bottom: -.4, back, face: .18 });
+    // `lift` (E03 D/E pair) keeps the drawn base and raises the capital and cornice by that much, with the
+    // shaft and its flutes run up to meet them (E03 shaft +1.53–7.8737, flutes to +7.7487).
+    const lowerPiers = (f, ranges, label, back, lift = 0) => {
+      let parts = drawnPier({ bottom: -.4, back, face: .18 });
+      if (lift) {
+        const up = TR(0, lift, 0), field = flutedField({ half: .225, y: [1.53, 5.622 + lift], flutes: [1.655, 5.497 + lift] });
+        parts = parts.map(q => {
+          if (q.name === 'shaft') { const g = q.geometry.parameters; return { ...q, geometry: new T.BoxGeometry(g.width, 4.092 + lift, g.depth), matrix: TR(0, 1.53 + (4.092 + lift) / 2, q.matrix.elements[14]) }; }
+          if (q.name === 'fluted field') return { ...q, geometry: field.field };
+          if (q.name === 'fluted field bed') return { ...q, geometry: field.bed };
+          return q.name === 'capital foliage' || q.matrix.elements[13] > 5.6 ? { ...q, matrix: up.clone().multiply(q.matrix) } : q;
+        });
+      }
       for (const [lo, hi] of ranges) for (const sign of [-1, 1]) {
         const mid = sign * (lo + hi) / 2;
         for (const q of parts) add(`${label} lower pier · EW ${q.name}`, q.kind === 'W' ? W : S, q.geometry, f.at(mid, 0, 0, q.matrix), q.kind === 'C' ? EW : EWD);
@@ -436,22 +490,67 @@
       const F = frame([RG.face, 0, 0], [0, 0, 1], [1, 0, 0]);
       const f = face(F);
       lowerPiers(f, [[7.025012, 7.695012], [10.239012, 10.909012]], 'Rear', 0);
+      // E03: the D/E ground piers run on to the mid band; their drawn capital and cornice sit 2.251448
+      // higher (+7.8737–8.575367, LINE D90722 against the EW cornice top +6.323919).
+      lowerPiers(f, [[3.265012, 3.935012]], 'Rear D/E', 0, RG.lift);
+      // E03 ground entablature, as EW draws it (LINEs D90581, D9674E–D96751, D9681E, D968AB–D968AD), from
+      // the D/E pier face to the corner pier axis; the long dentils are centred on u ±(4.08245 + k·0.1326).
+      for (const e of [-1, 1]) {
+        const phase = e * -.02815, [a, b] = e > 0 ? [3.935012, 10.574012] : [-10.574012, -3.935012];
+        for (const q of drawnEntablature(a - phase, b - phase, -.06)) add(`Rear entablature · E03 ${q.name}`, q.kind === 'W' ? W : S, q.geometry, f.at(phase, 0, 0, q.matrix), q.kind === 'C' ? EW : EWD);
+      }
+      // E03 mid band between the D/E piers: the same entablature raised by the D/E lift (dentils
+      // +7.6737–7.8737 centred on u 0, Greek key +8.0137–8.2637, cornice to +8.575367).
+      for (const q of drawnEntablature(-3.265012, 3.265012, -.06)) add(`Rear mid band · E03 ${q.name}`, q.kind === 'W' ? W : S, q.geometry, f.at(0, RG.lift, 0, q.matrix), q.kind === 'C' ? EW : EWD);
       // Gable wall raised to the CAD silhouette under the rakes (the old end wall stops lower).
       const [[l0, l1], [h0, h1]] = RG.rakes;
       f.slab('Rear gable wall · CAD silhouette', W, f.poly([[-l0[0], 7.0], [l0[0], 7.0], [l0[0], l0[1]], [l1[0], l1[1]], [h0[0], h0[1]], [h1[0], h1[1]], [-h1[0], h1[1]], [-h0[0], h0[1]], [-l1[0], l1[1]], [-l0[0], l0[1]]]), -.44, 0);
-      for (const e of [-1, 1]) for (const P of [RG.corner, RG.cg, RG.de]) f.pier({ ...P, u: e > 0 ? P.u : [-P.u[1], -P.u[0]] }, .38, P === RG.de ? 'wingCapInner' : 'wingCapOuter');
-      // The D/E piers carry on above the mid band: a second fluted stage to the upper capital.
+      for (const e of [-1, 1]) for (const P of [RG.corner, RG.cg, RG.de]) f.pier({ ...P, u: e > 0 ? P.u : [-P.u[1], -P.u[0]] }, .38, 'wingCapOuter');
       for (const e of [-1, 1]) {
-        const C = RG.crest, [c0, c1] = e > 0 ? C.u : [-C.u[1], -C.u[0]];
-        f.blk('Rear gable porch-end parapet', S, [c0, c1], C.band, [0, .32]);
-        add('Rear gable porch-end frieze', S, meanderGeo(c1 - c0, .18), f.at(c0, C.band[0] + .03, .32), CARVED);
-        for (let u = c0 + .25; u < c1 - .1; u += .3) add('Rear gable porch-end crest', S, fleur(C.top - C.band[1]), f.at(u, C.band[1], .16), CARVED);
+        const C = RG.crest, [c0, c1] = e > 0 ? C.u : [-C.u[1], -C.u[0]], m = SC(e, 1, 1);
+        // E03 porch-end cresting (LINEs D90C8E–D90C92): plain band, frieze of roundels and pointed
+        // ovals, fillet, then the traced scroll-and-palmette cresting standing on it to +7.613.
+        f.blk('Rear gable porch-end parapet', S, [c0, c1], [C.band[0], 6.935776], [0, .30], EWD);
+        f.blk('Rear gable porch-end parapet', S, [c0, c1], [6.935776, 7.015776], [0, .27], EWD);
+        f.blk('Rear gable porch-end parapet', S, [c0, c1], [7.015776, C.band[1]], [0, .32], EWD);
+        add('Rear gable porch-end cresting · E03', S, e03('rearPorchCrest', .009), f.at(0, 0, .25, m), E03C);
+        // Scallops and finials on both rakes (crest=false drops the shared fleur crest).
+        add('Rear gable rake cresting · E03', S, e03('rearRakeCrestLow', .012), f.at(0, 0, .21, m), E03C);
+        add('Rear gable rake cresting · E03', S, e03('rearRakeCrestUp', .012), f.at(0, 0, .21, m), E03C);
+        // Quarter fan on the wall beside the D/E pier, over the ground entablature (E03 ARCs D913BB–D913C9):
+        // a raised quarter disc to the outer ring r 1.2317 (relief DERIVED) carrying the traced fan.
+        const fan = new T.Shape(); fan.moveTo(0, 0); fan.absarc(0, 0, 1.2317, 0, Math.PI / 2, false); fan.lineTo(0, 0);
+        add('Rear gable lunette relief', W, new T.ExtrudeGeometry(fan, { depth: .03, bevelEnabled: false, curveSegments: 24 }), f.at(e * 3.935012, 6.323919, 0, SC(e, 1, 1)), EWD);
+        add('Rear gable lunette · E03', S, e03('rearLunette', .012, true), f.at(0, 0, .042, m), E03C);
+        add('Rear centre-arch spandrel leaf · E03', S, e03('rearArchLeaf', .012, true), f.at(0, 0, .012, m), E03C);
+        add('Rear bay corner leaf · E03', S, e03('rearBayLeaves', .01), f.at(0, 0, .012, m), E03C);
+        // E03 centre arch (ARCs D917ED–D917F3 about u 0, +4.6642): stepped archivolt between the drawn
+        // radii, the intrados carried to the floor as a reveal strip (LINE at u 1.6875), and a coupled
+        // pair of columns on one impost (u 1.7925–2.5556, +4.5517–4.6642). The front column axis is
+        // u 2.2572, the second is drawn 0.1661 nearer the arch; E03 is an elevation, so setting the
+        // second one back is a CONCEPT reading. Plinth +0–0.225 (half 0.2863), base mouldings to
+        // +0.6975, shaft r 0.145 to +3.8767, necking to +3.99, traced capital to the abacus +4.4842–4.5517.
+        // Steps and projections are DERIVED.
+        const AC = 4.664203;
+        f.blk('Rear centre-arch reveal', S, e > 0 ? [1.6875, 1.7925] : [-1.7925, -1.6875], [0, 4.5517], [0, .1], EWD);
+        f.blk('Rear centre-arch impost', S, e > 0 ? [1.7925, 2.5556] : [-2.5556, -1.7925], [4.5517, 4.664203], [0, .7], EWD);
+        for (const [c, wc] of [[2.0911, .16], [2.2572, .42]]) {
+          const u = e * c;
+          f.blk('Rear centre-arch column plinth', S, [u - .2863, u + .2863], [0, .225], [wc - .2863, wc + .2863], EWD);
+          add('Rear centre-arch column base', S, K.turned([[.26, 0], [.26, .06], [.2, .1], [.165, .2], [.18, .3], [.2, .35], [.2019, .405], [.2019, .4725], [.145, .4725]], 20), f.at(u, .225, wc), EWD);
+          add('Rear centre-arch column shaft', W, new T.CylinderGeometry(.145, .145, 3.8767 - .6975, 20), f.at(u, (.6975 + 3.8767) / 2, wc), EWD);
+          add('Rear centre-arch column necking', S, new T.CylinderGeometry(.19, .17, .1133, 20), f.at(u, 3.9334, wc), EWD);
+          add('Rear centre-arch column bell', S, new T.CylinderGeometry(.25, .15, 4.4842 - 3.99, 20), f.at(u, (3.99 + 4.4842) / 2, wc), EWD);
+          f.blk('Rear centre-arch column abacus', S, [u - .2951, u + .2951], [4.4842, 4.5517], [wc - .2951, wc + .2951], EWD);
+        }
+        add('Rear centre-arch capitals · E03', S, e03('rearArchCapital', .01), f.at(0, 0, .42 + .26, m), E03C);
+        if (e > 0) for (const [r0, r1, w] of [[1.6875, 1.9355, .1], [1.9355, 2.1115, .14], [2.1115, 2.1465, .18], [2.1465, 2.3325, .12], [2.3325, 2.3675, .16], [2.3675, 2.4375, .2]]) {
+          const ring = new T.Shape(); ring.absarc(0, AC, r1, 0, Math.PI, false); ring.absarc(0, AC, r0, Math.PI, 0, true);
+          f.slab('Rear centre-arch archivolt · E03', S, ring, 0, w, EWD, 48);
+        }
       }
-      f.blk('Rear gable mid band', S, [-RG.de.u[0], RG.de.u[0]], RG.mid, [0, .36]);
-      add('Rear gable mid Greek-key frieze', S, meanderGeo(2 * RG.de.u[0], .2), f.at(-RG.de.u[0], RG.mid[0] + .45, .36), CARVED);
-      for (let u = -RG.de.u[0] + .06; u < RG.de.u[0]; u += .13) f.blk('Rear gable mid dentil', S, [u, u + .06], [RG.mid[0], RG.mid[0] + .15], [.02, .3]);
-      f.rake(RG.rakes[0], .737353, .42, true, RG.rakePolygons[0]);
-      f.rake(RG.rakes[1], .59, .42, true, RG.rakePolygons[1]);
+      f.rake(RG.rakes[0], .737353, .42, false, RG.rakePolygons[0]);
+      f.rake(RG.rakes[1], .59, .42, false, RG.rakePolygons[1]);
       const rh = RG.rakes[1][1][0];
       f.slab('Rear gable top band', S, f.poly([[-rh, RG.band[0]], [rh, RG.band[0]], [RG.bandHalf, RG.band[1]], [-RG.bandHalf, RG.band[1]]]), 0, .42);
       f.rose(RG.rose, RG.roseRings);
