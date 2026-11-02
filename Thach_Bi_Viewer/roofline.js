@@ -61,7 +61,9 @@
     exterior.updateMatrixWorld(true);
     const K = window.CHURCH_CARVING.create(T);
     const { TR, RY, RZ, SC, place, merge } = K;
-    const { fleur, pilasterCapital, meanderGeo } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const { fleur, pilasterCapital, meanderGeo, pinnacleCrown } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    // Owner, 2 Nov 2026: every pier pinnacle takes the shared E01B crown, scaled uniformly to its envelope.
+    const crown = pinnacleCrown(), crownScale = h => h / crown.boundingBox.max.y;
     const A = data.longitudinal;
 
     // The bundle's roof planes used to run past the new gable face planes:
@@ -170,7 +172,7 @@
         });
       };
       const profilePoints = profile => profile.flatMap(arcPoints);
-      // Pier: fluted shaft, foliate capital band, cornice cap, pedestal, pinnacle with fleur-de-lis.
+      // Pier: fluted shaft, foliate capital band, cornice cap, pedestal, pinnacle crown.
       const pier = (P, d = .38) => {
         const [u0, u1] = P.u, um = (u0 + u1) / 2, half = (u1 - u0) / 2;
         if (P.base) blk('Gable pier base below upper shaft', W, [u0, u1], P.base, [0, d]);
@@ -184,9 +186,7 @@
         pinnacle(um, P.pedestal[1], P.top, Math.min(.36, u1 - u0 - .12), d / 2);
       };
       const pinnacle = (u, v0, v1, w, wc) => {
-        const h = v1 - v0, fl = Math.min(.42, h * .25);
-        add('Gable pinnacle', S, fitHeight(K.pinnacle({ w, h: h - fl }), h - fl), at(u, v0, wc), CARVED);
-        add('Gable pinnacle fleur-de-lis', S, fitHeight(fleur(fl), fl), at(u, v1 - fl, wc), CARVED);
+        add('Gable pinnacle crown', S, crown, at(u, v0, wc, SC(crownScale(v1 - v0))), CARVED);
         stats.pinnacles++;
       };
       // Raking cornice between two points (u0 < u1 in |u|), mirrored to both sides: a band with a
@@ -290,8 +290,7 @@
           const x = A[keys[i]], P = PP.pedestal;
           blk('Porch parapet pedestal', W, [x - P, x + P], PP.y, zr(P));
           blk('Porch parapet pedestal cap', S, [x - P - .04, x + P + .04], [PP.y[1] - .07, PP.y[1]], zr(P + .04));
-          add('Porch parapet pinnacle', S, fitHeight(K.pinnacle({ w: .26, h: PP.pinnacle - .3 }), PP.pinnacle - .3), TR(x, PP.y[1], zc), CARVED);
-          add('Porch parapet pinnacle fleur-de-lis', S, fitHeight(fleur(.3), .3), place(RY(s < 0 ? Math.PI : 0), TR(x, PP.y[1] + PP.pinnacle - .3, zc)), CARVED);
+          add('Porch parapet pinnacle crown', S, crown, place(SC(crownScale(PP.pinnacle)), RY(s < 0 ? Math.PI : 0), TR(x, PP.y[1], zc)), CARVED);
           stats.pinnacles++;
           if (i === keys.length - 1) continue;
           const x0 = x + P, x1 = A[keys[i + 1]] - P;

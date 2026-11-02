@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check the permitted E01B niche-crest profile data against the local source DXF.
+"""Check the permitted E01B niche-crest and pier-capital profile data against the local source DXF.
 
 Coordinates are a software transcription, not a construction tolerance. The DWG and
 DXF stay local under publication hold H1; only these permitted outlines are committed.
@@ -25,7 +25,8 @@ def expected(e, zc):
     return ['L', Z(e.dxf.start.x) - zc, Y(e.dxf.start.y), Z(e.dxf.end.x) - zc, Y(e.dxf.end.y)]
 worst, counts, worst_b = 0.0, {}, 0.0
 # H side crest at Z 5.35; the B crest (C48EEA onward) is the same outline translated to Z -5.35.
-for name, zc, offset in [('side', 5.35, 0), ('side', -5.35, 0xC48EEA - 0xC48E1C), ('central', 0.0, 0)]:
+# pierCapital: the B aedicule pier capital about Z -1.662.
+for name, zc, offset in [('side', 5.35, 0), ('side', -5.35, 0xC48EEA - 0xC48E1C), ('central', 0.0, 0), ('pierCapital', -1.662, 0)]:
     for row in profile[name]:
         e = doc.entitydb[format(int(row[0], 16) + offset, 'X')]
         exp = expected(e, zc)
@@ -36,6 +37,6 @@ for name, zc, offset in [('side', 5.35, 0), ('side', -5.35, 0xC48EEA - 0xC48E1C)
             else:
                 worst = max(worst, abs(a - b)); assert abs(a - b) < 1e-6, (name, zc, row[0], a, b)
         counts[f'{name}@{zc}'] = counts.get(f'{name}@{zc}', 0) + 1
-print(json.dumps({'status': 'passed', 'source': 'E01B niche crests', 'entities': counts,
+print(json.dumps({'status': 'passed', 'source': 'E01B niche crests and aedicule pier capital', 'entities': counts,
                   'largest_coordinate_or_angle_difference': worst, 'largest_B_copy_difference': worst_b,
                   'limits': 'DXF transcription only; mm interpretation, relief and engineering remain held.'}))

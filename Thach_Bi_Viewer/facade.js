@@ -15,7 +15,7 @@
   // World axes: X from axis 1 toward the sanctuary (the street side is smaller X), Y up from the
   // nave floor, Z from the D/E midpoint, positive toward H. The facade is symmetric about Z 0.
   const spec = {
-    revision: '2026-11-02-cad-facade-entablature-4',
+    revision: '2026-11-02-cad-facade-aedicule-5',
     cut: 8.45, // bundle meshes wholly above this level are superseded
     // Ground-storey arch spandrels, owner 2 Nov 2026: E01B draws the tower T12 leaf (75 entities) at full
     // size over the central portal and both side-bay arches; the bundle's flat sprays are replaced.
@@ -174,13 +174,14 @@
 
     // Shared exterior carving geometry; placements and materials remain local.
     const { fleur, pilasterCapital, meanderGeo } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
-    const tallFleur = fleur(0.85), smallFleur = fleur(0.42), crownFleur = fleur(0.58);
+    const tallFleur = fleur(0.85), smallFleur = fleur(0.42);
     // ---- Niche crests: E01B outlines over the side and central aedicules (owner permission
     // 2 Nov 2026), drawn with the T12 contour tube; relief CONCEPT. They replace the procedural
     // crown and arch leaf cresting.
     const crestStroke = window.CHURCH_TOWERS.spec, crestGeo = {};
     for (const k of ['side', 'central'])
       crestGeo[k] = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K).towerSpandrel(window.CHURCH_FACADE_CREST_PROFILE[k], crestStroke.leafStroke, crestStroke.leafSagitta);
+    const capitalGeo = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K).towerSpandrel(window.CHURCH_FACADE_CREST_PROFILE.pierCapital, crestStroke.leafStroke, crestStroke.leafSagitta);
     const nicheCrest = (g, face, zc) => add('Facade niche crest · E01B', S, g, facing(face - crestStroke.leafStroke - .002, 0, zc),
       'E01B TRACED NICHE CREST / RELIEF CONCEPT');
     // ---- Ground arch spandrels: the tower T12 leaf, at the E01B positions ----
@@ -220,6 +221,21 @@
     };
     const pyramid = (name, x, zc, half, [y0, y1], depthHalf = half) =>
       add(name, S, new T.ConeGeometry(Math.SQRT2, 1, 4, 1), place(RY(Math.PI / 4), SC(depthHalf, y1 - y0, half), TR(x, (y0 + y1) / 2, zc)));
+    // Fluted field as E01B draws it on the upper piers: a raised panel with three round-ended flutes
+    // (r 25 mm, 110 mm apart) cut through it, so the grooves read by shadow, not as painted stripes.
+    const flutedPanel = (name, zc, half, [y0, y1], [f0, f1], xFront, depth = .03) => {
+      const s = rect(zc - half, zc + half, y0, y1), r = .025;
+      for (const k of [-1, 0, 1]) {
+        const c = zc + k * .11, h = new T.Path();
+        h.moveTo(c + r, f0 + r); h.lineTo(c + r, f1 - r); h.absarc(c, f1 - r, r, 0, Math.PI, false);
+        h.lineTo(c - r, f0 + r); h.absarc(c, f0 + r, r, Math.PI, Math.PI * 2, false); s.holes.push(h);
+        block(name + ' bed', S, [xFront - .002, xFront], [f0, f1], [c - r, c + r]);
+      }
+      slab(name, W, s, [xFront - depth, xFront], undefined, 8);
+    };
+    // Shared pinnacle crown (E01B aedicule piers), its gablet base on the pinnacle cap.
+    const crownGeo = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K).pinnacleCrown();
+    const crown = (name, x, zc, y, depth = 1) => add(name, S, crownGeo, facing(x, y, zc, SC(1, 1, depth)), CARVED);
 
     // ===================================================================================
     // 1. Central cornice over the main door (+8.42 to +9.115) and pier capitals
@@ -440,17 +456,13 @@
       block(`Pier pinnacle pedestal · ${label}`, S, [x0, x1], [E[1], 15.94], [zc - .56, zc + .56]);
       tier([15.94, 16.05], .47);
       tier([16.05, 17.17], .40, `Pier pinnacle shaft · ${label}`, W);
-      if (label === 'front') flutes('Pier pinnacle flute', zc, .12, [16.25, 17.0], xm - .40 * k);
+      if (label === 'front') flutedPanel('Pier pinnacle fluted panel', zc, .235, [16.05, 17.168], [16.12, 17.068], xm - .40 * k);
       tier([17.17, 17.23], .43); tier([17.23, 17.37], .40); tier([17.37, 17.43], .55); tier([17.43, 17.54], .58);
       pyramid('Pier pinnacle gablet', xm, zc, .36, [17.54, 17.80], .36 * k);
       tier([17.54, 18.23], .24, `Pier pinnacle upper shaft · ${label}`, W);
       tier([18.23, 18.27], .33); tier([18.27, 18.33], .30); tier([18.33, 18.62], .24, `Pier pinnacle upper shaft · ${label}`, W);
       tier([18.62, 18.66], .30); tier([18.66, 18.78], .36); tier([18.78, 18.85], .42);
-      pyramid('Pier pinnacle gablet', xm, zc, .30, [18.85, 19.10], .30 * k);
-      for (const e of [-1, 1]) add('Pier pinnacle colonnette', S, new T.CylinderGeometry(.035, .04, .52, 10), TR(xm, 19.36, zc + e * .13));
-      tier([19.62, 19.67], .20);
-      add('Pier pinnacle fleur-de-lis finial', S, crownFleur, facing(xm, 19.67, zc), CARVED);
-      add('Pier pinnacle finial rod', mat.metal, new T.CylinderGeometry(.015, .015, .3, 6), TR(xm, 20.40, zc));
+      crown('Pier pinnacle crown', xm, zc, 18.85, k);
     };
     both(s => {
       pinnacle(s * P.z, spec.pinnacle.front, 'front');
@@ -515,16 +527,16 @@
         add('Central aedicule pier torus moulding', S, new T.CylinderGeometry(.06, .06, hw * 2 + .14, 12), place(RX(Math.PI / 2), TR(x0 - .05, 16.38, zc)));
         block('Central aedicule pier torus moulding', S, [x0 - .08, 4.75], [16.30, 16.45], [zc - hw - .07, zc + hw + .07]);
         block('Central aedicule pier shaft', W, [x0, 4.713], [16.45, 20.35], [zc - hw, zc + hw]);
-        flutes('Central aedicule pier flute', zc, .1, [16.6, 20.15], x0);
-        capital('Central aedicule pier capital', zc, hw + .04, [20.35, 20.65], x0 - .04, .5);
+        flutedPanel('Central aedicule pier fluted panel', zc, .2225, [16.50, 20.273], [16.60, 20.173], x0);
+        // E01B capital traced (C49F71–C4A15A) on a bell and abacus; relief depth is a CONCEPT.
+        block('Central aedicule pier capital', S, [x0, 4.713], [20.35, 20.62], [zc - .36, zc + .36]);
+        block('Central aedicule pier capital abacus', S, [x0 - .06, 4.75], [20.62, 20.65], [zc - .42, zc + .42]);
+        add('Central aedicule pier capital foliage · E01B', S, capitalGeo, facing(x0 - crestStroke.leafStroke - .002, -.04, zc),
+          'E01B TRACED CAPITAL / RELIEF CONCEPT');
         const [b0, b1] = [zc - s * .58, zc + s * .50].sort((m, n) => m - n);
         block('Central aedicule pier entablature block', S, [x0 - .1, 4.85], [20.65, 21.05], [b0, b1]);
         block('Central aedicule pier entablature cap', S, [x0 - .14, 4.89], [20.97, 21.05], [b0 - .04, b1 + .04]);
-        pyramid('Central aedicule pier gablet', 4.25, zc, .40, [21.05, 21.25], .40);
-        for (const e of [-1, 1]) add('Central aedicule pier colonnette', S, new T.CylinderGeometry(.035, .04, .6, 10), TR(4.25, 21.55, zc + e * .15));
-        block('Central aedicule pier pinnacle cap', S, [4.03, 4.47], [21.85, 21.90], [zc - .22, zc + .22]);
-        pyramid('Central aedicule pier gablet', 4.25, zc, .20, [21.90, 22.10], .20);
-        add('Central aedicule pier fleur-de-lis finial', S, crownFleur, facing(4.25, 22.10, zc, SC(1.1)), CARVED);
+        crown('Central aedicule pier crown', 4.25, zc, 21.05);
         // Concave spur from the pier pinnacle up to the aedicule pier (arc centre ±3.404, +18.866, r 1.317–1.417).
         const spur = new T.Shape(), cz = s * 3.404, cy = 18.866, rr = 1.367;
         spur.moveTo(s * 2.55, E[1]);

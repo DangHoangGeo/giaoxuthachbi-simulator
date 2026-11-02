@@ -1,7 +1,7 @@
 /* Exterior ornament generators, metres. See docs/exterior-23102026/decoration-inventory.md.
    Visual proxies only; source outlines and engineering holds remain in the owning records. */
 (() => {
-  // Reusable illustrative exterior ornament: fleur-de-lis finial, flat foliate pilaster capital,
+  // Reusable illustrative exterior ornament: fleur-de-lis finial, pinnacle crown, flat foliate pilaster capital,
   // Greek-key frieze and a leaf spray, each built facing +Z with its base at the origin.
   function create(T, K) {
     const { TR, RX, RZ, SC, place, merge } = K;
@@ -78,7 +78,32 @@
       g.setIndex(indices); g.computeVertexNormals();
       return g;
     };
-    return { fleur, pilasterCapital, meanderGeo, spray, towerSpandrel };
+    // Pinnacle crown as E01B draws it on the central aedicule piers (C4A086–C4A092, C49F98–C4A054):
+    // a gablet, a square core with a colonnette on each corner under a small fleur, and a tapered
+    // spire under the big fleur. Base centre at the origin, 1.68 m high at scale 1;
+    // owner, 2 Nov 2026: the same crown tops every pier pinnacle around the church.
+    let crownCache = null;
+    const pinnacleCrown = () => {
+      if (crownCache) return crownCache;
+      const box = (h, [y0, y1], x = 0, z = 0) => [new T.BoxGeometry(2 * h, y1 - y0, 2 * h), TR(x, (y0 + y1) / 2, z)];
+      const pyramid = (h, [y0, y1]) => [new T.ConeGeometry(Math.SQRT2, 1, 4, 1), place(K.RY(Math.PI / 4), SC(h, y1 - y0, h), TR(0, (y0 + y1) / 2, 0))];
+      const small = fleur(.25), big = fleur(.43), parts = [pyramid(.289, [0, .213]), box(.12, [.1, .743])];
+      for (const ex of [-1, 1]) for (const ez of [-1, 1]) {
+        const x = ex * .1495, z = ez * .1495;
+        parts.push(box(.0455, [0, .213], ex * .2435, ez * .2435),
+          [new T.CylinderGeometry(.0485, .0485, .489, 10), TR(x, .3115, z)], box(.0615, [.556, .582], x, z),
+          [new T.CylinderGeometry(.0485, .0485, .064, 10), TR(x, .614, z)], [new T.CylinderGeometry(.09, .055, .07, 10), TR(x, .681, z)],
+          box(.103, [.716, .743], x, z), [small, TR(x, .743, z)]);
+      }
+      // Owner, 2 Nov 2026: the top reads as one piece. The drawn spire slope (half 0.112 at +0.918 to
+      // 0.052 at +1.217) runs down to the core top and covers the inner gablet; a turned neck carries
+      // the big fleur off the cap.
+      parts.push([new T.CylinderGeometry(.052 * Math.SQRT2, .147 * Math.SQRT2, .474, 4, 1), place(K.RY(Math.PI / 4), TR(0, .98, 0))],
+        box(.068, [1.217, 1.235]), box(.06, [1.235, 1.27]), [new T.CylinderGeometry(.03, .06, .13, 12), TR(0, 1.335, 0)], [big, TR(0, 1.27, 0)]);
+      crownCache = merge(parts); crownCache.computeBoundingBox();
+      return crownCache;
+    };
+    return { fleur, pilasterCapital, meanderGeo, spray, towerSpandrel, pinnacleCrown };
   }
 
   window.CHURCH_EXTERIOR_ORNAMENT = { create };

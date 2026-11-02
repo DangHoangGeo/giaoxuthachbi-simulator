@@ -603,7 +603,7 @@
     const stats = { piers: 0, blindArches: 0, upperFronts: 0, removedBundleMeshes: remove.length };
 
     // ---- Shared carving (also used by roofline.js) ----
-    const { fleur, pilasterCapital, meanderGeo, towerSpandrel } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const { fleur, pilasterCapital, meanderGeo, towerSpandrel, pinnacleCrown } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     const leafProfiles = window.CHURCH_TOWER_SPANDREL_PROFILE;
     const towerLeaves = { outer: towerSpandrel(leafProfiles.outer, spec.leafStroke, spec.leafSagitta), inner: towerSpandrel(leafProfiles.inner, spec.leafStroke, spec.leafSagitta) };
     // Each tower face has its own frame: u along the face, v up, w out of the face.
@@ -1113,16 +1113,12 @@
       cross.absarc(5 * h, lo, h, 0, Math.PI, true);
       cross.lineTo(h, lo); cross.lineTo(h, c0); cross.lineTo(-h, c0); cross.closePath();
       add('Tower cross', crossMaterial, new T.ExtrudeGeometry(cross, { depth: .1, bevelEnabled: false, curveSegments: 24 }), place(RY(-Math.PI / 2), TR(xc + .05, 0, zc)), 'TRACED CAD CROSS OUTLINE / SCHEMATIC DEPTH');
-      // The existing carving stays a proxy; native base/apex and corner offsets replace old bounds.
-      const BP=spec.balcony,pin=K.pinnacle({w:.3,h:.84}),fl=fleur(.32);
-      pin.computeBoundingBox();fl.computeBoundingBox();
-      const py=-pin.boundingBox.min.y,fy=pin.boundingBox.max.y+py-fl.boundingBox.min.y;
-      const total=fy+fl.boundingBox.max.y,base=BP.front.rail[0].y,sy=(BP.finialTop-base)/total;
+      // Owner, 2 Nov 2026: the corner pinnacles take the shared E01B pinnacle crown, scaled uniformly
+      // between the native base and apex; corner plan positions stay DERIVED.
+      const BP=spec.balcony,crown=pinnacleCrown(),base=BP.front.rail[0].y,sc=(BP.finialTop-base)/crown.boundingBox.max.y;
       for(const ex of [-1,1])for(const ez of [-1,1]){
         const px=BP.side.centre+ex*BP.finialOffset,pz=s*(BP.front.centre+ez*BP.finialOffset);
-        const norm=place(SC(1,sy,1),TR(px,base,pz));
-        add('Tower corner pinnacle',S,pin,norm.clone().multiply(TR(0,py,0)),CARVED+' / NATIVE BASE/APEX; CORNER PLAN POSITION DERIVED');
-        add('Tower corner pinnacle fleur-de-lis',S,fl,norm.clone().multiply(place(RY(Math.atan2(ex,s*ez)),TR(0,fy,0))),CARVED+' / NATIVE APEX; CARVING PROXY');
+        add('Tower corner pinnacle crown',S,crown,place(SC(sc),RY(Math.atan2(ex,s*ez)),TR(px,base,pz)),CARVED+' / NATIVE BASE/APEX; CORNER PLAN POSITION DERIVED');
       }
     });
 
