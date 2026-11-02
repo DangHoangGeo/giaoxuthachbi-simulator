@@ -43,8 +43,10 @@
     };
     // T12 traces from the two independently drawn E01B H-front corners.
     // Tubes visualize inked contours only: stroke radius and relief are CONCEPT.
-    const towerSpandrel = (profile, strokeRadius = .008, sagitta = .0002) => {
-      const vertices = [], indices = [], radial = 6;
+    // radial and a sagitta of 3 mm or more (arc steps up to 30°) give a lighter tube for small, often
+    // repeated carvings (pier and window capitals, rosettes); the default stays at 6 sides.
+    const towerSpandrel = (profile, strokeRadius = .008, sagitta = .0002, radial = 6) => {
+      const vertices = [], indices = [];
       const tube = (points, normals) => {
         const base = vertices.length / 3;
         for (let i = 0; i < points.length; i++) for (let j = 0; j < radial; j++) {
@@ -60,7 +62,7 @@
         const points = [], normals = [];
         if (row[1] === 'A') {
           const [, , u, v, r, start, span, handedness] = row;
-          const steps = Math.max(2, Math.ceil((span * Math.PI / 180) / Math.min(sagitta > .0002 ? Math.PI / 9 : Math.PI / 18, 2 * Math.acos(Math.max(-1, 1 - sagitta / r)))));
+          const steps = Math.max(2, Math.ceil((span * Math.PI / 180) / Math.min(sagitta >= .003 ? Math.PI / 6 : sagitta > .0002 ? Math.PI / 9 : Math.PI / 18, 2 * Math.acos(Math.max(-1, 1 - sagitta / r)))));
           for (let i = 0; i <= steps; i++) {
             const a = (start + span * i / steps) * Math.PI / 180;
             points.push([u + handedness * r * Math.cos(a), v + r * Math.sin(a)]);
@@ -118,7 +120,50 @@
       crownCache = merge(parts); crownCache.computeBoundingBox();
       return crownCache;
     };
-    return { fleur, pilasterCapital, meanderGeo, spray, towerSpandrel, pinnacleCrown, flutedField };
+    // Ground-storey pier of the church body as EW and E02 draw it (EW corner pier about u 3.925,
+    // levels from the ±0 floor): plinth and mouldings, pedestal die with a rosette panel, base, fluted
+    // shaft (field ±0.225), traced Corinthian capital and cornice bands. Rows are [y0, y1, half, kind]
+    // from EW horizontal lines; each band projects (half − 0.335) beyond the shaft face, as square
+    // mouldings. Built facing +Z: x across the pier, y = world level, z out from `back` to `face`
+    // (shaft face). `wrap` puts the faces at ±face for a free-standing column. Depths are DERIVED.
+    const PIER_BANDS = [[0, .15, .559, 'S'], [.15, .2, .507, 'S'], [.2, .29, .44, 'S'], [.29, .34, .415, 'S'], [.34, .86, .39, 'W'],
+      [.86, .91, .415, 'S'], [.91, .99, .455, 'S'], [.99, 1.14, .375, 'S'], [1.14, 1.39, .335, 'W'], [1.39, 1.43, .36, 'S'],
+      [1.43, 1.49, .39, 'S'], [1.49, 1.53, .36, 'S'], [5.622, 5.662, .36, 'S'], [5.662, 5.722, .39, 'S'], [5.722, 5.762, .36, 'S'],
+      [6.012, 6.06, .385, 'S'], [6.06, 6.18, .435, 'S'], [6.18, 6.228, .485, 'S'], [6.228, 6.3239, .537, 'S']];
+    const traced = (key, stroke = .008, light = true) => towerSpandrel(window.CHURCH_FACADE_CREST_PROFILE[key], stroke, light ? .003 : .001, light ? 3 : 6);
+    const drawnPier = ({ bottom = 0, back = 0, face = .18, wrap = false }) => {
+      const parts = [], boxAt = (kind, name, h, [y0, y1], z0, z1) => parts.push({ kind, name, geometry: new T.BoxGeometry(2 * h, y1 - y0, z1 - z0), matrix: TR(0, (y0 + y1) / 2, (z0 + z1) / 2) });
+      const span = f => wrap ? [-f, f] : [back, f];
+      for (const [y0, y1, h, kind] of PIER_BANDS) boxAt(kind, kind === 'W' ? 'die' : 'moulding', h, [y0 === 0 ? Math.min(0, bottom) : y0, y1], ...span(face + h - .335));
+      boxAt('W', 'shaft', .335, [1.53, 5.622], ...span(face));
+      boxAt('S', 'capital bell', .3, [5.762, 6.012], ...span(face));
+      const field = flutedField({ half: .225, y: [1.53, 5.622], flutes: [1.655, 5.497] });
+      const cap = traced('pierCapitalEW', .01), rosette = traced('pierRosette', .006), dieFace = face + .055;
+      for (const side of wrap ? [1, -1] : [1]) {
+        const m = z => side > 0 ? TR(0, 0, z) : place(K.RY(Math.PI), TR(0, 0, -z));
+        parts.push({ kind: 'W', name: 'fluted field', geometry: field.field, matrix: m(face) }, { kind: 'S', name: 'fluted field bed', geometry: field.bed, matrix: m(face) },
+          { kind: 'C', name: 'capital foliage', geometry: cap, matrix: m(face + .012) }, { kind: 'C', name: 'pedestal rosette', geometry: rosette, matrix: m(dieFace + .02) });
+        // Pedestal panel (EW about u 3.78–4.07, centre +0.60): two square frames round the rosette.
+        for (const [hh, w] of [[.145, .022], [.115, .015]]) for (const [x0, x1, y0, y1] of [[-hh, hh, .6 + hh - w, .6 + hh], [-hh, hh, .6 - hh, .6 - hh + w], [-hh, -hh + w, .6 - hh, .6 + hh], [hh - w, hh, .6 - hh, .6 + hh]])
+          parts.push({ kind: 'S', name: 'pedestal panel', geometry: new T.BoxGeometry(x1 - x0, y1 - y0, .015), matrix: m(dieFace + .0075).multiply(TR((x0 + x1) / 2, (y0 + y1) / 2, 0)) });
+      }
+      return parts;
+    };
+    // Entablature over the ground storey as EW and E02 draw it (EW C… horizontals): dentils 66.3 mm on
+    // a 132.6 mm pitch from +5.422, three fillets, the Greek-key frieze +5.762–6.012, then the cornice
+    // to +6.3239. Built along x from u0 to u1 (dentils on whole multiples of the pitch), facing +Z from
+    // `back` to the projections below, measured from the wall face z 0; depths are DERIVED.
+    const drawnEntablature = (u0, u1, back = -.06) => {
+      const parts = [], bar = (name, kind, [y0, y1], z1, a = u0, b = u1) => parts.push({ kind, name, geometry: new T.BoxGeometry(b - a, y1 - y0, z1 - back), matrix: TR((a + b) / 2, (y0 + y1) / 2, (back + z1) / 2) });
+      bar('dentil backing', 'S', [5.422, 5.622], .06);
+      for (let k = Math.ceil((u0 + .0332) / .1326); k * .1326 + .0332 <= u1 + 1e-6; k++) bar('dentil', 'S', [5.422, 5.622], .16, k * .1326 - .0332, k * .1326 + .0332);
+      bar('fillet', 'S', [5.622, 5.662], .18); bar('fillet', 'S', [5.662, 5.722], .21); bar('fillet', 'S', [5.722, 5.762], .18);
+      bar('frieze', 'W', [5.762, 6.012], .1);
+      parts.push({ kind: 'C', name: 'Greek-key frieze', geometry: meanderGeo(u1 - u0, 6.012 - 5.762), matrix: TR(u0, 5.762, .1) });
+      bar('cornice', 'S', [6.012, 6.06], .18); bar('cornice', 'S', [6.06, 6.18], .28); bar('cornice', 'S', [6.18, 6.228], .33); bar('cornice', 'S', [6.228, 6.3239], .38);
+      return parts;
+    };
+    return { fleur, pilasterCapital, meanderGeo, spray, towerSpandrel, pinnacleCrown, flutedField, drawnPier, drawnEntablature, traced };
   }
 
   window.CHURCH_EXTERIOR_ORNAMENT = { create };

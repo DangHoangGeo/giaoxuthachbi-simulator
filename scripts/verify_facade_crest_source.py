@@ -37,6 +37,24 @@ for name, zc, offset in [('side', 5.35, 0), ('side', -5.35, 0xC48EEA - 0xC48E1C)
             else:
                 worst = max(worst, abs(a - b)); assert abs(a - b) < 1e-6, (name, zc, row[0], a, b)
         counts[f'{name}@{zc}'] = counts.get(f'{name}@{zc}', 0) + 1
-print(json.dumps({'status': 'passed', 'source': 'E01B niche crests and aedicule pier capital', 'entities': counts,
+# EW outside side-wing elevation (owner, 3 Nov 2026): u = x − 1543735.591446434, handedness +1.
+U = lambda x: (x - 1543735.591446434) / 1000
+V = lambda y: (y + 518026.8) / 1000  # EW floor datum
+def expected_ew(e, uc):
+    if e.dxftype() == 'ARC':
+        return ['A', U(e.dxf.center.x) - uc, V(e.dxf.center.y), e.dxf.radius / 1000, e.dxf.start_angle, (e.dxf.end_angle - e.dxf.start_angle) % 360, 1]
+    if e.dxftype() == 'CIRCLE':
+        return ['A', U(e.dxf.center.x) - uc, V(e.dxf.center.y), e.dxf.radius / 1000, 0, 360, 1]
+    return ['L', U(e.dxf.start.x) - uc, V(e.dxf.start.y), U(e.dxf.end.x) - uc, V(e.dxf.end.y)]
+EW_ORIGIN = {'pierCapitalEW': 3.925, 'pierRosette': 3.925, 'windowCapital': 3.199, 'windowRosette': 2.45, 'wingSpandrel': 0,
+             'wingVolute': 0, 'wingCapInner': 2.39, 'wingCapOuter': 3.925, 'wingRose': 0, 'wingCrest': 0, 'wingRays': 0}
+for name, uc in EW_ORIGIN.items():
+    for row in profile[name]:
+        exp = expected_ew(doc.entitydb[row[0]], uc)
+        assert row[1] == exp[0], (name, row[0])
+        for a, b in zip(row[2:], exp[1:]):
+            worst = max(worst, abs(a - b)); assert abs(a - b) < 1e-6, (name, row[0], a, b)
+        counts[f'EW {name}'] = counts.get(f'EW {name}', 0) + 1
+print(json.dumps({'status': 'passed', 'source': 'E01B niche crests and aedicule pier capital; EW wing decoration', 'entities': counts,
                   'largest_coordinate_or_angle_difference': worst, 'largest_B_copy_difference': worst_b,
                   'limits': 'DXF transcription only; mm interpretation, relief and engineering remain held.'}))

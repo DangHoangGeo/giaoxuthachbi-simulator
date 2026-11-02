@@ -416,7 +416,7 @@
       shape.lineTo(x-r1,spring);shape.absarc(x,spring,r1,Math.PI,0,true);shape.closePath();return shape;
     }
     function rebuildSideOpening(bay,profile,centres){
-      const wall=bay.children.find(o=>o.name==='Inner C/G wall with opening');
+      const wall=bay.children.find(o=>o.name==='Inner C/G wall with opening'||o.name==='Outer arcade wall with arched openings');
       if(!wall)return;
       const old=wall.geometry,parameters=old.parameters,depth=parameters.options.depth;
       old.computeBoundingBox();const b=old.boundingBox;
@@ -443,8 +443,9 @@
     }
     for(const bay of sideBays) {
       const inner=bay.name.startsWith('Inner wall '),door=inner&&/ (4–5|8–9)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
-      const profile=inner&&!door&&sideCAD?sideCAD.window:null;
-      if(profile)rebuildSideOpening(bay,profile,profile.centres);
+      // Owner, 3 Nov 2026: the wing-end windows follow EW too, at the drawn centres ±2.45 (were ±2.4).
+      const profile=(inner&&!door||wing)&&sideCAD?sideCAD.window:null,centres=wing?[-2.45,2.45]:profile?.centres;
+      if(profile)rebuildSideOpening(bay,profile,centres);
       // Joinery planes: the inner wall is 0.22 m thick (porch face at +0.11), the outer 0.30 m.
       paneZ=inner?0:.10;const jz=inner?.07:.13,hz=inner?.07:.10;
       if(door) {
@@ -462,7 +463,7 @@
         // Half-round glazed fanlight over a timber transom, like the doors;
         // the shutter pair below swings out with the doors.
         const spring=profile?.spring??3.101,radius=profile?.radius??.507,leafTop=profile?.leafTop??3.0;
-        for(const x of wing?[-2.4,2.4]:profile?profile.centres:inner?[-1.015,1.015]:[-1,1]) {
+        for(const x of wing?[-2.45,2.45]:profile?profile.centres:inner?[-1.015,1.015]:[-1,1]) {
           const body=new T.Shape();body.moveTo(x-.5,.85);body.lineTo(x+.5,.85);body.lineTo(x+.5,leafTop);body.lineTo(x-.5,leafTop);body.closePath();
           const clearPane=pane(body,bay,mat.glass,inner?'Inner window clear glass body':'Outer window clear glass body');clearPane.castShadow=false;
           const headBottom=profile?spring:3.0,headHeight=spring+radius-headBottom;

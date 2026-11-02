@@ -67,3 +67,13 @@ Theo yêu cầu tiếp tục đối chiếu mặt dưới, mô hình thay tám t
 `Thach_Bi_Viewer/roofline.js` giữ nhóm và tên bộ phận phục vụ phân lớp. Cung CAD được chia đoạn với sai số dây cung tối đa **0,5 mm trong mô hình**; đây là sai số hiển thị so với cung nguồn, không phải dung sai thi công. Đường tròn vòng hoa hồng được chia 96 đoạn; độ võng dây cung của vòng ngoài khoảng 0,43 mm. Thánh giá là hình đùn từ biên mặt đứng; bề dày 100 mm vẫn là giả định hiển thị.
 
 Đã kiểm cú pháp JS/Python và đọc lại chứng cứ CAD bằng trình kiểm nêu trên. Phần kiểm hình học thực tế, mô hình/công trường/mô phỏng/website và nhìn ngày–tối trên desktop được tổng hợp trong bản ghi tích hợp của lượt sửa ngoài nhà. Bản vẽ/ảnh chồng CAD giữ ở thư mục `exports/` cục bộ theo H1; không đưa bản vẽ của đơn vị thiết kế vào Git.
+
+## Trang trí hai cánh ngang theo EW · 3/11/2026
+
+Chủ đầu tư yêu cầu hai đầu cánh ngang "giống hệt trang trí thiết kế". Các đường nét chạm được vẽ lại từ mặt đứng ngoài EW (u = x_CAD − 1543735,591, v = cao độ thế giới) vào `facade-crest-profile.js` (11 bộ, 1.232 dòng cung/đoạn; `scripts/verify_facade_crest_source.py` đối chiếu từng dòng với DXF) và thể hiện bằng ống đường viền T12 (độ nổi CONCEPT).
+
+- **Tầng trệt:** cột góc theo `drawnPier()`; diềm EW (răng cưa, gờ, chữ Vạn, mũ) thay gờ mái bundle; hoa lá góc cạnh cột (`wingSpandrel`); cửa sổ dời về tâm vẽ ±2,45 (trước ±2,4), vòm theo bán kính E26 (realism.js), cột nhỏ hai bên có thân tròn r 0,065, trụ tựa, chân, đầu cột chạm (`windowCapital`), bàn đầu cột, gờ chân vòm; ô panô dưới cửa với hoa thị (`windowRosette`) thay lan can thấp và rãnh của bundle.
+- **Tầng hồi:** đầu cột chạm theo EW (trong/ngoài), mũ cột +0,312; cột trong có bệ +9,795–11,191 (thân có trán tam giác, các đai, tấm biển nhỏ, mũ); chân cột ngoài có trán tam giác giữa hai khối (+6,324–6,577); răng cưa dài/ngắn xen kẽ dưới dải đỉnh (0,387/0,221) và dưới các mái dốc (0,387/0,27); hoa văn ô hồng vẽ lại (`wingRose`).
+- **Khám đỉnh:** gờ chân và gờ đầu trụ theo EW; tháp nhỏ Gothic (thân có ô cửa nhọn, mái hiên, trán, chóp, vòng cổ, hoa huệ) thay chóp chung; công-xôn lá ô-rô (`wingVolute`) trên tấm nền có biên DERIVED thay thanh cuộn; hoa văn cuộn quanh quả cầu (`wingCrest`), chân quả cầu tiện theo EW, tia quanh thánh giá (`wingRays`).
+- Đầu hồi phía cung thánh (E03) dùng cùng các bộ phận nên cũng được cập nhật theo EW; E03 chưa được đối chiếu riêng từng chi tiết.
+- **Giấy phép:** yêu cầu ngày 3/11 được ghi nhận là chỉ đạo của chủ đầu tư; việc công bố các đường nét EW/E02 nằm trong **PUBLICATION HOLD H1** cho tới khi chủ đầu tư xác nhận phạm vi như đã làm với E01B.
