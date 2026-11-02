@@ -43,7 +43,7 @@ The overlay of the DWG linework on a straight-on render of the model matches wit
 
 ## Entrance on the axis-2 line and the front steps · 1 November 2026
 
-**2 November 2026 follow-up:** The broad forecourt stair now returns along both sides, and an H-side ramp footprint is shown as a partial concept. The proposed ramp reaches the forecourt from the lower courtyard but does not yet provide a continuous accessible route into the church; the inferred 160 mm risers and existing 230 mm entrance treads require accessibility review. See [entrance approach](exterior-23102026/entrance-approach.md).
+**2 November 2026 follow-up:** The broad forecourt stair now returns along both sides, and an H-side ramp footprint is shown as a partial concept. The owner subsequently requested a compact switchback ending at the tower rear and an outside handrail only; the concept reaches the forecourt from the lower courtyard but does not provide a continuous accessible route into the church; the inferred 160 mm risers and existing 230 mm entrance treads require accessibility review. See [entrance approach](exterior-23102026/entrance-approach.md).
 
 The owner's review of 1 November 2026: the main door belongs to the body of the church, on the axis-2 line, not between axes 1 and 2; and between the towers the pier bases stood clear of the steps below them. This also completes the parish priest's wish of 25 October 2026 (doors on the towers' rear pier line).
 

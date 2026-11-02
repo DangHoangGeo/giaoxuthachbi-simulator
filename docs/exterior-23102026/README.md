@@ -13,7 +13,7 @@ Nguồn DWG: SHA-256 `2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48
 
 Các phào ngang sẵn có ở đầu tầng tháp được giữ nguyên khi thay mặt cửa. Một lượt kiểm tra hệ thống phát hiện việc bỏ cả nhóm cửa cũ đã bỏ nhầm mép phào đỡ đèn chỏm; đã khôi phục chính hình học phào/matrix cũ, giữ vị trí đèn và kiểm lại giao với bề mặt. Không tạo gối lắp mới hoặc di chuyển thiết bị để che lỗi.
 
-**Lối vào, 2/11/2026:** Bậc sân có hồi hai bên và dốc H có đoạn kéo dài từ sân dưới đến sân trước là mô hình khái niệm; lối tiếp lên nền nhà và kiểm tra tiếp cận còn giữ chờ. Xem [hồ sơ lối vào](entrance-approach.md).
+**Lối vào, 2/11/2026:** Bậc sân có hồi hai bên và phương án dốc gấp khúc H kết thúc ở phía sau tháp với tay vịn ngoài theo yêu cầu; lối tiếp lên nền nhà và kiểm tra tiếp cận còn giữ chờ. Xem [hồ sơ lối vào](entrance-approach.md).
 
 ## Giữ chờ quan trọng
 
