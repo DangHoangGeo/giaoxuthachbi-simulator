@@ -295,9 +295,15 @@
         const inner = profilePoints(E.arch.inner), outer = profilePoints(E.arch.outer);
         const envelope = arcPoints(E.arch.envelope);
         const outline = [[-E.pier[1], E.base], [E.pier[1], E.base], [E.pier[1], E.pierTop], ...envelope, [-E.pier[1], E.pierTop]];
-        slab('Gable aedicule back wall', W, poly(outline), -.2, .12, 'CAD ARC ENVELOPE / SCHEMATIC BACKING DEPTH');
+        // Owner, 3 Nov 2026: the parts must read as one body. The aedicule mass runs to the full pier
+        // depth d, with the niche cut into it above a 0.1 m sill, and the arch moulding stands proud of
+        // that face; until then the mass stopped at 0.12 and the piers read as loose posts. DERIVED depth.
+        const body = poly(outline), hole = [[inner.at(-1)[0], E.base + .1], [inner[0][0], E.base + .1], ...inner];
+        body.holes.push(new T.Path((T.ShapeUtils.isClockWise(hole.map(([u, v]) => new T.Vector2(u, v))) ? hole : hole.slice().reverse()).map(([u, v]) => new T.Vector2(u, v))));
+        slab('Gable aedicule body', W, body, -.2, d, 'CAD ARC ENVELOPE / DERIVED DEPTH');
         const niche = poly([[inner.at(-1)[0], E.base], [inner[0][0], E.base], ...inner]);
         slab('Gable aedicule niche', D, niche, .12, .13);
+        const envTop = Math.max(...envelope.map(p => p[1]));
         blk('Gable aedicule pedestal', S, [-.42, .42], [E.base + .1, E.base + .55], [.13, .45]);
         // EW levels are given from the wing aedicule base +9.829529; dv moves them to E03's.
         const dv = E.base - 9.829528705;
@@ -322,17 +328,22 @@
           stats.pinnacles++;
           // Acanthus console from the base up the pier (EW, about |u| 1.05–2.05): a backing slab under
           // the traced outline. The backing silhouette follows the traced outer curve: DERIVED.
-          const sil = [[1.06, 9.83], [1.6, 9.84], [1.95, 9.9], [2.02, 9.98], [1.85, 10.05], [1.74, 10.02], [1.78, 10.2], [1.76, 10.38], [1.66, 10.56], [1.52, 10.78], [1.38, 11.05], [1.29, 11.35], [1.25, 11.62], [1.26, 11.78], [1.2, 11.86], [1.06, 11.86]];
+          // Its foot follows the upper rake top (slope 0.7496 from |u| 1.425) to the inner pier cornice
+          // (|u| 1.905), so it stands on the gable instead of floating over it; full pier depth.
+          const sil = [[1.06, 9.83], [1.425, 9.8295], [1.905, 9.4697], [1.905, 9.80], [2.02, 9.85], [2.02, 9.98], [1.85, 10.05], [1.74, 10.02], [1.78, 10.2], [1.76, 10.38], [1.66, 10.56], [1.52, 10.78], [1.38, 11.05], [1.29, 11.35], [1.25, 11.62], [1.26, 11.78], [1.2, 11.86], [1.06, 11.86]];
           const c = poly(sil.map(([u, v]) => [e * u, v + dv]));
-          slab('Gable aedicule console', W, e > 0 ? c : poly(sil.map(([u, v]) => [e * u, v + dv]).reverse()), .02, .16, EWD);
-          add('Gable aedicule console acanthus · EW', S, ew('wingVolute', .012), at(0, dv, .16 + .012, SC(e, 1, 1)), EW);
+          slab('Gable aedicule console', W, e > 0 ? c : poly(sil.map(([u, v]) => [e * u, v + dv]).reverse()), 0, d, EWD);
+          add('Gable aedicule console acanthus · EW', S, ew('wingVolute', .016), at(0, dv, d + .016, SC(e, 1, 1)), EW);
         }
         // Arch moulding over the niche, crest, ball and trefoil cross.
-        slab('Gable aedicule arch moulding', S, poly([...outer, ...inner.slice().reverse()]), .13, .30);
-        blk('Gable aedicule jamb moulding', S, [inner[0][0], outer[0][0]], [E.base, E.spring], [.13, .30]);
-        blk('Gable aedicule jamb moulding', S, [outer.at(-1)[0], inner.at(-1)[0]], [E.base, E.spring], [.13, .30]);
-        add('Gable aedicule crest scrolls · EW', S, ew('wingCrest', .012), at(0, dv, .30 + .012), EW);
-        // EW ball pedestal: ring +13.104–13.184 (±0.249), swelling neck, ring +13.344–13.392 (±0.24).
+        slab('Gable aedicule arch moulding', S, poly([...outer, ...inner.slice().reverse()]), d - .02, d + .06);
+        blk('Gable aedicule jamb moulding', S, [inner[0][0], outer[0][0]], [E.base + .1, E.spring], [d - .02, d + .06]);
+        blk('Gable aedicule jamb moulding', S, [outer.at(-1)[0], inner.at(-1)[0]], [E.base + .1, E.spring], [d - .02, d + .06]);
+        // Crest scrolls on the hood face, with a 16 mm stroke so they read as carved stone, not wire.
+        add('Gable aedicule crest scrolls · EW', S, ew('wingCrest', .016), at(0, dv, d + .016), EW);
+        // EW ball pedestal: ring +13.104–13.184 (±0.249), swelling neck, ring +13.344–13.392 (±0.24),
+        // carried down to the hood top on a ±0.249 base so the ball no longer floats over the niche.
+        if (envTop < 13.104 + dv) blk('Gable aedicule ball pedestal base', S, [-.249, .249], [envTop - .02, 13.104 + dv], [d * .5 - .249, d * .5 + .249], EWD);
         add('Gable aedicule ball pedestal', S, K.turned([[.249, 0], [.249, .08], [.17, .08], [.2, .16], [.17, .24], [.24, .24], [.24, .288]], 24), at(0, 13.104 + dv, d * .5), EWD);
         add('Gable aedicule ball', S, new T.SphereGeometry(E.ballRadius, 24, 16), at(0, E.ball, d * .5));
         const [c0, c1] = E.cross;

@@ -125,3 +125,11 @@ Dải lan can đầu hiên dùng ba mức vẽ +6,875776 / 6,935776 / 7,015776 /
 - Đầu hồi phía cung thánh vẫn dùng mặt phẳng X 53,24 (P14 53,181) như đã ghi; độ nhô các trụ, diềm và cột đôi là DERIVED/CONCEPT.
 - Pha răng cưa dưới hai mái dốc lệch khoảng 3 mm so với E03; chưa chỉnh để không đổi hàm `rake()` dùng chung.
 - Việc công bố các nét E03 thuộc **PUBLICATION HOLD H1**.
+
+### Liên kết các bộ phận khám đỉnh · 3/11/2026 (bổ sung)
+
+Chủ đầu tư nhận xét các bộ phận của đầu hồi cánh ngang còn "rời rạc". Đã sửa trong `aedicule()` dùng chung (cánh ngang EW và đầu hồi E03):
+- Khối khám nay dày bằng trụ (d = 0,42; trước chỉ tới 0,12), hốc khám khoét vào khối phía trên bậu cao 0,1 m; gờ vòm và gờ đố nhô trước mặt khối (d − 0,02 tới d + 0,06).
+- Công-xôn lá ô-rô dày bằng trụ; chân công-xôn bám theo mặt trên mái dốc trên (độ dốc 0,7496 từ |u| 1,425) tới gờ đầu trụ trong (|u| 1,905), không còn lơ lửng.
+- Chân quả cầu được kéo xuống tới đỉnh mái vòm khám (khối ±0,249); hoa văn cuộn đặt trên mặt mái vòm với nét 16 mm.
+Các chiều sâu là **DERIVED**; hình chiếu đứng giữ theo EW.
