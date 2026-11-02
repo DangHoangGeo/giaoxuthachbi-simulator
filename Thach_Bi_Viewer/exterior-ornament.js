@@ -43,8 +43,9 @@
     };
     // T12 traces from the two independently drawn E01B H-front corners.
     // Tubes visualize inked contours only: stroke radius and relief are CONCEPT.
-    // radial and a sagitta of 3 mm or more (arc steps up to 30°) give a lighter tube for small, often
-    // repeated carvings (pier and window capitals, rosettes); the default stays at 6 sides.
+    // radial and a sagitta of 3 mm or more (arc steps up to 45° since 3 Nov 2026, was 30°) give a lighter
+    // tube for small, often repeated carvings (pier and window capitals, rosettes): on their 20–60 mm
+    // arcs the chord error stays at 1–4 mm. The default stays at 6 sides and fine steps.
     const towerSpandrel = (profile, strokeRadius = .008, sagitta = .0002, radial = 6) => {
       const vertices = [], indices = [];
       const tube = (points, normals) => {
@@ -62,7 +63,7 @@
         const points = [], normals = [];
         if (row[1] === 'A') {
           const [, , u, v, r, start, span, handedness] = row;
-          const steps = Math.max(2, Math.ceil((span * Math.PI / 180) / Math.min(sagitta >= .003 ? Math.PI / 6 : sagitta > .0002 ? Math.PI / 9 : Math.PI / 18, 2 * Math.acos(Math.max(-1, 1 - sagitta / r)))));
+          const steps = Math.max(2, Math.ceil((span * Math.PI / 180) / Math.min(sagitta >= .003 ? Math.PI / 4 : sagitta > .0002 ? Math.PI / 9 : Math.PI / 18, 2 * Math.acos(Math.max(-1, 1 - sagitta / r)))));
           for (let i = 0; i <= steps; i++) {
             const a = (start + span * i / steps) * Math.PI / 180;
             points.push([u + handedness * r * Math.cos(a), v + r * Math.sin(a)]);

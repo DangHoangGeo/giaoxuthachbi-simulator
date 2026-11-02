@@ -49,3 +49,8 @@ The first motif selected for detailed work is recorded in the [tower-front spand
 | Long sides: spandrel corner leaves, flat-cut parapet balusters, inner C/G window colonnettes, panels and roundels | `porches.js`, `realism.js`, `roofline.js` porch parapets; outlines in `detail-sides-profile.js` | E02 traced; the roundel replaces the 14 glass roses; the outer window colonnette is held where the porch path lights and speakers mount. See [sides](sides.md). |
 | Sanctuary-end gable: piers, ground entablature, mid band, porch-end and rake crests, lunettes, leaves, centre arch with coupled columns | `roofline.js` rear section; outlines in `detail-rear-profile.js` | E03 traced/drawn; rose and aedicule confirmed equal to EW; rear windows not yet matching E03. See [rear and roofline](rear-and-roofline.md). |
 | Wing and rear aedicule body, consoles and crest connection | `roofline.js` `aedicule()` | EW elevation; full pier depth, console foot on the rake, ball pedestal on the hood: DERIVED depths (owner, 3 Nov 2026). |
+
+**Rendering budget, 3 November 2026.** After the four passes the scene reached 3,197,289 triangles (2,117,533 before the day's work). Three display-only trims bring it to 2,880,879 without changing any outline, position or analysis geometry:
+- Light traced tubes (sagitta ≥ 3 mm) step arcs at up to 45° instead of 30°. The chord error on their 20–60 mm arcs is 1–4 mm.
+- The side-window archivolt bands use 20 curve segments instead of 48.
+- The large single EW/E03 gable carvings use 4-sided tubes instead of 6.

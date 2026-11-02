@@ -79,7 +79,7 @@ const expect = {
   'Outer window clear glass body': 'openings', 'Exterior timber door leaf': 'openings',
   'Inner C–G floor at ±0.000 — buildup schematic': 'floors', 'Side stair riser': 'plinth',
   'Schematic arch moulding': 'ornament', 'Main tie beam carved haunch': 'ornament', 'Column carving · capital foliage': 'ornament',
-  'Sanctuary back wall behind the reredos': 'walls', 'Schematic block': 'walls', 'Porch parapet pedestal': 'walls',
+  'Sanctuary back wall behind the reredos': 'walls', 'Schematic block': 'walls', 'Porch parapet plinth': 'walls',
   'Porch spandrel carving · E02 corner leaf': 'ornament', 'Inner window carving · E02 capitals and roundel': 'ornament', 'Inner window E02 colonnette and panel mouldings': 'ornament',
   'Proposed central aisle stone inlay': 'finishes', 'Pew seat': 'furniture', 'Tree trunk': 'site', 'Gilded floral relief': 'sanctuary',
 };

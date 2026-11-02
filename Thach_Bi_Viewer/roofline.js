@@ -79,9 +79,10 @@
     // Large single pieces (crest, console, corner leaf, rose) keep the full tube; capitals use the light one.
     // E03 outlines (detail-rear-profile.js): the lunette and arch leaves keep the full tube, the repeated
     // crests and bay leaves the light one.
-    const rearGeo = {}, e03 = (key, stroke, big = false) => rearGeo[key] ||= towerSpandrel(window.CHURCH_DETAIL_PROFILE_REAR[key], stroke, big ? .001 : .003, big ? 6 : 3);
+    const rearGeo = {}, e03 = (key, stroke, big = false) => rearGeo[key] ||= towerSpandrel(window.CHURCH_DETAIL_PROFILE_REAR[key], stroke, big ? .001 : .003, big ? 4 : 3);
     const E03C = 'E03 TRACED CARVING / RELIEF CONCEPT';
-    const ewGeo = {}, ew = (key, stroke = .012) => ewGeo[key + stroke] ||= traced(key, stroke, !/^wing(Crest|Volute|Spandrel|Rose)$/.test(key));
+    const ewGeo = {}, ew = (key, stroke = .012) => ewGeo[key + stroke] ||= /^wing(Crest|Volute|Spandrel|Rose)$/.test(key)
+      ? towerSpandrel(window.CHURCH_FACADE_CREST_PROFILE[key], stroke, .001, 4) : traced(key, stroke);
     // Owner, 2 Nov 2026: every pier pinnacle takes the shared E01B crown, scaled uniformly to its envelope.
     const crown = pinnacleCrown(), crownScale = h => h / crown.boundingBox.max.y;
     const A = data.longitudinal;
@@ -385,7 +386,7 @@
       }
     };
 
-    // ---- Porch parapets: balustrade on the porch cornice, pedestal and pinnacle on every axis ----
+    // ---- Porch parapets: balustrade on the porch cornice and a pinnacle crown on every axis ----
     const PP = spec.parapet;
     // E02 flat cut baluster (detail-sides-profile.js parapetBaluster, u from its axis, v world level,
     // +6.375–6.925 between the drawn plinth and rail), 0.25 m apart and 0.625 m clear of each axis as
@@ -417,14 +418,18 @@
         const zr = h => [zc - h, zc + h];
         for (let i = 0; i < keys.length; i++) {
           const x = A[keys[i]], P = PP.pedestal;
-          blk('Porch parapet pedestal', W, [x - P, x + P], PP.y, zr(P));
-          blk('Porch parapet pedestal cap', S, [x - P - .04, x + P + .04], [PP.y[1] - .07, PP.y[1]], zr(P + .04));
-          add('Porch parapet pinnacle crown', S, crown, place(SC(crownScale(PP.pinnacle)), RY(s < 0 ? Math.PI : 0), TR(x, PP.y[1], zc)), CARVED);
+          // Owner, 3 Nov 2026: the pinnacle read small and loose on a 0.5 m pedestal over the widened pier.
+          // E02 draws no pedestal: the crown stands on the cornice (+6.324) at full size to the drawn tip
+          // (+8.026, D9B1A6), its gablet on the cornice and its colonnette caps level with the rail top.
+          const cs = crownScale(PP.y[1] + PP.pinnacle - PP.y[0]);
+          add('Porch parapet pinnacle crown', S, crown, place(SC(cs), RY(s < 0 ? Math.PI : 0), TR(x, PP.y[0], zc)), CARVED);
           stats.pinnacles++;
           if (i === keys.length - 1) continue;
-          const x0 = x + P, x1 = A[keys[i + 1]] - P;
-          blk('Porch parapet plinth', S, [x0, x1], [PP.y[0], PP.y[0] + PP.plinth], zr(PP.half + .03));
-          blk('Porch parapet top rail', S, [x0, x1], [PP.y[1] - PP.rail, PP.y[1]], zr(PP.half + .02));
+          // Rails die into the crown: the plinth into its corner blocks (±0.289), the top rail into its
+          // colonnettes (±0.198), both scaled with the crown.
+          const nx = A[keys[i + 1]];
+          blk('Porch parapet plinth', S, [x + .289 * cs, nx - .289 * cs], [PP.y[0], PP.y[0] + PP.plinth], zr(PP.half + .03));
+          blk('Porch parapet top rail', S, [x + .198 * cs, nx - .198 * cs], [PP.y[1] - PP.rail, PP.y[1]], zr(PP.half + .02));
           const L = A[keys[i + 1]] - x, n = Math.floor((L - 1.25) / .25 + 1e-6) + 1, u0 = x + (L - (n - 1) * .25) / 2;
           for (let k = 0; k < n; k++) { add('Porch parapet baluster · E02 flat cut', S, balusterGeo.geometry, TR(u0 + k * .25, 0, zc), CARVED); stats.balusters++; }
         }

@@ -436,7 +436,7 @@
       for(const x of centres)for(let i=0;i<profile.radii.length-1;i++){
         const a=profile.radii[i],b=profile.radii[i+1],z0=sideCAD.reliefDepth[0],z1=sideCAD.reliefDepth[1]-i*.008;
         const material=i===2||i===4?mat.darkTrim:mat.trim;
-        const ring=mesh(new T.ExtrudeGeometry(sideArchBand(x,profile.spring,a,b),{depth:z1-z0,bevelEnabled:false,curveSegments:48}),material,bay,'Side CAD opening archivolt moulding');
+        const ring=mesh(new T.ExtrudeGeometry(sideArchBand(x,profile.spring,a,b),{depth:z1-z0,bevelEnabled:false,curveSegments:20}),material,bay,'Side CAD opening archivolt moulding');
         ring.position.z=z0;ring.userData={status:'NATIVE CAD RADII / CONCEPT RELIEF DEPTH',source:'DWG E26/D29'};
         // Where E02's colonnette stands (the side toward the bay centre) it replaces the flat jamb.
         for(const s of [-1,1])if(!colonnettes||s!==-Math.sign(x))box(b-a,profile.spring-profile.bottom,z1-z0,x+s*(a+b)/2,(profile.spring+profile.bottom)/2,(z0+z1)/2,material,bay,'Side CAD opening jamb moulding');
