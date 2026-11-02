@@ -36,6 +36,19 @@ KEYS = {
     'pierCapital2': ('E01B', C, 0, CAPITAL_COPIES),
     'pierCapital3': ('E01B', C, 0, CAPITAL_COPIES),
     'pierCapital4': ('E01B', C, 0, CAPITAL_COPIES),
+    # Stage-3 front rose; stage 2 and the E02 sides repeat it.
+    'rose': ('E01B', 10.152934409, 20.612391717, [('E01B', 10.152934409, 13.277964351, 1), ('E02', 2.450044688, 20.612391717, 1), ('E02', 2.450044688, 13.277964351, 1)]),
+    # Stage-4 front rose; the E02 stage-4 side rose and the dome rosettes repeat it.
+    'roseSmall': ('E01B', 10.141458932, 27.191525170, [('E01B', 10.141458932, 31.699583764, 1), ('E02', 2.438569211, 27.191525170, 1)]),
+    # Stage-3 B-side window head (tympanum tracery with the cross); the other heads of stages 2-3 repeat it.
+    'windowHead': ('E01B', 9.257934, 19.317964331, [('E01B', 11.047934, 19.317964331, 1), ('E01B', 9.257577091, 11.867964351, 1),
+                   ('E01B', 11.048290635, 11.867964351, 1), ('E02', 1.555044630, 19.317964331, 1), ('E02', 3.345044630, 19.317964331, 1)]),
+    'windowHead4': ('E01B', 9.457112297, 26.149595658, [('E01B', 10.825805559, 26.149595658, 1), ('E02', 1.754222392, 26.149595658, 1), ('E02', 3.122915655, 26.149595658, 1)]),
+    'lanternRose': ('E01B', 10.141458932, 33.481658402, []),
+    # Ground storey, B-side (inner) great-arch impost capital and blind-arch colonnette capital, v from
+    # their springing (+3.984770 / +2.899970; the E02 blind arch springs at +3.100470).
+    'greatCapital': ('E01B', C, 3.984770309, [('E01B', C, 3.984770309, -1), ('E02', 2.450044195, 3.984770309, 1), ('E02', 2.450044195, 3.984770309, -1)]),
+    'blindCapital': ('E01B', C, 2.899970309, [('E01B', C, 2.899970309, -1), ('E02', 2.450044195, 3.100470309, 1), ('E02', 2.450044195, 3.100470309, -1)]),
 }
 
 

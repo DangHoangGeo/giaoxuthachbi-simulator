@@ -50,7 +50,7 @@
         [1.284, 1.368, .048, 'S', 'Tower corner pier pedestal cap'], [1.368, 1.668, 0, 'W', 'Tower corner pier upper die'],
         [1.668, 1.716, .03, 'S', 'Tower corner pier top band'], [1.716, 1.788, .066, 'S', 'Tower corner pier top band'],
         [1.788, 1.848, .03, 'S', 'Tower corner pier top band']] },
-    arch: { spring: 3.984770309, r: [1.385, 1.955], rings: [1.385, 1.555, 1.585, 1.725, 1.755, 1.855, 1.885, 1.955], impost: [1.555, 1.955] },
+    arch: { spring: 3.984770309, r: [1.385, 1.955], rings: [1.385, 1.555, 1.585, 1.725, 1.755, 1.855, 1.885, 1.955], impost: [1.555, 1.955], capital: 1.293 },
     blind: { spring: 2.899970309, r: [0.824478702, 1.139478702], rings: [0.824478702, 0.974478702, 1.139478702], colonnette: 1.02, recess: 0.2 },
     // E01B C449B8, C45767..C4577C: the cartouche frame between the ground arches, traced (t, y) in metres.
     cartouche: [[-0.0,5.0,0.055,4.998,0.109,4.994,0.163,4.987,0.216,4.976,0.269,4.964,0.32,4.948,0.371,4.93,0.42,4.909,0.469,4.885,0.516,4.859,0.561,4.83,0.606,4.799,0.648,4.766,0.689,4.73,0.728,4.692,0.765,4.652],[-0.0,4.339,0.06,4.338,0.12,4.335,0.179,4.328,0.238,4.32,0.296,4.309,0.354,4.295,0.411,4.279,0.468,4.261,0.523,4.241,0.578,4.218,0.632,4.193,0.685,4.166,0.737,4.137,0.787,4.105,0.837,4.071,0.885,4.035],[-0.0,4.409,0.045,4.409,0.089,4.407,0.134,4.404,0.178,4.399,0.223,4.393,0.266,4.386,0.31,4.377,0.353,4.367,0.397,4.356,0.439,4.344,0.482,4.33,0.524,4.316,0.565,4.3,0.607,4.282,0.647,4.264,0.687,4.244],[0.885,4.035,0.888,4.052,0.893,4.069,0.9,4.084,0.909,4.099],[0.909,4.099,0.886,4.122,0.865,4.145,0.846,4.17,0.829,4.197,0.814,4.224,0.801,4.252,0.79,4.281,0.781,4.311,0.774,4.341,0.769,4.372,0.767,4.403,0.767,4.434,0.769,4.466,0.773,4.497,0.78,4.528,0.789,4.559],[0.715,4.285,0.707,4.321,0.701,4.358,0.697,4.396,0.697,4.433,0.699,4.471,0.704,4.508,0.712,4.545,0.722,4.581],[0.848,4.581,0.854,4.592,0.862,4.602,0.871,4.61,0.882,4.617],[0.789,4.559,0.794,4.565,0.801,4.57,0.808,4.574,0.815,4.578,0.823,4.58,0.831,4.581,0.839,4.582,0.848,4.581],[-0.885,4.035,-0.837,4.071,-0.787,4.105,-0.737,4.137,-0.685,4.166,-0.632,4.193,-0.578,4.218,-0.523,4.241,-0.468,4.261,-0.411,4.279,-0.354,4.295,-0.296,4.309,-0.238,4.32,-0.179,4.328,-0.12,4.335,-0.06,4.338,-0.0,4.339],[-0.909,4.099,-0.9,4.084,-0.893,4.069,-0.888,4.052,-0.885,4.035],[-0.789,4.559,-0.78,4.528,-0.773,4.497,-0.769,4.466,-0.767,4.434,-0.767,4.403,-0.769,4.372,-0.774,4.341,-0.781,4.311,-0.79,4.281,-0.801,4.252,-0.814,4.224,-0.829,4.197,-0.846,4.17,-0.865,4.145,-0.886,4.122,-0.909,4.099],[-0.882,4.617,-0.871,4.61,-0.862,4.602,-0.854,4.592,-0.848,4.581],[-0.848,4.581,-0.839,4.582,-0.831,4.581,-0.823,4.58,-0.815,4.578,-0.808,4.574,-0.801,4.57,-0.794,4.565,-0.789,4.559],[0.722,4.581,0.728,4.589,0.735,4.597,0.742,4.604,0.75,4.61],[0.687,4.244,0.687,4.251,0.688,4.258,0.69,4.264,0.693,4.27,0.697,4.275,0.703,4.279,0.709,4.283,0.715,4.285],[0.75,4.61,0.749,4.622,0.752,4.633,0.757,4.643,0.765,4.652],[-0.765,4.652,-0.728,4.692,-0.689,4.73,-0.648,4.766,-0.606,4.799,-0.561,4.83,-0.516,4.859,-0.469,4.885,-0.42,4.909,-0.371,4.93,-0.32,4.948,-0.269,4.964,-0.216,4.976,-0.163,4.987,-0.109,4.994,-0.055,4.998,-0.0,5.0],[-0.687,4.244,-0.647,4.264,-0.607,4.282,-0.565,4.3,-0.524,4.316,-0.482,4.33,-0.439,4.344,-0.397,4.356,-0.353,4.367,-0.31,4.377,-0.266,4.386,-0.223,4.393,-0.178,4.399,-0.134,4.404,-0.089,4.407,-0.045,4.409,-0.0,4.409],[-0.722,4.581,-0.712,4.545,-0.704,4.508,-0.699,4.471,-0.697,4.433,-0.697,4.396,-0.701,4.358,-0.707,4.321,-0.715,4.285],[-0.75,4.61,-0.742,4.604,-0.735,4.597,-0.728,4.589,-0.722,4.581],[-0.715,4.285,-0.709,4.283,-0.703,4.279,-0.697,4.275,-0.693,4.27,-0.69,4.264,-0.688,4.258,-0.687,4.251,-0.687,4.244],[-0.765,4.652,-0.757,4.643,-0.752,4.633,-0.749,4.622,-0.75,4.61]],
@@ -628,6 +628,17 @@
     const capitalRows = window.CHURCH_DETAIL_PROFILE_TOWERS;
     const capitalGeo = [1, 2, 3, 4].map(n => towerSpandrel(capitalRows['pierCapital' + n], spec.capitalStroke, .003, 3));
     const CAPITAL = 'E01B/E02 TRACED CAPITAL OUTLINE / RELIEF CONCEPT';
+    // Other traced pieces (detail-towers-profile.js), each centred on its drawn origin: roses, window-head
+    // tracery, lantern panel rose, ground great-arch and blind-arch capitals (v from their springing).
+    const traced = (key, stroke) => towerSpandrel(capitalRows[key], stroke, .003, 3);
+    const TG = { rose: traced('rose', .008), roseSmall: traced('roseSmall', .007), head: traced('windowHead', .007), head4: traced('windowHead4', .007),
+      lantern: traced('lanternRose', .005), great: traced('greatCapital', .008), blind: traced('blindCapital', .007) };
+    const TRACED = 'E01B/E02 TRACED OUTLINE / RELIEF CONCEPT', TRACED_REPEAT = 'DERIVED REPEAT OF E01B/E02 TRACED OUTLINE / RELIEF CONCEPT';
+    // Upper great-arch impost as E01B/E02 draw it (C43850..C44C48, C438A0..C438B0, C44263..C44290): a plain
+    // pilaster with a necking band, a lower and an upper abacus, no foliage. Levels from the springing;
+    // stage 4's necking is lower and its shaft spans all the arch rings. Projections 0.03 / 0.03 / 0.08 m
+    // beyond the shaft (drawn); depths DERIVED.
+    const impostBands = stage => [[stage === 4 ? [-.295, -.225] : [-.46, -.39], .03, .03], [[-.14, -.07], .03, .03], [[-.07, 0], .08, .05]];
     // Each tower face has its own frame: u along the face, v up, w out of the face.
     // face(s, kind) → function mapping (u, v, w) to a world matrix and box helpers.
     const both = fn => { for (const s of [-1, 1]) fn(s); };
@@ -830,9 +841,10 @@
           uslab('great arch ring', i % 2 ? W : S, ring(cg, U.great.y, U.great.rings[i], U.great.rings[i + 1]), xf - .10 - .012 * i, xf + .01);
         for (const e of [-1, 1]) {
           const r0 = U.great.rings[0], r1 = U.great.rings[1];
-          block(label + 'great arch pilaster', S, [xf - .10, xf + .01], [U.sill, U.great.y - .46], [cg + e * r0, cg + e * r1].sort((a, b) => a - b));
-          block(label + 'great arch capital', S, [xf - .15, xf + .01], [U.great.y - .46, U.great.y], [Math.min(cg + e * r0, cg + e * r1) - .06, Math.max(cg + e * r0, cg + e * r1) + .06]);
-          add(label + 'great arch capital foliage', S, pilasterCapital(.3, .42), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(xf - .16, U.great.y - .44, Z(cg + e * (r0 + r1) / 2))), CARVED);
+          const shaft = [cg + e * r0, cg + e * (U.stage === 4 ? U.great.rings[U.great.rings.length - 1] : r1)].sort((a, b) => a - b);
+          block(label + 'great arch pilaster', S, [xf - .10, xf + .01], [U.sill, U.great.y], shaft);
+          for (const [[b0, b1], out, depth] of impostBands(U.stage))
+            block(label + 'great arch impost band', S, [xf - .10 - depth, xf + .01], [U.great.y + b0, U.great.y + b1], [shaft[0] - out, shaft[1] + out]);
         }
         for (const centre of WI.centres) {
           const u = centre - spec.centre, r = WI.rings[0];
@@ -853,7 +865,9 @@
         const roseMatrix = place(RY(-Math.PI / 2), TR(xf - .055, RO.y, Z(cg)));
         add(label + 'rose ring', S, new T.TorusGeometry(major, minor, 10, 64), roseMatrix);
         add(label + 'rose-window infill', F.roseMaterial || mat.glass, new T.CircleGeometry(RO.inner, 64), place(RY(-Math.PI / 2), TR(xf - .012, RO.y, Z(cg))), 'TRACED CAD CIRCLE / EXISTING CHOSEN COLOURED FINISH; GLAZING AND OPENING UNCONFIRMED');
-        add(label + 'rose carving', S, K.bloom({ r: RO.inner, petals: 12, rings: 2, seg: 3 }), roseMatrix, CARVED);
+        add(label + 'rose tracery · traced', S, U.stage === 4 ? TG.roseSmall : TG.rose, place(RY(-Math.PI / 2), TR(xf - .025, RO.y, Z(cg))), U.stage === 3 || U.stage === 4 ? TRACED : TRACED_REPEAT);
+        for (const centre of WI.centres)
+          add(label + 'paired louvre head tracery · traced', S, U.stage === 4 ? TG.head4 : TG.head, place(SC(s, 1, 1), RY(-Math.PI / 2), TR(xf + .04, WI.spring, Z(centre - spec.centre))), U.stage === 2 ? TRACED_REPEAT : TRACED);
         stats.upperFronts++;
       }
 
@@ -880,9 +894,9 @@
           fs('great arch ring', i%2 ? W:S, ring(cg,U.great.y,U.great.rings[i],U.great.rings[i+1]), .13,.24+.012*i);
         for (const e of [-1,1]) {
           const r0=U.great.rings[0], r1=U.great.rings[1], xs=[cg+e*r0,cg+e*r1].sort((a,b)=>a-b);
-          fb('great arch pilaster',S,xs,[U.sill,U.great.y-.46],[.13,.24]);
-          fb('great arch capital',S,[xs[0]-.06,xs[1]+.06],[U.great.y-.46,U.great.y],[.13,.29]);
-          add(label+'great arch capital foliage',S,pilasterCapital(.3,.42),fm(cg+e*(r0+r1)/2,U.great.y-.44,.30),status+' / ILLUSTRATIVE CARVING');
+          const shaft=U.stage===4?[cg+e*r0,cg+e*U.great.rings[U.great.rings.length-1]].sort((a,b)=>a-b):xs;
+          fb('great arch pilaster',S,shaft,[U.sill,U.great.y],[.13,.24]);
+          for(const [[b0,b1],out,depth] of impostBands(U.stage)) fb('great arch impost band',S,[shaft[0]-out,shaft[1]+out],[U.great.y+b0,U.great.y+b1],[.13,.24+depth]);
         }
         for (const u of centres) {
           const r=WI.rings[0];
@@ -900,7 +914,8 @@
         const RO=U.rose,rm=fm(roseU,RO.y,.195);
         add(label+'rose ring',S,new T.TorusGeometry((RO.rings[0]+RO.rings[1])/2,(RO.rings[1]-RO.rings[0])/2,10,64),rm,status);
         add(label+'rose-window infill',F.roseMaterial||mat.glass,new T.CircleGeometry(RO.inner,64),fm(roseU,RO.y,.152),status+' / EXISTING COLOURED FINISH; GLAZING AND OPENING UNCONFIRMED');
-        add(label+'rose carving',S,K.bloom({r:RO.inner,petals:12,rings:2,seg:3}),rm,status+' / ILLUSTRATIVE CARVING');
+        add(label+'rose tracery · traced',S,U.stage===4?TG.roseSmall:TG.rose,fm(roseU,RO.y,.165),F.kind==='outer'?TRACED_REPEAT:status+' / TRACED E01B ROSE REPEATED');
+        for(const u of centres) add(label+'paired louvre head tracery · traced',S,U.stage===4?TG.head4:TG.head,fm(u,WI.spring,.10),F.kind==='outer'?TRACED_REPEAT:status+' / TRACED E01B HEAD REPEATED');
         stats.upperOtherFaces=(stats.upperOtherFaces||0)+1;
       }
 
@@ -935,15 +950,20 @@
       for (const e of [-1, 1]) {
         const [i0, i1] = e > 0 ? A.impost : [-A.impost[1], -A.impost[0]];
         block('Tower front impost pilaster', W, [wallFace - .16, wallFace], [.3, A.spring - .5], [i0, i1]);
-        block('Tower front impost base', S, [wallFace - .22, wallFace], [0, .3], [i0 - .04, i1 + .04]);
-        block('Tower front impost capital', S, [wallFace - .2, wallFace], [A.spring - .5, A.spring], [i0 - .03, i1 + .03]);
-        add('Tower front impost capital foliage', S, pilasterCapital(.4, .42), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .2, A.spring - .48, Z((i0 + i1) / 2))), CARVED);
+        // E01B draws the inner order of the great arch (r 1.385–1.555) down to the base as well.
+        const [o0, o1] = e > 0 ? [A.r[0], A.impost[0]] : [-A.impost[0], -A.r[0]];
+        block('Tower front impost inner order', W, [wallFace - .10, wallFace], [.3, A.spring - .5], [o0, o1]);
+        block('Tower front impost base', S, [wallFace - .22, wallFace], [0, .3], [Math.min(i0, o0) - .04, Math.max(i1, o1) + .04]);
+        // Capital block over all three orders, t 1.293–1.955 as drawn (abacus to E01B Z 8.860).
+        const [c0, c1] = e > 0 ? [A.capital, A.impost[1] + .03] : [-A.impost[1] - .03, -A.capital];
+        block('Tower front impost capital', S, [wallFace - .2, wallFace], [A.spring - .5, A.spring], [c0, c1]);
+        add('Tower front impost capital foliage · traced E01B', S, TG.great, place(SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .2 - .008, A.spring, zc)), e < 0 ? TRACED : TRACED_REPEAT);
         // Colonnettes of the blind arch.
         const tcol = e * B.colonnette;
         add('Tower blind-arch colonnette', S, new T.CylinderGeometry(.085, .095, B.spring - .65, 14), TR(wallFace - .14, .3 + (B.spring - .65) / 2, Z(tcol)));
         block('Tower blind-arch colonnette base', S, [wallFace - .26, wallFace], [0, .3], [tcol - .14, tcol + .14]);
         block('Tower blind-arch colonnette capital', S, [wallFace - .27, wallFace], [B.spring - .35, B.spring], [tcol - .16, tcol + .16]);
-        add('Tower blind-arch capital foliage', S, pilasterCapital(.3, .3), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .27, B.spring - .33, Z(tcol))), CARVED);
+        add('Tower blind-arch capital foliage · traced E01B', S, TG.blind, place(SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .27 - .007, B.spring, zc)), e < 0 ? TRACED : TRACED_REPEAT);
         // E01B H-front outlines: independently drawn inner/outer corners. B repeats
         // the H profiles (DERIVED); stroke thickness and relief remain conceptual.
         add('Tower front spandrel spray', S, towerLeaves[e > 0 ? 'outer' : 'inner'],
@@ -987,11 +1007,12 @@
           const x0 = SB.centreX + e * SB.pilaster.radii[0], x1 = SB.centreX + e * SB.pilaster.radii[1];
           const xs = [x0, x1].sort((a,b)=>a-b);
           block('Tower side great impost · E02', W, xs, SB.pilaster.shaftY, [C + spec.wall, C + spec.wall + .1]);
-          block('Tower side great capital · E02', S, xs, [SB.pilaster.shaftY[1], SB.greatSpring], [C + spec.wall, C + spec.wall + .14]);
+          block('Tower side great capital · E02', S, e > 0 ? [SB.centreX + A.capital, SB.centreX + A.impost[1]] : [SB.centreX - A.impost[1], SB.centreX - A.capital], [SB.pilaster.shaftY[1], SB.greatSpring], [C + spec.wall, C + spec.wall + .14]);
           // E02 draws the same acanthus capitals as the front imposts and colonnettes; carving illustrative.
           const faceRot = RY(s > 0 ? 0 : Math.PI);
-          add('Tower side great capital foliage · E02', S, pilasterCapital(xs[1] - xs[0] + .06, .44), place(faceRot, TR((xs[0] + xs[1]) / 2, SB.greatSpring - .46, Z(C + spec.wall + .14))), CARVED);
-          add('Tower side blind capital foliage · E02', S, pilasterCapital(.3, .3), place(faceRot, TR(SB.centreX + e * B.colonnette, SB.blindSpring - .33, Z(C + spec.wall + .27))), CARVED);
+          // E02 draws the E01B capitals unchanged (within 0.1 mm), the blind one 200.5 mm higher.
+          add('Tower side great capital foliage · traced E02', S, TG.great, place(SC(-e * s, 1, 1), faceRot, TR(SB.centreX, SB.greatSpring, Z(C + spec.wall + .14 + .008))), TRACED_REPEAT);
+          add('Tower side blind capital foliage · traced E02', S, TG.blind, place(SC(-e * s, 1, 1), faceRot, TR(SB.centreX, SB.blindSpring, Z(C + spec.wall + .27 + .007))), TRACED_REPEAT);
           const x = SB.centreX + e * B.colonnette;
           add('Tower side blind colonnette · E02', S, new T.CylinderGeometry(.085, .095, SB.blindSpring - .65, 14), TR(x, .3 + (SB.blindSpring - .65) / 2, Z(C + spec.wall + .14)));
           block('Tower side blind capital · E02', S, [x - .16, x + .16], [SB.blindSpring - .35, SB.blindSpring], [C + spec.wall, C + spec.wall + .27]);
@@ -1085,16 +1106,19 @@
       for (let k = 0; k < 4; k++) {
         const a = k * Math.PI / 2, r = rDome(DM.rosette) + .02, n = new T.Vector3(Math.cos(a), 0, Math.sin(a));
         const dz = k === 2 ? s * DM.frontRoseOffset : 0;
+        // Lean the rosette back to the dome's slope at its level (DERIVED), so its lower half is not
+        // buried in the dome; the drawn elevation fixes only its centre and rings.
+        const h = DM.roseRings[1], lean = RX(-Math.atan2(rDome(DM.rosette - h) - rDome(DM.rosette + h), 2 * h));
         const rot = new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 0, 1), n));
-        add('Tower dome rosette', S, K.bloom({ r: DM.roseInner, petals: 12, rings: 2, seg: 3 }), place(rot, TR(xc + n.x * r, DM.rosette, zc + n.z * r + dz)), CARVED);
-        add('Tower dome rosette ring', S, new T.TorusGeometry((DM.roseRings[0] + DM.roseRings[1]) / 2, (DM.roseRings[1] - DM.roseRings[0]) / 2, 8, 64), place(rot, TR(xc + n.x * (r - .02), DM.rosette, zc + n.z * (r - .02) + dz)));
+        add('Tower dome rosette tracery · traced', S, TG.roseSmall, place(lean, rot, TR(xc + n.x * r, DM.rosette, zc + n.z * r + dz)), k === 2 ? TRACED : TRACED_REPEAT);
+        add('Tower dome rosette ring', S, new T.TorusGeometry((DM.roseRings[0] + DM.roseRings[1]) / 2, (DM.roseRings[1] - DM.roseRings[0]) / 2, 8, 64), place(lean, rot, TR(xc + n.x * (r - .02), DM.rosette, zc + n.z * (r - .02) + dz)));
       }
       const sq = (name, m_, [y0, y1, h]) => add(name, m_, new T.BoxGeometry(2 * h, y1 - y0, 2 * h), TR(xc, (y0 + y1) / 2, zc));
       sq('Tower lantern plinth', S, LN.plinth); sq('Tower lantern plinth step', S, LN.step); sq('Tower lantern base', S, LN.base); sq('Tower lantern body', W, LN.body);
       for (const ex of [-1, 1]) for (const ez of [-1, 1]) add('Tower lantern corner post', S, new T.BoxGeometry(.1, LN.body[1] - LN.body[0], .1), TR(xc + ex * LN.body[2], (LN.body[0] + LN.body[1]) / 2, zc + ez * LN.body[2]));
       for (let k = 0; k < 4; k++) {
         const a = k * Math.PI / 2, n = new T.Vector3(Math.cos(a), 0, Math.sin(a)), rot = new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 0, 1), n));
-        add('Tower lantern panel rosette', S, K.bloom({ r: .14, petals: 6, rings: 1, seg: 3 }), place(rot, TR(xc + n.x * (LN.body[2] + .01), (LN.body[0] + LN.body[1]) / 2, zc + n.z * (LN.body[2] + .01))), CARVED);
+        add('Tower lantern panel rose · traced', S, TG.lantern, place(rot, TR(xc + n.x * (LN.body[2] + .01), (LN.body[0] + LN.body[1]) / 2, zc + n.z * (LN.body[2] + .01))), k === 2 ? TRACED : TRACED_REPEAT);
       }
       sq('Tower lantern bead band', S, [LN.beads[0], LN.beads[0] + .05, LN.beads[2]]);
       for (let k = 0; k < 24; k++) {
