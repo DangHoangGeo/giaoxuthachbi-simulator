@@ -15,7 +15,7 @@
   // World axes: X from axis 1 toward the sanctuary (the street side is smaller X), Y up from the
   // nave floor, Z from the D/E midpoint, positive toward H. The facade is symmetric about Z 0.
   const spec = {
-    revision: '2026-11-02-cad-facade-fluted-6',
+    revision: '2026-11-03-cad-front-detail-1',
     cut: 8.45, // bundle meshes wholly above this level are superseded
     // Ground-storey arch spandrels, owner 2 Nov 2026: E01B draws the tower T12 leaf (75 entities) at full
     // size over the central portal and both side-bay arches; the bundle's flat sprays are replaced.
@@ -174,7 +174,6 @@
 
     // Shared exterior carving geometry; placements and materials remain local.
     const { fleur, pilasterCapital, meanderGeo } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
-    const tallFleur = fleur(0.85), smallFleur = fleur(0.42);
     // ---- Niche crests: E01B outlines over the side and central aedicules (owner permission
     // 2 Nov 2026), drawn with the T12 contour tube; relief CONCEPT. They replace the procedural
     // crown and arch leaf cresting.
@@ -194,6 +193,19 @@
           'E01B TRACED T12 AT FULL SIZE / RELIEF CONCEPT'));
       }
     }
+    // ---- Front decoration pass (owner, 3 Nov 2026): E01B outlines in detail-front-profile.js, drawn
+    // with the same contour tube; positions and levels are the drawing's, relief depth is CONCEPT.
+    const FRONT = window.CHURCH_DETAIL_PROFILE_FRONT || {};
+    const frontTrace = (key, stroke, light) => FRONT[key]?.length
+      ? window.CHURCH_EXTERIOR_ORNAMENT.create(T, K).towerSpandrel(FRONT[key], stroke, light ? .003 : .001, light ? 3 : 6) : null;
+    const TRACED = 'E01B TRACED CARVING / RELIEF CONCEPT';
+    // Central pier capital with the traced E01B foliage on a plain bell that runs up to the cornice or
+    // entablature break above (the drawing has no separate abacus there). Falls back to the procedural one.
+    const tracedCapital = (name, zc, half, [y0, y1], xFront, depth, geo, stroke) => {
+      if (!geo) return capital(name, zc, half, [y0, y1], xFront, depth);
+      block(name, S, [xFront + .03, xFront + depth], [y0, y1], [zc - half, zc + half]);
+      add(name + ' foliage · E01B', S, geo, facing(xFront + .03 - stroke - .002, 0, zc), TRACED);
+    };
     // Corinthian-type pilaster capital: bell, leaves and abacus, by world extents.
     const capital = (name, zc, half, [y0, y1], xFront, depth = .3) => {
       const h = y1 - y0;
@@ -259,7 +271,7 @@
       });
     }
     // 0. Ground-storey central piers (E01B / P05), under the frieze blocks and capitals below.
-    const G = spec.ground;
+    const G = spec.ground, groundCap = frontTrace('groundCapital', .01, true), pedestalRosette = frontTrace('pedestalRosette', .006, true);
     both(s => {
       const zc = s * P.z;
       for (const [y0, y1, d, m] of G.bands) block('Central ground pier pedestal', m === 'W' ? W : S, [G.front - d, G.back], [y0, y1], [zc - G.half - d, zc + G.half + d]);
@@ -271,7 +283,9 @@
       const pf = G.front - .066, [p0, p1] = G.panel.y, ph = G.panel.half;
       for (const [z0, z1, y0, y1] of [[-ph, ph, p0, p0 + .04], [-ph, ph, p1 - .04, p1], [-ph, -ph + .04, p0, p1], [ph - .04, ph, p0, p1]])
         block('Central ground pier pedestal panel', S, [pf - .025, pf], [y0, y1], [zc + z0, zc + z1]);
-      add('Central ground pier pedestal rosette', S, K.bloom({ r: .1, petals: 8, rings: 1, seg: 3 }), facing(pf - .01, (p0 + p1) / 2, zc), CARVED);
+      // E01B C44804–C4481C: quatrefoil rosette, centre +0.72 on the pier axis (was the procedural bloom).
+      if (pedestalRosette) add('Central ground pier pedestal rosette · E01B', S, pedestalRosette, facing(pf - .006 - .002, 0, zc), TRACED);
+      else add('Central ground pier pedestal rosette', S, K.bloom({ r: .1, petals: 8, rings: 1, seg: 3 }), facing(pf - .01, (p0 + p1) / 2, zc), CARVED);
       block('Central ground pier shaft', W, [G.front, G.back], [1.848, G.top], [zc - G.half, zc + G.half]);
       flutedPanel('Central ground pier fluted panel', zc, .27, [1.848, 8.605], G.flutes, G.front);
       // Frieze block and capital break forward with the pier (until 31 Oct 2026 set back at 2.12/2.08).
@@ -279,7 +293,8 @@
       // Owner, 2 Nov 2026: no empty slots over the piers. The corona and crown band break forward over
       // each pier (E01B draws their lines across the pier to |Z| 3.535) instead of stopping at X 2.06.
       block('Central pier corona break', S, [G.front - .07, 2.6], C.corona, [zc - .55, zc + .55]);
-      capital('Central pier capital · cornice', zc, .5, C.frieze, G.front - .05, .5);
+      // E01B C4586D–C45929: foliage +8.774 to +9.07, about ±0.56 wide, under the crown band break.
+      tracedCapital('Central pier capital · cornice', zc, .55, C.frieze, G.front - .05, .5, groundCap, .01);
       block('Central pier crown band break', S, [G.front - .09, 2.6], C.band, [zc - .56, zc + .56]);
     });
 
@@ -298,7 +313,7 @@
     });
 
     // 3. Piers of the central bay, +9.741 to the upper entablature
-    const [Y0, Y1] = spec.storey;
+    const [Y0, Y1] = spec.storey, bayCap = frontTrace('bayCapital', .01, true);
     both(s => {
       const zc = s * P.z;
       block('Central bay pier base', S, [1.62, 2.4], [Y0, 9.85], [zc - .62, zc + .62]);
@@ -310,7 +325,8 @@
       block('Central bay pier core', W, [2.9, P.back], [Y0, Y1], [s > 0 ? 2.5 : -3.614, s > 0 ? 3.614 : -2.5]);
       flutedPanel('Central bay pier fluted panel', zc, .235, [10.401, 14.893], [10.501, 14.793], P.front); // E01B field ±0.235
       block('Central bay pier necking', S, [P.front - .03, 2.6], [14.95, 15.0], [zc - .47, zc + .47]);
-      capital('Central bay pier capital', zc, .51, [15.0, Y1], 2.22, .4);
+      // E01B C49000–C490C1: foliage +15.035 to the entablature at +15.333, about ±0.49 wide.
+      tracedCapital('Central bay pier capital', zc, .51, [15.0, Y1], 2.22, .4, bayCap, .01);
     });
 
     // 4. Central bay: wall, great arch, triple window and rose
@@ -350,8 +366,21 @@
         block('Triple window spring rail · CAD', mat.wood, [3.556, 3.64], [LT.topRail, LT.spring], [z - LT.half, z + LT.half]);
         slab('Triple window arched timber frame · CAD', mat.wood, band(z, LT.spring, LT.inner, LT.rings[0]), [3.556, 3.64]);
       }
-      // Engaged colonnettes between and beside the lights.
-      for (const [z, r] of [[-1.73, .1], [-.595, .11], [.595, .11], [1.73, .1]]) column('Triple window colonnette', CB.tympanum[0], z, r, [Y0, LT.spring], .46);
+      // Pilasters between and beside the lights, as E01B draws them (3 Nov 2026; until then round
+      // colonnettes with carved capitals): centre pair ±0.165 about ±0.595 with three 0.11 m faces
+      // (C4989A/C4989C/C49854/C49852), outer pair ±0.11 about ±1.73 (C49898/C498AB/C498A9), shaft
+      // +9.741 to the +11.781–11.851 band, and plain stepped caps +12.101–12.171–12.241 under the arches
+      // (C49855–C498B0). Projections are DERIVED (the old colonnettes' 0.10 m); the middle face of the
+      // centre pilasters standing 30 mm further forward is a reading of the drawn face lines (CONCEPT).
+      const xf = CB.tympanum[0] - .1;
+      for (const s of [-1, 1]) for (const [zc, half, band, cap0, cap1] of [[.595, .165, .195, .195, .245], [1.73, .11, .14, .14, .18]]) {
+        const z = s * zc, zr = h => [z - h, z + h];
+        block('Triple window pilaster', W, [xf, CB.tympanum[0]], [Y0, 12.101], zr(half), DRAWN);
+        if (half > .15) block('Triple window pilaster middle face', W, [xf - .03, xf], [Y0, 12.101], zr(.055), DRAWN);
+        block('Triple window pilaster band', S, [xf - .045, CB.tympanum[0]], [11.781, 11.851], zr(band), DRAWN);
+        block('Triple window pilaster cap', S, [xf - .05, CB.tympanum[0]], [12.101, 12.171], zr(cap0), DRAWN);
+        block('Triple window pilaster cap', S, [xf - .07, CB.tympanum[0]], [12.171, LT.spring], zr(cap1), DRAWN);
+      }
       block('Central bay room behind the window', D, [CB.room[1] - .02, CB.room[1]], [Y0, 14.6], [-2.2, 2.2]);
       block('Central bay back wall', W, [CB.room[1], CB.back], [Y0, Y1], [-CB.half, CB.half]);
       // Rose in the tympanum.
@@ -359,8 +388,13 @@
       // C49973–C49976 define four circles. Their projected radii replace the
       // oversized torus envelopes; extrusion/relief depth is still schematic.
       for (const [r0, r1] of R.rings) slab('Central rose moulding', S, annulus(0, R.y, r0, r1), [CB.tympanum[0] - .055, CB.tympanum[0] - .015]);
-      add('Central rose rosette', S, new T.CylinderGeometry(R.rings[1][0], R.rings[1][0], .03, 48), place(RZ(Math.PI / 2), TR(CB.tympanum[0] - .015, R.y, 0)));
-      add('Central rose carved rosette', S, K.bloom({ r: .3, petals: 12, rings: 2, seg: 4 }), facing(CB.tympanum[0] - .03, R.y, 0), CARVED);
+      // E01B C49977–C49A3E (3 Nov 2026): the drawn tracery, twelve interlaced foils round a hub with
+      // twelve spokes, replaces the procedural bloom. The disc behind takes the wall finish so the trim
+      // tracery reads against it; whether the field is pierced or blind is not stated (CONCEPT).
+      const roseTracery = frontTrace('rose', .012, false);
+      add('Central rose rosette', roseTracery ? W : S, new T.CylinderGeometry(R.rings[1][0], R.rings[1][0], .03, 48), place(RZ(Math.PI / 2), TR(CB.tympanum[0] - .015, R.y, 0)));
+      if (roseTracery) add('Central rose tracery · E01B', S, roseTracery, facing(CB.tympanum[0] - .03 - .012 - .002, 0, 0), TRACED);
+      else add('Central rose carved rosette', S, K.bloom({ r: .3, petals: 12, rings: 2, seg: 4 }), facing(CB.tympanum[0] - .03, R.y, 0), CARVED);
     }
     // Dentils under the upper entablature across the three bays.
     const dentils = (z0, z1, x) => {
@@ -413,31 +447,52 @@
       layers('Upper entablature over the side bay', s > 0 ? [SB.inner, SB.outer] : [-SB.outer, -SB.inner], [3.95, 3.70, 3.42, 3.376]);
     });
 
-    // 7. Fleur-de-lis cresting over the side bays, +15.84 to +17.40
+    // 7. Fleur-de-lis cresting over the side bays, +15.84 to +17.41. Rebuilt from E01B on 3 Nov 2026
+    // (C4AFC6–C4B1C9 and the post lines about Z 4.405 / 4.716): narrow posts on CR.posts with stepped caps
+    // to +16.383 carry the big fleurs; wider posts between them (caps to +16.66) carry the small fleurs on
+    // an urn; curved ribs spring from each narrow cap out to the wide caps and from the wide posts back up
+    // to the big fleur's base, leaving a pointed opening over every narrow post. Rib outlines are the
+    // traced arcs (detail-front-profile.js crestRib), extruded 0.12 m; post sections are the drawn widths
+    // made square in plan (DERIVED); the fleurs keep the shared carved shape at the drawn size (CONCEPT).
     const CR = spec.crest;
-    both(s => {
-      const zs = s > 0 ? [CR.from, CR.to] : [-CR.to, -CR.from], xm = (CR.front + CR.back) / 2;
-      block('Cresting balustrade base rail', S, [CR.front - .05, CR.back + .05], [E[1], 15.94], zs);
-      block('Cresting balustrade back upstand', W, [4.85, 4.95], [E[1], 16.1], zs);
-      for (const z of [CR.from - .1, CR.to + .1]) block('Cresting balustrade end post', S, [CR.front - .02, CR.back + .02], [15.94, 16.55], [s * z - .1, s * z + .1]);
-      const posts = CR.posts, mids = [CR.from + .09, ...posts.slice(0, -1).map((p, i) => (p + posts[i + 1]) / 2), CR.to - .09];
-      for (const p of posts) {
-        const z = s * p;
-        block('Cresting balustrade post', S, [CR.front, CR.back], [15.94, 16.45], [z - .11, z + .11]);
-        block('Cresting balustrade post cap', S, [CR.front - .03, CR.back + .03], [16.45, 16.55], [z - .14, z + .14]);
-        add('Cresting tall fleur-de-lis finial', S, tallFleur, facing(xm, 16.55, z), CARVED);
-      }
-      for (const p of mids.slice(1, -1)) {
-        const z = s * p;
-        add('Cresting baluster', S, K.turned([[.05, 0], [.075, .05], [.04, .14], [.06, .24], [.035, .33], [.07, .4], [.07, .44]], 14), TR(xm, 15.94, z));
-        add('Cresting small fleur-de-lis finial', S, smallFleur, facing(xm, 16.84, z), CARVED);
-      }
-      // Pointed arches from post to post, meeting under the small fleurs.
-      for (let i = 0; i < posts.length - 1; i++) for (const [from, to] of [[posts[i], (posts[i] + posts[i + 1]) / 2], [posts[i + 1], (posts[i] + posts[i + 1]) / 2]]) {
-        const d = to - from;
-        add('Cresting pointed arch', S, K.stem([[0, 16.55, s * from], [0, 16.72, s * (from + d * .45)], [0, 16.82, s * (from + d * .8)], [0, 16.86, s * to]].map(([, y, z]) => [xm, y, z]), .028, .02, 10, 5), null, CARVED);
-      }
-    });
+    {
+      const rib = FRONT.crestRib || [], byHandle = new Map(rib.map(r => [r[0], r]));
+      const arcPts = h => { const [, , u, v, r, a0, sp, hd] = byHandle.get(h); const n = Math.ceil(sp / 9); return Array.from({ length: n + 1 }, (_, i) => { const a = (a0 + sp * i / n) * Math.PI / 180; return [u + hd * r * Math.cos(a), v + r * Math.sin(a)]; }); };
+      const chain = handles => {
+        const runs = handles.map(arcPts), d = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1]), pts = [];
+        const nextEnds = runs[1] ? [runs[1][0], runs[1][runs[1].length - 1]] : [];
+        if (nextEnds.length && Math.min(...nextEnds.map(q => d(runs[0][0], q))) < Math.min(...nextEnds.map(q => d(runs[0][runs[0].length - 1], q)))) runs[0].reverse();
+        for (const run of runs) { if (pts.length && d(pts[pts.length - 1], run[0]) > d(pts[pts.length - 1], run[run.length - 1])) run.reverse(); pts.push(...run); }
+        return pts;
+      };
+      const plates = rib.length === 12 ? [chain(['C4B19D', 'C4B19B', 'C4B1C5', 'C4B1C7', 'C4B1C6', 'C4B19C']), chain(['C4B1C3', 'C4B1C2', 'C4B1C8', 'C4B1C9', 'C4B1C4', 'C4B155'])] : [];
+      const bigFleur = fleur(.33), littleFleur = fleur(.31);
+      both(s => {
+        const zs = s > 0 ? [CR.from, CR.to] : [-CR.to, -CR.from], xm = (CR.front + CR.back) / 2, sq = (name, h, y, z, m = S) => block(name, m, [xm - h, xm + h], y, [z - h, z + h]);
+        block('Cresting balustrade base rail', S, [CR.front - .05, CR.back + .05], [E[1], 15.94], zs);
+        block('Cresting balustrade back upstand', W, [4.85, 4.95], [E[1], 16.1], zs);
+        for (const z of [CR.from - .1, CR.to + .1]) block('Cresting balustrade end post', S, [CR.front - .02, CR.back + .02], [15.94, 16.55], [s * z - .1, s * z + .1]);
+        const posts = CR.posts, mids = posts.slice(0, -1).map((p, i) => (p + posts[i + 1]) / 2);
+        for (const p of posts) {
+          const z = s * p;
+          sq('Cresting narrow post', .0685, [15.94, 16.27], z);
+          sq('Cresting post ring', .083, [16.165, 16.195], z);
+          for (const [h, y] of [[.083, [16.27, 16.293]], [.1, [16.293, 16.335]], [.116, [16.335, 16.355]], [.132, [16.355, 16.383]]]) sq('Cresting narrow post cap', h, y, z);
+          for (const g of plates) slab('Cresting rib · E01B', S, new T.Shape(g.map(([u, v]) => new T.Vector2(z + u, v))), [xm - .06, xm + .06], TRACED, 4);
+          sq('Cresting fleur plinth', .055, [16.98, 17.06], z);
+          sq('Cresting fleur collar', .045, [17.06, 17.10], z);
+          add('Cresting big fleur-de-lis', S, bigFleur, facing(xm, 17.10, z, SC(1.4, 1, 1.4)), CARVED);
+        }
+        for (const p of mids) {
+          const z = s * p;
+          sq('Cresting wide post', .085, [15.94, 16.54], z);
+          for (const y of [[16.385, 16.42], [16.515, 16.54]]) sq('Cresting post ring', .105, y, z);
+          for (const [h, y] of [[.13, [16.54, 16.60]], [.145, [16.60, 16.62]], [.166, [16.62, 16.66]]]) sq('Cresting wide post cap', h, y, z);
+          add('Cresting fleur urn', S, K.turned([[.11, 0], [.075, .025], [.055, .055], [.05, .08], [.062, .085], [.066, .105], [.062, .125], [.05, .13]], 12), TR(xm, 16.66, z), CARVED);
+          add('Cresting small fleur-de-lis', S, littleFleur, facing(xm, 16.79, z, SC(1.5, 1, 1.4)), CARVED);
+        }
+      });
+    }
 
     // 8. Pinnacles on the central piers, front and back (+15.84 to +20.55)
     const pinnacle = (zc, [x0, x1], label) => {
@@ -489,13 +544,48 @@
       });
       block('Central aedicule pediment plinth', S, [3.84, 4.95], [21.29, 21.55], [-.711, .711]);
       block('Central aedicule cross pedestal', W, [3.95, 4.85], [21.55, 22.037], [-.48, .48]);
-      add('Central aedicule pedestal rosette', S, K.bloom({ r: .16, petals: 8, rings: 2, seg: 3 }), facing(3.94, 21.80, 0), CARVED);
-      for (const e of [-1, 1]) add('Central aedicule pedestal leaf', S, K.leaf({ len: .3, wid: .1, thick: .02, curl: .2, lobes: 0, seg: 4, fine: false }), facing(3.94, 21.80, e * .2, RZ(e * Math.PI / 2)), CARVED);
+      // E01B C49E85–C49EB0: a 0.61 m wide rosette with four long rays on the die (centre +21.787),
+      // which replaces the procedural bloom and two leaves.
+      const crossRosette = frontTrace('crossRosette', .01, false);
+      if (crossRosette) add('Central aedicule pedestal rosette · E01B', S, crossRosette, facing(3.95 - .01 - .002, 0, 0), TRACED);
+      else {
+        add('Central aedicule pedestal rosette', S, K.bloom({ r: .16, petals: 8, rings: 2, seg: 3 }), facing(3.94, 21.80, 0), CARVED);
+        for (const e of [-1, 1]) add('Central aedicule pedestal leaf', S, K.leaf({ len: .3, wid: .1, thick: .02, curl: .2, lobes: 0, seg: 4, fine: false }), facing(3.94, 21.80, e * .2, RZ(e * Math.PI / 2)), CARVED);
+      }
       block('Central aedicule cross pedestal cornice', S, [3.88, 4.92], [22.037, 22.155], [-.52, .52]);
       block('Central aedicule cross pedestal cornice', S, [3.94, 4.86], [22.155, 22.23], [-.42, .42]);
       block('Central aedicule cross pedestal cornice', S, [4.0, 4.80], [22.23, 22.364], [-.35, .35]);
-      pyramid('Central aedicule cross gablet', 4.40, 0, .35, [22.364, 22.645]);
-      add('Central cross neck', S, new T.CylinderGeometry(.06, .08, .07, 12), TR(4.40, 22.68, 0));
+      // Concave foot under the disc (E01B C49E04–C49E2A, 3 Nov 2026; until then a pyramid). The outer
+      // arcs (centre ±0.4407, +22.5728, r 0.2583) narrow it from ±0.289 at +22.364 to ±0.182 at +22.573;
+      // the inner arcs, 62 mm inside, are read as corner chamfers. Four chamfered blocks follow to +22.734
+      // and a gablet (C49E04–C49E0A) stands on each face. Square plan and chamfers are DERIVED.
+      {
+        const xc = 4.40, CH = .062, ring = (w, c) => [[w - c, w], [w, w - c], [w, c - w], [w - c, -w], [c - w, -w], [-w, c - w], [-w, w - c], [c - w, w]];
+        const loft = sections => { // [y, half, chamfer] rows → faceted octagonal skin, open top and bottom
+          const pos = [];
+          for (let i = 0; i < sections.length - 1; i++) {
+            const [ya, wa, ca] = sections[i], [yb, wb, cb] = sections[i + 1], A = ring(wa, ca), B = ring(wb, cb);
+            for (let j = 0; j < 8; j++) {
+              const k = (j + 1) % 8, a0 = [A[j][0], ya, A[j][1]], a1 = [A[k][0], ya, A[k][1]], b0 = [B[j][0], yb, B[j][1]], b1 = [B[k][0], yb, B[k][1]];
+              pos.push(...a0, ...a1, ...b0, ...a1, ...b1, ...b0); // outward winding
+            }
+          }
+          const g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(pos, 3)); g.computeVertexNormals(); return g;
+        };
+        const foot = [];
+        for (let i = 0; i <= 10; i++) { const y = 22.364 + (22.5728 - 22.364) * i / 10; foot.push([y, .4407 - Math.sqrt(.2583 ** 2 - (y - 22.5728) ** 2), CH]); }
+        add('Central cross concave foot · E01B', S, loft(foot), TR(xc, 0, 0), DRAWN);
+        const octo = (w, [y0, y1]) => { const s = new T.Shape(ring(w, CH).map(([a, b]) => new T.Vector2(a, b)));
+          return [new T.ExtrudeGeometry(s, { depth: y1 - y0, bevelEnabled: false }), place(RX(-Math.PI / 2), TR(xc, y0, 0))]; };
+        for (const [w, y] of [[.197, [22.5721, 22.6058]], [.224, [22.6058, 22.653]], [.1834, [22.653, 22.6935]], [.157, [22.6935, 22.734]]]) {
+          const [g, m] = octo(w, y); add('Central cross foot block · E01B', S, g, m, DRAWN);
+        }
+        // Gablets: outer rake extended to the foot base (±0.213), standing out to 0.27 from the axis on
+        // each face, with the drawn inner triangle (±0.158 to +22.572) raised 15 mm on the front.
+        const gab = (h, top) => new T.Shape([new T.Vector2(-h, 22.364), new T.Vector2(h, 22.364), new T.Vector2(0, top)]);
+        for (const r of [0, Math.PI / 2]) add('Central cross foot gablet · E01B', S, new T.ExtrudeGeometry(gab(.213, 22.6446), { depth: .54, bevelEnabled: false }), place(TR(0, 0, -.27), RY(r + Math.PI / 2), TR(xc, 0, 0)), DRAWN);
+        for (const r of [0, Math.PI / 2, Math.PI, -Math.PI / 2]) add('Central cross foot gablet · E01B', S, new T.ExtrudeGeometry(gab(.158, 22.572), { depth: .015, bevelEnabled: false }), place(TR(0, 0, .27), RY(r - Math.PI / 2), TR(xc, 0, 0)), DRAWN);
+      }
       add('Central cross disc', S, new T.SphereGeometry(.213, 20, 14), TR(4.40, AE.cross.ball, 0));
       const c0 = AE.cross.ball + .213, c1 = AE.cross.top, arm = 24.10;
       block('Central cross', crossMaterial, [4.34, 4.46], [c0, c1 - .1], [-.055, .055], DRAWN);

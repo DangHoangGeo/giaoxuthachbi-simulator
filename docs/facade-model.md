@@ -157,3 +157,40 @@ At the owner's request, the remaining painted-stripe flutes are replaced by the 
 - **Gable piers.** EW and E03 draw no flutes on the wing and rear gable piers. At the owner's direction ("all piers") they get the same field, narrowed to the pier. The owner confirmed on 3 November 2026 that they stay: USER CONFIRMED, not DRAWING SHOWN.
 
 The flute positions follow the model's pier centres, so they inherit the existing tower-pier offsets from the drawing.
+
+## Central front decoration traced from E01B · 3 November 2026
+
+**In development / Đang phát triển · Not for construction / Không dùng để thi công.** Owner direction: keep improving the decoration of the central front so that it follows the CAD design. The model was compared with E01B in full view and close up. The procedural carving that still stood in for drawn ornament is replaced as follows. Traced outlines are in `Thach_Bi_Viewer/detail-front-profile.js` (`window.CHURCH_DETAIL_PROFILE_FRONT`, E01B: u = (1666600.3 − x)/1000 less the origin given, v = world Y, handedness −1). They are drawn with the shared contour tube `towerSpandrel()`, placed just in front of their face. `scripts/verify_detail_front_source.py` checks every row against the DXF, and every row matches within 1e-6. `DWG_SOURCE_DIR` points it at another checkout's ignored source folder.
+
+| Element | Source (E01B handles) | Model | Status |
+| --- | --- | --- | --- |
+| Rose tracery in the tympanum (Ø 0.8 m, centre +13.709) | `rose`: C49977–C49A3E, 200 rows (twelve interlaced foils, hub, twelve spokes and ties), inside the ring circles C49973–C49976 | 12 mm tube, 6 sides, on the rose disc. The disc now takes the wall finish so that the trim tracery reads against it. It replaces the procedural `K.bloom`. | Outline DRAWN; relief, disc finish and whether the field is pierced or blind are CONCEPT |
+| Central bay pier capitals (±2.979, +15.035 to +15.333) | `bayCapital`: C49000–C490C1, 194 arcs (necking, abacus and entablature step lines dropped), u from Z 2.979 | 10 mm light tube on a plain bell (±0.51) that runs up to the entablature. The procedural `pilasterCapital` foliage and the separate abacus block are removed. | Outline DRAWN; bell depth DERIVED; relief CONCEPT |
+| Ground central pier capitals (±2.979, +8.774 to +9.07) | `groundCapital`: C4586D–C45929, 161 arcs, u from Z 2.979 | Same treatment, with the bell widened to ±0.55 to carry the drawn ±0.56 foliage under the crown-band break | Outline DRAWN; relief CONCEPT |
+| Ground pier pedestal rosette (centre +0.72) | `pedestalRosette`: C44804–C4481C, 25 arcs (quatrefoil and boss) | 6 mm light tube in the existing panel frames; replaces `K.bloom` | Outline DRAWN; relief CONCEPT |
+| Cross pedestal rosette (centre +21.787, 0.61 m wide) | `crossRosette`: C49E85–C49EB0, 43 arcs | 10 mm tube on the pedestal die (X 3.95); replaces the bloom and two leaves | Outline DRAWN; relief CONCEPT |
+| Concave foot under the disc (+22.364 to +22.734) | C49E27–C49E2A: outer arcs centre ±0.4407, +22.5728, r 0.2583 (±0.289 at the base to ±0.182); inner arcs 62 mm inside; blocks C49E0B–C49E26 at +22.572 / 22.606 / 22.653 / 22.693 / 22.734 (±0.197, 0.224, 0.183, 0.157); gablet lines C49E04–C49E0A | A faceted concave foot on a square plan with 62 mm corner chamfers, four chamfered blocks, and a gablet on each face (outer rake extended to ±0.213 at the base, inner triangle raised 15 mm). It replaces the pyramid and the turned neck. | Elevation DRAWN; square plan, chamfer reading and gablet depth DERIVED |
+| Triple-window supports | C4989A/C4989C/C49854/C49852 (centre pair, shaft ±0.165 about ±0.595 with three 0.11 m faces), C49898/C498AB/C498A9 (outer pair, ±0.11 about ±1.73), bands C49858–C498B0 at +11.781–11.851, caps +12.101–12.171 (±0.195 / 0.14) and +12.171–12.241 (±0.245 / 0.18), from C49855 onward | Square pilasters with a band and a two-step plain cap, as drawn. They replace the round colonnettes, which had carved capitals (18k triangles). The middle face of the centre pilasters stands 30 mm forward. | Elevation DRAWN; 0.10 m projection DERIVED (the old colonnettes' depth); middle-face projection CONCEPT |
+
+**Not changed and still open:**
+
+- **Cresting over the side bays.** Rebuilt in a second commit the same day (next section).
+- **Ball.** E01B draws the ball as a disc with a rim (r 0.2134 and an inner circle r 0.183). The model keeps a sphere.
+- **Other carving.** The side-niche and central-niche round column capitals stay procedural (see 2 November). The pedestal panel's three nested frames are still two square frames.
+- **Statues, glass art, lighting and equipment.** These are untouched. No equipment clash was found: the new pilasters occupy the old colonnettes' envelope.
+
+**Checks:** `verify_model.cjs` (façade 227,244 triangles < 230,000; the budget is unchanged because the removed colonnette capitals offset the traces), `verify_construction.cjs`, `verify_simulator.cjs --report --estimates` (exit 0; known unmet targets remain), `verify_detail_front_source.py`, `git diff --check`. Desktop day views were captured headless: whole front, rose, both capital types, pedestal rosette, triple window, and the cross top front and oblique. Exports in `output/pdf*` are stale for the front.
+
+### Side-bay cresting rebuilt from E01B · 3 November 2026
+
+The cresting over the side bays had its rhythm reversed against the drawing. The model had tall blocks with big fleurs on the post positions and turned balusters with small fleurs between them. E01B (H side, C4AFC6–C4B1C9 and the post lines about Z 4.405 and 4.716) draws the following:
+
+- **Narrow posts** on the `spec.crest.posts` positions: shaft ±0.0685, a ring at +16.165–16.195, and a stepped cap to +16.383 (±0.083 / 0.10 / 0.116 / 0.132). Each carries the **big fleur** on a plinth and collar (+16.98–17.10), up to about +17.41.
+- **Wide posts** midway between them: shaft ±0.085, rings at +16.385–16.42 and +16.515–16.54, and a cap to +16.66 (±0.13 / 0.145 / 0.166). Each carries an urn and the **small fleur** (+16.79 to about +17.09).
+- **Curved ribs.** Lower ribs spring from each narrow cap out to the wide caps, and upper ribs run from the wide posts up to the big fleur's base. Together they leave a pointed opening over every narrow post. The model closes the 12 traced rib arcs (`crestRib` in `detail-front-profile.js`, u from Z 4.40455, C4B19B/C4B19D/C4B19C/C4B1C3/C4B1C2/C4B155 and their mirrors C4B1C5/C4B1C7/C4B1C6/C4B1C9/C4B1C8/C4B1C4) into two plates, extrudes them 0.12 m, and repeats them on every narrow post on both sides.
+
+Status: the levels, widths and rib outlines are DRAWN. The square plan of the posts, the rib thickness and the urn profile are DERIVED. The fleurs keep the shared carved `fleur()` shape, scaled to the drawn height and width, and their ornate drawn outline is not reproduced (CONCEPT). The base rail, back upstand and end posts are unchanged. At the outer ends the ribs meet the pinnacle pedestal (Z ±3.54) and the tower pier (±7.10) about 20–40 mm inside them, where they are hidden.
+
+**Budget:** the façade has 229,316 triangles. The guard in `verify_model.cjs` rises from 230k to 240k, so that the shared crown and fleur geometry, which other passes edit, keeps some headroom.
+
+**Checks:** `verify_model.cjs`, `verify_construction.cjs`, `verify_simulator.cjs --report --estimates` (exit 0), `verify_detail_front_source.py` (`crestRib` 12 rows), `git diff --check`. Headless desktop day views were captured: cresting front and oblique, and the whole front.
