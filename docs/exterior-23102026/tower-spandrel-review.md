@@ -1,0 +1,17 @@
+# First decoration review: tower-front spandrel leaf
+
+**2 November 2026 · In development / Đang phát triển · Not for construction / Không dùng để thi công.** This review identifies the first component and its evidence. The model has not yet been changed.
+
+## Drawing and current model
+
+The source is the 23 October 2026 DWG, SHA-256 `2dc33f5dd0f9aa07cf9cf8b7867a55e214caf2d042df3b3c5dd9eebb48f7d4ae`: E01B, printed CAD sheet 1, H-tower front. Local volume 11 page 14 identifies the paired spandrel decoration as T12; it is a locator to the same CAD, not independent evidence. The right/left compositions frame the arch; the T12 guide requests an architect's full-size pattern, material and relief depth. Do not measure the PDF.
+
+A local read of the converted DXF identifies 75 ARC/LINE entities on layer `01`, handles `C44A60`–`C44AAA`, for one of the H-front corner compositions. Their combined 2D extent is approximately 1.295 m horizontally and 1.162 m vertically, Y +5.428 to +6.590 m. The extent is derived from the drawn lines, not a dimension printed by the architect. Transform E01B with `Z = -(x - 1666600.3)/1000`, `Y = (y + 515946.8)/1000`; model centre |Z| 10.153 m. ISSUE-R06 (interpreted mm versus `INSUNITS=1`) remains open. The enclosing great arch has spring +3.985 m and outer R1.955 m, handle `C449BD` in [tower witnesses](tower-witnesses.json).
+
+The current `Tower front spandrel spray` instances in [`towers.js`](../../Thach_Bi_Viewer/towers.js) are two procedural sprays per corner from [`exterior-ornament.js`](../../Thach_Bi_Viewer/exterior-ornament.js). They suggest the horizontal and descending arms, but their leaf and scroll contours are illustrative. The source is a single interwoven corner composition, with smaller inner details and a visibly different outline. Its second front corner should be checked against its own CAD entities before treating a mirror as exact; E02 outer-side ornament needs separate review. Depth, material, attachment, manufacture and the hidden face cannot be derived from the front elevation.
+
+## Publication hold before detailed transcription
+
+[Publication checklist H1](../open-source/publication-checklist.md) keeps the designers' DWG and rendered sheets out of Git, and states that only dimensions, levels and grid checks extracted from that DWG are committed. Reproducing the complete curved detail as model coordinates would commit more than those permitted extracts, and the viewer is copied to the public website. The [owner's display permission](../web/publication-permission.md) covers project-created development work but explicitly leaves third-party drawing rights unresolved. The owner and drawing authors' recorded permission, or another documented rights-cleared source for this detailed profile, is needed before committing a direct transcription. This review records the small set of identification and dimensional facts needed to make that decision; it does not contain the profile or the drawing image.
+
+Once rights are resolved, trace and verify this one component against the actual entities, compare both front corners separately, and implement it as a reusable local-coordinate component with its source/status metadata. Review face-on and oblique views in day/evening and visit mode, as well as source-to-model error, material and equipment clearance. Preserve all other ornaments and equipment. Source-drawn outline, interpolated 3D relief and engineering holds must be labelled separately; exact reproduction of the view will not establish an approved construction detail.
