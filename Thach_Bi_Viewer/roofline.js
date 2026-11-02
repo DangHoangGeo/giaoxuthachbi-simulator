@@ -72,11 +72,15 @@
     exterior.updateMatrixWorld(true);
     const K = window.CHURCH_CARVING.create(T);
     const { TR, RY, RZ, SC, place, merge } = K;
-    const { fleur, pilasterCapital, meanderGeo, pinnacleCrown, flutedField, drawnPier, drawnEntablature, traced } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const { fleur, pilasterCapital, meanderGeo, pinnacleCrown, flutedField, drawnPier, drawnEntablature, traced, towerSpandrel } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     // Owner, 3 Nov 2026: the wing gables follow the EW decoration; traced outlines are drawn with the
     // T12 contour tube (relief CONCEPT), drawn levels and widths as below, depths DERIVED.
     const EW = 'EW TRACED CARVING / RELIEF CONCEPT', EWD = 'EW DRAWN OUTLINE AND LEVELS / DERIVED DEPTH';
     // Large single pieces (crest, console, corner leaf, rose) keep the full tube; capitals use the light one.
+    // E03 outlines (detail-rear-profile.js): the lunette and arch leaves keep the full tube, the repeated
+    // crests and bay leaves the light one.
+    const rearGeo = {}, e03 = (key, stroke, big = false) => rearGeo[key] ||= towerSpandrel(window.CHURCH_DETAIL_PROFILE_REAR[key], stroke, big ? .001 : .003, big ? 6 : 3);
+    const E03C = 'E03 TRACED CARVING / RELIEF CONCEPT';
     const ewGeo = {}, ew = (key, stroke = .012) => ewGeo[key + stroke] ||= traced(key, stroke, !/^wing(Crest|Volute|Spandrel|Rose)$/.test(key));
     // Owner, 2 Nov 2026: every pier pinnacle takes the shared E01B crown, scaled uniformly to its envelope.
     const crown = pinnacleCrown(), crownScale = h => h / crown.boundingBox.max.y;
@@ -478,13 +482,26 @@
       f.slab('Rear gable wall · CAD silhouette', W, f.poly([[-l0[0], 7.0], [l0[0], 7.0], [l0[0], l0[1]], [l1[0], l1[1]], [h0[0], h0[1]], [h1[0], h1[1]], [-h1[0], h1[1]], [-h0[0], h0[1]], [-l1[0], l1[1]], [-l0[0], l0[1]]]), -.44, 0);
       for (const e of [-1, 1]) for (const P of [RG.corner, RG.cg, RG.de]) f.pier({ ...P, u: e > 0 ? P.u : [-P.u[1], -P.u[0]] }, .38, 'wingCapOuter');
       for (const e of [-1, 1]) {
-        const C = RG.crest, [c0, c1] = e > 0 ? C.u : [-C.u[1], -C.u[0]];
-        f.blk('Rear gable porch-end parapet', S, [c0, c1], C.band, [0, .32]);
-        add('Rear gable porch-end frieze', S, meanderGeo(c1 - c0, .18), f.at(c0, C.band[0] + .03, .32), CARVED);
-        for (let u = c0 + .25; u < c1 - .1; u += .3) add('Rear gable porch-end crest', S, fleur(C.top - C.band[1]), f.at(u, C.band[1], .16), CARVED);
+        const C = RG.crest, [c0, c1] = e > 0 ? C.u : [-C.u[1], -C.u[0]], m = SC(e, 1, 1);
+        // E03 porch-end cresting (LINEs D90C8E–D90C92): plain band, frieze of roundels and pointed
+        // ovals, fillet, then the traced scroll-and-palmette cresting standing on it to +7.613.
+        f.blk('Rear gable porch-end parapet', S, [c0, c1], [C.band[0], 6.935776], [0, .30], EWD);
+        f.blk('Rear gable porch-end parapet', S, [c0, c1], [6.935776, 7.015776], [0, .27], EWD);
+        f.blk('Rear gable porch-end parapet', S, [c0, c1], [7.015776, C.band[1]], [0, .32], EWD);
+        add('Rear gable porch-end cresting · E03', S, e03('rearPorchCrest', .009), f.at(0, 0, .25, m), E03C);
+        // Scallops and finials on both rakes (crest=false drops the shared fleur crest).
+        add('Rear gable rake cresting · E03', S, e03('rearRakeCrestLow', .012), f.at(0, 0, .21, m), E03C);
+        add('Rear gable rake cresting · E03', S, e03('rearRakeCrestUp', .012), f.at(0, 0, .21, m), E03C);
+        // Quarter fan on the wall beside the D/E pier, over the ground entablature (E03 ARCs D913BB–D913C9):
+        // a raised quarter disc to the outer ring r 1.2317 (relief DERIVED) carrying the traced fan.
+        const fan = new T.Shape(); fan.moveTo(0, 0); fan.absarc(0, 0, 1.2317, 0, Math.PI / 2, false); fan.lineTo(0, 0);
+        add('Rear gable lunette relief', W, new T.ExtrudeGeometry(fan, { depth: .03, bevelEnabled: false, curveSegments: 24 }), f.at(e * 3.935012, 6.323919, 0, SC(e, 1, 1)), EWD);
+        add('Rear gable lunette · E03', S, e03('rearLunette', .012, true), f.at(0, 0, .042, m), E03C);
+        add('Rear centre-arch spandrel leaf · E03', S, e03('rearArchLeaf', .012, true), f.at(0, 0, .012, m), E03C);
+        add('Rear bay corner leaf · E03', S, e03('rearBayLeaves', .01), f.at(0, 0, .012, m), E03C);
       }
-      f.rake(RG.rakes[0], .737353, .42, true, RG.rakePolygons[0]);
-      f.rake(RG.rakes[1], .59, .42, true, RG.rakePolygons[1]);
+      f.rake(RG.rakes[0], .737353, .42, false, RG.rakePolygons[0]);
+      f.rake(RG.rakes[1], .59, .42, false, RG.rakePolygons[1]);
       const rh = RG.rakes[1][1][0];
       f.slab('Rear gable top band', S, f.poly([[-rh, RG.band[0]], [rh, RG.band[0]], [RG.bandHalf, RG.band[1]], [-RG.bandHalf, RG.band[1]]]), 0, .42);
       f.rose(RG.rose, RG.roseRings);

@@ -104,3 +104,15 @@ Các hàng trụ ghi trong `spec.rear.cg/de.rows` theo `[v0, v1, nửa bề rộ
 Gỡ khỏi nhóm bundle đầu nhà: hai trụ giả hình D/E (cả đoạn trên +6,324–11,25), thanh `Schematic beam` (cả dải tối chạy theo mái dốc), các khối chóp góc và hàng `Schematic end eave ornament`. Tường, năm cửa và phần cửa của bundle giữ nguyên.
 
 **Va chạm cần phối hợp (không dời thiết bị):** đèn lối đi `L188`/`L195` tại (53,20; 5,20; ±4,50) nằm ngay dưới răng diềm mới (đáy +5,422, nhô tới X ≈ 53,40); khoảng hở đứng khoảng 0,2 m, cần kiểm bằng kích thước đèn thật. Dây đèn lễ `L201`/`L212` tại X 53,72 chạy trước mặt diềm dốc dưới (mặt diềm X 53,66).
+
+**Nét chạm riêng của E03 (`detail-rear-profile.js`, `CHURCH_DETAIL_PROFILE_REAR`):** các dòng giữ handle gốc, u tuyệt đối phía H (đối xứng sang B), v là cao độ thế giới, chiều tay +1; `scripts/verify_detail_rear_source.py` đọc lại từng handle (sai khác lớn nhất 5·10⁻¹⁰). Bộ lọc là hộp u–v, bỏ đoạn dài, và với khám đỉnh bỏ các đối tượng trùng EW.
+
+| Khóa | Nội dung | Vùng lọc | Dòng | Thay cho |
+| --- | --- | --- | --- | --- |
+| `rearPorchCrest` | Diềm hoa lá cuộn và hàng hoa đầu đỉnh trên lan can đầu hiên, cùng hàng hạt tròn/hình thoi của dải | u 7,645–10,235; v 6,94–7,62; đoạn ≤ 1 m | 922 | Chữ Vạn và hàng hoa huệ minh họa |
+| `rearRakeCrestLow`, `rearRakeCrestUp` | Các cung lượn và chóp hoa đứng trên hai mái dốc | Trên mặt trên diềm dốc (−3 mm đến +1,3 m); u 4,0–6,875 và 1,43–3,055; bỏ nét khám trùng EW | 427 + 155 | Hoa huệ chung của `rake()` (truyền `crest=false` cho đầu nhà; cánh ngang không đổi) |
+| `rearLunette` | Quạt một phần tư sát trụ D/E trên diềm trệt, vòng ngoài r 1,2317 | u 3,935–5,2; v 6,3239–7,57 | 60 | Chưa có |
+| `rearArchLeaf` | Lá góc trên vòm giữa | u 1,75–3,26; v 6,42–7,6; bỏ cung vòm lớn | 73 | Chưa có |
+| `rearBayLeaves` | Bốn lá góc dưới diềm trệt ở hai gian cửa sổ | u 3,94–10,235; v 4,25–5,38 | 300 | Chưa có |
+
+Dải lan can đầu hiên dùng ba mức vẽ +6,875776 / 6,935776 / 7,015776 / 7,055776 (LINE `D90C8E`–`D90C92`). Quạt có tấm nền một phần tư đĩa dày 30 mm (DERIVED). Nét vẽ được thể hiện bằng ống đường viền (độ nổi CONCEPT); tam giác thêm khoảng 84 nghìn. Lá góc gian cửa sổ phía trong nằm ngay quanh đèn lối đi `L188`/`L195` (Z ±4,50; Y 5,20): đèn không đổi, cần bên chiếu sáng quyết định đèn ẩn hoặc dời trong bước phối hợp.
