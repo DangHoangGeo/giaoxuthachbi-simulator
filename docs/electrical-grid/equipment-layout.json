@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-11-01T22:31:22.799Z",
+  "savedAt": "2026-11-02T13:38:40.472Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -63,6 +63,7 @@
     "centreReadingRevision": "2026-11-01-centre-reading-balance-1",
     "entranceInteriorRevision": "2026-11-01-entrance-interior-1",
     "rearSideLightsRevision": "2026-11-02-rear-side-lights-1",
+    "festivalTerraceRevision": "2026-11-02-festival-terrace-removed-1",
     "eveningExposureRevision": "2026-10-09-evening-160",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
@@ -4570,30 +4571,6 @@
       "params": {
         "length": 6.700000000000001,
         "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L219",
-      "type": "bulbString",
-      "name": "Festival lights · front terrace between the towers",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        2.15,
-        8.5,
-        0
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 14.8,
-        "slope": 0,
         "spacing": 0.6
       },
       "shadow": false

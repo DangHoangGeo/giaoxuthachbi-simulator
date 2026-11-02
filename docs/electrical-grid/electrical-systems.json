@@ -21143,7 +21143,6 @@
         "L205",
         "L206",
         "L207",
-        "L219",
         "L220"
       ],
       "color": "#dc9e29",
@@ -22174,58 +22173,6 @@
       "coverPaths": [],
       "reviewRequired": false,
       "length": 22.428,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L219",
-      "name": "L7 → Festival lights · front terrace between the towers",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L219"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 28.04,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          0
-        ],
-        [
-          2.35,
-          8.5,
-          0
-        ],
-        [
-          2.15,
-          8.5,
-          0
-        ]
-      ],
-      "method": "entrance-wall",
-      "installation": "Concealed entrance wall band, solid pier and local termination.",
-      "coverPaths": [],
-      "length": 10.080000000000002,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -42320,31 +42267,6 @@
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
-      "id": "L219",
-      "name": "Festival lights · front terrace between the towers",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        14.886602401733398
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 26,
-      "specs": "26 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 14.8 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        2.15,
-        8.5,
-        0
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
       "id": "L220",
       "name": "Festival flood · rear gable B",
       "type": "flood",
@@ -48640,23 +48562,6 @@
         "L207",
         "L217",
         "L218"
-      ]
-    },
-    {
-      "board": "DB2",
-      "circuit": "L7",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        14.886602401733398
-      ],
-      "specs": "26 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 14.8 m strand",
-      "wattsEachEstimate": 26,
-      "itemIds": [
-        "L219"
       ]
     },
     {

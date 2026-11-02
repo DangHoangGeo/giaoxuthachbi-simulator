@@ -391,6 +391,8 @@
       });
       // Belfry and dome lit from the +23.14 m ledge of each tower.
     }
+    // Retired 2 Nov 2026 (owner): it crossed the E01B dentil course of the central cornice. The call
+    // stays so every later ID keeps its number; L219 is filtered out below (festivalTerraceRevision).
     strand('front terrace between the towers', [2.15, 8.5, 0], 0, 14.8);
     for (const s of [-1, 1]) {
       // Rear gable from the rear corners of the veranda roofs.
@@ -649,7 +651,7 @@
     });
     window.CHURCH_VERANDA_REVIEW?.apply(items,GEO);
     window.CHURCH_DOORHEAD_REVIEW?.apply(items,GEO,SIM);
-    return items.filter(it => !['D299','D305',...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id) && !parishRetiredNames.test(it.name));
+    return items.filter(it => !['D299','D305','L219',...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id) && !parishRetiredNames.test(it.name));
   }
 
   const columnWashRevision = '2026-11-01-column-up-down-1';
@@ -703,6 +705,14 @@
       if (!it.pos.every((v,i)=>Math.abs(v-p[i])<0.005) || Math.abs(it.mountYaw??0)>0.05 || Math.abs(it.yaw-oldAim.yaw)>0.05 || Math.abs(it.tilt-oldAim.tilt)>0.05 || Math.abs(it.lumens-(outer?6000:3300))>0.5 || Math.abs(it.beam-(outer?44:50))>0.5) return it;
       return {...it, name:raw.name, pos:[...raw.pos], yaw:raw.yaw, tilt:raw.tilt, mountYaw:raw.mountYaw, lumens:raw.lumens, beam:raw.beam, note:it.note ?? raw.note};
     });
+  }
+
+  // Owner, 2 Nov 2026: the festival string across the front terrace (L219, circuit L7) is removed.
+  // Only the untouched default leaves a saved layout; a moved, renamed or retuned string is kept.
+  const festivalTerraceRevision = '2026-11-02-festival-terrace-removed-1';
+  function upgradeFestivalTerrace(items) {
+    return items.filter(it => !(it.id === 'L219' && it.type === 'bulbString' && it.name === 'Festival lights · front terrace between the towers'
+      && it.circuit === 'L7' && [2.15, 8.5, 0].every((v, i) => Math.abs(it.pos[i] - v) < 0.005) && Math.abs((it.params?.length ?? 0) - 14.8) < 0.005));
   }
 
   // Additive one-time issue for saved layouts, as for the outlets below.
@@ -1457,5 +1467,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { rearSideLightsRevision, upgradeRearSideLights, entranceInteriorRevision, upgradeEntranceInterior, centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { festivalTerraceRevision, upgradeFestivalTerrace, rearSideLightsRevision, upgradeRearSideLights, entranceInteriorRevision, upgradeEntranceInterior, centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();
