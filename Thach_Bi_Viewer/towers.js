@@ -17,7 +17,7 @@
   const DRAWN = 'TRACED CAD ELEVATION / SCHEMATIC DEPTH';
   const CARVED = 'TRACED CAD ELEVATION / ILLUSTRATIVE CARVING';
   const spec = {
-    revision: '2026-10-31-cad-towers-6',
+    revision: '2026-11-02-tower-leaf-1',
     centre: 10.153, core: 2.45, wall: 0.14, // tower centre |Z|; core half-width; half wall thickness
     top: 8.39,
     // ENG-043 (31 Oct 2026): every corner pier is square, as E01B and E02 draw it. Ground shaft
@@ -593,7 +593,9 @@
     const stats = { piers: 0, blindArches: 0, upperFronts: 0, removedBundleMeshes: remove.length };
 
     // ---- Shared carving (also used by roofline.js) ----
-    const { fleur, pilasterCapital, meanderGeo, spray } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const { fleur, pilasterCapital, meanderGeo, towerSpandrel } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const leafProfiles = window.CHURCH_TOWER_SPANDREL_PROFILE;
+    const towerLeaves = { outer: towerSpandrel(leafProfiles.outer), inner: towerSpandrel(leafProfiles.inner) };
     // Each tower face has its own frame: u along the face, v up, w out of the face.
     // face(s, kind) → function mapping (u, v, w) to a world matrix and box helpers.
     const both = fn => { for (const s of [-1, 1]) fn(s); };
@@ -866,11 +868,11 @@
         block('Tower blind-arch colonnette base', S, [wallFace - .26, wallFace], [0, .3], [tcol - .14, tcol + .14]);
         block('Tower blind-arch colonnette capital', S, [wallFace - .27, wallFace], [B.spring - .35, B.spring], [tcol - .16, tcol + .16]);
         add('Tower blind-arch capital foliage', S, pilasterCapital(.3, .3), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .27, B.spring - .33, Z(tcol))), CARVED);
-        // Leaf sprays in the spandrels.
-        // E01B draws an L-shaped acanthus spray in each upper corner of the bay (t 0.55–1.85,
-        // +5.35 to +6.6): one spray under the architrave, one down the pier side.
-        add('Tower front spandrel spray', S, spray(1.15), place(SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .02, 6.12, Z(e * 1.72))), CARVED);
-        add('Tower front spandrel spray', S, spray(1.1), place(RZ(-Math.PI / 2), SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .02, 6.55, Z(e * 1.5))), CARVED);
+        // E01B H-front outlines: independently drawn inner/outer corners. B repeats
+        // the H profiles (DERIVED); stroke thickness and relief remain conceptual.
+        add('Tower front spandrel spray', S, towerLeaves[e > 0 ? 'outer' : 'inner'],
+          place(SC(e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .025, 0, zc)),
+          'E01B H FRONT TRACED / B REPEATED DERIVED / RELIEF CONCEPT');
       }
       // Archivolt: three rings, the outer one proud.
       for (let i = 0; i < A.rings.length - 1; i++) slab(i ? 'Tower front archivolt' : 'Tower front archivolt inner ring', i % 2 ? W : S, 'front', ring(0, A.spring, A.rings[i], A.rings[i + 1], 0), 0, .1 + i * .01, DRAWN, 48);

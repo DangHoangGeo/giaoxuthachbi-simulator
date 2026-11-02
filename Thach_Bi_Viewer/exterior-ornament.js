@@ -41,7 +41,44 @@
       for (const [u, v, a] of [[h * .2, h * .12, .6], [h * .45, h * .22, 2.3], [h * .62, h * .12, .9], [h * .82, h * .22, 2.1]]) parts.push([blade, place(RZ(-a), TR(u, v, 0))]);
       return merge(parts);
     };
-    return { fleur, pilasterCapital, meanderGeo, spray };
+    // T12 traces from the two independently drawn E01B H-front corners.
+    // Tubes visualize inked contours only: stroke radius and relief are CONCEPT.
+    const towerSpandrel = (profile, strokeRadius = .008) => {
+      const vertices = [], indices = [], radial = 6;
+      const tube = (points, normals) => {
+        const base = vertices.length / 3;
+        for (let i = 0; i < points.length; i++) for (let j = 0; j < radial; j++) {
+          const a = 2 * Math.PI * j / radial, c = strokeRadius * Math.cos(a);
+          vertices.push(points[i][0] + normals[i][0] * c, points[i][1] + normals[i][1] * c, strokeRadius * Math.sin(a));
+        }
+        for (let i = 0; i < points.length - 1; i++) for (let j = 0; j < radial; j++) {
+          const a = base + i * radial + j, b = base + i * radial + (j + 1) % radial, c = a + radial, d = b + radial;
+          indices.push(a, b, d, a, d, c);
+        }
+      };
+      for (const row of profile) {
+        const points = [], normals = [];
+        if (row[1] === 'A') {
+          const [, , u, v, r, start, span, handedness] = row;
+          const steps = Math.max(2, Math.ceil((span * Math.PI / 180) / Math.min(Math.PI / 18, 2 * Math.acos(Math.max(-1, 1 - .0002 / r)))));
+          for (let i = 0; i <= steps; i++) {
+            const a = (start + span * i / steps) * Math.PI / 180;
+            points.push([u + handedness * r * Math.cos(a), v + r * Math.sin(a)]);
+            normals.push([-Math.cos(a), -handedness * Math.sin(a)]);
+          }
+        } else {
+          const [, , x0, y0, x1, y1] = row, dx = x1 - x0, dy = y1 - y0, length = Math.hypot(dx, dy);
+          if (!length) continue;
+          points.push([x0, y0], [x1, y1]); normals.push([-dy / length, dx / length], [-dy / length, dx / length]);
+        }
+        tube(points, normals);
+      }
+      const g = new T.BufferGeometry();
+      g.setAttribute('position', new T.Float32BufferAttribute(vertices, 3));
+      g.setIndex(indices); g.computeVertexNormals();
+      return g;
+    };
+    return { fleur, pilasterCapital, meanderGeo, spray, towerSpandrel };
   }
 
   window.CHURCH_EXTERIOR_ORNAMENT = { create };
