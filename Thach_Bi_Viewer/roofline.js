@@ -322,6 +322,28 @@
 
     // ---- Porch parapets: balustrade on the porch cornice, pedestal and pinnacle on every axis ----
     const PP = spec.parapet;
+    // E02 flat cut baluster (detail-sides-profile.js parapetBaluster, u from its axis, v world level,
+    // +6.375–6.925 between the drawn plinth and rail), 0.25 m apart and 0.625 m clear of each axis as
+    // drawn; its closed outline is cut as a 0.12 m slab (DERIVED depth) with the centre ring as a boss.
+    // Arc steps hold a sagitta of 12 mm (at most 90°) seen from the ground 7 m below: a display bound, not a cutting tolerance.
+    const balusterGeo = (() => {
+      const SD = window.CHURCH_DETAIL_PROFILE_SIDES, pts = [];
+      let first = 0;
+      for (const row of SD.parapetBaluster) {
+        const [, , u, v, r, a, span, h] = row, n = Math.max(1, Math.ceil(span / Math.min(90, 2 * Math.acos(Math.max(-1, 1 - .012 / r)) * 180 / Math.PI)));
+        let seg = Array.from({ length: n + 1 }, (_, i) => { const t = (a + span * i / n) * Math.PI / 180; return new T.Vector2(u + h * r * Math.cos(t), v + r * Math.sin(t)); });
+        const near = p => Math.min(seg[0].distanceTo(p), seg.at(-1).distanceTo(p));
+        if (pts.length && pts.length === first && near(pts[0]) < near(pts.at(-1))) pts.reverse(); // orient the first arc
+        if (pts.length && seg[0].distanceTo(pts.at(-1)) > seg.at(-1).distanceTo(pts.at(-1))) seg.reverse();
+        pts.push(...(pts.length ? seg.slice(1) : seg));
+        if (!first) first = pts.length;
+      }
+      if (pts[0].distanceTo(pts.at(-1)) < .003) pts.pop();
+      const depth = .12, ring = SD.parapetBalusterRing[0];
+      const plate = new T.ExtrudeGeometry(new T.Shape(pts), { depth, bevelEnabled: false });
+      const boss = new T.CylinderGeometry(ring[4], ring[4], depth + .024, 8);
+      return { depth, geometry: merge([[plate, TR(0, 0, -depth / 2)], [boss, place(K.RX(Math.PI / 2), TR(ring[2], ring[3], 0))]]) };
+    })();
     for (const s of [-1, 1]) {
       const zc = s * PP.z;
       for (const [from, to] of PP.runs) {
@@ -338,8 +360,8 @@
           const x0 = x + P, x1 = A[keys[i + 1]] - P;
           blk('Porch parapet plinth', S, [x0, x1], [PP.y[0], PP.y[0] + PP.plinth], zr(PP.half + .03));
           blk('Porch parapet top rail', S, [x0, x1], [PP.y[1] - PP.rail, PP.y[1]], zr(PP.half + .02));
-          const n = Math.max(2, Math.round((x1 - x0) / .21));
-          for (let k = 1; k < n; k++) { add('Porch parapet baluster', S, new T.CylinderGeometry(.05, .07, PP.y[1] - PP.y[0] - PP.plinth - PP.rail, 10), TR(x0 + (x1 - x0) * k / n, (PP.y[0] + PP.plinth + PP.y[1] - PP.rail) / 2, zc)); stats.balusters++; }
+          const L = A[keys[i + 1]] - x, n = Math.floor((L - 1.25) / .25 + 1e-6) + 1, u0 = x + (L - (n - 1) * .25) / 2;
+          for (let k = 0; k < n; k++) { add('Porch parapet baluster · E02 flat cut', S, balusterGeo.geometry, TR(u0 + k * .25, 0, zc), CARVED); stats.balusters++; }
         }
       }
     }

@@ -110,7 +110,7 @@
     root.userData = { status: DRAWN, source: SOURCE, revision: spec.revision };
     exterior.add(root);
     const K = window.CHURCH_CARVING.create(T);
-    const { TR, RY, place, merge } = K;
+    const { TR, RY, SC, place, merge } = K;
     const ORN = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     const bins = new Map();
     const add = (name, material, geometry, matrix = null, status = DRAWN) => {
@@ -160,7 +160,9 @@
     const C = spec.column, AR = spec.arch, G = spec.guard;
     const PIER = 'E02/EW PIER OUTLINE AND LEVELS / DERIVED DEPTH · ENGINEERING HOLD', PIER_CARVED = 'E02/EW TRACED CARVING / RELIEF CONCEPT';
     const pier = ORN.drawnPier({ bottom: spec.floor, face: C.half + C.strip, wrap: true });
-    const stats = { columns: 0, arches: 0, guardedBays: 0, openBays: 0, beams: 0 };
+    const stats = { columns: 0, arches: 0, guardedBays: 0, openBays: 0, beams: 0, leaves: 0 };
+    // Traced E02 corner leaf (detail-sides-profile.js sideLeaf, u from the pier axis, left of the pier).
+    const leaf = ORN.towerSpandrel(window.CHURCH_DETAIL_PROFILE_SIDES.sideLeaf, .01, .003, 3);
 
     for (const s of [-1, 1]) {
       const zc = s * spec.lineZ, z0 = zc - C.half, z1 = zc + C.half, out = s * (spec.lineZ + C.half);
@@ -180,7 +182,12 @@
           slabXY('Porch arcade column and arch spandrel · cast concrete, plastered', W, wall, [z0, z1]);
           // Arch moulding on both faces and a keystone bloom at the crown.
           for (const [a, b] of [[z1, z1 + .05], [z0 - .05, z0]]) slabXY('Porch arch moulding', S, pointedBand(cx, half, AR, .12), [a, b], DRAWN, 12);
-          stats.arches++;
+          // E02 corner leaves in the spandrel beside each pier (+4.39–5.21, 0.48–1.39 m from the pier
+          // axis), outer face only. E02 draws them on its wall; on the open arcade they clear the arch
+          // moulding by at least 0.15 m. The right-hand leaf is the drawn mirror.
+          for (const [px, e] of [[xb, -1], [xa, 1]])
+            add('Porch spandrel carving · E02 corner leaf', S, leaf, place(SC(-e * s, 1, 1), s < 0 ? RY(Math.PI) : new T.Matrix4(), TR(px, 0, s * (spec.lineZ + C.half + .002))), PIER_CARVED);
+          stats.arches++; stats.leaves += 2;
           // Guard between the columns, except where the outside stairs land.
           if (spec.stairBays.some(c => Math.abs(c - cx) < .6)) { stats.openBays++; continue; }
           const g0 = cx - half, g1 = cx + half;
