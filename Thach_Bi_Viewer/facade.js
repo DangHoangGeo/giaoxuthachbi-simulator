@@ -15,7 +15,7 @@
   // World axes: X from axis 1 toward the sanctuary (the street side is smaller X), Y up from the
   // nave floor, Z from the D/E midpoint, positive toward H. The facade is symmetric about Z 0.
   const spec = {
-    revision: '2026-11-02-cad-facade-aedicule-5',
+    revision: '2026-11-02-cad-facade-fluted-6',
     cut: 8.45, // bundle meshes wholly above this level are superseded
     // Ground-storey arch spandrels, owner 2 Nov 2026: E01B draws the tower T12 leaf (75 entities) at full
     // size over the central portal and both side-bay arches; the bundle's flat sprays are replaced.
@@ -41,7 +41,7 @@
     // E01B (shaft Z ±2.489–3.469; flutes 2.844–3.114) and P05 (front face X 1.561, wall 2.225). The
     // pedestal steps out as the tower piers do, to the same +1.848 top; only its four lowest band levels
     // differ. [y0, y1, projection beyond the shaft face, material]; the cyma bands are one mean step.
-    ground: { half: 0.49, front: 1.561, back: 2.6, top: 8.39, flutes: [2.05, 8.2], fluteStep: 0.11,
+    ground: { half: 0.49, front: 1.561, back: 2.6, top: 8.39, flutes: [1.948, 8.505], // E01B flute ends; field ±0.27
       // Entrance steps between the towers, section A-A D7E712–D7E716 and plan P05: three 0.16 m risers
       // at X 1.321, 1.551 and 1.781 from the −0.48 forecourt up to ±0 (the bundle had four 0.12 m
       // risers from X 0.99, which left the pier bases standing above the treads).
@@ -201,10 +201,6 @@
       block(name, S, [xFront - .02, xFront + depth], [y1 - h * .12, y1], [zc - half * 1.08, zc + half * 1.08]);
       add(name + ' foliage', S, pilasterCapital(half * 2, h * .88), facing(xFront + .03, y0, zc), CARVED);
     };
-    // Three flutes on a pilaster face: shadowed grooves read on the face.
-    const flutes = (name, zc, step, [y0, y1], xFront) => {
-      for (const k of [-1, 0, 1]) block(name, D, [xFront - .004, xFront + .01], [y0, y1], [zc + k * step - .022, zc + k * step + .022]);
-    };
     // Niche hood: the back half of a cylinder and a quarter sphere over it.
     const hood = (name, zc, half, [y0, spring], x) => {
       add(name, W, new T.CylinderGeometry(half, half, spring - y0, 20, 1, true, 0, Math.PI), TR(x, (y0 + spring) / 2, zc));
@@ -221,17 +217,10 @@
     };
     const pyramid = (name, x, zc, half, [y0, y1], depthHalf = half) =>
       add(name, S, new T.ConeGeometry(Math.SQRT2, 1, 4, 1), place(RY(Math.PI / 4), SC(depthHalf, y1 - y0, half), TR(x, (y0 + y1) / 2, zc)));
-    // Fluted field as E01B draws it on the upper piers: a raised panel with three round-ended flutes
-    // (r 25 mm, 110 mm apart) cut through it, so the grooves read by shadow, not as painted stripes.
-    const flutedPanel = (name, zc, half, [y0, y1], [f0, f1], xFront, depth = .03) => {
-      const s = rect(zc - half, zc + half, y0, y1), r = .025;
-      for (const k of [-1, 0, 1]) {
-        const c = zc + k * .11, h = new T.Path();
-        h.moveTo(c + r, f0 + r); h.lineTo(c + r, f1 - r); h.absarc(c, f1 - r, r, 0, Math.PI, false);
-        h.lineTo(c - r, f0 + r); h.absarc(c, f0 + r, r, Math.PI, Math.PI * 2, false); s.holes.push(h);
-        block(name + ' bed', S, [xFront - .002, xFront], [f0, f1], [c - r, c + r]);
-      }
-      slab(name, W, s, [xFront - depth, xFront], undefined, 8);
+    // Shared E01B fluted field (exterior-ornament.js) on a pier face at xFront.
+    const flutedPanel = (name, zc, half, y, f, xFront) => {
+      const g = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K).flutedField({ half, y, flutes: f });
+      add(name, W, g.field, facing(xFront, 0, zc)); add(name + ' bed', S, g.bed, facing(xFront, 0, zc));
     };
     // Shared pinnacle crown (E01B aedicule piers), its gablet base on the pinnacle cap.
     const crownGeo = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K).pinnacleCrown();
@@ -284,7 +273,7 @@
         block('Central ground pier pedestal panel', S, [pf - .025, pf], [y0, y1], [zc + z0, zc + z1]);
       add('Central ground pier pedestal rosette', S, K.bloom({ r: .1, petals: 8, rings: 1, seg: 3 }), facing(pf - .01, (p0 + p1) / 2, zc), CARVED);
       block('Central ground pier shaft', W, [G.front, G.back], [1.848, G.top], [zc - G.half, zc + G.half]);
-      flutes('Central ground pier flute', zc, G.fluteStep, G.flutes, G.front);
+      flutedPanel('Central ground pier fluted panel', zc, .27, [1.848, 8.605], G.flutes, G.front);
       // Frieze block and capital break forward with the pier (until 31 Oct 2026 set back at 2.12/2.08).
       block('Central pier frieze block', W, [G.front - .02, 2.6], [8.39, C.corona[0]], [zc - .5, zc + .5]);
       // Owner, 2 Nov 2026: no empty slots over the piers. The corona and crown band break forward over
@@ -319,7 +308,7 @@
       block('Central bay pier torus moulding', S, [1.70, 2.4], [10.2, 10.35], [zc - .57, zc + .57]);
       block('Central bay pier shaft', W, [P.front, P.back], [10.35, 14.95], [zc - P.half, zc + P.half]);
       block('Central bay pier core', W, [2.9, P.back], [Y0, Y1], [s > 0 ? 2.5 : -3.614, s > 0 ? 3.614 : -2.5]);
-      flutes('Central bay pier flute', zc, .13, [10.5, 14.75], P.front);
+      flutedPanel('Central bay pier fluted panel', zc, .235, [10.401, 14.893], [10.501, 14.793], P.front); // E01B field ±0.235
       block('Central bay pier necking', S, [P.front - .03, 2.6], [14.95, 15.0], [zc - .47, zc + .47]);
       capital('Central bay pier capital', zc, .51, [15.0, Y1], 2.22, .4);
     });

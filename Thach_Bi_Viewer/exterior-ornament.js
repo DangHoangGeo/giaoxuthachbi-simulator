@@ -1,7 +1,7 @@
 /* Exterior ornament generators, metres. See docs/exterior-23102026/decoration-inventory.md.
    Visual proxies only; source outlines and engineering holds remain in the owning records. */
 (() => {
-  // Reusable illustrative exterior ornament: fleur-de-lis finial, pinnacle crown, flat foliate pilaster capital,
+  // Reusable illustrative exterior ornament: fleur-de-lis finial, pinnacle crown, fluted field, flat foliate pilaster capital,
   // Greek-key frieze and a leaf spray, each built facing +Z with its base at the origin.
   function create(T, K) {
     const { TR, RX, RZ, SC, place, merge } = K;
@@ -78,6 +78,21 @@
       g.setIndex(indices); g.computeVertexNormals();
       return g;
     };
+    // Fluted field as E01B draws every fluted pier (2 Nov 2026 survey of its flute arcs): a raised
+    // panel with three round-ended flutes, r 25 mm and 110 mm apart, cut through it. Built facing +Z
+    // from the wall face (z 0) to the field face (z depth), x across the pier, y = world level.
+    // Returns the field and the groove beds, so each can take its own material.
+    const flutedField = ({ half, y: [y0, y1], flutes: [f0, f1], step = .11, r = .025, depth = .03 }) => {
+      const s = new T.Shape(), beds = [];
+      s.moveTo(-half, y0); s.lineTo(half, y0); s.lineTo(half, y1); s.lineTo(-half, y1); s.lineTo(-half, y0);
+      for (const k of [-1, 0, 1]) {
+        const c = k * step, h = new T.Path();
+        h.moveTo(c + r, f0 + r); h.lineTo(c + r, f1 - r); h.absarc(c, f1 - r, r, 0, Math.PI, false);
+        h.lineTo(c - r, f0 + r); h.absarc(c, f0 + r, r, Math.PI, Math.PI * 2, false); s.holes.push(h);
+        beds.push([new T.BoxGeometry(2 * r, f1 - f0, .002), TR(c, (f0 + f1) / 2, .001)]);
+      }
+      return { field: new T.ExtrudeGeometry(s, { depth, bevelEnabled: false, curveSegments: 8 }), bed: merge(beds) };
+    };
     // Pinnacle crown as E01B draws it on the central aedicule piers (C4A086–C4A092, C49F98–C4A054):
     // a gablet, a square core with a colonnette on each corner under a small fleur, and a tapered
     // spire under the big fleur. Base centre at the origin, 1.68 m high at scale 1;
@@ -103,7 +118,7 @@
       crownCache = merge(parts); crownCache.computeBoundingBox();
       return crownCache;
     };
-    return { fleur, pilasterCapital, meanderGeo, spray, towerSpandrel, pinnacleCrown };
+    return { fleur, pilasterCapital, meanderGeo, spray, towerSpandrel, pinnacleCrown, flutedField };
   }
 
   window.CHURCH_EXTERIOR_ORNAMENT = { create };

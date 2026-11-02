@@ -61,7 +61,7 @@
     exterior.updateMatrixWorld(true);
     const K = window.CHURCH_CARVING.create(T);
     const { TR, RY, RZ, SC, place, merge } = K;
-    const { fleur, pilasterCapital, meanderGeo, pinnacleCrown } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const { fleur, pilasterCapital, meanderGeo, pinnacleCrown, flutedField } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     // Owner, 2 Nov 2026: every pier pinnacle takes the shared E01B crown, scaled uniformly to its envelope.
     const crown = pinnacleCrown(), crownScale = h => h / crown.boundingBox.max.y;
     const A = data.longitudinal;
@@ -177,7 +177,10 @@
         const [u0, u1] = P.u, um = (u0 + u1) / 2, half = (u1 - u0) / 2;
         if (P.base) blk('Gable pier base below upper shaft', W, [u0, u1], P.base, [0, d]);
         blk('Gable pier shaft', W, [u0, u1], P.shaft, [0, d]);
-        for (const k of [-1, 0, 1]) blk('Gable pier flute', D, [um + k * half * .4 - .02, um + k * half * .4 + .02], [P.shaft[0] + .2, P.shaft[1] - .15], [d, d + .012]);
+        // EW and E03 draw no flutes on these piers; the shared E01B fluted field is repeated here
+        // (owner, 2 Nov 2026: every pier), narrowed to the pier: DERIVED.
+        const fh = Math.min(.235, half - .06), F2 = flutedField({ half: fh, y: [P.shaft[0] + .1, P.shaft[1] - .05], flutes: [P.shaft[0] + .2, P.shaft[1] - .15], step: Math.min(.11, fh - .045) });
+        add('Gable pier fluted field', W, F2.field, at(um, 0, d)); add('Gable pier fluted field bed', S, F2.bed, at(um, 0, d));
         blk('Gable pier capital band', S, [u0 - .04, u1 + .04], P.capital, [-.02, d + .04]);
         add('Gable pier capital foliage', S, pilasterCapital(u1 - u0, (P.capital[1] - P.capital[0]) * .95), at(um, P.capital[0], d + .04), CARVED);
         blk('Gable pier cornice', S, [u0 - .1, u1 + .1], [P.capital[1], P.capital[1] + .1], [-.05, d + .1]);

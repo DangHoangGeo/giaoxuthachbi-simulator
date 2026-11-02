@@ -28,6 +28,9 @@
     // draws it. The inner rear pier stops at the tower rear wall (X 5.04): P05 squeezes it against
     // the axis-2′ colonnade column, and a full square would bury that column and its wall fan
     // (F-NAVE-[BH]-2P). DERIVED, confirmation pending (ENG-043).
+    // E01B flute ends (centres ±0.025) and raised-field half-widths of the corner piers, ground and
+    // three upper stages; the side faces repeat them (DERIVED). Field runs 0.1 m beyond the flutes.
+    flutes: { ground: { half: 0.275, f: [1.948, 7.263] }, stages: [{ half: 0.235, f: [9.15, 14.793] }, { half: 0.225, f: [16.6, 22.123] }, { half: 0.2245, f: [23.9, 28.313] }] },
     pier: { t: [1.955, 3.165], front: [-0.715, 0.495], back: [4.405, 5.615], backInner: [4.405, 5.04], pedestal: 1.848, shaft: 7.4, capital: 7.85,
       // E01B C45432..C45487 pedestal bands up to the +1.848 top (facade.csv F33–F35), same on E02:
       // [y0, y1, projection beyond the shaft face, material, name]; the two cyma mouldings
@@ -603,7 +606,12 @@
     const stats = { piers: 0, blindArches: 0, upperFronts: 0, removedBundleMeshes: remove.length };
 
     // ---- Shared carving (also used by roofline.js) ----
-    const { fleur, pilasterCapital, meanderGeo, towerSpandrel, pinnacleCrown } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const { fleur, pilasterCapital, meanderGeo, towerSpandrel, pinnacleCrown, flutedField } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    // Round-ended flutes through a raised field (shared E01B form), clamped to the shaft.
+    const fluted = ({ half, f }, [lo, hi], matrix) => {
+      const g = flutedField({ half, y: [Math.max(lo, f[0] - .1), Math.min(hi, f[1] + .1)], flutes: f });
+      add('Tower pier fluted field', W, g.field, matrix); add('Tower pier fluted field bed', S, g.bed, matrix);
+    };
     const leafProfiles = window.CHURCH_TOWER_SPANDREL_PROFILE;
     const towerLeaves = { outer: towerSpandrel(leafProfiles.outer, spec.leafStroke, spec.leafSagitta), inner: towerSpandrel(leafProfiles.inner, spec.leafStroke, spec.leafSagitta) };
     // Each tower face has its own frame: u along the face, v up, w out of the face.
@@ -709,13 +717,13 @@
         const front = x0 < 0, outer = side > 0;
         if (front) for (const tm of [(t0 + t1) / 2]) {
           block('Tower pier pilaster', W, [x0 - .06, x0], [P.pedestal + .02, P.shaft], [tm - .3, tm + .3]);
-          for (const k of [-1, 0, 1]) block('Tower pier flute', D, [x0 - .068, x0 - .055], [P.pedestal + .2, P.shaft - .12], [tm + k * .16 - .022, tm + k * .16 + .022]);
+          fluted(spec.flutes.ground, [P.pedestal + .02, P.shaft], place(RY(-Math.PI / 2), TR(x0 - .06, 0, Z(tm))));
           add('Tower pier capital foliage', S, pilasterCapital(.7, (P.capital - P.shaft) * .9), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(x0 - .07, P.shaft, Z(tm))), CARVED);
         }
         if (outer || !front) {
           const xm = (x0 + x1) / 2, tf = outer ? t1 : t0, dir = outer ? 1 : -1;
           block('Tower pier pilaster', W, [xm - .3, xm + .3], [P.pedestal + .02, P.shaft], [tf, tf + dir * .06].sort((a, b) => a - b));
-          for (const k of [-1, 0, 1]) block('Tower pier flute', D, [xm + k * .16 - .022, xm + k * .16 + .022], [P.pedestal + .2, P.shaft - .12], [tf + dir * .055, tf + dir * .068].sort((a, b) => a - b));
+          fluted(spec.flutes.ground, [P.pedestal + .02, P.shaft], place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, 0, Z(tf + dir * .06))));
           add('Tower pier capital foliage', S, pilasterCapital(.7, (P.capital - P.shaft) * .9), place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, P.shaft, Z(tf + dir * .07))), CARVED);
         }
         block('Tower pier capital band', S, grow([x0, x1], .04), [P.shaft, P.capital], grow([t0, t1], .04));
@@ -887,12 +895,12 @@
           block('Tower stage pier shaft', W, xs, [y0 + .6, g.cap[0]], ts);
           const tm = (ts[0] + ts[1]) / 2, isFront = xs === front, outer = side > 0;
           if (isFront) {
-            for (const k of [-1, 0, 1]) block('Tower pier flute', D, [xs[0] - .013, xs[0] + .002], [y0 + .85, g.cap[0] - .15], [tm + k * .16 - .022, tm + k * .16 + .022]);
+            fluted(spec.flutes.stages[spec.stages.indexOf(g)], [y0 + .6, g.cap[0]], place(RY(-Math.PI / 2), TR(xs[0], 0, Z(tm))));
             add('Tower pier capital foliage', S, pilasterCapital(.66, (g.cap[1] - g.cap[0]) * .95), place(RY(-Math.PI / 2), TR(xs[0] - .01, g.cap[0], Z(tm))), CARVED);
           }
           if (outer) {
             const xm = (xs[0] + xs[1]) / 2, tf = ts[1];
-            for (const k of [-1, 0, 1]) block('Tower pier flute', D, [xm + k * .16 - .022, xm + k * .16 + .022], [y0 + .85, g.cap[0] - .15], [tf - .002, tf + .013]);
+            fluted(spec.flutes.stages[spec.stages.indexOf(g)], [y0 + .6, g.cap[0]], place(RY(s > 0 ? 0 : Math.PI), TR(xm, 0, Z(tf))));
             add('Tower pier capital foliage', S, pilasterCapital(.66, (g.cap[1] - g.cap[0]) * .95), place(RY(s > 0 ? 0 : Math.PI), TR(xm, g.cap[0], Z(tf + .01))), CARVED);
           }
           block('Tower pier capital band', S, grow(xs, .03), g.cap, grow(ts, .03));

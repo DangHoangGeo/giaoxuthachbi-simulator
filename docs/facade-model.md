@@ -130,8 +130,30 @@ The owner asked that the cornice above the centre door read like the side bays a
 The owner marked the upper central aedicule (E01B, +15.84 to the cross) as not matching the drawing. Compared with the DXF:
 
 - **Pinnacle tops.** E01B draws each aedicule pier pinnacle as a gablet (half-width 0.289, 0.213 high) carrying two colonnettes (C4A086–C4A092, C49F98–C4A054). Each colonnette carries a small fleur, and a tapered spire between them carries a cap and the big fleur, 1.68 m in all. The lower central pier pinnacles repeat the same crown 2.066 m lower (C4A330–C4A344). The model had a flat cap on the colonnettes, a fleur on it and, on the lower piers, a metal rod. These are replaced by `pinnacleCrown()` in `exterior-ornament.js`, which follows the drawn offsets. In 3D the crown has a square core with a colonnette on each corner; E01B shows only the front pair. At the owner's direction, the spire runs from the core top to the cap as one piece, and a turned neck carries the fleur. The drawn inner gablet sits inside the spire. Owner, 2 Nov 2026: the same crown tops every pier pinnacle around the church. It is scaled uniformly to each envelope: tower corner pinnacles (native base and apex), wing and rear gable piers, aedicules, and porch parapet pedestals. The crown's gablet base stays on the model's existing pinnacle levels (+18.85 lower, +21.05 aedicule). Those are about 0.06–0.075 m below the E01B bases, because the lower tiers are unchanged.
-- **Flutes.** The three flutes on the aedicule piers and the front pier pinnacles were dark painted stripes. They are now cut through a raised field as drawn: r 25 mm, 110 mm apart, with round ends. On the aedicule piers the field is ±0.2225 and +16.50–20.273, with flutes +16.60–20.173. On the pinnacles the field is ±0.235 and +16.05–17.168, with flutes +16.12–17.068. The field depth (30 mm) is DERIVED. The lower central piers, the towers and the gables keep the stripe flutes for now.
+- **Flutes.** The three flutes on the aedicule piers and the front pier pinnacles were dark painted stripes. They are now cut through a raised field as drawn: r 25 mm, 110 mm apart, with round ends. On the aedicule piers the field is ±0.2225 and +16.50–20.273, with flutes +16.60–20.173. On the pinnacles the field is ±0.235 and +16.05–17.168, with flutes +16.12–17.068. The field depth (30 mm) is DERIVED. The other piers followed the same day (next section).
 - **Capitals.** The aedicule pier capital foliage is traced from E01B (C49F71–C4A15A, 181 rows, without the necking lines and abacus edge) in `facade-crest-profile.js` as `pierCapital`. It is drawn with the T12 contour tube on a bell and abacus, and lowered 0.04 m to sit under the model's abacus at +20.65. The outline is mirror-symmetric, so one profile serves both piers. Relief depth is a CONCEPT. `scripts/verify_facade_crest_source.py` checks the rows against the DXF.
 - **Not changed.** The niche columns keep their round carved capitals, because the drawn capital is a flat outline of a round column. The concave base under the cross ball is still a pyramid.
 
 The façade triangle budget in `verify_model.cjs` rises from 200k to 230k: the traced capitals take about 11k triangles each, and each crown about 2.2k. The crown family adds about 120k triangles across the whole church (porch parapets 49k, gables 45k, tower corners 18k, façade 13k).
+
+### Fluted field on every pier · 2 November 2026
+
+At the owner's request, the remaining painted-stripe flutes are replaced by the same cut flutes. E01B draws every fluted pier the same way: three round-ended flutes, r 25 mm and 110 mm apart, inside a field outlined by vertical lines. Its flute-end arcs and field lines give each set:
+
+| Piers | Flutes (end centres) | Field half-width |
+| --- | --- | --- |
+| Central ground piers ±2.979 | +1.973 to +8.480 | 0.27 |
+| Central bay piers ±2.979 | +10.526 to +14.768 | 0.235 |
+| Upper pier pinnacles ±2.979 | +16.145 to +17.043 | 0.235 |
+| Aedicule piers ±1.662 | +16.625 to +20.148 | 0.223 |
+| Tower corner piers, ground | +1.973 to +7.238 | 0.275 |
+| Tower corner piers, stage 1 | +9.175 to +14.768 | 0.235 |
+| Tower corner piers, stage 2 | +16.625 to +22.098 | 0.225 |
+| Tower corner piers, stage 3 | +23.925 to +28.288 | 0.2245 |
+
+`flutedField()` in `exterior-ornament.js` builds the field and its groove beds. `towers.spec.flutes` holds the tower values. In the model the field stands 30 mm proud (DERIVED) and runs 0.1 m beyond the flute ends, clamped to the shaft. Two things are DERIVED rather than drawn:
+
+- **Tower side faces.** E02 shows no flute ends, so the tower piers repeat the front set on their side faces.
+- **Gable piers.** EW and E03 draw no flutes on the wing and rear gable piers. At the owner's direction ("all piers") they get the same field, narrowed to the pier. These flutes could be removed if the drawings are followed strictly.
+
+The flute positions follow the model's pier centres, so they inherit the existing tower-pier offsets from the drawing.
