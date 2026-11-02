@@ -154,6 +154,6 @@ At the owner's request, the remaining painted-stripe flutes are replaced by the 
 `flutedField()` in `exterior-ornament.js` builds the field and its groove beds. `towers.spec.flutes` holds the tower values. In the model the field stands 30 mm proud (DERIVED) and runs 0.1 m beyond the flute ends, clamped to the shaft. Two things are DERIVED rather than drawn:
 
 - **Tower side faces.** E02 shows no flute ends, so the tower piers repeat the front set on their side faces.
-- **Gable piers.** EW and E03 draw no flutes on the wing and rear gable piers. At the owner's direction ("all piers") they get the same field, narrowed to the pier. These flutes could be removed if the drawings are followed strictly.
+- **Gable piers.** EW and E03 draw no flutes on the wing and rear gable piers. At the owner's direction ("all piers") they get the same field, narrowed to the pier. The owner confirmed on 3 November 2026 that they stay: USER CONFIRMED, not DRAWING SHOWN.
 
 The flute positions follow the model's pier centres, so they inherit the existing tower-pier offsets from the drawing.
