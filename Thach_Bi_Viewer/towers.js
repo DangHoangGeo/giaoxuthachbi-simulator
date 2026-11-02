@@ -17,9 +17,11 @@
   const DRAWN = 'TRACED CAD ELEVATION / SCHEMATIC DEPTH';
   const CARVED = 'TRACED CAD ELEVATION / ILLUSTRATIVE CARVING';
   const spec = {
-    revision: '2026-11-02-tower-leaf-1',
+    revision: '2026-11-02-tower-lower-columns-1',
     centre: 10.153, core: 2.45, wall: 0.14, // tower centre |Z|; core half-width; half wall thickness
     top: 8.39,
+    leafStroke: .018, // T12 contour tube radius: owner 2 Nov 2026 asked for bolder leaves (was 8 mm); CONCEPT relief
+    leafSagitta: .001, // arc chord tolerance for the 18 mm strokes (was 0.2 mm); end points stay exact
     // ENG-043 (31 Oct 2026): every corner pier is square, as E01B and E02 draw it. Ground shaft
     // 1.21 m wide, centred 2.56 m from the tower centre both across (t, E01B 12.108–13.318) and
     // in depth (X, E02 −0.715–0.495 and 4.405–5.615). The rear pier stands behind axis 2 as P05
@@ -566,7 +568,15 @@
     // X 5.9.
     // Owner, 1 Nov 2026: its front face is flush with the front piers' plinth (X −0.984), as elevation
     // E01B draws the pier bases running straight down to the −0.48 forecourt, with no ledge in front.
-    const footing = { x: [spec.pier.front[0] - spec.pier.bands[0][2], 5.4], z: [6.75, 13.62], y: [-2.08, 0], rear: { x: [5.4, 5.9], z: [11.6, 13.62] } };
+    // Owner, 2 Nov 2026: below ±0 the tower stands on columns, not a solid block. E02 D8DE56–D8DE74
+    // and E01B C454F0–C454F9 draw, under each corner pier, a column from the −0.203 band down to
+    // −2.08: 0.309 m beyond the pier's corner edge and 0.224 m beyond its other edge, with strip
+    // lines 0.305 / 0.22 / 0.22 m wide; a band (0 to −0.13, −0.13 to −0.203) runs over them
+    // 0.113 / 0.05 m proud. Nothing is drawn between the columns, so the stone core is set back to
+    // the tower wall plane above (depth DERIVED). The core keeps X 5.4 at the rear (veranda) and
+    // |Z| 6.75 on the inner side.
+    const footing = { x: [-spec.wall, 5.4], z: [6.75, spec.centre + spec.core + spec.wall], y: [-2.08, 0],
+      column: { corner: .309, other: .224, strips: [.305, .22, .22], top: -.203 }, band: [[-.203, -.13, .05], [-.13, 0, .113]] };
     spec.footing = footing;
     let footingMaterial = null;
     (building || exterior).traverse(o => {
@@ -576,7 +586,7 @@
       o.geometry = new T.BoxGeometry(footing.x[1] - footing.x[0], footing.y[1] - footing.y[0], footing.z[1] - footing.z[0]);
       const local = o.parent.worldToLocal(new T.Vector3((footing.x[0] + footing.x[1]) / 2, (footing.y[0] + footing.y[1]) / 2, s * (footing.z[0] + footing.z[1]) / 2));
       o.position.copy(local); o.scale.set(1, 1, 1);
-      o.userData.status = 'SOURCE GRID / PLINTH WIDENED UNDER THE CAD CORNER PIERS';
+      o.userData.status = 'SOURCE GRID / CORE SET BACK BETWEEN THE CAD LOWER COLUMNS (DEPTH DERIVED)';
       footingMaterial = o.material;
     });
     const root = new T.Group();
@@ -595,7 +605,7 @@
     // ---- Shared carving (also used by roofline.js) ----
     const { fleur, pilasterCapital, meanderGeo, towerSpandrel } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     const leafProfiles = window.CHURCH_TOWER_SPANDREL_PROFILE;
-    const towerLeaves = { outer: towerSpandrel(leafProfiles.outer), inner: towerSpandrel(leafProfiles.inner) };
+    const towerLeaves = { outer: towerSpandrel(leafProfiles.outer, spec.leafStroke, spec.leafSagitta), inner: towerSpandrel(leafProfiles.inner, spec.leafStroke, spec.leafSagitta) };
     // Each tower face has its own frame: u along the face, v up, w out of the face.
     // face(s, kind) → function mapping (u, v, w) to a world matrix and box helpers.
     const both = fn => { for (const s of [-1, 1]) fn(s); };
@@ -648,10 +658,42 @@
       }
       // ---- Corner piers: pedestal, fluted shaft, foliate capital band, cornice ----
       const piers = [[P.front, 1], [P.front, -1], [P.back, 1], [P.backInner, -1]];
+      // ---- Lower columns under the corner piers, −2.08 to −0.203, and the band over them ----
       {
-        const R = footing.rear, fy = footing.y;
-        add('Tower plinth · under the rear pier (ENG-043)', footingMaterial || S, new T.BoxGeometry(R.x[1] - R.x[0], fy[1] - fy[0], R.z[1] - R.z[0]),
-          TR((R.x[0] + R.x[1]) / 2, (fy[0] + fy[1]) / 2, s * (R.z[0] + R.z[1]) / 2), 'SOURCE GRID / PLINTH EXTENDED UNDER THE CAD REAR PIER');
+        const FC = footing.column, y = [footing.y[0], FC.top], inset = .04, LOW = 'TRACED CAD ELEVATION E02/E01B / DEPTH AND RELIEF DERIVED';
+        const columns = piers.map(([[x0, x1], side]) => {
+          const [t0, t1] = side > 0 ? P.t : [-P.t[1], -P.t[0]], front = x0 < 0;
+          return { side, front, x: front ? [x0 - FC.corner, x1 + FC.other] : [x0 - FC.other, x1 + FC.corner],
+            t: side > 0 ? [t0 - FC.other, t1 + FC.corner] : [t0 - FC.corner, t1 + FC.other] };
+        });
+        for (const c of columns) {
+          // Exposed faces carry the drawn strips: corner 0.305 flush, then 0.22, field, far 0.22.
+          const faces = [];
+          if (c.front) faces.push({ axis: 'x', end: 0, out: -1 });
+          if (!c.front && c.side > 0) faces.push({ axis: 'x', end: 1, out: 1 });
+          if (c.side > 0) faces.push({ axis: 't', end: 1, out: 1 });
+          const body = { x: [...c.x], t: [...c.t] };
+          for (const f of faces) body[f.axis][f.end] -= f.out * inset;
+          block('Tower lower column · under the corner pier', W, body.x, y, body.t, LOW);
+          for (const f of faces) {
+            const u = f.axis === 'x' ? 't' : 'x', [u0, u1] = c[u], plane = c[f.axis][f.end];
+            const cornerAtStart = u === 't' ? c.side < 0 : c.front, L = u1 - u0;
+            const [a, b, d] = FC.strips;
+            for (const [s0, s1, relief] of [[0, a, 0], [a, a + b, .015], [L - d, L, .015]]) {
+              const span = cornerAtStart ? [u0 + s0, u0 + s1] : [u1 - s1, u1 - s0];
+              const depth = [plane - f.out * inset, plane - f.out * relief].sort((p, q) => p - q);
+              const r = { [f.axis]: depth, [u]: span };
+              block('Tower lower column strip', W, r.x, y, r.t, LOW);
+            }
+          }
+        }
+        // Band course: round the front, outer side and inner side, and breaking out over the
+        // outer rear column; the rear face elsewhere stays at X 5.4.
+        const outerRear = columns.find(c => !c.front && c.side > 0);
+        for (const [y0, y1, p] of footing.band) {
+          block('Tower lower band course', S, [columns[0].x[0] - p, footing.x[1]], [y0, y1], [columns[1].t[0], columns[0].t[1] + p], LOW);
+          block('Tower lower band course', S, [footing.x[1], outerRear.x[1] + p], [y0, y1], [outerRear.t[0] - p, outerRear.t[1] + p], LOW);
+        }
       }
       for (const [[x0, x1], side] of piers) {
         const [t0, t1] = side > 0 ? P.t : [-P.t[1], -P.t[0]];
@@ -912,9 +954,17 @@
           const xs = [x0, x1].sort((a,b)=>a-b);
           block('Tower side great impost · E02', W, xs, SB.pilaster.shaftY, [C + spec.wall, C + spec.wall + .1]);
           block('Tower side great capital · E02', S, xs, [SB.pilaster.shaftY[1], SB.greatSpring], [C + spec.wall, C + spec.wall + .14]);
+          // E02 draws the same acanthus capitals as the front imposts and colonnettes; carving illustrative.
+          const faceRot = RY(s > 0 ? 0 : Math.PI);
+          add('Tower side great capital foliage · E02', S, pilasterCapital(xs[1] - xs[0] + .06, .44), place(faceRot, TR((xs[0] + xs[1]) / 2, SB.greatSpring - .46, Z(C + spec.wall + .14))), CARVED);
+          add('Tower side blind capital foliage · E02', S, pilasterCapital(.3, .3), place(faceRot, TR(SB.centreX + e * B.colonnette, SB.blindSpring - .33, Z(C + spec.wall + .27))), CARVED);
           const x = SB.centreX + e * B.colonnette;
           add('Tower side blind colonnette · E02', S, new T.CylinderGeometry(.085, .095, SB.blindSpring - .65, 14), TR(x, .3 + (SB.blindSpring - .65) / 2, Z(C + spec.wall + .14)));
           block('Tower side blind capital · E02', S, [x - .16, x + .16], [SB.blindSpring - .35, SB.blindSpring], [C + spec.wall, C + spec.wall + .27]);
+          // E02 draws the same T12 leaf pair round the side great arch (all 150 arc centres,
+          // radii and end points of both profiles within 0.1 mm about X 2.450). Relief CONCEPT.
+          add('Tower side spandrel spray · E02', S, towerLeaves[e > 0 ? 'outer' : 'inner'], at('outer', u, 0, .025, SC(e, 1, 1)),
+            'E02 SIDE MATCHES TRACED T12 PROFILE / RELIEF CONCEPT');
         }
       }
 

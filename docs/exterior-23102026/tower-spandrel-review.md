@@ -21,3 +21,17 @@ Before this revision, the `Tower front spandrel spray` instances in [`towers.js`
 `verify_tower_spandrel_source.py` checks all 150 source objects and numeric parameters against the same local DWG-derived DXF, and `verify_tower_spandrel.cjs` checks 600 source-curve endpoints against the actual assembled mesh on both towers. Source rounding is below 0.000001 mm or degree; the largest endpoint-to-rendered-surface distance is 8.001 mm, which includes the intentional 8 mm illustrative contour radius. These are software checks, not construction tolerances or independent CAD validation. The remaining discrepancy from the true 3D ornament is unknown.
 
 Desktop day/evening front views were inspected; the viewer rendered with no console errors. See the overall verification in the session record; full-size material, close visual review by the designer, drainage, attachment and long-term maintenance remain open. This revision changes no equipment positions, circuit or routes. Existing PDF/model exports are stale for the tower ornament and are not construction documents. ISSUE-R06, ENG-027, ENG-039–041, all design-performance and structural holds remain open. The change is a design-development transcription, not approval to construct.
+
+## Further placements · 2 November 2026
+
+The owner asked for the leaf to be bolder and used wherever the new design draws it. A search of the whole converted DXF for copies of the 73 T12 arcs (any position, mirror or scale) found it only at full size, in these places:
+
+| Place | Drawing | Origin (u = 0) and hand | Omitted source objects | Model |
+| --- | --- | --- | --- | --- |
+| Tower fronts | E01B | Z ±10.153 | none | existing |
+| Tower outer sides | E02 | X 2.450 | none | `Tower side spandrel spray · E02` |
+| Central portal arch | E01B, witness arc C4491B / C45124 | Z ±0.534, Y +1.335, outward | C44AAA | `Facade arch spandrel leaf · E01B T12` |
+| Side-bay arches, centre side | E01B, C44B3A / C4532A | Z ±5.424, toward the centre | none | same |
+| Side-bay arches, tower side | E01B, C44B84 / C45374 | Z ±5.276, outward | C44A87, C44AA0, C44AA8 | same |
+
+The B side mirrors H within 0.1 mm. These placements reuse the already-permitted T12 coordinates; no other detail is reproduced. They replace the bundle's flat sprays (`Spandrel foliate branch`, `Spandrel hanging foliage` and their fleur tufts), which `facade.js` now removes over the three ground arches. The contour radius is 18 mm (was 8 mm) and arcs use a 1 mm chord tolerance; both are display choices, not carving dimensions. The wall face behind the façade leaves is taken as X 1.975 from the removed sprays (DERIVED). Depth, material, fixing and fabrication remain open, as above.

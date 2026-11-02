@@ -105,15 +105,22 @@ assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
   const front=nodes.find(o=>o.name.startsWith('Tower base wall · closed front'));assert(front&&!front.geometry.attributes.position.array.some((v,i)=>i%3===1&&v>8.40),'closed front up to +8.39');
   const cornice=nodes.filter(o=>o.name==='Tower base cornice').map(bounds);near(Math.max(...cornice.map(b=>b.max.y)),8.39,'tower cornice top at +8.39');
   for(const sign of [-1,1])for(const x of [-.5,1,2.45,4]) assert.equal(realism.walkAllowed(x,sign*10.15),false,'no passage through the tower base');
-  // The grey plinth reaches under every corner pier, down to the courtyard (owner, 25 Oct 2026).
-  for(const p of nodes.filter(o=>o.name==='Tower plinth').map(bounds))assert(p.min.y<=-2.079&&p.max.y>=-.001,'tower plinth from the courtyard to +0.00');
-  const plinths=nodes.filter(o=>o.name==='Tower plinth').map(bounds), piers=bounds(nodes.find(o=>o.name==='Tower corner pier plinth'));
-  // ENG-043 (31 Oct 2026): behind X 5.4 the outer rear pier stands on a plinth extension.
-  const rear=nodes.filter(o=>o.name.startsWith('Tower plinth · under the rear pier')).map(bounds);assert(rear.length,'plinth extension under the rear piers');
-  for(const r of rear)assert(r.min.y<=-2.079&&r.max.y>=-.001,'rear plinth extension from the courtyard to +0.00');
-  const reach=Math.max(...plinths.map(p=>p.max.x),...rear.map(r=>r.max.x));
-  for(const p of plinths){const inside=(v,a,b)=>v>=a-.001&&v<=b+.001;assert(inside(piers.min.x,p.min.x,p.max.x)&&inside(piers.max.x,p.min.x,reach),'tower plinth covers the piers front to back');}
-  assert(plinths.every(p=>Math.max(Math.abs(p.min.z),Math.abs(p.max.z))>=13.47&&Math.min(Math.abs(p.min.z),Math.abs(p.max.z))<=6.83),'tower plinth covers the inner and outer piers');
+  // Below ±0 each corner pier stands on a lower column (E02/E01B, owner 2 Nov 2026); the stone
+  // core between them is set back to the tower wall plane.
+  for(const p of nodes.filter(o=>o.name==='Tower plinth').map(bounds))assert(p.min.y<=-2.079&&p.max.y>=-.001&&Math.abs(p.min.x+.14)<.002&&Math.max(Math.abs(p.min.z),Math.abs(p.max.z))<12.75,'tower plinth core from the courtyard to +0.00, set back to the wall plane');
+  assert(!nodes.some(o=>o.name.startsWith('Tower plinth · under the rear pier')),'solid rear plinth extension replaced by the lower column');
+  const lower=nodes.filter(o=>o.name==='Tower lower column · under the corner pier'),lowerBox=lower.map(bounds);assert(lower.length,'lower columns under the corner piers');
+  assert(lowerBox.every(c=>Math.abs(c.min.y+2.08)<.002&&Math.abs(c.max.y+.203)<.002),'lower columns from −2.08 to the −0.203 band');
+  const core=nodes.filter(o=>o.name==='Tower plinth'),strips=nodes.filter(o=>o.name==='Tower lower column strip'),firstHit=(o,d)=>new T.Raycaster(new T.Vector3(...o),new T.Vector3(...d)).intersectObjects([...lower,...strips,...core],false)[0];
+  for(const sign of [-1,1]){
+    // Horizontal rays at −1.0 m through the flush corner strips: each column face at its E02/E01B line, the core set back between them.
+    for(const t of [-3.32,3.32]){const z=sign*(10.153+t),h=firstHit([-6,-1,z],[1,0,0]);assert(h&&h.object.name.startsWith('Tower lower column')&&Math.abs(h.point.x+1.024)<.002,'front lower column face X −1.024 at Z '+z);}
+    const back=firstHit([9,-1,sign*13.47],[-1,0,0]);assert(back&&back.object.name.startsWith('Tower lower column')&&Math.abs(back.point.x-5.924)<.002,'rear outer lower column face X 5.924');
+    for(const x of [-.87,5.77]){const h=firstHit([x,-1,sign*20],[0,0,-sign]);assert(h&&h.object.name.startsWith('Tower lower column')&&Math.abs(Math.abs(h.point.z)-13.627)<.002,'outer lower column face |Z| 13.627 at X '+x);}
+    const gap=firstHit([-6,-1,sign*11],[1,0,0]);assert(gap&&gap.object.name==='Tower plinth'&&Math.abs(gap.point.x+.14)<.002,'core set back to X −0.14 between the front columns');
+    const side=firstHit([2.45,-1,sign*20],[0,0,-sign]);assert(side&&side.object.name==='Tower plinth'&&Math.abs(Math.abs(side.point.z)-12.743)<.002,'core set back to the tower wall between the side columns');
+  }
+  const band=nodes.filter(o=>o.name==='Tower lower band course').map(bounds);assert(band.length&&Math.abs(Math.max(...band.map(b=>b.max.y)))<.002,'band course up to ±0');
 }
 // Roofline after the CAD file, 25 Oct 2026 (roofline.js): porch parapets with axis pinnacles,
 // stepped 9–10 side gables and the stepped rear gable, each with a crowning cross.
@@ -288,8 +295,8 @@ assert(!hits.some(h=>h.object.name==='Source-width centre entry facade'),'Facade
   for(const [x,y] of [[1.2,-.48],[1.4,-.32],[1.6,-.16],[1.9,0]])assert(Math.abs(realism.floorHeight(x,0)-y)<.002,`entrance floor ${y} at x ${x}`);
   const plinths=nodes.filter(o=>o.name==='Central ground pier plinth course').map(bounds);
   assert(plinths.length&&plinths.every(b=>Math.abs(b.min.y+.48)<.002&&b.max.y>-.002),'central pier bases run down to the −0.48 forecourt');
-  const footing=nodes.filter(o=>o.name==='Tower plinth').map(bounds);
-  assert(footing.length===2&&footing.every(b=>Math.abs(b.min.x+.984)<.002),'tower plinth flush with the corner-pier plinth at X −0.984');
+  const footing=nodes.filter(o=>o.name.startsWith('Tower lower column')).map(bounds);
+  assert(footing.length&&Math.abs(Math.min(...footing.map(b=>b.min.x))+1.024)<.002,'front lower columns 0.04 m proud of the corner-pier plinth at X −0.984');
 }
 for(const sign of [-1,1]) {
   const sideRay=new T.Raycaster(new T.Vector3(16.725,1.8,sign*18),new T.Vector3(0,0,-sign));

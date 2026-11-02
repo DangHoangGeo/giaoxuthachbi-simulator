@@ -15,8 +15,14 @@
   // World axes: X from axis 1 toward the sanctuary (the street side is smaller X), Y up from the
   // nave floor, Z from the D/E midpoint, positive toward H. The facade is symmetric about Z 0.
   const spec = {
-    revision: '2026-10-31-cad-facade-3',
+    revision: '2026-11-02-cad-facade-leaves-1',
     cut: 8.45, // bundle meshes wholly above this level are superseded
+    // Ground-storey arch spandrels, owner 2 Nov 2026: E01B draws the tower T12 leaf (75 entities) at full
+    // size over the central portal and both side-bay arches; the bundle's flat sprays are replaced.
+    // [origin Z, mirror (Z = origin + k·u), lift dY, omitted source handles, witness arc]; the B side
+    // mirrors H within 0.1 mm. Leaf X = the wall face behind the old sprays less the stroke (CONCEPT relief).
+    leaves: { face: 1.975, copies: [[0.534416, 1, 1.335006, ['C44AAA'], 'C4491B'], [5.424284, -1, 0, [], 'C44B3A'],
+      [5.275515, 1, 0, ['C44A87', 'C44AA0', 'C44AA8'], 'C44B84']] },
     cornice: { dentil: [8.42, 8.52], fillet: [8.52, 8.605], corona: [8.605, 8.773], frieze: [8.773, 9.073], band: [9.073, 9.115] },
     // E01B stops at ±7.128. The rebuilt tower inner piers start at ±7.103 here,
     // so the former extension to ±7.5 is unnecessary (25 mm overlap remains).
@@ -94,7 +100,11 @@
       // The old ground pilasters at |Z| 3.6 stood 0.62 m outboard of the piers above them.
       const oldPilaster = /^(Paneled facade pilaster|Pilaster )/.test(o.name) && Math.abs((box3.min.z + box3.max.z) / 2) > 3.2
         && Math.abs((box3.min.z + box3.max.z) / 2) < 4.0 && box3.max.y < 8.5 && box3.max.x < 2.5;
-      if (box3.min.y >= spec.cut || centralCornice || oldPilaster) remove.push(o);
+      // The bundle's flat spandrel sprays over the three ground arches (replaced by the traced leaf).
+      const cy = (box3.min.y + box3.max.y) / 2, cz = Math.abs((box3.min.z + box3.max.z) / 2);
+      const oldSpray = /^(Spandrel foliate branch|Spandrel hanging foliage|Fleur stem|Fleur tip|Abstract drawn foliage)$/.test(o.name)
+        && box3.max.x < 2.1 && ((cz > .8 && cz < 2.5 && cy > 7 && cy < 8.2) || (cz > 3.5 && cz < 7.2 && cy > 5.8 && cy < 7));
+      if (box3.min.y >= spec.cut || centralCornice || oldPilaster || oldSpray) remove.push(o);
     });
     remove.forEach(o => o.removeFromParent());
     // The shrine groups are left empty.
@@ -155,6 +165,16 @@
     // Shared exterior carving geometry; placements and materials remain local.
     const { fleur, pilasterCapital } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     const tallFleur = fleur(0.85), smallFleur = fleur(0.42), crownFleur = fleur(0.58);
+    // ---- Ground arch spandrels: the tower T12 leaf, at the E01B positions ----
+    {
+      const { towerSpandrel } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K), L = spec.leaves;
+      const profile = window.CHURCH_TOWER_SPANDREL_PROFILE.outer, { leafStroke: stroke, leafSagitta: sagitta } = window.CHURCH_TOWERS.spec;
+      for (const [oz, k, dy, omit] of L.copies) {
+        const g = towerSpandrel(profile.filter(r => !omit.includes(r[0])), stroke, sagitta);
+        both(s => add('Facade arch spandrel leaf · E01B T12', S, g, facing(L.face - stroke - .002, dy, s * oz, SC(s * k, 1, 1)),
+          'E01B TRACED T12 AT FULL SIZE / RELIEF CONCEPT'));
+      }
+    }
     // Corinthian-type pilaster capital: bell, leaves and abacus, by world extents.
     const capital = (name, zc, half, [y0, y1], xFront, depth = .3) => {
       const h = y1 - y0;

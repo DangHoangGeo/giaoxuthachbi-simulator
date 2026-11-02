@@ -43,7 +43,7 @@
     };
     // T12 traces from the two independently drawn E01B H-front corners.
     // Tubes visualize inked contours only: stroke radius and relief are CONCEPT.
-    const towerSpandrel = (profile, strokeRadius = .008) => {
+    const towerSpandrel = (profile, strokeRadius = .008, sagitta = .0002) => {
       const vertices = [], indices = [], radial = 6;
       const tube = (points, normals) => {
         const base = vertices.length / 3;
@@ -60,7 +60,7 @@
         const points = [], normals = [];
         if (row[1] === 'A') {
           const [, , u, v, r, start, span, handedness] = row;
-          const steps = Math.max(2, Math.ceil((span * Math.PI / 180) / Math.min(Math.PI / 18, 2 * Math.acos(Math.max(-1, 1 - .0002 / r)))));
+          const steps = Math.max(2, Math.ceil((span * Math.PI / 180) / Math.min(sagitta > .0002 ? Math.PI / 9 : Math.PI / 18, 2 * Math.acos(Math.max(-1, 1 - sagitta / r)))));
           for (let i = 0; i <= steps; i++) {
             const a = (start + span * i / steps) * Math.PI / 180;
             points.push([u + handedness * r * Math.cos(a), v + r * Math.sin(a)]);

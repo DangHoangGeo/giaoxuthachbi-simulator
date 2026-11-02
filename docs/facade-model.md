@@ -18,7 +18,7 @@ Lượt [đối chiếu phiên bản 23102026](exterior-23102026/README.md) sử
 | Piers between the bays | Detached ornamental piers | Fluted pilasters with foliate capitals up to the entablature, and pinnacles with fleur-de-lis finials to +20.55 |
 | Depth | One plane, schematic | Stepped faces from the tower-end plans at +10.128 and +15.840 m: piers X 2.30, central wall X 2.94, side walls X 4.02, aedicule X 3.81–3.92, all behind the entrance front (X 2.43 at ground) |
 
-Kept unchanged below +8.45 m, where the CAD file agrees with the traced elevation: the three arched doors, their fanlights, the spandrel carving, the ground-storey piers and the side-bay cornice. The towers are not part of this change.
+Kept unchanged below +8.45 m, where the CAD file agrees with the traced elevation: the three arched doors, their fanlights, the ground-storey piers and the side-bay cornice. Since 2 November 2026 the spandrel carving over the three ground arches is the traced T12 leaf at its E01B positions ([spandrel review](exterior-23102026/tower-spandrel-review.md#further-placements--2-november-2026)), replacing the bundle's flat sprays. The towers are not part of this change.
 
 The overlay of the DWG linework on a straight-on render of the model matches within a few centimetres at every arch, cornice and pier ([evidence](#evidence)).
 
