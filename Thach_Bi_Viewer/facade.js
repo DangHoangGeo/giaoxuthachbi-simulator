@@ -15,7 +15,7 @@
   // World axes: X from axis 1 toward the sanctuary (the street side is smaller X), Y up from the
   // nave floor, Z from the D/E midpoint, positive toward H. The facade is symmetric about Z 0.
   const spec = {
-    revision: '2026-11-02-cad-facade-crests-1',
+    revision: '2026-11-02-cad-facade-entablature-2',
     cut: 8.45, // bundle meshes wholly above this level are superseded
     // Ground-storey arch spandrels, owner 2 Nov 2026: E01B draws the tower T12 leaf (75 entities) at full
     // size over the central portal and both side-bay arches; the bundle's flat sprays are replaced.
@@ -23,7 +23,14 @@
     // mirrors H within 0.1 mm. Leaf X = the wall face behind the old sprays less the stroke (CONCEPT relief).
     leaves: { face: 1.975, copies: [[0.534416, 1, 1.335006, ['C44AAA'], 'C4491B'], [5.424284, -1, 0, [], 'C44B3A'],
       [5.275515, 1, 0, ['C44A87', 'C44AA0', 'C44AA8'], 'C44B84']] },
-    cornice: { dentil: [8.42, 8.52], fillet: [8.52, 8.605], corona: [8.605, 8.773], frieze: [8.773, 9.073], band: [9.073, 9.115] },
+    // E01B centre bay (owner 2 Nov 2026: match the drawing as the towers do): bed moulding C4508A/C4508B,
+    // dentils 0.0663 m wide on a 0.1326 m pitch from +8.405 to +8.605, Greek key +8.833 to +9.025.
+    cornice: { bed: [8.157, 8.207], dentil: [8.405, 8.605], dentilWidth: 0.0663, dentilPitch: 0.1326,
+      corona: [8.605, 8.773], frieze: [8.773, 9.073], key: [8.833, 9.025], band: [9.073, 9.115] },
+    // E01B side bays (C45C07–C45C3F): the tower-base entablature continues at the same levels between
+    // the central ground piers (|Z| 3.469) and the tower piers; the bundle's corbel cornice is replaced.
+    // Levels and profile follow towers.js spec.entablature; wall face X 1.975 (DERIVED from the bundle).
+    sideEntablature: { face: 1.975, z: [3.469, 6.988] },
     // E01B stops at ±7.128. The rebuilt tower inner piers start at ±7.103 here,
     // so the former extension to ±7.5 is unnecessary (25 mm overlap remains).
     plinth: { body: [9.115, 9.424], cap: [9.424, 9.626], top: [9.626, 9.741], half: 7.128 },
@@ -97,6 +104,9 @@
       if (o.name === 'Central cross') crossMaterial = o.material;
       box3.setFromObject(o);
       const centralCornice = corbel.test(o.name) && Math.abs((box3.min.z + box3.max.z) / 2) < 3.5 && box3.max.y > 8.2;
+      // Side-bay corbel cornice of the bundle, between the central ground piers and the towers.
+      const sideCornice = corbel.test(o.name) && box3.min.y > 7.2 && box3.max.y < 8.45
+        && Math.min(Math.abs(box3.min.z), Math.abs(box3.max.z)) > 3.9 && Math.max(Math.abs(box3.min.z), Math.abs(box3.max.z)) < 7.1;
       // The old ground pilasters at |Z| 3.6 stood 0.62 m outboard of the piers above them.
       const oldPilaster = /^(Paneled facade pilaster|Pilaster )/.test(o.name) && Math.abs((box3.min.z + box3.max.z) / 2) > 3.2
         && Math.abs((box3.min.z + box3.max.z) / 2) < 4.0 && box3.max.y < 8.5 && box3.max.x < 2.5;
@@ -104,7 +114,7 @@
       const cy = (box3.min.y + box3.max.y) / 2, cz = Math.abs((box3.min.z + box3.max.z) / 2);
       const oldSpray = /^(Spandrel foliate branch|Spandrel hanging foliage|Fleur stem|Fleur tip|Abstract drawn foliage)$/.test(o.name)
         && box3.max.x < 2.1 && ((cz > .8 && cz < 2.5 && cy > 7 && cy < 8.2) || (cz > 3.5 && cz < 7.2 && cy > 5.8 && cy < 7));
-      if (box3.min.y >= spec.cut || centralCornice || oldPilaster || oldSpray) remove.push(o);
+      if (box3.min.y >= spec.cut || centralCornice || sideCornice || oldPilaster || oldSpray) remove.push(o);
     });
     remove.forEach(o => o.removeFromParent());
     // The shrine groups are left empty.
@@ -163,7 +173,7 @@
     const W = mat.wall, S = mat.trim, D = mat.darkTrim;
 
     // Shared exterior carving geometry; placements and materials remain local.
-    const { fleur, pilasterCapital } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const { fleur, pilasterCapital, meanderGeo } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     const tallFleur = fleur(0.85), smallFleur = fleur(0.42), crownFleur = fleur(0.58);
     // ---- Niche crests: E01B outlines over the side and central aedicules (owner permission
     // 2 Nov 2026), drawn with the T12 contour tube; relief CONCEPT. They replace the procedural
@@ -194,18 +204,6 @@
     const flutes = (name, zc, step, [y0, y1], xFront) => {
       for (const k of [-1, 0, 1]) block(name, D, [xFront - .004, xFront + .01], [y0, y1], [zc + k * step - .022, zc + k * step + .022]);
     };
-    // Greek key frieze in relief between z0 and z1, facing −X at xFront.
-    const meander = (name, [z0, z1], [y0, y1], xFront) => {
-      const h = y1 - y0, u = .31, t = .035, m = .035, depth = .03, parts = [];
-      const bar = (a, b, c, d) => parts.push([new T.BoxGeometry(b - a, d - c, depth), TR((a + b) / 2, (c + d) / 2, depth / 2)]);
-      bar(0, z1 - z0, m, m + t); bar(0, z1 - z0, h - m - t, h - m);
-      for (let x = 0; x + u <= z1 - z0 + 1e-6; x += u) {
-        bar(x, x + t, m, h - m); bar(x + .8 * u - t, x + .8 * u, .3 * h, h - m);
-        bar(x + .4 * u, x + .8 * u, .3 * h, .3 * h + t); bar(x + .4 * u, x + .4 * u + t, .3 * h, .66 * h);
-        bar(x + .4 * u, x + .62 * u, .66 * h - t, .66 * h);
-      }
-      add(name, S, merge(parts), facing(xFront, y0, z0), CARVED);
-    };
     // Niche hood: the back half of a cylinder and a quarter sphere over it.
     const hood = (name, zc, half, [y0, spring], x) => {
       add(name, W, new T.CylinderGeometry(half, half, spring - y0, 20, 1, true, 0, Math.PI), TR(x, (y0 + spring) / 2, zc));
@@ -226,13 +224,28 @@
     // ===================================================================================
     // 1. Central cornice over the main door (+8.42 to +9.115) and pier capitals
     const C = spec.cornice, P = spec.pier;
+    block('Central cornice bed moulding', S, [2.24, 2.6], C.bed, [-2.49, 2.49]);
     block('Central cornice dentil band', S, [2.30, 2.6], C.dentil, [-2.49, 2.49]);
-    for (let z = -2.43; z <= 2.43 + 1e-6; z += .135) block('Central cornice dentil', S, [2.22, 2.30], [C.dentil[0], C.dentil[1] - .01], [z - .035, z + .035]);
-    block('Central cornice fillet', S, [2.18, 2.6], C.fillet, [-3.5, 3.5]);
+    for (let z = 0; z <= 2.49 - C.dentilWidth / 2 + 1e-6; z += C.dentilPitch)
+      for (const e of z ? [-1, 1] : [1]) block('Central cornice dentil', S, [2.20, 2.30], C.dentil, [e * z - C.dentilWidth / 2, e * z + C.dentilWidth / 2]);
     block('Central cornice corona', S, [2.06, 2.6], C.corona, [-3.535, 3.535]);
     block('Central cornice frieze', S, [2.19, 2.6], C.frieze, [-2.49, 2.49]);
-    meander('Central cornice Greek-key frieze', [-2.48, 2.48], C.frieze, 2.16);
+    add('Central cornice Greek-key frieze', S, meanderGeo(4.96, C.key[1] - C.key[0]), place(RY(-Math.PI / 2), TR(2.18, C.key[0], -2.48)), CARVED);
     block('Central cornice crown band', S, [2.05, 2.6], C.band, [-3.53, 3.53]);
+    // 1b. Side bays: the tower-base entablature continued (architrave, dentils, Greek key, cornice).
+    {
+      const E = window.CHURCH_TOWERS.spec.entablature, SE = spec.sideEntablature, f = SE.face, [za, zb] = SE.z;
+      both(s => {
+        const zr = s > 0 ? [za, zb] : [-zb, -za];
+        block('Side bay architrave', S, [f - .18, f], E.architrave, zr);
+        for (let z = za + .03; z + C.dentilWidth <= zb - .02; z += C.dentilPitch)
+          block('Side bay dentil', S, [f - .16, f], E.dentils, s > 0 ? [z, z + C.dentilWidth] : [-z - C.dentilWidth, -z]);
+        block('Side bay frieze', W, [f - .1, f], [E.dentils[1], E.cornice[0]], zr);
+        add('Side bay Greek-key frieze', S, meanderGeo(zb - za, E.frieze[1] - E.frieze[0]), place(RY(-Math.PI / 2), TR(f - .1, E.frieze[0], zr[0])), CARVED);
+        for (const [dy, out, m] of [[[E.cornice[0], 7.98], .1, S], [[7.98, 8.2], .2, W], [[8.2, 8.39], .24, S]])
+          block('Side bay cornice', m, [f - out, f], dy, zr);
+      });
+    }
     // 0. Ground-storey central piers (E01B / P05), under the frieze blocks and capitals below.
     const G = spec.ground;
     both(s => {
@@ -251,7 +264,11 @@
       flutes('Central ground pier flute', zc, G.fluteStep, G.flutes, G.front);
       // Frieze block and capital break forward with the pier (until 31 Oct 2026 set back at 2.12/2.08).
       block('Central pier frieze block', W, [G.front - .02, 2.6], [8.39, C.corona[0]], [zc - .5, zc + .5]);
+      // Owner, 2 Nov 2026: no empty slots over the piers. The corona and crown band break forward over
+      // each pier (E01B draws their lines across the pier to |Z| 3.535) instead of stopping at X 2.06.
+      block('Central pier corona break', S, [G.front - .07, 2.6], C.corona, [zc - .55, zc + .55]);
       capital('Central pier capital · cornice', zc, .5, C.frieze, G.front - .05, .5);
+      block('Central pier crown band break', S, [G.front - .09, 2.6], C.band, [zc - .56, zc + .56]);
     });
 
     // 2. Upper-storey plinth across the three bays (+9.115 to +9.741), the terrace slab behind

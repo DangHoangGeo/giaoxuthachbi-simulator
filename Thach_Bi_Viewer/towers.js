@@ -656,6 +656,11 @@
         add('Tower base wall · inner side with door to the nave', W, g, place(TR(0, 0, -spec.wall), SC(1, 1, s), TR(0, 0, Z(-C))));
         block('Tower room door leaf · timber, closed', mat.wood || D, [d0 + .02, d1 - .02], [0, spec.door.h - .02], [-C - .02, -C + .03]);
       }
+      // Owner, 2 Nov 2026: close the open slot between the central facade's side bay (it ends at
+      // |Z| 7.128, E01B) and this tower's inner wall (7.563), in front of the stage-2 rear pier
+      // (X 4.405), from the +9.741 plinth top to +15.84. Infill DERIVED; its face stays 63 mm behind the
+      // bay face (X 4.017) so it clears the tower's inner window surround (X <= 4.07).
+      block('Tower inner infill beside the central facade', W, [4.08, 4.42], [9.741, 15.84], [-(spec.centre - 7.128), -(spec.centre - 7.57)]);
       // ---- Corner piers: pedestal, fluted shaft, foliate capital band, cornice ----
       const piers = [[P.front, 1], [P.front, -1], [P.back, 1], [P.backInner, -1]];
       // ---- Lower columns under the corner piers, −2.08 to −0.203, and the band over them ----
