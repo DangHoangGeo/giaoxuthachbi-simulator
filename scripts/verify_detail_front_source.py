@@ -29,6 +29,7 @@ KEYS = {
     'groundCapital': (2.979, {'ARC'}, 161, (8.774, 9.08)),
     'pedestalRosette': (2.979, {'ARC', 'CIRCLE'}, 25, (0.60, 0.84)),
     'crossRosette': (0.0, {'ARC', 'CIRCLE'}, 43, (21.65, 21.95)),
+    'crestRib': (4.40455, {'ARC'}, 12, (16.38, 17.0)),  # cresting ribs about the narrow post at Z 4.405
 }
 def expected(e, zc):
     t = e.dxftype()

@@ -174,9 +174,23 @@ The flute positions follow the model's pier centres, so they inherit the existin
 
 **Not changed and still open:**
 
-- **Cresting over the side bays.** E01B draws narrow balusters on the post positions (caps at about +16.37) and wider posts between them (caps at about +16.65), concave arches, big fleurs at +17.0–17.37 over the narrow balusters and small fleurs over the wide posts (about 2,200 entities). The model still has its earlier procedural arrangement, with the heights roughly reversed. Rebuilding it from the trace needs a larger triangle budget.
+- **Cresting over the side bays.** Rebuilt in a second commit the same day (next section).
 - **Ball.** E01B draws the ball as a disc with a rim (r 0.2134 and an inner circle r 0.183). The model keeps a sphere.
 - **Other carving.** The side-niche and central-niche round column capitals stay procedural (see 2 November). The pedestal panel's three nested frames are still two square frames.
 - **Statues, glass art, lighting and equipment.** These are untouched. No equipment clash was found: the new pilasters occupy the old colonnettes' envelope.
 
 **Checks:** `verify_model.cjs` (façade 227,244 triangles < 230,000; the budget is unchanged because the removed colonnette capitals offset the traces), `verify_construction.cjs`, `verify_simulator.cjs --report --estimates` (exit 0; known unmet targets remain), `verify_detail_front_source.py`, `git diff --check`. Desktop day views were captured headless: whole front, rose, both capital types, pedestal rosette, triple window, and the cross top front and oblique. Exports in `output/pdf*` are stale for the front.
+
+### Side-bay cresting rebuilt from E01B · 3 November 2026
+
+The cresting over the side bays had its rhythm reversed against the drawing. The model had tall blocks with big fleurs on the post positions and turned balusters with small fleurs between them. E01B (H side, C4AFC6–C4B1C9 and the post lines about Z 4.405 and 4.716) draws the following:
+
+- **Narrow posts** on the `spec.crest.posts` positions: shaft ±0.0685, a ring at +16.165–16.195, and a stepped cap to +16.383 (±0.083 / 0.10 / 0.116 / 0.132). Each carries the **big fleur** on a plinth and collar (+16.98–17.10), up to about +17.41.
+- **Wide posts** midway between them: shaft ±0.085, rings at +16.385–16.42 and +16.515–16.54, and a cap to +16.66 (±0.13 / 0.145 / 0.166). Each carries an urn and the **small fleur** (+16.79 to about +17.09).
+- **Curved ribs.** Lower ribs spring from each narrow cap out to the wide caps, and upper ribs run from the wide posts up to the big fleur's base. Together they leave a pointed opening over every narrow post. The model closes the 12 traced rib arcs (`crestRib` in `detail-front-profile.js`, u from Z 4.40455, C4B19B/C4B19D/C4B19C/C4B1C3/C4B1C2/C4B155 and their mirrors C4B1C5/C4B1C7/C4B1C6/C4B1C9/C4B1C8/C4B1C4) into two plates, extrudes them 0.12 m, and repeats them on every narrow post on both sides.
+
+Status: the levels, widths and rib outlines are DRAWN. The square plan of the posts, the rib thickness and the urn profile are DERIVED. The fleurs keep the shared carved `fleur()` shape, scaled to the drawn height and width, and their ornate drawn outline is not reproduced (CONCEPT). The base rail, back upstand and end posts are unchanged. At the outer ends the ribs meet the pinnacle pedestal (Z ±3.54) and the tower pier (±7.10) about 20–40 mm inside them, where they are hidden.
+
+**Budget:** the façade has 229,316 triangles. The guard in `verify_model.cjs` rises from 230k to 240k, so that the shared crown and fleur geometry, which other passes edit, keeps some headroom.
+
+**Checks:** `verify_model.cjs`, `verify_construction.cjs`, `verify_simulator.cjs --report --estimates` (exit 0), `verify_detail_front_source.py` (`crestRib` 12 rows), `git diff --check`. Headless desktop day views were captured: cresting front and oblique, and the whole front.

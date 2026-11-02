@@ -174,7 +174,6 @@
 
     // Shared exterior carving geometry; placements and materials remain local.
     const { fleur, pilasterCapital, meanderGeo } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
-    const tallFleur = fleur(0.85), smallFleur = fleur(0.42);
     // ---- Niche crests: E01B outlines over the side and central aedicules (owner permission
     // 2 Nov 2026), drawn with the T12 contour tube; relief CONCEPT. They replace the procedural
     // crown and arch leaf cresting.
@@ -448,31 +447,52 @@
       layers('Upper entablature over the side bay', s > 0 ? [SB.inner, SB.outer] : [-SB.outer, -SB.inner], [3.95, 3.70, 3.42, 3.376]);
     });
 
-    // 7. Fleur-de-lis cresting over the side bays, +15.84 to +17.40
+    // 7. Fleur-de-lis cresting over the side bays, +15.84 to +17.41. Rebuilt from E01B on 3 Nov 2026
+    // (C4AFC6–C4B1C9 and the post lines about Z 4.405 / 4.716): narrow posts on CR.posts with stepped caps
+    // to +16.383 carry the big fleurs; wider posts between them (caps to +16.66) carry the small fleurs on
+    // an urn; curved ribs spring from each narrow cap out to the wide caps and from the wide posts back up
+    // to the big fleur's base, leaving a pointed opening over every narrow post. Rib outlines are the
+    // traced arcs (detail-front-profile.js crestRib), extruded 0.12 m; post sections are the drawn widths
+    // made square in plan (DERIVED); the fleurs keep the shared carved shape at the drawn size (CONCEPT).
     const CR = spec.crest;
-    both(s => {
-      const zs = s > 0 ? [CR.from, CR.to] : [-CR.to, -CR.from], xm = (CR.front + CR.back) / 2;
-      block('Cresting balustrade base rail', S, [CR.front - .05, CR.back + .05], [E[1], 15.94], zs);
-      block('Cresting balustrade back upstand', W, [4.85, 4.95], [E[1], 16.1], zs);
-      for (const z of [CR.from - .1, CR.to + .1]) block('Cresting balustrade end post', S, [CR.front - .02, CR.back + .02], [15.94, 16.55], [s * z - .1, s * z + .1]);
-      const posts = CR.posts, mids = [CR.from + .09, ...posts.slice(0, -1).map((p, i) => (p + posts[i + 1]) / 2), CR.to - .09];
-      for (const p of posts) {
-        const z = s * p;
-        block('Cresting balustrade post', S, [CR.front, CR.back], [15.94, 16.45], [z - .11, z + .11]);
-        block('Cresting balustrade post cap', S, [CR.front - .03, CR.back + .03], [16.45, 16.55], [z - .14, z + .14]);
-        add('Cresting tall fleur-de-lis finial', S, tallFleur, facing(xm, 16.55, z), CARVED);
-      }
-      for (const p of mids.slice(1, -1)) {
-        const z = s * p;
-        add('Cresting baluster', S, K.turned([[.05, 0], [.075, .05], [.04, .14], [.06, .24], [.035, .33], [.07, .4], [.07, .44]], 14), TR(xm, 15.94, z));
-        add('Cresting small fleur-de-lis finial', S, smallFleur, facing(xm, 16.84, z), CARVED);
-      }
-      // Pointed arches from post to post, meeting under the small fleurs.
-      for (let i = 0; i < posts.length - 1; i++) for (const [from, to] of [[posts[i], (posts[i] + posts[i + 1]) / 2], [posts[i + 1], (posts[i] + posts[i + 1]) / 2]]) {
-        const d = to - from;
-        add('Cresting pointed arch', S, K.stem([[0, 16.55, s * from], [0, 16.72, s * (from + d * .45)], [0, 16.82, s * (from + d * .8)], [0, 16.86, s * to]].map(([, y, z]) => [xm, y, z]), .028, .02, 10, 5), null, CARVED);
-      }
-    });
+    {
+      const rib = FRONT.crestRib || [], byHandle = new Map(rib.map(r => [r[0], r]));
+      const arcPts = h => { const [, , u, v, r, a0, sp, hd] = byHandle.get(h); const n = Math.ceil(sp / 9); return Array.from({ length: n + 1 }, (_, i) => { const a = (a0 + sp * i / n) * Math.PI / 180; return [u + hd * r * Math.cos(a), v + r * Math.sin(a)]; }); };
+      const chain = handles => {
+        const runs = handles.map(arcPts), d = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1]), pts = [];
+        const nextEnds = runs[1] ? [runs[1][0], runs[1][runs[1].length - 1]] : [];
+        if (nextEnds.length && Math.min(...nextEnds.map(q => d(runs[0][0], q))) < Math.min(...nextEnds.map(q => d(runs[0][runs[0].length - 1], q)))) runs[0].reverse();
+        for (const run of runs) { if (pts.length && d(pts[pts.length - 1], run[0]) > d(pts[pts.length - 1], run[run.length - 1])) run.reverse(); pts.push(...run); }
+        return pts;
+      };
+      const plates = rib.length === 12 ? [chain(['C4B19D', 'C4B19B', 'C4B1C5', 'C4B1C7', 'C4B1C6', 'C4B19C']), chain(['C4B1C3', 'C4B1C2', 'C4B1C8', 'C4B1C9', 'C4B1C4', 'C4B155'])] : [];
+      const bigFleur = fleur(.33), littleFleur = fleur(.31);
+      both(s => {
+        const zs = s > 0 ? [CR.from, CR.to] : [-CR.to, -CR.from], xm = (CR.front + CR.back) / 2, sq = (name, h, y, z, m = S) => block(name, m, [xm - h, xm + h], y, [z - h, z + h]);
+        block('Cresting balustrade base rail', S, [CR.front - .05, CR.back + .05], [E[1], 15.94], zs);
+        block('Cresting balustrade back upstand', W, [4.85, 4.95], [E[1], 16.1], zs);
+        for (const z of [CR.from - .1, CR.to + .1]) block('Cresting balustrade end post', S, [CR.front - .02, CR.back + .02], [15.94, 16.55], [s * z - .1, s * z + .1]);
+        const posts = CR.posts, mids = posts.slice(0, -1).map((p, i) => (p + posts[i + 1]) / 2);
+        for (const p of posts) {
+          const z = s * p;
+          sq('Cresting narrow post', .0685, [15.94, 16.27], z);
+          sq('Cresting post ring', .083, [16.165, 16.195], z);
+          for (const [h, y] of [[.083, [16.27, 16.293]], [.1, [16.293, 16.335]], [.116, [16.335, 16.355]], [.132, [16.355, 16.383]]]) sq('Cresting narrow post cap', h, y, z);
+          for (const g of plates) slab('Cresting rib · E01B', S, new T.Shape(g.map(([u, v]) => new T.Vector2(z + u, v))), [xm - .06, xm + .06], TRACED, 4);
+          sq('Cresting fleur plinth', .055, [16.98, 17.06], z);
+          sq('Cresting fleur collar', .045, [17.06, 17.10], z);
+          add('Cresting big fleur-de-lis', S, bigFleur, facing(xm, 17.10, z, SC(1.4, 1, 1.4)), CARVED);
+        }
+        for (const p of mids) {
+          const z = s * p;
+          sq('Cresting wide post', .085, [15.94, 16.54], z);
+          for (const y of [[16.385, 16.42], [16.515, 16.54]]) sq('Cresting post ring', .105, y, z);
+          for (const [h, y] of [[.13, [16.54, 16.60]], [.145, [16.60, 16.62]], [.166, [16.62, 16.66]]]) sq('Cresting wide post cap', h, y, z);
+          add('Cresting fleur urn', S, K.turned([[.11, 0], [.075, .025], [.055, .055], [.05, .08], [.062, .085], [.066, .105], [.062, .125], [.05, .13]], 12), TR(xm, 16.66, z), CARVED);
+          add('Cresting small fleur-de-lis', S, littleFleur, facing(xm, 16.79, z, SC(1.5, 1, 1.4)), CARVED);
+        }
+      });
+    }
 
     // 8. Pinnacles on the central piers, front and back (+15.84 to +20.55)
     const pinnacle = (zc, [x0, x1], label) => {
