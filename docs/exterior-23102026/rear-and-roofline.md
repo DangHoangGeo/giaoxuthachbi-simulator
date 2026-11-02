@@ -77,3 +77,30 @@ Chủ đầu tư yêu cầu hai đầu cánh ngang "giống hệt trang trí thi
 - **Khám đỉnh:** gờ chân và gờ đầu trụ theo EW; tháp nhỏ Gothic (thân có ô cửa nhọn, mái hiên, trán, chóp, vòng cổ, hoa huệ) thay chóp chung; công-xôn lá ô-rô (`wingVolute`) trên tấm nền có biên DERIVED thay thanh cuộn; hoa văn cuộn quanh quả cầu (`wingCrest`), chân quả cầu tiện theo EW, tia quanh thánh giá (`wingRays`).
 - Đầu hồi phía cung thánh (E03) dùng cùng các bộ phận nên cũng được cập nhật theo EW; E03 chưa được đối chiếu riêng từng chi tiết.
 - **Giấy phép:** yêu cầu ngày 3/11 được ghi nhận là chỉ đạo của chủ đầu tư; việc công bố các đường nét EW/E02 nằm trong **PUBLICATION HOLD H1** cho tới khi chủ đầu tư xác nhận phạm vi như đã làm với E01B.
+
+## Đầu hồi phía cung thánh đối chiếu riêng với E03 · 3/11/2026
+
+Lượt này so từng chi tiết E03 (u = (x − 1587256,3)/1000 = Z mô hình phía H, v = (y + 518026,8)/1000) với mô hình và với EW. Cách so: đổi các LINE/ARC của một vùng E03 sang khung của EW rồi tìm đối tượng trùng trong 1 mm. Kết quả cho phép dùng lại nét EW ở những chỗ trùng và chỉ vẽ lại riêng những chỗ E03 khác. Mọi phần dùng chung trong `roofline.js` được tham số hóa để hai cánh ngang không đổi: dấu vân tay hình học của toàn bộ phần mái-diềm có X < 50 m (273.016 tam giác) giữ nguyên trước/sau.
+
+**Trùng EW (dùng lại, DRAWN theo E03):**
+
+- Trụ tầng trệt C/G và góc: trùng trụ EW trong 1 mm (483/496 đối tượng ở trụ góc; phần lệch là cung cửa sổ bên cạnh); giữ `drawnPier()`.
+- Đầu cột trụ góc tầng hồi (+7,409277–7,754277): trùng `wingCapOuter` dịch −0,453 m (233/257).
+- Hoa hồng: 204/204 đối tượng trùng `wingRose` dịch −2,417 m. Khám đỉnh (tháp nhỏ, công-xôn, hoa văn quanh quả cầu, chân quả cầu, thánh giá): 1.069/1.120 trùng EW dịch −2,642 m; phần lệch là chóp hoa của diềm dốc ở chân khám và vài tia thánh giá lệch dưới 0,3 mm.
+- Răng cưa dưới hai mái dốc: cùng độ dốc 0,7496 và cùng răng 66,3 mm dài/ngắn như EW; lệch pha khoảng 3 mm, chưa chỉnh.
+
+**Khác EW, đã sửa theo E03:**
+
+| Bộ phận | Trước | Sau | Chứng cứ E03 |
+| --- | --- | --- | --- |
+| Trụ D/E tầng trệt | Trụ giả hình của bundle rộng 0,30 m, cao tới +8,575 | Trụ vẽ chung: chân, bệ hoa thị và thân như EW, thân và rãnh kéo lên tới +7,8737 / +7,7487; đầu cột EW và gờ nâng 2,251448 m (+7,8737–8,575367) | LINE `D90722`, các đường ngang +7,9137–8,5754 |
+| Diềm tầng trệt | Chỉ một thanh giả hình giữa C/G và góc; không có diềm giữa D/E và C/G | `drawnEntablature()` từ mặt trụ D/E (|Z| 3,935) tới tim trụ góc (10,574), hai bên; răng dài tâm tại ±(4,08245 + k·0,1326) | LINE `D90581`, `D9674E`–`D96751`, `D9681E`, `D968AB`–`D968AD`, `D96BA7`–`D96BBE` |
+| Dải giữa giữa hai trụ D/E | Khối phẳng, chữ Vạn và răng tự đặt | Chính diềm trên, nâng 2,251448 m: răng +7,6737–7,8737 tâm tại u 0, chữ Vạn +8,0137–8,2637, mũ tới +8,575367 | LINE `D96CDF`–`D96CE1`, `D9848F`–`D98491` |
+| Trụ C/G tầng hồi | Đầu cột lá (lấy theo EW) +8,876–9,301 | E03 không vẽ đầu cột: thân có rãnh tới +8,875933, ba gờ, khối có tấm biển, hai gờ, khối thứ hai, mũ tới +9,822633 | 12 hàng ngang +8,875929–9,822633 |
+| Trụ D/E tầng hồi | Đầu cột `wingCapInner`, bệ năm tầng EW co theo chiều cao | Chân như chân trụ trệt (+8,575367–9,115367); đầu cột EW trụ trệt nâng 5,863261 m (+11,485477–11,875477), gờ tới +12,18718; khối có trán tam giác và ô lõm, mũ tới +13,192991 | 20 hàng ngang +8,575367–13,192991 |
+
+Các hàng trụ ghi trong `spec.rear.cg/de.rows` theo `[v0, v1, nửa bề rộng, loại]`; `scripts/verify_detail_rear_source.py` kiểm từng mức có đường E03 đi qua trụ (sai khác lớn nhất 0,016 mm) và nửa bề rộng do một đường E03 đạt tới (2 mm). Gờ cong (loại C) lấy nửa bề rộng trung bình của hai mép vẽ; lõi chuông đầu cột (B) là DERIVED như `drawnPier()`. Độ nhô ra khỏi tường đều là DERIVED/CONCEPT.
+
+Gỡ khỏi nhóm bundle đầu nhà: hai trụ giả hình D/E (cả đoạn trên +6,324–11,25), thanh `Schematic beam` (cả dải tối chạy theo mái dốc), các khối chóp góc và hàng `Schematic end eave ornament`. Tường, năm cửa và phần cửa của bundle giữ nguyên.
+
+**Va chạm cần phối hợp (không dời thiết bị):** đèn lối đi `L188`/`L195` tại (53,20; 5,20; ±4,50) nằm ngay dưới răng diềm mới (đáy +5,422, nhô tới X ≈ 53,40); khoảng hở đứng khoảng 0,2 m, cần kiểm bằng kích thước đèn thật. Dây đèn lễ `L201`/`L212` tại X 53,72 chạy trước mặt diềm dốc dưới (mặt diềm X 53,66).
