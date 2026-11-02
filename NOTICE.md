@@ -41,3 +41,5 @@ The name and image of Thạch Bi parish belong to the parish community. The lice
 ## Adding material
 
 Record the source, author, date and licence or permission of anything you add that you did not make yourself, in the relevant manifest. Do not add material whose terms do not allow public sharing. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+**Tower-front spandrel leaf:** On 2 November 2026 the owner confirmed permission from the parish and designer to reproduce this E01B detail in the public model. The source remains the designers’ 23 October 2026 DWG; this scoped permission is not a licence for the original drawing or other details. The original grant document was not supplied. Other drawing material remains on PUBLICATION HOLD.
