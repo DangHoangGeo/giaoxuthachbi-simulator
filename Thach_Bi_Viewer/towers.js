@@ -17,7 +17,7 @@
   const DRAWN = 'TRACED CAD ELEVATION / SCHEMATIC DEPTH';
   const CARVED = 'TRACED CAD ELEVATION / ILLUSTRATIVE CARVING';
   const spec = {
-    revision: '2026-11-02-tower-lower-columns-1',
+    revision: '2026-11-03-tower-traced-decoration-1',
     centre: 10.153, core: 2.45, wall: 0.14, // tower centre |Z|; core half-width; half wall thickness
     top: 8.39,
     leafStroke: .018, // T12 contour tube radius: owner 2 Nov 2026 asked for bolder leaves (was 8 mm); CONCEPT relief
@@ -30,7 +30,15 @@
     // (F-NAVE-[BH]-2P). DERIVED, confirmation pending (ENG-043).
     // E01B flute ends (centres ±0.025) and raised-field half-widths of the corner piers, ground and
     // three upper stages; the side faces repeat them (DERIVED). Field runs 0.1 m beyond the flutes.
-    flutes: { ground: { half: 0.275, f: [1.948, 7.263] }, stages: [{ half: 0.235, f: [9.15, 14.793] }, { half: 0.225, f: [16.6, 22.123] }, { half: 0.2245, f: [23.9, 28.313] }] },
+    // 3 Nov 2026: the drawn flutes are not on the pier centre. t = middle flute from the tower centre
+    // on E01B (Z 7.703/12.603, 7.763/12.543, 7.823/12.483, 7.954/12.351); x = middle flute X of the
+    // front and rear piers on E02 (r 25 mm flute-end arcs). Stages 1–3 sit 0.09–0.11 m in from the
+    // pier centre, toward the face centre; stage 4 is centred.
+    flutes: { ground: { half: 0.275, f: [1.948, 7.263], t: 2.450, x: [0.0, 4.90] },
+      stages: [{ half: 0.235, f: [9.15, 14.793], t: 2.390, x: [0.06, 4.84] }, { half: 0.225, f: [16.6, 22.123], t: 2.330, x: [0.12, 4.78] },
+        { half: 0.2245, f: [23.9, 28.313], t: 2.199, x: [0.252, 4.649] }] },
+    // Traced pier-capital foliage (detail-towers-profile.js pierCapital1..4): tube radius and relief CONCEPT.
+    capitalStroke: .008,
     pier: { t: [1.955, 3.165], front: [-0.715, 0.495], back: [4.405, 5.615], backInner: [4.405, 5.04], pedestal: 1.848, shaft: 7.4, capital: 7.85,
       // E01B C45432..C45487 pedestal bands up to the +1.848 top (facade.csv F33–F35), same on E02:
       // [y0, y1, projection beyond the shaft face, material, name]; the two cyma mouldings
@@ -614,6 +622,12 @@
     };
     const leafProfiles = window.CHURCH_TOWER_SPANDREL_PROFILE;
     const towerLeaves = { outer: towerSpandrel(leafProfiles.outer, spec.leafStroke, spec.leafSagitta), inner: towerSpandrel(leafProfiles.inner, spec.leafStroke, spec.leafSagitta) };
+    // Pier capitals traced from E01B (pierCapital1..4, the inner pier, u from the tower centre). The
+    // outer pier is the mirror image (E01B draws it so, within 0.1 mm; stage 4 within 24 mm), and E02
+    // draws the same outline on the side faces (front pier as traced, rear pier mirrored, within 0.1 mm).
+    const capitalRows = window.CHURCH_DETAIL_PROFILE_TOWERS;
+    const capitalGeo = [1, 2, 3, 4].map(n => towerSpandrel(capitalRows['pierCapital' + n], spec.capitalStroke, .003, 3));
+    const CAPITAL = 'E01B/E02 TRACED CAPITAL OUTLINE / RELIEF CONCEPT';
     // Each tower face has its own frame: u along the face, v up, w out of the face.
     // face(s, kind) → function mapping (u, v, w) to a world matrix and box helpers.
     const both = fn => { for (const s of [-1, 1]) fn(s); };
@@ -621,6 +635,11 @@
     both(s => {
       const zc = s * spec.centre, C = spec.core, P = spec.pier, E = spec.entablature;
       const Z = t => zc + s * t; // t outward from the tower centre
+      // n: 0 = ground, 1..3 = stages 2..4; face = the capital band's front X or side t; the tube sits just proud of it.
+      const capitalFront = (n, side, faceX) => add('Tower pier capital foliage · traced E01B', S, capitalGeo[n],
+        place(SC(-side * s, 1, 1), RY(-Math.PI / 2), TR(faceX - spec.capitalStroke, 0, zc)), CAPITAL);
+      const capitalSide = (n, isFront, faceT) => add('Tower pier capital foliage · traced E02', S, capitalGeo[n],
+        place(SC(isFront ? s : -s, 1, 1), RY(s > 0 ? 0 : Math.PI), TR(C, 0, Z(faceT + spec.capitalStroke))), CAPITAL);
       const block = (name, material, [x0, x1], [y0, y1], [t0, t1], status) => {
         const z0 = Z(t0), z1 = Z(t1);
         add(name, material, new T.BoxGeometry(x1 - x0, y1 - y0, Math.abs(z1 - z0)), TR((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2), status);
@@ -714,17 +733,19 @@
         for (const [y0, y1, d, m, name] of P.bands) block(name, m === 'W' ? W : S, grow([x0, x1], d), [y0, y1], grow([t0, t1], d));
         block('Tower corner pier shaft', W, [x0, x1], [P.pedestal, P.shaft], [t0, t1]);
         // Pilaster strips with three flutes on each exposed face.
-        const front = x0 < 0, outer = side > 0;
-        if (front) for (const tm of [(t0 + t1) / 2]) {
+        const front = x0 < 0, outer = side > 0, FL = spec.flutes.ground;
+        if (front) for (const tm of [side * FL.t]) {
           block('Tower pier pilaster', W, [x0 - .06, x0], [P.pedestal + .02, P.shaft], [tm - .3, tm + .3]);
-          fluted(spec.flutes.ground, [P.pedestal + .02, P.shaft], place(RY(-Math.PI / 2), TR(x0 - .06, 0, Z(tm))));
-          add('Tower pier capital foliage', S, pilasterCapital(.7, (P.capital - P.shaft) * .9), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(x0 - .07, P.shaft, Z(tm))), CARVED);
+          fluted(FL, [P.pedestal + .02, P.shaft], place(RY(-Math.PI / 2), TR(x0 - .06, 0, Z(tm))));
+          capitalFront(0, side, x0 - .04);
         }
         if (outer || !front) {
-          const xm = (x0 + x1) / 2, tf = outer ? t1 : t0, dir = outer ? 1 : -1;
+          // The truncated inner rear pier (nave side) keeps its centred field and illustrative capital.
+          const truncated = !outer && !front, xm = truncated ? (x0 + x1) / 2 : FL.x[front ? 0 : 1], tf = outer ? t1 : t0, dir = outer ? 1 : -1;
           block('Tower pier pilaster', W, [xm - .3, xm + .3], [P.pedestal + .02, P.shaft], [tf, tf + dir * .06].sort((a, b) => a - b));
-          fluted(spec.flutes.ground, [P.pedestal + .02, P.shaft], place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, 0, Z(tf + dir * .06))));
-          add('Tower pier capital foliage', S, pilasterCapital(.7, (P.capital - P.shaft) * .9), place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, P.shaft, Z(tf + dir * .07))), CARVED);
+          fluted(FL, [P.pedestal + .02, P.shaft], place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, 0, Z(tf + dir * .06))));
+          if (truncated) add('Tower pier capital foliage · inner rear, illustrative', S, pilasterCapital(.7, (P.capital - P.shaft) * .9), place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, P.shaft, Z(tf + dir * .07))), CARVED);
+          else capitalSide(0, front, t1 + .04);
         }
         block('Tower pier capital band', S, grow([x0, x1], .04), [P.shaft, P.capital], grow([t0, t1], .04));
         stats.piers++;
@@ -893,15 +914,15 @@
           const ts = side > 0 ? g.t : [-g.t[1] - lap, -g.t[0]], grow = (a, d) => [a[0] - d, a[1] + d];
           block('Tower stage pier pedestal', S, grow(xs, .1), [y0, y0 + .6], grow(ts, .08));
           block('Tower stage pier shaft', W, xs, [y0 + .6, g.cap[0]], ts);
-          const tm = (ts[0] + ts[1]) / 2, isFront = xs === front, outer = side > 0;
+          const n = spec.stages.indexOf(g) + 1, FL = spec.flutes.stages[n - 1], isFront = xs === front, outer = side > 0;
           if (isFront) {
-            fluted(spec.flutes.stages[spec.stages.indexOf(g)], [y0 + .6, g.cap[0]], place(RY(-Math.PI / 2), TR(xs[0], 0, Z(tm))));
-            add('Tower pier capital foliage', S, pilasterCapital(.66, (g.cap[1] - g.cap[0]) * .95), place(RY(-Math.PI / 2), TR(xs[0] - .01, g.cap[0], Z(tm))), CARVED);
+            fluted(FL, [y0 + .6, g.cap[0]], place(RY(-Math.PI / 2), TR(xs[0], 0, Z(side * FL.t))));
+            capitalFront(n, side, xs[0] - .03);
           }
           if (outer) {
-            const xm = (xs[0] + xs[1]) / 2, tf = ts[1];
-            fluted(spec.flutes.stages[spec.stages.indexOf(g)], [y0 + .6, g.cap[0]], place(RY(s > 0 ? 0 : Math.PI), TR(xm, 0, Z(tf))));
-            add('Tower pier capital foliage', S, pilasterCapital(.66, (g.cap[1] - g.cap[0]) * .95), place(RY(s > 0 ? 0 : Math.PI), TR(xm, g.cap[0], Z(tf + .01))), CARVED);
+            const xm = FL.x[isFront ? 0 : 1], tf = ts[1];
+            fluted(FL, [y0 + .6, g.cap[0]], place(RY(s > 0 ? 0 : Math.PI), TR(xm, 0, Z(tf))));
+            capitalSide(n, isFront, tf + .03);
           }
           block('Tower pier capital band', S, grow(xs, .03), g.cap, grow(ts, .03));
           for (const [dy, out, m] of [[[g.cap[1], g.cap[1] + .12], .06, S], [[g.cap[1] + .12, y1 - .16], .12, W], [[y1 - .16, y1], .2, S]]) block('Tower stage pier cornice', m, grow(xs, out), dy, grow(ts, out));
