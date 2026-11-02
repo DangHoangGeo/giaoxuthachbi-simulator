@@ -1,0 +1,48 @@
+/* Exterior ornament generators, metres. See docs/exterior-23102026/decoration-inventory.md.
+   Visual proxies only; source outlines and engineering holds remain in the owning records. */
+(() => {
+  // Reusable illustrative exterior ornament: fleur-de-lis finial, flat foliate pilaster capital,
+  // Greek-key frieze and a leaf spray, each built facing +Z with its base at the origin.
+  function create(T, K) {
+    const { TR, RX, RZ, SC, place, merge } = K;
+    const fleur = h => {
+      const parts = [[K.leaf({ len: h * .62, wid: h * .26, thick: h * .05, curl: .3, lobes: 0, cup: .25, seg: 6, fine: false }), TR(0, h * .34, 0)],
+        [new T.BoxGeometry(h * .34, h * .07, h * .12), TR(0, h * .3, 0)], [new T.BoxGeometry(h * .09, h * .3, h * .09), TR(0, h * .15, 0)]];
+      const petal = K.stem([[h * .04, h * .32, 0], [h * .2, h * .42, 0], [h * .27, h * .6, 0], [h * .2, h * .74, 0], [h * .11, h * .68, 0]], h * .045, h * .018, 10, 5);
+      for (const e of [-1, 1]) parts.push([petal, SC(e, 1, 1)]);
+      return merge(parts);
+    };
+    const capitalCache = new Map();
+    const pilasterCapital = (w, h) => {
+      const key = w.toFixed(3) + '|' + h.toFixed(3);
+      if (capitalCache.has(key)) return capitalCache.get(key);
+      const n = Math.max(3, Math.round(w / .2)), parts = [];
+      const blade = K.leaf({ len: h * .78, wid: w / n * 1.3, thick: .025, curl: 1.7, lobes: 3, cup: .25, seg: 6 });
+      for (let i = 0; i < n; i++) parts.push([blade, place(RX(.12), TR(-w / 2 + (i + .5) * w / n, h * .04, .01))]);
+      const volute = K.stem(K.scroll(0, 0, h * .14, 1.2, -Math.PI / 2, 1), .02, .008, 10, 5);
+      for (const e of [-1, 1]) parts.push([volute, place(SC(e, 1, 1), TR(e * (w / 2 - h * .1), h * .74, .02))]);
+      const g = merge(parts); capitalCache.set(key, g); return g;
+    };
+    const meanderGeo = (len, h) => {
+      const u = .31, t = .035, m = .035, depth = .03, parts = [];
+      const bar = (a, b, c, d) => parts.push([new T.BoxGeometry(b - a, d - c, depth), TR((a + b) / 2, (c + d) / 2, depth / 2)]);
+      bar(0, len, m, m + t); bar(0, len, h - m - t, h - m);
+      for (let x = 0; x + u <= len + 1e-6; x += u) {
+        bar(x, x + t, m, h - m); bar(x + .8 * u - t, x + .8 * u, .3 * h, h - m);
+        bar(x + .4 * u, x + .8 * u, .3 * h, .3 * h + t); bar(x + .4 * u, x + .4 * u + t, .3 * h, .66 * h);
+        bar(x + .4 * u, x + .62 * u, .66 * h - t, .66 * h);
+      }
+      return merge(parts);
+    };
+    const spray = h => {
+      const parts = [], stemG = K.stem([[0, 0, 0], [h * .35, h * .25, 0], [h * .7, h * .15, 0], [h * .95, h * .32, 0]], .03, .012, 14, 5);
+      parts.push([stemG, null], [K.stem(K.scroll(h * .95, h * .42, h * .1, 1.2, 0, 1), .022, .008, 10, 5), null]);
+      const blade = K.leaf({ len: h * .32, wid: h * .16, thick: .025, curl: 1.4, lobes: 3, seg: 5, fine: false });
+      for (const [u, v, a] of [[h * .2, h * .12, .6], [h * .45, h * .22, 2.3], [h * .62, h * .12, .9], [h * .82, h * .22, 2.1]]) parts.push([blade, place(RZ(-a), TR(u, v, 0))]);
+      return merge(parts);
+    };
+    return { fleur, pilasterCapital, meanderGeo, spray };
+  }
+
+  window.CHURCH_EXTERIOR_ORNAMENT = { create };
+})();

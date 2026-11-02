@@ -152,28 +152,9 @@
     const both = fn => { for (const s of [-1, 1]) fn(s); };
     const W = mat.wall, S = mat.trim, D = mat.darkTrim;
 
-    // ---- Shared carving ----
-    // Fleur-de-lis finial h high, base at the origin, facing +Z.
-    const fleur = h => {
-      const parts = [[K.leaf({ len: h * .62, wid: h * .26, thick: h * .05, curl: .3, lobes: 0, cup: .25, seg: 6, fine: false }), TR(0, h * .34, 0)],
-        [new T.BoxGeometry(h * .34, h * .07, h * .12), TR(0, h * .3, 0)], [new T.BoxGeometry(h * .09, h * .3, h * .09), TR(0, h * .15, 0)]];
-      const petal = K.stem([[h * .04, h * .32, 0], [h * .2, h * .42, 0], [h * .27, h * .6, 0], [h * .2, h * .74, 0], [h * .11, h * .68, 0]], h * .045, h * .018, 10, 5);
-      for (const e of [-1, 1]) parts.push([petal, SC(e, 1, 1)]);
-      return merge(parts);
-    };
+    // Shared exterior carving geometry; placements and materials remain local.
+    const { fleur, pilasterCapital } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     const tallFleur = fleur(0.85), smallFleur = fleur(0.42), crownFleur = fleur(0.58);
-    // Flat foliate capital for a pilaster w wide and h high, front face at the origin, facing +Z.
-    const capitalCache = new Map();
-    const pilasterCapital = (w, h) => {
-      const key = w.toFixed(3) + '|' + h.toFixed(3);
-      if (capitalCache.has(key)) return capitalCache.get(key);
-      const n = Math.max(3, Math.round(w / .2)), parts = [];
-      const blade = K.leaf({ len: h * .78, wid: w / n * 1.3, thick: .025, curl: 1.7, lobes: 3, cup: .25, seg: 6 });
-      for (let i = 0; i < n; i++) parts.push([blade, place(RX(.12), TR(-w / 2 + (i + .5) * w / n, h * .04, .01))]);
-      const volute = K.stem(K.scroll(0, 0, h * .14, 1.2, -Math.PI / 2, 1), .02, .008, 10, 5);
-      for (const e of [-1, 1]) parts.push([volute, place(SC(e, 1, 1), TR(e * (w / 2 - h * .1), h * .74, .02))]);
-      const g = merge(parts); capitalCache.set(key, g); return g;
-    };
     // Corinthian-type pilaster capital: bell, leaves and abacus, by world extents.
     const capital = (name, zc, half, [y0, y1], xFront, depth = .3) => {
       const h = y1 - y0;

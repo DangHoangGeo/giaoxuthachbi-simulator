@@ -24,6 +24,7 @@ const files = [
 	"render-batches.js",
 	"glass-art.js",
 	"carving.js",
+	"exterior-ornament.js",
 	"sanctuary.js",
 	"facade.js",
 	"porches.js",

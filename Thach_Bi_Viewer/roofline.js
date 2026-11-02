@@ -57,11 +57,11 @@
   window.CHURCH_ROOFLINE = { spec, prepare };
 
   function prepare({ THREE: T, exterior, roofs, mat, data }) {
-    if (!exterior || !window.CHURCH_TOWERS?.ornament) return;
+    if (!exterior || !window.CHURCH_EXTERIOR_ORNAMENT) return;
     exterior.updateMatrixWorld(true);
     const K = window.CHURCH_CARVING.create(T);
     const { TR, RY, RZ, SC, place, merge } = K;
-    const { fleur, pilasterCapital, meanderGeo } = window.CHURCH_TOWERS.ornament(T, K);
+    const { fleur, pilasterCapital, meanderGeo } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     const A = data.longitudinal;
 
     // The bundle's roof planes used to run past the new gable face planes:
