@@ -131,13 +131,22 @@ const church = { scene: sandbox.window.model.scene, renderer: sandbox.window.mod
 SIM.start(church);
 assert(SIM.ready, 'simulator started');
 assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.items.length);
+// Owner, 3 Nov 2026: keep both statues back at the axis-11 shrine for depth.
+for(const [id,sign] of [['D293',-1],['D294',1]]){
+  const it=SIM.state.items.find(o=>o.id===id),s=sandbox.CHURCH_SANCTUARY.spec;
+  assert(it&&Math.abs(it.pos[0]-(s.wingX-.1))<.001&&Math.abs(it.pos[1]-s.nicheBase)<.001&&Math.abs(it.pos[2]-sign*s.wingZ)<.001,`${id} stays at the recessed shrine`);
+}
+for(const sign of [-1,1]){
+  const s=sandbox.CHURCH_SANCTUARY.spec,c=sign*(s.wingZ+s.shrineShelf.offset),h=s.shrineShelf.half;
+  assert(SIM.GEO.sanctuary.boxes.some(b=>Math.abs(b.min[1]-2.525)<.001&&Math.abs(b.min[2]-(c-h))<.001&&Math.abs(b.max[2]-(c+h))<.001),'The widened shelf has a matching analysis occluder');
+}
 // Carved ornament keeps clear of every fitting of the recommended design: no vertex of a capital,
 // haunch, cartouche or beam end lies inside a part of a lamp, fan, loudspeaker or banner. One contact
 // is known and recorded as a lighting coordination item: the ambo key light hangs 0.45 m from the
 // axis-9/D column axis and its canopy meets the abacus, as it met the plain capital before.
 {
   const known = new Set(['Ambo key light|Column carving · capital bell']), contacts = new Map(), v = new T.Vector3();
-  const carved = nodes.filter(o => o.isMesh && /^(Column carving|Gilded column capital|Main tie beam|Side beam|Longitudinal column-line beam|Side vault|Vault coffer|Reredos lower panel|Shrine shelf ·)/.test(o.name) && !/as drawn$|concept proxy$/.test(o.name));
+  const carved = nodes.filter(o => o.isMesh && /^(Column carving|Gilded column capital|Main tie beam|Side beam|Longitudinal column-line beam|Side vault|Vault coffer|Reredos lower panel|Shrine shelf ·|Shrine base ·|Central pilaster ·|Wing pilaster ·|Shrine jamb ·|Concrete support|Reredos · connected)/.test(o.name) && !/as drawn$|concept proxy$/.test(o.name));
   building.updateMatrixWorld(true);
   const boxes = carved.map(o => new T.Box3().setFromObject(o));
   for (const fx of SIM.fixtures.values()) {
@@ -165,7 +174,7 @@ assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.i
     const sx = sandbox.CHURCH_SANCTUARY.spec, ray = new T.Raycaster(), boards = nodes.filter(o => o.isMesh && o.name === 'Side vault · gilded boarding');
     assert.equal(boards.length, 2);
     building.updateMatrixWorld(true);
-    const vaultParts = nodes.filter(o => o.isMesh && /^(Side vault|Gilded vault boss|Vault rosette|Vault coffer|Front frame|Chamber side lintel|Axis-11 side)/.test(o.name));
+    const vaultParts = nodes.filter(o => o.isMesh && /^(Side vault|Gilded vault boss|Vault rosette|Vault coffer|Wing pilaster ·|Shrine jamb ·|Front frame|Chamber side lintel|Axis-11 side)/.test(o.name));
     const ribs = nodes.filter(o => o.isMesh && o.name === 'Side vault longitudinal rib');
     const lights = SIM.state.items.filter(it => /^(Statue accent|Shrine wash) · [BH]$/.test(it.name));
     assert.equal(lights.length, 4, 'four shrine lights under the side vaults');
@@ -264,9 +273,10 @@ assert(church.walkCamera.fov < 60, 'natural lens instead of 68° vertical: ' + c
   assert(!sanctuary.some(it => it.id === 'votive') && !design.some(it => it.type === 'candleStand'), 'votive candle stands are removed from the way to the shrines');
   assert(near(sanctuary.find(it => it.id === 'ambo-mic').pos[0], 41.08), 'ambo microphone follows the ambo forward');
   assert(near(accent.pos[1], 7.6) && Math.abs(Math.tan(accent.yaw * Math.PI / 180) - (0 - accent.pos[2]) / (spec.niche.backX - 0.5 - accent.pos[0])) < 0.001, 'crucifix accent aims at the corpus inside the niche');
-  for (const name of ['Reredos wash · B', 'Reredos base wash · H', 'Sanctuary vault uplight · B', 'Sanctuary frame wash · H', 'Shrine wash · B', 'Presider chair light', 'Palm · sanctuary H', 'Shrine flowers · B · inner'])
+  for (const name of ['Reredos wash · B', 'Reredos base wash · H', 'Sanctuary vault uplight · B', 'Sanctuary frame wash · H', 'Shrine wash · B', 'Presider chair light', 'Shrine flowers · B · inner'])
     assert.equal(sanctuary.filter(it => it.name === name).length, 1, 'new sanctuary fitting added once: ' + name);
   assert(!sanctuary.some(it => it.name === 'Statue · Saint Joseph'), 'a statue deleted from the saved layout stays deleted');
+  assert(!sanctuary.some(it => /^Palm · sanctuary/.test(it.name)), 'the retired sanctuary palms (3 Nov 2026) are not added back');
   assert.equal(D.upgradeSanctuary(sanctuary, design).length, sanctuary.length, 'sanctuary migration has no duplicates');
   // Night retune: a layout already at revision 6 keeps every position. Only the output of the
   // sanctuary fittings changes, and the reredos washes still in place are re-aimed.
@@ -513,7 +523,7 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   const planning=sandbox.CHURCH_PLANNING,allPalms=SIM.state.items.filter(it=>it.type==='palm');
   const sanctuaryPalms=allPalms.filter(it=>it.name.startsWith('Palm · sanctuary'));
   assert.equal(allPalms.filter(it=>it.name.startsWith('Palm · entrance')).length,0,'Default entrance palms removed');
-  assert.equal(sanctuaryPalms.length,2);assert.equal(allPalms.length,2);
+  assert.equal(sanctuaryPalms.length,0,'Sanctuary palms removed (owner, 3 Nov 2026)');assert.equal(allPalms.length,0);
   const palms=[-1,1].map(s=>SIM.add({type:'palm',name:`Palm · entrance synthetic ${s}`,mount:'floor',pos:[6.3,0,s*6.55]}, {record:false}));
   const exteriorPalm=SIM.add({type:'palm',name:'Test courtyard palm',mount:'floor',pos:[-10,-.48,5]}, {record:false});
   const visibility=palms.map(it=>it.hidden);
@@ -863,26 +873,31 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert.equal(SIM.floorY(44, 0), 0.8, 'dais floor +0.80 m');
   assert.equal(SIM.floorY(46, -5), 0.16, 'side floors +0.16 m');
   assert.equal(SIM.floorY(50, 0), 0.15, 'bay behind the dais keeps +0.15 m');
-  for (const name of ['Flower stand · tabernacle B', 'Palm · sanctuary H', 'Paschal candle']) {
+  for (const name of ['Flower stand · tabernacle B', 'Flower stand · tabernacle H', 'Paschal candle']) {
     const it = SIM.state.items.find(i => i.name === name);
     assert(it && Math.abs(it.pos[1] - 0.8) < 1e-9, 'stands on the dais: ' + name);
   }
   const design = D.recommended(SIM.GEO, SIM), pick = name => design.find(it => it.name === name);
   const lowered = (name, o = {}) => { const raw = pick(name); return { ...raw, pos: [raw.pos[0], raw.pos[1] - 0.05, raw.pos[2]], ...o }; };
-  const saved = [lowered('Ambo microphone', { id: 'm1', on: false }), lowered('Palm · sanctuary B', { id: 'p1' }),
+  const saved = [lowered('Ambo microphone', { id: 'm1', on: false }), lowered('Flower stand · tabernacle B', { id: 'p1' }),
     { ...pick('Paschal candle'), id: 'c1', pos: [40.9, 0.75, -1.2] },
     { ...pick('Altar microphone'), id: 'm2', pos: [44.45, 1.6, 0.45] },
     { id: 'p2', name: 'Palm · entrance B', type: 'palm', circuit: 'DECOR', mount: 'floor', pos: [6.3, 0, -6.55], yaw: 0 },
     { id: 'u1', name: 'Extra flowers', type: 'flowerStand', circuit: 'DECOR', mount: 'floor', pos: [46.0, 0.75, 1.0], yaw: 0, mountYaw: 0 }];
   const up = D.upgradeDaisLevel(saved, design), byId = id => up.find(it => it.id === id);
   assert(plain(byId('m1').pos).join() === plain(pick('Ambo microphone').pos).join() && byId('m1').on === false, 'untouched dais microphone rises, keeps its switch');
-  assert(Math.abs(byId('p1').pos[1] - 0.8) < 1e-9, 'untouched palm stands on the new floor');
+  assert(Math.abs(byId('p1').pos[1] - 0.8) < 1e-9, 'untouched flower stand stands on the new floor');
   assert(Math.abs(byId('c1').pos[1] - 0.8) < 1e-9 && byId('c1').pos[0] === 40.9, 'a moved item resting on the old floor rises in place');
   assert.deepEqual(plain(byId('m2')), plain(saved[3]), 'a microphone set to another height stays');
   assert.deepEqual(plain(byId('p2')), plain(saved[4]), 'items off the dais stay');
   assert(Math.abs(byId('u1').pos[1] - 0.8) < 1e-9, 'a user item on the old floor rises');
   assert.deepEqual(plain(D.upgradeDaisLevel(up, design)), plain(up), 'applying it again changes nothing');
   assert.equal(SIM.state.settings.daisLevelRevision, D.daisLevelRevision, 'the revision is stored in the saved settings');
+  // 3 Nov 2026: untouched sanctuary palms leave a saved layout; a moved one stays.
+  const palmAt = (id, z, o = {}) => ({ id, type: 'palm', name: `Palm · sanctuary ${z < 0 ? 'B' : 'H'}`, circuit: 'DECOR', mount: 'floor', pos: [45.15, 0.8, z], yaw: 0, mountYaw: 0, ...o });
+  const kept = D.upgradeSanctuaryPalms([palmAt('D296', -2.9), palmAt('D302', 2.9, { pos: [45.6, 0.8, 2.9] }), { ...pick('Paschal candle') }]);
+  assert.deepEqual(kept.map(it => it.id), ['D302', pick('Paschal candle').id], 'untouched palm removed, moved palm and other items kept');
+  assert.equal(SIM.state.settings.sanctuaryPalmsRevision, D.sanctuaryPalmsRevision, 'the palm revision is stored in the saved settings');
 }
 // CAD facade of 23 Oct 2026: the niches moved back and up, so the statues, their hidden lines and
 // candles follow once from their previous places, and the upper washes re-aim at the aedicule.

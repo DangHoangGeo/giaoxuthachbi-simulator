@@ -12,6 +12,10 @@
     sideArch:{half:1.575,spring:5.55,shoulder:6.3,crown:6.85,drawn:{spring:6.15,shoulder:6.75,crown:7.46}},
     // Side arches of axis 11 round the shrines (bundle plaster arch, Z 3.85–7.11, spring +5.55).
     arch11:{x:48.34,z:5.48,half:1.55,spring:5.55,shoulder:6.3,crown:6.85},
+    // Shelf finish spans between the existing axis-11 pier faces, not merely
+    // between the narrower decorative shrine jambs. The 5 mm end gaps are a
+    // visualization allowance, not a designed bearing or tolerance.
+    shrineShelf:{half:1.55,offset:.015},
     // Gilded boarded vaults over the two side passages (owner, 1 Nov 2026, USER CONFIRMED): the vault of the
     // chamber continues to both sides, on the outline of the axis-10 side arch at the front (x0 profile
     // interpolated from spec.sideArch) and the axis-11 side arch at the back (x1, spec.arch11).
@@ -29,6 +33,8 @@
     // the cross standing back on a base over the service room. `shell` is the plaster casing
     // seen from the service room; `endX` its rear face.
     niche:{half:1.9,spring:5.85,rise:1.55,floor:2.6,mouthX:47.99,backX:49,lining:.05,shell:.14,endX:49.23},
+    // Capital centre of the four pilasters beside the crucifix niche (owner, 3 Nov 2026; was 6.87).
+    reredosPilasterTop:6.15,
     // Floor outline of the sanctuary front from the CAD file of 23 Oct 2026, ground plan P05
     // (handles D7BF11–D7BF2B) and section A-A S45 (D7E205–D7E211), checked with the owner on
     // 1 Nov 2026. A low platform at +0.16 runs round the dais; the dais rises 0.64 m from it to
@@ -221,7 +227,8 @@
       sleeve('Proposed ambo microphone socket',socket[0],socket[2],c.y+Math.tan(desk.rotation.z)*(socket[0]-c.x),socket[1],.07,desk.material);
     }
     // Parcel-gilt relief of the approved concept: gilded scrollwork on red lacquer for grounds
-    // and friezes, and on a gilt ground where the art is gilded all over (pilasters, shrine frames).
+    // and friezes, and on a gilt ground for the retained shelves and friezes. The
+    // revised pilasters use distinct red lacquer and raised gold geometry instead.
     const reliefFinish=(name,ground,tile)=>{
       const r=K.relief({ground}),m=new T.MeshStandardMaterial({map:r.map,bumpMap:r.bumpMap,bumpScale:.4,metalnessMap:r.surface,roughnessMap:r.surface,metalness:1,roughness:1});
       for(const t of [r.map,r.bumpMap,r.surface])t.repeat.set(1/tile,1/tile);
@@ -237,6 +244,13 @@
       if(!o.isMesh)return;
       if(/^(Central column |Timber shaft foot)/.test(o.name)||/^(Sanctuary plaster pier|Sanctuary pier base)/.test(o.name))o.material=wood;
       else if(o.name==='Sanctuary pier capital')o.material=gold;
+      // Finish the two white axis-11 side arches the owner marked. Keep their
+      // existing concrete/plaster proxy geometry; only its visible finish and
+      // the decorative moulding change. The central arch is not affected.
+      else if((o.name==='Sanctuary arch spandrel'||o.name==='Three-lobed sanctuary arch moulding')&&Math.abs(centre(o).z)>4){
+        o.userData={...o.userData,surfaceFinish:{status:'CONCEPT · red and gold finish; substrate and attachment pending',originalMaterial:o.material.name,engineeringApproved:false}};
+        o.material=o.name==='Sanctuary arch spandrel'?satin:gold;
+      }
       // Between the beams and the rafter the shaft ends in a die with a moulded cap.
       else if(o.name==='Timber capital collar'){o.geometry=new T.BoxGeometry(.56,.27,.56);o.position.y=9.315;o.material=wood;}
       else if(/^Column head \+/.test(o.name)){o.geometry=new T.BoxGeometry(.68,.05,.68);o.position.y=9.475;o.material=wood;}
@@ -329,14 +343,45 @@
       const cy=y+(i+.5)*h/12;flower(g,u+(i%2?-.06:.06),cy,v,.07);
       for(const sign of [-1,1])line(g,Array.from({length:9},(_,k)=>{const a=k*Math.PI*1.6/8,r=.09*(1-k/12);return [u+sign*(.075+Math.cos(a)*r),cy+Math.sin(a)*r,v];}),.012);
     }}
+    // A single continuous parcel-gilt composition on an inset red field. The
+    // stems and leaves are real relief, not a second pattern laid over a texture.
+    // Each blade starts on its branch; the shared stem ties the whole panel together.
+    function pilasterRelief(g,{u,y0,y1,w,face,depth,name}){
+      const h=y1-y0,mid=(y0+y1)/2,fieldW=w*.88,front=face+.030;
+      box(g,fieldW,h,.018,u,mid,face+.004,satin,name+' · red lacquer field');
+      for(const e of [-1,1]){
+        box(g,.011,h,.012,u+e*(fieldW/2-.006),mid,front,gold,name+' · gilded edge');
+        // Red lacquer remains visible on the returns, with one small gilded line.
+        box(g,.012,h,.012,u+e*(w/2+.002),mid,face-depth*.52,gold,name+' · gilded return');
+      }
+      for(const y of [y0+.006,y1-.006])box(g,fieldW,.012,.012,u,y,front,gold,name+' · gilded edge');
+      const pieces=[],amp=w*.04,n=Math.max(3,Math.round(h/.36)),stemX=t=>amp*Math.sin(t*Math.PI*2);
+      pieces.push([K.stem(Array.from({length:25},(_,i)=>{const t=i/24;return [stemX(t),h*t,0];}),.011,.007,48,7),null]);
+      const leaf=K.leaf({len:w*.34,wid:w*.22,thick:.022,curl:.85,lobes:3,seg:8});
+      const bloom=K.bloom({r:w*.12,petals:7,rings:2,seg:4});
+      for(let i=0;i<n;i++){
+        const t=(i+.5)/n,y=h*t,x=stemX(t);
+        for(const e of [-1,1]){
+          const branchX=e*w*.065;
+          pieces.push([K.stem([[x,y,0],[x+e*w*.035,y+.015,.002],[branchX,y+.035,.003]],.007,.005,8,6),null]);
+          pieces.push([leaf,K.place(K.RZ(-e*.9),K.TR(branchX,y+.035,.003))]);
+        }
+        if(i%2===0)pieces.push([bloom,K.place(K.SC(1,1,.8),K.TR(x,y,.006))]);
+      }
+      const relief=mesh(K.merge(pieces),gold,g,name+' · carved foliage',u,y0,front+.004);
+      relief.userData={status:'CONCEPT · parcel-gilt relief on lacquer; artisan, material and fixing pending',engineeringApproved:false,source:'Owner close-up review, 3 Nov 2026; docs/sanctuary-model.md'};
+      return relief;
+    }
     function archShape(half,spring,rise,bottom){const s=new T.Shape();s.moveTo(-half,bottom);s.lineTo(-half,spring);s.bezierCurveTo(-half,spring+rise*.35,-half*.55,spring+rise*.4,-half*.5,spring+rise*.65);s.bezierCurveTo(-half*.4,spring+rise*.92,-.13,spring+rise,0,spring+rise);s.bezierCurveTo(.13,spring+rise,half*.4,spring+rise*.92,half*.5,spring+rise*.65);s.bezierCurveTo(half*.55,spring+rise*.4,half,spring+rise*.35,half,spring);s.lineTo(half,bottom);s.closePath();return s;}
     function slab(g,shape,from,to,mat,name){return mesh(new T.ExtrudeGeometry(shape,{depth:to-from,bevelEnabled:false,curveSegments:18}),mat,g,name,0,0,from);}
     function arch(g,half,spring,rise,bottom,depth,mat,name,hole){const s=archShape(half,spring,rise,bottom);if(hole)s.holes.push(hole);return slab(g,s,depth,depth+.13,mat,name);}
-    function crown(g,w,spring,rise,v){
+    function crown(g,w,spring,rise,v,crestHalf=null){
       const pts=[[-w,spring,v],[-w*.93,spring+rise*.25,v],[-w*.52,spring+rise*.5,v],[-w*.36,spring+rise*.86,v],[0,spring+rise,v],[w*.36,spring+rise*.86,v],[w*.52,spring+rise*.5,v],[w*.93,spring+rise*.25,v],[w,spring,v]];
       line(g,pts,.045);
-      // A cresting of leaves stands on the outside of each arc.
-      crest(g,pts,v+.01,.17,Math.round(w*14),-1);
+      // On the lowest central crown, stop the leaves before the outer pinnacles;
+      // the continuous underlying moulding still carries the shape of the arch.
+      const trace=crestHalf===null?pts:new T.CatmullRomCurve3(pts.map(p=>new T.Vector3(...p))).getPoints(120).filter(p=>Math.abs(p.x)<=crestHalf).map(p=>[p.x,p.y]);
+      crest(g,trace,v+.01,.17,Math.round(w*14*(crestHalf===null?1:crestHalf/w)),-1);
     }
     // Relief plate on a face: metre-based texture coordinates, a few millimetres proud of the timber.
     function plate(g,w,h,u,y,v,finish,name,upright){const o=mesh(K.plate(w,h,1,upright),finish,g,name,u,y,v);o.castShadow=false;return o;}
@@ -370,14 +415,41 @@
       }
     }
     function group(name,x,z){const g=new T.Group();g.name=name;g.position.set(x,0,z);g.rotation.y=-Math.PI/2;root.add(g);return g;}
+    // The four outer concrete-column proxies at the front and back of the side
+    // passages stay intact. A thin, removable-looking lacquer skin carries the
+    // same bounded gold carving onto their exposed faces; it is a finish study,
+    // not an assumed fixing or a change to the structural core.
+    const supportCores=[];
+    building.updateMatrixWorld(true);
+    building.traverse(o=>{
+      if(!o.isMesh||o.name!=='Side column — illustrative shaft width')return;
+      const b=new T.Box3().setFromObject(o),c=b.getCenter(new T.Vector3());
+      const axis=['10','11'].find(a=>Math.abs(c.x-data.longitudinal[a])<.01);
+      if(axis&&Math.abs(Math.abs(c.z)-7.36)<.05)supportCores.push({axis,c,b});
+    });
+    for(const {axis,c,b} of supportCores){
+      const side=c.z<0?'B':'H',g=group(`Concrete support cladding · ${axis}/${side}`,c.x,c.z);
+      g.userData={status:'CONCEPT · lacquered finish over existing concrete support; fire performance, substrate, fixing and access pending',engineeringApproved:false,source:'Owner clarification, 3 Nov 2026; docs/sanctuary-model.md'};
+      const size=b.getSize(new T.Vector3()),half=size.x/2,skin=.002;
+      for(let face=0;face<4;face++){
+        const panel=new T.Group();panel.name='Concrete support cladding · face';panel.rotation.y=face*Math.PI/2;g.add(panel);
+        box(panel,size.z,size.y,skin,0,c.y,half+skin/2,satin,'Concrete support cladding · lacquer skin');
+        // The porch speakers at the back frame sit against the nave-facing
+        // surface. Reserve a clear red panel around each rather than forcing
+        // carving through a speaker or moving a coordinated fixture.
+        const inside=side==='B'?1:3;
+        const spans=axis==='11'&&face===0?[[.84,1.98],[3.42,5.34]]:
+          axis==='11'&&face===inside?[[.84,2.44],[2.96,5.34]]:[[.84,5.34]];
+        for(const [y0,y1] of spans)pilasterRelief(panel,{u:0,y0,y1,w:.46,face:half+skin,depth:skin,name:'Concrete support'});
+      }
+    }
     // Niche outline, optionally grown by a casing thickness, as a shape or as a hole.
     // (Holes are wound against their contour, or their reveals would face into the timber.)
     const N=spec.niche,outline=(grow=0)=>archShape(N.half+grow,N.spring,N.rise+grow,N.floor-grow),opening=grow=>new T.Path(outline(grow).getPoints(18).reverse());
     const casing=(outer,inner)=>{const s=outline(outer);s.holes.push(opening(inner));return s;};
     const center=group('Central gilded reredos',spec.centerX,0);
     arch(center,3.26,8.05,2.3,DAIS,-.23,satin,'Outer carved canopy',opening(N.lining));
-    for(let j=0;j<3;j++)crown(center,3.05+j*.075,7.75+j*.23,1.95+j*.09,.03+j*.04);
-    for(const e of [-1,1])vine(center,e*3.13,2.65,5.25,.07);
+    for(let j=0;j<3;j++)crown(center,3.05+j*.075,7.75+j*.23,1.95+j*.09,.03+j*.04,j===0?2.35:null);
     arch(center,3.14,6.6,2.35,DAIS,0,satin,'Central carved timber silhouette',opening(N.lining));
     // Deep crucifix niche. Local v runs towards the nave: mouth at the reredos face, blue wall
     // 1.0 m behind it. A lacquered reveal lines it; a plaster casing shows in the service room,
@@ -393,20 +465,68 @@
     // The cross stands on a stepped base on the niche floor.
     const vCross=spec.centerX-(N.backX-.17);
     for(const [w,h,d,y] of [[.6,.3,.34,.15],[.42,.28,.28,.44],[.27,.24,.22,.7]]){box(center,w,h,d,0,N.floor+y,vCross,satin,'Crucifix base step');box(center,w+.04,.03,d+.04,0,N.floor+y+h/2,vCross,gold,'Gilded base step edge');}
-    for(let i=0;i<3;i++)crown(center,2.02+i*.43,5.9+i*.27,1.55+i*.16,.34+i*.035);
+    // Frame the niche without carrying the mouldings across the four pilasters.
+    // The two beads follow its real opening, leaving the deeper reveal legible.
+    for(const grow of [.025,.055]){
+      const curve=outline(grow).getPoints(28).filter(p=>p.y>=N.spring-1e-6);
+      line(center,curve.map(p=>[p.x,p.y,.25]),.012,gold,'Crucifix niche · outer bead');
+    }
+    // Owner, 3 Nov 2026 (centre of the sanctuary): a gilded glory of carved rays on the blue wall behind the
+    // cross, centred on the crossing of the cross, long and short rays alternating, inside the niche outline.
+    {
+      const C={y:5.88,r0:.24,long:1.32,short:.92,count:36},rays=[];
+      for(let k=0;k<C.count;k++){
+        const a=k/C.count*Math.PI*2,L=k%2?C.short:C.long,w0=k%2?.035:.05,ray=new T.Shape();
+        ray.moveTo(C.r0,-w0);ray.lineTo(L,-.004);ray.lineTo(L,.004);ray.lineTo(C.r0,w0);ray.closePath();
+        const g=new T.ExtrudeGeometry(ray,{depth:.014,bevelEnabled:false});
+        rays.push([g,K.place(K.RZ(a),K.TR(0,C.y,0))]);
+      }
+      const glory=mesh(K.merge(rays),gold,center,'Crucifix niche · gilded glory',0,0,vBack+.002);
+      glory.castShadow=false;
+      glory.userData={status:'CONCEPT · carved gilded rays on the niche wall; artisan, substrate and fixing pending',engineeringApproved:false,source:'Owner request 3 Nov 2026 (centre of the sanctuary); docs/sanctuary-model.md'};
+      // A carved gilded architrave round the niche opening, from the floor over the lobed head, with leaf
+      // cresting outside the arch and a rosette at each springing. The beads above sit on its face.
+      const band=outline(.14);band.holes.push(opening(N.lining));
+      const frame=mesh(new T.ExtrudeGeometry(band,{depth:.104,bevelEnabled:false,curveSegments:24}),gilded,center,'Crucifix niche · gilded architrave',0,0,.134);
+      frame.userData={status:'CONCEPT · carved gilded architrave; artisan, substrate and fixing pending',engineeringApproved:false,source:'Owner request 3 Nov 2026 (centre of the sanctuary); docs/sanctuary-model.md'};
+      const head=outline(.15).getPoints(28).filter(p=>p.y>=N.spring+.05&&Math.abs(p.x)<=1.8).map(p=>[p.x,p.y]);
+      crest(center,head,.24,.1,26,-1,'Crucifix niche · leaf cresting');
+      for(const e of [-1,1])flower(center,e*(N.half+.095),N.spring,.245,.06);
+    }
     const spire=K.pinnacle({w:.3,h:1.15}),smallSpire=K.pinnacle({w:.2,h:.95});
+    // Owner, 3 Nov 2026: the four pilasters beside the crucifix are lower, their capitals at the niche
+    // springing (+6.15, were +6.87), so the gilded niche head and the carving above it read clearly.
+    const PT=spec.reredosPilasterTop;
     for(const sign of [-1,1])for(let k=0;k<2;k++){
-      const u=sign*(2.15+k*.64);box(center,.33,4.35,.36,u,4.7,.23,wood,'Carved central pilaster');
-      // Gilded all over, as on the concept: relief on the face and both returns, a vine in the round over it.
-      plate(center,.31,4.1,u,4.7,.414,gilded,'Central pilaster relief',true);vine(center,u,2.7,4.0,.44);
-      for(const e of [-1,1])plate(center,.34,4.1,u+e*.169,4.7,.23,gilded,'Central pilaster relief',true).rotation.y=e*Math.PI/2;
-      for(const y of [2.53,6.87])box(center,.52,.17,.5,u,y,.23,gold,'Gilded pilaster capital');
-      mesh(spire,gold,center,'Carved pinnacle',u,6.955,.25);
+      const u=sign*(2.15+k*.64),foot=2.525,top=PT+.085;box(center,.33,top-foot,.36,u,(foot+top)/2,.23,wood,'Carved central pilaster');
+      pilasterRelief(center,{u,y0:2.7,y1:PT-.17,w:.33,face:.41,depth:.36,name:'Central pilaster'});
+      for(const y of [2.53,PT]){
+        box(center,.52,.17,.5,u,y,.23,wood,'Pilaster lacquer capital');
+        for(const e of [-1,1])box(center,.52,.024,.52,u,y+e*.07,.23,gold,'Pilaster capital · gilded moulding');
+        flower(center,u,y,.49,.035);
+      }
+      mesh(spire,gold,center,'Carved pinnacle',u,top,.25);
     }
     // The carved ground round the niche, between the pilasters and above them.
     {
       const ground=archShape(3.1,6.6,2.3,2.3);ground.holes.push(opening(N.lining+.1));
-      mesh(new T.ShapeGeometry(ground,18),scrollwork,center,'Reredos carved ground',0,0,.134).castShadow=false;
+      mesh(new T.ShapeGeometry(ground,18),wood,center,'Reredos carved ground',0,0,.134).castShadow=false;
+      // A connected, mirrored foliate spray fills the clear field above the niche.
+      // It stops inside the pilasters and below the outer canopy instead of crossing them.
+      const ornament=mesh(K.cartouche({len:2.55,r:.19}),gold,center,'Reredos · connected foliate spray',0,7.90,.155);
+      ornament.userData={status:'CONCEPT · raised carving on the reredos; artisan, substrate and fixing pending',engineeringApproved:false,source:'Owner close-up review, 3 Nov 2026; docs/sanctuary-model.md'};
+      // Owner, 3 Nov 2026: more gold on the red. Above the lowered pilasters a gilded scroll cartouche
+      // follows the canopy crown on each side of the niche head, and a gilded rosette medallion with a ring
+      // of leaves fills the red ground above the spray.
+      const status={status:'CONCEPT · raised gilded carving on the red reredos; artisan, substrate and fixing pending',engineeringApproved:false,source:'Owner request 3 Nov 2026 (more gold on the red); docs/sanctuary-model.md'};
+      for(const e of [-1,1]){
+        const scroll=mesh(K.cartouche({len:1.0,r:.12}),gold,center,'Reredos · gilded spandrel scroll',e*2.45,8.02,-.085);
+        scroll.rotation.z=e*-.36;scroll.userData=status;
+      }
+      const leafRing=[],blade=K.leaf({len:.13,wid:.07,thick:.012,curl:.6,lobes:3,seg:6});
+      for(let k=0;k<12;k++){const a=k/12*Math.PI*2;leafRing.push([blade,K.place(K.RZ(a-Math.PI/2),K.TR(Math.cos(a)*.2,Math.sin(a)*.2,0))]);}
+      leafRing.push([K.bloom({r:.13,petals:10,rings:2,seg:4}),null],[new T.TorusGeometry(.17,.014,6,40),null]);
+      const medallion=mesh(K.merge(leafRing),gold,center,'Reredos · gilded rosette medallion',0,8.55,.15);medallion.userData=status;
     }
     for(const y of [.86,1.18,2.25,2.5]){box(center,6.4,.14,.48,0,y,.28,wood,'Reredos cornice');box(center,6.45,.035,.5,0,y+.075,.3,gold,'Gilded cornice edge');}
     // Friezes between the cornices, and small spires on the gradine either side of the tabernacle.
@@ -546,14 +666,31 @@
     const wingGlow=K.glow('#d3e7f6','#7fb2e0','#4d8dca'),wingSpire=K.pinnacle({w:.2,h:1});
     for(const sign of [-1,1]){
       const g=group(sign<0?'Our Lady shrine · axis 11':'Saint Joseph shrine · axis 11',spec.wingX,sign*spec.wingZ);
-      for(const e of [-1,1]){box(g,.57,2.75-SIDE,1.25,e*1.03,(2.75+SIDE)/2,-.35,wood,'Service entrance jamb');box(g,.63,.8-SIDE,1.32,e*1.03,(.8+SIDE)/2,-.35,stone,'Stone doorway base');plate(g,.5,1.9,e*1.03,1.78,.279,gilded,'Shrine jamb relief',true);vine(g,e*1.03,.85,1.85,.31);}
-      box(g,2.7,.3,1.35,0,2.7,-.33,wood,'Raised statue shelf above entrance');plate(g,2.66,.2,0,2.7,.349,gilded,'Shrine shelf frieze');
+      for(const e of [-1,1]){
+        const u=e*1.03;
+        box(g,.57,2.75-SIDE,1.25,u,(2.75+SIDE)/2,-.35,wood,'Service entrance jamb');
+        box(g,.63,.8-SIDE,1.32,u,(.8+SIDE)/2,-.35,stone,'Stone doorway base');
+        // The white base in the owner's close-up is a provisional stone proxy,
+        // not an identified structural column. Cover its faces while retaining
+        // the proxy below, so the jamb's red and gold finish reaches the floor.
+        const baseMid=(.8+SIDE)/2,baseHeight=.8-SIDE,skin=.002;
+        for(const side of [-1,1]){
+          box(g,.63,baseHeight,skin,u,baseMid,-.35+side*(.66+skin/2),satin,'Shrine base · lacquer skin');
+          box(g,skin,baseHeight,1.32,u+side*(.315+skin/2),baseMid,-.35,satin,'Shrine base · lacquer skin');
+        }
+        border(g,u,baseMid,.49,baseHeight-.16,.316);
+        mesh(K.panel({w:.40,h:.38}),gold,g,'Shrine base · carved lotus',u,baseMid,.318);
+        box(g,.63,.018,1.32,u,.794,-.35,gold,'Shrine base · gilded cap');
+        pilasterRelief(g,{u,y0:.85,y1:2.65,w:.50,face:.275,depth:1.25,name:'Shrine jamb'});
+      }
+      const shelf=spec.shrineShelf,shelfMid=sign*shelf.offset,shelfWidth=2*shelf.half;
+      box(g,shelfWidth,.3,1.35,shelfMid,2.7,-.33,wood,'Raised statue shelf above entrance');plate(g,shelfWidth-.04,.2,shelfMid,2.7,.349,gilded,'Shrine shelf frieze');
       // Joined floral panels give the shelf a carved face beneath the niche;
       // the detail is inside the existing shelf footprint and clears the doors.
       const shelfCarving=K.panel({w:.39,h:.145});
-      line(g,[[-1.17,2.7,.352],[1.17,2.7,.352]],.008,gold,'Shrine shelf · linking stem');
-      for(const u of [-.95,-.475,0,.475,.95])mesh(shelfCarving,gold,g,'Shrine shelf · carved floral panel',u,2.7,.357);
-      for(const y of [2.55,2.84])box(g,2.75,.05,1.4,0,y,-.32,gold,'Shelf gilded moulding');
+      line(g,[[shelfMid-1.46,2.7,.352],[shelfMid+1.46,2.7,.352]],.008,gold,'Shrine shelf · linking stem');
+      for(const u of [-1.32,-.88,-.44,0,.44,.88,1.32])mesh(shelfCarving,gold,g,'Shrine shelf · carved floral panel',shelfMid+u,2.7,.357);
+      for(const y of [2.55,2.84])box(g,shelfWidth,.05,1.4,shelfMid,y,-.32,gold,'Shelf gilded moulding');
       // A lacquered wall behind the shrine closes the whole bay above the shelf, from the
       // pier line to the C/G wall and up to the roof lining, so the service room behind does
       // not show through the side arch above the shrine. Gilded band, blooms and rosette fill the head of the arch.
@@ -565,8 +702,19 @@
       crest(g,head.map(p=>[p.x,p.y]),-.38,.13,16,-1,'Gilded arch cresting');
       flower(g,0,7.42,-.38,.13);for(const e of [-1,1])flower(g,e*.62,7.2,-.38,.08);
       arch(g,.89,5.2,1.0,2.95,-.36,glowing(wingBlue,wingGlow,.89,2.95,3.25),'Wing blue niche');
-      for(let j=0;j<2;j++)crown(g,1.04+j*.23,5.27+j*.23,1.05+j*.12,.06);
-      for(const e of [-1,1]){box(g,.22,2.67,.43,e*1.14,4.2,-.1,wood,'Wing carved pilaster');plate(g,.2,2.55,e*1.14,4.2,.119,gilded,'Wing pilaster relief',true);vine(g,e*1.14,2.96,2.5,.16);mesh(wingSpire,gold,g,'Wing pinnacle',e*1.14,5.535,.03);}
+      // Keep the niche arch on the opening side of the two pilasters. The
+      // previous wider crowns crossed their shafts and pinnacles.
+      for(const grow of [.025,.075]){
+        const arc=archShape(.89+grow,5.2,1.0+grow,2.95).getPoints(22).filter(p=>p.y>=5.2-1e-6);
+        line(g,arc.map(p=>[p.x,p.y,.06]),.012,gold,'Shrine niche · outer bead');
+        if(grow===.075)crest(g,arc.map(p=>[p.x,p.y]),.07,.045,18,-1,'Shrine niche · leaf cresting');
+      }
+      for(const e of [-1,1]){
+        const u=e*1.14;
+        box(g,.22,2.67,.43,u,4.2,-.1,wood,'Wing carved pilaster');
+        pilasterRelief(g,{u,y0:2.96,y1:5.46,w:.22,face:.115,depth:.43,name:'Wing pilaster'});
+        mesh(wingSpire,gold,g,'Wing pinnacle',u,5.535,.03);
+      }
       // Lacquered returns close the slits beside the D/E column and the C/G pier.
       for(const e of [-1,1]){box(g,.4,S.spring-SIDE,.12,e*1.55,(S.spring+SIDE)/2,-.2,wood,'Shrine return panel');box(g,.03,S.spring-.6,.03,e*1.55,(S.spring+SIDE)/2,-.13,gold,'Panel gold border');}
       // Open paired leaves, folded back behind the frontage: the doorway under the shrine
@@ -594,6 +742,27 @@
       relief.castShadow=relief.receiveShadow=true;
       relief.userData={status:'CONCEPT · applied shallow carving; artist, stone and fixing pending',source:'Approved sanctuary concept; docs/decoration-finishes.md',revision:'2026-10-25-sculpture-detail-1'};
       altarFront.add(relief);
+    }
+    // Tabernacle (owner, 3 Nov 2026): a red lacquered pedestal with gilded mouldings, slender gilded
+    // colonnettes either side of the door and a gilded cross on the dome. World coordinates (the
+    // furnishings group carries no rotation; positions are converted into the sanctuary root).
+    {
+      const enc=building.getObjectByName('Proposed tabernacle enclosure'),ped=building.getObjectByName('Proposed tabernacle pedestal'),dome=building.getObjectByName('Tabernacle dome');
+      if(enc&&ped&&dome){
+        building.updateMatrixWorld(true);
+        const g=new T.Group();g.name='Tabernacle · gilded colonnettes, mouldings and cross';root.add(g);
+        const put=(geo,name,x,y,z)=>{const o=mesh(geo,gold,g,name);o.position.copy(root.worldToLocal(new T.Vector3(x,y,z)));return o;};
+        ped.material=satin;
+        const e=new T.Box3().setFromObject(enc),p=new T.Box3().setFromObject(ped),d=new T.Box3().setFromObject(dome),h=e.max.y-e.min.y;
+        for(const z of [-1,1]){
+          put(new T.CylinderGeometry(.026,.03,h-.08,12),'Tabernacle colonnette',e.min.x-.03,(e.min.y+e.max.y)/2,z*(e.max.z-.035));
+          for(const y of [e.min.y+.025,e.max.y-.025])put(new T.BoxGeometry(.075,.05,.075),'Tabernacle colonnette capital',e.min.x-.03,y,z*(e.max.z-.035));
+        }
+        for(const y of [p.min.y+.06,p.max.y-.04])put(new T.BoxGeometry(p.max.x-p.min.x+.03,.04,p.max.z-p.min.z+.03),'Tabernacle pedestal · gilded moulding',(p.min.x+p.max.x)/2,y,0);
+        put(new T.BoxGeometry(.03,.2,.03),'Tabernacle cross',(d.min.x+d.max.x)/2,d.max.y+.1,0);
+        put(new T.BoxGeometry(.03,.03,.12),'Tabernacle cross',(d.min.x+d.max.x)/2,d.max.y+.14,0);
+        g.userData={status:'CONCEPT · tabernacle ornament; maker, metal and security pending',engineeringApproved:false,source:'Owner request 3 Nov 2026 (centre of the sanctuary); docs/sanctuary-model.md'};
+      }
     }
     // Parish priest, 25 Oct 2026: above Our Lady and Saint Joseph the axis-11 side arches take the
     // red lacquer and gilding of the front frame: a lacquered spandrel with gilded relief, mouldings

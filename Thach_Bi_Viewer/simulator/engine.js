@@ -114,7 +114,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', columnWashRevision: '', centreReadingRevision: '', entranceInteriorRevision: '', rearSideLightsRevision: '', festivalTerraceRevision: '', festivalStringsRevision: '', goldCoveRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', columnWashRevision: '', centreReadingRevision: '', entranceInteriorRevision: '', rearSideLightsRevision: '', festivalTerraceRevision: '', festivalStringsRevision: '', goldCoveRevision: '', sanctuaryPalmsRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -261,13 +261,13 @@
     const sx = window.CHURCH_SANCTUARY?.spec;
     GEO.sanctuary = { walls: [], boxes: [] };
     if (sx) {
-      const { chamber: ch, centralArch: ca, sideArch: sa, wingX: wx, wingZ: wz } = sx;
+      const { chamber: ch, centralArch: ca, sideArch: sa, wingX: wx, wingZ: wz, shrineShelf: sh } = sx;
       for (const s of [-1, 1]) {
         // Open below the lintel since 25 Oct 2026 (parish priest).
         GEO.sanctuary.walls.push({ z: s * (ch.face + ch.outer) / 2, x0: ch.x0, x1: ch.x1, y0: ch.lintel ?? SIDE_Y, y1: ch.top, openings: [] });
         for (const e of [-1, 1]) GEO.sanctuary.boxes.push({ min: [wx - 0.31, SIDE_Y, s * wz + e * 1.03 - 0.32], max: [wx + 1.01, 2.55, s * wz + e * 1.03 + 0.32] });
         // Shelf, and the lacquered wall that closes the bay behind the shrine up to the roof.
-        GEO.sanctuary.boxes.push({ min: [wx - 0.35, 2.55, s * wz - 1.38], max: [wx + 1.01, 2.85, s * wz + 1.38] },
+        GEO.sanctuary.boxes.push({ min: [wx - 0.38, 2.525, s * (wz + sh.offset) - sh.half], max: [wx + 1.02, 2.865, s * (wz + sh.offset) + sh.half] },
           { min: [wx + 0.42, 2.85, s * wz - 1.75], max: [wx + 0.55, 9.5, s * wz + 1.75] });
       }
       // Lined back wall of the chamber on axis 11, in front of the service room, open
@@ -2555,7 +2555,8 @@
       ['rearSideLightsRevision', D.rearSideLightsRevision, '.before-rear-side-lights', D.upgradeRearSideLights],
       ['festivalTerraceRevision', D.festivalTerraceRevision, '.before-festival-terrace-removed', D.upgradeFestivalTerrace],
       ['festivalStringsRevision', D.festivalStringsRevision, '.before-festival-strings-removed', D.upgradeFestivalStrings],
-      ['goldCoveRevision', D.goldCoveRevision, '.before-gold-cove', D.upgradeGoldCove]
+      ['goldCoveRevision', D.goldCoveRevision, '.before-gold-cove', D.upgradeGoldCove],
+      ['sanctuaryPalmsRevision', D.sanctuaryPalmsRevision, '.before-sanctuary-palms', D.upgradeSanctuaryPalms]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;

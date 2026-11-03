@@ -9,7 +9,7 @@ Seasonal decorative lighting and non-electrical simulator furnishings.
 
 ## Current scope
 
-27 equipment/enclosures, 0 routes, 0 route vertices. 7 hidden alternatives; 0 shown connected components. Circuits: DECOR, X1.
+25 equipment/enclosures, 0 routes, 0 route vertices. 7 hidden alternatives; 0 shown connected components. Circuits: DECOR, X1.
 
 ## Editing and coordination
 

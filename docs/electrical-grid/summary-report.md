@@ -10,11 +10,11 @@ Generated 3 November 2026 from the category registers and their matched model sn
 | Sound | 44 | 44 | 0 | 44 | 34 | 54 | 330 |
 | Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 410 |
 | Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 67 |
-| Decoration and furnishings | 27 | 20 | 7 | 0 | 20 | 0 | 0 |
+| Decoration and furnishings | 25 | 18 | 7 | 0 | 18 | 0 | 0 |
 | Distribution and controls | 12 | 12 | 0 | 6 | 4 | 15 | 109 |
-| **Total** | 399 | 392 | 7 | 366 | 354 | 425 | 3073 |
+| **Total** | 397 | 390 | 7 | 366 | 352 | 425 | 3073 |
 
-Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **71 equipment, 142 routes**.
+Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **73 equipment, 142 routes**.
 
 ## Usage and energy estimate
 
@@ -56,9 +56,9 @@ The build verified unique equipment/route IDs, unique ordered vertices, complete
 | Sound | 0/44 | 0/44 | 0/54 |
 | Fans and ventilation | 0/45 | 0/45 | 0/58 |
 | Exit signs | 0/5 | 0/5 | 0/7 |
-| Decoration and furnishings | 0/27 | 0/0 | 0/0 |
+| Decoration and furnishings | 0/25 | 0/0 | 0/0 |
 | Distribution and controls | 0/12 | 0/6 | 0/15 |
-| **Total** | **0/399** | **0/366** | **0/425** |
+| **Total** | **0/397** | **0/366** | **0/425** |
 
 These counts measure field completeness only; filled fields still require source and engineering review. A 0/0 population is not applicable. Product selection, protection, final cable/containment specifications, actual control channels and commissioning evidence remain pending where fields are blank. No overall quality score is invented.
 
@@ -72,7 +72,7 @@ The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-an
 The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
 
 
-- [Layout snapshot](equipment-layout.json), SHA-256: ddbe9e09fd14bf9f4701ba76c9c204d4381b0c59c27a79ca22a8d57965d39cab.
+- [Layout snapshot](equipment-layout.json), SHA-256: 0e916808ae5b0fe565e9cadbdfcb06842686992ec1b0adb0c750d107df990934.
 - [Electrical snapshot](electrical-systems.json), SHA-256: a6ccfa7b33788375aa65fcf0e3c264b2c3dee35bf297390ee780c5af422875d6.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.

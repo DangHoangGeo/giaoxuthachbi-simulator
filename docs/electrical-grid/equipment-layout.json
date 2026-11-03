@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-11-03T11:41:17.154Z",
+  "savedAt": "2026-11-03T14:28:37.536Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -66,6 +66,7 @@
     "festivalTerraceRevision": "2026-11-02-festival-terrace-removed-1",
     "festivalStringsRevision": "2026-11-03-festival-strings-removed-1",
     "goldCoveRevision": "2026-11-03-gold-cove-2",
+    "sanctuaryPalmsRevision": "2026-11-03-sanctuary-palms-removed-1",
     "eveningExposureRevision": "2026-10-09-evening-160",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
@@ -5642,25 +5643,6 @@
       "params": {}
     },
     {
-      "id": "D296",
-      "type": "palm",
-      "name": "Palm · sanctuary B",
-      "circuit": "DECOR",
-      "mount": "floor",
-      "pos": [
-        45.15,
-        0.8,
-        -2.9
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {}
-    },
-    {
       "id": "D297",
       "type": "floorFlowers",
       "name": "Shrine flowers · B · outer",
@@ -5733,25 +5715,6 @@
       "yaw": 180,
       "tilt": 0,
       "mountYaw": 180,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {}
-    },
-    {
-      "id": "D302",
-      "type": "palm",
-      "name": "Palm · sanctuary H",
-      "circuit": "DECOR",
-      "mount": "floor",
-      "pos": [
-        45.15,
-        0.8,
-        2.9
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,

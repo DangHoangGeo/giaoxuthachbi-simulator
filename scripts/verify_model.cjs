@@ -443,6 +443,9 @@ for(const name of ['Our Lady shrine · axis 11','Saint Joseph shrine · axis 11'
   const wing=nodes.find(o=>o.name===name);assert(wing,name);
   const shelf=wing.children.find(o=>o.name==='Raised statue shelf above entrance');
   near(bounds(shelf).min.y,2.55,'Shelf clears service door head at 2.35 m');
+  const sb=bounds(shelf),inner=Math.min(Math.abs(sb.min.z),Math.abs(sb.max.z)),outer=Math.max(Math.abs(sb.min.z),Math.abs(sb.max.z));
+  near(inner,3.965,'Shelf reaches the inner axis-11 pier face with a small gap');
+  near(outer,7.065,'Shelf reaches the outer concrete support face with a small gap');
   const b=bounds(wing),z=Math.abs(wing.position.z);
   assert(b.min.x>shrineAxisX-.2&&b.min.x<shrineAxisX&&b.max.x<shrineAxisX+1.4,'Shrine stands in the axis-11 side arch');
   // The axis-10 frame's side arch in front of the shrine is left open.
@@ -466,8 +469,30 @@ assert.equal(walls.length,2,'Chamber keeps two lacquered side lintels');
 for(const o of walls)assert(bounds(o).min.y>=S.chamber.lintel-.001,'no lacquered wall below the lintel between columns 10 and 11');
 assert(!nodes.some(o=>/^(Chamber cornice|Chamber pilaster relief)$/.test(o.name)),'no low lacquered panels left between the columns');
 const over11=nodes.filter(o=>o.name==='Axis-11 side spandrel · lacquer and gilding');assert(over11.length===2&&over11.every(o=>{const b=bounds(o);return b.max.y>8.5&&Math.abs(b.min.x-(S.arch11.x-.16))<.01&&b.min.y>=S.arch11.spring-.01;}),'lacquered and gilded spandrels over both shrines: '+over11.map(o=>JSON.stringify(bounds(o))).join(' '));
+for(const [name,count,finish] of [['Sanctuary arch spandrel',2,'Sanctuary · oxblood lacquer, satin'],['Three-lobed sanctuary arch moulding',4,'Sanctuary · carved gilding']]){
+  const side=nodes.filter(o=>o.isMesh&&o.name===name&&Math.abs(bounds(o).getCenter(new T.Vector3()).z)>4);
+  assert.equal(side.length,count,'The two marked side arches retain their original geometry');
+  for(const o of side){assert.equal(o.material.name,finish,'The side arch has the requested finish');assert.equal(o.userData.surfaceFinish.engineeringApproved,false);assert(o.userData.surfaceFinish.originalMaterial,'The underlying proxy material is recorded');}
+}
 for(const o of walls){const b=bounds(o);assert(b.min.x>=frameX+.31&&b.max.x<=data.longitudinal['11'],'Chamber wall runs from the axis-10 column back to axis 11');assert(Math.min(Math.abs(b.min.z),Math.abs(b.max.z))>=3.299,'Chamber keeps the 6.6 m clear width of the arch');}
 const vault=nodes.find(o=>o.name==='Chamber vault · gilded boarding'),lining=nodes.find(o=>o.name==='Chamber back lining · lacquered timber');
+// Owner, 3 Nov 2026 (centre of the sanctuary): gilded glory inside the niche, gilded architrave, red-and-gold altar and tabernacle.
+{
+  const one=name=>{const o=nodes.filter(n=>n.isMesh&&n.name===name);assert.equal(o.length,1,name);return o[0];};
+  const glory=bounds(one('Crucifix niche · gilded glory')),recess=bounds(one('Blue crucifix recess'));
+  assert(glory.min.x<recess.min.x&&glory.max.x<=recess.min.x+.001&&glory.max.x>recess.min.x-.03,'Glory stands on the face of the blue niche wall');
+  assert(glory.min.y>=S.niche.floor&&glory.max.y<=S.niche.spring+S.niche.rise-.02&&Math.max(-glory.min.z,glory.max.z)<=S.niche.half-.3,'Glory stays inside the niche outline');
+  assert(one('Crucifix niche · gilded architrave'),'Gilded architrave round the niche');
+  const lac=nodes.find(n=>n.name==='Crucifix base step').material;
+  assert.equal(one('Proposed tabernacle pedestal').material,lac,'Tabernacle pedestal in the red satin lacquer');
+  // The altar stays pale stone (owner, 3 Nov 2026: back to the white stone).
+  for(const name of ['Proposed altar front panel','Proposed altar stone base'])assert(one(name).material!==lac&&!/lacquer/.test(one(name).material.name),name+' stays pale stone');
+  assert.equal(nodes.filter(n=>n.name==='Altar front · gilded panel moulding').length,0,'No gilded panels on the stone altar');
+  assert.equal(nodes.filter(n=>n.name==='Reredos · gilded spandrel scroll').length,2,'A gilded scroll over each pair of lowered pilasters');
+  assert.equal(nodes.filter(n=>n.name==='Reredos · gilded rosette medallion').length,1,'A gilded medallion above the spray');
+  for(const o of nodes.filter(n=>n.name==='Carved central pilaster'))assert(bounds(o).max.y<=S.reredosPilasterTop+.09,'Central pilasters lowered to the niche springing');
+  assert.equal(nodes.filter(n=>n.name==='Tabernacle colonnette').length,2,'Two gilded colonnettes on the tabernacle');
+}
 assert(vault&&lining,'Chamber vault and back lining');
 assert(bounds(vault).min.y>=S.centralArch.spring-.001&&bounds(vault).max.y<12.1,'Vault springs at the arch and stays under the roof');
 // Owner, 1 Nov 2026: the gilded boarded vault continues over both side passages, from the axis-10 side arch back to the
@@ -495,7 +520,7 @@ assert(bounds(vault).min.y>=S.centralArch.spring-.001&&bounds(vault).max.y<12.1,
   assert.equal(nodes.filter(o=>o.name==='Vault coffer · inset lacquer moulding').length,12,'Twelve inset chamber-vault field borders follow the vault');
   assert.equal(nodes.filter(o=>o.name==='Vault coffer · side inset lacquer moulding').length,18,'Nine inset side-vault borders per side');
   assert.equal(nodes.filter(o=>o.name==='Reredos lower panel · carved lotus').length,7,'Seven carved reredos lower panels');
-  assert.equal(nodes.filter(o=>o.name==='Shrine shelf · carved floral panel').length,10,'Five connected shelf panels per shrine');
+  assert.equal(nodes.filter(o=>o.name==='Shrine shelf · carved floral panel').length,14,'Seven connected shelf panels per shrine reach toward the supports');
   assert.equal(nodes.filter(o=>o.name==='Side vault longitudinal rib').length,18,'Five lacquered longitudinal ribs per vault, as in the chamber vault, and four on each gilded cove (owner, 3 Nov 2026)');
   // USER CONFIRMED 1 Nov 2026: the vaults meet the frame with no gap, so the front edge is the back face of the axis-10 side spandrels.
   const spandrels=nodes.filter(o=>o.isMesh&&o.name==='Front frame side spandrel');
@@ -566,13 +591,99 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
     const m=finish(name);assert(m&&m.map&&m.bumpMap&&m.metalnessMap&&m.roughnessMap===m.metalnessMap,`${name} is a relief finish with gilded metal and lacquered ground`);
     assert(m.map.repeat.x>=1&&m.map.repeat.x<=3,`${name} repeats at a carved scale`);
   }
-  for(const [name,count,material] of [['Central pilaster relief',12,'Sanctuary · gilded relief'],['Wing pilaster relief',4,'Sanctuary · gilded relief'],['Shrine jamb relief',4,'Sanctuary · gilded relief'],['Shrine shelf frieze',2,'Sanctuary · gilded relief'],['Reredos frieze relief',2,'Sanctuary · gilded relief'],['Carved panel relief',11,'Sanctuary · gilded scrollwork on lacquer'],['Reredos carved ground',1,'Sanctuary · gilded scrollwork on lacquer'],['Shrine bay relief ground',2,'Sanctuary · gilded scrollwork on lacquer']]){
+  for(const [name,count,material] of [['Shrine shelf frieze',2,'Sanctuary · gilded relief'],['Reredos frieze relief',2,'Sanctuary · gilded relief'],['Carved panel relief',11,'Sanctuary · gilded scrollwork on lacquer'],['Shrine bay relief ground',2,'Sanctuary · gilded scrollwork on lacquer']]){
     const list=part(name);assert.equal(list.length,count,name);
     for(const o of list){
       assert.equal(o.material.name,material,`${name} finish`);
       // Plates carry metre-based texture coordinates, so the carving keeps one scale on every part.
       const uv=o.geometry.attributes.uv,size=dimensions(o);let span=0;for(let i=0;i<uv.count;i++)span=Math.max(span,uv.getX(i),uv.getY(i));
-      assert(Math.abs(span-Math.max(size.x,size.y,size.z))<.02||name==='Reredos carved ground',`${name} is mapped in metres`);
+      assert(Math.abs(span-Math.max(size.x,size.y,size.z))<.02,`${name} is mapped in metres`);
+    }
+  }
+  // The four central pilasters and the four side-shrine pilasters plus four door jambs
+  // use individually bounded, genuinely raised gold carving on red lacquer.
+  for(const label of ['Central pilaster','Wing pilaster','Shrine jamb']) {
+    const relief=part(label+' · carved foliage'),fields=part(label+' · red lacquer field');
+    assert.equal(relief.length,4,label+' has four raised carved faces');
+    assert.equal(fields.length,4,label+' has four separate red lacquer fields');
+    assert.equal(part(label+' · gilded edge').length,16,label+' retains four edges per panel');
+    assert.equal(part(label+' · gilded return').length,8,label+' retains two gilt lines on its red returns');
+    for(const o of relief){
+      const field=fields.find(f=>f.parent===o.parent&&Math.abs(f.position.x-o.position.x)<.001);
+      assert(field,label+' carving has its own field');
+      assert.equal(o.material.name,'Sanctuary · carved gilding');
+      assert.equal(field.material.name,'Sanctuary · oxblood lacquer, satin');
+      assert.equal(o.userData.engineeringApproved,false);
+      o.geometry.computeBoundingBox(); const b=o.geometry.boundingBox,w=field.geometry.parameters.width;
+      assert(b.min.x>=-w/2-.002&&b.max.x<=w/2+.002,`${label} foliage stays inside its own red field: ${b.min.x},${b.max.x},${w}`);
+      assert(b.min.y>=-.002&&b.max.y<=field.geometry.parameters.height+.002,`${label} foliage stays between the panel ends`);
+      assert(o.position.z+b.max.z>field.position.z+field.geometry.parameters.depth/2+.02,`${label} carving projects visibly from the lacquer`);
+    }
+    for(let i=0;i<relief.length;i++)for(let j=i+1;j<relief.length;j++)assert(!bounds(relief[i]).intersectsBox(bounds(relief[j])),label+' reliefs do not collide with each other');
+  }
+  // Finish the existing outer concrete supports without replacing their cores.
+  // Each face is a thin skin on that core and has its own raised, bounded carving.
+  const supportGroups=nodes.filter(o=>/^Concrete support cladding · (10|11)\/[BH]$/.test(o.name));
+  assert.equal(supportGroups.length,4,'Both outer supports on both sanctuary frames are clad');
+  assert.equal(part('Concrete support cladding · lacquer skin').length,16,'Four skins per support');
+  assert.equal(part('Concrete support · carved foliage').length,20,'Separate carved faces, with breaks for the back-frame speakers and shrine shelves');
+  for(const group of supportGroups){
+    assert.equal(group.userData.engineeringApproved,false);
+    const centre=group.getWorldPosition(new T.Vector3());
+    const core=part('Side column — illustrative shaft width').find(o=>{
+      const p=bounds(o).getCenter(new T.Vector3());return Math.abs(p.x-centre.x)<.001&&Math.abs(p.z-centre.z)<.001;
+    });
+    assert(core,group.name+' retains its original concrete support proxy');
+    assert.equal(core.material.name,'Ivory mineral plaster · reference finish','The support core is not replaced or recoloured');
+    const faces=group.children.filter(o=>o.name==='Concrete support cladding · face');
+    assert.equal(faces.length,4);
+    for(const face of faces){
+      const skin=face.children.find(o=>o.name==='Concrete support cladding · lacquer skin');
+      const fields=face.children.filter(o=>o.name==='Concrete support · red lacquer field');
+      const carvings=face.children.filter(o=>o.name==='Concrete support · carved foliage');
+      assert(skin&&fields.length&&fields.length===carvings.length,'Each support face is finished and carved');
+      assert(bounds(core).expandByScalar(.003).containsBox(bounds(skin)),'Skin follows the existing support face');
+      assert.equal(skin.material.name,'Sanctuary · oxblood lacquer, satin');
+      for(const carving of carvings){
+        const field=fields.find(o=>Math.abs(o.position.y-o.geometry.parameters.height/2-carving.position.y)<.001);
+        assert(field,'Each carving belongs to its own field');
+        assert.equal(carving.material.name,'Sanctuary · carved gilding');
+        carving.geometry.computeBoundingBox();
+        const b=carving.geometry.boundingBox;
+        assert(b.min.x>=-field.geometry.parameters.width/2-.002&&b.max.x<=field.geometry.parameters.width/2+.002,'Support carving remains inside its field');
+        assert(b.min.y>=-.002&&b.max.y<=field.geometry.parameters.height+.002,'Support carving stays between field ends');
+      }
+    }
+  }
+  assert.equal(part('Stone doorway base').length,4,'Four underlying doorway-base proxies remain');
+  assert.equal(part('Shrine base · lacquer skin').length,16,'All four faces of each doorway base are clad');
+  assert.equal(part('Shrine base · carved lotus').length,4,'A raised lotus anchors each jamb to its base');
+  for(const base of part('Stone doorway base')){
+    assert.equal(base.material.name,'Sanctuary · pale stone','The original base proxy remains under the finish');
+    const skins=base.parent.children.filter(o=>o.name==='Shrine base · lacquer skin'&&Math.abs(o.position.x-base.position.x)<.32);
+    assert.equal(skins.length,4,'Each doorway base has its own four skins');
+    assert(skins.every(o=>bounds(base).expandByScalar(.003).containsBox(bounds(o))),'Base skins follow the existing base without extending the opening');
+  }
+  assert.equal(part('Reredos carved ground')[0].material.name,'Sanctuary · oxblood lacquer','Plain red ground leaves the raised carving legible');
+  assert.equal(part('Reredos · connected foliate spray').length,1,'One connected spray fills the space above the central niche');
+  const reredos=nodes.find(o=>o.name==='Central gilded reredos');
+  const upperSpires=reredos.children.filter(o=>o.name==='Carved pinnacle'&&o.position.y>5.5);
+  const archParts=reredos.children.filter(o=>['Gilded leaf cresting','Gilded carved moulding','Crucifix niche · outer bead','Reredos · connected foliate spray','Crucifix niche · leaf cresting','Crucifix niche · gilded glory'].includes(o.name));
+  assert.equal(upperSpires.length,4,'Four central pilaster pinnacles remain');
+  for(const arch of archParts)for(const spire of upperSpires){
+    const b=bounds(spire),p=arch.geometry.attributes.position,v=new T.Vector3();
+    for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(arch.matrixWorld);assert(!b.containsPoint(v),`Reredos moulding or cresting enters a pinnacle envelope: ${arch.name}`);}
+  }
+  assert.equal(part('Crucifix niche · outer bead').length,2,'Two niche beads stop within the inner columns');
+  for(const o of part('Crucifix niche · outer bead'))assert(Math.max(Math.abs(bounds(o).min.z),Math.abs(bounds(o).max.z))<1.985,'Central niche beads clear the pilasters');
+  assert.equal(part('Shrine niche · outer bead').length,4,'Two beads per side niche');
+  assert.equal(part('Shrine niche · leaf cresting').length,2,'A restrained leaf crest crowns each side niche');
+  for(const wing of ['Our Lady shrine · axis 11','Saint Joseph shrine · axis 11']) {
+    const group=nodes.find(o=>o.name===wing);
+    const arches=group.children.filter(o=>/^Shrine niche · (outer bead|leaf cresting)$/.test(o.name));
+    for(const arch of arches)for(const column of group.children.filter(o=>o.name==='Wing carved pilaster')){
+      const b=bounds(column),p=arch.geometry.attributes.position,v=new T.Vector3();
+      for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(arch.matrixWorld);assert(!b.containsPoint(v),'Side niche mouldings clear the pilaster shafts');}
     }
   }
   for(const o of nodes.filter(o=>/^Front frame (central|side) spandrel$/.test(o.name)))assert.equal(o.material.name,'Sanctuary · gilded scrollwork on lacquer','Front frame carries gilded scrollwork');
@@ -580,7 +691,8 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
   assert.equal(part('Wing blue niche').length,2);
   assert.equal(part('Carved pinnacle').length,8,'Four spires on the reredos pilasters and four on the gradine');
   assert.equal(part('Wing pinnacle').length,4);
-  assert(part('Gilded leaf cresting').length>=10&&part('Gilded arch cresting').length===7,'Leaf crestings on the canopy arcs, the three front arches, the two shrine heads and the two axis-11 side arches over the shrines');
+  assert.equal(part('Gilded leaf cresting').length,3,'Three outer canopy crestings remain');
+  assert.equal(part('Gilded arch cresting').length,7,'Crestings remain on the three front arches, two shrine heads and two axis-11 arches');
   for(const o of nodes.filter(o=>o.isMesh&&/^Illustrative corpus /.test(o.name)))assert.equal(o.material.name,'Sanctuary · carved figure, natural wood');
   const dome=part('Tabernacle dome')[0],enclosure=part('Proposed tabernacle enclosure')[0];
   assert(dome&&enclosure&&dome.material===enclosure.material&&dome.material.name==='Sanctuary · carved gilding','Tabernacle is gilded under a dome');
