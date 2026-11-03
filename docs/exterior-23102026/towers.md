@@ -155,10 +155,37 @@ Revision `2026-11-03-tower-traced-decoration-1`, second step. All keys in `detai
 - **Upper great-arch imposts (DRAWN).** E01B and E02 draw a plain pilaster with a necking band, a lower and an upper abacus, and no foliage (C43850..C44C48 stage 2, C438A0..C438B0 stage 3, C44263..C44290 stage 4). The illustrative foliage and the solid 0.46 m capital block are removed on all 24 upper faces; the bands are at −0.46…−0.39 (stage 4 −0.295…−0.225), −0.14…−0.07 and −0.07…0 m from the springing, 0.03 / 0.03 / 0.08 m beyond the shaft (on stages 2–3 the drawn bands also run back across the wall to the corner pier; that return is not modelled yet). On stage 4 the shaft spans all five arch rings (E01B Z 8.648–8.838) instead of the first 25 mm ring. Band depths are DERIVED.
 - **Ground great-arch impost (DRAWN width).** E01B draws three orders down to the base (Z 8.43 / 8.60 / 8.77) and the capital over all three, t 1.293–1.955. The inner order (r 1.385–1.555) is added as a 0.10 m pilaster and the capital block widened to t 1.293 on the front and the E02 side. Depths DERIVED.
 - **Dome rosettes.** The rosette and its ring now lean back to the dome slope at +31.70 (DERIVED) so the lower half is no longer buried in the dome.
-- **Not changed, open.** The model's eight dome ribs are not drawn on E01B or E02; both draw instead a double inner line that runs parallel to the dome outline and flattens under the lantern plinth at about +32.6 (a framed panel on each face?). Kept pending the owner's or architect's reading. The lantern crown, cross, balcony and pinnacles are unchanged.
+- ~~**Not changed, open.** The model's eight dome ribs are not drawn on E01B or E02.~~ Resolved on 3 November 2026: see *Tower top after the drawing* below.
 
 **Checks:** `verify_detail_towers_source.py` (1,614 rows exact to 5e-10; all repeats listed above), `verify_model.cjs`, `verify_construction.cjs`, `verify_simulator.cjs --report --estimates` (exit 0; known unmet targets unchanged), `verify_tower_balcony.cjs`, `verify_tower_spandrel.cjs`, `verify_exterior_dwg.cjs`, `verify_side_dwg.cjs`. Headless desktop day views: stage-3 and stage-4 fronts, ground front and E02 side, dome, rear diagonal. Tower triangles 630,536 → 804,520 (+173,984); together with the capitals +311,472 over the 2 November model (scene 2.90 M). The tubes use the light setting of `towerSpandrel` (3 sides, 30° arc steps); the remaining budget lever is the 12 DERIVED inner/rear faces (about 79,000 triangles of roses and heads). No equipment, circuits or routes changed. Exports in `output/pdf*` are stale for the towers.
 
 ### False doors in the blind arches · 3 November 2026
 
 Owner, 3 Nov 2026: the towers' false doors should look like the main timber doors without being real doors. The front blind arch (radius 0.824, +0.30 to the springing +2.900) and the E02 side opening (±0.5, sill +0.850, springing +3.100) now carry a fixed timber facing. It has a frame, a transom, two leaves with three raised panels each, carved rosettes and a timber fan of seven ribs in the arched head, in the main doors' wood with a darker inset. The wall stays closed behind; nothing opens, and walking and analysis geometry are unchanged. The side blind panel takes the wall finish instead of the dark trim, so the door stands out. Sizes follow the drawn arches; joinery and depths are CONCEPT.
+
+### Tower top after the drawing · 3 November 2026
+
+The owner asked that the tower tops look like the design (E01B elevation, sent as an image). Rebuilt in `towers.js` for both towers:
+
+- **Four-faced dome, not a round ribbed one.** The +29.09 plan (PT29) draws the dome as a square: diagonal arris lines from the corners to the centre and a diamond corner rib at ±1.7266 m. E01B's double inner line is therefore the margin of each face, not a rib.
+  - Each face follows the traced outline: arc `C4568C`/`C45696`, r 2.628674 about an offset centre (±0.649346, +30.541187).
+  - It has a 0.18 m margin at full height, a 0.06 m fillet (concentric arcs r 2.448674 / 2.388674, `C4568D/E`, `C45697/8`) and the field within. The tops are flat at +32.6405 / +32.5805 (`C4568F`–`C45692`, ends at ±0.611 / ±0.5945).
+  - The margin meets the next face on the arris. The fillet and field are set back 0.05 / 0.12 m (**DERIVED**). PT29's 0.24 m face step at the drum level is not modelled. The eight ribs and the round base torus are removed.
+  - The four dome rosettes sit on the fields. The mesh keeps the name `Tower dome · CAD profile`, and its contact with the lantern stays at +32.790457.
+- **Lantern after E01B** (LINEs about u 10.1529):
+  - a quarter-round step r 0.1278 on the plinth;
+  - a base (±0.5577, +33.1111–33.2317) breaking forward over ±0.3163;
+  - a body ±0.4878 (was ±0.5578, with corner posts the drawing does not show) with a projecting middle bay ±0.2464;
+  - the traced rose in a framed panel ±0.1963, between two sunk side panels (±0.2463–0.4377, +33.2817–33.6817);
+  - the bead band with eleven beads per face and its cap (±0.5827), both breaking forward like the base.
+
+  Projections are **DERIVED**.
+- **Crown traced** (`crown`, 153 ARCs, origin the ball centre Z 10.152933; E02 draws the same crown within 0.04 mm; checked by `verify_detail_towers_source.py`).
+  - The traced front is wrapped onto a bowl of revolution on each of the four faces, so each elevation shows the drawn leaves and scrolls. The bowl's silhouette (r 0.50 at +33.86, 0.70 at +34.35, 0.15 at +35.0) is **DERIVED** from the trace.
+  - Strokes outside the bowl (the flared tips reaching 0.948 m at +34.17, the outer leaves and the top bosses) stand as 60 mm solid flat-cut leaves on each face's centre plane (`Tower lantern acanthus crown`).
+  - Each face's wrap stops at 55° from its centre, so the four faces do not overlap.
+  - The free-modelled acanthus leaves, the bulb and the six-knob collar are removed. Relief and thickness are **CONCEPT**.
+- **Cross:** the traced trefoil now takes the trim finish like the gable crosses, instead of the brown cross material. Four leftover brown cap pieces from the old cross (`Schematic round profile` above +35.5 m) are removed.
+- Not changed: the pierced parapet, corner pinnacles and the entablature below already follow the drawing.
+
+**Checks:** `verify_detail_towers_source.py` (with the new `crown` key), `verify_model`, `verify_exterior_dwg`, `verify_tower_balcony`, `verify_tower_spandrel`, `verify_construction`, `verify_side_dwg`, `verify_simulator --report --estimates`. Headless captures (light graphics) were reviewed: front, diagonal, close crown and cross. No equipment, circuits or routes changed.

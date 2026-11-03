@@ -45,6 +45,9 @@ KEYS = {
                    ('E01B', 11.048290635, 11.867964351, 1), ('E02', 1.555044630, 19.317964331, 1), ('E02', 3.345044630, 19.317964331, 1)]),
     'windowHead4': ('E01B', 9.457112297, 26.149595658, [('E01B', 10.825805559, 26.149595658, 1), ('E02', 1.754222392, 26.149595658, 1), ('E02', 3.122915655, 26.149595658, 1)]),
     'lanternRose': ('E01B', 10.141458932, 33.481658402, []),
+    # Lantern acanthus crown (owner, 3 Nov 2026), v absolute, origin the ball centre; the viewer wraps it on
+    # the four faces of the crown bowl, and E02 draws the same crown on the side.
+    'crown': ('E01B', 10.152932968, 0, [('E02', 2.45, 0, 1)]),
     # Ground storey, B-side (inner) great-arch impost capital and blind-arch colonnette capital, v from
     # their springing (+3.984770 / +2.899970; the E02 blind arch springs at +3.100470).
     'greatCapital': ('E01B', C, 3.984770309, [('E01B', C, 3.984770309, -1), ('E02', 2.450044195, 3.984770309, 1), ('E02', 2.450044195, 3.984770309, -1)]),

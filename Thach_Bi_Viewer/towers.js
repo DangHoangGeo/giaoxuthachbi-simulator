@@ -564,6 +564,7 @@
         if (o.name === 'Tower continuous cornice' && box3.max.y < 8.6) remove.push(o);
         else if (capNames.test(o.name) && box3.min.y > 29.0) remove.push(o);
         else if (!o.name && box3.min.y > 32.5) remove.push(o); // unnamed parts of the old cross
+        else if (o.name === 'Schematic round profile' && box3.min.y > 35.5) remove.push(o); // old cross-end caps (brown, 3 Nov 2026)
       });
     }
     remove.forEach(o => o.removeFromParent());
@@ -617,7 +618,8 @@
     const stats = { piers: 0, blindArches: 0, upperFronts: 0, removedBundleMeshes: remove.length };
 
     // ---- Shared carving (also used by roofline.js) ----
-    const { fleur, pilasterCapital, meanderGeo, towerSpandrel, pinnacleCrown, flutedField } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const { fleur, pilasterCapital, meanderGeo, towerSpandrel, pinnacleCrown, flutedField, solidOutline } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    let crownGeo = null; // traced crown, built once and shared by both towers
     // Round-ended flutes through a raised field (shared E01B form), clamped to the shaft.
     const fluted = ({ half, f }, [lo, hi], matrix) => {
       const g = flutedField({ half, y: [Math.max(lo, f[0] - .1), Math.min(hi, f[1] + .1)], flutes: f });
@@ -1128,27 +1130,46 @@
 
       // ---- Top: dome, lantern, crown, cross; pinnacles on the balustrade corners ----
       const DM = spec.dome, LN = spec.lantern, xc = 2.45;
-      const profile = [], DA = DM.arc;
-      profile.push(new T.Vector2(DM.r, DM.y0));
-      for (let i = 0; i <= 64; i++) {
-        const a = DA.start + (DA.end - DA.start) * i / 64;
-        profile.push(new T.Vector2(DA.radius * Math.cos(a) - DA.offset, DA.y + DA.radius * Math.sin(a)));
+      // Owner, 3 Nov 2026: the dome is four-faced, as the +29.09 plan (PT29) draws it: a square with
+      // diagonal arrises and corner ribs, not a round ribbed dome. E01B's double inner line is the margin
+      // of each face. Each face follows the traced outline (C4568C/C45696, offset-centre arc r 2.628674):
+      // a 0.18 m margin at full height, a 0.06 m fillet (inner arcs r 2.448674 / 2.388674, C4568D/E,
+      // C45697/8) and the field within, flat-topped at +32.6405 / +32.5805 (C4568F–C45692). Fillet and
+      // field are set back 0.05 / 0.12 m (DERIVED; PT29's 0.24 m face step at the drum is not modelled).
+      const DA = DM.arc, half = R => y => Math.sqrt(Math.max(0, R * R - (Math.max(y, DA.y) - DA.y) ** 2)) - DA.offset;
+      const H0 = half(DA.radius), HM = half(2.448674), HF = half(2.388674), rDome = H0;
+      const YF = 32.5805, YM = 32.6405, YT = DM.top, Y0 = DM.y0;
+      const patch = (fn, nv, flip = false) => {
+        const P = [], I = [];
+        for (let j = 0; j <= nv; j++) for (let i = 0; i <= 1; i++) P.push(...fn(i, j / nv));
+        for (let j = 0; j < nv; j++) { const q = j * 2; if (flip) I.push(q, q + 3, q + 1, q, q + 2, q + 3); else I.push(q, q + 1, q + 3, q, q + 3, q + 2); }
+        const g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(P, 3)); g.setIndex(I); g.computeVertexNormals(); return g;
+      };
+      // Patch over y0..y1 between t = tA(y) and tB(y) at set-back d; walls at t = tw(y) or at a level.
+      const band = (y0, y1, tA, tB, d) => patch((i, b) => { const y = y0 + (y1 - y0) * b; return [i ? tB(y) : tA(y), y, H0(y) - d]; }, 40);
+      // Step walls face the field (towards the face centre line); the ledges under the flat tops face down.
+      const wall = (y0, y1, tw, d0, d1) => patch((i, b) => { const y = y0 + (y1 - y0) * b; return [tw(y), y, H0(y) - (i ? d1 : d0)]; }, 40, tw(y0) > 0);
+      const ledge = (y, t, d0, d1) => patch((i, b) => [-t + 2 * t * b, y, H0(y) - (i ? d1 : d0)], 1);
+      const neg = f => y => -f(y), domeFace = [];
+      for (const sg of [1, -1]) {
+        const o = f => sg > 0 ? f : neg(f);
+        domeFace.push(sg > 0 ? band(Y0, YM, HM, H0, 0) : band(Y0, YM, neg(H0), neg(HM), 0));
+        domeFace.push(sg > 0 ? band(Y0, YF, HF, HM, .05) : band(Y0, YF, neg(HM), neg(HF), .05));
+        domeFace.push(wall(Y0, YM, o(HM), 0, .05), wall(Y0, YF, o(HF), .05, .12));
       }
-      profile.push(new T.Vector2(0.001, DM.top));
-      add('Tower dome · CAD profile', CAP, new T.LatheGeometry(profile, 48), TR(xc, 0, zc),
-        'NATIVE EXPOSED PROFILE / DERIVED HIDDEN DRUM TO PLATFORM; STRUCTURAL BEARING UNCONFIRMED');
-      const rDome = y => y <= DM.wall ? DM.r : Math.sqrt(Math.max(0, DA.radius ** 2 - (y - DA.y) ** 2)) - DA.offset;
-      for (let k = 0; k < 8; k++) {
-        const a = k * Math.PI / 4 + Math.PI / 8;
-        const pts = Array.from({ length: 16 }, (_, i) => { const y = DM.wall + (DM.top - .05 - DM.wall) * i / 15, r = rDome(y) + .03; return [xc + Math.cos(a) * r, y, zc + Math.sin(a) * r]; });
-        add('Tower dome rib', S, K.stem(pts, .045, .045, 18, 6));
-      }
-      add('Tower dome base moulding', S, new T.TorusGeometry(DM.r + .02, .06, 8, 48), place(RX(Math.PI / 2), TR(xc, DM.wall, zc)));
-      // Rosettes on the four faces, as the drawn rosette at +31.8.
+      domeFace.push(band(YM, YT, neg(H0), H0, 0), band(YF, YM, neg(HM), HM, .05), band(Y0, YF, neg(HF), HF, .12));
+      domeFace.push(ledge(YM, HM(YM), 0, .05), ledge(YF, HF(YF), .05, .12));
+      const domeGeo = merge(domeFace.map(g => [g, null]));
       for (let k = 0; k < 4; k++) {
-        const a = k * Math.PI / 2, r = rDome(DM.rosette) + .02, n = new T.Vector3(Math.cos(a), 0, Math.sin(a));
+        const n = new T.Vector3(Math.cos(k * Math.PI / 2), 0, Math.sin(k * Math.PI / 2));
+        const rot = new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 0, 1), n));
+        add('Tower dome · CAD profile', CAP, domeGeo, place(rot, TR(xc, 0, zc)), 'PT29 SQUARE PLAN AND E01B TRACED PROFILE / DERIVED SET-BACKS; STRUCTURAL BEARING UNCONFIRMED');
+      }
+      // Rosettes on the four fields, as the drawn rosette at +31.70.
+      for (let k = 0; k < 4; k++) {
+        const a = k * Math.PI / 2, r = rDome(DM.rosette) - .12 + .02, n = new T.Vector3(Math.cos(a), 0, Math.sin(a));
         const dz = k === 2 ? s * DM.frontRoseOffset : 0;
-        // Lean the rosette back to the dome's slope at its level (DERIVED), so its lower half is not
+        // Lean the rosette back to the face's slope at its level (DERIVED), so its lower half is not
         // buried in the dome; the drawn elevation fixes only its centre and rings.
         const h = DM.roseRings[1], lean = RX(-Math.atan2(rDome(DM.rosette - h) - rDome(DM.rosette + h), 2 * h));
         const rot = new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 0, 1), n));
@@ -1156,41 +1177,73 @@
         add('Tower dome rosette ring', S, new T.TorusGeometry((DM.roseRings[0] + DM.roseRings[1]) / 2, (DM.roseRings[1] - DM.roseRings[0]) / 2, 8, 64), place(lean, rot, TR(xc + n.x * (r - .02), DM.rosette, zc + n.z * (r - .02) + dz)));
       }
       const sq = (name, m_, [y0, y1, h]) => add(name, m_, new T.BoxGeometry(2 * h, y1 - y0, 2 * h), TR(xc, (y0 + y1) / 2, zc));
-      sq('Tower lantern plinth', S, LN.plinth); sq('Tower lantern plinth step', S, LN.step); sq('Tower lantern base', S, LN.base); sq('Tower lantern body', W, LN.body);
-      for (const ex of [-1, 1]) for (const ez of [-1, 1]) add('Tower lantern corner post', S, new T.BoxGeometry(.1, LN.body[1] - LN.body[0], .1), TR(xc + ex * LN.body[2], (LN.body[0] + LN.body[1]) / 2, zc + ez * LN.body[2]));
-      for (let k = 0; k < 4; k++) {
-        const a = k * Math.PI / 2, n = new T.Vector3(Math.cos(a), 0, Math.sin(a)), rot = new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 0, 1), n));
-        add('Tower lantern panel rose · traced', S, TG.lantern, place(rot, TR(xc + n.x * (LN.body[2] + .01), (LN.body[0] + LN.body[1]) / 2, zc + n.z * (LN.body[2] + .01))), k === 2 ? TRACED : TRACED_REPEAT);
+      const faces = Array.from({ length: 4 }, (_, k) => { const n = new T.Vector3(Math.cos(k * Math.PI / 2), 0, Math.sin(k * Math.PI / 2)); return { k, n, rot: new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 0, 1), n)) }; });
+      // A box on a lantern face: t across, y up, w out from the axis (face frame), all four faces.
+      const onFaces = (name, m_, [t0, t1], [y0, y1], [w0, w1]) => { for (const { rot } of faces) add(name, m_, new T.BoxGeometry(t1 - t0, y1 - y0, w1 - w0), place(TR((t0 + t1) / 2, (y0 + y1) / 2, (w0 + w1) / 2), rot, TR(xc, 0, zc))); };
+      sq('Tower lantern plinth', S, LN.plinth);
+      // Owner, 3 Nov 2026, lantern after E01B (LINEs about u 10.1529): a quarter-round step r 0.1278 on
+      // the plinth, the base +33.1111–33.2317 (±0.5577) breaking forward over ±0.3163, a body ±0.4878 with
+      // a projecting middle bay ±0.2464 framing the rose panel (±0.1963) between two sunk side panels
+      // (±0.2463–0.4377, +33.2817–33.6817), the bead band and its cap (±0.5827). Projections DERIVED.
+      sq('Tower lantern plinth step', S, LN.step);
+      const ov = .1278, oy = LN.step[0];
+      for (const { rot } of faces) add('Tower lantern quarter-round step', S, new T.CylinderGeometry(ov, ov, 2 * LN.step[2], 20, 1), place(RZ(Math.PI / 2), TR(0, oy, LN.step[2]), rot, TR(xc, 0, zc)));
+      for (const ex of [-1, 1]) for (const ez of [-1, 1]) add('Tower lantern quarter-round step', S, new T.SphereGeometry(ov, 16, 8), TR(xc + ex * LN.step[2], oy, zc + ez * LN.step[2]));
+      sq('Tower lantern base', S, LN.base);
+      onFaces('Tower lantern base break', S, [-.3163, .3163], [LN.base[0], LN.base[1]], [LN.base[2] - .02, LN.base[2] + .06]);
+      sq('Tower lantern body', W, [LN.body[0], LN.body[1], .4878]);
+      onFaces('Tower lantern middle bay', W, [-.2464, .2464], [LN.body[0], LN.body[1]], [.4, .5478]);
+      for (const [t0, t1, w] of [[-.4377, -.2463, .4878], [.2463, .4377, .4878], [-.1963, .1963, .5478]]) {
+        const f = .025, v0 = 33.2817, v1 = 33.6817;
+        onFaces('Tower lantern panel frame', S, [t0, t1], [v0, v0 + f], [w, w + .02]); onFaces('Tower lantern panel frame', S, [t0, t1], [v1 - f, v1], [w, w + .02]);
+        onFaces('Tower lantern panel frame', S, [t0, t0 + f], [v0, v1], [w, w + .02]); onFaces('Tower lantern panel frame', S, [t1 - f, t1], [v0, v1], [w, w + .02]);
       }
-      sq('Tower lantern bead band', S, [LN.beads[0], LN.beads[0] + .05, LN.beads[2]]);
-      for (let k = 0; k < 24; k++) {
-        const side = Math.floor(k / 6), f = (k % 6 + .5) / 6 * 2 - 1, h = LN.beads[2];
-        const [dx, dz] = [[f * h, -h], [h, f * h], [-f * h, h], [-h, -f * h]][side];
-        add('Tower lantern beads', S, new T.SphereGeometry(.045, 8, 6), TR(xc + dx, (LN.beads[0] + LN.beads[1]) / 2 + .02, zc + dz));
+      for (const { k, n, rot } of faces)
+        add('Tower lantern panel rose · traced', S, TG.lantern, place(rot, TR(xc + n.x * .5578, (LN.body[0] + LN.body[1]) / 2, zc + n.z * .5578)), k === 2 ? TRACED : TRACED_REPEAT);
+      sq('Tower lantern bead band', S, [LN.body[1], 33.8317, .5577]);
+      onFaces('Tower lantern bead band break', S, [-.3163, .3163], [LN.body[1], 33.8317], [.5377, .6177]);
+      sq('Tower lantern bead band cap', S, [33.8317, LN.beads[1], .5827]);
+      onFaces('Tower lantern bead band cap break', S, [-.3413, .3413], [33.8317, LN.beads[1]], [.5627, .6427]);
+      for (const { rot } of faces) for (let i = 0; i < 11; i++) {
+        const t = -.5 + i * .1, w = Math.abs(t) < .3163 ? .6177 : .5577;
+        add('Tower lantern beads', S, new T.SphereGeometry(.032, 10, 6), place(TR(t, 33.7817, w), rot, TR(xc, 0, zc)));
       }
-      // Open crown: eight acanthus leaves rising and curling out, eight smaller between.
-      const big = K.leaf({ len: .95, wid: .62, thick: .05, curl: 2.4, lobes: 3, cup: .45, seg: 8, fine: false });
-      const small = K.leaf({ len: .7, wid: .4, thick: .04, curl: 2.6, lobes: 3, cup: .35, seg: 6, fine: false });
-      const upper = K.leaf({ len: .5, wid: .34, thick: .04, curl: 2.2, lobes: 3, cup: .4, seg: 6, fine: false });
-      // E01B silhouette: leaf tips reach 0.948 m from the axis at +34.16; the bulb narrows to 0.66 m
-      // at +34.72 and a 0.25 m knob collar carries the ball. Leaves are scaled about the axis to
-      // that reach; a second tier rises up the bulb to the upper tips. The bulb is a core about
-      // 0.12 m inside the traced outline so that the leaves, not the core, make the silhouette.
-      const leafScale = place(TR(-xc, -LN.crown[0], -zc), SC(.81, 1, .81), TR(xc, LN.crown[0], zc));
-      for (let k = 0; k < 8; k++) {
-        const a = k * Math.PI / 4;
-        add('Tower lantern acanthus crown', S, big, place(RX(.85), RY(Math.PI / 2 - a), TR(xc + Math.cos(a) * .42, LN.crown[0], zc + Math.sin(a) * .42), leafScale), CARVED);
-        const a2 = a + Math.PI / 8;
-        add('Tower lantern acanthus crown', S, small, place(RX(.45), RY(Math.PI / 2 - a2), TR(xc + Math.cos(a2) * .3, LN.crown[0] + .25, zc + Math.sin(a2) * .36), leafScale), CARVED);
-        add('Tower lantern acanthus crown', S, upper, place(RX(.18), RY(Math.PI / 2 - a2), TR(xc + Math.cos(a2) * .55, 34.38, zc + Math.sin(a2) * .55)), CARVED);
+      // Owner, 3 Nov 2026: the crown follows the E01B drawing (detail-towers-profile.js `crown`, 153 ARCs,
+      // origin the ball centre; E02 draws the same crown within 0.04 mm). Each face carries the traced front
+      // wrapped onto a bowl of revolution (silhouette DERIVED from the trace), so each elevation reads as
+      // drawn; the strokes outside the bowl (flared tips, outer leaves, top bosses) stand as solid flat-cut
+      // leaves on that face's centre plane. Relief and thickness CONCEPT.
+      const BOWL = [[.5, 33.8617], [.58, 33.95], [.64, 34.05], [.68, 34.2], [.7, 34.35], [.69, 34.5], [.64, 34.62], [.55, 34.72], [.42, 34.8], [.28, 34.86], [.2, 34.92], [.15, 35.0]];
+      const bowlR = y => { if (y <= BOWL[0][1]) return BOWL[0][0]; for (let i = 1; i < BOWL.length; i++) if (y <= BOWL[i][1]) { const [r0, y0] = BOWL[i - 1], [r1, y1] = BOWL[i]; return r0 + (r1 - r0) * (y - y0) / (y1 - y0); } return BOWL.at(-1)[0]; };
+      const keepTriangles = (g, keep) => {
+        const p = g.attributes.position, idx = g.index ? g.index.array : Array.from({ length: p.count }, (_, i) => i), out = [];
+        for (let t = 0; t < idx.length; t += 3) if (keep(idx[t], idx[t + 1], idx[t + 2])) out.push(idx[t], idx[t + 1], idx[t + 2]);
+        g.setIndex(out); g.computeVertexNormals(); return g;
+      };
+      crownGeo ||= (() => {
+        const tubes = towerSpandrel(capitalRows.crown, .012, .002, 4), p = tubes.attributes.position, flank = new Uint8Array(p.count);
+        for (let i = 0; i < p.count; i++) {
+          const x = p.getX(i), y = p.getY(i), z = p.getZ(i), r = bowlR(y);
+          if (Math.abs(x) >= r) continue; // outside the bowl: stays on the centre plane
+          const a = Math.asin(x / r), rr = r + .012 + z;
+          if (Math.abs(a) > .96) flank[i] = 1; // the next face's wrap covers beyond 55°
+          p.setXYZ(i, rr * Math.sin(a), y, rr * Math.cos(a));
+        }
+        keepTriangles(tubes, (a, b, c) => !flank[a] && !flank[b] && !flank[c]);
+        const fins = solidOutline(capitalRows.crown, .06, .005, .01);
+        if (fins) {
+          fins.translate(0, 0, -.03);
+          const q = fins.attributes.position;
+          keepTriangles(fins, (a, b, c) => { const x = Math.abs(q.getX(a) + q.getX(b) + q.getX(c)) / 3, y = (q.getY(a) + q.getY(b) + q.getY(c)) / 3; return x > bowlR(y) - .01; });
+        }
+        return { tubes, fins };
+      })();
+      add('Tower lantern crown bowl', S, new T.LatheGeometry([new T.Vector2(.001, BOWL[0][1]), ...BOWL.map(([r, y]) => new T.Vector2(r, y)), new T.Vector2(.001, 35.0)], 40), TR(xc, 0, zc), CARVED);
+      for (const { k, rot } of faces) {
+        add('Tower lantern crown carving · traced E01B', S, crownGeo.tubes, place(rot, TR(xc, 0, zc)), k === 2 ? TRACED : TRACED_REPEAT);
+        if (crownGeo.fins) add('Tower lantern acanthus crown', S, crownGeo.fins, place(rot, TR(xc, 0, zc)), k === 2 ? TRACED : TRACED_REPEAT);
       }
-      const bulb = LN.bulb.map(([r, y]) => new T.Vector2(r, y));
-      add('Tower lantern crown bulb', S, new T.LatheGeometry(bulb, 32), TR(xc, 0, zc), CARVED);
-      add('Tower lantern crown neck', S, new T.CylinderGeometry(.12, .12, LN.ball - LN.bulb.at(-1)[1], 16), TR(xc, (LN.bulb.at(-1)[1] + LN.ball) / 2, zc));
-      for (let k = 0; k < 6; k++) {
-        const a = k * Math.PI / 3;
-        add('Tower lantern knob collar', S, new T.SphereGeometry(.075, 12, 8), TR(xc + Math.cos(a) * .165, 34.97, zc + Math.sin(a) * .165), CARVED);
-      }
+      add('Tower lantern crown neck', S, new T.CylinderGeometry(.12, .12, LN.ball - 34.98, 16), TR(xc, (34.98 + LN.ball) / 2, zc));
       add('Tower lantern ball', S, new T.SphereGeometry(LN.ballRadius, 24, 18), TR(xc, LN.ball, zc));
       // E01B C44709..C4471C: actual 2D trefoil outline, with a proxy 100 mm depth.
       const [c0, c1] = LN.cross, h = LN.crossLobe, ac = LN.arm, lo = ac - h, hi = ac + h;
@@ -1207,7 +1260,7 @@
       cross.absarc(6 * h, ac, h, Math.PI / 2, -Math.PI / 2, true);
       cross.absarc(5 * h, lo, h, 0, Math.PI, true);
       cross.lineTo(h, lo); cross.lineTo(h, c0); cross.lineTo(-h, c0); cross.closePath();
-      add('Tower cross', crossMaterial, new T.ExtrudeGeometry(cross, { depth: .1, bevelEnabled: false, curveSegments: 24 }), place(RY(-Math.PI / 2), TR(xc + .05, 0, zc)), 'TRACED CAD CROSS OUTLINE / SCHEMATIC DEPTH');
+      add('Tower cross', S, new T.ExtrudeGeometry(cross, { depth: .1, bevelEnabled: false, curveSegments: 24 }), place(RY(-Math.PI / 2), TR(xc + .05, 0, zc)), 'TRACED CAD CROSS OUTLINE / SCHEMATIC DEPTH');
       // Owner, 2 Nov 2026: the corner pinnacles take the shared E01B pinnacle crown, scaled uniformly
       // between the native base and apex; corner plan positions stay DERIVED.
       const BP=spec.balcony,crown=pinnacleCrown(),base=BP.front.rail[0].y,sc=(BP.finialTop-base)/crown.boundingBox.max.y;
