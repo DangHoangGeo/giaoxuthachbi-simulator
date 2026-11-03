@@ -6,7 +6,10 @@
   // axis-11 line, level with the crucifix, in the side arches of the axis-11 frame (wingX is
   // the shrine group's origin; the statues stand 0.10 m in front of it, on the crucifix's x).
   const spec = { revision:'2026-10-07-sanctuary-7-carved', serviceRevision:'2026-10-07-concealed-1', frameAxis:'10', frameX:44.175, centerX:48.12, shrineAxis:'11', wingX:48.93, wingZ:5.5, doorHeight:2.2, nicheBase:2.85,
-    centralArch:{half:3.3,spring:8.25,shoulder:9.38,crown:10.83}, sideArch:{half:1.575,spring:6.15,shoulder:6.75,crown:7.46},
+    centralArch:{half:3.3,spring:8.25,shoulder:9.38,crown:10.83}, // Owner, 3 Nov 2026: the side arches of the frame spring, shoulder and crown at the levels of the axis-11
+    // arches over the shrines (spec.arch11), so the side vaults between them run level. Sheet 5 draws them at
+    // spring 6.15, shoulder 6.75, crown 7.46 (DRAWING SHOWN; this is a recorded owner departure).
+    sideArch:{half:1.575,spring:5.55,shoulder:6.3,crown:6.85,drawn:{spring:6.15,shoulder:6.75,crown:7.46}},
     // Side arches of axis 11 round the shrines (bundle plaster arch, Z 3.85–7.11, spring +5.55).
     arch11:{x:48.34,z:5.48,half:1.55,spring:5.55,shoulder:6.3,crown:6.85},
     // Gilded boarded vaults over the two side passages (owner, 1 Nov 2026, USER CONFIRMED): the vault of the
@@ -172,7 +175,7 @@
     // at roughness .4 the highlight alone read as salmon and the cross was lost against the lit recess.
     const satin=new T.MeshPhysicalMaterial({color:new T.Color(LACQUER).multiplyScalar(SATIN_TONE),roughness:.62,clearcoat:.12,clearcoatRoughness:.5,envMapIntensity:.45});satin.name='Sanctuary · oxblood lacquer, satin';
     const velvet=material('Sanctuary · crimson upholstery','#7c1f24',0,.82);
-    window.CHURCH_SANCTUARY.materials={wood,gold,carve,satin};
+    window.CHURCH_SANCTUARY.materials={wood,gold,carve,satin,leafGold};
     building.getObjectByName('Proposed sanctuary furnishings \u2014 layout to confirm')?.traverse(o=>{
       if(!o.isMesh)return;
       if(o.material.name==='Proposed dark-stained timber joinery')o.material=satin;
@@ -308,7 +311,20 @@
     }
     function box(g,w,h,d,u,y,v,mat,name){return mesh(new T.BoxGeometry(w,h,d),mat,g,name,u,y,v);}
     function line(g,points,r=.025,mat=gold,name='Gilded carved moulding'){return mesh(new T.TubeGeometry(new T.CatmullRomCurve3(points.map(p=>new T.Vector3(...p))),Math.min(120,Math.max(16,points.length*3)),r,5,false),mat,g,name);}
-    function flower(g,u,y,v,s=.1){for(let i=0;i<6;i++){const a=i*Math.PI/3;const p=mesh(leafGeometry,gold,g,'Gilded floral relief',u+Math.cos(a)*s,y+Math.sin(a)*s,v);p.scale.set(s*.8,s*.32,.035);p.rotation.z=a;}const c=mesh(leafGeometry,gold,g,'Flower heart',u,y,v+.02);c.scale.set(s*.35,s*.35,.04);}
+    // Use the same rooted, layered carving throughout, rather than separate floating
+    // ellipsoids. The small flowers share a geometry and sit against their supporting surface.
+    const floralRelief=K.bloom({r:1,petals:8,rings:2,seg:4});
+    function flower(g,u,y,v,s=.1){mesh(floralRelief,gold,g,'Gilded floral relief',u,y,v).scale.setScalar(s*1.3);}
+    // A low-relief rosette at each vault crossing; this is decorative concept geometry,
+    // not a description of the concealed connection or a selected gilding process.
+    function vaultBoss(g,x,y,z){
+      const boss=new T.Group();boss.name='Gilded vault boss · floral relief';boss.position.set(x,y,z);g.add(boss);
+      const heart=mesh(leafGeometry,gold,boss,'Vault rosette heart');heart.scale.set(.055,.028,.055);
+      for(let i=0;i<8;i++){
+        const a=i*Math.PI/4,p=mesh(leafGeometry,gold,boss,'Vault rosette petal',Math.cos(a)*.072,0,Math.sin(a)*.072);
+        p.scale.set(.065,.018,.026);p.rotation.y=-a;
+      }
+    }
     function vine(g,u,y,h,v){line(g,Array.from({length:13},(_,i)=>[u+Math.sin(i*Math.PI/2)*.07,y+i*h/12,v]),.017);for(let i=0;i<12;i++){
       const cy=y+(i+.5)*h/12;flower(g,u+(i%2?-.06:.06),cy,v,.07);
       for(const sign of [-1,1])line(g,Array.from({length:9},(_,k)=>{const a=k*Math.PI*1.6/8,r=.09*(1-k/12);return [u+sign*(.075+Math.cos(a)*r),cy+Math.sin(a)*r,v];}),.012);
@@ -343,7 +359,15 @@
       mesh(new T.ExtrudeGeometry(shape,{depth:.32,bevelEnabled:false,curveSegments:32}),scrollwork,g,name,0,0,-.16);
       for(const v of [-.19,.19])line(g,trace.map(p=>[p.x,p.y,v]),.06);
       crest(g,trace.map(p=>[p.x,p.y]),.2,half>2?.22:.15,blooms,-1,'Gilded arch cresting');
-      for(const e of [-1,1])box(g,.2,.3,.42,cx+e*(half-.08),a.spring-.13,0,gold,'Gilded arch corbel');
+      // A fine inner bead and individually modelled floral relief make the arch read as
+      // layered carving at eye level. Keep it on the spandrel face, outside the opening.
+      line(g,trace.map(p=>[cx+(p.x-cx)*.985,p.y+.11,.185]),.014,gold,'Arch inner gilded bead');
+      for(const e of [-1,1]){
+        const u=cx+e*(half-.08);
+        box(g,.2,.3,.42,u,a.spring-.13,0,gold,'Gilded arch corbel');
+        box(g,.25,.035,.43,u,a.spring-.01,0,wood,'Lacquered corbel cap');
+        flower(g,u,a.spring-.13,.225,.045);
+      }
     }
     function group(name,x,z){const g=new T.Group();g.name=name;g.position.set(x,0,z);g.rotation.y=-Math.PI/2;root.add(g);return g;}
     // Niche outline, optionally grown by a casing thickness, as a shape or as a hole.
@@ -451,7 +475,7 @@
     const vaultPath=new T.CatmullRomCurve3(inner.map(p=>new T.Vector3(p.x,p.y,0)));
     for(const t of [.14,.32,.5,.68,.86]){
       const p=vaultPath.getPoint(t);box(front,.09,.09,-depth-.2,p.x,p.y-.03,(depth-.16)/2,wood,'Chamber vault longitudinal rib');
-      for(const v of [-1,-1.85,-2.7,-3.55])mesh(leafGeometry,gold,front,'Gilded vault boss',p.x,p.y-.07,v).scale.setScalar(.12);
+      for(const v of [-1,-1.85,-2.7,-3.55])vaultBoss(front,p.x,p.y-.07,v);
     }
     const back=lobed(0,A.half,A);back.lineTo(A.half,DAIS);back.lineTo(-A.half,DAIS);back.closePath();back.holes.push(opening(N.lining));
     mesh(new T.ExtrudeGeometry(back,{depth:.1,bevelEnabled:false,curveSegments:32}),wood,front,'Chamber back lining · lacquered timber',0,0,spec.frameX-48.5);
@@ -584,8 +608,8 @@
         const m=rows[0].inner.length,inEdge=rows[0].inner[0].x<rows[0].inner[m-1].x?0:m-1,outEdge=m-1-inEdge;
         line(g,xs.map((x,i)=>{const p=rows[i].inner[outEdge];return [x,p.y-.05,sign*p.x];}),.07,wood,'Side vault springing beam · lacquered timber');
         // Gilded cove (owner, 3 Nov 2026): the same boarding drops plumb from the chamber vault springing on the
-        // face line to coveY, then a quarter ellipse carries it out to the inner springing of the side vault,
-        // so the gold runs on from the chamber vault to the side vault with no lacquered band between.
+        // face line to coveY (the chamber lights hang on this face), then a quarter ellipse carries it out to the
+        // inner springing of the side vault, so the gold runs on with no lacquered band between.
         const Cv=spec.chamber,arc=10,cove=rows.map(R=>{
           const end=R.inner[inEdge],dz=end.x-Cv.face,dy=Cv.coveY-end.y,inner=[{x:Cv.face,y:A.spring}],outer=[{x:Cv.face+V.thick,y:A.spring}];
           for(let k=0;k<=arc;k++){
@@ -611,13 +635,19 @@
         const coveGeometry=new T.BufferGeometry().setFromPoints(positions.splice(covePositions));coveGeometry.computeVertexNormals();
         const coveBoard=mesh(coveGeometry,leafGold,g,'Side vault · gilded cove to the chamber vault');
         coveBoard.userData={status:'CONCEPT · gilded boarding from the chamber vault springing to the side vault; boarding, framing and fixings pending',engineeringApproved:false,source:'Owner request 3 Nov 2026; docs/sanctuary-model.md'};
-        // Transverse ribs at both ends and at two stations between, and longitudinal ribs on the
-        // same fractions of the profile as the chamber vault, with a gilded boss at each crossing.
-        const stations=[0,3,5,steps],paths=rows.map(R=>new T.CatmullRomCurve3(R.inner.map(p=>new T.Vector3(p.x,p.y,0))));
-        for(const i of stations)line(g,rows[i].inner.map(p=>[xs[i],p.y-.02,sign*p.x]),.065,wood,'Side vault rib · lacquered timber');
-        for(const t of [.14,.32,.5,.68,.86]){
-          line(g,paths.map((c,i)=>{const p=c.getPoint(t);return [xs[i],p.y-.03,sign*p.x];}),.045,wood,'Side vault longitudinal rib');
-          for(const i of stations){const p=paths[i].getPoint(t);mesh(leafGeometry,gold,g,'Gilded vault boss',xs[i],p.y-.07,sign*p.x).scale.setScalar(.12);}
+        // Owner, 3 Nov 2026: the cove carries the red grid of the vaults, so that it does not read as one long
+        // gold sheet. Transverse ribs at both ends and at two stations between run from the foot of the plumb
+        // face over the cove and on over the side vault; longitudinal ribs at the foot of the plumb face, at a
+        // third and two thirds of the cove's curve and in the valley where it meets the side vault, then the
+        // side vault's own five, on the same fractions as the chamber vault (the shrine lights hang from the
+        // first, |z| 4.14). A gilded boss at each crossing. The plumb face stays clear for the chamber lights.
+        const stations=[0,3,5,steps],profiles=rows.map((R,i)=>cove[i].inner.slice(1).concat(R.inner.slice(1)));
+        for(const i of stations)line(g,profiles[i].map(p=>[xs[i],p.y-.02,sign*p.x]),.065,wood,'Side vault rib · lacquered timber');
+        const paths=rows.map(R=>new T.CatmullRomCurve3(R.inner.map(p=>new T.Vector3(p.x,p.y,0))));
+        const ribLines=[...[1,1+arc/3,1+2*arc/3,1+arc].map(k=>i=>cove[i].inner[Math.round(k)]),...[.14,.32,.5,.68,.86].map(t=>i=>paths[i].getPoint(t))];
+        for(const at of ribLines){
+          line(g,xs.map((x,i)=>{const p=at(i);return [x,p.y-.03,sign*p.x];}),.045,wood,'Side vault longitudinal rib');
+          for(const i of stations){const p=at(i);vaultBoss(g,xs[i],p.y-.07,sign*p.x);}
         }
       }
     }

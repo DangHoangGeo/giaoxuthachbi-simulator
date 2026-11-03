@@ -22,13 +22,13 @@ Saved scene: **Full service · evening**. Service duration **1.5 h**, **40 servi
 
 | Usage category | Operating estimate (W) | kWh/service | Service-only kWh/month | Circuits / scope |
 | --- | ---: | ---: | ---: | --- |
-| Lighting | 4,290.7 | 6.436 | 257.44 | L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LD, LS |
+| Lighting | 4,278.7 | 6.418 | 256.72 | L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LD, LS |
 | Sound | 193.4 | 0.290 | 11.60 | A1, A2, A3, A5, MIC |
 | Fans and ventilation | 1,156.0 | 1.734 | 69.36 | F1, F2, F4, F5, V1, V2, V3 |
 | Exit signs | 15.0 | 0.023 | 0.90 | E1 |
 | Decoration and furnishings | 0.0 | 0.000 | 0.00 | DECOR, X1 |
 | Distribution and controls | 0.0 | 0.000 | 0.00 | P1, P2, P3, P4 |
-| **Total modeled usage** | **5,655.1** | **8.483** | **339.30** | Same saved configuration |
+| **Total modeled usage** | **5,643.0** | **8.465** | **338.58** | Same saved configuration |
 
 Calculated by the simulator's itemWatts method, including dimming, fan speed and amplifier allowances. Passive-speaker ratings are not summed as mains watts. The five boards do not add duplicate downstream consumption; their own parasitic/control loads are not separately modeled. A zero is the model's result, not a verified zero product rating. Standby, between-service use, continuous exit-sign operation outside these service hours, other building loads and distribution losses are excluded. These totals cannot size a supply, protective device or cable. See [methods and limitations](../simulator/methods-and-limitations.md).
 
@@ -36,13 +36,13 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,376.602 | 3,376.602 | 0.000 | 0.000 |
+| Lighting | 3,378.550 | 3,378.550 | 0.000 | 0.000 |
 | Sound | 765.922 | 0.000 | 2,362.560 | 566.077 |
 | Fans and ventilation | 978.661 | 978.661 | 0.000 | 0.000 |
 | Exit signs | 166.209 | 166.209 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 263.923 | 263.923 | 0.000 | 0.000 |
-| **Total by length basis** | **5,551.318** | **4,785.396** | **2,362.560** | **566.077** |
+| **Total by length basis** | **5,553.266** | **4,787.344** | **2,362.560** | **566.077** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/415 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -72,8 +72,8 @@ The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-an
 The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
 
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 3b68a583bf7fff027e76b5bb75bec42797589436f546f85bfc67bf8daba1afd5.
-- [Electrical snapshot](electrical-systems.json), SHA-256: 0c9d92c793fd8e1a83e63533f893bd68677c6ee6d6b39944e2262bb80a686c18.
+- [Layout snapshot](equipment-layout.json), SHA-256: ddbe9e09fd14bf9f4701ba76c9c204d4381b0c59c27a79ca22a8d57965d39cab.
+- [Electrical snapshot](electrical-systems.json), SHA-256: a6ccfa7b33788375aa65fcf0e3c264b2c3dee35bf297390ee780c5af422875d6.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 

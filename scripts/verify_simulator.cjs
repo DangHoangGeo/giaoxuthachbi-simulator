@@ -165,21 +165,25 @@ assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.i
     const sx = sandbox.CHURCH_SANCTUARY.spec, ray = new T.Raycaster(), boards = nodes.filter(o => o.isMesh && o.name === 'Side vault · gilded boarding');
     assert.equal(boards.length, 2);
     building.updateMatrixWorld(true);
-    const vaultParts = nodes.filter(o => o.isMesh && /^(Side vault|Gilded vault boss|Front frame|Chamber side lintel|Axis-11 side)/.test(o.name));
+    const vaultParts = nodes.filter(o => o.isMesh && /^(Side vault|Gilded vault boss|Vault rosette|Front frame|Chamber side lintel|Axis-11 side)/.test(o.name));
     const ribs = nodes.filter(o => o.isMesh && o.name === 'Side vault longitudinal rib');
     const lights = SIM.state.items.filter(it => /^(Statue accent|Shrine wash) · [BH]$/.test(it.name));
     assert.equal(lights.length, 4, 'four shrine lights under the side vaults');
+    for (const ids of [['L115', 'L116'], ['L117', 'L118']]) {
+      const boxes = ids.map(id => new T.Box3().setFromObject(SIM.fixtures.get(id).root));
+      assert(!boxes[0].intersectsBox(boxes[1]), `shrine fitting envelopes clear: ${ids.join(' / ')}`);
+    }
     const emitters = SIM.emitters(), meshes = nodes.filter(o => o.isMesh);
     for (const it of lights) {
       const s = Math.sign(it.pos[2]), wash = it.name.startsWith('Shrine wash'), target = new T.Vector3(sx.wingX - 0.1 - (wash ? 0.2 : 0), wash ? 4.2 : sx.nicheBase + 1.25, s * sx.wingZ);
       const e = emitters.find(m => m.id === it.id), from = new T.Vector3(...e.pos), dir = target.clone().sub(from), dist = dir.length();
       assert.equal(it.mount, 'pendant', `${it.name} hangs from the vault`);
-      assert(it.pos[0] > sx.sideVault.x0 + 0.2 && it.pos[0] < sx.sideVault.x0 + 1.5 && Math.abs(it.pos[2]) > 3.9 && Math.abs(it.pos[2]) < 4.5, `${it.name} hangs under the front of the vault, by the chamber`);
+      assert(it.pos[0] > sx.sideVault.x0 + 0.2 && it.pos[0] < sx.sideVault.x1 - 0.2 && Math.abs(it.pos[2]) > 3.9 && Math.abs(it.pos[2]) < 4.5, `${it.name} hangs under the front of the vault, by the chamber`);
       // The canopy sits on the underside of the rib: no gap above it and no rib vertex inside the canopy (the contact check above).
       ray.set(new T.Vector3(it.pos[0], it.pos[1] - 0.5, it.pos[2]), new T.Vector3(0, 1, 0));
       const up = ray.intersectObjects(ribs, false);
       assert(up.length && Math.abs(up[0].point.y - it.anchorY) < 0.02, `${it.name} canopy on the vault rib: anchor ${it.anchorY} vs rib ${up[0]?.point.y}`);
-      assert(it.pos[1] < it.anchorY - 0.05 && it.pos[1] > it.anchorY - 0.1, `${it.name} stem length`);
+      assert(it.pos[1] < it.anchorY - 0.15 && it.pos[1] > it.anchorY - 0.17, `${it.name} stem length`);
       ray.set(from, dir.clone().normalize()); ray.far = dist - 0.4;
       const hits = ray.intersectObjects(vaultParts, false);
       assert.equal(hits.length, 0, `${it.name}: beam axis clear of the side vault, frame and lintel: ${hits.slice(0, 2).map(h => h.object.name + ' ' + h.distance.toFixed(2))}`);
@@ -665,20 +669,23 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
 // The accent heads hung from the axis-9 tie and side beams take the beam lacquer, the heads and vault
 // uplights on the chamber walls the chamber's own lacquer. Finish only; a one-time change for saved layouts.
 {
-  const D = sandbox.CHURCH_SIM_DESIGN, timber = interior.materials.timber, chamberWall = sandbox.window.CHURCH_SANCTUARY.materials.wood, plain = v => JSON.parse(JSON.stringify(v));
+  const D = sandbox.CHURCH_SIM_DESIGN, timber = interior.materials.timber, chamberWall = sandbox.window.CHURCH_SANCTUARY.materials.wood, gilt = sandbox.window.CHURCH_SANCTUARY.materials.leafGold, plain = v => JSON.parse(JSON.stringify(v));
   const beamNames = ['Altar key light · B', 'Altar key light · H', 'Ambo key light', 'Sanctuary step fill · B', 'Sanctuary step fill · H', 'Presider chair light',
     'Sanctuary frame wash · B', 'Sanctuary frame wash · H'];
   // Since 1 Nov 2026 the statue accents and shrine washes hang from the gilded side vaults (chamber lacquer).
-  const chamberNames = ['Crucifix accent · B', 'Crucifix accent · H', 'Reredos wash · B', 'Reredos wash · H', 'Reredos base wash · B', 'Reredos base wash · H',
-    'Tabernacle accent', 'Sanctuary vault uplight · B', 'Sanctuary vault uplight · H', 'Statue accent · B', 'Statue accent · H', 'Shrine wash · B', 'Shrine wash · H'];
+  // Since 3 Nov 2026 the heads on the gilded cove and the uplights on the gilded cornice take the vault gilding.
+  const chamberNames = ['Statue accent · B', 'Statue accent · H', 'Shrine wash · B', 'Shrine wash · H'];
+  const giltNames = ['Crucifix accent · B', 'Crucifix accent · H', 'Reredos wash · B', 'Reredos wash · H', 'Reredos base wash · B', 'Reredos base wash · H',
+    'Tabernacle accent', 'Sanctuary vault uplight · B', 'Sanctuary vault uplight · H'];
   const metal = { projector24: 'black', projector36: 'black', spot15: 'bronze', uplight: 'bronze' };
   const byName = name => SIM.state.items.find(it => it.name === name);
-  assert([...beamNames, ...chamberNames].every(byName), 'every sanctuary accent and chamber light is in the design');
+  assert([...beamNames, ...chamberNames, ...giltNames].every(byName), 'every sanctuary accent and chamber light is in the design');
   // The chamber side walls carry the sanctuary's own lacquer; the beam timber copies only its colour and
   // follows the timber tone, so the chamber fittings share the wall material itself.
   let wallMesh = null; sandbox.window.model.scene.traverse(o => { if (o.isMesh && o.name === 'Chamber side lintel · lacquered timber') wallMesh = o; });
   assert(wallMesh && wallMesh.material === chamberWall, 'the chamber side wall is in the sanctuary lacquer');
-  for (const [names, finish, mat] of [[beamNames, 'timber', timber], [chamberNames, 'chamber', chamberWall]]) for (const name of names) {
+  assert(gilt && gilt === sandbox.window.model.scene.getObjectByName('Side vault · gilded cove to the chamber vault').material, 'the gilt finish is the vault boarding itself');
+  for (const [names, finish, mat] of [[beamNames, 'timber', timber], [chamberNames, 'chamber', chamberWall], [giltNames, 'gilt', gilt]]) for (const name of names) {
     const it = byName(name);
     assert(it.circuit === 'L3' && Object.hasOwn(metal, it.type) && it.params.finish === finish, finish + ' finish on ' + name);
     let meshes = 0;
@@ -687,7 +694,7 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   }
   // Every other head of these types keeps its metal finish (roof uplights on the ties). The wing downlights of
   // 1 Nov 2026 hang tight to the roof timber and take its lacquer (asserted with the wing block below).
-  for (const it of SIM.state.items.filter(it => Object.hasOwn(metal, it.type) && ![...beamNames, ...chamberNames].includes(it.name) && !/^L-WING-/.test(it.id))) assert.equal(it.params.finish, metal[it.type], 'metal finish kept: ' + it.name);
+  for (const it of SIM.state.items.filter(it => Object.hasOwn(metal, it.type) && ![...beamNames, ...chamberNames, ...giltNames].includes(it.name) && !/^L-WING-/.test(it.id))) assert.equal(it.params.finish, metal[it.type], 'metal finish kept: ' + it.name);
   // Nave chandeliers: 1.0 m higher, same chain anchor, mid-bay between the ties, clear of the beams and reading heads.
   // Retired by the parish priest's meeting of 25 Oct 2026: only the crossing chandelier remains, on L3.
   const chandeliers = SIM.state.items.filter(it => /^Chandelier · bay [468]–[579]$/.test(it.name));
@@ -730,13 +737,28 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   const up = D.upgradeFinishChandeliers(saved, design), byId = id => up.find(it => it.id === id), was = id => saved.find(it => it.id === id);
   assert.equal(up.length, saved.length, 'nothing is added or removed');
   assert(byId('a1').params.finish === 'timber' && byId('a2').params.finish === 'timber', 'untouched beam heads take the beam lacquer');
-  assert(byId('c1').params.finish === 'chamber' && byId('c2').params.finish === 'chamber', 'untouched chamber fittings take the chamber lacquer');
+  assert(byId('c1').params.finish === 'gilt' && byId('c2').params.finish === 'gilt', 'untouched chamber fittings take the current chamber finish (gilding since 3 Nov 2026)');
   for (const id of ['a1', 'c1', 'c2']) { const { params: _a, ...after } = byId(id), { params: _b, ...before } = was(id); assert.deepEqual(plain(after), plain(before), 'only the finish changes: ' + id); }
   for (const id of ['a3', 'a4', 'a5', 'c3', 'h2', 'h3', 'g']) assert.equal(byId(id), was(id), 'a moved, re-aimed or re-typed item and the grand chandelier stay as they were: ' + id);
   assert.deepEqual(plain(byId('a6')), plain(was('a6')), 'a head already in the lacquer stays');
   assert(byId('h1').pos[1] === 7.3 && byId('h1').pos[0] === was('h1').pos[0] && byId('h1').on === false && byId('h1').dim === 0.4 && byId('h1').anchorY === was('h1').anchorY, 'a chandelier at +6.3 rises; switch, dimmer and anchor kept');
   assert.deepEqual(plain(D.upgradeFinishChandeliers(up, design)), plain(up), 'applying it again changes nothing');
   assert.equal(SIM.state.settings.finishChandelierRevision, D.finishChandelierRevision, 'the revision is stored in the saved settings');
+  // 3 Nov 2026: chamber heads still in the lacquer are gilded once; a refinished head and the shrine lights stay.
+  const lacquered = [old('Reredos wash · B', { id: 'k1', params: { finish: 'chamber' }, dim: 0.4 }), old('Sanctuary vault uplight · H', { id: 'k2', params: { finish: 'chamber' } }),
+    old('Tabernacle accent', { id: 'k3', params: { finish: 'bronze' } }), old('Statue accent · B', { id: 'k4', params: { finish: 'chamber' } })];
+  const gilded = D.upgradeGoldCove(lacquered, design), g = id => gilded.find(it => it.id === id);
+  assert(g('k1').params.finish === 'gilt' && g('k2').params.finish === 'gilt' && g('k1').dim === 0.4, 'chamber heads in the lacquer take the gilding, dimmer kept');
+  assert(g('k3').params.finish === 'bronze' && g('k4').params.finish === 'chamber', 'a refinished head and the shrine lights stay');
+  assert.deepEqual(plain(D.upgradeGoldCove(gilded, design)), plain(gilded), 'gilding again changes nothing');
+  // Level side vaults: shrine lights at their 1 November place drop onto the rib and are dimmed; a re-aimed one stays.
+  const before = Object.entries(D.goldCoveBefore).map(([id, o]) => ({ ...raw(o.name), id, pos: [...o.pos], anchorY: o.anchorY, yaw: o.yaw, tilt: o.tilt, lumens: o.lumens, dim: 0.7 }));
+  before[3] = { ...before[3], tilt: before[3].tilt - 5 };
+  const lowered = D.upgradeGoldCove(before, design);
+  for (const it of lowered.slice(0, 3)) { const r = raw(it.name); assert(it.pos.every((v, i) => v === r.pos[i]) && it.anchorY === r.anchorY && it.yaw === r.yaw && it.tilt === r.tilt && it.lumens === r.lumens && it.dim === 0.7, 'untouched shrine light drops onto the level rib: ' + it.name); }
+  assert.deepEqual(plain(lowered[3]), plain(before[3]), 'a re-aimed shrine light stays');
+  assert.deepEqual(plain(D.upgradeGoldCove(lowered, design)), plain(lowered), 'applying it again changes nothing');
+  assert.equal(SIM.state.settings.goldCoveRevision, D.goldCoveRevision, 'the gold cove revision is stored in the saved settings');
 }
 // Owner, 19 October 2026: side-aisle fans hang from the column-line beams (B03) that join
 // the columns, and 0.30 m higher. Bay 2′–3 has no such beam and keeps its purlin bracket.

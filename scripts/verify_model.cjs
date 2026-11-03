@@ -492,7 +492,7 @@ assert(bounds(vault).min.y>=S.centralArch.spring-.001&&bounds(vault).max.y<12.1,
   assert(nodes.filter(o=>o.name==='Vault springing cornice').every(o=>o.material===nodes.find(n=>n.name==='Gilded cornice edge').material),'Springing cornice is gilded');
   assert(!nodes.some(o=>/^(Chamber wall pilaster|Chamber lintel soffit moulding)$/.test(o.name)),'no lacquered pilasters or soffit moulding left on the lintel');
   assert.equal(nodes.filter(o=>o.name==='Side vault rib · lacquered timber').length,8,'Four lacquered transverse ribs per vault');
-  assert.equal(nodes.filter(o=>o.name==='Side vault longitudinal rib').length,10,'Five lacquered longitudinal ribs per vault, as in the chamber vault');
+  assert.equal(nodes.filter(o=>o.name==='Side vault longitudinal rib').length,18,'Five lacquered longitudinal ribs per vault, as in the chamber vault, and four on each gilded cove (owner, 3 Nov 2026)');
   // USER CONFIRMED 1 Nov 2026: the vaults meet the frame with no gap, so the front edge is the back face of the axis-10 side spandrels.
   const spandrels=nodes.filter(o=>o.isMesh&&o.name==='Front frame side spandrel');
   assert.equal(spandrels.length,2,'Two side spandrels in the axis-10 frame');

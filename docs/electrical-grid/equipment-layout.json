@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-11-03T00:22:00.600Z",
+  "savedAt": "2026-11-03T11:41:17.154Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -65,6 +65,7 @@
     "rearSideLightsRevision": "2026-11-02-rear-side-lights-1",
     "festivalTerraceRevision": "2026-11-02-festival-terrace-removed-1",
     "festivalStringsRevision": "2026-11-03-festival-strings-removed-1",
+    "goldCoveRevision": "2026-11-03-gold-cove-2",
     "eveningExposureRevision": "2026-10-09-evening-160",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
@@ -2006,7 +2007,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 700,
       "beam": 24,
@@ -2030,7 +2031,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 850,
       "beam": 36,
@@ -2054,7 +2055,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 1300,
       "shadow": false
@@ -2077,7 +2078,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 2200,
       "shadow": false
@@ -2100,7 +2101,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 700,
       "beam": 24,
@@ -2124,7 +2125,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 850,
       "beam": 36,
@@ -2148,7 +2149,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 1300,
       "shadow": false
@@ -2171,7 +2172,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 2200,
       "shadow": false
@@ -2194,7 +2195,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 900,
       "beam": 10,
@@ -2207,21 +2208,21 @@
       "circuit": "L3",
       "mount": "pendant",
       "pos": [
-        44.68,
-        6.424,
+        47.03,
+        5.903,
         -4.14
       ],
-      "yaw": -18.144530993963553,
-      "tilt": -26.569451090024266,
+      "yaw": -37.07307331731045,
+      "tilt": -36.395440381835215,
       "mountYaw": 0,
-      "anchorY": 6.484,
+      "anchorY": 6.063,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "chamber"
       },
-      "lumens": 105,
+      "lumens": 45,
       "beam": 12,
       "shadow": false
     },
@@ -2232,21 +2233,21 @@
       "circuit": "L3",
       "mount": "pendant",
       "pos": [
-        45.25,
-        6.356000000000001,
+        46.25,
+        5.903,
         -4.14
       ],
-      "yaw": -21.918220291919713,
-      "tilt": -28.95737340516594,
+      "yaw": -29.74488129694228,
+      "tilt": -29.69157106617694,
       "mountYaw": 0,
-      "anchorY": 6.416,
+      "anchorY": 6.063,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "chamber"
       },
-      "lumens": 1140,
+      "lumens": 480,
       "beam": 50,
       "shadow": false
     },
@@ -2257,21 +2258,21 @@
       "circuit": "L3",
       "mount": "pendant",
       "pos": [
-        44.68,
-        6.424,
+        47.03,
+        5.903,
         4.14
       ],
-      "yaw": 18.144530993963553,
-      "tilt": -26.569451090024266,
+      "yaw": 37.07307331731045,
+      "tilt": -36.395440381835215,
       "mountYaw": 0,
-      "anchorY": 6.484,
+      "anchorY": 6.063,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "chamber"
       },
-      "lumens": 105,
+      "lumens": 45,
       "beam": 12,
       "shadow": false
     },
@@ -2282,21 +2283,21 @@
       "circuit": "L3",
       "mount": "pendant",
       "pos": [
-        45.25,
-        6.356000000000001,
+        46.25,
+        5.903,
         4.14
       ],
-      "yaw": 21.918220291919713,
-      "tilt": -28.95737340516594,
+      "yaw": 29.74488129694228,
+      "tilt": -29.69157106617694,
       "mountYaw": 0,
-      "anchorY": 6.416,
+      "anchorY": 6.063,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "chamber"
       },
-      "lumens": 1140,
+      "lumens": 480,
       "beam": 50,
       "shadow": false
     },

@@ -114,7 +114,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', columnWashRevision: '', centreReadingRevision: '', entranceInteriorRevision: '', rearSideLightsRevision: '', festivalTerraceRevision: '', festivalStringsRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', columnWashRevision: '', centreReadingRevision: '', entranceInteriorRevision: '', rearSideLightsRevision: '', festivalTerraceRevision: '', festivalStringsRevision: '', goldCoveRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -800,7 +800,7 @@
   // A finish-matched fitting draws with the model's own material for that surface: the
   // beam timber (the timber tone setting changes it), the sanctuary chamber lacquer (it
   // does not), the wall plaster or the cornice mouldings. Fittings never change these materials, so sharing them is safe.
-  const SHARED = { timber: () => ctx?.interior?.materials?.timber, wall: () => ctx?.mat?.wall, trim: () => ctx?.mat?.trim, sanctuary: () => window.CHURCH_SANCTUARY?.materials?.wood };
+  const SHARED = { timber: () => ctx?.interior?.materials?.timber, wall: () => ctx?.mat?.wall, trim: () => ctx?.mat?.trim, sanctuary: () => window.CHURCH_SANCTUARY?.materials?.wood, sanctuaryGilt: () => window.CHURCH_SANCTUARY?.materials?.leafGold };
   function material(key) {
     const shared = SHARED[CAT.MATERIALS[key]?.share]?.();
     if (shared?.isMaterial) return shared;
@@ -938,7 +938,7 @@
       }
       if (item.mount === 'pendant') {
         // A head finished in a lacquer hangs from a stem and canopy in the same lacquer.
-        const lacquer = { timber: 'beamTimber', chamber: 'chamberLacquer' }[item.params?.finish];
+        const lacquer = { timber: 'beamTimber', chamber: 'chamberLacquer', gilt: 'chamberGilt' }[item.params?.finish];
         const stemMat = lacquer ? material(lacquer) : type.cat === 'fan' ? material('bronze') : type.cat === 'speaker' ? material('black') : type.cat === 'decor' ? material('rope') : material(type.id.startsWith('chandelier') ? 'brass' : 'black');
         this.stem = new T.Mesh(stemGeo(), stemMat);
         this.stem.userData.simId = item.id;
@@ -2554,7 +2554,8 @@
       ['entranceInteriorRevision', D.entranceInteriorRevision, '.before-entrance-interior', D.upgradeEntranceInterior],
       ['rearSideLightsRevision', D.rearSideLightsRevision, '.before-rear-side-lights', D.upgradeRearSideLights],
       ['festivalTerraceRevision', D.festivalTerraceRevision, '.before-festival-terrace-removed', D.upgradeFestivalTerrace],
-      ['festivalStringsRevision', D.festivalStringsRevision, '.before-festival-strings-removed', D.upgradeFestivalStrings]
+      ['festivalStringsRevision', D.festivalStringsRevision, '.before-festival-strings-removed', D.upgradeFestivalStrings],
+      ['goldCoveRevision', D.goldCoveRevision, '.before-gold-cove', D.upgradeGoldCove]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;

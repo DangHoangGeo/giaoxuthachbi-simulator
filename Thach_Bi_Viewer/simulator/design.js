@@ -29,10 +29,13 @@
   const side = z => z < 0 ? 'B' : 'H';
   // Shrine lights under the gilded side vaults (1 Nov 2026, owner): X, |Z|, the rib underside (anchorY)
   // under the canopy and the output of each head. MODEL TRANSCRIPTION of the vault in sanctuary.js.
-  const SIDE_VAULT_DROP = 0.06;
+  const SIDE_VAULT_DROP = 0.16;
   const SIDE_VAULT_LIGHTS = {
-    accent: { x: 44.68, z: 4.14, anchorY: 6.484, lumens: 105 },
-    wash: { x: 45.25, z: 4.14, anchorY: 6.416, lumens: 1140 }
+    // The level vault places the inner rib at +6.063. The heads are set farther back
+    // to screen them from sampled nave-centre eyes, with a 0.16 m drop for clearance.
+    // Outputs are preliminary model values, not selected-product photometry.
+    accent: { x: 47.03, z: 4.14, anchorY: 6.063, lumens: 45 },
+    wash: { x: 46.25, z: 4.14, anchorY: 6.063, lumens: 480 }
   };
   // Wing downlights, 1 Nov 2026: bench-block centres (X), the two rows (|Z|), output and optic.
   // Wing roof of 1 Nov 2026 (second round): the heads hang from the 0.22 m purlins with soffits at 1.635 m either side of the wing
@@ -221,13 +224,14 @@
     for (const s of [-1, 1]) outside(`Sanctuary frame wash · ${side(s)}`, 'projector36', s * 0.6, beamY, [sanctuary.frameX - 0.2, 9.8, s * 1.8], { beam: 50, lumens: 3500, shadow: false });
     // Inside the chamber the heads sit on the lacquered side walls directly
     // behind the front frame, hidden from the nave by the axis-10 columns. They and
-    // the vault uplights take the chamber's own lacquer (owner, 19 October 2026: all
-    // the sanctuary lights), which stays red whatever the structural timber tone.
+    // the vault uplights took the chamber's own lacquer (owner, 19 October 2026: all
+    // the sanctuary lights). Since 3 November 2026 the face is the gilded cove and the cornice is
+    // gilded, so they take the gilding of the vault boarding (owner).
     // Since 25 Oct 2026 the chamber is open below its lintel (+7.0 m, sanctuary.js): heads below it
     // move up onto the lintel face, stepped back along it (dx) so they do not touch.
     const inside = (name, type, y, s, target, o, dx = 0) => {
       const p = [chamber.lightX + dx, Math.max(y, CHAMBER_LINTEL + 0.25), s * chamber.face], a = aim(p, target);
-      add({ type, name, circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: -s * 90, shadow: false, params: { finish: 'chamber' }, ...o });
+      add({ type, name, circuit: 'L3', mount: 'wall', pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: -s * 90, shadow: false, params: { finish: 'gilt' }, ...o });
     };
     for (const s of [-1, 1]) {
       inside(`Crucifix accent · ${side(s)}`, 'spot15', 7.6, s, crucifix, { beam: 24, lumens: 700 });
@@ -239,7 +243,7 @@
       inside(`Reredos base wash · ${side(s)}`, 'projector36', 5.4, s, [46.9, 2.3, -s * 2.3], { lumens: 1300 }, 0.45);
       // Gilded vault: a flood on the springing cornice, aimed up and back.
       const u = [chamber.lightX + 0.6, 8.42, s * (chamber.face - 0.3)], ua = aim(u, [47.6, 10.4, -s * 0.6]);
-      add({ type: 'uplight', name: `Sanctuary vault uplight · ${side(s)}`, circuit: 'L3', mount: 'floor', pos: u, ...ua, mountYaw: ua.yaw, lumens: 2200, params: { finish: 'chamber' } });
+      add({ type: 'uplight', name: `Sanctuary vault uplight · ${side(s)}`, circuit: 'L3', mount: 'floor', pos: u, ...ua, mountYaw: ua.yaw, lumens: 2200, params: { finish: 'gilt' } });
     }
     // From the lintel the tabernacle accent needs 900 lm (300 from +4.9 m) to stay brighter than the mensa.
     inside('Tabernacle accent', 'spot15', 4.9, -1, [47.3, 2.05, 0], { beam: 10, lumens: 900 }, 0.9);
@@ -258,7 +262,7 @@
     for (const [k, base] of Object.entries(statues)) {
       const s = Math.sign(base[2]);
       const underVault = (name, type, v, target, o) => {
-        // Body plate 0.06 m under the rib; the head hangs 0.14 m below the plate.
+        // Body plate 0.16 m under the rib; the head hangs 0.14 m below the plate.
         const p = [v.x, v.anchorY - SIDE_VAULT_DROP, s * v.z], a = aim([p[0], p[1] - 0.14, p[2]], target);
         add({ type, name, circuit: 'L3', mount: 'pendant', pos: p, anchorY: v.anchorY, yaw: a.yaw, tilt: a.tilt, mountYaw: 0, shadow: false, params: { finish: 'chamber' }, ...o });
       };
@@ -706,6 +710,40 @@
       return {...it, name:raw.name, pos:[...raw.pos], yaw:raw.yaw, tilt:raw.tilt, mountYaw:raw.mountYaw, lumens:raw.lumens, beam:raw.beam, note:it.note ?? raw.note};
     });
   }
+
+  // Owner, 3 Nov 2026, gilded cove and level side vaults (sanctuary.js). (1) The chamber heads and vault
+  // uplights stand on the gilded cove and the gilded springing cornice, so they take the gilding instead of
+  // the chamber lacquer: a saved head still in the chamber lacquer is gilded once; one the user refinished
+  // keeps its finish. (2) The side vaults run level, so their inner rib is lower at the front: a shrine light
+  // still at its 1 November place, aim and output drops onto it, re-aimed and dimmed as in the design; ID,
+  // switching, dimmer and finish are kept. A moved, re-aimed, retuned or deleted head stays as left.
+  const goldCoveRevision = '2026-11-03-gold-cove-2';
+  const goldCoveNames = name => /^(Crucifix accent · [BH]|Reredos wash · [BH]|Reredos base wash · [BH]|Tabernacle accent|Sanctuary vault uplight · [BH])$/.test(name);
+  // BEGIN goldCove table · shrine lights before the move, from docs/electrical-grid/equipment-layout.json at 9a2e2e4.
+  const goldCoveBefore = {
+    "L115": {"type":"spot15","name":"Statue accent · B","pos":[44.68,6.424,-4.14],"anchorY":6.484,"yaw":-18.144530993963553,"tilt":-26.569451090024266,"lumens":105},
+    "L116": {"type":"projector36","name":"Shrine wash · B","pos":[45.25,6.356000000000001,-4.14],"anchorY":6.416,"yaw":-21.918220291919713,"tilt":-28.95737340516594,"lumens":1140},
+    "L117": {"type":"spot15","name":"Statue accent · H","pos":[44.68,6.424,4.14],"anchorY":6.484,"yaw":18.144530993963553,"tilt":-26.569451090024266,"lumens":105},
+    "L118": {"type":"projector36","name":"Shrine wash · H","pos":[45.25,6.356000000000001,4.14],"anchorY":6.416,"yaw":21.918220291919713,"tilt":-28.95737340516594,"lumens":1140},
+  };
+  // END goldCove table
+  function upgradeGoldCove(items, design) {
+    const next = new Map(design.map(it => [it.id, it]));
+    return items.map(it => {
+      if (goldCoveNames(it.name) && it.params?.finish === 'chamber') return { ...it, params: { ...it.params, finish: 'gilt' } };
+      const old = goldCoveBefore[it.id], raw = next.get(it.id);
+      if (!old || !raw || it.type !== old.type || it.name !== old.name || it.mount !== 'pendant') return it;
+      // Also recognise the earlier, uncommitted level-vault preview if it was saved in a browser.
+      const sign = Math.sign(old.pos[2]), wash = old.type === 'projector36';
+      const interimPos = [old.pos[0], 6.003, old.pos[2]];
+      const interimAim = aim([interimPos[0], interimPos[1] - .14, interimPos[2]], [wash ? 48.63 : 48.83, wash ? 4.2 : 4.1, sign * 5.5]);
+      const candidates = [old, { pos: interimPos, anchorY: 6.063, ...interimAim, lumens: wash ? 970 : 90 }];
+      const matches = v => Array.isArray(it.pos) && it.pos.length === 3 && it.pos.every((n, i) => Number.isFinite(n) && Math.abs(n - v.pos[i]) <= .005) && Number.isFinite(it.anchorY) && Math.abs(it.anchorY - v.anchorY) <= .005 && [it.yaw, it.tilt, it.lumens].every(Number.isFinite) && Math.abs(it.yaw - v.yaw) <= .05 && Math.abs(it.tilt - v.tilt) <= .05 && Math.abs(it.lumens - v.lumens) < .5;
+      if (!candidates.some(matches)) return it;
+      return { ...it, pos: [...raw.pos], anchorY: raw.anchorY, yaw: raw.yaw, tilt: raw.tilt, lumens: raw.lumens };
+    });
+  }
+
 
   // Owner, 3 Nov 2026: all festival string lights are removed for now — the L7 bulb strings (ridge,
   // main and porch eaves, rear gables, tower corners) and the hidden red lantern strings in the porch
@@ -1208,7 +1246,7 @@
   const lacqueredNames = name => /^(Altar key light · [BH]|Ambo key light|Sanctuary step fill · [BH]|Presider chair light|Sanctuary frame wash · [BH]|Statue accent · [BH]|Shrine wash · [BH]|Crucifix accent · [BH]|Reredos wash · [BH]|Reredos base wash · [BH]|Tabernacle accent|Sanctuary vault uplight · [BH])$/.test(name);
   const naveChandelier = name => /^Chandelier · bay [468]–[579]$/.test(name);
   function upgradeFinishChandeliers(items, design) {
-    const next = new Map(design.filter(it => (lacqueredNames(it.name) && ['timber', 'chamber'].includes(it.params?.finish)) || (naveChandelier(it.name) && it.type === 'chandelier8')).map(it => [it.name, it]));
+    const next = new Map(design.filter(it => (lacqueredNames(it.name) && ['timber', 'chamber', 'gilt'].includes(it.params?.finish)) || (naveChandelier(it.name) && it.type === 'chandelier8')).map(it => [it.name, it]));
     const turn = (a, b) => Math.abs(((a - b) % 360 + 540) % 360 - 180);
     const at = (it, pos) => Array.isArray(it.pos) && it.pos.every((v, i) => Math.abs(v - pos[i]) <= 0.005);
     return items.map(it => {
@@ -1475,5 +1513,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { festivalStringsRevision, upgradeFestivalStrings, festivalTerraceRevision, upgradeFestivalTerrace, rearSideLightsRevision, upgradeRearSideLights, entranceInteriorRevision, upgradeEntranceInterior, centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { goldCoveRevision, goldCoveNames, goldCoveBefore, upgradeGoldCove, festivalStringsRevision, upgradeFestivalStrings, festivalTerraceRevision, upgradeFestivalTerrace, rearSideLightsRevision, upgradeRearSideLights, entranceInteriorRevision, upgradeEntranceInterior, centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

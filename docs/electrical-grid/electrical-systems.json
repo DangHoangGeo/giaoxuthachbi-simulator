@@ -10068,39 +10068,39 @@
       ],
       "trunkId": "trunk:LC1:L3:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 23.653000000000002,
+      "upstreamLength": 21.303,
       "homeRun": false,
       "points": [
         [
-          44.68,
+          47.03,
           5.916,
           -7.36
         ],
         [
-          44.68,
+          47.03,
           7.04,
           -7.36
         ],
         [
-          44.68,
+          47.03,
           9.377125000000001,
           -4.139999999999999
         ],
         [
-          44.68,
-          6.484,
+          47.03,
+          6.063,
           -4.14
         ],
         [
-          44.68,
-          6.424,
+          47.03,
+          5.903,
           -4.14
         ]
       ],
       "method": "roof-pendant",
       "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 8.055887780768039,
+      "length": 8.57688778076804,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -10120,39 +10120,39 @@
       ],
       "trunkId": "trunk:LC1:L3:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 23.083000000000002,
+      "upstreamLength": 22.083000000000002,
       "homeRun": false,
       "points": [
         [
-          45.25,
+          46.25,
           5.916,
           -7.36
         ],
         [
-          45.25,
+          46.25,
           7.04,
           -7.36
         ],
         [
-          45.25,
+          46.25,
           9.377125000000001,
           -4.139999999999999
         ],
         [
-          45.25,
-          6.416,
+          46.25,
+          6.063,
           -4.14
         ],
         [
-          45.25,
-          6.356000000000001,
+          46.25,
+          5.903,
           -4.14
         ]
       ],
       "method": "roof-pendant",
       "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 8.123887780768037,
+      "length": 8.57688778076804,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -11286,39 +11286,39 @@
       ],
       "trunkId": "trunk:LC1:L3:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 30.253,
+      "upstreamLength": 27.903,
       "homeRun": false,
       "points": [
         [
-          44.68,
+          47.03,
           5.916,
           7.36
         ],
         [
-          44.68,
+          47.03,
           7.04,
           7.36
         ],
         [
-          44.68,
+          47.03,
           9.377125000000001,
           4.139999999999999
         ],
         [
-          44.68,
-          6.484,
+          47.03,
+          6.063,
           4.14
         ],
         [
-          44.68,
-          6.424,
+          47.03,
+          5.903,
           4.14
         ]
       ],
       "method": "roof-pendant",
       "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 8.055887780768039,
+      "length": 8.57688778076804,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -11338,39 +11338,39 @@
       ],
       "trunkId": "trunk:LC1:L3:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 29.683,
+      "upstreamLength": 28.683,
       "homeRun": false,
       "points": [
         [
-          45.25,
+          46.25,
           5.916,
           7.36
         ],
         [
-          45.25,
+          46.25,
           7.04,
           7.36
         ],
         [
-          45.25,
+          46.25,
           9.377125000000001,
           4.139999999999999
         ],
         [
-          45.25,
-          6.416,
+          46.25,
+          6.063,
           4.14
         ],
         [
-          45.25,
-          6.356000000000001,
+          46.25,
+          5.903,
           4.14
         ]
       ],
       "method": "roof-pendant",
       "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 8.123887780768037,
+      "length": 8.57688778076804,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -38117,12 +38117,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 0.924,
-      "specs": "105 lm · 3000 K · 12° beam",
+      "wattsEstimate": 0.396,
+      "specs": "45 lm · 3000 K · 12° beam",
       "hiddenAlternative": false,
       "position": [
-        44.68,
-        6.424,
+        47.03,
+        5.903,
         -4.14
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -38142,12 +38142,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 9.5,
-      "specs": "1140 lm · 3000 K · 50° beam",
+      "wattsEstimate": 4,
+      "specs": "480 lm · 3000 K · 50° beam",
       "hiddenAlternative": false,
       "position": [
-        45.25,
-        6.356000000000001,
+        46.25,
+        5.903,
         -4.14
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -38167,12 +38167,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 0.924,
-      "specs": "105 lm · 3000 K · 12° beam",
+      "wattsEstimate": 0.396,
+      "specs": "45 lm · 3000 K · 12° beam",
       "hiddenAlternative": false,
       "position": [
-        44.68,
-        6.424,
+        47.03,
+        5.903,
         4.14
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -38192,12 +38192,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 9.5,
-      "specs": "1140 lm · 3000 K · 50° beam",
+      "wattsEstimate": 4,
+      "specs": "480 lm · 3000 K · 50° beam",
       "hiddenAlternative": false,
       "position": [
-        45.25,
-        6.356000000000001,
+        46.25,
+        5.903,
         4.14
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -45588,8 +45588,8 @@
         0.1971188479065895,
         0.1899999976158142
       ],
-      "specs": "105 lm · 3000 K · 12° beam",
-      "wattsEachEstimate": 0.924,
+      "specs": "45 lm · 3000 K · 12° beam",
+      "wattsEachEstimate": 0.396,
       "itemIds": [
         "L115",
         "L117"
@@ -45606,8 +45606,8 @@
         0.2217390456199646,
         0.23999999463558197
       ],
-      "specs": "1140 lm · 3000 K · 50° beam",
-      "wattsEachEstimate": 9.5,
+      "specs": "480 lm · 3000 K · 50° beam",
+      "wattsEachEstimate": 4,
       "itemIds": [
         "L116",
         "L118"

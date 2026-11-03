@@ -31,6 +31,8 @@
     // The sanctuary chamber's own lacquer (side walls, cornices): it stays red whatever the
     // structural timber tone, so fittings on the chamber walls match it in every setting.
     chamberLacquer: { color: '#853125', roughness: 0.26, share: 'sanctuary' },
+    // The gilded vault boarding of the sanctuary (owner, 3 November 2026: the chamber heads on the gilded cove).
+    chamberGilt: { color: '#c9a045', metalness: 0.35, roughness: 0.42, share: 'sanctuaryGilt' },
     wallPlaster: { color: '#faf3e1', roughness: 0.83, share: 'wall' },
     corniceStone: { color: '#efe2c8', roughness: 0.67, share: 'trim' },
     wood: { color: '#8a6040', roughness: 0.5 },
@@ -185,9 +187,10 @@
   // A projector hung from the timber beams may take the beam lacquer instead of its metal
   // finish (19 October 2026: no black heads beside the red reading lights on the axis-9 tie),
   // and one on the sanctuary chamber walls the chamber lacquer (owner, 19 October 2026: all
-  // the sanctuary lights). Finish only: the body, optic and emitter are the same.
-  const projectorFinish = (params, metal) => ({ timber: 'beamTimber', chamber: 'chamberLacquer' })[params?.finish] ?? metal;
-  const finishParam = (metal, label) => ({ finish: { label: 'Finish', options: { [metal]: label, timber: 'Beam timber (follows the timber tone)', chamber: 'Sanctuary chamber lacquer' }, value: metal } });
+  // the sanctuary lights), and one on the gilded cove of the chamber its gilding (owner, 3 November
+  // 2026). Finish only: the body, optic and emitter are the same.
+  const projectorFinish = (params, metal) => ({ timber: 'beamTimber', chamber: 'chamberLacquer', gilt: 'chamberGilt' })[params?.finish] ?? metal;
+  const finishParam = (metal, label) => ({ finish: { label: 'Finish', options: { [metal]: label, timber: 'Beam timber (follows the timber tone)', chamber: 'Sanctuary chamber lacquer', gilt: 'Sanctuary gilding (vault boarding)' }, value: metal } });
   function buildProjector(k, r = 0.075, len = 0.24, finish = 'black', yoke = true, mountUp = false) {
     const sign = mountUp ? 1 : -1;
     k.box(0.14, 0.022, 0.14, finish, { p: [0, sign * 0.011, 0] });

@@ -1,5 +1,7 @@
 # Equipment and electrical-line Excel registers
 
+**3 November 2026, sanctuary vault study:** L115–L118 retain their IDs and L3 circuit but move back along the inner vault ribs, with revised aim and output. The matched default electrical exports, six category registers and summary reflect the current model; retained engineering inputs remain keyed by ID. The scheme, cable routing, support and concealment remain concepts pending specialist review. See the [sanctuary record](../sanctuary-model.md#sanctuary-ornament-study--3-november-2026).
+
 **2 November 2026:** L59–L62 retain their IDs and L2 circuit but move to paired axis-3 side-wall locations. Their routes and all six category registers were refreshed from the model while preserving entered fields. The resulting snapshot has 431 equipment/enclosures, 449 routes and 3,258 route points. See the [summary](summary-report.md) and [lighting review](../../review/rear-side-lights-2026-11-02/README.md); product, wiring and support remain unapproved.
 
 **Entrance follow-up, 1 November 2026:** D299/D305 are retired, never reassigned; E1 sign L155 and its lead are updated. The refreshed register retains keyed inputs and records 431 equipment/enclosures, 449 routes and 3,262 route vertices. Existing entrance luminaires and speakers keep IDs and circuits; the supported sign clip and real emergency supply remain ENGINEERING HOLD.
