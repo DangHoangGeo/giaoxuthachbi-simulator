@@ -1,26 +1,20 @@
 # Equipment quantities, usage and quality report
 
-> **Front terrace festival string removed, 2 November 2026:** L219 (`Festival lights · front terrace between the towers`, circuit L7, 14.8 m bulb string at +8.5 m) is retired at the owner's request because it crossed the traced central-front dentil course. Its ID is never reassigned. Saved layouts lose it once only if it is the untouched default (`festivalTerraceRevision`). Lighting has 289 items and 314 routes; L7's other festival strands and floods are unchanged. See the [facade record](../facade-model.md).
-
-> **Rear side-wall lighting, 2 November 2026:** L59–L62 remain on L2 and move from the entrance wall to paired side-wall positions near axis 3. The revised model uses 6,000 lm / 36° for the centre heads; the 50 W category allowance remains provisional. Main exit sign L155 remains unchanged. See the [lighting review](../../review/rear-side-lights-2026-11-02/README.md); prior position narratives below are historical.
-
-> **Entrance follow-up, 1 November 2026:** Entrance palms D299/D305 are retired, main E1 sign L155 moves to the nave face, and the rear pew row is removed in both layouts. See the [facade record](../facade-model.md) and [interior plan](../interior-systems-plan.md); the physical sign, clip and routes are unapproved. The fourteen column up/down lights remain on LD at 112 W connected; L3–L30 retain their rebalanced outputs. Earlier wing and lighting narratives below are historical.
-
-Generated 2 November 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
+Generated 3 November 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
 
 ## Total quantities
 
 | Usage category | Equipment/enclosures | Shown | Hidden alternatives | Connected components | Shown items commanded on | Routes | Route points |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Lighting | 289 | 289 | 0 | 289 | 264 | 314 | 2337 |
+| Lighting | 266 | 266 | 0 | 266 | 264 | 291 | 2157 |
 | Sound | 44 | 44 | 0 | 44 | 34 | 54 | 330 |
 | Fans and ventilation | 45 | 45 | 0 | 45 | 27 | 58 | 410 |
 | Exit signs | 5 | 5 | 0 | 5 | 5 | 7 | 67 |
-| Decoration and furnishings | 35 | 20 | 15 | 0 | 20 | 0 | 0 |
+| Decoration and furnishings | 27 | 20 | 7 | 0 | 20 | 0 | 0 |
 | Distribution and controls | 12 | 12 | 0 | 6 | 4 | 15 | 109 |
-| **Total** | 430 | 415 | 15 | 389 | 354 | 448 | 3253 |
+| **Total** | 399 | 392 | 7 | 366 | 354 | 425 | 3073 |
 
-Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **40 equipment, 119 routes**.
+Shown includes non-electrical furnishings and the five enclosures. Connected components excludes hidden alternatives and non-electrical objects. Commanded on is a saved switch state, not measured operation; it excludes enclosures but includes non-electrical objects with a model switch. Retired records retained: **71 equipment, 142 routes**.
 
 ## Usage and energy estimate
 
@@ -42,15 +36,15 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,600.839 | 3,600.839 | 0.000 | 0.000 |
+| Lighting | 3,376.602 | 3,376.602 | 0.000 | 0.000 |
 | Sound | 765.922 | 0.000 | 2,362.560 | 566.077 |
 | Fans and ventilation | 978.661 | 978.661 | 0.000 | 0.000 |
 | Exit signs | 166.209 | 166.209 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 263.923 | 263.923 | 0.000 | 0.000 |
-| **Total by length basis** | **5,775.554** | **5,009.632** | **2,362.560** | **566.077** |
+| **Total by length basis** | **5,551.318** | **4,785.396** | **2,362.560** | **566.077** |
 
-Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/438 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
+Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/415 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
 ## Data quality and engineering completeness
 
@@ -58,13 +52,13 @@ The build verified unique equipment/route IDs, unique ordered vertices, complete
 
 | Usage category | Specification + source fields filled / equipment | Physical control mapping filled / connected components | Cable designation + approval reference filled / routes |
 | --- | ---: | ---: | ---: |
-| Lighting | 0/289 | 0/289 | 0/314 |
+| Lighting | 0/266 | 0/266 | 0/291 |
 | Sound | 0/44 | 0/44 | 0/54 |
 | Fans and ventilation | 0/45 | 0/45 | 0/58 |
 | Exit signs | 0/5 | 0/5 | 0/7 |
-| Decoration and furnishings | 0/35 | 0/0 | 0/0 |
+| Decoration and furnishings | 0/27 | 0/0 | 0/0 |
 | Distribution and controls | 0/12 | 0/6 | 0/15 |
-| **Total** | **0/430** | **0/389** | **0/448** |
+| **Total** | **0/399** | **0/366** | **0/425** |
 
 These counts measure field completeness only; filled fields still require source and engineering review. A 0/0 population is not applicable. Product selection, protection, final cable/containment specifications, actual control channels and commissioning evidence remain pending where fields are blank. No overall quality score is invented.
 
@@ -78,8 +72,8 @@ The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-an
 The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
 
 
-- [Layout snapshot](equipment-layout.json), SHA-256: 79bcc7f1cc573af268f77f6bd492002c5b4a11bd33e64aec78597254c5edae11.
-- [Electrical snapshot](electrical-systems.json), SHA-256: 438a26e453c98bfe4c256e1cd9c5fee8d7a477357239b59d8628681766704665.
+- [Layout snapshot](equipment-layout.json), SHA-256: 3b68a583bf7fff027e76b5bb75bec42797589436f546f85bfc67bf8daba1afd5.
+- [Electrical snapshot](electrical-systems.json), SHA-256: 0c9d92c793fd8e1a83e63533f893bd68677c6ee6d6b39944e2262bb80a686c18.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 
