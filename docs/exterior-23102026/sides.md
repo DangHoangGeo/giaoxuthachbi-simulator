@@ -95,3 +95,10 @@ Tiếp theo phần cột, các họa tiết E02 được đặt lên những m�
 ### Chóp trên lan can hiên · 3/11/2026 (bổ sung)
 
 Chủ đầu tư nhận xét chóp trên lan can trông nhỏ và rời khỏi cột lớn. Bản vẽ E02 không vẽ bệ vuông trên gờ mái: chóp đứng thẳng trên gờ (+6,324), cao đúng tới đỉnh vẽ +8,026 (D9B1A6), nên được phóng tỷ lệ 1,013 (trước 0,57 trên bệ 0,5 m). Trán tam giác của chóp nằm trên gờ, mũ các cột nhỏ ngang mặt trên tay vịn. Bệ "Porch parapet pedestal" và mũ bệ được bỏ; dải chân lan can đi vào khối góc của chóp (±0,289 × tỷ lệ), tay vịn trên đi vào các cột nhỏ (±0,198 × tỷ lệ). Dây đèn lễ hội trên mái hiên (+6,39–6,41) vẫn đi qua chân chóp như trước đi qua bệ; vị trí đèn không đổi.
+
+### Cột nhô ra và diềm gãy qua cột · 3/11/2026 (bổ sung)
+
+Chủ đầu tư nhận xét cột hiên và diềm vẫn "không liên tục". Nguyên nhân: mặt cột chỉ nhô 0,03 m khỏi mặt tường vòm, trong khi diềm giữa hai cột nhô tới 0,38 m, nên đầu cắt của diềm lộ ra cạnh cột và cột trông bị lùi vào. Đã sửa:
+- Mặt ngoài tường vòm giữa các cột lùi về 0,06 m tính từ trục (trước 0,18), nên mặt cột (0,21) nhô 0,15 m. Chiều sâu cột, mặt gắn đèn rọi vòm (0,24) và mặt phía trong hiên không đổi.
+- Diềm giữa các cột đặt trên mặt tường mới. Phía trên mỗi cột, các gờ và mũ diềm gãy nhô thêm 0,15 m theo bề rộng gờ vẽ của trụ EW/E02, nên diềm ôm qua cột. Răng cưa và chữ Vạn dừng ở cạnh cột; đầu cột chạm nằm trong vùng diềm, như E02.
+- Độ sâu là **DERIVED**.

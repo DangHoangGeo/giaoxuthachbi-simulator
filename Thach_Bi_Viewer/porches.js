@@ -23,7 +23,11 @@
     // Owner, 3 Nov 2026: the arcade columns take the E02/EW pier at its drawn width (shaft ±0.335
     // along the run, pedestal ±0.559), wrapped round the column; depth ±0.18 and the 0.06 face
     // (0.03 strip + 0.03 fluted field, where the arch washes mount) are unchanged.
-    column: { half: 0.18, width: 0.335, pilaster: 0.06, strip: 0.03 },
+    // Owner, 3 Nov 2026 (second review): the column must project. The spandrel's outer face now stands
+    // 0.06 from the axis (was 0.18), so the 0.21 column face projects 0.15 in front of it, and the
+    // entablature runs from that face and breaks forward over each column; the column depth, its 0.24
+    // light-mounting face and the inner (porch) face are unchanged.
+    column: { half: 0.18, width: 0.335, pilaster: 0.06, strip: 0.03, spandrel: 0.06 },
     // Gothic two-centred pointed arch (owner, 25 Oct 2026: the porch must read as Gothic with
     // pointed arches); a drop arch, centres 0.6 m inside the springing, rise 2.6 m on 4.14 m.
     // Since 3 Nov 2026 the arch springs at +2.7 (was +3.0, rise 2.6) so that its moulding stays under
@@ -165,7 +169,7 @@
     const leaf = ORN.towerSpandrel(window.CHURCH_DETAIL_PROFILE_SIDES.sideLeaf, .01, .003, 3);
 
     for (const s of [-1, 1]) {
-      const zc = s * spec.lineZ, z0 = zc - C.half, z1 = zc + C.half, out = s * (spec.lineZ + C.half);
+      const zc = s * spec.lineZ, z0 = zc - C.half, z1 = zc + C.half, out = s * (spec.lineZ + C.spandrel), zArc = s > 0 ? [z0, out] : [out, z1];
       for (const [from, to] of spec.runs) {
         const keys = Object.keys(A).filter(k => A[k] >= A[from] - 1e-6 && A[k] <= A[to] + 1e-6).sort((a, b) => A[a] - A[b]);
         for (let i = 0; i < keys.length; i++) {
@@ -179,14 +183,14 @@
           const wall = new T.Shape([new T.Vector2(xa, spec.floor), new T.Vector2(xb, spec.floor), new T.Vector2(xb, spec.entablature), new T.Vector2(xa, spec.entablature)]);
           const hole = [new T.Vector2(cx - half, spec.floor), ...pointedPoints(cx, half, AR), new T.Vector2(cx + half, spec.floor)];
           wall.holes.push(new T.Path(T.ShapeUtils.isClockWise(hole) ? hole : hole.reverse()));
-          slabXY('Porch arcade column and arch spandrel · cast concrete, plastered', W, wall, [z0, z1]);
+          slabXY('Porch arcade column and arch spandrel · cast concrete, plastered', W, wall, zArc);
           // Arch moulding on both faces and a keystone bloom at the crown.
-          for (const [a, b] of [[z1, z1 + .05], [z0 - .05, z0]]) slabXY('Porch arch moulding', S, pointedBand(cx, half, AR, .12), [a, b], DRAWN, 12);
+          for (const [a, b] of s > 0 ? [[out, out + .05], [z0 - .05, z0]] : [[z1, z1 + .05], [out - .05, out]]) slabXY('Porch arch moulding', S, pointedBand(cx, half, AR, .12), [a, b], DRAWN, 12);
           // E02 corner leaves in the spandrel beside each pier (+4.39–5.21, 0.48–1.39 m from the pier
           // axis), outer face only. E02 draws them on its wall; on the open arcade they clear the arch
           // moulding by at least 0.15 m. The right-hand leaf is the drawn mirror.
           for (const [px, e] of [[xb, -1], [xa, 1]])
-            add('Porch spandrel carving · E02 corner leaf', S, leaf, place(SC(-e * s, 1, 1), s < 0 ? RY(Math.PI) : new T.Matrix4(), TR(px, 0, s * (spec.lineZ + C.half + .002))), PIER_CARVED);
+            add('Porch spandrel carving · E02 corner leaf', S, leaf, place(SC(-e * s, 1, 1), s < 0 ? RY(Math.PI) : new T.Matrix4(), TR(px, 0, s * (spec.lineZ + C.spandrel + .002))), PIER_CARVED);
           stats.arches++; stats.leaves += 2;
           // Guard between the columns, except where the outside stairs land.
           if (spec.stairBays.some(c => Math.abs(c - cx) < .6)) { stats.openBays++; continue; }
@@ -201,9 +205,19 @@
         // back over the arcade to the old cornice depth. As drawn, it breaks at each pier: it runs between
         // the shaft faces and the pier's own bands carry the cornice over the column.
         for (let i = 0; i < keys.length - 1; i++) {
-          const xa = A[keys[i]] + C.width, xb = A[keys[i + 1]] - C.width, face = spec.lineZ + C.half, m = s > 0 ? TR(0, 0, face) : place(RY(Math.PI), TR(0, 0, -face));
-          for (const q of ORN.drawnEntablature(s > 0 ? xa : -xb, s > 0 ? xb : -xa, -(2 * C.half + .2)))
+          const xa = A[keys[i]] + C.width, xb = A[keys[i + 1]] - C.width, face = spec.lineZ + C.spandrel, m = s > 0 ? TR(0, 0, face) : place(RY(Math.PI), TR(0, 0, -face));
+          for (const q of ORN.drawnEntablature(s > 0 ? xa : -xb, s > 0 ? xb : -xa, -(C.spandrel + C.half + .2)))
             add(`Porch entablature · E02 ${q.name}`, q.kind === 'W' ? W : S, q.geometry, place(q.matrix, m), q.kind === 'C' ? PIER_CARVED : PIER);
+        }
+        // Over each column the fillets and cornice break forward by the column's projection (0.15), at
+        // the drawn pier band widths (EW/E02), so the entablature wraps the column instead of stopping
+        // against it; dentils and frieze stop at the column sides and its capital fills the frieze zone.
+        for (const k of keys) {
+          const x = A[k], d = C.half + C.strip - C.spandrel;
+          for (const [y0, y1, h, p] of [[5.622, 5.662, .36, .18], [5.662, 5.722, .39, .21], [5.722, 5.762, .36, .18], [6.012, 6.06, .385, .18], [6.06, 6.18, .435, .28], [6.18, 6.228, .485, .33], [6.228, 6.3239, .537, .38]]) {
+            const f0 = spec.lineZ + C.spandrel, f1 = f0 + p + d;
+            block('Porch entablature · E02 break over the column', S, [x - h, x + h], [y0, y1], s > 0 ? [f0, f1] : [-f1, -f0], PIER);
+          }
         }
         // Cast slab under the tiles, plastered underneath, and an RC beam on every inner axis.
         const xs = A[from] + (from === '10' ? spec.wingWall / 2 : 0), xe = A[to] - (to === '9' ? spec.wingWall / 2 : 0);
