@@ -455,15 +455,22 @@ Use **Use reviewed lights and fans · B/H** only to adopt that side's held fixtu
 
 The current default has two small brass chandeliers, two above-window wall fans, one entrance-facing wall speaker and one Peter/Paul picture pair perwing. **Simulator→Wiring** compares the actual saved layout separately for lights/fans, sound and saints. Adopt only the desired scope with **Use reviewed lights and fans**, **Use reviewed speaker** or **Use reviewed saints ·B/H**. These local actions write full backups, preserve unrelated records and support Undo/Redo. Deleted/moved/retuned saved items are not silently reset; a first-issue artwork marker prevents later deletions being recreated. The source remains an engineering hold: some seats are too dark, speech/feedback/air/noise and physical concealment/product/fixings remain unresolved. See [the coordinated review](../engineering/wing-review.md). Peter/Paul textures are local native generated concepts; modeled frame dimensions/height are review proxies.
 
-## Cinematic tour · 9 October 2026
+## Cinematic tour · 9 October 2026, rebuilt 3 November 2026
 
-**Discover → ▶ Cinematic tour** plays a film of about five minutes. It replaces the earlier guided walk, which only moved in a straight line from the courtyard to the sanctuary.
+**Discover → ▶ Cinematic tour** plays a film of 8 min 28 s. It replaces the earlier guided walk, which only moved in a straight line from the courtyard to the sanctuary.
 
-| Part | Scenes | Light and roof |
-| --- | --- | --- |
-| I · Around the church | Opening aerial view, tower front, around the bell towers, along side B, the altar end, back over the roof | Day, roof on |
-| II · Inside | Through the central door, the nave, the timber roof, side aisle and windows, the two wings, the sanctuary, around the altar, looking back to the entrance | Day, roof on |
-| III · Evening | The lit nave, plan view from above with the roof hidden, a circle round the open church, a flight over the timber frames, the lit tower front | Evening; roof hidden for the three views from above |
+**Rebuilt 3 November 2026** at the owner's request: the five-minute film "flys too fast"; they asked to walk around the church and look closely at each part (tower, facade, veranda, nave, sanctuary), then go round the church after dark, "not only using flycam but also like a walking person". The film now moves at two paces:
+
+- **Walking** (marked `walk` in the shot list, 10 of 23 scenes): the eye is 1.60 m above the modelled floor (courtyard −2.080, forecourt −0.480, veranda −0.320, nave 0, side sanctuary +0.160, platform +0.800 m, from `church.data.levels`), at 0.5–0.9 m/s on average and below 1.4 m/s, with a 0.72 m step: the eye rises up to 25 mm in mid-stride and sways 15 mm to each side over a pair of steps, both fading out as the walker stops. The walker glances at windows, columns and pews while keeping an even pace.
+- **Camera crane and flight** for what a walker cannot reach: up the tower stage by stage at about 0.2–0.4 m/s, round a belfry, down the front, over the roof and round the outside at 1.3–2.7 m/s on average (3.9 m/s at most, on the wide night orbit about 40 m out). The earlier film reached 5–6 m/s.
+
+| Part | Scenes | Pace | Light and roof |
+| --- | --- | --- | --- |
+| I · Around the church (48 bars) | Opening aerial view; up the tower on side H stage by stage; round its belfry and dome; down the central front; walking up the forecourt steps; walking the side-B veranda; the red roof; the altar end; side H and the wider bay 9–10 | Flight, crane and walks | Day, roof on |
+| II · Inside (41 bars) | Walking in through the central door and up the nave; standing to look up, then rising into the carved beams; walking the side aisle; the two wings; walking up to the sanctuary; close at the altar, crucifix and side shrines; looking back | Mostly walked | Day, roof on |
+| III · Evening (38 bars) | Walking up to the lit front from the courtyard; up the lit tower on side B; walking the side-H veranda; a wide orbit round the lit church; walking up the nave; the closing crane back from the front | Walks and flights | Evening, roof on |
+
+The roof stays on throughout; the earlier plan view with the roof lifted away is no longer in the film (use **View settings → Roof** or the *Open roof overview* preset).
 
 Controls: **Space** or a click pauses and continues, **←** and **→** change scene, **M** switches the organ music, **F** fills the screen, **Esc** or **✕ Stop** ends the film. The buttons at the bottom appear when the pointer moves.
 
@@ -472,14 +479,14 @@ Controls: **Space** or a click pauses and continues, **←** and **→** change 
 - The film shows the layout that is open in the viewer, including any equipment you have moved or hidden. It changes nothing in the design and saves nothing.
 - While it plays, the film sets day or evening light, shows or hides the roof, opens the doors and changes the lens angle. Doors and lens are put back when it ends. A film that runs to its end also restores the light and roof you had and returns to the overview. If you stop it part-way, the view stays where it is so that you can continue in Explore; a message names any evening light or hidden roof that is still on (change them in View settings).
 - **The organ music is generated in the browser** on synthesised pipe tones with artificial reverberation, in three parts:
-  - *Homeland* (outside, 26 bars): an original melody on the five notes C D E G A, on a flute stop with tremulant over warm strings. It quotes no existing song.
-  - *Ave Maria* (41 bars, complete): Charles Gounod's melody of 1853 over J. S. Bach's Prelude in C, BWV 846. Both are in the public domain. The notes were transcribed from Mutopia Project edition no. 2167 (after Heugel, 1856) and checked against that edition's MIDI file. The prelude begins as the camera reaches the church door; the hush at bar 29 is the turn to evening; the "tutta forza" of bar 33 is the moment the roof is lifted away; the final tonic arrives as the circle round the open church begins.
-  - *Homeland* again on full organ over the timber frames, ending quietly under the closing card.
+  - *Homeland* (outside, 48 bars): an original melody on the five notes C D E G A, on a flute stop with tremulant over warm strings. It quotes no existing song.
+  - *Ave Maria* (41 bars, complete, the whole of the inside by day): Charles Gounod's melody of 1853 over J. S. Bach's Prelude in C, BWV 846. Both are in the public domain. The notes were transcribed from Mutopia Project edition no. 2167 (after Heugel, 1856) and checked against that edition's MIDI file. The prelude begins as the walker comes through the church door; the hush at bar 29 falls on the walk up to the altar; the "tutta forza" of bar 33 is the close view of the altar and crucifix.
+  - *Homeland* again, quietly, for the evening walks (28 bars), then on full organ for the closing view (10 bars), ending quietly under the closing card.
 
   It is presentation music. It does not pass through the modelled loudspeakers or the room model, and it is not a prediction of how an organ or the sound system will sound in the church. For the room-based listening preview use **Simulator → Sound → Listen in the church**.
 - Evening scenes show the proposed lighting as the viewer draws it. Screen brightness is not a lux measurement.
 - Some browsers hold sound back until the page is clicked. The film then shows "Click once to switch the organ music on".
-- The route is fixed: centre aisle below 4.3 m, 1.5–2 m beside the centreline at 6.4–7.1 m under the roof, and the side-B aisle at 2–2.4 m. After placing equipment in those zones, run `CHURCH_CINEMA.audit()` in the browser console: it reports the nearest surface to the camera in each scene. `node scripts/verify_cinematic.cjs` checks the shot list, camera path, scene changes and score without a browser. Record: `review/cinematic-tour-2026-10-09/`.
+- The route is fixed: the centre aisle and side-B aisle at eye height, the veranda centrelines (Z ±8.9 m), 1.5–2 m beside the centreline at 4–7.1 m under the roof, and the sanctuary platform to X 41.6 m. After placing equipment in those zones, run `CHURCH_CINEMA.audit()` in the browser console: it reports the nearest surface to the camera in each scene. On 3 November 2026 (recommended design, 127.0.0.1 scratch origin, 0.5 s steps, 1 m reach) the nearest surfaces were a tree's leaves at 0.32 m at the start of the roof flight, an open side-door leaf at 0.41–0.50 m on both veranda walks (a walker passing an open door), the Paschal candle at 0.54 m beside the altar and column 6/D at 0.73 m in the side aisle; every other scene had more than 1 m. `node scripts/verify_cinematic.cjs` checks the shot list, camera path, walking eye height and pace, scene changes and score without a browser. Record: `review/cinematic-tour-2026-10-09/` (the five-minute version).
 
 ### Short film removed · 11 October 2026
 

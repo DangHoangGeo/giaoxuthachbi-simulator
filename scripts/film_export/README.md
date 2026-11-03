@@ -18,7 +18,7 @@ Nothing leaves the computer: the page sends its pictures to a small receiver on 
 3. Open the browser console, paste the whole of `driver.js`, then run:
 
    ```js
-   exportFilm('full')   // the five-minute cinematic tour; 'lighting', 'air', 'sound' or 'grid' for a technical tour (2 min 40 s, the electrical grid 2 min 56 s)
+   exportFilm('full')   // the cinematic tour (8 min 28 s since 3 November 2026); 'lighting', 'air', 'sound' or 'grid' for a technical tour (2 min 40 s, the electrical grid 2 min 56 s)
    ```
 
    The film plays once for the sound, then the picture steps through frame by frame. `window.filmExport` shows progress. The only measured run is the former 2 min 15 s short film (removed on 11 October 2026), which took about 12 minutes on the Mac this was written on; the five-minute film has about 2.3 times as many frames and has not been timed. Leave the page alone while it works. A click during the sound pass spoils the recording, and the driver then stops with a message; a click while the picture is stepping is recovered from (`window.filmExport.recoveries` counts them).
@@ -28,7 +28,7 @@ Nothing leaves the computer: the page sends its pictures to a small receiver on 
    scripts/film_export/build.sh exports/film-export full exports/sharing/thach-bi-cinematic-tour.mp4
    ```
 
-The result is H.264 + AAC at 1920 × 1080, 30 frames a second, which X and Instagram accept. X limits ordinary posts to 2 min 20 s: neither the five-minute film nor a technical tour (2 min 40 s or more) fits, so post them as a link or cut a scene from the file.
+The result is H.264 + AAC at 1920 × 1080, 30 frames a second, which X and Instagram accept. X limits ordinary posts to 2 min 20 s: neither the cinematic tour nor a technical tour (2 min 40 s or more) fits, so post them as a link or cut a scene from the file.
 
 ## What the film shows
 
