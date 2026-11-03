@@ -611,6 +611,9 @@
       bins.get(key).parts.push([geometry, matrix]);
     };
     const W = mat.wall, S = mat.trim, D = mat.darkTrim, CAP = mat.cap || mat.wall;
+    // False-door timber (owner, 3 Nov 2026): the blind arches carry fixed timber facings in the main
+    // doors' wood, with a darker inset for the sunk panels.
+    const WOOD = mat.wood || S, WOOD_INSET = (() => { const m = WOOD.clone(); m.color?.multiplyScalar(.78); m.name = 'False-door inset timber'; return m; })();
     const stats = { piers: 0, blindArches: 0, upperFronts: 0, removedBundleMeshes: remove.length };
 
     // ---- Shared carving (also used by roofline.js) ----
@@ -676,6 +679,42 @@
         return sh;
       };
       const archHole = (cx, half, y0, spring) => { const p = new T.Path(); p.moveTo(cx - half, y0); p.absarc(cx, spring, half, Math.PI, 0, true); p.lineTo(cx + half, y0); p.lineTo(cx - half, y0); return p; };
+      // Owner, 3 Nov 2026: a false door in a blind arch, made to read like the main timber doors (frame,
+      // two leaves with three raised and carved panels each, a timber fan in the arched head) while
+      // the wall stays closed behind it: fixed facing, no opening, no movement. Sizes DERIVED from the
+      // drawn arch; joinery CONCEPT.
+      const falseDoor = (face, cu, half, y0, spring, w, status = 'FALSE DOOR · FIXED TIMBER FACING / CONCEPT') => {
+        const box = (name, m, [u0, u1], [v0, v1], [w0, w1]) => add(name, m, new T.BoxGeometry(u1 - u0, v1 - v0, w1 - w0), at(face, (u0 + u1) / 2, (v0 + v1) / 2, (w0 + w1) / 2), status);
+        const top = spring - .07, fr = .07;
+        box('Tower false door board', WOOD_INSET, [cu - half, cu + half], [y0, spring], [w, w + .03]);
+        for (const e of [-1, 1]) box('Tower false door frame', WOOD, [cu + e * half - (e > 0 ? fr : 0), cu + e * half + (e < 0 ? fr : 0)], [y0, spring], [w, w + .07]);
+        box('Tower false door transom', WOOD, [cu - half, cu + half], [top, spring], [w, w + .07]);
+        box('Tower false door meeting stiles', WOOD, [cu - .035, cu + .035], [y0, top], [w, w + .065]);
+        const lw = half - fr - .035, H = top - y0;
+        for (const e of [-1, 1]) {
+          const lc = cu + e * (.035 + lw / 2);
+          box('Tower false door leaf', WOOD, [lc - lw / 2, lc + lw / 2], [y0, top], [w + .03, w + .05]);
+          for (let row = 0; row < 3; row++) {
+            const y = y0 + H * (.18 + row * .31), pw = lw * .74, ph = H * .255;
+            box('Tower false door sunk panel', WOOD_INSET, [lc - pw / 2, lc + pw / 2], [y - ph / 2, y + ph / 2], [w + .05, w + .055]);
+            for (const sg of [-1, 1]) {
+              box('Tower false door panel frame', WOOD, [lc - pw / 2 - .02, lc + pw / 2 + .02], [y + sg * ph / 2 - .02, y + sg * ph / 2 + .02], [w + .05, w + .072]);
+              box('Tower false door panel frame', WOOD, [lc + sg * pw / 2 - .02, lc + sg * pw / 2 + .02], [y - ph / 2, y + ph / 2], [w + .05, w + .072]);
+            }
+            add('Tower false door rosette', WOOD, new T.TorusGeometry(Math.min(lw * .2, ph * .27), .02, 6, 20), at(face, lc, y, w + .075), status);
+          }
+        }
+        // Arched head: a timber fan with seven ribs and a hub, like the main doors' fanlight in wood.
+        const head = new T.Shape(); head.moveTo(cu - half, spring); head.lineTo(cu + half, spring); head.absarc(cu, spring, half, 0, Math.PI, false);
+        add('Tower false door fan', WOOD_INSET, new T.ExtrudeGeometry(head, { depth: .03, bevelEnabled: false, curveSegments: 24 }), at(face, 0, 0, w), status);
+        for (let i = 0; i < 7; i++) {
+          const a = Math.PI * (i + 1) / 8, len = half - .12;
+          add('Tower false door fan rib', WOOD, new T.BoxGeometry(len, .035, .03), at(face, cu + Math.cos(a) * (.09 + len / 2), spring + Math.sin(a) * (.09 + len / 2), w + .045, K.RZ(a)), status);
+        }
+        add('Tower false door fan hub', WOOD, new T.CylinderGeometry(.09, .09, .04, 20), at(face, cu, spring, w + .05, K.RX(Math.PI / 2)), status);
+        add('Tower false door fan ring', WOOD, new T.TorusGeometry(half - .03, .025, 6, 32, Math.PI), at(face, cu, spring, w + .05), status);
+        stats.falseDoors = (stats.falseDoors || 0) + 1;
+      };
       const rect = (u0, u1, v0, v1) => { const sh = new T.Shape(); sh.moveTo(u0, v0); sh.lineTo(u1, v0); sh.lineTo(u1, v1); sh.lineTo(u0, v1); sh.lineTo(u0, v0); return sh; };
 
       // ---- Stage-1 walls: closed front and outer side, a door in the inner side ----
@@ -977,6 +1016,7 @@
       {
         const sh = new T.Shape(); sh.moveTo(-B.r[0], .3); sh.lineTo(B.r[0], .3); sh.lineTo(B.r[0], B.spring); sh.absarc(0, B.spring, B.r[0], 0, Math.PI, false); sh.lineTo(-B.r[0], .3);
         slab('Tower blind-arch recessed panel', D, 'front', sh, 0, .015, DRAWN, 24);
+        falseDoor('front', 0, B.r[0], .3, B.spring, .015);
         stats.blindArches++;
       }
       // Cartouche in the tympanum between the two arches, and the moulded sill of the big arch.
@@ -996,12 +1036,14 @@
         panel.moveTo(u - r, .3); panel.lineTo(u + r, .3); panel.lineTo(u + r, SB.blindSpring);
         panel.absarc(u, SB.blindSpring, r, 0, Math.PI, false); panel.lineTo(u - r, .3); panel.closePath();
         panel.holes.push(archHole(u, SB.window.half, SB.window.sill, SB.window.spring));
-        slab('Tower side blind recessed panel · E02', D, 'outer', panel, 0, .015, DRAWN, 48);
+        slab('Tower side blind recessed panel · E02', W, 'outer', panel, 0, .015, DRAWN, 48); // wall finish round the false door (owner, 3 Nov 2026)
         const SW = SB.window, infill = new T.Shape();
         infill.moveTo(u-SW.half,SW.sill);infill.lineTo(u+SW.half,SW.sill);infill.lineTo(u+SW.half,SW.spring);
         infill.absarc(u,SW.spring,SW.half,0,Math.PI,false);infill.lineTo(u-SW.half,SW.sill);infill.closePath();
         slab('Tower side window closed infill · E02', D, 'outer', infill, -.13, -.11,
           'TRACED CAD APERTURE / CLOSED INFILL VISUALIZATION; MATERIAL AND OPERABILITY UNCONFIRMED', 48);
+        // The side opening (E02) takes the same fixed timber facing, a false door at window height.
+        falseDoor('outer', u, SW.half, SW.sill, SW.spring, -.11);
         // Vertical returns/relief are coordinated visualization proxies; source circles fix the crowns.
         for (const e of [-1, 1]) {
           const x0 = SB.centreX + e * SB.pilaster.radii[0], x1 = SB.centreX + e * SB.pilaster.radii[1];
