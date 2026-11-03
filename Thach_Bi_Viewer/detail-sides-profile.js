@@ -1,7 +1,7 @@
 /* Traced CAD outlines for the sides decoration pass (owner, 3 Nov 2026), metres, same row format as
    facade-crest-profile.js: [handle,'A',u,v,r,startDeg,spanDeg,handedness] or [handle,'L',u0,v0,u1,v1].
-   Each key's drawing, origin and filters are recorded in its owning document. PUBLICATION HOLD H1
-   applies until the owner confirms the reproduction permission covers these outlines.
+   Each key's drawing, origin and filters are recorded in its owning document. Reproduction in the public model
+   is permitted by the owner (3 Nov 2026; docs/open-source/publication-checklist.md, H1).
    E02 side elevation, u = (x_CAD - 1404501.3)/1000 - origin, v = (y_CAD + 518026.8)/1000 = world Y,
    handedness +1 (docs/exterior-23102026/sides.md, section 3/11/2026 "Trang trí hiên"):
    sideLeaf      corner leaf left of the axis-5 pier, u from the pier axis X 18.975 (D9AB7E-D9ABC8,

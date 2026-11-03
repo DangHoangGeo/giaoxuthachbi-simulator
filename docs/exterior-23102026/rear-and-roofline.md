@@ -76,7 +76,7 @@ Chủ đầu tư yêu cầu hai đầu cánh ngang "giống hệt trang trí thi
 - **Tầng hồi:** đầu cột chạm theo EW (trong/ngoài), mũ cột +0,312; cột trong có bệ +9,795–11,191 (thân có trán tam giác, các đai, tấm biển nhỏ, mũ); chân cột ngoài có trán tam giác giữa hai khối (+6,324–6,577); răng cưa dài/ngắn xen kẽ dưới dải đỉnh (0,387/0,221) và dưới các mái dốc (0,387/0,27); hoa văn ô hồng vẽ lại (`wingRose`).
 - **Khám đỉnh:** gờ chân và gờ đầu trụ theo EW; tháp nhỏ Gothic (thân có ô cửa nhọn, mái hiên, trán, chóp, vòng cổ, hoa huệ) thay chóp chung; công-xôn lá ô-rô (`wingVolute`) trên tấm nền có biên DERIVED thay thanh cuộn; hoa văn cuộn quanh quả cầu (`wingCrest`), chân quả cầu tiện theo EW, tia quanh thánh giá (`wingRays`).
 - Đầu hồi phía cung thánh (E03) dùng cùng các bộ phận nên cũng được cập nhật theo EW; E03 chưa được đối chiếu riêng từng chi tiết.
-- **Giấy phép:** yêu cầu ngày 3/11 được ghi nhận là chỉ đạo của chủ đầu tư; việc công bố các đường nét EW/E02 nằm trong **PUBLICATION HOLD H1** cho tới khi chủ đầu tư xác nhận phạm vi như đã làm với E01B.
+- **Giấy phép:** chủ đầu tư xác nhận ngày 3/11/2026 rằng quyền tái hiện mở rộng cho các đường nét EW/E02 (xem danh mục công bố, H1); DWG, DXF và hình bản vẽ vẫn không đưa vào Git.
 
 ## Đầu hồi phía cung thánh đối chiếu riêng với E03 · 3/11/2026
 
@@ -124,7 +124,7 @@ Dải lan can đầu hiên dùng ba mức vẽ +6,875776 / 6,935776 / 7,015776 /
 - Năm cửa sổ tầng trệt vẫn là cửa của bundle: E03 vẽ tâm cửa ngoài tại ±8,967 (mô hình ±8,887), vòm khởi +3,2005 (mô hình +3,02), lòng cửa rộng 1,0 m (mô hình 1,3 m), cột nhỏ hai bên cùng đầu cột như EW (`windowCapital`, dịch 3,0344 m) và ô panô dưới cửa (hoa thị ở gian D/E–C/G và giữa, bốn rãnh dọc ở gian ngoài). Sửa cửa cần dựng lại lỗ tường và khung cửa (bundle/`realism.js`), ảnh hưởng nội thất phòng đồ lễ; chưa làm trong lượt này.
 - Đầu hồi phía cung thánh vẫn dùng mặt phẳng X 53,24 (P14 53,181) như đã ghi; độ nhô các trụ, diềm và cột đôi là DERIVED/CONCEPT.
 - Pha răng cưa dưới hai mái dốc lệch khoảng 3 mm so với E03; chưa chỉnh để không đổi hàm `rake()` dùng chung.
-- Việc công bố các nét E03 thuộc **PUBLICATION HOLD H1**.
+- Các nét E03 được phép công bố theo xác nhận của chủ đầu tư ngày 3/11/2026 (danh mục công bố, H1).
 
 ### Liên kết các bộ phận khám đỉnh · 3/11/2026 (bổ sung)
 

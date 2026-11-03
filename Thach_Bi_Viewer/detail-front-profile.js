@@ -1,7 +1,7 @@
 /* Traced CAD outlines for the front decoration pass (owner, 3 Nov 2026), metres, same row format as
    facade-crest-profile.js: [handle,'A',u,v,r,startDeg,spanDeg,handedness] or [handle,'L',u0,v0,u1,v1].
-   Each key's drawing, origin and filters are recorded in its owning document. PUBLICATION HOLD H1
-   applies until the owner confirms the reproduction permission covers these outlines.
+   Each key's drawing, origin and filters are recorded in its owning document. Reproduction in the public model
+   is permitted by the owner (3 Nov 2026; docs/open-source/publication-checklist.md, H1).
    Central front (docs/facade-model.md, 3 Nov 2026): E01B, u = (1666600.3 - x_CAD)/1000 less the origin
    below, v = world Y = (y_CAD + 515946.8)/1000, handedness -1.
    rose: tympanum rose tracery inside the four ring circles C49973-C49976 (u from Z 0).

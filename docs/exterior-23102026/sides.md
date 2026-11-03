@@ -75,7 +75,7 @@ Chủ đầu tư (3/11/2026) yêu cầu các cột chạy quanh thân nhà, từ
 
 ## Trang trí hiên theo E02 · 3/11/2026
 
-Tiếp theo phần cột, các họa tiết E02 được đặt lên những mặt tương ứng của phương án hiên thoáng. Đường nét chép từ DXF (khung E02: u = (x_CAD − 1 404 501,3)/1 000, v = (y_CAD + 518 026,8)/1 000, chiều cung +1) nằm trong `Thach_Bi_Viewer/detail-sides-profile.js`; `scripts/verify_detail_sides_source.py` đối chiếu từng dòng với DXF cục bộ (sai khác lớn nhất 5×10⁻¹⁰ m). Đường nét là **DRAWN**; độ nổi, chiều dày, vật liệu là **DERIVED/CONCEPT**. Hình CAD giữ cục bộ theo **PUBLICATION HOLD H1**.
+Tiếp theo phần cột, các họa tiết E02 được đặt lên những mặt tương ứng của phương án hiên thoáng. Đường nét chép từ DXF (khung E02: u = (x_CAD − 1 404 501,3)/1 000, v = (y_CAD + 518 026,8)/1 000, chiều cung +1) nằm trong `Thach_Bi_Viewer/detail-sides-profile.js`; `scripts/verify_detail_sides_source.py` đối chiếu từng dòng với DXF cục bộ (sai khác lớn nhất 5×10⁻¹⁰ m). Đường nét là **DRAWN**; độ nổi, chiều dày, vật liệu là **DERIVED/CONCEPT**. Hình CAD giữ cục bộ theo **PUBLICATION HOLD H1**; chủ đầu tư xác nhận ngày 3/11/2026 rằng quyền tái hiện mở rộng cho các đường nét E02 này (danh mục công bố, H1).
 
 | Khóa | Nội dung E02 | Handle | Gốc u |
 | --- | --- | --- | --- |
