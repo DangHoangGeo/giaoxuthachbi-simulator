@@ -612,6 +612,11 @@
       bins.get(key).parts.push([geometry, matrix]);
     };
     const W = mat.wall, S = mat.trim, D = mat.darkTrim, CAP = mat.cap || mat.wall;
+    // Owner, 3 Nov 2026: the carving on the tower tops (dome rosettes, lantern roses and beads, crown
+    // carving and acanthus, corner pinnacle crowns) was lost against the cream dome and lantern (contrast
+    // about 1.03:1), so it takes the warm sandstone trim, as the old bundle cap's rosettes did. The cross
+    // keeps the trim finish, like the gable crosses. Colour CONCEPT.
+    const ACCENT = D || S;
     // False-door timber (owner, 3 Nov 2026): the blind arches carry fixed timber facings in the main
     // doors' wood, with a darker inset for the sunk panels.
     const WOOD = mat.wood || S, WOOD_INSET = (() => { const m = WOOD.clone(); m.color?.multiplyScalar(.78); m.name = 'False-door inset timber'; return m; })();
@@ -1173,8 +1178,8 @@
         // buried in the dome; the drawn elevation fixes only its centre and rings.
         const h = DM.roseRings[1], lean = RX(-Math.atan2(rDome(DM.rosette - h) - rDome(DM.rosette + h), 2 * h));
         const rot = new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 0, 1), n));
-        add('Tower dome rosette tracery · traced', S, TG.roseSmall, place(lean, rot, TR(xc + n.x * r, DM.rosette, zc + n.z * r + dz)), k === 2 ? TRACED : TRACED_REPEAT);
-        add('Tower dome rosette ring', S, new T.TorusGeometry((DM.roseRings[0] + DM.roseRings[1]) / 2, (DM.roseRings[1] - DM.roseRings[0]) / 2, 8, 64), place(lean, rot, TR(xc + n.x * (r - .02), DM.rosette, zc + n.z * (r - .02) + dz)));
+        add('Tower dome rosette tracery · traced', ACCENT, TG.roseSmall, place(lean, rot, TR(xc + n.x * r, DM.rosette, zc + n.z * r + dz)), k === 2 ? TRACED : TRACED_REPEAT);
+        add('Tower dome rosette ring', ACCENT, new T.TorusGeometry((DM.roseRings[0] + DM.roseRings[1]) / 2, (DM.roseRings[1] - DM.roseRings[0]) / 2, 8, 64), place(lean, rot, TR(xc + n.x * (r - .02), DM.rosette, zc + n.z * (r - .02) + dz)));
       }
       const sq = (name, m_, [y0, y1, h]) => add(name, m_, new T.BoxGeometry(2 * h, y1 - y0, 2 * h), TR(xc, (y0 + y1) / 2, zc));
       const faces = Array.from({ length: 4 }, (_, k) => { const n = new T.Vector3(Math.cos(k * Math.PI / 2), 0, Math.sin(k * Math.PI / 2)); return { k, n, rot: new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 0, 1), n)) }; });
@@ -1199,14 +1204,14 @@
         onFaces('Tower lantern panel frame', S, [t0, t0 + f], [v0, v1], [w, w + .02]); onFaces('Tower lantern panel frame', S, [t1 - f, t1], [v0, v1], [w, w + .02]);
       }
       for (const { k, n, rot } of faces)
-        add('Tower lantern panel rose · traced', S, TG.lantern, place(rot, TR(xc + n.x * .5578, (LN.body[0] + LN.body[1]) / 2, zc + n.z * .5578)), k === 2 ? TRACED : TRACED_REPEAT);
+        add('Tower lantern panel rose · traced', ACCENT, TG.lantern, place(rot, TR(xc + n.x * .5578, (LN.body[0] + LN.body[1]) / 2, zc + n.z * .5578)), k === 2 ? TRACED : TRACED_REPEAT);
       sq('Tower lantern bead band', S, [LN.body[1], 33.8317, .5577]);
       onFaces('Tower lantern bead band break', S, [-.3163, .3163], [LN.body[1], 33.8317], [.5377, .6177]);
       sq('Tower lantern bead band cap', S, [33.8317, LN.beads[1], .5827]);
       onFaces('Tower lantern bead band cap break', S, [-.3413, .3413], [33.8317, LN.beads[1]], [.5627, .6427]);
       for (const { rot } of faces) for (let i = 0; i < 11; i++) {
         const t = -.5 + i * .1, w = Math.abs(t) < .3163 ? .6177 : .5577;
-        add('Tower lantern beads', S, new T.SphereGeometry(.032, 10, 6), place(TR(t, 33.7817, w), rot, TR(xc, 0, zc)));
+        add('Tower lantern beads', ACCENT, new T.SphereGeometry(.032, 10, 6), place(TR(t, 33.7817, w), rot, TR(xc, 0, zc)));
       }
       // Owner, 3 Nov 2026: the crown follows the E01B drawing (detail-towers-profile.js `crown`, 153 ARCs,
       // origin the ball centre; E02 draws the same crown within 0.04 mm). Each face carries the traced front
@@ -1240,8 +1245,8 @@
       })();
       add('Tower lantern crown bowl', S, new T.LatheGeometry([new T.Vector2(.001, BOWL[0][1]), ...BOWL.map(([r, y]) => new T.Vector2(r, y)), new T.Vector2(.001, 35.0)], 40), TR(xc, 0, zc), CARVED);
       for (const { k, rot } of faces) {
-        add('Tower lantern crown carving · traced E01B', S, crownGeo.tubes, place(rot, TR(xc, 0, zc)), k === 2 ? TRACED : TRACED_REPEAT);
-        if (crownGeo.fins) add('Tower lantern acanthus crown', S, crownGeo.fins, place(rot, TR(xc, 0, zc)), k === 2 ? TRACED : TRACED_REPEAT);
+        add('Tower lantern crown carving · traced E01B', ACCENT, crownGeo.tubes, place(rot, TR(xc, 0, zc)), k === 2 ? TRACED : TRACED_REPEAT);
+        if (crownGeo.fins) add('Tower lantern acanthus crown', ACCENT, crownGeo.fins, place(rot, TR(xc, 0, zc)), k === 2 ? TRACED : TRACED_REPEAT);
       }
       add('Tower lantern crown neck', S, new T.CylinderGeometry(.12, .12, LN.ball - 34.98, 16), TR(xc, (34.98 + LN.ball) / 2, zc));
       add('Tower lantern ball', S, new T.SphereGeometry(LN.ballRadius, 24, 18), TR(xc, LN.ball, zc));
@@ -1266,7 +1271,7 @@
       const BP=spec.balcony,crown=pinnacleCrown(),base=BP.front.rail[0].y,sc=(BP.finialTop-base)/crown.boundingBox.max.y;
       for(const ex of [-1,1])for(const ez of [-1,1]){
         const px=BP.side.centre+ex*BP.finialOffset,pz=s*(BP.front.centre+ez*BP.finialOffset);
-        add('Tower corner pinnacle crown',S,crown,place(SC(sc),RY(Math.atan2(ex,s*ez)),TR(px,base,pz)),CARVED+' / NATIVE BASE/APEX; CORNER PLAN POSITION DERIVED');
+        add('Tower corner pinnacle crown',ACCENT,crown,place(SC(sc),RY(Math.atan2(ex,s*ez)),TR(px,base,pz)),CARVED+' / NATIVE BASE/APEX; CORNER PLAN POSITION DERIVED');
       }
     });
 

@@ -189,3 +189,14 @@ The owner asked that the tower tops look like the design (E01B elevation, sent a
 - Not changed: the pierced parapet, corner pinnacles and the entablature below already follow the drawing.
 
 **Checks:** `verify_detail_towers_source.py` (with the new `crown` key), `verify_model`, `verify_exterior_dwg`, `verify_tower_balcony`, `verify_tower_spandrel`, `verify_construction`, `verify_side_dwg`, `verify_simulator --report --estimates`. Headless captures (light graphics) were reviewed: front, diagonal, close crown and cross. No equipment, circuits or routes changed.
+
+### Sandstone accent on the tower-top carving — 3 November 2026
+
+Owner, 3 Nov 2026: the carving at the tower tops was hard to see because it had the same colour as the surface behind it. Every carved part used the cream trim finish (`#efe2c8`) against the cream dome (`#efdfbd`, contrast about 1.03 : 1) and the ivory lantern (`#faf3e1`, about 1.16 : 1). The owner chose **warm sandstone**. These parts now use the existing dark trim finish (`mat.darkTrim`, `#b69b73`, about 2.4 : 1 against the walls), as the old bundle cap's rosettes did:
+
+- the dome rosette tracery and rings;
+- the lantern panel roses and beads;
+- the crown carving and the acanthus crown;
+- the corner pinnacle crowns.
+
+The dome, the lantern body, its frames and bands, the crown bowl, neck and ball stay cream. The cross also keeps the trim finish, like the gable crosses. Only the material changed: geometry, names, placement and the analysis model are unchanged. The colour is **CONCEPT** (appearance only; the stone or paint specification, weathering and maintenance are not chosen). In the drawing (no-colour) view the accent turns grey like the other finishes. The roses and capitals on the lower stages keep the cream trim.
