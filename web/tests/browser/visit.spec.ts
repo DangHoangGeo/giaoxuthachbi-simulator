@@ -76,7 +76,10 @@ test("the viewer loads only on entry, in visit-only mode, and closes", async ({ 
     });
   expect(state).toEqual({ visitOnly: true, editing: false, engineeringLayout: null });
 
-  await page.getByRole("button", { name: "Close 3D", exact: true }).click();
+  // A pointer click waits for a rendered frame, and CI's software renderer can spend
+  // minutes on the viewer's first frames. The DOM click runs between frames and tests
+  // the same close behaviour; "Enter 3D" above keeps the real pointer click.
+  await page.getByRole("button", { name: "Close 3D", exact: true }).dispatchEvent("click");
   await expect(page.locator("iframe")).toHaveCount(0);
 });
 
