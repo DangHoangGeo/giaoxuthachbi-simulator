@@ -133,3 +133,17 @@ Chủ đầu tư nhận xét các bộ phận của đầu hồi cánh ngang cò
 - Công-xôn lá ô-rô dày bằng trụ; chân công-xôn bám theo mặt trên mái dốc trên (độ dốc 0,7496 từ |u| 1,425) tới gờ đầu trụ trong (|u| 1,905), không còn lơ lửng.
 - Chân quả cầu được kéo xuống tới đỉnh mái vòm khám (khối ±0,249); hoa văn cuộn đặt trên mặt mái vòm với nét 16 mm.
 Các chiều sâu là **DERIVED**; hình chiếu đứng giữ theo EW.
+
+### Độ sâu thống nhất và gờ chạy vòng góc · 3/11/2026 (bổ sung)
+
+Chủ đầu tư nhận xét: trụ hồi, răng cưa dưới dải đỉnh và răng cưa diềm hiên cạnh cánh "nổi hẳn ra", còn đoạn tường bên cạnh cánh "lõm vào", không liên tục. Nguyên nhân: các bộ phận tầng hồi nhô 0,38–0,42 m khỏi mặt hồi trong khi gờ tầng trệt bên dưới chỉ nhô 0,22 m so với mặt đó; hoa hồng nhô 0,40 m; và diềm tầng trệt của cánh không chạy vòng sang hai tường hồi bên (X 36,82 / 44,33).
+- Một độ nhô chung `GD = 0,22` (bằng mặt trước gờ tầng trệt) cho trụ hồi, mái dốc, dải đỉnh, khám, công-xôn (cánh EW và đầu hồi E03); răng cưa nằm trong 0–0,16; hoa hồng ở 0,14; hốc khám lùi tới −0,08. Mũ trụ vẫn nhô theo các bậc gờ vẽ. Độ sâu là **DERIVED**.
+- Diềm EW nay chạy vòng sang hai tường hồi bên của cánh, từ mặt vòm hiên (|Z| 10,594) tới trụ góc (|Z| 13,10).
+
+### Trang trí đặc và màu nền · 3/11/2026 (bổ sung)
+
+- **Phần lõm có màu tường:** theo chủ đầu tư, nền phía sau răng cưa (diềm EW/E02 dùng chung, gờ trung tâm mặt tiền) nay cùng vật liệu với tường, để răng cưa nhô ra đọc rõ.
+- **Trang trí đứng tự do là khối đặc,** không phải đường viền rỗng. `solidOutline()` (exterior-ornament.js) tô kín vùng khép kín của nét vẽ trên lưới 5 mm. Nét được làm dày 10 mm để khép các khe nhỏ, các vùng không thông ra ngoài được tô đặc rồi co lại đúng biên vẽ; ống viền giữ ở mép.
+  - Hoa văn cuộn quanh quả cầu (cánh và E03) và dải cresting đầu hiên E03 được tô đặc.
+  - Cresting mái dốc E03 gồm các dải hai nét cách nhau khoảng 0,1 m: lưới 10 mm, khép 50 mm, cộng thêm mép trên mái dốc để chân trụ khép lại. Các ô vòm giữa các trụ vẫn để trống.
+  - Bề dày khối (0,05–0,06 m) là **DERIVED**.

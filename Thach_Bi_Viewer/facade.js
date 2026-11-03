@@ -245,7 +245,7 @@
     // profile about a frieze face at X 2.19 (dentils 0.16 m proud, key on the frieze face), with the
     // drawn fillets at +8.605 / 8.653 / 8.725 / 8.773 in place of the former 0.54 m deep corona.
     block('Central cornice bed moulding', S, [2.13, 2.6], C.bed, [-2.49, 2.49]);
-    block('Central cornice dentil band', S, [2.29, 2.6], C.dentil, [-2.49, 2.49]);
+    block('Central cornice dentil band', W, [2.29, 2.6], C.dentil, [-2.49, 2.49]); // wall-finish ground behind the dentils (owner, 3 Nov 2026)
     for (let z = 0; z <= 2.49 - C.dentilWidth / 2 + 1e-6; z += C.dentilPitch)
       for (const e of z ? [-1, 1] : [1]) block('Central cornice dentil', S, [2.13, 2.29], C.dentil, [e * z - C.dentilWidth / 2, e * z + C.dentilWidth / 2]);
     block('Central cornice fillet', S, [2.16, 2.6], [C.corona[0], 8.653], [-2.49, 2.49]);
@@ -398,7 +398,7 @@
     }
     // Dentils under the upper entablature across the three bays.
     const dentils = (z0, z1, x) => {
-      block('Upper entablature dentil band', S, [x + .06, x + .3], [15.15, Y1], [z0, z1]);
+      block('Upper entablature dentil band', W, [x + .06, x + .3], [15.15, Y1], [z0, z1]); // wall-finish ground behind the dentils
       for (let z = z0 + .06; z <= z1 - .06 + 1e-6; z += .13) block('Upper entablature dentil', S, [x, x + .06], [15.15, Y1 - .01], [z - .035, z + .035]);
     };
     dentils(-2.27, 2.27, CB.face - .09);

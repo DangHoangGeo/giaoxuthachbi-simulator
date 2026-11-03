@@ -96,6 +96,56 @@
       }
       return { field: new T.ExtrudeGeometry(s, { depth, bevelEnabled: false, curveSegments: 8 }), bed: merge(beds) };
     };
+    // Solid fill of a traced outline (owner, 3 Nov 2026: free-standing cresting is solid stone, not a
+    // hollow outline). CAD strokes often stop on another curve instead of meeting end to end, so the fill
+    // is found on a grid: strokes are drawn `close` thick (closing gaps up to about 2·close), everything
+    // not reachable from outside is solid, and the result is eroded by `close` back to the drawn edge.
+    // Runs of solid cells merge into boxes from z 0 to `depth`; edges step by `cell` (the outline tube
+    // covers them). Returns null when nothing encloses. A display reading of the drawing: DERIVED.
+    const solidOutline = (profile, depth = .05, cell = .005, close = .01) => {
+      const lines = profile.map(row => {
+        if (row[1] === 'L') return [[row[2], row[3]], [row[4], row[5]]];
+        const [, , u, v, r, start, span, hd] = row, n = Math.max(2, Math.ceil(r * span * Math.PI / 180 / cell));
+        return Array.from({ length: n + 1 }, (_, i) => { const a = (start + span * i / n) * Math.PI / 180; return [u + hd * r * Math.cos(a), v + r * Math.sin(a)]; });
+      });
+      let u0 = Infinity, u1 = -Infinity, v0 = Infinity, v1 = -Infinity;
+      for (const l of lines) for (const [u, v] of l) { u0 = Math.min(u0, u); u1 = Math.max(u1, u); v0 = Math.min(v0, v); v1 = Math.max(v1, v); }
+      const pad = close + 2 * cell; u0 -= pad; v0 -= pad;
+      const W = Math.ceil((u1 + pad - u0) / cell), H = Math.ceil((v1 + pad - v0) / cell), k = Math.round(close / cell);
+      const mark = new Uint8Array(W * H), at = (x, y) => y * W + x;
+      for (const l of lines) for (let s = 1; s < l.length; s++) {
+        const [a, b] = [l[s - 1], l[s]], n = Math.max(1, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / (cell / 2)));
+        for (let i = 0; i <= n; i++) {
+          const x = Math.floor((a[0] + (b[0] - a[0]) * i / n - u0) / cell), y = Math.floor((a[1] + (b[1] - a[1]) * i / n - v0) / cell);
+          for (let dy = -k; dy <= k; dy++) for (let dx = -k; dx <= k; dx++) if (dx * dx + dy * dy <= k * k) { const X = x + dx, Y = y + dy; if (X >= 0 && Y >= 0 && X < W && Y < H) mark[at(X, Y)] = 1; }
+        }
+      }
+      const outside = new Uint8Array(W * H), queue = [];
+      for (let x = 0; x < W; x++) for (const y of [0, H - 1]) if (!mark[at(x, y)]) { outside[at(x, y)] = 1; queue.push(at(x, y)); }
+      for (let y = 0; y < H; y++) for (const x of [0, W - 1]) if (!mark[at(x, y)] && !outside[at(x, y)]) { outside[at(x, y)] = 1; queue.push(at(x, y)); }
+      for (let q = 0; q < queue.length; q++) {
+        const c = queue[q], x = c % W, y = (c - x) / W;
+        for (const [X, Y] of [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]]) if (X >= 0 && Y >= 0 && X < W && Y < H) { const d = at(X, Y); if (!mark[d] && !outside[d]) { outside[d] = 1; queue.push(d); } }
+      }
+      // Erode: a cell stays solid when no outside cell lies within `close`.
+      const solid = new Uint8Array(W * H);
+      for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+        if (outside[at(x, y)]) continue;
+        let keep = 1;
+        for (let dy = -k; dy <= k && keep; dy++) for (let dx = -k; dx <= k; dx++) if (dx * dx + dy * dy <= k * k) { const X = x + dx, Y = y + dy; if (X < 0 || Y < 0 || X >= W || Y >= H || outside[at(X, Y)]) { keep = 0; break; } }
+        solid[at(x, y)] = keep;
+      }
+      // Merge runs row by row, extending a box upward while the same run continues.
+      const boxes = [], open = new Map();
+      for (let y = 0; y <= H; y++) {
+        const runs = new Set();
+        if (y < H) for (let x = 0; x < W;) { if (!solid[at(x, y)]) { x++; continue; } let e = x; while (e < W && solid[at(e, y)]) e++; runs.add(x + ':' + e); x = e; }
+        for (const [key, y0] of open) if (!runs.has(key)) { const [a, b] = key.split(':').map(Number); boxes.push([a, b, y0, y]); open.delete(key); }
+        for (const key of runs) if (!open.has(key)) open.set(key, y);
+      }
+      if (!boxes.length) return null;
+      return merge(boxes.map(([a, b, ya, yb]) => [new T.BoxGeometry((b - a) * cell, (yb - ya) * cell, depth), TR(u0 + (a + b) / 2 * cell, v0 + (ya + yb) / 2 * cell, depth / 2)]));
+    };
     // Pinnacle crown as E01B draws it on the central aedicule piers (C4A086–C4A092, C49F98–C4A054):
     // a gablet, a square core with a colonnette on each corner under a small fleur, and a tapered
     // spire under the big fleur. Base centre at the origin, 1.68 m high at scale 1;
@@ -156,7 +206,8 @@
     // `back` to the projections below, measured from the wall face z 0; depths are DERIVED.
     const drawnEntablature = (u0, u1, back = -.06) => {
       const parts = [], bar = (name, kind, [y0, y1], z1, a = u0, b = u1) => parts.push({ kind, name, geometry: new T.BoxGeometry(b - a, y1 - y0, z1 - back), matrix: TR((a + b) / 2, (y0 + y1) / 2, (back + z1) / 2) });
-      bar('dentil backing', 'S', [5.422, 5.622], .06);
+      // Owner, 3 Nov 2026: recessed grounds take the wall finish so the projecting dentils read clearly.
+      bar('dentil backing', 'W', [5.422, 5.622], .06);
       for (let k = Math.ceil((u0 + .0332) / .1326); k * .1326 + .0332 <= u1 + 1e-6; k++) bar('dentil', 'S', [5.422, 5.622], .16, k * .1326 - .0332, k * .1326 + .0332);
       bar('fillet', 'S', [5.622, 5.662], .18); bar('fillet', 'S', [5.662, 5.722], .21); bar('fillet', 'S', [5.722, 5.762], .18);
       bar('frieze', 'W', [5.762, 6.012], .1);
@@ -164,7 +215,7 @@
       bar('cornice', 'S', [6.012, 6.06], .18); bar('cornice', 'S', [6.06, 6.18], .28); bar('cornice', 'S', [6.18, 6.228], .33); bar('cornice', 'S', [6.228, 6.3239], .38);
       return parts;
     };
-    return { fleur, pilasterCapital, meanderGeo, spray, towerSpandrel, pinnacleCrown, flutedField, drawnPier, drawnEntablature, traced };
+    return { fleur, pilasterCapital, meanderGeo, spray, towerSpandrel, pinnacleCrown, flutedField, drawnPier, drawnEntablature, traced, solidOutline };
   }
 
   window.CHURCH_EXTERIOR_ORNAMENT = { create };

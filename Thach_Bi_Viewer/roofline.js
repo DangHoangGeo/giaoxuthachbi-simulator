@@ -72,7 +72,11 @@
     exterior.updateMatrixWorld(true);
     const K = window.CHURCH_CARVING.create(T);
     const { TR, RY, RZ, SC, place, merge } = K;
-    const { fleur, pilasterCapital, meanderGeo, pinnacleCrown, flutedField, drawnPier, drawnEntablature, traced, towerSpandrel } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const { fleur, pilasterCapital, meanderGeo, pinnacleCrown, flutedField, drawnPier, drawnEntablature, traced, towerSpandrel, solidOutline } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    // Free-standing cresting is filled solid between its traced loops (owner, 3 Nov 2026); the tube stays
+    // on its edges. Thickness DERIVED.
+    const solidGeo = {}, solid = (rows, key, depth = .06, cell = .005, close = .01) => key in solidGeo ? solidGeo[key] : (solidGeo[key] = solidOutline(rows, depth, cell, close));
+    const addSolid = (name, g, matrix, st) => { if (g) add(name, S, g, matrix, st); };
     // Owner, 3 Nov 2026: the wing gables follow the EW decoration; traced outlines are drawn with the
     // T12 contour tube (relief CONCEPT), drawn levels and widths as below, depths DERIVED.
     const EW = 'EW TRACED CARVING / RELIEF CONCEPT', EWD = 'EW DRAWN OUTLINE AND LEVELS / DERIVED DEPTH';
@@ -182,6 +186,11 @@
     // A face frame: world = origin + u·U + v·Y + w·N (N out of the face). Shapes and parts are
     // built in (u, v) with +z out of the face.
     const frame = (origin, U, N) => new T.Matrix4().set(U[0], 0, N[0], origin[0], U[1], 1, N[1], origin[1], U[2], 0, N[2], origin[2], 0, 0, 0, 1);
+    // Owner, 3 Nov 2026: the upper gable must not stand proud of the storey below. The ground
+    // entablature reaches 0.22 m in front of the gable face (wall face −0.16, cornice cap +0.38), so the
+    // gable piers, rakes, top band, aedicule and consoles all share that relief depth (was 0.38–0.42);
+    // pier caps and mouldings still break forward of it by their drawn steps. DERIVED depth.
+    const GD = .22;
     const face = F => {
       const at = (u, v, w, ...pre) => place(...pre, TR(u, v, w)).premultiply(F);
       const blk = (name, m, [u0, u1], [v0, v1], [w0, w1], st) => add(name, m, new T.BoxGeometry(u1 - u0, v1 - v0, w1 - w0), at((u0 + u1) / 2, (v0 + v1) / 2, (w0 + w1) / 2), st);
@@ -203,7 +212,7 @@
       // capital), on the tall inner piers a pedestal stage (gablet die, bands, plaque die, cornice; EW
       // +9.795–11.191, scaled to other envelopes), a gablet at the foot of piers standing on the ground
       // cornice, then the pinnacle crown. Half-widths are EW values scaled by the pier width / 0.67.
-      const pier = (P, d = .38, capKey = 'wingCapOuter') => {
+      const pier = (P, d = GD, capKey = 'wingCapOuter') => {
         const [u0, u1] = P.u, um = (u0 + u1) / 2, half = (u1 - u0) / 2, sx = half / .335;
         const band = (name, m, h, [v0, v1], w1, w0 = 0) => blk(name, m, [um - h * sx, um + h * sx], [v0, v1], [w0, w1]);
         if (P.base) blk('Gable pier base below upper shaft', W, [u0, u1], P.base, [0, d]);
@@ -262,7 +271,7 @@
       };
       // Raking cornice between two points (u0 < u1 in |u|), mirrored to both sides: a band with a
       // Greek-key face, hanging dentils and a leaf crest standing on it.
-      const rake = ([a, b], thick = .45, d = .42, crest = true, traced = null) => {
+      const rake = ([a, b], thick = .45, d = GD, crest = true, traced = null) => {
         for (const e of [-1, 1]) {
           const outline = traced || [a, b, [b[0], b[1] + thick], [a[0], a[1] + thick]];
           const p = outline.map(([u, v]) => [e * u, v]);
@@ -275,7 +284,7 @@
           const under = u => a[1] + (b[1] - a[1]) * (u - a[0]) / (b[0] - a[0]), w = .0663, n = Math.floor(Math.abs(b[0] - a[0]) / w);
           for (let i = 0; i < n; i++) {
             const ua = a[0] + Math.sign(b[0] - a[0]) * i * w, ub = ua + Math.sign(b[0] - a[0]) * w, top = Math.max(under(ua), under(ub)), L = i % 2 ? .27 : .387;
-            blk('Gable raking dentil', S, [e * ua, e * ub].sort((p, q) => p - q), [top - L, Math.min(under(ua), under(ub))], [.02, d - .06], EWD);
+            blk('Gable raking dentil', S, [e * ua, e * ub].sort((p, q) => p - q), [top - L, Math.min(under(ua), under(ub))], [0, d - .06], EWD);
           }
           if (crest) for (let t = .18; t < .96; t += .22) {
             const topA = outline[3], topB = outline[2];
@@ -284,7 +293,7 @@
           }
         }
       };
-      const rose = ([u, v, r], rings = [r + .05, r - .05, r * .82 + .035, r * .82 - .035], w = .4) => {
+      const rose = ([u, v, r], rings = [r + .05, r - .05, r * .82 + .035, r * .82 - .035], w = .14) => {
         // The source circles bound each ring: TorusGeometry's radius is its centreline,
         // so using the outer source radius directly would make the ring too large.
         for (let i = 0; i < rings.length; i += 2)
@@ -292,7 +301,7 @@
         add('Gable rose tracery · EW', S, ew('wingRose', .01), at(u, v - 7.571528705, w - .02), EW);
       };
       // Crowning aedicule: lobed niche between two piers with pinnacles, volutes, ball and cross.
-      const aedicule = (E, d = .42) => {
+      const aedicule = (E, d = GD) => {
         const inner = profilePoints(E.arch.inner), outer = profilePoints(E.arch.outer);
         const envelope = arcPoints(E.arch.envelope);
         const outline = [[-E.pier[1], E.base], [E.pier[1], E.base], [E.pier[1], E.pierTop], ...envelope, [-E.pier[1], E.pierTop]];
@@ -303,9 +312,9 @@
         body.holes.push(new T.Path((T.ShapeUtils.isClockWise(hole.map(([u, v]) => new T.Vector2(u, v))) ? hole : hole.slice().reverse()).map(([u, v]) => new T.Vector2(u, v))));
         slab('Gable aedicule body', W, body, -.2, d, 'CAD ARC ENVELOPE / DERIVED DEPTH');
         const niche = poly([[inner.at(-1)[0], E.base], [inner[0][0], E.base], ...inner]);
-        slab('Gable aedicule niche', D, niche, .12, .13);
+        slab('Gable aedicule niche', D, niche, -.08, -.07);
         const envTop = Math.max(...envelope.map(p => p[1]));
-        blk('Gable aedicule pedestal', S, [-.42, .42], [E.base + .1, E.base + .55], [.13, .45]);
+        blk('Gable aedicule pedestal', S, [-.42, .42], [E.base + .1, E.base + .55], [-.07, d + .03]);
         // EW levels are given from the wing aedicule base +9.829529; dv moves them to E03's.
         const dv = E.base - 9.829528705;
         for (const e of [-1, 1]) {
@@ -342,6 +351,7 @@
         blk('Gable aedicule jamb moulding', S, [outer.at(-1)[0], inner.at(-1)[0]], [E.base + .1, E.spring], [d - .02, d + .06]);
         // Crest scrolls on the hood face, with a 16 mm stroke so they read as carved stone, not wire.
         add('Gable aedicule crest scrolls · EW', S, ew('wingCrest', .016), at(0, dv, d + .016), EW);
+        addSolid('Gable aedicule crest scrolls solid · EW', solid(window.CHURCH_FACADE_CREST_PROFILE.wingCrest, 'wingCrest', .05), at(0, dv, d - .02), EW);
         // EW ball pedestal: ring +13.104–13.184 (±0.249), swelling neck, ring +13.344–13.392 (±0.24),
         // carried down to the hood top on a ±0.249 base so the ball no longer floats over the niche.
         if (envTop < 13.104 + dv) blk('Gable aedicule ball pedestal base', S, [-.249, .249], [envTop - .02, 13.104 + dv], [d * .5 - .249, d * .5 + .249], EWD);
@@ -481,20 +491,27 @@
       // the return walls (|Z| 13.10).
       lowerPiers(f, [[3.59, 4.26]], 'Wing', -.46);
       wingGround(f);
+      // Owner, 3 Nov 2026: the entablature also turns onto both return walls (outer faces X 36.82 and
+      // 44.33) from the porch arcade face (|Z| 10.594) to the corner pier (|Z| 13.10), so it runs on
+      // unbroken from the porch to the wing end instead of leaving a bare, sunk-looking wall between.
+      for (const nx of [-1, 1]) {
+        const fr = face(frame([SG.x + nx * 3.755, 0, 0], [0, 0, -nx], [nx, 0, 0])), [u0, u1] = [-nx * s * 10.594, -nx * s * 13.10].sort((p, q) => p - q);
+        for (const q of drawnEntablature(u0, u1, -.3)) add(`Wing return entablature · EW ${q.name}`, q.kind === 'W' ? W : S, q.geometry, fr.at(0, 0, 0, q.matrix), q.kind === 'C' ? EW : EWD);
+      }
       // The gable wall itself, to the CAD silhouette, across the existing wall thickness.
       f.slab('Side gable wall · CAD silhouette', W, f.poly(SG.outline), -(SG.wall[1] - SG.wall[0]), 0);
       for (const e of [-1, 1]) {
-        for (const P of [SG.outer, SG.inner]) f.pier({ ...P, u: e > 0 ? P.u : [-P.u[1], -P.u[0]] }, .38, P === SG.inner ? 'wingCapInner' : 'wingCapOuter');
+        for (const P of [SG.outer, SG.inner]) f.pier({ ...P, u: e > 0 ? P.u : [-P.u[1], -P.u[0]] }, GD, P === SG.inner ? 'wingCapInner' : 'wingCapOuter');
       }
-      f.rake(SG.rakes[0], .737353, .42, true, SG.rakePolygons[0]);
-      f.rake(SG.rakes[1], .59, .42, false, SG.rakePolygons[1]);
+      f.rake(SG.rakes[0], .737353, GD, true, SG.rakePolygons[0]);
+      f.rake(SG.rakes[1], .59, GD, false, SG.rakePolygons[1]);
       const sh = SG.rakes[1][1][0];
-      f.slab('Side gable top band', S, f.poly([[-sh, SG.band[0]], [sh, SG.band[0]], [SG.bandHalf, SG.band[1]], [-SG.bandHalf, SG.band[1]]]), 0, .42);
-      add('Side gable Greek-key frieze', S, meanderGeo(2 * sh, .22), f.at(-sh, SG.band[0] + .1, .42), CARVED);
+      f.slab('Side gable top band', S, f.poly([[-sh, SG.band[0]], [sh, SG.band[0]], [SG.bandHalf, SG.band[1]], [-SG.bandHalf, SG.band[1]]]), 0, GD);
+      add('Side gable Greek-key frieze', S, meanderGeo(2 * sh, .22), f.at(-sh, SG.band[0] + .1, GD), CARVED);
       // EW teeth under the top band: 66.3 mm, long to +8.853 on the 132.6 mm pitch, short to +9.019 between.
       for (let k = -Math.floor(sh / .0663); k < Math.floor(sh / .0663); k++) {
         const ua = k * .0663 + .0332, L = Math.abs(k) % 2 ? .221 : .387;
-        f.blk('Gable raking dentil', S, [ua - .0332, ua + .0332], [SG.band[0] - L, SG.band[0]], [.02, .36], EWD);
+        f.blk('Gable raking dentil', S, [ua - .0332, ua + .0332], [SG.band[0] - L, SG.band[0]], [0, GD - .06], EWD);
       }
       f.rose(SG.rose, SG.roseRings);
       f.aedicule(SG.aedicule);
@@ -521,7 +538,7 @@
       // Gable wall raised to the CAD silhouette under the rakes (the old end wall stops lower).
       const [[l0, l1], [h0, h1]] = RG.rakes;
       f.slab('Rear gable wall · CAD silhouette', W, f.poly([[-l0[0], 7.0], [l0[0], 7.0], [l0[0], l0[1]], [l1[0], l1[1]], [h0[0], h0[1]], [h1[0], h1[1]], [-h1[0], h1[1]], [-h0[0], h0[1]], [-l1[0], l1[1]], [-l0[0], l0[1]]]), -.44, 0);
-      for (const e of [-1, 1]) for (const P of [RG.corner, RG.cg, RG.de]) f.pier({ ...P, u: e > 0 ? P.u : [-P.u[1], -P.u[0]] }, .38, 'wingCapOuter');
+      for (const e of [-1, 1]) for (const P of [RG.corner, RG.cg, RG.de]) f.pier({ ...P, u: e > 0 ? P.u : [-P.u[1], -P.u[0]] }, GD, 'wingCapOuter');
       for (const e of [-1, 1]) {
         const C = RG.crest, [c0, c1] = e > 0 ? C.u : [-C.u[1], -C.u[0]], m = SC(e, 1, 1);
         // E03 porch-end cresting (LINEs D90C8E–D90C92): plain band, frieze of roundels and pointed
@@ -530,9 +547,15 @@
         f.blk('Rear gable porch-end parapet', S, [c0, c1], [6.935776, 7.015776], [0, .27], EWD);
         f.blk('Rear gable porch-end parapet', S, [c0, c1], [7.015776, C.band[1]], [0, .32], EWD);
         add('Rear gable porch-end cresting · E03', S, e03('rearPorchCrest', .009), f.at(0, 0, .25, m), E03C);
+        addSolid('Rear gable porch-end cresting solid · E03', solid(window.CHURCH_DETAIL_PROFILE_REAR.rearPorchCrest, 'porch'), f.at(0, 0, .22, m), E03C);
         // Scallops and finials on both rakes (crest=false drops the shared fleur crest).
         add('Rear gable rake cresting · E03', S, e03('rearRakeCrestLow', .012), f.at(0, 0, .21, m), E03C);
         add('Rear gable rake cresting · E03', S, e03('rearRakeCrestUp', .012), f.at(0, 0, .21, m), E03C);
+        // The crest posts and swags are bands drawn by two edge curves about 0.1 m apart: a 50 mm closing
+        // fills each band, and the rake top (the polygon's upper edge, left out of the trace) closes the
+        // post feet; the arches between posts stay open.
+        for (const [k, P] of [['rearRakeCrestLow', RG.rakePolygons[0]], ['rearRakeCrestUp', RG.rakePolygons[1]]])
+          addSolid('Rear gable rake cresting solid · E03', solid([...window.CHURCH_DETAIL_PROFILE_REAR[k], ['rake top', 'L', P[2][0], P[2][1], P[3][0], P[3][1]]], k, .06, .01, .05), f.at(0, 0, .18, m), E03C);
         // Quarter fan on the wall beside the D/E pier, over the ground entablature (E03 ARCs D913BB–D913C9):
         // a raised quarter disc to the outer ring r 1.2317 (relief DERIVED) carrying the traced fan.
         const fan = new T.Shape(); fan.moveTo(0, 0); fan.absarc(0, 0, 1.2317, 0, Math.PI / 2, false); fan.lineTo(0, 0);
@@ -565,10 +588,10 @@
           f.slab('Rear centre-arch archivolt · E03', S, ring, 0, w, EWD, 48);
         }
       }
-      f.rake(RG.rakes[0], .737353, .42, false, RG.rakePolygons[0]);
-      f.rake(RG.rakes[1], .59, .42, false, RG.rakePolygons[1]);
+      f.rake(RG.rakes[0], .737353, GD, false, RG.rakePolygons[0]);
+      f.rake(RG.rakes[1], .59, GD, false, RG.rakePolygons[1]);
       const rh = RG.rakes[1][1][0];
-      f.slab('Rear gable top band', S, f.poly([[-rh, RG.band[0]], [rh, RG.band[0]], [RG.bandHalf, RG.band[1]], [-RG.bandHalf, RG.band[1]]]), 0, .42);
+      f.slab('Rear gable top band', S, f.poly([[-rh, RG.band[0]], [rh, RG.band[0]], [RG.bandHalf, RG.band[1]], [-RG.bandHalf, RG.band[1]]]), 0, GD);
       f.rose(RG.rose, RG.roseRings);
       f.aedicule(RG.aedicule);
     }
