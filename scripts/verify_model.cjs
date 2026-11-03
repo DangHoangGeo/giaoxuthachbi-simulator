@@ -476,7 +476,21 @@ assert(bounds(vault).min.y>=S.centralArch.spring-.001&&bounds(vault).max.y<12.1,
   const V=S.sideVault,boards=nodes.filter(o=>o.isMesh&&o.name==='Side vault · gilded boarding'),roofY=sandbox.window.CHURCH_SANCTUARY.roofY;
   assert.equal(boards.length,2,'One side vault over each passage');
   assert.deepEqual(boards.map(o=>Math.sign(bounds(o).getCenter(new T.Vector3()).z)).sort(),[-1,1],'Side vaults on both sides');
-  assert.equal(nodes.filter(o=>o.name==='Side vault springing beam · lacquered timber').length,4,'A lacquered springing beam along each vault edge');
+  assert.equal(nodes.filter(o=>o.name==='Side vault springing beam · lacquered timber').length,2,'A lacquered springing beam along the outer edge of each vault');
+  // Owner, 3 Nov 2026: gilded boarding runs on from the chamber vault to each side vault, with no lacquered band between.
+  const coves=nodes.filter(o=>o.isMesh&&o.name==='Side vault · gilded cove to the chamber vault');
+  assert.equal(coves.length,2,'One gilded cove between the chamber vault and each side vault');
+  for(const o of coves){
+    const b=bounds(o),C=S.chamber;
+    assert.equal(o.material,vault.material,'Cove is the same gilded boarding as the chamber vault');
+    near(Math.min(Math.abs(b.min.z),Math.abs(b.max.z)),C.face,'Cove face on the chamber face line');
+    near(b.max.y,S.centralArch.spring,'Cove starts at the chamber vault springing');
+    near(b.min.x,V.x0,'Cove front edge');near(b.max.x,V.x1,'Cove back edge');
+    assert(b.min.y>=S.arch11.spring-.1&&Math.max(Math.abs(b.min.z),Math.abs(b.max.z))<C.lintelFace+.6,'Cove ends at the inner springing of the side vault');
+  }
+  for(const o of walls){const b=bounds(o);assert(Math.min(Math.abs(b.min.z),Math.abs(b.max.z))>=S.chamber.lintelFace-.001,'Lintel stands behind the gilded cove');}
+  assert(nodes.filter(o=>o.name==='Vault springing cornice').every(o=>o.material===nodes.find(n=>n.name==='Gilded cornice edge').material),'Springing cornice is gilded');
+  assert(!nodes.some(o=>/^(Chamber wall pilaster|Chamber lintel soffit moulding)$/.test(o.name)),'no lacquered pilasters or soffit moulding left on the lintel');
   assert.equal(nodes.filter(o=>o.name==='Side vault rib · lacquered timber').length,8,'Four lacquered transverse ribs per vault');
   assert.equal(nodes.filter(o=>o.name==='Side vault longitudinal rib').length,10,'Five lacquered longitudinal ribs per vault, as in the chamber vault');
   // USER CONFIRMED 1 Nov 2026: the vaults meet the frame with no gap, so the front edge is the back face of the axis-10 side spandrels.

@@ -17,7 +17,11 @@
     // x1 butts the lacquered spandrel of axis 11.
     // CONCEPT visual proxy: it is not an occluder in the simulator, like the chamber vault.
     sideVault:{x0:44.335,x1:48.16,thick:.09,status:'CONCEPT · gilded boarded vault over each side passage; boarding, ribs, springing beams and fixings pending'},
-    chamber:{x0:44.49,x1:48.42,face:3.3,outer:3.75,top:9.45,lintel:7.0,serviceLining:0.04},
+    // Owner, 3 Nov 2026: the gilded boarding runs on from the chamber vault to each side vault. It drops
+    // plumb on the face line from the springing to coveY, where the chamber lights keep their place, then
+    // curves out to the inner springing of the side vault. The lintel stays as hidden structure and cable
+    // void behind it, its inner face at lintelFace.
+    chamber:{x0:44.49,x1:48.42,face:3.3,outer:3.75,top:9.45,lintel:7.0,lintelFace:3.4,coveY:6.85,serviceLining:0.04},
     // Crucifix niche: opens through the reredos and the back wall, 1.0 m deep, its blue wall and
     // the cross standing back on a base over the service room. `shell` is the plaster casing
     // seen from the service room; `endX` its rear face.
@@ -457,17 +461,18 @@
       const wall=lobed(0,A.half,A);wall.lineTo(A.half,.15);wall.lineTo(-A.half,.15);wall.closePath();wall.holes.push(opening(N.lining));
       o.geometry.dispose();o.geometry=new T.ExtrudeGeometry(wall,{depth:.2,bevelEnabled:false,curveSegments:32});
     });
-    // Side walls on the D/E lines. Local +v faces the sanctuary axis.
-    const C=spec.chamber,length=C.x1-C.x0,thick=C.outer-C.face,face=thick/2;
+    // Lintels on the D/E lines, hidden behind the gilded cove (owner, 3 Nov 2026). Local +v faces the sanctuary axis.
+    const C=spec.chamber,length=C.x1-C.x0,thick=C.outer-C.lintelFace,face=thick/2,toFace=(C.lintelFace+C.outer)/2-C.face;
     for(const sign of [-1,1]){
-      const g=new T.Group();g.name=`Chamber side wall · ${sign<0?'B':'H'}`;g.position.set((C.x0+C.x1)/2,0,sign*(C.face+C.outer)/2);g.rotation.y=sign>0?Math.PI:0;root.add(g);
+      const g=new T.Group();g.name=`Chamber side wall · ${sign<0?'B':'H'}`;g.position.set((C.x0+C.x1)/2,0,sign*(C.lintelFace+C.outer)/2);g.rotation.y=sign>0?Math.PI:0;root.add(g);
       // The chamber enclosure is a lining proposal, not a 450 mm structural
       // timber slab. Reserve an explicit service void between removable skins
       // without changing either visible face or the acoustic/light boundary.
       // Skin section, backing, access panels and terminations require design.
       // Parish priest, 25 Oct 2026: the lacquered and gilded walls between the axis-10 and
-      // axis-11 columns are removed. What stays is a lacquered lintel from +7.0 m (spec.chamber.lintel)
-      // to the vault top: it carries the gilded vault on each side and keeps the cable void.
+      // axis-11 columns are removed. What stays is a lintel from +7.0 m (spec.chamber.lintel)
+      // to the vault top: it carries the gilded vaults on each side and keeps the cable void.
+      // Since 3 Nov 2026 it stands behind the gilded cove and shows no lacquer.
       const skin=C.serviceLining,y0=C.lintel,height=C.top-y0,parts=[];
       for(const e of [-1,1]) {
         parts.push([new T.BoxGeometry(length,height,skin),K.TR(0,0,e*(thick-skin)/2)]);
@@ -476,19 +481,11 @@
       }
       const shell=mesh(K.merge(parts),wood,g,'Chamber side lintel · lacquered timber',0,(C.top+y0)/2,0);
       shell.userData={status:'CONCEPT · removable lining with reserved service void',engineeringApproved:false,
-        serviceVoid:{x0:C.x0+skin,x1:C.x1-skin,y0:y0+skin,y1:C.top-skin,zInner:C.face+skin,zOuter:C.outer-skin},
+        serviceVoid:{x0:C.x0+skin,x1:C.x1-skin,y0:y0+skin,y1:C.top-skin,zInner:C.lintelFace+skin,zOuter:C.outer-skin},
         source:'docs/electrical-grid/routing.md · concealed-routing review; lintel span, skin/backing/fire/access specification pending'};
-      // Gilded soffit moulding under the lintel, both faces, and short pilasters on the lintel face.
-      for(const e of [-1,1]){box(g,length,.12,.06,0,y0+.06,e*(face+.03),wood,'Chamber lintel soffit moulding');box(g,length,.03,.08,0,y0+.13,e*(face+.04),gold,'Gilded cornice edge');}
-      const pitch=(length-.44)/3;
-      for(let i=0;i<4;i++){
-        const u=-length/2+.22+i*pitch;
-        box(g,.26,A.spring-y0-.2,.12,u,(y0+A.spring)/2-.1,face+.05,wood,'Chamber wall pilaster');
-        for(const y of [y0+.2,7.94])box(g,.36,.13,.2,u,y,face+.06,gold,'Gilded pilaster capital');
-      }
-      for(let i=0;i<3;i++){const u=-length/2+.22+(i+.5)*pitch;flower(g,u,7.62,face+.03,.17);border(g,u,(y0+A.spring)/2,pitch-.3,A.spring-y0-.35,-face-.02);}
-      box(g,length,.2,.18,0,A.spring-.05,face+.06,wood,'Vault springing cornice');box(g,length,.04,.2,0,A.spring+.06,face+.07,gold,'Gilded cornice edge');
-      for(let u=-length/2+.25;u<length/2;u+=.49)flower(g,u,A.spring-.05,face+.16,.075);
+      // Gilded springing cornice on the cove face, under the chamber vault; the two vault uplights stand on it.
+      box(g,length,.2,.18,0,A.spring-.05,toFace+.06,gold,'Vault springing cornice');box(g,length,.04,.2,0,A.spring+.06,toFace+.07,gold,'Gilded cornice edge');
+      for(let u=-length/2+.25;u<length/2;u+=.49)flower(g,u,A.spring-.05,toFace+.16,.075);
     }
 
     // Shrines stand in the side arches of axis 11, level with the crucifix (parish priest,
@@ -582,8 +579,38 @@
         const geometry=new T.BufferGeometry().setFromPoints(positions);geometry.computeVertexNormals();
         const board=mesh(geometry,leafGold,g,'Side vault · gilded boarding');
         board.userData={status:V.status,engineeringApproved:false,source:'Owner request 1 Nov 2026; docs/sanctuary-model.md'};
-        // Springing beams along both edges, where the vault would rest on the corbels of the two arches.
-        for(const e of [0,rows[0].inner.length-1])line(g,xs.map((x,i)=>{const p=rows[i].inner[e];return [x,p.y-.05,sign*p.x];}),.07,wood,'Side vault springing beam · lacquered timber');
+        // Springing beam along the outer edge, where the vault would rest on the corbels of the two arches.
+        // The inner edge meets the gilded cove instead (owner, 3 Nov 2026).
+        const m=rows[0].inner.length,inEdge=rows[0].inner[0].x<rows[0].inner[m-1].x?0:m-1,outEdge=m-1-inEdge;
+        line(g,xs.map((x,i)=>{const p=rows[i].inner[outEdge];return [x,p.y-.05,sign*p.x];}),.07,wood,'Side vault springing beam · lacquered timber');
+        // Gilded cove (owner, 3 Nov 2026): the same boarding drops plumb from the chamber vault springing on the
+        // face line to coveY, then a quarter ellipse carries it out to the inner springing of the side vault,
+        // so the gold runs on from the chamber vault to the side vault with no lacquered band between.
+        const Cv=spec.chamber,arc=10,cove=rows.map(R=>{
+          const end=R.inner[inEdge],dz=end.x-Cv.face,dy=Cv.coveY-end.y,inner=[{x:Cv.face,y:A.spring}],outer=[{x:Cv.face+V.thick,y:A.spring}];
+          for(let k=0;k<=arc;k++){
+            const t=k/arc*Math.PI/2,p={x:Cv.face+dz*(1-Math.cos(t)),y:Cv.coveY-dy*Math.sin(t)},n=new T.Vector2(dy*Math.cos(t),dz*Math.sin(t)).normalize();
+            inner.push(p);outer.push({x:p.x+V.thick*n.x,y:p.y+V.thick*n.y});
+          }
+          return {inner,outer};
+        });
+        const covePositions=positions.length,room=m=>new T.Vector3(m.x,4,sign*3).sub(m),out=m=>room(m).negate();
+        for(let i=0;i<steps;i++){
+          const A0=cove[i],A1=cove[i+1],x0=xs[i],x1=xs[i+1],n=A0.inner.length;
+          for(let k=0;k<n-1;k++){
+            quad(P(x0,A0.inner[k]),P(x1,A1.inner[k]),P(x1,A1.inner[k+1]),P(x0,A0.inner[k+1]),room);
+            quad(P(x0,A0.outer[k]),P(x1,A1.outer[k]),P(x1,A1.outer[k+1]),P(x0,A0.outer[k+1]),out);
+          }
+          quad(P(x0,A0.inner[0]),P(x1,A1.inner[0]),P(x1,A1.outer[0]),P(x0,A0.outer[0]),()=>new T.Vector3(0,1,0));
+          quad(P(x0,A0.inner[n-1]),P(x1,A1.inner[n-1]),P(x1,A1.outer[n-1]),P(x0,A0.outer[n-1]),()=>new T.Vector3(0,-1,0));
+        }
+        for(const [i,dir] of [[0,-1],[steps,1]]){
+          const R=cove[i],x=xs[i];
+          for(let k=0;k<R.inner.length-1;k++)quad(P(x,R.inner[k]),P(x,R.inner[k+1]),P(x,R.outer[k+1]),P(x,R.outer[k]),()=>new T.Vector3(dir,0,0));
+        }
+        const coveGeometry=new T.BufferGeometry().setFromPoints(positions.splice(covePositions));coveGeometry.computeVertexNormals();
+        const coveBoard=mesh(coveGeometry,leafGold,g,'Side vault · gilded cove to the chamber vault');
+        coveBoard.userData={status:'CONCEPT · gilded boarding from the chamber vault springing to the side vault; boarding, framing and fixings pending',engineeringApproved:false,source:'Owner request 3 Nov 2026; docs/sanctuary-model.md'};
         // Transverse ribs at both ends and at two stations between, and longitudinal ribs on the
         // same fractions of the profile as the chamber vault, with a gilded boss at each crossing.
         const stations=[0,3,5,steps],paths=rows.map(R=>new T.CatmullRomCurve3(R.inner.map(p=>new T.Vector3(p.x,p.y,0))));
