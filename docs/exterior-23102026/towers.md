@@ -190,13 +190,11 @@ The owner asked that the tower tops look like the design (E01B elevation, sent a
 
 **Checks:** `verify_detail_towers_source.py` (with the new `crown` key), `verify_model`, `verify_exterior_dwg`, `verify_tower_balcony`, `verify_tower_spandrel`, `verify_construction`, `verify_side_dwg`, `verify_simulator --report --estimates`. Headless captures (light graphics) were reviewed: front, diagonal, close crown and cross. No equipment, circuits or routes changed.
 
-### Sandstone accent on the tower-top carving — 3 November 2026
+### Sandstone accent on the tower carving — 3 November 2026
 
-Owner, 3 Nov 2026: the carving at the tower tops was hard to see because it had the same colour as the surface behind it. Every carved part used the cream trim finish (`#efe2c8`) against the cream dome (`#efdfbd`, contrast about 1.03 : 1) and the ivory lantern (`#faf3e1`, about 1.16 : 1). The owner chose **warm sandstone**. These parts now use the existing dark trim finish (`mat.darkTrim`, `#b69b73`, about 2.4 : 1 against the walls), as the old bundle cap's rosettes did:
+Owner, 3 Nov 2026: the carving on the towers was hard to see because it had the same colour as the surface behind it. Every carved part used the cream trim finish (`#efe2c8`) against the cream dome (`#efdfbd`, contrast about 1.03 : 1) and the ivory walls and lantern (`#faf3e1`, about 1.16 : 1). The owner chose **warm sandstone**, first for the tops, then for all stages and the central façade. The carving now uses the existing dark trim finish (`mat.darkTrim`, `#b69b73`, about 2.4 : 1 against the walls), as the old bundle cap's rosettes did:
 
-- the dome rosette tracery and rings;
-- the lantern panel roses and beads;
-- the crown carving and the acanthus crown;
-- the corner pinnacle crowns.
+- **Tops:** the dome rosette tracery and rings, the lantern panel roses and beads, and the crown carving and acanthus crown.
+- **Every stage:** the pier capital foliage (traced E01B/E02 and the illustrative inner rear), the great-arch impost and blind-arch capital foliage, the front and side spandrel sprays, the rose rings and rose tracery, the front cartouche frame and the base Greek-key frieze.
 
-The dome, the lantern body, its frames and bands, the crown bowl, neck and ball stay cream. The cross also keeps the trim finish, like the gable crosses. Only the material changed: geometry, names, placement and the analysis model are unchanged. The colour is **CONCEPT** (appearance only; the stone or paint specification, weathering and maintenance are not chosen). In the drawing (no-colour) view the accent turns grey like the other finishes. The roses and capitals on the lower stages keep the cream trim.
+Owner, 4 Nov 2026: the corner pinnacle crowns go back to cream, like the pinnacle crowns on the façade. Mouldings, cornices, bands, dentils, colonnettes, the louvre-head tracery (over the dark shutter backing), the dome, the lantern body and frames, the crown bowl, neck and ball stay cream. The cross also keeps the trim finish, like the gable crosses. The central façade follows the same rule; see [facade-model.md](../facade-model.md#sandstone-accent-on-the-carving--3-november-2026). Only the material changed: geometry, names, placement and the analysis model are unchanged. The colour is **CONCEPT** (appearance only; the stone or paint specification, weathering and maintenance are not chosen). In the drawing (no-colour) view the accent turns grey like the other finishes.

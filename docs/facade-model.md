@@ -194,3 +194,15 @@ Status: the levels, widths and rib outlines are DRAWN. The square plan of the po
 **Budget:** the façade has 229,316 triangles. The guard in `verify_model.cjs` rises from 230k to 240k, so that the shared crown and fleur geometry, which other passes edit, keeps some headroom.
 
 **Checks:** `verify_model.cjs`, `verify_construction.cjs`, `verify_simulator.cjs --report --estimates` (exit 0), `verify_detail_front_source.py` (`crestRib` 12 rows), `git diff --check`. Headless desktop day views were captured: cresting front and oblique, and the whole front.
+
+## Sandstone accent on the carving · 3 November 2026
+
+Owner, 3 Nov 2026: the carving should read against the cream, as on the towers ([towers.md](exterior-23102026/towers.md#sandstone-accent-on-the-tower-carving--3-november-2026)). In `facade.js` these parts move from the cream trim (`#efe2c8`) to the warm sandstone trim (`mat.darkTrim`, `#b69b73`):
+
+- pier and pilaster capital foliage (traced and illustrative) and the central aedicule pier capital foliage;
+- the arch spandrel leaves (E01B T12);
+- the central rose tracery and carved rosette, and the pedestal rosettes and leaf;
+- the central and side-bay Greek-key friezes;
+- the cresting fleurs-de-lis and the scroll-spur volutes.
+
+Owner, 4 Nov 2026: the crests over the three statues (`Facade niche crest · E01B`) and the pinnacle crowns (pier and aedicule piers) do not need the accent and stay cream. Mouldings, cornices, dentils, bands, impost blocks, the cresting ribs, posts and urns, and the central cross with its disc and foot stay cream. Only the material changed: geometry, names and the analysis model are unchanged. The colour is **CONCEPT**. The side gables, porches and roofline (`roofline.js`, `porches.js`) are not changed.

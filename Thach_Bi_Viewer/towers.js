@@ -612,10 +612,12 @@
       bins.get(key).parts.push([geometry, matrix]);
     };
     const W = mat.wall, S = mat.trim, D = mat.darkTrim, CAP = mat.cap || mat.wall;
-    // Owner, 3 Nov 2026: the carving on the tower tops (dome rosettes, lantern roses and beads, crown
-    // carving and acanthus, corner pinnacle crowns) was lost against the cream dome and lantern (contrast
-    // about 1.03:1), so it takes the warm sandstone trim, as the old bundle cap's rosettes did. The cross
-    // keeps the trim finish, like the gable crosses. Colour CONCEPT.
+    // Owner, 3 Nov 2026: the towers' carving was lost against the cream and ivory finishes (contrast about
+    // 1.03-1.16:1), so it takes the warm sandstone trim, as the old bundle cap's rosettes did: on the top,
+    // dome rosettes, lantern roses and beads, crown carving and acanthus; on every
+    // stage, pier and arch capital foliage, spandrel sprays, roses, cartouche frame and Greek key. Mouldings,
+    // bands, colonnettes, the corner pinnacle crowns (owner, 4 Nov 2026) and the cross keep the trim finish
+    // (the cross like the gable crosses). Colour CONCEPT.
     const ACCENT = D || S;
     // False-door timber (owner, 3 Nov 2026): the blind arches carry fixed timber facings in the main
     // doors' wood, with a darker inset for the sunk panels.
@@ -657,9 +659,9 @@
       const zc = s * spec.centre, C = spec.core, P = spec.pier, E = spec.entablature;
       const Z = t => zc + s * t; // t outward from the tower centre
       // n: 0 = ground, 1..3 = stages 2..4; face = the capital band's front X or side t; the tube sits just proud of it.
-      const capitalFront = (n, side, faceX) => add('Tower pier capital foliage · traced E01B', S, capitalGeo[n],
+      const capitalFront = (n, side, faceX) => add('Tower pier capital foliage · traced E01B', ACCENT, capitalGeo[n],
         place(SC(-side * s, 1, 1), RY(-Math.PI / 2), TR(faceX - spec.capitalStroke, 0, zc)), CAPITAL);
-      const capitalSide = (n, isFront, faceT) => add('Tower pier capital foliage · traced E02', S, capitalGeo[n],
+      const capitalSide = (n, isFront, faceT) => add('Tower pier capital foliage · traced E02', ACCENT, capitalGeo[n],
         place(SC(isFront ? s : -s, 1, 1), RY(s > 0 ? 0 : Math.PI), TR(C, 0, Z(faceT + spec.capitalStroke))), CAPITAL);
       const block = (name, material, [x0, x1], [y0, y1], [t0, t1], status) => {
         const z0 = Z(t0), z1 = Z(t1);
@@ -801,7 +803,7 @@
           const truncated = !outer && !front, xm = truncated ? (x0 + x1) / 2 : FL.x[front ? 0 : 1], tf = outer ? t1 : t0, dir = outer ? 1 : -1;
           block('Tower pier pilaster', W, [xm - .3, xm + .3], [P.pedestal + .02, P.shaft], [tf, tf + dir * .06].sort((a, b) => a - b));
           fluted(FL, [P.pedestal + .02, P.shaft], place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, 0, Z(tf + dir * .06))));
-          if (truncated) add('Tower pier capital foliage · inner rear, illustrative', S, pilasterCapital(.7, (P.capital - P.shaft) * .9), place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, P.shaft, Z(tf + dir * .07))), CARVED);
+          if (truncated) add('Tower pier capital foliage · inner rear, illustrative', ACCENT, pilasterCapital(.7, (P.capital - P.shaft) * .9), place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, P.shaft, Z(tf + dir * .07))), CARVED);
           else capitalSide(0, front, t1 + .04);
         }
         block('Tower pier capital band', S, grow([x0, x1], .04), [P.shaft, P.capital], grow([t0, t1], .04));
@@ -815,7 +817,7 @@
       entab('Tower base architrave', S, [wallFace - .18, wallFace], E.architrave, [-P.t[0], P.t[0]]);
       for (let t = -P.t[0] + .06; t <= P.t[0] - .05; t += .12) entab('Tower base dentil', S, [wallFace - .16, wallFace], E.dentils, [t, t + .06]);
       entab('Tower base frieze', W, [wallFace - .1, wallFace], [E.dentils[1], E.cornice[0]], [-P.t[0], P.t[0]]);
-      add('Tower base Greek-key frieze', S, meanderGeo(2 * P.t[0], E.frieze[1] - E.frieze[0]), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .1, E.frieze[0], Z(-P.t[0]))), CARVED);
+      add('Tower base Greek-key frieze', ACCENT, meanderGeo(2 * P.t[0], E.frieze[1] - E.frieze[0]), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .1, E.frieze[0], Z(-P.t[0]))), CARVED);
       // Cornice over everything, stepping out; its top is the +8.39 ledge the tower floods stand on.
       // Between the piers the cornice keeps the old 0.30 m lip, where the tower floods stand;
       // over the piers it breaks forward with them, as drawn.
@@ -830,7 +832,7 @@
       // Side faces between piers: architrave, frieze and dentils on the outer side.
       entab('Tower base architrave', S, [P.front[1], P.back[0]], E.architrave, [C + spec.wall, C + spec.wall + .18]);
       for (let x = P.front[1] + .06; x <= P.back[0] - .05; x += .12) entab('Tower base dentil', S, [x, x + .06], E.dentils, [C + spec.wall, C + spec.wall + .16]);
-      add('Tower base Greek-key frieze', S, meanderGeo(P.back[0] - P.front[1], E.frieze[1] - E.frieze[0]), place(RY(s > 0 ? 0 : Math.PI), TR(s > 0 ? P.front[1] : P.back[0], E.frieze[0], Z(C + spec.wall + .1))), CARVED);
+      add('Tower base Greek-key frieze', ACCENT, meanderGeo(P.back[0] - P.front[1], E.frieze[1] - E.frieze[0]), place(RY(s > 0 ? 0 : Math.PI), TR(s > 0 ? P.front[1] : P.back[0], E.frieze[0], Z(C + spec.wall + .1))), CARVED);
 
       // ---- Floor at +8.39 in each tower room; the stair in the B-side tower ----
       {
@@ -909,9 +911,9 @@
         }
         const RO = U.rose, major = (RO.rings[0] + RO.rings[1]) / 2, minor = (RO.rings[1] - RO.rings[0]) / 2;
         const roseMatrix = place(RY(-Math.PI / 2), TR(xf - .055, RO.y, Z(cg)));
-        add(label + 'rose ring', S, new T.TorusGeometry(major, minor, 10, 64), roseMatrix);
+        add(label + 'rose ring', ACCENT, new T.TorusGeometry(major, minor, 10, 64), roseMatrix);
         add(label + 'rose-window infill', F.roseMaterial || mat.glass, new T.CircleGeometry(RO.inner, 64), place(RY(-Math.PI / 2), TR(xf - .012, RO.y, Z(cg))), 'TRACED CAD CIRCLE / EXISTING CHOSEN COLOURED FINISH; GLAZING AND OPENING UNCONFIRMED');
-        add(label + 'rose tracery · traced', S, U.stage === 4 ? TG.roseSmall : TG.rose, place(RY(-Math.PI / 2), TR(xf - .025, RO.y, Z(cg))), U.stage === 3 || U.stage === 4 ? TRACED : TRACED_REPEAT);
+        add(label + 'rose tracery · traced', ACCENT, U.stage === 4 ? TG.roseSmall : TG.rose, place(RY(-Math.PI / 2), TR(xf - .025, RO.y, Z(cg))), U.stage === 3 || U.stage === 4 ? TRACED : TRACED_REPEAT);
         for (const centre of WI.centres)
           add(label + 'paired louvre head tracery · traced', S, U.stage === 4 ? TG.head4 : TG.head, place(SC(s, 1, 1), RY(-Math.PI / 2), TR(xf + .04, WI.spring, Z(centre - spec.centre))), U.stage === 2 ? TRACED_REPEAT : TRACED);
         stats.upperFronts++;
@@ -958,9 +960,9 @@
           fb('paired louvre sill',S,[u-WI.rings[2],u+WI.rings[2]],[U.sill-.05,U.sill],[-.14,.26]);
         }
         const RO=U.rose,rm=fm(roseU,RO.y,.195);
-        add(label+'rose ring',S,new T.TorusGeometry((RO.rings[0]+RO.rings[1])/2,(RO.rings[1]-RO.rings[0])/2,10,64),rm,status);
+        add(label+'rose ring',ACCENT,new T.TorusGeometry((RO.rings[0]+RO.rings[1])/2,(RO.rings[1]-RO.rings[0])/2,10,64),rm,status);
         add(label+'rose-window infill',F.roseMaterial||mat.glass,new T.CircleGeometry(RO.inner,64),fm(roseU,RO.y,.152),status+' / EXISTING COLOURED FINISH; GLAZING AND OPENING UNCONFIRMED');
-        add(label+'rose tracery · traced',S,U.stage===4?TG.roseSmall:TG.rose,fm(roseU,RO.y,.165),F.kind==='outer'?TRACED_REPEAT:status+' / TRACED E01B ROSE REPEATED');
+        add(label+'rose tracery · traced',ACCENT,U.stage===4?TG.roseSmall:TG.rose,fm(roseU,RO.y,.165),F.kind==='outer'?TRACED_REPEAT:status+' / TRACED E01B ROSE REPEATED');
         for(const u of centres) add(label+'paired louvre head tracery · traced',S,U.stage===4?TG.head4:TG.head,fm(u,WI.spring,.10),F.kind==='outer'?TRACED_REPEAT:status+' / TRACED E01B HEAD REPEATED');
         stats.upperOtherFaces=(stats.upperOtherFaces||0)+1;
       }
@@ -1003,16 +1005,16 @@
         // Capital block over all three orders, t 1.293–1.955 as drawn (abacus to E01B Z 8.860).
         const [c0, c1] = e > 0 ? [A.capital, A.impost[1] + .03] : [-A.impost[1] - .03, -A.capital];
         block('Tower front impost capital', S, [wallFace - .2, wallFace], [A.spring - .5, A.spring], [c0, c1]);
-        add('Tower front impost capital foliage · traced E01B', S, TG.great, place(SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .2 - .008, A.spring, zc)), e < 0 ? TRACED : TRACED_REPEAT);
+        add('Tower front impost capital foliage · traced E01B', ACCENT, TG.great, place(SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .2 - .008, A.spring, zc)), e < 0 ? TRACED : TRACED_REPEAT);
         // Colonnettes of the blind arch.
         const tcol = e * B.colonnette;
         add('Tower blind-arch colonnette', S, new T.CylinderGeometry(.085, .095, B.spring - .65, 14), TR(wallFace - .14, .3 + (B.spring - .65) / 2, Z(tcol)));
         block('Tower blind-arch colonnette base', S, [wallFace - .26, wallFace], [0, .3], [tcol - .14, tcol + .14]);
         block('Tower blind-arch colonnette capital', S, [wallFace - .27, wallFace], [B.spring - .35, B.spring], [tcol - .16, tcol + .16]);
-        add('Tower blind-arch capital foliage · traced E01B', S, TG.blind, place(SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .27 - .007, B.spring, zc)), e < 0 ? TRACED : TRACED_REPEAT);
+        add('Tower blind-arch capital foliage · traced E01B', ACCENT, TG.blind, place(SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .27 - .007, B.spring, zc)), e < 0 ? TRACED : TRACED_REPEAT);
         // E01B H-front outlines: independently drawn inner/outer corners. B repeats
         // the H profiles (DERIVED); stroke thickness and relief remain conceptual.
-        add('Tower front spandrel spray', S, towerLeaves[e > 0 ? 'outer' : 'inner'],
+        add('Tower front spandrel spray', ACCENT, towerLeaves[e > 0 ? 'outer' : 'inner'],
           place(SC(e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .025, 0, zc)),
           'E01B H FRONT TRACED / B REPEATED DERIVED / RELIEF CONCEPT');
       }
@@ -1029,7 +1031,7 @@
       // Cartouche in the tympanum between the two arches, and the moulded sill of the big arch.
       for (const flat of spec.cartouche) {
         const pts = []; for (let i = 0; i < flat.length; i += 2) pts.push([wallFace - .03, flat[i + 1], Z(flat[i])]);
-        add('Tower front cartouche frame', S, K.stem(pts, .022, .022, Math.max(4, pts.length * 2), 6), null, CARVED);
+        add('Tower front cartouche frame', ACCENT, K.stem(pts, .022, .022, Math.max(4, pts.length * 2), 6), null, CARVED);
       }
       block('Tower front arch sill band', S, [wallFace - .12, wallFace], [A.spring - .08, A.spring], [-A.r[0], A.r[0]]);
       // ---- Outer ground face: E02 has its own great arch and higher blind arch ----
@@ -1060,14 +1062,14 @@
           // E02 draws the same acanthus capitals as the front imposts and colonnettes; carving illustrative.
           const faceRot = RY(s > 0 ? 0 : Math.PI);
           // E02 draws the E01B capitals unchanged (within 0.1 mm), the blind one 200.5 mm higher.
-          add('Tower side great capital foliage · traced E02', S, TG.great, place(SC(-e * s, 1, 1), faceRot, TR(SB.centreX, SB.greatSpring, Z(C + spec.wall + .14 + .008))), TRACED_REPEAT);
-          add('Tower side blind capital foliage · traced E02', S, TG.blind, place(SC(-e * s, 1, 1), faceRot, TR(SB.centreX, SB.blindSpring, Z(C + spec.wall + .27 + .007))), TRACED_REPEAT);
+          add('Tower side great capital foliage · traced E02', ACCENT, TG.great, place(SC(-e * s, 1, 1), faceRot, TR(SB.centreX, SB.greatSpring, Z(C + spec.wall + .14 + .008))), TRACED_REPEAT);
+          add('Tower side blind capital foliage · traced E02', ACCENT, TG.blind, place(SC(-e * s, 1, 1), faceRot, TR(SB.centreX, SB.blindSpring, Z(C + spec.wall + .27 + .007))), TRACED_REPEAT);
           const x = SB.centreX + e * B.colonnette;
           add('Tower side blind colonnette · E02', S, new T.CylinderGeometry(.085, .095, SB.blindSpring - .65, 14), TR(x, .3 + (SB.blindSpring - .65) / 2, Z(C + spec.wall + .14)));
           block('Tower side blind capital · E02', S, [x - .16, x + .16], [SB.blindSpring - .35, SB.blindSpring], [C + spec.wall, C + spec.wall + .27]);
           // E02 draws the same T12 leaf pair round the side great arch (all 150 arc centres,
           // radii and end points of both profiles within 0.1 mm about X 2.450). Relief CONCEPT.
-          add('Tower side spandrel spray · E02', S, towerLeaves[e > 0 ? 'outer' : 'inner'], at('outer', u, 0, .025, SC(e, 1, 1)),
+          add('Tower side spandrel spray · E02', ACCENT, towerLeaves[e > 0 ? 'outer' : 'inner'], at('outer', u, 0, .025, SC(e, 1, 1)),
             'E02 SIDE MATCHES TRACED T12 PROFILE / RELIEF CONCEPT');
         }
       }
@@ -1271,7 +1273,7 @@
       const BP=spec.balcony,crown=pinnacleCrown(),base=BP.front.rail[0].y,sc=(BP.finialTop-base)/crown.boundingBox.max.y;
       for(const ex of [-1,1])for(const ez of [-1,1]){
         const px=BP.side.centre+ex*BP.finialOffset,pz=s*(BP.front.centre+ez*BP.finialOffset);
-        add('Tower corner pinnacle crown',ACCENT,crown,place(SC(sc),RY(Math.atan2(ex,s*ez)),TR(px,base,pz)),CARVED+' / NATIVE BASE/APEX; CORNER PLAN POSITION DERIVED');
+        add('Tower corner pinnacle crown',S,crown,place(SC(sc),RY(Math.atan2(ex,s*ez)),TR(px,base,pz)),CARVED+' / NATIVE BASE/APEX; CORNER PLAN POSITION DERIVED');
       }
     });
 
