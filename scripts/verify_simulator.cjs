@@ -137,7 +137,7 @@ assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.i
 // axis-9/D column axis and its canopy meets the abacus, as it met the plain capital before.
 {
   const known = new Set(['Ambo key light|Column carving · capital bell']), contacts = new Map(), v = new T.Vector3();
-  const carved = nodes.filter(o => o.isMesh && /^(Column carving|Gilded column capital|Main tie beam|Side beam|Longitudinal column-line beam|Side vault)/.test(o.name) && !/as drawn$|concept proxy$/.test(o.name));
+  const carved = nodes.filter(o => o.isMesh && /^(Column carving|Gilded column capital|Main tie beam|Side beam|Longitudinal column-line beam|Side vault|Vault coffer|Reredos lower panel|Shrine shelf ·)/.test(o.name) && !/as drawn$|concept proxy$/.test(o.name));
   building.updateMatrixWorld(true);
   const boxes = carved.map(o => new T.Box3().setFromObject(o));
   for (const fx of SIM.fixtures.values()) {
@@ -165,7 +165,7 @@ assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.i
     const sx = sandbox.CHURCH_SANCTUARY.spec, ray = new T.Raycaster(), boards = nodes.filter(o => o.isMesh && o.name === 'Side vault · gilded boarding');
     assert.equal(boards.length, 2);
     building.updateMatrixWorld(true);
-    const vaultParts = nodes.filter(o => o.isMesh && /^(Side vault|Gilded vault boss|Vault rosette|Front frame|Chamber side lintel|Axis-11 side)/.test(o.name));
+    const vaultParts = nodes.filter(o => o.isMesh && /^(Side vault|Gilded vault boss|Vault rosette|Vault coffer|Front frame|Chamber side lintel|Axis-11 side)/.test(o.name));
     const ribs = nodes.filter(o => o.isMesh && o.name === 'Side vault longitudinal rib');
     const lights = SIM.state.items.filter(it => /^(Statue accent|Shrine wash) · [BH]$/.test(it.name));
     assert.equal(lights.length, 4, 'four shrine lights under the side vaults');

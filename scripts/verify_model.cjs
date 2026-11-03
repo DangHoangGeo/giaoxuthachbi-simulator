@@ -492,6 +492,10 @@ assert(bounds(vault).min.y>=S.centralArch.spring-.001&&bounds(vault).max.y<12.1,
   assert(nodes.filter(o=>o.name==='Vault springing cornice').every(o=>o.material===nodes.find(n=>n.name==='Gilded cornice edge').material),'Springing cornice is gilded');
   assert(!nodes.some(o=>/^(Chamber wall pilaster|Chamber lintel soffit moulding)$/.test(o.name)),'no lacquered pilasters or soffit moulding left on the lintel');
   assert.equal(nodes.filter(o=>o.name==='Side vault rib · lacquered timber').length,8,'Four lacquered transverse ribs per vault');
+  assert.equal(nodes.filter(o=>o.name==='Vault coffer · inset lacquer moulding').length,12,'Twelve inset chamber-vault field borders follow the vault');
+  assert.equal(nodes.filter(o=>o.name==='Vault coffer · side inset lacquer moulding').length,18,'Nine inset side-vault borders per side');
+  assert.equal(nodes.filter(o=>o.name==='Reredos lower panel · carved lotus').length,7,'Seven carved reredos lower panels');
+  assert.equal(nodes.filter(o=>o.name==='Shrine shelf · carved floral panel').length,10,'Five connected shelf panels per shrine');
   assert.equal(nodes.filter(o=>o.name==='Side vault longitudinal rib').length,18,'Five lacquered longitudinal ribs per vault, as in the chamber vault, and four on each gilded cove (owner, 3 Nov 2026)');
   // USER CONFIRMED 1 Nov 2026: the vaults meet the frame with no gap, so the front edge is the back face of the axis-10 side spandrels.
   const spandrels=nodes.filter(o=>o.isMesh&&o.name==='Front frame side spandrel');

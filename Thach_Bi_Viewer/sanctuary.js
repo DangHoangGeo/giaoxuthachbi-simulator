@@ -412,7 +412,14 @@
     // Friezes between the cornices, and small spires on the gradine either side of the tabernacle.
     plate(center,6.4,.18,0,1.02,.521,gilded,'Reredos frieze relief');plate(center,6.4,.11,0,2.375,.521,gilded,'Reredos frieze relief');
     for(const u of [-2.95,-1.6,1.6,2.95])mesh(smallSpire,gold,center,'Carved pinnacle',u,2.59,.42);
-    for(let u=-2.7;u<3;u+=.9)panel(center,u,1.72,.78,.86,.4);
+    // Rooted lotus-and-leaf carving on the existing lower panels: each motif has its
+    // own inner moulding and stays within the existing panel outline.
+    const lowerCarving=K.panel({w:.62,h:.68});
+    for(let u=-2.7;u<3;u+=.9){
+      panel(center,u,1.72,.78,.86,.4);
+      mesh(lowerCarving,gold,center,'Reredos lower panel · carved lotus',u,1.72,.493);
+    }
+
 
     // Front frame on the column line: central lobed arch between the D/E columns and a
     // smaller lobed arch over each shrine, with the spandrels closed up to the roof lining.
@@ -477,6 +484,27 @@
       const p=vaultPath.getPoint(t);box(front,.09,.09,-depth-.2,p.x,p.y-.03,(depth-.16)/2,wood,'Chamber vault longitudinal rib');
       for(const v of [-1,-1.85,-2.7,-3.55])vaultBoss(front,p.x,p.y-.07,v);
     }
+    // Thin inset lacquer lines trace the existing coffer fields, following the
+    // actual vault curve and stopping short of the structural-looking ribs.
+    // Their shallow projection is appearance only, with no changed vault shell.
+    const vaultBands=[.14,.32,.5,.68,.86], vaultStations=[-3.55,-2.7,-1.85,-1];
+    for(let i=0;i<vaultBands.length-1;i++)for(let j=0;j<vaultStations.length-1;j++){
+      const t0=vaultBands[i]+.018,t1=vaultBands[i+1]-.018,v0=vaultStations[j]+.10,v1=vaultStations[j+1]-.10;
+      const at=(t,v)=>{const p=vaultPath.getPoint(t);return [p.x,p.y-.018,v];};
+      const edge=[];
+      for(let k=0;k<=8;k++)edge.push(at(t0+(t1-t0)*k/8,v0));
+      edge.push(at(t1,v1));
+      for(let k=8;k>=0;k--)edge.push(at(t0+(t1-t0)*k/8,v1));
+      edge.push(at(t0,v0));
+      line(front,edge,.010,wood,'Vault coffer · inset lacquer moulding');
+      // A single connected stem and paired curved leaves sit on the same surface.
+      const mid=(v0+v1)/2,dt=t1-t0;
+      line(front,Array.from({length:9},(_,k)=>at(t0+dt*(.2+.6*k/8),mid)),.007,wood,'Vault coffer · foliate stem');
+      for(const e of [-1,1])for(const q of [.36,.62]){
+        const t=t0+dt*q;
+        line(front,[at(t,mid),at(t+dt*.05,mid+e*.07),at(t+dt*.16,mid+e*.11),at(t+dt*.12,mid+e*.04),at(t,mid)],.006,wood,'Vault coffer · foliate leaf');
+      }
+    }
     const back=lobed(0,A.half,A);back.lineTo(A.half,DAIS);back.lineTo(-A.half,DAIS);back.closePath();back.holes.push(opening(N.lining));
     mesh(new T.ExtrudeGeometry(back,{depth:.1,bevelEnabled:false,curveSegments:32}),wood,front,'Chamber back lining · lacquered timber',0,0,spec.frameX-48.5);
     // The plaster back wall on axis 11 opens for the niche in the same outline.
@@ -520,6 +548,11 @@
       const g=group(sign<0?'Our Lady shrine · axis 11':'Saint Joseph shrine · axis 11',spec.wingX,sign*spec.wingZ);
       for(const e of [-1,1]){box(g,.57,2.75-SIDE,1.25,e*1.03,(2.75+SIDE)/2,-.35,wood,'Service entrance jamb');box(g,.63,.8-SIDE,1.32,e*1.03,(.8+SIDE)/2,-.35,stone,'Stone doorway base');plate(g,.5,1.9,e*1.03,1.78,.279,gilded,'Shrine jamb relief',true);vine(g,e*1.03,.85,1.85,.31);}
       box(g,2.7,.3,1.35,0,2.7,-.33,wood,'Raised statue shelf above entrance');plate(g,2.66,.2,0,2.7,.349,gilded,'Shrine shelf frieze');
+      // Joined floral panels give the shelf a carved face beneath the niche;
+      // the detail is inside the existing shelf footprint and clears the doors.
+      const shelfCarving=K.panel({w:.39,h:.145});
+      line(g,[[-1.17,2.7,.352],[1.17,2.7,.352]],.008,gold,'Shrine shelf · linking stem');
+      for(const u of [-.95,-.475,0,.475,.95])mesh(shelfCarving,gold,g,'Shrine shelf · carved floral panel',u,2.7,.357);
       for(const y of [2.55,2.84])box(g,2.75,.05,1.4,0,y,-.32,gold,'Shelf gilded moulding');
       // A lacquered wall behind the shrine closes the whole bay above the shelf, from the
       // pier line to the C/G wall and up to the roof lining, so the service room behind does
@@ -648,6 +681,19 @@
         for(const at of ribLines){
           line(g,xs.map((x,i)=>{const p=at(i);return [x,p.y-.03,sign*p.x];}),.045,wood,'Side vault longitudinal rib');
           for(const i of stations){const p=at(i);vaultBoss(g,xs[i],p.y-.07,sign*p.x);}
+        }
+        // Inset lines continue the chamber's coffer vocabulary over the outer
+        // side-vault fields. The inner strip carries the shrine lights and stays clear.
+        const bands=[.32,.5,.68,.86];
+        for(let j=0;j<stations.length-1;j++)for(let k=0;k<bands.length-1;k++){
+          const x0=xs[stations[j]]+.10,x1=xs[stations[j+1]]-.10,t0=bands[k]+.018,t1=bands[k+1]-.018;
+          const at=(x,t)=>{const p=new T.CatmullRomCurve3(profile(x).inner.map(q=>new T.Vector3(q.x,q.y,0))).getPoint(t);return [x,p.y-.018,sign*p.x];};
+          const edge=[];
+          for(let n=0;n<=6;n++)edge.push(at(x0,t0+(t1-t0)*n/6));
+          edge.push(at(x1,t1));
+          for(let n=6;n>=0;n--)edge.push(at(x1,t0+(t1-t0)*n/6));
+          edge.push(at(x0,t0));
+          line(g,edge,.009,wood,'Vault coffer · side inset lacquer moulding');
         }
       }
     }
