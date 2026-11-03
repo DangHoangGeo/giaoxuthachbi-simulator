@@ -139,7 +139,10 @@
     const rearOld = /^(Schematic pilaster|Pilaster plinth|Pilaster base cap|Schematic beam|Schematic block|Schematic end eave ornament)$/;
     // The bundle centre arch (an elliptical 0.13 m moulding from +4.3) and its two columns at |Z| 2.5 give
     // way to the E03 archivolt and coupled columns; the window surrounds of the same names stay.
-    const rearArch = (m, b) => m.name === 'Schematic arch moulding' ? b.max.y > 4 : /^(Schematic round profile|Column base|Capital)$/.test(m.name) && Math.abs(Math.abs((b.min.z + b.max.z) / 2) - 2.5) < .1;
+    // Owner, 3 Nov 2026: the five ground windows (bundle 1.3 m timber openings, their surrounds,
+    // colonnettes, joinery and sills) also go; fixed false windows after E03 are built below.
+    const rearArch = (m, b) => /^(Opening infill|Schematic joinery mullion|Joinery rail|Window sill|Schematic arch moulding)$/.test(m.name)
+      || /^(Schematic round profile|Column base|Capital)$/.test(m.name) && (b.max.y < 3.2 || Math.abs(Math.abs((b.min.z + b.max.z) / 2) - 2.5) < .1);
     rearGroup?.traverse(m => { if (m.isMesh && m.name !== 'Ornate opposite-end gable' && (rearOld.test(m.name) || rearArch(m, box3.setFromObject(m)) || box3.min.y > 7.55)) remove.push(m); });
     remove.forEach(o => o.removeFromParent());
     sideGroups.forEach(g => g.removeFromParent());
@@ -170,7 +173,7 @@
       if (!bins.has(key)) bins.set(key, { name, material, status, parts: [] });
       bins.get(key).parts.push([geometry, matrix]);
     };
-    const W = mat.wall, S = mat.trim, D = mat.darkTrim;
+    const W = mat.wall, S = mat.trim;
     const stats = { pinnacles: 0, crosses: 0, balusters: 0, removedBundleMeshes: remove.length + sideGroups.length, removedLegacyLower: legacyLower.length };
     // Shared carving generators have a nominal height; fit their actual vertex bounds
     // to the source envelope so the last leaf does not stop short of the CAD top.
@@ -298,7 +301,8 @@
         // so using the outer source radius directly would make the ring too large.
         for (let i = 0; i < rings.length; i += 2)
           add('Gable rose ring', S, new T.TorusGeometry((rings[i] + rings[i + 1]) / 2, (rings[i] - rings[i + 1]) / 2, 10, 96), at(u, v, w));
-        add('Gable rose tracery · EW', S, ew('wingRose', .01), at(u, v - 7.571528705, w - .02), EW);
+        // 16 mm stroke (was 10 mm): the tracery broke up into dots at viewing distance (owner, 3 Nov 2026).
+        add('Gable rose tracery · EW', S, ew('wingRose', .016), at(u, v - 7.571528705, w - .02), EW);
       };
       // Crowning aedicule: lobed niche between two piers with pinnacles, volutes, ball and cross.
       const aedicule = (E, d = GD) => {
@@ -312,7 +316,9 @@
         body.holes.push(new T.Path((T.ShapeUtils.isClockWise(hole.map(([u, v]) => new T.Vector2(u, v))) ? hole : hole.slice().reverse()).map(([u, v]) => new T.Vector2(u, v))));
         slab('Gable aedicule body', W, body, -.2, d, 'CAD ARC ENVELOPE / DERIVED DEPTH');
         const niche = poly([[inner.at(-1)[0], E.base], [inner[0][0], E.base], ...inner]);
-        slab('Gable aedicule niche', D, niche, -.08, -.07);
+        // Owner, 3 Nov 2026: the niche back and the turret openings read gold in the dark trim; they take
+        // the wall finish like the rest of the crown, and the 0.30 m recess carries the niche.
+        slab('Gable aedicule niche', W, niche, -.08, -.07);
         const envTop = Math.max(...envelope.map(p => p[1]));
         blk('Gable aedicule pedestal', S, [-.42, .42], [E.base + .1, E.base + .55], [-.07, d + .03]);
         // EW levels are given from the wing aedicule base +9.829529; dv moves them to E03's.
@@ -329,7 +335,7 @@
           tb('Gable aedicule turret', W, .16, [12.015, 12.381]);
           const op = new T.Shape(); op.moveTo(-.08, 0); op.lineTo(.08, 0); op.lineTo(.08, .187);
           op.absarc(-.073, .187, .153, 0, Math.acos(.073 / .153), false); op.absarc(.073, .187, .153, Math.PI - Math.acos(.073 / .153), Math.PI, false); op.lineTo(-.08, 0);
-          add('Gable aedicule turret opening', D, new T.ExtrudeGeometry(op, { depth: .006, bevelEnabled: false, curveSegments: 8 }), at(pc, 12.015 + dv, wc + .16), EWD);
+          add('Gable aedicule turret opening', W, new T.ExtrudeGeometry(op, { depth: .006, bevelEnabled: false, curveSegments: 8 }), at(pc, 12.015 + dv, wc + .16), EWD);
           tb('Gable aedicule turret eave', S, .2, [12.381, 12.435]);
           add('Gable aedicule turret gablet', S, new T.ConeGeometry(Math.SQRT2, 1, 4, 1), at(pc, 12.557 + dv, wc, K.RY(Math.PI / 4), SC(.228, .244, .228)), EWD);
           add('Gable aedicule turret spire', S, new T.CylinderGeometry(.061 * Math.SQRT2, .175 * Math.SQRT2, .622, 4, 1), at(pc, 12.746 + dv, wc, K.RY(Math.PI / 4)), EWD);
@@ -343,7 +349,10 @@
           const sil = [[1.06, 9.83], [1.425, 9.8295], [1.905, 9.4697], [1.905, 9.80], [2.02, 9.85], [2.02, 9.98], [1.85, 10.05], [1.74, 10.02], [1.78, 10.2], [1.76, 10.38], [1.66, 10.56], [1.52, 10.78], [1.38, 11.05], [1.29, 11.35], [1.25, 11.62], [1.26, 11.78], [1.2, 11.86], [1.06, 11.86]];
           const c = poly(sil.map(([u, v]) => [e * u, v + dv]));
           slab('Gable aedicule console', W, e > 0 ? c : poly(sil.map(([u, v]) => [e * u, v + dv]).reverse()), 0, d, EWD);
-          add('Gable aedicule console acanthus · EW', S, ew('wingVolute', .016), at(0, dv, d + .016, SC(e, 1, 1)), EW);
+          // Owner, 3 Nov 2026 (clarity): a 25 mm solid leaf under the acanthus and a 22 mm stroke on top, so
+          // the scroll reads at viewing distance instead of breaking into a dotted wire. Relief DERIVED.
+          addSolid('Gable aedicule console acanthus solid · EW', solid(window.CHURCH_FACADE_CREST_PROFILE.wingVolute, 'wingVolute', .025), at(0, dv, d, SC(e, 1, 1)), EW);
+          add('Gable aedicule console acanthus · EW', S, ew('wingVolute', .022), at(0, dv, d + .025, SC(e, 1, 1)), EW);
         }
         // Arch moulding over the niche, crest, ball and trefoil cross.
         slab('Gable aedicule arch moulding', S, poly([...outer, ...inner.slice().reverse()]), d - .02, d + .06);
@@ -543,14 +552,17 @@
         const C = RG.crest, [c0, c1] = e > 0 ? C.u : [-C.u[1], -C.u[0]], m = SC(e, 1, 1);
         // E03 porch-end cresting (LINEs D90C8E–D90C92): plain band, frieze of roundels and pointed
         // ovals, fillet, then the traced scroll-and-palmette cresting standing on it to +7.613.
+        // Owner, 3 Nov 2026: E03 draws solid wall between the ground cornice (+6.323919) and the parapet
+        // band; it was open to the porch roof behind. Depth DERIVED (back to the gable wall plane).
+        f.blk('Rear gable porch-end parapet wall', W, [c0, c1], [6.323919, C.band[0]], [-.44, .26], EWD);
         f.blk('Rear gable porch-end parapet', S, [c0, c1], [C.band[0], 6.935776], [0, .30], EWD);
         f.blk('Rear gable porch-end parapet', S, [c0, c1], [6.935776, 7.015776], [0, .27], EWD);
         f.blk('Rear gable porch-end parapet', S, [c0, c1], [7.015776, C.band[1]], [0, .32], EWD);
         add('Rear gable porch-end cresting · E03', S, e03('rearPorchCrest', .009), f.at(0, 0, .25, m), E03C);
         addSolid('Rear gable porch-end cresting solid · E03', solid(window.CHURCH_DETAIL_PROFILE_REAR.rearPorchCrest, 'porch'), f.at(0, 0, .22, m), E03C);
         // Scallops and finials on both rakes (crest=false drops the shared fleur crest).
-        add('Rear gable rake cresting · E03', S, e03('rearRakeCrestLow', .012), f.at(0, 0, .21, m), E03C);
-        add('Rear gable rake cresting · E03', S, e03('rearRakeCrestUp', .012), f.at(0, 0, .21, m), E03C);
+        add('Rear gable rake cresting · E03', S, e03('rearRakeCrestLow', .016), f.at(0, 0, .21, m), E03C);
+        add('Rear gable rake cresting · E03', S, e03('rearRakeCrestUp', .016), f.at(0, 0, .21, m), E03C);
         // The crest posts and swags are bands drawn by two edge curves about 0.1 m apart: a 50 mm closing
         // fills each band, and the rake top (the polygon's upper edge, left out of the trace) closes the
         // post feet; the arches between posts stay open.
@@ -560,9 +572,14 @@
         // a raised quarter disc to the outer ring r 1.2317 (relief DERIVED) carrying the traced fan.
         const fan = new T.Shape(); fan.moveTo(0, 0); fan.absarc(0, 0, 1.2317, 0, Math.PI / 2, false); fan.lineTo(0, 0);
         add('Rear gable lunette relief', W, new T.ExtrudeGeometry(fan, { depth: .03, bevelEnabled: false, curveSegments: 24 }), f.at(e * 3.935012, 6.323919, 0, SC(e, 1, 1)), EWD);
-        add('Rear gable lunette · E03', S, e03('rearLunette', .012, true), f.at(0, 0, .042, m), E03C);
-        add('Rear centre-arch spandrel leaf · E03', S, e03('rearArchLeaf', .012, true), f.at(0, 0, .012, m), E03C);
-        add('Rear bay corner leaf · E03', S, e03('rearBayLeaves', .01), f.at(0, 0, .012, m), E03C);
+        // Owner, 3 Nov 2026 (clarity): the 10–12 mm strokes broke into dots at viewing distance. Strokes are
+        // now 16–18 mm and the leaves stand on a 20 mm solid fill of their closed outline. Relief DERIVED.
+        const R03 = window.CHURCH_DETAIL_PROFILE_REAR;
+        add('Rear gable lunette · E03', S, e03('rearLunette', .018, true), f.at(0, 0, .048, m), E03C);
+        addSolid('Rear centre-arch spandrel leaf solid · E03', solid(R03.rearArchLeaf, 'rearArchLeaf', .02), f.at(0, 0, 0, m), E03C);
+        add('Rear centre-arch spandrel leaf · E03', S, e03('rearArchLeaf', .018, true), f.at(0, 0, .02, m), E03C);
+        addSolid('Rear bay corner leaf solid · E03', solid(R03.rearBayLeaves, 'rearBayLeaves', .02), f.at(0, 0, 0, m), E03C);
+        add('Rear bay corner leaf · E03', S, e03('rearBayLeaves', .016), f.at(0, 0, .02, m), E03C);
         // E03 centre arch (ARCs D917ED–D917F3 about u 0, +4.6642): stepped archivolt between the drawn
         // radii, the intrados carried to the floor as a reveal strip (LINE at u 1.6875), and a coupled
         // pair of columns on one impost (u 1.7925–2.5556, +4.5517–4.6642). The front column axis is
@@ -586,6 +603,89 @@
         if (e > 0) for (const [r0, r1, w] of [[1.6875, 1.9355, .1], [1.9355, 2.1115, .14], [2.1115, 2.1465, .18], [2.1465, 2.3325, .12], [2.3325, 2.3675, .16], [2.3675, 2.4375, .2]]) {
           const ring = new T.Shape(); ring.absarc(0, AC, r1, 0, Math.PI, false); ring.absarc(0, AC, r0, Math.PI, 0, true);
           f.slab('Rear centre-arch archivolt · E03', S, ring, 0, w, EWD, 48);
+        }
+      }
+      // Owner, 3 Nov 2026: the five ground windows are fixed false windows that look like real ones, with
+      // coloured glass in the arched heads; nothing opens and the wall stays closed behind them. E03 draws
+      // them (ARCs D917AE–D917DE; LINEs at u ±0.5, ±0.61–0.8182 and the horizontals): centres u 0, ±5.48,
+      // ±8.967; clear width 1.0; low panel +0–0.75 (rosette, four slots in the outer bays); sill bands
+      // +0.75/0.79/0.85; glazed body to +2.9505; transom to +3.1005; head on a semicircle r 0.5 about
+      // +3.2005; archivolt rings r 0.61/0.69/0.71/0.775/0.795; colonnettes r 0.065 at 0.7532 from the axis
+      // with a respond strip 0.61–0.6882. The bundle's 1.3 m openings are filled with wall 0.10 m behind
+      // the face (interior face X 52.796). Depths, joinery, glass colour and art are CONCEPT.
+      {
+        const st = 'FIXED FALSE WINDOW · E03 DRAWN OUTLINE / CONCEPT DEPTH, JOINERY AND GLASS';
+        const WOOD = mat.wood || S, BRONZE = mat.metal || S, art = window.CHURCH_GLASS_ART;
+        const pane = new T.MeshStandardMaterial({ name: 'Fixed window glazing · closed behind', color: '#33424a', roughness: .1, metalness: .35, envMapIntensity: 1.2 });
+        // The heads keep their colour whatever the glass setting: these windows are fixed and closed behind.
+        const headGlass = design => {
+          if (!art) return pane;
+          const c = art.fanlight(art.FAN_DESIGNS[design % art.FAN_DESIGNS.length], { width: 1, bottom: 3.1005, spring: 3.2005, rise: .5, sectors: 6 });
+          // The drawn head starts 0.10 below the spring: a row of leaded blue, red and gold pieces there.
+          const g = c.getContext('2d'), y0 = Math.round(c.height * 5 / 6), n = 8, cw = c.width / n;
+          for (let i = 0; i < n; i++) { g.fillStyle = ['#2a579b', '#9b1d23', '#e6b23a', '#9b1d23'][i % 4]; g.fillRect(i * cw, y0, cw, c.height - y0); }
+          g.strokeStyle = '#1d1813'; g.lineWidth = 6;
+          for (let i = 0; i <= n; i++) { g.beginPath(); g.moveTo(i * cw, y0); g.lineTo(i * cw, c.height); g.stroke(); }
+          g.strokeRect(0, y0, c.width, c.height - y0);
+          const t = new T.CanvasTexture(c);
+          t.colorSpace = T.SRGBColorSpace; t.anisotropy = 4;
+          return new T.MeshStandardMaterial({ name: `Fixed window stained-glass head ${design + 1}`, map: t, emissive: '#ffffff', emissiveMap: t, emissiveIntensity: .15, roughness: .32 });
+        };
+        const rod = (name, m, [u0, v0], [u1, v1], w, r) => add(name, m, new T.CylinderGeometry(r, r, Math.hypot(u1 - u0, v1 - v0), 8), f.at((u0 + u1) / 2, (v0 + v1) / 2, w, K.RZ(Math.atan2(v1 - v0, u1 - u0) - Math.PI / 2)), st);
+        const archShape = (c, r0, r1, v0, sp) => {
+          const s = new T.Shape(); s.moveTo(c + r1, v0); s.lineTo(c + r1, sp); s.absarc(c, sp, r1, 0, Math.PI, false); s.lineTo(c - r1, v0);
+          if (r0 > 0) { s.lineTo(c - r0, v0); s.lineTo(c - r0, sp); s.absarc(c, sp, r0, Math.PI, 0, true); s.lineTo(c + r0, v0); }
+          s.lineTo(c + r1, v0); return s;
+        };
+        const SP = 3.2005, TOP = 3.1005;
+        for (const [c, design, slots] of [[-8.967, 2, true], [-5.48, 0, false], [0, 4, false], [5.48, 1, false], [8.967, 3, true]]) {
+          // Close the bundle opening (1.3 m, semicircle r 0.65 on +3.02), then the wall face round the drawn one.
+          const hole = new T.Shape(); hole.moveTo(c - .65, 0); hole.lineTo(c + .65, 0); hole.lineTo(c + .65, 3.02); hole.absarc(c, 3.02, .65, 0, Math.PI, false); hole.lineTo(c - .65, 0);
+          f.slab('Rear fixed window wall closure', W, hole, -.444, -.1, st, 24);
+          const face = new T.Shape(); face.moveTo(c - .68, 0); face.lineTo(c + .68, 0); face.lineTo(c + .68, 3.75); face.lineTo(c - .68, 3.75); face.lineTo(c - .68, 0);
+          face.holes.push(new T.Path(archShape(c, 0, .5, 0, SP).getPoints(24).reverse()));
+          f.slab('Rear fixed window reveal', W, face, -.1, -.006, st, 24);
+          // Low panel with its frames, then a rosette (inner bays and centre) or four tablets (outer bays).
+          f.blk('Rear fixed window low panel', W, [c - .5, c + .5], [0, .75], [-.1, -.07], st);
+          for (const [hw, v0, v1, w] of [[.4, .1, .65, .03], [.35, .15, .6, .02], [.325, .175, .575, .012]]) if (!slots || hw === .4)
+            for (const [a, b, p, q] of [[-hw, hw, v1 - .025, v1], [-hw, hw, v0, v0 + .025], [-hw, -hw + .025, v0, v1], [hw - .025, hw, v0, v1]]) f.blk('Rear fixed window panel frame', S, [c + a, c + b], [p, q], [-.07, -.07 + w], st);
+          if (slots) for (const o of [-.33, -.11, .11, .33]) {
+            f.blk('Rear fixed window panel tablet', S, [c + o - .055, c + o + .055], [.1, .65], [-.07, -.045], st);
+            f.blk('Rear fixed window panel tablet', S, [c + o - .03, c + o + .03], [.075, .675], [-.07, -.045], st);
+          } else add('Rear fixed window panel rosette · EW', S, ew('windowRosette', .006), f.at(c, 0, -.04), EW);
+          f.blk('Rear fixed window sill band', S, [c - .5, c + .5], [.75, .79], [-.1, -.03], st);
+          f.blk('Rear fixed window sill band', S, [c - .5, c + .5], [.79, .85], [-.1, -.055], st);
+          // Glazed body: dark glazing in a timber frame with a central mullion and two bronze glazing bars.
+          f.blk('Rear fixed window glazing', pane, [c - .5, c + .5], [.85, 2.9505], [-.095, -.085], st);
+          for (const k of [-1, 1]) f.blk('Rear fixed window frame stile', WOOD, [c + k * .5 - (k > 0 ? .055 : 0), c + k * .5 + (k < 0 ? .055 : 0)], [.85, TOP], [-.1, -.055], st);
+          f.blk('Rear fixed window frame mullion', WOOD, [c - .025, c + .025], [.85, 2.9505], [-.1, -.06], st);
+          f.blk('Rear fixed window frame bottom rail', WOOD, [c - .5, c + .5], [.85, .9], [-.1, -.06], st);
+          for (const v of [1.55, 2.25]) rod('Rear fixed window glazing bar', BRONZE, [c - .445, v], [c + .445, v], -.08, .012);
+          f.blk('Rear fixed window transom', WOOD, [c - .5, c + .5], [2.9505, TOP], [-.1, -.05], st);
+          // Stained-glass head, UV 0–1 over +3.1005 to +3.7005, with a timber frame and bronze radial bars.
+          const head = new T.ShapeGeometry(archShape(c, 0, .5, TOP, SP), 24), pos = head.attributes.position, uv = head.attributes.uv;
+          for (let i = 0; i < pos.count; i++) uv.setXY(i, pos.getX(i) - (c - .5), (pos.getY(i) - TOP) / .6);
+          add('Rear fixed window stained-glass head', headGlass(design), head, f.at(0, 0, -.09), st);
+          f.slab('Rear fixed window head frame', WOOD, archShape(c, .45, .5, TOP, SP), -.1, -.06, st, 32);
+          for (let k = 1; k < 6; k++) { const a = k * Math.PI / 6; rod('Rear fixed window head bar', BRONZE, [c, SP], [c + Math.cos(a) * .455, SP + Math.sin(a) * .455], -.08, .012); }
+          rod('Rear fixed window head bar', BRONZE, [c - .45, SP], [c + .45, SP], -.08, .012);
+          // Archivolt rings standing proud of the face, stepped (projections DERIVED).
+          for (const [r0, r1, w] of [[.5, .61, .05], [.61, .69, .08], [.69, .71, .1], [.71, .775, .08], [.775, .795, .1]]) f.slab('Rear fixed window archivolt · E03', S, archShape(c, r0, r1, TOP, SP), 0, w, st, 40);
+          // Colonnettes each side, as the wing windows draw them (EW), at the E03 axis offset.
+          for (const k of [-1, 1]) {
+            const uc = c + k * .7532, wc = .075;
+            f.blk('Rear window colonnette respond', S, [c + k * .61, c + k * .6882].sort((p, q) => p - q), [.31, 2.75], [0, .04], st);
+            add('Rear window colonnette', S, new T.CylinderGeometry(.065, .065, 2.44, 14), f.at(uc, 1.53, wc), st);
+            f.blk('Rear window colonnette plinth', S, [uc - .164, uc + .164], [.06, .1], [0, wc + .1], st);
+            f.blk('Rear window colonnette base', S, [uc - .17, uc + .17], [0, .06], [0, wc + .1], st);
+            add('Rear window colonnette torus', S, new T.CylinderGeometry(.127, .13, .21, 14), f.at(uc, .205, wc), st);
+            add('Rear window colonnette necking', S, new T.CylinderGeometry(.08, .08, .05, 14), f.at(uc, 2.775, wc), st);
+            f.blk('Rear window colonnette capital bell', S, [uc - .08, uc + .08], [2.8, 3.02], [0, wc + .06], st);
+            add('Rear window colonnette capital · EW', S, ew('windowCapital', .006), f.at(uc, 0, wc + .075, SC(k, 1, 1)), EW);
+            f.blk('Rear window colonnette abacus', S, [uc - .168, uc + .168], [3.02, 3.05], [0, wc + .12], st);
+            f.blk('Rear window impost', S, [uc - .17, uc + .17], [3.05, TOP], [0, wc + .12], st);
+          }
+          stats.fixedWindows = (stats.fixedWindows || 0) + 1;
         }
       }
       f.rake(RG.rakes[0], .737353, GD, false, RG.rakePolygons[0]);

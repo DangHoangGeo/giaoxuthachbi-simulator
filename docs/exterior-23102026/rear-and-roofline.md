@@ -121,7 +121,7 @@ Dải lan can đầu hiên dùng ba mức vẽ +6,875776 / 6,935776 / 7,015776 /
 
 **Còn mở sau lượt E03:**
 
-- Năm cửa sổ tầng trệt vẫn là cửa của bundle: E03 vẽ tâm cửa ngoài tại ±8,967 (mô hình ±8,887), vòm khởi +3,2005 (mô hình +3,02), lòng cửa rộng 1,0 m (mô hình 1,3 m), cột nhỏ hai bên cùng đầu cột như EW (`windowCapital`, dịch 3,0344 m) và ô panô dưới cửa (hoa thị ở gian D/E–C/G và giữa, bốn rãnh dọc ở gian ngoài). Sửa cửa cần dựng lại lỗ tường và khung cửa (bundle/`realism.js`), ảnh hưởng nội thất phòng đồ lễ; chưa làm trong lượt này.
+- ~~Năm cửa sổ tầng trệt vẫn là cửa của bundle~~ — đã làm lại theo E03 ngày 3/11/2026 thành cửa sổ giả cố định, xem mục *Cửa sổ giả cố định* bên dưới.
 - Đầu hồi phía cung thánh vẫn dùng mặt phẳng X 53,24 (P14 53,181) như đã ghi; độ nhô các trụ, diềm và cột đôi là DERIVED/CONCEPT.
 - Pha răng cưa dưới hai mái dốc lệch khoảng 3 mm so với E03; chưa chỉnh để không đổi hàm `rake()` dùng chung.
 - Các nét E03 được phép công bố theo xác nhận của chủ đầu tư ngày 3/11/2026 (danh mục công bố, H1).
@@ -147,3 +147,22 @@ Chủ đầu tư nhận xét: trụ hồi, răng cưa dưới dải đỉnh và 
   - Hoa văn cuộn quanh quả cầu (cánh và E03) và dải cresting đầu hiên E03 được tô đặc.
   - Cresting mái dốc E03 gồm các dải hai nét cách nhau khoảng 0,1 m: lưới 10 mm, khép 50 mm, cộng thêm mép trên mái dốc để chân trụ khép lại. Các ô vòm giữa các trụ vẫn để trống.
   - Bề dày khối (0,05–0,06 m) là **DERIVED**.
+
+### Cửa sổ giả cố định, màu khám đỉnh và độ rõ trang trí · 3/11/2026 (bổ sung)
+
+Chủ đầu tư yêu cầu cho đầu nhà phía cung thánh: phần vàng dưới thánh giá phải cùng màu các phần khác; một số trang trí chưa rõ; mọi cửa sổ là cửa giả (không mở được) nhưng trông như cửa thật, kính màu ở phần trên.
+
+- **Màu khám đỉnh:** nền hốc khám và ô mở của hai tháp nhỏ trên khám dùng vật liệu viền tối (đọc thành màu vàng), nay dùng lớp hoàn thiện tường như phần còn lại. Hốc khám vẫn lùi 0,30 m so với mặt khối. `aedicule()` dùng chung nên khám đỉnh hai đầu cánh ngang EW cũng đổi theo.
+- **Độ rõ trang trí:** các nét ống 10–12 mm bị vỡ thành chấm ở khoảng cách nhìn bình thường (khoảng 15 mm/điểm ảnh ở 25 m).
+  - Nét tăng lên: hoa hồng đầu hồi 16 mm; quạt một phần tư 18 mm; lá góc trên vòm giữa 18 mm; lá góc gian cửa sổ 16 mm; cresting mái dốc 16 mm; lá ô-rô công-xôn khám 22 mm.
+  - Lá góc trên vòm giữa, lá góc gian cửa sổ và lá ô-rô công-xôn khám được tô đặc 20–25 mm bằng `solidOutline()` dưới nét viền.
+  - Độ nổi là **DERIVED**. Hình chiếu đứng không đổi.
+- **Cửa sổ giả cố định (E03 ARC `D917AE`–`D917DE`, LINE tại u ±0,5 / ±0,61–0,8182 và các đường ngang):** năm cửa 1,3 m của bundle được thay bằng cửa vẽ theo E03.
+  - Kích thước theo E03: tâm u 0, ±5,48, ±8,967; lòng cửa 1,0 m; vòm bán kính 0,5 tâm +3,2005; năm vòng vòm r 0,61/0,69/0,71/0,775/0,795 m; cột nhỏ r 0,065 m ở 0,7532 m từ tim cửa, dải tựa 0,61–0,6882 m; đầu cột vẽ theo `windowCapital` của EW.
+  - Từ dưới lên: ô panô +0–0,75 (hoa thị ở gian giữa và hai gian trong, bốn ô dọc ở hai gian ngoài, đọc thành tấm nổi); gờ bậu +0,75/0,79/0,85; thân kính +0,85–2,9505 trong khung gỗ có đố giữa và hai thanh đồng; đố ngang tới +3,1005; đầu vòm kính màu.
+  - Kính màu đầu vòm dùng hình quạt của `glass-art.js` với năm biểu tượng (IHS, chim bồ câu, thánh giá, chén thánh, XP), thêm một hàng kính xanh/đỏ/vàng ở dải +3,1005–3,2005. Kính màu cố định, không phụ thuộc chế độ kính trong/kính màu, vì phía sau là tường kín. Thân kính là kính tối phản chiếu.
+  - Lỗ tường 1,3 m của bundle được bịt bằng tường cách mặt ngoài 0,10 m, chạy tới mặt trong X 52,796. Không có gì mở được, không có lỗ thông gió hay chiếu sáng tự nhiên qua các cửa này.
+  - Mô phỏng không coi các cửa này là ô mở, nên kết quả chiếu sáng, thông gió và âm thanh không đổi. Phía trong phòng đồ lễ sau tường nay là tường kín ở năm vị trí này.
+  - Độ sâu, khung gỗ, màu kính và hình vẽ kính là **CONCEPT**. Vật liệu, cách lắp và thoát nước bậu chờ kiến trúc sư xác nhận.
+- **Tường dưới lan can đầu hiên:** giữa gờ tầng trệt (+6,323919) và dải lan can (+6,875776), u 7,640–10,240 mỗi bên, trước đây để trống, nhìn xuyên thấy mái hiên phía sau. E03 vẽ tường đặc ở đây, nên nay là khối tường hoàn thiện như tường, sâu từ mặt tường hồi (−0,44) tới +0,26 (DERIVED). Đèn pha lễ hội L220/L221 (X 52,415–52,778) vẫn nằm sau khối tường, cách 18 mm, chùm sáng hướng lên khám đỉnh vẫn đi qua phía trên; đèn nay được che khuất khi nhìn từ ngoài.
+- Cửa sổ chớp của hai tháp chuông không đổi trong lượt này: đó là cửa thoát âm của tháp, không thuộc đầu nhà phía cung thánh.
