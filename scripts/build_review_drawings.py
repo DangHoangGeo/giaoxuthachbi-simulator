@@ -524,17 +524,28 @@ class Drawings:
         used={r['installation'] for r in self.scope_routes.values()}
         rows=sorted([kv for kv in self.install_ref.items() if kv[0] in used],key=lambda kv:kv[1])
         count={code:sum(r['installation']==text for r in self.scope_routes.values()) for text,code in rows}
-        self.start('IM-01',self.t('Installation note key'),self.t('One note per distinct model installation method / proposals, not approved installation details'))
-        y=247
-        self.text(14,y,self.t('Code'),8,bold=True);self.text(30,y,self.t('Routes'),8,bold=True);self.text(48,y,self.t('Model installation note'),8,bold=True)
-        y-=6
-        for text,code in rows:
-            self.text(14,y,code,7.5,bold=True);self.text(30,y,str(count[code]),7.5)
-            y=self.wrap(48,y,self.t(text),355,7.5,3.6)-2
-            self.c.setStrokeColor(PALE);self.c.setLineWidth(.3);self.c.line(14*mm,(y+1)*mm,406*mm,(y+1)*mm)
-            y-=2.5
-            if y<24:raise ValueError('Installation key overflows one sheet; paginate before printing')
-        self.end()
+        part=0; i=0
+        while i<len(rows):
+            part+=1
+            self.start(f'IM-{part:02}',self.t('Installation note key'),self.t('One note per distinct model installation method / proposals, not approved installation details'))
+            y=247
+            self.text(14,y,self.t('Code'),8,bold=True);self.text(30,y,self.t('Routes'),8,bold=True);self.text(48,y,self.t('Model installation note'),8,bold=True)
+            y-=6
+            while i<len(rows):
+                text,code=rows[i]; words=self.clean(self.t(text)).split(); lines=[]; line=''
+                for word in words:
+                    trial=(line+' '+word).strip()
+                    if pdfmetrics.stringWidth(trial,self.font,7.5)>355*mm and line:lines.append(line);line=word
+                    else:line=trial
+                if line:lines.append(line)
+                if y-len(lines)*3.6-4.5<24:
+                    if y==241:raise ValueError('Installation note exceeds one sheet')
+                    break
+                self.text(14,y,code,7.5,bold=True);self.text(30,y,str(count[code]),7.5)
+                y=self.wrap(48,y,self.t(text),355,7.5,3.6)-2
+                self.c.setStrokeColor(PALE);self.c.setLineWidth(.3);self.c.line(14*mm,(y+1)*mm,406*mm,(y+1)*mm)
+                y-=2.5; i+=1
+            self.end()
 
     def setout_pages(self):
         """Every route once, in route-index order, with each vertex as grid set-out and height."""

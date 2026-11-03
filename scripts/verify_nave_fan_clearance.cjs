@@ -66,7 +66,13 @@ try {
   // on or beyond the C/G wall face (|z| ≥ 7.13), behind the column face that bounds every fan
   // envelope (|z| ≤ 7.07, asserted below).
   const merged = o => { for (let p = o; p; p = p.parent) if (/^(Open side porches|Stations of the Cross)/.test(p.name)) return true; return false; };
+  // The roofline ornament (roofline.js) is also merged per part across the whole church (the
+  // 'Wing lower pilaster' meshes span x 36.3–44.8, |z| ≤ 13.7), so a box test flags every fan in
+  // bays 9–10. Those meshes are tested by their vertices instead (below).
+  const rooflineMerged = o => { for (let p = o; p; p = p.parent) if (/^Roofline ornament/.test(p.name)) return true; return false; };
+  const rooflineMeshes = [];
   model.building.traverse(o => {
+    if (o.isMesh && !o.isInstancedMesh && rooflineMerged(o)) { rooflineMeshes.push(o); return; }
     if (o.isMesh && !o.isInstancedMesh && !merged(o)) buildingBoxes.push({ name: o.name, box: new T.Box3().setFromObject(o) });
   });
   const fixedFixtures = [...SIM.fixtures.values()].filter(f => f.item.circuit !== 'F2').map(f => ({ f, box: box(f) }));
@@ -74,7 +80,9 @@ try {
   for (const sign of [-1, 1]) {
     const sideFans = fans.filter(f => Math.sign(f.item.pos[2]) === sign);
     assert.equal(sideFans.length, 8, 'eight fans per side');
-    assert.deepEqual(sideFans.map(f => f.item.pos[0]).sort((a, b) => a - b), axes.map(axis => model.data.longitudinal[axis]));
+    // Since 1 Nov 2026 the axis-2′ pair stands 0.8 m along the wall from the axis: the door wall on the
+    // axis-2 line and the towers' inner rear piers fill that corner (design.js ENTRANCE_FAN_X).
+    assert.deepEqual(sideFans.map(f => f.item.pos[0]).sort((a, b) => a - b), axes.map(axis => +(model.data.longitudinal[axis] + (axis === '2′' ? 0.62 : 0)).toFixed(3)));
   }
   for (const f of fans) {
     const it = f.item, sign = Math.sign(it.pos[2]);
@@ -138,6 +146,12 @@ try {
     assert(conservative.max.y < 6.24, it.id + ': fan envelope enters lowest side-beam carved bracket band');
     assert(conservative.min.y >= 2.4, it.id + ': envelope below existing project floor clearance');
     const collisions = buildingBoxes.filter(o => penetrates(conservative, o.box));
+    const vertex = new T.Vector3();
+    for (const m of rooflineMeshes) {
+      if (!penetrates(conservative, new T.Box3().setFromObject(m))) continue;
+      const p = m.geometry.attributes.position;
+      for (let i = 0; i < p.count; i++) if (conservative.containsPoint(vertex.fromBufferAttribute(p, i).applyMatrix4(m.matrixWorld))) { collisions.push({ name: m.name }); break; }
+    }
     if (!shortBracket) assert.equal(collisions.length, 0, it.id + ': intersects modeled structure: ' + collisions.map(o => o.name).join(', '));
     const fixtureChecks = fixedFixtures.map(o => ({ id: o.f.item.id, name: o.f.item.name, hidden: o.f.item.hidden,
       clearanceM: round(gap(conservative, o.box)), intersection: penetrates(conservative, o.box) })).filter(o => o.clearanceM < 1.25);

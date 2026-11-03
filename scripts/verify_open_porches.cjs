@@ -5,7 +5,7 @@ try{
  const lights=items.filter(it=>it.type==='porchFlood'),sound=items.filter(it=>it.type==='porchWallSpeaker');
  assert.equal(lights.length,54);assert.equal(sound.length,18);assert(!items.some(it=>/^Veranda (lantern|fill) ·/.test(it.name)));
  const nodes=[];model.building.updateMatrixWorld(true);model.building.traverse(o=>{if(o.isMesh)nodes.push(o)});
- const supportNodes=nodes.filter(o=>/Porch column pilaster|Inner .*wall|Inner wall/.test(o.name));
+ const supportNodes=nodes.filter(o=>/Porch column · E02 pier|Inner .*wall|Inner wall/.test(o.name)); // drawn E02 pier since 3 Nov 2026
  const pairs=[];
  for(const it of [...lights,...sound]){
   const s=Math.sign(it.pos[2]),p=new T.Vector3(...it.pos),r=new T.Raycaster(p.clone().add(new T.Vector3(0,0,s*.04)),new T.Vector3(0,0,-s),0,.2);

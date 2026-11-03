@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','decoration.js','sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','detail-towers-profile.js','detail-front-profile.js','detail-rear-profile.js','detail-sides-profile.js','entrance-approach.js','decoration.js','sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -58,7 +58,7 @@ const dimensions=o=>bounds(o).getSize(new T.Vector3());
 near(dimensions(nodes.find(o=>o.name.startsWith('Main plinth below'))).z,22.489,'Main plan width');
 const wings=nodes.filter(o=>o.name.startsWith('Side projection plinth'));
 near(Math.max(...wings.map(o=>bounds(o).max.z))-Math.min(...wings.map(o=>bounds(o).min.z)),28.158,'Wing plan width');
-near(dimensions(nodes.find(o=>o.name.startsWith('Entrance forecourt plinth'))).z,27.254,'Front platform width');
+near(dimensions(nodes.find(o=>o.name==='Entrance forecourt plinth · P05')).z,20.784,'P05 inner forecourt width');
 near(data.levels.forecourt-data.levels.courtyard,1.6,'Front stage rise');
 near(data.longitudinal['10']-data.longitudinal['9'],7.2,'Wing axis length');
 assert.equal(nodes.filter(o=>o.name==='Side landing at −0.320 m').length,6);
@@ -105,21 +105,28 @@ assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
   const front=nodes.find(o=>o.name.startsWith('Tower base wall · closed front'));assert(front&&!front.geometry.attributes.position.array.some((v,i)=>i%3===1&&v>8.40),'closed front up to +8.39');
   const cornice=nodes.filter(o=>o.name==='Tower base cornice').map(bounds);near(Math.max(...cornice.map(b=>b.max.y)),8.39,'tower cornice top at +8.39');
   for(const sign of [-1,1])for(const x of [-.5,1,2.45,4]) assert.equal(realism.walkAllowed(x,sign*10.15),false,'no passage through the tower base');
-  // The grey plinth reaches under every corner pier, down to the courtyard (owner, 25 Oct 2026).
-  for(const p of nodes.filter(o=>o.name==='Tower plinth').map(bounds))assert(p.min.y<=-2.079&&p.max.y>=-.001,'tower plinth from the courtyard to +0.00');
-  const plinths=nodes.filter(o=>o.name==='Tower plinth').map(bounds), piers=bounds(nodes.find(o=>o.name==='Tower corner pier plinth'));
-  // ENG-043 (31 Oct 2026): behind X 5.4 the outer rear pier stands on a plinth extension.
-  const rear=nodes.filter(o=>o.name.startsWith('Tower plinth · under the rear pier')).map(bounds);assert(rear.length,'plinth extension under the rear piers');
-  for(const r of rear)assert(r.min.y<=-2.079&&r.max.y>=-.001,'rear plinth extension from the courtyard to +0.00');
-  const reach=Math.max(...plinths.map(p=>p.max.x),...rear.map(r=>r.max.x));
-  for(const p of plinths){const inside=(v,a,b)=>v>=a-.001&&v<=b+.001;assert(inside(piers.min.x,p.min.x,p.max.x)&&inside(piers.max.x,p.min.x,reach),'tower plinth covers the piers front to back');}
-  assert(plinths.every(p=>Math.max(Math.abs(p.min.z),Math.abs(p.max.z))>=13.47&&Math.min(Math.abs(p.min.z),Math.abs(p.max.z))<=6.83),'tower plinth covers the inner and outer piers');
+  // Below ±0 each corner pier stands on a lower column (E02/E01B, owner 2 Nov 2026); the stone
+  // core between them is set back to the tower wall plane.
+  for(const p of nodes.filter(o=>o.name==='Tower plinth').map(bounds))assert(p.min.y<=-2.079&&p.max.y>=-.001&&Math.abs(p.min.x+.14)<.002&&Math.max(Math.abs(p.min.z),Math.abs(p.max.z))<12.75,'tower plinth core from the courtyard to +0.00, set back to the wall plane');
+  assert(!nodes.some(o=>o.name.startsWith('Tower plinth · under the rear pier')),'solid rear plinth extension replaced by the lower column');
+  const lower=nodes.filter(o=>o.name==='Tower lower column · under the corner pier'),lowerBox=lower.map(bounds);assert(lower.length,'lower columns under the corner piers');
+  assert(lowerBox.every(c=>Math.abs(c.min.y+2.08)<.002&&Math.abs(c.max.y+.203)<.002),'lower columns from −2.08 to the −0.203 band');
+  const core=nodes.filter(o=>o.name==='Tower plinth'),strips=nodes.filter(o=>o.name==='Tower lower column strip'),firstHit=(o,d)=>new T.Raycaster(new T.Vector3(...o),new T.Vector3(...d)).intersectObjects([...lower,...strips,...core],false)[0];
+  for(const sign of [-1,1]){
+    // Horizontal rays at −1.0 m through the flush corner strips: each column face at its E02/E01B line, the core set back between them.
+    for(const t of [-3.32,3.32]){const z=sign*(10.153+t),h=firstHit([-6,-1,z],[1,0,0]);assert(h&&h.object.name.startsWith('Tower lower column')&&Math.abs(h.point.x+1.024)<.002,'front lower column face X −1.024 at Z '+z);}
+    const back=firstHit([9,-1,sign*13.47],[-1,0,0]);assert(back&&back.object.name.startsWith('Tower lower column')&&Math.abs(back.point.x-5.924)<.002,'rear outer lower column face X 5.924');
+    for(const x of [-.87,5.77]){const h=firstHit([x,-1,sign*20],[0,0,-sign]);assert(h&&h.object.name.startsWith('Tower lower column')&&Math.abs(Math.abs(h.point.z)-13.627)<.002,'outer lower column face |Z| 13.627 at X '+x);}
+    const gap=firstHit([-6,-1,sign*11],[1,0,0]);assert(gap&&gap.object.name==='Tower plinth'&&Math.abs(gap.point.x+.14)<.002,'core set back to X −0.14 between the front columns');
+    const side=firstHit([2.45,-1,sign*20],[0,0,-sign]);assert(side&&side.object.name==='Tower plinth'&&Math.abs(Math.abs(side.point.z)-12.743)<.002,'core set back to the tower wall between the side columns');
+  }
+  const band=nodes.filter(o=>o.name==='Tower lower band course').map(bounds);assert(band.length&&Math.abs(Math.max(...band.map(b=>b.max.y)))<.002,'band course up to ±0');
 }
 // Roofline after the CAD file, 25 Oct 2026 (roofline.js): porch parapets with axis pinnacles,
 // stepped 9–10 side gables and the stepped rear gable, each with a crowning cross.
 {
   const R=sandbox.window.CHURCH_ROOFLINE.stats;assert.equal(R.crosses,3,'two side gables and the rear gable carry a cross');
-  assert(R.balusters>250&&R.pinnacles>=40,'porch parapets with balusters and pinnacles');
+  assert(R.balusters===250&&R.pinnacles>=40,'porch parapets with the E02 flat-cut balusters (0.25 m pitch, 0.625 m from each axis) and pinnacles');
   const crossTop=n=>Math.max(...nodes.filter(o=>/^Gable cross/.test(o.name)).map(o=>bounds(o).max.y));assert(Math.abs(crossTop()-17.829)<.01,'rear gable cross top +17.829 (E03)');
   assert(!nodes.some(o=>o.name==='Schematic side ornamental gable'||o.name==='Schematic decorative eave crest'),'old side gables and eave crest removed');
   const rail=bounds(nodes.find(o=>o.name==='Porch parapet top rail'));near(rail.max.y,7.073919332,'Native parapet top (E02 LINE D99C62)');
@@ -144,7 +151,9 @@ assert.equal(innerHeads.length,0,'the single 2.25 m inner windows are replaced b
 assert.equal(nodes.filter(o=>o.name==='Inner doorway coloured oval').length,4);
 assert.equal(nodes.filter(o=>o.name==='Entrance door coloured oval').length,3);
 const colouredHeads=nodes.filter(o=>/coloured oval$|fixed fanlight$|stained-glass fanlight$|rose-window infill$/.test(o.name));
-assert.equal(colouredHeads.length,77,'glass of the tower cap rosettes (towers.js) and of the old side- and rear-gable roses (roofline.js) removed');
+assert.equal(colouredHeads.length,63,'glass of the tower cap rosettes (towers.js), of the old side- and rear-gable roses (roofline.js) and of the 14 inner C/G wall roses (realism.js, E02 roundel since 3 Nov 2026) removed');
+assert(!nodes.some(o=>o.name==='Schematic rose-window infill'&&/^Inner wall /.test(o.parent?.name||'')),'no schematic glass rose on the inner C/G wall');
+assert.equal(nodes.filter(o=>o.name==='Inner window carving · E02 capitals and roundel').length,14,'E02 roundel and colonnette capitals in each of the 14 inner window bays');
 for(const o of innerHeads){o.geometry.computeBoundingBox();near(o.geometry.boundingBox.min.y,3.171,'Inner oval spring');near(o.geometry.boundingBox.max.y,4.311,'Inner oval crown');}
 for(const o of clearBodies){
   assert.equal(o.material,mat.glass);assert.equal(o.material.map,null);
@@ -185,8 +194,8 @@ const seatingGroups = [...batches.keys()].filter(g=>g.userData.seatingOption);
 assert.equal(seatingGroups.length,2);
 for(const layout of [2,4,2,4]) {
   const status=planning.setLayout(layout);
-  assert.equal(status.pewCount,layout===2?36:96);
-  assert.equal(status.pewRows,layout===2?18:24);
+  assert.equal(status.pewCount,layout===2?34:92);
+  assert.equal(status.pewRows,layout===2?17:23);
   assert.equal(sandbox.window.model.interior.colliders.filter(c=>c.kind==='pew'&&c.active!==false).length,status.pewCount);
   for(const group of seatingGroups){
     assert.equal(batches.get(group).visible,group.userData.seatingOption===layout);
@@ -246,8 +255,9 @@ const seats=planPews.flatMap(pew=>Array.from({length:Math.floor((pew.length-.075
   }
   return {id:`${pew.id}-${index+1}`,pewId:pew.id,x:origin.x,z:origin.z,block:pew.block,layout:pew.layout,blocked};
 }));
-assert.equal(seats.filter(s=>s.layout===4).length,288);
-assert.equal(seats.filter(s=>s.layout===2).length,288);
+assert.equal(seats.filter(s=>s.layout===4).length,276);
+assert.equal(seats.filter(s=>s.layout===2).length,272);
+assert(pewNodes.every(o=>o.position.x>6.49),'Entrance-end row removed from both layouts');
 // The row in front of the bay 8–9 crossing is removed: at least 3.1 m stays open before the sanctuary's low platform (x 37.475).
 assert(Math.max(...pewNodes.map(o=>bounds(o).max.x))<=34.3,'No bench stands in front of the bay 8–9 crossing');
 assert(37.475-Math.max(...pewNodes.map(o=>bounds(o).max.x))>=3.1,'At least 3.1 m clear between the front benches and the sanctuary platform');
@@ -259,7 +269,7 @@ const sightlineSummary=Object.fromEntries([2,4].map(blocks=>{
 }));
 if(process.argv.includes('--plan')){
   const planningDir=path.join(root,'Thach_Bi_Viewer/planning');fs.mkdirSync(planningDir,{recursive:true});
-  const payload={revision:'2026-10-05',site:{address:'756G+GFV, Nam Đồng, Ninh Bình, Vietnam',front:'East (user confirmed; exact azimuth unmeasured)',airConditioning:false},axes:data.longitudinal,transverse:data.transverse,sideAccess:nodes.filter(o=>o.name==='Side landing at −0.320 m'||o.name==='Stone tread with projecting nosing').map(o=>{const b=bounds(o);return {kind:o.name.startsWith('Side landing')?'landing':'tread',x:b.min.x,z:b.min.z,width:b.max.x-b.min.x,depth:b.max.z-b.min.z};}),pews:planPews,seats,targets,sightlineSummary,seatingStudy:data.seatingStudy,columns:nodes.filter(o=>o.name.startsWith('Central column ')).map(o=>({name:o.name,x:o.position.x,z:o.position.z,radius:.32,baseWidth:.82})),method:'Actual THREE.Raycaster intersections against 18 main shafts, their bases/collars and sanctuary piers. One point per target, seated eye 1.15 m; excludes people and other obstructions. Positions at 0.55 m spacing within bench length minus 0.075 m end thickness: 8 per long bench or 3 per short bench. Not legal capacity.'};
+  const payload={revision:'2026-11-01-entrance-row',site:{address:'756G+GFV, Nam Đồng, Ninh Bình, Vietnam',front:'East (user confirmed; exact azimuth unmeasured)',airConditioning:false},axes:data.longitudinal,transverse:data.transverse,sideAccess:nodes.filter(o=>o.name==='Side landing at −0.320 m'||o.name==='Stone tread with projecting nosing').map(o=>{const b=bounds(o);return {kind:o.name.startsWith('Side landing')?'landing':'tread',x:b.min.x,z:b.min.z,width:b.max.x-b.min.x,depth:b.max.z-b.min.z};}),pews:planPews,seats,targets,sightlineSummary,seatingStudy:data.seatingStudy,columns:nodes.filter(o=>o.name.startsWith('Central column ')).map(o=>({name:o.name,x:o.position.x,z:o.position.z,radius:.32,baseWidth:.82})),method:'Actual THREE.Raycaster intersections against 18 main shafts, their bases/collars and sanctuary piers. One point per target, seated eye 1.15 m; excludes people and other obstructions. Positions at 0.55 m spacing within bench length minus 0.075 m end thickness: 8 per long bench or 3 per short bench. Not legal capacity.'};
   fs.writeFileSync(path.join(planningDir,'model-plan-data.js'),'window.CHURCH_PLAN_DATA = '+JSON.stringify(payload,null,2)+';\n');
 }
 let batchCount=0,triangles=0;
@@ -287,8 +297,8 @@ assert(!hits.some(h=>h.object.name==='Source-width centre entry facade'),'Facade
   for(const [x,y] of [[1.2,-.48],[1.4,-.32],[1.6,-.16],[1.9,0]])assert(Math.abs(realism.floorHeight(x,0)-y)<.002,`entrance floor ${y} at x ${x}`);
   const plinths=nodes.filter(o=>o.name==='Central ground pier plinth course').map(bounds);
   assert(plinths.length&&plinths.every(b=>Math.abs(b.min.y+.48)<.002&&b.max.y>-.002),'central pier bases run down to the −0.48 forecourt');
-  const footing=nodes.filter(o=>o.name==='Tower plinth').map(bounds);
-  assert(footing.length===2&&footing.every(b=>Math.abs(b.min.x+.984)<.002),'tower plinth flush with the corner-pier plinth at X −0.984');
+  const footing=nodes.filter(o=>o.name.startsWith('Tower lower column')).map(bounds);
+  assert(footing.length&&Math.abs(Math.min(...footing.map(b=>b.min.x))+1.024)<.002,'front lower columns 0.04 m proud of the corner-pier plinth at X −0.984');
 }
 for(const sign of [-1,1]) {
   const sideRay=new T.Raycaster(new T.Vector3(16.725,1.8,sign*18),new T.Vector3(0,0,-sign));
@@ -379,7 +389,7 @@ for(const o of part('Column base +0.600').filter(o=>bounds(o).getCenter(new T.Ve
 const named=name=>nodes.filter(o=>o.isMesh&&o.name===name),timber=named('Proposed underside ridge member')[0].material,lacquer=shafts[0].material;
 assert.equal(timber.name,'Proposed exposed roof timber colour');
 assert(timber.color.equals(lacquer.color)&&timber.map===null&&timber.bumpMap===null&&timber.roughness===lacquer.roughness,'Roof timber material has the column lacquer');
-for(const [name,count] of [['Schematic transverse tie',7],['Schematic rafter; no structural design',18],['Proposed visible principal rafter below roof lining',18],['Proposed longitudinal roof purlin',6],['Proposed truss king post',7],['Proposed roof truss diagonal',14],['Timber knee brace · proposed section',36]]){
+for(const [name,count] of [['Schematic transverse tie',7],['Schematic rafter; no structural design',18],['Proposed visible principal rafter below roof lining',18],['Proposed longitudinal roof purlin',10],['Proposed truss king post',7],['Proposed roof truss diagonal',14],['Timber knee brace · proposed section',36]]){
   const list=named(name);assert.equal(list.length,count,name);
   for(const o of list)assert.equal(o.material,timber,`${name} is lacquered`);
 }
@@ -469,7 +479,10 @@ assert(bounds(vault).min.y>=S.centralArch.spring-.001&&bounds(vault).max.y<12.1,
   assert.equal(nodes.filter(o=>o.name==='Side vault springing beam · lacquered timber').length,4,'A lacquered springing beam along each vault edge');
   assert.equal(nodes.filter(o=>o.name==='Side vault rib · lacquered timber').length,8,'Four lacquered transverse ribs per vault');
   assert.equal(nodes.filter(o=>o.name==='Side vault longitudinal rib').length,10,'Five lacquered longitudinal ribs per vault, as in the chamber vault');
-  assert(V.x0>=frameX+.3&&V.x0<=frameX+1.3,'Vault starts behind the frame, clear of the shrine lights hung on its back face');
+  // USER CONFIRMED 1 Nov 2026: the vaults meet the frame with no gap, so the front edge is the back face of the axis-10 side spandrels.
+  const spandrels=nodes.filter(o=>o.isMesh&&o.name==='Front frame side spandrel');
+  assert.equal(spandrels.length,2,'Two side spandrels in the axis-10 frame');
+  for(const sp of spandrels)near(bounds(sp).max.x,V.x0,'Side vault front edge meets the back face of the axis-10 frame');
   assert(V.x1<=S.arch11.x-.15&&V.x1>S.arch11.x-.3,'Vault ends against the axis-11 side spandrel');
   for(const o of boards){
     const b=bounds(o),p=o.geometry.attributes.position,v=new T.Vector3();
@@ -477,11 +490,14 @@ assert(bounds(vault).min.y>=S.centralArch.spring-.001&&bounds(vault).max.y<12.1,
     near(b.min.x,V.x0,'Side vault front edge');near(b.max.x,V.x1,'Side vault back edge');
     assert(Math.min(Math.abs(b.min.z),Math.abs(b.max.z))>=3.75&&Math.max(Math.abs(b.min.z),Math.abs(b.max.z))<=7.25,'Side vault stays between the chamber lintel and the C/G wall');
     assert(b.min.y>=S.arch11.spring-.1&&b.min.y>2.85+2.2,'Side vault springs high above the shrine shelf, the 2.2 m service doorways and every walking route');
-    let clear=1e9;for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i);clear=Math.min(clear,roofY(v.z)-v.y);}
-    assert(clear>=.4,'Side vault keeps 0.4 m under the roof lining: '+clear.toFixed(3));
+    // Against the frame (1 Nov 2026) the outer shoulders of the outline stand 0.32 m under the lining, which falls towards
+    // the C/G wall: the front 0.5 m keeps at least 0.3 m (documented hold: access above the vault), the rest at least 0.4 m.
+    let clear=1e9,clearBehind=1e9;for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i);const c=roofY(v.z)-v.y;clear=Math.min(clear,c);if(v.x>V.x0+.5)clearBehind=Math.min(clearBehind,c);}
+    assert(clear>=.3,'Side vault keeps 0.3 m under the roof lining at the frame: '+clear.toFixed(3));
+    assert(clearBehind>=.4,'Side vault keeps 0.4 m under the roof lining behind its front 0.5 m: '+clearBehind.toFixed(3));
     // The crown follows the outline of the side arch at the front and of the axis-11 arch at the back.
     const z=Math.sign(b.min.z+b.max.z)*S.wingZ,ray=new T.Raycaster(),crownAt=x=>{ray.set(new T.Vector3(x,3,z),new T.Vector3(0,1,0));const h=ray.intersectObject(o,false);return h.length?h[0].point.y:NaN;};
-    for(const x of [V.x0+.01,V.x1-.01]){const t=(x-frameX)/(S.arch11.x-frameX),want=S.sideArch.crown+(S.arch11.crown-S.sideArch.crown)*t+.04;assert(Math.abs(crownAt(x)-want)<.03,`Side vault soffit follows the arch outlines at x ${x.toFixed(2)}: ${crownAt(x)} vs ${want}`);}
+    for(const x of [V.x0+.01,V.x1-.01]){const t=(x-V.x0)/(S.arch11.x-V.x0),want=S.sideArch.crown+(S.arch11.crown-S.sideArch.crown)*t+.04;assert(Math.abs(crownAt(x)-want)<.03,`Side vault soffit follows the arch outlines at x ${x.toFixed(2)}: ${crownAt(x)} vs ${want}`);}
   }
 }
 const backWall=nodes.find(o=>o.name==='Sanctuary back wall behind the reredos');
@@ -630,6 +646,6 @@ console.log('Sanctuary: sheet-5 frame, shrine line, chamber lining, lacquered ro
   const piers=of('Central bay pier shaft');near(piers.max.z,2.979+.435,'Central piers: 621 / 5,958.8 / 621 chain');near(piers.min.z,-2.979-.435,'Central piers symmetric');
   // Since 31 Oct 2026 the group also holds the CAD ground piers, whose plinth stands at X 1.292.
   const all=bounds(upper);assert(all.min.x>1.25&&all.max.x<5.6&&all.max.z<=7.5+1e-6&&all.min.z>=-7.5-1e-6,'upper facade stays between the towers, in front of axis 2′');
-  let tris=0;upper.traverse(o=>{if(o.isMesh)tris+=o.geometry.index.count/3;});assert(tris<150000,'facade triangle budget: '+tris);
+  let tris=0;upper.traverse(o=>{if(o.isMesh)tris+=o.geometry.index.count/3;});assert(tris<240000,'facade triangle budget: '+tris); // 150k until 2 Nov 2026; raised for the owner-requested traced T12 leaves and niche crests, then (2 Nov) the traced aedicule pier capitals and shared pinnacle crowns; 240k from 3 Nov 2026 for the traced rose, central pier capitals and the rebuilt E01B cresting (229k), leaving headroom for the shared crown and fleur geometry
   console.log(JSON.stringify({facade:'passed',meshes:upper.children.length,triangles:tris,removedBundleMeshes:upper.userData.removedBundleMeshes}));
 }

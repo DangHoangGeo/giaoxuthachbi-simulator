@@ -45,7 +45,7 @@ try {
   assert.deepEqual(clone(backup.items.map(it => it.id)), clone(previous.items.map(it => it.id)), 'the backup holds the previous layout exactly');
   assert(backup.items.find(it => it.id === 'L63') && !backup.items.find(it => it.id === 'L-WING-B-FI'), 'backup still has the chandelier');
   for (const id of chandelierIds) assert(!SIM.item(id), 'chandelier retired: ' + id);
-  for (const id of lightIds) { const it = SIM.item(id); assert(it && it.type === 'projector24' && it.circuit === 'L8' && it.lumens === 2100 && it.beam === 24, 'downlight added: ' + id); }
+  for (const id of lightIds) { const it = SIM.item(id); assert(it && it.type === 'projector24' && it.circuit === 'L8' && it.lumens === 3000 && it.beam === 24, 'downlight added: ' + id); }
   for (const id of tieIds) { const it = SIM.item(id), raw = current.items.find(r => r.id === id); assert.deepEqual(clone(it.pos), raw.pos, 'head moved: ' + id); assert(it.yaw === raw.yaw || Math.abs(it.yaw - raw.yaw) < 1e-9); assert.equal(it.beam, raw.beam); }
   const saved = JSON.parse(storage.get(key));
   assert.equal(saved.settings.naveWingLightingRevision, D.naveWingLightingRevision, 'durable marker');

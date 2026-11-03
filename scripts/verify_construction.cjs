@@ -38,7 +38,7 @@ const document = {
 };
 const sandbox = { console, document, location: { search: '' }, URLSearchParams, Uint8ClampedArray, window: {} };
 vm.createContext(sandbox);
-for (const file of ['construction-data.js', 'construction.js', 'texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js'])
+for (const file of ['construction-data.js', 'construction.js', 'texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','detail-towers-profile.js','detail-front-profile.js','detail-rear-profile.js','detail-sides-profile.js','entrance-approach.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js'])
   vm.runInContext(fs.readFileSync(viewer(file), 'utf8'), sandbox);
 let src = fs.readFileSync(viewer('bundle.js'), 'utf8');
 const begin = src.indexOf('    Us = document.getElementById("viewport"),');
@@ -79,7 +79,8 @@ const expect = {
   'Outer window clear glass body': 'openings', 'Exterior timber door leaf': 'openings',
   'Inner C–G floor at ±0.000 — buildup schematic': 'floors', 'Side stair riser': 'plinth',
   'Schematic arch moulding': 'ornament', 'Main tie beam carved haunch': 'ornament', 'Column carving · capital foliage': 'ornament',
-  'Sanctuary back wall behind the reredos': 'walls', 'Schematic block': 'walls', 'Window low parapet': 'walls',
+  'Sanctuary back wall behind the reredos': 'walls', 'Schematic block': 'walls', 'Porch parapet plinth': 'walls',
+  'Porch spandrel carving · E02 corner leaf': 'ornament', 'Inner window carving · E02 capitals and roundel': 'ornament', 'Inner window E02 colonnette and panel mouldings': 'ornament',
   'Proposed central aisle stone inlay': 'finishes', 'Pew seat': 'furniture', 'Tree trunk': 'site', 'Gilded floral relief': 'sanctuary',
 };
 const seen = new Set();

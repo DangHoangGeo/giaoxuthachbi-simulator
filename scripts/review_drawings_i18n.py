@@ -28,6 +28,7 @@ def register_fonts(language='en'):
 
 
 VI = {
+    'Proposed underfloor return; this location needs a concealed local riser / connection design.': 'Đề xuất tuyến trở về dưới sàn; vị trí này cần thiết kế ống đứng và đấu nối âm cục bộ.',
     'Thach Bi Church - Electrical review drawings': 'Nhà thờ Thạch Bi - Bản vẽ rà soát hệ thống điện',
     'Thach Bi Church design-development model': 'Mô hình phát triển thiết kế nhà thờ Thạch Bi',
     'THACH BI CHURCH': 'NHÀ THỜ THẠCH BI',
@@ -101,6 +102,8 @@ VI = {
     'L1 · Central seating': 'L1 / Ghế ngồi giữa',
     'L1 · Nave · 3 front bays (6–9)': 'L1 / Lòng nhà thờ · 3 gian đầu (6–9)',
     'L2 · Nave · 4 rear bays (2′–6)': 'L2 / Lòng nhà thờ · 4 gian cuối (2′–6)',
+    'LD · Column up/down lights': 'LD / Đèn hắt hai chiều trên cột',
+    'Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.': 'Đề xuất đi dưới sàn và dùng máng tháo được trên mặt cột. Vị trí qua chân cột, liên kết vào gỗ, thẩm mỹ, ranh giới chống cháy và lối bảo trì cần thiết kế phối hợp; không mặc định đục rãnh âm.',
     'LD · Wall sconces': 'LD / Đèn gắn tường',
     'L2 · Outer seating': 'L2 / Ghế ngồi biên',
     'L8 · Wings · choir & ministers': 'L8 / Cánh ngang / ca đoàn và người phục vụ',
@@ -219,6 +222,7 @@ VI = {
 }
 
 PRODUCTS = {
+    'Column up/down light · concept': 'Đèn hắt hai chiều trên cột / ý tưởng',
     'Concealed light line · niche arch': 'Dải đèn ẩn / vòm hốc',
     'Concealed light line · niche jamb': 'Dải đèn ẩn / má hốc',
     'Double socket outlet · 16 A · recessed': 'Ổ cắm đôi / 16 A / lắp âm',
@@ -291,6 +295,10 @@ NAME_PARTS = {
     'Rear rows light': 'Đèn hàng ghế sau',
     'Rear centre light': 'Đèn giữa phía sau',
     'Wing light': 'Đèn cánh ngang',
+    'Column up/down light': 'Đèn hắt hai chiều trên cột',
+    'Wing downlight': 'Đèn chiếu xuống cánh ngang',
+    'inner row': 'hàng trong',
+    'outer row': 'hàng ngoài',
     'Roof uplight': 'Đèn hắt lên mái',
     'Chandelier': 'Đèn chùm',
     'Grand chandelier': 'Đèn chùm lớn',
@@ -347,6 +355,7 @@ NAME_PARTS = {
     'back rows': 'hàng sau',
     'front rows': 'hàng trước',
     'entrance façade': 'mặt đứng cửa vào',
+    'axis 3 side wall': 'tường bên trục 3',
     'sanctuary pier': 'trụ cung thánh',
     'front': 'phía trước',
     'rear': 'phía sau',

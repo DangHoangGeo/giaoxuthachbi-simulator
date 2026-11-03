@@ -152,6 +152,11 @@
   function branchPath(it, start) {
     const p = it.pos.slice(), s = Math.sign(p[2] || -1), [x, y, z] = start;
     const t = CAT.byId[it.type];
+    if (it.type === 'columnUpDown') {
+      const fy = buriedY([start, [p[0], 0, z], p]);
+      return { ...proposal([start, [x, fy, z], [p[0], fy, z], [p[0], fy, p[2]], p], 'review-local',
+        'Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.'), reviewRequired: true };
+    }
     if (eventPoint(it)) return proposal([start, [p[0], p[1], s * EVENT.wallZ], p], 'underfloor-event',
       'Buried duct below the entrance-hall floor and tower plinth, rising inside the solid tower pier to the cabinet. Duct size, depth, draw pits, water sealing and separation pending; no chase through the arch mouldings.');
     if (t.mic) {
@@ -243,7 +248,8 @@
     // header and the local clip. Never draw a drop through the coloured glass.
     if(it.type==='exitSign'&&window.CHURCH_DOORHEAD_REVIEW){
       const g=window.CHURCH_DOORHEAD_REVIEW.geometry(SIM);
-      if(it.name==='Exit sign · main doors'&&g.main&&Math.abs(p[0]-g.main.max.x-.08)<.01&&Math.abs(p[1]-g.main.min.y+.095)<.02&&Math.abs(p[2])<.01){
+      const mainInside=(window.CHURCH_FACADE?.spec.entrance.wall[1]??g.main?.max.x)+.08;
+      if(it.name==='Exit sign · main doors'&&g.main&&Math.abs(p[0]-mainInside)<.01&&Math.abs(p[1]-g.main.min.y+.095)<.02&&Math.abs(p[2])<.01){
         const jz=g.main.max.z+.15,fy=(g.main.min.y+g.main.max.y)/2,px=g.main.max.x-.008;
         return proposal([start,[px,y,z],[px,y,jz],[px,fy,jz],[px,fy,0],[p[0],fy,0],p],'door-head',
           'Entrance wall band to solid jamb outside coloured fanlight, fixed transom and local inside-face sign clip. Removable frame cover, fixing and emergency design pending.');

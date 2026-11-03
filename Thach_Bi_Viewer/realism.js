@@ -56,10 +56,9 @@
       const n = ST.risers.filter(r => x >= r).length;
       return n === ST.risers.length ? 0 : ST.landing + ST.rise * n;
     }
-    if (x >= -13.219 && x <= 0.99 && Math.abs(z) <= 13.35) {
-      if (x < -8.099) return -2.08 + Math.min(16, Math.max(1, Math.floor((x + 13.219) / .32) + 1)) * .1;
-      return -.48;
-    }
+    const approach = window.CHURCH_ENTRANCE_APPROACH?.floorHeight(x, z);
+    if (approach !== null && approach !== undefined) return approach;
+    if (x >= -9.219 && x <= 0.99 && Math.abs(z) <= 10.392) return -.48;
     const height = stairHeight(x, z);
     if (height !== null) return height;
     for (const zone of stairs) {
@@ -93,7 +92,8 @@
     if (x >= 37.7 && x <= 43.45 && Math.abs(x - 40.575) > .42 && [8.35,9.25,10.15,11.05,11.95].some(r => Math.abs(az - r) < .33)) return false;
     if (x >= 52.1 && x <= 53.1 && az < 3.1) return false;
     if (x >= 48.7 && x <= 49.8 && z >= 1.0 && z <= 1.8) return false;
-    if (x >= -13.219 && x <= -.38 && Math.abs(z) <= 13.05) return true;
+    if (window.CHURCH_ENTRANCE_APPROACH?.floorHeight(x,z) != null) return true;
+    if (x >= -9.219 && x <= -.38 && Math.abs(z) <= 10.392) return true;
     if (stairAllowed(x,z)) return true;
     return null;
   }
@@ -415,8 +415,8 @@
       const shape=new T.Shape();shape.moveTo(x+r0,spring);shape.absarc(x,spring,r0,0,Math.PI,false);
       shape.lineTo(x-r1,spring);shape.absarc(x,spring,r1,Math.PI,0,true);shape.closePath();return shape;
     }
-    function rebuildSideOpening(bay,profile,centres){
-      const wall=bay.children.find(o=>o.name==='Inner C/G wall with opening');
+    function rebuildSideOpening(bay,profile,centres,colonnettes=false){
+      const wall=bay.children.find(o=>o.name==='Inner C/G wall with opening'||o.name==='Outer arcade wall with arched openings');
       if(!wall)return;
       const old=wall.geometry,parameters=old.parameters,depth=parameters.options.depth;
       old.computeBoundingBox();const b=old.boundingBox;
@@ -436,15 +436,54 @@
       for(const x of centres)for(let i=0;i<profile.radii.length-1;i++){
         const a=profile.radii[i],b=profile.radii[i+1],z0=sideCAD.reliefDepth[0],z1=sideCAD.reliefDepth[1]-i*.008;
         const material=i===2||i===4?mat.darkTrim:mat.trim;
-        const ring=mesh(new T.ExtrudeGeometry(sideArchBand(x,profile.spring,a,b),{depth:z1-z0,bevelEnabled:false,curveSegments:48}),material,bay,'Side CAD opening archivolt moulding');
+        const ring=mesh(new T.ExtrudeGeometry(sideArchBand(x,profile.spring,a,b),{depth:z1-z0,bevelEnabled:false,curveSegments:20}),material,bay,'Side CAD opening archivolt moulding');
         ring.position.z=z0;ring.userData={status:'NATIVE CAD RADII / CONCEPT RELIEF DEPTH',source:'DWG E26/D29'};
-        for(const s of [-1,1])box(b-a,profile.spring-profile.bottom,z1-z0,x+s*(a+b)/2,(profile.spring+profile.bottom)/2,(z0+z1)/2,material,bay,'Side CAD opening jamb moulding');
+        // Where E02's colonnette stands (the side toward the bay centre) it replaces the flat jamb.
+        for(const s of [-1,1])if(!colonnettes||s!==-Math.sign(x))box(b-a,profile.spring-profile.bottom,z1-z0,x+s*(a+b)/2,(profile.spring+profile.bottom)/2,(z0+z1)/2,material,bay,'Side CAD opening jamb moulding');
       }
+    }
+    // E02 window dressing on the inner C/G wall (owner, 3 Nov 2026), bay-local metres: x from the bay
+    // centre, y world level, z out from the C/G axis (porch face +0.11). Window-axis offsets from E02
+    // lines D9A2AF–D9A2B9, D9A249–D9A27C (colonnette), D9A4AC–D9A4DE (panels); traced capital and
+    // roundel from detail-sides-profile.js. Relief depths are DERIVED; the outer colonnette of each
+    // window is held because the porch path light and fill speaker sit on that jamb (sides.md).
+    const sideDetail=window.CHURCH_DETAIL_PROFILE_SIDES,sideK=window.CHURCH_CARVING?.create(T);
+    const sideOrn=sideK&&window.CHURCH_EXTERIOR_ORNAMENT?.create(T,sideK);
+    let sideCapital=null,sideRoundel=null;
+    function dressInnerWindowBay(bay,profile){
+      if(!sideDetail||!sideOrn)return;
+      const {TR,SC,place,merge}=sideK,face=.11,wc=face+.075,trim=[],carved=[];
+      sideCapital??=sideOrn.towerSpandrel(sideDetail.sideWindowCapital,.006,.003,3);
+      sideRoundel??=sideOrn.towerSpandrel(sideDetail.sideRoundel,.008,.003,3);
+      for(const m of bay.children.slice())if(/^(Window low parapet|Schematic parapet flute|Schematic rose-window infill|Schematic rosette ring|Schematic rosette ray)$/.test(m.name)){m.removeFromParent();m.geometry.dispose();}
+      const blk=(x0,x1,y0,y1,z0,z1)=>trim.push([new T.BoxGeometry(Math.abs(x1-x0),y1-y0,z1-z0),TR((x0+x1)/2,(y0+y1)/2,(z0+z1)/2)]);
+      const cyl=(r,y0,y1,x)=>trim.push([new T.CylinderGeometry(r,r,y1-y0,12),TR(x,(y0+y1)/2,wc)]);
+      for(const x of profile.centres){
+        // Panel under the window: sill bands +0.75–0.79–0.85 and four notched panels +0.075–0.675.
+        blk(x-.5,x+.5,.75,.79,face,face+.02);blk(x-.5,x+.5,.79,.85,face,face+.035);
+        for(const u of [-.33,-.11,.11,.33]){blk(x+u-.055,x+u+.055,.1,.65,face,face+.015);for(const [a,b] of [[.075,.1],[.65,.675]])blk(x+u-.03,x+u+.03,a,b,face,face+.015);}
+        // Colonnette on the side toward the bay centre: shaft r 0.065 at 0.7532 from the window axis,
+        // respond strip 0.61–0.6882, base 0–0.31, necking, traced capital +2.8005–3.0205, abacus, impost.
+        const k=-Math.sign(x),at=u=>x+k*u,uc=at(.7532);
+        blk(at(.61),at(.6882),.31,2.7505,face,face+.04);cyl(.065,.31,2.7505,uc);
+        blk(at(.5521),at(.8805),-.32,.06,face,wc+.1);blk(at(.5521),at(.8805),.06,.1,face,wc+.095);
+        cyl(.13,.1,.23,uc);cyl(.09,.23,.31,uc);cyl(.08,2.7505,2.8005,uc);
+        blk(uc-.08,uc+.08,2.8005,3.0205,face,wc+.06);
+        carved.push([sideCapital,place(SC(k,1,1),TR(uc,0,wc+.075))]);
+        blk(at(.5482),at(.8867),3.0205,3.0505,face,wc+.11);blk(at(.5467),at(.8859),3.0505,3.1005,face,wc+.12);
+      }
+      // Roundel over the window pair, as E02 draws it in each window bay (centre +4.645).
+      carved.push([sideRoundel,TR(0,0,face+.01)]);
+      const status={status:'E02 TRACED OUTLINE / DERIVED RELIEF DEPTH · CONCEPT',source:'DWG E02 side elevation, 23 Oct 2026; owner 3 Nov 2026'};
+      mesh(merge(trim),mat.trim,bay,'Inner window E02 colonnette and panel mouldings').userData=status;
+      mesh(merge(carved),mat.trim,bay,'Inner window carving · E02 capitals and roundel').userData=status;
     }
     for(const bay of sideBays) {
       const inner=bay.name.startsWith('Inner wall '),door=inner&&/ (4–5|8–9)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
-      const profile=inner&&!door&&sideCAD?sideCAD.window:null;
-      if(profile)rebuildSideOpening(bay,profile,profile.centres);
+      // Owner, 3 Nov 2026: the wing-end windows follow EW too, at the drawn centres ±2.45 (were ±2.4).
+      const profile=(inner&&!door||wing)&&sideCAD?sideCAD.window:null,centres=wing?[-2.45,2.45]:profile?.centres;
+      if(profile)rebuildSideOpening(bay,profile,centres,!wing);
+      if(profile&&!wing)dressInnerWindowBay(bay,profile);
       // Joinery planes: the inner wall is 0.22 m thick (porch face at +0.11), the outer 0.30 m.
       paneZ=inner?0:.10;const jz=inner?.07:.13,hz=inner?.07:.10;
       if(door) {
@@ -462,7 +501,7 @@
         // Half-round glazed fanlight over a timber transom, like the doors;
         // the shutter pair below swings out with the doors.
         const spring=profile?.spring??3.101,radius=profile?.radius??.507,leafTop=profile?.leafTop??3.0;
-        for(const x of wing?[-2.4,2.4]:profile?profile.centres:inner?[-1.015,1.015]:[-1,1]) {
+        for(const x of wing?[-2.45,2.45]:profile?profile.centres:inner?[-1.015,1.015]:[-1,1]) {
           const body=new T.Shape();body.moveTo(x-.5,.85);body.lineTo(x+.5,.85);body.lineTo(x+.5,leafTop);body.lineTo(x-.5,leafTop);body.closePath();
           const clearPane=pane(body,bay,mat.glass,inner?'Inner window clear glass body':'Outer window clear glass body');clearPane.castShadow=false;
           const headBottom=profile?spring:3.0,headHeight=spring+radius-headBottom;
@@ -509,14 +548,11 @@
       // A closed end on each single-flight landing, matching the new side view.
       if(dir.length===1)rail([x+dir[0]*1.25,-.32,sign*minZ],[x+dir[0]*1.25,-.32,sign*maxZ],stairGroup);
     }
-    // Replace the old thin approach railing with continuous stone balustrades.
+    // Superseded approach balustrades would block the P05 stair returns. Their
+    // final replacement and handrails remain an access/engineering hold.
     const removals=[];
     plinth.traverse(o=>{if(/Schematic approach handrail|Schematic baluster/.test(o.name))removals.push(o);});
     removals.forEach(o=>o.removeFromParent());
-    for(const sign of [-1,1]) {
-      rail([-13.219,-2.08,sign*13.38],[-8.099,-.48,sign*13.38],plinth);
-      rail([-8.099,-.48,sign*13.38],[-.55,-.48,sign*13.38],plinth);
-    }
     // Reference timber shafts on the existing column grids, no grid changes.
     structure.traverse(o=>{
       if(!o.isMesh)return;
@@ -762,6 +798,7 @@
     window.CHURCH_TOWERS?.prepare(ctx);
     // Porch parapets, the 9–10 side gables and the rear gable after the CAD file (roofline.js, 25 Oct 2026).
     window.CHURCH_ROOFLINE?.prepare(ctx);
+    window.CHURCH_ENTRANCE_APPROACH?.prepare(ctx);
     // Project maps in metres before the legacy renderer merges material batches.
     const p=new T.Vector3(),normal=new T.Vector3(),normalMatrix=new T.Matrix3();
     building.updateMatrixWorld(true);scene.updateMatrixWorld(true);
@@ -828,9 +865,9 @@
     const centralWash=new T.SpotLight('#ffd49e',0,65,.85,.85,1.5);
     centralWash.position.set(-12,2,0);centralWash.target.position.set(2.4,9,0);scene.add(centralWash,centralWash.target);ctx.facadeLights.push(centralWash);
     data.revision='REFERENCE-REALISM-2026-10-05';
-    data.refinement={date:'2026-10-05',mainOuterPlinthWidth:22.489,wingOuterPlinthWidth:28.158,frontPlatformWidth:27.254,frontPlatformRise:1.6,sideLandings:6,sideFlights:8,rearStairs:0,sideDoorPlane:10.414,stairRisersPerFlight:12,stairRiserHeight:1.76/12,treeRows:2,treeCount:16,stairCountStatus:'Proposed; measured floor levels retained',references:window.CHURCH_REFERENCES.map(r=>r.url)};
+    data.refinement={date:'2026-10-05',mainOuterPlinthWidth:22.489,wingOuterPlinthWidth:28.158,frontPlatformWidth:27.084,frontPlatformRise:1.6,sideLandings:6,sideFlights:8,rearStairs:0,sideDoorPlane:10.414,stairRisersPerFlight:12,stairRiserHeight:1.76/12,treeRows:2,treeCount:16,stairCountStatus:'Proposed; measured floor levels retained',references:window.CHURCH_REFERENCES.map(r=>r.url)};
     data.assumptions=data.assumptions.filter(s=>!s.startsWith('The broad supporting plinth')&&!s.startsWith('Neutral and warm colors'));
-    data.assumptions.push('Main plinth 22.489 m and projecting wing plinth 28.158 m use the plan overall witnesses. Structural axes and the 2.835 m projection per side remain fixed. Front stage stays within 27.254 m tower facade width and 1.600 m above courtyard. Detailed face offsets remain provisional.');
+    data.assumptions.push('Main plinth 22.489 m and projecting wing plinth 28.158 m use the plan overall witnesses. Structural axes and the 2.835 m projection per side remain fixed. P05 entrance steps return around the forecourt on both sides; the widest drawn nosing is approximately 27.084 m and the forecourt is 1.600 m above the courtyard. Heights and construction are not approved.');
     data.assumptions.push('Exterior side doors now occupy the same outer wall plane as the windows, following the latest user correction. Doors open in Walk mode. Tower front arches remain open with the existing rear wall plane visible beyond.');
     data.assumptions.push('The sanctuary frame uses the three-lobed central and side arch silhouettes from section sheet 5. Curvature, relief depth and placement at axis 10 remain visual reconstructions pending a detailed longitudinal section.');
     data.assumptions.push('Side access follows the plan and the corrected side reference: paired flights at the first doorway, single flights flanking the projecting bay. Stair count, tread run, balustrade profiles and exact landing edges are proposed.');

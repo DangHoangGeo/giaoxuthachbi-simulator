@@ -1,6 +1,8 @@
 # Main/sub-board manual controls and quick modes
 
-> **Door-head/sign and sconce follow-up, 25 October 2026:** L82–L95 are retired from the default, so LD has no default connected equipment. Keep its stable circuit/control identifier for customized saved layouts; existing scene values on an empty LD group add no load. All five E1 signs remain directly fed by DB-1 and ON in All off, with the same 15 W estimate. Their new positions do not establish emergency supply, sign visibility or compliance. See [record](../engineering/doorheads-and-sconces.md).
+> **Entrance follow-up, 1 November 2026:** The main E1 sign and entrance L2 reading heads and A5 speakers are on the nave-facing side of the axis-2 door wall. E1 stays supplied from DB-1 independently of lighting scenes. Layout repair affects simulator records only; physical mounting, wiring, manual controls and emergency operation remain ENGINEERING HOLD.
+
+> **Historical door-head/sign and sconce follow-up, 25 October 2026 (LD is repopulated by column lights on 1 November):** L82–L95 are retired from the default, so LD has no default connected equipment. Keep its stable circuit/control identifier for customized saved layouts; existing scene values on an empty LD group add no load. All five E1 signs remain directly fed by DB-1 and ON in All off, with the same 15 W estimate. Their new positions do not establish emergency supply, sign visibility or compliance. See [record](../engineering/doorheads-and-sconces.md).
 
 > **Open porches, 25 October 2026:** L4 now includes 18 wall path floods and 36 arch floods; A2 has 18 wall fills. A1's twelve nave columns and A5's two entrance fills use a 2.5 m reference height. Existing L4/A1/A2/A5 controls, quick-mode values and board ownership remain; arch/path lighting shares L4. Actual terminals, outdoor isolation, dimmer/driver compatibility and amplifier capacity remain unassigned. See the [coordinated issue](../engineering/open-porch-light-sound.md). This is implemented simulator behavior, not installed hardware. Public visit mode cannot operate these engineering controls.
 
@@ -56,10 +58,10 @@ Interior lighting is switched by area ([meeting record](../engineering/parish-me
 | --- | --- | --- |
 | L3 | Sanctuary | Altar, ambo, chamber, shrine and service-room lights, and the one remaining chandelier at the 9–10 crossing |
 | L1 | Nave · 3 front bays (6–9) | Reading heads lighting bays 6–7, 7–8, 8–9 and the front of the dais |
-| L2 | Nave · 4 rear bays (2′–6) | Reading heads lighting bays 2′–3 to 5–6 and the four entrance-wall lights; can stay off or dimmed at ordinary Masses |
+| L2 | Nave · 4 rear bays (2′–6) | Reading heads lighting bays 2′–3 to 5–6 and the four rear side-wall lights; can stay off or dimmed at ordinary Masses |
 | LA | Ceiling uplight (*hắt trần*) | Seven roof uplights on the tie beams, on their own switch |
-| L8 | Wings · choir & ministers | Eight roof downlights over the wing benches, four per side (`L-WING-…`; the wing chandeliers L63/L65/L67/L69 were retired on 1 November 2026). Switch and scene levels unchanged |
-| LD | Wall sconces | Column and sanctuary-pier sconces (the three nave chandeliers are removed) |
+| L8 | Wings · choir & ministers | Eight roof downlights over the wing benches, four per side (`L-WING-…`; the wing chandeliers L63/L65/L67/L69 were retired on 1 November 2026). 3,000 lm / 25 W assumed per head, 200 W L8; switch and scene levels unchanged |
+| LD | Column up/down lights | Fourteen concept fixtures on the inward faces of the main timber columns; 112 W connected. Existing scene levels and proposed local manual control apply. Physical channels, protection and wiring remain on engineering hold. |
 | LS | Stations of the Cross | 28 candles |
 
 Each reading head on an axis beam belongs to the bay it lights: the head aimed toward the sanctuary to the bay after the beam, its twin to the bay before. So the axis-6 heads are split between L1 and L2. The physical board channels for these areas are still to be designed (ENG-017).
@@ -101,7 +103,7 @@ The 9 October connection inspector shows feeder/trunk/branch relationships above
 
 ## Held wing control group · 9 October 2026
 
-The [wing review](../engineering/wing-review.md) introduces logical **F5 · Wing wall fans · held review** for four small wall fans through **DB-1 → FC-1 → F5**. The 14 remaining nave ceiling fans stay on F1. The sixteen nave wall fans on F2 (eight per side) are shown by default but OFF in every built-in mode; their visibility does not enable them. Manual simulator operation remains available for comparison. L63/L65/L67/L69 remain four chandelier items on L8; four former light IDs and four appended fan IDs are retired. S276/S278 are the two wing wall speakers on A1, facing −X toward the entrance; S275/S277 are retired. Microphones and DB-1/DB-2 feeder logic are unchanged. Four unpowered Peter/Paul pictures are decoration records without circuits to energize or electrical routes.
+The [wing review](../engineering/wing-review.md) introduces logical **F5 · Wing wall fans · held review** for four small wall fans through **DB-1 → FC-1 → F5**. The 14 remaining nave ceiling fans stay on F1. The sixteen nave wall fans on F2 (eight per side) are shown by default but OFF in every built-in mode; their visibility does not enable them. Manual simulator operation remains available for comparison. The original L63/L65/L67/L69 chandeliers are retired; since 1 November L8 contains eight wing downlights. Four earlier light IDs and four appended fan IDs also remain retired. S276/S278 are the two wing wall speakers on A1, facing −X toward the entrance; S275/S277 are retired. Microphones and DB-1/DB-2 feeder logic are unchanged. Four unpowered Peter/Paul pictures are decoration records without circuits to energize or electrical routes.
 
 | Built-in review mode | L8 dim | F5 | F2 |
 | --- | --- | --- | --- |

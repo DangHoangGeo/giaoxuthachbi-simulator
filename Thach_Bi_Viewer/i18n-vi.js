@@ -699,6 +699,8 @@
     'L2 · Outer seating': 'L2 · Ghế ngồi cạnh',
     'L1 · Nave · 3 front bays (6–9)': 'L1 · Lòng nhà thờ · 3 gian đầu (6–9)',
     'L2 · Nave · 4 rear bays (2′–6)': 'L2 · Lòng nhà thờ · 4 gian cuối (2′–6)',
+    'LD · Column up/down lights': 'LD · Đèn hắt hai chiều trên cột',
+    'Column up/down light · concept': 'Đèn hắt hai chiều trên cột · phương án',
     'LD · Wall sconces': 'LD · Đèn tường',
     'Ordinary Mass · rear bays off': 'Thánh lễ thường · tắt 4 gian cuối',
     'L3 · Sanctuary': 'L3 · Cung thánh',

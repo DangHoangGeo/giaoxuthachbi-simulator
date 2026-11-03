@@ -32,7 +32,7 @@ PACKAGES = [
     },
     {
         'key': '03-den-trong-nha-tho', 'code': 'DT', 'title': 'Đèn bên trong nhà thờ',
-        'circuits': ['L1', 'L2', 'L3', 'L8', 'LA', 'LS'],
+        'circuits': ['L1', 'L2', 'L3', 'L8', 'LA', 'LD', 'LS'],
         'purpose': 'Tài liệu này chỉ nói về đèn bên trong nhà thờ: đèn lòng nhà thờ, đèn cung thánh, đèn hai cánh ngang (ca đoàn), đèn hắt lên mái và đèn nến 14 chặng Đàng Thánh Giá. Các mạch đèn đi về tủ điện chính DB-1 và tủ điều khiển đèn LC-1 trong phòng phụ trợ sau bàn thờ.',
         'stop': [
             'Đèn phải được giấu hoặc cùng màu với chỗ gắn, theo ý chủ đầu tư. Loại đèn, độ sáng và góc chiếu chưa được chọn.',
@@ -113,6 +113,7 @@ CIRCUITS = {
     'L3': 'Đèn cung thánh',
     'L8': 'Đèn hai cánh ngang: ca đoàn và người phục vụ',
     'LA': 'Đèn hắt lên mái, dọc giữa nhà thờ',
+    'LD': 'Đèn hắt hai chiều trên các cột chính lòng nhà thờ',
     'LS': 'Đèn nến 14 chặng Đàng Thánh Giá',
     'L4': 'Đèn hiên và lối đi hai bên',
     'L5': 'Đèn bậc thềm, đường đi và đèn lồng cửa bên',

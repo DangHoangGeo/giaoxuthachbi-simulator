@@ -9,13 +9,14 @@
     centralArch:{half:3.3,spring:8.25,shoulder:9.38,crown:10.83}, sideArch:{half:1.575,spring:6.15,shoulder:6.75,crown:7.46},
     // Side arches of axis 11 round the shrines (bundle plaster arch, Z 3.85–7.11, spring +5.55).
     arch11:{x:48.34,z:5.48,half:1.55,spring:5.55,shoulder:6.3,crown:6.85},
-    // Gilded boarded vaults over the two side passages (owner, 1 Nov 2026): the vault of the chamber
-    // continues to both sides, on the outline of the axis-10 side arch at the front (x0 profile
+    // Gilded boarded vaults over the two side passages (owner, 1 Nov 2026, USER CONFIRMED): the vault of the
+    // chamber continues to both sides, on the outline of the axis-10 side arch at the front (x0 profile
     // interpolated from spec.sideArch) and the axis-11 side arch at the back (x1, spec.arch11).
-    // x0 leaves 1.0 m behind the frame's back face clear for the shrine lights hung there
-    // (L115–L118, x 44.25–44.63, y 7.43–7.76, aimed 39° down at the shrines); x1 butts the lacquered spandrel of axis 11.
+    // x0 is the back face of the axis-10 frame (frameX + 0.16): the vault meets the lacquered spandrel with
+    // no gap. The four shrine lights (L115–L118) hang from its soffit instead of from the frame (design.js).
+    // x1 butts the lacquered spandrel of axis 11.
     // CONCEPT visual proxy: it is not an occluder in the simulator, like the chamber vault.
-    sideVault:{x0:45.3,x1:48.16,thick:.09,status:'CONCEPT · gilded boarded vault over each side passage; boarding, ribs, springing beams and fixings pending'},
+    sideVault:{x0:44.335,x1:48.16,thick:.09,status:'CONCEPT · gilded boarded vault over each side passage; boarding, ribs, springing beams and fixings pending'},
     chamber:{x0:44.49,x1:48.42,face:3.3,outer:3.75,top:9.45,lintel:7.0,serviceLining:0.04},
     // Crucifix niche: opens through the reredos and the back wall, 1.0 m deep, its blue wall and
     // the cross standing back on a base over the service room. `shell` is the plaster casing
@@ -50,6 +51,45 @@
     kneeBraceRod:{before:{r:.075},r:.105},
     referenceFrame:{queenPost:.24,collar:{w:.34,d:.42},upperCollar:{w:.30,d:.30},kingStrut:.24,archBraceR:.14,plateBracketR:.10}
   };
+  // Owner feedback, 1 November 2026 (second round): the beams and the boarded lining were finished on both nave
+  // slopes, but looking up in the two 9-10 wings one saw the bare tile roof. The wings now take the same
+  // ivory boarded lining, lacquered rafters, purlins and ridge as the nave (built in simulator/engine.js from
+  // these numbers), with the nave section sizes of `roofTimber`. SOURCE LEVELS: the side-gable roof planes of
+  // the bundle ("Planar side-gable roof meeting main valley"): ridge top +9.45 on X 40.575, eaves +6.325 at
+  // 3.88 m from the ridge, valley apex on the nave roof at Z 4.164 (the same +9.45). The lining lies 0.19 m
+  // under the tile planes exactly as the nave's does. All members are VISUALIZATION PROXIES on ENGINEERING HOLD:
+  // no wing roof section exists in the drawings, and no tie, collar or valley rafter is modelled.
+  spec.wingRoof = {
+    revision:'2026-11-01-wing-roof-1',
+    ridgeX:40.575, top:9.45, eaveY:6.325, eaveRun:3.88, liningDrop:.19,
+    slope:(9.45-6.325)/3.88,                    // rise per metre across the wing (the nave: 0.7258)
+    naveRidge:12.472, naveSlope:(12.472-7.13)/7.36, // nave tile planes the wing roof meets in its valleys
+    valleyEnd:{dx:null,z:7.25},                // end of the nave lining's V cut on the nave eave line
+    half:3.44,                                   // the lining stops at the inner faces of the return and closing walls (X 37.135 / 44.015)
+    gableFace:13.099,                            // inner face of the gable wall
+    frames:[7.9,10.3,12.7],                      // |Z| of the three principal rafter pairs (2.4 m bays)
+    purlinDx:[.635,1.135,null,2.135,2.635,3.135], // nominal 0.5 m spacing; the third line is adjusted to put its soffit under the light anchor
+    rafterEndDx:3.40,                            // the rafters stop 4 cm short of the wall faces at the lining
+    fixtureDx:1.635                              // downlights hang from the purlins at this distance from the ridge
+  };
+  {
+    const W=spec.wingRoof;
+    W.apexZ=(W.naveRidge-W.top)/W.naveSlope;     // 4.164
+    W.valleyEnd.dx=(W.valleyEnd.z-W.apexZ)*W.naveSlope/W.slope; // true intersection of the two lining planes
+    // The purlin hangs normal to the slope. Offset its top contact outwards so the centre of its
+    // lower face is directly over the fixture at fixtureDx, instead of leaving the canopy in air.
+    W.purlinDx[2]=W.fixtureDx+(spec.roofTimber.purlin.d+.004)*W.slope/Math.sqrt(1+W.slope*W.slope);
+    // Underside of the wing lining at X (the sloping plane, valid for |X - ridge| <= half).
+    W.liningY=x=>W.top-W.liningDrop-W.slope*Math.abs(x-W.ridgeX);
+    // Plan position of the nave/wing valley at a distance dx from the wing ridge (the line the bundle clips the roofs on).
+    W.valleyZ=dx=>dx<=2.88?W.apexZ+dx*(7.36-W.apexZ)/2.88:7.36+(dx-2.88)*(10.98-7.36)/(3.88-2.88);
+    // Vertical drop from the lining to the soffit of a purlin at the same X (depth d square to the slope, 4 mm gap).
+    W.purlinDrop=d=>(d+.004)*Math.sqrt(1+W.slope*W.slope);
+    // True inside the triangular opening of the nave lining that looks into a wing, and over the wing itself.
+    // Continuous main-nave lining owns the crossing; the wing lining starts beyond its edge.
+    W.covers=(x,z)=>{const dx=Math.abs(x-W.ridgeX),az=Math.abs(z);
+      return az>W.valleyEnd.z&&dx<=W.half&&az<=W.gableFace;};
+  }
   // Floor levels from the church's CAD file of 23 October 2026 (sections 25 and 45), adopted
   // by the owner on 24 October 2026: dais +0.80 (the PDF set had +0.75) and side floors +0.16
   // (+0.15). The bundle still places its furnishings on +0.75, so prepare() lifts that group.
@@ -90,7 +130,7 @@
   // Owner-selected brighter red, 8 October 2026. Display finish, not measured reflectance.
   const LACQUER='#853125';
   const SATIN_TONE=.84;
-  window.CHURCH_SANCTUARY = { spec, prepare, roofY, floorY, onDais };
+  window.CHURCH_SANCTUARY = { spec, prepare, roofY, floorY, onDais, wingLiningY: spec.wingRoof.liningY, wingCovers: spec.wingRoof.covers };
   function prepare({THREE:T,building,interior,data,mat,palettes}) {
     spec.frameX=data.longitudinal[spec.frameAxis];spec.wingX=data.longitudinal[spec.shrineAxis]+.255;
     const remove=[];
@@ -514,7 +554,7 @@
     {
       const V=spec.sideVault,g=new T.Group();g.name='Side vaults · gilded boarding over the shrine passages';root.add(g);
       const profile=x=>{
-        const t=(x-spec.frameX)/(spec.arch11.x-spec.frameX),L=k=>S[k]+(spec.arch11[k]-S[k])*t,a={spring:L('spring'),shoulder:L('shoulder'),crown:L('crown')},cx=spec.wingZ+(spec.arch11.z-spec.wingZ)*t,half=L('half');
+        const t=(x-V.x0)/(spec.arch11.x-V.x0),L=k=>S[k]+(spec.arch11[k]-S[k])*t,a={spring:L('spring'),shoulder:L('shoulder'),crown:L('crown')},cx=spec.wingZ+(spec.arch11.z-spec.wingZ)*t,half=L('half');
         return {inner:lobed(cx,half,a).getPoints(12),outer:lobed(cx,half+.08,{spring:a.spring,shoulder:a.shoulder+V.thick,crown:a.crown+V.thick}).getPoints(12)};
       };
       const steps=8,xs=Array.from({length:steps+1},(_,i)=>V.x0+(V.x1-V.x0)*i/steps),rows=xs.map(profile);

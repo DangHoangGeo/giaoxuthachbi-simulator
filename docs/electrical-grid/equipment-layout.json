@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-11-01T02:48:13.779Z",
+  "savedAt": "2026-11-03T00:22:00.600Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -56,6 +56,15 @@
     "parishMeetingRevision": "2026-10-25-parish-meeting-7",
     "towerPierRevision": "2026-10-31-tower-pier-depth-2",
     "naveWingLightingRevision": "2026-11-01-nave-wing-lighting-1",
+    "entranceFitRevision": "2026-11-01-entrance-fit-1",
+    "sideVaultLightsRevision": "2026-11-01-side-vault-lights-1",
+    "wingRoofLightingRevision": "2026-11-01-wing-roof-lighting-1",
+    "columnWashRevision": "2026-11-01-column-up-down-1",
+    "centreReadingRevision": "2026-11-01-centre-reading-balance-1",
+    "entranceInteriorRevision": "2026-11-01-entrance-interior-1",
+    "rearSideLightsRevision": "2026-11-02-rear-side-lights-1",
+    "festivalTerraceRevision": "2026-11-02-festival-terrace-removed-1",
+    "festivalStringsRevision": "2026-11-03-festival-strings-removed-1",
     "eveningExposureRevision": "2026-10-09-evening-160",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
@@ -127,7 +136,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -152,7 +161,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -177,7 +186,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -202,7 +211,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -227,7 +236,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -252,7 +261,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -277,7 +286,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -302,7 +311,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -327,7 +336,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -352,7 +361,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -377,7 +386,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -402,7 +411,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -427,7 +436,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -452,7 +461,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -477,7 +486,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -502,7 +511,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -527,7 +536,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -552,7 +561,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -577,7 +586,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -602,7 +611,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -627,7 +636,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -652,7 +661,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -677,7 +686,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -702,7 +711,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -727,7 +736,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -752,7 +761,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -777,7 +786,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -802,7 +811,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -1509,23 +1518,24 @@
     {
       "id": "L59",
       "type": "readingProjector",
-      "name": "Rear rows light · entrance façade · B",
+      "name": "Rear rows light · axis 3 side wall · B",
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        5.475,
-        3.45,
-        -4.2
+        9.25,
+        3.65,
+        -7.25
       ],
-      "yaw": -39.73230287195575,
-      "tilt": -46.6326316163316,
-      "mountYaw": 0,
+      "yaw": 140.78724296403152,
+      "tilt": -53.566706876819445,
+      "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "wall"
       },
+      "note": "CONCEPT / ENGINEERING HOLD: bracket, wall fixing, cable entry, glare, maintenance and selected photometry require review.",
       "lumens": 6000,
       "beam": 44,
       "shadow": false
@@ -1533,47 +1543,49 @@
     {
       "id": "L60",
       "type": "readingProjector",
-      "name": "Rear centre light · entrance façade · B",
+      "name": "Rear centre light · axis 3 side wall · B",
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        5.475,
-        3.9,
-        -4.2
+        9.6,
+        3.65,
+        -7.25
       ],
-      "yaw": 35.14554549970607,
-      "tilt": -39.0472654521878,
-      "mountYaw": 0,
+      "yaw": 94.83380793566903,
+      "tilt": -30.980350932132932,
+      "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "wall"
       },
-      "lumens": 3300,
-      "beam": 50,
+      "note": "CONCEPT / ENGINEERING HOLD: bracket, wall fixing, cable entry, glare, maintenance and selected photometry require review.",
+      "lumens": 6000,
+      "beam": 36,
       "shadow": false
     },
     {
       "id": "L61",
       "type": "readingProjector",
-      "name": "Rear rows light · entrance façade · H",
+      "name": "Rear rows light · axis 3 side wall · H",
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        5.475,
-        3.45,
-        4.2
+        9.25,
+        3.65,
+        7.25
       ],
-      "yaw": 39.73230287195575,
-      "tilt": -46.6326316163316,
-      "mountYaw": 0,
+      "yaw": -140.78724296403152,
+      "tilt": -53.566706876819445,
+      "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "wall"
       },
+      "note": "CONCEPT / ENGINEERING HOLD: bracket, wall fixing, cable entry, glare, maintenance and selected photometry require review.",
       "lumens": 6000,
       "beam": 44,
       "shadow": false
@@ -1581,25 +1593,26 @@
     {
       "id": "L62",
       "type": "readingProjector",
-      "name": "Rear centre light · entrance façade · H",
+      "name": "Rear centre light · axis 3 side wall · H",
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        5.475,
-        3.9,
-        4.2
+        9.6,
+        3.65,
+        7.25
       ],
-      "yaw": -35.14554549970607,
-      "tilt": -39.0472654521878,
-      "mountYaw": 0,
+      "yaw": -94.83380793566903,
+      "tilt": -30.980350932132932,
+      "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "wall"
       },
-      "lumens": 3300,
-      "beam": 50,
+      "note": "CONCEPT / ENGINEERING HOLD: bracket, wall fixing, cable entry, glare, maintenance and selected photometry require review.",
+      "lumens": 6000,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -1770,7 +1783,7 @@
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 12.152,
+      "anchorY": 11.95,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -2192,22 +2205,23 @@
       "type": "spot15",
       "name": "Statue accent · B",
       "circuit": "L3",
-      "mount": "wall",
+      "mount": "pendant",
       "pos": [
-        44.419999999999995,
-        7.75,
-        -4.75
+        44.68,
+        6.424,
+        -4.14
       ],
-      "yaw": -9.651833466804238,
-      "tilt": -39.21267771222643,
+      "yaw": -18.144530993963553,
+      "tilt": -26.569451090024266,
       "mountYaw": 0,
+      "anchorY": 6.484,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "timber"
+        "finish": "chamber"
       },
-      "lumens": 165,
+      "lumens": 105,
       "beam": 12,
       "shadow": false
     },
@@ -2216,22 +2230,23 @@
       "type": "projector36",
       "name": "Shrine wash · B",
       "circuit": "L3",
-      "mount": "wall",
+      "mount": "pendant",
       "pos": [
-        44.419999999999995,
-        7.75,
-        -6.25
+        45.25,
+        6.356000000000001,
+        -4.14
       ],
-      "yaw": 10.101118347708251,
-      "tilt": -39.69810503390403,
+      "yaw": -21.918220291919713,
+      "tilt": -28.95737340516594,
       "mountYaw": 0,
+      "anchorY": 6.416,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "timber"
+        "finish": "chamber"
       },
-      "lumens": 1800,
+      "lumens": 1140,
       "beam": 50,
       "shadow": false
     },
@@ -2240,22 +2255,23 @@
       "type": "spot15",
       "name": "Statue accent · H",
       "circuit": "L3",
-      "mount": "wall",
+      "mount": "pendant",
       "pos": [
-        44.419999999999995,
-        7.75,
-        4.75
+        44.68,
+        6.424,
+        4.14
       ],
-      "yaw": 9.651833466804238,
-      "tilt": -39.21267771222643,
+      "yaw": 18.144530993963553,
+      "tilt": -26.569451090024266,
       "mountYaw": 0,
+      "anchorY": 6.484,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "timber"
+        "finish": "chamber"
       },
-      "lumens": 165,
+      "lumens": 105,
       "beam": 12,
       "shadow": false
     },
@@ -2264,22 +2280,23 @@
       "type": "projector36",
       "name": "Shrine wash · H",
       "circuit": "L3",
-      "mount": "wall",
+      "mount": "pendant",
       "pos": [
-        44.419999999999995,
-        7.75,
-        6.25
+        45.25,
+        6.356000000000001,
+        4.14
       ],
-      "yaw": -10.101118347708251,
-      "tilt": -39.69810503390403,
+      "yaw": 21.918220291919713,
+      "tilt": -28.95737340516594,
       "mountYaw": 0,
+      "anchorY": 6.416,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "timber"
+        "finish": "chamber"
       },
-      "lumens": 1800,
+      "lumens": 1140,
       "beam": 50,
       "shadow": false
     },
@@ -3006,7 +3023,7 @@
       "circuit": "E1",
       "mount": "wall",
       "pos": [
-        5.313000000894069,
+        5.555,
         4.762499999552966,
         0
       ],
@@ -3017,7 +3034,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "backReach": 0.08,
+        "backReach": 0.32199999910593036,
         "clipRise": 0.1375000004470346
       },
       "note": "CONCEPT: inside-face transom clip, case below the coloured fanlight. Lowest edge about 4.68 m; support/door clearance and sign visibility need fire/architectural review. E1 remains maintained from DB-",
@@ -4005,582 +4022,6 @@
       },
       "lumens": 3000,
       "beam": 55,
-      "shadow": false
-    },
-    {
-      "id": "L196",
-      "type": "bulbString",
-      "name": "Festival lights · roof ridge",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        29.16,
-        12.69,
-        0
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 47.3,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L197",
-      "type": "bulbString",
-      "name": "Festival lights · main eave B · nave",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        21.35,
-        7.32,
-        -7.3
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 31.7,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L198",
-      "type": "bulbString",
-      "name": "Festival lights · main eave B · sanctuary",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        48.4,
-        7.32,
-        -7.3
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 8.9,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L199",
-      "type": "bulbString",
-      "name": "Festival lights · veranda eave B · nave",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        21.35,
-        6.4,
-        -10.78
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 31.7,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L200",
-      "type": "bulbString",
-      "name": "Festival lights · veranda eave B · sanctuary",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        48.4,
-        6.4,
-        -10.78
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 8.9,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L201",
-      "type": "bulbString",
-      "name": "Festival lights · rear gable B",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        53.72,
-        9,
-        -5.475
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 4.05,
-        "slope": 41,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L202",
-      "type": "bulbString",
-      "name": "Festival lights · tower B · stage 1 · inner corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.7749999999999999,
-        4.195,
-        -7.593
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 7.790000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L203",
-      "type": "bulbString",
-      "name": "Festival lights · tower B · stage 1 · outer corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.7749999999999999,
-        4.195,
-        -12.713000000000001
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 7.790000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L204",
-      "type": "bulbString",
-      "name": "Festival lights · tower B · stage 2 · inner corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.635,
-        12.115,
-        -7.663
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.85,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L205",
-      "type": "bulbString",
-      "name": "Festival lights · tower B · stage 2 · outer corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.635,
-        12.115,
-        -12.643
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.85,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L206",
-      "type": "bulbString",
-      "name": "Festival lights · tower B · stage 3 · inner corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.525,
-        19.490000000000002,
-        -7.7330000000000005
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.700000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L207",
-      "type": "bulbString",
-      "name": "Festival lights · tower B · stage 3 · outer corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.525,
-        19.490000000000002,
-        -12.573
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.700000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L208",
-      "type": "bulbString",
-      "name": "Festival lights · main eave H · nave",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        21.35,
-        7.32,
-        7.3
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 31.7,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L209",
-      "type": "bulbString",
-      "name": "Festival lights · main eave H · sanctuary",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        48.4,
-        7.32,
-        7.3
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 8.9,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L210",
-      "type": "bulbString",
-      "name": "Festival lights · veranda eave H · nave",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        21.35,
-        6.4,
-        10.78
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 31.7,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L211",
-      "type": "bulbString",
-      "name": "Festival lights · veranda eave H · sanctuary",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        48.4,
-        6.4,
-        10.78
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 8.9,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L212",
-      "type": "bulbString",
-      "name": "Festival lights · rear gable H",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        53.72,
-        9,
-        5.475
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 4.05,
-        "slope": -41,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L213",
-      "type": "bulbString",
-      "name": "Festival lights · tower H · stage 1 · inner corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.7749999999999999,
-        4.195,
-        7.593
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 7.790000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L214",
-      "type": "bulbString",
-      "name": "Festival lights · tower H · stage 1 · outer corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.7749999999999999,
-        4.195,
-        12.713000000000001
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 7.790000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L215",
-      "type": "bulbString",
-      "name": "Festival lights · tower H · stage 2 · inner corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.635,
-        12.115,
-        7.663
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.85,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L216",
-      "type": "bulbString",
-      "name": "Festival lights · tower H · stage 2 · outer corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.635,
-        12.115,
-        12.643
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.85,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L217",
-      "type": "bulbString",
-      "name": "Festival lights · tower H · stage 3 · inner corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.525,
-        19.490000000000002,
-        7.7330000000000005
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.700000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L218",
-      "type": "bulbString",
-      "name": "Festival lights · tower H · stage 3 · outer corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.525,
-        19.490000000000002,
-        12.573
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.700000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L219",
-      "type": "bulbString",
-      "name": "Festival lights · front terrace between the towers",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        2.15,
-        8.5,
-        0
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 14.8,
-        "slope": 0,
-        "spacing": 0.6
-      },
       "shadow": false
     },
     {
@@ -6257,25 +5698,6 @@
       "params": {}
     },
     {
-      "id": "D299",
-      "type": "palm",
-      "name": "Palm · entrance B",
-      "circuit": "DECOR",
-      "mount": "floor",
-      "pos": [
-        6.3,
-        0,
-        -6.55
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {}
-    },
-    {
       "id": "D300",
       "type": "banner",
       "name": "Banner · axis 9 · B",
@@ -6367,25 +5789,6 @@
       "yaw": 180,
       "tilt": 0,
       "mountYaw": 180,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {}
-    },
-    {
-      "id": "D305",
-      "type": "palm",
-      "name": "Palm · entrance H",
-      "circuit": "DECOR",
-      "mount": "floor",
-      "pos": [
-        6.3,
-        0,
-        6.55
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -6507,195 +5910,11 @@
       "yaw": 90,
       "tilt": 0,
       "mountYaw": 90,
-      "anchorY": 12.152,
+      "anchorY": 11.95,
       "on": false,
       "hidden": true,
       "dim": 1,
       "params": {},
-      "shadow": false
-    },
-    {
-      "id": "D312",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda B · bay 4–5",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        16.725,
-        5.6,
-        -8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D313",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda H · bay 4–5",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        16.725,
-        5.6,
-        8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D314",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda B · bay 5–6",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        21.225,
-        5.6,
-        -8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D315",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda H · bay 5–6",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        21.225,
-        5.6,
-        8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D316",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda B · bay 7–8",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        30.225,
-        5.6,
-        -8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D317",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda H · bay 7–8",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        30.225,
-        5.6,
-        8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D318",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda B · bay 8–9",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        34.725,
-        5.6,
-        -8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D319",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda H · bay 8–9",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        34.725,
-        5.6,
-        8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
       "shadow": false
     },
     {
@@ -6851,7 +6070,7 @@
       "circuit": "F2",
       "mount": "wall",
       "pos": [
-        5.475,
+        6.095,
         4.1,
         -7.07
       ],
@@ -6872,7 +6091,7 @@
       "circuit": "F2",
       "mount": "wall",
       "pos": [
-        5.475,
+        6.095,
         4.1,
         7.07
       ],
@@ -8165,13 +7384,13 @@
       "mount": "pendant",
       "pos": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         -8.8
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.115059999999996,
+      "anchorY": 7.655531887066677,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8179,7 +7398,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8192,13 +7411,13 @@
       "mount": "pendant",
       "pos": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         -11.4
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.115059999999996,
+      "anchorY": 7.655531887066677,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8206,7 +7425,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8218,14 +7437,14 @@
       "circuit": "L8",
       "mount": "pendant",
       "pos": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         -8.8
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.083580000000003,
+      "anchorY": 7.655531887066682,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8233,7 +7452,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8245,14 +7464,14 @@
       "circuit": "L8",
       "mount": "pendant",
       "pos": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         -11.4
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.083580000000003,
+      "anchorY": 7.655531887066682,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8260,7 +7479,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8273,13 +7492,13 @@
       "mount": "pendant",
       "pos": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         8.8
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.115059999999996,
+      "anchorY": 7.655531887066677,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8287,7 +7506,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8300,13 +7519,13 @@
       "mount": "pendant",
       "pos": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         11.4
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.115059999999996,
+      "anchorY": 7.655531887066677,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8314,7 +7533,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8326,14 +7545,14 @@
       "circuit": "L8",
       "mount": "pendant",
       "pos": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         8.8
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.083580000000003,
+      "anchorY": 7.655531887066682,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8341,7 +7560,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8353,14 +7572,14 @@
       "circuit": "L8",
       "mount": "pendant",
       "pos": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         11.4
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.083580000000003,
+      "anchorY": 7.655531887066682,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8368,9 +7587,345 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-3-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 3 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        9.975,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-3-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 3 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        9.975,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-4-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 4 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        14.475,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-4-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 4 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        14.475,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-5-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 5 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        18.975,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-5-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 5 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        18.975,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-6-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 6 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        23.475,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-6-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 6 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        23.475,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-7-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 7 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        27.975,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-7-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 7 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        27.975,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-8-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 8 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        32.475,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-8-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 8 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        32.475,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-9-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 9 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        36.975,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-9-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 9 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        36.975,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
       "shadow": false
     },
     {

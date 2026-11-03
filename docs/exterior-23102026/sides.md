@@ -64,3 +64,41 @@ Phần vòm hẹp hiển thị trong mô hình chưa phải toàn bộ khung bê
 Kiểm tra tập trung: `node scripts/verify_side_dwg.cjs` đối chiếu tham số và các đầu cung theo bảng chứng cứ độc lập, các điểm trên đường tròn, nhịp mặt cột, chuỗi cao và sai số chia cung; kiểm tra đúng lỗ tường/kính vòm được dựng của 14 gian cửa sổ. `node scripts/verify_doorhead_signs.cjs` xác nhận biển giữ nguyên sau khi giữ chờ loại cửa mới; phép thử với loại cửa mới không đạt và được lưu làm bằng chứng xung đột. `node scripts/verify_model.cjs` chạy mô hình thật và kiểm tra các cột/vòm/hiên, cửa, lối đi cùng các phần hiện hành. Cú pháp JavaScript và `git diff --check` cũng đã kiểm tra. Việc xem trên desktop và các kiểm tra mô hình/hệ thống tổng hợp do lượt tích hợp chung thực hiện.
 
 Không có thay đổi thiết bị/tuyến điện hoặc dữ liệu nhập Excel trong phần sửa này. Hình CAD/ảnh chồng nguồn giữ cục bộ theo **PUBLICATION HOLD H1**; chỉ chứng cứ hình học dẫn xuất và mã mô hình được lưu cùng thay đổi.
+
+## Cột thân nhà theo bản vẽ E02/EW · 3/11/2026
+
+Chủ đầu tư (3/11/2026) yêu cầu các cột chạy quanh thân nhà, từ tháp tới đầu nhà, phải giống thiết kế, và chọn **nới cột hiên tới bề rộng vẽ**. Bộ phận dùng chung `drawnPier()` trong `Thach_Bi_Viewer/exterior-ornament.js` lấy cao độ và nửa bề rộng từ các đường ngang của cột góc EW (tâm u 3,925; E02 vẽ cùng dạng): chân và gờ đế tới +1,53, thân đôn có khung và hoa thị +0,34–0,86, thân cột ±0,335 từ +1,53 tới +5,622 với ba rãnh khắc (E01B), đầu cột Corinth vẽ lại từ EW (`pierCapitalEW`), các gờ đầu cột tới +6,3239. Phần nhô của từng gờ bằng (nửa bề rộng − 0,335), là **DERIVED**.
+
+- **Cột hiên (porches.js):** thân cột hiên theo phương X nay ±0,335 (trước ±0,18); chiều Z ±0,18 giữ nguyên. Mặt ngoài gồm dải 0,03 và trường rãnh 0,03, nên đèn rọi vòm (mặt +0,24) và các xuất tuyến điện **không đổi vị trí**. Vòm nhọn hẹp lại (nửa nhịp 1,915) và nay khởi từ +2,7 với độ vồng 2,55 (trước +3,0 / 2,6), để gờ vòm nằm dưới hàng răng cưa từ +5,422. Hoa thị đỉnh vòm (CONCEPT) được bỏ.
+- **Diềm mái hiên:** gờ mái của bundle (dải dưới, diềm, mũ, con sơn) và đầu cột của bundle được thay bằng `drawnEntablature()`: răng cưa 66,3 mm bước 132,6 mm, ba gờ, diềm chữ Vạn +5,762–6,012, mũ tới +6,3239. Như bản vẽ, diềm ngắt tại mỗi cột; các gờ của cột mang phần mũ qua cột.
+- **Lưu ý:** đèn lối đi trên trục cột (+5,76–5,90) giờ nằm ngay trước đầu cột chạm. Vị trí đèn không đổi; nên xem lại để giấu đèn theo ý chủ đầu tư.
+
+## Trang trí hiên theo E02 · 3/11/2026
+
+Tiếp theo phần cột, các họa tiết E02 được đặt lên những mặt tương ứng của phương án hiên thoáng. Đường nét chép từ DXF (khung E02: u = (x_CAD − 1 404 501,3)/1 000, v = (y_CAD + 518 026,8)/1 000, chiều cung +1) nằm trong `Thach_Bi_Viewer/detail-sides-profile.js`; `scripts/verify_detail_sides_source.py` đối chiếu từng dòng với DXF cục bộ (sai khác lớn nhất 5×10⁻¹⁰ m). Đường nét là **DRAWN**; độ nổi, chiều dày, vật liệu là **DERIVED/CONCEPT**. Hình CAD giữ cục bộ theo **PUBLICATION HOLD H1**; chủ đầu tư xác nhận ngày 3/11/2026 rằng quyền tái hiện mở rộng cho các đường nét E02 này (danh mục công bố, H1).
+
+| Khóa | Nội dung E02 | Handle | Gốc u |
+| --- | --- | --- | --- |
+| `sideLeaf` | Lá góc bên trái cột trục 5, +4,39–5,21 | `D9AB7E`–`D9ABC8` (75 dòng) | trục cột X 18,975 |
+| `sideRoundel` | Hoa tròn trên cặp cửa sổ gian 5–6, tâm +4,645 | `D9A3E0`–`D9A4AB` (204 dòng, bỏ dòng trùng) | tâm gian X 21,225 |
+| `sideWindowCapital` | Đầu cột nhỏ và trụ áp cửa sổ, +2,8005–3,0205 | `D9A24B`–`D9A2AC` (61 dòng, bỏ đường ngang cổ/đỉnh) | trục cột nhỏ X 20,974 |
+| `parapetBaluster`, `parapetBalusterRing` | Con tiện dẹt lan can mái hiên, +6,375–6,925, và vòng giữa | `D9A83B`–`D9A8B0` (32 cung khép kín + 1 vòng) | trục con tiện X 19,6 |
+
+- **Lá góc trên tường hồi vòm hiên (porches.js):** E02 vẽ hai lá ở hai bên mỗi cột trên tường; trên hàng cột thoáng, chúng được đặt trên mặt ngoài tường hồi phía trên vòm nhọn, 0,48–1,39 m tính từ trục cột. Lá bên phải là ảnh đối xứng; kiểm tra với lá vẽ `D9A146`–`D9A190` lệch tối đa 0,09 mm. Khoảng hở tới gờ vòm nhọn ≥ 0,15 m (gian 4,5 m: 0,163; gian 11–12: 0,150). 74/75 dòng trùng `wingSpandrel` của EW khi dời 1,2 mm; dòng còn lại `D9ABC2` chỉ có ở E02, nên dùng bản chép riêng. 36 lá, chỉ mặt ngoài.
+- **Lan can mái hiên (roofline.js, khối “Porch parapets”):** con tiện trụ tròn được thay bằng con tiện dẹt E02: đường bao khép kín cắt thành tấm dày 0,12 m (**DERIVED**), vòng giữa làm núm. Bước 0,25 m, cách trục 0,625 m như bản vẽ (14 con/gian 4,5 m; gian 11–12 dàn đều 13 con) — 250 con thay cho 322. Đế +6,324–6,374 và tay vịn +6,924–7,074 giữ nguyên, khớp mốc vẽ.
+- **Cửa sổ tường C/G (realism.js):** ở 14 gian cửa sổ, phía về tâm gian của mỗi cửa có cột nhỏ E02 (thân r 0,065 tại 0,7532 m từ trục cửa, trụ áp 0,61–0,6882, đế 0–0,31, cổ, đầu cột chép, đỉnh, gối +3,0505–3,1005; đường `D9A2AF`–`D9A2B9`, `D9A249`–`D9A27C`) thay cho gờ khung phẳng; dưới mỗi cửa có hai dải bậu +0,75/0,79/0,85 và bốn ô khắc có tai +0,075–0,675 (`D9A4AC`–`D9A4DE`) thay cho “Window low parapet” và rãnh. Hoa tròn cửa kính giả (“Schematic rose-window”) được thay bằng hoa tròn chép E02 tại tâm gian. Gian 10–11 là cửa đi trong E02 nhưng là cửa sổ trong mô hình (quyết định 25/10), nên áp dụng cùng kiểu cửa sổ: **DERIVED**.
+- **Giữ chờ — cột nhỏ phía ngoài của mỗi cửa sổ:** đèn lối đi hiên (L119–L127, L128–L136, +3,03–3,20) và loa hiên (S279–S282, S-PORCH-*, +2,55–2,84) gắn trên tường tại 0,805 m (gian 11–12: 0,726 m) từ trục cửa, đúng vị trí cột nhỏ phía ngoài. Hộp thiết bị vốn đã chồng lên gờ khung phẳng hiện có. Không dời thiết bị: phía ngoài giữ gờ khung phẳng cho tới khi người thiết kế điện/âm thanh và kiến trúc sư chọn lại vị trí gắn (ví dụ trên cột tường tại trục hoặc vòm ngang).
+- **Chưa làm:** lá góc ở mặt trong vòm hiên; lan can bậc ngoài (E02 vẽ tấm đặc khoét lỗ thuôn, trụ đầu có quả cầu; mã bậc trong `realism.js` ngoài phạm vi lượt này); lan can chắn hiên (`porches.js`) chưa đổi vì E02 chỉ vẽ lan can đầu bậc cao khoảng 0,65 m, thấp hơn lan can chắn 1,08 m hiện có, và chiều cao chắn là việc an toàn chưa được duyệt; cửa đi C/G (giữ chờ biển thoát hiểm như trên).
+- **Lưới tam giác (đếm đơn):** lá góc +64 368; con tiện +59 000 thay khoảng 12 900; cửa sổ C/G +103 404, bỏ hoa tròn giả, gờ thấp và gờ khung phía trong. Tổng cảnh đo trong trình duyệt tăng từ 6 183 914 lên 6 550 098 (gồm cả bản sao gộp theo vật liệu).
+- **Kiểm tra:** `verify_detail_sides_source.py`, `verify_model.cjs` (nay kiểm 250 con tiện E02, 63 kính màu sau khi bỏ 14 hoa tròn kính giả, 14 bộ hoa tròn/đầu cột), `verify_construction.cjs` (mẫu “Window low parapet” đã bỏ được thay bằng “Porch parapet pedestal”; ba phần mới thuộc lớp trang trí), `verify_simulator.cjs --report --estimates` (các mục tiêu chưa đạt đã biết vẫn còn), `--electrical`, `verify_open_porches.cjs`, `verify_side_dwg.cjs` đều đạt; thiết bị và tuyến điện không đổi. Đã xem trên desktop (hiên ngoài, trong hiên, lan can mái, lá góc hai bên B/H); chưa xem chế độ tối và chế độ chỉ tham quan.
+
+### Chóp trên lan can hiên · 3/11/2026 (bổ sung)
+
+Chủ đầu tư nhận xét chóp trên lan can trông nhỏ và rời khỏi cột lớn. Bản vẽ E02 không vẽ bệ vuông trên gờ mái: chóp đứng thẳng trên gờ (+6,324), cao đúng tới đỉnh vẽ +8,026 (D9B1A6), nên được phóng tỷ lệ 1,013 (trước 0,57 trên bệ 0,5 m). Trán tam giác của chóp nằm trên gờ, mũ các cột nhỏ ngang mặt trên tay vịn. Bệ "Porch parapet pedestal" và mũ bệ được bỏ; dải chân lan can đi vào khối góc của chóp (±0,289 × tỷ lệ), tay vịn trên đi vào các cột nhỏ (±0,198 × tỷ lệ). Dây đèn lễ hội trên mái hiên (+6,39–6,41) vẫn đi qua chân chóp như trước đi qua bệ; vị trí đèn không đổi.
+
+### Cột nhô ra và diềm gãy qua cột · 3/11/2026 (bổ sung)
+
+Chủ đầu tư nhận xét cột hiên và diềm vẫn "không liên tục". Nguyên nhân: mặt cột chỉ nhô 0,03 m khỏi mặt tường vòm, trong khi diềm giữa hai cột nhô tới 0,38 m, nên đầu cắt của diềm lộ ra cạnh cột và cột trông bị lùi vào. Đã sửa:
+- Mặt ngoài tường vòm giữa các cột lùi về 0,06 m tính từ trục (trước 0,18), nên mặt cột (0,21) nhô 0,15 m. Chiều sâu cột, mặt gắn đèn rọi vòm (0,24) và mặt phía trong hiên không đổi.
+- Diềm giữa các cột đặt trên mặt tường mới. Phía trên mỗi cột, các gờ và mũ diềm gãy nhô thêm 0,15 m theo bề rộng gờ vẽ của trụ EW/E02, nên diềm ôm qua cột. Răng cưa và chữ Vạn dừng ở cạnh cột; đầu cột chạm nằm trong vùng diềm, như E02.
+- Độ sâu là **DERIVED**.

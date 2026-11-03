@@ -17,15 +17,28 @@
   const DRAWN = 'TRACED CAD ELEVATION / SCHEMATIC DEPTH';
   const CARVED = 'TRACED CAD ELEVATION / ILLUSTRATIVE CARVING';
   const spec = {
-    revision: '2026-10-31-cad-towers-6',
+    revision: '2026-11-03-tower-traced-decoration-1',
     centre: 10.153, core: 2.45, wall: 0.14, // tower centre |Z|; core half-width; half wall thickness
     top: 8.39,
+    leafStroke: .018, // T12 contour tube radius: owner 2 Nov 2026 asked for bolder leaves (was 8 mm); CONCEPT relief
+    leafSagitta: .001, // arc chord tolerance for the 18 mm strokes (was 0.2 mm); end points stay exact
     // ENG-043 (31 Oct 2026): every corner pier is square, as E01B and E02 draw it. Ground shaft
     // 1.21 m wide, centred 2.56 m from the tower centre both across (t, E01B 12.108–13.318) and
     // in depth (X, E02 −0.715–0.495 and 4.405–5.615). The rear pier stands behind axis 2 as P05
     // draws it. The inner rear pier stops at the tower rear wall (X 5.04): P05 squeezes it against
     // the axis-2′ colonnade column, and a full square would bury that column and its wall fan
     // (F-NAVE-[BH]-2P). DERIVED, confirmation pending (ENG-043).
+    // E01B flute ends (centres ±0.025) and raised-field half-widths of the corner piers, ground and
+    // three upper stages; the side faces repeat them (DERIVED). Field runs 0.1 m beyond the flutes.
+    // 3 Nov 2026: the drawn flutes are not on the pier centre. t = middle flute from the tower centre
+    // on E01B (Z 7.703/12.603, 7.763/12.543, 7.823/12.483, 7.954/12.351); x = middle flute X of the
+    // front and rear piers on E02 (r 25 mm flute-end arcs). Stages 1–3 sit 0.09–0.11 m in from the
+    // pier centre, toward the face centre; stage 4 is centred.
+    flutes: { ground: { half: 0.275, f: [1.948, 7.263], t: 2.450, x: [0.0, 4.90] },
+      stages: [{ half: 0.235, f: [9.15, 14.793], t: 2.390, x: [0.06, 4.84] }, { half: 0.225, f: [16.6, 22.123], t: 2.330, x: [0.12, 4.78] },
+        { half: 0.2245, f: [23.9, 28.313], t: 2.199, x: [0.252, 4.649] }] },
+    // Traced pier-capital foliage (detail-towers-profile.js pierCapital1..4): tube radius and relief CONCEPT.
+    capitalStroke: .008,
     pier: { t: [1.955, 3.165], front: [-0.715, 0.495], back: [4.405, 5.615], backInner: [4.405, 5.04], pedestal: 1.848, shaft: 7.4, capital: 7.85,
       // E01B C45432..C45487 pedestal bands up to the +1.848 top (facade.csv F33–F35), same on E02:
       // [y0, y1, projection beyond the shaft face, material, name]; the two cyma mouldings
@@ -37,7 +50,7 @@
         [1.284, 1.368, .048, 'S', 'Tower corner pier pedestal cap'], [1.368, 1.668, 0, 'W', 'Tower corner pier upper die'],
         [1.668, 1.716, .03, 'S', 'Tower corner pier top band'], [1.716, 1.788, .066, 'S', 'Tower corner pier top band'],
         [1.788, 1.848, .03, 'S', 'Tower corner pier top band']] },
-    arch: { spring: 3.984770309, r: [1.385, 1.955], rings: [1.385, 1.555, 1.585, 1.725, 1.755, 1.855, 1.885, 1.955], impost: [1.555, 1.955] },
+    arch: { spring: 3.984770309, r: [1.385, 1.955], rings: [1.385, 1.555, 1.585, 1.725, 1.755, 1.855, 1.885, 1.955], impost: [1.555, 1.955], capital: 1.293 },
     blind: { spring: 2.899970309, r: [0.824478702, 1.139478702], rings: [0.824478702, 0.974478702, 1.139478702], colonnette: 1.02, recess: 0.2 },
     // E01B C449B8, C45767..C4577C: the cartouche frame between the ground arches, traced (t, y) in metres.
     cartouche: [[-0.0,5.0,0.055,4.998,0.109,4.994,0.163,4.987,0.216,4.976,0.269,4.964,0.32,4.948,0.371,4.93,0.42,4.909,0.469,4.885,0.516,4.859,0.561,4.83,0.606,4.799,0.648,4.766,0.689,4.73,0.728,4.692,0.765,4.652],[-0.0,4.339,0.06,4.338,0.12,4.335,0.179,4.328,0.238,4.32,0.296,4.309,0.354,4.295,0.411,4.279,0.468,4.261,0.523,4.241,0.578,4.218,0.632,4.193,0.685,4.166,0.737,4.137,0.787,4.105,0.837,4.071,0.885,4.035],[-0.0,4.409,0.045,4.409,0.089,4.407,0.134,4.404,0.178,4.399,0.223,4.393,0.266,4.386,0.31,4.377,0.353,4.367,0.397,4.356,0.439,4.344,0.482,4.33,0.524,4.316,0.565,4.3,0.607,4.282,0.647,4.264,0.687,4.244],[0.885,4.035,0.888,4.052,0.893,4.069,0.9,4.084,0.909,4.099],[0.909,4.099,0.886,4.122,0.865,4.145,0.846,4.17,0.829,4.197,0.814,4.224,0.801,4.252,0.79,4.281,0.781,4.311,0.774,4.341,0.769,4.372,0.767,4.403,0.767,4.434,0.769,4.466,0.773,4.497,0.78,4.528,0.789,4.559],[0.715,4.285,0.707,4.321,0.701,4.358,0.697,4.396,0.697,4.433,0.699,4.471,0.704,4.508,0.712,4.545,0.722,4.581],[0.848,4.581,0.854,4.592,0.862,4.602,0.871,4.61,0.882,4.617],[0.789,4.559,0.794,4.565,0.801,4.57,0.808,4.574,0.815,4.578,0.823,4.58,0.831,4.581,0.839,4.582,0.848,4.581],[-0.885,4.035,-0.837,4.071,-0.787,4.105,-0.737,4.137,-0.685,4.166,-0.632,4.193,-0.578,4.218,-0.523,4.241,-0.468,4.261,-0.411,4.279,-0.354,4.295,-0.296,4.309,-0.238,4.32,-0.179,4.328,-0.12,4.335,-0.06,4.338,-0.0,4.339],[-0.909,4.099,-0.9,4.084,-0.893,4.069,-0.888,4.052,-0.885,4.035],[-0.789,4.559,-0.78,4.528,-0.773,4.497,-0.769,4.466,-0.767,4.434,-0.767,4.403,-0.769,4.372,-0.774,4.341,-0.781,4.311,-0.79,4.281,-0.801,4.252,-0.814,4.224,-0.829,4.197,-0.846,4.17,-0.865,4.145,-0.886,4.122,-0.909,4.099],[-0.882,4.617,-0.871,4.61,-0.862,4.602,-0.854,4.592,-0.848,4.581],[-0.848,4.581,-0.839,4.582,-0.831,4.581,-0.823,4.58,-0.815,4.578,-0.808,4.574,-0.801,4.57,-0.794,4.565,-0.789,4.559],[0.722,4.581,0.728,4.589,0.735,4.597,0.742,4.604,0.75,4.61],[0.687,4.244,0.687,4.251,0.688,4.258,0.69,4.264,0.693,4.27,0.697,4.275,0.703,4.279,0.709,4.283,0.715,4.285],[0.75,4.61,0.749,4.622,0.752,4.633,0.757,4.643,0.765,4.652],[-0.765,4.652,-0.728,4.692,-0.689,4.73,-0.648,4.766,-0.606,4.799,-0.561,4.83,-0.516,4.859,-0.469,4.885,-0.42,4.909,-0.371,4.93,-0.32,4.948,-0.269,4.964,-0.216,4.976,-0.163,4.987,-0.109,4.994,-0.055,4.998,-0.0,5.0],[-0.687,4.244,-0.647,4.264,-0.607,4.282,-0.565,4.3,-0.524,4.316,-0.482,4.33,-0.439,4.344,-0.397,4.356,-0.353,4.367,-0.31,4.377,-0.266,4.386,-0.223,4.393,-0.178,4.399,-0.134,4.404,-0.089,4.407,-0.045,4.409,-0.0,4.409],[-0.722,4.581,-0.712,4.545,-0.704,4.508,-0.699,4.471,-0.697,4.433,-0.697,4.396,-0.701,4.358,-0.707,4.321,-0.715,4.285],[-0.75,4.61,-0.742,4.604,-0.735,4.597,-0.728,4.589,-0.722,4.581],[-0.715,4.285,-0.709,4.283,-0.703,4.279,-0.697,4.275,-0.693,4.27,-0.69,4.264,-0.688,4.258,-0.687,4.251,-0.687,4.244],[-0.765,4.652,-0.757,4.643,-0.752,4.633,-0.749,4.622,-0.75,4.61]],
@@ -499,51 +512,7 @@
   // Front face of the corner piers of each stage (stage 1 first) and the pier centre, for fittings.
   spec.pierFront = [spec.pier.front[0], ...spec.stages.map(g => g.front[0])];
   spec.pierCentre = [(spec.pier.t[0] + spec.pier.t[1]) / 2, ...spec.stages.map(g => (g.t[0] + g.t[1]) / 2)];
-  window.CHURCH_TOWERS = { spec, prepare, ornament };
-
-  // Carved ornament shared with roofline.js: fleur-de-lis finial, flat foliate pilaster capital,
-  // Greek-key frieze and a leaf spray, each built facing +Z with its base at the origin.
-  function ornament(T, K) {
-    const { TR, RX, RZ, SC, place, merge } = K;
-    const fleur = h => {
-      const parts = [[K.leaf({ len: h * .62, wid: h * .26, thick: h * .05, curl: .3, lobes: 0, cup: .25, seg: 6, fine: false }), TR(0, h * .34, 0)],
-        [new T.BoxGeometry(h * .34, h * .07, h * .12), TR(0, h * .3, 0)], [new T.BoxGeometry(h * .09, h * .3, h * .09), TR(0, h * .15, 0)]];
-      const petal = K.stem([[h * .04, h * .32, 0], [h * .2, h * .42, 0], [h * .27, h * .6, 0], [h * .2, h * .74, 0], [h * .11, h * .68, 0]], h * .045, h * .018, 10, 5);
-      for (const e of [-1, 1]) parts.push([petal, SC(e, 1, 1)]);
-      return merge(parts);
-    };
-    const capitalCache = new Map();
-    const pilasterCapital = (w, h) => {
-      const key = w.toFixed(3) + '|' + h.toFixed(3);
-      if (capitalCache.has(key)) return capitalCache.get(key);
-      const n = Math.max(3, Math.round(w / .2)), parts = [];
-      const blade = K.leaf({ len: h * .78, wid: w / n * 1.3, thick: .025, curl: 1.7, lobes: 3, cup: .25, seg: 6 });
-      for (let i = 0; i < n; i++) parts.push([blade, place(RX(.12), TR(-w / 2 + (i + .5) * w / n, h * .04, .01))]);
-      const volute = K.stem(K.scroll(0, 0, h * .14, 1.2, -Math.PI / 2, 1), .02, .008, 10, 5);
-      for (const e of [-1, 1]) parts.push([volute, place(SC(e, 1, 1), TR(e * (w / 2 - h * .1), h * .74, .02))]);
-      const g = merge(parts); capitalCache.set(key, g); return g;
-    };
-    const meanderGeo = (len, h) => {
-      const u = .31, t = .035, m = .035, depth = .03, parts = [];
-      const bar = (a, b, c, d) => parts.push([new T.BoxGeometry(b - a, d - c, depth), TR((a + b) / 2, (c + d) / 2, depth / 2)]);
-      bar(0, len, m, m + t); bar(0, len, h - m - t, h - m);
-      for (let x = 0; x + u <= len + 1e-6; x += u) {
-        bar(x, x + t, m, h - m); bar(x + .8 * u - t, x + .8 * u, .3 * h, h - m);
-        bar(x + .4 * u, x + .8 * u, .3 * h, .3 * h + t); bar(x + .4 * u, x + .4 * u + t, .3 * h, .66 * h);
-        bar(x + .4 * u, x + .62 * u, .66 * h - t, .66 * h);
-      }
-      return merge(parts);
-    };
-    const spray = h => {
-      const parts = [], stemG = K.stem([[0, 0, 0], [h * .35, h * .25, 0], [h * .7, h * .15, 0], [h * .95, h * .32, 0]], .03, .012, 14, 5);
-      parts.push([stemG, null], [K.stem(K.scroll(h * .95, h * .42, h * .1, 1.2, 0, 1), .022, .008, 10, 5), null]);
-      const blade = K.leaf({ len: h * .32, wid: h * .16, thick: .025, curl: 1.4, lobes: 3, seg: 5, fine: false });
-      for (const [u, v, a] of [[h * .2, h * .12, .6], [h * .45, h * .22, 2.3], [h * .62, h * .12, .9], [h * .82, h * .22, 2.1]]) parts.push([blade, place(RZ(-a), TR(u, v, 0))]);
-      return merge(parts);
-    };
-    return { fleur, pilasterCapital, meanderGeo, spray };
-  }
-
+  window.CHURCH_TOWERS = { spec, prepare };
 
   function prepare({ THREE: T, exterior, building, mat, data }) {
     if (!exterior) return;
@@ -610,7 +579,15 @@
     // X 5.9.
     // Owner, 1 Nov 2026: its front face is flush with the front piers' plinth (X −0.984), as elevation
     // E01B draws the pier bases running straight down to the −0.48 forecourt, with no ledge in front.
-    const footing = { x: [spec.pier.front[0] - spec.pier.bands[0][2], 5.4], z: [6.75, 13.62], y: [-2.08, 0], rear: { x: [5.4, 5.9], z: [11.6, 13.62] } };
+    // Owner, 2 Nov 2026: below ±0 the tower stands on columns, not a solid block. E02 D8DE56–D8DE74
+    // and E01B C454F0–C454F9 draw, under each corner pier, a column from the −0.203 band down to
+    // −2.08: 0.309 m beyond the pier's corner edge and 0.224 m beyond its other edge, with strip
+    // lines 0.305 / 0.22 / 0.22 m wide; a band (0 to −0.13, −0.13 to −0.203) runs over them
+    // 0.113 / 0.05 m proud. Nothing is drawn between the columns, so the stone core is set back to
+    // the tower wall plane above (depth DERIVED). The core keeps X 5.4 at the rear (veranda) and
+    // |Z| 6.75 on the inner side.
+    const footing = { x: [-spec.wall, 5.4], z: [6.75, spec.centre + spec.core + spec.wall], y: [-2.08, 0],
+      column: { corner: .309, other: .224, strips: [.305, .22, .22], top: -.203 }, band: [[-.203, -.13, .05], [-.13, 0, .113]] };
     spec.footing = footing;
     let footingMaterial = null;
     (building || exterior).traverse(o => {
@@ -620,7 +597,7 @@
       o.geometry = new T.BoxGeometry(footing.x[1] - footing.x[0], footing.y[1] - footing.y[0], footing.z[1] - footing.z[0]);
       const local = o.parent.worldToLocal(new T.Vector3((footing.x[0] + footing.x[1]) / 2, (footing.y[0] + footing.y[1]) / 2, s * (footing.z[0] + footing.z[1]) / 2));
       o.position.copy(local); o.scale.set(1, 1, 1);
-      o.userData.status = 'SOURCE GRID / PLINTH WIDENED UNDER THE CAD CORNER PIERS';
+      o.userData.status = 'SOURCE GRID / CORE SET BACK BETWEEN THE CAD LOWER COLUMNS (DEPTH DERIVED)';
       footingMaterial = o.material;
     });
     const root = new T.Group();
@@ -634,10 +611,37 @@
       bins.get(key).parts.push([geometry, matrix]);
     };
     const W = mat.wall, S = mat.trim, D = mat.darkTrim, CAP = mat.cap || mat.wall;
+    // False-door timber (owner, 3 Nov 2026): the blind arches carry fixed timber facings in the main
+    // doors' wood, with a darker inset for the sunk panels.
+    const WOOD = mat.wood || S, WOOD_INSET = (() => { const m = WOOD.clone(); m.color?.multiplyScalar(.78); m.name = 'False-door inset timber'; return m; })();
     const stats = { piers: 0, blindArches: 0, upperFronts: 0, removedBundleMeshes: remove.length };
 
     // ---- Shared carving (also used by roofline.js) ----
-    const { fleur, pilasterCapital, meanderGeo, spray } = ornament(T, K);
+    const { fleur, pilasterCapital, meanderGeo, towerSpandrel, pinnacleCrown, flutedField } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    // Round-ended flutes through a raised field (shared E01B form), clamped to the shaft.
+    const fluted = ({ half, f }, [lo, hi], matrix) => {
+      const g = flutedField({ half, y: [Math.max(lo, f[0] - .1), Math.min(hi, f[1] + .1)], flutes: f });
+      add('Tower pier fluted field', W, g.field, matrix); add('Tower pier fluted field bed', S, g.bed, matrix);
+    };
+    const leafProfiles = window.CHURCH_TOWER_SPANDREL_PROFILE;
+    const towerLeaves = { outer: towerSpandrel(leafProfiles.outer, spec.leafStroke, spec.leafSagitta), inner: towerSpandrel(leafProfiles.inner, spec.leafStroke, spec.leafSagitta) };
+    // Pier capitals traced from E01B (pierCapital1..4, the inner pier, u from the tower centre). The
+    // outer pier is the mirror image (E01B draws it so, within 0.1 mm; stage 4 within 24 mm), and E02
+    // draws the same outline on the side faces (front pier as traced, rear pier mirrored, within 0.1 mm).
+    const capitalRows = window.CHURCH_DETAIL_PROFILE_TOWERS;
+    const capitalGeo = [1, 2, 3, 4].map(n => towerSpandrel(capitalRows['pierCapital' + n], spec.capitalStroke, .003, 3));
+    const CAPITAL = 'E01B/E02 TRACED CAPITAL OUTLINE / RELIEF CONCEPT';
+    // Other traced pieces (detail-towers-profile.js), each centred on its drawn origin: roses, window-head
+    // tracery, lantern panel rose, ground great-arch and blind-arch capitals (v from their springing).
+    const traced = (key, stroke) => towerSpandrel(capitalRows[key], stroke, .003, 3);
+    const TG = { rose: traced('rose', .008), roseSmall: traced('roseSmall', .007), head: traced('windowHead', .007), head4: traced('windowHead4', .007),
+      lantern: traced('lanternRose', .005), great: traced('greatCapital', .008), blind: traced('blindCapital', .007) };
+    const TRACED = 'E01B/E02 TRACED OUTLINE / RELIEF CONCEPT', TRACED_REPEAT = 'DERIVED REPEAT OF E01B/E02 TRACED OUTLINE / RELIEF CONCEPT';
+    // Upper great-arch impost as E01B/E02 draw it (C43850..C44C48, C438A0..C438B0, C44263..C44290): a plain
+    // pilaster with a necking band, a lower and an upper abacus, no foliage. Levels from the springing;
+    // stage 4's necking is lower and its shaft spans all the arch rings. Projections 0.03 / 0.03 / 0.08 m
+    // beyond the shaft (drawn); depths DERIVED.
+    const impostBands = stage => [[stage === 4 ? [-.295, -.225] : [-.46, -.39], .03, .03], [[-.14, -.07], .03, .03], [[-.07, 0], .08, .05]];
     // Each tower face has its own frame: u along the face, v up, w out of the face.
     // face(s, kind) → function mapping (u, v, w) to a world matrix and box helpers.
     const both = fn => { for (const s of [-1, 1]) fn(s); };
@@ -645,6 +649,11 @@
     both(s => {
       const zc = s * spec.centre, C = spec.core, P = spec.pier, E = spec.entablature;
       const Z = t => zc + s * t; // t outward from the tower centre
+      // n: 0 = ground, 1..3 = stages 2..4; face = the capital band's front X or side t; the tube sits just proud of it.
+      const capitalFront = (n, side, faceX) => add('Tower pier capital foliage · traced E01B', S, capitalGeo[n],
+        place(SC(-side * s, 1, 1), RY(-Math.PI / 2), TR(faceX - spec.capitalStroke, 0, zc)), CAPITAL);
+      const capitalSide = (n, isFront, faceT) => add('Tower pier capital foliage · traced E02', S, capitalGeo[n],
+        place(SC(isFront ? s : -s, 1, 1), RY(s > 0 ? 0 : Math.PI), TR(C, 0, Z(faceT + spec.capitalStroke))), CAPITAL);
       const block = (name, material, [x0, x1], [y0, y1], [t0, t1], status) => {
         const z0 = Z(t0), z1 = Z(t1);
         add(name, material, new T.BoxGeometry(x1 - x0, y1 - y0, Math.abs(z1 - z0)), TR((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2), status);
@@ -670,6 +679,42 @@
         return sh;
       };
       const archHole = (cx, half, y0, spring) => { const p = new T.Path(); p.moveTo(cx - half, y0); p.absarc(cx, spring, half, Math.PI, 0, true); p.lineTo(cx + half, y0); p.lineTo(cx - half, y0); return p; };
+      // Owner, 3 Nov 2026: a false door in a blind arch, made to read like the main timber doors (frame,
+      // two leaves with three raised and carved panels each, a timber fan in the arched head) while
+      // the wall stays closed behind it: fixed facing, no opening, no movement. Sizes DERIVED from the
+      // drawn arch; joinery CONCEPT.
+      const falseDoor = (face, cu, half, y0, spring, w, status = 'FALSE DOOR · FIXED TIMBER FACING / CONCEPT') => {
+        const box = (name, m, [u0, u1], [v0, v1], [w0, w1]) => add(name, m, new T.BoxGeometry(u1 - u0, v1 - v0, w1 - w0), at(face, (u0 + u1) / 2, (v0 + v1) / 2, (w0 + w1) / 2), status);
+        const top = spring - .07, fr = .07;
+        box('Tower false door board', WOOD_INSET, [cu - half, cu + half], [y0, spring], [w, w + .03]);
+        for (const e of [-1, 1]) box('Tower false door frame', WOOD, [cu + e * half - (e > 0 ? fr : 0), cu + e * half + (e < 0 ? fr : 0)], [y0, spring], [w, w + .07]);
+        box('Tower false door transom', WOOD, [cu - half, cu + half], [top, spring], [w, w + .07]);
+        box('Tower false door meeting stiles', WOOD, [cu - .035, cu + .035], [y0, top], [w, w + .065]);
+        const lw = half - fr - .035, H = top - y0;
+        for (const e of [-1, 1]) {
+          const lc = cu + e * (.035 + lw / 2);
+          box('Tower false door leaf', WOOD, [lc - lw / 2, lc + lw / 2], [y0, top], [w + .03, w + .05]);
+          for (let row = 0; row < 3; row++) {
+            const y = y0 + H * (.18 + row * .31), pw = lw * .74, ph = H * .255;
+            box('Tower false door sunk panel', WOOD_INSET, [lc - pw / 2, lc + pw / 2], [y - ph / 2, y + ph / 2], [w + .05, w + .055]);
+            for (const sg of [-1, 1]) {
+              box('Tower false door panel frame', WOOD, [lc - pw / 2 - .02, lc + pw / 2 + .02], [y + sg * ph / 2 - .02, y + sg * ph / 2 + .02], [w + .05, w + .072]);
+              box('Tower false door panel frame', WOOD, [lc + sg * pw / 2 - .02, lc + sg * pw / 2 + .02], [y - ph / 2, y + ph / 2], [w + .05, w + .072]);
+            }
+            add('Tower false door rosette', WOOD, new T.TorusGeometry(Math.min(lw * .2, ph * .27), .02, 6, 20), at(face, lc, y, w + .075), status);
+          }
+        }
+        // Arched head: a timber fan with seven ribs and a hub, like the main doors' fanlight in wood.
+        const head = new T.Shape(); head.moveTo(cu - half, spring); head.lineTo(cu + half, spring); head.absarc(cu, spring, half, 0, Math.PI, false);
+        add('Tower false door fan', WOOD_INSET, new T.ExtrudeGeometry(head, { depth: .03, bevelEnabled: false, curveSegments: 24 }), at(face, 0, 0, w), status);
+        for (let i = 0; i < 7; i++) {
+          const a = Math.PI * (i + 1) / 8, len = half - .12;
+          add('Tower false door fan rib', WOOD, new T.BoxGeometry(len, .035, .03), at(face, cu + Math.cos(a) * (.09 + len / 2), spring + Math.sin(a) * (.09 + len / 2), w + .045, K.RZ(a)), status);
+        }
+        add('Tower false door fan hub', WOOD, new T.CylinderGeometry(.09, .09, .04, 20), at(face, cu, spring, w + .05, K.RX(Math.PI / 2)), status);
+        add('Tower false door fan ring', WOOD, new T.TorusGeometry(half - .03, .025, 6, 32, Math.PI), at(face, cu, spring, w + .05), status);
+        stats.falseDoors = (stats.falseDoors || 0) + 1;
+      };
       const rect = (u0, u1, v0, v1) => { const sh = new T.Shape(); sh.moveTo(u0, v0); sh.lineTo(u1, v0); sh.lineTo(u1, v1); sh.lineTo(u0, v1); sh.lineTo(u0, v0); return sh; };
 
       // ---- Stage-1 walls: closed front and outer side, a door in the inner side ----
@@ -688,12 +733,49 @@
         add('Tower base wall · inner side with door to the nave', W, g, place(TR(0, 0, -spec.wall), SC(1, 1, s), TR(0, 0, Z(-C))));
         block('Tower room door leaf · timber, closed', mat.wood || D, [d0 + .02, d1 - .02], [0, spec.door.h - .02], [-C - .02, -C + .03]);
       }
+      // Owner, 2 Nov 2026: close the open slot between the central facade's side bay (it ends at
+      // |Z| 7.128, E01B) and this tower's inner wall (7.563), in front of the stage-2 rear pier
+      // (X 4.405), from the +9.741 plinth top to +15.84. Infill DERIVED; its face stays 63 mm behind the
+      // bay face (X 4.017) so it clears the tower's inner window surround (X <= 4.07).
+      block('Tower inner infill beside the central facade', W, [4.08, 4.42], [9.741, 15.84], [-(spec.centre - 7.128), -(spec.centre - 7.57)]);
       // ---- Corner piers: pedestal, fluted shaft, foliate capital band, cornice ----
       const piers = [[P.front, 1], [P.front, -1], [P.back, 1], [P.backInner, -1]];
+      // ---- Lower columns under the corner piers, −2.08 to −0.203, and the band over them ----
       {
-        const R = footing.rear, fy = footing.y;
-        add('Tower plinth · under the rear pier (ENG-043)', footingMaterial || S, new T.BoxGeometry(R.x[1] - R.x[0], fy[1] - fy[0], R.z[1] - R.z[0]),
-          TR((R.x[0] + R.x[1]) / 2, (fy[0] + fy[1]) / 2, s * (R.z[0] + R.z[1]) / 2), 'SOURCE GRID / PLINTH EXTENDED UNDER THE CAD REAR PIER');
+        const FC = footing.column, y = [footing.y[0], FC.top], inset = .04, LOW = 'TRACED CAD ELEVATION E02/E01B / DEPTH AND RELIEF DERIVED';
+        const columns = piers.map(([[x0, x1], side]) => {
+          const [t0, t1] = side > 0 ? P.t : [-P.t[1], -P.t[0]], front = x0 < 0;
+          return { side, front, x: front ? [x0 - FC.corner, x1 + FC.other] : [x0 - FC.other, x1 + FC.corner],
+            t: side > 0 ? [t0 - FC.other, t1 + FC.corner] : [t0 - FC.corner, t1 + FC.other] };
+        });
+        for (const c of columns) {
+          // Exposed faces carry the drawn strips: corner 0.305 flush, then 0.22, field, far 0.22.
+          const faces = [];
+          if (c.front) faces.push({ axis: 'x', end: 0, out: -1 });
+          if (!c.front && c.side > 0) faces.push({ axis: 'x', end: 1, out: 1 });
+          if (c.side > 0) faces.push({ axis: 't', end: 1, out: 1 });
+          const body = { x: [...c.x], t: [...c.t] };
+          for (const f of faces) body[f.axis][f.end] -= f.out * inset;
+          block('Tower lower column · under the corner pier', W, body.x, y, body.t, LOW);
+          for (const f of faces) {
+            const u = f.axis === 'x' ? 't' : 'x', [u0, u1] = c[u], plane = c[f.axis][f.end];
+            const cornerAtStart = u === 't' ? c.side < 0 : c.front, L = u1 - u0;
+            const [a, b, d] = FC.strips;
+            for (const [s0, s1, relief] of [[0, a, 0], [a, a + b, .015], [L - d, L, .015]]) {
+              const span = cornerAtStart ? [u0 + s0, u0 + s1] : [u1 - s1, u1 - s0];
+              const depth = [plane - f.out * inset, plane - f.out * relief].sort((p, q) => p - q);
+              const r = { [f.axis]: depth, [u]: span };
+              block('Tower lower column strip', W, r.x, y, r.t, LOW);
+            }
+          }
+        }
+        // Band course: round the front, outer side and inner side, and breaking out over the
+        // outer rear column; the rear face elsewhere stays at X 5.4.
+        const outerRear = columns.find(c => !c.front && c.side > 0);
+        for (const [y0, y1, p] of footing.band) {
+          block('Tower lower band course', S, [columns[0].x[0] - p, footing.x[1]], [y0, y1], [columns[1].t[0], columns[0].t[1] + p], LOW);
+          block('Tower lower band course', S, [footing.x[1], outerRear.x[1] + p], [y0, y1], [outerRear.t[0] - p, outerRear.t[1] + p], LOW);
+        }
       }
       for (const [[x0, x1], side] of piers) {
         const [t0, t1] = side > 0 ? P.t : [-P.t[1], -P.t[0]];
@@ -701,17 +783,19 @@
         for (const [y0, y1, d, m, name] of P.bands) block(name, m === 'W' ? W : S, grow([x0, x1], d), [y0, y1], grow([t0, t1], d));
         block('Tower corner pier shaft', W, [x0, x1], [P.pedestal, P.shaft], [t0, t1]);
         // Pilaster strips with three flutes on each exposed face.
-        const front = x0 < 0, outer = side > 0;
-        if (front) for (const tm of [(t0 + t1) / 2]) {
+        const front = x0 < 0, outer = side > 0, FL = spec.flutes.ground;
+        if (front) for (const tm of [side * FL.t]) {
           block('Tower pier pilaster', W, [x0 - .06, x0], [P.pedestal + .02, P.shaft], [tm - .3, tm + .3]);
-          for (const k of [-1, 0, 1]) block('Tower pier flute', D, [x0 - .068, x0 - .055], [P.pedestal + .2, P.shaft - .12], [tm + k * .16 - .022, tm + k * .16 + .022]);
-          add('Tower pier capital foliage', S, pilasterCapital(.7, (P.capital - P.shaft) * .9), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(x0 - .07, P.shaft, Z(tm))), CARVED);
+          fluted(FL, [P.pedestal + .02, P.shaft], place(RY(-Math.PI / 2), TR(x0 - .06, 0, Z(tm))));
+          capitalFront(0, side, x0 - .04);
         }
         if (outer || !front) {
-          const xm = (x0 + x1) / 2, tf = outer ? t1 : t0, dir = outer ? 1 : -1;
+          // The truncated inner rear pier (nave side) keeps its centred field and illustrative capital.
+          const truncated = !outer && !front, xm = truncated ? (x0 + x1) / 2 : FL.x[front ? 0 : 1], tf = outer ? t1 : t0, dir = outer ? 1 : -1;
           block('Tower pier pilaster', W, [xm - .3, xm + .3], [P.pedestal + .02, P.shaft], [tf, tf + dir * .06].sort((a, b) => a - b));
-          for (const k of [-1, 0, 1]) block('Tower pier flute', D, [xm + k * .16 - .022, xm + k * .16 + .022], [P.pedestal + .2, P.shaft - .12], [tf + dir * .055, tf + dir * .068].sort((a, b) => a - b));
-          add('Tower pier capital foliage', S, pilasterCapital(.7, (P.capital - P.shaft) * .9), place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, P.shaft, Z(tf + dir * .07))), CARVED);
+          fluted(FL, [P.pedestal + .02, P.shaft], place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, 0, Z(tf + dir * .06))));
+          if (truncated) add('Tower pier capital foliage · inner rear, illustrative', S, pilasterCapital(.7, (P.capital - P.shaft) * .9), place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, P.shaft, Z(tf + dir * .07))), CARVED);
+          else capitalSide(0, front, t1 + .04);
         }
         block('Tower pier capital band', S, grow([x0, x1], .04), [P.shaft, P.capital], grow([t0, t1], .04));
         stats.piers++;
@@ -796,9 +880,10 @@
           uslab('great arch ring', i % 2 ? W : S, ring(cg, U.great.y, U.great.rings[i], U.great.rings[i + 1]), xf - .10 - .012 * i, xf + .01);
         for (const e of [-1, 1]) {
           const r0 = U.great.rings[0], r1 = U.great.rings[1];
-          block(label + 'great arch pilaster', S, [xf - .10, xf + .01], [U.sill, U.great.y - .46], [cg + e * r0, cg + e * r1].sort((a, b) => a - b));
-          block(label + 'great arch capital', S, [xf - .15, xf + .01], [U.great.y - .46, U.great.y], [Math.min(cg + e * r0, cg + e * r1) - .06, Math.max(cg + e * r0, cg + e * r1) + .06]);
-          add(label + 'great arch capital foliage', S, pilasterCapital(.3, .42), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(xf - .16, U.great.y - .44, Z(cg + e * (r0 + r1) / 2))), CARVED);
+          const shaft = [cg + e * r0, cg + e * (U.stage === 4 ? U.great.rings[U.great.rings.length - 1] : r1)].sort((a, b) => a - b);
+          block(label + 'great arch pilaster', S, [xf - .10, xf + .01], [U.sill, U.great.y], shaft);
+          for (const [[b0, b1], out, depth] of impostBands(U.stage))
+            block(label + 'great arch impost band', S, [xf - .10 - depth, xf + .01], [U.great.y + b0, U.great.y + b1], [shaft[0] - out, shaft[1] + out]);
         }
         for (const centre of WI.centres) {
           const u = centre - spec.centre, r = WI.rings[0];
@@ -819,7 +904,9 @@
         const roseMatrix = place(RY(-Math.PI / 2), TR(xf - .055, RO.y, Z(cg)));
         add(label + 'rose ring', S, new T.TorusGeometry(major, minor, 10, 64), roseMatrix);
         add(label + 'rose-window infill', F.roseMaterial || mat.glass, new T.CircleGeometry(RO.inner, 64), place(RY(-Math.PI / 2), TR(xf - .012, RO.y, Z(cg))), 'TRACED CAD CIRCLE / EXISTING CHOSEN COLOURED FINISH; GLAZING AND OPENING UNCONFIRMED');
-        add(label + 'rose carving', S, K.bloom({ r: RO.inner, petals: 12, rings: 2, seg: 3 }), roseMatrix, CARVED);
+        add(label + 'rose tracery · traced', S, U.stage === 4 ? TG.roseSmall : TG.rose, place(RY(-Math.PI / 2), TR(xf - .025, RO.y, Z(cg))), U.stage === 3 || U.stage === 4 ? TRACED : TRACED_REPEAT);
+        for (const centre of WI.centres)
+          add(label + 'paired louvre head tracery · traced', S, U.stage === 4 ? TG.head4 : TG.head, place(SC(s, 1, 1), RY(-Math.PI / 2), TR(xf + .04, WI.spring, Z(centre - spec.centre))), U.stage === 2 ? TRACED_REPEAT : TRACED);
         stats.upperFronts++;
       }
 
@@ -846,9 +933,9 @@
           fs('great arch ring', i%2 ? W:S, ring(cg,U.great.y,U.great.rings[i],U.great.rings[i+1]), .13,.24+.012*i);
         for (const e of [-1,1]) {
           const r0=U.great.rings[0], r1=U.great.rings[1], xs=[cg+e*r0,cg+e*r1].sort((a,b)=>a-b);
-          fb('great arch pilaster',S,xs,[U.sill,U.great.y-.46],[.13,.24]);
-          fb('great arch capital',S,[xs[0]-.06,xs[1]+.06],[U.great.y-.46,U.great.y],[.13,.29]);
-          add(label+'great arch capital foliage',S,pilasterCapital(.3,.42),fm(cg+e*(r0+r1)/2,U.great.y-.44,.30),status+' / ILLUSTRATIVE CARVING');
+          const shaft=U.stage===4?[cg+e*r0,cg+e*U.great.rings[U.great.rings.length-1]].sort((a,b)=>a-b):xs;
+          fb('great arch pilaster',S,shaft,[U.sill,U.great.y],[.13,.24]);
+          for(const [[b0,b1],out,depth] of impostBands(U.stage)) fb('great arch impost band',S,[shaft[0]-out,shaft[1]+out],[U.great.y+b0,U.great.y+b1],[.13,.24+depth]);
         }
         for (const u of centres) {
           const r=WI.rings[0];
@@ -866,7 +953,8 @@
         const RO=U.rose,rm=fm(roseU,RO.y,.195);
         add(label+'rose ring',S,new T.TorusGeometry((RO.rings[0]+RO.rings[1])/2,(RO.rings[1]-RO.rings[0])/2,10,64),rm,status);
         add(label+'rose-window infill',F.roseMaterial||mat.glass,new T.CircleGeometry(RO.inner,64),fm(roseU,RO.y,.152),status+' / EXISTING COLOURED FINISH; GLAZING AND OPENING UNCONFIRMED');
-        add(label+'rose carving',S,K.bloom({r:RO.inner,petals:12,rings:2,seg:3}),rm,status+' / ILLUSTRATIVE CARVING');
+        add(label+'rose tracery · traced',S,U.stage===4?TG.roseSmall:TG.rose,fm(roseU,RO.y,.165),F.kind==='outer'?TRACED_REPEAT:status+' / TRACED E01B ROSE REPEATED');
+        for(const u of centres) add(label+'paired louvre head tracery · traced',S,U.stage===4?TG.head4:TG.head,fm(u,WI.spring,.10),F.kind==='outer'?TRACED_REPEAT:status+' / TRACED E01B HEAD REPEATED');
         stats.upperOtherFaces=(stats.upperOtherFaces||0)+1;
       }
 
@@ -880,15 +968,15 @@
           const ts = side > 0 ? g.t : [-g.t[1] - lap, -g.t[0]], grow = (a, d) => [a[0] - d, a[1] + d];
           block('Tower stage pier pedestal', S, grow(xs, .1), [y0, y0 + .6], grow(ts, .08));
           block('Tower stage pier shaft', W, xs, [y0 + .6, g.cap[0]], ts);
-          const tm = (ts[0] + ts[1]) / 2, isFront = xs === front, outer = side > 0;
+          const n = spec.stages.indexOf(g) + 1, FL = spec.flutes.stages[n - 1], isFront = xs === front, outer = side > 0;
           if (isFront) {
-            for (const k of [-1, 0, 1]) block('Tower pier flute', D, [xs[0] - .013, xs[0] + .002], [y0 + .85, g.cap[0] - .15], [tm + k * .16 - .022, tm + k * .16 + .022]);
-            add('Tower pier capital foliage', S, pilasterCapital(.66, (g.cap[1] - g.cap[0]) * .95), place(RY(-Math.PI / 2), TR(xs[0] - .01, g.cap[0], Z(tm))), CARVED);
+            fluted(FL, [y0 + .6, g.cap[0]], place(RY(-Math.PI / 2), TR(xs[0], 0, Z(side * FL.t))));
+            capitalFront(n, side, xs[0] - .03);
           }
           if (outer) {
-            const xm = (xs[0] + xs[1]) / 2, tf = ts[1];
-            for (const k of [-1, 0, 1]) block('Tower pier flute', D, [xm + k * .16 - .022, xm + k * .16 + .022], [y0 + .85, g.cap[0] - .15], [tf - .002, tf + .013]);
-            add('Tower pier capital foliage', S, pilasterCapital(.66, (g.cap[1] - g.cap[0]) * .95), place(RY(s > 0 ? 0 : Math.PI), TR(xm, g.cap[0], Z(tf + .01))), CARVED);
+            const xm = FL.x[isFront ? 0 : 1], tf = ts[1];
+            fluted(FL, [y0 + .6, g.cap[0]], place(RY(s > 0 ? 0 : Math.PI), TR(xm, 0, Z(tf))));
+            capitalSide(n, isFront, tf + .03);
           }
           block('Tower pier capital band', S, grow(xs, .03), g.cap, grow(ts, .03));
           for (const [dy, out, m] of [[[g.cap[1], g.cap[1] + .12], .06, S], [[g.cap[1] + .12, y1 - .16], .12, W], [[y1 - .16, y1], .2, S]]) block('Tower stage pier cornice', m, grow(xs, out), dy, grow(ts, out));
@@ -901,20 +989,25 @@
       for (const e of [-1, 1]) {
         const [i0, i1] = e > 0 ? A.impost : [-A.impost[1], -A.impost[0]];
         block('Tower front impost pilaster', W, [wallFace - .16, wallFace], [.3, A.spring - .5], [i0, i1]);
-        block('Tower front impost base', S, [wallFace - .22, wallFace], [0, .3], [i0 - .04, i1 + .04]);
-        block('Tower front impost capital', S, [wallFace - .2, wallFace], [A.spring - .5, A.spring], [i0 - .03, i1 + .03]);
-        add('Tower front impost capital foliage', S, pilasterCapital(.4, .42), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .2, A.spring - .48, Z((i0 + i1) / 2))), CARVED);
+        // E01B draws the inner order of the great arch (r 1.385–1.555) down to the base as well.
+        const [o0, o1] = e > 0 ? [A.r[0], A.impost[0]] : [-A.impost[0], -A.r[0]];
+        block('Tower front impost inner order', W, [wallFace - .10, wallFace], [.3, A.spring - .5], [o0, o1]);
+        block('Tower front impost base', S, [wallFace - .22, wallFace], [0, .3], [Math.min(i0, o0) - .04, Math.max(i1, o1) + .04]);
+        // Capital block over all three orders, t 1.293–1.955 as drawn (abacus to E01B Z 8.860).
+        const [c0, c1] = e > 0 ? [A.capital, A.impost[1] + .03] : [-A.impost[1] - .03, -A.capital];
+        block('Tower front impost capital', S, [wallFace - .2, wallFace], [A.spring - .5, A.spring], [c0, c1]);
+        add('Tower front impost capital foliage · traced E01B', S, TG.great, place(SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .2 - .008, A.spring, zc)), e < 0 ? TRACED : TRACED_REPEAT);
         // Colonnettes of the blind arch.
         const tcol = e * B.colonnette;
         add('Tower blind-arch colonnette', S, new T.CylinderGeometry(.085, .095, B.spring - .65, 14), TR(wallFace - .14, .3 + (B.spring - .65) / 2, Z(tcol)));
         block('Tower blind-arch colonnette base', S, [wallFace - .26, wallFace], [0, .3], [tcol - .14, tcol + .14]);
         block('Tower blind-arch colonnette capital', S, [wallFace - .27, wallFace], [B.spring - .35, B.spring], [tcol - .16, tcol + .16]);
-        add('Tower blind-arch capital foliage', S, pilasterCapital(.3, .3), place(SC(s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .27, B.spring - .33, Z(tcol))), CARVED);
-        // Leaf sprays in the spandrels.
-        // E01B draws an L-shaped acanthus spray in each upper corner of the bay (t 0.55–1.85,
-        // +5.35 to +6.6): one spray under the architrave, one down the pier side.
-        add('Tower front spandrel spray', S, spray(1.15), place(SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .02, 6.12, Z(e * 1.72))), CARVED);
-        add('Tower front spandrel spray', S, spray(1.1), place(RZ(-Math.PI / 2), SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .02, 6.55, Z(e * 1.5))), CARVED);
+        add('Tower blind-arch capital foliage · traced E01B', S, TG.blind, place(SC(-e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .27 - .007, B.spring, zc)), e < 0 ? TRACED : TRACED_REPEAT);
+        // E01B H-front outlines: independently drawn inner/outer corners. B repeats
+        // the H profiles (DERIVED); stroke thickness and relief remain conceptual.
+        add('Tower front spandrel spray', S, towerLeaves[e > 0 ? 'outer' : 'inner'],
+          place(SC(e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .025, 0, zc)),
+          'E01B H FRONT TRACED / B REPEATED DERIVED / RELIEF CONCEPT');
       }
       // Archivolt: three rings, the outer one proud.
       for (let i = 0; i < A.rings.length - 1; i++) slab(i ? 'Tower front archivolt' : 'Tower front archivolt inner ring', i % 2 ? W : S, 'front', ring(0, A.spring, A.rings[i], A.rings[i + 1], 0), 0, .1 + i * .01, DRAWN, 48);
@@ -923,6 +1016,7 @@
       {
         const sh = new T.Shape(); sh.moveTo(-B.r[0], .3); sh.lineTo(B.r[0], .3); sh.lineTo(B.r[0], B.spring); sh.absarc(0, B.spring, B.r[0], 0, Math.PI, false); sh.lineTo(-B.r[0], .3);
         slab('Tower blind-arch recessed panel', D, 'front', sh, 0, .015, DRAWN, 24);
+        falseDoor('front', 0, B.r[0], .3, B.spring, .015);
         stats.blindArches++;
       }
       // Cartouche in the tympanum between the two arches, and the moulded sill of the big arch.
@@ -942,21 +1036,32 @@
         panel.moveTo(u - r, .3); panel.lineTo(u + r, .3); panel.lineTo(u + r, SB.blindSpring);
         panel.absarc(u, SB.blindSpring, r, 0, Math.PI, false); panel.lineTo(u - r, .3); panel.closePath();
         panel.holes.push(archHole(u, SB.window.half, SB.window.sill, SB.window.spring));
-        slab('Tower side blind recessed panel · E02', D, 'outer', panel, 0, .015, DRAWN, 48);
+        slab('Tower side blind recessed panel · E02', W, 'outer', panel, 0, .015, DRAWN, 48); // wall finish round the false door (owner, 3 Nov 2026)
         const SW = SB.window, infill = new T.Shape();
         infill.moveTo(u-SW.half,SW.sill);infill.lineTo(u+SW.half,SW.sill);infill.lineTo(u+SW.half,SW.spring);
         infill.absarc(u,SW.spring,SW.half,0,Math.PI,false);infill.lineTo(u-SW.half,SW.sill);infill.closePath();
         slab('Tower side window closed infill · E02', D, 'outer', infill, -.13, -.11,
           'TRACED CAD APERTURE / CLOSED INFILL VISUALIZATION; MATERIAL AND OPERABILITY UNCONFIRMED', 48);
+        // The side opening (E02) takes the same fixed timber facing, a false door at window height.
+        falseDoor('outer', u, SW.half, SW.sill, SW.spring, -.11);
         // Vertical returns/relief are coordinated visualization proxies; source circles fix the crowns.
         for (const e of [-1, 1]) {
           const x0 = SB.centreX + e * SB.pilaster.radii[0], x1 = SB.centreX + e * SB.pilaster.radii[1];
           const xs = [x0, x1].sort((a,b)=>a-b);
           block('Tower side great impost · E02', W, xs, SB.pilaster.shaftY, [C + spec.wall, C + spec.wall + .1]);
-          block('Tower side great capital · E02', S, xs, [SB.pilaster.shaftY[1], SB.greatSpring], [C + spec.wall, C + spec.wall + .14]);
+          block('Tower side great capital · E02', S, e > 0 ? [SB.centreX + A.capital, SB.centreX + A.impost[1]] : [SB.centreX - A.impost[1], SB.centreX - A.capital], [SB.pilaster.shaftY[1], SB.greatSpring], [C + spec.wall, C + spec.wall + .14]);
+          // E02 draws the same acanthus capitals as the front imposts and colonnettes; carving illustrative.
+          const faceRot = RY(s > 0 ? 0 : Math.PI);
+          // E02 draws the E01B capitals unchanged (within 0.1 mm), the blind one 200.5 mm higher.
+          add('Tower side great capital foliage · traced E02', S, TG.great, place(SC(-e * s, 1, 1), faceRot, TR(SB.centreX, SB.greatSpring, Z(C + spec.wall + .14 + .008))), TRACED_REPEAT);
+          add('Tower side blind capital foliage · traced E02', S, TG.blind, place(SC(-e * s, 1, 1), faceRot, TR(SB.centreX, SB.blindSpring, Z(C + spec.wall + .27 + .007))), TRACED_REPEAT);
           const x = SB.centreX + e * B.colonnette;
           add('Tower side blind colonnette · E02', S, new T.CylinderGeometry(.085, .095, SB.blindSpring - .65, 14), TR(x, .3 + (SB.blindSpring - .65) / 2, Z(C + spec.wall + .14)));
           block('Tower side blind capital · E02', S, [x - .16, x + .16], [SB.blindSpring - .35, SB.blindSpring], [C + spec.wall, C + spec.wall + .27]);
+          // E02 draws the same T12 leaf pair round the side great arch (all 150 arc centres,
+          // radii and end points of both profiles within 0.1 mm about X 2.450). Relief CONCEPT.
+          add('Tower side spandrel spray · E02', S, towerLeaves[e > 0 ? 'outer' : 'inner'], at('outer', u, 0, .025, SC(e, 1, 1)),
+            'E02 SIDE MATCHES TRACED T12 PROFILE / RELIEF CONCEPT');
         }
       }
 
@@ -1043,16 +1148,19 @@
       for (let k = 0; k < 4; k++) {
         const a = k * Math.PI / 2, r = rDome(DM.rosette) + .02, n = new T.Vector3(Math.cos(a), 0, Math.sin(a));
         const dz = k === 2 ? s * DM.frontRoseOffset : 0;
+        // Lean the rosette back to the dome's slope at its level (DERIVED), so its lower half is not
+        // buried in the dome; the drawn elevation fixes only its centre and rings.
+        const h = DM.roseRings[1], lean = RX(-Math.atan2(rDome(DM.rosette - h) - rDome(DM.rosette + h), 2 * h));
         const rot = new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 0, 1), n));
-        add('Tower dome rosette', S, K.bloom({ r: DM.roseInner, petals: 12, rings: 2, seg: 3 }), place(rot, TR(xc + n.x * r, DM.rosette, zc + n.z * r + dz)), CARVED);
-        add('Tower dome rosette ring', S, new T.TorusGeometry((DM.roseRings[0] + DM.roseRings[1]) / 2, (DM.roseRings[1] - DM.roseRings[0]) / 2, 8, 64), place(rot, TR(xc + n.x * (r - .02), DM.rosette, zc + n.z * (r - .02) + dz)));
+        add('Tower dome rosette tracery · traced', S, TG.roseSmall, place(lean, rot, TR(xc + n.x * r, DM.rosette, zc + n.z * r + dz)), k === 2 ? TRACED : TRACED_REPEAT);
+        add('Tower dome rosette ring', S, new T.TorusGeometry((DM.roseRings[0] + DM.roseRings[1]) / 2, (DM.roseRings[1] - DM.roseRings[0]) / 2, 8, 64), place(lean, rot, TR(xc + n.x * (r - .02), DM.rosette, zc + n.z * (r - .02) + dz)));
       }
       const sq = (name, m_, [y0, y1, h]) => add(name, m_, new T.BoxGeometry(2 * h, y1 - y0, 2 * h), TR(xc, (y0 + y1) / 2, zc));
       sq('Tower lantern plinth', S, LN.plinth); sq('Tower lantern plinth step', S, LN.step); sq('Tower lantern base', S, LN.base); sq('Tower lantern body', W, LN.body);
       for (const ex of [-1, 1]) for (const ez of [-1, 1]) add('Tower lantern corner post', S, new T.BoxGeometry(.1, LN.body[1] - LN.body[0], .1), TR(xc + ex * LN.body[2], (LN.body[0] + LN.body[1]) / 2, zc + ez * LN.body[2]));
       for (let k = 0; k < 4; k++) {
         const a = k * Math.PI / 2, n = new T.Vector3(Math.cos(a), 0, Math.sin(a)), rot = new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 0, 1), n));
-        add('Tower lantern panel rosette', S, K.bloom({ r: .14, petals: 6, rings: 1, seg: 3 }), place(rot, TR(xc + n.x * (LN.body[2] + .01), (LN.body[0] + LN.body[1]) / 2, zc + n.z * (LN.body[2] + .01))), CARVED);
+        add('Tower lantern panel rose · traced', S, TG.lantern, place(rot, TR(xc + n.x * (LN.body[2] + .01), (LN.body[0] + LN.body[1]) / 2, zc + n.z * (LN.body[2] + .01))), k === 2 ? TRACED : TRACED_REPEAT);
       }
       sq('Tower lantern bead band', S, [LN.beads[0], LN.beads[0] + .05, LN.beads[2]]);
       for (let k = 0; k < 24; k++) {
@@ -1100,16 +1208,12 @@
       cross.absarc(5 * h, lo, h, 0, Math.PI, true);
       cross.lineTo(h, lo); cross.lineTo(h, c0); cross.lineTo(-h, c0); cross.closePath();
       add('Tower cross', crossMaterial, new T.ExtrudeGeometry(cross, { depth: .1, bevelEnabled: false, curveSegments: 24 }), place(RY(-Math.PI / 2), TR(xc + .05, 0, zc)), 'TRACED CAD CROSS OUTLINE / SCHEMATIC DEPTH');
-      // The existing carving stays a proxy; native base/apex and corner offsets replace old bounds.
-      const BP=spec.balcony,pin=K.pinnacle({w:.3,h:.84}),fl=fleur(.32);
-      pin.computeBoundingBox();fl.computeBoundingBox();
-      const py=-pin.boundingBox.min.y,fy=pin.boundingBox.max.y+py-fl.boundingBox.min.y;
-      const total=fy+fl.boundingBox.max.y,base=BP.front.rail[0].y,sy=(BP.finialTop-base)/total;
+      // Owner, 2 Nov 2026: the corner pinnacles take the shared E01B pinnacle crown, scaled uniformly
+      // between the native base and apex; corner plan positions stay DERIVED.
+      const BP=spec.balcony,crown=pinnacleCrown(),base=BP.front.rail[0].y,sc=(BP.finialTop-base)/crown.boundingBox.max.y;
       for(const ex of [-1,1])for(const ez of [-1,1]){
         const px=BP.side.centre+ex*BP.finialOffset,pz=s*(BP.front.centre+ez*BP.finialOffset);
-        const norm=place(SC(1,sy,1),TR(px,base,pz));
-        add('Tower corner pinnacle',S,pin,norm.clone().multiply(TR(0,py,0)),CARVED+' / NATIVE BASE/APEX; CORNER PLAN POSITION DERIVED');
-        add('Tower corner pinnacle fleur-de-lis',S,fl,norm.clone().multiply(place(RY(Math.atan2(ex,s*ez)),TR(0,fy,0))),CARVED+' / NATIVE APEX; CARVING PROXY');
+        add('Tower corner pinnacle crown',S,crown,place(SC(sc),RY(Math.atan2(ex,s*ez)),TR(px,base,pz)),CARVED+' / NATIVE BASE/APEX; CORNER PLAN POSITION DERIVED');
       }
     });
 

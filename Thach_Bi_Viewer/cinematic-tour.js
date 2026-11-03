@@ -1207,7 +1207,7 @@
    * applied from the base state when the scene starts or the film is moved
    * back, and one after another while the film plays.
    */
-  const CIRCUIT_EN = { L1: 'Front three bays', L2: 'Rear four bays', L3: 'Sanctuary', L4: 'Circulation', LA: 'Roof uplight', LD: 'Wall sconces', L5: 'Steps and paths', L8: 'Wings',
+  const CIRCUIT_EN = { L1: 'Front three bays', L2: 'Rear four bays', L3: 'Sanctuary', L4: 'Circulation', LA: 'Roof uplight', LD: 'Column up/down lights', L5: 'Steps and paths', L8: 'Wings',
     L6: 'Façade and towers', L9: 'Entrance', L7: 'Festival exterior', L10: 'Statues and candles', E1: 'Exit signs',
     F1: 'Ceiling fans', F2: 'Wall fans', F3: 'Portable fans', F4: 'Entrance fans', F5: 'Wing wall fans', V1: 'Exhaust · front', V2: 'Exhaust · wings', V3: 'Exhaust · service',
     A1: 'Main loudspeakers', A2: 'Veranda', A3: 'Courtyard', A4: 'Choir monitors', A5: 'Rear fill', MIC: 'Microphones' };

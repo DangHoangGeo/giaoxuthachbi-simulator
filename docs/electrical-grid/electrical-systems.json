@@ -769,12 +769,12 @@
           -7.36
         ],
         [
-          5.475000000000001,
+          9.25,
           5.908,
           -7.36
         ]
       ],
-      "length": 66.83013031117919,
+      "length": 63.05513031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -2449,7 +2449,7 @@
     },
     {
       "id": "drop:LC1:L2:light:-1:L59",
-      "name": "L2 → Rear rows light · entrance façade · B",
+      "name": "L2 → Rear rows light · axis 3 side wall · B",
       "source": "LC1",
       "board": "DB1",
       "circuit": "L2",
@@ -2460,44 +2460,38 @@
       ],
       "trunkId": "trunk:LC1:L2:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 66.83013031117919,
+      "upstreamLength": 63.05513031117919,
       "homeRun": false,
       "points": [
         [
-          5.475000000000001,
+          9.25,
           5.908,
           -7.36
         ],
         [
-          5.475000000000001,
-          -0.44,
+          9.25,
+          3.65,
           -7.36
         ],
         [
-          5.475,
-          -0.44,
-          -4.2
-        ],
-        [
-          5.475,
-          3.45,
-          -4.2
+          9.25,
+          3.65,
+          -7.25
         ]
       ],
-      "method": "review-local",
-      "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "reviewRequired": true,
-      "length": 13.398000000000001,
+      "length": 2.3680000000000008,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
       "id": "drop:LC1:L2:light:-1:L60",
-      "name": "L2 → Rear centre light · entrance façade · B",
+      "name": "L2 → Rear centre light · axis 3 side wall · B",
       "source": "LC1",
       "board": "DB1",
       "circuit": "L2",
@@ -2508,37 +2502,31 @@
       ],
       "trunkId": "trunk:LC1:L2:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 66.83013031117919,
+      "upstreamLength": 62.70513031117919,
       "homeRun": false,
       "points": [
         [
-          5.475000000000001,
+          9.600000000000001,
           5.908,
           -7.36
         ],
         [
-          5.475000000000001,
-          -0.44,
+          9.600000000000001,
+          3.65,
           -7.36
         ],
         [
-          5.475,
-          -0.44,
-          -4.2
-        ],
-        [
-          5.475,
-          3.9,
-          -4.2
+          9.6,
+          3.65,
+          -7.25
         ]
       ],
-      "method": "review-local",
-      "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "reviewRequired": true,
-      "length": 13.848,
+      "length": 2.3680000000000008,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -2659,12 +2647,12 @@
           7.36
         ],
         [
-          5.475000000000001,
+          9.25,
           5.908,
           7.36
         ]
       ],
-      "length": 73.4301303111792,
+      "length": 69.65513031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -4339,7 +4327,7 @@
     },
     {
       "id": "drop:LC1:L2:light:1:L61",
-      "name": "L2 → Rear rows light · entrance façade · H",
+      "name": "L2 → Rear rows light · axis 3 side wall · H",
       "source": "LC1",
       "board": "DB1",
       "circuit": "L2",
@@ -4350,44 +4338,38 @@
       ],
       "trunkId": "trunk:LC1:L2:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 73.4301303111792,
+      "upstreamLength": 69.65513031117919,
       "homeRun": false,
       "points": [
         [
-          5.475000000000001,
+          9.25,
           5.908,
           7.36
         ],
         [
-          5.475000000000001,
-          -0.44,
+          9.25,
+          3.65,
           7.36
         ],
         [
-          5.475,
-          -0.44,
-          4.2
-        ],
-        [
-          5.475,
-          3.45,
-          4.2
+          9.25,
+          3.65,
+          7.25
         ]
       ],
-      "method": "review-local",
-      "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "reviewRequired": true,
-      "length": 13.398000000000001,
+      "length": 2.3680000000000008,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     },
     {
       "id": "drop:LC1:L2:light:1:L62",
-      "name": "L2 → Rear centre light · entrance façade · H",
+      "name": "L2 → Rear centre light · axis 3 side wall · H",
       "source": "LC1",
       "board": "DB1",
       "circuit": "L2",
@@ -4398,37 +4380,31 @@
       ],
       "trunkId": "trunk:LC1:L2:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 73.4301303111792,
+      "upstreamLength": 69.3051303111792,
       "homeRun": false,
       "points": [
         [
-          5.475000000000001,
+          9.600000000000001,
           5.908,
           7.36
         ],
         [
-          5.475000000000001,
-          -0.44,
+          9.600000000000001,
+          3.65,
           7.36
         ],
         [
-          5.475,
-          -0.44,
-          4.2
-        ],
-        [
-          5.475,
-          3.9,
-          4.2
+          9.6,
+          3.65,
+          7.25
         ]
       ],
-      "method": "review-local",
-      "installation": "Proposed underfloor return; this location needs a concealed local riser / connection design.",
+      "method": "side-wall",
+      "installation": "Concealed solid-pier / wall drop and local termination.",
       "coverPaths": [],
-      "reviewRequired": true,
-      "length": 13.848,
+      "length": 2.3680000000000008,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -9164,7 +9140,7 @@
         ],
         [
           40.575,
-          12.152,
+          11.95,
           0
         ],
         [
@@ -10092,34 +10068,39 @@
       ],
       "trunkId": "trunk:LC1:L3:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 23.913000000000007,
+      "upstreamLength": 23.653000000000002,
       "homeRun": false,
       "points": [
         [
-          44.419999999999995,
+          44.68,
           5.916,
           -7.36
         ],
         [
-          44.419999999999995,
+          44.68,
           7.04,
           -7.36
         ],
         [
-          44.419999999999995,
-          8.934377717391303,
-          -4.75
+          44.68,
+          9.377125000000001,
+          -4.139999999999999
         ],
         [
-          44.419999999999995,
-          7.75,
-          -4.75
+          44.68,
+          6.484,
+          -4.14
+        ],
+        [
+          44.68,
+          6.424,
+          -4.14
         ]
       ],
-      "method": "roof-local",
-      "installation": "Above lining to a local roof fitting; roof entry / weatherproof termination pending.",
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 5.533399722920674,
+      "length": 8.055887780768039,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -10139,34 +10120,39 @@
       ],
       "trunkId": "trunk:LC1:L3:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 23.913000000000007,
+      "upstreamLength": 23.083000000000002,
       "homeRun": false,
       "points": [
         [
-          44.419999999999995,
+          45.25,
           5.916,
           -7.36
         ],
         [
-          44.419999999999995,
+          45.25,
           7.04,
           -7.36
         ],
         [
-          44.419999999999995,
-          7.845654891304348,
-          -6.25
+          45.25,
+          9.377125000000001,
+          -4.139999999999999
         ],
         [
-          44.419999999999995,
-          7.75,
-          -6.25
+          45.25,
+          6.416,
+          -4.14
+        ],
+        [
+          45.25,
+          6.356000000000001,
+          -4.14
         ]
       ],
-      "method": "roof-local",
-      "installation": "Above lining to a local roof fitting; roof entry / weatherproof termination pending.",
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 2.5912159741156904,
+      "length": 8.123887780768037,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -11300,34 +11286,39 @@
       ],
       "trunkId": "trunk:LC1:L3:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 30.513000000000005,
+      "upstreamLength": 30.253,
       "homeRun": false,
       "points": [
         [
-          44.419999999999995,
+          44.68,
           5.916,
           7.36
         ],
         [
-          44.419999999999995,
+          44.68,
           7.04,
           7.36
         ],
         [
-          44.419999999999995,
-          8.934377717391303,
-          4.75
+          44.68,
+          9.377125000000001,
+          4.139999999999999
         ],
         [
-          44.419999999999995,
-          7.75,
-          4.75
+          44.68,
+          6.484,
+          4.14
+        ],
+        [
+          44.68,
+          6.424,
+          4.14
         ]
       ],
-      "method": "roof-local",
-      "installation": "Above lining to a local roof fitting; roof entry / weatherproof termination pending.",
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 5.533399722920674,
+      "length": 8.055887780768039,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -11347,34 +11338,39 @@
       ],
       "trunkId": "trunk:LC1:L3:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 30.513000000000005,
+      "upstreamLength": 29.683,
       "homeRun": false,
       "points": [
         [
-          44.419999999999995,
+          45.25,
           5.916,
           7.36
         ],
         [
-          44.419999999999995,
+          45.25,
           7.04,
           7.36
         ],
         [
-          44.419999999999995,
-          7.845654891304348,
-          6.25
+          45.25,
+          9.377125000000001,
+          4.139999999999999
         ],
         [
-          44.419999999999995,
-          7.75,
-          6.25
+          45.25,
+          6.416,
+          4.14
+        ],
+        [
+          45.25,
+          6.356000000000001,
+          4.14
         ]
       ],
-      "method": "roof-local",
-      "installation": "Above lining to a local roof fitting; roof entry / weatherproof termination pending.",
+      "method": "roof-pendant",
+      "installation": "Above nave lining / covered soffit route at wings and verandas; cable continues inside the existing pendant stem. Roof build-up, supports and access pending.",
       "coverPaths": [],
-      "length": 2.5912159741156904,
+      "length": 8.123887780768037,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -17896,17 +17892,12 @@
           -7.36
         ],
         [
-          5.475,
-          5.988,
-          -7.36
-        ],
-        [
-          5.313000000894069,
+          5.555,
           5.988,
           -7.36
         ]
       ],
-      "length": 66.01213031028512,
+      "length": 65.7701303111792,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -18024,11 +18015,11 @@
       ],
       "trunkId": "trunk:DB1:E1:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 66.01213031028512,
+      "upstreamLength": 65.7701303111792,
       "homeRun": false,
       "points": [
         [
-          5.313000000894069,
+          5.555,
           5.988,
           -7.36
         ],
@@ -18053,12 +18044,12 @@
           0
         ],
         [
-          5.313000000894069,
+          5.555,
           4.9,
           0
         ],
         [
-          5.313000000894069,
+          5.555,
           4.762499999552966,
           0
         ]
@@ -18066,7 +18057,7 @@
       "method": "door-head",
       "installation": "Entrance wall band to solid jamb outside coloured fanlight, fixed transom and local inside-face sign clip. Removable frame cover, fixing and emergency design pending.",
       "coverPaths": [],
-      "length": 12.161499905079602,
+      "length": 12.645499903291466,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -21140,19 +21131,6 @@
       "kind": "light",
       "role": "trunk",
       "itemIds": [
-        "L196",
-        "L197",
-        "L198",
-        "L199",
-        "L200",
-        "L201",
-        "L202",
-        "L203",
-        "L204",
-        "L205",
-        "L206",
-        "L207",
-        "L219",
         "L220"
       ],
       "color": "#dc9e29",
@@ -21235,12 +21213,12 @@
           -7.36
         ],
         [
-          53.016,
+          52.6,
           5.98,
           -7.36
         ]
       ],
-      "length": 82.54213031117919,
+      "length": 82.1261303111792,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -21341,902 +21319,6 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L196",
-      "name": "L7 → Festival lights · roof ridge",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L196"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 54.85,
-      "homeRun": false,
-      "points": [
-        [
-          29.160000000000004,
-          5.98,
-          -7.36
-        ],
-        [
-          29.160000000000004,
-          7.04,
-          -7.36
-        ],
-        [
-          29.16,
-          12.382,
-          0
-        ],
-        [
-          29.16,
-          12.69,
-          0
-        ]
-      ],
-      "method": "roof-local",
-      "installation": "Concealed roof route to local roof-mounted fitting; weatherproof cable entry pending.",
-      "coverPaths": [],
-      "length": 10.462314927469798,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L197",
-      "name": "L7 → Festival lights · main eave B · nave",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L197"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 47.04,
-      "homeRun": false,
-      "points": [
-        [
-          21.35,
-          5.98,
-          -7.36
-        ],
-        [
-          21.35,
-          7.04,
-          -7.36
-        ],
-        [
-          21.35,
-          7.083548913043479,
-          -7.3
-        ],
-        [
-          21.35,
-          7.32,
-          -7.3
-        ]
-      ],
-      "method": "roof-local",
-      "installation": "Concealed roof route to local roof-mounted fitting; weatherproof cable entry pending.",
-      "coverPaths": [],
-      "length": 1.370589523865243,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L198",
-      "name": "L7 → Festival lights · main eave B · sanctuary",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L198"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 77.92613031117918,
-      "homeRun": false,
-      "points": [
-        [
-          48.4,
-          5.98,
-          -7.36
-        ],
-        [
-          48.4,
-          7.04,
-          -7.36
-        ],
-        [
-          48.4,
-          7.083548913043479,
-          -7.3
-        ],
-        [
-          48.4,
-          7.32,
-          -7.3
-        ]
-      ],
-      "method": "roof-local",
-      "installation": "Concealed roof route to local roof-mounted fitting; weatherproof cable entry pending.",
-      "coverPaths": [],
-      "length": 1.370589523865243,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L199",
-      "name": "L7 → Festival lights · veranda eave B · nave",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L199"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 47.04,
-      "homeRun": false,
-      "points": [
-        [
-          21.35,
-          5.98,
-          -7.36
-        ],
-        [
-          21.35,
-          7.04,
-          -7.36
-        ],
-        [
-          21.35,
-          6.932313375305153,
-          -7.43953488372093
-        ],
-        [
-          21.35,
-          6.189475138121547,
-          -10.78
-        ],
-        [
-          21.35,
-          6.4,
-          -10.78
-        ]
-      ],
-      "method": "roof-local",
-      "installation": "Concealed roof route to local roof-mounted fitting; weatherproof cable entry pending.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              21.35,
-              5.98,
-              -7.36
-            ],
-            [
-              21.35,
-              7.04,
-              -7.36
-            ],
-            [
-              21.35,
-              6.932313375305153,
-              -7.43953488372093
-            ],
-            [
-              21.35,
-              6.189475138121547,
-              -10.78
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 4.826461805692566,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L200",
-      "name": "L7 → Festival lights · veranda eave B · sanctuary",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L200"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 77.92613031117918,
-      "homeRun": false,
-      "points": [
-        [
-          48.4,
-          5.98,
-          -7.36
-        ],
-        [
-          48.4,
-          7.04,
-          -7.36
-        ],
-        [
-          48.4,
-          6.932313375305153,
-          -7.43953488372093
-        ],
-        [
-          48.4,
-          6.189475138121547,
-          -10.78
-        ],
-        [
-          48.4,
-          6.4,
-          -10.78
-        ]
-      ],
-      "method": "roof-local",
-      "installation": "Concealed roof route to local roof-mounted fitting; weatherproof cable entry pending.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              48.4,
-              5.98,
-              -7.36
-            ],
-            [
-              48.4,
-              7.04,
-              -7.36
-            ],
-            [
-              48.4,
-              6.932313375305153,
-              -7.43953488372093
-            ],
-            [
-              48.4,
-              6.189475138121547,
-              -10.78
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 4.826461805692566,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L201",
-      "name": "L7 → Festival lights · rear gable B",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L201"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 82.54213031117919,
-      "homeRun": false,
-      "points": [
-        [
-          53.016,
-          5.98,
-          -7.36
-        ],
-        [
-          53.016,
-          5.98,
-          -5.475
-        ],
-        [
-          53.016,
-          9,
-          -5.475
-        ],
-        [
-          53.72,
-          9,
-          -5.475
-        ]
-      ],
-      "method": "rear-wall",
-      "installation": "Rear-wall band and local termination; gable / weatherproof entry details pending.",
-      "coverPaths": [],
-      "length": 5.609000000000001,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L202",
-      "name": "L7 → Festival lights · tower B · stage 1 · inner corner",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L202"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 28.04,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.703
-        ],
-        [
-          0,
-          7.65,
-          -7.703
-        ],
-        [
-          0,
-          7.65,
-          -7.9430000000000005
-        ],
-        [
-          0,
-          4.195,
-          -7.9430000000000005
-        ],
-        [
-          0,
-          4.195,
-          -7.593
-        ],
-        [
-          -0.7749999999999999,
-          4.195,
-          -7.593
-        ]
-      ],
-      "method": "tower-wall",
-      "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
-      "coverPaths": [],
-      "reviewRequired": false,
-      "length": 9.183000000000002,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L203",
-      "name": "L7 → Festival lights · tower B · stage 1 · outer corner",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L203"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 28.04,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.703
-        ],
-        [
-          0,
-          7.65,
-          -7.703
-        ],
-        [
-          0,
-          7.65,
-          -12.363
-        ],
-        [
-          0,
-          4.195,
-          -12.363
-        ],
-        [
-          0,
-          4.195,
-          -12.713000000000001
-        ],
-        [
-          -0.7749999999999999,
-          4.195,
-          -12.713000000000001
-        ]
-      ],
-      "method": "tower-wall",
-      "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
-      "coverPaths": [],
-      "reviewRequired": false,
-      "length": 13.603000000000002,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L204",
-      "name": "L7 → Festival lights · tower B · stage 2 · inner corner",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L204"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 28.04,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.703
-        ],
-        [
-          0,
-          7.65,
-          -7.703
-        ],
-        [
-          0,
-          7.65,
-          -7.9430000000000005
-        ],
-        [
-          0,
-          8.4,
-          -7.9430000000000005
-        ],
-        [
-          0.09,
-          8.4,
-          -7.9430000000000005
-        ],
-        [
-          0.09,
-          8.4,
-          -8.068000000000001
-        ],
-        [
-          0.09,
-          12.115,
-          -8.068000000000001
-        ],
-        [
-          0.09,
-          12.115,
-          -7.663
-        ],
-        [
-          -0.635,
-          12.115,
-          -7.663
-        ]
-      ],
-      "method": "tower-wall",
-      "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
-      "coverPaths": [],
-      "reviewRequired": false,
-      "length": 10.413000000000002,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L205",
-      "name": "L7 → Festival lights · tower B · stage 2 · outer corner",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L205"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 28.04,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.703
-        ],
-        [
-          0,
-          7.65,
-          -7.703
-        ],
-        [
-          0,
-          7.65,
-          -12.363
-        ],
-        [
-          0,
-          8.4,
-          -12.363
-        ],
-        [
-          0.09,
-          8.4,
-          -12.363
-        ],
-        [
-          0.09,
-          8.4,
-          -12.238
-        ],
-        [
-          0.09,
-          12.115,
-          -12.238
-        ],
-        [
-          0.09,
-          12.115,
-          -12.643
-        ],
-        [
-          -0.635,
-          12.115,
-          -12.643
-        ]
-      ],
-      "method": "tower-wall",
-      "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
-      "coverPaths": [],
-      "reviewRequired": false,
-      "length": 14.833,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L206",
-      "name": "L7 → Festival lights · tower B · stage 3 · inner corner",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L206"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 28.04,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.703
-        ],
-        [
-          0,
-          7.65,
-          -7.703
-        ],
-        [
-          0,
-          7.65,
-          -7.9430000000000005
-        ],
-        [
-          0,
-          8.4,
-          -7.9430000000000005
-        ],
-        [
-          0.09,
-          8.4,
-          -7.9430000000000005
-        ],
-        [
-          0.09,
-          8.4,
-          -8.068000000000001
-        ],
-        [
-          0.09,
-          15.85,
-          -8.068000000000001
-        ],
-        [
-          0.19,
-          15.85,
-          -8.068000000000001
-        ],
-        [
-          0.19,
-          15.85,
-          -8.168000000000001
-        ],
-        [
-          0.19,
-          19.490000000000002,
-          -8.168000000000001
-        ],
-        [
-          0.19,
-          19.490000000000002,
-          -7.7330000000000005
-        ],
-        [
-          -0.525,
-          19.490000000000002,
-          -7.7330000000000005
-        ]
-      ],
-      "method": "tower-wall",
-      "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
-      "coverPaths": [],
-      "reviewRequired": false,
-      "length": 18.008000000000006,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L207",
-      "name": "L7 → Festival lights · tower B · stage 3 · outer corner",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L207"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 28.04,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.703
-        ],
-        [
-          0,
-          7.65,
-          -7.703
-        ],
-        [
-          0,
-          7.65,
-          -12.363
-        ],
-        [
-          0,
-          8.4,
-          -12.363
-        ],
-        [
-          0.09,
-          8.4,
-          -12.363
-        ],
-        [
-          0.09,
-          8.4,
-          -12.238
-        ],
-        [
-          0.09,
-          15.85,
-          -12.238
-        ],
-        [
-          0.19,
-          15.85,
-          -12.238
-        ],
-        [
-          0.19,
-          15.85,
-          -12.138
-        ],
-        [
-          0.19,
-          19.490000000000002,
-          -12.138
-        ],
-        [
-          0.19,
-          19.490000000000002,
-          -12.573
-        ],
-        [
-          -0.525,
-          19.490000000000002,
-          -12.573
-        ]
-      ],
-      "method": "tower-wall",
-      "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
-      "coverPaths": [],
-      "reviewRequired": false,
-      "length": 22.428,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:-1:L219",
-      "name": "L7 → Festival lights · front terrace between the towers",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L219"
-      ],
-      "trunkId": "trunk:EB1:L7:light:-1",
-      "color": "#dc9e29",
-      "upstreamLength": 28.04,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          -7.36
-        ],
-        [
-          2.35,
-          7.65,
-          0
-        ],
-        [
-          2.35,
-          8.5,
-          0
-        ],
-        [
-          2.15,
-          8.5,
-          0
-        ]
-      ],
-      "method": "entrance-wall",
-      "installation": "Concealed entrance wall band, solid pier and local termination.",
-      "coverPaths": [],
-      "length": 10.080000000000002,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -22329,17 +21411,6 @@
       "kind": "light",
       "role": "trunk",
       "itemIds": [
-        "L208",
-        "L209",
-        "L210",
-        "L211",
-        "L212",
-        "L213",
-        "L214",
-        "L215",
-        "L216",
-        "L217",
-        "L218",
         "L221"
       ],
       "color": "#dc9e29",
@@ -22422,12 +21493,12 @@
           7.36
         ],
         [
-          53.016,
+          52.6,
           5.98,
           7.36
         ]
       ],
-      "length": 67.8221303111792,
+      "length": 67.4061303111792,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -22528,803 +21599,6 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:1:L208",
-      "name": "L7 → Festival lights · main eave H · nave",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L208"
-      ],
-      "trunkId": "trunk:EB1:L7:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 32.32,
-      "homeRun": false,
-      "points": [
-        [
-          21.35,
-          5.98,
-          7.36
-        ],
-        [
-          21.35,
-          7.04,
-          7.36
-        ],
-        [
-          21.35,
-          7.083548913043479,
-          7.3
-        ],
-        [
-          21.35,
-          7.32,
-          7.3
-        ]
-      ],
-      "method": "roof-local",
-      "installation": "Concealed roof route to local roof-mounted fitting; weatherproof cable entry pending.",
-      "coverPaths": [],
-      "length": 1.370589523865243,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:1:L209",
-      "name": "L7 → Festival lights · main eave H · sanctuary",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L209"
-      ],
-      "trunkId": "trunk:EB1:L7:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 63.206130311179194,
-      "homeRun": false,
-      "points": [
-        [
-          48.4,
-          5.98,
-          7.36
-        ],
-        [
-          48.4,
-          7.04,
-          7.36
-        ],
-        [
-          48.4,
-          7.083548913043479,
-          7.3
-        ],
-        [
-          48.4,
-          7.32,
-          7.3
-        ]
-      ],
-      "method": "roof-local",
-      "installation": "Concealed roof route to local roof-mounted fitting; weatherproof cable entry pending.",
-      "coverPaths": [],
-      "length": 1.370589523865243,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:1:L210",
-      "name": "L7 → Festival lights · veranda eave H · nave",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L210"
-      ],
-      "trunkId": "trunk:EB1:L7:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 32.32,
-      "homeRun": false,
-      "points": [
-        [
-          21.35,
-          5.98,
-          7.36
-        ],
-        [
-          21.35,
-          7.04,
-          7.36
-        ],
-        [
-          21.35,
-          6.932313375305153,
-          7.43953488372093
-        ],
-        [
-          21.35,
-          6.189475138121547,
-          10.78
-        ],
-        [
-          21.35,
-          6.4,
-          10.78
-        ]
-      ],
-      "method": "roof-local",
-      "installation": "Concealed roof route to local roof-mounted fitting; weatherproof cable entry pending.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              21.35,
-              5.98,
-              7.36
-            ],
-            [
-              21.35,
-              7.04,
-              7.36
-            ],
-            [
-              21.35,
-              6.932313375305153,
-              7.43953488372093
-            ],
-            [
-              21.35,
-              6.189475138121547,
-              10.78
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 4.826461805692566,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:1:L211",
-      "name": "L7 → Festival lights · veranda eave H · sanctuary",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L211"
-      ],
-      "trunkId": "trunk:EB1:L7:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 63.206130311179194,
-      "homeRun": false,
-      "points": [
-        [
-          48.4,
-          5.98,
-          7.36
-        ],
-        [
-          48.4,
-          7.04,
-          7.36
-        ],
-        [
-          48.4,
-          6.932313375305153,
-          7.43953488372093
-        ],
-        [
-          48.4,
-          6.189475138121547,
-          10.78
-        ],
-        [
-          48.4,
-          6.4,
-          10.78
-        ]
-      ],
-      "method": "roof-local",
-      "installation": "Concealed roof route to local roof-mounted fitting; weatherproof cable entry pending.",
-      "coverPaths": [
-        {
-          "points": [
-            [
-              48.4,
-              5.98,
-              7.36
-            ],
-            [
-              48.4,
-              7.04,
-              7.36
-            ],
-            [
-              48.4,
-              6.932313375305153,
-              7.43953488372093
-            ],
-            [
-              48.4,
-              6.189475138121547,
-              10.78
-            ]
-          ],
-          "finish": "soffit",
-          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
-        }
-      ],
-      "length": 4.826461805692566,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:1:L212",
-      "name": "L7 → Festival lights · rear gable H",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L212"
-      ],
-      "trunkId": "trunk:EB1:L7:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 67.8221303111792,
-      "homeRun": false,
-      "points": [
-        [
-          53.016,
-          5.98,
-          7.36
-        ],
-        [
-          53.016,
-          5.98,
-          5.475
-        ],
-        [
-          53.016,
-          9,
-          5.475
-        ],
-        [
-          53.72,
-          9,
-          5.475
-        ]
-      ],
-      "method": "rear-wall",
-      "installation": "Rear-wall band and local termination; gable / weatherproof entry details pending.",
-      "coverPaths": [],
-      "length": 5.609000000000001,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:1:L213",
-      "name": "L7 → Festival lights · tower H · stage 1 · inner corner",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L213"
-      ],
-      "trunkId": "trunk:EB1:L7:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 13.320000000000002,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          7.36
-        ],
-        [
-          2.35,
-          7.65,
-          7.36
-        ],
-        [
-          2.35,
-          7.65,
-          7.703
-        ],
-        [
-          0,
-          7.65,
-          7.703
-        ],
-        [
-          0,
-          7.65,
-          7.9430000000000005
-        ],
-        [
-          0,
-          4.195,
-          7.9430000000000005
-        ],
-        [
-          0,
-          4.195,
-          7.593
-        ],
-        [
-          -0.7749999999999999,
-          4.195,
-          7.593
-        ]
-      ],
-      "method": "tower-wall",
-      "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
-      "coverPaths": [],
-      "reviewRequired": false,
-      "length": 9.183000000000002,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:1:L214",
-      "name": "L7 → Festival lights · tower H · stage 1 · outer corner",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L214"
-      ],
-      "trunkId": "trunk:EB1:L7:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 13.320000000000002,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          7.36
-        ],
-        [
-          2.35,
-          7.65,
-          7.36
-        ],
-        [
-          2.35,
-          7.65,
-          7.703
-        ],
-        [
-          0,
-          7.65,
-          7.703
-        ],
-        [
-          0,
-          7.65,
-          12.363
-        ],
-        [
-          0,
-          4.195,
-          12.363
-        ],
-        [
-          0,
-          4.195,
-          12.713000000000001
-        ],
-        [
-          -0.7749999999999999,
-          4.195,
-          12.713000000000001
-        ]
-      ],
-      "method": "tower-wall",
-      "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
-      "coverPaths": [],
-      "reviewRequired": false,
-      "length": 13.603000000000002,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:1:L215",
-      "name": "L7 → Festival lights · tower H · stage 2 · inner corner",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L215"
-      ],
-      "trunkId": "trunk:EB1:L7:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 13.320000000000002,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          7.36
-        ],
-        [
-          2.35,
-          7.65,
-          7.36
-        ],
-        [
-          2.35,
-          7.65,
-          7.703
-        ],
-        [
-          0,
-          7.65,
-          7.703
-        ],
-        [
-          0,
-          7.65,
-          7.9430000000000005
-        ],
-        [
-          0,
-          8.4,
-          7.9430000000000005
-        ],
-        [
-          0.09,
-          8.4,
-          7.9430000000000005
-        ],
-        [
-          0.09,
-          8.4,
-          8.068000000000001
-        ],
-        [
-          0.09,
-          12.115,
-          8.068000000000001
-        ],
-        [
-          0.09,
-          12.115,
-          7.663
-        ],
-        [
-          -0.635,
-          12.115,
-          7.663
-        ]
-      ],
-      "method": "tower-wall",
-      "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
-      "coverPaths": [],
-      "reviewRequired": false,
-      "length": 10.413000000000002,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:1:L216",
-      "name": "L7 → Festival lights · tower H · stage 2 · outer corner",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L216"
-      ],
-      "trunkId": "trunk:EB1:L7:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 13.320000000000002,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          7.36
-        ],
-        [
-          2.35,
-          7.65,
-          7.36
-        ],
-        [
-          2.35,
-          7.65,
-          7.703
-        ],
-        [
-          0,
-          7.65,
-          7.703
-        ],
-        [
-          0,
-          7.65,
-          12.363
-        ],
-        [
-          0,
-          8.4,
-          12.363
-        ],
-        [
-          0.09,
-          8.4,
-          12.363
-        ],
-        [
-          0.09,
-          8.4,
-          12.238
-        ],
-        [
-          0.09,
-          12.115,
-          12.238
-        ],
-        [
-          0.09,
-          12.115,
-          12.643
-        ],
-        [
-          -0.635,
-          12.115,
-          12.643
-        ]
-      ],
-      "method": "tower-wall",
-      "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
-      "coverPaths": [],
-      "reviewRequired": false,
-      "length": 14.833,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:1:L217",
-      "name": "L7 → Festival lights · tower H · stage 3 · inner corner",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L217"
-      ],
-      "trunkId": "trunk:EB1:L7:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 13.320000000000002,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          7.36
-        ],
-        [
-          2.35,
-          7.65,
-          7.36
-        ],
-        [
-          2.35,
-          7.65,
-          7.703
-        ],
-        [
-          0,
-          7.65,
-          7.703
-        ],
-        [
-          0,
-          7.65,
-          7.9430000000000005
-        ],
-        [
-          0,
-          8.4,
-          7.9430000000000005
-        ],
-        [
-          0.09,
-          8.4,
-          7.9430000000000005
-        ],
-        [
-          0.09,
-          8.4,
-          8.068000000000001
-        ],
-        [
-          0.09,
-          15.85,
-          8.068000000000001
-        ],
-        [
-          0.19,
-          15.85,
-          8.068000000000001
-        ],
-        [
-          0.19,
-          15.85,
-          8.168000000000001
-        ],
-        [
-          0.19,
-          19.490000000000002,
-          8.168000000000001
-        ],
-        [
-          0.19,
-          19.490000000000002,
-          7.7330000000000005
-        ],
-        [
-          -0.525,
-          19.490000000000002,
-          7.7330000000000005
-        ]
-      ],
-      "method": "tower-wall",
-      "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
-      "coverPaths": [],
-      "reviewRequired": false,
-      "length": 18.008000000000006,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
-      "drawnDiameter": 0.048,
-      "buildingDrawnDiameter": 0.006,
-      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
-    },
-    {
-      "id": "drop:EB1:L7:light:1:L218",
-      "name": "L7 → Festival lights · tower H · stage 3 · outer corner",
-      "source": "EB1",
-      "board": "DB2",
-      "circuit": "L7",
-      "kind": "light",
-      "role": "drop",
-      "itemIds": [
-        "L218"
-      ],
-      "trunkId": "trunk:EB1:L7:light:1",
-      "color": "#dc9e29",
-      "upstreamLength": 13.320000000000002,
-      "homeRun": false,
-      "points": [
-        [
-          2.35,
-          5.98,
-          7.36
-        ],
-        [
-          2.35,
-          7.65,
-          7.36
-        ],
-        [
-          2.35,
-          7.65,
-          7.703
-        ],
-        [
-          0,
-          7.65,
-          7.703
-        ],
-        [
-          0,
-          7.65,
-          12.363
-        ],
-        [
-          0,
-          8.4,
-          12.363
-        ],
-        [
-          0.09,
-          8.4,
-          12.363
-        ],
-        [
-          0.09,
-          8.4,
-          12.238
-        ],
-        [
-          0.09,
-          15.85,
-          12.238
-        ],
-        [
-          0.19,
-          15.85,
-          12.238
-        ],
-        [
-          0.19,
-          15.85,
-          12.138
-        ],
-        [
-          0.19,
-          19.490000000000002,
-          12.138
-        ],
-        [
-          0.19,
-          19.490000000000002,
-          12.573
-        ],
-        [
-          -0.525,
-          19.490000000000002,
-          12.573
-        ]
-      ],
-      "method": "tower-wall",
-      "installation": "Solid tower corner/piers, stepped behind cornices; local ledge/fitting connection. No riser through louver openings; chase/finish and weathering details pending.",
-      "coverPaths": [],
-      "reviewRequired": false,
-      "length": 22.428,
-      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
-      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -25768,12 +24042,12 @@
           -7.36
         ],
         [
-          5.475000000000001,
+          6.094999999999999,
           6.0120000000000005,
           -7.36
         ]
       ],
-      "length": 67.57613031117918,
+      "length": 66.95613031117918,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -26017,21 +24291,21 @@
       ],
       "trunkId": "trunk:FC1:F2:fan:-1",
       "color": "#b46a48",
-      "upstreamLength": 67.57613031117918,
+      "upstreamLength": 66.95613031117918,
       "homeRun": false,
       "points": [
         [
-          5.475000000000001,
+          6.094999999999999,
           6.0120000000000005,
           -7.36
         ],
         [
-          5.475000000000001,
+          6.094999999999999,
           4.1,
           -7.36
         ],
         [
-          5.475,
+          6.095,
           4.1,
           -7.07
         ]
@@ -26322,12 +24596,12 @@
           7.36
         ],
         [
-          5.475000000000001,
+          6.094999999999999,
           6.0120000000000005,
           7.36
         ]
       ],
-      "length": 74.17613031117918,
+      "length": 73.55613031117919,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "coverPaths": [
@@ -26571,21 +24845,21 @@
       ],
       "trunkId": "trunk:FC1:F2:fan:1",
       "color": "#b46a48",
-      "upstreamLength": 74.17613031117918,
+      "upstreamLength": 73.55613031117919,
       "homeRun": false,
       "points": [
         [
-          5.475000000000001,
+          6.094999999999999,
           6.0120000000000005,
           7.36
         ],
         [
-          5.475000000000001,
+          6.094999999999999,
           4.1,
           7.36
         ],
         [
-          5.475,
+          6.095,
           4.1,
           7.07
         ]
@@ -35899,7 +34173,12 @@
         ],
         [
           38.94,
-          8.095059999999997,
+          7.655531887066677,
+          -8.8
+        ],
+        [
+          38.94,
+          7.635531887066677,
           -8.8
         ]
       ],
@@ -35923,7 +34202,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 1.5819092268041244,
+      "length": 1.7576188861291957,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -35958,7 +34237,12 @@
         ],
         [
           38.94,
-          8.095059999999997,
+          7.655531887066677,
+          -11.4
+        ],
+        [
+          38.94,
+          7.635531887066677,
           -11.4
         ]
       ],
@@ -35982,7 +34266,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.181909226804124,
+      "length": 4.357618886129195,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36002,22 +34286,27 @@
       ],
       "trunkId": "trunk:LC1:L8:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 27.627863960578313,
+      "upstreamLength": 27.640704089423362,
       "homeRun": false,
       "points": [
         [
-          42.22,
-          7.945096649484534,
+          42.21,
+          7.953150773195873,
           -7.36
         ],
         [
-          42.22,
-          7.9450966494845385,
+          42.21,
+          7.953150773195878,
           -8.8
         ],
         [
-          42.22,
-          8.063580000000004,
+          42.21,
+          7.655531887066682,
+          -8.8
+        ],
+        [
+          42.21,
+          7.635531887066683,
           -8.8
         ]
       ],
@@ -36027,13 +34316,13 @@
         {
           "points": [
             [
-              42.22,
-              7.945096649484534,
+              42.21,
+              7.953150773195873,
               -7.36
             ],
             [
-              42.22,
-              7.9450966494845385,
+              42.21,
+              7.953150773195878,
               -8.8
             ]
           ],
@@ -36041,7 +34330,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 1.5584833505154654,
+      "length": 1.7576188861291957,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36061,22 +34350,27 @@
       ],
       "trunkId": "trunk:LC1:L8:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 27.627863960578313,
+      "upstreamLength": 27.640704089423362,
       "homeRun": false,
       "points": [
         [
-          42.22,
-          7.945096649484534,
+          42.21,
+          7.953150773195873,
           -7.36
         ],
         [
-          42.22,
-          7.9450966494845385,
+          42.21,
+          7.953150773195878,
           -11.4
         ],
         [
-          42.22,
-          8.063580000000004,
+          42.21,
+          7.655531887066682,
+          -11.4
+        ],
+        [
+          42.21,
+          7.635531887066683,
           -11.4
         ]
       ],
@@ -36086,13 +34380,13 @@
         {
           "points": [
             [
-              42.22,
-              7.945096649484534,
+              42.21,
+              7.953150773195873,
               -7.36
             ],
             [
-              42.22,
-              7.9450966494845385,
+              42.21,
+              7.953150773195878,
               -11.4
             ]
           ],
@@ -36100,7 +34394,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.158483350515465,
+      "length": 4.357618886129195,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36297,7 +34591,12 @@
         ],
         [
           38.94,
-          8.095059999999997,
+          7.655531887066677,
+          8.8
+        ],
+        [
+          38.94,
+          7.635531887066677,
           8.8
         ]
       ],
@@ -36321,7 +34620,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 1.5819092268041244,
+      "length": 1.7576188861291957,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36356,7 +34655,12 @@
         ],
         [
           38.94,
-          8.095059999999997,
+          7.655531887066677,
+          11.4
+        ],
+        [
+          38.94,
+          7.635531887066677,
           11.4
         ]
       ],
@@ -36380,7 +34684,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.181909226804124,
+      "length": 4.357618886129195,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36400,22 +34704,27 @@
       ],
       "trunkId": "trunk:LC1:L8:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 34.22786396057831,
+      "upstreamLength": 34.24070408942336,
       "homeRun": false,
       "points": [
         [
-          42.22,
-          7.945096649484534,
+          42.21,
+          7.953150773195873,
           7.36
         ],
         [
-          42.22,
-          7.9450966494845385,
+          42.21,
+          7.953150773195878,
           8.8
         ],
         [
-          42.22,
-          8.063580000000004,
+          42.21,
+          7.655531887066682,
+          8.8
+        ],
+        [
+          42.21,
+          7.635531887066683,
           8.8
         ]
       ],
@@ -36425,13 +34734,13 @@
         {
           "points": [
             [
-              42.22,
-              7.945096649484534,
+              42.21,
+              7.953150773195873,
               7.36
             ],
             [
-              42.22,
-              7.9450966494845385,
+              42.21,
+              7.953150773195878,
               8.8
             ]
           ],
@@ -36439,7 +34748,7 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 1.5584833505154654,
+      "length": 1.7576188861291957,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -36459,22 +34768,27 @@
       ],
       "trunkId": "trunk:LC1:L8:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 34.22786396057831,
+      "upstreamLength": 34.24070408942336,
       "homeRun": false,
       "points": [
         [
-          42.22,
-          7.945096649484534,
+          42.21,
+          7.953150773195873,
           7.36
         ],
         [
-          42.22,
-          7.9450966494845385,
+          42.21,
+          7.953150773195878,
           11.4
         ],
         [
-          42.22,
-          8.063580000000004,
+          42.21,
+          7.655531887066682,
+          11.4
+        ],
+        [
+          42.21,
+          7.635531887066683,
           11.4
         ]
       ],
@@ -36484,13 +34798,13 @@
         {
           "points": [
             [
-              42.22,
-              7.945096649484534,
+              42.21,
+              7.953150773195873,
               7.36
             ],
             [
-              42.22,
-              7.9450966494845385,
+              42.21,
+              7.953150773195878,
               11.4
             ]
           ],
@@ -36498,9 +34812,1115 @@
           "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
         }
       ],
-      "length": 4.158483350515465,
+      "length": 4.357618886129195,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:LC1:LD:light:-1",
+      "name": "LD · B · circuit trunk",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L-COLUMN-3-B",
+        "L-COLUMN-4-B",
+        "L-COLUMN-5-B",
+        "L-COLUMN-6-B",
+        "L-COLUMN-7-B",
+        "L-COLUMN-8-B",
+        "L-COLUMN-9-B"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          5.94,
+          -3.3
+        ],
+        [
+          53.016,
+          5.94,
+          -7.36
+        ],
+        [
+          44.175,
+          5.94,
+          -7.36
+        ],
+        [
+          44.175,
+          7.04,
+          -7.36
+        ],
+        [
+          43.535,
+          7.04,
+          -7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          -7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          -7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          -7.36
+        ],
+        [
+          37.615,
+          7.04,
+          -7.36
+        ],
+        [
+          36.975,
+          7.04,
+          -7.36
+        ],
+        [
+          36.975,
+          5.94,
+          -7.36
+        ],
+        [
+          9.975000000000001,
+          5.94,
+          -7.36
+        ]
+      ],
+      "length": 62.29813031117919,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              -7.36
+            ],
+            [
+              43.535,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              -7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ],
+            [
+              37.615,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              -7.36
+            ],
+            [
+              36.975,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-3-B",
+      "name": "LD → Column up/down light · axis 3 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-3-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 62.29813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          9.975000000000001,
+          5.94,
+          -7.36
+        ],
+        [
+          9.975000000000001,
+          -0.44,
+          -7.36
+        ],
+        [
+          9.975,
+          -0.44,
+          -3.29
+        ],
+        [
+          9.975,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-4-B",
+      "name": "LD → Column up/down light · axis 4 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-4-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 57.79813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          14.475000000000001,
+          5.94,
+          -7.36
+        ],
+        [
+          14.475000000000001,
+          -0.44,
+          -7.36
+        ],
+        [
+          14.475,
+          -0.44,
+          -3.29
+        ],
+        [
+          14.475,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-5-B",
+      "name": "LD → Column up/down light · axis 5 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-5-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 53.29813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          18.975,
+          5.94,
+          -7.36
+        ],
+        [
+          18.975,
+          -0.44,
+          -7.36
+        ],
+        [
+          18.975,
+          -0.44,
+          -3.29
+        ],
+        [
+          18.975,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-6-B",
+      "name": "LD → Column up/down light · axis 6 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-6-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 48.79813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          23.475,
+          5.94,
+          -7.36
+        ],
+        [
+          23.475,
+          -0.44,
+          -7.36
+        ],
+        [
+          23.475,
+          -0.44,
+          -3.29
+        ],
+        [
+          23.475,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-7-B",
+      "name": "LD → Column up/down light · axis 7 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-7-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 44.29813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          27.975,
+          5.94,
+          -7.36
+        ],
+        [
+          27.975,
+          -0.44,
+          -7.36
+        ],
+        [
+          27.975,
+          -0.44,
+          -3.29
+        ],
+        [
+          27.975,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-8-B",
+      "name": "LD → Column up/down light · axis 8 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-8-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 39.79813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          32.475,
+          5.94,
+          -7.36
+        ],
+        [
+          32.475,
+          -0.44,
+          -7.36
+        ],
+        [
+          32.475,
+          -0.44,
+          -3.29
+        ],
+        [
+          32.475,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:-1:L-COLUMN-9-B",
+      "name": "LD → Column up/down light · axis 9 · B",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-9-B"
+      ],
+      "trunkId": "trunk:LC1:LD:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 35.29813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          36.975,
+          5.94,
+          -7.36
+        ],
+        [
+          36.975,
+          -0.44,
+          -7.36
+        ],
+        [
+          36.975,
+          -0.44,
+          -3.29
+        ],
+        [
+          36.975,
+          5.5,
+          -3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:LC1:LD:light:1",
+      "name": "LD · H · circuit trunk",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L-COLUMN-3-H",
+        "L-COLUMN-4-H",
+        "L-COLUMN-5-H",
+        "L-COLUMN-6-H",
+        "L-COLUMN-7-H",
+        "L-COLUMN-8-H",
+        "L-COLUMN-9-H"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          5.94,
+          -3.3
+        ],
+        [
+          53.016,
+          5.94,
+          7.36
+        ],
+        [
+          44.175,
+          5.94,
+          7.36
+        ],
+        [
+          44.175,
+          7.04,
+          7.36
+        ],
+        [
+          43.535,
+          7.04,
+          7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          7.36
+        ],
+        [
+          37.615,
+          7.04,
+          7.36
+        ],
+        [
+          36.975,
+          7.04,
+          7.36
+        ],
+        [
+          36.975,
+          5.94,
+          7.36
+        ],
+        [
+          9.975000000000001,
+          5.94,
+          7.36
+        ]
+      ],
+      "length": 68.89813031117919,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              7.36
+            ],
+            [
+              43.535,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              7.36
+            ],
+            [
+              37.615,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              7.36
+            ],
+            [
+              36.975,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-3-H",
+      "name": "LD → Column up/down light · axis 3 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-3-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 68.89813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          9.975000000000001,
+          5.94,
+          7.36
+        ],
+        [
+          9.975000000000001,
+          -0.44,
+          7.36
+        ],
+        [
+          9.975,
+          -0.44,
+          3.29
+        ],
+        [
+          9.975,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-4-H",
+      "name": "LD → Column up/down light · axis 4 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-4-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 64.39813031117919,
+      "homeRun": false,
+      "points": [
+        [
+          14.475000000000001,
+          5.94,
+          7.36
+        ],
+        [
+          14.475000000000001,
+          -0.44,
+          7.36
+        ],
+        [
+          14.475,
+          -0.44,
+          3.29
+        ],
+        [
+          14.475,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-5-H",
+      "name": "LD → Column up/down light · axis 5 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-5-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 59.898130311179195,
+      "homeRun": false,
+      "points": [
+        [
+          18.975,
+          5.94,
+          7.36
+        ],
+        [
+          18.975,
+          -0.44,
+          7.36
+        ],
+        [
+          18.975,
+          -0.44,
+          3.29
+        ],
+        [
+          18.975,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-6-H",
+      "name": "LD → Column up/down light · axis 6 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-6-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 55.398130311179195,
+      "homeRun": false,
+      "points": [
+        [
+          23.475,
+          5.94,
+          7.36
+        ],
+        [
+          23.475,
+          -0.44,
+          7.36
+        ],
+        [
+          23.475,
+          -0.44,
+          3.29
+        ],
+        [
+          23.475,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-7-H",
+      "name": "LD → Column up/down light · axis 7 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-7-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 50.898130311179195,
+      "homeRun": false,
+      "points": [
+        [
+          27.975,
+          5.94,
+          7.36
+        ],
+        [
+          27.975,
+          -0.44,
+          7.36
+        ],
+        [
+          27.975,
+          -0.44,
+          3.29
+        ],
+        [
+          27.975,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-8-H",
+      "name": "LD → Column up/down light · axis 8 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-8-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 46.398130311179195,
+      "homeRun": false,
+      "points": [
+        [
+          32.475,
+          5.94,
+          7.36
+        ],
+        [
+          32.475,
+          -0.44,
+          7.36
+        ],
+        [
+          32.475,
+          -0.44,
+          3.29
+        ],
+        [
+          32.475,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LD:light:1:L-COLUMN-9-H",
+      "name": "LD → Column up/down light · axis 9 · H",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LD",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-COLUMN-9-H"
+      ],
+      "trunkId": "trunk:LC1:LD:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 41.898130311179195,
+      "homeRun": false,
+      "points": [
+        [
+          36.975,
+          5.94,
+          7.36
+        ],
+        [
+          36.975,
+          -0.44,
+          7.36
+        ],
+        [
+          36.975,
+          -0.44,
+          3.29
+        ],
+        [
+          36.975,
+          5.5,
+          3.29
+        ]
+      ],
+      "method": "review-local",
+      "installation": "Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.",
+      "coverPaths": [],
+      "reviewRequired": true,
+      "length": 16.39,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "REVIEW REQUIRED · local concealment unresolved",
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
@@ -36572,8 +35992,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         10.125,
@@ -36597,8 +36017,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         10.125,
@@ -36622,8 +36042,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         10.125,
@@ -36647,8 +36067,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         10.125,
@@ -36672,8 +36092,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
@@ -36697,8 +36117,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
@@ -36722,8 +36142,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
@@ -36747,8 +36167,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         14.625,
@@ -36772,8 +36192,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
@@ -36797,8 +36217,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
@@ -36822,8 +36242,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
@@ -36847,8 +36267,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         19.125,
@@ -36872,8 +36292,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
@@ -36897,8 +36317,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
@@ -36922,8 +36342,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
@@ -36947,8 +36367,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         23.625,
@@ -36972,8 +36392,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
@@ -36997,8 +36417,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
@@ -37022,8 +36442,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
@@ -37047,8 +36467,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         28.125,
@@ -37072,8 +36492,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
@@ -37097,8 +36517,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
@@ -37122,8 +36542,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
@@ -37147,8 +36567,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         32.625,
@@ -37172,8 +36592,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         37.125,
@@ -37197,8 +36617,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         37.125,
@@ -37222,8 +36642,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 36° beam",
+      "wattsEstimate": 23.333333333333332,
+      "specs": "2800 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
         37.125,
@@ -37247,8 +36667,8 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 19.166666666666668,
-      "specs": "2300 lm · 3000 K · 28° beam",
+      "wattsEstimate": 12.5,
+      "specs": "1500 lm · 3000 K · 28° beam",
       "hiddenAlternative": false,
       "position": [
         37.125,
@@ -37959,7 +37379,7 @@
     },
     {
       "id": "L59",
-      "name": "Rear rows light · entrance façade · B",
+      "name": "Rear rows light · axis 3 side wall · B",
       "type": "readingProjector",
       "product": "Reading projector · side bracket, finish-matched",
       "circuit": "L2",
@@ -37976,15 +37396,15 @@
       "specs": "6000 lm · 3000 K · 44° beam",
       "hiddenAlternative": false,
       "position": [
-        5.475,
-        3.45,
-        -4.2
+        9.25,
+        3.65,
+        -7.25
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "L60",
-      "name": "Rear centre light · entrance façade · B",
+      "name": "Rear centre light · axis 3 side wall · B",
       "type": "readingProjector",
       "product": "Reading projector · side bracket, finish-matched",
       "circuit": "L2",
@@ -37997,19 +37417,19 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 27.5,
-      "specs": "3300 lm · 3000 K · 50° beam",
+      "wattsEstimate": 50,
+      "specs": "6000 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
-        5.475,
-        3.9,
-        -4.2
+        9.6,
+        3.65,
+        -7.25
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "L61",
-      "name": "Rear rows light · entrance façade · H",
+      "name": "Rear rows light · axis 3 side wall · H",
       "type": "readingProjector",
       "product": "Reading projector · side bracket, finish-matched",
       "circuit": "L2",
@@ -38026,15 +37446,15 @@
       "specs": "6000 lm · 3000 K · 44° beam",
       "hiddenAlternative": false,
       "position": [
-        5.475,
-        3.45,
-        4.2
+        9.25,
+        3.65,
+        7.25
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "L62",
-      "name": "Rear centre light · entrance façade · H",
+      "name": "Rear centre light · axis 3 side wall · H",
       "type": "readingProjector",
       "product": "Reading projector · side bracket, finish-matched",
       "circuit": "L2",
@@ -38047,13 +37467,13 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 27.5,
-      "specs": "3300 lm · 3000 K · 50° beam",
+      "wattsEstimate": 50,
+      "specs": "6000 lm · 3000 K · 36° beam",
       "hiddenAlternative": false,
       "position": [
-        5.475,
-        3.9,
-        4.2
+        9.6,
+        3.65,
+        7.25
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -38697,13 +38117,13 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 1.452,
-      "specs": "165 lm · 3000 K · 12° beam",
+      "wattsEstimate": 0.924,
+      "specs": "105 lm · 3000 K · 12° beam",
       "hiddenAlternative": false,
       "position": [
-        44.419999999999995,
-        7.75,
-        -4.75
+        44.68,
+        6.424,
+        -4.14
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -38722,13 +38142,13 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 15,
-      "specs": "1800 lm · 3000 K · 50° beam",
+      "wattsEstimate": 9.5,
+      "specs": "1140 lm · 3000 K · 50° beam",
       "hiddenAlternative": false,
       "position": [
-        44.419999999999995,
-        7.75,
-        -6.25
+        45.25,
+        6.356000000000001,
+        -4.14
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -38747,13 +38167,13 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 1.452,
-      "specs": "165 lm · 3000 K · 12° beam",
+      "wattsEstimate": 0.924,
+      "specs": "105 lm · 3000 K · 12° beam",
       "hiddenAlternative": false,
       "position": [
-        44.419999999999995,
-        7.75,
-        4.75
+        44.68,
+        6.424,
+        4.14
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -38772,13 +38192,13 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 15,
-      "specs": "1800 lm · 3000 K · 50° beam",
+      "wattsEstimate": 9.5,
+      "specs": "1140 lm · 3000 K · 50° beam",
       "hiddenAlternative": false,
       "position": [
-        44.419999999999995,
-        7.75,
-        6.25
+        45.25,
+        6.356000000000001,
+        4.14
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -39601,7 +39021,7 @@
       "specs": "20 lm · 6500 K",
       "hiddenAlternative": false,
       "position": [
-        5.313000000894069,
+        5.555,
         4.762499999552966,
         0
       ],
@@ -40604,606 +40024,6 @@
         53.2,
         5.2,
         4.5
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L196",
-      "name": "Festival lights · roof ridge",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        47.38660430908203
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 80,
-      "specs": "80 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 47.3 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        29.16,
-        12.69,
-        0
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L197",
-      "name": "Festival lights · main eave B · nave",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        31.786602020263672
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 54,
-      "specs": "54 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 31.7 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        21.35,
-        7.32,
-        -7.3
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L198",
-      "name": "Festival lights · main eave B · sanctuary",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        8.986602783203125
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 16,
-      "specs": "16 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 8.9 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        48.4,
-        7.32,
-        -7.3
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L199",
-      "name": "Festival lights · veranda eave B · nave",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        31.786602020263672
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 54,
-      "specs": "54 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 31.7 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        21.35,
-        6.4,
-        -10.78
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L200",
-      "name": "Festival lights · veranda eave B · sanctuary",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        8.986602783203125
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 16,
-      "specs": "16 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 8.9 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        48.4,
-        6.4,
-        -10.78
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L201",
-      "name": "Festival lights · rear gable B",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        2.7570390701293945,
-        3.143176317214966
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 8,
-      "specs": "8 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 4.05 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        53.72,
-        9,
-        -5.475
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L202",
-      "name": "Festival lights · tower B · stage 1 · inner corner",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        7.889999866485596,
-        0.08660253882408142
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 14,
-      "specs": "14 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 7.790000000000001 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        -0.7749999999999999,
-        4.195,
-        -7.593
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L203",
-      "name": "Festival lights · tower B · stage 1 · outer corner",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        7.889999866485596,
-        0.08660253882408142
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 14,
-      "specs": "14 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 7.790000000000001 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        -0.7749999999999999,
-        4.195,
-        -12.713000000000001
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L204",
-      "name": "Festival lights · tower B · stage 2 · inner corner",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        6.949999809265137,
-        0.08660253882408142
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 12,
-      "specs": "12 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 6.85 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        -0.635,
-        12.115,
-        -7.663
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L205",
-      "name": "Festival lights · tower B · stage 2 · outer corner",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        6.949999809265137,
-        0.08660253882408142
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 12,
-      "specs": "12 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 6.85 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        -0.635,
-        12.115,
-        -12.643
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L206",
-      "name": "Festival lights · tower B · stage 3 · inner corner",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        6.800000190734863,
-        0.08660253882408142
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 12,
-      "specs": "12 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 6.700000000000001 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        -0.525,
-        19.490000000000002,
-        -7.7330000000000005
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L207",
-      "name": "Festival lights · tower B · stage 3 · outer corner",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        6.800000190734863,
-        0.08660253882408142
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 12,
-      "specs": "12 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 6.700000000000001 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        -0.525,
-        19.490000000000002,
-        -12.573
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L208",
-      "name": "Festival lights · main eave H · nave",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        31.786602020263672
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 54,
-      "specs": "54 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 31.7 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        21.35,
-        7.32,
-        7.3
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L209",
-      "name": "Festival lights · main eave H · sanctuary",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        8.986602783203125
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 16,
-      "specs": "16 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 8.9 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        48.4,
-        7.32,
-        7.3
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L210",
-      "name": "Festival lights · veranda eave H · nave",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        31.786602020263672
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 54,
-      "specs": "54 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 31.7 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        21.35,
-        6.4,
-        10.78
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L211",
-      "name": "Festival lights · veranda eave H · sanctuary",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        8.986602783203125
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 16,
-      "specs": "16 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 8.9 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        48.4,
-        6.4,
-        10.78
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L212",
-      "name": "Festival lights · rear gable H",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        2.7570390701293945,
-        3.143176317214966
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 8,
-      "specs": "8 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 4.05 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        53.72,
-        9,
-        5.475
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L213",
-      "name": "Festival lights · tower H · stage 1 · inner corner",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        7.889999866485596,
-        0.08660253882408142
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 14,
-      "specs": "14 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 7.790000000000001 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        -0.7749999999999999,
-        4.195,
-        7.593
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L214",
-      "name": "Festival lights · tower H · stage 1 · outer corner",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        7.889999866485596,
-        0.08660253882408142
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 14,
-      "specs": "14 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 7.790000000000001 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        -0.7749999999999999,
-        4.195,
-        12.713000000000001
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L215",
-      "name": "Festival lights · tower H · stage 2 · inner corner",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        6.949999809265137,
-        0.08660253882408142
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 12,
-      "specs": "12 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 6.85 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        -0.635,
-        12.115,
-        7.663
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L216",
-      "name": "Festival lights · tower H · stage 2 · outer corner",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        6.949999809265137,
-        0.08660253882408142
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 12,
-      "specs": "12 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 6.85 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        -0.635,
-        12.115,
-        12.643
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L217",
-      "name": "Festival lights · tower H · stage 3 · inner corner",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        6.800000190734863,
-        0.08660253882408142
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 12,
-      "specs": "12 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 6.700000000000001 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        -0.525,
-        19.490000000000002,
-        7.7330000000000005
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L218",
-      "name": "Festival lights · tower H · stage 3 · outer corner",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        6.800000190734863,
-        0.08660253882408142
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 12,
-      "specs": "12 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 6.700000000000001 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        -0.525,
-        19.490000000000002,
-        12.573
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "L219",
-      "name": "Festival lights · front terrace between the towers",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "circuit": "L7",
-      "board": "DB2",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        14.886602401733398
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 26,
-      "specs": "26 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 14.8 m strand",
-      "hiddenAlternative": false,
-      "position": [
-        2.15,
-        8.5,
-        0
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -43058,206 +41878,6 @@
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
-      "id": "D312",
-      "name": "Red lanterns · veranda B · bay 4–5",
-      "type": "lanternString",
-      "product": "String of red lanterns (đèn lồng)",
-      "circuit": "X1",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3199999928474426,
-        1.043491778895259,
-        3.4048333168029785
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 0,
-      "specs": "240 lm · 2200 K · 3.4 m strand",
-      "hiddenAlternative": true,
-      "position": [
-        16.725,
-        5.6,
-        -8.85
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "D313",
-      "name": "Red lanterns · veranda H · bay 4–5",
-      "type": "lanternString",
-      "product": "String of red lanterns (đèn lồng)",
-      "circuit": "X1",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3199999928474426,
-        1.043491778895259,
-        3.4048333168029785
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 0,
-      "specs": "240 lm · 2200 K · 3.4 m strand",
-      "hiddenAlternative": true,
-      "position": [
-        16.725,
-        5.6,
-        8.85
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "D314",
-      "name": "Red lanterns · veranda B · bay 5–6",
-      "type": "lanternString",
-      "product": "String of red lanterns (đèn lồng)",
-      "circuit": "X1",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3199999928474426,
-        1.043491778895259,
-        3.4048333168029785
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 0,
-      "specs": "240 lm · 2200 K · 3.4 m strand",
-      "hiddenAlternative": true,
-      "position": [
-        21.225,
-        5.6,
-        -8.85
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "D315",
-      "name": "Red lanterns · veranda H · bay 5–6",
-      "type": "lanternString",
-      "product": "String of red lanterns (đèn lồng)",
-      "circuit": "X1",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3199999928474426,
-        1.043491778895259,
-        3.4048333168029785
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 0,
-      "specs": "240 lm · 2200 K · 3.4 m strand",
-      "hiddenAlternative": true,
-      "position": [
-        21.225,
-        5.6,
-        8.85
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "D316",
-      "name": "Red lanterns · veranda B · bay 7–8",
-      "type": "lanternString",
-      "product": "String of red lanterns (đèn lồng)",
-      "circuit": "X1",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3199999928474426,
-        1.043491778895259,
-        3.4048333168029785
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 0,
-      "specs": "240 lm · 2200 K · 3.4 m strand",
-      "hiddenAlternative": true,
-      "position": [
-        30.225,
-        5.6,
-        -8.85
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "D317",
-      "name": "Red lanterns · veranda H · bay 7–8",
-      "type": "lanternString",
-      "product": "String of red lanterns (đèn lồng)",
-      "circuit": "X1",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3199999928474426,
-        1.043491778895259,
-        3.4048333168029785
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 0,
-      "specs": "240 lm · 2200 K · 3.4 m strand",
-      "hiddenAlternative": true,
-      "position": [
-        30.225,
-        5.6,
-        8.85
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "D318",
-      "name": "Red lanterns · veranda B · bay 8–9",
-      "type": "lanternString",
-      "product": "String of red lanterns (đèn lồng)",
-      "circuit": "X1",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3199999928474426,
-        1.043491778895259,
-        3.4048333168029785
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 0,
-      "specs": "240 lm · 2200 K · 3.4 m strand",
-      "hiddenAlternative": true,
-      "position": [
-        34.725,
-        5.6,
-        -8.85
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
-      "id": "D319",
-      "name": "Red lanterns · veranda H · bay 8–9",
-      "type": "lanternString",
-      "product": "String of red lanterns (đèn lồng)",
-      "circuit": "X1",
-      "board": "DB1",
-      "quantity": 1,
-      "modelSize": [
-        0.3199999928474426,
-        1.043491778895259,
-        3.4048333168029785
-      ],
-      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
-      "diameter": null,
-      "wattsEstimate": 0,
-      "specs": "240 lm · 2200 K · 3.4 m strand",
-      "hiddenAlternative": true,
-      "position": [
-        34.725,
-        5.6,
-        8.85
-      ],
-      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
-    },
-    {
       "id": "F-NAVE-B-2P",
       "name": "Wall fan · axis 2′ · B",
       "type": "fanNaveWall",
@@ -43276,7 +41896,7 @@
       "specs": "0.45 m diameter · 55 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        5.475,
+        6.095,
         4.1,
         -7.07
       ],
@@ -43301,7 +41921,7 @@
       "specs": "0.45 m diameter · 55 W at maximum speed",
       "hiddenAlternative": false,
       "position": [
-        5.475,
+        6.095,
         4.1,
         7.07
       ],
@@ -44747,12 +43367,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         -8.8
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44772,12 +43392,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         -11.4
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44797,12 +43417,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         -8.8
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44822,12 +43442,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         -11.4
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44847,12 +43467,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         8.8
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44872,12 +43492,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         11.4
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44897,12 +43517,12 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         8.8
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
@@ -44922,13 +43542,363 @@
       ],
       "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
       "diameter": null,
-      "wattsEstimate": 17.5,
-      "specs": "2100 lm · 2700 K · 24° beam",
+      "wattsEstimate": 25,
+      "specs": "3000 lm · 2700 K · 24° beam",
       "hiddenAlternative": false,
       "position": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         11.4
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-3-B",
+      "name": "Column up/down light · axis 3 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        9.975,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-3-H",
+      "name": "Column up/down light · axis 3 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        9.975,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-4-B",
+      "name": "Column up/down light · axis 4 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        14.475,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-4-H",
+      "name": "Column up/down light · axis 4 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        14.475,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-5-B",
+      "name": "Column up/down light · axis 5 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        18.975,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-5-H",
+      "name": "Column up/down light · axis 5 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        18.975,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-6-B",
+      "name": "Column up/down light · axis 6 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        23.475,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-6-H",
+      "name": "Column up/down light · axis 6 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        23.475,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-7-B",
+      "name": "Column up/down light · axis 7 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        27.975,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-7-H",
+      "name": "Column up/down light · axis 7 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        27.975,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-8-B",
+      "name": "Column up/down light · axis 8 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        32.475,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-8-H",
+      "name": "Column up/down light · axis 8 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        32.475,
+        5.5,
+        3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-9-B",
+      "name": "Column up/down light · axis 9 · B",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        36.975,
+        5.5,
+        -3.29
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-COLUMN-9-H",
+      "name": "Column up/down light · axis 9 · H",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "circuit": "LD",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 8,
+      "specs": "800 lm · 2700 K · 30° beam",
+      "hiddenAlternative": false,
+      "position": [
+        36.975,
+        5.5,
+        3.29
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
@@ -46207,7 +45177,99 @@
       "circuit": "L2",
       "type": "readingProjector",
       "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 20,
+      "quantity": 6,
+      "modelSize": [
+        0.23399999737739563,
+        0.17219481006264686,
+        0.12600000202655792
+      ],
+      "specs": "2800 lm · 3000 K · 36° beam",
+      "wattsEachEstimate": 23.333333333333332,
+      "itemIds": [
+        "L3",
+        "L5",
+        "L7",
+        "L9",
+        "L11",
+        "L13"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "L2",
+      "type": "readingProjector",
+      "product": "Reading projector · side bracket, finish-matched",
+      "quantity": 8,
+      "modelSize": [
+        0.23399999737739563,
+        0.17219481006264686,
+        0.12600000202655792
+      ],
+      "specs": "1500 lm · 3000 K · 28° beam",
+      "wattsEachEstimate": 12.5,
+      "itemIds": [
+        "L4",
+        "L6",
+        "L8",
+        "L10",
+        "L12",
+        "L14",
+        "L16",
+        "L18"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "L1",
+      "type": "readingProjector",
+      "product": "Reading projector · side bracket, finish-matched",
+      "quantity": 8,
+      "modelSize": [
+        0.23399999737739563,
+        0.17219481006264686,
+        0.12600000202655792
+      ],
+      "specs": "2800 lm · 3000 K · 36° beam",
+      "wattsEachEstimate": 23.333333333333332,
+      "itemIds": [
+        "L15",
+        "L17",
+        "L19",
+        "L21",
+        "L23",
+        "L25",
+        "L27",
+        "L29"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "L1",
+      "type": "readingProjector",
+      "product": "Reading projector · side bracket, finish-matched",
+      "quantity": 6,
+      "modelSize": [
+        0.23399999737739563,
+        0.17219481006264686,
+        0.12600000202655792
+      ],
+      "specs": "1500 lm · 3000 K · 28° beam",
+      "wattsEachEstimate": 12.5,
+      "itemIds": [
+        "L20",
+        "L22",
+        "L24",
+        "L26",
+        "L28",
+        "L30"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "L2",
+      "type": "readingProjector",
+      "product": "Reading projector · side bracket, finish-matched",
+      "quantity": 14,
       "modelSize": [
         0.23399999737739563,
         0.17219481006264686,
@@ -46216,12 +45278,6 @@
       "specs": "2300 lm · 3000 K · 36° beam",
       "wattsEachEstimate": 19.166666666666668,
       "itemIds": [
-        "L3",
-        "L5",
-        "L7",
-        "L9",
-        "L11",
-        "L13",
         "L31",
         "L32",
         "L33",
@@ -46240,34 +45296,10 @@
     },
     {
       "board": "DB1",
-      "circuit": "L2",
-      "type": "readingProjector",
-      "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 8,
-      "modelSize": [
-        0.23399999737739563,
-        0.17219481006264686,
-        0.12600000202655792
-      ],
-      "specs": "2300 lm · 3000 K · 28° beam",
-      "wattsEachEstimate": 19.166666666666668,
-      "itemIds": [
-        "L4",
-        "L6",
-        "L8",
-        "L10",
-        "L12",
-        "L14",
-        "L16",
-        "L18"
-      ]
-    },
-    {
-      "board": "DB1",
       "circuit": "L1",
       "type": "readingProjector",
       "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 22,
+      "quantity": 14,
       "modelSize": [
         0.23399999737739563,
         0.17219481006264686,
@@ -46276,14 +45308,6 @@
       "specs": "2300 lm · 3000 K · 36° beam",
       "wattsEachEstimate": 19.166666666666668,
       "itemIds": [
-        "L15",
-        "L17",
-        "L19",
-        "L21",
-        "L23",
-        "L25",
-        "L27",
-        "L29",
         "L43",
         "L45",
         "L47",
@@ -46298,28 +45322,6 @@
         "L56",
         "L57",
         "L58"
-      ]
-    },
-    {
-      "board": "DB1",
-      "circuit": "L1",
-      "type": "readingProjector",
-      "product": "Reading projector · side bracket, finish-matched",
-      "quantity": 6,
-      "modelSize": [
-        0.23399999737739563,
-        0.17219481006264686,
-        0.12600000202655792
-      ],
-      "specs": "2300 lm · 3000 K · 28° beam",
-      "wattsEachEstimate": 19.166666666666668,
-      "itemIds": [
-        "L20",
-        "L22",
-        "L24",
-        "L26",
-        "L28",
-        "L30"
       ]
     },
     {
@@ -46351,8 +45353,8 @@
         0.17219481006264686,
         0.12600000202655792
       ],
-      "specs": "3300 lm · 3000 K · 50° beam",
-      "wattsEachEstimate": 27.5,
+      "specs": "6000 lm · 3000 K · 36° beam",
+      "wattsEachEstimate": 50,
       "itemIds": [
         "L60",
         "L62"
@@ -46586,8 +45588,8 @@
         0.1971188479065895,
         0.1899999976158142
       ],
-      "specs": "165 lm · 3000 K · 12° beam",
-      "wattsEachEstimate": 1.452,
+      "specs": "105 lm · 3000 K · 12° beam",
+      "wattsEachEstimate": 0.924,
       "itemIds": [
         "L115",
         "L117"
@@ -46604,8 +45606,8 @@
         0.2217390456199646,
         0.23999999463558197
       ],
-      "specs": "1800 lm · 3000 K · 50° beam",
-      "wattsEachEstimate": 15,
+      "specs": "1140 lm · 3000 K · 50° beam",
+      "wattsEachEstimate": 9.5,
       "itemIds": [
         "L116",
         "L118"
@@ -46986,158 +45988,6 @@
         "L188",
         "L194",
         "L195"
-      ]
-    },
-    {
-      "board": "DB2",
-      "circuit": "L7",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        47.38660430908203
-      ],
-      "specs": "80 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 47.3 m strand",
-      "wattsEachEstimate": 80,
-      "itemIds": [
-        "L196"
-      ]
-    },
-    {
-      "board": "DB2",
-      "circuit": "L7",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "quantity": 4,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        31.786602020263672
-      ],
-      "specs": "54 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 31.7 m strand",
-      "wattsEachEstimate": 54,
-      "itemIds": [
-        "L197",
-        "L199",
-        "L208",
-        "L210"
-      ]
-    },
-    {
-      "board": "DB2",
-      "circuit": "L7",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "quantity": 4,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        8.986602783203125
-      ],
-      "specs": "16 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 8.9 m strand",
-      "wattsEachEstimate": 16,
-      "itemIds": [
-        "L198",
-        "L200",
-        "L209",
-        "L211"
-      ]
-    },
-    {
-      "board": "DB2",
-      "circuit": "L7",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "quantity": 2,
-      "modelSize": [
-        0.10000000149011612,
-        2.7570390701293945,
-        3.143176317214966
-      ],
-      "specs": "8 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 4.05 m strand",
-      "wattsEachEstimate": 8,
-      "itemIds": [
-        "L201",
-        "L212"
-      ]
-    },
-    {
-      "board": "DB2",
-      "circuit": "L7",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "quantity": 4,
-      "modelSize": [
-        0.10000000149011612,
-        7.889999866485596,
-        0.08660253882408142
-      ],
-      "specs": "14 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 7.790000000000001 m strand",
-      "wattsEachEstimate": 14,
-      "itemIds": [
-        "L202",
-        "L203",
-        "L213",
-        "L214"
-      ]
-    },
-    {
-      "board": "DB2",
-      "circuit": "L7",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "quantity": 4,
-      "modelSize": [
-        0.10000000149011612,
-        6.949999809265137,
-        0.08660253882408142
-      ],
-      "specs": "12 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 6.85 m strand",
-      "wattsEachEstimate": 12,
-      "itemIds": [
-        "L204",
-        "L205",
-        "L215",
-        "L216"
-      ]
-    },
-    {
-      "board": "DB2",
-      "circuit": "L7",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "quantity": 4,
-      "modelSize": [
-        0.10000000149011612,
-        6.800000190734863,
-        0.08660253882408142
-      ],
-      "specs": "12 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 6.700000000000001 m strand",
-      "wattsEachEstimate": 12,
-      "itemIds": [
-        "L206",
-        "L207",
-        "L217",
-        "L218"
-      ]
-    },
-    {
-      "board": "DB2",
-      "circuit": "L7",
-      "type": "bulbString",
-      "product": "Festival bulb string (outdoor)",
-      "quantity": 1,
-      "modelSize": [
-        0.10000000149011612,
-        0.10000000149011612,
-        14.886602401733398
-      ],
-      "specs": "26 bulbs · 1 W/bulb assumed · lumen data needed · 2200 K · 14.8 m strand",
-      "wattsEachEstimate": 26,
-      "itemIds": [
-        "L219"
       ]
     },
     {
@@ -48065,8 +46915,8 @@
         0.2217390456199646,
         0.23999999463558197
       ],
-      "specs": "2100 lm · 2700 K · 24° beam",
-      "wattsEachEstimate": 17.5,
+      "specs": "3000 lm · 2700 K · 24° beam",
+      "wattsEachEstimate": 25,
       "itemIds": [
         "L-WING-B-FI",
         "L-WING-B-FO",
@@ -48076,6 +46926,36 @@
         "L-WING-H-FO",
         "L-WING-H-RI",
         "L-WING-H-RO"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "LD",
+      "type": "columnUpDown",
+      "product": "Column up/down light · concept",
+      "quantity": 14,
+      "modelSize": [
+        0.14000000067055224,
+        0.25,
+        0.11999999731779099
+      ],
+      "specs": "800 lm · 2700 K · 30° beam",
+      "wattsEachEstimate": 8,
+      "itemIds": [
+        "L-COLUMN-3-B",
+        "L-COLUMN-3-H",
+        "L-COLUMN-4-B",
+        "L-COLUMN-4-H",
+        "L-COLUMN-5-B",
+        "L-COLUMN-5-H",
+        "L-COLUMN-6-B",
+        "L-COLUMN-6-H",
+        "L-COLUMN-7-B",
+        "L-COLUMN-7-H",
+        "L-COLUMN-8-B",
+        "L-COLUMN-8-H",
+        "L-COLUMN-9-B",
+        "L-COLUMN-9-H"
       ]
     },
     {

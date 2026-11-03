@@ -15,15 +15,24 @@
   const DRAWN = 'USER CONFIRMED LAYOUT / SOURCE GRID / SCHEMATIC SECTION';
   const CONCEPT = 'CONCEPT · ENGINEERING HOLD';
   const spec = {
-    revision: '2026-10-26-d47-intrados-2',
+    revision: '2026-11-03-drawn-piers-3',
     lineZ: 10.414, // axes B/H
     innerFace: 7.47, // porch face of the C/G wall
     floor: -0.32,
     entablature: 5.81, // underside of the existing porch cornice
-    column: { half: 0.18, base: [-0.32, 0.28], baseHalf: 0.26, pilaster: 0.06 },
+    // Owner, 3 Nov 2026: the arcade columns take the E02/EW pier at its drawn width (shaft ±0.335
+    // along the run, pedestal ±0.559), wrapped round the column; depth ±0.18 and the 0.06 face
+    // (0.03 strip + 0.03 fluted field, where the arch washes mount) are unchanged.
+    // Owner, 3 Nov 2026 (second review): the column must project. The spandrel's outer face now stands
+    // 0.06 from the axis (was 0.18), so the 0.21 column face projects 0.15 in front of it, and the
+    // entablature runs from that face and breaks forward over each column; the column depth, its 0.24
+    // light-mounting face and the inner (porch) face are unchanged.
+    column: { half: 0.18, width: 0.335, pilaster: 0.06, strip: 0.03, spandrel: 0.06 },
     // Gothic two-centred pointed arch (owner, 25 Oct 2026: the porch must read as Gothic with
     // pointed arches); a drop arch, centres 0.6 m inside the springing, rise 2.6 m on 4.14 m.
-    arch: { spring: 3.0, rise: 2.6 },
+    // Since 3 Nov 2026 the arch springs at +2.7 (was +3.0, rise 2.6) so that its moulding stays under
+    // the drawn dentil course from +5.422 on the wider columns.
+    arch: { spring: 2.7, rise: 2.55 },
     runs: [['2′', '9'], ['10', '12']],
     // Bays where the outside stairs land on the porch stay open at floor level; the others have a guard.
     stairBays: [16.725, 34.725, 46.425],
@@ -90,11 +99,13 @@
     exterior.updateMatrixWorld(true);
     // ---- Superseded bundle parts: the outer porch walls with their windows and doors ----
     // Everything that starts below the cornice in the outer groups of the porch bays goes (the
-    // wall, its windows and doors, the engaged pilasters); the cornice, eave crest and pinnacles stay. The 9–10 groups are the wing gables and stay.
+    // wall, its windows and doors, the engaged pilasters); the eave crest and pinnacles stay. Since 3 Nov
+    // 2026 the bundle cornice and axis capitals go too: the drawn E02 entablature replaces them. The
+    // 9–10 groups are the wing gables (roofline.js).
     const remove = [], box = new T.Box3();
     exterior.traverse(o => {
       if (!/^Outer veranda [BH] /.test(o.name) || /9–10$/.test(o.name)) return;
-      o.traverse(m => { if (m.isMesh && box.setFromObject(m).min.y < spec.entablature - 0.01) remove.push(m); });
+      o.traverse(m => { if (m.isMesh && (box.setFromObject(m).min.y < spec.entablature - 0.01 || /^(Cornice (lower band|frieze|cap)|Pilaster capital|Schematic corbel)$/.test(m.name))) remove.push(m); });
     });
     remove.forEach(o => o.removeFromParent());
 
@@ -103,7 +114,8 @@
     root.userData = { status: DRAWN, source: SOURCE, revision: spec.revision };
     exterior.add(root);
     const K = window.CHURCH_CARVING.create(T);
-    const { TR, RY, place, merge } = K;
+    const { TR, RY, SC, place, merge } = K;
+    const ORN = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     const bins = new Map();
     const add = (name, material, geometry, matrix = null, status = DRAWN) => {
       const key = name + '\u0000' + material.uuid;
@@ -150,31 +162,36 @@
     })();
     spec.crossSoffit = az => { const p = crossArch.points; if (az <= p[0].x || az >= p[p.length - 1].x) return spec.cross.spring; for (let i = 1; i < p.length; i++) if (p[i].x >= az) { const f = (az - p[i - 1].x) / (p[i].x - p[i - 1].x); return p[i - 1].y + f * (p[i].y - p[i - 1].y); } return spec.cross.spring; };
     const C = spec.column, AR = spec.arch, G = spec.guard;
-    const stats = { columns: 0, arches: 0, guardedBays: 0, openBays: 0, beams: 0 };
+    const PIER = 'E02/EW PIER OUTLINE AND LEVELS / DERIVED DEPTH · ENGINEERING HOLD', PIER_CARVED = 'E02/EW TRACED CARVING / RELIEF CONCEPT';
+    const pier = ORN.drawnPier({ bottom: spec.floor, face: C.half + C.strip, wrap: true });
+    const stats = { columns: 0, arches: 0, guardedBays: 0, openBays: 0, beams: 0, leaves: 0 };
+    // Traced E02 corner leaf (detail-sides-profile.js sideLeaf, u from the pier axis, left of the pier).
+    const leaf = ORN.towerSpandrel(window.CHURCH_DETAIL_PROFILE_SIDES.sideLeaf, .01, .003, 3);
 
     for (const s of [-1, 1]) {
-      const zc = s * spec.lineZ, z0 = zc - C.half, z1 = zc + C.half, out = s * (spec.lineZ + C.half);
+      const zc = s * spec.lineZ, z0 = zc - C.half, z1 = zc + C.half, out = s * (spec.lineZ + C.spandrel), zArc = s > 0 ? [z0, out] : [out, z1];
       for (const [from, to] of spec.runs) {
         const keys = Object.keys(A).filter(k => A[k] >= A[from] - 1e-6 && A[k] <= A[to] + 1e-6).sort((a, b) => A[a] - A[b]);
         for (let i = 0; i < keys.length; i++) {
           const x = A[keys[i]];
-          // Column at every axis: pedestal, pilaster strips inside and out, impost at the spring.
-          block('Porch column pedestal', S, [x - C.baseHalf, x + C.baseHalf], C.base, [zc - C.baseHalf, zc + C.baseHalf]);
-          block('Porch column pedestal cap', S, [x - C.baseHalf - .03, x + C.baseHalf + .03], [C.base[1] - .06, C.base[1]], [zc - C.baseHalf - .03, zc + C.baseHalf + .03]);
-          for (const e of [-1, 1]) block('Porch column pilaster', W, [x - .13, x + .13], [C.base[1], spec.entablature], [e > 0 ? z1 : z0 - C.pilaster, e > 0 ? z1 + C.pilaster : z0]);
-          block('Porch column impost capital', S, [x - .25, x + .25], [AR.spring - .2, AR.spring], [zc - .26, zc + .26]);
+          // Column at every axis: the drawn E02/EW pier, wrapped round the column, both faces.
+          for (const q of pier) add(`Porch column · E02 pier ${q.name}`, q.kind === 'W' ? W : S, q.geometry, place(q.matrix, TR(x, 0, zc)), q.kind === 'C' ? PIER_CARVED : PIER);
           stats.columns++;
           if (i === keys.length - 1) continue;
-          const xa = x, xb = A[keys[i + 1]], cx = (xa + xb) / 2, half = (xb - xa) / 2 - C.half;
+          const xa = x, xb = A[keys[i + 1]], cx = (xa + xb) / 2, half = (xb - xa) / 2 - C.width;
           // Column halves and the spandrel over the arch, one cast wall per bay.
           const wall = new T.Shape([new T.Vector2(xa, spec.floor), new T.Vector2(xb, spec.floor), new T.Vector2(xb, spec.entablature), new T.Vector2(xa, spec.entablature)]);
           const hole = [new T.Vector2(cx - half, spec.floor), ...pointedPoints(cx, half, AR), new T.Vector2(cx + half, spec.floor)];
           wall.holes.push(new T.Path(T.ShapeUtils.isClockWise(hole) ? hole : hole.reverse()));
-          slabXY('Porch arcade column and arch spandrel · cast concrete, plastered', W, wall, [z0, z1]);
+          slabXY('Porch arcade column and arch spandrel · cast concrete, plastered', W, wall, zArc);
           // Arch moulding on both faces and a keystone bloom at the crown.
-          for (const [a, b] of [[z1, z1 + .05], [z0 - .05, z0]]) slabXY('Porch arch moulding', S, pointedBand(cx, half, AR, .12), [a, b], DRAWN, 12);
-          add('Porch arch keystone rosette', S, K.bloom({ r: .14, petals: 8, rings: 2, seg: 3 }), place(RY(s < 0 ? Math.PI : 0), TR(cx, AR.spring + AR.rise + .2, out + s * .05)), CONCEPT);
-          stats.arches++;
+          for (const [a, b] of s > 0 ? [[out, out + .05], [z0 - .05, z0]] : [[z1, z1 + .05], [out - .05, out]]) slabXY('Porch arch moulding', S, pointedBand(cx, half, AR, .12), [a, b], DRAWN, 12);
+          // E02 corner leaves in the spandrel beside each pier (+4.39–5.21, 0.48–1.39 m from the pier
+          // axis), outer face only. E02 draws them on its wall; on the open arcade they clear the arch
+          // moulding by at least 0.15 m. The right-hand leaf is the drawn mirror.
+          for (const [px, e] of [[xb, -1], [xa, 1]])
+            add('Porch spandrel carving · E02 corner leaf', S, leaf, place(SC(-e * s, 1, 1), s < 0 ? RY(Math.PI) : new T.Matrix4(), TR(px, 0, s * (spec.lineZ + C.spandrel + .002))), PIER_CARVED);
+          stats.arches++; stats.leaves += 2;
           // Guard between the columns, except where the outside stairs land.
           if (spec.stairBays.some(c => Math.abs(c - cx) < .6)) { stats.openBays++; continue; }
           const g0 = cx - half, g1 = cx + half;
@@ -183,6 +200,24 @@
           const n = Math.max(2, Math.round((g1 - g0) / G.pitch));
           for (let k = 1; k < n; k++) add('Porch guard baluster', S, new T.CylinderGeometry(.045, .055, G.top - G.rail - spec.floor - .15, 10), TR(g0 + (g1 - g0) * k / n, (spec.floor + .15 + G.top - G.rail) / 2, zc), CONCEPT);
           stats.guardedBays++;
+        }
+        // Drawn E02 entablature (dentils, fillets, Greek key, cornice to +6.3239) on the outer arcade face,
+        // back over the arcade to the old cornice depth. As drawn, it breaks at each pier: it runs between
+        // the shaft faces and the pier's own bands carry the cornice over the column.
+        for (let i = 0; i < keys.length - 1; i++) {
+          const xa = A[keys[i]] + C.width, xb = A[keys[i + 1]] - C.width, face = spec.lineZ + C.spandrel, m = s > 0 ? TR(0, 0, face) : place(RY(Math.PI), TR(0, 0, -face));
+          for (const q of ORN.drawnEntablature(s > 0 ? xa : -xb, s > 0 ? xb : -xa, -(C.spandrel + C.half + .2)))
+            add(`Porch entablature · E02 ${q.name}`, q.kind === 'W' ? W : S, q.geometry, place(q.matrix, m), q.kind === 'C' ? PIER_CARVED : PIER);
+        }
+        // Over each column the fillets and cornice break forward by the column's projection (0.15), at
+        // the drawn pier band widths (EW/E02), so the entablature wraps the column instead of stopping
+        // against it; dentils and frieze stop at the column sides and its capital fills the frieze zone.
+        for (const k of keys) {
+          const x = A[k], d = C.half + C.strip - C.spandrel;
+          for (const [y0, y1, h, p] of [[5.622, 5.662, .36, .18], [5.662, 5.722, .39, .21], [5.722, 5.762, .36, .18], [6.012, 6.06, .385, .18], [6.06, 6.18, .435, .28], [6.18, 6.228, .485, .33], [6.228, 6.3239, .537, .38]]) {
+            const f0 = spec.lineZ + C.spandrel, f1 = f0 + p + d;
+            block('Porch entablature · E02 break over the column', S, [x - h, x + h], [y0, y1], s > 0 ? [f0, f1] : [-f1, -f0], PIER);
+          }
         }
         // Cast slab under the tiles, plastered underneath, and an RC beam on every inner axis.
         const xs = A[from] + (from === '10' ? spec.wingWall / 2 : 0), xe = A[to] - (to === '9' ? spec.wingWall / 2 : 0);

@@ -34,7 +34,7 @@ const sandbox = {
 sandbox.window = sandbox;
 sandbox.addEventListener = (e, f) => { (listeners[e] ||= []).push(f); };
 vm.createContext(sandbox);
-for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'decoration.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/veranda-review.js', 'simulator/doorhead-review.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
+for (const file of ['texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','detail-towers-profile.js','detail-front-profile.js','detail-rear-profile.js','detail-sides-profile.js','entrance-approach.js', 'decoration.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js', 'simulator/physics.js', 'simulator/catalog.js', 'simulator/veranda-review.js', 'simulator/doorhead-review.js', 'simulator/engine.js', 'simulator/light-grid.js', 'simulator/persistent-lighting.js', 'simulator/design.js', 'simulator/analysis.js', 'simulator/electrical.js'])
   vm.runInContext(fs.readFileSync(path.join(viewer, file), 'utf8'), sandbox, { filename: file });
 
 let src = fs.readFileSync(path.join(viewer, 'bundle.js'), 'utf8');
@@ -157,18 +157,40 @@ assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.i
   }
   const unexpected = [...contacts.keys()].filter(k => !known.has(k));
   assert.deepEqual(unexpected, [], 'carved ornament inside a fitting envelope: ' + unexpected.join('; '));
-  // The gilded side vaults (owner, 1 Nov 2026) start behind the shrine lights hung on the back face of the
-  // axis-10 frame (L115–L118): the axis of each beam, aimed as in design.js, runs under the boarding to its shrine.
+  // The gilded side vaults (owner, 1 Nov 2026, USER CONFIRMED) meet the back face of the axis-10 frame, so the shrine
+  // lights L115–L118 hang from the inner longitudinal rib of each vault, with the frame's inner jamb screening them
+  // from the centre of the nave: each canopy sits on the actual rib, the axis of each beam, aimed as in design.js,
+  // runs under the boarding, ribs, bosses and frame to its shrine, and no centre-line sight line reaches a head.
   {
-    const sx = sandbox.CHURCH_SANCTUARY.spec, boards = nodes.filter(o => o.isMesh && o.name === 'Side vault · gilded boarding'), ray = new T.Raycaster();
+    const sx = sandbox.CHURCH_SANCTUARY.spec, ray = new T.Raycaster(), boards = nodes.filter(o => o.isMesh && o.name === 'Side vault · gilded boarding');
     assert.equal(boards.length, 2);
+    building.updateMatrixWorld(true);
+    const vaultParts = nodes.filter(o => o.isMesh && /^(Side vault|Gilded vault boss|Front frame|Chamber side lintel|Axis-11 side)/.test(o.name));
+    const ribs = nodes.filter(o => o.isMesh && o.name === 'Side vault longitudinal rib');
     const lights = SIM.state.items.filter(it => /^(Statue accent|Shrine wash) · [BH]$/.test(it.name));
-    assert.equal(lights.length, 4, 'four shrine lights behind the axis-10 frame');
+    assert.equal(lights.length, 4, 'four shrine lights under the side vaults');
+    const emitters = SIM.emitters(), meshes = nodes.filter(o => o.isMesh);
     for (const it of lights) {
-      const s = Math.sign(it.pos[2]), wash = it.name.startsWith('Shrine wash'), target = new T.Vector3(sx.wingX - 0.1 - (wash ? 0.2 : 0), wash ? 4.2 : sx.nicheBase + 1.25, s * sx.wingZ), from = new T.Vector3(...it.pos);
-      ray.set(from, target.clone().sub(from).normalize());
-      assert.equal(ray.intersectObjects(boards, false).length, 0, `${it.name}: beam axis clear of the side vault`);
-      assert(from.x < sx.sideVault.x0 - 0.5, `${it.name} hangs in front of the vault`);
+      const s = Math.sign(it.pos[2]), wash = it.name.startsWith('Shrine wash'), target = new T.Vector3(sx.wingX - 0.1 - (wash ? 0.2 : 0), wash ? 4.2 : sx.nicheBase + 1.25, s * sx.wingZ);
+      const e = emitters.find(m => m.id === it.id), from = new T.Vector3(...e.pos), dir = target.clone().sub(from), dist = dir.length();
+      assert.equal(it.mount, 'pendant', `${it.name} hangs from the vault`);
+      assert(it.pos[0] > sx.sideVault.x0 + 0.2 && it.pos[0] < sx.sideVault.x0 + 1.5 && Math.abs(it.pos[2]) > 3.9 && Math.abs(it.pos[2]) < 4.5, `${it.name} hangs under the front of the vault, by the chamber`);
+      // The canopy sits on the underside of the rib: no gap above it and no rib vertex inside the canopy (the contact check above).
+      ray.set(new T.Vector3(it.pos[0], it.pos[1] - 0.5, it.pos[2]), new T.Vector3(0, 1, 0));
+      const up = ray.intersectObjects(ribs, false);
+      assert(up.length && Math.abs(up[0].point.y - it.anchorY) < 0.02, `${it.name} canopy on the vault rib: anchor ${it.anchorY} vs rib ${up[0]?.point.y}`);
+      assert(it.pos[1] < it.anchorY - 0.05 && it.pos[1] > it.anchorY - 0.1, `${it.name} stem length`);
+      ray.set(from, dir.clone().normalize()); ray.far = dist - 0.4;
+      const hits = ray.intersectObjects(vaultParts, false);
+      assert.equal(hits.length, 0, `${it.name}: beam axis clear of the side vault, frame and lintel: ${hits.slice(0, 2).map(h => h.object.name + ' ' + h.distance.toFixed(2))}`);
+      ray.far = Infinity;
+      // Centre-line eyes (z 0, 1.6 m, nave axes 3 to 8) cannot see the head: the frame's jamb is in the way.
+      for (const x of [12, 20, 28, 32]) {
+        const eye = new T.Vector3(x, 1.6, 0), d = from.clone().sub(eye), len = d.length();
+        ray.set(eye, d.normalize()); ray.far = len - 0.12;
+        assert(ray.intersectObjects(meshes, false).length > 0, `${it.name} is screened from the nave centre line at x ${x}`);
+        ray.far = Infinity;
+      }
     }
   }
 }
@@ -485,8 +507,10 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
 // Seating-dependent palms preserve manual visibility and remove walk obstacles.
 {
   const planning=sandbox.CHURCH_PLANNING,allPalms=SIM.state.items.filter(it=>it.type==='palm');
-  const palms=allPalms.filter(it=>it.name.startsWith('Palm · entrance')),sanctuaryPalms=allPalms.filter(it=>it.name.startsWith('Palm · sanctuary'));
-  assert.equal(palms.length,2);assert.equal(sanctuaryPalms.length,2);assert.equal(allPalms.length,4);
+  const sanctuaryPalms=allPalms.filter(it=>it.name.startsWith('Palm · sanctuary'));
+  assert.equal(allPalms.filter(it=>it.name.startsWith('Palm · entrance')).length,0,'Default entrance palms removed');
+  assert.equal(sanctuaryPalms.length,2);assert.equal(allPalms.length,2);
+  const palms=[-1,1].map(s=>SIM.add({type:'palm',name:`Palm · entrance synthetic ${s}`,mount:'floor',pos:[6.3,0,s*6.55]}, {record:false}));
   const exteriorPalm=SIM.add({type:'palm',name:'Test courtyard palm',mount:'floor',pos:[-10,-.48,5]}, {record:false});
   const visibility=palms.map(it=>it.hidden);
   for(const layout of [2,4,2,4]){
@@ -504,6 +528,7 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   planning.setLayout(2);planning.setLayout(4);
   assert.equal(SIM.fixtures.get(palms[0].id).root.visible,false,'Manually hidden palms stay hidden');
   SIM.update(palms[0].id,{hidden:visibility[0]},{record:false});
+  for(const it of palms)SIM.remove(it.id,{record:false});
   SIM.remove(exteriorPalm.id,{record:false});
 }
 // Socket outlets, façade statues and their hidden light (9 October 2026).
@@ -595,8 +620,10 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   // entrance-facing twins at ±2.48 m, on the inner side of the gilded band at ±2.60 m; side-beam pairs flank the cartouche.
   assert(reading.filter(it => / central/.test(it.name)).every(it => Math.abs(Math.abs(it.pos[2]) - (/ twin$/.test(it.name) ? 2.48 : 0.9)) < 1e-6), 'tie heads spread across the nave, twins beside the gilded band');
   assert(reading.filter(it => / outer/.test(it.name)).every(it => [4.84, 6.09].some(z => Math.abs(Math.abs(it.pos[2]) - z) < 1e-6)), 'side pairs flank the cartouche');
-  for (const it of SIM.state.items.filter(it => /^Rear (rows|centre) light · entrance façade ·/.test(it.name))) {
-    assert(it.type === 'readingProjector' && it.params.finish === 'wall', 'entrance-wall reading heads in the plaster finish: ' + it.name);
+  for (const it of SIM.state.items.filter(it => /^Rear (rows|centre) light · axis 3 side wall ·/.test(it.name))) {
+    assert(it.type === 'readingProjector' && it.params.finish === 'wall', 'side-wall reading heads in the plaster finish: ' + it.name);
+    const box = new T.Box3().setFromObject(SIM.fixtures.get(it.id).root);
+    assert(Math.abs(Math.abs(it.pos[2])-7.25)<1e-6 && box.max.x < SIM.GEO.axes['3']-0.29, 'side-wall head clears axis 3 pier: ' + it.name);
     SIM.fixtures.get(it.id).root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) assert.equal(m.material, wall, 'wall plaster: ' + it.name); });
   }
   // Wall speakers: on the masonry wall, tight against the entrance side of each pier, inside its projection.
@@ -640,9 +667,10 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
 {
   const D = sandbox.CHURCH_SIM_DESIGN, timber = interior.materials.timber, chamberWall = sandbox.window.CHURCH_SANCTUARY.materials.wood, plain = v => JSON.parse(JSON.stringify(v));
   const beamNames = ['Altar key light · B', 'Altar key light · H', 'Ambo key light', 'Sanctuary step fill · B', 'Sanctuary step fill · H', 'Presider chair light',
-    'Sanctuary frame wash · B', 'Sanctuary frame wash · H', 'Statue accent · B', 'Statue accent · H', 'Shrine wash · B', 'Shrine wash · H'];
+    'Sanctuary frame wash · B', 'Sanctuary frame wash · H'];
+  // Since 1 Nov 2026 the statue accents and shrine washes hang from the gilded side vaults (chamber lacquer).
   const chamberNames = ['Crucifix accent · B', 'Crucifix accent · H', 'Reredos wash · B', 'Reredos wash · H', 'Reredos base wash · B', 'Reredos base wash · H',
-    'Tabernacle accent', 'Sanctuary vault uplight · B', 'Sanctuary vault uplight · H'];
+    'Tabernacle accent', 'Sanctuary vault uplight · B', 'Sanctuary vault uplight · H', 'Statue accent · B', 'Statue accent · H', 'Shrine wash · B', 'Shrine wash · H'];
   const metal = { projector24: 'black', projector36: 'black', spot15: 'bronze', uplight: 'bronze' };
   const byName = name => SIM.state.items.find(it => it.name === name);
   assert([...beamNames, ...chamberNames].every(byName), 'every sanctuary accent and chamber light is in the design');
@@ -760,21 +788,21 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert(lights.every(Boolean), 'four downlights per wing side');
   assert.deepEqual(plain(lights.map(it => it.name)).slice(0, 4), ['Wing downlight · B · front block · inner row', 'Wing downlight · B · front block · outer row', 'Wing downlight · B · rear block · inner row', 'Wing downlight · B · rear block · outer row']);
   for (const it of lights) {
-    assert(it.type === 'projector24' && it.circuit === 'L8' && it.mount === 'pendant' && it.tilt === -90 && it.lumens === 2100 && it.beam === 24 && it.params.finish === 'timber' && !it.hidden && it.on, 'concealed (roof timber finish) downlight on circuit L8: ' + it.id);
-    assert([38.94, 42.22].includes(it.pos[0]) && [8.8, 11.4].includes(Math.abs(it.pos[2])), 'over a bench block row: ' + it.id);
+    assert(it.type === 'projector24' && it.circuit === 'L8' && it.mount === 'pendant' && it.tilt === -90 && it.lumens === 3000 && it.beam === 24 && it.params.finish === 'timber' && !it.hidden && it.on, 'finish-matched downlight on circuit L8: ' + it.id);
+    assert([38.94, 42.21].includes(it.pos[0]) && [8.8, 11.4].includes(Math.abs(it.pos[2])), 'over a bench block row: ' + it.id);
     assert(Math.abs(it.anchorY - it.pos[1] - 0.02) < 1e-9 && it.anchorY > 7 && it.anchorY < 9.5, 'tight to the roof timber, not a chandelier on a chain: ' + it.id);
     const lens = SIM.emitters().find(e => e.id === it.id);
     assert(lens && lens.dir[1] < -0.999, 'aimed straight down from above: ' + it.id);
     SIM.fixtures.get(it.id).root.traverse(m => { if (m.isMesh && !m.material.name.startsWith('Simulator glow')) assert.equal(m.material, interior.materials.timber, 'the roof timber lacquer itself: ' + it.id); });
   }
-  assert.equal(SIM.itemWatts(lights[0], true), 17.5, 'planning rating 2 100 lm at 120 lm/W');
-  assert(Math.abs(SIM.powerSummary().byCircuit.find(c => c.circuit === 'L8').watts - 140) < 1e-6, 'L8 draws eight 17.5 W downlights, 140 W (204 W for the four chandeliers before)');
-  // The 28 tie-beam heads keep their IDs, circuits and 2 300 lm; only their place, aim and optic changed.
+  assert.equal(SIM.itemWatts(lights[0], true), 25, 'planning rating 3 000 lm at 120 lm/W');
+  assert(Math.abs(SIM.powerSummary().byCircuit.find(c => c.circuit === 'L8').watts - 200) < 1e-6, 'L8 draws eight 25 W downlights, 200 W (140 W in the previous downlight design)');
+  // The 28 tie-beam heads keep their IDs and circuits, with balanced output across the tie beam.
   const tieIds = Object.keys(D.naveCentreBefore);
   assert.equal(tieIds.length, 28);
   for (const id of tieIds) {
     const was = D.naveCentreBefore[id], now = SIM.item(id);
-    assert(now && now.name === was.name && now.circuit === was.circuit && now.lumens === was.lumens && now.type === was.type, 'same fitting, circuit and output: ' + id);
+    assert(now && now.name === was.name && now.circuit === was.circuit && now.lumens === (/ twin$/.test(now.name) ? 1500 : 2800) && now.type === was.type, 'same fitting and circuit, balanced output: ' + id);
     assert(Math.abs(Math.abs(now.pos[2]) - (/ twin$/.test(now.name) ? 2.48 : 0.9)) < 1e-9 && Math.abs(now.pos[2]) !== Math.abs(was.pos[2]) && now.pos[0] === was.pos[0] && now.pos[1] === was.pos[1], 'moved across the beam only: ' + id);
   }
   // One-time move of a saved layout. Names the previous values from the tables of the design before this step.
@@ -822,7 +850,7 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   const saved = [lowered('Ambo microphone', { id: 'm1', on: false }), lowered('Palm · sanctuary B', { id: 'p1' }),
     { ...pick('Paschal candle'), id: 'c1', pos: [40.9, 0.75, -1.2] },
     { ...pick('Altar microphone'), id: 'm2', pos: [44.45, 1.6, 0.45] },
-    { ...pick('Palm · entrance B'), id: 'p2' },
+    { id: 'p2', name: 'Palm · entrance B', type: 'palm', circuit: 'DECOR', mount: 'floor', pos: [6.3, 0, -6.55], yaw: 0 },
     { id: 'u1', name: 'Extra flowers', type: 'flowerStand', circuit: 'DECOR', mount: 'floor', pos: [46.0, 0.75, 1.0], yaw: 0, mountYaw: 0 }];
   const up = D.upgradeDaisLevel(saved, design), byId = id => up.find(it => it.id === id);
   assert(plain(byId('m1').pos).join() === plain(pick('Ambo microphone').pos).join() && byId('m1').on === false, 'untouched dais microphone rises, keeps its switch');
