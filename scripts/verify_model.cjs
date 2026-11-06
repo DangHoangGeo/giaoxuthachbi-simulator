@@ -666,6 +666,26 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
   }
   assert.equal(part('Reredos carved ground')[0].material.name,'Sanctuary · oxblood lacquer','Plain red ground leaves the raised carving legible');
   assert.equal(part('Reredos · connected foliate spray').length,1,'One connected spray fills the space above the central niche');
+  // Test the whole projected carving, including curled leaf tips. A clear centre
+  // ray alone would miss a leaf crossing the edge of the blue recess.
+  const groundShape=part('Reredos carved ground')[0].geometry.parameters.shapes;
+  const contour=groundShape.getPoints(40),hole=groundShape.holes[0].getPoints(40);
+  function insidePolygon(x,y,polygon){
+    let inside=false;
+    for(let i=0,j=polygon.length-1;i<polygon.length;j=i++){
+      const a=polygon[i],b=polygon[j];
+      if((a.y>y)!==(b.y>y)&&x<(b.x-a.x)*(y-a.y)/(b.y-a.y)+a.x)inside=!inside;
+    }
+    return inside;
+  }
+  const spray=part('Reredos · connected foliate spray')[0];
+  const carvedPoints=spray.geometry.attributes.position;
+  for(let i=0;i<carvedPoints.count;i++){
+    const x=carvedPoints.getX(i)+spray.position.x,y=carvedPoints.getY(i)+spray.position.y;
+    assert(!insidePolygon(x,y,hole),'Raised reredos foliage clears the blue niche at '+x+','+y);
+    assert(insidePolygon(x,y,contour),'Raised reredos foliage has lacquer backing at '+x+','+y);
+    assert(carvedPoints.getZ(i)+spray.position.z>.134,'Carving stays in front of the reredos ground');
+  }
   const reredos=nodes.find(o=>o.name==='Central gilded reredos');
   const upperSpires=reredos.children.filter(o=>o.name==='Carved pinnacle'&&o.position.y>5.5);
   const archParts=reredos.children.filter(o=>['Gilded leaf cresting','Gilded carved moulding','Crucifix niche · outer bead','Reredos · connected foliate spray','Crucifix niche · leaf cresting','Crucifix niche · gilded glory'].includes(o.name));

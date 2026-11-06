@@ -180,6 +180,15 @@
     // It is kept matt enough that the crucifix accents do not raise a pale sheen on the cross at night:
     // at roughness .4 the highlight alone read as salmon and the cross was lost against the lit recess.
     const satin=new T.MeshPhysicalMaterial({color:new T.Color(LACQUER).multiplyScalar(SATIN_TONE),roughness:.62,clearcoat:.12,clearcoatRoughness:.5,envMapIntensity:.45});satin.name='Sanctuary · oxblood lacquer, satin';
+    // Broad reredos fields need the lacquer film to read before the timber grain.
+    // Blend the existing local map toward a uniform coat, without changing columns.
+    const reredosLacquer=wood.clone();
+    const lacquerCanvas=document.createElement('canvas');lacquerCanvas.width=lacquerCanvas.height=512;
+    const lacquerContext=lacquerCanvas.getContext('2d');
+    lacquerContext.fillStyle='#ffffff';lacquerContext.fillRect(0,0,512,512);
+    lacquerContext.globalAlpha=.18;lacquerContext.drawImage(wood.map.image,0,0,512,512);
+    reredosLacquer.map=K.texture(lacquerCanvas,true);
+    reredosLacquer.roughness=.36;reredosLacquer.clearcoat=.45;
     const velvet=material('Sanctuary · crimson upholstery','#7c1f24',0,.82);
     window.CHURCH_SANCTUARY.materials={wood,gold,carve,satin,leafGold};
     building.getObjectByName('Proposed sanctuary furnishings \u2014 layout to confirm')?.traverse(o=>{
@@ -346,6 +355,48 @@
     // A single continuous parcel-gilt composition on an inset red field. The
     // stems and leaves are real relief, not a second pattern laid over a texture.
     // Each blade starts on its branch; the shared stem ties the whole panel together.
+    // Sanctuary-only carving. Folded blades and their tapered midribs share the same
+    // curved axis, so veins stay on the leaf instead of floating above its tip.
+    function carvedBlade(len,wid,curl=.85) {
+      const blade=K.leaf({len,wid,thick:len*.085,curl,lobes:5,cup:.32,seg:14});
+      const vein=[];
+      let y=0,z=0;
+      for(let i=0;i<=14;i++){
+        const t=i/14;
+        if(i){
+          const a=curl*Math.pow((i-.5)/14,2.5);
+          y+=len/14*Math.cos(a);z+=len/14*Math.sin(a);
+        }
+        const a=curl*Math.pow(t,2.5),ridge=len*.085*(1-.55*t);
+        vein.push([0,y-Math.sin(a)*ridge,z+Math.cos(a)*ridge]);
+      }
+      return K.merge([[blade,null],[K.stem(vein,len*.018,len*.002,20,5),null]]);
+    }
+
+    // A running vine with alternating curled leaves, rooted side scrolls and small
+    // buds. Its path and leaf sizes are authored in metres for each red field.
+    function carvedVine(points,{size=.18,count=12,mirror=1}={}) {
+      const curve=new T.CatmullRomCurve3(points.map(p=>new T.Vector3(...p)));
+      const parts=[[K.stem(points,size*.085,size*.025,count*5,7),null]];
+      const blade=carvedBlade(size,size*.5),small=carvedBlade(size*.62,size*.28,1.15);
+      const bud=K.bloom({r:size*.22,petals:7,rings:2,seg:6});
+      for(let i=0;i<count;i++){
+        const t=(i+.45)/count,p=curve.getPointAt(t),d=curve.getTangentAt(t);
+        const side=(i%2?1:-1)*mirror,angle=Math.atan2(d.y,d.x)-Math.PI/2;
+        const scale=.82+.18*Math.sin(t*Math.PI),turn=angle-side*.85;
+        const place=K.place(K.SC(scale,scale,1),K.RZ(turn),K.TR(p.x,p.y,p.z));
+        parts.push([blade,place]);
+        // A small counter-leaf attaches to the same stem junction.
+        parts.push([small,K.place(K.RZ(angle+side*.95),K.TR(p.x,p.y,p.z+.004))]);
+        // The spiral begins at this very junction and curls back into the red field.
+        const scroll=K.scroll(0,size*.22,size*.22,1.05,-Math.PI/2,side,22);
+        parts.push([K.stem(scroll,size*.04,size*.008,26,5),
+          K.place(K.RZ(angle),K.TR(p.x,p.y,p.z+.002))]);
+        if(i%3===1)parts.push([bud,K.TR(p.x,p.y,p.z+.009)]);
+      }
+      return K.merge(parts);
+    }
+
     function pilasterRelief(g,{u,y0,y1,w,face,depth,name}){
       const h=y1-y0,mid=(y0+y1)/2,fieldW=w*.88,front=face+.030;
       box(g,fieldW,h,.018,u,mid,face+.004,satin,name+' · red lacquer field');
@@ -355,21 +406,35 @@
         box(g,.012,h,.012,u+e*(w/2+.002),mid,face-depth*.52,gold,name+' · gilded return');
       }
       for(const y of [y0+.006,y1-.006])box(g,fieldW,.012,.012,u,y,front,gold,name+' · gilded edge');
-      const pieces=[],amp=w*.04,n=Math.max(3,Math.round(h/.36)),stemX=t=>amp*Math.sin(t*Math.PI*2);
-      pieces.push([K.stem(Array.from({length:25},(_,i)=>{const t=i/24;return [stemX(t),h*t,0];}),.011,.007,48,7),null]);
-      const leaf=K.leaf({len:w*.34,wid:w*.22,thick:.022,curl:.85,lobes:3,seg:8});
-      const bloom=K.bloom({r:w*.12,petals:7,rings:2,seg:4});
-      for(let i=0;i<n;i++){
-        const t=(i+.5)/n,y=h*t,x=stemX(t);
-        for(const e of [-1,1]){
-          const branchX=e*w*.065;
-          pieces.push([K.stem([[x,y,0],[x+e*w*.035,y+.015,.002],[branchX,y+.035,.003]],.007,.005,8,6),null]);
-          pieces.push([leaf,K.place(K.RZ(-e*.9),K.TR(branchX,y+.035,.003))]);
+      const pieces=[];
+      if(name==='Central pilaster'||name==='Wing pilaster'){
+        const sway=w*.09,modules=Math.max(3,Math.round(h/.55));
+        // Long S-curves form a climbing vine. Alternating leaves and tight volutes
+        // fill the panel width while the border keeps its clear lacquer margin.
+        const path=Array.from({length:modules*4+1},(_,i)=>{
+          const t=i/(modules*4);
+          return [(Math.sign(u)||1)*sway*Math.sin(t*modules*Math.PI*2),.07+(h-.18)*t,0];
+        });
+        pieces.push([carvedVine(path,{size:w*.40,count:modules*3,mirror:Math.sign(u)||1}),null]);
+        const foot=K.bloom({r:w*.25,petals:9,rings:3,seg:6});
+        pieces.push([foot,K.place(K.SC(1,.8,.65),K.TR(0,.09,.008))]);
+      }else{
+        const amp=w*.04,n=Math.max(3,Math.round(h/.36)),stemX=t=>amp*Math.sin(t*Math.PI*2);
+        pieces.push([K.stem(Array.from({length:25},(_,i)=>{const t=i/24;return [stemX(t),h*t,0];}),.011,.007,48,7),null]);
+        const leaf=K.leaf({len:w*.34,wid:w*.22,thick:.022,curl:.85,lobes:3,seg:8});
+        const bloom=K.bloom({r:w*.12,petals:7,rings:2,seg:4});
+        for(let i=0;i<n;i++){
+          const t=(i+.5)/n,y=h*t,x=stemX(t);
+          for(const e of [-1,1]){
+            const branchX=e*w*.065;
+            pieces.push([K.stem([[x,y,0],[x+e*w*.035,y+.015,.002],[branchX,y+.035,.003]],.007,.005,8,6),null]);
+            pieces.push([leaf,K.place(K.RZ(-e*.9),K.TR(branchX,y+.035,.003))]);
+          }
+          if(i%2===0)pieces.push([bloom,K.place(K.SC(1,1,.8),K.TR(x,y,.006))]);
         }
-        if(i%2===0)pieces.push([bloom,K.place(K.SC(1,1,.8),K.TR(x,y,.006))]);
       }
       const relief=mesh(K.merge(pieces),gold,g,name+' · carved foliage',u,y0,front+.004);
-      relief.userData={status:'CONCEPT · parcel-gilt relief on lacquer; artisan, material and fixing pending',engineeringApproved:false,source:'Owner close-up review, 3 Nov 2026; docs/sanctuary-model.md'};
+      relief.userData={status:'CONCEPT · parcel-gilt relief on lacquer; artisan, material and fixing pending',engineeringApproved:false,source:'Approved sanctuary concept; owner detail review, 7 Nov 2026; docs/sanctuary-model.md'};
       return relief;
     }
     function archShape(half,spring,rise,bottom){const s=new T.Shape();s.moveTo(-half,bottom);s.lineTo(-half,spring);s.bezierCurveTo(-half,spring+rise*.35,-half*.55,spring+rise*.4,-half*.5,spring+rise*.65);s.bezierCurveTo(-half*.4,spring+rise*.92,-.13,spring+rise,0,spring+rise);s.bezierCurveTo(.13,spring+rise,half*.4,spring+rise*.92,half*.5,spring+rise*.65);s.bezierCurveTo(half*.55,spring+rise*.4,half,spring+rise*.35,half,spring);s.lineTo(half,bottom);s.closePath();return s;}
@@ -510,22 +575,32 @@
     // The carved ground round the niche, between the pilasters and above them.
     {
       const ground=archShape(3.1,6.6,2.3,2.3);ground.holes.push(opening(N.lining+.1));
-      mesh(new T.ShapeGeometry(ground,18),wood,center,'Reredos carved ground',0,0,.134).castShadow=false;
+      mesh(new T.ShapeGeometry(ground,18),reredosLacquer,center,'Reredos carved ground',0,0,.134).castShadow=false;
       // A connected, mirrored foliate spray fills the clear field above the niche.
       // It stops inside the pilasters and below the outer canopy instead of crossing them.
-      const ornament=mesh(K.cartouche({len:2.55,r:.19}),gold,center,'Reredos · connected foliate spray',0,7.90,.155);
-      ornament.userData={status:'CONCEPT · raised carving on the reredos; artisan, substrate and fixing pending',engineeringApproved:false,source:'Owner close-up review, 3 Nov 2026; docs/sanctuary-model.md'};
+      const ornament=mesh(K.merge([
+        [carvedVine([[-1.76,6.42,0],[-1.52,6.91,0],[-1.10,7.18,0],[-.69,7.58,0],[0,7.82,0]],{size:.22,count:13,mirror:-1}),null],
+        [carvedVine([[1.76,6.42,0],[1.52,6.91,0],[1.10,7.18,0],[.69,7.58,0],[0,7.82,0]],{size:.22,count:13}),null],
+        [K.bloom({r:.21,petals:11,rings:3,seg:7}),K.TR(0,7.85,.012)],
+        ...[-1,1].map(e=>[carvedVine([[0,7.85,0],[e*.34,7.98,0],[e*.80,7.74,0],[e*1.12,7.85,0],[e*.98,8.08,0],[e*.82,8.25,0],[e*.60,8.10,0],[e*.70,7.96,0]],{size:.18,count:16,mirror:e}),null]),
+        [carvedVine([[0,7.85,0],[-.22,8.08,0],[-.38,8.29,0],[0,8.55,0]],{size:.17,count:8,mirror:-1}),null],
+        [carvedVine([[0,7.85,0],[.22,8.08,0],[.38,8.29,0],[0,8.55,0]],{size:.17,count:8}),null]
+      ]),gold,center,'Reredos · connected foliate spray',0,0,.155);
+      ornament.userData={status:'CONCEPT · raised carving on the reredos; artisan, substrate and fixing pending',engineeringApproved:false,source:'Approved sanctuary concept; owner detail review, 7 Nov 2026; docs/sanctuary-model.md'};
       // Owner, 3 Nov 2026: more gold on the red. Above the lowered pilasters a gilded scroll cartouche
       // follows the canopy crown on each side of the niche head, and a gilded rosette medallion with a ring
       // of leaves fills the red ground above the spray.
-      const status={status:'CONCEPT · raised gilded carving on the red reredos; artisan, substrate and fixing pending',engineeringApproved:false,source:'Owner request 3 Nov 2026 (more gold on the red); docs/sanctuary-model.md'};
+      const status={status:'CONCEPT · raised gilded carving on the red reredos; artisan, substrate and fixing pending',engineeringApproved:false,source:'Owner requests, 3 and 7 Nov 2026; approved sanctuary concept; docs/sanctuary-model.md'};
       for(const e of [-1,1]){
-        const scroll=mesh(K.cartouche({len:1.0,r:.12}),gold,center,'Reredos · gilded spandrel scroll',e*2.45,8.02,-.085);
+        const scroll=mesh(K.merge([
+          [carvedVine([[-.42,-.08,0],[-.28,.16,0],[0,.23,0],[.28,.16,0],[.42,-.08,0]],{size:.16,count:9,mirror:e}),null],
+          [K.bloom({r:.13,petals:9,rings:3,seg:6}),K.TR(0,.23,.008)]
+        ]),gold,center,'Reredos · gilded spandrel scroll',e*2.45,8.02,-.085);
         scroll.rotation.z=e*-.36;scroll.userData=status;
       }
-      const leafRing=[],blade=K.leaf({len:.13,wid:.07,thick:.012,curl:.6,lobes:3,seg:6});
+      const leafRing=[],blade=carvedBlade(.13,.065,.9);
       for(let k=0;k<12;k++){const a=k/12*Math.PI*2;leafRing.push([blade,K.place(K.RZ(a-Math.PI/2),K.TR(Math.cos(a)*.2,Math.sin(a)*.2,0))]);}
-      leafRing.push([K.bloom({r:.13,petals:10,rings:2,seg:4}),null],[new T.TorusGeometry(.17,.014,6,40),null]);
+      leafRing.push([K.bloom({r:.13,petals:10,rings:3,seg:7}),null],[new T.TorusGeometry(.17,.014,6,40),null]);
       const medallion=mesh(K.merge(leafRing),gold,center,'Reredos · gilded rosette medallion',0,8.55,.15);medallion.userData=status;
     }
     for(const y of [.86,1.18,2.25,2.5]){box(center,6.4,.14,.48,0,y,.28,wood,'Reredos cornice');box(center,6.45,.035,.5,0,y+.075,.3,gold,'Gilded cornice edge');}
