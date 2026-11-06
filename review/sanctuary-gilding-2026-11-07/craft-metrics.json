@@ -1,0 +1,38 @@
+{
+  "errors": [],
+  "metrics": [
+    {
+      "name": "lower-panel",
+      "lighting": "day",
+      "frame": 65,
+      "calls": 83,
+      "triangles": 4416788,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "capital",
+      "lighting": "day",
+      "frame": 101,
+      "calls": 84,
+      "triangles": 4451258,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "pilaster",
+      "lighting": "day",
+      "frame": 136,
+      "calls": 93,
+      "triangles": 4448857,
+      "points": 296,
+      "lines": 0
+    }
+  ],
+  "visit": {
+    "visitOnly": true,
+    "editing": false,
+    "engineeringStorageCalls": []
+  },
+  "sanctuarySHA256": "6a4f88567555ffd021a9aa7d3dc0860e7bb4e5db3050e27a3f9ba8944483bf7d"
+}

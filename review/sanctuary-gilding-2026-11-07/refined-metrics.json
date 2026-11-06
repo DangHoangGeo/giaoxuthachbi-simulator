@@ -1,0 +1,65 @@
+{
+  "errors": [],
+  "metrics": [
+    {
+      "name": "nave",
+      "lighting": "day",
+      "frame": 46,
+      "calls": 278,
+      "triangles": 5031929,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "nave",
+      "lighting": "evening",
+      "frame": 66,
+      "calls": 278,
+      "triangles": 5031929,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "off-axis",
+      "lighting": "day",
+      "frame": 88,
+      "calls": 237,
+      "triangles": 4991104,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "off-axis",
+      "lighting": "evening",
+      "frame": 115,
+      "calls": 237,
+      "triangles": 4991104,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "detail",
+      "lighting": "day",
+      "frame": 148,
+      "calls": 136,
+      "triangles": 4856720,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "detail",
+      "lighting": "evening",
+      "frame": 183,
+      "calls": 136,
+      "triangles": 4856720,
+      "points": 296,
+      "lines": 0
+    }
+  ],
+  "visit": {
+    "visitOnly": true,
+    "editing": false,
+    "engineeringStorageCalls": []
+  },
+  "sanctuarySHA256": "6a4f88567555ffd021a9aa7d3dc0860e7bb4e5db3050e27a3f9ba8944483bf7d"
+}

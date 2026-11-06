@@ -594,12 +594,14 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
   for(const [name,count,material] of [['Shrine shelf frieze',2,'Sanctuary · gilded relief'],['Reredos frieze relief',2,'Sanctuary · gilded relief'],['Carved panel relief',11,'Sanctuary · gilded scrollwork on lacquer'],['Shrine bay relief ground',2,'Sanctuary · gilded scrollwork on lacquer']]){
     const list=part(name);assert.equal(list.length,count,name);
     for(const o of list){
-      assert.equal(o.material.name,material,`${name} finish`);
+      const expected=name==='Carved panel relief'&&o.parent.name==='Central gilded reredos'?'Sanctuary · oxblood lacquer, satin':material;
+      assert.equal(o.material.name,expected,`${name} finish`);
       // Plates carry metre-based texture coordinates, so the carving keeps one scale on every part.
       const uv=o.geometry.attributes.uv,size=dimensions(o);let span=0;for(let i=0;i<uv.count;i++)span=Math.max(span,uv.getX(i),uv.getY(i));
       assert(Math.abs(span-Math.max(size.x,size.y,size.z))<.02,`${name} is mapped in metres`);
     }
   }
+  assert.equal(part('Carved panel relief').filter(o=>o.material.name==='Sanctuary · oxblood lacquer, satin').length,7,'Seven lower panels have plain lacquer behind the raised carving');
   // The four central pilasters and the four side-shrine pilasters plus four door jambs
   // use individually bounded, genuinely raised gold carving on red lacquer.
   for(const label of ['Central pilaster','Wing pilaster','Shrine jamb']) {
@@ -685,6 +687,29 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
     assert(!insidePolygon(x,y,hole),'Raised reredos foliage clears the blue niche at '+x+','+y);
     assert(insidePolygon(x,y,contour),'Raised reredos foliage has lacquer backing at '+x+','+y);
     assert(carvedPoints.getZ(i)+spray.position.z>.134,'Carving stays in front of the reredos ground');
+  }
+  // Chasing belongs to the actual architrave face, including the lower legs.
+  const architrave=part('Crucifix niche · gilded architrave')[0];
+  const bandShape=architrave.geometry.parameters.shapes;
+  const bandContour=bandShape.getPoints(40),bandHole=bandShape.holes[0].getPoints(40);
+  const chasing=part('Crucifix niche · chased foliage band');
+  assert.equal(chasing.length,1,'One continuous chased architrave');
+  const chasedPoints=chasing[0].geometry.attributes.position;
+  for(let i=0;i<chasedPoints.count;i++){
+    const x=chasedPoints.getX(i),y=chasedPoints.getY(i);
+    assert(insidePolygon(x,y,bandContour)&&!insidePolygon(x,y,bandHole),'Chasing stays on the existing gold face at '+x+','+y);
+    assert(chasedPoints.getZ(i)+chasing[0].position.z>.238,'Chasing stands on the architrave face');
+  }
+  for(const o of part('Reredos lower panel · carved lotus')){
+    o.geometry.computeBoundingBox();const b=o.geometry.boundingBox;
+    assert(b.min.x>=-.31&&b.max.x<=.31&&b.min.y>=-.34&&b.max.y<=.34,'Lower carving stays in its original panel');
+    assert(o.position.z+b.min.z>=.472&&o.position.z+b.min.z<.48,'Lower carving is rooted against the existing panel face');
+  }
+  assert.equal(part('Reredos frieze · running foliate relief').length,2,'Both red friezes have raised running relief');
+  for(const o of part('Reredos frieze · running foliate relief')){
+    o.geometry.computeBoundingBox();const b=o.geometry.boundingBox;
+    assert(b.min.x>=-3.2&&b.max.x<=3.2,'Frieze carving clears the cornice ends');
+    assert(b.max.y-b.min.y<.15,'Frieze carving stays between its mouldings');
   }
   const reredos=nodes.find(o=>o.name==='Central gilded reredos');
   const upperSpires=reredos.children.filter(o=>o.name==='Carved pinnacle'&&o.position.y>5.5);

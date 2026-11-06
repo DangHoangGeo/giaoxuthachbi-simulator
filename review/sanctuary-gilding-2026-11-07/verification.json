@@ -40,5 +40,37 @@
       "Air minimum 0.05 m/s, 61% meeting occupied-zone target"
     ],
     "scope": "Isolated base and first carving iteration; later edits are display-only contour/leaf refinements with identical analytical inputs."
+  },
+  "refinement": {
+    "source": "refined-metrics.json",
+    "model": {
+      "command": "node scripts/verify_model.cjs",
+      "scope": "isolated sanctuary-only revision",
+      "status": "passed",
+      "exitCode": 0,
+      "triangles": 4731839,
+      "displayBytes": 253189282,
+      "expandedBytes": 454256544,
+      "plainGroundPanels": 7
+    },
+    "electrical": {
+      "command": "node scripts/verify_simulator.cjs --electrical",
+      "exitCode": 0,
+      "components": 366,
+      "runs": 425
+    },
+    "webViewer": {
+      "files": 83,
+      "bytes": 72045738,
+      "exitCode": 0
+    },
+    "webUnits": {
+      "files": 12,
+      "tests": 116,
+      "exitCode": 0
+    },
+    "normalModes": "refined-normal-modes.json",
+    "analysis": "Display relief only; completed full calculation audit retains the same physical inputs and existing holds.",
+    "craftDetails": "craft-metrics.json"
   }
 }

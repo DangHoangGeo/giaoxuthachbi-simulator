@@ -357,6 +357,11 @@
     // Each blade starts on its branch; the shared stem ties the whole panel together.
     // Sanctuary-only carving. Folded blades and their tapered midribs share the same
     // curved axis, so veins stay on the leaf instead of floating above its tip.
+    function mergeRelief(parts){
+      const identity=new T.Matrix4();
+      return window.CHURCH_BATCHES.merge(T,parts.map(([geo,matrix])=>({geo,matrix:matrix||identity})));
+    }
+
     function carvedBlade(len,wid,curl=.85) {
       const blade=K.leaf({len,wid,thick:len*.085,curl,lobes:5,cup:.32,seg:14});
       const vein=[];
@@ -370,7 +375,7 @@
         const a=curl*Math.pow(t,2.5),ridge=len*.085*(1-.55*t);
         vein.push([0,y-Math.sin(a)*ridge,z+Math.cos(a)*ridge]);
       }
-      return K.merge([[blade,null],[K.stem(vein,len*.018,len*.002,20,5),null]]);
+      return mergeRelief([[blade,null],[K.stem(vein,len*.018,len*.002,20,5),null]]);
     }
 
     // A running vine with alternating curled leaves, rooted side scrolls and small
@@ -394,7 +399,7 @@
           K.place(K.RZ(angle),K.TR(p.x,p.y,p.z+.002))]);
         if(i%3===1)parts.push([bud,K.TR(p.x,p.y,p.z+.009)]);
       }
-      return K.merge(parts);
+      return mergeRelief(parts);
     }
 
     function pilasterRelief(g,{u,y0,y1,w,face,depth,name}){
@@ -416,6 +421,10 @@
           return [(Math.sign(u)||1)*sway*Math.sin(t*modules*Math.PI*2),.07+(h-.18)*t,0];
         });
         pieces.push([carvedVine(path,{size:w*.40,count:modules*3,mirror:Math.sign(u)||1}),null]);
+        // A smaller counter-vine weaves through the main stem, forming fuller
+        // carved knots while keeping the outer lacquer margin readable.
+        const counterPath=path.map(([x,y,z])=>[-x,y,z+.004]);
+        pieces.push([carvedVine(counterPath,{size:w*.28,count:modules*4,mirror:-(Math.sign(u)||1)}),null]);
         const foot=K.bloom({r:w*.25,petals:9,rings:3,seg:6});
         pieces.push([foot,K.place(K.SC(1,.8,.65),K.TR(0,.09,.008))]);
       }else{
@@ -433,7 +442,7 @@
           if(i%2===0)pieces.push([bloom,K.place(K.SC(1,1,.8),K.TR(x,y,.006))]);
         }
       }
-      const relief=mesh(K.merge(pieces),gold,g,name+' · carved foliage',u,y0,front+.004);
+      const relief=mesh(mergeRelief(pieces),gold,g,name+' · carved foliage',u,y0,front+.004);
       relief.userData={status:'CONCEPT · parcel-gilt relief on lacquer; artisan, material and fixing pending',engineeringApproved:false,source:'Approved sanctuary concept; owner detail review, 7 Nov 2026; docs/sanctuary-model.md'};
       return relief;
     }
@@ -452,7 +461,7 @@
     function plate(g,w,h,u,y,v,finish,name,upright){const o=mesh(K.plate(w,h,1,upright),finish,g,name,u,y,v);o.castShadow=false;return o;}
     function crest(g,points,v,size,count,out=1,name='Gilded leaf cresting'){return mesh(K.cresting(points,{size,count,out}),gold,g,name,0,0,v);}
     function border(g,u,y,w,h,v){for(const e of [-1,1]){box(g,.025,h,.035,u+e*w/2,y,v,gold,'Panel gold border');box(g,w,.025,.035,u,y+e*h/2,v,gold,'Panel gold border');}}
-    function panel(g,u,y,w,h,v){box(g,w,h,.14,u,y,v,wood,'Carved lacquer panel');plate(g,w*.84,h*.86,u,y,v+.073,scrollwork,'Carved panel relief');border(g,u,y,w*.86,h*.88,v+.09);}
+    function panel(g,u,y,w,h,v,finish=scrollwork){box(g,w,h,.14,u,y,v,wood,'Carved lacquer panel');plate(g,w*.84,h*.86,u,y,v+.073,finish,'Carved panel relief');border(g,u,y,w*.86,h*.88,v+.09);}
     // Open gilded lattice in front of the lacquer, as on the side screens of the reference.
     function lattice(g,u,y0,w,h,v,step=.2){
       border(g,u,y0+h/2,w,h,v);
@@ -516,6 +525,18 @@
     arch(center,3.26,8.05,2.3,DAIS,-.23,satin,'Outer carved canopy',opening(N.lining));
     for(let j=0;j<3;j++)crown(center,3.05+j*.075,7.75+j*.23,1.95+j*.09,.03+j*.04,j===0?2.35:null);
     arch(center,3.14,6.6,2.35,DAIS,0,satin,'Central carved timber silhouette',opening(N.lining));
+    // The first two canopy mouldings enclose a narrow running frieze. Author
+    // its stems along that architectural curve instead of scattering ornaments.
+    const canopyPath=[[-2.95,8.02,0],[-2.78,8.40,0],[-1.58,8.86,0],[-1.07,9.56,0],[0,9.82,0],[1.07,9.56,0],[1.58,8.86,0],[2.78,8.40,0],[2.95,8.02,0]];
+    const canopyFrieze=mesh(carvedVine(canopyPath,{size:.055,count:92}),gold,center,'Canopy · running foliate frieze',0,0,-.095);
+    canopyFrieze.userData={status:'CONCEPT · fine relief between existing canopy mouldings',engineeringApproved:false,source:'Approved sanctuary concept; owner detail review, 7 Nov 2026'};
+    // A paired crown scroll fills the upper red lunette. Its backing is the
+    // outer canopy, behind the separate lower reredos ground.
+    const crownParts=[[K.bloom({r:.14,petals:11,rings:3,seg:7}),K.TR(0,9.20,.008)]];
+    for(const e of [-1,1])crownParts.push([carvedVine([[0,9.20,0],[e*.34,9.32,0],[e*.72,9.04,0],[e*1.16,8.83,0],[e*1.31,8.99,0],[e*1.05,9.17,0],[e*.90,9.02,0]],{size:.16,count:16,mirror:e}),null]);
+    const crownScroll=mesh(mergeRelief(crownParts),gold,center,'Canopy · paired crown scroll',0,0,-.085);
+    crownScroll.userData={status:'CONCEPT · raised crown scroll on the existing canopy',engineeringApproved:false,source:'Approved sanctuary concept; owner detail review, 7 Nov 2026'};
+
     // Deep crucifix niche. Local v runs towards the nave: mouth at the reredos face, blue wall
     // 1.0 m behind it. A lacquered reveal lines it; a plaster casing shows in the service room,
     // boxed out above the boards and standing through the notched ceiling slab.
@@ -554,6 +575,14 @@
       const band=outline(.14);band.holes.push(opening(N.lining));
       const frame=mesh(new T.ExtrudeGeometry(band,{depth:.104,bevelEnabled:false,curveSegments:24}),gilded,center,'Crucifix niche · gilded architrave',0,0,.134);
       frame.userData={status:'CONCEPT · carved gilded architrave; artisan, substrate and fixing pending',engineeringApproved:false,source:'Owner request 3 Nov 2026 (centre of the sanctuary); docs/sanctuary-model.md'};
+      // Chased foliage stays on the existing 90 mm face of the architrave.
+      // The broad leaf cresting outside it remains a separate scale of carving.
+      const chasedHead=outline(.095).getPoints(36).filter(p=>p.y>=N.spring-.001).map(p=>[p.x,p.y,0]);
+      const chasing=[[carvedVine(chasedHead,{size:.024,count:70}),null]];
+      for(const e of [-1,1])chasing.push([carvedVine([[e*(N.half+.095),N.floor+.12,0],[e*(N.half+.095),N.spring-.04,0]],{size:.024,count:28,mirror:e}),null]);
+      const chased=mesh(mergeRelief(chasing),gold,center,'Crucifix niche · chased foliage band',0,0,.245);
+      chased.userData={status:'CONCEPT · shallow foliate chasing on the existing architrave',engineeringApproved:false,source:'Owner detail review, 7 Nov 2026; docs/sanctuary-model.md'};
+
       const head=outline(.15).getPoints(28).filter(p=>p.y>=N.spring+.05&&Math.abs(p.x)<=1.8).map(p=>[p.x,p.y]);
       crest(center,head,.24,.1,26,-1,'Crucifix niche · leaf cresting');
       for(const e of [-1,1])flower(center,e*(N.half+.095),N.spring,.245,.06);
@@ -569,6 +598,7 @@
         box(center,.52,.17,.5,u,y,.23,wood,'Pilaster lacquer capital');
         for(const e of [-1,1])box(center,.52,.024,.52,u,y+e*.07,.23,gold,'Pilaster capital · gilded moulding');
         flower(center,u,y,.49,.035);
+        mesh(carvedVine([[-.22,0,0],[.22,0,0]],{size:.045,count:9}),gold,center,'Pilaster capital · carved frieze',u,y,.493);
       }
       mesh(spire,gold,center,'Carved pinnacle',u,top,.25);
     }
@@ -578,7 +608,7 @@
       mesh(new T.ShapeGeometry(ground,18),reredosLacquer,center,'Reredos carved ground',0,0,.134).castShadow=false;
       // A connected, mirrored foliate spray fills the clear field above the niche.
       // It stops inside the pilasters and below the outer canopy instead of crossing them.
-      const ornament=mesh(K.merge([
+      const ornament=mesh(mergeRelief([
         [carvedVine([[-1.76,6.42,0],[-1.52,6.91,0],[-1.10,7.18,0],[-.69,7.58,0],[0,7.82,0]],{size:.22,count:13,mirror:-1}),null],
         [carvedVine([[1.76,6.42,0],[1.52,6.91,0],[1.10,7.18,0],[.69,7.58,0],[0,7.82,0]],{size:.22,count:13}),null],
         [K.bloom({r:.21,petals:11,rings:3,seg:7}),K.TR(0,7.85,.012)],
@@ -592,7 +622,7 @@
       // of leaves fills the red ground above the spray.
       const status={status:'CONCEPT · raised gilded carving on the red reredos; artisan, substrate and fixing pending',engineeringApproved:false,source:'Owner requests, 3 and 7 Nov 2026; approved sanctuary concept; docs/sanctuary-model.md'};
       for(const e of [-1,1]){
-        const scroll=mesh(K.merge([
+        const scroll=mesh(mergeRelief([
           [carvedVine([[-.42,-.08,0],[-.28,.16,0],[0,.23,0],[.28,.16,0],[.42,-.08,0]],{size:.16,count:9,mirror:e}),null],
           [K.bloom({r:.13,petals:9,rings:3,seg:6}),K.TR(0,.23,.008)]
         ]),gold,center,'Reredos · gilded spandrel scroll',e*2.45,8.02,-.085);
@@ -606,13 +636,30 @@
     for(const y of [.86,1.18,2.25,2.5]){box(center,6.4,.14,.48,0,y,.28,wood,'Reredos cornice');box(center,6.45,.035,.5,0,y+.075,.3,gold,'Gilded cornice edge');}
     // Friezes between the cornices, and small spires on the gradine either side of the tabernacle.
     plate(center,6.4,.18,0,1.02,.521,gilded,'Reredos frieze relief');plate(center,6.4,.11,0,2.375,.521,gilded,'Reredos frieze relief');
+    // Fine running relief on the two friezes gives the gilding a carved edge
+    // under grazing light while keeping clear of the cornice mouldings.
+    for(const [y,size,count] of [[1.02,.055,64],[2.375,.034,80]]){
+      const frieze=mesh(carvedVine([[-3.1,y,0],[3.1,y,0]],{size,count}),gold,center,'Reredos frieze · running foliate relief',0,0,.533);
+      frieze.userData={status:'CONCEPT · shallow relief on the existing frieze',engineeringApproved:false,source:'Owner detail review, 7 Nov 2026; docs/sanctuary-model.md'};
+    }
     for(const u of [-2.95,-1.6,1.6,2.95])mesh(smallSpire,gold,center,'Carved pinnacle',u,2.59,.42);
     // Rooted lotus-and-leaf carving on the existing lower panels: each motif has its
     // own inner moulding and stays within the existing panel outline.
-    const lowerCarving=K.panel({w:.62,h:.68});
+    // A rooted floral composition in each lower red panel, with rolled leaves
+    // and fine inner mouldings. All seven panels reuse this one relief buffer.
+    const lowerParts=[
+      [K.bloom({r:.13,petals:11,rings:3,seg:7}),K.TR(0,.16,.01)],
+      [carvedVine([[0,-.25,0],[0,-.06,0],[0,.12,0]],{size:.10,count:5}),null]
+    ];
+    for(const e of [-1,1]){
+      lowerParts.push([carvedVine([[0,-.24,0],[e*.14,-.16,0],[e*.19,-.01,0],[e*.12,.08,0],[e*.06,.01,0]],{size:.08,count:9,mirror:e}),null]);
+      lowerParts.push([new T.BoxGeometry(.008,.62,.008),K.TR(e*.29,0,0)],
+        [new T.BoxGeometry(.58,.008,.008),K.TR(0,e*.31,0)]);
+    }
+    const lowerCarving=mergeRelief(lowerParts);
     for(let u=-2.7;u<3;u+=.9){
-      panel(center,u,1.72,.78,.86,.4);
-      mesh(lowerCarving,gold,center,'Reredos lower panel · carved lotus',u,1.72,.493);
+      panel(center,u,1.72,.78,.86,.4,satin);
+      mesh(lowerCarving,gold,center,'Reredos lower panel · carved lotus',u,1.72,.482);
     }
 
 

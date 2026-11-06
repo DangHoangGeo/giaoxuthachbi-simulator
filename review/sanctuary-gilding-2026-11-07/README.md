@@ -42,3 +42,22 @@ No equipment, route, control, analytical boundary or physical material input cha
 The isolated calculation audit completed successfully with the existing unmet design targets retained. Feedback margins remain 0.9 dB at the ambo and 1.4 dB at the altar. Wing STI remains 0.410 minimum and 0.484 average. Air speed remains 0.05 m/s minimum, with 61% of receivers meeting the existing target. The audit loaded the first carving iteration; subsequent refinements affect display contours and leaf size with identical analytical inputs.
 
 The shared-tree model check stops at an unrelated coloured-oval/fanlight count of 61 versus 63 during concurrent opening/exterior edits. The isolated sanctuary-only model check passes. Concurrent support-cladding, doorway and other edits are preserved outside this commit. All new local documentation links and staged whitespace pass.
+
+
+## Architectural refinement
+
+The first iteration is retained as the after images above. Following the owner's request for a senior architectural critique, a second pass develops three scales of carving. The larger crown scroll and mirrored niche foliage establish the composition. Counter-vines, capital friezes and rooted lotus bouquets articulate the panels. Fine foliate chasing follows the niche architrave, canopy band and lower friezes.
+
+Review the [refined nave by day](refined-nave-day.jpg), [refined nave by evening](refined-nave-evening.jpg), [refined close-up by day](refined-detail-day.jpg), [refined close-up by evening](refined-detail-evening.jpg), [refined off-axis day](refined-off-axis-day.jpg) and [refined off-axis evening](refined-off-axis-evening.jpg). The same cameras and illumination settings are retained.
+
+The underlying architectural and liturgical decisions retain their own sources. This review accepts the revision as a developed model study. Final sculpture, craft samples, gilding finish, substrate, durability, cleaning and glare still need artist and responsible-designer review. Proportioned procedural carving remains an interpretation of the approved art reference.
+
+
+The final detailed nave capture records 278 draw calls and 5,031,929 triangles. Compared with the original 3,659,067-triangle view, the finer carving adds about 37.5% rendered triangles. Indexed relief assembly reuses the viewer's existing merger and preserves triangle shapes and normals. The model check records 253,189,282 display-buffer bytes versus 454,256,544 bytes for expanded buffers, passing the existing memory threshold. These are software counters. Frame rate on modest desktop hardware remains unmeasured.
+
+The second pass uses the same engineering inputs as the completed full audit. Focused simulator/electrical verification passes with 366 installed components and 425 selectable runs. The final viewer copy check passes for 83 files and 72,045,738 bytes, and all 116 web unit tests pass. The final contour check covers the entire chased architrave, lower panel bounds, substrate contact and frieze envelopes in addition to the first-pass checks.
+
+
+The lower seven panel grounds now use plain satin lacquer, allowing the raised gold bouquet to read clearly. Inspect the [lotus panel](craft-lower-panel-day.jpg), [capital frieze](craft-capital-day.jpg) and [paired pilaster carving](craft-pilaster-day.jpg). These close views use cameras at (47, 1.8, 0.9), (46.8, 6.05, 2.8) and (46.6, 4.2, 2.9) metres, aimed respectively at (48.12, 1.72, 0.9), (48.12, 6.15, 2.45) and (48.12, 4.25, 2.47). Their source hash and zero page-error record are in the [craft metrics](craft-metrics.json).
+
+Final model verification passes after the plain-ground correction, including seven satin panel grounds and the separate retained patterned service-door panels. Local links, staged whitespace and correspondence between staged source and capture source hashes pass. Concurrent unrelated work remains outside the sanctuary commits.

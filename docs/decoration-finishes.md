@@ -8,6 +8,8 @@ Owner brief: improve exterior, interior and sanctuary decoration and visual real
 
 **Sanctuary detail, 7 November 2026:** The central niche gains connected scrolls and folded, veined foliage, and the central and side-shrine pilasters gain denser climbing relief. The broad reredos ground has reduced grain contrast using a local lacquer material copy. See the [sanctuary revision](sanctuary-model.md#lacquer-and-gilded-carving-detail--7-november-2026) and [desktop comparisons](../review/sanctuary-gilding-2026-11-07/README.md). These are proposed decorative finishes with artisan and material review pending.
 
+The second sanctuary detail pass carries the carving into the canopy band, crown scroll, niche architrave, central capitals, lower friezes and seven lotus panels. Paired climbing vines give the central and side-shrine pilasters a fuller parcel-gilt field. All new gold remains authored procedural display relief on the existing lacquer or gilded surfaces.
+
 ## Sources and cultural direction
 
 - [Project appearance hierarchy](church-view-renderings.md): ivory mineral plaster, terracotta roofs, stone paving, carved red lacquer and parcel gilding. The selected [sanctuary concept](../Thach_Bi_Viewer/references/02-sanctuary/concepts/09-sanctuary-approved-concept.png) governs the blue crucifix and saint recesses, layered gilding and lacquer. These remain concepts, not measured finishes.
