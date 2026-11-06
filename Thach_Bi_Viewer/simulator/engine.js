@@ -80,7 +80,10 @@
     V2: { label: 'V2 · Exhaust · wing gables', cat: 'fan', board: 'DB1', splitFrom: 'V1' },
     V3: { label: 'V3 · Exhaust · service room', cat: 'fan', board: 'DB1', splitFrom: 'V1' },
     // Candles below the fourteen Stations of the Cross (parish priest, 25 Oct 2026), appended.
-    LS: { label: 'LS · Stations of the Cross candles', cat: 'light', board: 'DB1', area: 'Nave' }
+    LS: { label: 'LS · Stations of the Cross candles', cat: 'light', board: 'DB1', area: 'Nave' },
+    // Wing gable uplights and the candles at the three statue places on each wing gable (owner,
+    // 7 Nov 2026), appended.
+    LW: { label: 'LW · Wing gables · uplights & statue candles', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' }
   };
   // Display order: a circuit split from another is listed right after it.
   const CIRCUIT_ORDER = Object.keys(CIRCUITS).filter(c => !CIRCUITS[c].splitFrom)
@@ -114,7 +117,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', columnWashRevision: '', centreReadingRevision: '', entranceInteriorRevision: '', rearSideLightsRevision: '', festivalTerraceRevision: '', festivalStringsRevision: '', goldCoveRevision: '', sanctuaryPalmsRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', columnWashRevision: '', centreReadingRevision: '', entranceInteriorRevision: '', rearSideLightsRevision: '', festivalTerraceRevision: '', festivalStringsRevision: '', goldCoveRevision: '', sanctuaryPalmsRevision: '', wingGableLightsRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -237,7 +240,8 @@
     // Inner C/G walls at the 14.500 m clear faces, with each bay's arched opening.
     const bays = [['2′', '3'], ['3', '4'], ['4', '5'], ['5', '6'], ['6', '7'], ['7', '8'], ['8', '9'], ['10', '11'], ['11', '12']];
     // Bay 10–11 has a window since 25 Oct 2026 (parish priest: no door from the sanctuary sides to the porches).
-    const doorBays = new Set(['4–5', '8–9']);
+    // The service room (11–12) has a doorway on each side instead of windows since 7 Nov 2026 (owner).
+    const doorBays = new Set(['4–5', '8–9', '11–12']);
     for (const s of [-1, 1]) for (const [x0, x1] of [[5.475, 37.22], [43.9, 52.85]]) {
       const openings = bays.map(([a, b]) => {
         const c = (AX[a] + AX[b]) / 2, door = doorBays.has(`${a}–${b}`);
@@ -1925,18 +1929,18 @@
 
   /* ---------------------------------------------------------------- scenes */
   const SCENES = {
-    'Full service · evening': { L10: 1, L9: 1, L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 1 },
-    'Weekday Mass': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6 },
+    'Full service · evening': { L10: 1, L9: 1, L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 1, LW: 1 },
+    'Weekday Mass': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6, LW: 0.6 },
     // Parish priest, 25 Oct 2026: an ordinary Mass can leave the four rear bays dark.
-    'Ordinary Mass · rear bays off': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6 },
-    'Prayer & adoration': { L10: 0.6, L9: 1, L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.8 },
-    'Christmas & festivals': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1, LS: 1 },
+    'Ordinary Mass · rear bays off': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6, LW: 0.6 },
+    'Prayer & adoration': { L10: 0.6, L9: 1, L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.8, LW: 0.6 },
+    'Christmas & festivals': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1, LS: 1, LW: 1 },
     // Courtyard horns on: for crowds outside. Inside, their sound comes back
     // through the open windows late enough to blur speech, so use only then.
-    'Festival · courtyard overflow': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 1, DECOR: 1, F5: 1, LS: 1 },
-    'Cleaning': { L10: 0, L9: 0, L8: 1, L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1, LS: 0 },
-    'Night security': { L10: 0, L9: 1, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0, LS: 0 },
-    'All off': { L10: 0, L9: 0, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0, LS: 0 }
+    'Festival · courtyard overflow': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 1, DECOR: 1, F5: 1, LS: 1, LW: 1 },
+    'Cleaning': { L10: 0, L9: 0, L8: 1, L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1, LS: 0, LW: 0 },
+    'Night security': { L10: 0, L9: 1, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0, LS: 0, LW: 0 },
+    'All off': { L10: 0, L9: 0, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0, LS: 0, LW: 0 }
   };
   SIM.SCENES = SCENES;
   // Reading light each scene is meant to give on the books (lux, maintained).
@@ -2556,7 +2560,8 @@
       ['festivalTerraceRevision', D.festivalTerraceRevision, '.before-festival-terrace-removed', D.upgradeFestivalTerrace],
       ['festivalStringsRevision', D.festivalStringsRevision, '.before-festival-strings-removed', D.upgradeFestivalStrings],
       ['goldCoveRevision', D.goldCoveRevision, '.before-gold-cove', D.upgradeGoldCove],
-      ['sanctuaryPalmsRevision', D.sanctuaryPalmsRevision, '.before-sanctuary-palms', D.upgradeSanctuaryPalms]
+      ['sanctuaryPalmsRevision', D.sanctuaryPalmsRevision, '.before-sanctuary-palms', D.upgradeSanctuaryPalms],
+      ['wingGableLightsRevision', D.wingGableLightsRevision, '.before-wing-gable-lights', D.upgradeWingGableLights]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;

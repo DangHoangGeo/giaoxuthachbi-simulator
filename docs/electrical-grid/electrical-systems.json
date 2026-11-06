@@ -35924,6 +35924,1046 @@
       "drawnDiameter": 0.048,
       "buildingDrawnDiameter": 0.006,
       "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:LC1:LW:light:-1",
+      "name": "LW · B · circuit trunk",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LW",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L-WING-GABLE-B-R",
+        "L-WING-GABLE-B-F",
+        "L-WING-STATUE-B-N-1",
+        "L-WING-STATUE-B-N-2"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          6.172000000000001,
+          -3.3
+        ],
+        [
+          53.016,
+          6.172000000000001,
+          -7.36
+        ],
+        [
+          44.175,
+          6.172000000000001,
+          -7.36
+        ],
+        [
+          44.175,
+          7.04,
+          -7.36
+        ],
+        [
+          43.535,
+          7.04,
+          -7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          -7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          -7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          -7.36
+        ],
+        [
+          37.615,
+          7.04,
+          -7.36
+        ],
+        [
+          37.425,
+          7.04,
+          -7.36
+        ]
+      ],
+      "length": 33.748130311179196,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              -7.36
+            ],
+            [
+              43.535,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              -7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              -7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              -7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              -7.36
+            ],
+            [
+              37.615,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              -7.36
+            ],
+            [
+              37.425,
+              7.04,
+              -7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LW:light:-1:L-WING-GABLE-B-R",
+      "name": "LW → Wing gable uplight · B · rear",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LW",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-GABLE-B-R"
+      ],
+      "trunkId": "trunk:LC1:LW:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 25.732,
+      "homeRun": false,
+      "points": [
+        [
+          43.725,
+          7.04,
+          -7.36
+        ],
+        [
+          43.725,
+          6.932303102135284,
+          -7.439581081081082
+        ],
+        [
+          43.725,
+          6.737637225623414,
+          -8.314972972972974
+        ],
+        [
+          43.725,
+          6.732951030927836,
+          -8.394554054054055
+        ],
+        [
+          43.725,
+          6.732951030927836,
+          -13.249
+        ],
+        [
+          43.725,
+          6.324,
+          -13.249
+        ],
+        [
+          43.725,
+          6.324,
+          -13.66
+        ]
+      ],
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into the wing-gable wall, concealed rise or drop inside it, then a short lead through the face to the fitting; weatherproof entry pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              43.725,
+              7.04,
+              -7.36
+            ],
+            [
+              43.725,
+              6.932303102135284,
+              -7.439581081081082
+            ],
+            [
+              43.725,
+              6.737637225623414,
+              -8.314972972972974
+            ],
+            [
+              43.725,
+              6.732951030927836,
+              -8.394554054054055
+            ],
+            [
+              43.725,
+              6.732951030927836,
+              -13.249
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 6.784800678506446,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LW:light:-1:L-WING-GABLE-B-F",
+      "name": "LW → Wing gable uplight · B · front",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LW",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-GABLE-B-F"
+      ],
+      "trunkId": "trunk:LC1:LW:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 33.748130311179196,
+      "homeRun": false,
+      "points": [
+        [
+          37.425,
+          7.04,
+          -7.36
+        ],
+        [
+          37.425,
+          6.932303102135284,
+          -7.439581081081082
+        ],
+        [
+          37.425,
+          6.737637225623414,
+          -8.314972972972974
+        ],
+        [
+          37.425,
+          6.73295103092783,
+          -8.394554054054055
+        ],
+        [
+          37.425,
+          6.73295103092783,
+          -13.249
+        ],
+        [
+          37.425,
+          6.324,
+          -13.249
+        ],
+        [
+          37.425,
+          6.324,
+          -13.66
+        ]
+      ],
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into the wing-gable wall, concealed rise or drop inside it, then a short lead through the face to the fitting; weatherproof entry pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              37.425,
+              7.04,
+              -7.36
+            ],
+            [
+              37.425,
+              6.932303102135284,
+              -7.439581081081082
+            ],
+            [
+              37.425,
+              6.737637225623414,
+              -8.314972972972974
+            ],
+            [
+              37.425,
+              6.73295103092783,
+              -8.394554054054055
+            ],
+            [
+              37.425,
+              6.73295103092783,
+              -13.249
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 6.784800678506441,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LW:light:-1:L-WING-STATUE-B-N-1",
+      "name": "LW → Wing statue candle · B · aedicule niche · 1",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LW",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-STATUE-B-N-1"
+      ],
+      "trunkId": "trunk:LC1:LW:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 29.354861290237988,
+      "homeRun": false,
+      "points": [
+        [
+          40.875,
+          9.028376288659786,
+          -7.36
+        ],
+        [
+          40.875,
+          9.028376288659796,
+          -13.249
+        ],
+        [
+          40.875,
+          10.3795,
+          -13.249
+        ],
+        [
+          40.875,
+          10.3795,
+          -13.7
+        ]
+      ],
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into the wing-gable wall, concealed rise or drop inside it, then a short lead through the face to the fitting; weatherproof entry pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              40.875,
+              9.028376288659786,
+              -7.36
+            ],
+            [
+              40.875,
+              9.028376288659796,
+              -13.249
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 7.691123711340203,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LW:light:-1:L-WING-STATUE-B-N-2",
+      "name": "LW → Wing statue candle · B · aedicule niche · 2",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LW",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-STATUE-B-N-2"
+      ],
+      "trunkId": "trunk:LC1:LW:light:-1",
+      "color": "#dc9e29",
+      "upstreamLength": 30.125269020941193,
+      "homeRun": false,
+      "points": [
+        [
+          40.275,
+          9.028376288659791,
+          -7.36
+        ],
+        [
+          40.275,
+          9.02837628865979,
+          -13.249
+        ],
+        [
+          40.275,
+          10.3795,
+          -13.249
+        ],
+        [
+          40.275,
+          10.3795,
+          -13.7
+        ]
+      ],
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into the wing-gable wall, concealed rise or drop inside it, then a short lead through the face to the fitting; weatherproof entry pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              40.275,
+              9.028376288659791,
+              -7.36
+            ],
+            [
+              40.275,
+              9.02837628865979,
+              -13.249
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 7.69112371134021,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "trunk:LC1:LW:light:1",
+      "name": "LW · H · circuit trunk",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LW",
+      "kind": "light",
+      "role": "trunk",
+      "itemIds": [
+        "L-WING-GABLE-H-F",
+        "L-WING-GABLE-H-R",
+        "L-WING-STATUE-H-N-1",
+        "L-WING-STATUE-H-N-2"
+      ],
+      "color": "#dc9e29",
+      "method": "wall-roof-trunk",
+      "installation": "Wall bands above openings; concealed finish-matched soffit crossing over the 9–10 wing opening.",
+      "points": [
+        [
+          48.895,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -0.55
+        ],
+        [
+          48.735,
+          1.85,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -2.24
+        ],
+        [
+          48.735,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          4.33,
+          -3.3
+        ],
+        [
+          53.016,
+          6.172000000000001,
+          -3.3
+        ],
+        [
+          53.016,
+          6.172000000000001,
+          7.36
+        ],
+        [
+          44.175,
+          6.172000000000001,
+          7.36
+        ],
+        [
+          44.175,
+          7.04,
+          7.36
+        ],
+        [
+          43.535,
+          7.04,
+          7.36
+        ],
+        [
+          43.455,
+          6.950412371134024,
+          7.36
+        ],
+        [
+          40.574999999999996,
+          9.269999999999994,
+          7.36
+        ],
+        [
+          37.695,
+          6.950412371134018,
+          7.36
+        ],
+        [
+          37.615,
+          7.04,
+          7.36
+        ],
+        [
+          37.425,
+          7.04,
+          7.36
+        ]
+      ],
+      "length": 40.3481303111792,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              44.175,
+              7.04,
+              7.36
+            ],
+            [
+              43.535,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.535,
+              7.04,
+              7.36
+            ],
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              43.455,
+              6.950412371134024,
+              7.36
+            ],
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              40.574999999999996,
+              9.269999999999994,
+              7.36
+            ],
+            [
+              37.695,
+              6.950412371134018,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.695,
+              6.950412371134018,
+              7.36
+            ],
+            [
+              37.615,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        },
+        {
+          "points": [
+            [
+              37.615,
+              7.04,
+              7.36
+            ],
+            [
+              37.425,
+              7.04,
+              7.36
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LW:light:1:L-WING-GABLE-H-F",
+      "name": "LW → Wing gable uplight · H · front",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LW",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-GABLE-H-F"
+      ],
+      "trunkId": "trunk:LC1:LW:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 40.3481303111792,
+      "homeRun": false,
+      "points": [
+        [
+          37.425,
+          7.04,
+          7.36
+        ],
+        [
+          37.425,
+          6.932303102135284,
+          7.439581081081082
+        ],
+        [
+          37.425,
+          6.737637225623414,
+          8.314972972972974
+        ],
+        [
+          37.425,
+          6.73295103092783,
+          8.394554054054055
+        ],
+        [
+          37.425,
+          6.73295103092783,
+          13.249
+        ],
+        [
+          37.425,
+          6.324,
+          13.249
+        ],
+        [
+          37.425,
+          6.324,
+          13.66
+        ]
+      ],
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into the wing-gable wall, concealed rise or drop inside it, then a short lead through the face to the fitting; weatherproof entry pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              37.425,
+              7.04,
+              7.36
+            ],
+            [
+              37.425,
+              6.932303102135284,
+              7.439581081081082
+            ],
+            [
+              37.425,
+              6.737637225623414,
+              8.314972972972974
+            ],
+            [
+              37.425,
+              6.73295103092783,
+              8.394554054054055
+            ],
+            [
+              37.425,
+              6.73295103092783,
+              13.249
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 6.784800678506441,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LW:light:1:L-WING-GABLE-H-R",
+      "name": "LW → Wing gable uplight · H · rear",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LW",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-GABLE-H-R"
+      ],
+      "trunkId": "trunk:LC1:LW:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 32.331999999999994,
+      "homeRun": false,
+      "points": [
+        [
+          43.725,
+          7.04,
+          7.36
+        ],
+        [
+          43.725,
+          6.932303102135284,
+          7.439581081081082
+        ],
+        [
+          43.725,
+          6.737637225623414,
+          8.314972972972974
+        ],
+        [
+          43.725,
+          6.732951030927836,
+          8.394554054054055
+        ],
+        [
+          43.725,
+          6.732951030927836,
+          13.249
+        ],
+        [
+          43.725,
+          6.324,
+          13.249
+        ],
+        [
+          43.725,
+          6.324,
+          13.66
+        ]
+      ],
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into the wing-gable wall, concealed rise or drop inside it, then a short lead through the face to the fitting; weatherproof entry pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              43.725,
+              7.04,
+              7.36
+            ],
+            [
+              43.725,
+              6.932303102135284,
+              7.439581081081082
+            ],
+            [
+              43.725,
+              6.737637225623414,
+              8.314972972972974
+            ],
+            [
+              43.725,
+              6.732951030927836,
+              8.394554054054055
+            ],
+            [
+              43.725,
+              6.732951030927836,
+              13.249
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 6.784800678506446,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LW:light:1:L-WING-STATUE-H-N-1",
+      "name": "LW → Wing statue candle · H · aedicule niche · 1",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LW",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-STATUE-H-N-1"
+      ],
+      "trunkId": "trunk:LC1:LW:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 36.7252690209412,
+      "homeRun": false,
+      "points": [
+        [
+          40.275,
+          9.028376288659791,
+          7.36
+        ],
+        [
+          40.275,
+          9.02837628865979,
+          13.249
+        ],
+        [
+          40.275,
+          10.3795,
+          13.249
+        ],
+        [
+          40.275,
+          10.3795,
+          13.7
+        ]
+      ],
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into the wing-gable wall, concealed rise or drop inside it, then a short lead through the face to the fitting; weatherproof entry pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              40.275,
+              9.028376288659791,
+              7.36
+            ],
+            [
+              40.275,
+              9.02837628865979,
+              13.249
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 7.69112371134021,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
+    },
+    {
+      "id": "drop:LC1:LW:light:1:L-WING-STATUE-H-N-2",
+      "name": "LW → Wing statue candle · H · aedicule niche · 2",
+      "source": "LC1",
+      "board": "DB1",
+      "circuit": "LW",
+      "kind": "light",
+      "role": "drop",
+      "itemIds": [
+        "L-WING-STATUE-H-N-2"
+      ],
+      "trunkId": "trunk:LC1:LW:light:1",
+      "color": "#dc9e29",
+      "upstreamLength": 35.954861290237986,
+      "homeRun": false,
+      "points": [
+        [
+          40.875,
+          9.028376288659786,
+          7.36
+        ],
+        [
+          40.875,
+          9.028376288659796,
+          13.249
+        ],
+        [
+          40.875,
+          10.3795,
+          13.249
+        ],
+        [
+          40.875,
+          10.3795,
+          13.7
+        ]
+      ],
+      "method": "outer-wall",
+      "installation": "Covered roof-soffit crossing into the wing-gable wall, concealed rise or drop inside it, then a short lead through the face to the fitting; weatherproof entry pending.",
+      "coverPaths": [
+        {
+          "points": [
+            [
+              40.875,
+              9.028376288659786,
+              7.36
+            ],
+            [
+              40.875,
+              9.028376288659796,
+              13.249
+            ]
+          ],
+          "finish": "soffit",
+          "status": "CONCEPT · removable finish-matched raceway; section, fixings and access pending"
+        }
+      ],
+      "length": 7.691123711340203,
+      "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
+      "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
+      "drawnDiameter": 0.048,
+      "buildingDrawnDiameter": 0.006,
+      "drawnDiameterBasis": "Systems-only exaggeration / building display convention; neither is a specified cable size"
     }
   ],
   "components": [
@@ -43903,6 +44943,206 @@
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
+      "id": "L-WING-GABLE-B-R",
+      "name": "Wing gable uplight · B · rear",
+      "type": "ledgeFlood",
+      "product": "Compact ledge floodlight · cornice colour",
+      "circuit": "LW",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.2199999988079071,
+        0.12500000052154064,
+        0.18199999630451202
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 23.333333333333332,
+      "specs": "3000 lm · 3000 K · 60° beam",
+      "hiddenAlternative": false,
+      "position": [
+        43.725,
+        6.324,
+        -13.66
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-GABLE-B-F",
+      "name": "Wing gable uplight · B · front",
+      "type": "ledgeFlood",
+      "product": "Compact ledge floodlight · cornice colour",
+      "circuit": "LW",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.2199999988079071,
+        0.12500000052154064,
+        0.18199999630451202
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 23.333333333333332,
+      "specs": "3000 lm · 3000 K · 60° beam",
+      "hiddenAlternative": false,
+      "position": [
+        37.425,
+        6.324,
+        -13.66
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-STATUE-B-N-1",
+      "name": "Wing statue candle · B · aedicule niche · 1",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "LW",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        40.875,
+        10.3795,
+        -13.7
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-STATUE-B-N-2",
+      "name": "Wing statue candle · B · aedicule niche · 2",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "LW",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        40.275,
+        10.3795,
+        -13.7
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-GABLE-H-F",
+      "name": "Wing gable uplight · H · front",
+      "type": "ledgeFlood",
+      "product": "Compact ledge floodlight · cornice colour",
+      "circuit": "LW",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.2199999988079071,
+        0.12500000052154064,
+        0.18199999630451202
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 23.333333333333332,
+      "specs": "3000 lm · 3000 K · 60° beam",
+      "hiddenAlternative": false,
+      "position": [
+        37.425,
+        6.324,
+        13.66
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-GABLE-H-R",
+      "name": "Wing gable uplight · H · rear",
+      "type": "ledgeFlood",
+      "product": "Compact ledge floodlight · cornice colour",
+      "circuit": "LW",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.2199999988079071,
+        0.12500000052154064,
+        0.18199999630451202
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 23.333333333333332,
+      "specs": "3000 lm · 3000 K · 60° beam",
+      "hiddenAlternative": false,
+      "position": [
+        43.725,
+        6.324,
+        13.66
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-STATUE-H-N-1",
+      "name": "Wing statue candle · H · aedicule niche · 1",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "LW",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        40.275,
+        10.3795,
+        13.7
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
+      "id": "L-WING-STATUE-H-N-2",
+      "name": "Wing statue candle · H · aedicule niche · 2",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "circuit": "LW",
+      "board": "DB1",
+      "quantity": 1,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "modelSizeBasis": "Local model envelope; excludes pendant rod. Verify product dimensions.",
+      "diameter": null,
+      "wattsEstimate": 1,
+      "specs": "40 lm · 2200 K",
+      "hiddenAlternative": false,
+      "position": [
+        40.875,
+        10.3795,
+        13.7
+      ],
+      "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
+    },
+    {
       "id": "L-ARCH-B-2P-3-A",
       "name": "Porch arch wash · B · bay 2′–3 · A",
       "type": "porchFlood",
@@ -46956,6 +48196,46 @@
         "L-COLUMN-8-H",
         "L-COLUMN-9-B",
         "L-COLUMN-9-H"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "LW",
+      "type": "ledgeFlood",
+      "product": "Compact ledge floodlight · cornice colour",
+      "quantity": 4,
+      "modelSize": [
+        0.2199999988079071,
+        0.12500000052154064,
+        0.18199999630451202
+      ],
+      "specs": "3000 lm · 3000 K · 60° beam",
+      "wattsEachEstimate": 23.333333333333332,
+      "itemIds": [
+        "L-WING-GABLE-B-R",
+        "L-WING-GABLE-B-F",
+        "L-WING-GABLE-H-F",
+        "L-WING-GABLE-H-R"
+      ]
+    },
+    {
+      "board": "DB1",
+      "circuit": "LW",
+      "type": "nicheCandle",
+      "product": "Statue candle light · electric flame",
+      "quantity": 4,
+      "modelSize": [
+        0.18000000715255737,
+        0.5081999894604087,
+        0.18000000715255737
+      ],
+      "specs": "40 lm · 2200 K",
+      "wattsEachEstimate": 1,
+      "itemIds": [
+        "L-WING-STATUE-B-N-1",
+        "L-WING-STATUE-B-N-2",
+        "L-WING-STATUE-H-N-1",
+        "L-WING-STATUE-H-N-2"
       ]
     },
     {

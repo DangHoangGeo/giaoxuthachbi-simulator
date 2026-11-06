@@ -87,7 +87,8 @@
     if(x>=44.4 && x<=48.6 && az>=3.2 && az<=3.85)return false;
     // Sanctuary fit-out: the open service room is bounded by the C/G walls and the
     // rear gable (its doors are closed); side benches, furniture.
-    if (x >= 48.7 && x <= 53.4 && az > 7.1 && az < 7.6) return false;
+    // Owner, 7 Nov 2026: one doorway on each side of the service room (bay 11–12) to the porch.
+    if (x >= 48.7 && x <= 53.4 && az > 7.1 && az < 7.6 && Math.abs(x - 50.8455) >= .85) return false;
     if (x >= 52.7 && x <= 53.4 && az < 7.6) return false;
     if (x >= 37.7 && x <= 43.45 && Math.abs(x - 40.575) > .42 && [8.35,9.25,10.15,11.05,11.95].some(r => Math.abs(az - r) < .33)) return false;
     if (x >= 52.1 && x <= 53.1 && az < 3.1) return false;
@@ -479,7 +480,7 @@
       mesh(merge(carved),mat.trim,bay,'Inner window carving · E02 capitals and roundel').userData=status;
     }
     for(const bay of sideBays) {
-      const inner=bay.name.startsWith('Inner wall '),door=inner&&/ (4–5|8–9)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
+      const inner=bay.name.startsWith('Inner wall '),door=inner&&/ (4–5|8–9|11–12)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
       // Owner, 3 Nov 2026: the wing-end windows follow EW too, at the drawn centres ±2.45 (were ±2.4).
       const profile=(inner&&!door||wing)&&sideCAD?sideCAD.window:null,centres=wing?[-2.45,2.45]:profile?.centres;
       if(profile)rebuildSideOpening(bay,profile,centres,!wing);

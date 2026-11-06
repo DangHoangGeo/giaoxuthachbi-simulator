@@ -41,7 +41,8 @@
  const sconces=it=>/^Sconce · axis [3-9] · [BH]$/.test(it.name);
  function apply(items,GEO,SIM){
   const g=geometry(SIM);
-  if(!g.main||g.bands.length!==4)throw new Error('Door-head geometry changed; review sign supports before updating defaults.');
+  // Six head bands since 7 Nov 2026: the side doors in bays 4–5 and 8–9 and the service-room doors in 11–12 (owner).
+  if(!g.main||g.bands.length!==6)throw new Error('Door-head geometry changed; review sign supports before updating defaults.');
   for(const it of items.filter(it=>it.type==='exitSign')){
    if(it.name==='Exit sign · main doors'){
     const y=g.main.min.y-.095;

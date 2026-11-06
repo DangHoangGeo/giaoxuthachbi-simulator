@@ -83,6 +83,41 @@
   // niche aedicule (front +3.805 m), which stands 1.6 m behind the gables they lit before.
   const CROWN_WASH_TARGET = [3.85, 19.6, 0], CROWN_WASH_TARGET_BEFORE = [2.2, 18.6, 0];
 
+  // LW · wing gables, owner request of 7 November 2026: on each wing gable (roofline.js, EW) two
+  // hidden uplights in the cornice colour lie on the ground-storey cornice ledge, one at each side
+  // between the inner and the corner pier, aimed up and in so the rakes, inner piers, rose and
+  // aedicule are washed evenly from both sides (owner, same day: 'ra hai bên … cân bằng hơn'; first
+  // tried either side of the rose). Two candle lights stand on the pedestal in the aedicule niche at
+  // the top, kept for a statue not chosen yet. (Pedestals and candles at the feet of the inner piers
+  // were tried and dropped the same day at the owner's word.) Uplight output, optic, product,
+  // weatherproofing, fixing and access at height: ENGINEERING HOLD.
+  const WING_GABLE_UPLIGHT = { u: 3.15, w: 0.10, outreach: 0.06, target: [1.4, 11.6, 0.10], lumens: 3000, beam: 60 };
+  function wingGableLights() {
+    const G = window.CHURCH_ROOFLINE?.spec.side ?? { x: 40.575, face: 13.56, aedicule: { base: 9.829528705 } };
+    const out = [], U = WING_GABLE_UPLIGHT;
+    for (const s of [-1, 1]) {
+      const B = side(s), at = (u, y, w) => [+(G.x + s * u).toFixed(4), +y.toFixed(4), +(s * (G.face + w)).toFixed(4)];
+      const end = x => x < G.x ? 'front' : 'rear';
+      for (const e of [-1, 1]) {
+        const p = at(e * U.u, 6.324, U.w), lens = lensAt(p, s * 90, U.outreach, 0.075), a = aim(lens, at(e * U.target[0], U.target[1], U.target[2]));
+        out.push({ id: `L-WING-GABLE-${B}-${end(p[0]) === 'front' ? 'F' : 'R'}`, type: 'ledgeFlood', name: `Wing gable uplight · ${B} · ${end(p[0])}`, circuit: 'LW', mount: 'floor',
+          pos: p, yaw: a.yaw, tilt: a.tilt, mountYaw: s * 90, beam: U.beam, lumens: U.lumens, cct: 3000, params: { outreach: U.outreach },
+          note: 'OWNER REQUEST 7 Nov 2026 / CONCEPT: compact flood in the cornice colour on the ground-storey cornice ledge, behind the lip. Product, photometry, glare, weatherproofing, fixing and safe access at height: ENGINEERING HOLD.' });
+      }
+      const places = [['N', 'aedicule niche', [-0.30, 0.30].map(u => at(u, G.aedicule.base + 0.55, 0.14))]];
+      for (const [code, where, pair] of places) pair.forEach((pos, k) => out.push({ id: `L-WING-STATUE-${B}-${code}-${k + 1}`, type: 'nicheCandle',
+        name: `Wing statue candle · ${B} · ${where} · ${k + 1}`, circuit: 'LW', mount: 'floor', pos, yaw: s * 90, mountYaw: s * 90,
+        note: 'OWNER REQUEST 7 Nov 2026: two candle lights at each place kept for a statue; the statue is not chosen yet. CONCEPT electric candle; product, weather protection, fixing and lamp access at height pending.' }));
+    }
+    return out;
+  }
+  const wingGableLightsRevision = '2026-11-07-wing-gable-lights-1';
+  // Adds the new LW fittings once, switched as the current scene sets LW. A fitting the user later deletes stays deleted.
+  function upgradeWingGableLights(items, design, _geo, scene = {}) {
+    const have = new Set(items.map(it => it.id)), dim = Math.max(0, Math.min(1, scene.LW ?? 0));
+    return [...items, ...design.filter(it => it.circuit === 'LW' && /^L-WING-(GABLE|STATUE)-/.test(it.id) && !have.has(it.id)).map(it => ({ ...it, on: dim > 0, dim }))];
+  }
+
   function recommended(GEO, SIM) {
     const A = GEO.axes, items = [];
     // Stamp every original slot before retiring items, so downstream IDs never shift.
@@ -653,6 +688,7 @@
       lumens: 800, beam: 30, cct: 2700, shadow: false,
       note: 'CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.'
     });
+    wingGableLights().forEach(add);
     window.CHURCH_VERANDA_REVIEW?.apply(items,GEO);
     window.CHURCH_DOORHEAD_REVIEW?.apply(items,GEO,SIM);
     return items.filter(it => !['D299','D305','D296','D302','L219',...wingSoundRetiredIds, ...wingReviewRetiredIds].includes(it.id) && !parishRetiredNames.test(it.name) && !isFestivalString(it));
@@ -1522,5 +1558,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { sanctuaryPalmsRevision, upgradeSanctuaryPalms, goldCoveRevision, goldCoveNames, goldCoveBefore, upgradeGoldCove, festivalStringsRevision, upgradeFestivalStrings, festivalTerraceRevision, upgradeFestivalTerrace, rearSideLightsRevision, upgradeRearSideLights, entranceInteriorRevision, upgradeEntranceInterior, centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { wingGableLightsRevision, upgradeWingGableLights, WING_GABLE_UPLIGHT, sanctuaryPalmsRevision, upgradeSanctuaryPalms, goldCoveRevision, goldCoveNames, goldCoveBefore, upgradeGoldCove, festivalStringsRevision, upgradeFestivalStrings, festivalTerraceRevision, upgradeFestivalTerrace, rearSideLightsRevision, upgradeRearSideLights, entranceInteriorRevision, upgradeEntranceInterior, centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

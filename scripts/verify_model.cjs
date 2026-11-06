@@ -143,17 +143,17 @@ assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
 }
 assert.equal(nodes.filter(o=>o.name==='Outer door fixed fanlight').length,0,'No outer porch doors (open arcade)');
 const clearBodies=nodes.filter(o=>/^(Inner|Outer) window clear glass body$/.test(o.name));
-assert.equal(clearBodies.filter(o=>o.name.startsWith('Inner')).length,28,'Paired windows in the inner wall of seven bays per side, incl. bay 10–11 (25 Oct 2026)');
+assert.equal(clearBodies.filter(o=>o.name.startsWith('Inner')).length,24,'Paired windows in the inner wall of six bays per side, incl. bay 10–11 (25 Oct 2026); the service room 11–12 has a door instead (owner, 7 Nov 2026)');
 assert.equal(clearBodies.filter(o=>o.name.startsWith('Outer')).length,4,'Outer windows only in the 9–10 gables');
 assert(!nodes.some(o=>/^Proposed coloured glazing|^Stained-glass window/.test(o.name)),'Full-height decorative glazing must be removed');
 const innerHeads=nodes.filter(o=>o.name==='Inner window coloured oval');
 assert.equal(innerHeads.length,0,'the single 2.25 m inner windows are replaced by paired windows');
-assert.equal(nodes.filter(o=>o.name==='Inner doorway coloured oval').length,4);
+assert.equal(nodes.filter(o=>o.name==='Inner doorway coloured oval').length,6,'side doors in 4–5 and 8–9, service-room doors in 11–12 (owner, 7 Nov 2026)');
 assert.equal(nodes.filter(o=>o.name==='Entrance door coloured oval').length,3);
 const colouredHeads=nodes.filter(o=>/coloured oval$|fixed fanlight$|stained-glass fanlight$|rose-window infill$/.test(o.name));
-assert.equal(colouredHeads.length,63,'glass of the tower cap rosettes (towers.js), of the old side- and rear-gable roses (roofline.js) and of the 14 inner C/G wall roses (realism.js, E02 roundel since 3 Nov 2026) removed');
+assert.equal(colouredHeads.length,61,'glass of the tower cap rosettes (towers.js), of the old side- and rear-gable roses (roofline.js) and of the 14 inner C/G wall roses (realism.js, E02 roundel since 3 Nov 2026) removed; the service room has two door fanlights for its four window heads (7 Nov 2026)');
 assert(!nodes.some(o=>o.name==='Schematic rose-window infill'&&/^Inner wall /.test(o.parent?.name||'')),'no schematic glass rose on the inner C/G wall');
-assert.equal(nodes.filter(o=>o.name==='Inner window carving · E02 capitals and roundel').length,14,'E02 roundel and colonnette capitals in each of the 14 inner window bays');
+assert.equal(nodes.filter(o=>o.name==='Inner window carving · E02 capitals and roundel').length,12,'E02 roundel and colonnette capitals in each of the 12 inner window bays (11–12 has doors since 7 Nov 2026)');
 for(const o of innerHeads){o.geometry.computeBoundingBox();near(o.geometry.boundingBox.min.y,3.171,'Inner oval spring');near(o.geometry.boundingBox.max.y,4.311,'Inner oval crown');}
 for(const o of clearBodies){
   assert.equal(o.material,mat.glass);assert.equal(o.material.map,null);
@@ -647,7 +647,7 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
       const skin=face.children.find(o=>o.name==='Concrete support cladding · lacquer skin');
       const fields=face.children.filter(o=>o.name==='Concrete support · red lacquer field');
       const carvings=face.children.filter(o=>o.name==='Concrete support · carved foliage');
-      assert(skin&&fields.length&&fields.length===carvings.length,'Each support face is finished and carved');
+      assert(skin&&fields.length===carvings.length,'Each clad face is finished, and each carved face has its fields');
       assert(bounds(core).expandByScalar(.003).containsBox(bounds(skin)),'Skin follows the existing support face');
       assert.equal(skin.material.name,'Sanctuary · oxblood lacquer, satin');
       for(const carving of carvings){
@@ -798,7 +798,7 @@ assert(!nodes.some(o=>o.isMesh&&/ochre/i.test(o.material?.name||'')),'No ochre a
 assert.equal(nodes.filter(o=>o.name==='Service room ceiling edge beam').length,2);
 for(const sign of [-1,1]){
   for(const [x,z] of [[47.6,5.5],[49.6,5.5],[51.5,5.5],[50.5,3.6],[50.5,1.5]])assert(realism.walkAllowed(x,sign*z)!==false,`Service room route open at ${x}, ${sign*z}`);
-  assert.equal(realism.walkAllowed(50.8,sign*7.3),false,'C/G wall bounds the service room');
+  assert.equal(realism.walkAllowed(49.5,sign*7.3),false,'C/G wall bounds the service room');assert.notEqual(realism.walkAllowed(50.8,sign*7.3),false,'service-room doorway to the porch (7 Nov 2026)');
   assert.equal(realism.walkAllowed(52.9,sign*5.5),false,'Rear gable bounds the service room');
 }
 console.log('Sanctuary: sheet-5 frame, shrine line, chamber lining, lacquered roof timbers, door headroom, routes, open service room passed');

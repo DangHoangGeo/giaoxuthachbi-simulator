@@ -306,6 +306,13 @@
       const path=roofConnection(start,[5.32,0,p[2]]);
       return proposal([...path,[5.32,p[1],p[2]],p], 'entrance-gable', 'Above roof lining to solid front gable above terrace; local fan connection.');
     }
+    // Fittings on the outer face of a wing gable (cornice ledge, aedicule niche; owner, 7 Nov 2026):
+    // under the wing roof to the gable wall, up or down inside it, then a short lead out to the fitting.
+    if (Math.abs(p[2]) > WING && Math.abs(p[0]-40.575) < 3.9) {
+      const q=[p[0],0,s*WING], path=roofConnection(start,q);
+      return proposal([...path,[p[0],p[1],s*WING],p], 'outer-wall',
+        'Covered roof-soffit crossing into the wing-gable wall, concealed rise or drop inside it, then a short lead through the face to the fitting; weatherproof entry pending.', [cover(path,'soffit')]);
+    }
     if (it.mount === 'floor' && p[1] > 5.9) {
       const path=roofConnection(start,p);
       return proposal([...path,p], 'roof-local', 'Concealed roof route to local roof-mounted fitting; weatherproof cable entry pending.',

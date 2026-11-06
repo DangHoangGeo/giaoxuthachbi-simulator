@@ -41,8 +41,8 @@ PACKAGES = [
     },
     {
         'key': '04-den-ngoai-troi', 'code': 'DN', 'title': 'Đèn ngoài trời: hiên, lối đi, bậc thềm',
-        'circuits': ['L4', 'L5'],
-        'purpose': 'Tài liệu này chỉ nói về đèn ngoài nhà thờ ở hai bên: đèn hiên, đèn lối đi, đèn bậc thềm và đèn lồng ở các cửa bên. Các mạch này đi về tủ điện chính DB-1 trong phòng phụ trợ sau bàn thờ. Đèn mặt tiền, đèn tháp và đèn lễ hội nằm trong tài liệu 05.',
+        'circuits': ['L4', 'L5', 'LW'],
+        'purpose': 'Tài liệu này chỉ nói về đèn ngoài nhà thờ ở hai bên: đèn hiên, đèn lối đi, đèn bậc thềm, đèn lồng ở các cửa bên, đèn hắt đầu hồi hai cánh ngang và nến ở ba chỗ đặt tượng trên mỗi đầu hồi. Các mạch này đi về tủ điện chính DB-1 trong phòng phụ trợ sau bàn thờ. Đèn mặt tiền, đèn tháp và đèn lễ hội nằm trong tài liệu 05.',
         'stop': [
             'Đèn và hộp nối ngoài trời phải chịu mưa. Cấp chống nước và loại ống ngoài trời chưa được chọn.',
             'Không đục phào, gờ cửa hoặc cột hiên trang trí khi chưa có người phụ trách cho phép.',
@@ -117,6 +117,7 @@ CIRCUITS = {
     'LS': 'Đèn nến 14 chặng Đàng Thánh Giá',
     'L4': 'Đèn hiên và lối đi hai bên',
     'L5': 'Đèn bậc thềm, đường đi và đèn lồng cửa bên',
+    'LW': 'Đèn hắt đầu hồi hai cánh ngang và nến ở ba chỗ đặt tượng',
     'L6': 'Đèn chiếu sáng mặt tiền và hai tháp',
     'L9': 'Đèn lồng cửa chính và đèn chiếu ở cao độ +8.39 của hai tháp',
     'L10': 'Đèn tượng và nến ở mặt tiền',

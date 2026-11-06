@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-11-03T14:28:37.536Z",
+  "savedAt": "2026-11-06T21:57:56.015Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -67,6 +67,7 @@
     "festivalStringsRevision": "2026-11-03-festival-strings-removed-1",
     "goldCoveRevision": "2026-11-03-gold-cove-2",
     "sanctuaryPalmsRevision": "2026-11-03-sanctuary-palms-removed-1",
+    "wingGableLightsRevision": "2026-11-07-wing-gable-lights-1",
     "eveningExposureRevision": "2026-10-09-evening-160",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
@@ -7890,6 +7891,194 @@
       "lumens": 800,
       "cct": 2700,
       "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-GABLE-B-R",
+      "type": "ledgeFlood",
+      "name": "Wing gable uplight · B · rear",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        43.725,
+        6.324,
+        -13.66
+      ],
+      "yaw": 178.03634246594802,
+      "tilt": 71.39308933236235,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "outreach": 0.06
+      },
+      "note": "OWNER REQUEST 7 Nov 2026 / CONCEPT: compact flood in the cornice colour on the ground-storey cornice ledge, behind the lip. Product, photometry, glare, weatherproofing, fixing and safe access at heigh",
+      "lumens": 3000,
+      "cct": 3000,
+      "beam": 60,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-GABLE-B-F",
+      "type": "ledgeFlood",
+      "name": "Wing gable uplight · B · front",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        37.425,
+        6.324,
+        -13.66
+      ],
+      "yaw": 1.9636575340519788,
+      "tilt": 71.39308933236235,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "outreach": 0.06
+      },
+      "note": "OWNER REQUEST 7 Nov 2026 / CONCEPT: compact flood in the cornice colour on the ground-storey cornice ledge, behind the lip. Product, photometry, glare, weatherproofing, fixing and safe access at heigh",
+      "lumens": 3000,
+      "cct": 3000,
+      "beam": 60,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-STATUE-B-N-1",
+      "type": "nicheCandle",
+      "name": "Wing statue candle · B · aedicule niche · 1",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        40.875,
+        10.3795,
+        -13.7
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "OWNER REQUEST 7 Nov 2026: two candle lights at each place kept for a statue; the statue is not chosen yet. CONCEPT electric candle; product, weather protection, fixing and lamp access at height pendin",
+      "shadow": false
+    },
+    {
+      "id": "L-WING-STATUE-B-N-2",
+      "type": "nicheCandle",
+      "name": "Wing statue candle · B · aedicule niche · 2",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        40.275,
+        10.3795,
+        -13.7
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "OWNER REQUEST 7 Nov 2026: two candle lights at each place kept for a statue; the statue is not chosen yet. CONCEPT electric candle; product, weather protection, fixing and lamp access at height pendin",
+      "shadow": false
+    },
+    {
+      "id": "L-WING-GABLE-H-F",
+      "type": "ledgeFlood",
+      "name": "Wing gable uplight · H · front",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        37.425,
+        6.324,
+        13.66
+      ],
+      "yaw": -1.9636575340519788,
+      "tilt": 71.39308933236235,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "outreach": 0.06
+      },
+      "note": "OWNER REQUEST 7 Nov 2026 / CONCEPT: compact flood in the cornice colour on the ground-storey cornice ledge, behind the lip. Product, photometry, glare, weatherproofing, fixing and safe access at heigh",
+      "lumens": 3000,
+      "cct": 3000,
+      "beam": 60,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-GABLE-H-R",
+      "type": "ledgeFlood",
+      "name": "Wing gable uplight · H · rear",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        43.725,
+        6.324,
+        13.66
+      ],
+      "yaw": -178.03634246594802,
+      "tilt": 71.39308933236235,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "outreach": 0.06
+      },
+      "note": "OWNER REQUEST 7 Nov 2026 / CONCEPT: compact flood in the cornice colour on the ground-storey cornice ledge, behind the lip. Product, photometry, glare, weatherproofing, fixing and safe access at heigh",
+      "lumens": 3000,
+      "cct": 3000,
+      "beam": 60,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-STATUE-H-N-1",
+      "type": "nicheCandle",
+      "name": "Wing statue candle · H · aedicule niche · 1",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        40.275,
+        10.3795,
+        13.7
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "OWNER REQUEST 7 Nov 2026: two candle lights at each place kept for a statue; the statue is not chosen yet. CONCEPT electric candle; product, weather protection, fixing and lamp access at height pendin",
+      "shadow": false
+    },
+    {
+      "id": "L-WING-STATUE-H-N-2",
+      "type": "nicheCandle",
+      "name": "Wing statue candle · H · aedicule niche · 2",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        40.875,
+        10.3795,
+        13.7
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "OWNER REQUEST 7 Nov 2026: two candle lights at each place kept for a statue; the statue is not chosen yet. CONCEPT electric candle; product, weather protection, fixing and lamp access at height pendin",
       "shadow": false
     },
     {

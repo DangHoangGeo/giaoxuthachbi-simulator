@@ -31,7 +31,7 @@ The source of circuit membership and scene values is [engine.js](../../Thach_Bi_
 
 | Board / panel | Current function and groups | Physical design to develop |
 | --- | --- | --- |
-| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, Stations candles LS, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/F5 and exhaust V1–V3, audio groups A1–A5/MIC, seasonal X1 and indoor socket circuits P1/P2. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
+| DB-1, service room | Main distribution reference and DB-2 feeder. Interior lights L1/L2/L3/L8/LA/LD, Stations candles LS, wing-gable uplights and candles LW, circulation/path lights L4/L5, exit-sign group E1, fans F1/F2/F3/F5 and exhaust V1–V3, audio groups A1–A5/MIC, seasonal X1 and indoor socket circuits P1/P2. | Checked distribution diagram and circuit schedule; clearly labeled routine controls by area; service access, isolation, supply indication and main/sub-board identification. |
 | DB-2, ground-floor room of the H-side tower (left on site; inside the main doors until 25 Oct 2026) | Sub-board for L6 façade/towers, L7 festival exterior, L9 stage/central door, L10 façade statues and candles, F4 trial entrance circulators and event power P3/P4. Fed from DB-1. | Local manual control for those groups, feeder-availability indication and tower quick-mode buttons. Confirm physical enclosure size and installation details. |
 | EB-1, beside DB-2 in the same tower room | Festival & stage event board (parish priest, 25 October 2026): event power P3/P4 and festival exterior lights L7, fed from DB-2 and so from the DB-1 feeder. | Enclosure, devices and whether EB-1 needs its own incomer and isolation are for the electrical designer. |
 | LC-1 / lighting operator controls | Lighting groups and scene functions. | Required individual/group on/off and dimming channels; main scene keypad and any agreed local repeat controls. |
@@ -63,6 +63,7 @@ Interior lighting is switched by area ([meeting record](../engineering/parish-me
 | L8 | Wings · choir & ministers | Eight roof downlights over the wing benches, four per side (`L-WING-…`; the wing chandeliers L63/L65/L67/L69 were retired on 1 November 2026). 3,000 lm / 25 W assumed per head, 200 W L8; switch and scene levels unchanged |
 | LD | Column up/down lights | Fourteen concept fixtures on the inward faces of the main timber columns; 112 W connected. Existing scene levels and proposed local manual control apply. Physical channels, protection and wiring remain on engineering hold. |
 | LS | Stations of the Cross | 28 candles |
+| LW | Wing gables (outside) | Two cornice-colour uplights per wing gable and two candles on the aedicule-niche statue pedestal (owner, 7 November 2026; [record](../engineering/wing-gables-and-service-room-doors.md)); 8 items, scene levels as L10 |
 
 Each reading head on an axis beam belongs to the bay it lights: the head aimed toward the sanctuary to the bay after the beam, its twin to the bay before. So the axis-6 heads are split between L1 and L2. The physical board channels for these areas are still to be designed (ENG-017).
 

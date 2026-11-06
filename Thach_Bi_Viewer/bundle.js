@@ -44141,7 +44141,9 @@ void main() {
     ],
     // Doorways in bays 4–5 and 8–9. Bay 10–11 beside the sanctuary has a window: the parish
     // priest (25 Oct 2026) wants no door from the sanctuary sides to the porches.
-    b1 = new Set(["4", "8"]);
+    // Owner, 7 Nov 2026: the service room (sacristy, bay 11–12) has no windows; one doorway
+    // on each side opens it to the porch instead.
+    b1 = new Set(["4", "8", "11"]);
   for (let s of [-1, 1]) {
     for (let [e, t] of S1) {
       let n = ti.longitudinal[e],

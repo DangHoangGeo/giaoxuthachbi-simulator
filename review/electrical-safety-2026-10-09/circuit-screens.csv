@@ -35,6 +35,8 @@ LD,LD · Column up/down lights,light,DB1,LC1,14,112,,112,85.28813,S1-230-PF09-45
 LD,LD · Column up/down lights,light,DB1,LC1,14,112,,112,85.28813,S2-220-PF08-50C-6,0.636364,6,10.606061,1.5,0.331525,1.5,0.331525,77.548001,60,True,ENGINEERING HOLD · comparison screen
 LS,LS · Stations of the Cross candles,light,DB1,LC1,28,42.0,,42.0,72.81813,S1-230-PF09-45C-4,0.202899,6,3.381643,1.5,0.100752,1.5,0.100752,94.95653,60,True,ENGINEERING HOLD · comparison screen
 LS,LS · Stations of the Cross candles,light,DB1,LC1,28,42.0,,42.0,72.81813,S2-220-PF08-50C-6,0.238636,6,3.977273,1.5,0.123885,1.5,0.123885,90.827985,60,True,ENGINEERING HOLD · comparison screen
+LW,LW · Wing gables · uplights & statue candles,light,DB1,LC1,8,97.333333,,97.333333,47.132931,S1-230-PF09-45C-4,0.470209,6,7.836822,1.5,0.160673,1.5,0.160673,146.703309,60,True,ENGINEERING HOLD · comparison screen
+LW,LW · Wing gables · uplights & statue candles,light,DB1,LC1,8,97.333333,,97.333333,47.132931,S2-220-PF08-50C-6,0.55303,6,9.217172,1.5,0.197563,1.5,0.197563,140.324905,60,True,ENGINEERING HOLD · comparison screen
 P1,P1 · Sockets · side B (sanctuary + nave),power,DB1,DB1,2,,16,0,54.14313,S1-230-PF09-45C-4,16,16,100.0,6,3.035782,2.5,7.201507,212.848085,160,True,ENGINEERING HOLD · comparison screen
 P1,P1 · Sockets · side B (sanctuary + nave),power,DB1,DB1,2,,16,0,54.14313,S2-220-PF08-50C-6,16,16,100.0,10,1.929464,2.5,7.528848,203.59382,160,True,ENGINEERING HOLD · comparison screen
 P2,P2 · Sockets · side H (sanctuary + nave),power,DB1,DB1,2,,16,0,60.74313,S1-230-PF09-45C-4,16,16,100.0,6,3.405841,2.5,8.079365,189.721233,160,True,ENGINEERING HOLD · comparison screen

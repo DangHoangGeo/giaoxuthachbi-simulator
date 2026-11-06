@@ -188,6 +188,7 @@ VI = {
     'Vertex set-out from the source end': 'Định vị các điểm gãy từ đầu nguồn',
     'L10 · Façade statues & candles': 'L10 / Tượng và nến mặt tiền',
     'LS · Stations of the Cross candles': 'LS / Nến Đàng Thánh Giá',
+    'LW · Wing gables · uplights & statue candles': 'LW / Đầu hồi cánh ngang / đèn hắt và nến tượng',
     'P1 · Sockets · side B (sanctuary + nave)': 'P1 / Ổ cắm / cạnh B (cung thánh + lòng nhà)',
     'P2 · Sockets · side H (sanctuary + nave)': 'P2 / Ổ cắm / cạnh H (cung thánh + lòng nhà)',
     'P3 · Event power · tower B': 'P3 / Nguồn sự kiện / tháp B',

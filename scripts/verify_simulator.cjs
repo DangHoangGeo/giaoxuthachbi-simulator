@@ -599,7 +599,7 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   // Exhaust ventilation by zone (safety review finding 9): V1 front gable, V2 wing gables, V3 service room.
   const zone = c => SIM.state.items.filter(it => it.circuit === c && it.type === 'fanExhaust').map(it => it.id), plainCopy = v => JSON.parse(JSON.stringify(v));
   assert.deepEqual(plainCopy([zone('V1'), zone('V2'), zone('V3')]), [['F252', 'F253', 'F254', 'F255'], ['F256', 'F257', 'F258', 'F259'], ['F260']], 'exhaust fans split by zone, IDs unchanged');
-  assert.deepEqual(Object.keys(SIM.CIRCUITS).slice(-3), ['V2', 'V3', 'LS'], 'new circuits (exhaust zones, then the Stations candles of 25 Oct 2026) are appended, so existing mains band heights do not move');
+  assert.deepEqual(Object.keys(SIM.CIRCUITS).slice(-4), ['V2', 'V3', 'LS', 'LW'], 'new circuits (exhaust zones, the Stations candles of 25 Oct 2026, the wing gables of 7 Nov 2026) are appended, so existing mains band heights do not move');
   assert.deepEqual(plainCopy(SIM.CIRCUIT_ORDER.slice(SIM.CIRCUIT_ORDER.indexOf('V1'), SIM.CIRCUIT_ORDER.indexOf('V1') + 3)), ['V1', 'V2', 'V3'], 'the web app lists the exhaust zones together');
   assert.equal(new Set(SIM.CIRCUIT_ORDER).size, Object.keys(SIM.CIRCUITS).length, 'display order lists every circuit once');
   for (const [name, scene] of Object.entries(SIM.SCENES)) assert(scene.V2 === scene.V1 && scene.V3 === scene.V1, name + ': every exhaust zone takes the value V1 had');
@@ -972,7 +972,7 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   // Ledge fittings on the towers and façade (19 October 2026): each rests on a cornice, stays low
   // (about 0.15 m) and in the cornice colour, has no projecting arm, and its optic clears the masonry.
   const trim = sandbox.window.model.mat.trim, ledgeFittings = SIM.state.items.filter(i => i.type === 'ledgeBar' || i.type === 'ledgeFlood');
-  assert.equal(ledgeFittings.length, 28, 'eighteen tower washes and ten façade and stage floods on the ledges');
+  assert.equal(ledgeFittings.length, 32, 'eighteen tower washes, ten façade and stage floods and four wing-gable uplights (7 Nov 2026) on the ledges');
   for (const it of ledgeFittings) {
     assert(hit([it.pos[0], it.pos[1] + 0.1, it.pos[2]], [0, -1, 0], 0.35), 'ledge fitting rests on a cornice: ' + it.name);
     const fx = SIM.fixtures.get(it.id), head = fx.head.getWorldPosition(new T.Vector3()), box = new T.Box3().setFromObject(fx.root);

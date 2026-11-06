@@ -733,6 +733,7 @@
     'P4 · Event power · tower H': 'P4 · Nguồn sự kiện · tháp H',
     'L10 · Façade statues & candles': 'L10 · Tượng và nến mặt tiền',
     'LS · Stations of the Cross candles': 'LS · Nến Đàng Thánh Giá',
+    'LW · Wing gables · uplights & statue candles': 'LW · Đầu hồi cánh ngang · đèn hắt và nến tượng',
     'V2 · Exhaust · wing gables': 'V2 · Quạt hút · đầu hồi cánh',
     'V3 · Exhaust · service room': 'V3 · Quạt hút · phòng áo',
     'DB-1 · Main board': 'DB-1 · Tủ điện chính',
