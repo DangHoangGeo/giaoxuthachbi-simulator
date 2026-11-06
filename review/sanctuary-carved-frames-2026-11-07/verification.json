@@ -1,0 +1,60 @@
+{
+  "comparisonBase": "e1f5a34",
+  "integrationBase": "4598485",
+  "model": {
+    "command": "node scripts/verify_model.cjs",
+    "status": "passed",
+    "triangles": 6855265,
+    "displayBytes": 303278558,
+    "expandedBytes": 658105440
+  },
+  "clearance": {
+    "command": "node scripts/verify_simulator.cjs --electrical",
+    "status": "passed",
+    "components": 374,
+    "runs": 435
+  },
+  "webViewer": {
+    "commands": [
+      "node web/scripts/prepare-viewer.mjs",
+      "node web/scripts/check-viewer.mjs"
+    ],
+    "status": "passed",
+    "files": 83,
+    "bytes": 72059773
+  },
+  "webTests": {
+    "command": "npm test",
+    "cwd": "web",
+    "status": "passed",
+    "files": 12,
+    "tests": 116
+  },
+  "desktop": {
+    "comparison": "after-metrics.json",
+    "integratedVisit": "integrated-metrics.json",
+    "integratedModes": "integrated-normal-modes.json",
+    "details": "detail-metrics.json"
+  },
+  "calculationAudit": {
+    "command": "node scripts/verify_simulator.cjs --report --estimates",
+    "status": "passed calculation invariants with existing design holds retained",
+    "exitCode": 0,
+    "record": "calculation-audit.json",
+    "items": 399
+  },
+  "ribbonCase": {
+    "lengthMetres": 1,
+    "widthMetres": 0.1,
+    "heightMetres": 0.07,
+    "expectedCubicMetres": 0.004183872,
+    "outwardWinding": true
+  },
+  "remaining": [
+    "Craft and material approval",
+    "Glare and photometry validation",
+    "Fixing, access and fire performance",
+    "Known feedback, wing speech and ventilation limitations",
+    "Modest desktop frame rate unmeasured"
+  ]
+}

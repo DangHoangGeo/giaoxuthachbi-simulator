@@ -1,0 +1,38 @@
+{
+  "errors": [],
+  "metrics": [
+    {
+      "name": "arch-scroll",
+      "lighting": "day",
+      "frame": 56,
+      "calls": 64,
+      "triangles": 6828800,
+      "points": 304,
+      "lines": 0
+    },
+    {
+      "name": "shrine-scroll",
+      "lighting": "day",
+      "frame": 87,
+      "calls": 65,
+      "triangles": 6525067,
+      "points": 304,
+      "lines": 0
+    },
+    {
+      "name": "shrine-pilaster",
+      "lighting": "day",
+      "frame": 127,
+      "calls": 95,
+      "triangles": 6578211,
+      "points": 304,
+      "lines": 0
+    }
+  ],
+  "visit": {
+    "visitOnly": true,
+    "editing": false,
+    "engineeringStorageCalls": []
+  },
+  "sanctuarySHA256": "f5883de05173ae21b62305ceb0947f97f962b4b2abd5fd1b5ec3668fafb9b9b8"
+}

@@ -1,0 +1,47 @@
+{
+  "errors": [],
+  "metrics": [
+    {
+      "name": "main-arch",
+      "lighting": "day",
+      "frame": 41,
+      "calls": 321,
+      "triangles": 7155209,
+      "points": 304,
+      "lines": 0
+    },
+    {
+      "name": "main-arch",
+      "lighting": "evening",
+      "frame": 57,
+      "calls": 321,
+      "triangles": 7155209,
+      "points": 304,
+      "lines": 0
+    },
+    {
+      "name": "cove",
+      "lighting": "day",
+      "frame": 88,
+      "calls": 109,
+      "triangles": 6852968,
+      "points": 304,
+      "lines": 0
+    },
+    {
+      "name": "cove",
+      "lighting": "evening",
+      "frame": 128,
+      "calls": 109,
+      "triangles": 6852968,
+      "points": 304,
+      "lines": 0
+    }
+  ],
+  "visit": {
+    "visitOnly": true,
+    "editing": false,
+    "engineeringStorageCalls": []
+  },
+  "sanctuarySHA256": "f5883de05173ae21b62305ceb0947f97f962b4b2abd5fd1b5ec3668fafb9b9b8"
+}

@@ -32,6 +32,23 @@ const nodes=[];building.traverse(o=>nodes.push(o));
 const near=(actual,expected,msg)=>assert(Math.abs(actual-expected)<.002,`${msg}: ${actual} != ${expected}`);
 const bounds=o=>new T.Box3().setFromObject(o);
 const dimensions=o=>bounds(o).getSize(new T.Vector3());
+// Independent straight-ribbon case catches inward faces on the rolled carving.
+// The six-point section has area 1.32*w*h; w and h taper by (1 - 0.72*t).
+{
+  const source=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/sanctuary.js'),'utf8');
+  const start=source.indexOf('    function rolledScroll('),end=source.indexOf('    function carvedRosette(',start);
+  assert(start>=0&&end>start,'Rolled-scroll generator is available for the analytical check');
+  const make=vm.runInNewContext('(function(T){'+source.slice(start,end)+';return rolledScroll;})(THREE)',{THREE:T});
+  const ribbon=make([[0,0,0],[1,0,0]],.1),points=ribbon.attributes.position,index=ribbon.index;
+  const a=new T.Vector3(),b=new T.Vector3(),c=new T.Vector3();let volume=0;
+  for(let i=0;i<index.count;i+=3){
+    a.fromBufferAttribute(points,index.getX(i));b.fromBufferAttribute(points,index.getX(i+1));c.fromBufferAttribute(points,index.getX(i+2));
+    volume+=a.dot(b.cross(c))/6;
+  }
+  const expected=1.32*.1*.07*(1-.72+.72*.72/3);
+  assert(volume>0&&Math.abs(volume-expected)<1e-7,'Ribbon faces point outward and enclose the analytical tapered volume');
+  ribbon.dispose();
+}
 // Decoration remains within the old station envelope and leaves physical data alone.
 {
   assert(sandbox.window.CHURCH_DECORATION.stats.materials>10,'Decoration finishes are applied');
@@ -516,6 +533,21 @@ assert(bounds(vault).min.y>=S.centralArch.spring-.001&&bounds(vault).max.y<12.1,
   for(const o of walls){const b=bounds(o);assert(Math.min(Math.abs(b.min.z),Math.abs(b.max.z))>=S.chamber.lintelFace-.001,'Lintel stands behind the gilded cove');}
   assert(nodes.filter(o=>o.name==='Vault springing cornice').every(o=>o.material===nodes.find(n=>n.name==='Gilded cornice edge').material),'Springing cornice is gilded');
   assert(!nodes.some(o=>/^(Chamber wall pilaster|Chamber lintel soffit moulding)$/.test(o.name)),'no lacquered pilasters or soffit moulding left on the lintel');
+  const plumb=nodes.filter(o=>o.name==='Cove grid · plumb lacquer rib');
+  assert.equal(plumb.length,8,'Four ribs continue down each plumb cove');
+  assert.equal(nodes.filter(o=>o.name==='Cove grid · longitudinal lacquer strip').length,4,'Two red grid lines on each plumb face');
+  assert.equal(nodes.filter(o=>o.name==='Cove grid · cornice saddle').length,8,'Red grid joins over each cornice');
+  for(const side of [-1,1]){
+    const set=plumb.filter(o=>Math.sign(o.position.z)===side);
+    assert.deepEqual(set.map(o=>o.position.x),Array.from(S.ceilingGrid.worldStations),'Cove ribs align with the upper ceiling');
+    for(const o of set){
+      const b=bounds(o);
+      near(b.max.y,S.centralArch.spring,'Plumb rib reaches upper vault springing');
+      near(b.min.y,S.chamber.coveY,'Plumb rib joins the lower curve');
+    }
+    const ribs=nodes.filter(o=>o.name==='Side vault rib · lacquered timber'&&Math.sign(bounds(o).getCenter(new T.Vector3()).z)===side);
+    assert.deepEqual(ribs.map(o=>+o.geometry.parameters.path.points[0].x.toFixed(3)),Array.from(S.ceilingGrid.worldStations,x=>+x.toFixed(3)),'Side ribs retain the same continuous grid stations');
+  }
   assert.equal(nodes.filter(o=>o.name==='Side vault rib · lacquered timber').length,8,'Four lacquered transverse ribs per vault');
   assert.equal(nodes.filter(o=>o.name==='Vault coffer · inset lacquer moulding').length,12,'Twelve inset chamber-vault field borders follow the vault');
   assert.equal(nodes.filter(o=>o.name==='Vault coffer · side inset lacquer moulding').length,18,'Nine inset side-vault borders per side');
@@ -591,7 +623,7 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
     const m=finish(name);assert(m&&m.map&&m.bumpMap&&m.metalnessMap&&m.roughnessMap===m.metalnessMap,`${name} is a relief finish with gilded metal and lacquered ground`);
     assert(m.map.repeat.x>=1&&m.map.repeat.x<=3,`${name} repeats at a carved scale`);
   }
-  for(const [name,count,material] of [['Shrine shelf frieze',2,'Sanctuary · gilded relief'],['Reredos frieze relief',2,'Sanctuary · gilded relief'],['Carved panel relief',11,'Sanctuary · gilded scrollwork on lacquer'],['Shrine bay relief ground',2,'Sanctuary · gilded scrollwork on lacquer']]){
+  for(const [name,count,material] of [['Shrine shelf frieze',2,'Sanctuary · gilded relief'],['Reredos frieze relief',2,'Sanctuary · gilded relief'],['Carved panel relief',11,'Sanctuary · gilded scrollwork on lacquer'],['Shrine bay relief ground',2,'Sanctuary · oxblood lacquer, satin']]){
     const list=part(name);assert.equal(list.length,count,name);
     for(const o of list){
       const expected=name==='Carved panel relief'&&o.parent.name==='Central gilded reredos'?'Sanctuary · oxblood lacquer, satin':material;
@@ -735,7 +767,31 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
       for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(arch.matrixWorld);assert(!b.containsPoint(v),'Side niche mouldings clear the pilaster shafts');}
     }
   }
-  for(const o of nodes.filter(o=>/^Front frame (central|side) spandrel$/.test(o.name)))assert.equal(o.material.name,'Sanctuary · gilded scrollwork on lacquer','Front frame carries gilded scrollwork');
+  for(const o of nodes.filter(o=>/^Front frame (central|side) spandrel$/.test(o.name)))assert.equal(o.material.name,'Sanctuary · oxblood lacquer, satin','Front frame has lacquer behind its sculpted gold borders');
+  const fitted=nodes.filter(o=>o.userData.reliefMask);
+  assert.equal(fitted.length,20,'Sculpted borders on five frames, both shrines and the reredos');
+  for(const o of fitted){
+    assert(o.userData.repeats>0,'Fitted carving has complete scrolls: '+o.name);
+    const mask=o.userData.reliefMask;
+    const outer=mask.contour.map(([x,y])=>({x,y})),holes=mask.holes.map(h=>h.map(([x,y])=>({x,y})));
+    const backingName=o.name.startsWith('Shrine ·')?'Shrine bay fill · lacquered timber':
+      o.name.startsWith('Reredos ·')?'Reredos carved ground':o.name.replace(/ · (rolled scroll border|foliate outer field)$/,'');
+    const backing=o.parent.children.find(p=>{
+      if(p.name!==backingName)return false;
+      const first=p.geometry.parameters.shapes.getPoints(36)[0];
+      return Math.abs(first.x-outer[0].x)<1e-6&&Math.abs(first.y-outer[0].y)<1e-6;
+    });
+    assert(backing,'Carving has its actual backing: '+o.name);
+    const shape=backing.geometry.parameters.shapes;
+    const contour=shape.getPoints(36),openings=shape.holes.map(h=>h.getPoints(36));
+    const vertices=o.geometry.attributes.position;
+    for(let i=0;i<vertices.count;i++){
+      const x=vertices.getX(i),y=vertices.getY(i);
+      assert(insidePolygon(x,y,outer)&&!holes.some(h=>insidePolygon(x,y,h)),'Fitted carving respects the reserved field: '+o.name);
+      assert(insidePolygon(x,y,contour)&&!openings.some(h=>insidePolygon(x,y,h)),'Carving remains on its actual supporting face: '+o.name);
+      assert(vertices.getZ(i)+o.position.z>=o.userData.face-.006,'Raised scroll stays on the visible side of its backing');
+    }
+  }
   for(const [name,material] of [['Blue crucifix recess','Sanctuary · blue niche'],['Wing blue niche','Sanctuary · shrine niche blue']])for(const o of part(name)){assert.equal(o.material.name,material);assert(o.material.map,`${name} has its glow`);}
   assert.equal(part('Wing blue niche').length,2);
   assert.equal(part('Carved pinnacle').length,8,'Four spires on the reredos pilasters and four on the gradine');

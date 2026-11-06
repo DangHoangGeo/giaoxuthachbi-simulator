@@ -10,6 +10,8 @@ Owner brief: improve exterior, interior and sanctuary decoration and visual real
 
 The second sanctuary detail pass carries the carving into the canopy band, crown scroll, niche architrave, central capitals, lower friezes and seven lotus panels. Paired climbing vines give the central and side-shrine pilasters a fuller parcel-gilt field. All new gold remains authored procedural display relief on the existing lacquer or gilded surfaces.
 
+**Rich frame carving and continuous grid, 7 November 2026:** Fitted rolled-scroll borders, layered fronds, multi-ring flowers and fuller pilaster panels develop the main arch and side shrines. The red grid now follows shared stations across the chamber ceiling, cornice, plumb cove and side vaults. The five spandrels and shrine backgrounds carry satin lacquer under the sculpted gold. See the [owning model revision](sanctuary-model.md#rich-carved-frames-and-continuous-red-ceiling-grid--7-november-2026) and [desktop review](../review/sanctuary-carved-frames-2026-11-07/README.md). Finish, craft and engineering approval remain pending.
+
 ## Sources and cultural direction
 
 - [Project appearance hierarchy](church-view-renderings.md): ivory mineral plaster, terracotta roofs, stone paving, carved red lacquer and parcel gilding. The selected [sanctuary concept](../Thach_Bi_Viewer/references/02-sanctuary/concepts/09-sanctuary-approved-concept.png) governs the blue crucifix and saint recesses, layered gilding and lacquer. These remain concepts, not measured finishes.

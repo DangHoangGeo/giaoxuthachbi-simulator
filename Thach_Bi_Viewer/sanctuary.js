@@ -46,6 +46,11 @@
     floor:{revision:'2026-11-01-sanctuary-floor-cad-1',
       apron:{front:37.475,half:5,back:44.065},dais:{front:38.475,half:4,back:48.65},
       stair:{x0:38.475,x1:39.345,half:.95,tread:.29},side:{x0:44.065,x1:52.63,inner:3.63,outer:7.11}} };
+  // Owner, 7 Nov 2026: one red grid from chamber ceiling through the cove
+  // to both side vaults. These are display-finish sections, not member sizing.
+  spec.ceilingGrid={revision:'2026-11-07-continuous-cove-grid-1',
+    localStations:[-1,-1.85,-2.7,-3.55],plumbWidth:.095,plumbDepth:.018};
+  spec.ceilingGrid.worldStations=spec.ceilingGrid.localStations.map(v=>spec.frameX-v);
   // Owner request, 1 November 2026: the roof timbers looked flimsy. These are VISUALIZATION PROXY sections
   // (metres) for the exposed roof members; none is a structural design (ENGINEERING HOLD). Every member
   // grows downward or inward from the unmoved boarded lining and never through it, so the tie and
@@ -362,20 +367,20 @@
       return window.CHURCH_BATCHES.merge(T,parts.map(([geo,matrix])=>({geo,matrix:matrix||identity})));
     }
 
-    function carvedBlade(len,wid,curl=.85) {
-      const blade=K.leaf({len,wid,thick:len*.085,curl,lobes:5,cup:.32,seg:14});
+    function carvedBlade(len,wid,curl=.85,lobes=5,segments=14) {
+      const blade=K.leaf({len,wid,thick:len*.085,curl,lobes,cup:.32,seg:segments});
       const vein=[];
       let y=0,z=0;
-      for(let i=0;i<=14;i++){
-        const t=i/14;
+      for(let i=0;i<=segments;i++){
+        const t=i/segments;
         if(i){
-          const a=curl*Math.pow((i-.5)/14,2.5);
-          y+=len/14*Math.cos(a);z+=len/14*Math.sin(a);
+          const a=curl*Math.pow((i-.5)/segments,2.5);
+          y+=len/segments*Math.cos(a);z+=len/segments*Math.sin(a);
         }
         const a=curl*Math.pow(t,2.5),ridge=len*.085*(1-.55*t);
         vein.push([0,y-Math.sin(a)*ridge,z+Math.cos(a)*ridge]);
       }
-      return mergeRelief([[blade,null],[K.stem(vein,len*.018,len*.002,20,5),null]]);
+      return mergeRelief([[blade,null],[K.stem(vein,len*.018,len*.002,segments,4),null]]);
     }
 
     // A running vine with alternating curled leaves, rooted side scrolls and small
@@ -402,6 +407,107 @@
       return mergeRelief(parts);
     }
 
+    // A solid rolled ribbon gives each scroll a broad carved shoulder and
+    // recessed return. It keeps indexed vertices and a closed cross-section.
+    function rolledScroll(points,width){
+      const curve=new T.CatmullRomCurve3(points.map(p=>new T.Vector3(...p)));
+      const positions=[],uv=[],indices=[],steps=32;
+      const section=[[-1,0],[-.72,.42],[0,1],[.72,.42],[1,0],[0,-.18]];
+      for(let i=0;i<=steps;i++){
+        const t=i/steps,p=curve.getPointAt(t),d=curve.getTangentAt(t);
+        const taper=1-.72*t,w=width*taper,h=width*.7*taper;
+        for(let j=0;j<section.length;j++){
+          const [across,rise]=section[j];
+          positions.push(p.x-d.y*across*w,p.y+d.x*across*w,p.z+rise*h);
+          uv.push(t,j/section.length);
+          if(i<steps){
+            const a=i*6+j,b=i*6+(j+1)%6,c=a+6,e=b+6;
+            indices.push(a,c,b,b,c,e);
+          }
+        }
+      }
+      for(let j=1;j<5;j++)indices.push(0,j,j+1,steps*6,steps*6+j+1,steps*6+j);
+      const geometry=new T.BufferGeometry();
+      geometry.setAttribute('position',new T.Float32BufferAttribute(positions,3));
+      geometry.setAttribute('uv',new T.Float32BufferAttribute(uv,2));
+      geometry.setIndex(indices);geometry.computeVertexNormals();
+      return geometry;
+    }
+
+    function carvedRosette(radius){
+      const pieces=[];
+      for(const [n,scale,tilt] of [[12,1,.22],[9,.68,.56],[7,.38,.88]]){
+        const petal=K.leaf({len:radius*scale,wid:radius*scale*.83,thick:radius*.08,curl:1.05,lobes:0,cup:.55,seg:8});
+        for(let i=0;i<n;i++)pieces.push([petal,K.place(K.RX(tilt),K.RZ((i+.35*scale)/n*Math.PI*2))]);
+      }
+      pieces.push([new T.SphereGeometry(radius*.15,10,6),K.TR(0,0,radius*.07)]);
+      return mergeRelief(pieces);
+    }
+
+    // Paired volutes carry broad overlapping fronds. This is a complete
+    // carved repeat with a shared root, rather than separate leaf sprigs.
+    const scrollRepeats=new Map();
+    function scrollRepeat(w,h){
+      const key=w+'/'+h;
+      if(scrollRepeats.has(key))return scrollRepeats.get(key);
+      const pieces=[],size=Math.min(w,h),flower=carvedRosette(size*.22);
+      pieces.push([flower,K.TR(0,-h*.24,.008)]);
+      for(const side of [-1,1]){
+        const spiral=K.scroll(w*.22,0,w*.22,1.25,-Math.PI/2,1,40)
+          .map(([x,y])=>[side*x,y*h/(w*.64),.008]);
+        const root=[[0,-h*.42,0],[side*w*.12,-h*.40,0],spiral[0]];
+        pieces.push([rolledScroll([...root,...spiral.slice(1)],size*.048),null]);
+        const curve=new T.CatmullRomCurve3(spiral.map(p=>new T.Vector3(...p)));
+        for(let i=0;i<7;i++){
+          const t=.08+i*.115,p=curve.getPointAt(t),d=curve.getTangentAt(t);
+          const length=size*(.36-.16*t),angle=Math.atan2(d.y,d.x)-Math.PI/2+side*.85;
+          const blade=carvedBlade(length,length*.64,1.05,3,10);
+          pieces.push([blade,K.place(K.RZ(angle),K.TR(p.x,p.y,p.z+.005))]);
+          const small=carvedBlade(length*.55,length*.34,1.25,2,8);
+          pieces.push([small,K.place(K.RZ(angle-side*1.45),K.TR(p.x,p.y,p.z+.009))]);
+        }
+      }
+      const geometry=mergeRelief(pieces);
+      scrollRepeats.set(key,geometry);return geometry;
+    }
+
+    function insideReliefShape(x,y,shape){
+      const inside=polygon=>{
+        let hit=false;
+        for(let i=0,j=polygon.length-1;i<polygon.length;j=i++){
+          const a=polygon[i],b=polygon[j];
+          if((a.y>y)!==(b.y>y)&&x<(b.x-a.x)*(y-a.y)/(b.y-a.y)+a.x)hit=!hit;
+        }
+        return hit;
+      };
+      return inside(shape.contour)&&!shape.holes.some(inside);
+    }
+
+    // Whole repeats are fitted to the actual supporting shape. A repeat is
+    // omitted at a tight corner instead of cutting leaves across an opening.
+    function reliefBand(g,shape,points,{name,face,offset,w,h,count}){
+      const mask={contour:shape.getPoints(36),holes:shape.holes.map(hole=>hole.getPoints(36))};
+      const curve=new T.CatmullRomCurve3(points.map(p=>new T.Vector3(p.x,p.y,0)));
+      const repeat=scrollRepeat(w,h),parts=[],p=new T.Vector3();
+      for(let i=0;i<count;i++){
+        const t=(i+.5)/count,at=curve.getPointAt(t),d=curve.getTangentAt(t);
+        const x=at.x-d.y*offset,y=at.y+d.x*offset;
+        const matrix=K.place(K.RZ(Math.atan2(d.y,d.x)),K.TR(x,y,0));
+        const vertices=repeat.attributes.position;
+        let fits=true;
+        for(let v=0;v<vertices.count;v++){
+          p.fromBufferAttribute(vertices,v).applyMatrix4(matrix);
+          if(!insideReliefShape(p.x,p.y,mask)){fits=false;break;}
+        }
+        if(fits)parts.push([repeat,matrix]);
+      }
+      const relief=mesh(mergeRelief(parts),gold,g,name,0,0,face);
+      relief.userData={status:'CONCEPT · fitted rolled-scroll and layered foliage relief',
+        engineeringApproved:false,source:'Approved sanctuary concept; owner review, 7 Nov 2026',
+        repeats:parts.length,reliefMask:{contour:mask.contour.map(p=>[p.x,p.y]),holes:mask.holes.map(hole=>hole.map(p=>[p.x,p.y]))},face};
+      return relief;
+    }
+
     function pilasterRelief(g,{u,y0,y1,w,face,depth,name}){
       const h=y1-y0,mid=(y0+y1)/2,fieldW=w*.88,front=face+.030;
       box(g,fieldW,h,.018,u,mid,face+.004,satin,name+' · red lacquer field');
@@ -413,20 +519,16 @@
       for(const y of [y0+.006,y1-.006])box(g,fieldW,.012,.012,u,y,front,gold,name+' · gilded edge');
       const pieces=[];
       if(name==='Central pilaster'||name==='Wing pilaster'){
-        const sway=w*.09,modules=Math.max(3,Math.round(h/.55));
-        // Long S-curves form a climbing vine. Alternating leaves and tight volutes
-        // fill the panel width while the border keeps its clear lacquer margin.
-        const path=Array.from({length:modules*4+1},(_,i)=>{
-          const t=i/(modules*4);
-          return [(Math.sign(u)||1)*sway*Math.sin(t*modules*Math.PI*2),.07+(h-.18)*t,0];
-        });
-        pieces.push([carvedVine(path,{size:w*.40,count:modules*3,mirror:Math.sign(u)||1}),null]);
-        // A smaller counter-vine weaves through the main stem, forming fuller
-        // carved knots while keeping the outer lacquer margin readable.
-        const counterPath=path.map(([x,y,z])=>[-x,y,z+.004]);
-        pieces.push([carvedVine(counterPath,{size:w*.28,count:modules*4,mirror:-(Math.sign(u)||1)}),null]);
-        const foot=K.bloom({r:w*.25,petals:9,rings:3,seg:6});
-        pieces.push([foot,K.place(K.SC(1,.8,.65),K.TR(0,.09,.008))]);
+        const repeat=scrollRepeat(w*.82,w*1.35);
+        repeat.computeBoundingBox();
+        const bounds=repeat.boundingBox,size=bounds.getSize(new T.Vector3()),middle=bounds.getCenter(new T.Vector3());
+        const count=Math.max(4,Math.round(h/(w*1.45))),pitch=(h-.14)/count;
+        pieces.push([K.stem([[0,.06,0],[0,h-.06,0]],.008,.006,20,6),null]);
+        for(let i=0;i<count;i++){
+          const matrix=K.place(K.TR(-middle.x,-middle.y,-bounds.min.z),
+            K.SC(w*.75/size.x,pitch*.90/size.y,.72),K.TR(0,.07+pitch*(i+.5),0));
+          pieces.push([repeat,matrix]);
+        }
       }else{
         const amp=w*.04,n=Math.max(3,Math.round(h/.36)),stemX=t=>amp*Math.sin(t*Math.PI*2);
         pieces.push([K.stem(Array.from({length:25},(_,i)=>{const t=i/24;return [stemX(t),h*t,0];}),.011,.007,48,7),null]);
@@ -475,9 +577,13 @@
     function lobedFrame(g,cx,half,a,name,blooms){
       const shape=lobed(cx,half,a),trace=shape.getPoints(12);
       shape.lineTo(cx+half,roofY(cx+half));if(!cx)shape.lineTo(0,roofY(0));shape.lineTo(cx-half,roofY(cx-half));shape.closePath();
-      mesh(new T.ExtrudeGeometry(shape,{depth:.32,bevelEnabled:false,curveSegments:32}),scrollwork,g,name,0,0,-.16);
+      mesh(new T.ExtrudeGeometry(shape,{depth:.32,bevelEnabled:false,curveSegments:32}),satin,g,name,0,0,-.16);
       for(const v of [-.19,.19])line(g,trace.map(p=>[p.x,p.y,v]),.06);
       crest(g,trace.map(p=>[p.x,p.y]),.2,half>2?.22:.15,blooms,-1,'Gilded arch cresting');
+      const large=half>2;
+      reliefBand(g,shape,trace,{name:name+' · rolled scroll border',face:.166,offset:large?.30:.20,w:large?.43:.29,h:large?.27:.20,count:large?30:20});
+      reliefBand(g,shape,trace,{name:name+' · foliate outer field',face:.166,offset:large?.72:.51,w:large?.53:.33,h:large?.37:.27,count:large?24:17});
+
       // A fine inner bead and individually modelled floral relief make the arch read as
       // layered carving at eye level. Keep it on the spandrel face, outside the opening.
       line(g,trace.map(p=>[cx+(p.x-cx)*.985,p.y+.11,.185]),.014,gold,'Arch inner gilded bead');
@@ -620,6 +726,19 @@
     {
       const ground=archShape(3.1,6.6,2.3,2.3);ground.holes.push(opening(N.lining+.1));
       mesh(new T.ShapeGeometry(ground,18),reredosLacquer,center,'Reredos carved ground',0,0,.134).castShadow=false;
+      const carvingField=ground.clone();
+      for(const sign of [-1,1])for(const u of [sign*2.15,sign*2.79]){
+        const reserve=new T.Path();
+        reserve.moveTo(u-.21,2.4);reserve.lineTo(u+.21,2.4);reserve.lineTo(u+.21,7.48);reserve.lineTo(u-.21,7.48);reserve.closePath();
+        carvingField.holes.push(reserve);
+      }
+      const crownReserve=new T.Path();
+      crownReserve.moveTo(-.27,7.60);crownReserve.lineTo(.27,7.60);crownReserve.lineTo(.27,8.80);crownReserve.lineTo(-.27,8.80);crownReserve.closePath();
+      carvingField.holes.push(crownReserve);
+      const carvingArc=outline(.14).getPoints(32).filter(p=>p.y>=N.spring-.001);
+      reliefBand(center,carvingField,carvingArc,{name:'Reredos · rolled arch scrolls',face:.155,offset:.25,w:.36,h:.27,count:24});
+      reliefBand(center,carvingField,carvingArc,{name:'Reredos · layered shoulder carving',face:.155,offset:.58,w:.41,h:.30,count:22});
+
       // A connected, mirrored foliate spray fills the clear field above the niche.
       // It stops inside the pilasters and below the outer canopy instead of crossing them.
       const ornament=mesh(mergeRelief([
@@ -734,11 +853,11 @@
     const depth=spec.frameX-48.52,inner=lobed(0,A.half,A).getPoints(12);
     const outer=lobed(0,A.half+.08,{spring:A.spring,shoulder:A.shoulder+.09,crown:A.crown+.09}).getPoints(12).reverse();
     mesh(new T.ExtrudeGeometry(new T.Shape(inner.concat(outer)),{depth:-depth-.16,bevelEnabled:false}),leafGold,front,'Chamber vault · gilded boarding',0,0,depth);
-    for(const v of [-1,-1.85,-2.7,-3.55])line(front,inner.map(p=>[p.x,p.y-.02,v]),.075,wood,'Chamber vault rib · lacquered timber');
+    for(const v of spec.ceilingGrid.localStations)line(front,inner.map(p=>[p.x,p.y-.02,v]),.075,wood,'Chamber vault rib · lacquered timber');
     const vaultPath=new T.CatmullRomCurve3(inner.map(p=>new T.Vector3(p.x,p.y,0)));
     for(const t of [.14,.32,.5,.68,.86]){
       const p=vaultPath.getPoint(t);box(front,.09,.09,-depth-.2,p.x,p.y-.03,(depth-.16)/2,wood,'Chamber vault longitudinal rib');
-      for(const v of [-1,-1.85,-2.7,-3.55])vaultBoss(front,p.x,p.y-.07,v);
+      for(const v of spec.ceilingGrid.localStations)vaultBoss(front,p.x,p.y-.07,v);
     }
     // Thin inset lacquer lines trace the existing coffer fields, following the
     // actual vault curve and stopping short of the structural-looking ribs.
@@ -832,12 +951,30 @@
       // not show through the side arch above the shrine. Gilded band, blooms and rosette fill the head of the arch.
       const bay=new T.Shape(),zc=sign*spec.wingZ,edge=1.75;
       bay.moveTo(-edge,2.85);bay.lineTo(edge,2.85);bay.lineTo(edge,roofY(zc+edge));bay.lineTo(-edge,roofY(zc-edge));bay.closePath();
-      slab(g,bay,-.55,-.42,wood,'Shrine bay fill · lacquered timber');plate(g,3.3,4.2,0,5.0,-.416,scrollwork,'Shrine bay relief ground');
+      slab(g,bay,-.55,-.42,wood,'Shrine bay fill · lacquered timber');plate(g,3.3,4.2,0,5.0,-.416,satin,'Shrine bay relief ground');
       const head=lobed(0,1.4,{spring:5.95,shoulder:6.5,crown:7.02}).getPoints(12),headPath=new T.CatmullRomCurve3(head.map(p=>new T.Vector3(p.x,p.y,-.38)));
       line(g,head.map(p=>[p.x,p.y,-.385]),.035);
       crest(g,head.map(p=>[p.x,p.y]),-.38,.13,16,-1,'Gilded arch cresting');
       flower(g,0,7.42,-.38,.13);for(const e of [-1,1])flower(g,e*.62,7.2,-.38,.08);
       arch(g,.89,5.2,1.0,2.95,-.36,glowing(wingBlue,wingGlow,.89,2.95,3.25),'Wing blue niche');
+      const shrineField=bay.clone();
+      shrineField.holes.push(new T.Path(archShape(.98,5.2,1.08,2.89).getPoints(32).reverse()));
+      // Reserve the four pilaster faces and their pinnacles as holes in the mask.
+      for(const e of [-1,1]){
+        const reserved=new T.Path();
+        reserved.moveTo(e*1.14-.17,2.88);reserved.lineTo(e*1.14+.17,2.88);
+        reserved.lineTo(e*1.14+.17,6.60);reserved.lineTo(e*1.14-.17,6.60);reserved.closePath();
+        shrineField.holes.push(reserved);
+      }
+      const shrineArc=archShape(.89,5.2,1,2.95).getPoints(32).filter(p=>p.y>=5.2-.001);
+      reliefBand(g,shrineField,shrineArc,{name:'Shrine · carved arch scrolls',face:-.410,offset:.36,w:.35,h:.25,count:16});
+      const outerArc=lobed(0,1.4,{spring:5.95,shoulder:6.5,crown:7.02}).getPoints(32);
+      reliefBand(g,shrineField,outerArc,{name:'Shrine · carved canopy scrolls',face:-.410,offset:.22,w:.36,h:.27,count:18});
+      for(const e of [-1,1]){
+        const strip=[new T.Vector2(e*1.48,3.05),new T.Vector2(e*1.48,5.75)];
+        reliefBand(g,shrineField,strip,{name:'Shrine · carved side screen',face:-.410,offset:0,w:.35,h:.24,count:7});
+      }
+
       // Keep the niche arch on the opening side of the two pilasters. The
       // previous wider crowns crossed their shafts and pinnacles.
       for(const grow of [.025,.075]){
@@ -973,25 +1110,41 @@
         const coveGeometry=new T.BufferGeometry().setFromPoints(positions.splice(covePositions));coveGeometry.computeVertexNormals();
         const coveBoard=mesh(coveGeometry,leafGold,g,'Side vault · gilded cove to the chamber vault');
         coveBoard.userData={status:'CONCEPT · gilded boarding from the chamber vault springing to the side vault; boarding, framing and fixings pending',engineeringApproved:false,source:'Owner request 3 Nov 2026; docs/sanctuary-model.md'};
-        // Owner, 3 Nov 2026: the cove carries the red grid of the vaults, so that it does not read as one long
-        // gold sheet. Transverse ribs at both ends and at two stations between run from the foot of the plumb
-        // face over the cove and on over the side vault; longitudinal ribs at the foot of the plumb face, at a
-        // third and two thirds of the cove's curve and in the valley where it meets the side vault, then the
-        // side vault's own five, on the same fractions as the chamber vault (the shrine lights hang from the
-        // first, |z| 4.14). A gilded boss at each crossing. The plumb face stays clear for the chamber lights.
-        const stations=[0,3,5,steps],profiles=rows.map((R,i)=>cove[i].inner.slice(1).concat(R.inner.slice(1)));
-        for(const i of stations)line(g,profiles[i].map(p=>[xs[i],p.y-.02,sign*p.x]),.065,wood,'Side vault rib · lacquered timber');
+        // Owner, 7 Nov 2026: align the four transverse ribs with the chamber
+        // ceiling, continue across the plumb cove, and retain the side-vault grid.
+        // Shrine-light bearing ribs and all equipment positions stay at their
+        // recorded coordinates. Fixing, access and glare remain engineering holds.
+        const stations=spec.ceilingGrid.worldStations;
+        const sample=(x,at)=>{
+          const f=(x-V.x0)/(V.x1-V.x0)*steps,i=Math.min(steps-1,Math.floor(f)),t=f-i;
+          const a=at(i),b=at(i+1);
+          return new T.Vector2(a.x+(b.x-a.x)*t,a.y+(b.y-a.y)*t);
+        };
+        const profiles=rows.map((R,i)=>cove[i].inner.slice(1).concat(R.inner.slice(1)));
+        for(const x of stations){
+          const points=profiles[0].map((_,k)=>{const p=sample(x,i=>profiles[i][k]);return [x,p.y-.02,sign*p.x];});
+          line(g,points,.045,wood,'Side vault rib · lacquered timber');
+          // A shallow red finish on the plumb face leaves the fixture canopies
+          // in front. Its width aligns exactly with the chamber's transverse rib.
+          const skin=mesh(new T.BoxGeometry(spec.ceilingGrid.plumbWidth,A.spring-Cv.coveY,spec.ceilingGrid.plumbDepth),wood,g,'Cove grid · plumb lacquer rib',x,(A.spring+Cv.coveY)/2,sign*(Cv.face-spec.ceilingGrid.plumbDepth/2));
+          skin.userData={status:'CONCEPT · shallow lacquer grid finish; substrate and fixing pending',engineeringApproved:false,gridStation:x};
+          // Follow the existing cornice surface to join the upper rib visibly.
+          line(g,[[x,A.spring-.02,sign*Cv.face],[x,A.spring+.03,sign*Cv.face],[x,A.spring+.03,sign*(Cv.face-.20)],[x,A.spring-.18,sign*(Cv.face-.20)],[x,A.spring-.18,sign*(Cv.face-.01)]],.018,wood,'Cove grid · cornice saddle');
+        }
+        for(const y of [Cv.coveY+(A.spring-Cv.coveY)/3,Cv.coveY+2*(A.spring-Cv.coveY)/3]){
+          mesh(new T.BoxGeometry(V.x1-V.x0,.065,spec.ceilingGrid.plumbDepth),wood,g,'Cove grid · longitudinal lacquer strip',(V.x0+V.x1)/2,y,sign*(Cv.face-spec.ceilingGrid.plumbDepth/2));
+        }
         const paths=rows.map(R=>new T.CatmullRomCurve3(R.inner.map(p=>new T.Vector3(p.x,p.y,0))));
         const ribLines=[...[1,1+arc/3,1+2*arc/3,1+arc].map(k=>i=>cove[i].inner[Math.round(k)]),...[.14,.32,.5,.68,.86].map(t=>i=>paths[i].getPoint(t))];
         for(const at of ribLines){
           line(g,xs.map((x,i)=>{const p=at(i);return [x,p.y-.03,sign*p.x];}),.045,wood,'Side vault longitudinal rib');
-          for(const i of stations){const p=at(i);vaultBoss(g,xs[i],p.y-.07,sign*p.x);}
+          for(const x of stations){const p=sample(x,at);vaultBoss(g,x,p.y-.046,sign*p.x);}
         }
         // Inset lines continue the chamber's coffer vocabulary over the outer
         // side-vault fields. The inner strip carries the shrine lights and stays clear.
         const bands=[.32,.5,.68,.86];
         for(let j=0;j<stations.length-1;j++)for(let k=0;k<bands.length-1;k++){
-          const x0=xs[stations[j]]+.10,x1=xs[stations[j+1]]-.10,t0=bands[k]+.018,t1=bands[k+1]-.018;
+          const x0=stations[j]+.10,x1=stations[j+1]-.10,t0=bands[k]+.018,t1=bands[k+1]-.018;
           const at=(x,t)=>{const p=new T.CatmullRomCurve3(profile(x).inner.map(q=>new T.Vector3(q.x,q.y,0))).getPoint(t);return [x,p.y-.018,sign*p.x];};
           const edge=[];
           for(let n=0;n<=6;n++)edge.push(at(x0,t0+(t1-t0)*n/6));
