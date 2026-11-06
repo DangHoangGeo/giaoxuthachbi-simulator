@@ -627,8 +627,12 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
   // Each face is a thin skin on that core and has its own raised, bounded carving.
   const supportGroups=nodes.filter(o=>/^Concrete support cladding · (10|11)\/[BH]$/.test(o.name));
   assert.equal(supportGroups.length,4,'Both outer supports on both sanctuary frames are clad');
-  assert.equal(part('Concrete support cladding · lacquer skin').length,16,'Four skins per support');
-  assert.equal(part('Concrete support · carved foliage').length,20,'Separate carved faces, with breaks for the back-frame speakers and shrine shelves');
+  // Owner, 7 Nov 2026: only the faces seen indoors are clad (axis 11: nave face + two side strips; axis 10: nave
+  // face, wing face, side strip and the wing part of the porch face); nothing red reaches the porch.
+  assert.equal(part('Concrete support cladding · lacquer skin').length,14,'Interior skins per support');
+  assert.equal(part('Concrete support · carved foliage').length,8,'Carved nave and wing faces, with breaks for the back-frame speakers');
+  for(const o of nodes.filter(o=>o.isMesh&&/^Concrete support/.test(o.name))){const b=bounds(o);
+    if(Math.max(Math.abs(b.min.z),Math.abs(b.max.z))>7.255)assert(b.max.x<=44.016,o.name+' reaches past the wall only inside the 9–10 wing');}
   for(const group of supportGroups){
     assert.equal(group.userData.engineeringApproved,false);
     const centre=group.getWorldPosition(new T.Vector3());
@@ -638,7 +642,7 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
     assert(core,group.name+' retains its original concrete support proxy');
     assert.equal(core.material.name,'Ivory mineral plaster · reference finish','The support core is not replaced or recoloured');
     const faces=group.children.filter(o=>o.name==='Concrete support cladding · face');
-    assert.equal(faces.length,4);
+    assert.equal(faces.length,group.name.startsWith('Concrete support cladding · 10/')?4:3);
     for(const face of faces){
       const skin=face.children.find(o=>o.name==='Concrete support cladding · lacquer skin');
       const fields=face.children.filter(o=>o.name==='Concrete support · red lacquer field');

@@ -501,13 +501,27 @@
       const axis=['10','11'].find(a=>Math.abs(c.x-data.longitudinal[a])<.01);
       if(axis&&Math.abs(Math.abs(c.z)-7.36)<.05)supportCores.push({axis,c,b});
     });
+    // Owner, 7 Nov 2026: the supports stand in the C/G wall line and reach 0.18 m into the porch,
+    // where the red and gold read as a fault. Only what is seen indoors is clad: the nave-facing
+    // face and, at axis 10, the face toward the wing carry the carving; the side faces are clad
+    // from the inner face to the wall (|Z| 7.25), the axis-10 porch face only inside the wing up to
+    // its closing wall; the porch faces stay in the plaster of the wall.
+    const wallInside=7.25,wingWallWest=(window.CHURCH_PORCHES?.spec.wingEnds?.[1]??44.175)-(window.CHURCH_PORCHES?.spec.wingWall??.32)/2;
     for(const {axis,c,b} of supportCores){
-      const side=c.z<0?'B':'H',g=group(`Concrete support cladding · ${axis}/${side}`,c.x,c.z);
-      g.userData={status:'CONCEPT · lacquered finish over existing concrete support; fire performance, substrate, fixing and access pending',engineeringApproved:false,source:'Owner clarification, 3 Nov 2026; docs/sanctuary-model.md'};
+      const side=c.z<0?'B':'H',sz=Math.sign(c.z),g=group(`Concrete support cladding · ${axis}/${side}`,c.x,c.z);
+      g.userData={status:'CONCEPT · lacquered finish over existing concrete support, interior faces only; fire performance, substrate, fixing and access pending',engineeringApproved:false,source:'Owner clarifications, 3 and 7 Nov 2026; docs/sanctuary-model.md'};
       const size=b.getSize(new T.Vector3()),half=size.x/2,skin=.002;
       for(let face=0;face<4;face++){
+        // The group turns −90° about Y: face 0 looks to −X, 1 to +Z, 2 to +X, 3 to −Z; local u runs along (cos θ, 0, −sin θ).
+        const th=(face-1)*Math.PI/2,nx=Math.round(Math.sin(th)),nz=Math.round(Math.cos(th)),ux=Math.round(Math.cos(th)),uz=-Math.round(Math.sin(th));
+        let span=[-size.z/2,size.z/2],carve=true;
+        const clip=(o,d,limit)=>{const u=(limit-o)/d;return d>0?[span[0],Math.min(span[1],u)]:[Math.max(span[0],u),span[1]];};
+        if(nz===sz){if(axis!=='10')continue;span=clip(c.x,ux,wingWallWest);carve=false;}
+        else if(nx!==0&&!(axis==='10'&&nx<0)){span=clip(c.z*sz,uz*sz,wallInside);carve=false;}
+        if(span[1]-span[0]<.02)continue;
         const panel=new T.Group();panel.name='Concrete support cladding · face';panel.rotation.y=face*Math.PI/2;g.add(panel);
-        box(panel,size.z,size.y,skin,0,c.y,half+skin/2,satin,'Concrete support cladding · lacquer skin');
+        box(panel,span[1]-span[0],size.y,skin,(span[0]+span[1])/2,c.y,half+skin/2,satin,'Concrete support cladding · lacquer skin');
+        if(!carve)continue;
         // The porch speakers at the back frame sit against the nave-facing
         // surface. Reserve a clear red panel around each rather than forcing
         // carving through a speaker or moving a coordinated fixture.
