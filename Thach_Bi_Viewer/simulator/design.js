@@ -27,6 +27,38 @@
     return { yaw: Math.atan2(dz, dx) * 180 / Math.PI, tilt: Math.atan2(dy, Math.hypot(dx, dz)) * 180 / Math.PI };
   };
   const side = z => z < 0 ? 'B' : 'H';
+  // Beam faces and soffits that carry the reading heads (engine.js correctStructure). Owner, 8 Nov 2026: the
+  // beams must look stronger, so the tie beams are 0.40 m wide (were 0.30) and the side beams 0.30 × 0.46 m
+  // (were 0.22 × 0.34, soffit +6.66). The heads stay on the sanctuary face of their beam, cowl at the soffit.
+  const BEAMS = { tieHalf: 0.20, sideHalf: 0.15, tieSoffit: 8.59, sideSoffit: 6.54 };
+  const BEAMS_BEFORE = { tieHalf: 0.15, sideHalf: 0.11, tieSoffit: 8.59, sideSoffit: 6.66 };
+  // Owner, 1 Nov 2026: tie heads toward the sanctuary at ±0.90 m (36°), toward the entrance at ±2.48 m (28°);
+  // a tie head aimed toward a bay with a side-aisle fan tilts 5° along the nave (8° otherwise).
+  const TIE_Z = { fwd: 0.9, twin: 2.48 }, TIE_AIM_Z = { fwd: 1.0, twin: 2.4 }, TIE_BEAM = { fwd: 36, twin: 28 };
+  const facesBeamFan = (k, dir) => dir > 0 ? +k <= 8 : +k >= 4;
+  function readingPlacement(A, k, s, block, dir, B = BEAMS) {
+    const tie = block === 'central', soffit = tie ? B.tieSoffit : B.sideSoffit, faceX = A[k] + (tie ? B.tieHalf : B.sideHalf);
+    const which = dir > 0 ? 'fwd' : 'twin', z = tie ? s * TIE_Z[which] : s * (dir > 0 ? 6.09 : 4.84), fan = tie && facesBeamFan(k, dir);
+    const along = Math.tan((fan ? 5 : 8) * Math.PI / 180) * (soffit - 0.8);
+    const target = [A[k] + dir * along, 0.8, s * (tie ? TIE_AIM_Z[which] : 5.6)];
+    return { name: `Reading light · axis ${k} · ${side(s)} ${block}${dir > 0 ? '' : ' · twin'}`, circuit: tie ? 'L1' : 'L2', beam: tie ? TIE_BEAM[which] : 36,
+      lumens: tie ? (which === 'fwd' ? 2800 : 1500) : 2300, pos: [faceX, soffit + 0.18, z], anchorY: soffit, ...aim([faceX + 0.085, soffit, z], target) };
+  }
+  // Moves the 56 reading heads with their beam faces, once. Only heads still at their previous default
+  // position and aim move (to the new default position and aim); moved, re-aimed or deleted heads are kept.
+  const beamSectionRevision = '2026-11-08-stronger-beams-1';
+  function upgradeBeamSections(items, design, geo) {
+    const A = geo?.axes, next = new Map(design.map(it => [it.id, it]));
+    if (!A) return items;
+    return items.map(it => {
+      const m = /^Reading light · axis (\d+) · ([BH]) (central|outer)( · twin)?$/.exec(it.name || '');
+      const raw = next.get(it.id);
+      if (!m || it.type !== 'readingProjector' || !raw || raw.name !== it.name) return it;
+      const old = readingPlacement(A, m[1], m[2] === 'B' ? -1 : 1, m[3], m[4] ? -1 : 1, BEAMS_BEFORE);
+      const same = it.pos.every((v, i) => Math.abs(v - old.pos[i]) < 0.005) && Math.abs((it.yaw ?? 0) - old.yaw) < 0.05 && Math.abs((it.tilt ?? 0) - old.tilt) < 0.05;
+      return same ? { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, anchorY: raw.anchorY } : it;
+    });
+  }
   // Shrine lights under the gilded side vaults (1 Nov 2026, owner): X, |Z|, the rib underside (anchorY)
   // under the canopy and the output of each head. MODEL TRANSCRIPTION of the vault in sanctuary.js.
   const SIDE_VAULT_DROP = 0.16;
@@ -127,7 +159,7 @@
       items.push({ ...o, id: o.id || prefix + (items.length + 1) });
     };
     const lining = z => SIM.liningY(z);
-    const beamY = 8.59, sideBeamY = 6.66;
+    const beamY = BEAMS.tieSoffit, sideBeamY = BEAMS.sideSoffit;
     // Inner face of the entrance wall: since 25 Oct 2026 the doors stand on the towers' rear pier
     // line (facade.js, door wall X 4.95–5.20); before, the inner face of the front façade (2.65).
     const facadeX = window.CHURCH_FACADE?.spec.entrance?.wall[1] ?? 5.2;
@@ -156,14 +188,10 @@
     // at ±2.48/±2.72 m). On a side beam they stand either side of the gilded cartouche
     // (4.96–6.00 m), both aimed at the old point under the beam.
     // Fixing into the timber, the bracket and the product are ENGINEERING HOLD.
-    const readingHead = (name, circuit, beam, faceX, soffit, z, target, lumens = 2300) => {
-      const p = [faceX, soffit + 0.18, z], a = aim([faceX + 0.085, soffit, z], target);
-      add({ type: 'readingProjector', name, circuit, mount: 'wall', pos: p, anchorY: soffit, ...a, mountYaw: 0, lumens, beam, params: { finish: 'timber' } });
-    };
+    // Head placement: readingPlacement() at module scope.
     // Since the side-aisle fans hang from the column-line beams (19 October 2026), a
     // tie-beam head aimed toward a bay with such a fan tilts 5° along the nave with a
     // 24° optic (8° and 28° before), which keeps its beam off the blades.
-    const facesBeamFan = (k, dir) => dir > 0 ? +k <= 8 : +k >= 4;
     // Owner, 1 November 2026: the centre of the nave looked dark. The four tie-beam heads sat in
     // two pairs 0.24 m apart at +-2.6 m and lit only the seats, leaving the 2 m centre aisle on
     // the indirect light alone (about 62 lux). The head aimed toward the sanctuary now stands
@@ -171,14 +199,11 @@
     // so the four lines are spread across the nave and the aisle is lit as well as the seats.
     // Owner, 1 November: rebalance the central beams after comparing the aisle and seat planes.
     // Each central head is a 2,800 lm concept; the companion heads are 1,500 lm.
-    const TIE_Z = { fwd: 0.9, twin: 2.48 }, TIE_AIM_Z = { fwd: 1.0, twin: 2.4 }, TIE_BEAM = { fwd: 36, twin: 28 };
+    // Placement shared with the beam-section migration (readingPlacement, module scope).
     const reading = (k, s, block) => {
-      const tie = block === 'central', soffit = tie ? beamY : sideBeamY, faceX = A[k] + (tie ? 0.15 : 0.11);
-      for (const [dir, tag] of [[1, ''], [-1, ' · twin']]) {
-        const which = dir > 0 ? 'fwd' : 'twin';
-        const z = tie ? s * TIE_Z[which] : s * (dir > 0 ? 6.09 : 4.84), fan = tie && facesBeamFan(k, dir);
-        const along = Math.tan((fan ? 5 : 8) * Math.PI / 180) * (soffit - 0.8);
-        readingHead(`Reading light · axis ${k} · ${side(s)} ${block}${tag}`, tie ? 'L1' : 'L2', tie ? TIE_BEAM[which] : 36, faceX, soffit, z, [A[k] + dir * along, 0.8, s * (tie ? TIE_AIM_Z[which] : 5.6)], tie ? (which === 'fwd' ? 2800 : 1500) : 2300);
+      for (const dir of [1, -1]) {
+        const r = readingPlacement(A, k, s, block, dir);
+        add({ type: 'readingProjector', name: r.name, circuit: r.circuit, mount: 'wall', pos: r.pos, anchorY: r.anchorY, yaw: r.yaw, tilt: r.tilt, mountYaw: 0, lumens: r.lumens, beam: r.beam, params: { finish: 'timber' } });
       }
     };
     for (const k of nave) for (const s of [-1, 1]) reading(k, s, 'central');
@@ -1558,5 +1583,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { wingGableLightsRevision, upgradeWingGableLights, WING_GABLE_UPLIGHT, sanctuaryPalmsRevision, upgradeSanctuaryPalms, goldCoveRevision, goldCoveNames, goldCoveBefore, upgradeGoldCove, festivalStringsRevision, upgradeFestivalStrings, festivalTerraceRevision, upgradeFestivalTerrace, rearSideLightsRevision, upgradeRearSideLights, entranceInteriorRevision, upgradeEntranceInterior, centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { beamSectionRevision, upgradeBeamSections, BEAMS, BEAMS_BEFORE, readingPlacement, wingGableLightsRevision, upgradeWingGableLights, WING_GABLE_UPLIGHT, sanctuaryPalmsRevision, upgradeSanctuaryPalms, goldCoveRevision, goldCoveNames, goldCoveBefore, upgradeGoldCove, festivalStringsRevision, upgradeFestivalStrings, festivalTerraceRevision, upgradeFestivalTerrace, rearSideLightsRevision, upgradeRearSideLights, entranceInteriorRevision, upgradeEntranceInterior, centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

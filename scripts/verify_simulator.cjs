@@ -56,11 +56,15 @@ const P = sandbox.CHURCH_SIM_PHYSICS;
 
 // --- As-drawn frame -------------------------------------------------------
 const nodes = []; building.traverse(o => nodes.push(o));
-const ties = nodes.filter(o => o.name === 'Main tie beam 0.30 × 0.59 m · as drawn');
+const ties = nodes.filter(o => o.name === 'Main tie beam 0.40 × 0.59 m · concept section');
 assert.equal(ties.length, 7, 'seven main tie beams (axes 3–9); axis 10 carries the lobed sanctuary frame');
 for (const t of ties) { const b = new T.Box3().setFromObject(t); assert(Math.abs(b.min.y - 8.59) < 0.002 && Math.abs(b.max.y - 9.18) < 0.002, 'tie beam levels'); }
-const sideBeams = nodes.filter(o => o.name === 'Side beam 0.22 × 0.34 m · as drawn');
+const sideBeams = nodes.filter(o => o.name === 'Side beam 0.30 × 0.46 m · concept section');
 assert.equal(sideBeams.length, 14, 'side beams on axes 3–9, both sides');
+// Owner, 8 Nov 2026: stronger concept sections on the drawn levels; tie 0.40 wide, side beams 0.30 × 0.46 to the drawn top +7.00.
+for (const t of ties) { const b = new T.Box3().setFromObject(t); assert(Math.abs(b.max.x - b.min.x - 0.40) < 0.002, 'tie beam 0.40 m wide'); }
+for (const t of sideBeams) { const b = new T.Box3().setFromObject(t); assert(Math.abs(b.min.y - 6.54) < 0.002 && Math.abs(b.max.y - 7.0) < 0.002 && Math.abs(b.max.x - b.min.x - 0.30) < 0.002, 'side beam 0.30 × 0.46 m to the drawn top'); }
+assert.equal(SIM.GEO.columnJunctions, 14, 'carved junction on every D/E column head, axes 3–9');
 assert(nodes.filter(o => o.name === 'Purlin · as drawn spacing ~0.50 m').length >= 28, 'drawn purlins');
 // The beams carry the lacquer of the columns, with gilded borders, rosettes and bands.
 {
@@ -75,7 +79,7 @@ assert(nodes.filter(o => o.name === 'Purlin · as drawn spacing ~0.50 m').length
   assert.equal(named('Side beam gilded border').length, 56, 'border lines on both faces of every side beam');
   for (const o of [...tieGilding, ...named('Side beam gilded band'), ...named('Side beam gilded border')]) assert.equal(o.material.name, 'Sanctuary · carved gilding', o.name + ' is gilded');
   for (const o of tieGilding) {
-    const b = new T.Box3().setFromObject(o), tie = ties.find(t => Math.abs(t.position.x - (b.min.x + b.max.x) / 2) < 0.2);
+    const b = new T.Box3().setFromObject(o), tie = ties.find(t => Math.abs(t.position.x - (b.min.x + b.max.x) / 2) < 0.3);
     // The carved cartouche (still named rosette) stands a few centimetres proud of the beam face.
     assert(tie && new T.Box3().setFromObject(tie).expandByScalar(o.name.endsWith('rosette') ? 0.07 : 0.03).containsBox(b), o.name + ' sits on its tie beam');
     assert.equal(o.parent, tie.parent, 'tie-beam gilding shows and hides with the drawn frame');
@@ -83,12 +87,12 @@ assert(nodes.filter(o => o.name === 'Purlin · as drawn spacing ~0.50 m').length
   // Lengthwise beams on the D/E column lines (beam specification B03): 14 proxy members with their
   // top flush with the ties, each between two successive column axes, with member and connection
   // IDs. None in bay 2′–3, none beyond the sanctuary frame.
-  const long = named('Longitudinal column-line beam 0.24 × 0.45 m · concept proxy'), ids = new Set(), axes = data.longitudinal;
+  const long = named('Longitudinal column-line beam 0.32 × 0.45 m · concept proxy'), ids = new Set(), axes = data.longitudinal;
   assert.equal(long.length, 14, 'a lengthwise beam in each bay 3–10 on both column lines');
   for (const o of long) {
     const b = new T.Box3().setFromObject(o), u = o.userData, [x0, x1] = u.supports.map(k => axes[k.split('/')[0]]);
     assert(Math.abs(b.min.y - 8.73) < 0.002 && Math.abs(b.max.y - 9.18) < 0.002, 'lengthwise beam levels');
-    assert(Math.abs(Math.abs((b.min.z + b.max.z) / 2) - 3.6) < 0.002 && Math.abs(b.max.z - b.min.z - 0.24) < 0.002, 'lengthwise beam on the column line');
+    assert(Math.abs(Math.abs((b.min.z + b.max.z) / 2) - 3.6) < 0.002 && Math.abs(b.max.z - b.min.z - 0.32) < 0.002, 'lengthwise beam on the column line (0.32 m concept section, owner 8 Nov 2026)');
     assert(/^B03-[DE]-\d\d-\d\d$/.test(u.memberId) && !ids.has(u.memberId), 'member ID by family, line and bay: ' + u.memberId);
     ids.add(u.memberId);
     assert(x1 - x0 >= 4.5 - 0.001 && b.min.x >= x0 + 0.29 && b.max.x <= x1 - 0.27 && b.min.x < x0 + 0.31 && b.max.x > x1 - 0.31, u.memberId + ' runs from column to column');
@@ -102,7 +106,7 @@ assert(nodes.filter(o => o.name === 'Purlin · as drawn spacing ~0.50 m').length
   assert.equal(SIM.structureAbove((axes['5'] + axes['6']) / 2, 3.6, 2).kind, 'roof', 'nothing is mounted on a proxy beam');
   // Carved ornament of the approved concept: haunches under the beams, cartouches on their faces, carved tie ends.
   const top = o => new T.Box3().setFromObject(o).max.y, centreX = o => new T.Box3().setFromObject(o).getCenter(new T.Vector3()).x;
-  for (const [name, count, soffit] of [['Main tie beam carved haunch', 12, 8.59], ['Longitudinal column-line beam carved haunch', 28, 8.73], ['Side beam carved haunch', 14, 6.66], ['Side beam carved pier bracket', 14, 6.66]]) {
+  for (const [name, count, soffit] of [['Main tie beam carved haunch', 12, 8.59], ['Longitudinal column-line beam carved haunch', 28, 8.73], ['Side beam carved haunch', 14, 6.54], ['Side beam carved pier bracket', 14, 6.54]]) {
     const list = named(name);
     assert.equal(list.length, count, name);
     for (const o of list) { assert(Math.abs(top(o) - soffit) < 0.002, name + ' springs from the beam soffit'); assert.equal(o.material, timber, name + ' is solid beam timber'); assert.equal(o.userData.engineeringApproved, false); }
@@ -835,7 +839,25 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   for (const id of tieIds) {
     const was = D.naveCentreBefore[id], now = SIM.item(id);
     assert(now && now.name === was.name && now.circuit === was.circuit && now.lumens === (/ twin$/.test(now.name) ? 1500 : 2800) && now.type === was.type, 'same fitting and circuit, balanced output: ' + id);
-    assert(Math.abs(Math.abs(now.pos[2]) - (/ twin$/.test(now.name) ? 2.48 : 0.9)) < 1e-9 && Math.abs(now.pos[2]) !== Math.abs(was.pos[2]) && now.pos[0] === was.pos[0] && now.pos[1] === was.pos[1], 'moved across the beam only: ' + id);
+    assert(Math.abs(Math.abs(now.pos[2]) - (/ twin$/.test(now.name) ? 2.48 : 0.9)) < 1e-9 && Math.abs(now.pos[2]) !== Math.abs(was.pos[2]) && Math.abs(now.pos[0] - (was.pos[0] + D.BEAMS.tieHalf - D.BEAMS_BEFORE.tieHalf)) < 1e-9 && now.pos[1] === was.pos[1], 'moved across the beam, and out with the 0.40 m tie face (8 Nov 2026): ' + id);
+  }
+  // Stronger beams (owner, 8 Nov 2026): the 56 reading heads at their previous defaults follow the beam faces once;
+  // a re-aimed head and a deleted head are kept as the user left them; the migration is idempotent.
+  {
+    const reading = design.filter(it => /^Reading light · axis /.test(it.name));
+    assert.equal(reading.length, 56);
+    const old = reading.map(it => { const m = /axis (\d+) · ([BH]) (central|outer)( · twin)?$/.exec(it.name), o = D.readingPlacement(SIM.GEO.axes, m[1], m[2] === 'B' ? -1 : 1, m[3], m[4] ? -1 : 1, D.BEAMS_BEFORE); return { ...plain(it), pos: o.pos, yaw: o.yaw, tilt: o.tilt, anchorY: o.anchorY }; });
+    old[1] = { ...old[1], yaw: old[1].yaw + 3 };
+    const others = design.filter(it => !/^Reading light · axis /.test(it.name)).map(plain), saved = [...others, ...old.filter((_, i) => i !== 2)];
+    const up = D.upgradeBeamSections(saved, design, SIM.GEO), byId = new Map(up.map(it => [it.id, it]));
+    assert.equal(up.length, saved.length, 'no item added or removed');
+    reading.forEach((it, i) => {
+      if (i === 2) return assert(!byId.has(it.id), 'a deleted head stays deleted');
+      const got = byId.get(it.id);
+      if (i === 1) return assert.deepEqual(plain(got.pos), plain(old[1].pos), 'a re-aimed head keeps its position');
+      assert.deepEqual(plain(got.pos), plain(it.pos), 'head follows its beam face: ' + it.id); assert(Math.abs(got.anchorY - it.anchorY) < 1e-9 && Math.abs(got.tilt - it.tilt) < 1e-9);
+    });
+    assert.equal(JSON.stringify(D.upgradeBeamSections(up, design, SIM.GEO)), JSON.stringify(up), 'beam-section migration is idempotent');
   }
   // One-time move of a saved layout. Names the previous values from the tables of the design before this step.
   const prevItem = (id, raw = {}) => { const was = D.naveCentreBefore[id] || D.wingChandelierBefore[id], now = design.find(it => it.id === id) || {};

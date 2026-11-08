@@ -184,9 +184,9 @@
       return proposal([start, [48.5, y, cz], [48.5, cy, cz], [p[0], cy, cz], [p[0], p[1], cz], p], 'chamber-lining',
         'Back-wall band to service space behind chamber lining; local termination behind the fitting / cornice. Removable lining and cable-entry detail pending.');
     }
-    const main = SIM.GEO.mainBeams.find(b => Math.abs(p[0]-b.x)<0.19 && Math.abs(p[2]) <= b.zHalf &&
+    const main = SIM.GEO.mainBeams.find(b => Math.abs(p[0]-b.x)<b.w/2+0.04 && Math.abs(p[2]) <= b.zHalf &&
       (Math.abs((it.anchorY ?? p[1])-b.y0)<0.08 || it.type === 'uplight' && Math.abs(p[1]-b.y1)<0.08));
-    const side = SIM.GEO.sideBeams.find(b => Math.abs(p[0]-b.x)<0.15 && Math.sign(p[2])===b.side && Math.abs(p[2]) >= b.zIn && Math.abs(p[2]) <= b.zOut && Math.abs((it.anchorY ?? p[1])-b.y0)<0.08);
+    const side = SIM.GEO.sideBeams.find(b => Math.abs(p[0]-b.x)<b.w/2+0.04 && Math.sign(p[2])===b.side && Math.abs(p[2]) >= b.zIn && Math.abs(p[2]) <= b.zOut && Math.abs((it.anchorY ?? p[1])-b.y0)<0.08);
     if (main || side) {
       const b = main || side, sx = b.x, upper = b.y1 + 0.055;
       let points, cp = [];

@@ -439,7 +439,7 @@ for(const line of rafterLines){
   const c=bounds(line).getCenter(new T.Vector3()),rafter=rafters.find(o=>Math.abs(o.position.x-c.x)<.01&&Math.sign(o.position.z)===Math.sign(c.z));
   assert(rafter&&c.x<frameX-.5,'Rafter line belongs to a nave rafter');
   // Half the rafter depth plus 4 mm from the rafter centre line along the soffit normal: lower, and towards the nave axis.
-  near(c.distanceTo(rafter.position),rafter.geometry.parameters.depth/2+.004,'Rafter line lies on the soffit');assert(c.y<rafter.position.y&&Math.abs(c.z)<Math.abs(rafter.position.z),'Rafter line is on the underside');
+  near(c.distanceTo(rafter.position),(rafter.userData.section||rafter.geometry.parameters).depth/2+.004,'Rafter line lies on the soffit');assert(c.y<rafter.position.y&&Math.abs(c.z)<Math.abs(rafter.position.z),'Rafter line is on the underside');
 }
 // Owner request, 1 November 2026: heavier roof timbers. Visualization-proxy sections (ENGINEERING HOLD); they grow downward
 // from the unmoved lining, never through it. The sections are the minimum the model must keep.
@@ -450,7 +450,7 @@ for(const line of rafterLines){
   assert.equal(rafters.filter(o=>o.position.x<frameX-.5).length,14,'Fourteen nave rafters (axes 3–9, both slopes)');
   for(const o of rafters.filter(o=>o.position.x>=frameX-.5)){const p=o.geometry.parameters;assert(Math.abs(p.width-.17)<1e-9&&Math.abs(p.depth-.20)<1e-9,'Rafters behind the nave (axes 10–11) keep 0.17 × 0.20 m');}
   for(const o of rafters.filter(o=>o.position.x<frameX-.5)){
-    const p=o.geometry.parameters;assert(p.width>=.25&&p.depth>=.32,`Rafter section ${p.width} × ${p.depth} m at x ${o.position.x}`);
+    const p=o.userData.section||o.geometry.parameters;assert(p.width>=.32&&p.depth>=.42&&o.geometry.type==='ExtrudeGeometry',`Rafter section (rounded, owner 8 Nov 2026) ${p.width} × ${p.depth} m at x ${o.position.x}`);
     assert(o.userData.proxyBefore&&Math.abs(o.userData.proxyBefore.parameters.depth-.20)<1e-9,'Rafter keeps its earlier section on record');
     // Upper face centre stays on the lining (earlier proxy: 0.0235 m above it, vertically); the growth is below.
     const down=new T.Vector3(0,0,Math.sign(o.rotation.x)).applyQuaternion(o.quaternion),top=o.position.clone().addScaledVector(down,-p.depth/2);

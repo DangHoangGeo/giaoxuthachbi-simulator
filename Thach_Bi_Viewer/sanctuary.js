@@ -58,8 +58,8 @@
   // 'as drawn' tie and side beams and the 0.24 x 0.45 m column-line beams keep their sections.
   // `before` is the earlier proxy section; `w` is across the member's width and `d` its depth.
   spec.roofTimber = {
-    revision:'2026-11-01-roof-timbers-1',
-    rafter:{before:{w:.17,d:.20},w:.26,d:.34},          // nave principal rafters (axes 3-9) below the lining; d perpendicular to the slope, lining face kept; axes 10-11 unchanged
+    revision:'2026-11-08-roof-timbers-rounded-1',
+    rafter:{before:{w:.17,d:.20},w:.32,d:.42,round:.07},   // owner 8 Nov 2026: thicker, rounded arrises (was 0.26 × 0.34 square, 1 Nov)          // nave principal rafters (axes 3-9) below the lining; d perpendicular to the slope, lining face kept; axes 10-11 unchanged
     ridge:{before:{w:.21,d:.16},w:.30,d:.28},           // underside ridge member; w across, d vertical, top face kept
     purlin:{before:{w:.09,d:.12},w:.14,d:.22},          // drawn purlins: w along the slope, d perpendicular to it (now square to the lining)
     proposedPurlin:{before:{w:.11,d:.095},w:.14,d:.17}, // earlier visual proposal, shown only with 'Show truss'
@@ -301,8 +301,13 @@
             // The two pairs behind the nave (axes 10 and 11) keep their section: sheet 5 gives that line a lobed
             // arch instead of a truss, the vault hides them, and the shrine washes sit against the lining there.
             if(o.position.x>=spec.frameX-.5)break;
-            const R=RT.rafter;reshape(o,new T.BoxGeometry(R.w,p.height,R.d),'rafter');
-            o.translateZ(Math.sign(o.rotation.x)*(R.d-p.depth)/2);break;}
+            // Owner, 8 Nov 2026: the trusses looked stiff and thin as square boxes; rounded arrises and a heavier section.
+            const R=RT.rafter,sh=new T.Shape(),a=R.w/2,b=R.d/2,r=R.round;
+            sh.moveTo(-a+r,-b);sh.lineTo(a-r,-b);sh.quadraticCurveTo(a,-b,a,-b+r);sh.lineTo(a,b-r);sh.quadraticCurveTo(a,b,a-r,b);
+            sh.lineTo(-a+r,b);sh.quadraticCurveTo(-a,b,-a,b-r);sh.lineTo(-a,-b+r);sh.quadraticCurveTo(-a,-b,-a+r,-b);
+            const g=new T.ExtrudeGeometry(sh,{depth:p.height,bevelEnabled:false,curveSegments:5});g.translate(0,0,-p.height/2);g.rotateX(-Math.PI/2);
+            const was=p.depth;reshape(o,g,'rafter');o.userData.section={width:R.w,height:p.height,depth:R.d};
+            o.translateZ(Math.sign(o.rotation.x)*(R.d-was)/2);break;}
           case 'Proposed underside ridge member':{
             // Rotated about Z: width is vertical here. Top face stays put, the extra depth hangs below.
             const R=RT.ridge;reshape(o,new T.BoxGeometry(R.d,p.height,R.w),'ridge');
@@ -327,7 +332,7 @@
     // Gilding on the roof timbers of the nave: a line along the soffit of each rafter and of the
     // ridge, and a boss where each pair of rafters meets. (Beyond the frame the vault hides the roof.)
     for(const o of rafters){
-      const p=o.geometry.parameters;if(!p?.height)continue;
+      const p=o.userData.section||o.geometry.parameters;if(!p?.height)continue;
       const s=mesh(new T.BoxGeometry(.07,p.height-.3,.012),gold,o.parent,'Gilded rafter soffit line');
       s.position.copy(o.position);s.rotation.copy(o.rotation);s.translateZ(Math.sign(o.rotation.x)*(p.depth/2+.004));s.castShadow=false;
     }

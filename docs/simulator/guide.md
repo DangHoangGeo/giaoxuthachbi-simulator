@@ -204,7 +204,7 @@ The calculation methods, measurement planes, assumptions and validation boundari
   gilded lines on the rafters and ridge. Lengthwise beams join the column
   heads on the D and E lines from axis 3 to the sanctuary frame; carved
   haunches stand under the beams. These lengthwise beams are a visual proxy
-  (0.24 × 0.45 m, engineering hold): no fitting hangs from them and the
+  (0.32 × 0.45 m since 8 Nov 2026, engineering hold): no fitting hangs from them and the
   analysis does not include them. The boarded roof lining stays ivory. *Settings → Structural timber
   tone* offers natural, light and dark timber as alternatives.
 - At night the centre of the sanctuary is lit lower than before, so the blue
@@ -256,7 +256,7 @@ block walking. Outdoor courtyard trees retain their separate Show trees switch.
 
 View settings → Timber frame, or Simulator → Settings → Structure.
 
-- **As drawn (PDF section 4).** Round shafts and a 0.30 × 0.59 m tie beam
+- **As drawn (PDF section 4).** Round shafts and a tie beam on the drawn levels (+8.59…+9.18 m; 0.40 × 0.59 m concept section since 8 Nov 2026, drawn proxy 0.30 m wide)
   across the nave at +8.59 m on every axis. This version also carries the
   concept ornament and members that are not on the drawing: carved capitals
   and haunches, cartouches, and the lengthwise column-line beams at

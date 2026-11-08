@@ -117,7 +117,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', columnWashRevision: '', centreReadingRevision: '', entranceInteriorRevision: '', rearSideLightsRevision: '', festivalTerraceRevision: '', festivalStringsRevision: '', goldCoveRevision: '', sanctuaryPalmsRevision: '', wingGableLightsRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', columnWashRevision: '', centreReadingRevision: '', entranceInteriorRevision: '', rearSideLightsRevision: '', festivalTerraceRevision: '', festivalStringsRevision: '', goldCoveRevision: '', sanctuaryPalmsRevision: '', wingGableLightsRevision: '', beamSectionRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -336,6 +336,16 @@
       m.userData = { status: 'AS DRAWN · SECTION SHEET 4', source: 'Measured on the vector section: tie +8.59…+9.18 m, side beams +6.66…+7.00 m' };
       asDrawn.add(m); return m;
     };
+    // Rounded-edge beam section (approved concept: heavy beams with eased, rounded arrises), same bounding box as
+    // the former box. along: 'z' (ties, side beams) or 'x' (column-line beams).
+    const rounded = (m, w, h, len, along, r) => {
+      const sh = new T.Shape(), x0 = -w / 2, y0 = -h / 2;
+      sh.moveTo(x0 + r, y0); sh.lineTo(-x0 - r, y0); sh.quadraticCurveTo(-x0, y0, -x0, y0 + r); sh.lineTo(-x0, -y0 - r); sh.quadraticCurveTo(-x0, -y0, -x0 - r, -y0);
+      sh.lineTo(x0 + r, -y0); sh.quadraticCurveTo(x0, -y0, x0, -y0 - r); sh.lineTo(x0, y0 + r); sh.quadraticCurveTo(x0, y0, x0 + r, y0);
+      const g = new T.ExtrudeGeometry(sh, { depth: len, bevelEnabled: false, curveSegments: 5 }); g.translate(0, 0, -len / 2);
+      if (along === 'x') g.rotateY(Math.PI / 2);
+      m.geometry.dispose(); m.geometry = g; return m;
+    };
     // The beams carry the lacquer of the columns (sanctuary.js). Their ornament follows the approved
     // timber concept (references/01-timber-frame and the 7 October interior views): gilded border
     // lines and a carved cartouche on both faces, a band near each support, carved haunches under
@@ -359,23 +369,31 @@
     // Haunch runs stop short of the fittings that hang under the beams: the reading lights 1.0 m
     // from the column axis under the ties, the outer reading lights and the wall fans on the piers.
     const carving = K && {
-      tieHaunch: K.haunch({ run: 0.8, rise: 0.62, thick: 0.16 }), longHaunch: K.haunch({ run: 0.95, rise: 0.6, thick: 0.14 }),
-      sideHaunch: K.haunch({ run: 0.8, rise: 0.52, thick: 0.13, u0: 0.24 }), pierBracket: K.haunch({ run: 0.55, rise: 0.42, thick: 0.13, u0: 0 }),
+      // Owner, 8 Nov 2026 (approved frame concept, docs/beams-roof-connections/images 01, 02, 07): larger curved
+      // brackets under the beams; runs still stop short of the reading heads (tie z ±2.48) and fans (mid-bay).
+      tieHaunch: K.haunch({ run: 0.98, rise: 0.82, thick: 0.22 }), longHaunch: K.haunch({ run: 1.1, rise: 0.8, thick: 0.2 }),
+      sideHaunch: K.haunch({ run: 0.9, rise: 0.62, thick: 0.2, u0: 0.24 }), pierBracket: K.haunch({ run: 0.62, rise: 0.5, thick: 0.2, u0: 0 }),
       tieCartouche: K.cartouche({ len: 1.7, r: 0.17 }), sideCartouche: K.cartouche({ len: 1.1, r: 0.1 }), longCartouche: K.cartouche({ len: 1.5, r: 0.13 }),
       end: K.cluster({ a: 0.13, b: 0.24, c: 0.07, leaves: 8, blooms: 1, size: 0.15 })
     };
-    const tieLine = new T.BoxGeometry(0.012, 0.035, 5.12), tieBand = new T.BoxGeometry(0.33, 0.62, 0.08), rosette = new T.CylinderGeometry(0.15, 0.15, 0.02, 20);
-    const sideBand = new T.BoxGeometry(0.25, 0.37, 0.07), sideLine = new T.BoxGeometry(0.012, 0.03, 2.48);
+    // Owner, 8 Nov 2026: the beams must look stronger. The levels stay as drawn (tie +8.59…+9.18; side-beam top
+    // +7.00), the sections are concept sections on engineering hold: tie 0.40 m wide (drawn proxy 0.30), side beams
+    // 0.30 × 0.46 m (0.22 × 0.34), column-line beams 0.32 m wide (0.24). Width grows both ways from the axis; the
+    // side beams grow downward. The reading heads on the beam faces follow them (design.js BEAMS, migration).
+    const SEC = { tieW: 0.40, sideW: 0.30, sideD: 0.46, longW: 0.32 }, SIDE_Y0 = 7.0 - SEC.sideD;
+    const SECTION = { status: 'DRAWN LEVELS · CONCEPT SECTION (owner 8 Nov 2026) · ENGINEERING HOLD', source: 'Levels measured on section sheet 4; widths/depth enlarged at the owner\'s request, not a checked section' };
+    const tieLine = new T.BoxGeometry(0.012, 0.035, 5.12), tieBand = new T.BoxGeometry(SEC.tieW + 0.03, 0.62, 0.08), rosette = new T.CylinderGeometry(0.15, 0.15, 0.02, 20);
+    const sideBand = new T.BoxGeometry(SEC.sideW + 0.03, SEC.sideD + 0.03, 0.07), sideLine = new T.BoxGeometry(0.012, 0.03, 2.48);
     const axis9 = data().longitudinal['9'];
     GEO.mainBeams = [];
     for (const x of [...tieXs].sort((a, b) => a - b)) {
-      member(0.3, 0.59, 8.42, x, 8.885, 0, 'Main tie beam 0.30 × 0.59 m · as drawn');
-      GEO.mainBeams.push({ x, y0: 8.59, y1: 9.18, zHalf: 4.21, w: 0.3 });
+      rounded(member(SEC.tieW, 0.59, 8.42, x, 8.885, 0, 'Main tie beam 0.40 × 0.59 m · concept section'), SEC.tieW, 0.59, 8.42, 'z', 0.07).userData = { ...SECTION };
+      GEO.mainBeams.push({ x, y0: 8.59, y1: 9.18, zHalf: 4.21, w: SEC.tieW });
       if (!gilt) continue;
       for (const f of [-1, 1]) {
-        for (const y of [8.65, 9.12]) gild(tieLine, x + f * 0.153, y, 0, 'Main tie beam gilded border');
-        if (carving) gild(carving.tieCartouche, x + f * 0.15, 8.885, 0, 'Main tie beam gilded rosette').rotation.y = f * Math.PI / 2;
-        else gild(rosette, x + f * 0.156, 8.885, 0, 'Main tie beam gilded rosette').rotation.z = Math.PI / 2;
+        for (const y of [8.65, 9.12]) gild(tieLine, x + f * (SEC.tieW / 2 + 0.003), y, 0, 'Main tie beam gilded border');
+        if (carving) gild(carving.tieCartouche, x + f * SEC.tieW / 2, 8.885, 0, 'Main tie beam gilded rosette').rotation.y = f * Math.PI / 2;
+        else gild(rosette, x + f * (SEC.tieW / 2 + 0.006), 8.885, 0, 'Main tie beam gilded rosette').rotation.z = Math.PI / 2;
       }
       for (const s of [-1, 1]) {
         gild(tieBand, x, 8.885, s * 2.6, 'Main tie beam gilded band');
@@ -391,15 +409,16 @@
     for (const k of ['3', '4', '5', '6', '7', '8', '9']) {
       const x = data().longitudinal[k];
       for (const s of [-1, 1]) {
-        member(0.22, 0.34, 3.15, x, 6.83, s * 5.475, 'Side beam 0.22 × 0.34 m · as drawn');
-        GEO.sideBeams.push({ x, y0: 6.66, y1: 7.0, zIn: 3.9, zOut: 7.05, side: s, w: 0.22 });
+        const sy = (SIDE_Y0 + 7.0) / 2;
+        rounded(member(SEC.sideW, SEC.sideD, 3.15, x, sy, s * 5.475, 'Side beam 0.30 × 0.46 m · concept section'), SEC.sideW, SEC.sideD, 3.15, 'z', 0.06).userData = { ...SECTION };
+        GEO.sideBeams.push({ x, y0: SIDE_Y0, y1: 7.0, zIn: 3.9, zOut: 7.05, side: s, w: SEC.sideW });
         if (!gilt) continue;
-        for (const z of [4.2, 6.75]) gild(sideBand, x, 6.83, s * z, 'Side beam gilded band');
-        for (const f of [-1, 1]) for (const y of [6.71, 6.95]) gild(sideLine, x + f * 0.113, y, s * 5.475, 'Side beam gilded border');
+        for (const z of [4.2, 6.75]) gild(sideBand, x, sy, s * z, 'Side beam gilded band');
+        for (const f of [-1, 1]) for (const y of [SIDE_Y0 + 0.05, 6.95]) gild(sideLine, x + f * (SEC.sideW / 2 + 0.003), y, s * 5.475, 'Side beam gilded border');
         if (!carving) continue;
-        for (const f of [-1, 1]) gild(carving.sideCartouche, x + f * 0.11, 6.83, s * 5.475, 'Side beam gilded cartouche').rotation.y = f * Math.PI / 2;
-        haunch(carving.sideHaunch, x, 6.66, s * 3.6, -s * Math.PI / 2, 'Side beam carved haunch');
-        haunch(carving.pierBracket, x, 6.66, s * 7.07, s * Math.PI / 2, 'Side beam carved pier bracket');
+        for (const f of [-1, 1]) gild(carving.sideCartouche, x + f * SEC.sideW / 2, sy, s * 5.475, 'Side beam gilded cartouche').rotation.y = f * Math.PI / 2;
+        haunch(carving.sideHaunch, x, SIDE_Y0, s * 3.6, -s * Math.PI / 2, 'Side beam carved haunch');
+        haunch(carving.pierBracket, x, SIDE_Y0, s * 7.07, s * Math.PI / 2, 'Side beam carved pier bracket');
       }
     }
     // Lengthwise beams on the column lines (B03 of the beam specification). The owner confirmed
@@ -413,21 +432,48 @@
       const a = lineKeys[i], b = lineKeys[i + 1], xa = data().longitudinal[a], xb = data().longitudinal[b], x0 = xa + 0.3, x1 = xb - (b === frameKey ? 0.28 : 0.3), mid = (x0 + x1) / 2;
       for (const s of [-1, 1]) {
         const line = s < 0 ? 'D' : 'E', z = s * 3.6, id = `B03-${line}-${two(a)}-${two(b)}`;
-        member(x1 - x0, 0.45, 0.24, mid, 8.955, z, 'Longitudinal column-line beam 0.24 × 0.45 m · concept proxy').userData = {
+        rounded(member(x1 - x0, 0.45, SEC.longW, mid, 8.955, z, 'Longitudinal column-line beam 0.32 × 0.45 m · concept proxy'), SEC.longW, 0.45, x1 - x0, 'x', 0.06).userData = {
           memberId: id, status: 'USER CONFIRMED ARRANGEMENT · SECTION IS A VISUALIZATION PROXY', source: 'docs/beams-roof-connections/SPECIFICATION.md · B03',
           materialRole: 'timber', structuralRole: 'longitudinal column-line beam', sectionStatus: 'ENGINEERING HOLD', supports: [`${a}/${line}`, `${b}/${line}`],
           connectionIds: [`J04-${line}-${two(a)}`, `J04-${line}-${two(b)}`], engineeringApproved: false };
-        GEO.longBeams.push({ id, x0, x1, z, y0: 8.73, y1: 9.18, w: 0.24 });
+        GEO.longBeams.push({ id, x0, x1, z, y0: 8.73, y1: 9.18, w: SEC.longW });
         if (!gilt) continue;
         const key = (x1 - x0).toFixed(3);
         if (!borders.has(key)) borders.set(key, new T.BoxGeometry(x1 - x0 - 0.5, 0.03, 0.012));
         for (const f of [-1, 1]) {
-          for (const y of [8.79, 9.12]) gild(borders.get(key), mid, y, z + f * 0.123, 'Longitudinal column-line beam gilded border');
-          if (carving) gild(carving.longCartouche, mid, 8.955, z + f * 0.12, 'Longitudinal column-line beam gilded cartouche').rotation.y = f > 0 ? 0 : Math.PI;
+          for (const y of [8.79, 9.12]) gild(borders.get(key), mid, y, z + f * (SEC.longW / 2 + 0.003), 'Longitudinal column-line beam gilded border');
+          if (carving) gild(carving.longCartouche, mid, 8.955, z + f * SEC.longW / 2, 'Longitudinal column-line beam gilded cartouche').rotation.y = f > 0 ? 0 : Math.PI;
         }
         if (!carving) continue;
         haunch(carving.longHaunch, xa, 8.73, z, 0, 'Longitudinal column-line beam carved haunch');
         haunch(carving.longHaunch, xb, 8.73, z, Math.PI, 'Longitudinal column-line beam carved haunch');
+      }
+    }
+    // Column-head junctions (owner, 8 Nov 2026, approved concept images 01/02/07): a mass of carved acanthus and
+    // peony foliage wraps each D/E column head from a moulded collar up over the ends of the tie and column-line
+    // beams. Eight large clusters round the head at beam level and eight smaller ones round the capital, each
+    // facing outward, with a moulded collar below. At axis 9 the clusters toward the nave centre are left out:
+    // the ambo key light and presider light hang there 0.45/0.60 m from the column axes. CONCEPT ORNAMENT.
+    if (carving) {
+      const big = K.cluster({ a: 0.3, b: 0.36, c: 0.17, leaves: 22, blooms: 4, size: 0.2 }), small = K.cluster({ a: 0.22, b: 0.26, c: 0.13, leaves: 14, blooms: 2, size: 0.16 });
+      const collar = new T.TorusGeometry(0.335, 0.055, 10, 36), collar2 = new T.TorusGeometry(0.32, 0.03, 8, 36);
+      GEO.columnJunctions = 0;
+      for (const k of ['3', '4', '5', '6', '7', '8', '9']) {
+        const x = data().longitudinal[k];
+        for (const s of [-1, 1]) {
+          const z = s * 3.6;
+          for (const [g, y, rad, a0] of [[big, 8.82, 0.42, 0], [small, 8.2, 0.44, Math.PI / 8]]) {
+            for (let n = 0; n < 8; n++) {
+              const a = a0 + n * Math.PI / 4, dx = Math.cos(a), dz = Math.sin(a);
+              if (k === '9' && dz * -s > 0.3) continue;
+              ornament(g.body, carved, x + dx * rad, y, z + dz * rad, Math.atan2(dx, dz), 'Column carving · junction foliage mass');
+              ornament(g.accent, gilt, x + dx * rad, y, z + dz * rad, Math.atan2(dx, dz), 'Column carving · junction foliage mass · gilding');
+            }
+          }
+          ornament(collar, carved, x, 7.74, z, 0, 'Column carving · junction collar').rotation.x = Math.PI / 2;
+          ornament(collar2, gilt, x, 7.66, z, 0, 'Column carving · junction collar · gilding').rotation.x = Math.PI / 2;
+          GEO.columnJunctions++;
+        }
       }
     }
     // Continuous interior purlin proxies across the crossing; real valley supports remain on hold.
@@ -1328,7 +1374,7 @@
     SIM.persistentLighting.prepare(c);
     createPool(state.settings.quality);
     createHalos();
-    c.data.simulator = { status: 'Interactive planning layer; analysis values are estimates', asDrawnFrame: { mainTie: '0.30 × 0.59 m at +8.59…+9.18 m', sideBeams: '0.22 × 0.34 m at +6.66…+7.00 m', purlinSpacing: '~0.50 m' }, conceptMembers: { longitudinalBeams: GEO.longBeams.map(b => b.id), section: '0.24 × 0.45 m at +8.73…+9.18 m · visualization proxy · ENGINEERING HOLD', source: 'docs/beams-roof-connections/SPECIFICATION.md · B03' }, movedProposedMembers: GEO.trussMoved };
+    c.data.simulator = { status: 'Interactive planning layer; analysis values are estimates', asDrawnFrame: { mainTie: 'levels +8.59…+9.18 m as drawn; 0.40 m wide concept section (drawn proxy 0.30)', sideBeams: 'top +7.00 m as drawn; 0.30 × 0.46 m concept section, soffit +6.54 (drawn proxy 0.22 × 0.34 from +6.66)', purlinSpacing: '~0.50 m' }, conceptMembers: { longitudinalBeams: GEO.longBeams.map(b => b.id), section: '0.32 × 0.45 m at +8.73…+9.18 m · visualization proxy · ENGINEERING HOLD', source: 'docs/beams-roof-connections/SPECIFICATION.md · B03' }, movedProposedMembers: GEO.trussMoved };
     c.data.assumptions.push('Timber frame now follows section sheet 4 as measured on the vector PDF: main tie beam +8.59…+9.18 m (0.59 m deep), side beams +6.66…+7.00 m from the C/G piers to the D/E shafts, purlins about 0.50 m apart (shown as 0.14 × 0.22 m proxy sections since 1 November 2026, with rafters 0.26 × 0.34 m and the ridge member 0.30 × 0.28 m: heavier visualization proxies on engineering hold, not checked sections). The earlier king posts, diagonal braces and knee braces were not on the drawing and are now an optional "proposed bracing" layer.');
     c.data.assumptions.push('Lengthwise beams on the D and E column lines (axes 3 to 10, 14 members, IDs B03-D-03-04 to B03-E-09-10) follow the owner-confirmed arrangement of the beam specification. Their 0.24 × 0.45 m section at +8.73…+9.18 m is a visualization proxy on engineering hold; no equipment is mounted on them. Carved haunches, cartouches and beam ends are applied ornament from the approved concept art and carry nothing. No haunch stands under the axis-9 tie beam, where the ambo key light and the presider light hang close to the columns.');
   }
@@ -2575,7 +2621,8 @@
       ['festivalStringsRevision', D.festivalStringsRevision, '.before-festival-strings-removed', D.upgradeFestivalStrings],
       ['goldCoveRevision', D.goldCoveRevision, '.before-gold-cove', D.upgradeGoldCove],
       ['sanctuaryPalmsRevision', D.sanctuaryPalmsRevision, '.before-sanctuary-palms', D.upgradeSanctuaryPalms],
-      ['wingGableLightsRevision', D.wingGableLightsRevision, '.before-wing-gable-lights', D.upgradeWingGableLights]
+      ['wingGableLightsRevision', D.wingGableLightsRevision, '.before-wing-gable-lights', D.upgradeWingGableLights],
+      ['beamSectionRevision', D.beamSectionRevision, '.before-stronger-beams', D.upgradeBeamSections]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;

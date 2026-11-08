@@ -74,7 +74,7 @@ for (const source of building.children) {
 for (const l of C.LAYERS) if (!l.special) assert(layerCount[l.id] > 0, `layer ${l.id} has parts`);
 const expect = {
   'Central column 5/D — illustrative diameter': 'columns', 'Column head +9.402': 'columns',
-  'Main tie beam 0.30 × 0.59 m · as drawn': 'frame', 'Purlin · as drawn spacing ~0.50 m': 'frame', 'Queen post · reference': 'frame',
+  'Main tie beam 0.40 × 0.59 m · concept section': 'frame', 'Purlin · as drawn spacing ~0.50 m': 'frame', 'Queen post · reference': 'frame',
   'Continuous principal roof, valley clipped': 'roof', 'Terracotta half-round ridge cap': 'roof',
   'Outer window clear glass body': 'openings', 'Exterior timber door leaf': 'openings',
   'Inner C–G floor at ±0.000 — buildup schematic': 'floors', 'Side stair riser': 'plinth',
@@ -93,7 +93,7 @@ for (const [source, parts] of bySource) for (const { o, layer } of parts) if (ex
 // The timber frames, proposed truss bracing and the frame's purlins are added by
 // the simulator at start-up (not built here): classify their real names directly.
 const frameParts = {
-  'Main tie beam 0.30 × 0.59 m · as drawn': ['Timber frame · as drawn (round shafts and tie beams)', 'frame'],
+  'Main tie beam 0.40 × 0.59 m · concept section': ['Timber frame · as drawn (round shafts and tie beams)', 'frame'],
   'Main tie beam carved haunch': ['Timber frame · as drawn (round shafts and tie beams)', 'ornament', 'CONCEPT ORNAMENT · NOT STRUCTURAL'],
   'Column carving · capital foliage': ['Timber frame · as drawn (round shafts and tie beams)', 'ornament'],
   'Central column 7/E — illustrative diameter': ['Timber frame · as drawn (round shafts and tie beams)', 'columns', 'SCHEMATIC'],

@@ -1,6 +1,6 @@
 # Equipment quantities, usage and quality report
 
-Generated 7 November 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
+Generated 8 November 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
 
 ## Total quantities
 
@@ -36,13 +36,13 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,510.550 | 3,510.550 | 0.000 | 0.000 |
+| Lighting | 3,514.617 | 3,514.617 | 0.000 | 0.000 |
 | Sound | 765.922 | 0.000 | 2,362.560 | 566.077 |
-| Fans and ventilation | 978.661 | 978.661 | 0.000 | 0.000 |
+| Fans and ventilation | 978.200 | 978.200 | 0.000 | 0.000 |
 | Exit signs | 166.209 | 166.209 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 263.923 | 263.923 | 0.000 | 0.000 |
-| **Total by length basis** | **5,685.266** | **4,919.344** | **2,362.560** | **566.077** |
+| **Total by length basis** | **5,688.871** | **4,922.949** | **2,362.560** | **566.077** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/425 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -72,8 +72,8 @@ The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-an
 The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
 
 
-- [Layout snapshot](equipment-layout.json), SHA-256: a36d7a3ae921fb406d4a2a5cceeccd996735e4853fee8913c6315768a78b062b.
-- [Electrical snapshot](electrical-systems.json), SHA-256: a7e5e4a3181d5671b19c348f0bb80f38ac40a65d7f523437165fa069e83f8667.
+- [Layout snapshot](equipment-layout.json), SHA-256: c24c88aa60318b23d20e837d96748990a5bc2f88a8cba26f81e75e6179050352.
+- [Electrical snapshot](electrical-systems.json), SHA-256: e59ab20906df2a248b9efcf88b837637e145feb6c2f52ef9eeaad857e2172df6.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 
