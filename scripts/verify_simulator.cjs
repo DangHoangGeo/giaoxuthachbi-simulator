@@ -65,6 +65,12 @@ assert.equal(sideBeams.length, 14, 'side beams on axes 3–9, both sides');
 for (const t of ties) { const b = new T.Box3().setFromObject(t); assert(Math.abs(b.max.x - b.min.x - 0.40) < 0.002, 'tie beam 0.40 m wide'); }
 for (const t of sideBeams) { const b = new T.Box3().setFromObject(t); assert(Math.abs(b.min.y - 6.54) < 0.002 && Math.abs(b.max.y - 7.0) < 0.002 && Math.abs(b.max.x - b.min.x - 0.30) < 0.002, 'side beam 0.30 × 0.46 m to the drawn top'); }
 assert.equal(SIM.GEO.columnJunctions, 14, 'carved junction on every D/E column head, axes 3–9');
+// Owner, 9 Nov 2026: softer trusses. Posts, arched collar, fillets and ridge boss on every nave truss; none above the roof lining.
+assert.equal(SIM.GEO.trussCarving, 7, 'carved upper truss on axes 3–9');
+for (const o of nodes.filter(o => o.isMesh && /^(Main tie beam truss|Side beam truss)/.test(o.name))) {
+  const b = new T.Box3().setFromObject(o), az = Math.max(Math.abs(b.min.z), Math.abs(b.max.z)), mid = Math.abs((b.min.z + b.max.z) / 2);
+  assert(b.max.y <= 12.28 - 0.7258 * Math.min(az, mid + 0.01) + 0.03 || /ridge boss/.test(o.name), o.name + ' stays under the roof lining');
+}
 assert(nodes.filter(o => o.name === 'Purlin · as drawn spacing ~0.50 m').length >= 28, 'drawn purlins');
 // The beams carry the lacquer of the columns, with gilded borders, rosettes and bands.
 {

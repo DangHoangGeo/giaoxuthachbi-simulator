@@ -476,6 +476,77 @@
         }
       }
     }
+    // Softer trusses (owner, 9 Nov 2026: looking up, the bare triangles of tie and rafters read stiff, coarse and
+    // amateur). After the approved concept images 01/07 (docs/beams-roof-connections/images), each nave truss on
+    // axes 3–9 gets, above its tie: two carved posts at |z| 1.8 m, a gently arched collar between their caps with
+    // carved foliage and a gilded lotus over it, a curved bracket filling the sharp angle where each rafter meets
+    // the tie, and a carved lotus boss under the ridge where the rafters meet; each side beam carries a short
+    // carved post under its rafter. The uplight on the tie (100° flood) now washes these carvings as well as the
+    // roof; the analysis does not occlude it. CONCEPT ORNAMENT · ENGINEERING HOLD: no structural role is claimed.
+    if (carving) {
+      const TR_ = (x, y, z) => new T.Matrix4().makeTranslation(x, y, z);
+      const rafterUnder = az => 12.28 - 0.7258 * az - 0.52;
+      const roundPost = (w, h, r) => { const sh = new T.Shape(), a = w / 2;
+        sh.moveTo(-a + r, -a); sh.lineTo(a - r, -a); sh.quadraticCurveTo(a, -a, a, -a + r); sh.lineTo(a, a - r); sh.quadraticCurveTo(a, a, a - r, a);
+        sh.lineTo(-a + r, a); sh.quadraticCurveTo(-a, a, -a, a - r); sh.lineTo(-a, -a + r); sh.quadraticCurveTo(-a, -a, -a + r, -a);
+        const g = new T.ExtrudeGeometry(sh, { depth: h, bevelEnabled: false, curveSegments: 4 }); g.rotateX(-Math.PI / 2); return g; };
+      const post = roundPost(0.24, 0.9, 0.05), cap = new T.BoxGeometry(0.34, 0.12, 0.34), plinth = new T.BoxGeometry(0.32, 0.06, 0.32);
+      const shortPost = roundPost(0.22, 0.62, 0.05), panel = K.panel({ w: 0.15, h: 0.46 }), shortPanel = K.panel({ w: 0.14, h: 0.3 });
+      const leafy = K.cluster({ a: 0.2, b: 0.16, c: 0.07, leaves: 12, blooms: 2, size: 0.13 }), lotus = K.bloom({ r: 0.16, petals: 10, rings: 2, seg: 4 });
+      const bossGeo = K.cluster({ a: 0.2, b: 0.2, c: 0.16, leaves: 14, blooms: 1, size: 0.14 });
+      // Arched collar in the truss plane: intrados from (|z| 1.8, +10.20) to a crown at +10.55, 0.20 deep, 0.20 thick.
+      const P0 = 1.8, Y0 = 10.2, CROWN = 10.55, sag = CROWN - Y0, R = (P0 * P0 + sag * sag) / (2 * sag), CY = CROWN - R, half = Math.asin(P0 / R);
+      const arcPts = (r) => { const pts = []; for (let i = 0; i <= 24; i++) { const a = -half + 2 * half * i / 24; pts.push([r * Math.sin(a), CY + r * Math.cos(a)]); } return pts; };
+      const collarShape = new T.Shape([...arcPts(R), ...arcPts(R + 0.2).reverse()].map(([z, y]) => new T.Vector2(z, y)));
+      const collar = new T.ExtrudeGeometry(collarShape, { depth: 0.2, bevelEnabled: false, curveSegments: 1 }); collar.translate(0, 0, -0.1); collar.rotateY(Math.PI / 2);
+      const bead = new T.ExtrudeGeometry(new T.Shape([...arcPts(R - 0.001), ...arcPts(R + 0.03).reverse()].map(([z, y]) => new T.Vector2(z, y))), { depth: 0.012, bevelEnabled: false, curveSegments: 1 }); bead.rotateY(Math.PI / 2);
+      // Curved bracket filling the sharp angle between the tie top (+9.18) and the rafter underside, |z| 2.45…3.55:
+      // its lower edge is a quarter curve, so the joint reads as a soft spandrel, not a wedge. Built per side
+      // (the shape is mirrored, not the mesh, so faces stay outward).
+      const filletGeo = sign => { const z0 = 2.45, z1 = 3.55, tipY = rafterUnder(z0) + 0.02, pts = [[z1, 9.18]];
+        for (let i = 0; i <= 12; i++) { const z = z1 - (z1 - z0) * i / 12; pts.push([z, Math.max(9.2, rafterUnder(z) + 0.02)]); }
+        for (let i = 1; i < 14; i++) { const t = i / 14 * Math.PI / 2; pts.push([z0 + (z1 - 0.35 - z0) * (1 - Math.cos(t)), tipY - (tipY - 9.18) * Math.sin(t)]); }
+        // rotateY(+90°) maps shape x to world −z: pre-mirror so the bracket lands on side `sign`.
+        const g = new T.ExtrudeGeometry(new T.Shape(pts.map(([z, y]) => new T.Vector2(-sign * z, y))), { depth: 0.2, bevelEnabled: false, curveSegments: 1 });
+        g.translate(0, 0, -0.1); g.rotateY(Math.PI / 2); return g; };
+      const fillets = { [-1]: filletGeo(-1), [1]: filletGeo(1) };
+      GEO.trussCarving = 0;
+      for (const k of ['3', '4', '5', '6', '7', '8', '9']) {
+        const x = data().longitudinal[k];
+        for (const s of [-1, 1]) {
+          const zp = s * P0;
+          ornament(plinth, timber, x, 9.21, zp, 0, 'Main tie beam truss post plinth');
+          ornament(post, timber, x, 9.24, zp, 0, 'Main tie beam truss post');
+          ornament(cap, carved, x, 10.14, zp, 0, 'Main tie beam truss post cap');
+          for (const f of [-1, 1]) { const pnl = ornament(panel, gilt, x + f * 0.121, 9.69, zp, f > 0 ? Math.PI / 2 : -Math.PI / 2, 'Main tie beam truss post carving · lotus panel'); }
+          // Curved fillet where the rafter meets the tie, with a carved spray on both faces.
+          ornament(fillets[s], timber, x, 0, 0, 0, 'Main tie beam truss fillet bracket');
+          for (const f of [-1, 1]) { const yaw = f > 0 ? Math.PI / 2 : -Math.PI / 2;
+            ornament(leafy.body, carved, x + f * 0.1, 9.42, s * 3.0, yaw, 'Main tie beam truss carving · fillet foliage');
+            ornament(leafy.accent, gilt, x + f * 0.1, 9.42, s * 3.0, yaw, 'Main tie beam truss carving · fillet foliage · gilding'); }
+          // Aisle: short carved post on the side beam under the rafter.
+          const az = 5.5, top = rafterUnder(az);
+          if (top > 7.25) {
+            const sp = ornament(shortPost, timber, x, 7.0, s * az, 0, 'Side beam truss post'); sp.scale.y = (top - 7.0) / 0.62;
+            for (const f of [-1, 1]) ornament(shortPanel, gilt, x + f * 0.111, (7.0 + top) / 2, s * az, f > 0 ? Math.PI / 2 : -Math.PI / 2, 'Side beam truss post carving · lotus panel');
+          }
+        }
+        ornament(collar, timber, x, 0, 0, 0, 'Main tie beam truss arched collar');
+        for (const f of [-1, 1]) ornament(bead, gilt, x + (f > 0 ? 0.1 : -0.112), 0, 0, 0, 'Main tie beam truss gilded collar bead');
+        // Carved foliage over the arch and a gilded lotus at the crown, both faces.
+        for (const u of [-1.15, -0.6, 0.6, 1.15]) for (const f of [-1, 1]) {
+          const y = CY + Math.sqrt(R * R - u * u) + 0.2 + 0.13;
+          if (y + 0.12 < rafterUnder(Math.abs(u))) { const yaw = f > 0 ? Math.PI / 2 : -Math.PI / 2;
+            ornament(leafy.body, carved, x + f * 0.06, y, u, yaw, 'Main tie beam truss carving · foliage over the collar');
+            ornament(leafy.accent, gilt, x + f * 0.06, y, u, yaw, 'Main tie beam truss carving · foliage over the collar · gilding'); }
+        }
+        for (const f of [-1, 1]) ornament(lotus, gilt, x + f * 0.11, CROWN + 0.36, 0, f > 0 ? Math.PI / 2 : -Math.PI / 2, 'Main tie beam truss carving · crown lotus');
+        // Ridge boss where the rafters meet.
+        ornament(bossGeo.body, carved, x, 11.62, 0, 0, 'Main tie beam truss carving · ridge boss').rotation.x = Math.PI / 2;
+        ornament(bossGeo.accent, gilt, x, 11.62, 0, 0, 'Main tie beam truss carving · ridge boss · gilding').rotation.x = Math.PI / 2;
+        GEO.trussCarving++;
+      }
+    }
     // Continuous interior purlin proxies across the crossing; real valley supports remain on hold.
     const L = 40.575, U = 9.45, Pr = 3.88, N = (U - 6.325) / Pr;
     const X = (12.472 - U) / LINING_SLOPE, O = (U - 7.13) / N;
