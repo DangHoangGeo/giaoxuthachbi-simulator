@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','detail-towers-profile.js','detail-front-profile.js','detail-rear-profile.js','detail-sides-profile.js','entrance-approach.js','decoration.js','sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','detail-towers-profile.js','detail-front-profile.js','detail-rear-profile.js','detail-sides-profile.js','entrance-approach.js','decoration.js','sanctuary.js', 'facade.js', 'marian-art.js','porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -87,19 +87,26 @@ for(const sign of [-1,1]) {
   const row=bays.filter(b=>Math.sign(b.position.z)===sign).sort((a,b)=>a.position.x-b.position.x);
   assert.equal(row.map(b=>b.name.endsWith(' 9–10')?'P':/ (4–5|8–9)$/.test(b.name)?'D':'W').join(','),'W,W,D,W,W,W,D,P,W,W');
 }
-// Open porches, parish priest 25 Oct 2026 (porches.js): no outer wall below the cornice outside
-// the 9–10 side bays, a column on every B/H axis of each porch run, a pointed arch in every bay,
-// a guard except where the outside stairs land, a cast slab with RC beams, and the side bays
-// closed to the porches.
+// Porches, parish priest 25 Oct 2026 and owner 8 Nov 2026 (porches.js): the bundle's schematic outer
+// wall goes below the cornice outside the 9–10 side bays; the drawn outer wall replaces it with open
+// openings (two arches and a rose in window bays, one 2.25 m arch in the stair bays 4–5, 8–9, 10–11),
+// a pier on every B/H axis, a cast slab with pointed cross arches, and the side bays closed.
 {
   const P=sandbox.window.CHURCH_PORCHES,st=P.stats;
   for(const b of bays.filter(b=>!b.name.endsWith(' 9–10')))b.traverse(o=>{if(o.isMesh)assert(bounds(o).min.y>=P.spec.entablature-.01,'Nothing of the outer porch wall stays below the cornice: '+o.name);});
-  assert.equal(st.columns,22,'11 porch columns per side (axes 2′–9 and 10–12)');assert.equal(st.arches,18,'9 porch arches per side');
-  assert.equal(st.openBays,6,'stair landings 4–5, 8–9 and 10–11 stay open');assert.equal(st.guardedBays,12,'guard in the other bays');
+  assert.equal(st.columns,22,'11 porch columns per side (axes 2′–9 and 10–12)');
+  assert.equal(st.doorBays,6,'one 2.25 m arch at the stair landings 4–5, 8–9 and 10–11');assert.equal(st.windowBays,12,'paired openings in the other bays');
+  assert.equal(st.openings,30,'12 × 2 window arches + 6 stair arches');assert.equal(st.colonnettes,60,'a colonnette each side of every outer opening');assert.equal(st.roses,12,'a rose window over each window pair');
+  const ow=nodes.find(o=>o.name.startsWith('Porch outer wall'));const owb=bounds(ow);
+  assert(owb.min.y<=P.spec.floor+.001&&near(owb.max.y,P.spec.entablature,'outer wall up to the entablature')!==false&&near(Math.abs(owb.max.z),P.spec.lineZ+P.spec.column.spandrel,'outer wall face 0.06 outside B/H')!==false,'Drawn outer wall on the porch line');
+  const roses=nodes.filter(o=>o.name.startsWith('Porch rose window ·'));assert.equal(roses.length,12,'12 rose glasses');
+  for(const r of roses){const b=bounds(r);near((b.min.y+b.max.y)/2,4.645,'rose centre at the E02 roundel');near(b.max.y-b.min.y,.6,'60 cm rose glass');}
+  assert.equal(nodes.filter(o=>/^Porch guard/.test(o.name)).length,0,'the 25 Oct guard is withdrawn: the outer wall below the sills guards the window bays');
+  assert.equal(nodes.filter(o=>o.name==='Porch arcade column and arch spandrel · cast concrete, plastered').length,0,'no pointed arcade');
+  for(const sign of [-1,1]){for(const x of [7.725,25.725,50.8455])assert.equal(realism.walkAllowed(x,sign*P.spec.lineZ),false,'outer wall closes window bay '+x);for(const x of P.spec.stairBays)assert.equal(realism.walkAllowed(x,sign*P.spec.lineZ),true,'stair-bay arch open '+x);}
   assert.equal(st.beams,14,'cross arch C–B / G–H on axes 3–8 and 11 each side');
   const cross=bounds(nodes.find(o=>o.name.startsWith('Porch cross arch')));assert(cross.max.y<P.tileY(7.47)&&Math.abs(cross.min.z)>=7.6&&Math.abs(cross.max.z)<=10.25,'cross arches span from the C/G wall column to the arcade column');
   for(const n of ['C','G'])assert.equal(nodes.filter(o=>o.name.startsWith(`Inner wall ${n} `)).length,9,'inner wall bays named '+n);
-  const guard=nodes.filter(o=>o.name==='Porch guard top rail');assert(guard.length===1&&near(bounds(guard[0]).max.y-P.spec.floor,1.08,'Guard 1.08 m above the porch floor')!==false);
   const slab=nodes.find(o=>o.name.startsWith('Porch roof slab'));const sb=bounds(slab);
   assert(sb.max.y<P.tileY(7.47)-.02&&sb.min.y>P.tileY(10.25)-.2,'Slab sits just under the porch tiles');
   const ends=nodes.find(o=>o.name.startsWith('Side-bay end wall to the porch'));const eb=bounds(ends);
@@ -160,18 +167,33 @@ assert.equal(nodes.filter(o=>o.name==='Tree trunk').length,16);
 }
 assert.equal(nodes.filter(o=>o.name==='Outer door fixed fanlight').length,0,'No outer porch doors (open arcade)');
 const clearBodies=nodes.filter(o=>/^(Inner|Outer) window clear glass body$/.test(o.name));
-assert.equal(clearBodies.filter(o=>o.name.startsWith('Inner')).length,24,'Paired windows in the inner wall of six bays per side, incl. bay 10–11 (25 Oct 2026); the service room 11–12 has a door instead (owner, 7 Nov 2026)');
+const innerBodies=clearBodies.filter(o=>o.name.startsWith('Inner'));
+assert.equal(innerBodies.length,12,'One 2.25 m window in the inner wall of six bays per side, incl. bay 10–11 (owner, 8 Nov 2026: the CAD inside elevation); the service room 11–12 has a door (7 Nov 2026)');
+for(const o of innerBodies){const b=bounds(o);near(b.min.y,.65,'inner window sill +0.65');near(b.max.y,2.951,'inner window body to the 0.22 m head band');near(Math.max(b.max.x-b.min.x,b.max.z-b.min.z),2.25,'inner window 2.25 m wide');}
 assert.equal(clearBodies.filter(o=>o.name.startsWith('Outer')).length,4,'Outer windows only in the 9–10 gables');
 assert(!nodes.some(o=>/^Proposed coloured glazing|^Stained-glass window/.test(o.name)),'Full-height decorative glazing must be removed');
 const innerHeads=nodes.filter(o=>o.name==='Inner window coloured oval');
-assert.equal(innerHeads.length,0,'the single 2.25 m inner windows are replaced by paired windows');
-assert.equal(nodes.filter(o=>o.name==='Inner doorway coloured oval').length,6,'side doors in 4–5 and 8–9, service-room doors in 11–12 (owner, 7 Nov 2026)');
-assert.equal(nodes.filter(o=>o.name==='Entrance door coloured oval').length,3);
+assert.equal(innerHeads.length,0,'inner window heads hold the M lunette, not glass');
+const lunettes=nodes.filter(o=>/^Inner window M lunette · (porch|nave) face$/.test(o.name));
+assert.equal(lunettes.length,24,'silver M lunette on both faces of the 12 inner windows (owner, 8 Nov 2026)');
+for(const o of lunettes){const b=bounds(o);near(b.min.y,3.171,'M lunette springs on the head band');near(b.max.y,3.171+1.125,'M lunette semicircle 1.125 m');assert.equal(o.material.userData.status,'CHURCH CONCEPT PICTURE · CONCEPT · PUBLICATION HOLD H8');}
+assert.equal(nodes.filter(o=>/doorway coloured oval$/.test(o.name)).length,0,'door fanlights hold the reliefs');
+// Nine reliefs over the nine outside doors, owner's mapping of 8 Nov 2026 (marian-art.js).
+{
+  const reliefs=nodes.filter(o=>/^(Inner doorway|Entrance door) relief lunette$/.test(o.name));
+  assert.equal(reliefs.length,9,'a relief over each of the nine outside doors');
+  const key=o=>{if(o.name.startsWith('Entrance')){const b=bounds(o),z=(b.min.z+b.max.z)/2;return Math.abs(z)<3?'front main':z>0?'front H':'front B';}let g=o.parent;while(g&&!/^Inner wall [CG] /.test(g.name))g=g.parent;return g.name.replace('Inner wall ','');};
+  const D=sandbox.window.CHURCH_MARIAN_ART.DOORS;
+  for(const o of reliefs)assert.equal(o.userData.relief,D[key(o)],'relief scene at '+key(o));
+  assert.equal(new Set(reliefs.map(o=>o.userData.relief)).size,9,'nine different scenes');
+  assert.equal(D['front main'],9,'the Assumption over the main door');
+  assert.equal(nodes.filter(o=>/^(Door relief \d · inside face|Entrance door relief lunette · inside face)$/.test(o.name)).length,9,'each relief also faces inside');
+  for(const o of reliefs.filter(o=>o.name.startsWith('Entrance'))){const b=bounds(o);assert(b.min.x>5&&b.max.x<5.6,'front reliefs moved with the doors to the axis-2′ wall');}
+}
 const colouredHeads=nodes.filter(o=>/coloured oval$|fixed fanlight$|stained-glass fanlight$|rose-window infill$/.test(o.name));
-assert.equal(colouredHeads.length,61,'glass of the tower cap rosettes (towers.js), of the old side- and rear-gable roses (roofline.js) and of the 14 inner C/G wall roses (realism.js, E02 roundel since 3 Nov 2026) removed; the service room has two door fanlights for its four window heads (7 Nov 2026)');
+assert.equal(colouredHeads.length,28,'glass of the tower cap rosettes (towers.js), of the old side- and rear-gable roses (roofline.js) and of the inner C/G roses removed; since 8 Nov 2026 the 24 inner window fanlights became 12 M lunettes and the 9 door fanlights carry reliefs');
 assert(!nodes.some(o=>o.name==='Schematic rose-window infill'&&/^Inner wall /.test(o.parent?.name||'')),'no schematic glass rose on the inner C/G wall');
-assert.equal(nodes.filter(o=>o.name==='Inner window carving · E02 capitals and roundel').length,12,'E02 roundel and colonnette capitals in each of the 12 inner window bays (11–12 has doors since 7 Nov 2026)');
-for(const o of innerHeads){o.geometry.computeBoundingBox();near(o.geometry.boundingBox.min.y,3.171,'Inner oval spring');near(o.geometry.boundingBox.max.y,4.311,'Inner oval crown');}
+assert.equal(nodes.filter(o=>o.name==='Inner window carving · E02 capitals and roundel').length,0,'the E02 colonnettes and roundel belong to the outer wall again (owner, 8 Nov 2026)');
 for(const o of clearBodies){
   assert.equal(o.material,mat.glass);assert.equal(o.material.map,null);
   assert(o.material.opacity<.2,'Window bodies must stay transparent by default');

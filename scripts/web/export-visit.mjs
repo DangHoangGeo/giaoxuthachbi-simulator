@@ -29,6 +29,8 @@ const files = [
 	"entrance-approach.js",
 	"sanctuary.js",
 	"facade.js",
+	"marian-art-textures.js",
+	"marian-art.js",
 	"porches.js",
 	"stations.js",
 	"towers.js",

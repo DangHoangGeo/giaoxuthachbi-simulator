@@ -249,6 +249,20 @@
       }).filter(o => o.x1 > x0 && o.x0 < x1);
       GEO.walls.push({ z: s * 7.25, x0, x1, y0: -0.4, y1: 7.13, openings });
     }
+    // Outer porch walls on B/H (owner, 8 Nov 2026; porches.js): solid between the drawn openings, which
+    // are open (no glass). Rectangles enclose each arch. Kept out of GEO.walls, which the cable router
+    // reads as the building's perimeter: they only occlude light. The rose windows count as solid.
+    GEO.porchWalls = [];
+    const PO = window.CHURCH_PORCHES?.spec;
+    if (PO?.outer) for (const s of [-1, 1]) for (const [a, b] of PO.runs) {
+      const keys = Object.keys(AX).filter(k => AX[k] >= AX[a] - 1e-6 && AX[k] <= AX[b] + 1e-6).sort((p, q) => AX[p] - AX[q]), openings = [];
+      for (let i = 0; i < keys.length - 1; i++) {
+        const c = (AX[keys[i]] + AX[keys[i + 1]]) / 2, W = PO.outer.window, D = PO.outer.door;
+        if (PO.stairBays.some(x => Math.abs(x - c) < 0.6)) openings.push({ x0: c - D.width / 2, x1: c + D.width / 2, y0: -0.4, y1: D.spring + D.radius });
+        else for (const u of W.centres) openings.push({ x0: c + u - W.width / 2, x1: c + u + W.width / 2, y0: W.bottom, y1: W.spring + W.radius });
+      }
+      GEO.porchWalls.push({ z: s * PO.lineZ, x0: AX[a], x1: AX[b], y0: PO.floor - 0.08, y1: PO.entablature, openings });
+    }
     // The 9–10 side bays are closed to the porches on axes 9 and 10 (porches.js, 25 Oct 2026).
     for (const s of [-1, 1]) for (const x of [AX['9'], AX['10']]) GEO.walls.push({ x, z0: Math.min(s * 7.47, s * 10.234), z1: Math.max(s * 7.47, s * 10.234), y0: -0.4, y1: 7.1, openings: [] });
     // Entrance façade (plane inside the wall, inner face at x 2.65): solid apart from the main door and
@@ -288,7 +302,7 @@
     GEO.occluders = P.buildOccluders({
       columns: GEO.columns.map(c => ({ x: c.x, z: c.z, r: c.r, y0: 0, y1: 9.4 })),
       boxes: [...GEO.columns.map(c => ({ min: [c.x - 0.41, 0, c.z - 0.41], max: [c.x + 0.41, 0.6, c.z + 0.41] })), ...GEO.sanctuary.boxes],
-      walls: [...GEO.walls, ...GEO.sanctuary.walls]
+      walls: [...GEO.walls, ...GEO.sanctuary.walls, ...GEO.porchWalls]
     });
   }
 

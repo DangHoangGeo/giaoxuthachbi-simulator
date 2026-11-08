@@ -102,3 +102,14 @@ Chủ đầu tư nhận xét cột hiên và diềm vẫn "không liên tục". 
 - Mặt ngoài tường vòm giữa các cột lùi về 0,06 m tính từ trục (trước 0,18), nên mặt cột (0,21) nhô 0,15 m. Chiều sâu cột, mặt gắn đèn rọi vòm (0,24) và mặt phía trong hiên không đổi.
 - Diềm giữa các cột đặt trên mặt tường mới. Phía trên mỗi cột, các gờ và mũ diềm gãy nhô thêm 0,15 m theo bề rộng gờ vẽ của trụ EW/E02, nên diềm ôm qua cột. Răng cưa và chữ Vạn dừng ở cạnh cột; đầu cột chạm nằm trong vùng diềm, như E02.
 - Độ sâu là **DERIVED**.
+
+## Tường ngoài hiên, cửa sổ trong lớn hơn và phù điêu Đức Mẹ · 8/11/2026
+
+Chủ đầu tư gửi ảnh chụp tường bên đang xây và ba hình của giáo xứ. Hồ sơ đầy đủ: [outer-wall-and-marian-art-2026-11-08.md](../engineering/outer-wall-and-marian-art-2026-11-08.md). Phần dưới đây thay cho mục “cặp cửa sổ theo loại phía ngoài” trong tường C/G và mục trang trí cửa sổ trong theo E02 ngày 3/11/2026.
+
+- **Tường ngoài hiên B/H** dựng lại theo mặt đứng ngoài tờ 12/13 (DWG E26/D29), giữa các trụ E02. Các lỗ cửa để trống, không kính, không cánh, như trong ảnh. Gian cửa sổ có hai vòm tròn rộng 1,0 m ở ±1,015 m (bậu +0,850, chân cung +3,1005, đỉnh +3,6005), phào vòm theo bán kính 500–828 mm, cột nhỏ E02 ở cả hai bên mỗi vòm và ô panô 850 dưới bậu. Gian cầu thang (4–5, 8–9, 10–11) có một vòm 2,25 m từ sàn hiên lên, chân cung +3,1005, bán kính 1,125 m. Lan can hiên ngày 25/10 bỏ. Diềm, trụ, lan can mái, sàn mái và vòm ngang trong hiên giữ nguyên.
+- **Cửa sổ hoa hồng** đặt ở tường ngoài, trên mỗi cặp vòm (tâm +4,645 m): kính màu 0,60 m theo hình của giáo xứ, viền vòng tới 0,837 m.
+- **Cửa sổ tường trong C/G**: mỗi gian một lỗ 2,25 m theo mặt đứng trong (bậu +0,65; cao 2,301 m; dải đầu 0,22 m). Đầu cửa là bán nguyệt (chủ đầu tư chọn; bản vẽ vẽ hình ba thùy 1,14 m), có ô chữ M bạc trên nền trắng ở cả hai mặt. Hai cánh chớp gỗ mở ra phía hiên.
+- **Phù điêu trên chín cửa ra vào**: 3 cửa mặt tiền, 4 cửa hông (gian 4–5, 8–9) và 2 cửa phòng phụ (gian 11–12). Thứ tự xem bảng trong hồ sơ; cửa giữa là Đức Mẹ Hồn Xác Lên Trời.
+- Không đèn, loa nào phải dời. Mô phỏng ánh sáng có thêm tường ngoài: ghế ngồi không đổi; mức âm trung bình giảm 0,1 dB; gió tại chỗ thấp nhất từ 0,05 xuống 0,04 m/s.
+- Còn giữ: kết cấu và chiều dày tường ngoài, dầm ngang, hình đầu cửa sổ trong, lan can theo quy chuẩn (ENG-045); quyền công bố các hình của giáo xứ (H8).

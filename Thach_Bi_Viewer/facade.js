@@ -657,8 +657,9 @@
       building.updateMatrixWorld(true);
       const moved = [], fans = [];
       // Fanlights, transoms and radial bars of the three doorways, and the leaves of both joinery states.
-      facade.traverse(o => { if (o.isMesh && /^(Entrance door coloured oval|Entrance transom|Fanlight radial bar|Fanlight spring bar)$/.test(o.name)) moved.push(o); });
-      facade.traverse(o => { if (o.isMesh && o.name === 'Entrance door coloured oval') fans.push(new T.Box3().setFromObject(o)); });
+      // Since 8 Nov 2026 the fanlights hold the Marian door reliefs (marian-art.js, realism.js).
+      facade.traverse(o => { if (o.isMesh && /^(Entrance door coloured oval|Entrance door relief lunette( · inside face)?|Entrance transom|Fanlight radial bar|Fanlight spring bar)$/.test(o.name)) moved.push(o); });
+      facade.traverse(o => { if (o.isMesh && /^Entrance door (coloured oval|relief lunette)$/.test(o.name)) fans.push(new T.Box3().setFromObject(o)); });
       building.traverse(o => { if (/^Entrance joinery · /.test(o.name)) for (const c of o.children) { const p = c.getWorldPosition(new T.Vector3()); if (p.x < 3.2 && Math.abs(p.z) < 7.2) moved.push(c); } });
       // The side doorways also shift 0.135 m toward the axis to the P05 jambs (|Z| 4.275–6.425;
       // the front arches had them at 4.41–6.55). EN.sideShift is that inward move.

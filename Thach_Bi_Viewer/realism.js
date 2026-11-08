@@ -83,6 +83,9 @@
     // 9–10 side bays are closed to the porches on axes 9 and 10.
     if(Math.abs(x-46.425)<=1.2 && az>=7.0 && az<=7.75)return false;
     if([36.975,44.175].some(e=>Math.abs(x-e)<=.2) && az>=7.3 && az<=10.6)return false;
+    // Outer porch wall on B/H (owner, 8 Nov 2026; porches.js): through the stair-bay arches only.
+    const PO=window.CHURCH_PORCHES?.spec;
+    if(PO?.outer && az>=PO.lineZ-.3 && az<=PO.lineZ+.3 && ((x>=5.3&&x<=36.98)||(x>=44.1&&x<=53.1)))return PO.stairBays.some(c=>Math.abs(x-c)<=.85);
     // Lacquered chamber walls on the D/E lines, from the axis-10 columns back to axis 11.
     if(x>=44.4 && x<=48.6 && az>=3.2 && az<=3.85)return false;
     // Sanctuary fit-out: the open service room is bounded by the C/G walls and the
@@ -373,6 +376,26 @@
       for(let i=0;i<pos.count;i++)uv.setXY(i,(pos.getX(i)-(x-width/2))/width,(pos.getY(i)-bottom)/height);
       uv.needsUpdate=true;
     }
+    // Marian art (owner, 8 Nov 2026; marian-art.js): reliefs over the nine outside doors and the
+    // silver M lunette over the inner windows.
+    const marian=window.CHURCH_MARIAN_ART?.create(T);
+    function reliefScene(o,front){
+      if(!marian)return null;
+      const D=window.CHURCH_MARIAN_ART.DOORS;
+      if(front){const b=new T.Box3().setFromObject(o),z=(b.min.z+b.max.z)/2;return D[Math.abs(z)<3?'front main':z>0?'front H':'front B'];}
+      let g=o.parent;while(g&&!/^Inner wall [CG] /.test(g.name))g=g.parent;
+      return g?D[g.name.replace('Inner wall ','')]:null;
+    }
+    // The same picture seen from the other side: a copy with reversed winding and mirrored u, so it
+    // reads the right way round (not a mirror image) from inside.
+    function backFace(o,dz,name){
+      const g=o.geometry.clone(),uv=g.attributes.uv,n=g.attributes.normal;
+      for(let i=0;i<uv.count;i++)uv.setX(i,1-uv.getX(i));
+      if(n)for(let i=0;i<n.count;i++)n.setXYZ(i,-n.getX(i),-n.getY(i),-n.getZ(i));
+      if(g.index){const a=g.index.array;for(let i=0;i<a.length;i+=3){const t=a[i+1];a[i+1]=a[i+2];a[i+2]=t;}g.index.needsUpdate=true;}
+      const m=new T.Mesh(g,o.material);m.name=name;m.position.copy(o.position);m.rotation.copy(o.rotation);m.scale.copy(o.scale);
+      m.translateZ(dz);m.castShadow=false;m.receiveShadow=true;m.userData={...o.userData};o.parent.add(m);return m;
+    }
     // Split the traced C/G windows at the spring line, retaining source sizes.
     for(const o of existingGlass){
       if(o.name==='Opening infill'&&Math.abs(Math.abs(o.parent.position.z)-7.36)<.001){
@@ -385,9 +408,21 @@
         box(width,.045,.045,0,spring,o.position.z,mat.metal,o.parent,'Inner window transom');
       }else if(o.name.startsWith('Side doorway fixed fanlight')||o.name.startsWith('Upper entrance fanlight')){
         o.geometry.computeBoundingBox();const b=o.geometry.boundingBox,width=b.max.x-b.min.x,rise=b.max.y-b.min.y,x=(b.min.x+b.max.x)/2,spring=b.min.y;
+        const front=o.name.startsWith('Upper entrance'),scene=reliefScene(o,front);
+        if(scene){
+          // Owner, 8 Nov 2026: a carved relief from the life of Our Lady fills the head of each of the
+          // nine outside doors (church concept pictures, marian-art.js), seen from outside and inside.
+          o.material=marian.relief(scene);artworkUV(o,x,spring,width,rise);o.castShadow=false;
+          o.userData={...o.userData,status:window.CHURCH_MARIAN_ART.STATUS,source:window.CHURCH_MARIAN_ART.SOURCE,relief:scene};
+          backFace(o,front?-.012:-.25,front?'Entrance door relief lunette · inside face':`Door relief ${scene} · inside face`);
+          // A relief is not glazing: the glazing bars of a front fanlight go with the glass.
+          if(front){const r=new T.Box3().setFromObject(o).expandByVector(new T.Vector3(.25,.05,.25));for(const m of o.parent.children.slice())if(/^Fanlight (radial|spring) bar$/.test(m.name)&&r.containsBox(new T.Box3().setFromObject(m)))m.removeFromParent();}
+          o.name=front?'Entrance door relief lunette':'Inner doorway relief lunette';
+          continue;
+        }
         o.material=fanMaterial(fanIndex++,{width,bottom:spring,spring,rise,sectors:8});
         artworkUV(o,x,spring,width,rise);o.castShadow=false;
-        o.name=o.name.startsWith('Upper entrance')?'Entrance door coloured oval':'Inner doorway coloured oval';
+        o.name=front?'Entrance door coloured oval':'Inner doorway coloured oval';
       }
     }
     function panels(leaf,width,height) {
@@ -443,48 +478,23 @@
         for(const s of [-1,1])if(!colonnettes||s!==-Math.sign(x))box(b-a,profile.spring-profile.bottom,z1-z0,x+s*(a+b)/2,(profile.spring+profile.bottom)/2,(z0+z1)/2,material,bay,'Side CAD opening jamb moulding');
       }
     }
-    // E02 window dressing on the inner C/G wall (owner, 3 Nov 2026), bay-local metres: x from the bay
-    // centre, y world level, z out from the C/G axis (porch face +0.11). Window-axis offsets from E02
-    // lines D9A2AF–D9A2B9, D9A249–D9A27C (colonnette), D9A4AC–D9A4DE (panels); traced capital and
-    // roundel from detail-sides-profile.js. Relief depths are DERIVED; the outer colonnette of each
-    // window is held because the porch path light and fill speaker sit on that jamb (sides.md).
-    const sideDetail=window.CHURCH_DETAIL_PROFILE_SIDES,sideK=window.CHURCH_CARVING?.create(T);
-    const sideOrn=sideK&&window.CHURCH_EXTERIOR_ORNAMENT?.create(T,sideK);
-    let sideCapital=null,sideRoundel=null;
+    // Inner C/G window bays (owner, 8 Nov 2026): one large opening, as the CAD's inside elevation
+    // draws it. The E02 colonnettes, panels and roundel that stood here from 3 Nov 2026 belong to the
+    // outer wall again (porches.js); the bundle's low parapet and schematic rose go. A sill on both faces.
     function dressInnerWindowBay(bay,profile){
-      if(!sideDetail||!sideOrn)return;
-      const {TR,SC,place,merge}=sideK,face=.11,wc=face+.075,trim=[],carved=[];
-      sideCapital??=sideOrn.towerSpandrel(sideDetail.sideWindowCapital,.006,.003,3);
-      sideRoundel??=sideOrn.towerSpandrel(sideDetail.sideRoundel,.008,.003,3);
       for(const m of bay.children.slice())if(/^(Window low parapet|Schematic parapet flute|Schematic rose-window infill|Schematic rosette ring|Schematic rosette ray)$/.test(m.name)){m.removeFromParent();m.geometry.dispose();}
-      const blk=(x0,x1,y0,y1,z0,z1)=>trim.push([new T.BoxGeometry(Math.abs(x1-x0),y1-y0,z1-z0),TR((x0+x1)/2,(y0+y1)/2,(z0+z1)/2)]);
-      const cyl=(r,y0,y1,x)=>trim.push([new T.CylinderGeometry(r,r,y1-y0,12),TR(x,(y0+y1)/2,wc)]);
-      for(const x of profile.centres){
-        // Panel under the window: sill bands +0.75–0.79–0.85 and four notched panels +0.075–0.675.
-        blk(x-.5,x+.5,.75,.79,face,face+.02);blk(x-.5,x+.5,.79,.85,face,face+.035);
-        for(const u of [-.33,-.11,.11,.33]){blk(x+u-.055,x+u+.055,.1,.65,face,face+.015);for(const [a,b] of [[.075,.1],[.65,.675]])blk(x+u-.03,x+u+.03,a,b,face,face+.015);}
-        // Colonnette on the side toward the bay centre: shaft r 0.065 at 0.7532 from the window axis,
-        // respond strip 0.61–0.6882, base 0–0.31, necking, traced capital +2.8005–3.0205, abacus, impost.
-        const k=-Math.sign(x),at=u=>x+k*u,uc=at(.7532);
-        blk(at(.61),at(.6882),.31,2.7505,face,face+.04);cyl(.065,.31,2.7505,uc);
-        blk(at(.5521),at(.8805),-.32,.06,face,wc+.1);blk(at(.5521),at(.8805),.06,.1,face,wc+.095);
-        cyl(.13,.1,.23,uc);cyl(.09,.23,.31,uc);cyl(.08,2.7505,2.8005,uc);
-        blk(uc-.08,uc+.08,2.8005,3.0205,face,wc+.06);
-        carved.push([sideCapital,place(SC(k,1,1),TR(uc,0,wc+.075))]);
-        blk(at(.5482),at(.8867),3.0205,3.0505,face,wc+.11);blk(at(.5467),at(.8859),3.0505,3.1005,face,wc+.12);
-      }
-      // Roundel over the window pair, as E02 draws it in each window bay (centre +4.645).
-      carved.push([sideRoundel,TR(0,0,face+.01)]);
-      const status={status:'E02 TRACED OUTLINE / DERIVED RELIEF DEPTH · CONCEPT',source:'DWG E02 side elevation, 23 Oct 2026; owner 3 Nov 2026'};
-      mesh(merge(trim),mat.trim,bay,'Inner window E02 colonnette and panel mouldings').userData=status;
-      mesh(merge(carved),mat.trim,bay,'Inner window carving · E02 capitals and roundel').userData=status;
+      const w=profile.width+.16,y=profile.bottom;
+      box(w,.05,.30,0,y-.025,0,mat.trim,bay,'Inner window stone sill').userData={status:'DERIVED SILL · CONCEPT',source:'Sheet 12 inside elevation (sill +0.65); owner 8 Nov 2026'};
+      box(w,.04,.06,0,y-.07,.14,mat.trim,bay,'Inner window sill nosing');box(w,.04,.06,0,y-.07,-.14,mat.trim,bay,'Inner window sill nosing');
     }
     for(const bay of sideBays) {
       const inner=bay.name.startsWith('Inner wall '),door=inner&&/ (4–5|8–9|11–12)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
       // Owner, 3 Nov 2026: the wing-end windows follow EW too, at the drawn centres ±2.45 (were ±2.4).
-      const profile=(inner&&!door||wing)&&sideCAD?sideCAD.window:null,centres=wing?[-2.45,2.45]:profile?.centres;
-      if(profile)rebuildSideOpening(bay,profile,centres,!wing);
-      if(profile&&!wing)dressInnerWindowBay(bay,profile);
+      // Owner, 8 Nov 2026: the inner C/G windows take the single 2.25 m inside opening.
+      const big=inner&&!door&&sideCAD?.innerWindow;
+      const profile=big?sideCAD.innerWindow:wing&&sideCAD?sideCAD.window:null,centres=wing?[-2.45,2.45]:profile?.centres;
+      if(profile)rebuildSideOpening(bay,profile,centres,false);
+      if(big)dressInnerWindowBay(bay,profile);
       // Joinery planes: the inner wall is 0.22 m thick (porch face at +0.11), the outer 0.30 m.
       paneZ=inner?0:.10;const jz=inner?.07:.13,hz=inner?.07:.10;
       if(door) {
@@ -496,6 +506,32 @@
             const leaf=new T.Group();leaf.position.x=-sign*.551;hinge.add(leaf);
             box(1.102,2.951,.095,0,1.4755,0,mat.wood,leaf,'Exterior timber door leaf');panels(leaf,1.102,2.951);
             rod([-sign*.40,1.1,.12],[-sign*.40,1.45,.12],.025,mat.metal,leaf,'Bronze door pull');
+          }
+        }
+      } else if(big) {
+        // One 2.25 m window: clear glass body to the 0.22 m head band, then the silver M lunette on
+        // both faces (church concept picture); a pair of panelled timber shutters swings to the porch.
+        const P=profile,half=P.width/2;
+        const body=new T.Shape();body.moveTo(-half,P.bottom);body.lineTo(half,P.bottom);body.lineTo(half,P.leafTop);body.lineTo(-half,P.leafTop);body.closePath();
+        pane(body,bay,mat.glass,'Inner window clear glass body').castShadow=false;
+        box(P.width,P.spring-P.leafTop,.20,0,(P.spring+P.leafTop)/2,0,mat.trim,bay,'Inner window head band 220 mm').userData={status:'EXPLICIT HEIGHT',source:'Sheet 12 inside elevation (2301 + 220)'};
+        if(marian)for(const face of [1,-1]){
+          const lun=mesh(window.CHURCH_MARIAN_ART.lunette(T,0,P.spring,half,P.radius,false),marian.monogram,bay,face>0?'Inner window M lunette · porch face':'Inner window M lunette · nave face');
+          lun.position.z=face*.05;if(face<0)lun.rotation.y=Math.PI;lun.castShadow=false;
+          lun.userData={status:window.CHURCH_MARIAN_ART.STATUS,source:window.CHURCH_MARIAN_ART.SOURCE};
+        }
+        for(const state of ['closed','open']) {
+          const frame=new T.Group();frame.position.copy(bay.position);frame.rotation.copy(bay.rotation);doorGroups[state].add(frame);
+          for(const sign of [-1,1]) {
+            const hinge=new T.Group();hinge.position.set(sign*half,P.bottom,hz);hinge.rotation.y=state==='closed'?0:sign*1.5;frame.add(hinge);
+            const leaf=new T.Group();leaf.position.x=-sign*half/2;hinge.add(leaf);
+            const h=P.leafTop-P.bottom,w=half-.02;
+            box(w,h,.06,0,h/2,0,mat.wood,leaf,'Window timber shutter leaf');
+            for(const face of [-1,1]){
+              for(const sx of [-1,1])box(.05,h,.03,sx*(w/2-.025),h/2,face*.04,mat.wood,leaf,'Shutter stile');
+              for(const y of [.04,h*.36,h*.68,h-.04])box(w,.05,.03,0,y,face*.04,mat.wood,leaf,'Shutter rail');
+              for(const y of [h*.2,h*.52,h*.84])box(w-.18,h*.26,.012,0,y,face*.033,im.woodInset,leaf,'Shutter inset panel');
+            }
           }
         }
       } else {
