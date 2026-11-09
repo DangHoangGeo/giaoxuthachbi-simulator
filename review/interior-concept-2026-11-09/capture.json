@@ -1,0 +1,285 @@
+{
+  "date": "2026-11-09",
+  "timezone": "Asia/Tokyo",
+  "status": "ACTUAL MODEL SCREENSHOTS; not generated artwork; design development only",
+  "sourceHead": "06625ebe40b25564e124f38dd6109918d101fad6",
+  "workingTreeAtCapture": [
+    " M Thach_Bi_Viewer/OPEN_CHURCH.html",
+    " M Thach_Bi_Viewer/entrance-approach.js",
+    " M Thach_Bi_Viewer/viewer.css",
+    "?? docs/layout_design/00_Tong_quan_23102026.pdf",
+    "?? docs/layout_design/01_Mat_bang_va_luoi_truc_23102026.pdf",
+    "?? docs/layout_design/02_Mat_tien_trung_tam_23102026.pdf",
+    "?? docs/layout_design/03_Hai_thap_chuong_23102026.pdf",
+    "?? docs/layout_design/04_Long_nha_cot_va_mai_23102026.pdf",
+    "?? docs/layout_design/05_Cung_thanh_va_phong_phu_23102026.pdf",
+    "?? docs/layout_design/06_Hai_canh_ngang_23102026.pdf",
+    "?? docs/layout_design/07_Cua_so_23102026.pdf",
+    "?? docs/layout_design/08_Cua_di_23102026.pdf",
+    "?? docs/layout_design/09_Khung_vom_canh_ngang_23102026.pdf",
+    "?? docs/layout_design/10_Kiem_tra_du_lieu_DWG_23102026.pdf",
+    "?? docs/layout_design/11_Chi_tiet_trang_tri_thap_23102026.pdf",
+    "?? docs/layout_design/HUONG_DAN_23102026.txt",
+    "?? docs/layout_design/old/",
+    "?? review/interior-concept-2026-11-09/"
+  ],
+  "sourceRevisionQualification": "HEAD plus pre-existing uncommitted OPEN_CHURCH.html, entrance-approach.js and viewer.css; HEAD alone cannot reproduce these views. Those files are not changed by this concept delivery. Untracked drawing PDFs are not image inputs.",
+  "browser": "Codex in-app browser, desktop 1600x1000, full resolution",
+  "visitOnly": true,
+  "frameStyle": "drawn",
+  "seating": "4 blocks",
+  "captures": [
+    {
+      "file": "current-columns-roof-day.jpg",
+      "sha256": "be3fbc02a66d6368ffe29087e22bf00659b6bb6a8ae4c0164650f00cb1ec95b8",
+      "view": "Columns & roof detail preset, oblique upward",
+      "lighting": "day"
+    },
+    {
+      "file": "current-columns-roof-evening.jpg",
+      "sha256": "2e158ee602a60de0e6dc9c47d90bb134ce39369987bad21bd3475aac6cc3724a",
+      "view": "Columns & roof detail preset, oblique upward",
+      "lighting": "evening"
+    },
+    {
+      "file": "current-nave-day.jpg",
+      "sha256": "5e4b4edacbb681aa51899b6cdb168043ed8023f7a89e309162448b63a1bbaa19",
+      "view": "Nave preset, eye level toward sanctuary",
+      "lighting": "day"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "file": "Thach_Bi_Viewer/OPEN_CHURCH.html",
+      "sha256": "9f45bb3b586833a01f9a62dd9f1a5a2f8f6d7640438a3434b581a22001041ccb"
+    },
+    {
+      "file": "Thach_Bi_Viewer/bundle.js",
+      "sha256": "52b830d56cac5fa23879f2c84a4b5d84b5d10d7fb6ba93fe50c3a65c4a6f9081"
+    },
+    {
+      "file": "Thach_Bi_Viewer/carving.js",
+      "sha256": "5624bd11c10c1c75a0c80a4f2b9612652664e6592eceff0d8a6ac6c5c70c1367"
+    },
+    {
+      "file": "Thach_Bi_Viewer/cinematic-tour.css",
+      "sha256": "ba08658381f7a44a4e86286b8fab5280c04b8dffa6fcac0707b50ef5f9aa06a0"
+    },
+    {
+      "file": "Thach_Bi_Viewer/cinematic-tour.js",
+      "sha256": "f29616330f0b96fc59b47bb5a27667e06a126459309cb4f1916c81770878b5cd"
+    },
+    {
+      "file": "Thach_Bi_Viewer/construction-data.js",
+      "sha256": "701f008453298d85ea4af00118bac9fc1c2ea3766c1f22d2bca80b7142d378fb"
+    },
+    {
+      "file": "Thach_Bi_Viewer/construction.css",
+      "sha256": "a757f2e519807eceb3299746059698beebc329a20e25a59f1b77916190e5a386"
+    },
+    {
+      "file": "Thach_Bi_Viewer/construction.js",
+      "sha256": "0dbf77f587a830d83a5d6110166d8f2b2bab770b75afe0ee7086caa81ce2237d"
+    },
+    {
+      "file": "Thach_Bi_Viewer/decoration.js",
+      "sha256": "c11e58c36f2c63bd6cedad32f9dfebd775f38069e816705d82eedc29d9ba8d0e"
+    },
+    {
+      "file": "Thach_Bi_Viewer/detail-front-profile.js",
+      "sha256": "4b6887fe22be2d6bf1feac231d2e8d4d25b3cfddbefe56f6707a5a404270d58f"
+    },
+    {
+      "file": "Thach_Bi_Viewer/detail-rear-profile.js",
+      "sha256": "40e38e3cf2c5b69bf4b732019c5d8c12364d4206db399343eb19f64e52f7ead9"
+    },
+    {
+      "file": "Thach_Bi_Viewer/detail-sides-profile.js",
+      "sha256": "395b061e84c58efd72cc9f70ba4f361d51aedbefd730baa8b1d99f131459ff61"
+    },
+    {
+      "file": "Thach_Bi_Viewer/detail-towers-profile.js",
+      "sha256": "0e38e0d471043202d37db93489985d979dbf5c94435a96ccc61b3cfbefad1ce2"
+    },
+    {
+      "file": "Thach_Bi_Viewer/entrance-approach.js",
+      "sha256": "c69ee432aac8e6f8dd6266e5e0e7b0df9974103c92a293ab899c018b28b3ae32"
+    },
+    {
+      "file": "Thach_Bi_Viewer/exterior-ornament.js",
+      "sha256": "6e3e80ea41ec79cce7bcd27f116c9fe6c8d062f034ebfdcb5267525ea1640237"
+    },
+    {
+      "file": "Thach_Bi_Viewer/facade-crest-profile.js",
+      "sha256": "ffa928c22e94943031ea561b6ecdc55805021648020006d06f79a61308be859a"
+    },
+    {
+      "file": "Thach_Bi_Viewer/facade.js",
+      "sha256": "0b83beea6b6655791efe3977b657e3de301e14514b1aa86b24897e7af3ac40fa"
+    },
+    {
+      "file": "Thach_Bi_Viewer/glass-art.js",
+      "sha256": "4003d0587858f952b532fb65313b0f75157fd9205b60817d26354668d1e2205a"
+    },
+    {
+      "file": "Thach_Bi_Viewer/i18n-vi.js",
+      "sha256": "662fcc164954bea1cabdaff9204d7f0a82aa64a1eb4e60895381641b330f859c"
+    },
+    {
+      "file": "Thach_Bi_Viewer/i18n.js",
+      "sha256": "90caff45df344851d75eecd2a37abfc0b44145638cbcc628a13e1b4f283e3a1e"
+    },
+    {
+      "file": "Thach_Bi_Viewer/marian-art-textures.js",
+      "sha256": "16581e59cc0fdcc3e14b6d42c273bf344a65ffd96b657e9142b472cddc2c0696"
+    },
+    {
+      "file": "Thach_Bi_Viewer/marian-art.js",
+      "sha256": "cbbba54c0d5f34676bd93d1ccc2a6237ee635dd578c32d8624295f54438dcc79"
+    },
+    {
+      "file": "Thach_Bi_Viewer/navigation.js",
+      "sha256": "829bedaeb24a98aea41769520546d7ac39f5953ba91a7205c2f5759f4ed11f16"
+    },
+    {
+      "file": "Thach_Bi_Viewer/planning.js",
+      "sha256": "4818a86f9791ec9d861fb70ceb0a694f4c24c0ea987dc2fb3870c0091988dc7a"
+    },
+    {
+      "file": "Thach_Bi_Viewer/porches.js",
+      "sha256": "7369386ae582a2d2bd1c0158cd30cee322d60d097e4013cfeb1caee425afe067"
+    },
+    {
+      "file": "Thach_Bi_Viewer/realism.js",
+      "sha256": "22f7ebd9d03009244bdddade253ef333edabbf546ff481695debf85b3f6843b6"
+    },
+    {
+      "file": "Thach_Bi_Viewer/references.js",
+      "sha256": "883e6daa9d9c6a27425ac848c4757296dece5a0748409a7cdebde96b94e1ec20"
+    },
+    {
+      "file": "Thach_Bi_Viewer/render-batches.js",
+      "sha256": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1"
+    },
+    {
+      "file": "Thach_Bi_Viewer/roofline.js",
+      "sha256": "fe6484d1a330f4d6616b6dfef6b440cfdc9612263b6c6d34c7244c37d7812d78"
+    },
+    {
+      "file": "Thach_Bi_Viewer/sanctuary.js",
+      "sha256": "4175d6f7168fa1a570f5649eb5f445b5a090af76211bbe987a7fea957f3611f7"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/analysis.js",
+      "sha256": "5245fad1537146093b03cf4aff74c62673f766134b082de59e796d5f8d3e17db"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/audio-synthesis.js",
+      "sha256": "0ac8dba169e165579126a678bcd91e8d330ac85a6956e70749c9ebf12e1aee23"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/audio.js",
+      "sha256": "b5d5140c527c80e1c86e043292172505ee5cc6ed032a1392c8cf4664ee763cad"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/catalog.js",
+      "sha256": "62acffecb0a0d6c61fe47655886aa4fb0258ffda6029bea30a98032a1d4b0ee5"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/controls.js",
+      "sha256": "52df339ba144d28bd0b93e5276a33f5bd00909fe8c1bc3cb0bb5139117c5ce42"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/design.js",
+      "sha256": "1b98b1911fda8dddfea18c384af4ed7321bd8d62bf4bdb4344e5fb8b768a639e"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/doorhead-review.js",
+      "sha256": "00422219053377979f9294b2691a05acff5819289297b14d433912b0358b48fe"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/electrical.js",
+      "sha256": "6137d3c6bf80d07d6ddaa05bf3ba2eee68da0a50fb828462216e9e9fef1562c6"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/engine.js",
+      "sha256": "e981b4cd0567003286a3a14bf2fc36bf07a557efc4fa3e94fd06a3ac5e6bf9de"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/installation-review.js",
+      "sha256": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/light-grid.js",
+      "sha256": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/persistent-lighting.js",
+      "sha256": "a467c13e4f993d8f6352c4a58fb2c3f366df2db955ac99ffe54401299f57bfe7"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/physics.js",
+      "sha256": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/samples.js",
+      "sha256": "d249a101c740bfff5a4154ec2fcc7343e314505332191f435dcad609e83d85d3"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/simulator.css",
+      "sha256": "939710fd82972aca48294132dbdc0efce9af00945eef304b3cbfb8894e58dd58"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/ui.js",
+      "sha256": "38dcf29aa8a2c53792db49f647519afb0d37096b6e2e7d8c5df2162896ad8d5b"
+    },
+    {
+      "file": "Thach_Bi_Viewer/simulator/veranda-review.js",
+      "sha256": "cda63e962a9dc9a3ec8f18ed267752a0e32f4872d3e69a54ef344f3a5fc5c622"
+    },
+    {
+      "file": "Thach_Bi_Viewer/startup.css",
+      "sha256": "7d34a7d343178a203c4594b85dd9e494cb0403da178f5b80d7959ad81fe8a0c0"
+    },
+    {
+      "file": "Thach_Bi_Viewer/startup.js",
+      "sha256": "31719c07dd0ab30000b3fd52c9ee52e37b58067a8293bc16f18d611d545663db"
+    },
+    {
+      "file": "Thach_Bi_Viewer/stations.js",
+      "sha256": "17979bbe379cc9b5286e5ec4f090708bdf75e20e544dc44f6c777251a35bb625"
+    },
+    {
+      "file": "Thach_Bi_Viewer/texture-memory.js",
+      "sha256": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0"
+    },
+    {
+      "file": "Thach_Bi_Viewer/tower-spandrel-profile.js",
+      "sha256": "37e1c2474c1991b00f840e3e0a0aa07ad7282d2d79848311c489acf0113bdd86"
+    },
+    {
+      "file": "Thach_Bi_Viewer/towers.js",
+      "sha256": "9243dbaa0845a04d9eefbf04b6544773e8d11cf96344072b9f640294e686d9fc"
+    },
+    {
+      "file": "Thach_Bi_Viewer/ui-cards.css",
+      "sha256": "8b459dfbc994a1882a5e4a98990bd05a00adffe45f0c207e7f6154ab23e9b094"
+    },
+    {
+      "file": "Thach_Bi_Viewer/viewer-performance.js",
+      "sha256": "f45fee8c12aa37f9e6a7e4bcbe75b8a679b79c5241f199ccd5349edc204b60d8"
+    },
+    {
+      "file": "Thach_Bi_Viewer/viewer.css",
+      "sha256": "cd2662cfb27f693567159a739fab239cee96b86dd2495e8acf04bb7eadcf9781"
+    },
+    {
+      "file": "Thach_Bi_Viewer/wing-saint-textures.js",
+      "sha256": "8e5a469232c47bca675d670f33c7fd4daa969b4b17e58292cc4da49b30f8be35"
+    }
+  ],
+  "consoleErrors": [],
+  "consoleScope": "Captured browser error log empty following the nave/detail/day/evening inspection; not an automated regression audit.",
+  "modelChanged": false,
+  "equipmentOrRoutesChanged": false
+}
