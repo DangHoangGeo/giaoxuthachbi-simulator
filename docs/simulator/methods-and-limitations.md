@@ -35,6 +35,8 @@ Every active lamp contributes from its actual modeled position. Native and textu
 
 This keeps the display consistent when moving around or changing graphics quality. It does not establish agreement with measured illuminance: rendering and analysis use different approximations, and most lamps have no individual shadow map. Never use camera exposure to disguise a lighting shortfall.
 
+Since 10 November 2026 the standard display adds contact shading, a highlight roll-off, a soft glow and, by day, an approximate sky-light term at the side openings ([interior finish study](../interior-finish.md)). These act on the picture only. They are not lamp shadows, not a daylight calculation and not lux; the analysis, its reflectance schedule and the exposure setting are unchanged. `?finish=off` shows the picture without the display pass.
+
 Listening mode uses speaker direction, propagation/DSP delays and synthesized room reverberation. Headphone output depends on playback hardware and volume. Digital output dBFS is separate from predicted acoustic dBA. Playing a STIPA sample does not perform a calibrated STIPA measurement. Listening signals are prepared in cooperative tasks with sample-for-sample parity to the original generator; stationary propagation calculations are reused without skipping fan movement, source gating or listener orientation. See the [audio performance checks](performance.md#listening-mode).
 
 ## Comparing design options

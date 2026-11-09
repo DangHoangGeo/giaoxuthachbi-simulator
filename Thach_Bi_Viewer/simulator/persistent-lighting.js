@@ -7,13 +7,15 @@
   'use strict';
   const SIM = window.CHURCH_SIMULATOR;
   let T, ctx, texture, gridTexture, gridKey = '', gridStats = null, gridBuilds = 0, capacity = 16;
-  const GRID = window.CHURCH_LIGHT_GRID;
+  const GRID = window.CHURCH_LIGHT_GRID, OPENINGS = 15;
   const materials = new Set();
   const uniforms = {
     uSimLightGrid: { value: null }, uSimGridSize: { value: null }, uSimGridEnabled: { value: 0 },
     uSimLightTexture: { value: null }, uSimLightCount: { value: 0 },
     uSimLightTexel: { value: 1 / capacity }, uSimLightScale: { value: 1 },
-    uSimIndoorLux: { value: 0 }, uSimIndoorSky: { value: null }, uSimIndoorGround: { value: null }
+    uSimIndoorLux: { value: 0 }, uSimIndoorSky: { value: null }, uSimIndoorGround: { value: null },
+    // Display daylight: sky light entering through the side windows and doors (never an analysis input).
+    uSimDaylight: { value: 0 }, uSimDayColor: { value: null }, uSimOpenings: { value: [] }, uSimOpeningNormals: { value: [] }
   };
   let sources = [];
   function allocate(count) {
@@ -31,7 +33,7 @@
     if (!material?.isMeshStandardMaterial || materials.has(material)) return;
     materials.add(material);
     const compile = material.onBeforeCompile, cacheKey = material.customProgramCacheKey.bind(material);
-    material.customProgramCacheKey = () => `${cacheKey()}|persistent-lamps-physical-v3-grid|${capacity}`;
+    material.customProgramCacheKey = () => `${cacheKey()}|persistent-lamps-physical-v4-daylight|${capacity}`;
     material.onBeforeCompile = function (shader, renderer) {
       compile.call(this, shader, renderer);
       Object.assign(shader.uniforms, uniforms);
@@ -45,12 +47,15 @@
           simPosition = instanceMatrix * simPosition;
         #endif
         vSimWorldPosition = (modelMatrix * simPosition).xyz;`);
-      shader.fragmentShader = `varying vec3 vSimWorldPosition;
+      shader.fragmentShader = `#define SIM_OPENINGS ${OPENINGS}
+        varying vec3 vSimWorldPosition;
         uniform sampler2D uSimLightTexture, uSimLightGrid;
         uniform vec2 uSimGridSize;
         uniform float uSimGridEnabled;
         uniform float uSimLightCount, uSimLightTexel, uSimLightScale, uSimIndoorLux;
         uniform vec3 uSimIndoorSky, uSimIndoorGround;
+        uniform float uSimDaylight; uniform vec3 uSimDayColor;
+        uniform vec4 uSimOpenings[SIM_OPENINGS]; uniform vec3 uSimOpeningNormals[SIM_OPENINGS];
         float simIndoorWeight(vec3 p) {
           float alongNave = smoothstep(2.2, 2.5, p.x) * (1.0 - smoothstep(52.85, 53.15, p.x));
           float roofY = 12.282 - 0.7258 * abs(p.z);
@@ -71,6 +76,21 @@
         // Room bounce belongs to the surface's room, never the camera's room.
         irradiance += mix(uSimIndoorGround, uSimIndoorSky, simWorldNormal.y * 0.5 + 0.5)
           * (simIndoorWeight(vSimWorldPosition) * uSimIndoorLux * uSimLightScale);
+        // Each opening acts as a small diffuse patch of sky: light falls off with distance and with
+        // the angle at both ends, so floors and column flanks near a window are brighter by day.
+        if (uSimDaylight > 0.0) {
+          float simDayWeight = simIndoorWeight(vSimWorldPosition);
+          if (simDayWeight > 0.0) {
+            float simSky = 0.0;
+            for (int i = 0; i < SIM_OPENINGS; i++) {
+              vec3 toOpening = uSimOpenings[i].xyz - vSimWorldPosition;
+              float d2 = max(dot(toOpening, toOpening), 1.0);
+              vec3 dir = toOpening * inversesqrt(d2);
+              simSky += uSimOpenings[i].w * max(dot(simWorldNormal, dir), 0.0) * max(-dot(dir, uSimOpeningNormals[i]), 0.0) / d2;
+            }
+            irradiance += uSimDayColor * (simSky * simDayWeight * uSimDaylight);
+          }
+        }
         #include <lights_fragment_end>
         #if defined(RE_Direct)
           #ifdef STANDARD
@@ -128,6 +148,19 @@
     ctx = context; T = ctx.THREE;
     uniforms.uSimIndoorSky.value = new T.Color('#fff1dc');
     uniforms.uSimIndoorGround.value = new T.Color('#d9c3a3');
+    uniforms.uSimDayColor.value = new T.Color('#eef4ff');
+    // Seven window or door bays on each side wall and the centre entrance. w = clear area × a display
+    // gain chosen by eye; the porches shade these openings, so this is not a daylight calculation.
+    const axes = ctx.DATA?.longitudinal || ctx.data?.longitudinal || {}, names = ["2′", '3', '4', '5', '6', '7', '8', '9'];
+    const list = [];
+    for (let i = 0; i + 1 < names.length; i++) for (const s of [-1, 1]) {
+      const a = axes[names[i]], b = axes[names[i + 1]];
+      if (Number.isFinite(a) && Number.isFinite(b)) list.push([(a + b) / 2, 2.1, s * 7.25, 7.6 * 1.6, 0, 0, -s]);
+    }
+    list.push([5.3, 1.7, 0, 6 * 0.9, 1, 0, 0]);
+    while (list.length < OPENINGS) list.push([0, -100, 0, 0, 0, 1, 0]);
+    uniforms.uSimOpenings.value = list.slice(0, OPENINGS).map(o => new T.Vector4(o[0], o[1], o[2], o[3]));
+    uniforms.uSimOpeningNormals.value = list.slice(0, OPENINGS).map(o => new T.Vector3(o[4], o[5], o[6]));
     allocate(capacity);
     gridTexture = new T.DataTexture(new Float32Array(4), 1, 1, T.RGBAFormat, T.FloatType);
     gridTexture.minFilter = gridTexture.magFilter = T.NearestFilter;
@@ -175,6 +208,7 @@
     prepare, bindMaterial, bindObject, update,
     scale: value => { uniforms.uSimLightScale.value = value; },
     indoorAmbient: lux => { uniforms.uSimIndoorLux.value = lux; },
+    daylight: value => { uniforms.uSimDaylight.value = value; },
     stats: () => ({ count: sources.length, capacity, grid: gridStats, gridBuilds }),
     // Verification switch: the reference loop uses exactly the same sources/PBR.
     setGridEnabled: value => { uniforms.uSimGridEnabled.value = value && gridStats ? 1 : 0; },

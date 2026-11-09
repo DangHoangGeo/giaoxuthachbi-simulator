@@ -128,6 +128,8 @@
 
   function prepare(ctx) {
     context = ctx;
+    // Contact shading and highlight roll-off for the display (display-finish.js).
+    window.CHURCH_DISPLAY_FINISH?.attach(ctx);
     const { THREE: T, building, scene, roofs, structure, plinth, floors, exterior, mat, interior, renderer, data, sun } = ctx;
     const lightGraphics = new URLSearchParams(location.search).get('graphics') === 'light';
     let seed = 4012026;
@@ -916,6 +918,8 @@
     building.userData.assumptions=data.assumptions;
     window.CHURCH_SANCTUARY?.prepare(ctx);
     window.CHURCH_DECORATION?.prepare(ctx);
+    // Interior finish study, 10 Nov 2026: paving, skirting, cornice, ceiling panels, sanctuary details.
+    window.CHURCH_INTERIOR_FINISH?.prepare(ctx);
     applyGlass();
     finish(true);
   }
@@ -953,6 +957,7 @@
   function lighting(mode) {
     if(!context)return;
     lightMode=mode==='evening'?'evening':'day';applyGlass();
+    window.CHURCH_DISPLAY_FINISH?.lighting(lightMode);
     const {scene,sun,fill,hemisphere,renderer,interior,facadeLights}=context,night=mode==='evening';
     scene.background.set(SKY[lightMode].horizon);scene.fog.color.copy(scene.background);
     if(context.skyDome)context.skyDome.material.map=context.skyMaps[lightMode];
@@ -963,6 +968,9 @@
     renderer.toneMappingExposure=night?1.12:1;
     // Reset from the interior's registered values, so repeated toggles never compound.
     interior.setLighting(mode);
+    window.CHURCH_INTERIOR_FINISH?.lighting(lightMode,interior);
+    // Sky light through the side windows and doors, for the display by day only.
+    window.CHURCH_SIMULATOR?.persistentLighting?.daylight?.(night?0:1);
     interior.lights.forEach(light=>{light.intensity*=night?1.9:.95;});
     facadeLights.forEach((light,index)=>{light.intensity=night?(index<2?430:index===4?450:230):0;});
     renderer.shadowMap.needsUpdate=true;

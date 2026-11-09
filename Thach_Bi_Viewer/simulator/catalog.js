@@ -17,7 +17,9 @@
     agedBrass: { color: '#a07a3c', metalness: 0.8, roughness: 0.42 },
     bronze: { color: '#4f3f2e', metalness: 0.55, roughness: 0.48 },
     black: { color: '#1e1e20', metalness: 0.35, roughness: 0.5 },
-    white: { color: '#efede6', metalness: 0.08, roughness: 0.45 },
+    // Wall-mounted housings (fans, loudspeakers, sign bodies): warm ivory close to the mineral
+    // plaster, so they recede on the wall (owner: finish-match fittings; 10 November 2026). Was #efede6.
+    white: { color: '#f4ecd9', metalness: 0.03, roughness: 0.6 },
     steel: { color: '#9aa0a6', metalness: 0.7, roughness: 0.35 },
     aluminium: { color: '#c9ccd0', metalness: 0.75, roughness: 0.3 },
     darkWood: { color: '#5a3a22', roughness: 0.55 },
@@ -360,22 +362,25 @@
     }
   }
 
-  function fanBlades(k, n, rIn, rOut, width, mat, pitch = deg(12), thick = 0.012) {
+  function fanBlades(k, n, rIn, rOut, width, mat, pitch = deg(12), thick = 0.012, iron = 'black') {
     k.in('rotor', () => {
-      k.cyl(0.07, 0.07, 0.05, 'black', {}, 16);
+      k.cyl(0.07, 0.07, 0.05, iron, {}, 16);
       ring(n, (i, a) => {
         const mid = (rIn + rOut) / 2, len = rOut - rIn;
         const q = new k.T.Quaternion().setFromEuler(new k.T.Euler(pitch, -a, 0, 'YXZ'));
         k.box(len, thick, width, mat, { p: [Math.cos(a) * mid, -0.01, Math.sin(a) * mid], q });
-        k.box(0.16, 0.012, 0.03, 'black', { p: [Math.cos(a) * (rIn - 0.03), 0.005, Math.sin(a) * (rIn - 0.03)], r: [0, -a, 0] });
+        k.box(0.16, 0.012, 0.03, iron, { p: [Math.cos(a) * (rIn - 0.03), 0.005, Math.sin(a) * (rIn - 0.03)], r: [0, -a, 0] });
       });
     });
   }
   function buildCeilingFan(k) {
-    k.cyl(0.075, 0.08, 0.05, 'darkWood', { p: [0, -0.02, 0] }, 14);
-    k.lathe([[0.04, -0.05], [0.11, -0.08], [0.13, -0.14], [0.12, -0.2], [0.06, -0.24], [0.001, -0.25]], 'bronze', {}, 22);
+    // Display finish, 10 November 2026: blades, canopy and rod in the roof timbers' own lacquer and
+    // an aged-brass motor, so the fans read as part of the red frame instead of black shapes against
+    // it. Size, position, speed and duty are unchanged; the product finish is not selected.
+    k.cyl(0.075, 0.08, 0.05, 'beamTimber', { p: [0, -0.02, 0] }, 14);
+    k.lathe([[0.04, -0.05], [0.11, -0.08], [0.13, -0.14], [0.12, -0.2], [0.06, -0.24], [0.001, -0.25]], 'agedBrass', {}, 22);
     k.pivots.rotor = [0, -0.17, 0];
-    fanBlades(k, 5, 0.17, 0.71, 0.13, 'darkWood');
+    fanBlades(k, 5, 0.17, 0.71, 0.13, 'beamTimber', undefined, undefined, 'agedBrass');
   }
   function buildHVLS(k) {
     k.box(0.36, 0.3, 0.3, 'steel', { p: [0, -0.2, 0] });
@@ -827,7 +832,14 @@
       const a = i * 2.39996, rr = (0.06 + (i % 4) * 0.05) * s, h = (0.12 + (i % 5) * 0.06) * s;
       k.rod([x, y, z], [x + Math.cos(a) * rr, y + h, z + Math.sin(a) * rr], 0.006 * s, 'leaf', 5);
       k.sph(0.045 * s, i % 3 ? 'leaf' : 'leafLight', { p: [x + Math.cos(a) * rr * 0.8, y + h * 0.75, z + Math.sin(a) * rr * 0.8], s: [0.5, 1.3, 0.8], r: [a, 0, 0.6] }, 8, 6);
-      k.sph(0.05 * s, colors[i % colors.length], { p: [x + Math.cos(a) * rr, y + h + 0.02 * s, z + Math.sin(a) * rr] }, 8, 6);
+      // An open bloom: five petals round a small heart, tilted outward from the stem (10 November 2026;
+      // was one ball). Same position and overall size, so arrangements keep their footprint.
+      const fx = x + Math.cos(a) * rr, fy = y + h + 0.02 * s, fz = z + Math.sin(a) * rr, tilt = 0.5 + (i % 3) * 0.18;
+      k.sph(0.016 * s, 'flowerCream', { p: [fx, fy + 0.012 * s, fz] }, 6, 4);
+      for (let p = 0; p < 5; p++) {
+        const b = a + p * 2 * PI / 5, d = 0.03 * s;
+        k.sph(0.03 * s, colors[i % colors.length], { p: [fx + Math.cos(b) * d, fy + 0.004 * s, fz + Math.sin(b) * d], s: [1, 0.32, 0.62], r: [0, -b, tilt] }, 6, 4);
+      }
     }
   }
   function buildFlowerStand(k) {
@@ -861,8 +873,15 @@
     ring(6, (i, a) => candleLamp(k, Math.cos(a) * 0.3, 1.03, Math.sin(a) * 0.3, 1.1));
   }
   function buildPaschal(k) {
-    k.lathe([[0.001, 0], [0.22, 0], [0.2, 0.06], [0.07, 0.14], [0.05, 0.75], [0.09, 0.95], [0.11, 1.0]], 'brass', {}, 18);
+    // Turned brass stand (10 November 2026; was a plain cone): stepped foot, knopped baluster stem and
+    // a drip pan under the candle. Same 0.44 m foot, 1.0 m stand height, candle and flame position.
+    k.lathe([[0.001, 0], [0.22, 0], [0.22, 0.025], [0.2, 0.04], [0.19, 0.075], [0.13, 0.11], [0.075, 0.135], [0.06, 0.16],
+      [0.085, 0.19], [0.09, 0.215], [0.06, 0.245], [0.04, 0.29], [0.034, 0.42], [0.05, 0.47], [0.072, 0.5], [0.05, 0.53],
+      [0.034, 0.58], [0.03, 0.74], [0.045, 0.79], [0.062, 0.815], [0.04, 0.845], [0.036, 0.9], [0.06, 0.94], [0.125, 0.965],
+      [0.135, 0.985], [0.12, 1.0], [0.055, 1.0], [0.05, 1.02], [0.001, 1.02]], 'brass', {}, 24);
+    for (const y of [0.075, 0.5, 0.815]) k.tor(y === 0.075 ? 0.19 : y === 0.5 ? 0.072 : 0.062, 0.006, 'agedBrass', { p: [0, y, 0], r: [PI / 2, 0, 0] }, 2 * PI, 5, 24);
     k.cyl(0.045, 0.045, 0.85, 'candle', { p: [0, 1.43, 0] }, 16);
+    k.cyl(0.003, 0.003, 0.03, 'black', { p: [0, 1.865, 0] }, 5);
     k.box(0.006, 0.18, 0.012, 'robeRed', { p: [0.046, 1.5, 0] });
     k.box(0.006, 0.012, 0.11, 'robeRed', { p: [0.046, 1.55, 0] });
     k.sph(0.024, 'glow', { p: [0, 1.9, 0], s: [1, 1.8, 1] }, 10, 8);
