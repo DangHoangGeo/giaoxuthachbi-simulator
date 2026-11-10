@@ -891,11 +891,18 @@
     const c = item.params?.colour || 'fabricWhite';
     k.cyl(0.012, 0.012, 1.0, 'brass', { p: [0.04, -0.03, 0], r: [PI / 2, 0, 0] }, 8);
     for (const z of [-0.5, 0.5]) k.sph(0.025, 'brass', { p: [0.04, -0.03, z] }, 8, 6);
-    k.box(0.012, 2.6, 0.9, c, { p: [0.04, -1.36, 0] });
+    // Hanging cloth with soft vertical folds (10 November 2026; was one flat board): ten panels
+    // set on a shallow zigzag, ±8 mm. Same 2.6 × 0.9 m outline, rod and pennant tail.
+    const folds = 10, amp = 0.008, fx = j => 0.04 + amp * Math.cos(j * PI), fz = j => -0.45 + 0.9 * j / folds;
+    for (let j = 0; j < folds; j++) {
+      const dx = fx(j + 1) - fx(j), dz = fz(j + 1) - fz(j), len = Math.hypot(dx, dz);
+      k.box(0.008, 2.6, len + 0.004, c, { p: [(fx(j) + fx(j + 1)) / 2, -1.36, (fz(j) + fz(j + 1)) / 2], r: [0, Math.atan2(dx, dz), 0] });
+    }
     k.shape([[-0.45, 0], [0.45, 0], [0, -0.35]], 0.012, c, { p: [0.04, -2.66, 0], r: [0, PI / 2, 0] }, 'pennant-tail');
-    k.box(0.016, 0.9, 0.08, 'fabricGold', { p: [0.04, -1.2, 0] });
-    k.box(0.016, 0.08, 0.5, 'fabricGold', { p: [0.04, -1.0, 0] });
-    for (const z of [-0.44, 0.44]) k.box(0.014, 2.5, 0.025, 'fabricGold', { p: [0.04, -1.33, z] });
+    // Gold appliqué deep enough to sit proud of the folds on both faces.
+    k.box(0.03, 0.9, 0.08, 'fabricGold', { p: [0.04, -1.2, 0] });
+    k.box(0.03, 0.08, 0.5, 'fabricGold', { p: [0.04, -1.0, 0] });
+    for (const z of [-0.44, 0.44]) k.box(0.024, 2.5, 0.025, 'fabricGold', { p: [0.04, -1.33, z] });
   }
   function catenary(len, sag, n) {
     const pts = [];

@@ -4,7 +4,7 @@
  * depth; a second step darkens creases and contacts (where a pew meets the
  * floor, a wall meets the ceiling) from that depth, compresses very bright
  * surfaces so lit stone keeps its shape and colour before the tone curve, and
- * lets lamps, flames and gilded highlights glow a little.
+ * lets lamps, flames and gilded highlights glow a little, with a faint haze over distance.
  * Nothing here changes the model, a lamp, a material, the analysis or its
  * results: lux, STI and air figures come from the simulator, never from pixels.
  *
@@ -27,7 +27,12 @@
     // Soft glow round lamps, flames and gilded highlights: only radiance above the
     // threshold spreads, so lit walls and floors stay crisp.
     glow: { day: 0.22, evening: 0.3 },
-    glowThreshold: { day: 1.5, evening: 4.0 }
+    glowThreshold: { day: 1.5, evening: 4.0 },
+    // Faint air in a long room: distant surfaces drift toward a warm veil (evening: the lamps'
+    // glow in the roof; day: pale sky light). Distance in metres where half the veil is reached.
+    haze: { day: 0.05, evening: 0.1 },
+    hazeHalf: 55,
+    hazeColour: { day: [0.62, 0.64, 0.66], evening: [0.42, 0.3, 0.2] }
   };
   let T, renderer, scene, base, mode = 'day', busy = false, failed = false;
   let colour, half, blurA, blurB, glowA, glowB, quad, quadScene, quadCamera, aoMaterial, blurMaterial, brightMaterial, glowMaterial, outMaterial;
@@ -119,7 +124,8 @@
     }`;
   const OUT_FRAG = `
     varying vec2 vUv; uniform sampler2D tColor, tAO, tGlow;
-    uniform float uStrength, uFloor, uKnee, uRange, uShadeOnly, uGlow;
+    uniform float uStrength, uFloor, uKnee, uRange, uShadeOnly, uGlow, uHaze, uHazeHalf;
+    uniform vec3 uHazeColour;
     void main() {
       vec3 c = texture2D(tColor, vUv).rgb;
       // Roll bright surfaces off by luminance, keeping their hue.
@@ -129,6 +135,9 @@
         c *= (uKnee + over / (1.0 + over / uRange)) / lum;
       }
       c += texture2D(tGlow, vUv).rgb * uGlow;
+      // Haze from the view distance kept beside the shading; the sky (beyond 900 m) has none.
+      float dist = texture2D(tAO, vUv).y;
+      if (dist < 900.0) c = mix(c, uHazeColour, uHaze * (1.0 - exp2(-dist / uHazeHalf)));
       gl_FragColor = vec4(c, 1.0);
       #include <tonemapping_fragment>
       // Shade after the tone curve, so a crease reads as well on bright stone as on dark timber.
@@ -159,7 +168,7 @@
     brightMaterial = pass(BRIGHT_FRAG, { tColor: { value: colour.texture }, uTexel: { value: new T.Vector2() }, uThreshold: { value: 1 } });
     glowMaterial = pass(GLOW_FRAG, { tGlow: { value: null }, uStep: { value: new T.Vector2() } });
     outMaterial = pass(OUT_FRAG, {
-      tColor: { value: colour.texture }, tAO: { value: blurB.texture }, tGlow: { value: glowB.texture }, uGlow: { value: 0 },
+      tColor: { value: colour.texture }, tAO: { value: blurB.texture }, tGlow: { value: glowB.texture }, uGlow: { value: 0 }, uHaze: { value: 0 }, uHazeHalf: { value: 50 }, uHazeColour: { value: new T.Vector3() },
       uStrength: { value: 1 }, uFloor: { value: 0 }, uKnee: { value: 1 }, uRange: { value: 1 }, uShadeOnly: { value: 0 }
     }, true);
     quad = new T.Mesh(new T.PlaneGeometry(2, 2), aoMaterial);
@@ -226,6 +235,8 @@
       }
       const out = outMaterial.uniforms;
       out.uGlow.value = settings.glow[mode];
+      out.uHaze.value = settings.haze[mode]; out.uHazeHalf.value = settings.hazeHalf;
+      out.uHazeColour.value.fromArray(settings.hazeColour[mode]);
       out.uStrength.value = settings.strength; out.uFloor.value = settings.floor;
       out.uShadeOnly.value = settings.shadeOnly ? 1 : 0;
       out.uKnee.value = settings.knee[mode]; out.uRange.value = settings.range[mode];

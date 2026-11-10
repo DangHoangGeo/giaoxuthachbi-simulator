@@ -223,7 +223,38 @@
         const d = spec.wallFace - P.face + S.depth;
         box('Nave pier stone skirting', stone, 2 * P.half + 2 * S.depth, S.height, d, A[name], S.height / 2, s * (spec.wallFace - d / 2));
         box('Nave pier stone skirting cap', stone, 2 * P.half + 2 * S.capDepth, S.cap, d + S.capDepth - S.depth, A[name], S.height + S.cap / 2, s * (spec.wallFace - (d + S.capDepth - S.depth) / 2));
+        // The cornice also wraps the pier, so it reads as the pier's capital band.
+        let y = C.bottom;
+        for (const [h, cd] of C.steps) {
+          const deep = spec.wallFace - P.face + cd;
+          box('Nave pier plaster capital band', plaster, 2 * P.half + 2 * cd, h, deep, A[name], y + h / 2, s * (spec.wallFace - deep / 2));
+          y += h;
+        }
       }
+    }
+
+    // Entrance wall (nave face): skirting along each solid pier between the doorways, and the same
+    // cornice across the full width, so the three walls of the nave share one base and one top line.
+    const EN = window.CHURCH_FACADE?.spec?.entrance;
+    if (EN) {
+      const face = EN.wall[1], limit = P.face, solids = [];
+      building.traverse(o => {
+        if (!o.isMesh || o.name !== 'Entrance door wall · rear pier line') return;
+        const b = new T.Box3().setFromObject(o);
+        if (b.min.y < 0) solids.push([Math.max(b.min.z, -limit), Math.min(b.max.z, limit)]);
+      });
+      for (const [u, v] of solids) {
+        // Stop clear of the jamb mouldings (0.12 m) round each doorway.
+        const a = u + (u > -limit + .01 ? .12 : 0), b = v - (v < limit - .01 ? .12 : 0);
+        if (b - a < .1) continue;
+        const run = (name, h, d, y) => box(name, stone, d, h, b - a, face + d / 2, y, (a + b) / 2);
+        run('Entrance wall stone skirting', S.height, S.depth, S.height / 2);
+        run('Entrance wall stone skirting cap', S.cap, S.capDepth, S.height + S.cap / 2);
+        stats.skirting++;
+      }
+      let y = C.bottom;
+      for (const [h, d] of C.steps) { box('Entrance wall plaster cornice', plaster, d, h, 2 * limit, face + d / 2, y + h / 2, 0); y += h; }
+      stats.cornice++;
     }
 
     // Ceiling panels. Each bay of the lining between two purlins is divided by lacquered cross
