@@ -17,9 +17,8 @@
     agedBrass: { color: '#a07a3c', metalness: 0.8, roughness: 0.42 },
     bronze: { color: '#4f3f2e', metalness: 0.55, roughness: 0.48 },
     black: { color: '#1e1e20', metalness: 0.35, roughness: 0.5 },
-    // Wall-mounted housings (fans, loudspeakers, sign bodies): warm ivory close to the mineral
-    // plaster, so they recede on the wall (owner: finish-match fittings; 10 November 2026). Was #efede6.
-    white: { color: '#f4ecd9', metalness: 0.03, roughness: 0.6 },
+    // Owner, 10 November 2026: fans stay plain white (the ivory trial was reverted).
+    white: { color: '#efede6', metalness: 0.08, roughness: 0.45 },
     steel: { color: '#9aa0a6', metalness: 0.7, roughness: 0.35 },
     aluminium: { color: '#c9ccd0', metalness: 0.75, roughness: 0.3 },
     darkWood: { color: '#5a3a22', roughness: 0.55 },
@@ -374,13 +373,13 @@
     });
   }
   function buildCeilingFan(k) {
-    // Display finish, 10 November 2026: blades, canopy and rod in the roof timbers' own lacquer and
-    // an aged-brass motor, so the fans read as part of the red frame instead of black shapes against
-    // it. Size, position, speed and duty are unchanged; the product finish is not selected.
-    k.cyl(0.075, 0.08, 0.05, 'beamTimber', { p: [0, -0.02, 0] }, 14);
-    k.lathe([[0.04, -0.05], [0.11, -0.08], [0.13, -0.14], [0.12, -0.2], [0.06, -0.24], [0.001, -0.25]], 'agedBrass', {}, 22);
+    // Owner, 10 November 2026: an all-white fan — canopy, motor, hub, blade irons, blades and rod —
+    // not the roof lacquer and no black parts. Size, position, speed and duty are unchanged; the
+    // product finish is not selected.
+    k.cyl(0.075, 0.08, 0.05, 'white', { p: [0, -0.02, 0] }, 14);
+    k.lathe([[0.04, -0.05], [0.11, -0.08], [0.13, -0.14], [0.12, -0.2], [0.06, -0.24], [0.001, -0.25]], 'white', {}, 22);
     k.pivots.rotor = [0, -0.17, 0];
-    fanBlades(k, 5, 0.17, 0.71, 0.13, 'beamTimber', undefined, undefined, 'agedBrass');
+    fanBlades(k, 5, 0.17, 0.71, 0.13, 'white', undefined, undefined, 'white');
   }
   function buildHVLS(k) {
     k.box(0.36, 0.3, 0.3, 'steel', { p: [0, -0.2, 0] });

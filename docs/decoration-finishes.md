@@ -2,7 +2,7 @@
 
 **CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.**
 
-**Interior finish and display study, 10 November 2026:** paving joints and sheen, nave skirting and cornice, panelled roof lining with gilded rosettes, calmer lacquer, finer joinery grain, red marble pedestal panels, finish-matched fans and housings, sanctuary details and a display pass (contact shading, highlight roll-off, glow, daylight at the openings). See the [owning record](interior-finish.md) and the [before](../review/interior-baseline-2026-11-10/README.md) and [after](../review/interior-finish-2026-11-10/README.md) captures. Display finishes and ornament proxies; owner appearance review pending.
+**Interior finish and display study, 10 November 2026:** paving joints and sheen, nave skirting and cornice, panelled roof lining with gilded rosettes, calmer lacquer, finer joinery grain, red marble pedestal panels, sanctuary details and a display pass (contact shading, highlight roll-off, glow, daylight at the openings). See the [owning record](interior-finish.md) and the [before](../review/interior-baseline-2026-11-10/README.md) and [after](../review/interior-finish-2026-11-10/README.md) captures. Fans stay all white at the owner's request. Display finishes and ornament proxies; owner appearance review pending.
 
 Owner brief: improve exterior, interior and sanctuary decoration and visual realism in the northern Vietnamese Catholic tradition. This revision refines the existing approved composition rather than treating newly invented ornament as historic evidence. The drawing-controlled envelope, liturgical arrangement and parish meeting decisions remain the basis.
 

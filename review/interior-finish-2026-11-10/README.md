@@ -29,6 +29,7 @@ Source: the commit that adds this folder, **plus the owner's uncommitted `entran
 - `web/`: `npm run build` passed and `tests/browser/visit.spec.ts` passed (4 tests, local Chrome).
 - `web/`: `node scripts/prepare-viewer.mjs` and `npm run check:viewer` passed (98 files, exact inventory, bytes and hashes).
 - Headless desktop inspection, day and evening, of the six views plus the entrance wall, the tabernacle and a side wall: the display pass reported active with no WebGL error; skirting, cornice, ceiling panels, stoups, sanctuary lamp, flowers and fan finishes were seen in place.
+- **Fan revision (owner, 10 November 2026):** after these captures the ceiling fans were changed from roof lacquer to all white (canopy, motor, hub, blade irons, blades and rod), and the ivory trial on wall housings was reverted to the original white. The fans in these twelve frames therefore show the superseded red finish; checked afresh in headless day and evening views of the B aisle and the nave from the entrance.
 - Display pass cost, 1600 × 900 evening nave, headless: 146 ms per frame without, 156 ms with.
 - `git diff --check` passed.
 

@@ -1074,7 +1074,7 @@
       if (item.mount === 'pendant') {
         // A head finished in a lacquer hangs from a stem and canopy in the same lacquer.
         const lacquer = { timber: 'beamTimber', chamber: 'chamberLacquer', gilt: 'chamberGilt' }[item.params?.finish];
-        const stemMat = lacquer ? material(lacquer) : type.cat === 'fan' ? material(type.id === 'fanCeiling' ? 'beamTimber' : 'bronze') : type.cat === 'speaker' ? material('black') : type.cat === 'decor' ? material('rope') : material(type.id.startsWith('chandelier') ? 'brass' : 'black');
+        const stemMat = lacquer ? material(lacquer) : type.cat === 'fan' ? material(type.id === 'fanCeiling' ? 'white' : 'bronze') : type.cat === 'speaker' ? material('black') : type.cat === 'decor' ? material('rope') : material(type.id.startsWith('chandelier') ? 'brass' : 'black');
         this.stem = new T.Mesh(stemGeo(), stemMat);
         this.stem.userData.simId = item.id;
         this.canopy = item.params?.spreader
