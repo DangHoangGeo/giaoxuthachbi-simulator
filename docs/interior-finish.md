@@ -23,6 +23,19 @@ Everything here is a display finish or an ornament proxy. No wall, member, seat,
 | 11 · No atmosphere | Sanctuary lamp (red glass, flame) beside the tabernacle; two holy-water stoups by the centre door; brighter candle flames in the evening; banners hang in soft folds; a faint haze over distance | `interior-finish.js`, `simulator/catalog.js`, `display-finish.js` |
 | 12 · Hard edges | Soft glow round lamps, flames and gilded highlights; fine noise against banding on plaster | `display-finish.js` |
 
+## Second pass · sanctuary and timber ceiling
+
+**Owner direction, 10 November 2026:** after the first review the owner set the focus on the sanctuary and the timber ceiling, with the fans left plain white. Captures: [review/sanctuary-ceiling-2026-11-10](../review/sanctuary-ceiling-2026-11-10/README.md). Revision `2026-11-10-interior-finish-2`.
+
+| Part | Change | Where |
+| --- | --- | --- |
+| Red lacquer (columns, chamber, reredos frame, roof timbers) | The first pass drew faint vertical brush strokes in the colour and sheen maps; on the round columns and chamber walls they read as velvet curtain folds. Both maps now carry only soft, directionless clouding; the clear coat and the shared roughness are unchanged | `interior-finish.js` |
+| Blue niches (crucifix, Our Lady, Saint Joseph) | A painted sky replaces the smooth gradient: the same three blues and light centre as before, with soft clouds banked low and round the light, a deeper rim toward the reveal, fresco grain, and faint gilded stars in the upper field (12 behind the crucifix, 22 in the shrines). Drawn in metres on the niche, so clouds stay round | `interior-finish.js` |
+| Altar | The pale stone altar stays (owner, 3 November 2026). A two-step bed moulding with a gilded bead under the mensa overhang, a two-step base moulding over the foot, the cloth falling 0.42 m over both ends, and a gilded embroidered border on all four falls | `interior-finish.js` |
+| Sanctuary chairs | Arms with gilded knobs, a gilded frame round the upholstered back, a carved arched crest with gilded finials, and a gilded cross on the presider's crest. Seats, backs, legs and footprints are unchanged; the crest adds 0.20 m (presider) and 0.11 m (other chair) | `interior-finish.js` |
+| Statue pedestals | Red lacquer with gilded base and cornice mouldings and a gilded frame and rosette on each face, in place of plain marble. Same 1.0 m height, 0.62 m top and 0.7 m footprint | `simulator/catalog.js` |
+| Roof lining panels | Every one of the 546 panels between purlins and fillets carries a fine leaf-gilt bead 0.07 m in from its edges; the rosettes on alternate panels (274) are larger (0.10 m) and sit on a red lacquer roundel (0.15 m) with a gilded ring, so they read from the floor | `interior-finish.js` |
+
 ## Display pass
 
 `display-finish.js` draws the scene once into a floating-point picture with its depth, then applies three steps on the way to the screen.
@@ -38,10 +51,10 @@ It is off with `?graphics=light` or `?finish=off`, for orthographic drawing view
 
 - **Not a lighting result.** Contact shading, roll-off, glow and the daylight term act on pixels and display shading. They are not shadows cast by lamps, not a daylight calculation and not lux. The porches shade the side openings; the daylight gain was set by eye. Lamp light still casts shadows only from the fittings that already did.
 - **Screen-space shading** cannot see what is hidden from the eye, so shading changes slightly as the view moves and is weak where a surface is seen edge-on.
-- **Ornament proxies.** Skirting, cornice, fillets, rosettes, lamp and stoups have no fixing, substrate, section, weight, fire or maintenance design. The cornice sits between the station finials (+6.70) and the wall purlin's soffit (+6.96): a tight zone to confirm with the roof and electrical routes. Stone, lacquer, gilding and joinery are display finishes, not selected products or measured reflectances.
+- **Ornament proxies.** Skirting, cornice, fillets, beads, roundels, rosettes, altar mouldings and cloth, chair arms and crests, pedestal mouldings, lamp and stoups have no fixing, substrate, section, weight, fire or maintenance design. The cornice sits between the station finials (+6.70) and the wall purlin's soffit (+6.96): a tight zone to confirm with the roof and electrical routes. Stone, lacquer, gilding and joinery are display finishes, not selected products or measured reflectances.
 - **Fittings.** Fan colours are display finishes; product finish availability is unconfirmed. Fans and their rods remain visible: concealment stays an open engineering item ([central view](engineering/central-view-constraint.md)). Exit-sign faces are unchanged.
 - **Sanctuary lamp and stoups** are proposals for the parish to accept, move or omit. The lamp is a wax or oil lamp, not an electrical fitting, and appears in no register.
-- **Not done in this revision:** a dado on the side walls (the window sills at +0.65 and the doors leave no continuous band), and any change to the blue niche fields, which follow the approved sanctuary concept. The banner folds keep the same outline and fixture envelope. Statues, shrine doors and fine sanctuary sculpture remain as in the [sanctuary record](sanctuary-model.md#limits).
+- **Not done in this revision:** a dado on the side walls (the window sills at +0.65 and the doors leave no continuous band). The blue niche fields keep the approved concept's blues; the painted clouds and stars are a display interpretation for the artist to confirm or replace. The presider's chair crest is not in the seat sightline study; it stands at the side of the sanctuary, away from the lines to the altar and the crucifix. The banner folds keep the same outline and fixture envelope. Statues, shrine doors and fine sanctuary sculpture remain as in the [sanctuary record](sanctuary-model.md#limits).
 - **Engineering holds** and the unmet lighting, sound and ventilation targets are unchanged.
 
 ## Documents and exports checked
@@ -50,4 +63,4 @@ It is off with `?graphics=light` or `?finish=off`, for orthographic drawing view
 
 ## Checks
 
-Recorded in the [review folder](../review/interior-finish-2026-11-10/README.md).
+Recorded in the [first review folder](../review/interior-finish-2026-11-10/README.md) and, for the second pass, the [sanctuary and ceiling folder](../review/sanctuary-ceiling-2026-11-10/README.md).

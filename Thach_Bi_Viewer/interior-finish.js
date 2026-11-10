@@ -17,7 +17,7 @@
 (() => {
   'use strict';
   const spec = {
-    revision: '2026-11-10-interior-finish-1',
+    revision: '2026-11-10-interior-finish-2',
     status: 'CONCEPT · display finish and ornament proxy',
     source: 'Owner request 10 Nov 2026; nave concept of 9 Nov 2026 (review/interior-concept-2026-11-09)',
     bays: [['2′', '3'], ['3', '4'], ['4', '5'], ['5', '6'], ['6', '7'], ['7', '8'], ['8', '9']],
@@ -28,7 +28,11 @@
     // Between the station finials (top +6.70) and the wall purlin's soffit (+6.96).
     cornice: { bottom: 6.76, steps: [[0.07, 0.03], [0.05, 0.06], [0.05, 0.095]] },
     ceiling: { slope: 0.7258, first: 0.58, pitch: 0.5, strips: 13, purlin: 0.14, divisions: 3,
-      fillet: { width: 0.045, depth: 0.028 }, rosette: 0.075 },
+      fillet: { width: 0.045, depth: 0.028 }, rosette: 0.1, roundel: 0.15,
+      bead: { inset: 0.07, width: 0.012, depth: 0.006 } },
+    // Second pass (owner: the sanctuary and the timber ceiling are the focus).
+    altar: { bed: [[.11, .022], [.05, .03]], base: [[.06, .05], [.03, .03]], endFall: .42, border: .035 },
+    chair: { arm: .2, crest: { presider: .2, other: .11 } },
     stoup: { x: 5.47, z: 1.85, y: 1.02, radius: 0.15 },
     lamp: { x: 47.2, z: 0.62, glass: 1.5 }
   };
@@ -43,7 +47,7 @@
     root.name = 'Interior finish study · skirting, cornice, ceiling panels and sanctuary details';
     root.userData = { ...tag };
     building.add(root);
-    const stats = { skirting: 0, cornice: 0, fillets: 0, rosettes: 0, flowers: 0, materials: 0 };
+    const stats = { skirting: 0, cornice: 0, fillets: 0, panels: 0, rosettes: 0, flowers: 0, altar: 0, chairs: 0, materials: 0 };
 
     /* ------------------------------------------------------------ textures */
     const anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
@@ -122,35 +126,92 @@
     surface(mat.floor, { ...floorMaps, bumpScale: .0022, roughness: .7, envMapIntensity: .7 });
     for (const m of [im.whiteStone, im.stone]) surface(m, { roughness: .5, envMapIntensity: .55 });
 
-    // Lacquer: a deep, nearly even red with faint brush drift, in place of the large blotched figure.
+    // Soft, shapeless clouds that tile: [r, g, b, a] for the light and the dark kind.
+    function clouds(g, size, count, light, dark, rMin, rMax) {
+      for (let i = 0; i < count; i++) {
+        const x = rand() * size, y = rand() * size, r = (rMin + rand() * (rMax - rMin)) * size, c = rand() > .5 ? light : dark;
+        for (const dx of [-size, 0, size]) for (const dy of [-size, 0, size]) {
+          const fade = g.createRadialGradient(x + dx, y + dy, 0, x + dx, y + dy, r);
+          fade.addColorStop(0, `rgba(${c[0]},${c[1]},${c[2]},${c[3]})`); fade.addColorStop(1, `rgba(${c[0]},${c[1]},${c[2]},0)`);
+          g.fillStyle = fade; g.fillRect(x + dx - r, y + dy - r, r * 2, r * 2);
+        }
+      }
+    }
+    // Lacquer: a deep, even red film. The first study drew faint vertical brush strokes; on the
+    // round columns and the chamber walls they read as the folds of a velvet curtain (owner review,
+    // 10 November 2026). Depth now comes only from soft clouding under the clear coat, with no
+    // direction, and the sheen varies just as gently.
     const lacquerMaps = {
       map: map('red lacquer depth', 512, (g, size) => {
-        g.fillStyle = '#e9e4e2'; g.fillRect(0, 0, size, size);
-        for (let i = 0; i < 260; i++) {
-          const x = rand() * size, light = rand() > .5;
-          g.strokeStyle = light ? `rgba(255,255,255,${.03 + rand() * .05})` : `rgba(96,60,52,${.03 + rand() * .06})`;
-          g.lineWidth = 1 + rand() * 7; g.beginPath(); g.moveTo(x, 0);
-          g.bezierCurveTo(x + (rand() - .5) * 14, size * .33, x + (rand() - .5) * 14, size * .66, x, size); g.stroke();
-        }
-        grainNoise(g, size, 4);
+        g.fillStyle = '#ebe6e4'; g.fillRect(0, 0, size, size);
+        clouds(g, size, 44, [255, 250, 248, .05], [92, 52, 46, .06], .08, .26);
+        grainNoise(g, size, 3);
       }, true),
       roughnessMap: map('red lacquer sheen', 512, (g, size) => {
         g.fillStyle = '#b4b4b4'; g.fillRect(0, 0, size, size);
-        for (let i = 0; i < 180; i++) {
-          const x = rand() * size, v = 150 + rand() * 70;
-          g.strokeStyle = `rgba(${v},${v},${v},.22)`; g.lineWidth = 1 + rand() * 5;
-          g.beginPath(); g.moveTo(x, 0); g.lineTo(x + (rand() - .5) * 10, size); g.stroke();
-        }
-        grainNoise(g, size, 10);
+        clouds(g, size, 36, [205, 205, 205, .12], [140, 140, 140, .12], .1, .3);
+        grainNoise(g, size, 6);
       })
     };
     const all = new Set();
     building.traverse(o => { if (o.isMesh) for (const m of Array.isArray(o.material) ? o.material : [o.material]) all.add(m); });
     let gilding = null, insetMarble = null;
+    const skies = [];
     for (const m of all) {
       if (m.name === 'Sanctuary · oxblood lacquer') surface(m, { ...lacquerMaps, clearcoat: .55, clearcoatRoughness: .2, envMapIntensity: .55 }); // roughness stays shared with the roof timbers
       else if (m.name === 'Sanctuary · carved gilding') gilding = m;
       else if (m.name === 'Sanctuary · dark marble inset') insetMarble = m;
+      else if (m.name === 'Sanctuary · blue niche') skies.push([m, ['#d7ecfb', '#4aa0e6', '#1c6fc6'], 12]);
+      else if (m.name === 'Sanctuary · shrine niche blue') skies.push([m, ['#d3e7f6', '#7fb2e0', '#4d8dca'], 22]);
+    }
+    // Blue niches: a painted sky in place of the smooth screen gradient. Same three blues and the
+    // same light centre as before (approved sanctuary concept); added are soft clouds banked low and
+    // round the light, a deeper rim, fine fresco grain and a few faint gilded stars above. The
+    // texture spans the niche once, so clouds are drawn in metres and stay round on the wall.
+    for (const [m, [inner, mid, outer], starCount] of skies) {
+      const old = m.map;
+      if (!old) continue;
+      const W = 1 / old.repeat.x, H = 1 / old.repeat.y;
+      const sky = map('painted niche sky', 1024, (g, s) => {
+        const px = metres => metres / W * s, py = metres => metres / H * s;
+        const shade = g.createRadialGradient(s / 2, s * .42, s * .04, s / 2, s * .5, s * .72);
+        shade.addColorStop(0, inner); shade.addColorStop(.38, mid); shade.addColorStop(1, outer);
+        g.fillStyle = shade; g.fillRect(0, 0, s, s);
+        const blob = (x, y, r, rgba) => {
+          g.save(); g.translate(x, y); g.scale(px(r), py(r));
+          const f = g.createRadialGradient(0, 0, 0, 0, 0, 1);
+          f.addColorStop(0, `rgba(${rgba[0]},${rgba[1]},${rgba[2]},${rgba[3]})`); f.addColorStop(.55, `rgba(${rgba[0]},${rgba[1]},${rgba[2]},${rgba[3] * .55})`); f.addColorStop(1, `rgba(${rgba[0]},${rgba[1]},${rgba[2]},0)`);
+          g.fillStyle = f; g.beginPath(); g.arc(0, 0, 1, 0, 2 * Math.PI); g.fill(); g.restore();
+        };
+        // Cloud banks: a lower bank across the niche and a looser ring round the light.
+        for (let bank = 0; bank < 16; bank++) {
+          const low = bank < 9, cx = low ? (bank + rand() * .8) / 9 * s : s / 2 + Math.cos(bank * 1.9) * s * (.28 + rand() * .1);
+          const cy = low ? s * (.72 + rand() * .2) : s * (.36 + Math.sin(bank * 1.9) * .2 + rand() * .06);
+          for (let puff = 0; puff < 7; puff++) {
+            const r = (.18 + rand() * .32) * (low ? 1 : .75);
+            blob(cx + px((rand() - .5) * 1.1), cy + py((rand() - .6) * .35), r, [255, 255, 255, (low ? .1 : .06) + rand() * .07]);
+            blob(cx + px((rand() - .5) * .9), cy + py(.12 + rand() * .12), r * .8, [36, 84, 150, .05]);
+          }
+        }
+        // A deeper rim, as paint darkens toward the reveal.
+        const rim = g.createRadialGradient(s / 2, s * .45, s * .3, s / 2, s * .5, s * .78);
+        rim.addColorStop(0, 'rgba(14,40,92,0)'); rim.addColorStop(1, 'rgba(14,40,92,.32)');
+        g.fillStyle = rim; g.fillRect(0, 0, s, s);
+        // Faint gilded stars in the upper field.
+        for (let i = 0; i < starCount; i++) {
+          const x = (.08 + rand() * .84) * s, y = (.04 + rand() * .3) * s, r = .018 + rand() * .022;
+          g.save(); g.translate(x, y); g.scale(px(r), py(r)); g.fillStyle = `rgba(244,214,140,${.45 + rand() * .3})`;
+          g.beginPath();
+          for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4, l = k % 2 ? .3 : 1; g.lineTo(Math.cos(a) * l, Math.sin(a) * l); }
+          g.closePath(); g.fill(); g.restore();
+        }
+        grainNoise(g, s, 6);
+      }, true);
+      sky.wrapS = sky.wrapT = T.ClampToEdgeWrapping;
+      sky.repeat.copy(old.repeat); sky.offset.copy(old.offset);
+      surface(m, { map: sky });
+      old.dispose();
+      stats.skies = (stats.skies || 0) + 1;
     }
     // Pedestal panels: deep red marble with a polish, in the red-and-gold scheme (was grey-green).
     if (insetMarble) {
@@ -258,10 +319,17 @@
     }
 
     // Ceiling panels. Each bay of the lining between two purlins is divided by lacquered cross
-    // fillets; a small gilded rosette marks alternate panels, so the field stays calm.
+    // fillets. Every panel carries a fine gilded bead set in from its edges, and alternate panels
+    // a gilded rosette on a red lacquer roundel, so the ivory field reads as framed, coffered
+    // boarding (second pass: the first rosettes were gold on ivory and read only as dots).
     const R = spec.ceiling, tilt = Math.atan(R.slope), liningY = window.CHURCH_SANCTUARY.roofY;
-    const span = (R.pitch - R.purlin) / Math.cos(tilt), F = R.fillet;
+    const span = (R.pitch - R.purlin) / Math.cos(tilt), F = R.fillet, B = R.bead;
     const rosette = K.bloom({ r: R.rosette, petals: 8, rings: 1, seg: 3 }), boss = new T.SphereGeometry(R.rosette * .26, 8, 6);
+    const roundel = new T.CylinderGeometry(R.roundel, R.roundel, .012, 28), roundelRing = new T.TorusGeometry(R.roundel, .007, 5, 32);
+    const panelLength = length => length / R.divisions - F.width - 2 * B.inset, panelSpan = span - 2 * B.inset;
+    // The bead takes the vault's leaf gilding: the more metallic carved gilding turned grey in the
+    // shade under the roof.
+    const beadGold = window.CHURCH_SANCTUARY.materials?.leafGold || gold;
     spec.bays.forEach(([a, b], bay) => {
       if (!(a in A) || !(b in A)) return;
       const x0 = A[a] + .2, length = A[b] - A[a] - .4;
@@ -274,10 +342,18 @@
           stats.fillets++;
         }
         for (let j = 0; j < R.divisions; j++) {
+          const x = x0 + length * (j + .5) / R.divisions, lx = panelLength(length), ly = panelSpan;
+          // Bead frame: two runs across the slope and two down it, mitred by overlap at the corners.
+          for (const e of [-1, 1]) {
+            add('Roof lining panel gilded bead', beadGold, new T.BoxGeometry(lx + B.width, B.width, B.depth), place(TR(0, e * ly / 2, 0), turn, at(B.depth / 2), TR(x, 0, 0)));
+            add('Roof lining panel gilded bead', beadGold, new T.BoxGeometry(B.width, ly, B.depth), place(TR(e * lx / 2, 0, 0), turn, at(B.depth / 2), TR(x, 0, 0)));
+          }
+          stats.panels++;
           if ((i + j + bay) % 2) continue;
-          const x = x0 + length * (j + .5) / R.divisions;
-          add('Roof lining gilded rosette', gold, rosette, place(SC(1, 1, .45), turn, at(.002), TR(x, 0, 0)));
-          add('Roof lining gilded rosette', gold, boss, place(SC(1, 1, .6), turn, at(.012), TR(x, 0, 0)));
+          add('Roof lining lacquer roundel', timber, roundel, place(RX(Math.PI / 2), turn, at(.006), TR(x, 0, 0)));
+          add('Roof lining gilded rosette', gold, roundelRing, place(turn, at(.012), TR(x, 0, 0)));
+          add('Roof lining gilded rosette', gold, rosette, place(SC(1, 1, .45), turn, at(.014), TR(x, 0, 0)));
+          add('Roof lining gilded rosette', gold, boss, place(SC(1, 1, .6), turn, at(.024), TR(x, 0, 0)));
           stats.rosettes++;
         }
       }
@@ -300,6 +376,71 @@
       box('Credence linen cloth', linen, w + .012, .008, d * .7, cx, b.max.y + .004, cz);
       for (const e of [-1, 1]) box('Credence linen cloth fall', linen, .006, .14, d * .7, cx + e * (w / 2 + .006), b.max.y - .066, cz);
     }
+    // Altar (second pass). The pale stone altar stays (owner, 3 November 2026); it gains a stepped
+    // bed moulding under the mensa overhang with a gilded bead, a base moulding over the foot, the
+    // cloth falling over both ends, and a gilded embroidered border on every fall of the cloth.
+    const bounds = o => new T.Box3().setFromObject(o);
+    const altarBase = building.getObjectByName('Proposed altar stone base'), mensa = building.getObjectByName('Proposed altar mensa'), cloth = building.getObjectByName('Proposed altar linen');
+    if (altarBase && mensa && cloth) {
+      const b = bounds(altarBase), m = bounds(mensa), l = bounds(cloth), A2 = spec.altar, rock = altarBase.material, linen = cloth.material;
+      const cx = (b.min.x + b.max.x) / 2, cz = (b.min.z + b.max.z) / 2, bw = b.max.x - b.min.x, bd = b.max.z - b.min.z;
+      let y = m.min.y;
+      for (const [grow, h] of A2.bed) { box('Altar mensa bed moulding', rock, bw + grow, h, bd + grow, cx, y - h / 2, cz); y -= h; }
+      box('Altar gilded bead', gold, bw + .018, .012, bd + .018, cx, y - .006, cz);
+      y = b.min.y;
+      for (const [grow, h] of A2.base) { box('Altar base moulding', rock, bw + grow, h, bd + grow, cx, y + h / 2, cz); y += h; }
+      const lx = l.max.x - l.min.x, lcx = (l.min.x + l.max.x) / 2;
+      for (const e of [-1, 1]) {
+        const z = e * ((l.max.z - l.min.z) / 2 + .003) + (l.min.z + l.max.z) / 2;
+        box('Altar linen end fall', linen, lx, A2.endFall, .006, lcx, l.max.y - A2.endFall / 2, z);
+        box('Altar linen gilded border', gold, lx + .004, A2.border, .004, lcx, l.max.y - A2.endFall + .03, z + e * .005);
+        box('Altar linen gilded border', gold, lx + .004, .008, .004, lcx, l.max.y - A2.endFall + .068, z + e * .005);
+      }
+      building.traverse(o => {
+        if (!o.isMesh || o.name !== 'Altar linen edge') return;
+        const f = bounds(o), side = (f.min.x + f.max.x) / 2 < cx ? -1 : 1, x = side < 0 ? f.min.x - .002 : f.max.x + .002;
+        box('Altar linen gilded border', gold, .004, A2.border, f.max.z - f.min.z, x, f.min.y + .03, (f.min.z + f.max.z) / 2);
+        box('Altar linen gilded border', gold, .004, .008, f.max.z - f.min.z, x, f.min.y + .068, (f.min.z + f.max.z) / 2);
+      });
+      stats.altar++;
+    }
+
+    // Sanctuary chairs (second pass): arms with gilded knobs, a carved crest on the back (with a
+    // gilded cross on the presider's chair), finials and a gilded frame round the upholstered back.
+    // Seats, backs, legs and footprints stay as modelled; the crest adds 0.11–0.20 m of height.
+    building.traverse(o => {
+      if (!o.isMesh || o.name !== 'Chair back') return;
+      const k = bounds(o), wood = o.material, cx = (k.min.x + k.max.x) / 2, cz = (k.min.z + k.max.z) / 2, depth = k.max.z - k.min.z;
+      const presider = k.max.y - k.min.y > .8, face = k.min.x, F2 = cx - .28, seatTop = k.min.y + .155, armY = seatTop + spec.chair.arm;
+      for (const e of [-1, 1]) {
+        const z = cz + e * (depth / 2 - .035);
+        box('Sanctuary chair arm', wood, face - (F2 - .25), .045, .055, (face + F2 - .25) / 2, armY, z);
+        box('Sanctuary chair arm post', wood, .045, armY - (k.min.y + .0875), .045, F2 - .22, (armY + k.min.y + .0875) / 2, z);
+        add('Sanctuary chair gilded knob', gold, new T.SphereGeometry(.03, 10, 8), TR(F2 - .25, armY + .005, z));
+      }
+      // Gilded frame round the back inset (inset: 0.67 / 0.51 m high, 0.15 m narrower than the back).
+      const ih = presider ? .67 : .51, iw = depth - .15, iy = (k.min.y + k.max.y) / 2 + .02, fx = face - .003;
+      for (const e of [-1, 1]) {
+        box('Sanctuary chair gilded frame', gold, .006, .014, iw + .064, fx, iy + e * (ih / 2 + .025), cz);
+        box('Sanctuary chair gilded frame', gold, .006, ih + .064, .014, fx, iy, cz + e * (iw / 2 + .025));
+      }
+      // Crest: a shallow arch across the top of the back, extruded through the back's thickness.
+      const ch = presider ? spec.chair.crest.presider : spec.chair.crest.other, w = depth / 2, thick = k.max.x - k.min.x;
+      const arch = new T.Shape();
+      arch.moveTo(-w, 0); arch.lineTo(w, 0); arch.lineTo(w, ch * .45);
+      arch.quadraticCurveTo(w * .55, ch * .5, w * .3, ch * .78); arch.quadraticCurveTo(w * .12, ch, 0, ch);
+      arch.quadraticCurveTo(-w * .12, ch, -w * .3, ch * .78); arch.quadraticCurveTo(-w * .55, ch * .5, -w, ch * .45); arch.closePath();
+      const crest = new T.ExtrudeGeometry(arch, { depth: thick, bevelEnabled: false, curveSegments: 8 });
+      add('Sanctuary chair carved crest', wood, crest, place(RY(Math.PI / 2), TR(k.min.x, k.max.y, cz)));
+      const finial = K.turned([[.001, 0], [.026, .008], [.03, .028], [.016, .05], [.022, .066], [.012, .085], [.001, .09]], 14);
+      for (const e of [-1, 1]) add('Sanctuary chair gilded finial', gold, finial, TR(cx, k.max.y + ch * .45, cz + e * (w - .035)));
+      if (presider) {
+        box('Sanctuary chair gilded cross', gold, .006, .12, .022, fx, k.max.y + ch * .52, cz);
+        box('Sanctuary chair gilded cross', gold, .006, .022, .08, fx, k.max.y + ch * .6, cz);
+      } else add('Sanctuary chair gilded knob', gold, new T.SphereGeometry(.022, 10, 8), place(SC(.4, 1, 1), TR(fx, k.max.y + ch * .5, cz)));
+      stats.chairs++;
+    });
+
     // Flowers in the two stone planters: open blooms in place of the placeholder balls.
     const bloom = weld(merge([[K.bloom({ r: .075, petals: 6, rings: 2, seg: 3 }), RX(-Math.PI / 2)]]));
     building.traverse(o => { if (o.isMesh && o.name === 'White flower') { o.geometry = bloom; o.rotation.set((o.position.z % .3) * 1.4, o.position.x * 9, (o.position.x % .2) * 1.6); stats.flowers++; } });

@@ -516,11 +516,30 @@
   }
 
   /* Decorations */
+  // Statue pedestal in the sanctuary's red lacquer with gilded mouldings and a gilded frame and
+  // rosette on each face (10 November 2026; was plain marble boxes, which stood out white against
+  // the red-and-gold shrines). Same height and the same 0.62 m top, inside the 0.7 m footprint.
   function pedestal(k, h = 1.0, w = 0.5) {
-    k.box(w + 0.1, 0.1, w + 0.1, 'marble', { p: [0, 0.05, 0] });
-    k.box(w, h - 0.18, w, 'marble', { p: [0, 0.1 + (h - 0.18) / 2, 0] });
-    k.box(w + 0.08, 0.04, w + 0.08, 'stone', { p: [0, h - 0.06, 0] });
-    k.box(w + 0.12, 0.05, w + 0.12, 'marble', { p: [0, h - 0.025, 0] });
+    const L = 'chamberLacquer', G = 'chamberGilt';
+    // Plinth and base mouldings, bottom up: [width added, height, material].
+    let y = 0;
+    for (const [grow, t, m] of [[0.1, 0.08, L], [0.06, 0.025, G], [0.03, 0.035, L]]) { k.box(w + grow, t, w + grow, m, { p: [0, y + t / 2, 0] }); y += t; }
+    const top = h - 0.15, die = top - y;
+    k.box(w, die, w, L, { p: [0, y + die / 2, 0] });
+    // A gilded frame and a small rosette on each face of the die.
+    const fw = w - 0.12, fh = die - 0.12, cy = y + die / 2, off = w / 2 + 0.005;
+    for (const [nx, nz] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      const across = (a, b) => (nx ? [0.01, b, a] : [a, b, 0.01]);
+      for (const e of [-1, 1]) {
+        k.box(...across(fw + 0.016, 0.016), G, { p: [nx * off, cy + e * fh / 2, nz * off] });
+        k.box(...across(0.016, fh), G, { p: [nx * off + (nz ? e * fw / 2 : 0), cy, nz * off + (nx ? e * fw / 2 : 0)] });
+      }
+      k.tor(0.045, 0.007, G, { p: [nx * off, cy, nz * off], r: nx ? [0, PI / 2, 0] : [0, 0, 0] }, 2 * PI, 5, 20);
+      k.sph(0.025, G, { p: [nx * (off + 0.004), cy, nz * (off + 0.004)], s: nx ? [0.45, 1, 1] : [1, 1, 0.45] }, 10, 8);
+    }
+    // Cornice, bottom up, finishing at the same top as before.
+    y = top;
+    for (const [grow, t, m] of [[0.03, 0.025, G], [0.07, 0.045, L], [0.1, 0.025, G], [0.12, 0.055, L]]) { k.box(w + grow, t, w + grow, m, { p: [0, y + t / 2, 0] }); y += t; }
   }
   /* ------------------------------------------------------------ sculpture
    * Statue figures: a lofted body with drapery folds, a modelled head and face,
