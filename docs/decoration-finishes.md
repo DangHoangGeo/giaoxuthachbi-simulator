@@ -68,6 +68,20 @@ The existing two rows of eight proposed trees now stand in soil within their exi
 
 The existing tree visibility switch is now named **Show landscaping / Hiện cảnh quan** because it hides the grass and tree beds as well as the trees. `treesToggle` remains the same control ID. No equipment, electrical line, calculated boundary, walk collision or building dimension changes; plan and electrical exports do not encode the presentation planting. The existing category registers and their concurrent edits are untouched. See the [desktop review](../review/grounds-2026-10-30/README.md). The [web viewer contract](web/viewer.md), [central-view constraint](engineering/central-view-constraint.md), [roof specification](beams-roof-connections/SPECIFICATION.md) and [appearance references](church-view-renderings.md) were checked; no engineering hold is closed.
 
+## Timber finish on doors, windows and pews · 20 November 2026
+
+**CONCEPT.** The owner asked for substantial-looking timber with more natural colour and grain. The red-brown door palette takes its cue from the red-lacquered timber vocabulary already used in the church. The window joinery uses muted umber and the pews use walnut-brown tones. Timber species, stain, physical samples and fabrication remain open. [Archdiocese of Hanoi, cathedral interior](https://www.tonggiaophanhanoi.org/giao-xu-chinh-toa-ha-noi/)
+
+| Viewer surface | Colour treatment |
+| --- | --- |
+| Front and side doors | Deep red-brown leaves, a quieter recessed field and slightly lighter timber mouldings. The existing rosettes share their panel's tone. The treatment follows both the open and closed assemblies. |
+| Window timber | Warm umber on shutters and rails, with a slightly deeper inset. The front and rear fixed timber frames use the same colour family. The existing stained glass, Marian artwork and stone profiles retain their treatments. |
+| Nave pews | Walnut-brown backs and ends, warmer seats and handrails, and darker feet and supports. Both the long and short seating layouts use the same palette. |
+
+The four embedded photographic maps replace the old synthetic stripes on these timber surfaces. Grain follows the length of the seats, backs and rails, and runs vertically on the door and shutter panels. Shallow bump shading and lower sheen let the grain read under evening lamps. Materials share a colour and a height map for each timber, with 768 × 768 pixels per map in standard graphics and 384 × 384 in light graphics. The neutral finish control can still remove and restore the presentation finish. [Photographic map provenance and CC0 credits](../Thach_Bi_Viewer/references/materials/provenance.json)
+
+The study adds no carving and changes no opening, hinge, pew dimensions, electrical route or analytical input. The model plan and equipment and line registers have no changed fields. [Opening coordination](engineering/outer-wall-and-marian-art-2026-11-08.md) · [Seating study](interior-systems-plan.md) · [Desktop comparisons](../review/timber-finish-2026-11-20/README.md)
+
 ## Outstanding review
 
 **USER CONFIRMED, 25 October 2026:** “mirror things” means **minor visual details** in this decoration request. It is not a request to reflect the model. ENG-027, the separate possible drawing/model left-right mirror, remains open. This finish revision applies no global reflection and changes no saint, tower-board, stair or station side assignment. A coordinate reflection needs its own coordinated geometry, winding, navigation, equipment, route and register migration.

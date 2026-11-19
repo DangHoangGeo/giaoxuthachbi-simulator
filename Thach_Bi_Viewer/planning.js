@@ -70,10 +70,23 @@
         index++;
       }
     }
+    applyPewColours(interior.materials);
     interior.setSeatingLayout = setLayout;
     interior.seatingState = state;
     data.seatingStudy = {status:'Concept layouts; not approved occupancy',layouts:[2,4],selected:4,longBenchLengthM:4.65,longBenchCentreZ:3.625,additions,crossAisles,note:'The entrance-end row at X 6.49 m is removed in both layouts at the owner’s request. One added row remains in bay 2–3, two in 4–5 and one in 8–9. Proposed door-bay crossings are 1.20 m. Kneeler clearance requires a mock-up.'};
     setLayout(4);
+  }
+  function applyPewColours({ wood, woodInset }) {
+    const { stainedTimber: stain, paintTimber } = window.CHURCH_REALISM;
+    const body = stain(wood, 'Pews · walnut-brown timber', 'pews', '#9b887a', .60);
+    const seat = stain(wood, 'Pews · warm walnut seat and handrail', 'pews', '#a28e81', .59);
+    const base = stain(woodInset, 'Pews · shaded walnut supports', 'pews', '#8d7e72', .64);
+    for (const group of Object.values(groups)) group.traverse(part => {
+      if (!part.isMesh) return;
+      const phase = part.parent.position.x * .23 + part.parent.position.z * .31 + part.position.y * .53;
+      if (part.material === wood) paintTimber(part, /^(Pew seat|Rounded-profile back rail)$/.test(part.name) ? seat : body, phase);
+      if (part.material === woodInset) paintTimber(part, base, phase);
+    });
   }
   function bindBatches(batches) {
     for (const layout of [2,4]) display[layout] = batches.get(groups[layout]);

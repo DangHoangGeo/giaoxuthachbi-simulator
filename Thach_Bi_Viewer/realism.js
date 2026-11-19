@@ -13,7 +13,7 @@
     evening: { horizon: '#17283c', stops: [[0, '#070f1d'], [0.3, '#0d1a2e'], [0.46, '#152538'], [0.5, '#17283c'], [1, '#17283c']] }
   };
   const doorGroups = {};
-  const api = window.CHURCH_REALISM = { prepare, lighting, finish, floorHeight, walkAllowed, bindBatches, update, setOpenings, setGlass };
+  const api = window.CHURCH_REALISM = { prepare, lighting, finish, floorHeight, walkAllowed, bindBatches, update, setOpenings, setGlass, stainedTimber, paintTimber };
   let doorBatches, lastMode, openings = 'auto', glassKind = 'stained', lightMode = 'day';
   function bindBatches(batches) {
     doorBatches = {closed:batches.get(doorGroups.closed), open:batches.get(doorGroups.open)};
@@ -128,6 +128,7 @@
 
   function prepare(ctx) {
     context = ctx;
+    ctx.woodGrain = new Map();
     // Contact shading and highlight roll-off for the display (display-finish.js).
     window.CHURCH_DISPLAY_FINISH?.attach(ctx);
     const { THREE: T, building, scene, roofs, structure, plinth, floors, exterior, mat, interior, renderer, data, sun } = ctx;
@@ -945,8 +946,105 @@
     window.CHURCH_DECORATION?.prepare(ctx);
     // Interior finish study, 10 Nov 2026: paving, skirting, cornice, ceiling panels, sanctuary details.
     window.CHURCH_INTERIOR_FINISH?.prepare(ctx);
+    applyJoineryColours();
     applyGlass();
     finish(true);
+  }
+
+  // Keep the material and texture handles stable through load, batching and
+  // neutral/reference switches. The embedded photos work offline on file://.
+  function timberMaps(grain) {
+    const { THREE: T, renderer, woodGrain } = context;
+    if (woodGrain.has(grain)) return woodGrain.get(grain);
+    const entry = window.CHURCH_WOOD_GRAIN_TEXTURES?.[grain];
+    if (!entry || typeof window.Image !== 'function') return {};
+    const light = new URLSearchParams(location.search).get('graphics') === 'light';
+    function texture(key, space, fallback) {
+      const canvas = document.createElement('canvas');
+      canvas.width = canvas.height = light ? 384 : 768;
+      const g = canvas.getContext('2d');
+      g.fillStyle = fallback; g.fillRect(0, 0, canvas.width, canvas.height);
+      const map = new T.CanvasTexture(canvas);
+      map.name = `Photographic timber · ${grain} ${key}`;
+      map.colorSpace = space;
+      map.wrapS = map.wrapT = T.RepeatWrapping;
+      map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+      if (light) map.userData.displayResample = { kind: 'resampled display texture', source: [768, 768], display: [384, 384], mode: 'light' };
+      const image = new window.Image();
+      image.onload = () => {
+        g.imageSmoothingQuality = 'high';
+        g.drawImage(image, 0, 0, canvas.width, canvas.height);
+        map.needsUpdate = true;
+        window.CHURCH_PERFORMANCE?.invalidate();
+      };
+      image.onerror = () => console.error('Could not decode timber texture: ' + map.name);
+      image.src = entry[key];
+      return map;
+    }
+    const maps = {
+      map: texture('colour', T.SRGBColorSpace, grain === 'pews' ? '#a88972' : '#735140'),
+      bumpMap: texture('height', T.NoColorSpace, '#808080')
+    };
+    woodGrain.set(grain, maps);
+    return maps;
+  }
+
+  function stainedTimber(source, name, grain, color, roughness) {
+    const material = source.clone();
+    material.name = name;
+    material.color.set(color);
+    Object.assign(material, timberMaps(grain), { roughness, bumpScale: .0007, envMapIntensity: .30 });
+    context.palettes.set(material, { color: material.color.clone(), map: material.map, bump: material.bumpMap });
+    return material;
+  }
+
+  // The long axis follows the board on rails, seats, backs and stiles. UVs
+  // are in local metres, so opening a leaf keeps the grain on that leaf.
+  function paintTimber(part, material, phase = 0, upright = false) {
+    const T = context.THREE;
+    const geometry = part.geometry.clone();
+    geometry.computeBoundingBox();
+    const size = geometry.boundingBox.getSize(new T.Vector3());
+    const axes = [0, 1, 2].sort((a, b) => size.getComponent(b) - size.getComponent(a));
+    if (upright) { axes.splice(axes.indexOf(1), 1); axes.unshift(1); }
+    const [along, middle, thin] = axes;
+    const position = geometry.attributes.position, normal = geometry.attributes.normal;
+    const uv = new T.BufferAttribute(new Float32Array(position.count * 2), 2);
+    const p = new T.Vector3(), n = new T.Vector3();
+    for (let i = 0; i < position.count; i++) {
+      p.fromBufferAttribute(position, i); n.fromBufferAttribute(normal, i);
+      const end = Math.abs(n.getComponent(along)) > .7;
+      const across = end || Math.abs(n.getComponent(thin)) < Math.abs(n.getComponent(middle)) ? thin : middle;
+      uv.setXY(i, p.getComponent(end ? middle : along) / 2.35 + phase, p.getComponent(across) / 1.10 + phase * .37);
+    }
+    geometry.setAttribute('uv', uv);
+    part.geometry = geometry;
+    part.material = material;
+  }
+
+  function applyJoineryColours() {
+    const { building, mat, interior: { materials } } = context;
+    const door = stainedTimber(mat.wood, 'Doors · red-brown timber', 'joinery', '#e4d1c9', .56);
+    const doorPanel = stainedTimber(materials.woodInset, 'Doors · recessed red-brown timber', 'joinery', '#d4bfb5', .59);
+    const doorEdge = stainedTimber(mat.wood, 'Doors · red-brown timber mouldings', 'joinery', '#ead9d1', .53);
+    const windowFrame = stainedTimber(mat.wood, 'Windows · warm umber timber', 'joinery', '#d1caca', .59);
+    const windowPanel = stainedTimber(materials.woodInset, 'Windows · recessed umber timber', 'joinery', '#bfb3b1', .62);
+
+    for (const group of Object.values(doorGroups)) group.traverse(part => {
+      if (!part.isMesh) return;
+      const phase = part.position.y * .19 + part.position.x * .23;
+      if (/^(Recessed carved timber panel|Timber rosette relief|Carved rosette petal)$/.test(part.name)) paintTimber(part, doorPanel, phase, true);
+      if (/^Raised panel (horizontal|vertical) frame$/.test(part.name)) paintTimber(part, doorEdge, phase);
+      if (part.material === mat.wood && /^(Open timber door leaf|Exterior timber door leaf|Door panel(?: |$))/.test(part.name)) paintTimber(part, door, phase);
+      if (/^(Window timber shutter leaf|Shutter stile|Shutter rail)$/.test(part.name)) paintTimber(part, windowFrame, phase);
+      if (part.name === 'Shutter inset panel') paintTimber(part, windowPanel, phase, true);
+    });
+    building.traverse(part => {
+      if (!part.isMesh || part.material !== mat.wood) return;
+      if (part.name === 'Window timber transom') paintTimber(part, windowFrame);
+      // Fixed façade and rear meshes already carry their builder's per-part UVs.
+      if (/^(Triple window |Rear fixed window )/.test(part.name)) part.material = windowFrame;
+    });
   }
 
   function finish(reference=true) {
