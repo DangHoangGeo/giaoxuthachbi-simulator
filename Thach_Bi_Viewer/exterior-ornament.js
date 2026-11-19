@@ -96,13 +96,10 @@
       }
       return { field: new T.ExtrudeGeometry(s, { depth, bevelEnabled: false, curveSegments: 8 }), bed: merge(beds) };
     };
-    // Solid fill of a traced outline (owner, 3 Nov 2026: free-standing cresting is solid stone, not a
-    // hollow outline). CAD strokes often stop on another curve instead of meeting end to end, so the fill
-    // is found on a grid: strokes are drawn `close` thick (closing gaps up to about 2·close), everything
-    // not reachable from outside is solid, and the result is eroded by `close` back to the drawn edge.
-    // Runs of solid cells merge into boxes from z 0 to `depth`; edges step by `cell` (the outline tube
-    // covers them). Returns null when nothing encloses. A display reading of the drawing: DERIVED.
-    const solidOutline = (profile, depth = .05, cell = .005, close = .01) => {
+    // CAD strokes often stop on another curve before meeting end to end.
+    // Close small gaps on a grid, flood the exterior, then shrink the fill
+    // back to the traced edge. Both finishes below use this footprint.
+    const outlineGrid = (profile, cell, close) => {
       const lines = profile.map(row => {
         if (row[1] === 'L') return [[row[2], row[3]], [row[4], row[5]]];
         const [, , u, v, r, start, span, hd] = row, n = Math.max(2, Math.ceil(r * span * Math.PI / 180 / cell));
@@ -135,6 +132,12 @@
         for (let dy = -k; dy <= k && keep; dy++) for (let dx = -k; dx <= k; dx++) if (dx * dx + dy * dy <= k * k) { const X = x + dx, Y = y + dy; if (X < 0 || Y < 0 || X >= W || Y >= H || outside[at(X, Y)]) { keep = 0; break; } }
         solid[at(x, y)] = keep;
       }
+      return {solid,W,H,u0,v0,at};
+    };
+    // The solid crest behind the drawn outline. Horizontal runs combine
+    // into boxes so long, straight spans cost only a few triangles.
+    const solidOutline = (profile, depth = .05, cell = .005, close = .01) => {
+      const {solid,W,H,u0,v0,at}=outlineGrid(profile,cell,close);
       // Merge runs row by row, extending a box upward while the same run continues.
       const boxes = [], open = new Map();
       for (let y = 0; y <= H; y++) {
@@ -145,6 +148,35 @@
       }
       if (!boxes.length) return null;
       return merge(boxes.map(([a, b, ya, yb]) => [new T.BoxGeometry((b - a) * cell, (yb - ya) * cell, depth), TR(u0 + (a + b) / 2 * cell, v0 + (ya + yb) / 2 * cell, depth / 2)]));
+    };
+    // Fill the enclosed parts of the T12 sprays with rounded leaf backs.
+    // The cap sits behind the peaks of the traced strokes so the drawn veins stay legible.
+    const spandrelRelief = profile => {
+      const cell=.026;
+      const {solid,W,H,u0,v0,at}=outlineGrid(profile,cell,.026);
+      const points=[], indices=[], corners=new Map();
+      const vertex=(x,y)=>{
+        const key=at(x,y);
+        if(corners.has(key))return corners.get(key);
+        let depth=4;
+        for(let v=y-3;v<=y+2;v++)for(let u=x-3;u<=x+2;u++){
+          if(u<0||v<0||u>=W||v>=H||!solid[at(u,v)]) depth=Math.min(depth,Math.hypot(u+.5-x,v+.5-y));
+        }
+        const i=points.length/3, roll=Math.min(1,Math.max(0,(depth-.7)/2.4));
+        points.push(u0+x*cell,v0+y*cell,-.006+.020*Math.sin(roll*Math.PI/2));
+        corners.set(key,i);
+        return i;
+      };
+      for(let y=1;y<H-1;y++)for(let x=1;x<W-1;x++){
+        if(!solid[at(x,y)])continue;
+        const a=vertex(x,y), b=vertex(x+1,y), c=vertex(x,y+1), d=vertex(x+1,y+1);
+        indices.push(a,b,c,b,d,c);
+      }
+      if(!indices.length)return null;
+      const g=new T.BufferGeometry();
+      g.setAttribute('position',new T.Float32BufferAttribute(points,3));
+      g.setIndex(indices); g.computeVertexNormals();
+      return g;
     };
     // Pinnacle crown as E01B draws it on the central aedicule piers (C4A086–C4A092, C49F98–C4A054):
     // a gablet, a square core with a colonnette on each corner under a small fleur, and a tapered
@@ -215,7 +247,7 @@
       bar('cornice', 'S', [6.012, 6.06], .18); bar('cornice', 'S', [6.06, 6.18], .28); bar('cornice', 'S', [6.18, 6.228], .33); bar('cornice', 'S', [6.228, 6.3239], .38);
       return parts;
     };
-    return { fleur, pilasterCapital, meanderGeo, spray, towerSpandrel, pinnacleCrown, flutedField, drawnPier, drawnEntablature, traced, solidOutline };
+    return { fleur, pilasterCapital, meanderGeo, spray, towerSpandrel, pinnacleCrown, flutedField, drawnPier, drawnEntablature, traced, solidOutline, spandrelRelief };
   }
 
   window.CHURCH_EXTERIOR_ORNAMENT = { create };

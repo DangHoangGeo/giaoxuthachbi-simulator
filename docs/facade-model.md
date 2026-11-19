@@ -206,3 +206,9 @@ Owner, 3 Nov 2026: the carving should read against the cream, as on the towers (
 - the cresting fleurs-de-lis and the scroll-spur volutes.
 
 Owner, 4 Nov 2026: the crests over the three statues (`Facade niche crest · E01B`) and the pinnacle crowns (pier and aedicule piers) do not need the accent and stay cream. Mouldings, cornices, dentils, bands, impost blocks, the cresting ribs, posts and urns, and the central cross with its disc and foot stay cream. Only the material changed: geometry, names and the analysis model are unchanged. The colour is **CONCEPT**. The side gables, porches and roofline (`roofline.js`, `porches.js`) are not changed.
+
+## Stone finish and relief · 18–19 November 2026
+
+**CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.** The central and two side-bay statue niches use the existing E01B outline, springings, and radii recorded above. The viewer now presents their concave surfaces to the courtyard. The upper stone faces form fluted shells with a tapered 11-sector pattern, contained inside the previous hemispherical envelope. The flutes fade at the mouth and springing. Their depth and stone finish are visual design choices.
+
+The T12 sprays on the ground arches and tower front and outer faces retain their traced E01B/E02 curves. A 26 mm display grid closes short gaps between the same source curves and rounds the enclosed leaf lobes to the surface. The display cap projects up to 14 mm beyond the existing stroke centre plane. This is an illustrative relief thickness. Open lines remain visible as tracery and wall openings keep their drawn profiles. The limestone shades and the exterior sky are illustrative. [Tower spandrel source](exterior-23102026/tower-spandrel-review.md) · [Desktop review](../review/material-depth-2026-11-19/README.md)

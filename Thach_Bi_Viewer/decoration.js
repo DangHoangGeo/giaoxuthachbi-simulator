@@ -67,6 +67,23 @@
     for (const m of [mat.wall, mat.trim, mat.darkTrim, mat.cap, interior.materials.lining]) {
       surface(m, { bumpMap: mineral, bumpScale: .0012, roughness: .98, roughnessMap: stoneRoughness, envMapIntensity: .3 });
     }
+    // Stone trim and cut sandstone have broader bedding than the lime wall.
+    // Work in the existing world-projected two-metre repeat, with periodic
+    // bands and fine aggregate. Keep the profiles legible at courtyard scale.
+    const limestone = map('honed limestone bedding', g => {
+      const pixels=g.getImageData(0,0,size,size), d=pixels.data, turn=2*Math.PI/size;
+      for(let y=0;y<size;y++)for(let x=0;x<size;x++){
+        const a=x*turn,b=y*turn;
+        const drift=b+.18*Math.sin(a)+.09*Math.sin(3*a-b);
+        const bed=3.6*Math.sin(drift*4)+1.9*Math.sin(drift*11+Math.cos(2*a))
+          +1.2*Math.sin(23*drift+a)+(rand()-.5)*9;
+        const i=4*(y*size+x);
+        d[i]=242+bed; d[i+1]=235+bed; d[i+2]=222+bed; d[i+3]=255;
+      }
+      g.putImageData(pixels,0,0);
+    },true);
+    for(const m of [mat.trim,mat.darkTrim,mat.cap])
+      surface(m,{map:limestone,roughness:.76,bumpScale:.0018,envMapIntensity:.36});
     for (const m of [mat.floor, interior.materials.whiteStone, interior.materials.stone]) {
       // The tile/vein colour remains; the old 7–10 mm bump exaggerated polished stone.
       surface(m, { roughness: .52, roughnessMap: stoneRoughness, bumpScale: .0008, envMapIntensity: .38 });

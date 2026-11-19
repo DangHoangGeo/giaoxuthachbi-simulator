@@ -237,8 +237,8 @@
       materialScale.set(m,{kind,scale}); return m;
     }
     surface(mat.wall,'plaster',3,'#faf3e1',.83,.012);
-    surface(mat.trim,'plaster',2,'#efe2c8',.67,.008);
-    surface(mat.darkTrim,'plaster',2,'#b69b73',.65,.008);
+    surface(mat.trim,'plaster',2,'#ead7b8',.67,.008);
+    surface(mat.darkTrim,'plaster',2,'#b89768',.65,.008);
     surface(mat.roof,'roof',2.8,'#ffffff',.84,.055);
     surface(mat.cap,'plaster',2,'#efdfbd',.64,.01);
     surface(mat.foundation,'ashlar',2.4,'#dadcdd',.85,.028);
@@ -878,19 +878,44 @@
     // Display only: it gives no light, casts no shadow and is not part of the
     // building, its exports or any calculation. Drawing views look along the
     // horizon or straight down and so keep a plain pale ground.
-    const skyMap=stops=>{
-      const c=document.createElement('canvas');c.width=8;c.height=512;
+    const skyMap=(stops,day=false)=>{
+      const c=document.createElement('canvas');c.width=day?1024:8;c.height=512;
       const g=c.getContext('2d'),fade=g.createLinearGradient(0,0,0,512);
       for(const [at,colour] of stops)fade.addColorStop(at,colour);
-      g.fillStyle=fade;g.fillRect(0,0,8,512);
+      g.fillStyle=fade;g.fillRect(0,0,c.width,c.height);
+      if(day){
+        // Periodic value noise in azimuth. Long, broken streaks soften as
+        // they approach the horizon and disappear before the ground colour.
+        const pixels=g.getImageData(0,0,c.width,c.height), rgba=pixels.data;
+        const hash=(i,j)=>{
+          let h=Math.imul(i+541,374761393)+Math.imul(j+71,668265263);
+          h=Math.imul(h^(h>>>13),1274126177); return ((h^(h>>>16))>>>0)/4294967296;
+        };
+        const noise=(u,v,period)=>{
+          const x=Math.floor(u), y=Math.floor(v);
+          const fx=u-x, fy=v-y, a=fx*fx*(3-2*fx), b=fy*fy*(3-2*fy);
+          const i=((x%period)+period)%period, k=(i+1)%period;
+          return (hash(i,y)*(1-a)+hash(k,y)*a)*(1-b)+(hash(i,y+1)*(1-a)+hash(k,y+1)*a)*b;
+        };
+        for(let y=3;y<248;y++)for(let x=0;x<c.width;x++){
+          const u=x/c.width, v=y/c.height, sweep=.65*Math.sin(2*Math.PI*u);
+          const warp=noise(u*5,v*12,5);
+          const n=.53*noise(u*7,v*27+sweep,7)+.29*noise(u*17,v*65+warp*3,17)
+            +.13*noise(u*39,v*150+warp*6,39)+.05*noise(u*89,v*320,89);
+          const alpha=Math.min(.66,Math.max(0,(n-.46)*2.3))*Math.min(1,(248-y)/32,y/32);
+          const i=(y*c.width+x)*4;
+          rgba[i]+=(249-rgba[i])*alpha; rgba[i+1]+=(242-rgba[i+1])*alpha; rgba[i+2]+=(229-rgba[i+2])*alpha;
+        }
+        g.putImageData(pixels,0,0);
+      }
       const map=new T.CanvasTexture(c);map.colorSpace=T.SRGBColorSpace;return map;
     };
-    ctx.skyMaps={day:skyMap(SKY.day.stops),evening:skyMap(SKY.evening.stops)};
+    ctx.skyMaps={day:skyMap(SKY.day.stops,true),evening:skyMap(SKY.evening.stops)};
     const dome=new T.Mesh(new T.SphereGeometry(300,32,16),new T.MeshBasicMaterial({map:ctx.skyMaps.day,side:T.BackSide,fog:false,depthTest:false,depthWrite:false,toneMapped:false}));
     dome.name='Sky dome · display only';dome.renderOrder=-1000;dome.frustumCulled=false;dome.matrixAutoUpdate=false;dome.raycast=()=>{};
     dome.onBeforeRender=(r,s,camera)=>dome.matrixWorld.copyPosition(camera.matrixWorld);
     scene.add(dome);ctx.skyDome=dome;
-    sun.position.set(-35,48,-48);sun.target.position.set(20,9,0);
+    sun.position.set(-31,39,-58);sun.target.position.set(20,9,0);
     sun.shadow.mapSize.set(lightGraphics?1024:4096,lightGraphics?1024:4096);
     Object.assign(sun.shadow.camera,{left:-48,right:48,top:47,bottom:-39,near:.5,far:180});sun.shadow.camera.updateProjectionMatrix();sun.shadow.normalBias=.035;sun.shadow.bias=-.00008;
     // Restrained facade illumination: four static spot lights in evening only.
@@ -962,9 +987,9 @@
     scene.background.set(SKY[lightMode].horizon);scene.fog.color.copy(scene.background);
     if(context.skyDome)context.skyDome.material.map=context.skyMaps[lightMode];
     scene.environmentIntensity=night?.18:.6;
-    hemisphere.color.set(night?'#9bb1cf':'#d9edff');hemisphere.groundColor.set(night?'#4c4038':'#b4a28a');hemisphere.intensity=night?.22:1.15;
+    hemisphere.color.set(night?'#9bb1cf':'#d9edff');hemisphere.groundColor.set(night?'#4c4038':'#b4a28a');hemisphere.intensity=night?.22:.91;
     sun.color.set(night?'#adbedc':'#fff0d5');sun.intensity=night?.09:3.15;
-    fill.color.set(night?'#a5bada':'#d2e3f4');fill.intensity=night?.1:.45;
+    fill.color.set(night?'#a5bada':'#d2e3f4');fill.intensity=night?.1:.33;
     renderer.toneMappingExposure=night?1.12:1;
     // Reset from the interior's registered values, so repeated toggles never compound.
     interior.setLighting(mode);

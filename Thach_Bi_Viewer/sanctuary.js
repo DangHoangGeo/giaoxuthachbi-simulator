@@ -834,9 +834,50 @@
       insets.push([new T.BoxGeometry(.5,.34,.014),K.place(K.TR(0,0,.411),face)]);
     }
     const headCarving=K.merge(cornerBody),headGilding=K.merge(headGilt),pedestalInsets=K.merge(insets),junction=new T.BoxGeometry(.6,.59,.6);
+    // The frame columns carry climbing lotus stems only on the face toward
+    // the assembly. Wrap the carving onto the actual tapered polygonal shaft.
+    // The plain sides and rear remain available to inspect the timber.
+    function shaftVine(shaft) {
+      const {radiusTop,radiusBottom,height,radialSegments}=shaft.geometry.parameters;
+      const pieces=[], bloom=K.bloom({r:.105,petals:7,rings:1,seg:3});
+      const leaf=K.leaf({len:.17,wid:.076,thick:.01,curl:.55,lobes:3,seg:5,fine:false});
+      const bottom=3.095, top=7.905, pitch=(top-bottom)/5;
+      for(let k=0;k<5;k++){
+        const y=bottom+k*pitch;
+        for(const side of [-1,1]){
+          const path=[[0,y,0],[side*.125,y+pitch*.23,0],[side*.16,y+pitch*.5,0],[side*.085,y+pitch*.76,0],[0,y+pitch,0]];
+          pieces.push([K.stem(path,.014,.008,7,4),null]);
+          for(const [u,h,turn] of [[.09,.15,.9],[.156,.40,-.62],[.124,.65,.8]]){
+            pieces.push([leaf,K.place(K.SC(1,1,.25),K.RZ(side*turn),K.TR(side*u,y+h*pitch,0))]);
+          }
+        }
+        pieces.push([bloom,K.place(K.SC(1,1,.26),K.TR(0,y+pitch*.51,0))],
+          [K.stem([[0,y+.11,0],[.034,y+.25,.005],[0,y+pitch*.51,.01]],.009,.005,6,5),null]);
+      }
+      const g=mergeRelief(pieces), pos=g.attributes.position,n=g.attributes.normal;
+      const v=new T.Vector3(),facetAngle=2*Math.PI/radialSegments;
+      for(let i=0;i<pos.count;i++){
+        const y=pos.getY(i), fraction=(y-shaft.position.y)/height+.5;
+        const r=radiusBottom+(radiusTop-radiusBottom)*fraction, a=pos.getX(i)/r-Math.PI/2;
+        const fromFacetCentre=((a%(facetAngle)+facetAngle)%facetAngle)-facetAngle/2;
+        const radius=r*Math.cos(facetAngle/2)/Math.cos(fromFacetCentre)+.002+pos.getZ(i);
+        pos.setXYZ(i,Math.sin(a)*radius,y,Math.cos(a)*radius);
+        v.fromBufferAttribute(n,i);
+        n.setXYZ(i,Math.cos(a)*v.x+Math.sin(a)*v.z,v.y,-Math.sin(a)*v.x+Math.cos(a)*v.z);
+      }
+      g.computeBoundingSphere();return g;
+    }
+    const shaft=building.getObjectByName('Central column 10/D — illustrative diameter');
+    const frameVine=shaft && shaftVine(shaft);
+    // Pair of burnished beads seated in the turns of each existing shaft foot.
+    const footBeads=K.merge([[.414,.154],[.390,.353]].map(([r,y])=>[
+      K.turned([[r-.006,y-.008],[r+.006,y],[r-.006,y+.008]],28),null
+    ]));
     for(const key of ['3','4','5','6','7','8','9','10'])for(const e of [-1,1]){
       const x=data.longitudinal[key],z=e*3.6;
+      mesh(footBeads,gold,root,'Column carving · foot beads',x,key === spec.frameAxis ? .97 : .78,z);
       if(key===spec.frameAxis){
+        if(frameVine)mesh(frameVine,gold,root,'Column carving · climbing lotus',x,0,z);
         mesh(turnedBase,wood,root,'Column carving · turned base',x,.97,z);
         for(const y of [3.05,7.95])mesh(band,gold,root,'Gilded column band',x,y,z);
         mesh(frameCapital,gold,root,'Gilded column capital',x,8.66,z);
@@ -1006,14 +1047,23 @@
     if(altarFront){
       const pieces=[];
       for(const sign of [-1,1]){
-        pieces.push([K.bloom({r:.065,petals:8,rings:2,seg:4}),K.place(K.SC(1,1,.4),K.TR(sign*.77,0,0))]);
-        for(const [u,y,angle] of [[.47,-.19,-.65],[.57,-.1,-.9],[.87,-.19,.55],[.98,.045,.8]]){
-          pieces.push([K.leaf({len:.14,wid:.065,thick:.004,curl:.25,lobes:3,seg:8}),K.place(K.RZ(sign*angle),K.TR(sign*u,y,0))]);
+        // A three-lobed cartouche holds a flower in each half of the altar.
+        // Its paired scrolls grow from the same stem; the centre stays free for the cross.
+        const spray=[],flower=K.bloom({r:.12,petals:10,rings:3,seg:5});
+        spray.push([flower,K.TR(.72,.045,.012)]);
+        for(const side of [-1,1]){
+          const stem=[[.72,-.21,0],[.72+side*.17,-.14,0],[.72+side*.28,-.02,0],
+            [.72+side*.24,.12,0],[.72+side*.14,.14,0],[.72+side*.12,.065,0],[.72+side*.17,.06,0]];
+          spray.push([K.stem(stem,.018,.004,26,6),null]);
+          for(const [dx,y,angle] of [[.095,-.17,.58],[.18,-.12,-.75],[.264,-.045,-.56],[.251,.09,.62]]){
+            spray.push([K.leaf({len:.118,wid:.062,thick:.012,curl:.75,lobes:3,seg:8}),
+              K.place(K.RZ(side*angle),K.TR(.72+side*dx,y,.007))]);
+          }
         }
-        pieces.push([K.stem([[sign*.4,-.2,0],[sign*.59,-.16,.001],[sign*.72,-.06,.001],[sign*.94,.02,0]],.005,.002,20,6),null]);
+        pieces.push([K.merge(spray),K.SC(sign,1,.24)]);
       }
       const finish=altarFront.material.clone();finish.name='Sanctuary · shallow altar stone carving';
-      finish.map=finish.bumpMap=null;finish.roughness=.62;
+      finish.map=finish.bumpMap=null;finish.color.set('#ddcdb2');finish.roughness=.59;
       palettes?.set(finish,{color:finish.color.clone(),map:null,bump:null});
       const relief=new T.Mesh(K.merge(pieces),finish);relief.name='Altar floral stone relief';
       relief.rotation.y=-Math.PI/2;relief.position.x=-altarFront.geometry.parameters.width/2-.0045;

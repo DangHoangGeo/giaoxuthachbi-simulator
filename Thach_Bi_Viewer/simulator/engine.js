@@ -455,7 +455,7 @@
     // facing outward, with a moulded collar below. At axis 9 the clusters toward the nave centre are left out:
     // the ambo key light and presider light hang there 0.45/0.60 m from the column axes. CONCEPT ORNAMENT.
     if (carving) {
-      const big = K.cluster({ a: 0.3, b: 0.36, c: 0.17, leaves: 22, blooms: 4, size: 0.2 }), small = K.cluster({ a: 0.22, b: 0.26, c: 0.13, leaves: 14, blooms: 2, size: 0.16 });
+      const big = K.palmette(.40,.68,.19), small = K.palmette(.32,.50,.13);
       const collar = new T.TorusGeometry(0.335, 0.055, 10, 36), collar2 = new T.TorusGeometry(0.32, 0.03, 8, 36);
       GEO.columnJunctions = 0;
       for (const k of ['3', '4', '5', '6', '7', '8', '9']) {

@@ -1,0 +1,28 @@
+{
+  "title": "Celestial sky for the sanctuary recesses",
+  "status": "CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công",
+  "date": "2026-11-18",
+  "author": "Thạch Bi Church design simulator project with OpenAI image generation",
+  "rights": "CC BY 4.0 to the extent the project holds rights. See NOTICE.md.",
+  "generator": "Built-in OpenAI imagegen",
+  "inputs": "Text only",
+  "prompt": "Create the finished flat artwork of a sky mural for the actual recessed crucifix niche of Thạch Bi Catholic church in Vietnam. Portrait 4:5 composition, full bleed, completely orthographic artwork with straight edges. A master decorative painter's luminous mineral-blue heaven in tempera on smooth plaster. Deep lapis in the upper corners, clear medium azure in the middle, luminous pale cerulean toward the lower center. A few very small, irregularly spaced hand-gilded eight-pointed stars in the darker upper third. Fine realistic modeled cloud forms banked along the bottom quarter and gently rising at the lower corners, warm pearl and cool smoky blue half-tones, with very fine broken shell-gold edging on only a few illuminated cloud lips. Scale: a few large airy banks with delicate small-scale wisps. Keep the middle two thirds serene and mostly blue for the actual wooden crucifix that will be placed in front separately. Visible delicate glazing and mineral pigment but a well cared for newly finished mural. Sacred architectural art, natural depth and atmosphere, elegant and quiet like historic painted chapel skies. No figures, crucifix, cross, halo, circular sun, rayburst, emblems, lettering, architecture, picture frame, border, horizon landscape, or camera effects. No modern fantasy glow.",
+  "native": {
+    "file": "native.png",
+    "dimensions": [
+      1122,
+      1402
+    ],
+    "sha256": "cc3b05ee7d5903887038de778319f5c27a3a192bd878804a3db591e4beed58df"
+  },
+  "display": {
+    "file": "../../../sanctuary-sky-art.js",
+    "format": "WebP embedded for file://",
+    "dimensions": [
+      819,
+      1024
+    ],
+    "processing": "RGB, aspect-preserving Lanczos fit within 1024 × 1024, WebP quality 90, method 6. Centre crop per niche at display time.",
+    "sha256": "41b5a0bcebaa8b733219aade1a1d8dda01db9e158cde2bdb004a007d4bf245e6"
+  }
+}

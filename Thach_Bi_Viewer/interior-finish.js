@@ -17,9 +17,9 @@
 (() => {
   'use strict';
   const spec = {
-    revision: '2026-11-10-interior-finish-2',
+    revision: '2026-11-18-carved-finishes',
     status: 'CONCEPT · display finish and ornament proxy',
-    source: 'Owner request 10 Nov 2026; nave concept of 9 Nov 2026 (review/interior-concept-2026-11-09)',
+    source: 'Owner appearance review 18 Nov 2026; nave concept of 9 Nov 2026 (review/interior-concept-2026-11-09)',
     bays: [['2′', '3'], ['3', '4'], ['4', '5'], ['5', '6'], ['6', '7'], ['7', '8'], ['8', '9']],
     doorBays: ['4–5', '8–9'],          // side doors: the skirting stops at their surrounds
     wallFace: 7.25,                     // nave face of the inner C/G wall
@@ -36,7 +36,38 @@
     stoup: { x: 5.47, z: 1.85, y: 1.02, radius: 0.15 },
     lamp: { x: 47.2, z: 0.62, glass: 1.5 }
   };
-  let flame, lampGlass;
+  let flame, lampGlass, naveReflection;
+  const reflectiveFinishes = [];
+
+  // A small, fixed daylight reflection study viewed from the centre of the nave.
+  // Project each bay opening on the sphere so the lateral windows narrow toward
+  // the ends. Three prefilters the panorama for each material's roughness.
+  function windowReflection(T, axes) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512; canvas.height = 256;
+    const g = canvas.getContext('2d'), w = canvas.width, h = canvas.height;
+    const room = g.createLinearGradient(0, 0, 0, h);
+    for (const [t, colour] of [[0,'#654334'],[.35,'#51372d'],[.48,'#806551'],[.57,'#382a23'],[.73,'#9b8771'],[1,'#c0ae98']]) room.addColorStop(t, colour);
+    g.fillStyle = room; g.fillRect(0, 0, w, h);
+    const eyeX = axes['6'], eyeY = 3.4;
+    for (const [first, last] of spec.bays) for (const side of [-1, 1]) {
+      const cx = (axes[first] + axes[last]) / 2, z = side * spec.wallFace;
+      const project = (x,y) => [(Math.atan2(z, x - eyeX) / (2*Math.PI) + .5) * w,
+        (.5 - Math.atan2(y - eyeY, Math.hypot(x - eyeX,z)) / Math.PI) * h];
+      const edge = [project(cx - .95, .65), project(cx + .95, .65)];
+      for (let i = 0; i <= 12; i++) {
+        const a = i * Math.PI / 12;
+        edge.push(project(cx + .95 * Math.cos(a), 3.85 + .95 * Math.sin(a)));
+      }
+      g.fillStyle = '#fff5e0'; g.beginPath();
+      edge.forEach(([x,y],i) => i ? g.lineTo(x,y) : g.moveTo(x,y));
+      g.closePath(); g.fill();
+    }
+    const tex = new T.CanvasTexture(canvas);
+    tex.name = 'Nave daylight reflections'; tex.mapping = T.EquirectangularReflectionMapping;
+    tex.colorSpace = T.SRGBColorSpace;
+    return tex;
+  }
   window.CHURCH_INTERIOR_FINISH = { spec, prepare, lighting };
 
   function prepare({ THREE: T, building, mat, interior, renderer, palettes, data }) {
@@ -157,9 +188,16 @@
     building.traverse(o => { if (o.isMesh) for (const m of Array.isArray(o.material) ? o.material : [o.material]) all.add(m); });
     let gilding = null, insetMarble = null;
     const skies = [];
+    naveReflection = windowReflection(T, data.longitudinal);
     for (const m of all) {
-      if (m.name === 'Sanctuary · oxblood lacquer') surface(m, { ...lacquerMaps, clearcoat: .55, clearcoatRoughness: .2, envMapIntensity: .55 }); // roughness stays shared with the roof timbers
-      else if (m.name === 'Sanctuary · carved gilding') gilding = m;
+      if (m.name === 'Sanctuary · oxblood lacquer') {
+        surface(m, { ...lacquerMaps, clearcoat: .86, clearcoatRoughness: .105 });
+        reflectiveFinishes.push([m, 1.9, .55]);
+      } else if (m.name === 'Sanctuary · carved gilding') {
+        gilding = m;
+        surface(m, { roughness: .32 });
+        reflectiveFinishes.push([m, 1.55, .48]);
+      }
       else if (m.name === 'Sanctuary · dark marble inset') insetMarble = m;
       else if (m.name === 'Sanctuary · blue niche') skies.push([m, ['#d7ecfb', '#4aa0e6', '#1c6fc6'], 12]);
       else if (m.name === 'Sanctuary · shrine niche blue') skies.push([m, ['#d3e7f6', '#7fb2e0', '#4d8dca'], 22]);
@@ -168,6 +206,7 @@
     // same light centre as before (approved sanctuary concept); added are soft clouds banked low and
     // round the light, a deeper rim, fine fresco grain and a few faint gilded stars above. The
     // texture spans the niche once, so clouds are drawn in metres and stay round on the wall.
+    const muralFields = [];
     for (const [m, [inner, mid, outer], starCount] of skies) {
       const old = m.map;
       if (!old) continue;
@@ -211,7 +250,23 @@
       sky.repeat.copy(old.repeat); sky.offset.copy(old.offset);
       surface(m, { map: sky });
       old.dispose();
+      muralFields.push({ sky, aspect: W / H });
       stats.skies = (stats.skies || 0) + 1;
+    }
+    // Retain the procedural field until the packaged mural decodes. Paint
+    // directly into the texture's actual display canvas (also in light mode).
+    if (window.CHURCH_SANCTUARY_SKY && typeof window.Image === 'function') {
+      const art = new window.Image();
+      art.onload = () => {
+        for (const {sky, aspect} of muralFields) {
+          const w=Math.min(art.width,art.height*aspect), h=w/aspect;
+          const c=sky.image;
+          c.getContext('2d').drawImage(art,(art.width-w)/2,(art.height-h)/2,w,h,0,0,c.width,c.height);
+          sky.needsUpdate=true;
+        }
+        window.CHURCH_PERFORMANCE?.invalidate();
+      };
+      art.src=window.CHURCH_SANCTUARY_SKY;
     }
     // Pedestal panels: deep red marble with a polish, in the red-and-gold scheme (was grey-green).
     if (insetMarble) {
@@ -362,6 +417,10 @@
     // Altar front: a gilded fillet frames the carved panel (nave face of the altar).
     const front = building.getObjectByName('Proposed altar front panel');
     if (front) {
+      const inset=front.material.clone();
+      inset.name='Altar · honed ivory stone field'; inset.color.set('#cdbda4');
+      inset.roughness=.66; front.material=inset;
+      palettes?.set(inset,{color:inset.color.clone(),map:inset.map,bump:inset.bumpMap});
       const b = new T.Box3().setFromObject(front), x = b.min.x - .004, cy = (b.min.y + b.max.y) / 2, h = b.max.y - b.min.y - .1, w = b.max.z - b.min.z - .1;
       for (const e of [-1, 1]) {
         box('Altar front gilded fillet', gold, .008, .014, w, x, cy + e * h / 2, 0);
@@ -390,17 +449,52 @@
       y = b.min.y;
       for (const [grow, h] of A2.base) { box('Altar base moulding', rock, bw + grow, h, bd + grow, cx, y + h / 2, cz); y += h; }
       const lx = l.max.x - l.min.x, lcx = (l.min.x + l.max.x) / 2;
+      // The woven hems and the cloth share a UV field and bend together. Each
+      // fall is pinned along its upper selvage, then loosens toward the bottom.
+      const hem = linen.clone();
+      hem.name = 'Altar linen · woven vine and hemstitch';
+      hem.color.set('#fffaf1'); hem.side = T.DoubleSide; hem.roughness = .92;
+      hem.map = map('woven altar vine', 256, (g, n) => {
+        g.fillStyle = '#f6f1e7'; g.fillRect(0,0,n,n);
+        for (let i=0; i<n; i+=3) {
+          g.fillStyle = 'rgba(108,88,68,.05)'; g.fillRect(0,i,n,1);
+          g.fillStyle = 'rgba(255,255,255,.3)'; g.fillRect(i,0,1,n);
+        }
+        const vine = t => 171 + 19 * Math.sin(t * 2 * Math.PI);
+        g.strokeStyle = '#b29356'; g.lineWidth = 2.2; g.beginPath();
+        for (let x=0; x<=n; x+=2) g.lineTo(x,vine(x/n));
+        g.stroke();
+        for (let i=0; i<8; i++) {
+          const x=(i+.5)*n/8, y=vine(x/n), side=i%2?1:-1;
+          g.save(); g.translate(x,y); g.scale(1,side);
+          g.fillStyle = '#c5aa74'; g.beginPath(); g.moveTo(0,0);
+          g.bezierCurveTo(-1,-11,6,-19,12,-23);
+          g.bezierCurveTo(14,-11,7,-3,0,0); g.fill(); g.restore();
+        }
+        for (const y of [130,216,222]) { g.fillStyle='#bca16a'; g.fillRect(0,y,n,2); }
+      }, true);
+      const drape = (width, height, folds) => {
+        const geo = new T.PlaneGeometry(width,height,folds*8,5);
+        const pos=geo.attributes.position, uv=geo.attributes.uv;
+        for (let i=0; i<pos.count; i++) {
+          const u=uv.getX(i), fall=1-uv.getY(i), wave=2*Math.PI*folds*u;
+          const fullness=fall*fall*Math.sin(Math.PI*u);
+          pos.setZ(i,.004 + fullness*(.021+.013*Math.cos(wave)+.007*Math.cos(wave*.5+.8)));
+          pos.setY(i,pos.getY(i)-fullness*.012*(1-Math.cos(wave)));
+          uv.setX(i,u*Math.round(width/.32));
+        }
+        geo.computeVertexNormals(); return geo;
+      };
       for (const e of [-1, 1]) {
-        const z = e * ((l.max.z - l.min.z) / 2 + .003) + (l.min.z + l.max.z) / 2;
-        box('Altar linen end fall', linen, lx, A2.endFall, .006, lcx, l.max.y - A2.endFall / 2, z);
-        box('Altar linen gilded border', gold, lx + .004, A2.border, .004, lcx, l.max.y - A2.endFall + .03, z + e * .005);
-        box('Altar linen gilded border', gold, lx + .004, .008, .004, lcx, l.max.y - A2.endFall + .068, z + e * .005);
+        const z = e<0 ? l.min.z-.003 : l.max.z+.003;
+        add('Altar linen end fall', hem, drape(lx,A2.endFall,6),
+          place(RY(e<0 ? Math.PI : 0), TR(lcx,l.max.y-A2.endFall/2,z)));
       }
       building.traverse(o => {
         if (!o.isMesh || o.name !== 'Altar linen edge') return;
-        const f = bounds(o), side = (f.min.x + f.max.x) / 2 < cx ? -1 : 1, x = side < 0 ? f.min.x - .002 : f.max.x + .002;
-        box('Altar linen gilded border', gold, .004, A2.border, f.max.z - f.min.z, x, f.min.y + .03, (f.min.z + f.max.z) / 2);
-        box('Altar linen gilded border', gold, .004, .008, f.max.z - f.min.z, x, f.min.y + .068, (f.min.z + f.max.z) / 2);
+        const f=bounds(o), side=o.position.x<cloth.position.x ? -1 : 1;
+        o.geometry=drape(f.max.z-f.min.z, f.max.y-f.min.y, 14);
+        o.position.x+=side*.009; o.rotation.y=side*Math.PI/2; o.material=hem;
       });
       stats.altar++;
     }
@@ -499,6 +593,11 @@
   // Flames and the sanctuary lamp carry the evening; by day they only glint.
   function lighting(mode, interior) {
     const night = mode === 'evening';
+    for (const [m, day, evening] of reflectiveFinishes) {
+      const reflection = night ? null : naveReflection;
+      if (m.envMap !== reflection) { m.envMap = reflection; m.needsUpdate = true; }
+      m.envMapIntensity = night ? evening : day;
+    }
     if (flame) flame.emissiveIntensity = night ? 7 : 2.4;
     if (lampGlass) lampGlass.emissiveIntensity = night ? 1.5 : .5;
     const candle = interior?.materials?.flame;

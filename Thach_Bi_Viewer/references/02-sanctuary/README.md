@@ -18,3 +18,7 @@ Full HD files are 1920 × 1080 resampled exports from preserved native originals
 [Current image register](../current-images.json) · [Complete gallery](../00-overview/2026-10-07/index.html) · [Design notes](../../../docs/church-view-renderings.md)
 
 These are generated appearance concepts. Dimensions, hidden joints, structural capacity, equipment ratings and construction approval require their own verified sources.
+
+## Blue niche mural · 18 November 2026
+
+This project-generated tempera sky is a **CONCEPT** for the back fields of the crucifix, Our Lady and Saint Joseph niches. The file below preserves the original output. The model uses an embedded WebP derivative and crops it to the proportions of each recess. [Native painting](sky-study/native.png) · [Generator, prompt, processing and hashes](sky-study/provenance.json)

@@ -898,6 +898,21 @@ console.log('Sanctuary: sheet-5 frame, shrine line, chamber lining, lacquered ro
   near(of('Central aedicule wall').min.x,3.915,'Aedicule face (plan +15.840)');
   near(of('Side bay niche').max.y,12.308+.599,'Side niche crown: springing +12.308, r 0.599');
   near(of('Central aedicule niche').max.y,18.893+.711,'Central niche crown: springing +18.893, r 0.711');
+  for(const name of ['Side bay niche','Central aedicule niche']){
+    const hood=upper.children.find(o=>o.name===name&&o.material===mat.trim);
+    assert(hood,'A cut-stone hood faces into '+name);
+    const position=hood.geometry.attributes.position, normal=hood.geometry.attributes.normal;
+    const rearX=bounds(hood).max.x;
+    let rearFaces=0;
+    for(let i=0;i<position.count;i++){
+      if(position.getX(i)<rearX-.07)continue;
+      assert(normal.getX(i)<-.25,'Niche rear faces the courtyard');
+      rearFaces++;
+    }
+    assert(rearFaces>0,'The hollow includes a visible rear surface');
+  }
+  const carved=of('Facade carved leaf backs · E01B T12');
+  assert(carved.min.x>1.90&&carved.max.x<1.975,'Leaf backs project only from the existing spandrel wall');
   near(of('Central bay great arch moulding').max.y,12.677+2.27,'Great arch extrados: centre +12.677, r 2.27');
   const cross=of('Central cross trefoil end').union(of('Central cross'));near(cross.max.y,24.648,'Cross top +24.648');
   const piers=of('Central bay pier shaft');near(piers.max.z,2.979+.435,'Central piers: 621 / 5,958.8 / 621 chain');near(piers.min.z,-2.979-.435,'Central piers symmetric');

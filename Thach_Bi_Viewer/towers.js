@@ -625,7 +625,7 @@
     const stats = { piers: 0, blindArches: 0, upperFronts: 0, removedBundleMeshes: remove.length };
 
     // ---- Shared carving (also used by roofline.js) ----
-    const { fleur, pilasterCapital, meanderGeo, towerSpandrel, pinnacleCrown, flutedField, solidOutline } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const { fleur, pilasterCapital, meanderGeo, towerSpandrel, pinnacleCrown, flutedField, solidOutline, spandrelRelief } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     let crownGeo = null; // traced crown, built once and shared by both towers
     // Round-ended flutes through a raised field (shared E01B form), clamped to the shaft.
     const fluted = ({ half, f }, [lo, hi], matrix) => {
@@ -634,6 +634,7 @@
     };
     const leafProfiles = window.CHURCH_TOWER_SPANDREL_PROFILE;
     const towerLeaves = { outer: towerSpandrel(leafProfiles.outer, spec.leafStroke, spec.leafSagitta), inner: towerSpandrel(leafProfiles.inner, spec.leafStroke, spec.leafSagitta) };
+    const leafBacks = { outer: spandrelRelief(leafProfiles.outer), inner: spandrelRelief(leafProfiles.inner) };
     // Pier capitals traced from E01B (pierCapital1..4, the inner pier, u from the tower centre). The
     // outer pier is the mirror image (E01B draws it so, within 0.1 mm; stage 4 within 24 mm), and E02
     // draws the same outline on the side faces (front pier as traced, rear pier mirrored, within 0.1 mm).
@@ -1017,6 +1018,9 @@
         add('Tower front spandrel spray', ACCENT, towerLeaves[e > 0 ? 'outer' : 'inner'],
           place(SC(e * s, 1, 1), RY(-Math.PI / 2), TR(wallFace - .025, 0, zc)),
           'E01B H FRONT TRACED / B REPEATED DERIVED / RELIEF CONCEPT');
+        const relief=leafBacks[e>0?'outer':'inner'];
+        if(relief)add('Tower carved leaf backs · E01B',ACCENT,relief,
+          place(SC(e*s,1,1),RY(-Math.PI/2),TR(wallFace-.025,0,zc)),CARVED);
       }
       // Archivolt: three rings, the outer one proud.
       for (let i = 0; i < A.rings.length - 1; i++) slab(i ? 'Tower front archivolt' : 'Tower front archivolt inner ring', i % 2 ? W : S, 'front', ring(0, A.spring, A.rings[i], A.rings[i + 1], 0), 0, .1 + i * .01, DRAWN, 48);
@@ -1071,6 +1075,8 @@
           // radii and end points of both profiles within 0.1 mm about X 2.450). Relief CONCEPT.
           add('Tower side spandrel spray · E02', ACCENT, towerLeaves[e > 0 ? 'outer' : 'inner'], at('outer', u, 0, .025, SC(e, 1, 1)),
             'E02 SIDE MATCHES TRACED T12 PROFILE / RELIEF CONCEPT');
+          const relief=leafBacks[e>0?'outer':'inner'];
+          if(relief)add('Tower carved leaf backs · E02',ACCENT,relief,at('outer',u,0,.025,SC(e,1,1)),CARVED);
         }
       }
 

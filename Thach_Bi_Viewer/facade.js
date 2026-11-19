@@ -190,12 +190,16 @@
       'E01B TRACED NICHE CREST / RELIEF CONCEPT');
     // ---- Ground arch spandrels: the tower T12 leaf, at the E01B positions ----
     {
-      const { towerSpandrel } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K), L = spec.leaves;
+      const { towerSpandrel, spandrelRelief } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K), L = spec.leaves;
       const profile = window.CHURCH_TOWER_SPANDREL_PROFILE.outer, { leafStroke: stroke, leafSagitta: sagitta } = window.CHURCH_TOWERS.spec;
       for (const [oz, k, dy, omit] of L.copies) {
-        const g = towerSpandrel(profile.filter(r => !omit.includes(r[0])), stroke, sagitta);
-        both(s => add('Facade arch spandrel leaf · E01B T12', ACCENT, g, facing(L.face - stroke - .002, dy, s * oz, SC(s * k, 1, 1)),
-          'E01B TRACED T12 AT FULL SIZE / RELIEF CONCEPT'));
+        const curves=profile.filter(r=>!omit.includes(r[0]));
+        const g=towerSpandrel(curves,stroke,sagitta), relief=spandrelRelief(curves);
+        both(s=>{
+          const transform=facing(L.face-stroke-.002,dy,s*oz,SC(s*k,1,1));
+          add('Facade arch spandrel leaf · E01B T12',ACCENT,g,transform,'E01B TRACED T12 AT FULL SIZE / RELIEF CONCEPT');
+          if(relief)add('Facade carved leaf backs · E01B T12',ACCENT,relief,transform,CARVED);
+        });
       }
     }
     // ---- Front decoration pass (owner, 3 Nov 2026): E01B outlines in detail-front-profile.js, drawn
@@ -218,10 +222,29 @@
       block(name, S, [xFront - .02, xFront + depth], [y1 - h * .12, y1], [zc - half * 1.08, zc + half * 1.08]);
       add(name + ' foliage', ACCENT, pilasterCapital(half * 2, h * .88), facing(xFront + .03, y0, zc), CARVED);
     };
-    // Niche hood: the back half of a cylinder and a quarter sphere over it.
+    // The street sees the inside of these three niches. Wind the shell
+    // inward so grazing light follows the hollow down to the statue plinth.
     const hood = (name, zc, half, [y0, spring], x) => {
-      add(name, W, new T.CylinderGeometry(half, half, spring - y0, 20, 1, true, 0, Math.PI), TR(x, (y0 + spring) / 2, zc));
-      add(name, W, new T.SphereGeometry(half, 20, 8, Math.PI / 2, Math.PI, 0, Math.PI / 2), TR(x, spring, zc));
+      const inward = g => {
+        const idx = g.index.array;
+        for (let i=0; i<idx.length; i+=3) [idx[i+1],idx[i+2]]=[idx[i+2],idx[i+1]];
+        g.computeVertexNormals(); return g;
+      };
+      const drum = new T.CylinderGeometry(half,half,spring-y0,48,1,true,0,Math.PI);
+      add(name,W,inward(drum),TR(x,(y0+spring)/2,zc));
+      // Flutes open like a shell above the figure. Both the perimeter at the
+      // mouth and the spring line retain the drawn outline. Relief is CONCEPT.
+      const cap = new T.SphereGeometry(half,56,14,Math.PI/2,Math.PI,0,Math.PI/2);
+      const pos = cap.attributes.position;
+      for (let i=0; i<pos.count; i++) {
+        const dx=pos.getX(i), dy=pos.getY(i), dz=pos.getZ(i);
+        const angle=Math.atan2(dy,dz);
+        const scallop=Math.sin(11*angle)**2;
+        const taper=Math.max(0,dx/half)*Math.hypot(dy,dz)/half;
+        const scale=1-.13*scallop*taper;
+        pos.setXYZ(i,dx*scale,dy*scale,dz*scale);
+      }
+      add(name,S,inward(cap),TR(x,spring,zc),CARVED);
     };
     // Round colonnette with base, shaft, foliate capital and abacus, by world extents.
     const column = (name, x, zc, r, [y0, y1], capH) => {

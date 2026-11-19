@@ -383,3 +383,7 @@ Owner request: the timbers up in the church roof looked flimsy. The nave rafters
 ## Transept wing roof lining · 1 November 2026
 
 Both 9–10 wings have proposed ivory roof lining and lacquer/gilt timber proxies, matching the nave's appearance. The nave and wing lining planes meet at their modeled valley; the external roof is unchanged. Geometry, equipment coordination and engineering holds are recorded in the [roof specification](beams-roof-connections/SPECIFICATION.md#wing-roof-visualization-proxies--1-november-2026) and [lighting review](systems/lighting.md#wing-roof-and-brighter-downlights--1-november-2026-second-review). They are design-development proxies, not approved structure or construction details.
+
+## Lacquer, carved stone and mural · 18–19 November 2026
+
+**CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.** The axis-10 D/E columns gain parcel-gilt lotus vines on their nave faces. The pale altar retains its gilt cross between two raised stone sprays and carries folded linen with a woven vine hem. The blue crucifix recess and the two shrine fields use cropped versions of a project-generated painting. The niche outlines and the positions of the statues, cross, candles, altar and fittings follow the previous model. The artist and parish still need to approve physical finish samples and the art and carving details. [Interior finish record](interior-finish.md#material-depth-and-carved-ornament--1819-november-2026)

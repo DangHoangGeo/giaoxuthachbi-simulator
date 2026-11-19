@@ -64,3 +64,17 @@ It is off with `?graphics=light` or `?finish=off`, for orthographic drawing view
 ## Checks
 
 Recorded in the [first review folder](../review/interior-finish-2026-11-10/README.md) and, for the second pass, the [sanctuary and ceiling folder](../review/sanctuary-ceiling-2026-11-10/README.md).
+
+## Material depth and carved ornament · 18–19 November 2026
+
+**CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.** The appearance study follows the existing red lacquer, gilt timber, ivory stone and blue sanctuary palette. The [desktop review](../review/material-depth-2026-11-19/README.md) compares the same model views before and after.
+
+| Part | Visual development | Model source |
+| --- | --- | --- |
+| Lacquer and gilding | A fixed daylight panorama places reflections at the nave window bays. Glossier lacquer retains its oxblood base, and satin lacquer stays on broad boards and the crucifix. Evening uses the viewer's existing environment. | `interior-finish.js` |
+| Timber columns | Burnished beads fit in the turned feet. The two axis-10 columns carry five repeats of a climbing lotus on the nave-facing side, between the existing bands at +3.05 and +7.95 m. The foliage follows the current tapered shafts. Palmettes, fine gilt veins and rolled haunch tips give the beam junctions more legible layers. | `sanctuary.js`, `carving.js`, `simulator/engine.js` |
+| Altar | Two raised pale-stone foliate sprays sit on a warmer honed inset. The four linen falls have pinned tops, loose folds and a woven gilt-vine border. | `sanctuary.js`, `interior-finish.js` |
+| Sanctuary recesses | The blue fields behind the crucifix and two shrine statues use separate crops of one painted sky. The viewer embeds a reduced WebP for offline use and retains the procedural sky while the artwork decodes. The preserved original, exact generation prompt and export details are recorded with the artwork. | [Sky artwork and provenance](../Thach_Bi_Viewer/references/02-sanctuary/sky-study/provenance.json) |
+| Exterior | Cut-stone bedding, a more oblique display sun, and thin high cloud help the moulding relief read. The three statue niches now show inward-facing, fluted hoods. Raised stone fills the enclosed lobes of the drawn T12 spandrel sprays. | [Façade record](facade-model.md#stone-finish-and-relief--1819-november-2026) |
+
+The reflections are a fixed display approximation from axis 6. The reflected windows repeat across materials and do not track viewer position, shutters or real daylight. The artist and architect still need to review lacquer sheen, leafing, mural crops and the carved profiles at full scale. Source dimensions, analytical reflectances and light outputs follow the existing project inputs. Structural member, fixing, fire and maintenance reviews remain on engineering hold. Fan concealment remains an open design item. [Central view constraint](engineering/central-view-constraint.md)
