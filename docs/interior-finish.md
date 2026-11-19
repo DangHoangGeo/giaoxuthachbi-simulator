@@ -78,3 +78,9 @@ Recorded in the [first review folder](../review/interior-finish-2026-11-10/READM
 | Exterior | Cut-stone bedding, a more oblique display sun, and thin high cloud help the moulding relief read. The three statue niches now show inward-facing, fluted hoods. Raised stone fills the enclosed lobes of the drawn T12 spandrel sprays. | [Façade record](facade-model.md#stone-finish-and-relief--1819-november-2026) |
 
 The reflections are a fixed display approximation from axis 6. The reflected windows repeat across materials and do not track viewer position, shutters or real daylight. The artist and architect still need to review lacquer sheen, leafing, mural crops and the carved profiles at full scale. Source dimensions, analytical reflectances and light outputs follow the existing project inputs. Structural member, fixing, fire and maintenance reviews remain on engineering hold. Fan concealment remains an open design item. [Central view constraint](engineering/central-view-constraint.md)
+
+## Façade contact shading · 19 November 2026
+
+The contact pass now fetches depth and reconstructs the eye-space position at the same integer texel. This matters when half-resolution contact pixels land between full-resolution depth samples. Previously, a mismatch could make a flat wall appear tilted and shade it as if it had a raised neighbour. Depth differences at real joints still produce contact shading.
+
+Contact reach is 0.18 m and the blur samples within 0.09 m along each axis. Strength is 0.75 and the darkest multiplier is 0.72. The shorter reach and world-space blur keep shade close to raised work and mouldings. The far-distance fade, highlight roll-off, glow, haze and base lighting use their previous settings. This is the same display pass in the local and public viewers. Geometry, fixture schedules and analytical lighting inputs carry no changed fields. [Day and evening review](../review/facade-contact-2026-11-19/README.md)

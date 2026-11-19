@@ -16,9 +16,9 @@
   const query = new URLSearchParams(location.search);
   const settings = {
     enabled: query.get('graphics') !== 'light' && query.get('finish') !== 'off',
-    radius: 0.9,         // metres: reach of the contact shading
-    strength: 1.2,       // 0 = none
-    floor: 0.4,         // darkest multiplier a crease can reach
+    radius: 0.18,       // metres: keep shading local to the join
+    strength: 0.75,     // 0 = none
+    floor: 0.72,        // darkest multiplier a crease can reach
     fadeStart: 45,       // metres from the eye where the shading starts to fade
     fadeEnd: 90,
     shadeOnly: false,    // review aid: show the shading alone
@@ -42,12 +42,19 @@
   const VERT = 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }';
   const VIEW = `
     uniform sampler2D tDepth; uniform mat4 uProjectionInverse; uniform vec2 uTexel;
-    // Positions are rebuilt at the centre of the depth pixel that was read; an
-    // off-centre position tilts flat floors seen at a low angle and bands them.
-    vec3 viewAt(vec2 uv) {
-      uv = (floor(uv / uTexel) + 0.5) * uTexel;
-      vec4 p = uProjectionInverse * vec4(uv * 2.0 - 1.0, texture2D(tDepth, uv).x * 2.0 - 1.0, 1.0);
+    // Read depth and rebuild the eye-space position from the same texel.
+    // AO is half-resolution, so its pixel centres can lie between depth texels.
+    ivec2 depthPixel(vec2 uv) {
+      return clamp(ivec2(uv / uTexel), ivec2(0), textureSize(tDepth, 0) - 1);
+    }
+    vec3 viewAtDepth(ivec2 px, float depth) {
+      vec2 uv = (vec2(px) + 0.5) * uTexel;
+      vec4 p = uProjectionInverse * vec4(uv * 2.0 - 1.0, depth * 2.0 - 1.0, 1.0);
       return p.xyz / p.w;
+    }
+    vec3 viewAt(ivec2 px) {
+      px = clamp(px, ivec2(0), textureSize(tDepth, 0) - 1);
+      return viewAtDepth(px, texelFetch(tDepth, px, 0).x);
     }`;
   // Occlusion of the hemisphere over each visible point, from neighbouring depths.
   const AO_FRAG = `
@@ -56,16 +63,19 @@
     const int DIRECTIONS = 6, STEPS = 6;
     float noise(vec2 p) { return fract(52.9829189 * fract(dot(p, vec2(0.06711056, 0.00583715)))); }
     void main() {
-      float depth = texture2D(tDepth, vUv).x;
+      ivec2 px = depthPixel(vUv);
+      float depth = texelFetch(tDepth, px, 0).x;
       if (depth >= 0.99999) { gl_FragColor = vec4(1.0, 1000.0, 0.0, 1.0); return; }
-      vec3 p = viewAt(vUv);
+      vec3 p = viewAtDepth(px, depth);
       float fade = 1.0 - smoothstep(uFadeStart, uFadeEnd, -p.z);
       if (fade <= 0.0) { gl_FragColor = vec4(1.0, -p.z, 0.0, 1.0); return; }
-      vec3 l = viewAt(vUv - vec2(uTexel.x, 0.0)), r = viewAt(vUv + vec2(uTexel.x, 0.0));
-      vec3 d = viewAt(vUv - vec2(0.0, uTexel.y)), u = viewAt(vUv + vec2(0.0, uTexel.y));
+      vec3 l = viewAt(px - ivec2(1, 0)), r = viewAt(px + ivec2(1, 0));
+      vec3 d = viewAt(px - ivec2(0, 1)), u = viewAt(px + ivec2(0, 1));
       vec3 dx = abs(l.z - p.z) < abs(r.z - p.z) ? p - l : r - p;
       vec3 dy = abs(d.z - p.z) < abs(u.z - p.z) ? p - d : u - p;
-      vec3 n = normalize(cross(dx, dy));
+      // A clamped neighbour at the viewport edge may coincide with p.
+      vec3 n = cross(dx, dy);
+      n /= max(length(n), 1e-10);
       float screen = min(uRadius * uProjectionScale / -p.z, 0.16);
       float turn = noise(gl_FragCoord.xy), offset = noise(gl_FragCoord.yx + 17.0);
       float sum = 0.0;
@@ -76,7 +86,7 @@
         for (int j = 0; j < STEPS; j++) {
           vec2 uv = vUv + direction * (float(j) + 0.35 + 0.65 * offset) / float(STEPS);
           if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) break;
-          vec3 v = viewAt(uv) - p;
+          vec3 v = viewAt(depthPixel(uv)) - p;
           float len = length(v), reach = len / uRadius;
           // Surfaces beyond reach belong to another object: no shade from them.
           horizon = max(horizon, (dot(n, v) / max(len, 1e-4) - 0.1) * max(0.0, 1.0 - reach * reach));
@@ -85,16 +95,21 @@
       }
       gl_FragColor = vec4(1.0 - fade * min(1.0, sum / (0.5 * float(DIRECTIONS))), -p.z, 0.0, 1.0);
     }`;
-  // Depth-aware blur: shade never bleeds across an edge between near and far.
+  // Depth-aware blur limits shade crossing a silhouette.
   const BLUR_FRAG = `
     varying vec2 vUv; uniform sampler2D tAO; uniform vec2 uStep;
+    uniform float uProjectionScale, uPixelHeight, uReach;
     void main() {
       vec2 c = texture2D(tAO, vUv).xy;
+      // Limit the blur in metres so it cannot widen over the wall as the
+      // model gets smaller on screen. Keep the depth check at silhouettes.
+      float metresPerPixel = c.y * uPixelHeight / uProjectionScale;
+      vec2 stepUV = uStep * min(1.0, uReach / max(4.0 * metresPerPixel, 1e-4));
       float total = c.x * 0.2, weight = 0.2;
       for (int i = 1; i <= 4; i++) {
         float g = 0.2 - 0.04 * float(i);
         for (int s = -1; s <= 1; s += 2) {
-          vec2 q = texture2D(tAO, vUv + uStep * float(i * s)).xy;
+          vec2 q = texture2D(tAO, vUv + stepUV * float(i * s)).xy;
           float w = g * max(0.0, 1.0 - abs(q.y - c.y) / (0.04 * c.y + 0.02));
           total += q.x * w; weight += w;
         }
@@ -164,7 +179,10 @@
       tDepth: { value: colour.depthTexture }, uProjectionInverse: { value: new T.Matrix4() }, uTexel: { value: new T.Vector2() },
       uRadius: { value: 0 }, uProjectionScale: { value: 1 }, uFadeStart: { value: 0 }, uFadeEnd: { value: 1 }
     });
-    blurMaterial = pass(BLUR_FRAG, { tAO: { value: null }, uStep: { value: new T.Vector2() } });
+    blurMaterial = pass(BLUR_FRAG, {
+      tAO: { value: null }, uStep: { value: new T.Vector2() },
+      uProjectionScale: { value: 1 }, uPixelHeight: { value: 1 }, uReach: { value: 0 }
+    });
     brightMaterial = pass(BRIGHT_FRAG, { tColor: { value: colour.texture }, uTexel: { value: new T.Vector2() }, uThreshold: { value: 1 } });
     glowMaterial = pass(GLOW_FRAG, { tGlow: { value: null }, uStep: { value: new T.Vector2() } });
     outMaterial = pass(OUT_FRAG, {
@@ -212,16 +230,16 @@
       ao.uProjectionScale.value = camera.projectionMatrix.elements[5] * 0.5;
       ao.uFadeStart.value = settings.fadeStart; ao.uFadeEnd.value = settings.fadeEnd;
       draw(aoMaterial, half);
-      let source = half.texture;
-      for (const step of [1, 2]) {
-        blurMaterial.uniforms.tAO.value = source;
-        blurMaterial.uniforms.uStep.value.set(step / half.width, 0);
-        draw(blurMaterial, blurA);
-        blurMaterial.uniforms.tAO.value = blurA.texture;
-        blurMaterial.uniforms.uStep.value.set(0, step / half.height);
-        draw(blurMaterial, blurB);
-        source = blurB.texture;
-      }
+      const blur = blurMaterial.uniforms;
+      blur.uProjectionScale.value = ao.uProjectionScale.value;
+      blur.uPixelHeight.value = 1 / half.height;
+      blur.uReach.value = settings.radius * 0.5;
+      blur.tAO.value = half.texture;
+      blur.uStep.value.set(1 / half.width, 0);
+      draw(blurMaterial, blurA);
+      blur.tAO.value = blurA.texture;
+      blur.uStep.value.set(0, 1 / half.height);
+      draw(blurMaterial, blurB);
       brightMaterial.uniforms.uTexel.value.set(1 / size.x, 1 / size.y);
       brightMaterial.uniforms.uThreshold.value = settings.glowThreshold[mode];
       draw(brightMaterial, glowB);
