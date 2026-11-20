@@ -17,14 +17,14 @@
       const key = w.toFixed(3) + '|' + h.toFixed(3);
       if (capitalCache.has(key)) return capitalCache.get(key);
       const n = Math.max(3, Math.round(w / .2)), parts = [];
-      const blade = K.leaf({ len: h * .78, wid: w / n * 1.3, thick: .025, curl: 1.7, lobes: 3, cup: .25, seg: 6 });
+      const blade = K.leaf({ len: h * .78, wid: w / n * 1.3, thick: .04, curl: 2.1, lobes: 3, cup: .3, seg: 6 }); // deeper carving, 20 Nov 2026
       for (let i = 0; i < n; i++) parts.push([blade, place(RX(.12), TR(-w / 2 + (i + .5) * w / n, h * .04, .01))]);
       const volute = K.stem(K.scroll(0, 0, h * .14, 1.2, -Math.PI / 2, 1), .02, .008, 10, 5);
       for (const e of [-1, 1]) parts.push([volute, place(SC(e, 1, 1), TR(e * (w / 2 - h * .1), h * .74, .02))]);
       const g = merge(parts); capitalCache.set(key, g); return g;
     };
     const meanderGeo = (len, h) => {
-      const u = .31, t = .035, m = .035, depth = .03, parts = [];
+      const u = .31, t = .035, m = .035, depth = .05, parts = []; // key bars 50 mm proud (was 30 mm), 20 Nov 2026
       const bar = (a, b, c, d) => parts.push([new T.BoxGeometry(b - a, d - c, depth), TR((a + b) / 2, (c + d) / 2, depth / 2)]);
       bar(0, len, m, m + t); bar(0, len, h - m - t, h - m);
       for (let x = 0; x + u <= len + 1e-6; x += u) {
@@ -37,7 +37,7 @@
     const spray = h => {
       const parts = [], stemG = K.stem([[0, 0, 0], [h * .35, h * .25, 0], [h * .7, h * .15, 0], [h * .95, h * .32, 0]], .03, .012, 14, 5);
       parts.push([stemG, null], [K.stem(K.scroll(h * .95, h * .42, h * .1, 1.2, 0, 1), .022, .008, 10, 5), null]);
-      const blade = K.leaf({ len: h * .32, wid: h * .16, thick: .025, curl: 1.4, lobes: 3, seg: 5, fine: false });
+      const blade = K.leaf({ len: h * .32, wid: h * .16, thick: .045, curl: 1.8, lobes: 3, seg: 5, fine: false });
       for (const [u, v, a] of [[h * .2, h * .12, .6], [h * .45, h * .22, 2.3], [h * .62, h * .12, .9], [h * .82, h * .22, 2.1]]) parts.push([blade, place(RZ(-a), TR(u, v, 0))]);
       return merge(parts);
     };

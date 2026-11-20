@@ -193,7 +193,8 @@
         const curves=profile.filter(r=>!omit.includes(r[0]));
         const g=towerSpandrel(curves,stroke,sagitta), relief=spandrelRelief(curves);
         both(s=>{
-          const transform=facing(L.face-.003,dy,s*oz,SC(s*k,1,.45));
+          // Design excellence 20 Nov 2026: carved relief about 37 mm proud (was 11 mm) so the leaves cast their own shadow.
+          const transform=facing(L.face-.003,dy,s*oz,SC(s*k,1,2.2));
           add('Facade arch spandrel leaf · E01B T12',ACCENT,g,transform,'E01B TRACED T12 AT FULL SIZE / RELIEF CONCEPT');
           if(relief)add('Facade carved leaf backs · E01B T12',ACCENT,relief,transform,CARVED);
         });
@@ -269,13 +270,13 @@
     // Owner, 2 Nov 2026: above the centre door it reads like the side bays and the towers: the same
     // profile about a frieze face at X 2.19 (dentils 0.16 m proud, key on the frieze face), with the
     // drawn fillets at +8.605 / 8.653 / 8.725 / 8.773 in place of the former 0.54 m deep corona.
-    block('Central cornice bed moulding', S, [2.13, 2.6], C.bed, [-2.49, 2.49]);
+    block('Central cornice bed moulding', S, [2.08, 2.6], C.bed, [-2.49, 2.49]); // design excellence: deeper bed (was 2.13)
     block('Central cornice dentil band', W, [2.29, 2.6], C.dentil, [-2.49, 2.49]); // wall-finish ground behind the dentils (owner, 3 Nov 2026)
     for (let z = 0; z <= 2.49 - C.dentilWidth / 2 + 1e-6; z += C.dentilPitch)
-      for (const e of z ? [-1, 1] : [1]) block('Central cornice dentil', S, [2.13, 2.29], C.dentil, [e * z - C.dentilWidth / 2, e * z + C.dentilWidth / 2]);
-    block('Central cornice fillet', S, [2.16, 2.6], [C.corona[0], 8.653], [-2.49, 2.49]);
+      for (const e of z ? [-1, 1] : [1]) block('Central cornice dentil', S, [2.05, 2.29], C.dentil, [e * z - C.dentilWidth / 2, e * z + C.dentilWidth / 2]);
+    block('Central cornice fillet', S, [1.99, 2.6], [C.corona[0], 8.653], [-2.49, 2.49]); // corona 0.30 m proud of the frieze (was 0.03)
     block('Central cornice fillet band', W, [2.19, 2.6], [8.653, 8.725], [-2.49, 2.49]);
-    block('Central cornice fillet', S, [2.16, 2.6], [8.725, C.corona[1]], [-2.49, 2.49]);
+    block('Central cornice fillet', S, [2.03, 2.6], [8.725, C.corona[1]], [-2.49, 2.49]);
     block('Central cornice frieze', W, [2.19, 2.6], C.frieze, [-2.49, 2.49]);
     // The key fills the frieze as on the towers and side bays: meanderGeo's fixed 35 mm bars collapse
     // at the drawn 0.192 m key height (C.key), so the band height follows the sides (owner, 2 Nov 2026).

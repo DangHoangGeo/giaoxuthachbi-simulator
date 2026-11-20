@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','detail-towers-profile.js','detail-front-profile.js','detail-rear-profile.js','detail-sides-profile.js','entrance-approach.js','decoration.js', 'interior-finish.js','sanctuary-furnishings.js','landscape-trees.js','site-stone.js','sanctuary.js', 'facade.js', 'marian-art.js','porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','detail-towers-profile.js','detail-front-profile.js','detail-rear-profile.js','detail-sides-profile.js','entrance-approach.js','decoration.js', 'interior-finish.js','sanctuary-furnishings.js','landscape-trees.js','site-stone.js','facade-grandeur.js','sanctuary.js', 'facade.js', 'marian-art.js','porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -996,8 +996,9 @@ console.log('Sanctuary: sheet-5 frame, shrine line, chamber lining, lacquered ro
   const carved=of('Facade carved leaf backs · E01B T12');
   const portalFace=bounds(building.getObjectByName('Source-width centre entry facade')).min.x;
   const outline=of('Facade arch spandrel leaf · E01B T12');
-  assert(outline.max.x>=portalFace && outline.min.x>portalFace-.012,'Leaf contours meet the portal wall with shallow relief');
-  assert(carved.min.x>portalFace-.010 && Math.abs(carved.max.x-portalFace)<.001,'Carved leaf edges sit flush with the assembled wall');
+  // Design excellence, 20 Nov 2026: the owner found the front too flat; the relief is about 37 mm (was 11 mm).
+  assert(outline.max.x>=portalFace && outline.min.x>portalFace-.045 && outline.min.x<portalFace-.03,'Leaf contours stand 30-45 mm proud of the portal wall');
+  assert(carved.min.x>portalFace-.045 && carved.max.x>=portalFace-.001,'Carved leaf backs touch the assembled wall, no daylight behind');
   near(of('Central bay great arch moulding').max.y,12.677+2.27,'Great arch extrados: centre +12.677, r 2.27');
   const cross=of('Central cross trefoil end').union(of('Central cross'));near(cross.max.y,24.648,'Cross top +24.648');
   const piers=of('Central bay pier shaft');near(piers.max.z,2.979+.435,'Central piers: 621 / 5,958.8 / 621 chain');near(piers.min.z,-2.979-.435,'Central piers symmetric');

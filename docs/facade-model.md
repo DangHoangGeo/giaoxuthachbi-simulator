@@ -230,3 +230,7 @@ The six E01B T12 leaves above the three entrance arches sit in the assembled wal
 ## Plinth rubble and designed courtyard · 20 November 2026
 
 **CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.** The rubble plinth now reads as coursed random rubble, with pillowed grey to warm-grey stones and recessed mortar. The presentation ground shows sawn granite slabs, and a designed granite courtyard (departure DX-05) lies in front of the entrance steps. The plinth geometry, the steps, the levels and the walking floor are unchanged. [Design excellence, stages 4 and 5](design-excellence.md#stages-4-and-5-plinth-masonry-and-courtyard)
+
+## Façade grandeur, first pass · 20 November 2026
+
+**CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.** After the owner found the front still too flat, this pass deepens the relief, the central cornice and the tower arch orders, warms the carving tone and gives the exterior a raking late-morning sun. Traced outlines and levels are unchanged. [Design excellence, façade grandeur](design-excellence.md#façade-grandeur)

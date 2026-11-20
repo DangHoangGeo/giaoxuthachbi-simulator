@@ -1044,6 +1044,8 @@
     window.CHURCH_LANDSCAPE_TREES?.prepare(ctx);
     // Plinth rubble, granite paving and the designed courtyard, 20 Nov 2026 (CONCEPT, site unsurveyed).
     window.CHURCH_SITE_STONE?.prepare(ctx);
+    // Façade grandeur, 20 Nov 2026: exterior daylight balance and stone tone hierarchy (CONCEPT, display only).
+    window.CHURCH_FACADE_GRANDEUR?.prepare(ctx);
     applyJoineryColours();
     applyGlass();
     finish(true);

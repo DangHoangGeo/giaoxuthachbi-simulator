@@ -887,7 +887,7 @@
         uslab('wall with paired louvre apertures', W, face, xf, xb);
         // All radial boundaries are source arcs; only relief depths are illustrative.
         for (let i = 0; i < U.great.rings.length - 1; i++)
-          uslab('great arch ring', i % 2 ? W : S, ring(cg, U.great.y, U.great.rings[i], U.great.rings[i + 1]), xf - .10 - .012 * i, xf + .01);
+          uslab('great arch ring', i % 2 ? W : S, ring(cg, U.great.y, U.great.rings[i], U.great.rings[i + 1]), xf - .10 - .045 * i, xf + .01); // stepped orders, 45 mm each (was 12 mm)
         for (const e of [-1, 1]) {
           const r0 = U.great.rings[0], r1 = U.great.rings[1];
           const shaft = [cg + e * r0, cg + e * (U.stage === 4 ? U.great.rings[U.great.rings.length - 1] : r1)].sort((a, b) => a - b);
@@ -898,7 +898,7 @@
         for (const centre of WI.centres) {
           const u = centre - spec.centre, r = WI.rings[0];
           for (let i = 0; i < WI.rings.length - 1; i++)
-            uslab('paired louvre archivolt', S, ring(u, WI.spring, WI.rings[i], WI.rings[i + 1]), xf - .13 - .025 * i, xf + .01);
+            uslab('paired louvre archivolt', S, ring(u, WI.spring, WI.rings[i], WI.rings[i + 1]), xf - .13 - .045 * i, xf + .01);
           for (const e of [-1, 1]) block(label + 'paired louvre jamb', S, [xf - .11, xf + .01], [U.sill, WI.spring], [u + e * r, u + e * WI.rings[2]].sort((a, b) => a - b));
           const leaf = new T.Shape(); leaf.moveTo(u - r, U.sill); leaf.lineTo(u + r, U.sill);
           leaf.lineTo(u + r, WI.spring); leaf.absarc(u, WI.spring, r, 0, Math.PI, false); leaf.lineTo(u - r, U.sill); leaf.closePath();
