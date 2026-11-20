@@ -1,10 +1,10 @@
 /* Appearance refinement only. Local, deterministic surface studies for the
- * approved ivory / terracotta / son son thep vang palette. No measured product
+ * stone-grey walls, terracotta and red lacquer with gilding. No measured product
  * reflectance, structural section, equipment or analytical input is implied.
  * See docs/decoration-finishes.md for provenance and remaining artwork holds. */
 (() => {
   'use strict';
-  const revision = '2026-10-25-decoration-1';
+  const revision = '2026-11-20-wall-limestone';
   window.CHURCH_DECORATION = { revision, prepare };
 
   function prepare({ THREE: T, building, mat, interior, renderer, palettes, data }) {
@@ -55,18 +55,27 @@
     });
     const lacquer = map('satin lacquer roughness', g => noise(g, 235, 12));
     const changed = new Set();
-    function surface(material, values) {
+    function surface(material, values, tint) {
       if (!material) return;
+      if (tint) material.color.set(tint);
       Object.assign(material, values);
       material.userData.decoration = { revision, status: 'CONCEPT · display finish, not measured reflectance' };
       material.needsUpdate = true; changed.add(material);
       // Keep reference / neutral display switching coherent with the new maps.
       const palette = palettes.get(material);
-      if (palette) { palette.map = material.map; palette.bump = material.bumpMap; }
+      if (palette) {
+        if (tint) palette.color.copy(material.color);
+        palette.map = material.map;
+        palette.bump = material.bumpMap;
+      }
     }
     for (const m of [mat.wall, mat.trim, mat.darkTrim, mat.cap, interior.materials.lining]) {
       surface(m, { bumpMap: mineral, bumpScale: .0012, roughness: .98, roughnessMap: stoneRoughness, envMapIntensity: .3 });
     }
+    // The enclosing walls and the mineral-finished column shafts use the same
+    // uninterrupted colour in every bay, including the fluted tower piers.
+    mat.wall.name = 'Stone-grey mineral finish · walls and supports';
+    surface(mat.wall, { map: null, bumpScale: .00035 }, '#c1beb4');
     // Stone trim and cut sandstone have broader bedding than the lime wall.
     // Work in the existing world-projected two-metre repeat, with periodic
     // bands and fine aggregate. Keep the profiles legible at courtyard scale.
@@ -75,15 +84,53 @@
       for(let y=0;y<size;y++)for(let x=0;x<size;x++){
         const a=x*turn,b=y*turn;
         const drift=b+.18*Math.sin(a)+.09*Math.sin(3*a-b);
-        const bed=3.6*Math.sin(drift*4)+1.9*Math.sin(drift*11+Math.cos(2*a))
-          +1.2*Math.sin(23*drift+a)+(rand()-.5)*9;
+        const bed=1.6*Math.sin(drift*4)+.8*Math.sin(drift*11+Math.cos(2*a))
+          +.5*Math.sin(23*drift+a)+(rand()-.5)*4;
         const i=4*(y*size+x);
-        d[i]=242+bed; d[i+1]=235+bed; d[i+2]=222+bed; d[i+3]=255;
+        d[i]=249+bed; d[i+1]=248+bed; d[i+2]=246+bed; d[i+3]=255;
       }
       g.putImageData(pixels,0,0);
     },true);
-    for(const m of [mat.trim,mat.darkTrim,mat.cap])
-      surface(m,{map:limestone,roughness:.76,bumpScale:.0018,envMapIntensity:.36});
+    for (const [material, tint] of [[mat.trim, '#c5c1b7'], [mat.darkTrim, '#a48f77'], [mat.cap, '#c8c4b9']]) {
+      surface(material, { map: limestone, roughness: .82, bumpScale: .0008, envMapIntensity: .32 }, tint);
+    }
+    // Select the nave-facing triangles of the shared C/G and entrance walls.
+    // These meshes have both inside and outside faces and must retain their openings.
+    const cream = mat.wall.clone();
+    cream.name = 'Interior wall paint · pale yellow cream';
+    surface(cream, {}, '#f4e4bd');
+    palettes.set(cream, { color: cream.color.clone(), map: null, bump: cream.bumpMap });
+    function twoSidedPaint(name, inward) {
+      const paint = mat.wall.clone();
+      paint.name = name;
+      const base = paint.color.clone();
+      const ratio = cream.color.clone();
+      ratio.r /= base.r; ratio.g /= base.g; ratio.b /= base.b;
+      paint.onBeforeCompile = shader => {
+        shader.uniforms.wallCreamRatio = { value: ratio };
+        shader.fragmentShader = 'uniform vec3 wallCreamRatio;\n' + shader.fragmentShader;
+        shader.fragmentShader = shader.fragmentShader.replace('#include <normal_fragment_maps>',
+          `#include <normal_fragment_maps>
+           vec3 wallNormal = transformNormalByInverseViewMatrix(normal, viewMatrix);
+           vec3 wallPoint = cameraPosition - (vec4(vViewPosition, 0.0) * viewMatrix).xyz;
+           if (${inward} && distance(diffuse, vec3(${base.r}, ${base.g}, ${base.b})) < 0.001) diffuseColor.rgb *= wallCreamRatio;`);
+      };
+      paint.customProgramCacheKey = () => name;
+      palettes.set(paint, { color: paint.color.clone(), map: null, bump: paint.bumpMap });
+      return paint;
+    }
+    const entrancePaint = twoSidedPaint('Entrance · cream nave face', 'wallNormal.x > 0.5');
+    const sidePaint = twoSidedPaint('Side walls · cream room face', 'wallNormal.z * sign(wallPoint.z) < -0.5');
+    const wingReturnPaint = twoSidedPaint('Wing returns · cream room face', 'wallNormal.x * sign(wallPoint.x - 40.575) < -0.5');
+    const rearPaint = twoSidedPaint('Rear wall · cream room face', 'wallNormal.x < -0.5');
+    building.traverse(o => {
+      if (!o.isMesh || o.material !== mat.wall) return;
+      if (/^(Side column —|Sanctuary back wall|Sanctuary arch spandrel)/.test(o.name)) o.material = cream;
+      else if (o.name.startsWith('Entrance door wall')) o.material = entrancePaint;
+      else if (/^(Inner C\/G wall with opening|Outer arcade wall with arched openings|Side gable wall · CAD)/.test(o.name)) o.material = sidePaint;
+      else if (o.name === 'Side-gable return wall') o.material = wingReturnPaint;
+      else if (o.name === 'Rear gable wall · CAD silhouette') o.material = rearPaint;
+    });
     for (const m of [mat.floor, interior.materials.whiteStone, interior.materials.stone]) {
       // The tile/vein colour remains; the old 7–10 mm bump exaggerated polished stone.
       surface(m, { roughness: .52, roughnessMap: stoneRoughness, bumpScale: .0008, envMapIntensity: .38 });
@@ -111,7 +158,7 @@
       source: 'Approved project concepts; docs/decoration-finishes.md', textureSize: size };
     building.userData.decoration = record;
     data.decoration = record;
-    data.assumptions.push('Decoration surface study: mineral plaster, honed stone, satin red lacquer and gold-leaf roughness. Display-only maps, not measured optical/acoustic materials or selected construction products; geometry, equipment, routes and engineering holds unchanged.');
+    data.assumptions.push('Decoration surface study: continuous warm grey stone-coloured walls, mineral plaster, honed stone, satin red lacquer and gold-leaf roughness. Display-only maps, not measured optical/acoustic materials or selected construction products; geometry, equipment, routes and engineering holds unchanged.');
     window.CHURCH_DECORATION.stats = record;
   }
 })();

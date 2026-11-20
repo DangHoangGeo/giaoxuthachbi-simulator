@@ -216,3 +216,7 @@ The T12 sprays on the ground arches and tower front and outer faces retain their
 ### Display brightness on approach · 19 November 2026
 
 The exterior plaster holds a steadier tone as the camera approaches. Contact shade still defines the arch mouldings and stone relief. The correction is in the viewer's depth sampling and blur. The drawing-linked geometry and fixture positions carry no revision from this pass. [Day and evening review](../review/facade-contact-2026-11-19/README.md)
+
+## Continuous stone-grey wall colour · 20 November 2026
+
+The enclosing walls have a continuous warm gray finish from the entrance to the rear gable. The fluted piers share that tint and the mouldings have a close stone tone. The timber backing behind the triple window and paired tower louvres follows the shutter finish. The E01B/E02 profiles retain their existing dimensions. [Desktop comparisons and finish basis](../review/wall-stone-2026-11-20/README.md)

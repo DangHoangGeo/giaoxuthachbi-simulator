@@ -61,7 +61,6 @@
     varying vec2 vUv; ${VIEW}
     uniform float uRadius, uProjectionScale, uFadeStart, uFadeEnd;
     const int DIRECTIONS = 6, STEPS = 6;
-    float noise(vec2 p) { return fract(52.9829189 * fract(dot(p, vec2(0.06711056, 0.00583715)))); }
     void main() {
       ivec2 px = depthPixel(vUv);
       float depth = texelFetch(tDepth, px, 0).x;
@@ -77,19 +76,21 @@
       vec3 n = cross(dx, dy);
       n /= max(length(n), 1e-10);
       float screen = min(uRadius * uProjectionScale / -p.z, 0.16);
-      float turn = noise(gl_FragCoord.xy), offset = noise(gl_FragCoord.yx + 17.0);
+      // A fixed symmetric kernel keeps long, identical grooves evenly shaded.
+      // Suppress steps smaller than one screen pixel on the receiving plane.
+      float footprint = -p.z * uTexel.y / uProjectionScale;
       float sum = 0.0;
       // For each direction, the highest thing within reach above the surface's own plane.
       for (int i = 0; i < DIRECTIONS; i++) {
-        float a = (float(i) + turn) * 6.2831853 / float(DIRECTIONS), horizon = 0.0;
+        float a = (float(i) + 0.25) * 6.2831853 / float(DIRECTIONS), horizon = 0.0;
         vec2 direction = vec2(cos(a) * uTexel.x / uTexel.y, sin(a)) * screen;
         for (int j = 0; j < STEPS; j++) {
-          vec2 uv = vUv + direction * (float(j) + 0.35 + 0.65 * offset) / float(STEPS);
+          vec2 uv = vUv + direction * (float(j) + 0.65) / float(STEPS);
           if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) break;
           vec3 v = viewAt(depthPixel(uv)) - p;
           float len = length(v), reach = len / uRadius;
           // Surfaces beyond reach belong to another object: no shade from them.
-          horizon = max(horizon, (dot(n, v) / max(len, 1e-4) - 0.1) * max(0.0, 1.0 - reach * reach));
+          horizon = max(horizon, ((dot(n, v) - min(footprint, 0.03)) / max(len, 1e-4) - 0.1) * max(0.0, 1.0 - reach * reach));
         }
         sum += horizon;
       }
@@ -110,7 +111,7 @@
         float g = 0.2 - 0.04 * float(i);
         for (int s = -1; s <= 1; s += 2) {
           vec2 q = texture2D(tAO, vUv + stepUV * float(i * s)).xy;
-          float w = g * max(0.0, 1.0 - abs(q.y - c.y) / (0.04 * c.y + 0.02));
+          float w = g * max(0.0, 1.0 - abs(q.y - c.y) / (0.025 + metresPerPixel));
           total += q.x * w; weight += w;
         }
       }
@@ -233,7 +234,7 @@
       const blur = blurMaterial.uniforms;
       blur.uProjectionScale.value = ao.uProjectionScale.value;
       blur.uPixelHeight.value = 1 / half.height;
-      blur.uReach.value = settings.radius * 0.5;
+      blur.uReach.value = settings.radius * 0.2;
       blur.tAO.value = half.texture;
       blur.uStep.value.set(1 / half.width, 0);
       draw(blurMaterial, blurA);

@@ -902,7 +902,7 @@
           for (const e of [-1, 1]) block(label + 'paired louvre jamb', S, [xf - .11, xf + .01], [U.sill, WI.spring], [u + e * r, u + e * WI.rings[2]].sort((a, b) => a - b));
           const leaf = new T.Shape(); leaf.moveTo(u - r, U.sill); leaf.lineTo(u + r, U.sill);
           leaf.lineTo(u + r, WI.spring); leaf.absarc(u, WI.spring, r, 0, Math.PI, false); leaf.lineTo(u - r, U.sill); leaf.closePath();
-          uslab('paired louvre backing', D, leaf, xf + .16, xf + .18, 'TRACED CAD APERTURE / SCHEMATIC CLOSED SHUTTER DEPTH');
+          uslab('paired louvre backing', WOOD, leaf, xf + .16, xf + .18, 'TRACED CAD APERTURE / SCHEMATIC CLOSED SHUTTER DEPTH');
           const clear = r * 2 - .03, stop = WI.spring - .14;
           block(label + 'paired louvre timber frame', mat.wood, [xf + .07, xf + .14], [U.sill, stop], [u - r, u - r + .015]);
           block(label + 'paired louvre timber frame', mat.wood, [xf + .07, xf + .14], [U.sill, stop], [u + r - .015, u + r]);
@@ -953,7 +953,7 @@
           for(const e of [-1,1]) fb('paired louvre jamb',S,[u+e*r,u+e*WI.rings[2]].sort((a,b)=>a-b),[U.sill,WI.spring],[.13,.25]);
           const leaf=new T.Shape();leaf.moveTo(u-r,U.sill);leaf.lineTo(u+r,U.sill);leaf.lineTo(u+r,WI.spring);
           leaf.absarc(u,WI.spring,r,0,Math.PI,false);leaf.lineTo(u-r,U.sill);leaf.closePath();
-          fs('paired louvre backing',D,leaf,-.04,-.02,status+' / CLOSED SHUTTER DEPTH PROXY');
+          fs('paired louvre backing',WOOD,leaf,-.04,-.02,status+' / CLOSED SHUTTER DEPTH PROXY');
           const stop=WI.spring-.14,clear=2*r-.03;
           for(const xs of [[u-r,u-r+.015],[u+r-.015,u+r]]) fb('paired louvre timber frame',mat.wood,xs,[U.sill,stop],[0,.07]);
           for(let y=U.slats.first;y<stop-.001;y+=U.slats.pitch)

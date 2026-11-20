@@ -28,20 +28,22 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
       patch.width = patch.height = 11;
       const pixels = patch.getContext('2d', { willReadFrequently: true });
       const strength = settings.strength;
-      const readLuma = value => {
+      const readLuma = (value, radius) => {
         settings.strength = value;
         renderer.render(scene, church.camera);
         const frame = renderer.domElement;
-        pixels.drawImage(frame, Math.floor(frame.width / 2) - 5, Math.floor(frame.height / 2) - 5, 11, 11, 0, 0, 11, 11);
-        const rgba = pixels.getImageData(0, 0, 11, 11).data;
+        const width = 2 * radius + 1;
+        pixels.drawImage(frame, Math.floor(frame.width / 2) - radius, Math.floor(frame.height / 2) - radius,
+          width, width, 0, 0, width, width);
+        const rgba = pixels.getImageData(0, 0, width, width).data;
         const luma = [];
         for (let i = 0; i < rgba.length; i += 4) {
           luma.push(0.2126 * rgba[i] + 0.7152 * rgba[i + 1] + 0.0722 * rgba[i + 2]);
         }
-        return Math.round(luma.sort((a, b) => a - b)[60]);
+        return Math.round(luma.sort((a, b) => a - b)[Math.floor(luma.length / 2)]);
       };
-      const compare = () => {
-        const values = { shaded: readLuma(strength), reference: readLuma(0) };
+      const compare = (radius = 5) => {
+        const values = { shaded: readLuma(strength, radius), reference: readLuma(0, radius) };
         settings.strength = strength;
         return values;
       };
@@ -49,9 +51,10 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
       const results = [];
       const frontDirection = new T.Vector3(-1, -.15, -.22).normalize();
       const samples = [
-        { name: 'lower plaster field', target: [1.975, 5.32, 5.24], distances: [6, 25, 55, 100] },
-        { name: 'upper plaster field', target: [2.936, 13.85, 2.36], distances: [6, 25, 55, 100] },
-        { name: 'side plaster field', target: [19.8, 5.25, -10.474], distances: [6, 25, 55, 100], direction: new T.Vector3(-.18, .12, -1).normalize() },
+        { name: 'lower entrance stone', target: [2.21, 5.12, 3.88], distances: [6, 25, 55, 100] },
+        { name: 'upper façade stone', target: [2.936, 13.85, 2.36], distances: [6, 25, 55, 100] },
+        { name: 'side wall stone', target: [18.2, 4.15, -10.474], distances: [6, 25, 55, 100], direction: new T.Vector3(-.18, .12, -1).normalize() },
+        { name: 'inside entrance stone', target: [5.475, 4.4, 2.5], distances: [2, 4, 6], direction: new T.Vector3(1, .04, .06).normalize() },
         { name: 'beside the central moulding', target: [2.936, 13.65, 1.63], distances: [6, 25] }
       ];
       for (const mode of ['day', 'evening']) {
@@ -61,7 +64,11 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
             const pos = new T.Vector3(...target).addScaledVector(direction, distance).toArray();
             church.places.displayCheck = { title: name, note: '', pos, target, interior: false };
             church.goTo('displayCheck', { mode: 'explore', instant: true });
-            return { distance, ...compare() };
+            // At 100 m a fixed 11-pixel square spans neighbouring trim and joints.
+            // Sample about 8 cm of wall, limited by the display's pixel size.
+            const pixelsPerMetre = renderer.domElement.height * church.camera.projectionMatrix.elements[5] / (2 * distance);
+            const radius = Math.min(5, Math.floor(.04 * pixelsPerMetre));
+            return { distance, ...compare(radius) };
           });
           results.push({ mode, name, readings });
         }
@@ -88,7 +95,37 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
         bar.visible = true;
         return { distance, flat, join: compare() };
       });
-      return { visitOnly, active: stats.active, reason: stats.reason, results, plane };
+      // A straight vertical join at constant depth should have the same shade
+      // from top to bottom. Inspect each column across the edge of the bar.
+      bar.scale.z = .2;
+      bar.position.z = .026;
+      camera.position.set(.12, 0, 8);
+      camera.lookAt(.12, 0, 0);
+      camera.updateMatrixWorld(true);
+      const frame = renderer.domElement;
+      const strip = document.createElement('canvas');
+      strip.width = 32; strip.height = 96;
+      const ctx = strip.getContext('2d', { willReadFrequently: true });
+      const scan = value => {
+        settings.strength = value;
+        renderer.render(scene, camera);
+        ctx.drawImage(frame, (frame.width - strip.width) >> 1, (frame.height - strip.height) >> 1,
+          strip.width, strip.height, 0, 0, strip.width, strip.height);
+        return ctx.getImageData(0, 0, strip.width, strip.height).data;
+      };
+      const reference = scan(0), shaded = scan(strength);
+      let maxVariation = 0, darkestContact = 0;
+      for (let x = 0; x < strip.width; x++) {
+        const column = [];
+        for (let y = 0; y < strip.height; y++) {
+          const i = 4 * (y * strip.width + x);
+          column.push(reference[i] - shaded[i]);
+        }
+        column.sort((a, b) => a - b);
+        maxVariation = Math.max(maxVariation, column[90] - column[5]);
+        darkestContact = Math.max(darkestContact, column[48]);
+      }
+      return { visitOnly, active: stats.active, reason: stats.reason, results, plane, maxVariation, darkestContact };
     });
 
     assert.deepEqual(errors, []);
@@ -109,6 +146,8 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     const { join } = result.plane[0];
     assert(join.reference - join.shaded >= 5, 'A raised bar keeps a contact shadow on the same plane');
     console.log(JSON.stringify(result, null, 2));
+    assert(result.darkestContact >= 5, 'The vertical join casts a visible contact shadow');
+    assert(result.maxVariation <= 3, 'Contact shade is even along the vertical join');
   } finally {
     await browser.close();
   }

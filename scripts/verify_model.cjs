@@ -60,9 +60,26 @@ const dimensions=o=>bounds(o).getSize(new T.Vector3());
     assert(Math.min(Math.abs(part.min.z),Math.abs(part.max.z))>=7.165-.001,'Carving remains within existing 85 mm relief projection');
   }
   for(const o of nodes.filter(o=>o.isMesh&&/^Sanctuary · gilded (relief|scrollwork)/.test(o.material.name)))assert(o.material.bumpScale<=.003,'Relief shading does not exaggerate relief depth');
+  const stoneWall = nodes.find(o => o.name === 'Central bay upper wall').material;
+  const stoneTint = stoneWall.color.clone();
+  assert.equal(stoneWall.map, null, 'Continuous stone colour has no block or joint pattern');
+  assert.equal(stoneTint.getHexString(), 'c1beb4');
+  for (const name of ['Tower corner pier pedestal',
+    'Tower corner pier shaft', 'Central ground pier shaft',
+    'Tower B stage 2 · wall with paired louvre apertures', 'Tower H stage 2 · wall with paired louvre apertures']) {
+    const faces = nodes.filter(o => o.name === name && o.isMesh);
+    assert(faces.length && faces.every(o => o.material === stoneWall), name + ' uses the shared stone colour');
+  }
+  const naveColumn = nodes.find(o => o.name === 'Side column — illustrative shaft width');
+  assert.equal(naveColumn.material.color.getHexString(), 'f4e4bd', 'Interior support matches the cream nave paint');
+  assert.equal(stoneWall, mat.wall, 'Walls and mineral-finished column shafts share their tint');
+  assert.equal(mat.trim.color.getHexString(), 'c5c1b7', 'Mouldings remain in the stone-grey range');
   const finishMap=mat.wall.bumpMap;
   realism.finish(false);assert.equal(mat.wall.bumpMap,null,'Neutral display removes plaster bump');
+  assert(!stoneWall.color.equals(stoneTint), 'Drawing colours neutralize the wall tint');
   realism.finish(true);assert.equal(mat.wall.bumpMap,finishMap,'Reference display restores new plaster bump');
+  assert.equal(stoneWall.map, null);
+  assert(stoneWall.color.equals(stoneTint), 'Drawing-colour toggle restores the wall stone');
   const altar=nodes.find(o=>o.name==='Proposed altar front panel'),relief=nodes.find(o=>o.name==='Altar floral stone relief');
   altar.geometry.computeBoundingBox();
   const panel=altar.geometry.boundingBox.clone().applyMatrix4(altar.matrixWorld),carving=bounds(relief),cross=bounds(nodes.find(o=>o.name==='Altar cross stem'));
@@ -694,7 +711,7 @@ for(const name of ['Central carved timber silhouette','Reredos carved ground','O
       const p=bounds(o).getCenter(new T.Vector3());return Math.abs(p.x-centre.x)<.001&&Math.abs(p.z-centre.z)<.001;
     });
     assert(core,group.name+' retains its original concrete support proxy');
-    assert.equal(core.material.name,'Ivory mineral plaster · reference finish','The support core is not replaced or recoloured');
+    assert.equal(core.material.name,'Interior wall paint · pale yellow cream','Concrete core carries the nave wall paint');
     const faces=group.children.filter(o=>o.name==='Concrete support cladding · face');
     assert.equal(faces.length,group.name.startsWith('Concrete support cladding · 10/')?4:3);
     for(const face of faces){

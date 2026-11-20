@@ -381,7 +381,7 @@
         // E01B shows eight rectangular fields and an 80 mm centre stile, rather than
         // the former uniformly spaced slats. Timber finish and unseen depth stay illustrative.
         const leaf = new T.Shape(); outline(leaf, z, LT.half, LT.sill, LT.spring);
-        slab('Triple window louvre backing', D, leaf, [3.70, 3.72]);
+        slab('Triple window louvre backing', mat.wood, leaf, [3.70, 3.72]);
         block('Triple window centre stile · CAD', mat.wood, [3.556, 3.64], [LT.sill, LT.spring + LT.inner], [z - LT.mullion / 2, z + LT.mullion / 2]);
         for (const e of [-1, 1]) {
           const edge = z + e * LT.half;

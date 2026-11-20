@@ -84,3 +84,7 @@ The reflections are a fixed display approximation from axis 6. The reflected win
 The contact pass now fetches depth and reconstructs the eye-space position at the same integer texel. This matters when half-resolution contact pixels land between full-resolution depth samples. Previously, a mismatch could make a flat wall appear tilted and shade it as if it had a raised neighbour. Depth differences at real joints still produce contact shading.
 
 Contact reach is 0.18 m and the blur samples within 0.09 m along each axis. Strength is 0.75 and the darkest multiplier is 0.72. The shorter reach and world-space blur keep shade close to raised work and mouldings. The far-distance fade, highlight roll-off, glow, haze and base lighting use their previous settings. This is the same display pass in the local and public viewers. Geometry, fixture schedules and analytical lighting inputs carry no changed fields. [Day and evening review](../review/facade-contact-2026-11-19/README.md)
+
+## Nave, entrance and sanctuary walls · 20 November 2026
+
+The nave-facing walls, entrance wall, sanctuary spandrel and sanctuary back wall have a light yellow-cream paint tint (#f4e4bd). The mineral-finished nave columns match. The outer faces retain the cream-grey stone palette. The lacquer, devotional artwork and gilding retain their own finishes. In the display pass, paired sample directions and a blur reach of 0.036 m per axis reduce uneven gray shading beside narrow relief. [Interior comparison and finish basis](../review/wall-stone-2026-11-20/README.md)

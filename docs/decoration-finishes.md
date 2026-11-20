@@ -87,3 +87,7 @@ The study adds no carving and changes no opening, hinge, pew dimensions, electri
 **USER CONFIRMED, 25 October 2026:** “mirror things” means **minor visual details** in this decoration request. It is not a request to reflect the model. ENG-027, the separate possible drawing/model left-right mirror, remains open. This finish revision applies no global reflection and changes no saint, tower-board, stair or station side assignment. A coordinate reflection needs its own coordinated geometry, winding, navigation, equipment, route and register migration.
 
 Parish/artist review is still required for the station narratives, statue sculpture, precise regional motifs and final finish samples. Structural support, fixing, fire behaviour, service access, humidity durability and cleaning methods require the relevant designers. The present textures provide no product performance or purchasing approval.
+
+## Continuous stone wall colour · 20 November 2026
+
+The owner chose pale yellow cream for interior walls and mineral-finished nave supports, with cream-grey stone colours outside. The surfaces are continuous. Muted warm sandstone picks out the carved detail. [Desktop comparisons](../review/wall-stone-2026-11-20/README.md)
