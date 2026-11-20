@@ -220,3 +220,9 @@ The exterior plaster holds a steadier tone as the camera approaches. Contact sha
 ## Continuous stone-grey wall colour · 20 November 2026
 
 The enclosing walls have a continuous warm gray finish from the entrance to the rear gable. The fluted piers share that tint and the mouldings have a close stone tone. The timber backing behind the triple window and paired tower louvres follows the shutter finish. The E01B/E02 profiles retain their existing dimensions. [Desktop comparisons and finish basis](../review/wall-stone-2026-11-20/README.md)
+
+### Portal relief finish, 20 November 2026
+
+The six E01B T12 leaves above the three entrance arches sit in the assembled wall face at X 2.210 m. Their drawn outlines retain their full elevation size. The leaf contours and lobes share a slightly deeper stone grey (#a8a69f) for visibility from the courtyard. The adjacent Greek key and capital foliage retain the lighter cream-grey accent (#bcb9b0). The devotional door panels have their own finish. [Geometry and conceptual depth](exterior-23102026/tower-spandrel-review.md) · [Desktop comparison, before at left and after at right](../review/portal-relief-2026-11-20/comparison.jpg)
+
+[Courtyard view after the leaf colour adjustment](../review/portal-relief-2026-11-20/courtyard.jpg)

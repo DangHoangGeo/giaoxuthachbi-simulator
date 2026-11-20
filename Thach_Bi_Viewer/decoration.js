@@ -91,8 +91,17 @@
       }
       g.putImageData(pixels,0,0);
     },true);
-    for (const [material, tint] of [[mat.trim, '#c5c1b7'], [mat.darkTrim, '#a48f77'], [mat.cap, '#c8c4b9']]) {
+    for (const [material, tint] of [[mat.trim, '#c5c1b7'], [mat.darkTrim, '#bcb9b0'], [mat.cap, '#c8c4b9']]) {
       surface(material, { map: limestone, roughness: .82, bumpScale: .0008, envMapIntensity: .32 }, tint);
+    }
+    // The six portal leaves need a little more contrast when seen from the courtyard.
+    const portalLeafStone = mat.darkTrim.clone();
+    portalLeafStone.name = 'Portal leaf relief · grey limestone';
+    surface(portalLeafStone, {}, '#a8a69f');
+    palettes.set(portalLeafStone, { color: portalLeafStone.color.clone(), map: limestone, bump: mineral });
+    for (const name of ['Facade arch spandrel leaf · E01B T12', 'Facade carved leaf backs · E01B T12']) {
+      const mesh = building.getObjectByName(name);
+      if (mesh) mesh.material = portalLeafStone;
     }
     // Select the nave-facing triangles of the shared C/G and entrance walls.
     // These meshes have both inside and outside faces and must retain their openings.

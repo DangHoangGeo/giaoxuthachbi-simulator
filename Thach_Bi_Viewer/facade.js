@@ -21,7 +21,7 @@
     // size over the central portal and both side-bay arches; the bundle's flat sprays are replaced.
     // [origin Z, mirror (Z = origin + k·u), lift dY, omitted source handles, witness arc]; the B side
     // mirrors H within 0.1 mm. Leaf X = the wall face behind the old sprays less the stroke (CONCEPT relief).
-    leaves: { face: 1.975, copies: [[0.534416, 1, 1.335006, ['C44AAA'], 'C4491B'], [5.424284, -1, 0, [], 'C44B3A'],
+    leaves: { face: 2.210, copies: [[0.534416, 1, 1.335006, ['C44AAA'], 'C4491B'], [5.424284, -1, 0, [], 'C44B3A'],
       [5.275515, 1, 0, ['C44A87', 'C44AA0', 'C44AA8'], 'C44B84']] },
     // E01B centre bay (owner 2 Nov 2026: match the drawing as the towers do): bed moulding C4508A/C4508B,
     // dentils 0.0663 m wide on a 0.1326 m pitch from +8.405 to +8.605, Greek key +8.833 to +9.025.
@@ -171,10 +171,7 @@
     };
     const both = fn => { for (const s of [-1, 1]) fn(s); };
     const W = mat.wall, S = mat.trim, D = mat.darkTrim;
-    // Owner, 3 Nov 2026: carving (capital foliage, spandrel leaves, rosettes, rose tracery, Greek key,
-    // cresting fleurs, scroll volutes) takes the warm sandstone trim, as on the towers, so it reads against
-    // the cream. Mouldings, bands, dentils and the cross keep the trim; so do the crests over the three
-    // statues and the pinnacle crowns (owner, 4 Nov 2026). Colour CONCEPT.
+    // Mineral carving shares the exterior stone palette. Its relief supplies the contrast.
     const ACCENT = D || S;
 
     // Shared exterior carving geometry; placements and materials remain local.
@@ -196,7 +193,7 @@
         const curves=profile.filter(r=>!omit.includes(r[0]));
         const g=towerSpandrel(curves,stroke,sagitta), relief=spandrelRelief(curves);
         both(s=>{
-          const transform=facing(L.face-stroke-.002,dy,s*oz,SC(s*k,1,1));
+          const transform=facing(L.face-.003,dy,s*oz,SC(s*k,1,.45));
           add('Facade arch spandrel leaf · E01B T12',ACCENT,g,transform,'E01B TRACED T12 AT FULL SIZE / RELIEF CONCEPT');
           if(relief)add('Facade carved leaf backs · E01B T12',ACCENT,relief,transform,CARVED);
         });

@@ -962,7 +962,10 @@ console.log('Sanctuary: sheet-5 frame, shrine line, chamber lining, lacquered ro
     assert(rearFaces>0,'The hollow includes a visible rear surface');
   }
   const carved=of('Facade carved leaf backs · E01B T12');
-  assert(carved.min.x>1.90&&carved.max.x<1.975,'Leaf backs project only from the existing spandrel wall');
+  const portalFace=bounds(building.getObjectByName('Source-width centre entry facade')).min.x;
+  const outline=of('Facade arch spandrel leaf · E01B T12');
+  assert(outline.max.x>=portalFace && outline.min.x>portalFace-.012,'Leaf contours meet the portal wall with shallow relief');
+  assert(carved.min.x>portalFace-.010 && Math.abs(carved.max.x-portalFace)<.001,'Carved leaf edges sit flush with the assembled wall');
   near(of('Central bay great arch moulding').max.y,12.677+2.27,'Great arch extrados: centre +12.677, r 2.27');
   const cross=of('Central cross trefoil end').union(of('Central cross'));near(cross.max.y,24.648,'Cross top +24.648');
   const piers=of('Central bay pier shaft');near(piers.max.z,2.979+.435,'Central piers: 621 / 5,958.8 / 621 chain');near(piers.min.z,-2.979-.435,'Central piers symmetric');
