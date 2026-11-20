@@ -886,6 +886,15 @@ const amboFoot=nodes.find(o=>o.name==='Proposed ambo foot'),altarFoot=nodes.find
 near(bounds(amboFoot).getCenter(new T.Vector3()).x,41.3,'Ambo position');
 assert(bounds(altarFoot).min.x-bounds(amboFoot).max.x>=2,'At least 2 m between the ambo and the altar');
 assert(bounds(amboFoot).min.x-39.345>=1,'Ambo stays 1 m back from the head of the sanctuary steps');
+// Entrance archivolts, façade grandeur second pass (20 Nov 2026): the outer order stands forward and each
+// inner order steps 70 mm deeper; elevation outlines and the clear opening are unchanged.
+{
+  const rings=nodes.filter(o=>o.name==='Continuous curved arch moulding'&&o.userData.archivoltOrder);
+  assert.equal(rings.length,12,'Three entrance arches carry four archivolt orders each');
+  for(const r of rings){const b=bounds(r),A=r.userData.archivoltOrder;
+    assert(Math.abs(b.min.x-A.front)<.002&&Math.abs(b.max.x-2.21)<.002,'Archivolt order spans from its front to the wall face');
+    near(A.front,1.80+.07*(4-A.order),'Archivolt order '+A.order+' front');}
+}
 // Designed courtyard and plinth rubble, design excellence stages 4-5 (20 Nov 2026): surface finishes only.
 {
   const court=nodes.filter(o=>o.name==='Courtyard designed paving · DX-05 concept');
