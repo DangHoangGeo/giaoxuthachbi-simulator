@@ -70,7 +70,7 @@
   }
   window.CHURCH_INTERIOR_FINISH = { spec, prepare, lighting };
 
-  function prepare({ THREE: T, building, mat, interior, renderer, palettes, data }) {
+  function prepare({ THREE: T, building, mat, interior, renderer, palettes, data, roofs }) {
     const im = interior.materials, K = window.CHURCH_CARVING.create(T);
     const { TR, RX, RY, RZ, SC, place, merge } = K;
     const tag = { status: spec.status, source: spec.source, revision: spec.revision };
@@ -567,7 +567,8 @@
       const mesh = new T.Mesh(weld(merge(parts)), m);
       mesh.name = name; mesh.castShadow = false; mesh.receiveShadow = true;
       mesh.userData = { ...tag };
-      root.add(mesh);
+      // Lining ornament belongs to the roof lining: it hides with the roof (owner, 21 Nov 2026: it floated).
+      (/^Roof lining/.test(name) && roofs ? roofs : root).add(mesh);
     }
     root.userData.stats = stats;
     window.CHURCH_INTERIOR_FINISH.stats = stats;

@@ -568,6 +568,12 @@
     buildWingRoof({ asDrawn, member, gild });
     GEO.trussMoved = moving.length;
     buildFrameVariants(asDrawn);
+    // Owner, 21 Nov 2026: with the roof hidden, the side beams from the columns to the wall piers vanished
+    // with it. They are frame members, not roof: keep them (and their carving and posts) with the walls.
+    const sideFrame = new T.Group(); sideFrame.name = 'Timber frame · side beams to the walls (stay when the roof is hidden)';
+    ctx.building.add(sideFrame); ctx.building.updateMatrixWorld(true);
+    const sides = []; asDrawn.traverse(o => { if (o.isMesh && /^Side beam/.test(o.name)) sides.push(o); });
+    for (const o of sides) sideFrame.attach(o);
     GEO.purlinsAsDrawn = 28;
     closeEntranceBay();
     entranceSlats = buildEntranceSlats();
